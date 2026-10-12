@@ -48,13 +48,13 @@ jobs:
             # primeiro commit não tem HEAD~1: compara com a árvore vazia
             if git rev-parse -q --verify HEAD~1 > /dev/null; then base=HEAD~1; else base=$(git hash-object -t tree /dev/null); fi
             mudou=$(git diff --name-only --diff-filter=AMR "$base" HEAD -- 'projetos/*/projeto.json' 'projetos/*/audio/*' 'projetos/*/regerar.txt')
-            lista=$(echo "$mudou" | grep . | cut -d/ -f2 | sort -u | xargs)
+            lista=$(echo "$mudou" | { grep . || true; } | cut -d/ -f2 | sort -u | xargs)
             # só áudio de Short mudou? gera só os Shorts
             if [ -n "$mudou" ] && ! echo "$mudou" | grep -viq '/audio/shorts\?[0-9]'; then echo "formato=shorts" >> "$GITHUB_OUTPUT"; fi
             # só áudio de TikTok mudou? gera só os TikToks
             if [ -n "$mudou" ] && ! echo "$mudou" | grep -viq '/audio/tiktok[0-9]'; then echo "formato=tiktoks" >> "$GITHUB_OUTPUT"; fi
             # regerar.txt: a primeira palavra diz o formato (tudo, longo, shorts, short1…)
-            r=$(echo "$mudou" | grep '/regerar.txt$' | head -1)
+            r=$(echo "$mudou" | { grep '/regerar.txt$' || true; } | head -1)
             if [ -n "$r" ]; then echo "formato=$(head -1 "$r" | awk '{print $1}')" >> "$GITHUB_OUTPUT"; fi
           fi
           echo "lista=$lista" >> "$GITHUB_OUTPUT"
