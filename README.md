@@ -25,7 +25,7 @@ Em **Settings → Secrets and variables → Actions → New repository secret**,
 - **projeto:** o nome da pasta, ex.: `kolynos`
 - **formato:** `tudo`, `longo`, `shorts` ou `short1`
 - **voz:** opcional, troca a voz só desta vez
-- **modo:** `google` usa a voz de verdade; `teste` usa uma voz falsa e não gasta nada
+- **modo:** `kokoro` (padrão, grátis); `google` precisa da chave; `teste` usa uma voz falsa
 
 Um longo de 7 minutos leva uns 20–30 minutos. Ao final, abra a execução e baixe o pacote em **Artifacts**. Ele fica disponível por 14 dias.
 
@@ -33,17 +33,15 @@ Um longo de 7 minutos leva uns 20–30 minutos. Ao final, abra a execução e ba
 
 ## Vozes
 
-A voz fica em `"voz": {"nome": "pt-BR-Chirp3-HD-Charon", "velocidade": 1.05}` dentro do `projeto.json`.
+Padrão: **Kokoro** (`modo: kokoro`), voz aberta que roda no próprio servidor do GitHub. É grátis, sem conta e sem cartão.
 
-Vozes masculinas: Charon, Orus, Algenib, Iapetus, Schedar, Fenrir, Puck, Enceladus, Achird, Algieba, Alnilam, Rasalgethi, Sadachbia, Sadaltager, Umbriel, Zubenelgenubi.
+A voz fica em `"voz": {"nome": "pm_alex", "velocidade": 1.0}` dentro do `projeto.json`. Opções: `pm_alex`, `pm_santa` (masculinas), `pf_dora` (feminina).
 
-Vozes femininas: Kore, Aoede, Leda, Zephyr, Despina, Erinome, Gacrux, Achernar, Autonoe, Callirrhoe, Laomedeia, Pulcherrima, Sulafat, Vindemiatrix.
-
-O nome completo é sempre `pt-BR-Chirp3-HD-<Nome>`.
+Google Chirp 3 HD continua disponível com `modo: google` + secret `GOOGLE_TTS_KEY` (nome `pt-BR-Chirp3-HD-<Nome>`, ex.: Charon, Orus). Exige conta com cartão.
 
 ## Custos
 
-- **Google TTS:** grátis até 1 milhão de caracteres por mês. Um longo tem uns 5 mil.
+- **Voz (Kokoro):** grátis, roda no servidor.
 - **GitHub Actions:** grátis até 2.000 minutos por mês em repositório privado, o bastante para umas 60 gerações.
 
 ## Rodar no próprio computador (opcional)

@@ -75,7 +75,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("projeto", help="nome da pasta em projetos/ (ex.: kolynos)")
     ap.add_argument("--formato", default="tudo", help="tudo | longo | shorts | short1, short2…")
-    ap.add_argument("--modo", default=None, help="edge | google | teste (padrão: google se houver GOOGLE_TTS_KEY, senão edge)")
+    ap.add_argument("--modo", default=None, help="kokoro | google | edge | teste (padrão: kokoro)")
     ap.add_argument("--voz", default=None, help="troca a voz deste vídeo (ex.: pt-BR-Chirp3-HD-Orus)")
     ap.add_argument("--saida", default=os.path.join(RAIZ, "saida"))
     ap.add_argument("--previas", action="store_true", help="salva quadros de prévia em JPG")

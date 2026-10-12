@@ -1,4 +1,5 @@
 """Narração frase a frase. Motores:
+- kokoro: voz aberta que roda no próprio servidor (grátis, sem conta). Padrão. Voz pm_alex.
 - edge: vozes neurais do Microsoft Edge (grátis, sem conta, sem cartão). Padrão.
 - google: Google Cloud Text-to-Speech (Chirp 3 HD), precisa de GOOGLE_TTS_KEY.
 - teste: voz falsa, só para conferir a montagem.
@@ -18,6 +19,22 @@ VOZ_PADRAO = {"nome": "pt-BR-Chirp3-HD-Charon", "velocidade": 1.05, "pausa": 0.2
 
 
 VOZ_EDGE_PADRAO = "pt-BR-AntonioNeural"
+VOZ_KOKORO_PADRAO = "pm_alex"
+_KOKORO = None
+
+
+def _kokoro(text, voz):
+    global _KOKORO
+    if _KOKORO is None:
+        from kokoro import KPipeline
+        _KOKORO = KPipeline(lang_code="p")
+    nome = voz["nome"] if voz["nome"][:3] in ("pm_", "pf_") else VOZ_KOKORO_PADRAO
+    partes = [np.asarray(a, dtype=np.float32) for _, _, a in _KOKORO(text, voice=nome, speed=float(voz.get("velocidade", 1.0)))]
+    if not partes:
+        raise ErroVoz(f"Kokoro não gerou áudio para: {text[:80]}")
+    x = np.concatenate(partes)
+    n2 = int(round(len(x) * SR / 24000))
+    return np.interp(np.linspace(0, len(x) - 1, n2), np.arange(len(x)), x).astype(np.float32)
 
 
 class ErroVoz(RuntimeError):
@@ -116,7 +133,9 @@ class Narrador:
     def __init__(self, voz=None, modo=None):
         self.voz = dict(VOZ_PADRAO, **(voz or {}))
         self.key = os.environ.get("GOOGLE_TTS_KEY", "").strip()
-        self.modo = modo or ("google" if self.key else "edge")
+        self.modo = modo or "kokoro"
+        if self.modo == "kokoro" and self.voz["nome"][:3] not in ("pm_", "pf_"):
+            self.voz["nome"] = VOZ_KOKORO_PADRAO
         if self.modo == "edge" and "Neural" not in self.voz["nome"]:
             self.voz["nome"] = VOZ_EDGE_PADRAO
         if self.modo == "google" and not self.key:
@@ -133,6 +152,8 @@ class Narrador:
                 return _wav_to_np(f.read())
         if self.modo == "google":
             x = _wav_to_np(_google(text, self.voz, self.key)); self.chars += len(text)
+        elif self.modo == "kokoro":
+            x = _kokoro(text, self.voz)
         elif self.modo == "edge":
             x = _wav_to_np(_edge(text, self.voz))
         else:
