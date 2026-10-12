@@ -12,14 +12,14 @@ on:
         options: [tudo, longo, shorts, short1, short2, short3]
         default: tudo
       voz:
-        description: "Trocar a voz (opcional, ex.: pt-BR-Chirp3-HD-Orus)"
+        description: "Trocar a voz (opcional, ex.: pt-BR-AntonioNeural ou pt-BR-FranciscaNeural)"
         required: false
         default: ""
       modo:
-        description: "google = voz real · teste = voz falsa, sem custo"
+        description: "edge = voz grátis sem cadastro · google = Chirp 3 HD (precisa de chave) · teste = voz falsa"
         type: choice
-        options: [google, teste]
-        default: google
+        options: [edge, google, teste]
+        default: edge
   push:
     paths: ["projetos/*/projeto.json"]
 
@@ -77,7 +77,7 @@ jobs:
           CHROME_CHANNEL: chrome
           LISTA: ${{ steps.alvo.outputs.lista }}
           FORMATO: ${{ inputs.formato || 'tudo' }}
-          MODO: ${{ inputs.modo || 'google' }}
+          MODO: ${{ inputs.modo || 'edge' }}
           VOZ: ${{ inputs.voz }}
         shell: bash
         run: |

@@ -3,8 +3,8 @@
  "slug": "kolynos",
  "angle": "A decisão tirou o nome Kolynos do mercado, mas não tirou os clientes da Colgate.",
  "voz": {
-  "nome": "pt-BR-Chirp3-HD-Charon",
-  "velocidade": 1.05
+  "nome": "pt-BR-AntonioNeural",
+  "velocidade": 1.0
  },
  "script": {
   "long": {

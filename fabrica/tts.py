@@ -1,9 +1,12 @@
-"""Narração: Google Cloud Text-to-Speech (Chirp 3 HD), uma chamada por frase.
+"""Narração frase a frase. Motores:
+- edge: vozes neurais do Microsoft Edge (grátis, sem conta, sem cartão). Padrão.
+- google: Google Cloud Text-to-Speech (Chirp 3 HD), precisa de GOOGLE_TTS_KEY.
+- teste: voz falsa, só para conferir a montagem.
 
 Gerar frase a frase dá o tempo exato de cada frase (legenda e cenas sincronizadas
 sem adivinhação) e permite cache: refazer um vídeo não gasta caracteres de novo.
 """
-import base64, hashlib, io, json, os, time, wave
+import asyncio, base64, hashlib, io, json, os, subprocess, tempfile, time, wave
 import urllib.request, urllib.error
 import numpy as np
 
@@ -12,6 +15,9 @@ CACHE = os.environ.get("TTS_CACHE", ".cache/tts")
 API = "https://texttospeech.googleapis.com/v1/text:synthesize"
 
 VOZ_PADRAO = {"nome": "pt-BR-Chirp3-HD-Charon", "velocidade": 1.05, "pausa": 0.24, "pausa_virgula": 0.12}
+
+
+VOZ_EDGE_PADRAO = "pt-BR-AntonioNeural"
 
 
 class ErroVoz(RuntimeError):
@@ -63,6 +69,26 @@ def _google(text, voz, key):
             raise ErroVoz(f"sem conexão com o Google TTS: {e}")
 
 
+def _edge(text, voz):
+    import edge_tts
+    nome = voz["nome"] if "Neural" in voz["nome"] else VOZ_EDGE_PADRAO
+    pct = int(round((float(voz.get("velocidade", 1.0)) - 1) * 100))
+    rate = f"{pct:+d}%"
+    with tempfile.TemporaryDirectory() as d:
+        mp3, wav = os.path.join(d, "f.mp3"), os.path.join(d, "f.wav")
+        for tent in range(6):
+            try:
+                asyncio.run(edge_tts.Communicate(text, nome, rate=rate).save(mp3))
+                break
+            except Exception as e:
+                if tent == 5:
+                    raise ErroVoz(f"voz do Edge falhou ({nome}): {e}")
+                time.sleep(3 * (tent + 1))
+        subprocess.run(["ffmpeg", "-loglevel", "error", "-y", "-i", mp3, "-ac", "1", "-ar", str(SR), "-sample_fmt", "s16", wav], check=True)
+        with open(wav, "rb") as f:
+            return f.read()
+
+
 def _teste(text, voz):
     """Voz falsa para testar a fábrica sem internet: ruído com ritmo de fala."""
     rng = np.random.default_rng(int(hashlib.md5(text.encode()).hexdigest()[:8], 16))
@@ -90,7 +116,9 @@ class Narrador:
     def __init__(self, voz=None, modo=None):
         self.voz = dict(VOZ_PADRAO, **(voz or {}))
         self.key = os.environ.get("GOOGLE_TTS_KEY", "").strip()
-        self.modo = modo or ("google" if self.key else "teste")
+        self.modo = modo or ("google" if self.key else "edge")
+        if self.modo == "edge" and "Neural" not in self.voz["nome"]:
+            self.voz["nome"] = VOZ_EDGE_PADRAO
         if self.modo == "google" and not self.key:
             raise ErroVoz("falta a chave GOOGLE_TTS_KEY. No GitHub: Settings → Secrets and variables → Actions → New repository secret.")
         self.chars = 0      # caracteres cobrados nesta execução
@@ -105,6 +133,8 @@ class Narrador:
                 return _wav_to_np(f.read())
         if self.modo == "google":
             x = _wav_to_np(_google(text, self.voz, self.key)); self.chars += len(text)
+        elif self.modo == "edge":
+            x = _wav_to_np(_edge(text, self.voz))
         else:
             x = _teste(text, self.voz)
         x = _trim(x)
