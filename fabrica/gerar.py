@@ -146,7 +146,7 @@ def main():
     log(f"2/4 Narração ({'gravada (seus áudios)' if gravada else nar.modo + ', voz ' + nar.voz['nome']})")
     if nar.modo == "teste" and not gravada:
         avisos.append("Gerado em MODO TESTE: a voz é um ruído no ritmo da fala, só para conferir a montagem.")
-    cfgs = []
+    cfgs = []; taxas = []
     for fmt, idx in alvos:
         grupos = p["script"]["long"]["parts"] if fmt == "longo" else [shorts[idx]]
         partes = []
@@ -155,6 +155,7 @@ def main():
             txts = [s["text"].strip() for s in frases(g)]
             if gravada:
                 tempos, dur, taxa = AL.parte(txts, audio_de(fmt, idx, k), wav, log)
+                taxas.append(f"{fmt}{'' if fmt == 'longo' else idx + 1} p{k + 1}: {taxa:.0%} ({dur:.0f}s)")
                 if taxa < 0.6:
                     avisos.append(f"{fmt}{'' if fmt == 'longo' else idx + 1} parte {k + 1}: só {taxa:.0%} das palavras bateram com o roteiro. Confira se o áudio é dessa parte e se o texto não mudou.")
             else:
@@ -228,6 +229,11 @@ def main():
     if sem:
         resumo.append(f"Cenas sem mídia (usaram manchete/texto de reserva): {', '.join(dict.fromkeys(sem))}")
     resumo += [f"⚠️ {x}" for x in avisos]
+    if taxas:
+        print("::notice title=Sincronia (palavras que bateram)::" + " · ".join(taxas), flush=True)
+    for x in avisos:
+        print("::warning title=Aviso::" + x, flush=True)
+    print("::notice title=Vídeos::" + " | ".join(r[2:] for r in resumo if r.startswith("- **")), flush=True)
     with open(os.path.join(saida, "resumo.md"), "w", encoding="utf8") as f:
         f.write("\n".join(resumo) + "\n")
     if os.environ.get("GITHUB_STEP_SUMMARY"):
