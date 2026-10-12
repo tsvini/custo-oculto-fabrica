@@ -99,6 +99,7 @@ def parte(frases, audio, saida_wav, log=print):
         ouvidas = _palavras(audio)
     except Exception as e:
         log(f"    reconhecimento de fala falhou ({e}); tempos por tamanho de frase")
+        print(f"::warning title=Reconhecimento de fala falhou::{type(e).__name__}: {str(e)[:700]}", flush=True)
         ouvidas = []
     dur = len(x) / SR
     if ouvidas:
