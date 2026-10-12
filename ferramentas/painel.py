@@ -15,7 +15,7 @@ for nome in sorted(os.listdir(os.path.join(RAIZ, "projetos"))):
     p = json.load(open(f, encoding="utf8"))
     blocos = []
     for k, g in enumerate(p["script"]["long"]["parts"]):
-        blocos.append({"arquivo": f"parte{k + 1}", "tipo": "Longo", "titulo": (g.get("chapter") or "abertura").capitalize(),
+        blocos.append({"arquivo": f"parte{k + 1}", "tipo": "Longo", "titulo": g.get("chapter") or "ABERTURA",
                        "texto": " ".join(s["text"].strip() for s in g["sentences"] if s.get("text", "").strip())})
     for i, sh in enumerate(p["script"].get("shorts", [])):
         blocos.append({"arquivo": f"short{i + 1}", "tipo": "Short", "titulo": sh.get("title", ""),
@@ -71,7 +71,7 @@ h1{font:800 clamp(28px,6vw,40px)/1.05 var(--f-display);margin:0;text-wrap:balanc
 .topo{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px}
 .arq{font:700 14px var(--f-mono);background:var(--chip);padding:3px 9px;border-radius:6px}
 .tipo{font:700 11px var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
-.titulo{font-weight:600;min-width:0}
+.titulo{font:700 13px var(--f-display);letter-spacing:.06em;min-width:0}
 .meta{margin-left:auto;font:500 12px var(--f-mono);color:var(--muted);font-variant-numeric:tabular-nums}
 .texto{font:400 18px/1.65 var(--f-read);margin:0;max-width:65ch;user-select:text}
 .rodape{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between}
