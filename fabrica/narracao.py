@@ -22,6 +22,8 @@ def main(nome):
         out += [f"## parte{k + 1}.mp3 — longo{(' · ' + cap) if cap else ''}", "", " ".join(frases(g)), ""]
     for i, sh in enumerate(p["script"].get("shorts", [])):
         out += [f"## short{i + 1}.mp3 — Short: {sh.get('title', '')}", "", " ".join(frases(sh)), ""]
+    for i, tk in enumerate(p["script"].get("tiktoks", [])):
+        out += [f"## tiktok{i + 1}.mp3 — TikTok: {tk.get('title', '')}", "", " ".join(frases(tk)), ""]
     with open(os.path.join(pasta, "NARRACAO.md"), "w", encoding="utf8") as f:
         f.write("\n".join(out))
     print(os.path.join(pasta, "NARRACAO.md"))

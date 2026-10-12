@@ -9,7 +9,7 @@ on:
       formato:
         description: "O que gerar"
         type: choice
-        options: [tudo, longo, shorts, short1, short2, short3]
+        options: [tudo, longo, shorts, short1, short2, short3, tiktoks, tiktok1, tiktok2, tiktok3, tiktok4]
         default: tudo
       voz:
         description: "Trocar a voz sintética (só para modo google)"
@@ -51,6 +51,8 @@ jobs:
             lista=$(echo "$mudou" | grep . | cut -d/ -f2 | sort -u | xargs)
             # só áudio de Short mudou? gera só os Shorts
             if [ -n "$mudou" ] && ! echo "$mudou" | grep -viq '/audio/shorts\?[0-9]'; then echo "formato=shorts" >> "$GITHUB_OUTPUT"; fi
+            # só áudio de TikTok mudou? gera só os TikToks
+            if [ -n "$mudou" ] && ! echo "$mudou" | grep -viq '/audio/tiktok[0-9]'; then echo "formato=tiktoks" >> "$GITHUB_OUTPUT"; fi
             # regerar.txt: a primeira palavra diz o formato (tudo, longo, shorts, short1…)
             r=$(echo "$mudou" | grep '/regerar.txt$' | head -1)
             if [ -n "$r" ]; then echo "formato=$(head -1 "$r" | awk '{print $1}')" >> "$GITHUB_OUTPUT"; fi

@@ -385,15 +385,15 @@
     if (cur.length) chunks.push(cur);
     return chunks;
   }
-  function drawCaptions(ctx, c, t, chunks) {
+  function drawCaptions(ctx, c, t, chunks, safe) {
     let lo = 0, hi = chunks.length - 1, ch = null;
     while (lo <= hi) { const m = (lo + hi) >> 1; const k = chunks[m]; if (t < k[0].s - 0.02) hi = m - 1; else if (t >= k[k.length - 1].e + 0.05) lo = m + 1; else { ch = k; break; } }
     if (!ch) return;
     const u = c.u; let fs = (c.vertical ? 84 : 64) * u; const words = ch.map((w) => w.w.toUpperCase());
-    ctx.font = font(900, fs); let sp = ctx.measureText(" ").width + 6 * u; let ws = words.map((w) => ctx.measureText(w).width + 16 * u);
-    let total = ws.reduce((a, b) => a + b, 0) + sp * (words.length - 1); const maxW = c.W * (c.vertical ? 0.86 : 0.7);
+    ctx.font = font(900, fs); let sp = ctx.measureText(" ").width + (safe ? 16 : 6) * u; let ws = words.map((w) => ctx.measureText(w).width + 16 * u);
+    let total = ws.reduce((a, b) => a + b, 0) + sp * (words.length - 1); const maxW = c.W * (safe ? 0.72 : c.vertical ? 0.86 : 0.7);
     if (total > maxW) { const k = maxW / total; fs *= k; sp *= k; ws = ws.map((x) => x * k); total = maxW; }
-    let x = c.cx - total / 2; const y = c.H * (c.vertical ? 0.70 : 0.84); const ka = easeOut((t - ch[0].s) / 0.12);
+    let x = c.cx - total / 2; const y = c.H * (safe ? 0.68 : c.vertical ? 0.70 : 0.84); const ka = easeOut((t - ch[0].s) / 0.12);
     ch.forEach((wd, i) => { const act = wd.s <= t && t < wd.e + 0.03;
       drawC(ctx, words[i], font(900, fs), x + ws[i] / 2, y, { fill: act ? COL.gold : COL.white, stroke: 9 * u, alpha: ka, scale: act ? 1.08 : 1 }); x += ws[i] + sp; });
   }
@@ -524,9 +524,9 @@
       (S[sc.type] || S.bigtext)(ctx, c, lt, a.dur, sc, media);
       const endT = a.head.s0 + a.dur;
       if (endT - t < 0.12 && endT < tl.total - 0.1) { ctx.fillStyle = `rgba(0,0,0,${(1 - (endT - t) / 0.12) * 0.8})`; ctx.fillRect(0, 0, c.W, c.H); }
-      if (sc.type !== "endcard" && sc.type !== "chapter") drawCaptions(ctx, c, t, tl.chunks);
+      if (sc.type !== "endcard" && sc.type !== "chapter") drawCaptions(ctx, c, t, tl.chunks, tl.safe);
       if (c.vertical) { ctx.fillStyle = css(COL.gold); ctx.fillRect(0, 0, c.W * t / tl.total, 10); }
-      drawC(ctx, "CUSTO OCULTO", font(900, 30 * c.u), c.cx, c.H * (c.vertical ? 0.085 : 0.06), { alpha: 0.45 });
+      drawC(ctx, "CUSTO OCULTO", font(900, 30 * c.u), c.cx, c.H * (tl.safe ? 0.15 : c.vertical ? 0.085 : 0.06), { alpha: 0.45 });
     }
   }
 

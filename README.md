@@ -33,6 +33,14 @@ Para criar o NARRACAO.md de um projeto novo: `python -m fabrica.narracao <nome>`
 
 **Para trocar um print:** coloque a imagem em `projetos/<nome>/midia/print01.png`, com o mesmo nome da cena. Arquivo enviado à mão sempre tem prioridade.
 
+## TikTok
+
+Cada projeto pode ter `script.tiktoks`: vídeos verticais de 70–90 s (o Programa de Recompensas só conta vídeos com mais de 1 minuto). Legenda e marca ficam fora das áreas que o TikTok cobre (botões à direita, texto embaixo).
+
+1. O texto de cada um está em `NARRACAO.md`, nos blocos `tiktok1.mp3`, `tiktok2.mp3`…
+2. Grave e envie os arquivos para `projetos/<nome>/audio/`. Se o envio tiver só áudios de TikTok, a fábrica gera só os TikToks.
+3. O pacote traz `<nome>_tiktokN.mp4` e `publicar_tiktokN.txt`, com a legenda do post, as hashtags e o produto para marcar no TikTok Shop.
+
 ## Vozes
 
 Padrão: **sua voz gravada** (modo `gravada`). As trocas de cena não têm mais o "bum" de impacto; só a trilha de fundo baixa.

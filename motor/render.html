@@ -39,7 +39,8 @@ async function montar(cfg) {
   await fontes();
   const p = await (await fetch(cfg.projeto)).json();
   const longo = cfg.formato === "longo";
-  const groups = longo ? p.script.long.parts : [p.script.shorts[cfg.idx]];
+  const tiktok = cfg.formato === "tiktok";
+  const groups = longo ? p.script.long.parts : [(tiktok ? p.script.tiktoks : p.script.shorts)[cfg.idx]];
   const units = [];
   for (let k = 0; k < groups.length; k++) {
     const g = groups[k];
@@ -51,6 +52,7 @@ async function montar(cfg) {
   }
   const media = await carregaMidia(cfg.midia, cfg.midiaBase);
   const tl = E.buildTimeline(units, { hook: !longo, tail: longo ? 1.5 : 1.2 });
+  if (tiktok) tl.safe = "tiktok"; // legenda e marca fora da área dos botões e do texto do TikTok
   return { p, tl, media, longo };
 }
 window.gerar = async (cfg) => {

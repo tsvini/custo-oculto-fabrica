@@ -55,7 +55,7 @@ def frases(grupo):
 
 def todas_cenas(p):
     out = []
-    for g in p["script"]["long"]["parts"] + p["script"].get("shorts", []):
+    for g in p["script"]["long"]["parts"] + p["script"].get("shorts", []) + p["script"].get("tiktoks", []):
         for s in g["sentences"]:
             sc = s.get("scene") or {}
             out.append(sc)
@@ -74,7 +74,7 @@ def ffmpeg_final(bruto, final, codec):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("projeto", help="nome da pasta em projetos/ (ex.: kolynos)")
-    ap.add_argument("--formato", default="tudo", help="tudo | longo | shorts | short1, short2…")
+    ap.add_argument("--formato", default="tudo", help="tudo | longo | shorts | short1… | tiktoks | tiktok1…")
     ap.add_argument("--modo", default=None, help="gravada | kokoro | google | edge | teste (padrão: gravada se houver projetos/<nome>/audio, senão kokoro)")
     ap.add_argument("--voz", default=None, help="troca a voz deste vídeo (ex.: pt-BR-Chirp3-HD-Orus)")
     ap.add_argument("--saida", default=os.path.join(RAIZ, "saida"))
@@ -100,9 +100,12 @@ def main():
         alvos.append(("longo", 0))
     if a.formato in ("tudo", "shorts"):
         alvos += [("short", i) for i in range(len(shorts))]
-    m = re.fullmatch(r"short(\d+)", a.formato)
+    tiktoks = p["script"].get("tiktoks", [])
+    if a.formato in ("tudo", "tiktoks"):
+        alvos += [("tiktok", i) for i in range(len(tiktoks))]
+    m = re.fullmatch(r"(short|tiktok)(\d+)", a.formato)
     if m:
-        alvos.append(("short", int(m.group(1)) - 1))
+        alvos.append((m.group(1), int(m.group(2)) - 1))
 
     # ---------- mídia ----------
     log("1/4 Mídia")
@@ -119,7 +122,7 @@ def main():
     from . import alinhar as AL
     pasta_audio = os.path.join(pasta_proj, "audio")
     def audio_de(fmt, idx, k):
-        return AL.achar_audio(pasta_audio, f"parte{k + 1}" if fmt == "longo" else f"short{idx + 1}")
+        return AL.achar_audio(pasta_audio, f"parte{k + 1}" if fmt == "longo" else f"{fmt}{idx + 1}")
     gravada = a.modo in (None, "gravada") and os.path.isdir(pasta_audio) and any(f.lower().endswith(AL.EXTS) for f in os.listdir(pasta_audio))
     if gravada:
         a.modo = "teste"  # o sintetizador não é usado
@@ -128,7 +131,7 @@ def main():
             n = len(p["script"]["long"]["parts"]) if fmt == "longo" else 1
             faltam = [k + 1 for k in range(n) if not audio_de(fmt, idx, k)]
             if faltam:
-                nome_alvo = "longo" if fmt == "longo" else f"short{idx + 1}"
+                nome_alvo = "longo" if fmt == "longo" else f"{fmt}{idx + 1}"
                 arqs = ", ".join(f"parte{k}" for k in faltam) if fmt == "longo" else nome_alvo
                 avisos.append(f"{nome_alvo}: pulado, falta o áudio ({arqs}) em projetos/{a.projeto}/audio/")
                 log(f"  {nome_alvo}: pulado, falta {arqs}")
@@ -148,10 +151,10 @@ def main():
         avisos.append("Gerado em MODO TESTE: a voz é um ruído no ritmo da fala, só para conferir a montagem.")
     cfgs = []; taxas = []
     for fmt, idx in alvos:
-        grupos = p["script"]["long"]["parts"] if fmt == "longo" else [shorts[idx]]
+        grupos = p["script"]["long"]["parts"] if fmt == "longo" else [(tiktoks if fmt == "tiktok" else shorts)[idx]]
         partes = []
         for k, g in enumerate(grupos):
-            wav = os.path.join(trab, f"voz_{fmt}{idx + 1 if fmt == 'short' else ''}_p{k + 1}.wav")
+            wav = os.path.join(trab, f"voz_{fmt}{idx + 1 if fmt != 'longo' else ''}_p{k + 1}.wav")
             txts = [s["text"].strip() for s in frases(g)]
             if gravada:
                 tempos, dur, taxa = AL.parte(txts, audio_de(fmt, idx, k), wav, log)
@@ -162,7 +165,7 @@ def main():
                 tempos, dur = nar.parte(txts, wav)
             partes.append({"wav": "/" + os.path.relpath(wav, RAIZ), "tempos": tempos})
             log(f"  {fmt}{'' if fmt == 'longo' else idx + 1} parte {k + 1}: {dur:.1f}s")
-        nome = f"{slug}_longo" if fmt == "longo" else f"{slug}_short{idx + 1}"
+        nome = f"{slug}_longo" if fmt == "longo" else f"{slug}_{fmt}{idx + 1}"
         cfgs.append((fmt, idx, nome, {"projeto": "/" + os.path.relpath(os.path.join(trab, "projeto_render.json"), RAIZ), "formato": fmt, "idx": idx,
                                       "partes": partes, "midia": man, "midiaBase": "/" + os.path.relpath(pasta_midia, RAIZ) + "/",
                                       "saida": nome + ".bruto", "previas": [0.02, 0.15, 0.3, 0.5, 0.7, 0.9] if a.previas else None}))
@@ -206,6 +209,14 @@ def main():
                     txt = ["TÍTULO (opções):"] + [f"  {t}" for t in meta.get("titles", [])] + ["", "DESCRIÇÃO:", desc, "", "TAGS:", ", ".join(meta.get("tags", []))]
                     with open(os.path.join(saida, "publicar_longo.txt"), "w", encoding="utf8") as f:
                         f.write("\n".join(txt) + "\n")
+                elif fmt == "tiktok":
+                    tk = tiktoks[idx]
+                    with open(os.path.join(saida, f"publicar_tiktok{idx + 1}.txt"), "w", encoding="utf8") as f:
+                        f.write(f"LEGENDA DO POST:\n{tk.get('caption') or tk.get('title', '')}\n\n{' '.join(tk.get('hashtags') or ['#historia', '#negocios', '#empresas', '#curiosidades'])}\n"
+                                + (f"\nPRODUTO PARA MARCAR (TikTok Shop): {tk['produto']}\n" if tk.get("produto") else "")
+                                + "\nAo postar: marque 'Conteúdo gerado por IA' só se usar voz sintética. Não use #shorts.\n")
+                    if r["total"] < 61:
+                        avisos.append(f"{nome}: {r['total']:.0f}s. O Programa de Recompensas do TikTok só conta vídeos com mais de 1 minuto.")
                 else:
                     sh = shorts[idx]
                     with open(os.path.join(saida, f"publicar_short{idx + 1}.txt"), "w", encoding="utf8") as f:

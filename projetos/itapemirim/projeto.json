@@ -1,0 +1,2676 @@
+{
+ "title": "Itapemirim",
+ "slug": "itapemirim",
+ "angle": "A aérea teria nascido com dinheiro de uma empresa de ônibus em recuperação judicial (segundo o MP).",
+ "voz": {
+  "nome": "pm_alex",
+  "velocidade": 1.0
+ },
+ "script": {
+  "long": {
+   "parts": [
+    {
+     "chapter": "",
+     "sentences": [
+      {
+       "text": "Sexta-feira, dezessete de dezembro de dois mil e vinte e um.",
+       "scene": {
+        "type": "date",
+        "month": "DEZEMBRO",
+        "day": "17",
+        "year": "2021",
+        "tag": "SEXTA-FEIRA"
+       },
+       "cap": "Sexta-feira, 17 de dezembro de 2021."
+      },
+      {
+       "text": "Faltava uma semana para o Natal.",
+       "scene": {
+        "type": "video",
+        "fallback": {
+         "type": "bigtext",
+         "stagger": 0.25,
+         "lines": [
+          [
+           "1 SEMANA",
+           [
+            245,
+            170,
+            40
+           ],
+           160
+          ],
+          [
+           "PARA O NATAL",
+           [
+            245,
+            245,
+            242
+           ],
+           100
+          ]
+         ]
+        },
+        "start": 0.0,
+        "dim": 0.35,
+        "lower": "Dezembro de 2021",
+        "media": "clip06",
+        "search": "aeroporto lotado"
+       }
+      },
+      {
+       "text": "Quase quarenta e seis mil pessoas tinham passagem comprada com a mesma companhia aérea.",
+       "scene": {
+        "type": "counter",
+        "value": 45887,
+        "over": "COM PASSAGEM COMPRADA",
+        "label": "PASSAGEIROS",
+        "color": [
+         245,
+         170,
+         40
+        ]
+       },
+       "cap": "Quase 46 mil pessoas tinham passagem comprada com a mesma companhia aérea."
+      },
+      {
+       "text": "E naquela noite, sem aviso, ela simplesmente parou de voar.",
+       "scene": {
+        "type": "board",
+        "header": "ITA · PARTIDAS",
+        "flip_at": 0.5,
+        "rows": [
+         [
+          "18:40",
+          "SALVADOR"
+         ],
+         [
+          "19:05",
+          "RECIFE"
+         ],
+         [
+          "19:30",
+          "FORTALEZA"
+         ],
+         [
+          "20:10",
+          "BRASÍLIA"
+         ],
+         [
+          "20:45",
+          "PORTO ALEGRE"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Todos os voos.",
+       "scene": {
+        "type": "same"
+       }
+      },
+      {
+       "text": "De uma vez.",
+       "scene": {
+        "type": "flash",
+        "text": "DE UMA VEZ.",
+        "tint": "red",
+        "size": 170
+       }
+      },
+      {
+       "text": "A empresa tinha seis meses de vida.",
+       "scene": {
+        "type": "timeline",
+        "start": "JUN 2021",
+        "end": "DEZ 2021",
+        "start_sub": "1º voo",
+        "end_sub": "último voo",
+        "big": "6 MESES"
+       }
+      },
+      {
+       "text": "E tinha nascido de uma das marcas mais conhecidas do Brasil: a Itapemirim.",
+       "scene": {
+        "type": "video",
+        "fallback": {
+         "type": "bigtext",
+         "stagger": 0.25,
+         "lines": [
+          [
+           "ITAPEMIRIM",
+           [
+            245,
+            170,
+            40
+           ],
+           170
+          ]
+         ]
+        },
+        "start": 0.0,
+        "dim": 0.35,
+        "lower": "Viação Itapemirim",
+        "media": "clip01",
+        "search": "ônibus estrada"
+       }
+      },
+      {
+       "text": "Uma empresa de ônibus de quase setenta anos, que já estava devendo na Justiça, resolveu abrir uma companhia aérea no meio da pandemia.",
+       "scene": {
+        "type": "print",
+        "source": "CNN Brasil, 18/07/2023",
+        "fallback": {
+         "type": "bullets",
+         "items": [
+          "QUASE 70 ANOS DE ÔNIBUS",
+          "DEVENDO NA JUSTIÇA",
+          "ABRE UMA AÉREA NA PANDEMIA"
+         ],
+         "last_gold": true
+        },
+        "rotate": -1.0,
+        "highlight": [
+         0.0,
+         0.47,
+         0.98,
+         0.7
+        ],
+        "media": "print07",
+        "url": "https://www.cnnbrasil.com.br/economia/macroeconomia/justica-de-sp-decreta-falencia-da-itapemirim-transportes-aereos/"
+       },
+       "cap": "Uma empresa de ônibus de quase 70 anos, que já estava devendo na Justiça, resolveu abrir uma companhia aérea no meio da pandemia."
+      },
+      {
+       "text": "Como isso foi autorizado?",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "COMO ISSO FOI",
+          [
+           245,
+           245,
+           242
+          ],
+          120
+         ],
+         [
+          "AUTORIZADO?",
+          [
+           245,
+           245,
+           242
+          ],
+          140
+         ]
+        ]
+       }
+      },
+      {
+       "text": "De onde veio o dinheiro?",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "DE ONDE VEIO",
+          [
+           245,
+           245,
+           242
+          ],
+          120
+         ],
+         [
+          "O DINHEIRO?",
+          [
+           245,
+           170,
+           40
+          ],
+          140
+         ]
+        ]
+       }
+      },
+      {
+       "text": "E quem pagou a conta?",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "QUEM PAGOU",
+          [
+           245,
+           245,
+           242
+          ],
+          120
+         ],
+         [
+          "A CONTA?",
+          [
+           230,
+           52,
+           52
+          ],
+          160
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Esse é o custo oculto da Itapemirim.",
+       "scene": {
+        "type": "endcard",
+        "sub": "O CASO ITAPEMIRIM"
+       }
+      }
+     ]
+    },
+    {
+     "chapter": "A ESTRADA",
+     "sentences": [
+      {
+       "text": "A história começa em quatro de julho de mil novecentos e cinquenta e três, em Cachoeiro de Itapemirim, no Espírito Santo.",
+       "scene": {
+        "type": "date",
+        "month": "JULHO",
+        "day": "4",
+        "year": "1953",
+        "tag": "CACHOEIRO DE ITAPEMIRIM (ES)"
+       },
+       "cap": "A história começa em 4 de julho de 1953, em Cachoeiro de Itapemirim, no Espírito Santo."
+      },
+      {
+       "text": "Um empresário chamado Camilo Cola funda uma empresa de ônibus com o nome da cidade.",
+       "scene": {
+        "type": "video",
+        "fallback": {
+         "type": "bigtext",
+         "stagger": 0.25,
+         "lines": [
+          [
+           "CAMILO COLA",
+           [
+            245,
+            245,
+            242
+           ],
+           130
+          ],
+          [
+           "FUNDA A ITAPEMIRIM",
+           [
+            245,
+            170,
+            40
+           ],
+           90
+          ]
+         ]
+        },
+        "start": 0.0,
+        "dim": 0.35,
+        "lower": "Camilo Cola funda a Viação Itapemirim",
+        "media": "clip01",
+        "search": "ônibus estrada"
+       }
+      },
+      {
+       "text": "Nas décadas seguintes, a Itapemirim vira uma das maiores empresas de transporte rodoviário do país.",
+       "scene": {
+        "type": "same"
+       }
+      },
+      {
+       "text": "Para milhões de brasileiros, a primeira viagem longa da vida foi dentro de um ônibus da Itapemirim.",
+       "scene": {
+        "type": "video",
+        "fallback": {
+         "type": "bigtext",
+         "stagger": 0.25,
+         "lines": [
+          [
+           "A PRIMEIRA",
+           [
+            245,
+            245,
+            242
+           ],
+           110
+          ],
+          [
+           "VIAGEM LONGA",
+           [
+            245,
+            170,
+            40
+           ],
+           140
+          ]
+         ]
+        },
+        "start": 0.0,
+        "dim": 0.35,
+        "lower": "A primeira viagem longa de milhões de brasileiros",
+        "media": "clip02",
+        "search": "rodoviária ônibus"
+       }
+      },
+      {
+       "text": "Visitar a família no Nordeste, mudar de cidade, voltar para casa no fim do ano.",
+       "scene": {
+        "type": "same"
+       }
+      },
+      {
+       "text": "A marca era sinônimo de estrada.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "SINÔNIMO",
+          [
+           245,
+           245,
+           242
+          ],
+          150
+         ],
+         [
+          "DE ESTRADA",
+          [
+           245,
+           170,
+           40
+          ],
+          150
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Mas, a partir dos anos dois mil, o negócio começa a mudar.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "A PARTIR DOS",
+          [
+           150,
+           150,
+           155
+          ],
+          80
+         ],
+         [
+          "ANOS 2000",
+          [
+           245,
+           170,
+           40
+          ],
+          190
+         ],
+         [
+          "TUDO MUDA",
+          [
+           245,
+           245,
+           242
+          ],
+          100
+         ]
+        ]
+       },
+       "cap": "Mas, a partir dos anos 2000, o negócio começa a mudar."
+      },
+      {
+       "text": "Passagens aéreas ficam mais baratas, aparecem as companhias de baixo custo, e muita gente troca vinte horas de ônibus por duas de avião.",
+       "scene": {
+        "type": "compare",
+        "items": [
+         [
+          "20 h",
+          "DE ÔNIBUS",
+          [
+           245,
+           245,
+           242
+          ]
+         ],
+         [
+          "2 h",
+          "DE AVIÃO",
+          [
+           245,
+           170,
+           40
+          ]
+         ]
+        ],
+        "size": 190
+       },
+       "cap": "Passagens aéreas ficam mais baratas, aparecem as companhias de baixo custo, e muita gente troca 20 horas de ônibus por 2 de avião."
+      },
+      {
+       "text": "A Itapemirim começa a perder passageiros.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "MENOS",
+          [
+           245,
+           245,
+           242
+          ],
+          150
+         ],
+         [
+          "PASSAGEIROS",
+          [
+           150,
+           150,
+           155
+          ],
+          120
+         ]
+        ]
+       }
+      },
+      {
+       "text": "E a acumular dívidas.",
+       "scene": {
+        "type": "flash",
+        "text": "MAIS DÍVIDAS",
+        "tint": "red",
+        "size": 170
+       }
+      }
+     ]
+    },
+    {
+     "chapter": "A VIRADA",
+     "sentences": [
+      {
+       "text": "Em dois mil e dezesseis, o controle do grupo muda de mãos.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "2016",
+          [
+           245,
+           170,
+           40
+          ],
+          240
+         ],
+         [
+          "O GRUPO MUDA DE MÃOS",
+          [
+           245,
+           245,
+           242
+          ],
+          80
+         ]
+        ]
+       },
+       "cap": "Em 2016, o controle do grupo muda de mãos."
+      },
+      {
+       "text": "Quem assume é o empresário Sidnei Piva de Jesus.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "SIDNEI PIVA DE JESUS",
+          [
+           245,
+           245,
+           242
+          ],
+          110
+         ],
+         [
+          "NOVO CONTROLADOR",
+          [
+           150,
+           150,
+           155
+          ],
+          64
+         ]
+        ]
+       }
+      },
+      {
+       "text": "A venda vira briga na Justiça.",
+       "scene": {
+        "type": "video",
+        "fallback": {
+         "type": "bigtext",
+         "stagger": 0.25,
+         "lines": [
+          [
+           "A VENDA VAI",
+           [
+            245,
+            245,
+            242
+           ],
+           110
+          ],
+          [
+           "PARA A JUSTIÇA",
+           [
+            245,
+            170,
+            40
+           ],
+           120
+          ]
+         ]
+        },
+        "start": 0.0,
+        "dim": 0.35,
+        "lower": "A família Cola acusa fraude na venda. A empresa nega.",
+        "media": "clip09",
+        "search": "martelo juiz"
+       }
+      },
+      {
+       "text": "A família Cola, antiga dona, passa a acusar fraude no negócio.",
+       "scene": {
+        "type": "same"
+       }
+      },
+      {
+       "text": "A empresa rejeita as acusações.",
+       "scene": {
+        "type": "same"
+       }
+      },
+      {
+       "text": "O grupo já estava em recuperação judicial.",
+       "scene": {
+        "type": "stamp",
+        "org": "JUSTIÇA DE SÃO PAULO",
+        "title": "RECUPERAÇÃO JUDICIAL · GRUPO ITAPEMIRIM",
+        "stamp": "EM CURSO",
+        "stamp_at": 0.7
+       }
+      },
+      {
+       "text": "Na prática, isso quer dizer o seguinte: a empresa admite que não consegue pagar o que deve e ganha proteção da Justiça para negociar com os credores.",
+       "scene": {
+        "type": "bullets",
+        "title": "RECUPERAÇÃO JUDICIAL",
+        "items": [
+         "\"NÃO CONSIGO PAGAR\"",
+         "A JUSTIÇA PROTEGE",
+         "NEGOCIA COM CREDORES"
+        ],
+        "last_gold": true,
+        "stagger": 1.3
+       }
+      },
+      {
+       "text": "O plano de pagamento foi aprovado e homologado em dois mil e dezenove.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "2019",
+          [
+           245,
+           170,
+           40
+          ],
+          240
+         ],
+         [
+          "PLANO DE PAGAMENTO HOMOLOGADO",
+          [
+           245,
+           245,
+           242
+          ],
+          64
+         ]
+        ]
+       },
+       "cap": "O plano de pagamento foi aprovado e homologado em 2019."
+      },
+      {
+       "text": "Funcionários, fornecedores e bancos esperavam receber.",
+       "scene": {
+        "type": "bullets",
+        "title": "ESPERAVAM RECEBER",
+        "items": [
+         "FUNCIONÁRIOS",
+         "FORNECEDORES",
+         "BANCOS"
+        ],
+        "size": 96,
+        "stagger": 0.7
+       }
+      },
+      {
+       "text": "E é aí que vem a decisão que ninguém esperava.",
+       "scene": {
+        "type": "flash",
+        "text": "A DECISÃO",
+        "color": [
+         245,
+         170,
+         40
+        ],
+        "size": 170
+       }
+      },
+      {
+       "text": "Em plena pandemia, com o setor aéreo no chão, a Itapemirim anuncia que vai abrir uma companhia aérea.",
+       "scene": {
+        "type": "video",
+        "fallback": {
+         "type": "bigtext",
+         "stagger": 0.25,
+         "lines": [
+          [
+           "PANDEMIA",
+           [
+            245,
+            245,
+            242
+           ],
+           150
+          ],
+          [
+           "SETOR AÉREO PARADO",
+           [
+            230,
+            52,
+            52
+           ],
+           90
+          ]
+         ]
+        },
+        "start": 0.0,
+        "dim": 0.35,
+        "lower": "Pandemia: o setor aéreo no chão",
+        "media": "clip04",
+        "search": "aeroporto vazio"
+       }
+      },
+      {
+       "text": "O nome: ITA, Itapemirim Transportes Aéreos.",
+       "scene": {
+        "type": "video",
+        "fallback": {
+         "type": "bigtext",
+         "stagger": 0.25,
+         "lines": [
+          [
+           "ITA",
+           [
+            245,
+            170,
+            40
+           ],
+           300
+          ],
+          [
+           "ITAPEMIRIM TRANSPORTES AÉREOS",
+           [
+            245,
+            245,
+            242
+           ],
+           60
+          ]
+         ]
+        },
+        "start": 0.0,
+        "dim": 0.35,
+        "lower": "Itapemirim Transportes Aéreos",
+        "label": "ITA",
+        "media": "clip03",
+        "search": "avião pousando"
+       }
+      },
+      {
+       "text": "Em setembro de dois mil e vinte, o grupo compra uma pequena empresa de táxi aéreo para aproveitar o certificado dela.",
+       "scene": {
+        "type": "date",
+        "month": "SETEMBRO",
+        "day": "14",
+        "year": "2020",
+        "tag": "COMPRA DE UM TÁXI AÉREO"
+       },
+       "cap": "Em setembro de 2020, o grupo compra uma pequena empresa de táxi aéreo para aproveitar o certificado dela."
+      },
+      {
+       "text": "E começa a vender um sonho.",
+       "scene": {
+        "type": "same"
+       }
+      },
+      {
+       "text": "A promessa era grande.",
+       "scene": {
+        "type": "bullets",
+        "title": "A PROMESSA",
+        "items": [
+         "50 AVIÕES NO 1º ANO",
+         "MAIS ESPAÇO NAS POLTRONAS",
+         "ÔNIBUS + AVIÃO"
+        ],
+        "cue_offset": 1,
+        "last_gold": true
+       }
+      },
+      {
+       "text": "Cinquenta aviões já no primeiro ano.",
+       "scene": {
+        "type": "same"
+       },
+       "cap": "50 aviões já no primeiro ano."
+      },
+      {
+       "text": "Mais espaço entre as poltronas que as concorrentes.",
+       "scene": {
+        "type": "same"
+       }
+      },
+      {
+       "text": "Integração entre ônibus e avião.",
+       "scene": {
+        "type": "same"
+       }
+      },
+      {
+       "text": "Segundo o próprio Piva, haveria cento e cinquenta milhões de reais de recursos próprios e quinhentos milhões de dólares garantidos com investidores de Dubai.",
+       "scene": {
+        "type": "compare",
+        "title": "SEGUNDO PIVA",
+        "items": [
+         [
+          "R$ 150 mi",
+          "RECURSOS PRÓPRIOS",
+          [
+           245,
+           245,
+           242
+          ]
+         ],
+         [
+          "US$ 500 mi",
+          "INVESTIDORES DE DUBAI",
+          [
+           245,
+           170,
+           40
+          ]
+         ]
+        ],
+        "size": 130,
+        "vs": false,
+        "stagger": 1.8
+       },
+       "cap": "Segundo o próprio Piva, haveria R$ 150 milhões de recursos próprios e US$ 500 milhões garantidos com investidores de Dubai."
+      },
+      {
+       "text": "Mas tinha um número que não combinava com esse discurso.",
+       "scene": {
+        "type": "flash",
+        "text": "MAS...",
+        "color": [
+         245,
+         245,
+         242
+        ],
+        "size": 200
+       }
+      },
+      {
+       "text": "O capital social da nova aérea era de trezentos e oitenta mil reais.",
+       "scene": {
+        "type": "counter",
+        "value": 380000,
+        "prefix": "R$ ",
+        "over": "O NÚMERO QUE NÃO COMBINAVA",
+        "label": "CAPITAL SOCIAL DA ITA",
+        "color": [
+         230,
+         52,
+         52
+        ],
+        "size": 200
+       },
+       "cap": "O capital social da nova aérea era de R$ 380 mil."
+      },
+      {
+       "text": "Para comparar: quando a Azul começou, em dois mil e oito, entrou no mercado com oitenta milhões.",
+       "scene": {
+        "type": "compare",
+        "title": "CAPITAL PARA COMEÇAR",
+        "items": [
+         [
+          "R$ 380 mil",
+          "ITA · 2021",
+          [
+           230,
+           52,
+           52
+          ]
+         ],
+         [
+          "R$ 80 mi",
+          "AZUL · 2008",
+          [
+           245,
+           170,
+           40
+          ]
+         ]
+        ],
+        "size": 150,
+        "stagger": 1.6
+       },
+       "cap": "Para comparar: quando a Azul começou, em 2008, entrou no mercado com R$ 80 milhões."
+      },
+      {
+       "text": "Especialistas em aviação disseram, na época, que aquilo não sustentava uma companhia aérea.",
+       "scene": {
+        "type": "same"
+       }
+      },
+      {
+       "text": "Mesmo assim, a Anac emitiu o certificado de operador aéreo em trinta de abril de dois mil e vinte e um.",
+       "scene": {
+        "type": "stamp",
+        "org": "ANAC · 30 DE ABRIL DE 2021",
+        "title": "CERTIFICADO DE OPERADOR AÉREO",
+        "stamp": "APROVADO",
+        "stamp_color": [
+         70,
+         190,
+         110
+        ],
+        "stamp_at": 1.6
+       },
+       "cap": "Mesmo assim, a Anac emitiu o certificado de operador aéreo em 30 de abril de 2021."
+      },
+      {
+       "text": "As vendas começaram em maio.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "MAIO DE 2021",
+          [
+           245,
+           170,
+           40
+          ],
+          140
+         ],
+         [
+          "VENDAS ABERTAS",
+          [
+           245,
+           245,
+           242
+          ],
+          100
+         ]
+        ]
+       }
+      }
+     ]
+    },
+    {
+     "chapter": "SEIS MESES NO AR",
+     "sentences": [
+      {
+       "text": "No fim de junho de dois mil e vinte e um, o primeiro avião da ITA decola de Guarulhos para Brasília.",
+       "scene": {
+        "type": "video",
+        "fallback": {
+         "type": "bigtext",
+         "stagger": 0.25,
+         "lines": [
+          [
+           "JUNHO DE 2021",
+           [
+            245,
+            170,
+            40
+           ],
+           120
+          ],
+          [
+           "PRIMEIRO VOO",
+           [
+            245,
+            245,
+            242
+           ],
+           120
+          ]
+         ]
+        },
+        "start": 0.0,
+        "dim": 0.35,
+        "lower": "Junho de 2021 · Guarulhos → Brasília",
+        "media": "clip05",
+        "search": "avião decolando"
+       },
+       "cap": "No fim de junho de 2021, o primeiro avião da ITA decola de Guarulhos para Brasília."
+      },
+      {
+       "text": "No primeiro mês, foram quatrocentos e vinte e três voos e quase trinta e nove mil passageiros.",
+       "scene": {
+        "type": "compare",
+        "title": "PRIMEIRO MÊS",
+        "items": [
+         [
+          "423",
+          "VOOS",
+          [
+           245,
+           245,
+           242
+          ]
+         ],
+         [
+          "38.841",
+          "PASSAGEIROS",
+          [
+           245,
+           170,
+           40
+          ]
+         ]
+        ],
+        "size": 180,
+        "vs": false,
+        "stagger": 1.4
+       },
+       "cap": "No primeiro mês, foram 423 voos e quase 39 mil passageiros."
+      },
+      {
+       "text": "A ocupação média ficou em sessenta e dois por cento.",
+       "scene": {
+        "type": "counter",
+        "value": 62,
+        "suffix": "%",
+        "over": "PRIMEIRO MÊS",
+        "label": "OCUPAÇÃO MÉDIA",
+        "color": [
+         245,
+         170,
+         40
+        ],
+        "size": 260
+       },
+       "cap": "A ocupação média ficou em 62%."
+      },
+      {
+       "text": "No fim do ano, a empresa voava com seis Airbus A trezentos e vinte para catorze cidades.",
+       "scene": {
+        "type": "compare",
+        "title": "DEZEMBRO DE 2021",
+        "items": [
+         [
+          "6",
+          "AIRBUS A320",
+          [
+           245,
+           245,
+           242
+          ]
+         ],
+         [
+          "14",
+          "CIDADES",
+          [
+           245,
+           170,
+           40
+          ]
+         ]
+        ],
+        "size": 220,
+        "vs": false,
+        "stagger": 1.5
+       },
+       "cap": "No fim do ano, a empresa voava com 6 Airbus A320 para 14 cidades."
+      },
+      {
+       "text": "Um sétimo avião chegou a ser alugado, mas nunca entrou em operação.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "7º AVIÃO",
+          [
+           245,
+           245,
+           242
+          ],
+          150
+         ],
+         [
+          "NUNCA VOOU",
+          [
+           230,
+           52,
+           52
+          ],
+          130
+         ]
+        ]
+       }
+      },
+      {
+       "text": "De fora, parecia que estava dando certo.",
+       "scene": {
+        "type": "video",
+        "fallback": {
+         "type": "bigtext",
+         "stagger": 0.25,
+         "lines": [
+          [
+           "DE FORA",
+           [
+            245,
+            245,
+            242
+           ],
+           150
+          ],
+          [
+           "TUDO CERTO",
+           [
+            245,
+            170,
+            40
+           ],
+           130
+          ]
+         ]
+        },
+        "start": 4.0,
+        "dim": 0.35,
+        "lower": "De fora, parecia dar certo",
+        "media": "clip03",
+        "search": "avião pousando"
+       }
+      },
+      {
+       "text": "Por dentro, a história era outra.",
+       "scene": {
+        "type": "flash",
+        "text": "POR DENTRO...",
+        "tint": "red",
+        "size": 160
+       }
+      }
+     ]
+    },
+    {
+     "chapter": "A QUEDA",
+     "sentences": [
+      {
+       "text": "Sexta-feira, dezessete de dezembro.",
+       "scene": {
+        "type": "date",
+        "month": "DEZEMBRO",
+        "day": "17",
+        "year": "2021",
+        "tag": "SEXTA-FEIRA"
+       },
+       "cap": "Sexta-feira, 17 de dezembro."
+      },
+      {
+       "text": "A ITA anuncia a suspensão de todos os voos para uma reestruturação interna.",
+       "scene": {
+        "type": "board",
+        "header": "ITA · PARTIDAS",
+        "flip_at": 0.45,
+        "rows": [
+         [
+          "06:15",
+          "SÃO PAULO"
+         ],
+         [
+          "07:40",
+          "RIO DE JANEIRO"
+         ],
+         [
+          "09:10",
+          "MACEIÓ"
+         ],
+         [
+          "10:30",
+          "CURITIBA"
+         ],
+         [
+          "12:05",
+          "FLORIANÓPOLIS"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Poucas horas depois, a Anac suspende o certificado da empresa.",
+       "scene": {
+        "type": "print",
+        "source": "A Gazeta, dezembro de 2021",
+        "fallback": {
+         "type": "stamp",
+         "org": "ANAC",
+         "title": "CERTIFICADO DE OPERADOR AÉREO",
+         "stamp": "SUSPENSO",
+         "stamp_at": 1.4
+        },
+        "rotate": 1.0,
+        "media": "print02",
+        "url": "https://www.agazeta.com.br/es/economia/com-voos-cancelados-anac-suspende-autorizacao-da-itapemirim-para-voar-1221"
+       }
+      },
+      {
+       "text": "O estrago: quarenta e cinco mil, oitocentos e oitenta e sete passageiros com voos marcados até o fim de dezembro.",
+       "scene": {
+        "type": "print",
+        "source": "Bloomberg Línea, 21/12/2021",
+        "fallback": {
+         "type": "counter",
+         "value": 45887,
+         "label": "PASSAGEIROS AFETADOS",
+         "color": [
+          230,
+          52,
+          52
+         ]
+        },
+        "rotate": -1.0,
+        "highlight": [
+         0.0,
+         0.37,
+         0.8,
+         0.5
+        ],
+        "media": "print01",
+        "url": "https://www.bloomberglinea.com.br/2021/12/21/caos-da-itapemirim-afeta-45887-passageiros-avioes-podem-ser-devolvidos/"
+       },
+       "cap": "O estrago: 45.887 passageiros com voos marcados até o fim de dezembro."
+      },
+      {
+       "text": "Gente que ia passar o Natal com a família.",
+       "scene": {
+        "type": "print",
+        "source": "A Gazeta, dezembro de 2021",
+        "fallback": {
+         "type": "bigtext",
+         "stagger": 0.25,
+         "lines": [
+          [
+           "NATAL",
+           [
+            245,
+            170,
+            40
+           ],
+           200
+          ],
+          [
+           "COM A FAMÍLIA",
+           [
+            245,
+            245,
+            242
+           ],
+           100
+          ]
+         ]
+        },
+        "rotate": -1.0,
+        "media": "print03",
+        "url": "https://www.agazeta.com.br/es/economia/ita-braco-aereo-da-itapemirim-recebe-enxurrada-de-reclamacoes-1221"
+       }
+      },
+      {
+       "text": "Gente que tinha juntado dinheiro o ano todo para aquela viagem.",
+       "scene": {
+        "type": "video",
+        "fallback": {
+         "type": "bigtext",
+         "stagger": 0.25,
+         "lines": [
+          [
+           "O ANO TODO",
+           [
+            245,
+            245,
+            242
+           ],
+           150
+          ],
+          [
+           "JUNTANDO DINHEIRO",
+           [
+            245,
+            170,
+            40
+           ],
+           100
+          ]
+         ]
+        },
+        "start": 0.0,
+        "dim": 0.35,
+        "lower": "Natal de 2021",
+        "media": "clip07",
+        "search": "pessoas esperando aeroporto noite"
+       }
+      },
+      {
+       "text": "E não foram só os passageiros.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "E NÃO FORAM SÓ",
+          [
+           245,
+           245,
+           242
+          ],
+          110
+         ],
+         [
+          "OS PASSAGEIROS",
+          [
+           245,
+           170,
+           40
+          ],
+          120
+         ]
+        ]
+       }
+      },
+      {
+       "text": "O sindicato dos aeronautas contou quatrocentos e quarenta tripulantes na empresa.",
+       "scene": {
+        "type": "counter",
+        "value": 440,
+        "over": "SEGUNDO O SINDICATO DOS AERONAUTAS",
+        "label": "TRIPULANTES",
+        "sub": "138 pilotos e 302 comissários",
+        "color": [
+         245,
+         170,
+         40
+        ],
+        "size": 260
+       },
+       "cap": "O sindicato dos aeronautas contou 440 tripulantes na empresa."
+      },
+      {
+       "text": "Pilotos e comissários que ficaram sem a segunda parcela do décimo terceiro e sem plano de saúde.",
+       "scene": {
+        "type": "bullets",
+        "title": "PILOTOS E COMISSÁRIOS",
+        "items": [
+         "SEM A 2ª PARCELA DO 13º",
+         "SEM PLANO DE SAÚDE"
+        ],
+        "size": 90,
+        "stagger": 1.6
+       },
+       "cap": "Pilotos e comissários que ficaram sem a segunda parcela do 13º e sem plano de saúde."
+      },
+      {
+       "text": "A companhia dizia que ia voltar.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "\"VAMOS VOLTAR\"",
+          [
+           245,
+           245,
+           242
+          ],
+          150
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Não voltou.",
+       "scene": {
+        "type": "flash",
+        "text": "NÃO VOLTOU.",
+        "tint": "red",
+        "size": 180
+       }
+      },
+      {
+       "text": "Em janeiro de dois mil e vinte e dois, o Ministério Público de São Paulo pede a falência de todas as empresas do grupo.",
+       "scene": {
+        "type": "print",
+        "source": "Mercado & Consumo, 04/01/2022",
+        "fallback": {
+         "type": "bigtext",
+         "stagger": 0.25,
+         "lines": [
+          [
+           "JAN 2022",
+           [
+            245,
+            170,
+            40
+           ],
+           200
+          ],
+          [
+           "MP PEDE A FALÊNCIA",
+           [
+            245,
+            245,
+            242
+           ],
+           90
+          ]
+         ]
+        },
+        "rotate": -1.0,
+        "media": "print04",
+        "url": "https://mercadoeconsumo.com.br/2022/01/04/mp-sp-pede-decretacao-de-falencia-de-viacao-e-companhia-aerea-da-itapemirim/"
+       },
+       "cap": "Em janeiro de 2022, o Ministério Público de São Paulo pede a falência de todas as empresas do grupo."
+      },
+      {
+       "text": "Em abril, a Justiça bloqueia bens de Sidnei Piva.",
+       "scene": {
+        "type": "events",
+        "row": 140,
+        "events": [
+         [
+          "ABR 2022",
+          "Justiça bloqueia bens de Sidnei Piva",
+          [
+           245,
+           170,
+           40
+          ]
+         ],
+         [
+          "ABR 2022",
+          "ANTT suspende todas as linhas de ônibus",
+          [
+           245,
+           170,
+           40
+          ]
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Dias depois, a agência de transportes terrestres suspende todas as linhas de ônibus da Itapemirim.",
+       "scene": {
+        "type": "same"
+       }
+      },
+      {
+       "text": "Em maio, a Anac cancela de vez o certificado da ITA.",
+       "scene": {
+        "type": "print",
+        "source": "Poder360, maio de 2022",
+        "fallback": {
+         "type": "bigtext",
+         "stagger": 0.25,
+         "lines": [
+          [
+           "MAIO 2022",
+           [
+            245,
+            170,
+            40
+           ],
+           200
+          ],
+          [
+           "ANAC CANCELA DE VEZ",
+           [
+            245,
+            245,
+            242
+           ],
+           90
+          ]
+         ]
+        },
+        "rotate": 1.0,
+        "media": "print06",
+        "url": "https://www.poder360.com.br/brasil/itapemirim-perde-definitivamente-autorizacao-para-voar/"
+       }
+      },
+      {
+       "text": "E em vinte e um de setembro de dois mil e vinte e dois, a Justiça decreta a falência do Grupo Itapemirim.",
+       "scene": {
+        "type": "date",
+        "month": "SETEMBRO",
+        "day": "21",
+        "year": "2022",
+        "tag": "FALÊNCIA DO GRUPO ITAPEMIRIM"
+       },
+       "cap": "E em 21 de setembro de 2022, a Justiça decreta a falência do Grupo Itapemirim."
+      },
+      {
+       "text": "A empresa que tinha atravessado quase setenta anos de estrada acabou em menos de um ano depois de tentar voar.",
+       "scene": {
+        "type": "compare",
+        "items": [
+         [
+          "~70 ANOS",
+          "NA ESTRADA",
+          [
+           245,
+           245,
+           242
+          ]
+         ],
+         [
+          "< 1 ANO",
+          "DEPOIS DE TENTAR VOAR",
+          [
+           230,
+           52,
+           52
+          ]
+         ]
+        ],
+        "size": 150,
+        "stagger": 1.8
+       },
+       "cap": "A empresa que tinha atravessado quase 70 anos de estrada acabou em menos de 1 ano depois de tentar voar."
+      }
+     ]
+    },
+    {
+     "chapter": "O CUSTO OCULTO",
+     "sentences": [
+      {
+       "text": "E aqui está a parte que quase ninguém viu.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "A PARTE QUE",
+          [
+           245,
+           245,
+           242
+          ],
+          120
+         ],
+         [
+          "QUASE NINGUÉM VIU",
+          [
+           245,
+           170,
+           40
+          ],
+          120
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Segundo a denúncia do Ministério Público, o dinheiro que fez a ITA decolar teria saído da empresa de ônibus.",
+       "scene": {
+        "type": "flow",
+        "a": "ÔNIBUS",
+        "a_sub": "em recuperação judicial",
+        "b": "AVIÃO",
+        "b_sub": "ITA",
+        "caption": "SEGUNDO O MINISTÉRIO PÚBLICO"
+       }
+      },
+      {
+       "text": "Justamente a empresa que estava em recuperação judicial e que devia a funcionários, fornecedores e bancos.",
+       "scene": {
+        "type": "same"
+       }
+      },
+      {
+       "text": "Ou seja: segundo a acusação, quem financiou o sonho do avião foram os credores da estrada, sem que ninguém perguntasse a eles.",
+       "scene": {
+        "type": "same"
+       }
+      },
+      {
+       "text": "Piva foi denunciado por fraude, estelionato, crime contra o consumidor e frustração de direitos trabalhistas.",
+       "scene": {
+        "type": "bullets",
+        "title": "DENÚNCIA DO MINISTÉRIO PÚBLICO",
+        "items": [
+         "FRAUDE",
+         "ESTELIONATO",
+         "CRIME CONTRA O CONSUMIDOR",
+         "DIREITOS TRABALHISTAS"
+        ],
+        "size": 72,
+        "stagger": 0.9
+       }
+      },
+      {
+       "text": "Ele contesta as acusações, e até aqui não há condenação.",
+       "scene": {
+        "type": "print",
+        "source": "Poder360",
+        "fallback": {
+         "type": "bigtext",
+         "stagger": 0.25,
+         "lines": [
+          [
+           "ELE CONTESTA",
+           [
+            245,
+            245,
+            242
+           ],
+           130
+          ],
+          [
+           "SEM CONDENAÇÃO ATÉ AQUI",
+           [
+            150,
+            150,
+            155
+           ],
+           72
+          ]
+         ]
+        },
+        "rotate": -1.0,
+        "media": "print05",
+        "url": "https://www.poder360.com.br/brasil/juiza-afasta-sidnei-piva-do-comando-do-grupo-itapemirim/"
+       }
+      },
+      {
+       "text": "Mas a conta já existe.",
+       "scene": {
+        "type": "video",
+        "fallback": {
+         "type": "flash",
+         "text": "MAS A CONTA\nJÁ EXISTE",
+         "color": [
+          245,
+          170,
+          40
+         ],
+         "size": 150
+        },
+        "start": 0.0,
+        "dim": 0.5,
+        "label": "MAS A CONTA JÁ EXISTE",
+        "media": "clip08",
+        "search": "contando dinheiro"
+       }
+      },
+      {
+       "text": "As dívidas do grupo são estimadas em cerca de três bilhões de reais.",
+       "scene": {
+        "type": "counter",
+        "value": 3,
+        "prefix": "R$ ",
+        "suffix": " BI",
+        "over": "ESTIMATIVA",
+        "label": "DÍVIDAS DO GRUPO",
+        "color": [
+         230,
+         52,
+         52
+        ],
+        "size": 280
+       },
+       "cap": "As dívidas do grupo são estimadas em cerca de R$ 3 bilhões."
+      },
+      {
+       "text": "Esse é o custo oculto da Itapemirim: uma empresa que já não conseguia pagar o que devia apostou tudo num negócio novo, num dos setores mais caros do mundo, no pior momento possível.",
+       "scene": {
+        "type": "bullets",
+        "title": "O CUSTO OCULTO",
+        "items": [
+         "JÁ NÃO PAGAVA O QUE DEVIA",
+         "APOSTOU TUDO NUM NEGÓCIO NOVO",
+         "NUM DOS SETORES MAIS CAROS",
+         "NO PIOR MOMENTO"
+        ],
+        "size": 68,
+        "last_gold": true,
+        "stagger": 2.0
+       }
+      },
+      {
+       "text": "E quem segurou o risco não foi o dono.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "QUEM SEGUROU O RISCO",
+          [
+           245,
+           245,
+           242
+          ],
+          100
+         ],
+         [
+          "NÃO FOI O DONO",
+          [
+           230,
+           52,
+           52
+          ],
+          130
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Foram os passageiros, os funcionários e os credores.",
+       "scene": {
+        "type": "bullets",
+        "items": [
+         "PASSAGEIROS",
+         "FUNCIONÁRIOS",
+         "CREDORES"
+        ],
+        "size": 110,
+        "stagger": 0.8,
+        "last_gold": true
+       }
+      }
+     ]
+    },
+    {
+     "chapter": "ONDE ESTÁ HOJE",
+     "sentences": [
+      {
+       "text": "Em junho de dois mil e vinte e seis, a Justiça de São Paulo voltou a tornar Sidnei Piva réu e reteve o passaporte dele.",
+       "scene": {
+        "type": "print",
+        "source": "Diário do Transporte, 20/06/2026",
+        "fallback": {
+         "type": "stamp",
+         "org": "TJSP · JUNHO DE 2026",
+         "title": "SIDNEI PIVA VOLTA A SER RÉU",
+         "stamp": "PASSAPORTE RETIDO",
+         "stamp_size": 72,
+         "stamp_at": 2.5
+        },
+        "rotate": -1.0,
+        "media": "print08",
+        "url": "https://diariodotransporte.com.br/2026/06/20/justica-volta-a-reter-passaporte-de-sidnei-piva-que-se-torna-reu-de-novo-tjsp-ainda-analisa-sugestao-de-data-de-leilao-como-ja-tinha-noticiado-o-diario-do-transporte/"
+       },
+       "cap": "Em junho de 2026, a Justiça de São Paulo voltou a tornar Sidnei Piva réu e reteve o passaporte dele."
+      },
+      {
+       "text": "O processo continua.",
+       "scene": {
+        "type": "same"
+       }
+      },
+      {
+       "text": "A marca Itapemirim, cento e vinte e cinco linhas interestaduais, trinta e nove guichês e trinta e dois ônibus, a maioria sucateada, foram avaliados em cerca de cento e um milhões de reais para leilão.",
+       "scene": {
+        "type": "bullets",
+        "title": "VAI A LEILÃO",
+        "items": [
+         "A MARCA ITAPEMIRIM",
+         "125 LINHAS INTERESTADUAIS",
+         "39 GUICHÊS",
+         "32 ÔNIBUS"
+        ],
+        "size": 74,
+        "stagger": 1.3
+       },
+       "cap": "A marca Itapemirim, 125 linhas interestaduais, 39 guichês e 32 ônibus, a maioria sucateada, foram avaliados em cerca de R$ 101 milhões para leilão."
+      },
+      {
+       "text": "Até a metade de dois mil e vinte e seis, o leilão seguia travado na Justiça.",
+       "scene": {
+        "type": "counter",
+        "value": 101,
+        "prefix": "R$ ",
+        "suffix": " MI",
+        "over": "AVALIAÇÃO DO LOTE",
+        "label": "LEILÃO TRAVADO NA JUSTIÇA",
+        "color": [
+         245,
+         170,
+         40
+        ],
+        "size": 240
+       },
+       "cap": "Até a metade de 2026, o leilão seguia travado na Justiça."
+      },
+      {
+       "text": "Uma marca que levou gerações de brasileiros pela estrada hoje vale menos do que um avião.",
+       "scene": {
+        "type": "video",
+        "fallback": {
+         "type": "bigtext",
+         "stagger": 0.25,
+         "lines": [
+          [
+           "GERAÇÕES",
+           [
+            245,
+            245,
+            242
+           ],
+           150
+          ],
+          [
+           "NA ESTRADA",
+           [
+            245,
+            170,
+            40
+           ],
+           130
+          ]
+         ]
+        },
+        "start": 0.0,
+        "dim": 0.35,
+        "lower": "Uma marca de gerações",
+        "media": "clip10",
+        "search": "ônibus velho abandonado"
+       }
+      },
+      {
+       "text": "E a pergunta que fica é: quantas outras empresas estão fazendo a mesma aposta agora, só que ninguém percebeu ainda?",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "QUANTAS EMPRESAS",
+          [
+           245,
+           245,
+           242
+          ],
+          110
+         ],
+         [
+          "ESTÃO FAZENDO",
+          [
+           245,
+           245,
+           242
+          ],
+          110
+         ],
+         [
+          "A MESMA APOSTA?",
+          [
+           245,
+           170,
+           40
+          ],
+          130
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Se você quer entender o que existe por trás das empresas que quebram, se inscreve no Custo Oculto.",
+       "scene": {
+        "type": "endcard",
+        "sub": "INSCREVA-SE"
+       }
+      },
+      {
+       "text": "No próximo vídeo, a pasta de dente que todo brasileiro usava e que sumiu das prateleiras.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "PRÓXIMO VÍDEO",
+          [
+           150,
+           150,
+           155
+          ],
+          70
+         ],
+         [
+          "A PASTA DE DENTE",
+          [
+           245,
+           245,
+           242
+          ],
+          120
+         ],
+         [
+          "QUE SUMIU",
+          [
+           245,
+           170,
+           40
+          ],
+          150
+         ]
+        ]
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "shorts": [
+   {
+    "title": "46 mil pessoas perderam o voo de Natal no mesmo dia",
+    "sentences": [
+     {
+      "text": "Uma semana antes do Natal, quase quarenta e seis mil pessoas descobriram que o voo delas não existia mais.",
+      "scene": {
+       "type": "counter",
+       "value": 45887,
+       "over": "DEZEMBRO DE 2021",
+       "label": "PASSAGEIROS SEM VOO",
+       "color": [
+        245,
+        170,
+        40
+       ]
+      }
+     },
+     {
+      "text": "Sexta-feira, dezessete de dezembro de dois mil e vinte e um.",
+      "scene": {
+       "type": "date",
+       "month": "DEZEMBRO",
+       "day": "17",
+       "year": "2021",
+       "tag": "SEXTA-FEIRA"
+      }
+     },
+     {
+      "text": "A ITA, companhia aérea da Itapemirim, suspendeu todos os voos de uma vez.",
+      "scene": {
+       "type": "board",
+       "header": "ITA · PARTIDAS",
+       "flip_at": 0.45,
+       "rows": [
+        [
+         "18:40",
+         "SALVADOR"
+        ],
+        [
+         "19:05",
+         "RECIFE"
+        ],
+        [
+         "19:30",
+         "FORTALEZA"
+        ],
+        [
+         "20:10",
+         "BRASÍLIA"
+        ],
+        [
+         "20:45",
+         "PORTO ALEGRE"
+        ],
+        [
+         "21:20",
+         "NATAL"
+        ]
+       ]
+      }
+     },
+     {
+      "text": "Sem aviso.",
+      "scene": {
+       "type": "flash",
+       "text": "SEM\nAVISO",
+       "tint": "red"
+      }
+     },
+     {
+      "text": "Horas depois, a Anac suspendeu o certificado da empresa.",
+      "scene": {
+       "type": "stamp",
+       "org": "ANAC",
+       "title": "CERTIFICADO DE OPERADOR AÉREO",
+       "stamp": "SUSPENSO",
+       "stamp_at": 0.9
+      }
+     },
+     {
+      "text": "Gente no aeroporto com a mala pronta.",
+      "scene": {
+       "type": "board",
+       "header": "ITA · PARTIDAS",
+       "flip_at": 0.0,
+       "rows": [
+        [
+         "06:15",
+         "SÃO PAULO"
+        ],
+        [
+         "07:40",
+         "RIO DE JANEIRO"
+        ],
+        [
+         "09:10",
+         "MACEIÓ"
+        ],
+        [
+         "10:30",
+         "CURITIBA"
+        ],
+        [
+         "12:05",
+         "FLORIANÓPOLIS"
+        ],
+        [
+         "14:50",
+         "PORTO SEGURO"
+        ]
+       ]
+      }
+     },
+     {
+      "text": "Famílias que juntaram dinheiro o ano inteiro.",
+      "scene": {
+       "type": "bigtext",
+       "stagger": 0.3,
+       "lines": [
+        [
+         "FAMÍLIAS",
+         [
+          245,
+          245,
+          242
+         ],
+         120
+        ],
+        [
+         "JUNTARAM DINHEIRO",
+         [
+          245,
+          170,
+          40
+         ],
+         84
+        ],
+        [
+         "O ANO INTEIRO",
+         [
+          150,
+          150,
+          155
+         ],
+         90
+        ]
+       ]
+      }
+     },
+     {
+      "text": "A empresa tinha seis meses de vida.",
+      "scene": {
+       "type": "timeline",
+       "start": "JUN 2021",
+       "end": "DEZ 2021",
+       "start_sub": "1º voo",
+       "end_sub": "último voo",
+       "big": "6 MESES"
+      }
+     },
+     {
+      "text": "E nunca mais voou.",
+      "scene": {
+       "type": "flash",
+       "text": "NUNCA\nMAIS\nVOOU",
+       "color": [
+        245,
+        245,
+        242
+       ],
+       "size": 160
+      }
+     },
+     {
+      "text": "O que estava por trás disso é ainda pior.",
+      "scene": {
+       "type": "bigtext",
+       "stagger": 0.25,
+       "lines": [
+        [
+         "O QUE ESTAVA",
+         [
+          245,
+          245,
+          242
+         ],
+         110
+        ],
+        [
+         "POR TRÁS",
+         [
+          245,
+          170,
+          40
+         ],
+         150
+        ],
+        [
+         "É AINDA PIOR",
+         [
+          230,
+          52,
+          52
+         ],
+         110
+        ]
+       ]
+      }
+     },
+     {
+      "text": "O vídeo completo está no canal.",
+      "scene": {
+       "type": "endcard",
+       "sub": "VÍDEO COMPLETO NO CANAL"
+      }
+     }
+    ]
+   }
+  ],
+  "tiktoks": [
+   {
+    "title": "46 mil pessoas perderam o voo de Natal no mesmo dia",
+    "caption": "Uma semana antes do Natal, uma companhia aérea parou de voar. De uma vez. Essa é a história da ITA.",
+    "hashtags": [
+     "#itapemirim",
+     "#aviacao",
+     "#historia",
+     "#negocios",
+     "#natal",
+     "#curiosidades"
+    ],
+    "sentences": [
+     {
+      "text": "Faltava uma semana para o Natal quando quase quarenta e seis mil pessoas ficaram sem voo.",
+      "scene": {
+       "type": "counter",
+       "value": 45887,
+       "over": "DEZEMBRO DE 2021",
+       "label": "PASSAGEIROS SEM VOO",
+       "color": "red",
+       "size": 220
+      },
+      "cap": "Faltava uma semana para o Natal quando quase 46 mil pessoas ficaram sem voo."
+     },
+     {
+      "text": "Todas da mesma companhia aérea.",
+      "scene": {
+       "type": "bigtext",
+       "stagger": 0.25,
+       "lines": [
+        [
+         "A MESMA",
+         "white",
+         120
+        ],
+        [
+         "COMPANHIA AÉREA",
+         "gold",
+         110
+        ]
+       ]
+      }
+     },
+     {
+      "text": "Na noite de dezessete de dezembro de dois mil e vinte e um, a ITA parou de voar.",
+      "scene": {
+       "type": "date",
+       "month": "DEZEMBRO",
+       "day": "17",
+       "year": "2021",
+       "tag": "A ITA PARA DE VOAR"
+      },
+      "cap": "Na noite de 17 de dezembro de 2021, a ITA parou de voar."
+     },
+     {
+      "text": "Todos os voos. De uma vez.",
+      "scene": {
+       "type": "flash",
+       "text": "TODOS OS VOOS\nDE UMA VEZ",
+       "tint": "red",
+       "size": 130
+      }
+     },
+     {
+      "text": "A companhia tinha só seis meses de vida.",
+      "scene": {
+       "type": "timeline",
+       "start": "JUN 2021",
+       "end": "DEZ 2021",
+       "start_sub": "1º VOO",
+       "end_sub": "PAROU",
+       "big": "6 MESES"
+      },
+      "cap": "A companhia tinha só 6 meses de vida."
+     },
+     {
+      "text": "E tinha nascido de uma marca que todo brasileiro conhecia: a Itapemirim, a empresa de ônibus.",
+      "scene": {
+       "type": "bigtext",
+       "stagger": 0.25,
+       "lines": [
+        [
+         "ITAPEMIRIM",
+         "gold",
+         170
+        ],
+        [
+         "A EMPRESA DE ÔNIBUS",
+         "white",
+         90
+        ]
+       ]
+      }
+     },
+     {
+      "text": "Uma empresa de quase setenta anos, que já estava em recuperação judicial.",
+      "scene": {
+       "type": "bigtext",
+       "stagger": 0.25,
+       "lines": [
+        [
+         "QUASE 70 ANOS",
+         "white",
+         100
+        ],
+        [
+         "EM RECUPERAÇÃO",
+         "red",
+         120
+        ],
+        [
+         "JUDICIAL",
+         "red",
+         120
+        ]
+       ]
+      },
+      "cap": "Uma empresa de quase 70 anos, que já estava em recuperação judicial."
+     },
+     {
+      "text": "Ou seja, já não conseguia pagar o que devia.",
+      "scene": {
+       "type": "bigtext",
+       "stagger": 0.25,
+       "lines": [
+        [
+         "NÃO CONSEGUIA",
+         "white",
+         110
+        ],
+        [
+         "PAGAR O QUE DEVIA",
+         "red",
+         100
+        ]
+       ]
+      }
+     },
+     {
+      "text": "E mesmo assim, no meio da pandemia, resolveu abrir uma companhia aérea.",
+      "scene": {
+       "type": "flash",
+       "text": "NO MEIO DA\nPANDEMIA",
+       "color": "gold",
+       "size": 150
+      }
+     },
+     {
+      "text": "Quem pagou a conta?",
+      "scene": {
+       "type": "bigtext",
+       "stagger": 0.25,
+       "lines": [
+        [
+         "QUEM PAGOU",
+         "white",
+         130
+        ],
+        [
+         "A CONTA?",
+         "gold",
+         170
+        ]
+       ]
+      }
+     },
+     {
+      "text": "Os passageiros, que iam passar o Natal com a família.",
+      "scene": {
+       "type": "bigtext",
+       "stagger": 0.25,
+       "lines": [
+        [
+         "OS PASSAGEIROS",
+         "white",
+         120
+        ],
+        [
+         "SEM NATAL EM FAMÍLIA",
+         "muted",
+         70
+        ]
+       ]
+      }
+     },
+     {
+      "text": "Quatrocentos e quarenta tripulantes, que ficaram sem a segunda parcela do décimo terceiro e sem plano de saúde.",
+      "scene": {
+       "type": "counter",
+       "value": 440,
+       "label": "TRIPULANTES",
+       "sub": "SEM 13º E SEM PLANO DE SAÚDE",
+       "color": "red",
+       "size": 260
+      },
+      "cap": "440 tripulantes, que ficaram sem a segunda parcela do 13º e sem plano de saúde."
+     },
+     {
+      "text": "E os credores, que já esperavam receber da empresa de ônibus.",
+      "scene": {
+       "type": "bigtext",
+       "stagger": 0.25,
+       "lines": [
+        [
+         "E OS CREDORES",
+         "white",
+         120
+        ],
+        [
+         "DA EMPRESA DE ÔNIBUS",
+         "muted",
+         70
+        ]
+       ]
+      }
+     },
+     {
+      "text": "Em setembro de dois mil e vinte e dois, a Justiça decretou a falência do grupo inteiro.",
+      "scene": {
+       "type": "stamp",
+       "org": "JUSTIÇA · SET 2022",
+       "title": "GRUPO ITAPEMIRIM",
+       "stamp": "FALÊNCIA",
+       "stamp_at": 1.0
+      },
+      "cap": "Em setembro de 2022, a Justiça decretou a falência do grupo inteiro."
+     },
+     {
+      "text": "Quase setenta anos de estrada acabaram menos de um ano depois de tentar voar.",
+      "scene": {
+       "type": "bigtext",
+       "stagger": 0.25,
+       "lines": [
+        [
+         "70 ANOS DE ESTRADA",
+         "white",
+         100
+        ],
+        [
+         "MENOS DE 1 ANO",
+         "red",
+         140
+        ],
+        [
+         "NO AR",
+         "white",
+         100
+        ]
+       ]
+      },
+      "cap": "Quase 70 anos de estrada acabaram menos de 1 ano depois de tentar voar."
+     },
+     {
+      "text": "Você já viajou de Itapemirim? Conta aqui nos comentários.",
+      "scene": {
+       "type": "bigtext",
+       "stagger": 0.25,
+       "lines": [
+        [
+         "VOCÊ JÁ VIAJOU",
+         "white",
+         110
+        ],
+        [
+         "DE ITAPEMIRIM?",
+         "gold",
+         130
+        ]
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "title": "Abriram uma companhia aérea com R$ 380 mil",
+    "caption": "Uma empresa de ônibus endividada abriu uma companhia aérea no meio da pandemia. Olha o capital que ela tinha.",
+    "hashtags": [
+     "#itapemirim",
+     "#ita",
+     "#aviacao",
+     "#negocios",
+     "#empreendedorismo",
+     "#historia"
+    ],
+    "sentences": [
+     {
+      "text": "Uma empresa de ônibus endividada abriu uma companhia aérea com trezentos e oitenta mil reais.",
+      "scene": {
+       "type": "counter",
+       "value": 380,
+       "prefix": "R$ ",
+       "suffix": " MIL",
+       "over": "CAPITAL SOCIAL DA ITA",
+       "label": "PARA ABRIR UMA AÉREA",
+       "color": "red",
+       "size": 230
+      },
+      "cap": "Uma empresa de ônibus endividada abriu uma companhia aérea com R$ 380 mil."
+     },
+     {
+      "text": "Pra você ter ideia, quando a Azul começou, entrou no mercado com oitenta milhões.",
+      "scene": {
+       "type": "compare",
+       "items": [
+        [
+         "380 MIL",
+         "ITA (2020)",
+         "red"
+        ],
+        [
+         "80 MILHÕES",
+         "AZUL (2008)",
+         "gold"
+        ]
+       ],
+       "size": 140,
+       "stagger": 0.6
+      },
+      "cap": "Pra você ter ideia, quando a Azul começou, entrou no mercado com 80 milhões."
+     },
+     {
+      "text": "A dona da ideia era a Itapemirim, que já estava em recuperação judicial.",
+      "scene": {
+       "type": "bigtext",
+       "stagger": 0.25,
+       "lines": [
+        [
+         "ITAPEMIRIM",
+         "gold",
+         170
+        ],
+        [
+         "EM RECUPERAÇÃO JUDICIAL",
+         "red",
+         80
+        ]
+       ]
+      }
+     },
+     {
+      "text": "E o momento era o pior possível: o meio da pandemia, com os aviões parados no chão.",
+      "scene": {
+       "type": "flash",
+       "text": "NO MEIO DA\nPANDEMIA",
+       "color": "gold",
+       "size": 150
+      }
+     },
+     {
+      "text": "Mas o dono, Sidnei Piva, prometia grande.",
+      "scene": {
+       "type": "bigtext",
+       "stagger": 0.25,
+       "lines": [
+        [
+         "A PROMESSA",
+         "gold",
+         150
+        ],
+        [
+         "DE SIDNEI PIVA",
+         "white",
+         90
+        ]
+       ]
+      }
+     },
+     {
+      "text": "Cinquenta aviões já no primeiro ano.",
+      "scene": {
+       "type": "counter",
+       "value": 50,
+       "over": "A PROMESSA",
+       "label": "AVIÕES NO 1º ANO",
+       "color": "gold",
+       "size": 280
+      },
+      "cap": "50 aviões já no primeiro ano."
+     },
+     {
+      "text": "Segundo ele, cento e cinquenta milhões de reais próprios e quinhentos milhões de dólares de investidores de Dubai.",
+      "scene": {
+       "type": "compare",
+       "items": [
+        [
+         "R$ 150 MI",
+         "RECURSOS PRÓPRIOS",
+         "gold"
+        ],
+        [
+         "US$ 500 MI",
+         "INVESTIDORES DE DUBAI",
+         "gold"
+        ]
+       ],
+       "size": 120,
+       "stagger": 0.9,
+       "vs": false,
+       "title": "SEGUNDO PIVA"
+      },
+      "cap": "Segundo ele, R$ 150 milhões próprios e US$ 500 milhões de investidores de Dubai."
+     },
+     {
+      "text": "Especialistas disseram que aquilo não sustentava uma companhia aérea.",
+      "scene": {
+       "type": "bigtext",
+       "stagger": 0.25,
+       "lines": [
+        [
+         "ESPECIALISTAS",
+         "white",
+         110
+        ],
+        [
+         "NÃO SUSTENTA",
+         "red",
+         140
+        ]
+       ]
+      }
+     },
+     {
+      "text": "Mesmo assim, a Anac liberou o certificado em abril de dois mil e vinte e um.",
+      "scene": {
+       "type": "stamp",
+       "org": "ANAC · ABRIL 2021",
+       "title": "CERTIFICADO DE OPERADOR AÉREO",
+       "stamp": "APROVADO",
+       "stamp_color": "green",
+       "stamp_at": 1.0
+      },
+      "cap": "Mesmo assim, a Anac liberou o certificado em abril de 2021."
+     },
+     {
+      "text": "A ITA chegou a voar com seis aviões para catorze cidades.",
+      "scene": {
+       "type": "counter",
+       "value": 6,
+       "label": "AVIÕES",
+       "sub": "14 CIDADES",
+       "color": "gold",
+       "size": 300
+      },
+      "cap": "A ITA chegou a voar com 6 aviões para 14 cidades."
+     },
+     {
+      "text": "Durou seis meses.",
+      "scene": {
+       "type": "flash",
+       "text": "DUROU\n6 MESES",
+       "tint": "red",
+       "size": 170
+      },
+      "cap": "Durou 6 meses."
+     },
+     {
+      "text": "Segundo o Ministério Público, o dinheiro que fez a aérea decolar teria saído da empresa de ônibus.",
+      "scene": {
+       "type": "flow",
+       "a": "ÔNIBUS",
+       "a_sub": "EM RECUPERAÇÃO",
+       "b": "AÉREA ITA",
+       "b_sub": "O NOVO SONHO",
+       "caption": "SEGUNDO O MINISTÉRIO PÚBLICO"
+      }
+     },
+     {
+      "text": "Justamente a empresa que devia a funcionários, fornecedores e bancos.",
+      "scene": {
+       "type": "bullets",
+       "title": "QUEM ESPERAVA RECEBER",
+       "items": [
+        "FUNCIONÁRIOS",
+        "FORNECEDORES",
+        "BANCOS"
+       ],
+       "size": 90,
+       "stagger": 0.5
+      }
+     },
+     {
+      "text": "Piva contesta as acusações, e até aqui não há condenação.",
+      "scene": {
+       "type": "bigtext",
+       "stagger": 0.25,
+       "lines": [
+        [
+         "PIVA CONTESTA",
+         "white",
+         110
+        ],
+        [
+         "SEM CONDENAÇÃO ATÉ AQUI",
+         "muted",
+         70
+        ]
+       ]
+      }
+     },
+     {
+      "text": "Mas as dívidas do grupo são estimadas em cerca de três bilhões de reais.",
+      "scene": {
+       "type": "counter",
+       "value": 3,
+       "prefix": "R$ ",
+       "suffix": " BI",
+       "over": "DÍVIDAS DO GRUPO",
+       "label": "ESTIMATIVA",
+       "color": "red",
+       "size": 280
+      },
+      "cap": "Mas as dívidas do grupo são estimadas em cerca de R$ 3 bilhões."
+     },
+     {
+      "text": "Você deixaria uma empresa endividada abrir outro negócio com o dinheiro de quem ela deve? Comenta.",
+      "scene": {
+       "type": "bigtext",
+       "stagger": 0.25,
+       "lines": [
+        [
+         "VOCÊ DEIXARIA?",
+         "gold",
+         140
+        ],
+        [
+         "COMENTA AQUI",
+         "white",
+         100
+        ]
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ "meta": {
+  "titles": [
+   "ITAPEMIRIM: A Empresa de Ônibus Que Criou Uma Aérea e Quebrou em 6 Meses",
+   "O Que Aconteceu Com a Itapemirim? (A Aérea Que Sumiu no Natal)"
+  ],
+  "tags": [
+   "itapemirim",
+   "ita linhas aéreas",
+   "sidnei piva",
+   "falência itapemirim",
+   "custo oculto"
+  ]
+ },
+ "thumbs": [],
+ "notes": "Fatos e narração completos no Estúdio. Longo e Short já publicados em 11/10/2026."
+}
