@@ -1,0 +1,27 @@
+name: Amostras de voz
+
+on:
+  workflow_dispatch:
+  push:
+    paths: ["ferramentas/amostras.py", ".github/workflows/amostras.yml"]
+
+jobs:
+  amostras:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Instalar
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg espeak-ng > /dev/null
+          pip install -q piper-tts
+          pip install -q --extra-index-url https://download.pytorch.org/whl/cpu torch kokoro soundfile || echo "::warning::kokoro não instalou"
+      - name: Gerar amostras
+        run: python ferramentas/amostras.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: amostras-de-voz
+          path: amostras/
