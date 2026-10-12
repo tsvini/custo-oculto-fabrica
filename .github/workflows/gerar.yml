@@ -45,7 +45,9 @@ jobs:
           if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
             lista="$PROJETO"
           else
-            lista=$(git diff --name-only HEAD~1 HEAD -- 'projetos/*/projeto.json' | cut -d/ -f2 | sort -u | xargs)
+            # primeiro commit não tem HEAD~1: compara com a árvore vazia
+            if git rev-parse -q --verify HEAD~1 > /dev/null; then base=HEAD~1; else base=$(git hash-object -t tree /dev/null); fi
+            lista=$(git diff --name-only "$base" HEAD -- 'projetos/*/projeto.json' | cut -d/ -f2 | sort -u | xargs)
           fi
           echo "lista=$lista" >> "$GITHUB_OUTPUT"
           echo "nome=$(echo "$lista" | tr ' ' '-')" >> "$GITHUB_OUTPUT"
