@@ -1,6 +1,4 @@
 playwright==1.56.0
 numpy
 pillow
-edge-tts
-kokoro
-soundfile
+faster-whisper

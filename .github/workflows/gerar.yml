@@ -12,16 +12,16 @@ on:
         options: [tudo, longo, shorts, short1, short2, short3]
         default: tudo
       voz:
-        description: "Trocar a voz (opcional, ex.: pm_alex, pm_santa, pf_dora)"
+        description: "Trocar a voz sintética (só para modo google)"
         required: false
         default: ""
       modo:
-        description: "kokoro = voz aberta grátis · google = Chirp 3 HD (precisa de chave) · edge = bloqueado no GitHub · teste = voz falsa"
+        description: "gravada = seus áudios em projetos/<nome>/audio · teste = voz falsa · google = Chirp 3 HD (precisa de chave)"
         type: choice
-        options: [kokoro, google, edge, teste]
-        default: kokoro
+        options: [gravada, teste, google]
+        default: gravada
   push:
-    paths: ["projetos/*/projeto.json"]
+    paths: ["projetos/*/projeto.json", "projetos/*/audio/**"]
 
 concurrency:
   group: gerar-${{ github.ref }}-${{ inputs.projeto || 'push' }}
@@ -47,7 +47,7 @@ jobs:
           else
             # primeiro commit não tem HEAD~1: compara com a árvore vazia
             if git rev-parse -q --verify HEAD~1 > /dev/null; then base=HEAD~1; else base=$(git hash-object -t tree /dev/null); fi
-            lista=$(git diff --name-only "$base" HEAD -- 'projetos/*/projeto.json' | cut -d/ -f2 | sort -u | xargs)
+            lista=$(git diff --name-only --diff-filter=AMR "$base" HEAD -- 'projetos/*/projeto.json' 'projetos/*/audio/*' | cut -d/ -f2 | sort -u | xargs)
           fi
           echo "lista=$lista" >> "$GITHUB_OUTPUT"
           echo "nome=$(echo "$lista" | tr ' ' '-')" >> "$GITHUB_OUTPUT"
@@ -59,8 +59,7 @@ jobs:
 
       - name: Instalar ferramentas
         run: |
-          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg espeak-ng > /dev/null
-          pip install -q --extra-index-url https://download.pytorch.org/whl/cpu torch
+          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg > /dev/null
           pip install -q -r requirements.txt
           python -m playwright install --with-deps chromium > /dev/null
 
@@ -71,6 +70,12 @@ jobs:
           key: tts-${{ github.run_id }}
           restore-keys: tts-
 
+      - name: Cache do modelo de reconhecimento de fala
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/huggingface
+          key: whisper-small
+
       - name: Gerar
         env:
           GOOGLE_TTS_KEY: ${{ secrets.GOOGLE_TTS_KEY }}
@@ -78,7 +83,7 @@ jobs:
           CHROME_CHANNEL: chrome
           LISTA: ${{ steps.alvo.outputs.lista }}
           FORMATO: ${{ inputs.formato || 'tudo' }}
-          MODO: ${{ inputs.modo || 'kokoro' }}
+          MODO: ${{ inputs.modo || 'gravada' }}
           VOZ: ${{ inputs.voz }}
         shell: bash
         run: |

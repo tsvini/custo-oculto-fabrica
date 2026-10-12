@@ -17,31 +17,30 @@ Em **Settings → Secrets and variables → Actions → New repository secret**,
 | `GOOGLE_TTS_KEY` | console.cloud.google.com → APIs e serviços → Credenciais → Chave de API (restrita à Cloud Text-to-Speech API) |
 | `PEXELS_KEY` | pexels.com/api (opcional; sem ela, as cenas de clipe usam texto animado) |
 
-## Como gerar um vídeo
+## Como gerar um vídeo (voz gravada por você)
 
-**Automático:** basta salvar um `projetos/<nome>/projeto.json` novo ou alterado no repositório. A fábrica começa sozinha.
+1. Abra `projetos/<nome>/NARRACAO.md`. Ele tem o texto exato de cada arquivo: `parte1.mp3` … `parteN.mp3` (longo) e `short1.mp3`… (Shorts).
+2. Grave cada bloco num arquivo separado com esse nome (mp3, wav, m4a ou ogg).
+3. No GitHub, entre em `projetos/<nome>/`, clique em **Add file → Upload files**, escreva `audio/` antes do nome se a pasta ainda não existir, ou arraste os arquivos dentro da pasta `audio`. **Envie todos de uma vez** (um commit só).
+4. A fábrica começa sozinha. Ela ouve cada áudio, acha onde cada frase começa e termina e monta legenda e cenas no tempo certo.
+5. Em uns 20–30 minutos, abra a execução na aba **Actions** e baixe o pacote em **Artifacts** (fica 14 dias).
 
-**Pelo botão:** aba **Actions** → **Gerar vídeo** → **Run workflow**. Preencha:
-- **projeto:** o nome da pasta, ex.: `kolynos`
-- **formato:** `tudo`, `longo`, `shorts` ou `short1`
-- **voz:** opcional, troca a voz só desta vez
-- **modo:** `kokoro` (padrão, grátis); `google` precisa da chave; `teste` usa uma voz falsa
+Se faltar algum áudio, aquele vídeo é pulado e o resumo da execução diz qual arquivo falta. Se a leitura fugir muito do texto, o resumo avisa também.
 
-Um longo de 7 minutos leva uns 20–30 minutos. Ao final, abra a execução e baixe o pacote em **Artifacts**. Ele fica disponível por 14 dias.
+Para gerar de novo sem trocar os áudios: **Actions → Gerar vídeo → Run workflow** (projeto `kolynos`, modo `gravada`). O modo `teste` monta o vídeo com voz falsa, só para conferir as cenas.
+
+Para criar o NARRACAO.md de um projeto novo: `python -m fabrica.narracao <nome>`.
 
 **Para trocar um print:** coloque a imagem em `projetos/<nome>/midia/print01.png`, com o mesmo nome da cena. Arquivo enviado à mão sempre tem prioridade.
 
 ## Vozes
 
-Padrão: **Kokoro** (`modo: kokoro`), voz aberta que roda no próprio servidor do GitHub. É grátis, sem conta e sem cartão.
+Padrão: **sua voz gravada** (modo `gravada`). As trocas de cena não têm mais o "bum" de impacto; só a trilha de fundo baixa.
 
-A voz fica em `"voz": {"nome": "pm_alex", "velocidade": 1.0}` dentro do `projeto.json`. Opções: `pm_alex`, `pm_santa` (masculinas), `pf_dora` (feminina).
-
-Google Chirp 3 HD continua disponível com `modo: google` + secret `GOOGLE_TTS_KEY` (nome `pt-BR-Chirp3-HD-<Nome>`, ex.: Charon, Orus). Exige conta com cartão.
+Alternativa sintética: Google Chirp 3 HD com `modo: google` + secret `GOOGLE_TTS_KEY` (exige conta com cartão).
 
 ## Custos
 
-- **Voz (Kokoro):** grátis, roda no servidor.
 - **GitHub Actions:** grátis até 2.000 minutos por mês em repositório privado, o bastante para umas 60 gerações.
 
 ## Rodar no próprio computador (opcional)

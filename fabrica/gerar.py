@@ -75,7 +75,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("projeto", help="nome da pasta em projetos/ (ex.: kolynos)")
     ap.add_argument("--formato", default="tudo", help="tudo | longo | shorts | short1, short2…")
-    ap.add_argument("--modo", default=None, help="kokoro | google | edge | teste (padrão: kokoro)")
+    ap.add_argument("--modo", default=None, help="gravada | kokoro | google | edge | teste (padrão: gravada se houver projetos/<nome>/audio, senão kokoro)")
     ap.add_argument("--voz", default=None, help="troca a voz deste vídeo (ex.: pt-BR-Chirp3-HD-Orus)")
     ap.add_argument("--saida", default=os.path.join(RAIZ, "saida"))
     ap.add_argument("--previas", action="store_true", help="salva quadros de prévia em JPG")
@@ -116,12 +116,35 @@ def main():
     man = M.manifesto(pasta_midia)
 
     # ---------- narração ----------
+    from . import alinhar as AL
+    pasta_audio = os.path.join(pasta_proj, "audio")
+    def audio_de(fmt, idx, k):
+        return AL.achar_audio(pasta_audio, f"parte{k + 1}" if fmt == "longo" else f"short{idx + 1}")
+    gravada = a.modo in (None, "gravada") and os.path.isdir(pasta_audio) and any(f.lower().endswith(AL.EXTS) for f in os.listdir(pasta_audio))
+    if gravada:
+        a.modo = "teste"  # o sintetizador não é usado
+        ok = []
+        for fmt, idx in alvos:
+            n = len(p["script"]["long"]["parts"]) if fmt == "longo" else 1
+            faltam = [k + 1 for k in range(n) if not audio_de(fmt, idx, k)]
+            if faltam:
+                nome_alvo = "longo" if fmt == "longo" else f"short{idx + 1}"
+                arqs = ", ".join(f"parte{k}" for k in faltam) if fmt == "longo" else nome_alvo
+                avisos.append(f"{nome_alvo}: pulado, falta o áudio ({arqs}) em projetos/{a.projeto}/audio/")
+                log(f"  {nome_alvo}: pulado, falta {arqs}")
+            else:
+                ok.append((fmt, idx))
+        alvos = ok
+        if not alvos:
+            raise ErroVoz(f"nenhum vídeo com todos os áudios. Envie parte1…parte{len(p['script']['long']['parts'])} (longo) e/ou short1, short2… em projetos/{a.projeto}/audio/")
+    elif a.modo in (None, "gravada"):
+        raise ErroVoz(f"não achei áudios em projetos/{a.projeto}/audio/. Envie parte1.mp3…parte{len(p['script']['long']['parts'])}.mp3 (longo) e short1.mp3… (Shorts). Para testar a montagem sem voz, rode com modo 'teste'.")
     voz = dict(p.get("voz") or {})
     if a.voz:
         voz["nome"] = a.voz
     nar = Narrador(voz, a.modo)
-    log(f"2/4 Narração ({nar.modo}, voz {nar.voz['nome']})")
-    if nar.modo == "teste":
+    log(f"2/4 Narração ({'gravada (seus áudios)' if gravada else nar.modo + ', voz ' + nar.voz['nome']})")
+    if nar.modo == "teste" and not gravada:
         avisos.append("Gerado em MODO TESTE: a voz é um ruído no ritmo da fala, só para conferir a montagem.")
     cfgs = []
     for fmt, idx in alvos:
@@ -129,7 +152,13 @@ def main():
         partes = []
         for k, g in enumerate(grupos):
             wav = os.path.join(trab, f"voz_{fmt}{idx + 1 if fmt == 'short' else ''}_p{k + 1}.wav")
-            tempos, dur = nar.parte([s["text"].strip() for s in frases(g)], wav)
+            txts = [s["text"].strip() for s in frases(g)]
+            if gravada:
+                tempos, dur, taxa = AL.parte(txts, audio_de(fmt, idx, k), wav, log)
+                if taxa < 0.6:
+                    avisos.append(f"{fmt}{'' if fmt == 'longo' else idx + 1} parte {k + 1}: só {taxa:.0%} das palavras bateram com o roteiro. Confira se o áudio é dessa parte e se o texto não mudou.")
+            else:
+                tempos, dur = nar.parte(txts, wav)
             partes.append({"wav": "/" + os.path.relpath(wav, RAIZ), "tempos": tempos})
             log(f"  {fmt}{'' if fmt == 'longo' else idx + 1} parte {k + 1}: {dur:.1f}s")
         nome = f"{slug}_longo" if fmt == "longo" else f"{slug}_short{idx + 1}"
@@ -194,7 +223,7 @@ def main():
         srv.shutdown()
 
     log("4/4 Pronto")
-    resumo += ["", f"Voz: {nar.voz['nome']} ({nar.modo}) · caracteres cobrados: {nar.chars} · frases do cache: {nar.cache_hits}"]
+    resumo += ["", "Voz: gravada (seus áudios)" if gravada else f"Voz: {nar.voz['nome']} ({nar.modo}) · caracteres cobrados: {nar.chars} · frases do cache: {nar.cache_hits}"]
     sem = [s.get("media") for s in cenas if s.get("type") in ("print", "video", "image") and s.get("media") and s["media"] not in man]
     if sem:
         resumo.append(f"Cenas sem mídia (usaram manchete/texto de reserva): {', '.join(dict.fromkeys(sem))}")

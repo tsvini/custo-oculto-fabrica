@@ -487,7 +487,7 @@
     const cuts = segs.filter((s) => !(s.scene && s.scene.type === "same")).map((s) => s.s0);
     const voice = new Float32Array(Math.ceil(total * SR));
     voiceParts.forEach(([off, v]) => voice.set(v.subarray(0, Math.min(v.length, voice.length - Math.round(off * SR))), Math.round(off * SR)));
-    const bed = synthBed(total, cuts); const mix = new Float32Array(voice.length);
+    const bed = synthBed(total, opts.batida ? cuts : []); /* sem o "bum" nas trocas de cena */ const mix = new Float32Array(voice.length);
     for (let i = 0; i < mix.length; i++) { let v = voice[i] + bed[i]; if (Math.abs(v) > 0.95) v = Math.sign(v) * 0.95; mix[i] = v; }
     return { segs, total, chunks, audio: mix, hook: !!opts.hook };
   }
