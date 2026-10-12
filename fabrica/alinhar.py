@@ -21,7 +21,8 @@ def achar_audio(pasta, base):
         return None
     for fn in sorted(os.listdir(pasta)):
         nome, ext = os.path.splitext(fn)
-        if ext.lower() in EXTS and nome.lower().replace(" ", "").replace("_", "").replace("-", "") == base:
+        n = nome.lower().replace(" ", "").replace("_", "").replace("-", "").replace("shorts", "short").replace("parte0", "parte")
+        if ext.lower() in EXTS and n == base:
             return os.path.join(pasta, fn)
     return None
 

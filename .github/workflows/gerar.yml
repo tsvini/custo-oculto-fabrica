@@ -47,7 +47,10 @@ jobs:
           else
             # primeiro commit não tem HEAD~1: compara com a árvore vazia
             if git rev-parse -q --verify HEAD~1 > /dev/null; then base=HEAD~1; else base=$(git hash-object -t tree /dev/null); fi
-            lista=$(git diff --name-only --diff-filter=AMR "$base" HEAD -- 'projetos/*/projeto.json' 'projetos/*/audio/*' | cut -d/ -f2 | sort -u | xargs)
+            mudou=$(git diff --name-only --diff-filter=AMR "$base" HEAD -- 'projetos/*/projeto.json' 'projetos/*/audio/*')
+            lista=$(echo "$mudou" | grep . | cut -d/ -f2 | sort -u | xargs)
+            # só áudio de Short mudou? gera só os Shorts
+            if [ -n "$mudou" ] && ! echo "$mudou" | grep -viq '/audio/shorts\?[0-9]'; then echo "formato=shorts" >> "$GITHUB_OUTPUT"; fi
           fi
           echo "lista=$lista" >> "$GITHUB_OUTPUT"
           echo "nome=$(echo "$lista" | tr ' ' '-')" >> "$GITHUB_OUTPUT"
@@ -82,7 +85,7 @@ jobs:
           PEXELS_KEY: ${{ secrets.PEXELS_KEY }}
           CHROME_CHANNEL: chrome
           LISTA: ${{ steps.alvo.outputs.lista }}
-          FORMATO: ${{ inputs.formato || 'tudo' }}
+          FORMATO: ${{ inputs.formato || steps.alvo.outputs.formato || 'tudo' }}
           MODO: ${{ inputs.modo || 'gravada' }}
           VOZ: ${{ inputs.voz }}
         shell: bash
