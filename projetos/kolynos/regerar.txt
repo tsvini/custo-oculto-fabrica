@@ -1,1 +1,1 @@
-shorts — sincronia com ffmpeg
+longo — sincronia real
