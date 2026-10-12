@@ -45,7 +45,10 @@ def _palavras(path):
     if _MODELO is None:
         from faster_whisper import WhisperModel
         _MODELO = WhisperModel(os.environ.get("WHISPER_MODELO", "small"), device="cpu", compute_type="int8")
-    segs, _ = _MODELO.transcribe(path, language="pt", word_timestamps=True, vad_filter=False, beam_size=5)
+    # decodifica com o ffmpeg (o leitor interno do faster-whisper quebra com versões novas do PyAV)
+    pcm = subprocess.run(["ffmpeg", "-loglevel", "error", "-i", path, "-ac", "1", "-ar", "16000", "-f", "f32le", "-"], check=True, capture_output=True).stdout
+    audio16 = np.frombuffer(pcm, dtype=np.float32)
+    segs, _ = _MODELO.transcribe(audio16, language="pt", word_timestamps=True, vad_filter=False, beam_size=5)
     out = []
     for s in segs:
         for w in s.words or []:

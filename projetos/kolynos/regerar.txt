@@ -1,1 +1,1 @@
-shorts — teste da sincronia
+shorts — sincronia com ffmpeg
