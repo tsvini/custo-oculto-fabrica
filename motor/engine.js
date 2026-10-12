@@ -603,7 +603,7 @@
       return `${String(h).padStart(2, "0")}:${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")},${String(Math.min(ms, 999)).padStart(3, "0")}`; };
     let n = 1; const out = [];
     tl.segs.filter((s) => s.text).forEach((sg) => {
-      const words = String(sg.cap || sg.text).split(/\s+/); const chunks = []; for (let i = 0; i < words.length; i += 12) chunks.push(words.slice(i, i + 12).join(" "));
+      const words = String(sg.cap || sg.text).split(/\s+/); const chunks = []; const nCh = Math.ceil(words.length / 12), per = Math.ceil(words.length / nCh); for (let i = 0; i < words.length; i += per) chunks.push(words.slice(i, i + per).join(" "));
       const tot = chunks.reduce((a, c) => a + c.length, 0) || 1; let t = sg.start;
       chunks.forEach((c) => { const d = (sg.end - sg.start) * c.length / tot; out.push(`${n++}\n${ts(t)} --> ${ts(t + d)}\n${c}\n`); t += d; });
     });
