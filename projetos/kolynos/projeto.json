@@ -1,0 +1,1871 @@
+{
+ "title": "Kolynos",
+ "slug": "kolynos",
+ "angle": "A decisão tirou o nome Kolynos do mercado, mas não tirou os clientes da Colgate.",
+ "voz": {
+  "nome": "pt-BR-Chirp3-HD-Charon",
+  "velocidade": 1.05
+ },
+ "script": {
+  "long": {
+   "parts": [
+    {
+     "chapter": "",
+     "sentences": [
+      {
+       "text": "Durante décadas, mais da metade da pasta de dente vendida no Brasil tinha a mesma marca.",
+       "scene": {
+        "type": "counter",
+        "value": 52,
+        "suffix": "%",
+        "over": "DO CREME DENTAL VENDIDO NO BRASIL",
+        "label": "UMA SÓ MARCA",
+        "color": [
+         70,
+         190,
+         110
+        ],
+        "size": 280
+       }
+      },
+      {
+       "text": "A caixinha verde e amarela estava em quase todo banheiro do país.",
+       "scene": {
+        "type": "video",
+        "fallback": {
+         "type": "bigtext",
+         "stagger": 0.25,
+         "lines": [
+          [
+           "EM QUASE TODO",
+           [
+            245,
+            245,
+            242
+           ],
+           110
+          ],
+          [
+           "BANHEIRO",
+           [
+            70,
+            190,
+            110
+           ],
+           160
+          ]
+         ]
+        },
+        "start": 0.0,
+        "dim": 0.35,
+        "lower": "Kolynos · a pasta do Brasil",
+        "media": "escovando",
+        "search": "escovando os dentes"
+       }
+      },
+      {
+       "text": "E então, em mil novecentos e noventa e sete, ela simplesmente sumiu das prateleiras.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "1997",
+          [
+           245,
+           170,
+           40
+          ],
+          240
+         ],
+         [
+          "SUMIU DAS PRATELEIRAS",
+          [
+           245,
+           245,
+           242
+          ],
+          90
+         ]
+        ]
+       },
+       "cap": "E então, em 1997, ela simplesmente sumiu das prateleiras."
+      },
+      {
+       "text": "Não faliu.",
+       "scene": {
+        "type": "bullets",
+        "items": [
+         "NÃO FALIU",
+         "NÃO TEVE ESCÂNDALO",
+         "NÃO PERDEU CLIENTES"
+        ],
+        "size": 100,
+        "cue_offset": 0
+       }
+      },
+      {
+       "text": "Não teve escândalo.",
+       "scene": {
+        "type": "same"
+       }
+      },
+      {
+       "text": "Não perdeu clientes.",
+       "scene": {
+        "type": "same"
+       }
+      },
+      {
+       "text": "Uma marca líder, querida e lucrativa, saiu do mercado por causa de uma decisão do governo.",
+       "scene": {
+        "type": "stamp",
+        "org": "GOVERNO FEDERAL · CADE",
+        "title": "MARCA KOLYNOS",
+        "stamp": "FORA DO MERCADO",
+        "stamp_size": 66,
+        "stamp_at": 1.2
+       }
+      },
+      {
+       "text": "E de uma escolha da própria dona.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "E UMA ESCOLHA",
+          [
+           245,
+           245,
+           242
+          ],
+          120
+         ],
+         [
+          "DA PRÓPRIA DONA",
+          [
+           245,
+           170,
+           40
+          ],
+          130
+         ]
+        ]
+       }
+      },
+      {
+       "text": "E o mais curioso: quem parece ter saído ganhando foi justamente a empresa que pagou mais de um bilhão de dólares por ela.",
+       "scene": {
+        "type": "counter",
+        "value": 1,
+        "prefix": "US$ ",
+        "suffix": ",04 BI",
+        "over": "QUEM PAGOU",
+        "label": "PARECE TER SAÍDO GANHANDO",
+        "color": [
+         245,
+         170,
+         40
+        ],
+        "size": 230
+       },
+       "cap": "E o mais curioso: quem parece ter saído ganhando foi justamente a empresa que pagou mais de US$ 1 bilhão por ela."
+      },
+      {
+       "text": "Esse é o custo oculto da Kolynos.",
+       "scene": {
+        "type": "endcard",
+        "sub": "O CASO KOLYNOS"
+       }
+      }
+     ]
+    },
+    {
+     "chapter": "A PASTA DO BRASIL",
+     "sentences": [
+      {
+       "text": "A Kolynos nasceu nos Estados Unidos, em mil novecentos e oito, criada por um dentista chamado Neal Jenkins.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "1908",
+          [
+           245,
+           170,
+           40
+          ],
+          240
+         ],
+         [
+          "NASCE NOS ESTADOS UNIDOS",
+          [
+           245,
+           245,
+           242
+          ],
+          76
+         ],
+         [
+          "criada pelo dentista Neal Jenkins",
+          [
+           150,
+           150,
+           155
+          ],
+          52
+         ]
+        ]
+       },
+       "cap": "A Kolynos nasceu nos Estados Unidos, em 1908, criada por um dentista chamado Neal Jenkins."
+      },
+      {
+       "text": "Em mil novecentos e dezessete, ela chegou ao Brasil como produto importado.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "1917",
+          [
+           70,
+           190,
+           110
+          ],
+          240
+         ],
+         [
+          "CHEGA AO BRASIL",
+          [
+           245,
+           245,
+           242
+          ],
+          90
+         ],
+         [
+          "como produto importado",
+          [
+           150,
+           150,
+           155
+          ],
+          56
+         ]
+        ]
+       },
+       "cap": "Em 1917, ela chegou ao Brasil como produto importado."
+      },
+      {
+       "text": "As vendas foram tão boas que a marca ganhou fábrica em São Paulo.",
+       "scene": {
+        "type": "video",
+        "fallback": {
+         "type": "bigtext",
+         "stagger": 0.25,
+         "lines": [
+          [
+           "FÁBRICA",
+           [
+            245,
+            245,
+            242
+           ],
+           160
+          ],
+          [
+           "EM SÃO PAULO",
+           [
+            245,
+            170,
+            40
+           ],
+           110
+          ]
+         ]
+        },
+        "start": 0.0,
+        "dim": 0.35,
+        "lower": "A Kolynos ganha fábrica em São Paulo",
+        "media": "fabrica",
+        "search": "fábrica linha de produção"
+       }
+      },
+      {
+       "text": "Nas décadas seguintes, a Kolynos virou parte da rotina dos brasileiros.",
+       "scene": {
+        "type": "video",
+        "fallback": {
+         "type": "bigtext",
+         "stagger": 0.25,
+         "lines": [
+          [
+           "PARTE DA",
+           [
+            245,
+            245,
+            242
+           ],
+           120
+          ],
+          [
+           "ROTINA",
+           [
+            70,
+            190,
+            110
+           ],
+           170
+          ]
+         ]
+        },
+        "start": 0.0,
+        "dim": 0.35,
+        "lower": "Parte da rotina dos brasileiros",
+        "media": "familia",
+        "search": "família banheiro manhã"
+       }
+      },
+      {
+       "text": "Nos anos noventa, ela tinha cinquenta e dois por cento do mercado de creme dental no país.",
+       "scene": {
+        "type": "compare",
+        "title": "MERCADO DE CREME DENTAL · ANOS 90",
+        "items": [
+         [
+          "52%",
+          "KOLYNOS",
+          [
+           70,
+           190,
+           110
+          ]
+         ],
+         [
+          "26%",
+          "COLGATE",
+          [
+           230,
+           52,
+           52
+          ]
+         ]
+        ],
+        "size": 220,
+        "vs": false,
+        "stagger": 1.2
+       },
+       "cap": "Nos anos 90, ela tinha 52% do mercado de creme dental no país."
+      },
+      {
+       "text": "A Colgate, a maior concorrente, tinha menos de vinte e seis.",
+       "scene": {
+        "type": "same"
+       },
+       "cap": "A Colgate, a maior concorrente, tinha menos de 26%."
+      },
+      {
+       "text": "Ou seja: a Kolynos vendia o dobro da principal rival.",
+       "scene": {
+        "type": "same"
+       }
+      },
+      {
+       "text": "Ela não era só uma pasta de dente.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "NÃO ERA SÓ",
+          [
+           245,
+           245,
+           242
+          ],
+          120
+         ],
+         [
+          "UMA PASTA DE DENTE",
+          [
+           150,
+           150,
+           155
+          ],
+          100
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Era a pasta de dente.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "ERA A",
+          [
+           245,
+           245,
+           242
+          ],
+          120
+         ],
+         [
+          "PASTA DE DENTE",
+          [
+           70,
+           190,
+           110
+          ],
+          150
+         ]
+        ]
+       }
+      }
+     ]
+    },
+    {
+     "chapter": "A COMPRA",
+     "sentences": [
+      {
+       "text": "Em janeiro de mil novecentos e noventa e cinco, a Colgate-Palmolive anunciou a compra da Kolynos.",
+       "scene": {
+        "type": "print",
+        "source": "Colgate-Palmolive, 09/01/1995",
+        "fallback": {
+         "type": "bigtext",
+         "stagger": 0.25,
+         "lines": [
+          [
+           "JANEIRO 1995",
+           [
+            245,
+            170,
+            40
+           ],
+           160
+          ],
+          [
+           "COLGATE COMPRA A KOLYNOS",
+           [
+            245,
+            245,
+            242
+           ],
+           80
+          ]
+         ]
+        },
+        "rotate": -1.0,
+        "media": "print01",
+        "url": "https://investor.colgatepalmolive.com/news-releases/news-release-details/colgate-acquire-kolynos-expanding-its-1-position-global-oral"
+       },
+       "cap": "Em janeiro de 1995, a Colgate-Palmolive anunciou a compra da Kolynos."
+      },
+      {
+       "text": "A vendedora era a americana American Home Products, dona da marca na época.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "VENDEDORA",
+          [
+           150,
+           150,
+           155
+          ],
+          70
+         ],
+         [
+          "AMERICAN HOME PRODUCTS",
+          [
+           245,
+           245,
+           242
+          ],
+          110
+         ]
+        ]
+       }
+      },
+      {
+       "text": "O preço: um bilhão e quarenta milhões de dólares, pagos em dinheiro.",
+       "scene": {
+        "type": "counter",
+        "value": 1040000000,
+        "prefix": "US$ ",
+        "over": "PAGOS EM DINHEIRO",
+        "label": "PREÇO DA KOLYNOS",
+        "color": [
+         245,
+         170,
+         40
+        ],
+        "size": 170
+       },
+       "cap": "O preço: US$ 1,04 bilhão, pagos em dinheiro."
+      },
+      {
+       "text": "Para a Colgate, era um negócio estratégico.",
+       "scene": {
+        "type": "video",
+        "fallback": {
+         "type": "bigtext",
+         "stagger": 0.25,
+         "lines": [
+          [
+           "NEGÓCIO",
+           [
+            245,
+            245,
+            242
+           ],
+           150
+          ],
+          [
+           "ESTRATÉGICO",
+           [
+            245,
+            170,
+            40
+           ],
+           150
+          ]
+         ]
+        },
+        "start": 0.0,
+        "dim": 0.45,
+        "media": "dinheiro",
+        "search": "contando dinheiro"
+       }
+      },
+      {
+       "text": "A Kolynos era a número um no Brasil, na Argentina, no Peru e no Paraguai.",
+       "scene": {
+        "type": "bullets",
+        "title": "KOLYNOS · Nº 1 EM",
+        "items": [
+         "BRASIL",
+         "ARGENTINA",
+         "PERU",
+         "PARAGUAI"
+        ],
+        "size": 96,
+        "stagger": 0.6
+       }
+      },
+      {
+       "text": "Mas tinha um problema.",
+       "scene": {
+        "type": "flash",
+        "text": "MAS...",
+        "color": [
+         245,
+         245,
+         242
+        ],
+        "size": 200
+       }
+      },
+      {
+       "text": "No Brasil, a líder e a vice-líder do mercado iam virar uma empresa só.",
+       "scene": {
+        "type": "compare",
+        "title": "LÍDER + VICE-LÍDER",
+        "items": [
+         [
+          "KOLYNOS",
+          "52%",
+          [
+           70,
+           190,
+           110
+          ]
+         ],
+         [
+          "COLGATE",
+          "26%",
+          [
+           230,
+           52,
+           52
+          ]
+         ]
+        ],
+        "size": 150,
+        "stagger": 0.9
+       }
+      },
+      {
+       "text": "Somando as duas marcas, a Colgate passaria a controlar quase oitenta por cento de todo o creme dental vendido no país.",
+       "scene": {
+        "type": "counter",
+        "value": 78,
+        "suffix": "%",
+        "over": "KOLYNOS + COLGATE",
+        "label": "DO CREME DENTAL DO BRASIL",
+        "color": [
+         230,
+         52,
+         52
+        ],
+        "size": 300
+       },
+       "cap": "Somando as duas marcas, a Colgate passaria a controlar quase 80% de todo o creme dental vendido no país."
+      },
+      {
+       "text": "E quando uma empresa controla quase tudo, quem decide o preço não é mais a concorrência.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "QUEM DECIDE",
+          [
+           245,
+           245,
+           242
+          ],
+          110
+         ],
+         [
+          "O PREÇO?",
+          [
+           245,
+           170,
+           40
+          ],
+          150
+         ]
+        ]
+       }
+      },
+      {
+       "text": "É ela.",
+       "scene": {
+        "type": "flash",
+        "text": "É ELA.",
+        "tint": "red",
+        "size": 200
+       }
+      }
+     ]
+    },
+    {
+     "chapter": "O JULGAMENTO",
+     "sentences": [
+      {
+       "text": "Quem precisava aprovar o negócio era o CADE, o Conselho Administrativo de Defesa Econômica.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "CADE",
+          [
+           245,
+           170,
+           40
+          ],
+          260
+         ],
+         [
+          "CONSELHO ADMINISTRATIVO DE DEFESA ECONÔMICA",
+          [
+           245,
+           245,
+           242
+          ],
+          46
+         ]
+        ]
+       }
+      },
+      {
+       "text": "É o órgão que existe para impedir que uma empresa fique grande demais e prejudique o consumidor.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "PROTEGER O",
+          [
+           245,
+           245,
+           242
+          ],
+          110
+         ],
+         [
+          "CONSUMIDOR",
+          [
+           245,
+           170,
+           40
+          ],
+          150
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Em mil novecentos e noventa e seis, o CADE julgou o caso.",
+       "scene": {
+        "type": "video",
+        "fallback": {
+         "type": "bigtext",
+         "stagger": 0.25,
+         "lines": [
+          [
+           "1996",
+           [
+            245,
+            170,
+            40
+           ],
+           240
+          ],
+          [
+           "O CADE JULGA O CASO",
+           [
+            245,
+            245,
+            242
+           ],
+           90
+          ]
+         ]
+        },
+        "start": 0.0,
+        "dim": 0.35,
+        "lower": "1996 · CADE julga o caso Kolynos",
+        "media": "martelo",
+        "search": "martelo juiz"
+       },
+       "cap": "Em 1996, o CADE julgou o caso."
+      },
+      {
+       "text": "E não proibiu a compra.",
+       "scene": {
+        "type": "stamp",
+        "org": "CADE · 1996",
+        "title": "COMPRA DA KOLYNOS PELA COLGATE",
+        "stamp": "APROVADA",
+        "stamp_color": [
+         70,
+         190,
+         110
+        ],
+        "stamp_at": 0.6
+       }
+      },
+      {
+       "text": "Mas impôs uma condição.",
+       "scene": {
+        "type": "flash",
+        "text": "COM UMA\nCONDIÇÃO",
+        "color": [
+         245,
+         170,
+         40
+        ],
+        "size": 150
+       }
+      },
+      {
+       "text": "A Colgate teria que escolher uma de três saídas.",
+       "scene": {
+        "type": "bullets",
+        "title": "A COLGATE TERIA QUE ESCOLHER",
+        "items": [
+         "1. VENDER A MARCA",
+         "2. ALUGAR POR 20 ANOS",
+         "3. SUSPENDER POR 4 ANOS"
+        ],
+        "size": 84,
+        "cue_offset": 1,
+        "last_gold": true
+       }
+      },
+      {
+       "text": "A primeira: vender a marca Kolynos para outra empresa.",
+       "scene": {
+        "type": "same"
+       }
+      },
+      {
+       "text": "A segunda: alugar a marca por vinte anos para um concorrente pequeno.",
+       "scene": {
+        "type": "same"
+       },
+       "cap": "A segunda: alugar a marca por 20 anos para um concorrente pequeno."
+      },
+      {
+       "text": "A terceira: tirar a Kolynos do mercado brasileiro por quatro anos.",
+       "scene": {
+        "type": "same"
+       },
+       "cap": "A terceira: tirar a Kolynos do mercado brasileiro por 4 anos."
+      },
+      {
+       "text": "A Colgate escolheu a terceira.",
+       "scene": {
+        "type": "flash",
+        "text": "OPÇÃO 3",
+        "color": [
+         245,
+         170,
+         40
+        ],
+        "size": 220
+       }
+      },
+      {
+       "text": "Ela tinha pago mais de um bilhão de dólares por uma marca e decidiu guardar essa marca na gaveta.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "US$ 1 BILHÃO",
+          [
+           245,
+           170,
+           40
+          ],
+          140
+         ],
+         [
+          "NA GAVETA",
+          [
+           245,
+           245,
+           242
+          ],
+          140
+         ]
+        ]
+       },
+       "cap": "Ela tinha pago mais de US$ 1 bilhão por uma marca e decidiu guardar essa marca na gaveta."
+      },
+      {
+       "text": "Parece loucura.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "PARECE",
+          [
+           245,
+           245,
+           242
+          ],
+          150
+         ],
+         [
+          "LOUCURA",
+          [
+           230,
+           52,
+           52
+          ],
+          170
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Mas não era.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "MAS",
+          [
+           245,
+           245,
+           242
+          ],
+          150
+         ],
+         [
+          "NÃO ERA",
+          [
+           245,
+           170,
+           40
+          ],
+          170
+         ]
+        ]
+       }
+      }
+     ]
+    },
+    {
+     "chapter": "A TROCA",
+     "sentences": [
+      {
+       "text": "Em mil novecentos e noventa e sete, as caixinhas verdes e amarelas começaram a ser substituídas nas prateleiras.",
+       "scene": {
+        "type": "video",
+        "fallback": {
+         "type": "bigtext",
+         "stagger": 0.25,
+         "lines": [
+          [
+           "1997",
+           [
+            245,
+            170,
+            40
+           ],
+           220
+          ],
+          [
+           "A TROCA",
+           [
+            245,
+            245,
+            242
+           ],
+           120
+          ]
+         ]
+        },
+        "start": 0.0,
+        "dim": 0.35,
+        "lower": "1997 · as caixinhas verdes e amarelas saem",
+        "media": "prateleira",
+        "search": "prateleira supermercado"
+       },
+       "cap": "Em 1997, as caixinhas verdes e amarelas começaram a ser substituídas nas prateleiras."
+      },
+      {
+       "text": "No lugar delas, chegou uma marca nova da própria Colgate: a Sorriso.",
+       "scene": {
+        "type": "compare",
+        "items": [
+         [
+          "KOLYNOS",
+          "SAI",
+          [
+           70,
+           190,
+           110
+          ]
+         ],
+         [
+          "SORRISO",
+          "ENTRA",
+          [
+           70,
+           140,
+           235
+          ]
+         ]
+        ],
+        "size": 170,
+        "stagger": 1.0
+       }
+      },
+      {
+       "text": "Mesmo espaço na gôndola.",
+       "scene": {
+        "type": "bullets",
+        "items": [
+         "MESMO ESPAÇO NA GÔNDOLA",
+         "MESMO PÚBLICO",
+         "FÓRMULA PARECIDA"
+        ],
+        "size": 84,
+        "cue_offset": 0
+       }
+      },
+      {
+       "text": "Mesmo público.",
+       "scene": {
+        "type": "same"
+       }
+      },
+      {
+       "text": "E, segundo a empresa, uma fórmula parecida.",
+       "scene": {
+        "type": "same"
+       }
+      },
+      {
+       "text": "A Colgate investiu cerca de quarenta milhões de dólares no lançamento, metade só em propaganda na televisão.",
+       "scene": {
+        "type": "counter",
+        "value": 40,
+        "prefix": "US$ ",
+        "suffix": " MI",
+        "over": "LANÇAMENTO DA SORRISO",
+        "label": "METADE EM PROPAGANDA NA TV",
+        "color": [
+         70,
+         140,
+         235
+        ],
+        "size": 260
+       },
+       "cap": "A Colgate investiu cerca de US$ 40 milhões no lançamento, metade só em propaganda na televisão."
+      },
+      {
+       "text": "A produção inicial era de quarenta e cinco milhões de tubos por mês.",
+       "scene": {
+        "type": "counter",
+        "value": 45000000,
+        "over": "PRODUÇÃO INICIAL",
+        "label": "TUBOS POR MÊS",
+        "color": [
+         70,
+         140,
+         235
+        ],
+        "size": 200
+       },
+       "cap": "A produção inicial era de 45 milhões de tubos por mês."
+      },
+      {
+       "text": "E funcionou.",
+       "scene": {
+        "type": "flash",
+        "text": "E FUNCIONOU.",
+        "color": [
+         70,
+         140,
+         235
+        ],
+        "size": 170
+       }
+      },
+      {
+       "text": "Em dois mil, a Sorriso já tinha trinta e seis vírgula sete por cento do faturamento do mercado de creme dental.",
+       "scene": {
+        "type": "counter",
+        "value": 36,
+        "suffix": ",7%",
+        "over": "SORRISO · ANO 2000",
+        "label": "DO FATURAMENTO DO MERCADO",
+        "color": [
+         70,
+         140,
+         235
+        ],
+        "size": 280
+       },
+       "cap": "Em 2000, a Sorriso já tinha 36,7% do faturamento do mercado de creme dental."
+      },
+      {
+       "text": "Ela herdou boa parte da fatia que antes era da Kolynos.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "HERDOU A FATIA",
+          [
+           245,
+           245,
+           242
+          ],
+          120
+         ],
+         [
+          "DA KOLYNOS",
+          [
+           70,
+           190,
+           110
+          ],
+          140
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Quando os quatro anos de suspensão terminaram, a Colgate podia trazer a Kolynos de volta ao Brasil.",
+       "scene": {
+        "type": "timeline",
+        "start": "1997",
+        "end": "2001",
+        "start_sub": "suspensão",
+        "end_sub": "podia voltar",
+        "big": "4 ANOS"
+       },
+       "cap": "Quando os 4 anos de suspensão terminaram, a Colgate podia trazer a Kolynos de volta ao Brasil."
+      },
+      {
+       "text": "E não trouxe.",
+       "scene": {
+        "type": "flash",
+        "text": "E NÃO VOLTOU.",
+        "tint": "red",
+        "size": 170
+       }
+      }
+     ]
+    },
+    {
+     "chapter": "O CUSTO OCULTO",
+     "sentences": [
+      {
+       "text": "E aqui está a parte que quase ninguém percebeu.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "A PARTE QUE",
+          [
+           245,
+           245,
+           242
+          ],
+          120
+         ],
+         [
+          "QUASE NINGUÉM PERCEBEU",
+          [
+           245,
+           170,
+           40
+          ],
+          110
+         ]
+        ]
+       }
+      },
+      {
+       "text": "A decisão tirou do mercado o nome Kolynos.",
+       "scene": {
+        "type": "stamp",
+        "org": "O QUE SAIU",
+        "title": "O NOME KOLYNOS",
+        "stamp": "REMOVIDO",
+        "stamp_at": 0.8
+       }
+      },
+      {
+       "text": "Mas não tirou da Colgate os clientes da Kolynos.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "OS CLIENTES",
+          [
+           245,
+           245,
+           242
+          ],
+          140
+         ],
+         [
+          "FICARAM",
+          [
+           70,
+           190,
+           110
+          ],
+          170
+         ]
+        ]
+       }
+      },
+      {
+       "text": "A empresa trocou a embalagem, manteve a prateleira e ficou com o consumidor.",
+       "scene": {
+        "type": "flow",
+        "a": "KOLYNOS",
+        "a_sub": "52% do mercado",
+        "b": "SORRISO",
+        "b_sub": "da própria Colgate",
+        "caption": "A EMBALAGEM MUDOU. O CLIENTE FICOU."
+       }
+      },
+      {
+       "text": "O objetivo era abrir espaço para a concorrência.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "O OBJETIVO",
+          [
+           150,
+           150,
+           155
+          ],
+          80
+         ],
+         [
+          "ABRIR ESPAÇO PARA",
+          [
+           245,
+           245,
+           242
+          ],
+          100
+         ],
+         [
+          "A CONCORRÊNCIA",
+          [
+           245,
+           170,
+           40
+          ],
+          120
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Na prática, quem ocupou esse espaço foi uma marca da própria Colgate.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "QUEM OCUPOU",
+          [
+           245,
+           245,
+           242
+          ],
+          110
+         ],
+         [
+          "FOI A PRÓPRIA COLGATE",
+          [
+           230,
+           52,
+           52
+          ],
+          110
+         ]
+        ]
+       }
+      },
+      {
+       "text": "O consumidor perdeu a pasta que conhecia desde criança.",
+       "scene": {
+        "type": "video",
+        "fallback": {
+         "type": "bigtext",
+         "stagger": 0.25,
+         "lines": [
+          [
+           "O CONSUMIDOR",
+           [
+            245,
+            245,
+            242
+           ],
+           120
+          ],
+          [
+           "PERDEU A KOLYNOS",
+           [
+            230,
+            52,
+            52
+           ],
+           120
+          ]
+         ]
+        },
+        "start": 3.0,
+        "dim": 0.35,
+        "lower": "O consumidor perdeu a pasta de infância",
+        "media": "escovando",
+        "search": "escovando os dentes"
+       }
+      },
+      {
+       "text": "E a empresa que comprou a Kolynos não perdeu o mercado.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "A COLGATE NÃO",
+          [
+           245,
+           245,
+           242
+          ],
+          110
+         ],
+         [
+          "PERDEU O MERCADO",
+          [
+           245,
+           170,
+           40
+          ],
+          120
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Esse é o custo oculto da Kolynos: o que valia de verdade não era o nome na caixinha.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "NÃO ERA",
+          [
+           245,
+           245,
+           242
+          ],
+          110
+         ],
+         [
+          "O NOME NA CAIXINHA",
+          [
+           150,
+           150,
+           155
+          ],
+          100
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Era o lugar na prateleira, a fábrica e o hábito de milhões de pessoas.",
+       "scene": {
+        "type": "bullets",
+        "title": "O QUE VALIA DE VERDADE",
+        "items": [
+         "O LUGAR NA PRATELEIRA",
+         "A FÁBRICA",
+         "O HÁBITO DE MILHÕES"
+        ],
+        "size": 88,
+        "last_gold": true,
+        "stagger": 1.0
+       }
+      },
+      {
+       "text": "E isso nenhuma decisão conseguiu tirar.",
+       "scene": {
+        "type": "flash",
+        "text": "ISSO NINGUÉM\nCONSEGUIU TIRAR",
+        "color": [
+         245,
+         170,
+         40
+        ],
+        "size": 130
+       }
+      }
+     ]
+    },
+    {
+     "chapter": "ONDE ESTÁ HOJE",
+     "sentences": [
+      {
+       "text": "A Kolynos nunca voltou a ser fabricada no Brasil.",
+       "scene": {
+        "type": "print",
+        "source": "InfoMoney, 17/05/2025",
+        "fallback": {
+         "type": "bigtext",
+         "stagger": 0.25,
+         "lines": [
+          [
+           "NUNCA MAIS",
+           [
+            245,
+            245,
+            242
+           ],
+           130
+          ],
+          [
+           "FABRICADA NO BRASIL",
+           [
+            230,
+            52,
+            52
+           ],
+           100
+          ]
+         ]
+        },
+        "rotate": -1.0,
+        "media": "print02",
+        "url": "https://www.infomoney.com.br/?p=2863788"
+       }
+      },
+      {
+       "text": "Fora do país, a marca continuou existindo, e até hoje tem gente que paga mais caro para trazer tubos da Argentina, do Paraguai e do Uruguai.",
+       "scene": {
+        "type": "bullets",
+        "title": "KOLYNOS VEM DE FORA",
+        "items": [
+         "ARGENTINA",
+         "PARAGUAI",
+         "URUGUAI"
+        ],
+        "size": 110,
+        "stagger": 0.8
+       }
+      },
+      {
+       "text": "Em setembro de dois mil e vinte e cinco, quase trinta anos depois, a Colgate lançou uma edição limitada da Sorriso com a fórmula e o visual clássicos da Kolynos.",
+       "scene": {
+        "type": "print",
+        "source": "Exame, 08/09/2025",
+        "fallback": {
+         "type": "bigtext",
+         "stagger": 0.25,
+         "lines": [
+          [
+           "SETEMBRO 2025",
+           [
+            245,
+            170,
+            40
+           ],
+           150
+          ],
+          [
+           "EDIÇÃO LIMITADA",
+           [
+            245,
+            245,
+            242
+           ],
+           110
+          ],
+          [
+           "SORRISO COM A FÓRMULA DA KOLYNOS",
+           [
+            150,
+            150,
+            155
+           ],
+           56
+          ]
+         ]
+        },
+        "rotate": -1.0,
+        "media": "print03",
+        "url": "https://exame.com/en/is-kolynos-back-colgate-palmolive-has-plans-for-the-toothpaste-brand-in-brazil/"
+       },
+       "cap": "Em setembro de 2025, quase 30 anos depois, a Colgate lançou uma edição limitada da Sorriso com a fórmula e o visual clássicos da Kolynos."
+      },
+      {
+       "text": "Sem previsão de reposição.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "SEM PREVISÃO",
+          [
+           245,
+           245,
+           242
+          ],
+          130
+         ],
+         [
+          "DE REPOSIÇÃO",
+          [
+           230,
+           52,
+           52
+          ],
+          130
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Só para matar a saudade.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "SÓ PARA",
+          [
+           245,
+           245,
+           242
+          ],
+          120
+         ],
+         [
+          "MATAR A SAUDADE",
+          [
+           245,
+           170,
+           40
+          ],
+          130
+         ]
+        ]
+       }
+      },
+      {
+       "text": "A marca que dominava o Brasil virou uma lembrança vendida por tempo limitado.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "DE LÍDER DO BRASIL",
+          [
+           245,
+           245,
+           242
+          ],
+          100
+         ],
+         [
+          "A LEMBRANÇA",
+          [
+           245,
+           170,
+           40
+          ],
+          150
+         ],
+         [
+          "POR TEMPO LIMITADO",
+          [
+           150,
+           150,
+           155
+          ],
+          80
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Se você quer entender o que existe por trás das empresas que somem, se inscreve no Custo Oculto.",
+       "scene": {
+        "type": "endcard",
+        "sub": "INSCREVA-SE"
+       }
+      },
+      {
+       "text": "No próximo vídeo, a construtora que deixou milhares de famílias sem o apartamento que já tinham pagado.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "PRÓXIMO VÍDEO",
+          [
+           150,
+           150,
+           155
+          ],
+          70
+         ],
+         [
+          "A CONSTRUTORA",
+          [
+           245,
+           245,
+           242
+          ],
+          130
+         ],
+         [
+          "QUE NÃO ENTREGOU",
+          [
+           230,
+           52,
+           52
+          ],
+          120
+         ]
+        ]
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "shorts": [
+   {
+    "title": "Essa pasta de dente vendia o dobro da Colgate",
+    "sentences": [
+     {
+      "text": "Essa pasta de dente vendia o dobro da Colgate.",
+      "scene": {
+       "type": "compare",
+       "items": [
+        [
+         "52%",
+         "KOLYNOS",
+         [
+          70,
+          190,
+          110
+         ]
+        ],
+        [
+         "26%",
+         "COLGATE",
+         [
+          230,
+          52,
+          52
+         ]
+        ]
+       ],
+       "size": 230,
+       "stagger": 0.6,
+       "vs": false
+      }
+     },
+     {
+      "text": "E sumiu do Brasil.",
+      "scene": {
+       "type": "flash",
+       "text": "E SUMIU\nDO BRASIL",
+       "tint": "red",
+       "size": 150
+      }
+     },
+     {
+      "text": "A Kolynos tinha cinquenta e dois por cento do mercado.",
+      "scene": {
+       "type": "counter",
+       "value": 52,
+       "suffix": "%",
+       "over": "ANOS 90",
+       "label": "DO MERCADO BRASILEIRO",
+       "color": [
+        70,
+        190,
+        110
+       ],
+       "size": 300
+      },
+      "cap": "A Kolynos tinha 52% do mercado."
+     },
+     {
+      "text": "Em mil novecentos e noventa e cinco, a Colgate comprou a marca por mais de um bilhão de dólares.",
+      "scene": {
+       "type": "counter",
+       "value": 1,
+       "prefix": "US$ ",
+       "suffix": ",04 BI",
+       "over": "1995 · COLGATE COMPRA",
+       "label": "PREÇO DA KOLYNOS",
+       "color": [
+        245,
+        170,
+        40
+       ],
+       "size": 200
+      },
+      "cap": "Em 1995, a Colgate comprou a marca por mais de US$ 1 bilhão."
+     },
+     {
+      "text": "O CADE deu três opções para aprovar o negócio.",
+      "scene": {
+       "type": "bullets",
+       "title": "O CADE DEU 3 OPÇÕES",
+       "items": [
+        "VENDER A MARCA",
+        "ALUGAR POR 20 ANOS",
+        "SUSPENDER POR 4 ANOS"
+       ],
+       "size": 76,
+       "last_gold": true,
+       "stagger": 0.6
+      }
+     },
+     {
+      "text": "A Colgate escolheu tirar a Kolynos das prateleiras por quatro anos.",
+      "scene": {
+       "type": "stamp",
+       "org": "COLGATE · 1997",
+       "title": "KOLYNOS NO BRASIL",
+       "stamp": "SUSPENSA",
+       "stamp_at": 1.0
+      },
+      "cap": "A Colgate escolheu tirar a Kolynos das prateleiras por 4 anos."
+     },
+     {
+      "text": "E colocou no lugar uma marca nova: a Sorriso.",
+      "scene": {
+       "type": "compare",
+       "items": [
+        [
+         "KOLYNOS",
+         "SAI",
+         [
+          70,
+          190,
+          110
+         ]
+        ],
+        [
+         "SORRISO",
+         "ENTRA",
+         [
+          70,
+          140,
+          235
+         ]
+        ]
+       ],
+       "size": 170,
+       "stagger": 0.8
+      }
+     },
+     {
+      "text": "O nome sumiu.",
+      "scene": {
+       "type": "bigtext",
+       "stagger": 0.25,
+       "lines": [
+        [
+         "O NOME",
+         [
+          245,
+          245,
+          242
+         ],
+         150
+        ],
+        [
+         "SUMIU",
+         [
+          230,
+          52,
+          52
+         ],
+         190
+        ]
+       ]
+      }
+     },
+     {
+      "text": "Os clientes ficaram.",
+      "scene": {
+       "type": "bigtext",
+       "stagger": 0.25,
+       "lines": [
+        [
+         "OS CLIENTES",
+         [
+          245,
+          245,
+          242
+         ],
+         130
+        ],
+        [
+         "FICARAM",
+         [
+          70,
+          190,
+          110
+         ],
+         190
+        ]
+       ]
+      }
+     },
+     {
+      "text": "O vídeo completo está no canal.",
+      "scene": {
+       "type": "endcard",
+       "sub": "VÍDEO COMPLETO NO CANAL"
+      }
+     }
+    ]
+   }
+  ]
+ },
+ "meta": {
+  "titles": [
+   "KOLYNOS: Por Que a Pasta Mais Vendida do Brasil Sumiu?",
+   "A Colgate Pagou US$ 1 Bilhão Pela Kolynos e Guardou na Gaveta"
+  ],
+  "description": "A Kolynos tinha 52% do mercado de creme dental no Brasil. Em 1995, a Colgate comprou a marca por US$ 1,04 bilhão. O CADE deu três opções para aprovar o negócio, e a Colgate escolheu tirar a Kolynos das prateleiras. No lugar, nasceu a Sorriso. O nome sumiu. Os clientes ficaram.\n\n[CAPÍTULOS]\n\nFontes: comunicados da Colgate-Palmolive (1995 e 1997), Exame, InfoMoney, ConJur, Origem das Marcas.\n\n#Kolynos #Colgate #Sorriso #CADE #CustoOculto",
+  "tags": [
+   "kolynos",
+   "o que aconteceu com a kolynos",
+   "colgate",
+   "sorriso",
+   "cade",
+   "marcas que sumiram",
+   "custo oculto"
+  ]
+ },
+ "thumbs": [
+  {
+   "glow": "green",
+   "lines": [
+    {
+     "text": "KOLYNOS",
+     "color": "green",
+     "size": 120
+    },
+    {
+     "text": "POR QUE",
+     "color": "white",
+     "size": 150
+    },
+    {
+     "text": "SUMIU?",
+     "color": "gold",
+     "size": 190
+    }
+   ]
+  },
+  {
+   "glow": "gold",
+   "lines": [
+    {
+     "text": "US$ 1 BILHÃO",
+     "color": "gold",
+     "size": 150
+    },
+    {
+     "text": "E GUARDOU",
+     "color": "white",
+     "size": 120
+    },
+    {
+     "text": "NA GAVETA",
+     "color": "red",
+     "size": 130
+    },
+    {
+     "text": "KOLYNOS",
+     "color": "green",
+     "size": 70,
+     "pill": true
+    }
+   ]
+  }
+ ],
+ "notes": "FATOS CHECADOS (com fonte)\n- Kolynos criada nos EUA em 1908 pelo dentista Neal Jenkins; chega ao Brasil em 1917 como importada; depois ganha fábrica em SP. (Exame, 16/03/2025)\n- Anos 80-90: Kolynos 52,5% do creme dental no Brasil; Colgate 25,6%. (ConJur 14/12/2017, citando o caso no CADE; Exame cita 52% x 27%)\n- 09/01/1995: Colgate-Palmolive anuncia compra da Kolynos da American Home Products por US$ 1,04 bilhão em dinheiro; Kolynos nº 1 no Brasil, Argentina, Peru e Paraguai. (comunicado Colgate)\n- Set/1996: CADE aprova com 3 alternativas: suspender a marca por 4 anos; licenciar por 20 anos a entrante com menos de 20%; ou vender a marca. (ConJur; comunicado Colgate 19/03/1997)\n- Colgate escolhe suspender a Kolynos (creme dental) no Brasil por 4 anos; 6 meses de transição; oferecer ~1/5 da capacidade a terceiros; escovas e fio dental liberados. (comunicado Colgate 19/03/1997)\n- 1997: lançamento da Sorriso; investimento de US$ 40 mi (metade TV); produção inicial 45 mi de tubos/mês. (InfoMoney 17/05/2025)\n- 2000: Sorriso com 36,7% do faturamento do mercado. (Origem das Marcas, citando Exame)\n- Após os 4 anos, a Colgate não trouxe a Kolynos de volta; marca nunca mais fabricada no Brasil. (InfoMoney)\n- Kolynos segue vendida em outros países; tubos da Argentina, Paraguai e Uruguai vendidos online mais caros. (Exame)\n- 02/09/2025: edição limitada da Sorriso com fórmula e visual da Kolynos, sem reposição, nos 28 anos da Sorriso. (Exame, 08/09/2025)\nFONTES: investor.colgatepalmolive.com (1995 e 1997); exame.com; infomoney.com.br; conjur.com.br; origemdasmarcas.blogspot.com"
+}

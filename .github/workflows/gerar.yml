@@ -1,0 +1,97 @@
+name: Gerar vídeo
+
+on:
+  workflow_dispatch:
+    inputs:
+      projeto:
+        description: "Projeto (nome da pasta em projetos/, ex.: kolynos)"
+        required: true
+      formato:
+        description: "O que gerar"
+        type: choice
+        options: [tudo, longo, shorts, short1, short2, short3]
+        default: tudo
+      voz:
+        description: "Trocar a voz (opcional, ex.: pt-BR-Chirp3-HD-Orus)"
+        required: false
+        default: ""
+      modo:
+        description: "google = voz real · teste = voz falsa, sem custo"
+        type: choice
+        options: [google, teste]
+        default: google
+  push:
+    paths: ["projetos/*/projeto.json"]
+
+concurrency:
+  group: gerar-${{ github.ref }}-${{ inputs.projeto || 'push' }}
+  cancel-in-progress: false
+
+jobs:
+  gerar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Descobrir projeto
+        id: alvo
+        shell: bash
+        env:
+          PROJETO: ${{ inputs.projeto }}
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            lista="$PROJETO"
+          else
+            lista=$(git diff --name-only HEAD~1 HEAD -- 'projetos/*/projeto.json' | cut -d/ -f2 | sort -u | xargs)
+          fi
+          echo "lista=$lista" >> "$GITHUB_OUTPUT"
+          echo "nome=$(echo "$lista" | tr ' ' '-')" >> "$GITHUB_OUTPUT"
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Instalar ferramentas
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg > /dev/null
+          pip install -q -r requirements.txt
+          python -m playwright install --with-deps chromium > /dev/null
+
+      - name: Cache de narração (não paga duas vezes a mesma frase)
+        uses: actions/cache@v4
+        with:
+          path: .cache/tts
+          key: tts-${{ github.run_id }}
+          restore-keys: tts-
+
+      - name: Gerar
+        env:
+          GOOGLE_TTS_KEY: ${{ secrets.GOOGLE_TTS_KEY }}
+          PEXELS_KEY: ${{ secrets.PEXELS_KEY }}
+          CHROME_CHANNEL: chrome
+          LISTA: ${{ steps.alvo.outputs.lista }}
+          FORMATO: ${{ inputs.formato || 'tudo' }}
+          MODO: ${{ inputs.modo || 'google' }}
+          VOZ: ${{ inputs.voz }}
+        shell: bash
+        run: |
+          for p in $LISTA; do
+            if [ -n "$VOZ" ]; then
+              python -m fabrica.gerar "$p" --formato "$FORMATO" --modo "$MODO" --voz "$VOZ"
+            else
+              python -m fabrica.gerar "$p" --formato "$FORMATO" --modo "$MODO"
+            fi
+          done
+
+      - name: Entregar arquivos
+        uses: actions/upload-artifact@v4
+        with:
+          name: video-${{ steps.alvo.outputs.nome }}-${{ github.run_number }}
+          path: saida/
+          if-no-files-found: warn
+          retention-days: 14
+          compression-level: 0

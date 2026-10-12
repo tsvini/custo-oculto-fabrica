@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><title>render</title>
+<style>
+@font-face{font-family:Inter;font-weight:500;src:url(fonts/inter-latin-500-normal.woff2)}
+@font-face{font-family:Inter;font-weight:600;src:url(fonts/inter-latin-600-normal.woff2)}
+@font-face{font-family:Inter;font-weight:700;src:url(fonts/inter-latin-700-normal.woff2)}
+@font-face{font-family:Inter;font-weight:800;src:url(fonts/inter-latin-800-normal.woff2)}
+@font-face{font-family:Inter;font-weight:900;src:url(fonts/inter-latin-900-normal.woff2)}
+@font-face{font-family:"JetBrains Mono";font-weight:700;src:url(fonts/jetbrains-mono-latin-700-normal.woff2)}
+@font-face{font-family:Merriweather;font-weight:700;src:url(fonts/merriweather-latin-700-normal.woff2)}
+@font-face{font-family:Merriweather;font-weight:800 900;src:url(fonts/merriweather-latin-900-normal.woff2)}
+body{margin:0;background:#000}
+</style></head><body>
+<script src="mp4-muxer.js"></script><script src="engine.js"></script>
+<script>
+/* Página de render da fábrica: recebe o roteiro, as narrações (com tempos) e a mídia, e gera o MP4. */
+const E = COEngine;
+async function fontes() {
+  const fam = ["500 20px Inter", "600 20px Inter", "700 20px Inter", "800 20px Inter", "900 20px Inter", "700 20px 'JetBrains Mono'", "700 20px Merriweather", "900 20px Merriweather"];
+  await Promise.all(fam.map((f) => document.fonts.load(f, "ÁÇÃÉ0123")));
+}
+async function carregaMidia(man, base) {
+  const out = {};
+  await Promise.all(Object.entries(man || {}).map(async ([k, m]) => {
+    const url = base + encodeURIComponent(m.file);
+    try {
+      if (m.kind === "img") {
+        const img = new Image(); img.src = url; await img.decode(); out[k] = { img };
+      } else {
+        const v = document.createElement("video"); v.muted = true; v.preload = "auto"; v.playsInline = true; v.src = url;
+        await new Promise((res, rej) => { v.onloadeddata = res; v.onerror = () => rej(new Error("vídeo ilegível")); setTimeout(res, 15000); });
+        if (v.videoWidth) out[k] = { video: v };
+      }
+    } catch (e) { console.log("mídia ignorada", k, e.message); }
+  }));
+  return out;
+}
+async function montar(cfg) {
+  await fontes();
+  const p = await (await fetch(cfg.projeto)).json();
+  const longo = cfg.formato === "longo";
+  const groups = longo ? p.script.long.parts : [p.script.shorts[cfg.idx]];
+  const units = [];
+  for (let k = 0; k < groups.length; k++) {
+    const g = groups[k];
+    if (longo && k > 0) units.push({ kind: "card", dur: 2.4, scene: { type: "chapter", num: "CAPÍTULO " + k, title: (g.chapter || "CAPÍTULO " + k).toUpperCase(), size: 130 } });
+    const sentences = g.sentences.filter((s) => s.text && s.text.trim());
+    const pa = cfg.partes[k];
+    const voice = await E.decodeAudio(await (await fetch(pa.wav)).arrayBuffer());
+    units.push({ kind: "speech", sentences, voice, timings: pa.tempos });
+  }
+  const media = await carregaMidia(cfg.midia, cfg.midiaBase);
+  const tl = E.buildTimeline(units, { hook: !longo, tail: longo ? 1.5 : 1.2 });
+  return { p, tl, media, longo };
+}
+window.gerar = async (cfg) => {
+  const t0 = performance.now();
+  const { tl, media, longo } = await montar(cfg);
+  const prev = [];
+  if (cfg.previas) {
+    const c = document.createElement("canvas"); const R = new E.Renderer(c, !longo);
+    for (const f of cfg.previas) { const t = tl.total * f; await R.syncMedia(tl, t, media); R.draw(tl, t, 0, media); prev.push(c.toDataURL("image/jpeg", 0.7)); }
+  }
+  let last = -1;
+  const res = await E.exportMp4(tl, !longo, media, (f) => { const pc = Math.floor(f * 20); if (pc !== last) { last = pc; console.log("progresso " + Math.round(f * 100) + "%"); } });
+  const r = await fetch("/upload?name=" + encodeURIComponent(cfg.saida), { method: "POST", body: res.blob });
+  if (!r.ok) throw new Error("upload falhou " + r.status);
+  return { total: tl.total, ext: res.ext, codec: res.codec, bytes: res.blob.size, srt: E.toSrt(tl), capitulos: longo ? E.chapterMarks(tl) : "", segundos: (performance.now() - t0) / 1000, previas: prev };
+};
+window.miniatura = async (cfg) => {
+  await fontes(); const c = document.createElement("canvas"); E.drawThumb(c, cfg); return c.toDataURL("image/jpeg", 0.92);
+};
+</script></body></html>
