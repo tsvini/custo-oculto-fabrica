@@ -7,6 +7,7 @@
 @font-face{font-family:Inter;font-weight:800;src:url(fonts/inter-latin-800-normal.woff2)}
 @font-face{font-family:Inter;font-weight:900;src:url(fonts/inter-latin-900-normal.woff2)}
 @font-face{font-family:"JetBrains Mono";font-weight:700;src:url(fonts/jetbrains-mono-latin-700-normal.woff2)}
+@font-face{font-family:Anton;font-weight:400;src:url(fonts/anton-latin-400-normal.woff2)}
 @font-face{font-family:Merriweather;font-weight:700;src:url(fonts/merriweather-latin-700-normal.woff2)}
 @font-face{font-family:Merriweather;font-weight:800 900;src:url(fonts/merriweather-latin-900-normal.woff2)}
 body{margin:0;background:#000}
@@ -16,7 +17,7 @@ body{margin:0;background:#000}
 /* Página de render da fábrica: recebe o roteiro, as narrações (com tempos) e a mídia, e gera o MP4. */
 const E = COEngine;
 async function fontes() {
-  const fam = ["500 20px Inter", "600 20px Inter", "700 20px Inter", "800 20px Inter", "900 20px Inter", "700 20px 'JetBrains Mono'", "700 20px Merriweather", "900 20px Merriweather"];
+  const fam = ["20px Anton", "italic 800 20px Merriweather", "500 20px Inter", "600 20px Inter", "700 20px Inter", "800 20px Inter", "900 20px Inter", "700 20px 'JetBrains Mono'", "700 20px Merriweather", "900 20px Merriweather"];
   await Promise.all(fam.map((f) => document.fonts.load(f, "ÁÇÃÉ0123")));
 }
 async function carregaMidia(man, base) {
@@ -25,11 +26,11 @@ async function carregaMidia(man, base) {
     const url = base + encodeURIComponent(m.file);
     try {
       if (m.kind === "img") {
-        const img = new Image(); img.src = url; await img.decode(); out[k] = { img };
+        const img = new Image(); img.src = url; await img.decode(); out[k] = { img, credit: m.credit };
       } else {
         const v = document.createElement("video"); v.muted = true; v.preload = "auto"; v.playsInline = true; v.src = url;
         await new Promise((res, rej) => { v.onloadeddata = res; v.onerror = () => rej(new Error("vídeo ilegível")); setTimeout(res, 15000); });
-        if (v.videoWidth) out[k] = { video: v };
+        if (v.videoWidth) out[k] = { video: v, credit: m.credit };
       }
     } catch (e) { console.log("mídia ignorada", k, e.message); }
   }));
@@ -68,6 +69,10 @@ window.gerar = async (cfg) => {
   const r = await fetch("/upload?name=" + encodeURIComponent(cfg.saida), { method: "POST", body: res.blob });
   if (!r.ok) throw new Error("upload falhou " + r.status);
   return { total: tl.total, ext: res.ext, codec: res.codec, bytes: res.blob.size, srt: E.toSrt(tl), capitulos: longo ? E.chapterMarks(tl) : "", segundos: (performance.now() - t0) / 1000, previas: prev };
+};
+window.capa = async (cfg) => {
+  await fontes(); const media = await carregaMidia(cfg.midia, cfg.midiaBase); const c = document.createElement("canvas");
+  E.drawCapa(c, cfg.cena, media, cfg.vertical); return c.toDataURL("image/jpeg", 0.92);
 };
 window.miniatura = async (cfg) => {
   await fontes(); const c = document.createElement("canvas"); E.drawThumb(c, cfg); return c.toDataURL("image/jpeg", 0.92);

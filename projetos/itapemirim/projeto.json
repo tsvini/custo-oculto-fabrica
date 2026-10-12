@@ -2137,32 +2137,60 @@
      {
       "text": "Faltava uma semana para o Natal quando quase quarenta e seis mil pessoas ficaram sem voo.",
       "scene": {
-       "type": "counter",
-       "value": 45887,
-       "over": "DEZEMBRO DE 2021",
-       "label": "PASSAGEIROS SEM VOO",
-       "color": "red",
-       "size": 220
+       "type": "capa",
+       "foto": "ita_aviao",
+       "wiki": [
+        "Itapemirim Transportes Aéreos",
+        "ITA Transportes Aéreos Airbus A320",
+        "Itapemirim Airbus A320"
+       ],
+       "seta": false,
+       "recorte": "17 de dezembro de 2021",
+       "faixa": "Uma semana antes do Natal",
+       "linhas": [
+        [
+         "46 mil",
+         "gold",
+         250
+        ],
+        [
+         "sem voo",
+         "white",
+         210
+        ]
+       ],
+       "selo": "A aérea durou 6 meses"
       },
       "cap": "Faltava uma semana para o Natal quando quase 46 mil pessoas ficaram sem voo."
      },
      {
       "text": "Todas da mesma companhia aérea.",
       "scene": {
-       "type": "bigtext",
-       "stagger": 0.25,
-       "lines": [
-        [
-         "A MESMA",
-         "white",
-         120
-        ],
-        [
-         "COMPANHIA AÉREA",
-         "gold",
-         110
+       "type": "image",
+       "media": "ita_aviao",
+       "wiki": [
+        "Itapemirim Transportes Aéreos",
+        "ITA Transportes Aéreos Airbus A320",
+        "Itapemirim Airbus A320"
+       ],
+       "lower": "ITA · Itapemirim Transportes Aéreos",
+       "dim": 0.4,
+       "fallback": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "A MESMA",
+          "white",
+          120
+         ],
+         [
+          "COMPANHIA AÉREA",
+          "gold",
+          110
+         ]
         ]
-       ]
+       }
       }
      },
      {
@@ -2200,20 +2228,31 @@
      {
       "text": "E tinha nascido de uma marca que todo brasileiro conhecia: a Itapemirim, a empresa de ônibus.",
       "scene": {
-       "type": "bigtext",
-       "stagger": 0.25,
-       "lines": [
-        [
-         "ITAPEMIRIM",
-         "gold",
-         170
-        ],
-        [
-         "A EMPRESA DE ÔNIBUS",
-         "white",
-         90
+       "type": "image",
+       "media": "ita_onibus",
+       "wiki": [
+        "Viação Itapemirim ônibus",
+        "Itapemirim bus",
+        "Ônibus Itapemirim"
+       ],
+       "lower": "Itapemirim · quase 70 anos de estrada",
+       "dim": 0.4,
+       "fallback": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "ITAPEMIRIM",
+          "gold",
+          170
+         ],
+         [
+          "A EMPRESA DE ÔNIBUS",
+          "white",
+          90
+         ]
         ]
-       ]
+       }
       }
      },
      {
@@ -2410,14 +2449,29 @@
      {
       "text": "Uma empresa de ônibus endividada abriu uma companhia aérea com trezentos e oitenta mil reais.",
       "scene": {
-       "type": "counter",
-       "value": 380,
-       "prefix": "R$ ",
-       "suffix": " MIL",
-       "over": "CAPITAL SOCIAL DA ITA",
-       "label": "PARA ABRIR UMA AÉREA",
-       "color": "red",
-       "size": 230
+       "type": "capa",
+       "foto": "ita_onibus",
+       "wiki": [
+        "Viação Itapemirim ônibus",
+        "Itapemirim bus",
+        "Ônibus Itapemirim"
+       ],
+       "seta": false,
+       "recorte": "Capital social da ITA",
+       "faixa": "Abriram uma companhia aérea",
+       "linhas": [
+        [
+         "com",
+         "white",
+         170
+        ],
+        [
+         "R$ 380 mil",
+         "gold",
+         240
+        ]
+       ],
+       "selo": "A Azul começou com 80 milhões"
       },
       "cap": "Uma empresa de ônibus endividada abriu uma companhia aérea com R$ 380 mil."
      },
@@ -2445,20 +2499,31 @@
      {
       "text": "A dona da ideia era a Itapemirim, que já estava em recuperação judicial.",
       "scene": {
-       "type": "bigtext",
-       "stagger": 0.25,
-       "lines": [
-        [
-         "ITAPEMIRIM",
-         "gold",
-         170
-        ],
-        [
-         "EM RECUPERAÇÃO JUDICIAL",
-         "red",
-         80
+       "type": "image",
+       "media": "ita_onibus",
+       "wiki": [
+        "Viação Itapemirim ônibus",
+        "Itapemirim bus",
+        "Ônibus Itapemirim"
+       ],
+       "lower": "Itapemirim · em recuperação judicial",
+       "dim": 0.4,
+       "fallback": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "ITAPEMIRIM",
+          "gold",
+          170
+         ],
+         [
+          "EM RECUPERAÇÃO JUDICIAL",
+          "red",
+          80
+         ]
         ]
-       ]
+       }
       }
      },
      {
@@ -2546,24 +2611,45 @@
      {
       "text": "Mesmo assim, a Anac liberou o certificado em abril de dois mil e vinte e um.",
       "scene": {
-       "type": "stamp",
-       "org": "ANAC · ABRIL 2021",
-       "title": "CERTIFICADO DE OPERADOR AÉREO",
-       "stamp": "APROVADO",
-       "stamp_color": "green",
-       "stamp_at": 1.0
+       "type": "image",
+       "media": "anac",
+       "wiki": [
+        "Agência Nacional de Aviação Civil sede",
+        "ANAC Brasília edifício"
+       ],
+       "lower": "Anac · abril de 2021",
+       "dim": 0.4,
+       "fallback": {
+        "type": "stamp",
+        "org": "ANAC · ABRIL 2021",
+        "title": "CERTIFICADO DE OPERADOR AÉREO",
+        "stamp": "APROVADO",
+        "stamp_color": "green",
+        "stamp_at": 1.0
+       }
       },
       "cap": "Mesmo assim, a Anac liberou o certificado em abril de 2021."
      },
      {
       "text": "A ITA chegou a voar com seis aviões para catorze cidades.",
       "scene": {
-       "type": "counter",
-       "value": 6,
-       "label": "AVIÕES",
-       "sub": "14 CIDADES",
-       "color": "gold",
-       "size": 300
+       "type": "image",
+       "media": "ita_aviao",
+       "wiki": [
+        "Itapemirim Transportes Aéreos",
+        "ITA Transportes Aéreos Airbus A320",
+        "Itapemirim Airbus A320"
+       ],
+       "lower": "6 aviões · 14 cidades",
+       "dim": 0.4,
+       "fallback": {
+        "type": "counter",
+        "value": 6,
+        "label": "AVIÕES",
+        "sub": "14 CIDADES",
+        "color": "gold",
+        "size": 300
+       }
       },
       "cap": "A ITA chegou a voar com 6 aviões para 14 cidades."
      },

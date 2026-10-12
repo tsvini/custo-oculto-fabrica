@@ -1819,34 +1819,65 @@
      {
       "text": "A Colgate pagou mais de um bilhão de dólares por uma pasta de dente. E guardou ela na gaveta.",
       "scene": {
-       "type": "counter",
-       "value": 1,
-       "prefix": "US$ ",
-       "suffix": ",04 BI",
-       "over": "O QUE A COLGATE PAGOU",
-       "label": "PELA KOLYNOS",
-       "color": "gold",
-       "size": 220
+       "type": "capa",
+       "foto": "kolynos",
+       "wiki": [
+        "Kolynos",
+        "Kolynos toothpaste",
+        "Kolynos creme dental"
+       ],
+       "seta": false,
+       "recorte": "A pasta mais vendida do Brasil",
+       "faixa": "A Colgate pagou",
+       "linhas": [
+        [
+         "US$ 1 bilhão",
+         "gold",
+         230
+        ],
+        [
+         "pra sumir",
+         "white",
+         210
+        ],
+        [
+         "com ela",
+         "white",
+         190
+        ]
+       ],
+       "selo": "Kolynos · 1997"
       },
       "cap": "A Colgate pagou mais de US$ 1 bilhão por uma pasta de dente. E guardou ela na gaveta."
      },
      {
       "text": "Nos anos noventa, a Kolynos era a pasta de dente mais vendida do Brasil.",
       "scene": {
-       "type": "bigtext",
-       "stagger": 0.25,
-       "lines": [
-        [
-         "ANOS 90",
-         "gold",
-         200
-        ],
-        [
-         "A Nº 1 DO BRASIL",
-         "white",
-         100
+       "type": "image",
+       "media": "kolynos",
+       "wiki": [
+        "Kolynos",
+        "Kolynos toothpaste",
+        "Kolynos creme dental"
+       ],
+       "lower": "Kolynos · nº 1 do Brasil nos anos 90",
+       "dim": 0.4,
+       "fallback": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "ANOS 90",
+          "gold",
+          200
+         ],
+         [
+          "A Nº 1 DO BRASIL",
+          "white",
+          100
+         ]
         ]
-       ]
+       }
       },
       "cap": "Nos anos 90, a Kolynos era a pasta de dente mais vendida do Brasil."
      },
@@ -1911,20 +1942,30 @@
      {
       "text": "Aí entrou o CADE, o órgão que existe para impedir monopólio.",
       "scene": {
-       "type": "bigtext",
-       "stagger": 0.25,
-       "lines": [
-        [
-         "CADE",
-         "gold",
-         240
-        ],
-        [
-         "CONTRA MONOPÓLIO",
-         "white",
-         90
+       "type": "image",
+       "media": "cade",
+       "wiki": [
+        "Conselho Administrativo de Defesa Econômica",
+        "CADE Brasília edifício sede"
+       ],
+       "lower": "CADE · Conselho Administrativo de Defesa Econômica",
+       "dim": 0.4,
+       "fallback": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "CADE",
+          "gold",
+          240
+         ],
+         [
+          "CONTRA MONOPÓLIO",
+          "white",
+          90
+         ]
         ]
-       ]
+       }
       }
      },
      {
@@ -2113,47 +2154,67 @@
      {
       "text": "Se você tem mais de trinta anos, você escovou os dentes com essa pasta.",
       "scene": {
-       "type": "bigtext",
-       "stagger": 0.25,
-       "lines": [
+       "type": "capa",
+       "foto": "kolynos",
+       "wiki": [
+        "Kolynos",
+        "Kolynos toothpaste",
+        "Kolynos creme dental"
+       ],
+       "seta": false,
+       "recorte": "Verde e amarela, em todo banheiro",
+       "faixa": "Se você tem mais de 30 anos",
+       "linhas": [
         [
-         "MAIS DE 30 ANOS?",
+         "você usou",
          "white",
-         110
+         210
         ],
         [
-         "VOCÊ USOU",
+         "essa pasta",
          "gold",
-         160
+         230
         ]
-       ]
+       ],
+       "selo": "E ela sumiu em 1997"
       },
       "cap": "Se você tem mais de 30 anos, você escovou os dentes com essa pasta."
      },
      {
       "text": "A caixinha verde e amarela da Kolynos estava em quase todo banheiro do Brasil.",
       "scene": {
-       "type": "video",
-       "media": "escovando",
-       "search": "escovando os dentes",
+       "type": "image",
+       "media": "kolynos",
+       "wiki": [
+        "Kolynos",
+        "Kolynos toothpaste",
+        "Kolynos creme dental"
+       ],
        "lower": "Kolynos · a pasta do Brasil",
-       "dim": 0.35,
-       "start": 0.0,
+       "dim": 0.4,
        "fallback": {
-        "type": "bigtext",
-        "stagger": 0.25,
-        "lines": [
-         [
-          "EM QUASE TODO",
-          "white",
-          110
-         ],
-         [
-          "BANHEIRO",
-          "green",
-          160
+        "type": "video",
+        "media": "escovando",
+        "search": "escovando os dentes",
+        "lower": "Kolynos · a pasta do Brasil",
+        "dim": 0.35,
+        "start": 0.0,
+        "fallback": {
+         "type": "bigtext",
+         "stagger": 0.25,
+         "lines": [
+          [
+           "EM QUASE TODO",
+           "white",
+           110
+          ],
+          [
+           "BANHEIRO",
+           "green",
+           160
+          ]
          ]
-        ]
+        }
        }
       }
      },

@@ -159,3 +159,75 @@ def manifesto(pasta):
         elif ext.lower() in (".mp4", ".webm", ".mov"):
             out[k] = {"file": f, "kind": "video"}
     return out
+
+
+# ---------------- Fotos reais: Wikimedia Commons ----------------
+# Só usa arquivos com licença livre (domínio público, CC0, CC BY, CC BY-SA) e guarda o crédito,
+# que aparece pequeno na própria cena e vai para a descrição.
+COMMONS = "https://commons.wikimedia.org/w/api.php"
+UA_BOT = "CustoOcultoFabrica/1.0 (https://github.com/tsvini/custo-oculto-fabrica)"
+LIVRE = re.compile(r"^(public domain|pd(?:[- ].*)?|cc0(?: 1\.0)?|cc[- ]by(?:[- ]sa)?(?:[- ]?[0-9.]+)?(?:[- ][a-z]{2})?)$", re.I)
+
+
+def _limpa_html(s):
+    return re.sub(r"\s+", " ", re.sub(r"<[^>]+>", "", s or "")).strip()
+
+
+def _commons_busca(q, largura=2000):
+    params = {"action": "query", "format": "json", "generator": "search", "gsrnamespace": 6, "gsrlimit": 20,
+              "gsrsearch": q + " filetype:bitmap", "prop": "imageinfo", "iiprop": "url|size|mime|extmetadata",
+              "iiurlwidth": largura, "iiextmetadatafilter": "LicenseShortName|Artist|ImageDescription"}
+    if q.lower().startswith("file:") or q.lower().startswith("arquivo:"):
+        params = {"action": "query", "format": "json", "titles": "File:" + q.split(":", 1)[1], "prop": "imageinfo",
+                  "iiprop": "url|size|mime|extmetadata", "iiurlwidth": largura, "iiextmetadatafilter": "LicenseShortName|Artist|ImageDescription"}
+    url = COMMONS + "?" + urllib.parse.urlencode(params)
+    req = urllib.request.Request(url, headers={"User-Agent": UA_BOT})
+    with urllib.request.urlopen(req, timeout=30) as r:
+        pages = (json.load(r).get("query") or {}).get("pages") or {}
+    out = []
+    for pg in sorted(pages.values(), key=lambda x: x.get("index", 0)):
+        ii = (pg.get("imageinfo") or [{}])[0]
+        meta = ii.get("extmetadata") or {}
+        lic = _limpa_html((meta.get("LicenseShortName") or {}).get("value", ""))
+        out.append({"title": pg.get("title", ""), "w": ii.get("width", 0), "h": ii.get("height", 0), "mime": ii.get("mime", ""),
+                    "url": ii.get("thumburl") or ii.get("url"), "page": ii.get("descriptionurl", ""), "lic": lic,
+                    "autor": _limpa_html((meta.get("Artist") or {}).get("value", ""))[:60]})
+    return out
+
+
+def wikimedia(cenas, pasta, log, creditos, creditos_arq):
+    """Cenas com 'wiki': termo de busca (ou 'File:Nome.jpg'). Baixa a foto para <media>.jpg."""
+    feitas = {}
+    for s in cenas:
+        q, k = s.get("wiki"), s.get("media") or s.get("foto")
+        if not q or not k or k in feitas:
+            continue
+        feitas[k] = True
+        dest = os.path.join(pasta, k + ".jpg")
+        if any(os.path.exists(os.path.join(pasta, k + e)) for e in (".jpg", ".png", ".jpeg", ".webp")):
+            continue
+        termos = q if isinstance(q, list) else [q]
+        achou = False
+        for termo in termos:
+            try:
+                res = _commons_busca(termo)
+            except Exception as e:
+                log(f"  foto {k}: busca falhou ({str(e)[:100]})"); continue
+            bons = [r for r in res if r["mime"] in ("image/jpeg", "image/png", "image/webp") and r["w"] >= 800
+                    and LIVRE.match(r["lic"] or "") and not re.search(r"logo|map|mapa|flag|bandeira|coat of arms|bras[aã]o", r["title"], re.I)]
+            if not bons:
+                log(f"  foto {k}: nada livre para '{termo}' ({len(res)} resultados)"); continue
+            r = bons[0]
+            try:
+                _baixa(r["url"], dest, headers={"User-Agent": UA_BOT})
+            except Exception as e:
+                log(f"  foto {k}: download falhou ({str(e)[:100]})"); continue
+            cred = f"{r['autor'] or 'Autor desconhecido'} / {r['lic']} / Wikimedia Commons"
+            creditos.append(f"{r['title'].replace('File:', '')}: {cred} – {r['page']}")
+            creditos_arq[k] = "Foto: " + cred
+            log(f"  foto {k}: {r['title']} ({r['lic']})")
+            print(f"::notice title=Foto real ({k})::{r['title']} · {r['lic']} · busca '{termo}'", flush=True)
+            achou = True
+            break
+        if not achou:
+            print(f"::warning title=Sem foto ({k})::nenhuma foto livre para {termos}; a cena usa o texto de reserva", flush=True)

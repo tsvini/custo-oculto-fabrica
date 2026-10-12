@@ -344,7 +344,7 @@
     const z = lerp(s.z0 || 1.04, s.z1 || 1.16, t / Math.max(dur, 0.1)); const r = Math.max(c.W / img.width, c.H / img.height) * z;
     const w = img.width * r, h = img.height * r; const a = easeOut(t / 0.3);
     ctx.save(); ctx.globalAlpha = a; ctx.drawImage(img, (c.W - w) / 2, (c.H - h) / 2, w, h); ctx.fillStyle = `rgba(0,0,0,${s.dim === undefined ? 0.35 : s.dim})`; ctx.fillRect(0, 0, c.W, c.H); ctx.restore();
-    overlayLabels(ctx, c, t, s);
+    overlayLabels(ctx, c, t, s); credito(ctx, c, m, a);
   };
   S.video = (ctx, c, t, dur, s, media) => {
     const m = media && media[s.media]; const v = m && m.video;
@@ -356,7 +356,86 @@
       const rf = c.H / vh * z; ctx.drawImage(v, (c.W - vw * rf) / 2, (c.H - vh * rf) / 2, vw * rf, vh * rf);
     } else { const r = Math.max(c.W / vw, c.H / vh) * z; ctx.drawImage(v, (c.W - vw * r) / 2, (c.H - vh * r) / 2, vw * r, vh * r); }
     ctx.fillStyle = `rgba(0,0,0,${s.dim === undefined ? 0.35 : s.dim})`; ctx.fillRect(0, 0, c.W, c.H); ctx.restore();
-    overlayLabels(ctx, c, t, s);
+    overlayLabels(ctx, c, t, s); credito(ctx, c, m, a);
+  };
+  // ---------- CAPA de impacto (1º segundo do vídeo e miniatura) ----------
+  // {type:"capa", foto:"chave_da_foto", recorte:"texto do recorte de jornal", faixa:"TEXTO NA FAIXA VERMELHA",
+  //  linhas:[["TEXTO","gold",210], ...], selo:"TEXTO DO SELO", seta:true}
+  const DISPLAY = "Anton, 'Bebas Neue', Impact, 'Arial Narrow', sans-serif";
+  function credito(ctx, c, m, a) {
+    if (!m || !m.credit) return; const u = c.u; ctx.save(); ctx.globalAlpha = 0.75 * (a === undefined ? 1 : a);
+    ctx.font = font(500, 22 * u); ctx.textBaseline = "middle"; ctx.fillStyle = "#fff"; ctx.shadowColor = "rgba(0,0,0,.9)"; ctx.shadowBlur = 6 * u;
+    const txt = m.credit.length > 90 ? m.credit.slice(0, 89) + "…" : m.credit;
+    if (c.vertical) { ctx.textAlign = "left"; ctx.fillText(txt, 40 * u, c.H * 0.115); } else { ctx.textAlign = "right"; ctx.fillText(txt, c.W - 30 * u, c.H - 28 * u); }
+    ctx.restore();
+  }
+  function papel(ctx, x, y, w, h, seed) { // retângulo com bordas rasgadas
+    let r = seed || 7; const rnd = () => { r = (r * 9301 + 49297) % 233280; return r / 233280; };
+    const n = Math.max(8, Math.round(w / 28)); ctx.beginPath(); ctx.moveTo(x, y + rnd() * 8);
+    for (let i = 1; i <= n; i++) ctx.lineTo(x + w * i / n, y + rnd() * 10);
+    for (let i = n; i >= 0; i--) ctx.lineTo(x + w * i / n, y + h - rnd() * 10);
+    ctx.closePath();
+  }
+  S.capa = (ctx, c, t, dur, s, media) => {
+    const u = c.u; const V = c.vertical; const m = media && media[s.foto]; const img = m && m.img;
+    if (img) {
+      const z = lerp(1.06, 1.14, clamp(t / Math.max(dur, 0.1))); const r = Math.max(c.W / img.width, c.H / img.height) * z;
+      const w = img.width * r, h = img.height * r; const ox = V ? (c.W - w) / 2 : c.W - w * 0.92;
+      ctx.drawImage(img, ox, (c.H - h) / 2, w, h);
+      ctx.fillStyle = "rgba(8,8,12,.28)"; ctx.fillRect(0, 0, c.W, c.H);
+    }
+    const g = V ? ctx.createLinearGradient(0, 0, 0, c.H) : ctx.createLinearGradient(0, 0, c.W, 0);
+    if (V) { g.addColorStop(0, "rgba(0,0,0,.55)"); g.addColorStop(0.22, "rgba(0,0,0,0)"); g.addColorStop(0.42, "rgba(0,0,0,.15)"); g.addColorStop(0.62, "rgba(0,0,0,.8)"); g.addColorStop(1, "rgba(0,0,0,.95)"); }
+    else { g.addColorStop(0, "rgba(0,0,0,.95)"); g.addColorStop(0.42, "rgba(0,0,0,.75)"); g.addColorStop(0.7, "rgba(0,0,0,.05)"); g.addColorStop(1, "rgba(0,0,0,0)"); }
+    ctx.fillStyle = g; ctx.fillRect(0, 0, c.W, c.H);
+    const slam = (d) => { const k = clamp((t - d) / 0.18); return [k, lerp(1.35, 1, easeOut(k))]; };
+    const X0 = V ? c.cx : c.W * 0.06; const maxW = V ? c.W * 0.9 : c.W * 0.5;
+    // recorte de jornal
+    if (s.recorte) {
+      const [k] = slam(0); const fs = (V ? 46 : 40) * u; const f = `italic 800 ${Math.round(fs)}px ${SERIF}`;
+      const lines = wrap(ctx, s.recorte, f, (V ? 520 : 560) * u).slice(0, 3); ctx.font = f;
+      const w = Math.max(...lines.map((l) => ctx.measureText(l).width)) + 60 * u; const h = lines.length * fs * 1.2 + 50 * u;
+      const x = V ? c.W - w - 50 * u : X0; const y = V ? c.H * 0.17 : c.H * 0.08;
+      ctx.save(); ctx.globalAlpha = k; ctx.translate(x + w / 2, y + h / 2); ctx.rotate((V ? -4 : -2) * Math.PI / 180); ctx.translate(-w / 2, -h / 2);
+      ctx.shadowColor = "rgba(0,0,0,.6)"; ctx.shadowBlur = 24 * u; ctx.shadowOffsetY = 8 * u; ctx.fillStyle = "#efe9dc"; papel(ctx, 0, 0, w, h, 11); ctx.fill();
+      ctx.shadowColor = "transparent"; ctx.fillStyle = "#1b1b1b"; ctx.font = f; ctx.textAlign = "left"; ctx.textBaseline = "top";
+      lines.forEach((l, i) => ctx.fillText(l, 30 * u, 25 * u + i * fs * 1.2)); ctx.restore();
+    }
+    // bloco de texto
+    const lines = (s.linhas || []).map((l) => Array.isArray(l) ? l : [l, "white"]);
+    const sizes = lines.map((l) => { const base = (l[2] || (V ? 200 : 170)) * u; ctx.font = `${Math.round(base)}px ${DISPLAY}`; const w = ctx.measureText(String(l[0]).toUpperCase()).width; return w > maxW ? base * maxW / w : base; });
+    const faixaH = s.faixa ? (V ? 112 : 96) * u : 0; const blockH = faixaH + 18 * u + sizes.reduce((a, b) => a + b * 1.0, 0);
+    let y = V ? c.H * 0.47 : (c.H - blockH) / 2 + (s.recorte ? 60 * u : 0);
+    if (V && y + blockH > c.H * 0.82) y = c.H * 0.82 - blockH;
+    if (s.faixa) {
+      const [k, sc] = slam(0.08); const fs = (V ? 72 : 60) * u; ctx.font = `${Math.round(fs)}px ${DISPLAY}`; let tw = ctx.measureText(s.faixa.toUpperCase()).width;
+      const fsz = tw > maxW - 60 * u ? fs * (maxW - 60 * u) / tw : fs; ctx.font = `${Math.round(fsz)}px ${DISPLAY}`; tw = ctx.measureText(s.faixa.toUpperCase()).width;
+      const bw = tw + 70 * u, bx = V ? c.cx - bw / 2 : X0 - 10 * u;
+      ctx.save(); ctx.globalAlpha = k; ctx.translate(bx + bw / 2, y + faixaH / 2); ctx.rotate(-3 * Math.PI / 180); ctx.scale(sc, sc);
+      ctx.fillStyle = "#d61f26"; ctx.beginPath(); ctx.moveTo(-bw / 2 + 18 * u, -faixaH / 2); ctx.lineTo(bw / 2, -faixaH / 2); ctx.lineTo(bw / 2 - 18 * u, faixaH / 2); ctx.lineTo(-bw / 2, faixaH / 2); ctx.closePath(); ctx.fill();
+      ctx.fillStyle = "#fff"; ctx.textAlign = "center"; ctx.textBaseline = "middle"; ctx.fillText(s.faixa.toUpperCase(), 0, 4 * u); ctx.restore();
+      y += faixaH + 18 * u;
+    }
+    lines.forEach((l, i) => {
+      const [k, sc] = slam(0.18 + i * 0.1); const fs = sizes[i]; const txt = String(l[0]).toUpperCase();
+      ctx.save(); ctx.globalAlpha = k; ctx.font = `${Math.round(fs)}px ${DISPLAY}`; ctx.textBaseline = "middle"; ctx.textAlign = V ? "center" : "left";
+      ctx.translate(X0, y + fs * 0.5); ctx.scale(sc, sc);
+      ctx.lineJoin = "round"; ctx.lineWidth = 14 * u; ctx.strokeStyle = "rgba(0,0,0,.95)"; ctx.strokeText(txt, 0, 0);
+      ctx.shadowColor = "rgba(0,0,0,.7)"; ctx.shadowBlur = 30 * u; ctx.fillStyle = css(col(l[1], COL.white)); ctx.fillText(txt, 0, 0); ctx.restore();
+      y += fs * 1.0;
+    });
+    if (s.selo) {
+      const [k] = slam(0.5); const fs = (V ? 64 : 52) * u; ctx.font = `${Math.round(fs)}px ${DISPLAY}`; const txt = s.selo.toUpperCase(); const tw = Math.min(ctx.measureText(txt).width, maxW - 120 * u);
+      const bw = tw + (s.seta ? 130 : 60) * u, bh = fs * 1.35, bx = V ? c.cx - bw / 2 : X0, by = y + 24 * u;
+      box(ctx, bx, by, bw, bh, 14 * u, [12, 12, 14], 0.92 * k, "gold", 4 * u);
+      ctx.save(); ctx.globalAlpha = k; ctx.font = `${Math.round(fs)}px ${DISPLAY}`; ctx.fillStyle = css(COL.gold); ctx.textBaseline = "middle"; ctx.textAlign = "left";
+      ctx.fillText(txt, bx + 30 * u, by + bh / 2 + 3 * u, tw);
+      if (s.seta) { const ax = bx + bw - 70 * u, ay = by + bh / 2; ctx.strokeStyle = css(COL.red); ctx.lineWidth = 12 * u; ctx.lineCap = "round";
+        ctx.beginPath(); ctx.moveTo(ax - 20 * u, ay - 28 * u); ctx.lineTo(ax + 20 * u, ay + 22 * u); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(ax + 24 * u, ay - 6 * u); ctx.lineTo(ax + 22 * u, ay + 26 * u); ctx.lineTo(ax - 8 * u, ay + 22 * u); ctx.stroke(); }
+      ctx.restore();
+    }
+    credito(ctx, c, m, 1);
   };
   function overlayLabels(ctx, c, t, s) {
     const u = c.u;
@@ -524,7 +603,7 @@
       (S[sc.type] || S.bigtext)(ctx, c, lt, a.dur, sc, media);
       const endT = a.head.s0 + a.dur;
       if (endT - t < 0.12 && endT < tl.total - 0.1) { ctx.fillStyle = `rgba(0,0,0,${(1 - (endT - t) / 0.12) * 0.8})`; ctx.fillRect(0, 0, c.W, c.H); }
-      if (sc.type !== "endcard" && sc.type !== "chapter") drawCaptions(ctx, c, t, tl.chunks, tl.safe);
+      if (sc.type !== "endcard" && sc.type !== "chapter" && sc.type !== "capa") drawCaptions(ctx, c, t, tl.chunks, tl.safe);
       if (c.vertical) { ctx.fillStyle = css(COL.gold); ctx.fillRect(0, 0, c.W * t / tl.total, 10); }
       drawC(ctx, "CUSTO OCULTO", font(900, 30 * c.u), c.cx, c.H * (tl.safe ? 0.15 : c.vertical ? 0.085 : 0.06), { alpha: 0.45 });
     }
@@ -626,5 +705,8 @@
       y += h; });
   }
 
-  global.COEngine = { COL, Renderer, buildTimeline, decodeAudio, prepVoice, align, exportMp4, toSrt, chapterMarks, drawThumb, SCENES: S, SR, pickCodecs };
+  function drawCapa(canvas, scene, media, vertical) {
+    const R = new Renderer(canvas, vertical); R.bg.draw(R.ctx, 0, 1); S.capa(R.ctx, R.c, 3, 5, scene, media); return canvas;
+  }
+  global.COEngine = { drawCapa, COL, Renderer, buildTimeline, decodeAudio, prepVoice, align, exportMp4, toSrt, chapterMarks, drawThumb, SCENES: S, SR, pickCodecs };
 })(window);

@@ -116,7 +116,12 @@ def main():
     M.pexels([s for s in cenas if s.get("media") not in chaves_longo], pasta_midia, True, log, creditos)
     with open(os.path.join(trab, "projeto_render.json"), "w", encoding="utf8") as f:
         json.dump(p, f, ensure_ascii=False)
+    cred_arq = {}
+    M.wikimedia([s for s in cenas if s.get("wiki")], pasta_midia, log, creditos, cred_arq)
     man = M.manifesto(pasta_midia)
+    for k, v in man.items():
+        if k in cred_arq:
+            v["credit"] = cred_arq[k]
 
     # ---------- narração ----------
     from . import alinhar as AL
@@ -215,6 +220,16 @@ def main():
                         f.write(f"LEGENDA DO POST:\n{tk.get('caption') or tk.get('title', '')}\n\n{' '.join(tk.get('hashtags') or ['#historia', '#negocios', '#empresas', '#curiosidades'])}\n"
                                 + (f"\nPRODUTO PARA MARCAR (TikTok Shop): {tk['produto']}\n" if tk.get("produto") else "")
                                 + "\nAo postar: marque 'Conteúdo gerado por IA' só se usar voz sintética. Não use #shorts.\n")
+                    usadas = [x.get("scene", {}) for x in tk["sentences"]]
+                    cred = [man[k]["credit"] for k in dict.fromkeys((sc.get("media") or sc.get("foto")) for sc in usadas) if k in man and man[k].get("credit")]
+                    if cred:
+                        with open(os.path.join(saida, f"publicar_tiktok{idx + 1}.txt"), "a", encoding="utf8") as f:
+                            f.write("\nCRÉDITOS DAS FOTOS (cole no fim da legenda):\n" + "\n".join(cred) + "\n")
+                    cena0 = (tk["sentences"][0].get("scene") or {})
+                    if cena0.get("type") == "capa":
+                        d = pg.evaluate("cfg => capa(cfg)", {"cena": cena0, "midia": man, "midiaBase": cfg["midiaBase"], "vertical": True})
+                        with open(os.path.join(saida, f"capa_tiktok{idx + 1}.jpg"), "wb") as f:
+                            f.write(base64.b64decode(d.split(",")[1]))
                     if r["total"] < 61:
                         avisos.append(f"{nome}: {r['total']:.0f}s. O Programa de Recompensas do TikTok só conta vídeos com mais de 1 minuto.")
                 else:
@@ -225,6 +240,11 @@ def main():
                 for i, d in enumerate(r.get("previas") or []):
                     with open(os.path.join(saida, f"previa_{nome}_{i}.jpg"), "wb") as f:
                         f.write(base64.b64decode(d.split(",")[1]))
+            # ---------- capa do longo (estilo colagem) ----------
+            if p.get("capa_longo") and cfgs:
+                d = pg.evaluate("cfg => capa(cfg)", {"cena": dict(p["capa_longo"], type="capa"), "midia": man, "midiaBase": cfgs[0][3]["midiaBase"], "vertical": False})
+                with open(os.path.join(saida, "miniatura_capa.jpg"), "wb") as f:
+                    f.write(base64.b64decode(d.split(",")[1]))
             # ---------- miniaturas ----------
             for i, th in enumerate(p.get("thumbs") or []):
                 d = pg.evaluate("cfg => miniatura(cfg)", th)
