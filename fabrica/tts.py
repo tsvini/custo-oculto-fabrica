@@ -82,7 +82,7 @@ def _edge(text, voz):
                 break
             except Exception as e:
                 if tent == 5:
-                    raise ErroVoz(f"voz do Edge falhou ({nome}): {e}")
+                    raise ErroVoz(f"voz do Edge falhou ({nome}): {type(e).__name__}: {e}")
                 time.sleep(3 * (tent + 1))
         subprocess.run(["ffmpeg", "-loglevel", "error", "-y", "-i", mp3, "-ac", "1", "-ar", str(SR), "-sample_fmt", "s16", wav], check=True)
         with open(wav, "rb") as f:

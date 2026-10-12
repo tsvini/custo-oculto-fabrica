@@ -211,4 +211,6 @@ if __name__ == "__main__":
     try:
         main()
     except ErroVoz as e:
-        log("ERRO NA VOZ:", e); sys.exit(2)
+        log("ERRO NA VOZ:", e)
+        print("::error title=Erro na voz::" + str(e).replace("\n", " ")[:900], flush=True)
+        sys.exit(2)
