@@ -53,9 +53,26 @@ def frases(grupo):
     return [s for s in grupo["sentences"] if s.get("text") and s["text"].strip()]
 
 
+def montar_serie(p):
+    """Série do TikTok: o longo cortado em episódios verticais (>1 min) com a narração já gravada.
+    projeto.json → "serie": [{"partes": [1, 2], "capa": {...cena capa...}, "caption": "...", "hashtags": [...]}, …]"""
+    import copy
+    out = []
+    eps = p.get("serie") or []
+    for i, ep in enumerate(eps):
+        grupos = [copy.deepcopy(p["script"]["long"]["parts"][k - 1]) for k in ep["partes"]]
+        if ep.get("capa"):
+            prim = next(s for s in grupos[0]["sentences"] if s.get("text") and s["text"].strip())
+            prim["scene"] = dict(ep["capa"], type="capa")
+        fim = ep.get("fim") or (["CONTINUA NA", f"PARTE {i + 2}"] if i + 1 < len(eps) else ["FIM DA SÉRIE", "SEGUE PRO PRÓXIMO CASO"])
+        out.append({"parts": grupos, "fim": fim})
+    p["script"]["serie"] = out
+
+
 def todas_cenas(p):
     out = []
-    for g in p["script"]["long"]["parts"] + p["script"].get("shorts", []) + p["script"].get("tiktoks", []):
+    serie = [g for ep in p["script"].get("serie", []) for g in ep["parts"]]
+    for g in p["script"]["long"]["parts"] + p["script"].get("shorts", []) + p["script"].get("tiktoks", []) + serie:
         for s in g["sentences"]:
             sc = s.get("scene") or {}
             out.append(sc)
@@ -100,6 +117,7 @@ def main():
     pasta_proj = os.path.join(RAIZ, "projetos", a.projeto)
     with open(os.path.join(pasta_proj, "projeto.json"), encoding="utf8") as f:
         p = json.load(f)
+    montar_serie(p)
     slug = slugify(p.get("slug") or a.projeto)
     trab = os.path.join(RAIZ, "trabalho", slug); os.makedirs(trab, exist_ok=True)
     pasta_midia = os.path.join(trab, "midia"); os.makedirs(pasta_midia, exist_ok=True)
@@ -119,7 +137,10 @@ def main():
     tiktoks = p["script"].get("tiktoks", [])
     if a.formato in ("tudo", "tiktoks"):
         alvos += [("tiktok", i) for i in range(len(tiktoks))]
-    m = re.fullmatch(r"(short|tiktok)(\d+)", a.formato)
+    serie = p["script"]["serie"]
+    if a.formato in ("tudo", "serie"):
+        alvos += [("serie", i) for i in range(len(serie))]
+    m = re.fullmatch(r"(short|tiktok|serie)(\d+)", a.formato)
     if m:
         alvos.append((m.group(1), int(m.group(2)) - 1))
 
@@ -162,13 +183,15 @@ def main():
     from . import alinhar as AL
     pasta_audio = os.path.join(pasta_proj, "audio")
     def audio_de(fmt, idx, k):
+        if fmt == "serie":
+            return AL.achar_audio(pasta_audio, f"parte{p['serie'][idx]['partes'][k]}")
         return AL.achar_audio(pasta_audio, f"parte{k + 1}" if fmt == "longo" else f"{fmt}{idx + 1}")
     gravada = a.modo in (None, "gravada") and os.path.isdir(pasta_audio) and any(f.lower().endswith(AL.EXTS) for f in os.listdir(pasta_audio))
     if gravada:
         a.modo = "teste"  # o sintetizador não é usado
         ok = []
         for fmt, idx in alvos:
-            n = len(p["script"]["long"]["parts"]) if fmt == "longo" else 1
+            n = len(p["script"]["long"]["parts"]) if fmt == "longo" else len(serie[idx]["parts"]) if fmt == "serie" else 1
             faltam = [k + 1 for k in range(n) if not audio_de(fmt, idx, k)]
             if faltam:
                 nome_alvo = "longo" if fmt == "longo" else f"{fmt}{idx + 1}"
@@ -191,7 +214,7 @@ def main():
         avisos.append("Gerado em MODO TESTE: a voz é um ruído no ritmo da fala, só para conferir a montagem.")
     cfgs = []; taxas = []
     for fmt, idx in alvos:
-        grupos = p["script"]["long"]["parts"] if fmt == "longo" else [(tiktoks if fmt == "tiktok" else shorts)[idx]]
+        grupos = p["script"]["long"]["parts"] if fmt == "longo" else serie[idx]["parts"] if fmt == "serie" else [(tiktoks if fmt == "tiktok" else shorts)[idx]]
         partes = []
         for k, g in enumerate(grupos):
             wav = os.path.join(trab, f"voz_{fmt}{idx + 1 if fmt != 'longo' else ''}_p{k + 1}.wav")
@@ -253,6 +276,17 @@ def main():
                           "titulo": (meta.get("titles") or [p.get("title", slug)])[0][:100], "descricao": desc[:4900], "tags": meta.get("tags", [])}
                     with open(os.path.join(saida if (gravada or nar.modo != "teste") else trab, f"youtube_{nome}.json"), "w", encoding="utf8") as f:
                         json.dump(yt, f, ensure_ascii=False, indent=1)
+                elif fmt == "serie":
+                    ep = p["serie"][idx]
+                    with open(os.path.join(saida, f"publicar_serie{idx + 1}.txt"), "w", encoding="utf8") as f:
+                        f.write(f"LEGENDA DO POST:\n{ep.get('caption', '')}\n\n{' '.join(ep.get('hashtags') or [])}\n")
+                    cena0 = dict(ep["capa"], type="capa") if ep.get("capa") else None
+                    if cena0:
+                        d = pg.evaluate("cfg => capa(cfg)", {"cena": cena0, "midia": man, "midiaBase": cfg["midiaBase"], "vertical": True})
+                        with open(os.path.join(saida, f"capa_serie{idx + 1}.jpg"), "wb") as f:
+                            f.write(base64.b64decode(d.split(",")[1]))
+                    if r["total"] < 61:
+                        avisos.append(f"{nome}: {r['total']:.0f}s. O Programa de Recompensas do TikTok só conta vídeos com mais de 1 minuto.")
                 elif fmt == "tiktok":
                     tk = tiktoks[idx]
                     with open(os.path.join(saida, f"publicar_tiktok{idx + 1}.txt"), "w", encoding="utf8") as f:

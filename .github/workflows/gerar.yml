@@ -9,7 +9,7 @@ on:
       formato:
         description: "O que gerar"
         type: choice
-        options: [tudo, longo, shorts, short1, short2, short3, tiktoks, tiktok1, tiktok2, tiktok3, tiktok4]
+        options: [tudo, longo, shorts, short1, short2, short3, tiktoks, tiktok1, tiktok2, tiktok3, tiktok4, serie, serie1, serie2, serie3, serie4, serie5]
         default: tudo
       voz:
         description: "Trocar a voz sintética (só para modo google)"

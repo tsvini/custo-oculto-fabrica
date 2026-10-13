@@ -24,7 +24,7 @@ jobs:
         shell: bash
         run: |
           git clone -q --depth 1 -b midia "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" out 2>/dev/null || { mkdir -p out && git -C out init -q -b midia; }
-          find dl \( -name "*_short*.mp4" -o -name "*tiktok*.mp4" -o -name "capa_*.jpg" -o -name "publicar_short*.txt" -o -name "publicar_tiktok*.txt" \) | while read f; do
+          find dl \( -name "*_short*.mp4" -o -name "*tiktok*.mp4" -o -name "*_serie*.mp4" -o -name "publicar_serie*.txt" -o -name "capa_*.jpg" -o -name "publicar_short*.txt" -o -name "publicar_tiktok*.txt" \) | while read f; do
             slug=$(basename "$(dirname "$f")"); mkdir -p "out/$slug"; cp "$f" "out/$slug/"
           done
           cd out

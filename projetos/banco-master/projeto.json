@@ -2347,6 +2347,183 @@
    "custo oculto"
   ]
  },
+ "serie": [
+  {
+   "partes": [
+    1,
+    2
+   ],
+   "capa": {
+    "type": "capa",
+    "foto": "bc",
+    "wiki": [
+     "Banco Central do Brasil sede",
+     "Edifício-Sede do Banco Central do Brasil",
+     "Banco Central do Brasil"
+    ],
+    "seta": false,
+    "recorte": "Banco Master · Parte 1",
+    "faixa": "Parte 1 de 4",
+    "linhas": [
+     [
+      "1,6 MILHÃO",
+      "gold",
+      210
+     ],
+     [
+      "no mesmo banco",
+      "white",
+      150
+     ],
+     [
+      "QUE QUEBROU",
+      "red",
+      200
+     ]
+    ],
+    "selo": "Banco Master · 2025"
+   },
+   "caption": "Banco Master, parte 1: como um banco que quase ninguém conhecia juntou 1,6 milhão de investidores. Segue pra ver a parte 2.",
+   "hashtags": [
+    "#bancomaster",
+    "#investimentos",
+    "#dinheiro",
+    "#economia",
+    "#serie"
+   ]
+  },
+  {
+   "partes": [
+    3,
+    4
+   ],
+   "capa": {
+    "type": "capa",
+    "foto": "bc",
+    "wiki": [
+     "Banco Central do Brasil sede",
+     "Edifício-Sede do Banco Central do Brasil",
+     "Banco Central do Brasil"
+    ],
+    "seta": false,
+    "recorte": "Banco Master · Parte 2",
+    "faixa": "Parte 2 de 4",
+    "linhas": [
+     [
+      "140%",
+      "gold",
+      280
+     ],
+     [
+      "do CDI",
+      "white",
+      190
+     ],
+     [
+      "bom demais?",
+      "red",
+      160
+     ]
+    ],
+    "selo": "Banco Master · 2025"
+   },
+   "caption": "Banco Master, parte 2: o CDB que pagava 140% do CDI e o banco público que entrou no negócio. Investigados negam irregularidades.",
+   "hashtags": [
+    "#bancomaster",
+    "#cdb",
+    "#investimentos",
+    "#dinheiro",
+    "#serie"
+   ]
+  },
+  {
+   "partes": [
+    5,
+    6
+   ],
+   "capa": {
+    "type": "capa",
+    "foto": "bc",
+    "wiki": [
+     "Banco Central do Brasil sede",
+     "Edifício-Sede do Banco Central do Brasil",
+     "Banco Central do Brasil"
+    ],
+    "seta": false,
+    "recorte": "Banco Master · Parte 3",
+    "faixa": "Parte 3 de 4",
+    "linhas": [
+     [
+      "A QUEDA",
+      "red",
+      240
+     ],
+     [
+      "e quem paga",
+      "white",
+      160
+     ],
+     [
+      "R$ 41 BI",
+      "gold",
+      220
+     ]
+    ],
+    "selo": "Banco Master · 2025"
+   },
+   "caption": "Banco Master, parte 3: a liquidação, a operação da PF e a conta de R$ 41 bilhões do FGC. Ninguém foi julgado até agora.",
+   "hashtags": [
+    "#bancomaster",
+    "#fgc",
+    "#economia",
+    "#dinheiro",
+    "#serie"
+   ]
+  },
+  {
+   "partes": [
+    7
+   ],
+   "capa": {
+    "type": "capa",
+    "foto": "bc",
+    "wiki": [
+     "Banco Central do Brasil sede",
+     "Edifício-Sede do Banco Central do Brasil",
+     "Banco Central do Brasil"
+    ],
+    "seta": false,
+    "recorte": "Banco Master · Final",
+    "faixa": "Parte 4 de 4",
+    "linhas": [
+     [
+      "ONDE",
+      "white",
+      220
+     ],
+     [
+      "ESTÁ",
+      "white",
+      220
+     ],
+     [
+      "HOJE",
+      "gold",
+      260
+     ]
+    ],
+    "selo": "Banco Master · 2025"
+   },
+   "caption": "Banco Master, parte final: onde está o caso hoje e o custo oculto que sobra pra todo mundo. Investigados negam e ninguém foi julgado.",
+   "hashtags": [
+    "#bancomaster",
+    "#fgc",
+    "#economia",
+    "#dinheiro",
+    "#serie"
+   ]
+  }
+ ],
  "thumbs_capa": [
   {
    "type": "capa",

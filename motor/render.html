@@ -40,8 +40,9 @@ async function montar(cfg) {
   await fontes();
   const p = await (await fetch(cfg.projeto)).json();
   const longo = cfg.formato === "longo";
-  const tiktok = cfg.formato === "tiktok";
-  const groups = longo ? p.script.long.parts : [(tiktok ? p.script.tiktoks : p.script.shorts)[cfg.idx]];
+  const serie = cfg.formato === "serie";
+  const tiktok = cfg.formato === "tiktok" || serie;
+  const groups = longo ? p.script.long.parts : serie ? p.script.serie[cfg.idx].parts : [(tiktok ? p.script.tiktoks : p.script.shorts)[cfg.idx]];
   const units = [];
   for (let k = 0; k < groups.length; k++) {
     const g = groups[k];
@@ -51,6 +52,7 @@ async function montar(cfg) {
     const voice = await E.decodeAudio(await (await fetch(pa.wav)).arrayBuffer());
     units.push({ kind: "speech", sentences, voice, timings: pa.tempos, words: pa.palavras || null });
   }
+  if (serie) { const fim = p.script.serie[cfg.idx].fim; units.push({ kind: "card", dur: 2.2, scene: { type: "chapter", num: fim[0], title: fim[1], size: 120 } }); }
   const media = await carregaMidia(cfg.midia, cfg.midiaBase);
   const tl = E.buildTimeline(units, { hook: !longo, tail: longo ? 12 : 1.2 });
   if (tiktok) tl.safe = "tiktok"; // legenda e marca fora da área dos botões e do texto do TikTok
