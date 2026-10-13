@@ -1,0 +1,34 @@
+name: Relatório do canal
+
+# Lê o YouTube Analytics e salva relatorios/ultimo.json (todo dia às 7h de Brasília).
+on:
+  schedule:
+    - cron: "17 10 * * *"
+  workflow_dispatch:
+  push:
+    paths: [".github/workflows/analytics.yml", "fabrica/analytics.py"]
+
+concurrency:
+  group: analytics
+  cancel-in-progress: false
+
+jobs:
+  relatorio:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Relatório
+        env:
+          YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+          YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+          YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
+        run: |
+          pip install -q requests
+          python -m fabrica.analytics
+          git config user.name "fabrica-custo-oculto"; git config user.email "fabrica@users.noreply.github.com"
+          git add relatorios && git commit -q -m "Relatório do canal [skip ci]" && for t in 1 2 3; do git pull --rebase -q && git push -q && break; sleep 5; done || true
