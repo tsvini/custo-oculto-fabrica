@@ -12,8 +12,14 @@ def big(*lines):
     return {"type": "bigtext", "stagger": 0.25, "lines": [list(l) for l in lines]}
 
 
+IDS = {'faria_lima': 219134, 'rua_sp': 23796, 'escritorio': 45986, 'investindo': 38084, 'grafico': 204306, 'celular_v': 202987, 'papeis': 87146, 'aeroporto': 3593, 'aeroporto_v': 51016, 'banco_agencia': 214695, 'dinheiro_v': 9908}
+
+
 def vid(media, en, lower, fb):
-    return {"type": "video", "media": media, "search": en, "search_en": en, "start": 0.0, "dim": 0.4, "lower": lower, "fallback": fb}
+    d = {"type": "video", "media": media, "search": en, "search_en": en, "start": 0.0, "dim": 0.4, "lower": lower, "fallback": fb}
+    if media in IDS:
+        d["pixabay_id"] = IDS[media]
+    return d
 
 
 def img(media, wiki, lower, fb):
