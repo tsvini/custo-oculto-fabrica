@@ -92,6 +92,7 @@ jobs:
         env:
           GOOGLE_TTS_KEY: ${{ secrets.GOOGLE_TTS_KEY }}
           PEXELS_KEY: ${{ secrets.PEXELS_KEY }}
+          PIXABAY_KEY: ${{ secrets.PIXABAY_KEY }}
           CHROME_CHANNEL: chrome
           LISTA: ${{ steps.alvo.outputs.lista }}
           FORMATO: ${{ inputs.formato || steps.alvo.outputs.formato || 'tudo' }}

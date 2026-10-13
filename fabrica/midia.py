@@ -125,8 +125,7 @@ def pexels(cenas, pasta, vertical, log, creditos):
     if not pend:
         return
     if not key:
-        log(f"  sem PEXELS_KEY: {len(pend)} clipe(s) usam o texto de reserva")
-        return
+        return pixabay(pend, pasta, vertical, log, creditos)
     usados = set()
     for k, q in pend.items():
         try:
@@ -148,6 +147,46 @@ def pexels(cenas, pasta, vertical, log, creditos):
             log(f"  clipe {k}: ok ('{q}', {nome})")
         except Exception as e:
             log(f"  clipe {k}: falhou ({str(e)[:120]})")
+    resto = {k: q for k, q in pend.items() if not os.path.exists(os.path.join(pasta, k + ".mp4"))}
+    if resto:
+        pixabay(resto, pasta, vertical, log, creditos)
+
+
+def pixabay(pend, pasta, vertical, log, creditos):
+    """Clipes do Pixabay (licença livre para uso comercial). Usa PIXABAY_KEY."""
+    key = os.environ.get("PIXABAY_KEY", "").strip()
+    if not key:
+        log(f"  sem PIXABAY_KEY/PEXELS_KEY: {len(pend)} clipe(s) usam o texto de reserva")
+        return
+    usados = set(); ok = 0
+    for k, q in pend.items():
+        try:
+            hits = []
+            for lang in ("pt", "en"):
+                url = "https://pixabay.com/api/videos/?" + urllib.parse.urlencode(
+                    {"key": key, "q": q[:100], "lang": lang, "per_page": 20, "safesearch": "true", "video_type": "film"})
+                with urllib.request.urlopen(urllib.request.Request(url, headers={"User-Agent": UA}), timeout=30) as r:
+                    hits = [h for h in json.load(r).get("hits", []) if h.get("duration", 0) >= 6 and h["id"] not in usados]
+                if hits:
+                    break
+            if not hits:
+                log(f"  clipe {k}: nada no Pixabay para '{q}'"); continue
+            def serve(h):  # prefere a orientação do formato e boa resolução
+                v = h["videos"].get("large") or h["videos"].get("medium") or {}
+                w, hh = v.get("width") or 0, v.get("height") or 0
+                return ((hh > w) == vertical, min(w, hh) >= 720, h.get("likes", 0))
+            hits.sort(key=serve, reverse=True)
+            h = hits[0]; usados.add(h["id"])
+            vs = h["videos"]
+            alvo = 1080 if vertical else 1920
+            opc = [v for v in (vs.get("large"), vs.get("medium"), vs.get("small")) if v and v.get("url")]
+            opc.sort(key=lambda v: abs(max(v.get("width") or 0, v.get("height") or 0) - alvo))
+            _baixa(opc[0]["url"], os.path.join(pasta, k + ".mp4"))
+            creditos.append(f"{h.get('user', '')} (Pixabay) – {h.get('pageURL', '')}")
+            ok += 1; log(f"  clipe {k}: ok Pixabay ('{q}', {h.get('user', '')})")
+        except Exception as e:
+            log(f"  clipe {k}: Pixabay falhou ({str(e)[:120]})")
+    print(f"::notice title=Clipes de apoio::{ok} de {len(pend)} clipes vieram do Pixabay", flush=True)
 
 
 def manifesto(pasta):
