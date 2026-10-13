@@ -105,6 +105,8 @@ long_parts = [
         S("Os fornecedores, que entraram numa fila pra receber com desconto e prazo longo.", big(("FORNECEDORES", W, 130), ("COM DESCONTO", R, 140), ("E PRAZO LONGO", M, 90))),
         S("E até fundos de pensão e de investimento que tinham títulos da empresa.", big(("FUNDOS", W, 150), ("TAMBÉM PERDERAM", R, 130))),
         S("Muitos investidores foram à Justiça e a câmaras de arbitragem pedindo indenização. Processos que podem levar anos.", big(("INVESTIDORES", W, 130), ("NA JUSTIÇA", G, 150), ("POR ANOS", M, 100))),
+        S("E teve um efeito em cadeia. Depois do caso, os bancos ficaram mais cautelosos com esse tipo de operação, e o crédito para outras varejistas ficou mais difícil.", big(("EFEITO", W, 150), ("EM CADEIA", R, 170), ("CRÉDITO MAIS DIFÍCIL", M, 90))),
+        S("Ou seja: uma fraude dentro de uma empresa vira prejuízo pra milhares de pessoas que nunca viram um balanço na vida.", big(("UMA FRAUDE", W, 140), ("MILHARES", R, 180), ("DE PREJUDICADOS", W, 100))),
         S("No plano de recuperação, os três sócios bilionários se comprometeram a colocar doze bilhões de reais na empresa.", {"type": "counter", "value": 12, "prefix": "R$ ", "suffix": " BI", "over": "APORTE DOS SÓCIOS", "label": "PREVISTO NO PLANO DE RECUPERAÇÃO", "color": G, "size": 230}),
         S("Eles sempre disseram que nunca souberam da fraude.", big(("ELES DIZEM", W, 130), ("QUE NÃO SABIAM", M, 140))),
         S("E fica a pergunta que muita gente fez: como auditorias, bancos e conselheiros não viram vinte e cinco bilhões por tantos anos?", big(("COMO", W, 160), ("NINGUÉM VIU?", R, 170))),

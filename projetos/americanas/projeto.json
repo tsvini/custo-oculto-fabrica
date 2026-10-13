@@ -1251,6 +1251,54 @@
        }
       },
       {
+       "text": "E teve um efeito em cadeia. Depois do caso, os bancos ficaram mais cautelosos com esse tipo de operação, e o crédito para outras varejistas ficou mais difícil.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "EFEITO",
+          "white",
+          150
+         ],
+         [
+          "EM CADEIA",
+          "red",
+          170
+         ],
+         [
+          "CRÉDITO MAIS DIFÍCIL",
+          "muted",
+          90
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Ou seja: uma fraude dentro de uma empresa vira prejuízo pra milhares de pessoas que nunca viram um balanço na vida.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "UMA FRAUDE",
+          "white",
+          140
+         ],
+         [
+          "MILHARES",
+          "red",
+          180
+         ],
+         [
+          "DE PREJUDICADOS",
+          "white",
+          100
+         ]
+        ]
+       }
+      },
+      {
        "text": "No plano de recuperação, os três sócios bilionários se comprometeram a colocar doze bilhões de reais na empresa.",
        "scene": {
         "type": "counter",
