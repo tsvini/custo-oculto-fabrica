@@ -39,6 +39,8 @@ def enfileirar(pasta_saida):
     for mf in sorted(glob.glob(os.path.join(pasta_saida, "**", "youtube_*.json"), recursive=True)):
         d = os.path.dirname(mf); meta = json.load(open(mf, encoding="utf8"))
         nome = os.path.basename(mf)[len("youtube_"):-5]
+        if not meta.get("video"):
+            continue
         if nome in ja:  # já foi para o YouTube: regerar não duplica
             pulados.append(nome); continue
         meta["enfileirado"] = agora; meta["ordem"] = 0 if meta["tipo"] == "longo" else int("".join(c for c in nome.split("_")[-1] if c.isdigit()) or 1)
@@ -181,11 +183,13 @@ def miniaturas(pasta_saida):
     for mf in glob.glob(os.path.join(pasta_saida, "**", "youtube_*.json"), recursive=True):
         nome = os.path.basename(mf)[len("youtube_"):-5]; meta = json.load(open(mf, encoding="utf8"))
         r = por_nome.get(nome); arq = meta.get("miniatura") and os.path.join(os.path.dirname(mf), meta["miniatura"])
-        if not r or r.get("miniatura_ok") or not arq or not os.path.exists(arq):
+        import hashlib
+        h = hashlib.sha1(open(arq, "rb").read()).hexdigest()[:12] if arq and os.path.exists(arq) else None
+        if not r or not h or r.get("miniatura_ok") == h:
             continue
         tk = tk or token()
         try:
-            subir_miniatura(tk, r["video_id"], arq); r["miniatura_ok"] = True; feitos.append(nome)
+            subir_miniatura(tk, r["video_id"], arq); r["miniatura_ok"] = h; feitos.append(nome)
         except Exception as e:
             nota("Miniatura falhou", f"{nome}: {str(e)[:300]}", "warning")
     if feitos:

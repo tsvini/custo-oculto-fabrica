@@ -71,6 +71,22 @@ def ffmpeg_final(bruto, final, codec):
     subprocess.run(cmd, check=True)
 
 
+def render_miniaturas(pg, p, man, midia_base, saida):
+    """Miniaturas do longo. 'thumbs_capa' (capa com foto, estilo dos Shorts) tem prioridade sobre 'thumbs'."""
+    from PIL import Image
+    feitas = []
+    for i, cena in enumerate(p.get("thumbs_capa") or []):
+        d = pg.evaluate("cfg => capa(cfg)", {"cena": cena, "midia": man, "midiaBase": midia_base, "vertical": False})
+        feitas.append(d)
+    if not feitas:
+        feitas = [pg.evaluate("cfg => miniatura(cfg)", th) for th in (p.get("thumbs") or [])]
+    for i, d in enumerate(feitas):
+        arq = os.path.join(saida, f"miniatura_{'ABCDEFG'[i]}.jpg")
+        with open(arq, "wb") as f:
+            f.write(base64.b64decode(d.split(",")[1]))
+        im = Image.open(arq).convert("RGB"); im.thumbnail((1280, 720)); im.save(arq, quality=88)  # limite de 2 MB do YouTube
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("projeto", help="nome da pasta em projetos/ (ex.: kolynos)")
@@ -110,6 +126,22 @@ def main():
     # ---------- mídia ----------
     log("1/4 Mídia")
     cenas = todas_cenas(p); creditos = []
+    if a.formato == "miniaturas":  # só refaz as miniaturas do longo (e aplica no vídeo já publicado)
+        M.wikimedia([sc for sc in cenas if sc.get("wiki")], pasta_midia, log, creditos, {})
+        man = M.manifesto(pasta_midia)
+        from playwright.sync_api import sync_playwright
+        srv, base = servidor(RAIZ, trab)
+        try:
+            with sync_playwright() as pw:
+                b = pw.chromium.launch(channel=os.environ.get("CHROME_CHANNEL") or None)
+                pg = b.new_page(); pg.goto(base + "/motor/render.html")
+                render_miniaturas(pg, p, man, "/" + os.path.relpath(pasta_midia, RAIZ) + "/", saida)
+                b.close()
+        finally:
+            srv.shutdown()
+        with open(os.path.join(saida, f"youtube_{slug}_longo.json"), "w", encoding="utf8") as f:
+            json.dump({"tipo": "longo", "miniatura": "miniatura_A.jpg"}, f)
+        log("miniaturas prontas"); return
     if a.formato == "candidatos":  # só mostra opções de clipe para escolher a dedo
         M.candidatos(cenas, os.path.join(RAIZ, "previas"), log)
         return
@@ -264,10 +296,7 @@ def main():
                 with open(os.path.join(saida, "miniatura_capa.jpg"), "wb") as f:
                     f.write(base64.b64decode(d.split(",")[1]))
             # ---------- miniaturas ----------
-            for i, th in enumerate(p.get("thumbs") or []):
-                d = pg.evaluate("cfg => miniatura(cfg)", th)
-                with open(os.path.join(saida, f"miniatura_{'ABCDEFG'[i]}.jpg"), "wb") as f:
-                    f.write(base64.b64decode(d.split(",")[1]))
+            render_miniaturas(pg, p, man, "/" + os.path.relpath(pasta_midia, RAIZ) + "/", saida)
             b.close()
     finally:
         srv.shutdown()

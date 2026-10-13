@@ -221,6 +221,10 @@ projeto = {
         "description": "O Banco Master pagava até 140% do CDI e atraiu 1,6 milhão de investidores. Em novembro de 2025, o Banco Central liquidou o banco, e o FGC fez o maior resgate da sua história: cerca de R$ 41 bilhões. Neste vídeo: como o banco cresceu, a tentativa de venda para o BRB, a prisão de Daniel Vorcaro, e quem paga a conta.\n\nOs investigados negam irregularidades e ninguém foi julgado até a publicação deste vídeo. Este vídeo não toma partido político.\n\n[CAPÍTULOS]\n\nFontes: Banco Central do Brasil; Polícia Federal (Operação Compliance Zero); STF; FGC; Bloomberg Línea (18/11/2025); IstoÉ Dinheiro; Poder360; Jornal de Brasília (09/01/2026).\n\n#BancoMaster #FGC #Vorcaro #CDB #CustoOculto",
         "tags": ["banco master", "o que aconteceu com o banco master", "fgc banco master", "daniel vorcaro", "cdb banco master", "brb banco master", "custo oculto"],
     },
+    "thumbs_capa": [
+        capa("1,6 milhão de pessoas", [["O BANCO", W, 200], ["QUEBROU", R, 260], ["quem paga R$ 41 bi?", G, 150]], "Banco Master · 2025", FOTO_BC, "bc"),
+        capa("Esse CDB pagava", [["140%", G, 280], ["do CDI", W, 190], ["era bom demais", R, 150]], "Banco Master", FOTO_BC, "bc"),
+    ],
     "thumbs": [
         {"glow": "red", "lines": [{"text": "BANCO MASTER", "color": "red", "size": 110}, {"text": "QUEM PAGA", "color": "white", "size": 150}, {"text": "R$ 41 BI?", "color": "gold", "size": 190}]},
         {"glow": "gold", "lines": [{"text": "140% DO CDI", "color": "gold", "size": 150}, {"text": "ERA BOM", "color": "white", "size": 130}, {"text": "DEMAIS", "color": "red", "size": 150}, {"text": "BANCO MASTER", "color": "green", "size": 70, "pill": True}]},

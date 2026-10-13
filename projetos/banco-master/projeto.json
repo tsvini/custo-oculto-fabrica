@@ -2347,6 +2347,68 @@
    "custo oculto"
   ]
  },
+ "thumbs_capa": [
+  {
+   "type": "capa",
+   "foto": "bc",
+   "wiki": [
+    "Banco Central do Brasil sede",
+    "Edifício-Sede do Banco Central do Brasil",
+    "Banco Central do Brasil"
+   ],
+   "seta": false,
+   "recorte": "Banco Master · 2025",
+   "faixa": "1,6 milhão de pessoas",
+   "linhas": [
+    [
+     "O BANCO",
+     "white",
+     200
+    ],
+    [
+     "QUEBROU",
+     "red",
+     260
+    ],
+    [
+     "quem paga R$ 41 bi?",
+     "gold",
+     150
+    ]
+   ],
+   "selo": "Banco Master · 2025"
+  },
+  {
+   "type": "capa",
+   "foto": "bc",
+   "wiki": [
+    "Banco Central do Brasil sede",
+    "Edifício-Sede do Banco Central do Brasil",
+    "Banco Central do Brasil"
+   ],
+   "seta": false,
+   "recorte": "Banco Master",
+   "faixa": "Esse CDB pagava",
+   "linhas": [
+    [
+     "140%",
+     "gold",
+     280
+    ],
+    [
+     "do CDI",
+     "white",
+     190
+    ],
+    [
+     "era bom demais",
+     "red",
+     150
+    ]
+   ],
+   "selo": "Banco Master · 2025"
+  }
+ ],
  "thumbs": [
   {
    "glow": "red",
