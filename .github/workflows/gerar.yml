@@ -123,6 +123,7 @@ jobs:
             fps=$(python3 -c "print(min(1.0, 60/float('$d')))")
             ffmpeg -loglevel error -y -i "$f" -vf "fps=$fps,scale=200:-1,tile=10x6" -frames:v 1 "previas/$n.jpg" || true
           done
+          for c in $(find saida \( -name "capa_*.jpg" -o -name "miniatura_*.jpg" \)); do s=$(basename "$(dirname "$c")"); cp "$c" "previas/${s}_$(basename "$c")"; done
           git config user.name "fabrica-custo-oculto"; git config user.email "fabrica@users.noreply.github.com"
           if [ -n "$(git status --porcelain previas)" ]; then
             git add previas && git commit -q -m "Prévias [skip ci]" && git pull --rebase -q && git push -q || true
