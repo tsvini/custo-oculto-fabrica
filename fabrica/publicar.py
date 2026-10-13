@@ -81,6 +81,11 @@ def proximo_horario(tipo, reg):
     ultimos = [dt.datetime.fromisoformat(r["publishAt"]).astimezone(BRT).date() for r in reg if r["tipo"] == tipo]
     if ultimos and max(ultimos) >= dia:
         dia = max(ultimos) + dt.timedelta(days=1)
+    longos = [dt.datetime.fromisoformat(r["publishAt"]).astimezone(BRT).date() for r in reg if r["tipo"] == "longo"]
+    if tipo == "longo" and ultimos:  # um longo por semana
+        dia = max(dia, max(ultimos) + dt.timedelta(days=7))
+    if tipo != "longo" and longos:  # Short nunca sai antes do longo que ele anuncia
+        dia = max(dia, max(longos))
     return dt.datetime(dia.year, dia.month, dia.day, HORA[tipo], tzinfo=BRT)
 
 
