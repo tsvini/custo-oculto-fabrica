@@ -1942,30 +1942,20 @@
      {
       "text": "Aí entrou o CADE, o órgão que existe para impedir monopólio.",
       "scene": {
-       "type": "image",
-       "media": "cade",
-       "wiki": [
-        "Conselho Administrativo de Defesa Econômica",
-        "CADE Brasília edifício sede"
-       ],
-       "lower": "CADE · Conselho Administrativo de Defesa Econômica",
-       "dim": 0.4,
-       "fallback": {
-        "type": "bigtext",
-        "stagger": 0.25,
-        "lines": [
-         [
-          "CADE",
-          "gold",
-          240
-         ],
-         [
-          "CONTRA MONOPÓLIO",
-          "white",
-          90
-         ]
+       "type": "bigtext",
+       "stagger": 0.25,
+       "lines": [
+        [
+         "CADE",
+         "gold",
+         240
+        ],
+        [
+         "CONTRA MONOPÓLIO",
+         "white",
+         90
         ]
-       }
+       ]
       }
      },
      {

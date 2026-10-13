@@ -213,7 +213,9 @@ def wikimedia(cenas, pasta, log, creditos, creditos_arq):
                 res = _commons_busca(termo)
             except Exception as e:
                 log(f"  foto {k}: busca falhou ({str(e)[:100]})"); continue
-            bons = [r for r in res if r["mime"] in ("image/jpeg", "image/png", "image/webp") and r["w"] >= 800
+            palavras = [w.lower() for w in re.findall(r"\w{4,}", termo) if w.lower() not in ("file", "arquivo")]
+            bons = [r for r in res if r["mime"] == "image/jpeg" and r["w"] >= 800
+                    and sum(w in r["title"].lower() for w in palavras) >= max(1, len(palavras) // 2)
                     and LIVRE.match(r["lic"] or "") and not re.search(r"logo|map|mapa|flag|bandeira|coat of arms|bras[aã]o", r["title"], re.I)]
             if not bons:
                 log(f"  foto {k}: nada livre para '{termo}' ({len(res)} resultados)"); continue
