@@ -1643,19 +1643,10 @@
      {
       "text": "E sumiu do Brasil.",
       "scene": {
-       "type": "video",
-       "media": "prateleira_v",
-       "search": "prateleira supermercado",
-       "start": 0.0,
-       "dim": 0.35,
-       "lower": "E sumiu do Brasil",
-       "fallback": {
-        "type": "flash",
-        "text": "E SUMIU\nDO BRASIL",
-        "tint": "red",
-        "size": 150
-       },
-       "search_en": "supermarket shelf"
+       "type": "flash",
+       "text": "E SUMIU\nDO BRASIL",
+       "tint": "red",
+       "size": 150
       }
      },
      {
@@ -1780,37 +1771,28 @@
      {
       "text": "Os clientes ficaram.",
       "scene": {
-       "type": "video",
-       "media": "escovando_v",
-       "search": "escovando os dentes",
-       "start": 0.0,
-       "dim": 0.35,
-       "lower": "Os clientes ficaram",
-       "fallback": {
-        "type": "bigtext",
-        "stagger": 0.25,
-        "lines": [
+       "type": "bigtext",
+       "stagger": 0.25,
+       "lines": [
+        [
+         "OS CLIENTES",
          [
-          "OS CLIENTES",
-          [
-           245,
-           245,
-           242
-          ],
-          130
+          245,
+          245,
+          242
          ],
+         130
+        ],
+        [
+         "FICARAM",
          [
-          "FICARAM",
-          [
-           70,
-           190,
-           110
-          ],
-          190
-         ]
+          70,
+          190,
+          110
+         ],
+         190
         ]
-       },
-       "search_en": "brushing teeth"
+       ]
       }
      },
      {
