@@ -165,11 +165,25 @@
       {
        "text": "A Americanas nasceu em mil novecentos e vinte e nove, em Niterói, no Rio de Janeiro.",
        "scene": {
-        "type": "date",
-        "month": "NITERÓI",
-        "day": "RJ",
-        "year": "1929",
-        "tag": "A PRIMEIRA LOJA"
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "1929",
+          "gold",
+          230
+         ],
+         [
+          "NITERÓI · RJ",
+          "white",
+          110
+         ],
+         [
+          "A PRIMEIRA LOJA",
+          "muted",
+          80
+         ]
+        ]
        }
       },
       {
@@ -1347,8 +1361,9 @@
         "type": "image",
         "media": "madri",
         "wiki": [
-         "Madrid Gran Vía",
-         "Gran Vía Madrid"
+         "Puerta de Alcalá Madrid",
+         "Puerta de Alcalá",
+         "Madrid skyline"
         ],
         "lower": "Madri · Espanha",
         "dim": 0.4,
@@ -1865,8 +1880,9 @@
        "type": "capa",
        "foto": "madri",
        "wiki": [
-        "Madrid Gran Vía",
-        "Gran Vía Madrid"
+        "Puerta de Alcalá Madrid",
+        "Puerta de Alcalá",
+        "Madrid skyline"
        ],
        "seta": false,
        "recorte": "Caso Americanas",

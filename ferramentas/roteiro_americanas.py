@@ -5,7 +5,7 @@ G, W, R, GR, M = "gold", "white", "red", "green", "muted"
 FOTO_LOJA = ["Lojas Americanas fachada", "Lojas Americanas", "Americanas loja"]
 FOTO_B3 = ["B3 Bolsa de Valores São Paulo edifício", "Bolsa de Valores de São Paulo", "BM&FBovespa building"]
 FOTO_RIO = ["Tribunal de Justiça do Estado do Rio de Janeiro", "Fórum Central Rio de Janeiro"]
-FOTO_MADRI = ["Madrid Gran Vía", "Gran Vía Madrid"]
+FOTO_MADRI = ["Puerta de Alcalá Madrid", "Puerta de Alcalá", "Madrid skyline"]
 
 
 def big(*lines):
@@ -42,7 +42,7 @@ long_parts = [
         S("Neste vídeo, você vai entender como esse buraco ficou escondido por anos, quem pagou a conta e onde o caso está hoje.", {"type": "bullets", "items": ["COMO FICOU ESCONDIDO", "QUEM PAGOU A CONTA", "ONDE ESTÁ HOJE"], "size": 90, "last_gold": True}),
     ]},
     {"chapter": "A LOJA DE TUDO", "sentences": [
-        S("A Americanas nasceu em mil novecentos e vinte e nove, em Niterói, no Rio de Janeiro.", {"type": "date", "month": "NITERÓI", "day": "RJ", "year": "1929", "tag": "A PRIMEIRA LOJA"}),
+        S("A Americanas nasceu em mil novecentos e vinte e nove, em Niterói, no Rio de Janeiro.", big(("1929", G, 230), ("NITERÓI · RJ", W, 110), ("A PRIMEIRA LOJA", M, 80))),
         S("A ideia era simples: vender de tudo, barato.", vid("loja_prateleira", "supermarket shelves products", "Vender de tudo, barato", big(("DE TUDO", W, 160), ("BARATO", G, 190)))),
         S("Em mil novecentos e oitenta e dois, o controle foi comprado por três sócios que depois virariam alguns dos homens mais ricos do país.", big(("1982", G, 200), ("3 SÓCIOS", W, 130), ("COMPRAM O CONTROLE", M, 80))),
         S("Jorge Paulo Lemann, Marcel Telles e Beto Sicupira.", {"type": "bullets", "items": ["JORGE PAULO LEMANN", "MARCEL TELLES", "BETO SICUPIRA"], "size": 90, "last_gold": False}),
