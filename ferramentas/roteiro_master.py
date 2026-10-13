@@ -12,7 +12,7 @@ def big(*lines):
     return {"type": "bigtext", "stagger": 0.25, "lines": [list(l) for l in lines]}
 
 
-IDS = {'faria_lima': 219134, 'rua_sp': 23796, 'escritorio': 45986, 'investindo': 38084, 'grafico': 204306, 'celular_v': 202987, 'papeis': 87146, 'aeroporto': 3593, 'aeroporto_v': 51016, 'banco_agencia': 214695, 'dinheiro_v': 9908}
+IDS = {'faria_lima': 219134, 'rua_sp': 23796, 'escritorio': 45986, 'investindo': 38084, 'grafico': 204306, 'celular_v': 202987, 'papeis': 87146, 'aeroporto': 3593, 'aeroporto_v': 51016, 'banco_agencia': 214695, 'dinheiro_v': 198751}
 
 
 def vid(media, en, lower, fb):
@@ -48,7 +48,7 @@ long_parts = [
         S("O banco se chamava Banco Máxima, e em dois mil e dezesseis chegou perto de quebrar.", big(("BANCO MÁXIMA", W, 140), ("2016: QUASE QUEBRA", R, 100))),
         S("Em dois mil e dezoito, quem assumiu o comando foi um empresário mineiro: Daniel Vorcaro.", big(("2018", G, 200), ("DANIEL VORCARO", W, 120), ("ASSUME O COMANDO", M, 80))),
         S("Em dois mil e vinte e um, o banco mudou de nome.", {"type": "stamp", "org": "BANCO MÁXIMA · 2021", "title": "NOVO NOME", "stamp": "MASTER", "stamp_at": 0.8}),
-        S("Nascia o Banco Master, com sede na Faria Lima, o centro financeiro de São Paulo.", img("faria_lima_foto", FOTO_FL, "Faria Lima · São Paulo", big(("FARIA LIMA", G, 170), ("SÃO PAULO", W, 100)))),
+        S("Nascia o Banco Master, com sede na Faria Lima, o centro financeiro de São Paulo.", vid("faria_lima", "business district skyscrapers", "Faria Lima · São Paulo", big(("FARIA LIMA", G, 170), ("SÃO PAULO", W, 100)))),
         S("E o Master tinha uma estratégia simples para crescer rápido.", {"type": "flash", "text": "A ESTRATÉGIA", "color": G, "size": 150}),
         S("Pagar mais.", big(("PAGAR", W, 150), ("MAIS", G, 230))),
         S("E funcionou.", {"type": "flash", "text": "E FUNCIONOU", "color": G, "size": 160}),
@@ -76,7 +76,7 @@ long_parts = [
         S("Segundo as investigações, o Master captava dinheiro novo para cobrir compromissos antigos.", {"type": "flow", "a": "DINHEIRO NOVO", "a_sub": "de novos investidores", "b": "PAGA O ANTIGO", "b_sub": "compromissos que venciam", "caption": "SEGUNDO A INVESTIGAÇÃO"}),
         S("E os ativos que deveriam garantir tudo isso valiam menos do que o banco dizia.", big(("OS ATIVOS", W, 130), ("VALIAM MENOS", R, 160))),
         S("Em março de dois mil e vinte e cinco, apareceu uma saída.", {"type": "date", "month": "MARÇO", "day": "28", "year": "2025", "tag": "O ANÚNCIO"}),
-        S("O BRB, o Banco de Brasília, anunciou que ia comprar o controle do Master.", img("brb", FOTO_BRB, "BRB · Banco de Brasília", big(("BRB", R, 220), ("BANCO DE BRASÍLIA", W, 90)))),
+        S("O BRB, o Banco de Brasília, anunciou que ia comprar o controle do Master.", big(("BRB", R, 220), ("BANCO DE BRASÍLIA", W, 90))),
         S("O detalhe: o BRB é um banco público, controlado pelo governo do Distrito Federal.", {"type": "stamp", "org": "GOVERNO DO DISTRITO FEDERAL", "title": "BRB · BANCO DE BRASÍLIA", "stamp": "BANCO PÚBLICO", "stamp_at": 0.9}),
         S("Ou seja, dinheiro público.", big(("DINHEIRO", W, 160), ("PÚBLICO", R, 210))),
         S("O negócio foi aprovado pelo CADE em junho e pela Câmara Legislativa do Distrito Federal em agosto.", {"type": "events", "row": 140, "events": [["JUN 2025", "CADE aprova a compra", G], ["AGO 2025", "Câmara Legislativa do DF aprova", G], ["???", "Falta o Banco Central", R]]}),
@@ -156,7 +156,7 @@ shorts = [
         S("O caso completo está no canal.", {"type": "endcard", "sub": "O CASO BANCO MASTER"}),
     ]},
     {"title": "Esse CDB pagava 140% do CDI. Era bom demais.", "sentences": [
-        S("Esse banco pagava cento e quarenta por cento do CDI. Parecia bom demais. E era.", capa("Esse CDB pagava", [["140%", G, 260], ["do CDI", W, 200], ["era bom demais", R, 150]], "Banco Master", FOTO_FL, "faria_lima_foto")),
+        S("Esse banco pagava cento e quarenta por cento do CDI. Parecia bom demais. E era.", capa("Esse CDB pagava", [["140%", G, 260], ["do CDI", W, 200], ["era bom demais", R, 150]], "Banco Master", FOTO_BC, "bc")),
         S("Quem paga muito mais precisa ganhar muito mais.", {"type": "flow", "a": "PAGA 140%", "a_sub": "para você", "b": "PRECISA GANHAR", "b_sub": "ainda mais", "caption": "DE ONDE VINHA?"}),
         S("Segundo a investigação, o dinheiro de quem entrava pagava quem já estava lá.", {"type": "flow", "a": "DINHEIRO NOVO", "a_sub": "de quem entrava", "b": "PAGA O ANTIGO", "b_sub": "de quem já estava", "caption": "SEGUNDO A INVESTIGAÇÃO"}),
         S("O banco quebrou em novembro de dois mil e vinte e cinco.", {"type": "stamp", "org": "BANCO CENTRAL · 18/11/2025", "title": "BANCO MASTER S.A.", "stamp": "LIQUIDADO", "stamp_at": 0.8}),

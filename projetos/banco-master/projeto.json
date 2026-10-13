@@ -206,14 +206,13 @@
       {
        "text": "Nascia o Banco Master, com sede na Faria Lima, o centro financeiro de São Paulo.",
        "scene": {
-        "type": "image",
-        "media": "faria_lima_foto",
-        "wiki": [
-         "Avenida Brigadeiro Faria Lima",
-         "Faria Lima São Paulo"
-        ],
-        "lower": "Faria Lima · São Paulo",
+        "type": "video",
+        "media": "faria_lima",
+        "search": "business district skyscrapers",
+        "search_en": "business district skyscrapers",
+        "start": 0.0,
         "dim": 0.4,
+        "lower": "Faria Lima · São Paulo",
         "fallback": {
          "type": "bigtext",
          "stagger": 0.25,
@@ -229,7 +228,8 @@
            100
           ]
          ]
-        }
+        },
+        "pixabay_id": 219134
        }
       },
       {
@@ -617,30 +617,20 @@
       {
        "text": "O BRB, o Banco de Brasília, anunciou que ia comprar o controle do Master.",
        "scene": {
-        "type": "image",
-        "media": "brb",
-        "wiki": [
-         "Banco de Brasília BRB",
-         "BRB Banco de Brasília"
-        ],
-        "lower": "BRB · Banco de Brasília",
-        "dim": 0.4,
-        "fallback": {
-         "type": "bigtext",
-         "stagger": 0.25,
-         "lines": [
-          [
-           "BRB",
-           "red",
-           220
-          ],
-          [
-           "BANCO DE BRASÍLIA",
-           "white",
-           90
-          ]
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "BRB",
+          "red",
+          220
+         ],
+         [
+          "BANCO DE BRASÍLIA",
+          "white",
+          90
          ]
-        }
+        ]
        }
       },
       {
@@ -1647,7 +1637,7 @@
          ]
         ]
        },
-       "pixabay_id": 9908
+       "pixabay_id": 198751
       }
      },
      {
@@ -1666,10 +1656,11 @@
       "text": "Esse banco pagava cento e quarenta por cento do CDI. Parecia bom demais. E era.",
       "scene": {
        "type": "capa",
-       "foto": "faria_lima_foto",
+       "foto": "bc",
        "wiki": [
-        "Avenida Brigadeiro Faria Lima",
-        "Faria Lima São Paulo"
+        "Banco Central do Brasil sede",
+        "Edifício-Sede do Banco Central do Brasil",
+        "Banco Central do Brasil"
        ],
        "seta": false,
        "recorte": "Banco Master",
