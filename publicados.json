@@ -5,7 +5,9 @@
   "titulo": "ITAPEMIRIM: A Empresa de Ônibus Que Criou Uma Aérea e Quebrou em 6 Meses",
   "video_id": "4WuKNxpR188",
   "publishAt": "2026-10-11T12:00:00-03:00",
-  "status": "manual"
+  "status": "manual",
+  "caso": "itapemirim",
+  "caso_titulo": "Itapemirim"
  },
  {
   "nome": "itapemirim_short1",
@@ -13,7 +15,8 @@
   "titulo": "46 mil pessoas perderam o voo de Natal no mesmo dia",
   "video_id": "",
   "publishAt": "2026-10-11T18:00:00-03:00",
-  "status": "manual"
+  "status": "manual",
+  "caso": "itapemirim"
  },
  {
   "nome": "kolynos_longo",
@@ -21,7 +24,9 @@
   "titulo": "A Colgate Pagou US$ 1 Bilhão Pela Kolynos e Guardou na Gaveta",
   "video_id": "TIv6Sg8n_rI",
   "publishAt": "2026-10-12T18:30:00-03:00",
-  "status": "manual"
+  "status": "manual",
+  "caso": "kolynos",
+  "caso_titulo": "Kolynos"
  },
  {
   "nome": "kolynos_short1",
@@ -29,7 +34,8 @@
   "titulo": "Essa pasta de dente vendia o dobro da Colgate",
   "video_id": "",
   "publishAt": "2026-10-12T18:30:00-03:00",
-  "status": "manual"
+  "status": "manual",
+  "caso": "kolynos"
  },
  {
   "nome": "banco_master_longo",
@@ -38,7 +44,9 @@
   "video_id": "3e-eXXCL27s",
   "publishAt": "2026-10-13T12:00:00-03:00",
   "status": "private",
-  "miniatura_ok": "c993e0b96a78"
+  "miniatura_ok": "c993e0b96a78",
+  "caso": "banco_master",
+  "caso_titulo": "Banco Master"
  },
  {
   "nome": "banco_master_short1",
@@ -47,7 +55,8 @@
   "video_id": "z6dXgM3pY_c",
   "publishAt": "2026-10-13T18:00:00-03:00",
   "status": "private",
-  "miniatura_ok": true
+  "miniatura_ok": true,
+  "caso": "banco_master"
  },
  {
   "nome": "banco_master_short2",
@@ -56,7 +65,8 @@
   "video_id": "u_n01fzotFM",
   "publishAt": "2026-10-14T18:00:00-03:00",
   "status": "private",
-  "miniatura_ok": true
+  "miniatura_ok": true,
+  "caso": "banco_master"
  },
  {
   "nome": "banco_master_short4",
@@ -65,7 +75,8 @@
   "video_id": "TZLpKjOWKH4",
   "publishAt": "2026-10-16T18:00:00-03:00",
   "status": "private",
-  "miniatura_ok": true
+  "miniatura_ok": true,
+  "caso": "banco_master"
  },
  {
   "nome": "banco_master_short3",
@@ -74,7 +85,8 @@
   "video_id": "2dxf1dO_zcU",
   "publishAt": "2026-10-17T18:00:00-03:00",
   "status": "private",
-  "miniatura_ok": true
+  "miniatura_ok": true,
+  "caso": "banco_master"
  },
  {
   "nome": "americanas_longo",
@@ -83,7 +95,9 @@
   "video_id": "PecT2RdCwOY",
   "publishAt": "2026-10-20T12:00:00-03:00",
   "status": "private",
-  "miniatura_ok": "4d075285dc10"
+  "miniatura_ok": "4d075285dc10",
+  "caso": "americanas",
+  "caso_titulo": "Americanas"
  },
  {
   "nome": "americanas_short1",
@@ -92,7 +106,8 @@
   "video_id": "hXQaFClp7fU",
   "publishAt": "2026-10-20T18:00:00-03:00",
   "status": "private",
-  "miniatura_ok": "bf00d8852f80"
+  "miniatura_ok": "bf00d8852f80",
+  "caso": "americanas"
  },
  {
   "nome": "americanas_short2",
@@ -101,7 +116,8 @@
   "video_id": "GAVrJjC3XGI",
   "publishAt": "2026-10-21T18:00:00-03:00",
   "status": "private",
-  "miniatura_ok": "badbd6ba12b8"
+  "miniatura_ok": "badbd6ba12b8",
+  "caso": "americanas"
  },
  {
   "nome": "americanas_short3",
@@ -110,7 +126,8 @@
   "video_id": "hmaGbySAWko",
   "publishAt": "2026-10-22T18:00:00-03:00",
   "status": "private",
-  "miniatura_ok": "ef0f49c84541"
+  "miniatura_ok": "ef0f49c84541",
+  "caso": "americanas"
  },
  {
   "nome": "americanas_short4",
@@ -119,6 +136,7 @@
   "video_id": "bi71RCxJKDM",
   "publishAt": "2026-10-23T18:00:00-03:00",
   "status": "private",
-  "miniatura_ok": "0905387f946d"
+  "miniatura_ok": "0905387f946d",
+  "caso": "americanas"
  }
 ]

@@ -272,7 +272,7 @@ def main():
                     txt = ["TÍTULO (opções):"] + [f"  {t}" for t in meta.get("titles", [])] + ["", "DESCRIÇÃO:", desc, "", "TAGS:", ", ".join(meta.get("tags", []))]
                     with open(os.path.join(saida, "publicar_longo.txt"), "w", encoding="utf8") as f:
                         f.write("\n".join(txt) + "\n")
-                    yt = {"tipo": "longo", "video": nome + ".mp4", "legenda": nome + ".srt", "miniatura": "miniatura_A.jpg",
+                    yt = {"tipo": "longo", "caso": slug, "caso_titulo": p.get("title", slug), "video": nome + ".mp4", "legenda": nome + ".srt", "miniatura": "miniatura_A.jpg",
                           "titulo": (meta.get("titles") or [p.get("title", slug)])[0][:100], "descricao": desc[:4900], "tags": meta.get("tags", [])}
                     with open(os.path.join(saida if (gravada or nar.modo != "teste") else trab, f"youtube_{nome}.json"), "w", encoding="utf8") as f:
                         json.dump(yt, f, ensure_ascii=False, indent=1)
@@ -287,6 +287,15 @@ def main():
                             f.write(base64.b64decode(d.split(",")[1]))
                     if r["total"] < 61:
                         avisos.append(f"{nome}: {r['total']:.0f}s. O Programa de Recompensas do TikTok só conta vídeos com mais de 1 minuto.")
+                    if r["total"] <= 180:  # Shorts aceitam até 3 min: a série também vai para o YouTube
+                        tags = " ".join("#" + re.sub(r"\W", "", t.title()) for t in (p.get("meta") or {}).get("tags", [])[:3])
+                        tot = len(p["serie"])
+                        yt = {"tipo": "serie", "caso": slug, "video": nome + ".mp4", "miniatura": f"capa_serie{idx + 1}.jpg" if cena0 else None,
+                              "titulo": f"{p.get('title', slug)}: parte {idx + 1} de {tot} #shorts"[:100],
+                              "descricao": (ep.get("caption") or "") + f"\n\nSérie em {tot} partes. O caso completo está no canal.\n\n#shorts {tags}",
+                              "tags": (p.get("meta") or {}).get("tags", [])}
+                        with open(os.path.join(saida if (gravada or nar.modo != "teste") else trab, f"youtube_{nome}.json"), "w", encoding="utf8") as f:
+                            json.dump(yt, f, ensure_ascii=False, indent=1)
                 elif fmt == "tiktok":
                     tk = tiktoks[idx]
                     with open(os.path.join(saida, f"publicar_tiktok{idx + 1}.txt"), "w", encoding="utf8") as f:
@@ -316,7 +325,7 @@ def main():
                         capa_arq = f"capa_short{idx + 1}.jpg"
                         with open(os.path.join(saida, capa_arq), "wb") as f:
                             f.write(base64.b64decode(d.split(",")[1]))
-                    yt = {"tipo": "short", "video": nome + ".mp4", "titulo": (sh.get("title", "") + " #shorts")[:100],
+                    yt = {"tipo": "short", "caso": slug, "video": nome + ".mp4", "titulo": (sh.get("title", "") + " #shorts")[:100],
                           "descricao": (sh.get("description") or "A história completa está no vídeo longo do canal.") + f"\n\n#shorts {tags}",
                           "tags": (p.get("meta") or {}).get("tags", []), "miniatura": capa_arq}
                     with open(os.path.join(saida if (gravada or nar.modo != "teste") else trab, f"youtube_{nome}.json"), "w", encoding="utf8") as f:

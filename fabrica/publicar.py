@@ -16,7 +16,7 @@ RAIZ = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 REG = os.path.join(RAIZ, "publicados.json")
 TAG = "fila"
 BRT = dt.timezone(dt.timedelta(hours=-3))
-HORA = {"longo": 12, "short": 18}
+HORA = {"longo": 12, "short": 18, "serie": 8}
 
 
 class Cota(Exception):
@@ -73,7 +73,7 @@ def registro():
         return []
 
 
-def proximo_horario(tipo, reg):
+def proximo_horario(tipo, reg, caso=None):
     agora = dt.datetime.now(BRT)
     dia = agora.date()
     if agora.hour >= HORA[tipo] - 2:  # precisa de folga para o YouTube processar
@@ -81,11 +81,14 @@ def proximo_horario(tipo, reg):
     ultimos = [dt.datetime.fromisoformat(r["publishAt"]).astimezone(BRT).date() for r in reg if r["tipo"] == tipo]
     if ultimos and max(ultimos) >= dia:
         dia = max(ultimos) + dt.timedelta(days=1)
-    longos = [dt.datetime.fromisoformat(r["publishAt"]).astimezone(BRT).date() for r in reg if r["tipo"] == "longo"]
+    longos = [dt.datetime.fromisoformat(r["publishAt"]).astimezone(BRT).date() for r in reg
+              if r["tipo"] == "longo" and r.get("publishAt") and (not caso or r["nome"].startswith(caso + "_"))]
     if tipo == "longo" and ultimos:  # um longo por semana
         dia = max(dia, max(ultimos) + dt.timedelta(days=7))
     if tipo != "longo" and longos:  # Short nunca sai antes do longo que ele anuncia
         dia = max(dia, max(longos))
+        if dia == max(longos) and HORA[tipo] <= HORA["longo"]:
+            dia += dt.timedelta(days=1)
     return dt.datetime(dia.year, dia.month, dia.day, HORA[tipo], tzinfo=BRT)
 
 
@@ -156,7 +159,10 @@ def enviar():
                 if f"{nome}__video.mp4" not in itens[nome]:
                     continue
                 gh("release", "download", TAG, "-p", f"{nome}__*", "-D", t, "--clobber")
-                quando = proximo_horario(meta["tipo"], reg)
+                quando = proximo_horario(meta["tipo"], reg, meta.get("caso"))
+                lg = next((x for x in reg if meta.get("caso") and x["nome"] == f"{meta['caso']}_longo" and x.get("video_id")), None)
+                if lg and meta["tipo"] != "longo" and "youtu.be/" not in meta["descricao"]:
+                    meta["descricao"] = f"▶ Caso completo: https://youtu.be/{lg['video_id']}\n\n" + meta["descricao"]
                 v = subir_video(tk, os.path.join(t, f"{nome}__video.mp4"), meta, quando)
                 vid = v["id"]; extra = []
                 for suf, fn in (("miniatura.jpg", subir_miniatura), ("legenda.srt", subir_legenda)):
@@ -167,7 +173,7 @@ def enviar():
                             raise
                         except Exception as e:
                             extra.append(f"{suf.split('.')[0]} falhou: {str(e)[:150]}")
-                reg.append({"nome": nome, "tipo": meta["tipo"], "titulo": meta["titulo"], "video_id": vid,
+                reg.append({"nome": nome, "tipo": meta["tipo"], "titulo": meta["titulo"], "video_id": vid, "caso": meta.get("caso"), "caso_titulo": meta.get("caso_titulo"),
                             "publishAt": quando.isoformat(), "status": v.get("status", {}).get("privacyStatus")})
                 feitos.append(f"{meta['titulo']} → {quando:%d/%m %Hh} (youtu.be/{vid})" + (f" [{'; '.join(extra)}]" if extra else ""))
                 for a in itens[nome]:
@@ -202,6 +208,57 @@ def miniaturas(pasta_saida):
         nota("Miniaturas aplicadas", ", ".join(feitos))
 
 
+TODOS = "Todos os casos | Custo Oculto"
+
+
+def playlists():
+    """Playlists que tocam em sequência: uma com todos os longos e uma por caso (longo + série)."""
+    reg = registro(); tk = token(); H = {"Authorization": f"Bearer {tk}"}; Y = "https://www.googleapis.com/youtube/v3"
+    titulos = {}
+    for r in reg:  # nome do caso vem do longo
+        if r.get("tipo") == "longo" and r.get("caso_titulo"):
+            titulos[r["caso"]] = r["caso_titulo"]
+    ex = {}; tok = None
+    while True:
+        q = requests.get(f"{Y}/playlists?part=snippet&mine=true&maxResults=50" + (f"&pageToken={tok}" if tok else ""), headers=H, timeout=30)
+        checar(q, "listar playlists"); j = q.json()
+        for it in j.get("items", []):
+            ex[it["snippet"]["title"]] = it["id"]
+        tok = j.get("nextPageToken")
+        if not tok:
+            break
+    def pl(titulo, desc):
+        if titulo not in ex:
+            q = checar(requests.post(f"{Y}/playlists?part=snippet,status", headers=H, timeout=30,
+                                     json={"snippet": {"title": titulo, "description": desc, "defaultLanguage": "pt-BR"}, "status": {"privacyStatus": "public"}}), "criar playlist")
+            ex[titulo] = q.json()["id"]
+        return ex[titulo]
+    feitos = []
+    try:
+        for r in reg:
+            if not r.get("video_id"):
+                continue
+            alvos = []
+            if r.get("tipo") == "longo":
+                alvos.append((TODOS, "Todos os casos do Custo Oculto, um atrás do outro: fraudes, quedas e quem pagou a conta."))
+            if r.get("caso") in titulos and r.get("tipo") in ("longo", "serie"):
+                alvos.append((f"Caso {titulos[r['caso']]} | Custo Oculto", f"O caso {titulos[r['caso']]} completo e em partes."))
+            for t, d in alvos:
+                if t in (r.get("playlists") or []):
+                    continue
+                pid = pl(t, d)
+                checar(requests.post(f"{Y}/playlistItems?part=snippet", headers=H, timeout=30,
+                                     json={"snippet": {"playlistId": pid, "resourceId": {"kind": "youtube#video", "videoId": r["video_id"]}}}), "adicionar à playlist")
+                r.setdefault("playlists", []).append(t); feitos.append(f"{r['nome']} → {t}")
+    except Cota:
+        nota("Cota do dia acabou", "playlists continuam na próxima execução", "warning")
+    except Exception as e:
+        nota("Playlist falhou", str(e)[:400], "warning")
+    if feitos:
+        json.dump(reg, open(REG, "w", encoding="utf8"), ensure_ascii=False, indent=1)
+        nota("Playlists", f"{len(feitos)} adicionados: " + "; ".join(feitos)[:800])
+
+
 def conferir():
     tk = token()
     r = requests.get("https://www.googleapis.com/youtube/v3/channels?part=snippet,statistics&mine=true", headers={"Authorization": f"Bearer {tk}"}, timeout=30)
@@ -220,6 +277,8 @@ if __name__ == "__main__":
         miniaturas(sys.argv[2] if len(sys.argv) > 2 else os.path.join(RAIZ, "saida"))
     elif cmd == "conferir":
         conferir()
+    elif cmd == "playlists":
+        playlists()
     elif cmd == "enfileirar":
         enfileirar(sys.argv[2] if len(sys.argv) > 2 else os.path.join(RAIZ, "saida"))
     else:
