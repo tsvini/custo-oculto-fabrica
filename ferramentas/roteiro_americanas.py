@@ -12,7 +12,7 @@ def big(*lines):
     return {"type": "bigtext", "stagger": 0.25, "lines": [list(l) for l in lines]}
 
 
-IDS = {'banco_agencia': 214695, 'papeis': 87146}
+IDS = {'banco_agencia': 214695, 'papeis': 87146, 'loja_corredor': 21117, 'loja_corredor_v': 21117, 'loja_prateleira': 1735, 'escritorio_meta': 148867, 'compra_online': 108458, 'galpao': 43658, 'galpao_v': 43658, 'celular_queda': 33805, 'celular_queda_v': 33805}
 
 
 def vid(media, en, lower, fb):
