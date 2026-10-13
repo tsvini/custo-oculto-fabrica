@@ -75,5 +75,50 @@
   "publishAt": "2026-10-17T18:00:00-03:00",
   "status": "private",
   "miniatura_ok": true
+ },
+ {
+  "nome": "americanas_longo",
+  "tipo": "longo",
+  "titulo": "AMERICANAS: Como Sumiram R$ 25 Bilhões da Loja Que Todo Brasileiro Conhece",
+  "video_id": "PecT2RdCwOY",
+  "publishAt": "2026-10-20T12:00:00-03:00",
+  "status": "private",
+  "miniatura_ok": "4d075285dc10"
+ },
+ {
+  "nome": "americanas_short1",
+  "tipo": "short",
+  "titulo": "O presidente que durou 9 dias na Americanas #shorts",
+  "video_id": "hXQaFClp7fU",
+  "publishAt": "2026-10-20T18:00:00-03:00",
+  "status": "private",
+  "miniatura_ok": "bf00d8852f80"
+ },
+ {
+  "nome": "americanas_short2",
+  "tipo": "short",
+  "titulo": "Como a Americanas escondeu R$ 25 bilhões #shorts",
+  "video_id": "GAVrJjC3XGI",
+  "publishAt": "2026-10-21T18:00:00-03:00",
+  "status": "private",
+  "miniatura_ok": "badbd6ba12b8"
+ },
+ {
+  "nome": "americanas_short3",
+  "tipo": "short",
+  "titulo": "O ex-presidente da Americanas foi preso na Espanha #shorts",
+  "video_id": "hmaGbySAWko",
+  "publishAt": "2026-10-22T18:00:00-03:00",
+  "status": "private",
+  "miniatura_ok": "ef0f49c84541"
+ },
+ {
+  "nome": "americanas_short4",
+  "tipo": "short",
+  "titulo": "Quem pagou a conta da Americanas #shorts",
+  "video_id": "bi71RCxJKDM",
+  "publishAt": "2026-10-23T18:00:00-03:00",
+  "status": "private",
+  "miniatura_ok": "0905387f946d"
  }
 ]
