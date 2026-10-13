@@ -175,9 +175,23 @@ def enviar():
             nota("Ainda na fila", f"{restam} vídeo(s)")
 
 
+def conferir():
+    tk = token()
+    r = requests.get("https://www.googleapis.com/youtube/v3/channels?part=snippet,statistics&mine=true", headers={"Authorization": f"Bearer {tk}"}, timeout=30)
+    if r.status_code != 200:
+        nota("YouTube: falhou", f"{r.status_code}: {r.text[:500]}", "error"); raise SystemExit(1)
+    it = r.json().get("items") or []
+    if not it:
+        nota("YouTube: nenhum canal", "a conta autorizada não tem canal. Autorize com a conta/canal Custo Oculto.", "error"); raise SystemExit(1)
+    c = it[0]
+    nota("YouTube conectado", f"canal: {c['snippet']['title']} · inscritos: {c['statistics'].get('subscriberCount')} · vídeos: {c['statistics'].get('videoCount')}")
+
+
 if __name__ == "__main__":
     cmd = sys.argv[1] if len(sys.argv) > 1 else "enviar"
-    if cmd == "enfileirar":
+    if cmd == "conferir":
+        conferir()
+    elif cmd == "enfileirar":
         enfileirar(sys.argv[2] if len(sys.argv) > 2 else os.path.join(RAIZ, "saida"))
     else:
         enviar()

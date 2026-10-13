@@ -5,6 +5,8 @@ on:
   schedule:
     - cron: "7 11 * * *"
   workflow_dispatch:
+  push:
+    paths: [".github/workflows/publicar.yml"]
 
 concurrency:
   group: publicar
@@ -30,6 +32,7 @@ jobs:
           YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
         run: |
           pip install -q requests
+          python -m fabrica.publicar conferir
           python -m fabrica.publicar enviar
           git config user.name "fabrica-custo-oculto"; git config user.email "fabrica@users.noreply.github.com"
           if [ -n "$(git status --porcelain publicados.json)" ]; then
