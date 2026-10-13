@@ -92,6 +92,19 @@ jobs:
           path: ~/.cache/huggingface
           key: whisper-small
 
+      - name: Voz do ElevenLabs (só gera os áudios que faltam)
+        if: ${{ (inputs.modo || steps.alvo.outputs.modo || 'gravada') != 'teste' }}
+        env:
+          ELEVENLABS_KEY: ${{ secrets.ELEVENLABS_KEY }}
+          LISTA: ${{ steps.alvo.outputs.lista }}
+        shell: bash
+        run: |
+          for p in $LISTA; do python -m fabrica.eleven "$p"; done
+          git config user.name "fabrica-custo-oculto"; git config user.email "fabrica@users.noreply.github.com"
+          if [ -n "$(git status --porcelain projetos)" ]; then
+            git add projetos/*/audio && git commit -q -m "Narração do ElevenLabs [skip ci]" && for t in 1 2 3; do git pull --rebase -q origin main && git push -q origin HEAD:main && break; sleep 5; done
+          fi
+
       - name: Gerar
         env:
           GOOGLE_TTS_KEY: ${{ secrets.GOOGLE_TTS_KEY }}

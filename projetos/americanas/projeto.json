@@ -3,7 +3,9 @@
  "slug": "americanas",
  "angle": "A loja que todo brasileiro conhece escondeu R$ 25 bilhões por anos. Quando o buraco apareceu, quem pagou foi quem não tinha nada a ver.",
  "voz": {
-  "nome": "gravada"
+  "nome": "gravada",
+  "motor": "eleven",
+  "eleven_voz": "Will"
  },
  "script": {
   "long": {

@@ -204,7 +204,7 @@ projeto = {
     "title": "Americanas",
     "slug": "americanas",
     "angle": "A loja que todo brasileiro conhece escondeu R$ 25 bilhões por anos. Quando o buraco apareceu, quem pagou foi quem não tinha nada a ver.",
-    "voz": {"nome": "gravada"},
+    "voz": {"nome": "gravada", "motor": "eleven", "eleven_voz": "Will"},
     "script": {"long": {"parts": long_parts}, "shorts": shorts, "tiktoks": tiktoks},
     "serie": [
         {"partes": [1, 2], "capa": capa("Parte 1 de 4", [["A LOJA", W, 210], ["DE TODO MUNDO", G, 170], ["ESCONDEU", R, 200]], "Americanas · Parte 1", selo="Caso Americanas · Parte 1"),
