@@ -9,7 +9,8 @@
   "caso": "itapemirim",
   "caso_titulo": "Itapemirim",
   "playlists": [
-   "Todos os casos | Custo Oculto"
+   "Todos os casos | Custo Oculto",
+   "Caso Itapemirim | Custo Oculto"
   ]
  },
  {
@@ -29,7 +30,11 @@
   "publishAt": "2026-10-12T18:30:00-03:00",
   "status": "manual",
   "caso": "kolynos",
-  "caso_titulo": "Kolynos"
+  "caso_titulo": "Kolynos",
+  "playlists": [
+   "Todos os casos | Custo Oculto",
+   "Caso Kolynos | Custo Oculto"
+  ]
  },
  {
   "nome": "kolynos_short1",
@@ -49,7 +54,10 @@
   "status": "private",
   "miniatura_ok": "c993e0b96a78",
   "caso": "banco_master",
-  "caso_titulo": "Banco Master"
+  "caso_titulo": "Banco Master",
+  "playlists": [
+   "Todos os casos | Custo Oculto"
+  ]
  },
  {
   "nome": "banco_master_short1",
@@ -100,7 +108,11 @@
   "status": "private",
   "miniatura_ok": "4d075285dc10",
   "caso": "americanas",
-  "caso_titulo": "Americanas"
+  "caso_titulo": "Americanas",
+  "playlists": [
+   "Todos os casos | Custo Oculto",
+   "Caso Americanas | Custo Oculto"
+  ]
  },
  {
   "nome": "americanas_short1",
@@ -151,7 +163,10 @@
   "caso_titulo": null,
   "publishAt": "2026-10-21T08:00:00-03:00",
   "status": "private",
-  "miniatura_ok": "1649bfade819"
+  "miniatura_ok": "1649bfade819",
+  "playlists": [
+   "Caso Americanas | Custo Oculto"
+  ]
  },
  {
   "nome": "americanas_serie2",
@@ -162,7 +177,10 @@
   "caso_titulo": null,
   "publishAt": "2026-10-22T08:00:00-03:00",
   "status": "private",
-  "miniatura_ok": "842085b81137"
+  "miniatura_ok": "842085b81137",
+  "playlists": [
+   "Caso Americanas | Custo Oculto"
+  ]
  },
  {
   "nome": "americanas_serie3",
@@ -173,7 +191,10 @@
   "caso_titulo": null,
   "publishAt": "2026-10-23T08:00:00-03:00",
   "status": "private",
-  "miniatura_ok": "9ef8e2a98371"
+  "miniatura_ok": "9ef8e2a98371",
+  "playlists": [
+   "Caso Americanas | Custo Oculto"
+  ]
  },
  {
   "nome": "americanas_serie4",
@@ -184,6 +205,9 @@
   "caso_titulo": null,
   "publishAt": "2026-10-24T08:00:00-03:00",
   "status": "private",
-  "miniatura_ok": "476837284cdb"
+  "miniatura_ok": "476837284cdb",
+  "playlists": [
+   "Caso Americanas | Custo Oculto"
+  ]
  }
 ]
