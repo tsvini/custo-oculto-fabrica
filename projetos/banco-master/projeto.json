@@ -1970,7 +1970,7 @@
     ],
     "sentences": [
      {
-      "text": "Um banco pagava cento e quarenta por cento do CDI. Um milhão e seiscentas mil pessoas colocaram dinheiro nele. E agora você pode estar pagando essa conta, mesmo sem nunca ter investido lá.",
+      "text": "Um banco pagava cento e quarenta por cento do CDI.",
       "scene": {
        "type": "capa",
        "foto": "bc",
@@ -2000,6 +2000,64 @@
         ]
        ],
        "selo": "Banco Master · 2025"
+      }
+     },
+     {
+      "text": "Um milhão e seiscentas mil pessoas colocaram dinheiro nele.",
+      "scene": {
+       "type": "video",
+       "media": "rua_sp_v",
+       "search": "city street people walking",
+       "search_en": "city street people walking",
+       "start": 0.0,
+       "dim": 0.4,
+       "lower": "1,6 milhão de investidores",
+       "fallback": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "1,6 MILHÃO",
+          "gold",
+          200
+         ],
+         [
+          "DE PESSOAS",
+          "white",
+          110
+         ]
+        ]
+       },
+       "pixabay_id": 23796
+      }
+     },
+     {
+      "text": "E agora você pode estar pagando essa conta, mesmo sem nunca ter investido lá.",
+      "scene": {
+       "type": "video",
+       "media": "dinheiro_v",
+       "search": "money banknotes counting",
+       "search_en": "money banknotes counting",
+       "start": 0.0,
+       "dim": 0.4,
+       "lower": "A conta pode chegar em você",
+       "fallback": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "A CONTA",
+          "white",
+          150
+         ],
+         [
+          "É SUA?",
+          "red",
+          200
+         ]
+        ]
+       },
+       "pixabay_id": 198751
       }
      },
      {
@@ -2055,17 +2113,46 @@
       }
      },
      {
-      "text": "Em novembro de dois mil e vinte e cinco, o dono foi preso no aeroporto, e no dia seguinte o Banco Central liquidou o banco.",
+      "text": "Em novembro de dois mil e vinte e cinco, o dono foi preso no aeroporto,",
+      "scene": {
+       "type": "video",
+       "media": "aeroporto_v",
+       "search": "private jet airport night",
+       "search_en": "private jet airport night",
+       "start": 0.0,
+       "dim": 0.4,
+       "lower": "Novembro de 2025",
+       "fallback": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "PRESO",
+          "red",
+          220
+         ],
+         [
+          "NO AEROPORTO",
+          "white",
+          110
+         ]
+        ]
+       },
+       "pixabay_id": 51016
+      }
+     },
+     {
+      "text": "e no dia seguinte o Banco Central liquidou o banco.",
       "scene": {
        "type": "stamp",
        "org": "BANCO CENTRAL · 18/11/2025",
        "title": "BANCO MASTER S.A.",
        "stamp": "LIQUIDADO",
-       "stamp_at": 0.9
+       "stamp_at": 0.6
       }
      },
      {
-      "text": "O FGC teve que devolver cerca de quarenta e um bilhões de reais. O maior resgate da história do Brasil.",
+      "text": "O FGC teve que devolver cerca de quarenta e um bilhões de reais.",
       "scene": {
        "type": "counter",
        "value": 41,
@@ -2078,6 +2165,35 @@
       }
      },
      {
+      "text": "O maior resgate da história do Brasil.",
+      "scene": {
+       "type": "video",
+       "media": "dinheiro2_v",
+       "search": "money pile banknotes",
+       "search_en": "money pile banknotes",
+       "start": 0.0,
+       "dim": 0.4,
+       "lower": "O maior resgate da história",
+       "fallback": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "O MAIOR",
+          "white",
+          150
+         ],
+         [
+          "DA HISTÓRIA",
+          "red",
+          150
+         ]
+        ]
+       },
+       "pixabay_id": 50628
+      }
+     },
+     {
       "text": "E aqui entra você.",
       "scene": {
        "type": "flash",
@@ -2087,7 +2203,36 @@
       }
      },
      {
-      "text": "O FGC é bancado pelos bancos, e a contribuição deles dobrou. Custo de banco costuma virar juro e tarifa para o cliente.",
+      "text": "O FGC é bancado pelos bancos,",
+      "scene": {
+       "type": "video",
+       "media": "banco_agencia",
+       "search": "bank building facade",
+       "search_en": "bank building facade",
+       "start": 0.0,
+       "dim": 0.4,
+       "lower": "Quem banca o FGC",
+       "fallback": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "BANCADO PELOS",
+          "white",
+          110
+         ],
+         [
+          "BANCOS",
+          "gold",
+          190
+         ]
+        ]
+       },
+       "pixabay_id": 214695
+      }
+     },
+     {
+      "text": "e a contribuição deles dobrou. Custo de banco costuma virar juro e tarifa para o cliente.",
       "scene": {
        "type": "compare",
        "title": "CONTRIBUIÇÃO AO FGC",

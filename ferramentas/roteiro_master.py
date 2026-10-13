@@ -12,7 +12,7 @@ def big(*lines):
     return {"type": "bigtext", "stagger": 0.25, "lines": [list(l) for l in lines]}
 
 
-IDS = {'faria_lima': 219134, 'rua_sp': 23796, 'escritorio': 45986, 'investindo': 38084, 'grafico': 204306, 'celular_v': 202987, 'papeis': 87146, 'aeroporto': 3593, 'aeroporto_v': 51016, 'banco_agencia': 214695, 'dinheiro_v': 198751}
+IDS = {'faria_lima': 219134, 'rua_sp': 23796, 'escritorio': 45986, 'investindo': 38084, 'grafico': 204306, 'celular_v': 202987, 'papeis': 87146, 'aeroporto': 3593, 'aeroporto_v': 51016, 'banco_agencia': 214695, 'dinheiro_v': 198751, 'rua_sp_v': 23796, 'dinheiro2_v': 50628}
 
 
 def vid(media, en, lower, fb):
@@ -186,15 +186,20 @@ tiktoks = [
      "caption": "Um banco pagava 140% do CDI, 1,6 milhão de pessoas entraram… e a conta de R$ 41 bilhões sobrou pra todo mundo. Investigados negam e ninguém foi julgado.",
      "hashtags": ["#bancomaster", "#fgc", "#investimentos", "#dinheiro", "#economia"],
      "sentences": [
-        S("Um banco pagava cento e quarenta por cento do CDI. Um milhão e seiscentas mil pessoas colocaram dinheiro nele. E agora você pode estar pagando essa conta, mesmo sem nunca ter investido lá.", capa("Esse banco quebrou", [["e a conta", W, 200], ["SOBROU", R, 250], ["pra você", G, 200]], "Banco Master · 2025", FOTO_BC, "bc")),
+        S("Um banco pagava cento e quarenta por cento do CDI.", capa("Esse banco quebrou", [["e a conta", W, 200], ["SOBROU", R, 250], ["pra você", G, 200]], "Banco Master · 2025", FOTO_BC, "bc")),
+        S("Um milhão e seiscentas mil pessoas colocaram dinheiro nele.", vid("rua_sp_v", "city street people walking", "1,6 milhão de investidores", big(("1,6 MILHÃO", G, 200), ("DE PESSOAS", W, 110)))),
+        S("E agora você pode estar pagando essa conta, mesmo sem nunca ter investido lá.", vid("dinheiro_v", "money banknotes counting", "A conta pode chegar em você", big(("A CONTA", W, 150), ("É SUA?", R, 200)))),
         S("O nome era Banco Master.", {"type": "flash", "text": "BANCO\nMASTER", "tint": "red", "size": 170}),
         S("Os grandes bancos pagam perto de cem por cento do CDI. O Master chegava a cento e quarenta.", {"type": "compare", "title": "QUANTO O CDB PAGAVA", "items": [["~100%", "GRANDES BANCOS", W], ["140%", "MASTER", G]], "size": 190, "stagger": 1.2, "vs": False}),
         S("E o argumento de venda era sempre o mesmo: é garantido pelo FGC.", {"type": "stamp", "org": "FUNDO GARANTIDOR DE CRÉDITOS", "title": "ATÉ R$ 250 MIL POR CPF", "stamp": "GARANTIDO", "stamp_at": 0.6}),
         S("Só que, segundo a investigação, o dinheiro de quem entrava pagava quem já estava lá.", {"type": "flow", "a": "DINHEIRO NOVO", "a_sub": "de quem entrava", "b": "PAGA O ANTIGO", "b_sub": "de quem já estava", "caption": "SEGUNDO A INVESTIGAÇÃO"}),
-        S("Em novembro de dois mil e vinte e cinco, o dono foi preso no aeroporto, e no dia seguinte o Banco Central liquidou o banco.", {"type": "stamp", "org": "BANCO CENTRAL · 18/11/2025", "title": "BANCO MASTER S.A.", "stamp": "LIQUIDADO", "stamp_at": 0.9}),
-        S("O FGC teve que devolver cerca de quarenta e um bilhões de reais. O maior resgate da história do Brasil.", {"type": "counter", "value": 41, "prefix": "R$ ", "suffix": " BI", "over": "FGC", "label": "O MAIOR RESGATE DA HISTÓRIA", "color": R, "size": 230}),
+        S("Em novembro de dois mil e vinte e cinco, o dono foi preso no aeroporto,", vid("aeroporto_v", "private jet airport night", "Novembro de 2025", big(("PRESO", R, 220), ("NO AEROPORTO", W, 110)))),
+        S("e no dia seguinte o Banco Central liquidou o banco.", {"type": "stamp", "org": "BANCO CENTRAL · 18/11/2025", "title": "BANCO MASTER S.A.", "stamp": "LIQUIDADO", "stamp_at": 0.6}),
+        S("O FGC teve que devolver cerca de quarenta e um bilhões de reais.", {"type": "counter", "value": 41, "prefix": "R$ ", "suffix": " BI", "over": "FGC", "label": "O MAIOR RESGATE DA HISTÓRIA", "color": R, "size": 230}),
+        S("O maior resgate da história do Brasil.", vid("dinheiro2_v", "money pile banknotes", "O maior resgate da história", big(("O MAIOR", W, 150), ("DA HISTÓRIA", R, 150)))),
         S("E aqui entra você.", {"type": "flash", "text": "E VOCÊ?", "color": G, "size": 200}),
-        S("O FGC é bancado pelos bancos, e a contribuição deles dobrou. Custo de banco costuma virar juro e tarifa para o cliente.", {"type": "compare", "title": "CONTRIBUIÇÃO AO FGC", "items": [["0,01%", "ANTES", W], ["0,02%", "AGORA", R]], "size": 190, "stagger": 1.0, "vs": False}),
+        S("O FGC é bancado pelos bancos,", vid("banco_agencia", "bank building facade", "Quem banca o FGC", big(("BANCADO PELOS", W, 110), ("BANCOS", G, 190)))),
+        S("e a contribuição deles dobrou. Custo de banco costuma virar juro e tarifa para o cliente.", {"type": "compare", "title": "CONTRIBUIÇÃO AO FGC", "items": [["0,01%", "ANTES", W], ["0,02%", "AGORA", R]], "size": 190, "stagger": 1.0, "vs": False}),
         S("E dezoito fundos de aposentadoria de servidores públicos colocaram pelo menos um vírgula oito bilhão no banco, em papéis que o FGC não cobre.", {"type": "counter", "value": 18, "suffix": " FUNDOS", "over": "R$ 1,8 BI SEM GARANTIA", "label": "APOSENTADORIA DE SERVIDORES", "color": R, "size": 210}),
         S("Se faltar dinheiro, quem cobre é o estado ou o município. Ou seja, o contribuinte.", big(("QUEM COBRE?", W, 130), ("O CONTRIBUINTE", R, 150))),
         S("Os investigados negam, e ninguém foi julgado até agora.", big(("INVESTIGADOS NEGAM", W, 100), ("NINGUÉM JULGADO", M, 100))),
