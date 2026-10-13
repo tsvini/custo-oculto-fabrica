@@ -1643,10 +1643,18 @@
      {
       "text": "E sumiu do Brasil.",
       "scene": {
-       "type": "flash",
-       "text": "E SUMIU\nDO BRASIL",
-       "tint": "red",
-       "size": 150
+       "type": "video",
+       "media": "prateleira_v",
+       "search": "prateleira supermercado",
+       "start": 0.0,
+       "dim": 0.35,
+       "lower": "E sumiu do Brasil",
+       "fallback": {
+        "type": "flash",
+        "text": "E SUMIU\nDO BRASIL",
+        "tint": "red",
+        "size": 150
+       }
       }
      },
      {
@@ -1741,55 +1749,66 @@
      {
       "text": "O nome sumiu.",
       "scene": {
-       "type": "bigtext",
-       "stagger": 0.25,
-       "lines": [
-        [
-         "O NOME",
+       "type": "image",
+       "media": "kolynos",
+       "wiki": [
+        "Kolynos",
+        "Kolynos toothpaste",
+        "Kolynos creme dental"
+       ],
+       "lower": "O nome sumiu",
+       "dim": 0.4,
+       "fallback": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
          [
-          245,
-          245,
-          242
+          "ANOS 90",
+          "gold",
+          200
          ],
-         150
-        ],
-        [
-         "SUMIU",
          [
-          230,
-          52,
-          52
-         ],
-         190
+          "A Nº 1 DO BRASIL",
+          "white",
+          100
+         ]
         ]
-       ]
+       }
       }
      },
      {
       "text": "Os clientes ficaram.",
       "scene": {
-       "type": "bigtext",
-       "stagger": 0.25,
-       "lines": [
-        [
-         "OS CLIENTES",
+       "type": "video",
+       "media": "escovando_v",
+       "search": "escovando os dentes",
+       "start": 0.0,
+       "dim": 0.35,
+       "lower": "Os clientes ficaram",
+       "fallback": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
          [
-          245,
-          245,
-          242
+          "OS CLIENTES",
+          [
+           245,
+           245,
+           242
+          ],
+          130
          ],
-         130
-        ],
-        [
-         "FICARAM",
          [
-          70,
-          190,
-          110
-         ],
-         190
+          "FICARAM",
+          [
+           70,
+           190,
+           110
+          ],
+          190
+         ]
         ]
-       ]
+       }
       }
      },
      {
