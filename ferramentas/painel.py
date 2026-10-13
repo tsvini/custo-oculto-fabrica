@@ -20,6 +20,9 @@ for nome in sorted(os.listdir(os.path.join(RAIZ, "projetos")), key=lambda n: -os
     for i, sh in enumerate(p["script"].get("shorts", [])):
         blocos.append({"arquivo": f"short{i + 1}", "tipo": "Short", "titulo": sh.get("title", ""),
                        "texto": " ".join(s["text"].strip() for s in sh["sentences"] if s.get("text", "").strip())})
+    for i, tk in enumerate(p["script"].get("tiktoks", [])):
+        blocos.append({"arquivo": f"tiktok{i + 1}", "tipo": "TikTok", "titulo": tk.get("title", ""),
+                       "texto": " ".join(s["text"].strip() for s in tk["sentences"] if s.get("text", "").strip())})
     projetos.append({"id": nome, "titulo": p.get("title", nome), "angulo": p.get("angle", ""), "blocos": blocos})
 
 DADOS = json.dumps({"repo": REPO, "projetos": projetos}, ensure_ascii=False).replace("</", "<\\/")

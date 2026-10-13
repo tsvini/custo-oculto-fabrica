@@ -181,12 +181,33 @@ shorts = [
     ]},
 ]
 
+tiktoks = [
+    {"title": "O banco que quebrou e deixou a conta pra você",
+     "caption": "Um banco pagava 140% do CDI, 1,6 milhão de pessoas entraram… e a conta de R$ 41 bilhões sobrou pra todo mundo. Investigados negam e ninguém foi julgado.",
+     "hashtags": ["#bancomaster", "#fgc", "#investimentos", "#dinheiro", "#economia"],
+     "sentences": [
+        S("Um banco pagava cento e quarenta por cento do CDI. Um milhão e seiscentas mil pessoas colocaram dinheiro nele. E agora você pode estar pagando essa conta, mesmo sem nunca ter investido lá.", capa("Esse banco quebrou", [["e a conta", W, 200], ["SOBROU", R, 250], ["pra você", G, 200]], "Banco Master · 2025", FOTO_BC, "bc")),
+        S("O nome era Banco Master.", {"type": "flash", "text": "BANCO\nMASTER", "tint": "red", "size": 170}),
+        S("Os grandes bancos pagam perto de cem por cento do CDI. O Master chegava a cento e quarenta.", {"type": "compare", "title": "QUANTO O CDB PAGAVA", "items": [["~100%", "GRANDES BANCOS", W], ["140%", "MASTER", G]], "size": 190, "stagger": 1.2, "vs": False}),
+        S("E o argumento de venda era sempre o mesmo: é garantido pelo FGC.", {"type": "stamp", "org": "FUNDO GARANTIDOR DE CRÉDITOS", "title": "ATÉ R$ 250 MIL POR CPF", "stamp": "GARANTIDO", "stamp_at": 0.6}),
+        S("Só que, segundo a investigação, o dinheiro de quem entrava pagava quem já estava lá.", {"type": "flow", "a": "DINHEIRO NOVO", "a_sub": "de quem entrava", "b": "PAGA O ANTIGO", "b_sub": "de quem já estava", "caption": "SEGUNDO A INVESTIGAÇÃO"}),
+        S("Em novembro de dois mil e vinte e cinco, o dono foi preso no aeroporto, e no dia seguinte o Banco Central liquidou o banco.", {"type": "stamp", "org": "BANCO CENTRAL · 18/11/2025", "title": "BANCO MASTER S.A.", "stamp": "LIQUIDADO", "stamp_at": 0.9}),
+        S("O FGC teve que devolver cerca de quarenta e um bilhões de reais. O maior resgate da história do Brasil.", {"type": "counter", "value": 41, "prefix": "R$ ", "suffix": " BI", "over": "FGC", "label": "O MAIOR RESGATE DA HISTÓRIA", "color": R, "size": 230}),
+        S("E aqui entra você.", {"type": "flash", "text": "E VOCÊ?", "color": G, "size": 200}),
+        S("O FGC é bancado pelos bancos, e a contribuição deles dobrou. Custo de banco costuma virar juro e tarifa para o cliente.", {"type": "compare", "title": "CONTRIBUIÇÃO AO FGC", "items": [["0,01%", "ANTES", W], ["0,02%", "AGORA", R]], "size": 190, "stagger": 1.0, "vs": False}),
+        S("E dezoito fundos de aposentadoria de servidores públicos colocaram pelo menos um vírgula oito bilhão no banco, em papéis que o FGC não cobre.", {"type": "counter", "value": 18, "suffix": " FUNDOS", "over": "R$ 1,8 BI SEM GARANTIA", "label": "APOSENTADORIA DE SERVIDORES", "color": R, "size": 210}),
+        S("Se faltar dinheiro, quem cobre é o estado ou o município. Ou seja, o contribuinte.", big(("QUEM COBRE?", W, 130), ("O CONTRIBUINTE", R, 150))),
+        S("Os investigados negam, e ninguém foi julgado até agora.", big(("INVESTIGADOS NEGAM", W, 100), ("NINGUÉM JULGADO", M, 100))),
+        S("Você tinha dinheiro no Master? Conta aqui nos comentários.", big(("VOCÊ TINHA", W, 140), ("DINHEIRO LÁ?", G, 160), ("COMENTA", M, 90))),
+     ]},
+]
+
 projeto = {
     "title": "Banco Master",
     "slug": "banco-master",
     "angle": "Um banco pagava muito mais que os outros. Quando quebrou, a conta de R$ 41 bilhões ficou com o sistema inteiro.",
     "voz": {"nome": "gravada"},
-    "script": {"long": {"parts": long_parts}, "shorts": shorts},
+    "script": {"long": {"parts": long_parts}, "shorts": shorts, "tiktoks": tiktoks},
     "meta": {
         "titles": [
             "BANCO MASTER: O Banco Que Quebrou e Deixou Uma Conta de R$ 41 Bilhões",
@@ -213,4 +234,4 @@ d = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "p
 os.makedirs(os.path.join(d, "audio"), exist_ok=True)
 json.dump(projeto, open(os.path.join(d, "projeto.json"), "w", encoding="utf8"), ensure_ascii=False, indent=1)
 n = sum(len(s["text"]) for p in long_parts for s in p["sentences"])
-print("longo:", n, "caracteres ~", round(n / 15 / 60, 1), "min;", "shorts:", [sum(len(s["text"]) for s in sh["sentences"]) for sh in shorts])
+print("tiktok:", sum(len(x["text"]) for x in tiktoks[0]["sentences"]), "caracteres;", "longo:", n, "caracteres ~", round(n / 15 / 60, 1), "min;", "shorts:", [sum(len(s["text"]) for s in sh["sentences"]) for sh in shorts])
