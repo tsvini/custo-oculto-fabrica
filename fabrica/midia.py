@@ -272,7 +272,8 @@ def wikimedia(cenas, pasta, log, creditos, creditos_arq):
                 _baixa(r["url"], dest, headers={"User-Agent": UA_BOT})
             except Exception as e:
                 log(f"  foto {k}: download falhou ({str(e)[:100]})"); continue
-            cred = f"{r['autor'] or 'Autor desconhecido'} / {r['lic']} / Wikimedia Commons"
+            autor = r["autor"] or ("Wellcome Collection" if "Wellcome" in r["title"] else "")
+            cred = f"{autor + ' / ' if autor else ''}{r['lic']} / Wikimedia Commons"
             creditos.append(f"{r['title'].replace('File:', '')}: {cred} – {r['page']}")
             creditos_arq[k] = "Foto: " + cred
             log(f"  foto {k}: {r['title']} ({r['lic']})")

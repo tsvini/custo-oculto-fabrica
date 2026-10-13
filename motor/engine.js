@@ -389,7 +389,8 @@
     else { g.addColorStop(0, "rgba(0,0,0,.95)"); g.addColorStop(0.42, "rgba(0,0,0,.75)"); g.addColorStop(0.7, "rgba(0,0,0,.05)"); g.addColorStop(1, "rgba(0,0,0,0)"); }
     ctx.fillStyle = g; ctx.fillRect(0, 0, c.W, c.H);
     const slam = (d) => { const k = clamp((t - d) / 0.18); return [k, lerp(1.35, 1, easeOut(k))]; };
-    const X0 = V ? c.cx : c.W * 0.06; const maxW = V ? c.W * 0.9 : c.W * 0.5;
+    // vertical: fora da coluna de botões do TikTok (direita) e do texto do post (embaixo)
+    const X0 = V ? c.W * 0.455 : c.W * 0.06; const maxW = V ? c.W * 0.78 : c.W * 0.5;
     // recorte de jornal
     if (s.recorte) {
       const [k] = slam(0); const fs = (V ? 46 : 40) * u; const f = `italic 800 ${Math.round(fs)}px ${SERIF}`;
@@ -406,11 +407,12 @@
     const sizes = lines.map((l) => { const base = (l[2] || (V ? 200 : 170)) * u; ctx.font = `${Math.round(base)}px ${DISPLAY}`; const w = ctx.measureText(String(l[0]).toUpperCase()).width; return w > maxW ? base * maxW / w : base; });
     const faixaH = s.faixa ? (V ? 112 : 96) * u : 0; const blockH = faixaH + 18 * u + sizes.reduce((a, b) => a + b * 1.0, 0);
     let y = V ? c.H * 0.47 : (c.H - blockH) / 2 + (s.recorte ? 60 * u : 0);
-    if (V && y + blockH > c.H * 0.82) y = c.H * 0.82 - blockH;
+    const selH = s.selo ? 110 * u : 0;
+    if (V && y + blockH + selH > c.H * 0.76) y = Math.max(c.H * 0.3, c.H * 0.76 - blockH - selH);
     if (s.faixa) {
       const [k, sc] = slam(0.08); const fs = (V ? 72 : 60) * u; ctx.font = `${Math.round(fs)}px ${DISPLAY}`; let tw = ctx.measureText(s.faixa.toUpperCase()).width;
       const fsz = tw > maxW - 60 * u ? fs * (maxW - 60 * u) / tw : fs; ctx.font = `${Math.round(fsz)}px ${DISPLAY}`; tw = ctx.measureText(s.faixa.toUpperCase()).width;
-      const bw = tw + 70 * u, bx = V ? c.cx - bw / 2 : X0 - 10 * u;
+      const bw = tw + 70 * u, bx = V ? X0 - bw / 2 : X0 - 10 * u;
       ctx.save(); ctx.globalAlpha = k; ctx.translate(bx + bw / 2, y + faixaH / 2); ctx.rotate(-3 * Math.PI / 180); ctx.scale(sc, sc);
       ctx.fillStyle = "#d61f26"; ctx.beginPath(); ctx.moveTo(-bw / 2 + 18 * u, -faixaH / 2); ctx.lineTo(bw / 2, -faixaH / 2); ctx.lineTo(bw / 2 - 18 * u, faixaH / 2); ctx.lineTo(-bw / 2, faixaH / 2); ctx.closePath(); ctx.fill();
       ctx.fillStyle = "#fff"; ctx.textAlign = "center"; ctx.textBaseline = "middle"; ctx.fillText(s.faixa.toUpperCase(), 0, 4 * u); ctx.restore();
@@ -426,7 +428,7 @@
     });
     if (s.selo) {
       const [k] = slam(0.5); const fs = (V ? 64 : 52) * u; ctx.font = `${Math.round(fs)}px ${DISPLAY}`; const txt = s.selo.toUpperCase(); const tw = Math.min(ctx.measureText(txt).width, maxW - 120 * u);
-      const bw = tw + (s.seta ? 130 : 60) * u, bh = fs * 1.35, bx = V ? c.cx - bw / 2 : X0, by = y + 24 * u;
+      const bw = tw + (s.seta ? 130 : 60) * u, bh = fs * 1.35, bx = V ? X0 - bw / 2 : X0, by = y + 24 * u;
       box(ctx, bx, by, bw, bh, 14 * u, [12, 12, 14], 0.92 * k, "gold", 4 * u);
       ctx.save(); ctx.globalAlpha = k; ctx.font = `${Math.round(fs)}px ${DISPLAY}`; ctx.fillStyle = css(COL.gold); ctx.textBaseline = "middle"; ctx.textAlign = "left";
       ctx.fillText(txt, bx + 30 * u, by + bh / 2 + 3 * u, tw);
