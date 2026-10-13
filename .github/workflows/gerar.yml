@@ -148,6 +148,7 @@ jobs:
         run: |
           python -m fabrica.publicar enfileirar saida
           python -m fabrica.publicar enviar
+          python -m fabrica.publicar miniaturas saida
           git config user.name "fabrica-custo-oculto"; git config user.email "fabrica@users.noreply.github.com"
           if [ -n "$(git status --porcelain publicados.json)" ]; then
             git add publicados.json && git commit -m "Agenda do YouTube atualizada [skip ci]" && for t in 1 2 3; do git pull --rebase -q origin main && git push -q origin HEAD:main && break; sleep 5; done

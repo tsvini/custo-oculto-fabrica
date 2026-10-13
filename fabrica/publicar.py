@@ -175,6 +175,24 @@ def enviar():
             nota("Ainda na fila", f"{restam} vídeo(s)")
 
 
+def miniaturas(pasta_saida):
+    """Põe a capa em vídeos que já estão no YouTube (ex.: Shorts agendados antes de existir a capa)."""
+    reg = registro(); por_nome = {r["nome"]: r for r in reg if r.get("video_id")}; tk = None; feitos = []
+    for mf in glob.glob(os.path.join(pasta_saida, "**", "youtube_*.json"), recursive=True):
+        nome = os.path.basename(mf)[len("youtube_"):-5]; meta = json.load(open(mf, encoding="utf8"))
+        r = por_nome.get(nome); arq = meta.get("miniatura") and os.path.join(os.path.dirname(mf), meta["miniatura"])
+        if not r or r.get("miniatura_ok") or not arq or not os.path.exists(arq):
+            continue
+        tk = tk or token()
+        try:
+            subir_miniatura(tk, r["video_id"], arq); r["miniatura_ok"] = True; feitos.append(nome)
+        except Exception as e:
+            nota("Miniatura falhou", f"{nome}: {str(e)[:300]}", "warning")
+    if feitos:
+        json.dump(reg, open(REG, "w", encoding="utf8"), ensure_ascii=False, indent=1)
+        nota("Miniaturas aplicadas", ", ".join(feitos))
+
+
 def conferir():
     tk = token()
     r = requests.get("https://www.googleapis.com/youtube/v3/channels?part=snippet,statistics&mine=true", headers={"Authorization": f"Bearer {tk}"}, timeout=30)
@@ -189,7 +207,9 @@ def conferir():
 
 if __name__ == "__main__":
     cmd = sys.argv[1] if len(sys.argv) > 1 else "enviar"
-    if cmd == "conferir":
+    if cmd == "miniaturas":
+        miniaturas(sys.argv[2] if len(sys.argv) > 2 else os.path.join(RAIZ, "saida"))
+    elif cmd == "conferir":
         conferir()
     elif cmd == "enfileirar":
         enfileirar(sys.argv[2] if len(sys.argv) > 2 else os.path.join(RAIZ, "saida"))

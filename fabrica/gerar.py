@@ -244,9 +244,15 @@ def main():
                     with open(os.path.join(saida, f"publicar_short{idx + 1}.txt"), "w", encoding="utf8") as f:
                         tags = " ".join("#" + re.sub(r"\W", "", t.title()) for t in (p.get("meta") or {}).get("tags", [])[:4])
                         f.write(f"TÍTULO:\n  {sh.get('title', '')} #shorts\n\nDESCRIÇÃO:\n{sh.get('description') or 'A história completa está no vídeo longo do canal.'}\n\n#shorts {tags}\n")
+                    cena0 = (sh["sentences"][0].get("scene") or {}); capa_arq = None
+                    if cena0.get("type") == "capa":
+                        d = pg.evaluate("cfg => capa(cfg)", {"cena": cena0, "midia": man, "midiaBase": cfg["midiaBase"], "vertical": True})
+                        capa_arq = f"capa_short{idx + 1}.jpg"
+                        with open(os.path.join(saida, capa_arq), "wb") as f:
+                            f.write(base64.b64decode(d.split(",")[1]))
                     yt = {"tipo": "short", "video": nome + ".mp4", "titulo": (sh.get("title", "") + " #shorts")[:100],
                           "descricao": (sh.get("description") or "A história completa está no vídeo longo do canal.") + f"\n\n#shorts {tags}",
-                          "tags": (p.get("meta") or {}).get("tags", [])}
+                          "tags": (p.get("meta") or {}).get("tags", []), "miniatura": capa_arq}
                     with open(os.path.join(saida if (gravada or nar.modo != "teste") else trab, f"youtube_{nome}.json"), "w", encoding="utf8") as f:
                         json.dump(yt, f, ensure_ascii=False, indent=1)
                 for i, d in enumerate(r.get("previas") or []):
