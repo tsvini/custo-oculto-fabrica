@@ -45,7 +45,8 @@
   "titulo": "1,6 milhão de pessoas no mesmo banco. E ele quebrou. #shorts",
   "video_id": "z6dXgM3pY_c",
   "publishAt": "2026-10-13T18:00:00-03:00",
-  "status": "private"
+  "status": "private",
+  "miniatura_ok": true
  },
  {
   "nome": "banco_master_short2",
@@ -53,7 +54,8 @@
   "titulo": "Esse CDB pagava 140% do CDI. Era bom demais. #shorts",
   "video_id": "u_n01fzotFM",
   "publishAt": "2026-10-14T18:00:00-03:00",
-  "status": "private"
+  "status": "private",
+  "miniatura_ok": true
  },
  {
   "nome": "banco_master_short4",
@@ -61,6 +63,16 @@
   "titulo": "Você pode estar pagando a conta do Banco Master #shorts",
   "video_id": "TZLpKjOWKH4",
   "publishAt": "2026-10-16T18:00:00-03:00",
-  "status": "private"
+  "status": "private",
+  "miniatura_ok": true
+ },
+ {
+  "nome": "banco_master_short3",
+  "tipo": "short",
+  "titulo": "Preso no aeroporto no dia em que o banco ia ser vendido #shorts",
+  "video_id": "2dxf1dO_zcU",
+  "publishAt": "2026-10-17T18:00:00-03:00",
+  "status": "private",
+  "miniatura_ok": true
  }
 ]
