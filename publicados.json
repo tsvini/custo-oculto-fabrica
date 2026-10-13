@@ -1,0 +1,6 @@
+[
+ {"nome": "itapemirim_longo", "tipo": "longo", "titulo": "ITAPEMIRIM: A Empresa de Ônibus Que Criou Uma Aérea e Quebrou em 6 Meses", "video_id": "4WuKNxpR188", "publishAt": "2026-10-11T12:00:00-03:00", "status": "manual"},
+ {"nome": "itapemirim_short1", "tipo": "short", "titulo": "46 mil pessoas perderam o voo de Natal no mesmo dia", "video_id": "", "publishAt": "2026-10-11T18:00:00-03:00", "status": "manual"},
+ {"nome": "kolynos_longo", "tipo": "longo", "titulo": "A Colgate Pagou US$ 1 Bilhão Pela Kolynos e Guardou na Gaveta", "video_id": "TIv6Sg8n_rI", "publishAt": "2026-10-12T18:30:00-03:00", "status": "manual"},
+ {"nome": "kolynos_short1", "tipo": "short", "titulo": "Essa pasta de dente vendia o dobro da Colgate", "video_id": "", "publishAt": "2026-10-12T18:30:00-03:00", "status": "manual"}
+]

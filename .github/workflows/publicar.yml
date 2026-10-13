@@ -1,0 +1,37 @@
+name: Publicar no YouTube
+
+# Sobe o que ficou na fila (cota diária da API) e agenda. Roda todo dia às 8h de Brasília.
+on:
+  schedule:
+    - cron: "7 11 * * *"
+  workflow_dispatch:
+
+concurrency:
+  group: publicar
+  cancel-in-progress: false
+
+jobs:
+  publicar:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    env:
+      YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Enviar fila
+        if: ${{ env.YT_REFRESH_TOKEN != '' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+          YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+          YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+        run: |
+          pip install -q requests
+          python -m fabrica.publicar enviar
+          git config user.name "fabrica-custo-oculto"; git config user.email "fabrica@users.noreply.github.com"
+          if [ -n "$(git status --porcelain publicados.json)" ]; then
+            git add publicados.json && git commit -m "Agenda do YouTube atualizada [skip ci]" && git pull --rebase -q && git push -q
+          fi

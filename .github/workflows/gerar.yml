@@ -30,6 +30,10 @@ concurrency:
 jobs:
   gerar:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    env:
+      YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
     timeout-minutes: 120
     steps:
       - uses: actions/checkout@v4
@@ -103,42 +107,27 @@ jobs:
             fi
           done
 
-      # pacotes separados: baixe só o que for usar (textos e miniaturas são leves)
-      - name: Entregar textos, legendas e miniaturas
+      - name: Entregar arquivos (um pacote só)
         uses: actions/upload-artifact@v4
         with:
-          name: 1-textos-e-miniaturas-${{ steps.alvo.outputs.nome }}-${{ github.run_number }}
-          path: |
-            saida/**/*.txt
-            saida/**/*.srt
-            saida/**/*.jpg
-            saida/**/*.md
-          if-no-files-found: ignore
-          retention-days: 14
-
-      - name: Entregar vídeo longo
-        uses: actions/upload-artifact@v4
-        with:
-          name: 2-longo-${{ steps.alvo.outputs.nome }}-${{ github.run_number }}
-          path: saida/**/*_longo.mp4
-          if-no-files-found: ignore
+          name: video-${{ steps.alvo.outputs.nome }}-${{ github.run_number }}
+          path: saida/
+          if-no-files-found: warn
           retention-days: 14
           compression-level: 0
 
-      - name: Entregar Shorts
-        uses: actions/upload-artifact@v4
-        with:
-          name: 3-shorts-${{ steps.alvo.outputs.nome }}-${{ github.run_number }}
-          path: saida/**/*_short*.mp4
-          if-no-files-found: ignore
-          retention-days: 14
-          compression-level: 0
-
-      - name: Entregar TikToks
-        uses: actions/upload-artifact@v4
-        with:
-          name: 4-tiktoks-${{ steps.alvo.outputs.nome }}-${{ github.run_number }}
-          path: saida/**/*tiktok*.mp4
-          if-no-files-found: ignore
-          retention-days: 14
-          compression-level: 0
+      - name: Publicar no YouTube (fila + agendamento)
+        if: ${{ env.YT_REFRESH_TOKEN != '' && (inputs.modo || 'gravada') != 'teste' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+          YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+          YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+          YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
+        shell: bash
+        run: |
+          python -m fabrica.publicar enfileirar saida
+          python -m fabrica.publicar enviar
+          git config user.name "fabrica-custo-oculto"; git config user.email "fabrica@users.noreply.github.com"
+          if [ -n "$(git status --porcelain publicados.json)" ]; then
+            git add publicados.json && git commit -m "Agenda do YouTube atualizada [skip ci]" && git pull --rebase -q && git push -q
+          fi
