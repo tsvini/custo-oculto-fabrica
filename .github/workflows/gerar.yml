@@ -108,6 +108,20 @@ jobs:
             fi
           done
 
+      - name: Prévia em imagem (para conferência)
+        if: always()
+        shell: bash
+        run: |
+          mkdir -p previas
+          for f in $(find saida -name "*.mp4"); do
+            n=$(basename "$f" .mp4)
+            ffmpeg -loglevel error -y -i "$f" -vf "fps=1/2,scale=240:-1,tile=8x4" -frames:v 1 "previas/$n.jpg" || true
+          done
+          git config user.name "fabrica-custo-oculto"; git config user.email "fabrica@users.noreply.github.com"
+          if [ -n "$(git status --porcelain previas)" ]; then
+            git add previas && git commit -q -m "Prévias [skip ci]" && git pull --rebase -q && git push -q || true
+          fi
+
       - name: Entregar arquivos (um pacote só)
         uses: actions/upload-artifact@v4
         with:
