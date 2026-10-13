@@ -266,5 +266,47 @@
   "playlists": [
    "Caso Banco Master | Custo Oculto"
   ]
+ },
+ {
+  "nome": "kolynos_serie1",
+  "tipo": "serie",
+  "titulo": "Kolynos: parte 1 de 3 #shorts",
+  "video_id": "D5PndwsbJX8",
+  "caso": "kolynos",
+  "caso_titulo": null,
+  "publishAt": "2026-10-18T08:00:00-03:00",
+  "status": "private",
+  "miniatura_ok": "5dc7059145e8",
+  "playlists": [
+   "Caso Kolynos | Custo Oculto"
+  ]
+ },
+ {
+  "nome": "kolynos_serie2",
+  "tipo": "serie",
+  "titulo": "Kolynos: parte 2 de 3 #shorts",
+  "video_id": "CaHfIs58EPM",
+  "caso": "kolynos",
+  "caso_titulo": null,
+  "publishAt": "2026-10-19T08:00:00-03:00",
+  "status": "private",
+  "miniatura_ok": "2fb2440b711e",
+  "playlists": [
+   "Caso Kolynos | Custo Oculto"
+  ]
+ },
+ {
+  "nome": "kolynos_serie3",
+  "tipo": "serie",
+  "titulo": "Kolynos: parte 3 de 3 #shorts",
+  "video_id": "cWPSGveRO5A",
+  "caso": "kolynos",
+  "caso_titulo": null,
+  "publishAt": "2026-10-20T08:00:00-03:00",
+  "status": "private",
+  "miniatura_ok": "ddbb7a534d13",
+  "playlists": [
+   "Caso Kolynos | Custo Oculto"
+  ]
  }
 ]
