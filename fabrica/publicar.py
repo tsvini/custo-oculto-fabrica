@@ -247,8 +247,12 @@ def playlists():
                 if t in (r.get("playlists") or []):
                     continue
                 pid = pl(t, d)
-                checar(requests.post(f"{Y}/playlistItems?part=snippet", headers=H, timeout=30,
-                                     json={"snippet": {"playlistId": pid, "resourceId": {"kind": "youtube#video", "videoId": r["video_id"]}}}), "adicionar à playlist")
+                q = requests.post(f"{Y}/playlistItems?part=snippet", headers=H, timeout=30,
+                                  json={"snippet": {"playlistId": pid, "resourceId": {"kind": "youtube#video", "videoId": r["video_id"]}}})
+                if q.status_code == 403 and "quota" in q.text.lower():
+                    raise Cota(q.text)
+                if q.status_code not in (200, 201):
+                    nota("Playlist falhou", f"{r['nome']} → {t}: {q.status_code} " + " ".join(q.text.split())[:300], "warning"); continue
                 r.setdefault("playlists", []).append(t); feitos.append(f"{r['nome']} → {t}")
     except Cota:
         nota("Cota do dia acabou", "playlists continuam na próxima execução", "warning")
