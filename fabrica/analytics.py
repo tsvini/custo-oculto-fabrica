@@ -32,7 +32,6 @@ def main():
     out["buscas_28d"] = rep(H, d28, fim, metrics="views", dimensions="insightTrafficSourceDetail", filters="insightTrafficSourceType==YT_SEARCH", sort="-views", maxResults="25")
     out["videos_28d"] = rep(H, d28, fim, metrics="views,estimatedMinutesWatched,averageViewDuration,averageViewPercentage,subscribersGained,likes,comments,shares",
                             dimensions="video", sort="-views", maxResults="50")
-    out["miniaturas_28d"] = rep(H, d28, fim, metrics="videoThumbnailImpressions,videoThumbnailImpressionsClickRate", dimensions="video", sort="-videoThumbnailImpressions", maxResults="50")
     nomes = {r["video_id"]: r["nome"] for r in registro() if r.get("video_id")}
     out["retencao"] = {}
     for r in registro():
