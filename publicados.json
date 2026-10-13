@@ -7,7 +7,10 @@
   "publishAt": "2026-10-11T12:00:00-03:00",
   "status": "manual",
   "caso": "itapemirim",
-  "caso_titulo": "Itapemirim"
+  "caso_titulo": "Itapemirim",
+  "playlists": [
+   "Todos os casos | Custo Oculto"
+  ]
  },
  {
   "nome": "itapemirim_short1",
@@ -138,5 +141,49 @@
   "status": "private",
   "miniatura_ok": "0905387f946d",
   "caso": "americanas"
+ },
+ {
+  "nome": "americanas_serie1",
+  "tipo": "serie",
+  "titulo": "Americanas: parte 1 de 4 #shorts",
+  "video_id": "FVuNyA2exSE",
+  "caso": "americanas",
+  "caso_titulo": null,
+  "publishAt": "2026-10-21T08:00:00-03:00",
+  "status": "private",
+  "miniatura_ok": "1649bfade819"
+ },
+ {
+  "nome": "americanas_serie2",
+  "tipo": "serie",
+  "titulo": "Americanas: parte 2 de 4 #shorts",
+  "video_id": "hA2utgx3duE",
+  "caso": "americanas",
+  "caso_titulo": null,
+  "publishAt": "2026-10-22T08:00:00-03:00",
+  "status": "private",
+  "miniatura_ok": "842085b81137"
+ },
+ {
+  "nome": "americanas_serie3",
+  "tipo": "serie",
+  "titulo": "Americanas: parte 3 de 4 #shorts",
+  "video_id": "L_VE0Jes15E",
+  "caso": "americanas",
+  "caso_titulo": null,
+  "publishAt": "2026-10-23T08:00:00-03:00",
+  "status": "private",
+  "miniatura_ok": "9ef8e2a98371"
+ },
+ {
+  "nome": "americanas_serie4",
+  "tipo": "serie",
+  "titulo": "Americanas: parte 4 de 4 #shorts",
+  "video_id": "HNgx6t4vrds",
+  "caso": "americanas",
+  "caso_titulo": null,
+  "publishAt": "2026-10-24T08:00:00-03:00",
+  "status": "private",
+  "miniatura_ok": "476837284cdb"
  }
 ]
