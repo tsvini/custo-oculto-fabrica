@@ -1,6 +1,74 @@
 [
- {"nome": "itapemirim_longo", "tipo": "longo", "titulo": "ITAPEMIRIM: A Empresa de Ônibus Que Criou Uma Aérea e Quebrou em 6 Meses", "video_id": "4WuKNxpR188", "publishAt": "2026-10-11T12:00:00-03:00", "status": "manual"},
- {"nome": "itapemirim_short1", "tipo": "short", "titulo": "46 mil pessoas perderam o voo de Natal no mesmo dia", "video_id": "", "publishAt": "2026-10-11T18:00:00-03:00", "status": "manual"},
- {"nome": "kolynos_longo", "tipo": "longo", "titulo": "A Colgate Pagou US$ 1 Bilhão Pela Kolynos e Guardou na Gaveta", "video_id": "TIv6Sg8n_rI", "publishAt": "2026-10-12T18:30:00-03:00", "status": "manual"},
- {"nome": "kolynos_short1", "tipo": "short", "titulo": "Essa pasta de dente vendia o dobro da Colgate", "video_id": "", "publishAt": "2026-10-12T18:30:00-03:00", "status": "manual"}
+ {
+  "nome": "itapemirim_longo",
+  "tipo": "longo",
+  "titulo": "ITAPEMIRIM: A Empresa de Ônibus Que Criou Uma Aérea e Quebrou em 6 Meses",
+  "video_id": "4WuKNxpR188",
+  "publishAt": "2026-10-11T12:00:00-03:00",
+  "status": "manual"
+ },
+ {
+  "nome": "itapemirim_short1",
+  "tipo": "short",
+  "titulo": "46 mil pessoas perderam o voo de Natal no mesmo dia",
+  "video_id": "",
+  "publishAt": "2026-10-11T18:00:00-03:00",
+  "status": "manual"
+ },
+ {
+  "nome": "kolynos_longo",
+  "tipo": "longo",
+  "titulo": "A Colgate Pagou US$ 1 Bilhão Pela Kolynos e Guardou na Gaveta",
+  "video_id": "TIv6Sg8n_rI",
+  "publishAt": "2026-10-12T18:30:00-03:00",
+  "status": "manual"
+ },
+ {
+  "nome": "kolynos_short1",
+  "tipo": "short",
+  "titulo": "Essa pasta de dente vendia o dobro da Colgate",
+  "video_id": "",
+  "publishAt": "2026-10-12T18:30:00-03:00",
+  "status": "manual"
+ },
+ {
+  "nome": "banco_master_longo",
+  "tipo": "longo",
+  "titulo": "BANCO MASTER: O Banco Que Quebrou e Deixou Uma Conta de R$ 41 Bilhões",
+  "video_id": "3e-eXXCL27s",
+  "publishAt": "2026-10-13T12:00:00-03:00",
+  "status": "private"
+ },
+ {
+  "nome": "banco_master_short1",
+  "tipo": "short",
+  "titulo": "1,6 milhão de pessoas no mesmo banco. E ele quebrou. #shorts",
+  "video_id": "z6dXgM3pY_c",
+  "publishAt": "2026-10-13T18:00:00-03:00",
+  "status": "private"
+ },
+ {
+  "nome": "banco_master_short2",
+  "tipo": "short",
+  "titulo": "Esse CDB pagava 140% do CDI. Era bom demais. #shorts",
+  "video_id": "u_n01fzotFM",
+  "publishAt": "2026-10-14T18:00:00-03:00",
+  "status": "private"
+ },
+ {
+  "nome": "banco_master_short3",
+  "tipo": "short",
+  "titulo": "Preso no aeroporto no dia em que o banco ia ser vendido #shorts",
+  "video_id": "G7nvHzIlwUc",
+  "publishAt": "2026-10-15T18:00:00-03:00",
+  "status": "private"
+ },
+ {
+  "nome": "banco_master_short4",
+  "tipo": "short",
+  "titulo": "Você pode estar pagando a conta do Banco Master #shorts",
+  "video_id": "TZLpKjOWKH4",
+  "publishAt": "2026-10-16T18:00:00-03:00",
+  "status": "private"
+ }
 ]
