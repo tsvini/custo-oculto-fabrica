@@ -110,6 +110,9 @@ def main():
     # ---------- mídia ----------
     log("1/4 Mídia")
     cenas = todas_cenas(p); creditos = []
+    if a.formato == "candidatos":  # só mostra opções de clipe para escolher a dedo
+        M.candidatos(cenas, os.path.join(RAIZ, "previas"), log)
+        return
     M.prints([s for s in cenas if s.get("type") == "print"], pasta_midia, log)
     chaves_longo = {s.get("media") for g in p["script"]["long"]["parts"] for s in (x.get("scene") or {} for x in g["sentences"])}
     M.pexels([s for s in cenas if s.get("media") in chaves_longo], pasta_midia, False, log, creditos)

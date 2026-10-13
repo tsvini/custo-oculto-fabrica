@@ -123,6 +123,8 @@ def pexels(cenas, pasta, vertical, log, creditos):
             alvo.setdefault(s["media"], s["search"])
             if s.get("search_en"):
                 qen.setdefault(s["media"], s["search_en"])
+            if s.get("pixabay_id"):
+                qen.setdefault("#" + s["media"], str(s["pixabay_id"]))
     pend = {k: q for k, q in alvo.items() if not os.path.exists(os.path.join(pasta, k + ".mp4"))}
     if not pend:
         return
@@ -166,7 +168,13 @@ def pixabay(pend, pasta, vertical, log, creditos, qen=None):
     for k, q in pend.items():
         try:
             hits = []
+            if qen.get("#" + k):  # clipe escolhido a dedo
+                url = "https://pixabay.com/api/videos/?" + urllib.parse.urlencode({"key": key, "id": qen["#" + k]})
+                with urllib.request.urlopen(urllib.request.Request(url, headers={"User-Agent": UA}), timeout=30) as r:
+                    hits = json.load(r).get("hits", [])
             for qq, lang in ((qen.get(k), "en"), (q, "pt")):
+                if hits:
+                    break
                 if not qq:
                     continue
                 url = "https://pixabay.com/api/videos/?" + urllib.parse.urlencode(
@@ -176,8 +184,6 @@ def pixabay(pend, pasta, vertical, log, creditos, qen=None):
                 # relevância: as tags do vídeo precisam conter alguma palavra da busca
                 pal = {w.lower() for w in re.findall(r"\w{4,}", qq)}
                 hits = [h for h in hits if pal & {w.lower() for w in re.findall(r"\w{4,}", h.get("tags", ""))}]
-                if hits:
-                    break
             if not hits:
                 log(f"  clipe {k}: nada no Pixabay para '{q}'"); continue
             def serve(h):  # prefere a orientação do formato e boa resolução
@@ -282,3 +288,34 @@ def wikimedia(cenas, pasta, log, creditos, creditos_arq):
             break
         if not achou:
             print(f"::warning title=Sem foto ({k})::nenhuma foto livre para {termos}; a cena usa o texto de reserva", flush=True)
+
+
+def candidatos(cenas, pasta_saida, log):
+    """Folha de contato com os 8 primeiros clipes do Pixabay de cada cena de vídeo (para escolher a dedo)."""
+    from PIL import Image, ImageDraw
+    key = os.environ.get("PIXABAY_KEY", "").strip()
+    os.makedirs(pasta_saida, exist_ok=True); feitos = []
+    vistos = set()
+    for sc in cenas:
+        k = sc.get("media"); q = sc.get("search_en") or sc.get("search")
+        if sc.get("type") != "video" or not k or not q or k in vistos:
+            continue
+        vistos.add(k)
+        url = "https://pixabay.com/api/videos/?" + urllib.parse.urlencode({"key": key, "q": q[:100], "lang": "en" if sc.get("search_en") else "pt", "per_page": 8, "safesearch": "true"})
+        with urllib.request.urlopen(urllib.request.Request(url, headers={"User-Agent": UA}), timeout=30) as r:
+            hits = json.load(r).get("hits", [])[:8]
+        W, H = 320, 180; folha = Image.new("RGB", (W * 4, (H + 40) * 2), (20, 20, 20)); d = ImageDraw.Draw(folha)
+        for i, h in enumerate(hits):
+            th = (h["videos"].get("medium") or {}).get("thumbnail") or (h["videos"].get("small") or {}).get("thumbnail")
+            x, y = (i % 4) * W, (i // 4) * (H + 40)
+            try:
+                tmp = os.path.join(pasta_saida, "_t.jpg"); _baixa(th, tmp)
+                im = Image.open(tmp).convert("RGB"); im.thumbnail((W, H)); folha.paste(im, (x, y)); os.remove(tmp)
+            except Exception:
+                pass
+            v = h["videos"].get("large") or h["videos"].get("medium") or {}
+            d.text((x + 4, y + H + 2), f"id {h['id']} · {h.get('duration')}s · {v.get('width')}x{v.get('height')}", fill=(255, 210, 60))
+            d.text((x + 4, y + H + 18), h.get("tags", "")[:48], fill=(220, 220, 220))
+        folha.save(os.path.join(pasta_saida, f"candidatos_{k}.jpg"), quality=85); feitos.append(k)
+        log(f"  candidatos {k}: {len(hits)} ('{q}')")
+    print(f"::notice title=Candidatos de clipe::{', '.join(feitos) or 'nenhuma cena de vídeo'}", flush=True)

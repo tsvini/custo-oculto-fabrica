@@ -1614,39 +1614,52 @@
      {
       "text": "Essa pasta de dente vendia o dobro da Colgate.",
       "scene": {
-       "type": "compare",
-       "items": [
+       "type": "capa",
+       "foto": "kolynos",
+       "wiki": [
+        "Kolynos",
+        "Kolynos toothpaste",
+        "Kolynos creme dental"
+       ],
+       "seta": false,
+       "recorte": "Kolynos · anos 90",
+       "faixa": "Essa pasta de dente",
+       "linhas": [
         [
-         "52%",
-         "KOLYNOS",
-         [
-          70,
-          190,
-          110
-         ]
+         "vendia",
+         "white",
+         200
         ],
         [
-         "26%",
-         "COLGATE",
-         [
-          230,
-          52,
-          52
-         ]
+         "o DOBRO",
+         "gold",
+         250
+        ],
+        [
+         "da Colgate",
+         "white",
+         190
         ]
        ],
-       "size": 230,
-       "stagger": 0.6,
-       "vs": false
+       "selo": "Kolynos · anos 90"
       }
      },
      {
       "text": "E sumiu do Brasil.",
       "scene": {
-       "type": "flash",
-       "text": "E SUMIU\nDO BRASIL",
-       "tint": "red",
-       "size": 150
+       "type": "video",
+       "media": "prateleira_v",
+       "search": "empty supermarket shelf",
+       "search_en": "empty supermarket shelf",
+       "start": 0.0,
+       "dim": 0.35,
+       "lower": "E sumiu do Brasil",
+       "fallback": {
+        "type": "flash",
+        "text": "E SUMIU\nDO BRASIL",
+        "tint": "red",
+        "size": 150
+       }
       }
      },
      {
@@ -1771,28 +1784,37 @@
      {
       "text": "Os clientes ficaram.",
       "scene": {
-       "type": "bigtext",
-       "stagger": 0.25,
-       "lines": [
-        [
-         "OS CLIENTES",
+       "type": "video",
+       "media": "escovando_v",
+       "search": "toothbrush toothpaste",
+       "search_en": "toothbrush toothpaste",
+       "start": 0.0,
+       "dim": 0.35,
+       "lower": "Os clientes ficaram",
+       "fallback": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
          [
-          245,
-          245,
-          242
+          "OS CLIENTES",
+          [
+           245,
+           245,
+           242
+          ],
+          130
          ],
-         130
-        ],
-        [
-         "FICARAM",
          [
-          70,
-          190,
-          110
-         ],
-         190
+          "FICARAM",
+          [
+           70,
+           190,
+           110
+          ],
+          190
+         ]
         ]
-       ]
+       }
       }
      },
      {
