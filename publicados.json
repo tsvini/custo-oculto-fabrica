@@ -56,7 +56,8 @@
   "caso": "banco_master",
   "caso_titulo": "Banco Master",
   "playlists": [
-   "Todos os casos | Custo Oculto"
+   "Todos os casos | Custo Oculto",
+   "Caso Banco Master | Custo Oculto"
   ]
  },
  {
@@ -208,6 +209,62 @@
   "miniatura_ok": "476837284cdb",
   "playlists": [
    "Caso Americanas | Custo Oculto"
+  ]
+ },
+ {
+  "nome": "banco_master_serie1",
+  "tipo": "serie",
+  "titulo": "Banco Master: parte 1 de 4 #shorts",
+  "video_id": "xQAsC7S2KO8",
+  "caso": "banco_master",
+  "caso_titulo": null,
+  "publishAt": "2026-10-14T08:00:00-03:00",
+  "status": "private",
+  "miniatura_ok": "e716bba2e768",
+  "playlists": [
+   "Caso Banco Master | Custo Oculto"
+  ]
+ },
+ {
+  "nome": "banco_master_serie2",
+  "tipo": "serie",
+  "titulo": "Banco Master: parte 2 de 4 #shorts",
+  "video_id": "Po7fZ2-6vNg",
+  "caso": "banco_master",
+  "caso_titulo": null,
+  "publishAt": "2026-10-15T08:00:00-03:00",
+  "status": "private",
+  "miniatura_ok": "7e1894fec8d7",
+  "playlists": [
+   "Caso Banco Master | Custo Oculto"
+  ]
+ },
+ {
+  "nome": "banco_master_serie3",
+  "tipo": "serie",
+  "titulo": "Banco Master: parte 3 de 4 #shorts",
+  "video_id": "FHltNOMCClI",
+  "caso": "banco_master",
+  "caso_titulo": null,
+  "publishAt": "2026-10-16T08:00:00-03:00",
+  "status": "private",
+  "miniatura_ok": "5668ec40cc9c",
+  "playlists": [
+   "Caso Banco Master | Custo Oculto"
+  ]
+ },
+ {
+  "nome": "banco_master_serie4",
+  "tipo": "serie",
+  "titulo": "Banco Master: parte 4 de 4 #shorts",
+  "video_id": "6hhsJO6vgpo",
+  "caso": "banco_master",
+  "caso_titulo": null,
+  "publishAt": "2026-10-17T08:00:00-03:00",
+  "status": "private",
+  "miniatura_ok": "0fa966f76e2e",
+  "playlists": [
+   "Caso Banco Master | Custo Oculto"
   ]
  }
 ]
