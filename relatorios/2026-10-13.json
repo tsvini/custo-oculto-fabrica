@@ -1,0 +1,332 @@
+{
+ "data": "2026-10-13",
+ "por_formato_12m": [
+  {
+   "creatorContentType": "shorts",
+   "views": 34,
+   "estimatedMinutesWatched": 5,
+   "subscribersGained": 0
+  },
+  {
+   "creatorContentType": "videoOnDemand",
+   "views": 1,
+   "estimatedMinutesWatched": 1,
+   "subscribersGained": 0
+  }
+ ],
+ "por_formato_7d": [
+  {
+   "creatorContentType": "shorts",
+   "views": 29,
+   "estimatedMinutesWatched": 5,
+   "subscribersGained": 0
+  },
+  {
+   "creatorContentType": "videoOnDemand",
+   "views": 1,
+   "estimatedMinutesWatched": 1,
+   "subscribersGained": 0
+  }
+ ],
+ "dia_a_dia_28d": [
+  {
+   "day": "2026-09-15",
+   "views": 0,
+   "estimatedMinutesWatched": 0,
+   "subscribersGained": 0
+  },
+  {
+   "day": "2026-09-16",
+   "views": 0,
+   "estimatedMinutesWatched": 0,
+   "subscribersGained": 0
+  },
+  {
+   "day": "2026-09-17",
+   "views": 0,
+   "estimatedMinutesWatched": 0,
+   "subscribersGained": 0
+  },
+  {
+   "day": "2026-09-18",
+   "views": 0,
+   "estimatedMinutesWatched": 0,
+   "subscribersGained": 0
+  },
+  {
+   "day": "2026-09-19",
+   "views": 0,
+   "estimatedMinutesWatched": 0,
+   "subscribersGained": 0
+  },
+  {
+   "day": "2026-09-20",
+   "views": 0,
+   "estimatedMinutesWatched": 0,
+   "subscribersGained": 0
+  },
+  {
+   "day": "2026-09-21",
+   "views": 0,
+   "estimatedMinutesWatched": 0,
+   "subscribersGained": 0
+  },
+  {
+   "day": "2026-09-22",
+   "views": 0,
+   "estimatedMinutesWatched": 0,
+   "subscribersGained": 0
+  },
+  {
+   "day": "2026-09-23",
+   "views": 0,
+   "estimatedMinutesWatched": 0,
+   "subscribersGained": 0
+  },
+  {
+   "day": "2026-09-24",
+   "views": 0,
+   "estimatedMinutesWatched": 0,
+   "subscribersGained": 0
+  },
+  {
+   "day": "2026-09-25",
+   "views": 0,
+   "estimatedMinutesWatched": 0,
+   "subscribersGained": 0
+  },
+  {
+   "day": "2026-09-26",
+   "views": 0,
+   "estimatedMinutesWatched": 0,
+   "subscribersGained": 0
+  },
+  {
+   "day": "2026-09-27",
+   "views": 0,
+   "estimatedMinutesWatched": 0,
+   "subscribersGained": 0
+  },
+  {
+   "day": "2026-09-28",
+   "views": 0,
+   "estimatedMinutesWatched": 0,
+   "subscribersGained": 0
+  },
+  {
+   "day": "2026-09-29",
+   "views": 0,
+   "estimatedMinutesWatched": 0,
+   "subscribersGained": 0
+  },
+  {
+   "day": "2026-09-30",
+   "views": 0,
+   "estimatedMinutesWatched": 0,
+   "subscribersGained": 0
+  },
+  {
+   "day": "2026-10-01",
+   "views": 0,
+   "estimatedMinutesWatched": 0,
+   "subscribersGained": 0
+  },
+  {
+   "day": "2026-10-02",
+   "views": 0,
+   "estimatedMinutesWatched": 0,
+   "subscribersGained": 0
+  },
+  {
+   "day": "2026-10-03",
+   "views": 0,
+   "estimatedMinutesWatched": 0,
+   "subscribersGained": 0
+  },
+  {
+   "day": "2026-10-04",
+   "views": 0,
+   "estimatedMinutesWatched": 0,
+   "subscribersGained": 0
+  },
+  {
+   "day": "2026-10-05",
+   "views": 0,
+   "estimatedMinutesWatched": 0,
+   "subscribersGained": 0
+  },
+  {
+   "day": "2026-10-06",
+   "views": 0,
+   "estimatedMinutesWatched": 0,
+   "subscribersGained": 0
+  },
+  {
+   "day": "2026-10-07",
+   "views": 0,
+   "estimatedMinutesWatched": 0,
+   "subscribersGained": 0
+  },
+  {
+   "day": "2026-10-08",
+   "views": 0,
+   "estimatedMinutesWatched": 0,
+   "subscribersGained": 0
+  },
+  {
+   "day": "2026-10-09",
+   "views": 0,
+   "estimatedMinutesWatched": 0,
+   "subscribersGained": 0
+  },
+  {
+   "day": "2026-10-10",
+   "views": 30,
+   "estimatedMinutesWatched": 6,
+   "subscribersGained": 0
+  }
+ ],
+ "origem_28d": [
+  {
+   "insightTrafficSourceType": "SHORTS",
+   "views": 15,
+   "estimatedMinutesWatched": 1
+  },
+  {
+   "insightTrafficSourceType": "YT_CHANNEL",
+   "views": 7,
+   "estimatedMinutesWatched": 0
+  },
+  {
+   "insightTrafficSourceType": "SUBSCRIBER",
+   "views": 5,
+   "estimatedMinutesWatched": 3
+  },
+  {
+   "insightTrafficSourceType": "YT_SEARCH",
+   "views": 3,
+   "estimatedMinutesWatched": 0
+  },
+  {
+   "insightTrafficSourceType": "NO_LINK_OTHER",
+   "views": 0,
+   "estimatedMinutesWatched": 0
+  }
+ ],
+ "buscas_28d": [
+  {
+   "insightTrafficSourceDetail": "theranos",
+   "views": 1
+  }
+ ],
+ "videos_28d": [
+  {
+   "video": "A5cWOeTZqe0",
+   "views": 15,
+   "estimatedMinutesWatched": 4,
+   "averageViewDuration": 50,
+   "averageViewPercentage": 90.57,
+   "subscribersGained": 0,
+   "likes": 1,
+   "comments": 0,
+   "shares": 0
+  },
+  {
+   "video": "3hLySDzqykg",
+   "views": 3,
+   "estimatedMinutesWatched": 0,
+   "averageViewDuration": 14,
+   "averageViewPercentage": 27.449999999999996,
+   "subscribersGained": 0,
+   "likes": 0,
+   "comments": 0,
+   "shares": 0
+  },
+  {
+   "video": "ZFUM39-QiEs",
+   "views": 2,
+   "estimatedMinutesWatched": 0,
+   "averageViewDuration": 7,
+   "averageViewPercentage": 14.16,
+   "subscribersGained": 0,
+   "likes": 0,
+   "comments": 0,
+   "shares": 0
+  },
+  {
+   "video": "nnLShLyCZOc",
+   "views": 2,
+   "estimatedMinutesWatched": 0,
+   "averageViewDuration": 2,
+   "averageViewPercentage": 4.26,
+   "subscribersGained": 0,
+   "likes": 0,
+   "comments": 0,
+   "shares": 0
+  },
+  {
+   "video": "_EvPaiyk3nU",
+   "views": 1,
+   "estimatedMinutesWatched": 1,
+   "averageViewDuration": 66,
+   "averageViewPercentage": 11.38,
+   "subscribersGained": 0,
+   "likes": 1,
+   "comments": 0,
+   "shares": 0
+  },
+  {
+   "video": "XQiYeFLJpPY",
+   "views": 1,
+   "estimatedMinutesWatched": 0,
+   "averageViewDuration": 0,
+   "averageViewPercentage": 0,
+   "subscribersGained": 0,
+   "likes": 0,
+   "comments": 0,
+   "shares": 0
+  },
+  {
+   "video": "1IPH_5Ocy6w",
+   "views": 1,
+   "estimatedMinutesWatched": 0,
+   "averageViewDuration": 0,
+   "averageViewPercentage": 0,
+   "subscribersGained": 0,
+   "likes": 0,
+   "comments": 0,
+   "shares": 0
+  }
+ ],
+ "miniaturas_28d": {
+  "erro": "400 { \"error\": { \"code\": 400, \"message\": \"The query is not supported. Check the documentation at https://developers.google.com/youtube/analytics/v2/available_reports for a list of supported queries.\", \"errors\": [ { \"message\": \"The query is not supported. Check the documentation at https://developers.goo"
+ },
+ "retencao": {
+  "itapemirim_longo": [],
+  "kolynos_longo": [],
+  "banco_master_longo": [],
+  "americanas_longo": []
+ },
+ "nomes": {
+  "4WuKNxpR188": "itapemirim_longo",
+  "TIv6Sg8n_rI": "kolynos_longo",
+  "3e-eXXCL27s": "banco_master_longo",
+  "z6dXgM3pY_c": "banco_master_short1",
+  "u_n01fzotFM": "banco_master_short2",
+  "TZLpKjOWKH4": "banco_master_short4",
+  "2dxf1dO_zcU": "banco_master_short3",
+  "PecT2RdCwOY": "americanas_longo",
+  "hXQaFClp7fU": "americanas_short1",
+  "GAVrJjC3XGI": "americanas_short2",
+  "hmaGbySAWko": "americanas_short3",
+  "bi71RCxJKDM": "americanas_short4",
+  "FVuNyA2exSE": "americanas_serie1",
+  "hA2utgx3duE": "americanas_serie2",
+  "L_VE0Jes15E": "americanas_serie3",
+  "HNgx6t4vrds": "americanas_serie4",
+  "xQAsC7S2KO8": "banco_master_serie1",
+  "Po7fZ2-6vNg": "banco_master_serie2",
+  "FHltNOMCClI": "banco_master_serie3",
+  "6hhsJO6vgpo": "banco_master_serie4"
+ }
+}
