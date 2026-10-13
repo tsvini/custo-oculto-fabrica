@@ -103,11 +103,42 @@ jobs:
             fi
           done
 
-      - name: Entregar arquivos
+      # pacotes separados: baixe só o que for usar (textos e miniaturas são leves)
+      - name: Entregar textos, legendas e miniaturas
         uses: actions/upload-artifact@v4
         with:
-          name: video-${{ steps.alvo.outputs.nome }}-${{ github.run_number }}
-          path: saida/
-          if-no-files-found: warn
+          name: 1-textos-e-miniaturas-${{ steps.alvo.outputs.nome }}-${{ github.run_number }}
+          path: |
+            saida/**/*.txt
+            saida/**/*.srt
+            saida/**/*.jpg
+            saida/**/*.md
+          if-no-files-found: ignore
+          retention-days: 14
+
+      - name: Entregar vídeo longo
+        uses: actions/upload-artifact@v4
+        with:
+          name: 2-longo-${{ steps.alvo.outputs.nome }}-${{ github.run_number }}
+          path: saida/**/*_longo.mp4
+          if-no-files-found: ignore
+          retention-days: 14
+          compression-level: 0
+
+      - name: Entregar Shorts
+        uses: actions/upload-artifact@v4
+        with:
+          name: 3-shorts-${{ steps.alvo.outputs.nome }}-${{ github.run_number }}
+          path: saida/**/*_short*.mp4
+          if-no-files-found: ignore
+          retention-days: 14
+          compression-level: 0
+
+      - name: Entregar TikToks
+        uses: actions/upload-artifact@v4
+        with:
+          name: 4-tiktoks-${{ steps.alvo.outputs.nome }}-${{ github.run_number }}
+          path: saida/**/*tiktok*.mp4
+          if-no-files-found: ignore
           retention-days: 14
           compression-level: 0
