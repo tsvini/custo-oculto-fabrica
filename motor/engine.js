@@ -452,6 +452,7 @@
     segs.forEach((sg, si) => {
       if (!sg.text) return;
       const toks = String(sg.cap || sg.text).split(/\s+/).filter(Boolean);
+      if (sg.words && !sg.cap && sg.words.length === toks.length) { sg.words.forEach(([w, a, b]) => words.push({ w, s: Math.max(a, sg.start), e: Math.min(Math.max(b, a + 0.05), sg.end + 0.3), seg: si })); return; }
       const wts = toks.map((w) => w.replace(/[^\p{L}\p{N}]/gu, "").length * (/\d/.test(w) ? 3.2 : 1) + 2);
       const tot = wts.reduce((a, b) => a + b, 0) || 1; let t = sg.start; const span = sg.end - sg.start;
       toks.forEach((w, i) => { const d = span * wts[i] / tot; words.push({ w, s: t, e: t + d, seg: si }); t += d; });
@@ -547,10 +548,10 @@
       if (u.kind === "card") { segs.push({ text: "", scene: JSON.parse(JSON.stringify(u.scene)), start: t0, end: t0 + u.dur, card: true }); t0 += u.dur; return; }
       const local = u.sentences.map((s) => ({ text: s.text, cap: s.cap, scene: JSON.parse(JSON.stringify(s.scene || { type: "bigtext", lines: [] })) }));
       let dur;
-      if (u.voice && u.timings && u.timings.length === local.length) { local.forEach((s, k) => { s.start = u.timings[k][0]; s.end = u.timings[k][1]; }); dur = u.voice.length / SR; voiceParts.push([t0, u.voice]); }
+      if (u.voice && u.timings && u.timings.length === local.length) { local.forEach((s, k) => { s.start = u.timings[k][0]; s.end = u.timings[k][1]; if (u.words && u.words[k]) s.words = u.words[k]; }); dur = u.voice.length / SR; voiceParts.push([t0, u.voice]); }
       else if (u.voice) { dur = align(local, u.voice); voiceParts.push([t0, u.voice]); }
       else { let t = 0.3; local.forEach((s) => { const d = s.text.length / 15.5; s.start = t; s.end = t + d; t += d + 0.15; }); dur = t + 0.3; }
-      local.forEach((s) => { s.start += t0; s.end += t0; segs.push(s); });
+      local.forEach((s) => { s.start += t0; s.end += t0; if (s.words) s.words = s.words.map(([w, a, b]) => [w, a + t0, b + t0]); segs.push(s); });
       t0 += dur + (ui === units.length - 1 ? (opts.tail || 1.2) : (opts.gap || 0.5));
     });
     const total = t0;

@@ -49,7 +49,7 @@ async function montar(cfg) {
     const sentences = g.sentences.filter((s) => s.text && s.text.trim());
     const pa = cfg.partes[k];
     const voice = await E.decodeAudio(await (await fetch(pa.wav)).arrayBuffer());
-    units.push({ kind: "speech", sentences, voice, timings: pa.tempos });
+    units.push({ kind: "speech", sentences, voice, timings: pa.tempos, words: pa.palavras || null });
   }
   const media = await carregaMidia(cfg.midia, cfg.midiaBase);
   const tl = E.buildTimeline(units, { hook: !longo, tail: longo ? 1.5 : 1.2 });

@@ -81,6 +81,17 @@ def _tempos(frases, ouvidas, dur):
         for j in range(1, gap + 1):
             t = fa + (sb - fa) * (j - 0.5) / gap
             ini[ia + j] = t; fim[ia + j] = t
+    # tempo de cada palavra (todas as palavras separadas por espaço, para a legenda karaokê)
+    palavras = []; k = 0
+    for i, f in enumerate(frases):
+        lst = []
+        for w in f.split():
+            if _norm(w):
+                a, b = ini[k], fim[k]; k += 1
+            else:
+                a = b = lst[-1][2] if lst else (ini[k] if k < N else t1)
+            lst.append([w, round(a, 3), round(max(b, a + 0.05), 3)])
+        palavras.append(lst)
     tempos = []
     for i in range(len(frases)):
         idx = [k for k in range(N) if roteiro[k][1] == i]
@@ -92,7 +103,7 @@ def _tempos(frases, ouvidas, dur):
             meio = (tempos[i][0] + tempos[i - 1][1]) / 2
             tempos[i - 1][1] = max(tempos[i - 1][0] + 0.2, meio); tempos[i][0] = tempos[i - 1][1]
         tempos[i][1] = max(tempos[i][1], tempos[i][0] + 0.2)
-    return tempos, casadas / max(1, N)
+    return tempos, casadas / max(1, N), palavras
 
 
 def parte(frases, audio, saida_wav, log=print):
@@ -106,9 +117,9 @@ def parte(frases, audio, saida_wav, log=print):
         ouvidas = []
     dur = len(x) / SR
     if ouvidas:
-        tempos, taxa = _tempos(frases, ouvidas, dur)
+        tempos, taxa, palavras = _tempos(frases, ouvidas, dur)
     else:
-        tot = sum(len(f) for f in frases) or 1; t = 0.0; tempos = []; taxa = 0.0
+        tot = sum(len(f) for f in frases) or 1; t = 0.0; tempos = []; taxa = 0.0; palavras = None
         for f in frases:
             d = dur * len(f) / tot; tempos.append([t, t + d]); t += d
     y = np.concatenate([np.zeros(int(lead * SR), np.float32), x, np.zeros(int(0.25 * SR), np.float32)])
@@ -122,4 +133,8 @@ def parte(frases, audio, saida_wav, log=print):
         y[m] = np.sign(y[m]) * (0.7 + 0.2 * np.tanh((a[m] - 0.7) / 0.2))
     _np_to_wav(y.astype(np.float32), saida_wav)
     tempos = [[round(a + lead, 3), round(b + lead, 3)] for a, b in tempos]
-    return tempos, len(y) / SR, taxa
+    if palavras and taxa >= 0.6:
+        palavras = [[[w, round(a + lead, 3), round(b + lead, 3)] for w, a, b in lst] for lst in palavras]
+    else:
+        palavras = None
+    return tempos, len(y) / SR, taxa, palavras

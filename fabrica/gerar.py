@@ -162,13 +162,13 @@ def main():
             wav = os.path.join(trab, f"voz_{fmt}{idx + 1 if fmt != 'longo' else ''}_p{k + 1}.wav")
             txts = [s["text"].strip() for s in frases(g)]
             if gravada:
-                tempos, dur, taxa = AL.parte(txts, audio_de(fmt, idx, k), wav, log)
+                tempos, dur, taxa, palavras = AL.parte(txts, audio_de(fmt, idx, k), wav, log)
                 taxas.append(f"{fmt}{'' if fmt == 'longo' else idx + 1} p{k + 1}: {taxa:.0%} ({dur:.0f}s)")
                 if taxa < 0.6:
                     avisos.append(f"{fmt}{'' if fmt == 'longo' else idx + 1} parte {k + 1}: só {taxa:.0%} das palavras bateram com o roteiro. Confira se o áudio é dessa parte e se o texto não mudou.")
             else:
-                tempos, dur = nar.parte(txts, wav)
-            partes.append({"wav": "/" + os.path.relpath(wav, RAIZ), "tempos": tempos})
+                tempos, dur = nar.parte(txts, wav); palavras = None
+            partes.append({"wav": "/" + os.path.relpath(wav, RAIZ), "tempos": tempos, "palavras": palavras})
             log(f"  {fmt}{'' if fmt == 'longo' else idx + 1} parte {k + 1}: {dur:.1f}s")
         nome = f"{slug}_longo" if fmt == "longo" else f"{slug}_{fmt}{idx + 1}"
         cfgs.append((fmt, idx, nome, {"projeto": "/" + os.path.relpath(os.path.join(trab, "projeto_render.json"), RAIZ), "formato": fmt, "idx": idx,
