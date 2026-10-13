@@ -219,7 +219,7 @@ def main():
                         f.write("\n".join(txt) + "\n")
                     yt = {"tipo": "longo", "video": nome + ".mp4", "legenda": nome + ".srt", "miniatura": "miniatura_A.jpg",
                           "titulo": (meta.get("titles") or [p.get("title", slug)])[0][:100], "descricao": desc[:4900], "tags": meta.get("tags", [])}
-                    with open(os.path.join(saida, f"youtube_{nome}.json"), "w", encoding="utf8") as f:
+                    with open(os.path.join(saida if (gravada or nar.modo != "teste") else trab, f"youtube_{nome}.json"), "w", encoding="utf8") as f:
                         json.dump(yt, f, ensure_ascii=False, indent=1)
                 elif fmt == "tiktok":
                     tk = tiktoks[idx]
@@ -247,7 +247,7 @@ def main():
                     yt = {"tipo": "short", "video": nome + ".mp4", "titulo": (sh.get("title", "") + " #shorts")[:100],
                           "descricao": (sh.get("description") or "A história completa está no vídeo longo do canal.") + f"\n\n#shorts {tags}",
                           "tags": (p.get("meta") or {}).get("tags", [])}
-                    with open(os.path.join(saida, f"youtube_{nome}.json"), "w", encoding="utf8") as f:
+                    with open(os.path.join(saida if (gravada or nar.modo != "teste") else trab, f"youtube_{nome}.json"), "w", encoding="utf8") as f:
                         json.dump(yt, f, ensure_ascii=False, indent=1)
                 for i, d in enumerate(r.get("previas") or []):
                     with open(os.path.join(saida, f"previa_{nome}_{i}.jpg"), "wb") as f:

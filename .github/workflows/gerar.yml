@@ -59,7 +59,11 @@ jobs:
             if [ -n "$mudou" ] && ! echo "$mudou" | grep -viq '/audio/tiktok[0-9]'; then echo "formato=tiktoks" >> "$GITHUB_OUTPUT"; fi
             # regerar.txt: a primeira palavra diz o formato (tudo, longo, shorts, short1…)
             r=$(echo "$mudou" | { grep '/regerar.txt$' || true; } | head -1)
-            if [ -n "$r" ]; then echo "formato=$(head -1 "$r" | awk '{print $1}')" >> "$GITHUB_OUTPUT"; fi
+            if [ -n "$r" ]; then
+              echo "formato=$(head -1 "$r" | awk '{print $1}')" >> "$GITHUB_OUTPUT"
+              # segunda palavra "teste" = voz falsa (prévia antes de gravar; nunca vai para o YouTube)
+              if head -1 "$r" | awk '{print $2}' | grep -qx teste; then echo "modo=teste" >> "$GITHUB_OUTPUT"; fi
+            fi
           fi
           echo "lista=$lista" >> "$GITHUB_OUTPUT"
           echo "nome=$(echo "$lista" | tr ' ' '-')" >> "$GITHUB_OUTPUT"
@@ -96,7 +100,7 @@ jobs:
           CHROME_CHANNEL: chrome
           LISTA: ${{ steps.alvo.outputs.lista }}
           FORMATO: ${{ inputs.formato || steps.alvo.outputs.formato || 'tudo' }}
-          MODO: ${{ inputs.modo || 'gravada' }}
+          MODO: ${{ inputs.modo || steps.alvo.outputs.modo || 'gravada' }}
           VOZ: ${{ inputs.voz }}
         shell: bash
         run: |
@@ -132,7 +136,7 @@ jobs:
           compression-level: 0
 
       - name: Publicar no YouTube (fila + agendamento)
-        if: ${{ env.YT_REFRESH_TOKEN != '' && (inputs.modo || 'gravada') != 'teste' }}
+        if: ${{ env.YT_REFRESH_TOKEN != '' && (inputs.modo || steps.alvo.outputs.modo || 'gravada') != 'teste' }}
         env:
           GH_TOKEN: ${{ github.token }}
           YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
