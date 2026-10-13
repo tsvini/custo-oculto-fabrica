@@ -52,7 +52,7 @@ async function montar(cfg) {
     units.push({ kind: "speech", sentences, voice, timings: pa.tempos, words: pa.palavras || null });
   }
   const media = await carregaMidia(cfg.midia, cfg.midiaBase);
-  const tl = E.buildTimeline(units, { hook: !longo, tail: longo ? 1.5 : 1.2 });
+  const tl = E.buildTimeline(units, { hook: !longo, tail: longo ? 12 : 1.2 });
   if (tiktok) tl.safe = "tiktok"; // legenda e marca fora da área dos botões e do texto do TikTok
   return { p, tl, media, longo };
 }
