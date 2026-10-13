@@ -1,0 +1,2024 @@
+{
+ "title": "Banco Master",
+ "slug": "banco-master",
+ "angle": "Um banco pagava muito mais que os outros. Quando quebrou, a conta de R$ 41 bilhões ficou com o sistema inteiro.",
+ "voz": {
+  "nome": "gravada"
+ },
+ "script": {
+  "long": {
+   "parts": [
+    {
+     "chapter": "",
+     "sentences": [
+      {
+       "text": "Um milhão e seiscentas mil pessoas colocaram dinheiro no mesmo banco.",
+       "scene": {
+        "type": "counter",
+        "value": 1,
+        "suffix": ",6 MILHÃO",
+        "over": "INVESTIDORES",
+        "label": "NO MESMO BANCO",
+        "color": "gold",
+        "size": 220
+       }
+      },
+      {
+       "text": "Um banco que pagava muito mais do que os outros.",
+       "scene": {
+        "type": "video",
+        "media": "faria_lima",
+        "search": "business district skyscrapers",
+        "search_en": "business district skyscrapers",
+        "start": 0.0,
+        "dim": 0.4,
+        "lower": "Banco Master · São Paulo",
+        "fallback": {
+         "type": "bigtext",
+         "stagger": 0.25,
+         "lines": [
+          [
+           "PAGAVA",
+           "white",
+           120
+          ],
+          [
+           "MUITO MAIS",
+           "gold",
+           170
+          ]
+         ]
+        }
+       }
+      },
+      {
+       "text": "Em novembro de dois mil e vinte e cinco, ele quebrou.",
+       "scene": {
+        "type": "date",
+        "month": "NOVEMBRO",
+        "day": "18",
+        "year": "2025",
+        "tag": "BANCO MASTER LIQUIDADO"
+       }
+      },
+      {
+       "text": "E a conta, de quarenta e um bilhões de reais, não ficou só com quem investiu.",
+       "scene": {
+        "type": "counter",
+        "value": 41,
+        "prefix": "R$ ",
+        "suffix": " BI",
+        "over": "A CONTA",
+        "label": "O MAIOR RESGATE DA HISTÓRIA DO FGC",
+        "color": "red",
+        "size": 230
+       }
+      },
+      {
+       "text": "Ficou com os outros bancos, com fundos de aposentadoria de servidores públicos e, de um jeito ou de outro, com você.",
+       "scene": {
+        "type": "bullets",
+        "items": [
+         "OS OUTROS BANCOS",
+         "APOSENTADORIA DE SERVIDORES",
+         "VOCÊ"
+        ],
+        "size": 100,
+        "last_gold": true
+       }
+      },
+      {
+       "text": "Essa é a história do Banco Master.",
+       "scene": {
+        "type": "flash",
+        "text": "BANCO\nMASTER",
+        "tint": "red",
+        "size": 170
+       }
+      },
+      {
+       "text": "E por que essa conta pode chegar até você, mesmo que você nunca tenha ouvido falar dele.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "A CONTA",
+          "white",
+          140
+         ],
+         [
+          "CHEGA EM VOCÊ",
+          "red",
+          150
+         ]
+        ]
+       }
+      }
+     ]
+    },
+    {
+     "chapter": "O BANCO PEQUENO",
+     "sentences": [
+      {
+       "text": "Até pouco tempo atrás, quase ninguém tinha ouvido falar dele.",
+       "scene": {
+        "type": "video",
+        "media": "rua_sp",
+        "search": "city street people walking",
+        "search_en": "city street people walking",
+        "start": 0.0,
+        "dim": 0.4,
+        "lower": "Um banco pequeno",
+        "fallback": {
+         "type": "bigtext",
+         "stagger": 0.25,
+         "lines": [
+          [
+           "QUASE NINGUÉM",
+           "white",
+           120
+          ],
+          [
+           "CONHECIA",
+           "gold",
+           150
+          ]
+         ]
+        }
+       }
+      },
+      {
+       "text": "O banco se chamava Banco Máxima, e em dois mil e dezesseis chegou perto de quebrar.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "BANCO MÁXIMA",
+          "white",
+          140
+         ],
+         [
+          "2016: QUASE QUEBRA",
+          "red",
+          100
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Em dois mil e dezoito, quem assumiu o comando foi um empresário mineiro: Daniel Vorcaro.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "2018",
+          "gold",
+          200
+         ],
+         [
+          "DANIEL VORCARO",
+          "white",
+          120
+         ],
+         [
+          "ASSUME O COMANDO",
+          "muted",
+          80
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Em dois mil e vinte e um, o banco mudou de nome.",
+       "scene": {
+        "type": "stamp",
+        "org": "BANCO MÁXIMA · 2021",
+        "title": "NOVO NOME",
+        "stamp": "MASTER",
+        "stamp_at": 0.8
+       }
+      },
+      {
+       "text": "Nascia o Banco Master, com sede na Faria Lima, o centro financeiro de São Paulo.",
+       "scene": {
+        "type": "image",
+        "media": "faria_lima_foto",
+        "wiki": [
+         "Avenida Brigadeiro Faria Lima",
+         "Faria Lima São Paulo"
+        ],
+        "lower": "Faria Lima · São Paulo",
+        "dim": 0.4,
+        "fallback": {
+         "type": "bigtext",
+         "stagger": 0.25,
+         "lines": [
+          [
+           "FARIA LIMA",
+           "gold",
+           170
+          ],
+          [
+           "SÃO PAULO",
+           "white",
+           100
+          ]
+         ]
+        }
+       }
+      },
+      {
+       "text": "E o Master tinha uma estratégia simples para crescer rápido.",
+       "scene": {
+        "type": "flash",
+        "text": "A ESTRATÉGIA",
+        "color": "gold",
+        "size": 150
+       }
+      },
+      {
+       "text": "Pagar mais.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "PAGAR",
+          "white",
+          150
+         ],
+         [
+          "MAIS",
+          "gold",
+          230
+         ]
+        ]
+       }
+      },
+      {
+       "text": "E funcionou.",
+       "scene": {
+        "type": "flash",
+        "text": "E FUNCIONOU",
+        "color": "gold",
+        "size": 160
+       }
+      },
+      {
+       "text": "Em dois mil e vinte e quatro, o Master comprou o controle do Will Bank, um banco digital com mais de seis milhões de clientes.",
+       "scene": {
+        "type": "counter",
+        "value": 6,
+        "prefix": "+",
+        "suffix": " MILHÕES",
+        "over": "WILL BANK · 2024",
+        "label": "DE CLIENTES",
+        "color": "gold",
+        "size": 210
+       }
+      },
+      {
+       "text": "Com isso, o grupo passou de dez milhões de clientes.",
+       "scene": {
+        "type": "counter",
+        "value": 10,
+        "suffix": ",5 MILHÕES",
+        "over": "GRUPO MASTER",
+        "label": "DE CLIENTES",
+        "color": "gold",
+        "size": 200
+       }
+      },
+      {
+       "text": "No mesmo ano, fundos ligados ao Master entraram numa operação de um bilhão de reais na Oncoclínicas, uma das maiores redes de tratamento de câncer do país.",
+       "scene": {
+        "type": "counter",
+        "value": 1,
+        "prefix": "R$ ",
+        "suffix": " BI",
+        "over": "2024 · ONCOCLÍNICAS",
+        "label": "OPERAÇÃO COM FUNDOS DO MASTER",
+        "color": "gold",
+        "size": 220
+       }
+      },
+      {
+       "text": "E em outubro de dois mil e vinte e quatro, uma agência de risco chegou a melhorar a nota do banco.",
+       "scene": {
+        "type": "stamp",
+        "org": "AGÊNCIA DE RISCO · OUT 2024",
+        "title": "NOTA DO BANCO MASTER",
+        "stamp": "MELHOROU",
+        "stamp_at": 0.9
+       }
+      },
+      {
+       "text": "Por fora, o Master parecia um sucesso.",
+       "scene": {
+        "type": "video",
+        "media": "escritorio",
+        "search": "modern office building glass",
+        "search_en": "modern office building glass",
+        "start": 0.0,
+        "dim": 0.4,
+        "lower": "Por fora: um sucesso",
+        "fallback": {
+         "type": "bigtext",
+         "stagger": 0.25,
+         "lines": [
+          [
+           "POR FORA",
+           "white",
+           130
+          ],
+          [
+           "UM SUCESSO",
+           "gold",
+           170
+          ]
+         ]
+        }
+       }
+      }
+     ]
+    },
+    {
+     "chapter": "O CDB BOM DEMAIS",
+     "sentences": [
+      {
+       "text": "Quando você investe num CDB, você está emprestando dinheiro para um banco.",
+       "scene": {
+        "type": "video",
+        "media": "investindo",
+        "search": "person using banking app smartphone",
+        "search_en": "person using banking app smartphone",
+        "start": 0.0,
+        "dim": 0.4,
+        "lower": "CDB: você empresta para o banco",
+        "fallback": {
+         "type": "bigtext",
+         "stagger": 0.25,
+         "lines": [
+          [
+           "CDB",
+           "gold",
+           220
+          ],
+          [
+           "VOCÊ EMPRESTA",
+           "white",
+           90
+          ],
+          [
+           "PARA O BANCO",
+           "white",
+           90
+          ]
+         ]
+        }
+       }
+      },
+      {
+       "text": "E o banco te devolve com juros, que normalmente acompanham o CDI, a taxa que os bancos usam entre eles.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "O BANCO DEVOLVE",
+          "white",
+          110
+         ],
+         [
+          "COM JUROS",
+          "gold",
+          160
+         ],
+         [
+          "ATRELADOS AO CDI",
+          "muted",
+          80
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Os grandes bancos costumam pagar perto de cem por cento do CDI.",
+       "scene": {
+        "type": "compare",
+        "title": "QUANTO O CDB PAGA",
+        "items": [
+         [
+          "~100%",
+          "GRANDES BANCOS",
+          "white"
+         ],
+         [
+          "140%",
+          "BANCO MASTER",
+          "gold"
+         ]
+        ],
+        "size": 190,
+        "stagger": 1.4,
+        "vs": false
+       }
+      },
+      {
+       "text": "O Master chegou a oferecer até cento e quarenta por cento.",
+       "scene": {
+        "type": "same"
+       }
+      },
+      {
+       "text": "Era um dos investimentos mais rentáveis das plataformas de investimento.",
+       "scene": {
+        "type": "video",
+        "media": "grafico",
+        "search": "stock market chart rising",
+        "search_en": "stock market chart rising",
+        "start": 0.0,
+        "dim": 0.4,
+        "lower": "Nas plataformas de investimento",
+        "fallback": {
+         "type": "bigtext",
+         "stagger": 0.25,
+         "lines": [
+          [
+           "ENTRE OS MAIS",
+           "white",
+           110
+          ],
+          [
+           "RENTÁVEIS",
+           "gold",
+           170
+          ]
+         ]
+        }
+       }
+      },
+      {
+       "text": "Muita gente colocou dinheiro ali sem nunca ter entrado numa agência do Master. Só olhando a taxa.",
+       "scene": {
+        "type": "video",
+        "media": "celular_v",
+        "search": "scrolling smartphone app",
+        "search_en": "scrolling smartphone app",
+        "start": 0.0,
+        "dim": 0.4,
+        "lower": "Só olhando a taxa",
+        "fallback": {
+         "type": "bigtext",
+         "stagger": 0.25,
+         "lines": [
+          [
+           "SÓ OLHANDO",
+           "white",
+           130
+          ],
+          [
+           "A TAXA",
+           "gold",
+           190
+          ]
+         ]
+        }
+       }
+      },
+      {
+       "text": "E tinha um argumento que convencia quase todo mundo.",
+       "scene": {
+        "type": "flash",
+        "text": "MAS...",
+        "color": "white",
+        "size": 200
+       }
+      },
+      {
+       "text": "É garantido pelo FGC.",
+       "scene": {
+        "type": "stamp",
+        "org": "FUNDO GARANTIDOR DE CRÉDITOS",
+        "title": "ATÉ R$ 250 MIL POR CPF",
+        "stamp": "GARANTIDO",
+        "stamp_at": 0.5
+       }
+      },
+      {
+       "text": "O FGC é um fundo que devolve até duzentos e cinquenta mil reais por pessoa se um banco quebrar.",
+       "scene": {
+        "type": "same"
+       }
+      },
+      {
+       "text": "Então, para o investidor, o risco parecia zero.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "RISCO",
+          "white",
+          150
+         ],
+         [
+          "ZERO?",
+          "red",
+          220
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Só que um banco que paga muito mais do que os outros precisa ganhar muito mais do que os outros.",
+       "scene": {
+        "type": "flow",
+        "a": "PAGA 140%",
+        "a_sub": "para o investidor",
+        "b": "PRECISA GANHAR",
+        "b_sub": "ainda mais",
+        "caption": "DE ONDE VINHA ESSE DINHEIRO?"
+       }
+      },
+      {
+       "text": "E é aqui que a conta começa a não fechar.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "A CONTA",
+          "white",
+          140
+         ],
+         [
+          "NÃO FECHA",
+          "red",
+          180
+         ]
+        ]
+       }
+      }
+     ]
+    },
+    {
+     "chapter": "O BANCO PÚBLICO",
+     "sentences": [
+      {
+       "text": "Segundo as investigações, o Master captava dinheiro novo para cobrir compromissos antigos.",
+       "scene": {
+        "type": "flow",
+        "a": "DINHEIRO NOVO",
+        "a_sub": "de novos investidores",
+        "b": "PAGA O ANTIGO",
+        "b_sub": "compromissos que venciam",
+        "caption": "SEGUNDO A INVESTIGAÇÃO"
+       }
+      },
+      {
+       "text": "E os ativos que deveriam garantir tudo isso valiam menos do que o banco dizia.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "OS ATIVOS",
+          "white",
+          130
+         ],
+         [
+          "VALIAM MENOS",
+          "red",
+          160
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Em março de dois mil e vinte e cinco, apareceu uma saída.",
+       "scene": {
+        "type": "date",
+        "month": "MARÇO",
+        "day": "28",
+        "year": "2025",
+        "tag": "O ANÚNCIO"
+       }
+      },
+      {
+       "text": "O BRB, o Banco de Brasília, anunciou que ia comprar o controle do Master.",
+       "scene": {
+        "type": "image",
+        "media": "brb",
+        "wiki": [
+         "Banco de Brasília BRB",
+         "BRB Banco de Brasília"
+        ],
+        "lower": "BRB · Banco de Brasília",
+        "dim": 0.4,
+        "fallback": {
+         "type": "bigtext",
+         "stagger": 0.25,
+         "lines": [
+          [
+           "BRB",
+           "red",
+           220
+          ],
+          [
+           "BANCO DE BRASÍLIA",
+           "white",
+           90
+          ]
+         ]
+        }
+       }
+      },
+      {
+       "text": "O detalhe: o BRB é um banco público, controlado pelo governo do Distrito Federal.",
+       "scene": {
+        "type": "stamp",
+        "org": "GOVERNO DO DISTRITO FEDERAL",
+        "title": "BRB · BANCO DE BRASÍLIA",
+        "stamp": "BANCO PÚBLICO",
+        "stamp_at": 0.9
+       }
+      },
+      {
+       "text": "Ou seja, dinheiro público.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "DINHEIRO",
+          "white",
+          160
+         ],
+         [
+          "PÚBLICO",
+          "red",
+          210
+         ]
+        ]
+       }
+      },
+      {
+       "text": "O negócio foi aprovado pelo CADE em junho e pela Câmara Legislativa do Distrito Federal em agosto.",
+       "scene": {
+        "type": "events",
+        "row": 140,
+        "events": [
+         [
+          "JUN 2025",
+          "CADE aprova a compra",
+          "gold"
+         ],
+         [
+          "AGO 2025",
+          "Câmara Legislativa do DF aprova",
+          "gold"
+         ],
+         [
+          "???",
+          "Falta o Banco Central",
+          "red"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Faltava só o Banco Central.",
+       "scene": {
+        "type": "same"
+       }
+      },
+      {
+       "text": "E, segundo a Polícia Federal, antes mesmo do negócio, o BRB já tinha repassado cerca de doze bilhões de reais ao Master.",
+       "scene": {
+        "type": "counter",
+        "value": 12,
+        "prefix": "R$ ",
+        "suffix": ",2 BI",
+        "over": "DEZ 2024 – MAI 2025",
+        "label": "DO BRB PARA O MASTER",
+        "color": "red",
+        "size": 220
+       }
+      },
+      {
+       "text": "Em troca, recebeu carteiras de crédito.",
+       "scene": {
+        "type": "video",
+        "media": "papeis",
+        "search": "stack of documents office",
+        "search_en": "stack of documents office",
+        "start": 0.0,
+        "dim": 0.4,
+        "lower": "Carteiras de crédito",
+        "fallback": {
+         "type": "bigtext",
+         "stagger": 0.25,
+         "lines": [
+          [
+           "CARTEIRAS",
+           "white",
+           140
+          ],
+          [
+           "DE CRÉDITO",
+           "gold",
+           140
+          ]
+         ]
+        }
+       }
+      },
+      {
+       "text": "Nas amostras que a polícia analisou, nenhum desses créditos teve lastro comprovado.",
+       "scene": {
+        "type": "stamp",
+        "org": "POLÍCIA FEDERAL · AMOSTRAS",
+        "title": "CARTEIRAS DE CRÉDITO",
+        "stamp": "SEM LASTRO",
+        "stamp_at": 1.0
+       }
+      },
+      {
+       "text": "A polícia encontrou cento e oitenta e duas mil operações de crédito com apenas doze valores diferentes.",
+       "scene": {
+        "type": "counter",
+        "value": 182,
+        "suffix": " MIL",
+        "over": "OPERAÇÕES DE CRÉDITO",
+        "label": "COM SÓ 12 VALORES DIFERENTES",
+        "color": "red",
+        "size": 220
+       }
+      },
+      {
+       "text": "E mais de duzentos e noventa mil clientes que já tinham aparecido em vendas anteriores.",
+       "scene": {
+        "type": "counter",
+        "value": 290,
+        "prefix": "+",
+        "suffix": " MIL",
+        "over": "CLIENTES REPETIDOS",
+        "label": "EM VENDAS ANTERIORES",
+        "color": "red",
+        "size": 220
+       }
+      },
+      {
+       "text": "Para a polícia, eram créditos fabricados para dar um fôlego artificial ao Master.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "CRÉDITOS",
+          "white",
+          140
+         ],
+         [
+          "FABRICADOS?",
+          "red",
+          170
+         ],
+         [
+          "SEGUNDO A PF",
+          "muted",
+          80
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Os investigados negam qualquer irregularidade.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "OS INVESTIGADOS",
+          "white",
+          110
+         ],
+         [
+          "NEGAM",
+          "muted",
+          160
+         ]
+        ]
+       }
+      }
+     ]
+    },
+    {
+     "chapter": "A QUEDA",
+     "sentences": [
+      {
+       "text": "Em setembro de dois mil e vinte e cinco, o Banco Central barrou a compra.",
+       "scene": {
+        "type": "image",
+        "media": "bc",
+        "wiki": [
+         "Banco Central do Brasil sede",
+         "Edifício-Sede do Banco Central do Brasil",
+         "Banco Central do Brasil"
+        ],
+        "lower": "Banco Central do Brasil",
+        "dim": 0.4,
+        "fallback": {
+         "type": "stamp",
+         "org": "BANCO CENTRAL · 03/09/2025",
+         "title": "BRB COMPRA MASTER",
+         "stamp": "NEGADO",
+         "stamp_at": 0.8
+        }
+       }
+      },
+      {
+       "text": "Sem o BRB, o Master ficou sem saída.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "SEM",
+          "white",
+          150
+         ],
+         [
+          "SAÍDA",
+          "red",
+          210
+         ]
+        ]
+       }
+      },
+      {
+       "text": "O dinheiro novo começou a ficar mais difícil, e os compromissos continuavam vencendo.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "O DINHEIRO",
+          "white",
+          130
+         ],
+         [
+          "ACABANDO",
+          "red",
+          170
+         ]
+        ]
+       }
+      },
+      {
+       "text": "No dia dezessete de novembro, o grupo Fictor anunciou que ia comprar o banco por três bilhões de reais.",
+       "scene": {
+        "type": "date",
+        "month": "NOVEMBRO",
+        "day": "17",
+        "year": "2025",
+        "tag": "PROPOSTA DE R$ 3 BI"
+       }
+      },
+      {
+       "text": "Na mesma noite, Daniel Vorcaro foi preso no aeroporto.",
+       "scene": {
+        "type": "video",
+        "media": "aeroporto",
+        "search": "private jet airport night",
+        "search_en": "private jet airport night",
+        "start": 0.0,
+        "dim": 0.4,
+        "lower": "17 de novembro · à noite",
+        "fallback": {
+         "type": "bigtext",
+         "stagger": 0.25,
+         "lines": [
+          [
+           "PRESO",
+           "red",
+           220
+          ],
+          [
+           "NO AEROPORTO",
+           "white",
+           110
+          ]
+         ]
+        }
+       }
+      },
+      {
+       "text": "Segundo a polícia, ele ia embarcar num jato particular com destino a Malta.",
+       "scene": {
+        "type": "board",
+        "header": "PARTIDAS · JATO PARTICULAR",
+        "flip_at": 0.5,
+        "rows": [
+         [
+          "22:00",
+          "MALTA"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "A defesa nega que fosse uma fuga.",
+       "scene": {
+        "type": "same"
+       }
+      },
+      {
+       "text": "No dia seguinte, o Banco Central decretou a liquidação do Master.",
+       "scene": {
+        "type": "stamp",
+        "org": "BANCO CENTRAL · 18/11/2025",
+        "title": "BANCO MASTER S.A.",
+        "stamp": "LIQUIDADO",
+        "stamp_at": 0.8
+       }
+      },
+      {
+       "text": "Liquidar um banco é fechar as portas, afastar os donos e colocar um liquidante para vender o que sobrou e pagar quem tem a receber.",
+       "scene": {
+        "type": "flow",
+        "a": "BANCO FECHADO",
+        "a_sub": "donos afastados",
+        "b": "LIQUIDANTE",
+        "b_sub": "vende o que sobrou",
+        "caption": "O QUE É LIQUIDAÇÃO"
+       }
+      },
+      {
+       "text": "E a Polícia Federal lançou a Operação Compliance Zero, que investiga um rombo estimado em doze bilhões de reais.",
+       "scene": {
+        "type": "counter",
+        "value": 12,
+        "prefix": "R$ ",
+        "suffix": " BI",
+        "over": "OPERAÇÃO COMPLIANCE ZERO",
+        "label": "FRAUDE ESTIMADA PELA PF",
+        "color": "red",
+        "size": 230
+       }
+      }
+     ]
+    },
+    {
+     "chapter": "QUEM PAGA A CONTA",
+     "sentences": [
+      {
+       "text": "Aqui está o custo oculto.",
+       "scene": {
+        "type": "flash",
+        "text": "O CUSTO\nOCULTO",
+        "tint": "red",
+        "size": 160
+       }
+      },
+      {
+       "text": "O FGC precisou cobrir cerca de quarenta e um bilhões de reais para um milhão e seiscentas mil pessoas.",
+       "scene": {
+        "type": "counter",
+        "value": 41,
+        "prefix": "R$ ",
+        "suffix": " BI",
+        "over": "FGC · 1,6 MILHÃO DE PESSOAS",
+        "label": "O MAIOR RESGATE EM 30 ANOS",
+        "color": "gold",
+        "size": 230
+       }
+      },
+      {
+       "text": "É mais do que o dobro do maior resgate anterior, o do Bamerindus, em mil novecentos e noventa e sete, já corrigido pela inflação.",
+       "scene": {
+        "type": "compare",
+        "title": "RESGATES DO FGC (CORRIGIDOS)",
+        "items": [
+         [
+          "R$ 19,6 BI",
+          "BAMERINDUS · 1997",
+          "white"
+         ],
+         [
+          "R$ 41 BI",
+          "MASTER · 2025",
+          "red"
+         ]
+        ],
+        "size": 150,
+        "stagger": 1.2,
+        "vs": false
+       }
+      },
+      {
+       "text": "Antes do Master, o FGC tinha cerca de cento e sessenta e um bilhões de reais. Esse resgate sozinho levou perto de um quarto do fundo.",
+       "scene": {
+        "type": "compare",
+        "title": "O FUNDO GARANTIDOR",
+        "items": [
+         [
+          "R$ 161 BI",
+          "O QUE O FGC TINHA",
+          "white"
+         ],
+         [
+          "R$ 41 BI",
+          "SÓ O MASTER",
+          "red"
+         ]
+        ],
+        "size": 160,
+        "stagger": 1.2,
+        "vs": false
+       }
+      },
+      {
+       "text": "E quem tinha mais de duzentos e cinquenta mil reais no banco não recebe o resto pelo FGC.",
+       "scene": {
+        "type": "stamp",
+        "org": "ACIMA DE R$ 250 MIL",
+        "title": "O QUE PASSA DO LIMITE",
+        "stamp": "MASSA FALIDA",
+        "stamp_at": 0.9
+       }
+      },
+      {
+       "text": "Entra na fila da massa falida, num processo que pode levar anos.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "NA FILA",
+          "white",
+          150
+         ],
+         [
+          "POR ANOS",
+          "red",
+          170
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Mas o FGC não é dinheiro do governo.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "O FGC",
+          "white",
+          150
+         ],
+         [
+          "NÃO É DO GOVERNO",
+          "gold",
+          100
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Ele é bancado pelos próprios bancos, com uma contribuição todo mês.",
+       "scene": {
+        "type": "video",
+        "media": "banco_agencia",
+        "search": "bank building facade",
+        "search_en": "bank building facade",
+        "start": 0.0,
+        "dim": 0.4,
+        "lower": "Quem banca o FGC",
+        "fallback": {
+         "type": "bigtext",
+         "stagger": 0.25,
+         "lines": [
+          [
+           "BANCADO PELOS",
+           "white",
+           110
+          ],
+          [
+           "BANCOS",
+           "gold",
+           190
+          ]
+         ]
+        }
+       }
+      },
+      {
+       "text": "E, depois do Master, essa contribuição dobrou a partir de junho de dois mil e vinte e seis.",
+       "scene": {
+        "type": "compare",
+        "title": "CONTRIBUIÇÃO MENSAL AO FGC",
+        "items": [
+         [
+          "0,01%",
+          "ANTES",
+          "white"
+         ],
+         [
+          "0,02%",
+          "DESDE JUN/2026",
+          "red"
+         ]
+        ],
+        "size": 190,
+        "stagger": 1.0,
+        "vs": false
+       }
+      },
+      {
+       "text": "Custo maior para os bancos costuma virar juro maior e tarifa maior para o cliente.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "CUSTO DO BANCO",
+          "white",
+          110
+         ],
+         [
+          "VIRA CUSTO",
+          "red",
+          150
+         ],
+         [
+          "SEU",
+          "gold",
+          170
+         ]
+        ]
+       }
+      },
+      {
+       "text": "E tem uma parte que o FGC não cobre.",
+       "scene": {
+        "type": "flash",
+        "text": "E TEM MAIS",
+        "color": "white",
+        "size": 170
+       }
+      },
+      {
+       "text": "Pelo menos dezoito fundos de previdência de estados e municípios investiram no Master.",
+       "scene": {
+        "type": "counter",
+        "value": 18,
+        "suffix": " FUNDOS",
+        "over": "PREVIDÊNCIA DE SERVIDORES",
+        "label": "INVESTIRAM NO MASTER",
+        "color": "red",
+        "size": 210
+       }
+      },
+      {
+       "text": "Juntos, pelo menos um vírgula oito bilhão de reais. Só a Rioprevidência, do estado do Rio, colocou novecentos e setenta milhões.",
+       "scene": {
+        "type": "compare",
+        "title": "DINHEIRO DE APOSENTADORIA NO MASTER",
+        "items": [
+         [
+          "R$ 1,8 BI",
+          "18 FUNDOS PÚBLICOS",
+          "white"
+         ],
+         [
+          "R$ 970 MI",
+          "SÓ A RIOPREVIDÊNCIA",
+          "red"
+         ]
+        ],
+        "size": 150,
+        "stagger": 1.2,
+        "vs": false
+       }
+      },
+      {
+       "text": "Esse dinheiro foi para letras financeiras, que não têm garantia do FGC.",
+       "scene": {
+        "type": "stamp",
+        "org": "LETRAS FINANCEIRAS",
+        "title": "GARANTIA DO FGC",
+        "stamp": "NÃO TEM",
+        "stamp_at": 0.8
+       }
+      },
+      {
+       "text": "Se o rombo aparecer, quem cobre é o estado ou o município. Ou seja, o contribuinte.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "QUEM COBRE?",
+          "white",
+          130
+         ],
+         [
+          "O CONTRIBUINTE",
+          "red",
+          150
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Se você está gostando de entender quem paga a conta dessas histórias, se inscreve. Toda semana tem uma nova.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "SE INSCREVE",
+          "gold",
+          150
+         ],
+         [
+          "TODA SEMANA, UM CASO",
+          "white",
+          80
+         ]
+        ]
+       }
+      }
+     ]
+    },
+    {
+     "chapter": "ONDE ESTÁ HOJE",
+     "sentences": [
+      {
+       "text": "Depois da prisão, Vorcaro chegou a ser solto.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "SOLTO",
+          "white",
+          180
+         ],
+         [
+          "NOV 2025",
+          "muted",
+          90
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Mas em março de dois mil e vinte e seis, foi preso de novo.",
+       "scene": {
+        "type": "date",
+        "month": "MARÇO",
+        "day": "04",
+        "year": "2026",
+        "tag": "PRESO DE NOVO"
+       }
+      },
+      {
+       "text": "Em janeiro, o Banco Central já tinha liquidado também o Will Bank, o banco digital comprado pelo Master.",
+       "scene": {
+        "type": "stamp",
+        "org": "BANCO CENTRAL · 21/01/2026",
+        "title": "WILL BANK",
+        "stamp": "LIQUIDADO",
+        "stamp_at": 0.8
+       }
+      },
+      {
+       "text": "Em abril, o ex-presidente do BRB também foi preso.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "ABR 2026",
+          "gold",
+          150
+         ],
+         [
+          "EX-PRESIDENTE DO BRB",
+          "white",
+          90
+         ],
+         [
+          "PRESO",
+          "red",
+          150
+         ]
+        ]
+       }
+      },
+      {
+       "text": "A investigação chegou a políticos de partidos diferentes e até ao Supremo Tribunal Federal.",
+       "scene": {
+        "type": "image",
+        "media": "stf",
+        "wiki": [
+         "Supremo Tribunal Federal edifício",
+         "Supremo Tribunal Federal Brasília"
+        ],
+        "lower": "Supremo Tribunal Federal",
+        "dim": 0.4,
+        "fallback": {
+         "type": "bigtext",
+         "stagger": 0.25,
+         "lines": [
+          [
+           "POLÍTICOS",
+           "white",
+           130
+          ],
+          [
+           "E O SUPREMO",
+           "red",
+           140
+          ]
+         ]
+        }
+       }
+      },
+      {
+       "text": "Todos negam irregularidades, e ninguém foi julgado até agora.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "TODOS NEGAM",
+          "white",
+          130
+         ],
+         [
+          "NINGUÉM JULGADO",
+          "muted",
+          100
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Vorcaro também nega, e as propostas de delação dele foram recusadas.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "DELAÇÃO",
+          "white",
+          150
+         ],
+         [
+          "RECUSADA",
+          "red",
+          160
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Até setembro de dois mil e vinte e seis, ele seguia preso.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "SET 2026",
+          "gold",
+          160
+         ],
+         [
+          "SEGUE PRESO",
+          "white",
+          120
+         ]
+        ]
+       }
+      },
+      {
+       "text": "E quem tinha conta no Will Bank teve que correr atrás do FGC também.",
+       "scene": {
+        "type": "flow",
+        "a": "WILL BANK",
+        "a_sub": "liquidado em jan/2026",
+        "b": "FGC",
+        "b_sub": "mais uma conta",
+        "caption": "O EFEITO DOMINÓ"
+       }
+      },
+      {
+       "text": "E o caso deixa três sinais de alerta que servem para qualquer investimento.",
+       "scene": {
+        "type": "flash",
+        "text": "3 SINAIS\nDE ALERTA",
+        "color": "gold",
+        "size": 150
+       }
+      },
+      {
+       "text": "Primeiro: uma taxa muito acima da dos concorrentes.",
+       "scene": {
+        "type": "bullets",
+        "title": "SINAIS DE ALERTA",
+        "items": [
+         "TAXA MUITO ACIMA",
+         "O FGC COMO ARGUMENTO",
+         "CRESCIMENTO RÁPIDO DEMAIS"
+        ],
+        "size": 90,
+        "last_gold": true,
+        "cue_offset": 0
+       }
+      },
+      {
+       "text": "Segundo: quando o principal argumento de venda é a garantia do FGC, e não a saúde do banco.",
+       "scene": {
+        "type": "same"
+       }
+      },
+      {
+       "text": "Terceiro: um banco pequeno que cresce rápido demais, comprando outras empresas.",
+       "scene": {
+        "type": "same"
+       }
+      },
+      {
+       "text": "O FGC protege o seu dinheiro até um limite. Mas ele não transforma um banco ruim num banco bom.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "O FGC PROTEGE",
+          "white",
+          120
+         ],
+         [
+          "ATÉ UM LIMITE",
+          "gold",
+          140
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Do banco quase quebrado até o maior resgate da história, foram só sete anos.",
+       "scene": {
+        "type": "timeline",
+        "start": "2018",
+        "end": "2025",
+        "start_sub": "Vorcaro assume",
+        "end_sub": "liquidação",
+        "big": "7 ANOS"
+       }
+      },
+      {
+       "text": "A lição oculta do Master é simples.",
+       "scene": {
+        "type": "flash",
+        "text": "A LIÇÃO\nOCULTA",
+        "tint": "red",
+        "size": 160
+       }
+      },
+      {
+       "text": "Quando um investimento paga muito mais do que todos os outros, alguém está pagando essa diferença.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "SE PAGA MUITO MAIS",
+          "white",
+          100
+         ],
+         [
+          "ALGUÉM",
+          "gold",
+          180
+         ],
+         [
+          "PAGA A DIFERENÇA",
+          "white",
+          100
+         ]
+        ]
+       }
+      },
+      {
+       "text": "E, no fim, quase nunca é só quem ganhou o retorno.",
+       "scene": {
+        "type": "endcard",
+        "sub": "O CASO BANCO MASTER"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "shorts": [
+   {
+    "title": "1,6 milhão de pessoas no mesmo banco. E ele quebrou.",
+    "sentences": [
+     {
+      "text": "Um milhão e seiscentas mil pessoas colocaram dinheiro no mesmo banco. E ele quebrou.",
+      "scene": {
+       "type": "capa",
+       "foto": "bc",
+       "wiki": [
+        "Banco Central do Brasil sede",
+        "Edifício-Sede do Banco Central do Brasil",
+        "Banco Central do Brasil"
+       ],
+       "seta": false,
+       "recorte": "Banco Master · 2025",
+       "faixa": "1,6 milhão de pessoas",
+       "linhas": [
+        [
+         "no mesmo",
+         "white",
+         190
+        ],
+        [
+         "BANCO",
+         "gold",
+         250
+        ],
+        [
+         "que quebrou",
+         "red",
+         180
+        ]
+       ],
+       "selo": "Banco Master · 2025"
+      }
+     },
+     {
+      "text": "O Banco Master pagava até cento e quarenta por cento do CDI.",
+      "scene": {
+       "type": "compare",
+       "title": "QUANTO O CDB PAGAVA",
+       "items": [
+        [
+         "~100%",
+         "GRANDES BANCOS",
+         "white"
+        ],
+        [
+         "140%",
+         "MASTER",
+         "gold"
+        ]
+       ],
+       "size": 190,
+       "stagger": 1.0,
+       "vs": false
+      }
+     },
+     {
+      "text": "Em novembro de dois mil e vinte e cinco, o Banco Central liquidou o banco.",
+      "scene": {
+       "type": "stamp",
+       "org": "BANCO CENTRAL · 18/11/2025",
+       "title": "BANCO MASTER S.A.",
+       "stamp": "LIQUIDADO",
+       "stamp_at": 0.8
+      }
+     },
+     {
+      "text": "E o fundo que garante os investimentos teve que devolver quarenta e um bilhões de reais.",
+      "scene": {
+       "type": "counter",
+       "value": 41,
+       "prefix": "R$ ",
+       "suffix": " BI",
+       "over": "FGC",
+       "label": "O MAIOR RESGATE DA HISTÓRIA",
+       "color": "red",
+       "size": 230
+      }
+     },
+     {
+      "text": "O maior resgate da história do Brasil.",
+      "scene": {
+       "type": "video",
+       "media": "dinheiro_v",
+       "search": "money banknotes counting",
+       "search_en": "money banknotes counting",
+       "start": 0.0,
+       "dim": 0.4,
+       "lower": "O maior resgate da história",
+       "fallback": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "O MAIOR",
+          "white",
+          150
+         ],
+         [
+          "DA HISTÓRIA",
+          "red",
+          150
+         ]
+        ]
+       }
+      }
+     },
+     {
+      "text": "O caso completo está no canal.",
+      "scene": {
+       "type": "endcard",
+       "sub": "O CASO BANCO MASTER"
+      }
+     }
+    ]
+   },
+   {
+    "title": "Esse CDB pagava 140% do CDI. Era bom demais.",
+    "sentences": [
+     {
+      "text": "Esse banco pagava cento e quarenta por cento do CDI. Parecia bom demais. E era.",
+      "scene": {
+       "type": "capa",
+       "foto": "faria_lima_foto",
+       "wiki": [
+        "Avenida Brigadeiro Faria Lima",
+        "Faria Lima São Paulo"
+       ],
+       "seta": false,
+       "recorte": "Banco Master",
+       "faixa": "Esse CDB pagava",
+       "linhas": [
+        [
+         "140%",
+         "gold",
+         260
+        ],
+        [
+         "do CDI",
+         "white",
+         200
+        ],
+        [
+         "era bom demais",
+         "red",
+         150
+        ]
+       ],
+       "selo": "Banco Master · 2025"
+      }
+     },
+     {
+      "text": "Quem paga muito mais precisa ganhar muito mais.",
+      "scene": {
+       "type": "flow",
+       "a": "PAGA 140%",
+       "a_sub": "para você",
+       "b": "PRECISA GANHAR",
+       "b_sub": "ainda mais",
+       "caption": "DE ONDE VINHA?"
+      }
+     },
+     {
+      "text": "Segundo a investigação, o dinheiro de quem entrava pagava quem já estava lá.",
+      "scene": {
+       "type": "flow",
+       "a": "DINHEIRO NOVO",
+       "a_sub": "de quem entrava",
+       "b": "PAGA O ANTIGO",
+       "b_sub": "de quem já estava",
+       "caption": "SEGUNDO A INVESTIGAÇÃO"
+      }
+     },
+     {
+      "text": "O banco quebrou em novembro de dois mil e vinte e cinco.",
+      "scene": {
+       "type": "stamp",
+       "org": "BANCO CENTRAL · 18/11/2025",
+       "title": "BANCO MASTER S.A.",
+       "stamp": "LIQUIDADO",
+       "stamp_at": 0.8
+      }
+     },
+     {
+      "text": "Quando um investimento paga muito mais que os outros, alguém está pagando a diferença.",
+      "scene": {
+       "type": "bigtext",
+       "stagger": 0.25,
+       "lines": [
+        [
+         "ALGUÉM",
+         "gold",
+         190
+        ],
+        [
+         "PAGA A DIFERENÇA",
+         "white",
+         110
+        ]
+       ]
+      }
+     },
+     {
+      "text": "O caso completo está no canal.",
+      "scene": {
+       "type": "endcard",
+       "sub": "O CASO BANCO MASTER"
+      }
+     }
+    ]
+   },
+   {
+    "title": "Preso no aeroporto no dia em que o banco ia ser vendido",
+    "sentences": [
+     {
+      "text": "O dono do banco foi preso no aeroporto no mesmo dia em que anunciaram a venda do banco.",
+      "scene": {
+       "type": "capa",
+       "foto": "bc",
+       "wiki": [
+        "Banco Central do Brasil sede",
+        "Edifício-Sede do Banco Central do Brasil",
+        "Banco Central do Brasil"
+       ],
+       "seta": false,
+       "recorte": "17 de novembro de 2025",
+       "faixa": "O dono do banco",
+       "linhas": [
+        [
+         "PRESO",
+         "red",
+         260
+        ],
+        [
+         "no aeroporto",
+         "white",
+         190
+        ]
+       ],
+       "selo": "Banco Master · 2025"
+      }
+     },
+     {
+      "text": "Dezessete de novembro de dois mil e vinte e cinco. Um grupo anuncia que vai comprar o Banco Master por três bilhões de reais.",
+      "scene": {
+       "type": "date",
+       "month": "NOVEMBRO",
+       "day": "17",
+       "year": "2025",
+       "tag": "PROPOSTA DE R$ 3 BI"
+      }
+     },
+     {
+      "text": "Na mesma noite, Daniel Vorcaro é preso, segundo a polícia, antes de embarcar num jato para Malta.",
+      "scene": {
+       "type": "video",
+       "media": "aeroporto_v",
+       "search": "private jet airport night",
+       "search_en": "private jet airport night",
+       "start": 0.0,
+       "dim": 0.4,
+       "lower": "17 de novembro · à noite",
+       "fallback": {
+        "type": "board",
+        "header": "PARTIDAS · JATO PARTICULAR",
+        "flip_at": 0.5,
+        "rows": [
+         [
+          "22:00",
+          "MALTA"
+         ]
+        ]
+       }
+      }
+     },
+     {
+      "text": "A defesa nega que fosse uma fuga.",
+      "scene": {
+       "type": "bigtext",
+       "stagger": 0.25,
+       "lines": [
+        [
+         "A DEFESA",
+         "white",
+         130
+        ],
+        [
+         "NEGA",
+         "muted",
+         180
+        ]
+       ]
+      }
+     },
+     {
+      "text": "No dia seguinte, o banco foi liquidado.",
+      "scene": {
+       "type": "stamp",
+       "org": "BANCO CENTRAL · 18/11/2025",
+       "title": "BANCO MASTER S.A.",
+       "stamp": "LIQUIDADO",
+       "stamp_at": 0.7
+      }
+     },
+     {
+      "text": "O caso completo está no canal.",
+      "scene": {
+       "type": "endcard",
+       "sub": "O CASO BANCO MASTER"
+      }
+     }
+    ]
+   },
+   {
+    "title": "Você pode estar pagando a conta do Banco Master",
+    "sentences": [
+     {
+      "text": "Você pode estar pagando a conta do Banco Master, mesmo sem nunca ter investido nele.",
+      "scene": {
+       "type": "capa",
+       "foto": "bc",
+       "wiki": [
+        "Banco Central do Brasil sede",
+        "Edifício-Sede do Banco Central do Brasil",
+        "Banco Central do Brasil"
+       ],
+       "seta": false,
+       "recorte": "Banco Master",
+       "faixa": "Você pode estar",
+       "linhas": [
+        [
+         "PAGANDO",
+         "red",
+         250
+        ],
+        [
+         "a conta",
+         "white",
+         200
+        ],
+        [
+         "do Master",
+         "gold",
+         190
+        ]
+       ],
+       "selo": "Banco Master · 2025"
+      }
+     },
+     {
+      "text": "Dezoito fundos de aposentadoria de servidores públicos colocaram dinheiro no banco.",
+      "scene": {
+       "type": "counter",
+       "value": 18,
+       "suffix": " FUNDOS",
+       "over": "PREVIDÊNCIA DE SERVIDORES",
+       "label": "INVESTIRAM NO MASTER",
+       "color": "red",
+       "size": 210
+      }
+     },
+     {
+      "text": "Pelo menos um vírgula oito bilhão de reais, em papéis que o FGC não garante.",
+      "scene": {
+       "type": "stamp",
+       "org": "LETRAS FINANCEIRAS · R$ 1,8 BI",
+       "title": "GARANTIA DO FGC",
+       "stamp": "NÃO TEM",
+       "stamp_at": 0.8
+      }
+     },
+     {
+      "text": "Se faltar dinheiro, quem cobre é o estado ou o município. Ou seja, o contribuinte.",
+      "scene": {
+       "type": "bigtext",
+       "stagger": 0.25,
+       "lines": [
+        [
+         "QUEM COBRE?",
+         "white",
+         130
+        ],
+        [
+         "O CONTRIBUINTE",
+         "red",
+         150
+        ]
+       ]
+      }
+     },
+     {
+      "text": "E os bancos passaram a pagar o dobro para o fundo garantidor. Custo que costuma chegar no cliente.",
+      "scene": {
+       "type": "compare",
+       "title": "CONTRIBUIÇÃO AO FGC",
+       "items": [
+        [
+         "0,01%",
+         "ANTES",
+         "white"
+        ],
+        [
+         "0,02%",
+         "AGORA",
+         "red"
+        ]
+       ],
+       "size": 190,
+       "stagger": 1.0,
+       "vs": false
+      }
+     },
+     {
+      "text": "O caso completo está no canal.",
+      "scene": {
+       "type": "endcard",
+       "sub": "O CASO BANCO MASTER"
+      }
+     }
+    ]
+   }
+  ]
+ },
+ "meta": {
+  "titles": [
+   "BANCO MASTER: O Banco Que Quebrou e Deixou Uma Conta de R$ 41 Bilhões",
+   "O Que Aconteceu Com o Banco Master? Quem Paga a Conta"
+  ],
+  "description": "O Banco Master pagava até 140% do CDI e atraiu 1,6 milhão de investidores. Em novembro de 2025, o Banco Central liquidou o banco, e o FGC fez o maior resgate da sua história: cerca de R$ 41 bilhões. Neste vídeo: como o banco cresceu, a tentativa de venda para o BRB, a prisão de Daniel Vorcaro, e quem paga a conta.\n\nOs investigados negam irregularidades e ninguém foi julgado até a publicação deste vídeo. Este vídeo não toma partido político.\n\n[CAPÍTULOS]\n\nFontes: Banco Central do Brasil; Polícia Federal (Operação Compliance Zero); STF; FGC; Bloomberg Línea (18/11/2025); IstoÉ Dinheiro; Poder360; Jornal de Brasília (09/01/2026).\n\n#BancoMaster #FGC #Vorcaro #CDB #CustoOculto",
+  "tags": [
+   "banco master",
+   "o que aconteceu com o banco master",
+   "fgc banco master",
+   "daniel vorcaro",
+   "cdb banco master",
+   "brb banco master",
+   "custo oculto"
+  ]
+ },
+ "thumbs": [
+  {
+   "glow": "red",
+   "lines": [
+    {
+     "text": "BANCO MASTER",
+     "color": "red",
+     "size": 110
+    },
+    {
+     "text": "QUEM PAGA",
+     "color": "white",
+     "size": 150
+    },
+    {
+     "text": "R$ 41 BI?",
+     "color": "gold",
+     "size": 190
+    }
+   ]
+  },
+  {
+   "glow": "gold",
+   "lines": [
+    {
+     "text": "140% DO CDI",
+     "color": "gold",
+     "size": 150
+    },
+    {
+     "text": "ERA BOM",
+     "color": "white",
+     "size": 130
+    },
+    {
+     "text": "DEMAIS",
+     "color": "red",
+     "size": 150
+    },
+    {
+     "text": "BANCO MASTER",
+     "color": "green",
+     "size": 70,
+     "pill": true
+    }
+   ]
+  }
+ ],
+ "notes": "FATOS CHECADOS (com fonte)\n- 1,6 milhão de investidores; FGC deve cobrir ~R$ 41 bi; CDBs até 140% do CDI; PF estima fraude de ~R$ 12 bi (Bloomberg Línea, 18/11/2025)\n- Maior resgate em 30 anos de FGC; Bamerindus R$ 19,6 bi corrigido; FGC tinha ~R$ 161 bi; contribuição mensal de 0,01% para 0,02% desde 01/06/2026 (IstoÉ Dinheiro)\n- Banco Máxima; quase insolvente em 2016; Vorcaro assume em 2018; vira Master em 2021 (Wikipedia, Banco Master)\n- BRB anuncia compra 28/03/2025; BC nega 03/09/2025; Fictor R$ 3 bi em 17/11; prisão no aeroporto (jato para Malta) em 17/11; liquidação e Compliance Zero em 18/11; solto em 29/11; preso de novo 04/03/2026; Will Bank liquidado 21/01/2026; ex-presidente do BRB preso 16/04/2026; delações recusadas mai-jun/2026; segue preso até 11/09/2026 (Wikipedia, Banco Master scandal)\n- BRB repassou ~R$ 12,2 bi ao Master (dez/2024 a mai/2025) em cessões de crédito; nas amostras da PF nenhum crédito com lastro comprovado (Poder360)\n- 18 RPPS, ao menos R$ 1,8 bi em Letras Financeiras (sem FGC); Rioprevidência R$ 970 mi; entes cobrem o rombo (Jornal de Brasília, 09/01/2026)\n- Neutralidade: não citar nomes de políticos/ministros; sempre dizer que investigados negam e ninguém foi julgado."
+}

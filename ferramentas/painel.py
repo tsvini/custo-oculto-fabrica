@@ -8,7 +8,7 @@ RAIZ = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 REPO = "tsvini/custo-oculto-fabrica"
 
 projetos = []
-for nome in sorted(os.listdir(os.path.join(RAIZ, "projetos"))):
+for nome in sorted(os.listdir(os.path.join(RAIZ, "projetos")), key=lambda n: -os.path.getmtime(os.path.join(RAIZ, "projetos", n, "projeto.json")) if os.path.exists(os.path.join(RAIZ, "projetos", n, "projeto.json")) else 0):
     f = os.path.join(RAIZ, "projetos", nome, "projeto.json")
     if not os.path.exists(f):
         continue
@@ -114,7 +114,7 @@ const DADOS = """ + DADOS + """;
 const $ = (id) => document.getElementById(id);
 const ler = (k, d) => { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch (e) { return d; } };
 const gravar = (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} };
-let atual = ler("co_projeto", DADOS.projetos[DADOS.projetos.length - 1].id);
+let atual = DADOS.projetos[0].id; // o roteiro mais novo abre primeiro
 if (!DADOS.projetos.some((p) => p.id === atual)) atual = DADOS.projetos[0].id;
 
 function tempo(txt) { const s = Math.round(txt.length / 15); return Math.floor(s / 60) + ":" + String(s % 60).padStart(2, "0"); }
