@@ -117,15 +117,17 @@ def prints(cenas, pasta, log):
 
 def pexels(cenas, pasta, vertical, log, creditos):
     key = os.environ.get("PEXELS_KEY", "").strip()
-    alvo = {}
+    alvo = {}; qen = {}
     for s in cenas:
         if s.get("type") == "video" and s.get("media") and s.get("search"):
             alvo.setdefault(s["media"], s["search"])
+            if s.get("search_en"):
+                qen.setdefault(s["media"], s["search_en"])
     pend = {k: q for k, q in alvo.items() if not os.path.exists(os.path.join(pasta, k + ".mp4"))}
     if not pend:
         return
     if not key:
-        return pixabay(pend, pasta, vertical, log, creditos)
+        return pixabay(pend, pasta, vertical, log, creditos, qen)
     usados = set()
     for k, q in pend.items():
         try:
@@ -149,11 +151,13 @@ def pexels(cenas, pasta, vertical, log, creditos):
             log(f"  clipe {k}: falhou ({str(e)[:120]})")
     resto = {k: q for k, q in pend.items() if not os.path.exists(os.path.join(pasta, k + ".mp4"))}
     if resto:
-        pixabay(resto, pasta, vertical, log, creditos)
+        pixabay(resto, pasta, vertical, log, creditos, qen)
 
 
-def pixabay(pend, pasta, vertical, log, creditos):
-    """Clipes do Pixabay (licença livre para uso comercial). Usa PIXABAY_KEY."""
+def pixabay(pend, pasta, vertical, log, creditos, qen=None):
+    """Clipes do Pixabay (licença livre para uso comercial). Usa PIXABAY_KEY.
+    qen: busca em inglês por chave (campo "search_en" da cena), que acha muito mais coisa."""
+    qen = qen or {}
     key = os.environ.get("PIXABAY_KEY", "").strip()
     if not key:
         log(f"  sem PIXABAY_KEY/PEXELS_KEY: {len(pend)} clipe(s) usam o texto de reserva")
@@ -162,11 +166,16 @@ def pixabay(pend, pasta, vertical, log, creditos):
     for k, q in pend.items():
         try:
             hits = []
-            for lang in ("pt", "en"):
+            for qq, lang in ((qen.get(k), "en"), (q, "pt")):
+                if not qq:
+                    continue
                 url = "https://pixabay.com/api/videos/?" + urllib.parse.urlencode(
-                    {"key": key, "q": q[:100], "lang": lang, "per_page": 20, "safesearch": "true", "video_type": "film"})
+                    {"key": key, "q": qq[:100], "lang": lang, "per_page": 30, "safesearch": "true", "video_type": "film"})
                 with urllib.request.urlopen(urllib.request.Request(url, headers={"User-Agent": UA}), timeout=30) as r:
-                    hits = [h for h in json.load(r).get("hits", []) if h.get("duration", 0) >= 6 and h["id"] not in usados]
+                    hits = [h for h in json.load(r).get("hits", []) if h.get("duration", 0) >= 4 and h["id"] not in usados]
+                # relevância: as tags do vídeo precisam conter alguma palavra da busca
+                pal = {w.lower() for w in re.findall(r"\w{4,}", qq)}
+                hits = [h for h in hits if pal & {w.lower() for w in re.findall(r"\w{4,}", h.get("tags", ""))}]
                 if hits:
                     break
             if not hits:
