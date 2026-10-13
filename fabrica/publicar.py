@@ -79,8 +79,9 @@ def proximo_horario(tipo, reg, caso=None):
     if agora.hour >= HORA[tipo] - 2:  # precisa de folga para o YouTube processar
         dia += dt.timedelta(days=1)
     ultimos = [dt.datetime.fromisoformat(r["publishAt"]).astimezone(BRT).date() for r in reg if r["tipo"] == tipo]
-    if ultimos and max(ultimos) >= dia:
-        dia = max(ultimos) + dt.timedelta(days=1)
+    if tipo == "longo":
+        if ultimos and max(ultimos) >= dia:
+            dia = max(ultimos) + dt.timedelta(days=1)
     longos = [dt.datetime.fromisoformat(r["publishAt"]).astimezone(BRT).date() for r in reg
               if r["tipo"] == "longo" and r.get("publishAt") and (not caso or r["nome"].startswith(caso + "_"))]
     if tipo == "longo" and ultimos:  # um longo por semana
@@ -88,6 +89,10 @@ def proximo_horario(tipo, reg, caso=None):
     if tipo != "longo" and longos:  # Short nunca sai antes do longo que ele anuncia
         dia = max(dia, max(longos))
         if dia == max(longos) and HORA[tipo] <= HORA["longo"]:
+            dia += dt.timedelta(days=1)
+    if tipo != "longo":  # preenche o primeiro dia livre (um de cada tipo por dia)
+        ocupados = set(ultimos)
+        while dia in ocupados:
             dia += dt.timedelta(days=1)
     return dt.datetime(dia.year, dia.month, dia.day, HORA[tipo], tzinfo=BRT)
 
