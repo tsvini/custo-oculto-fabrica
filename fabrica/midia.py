@@ -55,6 +55,21 @@ def _baixa(url, dest, headers=None, timeout=60):
             f.write(b)
 
 
+def _normaliza_clipe(path, log=print):
+    """Reconverte o clipe para H.264 (yuv420p, até 1920 px, 12 s, sem som): qualquer navegador decodifica."""
+    import subprocess
+    tmp = path + ".tmp.mp4"
+    r = subprocess.run(["ffmpeg", "-loglevel", "error", "-y", "-i", path, "-t", "12", "-an",
+                        "-vf", "scale='min(1920,iw)':-2:flags=lanczos,format=yuv420p", "-c:v", "libx264", "-preset", "veryfast",
+                        "-crf", "20", "-profile:v", "high", "-movflags", "+faststart", tmp], capture_output=True, text=True)
+    if r.returncode == 0 and os.path.getsize(tmp) > 10000:
+        os.replace(tmp, path)
+    else:
+        log(f"    não consegui converter {os.path.basename(path)}: {r.stderr[:150]}")
+        if os.path.exists(tmp):
+            os.remove(tmp)
+
+
 def _uniforme(path):
     try:
         from PIL import Image, ImageStat
@@ -145,7 +160,7 @@ def pexels(cenas, pasta, vertical, log, creditos):
             arqs = [f for f in v.get("video_files", []) if f.get("file_type") == "video/mp4" and f.get("width")]
             alvo_w = 1080 if vertical else 1920
             arqs.sort(key=lambda f: (abs(min(f["width"], f["height"]) - min(alvo_w, 1080)), -f["width"]))
-            _baixa(arqs[0]["link"], os.path.join(pasta, k + ".mp4"))
+            _baixa(arqs[0]["link"], os.path.join(pasta, k + ".mp4")); _normaliza_clipe(os.path.join(pasta, k + ".mp4"), log)
             nome = (v.get("user") or {}).get("name", "")
             creditos.append(f"{nome} (Pexels) – {v.get('url', '')}")
             log(f"  clipe {k}: ok ('{q}', {nome})")
@@ -196,7 +211,7 @@ def pixabay(pend, pasta, vertical, log, creditos, qen=None):
             alvo = 1080 if vertical else 1920
             opc = [v for v in (vs.get("large"), vs.get("medium"), vs.get("small")) if v and v.get("url")]
             opc.sort(key=lambda v: abs(max(v.get("width") or 0, v.get("height") or 0) - alvo))
-            _baixa(opc[0]["url"], os.path.join(pasta, k + ".mp4"))
+            _baixa(opc[0]["url"], os.path.join(pasta, k + ".mp4")); _normaliza_clipe(os.path.join(pasta, k + ".mp4"), log)
             creditos.append(f"{h.get('user', '')} (Pixabay) – {h.get('pageURL', '')}")
             ok += 1; log(f"  clipe {k}: ok Pixabay ('{q}', {h.get('user', '')})")
         except Exception as e:
