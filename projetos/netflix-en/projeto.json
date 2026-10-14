@@ -1460,7 +1460,195 @@
   "shorts": [],
   "tiktoks": []
  },
- "serie": [],
+ "serie": [
+  {
+   "partes": [
+    1,
+    2
+   ],
+   "capa": {
+    "type": "capa",
+    "foto": "bend",
+    "wiki": [
+     "File:The Last Blockbuster storefront.jpg",
+     "Blockbuster Bend Oregon"
+    ],
+    "seta": false,
+    "recorte": "Netflix · Part 1",
+    "linhas": [
+     [
+      "$50",
+      "gold",
+      250
+     ],
+     [
+      "MILLION",
+      "white",
+      200
+     ],
+     [
+      "AND A LAUGH",
+      "red",
+      170
+     ]
+    ],
+    "logo": "logo_netflix",
+    "faixa": "Part 1 of 4"
+   },
+   "caption": "Netflix vs Blockbuster, part 1: the $50 million offer and the rental empire. Follow for part 2.",
+   "fim": [
+    "CONTINUES IN",
+    "PART 2"
+   ],
+   "hashtags": [
+    "#netflix",
+    "#blockbuster",
+    "#business",
+    "#history",
+    "#series"
+   ]
+  },
+  {
+   "partes": [
+    3,
+    4
+   ],
+   "capa": {
+    "type": "capa",
+    "foto": "bend",
+    "wiki": [
+     "File:The Last Blockbuster storefront.jpg",
+     "Blockbuster Bend Oregon"
+    ],
+    "seta": false,
+    "recorte": "Netflix · Part 2",
+    "linhas": [
+     [
+      "THE MEETING",
+      "white",
+      190
+     ],
+     [
+      "WORTH",
+      "gold",
+      190
+     ],
+     [
+      "BILLIONS",
+      "red",
+      220
+     ]
+    ],
+    "logo": "logo_netflix",
+    "faixa": "Part 2 of 4"
+   },
+   "caption": "Netflix vs Blockbuster, part 2: Netflix was losing money and offered the whole company. Here's my take on that no.",
+   "fim": [
+    "CONTINUES IN",
+    "PART 3"
+   ],
+   "hashtags": [
+    "#netflix",
+    "#blockbuster",
+    "#business",
+    "#history",
+    "#series"
+   ]
+  },
+  {
+   "partes": [
+    5,
+    6
+   ],
+   "capa": {
+    "type": "capa",
+    "foto": "bend",
+    "wiki": [
+     "File:The Last Blockbuster storefront.jpg",
+     "Blockbuster Bend Oregon"
+    ],
+    "seta": false,
+    "recorte": "Netflix · Part 3",
+    "linhas": [
+     [
+      "THE WAR",
+      "white",
+      220
+     ],
+     [
+      "NETFLIX",
+      "gold",
+      190
+     ],
+     [
+      "ALMOST LOST",
+      "red",
+      180
+     ]
+    ],
+    "logo": "logo_netflix",
+    "faixa": "Part 3 of 4"
+   },
+   "caption": "Netflix vs Blockbuster, part 3: the move that almost killed Netflix, and the mistake that sank Blockbuster.",
+   "fim": [
+    "CONTINUES IN",
+    "PART 4"
+   ],
+   "hashtags": [
+    "#netflix",
+    "#blockbuster",
+    "#business",
+    "#history",
+    "#series"
+   ]
+  },
+  {
+   "partes": [
+    7
+   ],
+   "capa": {
+    "type": "capa",
+    "foto": "bend",
+    "wiki": [
+     "File:The Last Blockbuster storefront.jpg",
+     "Blockbuster Bend Oregon"
+    ],
+    "seta": false,
+    "recorte": "Netflix · Final",
+    "linhas": [
+     [
+      "ONLY ONE",
+      "white",
+      210
+     ],
+     [
+      "BLOCKBUSTER",
+      "gold",
+      170
+     ],
+     [
+      "LEFT",
+      "red",
+      230
+     ]
+    ],
+    "logo": "logo_netflix",
+    "faixa": "Part 4 of 4"
+   },
+   "caption": "Netflix vs Blockbuster, final part: one store left in the world, and the hidden lesson.",
+   "fim": [
+    "END OF SERIES",
+    "FOLLOW FOR THE NEXT CASE"
+   ],
+   "hashtags": [
+    "#netflix",
+    "#blockbuster",
+    "#business",
+    "#history",
+    "#series"
+   ]
+  }
+ ],
  "meta": {
   "titles": [
    "NETFLIX: The Company Blockbuster Refused to Buy for $50 Million",
