@@ -557,6 +557,13 @@
       t0 += dur + (ui === units.length - 1 ? (opts.tail || 1.2) : (opts.gap || 0.5));
     });
     const total = t0;
+    // capa não pode ficar parada: segura ~1.3s e corta para a cena seguinte (com movimento e legenda)
+    for (let i = segs.length - 1; i >= 0; i--) {
+      const sg = segs[i]; const sc = sg.scene;
+      if (sg.card || !sc || sc.type !== "capa" || sg.end - sg.start < 2.2) continue;
+      const dep = sc.depois || (sc.foto ? { type: "image", media: sc.foto, z0: 1.12, z1: 1.28, dim: 0.3 } : null);
+      if (dep) segs.splice(i + 1, 0, { text: "", scene: JSON.parse(JSON.stringify(dep)), start: sg.start + 1.3, end: sg.end, extra: true });
+    }
     segs.forEach((sg, i) => { sg.s0 = i === 0 ? 0 : sg.start - 0.05; sg.s1 = i + 1 < segs.length ? segs[i + 1].start - 0.05 : total; if (sg.card) { sg.s0 = sg.start; sg.s1 = sg.end; } });
     // "same" continua a cena anterior
     segs.forEach((sg, k) => {

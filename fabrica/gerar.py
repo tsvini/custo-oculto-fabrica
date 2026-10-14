@@ -63,7 +63,10 @@ def montar_serie(p):
         grupos = [copy.deepcopy(p["script"]["long"]["parts"][k - 1]) for k in ep["partes"]]
         if ep.get("capa"):
             prim = next(s for s in grupos[0]["sentences"] if s.get("text") and s["text"].strip())
+            orig = prim.get("scene") or {}
             prim["scene"] = dict(ep["capa"], type="capa")
+            if orig.get("type") not in (None, "same", "capa"):
+                prim["scene"]["depois"] = orig  # depois de ~1.3s volta para a cena original da frase
         fim = ep.get("fim") or (["CONTINUA NA", f"PARTE {i + 2}"] if i + 1 < len(eps) else ["FIM DA SÉRIE", "SEGUE PRO PRÓXIMO CASO"])
         out.append({"parts": grupos, "fim": fim})
     p["script"]["serie"] = out
