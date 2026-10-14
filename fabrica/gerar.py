@@ -10,6 +10,7 @@ import argparse, base64, copy, functools, http.server, json, os, re, shutil, sub
 
 from . import midia as M
 from .tts import Narrador, ErroVoz
+from .canais import canal, bloco_afiliados
 
 RAIZ = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -121,6 +122,8 @@ def main():
     with open(os.path.join(pasta_proj, "projeto.json"), encoding="utf8") as f:
         p = json.load(f)
     montar_serie(p)
+    idioma = (p.get("idioma") or "pt").lower()[:2]; C = canal(idioma)
+    os.environ["IDIOMA_FALA"] = C["whisper"]  # reconhecimento de fala no idioma do vídeo
     slug = slugify(p.get("slug") or a.projeto)
     trab = os.path.join(RAIZ, "trabalho", slug); os.makedirs(trab, exist_ok=True)
     pasta_midia = os.path.join(trab, "midia"); os.makedirs(pasta_midia, exist_ok=True)
@@ -272,13 +275,16 @@ def main():
                         f.write(cap + "\n")
                     meta = p.get("meta") or {}
                     desc = (meta.get("description") or "").replace("[CAPÍTULOS]", cap)
+                    afil = bloco_afiliados(meta, idioma)
+                    if afil:
+                        desc = desc.replace("[AFILIADOS]", afil) if "[AFILIADOS]" in desc else desc + "\n\n" + afil
                     if creditos:
-                        desc += "\n\nImagens de apoio: " + "; ".join(dict.fromkeys(creditos))
+                        desc += f"\n\n{C['creditos']} " + "; ".join(dict.fromkeys(creditos))
                     txt = ["TÍTULO (opções):"] + [f"  {t}" for t in meta.get("titles", [])] + ["", "DESCRIÇÃO:", desc, "", "TAGS:", ", ".join(meta.get("tags", []))]
                     with open(os.path.join(saida, "publicar_longo.txt"), "w", encoding="utf8") as f:
                         f.write("\n".join(txt) + "\n")
                     yt = {"tipo": "longo", "caso": slug, "caso_titulo": p.get("title", slug), "video": nome + ".mp4", "legenda": nome + ".srt", "miniatura": "miniatura_A.jpg",
-                          "titulo": (meta.get("titles") or [p.get("title", slug)])[0][:100], "descricao": desc[:4900], "tags": meta.get("tags", [])}
+                          "titulo": (meta.get("titles") or [p.get("title", slug)])[0][:100], "descricao": desc[:4900], "tags": meta.get("tags", []), "idioma": idioma}
                     with open(os.path.join(saida if (gravada or nar.modo != "teste") else trab, f"youtube_{nome}.json"), "w", encoding="utf8") as f:
                         json.dump(yt, f, ensure_ascii=False, indent=1)
                 elif fmt == "serie":
@@ -296,8 +302,8 @@ def main():
                         tags = " ".join("#" + re.sub(r"\W", "", t.title()) for t in (p.get("meta") or {}).get("tags", [])[:3])
                         tot = len(p["serie"])
                         yt = {"tipo": "serie", "caso": slug, "video": nome + ".mp4", "miniatura": f"capa_serie{idx + 1}.jpg" if cena0 else None,
-                              "titulo": f"{p.get('title', slug)}: parte {idx + 1} de {tot} #shorts"[:100],
-                              "descricao": (ep.get("caption") or "") + f"\n\nSérie em {tot} partes. O caso completo está no canal.\n\n#shorts {tags}",
+                              "titulo": (C["serie_titulo"].format(titulo=p.get('title', slug), n=idx + 1, tot=tot) + " #shorts")[:100], "idioma": idioma,
+                              "descricao": (ep.get("caption") or "") + "\n\n" + C["serie_desc"].format(tot=tot) + f"\n\n#shorts {tags}",
                               "tags": (p.get("meta") or {}).get("tags", [])}
                         with open(os.path.join(saida if (gravada or nar.modo != "teste") else trab, f"youtube_{nome}.json"), "w", encoding="utf8") as f:
                             json.dump(yt, f, ensure_ascii=False, indent=1)
@@ -323,7 +329,7 @@ def main():
                     sh = shorts[idx]
                     with open(os.path.join(saida, f"publicar_short{idx + 1}.txt"), "w", encoding="utf8") as f:
                         tags = " ".join("#" + re.sub(r"\W", "", t.title()) for t in (p.get("meta") or {}).get("tags", [])[:4])
-                        f.write(f"TÍTULO:\n  {sh.get('title', '')} #shorts\n\nDESCRIÇÃO:\n{sh.get('description') or 'A história completa está no vídeo longo do canal.'}\n\n#shorts {tags}\n")
+                        f.write(f"TÍTULO:\n  {sh.get('title', '')} #shorts\n\nDESCRIÇÃO:\n{sh.get('description') or C['shorts_desc']}\n\n#shorts {tags}\n")
                     cena0 = (sh["sentences"][0].get("scene") or {}); capa_arq = None
                     if cena0.get("type") == "capa":
                         d = pg.evaluate("cfg => capa(cfg)", {"cena": cena0, "midia": man, "midiaBase": cfg["midiaBase"], "vertical": True})
@@ -331,7 +337,7 @@ def main():
                         with open(os.path.join(saida, capa_arq), "wb") as f:
                             f.write(base64.b64decode(d.split(",")[1]))
                     yt = {"tipo": "short", "caso": slug, "video": nome + ".mp4", "titulo": (sh.get("title", "") + " #shorts")[:100],
-                          "descricao": (sh.get("description") or "A história completa está no vídeo longo do canal.") + f"\n\n#shorts {tags}",
+                          "descricao": (sh.get("description") or C["shorts_desc"]) + f"\n\n#shorts {tags}", "idioma": idioma,
                           "tags": (p.get("meta") or {}).get("tags", []), "miniatura": capa_arq}
                     with open(os.path.join(saida if (gravada or nar.modo != "teste") else trab, f"youtube_{nome}.json"), "w", encoding="utf8") as f:
                         json.dump(yt, f, ensure_ascii=False, indent=1)

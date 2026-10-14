@@ -19,6 +19,7 @@ jobs:
       contents: write
     env:
       YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
+      YT_REFRESH_TOKEN_EN: ${{ secrets.YT_REFRESH_TOKEN_EN }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5

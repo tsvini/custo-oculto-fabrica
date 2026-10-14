@@ -32,8 +32,19 @@ def textos(p):
         out.append((f"short{i + 1}", g))
     for i, g in enumerate(p["script"].get("tiktoks", [])):
         out.append((f"tiktok{i + 1}", g))
-    # frases marcadas "abertura" não vão para o TTS: o áudio delas é canal/intro.mp3, colado na frente
-    return [(n, " ".join(s["text"].strip() for s in g["sentences"] if s.get("text", "").strip() and not s.get("abertura"))) for n, g in out]
+    # frases marcadas "abertura" não vão para o TTS: o áudio delas é a intro do canal (canal/intro.mp3, ou intro_en.mp3…), colado na frente.
+    # Se o idioma ainda não tem intro gravada, a abertura é narrada junto com o resto.
+    pula = os.path.exists(intro_de(p))
+    return [(n, " ".join(s["text"].strip() for s in g["sentences"] if s.get("text", "").strip() and not (pula and s.get("abertura")))) for n, g in out]
+
+
+def idioma_de(p):
+    return (p.get("idioma") or "pt").lower()[:2]
+
+
+def intro_de(p):
+    i = idioma_de(p)
+    return os.path.join(RAIZ, "canal", "intro.mp3" if i == "pt" else f"intro_{i}.mp3")
 
 
 def com_abertura(p, nome):
@@ -70,11 +81,12 @@ def main(nome):
         vid = achou[0]["voice_id"]
         nota("ElevenLabs voz", f"{achou[0]['name']} ({vid})")
 
-    # modelo: o pedido no projeto, senão o mais novo que fala português
+    # modelo: o pedido no projeto, senão o mais novo que fala o idioma do vídeo
     r = requests.get(f"{API}/v1/models", headers=H, timeout=60); r.raise_for_status()
     modelos = [m for m in r.json() if m.get("can_do_text_to_speech")]
+    lingua = idioma_de(p)
     def fala_pt(m):
-        return any((l.get("language_id") or "").startswith("pt") for l in m.get("languages") or [])
+        return any((l.get("language_id") or "").startswith(lingua) for l in m.get("languages") or [])
     mid = voz.get("modelo")
     if not mid:
         pref = [m for m in modelos if m["model_id"] == "eleven_v4_turbo"] or [m for m in modelos if fala_pt(m) and "v4" in m["model_id"]] or [m for m in modelos if m["model_id"] == "eleven_multilingual_v2"] or [m for m in modelos if fala_pt(m)]
@@ -101,7 +113,7 @@ def main(nome):
         destino = os.path.join(pasta_audio, f"{n}.mp3")
         with open(destino, "wb") as f:
             f.write(r.content)
-        intro = os.path.join(RAIZ, "canal", "intro.mp3")
+        intro = intro_de(p)
         if com_abertura(p, n) and os.path.exists(intro):  # abertura do canal + 0,3 s de pausa + narração
             import subprocess, shutil
             tmp = destino + ".tmp.mp3"

@@ -7,10 +7,13 @@ Agenda: longo às 12h (Brasília), um Short por dia às 18h, sempre depois do ú
 Os vídeos sobem privados com data de publicação. A cota grátis da API dá uns 5 vídeos por dia;
 o que não couber fica na fila e sobe na execução diária seguinte (workflow "Publicar").
 
-Secrets: YT_CLIENT_ID, YT_CLIENT_SECRET, YT_REFRESH_TOKEN.
+Secrets: YT_CLIENT_ID, YT_CLIENT_SECRET, YT_REFRESH_TOKEN (Custo Oculto) e YT_REFRESH_TOKEN_EN (Hidden Cost).
+Cada vídeo vai para o canal do idioma do projeto ("idioma" no projeto.json); cada canal tem a própria agenda.
 """
 import datetime as dt, glob, json, os, shutil, subprocess, sys, tempfile, time
 import requests
+
+from .canais import CANAIS, canal
 
 RAIZ = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 REG = os.path.join(RAIZ, "publicados.json")
@@ -73,7 +76,8 @@ def registro():
         return []
 
 
-def proximo_horario(tipo, reg, caso=None):
+def proximo_horario(tipo, reg, caso=None, idioma="pt"):
+    reg = [r for r in reg if idioma_de(r) == idioma]  # cada canal tem a própria agenda
     agora = dt.datetime.now(BRT)
     dia = agora.date()
     if agora.hour >= HORA[tipo] - 2:  # precisa de folga para o YouTube processar
@@ -98,13 +102,32 @@ def proximo_horario(tipo, reg, caso=None):
 
 
 # ---------- YouTube ----------
-def token():
+def idioma_de(x):
+    return ((x or {}).get("idioma") or "pt").lower()[:2]
+
+
+def tem_canal(idioma="pt"):
+    return bool(os.environ.get(canal(idioma)["token_env"], "").strip())
+
+
+def idiomas_ativos():
+    return [i for i in CANAIS if tem_canal(i)]
+
+
+_TOKENS = {}
+
+
+def token(idioma="pt"):
+    if idioma in _TOKENS:
+        return _TOKENS[idioma]
+    env = canal(idioma)["token_env"]
     r = requests.post("https://oauth2.googleapis.com/token", data={
         "client_id": os.environ["YT_CLIENT_ID"], "client_secret": os.environ["YT_CLIENT_SECRET"],
-        "refresh_token": os.environ["YT_REFRESH_TOKEN"], "grant_type": "refresh_token"}, timeout=30)
+        "refresh_token": os.environ[env], "grant_type": "refresh_token"}, timeout=30)
     if r.status_code != 200:
-        raise SystemExit(f"Não consegui entrar no YouTube ({r.status_code}): {r.text[:300]}. Confira os secrets YT_CLIENT_ID, YT_CLIENT_SECRET e YT_REFRESH_TOKEN.")
-    return r.json()["access_token"]
+        raise SystemExit(f"Não consegui entrar no YouTube ({r.status_code}): {r.text[:300]}. Confira os secrets YT_CLIENT_ID, YT_CLIENT_SECRET e {env}.")
+    _TOKENS[idioma] = r.json()["access_token"]
+    return _TOKENS[idioma]
 
 
 def checar(r, oque):
@@ -128,7 +151,7 @@ def voz_sintetica(caso):
 
 def subir_video(tk, path, meta, quando):
     corpo = {"snippet": {"title": meta["titulo"], "description": meta["descricao"], "tags": meta.get("tags", [])[:30],
-                         "categoryId": "27", "defaultLanguage": "pt-BR", "defaultAudioLanguage": "pt-BR"},
+                         "categoryId": "27", "defaultLanguage": canal(idioma_de(meta))["yt_lang"], "defaultAudioLanguage": canal(idioma_de(meta))["yt_lang"]},
              "status": {"privacyStatus": "private", "publishAt": quando.astimezone(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%S.000Z"),
                         "selfDeclaredMadeForKids": False, "containsSyntheticMedia": voz_sintetica(meta.get("caso"))}}
     tam = os.path.getsize(path)
@@ -149,8 +172,9 @@ def subir_miniatura(tk, vid, path):
                              headers={"Authorization": f"Bearer {tk}", "Content-Type": "image/jpeg"}, data=f.read(), timeout=120), "miniatura")
 
 
-def subir_legenda(tk, vid, path):
-    snip = json.dumps({"snippet": {"videoId": vid, "language": "pt-BR", "name": "Português", "isDraft": False}})
+def subir_legenda(tk, vid, path, idioma="pt"):
+    c = canal(idioma)
+    snip = json.dumps({"snippet": {"videoId": vid, "language": c["yt_lang"], "name": c["legenda_nome"], "isDraft": False}})
     srt = open(path, "rb").read(); b = "fronteira_custo_oculto"
     corpo = (f"--{b}\r\nContent-Type: application/json; charset=UTF-8\r\n\r\n{snip}\r\n--{b}\r\nContent-Type: application/x-subrip\r\n\r\n").encode() + srt + f"\r\n--{b}--".encode()
     checar(requests.post("https://www.googleapis.com/upload/youtube/v3/captions?uploadType=multipart&part=snippet",
@@ -167,20 +191,23 @@ def enviar():
             gh("release", "download", TAG, "-p", f"{nome}__meta.json", "-D", t, "--clobber")
             metas[nome] = json.load(open(os.path.join(t, f"{nome}__meta.json"), encoding="utf8"))
         ordem = sorted(metas, key=lambda n: (metas[n]["enfileirado"], metas[n]["ordem"]))
-        tk = token(); reg = registro(); feitos = []
+        reg = registro(); feitos = []; sem_canal = set()
         try:
             for nome in ordem:
-                meta = metas[nome]
+                meta = metas[nome]; idi = idioma_de(meta)
                 if f"{nome}__video.mp4" not in itens[nome]:
                     continue
+                if not tem_canal(idi):  # canal ainda não autorizado: o vídeo espera na fila
+                    sem_canal.add(canal(idi)["token_env"]); continue
+                tk = token(idi)
                 gh("release", "download", TAG, "-p", f"{nome}__*", "-D", t, "--clobber")
-                quando = proximo_horario(meta["tipo"], reg, meta.get("caso"))
+                quando = proximo_horario(meta["tipo"], reg, meta.get("caso"), idi)
                 lg = next((x for x in reg if meta.get("caso") and x["nome"] == f"{meta['caso']}_longo" and x.get("video_id")), None)
                 if lg and meta["tipo"] != "longo" and "youtu.be/" not in meta["descricao"]:
-                    meta["descricao"] = f"▶ Caso completo: https://youtu.be/{lg['video_id']}\n\n" + meta["descricao"]
+                    meta["descricao"] = f"{canal(idi)['caso_completo']} https://youtu.be/{lg['video_id']}\n\n" + meta["descricao"]
                 v = subir_video(tk, os.path.join(t, f"{nome}__video.mp4"), meta, quando)
                 vid = v["id"]; extra = []
-                for suf, fn in (("miniatura.jpg", subir_miniatura), ("legenda.srt", subir_legenda)):
+                for suf, fn in (("miniatura.jpg", subir_miniatura), ("legenda.srt", lambda tk, vid, path: subir_legenda(tk, vid, path, idi))):
                     if f"{nome}__{suf}" in itens[nome]:
                         try:
                             fn(tk, vid, os.path.join(t, f"{nome}__{suf}"))
@@ -188,7 +215,7 @@ def enviar():
                             raise
                         except Exception as e:
                             extra.append(f"{suf.split('.')[0]} falhou: {str(e)[:150]}")
-                reg.append({"nome": nome, "tipo": meta["tipo"], "titulo": meta["titulo"], "video_id": vid, "caso": meta.get("caso"), "caso_titulo": meta.get("caso_titulo"),
+                reg.append({"nome": nome, "tipo": meta["tipo"], "idioma": idi, "titulo": meta["titulo"], "video_id": vid, "caso": meta.get("caso"), "caso_titulo": meta.get("caso_titulo"),
                             "publishAt": quando.isoformat(), "status": v.get("status", {}).get("privacyStatus")})
                 feitos.append(f"{meta['titulo']} → {quando:%d/%m %Hh} (youtu.be/{vid})" + (f" [{'; '.join(extra)}]" if extra else ""))
                 for a in itens[nome]:
@@ -196,6 +223,8 @@ def enviar():
                 json.dump(reg, open(REG, "w", encoding="utf8"), ensure_ascii=False, indent=1)
         except Cota:
             nota("Cota do dia acabou", "o resto da fila sobe na próxima execução diária", "warning")
+        if sem_canal:
+            nota("Canal sem autorização", f"vídeos esperando na fila: falta o secret {', '.join(sorted(sem_canal))}", "warning")
         if feitos:
             nota("Agendados no YouTube", " | ".join(feitos))
         restam = len(fila())
@@ -213,9 +242,10 @@ def miniaturas(pasta_saida):
         h = hashlib.sha1(open(arq, "rb").read()).hexdigest()[:12] if arq and os.path.exists(arq) else None
         if not r or not h or r.get("miniatura_ok") == h:
             continue
-        tk = tk or token()
+        if not tem_canal(idioma_de(r)):
+            continue
         try:
-            subir_miniatura(tk, r["video_id"], arq); r["miniatura_ok"] = h; feitos.append(nome)
+            subir_miniatura(token(idioma_de(r)), r["video_id"], arq); r["miniatura_ok"] = h; feitos.append(nome)
         except Exception as e:
             nota("Miniatura falhou", f"{nome}: {str(e)[:300]}", "warning")
     if feitos:
@@ -240,7 +270,10 @@ def comentar():
         vid = c.get("video_id") or (reg.get(c.get("nome")) or {}).get("video_id")
         if not vid:
             continue
-        tk = tk or token(); H = {"Authorization": f"Bearer {tk}"}
+        idi = c.get("idioma") or idioma_de(reg.get(c.get("nome")))
+        if not tem_canal(idi):
+            continue
+        H = {"Authorization": f"Bearer {token(idi)}"}
         v = requests.get("https://www.googleapis.com/youtube/v3/videos", headers=H, params={"part": "status", "id": vid}, timeout=30).json().get("items") or []
         if not v or v[0]["status"]["privacyStatus"] != "public":
             continue
@@ -256,8 +289,15 @@ def comentar():
 
 
 def playlists():
-    """Playlists que tocam em sequência: uma com todos os longos e uma por caso (longo + série)."""
-    reg = registro(); tk = token(); H = {"Authorization": f"Bearer {tk}"}; Y = "https://www.googleapis.com/youtube/v3"
+    """Playlists que tocam em sequência, em cada canal: uma com todos os longos e uma por caso (longo + série)."""
+    reg = registro()
+    for idi in idiomas_ativos():
+        _playlists(reg, idi)
+
+
+def _playlists(reg_todo, idi):
+    reg = [r for r in reg_todo if idioma_de(r) == idi]; C = canal(idi)
+    tk = token(idi); H = {"Authorization": f"Bearer {tk}"}; Y = "https://www.googleapis.com/youtube/v3"
     titulos = {}
     for r in reg:  # nome do caso vem do longo
         if r.get("tipo") == "longo" and r.get("caso_titulo"):
@@ -274,7 +314,7 @@ def playlists():
     def pl(titulo, desc):
         if titulo not in ex:
             q = checar(requests.post(f"{Y}/playlists?part=snippet,status", headers=H, timeout=30,
-                                     json={"snippet": {"title": titulo, "description": desc, "defaultLanguage": "pt-BR"}, "status": {"privacyStatus": "public"}}), "criar playlist")
+                                     json={"snippet": {"title": titulo, "description": desc, "defaultLanguage": C["yt_lang"]}, "status": {"privacyStatus": "public"}}), "criar playlist")
             ex[titulo] = q.json()["id"]
         return ex[titulo]
     feitos = []
@@ -284,9 +324,9 @@ def playlists():
                 continue
             alvos = []
             if r.get("tipo") == "longo":
-                alvos.append((TODOS, "Todos os casos do Custo Oculto, um atrás do outro: fraudes, quedas e quem pagou a conta."))
+                alvos.append(C["pl_todos"])
             if r.get("caso") in titulos and r.get("tipo") in ("longo", "serie"):
-                alvos.append((f"Caso {titulos[r['caso']]} | Custo Oculto", f"O caso {titulos[r['caso']]} completo e em partes."))
+                alvos.append((C["pl_caso"][0].format(t=titulos[r["caso"]]), C["pl_caso"][1].format(t=titulos[r["caso"]])))
             for t, d in alvos:
                 if t in (r.get("playlists") or []):
                     continue
@@ -303,18 +343,23 @@ def playlists():
     except Exception as e:
         nota("Playlist falhou", str(e)[:400], "warning")
     if feitos:
-        json.dump(reg, open(REG, "w", encoding="utf8"), ensure_ascii=False, indent=1)
-        nota("Playlists", f"{len(feitos)} adicionados: " + "; ".join(feitos)[:800])
+        json.dump(reg_todo, open(REG, "w", encoding="utf8"), ensure_ascii=False, indent=1)
+        nota(f"Playlists {C['nome']}", f"{len(feitos)} adicionados: " + "; ".join(feitos)[:800])
 
 
 def conferir():
-    tk = token()
+    for idi in idiomas_ativos():
+        _conferir(idi)
+
+
+def _conferir(idi):
+    tk = token(idi)
     r = requests.get("https://www.googleapis.com/youtube/v3/channels?part=snippet,statistics&mine=true", headers={"Authorization": f"Bearer {tk}"}, timeout=30)
     if r.status_code != 200:
         nota("YouTube: falhou", f"{r.status_code}: {r.text[:500]}", "error"); raise SystemExit(1)
     it = r.json().get("items") or []
     if not it:
-        nota("YouTube: nenhum canal", "a conta autorizada não tem canal. Autorize com a conta/canal Custo Oculto.", "error"); raise SystemExit(1)
+        nota("YouTube: nenhum canal", f"a conta autorizada não tem canal. Autorize com o canal {canal(idi)['nome']}.", "error"); raise SystemExit(1)
     c = it[0]
     nota("YouTube conectado", f"canal: {c['snippet']['title']} · inscritos: {c['statistics'].get('subscriberCount')} · vídeos: {c['statistics'].get('videoCount')}")
 

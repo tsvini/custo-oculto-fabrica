@@ -335,7 +335,7 @@
     if (s.highlight) { const [hx0, hy0, hx1, hy1] = s.highlight; const hp = easeOut((t - 0.8) / 0.5);
       if (hp > 0) { ctx.fillStyle = "rgba(255,200,40,.37)"; ctx.fillRect(-w / 2 + hx0 * w, -h / 2 + hy0 * h, (hx1 - hx0) * w * hp, (hy1 - hy0) * h); } }
     ctx.restore();
-    if (s.source) { const f = font(700, 34 * u); const txt = "Fonte: " + s.source; const tw = textW(ctx, txt, f); const y = cy + h / 2 + 30 * u;
+    if (s.source) { const f = font(700, 34 * u); const txt = (globalThis.CO_IDIOMA === "en" ? "Source: " : "Fonte: ") + s.source; const tw = textW(ctx, txt, f); const y = cy + h / 2 + 30 * u;
       box(ctx, c.cx - tw / 2 - 24 * u, y, tw + 48 * u, 56 * u, 28 * u, [0, 0, 0], 0.7 * a); drawC(ctx, txt, f, c.cx, y + 28 * u, { fill: [220, 220, 220], alpha: a }); }
   };
   S.image = (ctx, c, t, dur, s, media) => {
@@ -732,7 +732,7 @@
     return out.join("\n");
   }
   function chapterMarks(tl) {
-    const marks = []; tl.segs.forEach((s, i) => { if (i === 0) marks.push([0, "Introdução"]); else if (s.card && s.scene.type === "chapter") marks.push([s.s0, s.scene.title]); });
+    const marks = []; tl.segs.forEach((s, i) => { if (i === 0) marks.push([0, globalThis.CO_IDIOMA === "en" ? "Introduction" : "Introdução"]); else if (s.card && s.scene.type === "chapter") marks.push([s.s0, s.scene.title]); });
     return marks.map(([t, n]) => `${String(Math.floor(t / 60)).padStart(2, "0")}:${String(Math.floor(t % 60)).padStart(2, "0")} ${n.charAt(0) + n.slice(1).toLowerCase()}`).join("\n");
   }
 

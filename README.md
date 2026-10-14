@@ -41,6 +41,13 @@ Cada projeto pode ter `script.tiktoks`: vídeos verticais de 70–90 s (o Progra
 2. Grave e envie os arquivos para `projetos/<nome>/audio/`. Se o envio tiver só áudios de TikTok, a fábrica gera só os TikToks.
 3. O pacote traz `<nome>_tiktokN.mp4` e `publicar_tiktokN.txt`, com a legenda do post, as hashtags e o produto para marcar no TikTok Shop.
 
+## Canal em inglês (Hidden Cost) e links de afiliado
+
+- **Idioma:** no `projeto.json`, `"idioma": "en"` manda o caso para o **Hidden Cost** (@HiddenCostCases). Sem esse campo é português (Custo Oculto). A narração do ElevenLabs, o reconhecimento de fala, a legenda, os textos fixos e a publicação seguem o idioma. Cada canal tem a própria agenda.
+- **Abertura:** a intro gravada do canal fica em `canal/intro.mp3` (pt) e `canal/intro_en.mp3` (en). Se não existir intro no idioma, a frase de abertura é narrada junto com o resto.
+- **Publicação:** o Hidden Cost usa o secret `YT_REFRESH_TOKEN_EN`. Sem ele, os vídeos em inglês esperam na fila.
+- **Afiliados:** em `meta.afiliados`, uma lista de `{"titulo": "...", "busca": "termos da busca"}` ou `{"titulo": "...", "asin": "B0..."}`. A fábrica monta o link com a tag certa (`custooculto-20` na Amazon Brasil, `hiddencost-20` na Amazon EUA) e coloca no fim da descrição do longo, com o aviso obrigatório. Para escolher o lugar, escreva `[AFILIADOS]` na descrição.
+
 ## Vozes
 
 Padrão: **sua voz gravada** (modo `gravada`). As trocas de cena não têm mais o "bum" de impacto; só a trilha de fundo baixa.
