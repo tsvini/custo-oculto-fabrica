@@ -32,7 +32,15 @@ def textos(p):
         out.append((f"short{i + 1}", g))
     for i, g in enumerate(p["script"].get("tiktoks", [])):
         out.append((f"tiktok{i + 1}", g))
-    return [(n, " ".join(s["text"].strip() for s in g["sentences"] if s.get("text", "").strip())) for n, g in out]
+    # frases marcadas "abertura" não vão para o TTS: o áudio delas é canal/intro.mp3, colado na frente
+    return [(n, " ".join(s["text"].strip() for s in g["sentences"] if s.get("text", "").strip() and not s.get("abertura"))) for n, g in out]
+
+
+def com_abertura(p, nome):
+    for g, n in [(g, f"parte{k + 1}") for k, g in enumerate(p["script"]["long"]["parts"])]:
+        if n == nome:
+            return any(s.get("abertura") for s in g["sentences"])
+    return False
 
 
 def main(nome):
@@ -90,8 +98,17 @@ def main(nome):
                           json={"text": t, "model_id": mid, **({"voice_settings": voz["ajustes"]} if voz.get("ajustes") else {})})
         if r.status_code != 200:
             aviso("ElevenLabs", f"{n}: erro {r.status_code} {r.text[:300]}"); sys.exit(2)
-        with open(os.path.join(pasta_audio, f"{n}.mp3"), "wb") as f:
+        destino = os.path.join(pasta_audio, f"{n}.mp3")
+        with open(destino, "wb") as f:
             f.write(r.content)
+        intro = os.path.join(RAIZ, "canal", "intro.mp3")
+        if com_abertura(p, n) and os.path.exists(intro):  # abertura do canal + 0,3 s de pausa + narração
+            import subprocess, shutil
+            tmp = destino + ".tmp.mp3"
+            subprocess.run(["ffmpeg", "-loglevel", "error", "-y", "-i", intro, "-f", "lavfi", "-t", "0.3", "-i", "anullsrc=r=44100:cl=mono", "-i", destino,
+                            "-filter_complex", "[0:a]aresample=44100,aformat=channel_layouts=mono[a0];[2:a]aresample=44100,aformat=channel_layouts=mono[a2];[a0][1:a][a2]concat=n=3:v=0:a=1",
+                            "-b:a", "128k", tmp], check=True)
+            shutil.move(tmp, destino)
         feitos.append(n); print(f"  {n}.mp3 ({len(t)} caracteres)", flush=True)
     nota("ElevenLabs", f"gerados: {', '.join(feitos)}")
 
