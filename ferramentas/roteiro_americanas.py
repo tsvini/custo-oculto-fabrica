@@ -315,6 +315,7 @@ projeto = {
              "- MPF denuncia 13 (mar/2025); delatores Flávia Carneiro, Marcelo Nunes, Fábio Abrate (Diário do Nordeste, 31/03/2025)\n"
              "- Pedido de saída da RJ 25/03/2026; sem decisão em 08/09/2026 (Capital Aberto; Brasil em Folhas)\n"
              "- 1929 Niterói; 1982 controle pelo trio do Garantia; fusão com B2W em 2021 (conhecimento geral)\n"
+             "- REVISÃO: prévia com material real (fotos do caso, prints de manchete) aprovada por Vinícius em 14/10/2026\n"
              "- Neutralidade: sempre dizer que os acusados negam e que não há condenação definitiva; não dizer que os sócios sabiam.",
 }
 
