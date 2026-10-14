@@ -42,7 +42,8 @@
           200
          ]
         ],
-        "logo": "logo_netflix"
+        "logo": "logo_netflix",
+        "faixa": "Netflix vs Blockbuster"
        },
        "abertura": true
       },
@@ -1707,7 +1708,8 @@
      190
     ]
    ],
-   "logo": "logo_netflix"
+   "logo": "logo_netflix",
+   "faixa": "Netflix vs Blockbuster"
   },
   {
    "type": "capa",
@@ -1735,7 +1737,8 @@
      190
     ]
    ],
-   "logo": "logo_netflix"
+   "logo": "logo_netflix",
+   "faixa": "Blockbuster laughed"
   }
  ],
  "thumbs": [
