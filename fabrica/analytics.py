@@ -39,6 +39,18 @@ def main():
             out["retencao"][r["nome"]] = rep(H, ano, fim, metrics="audienceWatchRatio,relativeRetentionPerformance", dimensions="elapsedVideoTimeRatio",
                                              filters=f"video=={r['video_id']}")
     out["nomes"] = nomes
+    # contagem atual (Data API, quase em tempo real; o Analytics atrasa 2-3 dias)
+    ids = [r["video_id"] for r in registro() if r.get("video_id")]; atual = {}
+    for i in range(0, len(ids), 50):
+        q = requests.get("https://www.googleapis.com/youtube/v3/videos", headers=H, timeout=60,
+                         params={"part": "statistics,status", "id": ",".join(ids[i:i + 50])})
+        for it in (q.json().get("items", []) if q.ok else []):
+            st = it.get("statistics", {})
+            atual[nomes.get(it["id"], it["id"])] = {"views": int(st.get("viewCount", 0)), "likes": int(st.get("likeCount", 0)),
+                                                    "comentarios": int(st.get("commentCount", 0)), "status": it.get("status", {}).get("privacyStatus")}
+    out["contagem_atual"] = atual
+    q = requests.get("https://www.googleapis.com/youtube/v3/channels?part=statistics&mine=true", headers=H, timeout=30)
+    out["canal"] = (q.json().get("items") or [{}])[0].get("statistics") if q.ok else None
     os.makedirs(os.path.join(RAIZ, "relatorios"), exist_ok=True)
     for fn in (f"{fim}.json", "ultimo.json"):
         json.dump(out, open(os.path.join(RAIZ, "relatorios", fn), "w", encoding="utf8"), ensure_ascii=False, indent=1)
