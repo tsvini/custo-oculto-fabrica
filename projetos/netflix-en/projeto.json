@@ -43,7 +43,8 @@
           200
          ]
         ],
-        "selo": "Netflix vs Blockbuster"
+        "selo": "Netflix vs Blockbuster",
+        "logo": "logo_netflix"
        },
        "abertura": true
       },
@@ -92,10 +93,9 @@
       {
        "text": "That tiny company was called Netflix.",
        "scene": {
-        "type": "flash",
-        "text": "NETFLIX",
-        "tint": "red",
-        "size": 190
+        "type": "logo",
+        "logo": "logo_netflix",
+        "sub": "FOUNDED 1997"
        }
       },
       {
@@ -658,14 +658,10 @@
       {
        "text": "The pitch was simple: Blockbuster buys Netflix for fifty million dollars.",
        "scene": {
-        "type": "counter",
-        "value": 50,
-        "prefix": "$",
-        "suffix": "M",
-        "over": "THE OFFER",
-        "label": "NETFLIX FOR SALE",
-        "color": "gold",
-        "size": 230
+        "type": "logo",
+        "logo": "logo_netflix",
+        "logo2": "logo_blockbuster",
+        "sub": "THE $50M OFFER"
        }
       },
       {
@@ -1526,7 +1522,8 @@
      190
     ]
    ],
-   "selo": "Netflix vs Blockbuster"
+   "selo": "Netflix vs Blockbuster",
+   "logo": "logo_netflix"
   },
   {
    "type": "capa",
@@ -1555,7 +1552,8 @@
      190
     ]
    ],
-   "selo": "Netflix vs Blockbuster"
+   "selo": "Netflix vs Blockbuster",
+   "logo": "logo_netflix"
   }
  ],
  "thumbs": [
@@ -1600,5 +1598,9 @@
    ]
   }
  ],
- "notes": "English adaptation of projetos/netflix for the Hidden Cost channel. Brazil section removed (Americanas). Facts as in the Portuguese version."
+ "notes": "English adaptation of projetos/netflix for the Hidden Cost channel. Brazil section removed (Americanas). Facts as in the Portuguese version.",
+ "logos": {
+  "logo_netflix": "File:Netflix 2015 logo.svg",
+  "logo_blockbuster": "File:Blockbuster logo.svg"
+ }
 }
