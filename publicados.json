@@ -170,5 +170,270 @@
    "Todos os casos | Custo Oculto",
    "Caso Americanas | Custo Oculto"
   ]
+ },
+ {
+  "nome": "netflix_short4",
+  "tipo": "short",
+  "caso": "netflix",
+  "caso_titulo": null,
+  "playlists": [],
+  "titulo": "Só existe uma Blockbuster no mundo #shorts",
+  "video_id": "F2uu4UIL2jA",
+  "publishAt": "2026-10-30T18:00:00-03:00",
+  "status": "private",
+  "miniatura_ok": true
+ },
+ {
+  "nome": "netflix_serie4",
+  "tipo": "serie",
+  "caso": "netflix",
+  "caso_titulo": null,
+  "playlists": [
+   "Caso Netflix | Custo Oculto"
+  ],
+  "titulo": "Netflix: parte 4 de 4 #shorts",
+  "video_id": "yJMp7dGixuQ",
+  "publishAt": "2026-10-31T08:00:00-03:00",
+  "status": "private",
+  "miniatura_ok": true
+ },
+ {
+  "nome": "americanas_short4",
+  "tipo": "short",
+  "caso": "americanas",
+  "caso_titulo": null,
+  "playlists": [],
+  "titulo": "Quem pagou a conta da Americanas #shorts",
+  "video_id": "LzJR6rIyu7I",
+  "publishAt": "2026-10-23T18:00:00-03:00",
+  "status": "private",
+  "miniatura_ok": true
+ },
+ {
+  "nome": "americanas_serie4",
+  "tipo": "serie",
+  "caso": "americanas",
+  "caso_titulo": null,
+  "playlists": [
+   "Caso Americanas | Custo Oculto"
+  ],
+  "titulo": "Americanas: parte 4 de 4 #shorts",
+  "video_id": "GnDYufJLp7E",
+  "publishAt": "2026-10-24T08:00:00-03:00",
+  "status": "private",
+  "miniatura_ok": true
+ },
+ {
+  "nome": "netflix_short3",
+  "tipo": "short",
+  "caso": "netflix",
+  "caso_titulo": null,
+  "playlists": [],
+  "titulo": "A Americanas comprou a Blockbuster no Brasil #shorts",
+  "video_id": "ZqCgfrBIbhQ",
+  "publishAt": "2026-10-29T18:00:00-03:00",
+  "status": "private",
+  "miniatura_ok": true
+ },
+ {
+  "nome": "netflix_serie3",
+  "tipo": "serie",
+  "caso": "netflix",
+  "caso_titulo": null,
+  "playlists": [
+   "Caso Netflix | Custo Oculto"
+  ],
+  "titulo": "Netflix: parte 3 de 4 #shorts",
+  "video_id": "3Syk9LDoAEQ",
+  "publishAt": "2026-10-30T08:00:00-03:00",
+  "status": "private",
+  "miniatura_ok": true
+ },
+ {
+  "nome": "kolynos_serie3",
+  "tipo": "serie",
+  "caso": "kolynos",
+  "caso_titulo": null,
+  "playlists": [
+   "Caso Kolynos | Custo Oculto"
+  ],
+  "titulo": "Kolynos: parte 3 de 3 #shorts",
+  "video_id": "2SzdDgdQHdw",
+  "publishAt": "2026-10-20T08:00:00-03:00",
+  "status": "private",
+  "miniatura_ok": true
+ },
+ {
+  "nome": "americanas_short3",
+  "tipo": "short",
+  "caso": "americanas",
+  "caso_titulo": null,
+  "playlists": [],
+  "titulo": "O ex-presidente da Americanas foi preso na Espanha #shorts",
+  "video_id": "f4Mv-dJ3co8",
+  "publishAt": "2026-10-22T18:00:00-03:00",
+  "status": "private",
+  "miniatura_ok": true
+ },
+ {
+  "nome": "americanas_serie3",
+  "tipo": "serie",
+  "caso": "americanas",
+  "caso_titulo": null,
+  "playlists": [
+   "Caso Americanas | Custo Oculto"
+  ],
+  "titulo": "Americanas: parte 3 de 4 #shorts",
+  "video_id": "rsbtHH0LPJQ",
+  "publishAt": "2026-10-23T08:00:00-03:00",
+  "status": "private",
+  "miniatura_ok": true
+ },
+ {
+  "nome": "netflix_short2",
+  "tipo": "short",
+  "caso": "netflix",
+  "caso_titulo": null,
+  "playlists": [],
+  "titulo": "A jogada que quase matou a Netflix #shorts",
+  "video_id": "x1Yhzockrj0",
+  "publishAt": "2026-10-28T18:00:00-03:00",
+  "status": "private",
+  "miniatura_ok": true
+ },
+ {
+  "nome": "netflix_serie2",
+  "tipo": "serie",
+  "caso": "netflix",
+  "caso_titulo": null,
+  "playlists": [
+   "Caso Netflix | Custo Oculto"
+  ],
+  "titulo": "Netflix: parte 2 de 4 #shorts",
+  "video_id": "zPgYt_K_hFk",
+  "publishAt": "2026-10-29T08:00:00-03:00",
+  "status": "private",
+  "miniatura_ok": true
+ },
+ {
+  "nome": "kolynos_serie2",
+  "tipo": "serie",
+  "caso": "kolynos",
+  "caso_titulo": null,
+  "playlists": [
+   "Caso Kolynos | Custo Oculto"
+  ],
+  "titulo": "Kolynos: parte 2 de 3 #shorts",
+  "video_id": "XPKmKHPPz-Q",
+  "publishAt": "2026-10-19T08:00:00-03:00",
+  "status": "private",
+  "miniatura_ok": true
+ },
+ {
+  "nome": "americanas_short2",
+  "tipo": "short",
+  "caso": "americanas",
+  "caso_titulo": null,
+  "playlists": [],
+  "titulo": "Como a Americanas escondeu R$ 25 bilhões #shorts",
+  "video_id": "hpCHl08_rxI",
+  "publishAt": "2026-10-21T18:00:00-03:00",
+  "status": "private",
+  "miniatura_ok": true
+ },
+ {
+  "nome": "americanas_serie2",
+  "tipo": "serie",
+  "caso": "americanas",
+  "caso_titulo": null,
+  "playlists": [
+   "Caso Americanas | Custo Oculto"
+  ],
+  "titulo": "Americanas: parte 2 de 4 #shorts",
+  "video_id": "I9D20jVG6SI",
+  "publishAt": "2026-10-22T08:00:00-03:00",
+  "status": "private",
+  "miniatura_ok": true
+ },
+ {
+  "nome": "netflix_short1",
+  "tipo": "short",
+  "caso": "netflix",
+  "caso_titulo": null,
+  "playlists": [],
+  "titulo": "A Blockbuster podia ter comprado a Netflix por US$ 50 milhões #shorts",
+  "video_id": "io6LeKeDVq0",
+  "publishAt": "2026-10-27T18:00:00-03:00",
+  "status": "private",
+  "miniatura_ok": true
+ },
+ {
+  "nome": "netflix_serie1",
+  "tipo": "serie",
+  "caso": "netflix",
+  "caso_titulo": null,
+  "playlists": [
+   "Caso Netflix | Custo Oculto"
+  ],
+  "titulo": "Netflix: parte 1 de 4 #shorts",
+  "video_id": "X2dcl3WAt0w",
+  "publishAt": "2026-10-28T08:00:00-03:00",
+  "status": "private",
+  "miniatura_ok": true
+ },
+ {
+  "nome": "kolynos_serie1",
+  "tipo": "serie",
+  "caso": "kolynos",
+  "caso_titulo": null,
+  "playlists": [
+   "Caso Kolynos | Custo Oculto"
+  ],
+  "titulo": "Kolynos: parte 1 de 3 #shorts",
+  "video_id": "_aYquXLalP0",
+  "publishAt": "2026-10-18T08:00:00-03:00",
+  "status": "private",
+  "miniatura_ok": true
+ },
+ {
+  "nome": "americanas_short1",
+  "tipo": "short",
+  "caso": "americanas",
+  "caso_titulo": null,
+  "playlists": [],
+  "titulo": "O presidente que durou 9 dias na Americanas #shorts",
+  "video_id": "yNwNdQgcHZI",
+  "publishAt": "2026-10-20T18:00:00-03:00",
+  "status": "private",
+  "miniatura_ok": true
+ },
+ {
+  "nome": "americanas_serie1",
+  "tipo": "serie",
+  "caso": "americanas",
+  "caso_titulo": null,
+  "playlists": [
+   "Caso Americanas | Custo Oculto"
+  ],
+  "titulo": "Americanas: parte 1 de 4 #shorts",
+  "video_id": "3OuffGR2L-4",
+  "publishAt": "2026-10-21T08:00:00-03:00",
+  "status": "private",
+  "miniatura_ok": true
+ },
+ {
+  "nome": "netflix_longo",
+  "tipo": "longo",
+  "caso": "netflix",
+  "caso_titulo": "Netflix",
+  "playlists": [
+   "Todos os casos | Custo Oculto",
+   "Caso Netflix | Custo Oculto"
+  ],
+  "titulo": "NETFLIX: A Empresa Que a Blockbuster Recusou Comprar Por US$ 50 Milhões",
+  "video_id": "LGggbB-6O7A",
+  "publishAt": "2026-10-27T12:00:00-03:00",
+  "status": "private",
+  "miniatura_ok": true
  }
 ]
