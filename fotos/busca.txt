@@ -1,0 +1,12 @@
+am_loja | Lojas Americanas
+am_loja2 | Americanas loja fachada
+am_sa | Americanas S.A.
+am_rial | Sérgio Rial
+am_lemann | Jorge Paulo Lemann
+am_pf | Polícia Federal operação busca e apreensão
+am_pf2 | Polícia Federal sede Brasília
+am_b3 | B3 Brasil Bolsa Balcão
+am_cpi | CPI Americanas Câmara dos Deputados
+am_submarino | Submarino B2W
+am_tjrj | Tribunal de Justiça do Estado do Rio de Janeiro
+am_niteroi | Niterói centro antigo
