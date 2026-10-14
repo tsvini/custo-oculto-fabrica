@@ -104,7 +104,7 @@ jobs:
           for p in $LISTA; do python -m fabrica.eleven "$p"; done
           git config user.name "fabrica-custo-oculto"; git config user.email "fabrica@users.noreply.github.com"
           if [ -n "$(git status --porcelain projetos)" ]; then
-            git add projetos/*/audio && git commit -q -m "Narração do ElevenLabs [skip ci]" && for t in 1 2 3; do git pull --rebase -q origin main && git push -q origin HEAD:main && break; sleep 5; done
+            git add projetos/*/audio && git commit -q -m "Narração do ElevenLabs [skip ci]" && for t in 1 2 3; do git pull --rebase --autostash -q origin main && git push -q origin HEAD:main && break; sleep 5; done
           fi
 
       - name: Gerar
@@ -141,7 +141,7 @@ jobs:
           for c in $(find saida \( -name "capa_*.jpg" -o -name "miniatura_*.jpg" \)); do s=$(basename "$(dirname "$c")"); cp "$c" "previas/${s}_$(basename "$c")"; done
           git config user.name "fabrica-custo-oculto"; git config user.email "fabrica@users.noreply.github.com"
           if [ -n "$(git status --porcelain previas)" ]; then
-            git add previas && git commit -q -m "Prévias [skip ci]" && git pull --rebase -q && git push -q || true
+            git add previas && git commit -q -m "Prévias [skip ci]" && git pull --rebase --autostash -q && git push -q || true
           fi
 
       - name: Entregar arquivos (um pacote só)
@@ -169,5 +169,5 @@ jobs:
           python -m fabrica.publicar comentar
           git config user.name "fabrica-custo-oculto"; git config user.email "fabrica@users.noreply.github.com"
           if [ -n "$(git status --porcelain publicados.json comentarios.json)" ]; then
-            git add publicados.json comentarios.json && git commit -m "Agenda do YouTube atualizada [skip ci]" && for t in 1 2 3; do git pull --rebase -q origin main && git push -q origin HEAD:main && break; sleep 5; done
+            git add publicados.json comentarios.json && git commit -m "Agenda do YouTube atualizada [skip ci]" && for t in 1 2 3; do git pull --rebase --autostash -q origin main && git push -q origin HEAD:main && break; sleep 5; done
           fi

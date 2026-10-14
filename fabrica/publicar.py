@@ -309,6 +309,32 @@ def conferir():
     nota("YouTube conectado", f"canal: {c['snippet']['title']} · inscritos: {c['statistics'].get('subscriberCount')} · vídeos: {c['statistics'].get('videoCount')}")
 
 
+def reconstruir():
+    """Recupera entradas do publicados.json a partir do YouTube (quando o commit do registro falhou). Usa reparo.json: título → dados."""
+    mapa = json.load(open(os.path.join(RAIZ, "reparo.json"), encoding="utf8"))
+    reg = registro(); ja = {r.get("video_id") for r in reg} | {r["nome"] for r in reg}
+    tk = token(); H = {"Authorization": f"Bearer {tk}"}; Y = "https://www.googleapis.com/youtube/v3"
+    up = checar(requests.get(f"{Y}/channels?part=contentDetails&mine=true", headers=H, timeout=30), "canal").json()["items"][0]["contentDetails"]["relatedPlaylists"]["uploads"]
+    ids = []; tok = None
+    for _ in range(4):
+        j = checar(requests.get(f"{Y}/playlistItems?part=contentDetails&maxResults=50&playlistId={up}" + (f"&pageToken={tok}" if tok else ""), headers=H, timeout=30), "uploads").json()
+        ids += [it["contentDetails"]["videoId"] for it in j.get("items", [])]; tok = j.get("nextPageToken")
+        if not tok:
+            break
+    novos = []
+    for k in range(0, len(ids), 50):
+        j = checar(requests.get(f"{Y}/videos?part=snippet,status&id={','.join(ids[k:k + 50])}", headers=H, timeout=30), "vídeos").json()
+        for v in j.get("items", []):
+            d = mapa.get(v["snippet"]["title"]); st = v["status"]
+            if not d or v["id"] in ja or d["nome"] in ja or not st.get("publishAt"):
+                continue
+            quando = dt.datetime.fromisoformat(st["publishAt"].replace("Z", "+00:00")).astimezone(BRT).isoformat()
+            reg.append(dict(d, titulo=v["snippet"]["title"], video_id=v["id"], publishAt=quando, status=st["privacyStatus"], miniatura_ok=True))
+            novos.append(f"{d['nome']} → {quando[:16]} ({v['id']})"); ja.add(d["nome"])
+    json.dump(reg, open(REG, "w", encoding="utf8"), ensure_ascii=False, indent=1)
+    nota("Registro reconstruído", f"{len(novos)} recuperados: " + "; ".join(novos))
+
+
 if __name__ == "__main__":
     cmd = sys.argv[1] if len(sys.argv) > 1 else "enviar"
     if cmd == "miniaturas":
@@ -317,6 +343,8 @@ if __name__ == "__main__":
         conferir()
     elif cmd == "comentar":
         comentar()
+    elif cmd == "reconstruir":
+        reconstruir()
     elif cmd == "playlists":
         playlists()
     elif cmd == "enfileirar":

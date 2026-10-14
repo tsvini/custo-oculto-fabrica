@@ -1,0 +1,167 @@
+{
+ "Kolynos: parte 1 de 3 #shorts": {
+  "nome": "kolynos_serie1",
+  "tipo": "serie",
+  "caso": "kolynos",
+  "caso_titulo": null,
+  "playlists": [
+   "Caso Kolynos | Custo Oculto"
+  ]
+ },
+ "Kolynos: parte 2 de 3 #shorts": {
+  "nome": "kolynos_serie2",
+  "tipo": "serie",
+  "caso": "kolynos",
+  "caso_titulo": null,
+  "playlists": [
+   "Caso Kolynos | Custo Oculto"
+  ]
+ },
+ "Kolynos: parte 3 de 3 #shorts": {
+  "nome": "kolynos_serie3",
+  "tipo": "serie",
+  "caso": "kolynos",
+  "caso_titulo": null,
+  "playlists": [
+   "Caso Kolynos | Custo Oculto"
+  ]
+ },
+ "Americanas: parte 1 de 4 #shorts": {
+  "nome": "americanas_serie1",
+  "tipo": "serie",
+  "caso": "americanas",
+  "caso_titulo": null,
+  "playlists": [
+   "Caso Americanas | Custo Oculto"
+  ]
+ },
+ "Netflix: parte 1 de 4 #shorts": {
+  "nome": "netflix_serie1",
+  "tipo": "serie",
+  "caso": "netflix",
+  "caso_titulo": null,
+  "playlists": [
+   "Caso Netflix | Custo Oculto"
+  ]
+ },
+ "Americanas: parte 2 de 4 #shorts": {
+  "nome": "americanas_serie2",
+  "tipo": "serie",
+  "caso": "americanas",
+  "caso_titulo": null,
+  "playlists": [
+   "Caso Americanas | Custo Oculto"
+  ]
+ },
+ "Netflix: parte 2 de 4 #shorts": {
+  "nome": "netflix_serie2",
+  "tipo": "serie",
+  "caso": "netflix",
+  "caso_titulo": null,
+  "playlists": [
+   "Caso Netflix | Custo Oculto"
+  ]
+ },
+ "Americanas: parte 3 de 4 #shorts": {
+  "nome": "americanas_serie3",
+  "tipo": "serie",
+  "caso": "americanas",
+  "caso_titulo": null,
+  "playlists": [
+   "Caso Americanas | Custo Oculto"
+  ]
+ },
+ "Netflix: parte 3 de 4 #shorts": {
+  "nome": "netflix_serie3",
+  "tipo": "serie",
+  "caso": "netflix",
+  "caso_titulo": null,
+  "playlists": [
+   "Caso Netflix | Custo Oculto"
+  ]
+ },
+ "Americanas: parte 4 de 4 #shorts": {
+  "nome": "americanas_serie4",
+  "tipo": "serie",
+  "caso": "americanas",
+  "caso_titulo": null,
+  "playlists": [
+   "Caso Americanas | Custo Oculto"
+  ]
+ },
+ "Netflix: parte 4 de 4 #shorts": {
+  "nome": "netflix_serie4",
+  "tipo": "serie",
+  "caso": "netflix",
+  "caso_titulo": null,
+  "playlists": [
+   "Caso Netflix | Custo Oculto"
+  ]
+ },
+ "O presidente que durou 9 dias na Americanas #shorts": {
+  "nome": "americanas_short1",
+  "tipo": "short",
+  "caso": "americanas",
+  "caso_titulo": null,
+  "playlists": []
+ },
+ "Como a Americanas escondeu R$ 25 bilhões #shorts": {
+  "nome": "americanas_short2",
+  "tipo": "short",
+  "caso": "americanas",
+  "caso_titulo": null,
+  "playlists": []
+ },
+ "O ex-presidente da Americanas foi preso na Espanha #shorts": {
+  "nome": "americanas_short3",
+  "tipo": "short",
+  "caso": "americanas",
+  "caso_titulo": null,
+  "playlists": []
+ },
+ "Quem pagou a conta da Americanas #shorts": {
+  "nome": "americanas_short4",
+  "tipo": "short",
+  "caso": "americanas",
+  "caso_titulo": null,
+  "playlists": []
+ },
+ "A Blockbuster podia ter comprado a Netflix por US$ 50 milhões #shorts": {
+  "nome": "netflix_short1",
+  "tipo": "short",
+  "caso": "netflix",
+  "caso_titulo": null,
+  "playlists": []
+ },
+ "A jogada que quase matou a Netflix #shorts": {
+  "nome": "netflix_short2",
+  "tipo": "short",
+  "caso": "netflix",
+  "caso_titulo": null,
+  "playlists": []
+ },
+ "A Americanas comprou a Blockbuster no Brasil #shorts": {
+  "nome": "netflix_short3",
+  "tipo": "short",
+  "caso": "netflix",
+  "caso_titulo": null,
+  "playlists": []
+ },
+ "Só existe uma Blockbuster no mundo #shorts": {
+  "nome": "netflix_short4",
+  "tipo": "short",
+  "caso": "netflix",
+  "caso_titulo": null,
+  "playlists": []
+ },
+ "NETFLIX: A Empresa Que a Blockbuster Recusou Comprar Por US$ 50 Milhões": {
+  "nome": "netflix_longo",
+  "tipo": "longo",
+  "caso": "netflix",
+  "caso_titulo": "Netflix",
+  "playlists": [
+   "Todos os casos | Custo Oculto",
+   "Caso Netflix | Custo Oculto"
+  ]
+ }
+}
