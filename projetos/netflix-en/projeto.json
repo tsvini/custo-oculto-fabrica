@@ -1,0 +1,1604 @@
+{
+ "title": "Netflix",
+ "slug": "netflix-en",
+ "idioma": "en",
+ "angle": "Blockbuster turned down buying Netflix for $50 million. But the mistake that killed it came later.",
+ "voz": {
+  "nome": "gravada",
+  "motor": "eleven",
+  "eleven_voz": "Vinícius Torales"
+ },
+ "script": {
+  "long": {
+   "parts": [
+    {
+     "chapter": "",
+     "sentences": [
+      {
+       "text": "Hey everyone, Vinícius here, and this is Hidden Cost.",
+       "scene": {
+        "type": "capa",
+        "foto": "bend",
+        "wiki": [
+         "File:The Last Blockbuster storefront.jpg",
+         "Blockbuster Bend Oregon"
+        ],
+        "seta": false,
+        "recorte": "Netflix · 2000",
+        "faixa": "Netflix vs Blockbuster",
+        "linhas": [
+         [
+          "$50",
+          "gold",
+          260
+         ],
+         [
+          "MILLION",
+          "white",
+          200
+         ],
+         [
+          "REJECTED",
+          "red",
+          200
+         ]
+        ],
+        "selo": "Netflix vs Blockbuster"
+       },
+       "abertura": true
+      },
+      {
+       "text": "The year is 2000. Two guys from a tiny company walk into the office of the CEO of the biggest video rental chain in the world.",
+       "scene": {
+        "type": "date",
+        "month": "TEXAS",
+        "day": "USA",
+        "year": "2000",
+        "tag": "BLOCKBUSTER HQ"
+       }
+      },
+      {
+       "text": "Their offer: sell their company for fifty million dollars.",
+       "scene": {
+        "type": "counter",
+        "value": 50,
+        "prefix": "$",
+        "suffix": "M",
+        "over": "THE OFFER",
+        "label": "FOR THE WHOLE COMPANY",
+        "color": "gold",
+        "size": 230
+       }
+      },
+      {
+       "text": "According to one of the founders, the Blockbuster CEO could barely keep a straight face.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "HE ALMOST",
+          "white",
+          140
+         ],
+         [
+          "LAUGHED",
+          "red",
+          200
+         ]
+        ]
+       }
+      },
+      {
+       "text": "That tiny company was called Netflix.",
+       "scene": {
+        "type": "flash",
+        "text": "NETFLIX",
+        "tint": "red",
+        "size": 190
+       }
+      },
+      {
+       "text": "A company that mailed DVDs and was losing money.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "DVDS BY MAIL",
+          "white",
+          130
+         ],
+         [
+          "AND LOSSES",
+          "red",
+          160
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Ten years later, Blockbuster filed for bankruptcy. And Netflix became one of the biggest entertainment companies on the planet.",
+       "scene": {
+        "type": "compare",
+        "title": "TEN YEARS LATER",
+        "items": [
+         [
+          "BANKRUPT",
+          "BLOCKBUSTER · 2010",
+          "red"
+         ],
+         [
+          "300M+",
+          "NETFLIX SUBSCRIBERS",
+          "gold"
+         ]
+        ],
+        "size": 150,
+        "stagger": 1.2,
+        "vs": false
+       }
+      },
+      {
+       "text": "But the story everyone tells, that Blockbuster died because it laughed at Netflix, is wrong.",
+       "scene": {
+        "type": "stamp",
+        "org": "THE FAMOUS VERSION",
+        "title": "IT DIED BECAUSE IT LAUGHED",
+        "stamp": "WRONG",
+        "stamp_at": 0.9
+       }
+      },
+      {
+       "text": "The real reason is a lot more interesting.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "THE REAL",
+          "white",
+          150
+         ],
+         [
+          "REASON",
+          "gold",
+          190
+         ]
+        ]
+       }
+      },
+      {
+       "text": "In this video: the rental empire, the fifty million dollar meeting, the war Netflix almost lost, and the mistake that actually killed Blockbuster.",
+       "scene": {
+        "type": "bullets",
+        "items": [
+         "THE RENTAL EMPIRE",
+         "THE $50M MEETING",
+         "THE WAR",
+         "THE REAL MISTAKE"
+        ],
+        "size": 80,
+        "last_gold": true
+       }
+      }
+     ]
+    },
+    {
+     "chapter": "THE RENTAL EMPIRE",
+     "sentences": [
+      {
+       "text": "Blockbuster opened its first store in 1985, in Dallas, Texas.",
+       "scene": {
+        "type": "image",
+        "media": "bb_loja",
+        "wiki": [
+         "File:Anchorage Blockbuster video store (41894010352).jpg"
+        ],
+        "lower": "Blockbuster",
+        "dim": 0.4,
+        "fallback": {
+         "type": "bigtext",
+         "stagger": 0.25,
+         "lines": [
+          [
+           "1985",
+           "gold",
+           230
+          ],
+          [
+           "THE FIRST STORE",
+           "white",
+           110
+          ]
+         ]
+        }
+       }
+      },
+      {
+       "text": "In 1987, businessman Wayne Huizenga took control and put expansion on steroids.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "1987",
+          "gold",
+          220
+         ],
+         [
+          "WAYNE HUIZENGA",
+          "white",
+          120
+         ],
+         [
+          "TAKES OVER",
+          "muted",
+          90
+         ]
+        ]
+       }
+      },
+      {
+       "text": "In 1994, he sold the chain to Viacom for seven point six billion dollars.",
+       "scene": {
+        "type": "counter",
+        "value": 7,
+        "prefix": "$",
+        "suffix": ".6B",
+        "over": "VIACOM BUYS IT · 1994",
+        "label": "BLOCKBUSTER'S PRICE TAG",
+        "color": "gold",
+        "size": 220
+       }
+      },
+      {
+       "text": "Within a few years, it was the biggest video rental chain in the world.",
+       "scene": {
+        "type": "image",
+        "media": "bb_prateleira",
+        "wiki": [
+         "File:Anchorage Blockbuster video store (41894012562).jpg"
+        ],
+        "lower": "The world's biggest rental chain",
+        "dim": 0.4,
+        "fallback": {
+         "type": "bigtext",
+         "stagger": 0.25,
+         "lines": [
+          [
+           "THE BIGGEST",
+           "white",
+           150
+          ],
+          [
+           "IN THE WORLD",
+           "gold",
+           150
+          ]
+         ]
+        }
+       }
+      },
+      {
+       "text": "At its peak, in 2004, it had more than nine thousand stores worldwide.",
+       "scene": {
+        "type": "counter",
+        "value": 9,
+        "prefix": "",
+        "suffix": ",000+ STORES",
+        "over": "PEAK · 2004",
+        "label": "BLOCKBUSTER WORLDWIDE",
+        "color": "gold",
+        "size": 180
+       }
+      },
+      {
+       "text": "Friday night, the whole family drove to Blockbuster to pick the weekend movie. It was almost a ritual.",
+       "scene": {
+        "type": "video",
+        "media": "familia_sofa",
+        "search": "family watching movie popcorn couch",
+        "search_en": "family watching movie popcorn couch",
+        "start": 0.0,
+        "dim": 0.4,
+        "lower": "Friday night",
+        "fallback": {
+         "type": "bigtext",
+         "stagger": 0.25,
+         "lines": [
+          [
+           "FRIDAY",
+           "white",
+           160
+          ],
+          [
+           "NIGHT",
+           "gold",
+           170
+          ]
+         ]
+        },
+        "pixabay_id": 190117
+       }
+      },
+      {
+       "text": "The blue and yellow sign was everywhere, from big cities to small towns.",
+       "scene": {
+        "type": "image",
+        "media": "bb_azul",
+        "wiki": [
+         "File:Blockbuster Video store Rockhampton.jpg"
+        ],
+        "lower": "Blue and yellow",
+        "dim": 0.4,
+        "fallback": {
+         "type": "bigtext",
+         "stagger": 0.25,
+         "lines": [
+          [
+           "BLUE",
+           "white",
+           160
+          ],
+          [
+           "AND YELLOW",
+           "gold",
+           160
+          ]
+         ]
+        }
+       }
+      },
+      {
+       "text": "And there was one detail almost everyone remembers: late fees.",
+       "scene": {
+        "type": "stamp",
+        "org": "LATE RETURN",
+        "title": "TAPE RETURNED 2 DAYS LATE",
+        "stamp": "LATE FEE",
+        "stamp_at": 0.9
+       }
+      },
+      {
+       "text": "Forgot to return the tape? You paid. And Blockbuster made a lot of money from that.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "LATE FEES",
+          "white",
+          150
+         ],
+         [
+          "WERE PROFIT",
+          "gold",
+          170
+         ]
+        ]
+       }
+      },
+      {
+       "text": "In 2000 alone, late fees brought in around eight hundred million dollars. Sixteen percent of the company's entire revenue.",
+       "scene": {
+        "type": "print",
+        "media": "print_multas",
+        "url": "https://www.nbcnews.com/id/wbna39332696",
+        "source": "NBC News · 2010",
+        "rotate": -1.0,
+        "fallback": {
+         "type": "counter",
+         "value": 800,
+         "prefix": "$",
+         "suffix": "M",
+         "over": "LATE FEES ALONE · 2000",
+         "label": "16% OF REVENUE",
+         "color": "gold",
+         "size": 210
+        }
+       }
+      },
+      {
+       "text": "Remember that, because it matters at the end of the story.",
+       "scene": {
+        "type": "flash",
+        "text": "REMEMBER\nTHIS",
+        "color": "gold",
+        "size": 160
+       }
+      }
+     ]
+    },
+    {
+     "chapter": "DVDS BY MAIL",
+     "sentences": [
+      {
+       "text": "In 1997, Reed Hastings and Marc Randolph founded Netflix in California.",
+       "scene": {
+        "type": "image",
+        "media": "hastings",
+        "wiki": [
+         "File:Reed Hastings 2010 A.jpg"
+        ],
+        "lower": "Reed Hastings, Netflix co-founder",
+        "dim": 0.4,
+        "fallback": {
+         "type": "bigtext",
+         "stagger": 0.25,
+         "lines": [
+          [
+           "1997",
+           "gold",
+           230
+          ],
+          [
+           "REED HASTINGS",
+           "white",
+           110
+          ],
+          [
+           "MARC RANDOLPH",
+           "white",
+           110
+          ]
+         ]
+        }
+       }
+      },
+      {
+       "text": "The idea was to rent DVDs online and ship them by mail.",
+       "scene": {
+        "type": "video",
+        "media": "correio",
+        "search": "mailbox envelope mail delivery",
+        "search_en": "mailbox envelope mail delivery",
+        "start": 0.0,
+        "dim": 0.4,
+        "lower": "DVDs by mail",
+        "fallback": {
+         "type": "bigtext",
+         "stagger": 0.25,
+         "lines": [
+          [
+           "DVDS",
+           "gold",
+           220
+          ],
+          [
+           "BY MAIL",
+           "white",
+           140
+          ]
+         ]
+        },
+        "pixabay_id": 43658
+       }
+      },
+      {
+       "text": "The website went live in 1998, with fewer than a thousand titles.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "1998",
+          "gold",
+          220
+         ],
+         [
+          "THE SITE GOES LIVE",
+          "white",
+          110
+         ]
+        ]
+       }
+      },
+      {
+       "text": "And there's a famous legend about how it all started.",
+       "scene": {
+        "type": "flash",
+        "text": "THE LEGEND",
+        "color": "gold",
+        "size": 170
+       }
+      },
+      {
+       "text": "Reed Hastings said he got the idea after paying a forty dollar late fee for Apollo 13.",
+       "scene": {
+        "type": "print",
+        "media": "print_apollo",
+        "url": "https://www.cnbc.com/2017/05/23/netflix-ceo-reed-hastings-on-how-the-company-was-born.html",
+        "source": "CNBC · 2017",
+        "rotate": -1.0,
+        "fallback": {
+         "type": "stamp",
+         "org": "LATE FEE",
+         "title": "APOLLO 13",
+         "stamp": "$40",
+         "stamp_at": 0.9
+        }
+       }
+      },
+      {
+       "text": "But the other co-founder, Marc Randolph, calls that story a convenient fiction. A good way to explain why Netflix was better.",
+       "scene": {
+        "type": "image",
+        "media": "randolph",
+        "wiki": [
+         "File:Marc Randolph by Gage Skidmore.jpg"
+        ],
+        "lower": "Marc Randolph, Netflix co-founder",
+        "dim": 0.4,
+        "fallback": {
+         "type": "bigtext",
+         "stagger": 0.25,
+         "lines": [
+          [
+           "CONVENIENT",
+           "white",
+           150
+          ],
+          [
+           "FICTION?",
+           "red",
+           170
+          ]
+         ]
+        }
+       }
+      },
+      {
+       "text": "True or not, late fees were exactly the weak spot Netflix wanted to attack.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "THE WEAK SPOT",
+          "white",
+          130
+         ],
+         [
+          "LATE FEES",
+          "red",
+          180
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Then came the subscription: one flat monthly price, and no late fees.",
+       "scene": {
+        "type": "compare",
+        "title": "THE MODEL",
+        "items": [
+         [
+          "LATE FEES",
+          "BLOCKBUSTER",
+          "red"
+         ],
+         [
+          "NO LATE FEES",
+          "NETFLIX",
+          "gold"
+         ]
+        ],
+        "size": 150,
+        "stagger": 1.2,
+        "vs": true
+       }
+      },
+      {
+       "text": "Great for customers. For the company, it was a money pit.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "GREAT FOR YOU",
+          "white",
+          130
+         ],
+         [
+          "A MONEY PIT",
+          "red",
+          160
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Around 2000, Netflix was losing about fifty million dollars a year and was drowning in debt.",
+       "scene": {
+        "type": "counter",
+        "value": 50,
+        "prefix": "-$",
+        "suffix": "M",
+        "over": "LOSSES PER YEAR",
+        "label": "NETFLIX · 2000",
+        "color": "red",
+        "size": 210
+       }
+      },
+      {
+       "text": "That's the situation when the founders got on a plane to Texas.",
+       "scene": {
+        "type": "video",
+        "media": "aviao",
+        "search": "airplane takeoff",
+        "search_en": "airplane takeoff",
+        "start": 0.0,
+        "dim": 0.4,
+        "lower": "Headed to Texas",
+        "fallback": {
+         "type": "bigtext",
+         "stagger": 0.25,
+         "lines": [
+          [
+           "HEADED TO",
+           "white",
+           140
+          ],
+          [
+           "TEXAS",
+           "gold",
+           200
+          ]
+         ]
+        },
+        "pixabay_id": 264862
+       }
+      }
+     ]
+    },
+    {
+     "chapter": "THE FIFTY MILLION",
+     "sentences": [
+      {
+       "text": "The pitch was simple: Blockbuster buys Netflix for fifty million dollars.",
+       "scene": {
+        "type": "counter",
+        "value": 50,
+        "prefix": "$",
+        "suffix": "M",
+        "over": "THE OFFER",
+        "label": "NETFLIX FOR SALE",
+        "color": "gold",
+        "size": 230
+       }
+      },
+      {
+       "text": "Netflix would run the online side under the Blockbuster brand, and the stores would promote it.",
+       "scene": {
+        "type": "flow",
+        "a": "NETFLIX",
+        "a_sub": "runs online",
+        "b": "BLOCKBUSTER",
+        "b_sub": "brand and stores",
+        "caption": "THE PROPOSED DEAL"
+       }
+      },
+      {
+       "text": "Netflix's CFO, Barry McCarthy, was in the room too.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "IN THE ROOM",
+          "white",
+          140
+         ],
+         [
+          "3 FROM NETFLIX",
+          "gold",
+          150
+         ]
+        ]
+       }
+      },
+      {
+       "text": "At the time, Blockbuster was bringing in around five billion dollars a year.",
+       "scene": {
+        "type": "compare",
+        "title": "HOW BIG EACH ONE WAS",
+        "items": [
+         [
+          "$5B",
+          "BLOCKBUSTER REVENUE",
+          "gold"
+         ],
+         [
+          "$50M",
+          "NETFLIX PRICE",
+          "white"
+         ]
+        ],
+        "size": 150,
+        "stagger": 1.2,
+        "vs": false
+       }
+      },
+      {
+       "text": "Fifty million was about one percent of that.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "ABOUT",
+          "white",
+          130
+         ],
+         [
+          "1%",
+          "gold",
+          260
+         ]
+        ]
+       }
+      },
+      {
+       "text": "CEO John Antioco said no. And according to Marc Randolph, he looked like he was trying not to laugh.",
+       "scene": {
+        "type": "print",
+        "media": "print_fortune",
+        "url": "https://fortune.com/2023/04/14/netflix-cofounder-marc-randolph-recalls-blockbuster-rejecting-chance-to-buy-it/",
+        "source": "Fortune · 14/04/2023",
+        "rotate": -1.0,
+        "fallback": {
+         "type": "stamp",
+         "org": "BLOCKBUSTER · 2000",
+         "title": "BUY NETFLIX",
+         "stamp": "REJECTED",
+         "stamp_at": 0.9
+        }
+       }
+      },
+      {
+       "text": "According to reports, Netflix tried again a few more times. The answer was always no.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "MORE TRIES",
+          "white",
+          140
+         ],
+         [
+          "ALWAYS NO",
+          "red",
+          170
+         ]
+        ]
+       }
+      },
+      {
+       "text": "And one detail shows exactly where Blockbuster was placing its bets.",
+       "scene": {
+        "type": "flash",
+        "text": "ONE DETAIL",
+        "color": "gold",
+        "size": 160
+       }
+      },
+      {
+       "text": "That same year, it signed a twenty year deal with Enron for movies on demand over the internet.",
+       "scene": {
+        "type": "stamp",
+        "org": "BLOCKBUSTER + ENRON · 2000",
+        "title": "20-YEAR DEAL",
+        "stamp": "SIGNED",
+        "stamp_at": 0.9
+       }
+      },
+      {
+       "text": "Months later, Enron collapsed in one of the biggest accounting scandals in history. And the deal went down with it.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "ENRON",
+          "white",
+          170
+         ],
+         [
+          "COLLAPSED",
+          "red",
+          180
+         ]
+        ]
+       }
+      },
+      {
+       "text": "But here's my take: saying no that day wasn't stupid.",
+       "scene": {
+        "type": "flash",
+        "text": "MY\nTAKE",
+        "color": "gold",
+        "size": 170
+       }
+      },
+      {
+       "text": "Netflix was losing money, depended on the mail, and streaming didn't even exist yet.",
+       "scene": {
+        "type": "bullets",
+        "title": "NETFLIX IN 2000",
+        "items": [
+         "LOSING MONEY",
+         "DEPENDED ON THE MAIL",
+         "NO STREAMING"
+        ],
+        "size": 90,
+        "last_gold": true
+       }
+      },
+      {
+       "text": "Blockbuster's mistake wasn't that no. It was what came next.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "THE MISTAKE",
+          "white",
+          150
+         ],
+         [
+          "CAME LATER",
+          "red",
+          160
+         ]
+        ]
+       }
+      }
+     ]
+    },
+    {
+     "chapter": "THE WAR NETFLIX ALMOST LOST",
+     "sentences": [
+      {
+       "text": "In 2004, Blockbuster launched its own online rental service.",
+       "scene": {
+        "type": "date",
+        "month": "BLOCKBUSTER",
+        "day": "ONLINE",
+        "year": "2004",
+        "tag": "RENTALS OVER THE INTERNET"
+       }
+      },
+      {
+       "text": "In about two years, it reached roughly two million subscribers.",
+       "scene": {
+        "type": "counter",
+        "value": 2,
+        "suffix": " MILLION",
+        "over": "BLOCKBUSTER ONLINE",
+        "label": "IN ABOUT 2 YEARS",
+        "color": "gold",
+        "size": 210
+       }
+      },
+      {
+       "text": "For comparison, Netflix had taken nine years to reach about six million.",
+       "scene": {
+        "type": "compare",
+        "title": "SUBSCRIBERS",
+        "items": [
+         [
+          "2M",
+          "BLOCKBUSTER IN ~2 YEARS",
+          "gold"
+         ],
+         [
+          "6M",
+          "NETFLIX IN ~9 YEARS",
+          "white"
+         ]
+        ],
+        "size": 160,
+        "stagger": 1.2,
+        "vs": false
+       }
+      },
+      {
+       "text": "In other words: in two years, Blockbuster built a third of what took Netflix almost a decade.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "IN 2 YEARS",
+          "white",
+          140
+         ],
+         [
+          "ONE THIRD",
+          "gold",
+          180
+         ],
+         [
+          "OF NETFLIX",
+          "white",
+          120
+         ]
+        ]
+       }
+      },
+      {
+       "text": "And in 2006 came the strongest move: rent online, return in store, and swap for another movie on the spot.",
+       "scene": {
+        "type": "flow",
+        "a": "ORDER ONLINE",
+        "a_sub": "delivered home",
+        "b": "SWAP IN STORE",
+        "b_sub": "on the spot",
+        "caption": "TOTAL ACCESS · 2006"
+       }
+      },
+      {
+       "text": "That was something Netflix simply couldn't offer.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "NETFLIX",
+          "white",
+          150
+         ],
+         [
+          "HAD NO STORES",
+          "red",
+          150
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Think about it: you got DVDs at home, and when you wanted something right now, you stopped by the store around the corner. Best of both worlds.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "THE BEST",
+          "white",
+          150
+         ],
+         [
+          "OF BOTH WORLDS",
+          "gold",
+          130
+         ]
+        ]
+       }
+      },
+      {
+       "text": "And Blockbuster had an advantage money can't buy quickly: thousands of stores in every town.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "THOUSANDS",
+          "gold",
+          180
+         ],
+         [
+          "OF STORES",
+          "white",
+          150
+         ]
+        ]
+       }
+      },
+      {
+       "text": "In one quarter of 2007, Netflix actually lost fifty five thousand subscribers.",
+       "scene": {
+        "type": "counter",
+        "value": 55,
+        "prefix": "-",
+        "suffix": "K",
+        "over": "NETFLIX · 2007",
+        "label": "SUBSCRIBERS LOST IN ONE QUARTER",
+        "color": "red",
+        "size": 220
+       }
+      },
+      {
+       "text": "Years later, Reed Hastings himself admitted: if it weren't for the debt, Blockbuster could have crushed them.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "COULD HAVE",
+          "white",
+          140
+         ],
+         [
+          "CRUSHED NETFLIX",
+          "red",
+          130
+         ]
+        ]
+       }
+      },
+      {
+       "text": "And Antioco later said that if his strategy had continued, Blockbuster could have reached around ten million online subscribers.",
+       "scene": {
+        "type": "counter",
+        "value": 10,
+        "suffix": " MILLION",
+        "over": "ACCORDING TO ANTIOCO",
+        "label": "WHAT BLOCKBUSTER ONLINE COULD HAVE HAD",
+        "color": "gold",
+        "size": 200
+       }
+      },
+      {
+       "text": "At that moment, the one winning the war was Blockbuster.",
+       "scene": {
+        "type": "flash",
+        "text": "BLOCKBUSTER\nWINNING",
+        "tint": "red",
+        "size": 140
+       }
+      }
+     ]
+    },
+    {
+     "chapter": "THE REAL MISTAKE",
+     "sentences": [
+      {
+       "text": "But that war was expensive. To compete, Blockbuster had killed late fees, one of its biggest sources of cash.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "NO LATE FEES",
+          "white",
+          140
+         ],
+         [
+          "NO CASH",
+          "red",
+          180
+         ]
+        ]
+       }
+      },
+      {
+       "text": "And a fight broke out inside. Investor Carl Icahn pushed hard, and Antioco lost his job.",
+       "scene": {
+        "type": "image",
+        "media": "icahn",
+        "wiki": [
+         "File:Carl Icahn, 1980s.jpg"
+        ],
+        "lower": "Carl Icahn, investor (1980s)",
+        "dim": 0.4,
+        "fallback": {
+         "type": "flow",
+         "a": "CARL ICAHN",
+         "a_sub": "investor",
+         "b": "ANTIOCO",
+         "b_sub": "out",
+         "caption": "THE BOARDROOM FIGHT"
+        }
+       }
+      },
+      {
+       "text": "The new CEO raised the price of the online service and ended the free in-store swaps.",
+       "scene": {
+        "type": "stamp",
+        "org": "NEW MANAGEMENT · 2007",
+        "title": "FREE IN-STORE SWAPS",
+        "stamp": "CANCELED",
+        "stamp_at": 0.9
+       }
+      },
+      {
+       "text": "And spent money on other bets, like buying Movielink, an online movie service that never took off.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "NEW BETS",
+          "white",
+          150
+         ],
+         [
+          "NO RESULTS",
+          "red",
+          160
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Growth stopped overnight.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "GROWTH",
+          "white",
+          160
+         ],
+         [
+          "STOPPED",
+          "red",
+          200
+         ]
+        ]
+       }
+      },
+      {
+       "text": "And here's the irony: years later, Antioco himself invested in Netflix. But he sold early, before the big run-up.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "ANTIOCO",
+          "white",
+          150
+         ],
+         [
+          "BOUGHT NETFLIX",
+          "gold",
+          120
+         ],
+         [
+          "AND SOLD EARLY",
+          "red",
+          110
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Meanwhile, also in 2007, Netflix launched streaming.",
+       "scene": {
+        "type": "date",
+        "month": "NETFLIX",
+        "day": "▶",
+        "year": "2007",
+        "tag": "STREAMING BEGINS"
+       }
+      },
+      {
+       "text": "In September 2010, Blockbuster filed for bankruptcy, with close to a billion dollars in debt.",
+       "scene": {
+        "type": "counter",
+        "value": 900,
+        "prefix": "$",
+        "suffix": "M+",
+        "over": "SEPTEMBER 2010",
+        "label": "DEBT AT BANKRUPTCY",
+        "color": "red",
+        "size": 200
+       }
+      },
+      {
+       "text": "And this is the hidden cost.",
+       "scene": {
+        "type": "flash",
+        "text": "THE HIDDEN\nCOST",
+        "tint": "red",
+        "size": 150
+       }
+      },
+      {
+       "text": "At the time, there were still around twenty five thousand employees. Thousands of stores closed, and a lot of people lost their jobs.",
+       "scene": {
+        "type": "image",
+        "media": "bb_fechando",
+        "wiki": [
+         "File:Blockbuster Video store Closing, Miami Beach Florida, November 2013.jpg"
+        ],
+        "lower": "Store closing · Miami Beach, 2013",
+        "dim": 0.4,
+        "fallback": {
+         "type": "bigtext",
+         "stagger": 0.25,
+         "lines": [
+          [
+           "STORES",
+           "white",
+           160
+          ],
+          [
+           "CLOSED",
+           "red",
+           180
+          ]
+         ]
+        }
+       }
+      },
+      {
+       "text": "In 2011, what was left was sold at auction for about three hundred twenty million dollars.",
+       "scene": {
+        "type": "print",
+        "media": "print_dish",
+        "url": "https://techcrunch.com/2011/04/06/dish-wins-bankruptcy-auction-buys-blockbuster-assets-for-228m-in-cash/",
+        "source": "TechCrunch · 06/04/2011",
+        "rotate": -1.0,
+        "fallback": {
+         "type": "compare",
+         "title": "BLOCKBUSTER",
+         "items": [
+          [
+           "$5B",
+           "YEARLY REVENUE",
+           "white"
+          ],
+          [
+           "$320M",
+           "SOLD IN 2011",
+           "red"
+          ]
+         ],
+         "size": 150,
+         "stagger": 1.2,
+         "vs": false
+        }
+       }
+      },
+      {
+       "text": "If you remember renting movies at Blockbuster, subscribe to Hidden Cost. Every week, a new brand story.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "SUBSCRIBE",
+          "gold",
+          160
+         ],
+         [
+          "A NEW BRAND EVERY WEEK",
+          "white",
+          80
+         ]
+        ]
+       }
+      }
+     ]
+    },
+    {
+     "chapter": "WHAT HAPPENED NEXT",
+     "sentences": [
+      {
+       "text": "Today, there's only one Blockbuster left in the world, in Bend, Oregon. It became a tourist attraction.",
+       "scene": {
+        "type": "image",
+        "media": "bend",
+        "wiki": [
+         "File:The Last Blockbuster storefront.jpg",
+         "Blockbuster Bend Oregon"
+        ],
+        "lower": "The last Blockbuster · Bend, Oregon",
+        "dim": 0.4,
+        "fallback": {
+         "type": "bigtext",
+         "stagger": 0.25,
+         "lines": [
+          [
+           "ONLY ONE",
+           "white",
+           150
+          ],
+          [
+           "LEFT",
+           "gold",
+           210
+          ]
+         ]
+        }
+       }
+      },
+      {
+       "text": "Netflix, on the other hand, went global, launching in Canada in 2010 and in Latin America in 2011.",
+       "scene": {
+        "type": "image",
+        "media": "netflix_sede",
+        "wiki": [
+         "File:Netflix headquarters.jpg"
+        ],
+        "lower": "Netflix HQ · Los Gatos, California",
+        "dim": 0.4,
+        "fallback": {
+         "type": "bigtext",
+         "stagger": 0.25,
+         "lines": [
+          [
+           "2010",
+           "gold",
+           220
+          ],
+          [
+           "NETFLIX GOES GLOBAL",
+           "white",
+           100
+          ]
+         ]
+        }
+       }
+      },
+      {
+       "text": "In 2013, it released House of Cards, its first big hit original series. And it stopped being a rental company to become a studio.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "FROM RENTALS",
+          "white",
+          140
+         ],
+         [
+          "TO A STUDIO",
+          "gold",
+          160
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Today, Netflix has more than three hundred million subscribers.",
+       "scene": {
+        "type": "counter",
+        "value": 300,
+        "prefix": "",
+        "suffix": "M+",
+        "over": "NETFLIX",
+        "label": "SUBSCRIBERS",
+        "color": "gold",
+        "size": 220
+       }
+      },
+      {
+       "text": "The hidden lesson is simple.",
+       "scene": {
+        "type": "flash",
+        "text": "THE HIDDEN\nLESSON",
+        "tint": "red",
+        "size": 150
+       }
+      },
+      {
+       "text": "Every big company has its own late fee: easy money that customers hate.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "EVERY COMPANY",
+          "white",
+          130
+         ],
+         [
+          "HAS ITS LATE FEE",
+          "red",
+          130
+         ]
+        ]
+       }
+      },
+      {
+       "text": "As long as that money keeps coming in, nobody inside wants to touch it. And that's exactly when an outsider shows up and does it differently.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "AN OUTSIDER",
+          "white",
+          140
+         ],
+         [
+          "DOES IT DIFFERENTLY",
+          "gold",
+          110
+         ]
+        ]
+       }
+      },
+      {
+       "text": "What killed Blockbuster wasn't saying no. It was defending late fees, the stores and the debt, when customers already wanted something else.",
+       "scene": {
+        "type": "bullets",
+        "title": "WHAT KILLED IT",
+        "items": [
+         "THE DEBT",
+         "THE BOARDROOM FIGHT",
+         "DEFENDING THE OLD MODEL"
+        ],
+        "size": 90,
+        "last_gold": true
+       }
+      },
+      {
+       "text": "What about you? What was the last movie you rented at a video store? Tell me in the comments.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "WHAT WAS",
+          "white",
+          140
+         ],
+         [
+          "YOUR LAST RENTAL?",
+          "gold",
+          130
+         ],
+         [
+          "COMMENT BELOW",
+          "muted",
+          90
+         ]
+        ]
+       }
+      },
+      {
+       "text": "And the question is: which company today is laughing at the next Netflix?",
+       "scene": {
+        "type": "endcard",
+        "sub": "NETFLIX VS BLOCKBUSTER"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "shorts": [],
+  "tiktoks": []
+ },
+ "serie": [],
+ "meta": {
+  "titles": [
+   "NETFLIX: The Company Blockbuster Refused to Buy for $50 Million",
+   "Blockbuster Laughed at Netflix. Then It Went Bankrupt"
+  ],
+  "description": "In 2000, Netflix's founders offered to sell the whole company to Blockbuster for $50 million. Blockbuster said no. Ten years later, Blockbuster was bankrupt and Netflix went on to pass 300 million subscribers. But the mistake that killed the world's biggest video rental chain wasn't that no. In this video: the rental empire, the war that almost killed Netflix, and the boardroom fight that sank Blockbuster.\n\n[CAPÍTULOS]\n\n[AFILIADOS]\n\nSources: Marc Randolph (Netflix co-founder), interviews and his book That Will Never Work; Today I Found Out; Fortune (Apr 14, 2023); TechCrunch (Apr 6, 2011); NBC News; CNBC.\n\n#Netflix #Blockbuster #HiddenCost",
+  "tags": [
+   "netflix",
+   "blockbuster",
+   "netflix blockbuster",
+   "what happened to blockbuster",
+   "blockbuster bankruptcy",
+   "netflix history",
+   "business stories",
+   "hidden cost"
+  ],
+  "afiliados": [
+   {
+    "titulo": "That Will Never Work, by Marc Randolph (Netflix co-founder)",
+    "busca": "That Will Never Work Marc Randolph"
+   },
+   {
+    "titulo": "Netflixed, by Gina Keating (the Netflix vs Blockbuster war)",
+    "busca": "Netflixed Gina Keating"
+   },
+   {
+    "titulo": "No Rules Rules, by Reed Hastings",
+    "busca": "No Rules Rules Reed Hastings"
+   }
+  ]
+ },
+ "thumbs_capa": [
+  {
+   "type": "capa",
+   "foto": "bend",
+   "wiki": [
+    "File:The Last Blockbuster storefront.jpg",
+    "Blockbuster Bend Oregon"
+   ],
+   "seta": false,
+   "recorte": "Netflix · 2000",
+   "faixa": "Netflix vs Blockbuster",
+   "linhas": [
+    [
+     "$50",
+     "gold",
+     260
+    ],
+    [
+     "MILLION",
+     "white",
+     210
+    ],
+    [
+     "REJECTED",
+     "red",
+     190
+    ]
+   ],
+   "selo": "Netflix vs Blockbuster"
+  },
+  {
+   "type": "capa",
+   "foto": "bend",
+   "wiki": [
+    "File:The Last Blockbuster storefront.jpg",
+    "Blockbuster Bend Oregon"
+   ],
+   "seta": false,
+   "recorte": "Netflix · 2000",
+   "faixa": "Blockbuster laughed",
+   "linhas": [
+    [
+     "AT",
+     "white",
+     200
+    ],
+    [
+     "NETFLIX",
+     "red",
+     260
+    ],
+    [
+     "then died",
+     "gold",
+     190
+    ]
+   ],
+   "selo": "Netflix vs Blockbuster"
+  }
+ ],
+ "thumbs": [
+  {
+   "glow": "red",
+   "lines": [
+    {
+     "text": "NETFLIX",
+     "color": "red",
+     "size": 150
+    },
+    {
+     "text": "$50 MILLION",
+     "color": "gold",
+     "size": 150
+    },
+    {
+     "text": "REJECTED",
+     "color": "white",
+     "size": 120
+    }
+   ]
+  },
+  {
+   "glow": "gold",
+   "lines": [
+    {
+     "text": "BLOCKBUSTER",
+     "color": "gold",
+     "size": 120
+    },
+    {
+     "text": "LAUGHED AT",
+     "color": "white",
+     "size": 120
+    },
+    {
+     "text": "NETFLIX",
+     "color": "red",
+     "size": 160
+    }
+   ]
+  }
+ ],
+ "notes": "English adaptation of projetos/netflix for the Hidden Cost channel. Brazil section removed (Americanas). Facts as in the Portuguese version."
+}

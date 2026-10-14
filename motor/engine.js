@@ -277,8 +277,9 @@
   };
   S.endcard = (ctx, c, t, dur, s) => {
     const u = c.u;
-    drawC(ctx, "CUSTO", font(900, 170 * u), c.cx, c.cy - 110 * u, { alpha: easeOut(t / 0.4), scale: lerp(0.85, 1, backOut(t / 0.45)) });
-    drawC(ctx, "OCULTO", font(900, 170 * u), c.cx, c.cy + 60 * u, { fill: "gold", alpha: easeOut((t - 0.12) / 0.4), scale: lerp(0.85, 1, backOut((t - 0.12) / 0.45)) });
+    const EN = globalThis.CO_IDIOMA === "en";
+    drawC(ctx, EN ? "HIDDEN" : "CUSTO", font(900, 170 * u), c.cx, c.cy - 110 * u, { alpha: easeOut(t / 0.4), scale: lerp(0.85, 1, backOut(t / 0.45)) });
+    drawC(ctx, EN ? "COST" : "OCULTO", font(900, 170 * u), c.cx, c.cy + 60 * u, { fill: "gold", alpha: easeOut((t - 0.12) / 0.4), scale: lerp(0.85, 1, backOut((t - 0.12) / 0.45)) });
     if (s.sub) { const ta = easeOut((t - 0.5) / 0.4); const f = font(800, 52 * u); const tw = textW(ctx, s.sub, f) + 70 * u; const ty = c.cy + 260 * u;
       box(ctx, c.cx - tw / 2, ty - 52 * u, tw, 104 * u, 52 * u, "red", ta); drawC(ctx, s.sub, f, c.cx, ty, { alpha: ta }); }
   };
@@ -648,7 +649,7 @@
       if (endT - t < 0.12 && endT < tl.total - 0.1) { ctx.fillStyle = `rgba(0,0,0,${(1 - (endT - t) / 0.12) * 0.8})`; ctx.fillRect(0, 0, c.W, c.H); }
       if (sc.type !== "endcard" && sc.type !== "chapter" && sc.type !== "capa") drawCaptions(ctx, c, t, tl.chunks, tl.safe);
       if (c.vertical) { ctx.fillStyle = css(COL.gold); ctx.fillRect(0, 0, c.W * t / tl.total, 10); }
-      drawC(ctx, "CUSTO OCULTO", font(900, 30 * c.u), c.cx, c.H * (tl.safe ? 0.15 : c.vertical ? 0.085 : 0.06), { alpha: 0.45 });
+      drawC(ctx, globalThis.CO_IDIOMA === "en" ? "HIDDEN COST" : "CUSTO OCULTO", font(900, 30 * c.u), c.cx, c.H * (tl.safe ? 0.15 : c.vertical ? 0.085 : 0.06), { alpha: 0.45 });
     }
   }
 
