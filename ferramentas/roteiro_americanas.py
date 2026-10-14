@@ -220,7 +220,7 @@ TROCAS = {
     "A ideia era simples: vender de tudo": foto("loja_curitiba", "Lojas Americanas - Centro, Curitiba.jpg", "Vender de tudo, barato", big(("DE TUDO", W, 160), ("BARATO", G, 190))),
     "A Americanas virou sinônimo de eficiência": foto("loja_barra", "Lojas Americanas - BarraShopping.jpg", "Cultura de metas", big(("METAS", G, 200), ("AGRESSIVAS", W, 140))),
     "Por fora, era uma das empresas mais sólidas": foto("loja_express", "Lojas Americanas em Cadima Shopping.jpg", "Por fora: sólida", big(("POR FORA", W, 130), ("SÓLIDA", G, 190))),
-    "Sérgio Rial, um executivo vindo do Santander": foto("rial_santander", "Abertura Oficial da 18ª Conferência Anual Santander (cropped).jpg", "Sérgio Rial · ex-Santander", big(("SÉRGIO RIAL", W, 150), ("NOVO PRESIDENTE", G, 100))),
+    "Sérgio Rial, um executivo vindo do Santander": foto("rial_senado", "CAE - Comissão de Assuntos Econômicos (52777342560).jpg", "Sérgio Rial · ex-Santander", big(("SÉRGIO RIAL", W, 150), ("NOVO PRESIDENTE", G, 100))),
     "E o Rial disse uma frase que assustou": prt("print_7a9", "https://mercadoeconsumo.com.br/12/01/2023/noticias-varejo/problema-na-americanas-se-arrasta-por-cerca-de-7-a-9-anos-diz-sergio-rial/", "Mercado & Consumo · 12/01/2023",
                                                big(("O PROBLEMA VINHA", W, 110), ("DE 7 A 9 ANOS", R, 160))),
     "Fornecedores pagam pra Americanas expor": foto("loja_express", "Lojas Americanas em Cadima Shopping.jpg", "Verba de propaganda", big(("FORNECEDOR PAGA", W, 110), ("PRA APARECER", G, 150))),
@@ -239,7 +239,7 @@ TROCAS = {
     "E a Americanas? Ela continua aberta": foto("am_hoje", "Reunião Deliberativa. Diretor-Presidente - Americanas S.A., Leonardo Coelho Pereira - Bruno Spada-Câmara dos Deputados.jpg", "Leonardo Coelho, atual presidente da Americanas, na Câmara",
                                                 {"type": "date", "month": "MARÇO", "day": "25", "year": "2026", "tag": "PEDE PRA SAIR DA RECUPERAÇÃO"}),
     # Shorts
-    "Em janeiro de dois mil e vinte e três, Sérgio Rial assumiu": foto("rial_santander", "Abertura Oficial da 18ª Conferência Anual Santander (cropped).jpg", "Sérgio Rial assume a Americanas", {"type": "date", "month": "JANEIRO", "day": "02", "year": "2023", "tag": "RIAL ASSUME"}),
+    "Em janeiro de dois mil e vinte e três, Sérgio Rial assumiu": foto("rial_senado", "CAE - Comissão de Assuntos Econômicos (52777342560).jpg", "Sérgio Rial assume a Americanas", {"type": "date", "month": "JANEIRO", "day": "02", "year": "2023", "tag": "RIAL ASSUME"}),
     "No dia onze, contou tudo ao mercado": foto("rial_cae", "CAE - Comissão de Assuntos Econômicos (52777184549).jpg", "Sérgio Rial · contou e saiu", big(("CONTOU", W, 150), ("E SAIU", R, 190))),
     "Depois, a empresa admitiu: era fraude": prt("print_fraude", "https://braziljournal.com/americanas-admite-fraude-de-r-25-bi-outros-r-20-bi-estavam-contabilizados-errado", "Brazil Journal · 13/06/2023",
                                                  {"type": "counter", "value": 25, "prefix": "R$ ", "suffix": " BI", "over": "A FRAUDE", "label": "OS ACUSADOS NEGAM", "color": R, "size": 230}),
