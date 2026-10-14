@@ -99,12 +99,15 @@ long_parts = [
     {"chapter": "A GUERRA QUE A NETFLIX QUASE PERDEU", "sentences": [
         S("Em dois mil e quatro, a Blockbuster lançou o próprio aluguel pela internet.", {"type": "date", "month": "BLOCKBUSTER", "day": "ON", "year": "2004", "tag": "ALUGUEL PELA INTERNET"}),
         S("Em cerca de dois anos, chegou a uns dois milhões de assinantes.", {"type": "counter", "value": 2, "suffix": " MILHÕES", "over": "BLOCKBUSTER ONLINE", "label": "EM CERCA DE 2 ANOS", "color": G, "size": 210}),
+        S("Pra ter ideia, a Netflix tinha levado nove anos pra chegar a uns seis milhões.", {"type": "compare", "title": "ASSINANTES", "items": [["2 MI", "BLOCKBUSTER EM ~2 ANOS", G], ["6 MI", "NETFLIX EM ~9 ANOS", W]], "size": 160, "stagger": 1.2, "vs": False}),
+        S("Ou seja: em dois anos, a Blockbuster chegou a um terço do que a Netflix levou quase uma década pra construir.", big(("EM 2 ANOS", W, 140), ("UM TERÇO", G, 180), ("DA NETFLIX", W, 120))),
         S("E em dois mil e seis veio a jogada mais forte: alugar pela internet e poder devolver na loja, trocando por outro filme na hora.", {"type": "flow", "a": "PEDE ONLINE", "a_sub": "recebe em casa", "b": "TROCA NA LOJA", "b_sub": "na hora", "caption": "TOTAL ACCESS · 2006"}),
         S("Era algo que a Netflix simplesmente não tinha como oferecer.", big(("A NETFLIX", W, 140), ("NÃO TINHA LOJA", R, 150))),
         S("Pensa no cliente: recebia o DVD em casa e, quando queria outro na hora, passava na loja da esquina. Era o melhor dos dois mundos.", big(("O MELHOR", W, 150), ("DOS DOIS MUNDOS", G, 130))),
         S("E a Blockbuster tinha uma vantagem que dinheiro nenhum compra rápido: milhares de lojas espalhadas pelas cidades.", big(("MILHARES", G, 180), ("DE LOJAS", W, 150))),
         S("Num trimestre de dois mil e sete, a Netflix chegou a perder cinquenta e cinco mil assinantes.", {"type": "counter", "value": 55, "prefix": "-", "suffix": " MIL", "over": "NETFLIX · 2007", "label": "ASSINANTES PERDIDOS NUM TRIMESTRE", "color": R, "size": 220}),
         S("Anos depois, o próprio Reed Hastings admitiu: se não fosse a dívida, a Blockbuster podia ter acabado com eles.", big(("PODIA TER", W, 140), ("ACABADO COM A NETFLIX", R, 100))),
+        S("E o próprio Antioco disse depois que, se a estratégia tivesse continuado, a Blockbuster podia ter chegado a uns dez milhões de assinantes online.", {"type": "counter", "value": 10, "suffix": " MILHÕES", "over": "SEGUNDO ANTIOCO", "label": "O QUE A BLOCKBUSTER ONLINE PODIA TER", "color": G, "size": 200}),
         S("Naquele momento, quem estava ganhando a guerra era a Blockbuster.", {"type": "flash", "text": "BLOCKBUSTER\nGANHANDO", "tint": "red", "size": 140}),
     ]},
     {"chapter": "O ERRO DE VERDADE", "sentences": [
@@ -182,6 +185,7 @@ tiktoks = [
         S("E a Blockbuster? Só em multa por atraso, ganhou cerca de oitocentos milhões de dólares naquele ano.", {"type": "counter", "value": 800, "prefix": "US$ ", "suffix": " MI", "over": "SÓ EM MULTAS · 2000", "label": "BLOCKBUSTER", "color": G, "size": 210}),
         S("Os fundadores ofereceram a empresa inteira pra Blockbuster, que faturava bilhões.", {"type": "compare", "title": "O TAMANHO DE CADA UM", "items": [["US$ 5 BI", "BLOCKBUSTER", G], ["US$ 50 MI", "NETFLIX", W]], "size": 150, "stagger": 1.2, "vs": False}),
         S("O presidente recusou, quase rindo.", {"type": "stamp", "org": "BLOCKBUSTER · 2000", "title": "COMPRAR A NETFLIX", "stamp": "RECUSADO", "stamp_at": 0.9}),
+        S("Na época, a Netflix dava prejuízo e mandava DVD pelo correio. Recusar parecia até sensato.", big(("RECUSAR", W, 150), ("PARECIA SENSATO", G, 130))),
         S("Mas aqui vai a minha opinião: o erro não foi esse.", {"type": "flash", "text": "MINHA\nOPINIÃO", "color": G, "size": 160}),
         S("Anos depois, a Blockbuster quase venceu, deixando alugar online e trocar o filme na loja.", big(("QUASE", W, 160), ("VENCEU", G, 190))),
         S("Só que uma briga interna derrubou o presidente, e o novo cancelou a jogada.", big(("BRIGA", W, 160), ("INTERNA", R, 170))),

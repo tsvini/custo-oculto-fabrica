@@ -882,6 +882,52 @@
        }
       },
       {
+       "text": "Pra ter ideia, a Netflix tinha levado nove anos pra chegar a uns seis milhões.",
+       "scene": {
+        "type": "compare",
+        "title": "ASSINANTES",
+        "items": [
+         [
+          "2 MI",
+          "BLOCKBUSTER EM ~2 ANOS",
+          "gold"
+         ],
+         [
+          "6 MI",
+          "NETFLIX EM ~9 ANOS",
+          "white"
+         ]
+        ],
+        "size": 160,
+        "stagger": 1.2,
+        "vs": false
+       }
+      },
+      {
+       "text": "Ou seja: em dois anos, a Blockbuster chegou a um terço do que a Netflix levou quase uma década pra construir.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "EM 2 ANOS",
+          "white",
+          140
+         ],
+         [
+          "UM TERÇO",
+          "gold",
+          180
+         ],
+         [
+          "DA NETFLIX",
+          "white",
+          120
+         ]
+        ]
+       }
+      },
+      {
        "text": "E em dois mil e seis veio a jogada mais forte: alugar pela internet e poder devolver na loja, trocando por outro filme na hora.",
        "scene": {
         "type": "flow",
@@ -979,6 +1025,18 @@
           100
          ]
         ]
+       }
+      },
+      {
+       "text": "E o próprio Antioco disse depois que, se a estratégia tivesse continuado, a Blockbuster podia ter chegado a uns dez milhões de assinantes online.",
+       "scene": {
+        "type": "counter",
+        "value": 10,
+        "suffix": " MILHÕES",
+        "over": "SEGUNDO ANTIOCO",
+        "label": "O QUE A BLOCKBUSTER ONLINE PODIA TER",
+        "color": "gold",
+        "size": 200
        }
       },
       {
@@ -2047,6 +2105,25 @@
        "title": "COMPRAR A NETFLIX",
        "stamp": "RECUSADO",
        "stamp_at": 0.9
+      }
+     },
+     {
+      "text": "Na época, a Netflix dava prejuízo e mandava DVD pelo correio. Recusar parecia até sensato.",
+      "scene": {
+       "type": "bigtext",
+       "stagger": 0.25,
+       "lines": [
+        [
+         "RECUSAR",
+         "white",
+         150
+        ],
+        [
+         "PARECIA SENSATO",
+         "gold",
+         130
+        ]
+       ]
       }
      },
      {
