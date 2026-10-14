@@ -312,5 +312,119 @@
   "publishAt": "2026-10-23T18:00:00-03:00",
   "status": "private",
   "miniatura_ok": "0905387f946d"
+ },
+ {
+  "nome": "netflix_longo",
+  "tipo": "longo",
+  "titulo": "NETFLIX: A Empresa Que a Blockbuster Recusou Comprar Por US$ 50 Milhões",
+  "video_id": "3KXjrM_d9Ak",
+  "caso": "netflix",
+  "caso_titulo": "Netflix",
+  "publishAt": "2026-10-27T12:00:00-03:00",
+  "status": "private",
+  "miniatura_ok": "bac46d491598",
+  "playlists": [
+   "Todos os casos | Custo Oculto"
+  ]
+ },
+ {
+  "nome": "netflix_serie1",
+  "tipo": "serie",
+  "titulo": "Netflix: parte 1 de 4 #shorts",
+  "video_id": "gKTQWd_ho_k",
+  "caso": "netflix",
+  "caso_titulo": null,
+  "publishAt": "2026-10-28T08:00:00-03:00",
+  "status": "private",
+  "miniatura_ok": "6736374e0e19",
+  "playlists": [
+   "Caso Netflix | Custo Oculto"
+  ]
+ },
+ {
+  "nome": "netflix_short1",
+  "tipo": "short",
+  "titulo": "A Blockbuster podia ter comprado a Netflix por US$ 50 milhões #shorts",
+  "video_id": "wHp8hnjXbcI",
+  "caso": "netflix",
+  "caso_titulo": null,
+  "publishAt": "2026-10-27T18:00:00-03:00",
+  "status": "private",
+  "miniatura_ok": "2e24f29eb548"
+ },
+ {
+  "nome": "netflix_serie2",
+  "tipo": "serie",
+  "titulo": "Netflix: parte 2 de 4 #shorts",
+  "video_id": "xtdhdzvreYo",
+  "caso": "netflix",
+  "caso_titulo": null,
+  "publishAt": "2026-10-29T08:00:00-03:00",
+  "status": "private",
+  "miniatura_ok": "f6f1d599f21b",
+  "playlists": [
+   "Caso Netflix | Custo Oculto"
+  ]
+ },
+ {
+  "nome": "netflix_short2",
+  "tipo": "short",
+  "titulo": "A jogada que quase matou a Netflix #shorts",
+  "video_id": "S-VfnR_IR40",
+  "caso": "netflix",
+  "caso_titulo": null,
+  "publishAt": "2026-10-28T18:00:00-03:00",
+  "status": "private",
+  "miniatura_ok": "f65b3f92e514"
+ },
+ {
+  "nome": "netflix_serie3",
+  "tipo": "serie",
+  "titulo": "Netflix: parte 3 de 4 #shorts",
+  "video_id": "EDA9YCmgfvY",
+  "caso": "netflix",
+  "caso_titulo": null,
+  "publishAt": "2026-10-30T08:00:00-03:00",
+  "status": "private",
+  "miniatura_ok": "d85e7f1814b4",
+  "playlists": [
+   "Caso Netflix | Custo Oculto"
+  ]
+ },
+ {
+  "nome": "netflix_short3",
+  "tipo": "short",
+  "titulo": "A Americanas comprou a Blockbuster no Brasil #shorts",
+  "video_id": "KoEfOX6_SA4",
+  "caso": "netflix",
+  "caso_titulo": null,
+  "publishAt": "2026-10-29T18:00:00-03:00",
+  "status": "private",
+  "miniatura_ok": "a2c01496cb11"
+ },
+ {
+  "nome": "netflix_serie4",
+  "tipo": "serie",
+  "titulo": "Netflix: parte 4 de 4 #shorts",
+  "video_id": "L50I8bjXk_M",
+  "caso": "netflix",
+  "caso_titulo": null,
+  "publishAt": "2026-10-31T08:00:00-03:00",
+  "status": "private",
+  "miniatura_ok": "8c8a5a35a80a",
+  "playlists": [
+   "Caso Netflix | Custo Oculto"
+  ]
+ },
+ {
+  "nome": "netflix_short4",
+  "tipo": "short",
+  "titulo": "Só existe uma Blockbuster no mundo #shorts",
+  "video_id": "vp0WgkuUjUk",
+  "caso": "netflix",
+  "caso_titulo": null,
+  "publishAt": "2026-10-30T18:00:00-03:00",
+  "status": "private",
+  "miniatura_ok": "45aa9d7a8552"
  }
 ]
