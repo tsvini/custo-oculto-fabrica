@@ -495,13 +495,13 @@
    "status": "public"
   },
   "banco_master_longo": {
-   "views": 6,
+   "views": 7,
    "likes": 2,
-   "comentarios": 2,
+   "comentarios": 3,
    "status": "public"
   },
   "banco_master_short1": {
-   "views": 48,
+   "views": 63,
    "likes": 4,
    "comentarios": 0,
    "status": "public"
@@ -622,7 +622,7 @@
   }
  },
  "canal": {
-  "viewCount": "36",
+  "viewCount": "1930",
   "subscriberCount": "4",
   "hiddenSubscriberCount": false,
   "videoCount": "21"
@@ -646,7 +646,7 @@
    "duracao": "PT41S",
    "status": "public",
    "agendado": null,
-   "views": 386,
+   "views": 387,
    "likes": 7,
    "comentarios": 0
   },
@@ -668,7 +668,7 @@
    "duracao": "PT43S",
    "status": "public",
    "agendado": null,
-   "views": 318,
+   "views": 308,
    "likes": 5,
    "comentarios": 0
   },
@@ -679,7 +679,7 @@
    "duracao": "PT40S",
    "status": "public",
    "agendado": null,
-   "views": 282,
+   "views": 275,
    "likes": 6,
    "comentarios": 0
   },
@@ -723,7 +723,7 @@
    "duracao": "PT28S",
    "status": "public",
    "agendado": null,
-   "views": 44,
+   "views": 51,
    "likes": 4,
    "comentarios": 0
   },
@@ -745,7 +745,7 @@
    "duracao": "PT9M41S",
    "status": "public",
    "agendado": null,
-   "views": 11,
+   "views": 10,
    "likes": 1,
    "comentarios": 0
   },
@@ -791,7 +791,7 @@
    "agendado": null,
    "views": 6,
    "likes": 2,
-   "comentarios": 2
+   "comentarios": 3
   },
   {
    "id": "TIv6Sg8n_rI",
