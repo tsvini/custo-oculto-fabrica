@@ -49,8 +49,29 @@ def main():
             atual[nomes.get(it["id"], it["id"])] = {"views": int(st.get("viewCount", 0)), "likes": int(st.get("likeCount", 0)),
                                                     "comentarios": int(st.get("commentCount", 0)), "status": it.get("status", {}).get("privacyStatus")}
     out["contagem_atual"] = atual
-    q = requests.get("https://www.googleapis.com/youtube/v3/channels?part=statistics&mine=true", headers=H, timeout=30)
-    out["canal"] = (q.json().get("items") or [{}])[0].get("statistics") if q.ok else None
+    q = requests.get("https://www.googleapis.com/youtube/v3/channels?part=statistics,contentDetails&mine=true", headers=H, timeout=30)
+    ch = (q.json().get("items") or [{}])[0] if q.ok else {}
+    out["canal"] = ch.get("statistics")
+    # todos os vídeos do canal (inclusive os enviados à mão)
+    up = (ch.get("contentDetails") or {}).get("relatedPlaylists", {}).get("uploads"); todos = []; tok = None
+    while up:
+        q = requests.get("https://www.googleapis.com/youtube/v3/playlistItems", headers=H, timeout=30,
+                         params={"part": "contentDetails", "playlistId": up, "maxResults": 50, **({"pageToken": tok} if tok else {})})
+        if not q.ok:
+            break
+        j = q.json(); todos += [it["contentDetails"]["videoId"] for it in j.get("items", [])]; tok = j.get("nextPageToken")
+        if not tok:
+            break
+    vids = []
+    for i in range(0, len(todos), 50):
+        q = requests.get("https://www.googleapis.com/youtube/v3/videos", headers=H, timeout=60,
+                         params={"part": "snippet,statistics,status,contentDetails", "id": ",".join(todos[i:i + 50])})
+        for it in (q.json().get("items", []) if q.ok else []):
+            st = it.get("statistics", {})
+            vids.append({"id": it["id"], "titulo": it["snippet"]["title"], "publicado": it["snippet"]["publishedAt"], "duracao": it["contentDetails"]["duration"],
+                         "status": it["status"]["privacyStatus"], "agendado": it["status"].get("publishAt"),
+                         "views": int(st.get("viewCount", 0)), "likes": int(st.get("likeCount", 0)), "comentarios": int(st.get("commentCount", 0))})
+    out["todos_os_videos"] = sorted(vids, key=lambda v: -v["views"])
     os.makedirs(os.path.join(RAIZ, "relatorios"), exist_ok=True)
     for fn in (f"{fim}.json", "ultimo.json"):
         json.dump(out, open(os.path.join(RAIZ, "relatorios", fn), "w", encoding="utf8"), ensure_ascii=False, indent=1)
