@@ -495,13 +495,13 @@
    "status": "public"
   },
   "banco_master_longo": {
-   "views": 7,
+   "views": 6,
    "likes": 2,
    "comentarios": 3,
    "status": "public"
   },
   "banco_master_short1": {
-   "views": 63,
+   "views": 65,
    "likes": 4,
    "comentarios": 0,
    "status": "public"
@@ -519,60 +519,6 @@
    "status": "private"
   },
   "banco_master_short3": {
-   "views": 0,
-   "likes": 0,
-   "comentarios": 0,
-   "status": "private"
-  },
-  "americanas_longo": {
-   "views": 0,
-   "likes": 0,
-   "comentarios": 0,
-   "status": "private"
-  },
-  "americanas_short1": {
-   "views": 0,
-   "likes": 0,
-   "comentarios": 0,
-   "status": "private"
-  },
-  "americanas_short2": {
-   "views": 0,
-   "likes": 0,
-   "comentarios": 0,
-   "status": "private"
-  },
-  "americanas_short3": {
-   "views": 0,
-   "likes": 0,
-   "comentarios": 0,
-   "status": "private"
-  },
-  "americanas_short4": {
-   "views": 0,
-   "likes": 0,
-   "comentarios": 0,
-   "status": "private"
-  },
-  "americanas_serie1": {
-   "views": 0,
-   "likes": 0,
-   "comentarios": 0,
-   "status": "private"
-  },
-  "americanas_serie2": {
-   "views": 0,
-   "likes": 0,
-   "comentarios": 0,
-   "status": "private"
-  },
-  "americanas_serie3": {
-   "views": 0,
-   "likes": 0,
-   "comentarios": 0,
-   "status": "private"
-  },
-  "americanas_serie4": {
    "views": 0,
    "likes": 0,
    "comentarios": 0,
@@ -723,7 +669,7 @@
    "duracao": "PT28S",
    "status": "public",
    "agendado": null,
-   "views": 51,
+   "views": 65,
    "likes": 4,
    "comentarios": 0
   },
@@ -932,105 +878,6 @@
    "duracao": "PT1M41S",
    "status": "private",
    "agendado": "2026-10-14T11:00:00Z",
-   "views": 0,
-   "likes": 0,
-   "comentarios": 0
-  },
-  {
-   "id": "HNgx6t4vrds",
-   "titulo": "Americanas: parte 4 de 4 #shorts",
-   "publicado": "2026-10-13T18:07:46Z",
-   "duracao": "PT1M40S",
-   "status": "private",
-   "agendado": "2026-10-24T11:00:00Z",
-   "views": 0,
-   "likes": 0,
-   "comentarios": 0
-  },
-  {
-   "id": "L_VE0Jes15E",
-   "titulo": "Americanas: parte 3 de 4 #shorts",
-   "publicado": "2026-10-13T18:07:34Z",
-   "duracao": "PT2M7S",
-   "status": "private",
-   "agendado": "2026-10-23T11:00:00Z",
-   "views": 0,
-   "likes": 0,
-   "comentarios": 0
-  },
-  {
-   "id": "hA2utgx3duE",
-   "titulo": "Americanas: parte 2 de 4 #shorts",
-   "publicado": "2026-10-13T18:07:22Z",
-   "duracao": "PT2M27S",
-   "status": "private",
-   "agendado": "2026-10-22T11:00:00Z",
-   "views": 0,
-   "likes": 0,
-   "comentarios": 0
-  },
-  {
-   "id": "FVuNyA2exSE",
-   "titulo": "Americanas: parte 1 de 4 #shorts",
-   "publicado": "2026-10-13T18:07:08Z",
-   "duracao": "PT1M49S",
-   "status": "private",
-   "agendado": "2026-10-21T11:00:00Z",
-   "views": 0,
-   "likes": 0,
-   "comentarios": 0
-  },
-  {
-   "id": "bi71RCxJKDM",
-   "titulo": "Quem pagou a conta da Americanas #shorts",
-   "publicado": "2026-10-13T06:48:53Z",
-   "duracao": "PT28S",
-   "status": "private",
-   "agendado": "2026-10-23T21:00:00Z",
-   "views": 0,
-   "likes": 0,
-   "comentarios": 0
-  },
-  {
-   "id": "hmaGbySAWko",
-   "titulo": "O ex-presidente da Americanas foi preso na Espanha #shorts",
-   "publicado": "2026-10-13T06:48:44Z",
-   "duracao": "PT34S",
-   "status": "private",
-   "agendado": "2026-10-22T21:00:00Z",
-   "views": 0,
-   "likes": 0,
-   "comentarios": 0
-  },
-  {
-   "id": "GAVrJjC3XGI",
-   "titulo": "Como a Americanas escondeu R$ 25 bilhões #shorts",
-   "publicado": "2026-10-13T06:48:35Z",
-   "duracao": "PT31S",
-   "status": "private",
-   "agendado": "2026-10-21T21:00:00Z",
-   "views": 0,
-   "likes": 0,
-   "comentarios": 0
-  },
-  {
-   "id": "hXQaFClp7fU",
-   "titulo": "O presidente que durou 9 dias na Americanas #shorts",
-   "publicado": "2026-10-13T06:48:25Z",
-   "duracao": "PT35S",
-   "status": "private",
-   "agendado": "2026-10-20T21:00:00Z",
-   "views": 0,
-   "likes": 0,
-   "comentarios": 0
-  },
-  {
-   "id": "PecT2RdCwOY",
-   "titulo": "AMERICANAS: Como Sumiram R$ 25 Bilhões da Loja Que Todo Brasileiro Conhece",
-   "publicado": "2026-10-13T06:48:09Z",
-   "duracao": "PT8M19S",
-   "status": "private",
-   "agendado": "2026-10-20T15:00:00Z",
    "views": 0,
    "likes": 0,
    "comentarios": 0
