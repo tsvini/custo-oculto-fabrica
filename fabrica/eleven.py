@@ -53,7 +53,7 @@ def main(nome):
     # voz: pelo id ou pelo nome
     vid = voz.get("voice_id")
     if not vid:
-        alvo = (voz.get("eleven_voz") or "Will - Deep").lower()
+        alvo = (voz.get("eleven_voz") or "Vinícius Torales").lower()
         r = requests.get(f"{API}/v1/voices", headers=H, timeout=60); r.raise_for_status()
         vs = r.json().get("voices", [])
         achou = [v for v in vs if v["name"].lower().startswith(alvo)] or [v for v in vs if alvo in v["name"].lower()]
