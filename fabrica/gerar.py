@@ -10,7 +10,7 @@ import argparse, base64, copy, functools, http.server, json, os, re, shutil, sub
 
 from . import midia as M
 from .tts import Narrador, ErroVoz
-from .canais import canal, bloco_afiliados
+from .canais import canal as canal_de, bloco_afiliados
 
 RAIZ = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -122,7 +122,7 @@ def main():
     with open(os.path.join(pasta_proj, "projeto.json"), encoding="utf8") as f:
         p = json.load(f)
     montar_serie(p)
-    idioma = (p.get("idioma") or "pt").lower()[:2]; C = canal(idioma)
+    idioma = (p.get("idioma") or "pt").lower()[:2]; C = canal_de(idioma)
     os.environ["IDIOMA_FALA"] = C["whisper"]  # reconhecimento de fala no idioma do vídeo
     slug = slugify(p.get("slug") or a.projeto)
     trab = os.path.join(RAIZ, "trabalho", slug); os.makedirs(trab, exist_ok=True)
