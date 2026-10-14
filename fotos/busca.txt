@@ -1,12 +1,10 @@
-am_loja | Lojas Americanas
-am_loja2 | Americanas loja fachada
-am_sa | Americanas S.A.
-am_rial | Sérgio Rial
-am_lemann | Jorge Paulo Lemann
-am_pf | Polícia Federal operação busca e apreensão
-am_pf2 | Polícia Federal sede Brasília
-am_b3 | B3 Brasil Bolsa Balcão
-am_cpi | CPI Americanas Câmara dos Deputados
-am_submarino | Submarino B2W
-am_tjrj | Tribunal de Justiça do Estado do Rio de Janeiro
-am_niteroi | Niterói centro antigo
+nf_bend | Blockbuster Bend Oregon
+nf_bb | Blockbuster Video store
+nf_bb2 | Blockbuster closing store
+nf_hastings | Reed Hastings
+nf_randolph | Marc Randolph Netflix
+nf_hq | Netflix headquarters Los Gatos
+nf_dvd | Netflix DVD envelope
+nf_dallas | Blockbuster headquarters Dallas Renaissance Tower
+nf_icahn | Carl Icahn
+nf_vhs | VHS tapes rental store
