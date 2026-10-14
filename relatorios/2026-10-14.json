@@ -454,7 +454,8 @@
   "itapemirim_longo": [],
   "kolynos_longo": [],
   "banco_master_longo": [],
-  "americanas_longo": []
+  "americanas_longo": [],
+  "netflix_longo": []
  },
  "nomes": {
   "4WuKNxpR188": "itapemirim_longo",
@@ -464,22 +465,31 @@
   "u_n01fzotFM": "banco_master_short2",
   "TZLpKjOWKH4": "banco_master_short4",
   "2dxf1dO_zcU": "banco_master_short3",
-  "PecT2RdCwOY": "americanas_longo",
-  "hXQaFClp7fU": "americanas_short1",
-  "GAVrJjC3XGI": "americanas_short2",
-  "hmaGbySAWko": "americanas_short3",
-  "bi71RCxJKDM": "americanas_short4",
-  "FVuNyA2exSE": "americanas_serie1",
-  "hA2utgx3duE": "americanas_serie2",
-  "L_VE0Jes15E": "americanas_serie3",
-  "HNgx6t4vrds": "americanas_serie4",
   "xQAsC7S2KO8": "banco_master_serie1",
   "Po7fZ2-6vNg": "banco_master_serie2",
   "FHltNOMCClI": "banco_master_serie3",
   "6hhsJO6vgpo": "banco_master_serie4",
   "D5PndwsbJX8": "kolynos_serie1",
   "CaHfIs58EPM": "kolynos_serie2",
-  "cWPSGveRO5A": "kolynos_serie3"
+  "cWPSGveRO5A": "kolynos_serie3",
+  "pDz4KseN7K8": "americanas_longo",
+  "eHMQiwvq4Dk": "americanas_serie1",
+  "uapXQ6PbGnk": "americanas_short1",
+  "HbPPRm28WlQ": "americanas_serie2",
+  "Dn584fxiz0k": "americanas_short2",
+  "thhbRuDQZnA": "americanas_serie3",
+  "xyGepfkgHNk": "americanas_short3",
+  "5h38bDNpjGg": "americanas_serie4",
+  "8lB7xWs1I3M": "americanas_short4",
+  "3KXjrM_d9Ak": "netflix_longo",
+  "gKTQWd_ho_k": "netflix_serie1",
+  "wHp8hnjXbcI": "netflix_short1",
+  "xtdhdzvreYo": "netflix_serie2",
+  "S-VfnR_IR40": "netflix_short2",
+  "EDA9YCmgfvY": "netflix_serie3",
+  "KoEfOX6_SA4": "netflix_short3",
+  "L50I8bjXk_M": "netflix_serie4",
+  "vp0WgkuUjUk": "netflix_short4"
  },
  "contagem_atual": {
   "itapemirim_longo": {
@@ -495,15 +505,15 @@
    "status": "public"
   },
   "banco_master_longo": {
-   "views": 6,
+   "views": 8,
    "likes": 2,
    "comentarios": 3,
    "status": "public"
   },
   "banco_master_short1": {
-   "views": 65,
-   "likes": 4,
-   "comentarios": 0,
+   "views": 99,
+   "likes": 7,
+   "comentarios": 1,
    "status": "public"
   },
   "banco_master_short2": {
@@ -525,10 +535,10 @@
    "status": "private"
   },
   "banco_master_serie1": {
-   "views": 0,
-   "likes": 0,
+   "views": 3,
+   "likes": 1,
    "comentarios": 0,
-   "status": "private"
+   "status": "public"
   },
   "banco_master_serie2": {
    "views": 0,
@@ -565,13 +575,121 @@
    "likes": 0,
    "comentarios": 0,
    "status": "private"
+  },
+  "americanas_longo": {
+   "views": 0,
+   "likes": 0,
+   "comentarios": 0,
+   "status": "private"
+  },
+  "americanas_serie1": {
+   "views": 0,
+   "likes": 0,
+   "comentarios": 0,
+   "status": "private"
+  },
+  "americanas_short1": {
+   "views": 0,
+   "likes": 0,
+   "comentarios": 0,
+   "status": "private"
+  },
+  "americanas_serie2": {
+   "views": 0,
+   "likes": 0,
+   "comentarios": 0,
+   "status": "private"
+  },
+  "americanas_short2": {
+   "views": 0,
+   "likes": 0,
+   "comentarios": 0,
+   "status": "private"
+  },
+  "americanas_serie3": {
+   "views": 0,
+   "likes": 0,
+   "comentarios": 0,
+   "status": "private"
+  },
+  "americanas_short3": {
+   "views": 0,
+   "likes": 0,
+   "comentarios": 0,
+   "status": "private"
+  },
+  "americanas_serie4": {
+   "views": 0,
+   "likes": 0,
+   "comentarios": 0,
+   "status": "private"
+  },
+  "americanas_short4": {
+   "views": 0,
+   "likes": 0,
+   "comentarios": 0,
+   "status": "private"
+  },
+  "netflix_longo": {
+   "views": 0,
+   "likes": 0,
+   "comentarios": 0,
+   "status": "private"
+  },
+  "netflix_serie1": {
+   "views": 0,
+   "likes": 0,
+   "comentarios": 0,
+   "status": "private"
+  },
+  "netflix_short1": {
+   "views": 0,
+   "likes": 0,
+   "comentarios": 0,
+   "status": "private"
+  },
+  "netflix_serie2": {
+   "views": 0,
+   "likes": 0,
+   "comentarios": 0,
+   "status": "private"
+  },
+  "netflix_short2": {
+   "views": 0,
+   "likes": 0,
+   "comentarios": 0,
+   "status": "private"
+  },
+  "netflix_serie3": {
+   "views": 0,
+   "likes": 0,
+   "comentarios": 0,
+   "status": "private"
+  },
+  "netflix_short3": {
+   "views": 0,
+   "likes": 0,
+   "comentarios": 0,
+   "status": "private"
+  },
+  "netflix_serie4": {
+   "views": 0,
+   "likes": 0,
+   "comentarios": 0,
+   "status": "private"
+  },
+  "netflix_short4": {
+   "views": 0,
+   "likes": 0,
+   "comentarios": 0,
+   "status": "private"
   }
  },
  "canal": {
-  "viewCount": "1930",
+  "viewCount": "3012",
   "subscriberCount": "4",
   "hiddenSubscriberCount": false,
-  "videoCount": "21"
+  "videoCount": "22"
  },
  "todos_os_videos": [
   {
@@ -652,6 +770,17 @@
    "comentarios": 0
   },
   {
+   "id": "z6dXgM3pY_c",
+   "titulo": "1,6 milhão de pessoas no mesmo banco. E ele quebrou. #shorts",
+   "publicado": "2026-10-13T15:16:40Z",
+   "duracao": "PT28S",
+   "status": "public",
+   "agendado": null,
+   "views": 99,
+   "likes": 7,
+   "comentarios": 1
+  },
+  {
    "id": "bLlZo9T-tO8",
    "titulo": "5/7 Como US$ 47 bilhões viraram cerca de US$ 8 bilhões",
    "publicado": "2026-10-11T19:34:16Z",
@@ -660,17 +789,6 @@
    "agendado": null,
    "views": 87,
    "likes": 1,
-   "comentarios": 0
-  },
-  {
-   "id": "z6dXgM3pY_c",
-   "titulo": "1,6 milhão de pessoas no mesmo banco. E ele quebrou. #shorts",
-   "publicado": "2026-10-13T15:16:40Z",
-   "duracao": "PT28S",
-   "status": "public",
-   "agendado": null,
-   "views": 65,
-   "likes": 4,
    "comentarios": 0
   },
   {
@@ -691,7 +809,7 @@
    "duracao": "PT9M41S",
    "status": "public",
    "agendado": null,
-   "views": 10,
+   "views": 11,
    "likes": 1,
    "comentarios": 0
   },
@@ -705,6 +823,17 @@
    "views": 9,
    "likes": 1,
    "comentarios": 0
+  },
+  {
+   "id": "3e-eXXCL27s",
+   "titulo": "BANCO MASTER: O Banco Que Quebrou e Deixou Uma Conta de R$ 41 Bilhões",
+   "publicado": "2026-10-13T15:00:05Z",
+   "duracao": "PT8M19S",
+   "status": "public",
+   "agendado": null,
+   "views": 8,
+   "likes": 2,
+   "comentarios": 3
   },
   {
    "id": "4WuKNxpR188",
@@ -727,17 +856,6 @@
    "views": 7,
    "likes": 1,
    "comentarios": 0
-  },
-  {
-   "id": "3e-eXXCL27s",
-   "titulo": "BANCO MASTER: O Banco Que Quebrou e Deixou Uma Conta de R$ 41 Bilhões",
-   "publicado": "2026-10-13T15:00:05Z",
-   "duracao": "PT8M19S",
-   "status": "public",
-   "agendado": null,
-   "views": 6,
-   "likes": 2,
-   "comentarios": 3
   },
   {
    "id": "TIv6Sg8n_rI",
@@ -773,6 +891,17 @@
    "comentarios": 0
   },
   {
+   "id": "xQAsC7S2KO8",
+   "titulo": "Banco Master: parte 1 de 4 #shorts",
+   "publicado": "2026-10-14T11:00:27Z",
+   "duracao": "PT1M41S",
+   "status": "public",
+   "agendado": null,
+   "views": 3,
+   "likes": 1,
+   "comentarios": 0
+  },
+  {
    "id": "Wbn2Es80UJ0",
    "titulo": "4/7 O IPO que expôs os problemas da WeWork",
    "publicado": "2026-10-11T19:33:55Z",
@@ -803,6 +932,204 @@
    "agendado": null,
    "views": 3,
    "likes": 1,
+   "comentarios": 0
+  },
+  {
+   "id": "vp0WgkuUjUk",
+   "titulo": "Só existe uma Blockbuster no mundo #shorts",
+   "publicado": "2026-10-14T14:41:30Z",
+   "duracao": "PT25S",
+   "status": "private",
+   "agendado": "2026-10-30T21:00:00Z",
+   "views": 0,
+   "likes": 0,
+   "comentarios": 0
+  },
+  {
+   "id": "L50I8bjXk_M",
+   "titulo": "Netflix: parte 4 de 4 #shorts",
+   "publicado": "2026-10-14T14:41:22Z",
+   "duracao": "PT1M14S",
+   "status": "private",
+   "agendado": "2026-10-31T11:00:00Z",
+   "views": 0,
+   "likes": 0,
+   "comentarios": 0
+  },
+  {
+   "id": "KoEfOX6_SA4",
+   "titulo": "A Americanas comprou a Blockbuster no Brasil #shorts",
+   "publicado": "2026-10-14T14:41:13Z",
+   "duracao": "PT23S",
+   "status": "private",
+   "agendado": "2026-10-29T21:00:00Z",
+   "views": 0,
+   "likes": 0,
+   "comentarios": 0
+  },
+  {
+   "id": "EDA9YCmgfvY",
+   "titulo": "Netflix: parte 3 de 4 #shorts",
+   "publicado": "2026-10-14T14:41:00Z",
+   "duracao": "PT2M23S",
+   "status": "private",
+   "agendado": "2026-10-30T11:00:00Z",
+   "views": 0,
+   "likes": 0,
+   "comentarios": 0
+  },
+  {
+   "id": "S-VfnR_IR40",
+   "titulo": "A jogada que quase matou a Netflix #shorts",
+   "publicado": "2026-10-14T14:40:52Z",
+   "duracao": "PT27S",
+   "status": "private",
+   "agendado": "2026-10-28T21:00:00Z",
+   "views": 0,
+   "likes": 0,
+   "comentarios": 0
+  },
+  {
+   "id": "xtdhdzvreYo",
+   "titulo": "Netflix: parte 2 de 4 #shorts",
+   "publicado": "2026-10-14T14:40:43Z",
+   "duracao": "PT2M13S",
+   "status": "private",
+   "agendado": "2026-10-29T11:00:00Z",
+   "views": 0,
+   "likes": 0,
+   "comentarios": 0
+  },
+  {
+   "id": "wHp8hnjXbcI",
+   "titulo": "A Blockbuster podia ter comprado a Netflix por US$ 50 milhões #shorts",
+   "publicado": "2026-10-14T14:40:32Z",
+   "duracao": "PT27S",
+   "status": "private",
+   "agendado": "2026-10-27T21:00:00Z",
+   "views": 0,
+   "likes": 0,
+   "comentarios": 0
+  },
+  {
+   "id": "gKTQWd_ho_k",
+   "titulo": "Netflix: parte 1 de 4 #shorts",
+   "publicado": "2026-10-14T14:40:22Z",
+   "duracao": "PT2M7S",
+   "status": "private",
+   "agendado": "2026-10-28T11:00:00Z",
+   "views": 0,
+   "likes": 0,
+   "comentarios": 0
+  },
+  {
+   "id": "3KXjrM_d9Ak",
+   "titulo": "NETFLIX: A Empresa Que a Blockbuster Recusou Comprar Por US$ 50 Milhões",
+   "publicado": "2026-10-14T14:40:02Z",
+   "duracao": "PT8M12S",
+   "status": "private",
+   "agendado": "2026-10-27T15:00:00Z",
+   "views": 0,
+   "likes": 0,
+   "comentarios": 0
+  },
+  {
+   "id": "8lB7xWs1I3M",
+   "titulo": "Quem pagou a conta da Americanas #shorts",
+   "publicado": "2026-10-14T13:16:32Z",
+   "duracao": "PT28S",
+   "status": "private",
+   "agendado": "2026-10-23T21:00:00Z",
+   "views": 0,
+   "likes": 0,
+   "comentarios": 0
+  },
+  {
+   "id": "5h38bDNpjGg",
+   "titulo": "Americanas: parte 4 de 4 #shorts",
+   "publicado": "2026-10-14T13:16:23Z",
+   "duracao": "PT1M40S",
+   "status": "private",
+   "agendado": "2026-10-24T11:00:00Z",
+   "views": 0,
+   "likes": 0,
+   "comentarios": 0
+  },
+  {
+   "id": "xyGepfkgHNk",
+   "titulo": "O ex-presidente da Americanas foi preso na Espanha #shorts",
+   "publicado": "2026-10-14T13:16:13Z",
+   "duracao": "PT34S",
+   "status": "private",
+   "agendado": "2026-10-22T21:00:00Z",
+   "views": 0,
+   "likes": 0,
+   "comentarios": 0
+  },
+  {
+   "id": "thhbRuDQZnA",
+   "titulo": "Americanas: parte 3 de 4 #shorts",
+   "publicado": "2026-10-14T13:16:03Z",
+   "duracao": "PT2M7S",
+   "status": "private",
+   "agendado": "2026-10-23T11:00:00Z",
+   "views": 0,
+   "likes": 0,
+   "comentarios": 0
+  },
+  {
+   "id": "Dn584fxiz0k",
+   "titulo": "Como a Americanas escondeu R$ 25 bilhões #shorts",
+   "publicado": "2026-10-14T13:15:52Z",
+   "duracao": "PT31S",
+   "status": "private",
+   "agendado": "2026-10-21T21:00:00Z",
+   "views": 0,
+   "likes": 0,
+   "comentarios": 0
+  },
+  {
+   "id": "HbPPRm28WlQ",
+   "titulo": "Americanas: parte 2 de 4 #shorts",
+   "publicado": "2026-10-14T13:15:41Z",
+   "duracao": "PT2M27S",
+   "status": "private",
+   "agendado": "2026-10-22T11:00:00Z",
+   "views": 0,
+   "likes": 0,
+   "comentarios": 0
+  },
+  {
+   "id": "uapXQ6PbGnk",
+   "titulo": "O presidente que durou 9 dias na Americanas #shorts",
+   "publicado": "2026-10-14T13:15:31Z",
+   "duracao": "PT35S",
+   "status": "private",
+   "agendado": "2026-10-20T21:00:00Z",
+   "views": 0,
+   "likes": 0,
+   "comentarios": 0
+  },
+  {
+   "id": "eHMQiwvq4Dk",
+   "titulo": "Americanas: parte 1 de 4 #shorts",
+   "publicado": "2026-10-14T13:15:21Z",
+   "duracao": "PT1M49S",
+   "status": "private",
+   "agendado": "2026-10-21T11:00:00Z",
+   "views": 0,
+   "likes": 0,
+   "comentarios": 0
+  },
+  {
+   "id": "pDz4KseN7K8",
+   "titulo": "AMERICANAS: Como Sumiram R$ 25 Bilhões da Loja Que Todo Brasileiro Conhece",
+   "publicado": "2026-10-14T13:15:03Z",
+   "duracao": "PT8M19S",
+   "status": "private",
+   "agendado": "2026-10-20T15:00:00Z",
+   "views": 0,
+   "likes": 0,
    "comentarios": 0
   },
   {
@@ -867,17 +1194,6 @@
    "duracao": "PT2M18S",
    "status": "private",
    "agendado": "2026-10-15T11:00:00Z",
-   "views": 0,
-   "likes": 0,
-   "comentarios": 0
-  },
-  {
-   "id": "xQAsC7S2KO8",
-   "titulo": "Banco Master: parte 1 de 4 #shorts",
-   "publicado": "2026-10-13T18:25:48Z",
-   "duracao": "PT1M41S",
-   "status": "private",
-   "agendado": "2026-10-14T11:00:00Z",
    "views": 0,
    "likes": 0,
    "comentarios": 0
