@@ -8,7 +8,7 @@ def big(*lines):
     return {"type": "bigtext", "stagger": 0.25, "lines": [list(l) for l in lines]}
 
 
-IDS = {}
+IDS = {'familia_sofa': 190117, 'correio': 43658, 'aviao': 264862}
 
 
 def vid(media, en, lower, fb):
@@ -114,7 +114,7 @@ long_parts = [
         S("E gastou dinheiro em outras apostas, como a compra da Movielink, um serviço de filmes pela internet que nunca decolou.", big(("NOVAS APOSTAS", W, 130), ("SEM RESULTADO", R, 140))),
         S("O crescimento parou na hora.", big(("O CRESCIMENTO", W, 130), ("PAROU", R, 210))),
         S("E tem uma ironia: anos depois, o próprio Antioco investiu na Netflix. Mas vendeu cedo, antes da grande alta.", big(("ANTIOCO", W, 150), ("INVESTIU NA NETFLIX", G, 110), ("E VENDEU CEDO", R, 110))),
-        S("Enquanto isso, também em dois mil e sete, a Netflix lançou o streaming.", vid("streaming", "watching streaming tv remote", "Netflix · streaming", {"type": "date", "month": "NETFLIX", "day": "▶", "year": "2007", "tag": "COMEÇA O STREAMING"})),
+        S("Enquanto isso, também em dois mil e sete, a Netflix lançou o streaming.", {"type": "date", "month": "NETFLIX", "day": "▶", "year": "2007", "tag": "COMEÇA O STREAMING"}),
         S("Em setembro de dois mil e dez, a Blockbuster pediu falência, com uma dívida perto de um bilhão de dólares.", {"type": "counter", "value": 900, "prefix": "+US$ ", "suffix": " MI", "over": "SETEMBRO DE 2010", "label": "DÍVIDAS NA FALÊNCIA", "color": R, "size": 200}),
         S("Aqui está o custo oculto.", {"type": "flash", "text": "O CUSTO\nOCULTO", "tint": "red", "size": 160}),
         S("Na época, ainda eram cerca de vinte e cinco mil funcionários. Milhares de lojas fecharam, e muita gente perdeu o emprego.", vid("loja_fechada", "closed store empty shop", "Lojas fechando", big(("LOJAS", W, 160), ("FECHADAS", R, 170)))),

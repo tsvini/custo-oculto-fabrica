@@ -317,7 +317,8 @@
            170
           ]
          ]
-        }
+        },
+        "pixabay_id": 190117
        }
       },
       {
@@ -469,7 +470,8 @@
            120
           ]
          ]
-        }
+        },
+        "pixabay_id": 43658
        }
       },
       {
@@ -643,7 +645,8 @@
            200
           ]
          ]
-        }
+        },
+        "pixabay_id": 264862
        }
       }
      ]
@@ -1106,20 +1109,11 @@
       {
        "text": "Enquanto isso, também em dois mil e sete, a Netflix lançou o streaming.",
        "scene": {
-        "type": "video",
-        "media": "streaming",
-        "search": "watching streaming tv remote",
-        "search_en": "watching streaming tv remote",
-        "start": 0.0,
-        "dim": 0.4,
-        "lower": "Netflix · streaming",
-        "fallback": {
-         "type": "date",
-         "month": "NETFLIX",
-         "day": "▶",
-         "year": "2007",
-         "tag": "COMEÇA O STREAMING"
-        }
+        "type": "date",
+        "month": "NETFLIX",
+        "day": "▶",
+        "year": "2007",
+        "tag": "COMEÇA O STREAMING"
        }
       },
       {
