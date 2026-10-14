@@ -418,6 +418,24 @@ def ia(marcar=None):
         nota("Marcados como IA", ", ".join(feitos))
 
 
+def liberar(nomes):
+    """Publica agora (público) vídeos que já subiram agendados. nomes: 'caso_longo,caso_short1'."""
+    reg = registro(); feitos = []
+    for nome in [n.strip() for n in nomes.split(",") if n.strip()]:
+        r = next((x for x in reg if x["nome"] == nome and x.get("video_id")), None)
+        if not r:
+            nota("Liberar", f"{nome}: não está no publicados.json (ainda não subiu?)", "warning"); continue
+        H = {"Authorization": f"Bearer {token(idioma_de(r))}"}; Y = "https://www.googleapis.com/youtube/v3"
+        v = checar(requests.get(f"{Y}/videos", headers=H, params={"part": "status", "id": r["video_id"]}, timeout=30), "status").json()["items"][0]["status"]
+        st = {k: v[k] for k in ("license", "embeddable", "publicStatsViewable", "selfDeclaredMadeForKids", "containsSyntheticMedia") if k in v}
+        st["privacyStatus"] = "public"
+        checar(requests.put(f"{Y}/videos?part=status", headers=H, timeout=30, json={"id": r["video_id"], "status": st}), "liberar")
+        r["publishAt"] = dt.datetime.now(BRT).isoformat(); r["status"] = "public"; feitos.append(f"{nome} (youtu.be/{r['video_id']})")
+    if feitos:
+        json.dump(reg, open(REG, "w", encoding="utf8"), ensure_ascii=False, indent=1)
+        nota("Publicado agora", " | ".join(feitos))
+
+
 if __name__ == "__main__":
     cmd = sys.argv[1] if len(sys.argv) > 1 else "enviar"
     if cmd == "miniaturas":
@@ -433,6 +451,8 @@ if __name__ == "__main__":
         reconstruir()
     elif cmd == "playlists":
         playlists()
+    elif cmd == "liberar":
+        liberar(sys.argv[2] if len(sys.argv) > 2 else "")
     elif cmd == "enfileirar":
         enfileirar(sys.argv[2] if len(sys.argv) > 2 else os.path.join(RAIZ, "saida"))
     else:

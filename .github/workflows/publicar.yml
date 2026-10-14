@@ -5,6 +5,10 @@ on:
   schedule:
     - cron: "7 11 * * *"
   workflow_dispatch:
+    inputs:
+      liberar:
+        description: "publicar agora (ex.: netflix-en_longo)"
+        required: false
   push:
     paths: [".github/workflows/publicar.yml"]
 
@@ -29,12 +33,14 @@ jobs:
         if: ${{ env.YT_REFRESH_TOKEN != '' }}
         env:
           GH_TOKEN: ${{ github.token }}
+          LIBERAR: ${{ inputs.liberar }}
           YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
           YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
         run: |
           pip install -q requests
           python -m fabrica.publicar conferir
           python -m fabrica.publicar enviar
+          if [ -n "$LIBERAR" ]; then python -m fabrica.publicar liberar "$LIBERAR"; fi
           python -m fabrica.publicar playlists
           python -m fabrica.publicar comentar
           git config user.name "fabrica-custo-oculto"; git config user.email "fabrica@users.noreply.github.com"
