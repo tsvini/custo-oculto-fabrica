@@ -1,2 +1,2 @@
 longo previa
-# com logos
+# logos na pasta midia
