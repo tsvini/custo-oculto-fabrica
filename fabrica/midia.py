@@ -305,6 +305,45 @@ def wikimedia(cenas, pasta, log, creditos, creditos_arq):
             print(f"::warning title=Sem foto ({k})::nenhuma foto livre para {termos}; a cena usa o texto de reserva", flush=True)
 
 
+def coletar_logos(obj, out=None):
+    """Acha todos os {"logos": {"chave": "File:Logo.svg"}} no projeto (cenas, capas, miniaturas)."""
+    out = {} if out is None else out
+    if isinstance(obj, dict):
+        for k, v in (obj.get("logos") or {}).items():
+            out.setdefault(k, v)
+        for v in obj.values():
+            coletar_logos(v, out)
+    elif isinstance(obj, list):
+        for v in obj:
+            coletar_logos(v, out)
+    return out
+
+
+def logos(projeto, pasta, log):
+    """Logos de marcas do Wikimedia Commons (arquivo exato), em PNG com fundo transparente: <chave>.png.
+    No Commons só ficam logos livres (em geral 'PD-textlogo'); ainda assim confere a licença."""
+    for k, arq in coletar_logos(projeto).items():
+        dest = os.path.join(pasta, k + ".png")
+        if os.path.exists(dest):
+            continue
+        try:
+            res = _commons_busca(arq if arq.lower().startswith("file:") else "File:" + arq, largura=1400)
+        except Exception as e:
+            log(f"  logo {k}: busca falhou ({str(e)[:100]})"); continue
+        r = res[0] if res else None
+        if not r or not r.get("url") or not LIVRE.match(r["lic"] or ""):
+            print(f"::warning title=Sem logo ({k})::{arq} não encontrado ou licença não livre ({r and r.get('lic')})", flush=True); continue
+        try:
+            _baixa(r["url"], dest, headers={"User-Agent": UA_BOT})
+            from PIL import Image
+            im = Image.open(dest).convert("RGBA"); bb = im.getchannel("A").getbbox()
+            if bb:  # corta a margem transparente para o logo ocupar o espaço certo
+                im.crop(bb).save(dest)
+            print(f"::notice title=Logo ({k})::{r['title']} · {r['lic']}", flush=True)
+        except Exception as e:
+            log(f"  logo {k}: download falhou ({str(e)[:100]})")
+
+
 def candidatos(cenas, pasta_saida, log):
     """Folha de contato com os 8 primeiros clipes do Pixabay de cada cena de vídeo (para escolher a dedo)."""
     from PIL import Image, ImageDraw

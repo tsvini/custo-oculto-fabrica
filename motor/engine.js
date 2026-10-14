@@ -376,6 +376,33 @@
     for (let i = n; i >= 0; i--) ctx.lineTo(x + w * i / n, y + h - rnd() * 10);
     ctx.closePath();
   }
+  // ---------- LOGOS (marca famosa: capa, abertura e "X contra Y") ----------
+  // cena {type:"logo", logo:"chave", logo2:"chave2" (opcional, vira "A x B"), sub:"TEXTO", placa:true (fundo claro p/ logo escuro)}
+  function drawLogo(ctx, c, m, cx, cy, maxW, maxH, a, sc, placa) {
+    if (!m || !m.img || a <= 0) return 0; const img = m.img; const u = c.u;
+    const r = Math.min(maxW / img.width, maxH / img.height); const w = img.width * r * sc, h = img.height * r * sc;
+    ctx.save(); ctx.globalAlpha = a;
+    if (placa) { box(ctx, cx - w / 2 - 36 * u, cy - h / 2 - 28 * u, w + 72 * u, h + 56 * u, 22 * u, [245, 242, 235], 0.96 * a); }
+    else { ctx.shadowColor = "rgba(0,0,0,.85)"; ctx.shadowBlur = 40 * u; }
+    ctx.drawImage(img, cx - w / 2, cy - h / 2, w, h); ctx.restore(); return h;
+  }
+  S.logo = (ctx, c, t, dur, s, media) => {
+    const u = c.u; const V = c.vertical; const z = lerp(1, 1.06, clamp(t / Math.max(dur, 0.1)));
+    const k1 = easeOut(clamp(t / 0.35)), sc1 = lerp(1.25, 1, k1) * z;
+    if (s.logo2) {
+      const k2 = easeOut(clamp((t - 0.45) / 0.35)), sc2 = lerp(1.25, 1, k2) * z;
+      const mw = V ? c.W * 0.7 : c.W * 0.34, mh = V ? c.H * 0.16 : c.H * 0.32;
+      const p1 = V ? [c.cx, c.H * 0.27] : [c.W * 0.26, c.cy], p2 = V ? [c.cx, c.H * 0.56] : [c.W * 0.74, c.cy];
+      drawLogo(ctx, c, media && media[s.logo], p1[0], p1[1], mw, mh, k1, sc1, s.placa);
+      drawLogo(ctx, c, media && media[s.logo2], p2[0], p2[1], mw, mh, k2, sc2, s.placa2 === undefined ? s.placa : s.placa2);
+      const kx = easeOut(clamp((t - 0.25) / 0.3)); const f = `${Math.round(150 * u)}px ${DISPLAY}`;
+      drawC(ctx, "X", f, V ? c.cx : c.W / 2, V ? c.H * 0.415 : c.cy, { stroke: 10 * u, alpha: kx, fill: COL.red });
+    } else {
+      drawLogo(ctx, c, media && media[s.logo], c.cx, c.cy - (s.sub ? 60 * u : 0), V ? c.W * 0.78 : c.W * 0.5, V ? c.H * 0.2 : c.H * 0.36, k1, sc1, s.placa);
+    }
+    if (s.sub) { const ks = easeOut(clamp((t - 0.6) / 0.4)); const f = `${Math.round((V ? 80 : 70) * u)}px ${DISPLAY}`;
+      drawC(ctx, String(s.sub).toUpperCase(), f, c.cx, s.logo2 ? (V ? c.H * 0.72 : c.H * 0.8) : c.cy + (V ? 230 : 200) * u, { stroke: 8 * u, alpha: ks, fill: COL.gold }); }
+  };
   S.capa = (ctx, c, t, dur, s, media) => {
     const u = c.u; const V = c.vertical; const m = media && media[s.foto]; const img = m && m.img;
     if (img) {
@@ -391,8 +418,14 @@
     const slam = (d) => { const k = clamp((t - d) / 0.18); return [k, lerp(1.35, 1, easeOut(k))]; };
     // vertical: fora da coluna de botões do TikTok (direita) e do texto do post (embaixo)
     const X0 = V ? c.W * 0.455 : c.W * 0.06; const maxW = V ? c.W * 0.78 : c.W * 0.5;
+    // logo da marca (no lugar do recorte de jornal)
+    const ml = s.logo && media && media[s.logo];
+    if (ml) { const [k, sc] = slam(0);
+      if (V) drawLogo(ctx, c, ml, c.W * 0.5, c.H * 0.25, c.W * 0.66, c.H * 0.13, k, sc, s.placa);
+      else { const r = Math.min(c.W * 0.32 / ml.img.width, c.H * 0.17 / ml.img.height); drawLogo(ctx, c, ml, X0 + ml.img.width * r / 2, c.H * 0.08 + ml.img.height * r / 2, c.W * 0.32, c.H * 0.17, k, sc, s.placa); }
+    }
     // recorte de jornal
-    if (s.recorte) {
+    if (s.recorte && !ml) {
       const [k] = slam(0); const fs = (V ? 46 : 40) * u; const f = `italic 800 ${Math.round(fs)}px ${SERIF}`;
       const lines = wrap(ctx, s.recorte, f, (V ? 520 : 560) * u).slice(0, 3); ctx.font = f;
       const w = Math.max(...lines.map((l) => ctx.measureText(l).width)) + 60 * u; const h = lines.length * fs * 1.2 + 50 * u;
@@ -406,7 +439,7 @@
     const lines = (s.linhas || []).map((l) => Array.isArray(l) ? l : [l, "white"]);
     const sizes = lines.map((l) => { const base = (l[2] || (V ? 200 : 170)) * u; ctx.font = `${Math.round(base)}px ${DISPLAY}`; const w = ctx.measureText(String(l[0]).toUpperCase()).width; return w > maxW ? base * maxW / w : base; });
     const faixaH = s.faixa ? (V ? 112 : 96) * u : 0; const blockH = faixaH + 18 * u + sizes.reduce((a, b) => a + b * 1.0, 0);
-    let y = V ? c.H * 0.47 : (c.H - blockH) / 2 + (s.recorte ? 60 * u : 0);
+    let y = V ? c.H * 0.47 : (c.H - blockH) / 2 + (ml ? 110 * u : s.recorte ? 60 * u : 0);
     const selH = s.selo ? 110 * u : 0;
     if (V && y + blockH + selH > c.H * 0.76) y = Math.max(c.H * 0.3, c.H * 0.76 - blockH - selH);
     if (s.faixa) {

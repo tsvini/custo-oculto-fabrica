@@ -152,6 +152,7 @@ def main():
     cenas = todas_cenas(p); creditos = []
     if a.formato == "miniaturas":  # só refaz as miniaturas do longo (e aplica no vídeo já publicado)
         M.wikimedia([sc for sc in cenas if sc.get("wiki")], pasta_midia, log, creditos, {})
+        M.logos(p, pasta_midia, log)
         man = M.manifesto(pasta_midia)
         from playwright.sync_api import sync_playwright
         srv, base = servidor(RAIZ, trab)
@@ -177,6 +178,7 @@ def main():
         json.dump(p, f, ensure_ascii=False)
     cred_arq = {}
     M.wikimedia([s for s in cenas if s.get("wiki")], pasta_midia, log, creditos, cred_arq)
+    M.logos(p, pasta_midia, log)
     man = M.manifesto(pasta_midia)
     for k, v in man.items():
         if k in cred_arq:
