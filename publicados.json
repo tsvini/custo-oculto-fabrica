@@ -460,6 +460,20 @@
   "caso": "netflix_en",
   "caso_titulo": null,
   "publishAt": "2026-10-16T08:00:00-03:00",
+  "status": "private",
+  "playlists": [
+   "The Netflix case | Hidden Cost"
+  ]
+ },
+ {
+  "nome": "netflix_en_serie2",
+  "tipo": "serie",
+  "idioma": "en",
+  "titulo": "Netflix: part 2 of 4 #shorts",
+  "video_id": "QxDSndr3zxY",
+  "caso": "netflix_en",
+  "caso_titulo": null,
+  "publishAt": "2026-10-15T08:00:00-03:00",
   "status": "private"
  }
 ]
