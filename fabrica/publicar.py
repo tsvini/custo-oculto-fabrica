@@ -149,6 +149,22 @@ def voz_sintetica(caso):
     return True
 
 
+_TITULOS = {}
+
+
+def ja_no_canal(idioma, titulo):
+    """Trava contra vídeo duplicado: confere os últimos uploads do canal (quando o publicados.json não foi salvo)."""
+    if idioma not in _TITULOS:
+        H = {"Authorization": f"Bearer {token(idioma)}"}; Y = "https://www.googleapis.com/youtube/v3"
+        try:
+            up = checar(requests.get(f"{Y}/channels?part=contentDetails&mine=true", headers=H, timeout=30), "canal").json()["items"][0]["contentDetails"]["relatedPlaylists"]["uploads"]
+            j = checar(requests.get(f"{Y}/playlistItems?part=snippet&maxResults=50&playlistId={up}", headers=H, timeout=30), "uploads").json()
+            _TITULOS[idioma] = {it["snippet"]["title"]: it["snippet"]["resourceId"]["videoId"] for it in j.get("items", [])}
+        except Exception as e:
+            nota("Checagem de duplicado falhou", str(e)[:200], "warning"); _TITULOS[idioma] = {}
+    return _TITULOS[idioma].get(titulo)
+
+
 def subir_video(tk, path, meta, quando):
     corpo = {"snippet": {"title": meta["titulo"], "description": meta["descricao"], "tags": meta.get("tags", [])[:30],
                          "categoryId": "27", "defaultLanguage": canal(idioma_de(meta))["yt_lang"], "defaultAudioLanguage": canal(idioma_de(meta))["yt_lang"]},
@@ -200,6 +216,15 @@ def enviar():
                 if not tem_canal(idi):  # canal ainda não autorizado: o vídeo espera na fila
                     sem_canal.add(canal(idi)["token_env"]); continue
                 tk = token(idi)
+                dup = ja_no_canal(idi, meta["titulo"])
+                if dup:  # já está no canal: só registra e tira da fila
+                    reg.append({"nome": nome, "tipo": meta["tipo"], "idioma": idi, "titulo": meta["titulo"], "video_id": dup, "caso": meta.get("caso"),
+                                "caso_titulo": meta.get("caso_titulo"), "publishAt": proximo_horario(meta["tipo"], reg, meta.get("caso"), idi).isoformat(), "status": "private"})
+                    feitos.append(f"{meta['titulo']} já estava no canal (youtu.be/{dup}), não subi de novo")
+                    for a in itens[nome]:
+                        gh("release", "delete-asset", TAG, a, "-y", check=False)
+                    json.dump(reg, open(REG, "w", encoding="utf8"), ensure_ascii=False, indent=1)
+                    continue
                 gh("release", "download", TAG, "-p", f"{nome}__*", "-D", t, "--clobber")
                 quando = proximo_horario(meta["tipo"], reg, meta.get("caso"), idi)
                 lg = next((x for x in reg if meta.get("caso") and x["nome"] == f"{meta['caso']}_longo" and x.get("video_id")), None)
