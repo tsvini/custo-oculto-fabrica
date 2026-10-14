@@ -2,6 +2,10 @@ name: Reparar registro do YouTube
 
 on:
   workflow_dispatch:
+    inputs:
+      acao:
+        description: "reconstruir | ia | ia <ids separados por vírgula>"
+        default: reconstruir
 
 jobs:
   reparar:
@@ -20,7 +24,7 @@ jobs:
           YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
           YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
         run: |
-          python -m fabrica.publicar reconstruir
+          python -m fabrica.publicar ${{ inputs.acao || 'reconstruir' }}
           git config user.name "fabrica-custo-oculto"; git config user.email "fabrica@users.noreply.github.com"
           if [ -n "$(git status --porcelain publicados.json)" ]; then
             git add publicados.json && git commit -m "Registro reconstruído [skip ci]" && for t in 1 2 3; do git pull --rebase --autostash -q origin main && git push -q origin HEAD:main && break; sleep 5; done

@@ -335,6 +335,33 @@ def reconstruir():
     nota("Registro reconstruído", f"{len(novos)} recuperados: " + "; ".join(novos))
 
 
+def ia(marcar=None):
+    """Lista o aviso de 'conteúdo alterado ou sintético' de todos os vídeos do canal; com ids, marca esses como sintéticos."""
+    tk = token(); H = {"Authorization": f"Bearer {tk}"}; Y = "https://www.googleapis.com/youtube/v3"
+    up = checar(requests.get(f"{Y}/channels?part=contentDetails&mine=true", headers=H, timeout=30), "canal").json()["items"][0]["contentDetails"]["relatedPlaylists"]["uploads"]
+    ids = []; tok = None
+    for _ in range(6):
+        j = checar(requests.get(f"{Y}/playlistItems?part=contentDetails&maxResults=50&playlistId={up}" + (f"&pageToken={tok}" if tok else ""), headers=H, timeout=30), "uploads").json()
+        ids += [it["contentDetails"]["videoId"] for it in j.get("items", [])]; tok = j.get("nextPageToken")
+        if not tok:
+            break
+    linhas = []; feitos = []
+    for k in range(0, len(ids), 50):
+        j = checar(requests.get(f"{Y}/videos?part=snippet,status&id={','.join(ids[k:k + 50])}", headers=H, timeout=30), "vídeos").json()
+        for v in j.get("items", []):
+            st = v["status"]; sint = st.get("containsSyntheticMedia")
+            if marcar and v["id"] in marcar and not sint:
+                st2 = {kk: st[kk] for kk in ("privacyStatus", "publishAt", "license", "embeddable", "publicStatsViewable", "selfDeclaredMadeForKids") if kk in st}
+                st2["containsSyntheticMedia"] = True
+                checar(requests.put(f"{Y}/videos?part=status", headers=H, timeout=30, json={"id": v["id"], "status": st2}), "marcar IA")
+                feitos.append(v["id"]); sint = True
+            linhas.append(f"{v['id']} {'IA' if sint else 'sem aviso'} · {v['snippet']['title'][:50]}")
+    for i in range(0, len(linhas), 12):
+        nota(f"Aviso de IA ({i // 12 + 1})", " | ".join(linhas[i:i + 12]))
+    if feitos:
+        nota("Marcados como IA", ", ".join(feitos))
+
+
 if __name__ == "__main__":
     cmd = sys.argv[1] if len(sys.argv) > 1 else "enviar"
     if cmd == "miniaturas":
@@ -343,6 +370,8 @@ if __name__ == "__main__":
         conferir()
     elif cmd == "comentar":
         comentar()
+    elif cmd == "ia":
+        ia(set(sys.argv[2].split(",")) if len(sys.argv) > 2 else None)
     elif cmd == "reconstruir":
         reconstruir()
     elif cmd == "playlists":
