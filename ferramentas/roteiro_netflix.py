@@ -284,6 +284,7 @@ projeto = {
              "- Falência em set/2010; Dish vence leilão em abr/2011, ~US$ 320 mi (US$ 228 mi em dinheiro) (TechCrunch, 06/04/2011)\n"
              "- Americanas compra 127 lojas da Blockbuster no Brasil por R$ 186,2 mi, anúncio 24/01/2007; plano Americanas Express (Jornal do Brasil)\n"
              "- Netflix fundada em 1997 por Hastings e Randolph; streaming em 2007; +300 mi de assinantes (último número divulgado, 301,6 mi no 4º tri de 2024)\n"
+             "- REVISÃO: prévia (voz clonada + abertura + material real) aprovada por Vinícius em 14/10/2026\n"
              "- Estrutura variada: abre na reunião (cold open), desmonta o mito, opinião explícita no capítulo 4.",
 }
 

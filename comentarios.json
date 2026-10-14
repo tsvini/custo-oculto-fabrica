@@ -7,5 +7,9 @@
  {
   "nome": "americanas_longo",
   "texto": "📌 Você tinha ação da Americanas em 2023? Quanto perdeu? Ou acha que dava pra desconfiar antes?"
+ },
+ {
+  "nome": "netflix_longo",
+  "texto": "📌 Qual foi o último filme que você alugou numa locadora? E você acha que a Blockbuster errou em recusar a Netflix?"
  }
 ]
