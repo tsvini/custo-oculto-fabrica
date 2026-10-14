@@ -47,7 +47,7 @@ async function montar(cfg) {
   const units = [];
   for (let k = 0; k < groups.length; k++) {
     const g = groups[k];
-    if (longo && k > 0) units.push({ kind: "card", dur: 2.4, scene: { type: "chapter", num: "CAPÍTULO " + k, title: (g.chapter || "CAPÍTULO " + k).toUpperCase(), size: 130 } });
+    if (longo && k > 0) units.push({ kind: "card", dur: 2.4, scene: { type: "chapter", num: (p.idioma === "en" ? "CHAPTER " : "CAPÍTULO ") + k, title: (g.chapter || (p.idioma === "en" ? "CHAPTER " : "CAPÍTULO ") + k).toUpperCase(), size: 130 } });
     const sentences = g.sentences.filter((s) => s.text && s.text.trim());
     const pa = cfg.partes[k];
     const voice = await E.decodeAudio(await (await fetch(pa.wav)).arrayBuffer());

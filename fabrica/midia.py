@@ -296,7 +296,7 @@ def wikimedia(cenas, pasta, log, creditos, creditos_arq):
             autor = r["autor"] or ("Wellcome Collection" if "Wellcome" in r["title"] else "")
             cred = f"{autor + ' / ' if autor else ''}{r['lic']} / Wikimedia Commons"
             creditos.append(f"{r['title'].replace('File:', '')}: {cred} – {r['page']}")
-            creditos_arq[k] = "Foto: " + cred
+            creditos_arq[k] = ("Photo: " if os.environ.get("IDIOMA_FALA") == "en" else "Foto: ") + cred
             log(f"  foto {k}: {r['title']} ({r['lic']})")
             print(f"::notice title=Foto real ({k})::{r['title']} · {r['lic']} · busca '{termo}'", flush=True)
             achou = True
