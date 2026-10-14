@@ -435,5 +435,20 @@
   "publishAt": "2026-10-27T12:00:00-03:00",
   "status": "private",
   "miniatura_ok": true
+ },
+ {
+  "nome": "netflix_en_longo",
+  "tipo": "longo",
+  "idioma": "en",
+  "titulo": "NETFLIX: The Company Blockbuster Refused to Buy for $50 Million",
+  "video_id": "lKaYgLyRO5I",
+  "caso": "netflix_en",
+  "caso_titulo": "Netflix",
+  "publishAt": "2026-10-15T12:00:00-03:00",
+  "status": "private",
+  "playlists": [
+   "All cases | Hidden Cost",
+   "The Netflix case | Hidden Cost"
+  ]
  }
 ]
