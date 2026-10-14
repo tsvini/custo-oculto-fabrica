@@ -202,6 +202,73 @@ tiktoks = [
      ]},
 ]
 
+
+# ---------- material real (fotos do caso, prints de manchete) ----------
+def prt(media, url, source, fb):
+    return {"type": "print", "media": media, "url": url, "source": source, "rotate": -1.0, "fallback": fb}
+
+
+def foto(media, arquivo, lower, fb):
+    return img(media, ["File:" + arquivo], lower, fb)
+
+
+TROCAS = {
+    "A loja onde quase todo brasileiro": foto("loja_rua", "Lojas Americanas - Halfeld.jpg", "Uma loja em cada esquina", big(("A LOJA", W, 140), ("DE TODO MUNDO", G, 150))),
+    "O presidente, que tinha assumido fazia nove dias": foto("rial_cae", "CAE - Comissão de Assuntos Econômicos (52777184549).jpg", "Sérgio Rial · 9 dias no cargo", big(("9 DIAS", G, 220), ("NO CARGO", W, 110))),
+    "Meses depois, a própria empresa admitiu": prt("print_fraude", "https://braziljournal.com/americanas-admite-fraude-de-r-25-bi-outros-r-20-bi-estavam-contabilizados-errado", "Brazil Journal · 13/06/2023",
+                                                   {"type": "stamp", "org": "AMERICANAS · JUNHO 2023", "title": "INCONSISTÊNCIAS", "stamp": "FRAUDE", "stamp_at": 0.9}),
+    "A ideia era simples: vender de tudo": foto("loja_curitiba", "Lojas Americanas - Centro, Curitiba.jpg", "Vender de tudo, barato", big(("DE TUDO", W, 160), ("BARATO", G, 190))),
+    "A Americanas virou sinônimo de eficiência": foto("loja_barra", "Lojas Americanas - BarraShopping.jpg", "Cultura de metas", big(("METAS", G, 200), ("AGRESSIVAS", W, 140))),
+    "Por fora, era uma das empresas mais sólidas": foto("loja_express", "Lojas Americanas em Cadima Shopping.jpg", "Por fora: sólida", big(("POR FORA", W, 130), ("SÓLIDA", G, 190))),
+    "Sérgio Rial, um executivo vindo do Santander": foto("rial_santander", "Abertura Oficial da 18ª Conferência Anual Santander (cropped).jpg", "Sérgio Rial · ex-Santander", big(("SÉRGIO RIAL", W, 150), ("NOVO PRESIDENTE", G, 100))),
+    "E o Rial disse uma frase que assustou": prt("print_7a9", "https://mercadoeconsumo.com.br/12/01/2023/noticias-varejo/problema-na-americanas-se-arrasta-por-cerca-de-7-a-9-anos-diz-sergio-rial/", "Mercado & Consumo · 12/01/2023",
+                                               big(("O PROBLEMA VINHA", W, 110), ("DE 7 A 9 ANOS", R, 160))),
+    "Fornecedores pagam pra Americanas expor": foto("loja_express", "Lojas Americanas em Cadima Shopping.jpg", "Verba de propaganda", big(("FORNECEDOR PAGA", W, 110), ("PRA APARECER", G, 150))),
+    "Em junho de dois mil e vinte e três, a Americanas disse oficialmente": prt("print_fraude", "https://braziljournal.com/americanas-admite-fraude-de-r-25-bi-outros-r-20-bi-estavam-contabilizados-errado", "Brazil Journal · 13/06/2023",
+                                               {"type": "stamp", "org": "FATO RELEVANTE · JUN 2023", "title": "A DIRETORIA ANTERIOR", "stamp": "FRAUDE", "stamp_at": 0.9}),
+    "Oito dias depois do comunicado": prt("print_rj", "https://forbes.com.br/forbes-money/2023/01/sem-acordo-com-credores-americanas-pede-recuperacao-judicial/", "Forbes Brasil · 19/01/2023",
+                                          {"type": "date", "month": "JANEIRO", "day": "19", "year": "2023", "tag": "RECUPERAÇÃO JUDICIAL"}),
+    "Quem pagou primeiro foi quem tinha ação": foto("bovespa", "Bovespa, São Paulo city downtown.jpg", "Bolsa de valores · São Paulo", big(("QUEM TINHA", W, 140), ("AÇÃO", R, 200))),
+    "E fica a pergunta que muita gente fez": foto("cpi", "CPI Americanas - Apresentação do plano de trabalho do relator.jpg", "CPI das Americanas · Câmara dos Deputados, 2023", big(("COMO", W, 160), ("NINGUÉM VIU?", R, 170))),
+    "Foram quinze mandados de busca": foto("pf_sede", "Sede da Polícia Federal (52830107256).jpg", "Polícia Federal · Operação Disclosure", {"type": "compare", "title": "OPERAÇÃO DISCLOSURE", "items": [["15", "MANDADOS DE BUSCA", W], ["+R$ 500 MI", "BLOQUEADOS", R]], "size": 160, "stagger": 1.2, "vs": False}),
+    "Ele foi preso em Madri no dia seguinte": prt("print_madri", "https://www.bloomberglinea.com.br/negocios/preso-pela-interpol-em-madri-ex-ceo-da-americanas-e-protegido-por-cidadania-espanhola/", "Bloomberg Línea · 28/06/2024",
+                                                 {"type": "board", "header": "MADRI · 28/06/2024", "flip_at": 0.5, "rows": [["PRESO", "SOLTO"]]}),
+    "Mais tarde, a Justiça brasileira revogou": prt("print_trf2", "https://www.conjur.com.br/2024-ago-22/trf-2-revoga-ordem-de-prisao-contra-ex-ceo-das-americanas/", "Conjur · 22/08/2024", big(("RESPONDE", W, 150), ("EM LIBERDADE", G, 150))),
+    "Em dois mil e vinte e cinco, o Ministério Público Federal denunciou": prt("print_mpf", "https://diariodonordeste.verdesmares.com.br/negocios/mpf-denuncia-13-pessoas-por-fraudes-nas-americanas-novo-delator-e-revelado-1.3636088", "Diário do Nordeste · 31/03/2025",
+                                                 {"type": "counter", "value": 13, "suffix": " PESSOAS", "over": "DENÚNCIA DO MPF · 2025", "label": "EX-EXECUTIVOS E EX-FUNCIONÁRIOS", "color": R, "size": 220}),
+    "E a Americanas? Ela continua aberta": foto("am_hoje", "Reunião Deliberativa. Diretor-Presidente - Americanas S.A., Leonardo Coelho Pereira - Bruno Spada-Câmara dos Deputados.jpg", "Leonardo Coelho, atual presidente da Americanas, na Câmara",
+                                                {"type": "date", "month": "MARÇO", "day": "25", "year": "2026", "tag": "PEDE PRA SAIR DA RECUPERAÇÃO"}),
+    # Shorts
+    "Em janeiro de dois mil e vinte e três, Sérgio Rial assumiu": foto("rial_santander", "Abertura Oficial da 18ª Conferência Anual Santander (cropped).jpg", "Sérgio Rial assume a Americanas", {"type": "date", "month": "JANEIRO", "day": "02", "year": "2023", "tag": "RIAL ASSUME"}),
+    "No dia onze, contou tudo ao mercado": foto("rial_cae", "CAE - Comissão de Assuntos Econômicos (52777184549).jpg", "Sérgio Rial · contou e saiu", big(("CONTOU", W, 150), ("E SAIU", R, 190))),
+    "Depois, a empresa admitiu: era fraude": prt("print_fraude", "https://braziljournal.com/americanas-admite-fraude-de-r-25-bi-outros-r-20-bi-estavam-contabilizados-errado", "Brazil Journal · 13/06/2023",
+                                                 {"type": "counter", "value": 25, "prefix": "R$ ", "suffix": " BI", "over": "A FRAUDE", "label": "OS ACUSADOS NEGAM", "color": R, "size": 230}),
+    "A empresa culpou a diretoria anterior, que nega": prt("print_fraude", "https://braziljournal.com/americanas-admite-fraude-de-r-25-bi-outros-r-20-bi-estavam-contabilizados-errado", "Brazil Journal · 13/06/2023",
+                                                 big(("A DIRETORIA ANTERIOR", W, 100), ("NEGA", M, 170))),
+    "Em junho de dois mil e vinte e quatro, a Polícia Federal fez uma operação": prt("print_madri", "https://www.bloomberglinea.com.br/negocios/preso-pela-interpol-em-madri-ex-ceo-da-americanas-e-protegido-por-cidadania-espanhola/", "Bloomberg Línea · 28/06/2024",
+                                                 {"type": "date", "month": "JUNHO", "day": "28", "year": "2024", "tag": "PRESO EM MADRI"}),
+    "Quem tinha ação perdeu setenta e sete": foto("bovespa", "Bovespa, São Paulo city downtown.jpg", "Quem tinha ação", {"type": "counter", "value": 77, "prefix": "-", "suffix": "%", "over": "QUEM TINHA AÇÃO", "label": "EM UM DIA", "color": R, "size": 240}),
+    # TikTok
+    "Nove dias depois, ele saiu": foto("rial_cae", "CAE - Comissão de Assuntos Econômicos (52777184549).jpg", "Sérgio Rial · 9 dias", {"type": "counter", "value": 20, "prefix": "R$ ", "suffix": " BI", "over": "9 DIAS DEPOIS", "label": "UM BURACO NAS CONTAS", "color": R, "size": 230}),
+    "O ex-presidente foi preso na Espanha e solto": prt("print_madri", "https://www.bloomberglinea.com.br/negocios/preso-pela-interpol-em-madri-ex-ceo-da-americanas-e-protegido-por-cidadania-espanhola/", "Bloomberg Línea · 28/06/2024",
+                                                 big(("PRESO E SOLTO", W, 130), ("NA ESPANHA", G, 150))),
+}
+
+
+def aplica_trocas(grupos):
+    usadas = set()
+    for g in grupos:
+        for s in g["sentences"]:
+            for k, sc in TROCAS.items():
+                if s["text"].startswith(k):
+                    s["scene"] = sc; usadas.add(k)
+    return usadas
+
+
+_u = aplica_trocas(long_parts) | aplica_trocas(shorts) | aplica_trocas(tiktoks)
+_faltou = [k for k in TROCAS if k not in _u]
+assert not _faltou, f"trocas sem frase: {_faltou}"
+
 projeto = {
     "title": "Americanas",
     "slug": "americanas",

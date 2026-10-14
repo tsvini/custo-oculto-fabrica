@@ -63,6 +63,8 @@ jobs:
               echo "formato=$(head -1 "$r" | awk '{print $1}')" >> "$GITHUB_OUTPUT"
               # segunda palavra "teste" = voz falsa (prévia antes de gravar; nunca vai para o YouTube)
               if head -1 "$r" | awk '{print $2}' | grep -qx teste; then echo "modo=teste" >> "$GITHUB_OUTPUT"; fi
+              # segunda palavra "previa" = voz de verdade, mas não publica (para aprovação)
+              if head -1 "$r" | awk '{print $2}' | grep -qx previa; then echo "previa=1" >> "$GITHUB_OUTPUT"; fi
             fi
           fi
           echo "lista=$lista" >> "$GITHUB_OUTPUT"
@@ -152,7 +154,7 @@ jobs:
           compression-level: 0
 
       - name: Publicar no YouTube (fila + agendamento)
-        if: ${{ env.YT_REFRESH_TOKEN != '' && (inputs.modo || steps.alvo.outputs.modo || 'gravada') != 'teste' }}
+        if: ${{ env.YT_REFRESH_TOKEN != '' && (inputs.modo || steps.alvo.outputs.modo || 'gravada') != 'teste' && steps.alvo.outputs.previa != '1' }}
         env:
           GH_TOKEN: ${{ github.token }}
           YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}

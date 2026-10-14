@@ -39,20 +39,29 @@
       {
        "text": "O presidente, que tinha assumido fazia nove dias, pediu demissão na mesma hora.",
        "scene": {
-        "type": "bigtext",
-        "stagger": 0.25,
-        "lines": [
-         [
-          "9 DIAS",
-          "gold",
-          220
-         ],
-         [
-          "NO CARGO",
-          "white",
-          110
+        "type": "image",
+        "media": "rial_cae",
+        "wiki": [
+         "File:CAE - Comissão de Assuntos Econômicos (52777184549).jpg"
+        ],
+        "lower": "Sérgio Rial · 9 dias no cargo",
+        "dim": 0.4,
+        "fallback": {
+         "type": "bigtext",
+         "stagger": 0.25,
+         "lines": [
+          [
+           "9 DIAS",
+           "gold",
+           220
+          ],
+          [
+           "NO CARGO",
+           "white",
+           110
+          ]
          ]
-        ]
+        }
        }
       },
       {
@@ -91,13 +100,13 @@
       {
        "text": "A loja onde quase todo brasileiro já comprou um chocolate, um carregador ou um presente de última hora.",
        "scene": {
-        "type": "video",
-        "media": "loja_corredor",
-        "search": "store aisle shopping shelves",
-        "search_en": "store aisle shopping shelves",
-        "start": 0.0,
+        "type": "image",
+        "media": "loja_rua",
+        "wiki": [
+         "File:Lojas Americanas - Halfeld.jpg"
+        ],
+        "lower": "Uma loja em cada esquina",
         "dim": 0.4,
-        "lower": "A loja de todo mundo",
         "fallback": {
          "type": "bigtext",
          "stagger": 0.25,
@@ -113,18 +122,24 @@
            150
           ]
          ]
-        },
-        "pixabay_id": 21117
+        }
        }
       },
       {
        "text": "Meses depois, a própria empresa admitiu que não era erro. Era fraude.",
        "scene": {
-        "type": "stamp",
-        "org": "AMERICANAS · JUNHO 2023",
-        "title": "INCONSISTÊNCIAS",
-        "stamp": "FRAUDE",
-        "stamp_at": 0.9
+        "type": "print",
+        "media": "print_fraude",
+        "url": "https://braziljournal.com/americanas-admite-fraude-de-r-25-bi-outros-r-20-bi-estavam-contabilizados-errado",
+        "source": "Brazil Journal · 13/06/2023",
+        "rotate": -1.0,
+        "fallback": {
+         "type": "stamp",
+         "org": "AMERICANAS · JUNHO 2023",
+         "title": "INCONSISTÊNCIAS",
+         "stamp": "FRAUDE",
+         "stamp_at": 0.9
+        }
        }
       },
       {
@@ -191,13 +206,13 @@
       {
        "text": "A ideia era simples: vender de tudo, barato.",
        "scene": {
-        "type": "video",
-        "media": "loja_prateleira",
-        "search": "supermarket shelves products",
-        "search_en": "supermarket shelves products",
-        "start": 0.0,
-        "dim": 0.4,
+        "type": "image",
+        "media": "loja_curitiba",
+        "wiki": [
+         "File:Lojas Americanas - Centro, Curitiba.jpg"
+        ],
         "lower": "Vender de tudo, barato",
+        "dim": 0.4,
         "fallback": {
          "type": "bigtext",
          "stagger": 0.25,
@@ -213,8 +228,7 @@
            190
           ]
          ]
-        },
-        "pixabay_id": 1735
+        }
        }
       },
       {
@@ -281,13 +295,13 @@
       {
        "text": "A Americanas virou sinônimo de eficiência. Corte de custos, metas agressivas e muito crescimento.",
        "scene": {
-        "type": "video",
-        "media": "escritorio_meta",
-        "search": "business meeting charts office",
-        "search_en": "business meeting charts office",
-        "start": 0.0,
-        "dim": 0.4,
+        "type": "image",
+        "media": "loja_barra",
+        "wiki": [
+         "File:Lojas Americanas - BarraShopping.jpg"
+        ],
         "lower": "Cultura de metas",
+        "dim": 0.4,
         "fallback": {
          "type": "bigtext",
          "stagger": 0.25,
@@ -303,8 +317,7 @@
            140
           ]
          ]
-        },
-        "pixabay_id": 148867
+        }
        }
       },
       {
@@ -377,13 +390,13 @@
       {
        "text": "Por fora, era uma das empresas mais sólidas do Brasil.",
        "scene": {
-        "type": "video",
-        "media": "galpao",
-        "search": "warehouse boxes logistics",
-        "search_en": "warehouse boxes logistics",
-        "start": 0.0,
-        "dim": 0.4,
+        "type": "image",
+        "media": "loja_express",
+        "wiki": [
+         "File:Lojas Americanas em Cadima Shopping.jpg"
+        ],
         "lower": "Por fora: sólida",
+        "dim": 0.4,
         "fallback": {
          "type": "bigtext",
          "stagger": 0.25,
@@ -399,8 +412,7 @@
            190
           ]
          ]
-        },
-        "pixabay_id": 43658
+        }
        }
       }
      ]
@@ -421,20 +433,29 @@
       {
        "text": "Sérgio Rial, um executivo vindo do Santander.",
        "scene": {
-        "type": "bigtext",
-        "stagger": 0.25,
-        "lines": [
-         [
-          "SÉRGIO RIAL",
-          "white",
-          150
-         ],
-         [
-          "NOVO PRESIDENTE",
-          "gold",
-          100
+        "type": "image",
+        "media": "rial_santander",
+        "wiki": [
+         "File:Abertura Oficial da 18ª Conferência Anual Santander (cropped).jpg"
+        ],
+        "lower": "Sérgio Rial · ex-Santander",
+        "dim": 0.4,
+        "fallback": {
+         "type": "bigtext",
+         "stagger": 0.25,
+         "lines": [
+          [
+           "SÉRGIO RIAL",
+           "white",
+           150
+          ],
+          [
+           "NOVO PRESIDENTE",
+           "gold",
+           100
+          ]
          ]
-        ]
+        }
        }
       },
       {
@@ -562,20 +583,27 @@
       {
        "text": "E o Rial disse uma frase que assustou ainda mais: o problema vinha de sete a nove anos.",
        "scene": {
-        "type": "bigtext",
-        "stagger": 0.25,
-        "lines": [
-         [
-          "O PROBLEMA VINHA",
-          "white",
-          110
-         ],
-         [
-          "DE 7 A 9 ANOS",
-          "red",
-          160
+        "type": "print",
+        "media": "print_7a9",
+        "url": "https://mercadoeconsumo.com.br/12/01/2023/noticias-varejo/problema-na-americanas-se-arrasta-por-cerca-de-7-a-9-anos-diz-sergio-rial/",
+        "source": "Mercado & Consumo · 12/01/2023",
+        "rotate": -1.0,
+        "fallback": {
+         "type": "bigtext",
+         "stagger": 0.25,
+         "lines": [
+          [
+           "O PROBLEMA VINHA",
+           "white",
+           110
+          ],
+          [
+           "DE 7 A 9 ANOS",
+           "red",
+           160
+          ]
          ]
-        ]
+        }
        }
       },
       {
@@ -745,13 +773,13 @@
       {
        "text": "Fornecedores pagam pra Americanas expor e anunciar os produtos deles. Isso é normal no varejo.",
        "scene": {
-        "type": "video",
-        "media": "loja_prateleira",
-        "search": "supermarket shelves products",
-        "search_en": "supermarket shelves products",
-        "start": 0.0,
-        "dim": 0.4,
+        "type": "image",
+        "media": "loja_express",
+        "wiki": [
+         "File:Lojas Americanas em Cadima Shopping.jpg"
+        ],
         "lower": "Verba de propaganda",
+        "dim": 0.4,
         "fallback": {
          "type": "bigtext",
          "stagger": 0.25,
@@ -767,8 +795,7 @@
            150
           ]
          ]
-        },
-        "pixabay_id": 1735
+        }
        }
       },
       {
@@ -841,11 +868,18 @@
       {
        "text": "Em junho de dois mil e vinte e três, a Americanas disse oficialmente que foi fraude, e apontou a diretoria anterior.",
        "scene": {
-        "type": "stamp",
-        "org": "FATO RELEVANTE · JUN 2023",
-        "title": "A DIRETORIA ANTERIOR",
-        "stamp": "FRAUDE",
-        "stamp_at": 0.9
+        "type": "print",
+        "media": "print_fraude",
+        "url": "https://braziljournal.com/americanas-admite-fraude-de-r-25-bi-outros-r-20-bi-estavam-contabilizados-errado",
+        "source": "Brazil Journal · 13/06/2023",
+        "rotate": -1.0,
+        "fallback": {
+         "type": "stamp",
+         "org": "FATO RELEVANTE · JUN 2023",
+         "title": "A DIRETORIA ANTERIOR",
+         "stamp": "FRAUDE",
+         "stamp_at": 0.9
+        }
        }
       },
       {
@@ -917,11 +951,18 @@
       {
        "text": "Oito dias depois do comunicado, a Americanas pediu recuperação judicial.",
        "scene": {
-        "type": "date",
-        "month": "JANEIRO",
-        "day": "19",
-        "year": "2023",
-        "tag": "RECUPERAÇÃO JUDICIAL"
+        "type": "print",
+        "media": "print_rj",
+        "url": "https://forbes.com.br/forbes-money/2023/01/sem-acordo-com-credores-americanas-pede-recuperacao-judicial/",
+        "source": "Forbes Brasil · 19/01/2023",
+        "rotate": -1.0,
+        "fallback": {
+         "type": "date",
+         "month": "JANEIRO",
+         "day": "19",
+         "year": "2023",
+         "tag": "RECUPERAÇÃO JUDICIAL"
+        }
        }
       },
       {
@@ -1109,13 +1150,11 @@
        "text": "Quem pagou primeiro foi quem tinha ação da Americanas.",
        "scene": {
         "type": "image",
-        "media": "b3",
+        "media": "bovespa",
         "wiki": [
-         "B3 Bolsa de Valores São Paulo edifício",
-         "Bolsa de Valores de São Paulo",
-         "BM&FBovespa building"
+         "File:Bovespa, São Paulo city downtown.jpg"
         ],
-        "lower": "Quem tinha ação",
+        "lower": "Bolsa de valores · São Paulo",
         "dim": 0.4,
         "fallback": {
          "type": "bigtext",
@@ -1333,20 +1372,29 @@
       {
        "text": "E fica a pergunta que muita gente fez: como auditorias, bancos e conselheiros não viram vinte e cinco bilhões por tantos anos?",
        "scene": {
-        "type": "bigtext",
-        "stagger": 0.25,
-        "lines": [
-         [
-          "COMO",
-          "white",
-          160
-         ],
-         [
-          "NINGUÉM VIU?",
-          "red",
-          170
+        "type": "image",
+        "media": "cpi",
+        "wiki": [
+         "File:CPI Americanas - Apresentação do plano de trabalho do relator.jpg"
+        ],
+        "lower": "CPI das Americanas · Câmara dos Deputados, 2023",
+        "dim": 0.4,
+        "fallback": {
+         "type": "bigtext",
+         "stagger": 0.25,
+         "lines": [
+          [
+           "COMO",
+           "white",
+           160
+          ],
+          [
+           "NINGUÉM VIU?",
+           "red",
+           170
+          ]
          ]
-        ]
+        }
        }
       },
       {
@@ -1386,23 +1434,32 @@
       {
        "text": "Foram quinze mandados de busca e o bloqueio de mais de quinhentos milhões de reais de ex-diretores.",
        "scene": {
-        "type": "compare",
-        "title": "OPERAÇÃO DISCLOSURE",
-        "items": [
-         [
-          "15",
-          "MANDADOS DE BUSCA",
-          "white"
-         ],
-         [
-          "+R$ 500 MI",
-          "BLOQUEADOS",
-          "red"
-         ]
+        "type": "image",
+        "media": "pf_sede",
+        "wiki": [
+         "File:Sede da Polícia Federal (52830107256).jpg"
         ],
-        "size": 160,
-        "stagger": 1.2,
-        "vs": false
+        "lower": "Polícia Federal · Operação Disclosure",
+        "dim": 0.4,
+        "fallback": {
+         "type": "compare",
+         "title": "OPERAÇÃO DISCLOSURE",
+         "items": [
+          [
+           "15",
+           "MANDADOS DE BUSCA",
+           "white"
+          ],
+          [
+           "+R$ 500 MI",
+           "BLOQUEADOS",
+           "red"
+          ]
+         ],
+         "size": 160,
+         "stagger": 1.2,
+         "vs": false
+        }
        }
       },
       {
@@ -1438,46 +1495,67 @@
       {
        "text": "Ele foi preso em Madri no dia seguinte, e solto logo depois.",
        "scene": {
-        "type": "board",
-        "header": "MADRI · 28/06/2024",
-        "flip_at": 0.5,
-        "rows": [
-         [
-          "PRESO",
-          "SOLTO"
+        "type": "print",
+        "media": "print_madri",
+        "url": "https://www.bloomberglinea.com.br/negocios/preso-pela-interpol-em-madri-ex-ceo-da-americanas-e-protegido-por-cidadania-espanhola/",
+        "source": "Bloomberg Línea · 28/06/2024",
+        "rotate": -1.0,
+        "fallback": {
+         "type": "board",
+         "header": "MADRI · 28/06/2024",
+         "flip_at": 0.5,
+         "rows": [
+          [
+           "PRESO",
+           "SOLTO"
+          ]
          ]
-        ]
+        }
        }
       },
       {
        "text": "Mais tarde, a Justiça brasileira revogou a ordem de prisão, e ele passou a responder em liberdade.",
        "scene": {
-        "type": "bigtext",
-        "stagger": 0.25,
-        "lines": [
-         [
-          "RESPONDE",
-          "white",
-          150
-         ],
-         [
-          "EM LIBERDADE",
-          "gold",
-          150
+        "type": "print",
+        "media": "print_trf2",
+        "url": "https://www.conjur.com.br/2024-ago-22/trf-2-revoga-ordem-de-prisao-contra-ex-ceo-das-americanas/",
+        "source": "Conjur · 22/08/2024",
+        "rotate": -1.0,
+        "fallback": {
+         "type": "bigtext",
+         "stagger": 0.25,
+         "lines": [
+          [
+           "RESPONDE",
+           "white",
+           150
+          ],
+          [
+           "EM LIBERDADE",
+           "gold",
+           150
+          ]
          ]
-        ]
+        }
        }
       },
       {
        "text": "Em dois mil e vinte e cinco, o Ministério Público Federal denunciou treze ex-executivos e ex-funcionários.",
        "scene": {
-        "type": "counter",
-        "value": 13,
-        "suffix": " PESSOAS",
-        "over": "DENÚNCIA DO MPF · 2025",
-        "label": "EX-EXECUTIVOS E EX-FUNCIONÁRIOS",
-        "color": "red",
-        "size": 220
+        "type": "print",
+        "media": "print_mpf",
+        "url": "https://diariodonordeste.verdesmares.com.br/negocios/mpf-denuncia-13-pessoas-por-fraudes-nas-americanas-novo-delator-e-revelado-1.3636088",
+        "source": "Diário do Nordeste · 31/03/2025",
+        "rotate": -1.0,
+        "fallback": {
+         "type": "counter",
+         "value": 13,
+         "suffix": " PESSOAS",
+         "over": "DENÚNCIA DO MPF · 2025",
+         "label": "EX-EXECUTIVOS E EX-FUNCIONÁRIOS",
+         "color": "red",
+         "size": 220
+        }
        }
       },
       {
@@ -1540,11 +1618,20 @@
       {
        "text": "E a Americanas? Ela continua aberta, menor, e em março de dois mil e vinte e seis pediu pra sair da recuperação judicial.",
        "scene": {
-        "type": "date",
-        "month": "MARÇO",
-        "day": "25",
-        "year": "2026",
-        "tag": "PEDE PRA SAIR DA RECUPERAÇÃO"
+        "type": "image",
+        "media": "am_hoje",
+        "wiki": [
+         "File:Reunião Deliberativa. Diretor-Presidente - Americanas S.A., Leonardo Coelho Pereira - Bruno Spada-Câmara dos Deputados.jpg"
+        ],
+        "lower": "Leonardo Coelho, atual presidente da Americanas, na Câmara",
+        "dim": 0.4,
+        "fallback": {
+         "type": "date",
+         "month": "MARÇO",
+         "day": "25",
+         "year": "2026",
+         "tag": "PEDE PRA SAIR DA RECUPERAÇÃO"
+        }
        }
       },
       {
@@ -1692,11 +1779,20 @@
      {
       "text": "Em janeiro de dois mil e vinte e três, Sérgio Rial assumiu a Americanas.",
       "scene": {
-       "type": "date",
-       "month": "JANEIRO",
-       "day": "02",
-       "year": "2023",
-       "tag": "RIAL ASSUME"
+       "type": "image",
+       "media": "rial_santander",
+       "wiki": [
+        "File:Abertura Oficial da 18ª Conferência Anual Santander (cropped).jpg"
+       ],
+       "lower": "Sérgio Rial assume a Americanas",
+       "dim": 0.4,
+       "fallback": {
+        "type": "date",
+        "month": "JANEIRO",
+        "day": "02",
+        "year": "2023",
+        "tag": "RIAL ASSUME"
+       }
       }
      },
      {
@@ -1721,20 +1817,29 @@
      {
       "text": "No dia onze, contou tudo ao mercado e pediu demissão.",
       "scene": {
-       "type": "bigtext",
-       "stagger": 0.25,
-       "lines": [
-        [
-         "CONTOU",
-         "white",
-         150
-        ],
-        [
-         "E SAIU",
-         "red",
-         190
+       "type": "image",
+       "media": "rial_cae",
+       "wiki": [
+        "File:CAE - Comissão de Assuntos Econômicos (52777184549).jpg"
+       ],
+       "lower": "Sérgio Rial · contou e saiu",
+       "dim": 0.4,
+       "fallback": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "CONTOU",
+          "white",
+          150
+         ],
+         [
+          "E SAIU",
+          "red",
+          190
+         ]
         ]
-       ]
+       }
       }
      },
      {
@@ -1753,14 +1858,21 @@
      {
       "text": "Depois, a empresa admitiu: era fraude de vinte e cinco bilhões. Os acusados negam.",
       "scene": {
-       "type": "counter",
-       "value": 25,
-       "prefix": "R$ ",
-       "suffix": " BI",
-       "over": "A FRAUDE",
-       "label": "OS ACUSADOS NEGAM",
-       "color": "red",
-       "size": 230
+       "type": "print",
+       "media": "print_fraude",
+       "url": "https://braziljournal.com/americanas-admite-fraude-de-r-25-bi-outros-r-20-bi-estavam-contabilizados-errado",
+       "source": "Brazil Journal · 13/06/2023",
+       "rotate": -1.0,
+       "fallback": {
+        "type": "counter",
+        "value": 25,
+        "prefix": "R$ ",
+        "suffix": " BI",
+        "over": "A FRAUDE",
+        "label": "OS ACUSADOS NEGAM",
+        "color": "red",
+        "size": 230
+       }
       }
      },
      {
@@ -1884,20 +1996,27 @@
      {
       "text": "A empresa culpou a diretoria anterior, que nega.",
       "scene": {
-       "type": "bigtext",
-       "stagger": 0.25,
-       "lines": [
-        [
-         "A DIRETORIA ANTERIOR",
-         "white",
-         100
-        ],
-        [
-         "NEGA",
-         "muted",
-         170
+       "type": "print",
+       "media": "print_fraude",
+       "url": "https://braziljournal.com/americanas-admite-fraude-de-r-25-bi-outros-r-20-bi-estavam-contabilizados-errado",
+       "source": "Brazil Journal · 13/06/2023",
+       "rotate": -1.0,
+       "fallback": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "A DIRETORIA ANTERIOR",
+          "white",
+          100
+         ],
+         [
+          "NEGA",
+          "muted",
+          170
+         ]
         ]
-       ]
+       }
       }
      },
      {
@@ -1998,11 +2117,18 @@
      {
       "text": "Em junho de dois mil e vinte e quatro, a Polícia Federal fez uma operação, e ele foi preso em Madri.",
       "scene": {
-       "type": "date",
-       "month": "JUNHO",
-       "day": "28",
-       "year": "2024",
-       "tag": "PRESO EM MADRI"
+       "type": "print",
+       "media": "print_madri",
+       "url": "https://www.bloomberglinea.com.br/negocios/preso-pela-interpol-em-madri-ex-ceo-da-americanas-e-protegido-por-cidadania-espanhola/",
+       "source": "Bloomberg Línea · 28/06/2024",
+       "rotate": -1.0,
+       "fallback": {
+        "type": "date",
+        "month": "JUNHO",
+        "day": "28",
+        "year": "2024",
+        "tag": "PRESO EM MADRI"
+       }
       }
      },
      {
@@ -2096,14 +2222,23 @@
      {
       "text": "Quem tinha ação perdeu setenta e sete por cento em um dia.",
       "scene": {
-       "type": "counter",
-       "value": 77,
-       "prefix": "-",
-       "suffix": "%",
-       "over": "QUEM TINHA AÇÃO",
-       "label": "EM UM DIA",
-       "color": "red",
-       "size": 240
+       "type": "image",
+       "media": "bovespa",
+       "wiki": [
+        "File:Bovespa, São Paulo city downtown.jpg"
+       ],
+       "lower": "Quem tinha ação",
+       "dim": 0.4,
+       "fallback": {
+        "type": "counter",
+        "value": 77,
+        "prefix": "-",
+        "suffix": "%",
+        "over": "QUEM TINHA AÇÃO",
+        "label": "EM UM DIA",
+        "color": "red",
+        "size": 240
+       }
       }
      },
      {
@@ -2275,14 +2410,23 @@
      {
       "text": "Nove dias depois, ele saiu, e a empresa avisou o mercado: tinha um buraco de vinte bilhões nas contas.",
       "scene": {
-       "type": "counter",
-       "value": 20,
-       "prefix": "R$ ",
-       "suffix": " BI",
-       "over": "9 DIAS DEPOIS",
-       "label": "UM BURACO NAS CONTAS",
-       "color": "red",
-       "size": 230
+       "type": "image",
+       "media": "rial_cae",
+       "wiki": [
+        "File:CAE - Comissão de Assuntos Econômicos (52777184549).jpg"
+       ],
+       "lower": "Sérgio Rial · 9 dias",
+       "dim": 0.4,
+       "fallback": {
+        "type": "counter",
+        "value": 20,
+        "prefix": "R$ ",
+        "suffix": " BI",
+        "over": "9 DIAS DEPOIS",
+        "label": "UM BURACO NAS CONTAS",
+        "color": "red",
+        "size": 230
+       }
       }
      },
      {
@@ -2442,20 +2586,27 @@
      {
       "text": "O ex-presidente foi preso na Espanha e solto no dia seguinte. Hoje responde em liberdade.",
       "scene": {
-       "type": "bigtext",
-       "stagger": 0.25,
-       "lines": [
-        [
-         "PRESO E SOLTO",
-         "white",
-         130
-        ],
-        [
-         "NA ESPANHA",
-         "gold",
-         150
+       "type": "print",
+       "media": "print_madri",
+       "url": "https://www.bloomberglinea.com.br/negocios/preso-pela-interpol-em-madri-ex-ceo-da-americanas-e-protegido-por-cidadania-espanhola/",
+       "source": "Bloomberg Línea · 28/06/2024",
+       "rotate": -1.0,
+       "fallback": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "PRESO E SOLTO",
+          "white",
+          130
+         ],
+         [
+          "NA ESPANHA",
+          "gold",
+          150
+         ]
         ]
-       ]
+       }
       }
      },
      {
