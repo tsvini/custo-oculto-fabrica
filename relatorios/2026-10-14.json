@@ -454,8 +454,7 @@
   "itapemirim_longo": [],
   "kolynos_longo": [],
   "banco_master_longo": [],
-  "americanas_longo": [],
-  "netflix_longo": []
+  "americanas_longo": []
  },
  "nomes": {
   "4WuKNxpR188": "itapemirim_longo",
@@ -469,27 +468,7 @@
   "Po7fZ2-6vNg": "banco_master_serie2",
   "FHltNOMCClI": "banco_master_serie3",
   "6hhsJO6vgpo": "banco_master_serie4",
-  "D5PndwsbJX8": "kolynos_serie1",
-  "CaHfIs58EPM": "kolynos_serie2",
-  "cWPSGveRO5A": "kolynos_serie3",
-  "pDz4KseN7K8": "americanas_longo",
-  "eHMQiwvq4Dk": "americanas_serie1",
-  "uapXQ6PbGnk": "americanas_short1",
-  "HbPPRm28WlQ": "americanas_serie2",
-  "Dn584fxiz0k": "americanas_short2",
-  "thhbRuDQZnA": "americanas_serie3",
-  "xyGepfkgHNk": "americanas_short3",
-  "5h38bDNpjGg": "americanas_serie4",
-  "8lB7xWs1I3M": "americanas_short4",
-  "3KXjrM_d9Ak": "netflix_longo",
-  "gKTQWd_ho_k": "netflix_serie1",
-  "wHp8hnjXbcI": "netflix_short1",
-  "xtdhdzvreYo": "netflix_serie2",
-  "S-VfnR_IR40": "netflix_short2",
-  "EDA9YCmgfvY": "netflix_serie3",
-  "KoEfOX6_SA4": "netflix_short3",
-  "L50I8bjXk_M": "netflix_serie4",
-  "vp0WgkuUjUk": "netflix_short4"
+  "pDz4KseN7K8": "americanas_longo"
  },
  "contagem_atual": {
   "itapemirim_longo": {
@@ -511,7 +490,7 @@
    "status": "public"
   },
   "banco_master_short1": {
-   "views": 99,
+   "views": 106,
    "likes": 7,
    "comentarios": 1,
    "status": "public"
@@ -558,127 +537,7 @@
    "comentarios": 0,
    "status": "private"
   },
-  "kolynos_serie1": {
-   "views": 0,
-   "likes": 0,
-   "comentarios": 0,
-   "status": "private"
-  },
-  "kolynos_serie2": {
-   "views": 0,
-   "likes": 0,
-   "comentarios": 0,
-   "status": "private"
-  },
-  "kolynos_serie3": {
-   "views": 0,
-   "likes": 0,
-   "comentarios": 0,
-   "status": "private"
-  },
   "americanas_longo": {
-   "views": 0,
-   "likes": 0,
-   "comentarios": 0,
-   "status": "private"
-  },
-  "americanas_serie1": {
-   "views": 0,
-   "likes": 0,
-   "comentarios": 0,
-   "status": "private"
-  },
-  "americanas_short1": {
-   "views": 0,
-   "likes": 0,
-   "comentarios": 0,
-   "status": "private"
-  },
-  "americanas_serie2": {
-   "views": 0,
-   "likes": 0,
-   "comentarios": 0,
-   "status": "private"
-  },
-  "americanas_short2": {
-   "views": 0,
-   "likes": 0,
-   "comentarios": 0,
-   "status": "private"
-  },
-  "americanas_serie3": {
-   "views": 0,
-   "likes": 0,
-   "comentarios": 0,
-   "status": "private"
-  },
-  "americanas_short3": {
-   "views": 0,
-   "likes": 0,
-   "comentarios": 0,
-   "status": "private"
-  },
-  "americanas_serie4": {
-   "views": 0,
-   "likes": 0,
-   "comentarios": 0,
-   "status": "private"
-  },
-  "americanas_short4": {
-   "views": 0,
-   "likes": 0,
-   "comentarios": 0,
-   "status": "private"
-  },
-  "netflix_longo": {
-   "views": 0,
-   "likes": 0,
-   "comentarios": 0,
-   "status": "private"
-  },
-  "netflix_serie1": {
-   "views": 0,
-   "likes": 0,
-   "comentarios": 0,
-   "status": "private"
-  },
-  "netflix_short1": {
-   "views": 0,
-   "likes": 0,
-   "comentarios": 0,
-   "status": "private"
-  },
-  "netflix_serie2": {
-   "views": 0,
-   "likes": 0,
-   "comentarios": 0,
-   "status": "private"
-  },
-  "netflix_short2": {
-   "views": 0,
-   "likes": 0,
-   "comentarios": 0,
-   "status": "private"
-  },
-  "netflix_serie3": {
-   "views": 0,
-   "likes": 0,
-   "comentarios": 0,
-   "status": "private"
-  },
-  "netflix_short3": {
-   "views": 0,
-   "likes": 0,
-   "comentarios": 0,
-   "status": "private"
-  },
-  "netflix_serie4": {
-   "views": 0,
-   "likes": 0,
-   "comentarios": 0,
-   "status": "private"
-  },
-  "netflix_short4": {
    "views": 0,
    "likes": 0,
    "comentarios": 0,
@@ -776,7 +635,7 @@
    "duracao": "PT28S",
    "status": "public",
    "agendado": null,
-   "views": 99,
+   "views": 114,
    "likes": 7,
    "comentarios": 1
   },
@@ -935,9 +794,9 @@
    "comentarios": 0
   },
   {
-   "id": "vp0WgkuUjUk",
+   "id": "F2uu4UIL2jA",
    "titulo": "Só existe uma Blockbuster no mundo #shorts",
-   "publicado": "2026-10-14T14:41:30Z",
+   "publicado": "2026-10-14T17:49:00Z",
    "duracao": "PT25S",
    "status": "private",
    "agendado": "2026-10-30T21:00:00Z",
@@ -946,9 +805,9 @@
    "comentarios": 0
   },
   {
-   "id": "L50I8bjXk_M",
+   "id": "yJMp7dGixuQ",
    "titulo": "Netflix: parte 4 de 4 #shorts",
-   "publicado": "2026-10-14T14:41:22Z",
+   "publicado": "2026-10-14T17:48:48Z",
    "duracao": "PT1M14S",
    "status": "private",
    "agendado": "2026-10-31T11:00:00Z",
@@ -957,86 +816,9 @@
    "comentarios": 0
   },
   {
-   "id": "KoEfOX6_SA4",
-   "titulo": "A Americanas comprou a Blockbuster no Brasil #shorts",
-   "publicado": "2026-10-14T14:41:13Z",
-   "duracao": "PT23S",
-   "status": "private",
-   "agendado": "2026-10-29T21:00:00Z",
-   "views": 0,
-   "likes": 0,
-   "comentarios": 0
-  },
-  {
-   "id": "EDA9YCmgfvY",
-   "titulo": "Netflix: parte 3 de 4 #shorts",
-   "publicado": "2026-10-14T14:41:00Z",
-   "duracao": "PT2M23S",
-   "status": "private",
-   "agendado": "2026-10-30T11:00:00Z",
-   "views": 0,
-   "likes": 0,
-   "comentarios": 0
-  },
-  {
-   "id": "S-VfnR_IR40",
-   "titulo": "A jogada que quase matou a Netflix #shorts",
-   "publicado": "2026-10-14T14:40:52Z",
-   "duracao": "PT27S",
-   "status": "private",
-   "agendado": "2026-10-28T21:00:00Z",
-   "views": 0,
-   "likes": 0,
-   "comentarios": 0
-  },
-  {
-   "id": "xtdhdzvreYo",
-   "titulo": "Netflix: parte 2 de 4 #shorts",
-   "publicado": "2026-10-14T14:40:43Z",
-   "duracao": "PT2M13S",
-   "status": "private",
-   "agendado": "2026-10-29T11:00:00Z",
-   "views": 0,
-   "likes": 0,
-   "comentarios": 0
-  },
-  {
-   "id": "wHp8hnjXbcI",
-   "titulo": "A Blockbuster podia ter comprado a Netflix por US$ 50 milhões #shorts",
-   "publicado": "2026-10-14T14:40:32Z",
-   "duracao": "PT27S",
-   "status": "private",
-   "agendado": "2026-10-27T21:00:00Z",
-   "views": 0,
-   "likes": 0,
-   "comentarios": 0
-  },
-  {
-   "id": "gKTQWd_ho_k",
-   "titulo": "Netflix: parte 1 de 4 #shorts",
-   "publicado": "2026-10-14T14:40:22Z",
-   "duracao": "PT2M7S",
-   "status": "private",
-   "agendado": "2026-10-28T11:00:00Z",
-   "views": 0,
-   "likes": 0,
-   "comentarios": 0
-  },
-  {
-   "id": "3KXjrM_d9Ak",
-   "titulo": "NETFLIX: A Empresa Que a Blockbuster Recusou Comprar Por US$ 50 Milhões",
-   "publicado": "2026-10-14T14:40:02Z",
-   "duracao": "PT8M12S",
-   "status": "private",
-   "agendado": "2026-10-27T15:00:00Z",
-   "views": 0,
-   "likes": 0,
-   "comentarios": 0
-  },
-  {
-   "id": "8lB7xWs1I3M",
+   "id": "LzJR6rIyu7I",
    "titulo": "Quem pagou a conta da Americanas #shorts",
-   "publicado": "2026-10-14T13:16:32Z",
+   "publicado": "2026-10-14T17:48:35Z",
    "duracao": "PT28S",
    "status": "private",
    "agendado": "2026-10-23T21:00:00Z",
@@ -1045,9 +827,9 @@
    "comentarios": 0
   },
   {
-   "id": "5h38bDNpjGg",
+   "id": "GnDYufJLp7E",
    "titulo": "Americanas: parte 4 de 4 #shorts",
-   "publicado": "2026-10-14T13:16:23Z",
+   "publicado": "2026-10-14T17:48:19Z",
    "duracao": "PT1M40S",
    "status": "private",
    "agendado": "2026-10-24T11:00:00Z",
@@ -1056,9 +838,42 @@
    "comentarios": 0
   },
   {
-   "id": "xyGepfkgHNk",
+   "id": "ZqCgfrBIbhQ",
+   "titulo": "A Americanas comprou a Blockbuster no Brasil #shorts",
+   "publicado": "2026-10-14T17:48:06Z",
+   "duracao": "PT23S",
+   "status": "private",
+   "agendado": "2026-10-29T21:00:00Z",
+   "views": 0,
+   "likes": 0,
+   "comentarios": 0
+  },
+  {
+   "id": "3Syk9LDoAEQ",
+   "titulo": "Netflix: parte 3 de 4 #shorts",
+   "publicado": "2026-10-14T17:47:51Z",
+   "duracao": "PT2M23S",
+   "status": "private",
+   "agendado": "2026-10-30T11:00:00Z",
+   "views": 0,
+   "likes": 0,
+   "comentarios": 0
+  },
+  {
+   "id": "2SzdDgdQHdw",
+   "titulo": "Kolynos: parte 3 de 3 #shorts",
+   "publicado": "2026-10-14T17:47:34Z",
+   "duracao": "PT2M25S",
+   "status": "private",
+   "agendado": "2026-10-20T11:00:00Z",
+   "views": 0,
+   "likes": 0,
+   "comentarios": 0
+  },
+  {
+   "id": "f4Mv-dJ3co8",
    "titulo": "O ex-presidente da Americanas foi preso na Espanha #shorts",
-   "publicado": "2026-10-14T13:16:13Z",
+   "publicado": "2026-10-14T17:47:20Z",
    "duracao": "PT34S",
    "status": "private",
    "agendado": "2026-10-22T21:00:00Z",
@@ -1067,9 +882,9 @@
    "comentarios": 0
   },
   {
-   "id": "thhbRuDQZnA",
+   "id": "rsbtHH0LPJQ",
    "titulo": "Americanas: parte 3 de 4 #shorts",
-   "publicado": "2026-10-14T13:16:03Z",
+   "publicado": "2026-10-14T17:47:09Z",
    "duracao": "PT2M7S",
    "status": "private",
    "agendado": "2026-10-23T11:00:00Z",
@@ -1078,9 +893,42 @@
    "comentarios": 0
   },
   {
-   "id": "Dn584fxiz0k",
+   "id": "x1Yhzockrj0",
+   "titulo": "A jogada que quase matou a Netflix #shorts",
+   "publicado": "2026-10-14T17:46:54Z",
+   "duracao": "PT27S",
+   "status": "private",
+   "agendado": "2026-10-28T21:00:00Z",
+   "views": 0,
+   "likes": 0,
+   "comentarios": 0
+  },
+  {
+   "id": "zPgYt_K_hFk",
+   "titulo": "Netflix: parte 2 de 4 #shorts",
+   "publicado": "2026-10-14T17:46:43Z",
+   "duracao": "PT2M13S",
+   "status": "private",
+   "agendado": "2026-10-29T11:00:00Z",
+   "views": 0,
+   "likes": 0,
+   "comentarios": 0
+  },
+  {
+   "id": "XPKmKHPPz-Q",
+   "titulo": "Kolynos: parte 2 de 3 #shorts",
+   "publicado": "2026-10-14T17:46:31Z",
+   "duracao": "PT1M40S",
+   "status": "private",
+   "agendado": "2026-10-19T11:00:00Z",
+   "views": 0,
+   "likes": 0,
+   "comentarios": 0
+  },
+  {
+   "id": "hpCHl08_rxI",
    "titulo": "Como a Americanas escondeu R$ 25 bilhões #shorts",
-   "publicado": "2026-10-14T13:15:52Z",
+   "publicado": "2026-10-14T17:46:18Z",
    "duracao": "PT31S",
    "status": "private",
    "agendado": "2026-10-21T21:00:00Z",
@@ -1089,9 +937,9 @@
    "comentarios": 0
   },
   {
-   "id": "HbPPRm28WlQ",
+   "id": "I9D20jVG6SI",
    "titulo": "Americanas: parte 2 de 4 #shorts",
-   "publicado": "2026-10-14T13:15:41Z",
+   "publicado": "2026-10-14T17:46:07Z",
    "duracao": "PT2M27S",
    "status": "private",
    "agendado": "2026-10-22T11:00:00Z",
@@ -1100,9 +948,42 @@
    "comentarios": 0
   },
   {
-   "id": "uapXQ6PbGnk",
+   "id": "io6LeKeDVq0",
+   "titulo": "A Blockbuster podia ter comprado a Netflix por US$ 50 milhões #shorts",
+   "publicado": "2026-10-14T17:45:53Z",
+   "duracao": "PT27S",
+   "status": "private",
+   "agendado": "2026-10-27T21:00:00Z",
+   "views": 0,
+   "likes": 0,
+   "comentarios": 0
+  },
+  {
+   "id": "X2dcl3WAt0w",
+   "titulo": "Netflix: parte 1 de 4 #shorts",
+   "publicado": "2026-10-14T17:45:41Z",
+   "duracao": "PT2M7S",
+   "status": "private",
+   "agendado": "2026-10-28T11:00:00Z",
+   "views": 0,
+   "likes": 0,
+   "comentarios": 0
+  },
+  {
+   "id": "_aYquXLalP0",
+   "titulo": "Kolynos: parte 1 de 3 #shorts",
+   "publicado": "2026-10-14T17:45:24Z",
+   "duracao": "PT1M25S",
+   "status": "private",
+   "agendado": "2026-10-18T11:00:00Z",
+   "views": 0,
+   "likes": 0,
+   "comentarios": 0
+  },
+  {
+   "id": "yNwNdQgcHZI",
    "titulo": "O presidente que durou 9 dias na Americanas #shorts",
-   "publicado": "2026-10-14T13:15:31Z",
+   "publicado": "2026-10-14T17:45:12Z",
    "duracao": "PT35S",
    "status": "private",
    "agendado": "2026-10-20T21:00:00Z",
@@ -1111,12 +992,23 @@
    "comentarios": 0
   },
   {
-   "id": "eHMQiwvq4Dk",
+   "id": "3OuffGR2L-4",
    "titulo": "Americanas: parte 1 de 4 #shorts",
-   "publicado": "2026-10-14T13:15:21Z",
+   "publicado": "2026-10-14T17:44:58Z",
    "duracao": "PT1M49S",
    "status": "private",
    "agendado": "2026-10-21T11:00:00Z",
+   "views": 0,
+   "likes": 0,
+   "comentarios": 0
+  },
+  {
+   "id": "LGggbB-6O7A",
+   "titulo": "NETFLIX: A Empresa Que a Blockbuster Recusou Comprar Por US$ 50 Milhões",
+   "publicado": "2026-10-14T17:44:37Z",
+   "duracao": "PT8M12S",
+   "status": "private",
+   "agendado": "2026-10-27T15:00:00Z",
    "views": 0,
    "likes": 0,
    "comentarios": 0
@@ -1128,39 +1020,6 @@
    "duracao": "PT8M19S",
    "status": "private",
    "agendado": "2026-10-20T15:00:00Z",
-   "views": 0,
-   "likes": 0,
-   "comentarios": 0
-  },
-  {
-   "id": "cWPSGveRO5A",
-   "titulo": "Kolynos: parte 3 de 3 #shorts",
-   "publicado": "2026-10-13T18:53:54Z",
-   "duracao": "PT2M25S",
-   "status": "private",
-   "agendado": "2026-10-20T11:00:00Z",
-   "views": 0,
-   "likes": 0,
-   "comentarios": 0
-  },
-  {
-   "id": "CaHfIs58EPM",
-   "titulo": "Kolynos: parte 2 de 3 #shorts",
-   "publicado": "2026-10-13T18:53:39Z",
-   "duracao": "PT1M40S",
-   "status": "private",
-   "agendado": "2026-10-19T11:00:00Z",
-   "views": 0,
-   "likes": 0,
-   "comentarios": 0
-  },
-  {
-   "id": "D5PndwsbJX8",
-   "titulo": "Kolynos: parte 1 de 3 #shorts",
-   "publicado": "2026-10-13T18:53:27Z",
-   "duracao": "PT1M25S",
-   "status": "private",
-   "agendado": "2026-10-18T11:00:00Z",
    "views": 0,
    "likes": 0,
    "comentarios": 0
