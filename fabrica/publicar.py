@@ -116,11 +116,21 @@ def checar(r, oque):
     raise RuntimeError(f"{oque}: erro {r.status_code}: {txt}")
 
 
+def voz_sintetica(caso):
+    """True se o caso foi narrado por voz de IA que NÃO é a voz clonada do Vinícius (aí o YouTube pede o aviso)."""
+    for pasta in (caso or "", (caso or "").replace("_", "-")):
+        f = os.path.join(RAIZ, "projetos", pasta, "projeto.json")
+        if pasta and os.path.exists(f):
+            voz = json.load(open(f, encoding="utf8")).get("voz") or {}
+            return not str(voz.get("eleven_voz", "")).startswith("Vinícius")
+    return True
+
+
 def subir_video(tk, path, meta, quando):
     corpo = {"snippet": {"title": meta["titulo"], "description": meta["descricao"], "tags": meta.get("tags", [])[:30],
                          "categoryId": "27", "defaultLanguage": "pt-BR", "defaultAudioLanguage": "pt-BR"},
              "status": {"privacyStatus": "private", "publishAt": quando.astimezone(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%S.000Z"),
-                        "selfDeclaredMadeForKids": False, "containsSyntheticMedia": False}}
+                        "selfDeclaredMadeForKids": False, "containsSyntheticMedia": voz_sintetica(meta.get("caso"))}}
     tam = os.path.getsize(path)
     r = checar(requests.post("https://www.googleapis.com/upload/youtube/v3/videos?uploadType=resumable&part=snippet,status",
                              headers={"Authorization": f"Bearer {tk}", "Content-Type": "application/json; charset=UTF-8",
@@ -350,7 +360,8 @@ def ia(marcar=None):
         j = checar(requests.get(f"{Y}/videos?part=snippet,status&id={','.join(ids[k:k + 50])}", headers=H, timeout=30), "vídeos").json()
         for v in j.get("items", []):
             st = v["status"]; sint = st.get("containsSyntheticMedia")
-            if marcar and v["id"] in marcar and not sint:
+            alvo = (v["id"] not in marcar["exceto"]) if isinstance(marcar, dict) else (marcar and v["id"] in marcar)
+            if alvo and not sint:
                 st2 = {kk: st[kk] for kk in ("privacyStatus", "publishAt", "license", "embeddable", "publicStatsViewable", "selfDeclaredMadeForKids") if kk in st}
                 st2["containsSyntheticMedia"] = True
                 checar(requests.put(f"{Y}/videos?part=status", headers=H, timeout=30, json={"id": v["id"], "status": st2}), "marcar IA")
@@ -371,7 +382,8 @@ if __name__ == "__main__":
     elif cmd == "comentar":
         comentar()
     elif cmd == "ia":
-        ia(set(sys.argv[2].split(",")) if len(sys.argv) > 2 else None)
+        arg = sys.argv[2] if len(sys.argv) > 2 else ""
+        ia({"exceto": set(arg[len("todos-exceto:"):].split(","))} if arg.startswith("todos-exceto:") else (set(arg.split(",")) if arg else None))
     elif cmd == "reconstruir":
         reconstruir()
     elif cmd == "playlists":
