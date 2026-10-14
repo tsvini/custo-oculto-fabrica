@@ -214,6 +214,35 @@ def miniaturas(pasta_saida):
 
 
 TODOS = "Todos os casos | Custo Oculto"
+COM = os.path.join(RAIZ, "comentarios.json")
+
+
+def comentar():
+    """Posta pelo canal os comentários aprovados (comentarios.json) quando o vídeo já está público. Fixar é manual no Studio."""
+    try:
+        fila_c = json.load(open(COM, encoding="utf8"))
+    except Exception:
+        return
+    reg = {r["nome"]: r for r in registro()}; tk = None; feitos = []
+    for c in fila_c:
+        if c.get("feito"):
+            continue
+        vid = c.get("video_id") or (reg.get(c.get("nome")) or {}).get("video_id")
+        if not vid:
+            continue
+        tk = tk or token(); H = {"Authorization": f"Bearer {tk}"}
+        v = requests.get("https://www.googleapis.com/youtube/v3/videos", headers=H, params={"part": "status", "id": vid}, timeout=30).json().get("items") or []
+        if not v or v[0]["status"]["privacyStatus"] != "public":
+            continue
+        q = requests.post("https://www.googleapis.com/youtube/v3/commentThreads?part=snippet", headers=H, timeout=30,
+                          json={"snippet": {"videoId": vid, "topLevelComment": {"snippet": {"textOriginal": c["texto"]}}}})
+        if q.status_code in (200, 201):
+            c["feito"] = q.json()["id"]; feitos.append(c.get("nome") or vid)
+        else:
+            nota("Comentário falhou", f"{c.get('nome')}: {q.status_code} " + " ".join(q.text.split())[:300], "warning")
+    if feitos:
+        json.dump(fila_c, open(COM, "w", encoding="utf8"), ensure_ascii=False, indent=1)
+        nota("Comentários postados (fixe no Studio)", ", ".join(feitos))
 
 
 def playlists():
@@ -286,6 +315,8 @@ if __name__ == "__main__":
         miniaturas(sys.argv[2] if len(sys.argv) > 2 else os.path.join(RAIZ, "saida"))
     elif cmd == "conferir":
         conferir()
+    elif cmd == "comentar":
+        comentar()
     elif cmd == "playlists":
         playlists()
     elif cmd == "enfileirar":

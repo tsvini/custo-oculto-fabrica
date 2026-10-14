@@ -35,7 +35,8 @@ jobs:
           python -m fabrica.publicar conferir
           python -m fabrica.publicar enviar
           python -m fabrica.publicar playlists
+          python -m fabrica.publicar comentar
           git config user.name "fabrica-custo-oculto"; git config user.email "fabrica@users.noreply.github.com"
-          if [ -n "$(git status --porcelain publicados.json)" ]; then
-            git add publicados.json && git commit -m "Agenda do YouTube atualizada [skip ci]" && git pull --rebase -q && git push -q
+          if [ -n "$(git status --porcelain publicados.json comentarios.json)" ]; then
+            git add publicados.json comentarios.json && git commit -m "Agenda do YouTube atualizada [skip ci]" && git pull --rebase -q && git push -q
           fi
