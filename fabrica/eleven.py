@@ -69,7 +69,7 @@ def main(nome):
         return any((l.get("language_id") or "").startswith("pt") for l in m.get("languages") or [])
     mid = voz.get("modelo")
     if not mid:
-        pref = [m for m in modelos if fala_pt(m) and "v4" in m["model_id"]] or [m for m in modelos if m["model_id"] == "eleven_multilingual_v2"] or [m for m in modelos if fala_pt(m)]
+        pref = [m for m in modelos if m["model_id"] == "eleven_v4_turbo"] or [m for m in modelos if fala_pt(m) and "v4" in m["model_id"]] or [m for m in modelos if m["model_id"] == "eleven_multilingual_v2"] or [m for m in modelos if fala_pt(m)]
         mid = pref[0]["model_id"]
     mod = next((m for m in modelos if m["model_id"] == mid), {})
     mult = float(((mod.get("model_rates") or {}).get("character_cost_multiplier")) or 1.0)
