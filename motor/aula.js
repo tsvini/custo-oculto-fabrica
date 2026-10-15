@@ -88,7 +88,7 @@
     const dig = k; let resta = pronto + Math.floor(k * falta);
     linhas.forEach((ln, i) => {
       const hl = (s.destaque || []).includes(i + 1);
-      if (hl && dig >= 1) { const ha = easeOut((t - 0.5 - Math.max(0.8, Math.min(dur * (s.vel || 0.7), falta / 18))) / 0.4); ctx.save(); ctx.globalAlpha = 0.18 * ha; ctx.fillStyle = C.ac; ctx.fillRect(tabX, yy - lh / 2, W - sideW, lh); ctx.globalAlpha = ha; ctx.fillRect(tabX, yy - lh / 2, 6 * u, lh); ctx.restore(); }
+      if (hl && dig >= 1) { const ha = easeOut((t - (s.digitar === false ? (s.destaque_em || 1.2) : 0.5 + Math.max(0.8, Math.min(dur * (s.vel || 0.7), falta / 18)))) / 0.4); ctx.save(); ctx.globalAlpha = 0.18 * ha; ctx.fillStyle = C.ac; ctx.fillRect(tabX, yy - lh / 2, W - sideW, lh); ctx.globalAlpha = ha; ctx.fillRect(tabX, yy - lh / 2, 6 * u, lh); ctx.restore(); }
       txt(ctx, String(i + 1), font(500, fs * 0.8, MONO), x0 - 30 * u, yy, "#4b5263", "right", a);
       let mostra = Math.min(ln.length, resta); resta -= ln.length; let xx = x0;
       for (const [tk, cor] of tokens(ln)) { if (mostra <= 0) break; const parte = tk.slice(0, mostra); mostra -= tk.length; txt(ctx, parte, font(500, fs, MONO), xx, yy, cor, "left", a); xx += tw(ctx, parte, font(500, fs, MONO)); }
@@ -237,8 +237,8 @@
     const u = c.u; const a = easeOut(t / 0.4); const W = (c.vertical ? 1000 : 1640) * u, H = (c.vertical ? 1100 : 700) * u; const x = c.cx - W / 2, y = topo(c, H);
     const LW = c.vertical ? W : 600 * u; const P = s.passos || []; const falha = s.status === "falhou";
     // foco: "passo" (o passo que falhou/último), "lista" (os comandos), "erro" (a mensagem), "site", "status" (PASSOU/FALHOU)
-    const t0 = y + 64 * u, ex0 = x + LW + 30 * u, ew0 = W - LW - 60 * u;
-    const R = { lista: [x, t0 + 64 * u, LW, y + H - t0 - 64 * u], passo: [x, t0 + 160 * u + (P.length - 1) * 50 * u - 24 * u, LW, 48 * u],
+    const t0 = y + 64 * u, ex0 = x + LW + 30 * u, ew0 = W - LW - 60 * u; const AN = s.antes || []; const off = AN.length * 50 * u;  // testes anteriores (já verdes)
+    const R = { lista: [x, t0 + 64 * u, LW, y + H - t0 - 64 * u], passo: [x, t0 + 160 * u + off + (P.length - 1) * 50 * u - 24 * u, LW, 48 * u],
       erro: [ex0 - 8 * u, y + H - 198 * u, ew0 + 16 * u, 166 * u], site: [x + LW, t0, W - LW, y + H - t0], status: [x + W - 330 * u, t0 + 16 * u, 310 * u, 90 * u] }[s.foco];
     const kf = R ? easeOut((t - (s.foco_em === undefined ? (s.pronto ? 0.5 : dur * 0.8) : s.foco_em)) / 0.6) : 0;
     const zf = R ? lerp(1, s.zoom || ({ passo: 1.12, erro: 1.12, status: 1.15 }[s.foco] || 1.04), kf) : 1;
@@ -249,12 +249,14 @@
     ctx.save(); ctx.globalAlpha = a; ctx.fillStyle = "#171a22"; ctx.fillRect(x, top, LW, y + H - top - 2 * u); ctx.restore();
     const fim = feitos >= P.length; const ok = fim && !falha;
     txt(ctx, s.spec || "spec.cy.js", font(700, 24 * u, MONO), x + 28 * u, top + 34 * u, C.txt, "left", a);
-    txt(ctx, (fim ? (falha ? "✗ 1" : "✓ 1") : "…"), font(800, 26 * u), x + LW - 30 * u, top + 34 * u, fim ? (falha ? C.red : C.ac) : C.mut, "right", a);
+    txt(ctx, (fim ? (falha ? "✗ 1" : "✓ " + (1 + AN.length)) : "…"), font(800, 26 * u), x + LW - 30 * u, top + 34 * u, fim ? (falha ? C.red : C.ac) : C.mut, "right", a);
+    AN.forEach((n, i) => { const ay = top + 104 * u + i * 50 * u; ctx.save(); ctx.globalAlpha = a; ctx.beginPath(); ctx.arc(x + 40 * u, ay, 11 * u, 0, 7); ctx.fillStyle = C.ac; ctx.fill(); ctx.restore();
+      txt(ctx, "✓", font(900, 15 * u), x + 40 * u, ay + 1 * u, "#0b1a12", "center", a); txt(ctx, n, font(600, 26 * u), x + 66 * u, ay, C.mut, "left", a); });
     ctx.save(); ctx.globalAlpha = a; ctx.fillStyle = C.line; ctx.fillRect(x, top + 64 * u, LW, 2 * u); ctx.restore();
     const cor = fim ? (falha ? C.red : C.ac) : C.yel;
-    ctx.save(); ctx.globalAlpha = a; ctx.beginPath(); ctx.arc(x + 40 * u, top + 104 * u, 11 * u, 0, 7); ctx.fillStyle = cor; ctx.fill(); ctx.restore();
-    txt(ctx, s.teste || "teste", font(700, 28 * u), x + 66 * u, top + 104 * u, C.txt, "left", a);
-    let yy = top + 160 * u;
+    ctx.save(); ctx.globalAlpha = a; ctx.beginPath(); ctx.arc(x + 40 * u, top + 104 * u + off, 11 * u, 0, 7); ctx.fillStyle = cor; ctx.fill(); ctx.restore();
+    txt(ctx, s.teste || "teste", font(700, 28 * u), x + 66 * u, top + 104 * u + off, C.txt, "left", a);
+    let yy = top + 160 * u + off;
     P.forEach(([cmd, arg], i) => {
       const k = clamp(feitos - i); if (k <= 0) return; const ultimo = falha && i === P.length - 1 && fim;
       if (ultimo) { ctx.save(); ctx.globalAlpha = 0.18; ctx.fillStyle = C.red; ctx.fillRect(x, yy - 22 * u, LW, 44 * u); ctx.restore(); }

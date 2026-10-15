@@ -46,7 +46,42 @@
               }
             },
             {
-              "text": "Pensa no login. Além do login que dá certo, é importante testar o que dá errado: por exemplo, um usuário bloqueado tentando entrar.",
+              "text": "Até agora, a gente testou o caminho feliz: usuário e senha certos. Mas um bom teste também confere o que dá errado. Será que o site avisa direito quando algo falha?",
+              "scene": {
+                "type": "compare",
+                "title": "OS DOIS LADOS DO LOGIN",
+                "items": [
+                  [
+                    "CAMINHO FELIZ",
+                    "ENTRA NA LOJA",
+                    "gold"
+                  ],
+                  [
+                    "CAMINHO DO ERRO",
+                    "MOSTRA UM AVISO",
+                    "red"
+                  ]
+                ],
+                "size": 110,
+                "stagger": 1.4,
+                "vs": true
+              }
+            },
+            {
+              "text": "O Sauce Demo tem um usuário feito justamente pra isso: o locked out user, um usuário bloqueado. Ele está aqui, na lista de usuários da tela de login.",
+              "scene": {
+                "type": "tela",
+                "media": "site_sauce_lista",
+                "url": "https://www.saucedemo.com/",
+                "alvo": "locked_out_user",
+                "titulo": "saucedemo.com",
+                "caixa_em": 3.2,
+                "zoom_em": 2.8,
+                "legenda": "locked_out_user = usuário bloqueado"
+              }
+            },
+            {
+              "text": "Se você tentar entrar com ele, o site mostra essa mensagem vermelha: Sorry, this user has been locked out. Ou seja: desculpe, esse usuário está bloqueado.",
               "scene": {
                 "type": "tela",
                 "media": "site_sauce_erro_bloqueado",
@@ -74,7 +109,40 @@
               }
             },
             {
-              "text": "Pra isso, é só criar mais um it dentro do mesmo describe. Cada it é um teste separado.",
+              "text": "E como o teste acha essa mensagem? Do jeito que a gente aprendeu: inspecionando. Olha o data test dela: error.",
+              "scene": {
+                "type": "devtools",
+                "media": "insp_erro",
+                "url": "https://www.saucedemo.com/",
+                "acoes": [
+                  {
+                    "fill": [
+                      "#user-name",
+                      "locked_out_user"
+                    ]
+                  },
+                  {
+                    "fill": [
+                      "#password",
+                      "secret_sauce"
+                    ]
+                  },
+                  {
+                    "click": "#login-button"
+                  }
+                ],
+                "inspecionar": "[data-test=\"error\"]",
+                "aberto": true,
+                "realce": [
+                  "data-test"
+                ],
+                "realce_em": 3.6,
+                "realce_rotulo": "o nome da mensagem",
+                "legenda": "A mensagem: data-test=\"error\""
+              }
+            },
+            {
+              "text": "Pra criar esse segundo teste, é só colocar mais um it dentro do mesmo describe. Cada it é um teste separado.",
               "scene": {
                 "type": "editor",
                 "arquivo": "login.cy.js",
@@ -92,66 +160,103 @@
               }
             },
             {
-              "text": "Mas repara: os dois testes começam do mesmo jeito, abrindo o site. E repetir código é chato e dá trabalho pra manter.",
+              "text": "E ele fica assim: abre o site, entra com o locked out user, clica em entrar, e confere se a mensagem de erro contém o texto locked out.",
               "scene": {
-                "type": "bigtext",
-                "stagger": 0.25,
-                "lines": [
+                "type": "editor",
+                "arquivo": "login.cy.js",
+                "pastas": [
+                  "meu-primeiro-teste",
+                  "cypress",
+                  "e2e",
+                  "login.cy.js"
+                ],
+                "codigo": "  it('mostra erro para usuário bloqueado', () => {\n    cy.visit('https://www.saucedemo.com')\n    cy.get('[data-test=\"username\"]').type('locked_out_user')\n    cy.get('[data-test=\"password\"]').type('secret_sauce')\n    cy.get('[data-test=\"login-button\"]').click()\n    cy.get('[data-test=\"error\"]')\n      .should('contain', 'locked out')\n  })",
+                "destaque": [
+                  6,
+                  7
+                ],
+                "legenda": "Conferindo a mensagem de erro",
+                "fonte": 28,
+                "digitar_de": 2
+              }
+            },
+            {
+              "text": "Mas repara: os dois testes começam com a mesma linha, o cy visit. E repetir código dá trabalho. Se o endereço do site mudar, você tem que trocar em todo lugar.",
+              "scene": {
+                "type": "editor",
+                "arquivo": "login.cy.js",
+                "pastas": [
+                  "meu-primeiro-teste",
+                  "cypress",
+                  "e2e",
+                  "login.cy.js"
+                ],
+                "codigo": "describe('Login', () => {\n  it('entra com usuário e senha', () => {\n    cy.visit('https://www.saucedemo.com')\n    // ...\n  })\n\n  it('mostra erro para usuário bloqueado', () => {\n    cy.visit('https://www.saucedemo.com')\n    // ...\n  })\n})",
+                "destaque": [
+                  3,
+                  8
+                ],
+                "legenda": "A mesma linha repetida",
+                "fonte": 28,
+                "digitar": false
+              }
+            },
+            {
+              "text": "É aí que entra o beforeEach, que quer dizer antes de cada. A gente tira o cy visit de dentro dos testes, e coloca uma vez só, no beforeEach.",
+              "scene": {
+                "type": "editor",
+                "arquivo": "login.cy.js",
+                "pastas": [
+                  "meu-primeiro-teste",
+                  "cypress",
+                  "e2e",
+                  "login.cy.js"
+                ],
+                "codigo": "describe('Login', () => {\n  beforeEach(() => {\n    cy.visit('https://www.saucedemo.com')\n  })\n\n  it('entra com usuário e senha', () => {\n    // ...\n  })\n\n  it('mostra erro para usuário bloqueado', () => {\n    // ...\n  })\n})",
+                "destaque": [
+                  2,
+                  3,
+                  4
+                ],
+                "legenda": "beforeEach = antes de cada teste",
+                "fonte": 28,
+                "digitar_de": 2
+              }
+            },
+            {
+              "text": "Na hora de rodar, o Cypress faz assim: roda o beforeEach, e depois o primeiro teste. Roda o beforeEach de novo, e depois o segundo teste. Cada teste começa do zero, com o site aberto.",
+              "scene": {
+                "type": "cards",
+                "titulo": "A ORDEM QUE O CYPRESS RODA",
+                "itens": [
                   [
-                    "CÓDIGO REPETIDO",
-                    "white",
-                    130
+                    "1",
+                    "beforeEach",
+                    "abre o site",
+                    "#69a7ff"
                   ],
                   [
-                    "DÁ TRABALHO",
-                    "red",
-                    170
+                    "2",
+                    "1º teste",
+                    "login certo"
+                  ],
+                  [
+                    "3",
+                    "beforeEach",
+                    "abre o site de novo",
+                    "#69a7ff"
+                  ],
+                  [
+                    "4",
+                    "2º teste",
+                    "usuário bloqueado",
+                    "#ff6b6b"
                   ]
                 ]
               }
             },
             {
-              "text": "É aí que entra o beforeEach, que quer dizer antes de cada. Tudo o que você colocar nele roda antes de cada teste.",
-              "scene": {
-                "type": "editor",
-                "arquivo": "login.cy.js",
-                "pastas": [
-                  "meu-primeiro-teste",
-                  "cypress",
-                  "e2e",
-                  "login.cy.js"
-                ],
-                "codigo": "describe('Login', () => {\n  beforeEach(() => {\n    cy.visit('https://www.saucedemo.com')\n  })\n\n  it('entra com usuário e senha', () => {\n    cy.get('[data-test=\"username\"]').type('standard_user')\n    cy.get('[data-test=\"password\"]').type('secret_sauce')\n    cy.get('[data-test=\"login-button\"]').click()\n    cy.contains('Products').should('be.visible')\n  })\n})",
-                "legenda": "beforeEach = antes de cada teste",
-                "destaque": [
-                  2,
-                  3
-                ],
-                "fonte": 28
-              }
-            },
-            {
-              "text": "E o segundo teste fica assim: usuário locked out user, a mesma senha, e no final a gente confere se apareceu a mensagem de erro.",
-              "scene": {
-                "type": "editor",
-                "arquivo": "login.cy.js",
-                "pastas": [
-                  "meu-primeiro-teste",
-                  "cypress",
-                  "e2e",
-                  "login.cy.js"
-                ],
-                "codigo": "  it('mostra erro para usuário bloqueado', () => {\n    cy.get('[data-test=\"username\"]').type('locked_out_user')\n    cy.get('[data-test=\"password\"]').type('secret_sauce')\n    cy.get('[data-test=\"login-button\"]').click()\n    cy.get('[data-test=\"error\"]')\n      .should('contain', 'locked out')\n  })",
-                "legenda": "Conferindo a mensagem de erro",
-                "destaque": [
-                  5,
-                  6
-                ],
-                "fonte": 28
-              }
-            },
-            {
-              "text": "Roda de novo e olha: agora aparecem dois testes, os dois verdes. Um testando o caminho feliz, e outro testando o erro.",
+              "text": "Roda e olha: agora aparecem dois testes no Cypress, os dois verdes. Um testando o caminho feliz, e outro testando o erro.",
               "scene": {
                 "type": "runner",
                 "spec": "login.cy.js",
@@ -210,7 +315,10 @@
                     "click": "#login-button"
                   }
                 ],
-                "legenda": "Testar o erro também é testar"
+                "legenda": "Dois testes, os dois verdes",
+                "antes": [
+                  "entra com usuário e senha"
+                ]
               }
             },
             {
