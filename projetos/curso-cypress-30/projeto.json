@@ -1,0 +1,282 @@
+{
+  "title": "Cypress para leigos · Aula 30",
+  "slug": "curso-cypress-30",
+  "idioma": "pt",
+  "destino": "curso",
+  "marca": [
+    "CYPRESS",
+    "PARA LEIGOS"
+  ],
+  "cor_fundo": "#3fd68a",
+  "legenda_y": 0.93,
+  "selo": "MÓDULO 8 · AULA 30",
+  "voz": {
+    "nome": "gravada",
+    "motor": "eleven",
+    "eleven_voz": "Vinícius Torales"
+  },
+  "script": {
+    "long": {
+      "parts": [
+        {
+          "chapter": "",
+          "sentences": [
+            {
+              "text": "Fala, pessoal! Mais uma aula extra. No módulo um, eu mostrei a instalação no Windows. Se o seu computador é um Mac, ou um Linux, tipo o Ubuntu, essa aula é pra você.",
+              "scene": {
+                "type": "bigtext",
+                "stagger": 0.25,
+                "lines": [
+                  [
+                    "AULA EXTRA",
+                    "muted",
+                    80
+                  ],
+                  [
+                    "MAC E",
+                    "white",
+                    150
+                  ],
+                  [
+                    "LINUX",
+                    "gold",
+                    180
+                  ]
+                ]
+              }
+            },
+            {
+              "text": "A boa notícia: são os mesmos três programas. O VS Code, o Node e o Git. Só muda o jeito de instalar. Depois disso, o resto do curso é igualzinho.",
+              "scene": {
+                "type": "cards",
+                "titulo": "OS MESMOS TRÊS",
+                "itens": [
+                  [
+                    "</>",
+                    "VS Code",
+                    "onde escreve o código"
+                  ],
+                  [
+                    "⬢",
+                    "Node.js",
+                    "faz o Cypress rodar",
+                    "#69a7ff"
+                  ],
+                  [
+                    "⑂",
+                    "Git",
+                    "o save do projeto",
+                    "#ffd23f"
+                  ]
+                ]
+              }
+            },
+            {
+              "text": "Começando pelo Mac. Pra abrir o terminal, aperta Command e espaço, digita Terminal, e aperta Enter. É o mesmo terminal que a gente usa no curso, só que com outra cara.",
+              "scene": {
+                "type": "passo",
+                "icone": "⌘",
+                "titulo": "Command + Espaço",
+                "sub": "digite Terminal e aperte Enter"
+              }
+            },
+            {
+              "text": "O VS Code: no site code ponto visualstudio ponto com, clica em Download for Mac. Abre o arquivo que baixou, e arrasta o VS Code pra pasta Aplicativos.",
+              "scene": {
+                "type": "instalador",
+                "app": "Visual Studio Code",
+                "titulo": "Download for Mac",
+                "subtitulo": "code.visualstudio.com",
+                "texto": "Abra o arquivo baixado e arraste\no Visual Studio Code para a pasta Aplicativos.",
+                "botao": "Download for Mac",
+                "legenda": "Arraste pra pasta Aplicativos"
+              }
+            },
+            {
+              "text": "O Node: no site nodejs ponto org, baixa o instalador da versão LTS pra Mac. É só ir clicando em continuar, igual no Windows.",
+              "scene": {
+                "type": "instalador",
+                "app": "Node.js",
+                "titulo": "Instalar o Node.js",
+                "subtitulo": "nodejs.org › LTS › macOS Installer (.pkg)",
+                "texto": "Escolha a versão LTS.\nDepois é só clicar em Continuar até o fim.",
+                "botao": "Continuar",
+                "legenda": "Versão LTS, sempre"
+              }
+            },
+            {
+              "text": "E o Git, no Mac, é ainda mais fácil. Digita git traço traço version no terminal. Se ele não estiver instalado, o próprio Mac abre uma janela oferecendo instalar. Clica em Instalar, e pronto.",
+              "scene": {
+                "type": "terminal",
+                "titulo": "Terminal — Mac",
+                "prompt": "voce@MacBook ~ %",
+                "linhas": [
+                  {
+                    "cmd": "git --version"
+                  },
+                  {
+                    "out": "(o Mac oferece instalar: clique em Instalar)",
+                    "cor": "mut"
+                  }
+                ],
+                "legenda": "O próprio Mac instala o Git"
+              }
+            },
+            {
+              "text": "Agora, o Linux. Eu vou mostrar no Ubuntu, que é o mais usado. Pra abrir o terminal, aperta Control, Alt e T, juntos.",
+              "scene": {
+                "type": "passo",
+                "icone": "⌨",
+                "titulo": "Ctrl + Alt + T",
+                "sub": "abre o terminal do Ubuntu"
+              }
+            },
+            {
+              "text": "No Ubuntu, quase tudo se instala pelo terminal. O VS Code é com esse comando: sudo snap install code, traço traço classic. O sudo quer dizer: faz isso como administrador. Então ele pede a sua senha do computador. Enquanto você digita, não aparece nada na tela, e isso é normal.",
+              "scene": {
+                "type": "terminal",
+                "titulo": "Terminal — Ubuntu",
+                "prompt": "voce@ubuntu:~$",
+                "linhas": [
+                  {
+                    "cmd": "sudo snap install code --classic"
+                  },
+                  {
+                    "out": "[sudo] senha para voce:",
+                    "cor": "mut"
+                  },
+                  {
+                    "out": "code instalado",
+                    "cor": "ac"
+                  }
+                ],
+                "legenda": "VS Code no Ubuntu"
+              }
+            },
+            {
+              "text": "O Git é com sudo apt install git.",
+              "scene": {
+                "type": "terminal",
+                "titulo": "Terminal — Ubuntu",
+                "prompt": "voce@ubuntu:~$",
+                "linhas": [
+                  {
+                    "cmd": "sudo apt install git"
+                  },
+                  {
+                    "cmd": "git --version"
+                  },
+                  {
+                    "out": "git version 2.43.0",
+                    "cor": "ac"
+                  }
+                ],
+                "legenda": "Git no Ubuntu"
+              }
+            },
+            {
+              "text": "Já o Node, no Ubuntu, tem um detalhe. O que vem pelo apt costuma ser uma versão antiga, e o Cypress não aceita. Então a gente instala com uma ferramenta chamada nvm. Copia o comando dela, que está no site nodejs ponto org, na parte de Linux. Depois fecha e abre o terminal, e digita nvm install traço traço lts.",
+              "scene": {
+                "type": "terminal",
+                "titulo": "Terminal — Ubuntu",
+                "prompt": "voce@ubuntu:~$",
+                "linhas": [
+                  {
+                    "cmd": "curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash"
+                  },
+                  {
+                    "out": "(feche e abra o terminal)",
+                    "cor": "mut"
+                  },
+                  {
+                    "cmd": "nvm install --lts"
+                  },
+                  {
+                    "cmd": "node -v"
+                  }
+                ],
+                "legenda": "Node no Ubuntu: pelo nvm"
+              }
+            },
+            {
+              "text": "Pra conferir, é igual em todo lugar: node traço v, npm traço v, e git traço traço version. Se aparecer um número em cada um, está tudo instalado.",
+              "scene": {
+                "type": "terminal",
+                "titulo": "Terminal — Ubuntu",
+                "prompt": "voce@ubuntu:~$",
+                "linhas": [
+                  {
+                    "cmd": "node -v"
+                  },
+                  {
+                    "out": "v24.11.0",
+                    "cor": "ac"
+                  },
+                  {
+                    "cmd": "npm -v"
+                  },
+                  {
+                    "out": "11.6.1",
+                    "cor": "ac"
+                  },
+                  {
+                    "cmd": "git --version"
+                  },
+                  {
+                    "out": "git version 2.43.0",
+                    "cor": "ac"
+                  }
+                ],
+                "legenda": "Apareceu número? Tá instalado"
+              }
+            },
+            {
+              "text": "E aí, do módulo dois em diante, é tudo igual: criar a pasta, npm init, instalar o Cypress e abrir. A única diferença é que o terminal mostra um cifrão no lugar do PS. E aquele erro de scripts desabilitados, da aula extra anterior, não acontece no Mac nem no Linux.",
+              "scene": {
+                "type": "cards",
+                "titulo": "DAQUI PRA FRENTE",
+                "itens": [
+                  [
+                    "=",
+                    "Tudo igual",
+                    "do módulo 2 em diante"
+                  ],
+                  [
+                    "$",
+                    "Cifrão",
+                    "no lugar do PS",
+                    "#69a7ff"
+                  ],
+                  [
+                    "✓",
+                    "Sem bloqueio",
+                    "de scripts",
+                    "#ffd23f"
+                  ]
+                ]
+              }
+            },
+            {
+              "text": "Os comandos dessa aula estão na descrição, pra você copiar. Até a próxima!",
+              "scene": {
+                "type": "endcard",
+                "sub": "AULA EXTRA: MAC E LINUX"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "shorts": [],
+    "tiktoks": []
+  },
+  "serie": [],
+  "meta": {
+    "titles": [
+      "Aula 30: Extra: instalando no Mac e no Linux"
+    ],
+    "description": "",
+    "tags": []
+  },
+  "notes": "Curso Cypress para leigos. Não publica (destino: curso)."
+}
