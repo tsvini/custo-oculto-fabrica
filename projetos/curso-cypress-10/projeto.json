@@ -1,172 +1,171 @@
 {
- "title": "Cypress para leigos · Aula 10",
- "slug": "curso-cypress-10",
- "idioma": "pt",
- "destino": "curso",
- "marca": [
-  "CYPRESS",
-  "PARA LEIGOS"
- ],
- "cor_fundo": "#3fd68a",
- "legenda_y": 0.93,
- "selo": "MÓDULO 3 · AULA 10",
- "voz": {
-  "nome": "gravada",
-  "motor": "eleven",
-  "eleven_voz": "Vinícius Torales"
- },
- "script": {
-  "long": {
-   "parts": [
-    {
-     "chapter": "",
-     "sentences": [
-      {
-       "text": "Fala, pessoal! Aula dez. Hoje o seu teste vai abrir um site sozinho.",
-       "scene": {
-        "type": "bigtext",
-        "stagger": 0.25,
-        "lines": [
-         [
-          "AULA 10",
-          "muted",
-          80
-         ],
-         [
-          "CY.VISIT",
-          "gold",
-          200
-         ]
-        ]
-       }
-      },
-      {
-       "text": "A gente vai usar um site feito justamente pra treinar testes: o Sauce Demo. É uma lojinha de mentira, onde dá pra testar à vontade sem estragar nada.",
-       "scene": {
-        "type": "tela",
-        "media": "site_sauce",
-        "url": "https://www.saucedemo.com/",
-        "titulo": "saucedemo.com",
-        "legenda": "Um site feito pra treinar testes"
-       }
-      },
-      {
-       "text": "Todo comando do Cypress começa com cy ponto. E o primeiro comando é o visit, que quer dizer visitar.",
-       "scene": {
-        "type": "bigtext",
-        "stagger": 0.25,
-        "lines": [
-         [
-          "CY.",
-          "gold",
-          200
-         ],
-         [
-          "O COMEÇO DE TODO COMANDO",
-          "white",
-          90
-         ]
-        ]
-       }
-      },
-      {
-       "text": "Dentro do it, escreve cy ponto visit, e entre parênteses e aspas, o endereço do site.",
-       "scene": {
-        "type": "editor",
-        "arquivo": "login.cy.js",
-        "pastas": [
-         "meu-primeiro-teste",
-         "cypress",
-         "e2e",
-         "login.cy.js"
-        ],
-        "codigo": "describe('Login', () => {\n  it('entra com usuário e senha', () => {\n    cy.visit('https://www.saucedemo.com')\n  })\n})",
-        "legenda": "cy.visit abre o site",
-        "destaque": [
-         3
-        ]
-       }
-      },
-      {
-       "text": "Salva o arquivo e volta pro Cypress. Clica no login ponto cy ponto js, e olha o que acontece.",
-       "scene": {
-        "type": "passo",
-        "n": 1,
-        "de": 1,
-        "titulo": "Clique no seu teste",
-        "sub": "login.cy.js",
-        "icone": "▶",
-        "mono": true
-       }
-      },
-      {
-       "text": "O Cypress abriu o site sozinho! Na esquerda, ele mostra cada passo que fez. Na direita, mostra o site de verdade.",
-       "scene": {
-        "type": "runner",
-        "spec": "login.cy.js",
-        "teste": "entra com usuário e senha",
-        "passos": [
-         [
-          "visit",
-          "https://www.saucedemo.com"
-         ]
-        ],
-        "status": "passou",
-        "media": "site_sauce",
-        "url": "https://www.saucedemo.com/",
-        "legenda": "Na esquerda os passos, na direita o site"
-       }
-      },
-      {
-       "text": "E repara na bolinha verde: ela quer dizer que o teste passou. Parabéns, esse é oficialmente o seu primeiro teste rodando!",
-       "scene": {
-        "type": "runner",
-        "spec": "login.cy.js",
-        "teste": "entra com usuário e senha",
-        "passos": [
-         [
-          "visit",
-          "https://www.saucedemo.com"
-         ]
-        ],
-        "status": "passou",
-        "media": "site_sauce",
-        "url": "https://www.saucedemo.com/",
-        "pronto": true,
-        "foco": "lista",
-        "legenda": "Bolinha verde = o teste passou"
-       }
-      },
-      {
-       "text": "Na próxima aula, a gente faz o Cypress digitar o usuário e a senha.",
-       "scene": {
-        "type": "passo",
-        "icone": "▶",
-        "titulo": "Próxima aula",
-        "sub": "Preenchendo Campos"
-       }
-      },
-      {
-       "text": "Te vejo lá!",
-       "scene": {
-        "type": "endcard",
-        "sub": "PRÓXIMA: PREENCHENDO CAMPOS"
-       }
-      }
-     ]
-    }
-   ]
-  },
-  "shorts": [],
-  "tiktoks": []
- },
- "serie": [],
- "meta": {
-  "titles": [
-   "Aula 10: cy.visit: abrindo um site"
+  "title": "Cypress para leigos · Aula 10",
+  "slug": "curso-cypress-10",
+  "idioma": "pt",
+  "destino": "curso",
+  "marca": [
+    "CYPRESS",
+    "PARA LEIGOS"
   ],
-  "description": "",
-  "tags": []
- },
- "notes": "Curso Cypress para leigos. Não publica (destino: curso)."
+  "cor_fundo": "#3fd68a",
+  "legenda_y": 0.93,
+  "selo": "MÓDULO 3 · AULA 10",
+  "voz": {
+    "nome": "gravada",
+    "motor": "eleven",
+    "eleven_voz": "Vinícius Torales"
+  },
+  "script": {
+    "long": {
+      "parts": [
+        {
+          "chapter": "",
+          "sentences": [
+            {
+              "text": "Fala, pessoal! Aula dez. Hoje o seu teste vai abrir um site sozinho.",
+              "scene": {
+                "type": "bigtext",
+                "stagger": 0.25,
+                "lines": [
+                  [
+                    "AULA 10",
+                    "muted",
+                    80
+                  ],
+                  [
+                    "CY.VISIT",
+                    "gold",
+                    200
+                  ]
+                ]
+              }
+            },
+            {
+              "text": "A gente vai usar um site feito justamente pra treinar testes: o Sauce Demo. É uma lojinha de mentira, onde dá pra testar à vontade sem estragar nada.",
+              "scene": {
+                "type": "tela",
+                "media": "site_sauce",
+                "url": "https://www.saucedemo.com/",
+                "titulo": "saucedemo.com",
+                "legenda": "Um site feito pra treinar testes"
+              }
+            },
+            {
+              "text": "Todo comando do Cypress começa com cy ponto. E o primeiro comando é o visit, que quer dizer visitar.",
+              "scene": {
+                "type": "bigtext",
+                "stagger": 0.25,
+                "lines": [
+                  [
+                    "CY.",
+                    "gold",
+                    200
+                  ],
+                  [
+                    "O COMEÇO DE TODO COMANDO",
+                    "white",
+                    90
+                  ]
+                ]
+              }
+            },
+            {
+              "text": "Dentro do it, escreve cy ponto visit, e entre parênteses e aspas, o endereço do site.",
+              "scene": {
+                "type": "editor",
+                "arquivo": "login.cy.js",
+                "pastas": [
+                  "meu-primeiro-teste",
+                  "cypress",
+                  "e2e",
+                  "login.cy.js"
+                ],
+                "codigo": "describe('Login', () => {\n  it('entra com usuário e senha', () => {\n    cy.visit('https://www.saucedemo.com')\n  })\n})",
+                "legenda": "cy.visit abre o site",
+                "destaque": [
+                  3
+                ]
+              }
+            },
+            {
+              "text": "Salva o arquivo e volta pro Cypress. Clica no login ponto cy ponto js, e olha o que acontece.",
+              "scene": {
+                "type": "launchpad",
+                "tela": "specs",
+                "specs": [
+                  "login.cy.js"
+                ],
+                "legenda": "Clique no login.cy.js"
+              }
+            },
+            {
+              "text": "O Cypress abriu o site sozinho! Na esquerda, ele mostra cada passo que fez. Na direita, mostra o site de verdade.",
+              "scene": {
+                "type": "runner",
+                "spec": "login.cy.js",
+                "teste": "entra com usuário e senha",
+                "passos": [
+                  [
+                    "visit",
+                    "https://www.saucedemo.com"
+                  ]
+                ],
+                "status": "passou",
+                "media": "site_sauce",
+                "url": "https://www.saucedemo.com/",
+                "legenda": "Na esquerda os passos, na direita o site"
+              }
+            },
+            {
+              "text": "E repara na bolinha verde: ela quer dizer que o teste passou. Parabéns, esse é oficialmente o seu primeiro teste rodando!",
+              "scene": {
+                "type": "runner",
+                "spec": "login.cy.js",
+                "teste": "entra com usuário e senha",
+                "passos": [
+                  [
+                    "visit",
+                    "https://www.saucedemo.com"
+                  ]
+                ],
+                "status": "passou",
+                "media": "site_sauce",
+                "url": "https://www.saucedemo.com/",
+                "pronto": true,
+                "foco": "lista",
+                "legenda": "Bolinha verde = o teste passou"
+              }
+            },
+            {
+              "text": "Na próxima aula, a gente faz o Cypress digitar o usuário e a senha.",
+              "scene": {
+                "type": "passo",
+                "icone": "▶",
+                "titulo": "Próxima aula",
+                "sub": "Preenchendo Campos"
+              }
+            },
+            {
+              "text": "Te vejo lá!",
+              "scene": {
+                "type": "endcard",
+                "sub": "PRÓXIMA: PREENCHENDO CAMPOS"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "shorts": [],
+    "tiktoks": []
+  },
+  "serie": [],
+  "meta": {
+    "titles": [
+      "Aula 10: cy.visit: abrindo um site"
+    ],
+    "description": "",
+    "tags": []
+  },
+  "notes": "Curso Cypress para leigos. Não publica (destino: curso)."
 }

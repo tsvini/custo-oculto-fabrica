@@ -1,181 +1,195 @@
 {
- "title": "Cypress para leigos · Aula 6",
- "slug": "curso-cypress-06",
- "idioma": "pt",
- "destino": "curso",
- "marca": [
-  "CYPRESS",
-  "PARA LEIGOS"
- ],
- "cor_fundo": "#3fd68a",
- "legenda_y": 0.93,
- "selo": "MÓDULO 2 · AULA 6",
- "voz": {
-  "nome": "gravada",
-  "motor": "eleven",
-  "eleven_voz": "Vinícius Torales"
- },
- "script": {
-  "long": {
-   "parts": [
-    {
-     "chapter": "",
-     "sentences": [
-      {
-       "text": "Fala, pessoal! Aula seis. Lembra do terminal, aquela tela preta da aula do Node? Ele também existe dentro do VS Code.",
-       "scene": {
-        "type": "bigtext",
-        "stagger": 0.25,
-        "lines": [
-         [
-          "AULA 6",
-          "muted",
-          80
-         ],
-         [
-          "O TERMINAL",
-          "gold",
-          180
-         ],
-         [
-          "DENTRO DO VS CODE",
-          "white",
-          100
-         ]
-        ]
-       }
-      },
-      {
-       "text": "Pra abrir, vai no menu Terminal, lá em cima, e clica em New Terminal. Vai aparecer uma janelinha embaixo do editor.",
-       "scene": {
-        "type": "passo",
-        "n": 1,
-        "de": 2,
-        "titulo": "Terminal › New Terminal",
-        "sub": "menu do VS Code",
-        "icone": "1"
-       }
-      },
-      {
-       "text": "Repara num detalhe: o terminal já abre dentro da pasta do seu projeto. Olha o nome dela aparecendo antes do cursor.",
-       "scene": {
-        "type": "terminal",
-        "titulo": "Terminal — VS Code",
-        "pasta": "C:\\Users\\voce\\Documents\\meu-primeiro-teste",
-        "linhas": [
-         {
-          "cmd": ""
-         }
-        ],
-        "legenda": "O terminal já está na pasta do projeto"
-       }
-      },
-      {
-       "text": "Agora a gente vai transformar essa pasta num projeto de verdade. Digita npm espaço init espaço traço y, e aperta Enter.",
-       "scene": {
-        "type": "terminal",
-        "titulo": "Terminal — VS Code",
-        "pasta": "C:\\Users\\voce\\Documents\\meu-primeiro-teste",
-        "linhas": [
-         {
-          "cmd": "npm init -y"
-         },
-         {
-          "out": "Wrote to package.json:",
-          "cor": "mut"
-         },
-         {
-          "out": "{ \"name\": \"meu-primeiro-teste\", \"version\": \"1.0.0\" }",
-          "cor": "ac"
-         }
-        ],
-        "legenda": "npm init -y cria o projeto"
-       }
-      },
-      {
-       "text": "Esse comando criou um arquivo chamado package ponto json. Pensa nele como a ficha do projeto: o nome, a versão e a lista de tudo o que o projeto usa.",
-       "scene": {
-        "type": "editor",
-        "arquivo": "package.json",
-        "pastas": [
-         "meu-primeiro-teste",
-         "package.json"
-        ],
-        "codigo": "{\n  \"name\": \"meu-primeiro-teste\",\n  \"version\": \"1.0.0\",\n  \"description\": \"\",\n  \"scripts\": {\n    \"test\": \"echo \\\"Error\\\"\"\n  }\n}",
-        "legenda": "A ficha do projeto",
-        "destaque": [
-         2
-        ]
-       }
-      },
-      {
-       "text": "E o traço y no final do comando quer dizer yes, sim pra tudo. Assim ele não fica fazendo um monte de pergunta.",
-       "scene": {
-        "type": "bigtext",
-        "stagger": 0.25,
-        "lines": [
-         [
-          "-y",
-          "gold",
-          240
-         ],
-         [
-          "= SIM PRA TUDO",
-          "white",
-          110
-         ]
-        ]
-       }
-      },
-      {
-       "text": "Você não precisa mexer nesse arquivo agora. Só precisa saber que ele existe, e que ele é o coração do projeto.",
-       "scene": {
-        "type": "cards",
-        "itens": [
-         [
-          "{}",
-          "package.json",
-          "a ficha do projeto"
-         ],
-         [
-          "npm",
-          "npm init",
-          "quem criou a ficha",
-          "#69a7ff"
-         ]
-        ]
-       }
-      },
-      {
-       "text": "Na próxima aula, finalmente, a gente instala o Cypress no projeto.",
-       "scene": {
-        "type": "passo",
-        "icone": "▶",
-        "titulo": "Próxima aula",
-        "sub": "Instalando O Cypress"
-       }
-      },
-      {
-       "text": "Te vejo lá!",
-       "scene": {
-        "type": "endcard",
-        "sub": "PRÓXIMA: INSTALANDO O CYPRESS"
-       }
-      }
-     ]
-    }
-   ]
-  },
-  "shorts": [],
-  "tiktoks": []
- },
- "serie": [],
- "meta": {
-  "titles": [
-   "Aula 6: O terminal e o package.json"
+  "title": "Cypress para leigos · Aula 6",
+  "slug": "curso-cypress-06",
+  "idioma": "pt",
+  "destino": "curso",
+  "marca": [
+    "CYPRESS",
+    "PARA LEIGOS"
   ],
-  "description": "",
-  "tags": []
- },
- "notes": "Curso Cypress para leigos. Não publica (destino: curso)."
+  "cor_fundo": "#3fd68a",
+  "legenda_y": 0.93,
+  "selo": "MÓDULO 2 · AULA 6",
+  "voz": {
+    "nome": "gravada",
+    "motor": "eleven",
+    "eleven_voz": "Vinícius Torales"
+  },
+  "script": {
+    "long": {
+      "parts": [
+        {
+          "chapter": "",
+          "sentences": [
+            {
+              "text": "Fala, pessoal! Aula seis. Lembra do terminal, aquela tela preta da aula do Node? Ele também existe dentro do VS Code.",
+              "scene": {
+                "type": "bigtext",
+                "stagger": 0.25,
+                "lines": [
+                  [
+                    "AULA 6",
+                    "muted",
+                    80
+                  ],
+                  [
+                    "O TERMINAL",
+                    "gold",
+                    180
+                  ],
+                  [
+                    "DENTRO DO VS CODE",
+                    "white",
+                    100
+                  ]
+                ]
+              }
+            },
+            {
+              "text": "Pra abrir, vai no menu Terminal, lá em cima, e clica em New Terminal. Vai aparecer uma janelinha embaixo do editor.",
+              "scene": {
+                "type": "menu",
+                "app": "vscode",
+                "abre": 6,
+                "menus": [
+                  [
+                    "New Terminal",
+                    "Split Terminal",
+                    "—",
+                    "Run Task...",
+                    "Run Build Task..."
+                  ]
+                ],
+                "caminho": [
+                  0
+                ],
+                "pastas": [
+                  "meu-primeiro-teste"
+                ],
+                "resultado": "terminal",
+                "legenda": "Terminal › New Terminal"
+              }
+            },
+            {
+              "text": "Repara num detalhe: o terminal já abre dentro da pasta do seu projeto. Olha o nome dela aparecendo antes do cursor.",
+              "scene": {
+                "type": "terminal",
+                "titulo": "Terminal — VS Code",
+                "pasta": "C:\\Users\\voce\\Documents\\meu-primeiro-teste",
+                "linhas": [
+                  {
+                    "cmd": ""
+                  }
+                ],
+                "legenda": "O terminal já está na pasta do projeto"
+              }
+            },
+            {
+              "text": "Agora a gente vai transformar essa pasta num projeto de verdade. Digita npm espaço init espaço traço y, e aperta Enter.",
+              "scene": {
+                "type": "terminal",
+                "titulo": "Terminal — VS Code",
+                "pasta": "C:\\Users\\voce\\Documents\\meu-primeiro-teste",
+                "linhas": [
+                  {
+                    "cmd": "npm init -y"
+                  },
+                  {
+                    "out": "Wrote to package.json:",
+                    "cor": "mut"
+                  },
+                  {
+                    "out": "{ \"name\": \"meu-primeiro-teste\", \"version\": \"1.0.0\" }",
+                    "cor": "ac"
+                  }
+                ],
+                "legenda": "npm init -y cria o projeto"
+              }
+            },
+            {
+              "text": "Esse comando criou um arquivo chamado package ponto json. Pensa nele como a ficha do projeto: o nome, a versão e a lista de tudo o que o projeto usa.",
+              "scene": {
+                "type": "editor",
+                "arquivo": "package.json",
+                "pastas": [
+                  "meu-primeiro-teste",
+                  "package.json"
+                ],
+                "codigo": "{\n  \"name\": \"meu-primeiro-teste\",\n  \"version\": \"1.0.0\",\n  \"description\": \"\",\n  \"scripts\": {\n    \"test\": \"echo \\\"Error\\\"\"\n  }\n}",
+                "legenda": "A ficha do projeto",
+                "destaque": [
+                  2
+                ]
+              }
+            },
+            {
+              "text": "E o traço y no final do comando quer dizer yes, sim pra tudo. Assim ele não fica fazendo um monte de pergunta.",
+              "scene": {
+                "type": "bigtext",
+                "stagger": 0.25,
+                "lines": [
+                  [
+                    "-y",
+                    "gold",
+                    240
+                  ],
+                  [
+                    "= SIM PRA TUDO",
+                    "white",
+                    110
+                  ]
+                ]
+              }
+            },
+            {
+              "text": "Você não precisa mexer nesse arquivo agora. Só precisa saber que ele existe, e que ele é o coração do projeto.",
+              "scene": {
+                "type": "cards",
+                "itens": [
+                  [
+                    "{}",
+                    "package.json",
+                    "a ficha do projeto"
+                  ],
+                  [
+                    "npm",
+                    "npm init",
+                    "quem criou a ficha",
+                    "#69a7ff"
+                  ]
+                ]
+              }
+            },
+            {
+              "text": "Na próxima aula, finalmente, a gente instala o Cypress no projeto.",
+              "scene": {
+                "type": "passo",
+                "icone": "▶",
+                "titulo": "Próxima aula",
+                "sub": "Instalando O Cypress"
+              }
+            },
+            {
+              "text": "Te vejo lá!",
+              "scene": {
+                "type": "endcard",
+                "sub": "PRÓXIMA: INSTALANDO O CYPRESS"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "shorts": [],
+    "tiktoks": []
+  },
+  "serie": [],
+  "meta": {
+    "titles": [
+      "Aula 6: O terminal e o package.json"
+    ],
+    "description": "",
+    "tags": []
+  },
+  "notes": "Curso Cypress para leigos. Não publica (destino: curso)."
 }

@@ -1,189 +1,214 @@
 {
- "title": "Cypress para leigos · Aula 13",
- "slug": "curso-cypress-13",
- "idioma": "pt",
- "destino": "curso",
- "marca": [
-  "CYPRESS",
-  "PARA LEIGOS"
- ],
- "cor_fundo": "#3fd68a",
- "legenda_y": 0.93,
- "selo": "MÓDULO 4 · AULA 13",
- "voz": {
-  "nome": "gravada",
-  "motor": "eleven",
-  "eleven_voz": "Vinícius Torales"
- },
- "script": {
-  "long": {
-   "parts": [
-    {
-     "chapter": "",
-     "sentences": [
-      {
-       "text": "Fala, pessoal! Módulo quatro. Agora a gente vai do básico pro bom. E começa com a pergunta que todo iniciante faz: como eu descubro o seletor de um elemento?",
-       "scene": {
-        "type": "bigtext",
-        "stagger": 0.25,
-        "lines": [
-         [
-          "MÓDULO 4",
-          "muted",
-          80
-         ],
-         [
-          "COMO ACHAR",
-          "white",
-          140
-         ],
-         [
-          "O ELEMENTO?",
-          "gold",
-          170
-         ]
-        ]
-       }
-      },
-      {
-       "text": "A resposta é: inspecionando. No navegador, clica com o botão direito em cima do campo, e escolhe Inspecionar.",
-       "scene": {
-        "type": "passo",
-        "n": 1,
-        "de": 3,
-        "titulo": "Botão direito › Inspecionar",
-        "icone": "1"
-       }
-      },
-      {
-       "text": "Vai abrir um painel com o código da página. E o pedaço daquele campo vai estar marcado. Ali você acha o id, o nome, e outros atributos.",
-       "scene": {
-        "type": "editor",
-        "arquivo": "pagina.html",
-        "pastas": null,
-        "codigo": "<input\n  class=\"input_error form_input\"\n  placeholder=\"Username\"\n  type=\"text\"\n  data-test=\"username\"\n  id=\"user-name\"\n  name=\"user-name\"\n/>",
-        "legenda": "O código do campo de usuário",
-        "destaque": [
-         5,
-         6
-        ]
-       }
-      },
-      {
-       "text": "Repara que tem um atributo chamado data traço test. Ele foi colocado justamente pra testes, e é o seletor mais seguro de usar.",
-       "scene": {
-        "type": "bigtext",
-        "stagger": 0.25,
-        "lines": [
-         [
-          "DATA-TEST",
-          "gold",
-          190
-         ],
-         [
-          "O MELHOR SELETOR",
-          "white",
-          120
-         ]
-        ]
-       }
-      },
-      {
-       "text": "Por quê? Porque o visual do site muda o tempo todo. A cor muda, a classe muda. Mas o data test fica lá, quietinho, só pra gente.",
-       "scene": {
-        "type": "compare",
-        "title": "QUAL É MAIS SEGURO?",
-        "items": [
-         [
-          "CLASSE",
-          "MUDA COM O VISUAL",
-          "red"
-         ],
-         [
-          "DATA-TEST",
-          "FEITO PRA TESTES",
-          "gold"
-         ]
-        ],
-        "size": 140,
-        "stagger": 1.2,
-        "vs": true
-       }
-      },
-      {
-       "text": "Pra usar, a gente escreve entre colchetes: data traço test igual a username.",
-       "scene": {
-        "type": "editor",
-        "arquivo": "login.cy.js",
-        "pastas": [
-         "meu-primeiro-teste",
-         "cypress",
-         "e2e",
-         "login.cy.js"
-        ],
-        "codigo": "// antes, pelo id:\ncy.get('#user-name').type('standard_user')\n\n// melhor, pelo data-test:\ncy.get('[data-test=\"username\"]').type('standard_user')",
-        "legenda": "Entre colchetes: [data-test=\"...\"]",
-        "destaque": [
-         5
-        ]
-       }
-      },
-      {
-       "text": "Então a regra é simples: tem data test? Usa ele. Não tem? Usa o id. E só se não tiver nenhum dos dois, você parte pra outras opções.",
-       "scene": {
-        "type": "cards",
-        "titulo": "A ORDEM DE PREFERÊNCIA",
-        "itens": [
-         [
-          "1",
-          "data-test",
-          "o melhor de todos"
-         ],
-         [
-          "2",
-          "#id",
-          "o segundo melhor",
-          "#69a7ff"
-         ],
-         [
-          "3",
-          "outros",
-          "só se não tiver jeito",
-          "#ffd23f"
-         ]
-        ]
-       }
-      },
-      {
-       "text": "Na próxima aula, a gente organiza vários testes no mesmo arquivo.",
-       "scene": {
-        "type": "passo",
-        "icone": "▶",
-        "titulo": "Próxima aula",
-        "sub": "Organizando Os Testes"
-       }
-      },
-      {
-       "text": "Te vejo lá!",
-       "scene": {
-        "type": "endcard",
-        "sub": "PRÓXIMA: ORGANIZANDO OS TESTES"
-       }
-      }
-     ]
-    }
-   ]
-  },
-  "shorts": [],
-  "tiktoks": []
- },
- "serie": [],
- "meta": {
-  "titles": [
-   "Aula 13: Como achar o elemento certo"
+  "title": "Cypress para leigos · Aula 13",
+  "slug": "curso-cypress-13",
+  "idioma": "pt",
+  "destino": "curso",
+  "marca": [
+    "CYPRESS",
+    "PARA LEIGOS"
   ],
-  "description": "",
-  "tags": []
- },
- "notes": "Curso Cypress para leigos. Não publica (destino: curso)."
+  "cor_fundo": "#3fd68a",
+  "legenda_y": 0.93,
+  "selo": "MÓDULO 4 · AULA 13",
+  "voz": {
+    "nome": "gravada",
+    "motor": "eleven",
+    "eleven_voz": "Vinícius Torales"
+  },
+  "script": {
+    "long": {
+      "parts": [
+        {
+          "chapter": "",
+          "sentences": [
+            {
+              "text": "Fala, pessoal! Módulo quatro. Agora a gente vai do básico pro bom. E começa com a pergunta que todo iniciante faz: como eu descubro o seletor de um elemento?",
+              "scene": {
+                "type": "bigtext",
+                "stagger": 0.25,
+                "lines": [
+                  [
+                    "MÓDULO 4",
+                    "muted",
+                    80
+                  ],
+                  [
+                    "COMO ACHAR",
+                    "white",
+                    140
+                  ],
+                  [
+                    "O ELEMENTO?",
+                    "gold",
+                    170
+                  ]
+                ]
+              }
+            },
+            {
+              "text": "A resposta é: inspecionando. Abre o site no navegador, clica com o botão direito em cima do campo, e escolhe Inspecionar.",
+              "scene": {
+                "type": "devtools",
+                "media": "insp_user",
+                "url": "https://www.saucedemo.com",
+                "inspecionar": "#user-name",
+                "clique_em": 2.0,
+                "legenda": "Botão direito › Inspecionar"
+              }
+            },
+            {
+              "text": "Olha só: abriu um painel do lado, com o código da página. E o pedaço daquele campo já vem marcado. Ali você acha o id, o nome, e outros atributos.",
+              "scene": {
+                "type": "devtools",
+                "media": "insp_user",
+                "url": "https://www.saucedemo.com",
+                "inspecionar": "#user-name",
+                "aberto": true,
+                "realce": [
+                  "id",
+                  "name"
+                ],
+                "realce_em": 4.5,
+                "realce_rotulo": "atributos",
+                "legenda": "O código real do campo"
+              }
+            },
+            {
+              "text": "Repara nesse aqui: data traço test. Ele foi colocado justamente pra testes, e é o seletor mais seguro de usar.",
+              "scene": {
+                "type": "devtools",
+                "media": "insp_user",
+                "url": "https://www.saucedemo.com",
+                "inspecionar": "#user-name",
+                "aberto": true,
+                "realce": [
+                  "data-test"
+                ],
+                "realce_em": 1.0,
+                "realce_rotulo": "feito pra testes!",
+                "legenda": "data-test: o melhor seletor"
+              }
+            },
+            {
+              "text": "Por quê? Porque o visual do site muda o tempo todo. A cor muda, a classe muda. Mas o data test fica lá, quietinho, só pra gente.",
+              "scene": {
+                "type": "compare",
+                "title": "QUAL É MAIS SEGURO?",
+                "items": [
+                  [
+                    "CLASSE",
+                    "MUDA COM O VISUAL",
+                    "red"
+                  ],
+                  [
+                    "DATA-TEST",
+                    "FEITO PRA TESTES",
+                    "gold"
+                  ]
+                ],
+                "size": 140,
+                "stagger": 1.2,
+                "vs": true
+              }
+            },
+            {
+              "text": "E tem um jeito ainda mais fácil, direto no Cypress. Lá no topo do navegador dele tem um ícone de mira. É o Selector Playground.",
+              "scene": {
+                "type": "playground",
+                "media": "insp_user",
+                "url": "https://www.saucedemo.com",
+                "inspecionar": "#user-name",
+                "spec": "login.cy.js",
+                "clique_em": 99,
+                "legenda": "A mira do Cypress"
+              }
+            },
+            {
+              "text": "Clica na mira, passa o mouse em cima do campo, e o Cypress já mostra o seletor pronto. Viu? Ele mesmo escolheu o data test. Aí é só copiar.",
+              "scene": {
+                "type": "playground",
+                "media": "insp_user",
+                "url": "https://www.saucedemo.com",
+                "inspecionar": "#user-name",
+                "spec": "login.cy.js",
+                "clique_em": 1.2,
+                "legenda": "O Cypress sugere o seletor"
+              }
+            },
+            {
+              "text": "E pra usar no teste, é só colar dentro do cy get. Repara: o data test vai entre colchetes.",
+              "scene": {
+                "type": "editor",
+                "arquivo": "login.cy.js",
+                "pastas": [
+                  "meu-primeiro-teste",
+                  "cypress",
+                  "e2e",
+                  "login.cy.js"
+                ],
+                "codigo": "// antes, pelo id:\ncy.get('#user-name').type('standard_user')\n\n// melhor, pelo data-test:\ncy.get('[data-test=\"username\"]').type('standard_user')",
+                "legenda": "Entre colchetes: [data-test=\"...\"]",
+                "destaque": [
+                  5
+                ]
+              }
+            },
+            {
+              "text": "Então a regra é simples: tem data test? Usa ele. Não tem? Usa o id. E só se não tiver nenhum dos dois, você parte pra outras opções.",
+              "scene": {
+                "type": "cards",
+                "titulo": "A ORDEM DE PREFERÊNCIA",
+                "itens": [
+                  [
+                    "1",
+                    "data-test",
+                    "o melhor de todos"
+                  ],
+                  [
+                    "2",
+                    "#id",
+                    "o segundo melhor",
+                    "#69a7ff"
+                  ],
+                  [
+                    "3",
+                    "outros",
+                    "só se não tiver jeito",
+                    "#ffd23f"
+                  ]
+                ]
+              }
+            },
+            {
+              "text": "Na próxima aula, a gente organiza vários testes no mesmo arquivo.",
+              "scene": {
+                "type": "passo",
+                "icone": "▶",
+                "titulo": "Próxima aula",
+                "sub": "Organizando Os Testes"
+              }
+            },
+            {
+              "text": "Te vejo lá!",
+              "scene": {
+                "type": "endcard",
+                "sub": "PRÓXIMA: ORGANIZANDO OS TESTES"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "shorts": [],
+    "tiktoks": []
+  },
+  "serie": [],
+  "meta": {
+    "titles": [
+      "Aula 13: Como achar o elemento certo"
+    ],
+    "description": "",
+    "tags": []
+  },
+  "notes": "Curso Cypress para leigos. Não publica (destino: curso)."
 }

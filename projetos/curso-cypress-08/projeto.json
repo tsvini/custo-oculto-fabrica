@@ -1,210 +1,186 @@
 {
- "title": "Cypress para leigos · Aula 8",
- "slug": "curso-cypress-08",
- "idioma": "pt",
- "destino": "curso",
- "marca": [
-  "CYPRESS",
-  "PARA LEIGOS"
- ],
- "cor_fundo": "#3fd68a",
- "legenda_y": 0.93,
- "selo": "MÓDULO 2 · AULA 8",
- "voz": {
-  "nome": "gravada",
-  "motor": "eleven",
-  "eleven_voz": "Vinícius Torales"
- },
- "script": {
-  "long": {
-   "parts": [
-    {
-     "chapter": "",
-     "sentences": [
-      {
-       "text": "Fala, pessoal! Aula oito. Hoje é o grande dia: a gente vai abrir o Cypress.",
-       "scene": {
-        "type": "bigtext",
-        "stagger": 0.25,
-        "lines": [
-         [
-          "AULA 8",
-          "muted",
-          80
-         ],
-         [
-          "ABRINDO",
-          "white",
-          140
-         ],
-         [
-          "O CYPRESS",
-          "gold",
-          200
-         ]
-        ]
-       }
-      },
-      {
-       "text": "No terminal, digita npx espaço cypress espaço open, e aperta Enter.",
-       "scene": {
-        "type": "terminal",
-        "titulo": "Terminal — VS Code",
-        "pasta": "C:\\Users\\voce\\Documents\\meu-primeiro-teste",
-        "linhas": [
-         {
-          "cmd": "npx cypress open"
-         },
-         {
-          "out": "It looks like this is your first time using Cypress",
-          "cor": "mut"
-         },
-         {
-          "out": "Opening Cypress...",
-          "cor": "ac"
-         }
-        ],
-        "legenda": "npx cypress open"
-       }
-      },
-      {
-       "text": "O npx é o primo do npm. O npm instala as ferramentas, e o npx usa elas. Então npx cypress open quer dizer: usa o Cypress e abre ele.",
-       "scene": {
-        "type": "compare",
-        "title": "OS DOIS PRIMOS",
-        "items": [
-         [
-          "NPM",
-          "INSTALA",
-          "white"
-         ],
-         [
-          "NPX",
-          "USA",
-          "gold"
-         ]
-        ],
-        "size": 170,
-        "stagger": 1.2,
-        "vs": false
-       }
-      },
-      {
-       "text": "Vai abrir a janela do Cypress, perguntando que tipo de teste você quer fazer. Escolhe a opção E2E Testing.",
-       "scene": {
-        "type": "cards",
-        "titulo": "ESCOLHA: E2E TESTING",
-        "itens": [
-         [
-          "✓",
-          "E2E Testing",
-          "testa o site como um usuário"
-         ],
-         [
-          "○",
-          "Component Testing",
-          "pra outro momento",
-          "#8b93a7"
-         ]
-        ]
-       }
-      },
-      {
-       "text": "E2E quer dizer de ponta a ponta. É o teste que usa o site do jeito que uma pessoa usaria: abre, clica, digita e confere.",
-       "scene": {
-        "type": "bigtext",
-        "stagger": 0.25,
-        "lines": [
-         [
-          "E2E",
-          "gold",
-          220
-         ],
-         [
-          "DE PONTA A PONTA",
-          "white",
-          120
-         ]
-        ]
-       }
-      },
-      {
-       "text": "Ele vai mostrar alguns arquivos de configuração que criou sozinho. Pode clicar em Continue.",
-       "scene": {
-        "type": "instalador",
-        "app": "Cypress",
-        "titulo": "Configuration files",
-        "subtitulo": "We added the following files to your project",
-        "texto": "cypress.config.js\ncypress/support/e2e.js\ncypress/fixtures/example.json",
-        "botao": "Continue",
-        "legenda": "Ele cria tudo sozinho"
-       }
-      },
-      {
-       "text": "Depois, escolhe o navegador. Pode ser o Chrome, se você tiver, ou o Electron, que já vem com o Cypress. E clica em Start E2E Testing.",
-       "scene": {
-        "type": "cards",
-        "titulo": "ESCOLHA O NAVEGADOR",
-        "itens": [
-         [
-          "◎",
-          "Chrome",
-          "se você tiver instalado",
-          "#69a7ff"
-         ],
-         [
-          "⚛",
-          "Electron",
-          "já vem com o Cypress"
-         ]
-        ]
-       }
-      },
-      {
-       "text": "E olha que lindo: o Cypress abriu. E no VS Code, apareceu uma pasta nova chamada cypress. É ali que os nossos testes vão ficar.",
-       "scene": {
-        "type": "editor",
-        "arquivo": "cypress.config.js",
-        "pastas": [
-         "meu-primeiro-teste",
-         "cypress",
-         "e2e",
-         "cypress.config.js"
-        ],
-        "codigo": "const { defineConfig } = require('cypress')\n\nmodule.exports = defineConfig({\n  e2e: {\n    // aqui ficam as configurações\n  },\n})",
-        "legenda": "A pasta cypress apareceu"
-       }
-      },
-      {
-       "text": "Com isso, fechamos o módulo dois. Na próxima aula começa a parte mais legal: escrever o primeiro teste.",
-       "scene": {
-        "type": "passo",
-        "icone": "▶",
-        "titulo": "Próxima aula",
-        "sub": "O Primeiro Teste"
-       }
-      },
-      {
-       "text": "Te vejo lá!",
-       "scene": {
-        "type": "endcard",
-        "sub": "PRÓXIMA: O PRIMEIRO TESTE"
-       }
-      }
-     ]
-    }
-   ]
-  },
-  "shorts": [],
-  "tiktoks": []
- },
- "serie": [],
- "meta": {
-  "titles": [
-   "Aula 8: Abrindo o Cypress pela primeira vez"
+  "title": "Cypress para leigos · Aula 8",
+  "slug": "curso-cypress-08",
+  "idioma": "pt",
+  "destino": "curso",
+  "marca": [
+    "CYPRESS",
+    "PARA LEIGOS"
   ],
-  "description": "",
-  "tags": []
- },
- "notes": "Curso Cypress para leigos. Não publica (destino: curso)."
+  "cor_fundo": "#3fd68a",
+  "legenda_y": 0.93,
+  "selo": "MÓDULO 2 · AULA 8",
+  "voz": {
+    "nome": "gravada",
+    "motor": "eleven",
+    "eleven_voz": "Vinícius Torales"
+  },
+  "script": {
+    "long": {
+      "parts": [
+        {
+          "chapter": "",
+          "sentences": [
+            {
+              "text": "Fala, pessoal! Aula oito. Hoje é o grande dia: a gente vai abrir o Cypress.",
+              "scene": {
+                "type": "bigtext",
+                "stagger": 0.25,
+                "lines": [
+                  [
+                    "AULA 8",
+                    "muted",
+                    80
+                  ],
+                  [
+                    "ABRINDO",
+                    "white",
+                    140
+                  ],
+                  [
+                    "O CYPRESS",
+                    "gold",
+                    200
+                  ]
+                ]
+              }
+            },
+            {
+              "text": "No terminal, digita npx espaço cypress espaço open, e aperta Enter.",
+              "scene": {
+                "type": "terminal",
+                "titulo": "Terminal — VS Code",
+                "pasta": "C:\\Users\\voce\\Documents\\meu-primeiro-teste",
+                "linhas": [
+                  {
+                    "cmd": "npx cypress open"
+                  },
+                  {
+                    "out": "It looks like this is your first time using Cypress",
+                    "cor": "mut"
+                  },
+                  {
+                    "out": "Opening Cypress...",
+                    "cor": "ac"
+                  }
+                ],
+                "legenda": "npx cypress open"
+              }
+            },
+            {
+              "text": "O npx é o primo do npm. O npm instala as ferramentas, e o npx usa elas. Então npx cypress open quer dizer: usa o Cypress e abre ele.",
+              "scene": {
+                "type": "compare",
+                "title": "OS DOIS PRIMOS",
+                "items": [
+                  [
+                    "NPM",
+                    "INSTALA",
+                    "white"
+                  ],
+                  [
+                    "NPX",
+                    "USA",
+                    "gold"
+                  ]
+                ],
+                "size": 170,
+                "stagger": 1.2,
+                "vs": false
+              }
+            },
+            {
+              "text": "Vai abrir a janela do Cypress, perguntando que tipo de teste você quer fazer. Escolhe a opção E2E Testing.",
+              "scene": {
+                "type": "launchpad",
+                "tela": "tipo",
+                "legenda": "Escolha: E2E Testing"
+              }
+            },
+            {
+              "text": "E2E quer dizer de ponta a ponta. É o teste que usa o site do jeito que uma pessoa usaria: abre, clica, digita e confere.",
+              "scene": {
+                "type": "bigtext",
+                "stagger": 0.25,
+                "lines": [
+                  [
+                    "E2E",
+                    "gold",
+                    220
+                  ],
+                  [
+                    "DE PONTA A PONTA",
+                    "white",
+                    120
+                  ]
+                ]
+              }
+            },
+            {
+              "text": "Ele vai mostrar alguns arquivos de configuração que criou sozinho. Pode clicar em Continue.",
+              "scene": {
+                "type": "instalador",
+                "app": "Cypress",
+                "titulo": "Configuration files",
+                "subtitulo": "We added the following files to your project",
+                "texto": "cypress.config.js\ncypress/support/e2e.js\ncypress/fixtures/example.json",
+                "botao": "Continue",
+                "legenda": "Ele cria tudo sozinho"
+              }
+            },
+            {
+              "text": "Depois, escolhe o navegador. Pode ser o Chrome, se você tiver, ou o Electron, que já vem com o Cypress. E clica em Start E2E Testing.",
+              "scene": {
+                "type": "launchpad",
+                "tela": "navegador",
+                "legenda": "Escolha o navegador e clique em Start"
+              }
+            },
+            {
+              "text": "E olha que lindo: o Cypress abriu. E no VS Code, apareceu uma pasta nova chamada cypress. É ali que os nossos testes vão ficar.",
+              "scene": {
+                "type": "editor",
+                "arquivo": "cypress.config.js",
+                "pastas": [
+                  "meu-primeiro-teste",
+                  "cypress",
+                  "e2e",
+                  "cypress.config.js"
+                ],
+                "codigo": "const { defineConfig } = require('cypress')\n\nmodule.exports = defineConfig({\n  e2e: {\n    // aqui ficam as configurações\n  },\n})",
+                "legenda": "A pasta cypress apareceu"
+              }
+            },
+            {
+              "text": "Com isso, fechamos o módulo dois. Na próxima aula começa a parte mais legal: escrever o primeiro teste.",
+              "scene": {
+                "type": "passo",
+                "icone": "▶",
+                "titulo": "Próxima aula",
+                "sub": "O Primeiro Teste"
+              }
+            },
+            {
+              "text": "Te vejo lá!",
+              "scene": {
+                "type": "endcard",
+                "sub": "PRÓXIMA: O PRIMEIRO TESTE"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "shorts": [],
+    "tiktoks": []
+  },
+  "serie": [],
+  "meta": {
+    "titles": [
+      "Aula 8: Abrindo o Cypress pela primeira vez"
+    ],
+    "description": "",
+    "tags": []
+  },
+  "notes": "Curso Cypress para leigos. Não publica (destino: curso)."
 }

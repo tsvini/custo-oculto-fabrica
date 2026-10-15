@@ -8,12 +8,13 @@
 body{margin:0}</style></head><body><canvas id="cv" width="1920" height="1080"></canvas>
 <script src="../motor/engine.js"></script><script src="../motor/aula.js"></script><script>
 // Teste rápido de uma cena: quadro(tipo, cena, t, dur) → PNG (dataURL)
-window.quadro = async (tipo, s, t, dur) => {
+window.quadro = async (tipo, s, t, dur, imgs) => {
+  const media = {}; for (const [k, src] of Object.entries(imgs || {})) { const im = new Image(); im.src = src; await im.decode(); media[k] = { img: im }; }
   for (const w of [500, 600, 700, 800, 900]) await document.fonts.load(w + " 40px Inter"); await document.fonts.load("700 40px 'JetBrains Mono'");
   const cv = document.getElementById("cv"), ctx = cv.getContext("2d"); const W = 1920, H = 1080;
   const g = ctx.createRadialGradient(W/2, H*0.45, 100, W/2, H*0.45, 1100); g.addColorStop(0, "#14301f"); g.addColorStop(1, "#08090c");
   ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
-  COEngine.SCENES[tipo](ctx, { W, H, vertical: false, u: 1, cx: W / 2, cy: H * 0.45 }, t, dur, s, {});
+  COEngine.SCENES[tipo](ctx, { W, H, vertical: false, u: 1, cx: W / 2, cy: H * 0.45 }, t, dur, s, media);
   return cv.toDataURL("image/png");
 };
 </script></body></html>

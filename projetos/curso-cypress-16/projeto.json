@@ -1,211 +1,216 @@
 {
- "title": "Cypress para leigos · Aula 16",
- "slug": "curso-cypress-16",
- "idioma": "pt",
- "destino": "curso",
- "marca": [
-  "CYPRESS",
-  "PARA LEIGOS"
- ],
- "cor_fundo": "#3fd68a",
- "legenda_y": 0.93,
- "selo": "MÓDULO 4 · AULA 16",
- "voz": {
-  "nome": "gravada",
-  "motor": "eleven",
-  "eleven_voz": "Vinícius Torales"
- },
- "script": {
-  "long": {
-   "parts": [
-    {
-     "chapter": "",
-     "sentences": [
-      {
-       "text": "Fala, pessoal! Aula dezesseis, a última do módulo quatro.",
-       "scene": {
-        "type": "bigtext",
-        "stagger": 0.25,
-        "lines": [
-         [
-          "AULA 16",
-          "muted",
-          80
-         ],
-         [
-          "CYPRESS RUN",
-          "gold",
-          190
-         ]
-        ]
-       }
-      },
-      {
-       "text": "Até agora, a gente rodou os testes com a janela do Cypress aberta, clicando em cada arquivo. Isso é ótimo pra escrever e entender os testes.",
-       "scene": {
-        "type": "bigtext",
-        "stagger": 0.25,
-        "lines": [
-         [
-          "CYPRESS OPEN",
-          "white",
-          150
-         ],
-         [
-          "PRA ESCREVER",
-          "gold",
-          140
-         ]
-        ]
-       }
-      },
-      {
-       "text": "Mas nas empresas, os testes rodam sozinhos, sem ninguém olhando. Pra isso existe outro comando: npx cypress run.",
-       "scene": {
-        "type": "compare",
-        "title": "OS DOIS JEITOS",
-        "items": [
-         [
-          "OPEN",
-          "COM JANELA, PRA ESCREVER",
-          "white"
-         ],
-         [
-          "RUN",
-          "SEM JANELA, RODA TUDO",
-          "gold"
-         ]
-        ],
-        "size": 140,
-        "stagger": 1.2,
-        "vs": false
-       }
-      },
-      {
-       "text": "Fecha o Cypress, volta pro terminal do VS Code, e digita npx espaço cypress espaço run.",
-       "scene": {
-        "type": "terminal",
-        "titulo": "Terminal — VS Code",
-        "pasta": "C:\\Users\\voce\\Documents\\meu-primeiro-teste",
-        "linhas": [
-         {
-          "cmd": "npx cypress run"
-         },
-         {
-          "out": "Running:  login.cy.js",
-          "cor": "mut"
-         },
-         {
-          "out": "  ✓ entra com usuário e senha (1820ms)",
-          "cor": "ac"
-         },
-         {
-          "out": "  ✓ mostra erro para usuário bloqueado (950ms)",
-          "cor": "ac"
-         },
-         {
-          "out": "All specs passed!   2 passing",
-          "cor": "ac"
-         }
-        ],
-        "legenda": "Ele roda tudo e mostra o resultado"
-       }
-      },
-      {
-       "text": "Ele roda todos os testes, um atrás do outro, sem abrir nenhuma janela. E no final, mostra um resumo: quantos passaram e quantos falharam.",
-       "scene": {
-        "type": "bigtext",
-        "stagger": 0.25,
-        "lines": [
-         [
-          "ALL SPECS PASSED",
-          "gold",
-          140
-         ],
-         [
-          "TUDO PASSOU",
-          "white",
-          130
-         ]
-        ]
-       }
-      },
-      {
-       "text": "Esse é o jeito que os testes rodam todo dia nas empresas, automaticamente, sempre que alguém muda alguma coisa no site.",
-       "scene": {
-        "type": "flow",
-        "a": "ALGUÉM MUDA O SITE",
-        "a_sub": "um programador",
-        "b": "OS TESTES RODAM",
-        "b_sub": "sozinhos",
-        "caption": "COMO É NAS EMPRESAS"
-       }
-      },
-      {
-       "text": "E pra não precisar decorar o comando, dá pra criar um atalho no package ponto json. Na parte de scripts, coloca test, e o comando cypress run.",
-       "scene": {
-        "type": "editor",
-        "arquivo": "package.json",
-        "pastas": [
-         "meu-primeiro-teste",
-         "cypress",
-         "package.json"
-        ],
-        "codigo": "{\n  \"name\": \"meu-primeiro-teste\",\n  \"scripts\": {\n    \"test\": \"cypress run\"\n  },\n  \"devDependencies\": {\n    \"cypress\": \"^15.5.0\"\n  }\n}",
-        "legenda": "Um atalho pro comando",
-        "destaque": [
-         4
-        ]
-       }
-      },
-      {
-       "text": "Agora é só digitar npm test, que ele roda tudo. Fechamos o módulo quatro!",
-       "scene": {
-        "type": "terminal",
-        "titulo": "Terminal — VS Code",
-        "pasta": "C:\\Users\\voce\\Documents\\meu-primeiro-teste",
-        "linhas": [
-         {
-          "cmd": "npm test"
-         },
-         {
-          "out": "All specs passed!   2 passing",
-          "cor": "ac"
-         }
-        ],
-        "legenda": "npm test = atalho"
-       }
-      },
-      {
-       "text": "Na próxima aula, começa o projeto final: a gente vai testar uma compra inteira.",
-       "scene": {
-        "type": "passo",
-        "icone": "▶",
-        "titulo": "Próxima aula",
-        "sub": "O Projeto Final"
-       }
-      },
-      {
-       "text": "Te vejo lá!",
-       "scene": {
-        "type": "endcard",
-        "sub": "PRÓXIMA: O PROJETO FINAL"
-       }
-      }
-     ]
-    }
-   ]
-  },
-  "shorts": [],
-  "tiktoks": []
- },
- "serie": [],
- "meta": {
-  "titles": [
-   "Aula 16: Rodando tudo de uma vez: cypress run"
+  "title": "Cypress para leigos · Aula 16",
+  "slug": "curso-cypress-16",
+  "idioma": "pt",
+  "destino": "curso",
+  "marca": [
+    "CYPRESS",
+    "PARA LEIGOS"
   ],
-  "description": "",
-  "tags": []
- },
- "notes": "Curso Cypress para leigos. Não publica (destino: curso)."
+  "cor_fundo": "#3fd68a",
+  "legenda_y": 0.93,
+  "selo": "MÓDULO 4 · AULA 16",
+  "voz": {
+    "nome": "gravada",
+    "motor": "eleven",
+    "eleven_voz": "Vinícius Torales"
+  },
+  "script": {
+    "long": {
+      "parts": [
+        {
+          "chapter": "",
+          "sentences": [
+            {
+              "text": "Fala, pessoal! Aula dezesseis, a última do módulo quatro.",
+              "scene": {
+                "type": "bigtext",
+                "stagger": 0.25,
+                "lines": [
+                  [
+                    "AULA 16",
+                    "muted",
+                    80
+                  ],
+                  [
+                    "CYPRESS RUN",
+                    "gold",
+                    190
+                  ]
+                ]
+              }
+            },
+            {
+              "text": "Até agora, a gente rodou os testes com a janela do Cypress aberta, clicando em cada arquivo. Isso é ótimo pra escrever e entender os testes.",
+              "scene": {
+                "type": "launchpad",
+                "tela": "specs",
+                "specs": [
+                  "login.cy.js",
+                  "carrinho.cy.js"
+                ],
+                "legenda": "cypress open: clicando em cada arquivo"
+              }
+            },
+            {
+              "text": "Mas nas empresas, os testes rodam sozinhos, sem ninguém olhando. Pra isso existe outro comando: npx cypress run.",
+              "scene": {
+                "type": "compare",
+                "title": "OS DOIS JEITOS",
+                "items": [
+                  [
+                    "OPEN",
+                    "COM JANELA, PRA ESCREVER",
+                    "white"
+                  ],
+                  [
+                    "RUN",
+                    "SEM JANELA, RODA TUDO",
+                    "gold"
+                  ]
+                ],
+                "size": 140,
+                "stagger": 1.2,
+                "vs": false
+              }
+            },
+            {
+              "text": "Fecha o Cypress, volta pro terminal do VS Code, e digita npx espaço cypress espaço run.",
+              "scene": {
+                "type": "terminal",
+                "titulo": "Terminal — VS Code",
+                "pasta": "C:\\Users\\voce\\Documents\\meu-primeiro-teste",
+                "linhas": [
+                  {
+                    "cmd": "npx cypress run"
+                  },
+                  {
+                    "out": "Running:  login.cy.js",
+                    "cor": "mut"
+                  },
+                  {
+                    "out": "  ✓ entra com usuário e senha (1820ms)",
+                    "cor": "ac"
+                  },
+                  {
+                    "out": "  ✓ mostra erro para usuário bloqueado (950ms)",
+                    "cor": "ac"
+                  },
+                  {
+                    "out": "All specs passed!   2 passing",
+                    "cor": "ac"
+                  }
+                ],
+                "legenda": "Ele roda tudo e mostra o resultado"
+              }
+            },
+            {
+              "text": "Ele roda todos os testes, um atrás do outro, sem abrir nenhuma janela. E no final, mostra um resumo: quantos passaram e quantos falharam.",
+              "scene": {
+                "type": "terminal",
+                "titulo": "Terminal — VS Code",
+                "pasta": "C:\\Users\\voce\\Documents\\meu-primeiro-teste",
+                "linhas": [
+                  {
+                    "out": "(Run Finished)",
+                    "cor": "mut"
+                  },
+                  {
+                    "out": "  Spec              Tests  Passing  Failing",
+                    "cor": "mut"
+                  },
+                  {
+                    "out": "  ✓ login.cy.js         3        3        -",
+                    "cor": "ac"
+                  },
+                  {
+                    "out": "  ✓ carrinho.cy.js      2        2        -",
+                    "cor": "ac"
+                  },
+                  {
+                    "out": "  ✓ All specs passed!   5        5        -",
+                    "cor": "ac"
+                  }
+                ],
+                "legenda": "O resumo no final"
+              }
+            },
+            {
+              "text": "Esse é o jeito que os testes rodam todo dia nas empresas, automaticamente, sempre que alguém muda alguma coisa no site.",
+              "scene": {
+                "type": "flow",
+                "a": "ALGUÉM MUDA O SITE",
+                "a_sub": "um programador",
+                "b": "OS TESTES RODAM",
+                "b_sub": "sozinhos",
+                "caption": "COMO É NAS EMPRESAS"
+              }
+            },
+            {
+              "text": "E pra não precisar decorar o comando, dá pra criar um atalho no package ponto json. Na parte de scripts, coloca test, e o comando cypress run.",
+              "scene": {
+                "type": "editor",
+                "arquivo": "package.json",
+                "pastas": [
+                  "meu-primeiro-teste",
+                  "cypress",
+                  "package.json"
+                ],
+                "codigo": "{\n  \"name\": \"meu-primeiro-teste\",\n  \"scripts\": {\n    \"test\": \"cypress run\"\n  },\n  \"devDependencies\": {\n    \"cypress\": \"^15.5.0\"\n  }\n}",
+                "legenda": "Um atalho pro comando",
+                "destaque": [
+                  4
+                ]
+              }
+            },
+            {
+              "text": "Agora é só digitar npm test, que ele roda tudo. Fechamos o módulo quatro!",
+              "scene": {
+                "type": "terminal",
+                "titulo": "Terminal — VS Code",
+                "pasta": "C:\\Users\\voce\\Documents\\meu-primeiro-teste",
+                "linhas": [
+                  {
+                    "cmd": "npm test"
+                  },
+                  {
+                    "out": "All specs passed!   2 passing",
+                    "cor": "ac"
+                  }
+                ],
+                "legenda": "npm test = atalho"
+              }
+            },
+            {
+              "text": "Na próxima aula, começa o projeto final: a gente vai testar uma compra inteira.",
+              "scene": {
+                "type": "passo",
+                "icone": "▶",
+                "titulo": "Próxima aula",
+                "sub": "O Projeto Final"
+              }
+            },
+            {
+              "text": "Te vejo lá!",
+              "scene": {
+                "type": "endcard",
+                "sub": "PRÓXIMA: O PROJETO FINAL"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "shorts": [],
+    "tiktoks": []
+  },
+  "serie": [],
+  "meta": {
+    "titles": [
+      "Aula 16: Rodando tudo de uma vez: cypress run"
+    ],
+    "description": "",
+    "tags": []
+  },
+  "notes": "Curso Cypress para leigos. Não publica (destino: curso)."
 }

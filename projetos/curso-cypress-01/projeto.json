@@ -1,366 +1,385 @@
 {
- "title": "Cypress para leigos · Aula 1",
- "slug": "curso-cypress-01",
- "idioma": "pt",
- "destino": "curso",
- "marca": [
-  "CYPRESS",
-  "PARA LEIGOS"
- ],
- "voz": {
-  "nome": "gravada",
-  "motor": "eleven",
-  "eleven_voz": "Vinícius Torales"
- },
- "script": {
-  "long": {
-   "parts": [
-    {
-     "chapter": "",
-     "sentences": [
-      {
-       "text": "Fala, pessoal! Aqui é o Vinícius. Seja muito bem-vindo ao curso de Cypress para leigos.",
-       "scene": {
-        "type": "bigtext",
-        "stagger": 0.25,
-        "lines": [
-         [
-          "CYPRESS",
-          "gold",
-          220
-         ],
-         [
-          "PARA LEIGOS",
-          "white",
-          130
-         ],
-         [
-          "AULA 1",
-          "muted",
-          80
-         ]
-        ]
-       }
-      },
-      {
-       "text": "Se você nunca escreveu uma linha de código na vida, relaxa: esse curso foi feito exatamente pra você.",
-       "scene": {
-        "type": "bigtext",
-        "stagger": 0.25,
-        "lines": [
-         [
-          "NUNCA PROGRAMOU?",
-          "white",
-          130
-         ],
-         [
-          "RELAXA",
-          "gold",
-          190
-         ]
-        ]
-       }
-      },
-      {
-       "text": "Antes de qualquer coisa, deixa eu te contar o que é um teste.",
-       "scene": {
-        "type": "flash",
-        "text": "O QUE É\nUM TESTE?",
-        "color": "gold",
-        "size": 150
-       }
-      },
-      {
-       "text": "Imagina que você trabalha numa loja online. Toda vez que alguém muda alguma coisa no site, alguém precisa conferir se tudo continua funcionando.",
-       "scene": {
-        "type": "video",
-        "media": "loja",
-        "search": "online shopping laptop",
-        "search_en": "online shopping laptop",
-        "start": 0.0,
-        "dim": 0.45,
-        "lower": "Uma loja online",
-        "fallback": {
-         "type": "bigtext",
-         "stagger": 0.25,
-         "lines": [
-          [
-           "UMA LOJA",
-           "white",
-           150
-          ],
-          [
-           "ONLINE",
-           "gold",
-           170
-          ]
-         ]
-        }
-       }
-      },
-      {
-       "text": "Se dá pra entrar com login e senha, se o botão de comprar funciona, se o carrinho soma o preço certo.",
-       "scene": {
-        "type": "bullets",
-        "title": "TEM QUE CONFERIR",
-        "items": [
-         "O LOGIN FUNCIONA?",
-         "O BOTÃO DE COMPRAR?",
-         "O CARRINHO SOMA CERTO?"
-        ],
-        "size": 80,
-        "last_gold": true
-       }
-      },
-      {
-       "text": "Fazer isso na mão é o que a gente chama de teste manual.",
-       "scene": {
-        "type": "bigtext",
-        "stagger": 0.25,
-        "lines": [
-         [
-          "NA MÃO",
-          "white",
-          160
-         ],
-         [
-          "TESTE MANUAL",
-          "gold",
-          150
-         ]
-        ]
-       }
-      },
-      {
-       "text": "Funciona, mas cansa. Agora imagina fazer isso todo dia, dezenas de vezes. Uma hora você se distrai e deixa passar um erro.",
-       "scene": {
-        "type": "video",
-        "media": "cansado",
-        "search": "tired person computer office",
-        "search_en": "tired person computer office",
-        "start": 0.0,
-        "dim": 0.45,
-        "lower": "Todo dia, dezenas de vezes",
-        "fallback": {
-         "type": "bigtext",
-         "stagger": 0.25,
-         "lines": [
-          [
-           "TODO DIA",
-           "white",
-           150
-          ],
-          [
-           "DEZENAS DE VEZES",
-           "red",
-           120
-          ]
-         ]
-        }
-       }
-      },
-      {
-       "text": "É aí que entra o teste automatizado.",
-       "scene": {
-        "type": "flash",
-        "text": "TESTE\nAUTOMATIZADO",
-        "tint": "red",
-        "size": 140
-       }
-      },
-      {
-       "text": "Em vez de você clicar, você escreve um passo a passo que o computador segue sozinho.",
-       "scene": {
-        "type": "cards",
-        "itens": [
-         [
-          "1",
-          "Você escreve",
-          "os passos, uma vez só"
-         ],
-         [
-          "2",
-          "O computador",
-          "segue sozinho, toda vez",
-          "#69a7ff"
-         ],
-         [
-          "3",
-          "O resultado",
-          "passou ou falhou",
-          "#ffd23f"
-         ]
-        ]
-       }
-      },
-      {
-       "text": "Tipo uma receita de bolo: abre o site, digita o e-mail, digita a senha, clica em entrar e confere se apareceu bem-vindo.",
-       "scene": {
-        "type": "editor",
-        "arquivo": "login.cy.js",
-        "codigo": "describe('Login', () => {\n  it('entra no site', () => {\n    cy.visit('https://www.saucedemo.com')\n    cy.get('#user-name').type('standard_user')\n    cy.get('#password').type('secret_sauce')\n    cy.get('#login-button').click()\n    cy.contains('Products').should('be.visible')\n  })\n})",
-        "vel": 0.8,
-        "destaque": [
-         7
-        ],
-        "legenda": "A receita, escrita pro computador"
-       }
-      },
-      {
-       "text": "O computador faz isso em segundos, quantas vezes você quiser, sem cansar e sem esquecer nenhum passo.",
-       "scene": {
-        "type": "compare",
-        "title": "QUEM TESTA MELHOR?",
-        "items": [
-         [
-          "MINUTOS",
-          "VOCÊ, NA MÃO",
-          "red"
-         ],
-         [
-          "SEGUNDOS",
-          "O COMPUTADOR",
-          "gold"
-         ]
-        ],
-        "size": 150,
-        "stagger": 1.2,
-        "vs": true
-       }
-      },
-      {
-       "text": "E o Cypress é uma ferramenta que faz exatamente isso.",
-       "scene": {
-        "type": "flash",
-        "text": "CYPRESS",
-        "color": "gold",
-        "size": 200
-       }
-      },
-      {
-       "text": "Ele abre o navegador e vai fazendo tudo o que você mandar, como se fosse uma pessoa usando o site.",
-       "scene": {
-        "type": "flow",
-        "a": "VOCÊ",
-        "a_sub": "escreve os passos",
-        "b": "CYPRESS",
-        "b_sub": "usa o site sozinho",
-        "caption": "COMO FUNCIONA"
-       }
-      },
-      {
-       "text": "E o mais legal é que você vê tudo acontecendo na sua frente.",
-       "scene": {
-        "type": "bigtext",
-        "stagger": 0.25,
-        "lines": [
-         [
-          "VOCÊ VÊ",
-          "white",
-          150
-         ],
-         [
-          "TUDO ACONTECENDO",
-          "gold",
-          130
-         ]
-        ]
-       }
-      },
-      {
-       "text": "E quem trabalha com isso tem nome: é o QA, a pessoa que garante a qualidade do sistema.",
-       "scene": {
-        "type": "stamp",
-        "org": "QUALITY ASSURANCE",
-        "title": "GARANTIA DE QUALIDADE",
-        "stamp": "QA",
-        "stamp_at": 0.9
-       }
-      },
-      {
-       "text": "É uma área com muita vaga, e saber automação faz muita diferença no currículo.",
-       "scene": {
-        "type": "bigtext",
-        "stagger": 0.25,
-        "lines": [
-         [
-          "MUITA VAGA",
-          "white",
-          150
-         ],
-         [
-          "AUTOMAÇÃO FAZ DIFERENÇA",
-          "gold",
-          100
-         ]
-        ]
-       }
-      },
-      {
-       "text": "No curso, a gente vai fazer tudo junto, passo a passo: preparar o seu computador, criar o seu primeiro projeto, escrever os seus primeiros testes e terminar com um projeto pronto pra colocar no portfólio.",
-       "scene": {
-        "type": "cards",
-        "titulo": "O QUE VEM POR AÍ",
-        "itens": [
-         [
-          "1",
-          "Preparar",
-          "o seu computador"
-         ],
-         [
-          "2",
-          "Criar",
-          "o primeiro projeto",
-          "#69a7ff"
-         ],
-         [
-          "3",
-          "Testar",
-          "os primeiros testes",
-          "#ffd23f"
-         ],
-         [
-          "4",
-          "Portfólio",
-          "um projeto pronto",
-          "#ff6b6b"
-         ]
-        ]
-       }
-      },
-      {
-       "text": "Na próxima aula, a gente começa preparando o seu computador, instalando um programa chamado VS Code. Fica tranquilo, eu vou te mostrar clique por clique.",
-       "scene": {
-        "type": "passo",
-        "icone": "▶",
-        "titulo": "Próxima aula",
-        "sub": "Instalando O Vs Code"
-       }
-      },
-      {
-       "text": "Te vejo lá!",
-       "scene": {
-        "type": "endcard",
-        "sub": "PRÓXIMA: INSTALANDO O VS CODE"
-       }
-      }
-     ]
-    }
-   ]
-  },
-  "shorts": [],
-  "tiktoks": []
- },
- "serie": [],
- "meta": {
-  "titles": [
-   "Aula 1: O que é teste automatizado?"
+  "title": "Cypress para leigos · Aula 1",
+  "slug": "curso-cypress-01",
+  "idioma": "pt",
+  "destino": "curso",
+  "marca": [
+    "CYPRESS",
+    "PARA LEIGOS"
   ],
-  "description": "",
-  "tags": []
- },
- "notes": "Curso Cypress para leigos, aula 1. Não publica (destino: curso).",
- "cor_fundo": "#3fd68a",
- "legenda_y": 0.93,
- "selo": "MÓDULO 1 · AULA 1"
+  "voz": {
+    "nome": "gravada",
+    "motor": "eleven",
+    "eleven_voz": "Vinícius Torales"
+  },
+  "script": {
+    "long": {
+      "parts": [
+        {
+          "chapter": "",
+          "sentences": [
+            {
+              "text": "Fala, pessoal! Aqui é o Vinícius. Seja muito bem-vindo ao curso de Cypress para leigos.",
+              "scene": {
+                "type": "bigtext",
+                "stagger": 0.25,
+                "lines": [
+                  [
+                    "CYPRESS",
+                    "gold",
+                    220
+                  ],
+                  [
+                    "PARA LEIGOS",
+                    "white",
+                    130
+                  ],
+                  [
+                    "AULA 1",
+                    "muted",
+                    80
+                  ]
+                ]
+              }
+            },
+            {
+              "text": "Se você nunca escreveu uma linha de código na vida, relaxa: esse curso foi feito exatamente pra você.",
+              "scene": {
+                "type": "bigtext",
+                "stagger": 0.25,
+                "lines": [
+                  [
+                    "NUNCA PROGRAMOU?",
+                    "white",
+                    130
+                  ],
+                  [
+                    "RELAXA",
+                    "gold",
+                    190
+                  ]
+                ]
+              }
+            },
+            {
+              "text": "Antes de qualquer coisa, deixa eu te contar o que é um teste.",
+              "scene": {
+                "type": "flash",
+                "text": "O QUE É\nUM TESTE?",
+                "color": "gold",
+                "size": 150
+              }
+            },
+            {
+              "text": "Imagina que você trabalha numa loja online. Toda vez que alguém muda alguma coisa no site, alguém precisa conferir se tudo continua funcionando.",
+              "scene": {
+                "type": "video",
+                "media": "loja",
+                "search": "online shopping laptop",
+                "search_en": "online shopping laptop",
+                "start": 0.0,
+                "dim": 0.45,
+                "lower": "Uma loja online",
+                "fallback": {
+                  "type": "bigtext",
+                  "stagger": 0.25,
+                  "lines": [
+                    [
+                      "UMA LOJA",
+                      "white",
+                      150
+                    ],
+                    [
+                      "ONLINE",
+                      "gold",
+                      170
+                    ]
+                  ]
+                }
+              }
+            },
+            {
+              "text": "Se dá pra entrar com login e senha, se o botão de comprar funciona, se o carrinho soma o preço certo.",
+              "scene": {
+                "type": "bullets",
+                "title": "TEM QUE CONFERIR",
+                "items": [
+                  "O LOGIN FUNCIONA?",
+                  "O BOTÃO DE COMPRAR?",
+                  "O CARRINHO SOMA CERTO?"
+                ],
+                "size": 80,
+                "last_gold": true
+              }
+            },
+            {
+              "text": "Fazer isso na mão é o que a gente chama de teste manual.",
+              "scene": {
+                "type": "bigtext",
+                "stagger": 0.25,
+                "lines": [
+                  [
+                    "NA MÃO",
+                    "white",
+                    160
+                  ],
+                  [
+                    "TESTE MANUAL",
+                    "gold",
+                    150
+                  ]
+                ]
+              }
+            },
+            {
+              "text": "Funciona, mas cansa. Agora imagina fazer isso todo dia, dezenas de vezes. Uma hora você se distrai e deixa passar um erro.",
+              "scene": {
+                "type": "video",
+                "media": "cansado",
+                "search": "tired person computer office",
+                "search_en": "tired person computer office",
+                "start": 0.0,
+                "dim": 0.45,
+                "lower": "Todo dia, dezenas de vezes",
+                "fallback": {
+                  "type": "bigtext",
+                  "stagger": 0.25,
+                  "lines": [
+                    [
+                      "TODO DIA",
+                      "white",
+                      150
+                    ],
+                    [
+                      "DEZENAS DE VEZES",
+                      "red",
+                      120
+                    ]
+                  ]
+                }
+              }
+            },
+            {
+              "text": "É aí que entra o teste automatizado.",
+              "scene": {
+                "type": "flash",
+                "text": "TESTE\nAUTOMATIZADO",
+                "tint": "red",
+                "size": 140
+              }
+            },
+            {
+              "text": "Em vez de você clicar, você escreve um passo a passo que o computador segue sozinho.",
+              "scene": {
+                "type": "cards",
+                "itens": [
+                  [
+                    "1",
+                    "Você escreve",
+                    "os passos, uma vez só"
+                  ],
+                  [
+                    "2",
+                    "O computador",
+                    "segue sozinho, toda vez",
+                    "#69a7ff"
+                  ],
+                  [
+                    "3",
+                    "O resultado",
+                    "passou ou falhou",
+                    "#ffd23f"
+                  ]
+                ]
+              }
+            },
+            {
+              "text": "Tipo uma receita de bolo: abre o site, digita o e-mail, digita a senha, clica em entrar e confere se apareceu bem-vindo.",
+              "scene": {
+                "type": "editor",
+                "arquivo": "login.cy.js",
+                "codigo": "describe('Login', () => {\n  it('entra no site', () => {\n    cy.visit('https://www.saucedemo.com')\n    cy.get('#user-name').type('standard_user')\n    cy.get('#password').type('secret_sauce')\n    cy.get('#login-button').click()\n    cy.contains('Products').should('be.visible')\n  })\n})",
+                "vel": 0.8,
+                "destaque": [
+                  7
+                ],
+                "legenda": "A receita, escrita pro computador"
+              }
+            },
+            {
+              "text": "O computador faz isso em segundos, quantas vezes você quiser, sem cansar e sem esquecer nenhum passo.",
+              "scene": {
+                "type": "compare",
+                "title": "QUEM TESTA MELHOR?",
+                "items": [
+                  [
+                    "MINUTOS",
+                    "VOCÊ, NA MÃO",
+                    "red"
+                  ],
+                  [
+                    "SEGUNDOS",
+                    "O COMPUTADOR",
+                    "gold"
+                  ]
+                ],
+                "size": 150,
+                "stagger": 1.2,
+                "vs": true
+              }
+            },
+            {
+              "text": "E o Cypress é uma ferramenta que faz exatamente isso.",
+              "scene": {
+                "type": "flash",
+                "text": "CYPRESS",
+                "color": "gold",
+                "size": 200
+              }
+            },
+            {
+              "text": "Ele abre o navegador e vai fazendo tudo o que você mandar, como se fosse uma pessoa usando o site.",
+              "scene": {
+                "type": "flow",
+                "a": "VOCÊ",
+                "a_sub": "escreve os passos",
+                "b": "CYPRESS",
+                "b_sub": "usa o site sozinho",
+                "caption": "COMO FUNCIONA"
+              }
+            },
+            {
+              "text": "E o mais legal é que você vê tudo acontecendo na sua frente.",
+              "scene": {
+                "type": "runner",
+                "spec": "login.cy.js",
+                "teste": "entra com usuário e senha",
+                "passos": [
+                  [
+                    "visit",
+                    "saucedemo.com"
+                  ],
+                  [
+                    "get",
+                    "#user-name"
+                  ],
+                  [
+                    "type",
+                    "standard_user"
+                  ],
+                  [
+                    "get",
+                    "#password"
+                  ],
+                  [
+                    "type",
+                    "secret_sauce"
+                  ],
+                  [
+                    "click",
+                    "#login-button"
+                  ]
+                ],
+                "media": "site_sauce",
+                "url": "https://www.saucedemo.com/",
+                "status": "passou",
+                "legenda": "Você vê cada passo acontecendo"
+              }
+            },
+            {
+              "text": "E quem trabalha com isso tem nome: é o QA, a pessoa que garante a qualidade do sistema.",
+              "scene": {
+                "type": "stamp",
+                "org": "QUALITY ASSURANCE",
+                "title": "GARANTIA DE QUALIDADE",
+                "stamp": "QA",
+                "stamp_at": 0.9
+              }
+            },
+            {
+              "text": "É uma área com muita vaga, e saber automação faz muita diferença no currículo.",
+              "scene": {
+                "type": "bigtext",
+                "stagger": 0.25,
+                "lines": [
+                  [
+                    "MUITA VAGA",
+                    "white",
+                    150
+                  ],
+                  [
+                    "AUTOMAÇÃO FAZ DIFERENÇA",
+                    "gold",
+                    100
+                  ]
+                ]
+              }
+            },
+            {
+              "text": "No curso, a gente vai fazer tudo junto, passo a passo: preparar o seu computador, criar o seu primeiro projeto, escrever os seus primeiros testes e terminar com um projeto pronto pra colocar no portfólio.",
+              "scene": {
+                "type": "cards",
+                "titulo": "O QUE VEM POR AÍ",
+                "itens": [
+                  [
+                    "1",
+                    "Preparar",
+                    "o seu computador"
+                  ],
+                  [
+                    "2",
+                    "Criar",
+                    "o primeiro projeto",
+                    "#69a7ff"
+                  ],
+                  [
+                    "3",
+                    "Testar",
+                    "os primeiros testes",
+                    "#ffd23f"
+                  ],
+                  [
+                    "4",
+                    "Portfólio",
+                    "um projeto pronto",
+                    "#ff6b6b"
+                  ]
+                ]
+              }
+            },
+            {
+              "text": "Na próxima aula, a gente começa preparando o seu computador, instalando um programa chamado VS Code. Fica tranquilo, eu vou te mostrar clique por clique.",
+              "scene": {
+                "type": "passo",
+                "icone": "▶",
+                "titulo": "Próxima aula",
+                "sub": "Instalando O Vs Code"
+              }
+            },
+            {
+              "text": "Te vejo lá!",
+              "scene": {
+                "type": "endcard",
+                "sub": "PRÓXIMA: INSTALANDO O VS CODE"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "shorts": [],
+    "tiktoks": []
+  },
+  "serie": [],
+  "meta": {
+    "titles": [
+      "Aula 1: O que é teste automatizado?"
+    ],
+    "description": "",
+    "tags": []
+  },
+  "notes": "Curso Cypress para leigos, aula 1. Não publica (destino: curso).",
+  "cor_fundo": "#3fd68a",
+  "legenda_y": 0.93,
+  "selo": "MÓDULO 1 · AULA 1"
 }

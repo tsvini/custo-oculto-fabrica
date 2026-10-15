@@ -282,4 +282,270 @@
     ctx.restore();
     legenda(ctx, c, t, s);
   };
+  // seta do mouse em (x,y)
+  function seta(ctx, u, x, y, sc = 1) { ctx.save(); ctx.translate(x, y); ctx.scale(sc * u * 1.6, sc * u * 1.6);
+    ctx.beginPath(); ctx.moveTo(0, 0); ctx.lineTo(0, 26); ctx.lineTo(7, 20); ctx.lineTo(12, 31); ctx.lineTo(17, 29); ctx.lineTo(12, 18); ctx.lineTo(21, 18); ctx.closePath();
+    ctx.fillStyle = "#fff"; ctx.strokeStyle = "#111"; ctx.lineWidth = 1.6; ctx.shadowColor = "rgba(0,0,0,.5)"; ctx.shadowBlur = 6; ctx.fill(); ctx.stroke(); ctx.restore(); }
+  // mouse que percorre pontos [[x,y,t_clique,cor?],...]: chega em cada ponto 0.15s antes do clique; anel no clique
+  function rota(ctx, u, pts, t) {
+    if (!pts.length || t < pts[0][2] - 1.0) return; let px = pts[0][0] + 260 * u, py = pts[0][1] + 200 * u, pt = pts[0][2] - 1.0;
+    let x = px, y = py, sc = 1;
+    for (const [tx, ty, tc, cor] of pts) {
+      const ini = Math.max(pt, tc - 0.95), k = easeOut((t - ini) / Math.max(0.2, tc - 0.15 - ini));
+      if (t >= ini) { x = lerp(px, tx, k); y = lerp(py, ty, k); }
+      const p = (t - tc) / 0.45; if (p > 0 && p < 1) { ctx.save(); ctx.globalAlpha = 1 - p; ctx.strokeStyle = cor || C.yel; ctx.lineWidth = 5 * u; ctx.beginPath(); ctx.arc(tx, ty, (14 + 46 * p) * u, 0, 7); ctx.stroke(); ctx.restore(); if (p < 0.25) sc = 0.85; }
+      px = tx; py = ty; pt = tc;
+    }
+    seta(ctx, u, x, y, sc);
+  }
+  // desenha um print (1600x900) ajustado à largura dentro de [sx,sy,sw,sh]; devolve a função que converte coordenadas 0–1 do print
+  // z = zoom (1 = largura toda); foco = ponto 0–1 do print que fica perto do centro
+  function print(ctx, el, sx, sy, sw, sh, a, fundo = "#fff", foco = [0.5, 0.3], z = 1) {
+    ctx.save(); ctx.beginPath(); ctx.rect(sx, sy, sw, sh); ctx.clip(); ctx.globalAlpha *= a; ctx.fillStyle = fundo; ctx.fillRect(sx, sy, sw, sh);
+    const iw = el ? (el.videoWidth || el.width) : 1600, ih = el ? (el.videoHeight || el.height) : 900; const r = sw / iw * z;
+    const ox = Math.min(sx, Math.max(sx + sw - iw * r, sx + sw / 2 - foco[0] * iw * r));
+    const oy = ih * r <= sh ? sy : Math.min(sy, Math.max(sy + sh - ih * r, sy + sh * 0.42 - foco[1] * ih * r));
+    if (el) ctx.drawImage(el, ox, oy, iw * r, ih * r);
+    ctx.restore(); return (fx, fy) => [ox + fx * iw * r, oy + fy * ih * r];
+  }
+  function caixaElem(ctx, u, p, e, a, rotulo, cor = "rgba(111,168,220,.55)") {  // realce estilo navegador
+    if (!e || a <= 0) return; const [x0, y0] = p(e[0], e[1]), [x1, y1] = p(e[2], e[3]);
+    ctx.save(); ctx.globalAlpha *= a; ctx.fillStyle = cor; ctx.fillRect(x0, y0, x1 - x0, y1 - y0); ctx.restore();
+    if (rotulo) { const f = font(700, 22 * u, MONO); const w = tw(ctx, rotulo, f) + 32 * u; const ty = y1 + 14 * u;
+      ctx.save(); ctx.globalAlpha *= a; ctx.shadowColor = "rgba(0,0,0,.35)"; ctx.shadowBlur = 14 * u; rr(ctx, x0, ty, w, 44 * u, 8 * u); ctx.fillStyle = "#fff"; ctx.fill(); ctx.restore();
+      txt(ctx, rotulo, f, x0 + 16 * u, ty + 22 * u, "#8a3ab9", "left", a); }
+  }
+  function linhasHtml(s) {  // árvore do DevTools a partir do HTML real capturado (ou "html_linhas" à mão)
+    if (s.html_linhas) return s.html_linhas;
+    const h = s.html || { tag: "input", attrs: [["type", "text"], ["data-test", "username"], ["id", "user-name"]], pai: "div.form_group" };
+    const [pt, pc] = String(h.pai || "div").split(".");
+    const L = [{ n: 0, p: [["<", "pu"], ["html", "tag"], [">", "pu"]] }, { n: 1, p: [["<", "pu"], ["body", "tag"], [">", "pu"]] },
+      { n: 2, p: [["<", "pu"], ["form", "tag"], [">", "pu"]] }, { n: 3, p: [["<", "pu"], [pt, "tag"], ...(pc ? [[" class", "an"], ["=", "pu"], [`"${pc}"`, "av"]] : []), [">", "pu"]] },
+      { n: 4, p: [["<", "pu"], [h.tag, "tag"]], sel: true }];
+    (h.attrs || []).filter(([k]) => k !== "style").forEach(([k, v]) => (v = String(v).length > 34 ? String(v).slice(0, 32) + "…" : v, L.push({ n: 5, p: [[k, "an"], ...(v !== "" ? [["=", "pu"], [`"${v}"`, "av"]] : [])], sel: true, attr: k })));
+    L[L.length - 1].p.push(["> == $0", "pu"]); L.push({ n: 3, p: [["</", "pu"], [pt, "tag"], [">", "pu"]] });
+    return L;
+  }
+  const DT = { tag: "#5db0d7", an: "#9bbbdc", av: "#f29766", pu: "#a8a8a8", tx: "#e8eaed" };
+
+  // DEVTOOLS: botão direito › Inspecionar no site de verdade; abre o painel com o HTML real do elemento e realça atributos
+  // {type:"devtools", media:"insp_user", url:"https://www.saucedemo.com", inspecionar:"#user-name", realce:["data-test","id"], realce_em:5, legenda:"..."}
+  S.devtools = (ctx, c, t, dur, s, media) => {
+    const u = c.u; const a = easeOut(t / 0.4); const W = 1640 * u, H = 720 * u; const x = c.cx - W / 2, y = topo(c, H);
+    const top = janela(ctx, x, y, W, H, u, s.titulo || (s.url || "").replace(/^https?:\/\//, "").replace(/\/$/, ""), a, "#fff");
+    const m = media && media[s.media]; const el = m && (m.video || m.img); const e = s.elem || [0.37, 0.3, 0.63, 0.36];
+    const tc = s.clique_em || 1.6, tMenu = tc, tIn = tc + 1.0, tOpen = tIn + 0.35;
+    const ko = s.aberto ? 1 : easeOut((t - tOpen) / 0.6); const PW = (s.painel || 0.5) * W * ko; const sw = W - PW, sh = y + H - top;
+    const ex = (e[0] + e[2]) / 2, ey = (e[1] + e[3]) / 2;
+    const p = print(ctx, el, x, top, sw, sh, a, "#fff", [ex, ey], lerp(1, s.zoom_site || 1.8, ko));
+    if (!el) txt(ctx, s.url || "site", font(700, 34 * u), x + sw / 2, top + sh / 2, C.mut, "center", a);
+    const kh = s.aberto ? 1 : easeOut((t - tOpen - 0.3) / 0.4);
+    const h = s.html || {}; const idv = (h.attrs || []).find((q) => q[0] === "id"); const cls = (h.attrs || []).find((q) => q[0] === "class");
+    void cls; caixaElem(ctx, u, p, e, kh * a, (h.tag || "input") + (idv ? "#" + idv[1] : "") + (s.elem_tam ? `  ${s.elem_tam[0]}×${s.elem_tam[1]}` : ""));
+    if (PW > 2) {  // painel do DevTools
+      const px = x + sw; ctx.save(); ctx.beginPath(); ctx.rect(px, top, PW, sh - 2 * u); ctx.clip(); ctx.globalAlpha = a;
+      ctx.fillStyle = "#202124"; ctx.fillRect(px, top, PW, sh); ctx.fillStyle = "#292a2d"; ctx.fillRect(px, top, PW, 56 * u); ctx.fillStyle = "#3c4043"; ctx.fillRect(px, top + 56 * u, PW, 2 * u);
+      ctx.fillStyle = "#3c4043"; ctx.fillRect(px, top, 3 * u, sh); ctx.restore();
+      ctx.save(); ctx.beginPath(); ctx.rect(px, top, PW, sh - 2 * u); ctx.clip();
+      let tx = px + 30 * u; ["Elements", "Console", "Sources", "Network"].forEach((n, i) => { txt(ctx, n, font(600, 23 * u), tx, top + 28 * u, i ? "#9aa0a6" : "#e8eaed", "left", a);
+        const w = tw(ctx, n, font(600, 23 * u)); if (!i) { ctx.save(); ctx.globalAlpha = a; ctx.fillStyle = "#8ab4f8"; ctx.fillRect(tx - 6 * u, top + 52 * u, w + 12 * u, 4 * u); ctx.restore(); } tx += w + 40 * u; });
+      const L = linhasHtml(s); const fs = (s.fonte || 25) * u, lh = fs * 1.62; let yy = top + 100 * u; const ind = 26 * u;
+      const re = s.realce || []; const r0 = s.realce_em || Math.min(dur - 1.5, tOpen + 2.2);
+      L.forEach((ln, i) => {
+        const kl = easeOut((t - tOpen - 0.15 - i * 0.04) / 0.3) * a; if (kl <= 0) return;
+        if (ln.sel) { ctx.save(); ctx.globalAlpha = kl; ctx.fillStyle = "#1d3b5a"; ctx.fillRect(px + 3 * u, yy - lh / 2, PW, lh); ctx.restore(); }
+        let xx = px + 30 * u + ln.n * ind; if (i < 4 && !ln.sel) txt(ctx, "▾", font(600, fs * 0.7), xx - 18 * u, yy, "#9aa0a6", "left", kl);
+        const ri = ln.attr ? re.indexOf(ln.attr) : -1;
+        if (ri >= 0) { const kr = easeOut((t - r0 - ri * 1.2) / 0.35); if (kr > 0) { const w = ln.p.reduce((q, [tk]) => q + tw(ctx, tk, font(600, fs, MONO)), 0);
+          ctx.save(); ctx.globalAlpha = kr; ctx.fillStyle = "rgba(255,210,63,.18)"; rr(ctx, xx - 10 * u, yy - lh / 2 + 2 * u, w + 20 * u, lh - 4 * u, 8 * u); ctx.fill(); ctx.strokeStyle = C.yel; ctx.lineWidth = 4 * u; ctx.stroke(); ctx.restore();
+          if (ri === 0) txt(ctx, "← " + (s.realce_rotulo || "use este!"), font(800, 24 * u), xx + w + 26 * u, yy, C.yel, "left", kr); } }
+        for (const [tk, k] of ln.p) { txt(ctx, tk, font(600, fs, MONO), xx, yy, DT[k] || DT.tx, "left", kl); xx += tw(ctx, tk, font(600, fs, MONO)); }
+        yy += lh;
+      });
+      ctx.restore();
+    }
+    if (!s.aberto) {  // botão direito › menu › Inspecionar
+      const [ax, ay] = p(ex, ey); const km = t > tMenu && t < tOpen + 0.1 ? easeOut((t - tMenu) / 0.2) : 0;
+      const itens = c.idioma === "en" || global.CO_IDIOMA === "en" ? ["Back", "Reload", "Save as...", "Print...", "Inspect"] : ["Voltar", "Recarregar", "Salvar como...", "Imprimir...", "Inspecionar"];
+      const mx = ax + 8 * u, my = ay + 8 * u, mw = 300 * u, ih = 50 * u;
+      if (km > 0) { ctx.save(); ctx.globalAlpha = km; ctx.shadowColor = "rgba(0,0,0,.4)"; ctx.shadowBlur = 24 * u; rr(ctx, mx, my, mw, ih * itens.length + 16 * u, 10 * u); ctx.fillStyle = "#fff"; ctx.fill(); ctx.restore();
+        itens.forEach((n, i) => { const last = i === itens.length - 1; const hy = my + 8 * u + i * ih;
+          if (last) { ctx.save(); ctx.globalAlpha = km * easeOut((t - tMenu - 0.5) / 0.2); ctx.fillStyle = "#e8f0fe"; ctx.fillRect(mx, hy, mw, ih); ctx.restore();
+            if (t > tIn - 0.4) { ctx.save(); ctx.globalAlpha = km; ctx.strokeStyle = C.yel; ctx.lineWidth = 5 * u; rr(ctx, mx - 4 * u, hy - 2 * u, mw + 8 * u, ih + 4 * u, 8 * u); ctx.stroke(); ctx.restore(); } }
+          if (i === itens.length - 2) { ctx.save(); ctx.globalAlpha = km; ctx.fillStyle = "#e3e6ec"; ctx.fillRect(mx, hy + ih - 1 * u, mw, 2 * u); ctx.restore(); }
+          txt(ctx, n, font(last ? 700 : 500, 25 * u), mx + 24 * u, hy + ih / 2, "#202124", "left", km); }); }
+      const pts = [[ax, ay, tc, "#69a7ff"], [mx + 120 * u, my + 8 * u + 4.5 * ih, tIn]];
+      if (t < tOpen + 0.3) rota(ctx, u, pts, t);
+    }
+    legenda(ctx, c, t, s);
+  };
+
+  // PLAYGROUND do Cypress: clica na mira, passa o mouse no elemento, o Cypress sugere o seletor; copia
+  // {type:"playground", media:"insp_user", url:"...", inspecionar:"#user-name", spec:"login.cy.js", seletor:"[data-test=\"username\"]", copiar:true, legenda:"..."}
+  S.playground = (ctx, c, t, dur, s, media) => {
+    const u = c.u; const a = easeOut(t / 0.4); const W = 1640 * u, H = 720 * u; const x = c.cx - W / 2, y = topo(c, H);
+    const top = janela(ctx, x, y, W, H, u, "Cypress — " + (s.spec || "spec.cy.js"), a, "#1b1e27");
+    const LW = 440 * u; const h = s.html || {}; const at = (k) => ((h.attrs || []).find((q) => q[0] === k) || [])[1];
+    const sel = s.seletor || (at("data-test") ? `[data-test="${at("data-test")}"]` : at("data-cy") ? `[data-cy="${at("data-cy")}"]` : at("id") ? "#" + at("id") : h.tag || "input");
+    const cmd = `cy.get('${sel}')`;
+    // reporter (esquerda)
+    ctx.save(); ctx.globalAlpha = a; ctx.fillStyle = "#171a22"; ctx.fillRect(x, top, LW, y + H - top - 2 * u); ctx.fillStyle = C.line; ctx.fillRect(x, top + 64 * u, LW, 2 * u); ctx.restore();
+    txt(ctx, s.spec || "spec.cy.js", font(700, 24 * u, MONO), x + 28 * u, top + 34 * u, C.txt, "left", a);
+    (s.passos || [["visit", (s.url || "").replace(/^https?:\/\//, "")]]).forEach(([k, v], i) => { const yy = top + 110 * u + i * 50 * u;
+      txt(ctx, String(i + 1), font(600, 22 * u, MONO), x + 40 * u, yy, "#4b5263", "center", a); txt(ctx, k, font(700, 25 * u, MONO), x + 70 * u, yy, C.ac2, "left", a);
+      txt(ctx, String(v || ""), font(600, 22 * u, MONO), x + 86 * u + tw(ctx, k, font(700, 25 * u, MONO)), yy, C.txt, "left", a); });
+    // barra de endereço com a mira
+    const sx = x + LW, sw = W - LW; ctx.save(); ctx.globalAlpha = a; ctx.fillStyle = "#20232e"; ctx.fillRect(sx, top, sw, 64 * u); ctx.restore();
+    const mira = [sx + 40 * u, top + 32 * u]; const tc1 = s.clique_em || 1.4; const kb = easeOut((t - tc1 - 0.15) / 0.4);
+    ctx.save(); ctx.globalAlpha = a; ctx.beginPath(); ctx.arc(mira[0], mira[1], 22 * u, 0, 7); ctx.fillStyle = kb > 0.5 ? C.ac2 : "#2c3140"; ctx.fill();
+    ctx.strokeStyle = kb > 0.5 ? "#fff" : C.txt; ctx.lineWidth = 3 * u; ctx.beginPath(); ctx.arc(mira[0], mira[1], 10 * u, 0, 7); ctx.stroke();
+    [[0, -1], [0, 1], [-1, 0], [1, 0]].forEach(([dx, dy2]) => { ctx.beginPath(); ctx.moveTo(mira[0] + dx * 6 * u, mira[1] + dy2 * 6 * u); ctx.lineTo(mira[0] + dx * 16 * u, mira[1] + dy2 * 16 * u); ctx.stroke(); }); ctx.restore();
+    if (kb < 0.5) { const tip = global.CO_IDIOMA === "en" ? "Open Selector Playground" : "Abrir Selector Playground"; const ka = easeOut((t - 0.6) / 0.3) * (1 - kb * 2);
+      const f = font(700, 22 * u); const w = tw(ctx, tip, f) + 30 * u; ctx.save(); ctx.globalAlpha = ka; rr(ctx, mira[0] + 34 * u, mira[1] - 20 * u, w, 40 * u, 8 * u); ctx.fillStyle = "#000"; ctx.fill(); ctx.restore(); txt(ctx, tip, f, mira[0] + 49 * u, mira[1], "#fff", "left", ka); }
+    txt(ctx, s.url || "", font(600, 22 * u, MONO), mira[0] + 50 * u, mira[1], C.mut, "left", a * (kb > 0.5 ? 0 : 1 - easeOut((t - 0.6) / 0.3)));
+    // barra do playground (desce quando abre)
+    const TB = 84 * u * kb; const st = top + 64 * u; const sh = y + H - st;
+    const m = media && media[s.media]; const el = m && (m.video || m.img); const e = s.elem || [0.37, 0.3, 0.63, 0.36];
+    const ex = (e[0] + e[2]) / 2, ey = (e[1] + e[3]) / 2;
+    const p = print(ctx, el, sx, st + TB, sw, sh - TB - 2 * u, a, "#fff", [ex, ey], s.zoom_site || 1.5);
+    if (!el) txt(ctx, s.url || "site", font(700, 34 * u), sx + sw / 2, st + sh / 2, C.mut, "center", a);
+    const tc2 = tc1 + 1.7, tc3 = tc2 + 2.0; const kh = easeOut((t - tc2 + 0.6) / 0.3);
+    if (kb > 0) {
+      caixaElem(ctx, u, p, e, kh * a, sel);
+      ctx.save(); ctx.beginPath(); ctx.rect(sx, st, sw, TB); ctx.clip(); ctx.globalAlpha = a; ctx.fillStyle = "#f3f4f7"; ctx.fillRect(sx, st, sw, TB); ctx.fillStyle = "#d5d9e2"; ctx.fillRect(sx, st + TB - 2 * u, sw, 2 * u);
+      const by = st + TB - 42 * u; const ix = sx + 30 * u, iw = sw - 220 * u; rr(ctx, ix, by - 26 * u, iw, 52 * u, 8 * u); ctx.fillStyle = "#fff"; ctx.fill(); ctx.strokeStyle = "#b9c0cc"; ctx.lineWidth = 2 * u; ctx.stroke();
+      const kt = clamp((t - tc2) / 0.8); const cmdV = kt > 0 ? cmd.slice(0, Math.ceil(kt * cmd.length)) : "cy.get(' ')";
+      txt(ctx, cmdV, font(700, 26 * u, MONO), ix + 20 * u, by, kt > 0 ? "#1d2230" : "#9aa0a6", "left", 1);
+      const cbx = ix + iw + 20 * u; rr(ctx, cbx, by - 26 * u, 140 * u, 52 * u, 8 * u); ctx.fillStyle = "#e4e7ee"; ctx.fill();
+      const kc = s.copiar !== false ? easeOut((t - tc3) / 0.2) : 0; txt(ctx, kc > 0.5 ? (global.CO_IDIOMA === "en" ? "Copied!" : "Copiado!") : (global.CO_IDIOMA === "en" ? "Copy" : "Copiar"), font(800, 22 * u), cbx + 70 * u, by, kc > 0.5 ? "#1f8f55" : "#3a3f4b", "center", 1);
+      ctx.restore();
+      if (kt >= 1) { const kr = easeOut((t - tc2 - 0.9) / 0.35); ctx.save(); ctx.globalAlpha = kr; ctx.strokeStyle = C.yel; ctx.lineWidth = 5 * u; rr(ctx, ix - 6 * u, by - 32 * u, iw + 12 * u, 64 * u, 10 * u); ctx.stroke(); ctx.restore(); }
+    }
+    const [ax, ay] = p(ex, ey); const pts = [[mira[0], mira[1], tc1], [ax, ay, tc2, "#69a7ff"]];
+    if (s.copiar !== false) { const by = st + 84 * u - 42 * u; pts.push([sx + 30 * u + (sw - 220 * u) + 90 * u, by + 6 * u, tc3]); }
+    rota(ctx, u, pts, t);
+    legenda(ctx, c, t, s);
+  };
+  // MENU: clicar em menus de verdade (VS Code ou Explorador). 
+  // {type:"menu", app:"vscode"|"explorer", barra:["File","Edit",...], abre:0, menus:[["New File","Open Folder..."],["..."]], caminho:[1], ponto:[0.6,0.5] (botão direito),
+  //  resultado:"terminal"|"pasta"|"arquivo", novo:"meu-primeiro-teste", pastas:[...], itens:[...], legenda:"..."}
+  S.menu = (ctx, c, t, dur, s) => {
+    const u = c.u; const a = easeOut(t / 0.4); const W = 1500 * u, H = 700 * u; const x = c.cx - W / 2, y = topo(c, H);
+    const claro = s.app === "explorer"; const fundo = claro ? "#f3f4f7" : C.win;
+    const top = janela(ctx, x, y, W, H, u, s.titulo || (claro ? "Explorador de Arquivos" : "Visual Studio Code"), a, fundo);
+    const tc0 = s.clique_em || 1.2, passo = s.passo || 1.15; const M = s.menus || []; const cam = s.caminho || [];
+    const tFim = tc0 + M.length * passo; const fechado = t > tFim + 0.25;
+    let corpo = top;
+    const barra = (s.barra && s.barra.length ? s.barra : null) || (s.barra ? null : claro ? null : ["File", "Edit", "Selection", "View", "Go", "Run", "Terminal", "Help"]); const bx = [];
+    if (barra) { ctx.save(); ctx.globalAlpha = a; ctx.fillStyle = claro ? "#e4e7ee" : "#2a2d3a"; ctx.fillRect(x, top, W, 52 * u); ctx.restore(); let xx = x + 24 * u;
+      barra.forEach((b, i) => { const w = tw(ctx, b, font(500, 24 * u)) + 30 * u; const on = s.abre === i && t > tc0 - 0.05 && !fechado;
+        if (on) { ctx.save(); ctx.globalAlpha = a; ctx.fillStyle = claro ? "#cfd6e4" : "#3c4157"; rr(ctx, xx, top + 6 * u, w, 40 * u, 6 * u); ctx.fill(); ctx.restore(); }
+        txt(ctx, b, font(500, 24 * u), xx + 15 * u, top + 26 * u, claro ? "#2a2f3a" : (on ? "#fff" : "#c5c9d6"), "left", a); bx.push([xx, w]); xx += w; });
+      corpo = top + 52 * u; }
+    // corpo do app
+    const ch = y + H - corpo; let sideW = 0;
+    if (claro) {
+      ctx.save(); ctx.globalAlpha = a; ctx.fillStyle = "#fff"; ctx.fillRect(x, corpo, W, ch - 2 * u); ctx.fillStyle = "#e4e7ee"; ctx.fillRect(x, corpo, W, 64 * u); ctx.restore();
+      pastaIcone(ctx, x + 30 * u, corpo + 16 * u, 38 * u, a); txt(ctx, s.caminho_txt || "Este Computador  ›  Documentos", font(600, 26 * u), x + 84 * u, corpo + 32 * u, "#3a3f4b", "left", a);
+      const its = (s.itens || ["Fotos", "Músicas", "Trabalho"]).slice(); const kn = s.resultado === "pasta" ? easeOut((t - tFim - 0.3) / 0.4) : 0; if (kn > 0) its.push({ nome: s.novo || "Nova pasta", novo: true });
+      its.forEach((it, i) => { const nome = typeof it === "string" ? it : it.nome; const cx = x + 130 * u + i * 240 * u, cy = corpo + 130 * u; const ka = it.novo ? kn : 1;
+        if (it.novo) { ctx.save(); ctx.globalAlpha = a * kn * 0.3; rr(ctx, cx - 95 * u, cy - 16 * u, 190 * u, 210 * u, 14 * u); ctx.fillStyle = C.ac2; ctx.fill(); ctx.restore(); }
+        pastaIcone(ctx, cx - 65 * u, cy, 130 * u, a * ka); const nt = it.novo ? nome.slice(0, Math.ceil(clamp((t - tFim - 0.8) / 1.0) * nome.length)) || "Nova pasta" : nome;
+        txt(ctx, nt, font(it.novo ? 800 : 600, 26 * u), cx, cy + 150 * u, "#2a2f3a", "center", a * ka); });
+    } else {
+      sideW = s.pastas ? 330 * u : 0;
+      if (sideW) { ctx.save(); ctx.globalAlpha = a; ctx.fillStyle = C.side; ctx.fillRect(x, corpo, sideW, ch - 2 * u); ctx.restore(); txt(ctx, "EXPLORER", font(700, 20 * u), x + 28 * u, corpo + 34 * u, C.mut, "left", a);
+        const ps = s.pastas.slice(); const kn = s.resultado === "arquivo" ? easeOut((t - tFim - 0.3) / 0.3) : 0;
+        ps.forEach((p, i) => { const yy = corpo + (80 + i * 48) * u, ind = Math.min(i, 3) * 22 * u, arq = /\.\w+$/.test(p);
+          if (arq) { ctx.save(); ctx.globalAlpha *= a; ctx.fillStyle = C.ac; rr(ctx, x + 32 * u + ind, yy - 13 * u, 20 * u, 26 * u, 4 * u); ctx.fill(); ctx.restore(); } else pastaIcone(ctx, x + 28 * u + ind, yy - 14 * u, 30 * u, a);
+          txt(ctx, p, font(500, 24 * u), x + 68 * u + ind, yy, C.txt, "left", a); });
+        if (kn > 0) { const i = ps.length, yy = corpo + (80 + i * 48) * u, ind = Math.min(i, 3) * 22 * u; const nm = (s.novo || "novo.js").slice(0, Math.ceil(clamp((t - tFim - 0.6) / 1.0) * (s.novo || "novo.js").length));
+          ctx.save(); ctx.globalAlpha = a * kn; ctx.strokeStyle = C.ac2; ctx.lineWidth = 2 * u; ctx.strokeRect(x + 60 * u + ind, yy - 20 * u, sideW - 80 * u - ind, 40 * u); ctx.fillStyle = C.ac; rr(ctx, x + 32 * u + ind, yy - 13 * u, 20 * u, 26 * u, 4 * u); ctx.fill(); ctx.restore();
+          txt(ctx, nm, font(600, 24 * u), x + 68 * u + ind, yy, C.txt, "left", a * kn); } }
+      txt(ctx, s.fundo_txt || "", font(700, 40 * u), x + sideW + (W - sideW) / 2, corpo + ch * 0.4, "#3a3f50", "center", a);
+      if (s.resultado === "terminal") { const k = easeOut((t - tFim - 0.3) / 0.5); if (k > 0) { const th = 250 * u * k, ty = y + H - th - 2 * u;
+        ctx.save(); ctx.globalAlpha = a; ctx.fillStyle = C.term; ctx.fillRect(x + sideW, ty, W - sideW, th); ctx.fillStyle = C.line; ctx.fillRect(x + sideW, ty, W - sideW, 2 * u);
+        ctx.beginPath(); ctx.rect(x + sideW, ty, W - sideW, th); ctx.clip();
+        ["PROBLEMS", "OUTPUT", "TERMINAL"].forEach((n, i) => txt(ctx, n, font(700, 20 * u), x + sideW + 30 * u + i * 160 * u, ty + 30 * u, i === 2 ? C.txt : C.mut, "left", 1));
+        ctx.fillStyle = C.ac2; ctx.fillRect(x + sideW + 30 * u + 320 * u, ty + 46 * u, tw(ctx, "TERMINAL", font(700, 20 * u)), 3 * u);
+        const pr = s.prompt || "PS C:\\Users\\voce\\Documents\\meu-primeiro-teste> "; txt(ctx, pr, font(600, 26 * u, MONO), x + sideW + 30 * u, ty + 100 * u, C.ac2, "left", 1);
+        if (Math.floor(t * 2.5) % 2 === 0) { ctx.fillStyle = C.txt; ctx.fillRect(x + sideW + 34 * u + tw(ctx, pr, font(600, 26 * u, MONO)), ty + 86 * u, 14 * u, 28 * u); }
+        ctx.restore();
+        ctx.save(); ctx.globalAlpha = k; ctx.strokeStyle = C.yel; ctx.lineWidth = 5 * u; rr(ctx, x + sideW + 8 * u, ty + 6 * u, W - sideW - 16 * u, th - 12 * u, 12 * u); ctx.stroke(); ctx.restore(); } }
+    }
+    // menus
+    const mf = font(500, 25 * u), ih = 48 * u; const pts = [];
+    let mx, my;
+    if (barra && s.abre !== undefined) { mx = bx[s.abre][0]; my = corpo; pts.push([bx[s.abre][0] + bx[s.abre][1] / 2, top + 26 * u, tc0]); }
+    else { const pp = s.ponto || [0.6, 0.55]; mx = x + sideW + pp[0] * (W - sideW); my = corpo + pp[1] * ch; pts.push([mx, my, tc0, "#69a7ff"]); mx += 6 * u; my += 6 * u; }
+    M.forEach((itens, k) => {
+      const tk = tc0 + k * passo; if (t < tk) return; const ka = fechado ? 0 : easeOut((t - tk - 0.05) / 0.15);
+      const mw = Math.max(300 * u, ...itens.map((n) => tw(ctx, n, mf) + 110 * u)); const mh = itens.reduce((q, n) => q + (n === "—" ? 14 * u : ih), 0) + 16 * u;
+      if (my + mh > y + H - 10 * u) my = y + H - 10 * u - mh;
+      if (mx + mw > x + W - 10 * u) mx = k ? mx - mw * 2 + 12 * u : x + W - 10 * u - mw;
+      ctx.save(); ctx.globalAlpha = a * ka; ctx.shadowColor = "rgba(0,0,0,.45)"; ctx.shadowBlur = 26 * u; rr(ctx, mx, my, mw, mh, 10 * u); ctx.fillStyle = claro ? "#fff" : "#252526"; ctx.fill(); ctx.shadowColor = "transparent";
+      ctx.strokeStyle = claro ? "#d5d9e2" : "#454545"; ctx.lineWidth = 1.5 * u; ctx.stroke(); ctx.restore();
+      let yy = my + 8 * u; let prox = null;
+      itens.forEach((n, i) => {
+        if (n === "—") { ctx.save(); ctx.globalAlpha = a * ka; ctx.fillStyle = claro ? "#e3e6ec" : "#454545"; ctx.fillRect(mx + 12 * u, yy + 6 * u, mw - 24 * u, 1.5 * u); ctx.restore(); yy += 14 * u; return; }
+        const esc = cam[k] === i; const kh = esc ? easeOut((t - (tk + passo - 0.55)) / 0.15) : 0;
+        if (kh > 0) { ctx.save(); ctx.globalAlpha = a * ka * kh; ctx.fillStyle = claro ? "#e5f0ff" : "#04395e"; rr(ctx, mx + 6 * u, yy + 2 * u, mw - 12 * u, ih - 4 * u, 6 * u); ctx.fill();
+          ctx.strokeStyle = C.yel; ctx.lineWidth = 4 * u; ctx.stroke(); ctx.restore(); }
+        const sub = / ›$/.test(n); const nome = n.replace(/ ›$/, "");
+        txt(ctx, nome, font(esc ? 700 : 500, 25 * u), mx + 26 * u, yy + ih / 2, claro ? "#202124" : (esc && kh > 0 ? "#fff" : "#cccccc"), "left", a * ka);
+        if (sub) txt(ctx, "›", font(700, 28 * u), mx + mw - 26 * u, yy + ih / 2, claro ? "#5d6577" : "#cccccc", "right", a * ka);
+        if (esc) { pts.push([mx + Math.min(mw * 0.45, tw(ctx, nome, mf) + 40 * u), yy + ih / 2 + 4 * u, tk + passo]); prox = [mx + mw - 6 * u, yy - 8 * u]; }
+        yy += ih;
+      });
+      if (prox) [mx, my] = prox;
+    });
+    if (t < tFim + 0.9) rota(ctx, u, pts, t);
+    legenda(ctx, c, t, s);
+  };
+
+  // LAUNCHPAD do Cypress (a janela que abre com "npx cypress open")
+  // {type:"launchpad", tela:"tipo"|"navegador"|"specs", specs:["login.cy.js"], escolha:0, legenda:"..."}
+  S.launchpad = (ctx, c, t, dur, s) => {
+    const u = c.u; const a = easeOut(t / 0.4); const W = 1500 * u, H = 720 * u; const x = c.cx - W / 2, y = topo(c, H);
+    const top = janela(ctx, x, y, W, H, u, "Cypress", a, "#ffffff"); const tc = s.clique_em || Math.min(dur * 0.6, 2.6); const en = global.CO_IDIOMA === "en";
+    const IND = "#4956e3", ESC = "#1b1e2e", MUT = "#5a5f7a"; const pts = [];
+    ctx.save(); ctx.globalAlpha = a; ctx.fillStyle = "#f8f8fa"; ctx.fillRect(x, top, W, 64 * u); ctx.fillStyle = "#e1e3ed"; ctx.fillRect(x, top + 64 * u, W, 2 * u); ctx.restore();
+    txt(ctx, "meu-primeiro-teste", font(600, 24 * u), x + 36 * u, top + 32 * u, MUT, "left", a);
+    if (s.tela === "tipo") {
+      txt(ctx, "Welcome to Cypress!", font(800, 46 * u), c.cx, top + 140 * u, ESC, "center", a);
+      txt(ctx, en ? "Review the differences between each testing type →" : "Escolha o tipo de teste", font(500, 26 * u), c.cx, top + 196 * u, MUT, "center", a);
+      [["E2E Testing", en ? "Test your whole site like a user" : "testa o site como um usuário", "#1fa971"], ["Component Testing", en ? "Test a single component" : "testa uma peça isolada", "#9aa0b4"]].forEach(([ti, sub, cor], i) => {
+        const cw = 520 * u, chh = 300 * u, cx = c.cx - cw - 30 * u + i * (cw + 60 * u), cy = top + 250 * u; const on = i === (s.escolha || 0); const kh = on ? easeOut((t - tc + 0.5) / 0.3) : 0;
+        ctx.save(); ctx.globalAlpha = a; rr(ctx, cx, cy, cw, chh, 14 * u); ctx.fillStyle = "#fff"; ctx.fill(); ctx.strokeStyle = kh > 0 ? IND : "#d0d2e0"; ctx.lineWidth = (2 + 3 * kh) * u; ctx.stroke(); ctx.restore();
+        ctx.save(); ctx.globalAlpha = a; ctx.beginPath(); ctx.arc(cx + cw / 2, cy + 100 * u, 52 * u, 0, 7); ctx.fillStyle = cor; ctx.globalAlpha = a * 0.18; ctx.fill(); ctx.restore();
+        txt(ctx, i ? "⚙" : "◎", font(800, 56 * u), cx + cw / 2, cy + 102 * u, cor, "center", a);
+        txt(ctx, ti, font(800, 34 * u), cx + cw / 2, cy + 196 * u, ESC, "center", a); txt(ctx, sub, font(500, 24 * u), cx + cw / 2, cy + 244 * u, MUT, "center", a);
+        if (on) pts.push([cx + cw / 2, cy + 196 * u, tc]); });
+    } else if (s.tela === "navegador") {
+      txt(ctx, en ? "Choose a browser" : "Choose a browser", font(800, 44 * u), c.cx, top + 130 * u, ESC, "center", a);
+      txt(ctx, en ? "Choose your preferred browser for E2E testing." : "Escolha o navegador para os testes", font(500, 26 * u), c.cx, top + 182 * u, MUT, "center", a);
+      const bs = s.navegadores || [["Chrome", "#4285f4"], ["Edge", "#0f9d8a"], ["Electron", "#47848f"]]; const esc = s.escolha || 0; const tc1 = tc - 1.4;
+      bs.forEach(([n, cor], i) => { const bw = 260 * u, bh = 200 * u, bx0 = c.cx - (bs.length * bw + (bs.length - 1) * 30 * u) / 2 + i * (bw + 30 * u), by0 = top + 230 * u;
+        const on = i === esc && t > tc1; ctx.save(); ctx.globalAlpha = a; rr(ctx, bx0, by0, bw, bh, 12 * u); ctx.fillStyle = on ? "#eef0ff" : "#fff"; ctx.fill(); ctx.strokeStyle = on ? IND : "#d0d2e0"; ctx.lineWidth = (on ? 4 : 2) * u; ctx.stroke();
+        ctx.beginPath(); ctx.arc(bx0 + bw / 2, by0 + 80 * u, 42 * u, 0, 7); ctx.fillStyle = cor; ctx.fill(); ctx.beginPath(); ctx.arc(bx0 + bw / 2, by0 + 80 * u, 17 * u, 0, 7); ctx.fillStyle = "#fff"; ctx.fill(); ctx.restore();
+        txt(ctx, n, font(700, 28 * u), bx0 + bw / 2, by0 + 160 * u, ESC, "center", a); if (i === esc) pts.push([bx0 + bw / 2, by0 + 100 * u, tc1]); });
+      const btn = (en ? "Start E2E Testing in " : "Start E2E Testing in ") + bs[esc][0]; const f = font(800, 28 * u); const bw2 = tw(ctx, btn, f) + 70 * u, bx2 = c.cx - bw2 / 2, by2 = top + 480 * u;
+      const kb = easeOut((t - tc) / 0.2); ctx.save(); ctx.globalAlpha = a; rr(ctx, bx2, by2, bw2, 72 * u, 10 * u); ctx.fillStyle = kb > 0.5 ? "#3a46c9" : IND; ctx.fill(); ctx.restore();
+      txt(ctx, btn, f, c.cx, by2 + 36 * u, "#fff", "center", a); pts.push([c.cx + bw2 * 0.25, by2 + 40 * u, tc]);
+    } else {  // specs
+      ctx.save(); ctx.globalAlpha = a; ctx.fillStyle = "#1b1e2e"; ctx.fillRect(x, top + 66 * u, 90 * u, y + H - top - 68 * u); ctx.restore();
+      ["▤", "⚙", "▶"].forEach((ic, i) => txt(ctx, ic, font(700, 32 * u), x + 45 * u, top + 130 * u + i * 80 * u, i ? "#9aa0b4" : "#fff", "center", a));
+      txt(ctx, "Specs", font(800, 40 * u), x + 140 * u, top + 130 * u, ESC, "left", a);
+      ctx.save(); ctx.globalAlpha = a; rr(ctx, x + 140 * u, top + 175 * u, W - 200 * u, 60 * u, 8 * u); ctx.strokeStyle = "#d0d2e0"; ctx.lineWidth = 2 * u; ctx.stroke(); ctx.restore();
+      txt(ctx, en ? "Search specs" : "Search specs", font(500, 24 * u), x + 170 * u, top + 205 * u, "#9aa0b4", "left", a);
+      pastaIcone(ctx, x + 150 * u, top + 268 * u, 34 * u, a, "#9aa0b4"); txt(ctx, "cypress / e2e", font(700, 26 * u), x + 200 * u, top + 286 * u, MUT, "left", a);
+      (s.specs || ["login.cy.js"]).forEach((n, i) => { const yy = top + 350 * u + i * 64 * u; const on = i === (s.escolha || 0); const kh = on ? easeOut((t - tc + 0.5) / 0.3) : 0;
+        if (kh > 0) { ctx.save(); ctx.globalAlpha = a * kh; ctx.fillStyle = "#eef0ff"; rr(ctx, x + 170 * u, yy - 28 * u, W - 260 * u, 56 * u, 8 * u); ctx.fill(); ctx.strokeStyle = C.yel; ctx.lineWidth = 4 * u; ctx.stroke(); ctx.restore(); }
+        ctx.save(); ctx.globalAlpha = a; ctx.fillStyle = "#1fa971"; rr(ctx, x + 200 * u, yy - 14 * u, 22 * u, 28 * u, 4 * u); ctx.fill(); ctx.restore();
+        txt(ctx, n.replace(/\.cy\.js$/, ""), font(700, 27 * u, MONO), x + 240 * u, yy, kh > 0 ? IND : ESC, "left", a); const nw = tw(ctx, n.replace(/\.cy\.js$/, ""), font(700, 27 * u, MONO));
+        txt(ctx, ".cy.js", font(500, 27 * u, MONO), x + 240 * u + nw, yy, "#9aa0b4", "left", a); if (on) pts.push([x + 260 * u + nw / 2, yy + 6 * u, tc]); });
+    }
+    rota(ctx, u, pts, t);
+    legenda(ctx, c, t, s);
+  };
 })(window);
