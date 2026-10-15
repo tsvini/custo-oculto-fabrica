@@ -11,5 +11,144 @@
  {
   "nome": "netflix_longo",
   "texto": "📌 Qual foi o último filme que você alugou numa locadora? E você acha que a Blockbuster errou em recusar a Netflix?"
+ },
+ {
+  "nome": "banco_master_short1",
+  "texto": "📌 O caso completo está aqui: https://youtu.be/3e-eXXCL27s",
+  "depois_de": "banco_master_longo",
+  "feito": "UgzHlUTwvtDnD-zjYQ94AaABAg"
+ },
+ {
+  "nome": "banco_master_short2",
+  "texto": "📌 O caso completo está aqui: https://youtu.be/3e-eXXCL27s",
+  "depois_de": "banco_master_longo",
+  "feito": "UgxUjlqDWmATkZ0wBQB4AaABAg"
+ },
+ {
+  "nome": "banco_master_short4",
+  "texto": "📌 O caso completo está aqui: https://youtu.be/3e-eXXCL27s",
+  "depois_de": "banco_master_longo"
+ },
+ {
+  "nome": "banco_master_short3",
+  "texto": "📌 O caso completo está aqui: https://youtu.be/3e-eXXCL27s",
+  "depois_de": "banco_master_longo"
+ },
+ {
+  "nome": "banco_master_serie1",
+  "texto": "📌 O caso completo está aqui: https://youtu.be/3e-eXXCL27s",
+  "depois_de": "banco_master_longo",
+  "feito": "UgzMFZHlTMCwOvFrHIZ4AaABAg"
+ },
+ {
+  "nome": "banco_master_serie2",
+  "texto": "📌 O caso completo está aqui: https://youtu.be/3e-eXXCL27s",
+  "depois_de": "banco_master_longo",
+  "feito": "UgylLUAponLTaGtj4Nd4AaABAg"
+ },
+ {
+  "nome": "banco_master_serie3",
+  "texto": "📌 O caso completo está aqui: https://youtu.be/3e-eXXCL27s",
+  "depois_de": "banco_master_longo"
+ },
+ {
+  "nome": "banco_master_serie4",
+  "texto": "📌 O caso completo está aqui: https://youtu.be/3e-eXXCL27s",
+  "depois_de": "banco_master_longo"
+ },
+ {
+  "nome": "netflix_short4",
+  "texto": "📌 O caso completo está aqui: https://youtu.be/LGggbB-6O7A",
+  "depois_de": "netflix_longo"
+ },
+ {
+  "nome": "netflix_serie4",
+  "texto": "📌 O caso completo está aqui: https://youtu.be/LGggbB-6O7A",
+  "depois_de": "netflix_longo"
+ },
+ {
+  "nome": "americanas_short4",
+  "texto": "📌 O caso completo está aqui: https://youtu.be/pDz4KseN7K8",
+  "depois_de": "americanas_longo"
+ },
+ {
+  "nome": "americanas_serie4",
+  "texto": "📌 O caso completo está aqui: https://youtu.be/pDz4KseN7K8",
+  "depois_de": "americanas_longo"
+ },
+ {
+  "nome": "netflix_short3",
+  "texto": "📌 O caso completo está aqui: https://youtu.be/LGggbB-6O7A",
+  "depois_de": "netflix_longo"
+ },
+ {
+  "nome": "netflix_serie3",
+  "texto": "📌 O caso completo está aqui: https://youtu.be/LGggbB-6O7A",
+  "depois_de": "netflix_longo"
+ },
+ {
+  "nome": "kolynos_serie3",
+  "texto": "📌 O caso completo está aqui: https://youtu.be/TIv6Sg8n_rI",
+  "depois_de": "kolynos_longo"
+ },
+ {
+  "nome": "americanas_short3",
+  "texto": "📌 O caso completo está aqui: https://youtu.be/pDz4KseN7K8",
+  "depois_de": "americanas_longo"
+ },
+ {
+  "nome": "americanas_serie3",
+  "texto": "📌 O caso completo está aqui: https://youtu.be/pDz4KseN7K8",
+  "depois_de": "americanas_longo"
+ },
+ {
+  "nome": "netflix_short2",
+  "texto": "📌 O caso completo está aqui: https://youtu.be/LGggbB-6O7A",
+  "depois_de": "netflix_longo"
+ },
+ {
+  "nome": "netflix_serie2",
+  "texto": "📌 O caso completo está aqui: https://youtu.be/LGggbB-6O7A",
+  "depois_de": "netflix_longo"
+ },
+ {
+  "nome": "kolynos_serie2",
+  "texto": "📌 O caso completo está aqui: https://youtu.be/TIv6Sg8n_rI",
+  "depois_de": "kolynos_longo"
+ },
+ {
+  "nome": "americanas_short2",
+  "texto": "📌 O caso completo está aqui: https://youtu.be/pDz4KseN7K8",
+  "depois_de": "americanas_longo"
+ },
+ {
+  "nome": "americanas_serie2",
+  "texto": "📌 O caso completo está aqui: https://youtu.be/pDz4KseN7K8",
+  "depois_de": "americanas_longo"
+ },
+ {
+  "nome": "netflix_short1",
+  "texto": "📌 O caso completo está aqui: https://youtu.be/LGggbB-6O7A",
+  "depois_de": "netflix_longo"
+ },
+ {
+  "nome": "netflix_serie1",
+  "texto": "📌 O caso completo está aqui: https://youtu.be/LGggbB-6O7A",
+  "depois_de": "netflix_longo"
+ },
+ {
+  "nome": "kolynos_serie1",
+  "texto": "📌 O caso completo está aqui: https://youtu.be/TIv6Sg8n_rI",
+  "depois_de": "kolynos_longo"
+ },
+ {
+  "nome": "americanas_short1",
+  "texto": "📌 O caso completo está aqui: https://youtu.be/pDz4KseN7K8",
+  "depois_de": "americanas_longo"
+ },
+ {
+  "nome": "americanas_serie1",
+  "texto": "📌 O caso completo está aqui: https://youtu.be/pDz4KseN7K8",
+  "depois_de": "americanas_longo"
  }
 ]
