@@ -33,20 +33,19 @@
       {
        "text": "Escreve um teste que clica direto no botão de login, sem preencher nada, e confere se aparece um erro dizendo que o usuário é obrigatório.",
        "scene": {
-        "type": "bigtext",
-        "stagger": 0.25,
-        "lines": [
-         [
-          "SEM DIGITAR",
-          "white",
-          150
-         ],
-         [
-          "NADA",
-          "gold",
-          220
-         ]
-        ]
+        "type": "tela",
+        "media": "site_sauce_vazio",
+        "url": "https://www.saucedemo.com/",
+        "acoes": [
+         {
+          "click": "#login-button"
+         }
+        ],
+        "alvo": "Username is required",
+        "titulo": "saucedemo.com",
+        "zoom_em": 1.4,
+        "caixa_em": 2.2,
+        "legenda": "Clicou sem digitar? Aparece esse erro"
        }
       },
       {
@@ -112,20 +111,41 @@
       {
        "text": "Testador bom pensa assim: o que pode dar errado aqui? Cada resposta vira um teste.",
        "scene": {
-        "type": "bigtext",
-        "stagger": 0.25,
-        "lines": [
+        "type": "runner",
+        "spec": "login.cy.js",
+        "teste": "pede o usuário quando os campos estão vazios",
+        "passos": [
          [
-          "O QUE PODE",
-          "white",
-          150
+          "visit",
+          "saucedemo.com"
          ],
          [
-          "DAR ERRADO?",
-          "gold",
-          170
+          "get",
+          "[data-test=login-button]"
+         ],
+         [
+          "click",
+          ""
+         ],
+         [
+          "get",
+          "[data-test=error]"
+         ],
+         [
+          "contain",
+          "Username is required"
          ]
-        ]
+        ],
+        "status": "passou",
+        "media": "site_sauce_vazio",
+        "url": "https://www.saucedemo.com/",
+        "acoes": [
+         {
+          "click": "#login-button"
+         }
+        ],
+        "foco": "status",
+        "legenda": "Teste negativo passando"
        }
       },
       {

@@ -143,20 +143,56 @@
       {
        "text": "Se você fez diferente, mas o teste passou e confere o erro, está certo também. Em teste, tem mais de um jeito certo.",
        "scene": {
-        "type": "bigtext",
-        "stagger": 0.25,
-        "lines": [
+        "type": "runner",
+        "spec": "login.cy.js",
+        "teste": "mostra erro com senha errada",
+        "passos": [
          [
-          "TEM MAIS DE UM",
-          "white",
-          140
+          "visit",
+          "saucedemo.com"
          ],
          [
-          "JEITO CERTO",
-          "gold",
-          170
+          "type",
+          "standard_user"
+         ],
+         [
+          "type",
+          "senha_errada"
+         ],
+         [
+          "click",
+          "login-button"
+         ],
+         [
+          "get",
+          "[data-test=error]"
+         ],
+         [
+          "contain",
+          "do not match"
          ]
-        ]
+        ],
+        "status": "passou",
+        "media": "site_sauce_senha",
+        "url": "https://www.saucedemo.com/",
+        "acoes": [
+         {
+          "fill": [
+           "#user-name",
+           "standard_user"
+          ]
+         },
+         {
+          "fill": [
+           "#password",
+           "senha_errada"
+          ]
+         },
+         {
+          "click": "#login-button"
+         }
+        ],
+        "legenda": "Passou? Então está certo!"
        }
       },
       {

@@ -120,20 +120,21 @@
       {
        "text": "E repara na bolinha verde: ela quer dizer que o teste passou. Parabéns, esse é oficialmente o seu primeiro teste rodando!",
        "scene": {
-        "type": "bigtext",
-        "stagger": 0.25,
-        "lines": [
+        "type": "runner",
+        "spec": "login.cy.js",
+        "teste": "entra com usuário e senha",
+        "passos": [
          [
-          "VERDE",
-          "gold",
-          220
-         ],
-         [
-          "= PASSOU",
-          "white",
-          140
+          "visit",
+          "https://www.saucedemo.com"
          ]
-        ]
+        ],
+        "status": "passou",
+        "media": "site_sauce",
+        "url": "https://www.saucedemo.com/",
+        "pronto": true,
+        "foco": "lista",
+        "legenda": "Bolinha verde = o teste passou"
        }
       },
       {

@@ -137,33 +137,163 @@
       {
        "text": "Agora a parte de ler o erro. Primeiro: olha qual passo ficou vermelho. Ele mostra exatamente onde o teste parou.",
        "scene": {
-        "type": "passo",
-        "n": 1,
-        "de": 3,
-        "titulo": "Qual passo ficou vermelho?",
-        "icone": "1"
+        "type": "runner",
+        "spec": "login.cy.js",
+        "teste": "entra com usuário e senha",
+        "passos": [
+         [
+          "visit",
+          "saucedemo.com"
+         ],
+         [
+          "type",
+          "standard_user"
+         ],
+         [
+          "type",
+          "secret_sauce"
+         ],
+         [
+          "click",
+          ""
+         ],
+         [
+          "contains",
+          "Produtos"
+         ]
+        ],
+        "status": "falhou",
+        "media": "site_sauce_loja",
+        "url": "https://www.saucedemo.com/",
+        "acoes": [
+         {
+          "fill": [
+           "#user-name",
+           "standard_user"
+          ]
+         },
+         {
+          "fill": [
+           "#password",
+           "secret_sauce"
+          ]
+         },
+         {
+          "click": "#login-button"
+         }
+        ],
+        "erro": "Timed out retrying after 4000ms: Expected to find content: 'Produtos' but never did.",
+        "pronto": true,
+        "foco": "passo",
+        "legenda": "1. Onde parou? O passo vermelho"
        }
       },
       {
        "text": "Segundo: lê a mensagem. Aqui ela diz: esperava encontrar o texto Produtos, mas nunca encontrou. Ou seja, o problema está no texto que a gente pediu.",
        "scene": {
-        "type": "passo",
-        "n": 2,
-        "de": 3,
-        "titulo": "Leia a mensagem",
-        "sub": "Expected to find content: 'Produtos'",
-        "icone": "2",
-        "mono": true
+        "type": "runner",
+        "spec": "login.cy.js",
+        "teste": "entra com usuário e senha",
+        "passos": [
+         [
+          "visit",
+          "saucedemo.com"
+         ],
+         [
+          "type",
+          "standard_user"
+         ],
+         [
+          "type",
+          "secret_sauce"
+         ],
+         [
+          "click",
+          ""
+         ],
+         [
+          "contains",
+          "Produtos"
+         ]
+        ],
+        "status": "falhou",
+        "media": "site_sauce_loja",
+        "url": "https://www.saucedemo.com/",
+        "acoes": [
+         {
+          "fill": [
+           "#user-name",
+           "standard_user"
+          ]
+         },
+         {
+          "fill": [
+           "#password",
+           "secret_sauce"
+          ]
+         },
+         {
+          "click": "#login-button"
+         }
+        ],
+        "erro": "Timed out retrying after 4000ms: Expected to find content: 'Produtos' but never did.",
+        "pronto": true,
+        "foco": "erro",
+        "legenda": "2. O que ele esperava? A mensagem"
        }
       },
       {
        "text": "Terceiro: olha o site na direita. Ele mostra a página no momento do erro. Dá pra ver que lá está escrito Products, em inglês.",
        "scene": {
-        "type": "passo",
-        "n": 3,
-        "de": 3,
-        "titulo": "Olhe o site na hora do erro",
-        "icone": "3"
+        "type": "runner",
+        "spec": "login.cy.js",
+        "teste": "entra com usuário e senha",
+        "passos": [
+         [
+          "visit",
+          "saucedemo.com"
+         ],
+         [
+          "type",
+          "standard_user"
+         ],
+         [
+          "type",
+          "secret_sauce"
+         ],
+         [
+          "click",
+          ""
+         ],
+         [
+          "contains",
+          "Produtos"
+         ]
+        ],
+        "status": "falhou",
+        "media": "site_sauce_loja",
+        "url": "https://www.saucedemo.com/",
+        "acoes": [
+         {
+          "fill": [
+           "#user-name",
+           "standard_user"
+          ]
+         },
+         {
+          "fill": [
+           "#password",
+           "secret_sauce"
+          ]
+         },
+         {
+          "click": "#login-button"
+         }
+        ],
+        "erro": "Timed out retrying after 4000ms: Expected to find content: 'Produtos' but never did.",
+        "pronto": true,
+        "foco": "site",
+        "legenda": "3. O que tinha na tela? O site"
        }
       },
       {
@@ -195,20 +325,54 @@
       {
        "text": "Agora volta o texto pra Products, salva, e o teste fica verde de novo.",
        "scene": {
-        "type": "bigtext",
-        "stagger": 0.25,
-        "lines": [
+        "type": "runner",
+        "spec": "login.cy.js",
+        "teste": "entra com usuário e senha",
+        "passos": [
          [
-          "CORRIGIU?",
-          "white",
-          150
+          "visit",
+          "saucedemo.com"
          ],
          [
-          "VERDE DE NOVO",
-          "gold",
-          160
+          "type",
+          "standard_user"
+         ],
+         [
+          "type",
+          "secret_sauce"
+         ],
+         [
+          "click",
+          ""
+         ],
+         [
+          "contains",
+          "Products"
          ]
-        ]
+        ],
+        "status": "passou",
+        "media": "site_sauce_loja",
+        "url": "https://www.saucedemo.com/",
+        "acoes": [
+         {
+          "fill": [
+           "#user-name",
+           "standard_user"
+          ]
+         },
+         {
+          "fill": [
+           "#password",
+           "secret_sauce"
+          ]
+         },
+         {
+          "click": "#login-button"
+         }
+        ],
+        "pronto": true,
+        "foco": "status",
+        "legenda": "Corrigiu? Verde de novo!"
        }
       },
       {

@@ -231,9 +231,17 @@
   //  media:"site_sauce", url:"https://www.saucedemo.com", status:"passou"|"falhou", erro:"Timed out retrying...", legenda:"..."}
   S.runner = (ctx, c, t, dur, s, media) => {
     const u = c.u; const a = easeOut(t / 0.4); const W = (c.vertical ? 1000 : 1640) * u, H = (c.vertical ? 1100 : 700) * u; const x = c.cx - W / 2, y = topo(c, H);
-    const top = janela(ctx, x, y, W, H, u, "Cypress — " + (s.spec || "spec.cy.js"), a, "#1b1e27");
     const LW = c.vertical ? W : 600 * u; const P = s.passos || []; const falha = s.status === "falhou";
-    const passo = Math.max(0.35, (dur * 0.75 - 0.6) / Math.max(P.length, 1)); const feitos = clamp((t - 0.6) / passo, 0, P.length);
+    // foco: "passo" (o passo que falhou/último), "lista" (os comandos), "erro" (a mensagem), "site", "status" (PASSOU/FALHOU)
+    const t0 = y + 64 * u, ex0 = x + LW + 30 * u, ew0 = W - LW - 60 * u;
+    const R = { lista: [x, t0 + 64 * u, LW, y + H - t0 - 64 * u], passo: [x, t0 + 160 * u + (P.length - 1) * 50 * u - 24 * u, LW, 48 * u],
+      erro: [ex0 - 8 * u, y + H - 198 * u, ew0 + 16 * u, 166 * u], site: [x + LW, t0, W - LW, y + H - t0], status: [x + W - 330 * u, t0 + 16 * u, 310 * u, 90 * u] }[s.foco];
+    const kf = R ? easeOut((t - (s.foco_em === undefined ? (s.pronto ? 0.5 : dur * 0.8) : s.foco_em)) / 0.6) : 0;
+    const zf = R ? lerp(1, s.zoom || ({ passo: 1.12, erro: 1.12, status: 1.15 }[s.foco] || 1.04), kf) : 1;
+    ctx.save(); if (R) { const fx = lerp(c.cx, R[0] + R[2] / 2, 0.6), fy = lerp(y + H / 2, R[1] + R[3] / 2, 0.6); ctx.translate(fx, fy); ctx.scale(zf, zf); ctx.translate(-fx, -fy); }
+    const top = janela(ctx, x, y, W, H, u, "Cypress — " + (s.spec || "spec.cy.js"), a, "#1b1e27");
+    const passo = Math.max(0.35, (dur * 0.75 - 0.6) / Math.max(P.length, 1)); const feitos = s.pronto ? P.length : clamp((t - 0.6) / passo, 0, P.length);
+    const tFim = s.pronto ? 0 : 0.6 + P.length * passo;
     ctx.save(); ctx.globalAlpha = a; ctx.fillStyle = "#171a22"; ctx.fillRect(x, top, LW, y + H - top - 2 * u); ctx.restore();
     const fim = feitos >= P.length; const ok = fim && !falha;
     txt(ctx, s.spec || "spec.cy.js", font(700, 24 * u, MONO), x + 28 * u, top + 34 * u, C.txt, "left", a);
@@ -257,14 +265,21 @@
       if (el) { const iw = el.videoWidth || el.width, ih = el.videoHeight || el.height; const r = Math.max(sw / iw, sh / ih); ctx.drawImage(el, sx, top, iw * r, ih * r); }
       else txt(ctx, s.url || "site", font(700, 34 * u), sx + sw / 2, top + sh / 2, "#8b93a7", "center", a);
       ctx.restore();
-      if (fim) { const ka = easeOut((t - 0.6 - P.length * passo) / 0.35); const lab = falha ? "FALHOU" : "PASSOU"; const f = font(900, 40 * u); const w = tw(ctx, lab, f) + 70 * u;
+      if (fim) { const ka = easeOut((t - tFim) / 0.35); const lab = falha ? "FALHOU" : "PASSOU"; const f = font(900, 40 * u); const w = tw(ctx, lab, f) + 70 * u;
         ctx.save(); ctx.globalAlpha = ka; rr(ctx, sx + sw - w - 30 * u, top + 26 * u, w, 70 * u, 35 * u); ctx.fillStyle = falha ? C.red : C.ac; ctx.fill(); ctx.restore();
         txt(ctx, lab, f, sx + sw - w / 2 - 30 * u, top + 62 * u, "#0b1a12", "center", ka); }
     }
-    if (falha && fim && s.erro) { const ka = easeOut((t - 0.6 - P.length * passo) / 0.4); const ex = c.vertical ? x + 20 * u : x + LW + 30 * u, ew = c.vertical ? LW - 40 * u : W - LW - 60 * u, by = c.vertical ? yy + 20 * u : y + H - 190 * u;
+    if (falha && fim && s.erro) { const ka = easeOut((t - tFim) / 0.4); const ex = c.vertical ? x + 20 * u : x + LW + 30 * u, ew = c.vertical ? LW - 40 * u : W - LW - 60 * u, by = c.vertical ? yy + 20 * u : y + H - 190 * u;
       ctx.save(); ctx.globalAlpha = a * ka; rr(ctx, ex, by, ew, 150 * u, 12 * u); ctx.fillStyle = "#2a1517"; ctx.fill(); ctx.fillStyle = "rgba(255,107,107,.15)"; ctx.fill(); ctx.strokeStyle = C.red; ctx.lineWidth = 2 * u; ctx.stroke(); ctx.restore();
       txt(ctx, "AssertionError", font(800, 24 * u, MONO), ex + 24 * u, by + 36 * u, C.red, "left", a * ka);
       String(s.erro).match(/.{1,60}(\s|$)/g).slice(0, 3).forEach((l, i) => txt(ctx, l.trim(), font(600, 21 * u, MONO), ex + 24 * u, by + 76 * u + i * 30 * u, C.txt, "left", a * ka)); }
+    if (R && kf > 0) {  // holofote: escurece o resto e contorna o que importa
+      ctx.save(); ctx.fillStyle = `rgba(0,0,0,${0.62 * kf})`;  // quatro faixas em volta do foco
+      const [rx, ry, rw, rh] = R; const BX = -c.W, BY = -c.H, BW = c.W * 3, BH = c.H * 3;
+      ctx.fillRect(BX, BY, BW, ry - BY); ctx.fillRect(BX, ry + rh, BW, BY + BH - ry - rh); ctx.fillRect(BX, ry, rx - BX, rh); ctx.fillRect(rx + rw, ry, BX + BW - rx - rw, rh);
+      ctx.globalAlpha = kf; ctx.strokeStyle = C.yel; ctx.lineWidth = 6 * u / zf; rr(ctx, R[0], R[1], R[2], R[3], 12 * u); ctx.stroke(); ctx.restore();
+    }
+    ctx.restore();
     legenda(ctx, c, t, s);
   };
 })(window);

@@ -112,20 +112,37 @@
       {
        "text": "O first é novo: ele pega só o primeiro de uma lista. Como a página tem vários preços, a gente diz pro Cypress: quero o primeiro.",
        "scene": {
-        "type": "bigtext",
-        "stagger": 0.25,
-        "lines": [
-         [
-          "FIRST",
-          "gold",
-          220
-         ],
-         [
-          "O PRIMEIRO DA LISTA",
-          "white",
-          110
-         ]
-        ]
+        "type": "tela",
+        "media": "site_sauce_ordenado",
+        "url": "https://www.saucedemo.com/",
+        "acoes": [
+         {
+          "fill": [
+           "#user-name",
+           "standard_user"
+          ]
+         },
+         {
+          "fill": [
+           "#password",
+           "secret_sauce"
+          ]
+         },
+         {
+          "click": "#login-button"
+         },
+         {
+          "select": [
+           "[data-test=\"product-sort-container\"]",
+           "lohi"
+          ]
+         }
+        ],
+        "alvo": "$7.99",
+        "titulo": "saucedemo.com/inventory.html",
+        "zoom_em": 1.2,
+        "caixa_em": 1.9,
+        "legenda": "O primeiro preço da lista: $7.99"
        }
       },
       {

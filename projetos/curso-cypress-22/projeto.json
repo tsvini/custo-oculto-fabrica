@@ -133,20 +133,49 @@
       {
        "text": "Conferir que algo sumiu é tão importante quanto conferir que algo apareceu.",
        "scene": {
-        "type": "bigtext",
-        "stagger": 0.25,
-        "lines": [
+        "type": "runner",
+        "spec": "compra.cy.js",
+        "teste": "remove a mochila do carrinho",
+        "passos": [
          [
-          "SUMIU TAMBÉM",
-          "white",
-          140
+          "click",
+          "add-to-cart-sauce-labs-backpack"
          ],
          [
-          "SE CONFERE",
-          "gold",
-          170
+          "click",
+          "remove-sauce-labs-backpack"
+         ],
+         [
+          "get",
+          "shopping-cart-badge"
+         ],
+         [
+          "should",
+          "not.exist"
          ]
-        ]
+        ],
+        "status": "passou",
+        "media": "site_sauce_loja",
+        "url": "https://www.saucedemo.com/",
+        "acoes": [
+         {
+          "fill": [
+           "#user-name",
+           "standard_user"
+          ]
+         },
+         {
+          "fill": [
+           "#password",
+           "secret_sauce"
+          ]
+         },
+         {
+          "click": "#login-button"
+         }
+        ],
+        "foco": "lista",
+        "legenda": "Sumiu? Então passou"
        }
       },
       {

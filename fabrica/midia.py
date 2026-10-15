@@ -104,6 +104,8 @@ def telas(cenas, pasta, log, idioma="pt"):
                         try:
                             if ac.get("fill"):
                                 pg.fill(ac["fill"][0], ac["fill"][1], timeout=8000)
+                            elif ac.get("select"):
+                                pg.select_option(ac["select"][0], ac["select"][1], timeout=8000); pg.wait_for_timeout(800)
                             elif ac.get("click"):
                                 pg.click(ac["click"], timeout=8000); pg.wait_for_timeout(1200)
                         except Exception as e:
