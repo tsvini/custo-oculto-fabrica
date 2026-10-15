@@ -206,7 +206,16 @@
        }
       },
       {
-       "text": "Na próxima aula, a gente instala o Git, a última ferramenta antes de começar a testar. Te vejo lá!",
+       "text": "Na próxima aula, a gente instala o Git, a última ferramenta antes de começar a testar.",
+       "scene": {
+        "type": "passo",
+        "icone": "▶",
+        "titulo": "Próxima aula",
+        "sub": "Instalando O Git"
+       }
+      },
+      {
+       "text": "Te vejo lá!",
        "scene": {
         "type": "endcard",
         "sub": "PRÓXIMA: INSTALANDO O GIT"
@@ -227,5 +236,6 @@
   "description": "",
   "tags": []
  },
- "notes": "Curso Cypress para leigos. Não publica (destino: curso)."
+ "notes": "Curso Cypress para leigos. Não publica (destino: curso).",
+ "legenda_y": 0.93
 }

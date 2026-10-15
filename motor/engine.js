@@ -510,7 +510,7 @@
     ctx.font = font(900, fs); let sp = ctx.measureText(" ").width + (safe ? 16 : 6) * u; let ws = words.map((w) => ctx.measureText(w).width + 16 * u);
     let total = ws.reduce((a, b) => a + b, 0) + sp * (words.length - 1); const maxW = c.W * (safe ? 0.72 : c.vertical ? 0.86 : 0.7);
     if (total > maxW) { const k = maxW / total; fs *= k; sp *= k; ws = ws.map((x) => x * k); total = maxW; }
-    let x = c.cx - total / 2; const y = c.H * (safe ? 0.68 : c.vertical ? 0.70 : 0.84); const ka = easeOut((t - ch[0].s) / 0.12);
+    let x = c.cx - total / 2; const y = c.H * (safe ? 0.68 : c.vertical ? 0.70 : (globalThis.CO_LEGENDA_Y || 0.84)); const ka = easeOut((t - ch[0].s) / 0.12);
     ch.forEach((wd, i) => { const act = wd.s <= t && t < wd.e + 0.03;
       drawC(ctx, words[i], font(900, fs), x + ws[i] / 2, y, { fill: act ? COL.gold : COL.white, stroke: 9 * u, alpha: ka, scale: act ? 1.08 : 1 }); x += ws[i] + sp; });
   }

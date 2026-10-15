@@ -28,9 +28,10 @@
     ctx.strokeStyle = "rgba(255,255,255,.07)"; ctx.lineWidth = 2 * u; rr(ctx, x, y, w, h, 22 * u); ctx.stroke();
     ctx.restore(); return y + 64 * u;
   }
+  const topo = (c, H) => (c.vertical ? c.H * 0.2 : c.H * 0.38 - H / 2);  // janelas acima da faixa e da legenda karaokê
   function legenda(ctx, c, t, s) {  // faixa explicativa embaixo da janela
     if (!s.legenda) return; const u = c.u; const a = easeOut((t - (s.legenda_em || 0.6)) / 0.4); if (a <= 0) return;
-    const f = font(800, 44 * u); const w = tw(ctx, s.legenda, f) + 80 * u; const y = c.H - 150 * u;
+    const f = font(800, 44 * u); const w = tw(ctx, s.legenda, f) + 80 * u; const y = c.H * (c.vertical ? 0.80 : 0.795);
     ctx.save(); ctx.globalAlpha = a; rr(ctx, c.cx - w / 2, y - 44 * u + (1 - a) * 20 * u, w, 88 * u, 44 * u); ctx.fillStyle = C.ac; ctx.fill(); ctx.restore();
     txt(ctx, s.legenda, f, c.cx, y + (1 - a) * 20 * u, "#0b1a12", "center", a);
   }
@@ -53,7 +54,7 @@
   // EDITOR: {type:"editor", arquivo:"login.cy.js", codigo:"linhas\n...", digitar:true, destaque:[3,4], legenda:"...", pastas:["cypress","e2e","login.cy.js"]}
   S.editor = (ctx, c, t, dur, s) => {
     const u = c.u; const a = easeOut(t / 0.4); const sc = lerp(0.96, 1, backOut(t / 0.5));
-    const W = (c.vertical ? 1000 : 1560) * u, H = (c.vertical ? 1100 : 780) * u; const x = c.cx - W / 2, y = (c.vertical ? c.H * 0.2 : c.H * 0.42 - H / 2);
+    const W = (c.vertical ? 1000 : 1500) * u, H = (c.vertical ? 1100 : 700) * u; const x = c.cx - W / 2, y = topo(c, H);
     ctx.save(); ctx.translate(c.cx, y + H / 2); ctx.scale(sc, sc); ctx.translate(-c.cx, -(y + H / 2));
     const top = janela(ctx, x, y, W, H, u, (s.arquivo || "arquivo.js") + " — Visual Studio Code", a);
     const sideW = s.pastas && !c.vertical ? 330 * u : 0;
@@ -87,8 +88,8 @@
 
   // TERMINAL: {type:"terminal", pasta:"C:\\Users\\voce\\meu-projeto", linhas:[{cmd:"node -v"},{out:"v22.11.0", cor:"ac"}], legenda:"..."}
   S.terminal = (ctx, c, t, dur, s) => {
-    const u = c.u; const a = easeOut(t / 0.4); const W = (c.vertical ? 1000 : 1400) * u, H = (c.vertical ? 900 : 680) * u;
-    const x = c.cx - W / 2, y = c.vertical ? c.H * 0.22 : c.H * 0.42 - H / 2;
+    const u = c.u; const a = easeOut(t / 0.4); const W = (c.vertical ? 1000 : 1400) * u, H = (c.vertical ? 900 : 640) * u;
+    const x = c.cx - W / 2, y = topo(c, H);
     const top = janela(ctx, x, y, W, H, u, s.titulo || "Terminal", a, C.term);
     const fs = 34 * u, lh = fs * 1.7; let yy = top + 60 * u; const pr = (s.prompt || "PS " + (s.pasta || "C:\\meu-projeto") + ">") + " ";
     const L = s.linhas || []; const passo = Math.max(0.6, (dur - 1) / Math.max(L.length, 1)); let tt = t - 0.5;
@@ -126,8 +127,8 @@
 
   // PASTAS: {type:"pastas", caminho:"Este Computador > Documentos", itens:["Fotos","Trabalho",{"nome":"meu-projeto","novo":true}], legenda:"..."}
   S.pastas = (ctx, c, t, dur, s) => {
-    const u = c.u; const a = easeOut(t / 0.4); const W = (c.vertical ? 1000 : 1500) * u, H = (c.vertical ? 1000 : 720) * u;
-    const x = c.cx - W / 2, y = c.vertical ? c.H * 0.2 : c.H * 0.42 - H / 2;
+    const u = c.u; const a = easeOut(t / 0.4); const W = (c.vertical ? 1000 : 1500) * u, H = (c.vertical ? 1000 : 660) * u;
+    const x = c.cx - W / 2, y = topo(c, H);
     const top = janela(ctx, x, y, W, H, u, "Explorador de Arquivos", a, "#f3f4f7");
     ctx.save(); ctx.globalAlpha = a; ctx.fillStyle = "#e4e7ee"; ctx.fillRect(x, top, W, 70 * u); ctx.restore();
     pastaIcone(ctx, x + 34 * u, top + 18 * u, 40 * u, a);
@@ -171,7 +172,7 @@
   // {type:"tela", media:"instala_vscode", titulo:"code.visualstudio.com", zoom:[x0,y0,x1,y1] (0–1), zoom_em:2, caixa:[x0,y0,x1,y1], legenda:"..."}
   S.tela = (ctx, c, t, dur, s, media) => {
     const u = c.u; const a = easeOut(t / 0.4); const m = media && media[s.media];
-    const W = (c.vertical ? 1000 : 1600) * u, H = W * 9 / 16 + 64 * u; const x = c.cx - W / 2, y = c.vertical ? c.H * 0.25 : c.H * 0.43 - H / 2;
+    const W = (c.vertical ? 1000 : 1200) * u, H = W * 9 / 16 + 64 * u; const x = c.cx - W / 2, y = topo(c, H);
     const top = janela(ctx, x, y, W, H, u, s.titulo || "", a);
     const vw = W, vh = H - (top - y); ctx.save(); rr(ctx, x, top, vw, vh, 0); ctx.clip();
     const el = m && (m.video || m.img);
@@ -186,8 +187,8 @@
   };
   // INSTALADOR (desenhado): {type:"instalador", app:"Visual Studio Code", titulo:"Select Additional Tasks", texto:"...", caixas:[["Add to PATH",true]], botao:"Next", progresso:false, legenda:"..."}
   S.instalador = (ctx, c, t, dur, s) => {
-    const u = c.u; const a = easeOut(t / 0.4); const W = (c.vertical ? 980 : 1240) * u, H = (c.vertical ? 900 : 720) * u;
-    const x = c.cx - W / 2, y = c.vertical ? c.H * 0.2 : c.H * 0.42 - H / 2;
+    const u = c.u; const a = easeOut(t / 0.4); const W = (c.vertical ? 980 : 1240) * u, H = (c.vertical ? 900 : 680) * u;
+    const x = c.cx - W / 2, y = topo(c, H);
     const top = janela(ctx, x, y, W, H, u, "Setup - " + (s.app || "Programa"), a, "#f4f5f8");
     ctx.save(); ctx.globalAlpha = a; ctx.fillStyle = "#ffffff"; ctx.fillRect(x, top, W, 130 * u); ctx.fillStyle = "#e3e6ec"; ctx.fillRect(x, top + 130 * u, W, 2 * u); ctx.restore();
     txt(ctx, s.titulo || "", font(800, 40 * u), x + 50 * u, top + 52 * u, "#1d2230", "left", a);

@@ -205,7 +205,16 @@
        }
       },
       {
-       "text": "Na próxima aula, a gente cria a pastinha do projeto e abre ela no VS Code. Te vejo lá!",
+       "text": "Na próxima aula, a gente cria a pastinha do projeto e abre ela no VS Code.",
+       "scene": {
+        "type": "passo",
+        "icone": "▶",
+        "titulo": "Próxima aula",
+        "sub": "Criando O Projeto"
+       }
+      },
+      {
+       "text": "Te vejo lá!",
        "scene": {
         "type": "endcard",
         "sub": "PRÓXIMA: CRIANDO O PROJETO"
@@ -226,5 +235,6 @@
   "description": "",
   "tags": []
  },
- "notes": "Curso Cypress para leigos. Não publica (destino: curso)."
+ "notes": "Curso Cypress para leigos. Não publica (destino: curso).",
+ "legenda_y": 0.93
 }

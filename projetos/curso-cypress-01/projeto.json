@@ -329,7 +329,16 @@
        }
       },
       {
-       "text": "Na próxima aula, a gente começa preparando o seu computador, instalando um programa chamado VS Code. Fica tranquilo, eu vou te mostrar clique por clique. Te vejo lá!",
+       "text": "Na próxima aula, a gente começa preparando o seu computador, instalando um programa chamado VS Code. Fica tranquilo, eu vou te mostrar clique por clique.",
+       "scene": {
+        "type": "passo",
+        "icone": "▶",
+        "titulo": "Próxima aula",
+        "sub": "Instalando O Vs Code"
+       }
+      },
+      {
+       "text": "Te vejo lá!",
        "scene": {
         "type": "endcard",
         "sub": "PRÓXIMA: INSTALANDO O VS CODE"
@@ -351,5 +360,6 @@
   "tags": []
  },
  "notes": "Curso Cypress para leigos, aula 1. Não publica (destino: curso).",
- "cor_fundo": "#3fd68a"
+ "cor_fundo": "#3fd68a",
+ "legenda_y": 0.93
 }
