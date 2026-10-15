@@ -322,7 +322,7 @@
     const L = [{ n: 0, p: [["<", "pu"], ["html", "tag"], [">", "pu"]] }, { n: 1, p: [["<", "pu"], ["body", "tag"], [">", "pu"]] },
       { n: 2, p: [["<", "pu"], ["form", "tag"], [">", "pu"]] }, { n: 3, p: [["<", "pu"], [pt, "tag"], ...(pc ? [[" class", "an"], ["=", "pu"], [`"${pc}"`, "av"]] : []), [">", "pu"]] },
       { n: 4, p: [["<", "pu"], [h.tag, "tag"]], sel: true }];
-    (h.attrs || []).filter(([k]) => k !== "style").forEach(([k, v]) => (v = String(v).length > 34 ? String(v).slice(0, 32) + "…" : v, L.push({ n: 5, p: [[k, "an"], ...(v !== "" ? [["=", "pu"], [`"${v}"`, "av"]] : [])], sel: true, attr: k })));
+    (h.attrs || []).filter(([k]) => (s.attrs || ["class", "placeholder", "type", "data-test", "data-cy", "id", "name", "href"]).includes(k)).forEach(([k, v]) => (v = String(v).length > 34 ? String(v).slice(0, 32) + "…" : v, L.push({ n: 5, p: [[k, "an"], ...(v !== "" ? [["=", "pu"], [`"${v}"`, "av"]] : [])], sel: true, attr: k })));
     L[L.length - 1].p.push(["> == $0", "pu"]); L.push({ n: 3, p: [["</", "pu"], [pt, "tag"], [">", "pu"]] });
     return L;
   }
@@ -334,7 +334,7 @@
     const u = c.u; const a = easeOut(t / 0.4); const W = 1640 * u, H = 720 * u; const x = c.cx - W / 2, y = topo(c, H);
     const top = janela(ctx, x, y, W, H, u, s.titulo || (s.url || "").replace(/^https?:\/\//, "").replace(/\/$/, ""), a, "#fff");
     const m = media && media[s.media]; const el = m && (m.video || m.img); const e = s.elem || [0.37, 0.3, 0.63, 0.36];
-    const tc = s.clique_em || 1.6, tMenu = tc, tIn = tc + 1.0, tOpen = tIn + 0.35;
+    const tc = s.clique_em || 1.6, tMenu = tc, tIn = tc + 1.0, tOpen = s.aberto ? -2 : tIn + 0.35;
     const ko = s.aberto ? 1 : easeOut((t - tOpen) / 0.6); const PW = (s.painel || 0.5) * W * ko; const sw = W - PW, sh = y + H - top;
     const ex = (e[0] + e[2]) / 2, ey = (e[1] + e[3]) / 2;
     const p = print(ctx, el, x, top, sw, sh, a, "#fff", [ex, ey], lerp(1, s.zoom_site || 1.8, ko));
