@@ -279,6 +279,8 @@ def main():
                     afil = bloco_afiliados(meta, idioma)
                     if afil:
                         desc = desc.replace("[AFILIADOS]", afil) if "[AFILIADOS]" in desc else desc + "\n\n" + afil
+                    if C.get("spotify") and p.get("destino") != "curso":
+                        desc += "\n\n" + C["spotify"]
                     if creditos:
                         desc += f"\n\n{C['creditos']} " + "; ".join(dict.fromkeys(creditos))
                     txt = ["TÍTULO (opções):"] + [f"  {t}" for t in meta.get("titles", [])] + ["", "DESCRIÇÃO:", desc, "", "TAGS:", ", ".join(meta.get("tags", []))]

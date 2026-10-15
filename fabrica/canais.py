@@ -10,6 +10,7 @@ from urllib.parse import quote_plus
 CANAIS = {
     "pt": {
         "nome": "Custo Oculto",
+        "spotify": "🎧 Ouça como podcast no Spotify: https://open.spotify.com/show/5bqEekASe0RiWNUOcdG8yi",
         "token_env": "YT_REFRESH_TOKEN",
         "yt_lang": "pt-BR",
         "legenda_nome": "Português",
