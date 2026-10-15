@@ -15,6 +15,8 @@
     win: "#1b1e27", bar: "#252936", side: "#20232e", line: "#2c3140", term: "#0f1117", folder: "#f5c542" };
   function rr(ctx, x, y, w, h, r) { w = Math.max(0, w); h = Math.max(0, h); r = Math.max(0, Math.min(r, w / 2, h / 2)); ctx.beginPath(); ctx.moveTo(x + r, y); ctx.arcTo(x + w, y, x + w, y + h, r); ctx.arcTo(x + w, y + h, x, y + h, r); ctx.arcTo(x, y + h, x, y, r); ctx.arcTo(x, y, x + w, y, r); ctx.closePath(); }
   function txt(ctx, t, f, x, y, fill, align = "left", alpha = 1) { if (!t || alpha <= 0.01) return; ctx.save(); ctx.globalAlpha *= alpha; ctx.font = f; ctx.textAlign = align; ctx.textBaseline = "middle"; ctx.fillStyle = fill; ctx.fillText(t, x, y); ctx.restore(); }
+  // árvore do Explorer: se algum item começar com espaços, o nível vem dos espaços (2 por nível); senão, cada item fica um nível abaixo do anterior
+  function arvore(lista, max) { const expl = lista.some((p) => /^ /.test(p)); return lista.map((p, i) => { const nm = p.trim(); return { nm, nv: expl ? Math.floor((p.length - p.trimStart().length) / 2) : Math.min(i, max) }; }); }
   function tw(ctx, t, f) { ctx.font = f; return ctx.measureText(t).width; }
 
   // janela com sombra e barra de título (3 bolinhas)
@@ -70,8 +72,8 @@
     if (sideW) {
       ctx.save(); ctx.globalAlpha = a; ctx.fillStyle = C.side; ctx.fillRect(x, top, sideW, H - (top - y) - 22 * u); ctx.restore();
       txt(ctx, "EXPLORER", font(700, 20 * u), x + 28 * u, top + 36 * u, C.mut, "left", a);
-      s.pastas.forEach((p, i) => {
-        const yy = top + (86 + i * 50) * u, ind = Math.min(i, 4) * 22 * u, arq = /\.\w+$/.test(p);
+      arvore(s.pastas, 4).forEach(({ nm: p, nv }, i) => {
+        const yy = top + (86 + i * 50) * u, ind = nv * 22 * u, arq = /\.\w+$/.test(p) || /^\.\w/.test(p);
         if (arq) { ctx.save(); ctx.globalAlpha *= a; ctx.fillStyle = C.ac; rr(ctx, x + 32 * u + ind, yy - 13 * u, 20 * u, 26 * u, 4 * u); ctx.fill(); ctx.restore(); }
         else pastaIcone(ctx, x + 28 * u + ind, yy - 14 * u, 30 * u, a);
         txt(ctx, p, font(arq ? 600 : 500, 24 * u), x + 68 * u + ind, yy, arq ? C.ac : C.txt, "left", a);
@@ -505,10 +507,10 @@
       sideW = s.pastas ? 330 * u : 0;
       if (sideW) { ctx.save(); ctx.globalAlpha = a; ctx.fillStyle = C.side; ctx.fillRect(x, corpo, sideW, ch - 2 * u); ctx.restore(); txt(ctx, "EXPLORER", font(700, 20 * u), x + 28 * u, corpo + 34 * u, C.mut, "left", a);
         const ps = s.pastas.slice(); const kn = s.resultado === "arquivo" ? easeOut((t - tFim - 0.3) / 0.3) : 0;
-        ps.forEach((p, i) => { const yy = corpo + (80 + i * 48) * u, ind = Math.min(i, 3) * 22 * u, arq = /\.\w+$/.test(p);
+        const arv = arvore(ps, 3); arv.forEach(({ nm: p, nv }, i) => { const yy = corpo + (80 + i * 48) * u, ind = nv * 22 * u, arq = /\.\w+$/.test(p) || /^\.\w/.test(p);
           if (arq) { ctx.save(); ctx.globalAlpha *= a; ctx.fillStyle = C.ac; rr(ctx, x + 32 * u + ind, yy - 13 * u, 20 * u, 26 * u, 4 * u); ctx.fill(); ctx.restore(); } else pastaIcone(ctx, x + 28 * u + ind, yy - 14 * u, 30 * u, a);
           txt(ctx, p, font(500, 24 * u), x + 68 * u + ind, yy, C.txt, "left", a); });
-        if (kn > 0) { const i = ps.length, yy = corpo + (80 + i * 48) * u, ind = Math.min(i, 3) * 22 * u; const nm = (s.novo || "novo.js").slice(0, Math.ceil(clamp((t - tFim - 0.6) / 1.0) * (s.novo || "novo.js").length));
+        if (kn > 0) { const i = ps.length, yy = corpo + (80 + i * 48) * u, ind = (s.novo_nivel !== undefined ? s.novo_nivel : arv.some((q) => q.nv !== Math.min(arv.indexOf(q), 3)) ? arv[arv.length - 1].nv : Math.min(i, 3)) * 22 * u; const nm = (s.novo || "novo.js").slice(0, Math.ceil(clamp((t - tFim - 0.6) / 1.0) * (s.novo || "novo.js").length));
           ctx.save(); ctx.globalAlpha = a * kn; ctx.strokeStyle = C.ac2; ctx.lineWidth = 2 * u; ctx.strokeRect(x + 60 * u + ind, yy - 20 * u, sideW - 80 * u - ind, 40 * u); ctx.fillStyle = C.ac; rr(ctx, x + 32 * u + ind, yy - 13 * u, 20 * u, 26 * u, 4 * u); ctx.fill(); ctx.restore();
           txt(ctx, nm, font(600, 24 * u), x + 68 * u + ind, yy, C.txt, "left", a * kn); } }
       txt(ctx, s.fundo_txt || "", font(700, 40 * u), x + sideW + (W - sideW) / 2, corpo + ch * 0.4, "#3a3f50", "center", a);

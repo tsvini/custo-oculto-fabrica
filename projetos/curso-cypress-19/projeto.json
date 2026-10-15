@@ -69,21 +69,110 @@
               }
             },
             {
-              "text": "Antes de subir o projeto, cria um arquivo na pasta do projeto chamado ponto gitignore, e escreve node underline modules dentro. Isso avisa o Git pra não subir aquela pasta gigante, que qualquer pessoa recria com npm install.",
+              "text": "Antes de subir, tem um detalhe importante. Lembra da pasta node underline modules, que apareceu quando a gente instalou o Cypress? Ela é gigante, tem milhares de arquivos. E ela não precisa ir pro GitHub, porque qualquer pessoa cria ela de novo, sozinha, com o comando npm install.",
+              "scene": {
+                "type": "cards",
+                "titulo": "A PASTA NODE_MODULES",
+                "itens": [
+                  [
+                    "📦",
+                    "Gigante",
+                    "milhares de arquivos",
+                    "#ff6b6b"
+                  ],
+                  [
+                    "↻",
+                    "npm install",
+                    "cria ela de novo"
+                  ],
+                  [
+                    "✗",
+                    "Não sobe",
+                    "fica só no seu computador",
+                    "#ffd23f"
+                  ]
+                ]
+              }
+            },
+            {
+              "text": "Pra avisar o Git disso, existe um arquivo especial chamado ponto gitignore. Ignore, em inglês, quer dizer ignorar. Ele é só uma listinha: tudo o que estiver escrito ali dentro, o Git deixa de fora.",
+              "scene": {
+                "type": "bigtext",
+                "stagger": 0.25,
+                "lines": [
+                  [
+                    ".gitignore",
+                    "gold",
+                    170
+                  ],
+                  [
+                    "= A LISTA DO QUE",
+                    "white",
+                    100
+                  ],
+                  [
+                    "O GIT IGNORA",
+                    "white",
+                    100
+                  ]
+                ]
+              }
+            },
+            {
+              "text": "Pra criar, no VS Code, clica com o botão direito no nome da pasta do projeto, lá em cima, e escolhe New File, que quer dizer arquivo novo. Digita o nome: ponto gitignore. Assim mesmo, com o ponto na frente, e sem nada depois.",
+              "scene": {
+                "type": "menu",
+                "app": "vscode",
+                "barra": [],
+                "menus": [
+                  [
+                    "New File...",
+                    "New Folder...",
+                    "—",
+                    "Reveal in File Explorer",
+                    "Open in Integrated Terminal"
+                  ]
+                ],
+                "caminho": [
+                  0
+                ],
+                "ponto": [
+                  -0.13,
+                  0.13
+                ],
+                "pastas": [
+                  "meu-primeiro-teste",
+                  "  cypress",
+                  "  node_modules",
+                  "  cypress.config.js",
+                  "  package.json"
+                ],
+                "resultado": "arquivo",
+                "novo": ".gitignore",
+                "clique_em": 3.0,
+                "legenda": "Botão direito na pasta › New File › .gitignore",
+                "novo_nivel": 1
+              }
+            },
+            {
+              "text": "Dentro dele, escreve uma linha só: node underline modules. Salva com Control S. Pronto: a partir de agora, o Git ignora essa pasta, e só os seus arquivos vão pro GitHub.",
               "scene": {
                 "type": "editor",
                 "arquivo": ".gitignore",
                 "pastas": [
                   "meu-primeiro-teste",
-                  "cypress",
-                  ".gitignore",
-                  "package.json"
+                  "  cypress",
+                  "  node_modules",
+                  "  .gitignore",
+                  "  cypress.config.js",
+                  "  package.json"
                 ],
                 "codigo": "node_modules\n",
-                "legenda": "Não suba a node_modules",
+                "legenda": "Uma linha: node_modules",
                 "destaque": [
                   1
-                ]
+                ],
+                "fonte": 40
               }
             },
             {
