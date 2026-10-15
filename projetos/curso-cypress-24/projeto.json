@@ -22,7 +22,7 @@
           "chapter": "",
           "sentences": [
             {
-              "text": "Desafio cinco: depois de entrar, sai da conta. E confere se voltou pra tela de login.",
+              "text": "Desafio cinco: sair da conta, e conferir se voltou pra tela de login. Também vai no compra ponto cy ponto js, que já começa logado.",
               "scene": {
                 "type": "passo",
                 "icone": "★",
@@ -31,10 +31,10 @@
               }
             },
             {
-              "text": "O botão de sair fica escondido num menu, aquele das três listrinhas no canto da tela. Então são dois cliques: abrir o menu, e clicar em Logout.",
+              "text": "O botão de sair fica escondido num menu, aquele das três listrinhas, no canto de cima. Então são dois cliques: abrir o menu, e clicar em Logout.",
               "scene": {
                 "type": "tela",
-                "media": "site_sauce_loja",
+                "media": "site_sauce_burger",
                 "url": "https://www.saucedemo.com/",
                 "acoes": [
                   {
@@ -53,16 +53,51 @@
                     "click": "#login-button"
                   }
                 ],
-                "alvo": "Swag Labs",
+                "alvo_css": "#react-burger-menu-btn",
                 "titulo": "saucedemo.com/inventory.html",
-                "legenda": "O menu fica no canto"
+                "zoom_em": 1.4,
+                "caixa_em": 2.4,
+                "legenda": "O menu das três listrinhas"
               }
             },
             {
-              "text": "Dica: o botão do menu tem o id react burger menu btn. E o logout tem o data test logout sidebar link.",
+              "text": "Inspecionando as três listrinhas, repara: esse botão não tem data test. Ele só tem um id: react burger menu btn. Quando não tem data test, a gente usa o id, com a cerquinha na frente, igual na aula onze.",
               "scene": {
-                "type": "tela",
-                "media": "site_sauce_menu",
+                "type": "devtools",
+                "media": "insp_burger",
+                "url": "https://www.saucedemo.com/",
+                "acoes": [
+                  {
+                    "fill": [
+                      "#user-name",
+                      "standard_user"
+                    ]
+                  },
+                  {
+                    "fill": [
+                      "#password",
+                      "secret_sauce"
+                    ]
+                  },
+                  {
+                    "click": "#login-button"
+                  }
+                ],
+                "inspecionar": "#react-burger-menu-btn",
+                "aberto": true,
+                "realce": [
+                  "id"
+                ],
+                "realce_em": 3.0,
+                "realce_rotulo": "sem data-test: usa o id",
+                "legenda": "O menu: id=\"react-burger-menu-btn\""
+              }
+            },
+            {
+              "text": "Com o menu aberto, inspeciona o Logout. Esse tem data test: logout sidebar link.",
+              "scene": {
+                "type": "devtools",
+                "media": "insp_logout",
                 "url": "https://www.saucedemo.com/",
                 "acoes": [
                   {
@@ -84,9 +119,39 @@
                     "click": "#react-burger-menu-btn"
                   }
                 ],
-                "alvo_css": "[data-test=\"logout-sidebar-link\"]",
-                "titulo": "saucedemo.com/inventory.html",
-                "legenda": "Menu aberto: o Logout fica aqui"
+                "inspecionar": "[data-test=\"logout-sidebar-link\"]",
+                "aberto": true,
+                "realce": [
+                  "data-test"
+                ],
+                "realce_em": 2.4,
+                "realce_rotulo": "o botão de sair",
+                "legenda": "O sair: logout-sidebar-link"
+              }
+            },
+            {
+              "text": "E pra conferir que saiu, a gente olha se o botão de login, aquele da aula treze, apareceu de novo.",
+              "scene": {
+                "type": "conhecidos",
+                "itens": [
+                  [
+                    "#react-burger-menu-btn",
+                    "abrir o menu",
+                    "",
+                    true
+                  ],
+                  [
+                    "[data-test=\"logout-sidebar-link\"]",
+                    "sair da conta",
+                    "",
+                    true
+                  ],
+                  [
+                    "[data-test=\"login-button\"]",
+                    "botão de entrar",
+                    "13"
+                  ]
+                ]
               }
             },
             {
@@ -99,7 +164,7 @@
               }
             },
             {
-              "text": "Solução: abre o menu, clica em logout, e confere se o botão de login está aparecendo de novo.",
+              "text": "Solução, linha por linha. cy get no botão do menu, com a cerquinha, ponto click. cy get no logout, ponto click. E cy get no botão de login, should be visible.",
               "scene": {
                 "type": "editor",
                 "arquivo": "compra.cy.js",
@@ -107,16 +172,19 @@
                   "meu-primeiro-teste",
                   "cypress",
                   "e2e",
+                  "login.cy.js",
                   "compra.cy.js"
                 ],
                 "codigo": "  it('sai da conta', () => {\n    cy.get('#react-burger-menu-btn').click()\n    cy.get('[data-test=\"logout-sidebar-link\"]').click()\n    cy.get('[data-test=\"login-button\"]').should('be.visible')\n  })",
-                "legenda": "Abrir, sair e conferir",
                 "destaque": [
                   2,
                   3,
                   4
                 ],
-                "fonte": 27
+                "legenda": "Abrir, sair e conferir",
+                "fonte": 27,
+                "vel": 0.85,
+                "digitar_de": 2
               }
             },
             {
@@ -154,7 +222,13 @@
                 "status": "passou",
                 "media": "site_sauce",
                 "url": "https://www.saucedemo.com/",
-                "legenda": "O Cypress esperou o menu abrir sozinho"
+                "legenda": "O Cypress esperou o menu abrir sozinho",
+                "antes": [
+                  "adiciona a mochila no carrinho",
+                  "finaliza a compra",
+                  "remove a mochila do carrinho",
+                  "ordena do menor para o maior preço"
+                ]
               }
             },
             {

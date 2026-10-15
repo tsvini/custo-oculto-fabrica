@@ -1,180 +1,370 @@
 {
- "title": "Cypress para leigos · Aula 23",
- "slug": "curso-cypress-23",
- "idioma": "pt",
- "destino": "curso",
- "marca": [
-  "CYPRESS",
-  "PARA LEIGOS"
- ],
- "cor_fundo": "#3fd68a",
- "legenda_y": 0.93,
- "selo": "MÓDULO 6 · AULA 23",
- "voz": {
-  "nome": "gravada",
-  "motor": "eleven",
-  "eleven_voz": "Vinícius Torales"
- },
- "script": {
-  "long": {
-   "parts": [
-    {
-     "chapter": "",
-     "sentences": [
-      {
-       "text": "Desafio quatro: na loja, tem um menu pra ordenar os produtos. Escolhe a opção do menor preço pro maior, e confere se o primeiro produto é o mais barato.",
-       "scene": {
-        "type": "passo",
-        "icone": "★",
-        "titulo": "Ordenar por preço",
-        "sub": "Desafio 4 de 6"
-       }
-      },
-      {
-       "text": "O menu fica no canto da loja. O data test dele é product sort container.",
-       "scene": {
-        "type": "tela",
-        "media": "site_sauce_loja",
-        "url": "https://www.saucedemo.com/",
-        "acoes": [
-         {
-          "fill": [
-           "#user-name",
-           "standard_user"
-          ]
-         },
-         {
-          "fill": [
-           "#password",
-           "secret_sauce"
-          ]
-         },
-         {
-          "click": "#login-button"
-         }
-        ],
-        "alvo": "Name (A to Z)",
-        "titulo": "saucedemo.com/inventory.html",
-        "zoom_em": 1.2,
-        "caixa_em": 1.8,
-        "legenda": "O menu de ordenar"
-       }
-      },
-      {
-       "text": "Dica: pra escolher uma opção num menu, o Cypress tem um comando próprio, o select. E a opção do menor pro maior preço tem o valor l o h i, de low to high.",
-       "scene": {
-        "type": "cards",
-        "itens": [
-         [
-          "▼",
-          "select",
-          "escolhe a opção do menu"
-         ],
-         [
-          "$",
-          "lohi",
-          "menor preço primeiro",
-          "#69a7ff"
-         ]
-        ]
-       }
-      },
-      {
-       "text": "Mais uma dica: o produto mais barato custa sete dólares e noventa e nove. Pause o vídeo e tente.",
-       "scene": {
-        "type": "passo",
-        "icone": "⏸",
-        "titulo": "Pause e tente sozinho",
-        "sub": "volte quando terminar"
-       }
-      },
-      {
-       "text": "Solução: seleciona lohi no menu, pega o preço do primeiro produto com o first, e confere se é sete e noventa e nove.",
-       "scene": {
-        "type": "editor",
-        "arquivo": "compra.cy.js",
-        "pastas": [
-         "meu-primeiro-teste",
-         "cypress",
-         "e2e",
-         "compra.cy.js"
-        ],
-        "codigo": "  it('ordena do menor para o maior preço', () => {\n    cy.get('[data-test=\"product-sort-container\"]').select('lohi')\n    cy.get('[data-test=\"inventory-item-price\"]')\n      .first()\n      .should('have.text', '$7.99')\n  })",
-        "legenda": "select, first e have.text",
-        "destaque": [
-         2,
-         4,
-         5
-        ],
-        "fonte": 27
-       }
-      },
-      {
-       "text": "O first é novo: ele pega só o primeiro de uma lista. Como a página tem vários preços, a gente diz pro Cypress: quero o primeiro.",
-       "scene": {
-        "type": "tela",
-        "media": "site_sauce_ordenado",
-        "url": "https://www.saucedemo.com/",
-        "acoes": [
-         {
-          "fill": [
-           "#user-name",
-           "standard_user"
-          ]
-         },
-         {
-          "fill": [
-           "#password",
-           "secret_sauce"
-          ]
-         },
-         {
-          "click": "#login-button"
-         },
-         {
-          "select": [
-           "[data-test=\"product-sort-container\"]",
-           "lohi"
-          ]
-         }
-        ],
-        "alvo": "$7.99",
-        "titulo": "saucedemo.com/inventory.html",
-        "zoom_em": 1.2,
-        "caixa_em": 1.9,
-        "legenda": "O primeiro preço da lista: $7.99"
-       }
-      },
-      {
-       "text": "No próximo desafio, você vai testar o botão de sair da conta.",
-       "scene": {
-        "type": "passo",
-        "icone": "▶",
-        "titulo": "Próxima aula",
-        "sub": "Desafio 5: Logout"
-       }
-      },
-      {
-       "text": "Te vejo lá!",
-       "scene": {
-        "type": "endcard",
-        "sub": "PRÓXIMA: DESAFIO 5: LOGOUT"
-       }
-      }
-     ]
-    }
-   ]
-  },
-  "shorts": [],
-  "tiktoks": []
- },
- "serie": [],
- "meta": {
-  "titles": [
-   "Aula 23: Desafio 4: ordenar por preço"
+  "title": "Cypress para leigos · Aula 23",
+  "slug": "curso-cypress-23",
+  "idioma": "pt",
+  "destino": "curso",
+  "marca": [
+    "CYPRESS",
+    "PARA LEIGOS"
   ],
-  "description": "",
-  "tags": []
- },
- "notes": "Curso Cypress para leigos. Não publica (destino: curso)."
+  "cor_fundo": "#3fd68a",
+  "legenda_y": 0.93,
+  "selo": "MÓDULO 6 · AULA 23",
+  "voz": {
+    "nome": "gravada",
+    "motor": "eleven",
+    "eleven_voz": "Vinícius Torales"
+  },
+  "script": {
+    "long": {
+      "parts": [
+        {
+          "chapter": "",
+          "sentences": [
+            {
+              "text": "Desafio quatro: ordenar os produtos do menor preço pro maior, e conferir se o primeiro é o mais barato. Esse também vai no compra ponto cy ponto js, que já começa logado.",
+              "scene": {
+                "type": "passo",
+                "icone": "★",
+                "titulo": "Ordenar por preço",
+                "sub": "Desafio 4 de 6"
+              }
+            },
+            {
+              "text": "O menu de ordenar fica aqui, no canto da loja. Hoje ele mostra Name A to Z, ordem alfabética.",
+              "scene": {
+                "type": "tela",
+                "media": "site_sauce_loja",
+                "url": "https://www.saucedemo.com/",
+                "acoes": [
+                  {
+                    "fill": [
+                      "#user-name",
+                      "standard_user"
+                    ]
+                  },
+                  {
+                    "fill": [
+                      "#password",
+                      "secret_sauce"
+                    ]
+                  },
+                  {
+                    "click": "#login-button"
+                  }
+                ],
+                "alvo": "Name (A to Z)",
+                "titulo": "saucedemo.com/inventory.html",
+                "zoom_em": 1.2,
+                "caixa_em": 1.8,
+                "legenda": "O menu de ordenar"
+              }
+            },
+            {
+              "text": "Esse desafio tem dois nomes novos. O primeiro é o do menu. Inspecionando, o data test dele é product sort container.",
+              "scene": {
+                "type": "devtools",
+                "media": "insp_sort",
+                "url": "https://www.saucedemo.com/",
+                "acoes": [
+                  {
+                    "fill": [
+                      "#user-name",
+                      "standard_user"
+                    ]
+                  },
+                  {
+                    "fill": [
+                      "#password",
+                      "secret_sauce"
+                    ]
+                  },
+                  {
+                    "click": "#login-button"
+                  }
+                ],
+                "inspecionar": "[data-test=\"product-sort-container\"]",
+                "aberto": true,
+                "realce": [
+                  "data-test"
+                ],
+                "realce_em": 3.0,
+                "realce_rotulo": "o menu de ordenar",
+                "legenda": "O menu: product-sort-container"
+              }
+            },
+            {
+              "text": "E olha dentro dele: cada opção tem um value, que é um valor. A opção Price low to high, do menor pro maior preço, tem o value l o h i. É esse valor que o teste usa.",
+              "scene": {
+                "type": "devtools",
+                "media": "insp_lohi",
+                "url": "https://www.saucedemo.com/",
+                "acoes": [
+                  {
+                    "fill": [
+                      "#user-name",
+                      "standard_user"
+                    ]
+                  },
+                  {
+                    "fill": [
+                      "#password",
+                      "secret_sauce"
+                    ]
+                  },
+                  {
+                    "click": "#login-button"
+                  }
+                ],
+                "inspecionar": "option[value=\"lohi\"]",
+                "aberto": true,
+                "realce": [
+                  "value"
+                ],
+                "realce_em": 4.0,
+                "realce_rotulo": "o valor da opção",
+                "legenda": "Price (low to high): value=\"lohi\""
+              }
+            },
+            {
+              "text": "Pra escolher uma opção num menu, o Cypress tem um comando próprio: o select. Você passa o value da opção. Então fica: select, lohi.",
+              "scene": {
+                "type": "cards",
+                "itens": [
+                  [
+                    "▼",
+                    "select",
+                    "escolhe a opção do menu"
+                  ],
+                  [
+                    "$",
+                    "lohi",
+                    "menor preço primeiro",
+                    "#69a7ff"
+                  ]
+                ]
+              }
+            },
+            {
+              "text": "Depois de ordenar, o primeiro produto é o mais barato: sete dólares e noventa e nove.",
+              "scene": {
+                "type": "tela",
+                "media": "site_sauce_ordenado",
+                "url": "https://www.saucedemo.com/",
+                "acoes": [
+                  {
+                    "fill": [
+                      "#user-name",
+                      "standard_user"
+                    ]
+                  },
+                  {
+                    "fill": [
+                      "#password",
+                      "secret_sauce"
+                    ]
+                  },
+                  {
+                    "click": "#login-button"
+                  },
+                  {
+                    "select": [
+                      "[data-test=\"product-sort-container\"]",
+                      "lohi"
+                    ]
+                  }
+                ],
+                "alvo": "$7.99",
+                "titulo": "saucedemo.com/inventory.html",
+                "zoom_em": 1.2,
+                "caixa_em": 1.9,
+                "legenda": "O primeiro preço da lista: $7.99"
+              }
+            },
+            {
+              "text": "O segundo nome novo é o do preço. Inspecionando, o data test é inventory item price. Mas repara: todo produto tem um preço com esse mesmo nome. São seis preços.",
+              "scene": {
+                "type": "devtools",
+                "media": "insp_preco",
+                "url": "https://www.saucedemo.com/",
+                "acoes": [
+                  {
+                    "fill": [
+                      "#user-name",
+                      "standard_user"
+                    ]
+                  },
+                  {
+                    "fill": [
+                      "#password",
+                      "secret_sauce"
+                    ]
+                  },
+                  {
+                    "click": "#login-button"
+                  },
+                  {
+                    "select": [
+                      "[data-test=\"product-sort-container\"]",
+                      "lohi"
+                    ]
+                  }
+                ],
+                "inspecionar": "[data-test=\"inventory-item-price\"]",
+                "aberto": true,
+                "realce": [
+                  "data-test"
+                ],
+                "realce_em": 2.8,
+                "realce_rotulo": "o preço do produto",
+                "legenda": "O preço: inventory-item-price"
+              }
+            },
+            {
+              "text": "Por isso a gente usa o first, que quer dizer primeiro. Ele pega só o primeiro da lista.",
+              "scene": {
+                "type": "cards",
+                "itens": [
+                  [
+                    "6",
+                    "get",
+                    "acha os 6 preços"
+                  ],
+                  [
+                    "1",
+                    "first",
+                    "fica só com o primeiro",
+                    "#ffd23f"
+                  ]
+                ]
+              }
+            },
+            {
+              "text": "Pause o vídeo e tente.",
+              "scene": {
+                "type": "passo",
+                "icone": "⏸",
+                "titulo": "Pause e tente sozinho",
+                "sub": "volte quando terminar"
+              }
+            },
+            {
+              "text": "Solução, linha por linha. cy get no menu, ponto select, lohi. Depois, cy get nos preços, ponto first, pra pegar o primeiro. E should have text, sete e noventa e nove.",
+              "scene": {
+                "type": "editor",
+                "arquivo": "compra.cy.js",
+                "pastas": [
+                  "meu-primeiro-teste",
+                  "cypress",
+                  "e2e",
+                  "login.cy.js",
+                  "compra.cy.js"
+                ],
+                "codigo": "  it('ordena do menor para o maior preço', () => {\n    cy.get('[data-test=\"product-sort-container\"]').select('lohi')\n    cy.get('[data-test=\"inventory-item-price\"]')\n      .first()\n      .should('have.text', '$7.99')\n  })",
+                "destaque": [
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "legenda": "select, first e have.text",
+                "fonte": 27,
+                "vel": 0.85,
+                "digitar_de": 2
+              }
+            },
+            {
+              "text": "Roda: verdinho.",
+              "scene": {
+                "type": "runner",
+                "spec": "compra.cy.js",
+                "teste": "ordena do menor para o maior preço",
+                "passos": [
+                  [
+                    "get",
+                    "product-sort-container"
+                  ],
+                  [
+                    "select",
+                    "lohi"
+                  ],
+                  [
+                    "get",
+                    "inventory-item-price"
+                  ],
+                  [
+                    "first",
+                    ""
+                  ],
+                  [
+                    "have.text",
+                    "$7.99"
+                  ]
+                ],
+                "status": "passou",
+                "media": "site_sauce_ordenado",
+                "url": "https://www.saucedemo.com/",
+                "acoes": [
+                  {
+                    "fill": [
+                      "#user-name",
+                      "standard_user"
+                    ]
+                  },
+                  {
+                    "fill": [
+                      "#password",
+                      "secret_sauce"
+                    ]
+                  },
+                  {
+                    "click": "#login-button"
+                  },
+                  {
+                    "select": [
+                      "[data-test=\"product-sort-container\"]",
+                      "lohi"
+                    ]
+                  }
+                ],
+                "legenda": "Do menor pro maior",
+                "antes": [
+                  "adiciona a mochila no carrinho",
+                  "finaliza a compra",
+                  "remove a mochila do carrinho"
+                ]
+              }
+            },
+            {
+              "text": "No próximo desafio, você vai testar o botão de sair da conta.",
+              "scene": {
+                "type": "passo",
+                "icone": "▶",
+                "titulo": "Próxima aula",
+                "sub": "Desafio 5: Logout"
+              }
+            },
+            {
+              "text": "Te vejo lá!",
+              "scene": {
+                "type": "endcard",
+                "sub": "PRÓXIMA: DESAFIO 5: LOGOUT"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "shorts": [],
+    "tiktoks": []
+  },
+  "serie": [],
+  "meta": {
+    "titles": [
+      "Aula 23: Desafio 4: ordenar por preço"
+    ],
+    "description": "",
+    "tags": []
+  },
+  "notes": "Curso Cypress para leigos. Não publica (destino: curso)."
 }

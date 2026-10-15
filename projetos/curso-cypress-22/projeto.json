@@ -31,7 +31,55 @@
               }
             },
             {
-              "text": "Duas dicas. Primeiro: depois de adicionar, o botão da mochila vira Remove, com o data test remove sauce labs backpack.",
+              "text": "Esse teste vai no arquivo compra ponto cy ponto js, num it novo. Lá o beforeEach já faz o login, então o teste já começa dentro da loja.",
+              "scene": {
+                "type": "editor",
+                "arquivo": "compra.cy.js",
+                "pastas": [
+                  "meu-primeiro-teste",
+                  "cypress",
+                  "e2e",
+                  "login.cy.js",
+                  "compra.cy.js"
+                ],
+                "codigo": "describe('Compra', () => {\n  beforeEach(() => {\n    // faz o login (aula 17)\n  })\n\n  // ...os testes das aulas anteriores\n\n  it('remove a mochila do carrinho', () => {\n    // o seu teste vem aqui\n  })\n})",
+                "destaque": [
+                  8,
+                  9,
+                  10
+                ],
+                "legenda": "Um it novo no compra.cy.js",
+                "fonte": 29,
+                "vel": 0.85,
+                "digitar_de": 8
+              }
+            },
+            {
+              "text": "Dois nomes você já conhece da aula dezessete: o botão de adicionar a mochila, e o numerozinho do carrinho. Só tem um nome novo nesse desafio.",
+              "scene": {
+                "type": "conhecidos",
+                "itens": [
+                  [
+                    "[data-test=\"add-to-cart-sauce-labs-backpack\"]",
+                    "adicionar a mochila",
+                    "17"
+                  ],
+                  [
+                    "[data-test=\"shopping-cart-badge\"]",
+                    "o número do carrinho",
+                    "17"
+                  ],
+                  [
+                    "[data-test=\"remove-sauce-labs-backpack\"]",
+                    "remover a mochila",
+                    "",
+                    true
+                  ]
+                ]
+              }
+            },
+            {
+              "text": "O nome novo é esse: depois de adicionar, o botão da mochila muda. Ele vira Remove, que quer dizer remover.",
               "scene": {
                 "type": "tela",
                 "media": "site_sauce_remove",
@@ -64,30 +112,11 @@
               }
             },
             {
-              "text": "Segunda dica: quando o carrinho está vazio, o numerozinho some. Então a conferência é que ele não deveria existir. Em inglês: should not exist.",
+              "text": "Inspecionando esse botão, o data test dele é remove sauce labs backpack. Repara: é o mesmo nome de antes, só que começando com remove.",
               "scene": {
-                "type": "runner",
-                "spec": "compra.cy.js",
-                "teste": "esvazia o carrinho",
-                "passos": [
-                  [
-                    "click",
-                    "[data-test=\"remove-sauce-labs-backpack\"]"
-                  ],
-                  [
-                    "get",
-                    "[data-test=\"shopping-cart-badge\"]"
-                  ],
-                  [
-                    "should",
-                    "not.exist"
-                  ]
-                ],
-                "media": "site_sauce_remove",
+                "type": "devtools",
+                "media": "insp_remove",
                 "url": "https://www.saucedemo.com/",
-                "status": "passou",
-                "foco": "lista",
-                "legenda": "should('not.exist')",
                 "acoes": [
                   {
                     "fill": [
@@ -107,6 +136,69 @@
                   {
                     "click": "[data-test=\"add-to-cart-sauce-labs-backpack\"]"
                   }
+                ],
+                "inspecionar": "[data-test=\"remove-sauce-labs-backpack\"]",
+                "aberto": true,
+                "realce": [
+                  "data-test"
+                ],
+                "realce_em": 2.6,
+                "realce_rotulo": "o botão de remover",
+                "legenda": "O botão: remove-sauce-labs-backpack"
+              }
+            },
+            {
+              "text": "E quando você remove, o numerozinho do carrinho some. Ele não vira zero: ele deixa de existir.",
+              "scene": {
+                "type": "tela",
+                "media": "site_sauce_sem_badge",
+                "url": "https://www.saucedemo.com/",
+                "acoes": [
+                  {
+                    "fill": [
+                      "#user-name",
+                      "standard_user"
+                    ]
+                  },
+                  {
+                    "fill": [
+                      "#password",
+                      "secret_sauce"
+                    ]
+                  },
+                  {
+                    "click": "#login-button"
+                  },
+                  {
+                    "click": "[data-test=\"add-to-cart-sauce-labs-backpack\"]"
+                  },
+                  {
+                    "click": "[data-test=\"remove-sauce-labs-backpack\"]"
+                  }
+                ],
+                "alvo_css": "[data-test=\"shopping-cart-link\"]",
+                "titulo": "saucedemo.com/inventory.html",
+                "zoom_em": 1.2,
+                "caixa_em": 1.8,
+                "legenda": "Removeu? O número some"
+              }
+            },
+            {
+              "text": "Por isso a conferência é diferente. Em vez de conferir um texto, a gente confere que ele não existe. Em inglês: should not exist.",
+              "scene": {
+                "type": "cards",
+                "itens": [
+                  [
+                    "1",
+                    "have.text '1'",
+                    "o número está lá"
+                  ],
+                  [
+                    "✗",
+                    "not.exist",
+                    "o número sumiu",
+                    "#ff6b6b"
+                  ]
                 ]
               }
             },
@@ -120,7 +212,7 @@
               }
             },
             {
-              "text": "Solução: adiciona, remove, e confere que o número do carrinho não existe mais.",
+              "text": "Solução, linha por linha. cy get no botão de adicionar a mochila, ponto click. cy get no botão de remover, ponto click. E cy get no numerozinho do carrinho, should not exist.",
               "scene": {
                 "type": "editor",
                 "arquivo": "compra.cy.js",
@@ -128,38 +220,24 @@
                   "meu-primeiro-teste",
                   "cypress",
                   "e2e",
+                  "login.cy.js",
                   "compra.cy.js"
                 ],
                 "codigo": "  it('remove a mochila do carrinho', () => {\n    cy.get('[data-test=\"add-to-cart-sauce-labs-backpack\"]').click()\n    cy.get('[data-test=\"remove-sauce-labs-backpack\"]').click()\n    cy.get('[data-test=\"shopping-cart-badge\"]')\n      .should('not.exist')\n  })",
-                "legenda": "Adiciona, remove e confere",
                 "destaque": [
+                  2,
                   3,
+                  4,
                   5
                 ],
-                "fonte": 27
+                "legenda": "Adiciona, remove e confere",
+                "fonte": 24,
+                "vel": 0.85,
+                "digitar_de": 2
               }
             },
             {
-              "text": "Repara que esse teste foi no arquivo compra ponto cy ponto js. Ele já tem o beforeEach que faz o login, então não precisa repetir.",
-              "scene": {
-                "type": "cards",
-                "itens": [
-                  [
-                    "✓",
-                    "Reaproveitou",
-                    "o beforeEach do login"
-                  ],
-                  [
-                    "✓",
-                    "Conferiu",
-                    "o que não deveria aparecer",
-                    "#69a7ff"
-                  ]
-                ]
-              }
-            },
-            {
-              "text": "Conferir que algo sumiu é tão importante quanto conferir que algo apareceu.",
+              "text": "Roda: verdinho. Conferir que algo sumiu é tão importante quanto conferir que algo apareceu.",
               "scene": {
                 "type": "runner",
                 "spec": "compra.cy.js",
@@ -183,7 +261,7 @@
                   ]
                 ],
                 "status": "passou",
-                "media": "site_sauce_loja",
+                "media": "site_sauce_sem_badge",
                 "url": "https://www.saucedemo.com/",
                 "acoes": [
                   {
@@ -200,10 +278,20 @@
                   },
                   {
                     "click": "#login-button"
+                  },
+                  {
+                    "click": "[data-test=\"add-to-cart-sauce-labs-backpack\"]"
+                  },
+                  {
+                    "click": "[data-test=\"remove-sauce-labs-backpack\"]"
                   }
                 ],
                 "foco": "lista",
-                "legenda": "Sumiu? Então passou"
+                "legenda": "Sumiu? Então passou",
+                "antes": [
+                  "adiciona a mochila no carrinho",
+                  "finaliza a compra"
+                ]
               }
             },
             {

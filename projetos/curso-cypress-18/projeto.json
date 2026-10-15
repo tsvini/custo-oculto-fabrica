@@ -528,13 +528,13 @@
                   {
                     "fill": [
                       "[data-test=\"firstName\"]",
-                      "Maria"
+                      "Vinicius"
                     ]
                   },
                   {
                     "fill": [
                       "[data-test=\"lastName\"]",
-                      "Silva"
+                      "Torales"
                     ]
                   },
                   {
@@ -602,11 +602,11 @@
                   ],
                   [
                     "type",
-                    "Maria"
+                    "Vinicius"
                   ],
                   [
                     "type",
-                    "Silva"
+                    "Torales"
                   ],
                   [
                     "type",

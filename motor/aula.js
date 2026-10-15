@@ -189,6 +189,24 @@
     });
   };
 
+  // CONHECIDOS: os nomes (seletores) que a gente já achou em aulas anteriores, com a aula de onde vieram
+  S.conhecidos = (ctx, c, t, dur, s) => {
+    const u = c.u; const L = s.itens || []; const n = L.length; const en = global.CO_IDIOMA === "en";
+    txt(ctx, s.titulo || (en ? "YOU ALREADY KNOW THESE" : "VOCÊ JÁ CONHECE ESSES"), font(800, 46 * u), c.cx, c.H * 0.14, C.mut, "center", easeOut(t / 0.3));
+    const rh = Math.min(118 * u, (c.H * 0.7) / Math.max(n, 1)), w = 1560 * u, x = c.cx - w / 2, y0 = c.H * 0.22;
+    const passo = Math.min(0.9, (dur - 0.8) / Math.max(n, 1));
+    L.forEach(([sel, desc, aula, nova], i) => {
+      const st = 0.3 + i * passo, ka = easeOut((t - st) / 0.35); if (ka <= 0) return; const y = y0 + i * rh, cor = nova ? C.yel : C.ac;
+      ctx.save(); ctx.globalAlpha = ka; rr(ctx, x, y, w, rh - 18 * u, 18 * u); ctx.fillStyle = C.win; ctx.fill(); ctx.fillStyle = cor; rr(ctx, x, y, 10 * u, rh - 18 * u, 5 * u); ctx.fill(); ctx.restore();
+      const cy = y + (rh - 18 * u) / 2; let fs = 36 * u; while (fs > 20 * u && tw(ctx, sel, font(700, fs, MONO)) > 820 * u) fs -= 1 * u;
+      txt(ctx, sel, font(700, fs, MONO), x + 44 * u, cy, cor, "left", ka);
+      txt(ctx, desc, font(600, 32 * u), x + 900 * u, cy, C.txt, "left", ka);
+      const etq = nova ? (en ? "NEW" : "NOVO") : (en ? "lesson " : "aula ") + aula, bw = tw(ctx, etq, font(800, 28 * u)) + 44 * u;
+      ctx.save(); ctx.globalAlpha = ka; rr(ctx, x + w - bw - 30 * u, cy - 26 * u, bw, 52 * u, 26 * u); ctx.fillStyle = nova ? "rgba(255,210,63,.18)" : "rgba(63,214,138,.16)"; ctx.fill(); ctx.restore();
+      txt(ctx, etq, font(800, 28 * u), x + w - bw / 2 - 30 * u, cy, cor, "center", ka);
+    });
+  };
+
   // TELA: gravação de tela (clipe em midia/) emoldurada, com zoom e caixa de destaque
   // {type:"tela", media:"instala_vscode", titulo:"code.visualstudio.com", zoom:[x0,y0,x1,y1] (0–1), zoom_em:2, caixa:[x0,y0,x1,y1], legenda:"..."}
   S.tela = (ctx, c, t, dur, s, media) => {

@@ -1,183 +1,256 @@
 {
- "title": "Cypress para leigos · Aula 21",
- "slug": "curso-cypress-21",
- "idioma": "pt",
- "destino": "curso",
- "marca": [
-  "CYPRESS",
-  "PARA LEIGOS"
- ],
- "cor_fundo": "#3fd68a",
- "legenda_y": 0.93,
- "selo": "MÓDULO 6 · AULA 21",
- "voz": {
-  "nome": "gravada",
-  "motor": "eleven",
-  "eleven_voz": "Vinícius Torales"
- },
- "script": {
-  "long": {
-   "parts": [
-    {
-     "chapter": "",
-     "sentences": [
-      {
-       "text": "Desafio dois: o que acontece se a pessoa clicar em entrar sem digitar nada?",
-       "scene": {
-        "type": "passo",
-        "icone": "★",
-        "titulo": "Login com campos vazios",
-        "sub": "Desafio 2 de 6"
-       }
-      },
-      {
-       "text": "Escreve um teste que clica direto no botão de login, sem preencher nada, e confere se aparece um erro dizendo que o usuário é obrigatório.",
-       "scene": {
-        "type": "tela",
-        "media": "site_sauce_vazio",
-        "url": "https://www.saucedemo.com/",
-        "acoes": [
-         {
-          "click": "#login-button"
-         }
-        ],
-        "alvo": "Username is required",
-        "titulo": "saucedemo.com",
-        "zoom_em": 1.4,
-        "caixa_em": 2.2,
-        "legenda": "Clicou sem digitar? Aparece esse erro"
-       }
-      },
-      {
-       "text": "Esse é um tipo de teste muito importante, que a gente chama de teste negativo: testar o que acontece quando o usuário faz algo errado.",
-       "scene": {
-        "type": "compare",
-        "title": "DOIS TIPOS DE TESTE",
-        "items": [
-         [
-          "POSITIVO",
-          "FAZ TUDO CERTO",
-          "gold"
-         ],
-         [
-          "NEGATIVO",
-          "FAZ ALGO ERRADO",
-          "red"
-         ]
-        ],
-        "size": 140,
-        "stagger": 1.2,
-        "vs": true
-       }
-      },
-      {
-       "text": "Pause o vídeo e tente.",
-       "scene": {
-        "type": "passo",
-        "icone": "⏸",
-        "titulo": "Pause e tente sozinho",
-        "sub": "volte quando terminar"
-       }
-      },
-      {
-       "text": "Solução: esse é curtinho. Só clica no botão, e confere a mensagem Username is required.",
-       "scene": {
-        "type": "editor",
-        "arquivo": "login.cy.js",
-        "pastas": [
-         "meu-primeiro-teste",
-         "cypress",
-         "e2e",
-         "login.cy.js"
-        ],
-        "codigo": "  it('pede o usuário quando os campos estão vazios', () => {\n    cy.get('[data-test=\"login-button\"]').click()\n    cy.get('[data-test=\"error\"]')\n      .should('contain', 'Username is required')\n  })",
-        "legenda": "Teste curto também é teste",
-        "destaque": [
-         2,
-         4
-        ],
-        "fonte": 28
-       }
-      },
-      {
-       "text": "E um bônus pra você tentar sozinho: preenche só o usuário, deixa a senha vazia, e veja qual mensagem aparece. Escreve um teste pra ela também.",
-       "scene": {
-        "type": "passo",
-        "icone": "+",
-        "titulo": "Bônus",
-        "sub": "só o usuário, sem a senha"
-       }
-      },
-      {
-       "text": "Testador bom pensa assim: o que pode dar errado aqui? Cada resposta vira um teste.",
-       "scene": {
-        "type": "runner",
-        "spec": "login.cy.js",
-        "teste": "pede o usuário quando os campos estão vazios",
-        "passos": [
-         [
-          "visit",
-          "saucedemo.com"
-         ],
-         [
-          "get",
-          "[data-test=login-button]"
-         ],
-         [
-          "click",
-          ""
-         ],
-         [
-          "get",
-          "[data-test=error]"
-         ],
-         [
-          "contain",
-          "Username is required"
-         ]
-        ],
-        "status": "passou",
-        "media": "site_sauce_vazio",
-        "url": "https://www.saucedemo.com/",
-        "acoes": [
-         {
-          "click": "#login-button"
-         }
-        ],
-        "foco": "status",
-        "legenda": "Teste negativo passando"
-       }
-      },
-      {
-       "text": "No próximo desafio, você vai tirar um produto do carrinho.",
-       "scene": {
-        "type": "passo",
-        "icone": "▶",
-        "titulo": "Próxima aula",
-        "sub": "Desafio 3: Remover Do Carrinho"
-       }
-      },
-      {
-       "text": "Te vejo lá!",
-       "scene": {
-        "type": "endcard",
-        "sub": "PRÓXIMA: DESAFIO 3: REMOVER DO CARRINHO"
-       }
-      }
-     ]
-    }
-   ]
-  },
-  "shorts": [],
-  "tiktoks": []
- },
- "serie": [],
- "meta": {
-  "titles": [
-   "Aula 21: Desafio 2: campos vazios"
+  "title": "Cypress para leigos · Aula 21",
+  "slug": "curso-cypress-21",
+  "idioma": "pt",
+  "destino": "curso",
+  "marca": [
+    "CYPRESS",
+    "PARA LEIGOS"
   ],
-  "description": "",
-  "tags": []
- },
- "notes": "Curso Cypress para leigos. Não publica (destino: curso)."
+  "cor_fundo": "#3fd68a",
+  "legenda_y": 0.93,
+  "selo": "MÓDULO 6 · AULA 21",
+  "voz": {
+    "nome": "gravada",
+    "motor": "eleven",
+    "eleven_voz": "Vinícius Torales"
+  },
+  "script": {
+    "long": {
+      "parts": [
+        {
+          "chapter": "",
+          "sentences": [
+            {
+              "text": "Desafio dois: o que acontece se a pessoa clicar em entrar sem digitar nada?",
+              "scene": {
+                "type": "passo",
+                "icone": "★",
+                "titulo": "Login com campos vazios",
+                "sub": "Desafio 2 de 6"
+              }
+            },
+            {
+              "text": "Olha no site: clicando em Login com tudo vazio, aparece o erro Username is required. Quer dizer: o usuário é obrigatório.",
+              "scene": {
+                "type": "tela",
+                "media": "site_sauce_vazio",
+                "url": "https://www.saucedemo.com/",
+                "acoes": [
+                  {
+                    "click": "#login-button"
+                  }
+                ],
+                "alvo": "Username is required",
+                "titulo": "saucedemo.com",
+                "zoom_em": 1.4,
+                "caixa_em": 2.4,
+                "legenda": "Username is required = o usuário é obrigatório"
+              }
+            },
+            {
+              "text": "Esse é um tipo de teste muito importante, que a gente chama de teste negativo: testar o que acontece quando o usuário faz algo errado.",
+              "scene": {
+                "type": "compare",
+                "title": "DOIS TIPOS DE TESTE",
+                "items": [
+                  [
+                    "POSITIVO",
+                    "FAZ TUDO CERTO",
+                    "gold"
+                  ],
+                  [
+                    "NEGATIVO",
+                    "FAZ ALGO ERRADO",
+                    "red"
+                  ]
+                ],
+                "size": 140,
+                "stagger": 1.2,
+                "vs": true
+              }
+            },
+            {
+              "text": "E de novo, nada de nome novo. O botão de login é o da aula treze, e a mensagem de erro, o data test error, é o da aula quatorze.",
+              "scene": {
+                "type": "conhecidos",
+                "itens": [
+                  [
+                    "[data-test=\"login-button\"]",
+                    "botão de entrar",
+                    "13"
+                  ],
+                  [
+                    "[data-test=\"error\"]",
+                    "a mensagem de erro",
+                    "14"
+                  ]
+                ]
+              }
+            },
+            {
+              "text": "O teste vai no login ponto cy ponto js, num it novo. Pause o vídeo e tente.",
+              "scene": {
+                "type": "editor",
+                "arquivo": "login.cy.js",
+                "pastas": [
+                  "meu-primeiro-teste",
+                  "cypress",
+                  "e2e",
+                  "login.cy.js"
+                ],
+                "codigo": "describe('Login', () => {\n  beforeEach(() => {\n    cy.visit('https://www.saucedemo.com')\n  })\n\n  // ...os testes das aulas anteriores\n\n  it('pede o usuário quando os campos estão vazios', () => {\n    // o seu teste vem aqui\n  })\n})",
+                "destaque": [
+                  8,
+                  9,
+                  10
+                ],
+                "legenda": "Um it novo no login.cy.js",
+                "fonte": 29,
+                "vel": 0.85,
+                "digitar_de": 8
+              }
+            },
+            {
+              "text": "Solução: esse é curtinho. O beforeEach já abriu o site. Então é só cy get no botão de login, ponto click, sem digitar nada. Depois, cy get na mensagem de erro, should contain, Username is required.",
+              "scene": {
+                "type": "editor",
+                "arquivo": "login.cy.js",
+                "pastas": [
+                  "meu-primeiro-teste",
+                  "cypress",
+                  "e2e",
+                  "login.cy.js"
+                ],
+                "codigo": "  it('pede o usuário quando os campos estão vazios', () => {\n    cy.get('[data-test=\"login-button\"]').click()\n    cy.get('[data-test=\"error\"]')\n      .should('contain', 'Username is required')\n  })",
+                "destaque": [
+                  2,
+                  3,
+                  4
+                ],
+                "legenda": "Clica sem digitar e confere",
+                "fonte": 28,
+                "vel": 0.85,
+                "digitar_de": 2
+              }
+            },
+            {
+              "text": "Roda: verdinho. Teste curto também é teste.",
+              "scene": {
+                "type": "runner",
+                "spec": "login.cy.js",
+                "teste": "pede o usuário quando os campos estão vazios",
+                "passos": [
+                  [
+                    "visit",
+                    "saucedemo.com"
+                  ],
+                  [
+                    "get",
+                    "[data-test=login-button]"
+                  ],
+                  [
+                    "click",
+                    ""
+                  ],
+                  [
+                    "get",
+                    "[data-test=error]"
+                  ],
+                  [
+                    "contain",
+                    "Username is required"
+                  ]
+                ],
+                "status": "passou",
+                "media": "site_sauce_vazio",
+                "url": "https://www.saucedemo.com/",
+                "acoes": [
+                  {
+                    "click": "#login-button"
+                  }
+                ],
+                "legenda": "Teste negativo passando",
+                "antes": [
+                  "entra com usuário e senha",
+                  "mostra erro para usuário bloqueado",
+                  "mostra erro com senha errada"
+                ]
+              }
+            },
+            {
+              "text": "E um bônus pra você fazer sozinho: preenche só o usuário e deixa a senha vazia. Aí a mensagem muda: Password is required, a senha é obrigatória. Escreve um teste pra ela também.",
+              "scene": {
+                "type": "tela",
+                "media": "site_sauce_sem_senha",
+                "url": "https://www.saucedemo.com/",
+                "acoes": [
+                  {
+                    "fill": [
+                      "#user-name",
+                      "standard_user"
+                    ]
+                  },
+                  {
+                    "click": "#login-button"
+                  }
+                ],
+                "alvo": "Password is required",
+                "titulo": "saucedemo.com",
+                "zoom_em": 1.4,
+                "caixa_em": 2.6,
+                "legenda": "Bônus: só o usuário, sem a senha"
+              }
+            },
+            {
+              "text": "Testador bom pensa assim: o que pode dar errado aqui? Cada resposta vira um teste.",
+              "scene": {
+                "type": "bigtext",
+                "stagger": 0.25,
+                "lines": [
+                  [
+                    "O QUE PODE",
+                    "white",
+                    150
+                  ],
+                  [
+                    "DAR ERRADO?",
+                    "gold",
+                    170
+                  ]
+                ]
+              }
+            },
+            {
+              "text": "No próximo desafio, você vai tirar um produto do carrinho.",
+              "scene": {
+                "type": "passo",
+                "icone": "▶",
+                "titulo": "Próxima aula",
+                "sub": "Desafio 3: Remover Do Carrinho"
+              }
+            },
+            {
+              "text": "Te vejo lá!",
+              "scene": {
+                "type": "endcard",
+                "sub": "PRÓXIMA: DESAFIO 3: REMOVER DO CARRINHO"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "shorts": [],
+    "tiktoks": []
+  },
+  "serie": [],
+  "meta": {
+    "titles": [
+      "Aula 21: Desafio 2: campos vazios"
+    ],
+    "description": "",
+    "tags": []
+  },
+  "notes": "Curso Cypress para leigos. Não publica (destino: curso)."
 }

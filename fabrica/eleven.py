@@ -24,6 +24,17 @@ def aviso(t, m):
     print(f"::warning title={t}::{m}", flush=True)
 
 
+# como a voz deve falar siglas que ela lê errado (o texto da legenda continua igual)
+PRONUNCIA = {"pt": [(r"\bQAs\b", "kiuêis"), (r"\bQA\b", "kiuêi"), (r"\bQ&A\b", "perguntas e respostas")]}
+
+
+def falado(p, t):
+    import re
+    for a, b in PRONUNCIA.get(idioma_de(p), []) + [tuple(x) for x in (p.get("pronuncia") or [])]:
+        t = re.sub(a, b, t)
+    return t
+
+
 def textos(p):
     out = []
     for k, g in enumerate(p["script"]["long"]["parts"]):
@@ -35,7 +46,7 @@ def textos(p):
     # frases marcadas "abertura" não vão para o TTS: o áudio delas é a intro do canal (canal/intro.mp3, ou intro_en.mp3…), colado na frente.
     # Se o idioma ainda não tem intro gravada, a abertura é narrada junto com o resto.
     pula = os.path.exists(intro_de(p))
-    return [(n, " ".join(s["text"].strip() for s in g["sentences"] if s.get("text", "").strip() and not (pula and s.get("abertura")))) for n, g in out]
+    return [(n, falado(p, " ".join(s["text"].strip() for s in g["sentences"] if s.get("text", "").strip() and not (pula and s.get("abertura"))))) for n, g in out]
 
 
 def idioma_de(p):
