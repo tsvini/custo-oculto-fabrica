@@ -475,14 +475,14 @@
     }
     // menus
     const mf = font(500, 25 * u), ih = 48 * u; const pts = [];
-    let mx, my;
+    let mx, my, pmx = 0;
     if (barra && s.abre !== undefined) { mx = bx[s.abre][0]; my = corpo; pts.push([bx[s.abre][0] + bx[s.abre][1] / 2, top + 26 * u, tc0]); }
     else { const pp = s.ponto || [0.6, 0.55]; mx = x + sideW + pp[0] * (W - sideW); my = corpo + pp[1] * ch; pts.push([mx, my, tc0, "#69a7ff"]); mx += 6 * u; my += 6 * u; }
     M.forEach((itens, k) => {
       const tk = tc0 + k * passo; if (t < tk) return; const ka = fechado ? 0 : easeOut((t - tk - 0.05) / 0.15);
       const mw = Math.max(300 * u, ...itens.map((n) => tw(ctx, n, mf) + 110 * u)); const mh = itens.reduce((q, n) => q + (n === "—" ? 14 * u : ih), 0) + 16 * u;
       if (my + mh > y + H - 10 * u) my = y + H - 10 * u - mh;
-      if (mx + mw > x + W - 10 * u) mx = k ? mx - mw * 2 + 12 * u : x + W - 10 * u - mw;
+      if (mx + mw > x + W - 10 * u) mx = k ? pmx - mw + 6 * u : x + W - 10 * u - mw;
       ctx.save(); ctx.globalAlpha = a * ka; ctx.shadowColor = "rgba(0,0,0,.45)"; ctx.shadowBlur = 26 * u; rr(ctx, mx, my, mw, mh, 10 * u); ctx.fillStyle = claro ? "#fff" : "#252526"; ctx.fill(); ctx.shadowColor = "transparent";
       ctx.strokeStyle = claro ? "#d5d9e2" : "#454545"; ctx.lineWidth = 1.5 * u; ctx.stroke(); ctx.restore();
       let yy = my + 8 * u; let prox = null;
@@ -497,7 +497,7 @@
         if (esc) { pts.push([mx + Math.min(mw * 0.45, tw(ctx, nome, mf) + 40 * u), yy + ih / 2 + 4 * u, tk + passo]); prox = [mx + mw - 6 * u, yy - 8 * u]; }
         yy += ih;
       });
-      if (prox) [mx, my] = prox;
+      if (prox) { pmx = mx; [mx, my] = prox; }
     });
     if (t < tFim + 0.9) rota(ctx, u, pts, t);
     legenda(ctx, c, t, s);
