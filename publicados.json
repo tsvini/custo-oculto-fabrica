@@ -34,7 +34,8 @@
   "playlists": [
    "Todos os casos | Custo Oculto",
    "Caso Kolynos | Custo Oculto"
-  ]
+  ],
+  "miniatura_ok": "cc98f5940272"
  },
  {
   "nome": "kolynos_short1",
@@ -52,7 +53,7 @@
   "video_id": "3e-eXXCL27s",
   "publishAt": "2026-10-13T12:00:00-03:00",
   "status": "private",
-  "miniatura_ok": "c993e0b96a78",
+  "miniatura_ok": "979f16bf7a3a",
   "caso": "banco_master",
   "caso_titulo": "Banco Master",
   "playlists": [
@@ -165,7 +166,7 @@
   "caso_titulo": "Americanas",
   "publishAt": "2026-10-20T12:00:00-03:00",
   "status": "private",
-  "miniatura_ok": "4d075285dc10",
+  "miniatura_ok": "8fc2038533a7",
   "playlists": [
    "Todos os casos | Custo Oculto",
    "Caso Americanas | Custo Oculto"
