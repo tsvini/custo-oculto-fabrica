@@ -60,20 +60,61 @@
               }
             },
             {
-              "text": "Cada campo da página tem um nome escondido, que a gente chama de seletor. O campo de usuário do Sauce Demo se chama hashtag user traço name.",
+              "text": "Mas como a gente descobre o nome desse campo? A gente pergunta pro próprio site. Clica com o botão direito em cima do campo de usuário e escolhe Inspecionar.",
               "scene": {
-                "type": "tela",
-                "media": "site_sauce",
-                "url": "https://www.saucedemo.com/",
-                "alvo": "Username",
-                "titulo": "saucedemo.com",
-                "zoom_em": 1.2,
-                "caixa_em": 1.8,
-                "legenda": "O campo de usuário: #user-name"
+                "type": "devtools",
+                "media": "insp_user",
+                "url": "https://www.saucedemo.com",
+                "inspecionar": "#user-name",
+                "clique_em": 3.2,
+                "legenda": "Botão direito no campo › Inspecionar"
               }
             },
             {
-              "text": "Então a gente escreve: cy ponto get, o seletor do campo, e logo depois ponto type, com o texto que ele vai digitar. O usuário de teste é standard underline user.",
+              "text": "Abre um painel com o código desse campo. Procura onde está escrito i d, igual. Olha ali: user traço name. Esse é o nome do campo.",
+              "scene": {
+                "type": "devtools",
+                "media": "insp_user",
+                "url": "https://www.saucedemo.com",
+                "inspecionar": "#user-name",
+                "aberto": true,
+                "realce": [
+                  "id"
+                ],
+                "realce_em": 3.0,
+                "realce_rotulo": "o nome do campo",
+                "legenda": "id = o nome do campo"
+              }
+            },
+            {
+              "text": "O i d é tipo o CPF do elemento: cada um tem o seu, e não se repete na página. E pra avisar o Cypress que é um i d, a gente coloca uma hashtag na frente.",
+              "scene": {
+                "type": "editor",
+                "arquivo": "exemplo.js",
+                "pastas": null,
+                "digitar": true,
+                "codigo": "// no código do site:\nid=\"user-name\"\n\n// no Cypress, com # na frente:\ncy.get('#user-name')",
+                "destaque": [
+                  2,
+                  5
+                ],
+                "legenda": "# na frente = é um id",
+                "digitar_de": 1
+              }
+            },
+            {
+              "text": "E o usuário e a senha de teste? O próprio Sauce Demo mostra, aqui embaixo: os usuários aceitos, e a senha que serve pra todos.",
+              "scene": {
+                "type": "tela",
+                "media": "site_sauce_cred",
+                "url": "https://www.saucedemo.com/",
+                "alvo_css": ".login_credentials_wrap",
+                "titulo": "saucedemo.com",
+                "legenda": "Usuários e senha de teste"
+              }
+            },
+            {
+              "text": "Então a gente escreve: cy ponto get, hashtag user traço name, e logo depois ponto type, com o texto que ele vai digitar: standard underline user.",
               "scene": {
                 "type": "editor",
                 "arquivo": "login.cy.js",
@@ -91,7 +132,23 @@
               }
             },
             {
-              "text": "Pra senha é igual: o campo se chama hashtag password, e a senha de teste é secret underline sauce.",
+              "text": "Pra senha, é o mesmo caminho. Inspeciona o campo de senha, e o i d dele é password.",
+              "scene": {
+                "type": "devtools",
+                "media": "insp_pass",
+                "url": "https://www.saucedemo.com",
+                "inspecionar": "#password",
+                "aberto": true,
+                "realce": [
+                  "id"
+                ],
+                "realce_em": 2.2,
+                "realce_rotulo": "o nome do campo",
+                "legenda": "O campo de senha: id=\"password\""
+              }
+            },
+            {
+              "text": "Então fica: cy ponto get, hashtag password, ponto type, secret underline sauce.",
               "scene": {
                 "type": "editor",
                 "arquivo": "login.cy.js",
@@ -106,22 +163,6 @@
                 "destaque": [
                   5
                 ]
-              }
-            },
-            {
-              "text": "Esse hashtag na frente quer dizer que é um ID, que é tipo o CPF do elemento: cada um tem o seu, e não se repete na página.",
-              "scene": {
-                "type": "devtools",
-                "media": "insp_user",
-                "url": "https://www.saucedemo.com",
-                "inspecionar": "#user-name",
-                "aberto": true,
-                "realce": [
-                  "id"
-                ],
-                "realce_em": 1.0,
-                "realce_rotulo": "o CPF do elemento",
-                "legenda": "# quer dizer id"
               }
             },
             {

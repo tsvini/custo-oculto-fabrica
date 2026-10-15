@@ -143,12 +143,10 @@
             {
               "text": "Terceiro passo: agora a gente vai conferir se deu certo. Aperta a tecla do Windows, digita PowerShell e abre.",
               "scene": {
-                "type": "passo",
-                "n": 3,
-                "de": 4,
-                "titulo": "Abra o PowerShell",
-                "sub": "tecla Windows + digite PowerShell",
-                "icone": "3"
+                "type": "iniciar",
+                "busca": "PowerShell",
+                "tecla_em": 2.6,
+                "legenda": "Tecla Windows › digite PowerShell › abra"
               }
             },
             {

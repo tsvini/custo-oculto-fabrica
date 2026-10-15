@@ -326,7 +326,7 @@
     const L = [{ n: 0, p: [["<", "pu"], ["html", "tag"], [">", "pu"]] }, { n: 1, p: [["<", "pu"], ["body", "tag"], [">", "pu"]] },
       { n: 2, p: [["<", "pu"], ["form", "tag"], [">", "pu"]] }, { n: 3, p: [["<", "pu"], [pt, "tag"], ...(pc ? [[" class", "an"], ["=", "pu"], [`"${pc}"`, "av"]] : []), [">", "pu"]] },
       { n: 4, p: [["<", "pu"], [h.tag, "tag"]], sel: true }];
-    (h.attrs || []).filter(([k]) => (s.attrs || ["class", "placeholder", "type", "data-test", "data-cy", "id", "name", "href"]).includes(k)).forEach(([k, v]) => (v = String(v).length > 34 ? String(v).slice(0, 32) + "…" : v, L.push({ n: 5, p: [[k, "an"], ...(v !== "" ? [["=", "pu"], [`"${v}"`, "av"]] : [])], sel: true, attr: k })));
+    (h.attrs || []).filter(([k]) => (s.attrs || ["class", "placeholder", "type", "data-test", "data-cy", "id", "name", "value", "href"]).includes(k)).forEach(([k, v]) => (v = String(v).length > 34 ? String(v).slice(0, 32) + "…" : v, L.push({ n: 5, p: [[k, "an"], ...(v !== "" ? [["=", "pu"], [`"${v}"`, "av"]] : [])], sel: true, attr: k })));
     L[L.length - 1].p.push(["> == $0", "pu"]); L.push({ n: 3, p: [["</", "pu"], [pt, "tag"], [">", "pu"]] });
     return L;
   }
@@ -651,6 +651,55 @@
           txt(ctx, "← seus testes", font(800, 22 * u), fx + 90 * u + tw(ctx, n, font(500, 22 * u)), ry + rh / 2, C.yel, "left", kfoc * (1 - kU)); } });
     }
     rota(ctx, u, pts, t);
+    legenda(ctx, c, t, s);
+  };
+  // INICIAR (menu Iniciar do Windows): aperta a tecla Windows, digita o nome do app e abre
+  // {type:"iniciar", busca:"PowerShell", app:"Windows PowerShell", tipo:"Aplicativo", legenda:"..."}
+  S.iniciar = (ctx, c, t, dur, s) => {
+    const u = c.u; const a = easeOut(t / 0.4); const W = 1500 * u, H = 720 * u; const x = c.cx - W / 2, y = topo(c, H);
+    // "área de trabalho"
+    ctx.save(); ctx.globalAlpha = a; rr(ctx, x, y, W, H, 22 * u); ctx.clip();
+    const g = ctx.createLinearGradient(x, y, x + W, y + H); g.addColorStop(0, "#0b3a6e"); g.addColorStop(1, "#1d6fb8"); ctx.fillStyle = g; ctx.fillRect(x, y, W, H);
+    const tbH = 64 * u; ctx.fillStyle = "rgba(20,24,32,.92)"; ctx.fillRect(x, y + H - tbH, W, tbH);
+    const tk = s.tecla_em || 0.8; const ko = easeOut((t - tk - 0.15) / 0.35); const tb = c.cx;
+    // botão Iniciar (logo genérico de 4 quadrados)
+    const bx = tb - 160 * u, by = y + H - tbH / 2; const pres = t > tk && t < tk + 0.35;
+    if (pres || ko > 0) { ctx.fillStyle = "rgba(255,255,255,.12)"; rr(ctx, bx - 26 * u, by - 26 * u, 52 * u, 52 * u, 8 * u); ctx.fill(); }
+    [[-1, -1], [1, -1], [-1, 1], [1, 1]].forEach(([dx, dy]) => { ctx.fillStyle = "#4cc2ff"; ctx.fillRect(bx + (dx < 0 ? -15 : 2) * u, by + (dy < 0 ? -15 : 2) * u, 13 * u, 13 * u); });
+    ["#ffd23f", "#3fd68a", "#ff8c42"].forEach((cor, i) => { ctx.fillStyle = cor; rr(ctx, tb - 80 * u + i * 70 * u, by - 18 * u, 36 * u, 36 * u, 8 * u); ctx.fill(); });
+    ctx.restore();
+    // tecla do teclado aparecendo (dica visual)
+    const kk = t > tk - 0.5 && t < tk + 0.9 ? easeOut((t - tk + 0.5) / 0.25) : 0;
+    if (kk > 0) { const kx = x + 80 * u, ky = y + 80 * u, ks = 120 * u * (pres ? 0.92 : 1);
+      ctx.save(); ctx.globalAlpha = a * kk; ctx.shadowColor = "rgba(0,0,0,.5)"; ctx.shadowBlur = 20 * u; rr(ctx, kx, ky, ks, ks, 18 * u); ctx.fillStyle = "#f4f5f8"; ctx.fill(); ctx.shadowColor = "transparent";
+      ctx.strokeStyle = pres ? C.yel : "#c9ced8"; ctx.lineWidth = 5 * u; ctx.stroke();
+      const cx2 = kx + ks / 2, cy2 = ky + ks / 2; [[-1, -1], [1, -1], [-1, 1], [1, 1]].forEach(([dx, dy]) => { ctx.fillStyle = "#1d6fb8"; ctx.fillRect(cx2 + (dx < 0 ? -26 : 3) * u, cy2 + (dy < 0 ? -26 : 3) * u, 23 * u, 23 * u); }); ctx.restore();
+      txt(ctx, global.CO_IDIOMA === "en" ? "Windows key" : "tecla Windows", font(800, 30 * u), kx + ks + 24 * u, ky + ks / 2, "#fff", "left", a * kk); }
+    // menu Iniciar
+    if (ko > 0) {
+      const mw = 760 * u, mh = 520 * u, mx = c.cx - mw / 2, my = y + H - tbH - 16 * u - mh * ko;
+      ctx.save(); ctx.globalAlpha = a * ko; ctx.beginPath(); ctx.rect(x, y, W, H - tbH); ctx.clip(); ctx.shadowColor = "rgba(0,0,0,.5)"; ctx.shadowBlur = 40 * u; rr(ctx, mx, my, mw, mh, 16 * u); ctx.fillStyle = "#202634"; ctx.fill(); ctx.shadowColor = "transparent";
+      // caixa de busca
+      const ty0 = tk + 0.7; const busca = s.busca || "PowerShell"; const kt = clamp((t - ty0) / Math.max(0.6, busca.length * 0.08)); const tx2 = busca.slice(0, Math.ceil(kt * busca.length));
+      rr(ctx, mx + 30 * u, my + 30 * u, mw - 60 * u, 64 * u, 32 * u); ctx.fillStyle = "#2c3446"; ctx.fill(); ctx.strokeStyle = kt > 0 ? "#4cc2ff" : "#3a4458"; ctx.lineWidth = 3 * u; ctx.stroke();
+      txt(ctx, "⌕", font(700, 30 * u), mx + 62 * u, my + 62 * u, "#aab3c5", "center", 1);
+      txt(ctx, tx2 || (global.CO_IDIOMA === "en" ? "Search for apps, settings and documents" : "Pesquisar aplicativos, configurações e documentos"), font(kt > 0 ? 700 : 500, 26 * u), mx + 90 * u, my + 62 * u, kt > 0 ? "#fff" : "#8a93a6", "left", 1);
+      if (kt > 0 && kt < 1 && Math.floor(t * 2.5) % 2 === 0) { ctx.fillStyle = "#fff"; ctx.fillRect(mx + 92 * u + tw(ctx, tx2, font(700, 26 * u)), my + 46 * u, 3 * u, 32 * u); }
+      // resultado
+      const kr = easeOut((t - ty0 - Math.max(0.6, busca.length * 0.08) - 0.1) / 0.3);
+      if (kr > 0) {
+        txt(ctx, global.CO_IDIOMA === "en" ? "Best match" : "Melhor correspondência", font(700, 22 * u), mx + 40 * u, my + 136 * u, "#aab3c5", "left", kr);
+        const ry = my + 160 * u, rh = 120 * u; const tc = s.clique_em || Math.min(dur - 0.8, ty0 + 2.6);
+        ctx.globalAlpha = a * ko * kr; rr(ctx, mx + 30 * u, ry, mw - 60 * u, rh, 12 * u); ctx.fillStyle = "#2f3a52"; ctx.fill();
+        if (t > tc - 0.6) { ctx.strokeStyle = C.yel; ctx.lineWidth = 5 * u; ctx.stroke(); }
+        rr(ctx, mx + 52 * u, ry + 22 * u, 76 * u, 76 * u, 12 * u); ctx.fillStyle = "#012456"; ctx.fill(); txt(ctx, ">_", font(800, 32 * u, MONO), mx + 90 * u, ry + 60 * u, "#fff", "center", 1);
+        txt(ctx, s.app || "Windows PowerShell", font(800, 32 * u), mx + 150 * u, ry + 46 * u, "#fff", "left", 1);
+        txt(ctx, s.tipo || (global.CO_IDIOMA === "en" ? "App" : "Aplicativo"), font(500, 24 * u), mx + 150 * u, ry + 84 * u, "#aab3c5", "left", 1);
+        ctx.globalAlpha = a * ko;
+        ctx.restore(); rota(ctx, u, [[mx + 260 * u, ry + rh / 2, tc]], t); ctx.save();
+      }
+      ctx.restore();
+    }
     legenda(ctx, c, t, s);
   };
 })(window);
