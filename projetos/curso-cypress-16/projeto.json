@@ -46,8 +46,7 @@
                 "type": "launchpad",
                 "tela": "specs",
                 "specs": [
-                  "login.cy.js",
-                  "carrinho.cy.js"
+                  "login.cy.js"
                 ],
                 "legenda": "cypress open: clicando em cada arquivo"
               }
@@ -97,7 +96,7 @@
                     "cor": "ac"
                   },
                   {
-                    "out": "All specs passed!   2 passing",
+                    "out": "  2 passing",
                     "cor": "ac"
                   }
                 ],
@@ -120,15 +119,11 @@
                     "cor": "mut"
                   },
                   {
-                    "out": "  ✓ login.cy.js         3        3        -",
+                    "out": "  ✓ login.cy.js         2        2        -",
                     "cor": "ac"
                   },
                   {
-                    "out": "  ✓ carrinho.cy.js      2        2        -",
-                    "cor": "ac"
-                  },
-                  {
-                    "out": "  ✓ All specs passed!   5        5        -",
+                    "out": "  ✓ All specs passed!   2        2        -",
                     "cor": "ac"
                   }
                 ],

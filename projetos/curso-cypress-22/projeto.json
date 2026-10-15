@@ -67,7 +67,7 @@
               "text": "Segunda dica: quando o carrinho está vazio, o numerozinho some. Então a conferência é que ele não deveria existir. Em inglês: should not exist.",
               "scene": {
                 "type": "runner",
-                "spec": "carrinho.cy.js",
+                "spec": "compra.cy.js",
                 "teste": "esvazia o carrinho",
                 "passos": [
                   [
