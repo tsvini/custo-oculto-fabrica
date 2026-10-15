@@ -644,7 +644,7 @@
       const { ctx, c } = this; const a = this.activeScene(tl, t); const sc = a.scene; let lt = a.lt;
       if (tl.hook && a.first) lt += 0.9;
       const tint = sc.tint === "red" ? COL.red : null;
-      this.bg.draw(ctx, i, t, tint ? COL.red : COL.gold, tint ? 0.16 : 0.10, tint);
+      this.bg.draw(ctx, i, t, tint ? COL.red : (globalThis.CO_FUNDO ? col(globalThis.CO_FUNDO) : COL.gold), tint ? 0.16 : 0.10, tint);
       (S[sc.type] || S.bigtext)(ctx, c, lt, a.dur, sc, media);
       const endT = a.head.s0 + a.dur;
       if (endT - t < 0.12 && endT < tl.total - 0.1) { ctx.fillStyle = `rgba(0,0,0,${(1 - (endT - t) / 0.12) * 0.8})`; ctx.fillRect(0, 0, c.W, c.H); }

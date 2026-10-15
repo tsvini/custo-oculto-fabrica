@@ -171,18 +171,24 @@
       {
        "text": "Em vez de você clicar, você escreve um passo a passo que o computador segue sozinho.",
        "scene": {
-        "type": "bigtext",
-        "stagger": 0.25,
-        "lines": [
+        "type": "cards",
+        "itens": [
          [
-          "VOCÊ ESCREVE",
-          "white",
-          140
+          "1",
+          "Você escreve",
+          "os passos, uma vez só"
          ],
          [
-          "O COMPUTADOR FAZ",
-          "gold",
-          120
+          "2",
+          "O computador",
+          "segue sozinho, toda vez",
+          "#69a7ff"
+         ],
+         [
+          "3",
+          "O resultado",
+          "passou ou falhou",
+          "#ffd23f"
          ]
         ]
        }
@@ -190,16 +196,14 @@
       {
        "text": "Tipo uma receita de bolo: abre o site, digita o e-mail, digita a senha, clica em entrar e confere se apareceu bem-vindo.",
        "scene": {
-        "type": "bullets",
-        "title": "A RECEITA DO TESTE",
-        "items": [
-         "ABRE O SITE",
-         "DIGITA E-MAIL E SENHA",
-         "CLICA EM ENTRAR",
-         "CONFERE: BEM-VINDO?"
+        "type": "editor",
+        "arquivo": "login.cy.js",
+        "codigo": "describe('Login', () => {\n  it('entra no site', () => {\n    cy.visit('https://www.saucedemo.com')\n    cy.get('#user-name').type('standard_user')\n    cy.get('#password').type('secret_sauce')\n    cy.get('#login-button').click()\n    cy.contains('Products').should('be.visible')\n  })\n})",
+        "vel": 0.8,
+        "destaque": [
+         7
         ],
-        "size": 76,
-        "last_gold": true
+        "legenda": "A receita, escrita pro computador"
        }
       },
       {
@@ -295,16 +299,33 @@
       {
        "text": "No curso, a gente vai fazer tudo junto, passo a passo: preparar o seu computador, criar o seu primeiro projeto, escrever os seus primeiros testes e terminar com um projeto pronto pra colocar no portfólio.",
        "scene": {
-        "type": "bullets",
-        "title": "O QUE VEM POR AÍ",
-        "items": [
-         "PREPARAR O COMPUTADOR",
-         "O PRIMEIRO PROJETO",
-         "OS PRIMEIROS TESTES",
-         "PROJETO PRO PORTFÓLIO"
-        ],
-        "size": 76,
-        "last_gold": true
+        "type": "cards",
+        "titulo": "O QUE VEM POR AÍ",
+        "itens": [
+         [
+          "1",
+          "Preparar",
+          "o seu computador"
+         ],
+         [
+          "2",
+          "Criar",
+          "o primeiro projeto",
+          "#69a7ff"
+         ],
+         [
+          "3",
+          "Testar",
+          "os primeiros testes",
+          "#ffd23f"
+         ],
+         [
+          "4",
+          "Portfólio",
+          "um projeto pronto",
+          "#ff6b6b"
+         ]
+        ]
        }
       },
       {
@@ -329,5 +350,6 @@
   "description": "",
   "tags": []
  },
- "notes": "Curso Cypress para leigos, aula 1. Não publica (destino: curso)."
+ "notes": "Curso Cypress para leigos, aula 1. Não publica (destino: curso).",
+ "cor_fundo": "#3fd68a"
 }

@@ -12,7 +12,7 @@
 @font-face{font-family:Merriweather;font-weight:800 900;src:url(fonts/merriweather-latin-900-normal.woff2)}
 body{margin:0;background:#000}
 </style></head><body>
-<script src="mp4-muxer.js"></script><script src="engine.js"></script>
+<script src="mp4-muxer.js"></script><script src="engine.js"></script><script src="aula.js"></script>
 <script>
 /* Página de render da fábrica: recebe o roteiro, as narrações (com tempos) e a mídia, e gera o MP4. */
 const E = COEngine;
@@ -39,7 +39,7 @@ async function carregaMidia(man, base) {
 async function montar(cfg) {
   await fontes();
   const p = await (await fetch(cfg.projeto)).json();
-  window.CO_IDIOMA = p.idioma || "pt"; window.CO_MARCA = p.marca || null;
+  window.CO_IDIOMA = p.idioma || "pt"; window.CO_MARCA = p.marca || null; window.CO_FUNDO = p.cor_fundo || null;
   const longo = cfg.formato === "longo";
   const serie = cfg.formato === "serie";
   const tiktok = cfg.formato === "tiktok" || serie;
