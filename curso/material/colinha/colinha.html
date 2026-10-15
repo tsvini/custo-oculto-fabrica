@@ -1,0 +1,145 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><style>
+@font-face{font-family:Inter;font-weight:500;src:url(../../../motor/fonts/inter-latin-500-normal.woff2)}
+@font-face{font-family:Inter;font-weight:700;src:url(../../../motor/fonts/inter-latin-700-normal.woff2)}
+@font-face{font-family:Inter;font-weight:800;src:url(../../../motor/fonts/inter-latin-800-normal.woff2)}
+@font-face{font-family:Inter;font-weight:900;src:url(../../../motor/fonts/inter-latin-900-normal.woff2)}
+@font-face{font-family:JB;font-weight:700;src:url(../../../motor/fonts/jetbrains-mono-latin-700-normal.woff2)}
+@page{size:A4;margin:0}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Inter,sans-serif;color:#1b1e27;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.pg{width:210mm;height:297mm;padding:12mm 12mm 10mm;position:relative;overflow:hidden;page-break-after:always;background:#f6f7f4}
+.topo{background:#0f1a14;color:#fff;border-radius:14px;padding:14px 20px;display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.topo h1{font-weight:900;font-size:25px;letter-spacing:-.5px;line-height:1}.topo h1 b{color:#ffd23f}
+.topo p{font-size:11px;color:#9fb5a8;margin-top:5px}
+.selo{background:#3fd68a;color:#0b1a12;font-weight:900;font-size:11px;border-radius:30px;padding:6px 12px;white-space:nowrap}
+.grade{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.box{background:#fff;border-radius:12px;padding:11px 13px;border:1.5px solid #e3e7e0}
+.box h2{font-size:12.5px;font-weight:900;text-transform:uppercase;letter-spacing:.4px;margin-bottom:7px;display:flex;align-items:center;gap:7px}
+.box h2 i{font-style:normal;background:#3fd68a;color:#0b1a12;border-radius:6px;width:20px;height:20px;display:inline-grid;place-items:center;font-size:11px}
+.l{display:grid;grid-template-columns:auto 1fr;gap:4px 10px;align-items:baseline;font-size:10.5px;line-height:1.35}
+code,.c{font-family:JB,monospace;font-size:10px;background:#0f1117;color:#e8eaf0;border-radius:5px;padding:2px 6px;white-space:nowrap}
+.c .k{color:#c792ea}.c .f{color:#69a7ff}.c .s{color:#f0a868}.c .cy{color:#3fd68a}.c .m{color:#8b93a7}
+pre.c{display:block;white-space:pre;padding:9px 11px;line-height:1.5;font-size:9.8px;border-radius:9px}
+.d{color:#4a5160}
+.full{grid-column:1/-1}
+.tag{display:inline-block;font-weight:800;font-size:9.5px;border-radius:5px;padding:1px 6px;margin-right:4px}
+.ok{background:#d9f7e8;color:#106b3e}.mid{background:#e3edff;color:#1f4fae}.bad{background:#fff1cc;color:#8a6200}
+.rod{position:absolute;bottom:6mm;left:12mm;right:12mm;font-size:9px;color:#8b93a7;display:flex;justify-content:space-between}
+.perg{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.perg div{background:#fff5f5;border:1.5px solid #ffd0d0;border-radius:10px;padding:9px;font-size:10.5px}
+.perg b{display:block;font-size:20px;color:#e04848;font-weight:900}
+.glos{display:grid;grid-template-columns:1fr 1fr;gap:5px 16px;font-size:10.3px;line-height:1.35}
+.glos b{font-weight:800}
+.grade{gap:13px}.box{padding:15px 16px}.box h2{font-size:13.5px;margin-bottom:10px}.l{font-size:11.3px;gap:7px 12px}code,.c{font-size:10.6px}pre.c{font-size:10.6px;line-height:1.6}.glos{font-size:11px;gap:7px 18px}.perg div{font-size:11px}
+</style></head><body>
+<!-- PÁGINA 1 -->
+<div class="pg">
+ <div class="topo"><div><h1>CYPRESS <b>PARA LEIGOS</b></h1><p>Colinha do curso · tudo o que você precisa ter à mão na hora de escrever um teste</p></div><span class="selo">COLINHA · 1/2</span></div>
+ <div class="grade">
+  <div class="box"><h2><i>1</i>Terminal: os comandos</h2><div class="l">
+   <code>node -v</code><span class="d">confere se o Node está instalado</span>
+   <code>npm init -y</code><span class="d">transforma a pasta num projeto (cria o package.json)</span>
+   <code>npm install cypress --save-dev</code><span class="d">instala o Cypress no projeto</span>
+   <code>npx cypress open</code><span class="d">abre a janela do Cypress (pra escrever e ver)</span>
+   <code>npx cypress run</code><span class="d">roda tudo sem janela, com resumo no final</span>
+   <code>npm test</code><span class="d">atalho pro cypress run (aula 16)</span>
+  </div></div>
+  <div class="box"><h2><i>2</i>Onde fica cada coisa</h2><pre class="c"><span class="m">meu-primeiro-teste/</span>
+├─ <span class="f">cypress/</span>
+│  ├─ <span class="f">e2e/</span>         <span class="m">← os seus testes</span>
+│  │  ├─ <span class="cy">login.cy.js</span>
+│  │  └─ <span class="cy">compra.cy.js</span>
+│  └─ <span class="f">support/</span>
+├─ <span class="f">node_modules/</span>   <span class="m">← não mexa</span>
+├─ cypress.config.js
+├─ package.json     <span class="m">← a ficha do projeto</span>
+└─ .gitignore</pre><p class="d" style="font-size:10px;margin-top:6px">Todo arquivo de teste termina em <code>.cy.js</code>, é assim que o Cypress sabe que é teste.</p></div>
+  <div class="box full"><h2><i>3</i>A receita de um teste</h2>
+   <div style="display:grid;grid-template-columns:1.25fr 1fr;gap:12px;align-items:center">
+<pre class="c"><span class="k">describe</span>(<span class="s">'Login'</span>, () => {          <span class="m">// o caderno de receitas</span>
+  <span class="k">beforeEach</span>(() => {                <span class="m">// roda antes de CADA it</span>
+    <span class="cy">cy</span>.<span class="f">visit</span>(<span class="s">'https://www.saucedemo.com'</span>)
+  })
+
+  <span class="k">it</span>(<span class="s">'entra com usuário e senha'</span>, () => {  <span class="m">// uma receita</span>
+    <span class="cy">cy</span>.<span class="f">get</span>(<span class="s">'[data-test="username"]'</span>).<span class="f">type</span>(<span class="s">'standard_user'</span>)
+    <span class="cy">cy</span>.<span class="f">get</span>(<span class="s">'[data-test="password"]'</span>).<span class="f">type</span>(<span class="s">'secret_sauce'</span>)
+    <span class="cy">cy</span>.<span class="f">get</span>(<span class="s">'[data-test="login-button"]'</span>).<span class="f">click</span>()
+    <span class="cy">cy</span>.<span class="f">contains</span>(<span class="s">'Products'</span>).<span class="f">should</span>(<span class="s">'be.visible'</span>)  <span class="m">// a conferência</span>
+  })
+})</pre>
+   <div style="font-size:10.5px;line-height:1.5" class="d"><b style="color:#1b1e27">Todo teste é assim:</b><br>1. <b>abre</b> o site (visit)<br>2. <b>acha</b> o elemento (get)<br>3. <b>faz</b> alguma coisa (type, click)<br>4. <b>confere</b> o resultado (should)<br><br>Sem o <code>should</code>, o teste só clica: ele não confere nada.</div>
+   </div></div>
+  <div class="box"><h2><i>4</i>Comandos do Cypress</h2><div class="l">
+   <code>cy.visit(url)</code><span class="d">abre o site</span>
+   <code>cy.get(seletor)</code><span class="d">acha um elemento na página</span>
+   <code>.type('texto')</code><span class="d">digita num campo</span>
+   <code>.click()</code><span class="d">clica</span>
+   <code>cy.contains('texto')</code><span class="d">acha pelo texto que aparece</span>
+   <code>.select('valor')</code><span class="d">escolhe opção de um menu</span>
+   <code>.first()</code><span class="d">pega só o primeiro da lista</span>
+   <code>.should(...)</code><span class="d">confere (a asserção)</span>
+  </div></div>
+  <div class="box"><h2><i>5</i>As conferências (should)</h2><div class="l">
+   <code>'be.visible'</code><span class="d">está aparecendo na tela</span>
+   <code>'contain', 'txt'</code><span class="d">tem esse texto no meio</span>
+   <code>'have.text', 'txt'</code><span class="d">o texto é exatamente esse</span>
+   <code>'not.exist'</code><span class="d">não existe na página</span>
+   <code>'have.value', 'x'</code><span class="d">o campo tem esse valor</span>
+   <code>'be.disabled'</code><span class="d">o botão está desativado</span>
+  </div><p class="d" style="font-size:10px;margin-top:7px">O Cypress espera sozinho (até 4 segundos) a conferência dar certo. Não precisa de espera.</p></div>
+ </div>
+ <div class="rod"><span>Cypress para Leigos · Vinícius Torales</span><span>Site de treino: saucedemo.com · usuário <b>standard_user</b> · senha <b>secret_sauce</b></span></div>
+</div>
+<!-- PÁGINA 2 -->
+<div class="pg">
+ <div class="topo"><div><h1>CYPRESS <b>PARA LEIGOS</b></h1><p>Seletores, erros, Git e as palavras que você vai ouvir no trabalho</p></div><span class="selo">COLINHA · 2/2</span></div>
+ <div class="grade">
+  <div class="box full"><h2><i>6</i>Qual seletor usar? (aula 13)</h2>
+   <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;font-size:10.5px">
+    <div><span class="tag ok">1º MELHOR</span><b>data-test</b><br><code>[data-test="username"]</code><br><span class="d">feito pra testes, não muda quando o visual muda</span></div>
+    <div><span class="tag mid">2º</span><b>id</b><br><code>#user-name</code><br><span class="d">o "CPF" do elemento: não se repete na página</span></div>
+    <div><span class="tag bad">3º SÓ SE PRECISAR</span><b>classe ou texto</b><br><code>.btn</code> <code>cy.contains('Login')</code><br><span class="d">muda fácil, o teste quebra à toa</span></div>
+   </div>
+   <p class="d" style="font-size:10.3px;margin-top:8px"><b style="color:#1b1e27">Como achar:</b> botão direito no elemento › <b>Inspecionar</b>. Ou, no Cypress, clique na <b>mira</b> (Selector Playground), passe o mouse no elemento e copie o seletor que ele sugere.</p></div>
+  <div class="box full"><h2><i>7</i>O teste ficou vermelho? Faça 3 perguntas (aula 15)</h2>
+   <div class="perg"><div><b>1</b><b style="font-size:11px;color:#1b1e27">Onde parou?</b><span class="d">o passo vermelho na lista da esquerda</span></div><div><b>2</b><b style="font-size:11px;color:#1b1e27">O que ele esperava?</b><span class="d">a mensagem em vermelho: "expected…"</span></div><div><b>3</b><b style="font-size:11px;color:#1b1e27">O que tinha na tela?</b><span class="d">clique no passo e olhe o site naquele momento</span></div></div>
+   <div class="l" style="margin-top:9px">
+    <code>Timed out retrying</code><span class="d">não achou o elemento: confira o seletor (letra errada? aspas?)</span>
+    <code>expected ... to contain</code><span class="d">achou, mas o texto é outro: confira a mensagem do site</span>
+    <code>npx não é reconhecido</code><span class="d">o Node não está instalado ou o VS Code precisa ser reaberto (aula 29)</span>
+    <code>scripts desabilitados</code><span class="d">no PowerShell: <code>Set-ExecutionPolicy -Scope CurrentUser RemoteSigned</code></span>
+   </div></div>
+  <div class="box"><h2><i>8</i>Git e GitHub (aula 19)</h2><div class="l">
+   <code>git init</code><span class="d">liga o Git na pasta (só 1 vez)</span>
+   <code>git add .</code><span class="d">separa todos os arquivos</span>
+   <code>git commit -m "msg"</code><span class="d">salva o jogo, com um nome</span>
+   <code>git push</code><span class="d">manda pro GitHub</span>
+  </div><p class="d" style="font-size:10px;margin-top:7px">Antes do primeiro commit, crie o <code>.gitignore</code> com <code>node_modules</code> dentro.</p></div>
+  <div class="box"><h2><i>9</i>Atalhos do VS Code</h2><div class="l">
+   <code>Ctrl + S</code><span class="d">salvar o arquivo</span>
+   <code>Ctrl + '</code><span class="d">abrir e fechar o terminal</span>
+   <code>Ctrl + Z</code><span class="d">desfazer</span>
+   <code>Ctrl + /</code><span class="d">comentar a linha</span>
+   <code>Ctrl + P</code><span class="d">achar um arquivo pelo nome</span>
+  </div></div>
+  <div class="box full"><h2><i>10</i>Glossário: as palavras do dia a dia</h2><div class="glos">
+   <span><b>QA</b>: quem cuida da qualidade do sistema, testando antes de chegar no cliente</span>
+   <span><b>Teste manual</b>: uma pessoa usa o sistema e confere tudo na mão</span>
+   <span><b>Teste automatizado</b>: um código faz os passos e confere sozinho</span>
+   <span><b>E2E</b>: de ponta a ponta, usa o sistema como um usuário de verdade</span>
+   <span><b>Spec</b>: um arquivo de teste (o seu <code>login.cy.js</code>)</span>
+   <span><b>Asserção</b>: a conferência do teste, o <code>should</code></span>
+   <span><b>Seletor</b>: o "endereço" de um elemento na página</span>
+   <span><b>Runner</b>: a janela do Cypress que mostra os passos e o site</span>
+   <span><b>Teste negativo</b>: testar o que acontece quando o usuário erra</span>
+   <span><b>Regressão</b>: rodar tudo de novo pra ver se nada quebrou</span>
+   <span><b>Bug</b>: o sistema fazendo algo diferente do esperado</span>
+   <span><b>CI</b>: testes rodando sozinhos sempre que o código muda</span>
+   <span><b>Repositório</b>: a pasta do projeto guardada no GitHub</span>
+   <span><b>Commit</b>: um "save" do projeto, com nome e data</span>
+  </div></div>
+ </div>
+ <div class="rod"><span>Cypress para Leigos · Vinícius Torales</span><span>Bons testes! ✓</span></div>
+</div>
+</body></html>
