@@ -74,6 +74,18 @@
               }
             },
             {
+              "text": "E se o painel abrir mostrando um monte de código, não se assusta. Clica nessa setinha no canto do painel, e depois clica no campo. Ele te leva direto pro código dele.",
+              "scene": {
+                "type": "devtools",
+                "media": "insp_user",
+                "url": "https://www.saucedemo.com",
+                "inspecionar": "#user-name",
+                "seta": true,
+                "seta_em": 3.2,
+                "legenda": "Muito código? Clique na setinha"
+              }
+            },
+            {
               "text": "Repara nesse aqui: data traço test. Ele foi colocado justamente pra testes, e é o seletor mais seguro de usar.",
               "scene": {
                 "type": "devtools",

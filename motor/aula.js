@@ -330,6 +330,10 @@
     L[L.length - 1].p.push(["> == $0", "pu"]); L.push({ n: 3, p: [["</", "pu"], [pt, "tag"], [">", "pu"]] });
     return L;
   }
+  // o "monte de código" de quando o DevTools abre sem apontar pra nada (fe = recolhido)
+  const BAGUNCA = [[0, "html", " lang", "\"en\"", 1], [1, "head", 0], [1, "body", 0, 0, 1], [2, "noscript", 0], [2, "div", " id", "\"root\"", 1], [3, "div", " class", "\"login_container\"", 1], [4, "div", " class", "\"login_logo\""], [4, "div", " class", "\"login_wrapper\"", 1],
+    [5, "div", " class", "\"login_wrapper-inner\"", 1], [6, "div", " id", "\"login_button_container\"", 1], [7, "div", " class", "\"login-box\"", 1], [8, "form", 0, 0, 1], [9, "div", " class", "\"form_group\""], [9, "div", " class", "\"form_group\""], [5, "div", " class", "\"login_credentials_wrap\""], [2, "script", " src", "\"/static/js/main.js\""]]
+    .map(([n, tg, an, av, aberto]) => ({ n, fe: aberto ? 0 : 1, p: [["<", "pu"], [tg, "tag"], ...(an ? [[an, "an"], ["=", "pu"], [av, "av"]] : []), [aberto ? ">" : ">…</" + tg + ">", "pu"]] }));
   const DT = { tag: "#5db0d7", an: "#9bbbdc", av: "#f29766", pu: "#a8a8a8", tx: "#e8eaed" };
 
   // DEVTOOLS: botão direito › Inspecionar no site de verdade; abre o painel com o HTML real do elemento e realça atributos
@@ -338,12 +342,14 @@
     const u = c.u; const a = easeOut(t / 0.4); const W = 1640 * u, H = 720 * u; const x = c.cx - W / 2, y = topo(c, H);
     const top = janela(ctx, x, y, W, H, u, s.titulo || (s.url || "").replace(/^https?:\/\//, "").replace(/\/$/, ""), a, "#fff");
     const m = media && media[s.media]; const el = m && (m.video || m.img); const e = s.elem || [0.37, 0.3, 0.63, 0.36];
+    const seta = !!s.seta; if (seta) s = Object.assign({}, s, { aberto: true });  // modo "setinha": painel já aberto com o código todo, e a setinha leva até o campo
+    const tPick = s.seta_em || 1.6, tEl = tPick + 1.9;
     const tc = s.clique_em || 1.6, tMenu = tc, tIn = tc + 1.0, tOpen = s.aberto ? -2 : tIn + 0.35;
     const ko = s.aberto ? 1 : easeOut((t - tOpen) / 0.6); const PW = (s.painel || 0.5) * W * ko; const sw = W - PW, sh = y + H - top;
     const ex = (e[0] + e[2]) / 2, ey = (e[1] + e[3]) / 2;
     const p = print(ctx, el, x, top, sw, sh, a, "#fff", [ex, ey], lerp(1, s.zoom_site || 1.8, ko));
     if (!el) txt(ctx, s.url || "site", font(700, 34 * u), x + sw / 2, top + sh / 2, C.mut, "center", a);
-    const kh = s.aberto ? 1 : easeOut((t - tOpen - 0.3) / 0.4);
+    const kh = seta ? easeOut((t - tEl + 0.55) / 0.2) : s.aberto ? 1 : easeOut((t - tOpen - 0.3) / 0.4);
     const h = s.html || {}; const idv = (h.attrs || []).find((q) => q[0] === "id"); const cls = (h.attrs || []).find((q) => q[0] === "class");
     void cls; caixaElem(ctx, u, p, e, kh * a, (h.tag || "input") + (idv ? "#" + idv[1] : "") + (s.elem_tam ? `  ${s.elem_tam[0]}×${s.elem_tam[1]}` : ""));
     if (PW > 2) {  // painel do DevTools
@@ -351,14 +357,21 @@
       ctx.fillStyle = "#202124"; ctx.fillRect(px, top, PW, sh); ctx.fillStyle = "#292a2d"; ctx.fillRect(px, top, PW, 56 * u); ctx.fillStyle = "#3c4043"; ctx.fillRect(px, top + 56 * u, PW, 2 * u);
       ctx.fillStyle = "#3c4043"; ctx.fillRect(px, top, 3 * u, sh); ctx.restore();
       ctx.save(); ctx.beginPath(); ctx.rect(px, top, PW, sh - 2 * u); ctx.clip();
-      let tx = px + 30 * u; ["Elements", "Console", "Sources", "Network"].forEach((n, i) => { txt(ctx, n, font(600, 23 * u), tx, top + 28 * u, i ? "#9aa0a6" : "#e8eaed", "left", a);
+      const ic = [px + 34 * u, top + 28 * u]; const kAt = seta && t > tPick && t < tEl + 0.1 ? 1 : 0;
+      ctx.save(); ctx.globalAlpha = a; if (kAt) { ctx.fillStyle = "rgba(138,180,248,.18)"; rr(ctx, ic[0] - 20 * u, ic[1] - 20 * u, 40 * u, 40 * u, 6 * u); ctx.fill(); }
+      ctx.strokeStyle = kAt ? "#8ab4f8" : "#c4c7c5"; ctx.lineWidth = 2.4 * u; ctx.setLineDash([4 * u, 3 * u]); ctx.strokeRect(ic[0] - 12 * u, ic[1] - 12 * u, 18 * u, 18 * u); ctx.setLineDash([]);
+      ctx.fillStyle = kAt ? "#8ab4f8" : "#c4c7c5"; ctx.beginPath(); ctx.moveTo(ic[0] - 2 * u, ic[1] - 2 * u); ctx.lineTo(ic[0] + 13 * u, ic[1] + 4 * u); ctx.lineTo(ic[0] + 6 * u, ic[1] + 6 * u); ctx.lineTo(ic[0] + 4 * u, ic[1] + 13 * u); ctx.closePath(); ctx.fill();
+      ctx.strokeStyle = "#c4c7c5"; ctx.lineWidth = 2.4 * u; rr(ctx, ic[0] + 30 * u, ic[1] - 13 * u, 16 * u, 26 * u, 3 * u); ctx.stroke(); rr(ctx, ic[0] + 48 * u, ic[1] - 6 * u, 12 * u, 19 * u, 3 * u); ctx.stroke(); ctx.restore();
+      if (seta && t > tPick - 0.6) { const kp = t < tEl ? easeOut((t - tPick + 0.6) / 0.25) : 0; ctx.save(); ctx.globalAlpha = kp; ctx.strokeStyle = C.yel; ctx.lineWidth = 4 * u; rr(ctx, ic[0] - 22 * u, ic[1] - 22 * u, 44 * u, 44 * u, 8 * u); ctx.stroke(); ctx.restore(); }
+      let tx = px + 120 * u; ["Elements", "Console", "Sources", "Network"].forEach((n, i) => { txt(ctx, n, font(600, 23 * u), tx, top + 28 * u, i ? "#9aa0a6" : "#e8eaed", "left", a);
         const w = tw(ctx, n, font(600, 23 * u)); if (!i) { ctx.save(); ctx.globalAlpha = a; ctx.fillStyle = "#8ab4f8"; ctx.fillRect(tx - 6 * u, top + 52 * u, w + 12 * u, 4 * u); ctx.restore(); } tx += w + 40 * u; });
-      const L = linhasHtml(s); const fs = (s.fonte || 25) * u, lh = fs * 1.62; let yy = top + 100 * u; const ind = 26 * u;
-      const re = s.realce || []; const r0 = s.realce_em || Math.min(dur - 1.5, tOpen + 2.2);
+      const bag = seta && t < tEl + 0.05; const tL = seta ? tEl : tOpen;
+      const L = bag ? BAGUNCA : linhasHtml(s); const fs = (s.fonte || 25) * u, lh = fs * 1.62; let yy = top + 100 * u; const ind = 26 * u;
+      const re = s.realce || []; const r0 = s.realce_em || Math.min(dur - 1.5, tL + 2.2);
       L.forEach((ln, i) => {
-        const kl = easeOut((t - tOpen - 0.15 - i * 0.04) / 0.3) * a; if (kl <= 0) return;
+        const kl = bag ? a : easeOut((t - tL - 0.15 - i * 0.04) / 0.3) * a; if (kl <= 0) return;
         if (ln.sel) { ctx.save(); ctx.globalAlpha = kl; ctx.fillStyle = "#1d3b5a"; ctx.fillRect(px + 3 * u, yy - lh / 2, PW, lh); ctx.restore(); }
-        let xx = px + 30 * u + ln.n * ind; if (i < 4 && !ln.sel) txt(ctx, "▾", font(600, fs * 0.7), xx - 18 * u, yy, "#9aa0a6", "left", kl);
+        let xx = px + 30 * u + ln.n * ind; if ((bag ? ln.fe !== undefined : i < 4) && !ln.sel) txt(ctx, bag && ln.fe ? "▸" : "▾", font(600, fs * 0.7), xx - 18 * u, yy, "#9aa0a6", "left", kl);
         const ri = ln.attr ? re.indexOf(ln.attr) : -1;
         if (ri >= 0) { const kr = easeOut((t - r0 - ri * 1.2) / 0.35); if (kr > 0) { const w = ln.p.reduce((q, [tk]) => q + tw(ctx, tk, font(600, fs, MONO)), 0);
           ctx.save(); ctx.globalAlpha = kr; ctx.fillStyle = "rgba(255,210,63,.18)"; rr(ctx, xx - 10 * u, yy - lh / 2 + 2 * u, w + 20 * u, lh - 4 * u, 8 * u); ctx.fill(); ctx.strokeStyle = C.yel; ctx.lineWidth = 4 * u; ctx.stroke(); ctx.restore();
@@ -367,6 +380,13 @@
         yy += lh;
       });
       ctx.restore();
+    }
+    if (seta) {  // dica + mouse: setinha › campo
+      const px = x + sw, ic = [px + 34 * u, top + 28 * u]; const kt = t > tPick - 1.0 && t < tPick + 0.7 ? easeOut((t - tPick + 1.0) / 0.25) : 0;
+      if (kt > 0) { const l1 = global.CO_IDIOMA === "en" ? "Select an element in the page to inspect it" : "Selecionar um elemento da página", l2 = "Ctrl + Shift + C";
+        const f = font(600, 21 * u), w = Math.max(tw(ctx, l1, f), tw(ctx, l2, f)) + 32 * u; ctx.save(); ctx.globalAlpha = kt; rr(ctx, ic[0] - 10 * u, ic[1] + 34 * u, w, 72 * u, 8 * u); ctx.fillStyle = "#3c4043"; ctx.fill(); ctx.restore();
+        txt(ctx, l1, f, ic[0] + 6 * u, ic[1] + 56 * u, "#e8eaed", "left", kt); txt(ctx, l2, font(800, 21 * u, MONO), ic[0] + 6 * u, ic[1] + 86 * u, C.yel, "left", kt); }
+      const [ax, ay] = p(ex, ey); rota(ctx, u, [[ic[0], ic[1], tPick, "#8ab4f8"], [ax, ay, tEl, "#8ab4f8"]], t);
     }
     if (!s.aberto) {  // botão direito › menu › Inspecionar
       const [ax, ay] = p(ex, ey); const km = t > tMenu && t < tOpen + 0.1 ? easeOut((t - tMenu) / 0.2) : 0;
