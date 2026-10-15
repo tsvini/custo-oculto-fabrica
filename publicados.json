@@ -474,6 +474,9 @@
   "caso": "netflix_en",
   "caso_titulo": null,
   "publishAt": "2026-10-16T08:00:00-03:00",
-  "status": "private"
+  "status": "private",
+  "playlists": [
+   "The Netflix case | Hidden Cost"
+  ]
  }
 ]
