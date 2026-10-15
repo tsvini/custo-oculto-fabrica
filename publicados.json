@@ -434,7 +434,7 @@
   "video_id": "LGggbB-6O7A",
   "publishAt": "2026-10-27T12:00:00-03:00",
   "status": "private",
-  "miniatura_ok": true
+  "miniatura_ok": "bac46d491598"
  },
  {
   "nome": "netflix_en_longo",
@@ -449,7 +449,8 @@
   "playlists": [
    "All cases | Hidden Cost",
    "The Netflix case | Hidden Cost"
-  ]
+  ],
+  "miniatura_ok": "566898418b49"
  },
  {
   "nome": "netflix_en_serie1",
