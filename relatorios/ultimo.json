@@ -607,7 +607,7 @@
   "banco_master_short2": {
    "views": 43,
    "likes": 0,
-   "comentarios": 0,
+   "comentarios": 1,
    "status": "public"
   },
   "banco_master_short4": {
@@ -623,15 +623,15 @@
    "status": "private"
   },
   "banco_master_serie1": {
-   "views": 604,
+   "views": 605,
    "likes": 36,
-   "comentarios": 1,
+   "comentarios": 2,
    "status": "public"
   },
   "banco_master_serie2": {
-   "views": 0,
-   "likes": 0,
-   "comentarios": 0,
+   "views": 17,
+   "likes": 1,
+   "comentarios": 1,
    "status": "public"
   },
   "banco_master_serie3": {
@@ -806,8 +806,8 @@
    "status": "public",
    "agendado": null,
    "views": 1056,
-   "likes": 8,
-   "comentarios": 0
+   "likes": 9,
+   "comentarios": 1
   },
   {
    "id": "xQAsC7S2KO8",
@@ -816,9 +816,9 @@
    "duracao": "PT1M41S",
    "status": "public",
    "agendado": null,
-   "views": 604,
+   "views": 605,
    "likes": 36,
-   "comentarios": 1
+   "comentarios": 2
   },
   {
    "id": "KwwgU40ljtE",
@@ -827,7 +827,7 @@
    "duracao": "PT41S",
    "status": "public",
    "agendado": null,
-   "views": 389,
+   "views": 387,
    "likes": 7,
    "comentarios": 0
   },
@@ -893,9 +893,9 @@
    "duracao": "PT28S",
    "status": "public",
    "agendado": null,
-   "views": 145,
+   "views": 147,
    "likes": 8,
-   "comentarios": 1
+   "comentarios": 2
   },
   {
    "id": "bLlZo9T-tO8",
@@ -917,7 +917,7 @@
    "agendado": null,
    "views": 43,
    "likes": 0,
-   "comentarios": 0
+   "comentarios": 1
   },
   {
    "id": "A5cWOeTZqe0",
@@ -929,6 +929,17 @@
    "views": 22,
    "likes": 2,
    "comentarios": 0
+  },
+  {
+   "id": "Po7fZ2-6vNg",
+   "titulo": "Banco Master: parte 2 de 4 #shorts",
+   "publicado": "2026-10-15T11:00:42Z",
+   "duracao": "PT2M18S",
+   "status": "public",
+   "agendado": null,
+   "views": 17,
+   "likes": 1,
+   "comentarios": 1
   },
   {
    "id": "_EvPaiyk3nU",
@@ -1049,17 +1060,6 @@
    "agendado": null,
    "views": 3,
    "likes": 1,
-   "comentarios": 0
-  },
-  {
-   "id": "Po7fZ2-6vNg",
-   "titulo": "Banco Master: parte 2 de 4 #shorts",
-   "publicado": "2026-10-15T11:00:42Z",
-   "duracao": "PT2M18S",
-   "status": "public",
-   "agendado": null,
-   "views": 0,
-   "likes": 0,
    "comentarios": 0
   },
   {
