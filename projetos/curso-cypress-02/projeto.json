@@ -1,255 +1,268 @@
 {
- "title": "Cypress para leigos · Aula 2",
- "slug": "curso-cypress-02",
- "idioma": "pt",
- "destino": "curso",
- "marca": [
-  "CYPRESS",
-  "PARA LEIGOS"
- ],
- "cor_fundo": "#3fd68a",
- "voz": {
-  "nome": "gravada",
-  "motor": "eleven",
-  "eleven_voz": "Vinícius Torales"
- },
- "script": {
-  "long": {
-   "parts": [
-    {
-     "chapter": "",
-     "sentences": [
-      {
-       "text": "Fala, pessoal! Bem-vindo à aula dois. Hoje a gente vai instalar o primeiro programa do curso: o VS Code.",
-       "scene": {
-        "type": "bigtext",
-        "stagger": 0.25,
-        "lines": [
-         [
-          "AULA 2",
-          "muted",
-          80
-         ],
-         [
-          "VS CODE",
-          "gold",
-          220
-         ]
-        ]
-       }
-      },
-      {
-       "text": "Mas antes, o que é o VS Code? É um editor de código. Pensa assim: pra escrever um texto, você usa o Word. Pra escrever código, você usa o VS Code.",
-       "scene": {
-        "type": "compare",
-        "title": "CADA COISA NO SEU LUGAR",
-        "items": [
-         [
-          "WORD",
-          "PRA ESCREVER TEXTO",
-          "white"
-         ],
-         [
-          "VS CODE",
-          "PRA ESCREVER CÓDIGO",
-          "gold"
-         ]
-        ],
-        "size": 140,
-        "stagger": 1.2,
-        "vs": false
-       }
-      },
-      {
-       "text": "Ele é gratuito, é feito pela Microsoft, e é o editor mais usado do mundo. Então, aprendendo ele, você vai usar isso no trabalho também.",
-       "scene": {
-        "type": "cards",
-        "itens": [
-         [
-          "R$0",
-          "Gratuito",
-          "não paga nada"
-         ],
-         [
-          "MS",
-          "Da Microsoft",
-          "confiável",
-          "#69a7ff"
-         ],
-         [
-          "#1",
-          "O mais usado",
-          "no mundo inteiro",
-          "#ffd23f"
-         ]
-        ]
-       }
-      },
-      {
-       "text": "Vamos lá. Primeiro passo: abre o seu navegador e entra no site code ponto visualstudio ponto com.",
-       "scene": {
-        "type": "passo",
-        "n": 1,
-        "de": 3,
-        "titulo": "Entre no site",
-        "sub": "code.visualstudio.com",
-        "icone": "1"
-       }
-      },
-      {
-       "text": "Logo na página inicial tem um botão grande escrito Download for Windows. Clica nele e o download começa.",
-       "scene": {
-        "type": "tela",
-        "media": "site_vscode",
-        "url": "https://code.visualstudio.com/",
-        "alvo": "Download for Windows",
-        "titulo": "code.visualstudio.com",
-        "zoom_em": 1.6,
-        "caixa_em": 2.4,
-        "legenda": "Clique em Download for Windows"
-       }
-      },
-      {
-       "text": "Segundo passo: quando terminar de baixar, abre o arquivo que veio. Ele normalmente fica na pasta Downloads.",
-       "scene": {
-        "type": "passo",
-        "n": 2,
-        "de": 3,
-        "titulo": "Abra o instalador",
-        "sub": "pasta Downloads",
-        "icone": "2"
-       }
-      },
-      {
-       "text": "Vai abrir o instalador. Na primeira tela, marca que você aceita o contrato e clica em Next. Next quer dizer próximo.",
-       "scene": {
-        "type": "instalador",
-        "app": "Visual Studio Code",
-        "titulo": "License Agreement",
-        "subtitulo": "Please read the following important information",
-        "texto": "Leia o contrato de uso do programa.",
-        "caixas": [
-         [
-          "I accept the agreement",
-          true
-         ]
-        ],
-        "botao": "Next",
-        "legenda": "Aceite e clique em Next"
-       }
-      },
-      {
-       "text": "Agora, atenção nessa tela, que é a mais importante. Marca a opção Add to PATH e também as duas opções que falam Open with Code. Isso vai facilitar muito a sua vida depois.",
-       "scene": {
-        "type": "instalador",
-        "app": "Visual Studio Code",
-        "titulo": "Select Additional Tasks",
-        "subtitulo": "Which additional tasks should be performed?",
-        "caixas": [
-         [
-          "Add \"Open with Code\" action to file context menu",
-          true
-         ],
-         [
-          "Add \"Open with Code\" action to directory context menu",
-          true
-         ],
-         [
-          "Add to PATH",
-          true
-         ]
-        ],
-        "botao": "Next",
-        "botao_em": 3.5,
-        "legenda": "Marque essas três opções"
-       }
-      },
-      {
-       "text": "Depois é só clicar em Install e esperar. Leva menos de um minuto.",
-       "scene": {
-        "type": "instalador",
-        "app": "Visual Studio Code",
-        "titulo": "Installing",
-        "subtitulo": "Please wait while Setup installs Visual Studio Code",
-        "progresso": true,
-        "botao": "Finish"
-       }
-      },
-      {
-       "text": "Terceiro passo: quando terminar, clica em Finish. O VS Code vai abrir sozinho.",
-       "scene": {
-        "type": "passo",
-        "n": 3,
-        "de": 3,
-        "titulo": "Clique em Finish",
-        "icone": "3"
-       }
-      },
-      {
-       "text": "E é isso aqui que você vai ver: o VS Code aberto. Na esquerda ficam os seus arquivos, e no meio é onde você escreve o código.",
-       "scene": {
-        "type": "editor",
-        "arquivo": "Welcome",
-        "pastas": [
-         "SEUS ARQUIVOS",
-         "ficam aqui"
-        ],
-        "codigo": "// Aqui é onde você escreve o código\n// Na próxima aula, a gente vai\n// instalar o Node.js",
-        "digitar": true,
-        "legenda": "Pronto, o VS Code está instalado!"
-       }
-      },
-      {
-       "text": "Se apareceu essa tela pra você, parabéns! Você acabou de instalar o seu primeiro programa de desenvolvedor.",
-       "scene": {
-        "type": "bigtext",
-        "stagger": 0.25,
-        "lines": [
-         [
-          "PARABÉNS!",
-          "gold",
-          200
-         ],
-         [
-          "PRIMEIRO PROGRAMA INSTALADO",
-          "white",
-          90
-         ]
-        ]
-       }
-      },
-      {
-       "text": "Na próxima aula, a gente vai instalar o Node.js, que é o motor que faz o Cypress funcionar.",
-       "scene": {
-        "type": "passo",
-        "icone": "▶",
-        "titulo": "Próxima aula",
-        "sub": "Instalando O Node.Js"
-       }
-      },
-      {
-       "text": "Te vejo lá!",
-       "scene": {
-        "type": "endcard",
-        "sub": "PRÓXIMA: INSTALANDO O NODE.JS"
-       }
-      }
-     ]
-    }
-   ]
-  },
-  "shorts": [],
-  "tiktoks": []
- },
- "serie": [],
- "meta": {
-  "titles": [
-   "Aula 2: Instalando o VS Code"
+  "title": "Cypress para leigos · Aula 2",
+  "slug": "curso-cypress-02",
+  "idioma": "pt",
+  "destino": "curso",
+  "marca": [
+    "CYPRESS",
+    "PARA LEIGOS"
   ],
-  "description": "",
-  "tags": []
- },
- "notes": "Curso Cypress para leigos. Não publica (destino: curso).",
- "legenda_y": 0.93,
- "selo": "MÓDULO 1 · AULA 2"
+  "cor_fundo": "#3fd68a",
+  "voz": {
+    "nome": "gravada",
+    "motor": "eleven",
+    "eleven_voz": "Vinícius Torales"
+  },
+  "script": {
+    "long": {
+      "parts": [
+        {
+          "chapter": "",
+          "sentences": [
+            {
+              "text": "Fala, pessoal! Bem-vindo à aula dois. Hoje a gente vai instalar o primeiro programa do curso: o VS Code.",
+              "scene": {
+                "type": "bigtext",
+                "stagger": 0.25,
+                "lines": [
+                  [
+                    "AULA 2",
+                    "muted",
+                    80
+                  ],
+                  [
+                    "VS CODE",
+                    "gold",
+                    220
+                  ]
+                ]
+              }
+            },
+            {
+              "text": "Mas antes, o que é o VS Code? É um editor de código. Pensa assim: pra escrever um texto, você usa o Word. Pra escrever código, você usa o VS Code.",
+              "scene": {
+                "type": "compare",
+                "title": "CADA COISA NO SEU LUGAR",
+                "items": [
+                  [
+                    "WORD",
+                    "PRA ESCREVER TEXTO",
+                    "white"
+                  ],
+                  [
+                    "VS CODE",
+                    "PRA ESCREVER CÓDIGO",
+                    "gold"
+                  ]
+                ],
+                "size": 140,
+                "stagger": 1.2,
+                "vs": false
+              }
+            },
+            {
+              "text": "Ele é gratuito, é feito pela Microsoft, e é o editor mais usado do mundo. Então, aprendendo ele, você vai usar isso no trabalho também.",
+              "scene": {
+                "type": "cards",
+                "itens": [
+                  [
+                    "R$0",
+                    "Gratuito",
+                    "não paga nada"
+                  ],
+                  [
+                    "MS",
+                    "Da Microsoft",
+                    "confiável",
+                    "#69a7ff"
+                  ],
+                  [
+                    "#1",
+                    "O mais usado",
+                    "no mundo inteiro",
+                    "#ffd23f"
+                  ]
+                ]
+              }
+            },
+            {
+              "text": "Vamos lá. Primeiro passo: abre o seu navegador e entra no site code ponto visualstudio ponto com.",
+              "scene": {
+                "type": "tela",
+                "media": "site_vscode",
+                "url": "https://code.visualstudio.com/",
+                "titulo": "code.visualstudio.com",
+                "zoom": null,
+                "caixa": null,
+                "legenda": "code.visualstudio.com"
+              }
+            },
+            {
+              "text": "Logo na página inicial tem um botão grande escrito Download for Windows. Clica nele e o download começa.",
+              "scene": {
+                "type": "tela",
+                "media": "site_vscode",
+                "url": "https://code.visualstudio.com/",
+                "alvo": "Download for Windows",
+                "titulo": "code.visualstudio.com",
+                "zoom_em": 1.6,
+                "caixa_em": 2.4,
+                "legenda": "Clique em Download for Windows"
+              }
+            },
+            {
+              "text": "Segundo passo: quando terminar de baixar, abre o arquivo que veio. Ele normalmente fica na pasta Downloads.",
+              "scene": {
+                "type": "pastas",
+                "caminho": "Este Computador  ›  Downloads",
+                "itens": [
+                  {
+                    "nome": "VSCodeUserSetup.exe",
+                    "arquivo": true,
+                    "novo": true
+                  }
+                ],
+                "novo_em": 0.6,
+                "legenda": "O instalador fica em Downloads"
+              }
+            },
+            {
+              "text": "Vai abrir o instalador. Na primeira tela, marca que você aceita o contrato e clica em Next. Next quer dizer próximo.",
+              "scene": {
+                "type": "instalador",
+                "app": "Visual Studio Code",
+                "titulo": "License Agreement",
+                "subtitulo": "Please read the following important information",
+                "texto": "Leia o contrato de uso do programa.",
+                "caixas": [
+                  [
+                    "I accept the agreement",
+                    true
+                  ]
+                ],
+                "botao": "Next",
+                "legenda": "Aceite e clique em Next"
+              }
+            },
+            {
+              "text": "Agora, atenção nessa tela, que é a mais importante. Marca a opção Add to PATH e também as duas opções que falam Open with Code. Isso vai facilitar muito a sua vida depois.",
+              "scene": {
+                "type": "instalador",
+                "app": "Visual Studio Code",
+                "titulo": "Select Additional Tasks",
+                "subtitulo": "Which additional tasks should be performed?",
+                "caixas": [
+                  [
+                    "Add \"Open with Code\" action to file context menu",
+                    true
+                  ],
+                  [
+                    "Add \"Open with Code\" action to directory context menu",
+                    true
+                  ],
+                  [
+                    "Add to PATH",
+                    true
+                  ]
+                ],
+                "botao": "Next",
+                "botao_em": 3.5,
+                "legenda": "Marque essas três opções"
+              }
+            },
+            {
+              "text": "Depois é só clicar em Install e esperar. Leva menos de um minuto.",
+              "scene": {
+                "type": "instalador",
+                "app": "Visual Studio Code",
+                "titulo": "Installing",
+                "subtitulo": "Please wait while Setup installs Visual Studio Code",
+                "progresso": true,
+                "botao": "Finish"
+              }
+            },
+            {
+              "text": "Terceiro passo: quando terminar, clica em Finish. O VS Code vai abrir sozinho.",
+              "scene": {
+                "type": "instalador",
+                "app": "Visual Studio Code",
+                "titulo": "Completing the Setup Wizard",
+                "subtitulo": "Setup has finished installing Visual Studio Code",
+                "caixas": [
+                  [
+                    "Launch Visual Studio Code",
+                    true
+                  ]
+                ],
+                "botao": "Finish",
+                "legenda": "Clique em Finish"
+              }
+            },
+            {
+              "text": "E é isso aqui que você vai ver: o VS Code aberto. Na esquerda ficam os seus arquivos, e no meio é onde você escreve o código.",
+              "scene": {
+                "type": "editor",
+                "arquivo": "Welcome",
+                "pastas": [
+                  "SEUS ARQUIVOS",
+                  "ficam aqui"
+                ],
+                "codigo": "// Aqui é onde você escreve o código\n// Na próxima aula, a gente vai\n// instalar o Node.js",
+                "digitar": true,
+                "legenda": "Pronto, o VS Code está instalado!"
+              }
+            },
+            {
+              "text": "Se apareceu essa tela pra você, parabéns! Você acabou de instalar o seu primeiro programa de desenvolvedor.",
+              "scene": {
+                "type": "bigtext",
+                "stagger": 0.25,
+                "lines": [
+                  [
+                    "PARABÉNS!",
+                    "gold",
+                    200
+                  ],
+                  [
+                    "PRIMEIRO PROGRAMA INSTALADO",
+                    "white",
+                    90
+                  ]
+                ]
+              }
+            },
+            {
+              "text": "Na próxima aula, a gente vai instalar o Node.js, que é o motor que faz o Cypress funcionar.",
+              "scene": {
+                "type": "passo",
+                "icone": "▶",
+                "titulo": "Próxima aula",
+                "sub": "Instalando O Node.Js"
+              }
+            },
+            {
+              "text": "Te vejo lá!",
+              "scene": {
+                "type": "endcard",
+                "sub": "PRÓXIMA: INSTALANDO O NODE.JS"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "shorts": [],
+    "tiktoks": []
+  },
+  "serie": [],
+  "meta": {
+    "titles": [
+      "Aula 2: Instalando o VS Code"
+    ],
+    "description": "",
+    "tags": []
+  },
+  "notes": "Curso Cypress para leigos. Não publica (destino: curso).",
+  "legenda_y": 0.93,
+  "selo": "MÓDULO 1 · AULA 2"
 }

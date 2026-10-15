@@ -1,193 +1,212 @@
 {
- "title": "Cypress para leigos · Aula 25",
- "slug": "curso-cypress-25",
- "idioma": "pt",
- "destino": "curso",
- "marca": [
-  "CYPRESS",
-  "PARA LEIGOS"
- ],
- "cor_fundo": "#3fd68a",
- "legenda_y": 0.93,
- "selo": "MÓDULO 6 · AULA 25",
- "voz": {
-  "nome": "gravada",
-  "motor": "eleven",
-  "eleven_voz": "Vinícius Torales"
- },
- "script": {
-  "long": {
-   "parts": [
-    {
-     "chapter": "",
-     "sentences": [
-      {
-       "text": "Chegou o desafio final. Faz uma compra com dois produtos: a mochila e a luz de bicicleta. Confere se o carrinho mostra dois, e finaliza a compra até a mensagem de agradecimento.",
-       "scene": {
-        "type": "passo",
-        "icone": "★",
-        "titulo": "A compra com dois produtos",
-        "sub": "Desafio 6 de 6"
-       }
-      },
-      {
-       "text": "Esse desafio junta quase tudo o que você aprendeu: beforeEach, get, click, type, should. Use a aula dezoito como base, se precisar.",
-       "scene": {
-        "type": "cards",
-        "titulo": "VOCÊ VAI USAR",
-        "itens": [
-         [
-          "1",
-          "click",
-          "adicionar e avançar"
-         ],
-         [
-          "2",
-          "type",
-          "os dados da compra",
-          "#69a7ff"
-         ],
-         [
-          "3",
-          "should",
-          "conferir tudo",
-          "#ffd23f"
-         ]
-        ]
-       }
-      },
-      {
-       "text": "Dica: a luz de bicicleta tem o data test add to cart sauce labs bike light. Esse é maiorzinho, então sem pressa. Pause o vídeo e tente.",
-       "scene": {
-        "type": "passo",
-        "icone": "⏸",
-        "titulo": "Pause e tente sozinho",
-        "sub": "volte quando terminar"
-       }
-      },
-      {
-       "text": "Solução, primeira parte: adiciona os dois produtos e confere o número dois no carrinho.",
-       "scene": {
-        "type": "editor",
-        "arquivo": "compra.cy.js",
-        "pastas": [
-         "meu-primeiro-teste",
-         "cypress",
-         "e2e",
-         "compra.cy.js"
-        ],
-        "codigo": "  it('compra dois produtos', () => {\n    cy.get('[data-test=\"add-to-cart-sauce-labs-backpack\"]').click()\n    cy.get('[data-test=\"add-to-cart-sauce-labs-bike-light\"]').click()\n    cy.get('[data-test=\"shopping-cart-badge\"]').should('have.text', '2')",
-        "legenda": "Dois produtos, número 2",
-        "destaque": [
-         2,
-         3,
-         4
-        ],
-        "fonte": 26
-       }
-      },
-      {
-       "text": "Segunda parte: carrinho, checkout, os dados, continue, finish, e a mensagem final.",
-       "scene": {
-        "type": "editor",
-        "arquivo": "compra.cy.js",
-        "pastas": [
-         "meu-primeiro-teste",
-         "cypress",
-         "e2e",
-         "compra.cy.js"
-        ],
-        "codigo": "    cy.get('[data-test=\"shopping-cart-link\"]').click()\n    cy.get('[data-test=\"checkout\"]').click()\n    cy.get('[data-test=\"firstName\"]').type('Maria')\n    cy.get('[data-test=\"lastName\"]').type('Silva')\n    cy.get('[data-test=\"postalCode\"]').type('88000-000')\n    cy.get('[data-test=\"continue\"]').click()\n    cy.get('[data-test=\"finish\"]').click()\n    cy.contains('Thank you for your order!').should('be.visible')\n  })",
-        "legenda": "Do carrinho ao pedido feito",
-        "destaque": [
-         8
-        ],
-        "fonte": 26
-       }
-      },
-      {
-       "text": "Roda tudo com npm test e olha o resultado: todos os testes do curso, verdinhos, um atrás do outro.",
-       "scene": {
-        "type": "terminal",
-        "titulo": "Terminal — VS Code",
-        "pasta": "C:\\Users\\voce\\Documents\\meu-primeiro-teste",
-        "linhas": [
-         {
-          "cmd": "npm test"
-         },
-         {
-          "out": "  ✓ entra com usuário e senha",
-          "cor": "ac"
-         },
-         {
-          "out": "  ✓ mostra erro com senha errada",
-          "cor": "ac"
-         },
-         {
-          "out": "  ✓ remove a mochila do carrinho",
-          "cor": "ac"
-         },
-         {
-          "out": "  ✓ compra dois produtos",
-          "cor": "ac"
-         },
-         {
-          "out": "All specs passed!",
-          "cor": "ac"
-         }
-        ],
-        "legenda": "Todos os testes do curso passando"
-       }
-      },
-      {
-       "text": "Se você fez os seis desafios, mesmo olhando a solução em alguns, parabéns de verdade. Você já escreve testes sozinho.",
-       "scene": {
-        "type": "bigtext",
-        "stagger": 0.25,
-        "lines": [
-         [
-          "VOCÊ JÁ ESCREVE",
-          "white",
-          140
-         ],
-         [
-          "TESTES SOZINHO",
-          "gold",
-          160
-         ]
-        ]
-       }
-      },
-      {
-       "text": "Fechamos a prática! No próximo módulo, a gente fala de carreira: como usar isso pra conseguir uma vaga.",
-       "scene": {
-        "type": "passo",
-        "icone": "▶",
-        "titulo": "Próxima aula",
-        "sub": "Carreira Em Qa"
-       }
-      },
-      {
-       "text": "Te vejo lá!",
-       "scene": {
-        "type": "endcard",
-        "sub": "PRÓXIMA: CARREIRA EM QA"
-       }
-      }
-     ]
-    }
-   ]
-  },
-  "shorts": [],
-  "tiktoks": []
- },
- "serie": [],
- "meta": {
-  "titles": [
-   "Aula 25: Desafio final: compra com dois produtos"
+  "title": "Cypress para leigos · Aula 25",
+  "slug": "curso-cypress-25",
+  "idioma": "pt",
+  "destino": "curso",
+  "marca": [
+    "CYPRESS",
+    "PARA LEIGOS"
   ],
-  "description": "",
-  "tags": []
- },
- "notes": "Curso Cypress para leigos. Não publica (destino: curso)."
+  "cor_fundo": "#3fd68a",
+  "legenda_y": 0.93,
+  "selo": "MÓDULO 6 · AULA 25",
+  "voz": {
+    "nome": "gravada",
+    "motor": "eleven",
+    "eleven_voz": "Vinícius Torales"
+  },
+  "script": {
+    "long": {
+      "parts": [
+        {
+          "chapter": "",
+          "sentences": [
+            {
+              "text": "Chegou o desafio final. Faz uma compra com dois produtos: a mochila e a luz de bicicleta. Confere se o carrinho mostra dois, e finaliza a compra até a mensagem de agradecimento.",
+              "scene": {
+                "type": "passo",
+                "icone": "★",
+                "titulo": "A compra com dois produtos",
+                "sub": "Desafio 6 de 6"
+              }
+            },
+            {
+              "text": "Esse desafio junta quase tudo o que você aprendeu: beforeEach, get, click, type, should. Use a aula dezoito como base, se precisar.",
+              "scene": {
+                "type": "cards",
+                "titulo": "VOCÊ VAI USAR",
+                "itens": [
+                  [
+                    "1",
+                    "click",
+                    "adicionar e avançar"
+                  ],
+                  [
+                    "2",
+                    "type",
+                    "os dados da compra",
+                    "#69a7ff"
+                  ],
+                  [
+                    "3",
+                    "should",
+                    "conferir tudo",
+                    "#ffd23f"
+                  ]
+                ]
+              }
+            },
+            {
+              "text": "Dica: a luz de bicicleta tem o data test add to cart sauce labs bike light. Esse é maiorzinho, então sem pressa. Pause o vídeo e tente.",
+              "scene": {
+                "type": "tela",
+                "media": "site_sauce_bike",
+                "url": "https://www.saucedemo.com/",
+                "acoes": [
+                  {
+                    "fill": [
+                      "#user-name",
+                      "standard_user"
+                    ]
+                  },
+                  {
+                    "fill": [
+                      "#password",
+                      "secret_sauce"
+                    ]
+                  },
+                  {
+                    "click": "#login-button"
+                  }
+                ],
+                "alvo_css": "[data-test=\"add-to-cart-sauce-labs-bike-light\"]",
+                "titulo": "saucedemo.com/inventory.html",
+                "legenda": "A luz de bicicleta"
+              }
+            },
+            {
+              "text": "Solução, primeira parte: adiciona os dois produtos e confere o número dois no carrinho.",
+              "scene": {
+                "type": "editor",
+                "arquivo": "compra.cy.js",
+                "pastas": [
+                  "meu-primeiro-teste",
+                  "cypress",
+                  "e2e",
+                  "compra.cy.js"
+                ],
+                "codigo": "  it('compra dois produtos', () => {\n    cy.get('[data-test=\"add-to-cart-sauce-labs-backpack\"]').click()\n    cy.get('[data-test=\"add-to-cart-sauce-labs-bike-light\"]').click()\n    cy.get('[data-test=\"shopping-cart-badge\"]').should('have.text', '2')",
+                "legenda": "Dois produtos, número 2",
+                "destaque": [
+                  2,
+                  3,
+                  4
+                ],
+                "fonte": 26
+              }
+            },
+            {
+              "text": "Segunda parte: carrinho, checkout, os dados, continue, finish, e a mensagem final.",
+              "scene": {
+                "type": "editor",
+                "arquivo": "compra.cy.js",
+                "pastas": [
+                  "meu-primeiro-teste",
+                  "cypress",
+                  "e2e",
+                  "compra.cy.js"
+                ],
+                "codigo": "    cy.get('[data-test=\"shopping-cart-link\"]').click()\n    cy.get('[data-test=\"checkout\"]').click()\n    cy.get('[data-test=\"firstName\"]').type('Maria')\n    cy.get('[data-test=\"lastName\"]').type('Silva')\n    cy.get('[data-test=\"postalCode\"]').type('88000-000')\n    cy.get('[data-test=\"continue\"]').click()\n    cy.get('[data-test=\"finish\"]').click()\n    cy.contains('Thank you for your order!').should('be.visible')\n  })",
+                "legenda": "Do carrinho ao pedido feito",
+                "destaque": [
+                  8
+                ],
+                "fonte": 26
+              }
+            },
+            {
+              "text": "Roda tudo com npm test e olha o resultado: todos os testes do curso, verdinhos, um atrás do outro.",
+              "scene": {
+                "type": "terminal",
+                "titulo": "Terminal — VS Code",
+                "pasta": "C:\\Users\\voce\\Documents\\meu-primeiro-teste",
+                "linhas": [
+                  {
+                    "cmd": "npm test"
+                  },
+                  {
+                    "out": "  ✓ entra com usuário e senha",
+                    "cor": "ac"
+                  },
+                  {
+                    "out": "  ✓ mostra erro com senha errada",
+                    "cor": "ac"
+                  },
+                  {
+                    "out": "  ✓ remove a mochila do carrinho",
+                    "cor": "ac"
+                  },
+                  {
+                    "out": "  ✓ compra dois produtos",
+                    "cor": "ac"
+                  },
+                  {
+                    "out": "All specs passed!",
+                    "cor": "ac"
+                  }
+                ],
+                "legenda": "Todos os testes do curso passando"
+              }
+            },
+            {
+              "text": "Se você fez os seis desafios, mesmo olhando a solução em alguns, parabéns de verdade. Você já escreve testes sozinho.",
+              "scene": {
+                "type": "bigtext",
+                "stagger": 0.25,
+                "lines": [
+                  [
+                    "VOCÊ JÁ ESCREVE",
+                    "white",
+                    140
+                  ],
+                  [
+                    "TESTES SOZINHO",
+                    "gold",
+                    160
+                  ]
+                ]
+              }
+            },
+            {
+              "text": "Fechamos a prática! No próximo módulo, a gente fala de carreira: como usar isso pra conseguir uma vaga.",
+              "scene": {
+                "type": "passo",
+                "icone": "▶",
+                "titulo": "Próxima aula",
+                "sub": "Carreira Em Qa"
+              }
+            },
+            {
+              "text": "Te vejo lá!",
+              "scene": {
+                "type": "endcard",
+                "sub": "PRÓXIMA: CARREIRA EM QA"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "shorts": [],
+    "tiktoks": []
+  },
+  "serie": [],
+  "meta": {
+    "titles": [
+      "Aula 25: Desafio final: compra com dois produtos"
+    ],
+    "description": "",
+    "tags": []
+  },
+  "notes": "Curso Cypress para leigos. Não publica (destino: curso)."
 }

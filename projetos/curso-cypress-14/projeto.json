@@ -1,239 +1,248 @@
 {
- "title": "Cypress para leigos · Aula 14",
- "slug": "curso-cypress-14",
- "idioma": "pt",
- "destino": "curso",
- "marca": [
-  "CYPRESS",
-  "PARA LEIGOS"
- ],
- "cor_fundo": "#3fd68a",
- "legenda_y": 0.93,
- "selo": "MÓDULO 4 · AULA 14",
- "voz": {
-  "nome": "gravada",
-  "motor": "eleven",
-  "eleven_voz": "Vinícius Torales"
- },
- "script": {
-  "long": {
-   "parts": [
-    {
-     "chapter": "",
-     "sentences": [
-      {
-       "text": "Fala, pessoal! Aula quatorze. Um arquivo de teste quase nunca tem um teste só. Hoje a gente coloca vários e deixa tudo organizado.",
-       "scene": {
-        "type": "bigtext",
-        "stagger": 0.25,
-        "lines": [
-         [
-          "AULA 14",
-          "muted",
-          80
-         ],
-         [
-          "VÁRIOS TESTES",
-          "white",
-          140
-         ],
-         [
-          "ORGANIZADOS",
-          "gold",
-          170
-         ]
-        ]
-       }
-      },
-      {
-       "text": "Pensa no login. Além do login que dá certo, é importante testar o que dá errado: por exemplo, um usuário bloqueado tentando entrar.",
-       "scene": {
-        "type": "cards",
-        "itens": [
-         [
-          "✓",
-          "Login certo",
-          "entra na loja"
-         ],
-         [
-          "✗",
-          "Usuário bloqueado",
-          "mostra um erro",
-          "#ff6b6b"
-         ]
-        ]
-       }
-      },
-      {
-       "text": "Pra isso, é só criar mais um it dentro do mesmo describe. Cada it é um teste separado.",
-       "scene": {
-        "type": "editor",
-        "arquivo": "login.cy.js",
-        "pastas": [
-         "meu-primeiro-teste",
-         "cypress",
-         "e2e",
-         "login.cy.js"
-        ],
-        "codigo": "describe('Login', () => {\n  it('entra com usuário e senha', () => {\n    // ...\n  })\n\n  it('mostra erro para usuário bloqueado', () => {\n    // ...\n  })\n})",
-        "legenda": "Dois testes no mesmo arquivo",
-        "destaque": [
-         6
-        ]
-       }
-      },
-      {
-       "text": "Mas repara: os dois testes começam do mesmo jeito, abrindo o site. E repetir código é chato e dá trabalho pra manter.",
-       "scene": {
-        "type": "bigtext",
-        "stagger": 0.25,
-        "lines": [
-         [
-          "CÓDIGO REPETIDO",
-          "white",
-          130
-         ],
-         [
-          "DÁ TRABALHO",
-          "red",
-          170
-         ]
-        ]
-       }
-      },
-      {
-       "text": "É aí que entra o beforeEach, que quer dizer antes de cada. Tudo o que você colocar nele roda antes de cada teste.",
-       "scene": {
-        "type": "editor",
-        "arquivo": "login.cy.js",
-        "pastas": [
-         "meu-primeiro-teste",
-         "cypress",
-         "e2e",
-         "login.cy.js"
-        ],
-        "codigo": "describe('Login', () => {\n  beforeEach(() => {\n    cy.visit('https://www.saucedemo.com')\n  })\n\n  it('entra com usuário e senha', () => {\n    cy.get('[data-test=\"username\"]').type('standard_user')\n    cy.get('[data-test=\"password\"]').type('secret_sauce')\n    cy.get('[data-test=\"login-button\"]').click()\n    cy.contains('Products').should('be.visible')\n  })\n})",
-        "legenda": "beforeEach = antes de cada teste",
-        "destaque": [
-         2,
-         3
-        ],
-        "fonte": 28
-       }
-      },
-      {
-       "text": "E o segundo teste fica assim: usuário locked out user, a mesma senha, e no final a gente confere se apareceu a mensagem de erro.",
-       "scene": {
-        "type": "editor",
-        "arquivo": "login.cy.js",
-        "pastas": [
-         "meu-primeiro-teste",
-         "cypress",
-         "e2e",
-         "login.cy.js"
-        ],
-        "codigo": "  it('mostra erro para usuário bloqueado', () => {\n    cy.get('[data-test=\"username\"]').type('locked_out_user')\n    cy.get('[data-test=\"password\"]').type('secret_sauce')\n    cy.get('[data-test=\"login-button\"]').click()\n    cy.get('[data-test=\"error\"]')\n      .should('contain', 'locked out')\n  })",
-        "legenda": "Conferindo a mensagem de erro",
-        "destaque": [
-         5,
-         6
-        ],
-        "fonte": 28
-       }
-      },
-      {
-       "text": "Roda de novo e olha: agora aparecem dois testes, os dois verdes. Um testando o caminho feliz, e outro testando o erro.",
-       "scene": {
-        "type": "runner",
-        "spec": "login.cy.js",
-        "teste": "mostra erro para usuário bloqueado",
-        "passos": [
-         [
-          "visit",
-          "saucedemo.com"
-         ],
-         [
-          "get",
-          "[data-test=username]"
-         ],
-         [
-          "type",
-          "locked_out_user"
-         ],
-         [
-          "get",
-          "[data-test=password]"
-         ],
-         [
-          "type",
-          "secret_sauce"
-         ],
-         [
-          "click",
-          ""
-         ],
-         [
-          "get",
-          "[data-test=error]"
-         ],
-         [
-          "contain",
-          "locked out"
-         ]
-        ],
-        "status": "passou",
-        "media": "site_sauce_bloqueado",
-        "url": "https://www.saucedemo.com/",
-        "acoes": [
-         {
-          "fill": [
-           "#user-name",
-           "locked_out_user"
-          ]
-         },
-         {
-          "fill": [
-           "#password",
-           "secret_sauce"
-          ]
-         },
-         {
-          "click": "#login-button"
-         }
-        ],
-        "legenda": "Testar o erro também é testar"
-       }
-      },
-      {
-       "text": "Na próxima aula, a gente aprende a ler um teste que falhou, sem pânico.",
-       "scene": {
-        "type": "passo",
-        "icone": "▶",
-        "titulo": "Próxima aula",
-        "sub": "Quando O Teste Falha"
-       }
-      },
-      {
-       "text": "Te vejo lá!",
-       "scene": {
-        "type": "endcard",
-        "sub": "PRÓXIMA: QUANDO O TESTE FALHA"
-       }
-      }
-     ]
-    }
-   ]
-  },
-  "shorts": [],
-  "tiktoks": []
- },
- "serie": [],
- "meta": {
-  "titles": [
-   "Aula 14: Organizando: vários testes e beforeEach"
+  "title": "Cypress para leigos · Aula 14",
+  "slug": "curso-cypress-14",
+  "idioma": "pt",
+  "destino": "curso",
+  "marca": [
+    "CYPRESS",
+    "PARA LEIGOS"
   ],
-  "description": "",
-  "tags": []
- },
- "notes": "Curso Cypress para leigos. Não publica (destino: curso)."
+  "cor_fundo": "#3fd68a",
+  "legenda_y": 0.93,
+  "selo": "MÓDULO 4 · AULA 14",
+  "voz": {
+    "nome": "gravada",
+    "motor": "eleven",
+    "eleven_voz": "Vinícius Torales"
+  },
+  "script": {
+    "long": {
+      "parts": [
+        {
+          "chapter": "",
+          "sentences": [
+            {
+              "text": "Fala, pessoal! Aula quatorze. Um arquivo de teste quase nunca tem um teste só. Hoje a gente coloca vários e deixa tudo organizado.",
+              "scene": {
+                "type": "bigtext",
+                "stagger": 0.25,
+                "lines": [
+                  [
+                    "AULA 14",
+                    "muted",
+                    80
+                  ],
+                  [
+                    "VÁRIOS TESTES",
+                    "white",
+                    140
+                  ],
+                  [
+                    "ORGANIZADOS",
+                    "gold",
+                    170
+                  ]
+                ]
+              }
+            },
+            {
+              "text": "Pensa no login. Além do login que dá certo, é importante testar o que dá errado: por exemplo, um usuário bloqueado tentando entrar.",
+              "scene": {
+                "type": "tela",
+                "media": "site_sauce_bloqueado",
+                "url": "https://www.saucedemo.com/",
+                "acoes": [
+                  {
+                    "fill": [
+                      "#user-name",
+                      "locked_out_user"
+                    ]
+                  },
+                  {
+                    "fill": [
+                      "#password",
+                      "secret_sauce"
+                    ]
+                  },
+                  {
+                    "click": "#login-button"
+                  }
+                ],
+                "alvo_css": "[data-test=\"error\"]",
+                "titulo": "saucedemo.com",
+                "legenda": "Usuário bloqueado: o site mostra um erro"
+              }
+            },
+            {
+              "text": "Pra isso, é só criar mais um it dentro do mesmo describe. Cada it é um teste separado.",
+              "scene": {
+                "type": "editor",
+                "arquivo": "login.cy.js",
+                "pastas": [
+                  "meu-primeiro-teste",
+                  "cypress",
+                  "e2e",
+                  "login.cy.js"
+                ],
+                "codigo": "describe('Login', () => {\n  it('entra com usuário e senha', () => {\n    // ...\n  })\n\n  it('mostra erro para usuário bloqueado', () => {\n    // ...\n  })\n})",
+                "legenda": "Dois testes no mesmo arquivo",
+                "destaque": [
+                  6
+                ]
+              }
+            },
+            {
+              "text": "Mas repara: os dois testes começam do mesmo jeito, abrindo o site. E repetir código é chato e dá trabalho pra manter.",
+              "scene": {
+                "type": "bigtext",
+                "stagger": 0.25,
+                "lines": [
+                  [
+                    "CÓDIGO REPETIDO",
+                    "white",
+                    130
+                  ],
+                  [
+                    "DÁ TRABALHO",
+                    "red",
+                    170
+                  ]
+                ]
+              }
+            },
+            {
+              "text": "É aí que entra o beforeEach, que quer dizer antes de cada. Tudo o que você colocar nele roda antes de cada teste.",
+              "scene": {
+                "type": "editor",
+                "arquivo": "login.cy.js",
+                "pastas": [
+                  "meu-primeiro-teste",
+                  "cypress",
+                  "e2e",
+                  "login.cy.js"
+                ],
+                "codigo": "describe('Login', () => {\n  beforeEach(() => {\n    cy.visit('https://www.saucedemo.com')\n  })\n\n  it('entra com usuário e senha', () => {\n    cy.get('[data-test=\"username\"]').type('standard_user')\n    cy.get('[data-test=\"password\"]').type('secret_sauce')\n    cy.get('[data-test=\"login-button\"]').click()\n    cy.contains('Products').should('be.visible')\n  })\n})",
+                "legenda": "beforeEach = antes de cada teste",
+                "destaque": [
+                  2,
+                  3
+                ],
+                "fonte": 28
+              }
+            },
+            {
+              "text": "E o segundo teste fica assim: usuário locked out user, a mesma senha, e no final a gente confere se apareceu a mensagem de erro.",
+              "scene": {
+                "type": "editor",
+                "arquivo": "login.cy.js",
+                "pastas": [
+                  "meu-primeiro-teste",
+                  "cypress",
+                  "e2e",
+                  "login.cy.js"
+                ],
+                "codigo": "  it('mostra erro para usuário bloqueado', () => {\n    cy.get('[data-test=\"username\"]').type('locked_out_user')\n    cy.get('[data-test=\"password\"]').type('secret_sauce')\n    cy.get('[data-test=\"login-button\"]').click()\n    cy.get('[data-test=\"error\"]')\n      .should('contain', 'locked out')\n  })",
+                "legenda": "Conferindo a mensagem de erro",
+                "destaque": [
+                  5,
+                  6
+                ],
+                "fonte": 28
+              }
+            },
+            {
+              "text": "Roda de novo e olha: agora aparecem dois testes, os dois verdes. Um testando o caminho feliz, e outro testando o erro.",
+              "scene": {
+                "type": "runner",
+                "spec": "login.cy.js",
+                "teste": "mostra erro para usuário bloqueado",
+                "passos": [
+                  [
+                    "visit",
+                    "saucedemo.com"
+                  ],
+                  [
+                    "get",
+                    "[data-test=username]"
+                  ],
+                  [
+                    "type",
+                    "locked_out_user"
+                  ],
+                  [
+                    "get",
+                    "[data-test=password]"
+                  ],
+                  [
+                    "type",
+                    "secret_sauce"
+                  ],
+                  [
+                    "click",
+                    ""
+                  ],
+                  [
+                    "get",
+                    "[data-test=error]"
+                  ],
+                  [
+                    "contain",
+                    "locked out"
+                  ]
+                ],
+                "status": "passou",
+                "media": "site_sauce_bloqueado",
+                "url": "https://www.saucedemo.com/",
+                "acoes": [
+                  {
+                    "fill": [
+                      "#user-name",
+                      "locked_out_user"
+                    ]
+                  },
+                  {
+                    "fill": [
+                      "#password",
+                      "secret_sauce"
+                    ]
+                  },
+                  {
+                    "click": "#login-button"
+                  }
+                ],
+                "legenda": "Testar o erro também é testar"
+              }
+            },
+            {
+              "text": "Na próxima aula, a gente aprende a ler um teste que falhou, sem pânico.",
+              "scene": {
+                "type": "passo",
+                "icone": "▶",
+                "titulo": "Próxima aula",
+                "sub": "Quando O Teste Falha"
+              }
+            },
+            {
+              "text": "Te vejo lá!",
+              "scene": {
+                "type": "endcard",
+                "sub": "PRÓXIMA: QUANDO O TESTE FALHA"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "shorts": [],
+    "tiktoks": []
+  },
+  "serie": [],
+  "meta": {
+    "titles": [
+      "Aula 14: Organizando: vários testes e beforeEach"
+    ],
+    "description": "",
+    "tags": []
+  },
+  "notes": "Curso Cypress para leigos. Não publica (destino: curso)."
 }

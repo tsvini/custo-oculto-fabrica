@@ -1,241 +1,256 @@
 {
- "title": "Cypress para leigos · Aula 4",
- "slug": "curso-cypress-04",
- "idioma": "pt",
- "destino": "curso",
- "marca": [
-  "CYPRESS",
-  "PARA LEIGOS"
- ],
- "cor_fundo": "#3fd68a",
- "voz": {
-  "nome": "gravada",
-  "motor": "eleven",
-  "eleven_voz": "Vinícius Torales"
- },
- "script": {
-  "long": {
-   "parts": [
-    {
-     "chapter": "",
-     "sentences": [
-      {
-       "text": "Fala, pessoal! Aula quatro. Hoje é a última instalação: o Git.",
-       "scene": {
-        "type": "bigtext",
-        "stagger": 0.25,
-        "lines": [
-         [
-          "AULA 4",
-          "muted",
-          80
-         ],
-         [
-          "GIT",
-          "gold",
-          240
-         ]
-        ]
-       }
-      },
-      {
-       "text": "O Git é como o salvar do videogame. Cada vez que você termina uma parte do projeto, você salva. Se der algum problema depois, dá pra voltar pro ponto salvo.",
-       "scene": {
-        "type": "cards",
-        "titulo": "O GIT É O SAVE DO SEU PROJETO",
-        "itens": [
-         [
-          "1",
-          "Salva",
-          "cada versão do projeto"
-         ],
-         [
-          "2",
-          "Volta",
-          "se algo der errado",
-          "#69a7ff"
-         ],
-         [
-          "3",
-          "Compartilha",
-          "no GitHub, o seu portfólio",
-          "#ffd23f"
-         ]
-        ]
-       }
-      },
-      {
-       "text": "E é com ele que, no final do curso, você vai colocar o seu projeto no GitHub, que funciona como um portfólio que as empresas olham.",
-       "scene": {
-        "type": "bigtext",
-        "stagger": 0.25,
-        "lines": [
-         [
-          "SEU PROJETO",
-          "white",
-          150
-         ],
-         [
-          "NO GITHUB",
-          "gold",
-          180
-         ]
-        ]
-       }
-      },
-      {
-       "text": "Primeiro passo: entra no site git traço scm ponto com.",
-       "scene": {
-        "type": "passo",
-        "n": 1,
-        "de": 3,
-        "titulo": "Entre no site",
-        "sub": "git-scm.com",
-        "icone": "1"
-       }
-      },
-      {
-       "text": "Clica em Download for Windows, e na página seguinte, escolhe a versão de sessenta e quatro bits.",
-       "scene": {
-        "type": "tela",
-        "media": "site_git",
-        "url": "https://git-scm.com/",
-        "alvo": "Download for Windows",
-        "titulo": "git-scm.com",
-        "zoom_em": 1.6,
-        "caixa_em": 2.4,
-        "legenda": "Clique em Download for Windows"
-       }
-      },
-      {
-       "text": "Segundo passo: abre o instalador. O Git tem bastante tela, mas não se assusta: dá pra deixar quase tudo no padrão e só ir clicando em Next.",
-       "scene": {
-        "type": "passo",
-        "n": 2,
-        "de": 3,
-        "titulo": "Next, Next, Next",
-        "sub": "quase tudo no padrão",
-        "icone": "2"
-       }
-      },
-      {
-       "text": "Só tem uma tela que vale mudar: quando ele perguntar qual editor usar, escolhe o Visual Studio Code. Assim o Git já conversa com o VS Code que a gente instalou.",
-       "scene": {
-        "type": "instalador",
-        "app": "Git",
-        "titulo": "Choosing the default editor used by Git",
-        "subtitulo": "Which editor would you like Git to use?",
-        "texto": "Use Visual Studio Code as Git's default editor",
-        "botao": "Next",
-        "legenda": "Escolha o Visual Studio Code"
-       }
-      },
-      {
-       "text": "Depois é só clicar em Install, esperar, e clicar em Finish.",
-       "scene": {
-        "type": "instalador",
-        "app": "Git",
-        "titulo": "Installing",
-        "subtitulo": "Please wait while Setup installs Git on your computer",
-        "progresso": true,
-        "botao": "Finish"
-       }
-      },
-      {
-       "text": "Terceiro passo: abre o PowerShell de novo e digita git espaço traço traço version.",
-       "scene": {
-        "type": "terminal",
-        "pasta": "C:\\Users\\voce",
-        "linhas": [
-         {
-          "cmd": "git --version"
-         },
-         {
-          "out": "git version 2.47.0.windows.1",
-          "cor": "ac"
-         }
-        ],
-        "legenda": "Apareceu a versão? Instalou certinho!"
-       }
-      },
-      {
-       "text": "Apareceu a versão? Então pronto! Você tem tudo o que precisa: o VS Code, o Node.js e o Git.",
-       "scene": {
-        "type": "cards",
-        "titulo": "TUDO INSTALADO",
-        "juntos": true,
-        "itens": [
-         [
-          "</>",
-          "VS Code",
-          "onde você escreve"
-         ],
-         [
-          "▶",
-          "Node.js",
-          "o motor",
-          "#69a7ff"
-         ],
-         [
-          "⑂",
-          "Git",
-          "o save do projeto",
-          "#ffd23f"
-         ]
-        ]
-       }
-      },
-      {
-       "text": "A parte mais chata do curso acabou. A partir de agora começa a parte divertida.",
-       "scene": {
-        "type": "bigtext",
-        "stagger": 0.25,
-        "lines": [
-         [
-          "A PARTE CHATA",
-          "white",
-          140
-         ],
-         [
-          "ACABOU!",
-          "gold",
-          210
-         ]
-        ]
-       }
-      },
-      {
-       "text": "Na próxima aula, a gente cria a pastinha do projeto e abre ela no VS Code.",
-       "scene": {
-        "type": "passo",
-        "icone": "▶",
-        "titulo": "Próxima aula",
-        "sub": "Criando O Projeto"
-       }
-      },
-      {
-       "text": "Te vejo lá!",
-       "scene": {
-        "type": "endcard",
-        "sub": "PRÓXIMA: CRIANDO O PROJETO"
-       }
-      }
-     ]
-    }
-   ]
-  },
-  "shorts": [],
-  "tiktoks": []
- },
- "serie": [],
- "meta": {
-  "titles": [
-   "Aula 4: Instalando o Git"
+  "title": "Cypress para leigos · Aula 4",
+  "slug": "curso-cypress-04",
+  "idioma": "pt",
+  "destino": "curso",
+  "marca": [
+    "CYPRESS",
+    "PARA LEIGOS"
   ],
-  "description": "",
-  "tags": []
- },
- "notes": "Curso Cypress para leigos. Não publica (destino: curso).",
- "legenda_y": 0.93,
- "selo": "MÓDULO 1 · AULA 4"
+  "cor_fundo": "#3fd68a",
+  "voz": {
+    "nome": "gravada",
+    "motor": "eleven",
+    "eleven_voz": "Vinícius Torales"
+  },
+  "script": {
+    "long": {
+      "parts": [
+        {
+          "chapter": "",
+          "sentences": [
+            {
+              "text": "Fala, pessoal! Aula quatro. Hoje é a última instalação: o Git.",
+              "scene": {
+                "type": "bigtext",
+                "stagger": 0.25,
+                "lines": [
+                  [
+                    "AULA 4",
+                    "muted",
+                    80
+                  ],
+                  [
+                    "GIT",
+                    "gold",
+                    240
+                  ]
+                ]
+              }
+            },
+            {
+              "text": "O Git é como o salvar do videogame. Cada vez que você termina uma parte do projeto, você salva. Se der algum problema depois, dá pra voltar pro ponto salvo.",
+              "scene": {
+                "type": "cards",
+                "titulo": "O GIT É O SAVE DO SEU PROJETO",
+                "itens": [
+                  [
+                    "1",
+                    "Salva",
+                    "cada versão do projeto"
+                  ],
+                  [
+                    "2",
+                    "Volta",
+                    "se algo der errado",
+                    "#69a7ff"
+                  ],
+                  [
+                    "3",
+                    "Compartilha",
+                    "no GitHub, o seu portfólio",
+                    "#ffd23f"
+                  ]
+                ]
+              }
+            },
+            {
+              "text": "E é com ele que, no final do curso, você vai colocar o seu projeto no GitHub, que funciona como um portfólio que as empresas olham.",
+              "scene": {
+                "type": "bigtext",
+                "stagger": 0.25,
+                "lines": [
+                  [
+                    "SEU PROJETO",
+                    "white",
+                    150
+                  ],
+                  [
+                    "NO GITHUB",
+                    "gold",
+                    180
+                  ]
+                ]
+              }
+            },
+            {
+              "text": "Primeiro passo: entra no site git traço scm ponto com.",
+              "scene": {
+                "type": "tela",
+                "media": "site_git",
+                "url": "https://git-scm.com/",
+                "titulo": "git-scm.com",
+                "zoom": null,
+                "caixa": null,
+                "legenda": "git-scm.com"
+              }
+            },
+            {
+              "text": "Clica em Download for Windows, e na página seguinte, escolhe a versão de sessenta e quatro bits.",
+              "scene": {
+                "type": "tela",
+                "media": "site_git",
+                "url": "https://git-scm.com/",
+                "alvo": "Download for Windows",
+                "titulo": "git-scm.com",
+                "zoom_em": 1.6,
+                "caixa_em": 2.4,
+                "legenda": "Clique em Download for Windows"
+              }
+            },
+            {
+              "text": "Segundo passo: abre o instalador. O Git tem bastante tela, mas não se assusta: dá pra deixar quase tudo no padrão e só ir clicando em Next.",
+              "scene": {
+                "type": "instalador",
+                "app": "Git",
+                "titulo": "Select Components",
+                "subtitulo": "Which components should be installed?",
+                "caixas": [
+                  [
+                    "Windows Explorer integration",
+                    true
+                  ],
+                  [
+                    "Git LFS (Large File Support)",
+                    true
+                  ],
+                  [
+                    "Associate .sh files to be run with Bash",
+                    true
+                  ]
+                ],
+                "botao": "Next",
+                "legenda": "Pode deixar no padrão: Next"
+              }
+            },
+            {
+              "text": "Só tem uma tela que vale mudar: quando ele perguntar qual editor usar, escolhe o Visual Studio Code. Assim o Git já conversa com o VS Code que a gente instalou.",
+              "scene": {
+                "type": "instalador",
+                "app": "Git",
+                "titulo": "Choosing the default editor used by Git",
+                "subtitulo": "Which editor would you like Git to use?",
+                "texto": "Use Visual Studio Code as Git's default editor",
+                "botao": "Next",
+                "legenda": "Escolha o Visual Studio Code"
+              }
+            },
+            {
+              "text": "Depois é só clicar em Install, esperar, e clicar em Finish.",
+              "scene": {
+                "type": "instalador",
+                "app": "Git",
+                "titulo": "Installing",
+                "subtitulo": "Please wait while Setup installs Git on your computer",
+                "progresso": true,
+                "botao": "Finish"
+              }
+            },
+            {
+              "text": "Terceiro passo: abre o PowerShell de novo e digita git espaço traço traço version.",
+              "scene": {
+                "type": "terminal",
+                "pasta": "C:\\Users\\voce",
+                "linhas": [
+                  {
+                    "cmd": "git --version"
+                  },
+                  {
+                    "out": "git version 2.47.0.windows.1",
+                    "cor": "ac"
+                  }
+                ],
+                "legenda": "Apareceu a versão? Instalou certinho!"
+              }
+            },
+            {
+              "text": "Apareceu a versão? Então pronto! Você tem tudo o que precisa: o VS Code, o Node.js e o Git.",
+              "scene": {
+                "type": "cards",
+                "titulo": "TUDO INSTALADO",
+                "juntos": true,
+                "itens": [
+                  [
+                    "</>",
+                    "VS Code",
+                    "onde você escreve"
+                  ],
+                  [
+                    "▶",
+                    "Node.js",
+                    "o motor",
+                    "#69a7ff"
+                  ],
+                  [
+                    "⑂",
+                    "Git",
+                    "o save do projeto",
+                    "#ffd23f"
+                  ]
+                ]
+              }
+            },
+            {
+              "text": "A parte mais chata do curso acabou. A partir de agora começa a parte divertida.",
+              "scene": {
+                "type": "bigtext",
+                "stagger": 0.25,
+                "lines": [
+                  [
+                    "A PARTE CHATA",
+                    "white",
+                    140
+                  ],
+                  [
+                    "ACABOU!",
+                    "gold",
+                    210
+                  ]
+                ]
+              }
+            },
+            {
+              "text": "Na próxima aula, a gente cria a pastinha do projeto e abre ela no VS Code.",
+              "scene": {
+                "type": "passo",
+                "icone": "▶",
+                "titulo": "Próxima aula",
+                "sub": "Criando O Projeto"
+              }
+            },
+            {
+              "text": "Te vejo lá!",
+              "scene": {
+                "type": "endcard",
+                "sub": "PRÓXIMA: CRIANDO O PROJETO"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "shorts": [],
+    "tiktoks": []
+  },
+  "serie": [],
+  "meta": {
+    "titles": [
+      "Aula 4: Instalando o Git"
+    ],
+    "description": "",
+    "tags": []
+  },
+  "notes": "Curso Cypress para leigos. Não publica (destino: curso).",
+  "legenda_y": 0.93,
+  "selo": "MÓDULO 1 · AULA 4"
 }
