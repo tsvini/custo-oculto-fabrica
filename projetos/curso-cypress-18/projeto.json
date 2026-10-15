@@ -1,262 +1,499 @@
 {
- "title": "Cypress para leigos · Aula 18",
- "slug": "curso-cypress-18",
- "idioma": "pt",
- "destino": "curso",
- "marca": [
-  "CYPRESS",
-  "PARA LEIGOS"
- ],
- "cor_fundo": "#3fd68a",
- "legenda_y": 0.93,
- "selo": "MÓDULO 5 · AULA 18",
- "voz": {
-  "nome": "gravada",
-  "motor": "eleven",
-  "eleven_voz": "Vinícius Torales"
- },
- "script": {
-  "long": {
-   "parts": [
-    {
-     "chapter": "",
-     "sentences": [
-      {
-       "text": "Fala, pessoal! Aula dezoito. Hoje a gente termina o projeto final: a compra completa.",
-       "scene": {
-        "type": "bigtext",
-        "stagger": 0.25,
-        "lines": [
-         [
-          "AULA 18",
-          "muted",
-          80
-         ],
-         [
-          "A COMPRA",
-          "white",
-          150
-         ],
-         [
-          "COMPLETA",
-          "gold",
-          190
-         ]
-        ]
-       }
-      },
-      {
-       "text": "O caminho de uma compra na loja é esse: carrinho, checkout, preencher os dados, revisar, e finalizar.",
-       "scene": {
-        "type": "cards",
-        "titulo": "O CAMINHO DA COMPRA",
-        "itens": [
-         [
-          "1",
-          "Carrinho",
-          ""
-         ],
-         [
-          "2",
-          "Checkout",
-          "",
-          "#69a7ff"
-         ],
-         [
-          "3",
-          "Dados",
-          "nome e CEP",
-          "#ffd23f"
-         ],
-         [
-          "4",
-          "Finalizar",
-          "",
-          "#ff6b6b"
-         ]
-        ]
-       }
-      },
-      {
-       "text": "Primeiro, a gente adiciona a mochila, abre o carrinho e clica em Checkout.",
-       "scene": {
-        "type": "editor",
-        "arquivo": "compra.cy.js",
-        "pastas": [
-         "meu-primeiro-teste",
-         "cypress",
-         "e2e",
-         "compra.cy.js"
-        ],
-        "codigo": "  it('finaliza a compra', () => {\n    cy.get('[data-test=\"add-to-cart-sauce-labs-backpack\"]').click()\n    cy.get('[data-test=\"shopping-cart-link\"]').click()\n    cy.get('[data-test=\"checkout\"]').click()",
-        "legenda": "Carrinho e checkout",
-        "destaque": [
-         3,
-         4
-        ],
-        "fonte": 27
-       }
-      },
-      {
-       "text": "Depois, preenche nome, sobrenome e CEP. Pode colocar qualquer coisa, a loja é de mentira. E clica em Continue.",
-       "scene": {
-        "type": "editor",
-        "arquivo": "compra.cy.js",
-        "pastas": [
-         "meu-primeiro-teste",
-         "cypress",
-         "e2e",
-         "compra.cy.js"
-        ],
-        "codigo": "    cy.get('[data-test=\"firstName\"]').type('Maria')\n    cy.get('[data-test=\"lastName\"]').type('Silva')\n    cy.get('[data-test=\"postalCode\"]').type('88000-000')\n    cy.get('[data-test=\"continue\"]').click()",
-        "legenda": "Os dados da compra",
-        "destaque": [
-         1,
-         2,
-         3
-        ],
-        "fonte": 28
-       }
-      },
-      {
-       "text": "Por último, clica em Finish, e confere se apareceu a mensagem de agradecimento: Thank you for your order.",
-       "scene": {
-        "type": "editor",
-        "arquivo": "compra.cy.js",
-        "pastas": [
-         "meu-primeiro-teste",
-         "cypress",
-         "e2e",
-         "compra.cy.js"
-        ],
-        "codigo": "    cy.get('[data-test=\"finish\"]').click()\n    cy.contains('Thank you for your order!')\n      .should('be.visible')\n  })",
-        "legenda": "A conferência final",
-        "destaque": [
-         2,
-         3
-        ],
-        "fonte": 30
-       }
-      },
-      {
-       "text": "Roda e assiste: o Cypress faz a compra inteira, em poucos segundos, sem você encostar no mouse.",
-       "scene": {
-        "type": "runner",
-        "spec": "compra.cy.js",
-        "teste": "finaliza a compra",
-        "passos": [
-         [
-          "click",
-          "add-to-cart"
-         ],
-         [
-          "click",
-          "shopping-cart-link"
-         ],
-         [
-          "click",
-          "checkout"
-         ],
-         [
-          "type",
-          "Maria"
-         ],
-         [
-          "type",
-          "Silva"
-         ],
-         [
-          "type",
-          "88000-000"
-         ],
-         [
-          "click",
-          "continue"
-         ],
-         [
-          "click",
-          "finish"
-         ],
-         [
-          "contains",
-          "Thank you for your order!"
-         ]
-        ],
-        "status": "passou",
-        "media": "site_sauce_loja",
-        "url": "https://www.saucedemo.com/",
-        "acoes": [
-         {
-          "fill": [
-           "#user-name",
-           "standard_user"
-          ]
-         },
-         {
-          "fill": [
-           "#password",
-           "secret_sauce"
-          ]
-         },
-         {
-          "click": "#login-button"
-         }
-        ],
-        "legenda": "A compra inteira, sozinho"
-       }
-      },
-      {
-       "text": "Pensa no tempo que isso economiza: uma pessoa levaria um minuto ou mais pra fazer essa compra na mão. O Cypress faz em segundos, e pode repetir mil vezes por dia.",
-       "scene": {
-        "type": "compare",
-        "title": "QUANTO TEMPO LEVA?",
-        "items": [
-         [
-          "+1 MIN",
-          "NA MÃO",
-          "red"
-         ],
-         [
-          "SEGUNDOS",
-          "COM CYPRESS",
-          "gold"
-         ]
-        ],
-        "size": 150,
-        "stagger": 1.2,
-        "vs": true
-       }
-      },
-      {
-       "text": "Na última aula, a gente coloca o seu projeto no GitHub, pra virar portfólio.",
-       "scene": {
-        "type": "passo",
-        "icone": "▶",
-        "titulo": "Próxima aula",
-        "sub": "Subindo Pro Github"
-       }
-      },
-      {
-       "text": "Te vejo lá!",
-       "scene": {
-        "type": "endcard",
-        "sub": "PRÓXIMA: SUBINDO PRO GITHUB"
-       }
-      }
-     ]
-    }
-   ]
-  },
-  "shorts": [],
-  "tiktoks": []
- },
- "serie": [],
- "meta": {
-  "titles": [
-   "Aula 18: Projeto final: finalizando a compra"
+  "title": "Cypress para leigos · Aula 18",
+  "slug": "curso-cypress-18",
+  "idioma": "pt",
+  "destino": "curso",
+  "marca": [
+    "CYPRESS",
+    "PARA LEIGOS"
   ],
-  "description": "",
-  "tags": []
- },
- "notes": "Curso Cypress para leigos. Não publica (destino: curso)."
+  "cor_fundo": "#3fd68a",
+  "legenda_y": 0.93,
+  "selo": "MÓDULO 5 · AULA 18",
+  "voz": {
+    "nome": "gravada",
+    "motor": "eleven",
+    "eleven_voz": "Vinícius Torales"
+  },
+  "script": {
+    "long": {
+      "parts": [
+        {
+          "chapter": "",
+          "sentences": [
+            {
+              "text": "Fala, pessoal! Aula dezoito. Hoje a gente termina o projeto final: a compra completa.",
+              "scene": {
+                "type": "bigtext",
+                "stagger": 0.25,
+                "lines": [
+                  [
+                    "AULA 18",
+                    "muted",
+                    80
+                  ],
+                  [
+                    "A COMPRA",
+                    "white",
+                    150
+                  ],
+                  [
+                    "COMPLETA",
+                    "gold",
+                    190
+                  ]
+                ]
+              }
+            },
+            {
+              "text": "O caminho de uma compra na loja é esse: carrinho, checkout, preencher os dados, revisar, e finalizar.",
+              "scene": {
+                "type": "cards",
+                "titulo": "O CAMINHO DA COMPRA",
+                "itens": [
+                  [
+                    "1",
+                    "Carrinho",
+                    ""
+                  ],
+                  [
+                    "2",
+                    "Checkout",
+                    "",
+                    "#69a7ff"
+                  ],
+                  [
+                    "3",
+                    "Dados",
+                    "nome e CEP",
+                    "#ffd23f"
+                  ],
+                  [
+                    "4",
+                    "Finalizar",
+                    "",
+                    "#ff6b6b"
+                  ]
+                ]
+              }
+            },
+            {
+              "text": "Primeiro, a gente adiciona a mochila e clica no ícone do carrinho, lá em cima. Inspecionando, o data test dele é shopping cart link.",
+              "scene": {
+                "type": "devtools",
+                "media": "insp_cartlink",
+                "url": "https://www.saucedemo.com/",
+                "acoes": [
+                  {
+                    "fill": [
+                      "#user-name",
+                      "standard_user"
+                    ]
+                  },
+                  {
+                    "fill": [
+                      "#password",
+                      "secret_sauce"
+                    ]
+                  },
+                  {
+                    "click": "#login-button"
+                  },
+                  {
+                    "click": "[data-test=\"add-to-cart-sauce-labs-backpack\"]"
+                  }
+                ],
+                "inspecionar": "[data-test=\"shopping-cart-link\"]",
+                "aberto": true,
+                "realce": [
+                  "data-test"
+                ],
+                "realce_em": 3.0,
+                "realce_rotulo": "o ícone do carrinho",
+                "legenda": "O carrinho: shopping-cart-link"
+              }
+            },
+            {
+              "text": "Abre o carrinho, com a mochila dentro. Aqui embaixo tem o botão Checkout, que é o botão de fechar o pedido. O data test dele é checkout.",
+              "scene": {
+                "type": "tela",
+                "media": "site_sauce_cart",
+                "url": "https://www.saucedemo.com/",
+                "acoes": [
+                  {
+                    "fill": [
+                      "#user-name",
+                      "standard_user"
+                    ]
+                  },
+                  {
+                    "fill": [
+                      "#password",
+                      "secret_sauce"
+                    ]
+                  },
+                  {
+                    "click": "#login-button"
+                  },
+                  {
+                    "click": "[data-test=\"add-to-cart-sauce-labs-backpack\"]"
+                  },
+                  {
+                    "click": "[data-test=\"shopping-cart-link\"]"
+                  }
+                ],
+                "titulo": "saucedemo.com/cart.html",
+                "caixa_em": 3.2,
+                "zoom_em": 2.8000000000000003,
+                "legenda": "Checkout = fechar o pedido",
+                "alvo_css": "[data-test=\"checkout\"]"
+              }
+            },
+            {
+              "text": "No código, essas três ações ficam assim: clica na mochila, clica no carrinho, e clica em Checkout.",
+              "scene": {
+                "type": "editor",
+                "arquivo": "compra.cy.js",
+                "pastas": [
+                  "meu-primeiro-teste",
+                  "cypress",
+                  "e2e",
+                  "compra.cy.js"
+                ],
+                "codigo": "  it('finaliza a compra', () => {\n    cy.get('[data-test=\"add-to-cart-sauce-labs-backpack\"]').click()\n    cy.get('[data-test=\"shopping-cart-link\"]').click()\n    cy.get('[data-test=\"checkout\"]').click()",
+                "legenda": "Carrinho e checkout",
+                "destaque": [
+                  3,
+                  4
+                ],
+                "fonte": 27
+              }
+            },
+            {
+              "text": "Agora a loja pede os dados: nome, sobrenome e CEP. Inspecionando, os data tests são first name, last name e postal code. Pode colocar qualquer coisa, a loja é de mentira.",
+              "scene": {
+                "type": "devtools",
+                "media": "insp_first",
+                "url": "https://www.saucedemo.com/",
+                "acoes": [
+                  {
+                    "fill": [
+                      "#user-name",
+                      "standard_user"
+                    ]
+                  },
+                  {
+                    "fill": [
+                      "#password",
+                      "secret_sauce"
+                    ]
+                  },
+                  {
+                    "click": "#login-button"
+                  },
+                  {
+                    "click": "[data-test=\"add-to-cart-sauce-labs-backpack\"]"
+                  },
+                  {
+                    "click": "[data-test=\"shopping-cart-link\"]"
+                  },
+                  {
+                    "click": "[data-test=\"checkout\"]"
+                  }
+                ],
+                "inspecionar": "[data-test=\"firstName\"]",
+                "aberto": true,
+                "realce": [
+                  "data-test"
+                ],
+                "realce_em": 3.4,
+                "realce_rotulo": "o campo do nome",
+                "legenda": "Os campos: firstName, lastName, postalCode"
+              }
+            },
+            {
+              "text": "No código: preenche os três campos, e clica em Continue, que quer dizer continuar.",
+              "scene": {
+                "type": "editor",
+                "arquivo": "compra.cy.js",
+                "pastas": [
+                  "meu-primeiro-teste",
+                  "cypress",
+                  "e2e",
+                  "compra.cy.js"
+                ],
+                "codigo": "    cy.get('[data-test=\"firstName\"]').type('Maria')\n    cy.get('[data-test=\"lastName\"]').type('Silva')\n    cy.get('[data-test=\"postalCode\"]').type('88000-000')\n    cy.get('[data-test=\"continue\"]').click()",
+                "legenda": "Os dados da compra",
+                "destaque": [
+                  1,
+                  2,
+                  3
+                ],
+                "fonte": 28
+              }
+            },
+            {
+              "text": "Depois vem a tela de revisão, com o resumo do pedido. E lá embaixo, o botão Finish, que quer dizer terminar.",
+              "scene": {
+                "type": "tela",
+                "media": "site_sauce_overview",
+                "url": "https://www.saucedemo.com/",
+                "acoes": [
+                  {
+                    "fill": [
+                      "#user-name",
+                      "standard_user"
+                    ]
+                  },
+                  {
+                    "fill": [
+                      "#password",
+                      "secret_sauce"
+                    ]
+                  },
+                  {
+                    "click": "#login-button"
+                  },
+                  {
+                    "click": "[data-test=\"add-to-cart-sauce-labs-backpack\"]"
+                  },
+                  {
+                    "click": "[data-test=\"shopping-cart-link\"]"
+                  },
+                  {
+                    "click": "[data-test=\"checkout\"]"
+                  },
+                  {
+                    "fill": [
+                      "[data-test=\"firstName\"]",
+                      "Maria"
+                    ]
+                  },
+                  {
+                    "fill": [
+                      "[data-test=\"lastName\"]",
+                      "Silva"
+                    ]
+                  },
+                  {
+                    "fill": [
+                      "[data-test=\"postalCode\"]",
+                      "88000-000"
+                    ]
+                  },
+                  {
+                    "click": "[data-test=\"continue\"]"
+                  }
+                ],
+                "titulo": "saucedemo.com/checkout-step-two.html",
+                "caixa_em": 3.0,
+                "zoom_em": 2.6,
+                "legenda": "Finish = terminar a compra",
+                "alvo_css": "[data-test=\"finish\"]"
+              }
+            },
+            {
+              "text": "Clicou em Finish, aparece a mensagem: Thank you for your order, obrigado pelo seu pedido. É ela que prova que a compra deu certo.",
+              "scene": {
+                "type": "tela",
+                "media": "site_sauce_done",
+                "url": "https://www.saucedemo.com/",
+                "acoes": [
+                  {
+                    "fill": [
+                      "#user-name",
+                      "standard_user"
+                    ]
+                  },
+                  {
+                    "fill": [
+                      "#password",
+                      "secret_sauce"
+                    ]
+                  },
+                  {
+                    "click": "#login-button"
+                  },
+                  {
+                    "click": "[data-test=\"add-to-cart-sauce-labs-backpack\"]"
+                  },
+                  {
+                    "click": "[data-test=\"shopping-cart-link\"]"
+                  },
+                  {
+                    "click": "[data-test=\"checkout\"]"
+                  },
+                  {
+                    "fill": [
+                      "[data-test=\"firstName\"]",
+                      "Maria"
+                    ]
+                  },
+                  {
+                    "fill": [
+                      "[data-test=\"lastName\"]",
+                      "Silva"
+                    ]
+                  },
+                  {
+                    "fill": [
+                      "[data-test=\"postalCode\"]",
+                      "88000-000"
+                    ]
+                  },
+                  {
+                    "click": "[data-test=\"continue\"]"
+                  },
+                  {
+                    "click": "[data-test=\"finish\"]"
+                  }
+                ],
+                "titulo": "saucedemo.com/checkout-complete.html",
+                "caixa_em": 2.2,
+                "zoom_em": 1.8000000000000003,
+                "legenda": "A prova: Thank you for your order!",
+                "alvo": "Thank you for your order!"
+              }
+            },
+            {
+              "text": "Então a última parte do teste clica em Finish, e confere se essa mensagem apareceu na tela.",
+              "scene": {
+                "type": "editor",
+                "arquivo": "compra.cy.js",
+                "pastas": [
+                  "meu-primeiro-teste",
+                  "cypress",
+                  "e2e",
+                  "compra.cy.js"
+                ],
+                "codigo": "    cy.get('[data-test=\"finish\"]').click()\n    cy.contains('Thank you for your order!')\n      .should('be.visible')\n  })",
+                "legenda": "A conferência final",
+                "destaque": [
+                  2,
+                  3
+                ],
+                "fonte": 30
+              }
+            },
+            {
+              "text": "Roda e assiste: o Cypress faz a compra inteira, em poucos segundos, sem você encostar no mouse.",
+              "scene": {
+                "type": "runner",
+                "spec": "compra.cy.js",
+                "teste": "finaliza a compra",
+                "passos": [
+                  [
+                    "click",
+                    "add-to-cart"
+                  ],
+                  [
+                    "click",
+                    "shopping-cart-link"
+                  ],
+                  [
+                    "click",
+                    "checkout"
+                  ],
+                  [
+                    "type",
+                    "Maria"
+                  ],
+                  [
+                    "type",
+                    "Silva"
+                  ],
+                  [
+                    "type",
+                    "88000-000"
+                  ],
+                  [
+                    "click",
+                    "continue"
+                  ],
+                  [
+                    "click",
+                    "finish"
+                  ],
+                  [
+                    "contains",
+                    "Thank you for your order!"
+                  ]
+                ],
+                "status": "passou",
+                "media": "site_sauce_loja",
+                "url": "https://www.saucedemo.com/",
+                "acoes": [
+                  {
+                    "fill": [
+                      "#user-name",
+                      "standard_user"
+                    ]
+                  },
+                  {
+                    "fill": [
+                      "#password",
+                      "secret_sauce"
+                    ]
+                  },
+                  {
+                    "click": "#login-button"
+                  }
+                ],
+                "legenda": "A compra inteira, sozinho"
+              }
+            },
+            {
+              "text": "Pensa no tempo que isso economiza: uma pessoa levaria um minuto ou mais pra fazer essa compra na mão. O Cypress faz em segundos, e pode repetir mil vezes por dia.",
+              "scene": {
+                "type": "compare",
+                "title": "QUANTO TEMPO LEVA?",
+                "items": [
+                  [
+                    "+1 MIN",
+                    "NA MÃO",
+                    "red"
+                  ],
+                  [
+                    "SEGUNDOS",
+                    "COM CYPRESS",
+                    "gold"
+                  ]
+                ],
+                "size": 150,
+                "stagger": 1.2,
+                "vs": true
+              }
+            },
+            {
+              "text": "Na última aula, a gente coloca o seu projeto no GitHub, pra virar portfólio.",
+              "scene": {
+                "type": "passo",
+                "icone": "▶",
+                "titulo": "Próxima aula",
+                "sub": "Subindo Pro Github"
+              }
+            },
+            {
+              "text": "Te vejo lá!",
+              "scene": {
+                "type": "endcard",
+                "sub": "PRÓXIMA: SUBINDO PRO GITHUB"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "shorts": [],
+    "tiktoks": []
+  },
+  "serie": [],
+  "meta": {
+    "titles": [
+      "Aula 18: Projeto final: finalizando a compra"
+    ],
+    "description": "",
+    "tags": []
+  },
+  "notes": "Curso Cypress para leigos. Não publica (destino: curso)."
 }
