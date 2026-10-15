@@ -120,13 +120,17 @@ jobs:
           VOZ: ${{ inputs.voz }}
         shell: bash
         run: |
+          ok=0; falhou=""
           for p in $LISTA; do
             if [ -n "$VOZ" ]; then
-              python -m fabrica.gerar "$p" --formato "$FORMATO" --modo "$MODO" --voz "$VOZ"
+              python -m fabrica.gerar "$p" --formato "$FORMATO" --modo "$MODO" --voz "$VOZ" && ok=1 || falhou="$falhou $p"
             else
-              python -m fabrica.gerar "$p" --formato "$FORMATO" --modo "$MODO"
+              python -m fabrica.gerar "$p" --formato "$FORMATO" --modo "$MODO" && ok=1 || falhou="$falhou $p"
             fi
           done
+          # um projeto com problema não derruba os outros
+          if [ -n "$falhou" ]; then echo "::warning title=Projetos com erro::$falhou"; fi
+          [ "$ok" = 1 ]
 
       - name: Prévia em imagem (para conferência)
         if: always()
