@@ -1,0 +1,260 @@
+{
+ "title": "Cypress para leigos · Aula 12",
+ "slug": "curso-cypress-12",
+ "idioma": "pt",
+ "destino": "curso",
+ "marca": [
+  "CYPRESS",
+  "PARA LEIGOS"
+ ],
+ "cor_fundo": "#3fd68a",
+ "legenda_y": 0.93,
+ "selo": "MÓDULO 3 · AULA 12",
+ "voz": {
+  "nome": "gravada",
+  "motor": "eleven",
+  "eleven_voz": "Vinícius Torales"
+ },
+ "script": {
+  "long": {
+   "parts": [
+    {
+     "chapter": "",
+     "sentences": [
+      {
+       "text": "Fala, pessoal! Aula doze, a última do módulo três. Hoje o teste fica completo.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "AULA 12",
+          "muted",
+          80
+         ],
+         [
+          "CLICAR",
+          "white",
+          150
+         ],
+         [
+          "E CONFERIR",
+          "gold",
+          170
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Falta clicar no botão de entrar. Pra isso, a gente acha o botão com o get, e usa o comando click. O botão se chama hashtag login traço button.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "login.cy.js",
+        "pastas": [
+         "meu-primeiro-teste",
+         "cypress",
+         "e2e",
+         "login.cy.js"
+        ],
+        "codigo": "describe('Login', () => {\n  it('entra com usuário e senha', () => {\n    cy.visit('https://www.saucedemo.com')\n    cy.get('#user-name').type('standard_user')\n    cy.get('#password').type('secret_sauce')\n    cy.get('#login-button').click()\n  })\n})",
+        "legenda": "click clica no botão",
+        "destaque": [
+         6
+        ]
+       }
+      },
+      {
+       "text": "Mas atenção: até aqui, o teste só faz coisas. Ele ainda não confere nada. E um teste que não confere nada não é um teste de verdade.",
+       "scene": {
+        "type": "stamp",
+        "org": "TESTE SEM CONFERIR",
+        "title": "SÓ CLICA E DIGITA",
+        "stamp": "INCOMPLETO",
+        "stamp_at": 0.9
+       }
+      },
+      {
+       "text": "Pensa assim: depois de entrar, o que a pessoa deveria ver? A lista de produtos, com o título Products lá em cima.",
+       "scene": {
+        "type": "tela",
+        "media": "site_sauce_loja",
+        "url": "https://www.saucedemo.com/",
+        "acoes": [
+         {
+          "fill": [
+           "#user-name",
+           "standard_user"
+          ]
+         },
+         {
+          "fill": [
+           "#password",
+           "secret_sauce"
+          ]
+         },
+         {
+          "click": "#login-button"
+         }
+        ],
+        "alvo": "Products",
+        "titulo": "saucedemo.com/inventory.html",
+        "zoom_em": 1.2,
+        "caixa_em": 1.8,
+        "legenda": "Depois do login, aparece Products"
+       }
+      },
+      {
+       "text": "Então a última linha confere isso: cy ponto contains Products, ponto should, be visible. Ou seja: deveria estar aparecendo o texto Products.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "login.cy.js",
+        "pastas": [
+         "meu-primeiro-teste",
+         "cypress",
+         "e2e",
+         "login.cy.js"
+        ],
+        "codigo": "describe('Login', () => {\n  it('entra com usuário e senha', () => {\n    cy.visit('https://www.saucedemo.com')\n    cy.get('#user-name').type('standard_user')\n    cy.get('#password').type('secret_sauce')\n    cy.get('#login-button').click()\n    cy.contains('Products').should('be.visible')\n  })\n})",
+        "legenda": "should = deveria",
+        "destaque": [
+         7
+        ]
+       }
+      },
+      {
+       "text": "Esse should é o coração do teste. Ele é a pergunta: aconteceu o que devia acontecer? Se sim, o teste passa. Se não, ele falha e te avisa.",
+       "scene": {
+        "type": "compare",
+        "title": "SHOULD = DEVERIA",
+        "items": [
+         [
+          "PASSOU",
+          "APARECEU O QUE DEVIA",
+          "gold"
+         ],
+         [
+          "FALHOU",
+          "NÃO APARECEU",
+          "red"
+         ]
+        ],
+        "size": 140,
+        "stagger": 1.2,
+        "vs": true
+       }
+      },
+      {
+       "text": "Salva e roda. Olha o Cypress fazendo tudo sozinho: abre, digita, clica e confere.",
+       "scene": {
+        "type": "runner",
+        "spec": "login.cy.js",
+        "teste": "entra com usuário e senha",
+        "passos": [
+         [
+          "visit",
+          "saucedemo.com"
+         ],
+         [
+          "get",
+          "#user-name"
+         ],
+         [
+          "type",
+          "standard_user"
+         ],
+         [
+          "get",
+          "#password"
+         ],
+         [
+          "type",
+          "secret_sauce"
+         ],
+         [
+          "get",
+          "#login-button"
+         ],
+         [
+          "click",
+          ""
+         ],
+         [
+          "contains",
+          "Products"
+         ]
+        ],
+        "status": "passou",
+        "media": "site_sauce_loja",
+        "url": "https://www.saucedemo.com/",
+        "acoes": [
+         {
+          "fill": [
+           "#user-name",
+           "standard_user"
+          ]
+         },
+         {
+          "fill": [
+           "#password",
+           "secret_sauce"
+          ]
+         },
+         {
+          "click": "#login-button"
+         }
+        ],
+        "legenda": "O teste completo, do começo ao fim"
+       }
+      },
+      {
+       "text": "Parabéns! Você acabou de escrever um teste completo, igualzinho os que são feitos nas empresas.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "PARABÉNS!",
+          "gold",
+          200
+         ],
+         [
+          "TESTE COMPLETO",
+          "white",
+          130
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Fechamos o módulo três! No próximo, você vai aprender a achar qualquer elemento de qualquer site.",
+       "scene": {
+        "type": "passo",
+        "icone": "▶",
+        "titulo": "Próxima aula",
+        "sub": "Achando Elementos"
+       }
+      },
+      {
+       "text": "Te vejo lá!",
+       "scene": {
+        "type": "endcard",
+        "sub": "PRÓXIMA: ACHANDO ELEMENTOS"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "shorts": [],
+  "tiktoks": []
+ },
+ "serie": [],
+ "meta": {
+  "titles": [
+   "Aula 12: click e should: conferindo o resultado"
+  ],
+  "description": "",
+  "tags": []
+ },
+ "notes": "Curso Cypress para leigos. Não publica (destino: curso)."
+}

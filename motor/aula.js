@@ -223,4 +223,45 @@
       if (pri && !s.progresso) cursor(ctx, u, bx + bw2 * 0.55, by2 + bh * 0.6, t, (s.botao_em || dur * 0.7) + 0.35); });
     legenda(ctx, c, t, s);
   };
+  // RUNNER do Cypress (desenhado): lista de comandos à esquerda, site à direita
+  // {type:"runner", spec:"login.cy.js", teste:"entra com usuário e senha", passos:[["visit","saucedemo.com"],["get","#user-name"],["type","standard_user"]],
+  //  media:"site_sauce", url:"https://www.saucedemo.com", status:"passou"|"falhou", erro:"Timed out retrying...", legenda:"..."}
+  S.runner = (ctx, c, t, dur, s, media) => {
+    const u = c.u; const a = easeOut(t / 0.4); const W = (c.vertical ? 1000 : 1640) * u, H = (c.vertical ? 1100 : 700) * u; const x = c.cx - W / 2, y = topo(c, H);
+    const top = janela(ctx, x, y, W, H, u, "Cypress — " + (s.spec || "spec.cy.js"), a, "#1b1e27");
+    const LW = c.vertical ? W : 600 * u; const P = s.passos || []; const falha = s.status === "falhou";
+    const passo = Math.max(0.35, (dur * 0.75 - 0.6) / Math.max(P.length, 1)); const feitos = clamp((t - 0.6) / passo, 0, P.length);
+    ctx.save(); ctx.globalAlpha = a; ctx.fillStyle = "#171a22"; ctx.fillRect(x, top, LW, y + H - top - 2 * u); ctx.restore();
+    const fim = feitos >= P.length; const ok = fim && !falha;
+    txt(ctx, s.spec || "spec.cy.js", font(700, 24 * u, MONO), x + 28 * u, top + 34 * u, C.txt, "left", a);
+    txt(ctx, (fim ? (falha ? "✗ 1" : "✓ 1") : "…"), font(800, 26 * u), x + LW - 30 * u, top + 34 * u, fim ? (falha ? C.red : C.ac) : C.mut, "right", a);
+    ctx.save(); ctx.globalAlpha = a; ctx.fillStyle = C.line; ctx.fillRect(x, top + 64 * u, LW, 2 * u); ctx.restore();
+    const cor = fim ? (falha ? C.red : C.ac) : C.yel;
+    ctx.save(); ctx.globalAlpha = a; ctx.beginPath(); ctx.arc(x + 40 * u, top + 104 * u, 11 * u, 0, 7); ctx.fillStyle = cor; ctx.fill(); ctx.restore();
+    txt(ctx, s.teste || "teste", font(700, 28 * u), x + 66 * u, top + 104 * u, C.txt, "left", a);
+    let yy = top + 160 * u;
+    P.forEach(([cmd, arg], i) => {
+      const k = clamp(feitos - i); if (k <= 0) return; const ultimo = falha && i === P.length - 1 && fim;
+      if (ultimo) { ctx.save(); ctx.globalAlpha = 0.18; ctx.fillStyle = C.red; ctx.fillRect(x, yy - 22 * u, LW, 44 * u); ctx.restore(); }
+      txt(ctx, String(i + 1), font(600, 22 * u, MONO), x + 40 * u, yy, "#4b5263", "center", a * k);
+      txt(ctx, cmd, font(700, 25 * u, MONO), x + 70 * u, yy, ultimo ? C.red : "#69a7ff", "left", a * k);
+      const cw = tw(ctx, cmd, font(700, 25 * u, MONO)); txt(ctx, String(arg || ""), font(600, 23 * u, MONO), x + 86 * u + cw, yy, C.txt, "left", a * k);
+      yy += 50 * u;
+    });
+    if (!c.vertical) { // site
+      const sx = x + LW, sw = W - LW, sh = y + H - top; const m = media && media[s.media]; const el = m && (m.video || m.img);
+      ctx.save(); rr(ctx, sx, top, sw, sh - 2 * u, 0); ctx.clip(); ctx.globalAlpha = a; ctx.fillStyle = "#fff"; ctx.fillRect(sx, top, sw, sh);
+      if (el) { const iw = el.videoWidth || el.width, ih = el.videoHeight || el.height; const r = Math.max(sw / iw, sh / ih); ctx.drawImage(el, sx, top, iw * r, ih * r); }
+      else txt(ctx, s.url || "site", font(700, 34 * u), sx + sw / 2, top + sh / 2, "#8b93a7", "center", a);
+      ctx.restore();
+      if (fim) { const ka = easeOut((t - 0.6 - P.length * passo) / 0.35); const lab = falha ? "FALHOU" : "PASSOU"; const f = font(900, 40 * u); const w = tw(ctx, lab, f) + 70 * u;
+        ctx.save(); ctx.globalAlpha = ka; rr(ctx, sx + sw - w - 30 * u, top + 26 * u, w, 70 * u, 35 * u); ctx.fillStyle = falha ? C.red : C.ac; ctx.fill(); ctx.restore();
+        txt(ctx, lab, f, sx + sw - w / 2 - 30 * u, top + 62 * u, "#0b1a12", "center", ka); }
+    }
+    if (falha && fim && s.erro) { const ka = easeOut((t - 0.6 - P.length * passo) / 0.4); const ex = c.vertical ? x + 20 * u : x + LW + 30 * u, ew = c.vertical ? LW - 40 * u : W - LW - 60 * u, by = c.vertical ? yy + 20 * u : y + H - 190 * u;
+      ctx.save(); ctx.globalAlpha = a * ka; rr(ctx, ex, by, ew, 150 * u, 12 * u); ctx.fillStyle = "#2a1517"; ctx.fill(); ctx.fillStyle = "rgba(255,107,107,.15)"; ctx.fill(); ctx.strokeStyle = C.red; ctx.lineWidth = 2 * u; ctx.stroke(); ctx.restore();
+      txt(ctx, "AssertionError", font(800, 24 * u, MONO), ex + 24 * u, by + 36 * u, C.red, "left", a * ka);
+      String(s.erro).match(/.{1,60}(\s|$)/g).slice(0, 3).forEach((l, i) => txt(ctx, l.trim(), font(600, 21 * u, MONO), ex + 24 * u, by + 76 * u + i * 30 * u, C.txt, "left", a * ka)); }
+    legenda(ctx, c, t, s);
+  };
 })(window);

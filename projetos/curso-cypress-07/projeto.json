@@ -1,0 +1,206 @@
+{
+ "title": "Cypress para leigos · Aula 7",
+ "slug": "curso-cypress-07",
+ "idioma": "pt",
+ "destino": "curso",
+ "marca": [
+  "CYPRESS",
+  "PARA LEIGOS"
+ ],
+ "cor_fundo": "#3fd68a",
+ "legenda_y": 0.93,
+ "selo": "MÓDULO 2 · AULA 7",
+ "voz": {
+  "nome": "gravada",
+  "motor": "eleven",
+  "eleven_voz": "Vinícius Torales"
+ },
+ "script": {
+  "long": {
+   "parts": [
+    {
+     "chapter": "",
+     "sentences": [
+      {
+       "text": "Fala, pessoal! Aula sete. Chegou o momento: hoje a gente instala o Cypress.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "AULA 7",
+          "muted",
+          80
+         ],
+         [
+          "INSTALANDO",
+          "white",
+          130
+         ],
+         [
+          "O CYPRESS",
+          "gold",
+          200
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Lembra que o npm é a lojinha de ferramentas? Então, é dela que a gente vai baixar o Cypress.",
+       "scene": {
+        "type": "flow",
+        "a": "NPM",
+        "a_sub": "a lojinha",
+        "b": "CYPRESS",
+        "b_sub": "vem pro seu projeto",
+        "caption": "QUEM ENTREGA O CYPRESS"
+       }
+      },
+      {
+       "text": "No terminal do VS Code, digita npm espaço install espaço cypress espaço traço traço save traço dev. E aperta Enter.",
+       "scene": {
+        "type": "terminal",
+        "titulo": "Terminal — VS Code",
+        "pasta": "C:\\Users\\voce\\Documents\\meu-primeiro-teste",
+        "linhas": [
+         {
+          "cmd": "npm install cypress --save-dev"
+         },
+         {
+          "out": "added 175 packages in 1m",
+          "cor": "ac"
+         }
+        ],
+        "legenda": "Pode demorar uns minutinhos"
+       }
+      },
+      {
+       "text": "Esse comando pode demorar uns minutos, porque o Cypress é grandinho. Vai pegar um café que ele trabalha sozinho.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "PODE DEMORAR",
+          "white",
+          140
+         ],
+         [
+          "VAI PEGAR UM CAFÉ",
+          "gold",
+          130
+         ]
+        ]
+       }
+      },
+      {
+       "text": "E o que é esse save dev no final? Ele avisa que o Cypress é uma ferramenta de quem desenvolve, e não uma parte do site em si. É tipo a régua do pedreiro: ele usa pra construir, mas ela não fica dentro da casa.",
+       "scene": {
+        "type": "compare",
+        "title": "--SAVE-DEV",
+        "items": [
+         [
+          "O SITE",
+          "O QUE O CLIENTE USA",
+          "white"
+         ],
+         [
+          "CYPRESS",
+          "A FERRAMENTA DE QUEM CONSTRÓI",
+          "gold"
+         ]
+        ],
+        "size": 120,
+        "stagger": 1.2,
+        "vs": false
+       }
+      },
+      {
+       "text": "Quando terminar, olha a pasta do projeto. Apareceram duas coisas novas: uma pasta chamada node underline modules, e um arquivo package traço lock.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "package.json",
+        "pastas": [
+         "meu-primeiro-teste",
+         "node_modules",
+         "package-lock.json",
+         "package.json"
+        ],
+        "codigo": "{\n  \"name\": \"meu-primeiro-teste\",\n  \"version\": \"1.0.0\",\n  \"devDependencies\": {\n    \"cypress\": \"^15.5.0\"\n  }\n}",
+        "legenda": "O Cypress apareceu na ficha",
+        "destaque": [
+         5
+        ]
+       }
+      },
+      {
+       "text": "A node modules é onde o Cypress foi instalado de verdade. Ela é enorme e você nunca precisa mexer nela.",
+       "scene": {
+        "type": "cards",
+        "itens": [
+         [
+          "▣",
+          "node_modules",
+          "onde o Cypress mora. Não mexa!",
+          "#ff6b6b"
+         ],
+         [
+          "{}",
+          "package.json",
+          "agora tem o Cypress na lista"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "E no package ponto json, olha: o Cypress apareceu na lista de ferramentas do projeto. Isso quer dizer que deu tudo certo.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "CYPRESS",
+          "gold",
+          200
+         ],
+         [
+          "INSTALADO!",
+          "white",
+          150
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Na próxima aula, a gente abre o Cypress pela primeira vez.",
+       "scene": {
+        "type": "passo",
+        "icone": "▶",
+        "titulo": "Próxima aula",
+        "sub": "Abrindo O Cypress"
+       }
+      },
+      {
+       "text": "Te vejo lá!",
+       "scene": {
+        "type": "endcard",
+        "sub": "PRÓXIMA: ABRINDO O CYPRESS"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "shorts": [],
+  "tiktoks": []
+ },
+ "serie": [],
+ "meta": {
+  "titles": [
+   "Aula 7: Instalando o Cypress"
+  ],
+  "description": "",
+  "tags": []
+ },
+ "notes": "Curso Cypress para leigos. Não publica (destino: curso)."
+}

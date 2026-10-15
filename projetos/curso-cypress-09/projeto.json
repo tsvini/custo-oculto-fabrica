@@ -1,0 +1,213 @@
+{
+ "title": "Cypress para leigos · Aula 9",
+ "slug": "curso-cypress-09",
+ "idioma": "pt",
+ "destino": "curso",
+ "marca": [
+  "CYPRESS",
+  "PARA LEIGOS"
+ ],
+ "cor_fundo": "#3fd68a",
+ "legenda_y": 0.93,
+ "selo": "MÓDULO 3 · AULA 9",
+ "voz": {
+  "nome": "gravada",
+  "motor": "eleven",
+  "eleven_voz": "Vinícius Torales"
+ },
+ "script": {
+  "long": {
+   "parts": [
+    {
+     "chapter": "",
+     "sentences": [
+      {
+       "text": "Fala, pessoal! Módulo três. Agora a gente escreve o primeiro teste de verdade.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "MÓDULO 3",
+          "muted",
+          80
+         ],
+         [
+          "O PRIMEIRO",
+          "white",
+          140
+         ],
+         [
+          "TESTE",
+          "gold",
+          220
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Lembra da receita de bolo da aula um? Um teste do Cypress tem sempre o mesmo formato, e ele tem duas palavras mágicas: describe e it.",
+       "scene": {
+        "type": "cards",
+        "itens": [
+         [
+          "1",
+          "describe",
+          "o nome do caderno de receitas"
+         ],
+         [
+          "2",
+          "it",
+          "cada receita lá dentro",
+          "#69a7ff"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Primeiro, cria o arquivo. Na pasta cypress, dentro de e2e, clica com o botão direito, New File, e dá o nome login ponto cy ponto js.",
+       "scene": {
+        "type": "passo",
+        "n": 1,
+        "de": 2,
+        "titulo": "Crie o arquivo",
+        "sub": "cypress/e2e/login.cy.js",
+        "icone": "1",
+        "mono": true
+       }
+      },
+      {
+       "text": "Esse ponto cy no nome é importante. É assim que o Cypress sabe que esse arquivo é um teste.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          ".CY.JS",
+          "gold",
+          200
+         ],
+         [
+          "= ARQUIVO DE TESTE",
+          "white",
+          110
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Agora escreve assim: describe, abre parênteses, e entre aspas o nome do grupo de testes. Aqui eu coloquei Login.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "login.cy.js",
+        "pastas": [
+         "meu-primeiro-teste",
+         "cypress",
+         "e2e",
+         "login.cy.js"
+        ],
+        "codigo": "describe('Login', () => {\n\n})",
+        "legenda": "describe = o grupo de testes",
+        "destaque": [
+         1
+        ]
+       }
+      },
+      {
+       "text": "Dentro dele, vem o it. O it é um teste, e o texto dele explica o que o teste faz. Aqui: entra com usuário e senha.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "login.cy.js",
+        "pastas": [
+         "meu-primeiro-teste",
+         "cypress",
+         "e2e",
+         "login.cy.js"
+        ],
+        "codigo": "describe('Login', () => {\n  it('entra com usuário e senha', () => {\n\n  })\n})",
+        "legenda": "it = um teste",
+        "destaque": [
+         2
+        ]
+       }
+      },
+      {
+       "text": "Essa setinha, os parênteses e as chaves parecem estranhos agora, mas não se preocupa. É só a forma de escrever. Sempre vai ser igual, então pode copiar sem medo.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "SEMPRE IGUAL",
+          "white",
+          150
+         ],
+         [
+          "PODE COPIAR",
+          "gold",
+          170
+         ]
+        ]
+       }
+      },
+      {
+       "text": "E dentro do it, entre as chaves, é onde vão os passos da receita. Que é o que a gente vai escrever na próxima aula.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "login.cy.js",
+        "pastas": [
+         "meu-primeiro-teste",
+         "cypress",
+         "e2e",
+         "login.cy.js"
+        ],
+        "codigo": "describe('Login', () => {\n  it('entra com usuário e senha', () => {\n    // os passos da receita vêm aqui\n  })\n})",
+        "legenda": "Os passos vão aqui dentro",
+        "destaque": [
+         3
+        ]
+       }
+      },
+      {
+       "text": "Salva o arquivo com Control S. E pronto, a estrutura do seu primeiro teste está criada.",
+       "scene": {
+        "type": "passo",
+        "n": 2,
+        "de": 2,
+        "titulo": "Salve com Ctrl + S",
+        "icone": "2"
+       }
+      },
+      {
+       "text": "Na próxima aula, a gente faz o teste abrir um site de verdade.",
+       "scene": {
+        "type": "passo",
+        "icone": "▶",
+        "titulo": "Próxima aula",
+        "sub": "Abrindo Um Site"
+       }
+      },
+      {
+       "text": "Te vejo lá!",
+       "scene": {
+        "type": "endcard",
+        "sub": "PRÓXIMA: ABRINDO UM SITE"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "shorts": [],
+  "tiktoks": []
+ },
+ "serie": [],
+ "meta": {
+  "titles": [
+   "Aula 9: A receita de um teste: describe e it"
+  ],
+  "description": "",
+  "tags": []
+ },
+ "notes": "Curso Cypress para leigos. Não publica (destino: curso)."
+}

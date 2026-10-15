@@ -1,0 +1,181 @@
+{
+ "title": "Cypress para leigos · Aula 5",
+ "slug": "curso-cypress-05",
+ "idioma": "pt",
+ "destino": "curso",
+ "marca": [
+  "CYPRESS",
+  "PARA LEIGOS"
+ ],
+ "cor_fundo": "#3fd68a",
+ "legenda_y": 0.93,
+ "selo": "MÓDULO 2 · AULA 5",
+ "voz": {
+  "nome": "gravada",
+  "motor": "eleven",
+  "eleven_voz": "Vinícius Torales"
+ },
+ "script": {
+  "long": {
+   "parts": [
+    {
+     "chapter": "",
+     "sentences": [
+      {
+       "text": "Fala, pessoal! Começou o módulo dois. Agora que o computador está pronto, a gente vai criar o nosso projeto.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "MÓDULO 2",
+          "muted",
+          80
+         ],
+         [
+          "O PROJETO",
+          "gold",
+          200
+         ]
+        ]
+       }
+      },
+      {
+       "text": "E projeto, no mundo da programação, nada mais é do que uma pasta. Uma pastinha amarela, igual a que você usa pra guardar fotos.",
+       "scene": {
+        "type": "pastas",
+        "caminho": "Este Computador  ›  Documentos",
+        "itens": [
+         "Fotos",
+         "Músicas",
+         "Trabalho"
+        ],
+        "legenda": "Um projeto é só uma pasta"
+       }
+      },
+      {
+       "text": "Abre o Explorador de Arquivos e entra na pasta Documentos. Clica com o botão direito num espaço vazio, vai em Novo, e depois em Pasta.",
+       "scene": {
+        "type": "passo",
+        "n": 1,
+        "de": 3,
+        "titulo": "Crie uma pasta",
+        "sub": "botão direito › Novo › Pasta",
+        "icone": "1"
+       }
+      },
+      {
+       "text": "Dá o nome de meu traço primeiro traço teste. Tudo minúsculo, sem acento e sem espaço. Use o tracinho no lugar do espaço, porque alguns programas não se dão bem com espaço no nome.",
+       "scene": {
+        "type": "pastas",
+        "caminho": "Este Computador  ›  Documentos",
+        "itens": [
+         "Fotos",
+         "Músicas",
+         "Trabalho",
+         {
+          "nome": "meu-primeiro-teste",
+          "novo": true
+         }
+        ],
+        "novo_em": 0.8,
+        "legenda": "Sem acento e sem espaço"
+       }
+      },
+      {
+       "text": "Agora abre o VS Code. Lá em cima, clica em File, e depois em Open Folder, que quer dizer abrir pasta.",
+       "scene": {
+        "type": "passo",
+        "n": 2,
+        "de": 3,
+        "titulo": "File › Open Folder",
+        "sub": "no VS Code",
+        "icone": "2"
+       }
+      },
+      {
+       "text": "Escolhe a pasta que você acabou de criar e clica em Selecionar pasta.",
+       "scene": {
+        "type": "pastas",
+        "caminho": "Abrir pasta  ›  Documentos",
+        "itens": [
+         "Fotos",
+         "Músicas",
+         "Trabalho",
+         {
+          "nome": "meu-primeiro-teste",
+          "novo": true
+         }
+        ],
+        "novo_em": 0.3,
+        "legenda": "Escolha a pasta e clique em Selecionar"
+       }
+      },
+      {
+       "text": "O VS Code vai perguntar se você confia nos arquivos dessa pasta. Como foi você que criou, pode clicar em Yes, I trust the authors.",
+       "scene": {
+        "type": "instalador",
+        "app": "Visual Studio Code",
+        "titulo": "Do you trust the authors of the files in this folder?",
+        "subtitulo": "Code provides features that may automatically execute files",
+        "botao": "Yes, I trust",
+        "legenda": "A pasta é sua, pode confiar"
+       }
+      },
+      {
+       "text": "Pronto! Olha só: na esquerda, apareceu o nome da sua pasta. Ela está vazia por enquanto, mas é aqui que o seu projeto vai morar.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "Bem-vindo",
+        "pastas": [
+         "MEU-PRIMEIRO-TESTE"
+        ],
+        "codigo": "// A pasta do projeto está aberta!\n// Por enquanto ela está vazia.",
+        "legenda": "O seu projeto está aberto"
+       }
+      },
+      {
+       "text": "Terceiro passo, e esse vale ouro: daqui pra frente, sempre que for estudar, abre essa mesma pasta no VS Code. Tudo do curso vai ficar aqui dentro.",
+       "scene": {
+        "type": "passo",
+        "n": 3,
+        "de": 3,
+        "titulo": "Sempre abra essa pasta",
+        "sub": "meu-primeiro-teste",
+        "icone": "3",
+        "mono": true
+       }
+      },
+      {
+       "text": "Na próxima aula, a gente abre o terminal dentro do VS Code e cria o primeiro arquivo do projeto.",
+       "scene": {
+        "type": "passo",
+        "icone": "▶",
+        "titulo": "Próxima aula",
+        "sub": "O Terminal E O Package.Json"
+       }
+      },
+      {
+       "text": "Te vejo lá!",
+       "scene": {
+        "type": "endcard",
+        "sub": "PRÓXIMA: O TERMINAL E O PACKAGE.JSON"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "shorts": [],
+  "tiktoks": []
+ },
+ "serie": [],
+ "meta": {
+  "titles": [
+   "Aula 5: Criando a pasta do projeto"
+  ],
+  "description": "",
+  "tags": []
+ },
+ "notes": "Curso Cypress para leigos. Não publica (destino: curso)."
+}

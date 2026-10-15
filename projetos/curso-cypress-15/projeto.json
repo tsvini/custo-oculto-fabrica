@@ -1,0 +1,246 @@
+{
+ "title": "Cypress para leigos · Aula 15",
+ "slug": "curso-cypress-15",
+ "idioma": "pt",
+ "destino": "curso",
+ "marca": [
+  "CYPRESS",
+  "PARA LEIGOS"
+ ],
+ "cor_fundo": "#3fd68a",
+ "legenda_y": 0.93,
+ "selo": "MÓDULO 4 · AULA 15",
+ "voz": {
+  "nome": "gravada",
+  "motor": "eleven",
+  "eleven_voz": "Vinícius Torales"
+ },
+ "script": {
+  "long": {
+   "parts": [
+    {
+     "chapter": "",
+     "sentences": [
+      {
+       "text": "Fala, pessoal! Aula quinze. Hoje a gente vai fazer um teste falhar de propósito.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "AULA 15",
+          "muted",
+          80
+         ],
+         [
+          "QUANDO",
+          "white",
+          150
+         ],
+         [
+          "O TESTE FALHA",
+          "red",
+          160
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Parece estranho, mas é a aula mais importante do módulo. Porque no dia a dia, você vai ver muito teste vermelho. E tudo bem.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "TESTE VERMELHO",
+          "red",
+          150
+         ],
+         [
+          "NÃO É O FIM DO MUNDO",
+          "white",
+          100
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Vamos trocar Products por Produtos, em português. O site está em inglês, então esse texto não existe lá.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "login.cy.js",
+        "pastas": [
+         "meu-primeiro-teste",
+         "cypress",
+         "e2e",
+         "login.cy.js"
+        ],
+        "codigo": "    cy.get('[data-test=\"login-button\"]').click()\n    cy.contains('Produtos').should('be.visible')",
+        "legenda": "Trocando Products por Produtos",
+        "destaque": [
+         2
+        ]
+       }
+      },
+      {
+       "text": "Roda o teste. Repara que o Cypress não desiste na hora: ele fica tentando por alguns segundos, esperando o texto aparecer. Só depois ele falha.",
+       "scene": {
+        "type": "runner",
+        "spec": "login.cy.js",
+        "teste": "entra com usuário e senha",
+        "passos": [
+         [
+          "visit",
+          "saucedemo.com"
+         ],
+         [
+          "type",
+          "standard_user"
+         ],
+         [
+          "type",
+          "secret_sauce"
+         ],
+         [
+          "click",
+          ""
+         ],
+         [
+          "contains",
+          "Produtos"
+         ]
+        ],
+        "status": "falhou",
+        "media": "site_sauce_loja",
+        "url": "https://www.saucedemo.com/",
+        "acoes": [
+         {
+          "fill": [
+           "#user-name",
+           "standard_user"
+          ]
+         },
+         {
+          "fill": [
+           "#password",
+           "secret_sauce"
+          ]
+         },
+         {
+          "click": "#login-button"
+         }
+        ],
+        "erro": "Timed out retrying after 4000ms: Expected to find content: 'Produtos' but never did.",
+        "legenda": "O Cypress mostra exatamente onde parou"
+       }
+      },
+      {
+       "text": "Agora a parte de ler o erro. Primeiro: olha qual passo ficou vermelho. Ele mostra exatamente onde o teste parou.",
+       "scene": {
+        "type": "passo",
+        "n": 1,
+        "de": 3,
+        "titulo": "Qual passo ficou vermelho?",
+        "icone": "1"
+       }
+      },
+      {
+       "text": "Segundo: lê a mensagem. Aqui ela diz: esperava encontrar o texto Produtos, mas nunca encontrou. Ou seja, o problema está no texto que a gente pediu.",
+       "scene": {
+        "type": "passo",
+        "n": 2,
+        "de": 3,
+        "titulo": "Leia a mensagem",
+        "sub": "Expected to find content: 'Produtos'",
+        "icone": "2",
+        "mono": true
+       }
+      },
+      {
+       "text": "Terceiro: olha o site na direita. Ele mostra a página no momento do erro. Dá pra ver que lá está escrito Products, em inglês.",
+       "scene": {
+        "type": "passo",
+        "n": 3,
+        "de": 3,
+        "titulo": "Olhe o site na hora do erro",
+        "icone": "3"
+       }
+      },
+      {
+       "text": "Então são três perguntas: onde parou, o que ele esperava, e o que tinha na tela. Respondendo essas três, você resolve quase todo erro.",
+       "scene": {
+        "type": "cards",
+        "titulo": "AS 3 PERGUNTAS",
+        "itens": [
+         [
+          "1",
+          "Onde parou?",
+          "o passo vermelho"
+         ],
+         [
+          "2",
+          "O que esperava?",
+          "a mensagem de erro",
+          "#69a7ff"
+         ],
+         [
+          "3",
+          "O que tinha?",
+          "o site na hora",
+          "#ffd23f"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Agora volta o texto pra Products, salva, e o teste fica verde de novo.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "CORRIGIU?",
+          "white",
+          150
+         ],
+         [
+          "VERDE DE NOVO",
+          "gold",
+          160
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Na próxima aula, a gente roda todos os testes de uma vez, sem nem abrir a janela do Cypress.",
+       "scene": {
+        "type": "passo",
+        "icone": "▶",
+        "titulo": "Próxima aula",
+        "sub": "Rodando Tudo De Uma Vez"
+       }
+      },
+      {
+       "text": "Te vejo lá!",
+       "scene": {
+        "type": "endcard",
+        "sub": "PRÓXIMA: RODANDO TUDO DE UMA VEZ"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "shorts": [],
+  "tiktoks": []
+ },
+ "serie": [],
+ "meta": {
+  "titles": [
+   "Aula 15: Quando o teste falha"
+  ],
+  "description": "",
+  "tags": []
+ },
+ "notes": "Curso Cypress para leigos. Não publica (destino: curso)."
+}

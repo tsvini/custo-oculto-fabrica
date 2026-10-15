@@ -82,7 +82,7 @@ def _uniforme(path):
 def telas(cenas, pasta, log, idioma="pt"):
     """Cenas 'tela' com 'url': print da página inteira em 16:9 (para as aulas). 'alvo' = texto do botão/link a destacar:
     a caixa amarela e o zoom são calculados sozinhos e guardados em <media>.json."""
-    alvo = [s for s in cenas if s.get("type") == "tela" and s.get("url") and s.get("media")]
+    alvo = [s for s in cenas if s.get("type") in ("tela", "runner") and s.get("url") and s.get("media")]
     falta = [s for s in alvo if not os.path.exists(os.path.join(pasta, s["media"] + ".png"))]
     if falta:
         from playwright.sync_api import sync_playwright
@@ -100,6 +100,14 @@ def telas(cenas, pasta, log, idioma="pt"):
                                 btn.first.click(timeout=1500); pg.wait_for_timeout(600); break
                         except Exception:
                             pass
+                    for ac in s.get("acoes") or []:  # passos antes do print: {"fill": [seletor, valor]} ou {"click": seletor}
+                        try:
+                            if ac.get("fill"):
+                                pg.fill(ac["fill"][0], ac["fill"][1], timeout=8000)
+                            elif ac.get("click"):
+                                pg.click(ac["click"], timeout=8000); pg.wait_for_timeout(1200)
+                        except Exception as e:
+                            log(f"  tela {s['media']}: ação falhou ({str(e)[:80]})")
                     if s.get("alvo"):
                         el = pg.get_by_text(s["alvo"], exact=False).locator("visible=true").first
                         try:

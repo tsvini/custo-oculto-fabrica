@@ -1,0 +1,235 @@
+{
+ "title": "Cypress para leigos · Aula 19",
+ "slug": "curso-cypress-19",
+ "idioma": "pt",
+ "destino": "curso",
+ "marca": [
+  "CYPRESS",
+  "PARA LEIGOS"
+ ],
+ "cor_fundo": "#3fd68a",
+ "legenda_y": 0.93,
+ "selo": "MÓDULO 5 · AULA 19",
+ "voz": {
+  "nome": "gravada",
+  "motor": "eleven",
+  "eleven_voz": "Vinícius Torales"
+ },
+ "script": {
+  "long": {
+   "parts": [
+    {
+     "chapter": "",
+     "sentences": [
+      {
+       "text": "Fala, pessoal! Chegamos na última aula. Hoje o seu projeto vai pro GitHub, e vira o seu portfólio.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "ÚLTIMA AULA",
+          "gold",
+          170
+         ],
+         [
+          "O SEU PORTFÓLIO",
+          "white",
+          120
+         ]
+        ]
+       }
+      },
+      {
+       "text": "O GitHub é tipo uma rede social de código. As empresas olham ele pra ver o que você sabe fazer. Então um projeto lá vale muito numa entrevista.",
+       "scene": {
+        "type": "cards",
+        "itens": [
+         [
+          "⑂",
+          "GitHub",
+          "onde o código fica online"
+         ],
+         [
+          "★",
+          "Portfólio",
+          "as empresas olham",
+          "#ffd23f"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Antes de tudo, cria um arquivo na pasta do projeto chamado ponto gitignore, e escreve node underline modules dentro. Isso avisa o Git pra não subir aquela pasta gigante.",
+       "scene": {
+        "type": "editor",
+        "arquivo": ".gitignore",
+        "pastas": [
+         "meu-primeiro-teste",
+         "cypress",
+         ".gitignore",
+         "package.json"
+        ],
+        "codigo": "node_modules\n",
+        "legenda": "Não suba a node_modules",
+        "destaque": [
+         1
+        ]
+       }
+      },
+      {
+       "text": "Agora, no site do GitHub, cria uma conta se ainda não tiver, e clica em New repository. Dá o nome meu traço primeiro traço teste, e clica em Create.",
+       "scene": {
+        "type": "passo",
+        "n": 1,
+        "de": 3,
+        "titulo": "Crie o repositório",
+        "sub": "github.com › New repository",
+        "icone": "1"
+       }
+      },
+      {
+       "text": "Volta pro terminal do VS Code. Primeiro, o git init, que liga o Git na pasta. Depois git add ponto, que separa todos os arquivos. E o git commit, que tira a foto do projeto.",
+       "scene": {
+        "type": "terminal",
+        "titulo": "Terminal — VS Code",
+        "pasta": "C:\\Users\\voce\\Documents\\meu-primeiro-teste",
+        "linhas": [
+         {
+          "cmd": "git init"
+         },
+         {
+          "cmd": "git add ."
+         },
+         {
+          "cmd": "git commit -m \"meu primeiro teste com Cypress\""
+         },
+         {
+          "out": "[main] meu primeiro teste com Cypress",
+          "cor": "ac"
+         }
+        ],
+        "legenda": "Liga, separa e salva"
+       }
+      },
+      {
+       "text": "Lembra que o Git é o save do videogame? O commit é exatamente o momento de salvar, e a mensagem é o nome que você dá pro save.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "COMMIT",
+          "gold",
+          200
+         ],
+         [
+          "= SALVAR O JOGO",
+          "white",
+          130
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Por último, o GitHub mostra dois comandos pra conectar a sua pasta com o repositório. Copia, cola no terminal, e roda o git push, que manda tudo pra internet.",
+       "scene": {
+        "type": "terminal",
+        "titulo": "Terminal — VS Code",
+        "pasta": "C:\\Users\\voce\\Documents\\meu-primeiro-teste",
+        "linhas": [
+         {
+          "cmd": "git remote add origin https://github.com/voce/meu-primeiro-teste.git"
+         },
+         {
+          "cmd": "git push -u origin main"
+         },
+         {
+          "out": "To github.com/voce/meu-primeiro-teste.git",
+          "cor": "ac"
+         }
+        ],
+        "legenda": "git push manda pro GitHub"
+       }
+      },
+      {
+       "text": "Atualiza a página do GitHub, e olha: o seu projeto está lá, com os seus testes. Pode colocar esse link no currículo.",
+       "scene": {
+        "type": "passo",
+        "n": 3,
+        "de": 3,
+        "titulo": "Coloque no currículo",
+        "sub": "github.com/voce/meu-primeiro-teste",
+        "icone": "★",
+        "mono": true
+       }
+      },
+      {
+       "text": "E é isso! Você começou sem saber o que era o VS Code, e terminou com testes automatizados de verdade, rodando e publicados. Isso é muita coisa.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "VOCÊ CONSEGUIU!",
+          "gold",
+          180
+         ],
+         [
+          "DO ZERO AOS TESTES",
+          "white",
+          110
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Daqui pra frente, o caminho é praticar: escolhe um site, pensa no que ele deveria fazer, e escreve um teste pra conferir. Cada teste que você escreve, você fica melhor.",
+       "scene": {
+        "type": "cards",
+        "titulo": "OS PRÓXIMOS PASSOS",
+        "itens": [
+         [
+          "1",
+          "Pratique",
+          "em outros sites"
+         ],
+         [
+          "2",
+          "Mostre",
+          "no GitHub e no currículo",
+          "#69a7ff"
+         ],
+         [
+          "3",
+          "Continue",
+          "tem muito mais pela frente",
+          "#ffd23f"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Muito obrigado por fazer o curso comigo. Se ele te ajudou, deixa a sua avaliação, que isso me ajuda demais. Até a próxima!",
+       "scene": {
+        "type": "endcard",
+        "sub": "OBRIGADO POR FAZER O CURSO!"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "shorts": [],
+  "tiktoks": []
+ },
+ "serie": [],
+ "meta": {
+  "titles": [
+   "Aula 19: Subindo o projeto pro GitHub"
+  ],
+  "description": "",
+  "tags": []
+ },
+ "notes": "Curso Cypress para leigos. Não publica (destino: curso)."
+}

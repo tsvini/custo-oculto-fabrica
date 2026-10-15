@@ -1,0 +1,257 @@
+{
+ "title": "Cypress para leigos · Aula 17",
+ "slug": "curso-cypress-17",
+ "idioma": "pt",
+ "destino": "curso",
+ "marca": [
+  "CYPRESS",
+  "PARA LEIGOS"
+ ],
+ "cor_fundo": "#3fd68a",
+ "legenda_y": 0.93,
+ "selo": "MÓDULO 5 · AULA 17",
+ "voz": {
+  "nome": "gravada",
+  "motor": "eleven",
+  "eleven_voz": "Vinícius Torales"
+ },
+ "script": {
+  "long": {
+   "parts": [
+    {
+     "chapter": "",
+     "sentences": [
+      {
+       "text": "Fala, pessoal! Módulo cinco, o projeto final. Agora você vai juntar tudo o que aprendeu e testar uma compra do começo ao fim.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "MÓDULO 5",
+          "muted",
+          80
+         ],
+         [
+          "PROJETO",
+          "white",
+          150
+         ],
+         [
+          "FINAL",
+          "gold",
+          220
+         ]
+        ]
+       }
+      },
+      {
+       "text": "O plano é esse: entrar na loja, colocar uma mochila no carrinho, e conferir se ela foi pra lá. Na próxima aula, a gente finaliza a compra.",
+       "scene": {
+        "type": "cards",
+        "titulo": "O PLANO",
+        "itens": [
+         [
+          "1",
+          "Entrar",
+          "fazer o login"
+         ],
+         [
+          "2",
+          "Adicionar",
+          "a mochila no carrinho",
+          "#69a7ff"
+         ],
+         [
+          "3",
+          "Conferir",
+          "o carrinho",
+          "#ffd23f"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Cria um arquivo novo na pasta e2e, chamado compra ponto cy ponto js. E já começa com o beforeEach fazendo o login, igual a gente aprendeu.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "compra.cy.js",
+        "pastas": [
+         "meu-primeiro-teste",
+         "cypress",
+         "e2e",
+         "compra.cy.js"
+        ],
+        "codigo": "describe('Compra', () => {\n  beforeEach(() => {\n    cy.visit('https://www.saucedemo.com')\n    cy.get('[data-test=\"username\"]').type('standard_user')\n    cy.get('[data-test=\"password\"]').type('secret_sauce')\n    cy.get('[data-test=\"login-button\"]').click()\n  })\n})",
+        "legenda": "Cada teste já começa logado",
+        "destaque": [
+         2,
+         7
+        ],
+        "fonte": 28
+       }
+      },
+      {
+       "text": "Agora, na loja, cada produto tem um botão Add to cart. O da mochila tem o data test add to cart sauce labs backpack.",
+       "scene": {
+        "type": "tela",
+        "media": "site_sauce_loja",
+        "url": "https://www.saucedemo.com/",
+        "acoes": [
+         {
+          "fill": [
+           "#user-name",
+           "standard_user"
+          ]
+         },
+         {
+          "fill": [
+           "#password",
+           "secret_sauce"
+          ]
+         },
+         {
+          "click": "#login-button"
+         }
+        ],
+        "alvo": "Add to cart",
+        "titulo": "saucedemo.com/inventory.html",
+        "zoom_em": 1.2,
+        "caixa_em": 1.8,
+        "legenda": "O botão Add to cart da mochila"
+       }
+      },
+      {
+       "text": "Então o teste clica nesse botão. E depois confere o ícone do carrinho: ele deveria mostrar o número um.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "compra.cy.js",
+        "pastas": [
+         "meu-primeiro-teste",
+         "cypress",
+         "e2e",
+         "compra.cy.js"
+        ],
+        "codigo": "  it('adiciona a mochila no carrinho', () => {\n    cy.get('[data-test=\"add-to-cart-sauce-labs-backpack\"]').click()\n    cy.get('[data-test=\"shopping-cart-badge\"]')\n      .should('have.text', '1')\n  })",
+        "legenda": "O carrinho deveria mostrar 1",
+        "destaque": [
+         2,
+         4
+        ],
+        "fonte": 27
+       }
+      },
+      {
+       "text": "O have text quer dizer: deveria ter exatamente esse texto. É mais rigoroso que o contain, que só confere se o texto está ali no meio.",
+       "scene": {
+        "type": "compare",
+        "title": "DOIS JEITOS DE CONFERIR TEXTO",
+        "items": [
+         [
+          "CONTAIN",
+          "TEM ISSO NO MEIO",
+          "white"
+         ],
+         [
+          "HAVE.TEXT",
+          "É EXATAMENTE ISSO",
+          "gold"
+         ]
+        ],
+        "size": 130,
+        "stagger": 1.2,
+        "vs": false
+       }
+      },
+      {
+       "text": "Roda o teste: ele entra, clica em adicionar, e confere o carrinho. Verdinho!",
+       "scene": {
+        "type": "runner",
+        "spec": "compra.cy.js",
+        "teste": "adiciona a mochila no carrinho",
+        "passos": [
+         [
+          "visit",
+          "saucedemo.com"
+         ],
+         [
+          "type",
+          "standard_user"
+         ],
+         [
+          "type",
+          "secret_sauce"
+         ],
+         [
+          "click",
+          "login"
+         ],
+         [
+          "click",
+          "add-to-cart"
+         ],
+         [
+          "get",
+          "shopping-cart-badge"
+         ],
+         [
+          "have.text",
+          "1"
+         ]
+        ],
+        "status": "passou",
+        "media": "site_sauce_loja",
+        "url": "https://www.saucedemo.com/",
+        "acoes": [
+         {
+          "fill": [
+           "#user-name",
+           "standard_user"
+          ]
+         },
+         {
+          "fill": [
+           "#password",
+           "secret_sauce"
+          ]
+         },
+         {
+          "click": "#login-button"
+         }
+        ],
+        "legenda": "A mochila foi pro carrinho"
+       }
+      },
+      {
+       "text": "Na próxima aula, a gente finaliza a compra e confere a mensagem de pedido feito.",
+       "scene": {
+        "type": "passo",
+        "icone": "▶",
+        "titulo": "Próxima aula",
+        "sub": "Finalizando A Compra"
+       }
+      },
+      {
+       "text": "Te vejo lá!",
+       "scene": {
+        "type": "endcard",
+        "sub": "PRÓXIMA: FINALIZANDO A COMPRA"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "shorts": [],
+  "tiktoks": []
+ },
+ "serie": [],
+ "meta": {
+  "titles": [
+   "Aula 17: Projeto final: o carrinho"
+  ],
+  "description": "",
+  "tags": []
+ },
+ "notes": "Curso Cypress para leigos. Não publica (destino: curso)."
+}
