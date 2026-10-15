@@ -1,0 +1,160 @@
+{
+ "title": "Cypress para leigos · Aula 26",
+ "slug": "curso-cypress-26",
+ "idioma": "pt",
+ "destino": "curso",
+ "marca": [
+  "CYPRESS",
+  "PARA LEIGOS"
+ ],
+ "cor_fundo": "#3fd68a",
+ "legenda_y": 0.93,
+ "selo": "MÓDULO 7 · AULA 26",
+ "voz": {
+  "nome": "gravada",
+  "motor": "eleven",
+  "eleven_voz": "Vinícius Torales"
+ },
+ "script": {
+  "long": {
+   "parts": [
+    {
+     "chapter": "",
+     "sentences": [
+      {
+       "text": "Fala, pessoal! Módulo sete, carreira. Eu trabalho como QA, e nesse módulo eu quero te contar como é isso de verdade.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "MÓDULO 7",
+          "muted",
+          80
+         ],
+         [
+          "CARREIRA",
+          "gold",
+          200
+         ],
+         [
+          "EM QA",
+          "white",
+          150
+         ]
+        ]
+       }
+      },
+      {
+       "text": "QA vem de quality assurance, garantia de qualidade. É a pessoa que garante que o sistema funciona antes de chegar no cliente.",
+       "scene": {
+        "type": "stamp",
+        "org": "QUALITY ASSURANCE",
+        "title": "GARANTIA DE QUALIDADE",
+        "stamp": "QA",
+        "stamp_at": 0.9
+       }
+      },
+      {
+       "text": "No dia a dia, o QA participa desde o começo: entende o que vai ser construído, pensa no que pode dar errado, e escreve os casos de teste.",
+       "scene": {
+        "type": "cards",
+        "titulo": "O DIA A DIA",
+        "itens": [
+         [
+          "1",
+          "Entender",
+          "o que vai ser feito"
+         ],
+         [
+          "2",
+          "Testar",
+          "manual e automático",
+          "#69a7ff"
+         ],
+         [
+          "3",
+          "Reportar",
+          "os bugs que achar",
+          "#ffd23f"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Quando acha um problema, o QA abre um bug: um relato explicando o que aconteceu, os passos pra repetir, e o que deveria ter acontecido.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "bug.md",
+        "pastas": null,
+        "codigo": "Título: Carrinho não atualiza ao remover produto\n\nPassos:\n1. Entrar com standard_user\n2. Adicionar a mochila\n3. Remover a mochila\n\nEsperado: carrinho vazio\nObtido: carrinho continua mostrando 1",
+        "legenda": "Um bom bug é fácil de repetir",
+        "destaque": [
+         8,
+         9
+        ]
+       }
+      },
+      {
+       "text": "E a automação, que é o que você aprendeu nesse curso, serve pra não ter que testar tudo na mão toda vez. Os testes automáticos cuidam do que já funciona, e o QA fica livre pra procurar problemas novos.",
+       "scene": {
+        "type": "flow",
+        "a": "AUTOMAÇÃO",
+        "a_sub": "cuida do que já funciona",
+        "b": "QA",
+        "b_sub": "procura os problemas novos",
+        "caption": "TRABALHANDO JUNTOS"
+       }
+      },
+      {
+       "text": "Um detalhe importante: QA não é o inimigo do programador. Os dois estão do mesmo lado, querendo que o sistema fique bom.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "QA E DEV",
+          "white",
+          160
+         ],
+         [
+          "NO MESMO TIME",
+          "gold",
+          160
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Na próxima aula: como colocar o seu projeto no currículo.",
+       "scene": {
+        "type": "passo",
+        "icone": "▶",
+        "titulo": "Próxima aula",
+        "sub": "O Seu Projeto No Currículo"
+       }
+      },
+      {
+       "text": "Te vejo lá!",
+       "scene": {
+        "type": "endcard",
+        "sub": "PRÓXIMA: O SEU PROJETO NO CURRÍCULO"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "shorts": [],
+  "tiktoks": []
+ },
+ "serie": [],
+ "meta": {
+  "titles": [
+   "Aula 26: O que faz um QA no dia a dia"
+  ],
+  "description": "",
+  "tags": []
+ },
+ "notes": "Curso Cypress para leigos. Não publica (destino: curso)."
+}

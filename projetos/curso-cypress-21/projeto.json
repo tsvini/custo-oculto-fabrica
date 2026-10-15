@@ -1,0 +1,163 @@
+{
+ "title": "Cypress para leigos · Aula 21",
+ "slug": "curso-cypress-21",
+ "idioma": "pt",
+ "destino": "curso",
+ "marca": [
+  "CYPRESS",
+  "PARA LEIGOS"
+ ],
+ "cor_fundo": "#3fd68a",
+ "legenda_y": 0.93,
+ "selo": "MÓDULO 6 · AULA 21",
+ "voz": {
+  "nome": "gravada",
+  "motor": "eleven",
+  "eleven_voz": "Vinícius Torales"
+ },
+ "script": {
+  "long": {
+   "parts": [
+    {
+     "chapter": "",
+     "sentences": [
+      {
+       "text": "Desafio dois: o que acontece se a pessoa clicar em entrar sem digitar nada?",
+       "scene": {
+        "type": "passo",
+        "icone": "★",
+        "titulo": "Login com campos vazios",
+        "sub": "Desafio 2 de 6"
+       }
+      },
+      {
+       "text": "Escreve um teste que clica direto no botão de login, sem preencher nada, e confere se aparece um erro dizendo que o usuário é obrigatório.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "SEM DIGITAR",
+          "white",
+          150
+         ],
+         [
+          "NADA",
+          "gold",
+          220
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Esse é um tipo de teste muito importante, que a gente chama de teste negativo: testar o que acontece quando o usuário faz algo errado.",
+       "scene": {
+        "type": "compare",
+        "title": "DOIS TIPOS DE TESTE",
+        "items": [
+         [
+          "POSITIVO",
+          "FAZ TUDO CERTO",
+          "gold"
+         ],
+         [
+          "NEGATIVO",
+          "FAZ ALGO ERRADO",
+          "red"
+         ]
+        ],
+        "size": 140,
+        "stagger": 1.2,
+        "vs": true
+       }
+      },
+      {
+       "text": "Pause o vídeo e tente.",
+       "scene": {
+        "type": "passo",
+        "icone": "⏸",
+        "titulo": "Pause e tente sozinho",
+        "sub": "volte quando terminar"
+       }
+      },
+      {
+       "text": "Solução: esse é curtinho. Só clica no botão, e confere a mensagem Username is required.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "login.cy.js",
+        "pastas": [
+         "meu-primeiro-teste",
+         "cypress",
+         "e2e",
+         "login.cy.js"
+        ],
+        "codigo": "  it('pede o usuário quando os campos estão vazios', () => {\n    cy.get('[data-test=\"login-button\"]').click()\n    cy.get('[data-test=\"error\"]')\n      .should('contain', 'Username is required')\n  })",
+        "legenda": "Teste curto também é teste",
+        "destaque": [
+         2,
+         4
+        ],
+        "fonte": 28
+       }
+      },
+      {
+       "text": "E um bônus pra você tentar sozinho: preenche só o usuário, deixa a senha vazia, e veja qual mensagem aparece. Escreve um teste pra ela também.",
+       "scene": {
+        "type": "passo",
+        "icone": "+",
+        "titulo": "Bônus",
+        "sub": "só o usuário, sem a senha"
+       }
+      },
+      {
+       "text": "Testador bom pensa assim: o que pode dar errado aqui? Cada resposta vira um teste.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "O QUE PODE",
+          "white",
+          150
+         ],
+         [
+          "DAR ERRADO?",
+          "gold",
+          170
+         ]
+        ]
+       }
+      },
+      {
+       "text": "No próximo desafio, você vai tirar um produto do carrinho.",
+       "scene": {
+        "type": "passo",
+        "icone": "▶",
+        "titulo": "Próxima aula",
+        "sub": "Desafio 3: Remover Do Carrinho"
+       }
+      },
+      {
+       "text": "Te vejo lá!",
+       "scene": {
+        "type": "endcard",
+        "sub": "PRÓXIMA: DESAFIO 3: REMOVER DO CARRINHO"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "shorts": [],
+  "tiktoks": []
+ },
+ "serie": [],
+ "meta": {
+  "titles": [
+   "Aula 21: Desafio 2: campos vazios"
+  ],
+  "description": "",
+  "tags": []
+ },
+ "notes": "Curso Cypress para leigos. Não publica (destino: curso)."
+}

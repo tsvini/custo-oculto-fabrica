@@ -1,0 +1,130 @@
+{
+ "title": "Cypress para leigos · Aula 28",
+ "slug": "curso-cypress-28",
+ "idioma": "pt",
+ "destino": "curso",
+ "marca": [
+  "CYPRESS",
+  "PARA LEIGOS"
+ ],
+ "cor_fundo": "#3fd68a",
+ "legenda_y": 0.93,
+ "selo": "MÓDULO 7 · AULA 28",
+ "voz": {
+  "nome": "gravada",
+  "motor": "eleven",
+  "eleven_voz": "Vinícius Torales"
+ },
+ "script": {
+  "long": {
+   "parts": [
+    {
+     "chapter": "",
+     "sentences": [
+      {
+       "text": "Fala, pessoal! Última aula do curso. Vamos falar das perguntas que mais aparecem numa entrevista pra QA júnior. E você já sabe responder todas.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "ÚLTIMA AULA",
+          "gold",
+          170
+         ],
+         [
+          "A ENTREVISTA",
+          "white",
+          140
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Pergunta um: qual a diferença entre teste manual e automatizado? Você responde: o manual é feito por uma pessoa, e o automatizado é um código que o computador repete sozinho, quantas vezes quiser.",
+       "scene": {
+        "type": "passo",
+        "icone": "1",
+        "titulo": "Manual ou automatizado?",
+        "sub": "pessoa testando × código repetindo"
+       }
+      },
+      {
+       "text": "Pergunta dois: o que é um teste E2E? É o teste de ponta a ponta, que usa o sistema como um usuário de verdade. Exatamente o que você fez com o Cypress.",
+       "scene": {
+        "type": "passo",
+        "icone": "2",
+        "titulo": "O que é E2E?",
+        "sub": "de ponta a ponta, como um usuário"
+       }
+      },
+      {
+       "text": "Pergunta três: o que é uma asserção? É a conferência do teste. No Cypress, é o should: o teste confere se aconteceu o que deveria.",
+       "scene": {
+        "type": "passo",
+        "icone": "3",
+        "titulo": "O que é uma asserção?",
+        "sub": "should = a conferência"
+       }
+      },
+      {
+       "text": "Pergunta quatro: qual seletor você prefere usar? Você responde: o data test, porque ele não muda quando o visual do site muda. Essa resposta impressiona.",
+       "scene": {
+        "type": "passo",
+        "icone": "4",
+        "titulo": "Qual seletor você usa?",
+        "sub": "data-test, porque não muda"
+       }
+      },
+      {
+       "text": "E a pergunta mais importante: me conta um teste que você fez. Aí você fala do seu projeto: o login, os testes negativos, a compra completa. E manda o link do GitHub.",
+       "scene": {
+        "type": "passo",
+        "icone": "★",
+        "titulo": "Me conta um teste seu",
+        "sub": "o seu projeto no GitHub"
+       }
+      },
+      {
+       "text": "E é isso! Você começou sem saber o que era o VS Code, e termina sabendo escrever testes, ler erros, organizar um projeto e falar disso numa entrevista.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "DO ZERO",
+          "white",
+          160
+         ],
+         [
+          "À ENTREVISTA",
+          "gold",
+          170
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Muito obrigado por fazer o curso comigo. Se ele te ajudou, deixa a sua avaliação, que isso me ajuda demais. E boa sorte na sua primeira vaga. Até a próxima!",
+       "scene": {
+        "type": "endcard",
+        "sub": "OBRIGADO POR FAZER O CURSO!"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "shorts": [],
+  "tiktoks": []
+ },
+ "serie": [],
+ "meta": {
+  "titles": [
+   "Aula 28: Preparando para a entrevista"
+  ],
+  "description": "",
+  "tags": []
+ },
+ "notes": "Curso Cypress para leigos. Não publica (destino: curso)."
+}

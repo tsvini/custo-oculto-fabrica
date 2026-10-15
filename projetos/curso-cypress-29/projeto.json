@@ -1,0 +1,202 @@
+{
+ "title": "Cypress para leigos · Aula 29",
+ "slug": "curso-cypress-29",
+ "idioma": "pt",
+ "destino": "curso",
+ "marca": [
+  "CYPRESS",
+  "PARA LEIGOS"
+ ],
+ "cor_fundo": "#3fd68a",
+ "legenda_y": 0.93,
+ "selo": "MÓDULO 8 · AULA 29",
+ "voz": {
+  "nome": "gravada",
+  "motor": "eleven",
+  "eleven_voz": "Vinícius Torales"
+ },
+ "script": {
+  "long": {
+   "parts": [
+    {
+     "chapter": "",
+     "sentences": [
+      {
+       "text": "Fala, pessoal! Essa é uma aula extra, pra consultar quando algo der errado. Aqui estão os erros mais comuns de quem está começando, e como resolver cada um.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "AULA EXTRA",
+          "muted",
+          80
+         ],
+         [
+          "DEU ERRO,",
+          "white",
+          150
+         ],
+         [
+          "E AGORA?",
+          "gold",
+          180
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Erro um: o terminal diz que o npm ou o npx não é reconhecido. Isso quase sempre quer dizer que o terminal foi aberto antes de instalar o Node.",
+       "scene": {
+        "type": "terminal",
+        "titulo": "Terminal — VS Code",
+        "pasta": "C:\\Users\\voce\\Documents\\meu-primeiro-teste",
+        "linhas": [
+         {
+          "cmd": "npx cypress open"
+         },
+         {
+          "out": "npx : O termo 'npx' não é reconhecido como nome de cmdlet",
+          "cor": "red"
+         }
+        ],
+        "legenda": "Feche e abra o VS Code de novo"
+       }
+      },
+      {
+       "text": "A solução é simples: fecha o VS Code inteiro e abre de novo. Se continuar, reinicia o computador. Se mesmo assim não funcionar, instala o Node de novo.",
+       "scene": {
+        "type": "cards",
+        "titulo": "NPX NÃO É RECONHECIDO",
+        "itens": [
+         [
+          "1",
+          "Feche",
+          "e abra o VS Code"
+         ],
+         [
+          "2",
+          "Reinicie",
+          "o computador",
+          "#69a7ff"
+         ],
+         [
+          "3",
+          "Reinstale",
+          "o Node.js",
+          "#ffd23f"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Erro dois, muito comum no Windows: aparece uma mensagem dizendo que a execução de scripts foi desabilitada neste sistema.",
+       "scene": {
+        "type": "terminal",
+        "titulo": "Terminal — VS Code",
+        "pasta": "C:\\Users\\voce\\Documents\\meu-primeiro-teste",
+        "linhas": [
+         {
+          "cmd": "npm init -y"
+         },
+         {
+          "out": "npm : O arquivo npm.ps1 não pode ser carregado porque a",
+          "cor": "red"
+         },
+         {
+          "out": "execução de scripts foi desabilitada neste sistema.",
+          "cor": "red"
+         }
+        ],
+        "legenda": "Um bloqueio do PowerShell"
+       }
+      },
+      {
+       "text": "Isso é uma trava de segurança do PowerShell. Pra liberar só pro seu usuário, roda esse comando uma vez: Set traço ExecutionPolicy, traço Scope CurrentUser, RemoteSigned. Depois fecha e abre o terminal.",
+       "scene": {
+        "type": "terminal",
+        "titulo": "Terminal — VS Code",
+        "pasta": "C:\\Users\\voce\\Documents\\meu-primeiro-teste",
+        "linhas": [
+         {
+          "cmd": "Set-ExecutionPolicy -Scope CurrentUser RemoteSigned"
+         },
+         {
+          "out": "(responda S para confirmar)",
+          "cor": "mut"
+         }
+        ],
+        "legenda": "Rode uma vez e pronto"
+       }
+      },
+      {
+       "text": "Erro três: o Cypress não acha o arquivo de configuração, ou diz que não é um projeto. Isso acontece quando o terminal está na pasta errada.",
+       "scene": {
+        "type": "terminal",
+        "titulo": "Terminal — VS Code",
+        "pasta": "C:\\Users\\voce\\Documents\\meu-primeiro-teste",
+        "linhas": [
+         {
+          "cmd": "npx cypress open"
+         },
+         {
+          "out": "Could not find a Cypress configuration file",
+          "cor": "red"
+         }
+        ],
+        "legenda": "Confira a pasta do terminal"
+       }
+      },
+      {
+       "text": "Olha o caminho antes do cursor. Ele tem que terminar com o nome da pasta do projeto. Se não estiver, abre a pasta certa no VS Code com File, Open Folder, e abre um terminal novo.",
+       "scene": {
+        "type": "passo",
+        "icone": "✓",
+        "titulo": "O terminal está na pasta certa?",
+        "sub": "…\\meu-primeiro-teste>",
+        "mono": true
+       }
+      },
+      {
+       "text": "E a dica de ouro pra qualquer erro: copia a mensagem e cola no Google. Pode ter certeza que alguém já passou por isso e já resolveu. Programador experiente faz isso todo dia.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "COPIA O ERRO",
+          "white",
+          150
+         ],
+         [
+          "E PESQUISA",
+          "gold",
+          180
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Volta nessa aula sempre que precisar. Até a próxima!",
+       "scene": {
+        "type": "endcard",
+        "sub": "AULA EXTRA: ERROS COMUNS"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "shorts": [],
+  "tiktoks": []
+ },
+ "serie": [],
+ "meta": {
+  "titles": [
+   "Aula 29: Extra: deu erro, e agora?"
+  ],
+  "description": "",
+  "tags": []
+ },
+ "notes": "Curso Cypress para leigos. Não publica (destino: curso)."
+}

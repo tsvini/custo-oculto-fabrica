@@ -1,0 +1,194 @@
+{
+ "title": "Cypress para leigos · Aula 20",
+ "slug": "curso-cypress-20",
+ "idioma": "pt",
+ "destino": "curso",
+ "marca": [
+  "CYPRESS",
+  "PARA LEIGOS"
+ ],
+ "cor_fundo": "#3fd68a",
+ "legenda_y": 0.93,
+ "selo": "MÓDULO 6 · AULA 20",
+ "voz": {
+  "nome": "gravada",
+  "motor": "eleven",
+  "eleven_voz": "Vinícius Torales"
+ },
+ "script": {
+  "long": {
+   "parts": [
+    {
+     "chapter": "",
+     "sentences": [
+      {
+       "text": "Fala, pessoal! Começou o módulo seis, o módulo da prática. Agora é a sua vez de escrever os testes.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "MÓDULO 6",
+          "muted",
+          80
+         ],
+         [
+          "AGORA É",
+          "white",
+          150
+         ],
+         [
+          "A SUA VEZ",
+          "gold",
+          190
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Funciona assim: eu passo o desafio, você pausa o vídeo e tenta fazer sozinho. Depois, você volta e a gente resolve junto. Errar faz parte, é assim que se aprende.",
+       "scene": {
+        "type": "cards",
+        "titulo": "COMO FUNCIONA",
+        "itens": [
+         [
+          "1",
+          "Desafio",
+          "eu explico o que testar"
+         ],
+         [
+          "2",
+          "Pause",
+          "e tente sozinho",
+          "#69a7ff"
+         ],
+         [
+          "3",
+          "Solução",
+          "a gente resolve junto",
+          "#ffd23f"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Desafio um: teste o login com a senha errada. O usuário é standard user, e a senha pode ser qualquer coisa errada. O site deveria mostrar uma mensagem de erro.",
+       "scene": {
+        "type": "passo",
+        "icone": "★",
+        "titulo": "Login com senha errada",
+        "sub": "Desafio 1 de 6"
+       }
+      },
+      {
+       "text": "Dica: é bem parecido com o teste do usuário bloqueado. Pause o vídeo agora e tente.",
+       "scene": {
+        "type": "passo",
+        "icone": "⏸",
+        "titulo": "Pause e tente sozinho",
+        "sub": "volte quando terminar"
+       }
+      },
+      {
+       "text": "E aí, conseguiu? Vamos lá. Digita o usuário certo, uma senha errada, clica em entrar, e confere a mensagem de erro.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "login.cy.js",
+        "pastas": [
+         "meu-primeiro-teste",
+         "cypress",
+         "e2e",
+         "login.cy.js"
+        ],
+        "codigo": "  it('mostra erro com senha errada', () => {\n    cy.get('[data-test=\"username\"]').type('standard_user')\n    cy.get('[data-test=\"password\"]').type('senha_errada')\n    cy.get('[data-test=\"login-button\"]').click()\n    cy.get('[data-test=\"error\"]')\n      .should('contain', 'do not match')\n  })",
+        "legenda": "A senha errada e a conferência",
+        "destaque": [
+         3,
+         5,
+         6
+        ],
+        "fonte": 28
+       }
+      },
+      {
+       "text": "A mensagem do site diz que o usuário e a senha não combinam. Então a gente confere se o erro contém o texto do not match.",
+       "scene": {
+        "type": "tela",
+        "media": "site_sauce_senha",
+        "url": "https://www.saucedemo.com/",
+        "acoes": [
+         {
+          "fill": [
+           "#user-name",
+           "standard_user"
+          ]
+         },
+         {
+          "fill": [
+           "#password",
+           "senha_errada"
+          ]
+         },
+         {
+          "click": "#login-button"
+         }
+        ],
+        "alvo": "do not match",
+        "titulo": "saucedemo.com",
+        "zoom_em": 1.2,
+        "caixa_em": 1.8,
+        "legenda": "A mensagem de erro do site"
+       }
+      },
+      {
+       "text": "Se você fez diferente, mas o teste passou e confere o erro, está certo também. Em teste, tem mais de um jeito certo.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "TEM MAIS DE UM",
+          "white",
+          140
+         ],
+         [
+          "JEITO CERTO",
+          "gold",
+          170
+         ]
+        ]
+       }
+      },
+      {
+       "text": "No próximo desafio, você testa o login com os campos vazios.",
+       "scene": {
+        "type": "passo",
+        "icone": "▶",
+        "titulo": "Próxima aula",
+        "sub": "Desafio 2: Campos Vazios"
+       }
+      },
+      {
+       "text": "Te vejo lá!",
+       "scene": {
+        "type": "endcard",
+        "sub": "PRÓXIMA: DESAFIO 2: CAMPOS VAZIOS"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "shorts": [],
+  "tiktoks": []
+ },
+ "serie": [],
+ "meta": {
+  "titles": [
+   "Aula 20: Desafio 1: senha errada"
+  ],
+  "description": "",
+  "tags": []
+ },
+ "notes": "Curso Cypress para leigos. Não publica (destino: curso)."
+}

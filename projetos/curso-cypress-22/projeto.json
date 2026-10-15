@@ -1,0 +1,184 @@
+{
+ "title": "Cypress para leigos · Aula 22",
+ "slug": "curso-cypress-22",
+ "idioma": "pt",
+ "destino": "curso",
+ "marca": [
+  "CYPRESS",
+  "PARA LEIGOS"
+ ],
+ "cor_fundo": "#3fd68a",
+ "legenda_y": 0.93,
+ "selo": "MÓDULO 6 · AULA 22",
+ "voz": {
+  "nome": "gravada",
+  "motor": "eleven",
+  "eleven_voz": "Vinícius Torales"
+ },
+ "script": {
+  "long": {
+   "parts": [
+    {
+     "chapter": "",
+     "sentences": [
+      {
+       "text": "Desafio três: coloca a mochila no carrinho, depois tira ela, e confere se o carrinho ficou vazio.",
+       "scene": {
+        "type": "passo",
+        "icone": "★",
+        "titulo": "Remover do carrinho",
+        "sub": "Desafio 3 de 6"
+       }
+      },
+      {
+       "text": "Duas dicas. Primeiro: depois de adicionar, o botão da mochila vira Remove, com o data test remove sauce labs backpack.",
+       "scene": {
+        "type": "tela",
+        "media": "site_sauce_remove",
+        "url": "https://www.saucedemo.com/",
+        "acoes": [
+         {
+          "fill": [
+           "#user-name",
+           "standard_user"
+          ]
+         },
+         {
+          "fill": [
+           "#password",
+           "secret_sauce"
+          ]
+         },
+         {
+          "click": "#login-button"
+         },
+         {
+          "click": "[data-test=\"add-to-cart-sauce-labs-backpack\"]"
+         }
+        ],
+        "alvo": "Remove",
+        "titulo": "saucedemo.com/inventory.html",
+        "zoom_em": 1.2,
+        "caixa_em": 1.8,
+        "legenda": "O botão vira Remove"
+       }
+      },
+      {
+       "text": "Segunda dica: quando o carrinho está vazio, o numerozinho some. Então a conferência é que ele não deveria existir. Em inglês: should not exist.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "SHOULD",
+          "white",
+          160
+         ],
+         [
+          "NOT.EXIST",
+          "gold",
+          190
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Pause o vídeo e tente.",
+       "scene": {
+        "type": "passo",
+        "icone": "⏸",
+        "titulo": "Pause e tente sozinho",
+        "sub": "volte quando terminar"
+       }
+      },
+      {
+       "text": "Solução: adiciona, remove, e confere que o número do carrinho não existe mais.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "compra.cy.js",
+        "pastas": [
+         "meu-primeiro-teste",
+         "cypress",
+         "e2e",
+         "compra.cy.js"
+        ],
+        "codigo": "  it('remove a mochila do carrinho', () => {\n    cy.get('[data-test=\"add-to-cart-sauce-labs-backpack\"]').click()\n    cy.get('[data-test=\"remove-sauce-labs-backpack\"]').click()\n    cy.get('[data-test=\"shopping-cart-badge\"]')\n      .should('not.exist')\n  })",
+        "legenda": "Adiciona, remove e confere",
+        "destaque": [
+         3,
+         5
+        ],
+        "fonte": 27
+       }
+      },
+      {
+       "text": "Repara que esse teste foi no arquivo compra ponto cy ponto js. Ele já tem o beforeEach que faz o login, então não precisa repetir.",
+       "scene": {
+        "type": "cards",
+        "itens": [
+         [
+          "✓",
+          "Reaproveitou",
+          "o beforeEach do login"
+         ],
+         [
+          "✓",
+          "Conferiu",
+          "o que não deveria aparecer",
+          "#69a7ff"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Conferir que algo sumiu é tão importante quanto conferir que algo apareceu.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "SUMIU TAMBÉM",
+          "white",
+          140
+         ],
+         [
+          "SE CONFERE",
+          "gold",
+          170
+         ]
+        ]
+       }
+      },
+      {
+       "text": "No próximo desafio, você vai mexer num menu de seleção, ordenando os produtos por preço.",
+       "scene": {
+        "type": "passo",
+        "icone": "▶",
+        "titulo": "Próxima aula",
+        "sub": "Desafio 4: Ordenar Por Preço"
+       }
+      },
+      {
+       "text": "Te vejo lá!",
+       "scene": {
+        "type": "endcard",
+        "sub": "PRÓXIMA: DESAFIO 4: ORDENAR POR PREÇO"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "shorts": [],
+  "tiktoks": []
+ },
+ "serie": [],
+ "meta": {
+  "titles": [
+   "Aula 22: Desafio 3: remover do carrinho"
+  ],
+  "description": "",
+  "tags": []
+ },
+ "notes": "Curso Cypress para leigos. Não publica (destino: curso)."
+}

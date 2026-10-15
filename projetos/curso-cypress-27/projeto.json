@@ -1,0 +1,176 @@
+{
+ "title": "Cypress para leigos · Aula 27",
+ "slug": "curso-cypress-27",
+ "idioma": "pt",
+ "destino": "curso",
+ "marca": [
+  "CYPRESS",
+  "PARA LEIGOS"
+ ],
+ "cor_fundo": "#3fd68a",
+ "legenda_y": 0.93,
+ "selo": "MÓDULO 7 · AULA 27",
+ "voz": {
+  "nome": "gravada",
+  "motor": "eleven",
+  "eleven_voz": "Vinícius Torales"
+ },
+ "script": {
+  "long": {
+   "parts": [
+    {
+     "chapter": "",
+     "sentences": [
+      {
+       "text": "Fala, pessoal! Aula vinte e sete. Você tem um projeto de verdade no GitHub. Agora vamos fazer ele trabalhar a seu favor.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "AULA 27",
+          "muted",
+          80
+         ],
+         [
+          "O SEU PROJETO",
+          "white",
+          140
+         ],
+         [
+          "NO CURRÍCULO",
+          "gold",
+          160
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Primeiro, um README. É o arquivo que aparece na página do projeto no GitHub. Ele explica o que o projeto faz, e é a primeira coisa que o recrutador vê.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "README.md",
+        "pastas": [
+         "meu-primeiro-teste",
+         "cypress",
+         "README.md",
+         "package.json"
+        ],
+        "codigo": "# Testes automatizados com Cypress\n\nTestes E2E da loja Sauce Demo:\n- login (sucesso, senha errada, usuário bloqueado)\n- carrinho (adicionar e remover)\n- compra completa\n\nComo rodar:\nnpm install\nnpm test",
+        "legenda": "O README é a vitrine do projeto",
+        "destaque": [
+         1,
+         9,
+         10
+        ]
+       }
+      },
+      {
+       "text": "No currículo, escreve de um jeito que mostre o que você fez, e não só a ferramenta. Em vez de: sei Cypress. Escreve: automatizei testes de login, carrinho e compra com Cypress.",
+       "scene": {
+        "type": "compare",
+        "title": "COMO ESCREVER",
+        "items": [
+         [
+          "SEI CYPRESS",
+          "FRACO",
+          "red"
+         ],
+         [
+          "AUTOMATIZEI TESTES",
+          "MOSTRA O QUE FEZ",
+          "gold"
+         ]
+        ],
+        "size": 120,
+        "stagger": 1.2,
+        "vs": true
+       }
+      },
+      {
+       "text": "E coloca o link do GitHub. Recrutador adora clicar e ver um projeto funcionando.",
+       "scene": {
+        "type": "passo",
+        "icone": "★",
+        "titulo": "Link do GitHub no currículo",
+        "sub": "github.com/voce/meu-primeiro-teste",
+        "mono": true
+       }
+      },
+      {
+       "text": "Uma dica de quem trabalha na área: mesmo pra vaga de QA manual, ter automação no currículo te coloca na frente. É um diferencial grande pra vaga de júnior.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "AUTOMAÇÃO",
+          "gold",
+          190
+         ],
+         [
+          "É DIFERENCIAL",
+          "white",
+          140
+         ]
+        ]
+       }
+      },
+      {
+       "text": "E continua alimentando o GitHub. Cada site novo que você testar pode virar um projeto novo lá. Com o tempo, o seu perfil vira um portfólio.",
+       "scene": {
+        "type": "cards",
+        "itens": [
+         [
+          "1",
+          "Pratique",
+          "num site novo"
+         ],
+         [
+          "2",
+          "Publique",
+          "no GitHub",
+          "#69a7ff"
+         ],
+         [
+          "3",
+          "Repita",
+          "o portfólio cresce",
+          "#ffd23f"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Na próxima aula, as perguntas que mais caem em entrevista pra QA júnior.",
+       "scene": {
+        "type": "passo",
+        "icone": "▶",
+        "titulo": "Próxima aula",
+        "sub": "A Entrevista"
+       }
+      },
+      {
+       "text": "Te vejo lá!",
+       "scene": {
+        "type": "endcard",
+        "sub": "PRÓXIMA: A ENTREVISTA"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "shorts": [],
+  "tiktoks": []
+ },
+ "serie": [],
+ "meta": {
+  "titles": [
+   "Aula 27: O seu projeto no currículo"
+  ],
+  "description": "",
+  "tags": []
+ },
+ "notes": "Curso Cypress para leigos. Não publica (destino: curso)."
+}

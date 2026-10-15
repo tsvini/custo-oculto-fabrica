@@ -1,0 +1,167 @@
+{
+ "title": "Cypress para leigos · Aula 24",
+ "slug": "curso-cypress-24",
+ "idioma": "pt",
+ "destino": "curso",
+ "marca": [
+  "CYPRESS",
+  "PARA LEIGOS"
+ ],
+ "cor_fundo": "#3fd68a",
+ "legenda_y": 0.93,
+ "selo": "MÓDULO 6 · AULA 24",
+ "voz": {
+  "nome": "gravada",
+  "motor": "eleven",
+  "eleven_voz": "Vinícius Torales"
+ },
+ "script": {
+  "long": {
+   "parts": [
+    {
+     "chapter": "",
+     "sentences": [
+      {
+       "text": "Desafio cinco: depois de entrar, sai da conta. E confere se voltou pra tela de login.",
+       "scene": {
+        "type": "passo",
+        "icone": "★",
+        "titulo": "Logout",
+        "sub": "Desafio 5 de 6"
+       }
+      },
+      {
+       "text": "O botão de sair fica escondido num menu, aquele das três listrinhas no canto da tela. Então são dois cliques: abrir o menu, e clicar em Logout.",
+       "scene": {
+        "type": "tela",
+        "media": "site_sauce_loja",
+        "url": "https://www.saucedemo.com/",
+        "acoes": [
+         {
+          "fill": [
+           "#user-name",
+           "standard_user"
+          ]
+         },
+         {
+          "fill": [
+           "#password",
+           "secret_sauce"
+          ]
+         },
+         {
+          "click": "#login-button"
+         }
+        ],
+        "alvo": "Swag Labs",
+        "titulo": "saucedemo.com/inventory.html",
+        "legenda": "O menu fica no canto"
+       }
+      },
+      {
+       "text": "Dica: o botão do menu tem o id react burger menu btn. E o logout tem o data test logout sidebar link.",
+       "scene": {
+        "type": "cards",
+        "itens": [
+         [
+          "1",
+          "Abrir o menu",
+          "#react-burger-menu-btn"
+         ],
+         [
+          "2",
+          "Sair",
+          "logout-sidebar-link",
+          "#69a7ff"
+         ],
+         [
+          "3",
+          "Conferir",
+          "voltou pro login?",
+          "#ffd23f"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Pause o vídeo e tente.",
+       "scene": {
+        "type": "passo",
+        "icone": "⏸",
+        "titulo": "Pause e tente sozinho",
+        "sub": "volte quando terminar"
+       }
+      },
+      {
+       "text": "Solução: abre o menu, clica em logout, e confere se o botão de login está aparecendo de novo.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "compra.cy.js",
+        "pastas": [
+         "meu-primeiro-teste",
+         "cypress",
+         "e2e",
+         "compra.cy.js"
+        ],
+        "codigo": "  it('sai da conta', () => {\n    cy.get('#react-burger-menu-btn').click()\n    cy.get('[data-test=\"logout-sidebar-link\"]').click()\n    cy.get('[data-test=\"login-button\"]').should('be.visible')\n  })",
+        "legenda": "Abrir, sair e conferir",
+        "destaque": [
+         2,
+         3,
+         4
+        ],
+        "fonte": 27
+       }
+      },
+      {
+       "text": "Repara que não precisou de nenhuma espera. O menu demora um pouquinho pra abrir, mas o Cypress espera sozinho o botão aparecer antes de clicar. Isso é uma das coisas que mais facilitam a vida com ele.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "O CYPRESS",
+          "white",
+          150
+         ],
+         [
+          "ESPERA SOZINHO",
+          "gold",
+          160
+         ]
+        ]
+       }
+      },
+      {
+       "text": "No próximo e último desafio, você vai fazer uma compra com dois produtos, do começo ao fim.",
+       "scene": {
+        "type": "passo",
+        "icone": "▶",
+        "titulo": "Próxima aula",
+        "sub": "Desafio Final"
+       }
+      },
+      {
+       "text": "Te vejo lá!",
+       "scene": {
+        "type": "endcard",
+        "sub": "PRÓXIMA: DESAFIO FINAL"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "shorts": [],
+  "tiktoks": []
+ },
+ "serie": [],
+ "meta": {
+  "titles": [
+   "Aula 24: Desafio 5: logout"
+  ],
+  "description": "",
+  "tags": []
+ },
+ "notes": "Curso Cypress para leigos. Não publica (destino: curso)."
+}
