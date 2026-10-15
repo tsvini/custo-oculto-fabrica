@@ -7,6 +7,7 @@
   const MONO = "'JetBrains Mono', 'Courier New', monospace";
   const clamp = (x, a = 0, b = 1) => Math.max(a, Math.min(b, x));
   const easeOut = (x) => { x = clamp(x); return 1 - Math.pow(1 - x, 3); };
+  const easeInOut = (x) => { x = clamp(x); return x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2; };
   const backOut = (x) => { x = clamp(x); const c1 = 1.70158, c3 = 2.70158; return 1 + c3 * Math.pow(x - 1, 3) + c1 * Math.pow(x - 1, 2); };
   const lerp = (a, b, t) => a + (b - a) * t;
   const font = (w, s, f) => `${w} ${Math.max(1, Math.round(s))}px ${f || FONT}`;
@@ -84,20 +85,27 @@
     txt(ctx, s.arquivo || "arquivo.js", font(600, 24 * u), tabX + 28 * u, top + 30 * u, C.txt, "left", a);
     const linhas = String(s.codigo || "").split("\n"); const total = linhas.join("").length || 1;
     const fs = (s.fonte || (linhas.length > 12 ? 30 : 36)) * u; const lh = fs * 1.55; const x0 = tabX + 96 * u; let yy = top + 100 * u;
+    // rolar: o arquivo inteiro aparece de cima e a tela desce até o fim antes de começar a digitar
+    const baseY = y + H - 40 * u, cabem = Math.floor((baseY - yy) / lh) + 1, sobra = Math.max(0, linhas.length - cabem) * lh;
+    const rDe = s.rolar_de || 1.6, rDur = s.rolar_dur || 1.5; const rolando = s.rolar && sobra > 0;
+    const t0 = rolando ? rDe + rDur + 0.3 : 0.5; if (rolando) yy -= sobra * easeInOut((t - rDe) / rDur);
+    ctx.save(); ctx.beginPath(); ctx.rect(tabX, top + 58 * u, W - sideW, y + H - top - 60 * u); ctx.clip();
     const d0 = s.digitar_de || ((s.destaque && s.destaque.length) ? Math.min(...s.destaque) : 1);  // linhas antes disso já estão escritas
     const pronto = linhas.slice(0, d0 - 1).join("").length; const falta = Math.max(1, total - pronto);
-    const k = s.digitar === false ? 1 : clamp((t - 0.5) / Math.max(0.8, Math.min(dur * (s.vel || 0.7), falta / 18)));
+    const tDig = Math.max(0.8, Math.min(rolando ? Math.max(0.8, dur - t0 - 1.0) : dur * (s.vel || 0.7), falta / 18));
+    const k = s.digitar === false ? 1 : clamp((t - t0) / tDig);
     const dig = k; let resta = pronto + Math.floor(k * falta);
     linhas.forEach((ln, i) => {
       const hl = (s.destaque || []).includes(i + 1);
-      if (hl && dig >= 1) { const ha = easeOut((t - (s.digitar === false ? (s.destaque_em || 1.2) : 0.5 + Math.max(0.8, Math.min(dur * (s.vel || 0.7), falta / 18)))) / 0.4); ctx.save(); ctx.globalAlpha = 0.18 * ha; ctx.fillStyle = C.ac; ctx.fillRect(tabX, yy - lh / 2, W - sideW, lh); ctx.globalAlpha = ha; ctx.fillRect(tabX, yy - lh / 2, 6 * u, lh); ctx.restore(); }
+      if (rolando && (s.marca_inicio || []).includes(i + 1)) { const hm = easeOut((t - 0.4) / 0.3) * (1 - easeOut((t - rDe - 0.6) / 0.4)); if (hm > 0) { ctx.save(); ctx.globalAlpha = 0.16 * hm; ctx.fillStyle = C.yel; ctx.fillRect(tabX, yy - lh / 2, W - sideW, lh); ctx.globalAlpha = hm; ctx.fillRect(tabX, yy - lh / 2, 6 * u, lh); ctx.restore(); } }
+      if (hl && dig >= 1) { const ha = easeOut((t - (s.digitar === false ? (s.destaque_em || 1.2) : t0 + tDig)) / 0.4); ctx.save(); ctx.globalAlpha = 0.18 * ha; ctx.fillStyle = C.ac; ctx.fillRect(tabX, yy - lh / 2, W - sideW, lh); ctx.globalAlpha = ha; ctx.fillRect(tabX, yy - lh / 2, 6 * u, lh); ctx.restore(); }
       txt(ctx, String(i + 1), font(500, fs * 0.8, MONO), x0 - 30 * u, yy, "#4b5263", "right", a);
       let mostra = Math.min(ln.length, resta); resta -= ln.length; let xx = x0;
       for (const [tk, cor] of tokens(ln)) { if (mostra <= 0) break; const parte = tk.slice(0, mostra); mostra -= tk.length; txt(ctx, parte, font(500, fs, MONO), xx, yy, cor, "left", a); xx += tw(ctx, parte, font(500, fs, MONO)); }
       if (dig < 1 && resta < 0 && resta + ln.length >= 0 && Math.floor(t * 2.5) % 2 === 0) { ctx.save(); ctx.globalAlpha = a; ctx.fillStyle = C.ac; ctx.fillRect(xx + 2 * u, yy - fs * 0.6, 4 * u, fs * 1.2); ctx.restore(); }
       yy += lh;
     });
-    ctx.restore(); legenda(ctx, c, t, s);
+    ctx.restore(); ctx.restore(); legenda(ctx, c, t, s);
   };
 
   // TERMINAL: {type:"terminal", pasta:"C:\\Users\\voce\\meu-projeto", linhas:[{cmd:"node -v"},{out:"v22.11.0", cor:"ac"}], legenda:"..."}

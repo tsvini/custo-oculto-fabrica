@@ -155,16 +155,24 @@
                   "login.cy.js",
                   "compra.cy.js"
                 ],
-                "codigo": "describe('Compra', () => {\n  beforeEach(() => {\n    // faz o login (aula 17)\n  })\n\n  // ...os testes das aulas anteriores\n\n  it('compra dois produtos', () => {\n    // o seu teste vem aqui\n  })\n})",
+                "codigo": "describe('Compra', () => {\n  beforeEach(() => {\n    cy.visit('https://www.saucedemo.com')\n    cy.get('[data-test=\"username\"]').type('standard_user')\n    cy.get('[data-test=\"password\"]').type('secret_sauce')\n    cy.get('[data-test=\"login-button\"]').click()\n  })\n\n  it('adiciona a mochila no carrinho', () => {\n    cy.get('[data-test=\"add-to-cart-sauce-labs-backpack\"]').click()\n    cy.get('[data-test=\"shopping-cart-badge\"]')\n      .should('have.text', '1')\n  })\n\n  it('finaliza a compra', () => {\n    cy.get('[data-test=\"add-to-cart-sauce-labs-backpack\"]').click()\n    cy.get('[data-test=\"shopping-cart-link\"]').click()\n    cy.get('[data-test=\"checkout\"]').click()\n    cy.get('[data-test=\"firstName\"]').type('Vinicius')\n    cy.get('[data-test=\"lastName\"]').type('Torales')\n    cy.get('[data-test=\"postalCode\"]').type('88000-000')\n    cy.get('[data-test=\"continue\"]').click()\n    cy.get('[data-test=\"finish\"]').click()\n    cy.contains('Thank you for your order!')\n      .should('be.visible')\n  })\n\n  it('remove a mochila do carrinho', () => {\n    cy.get('[data-test=\"add-to-cart-sauce-labs-backpack\"]').click()\n    cy.get('[data-test=\"remove-sauce-labs-backpack\"]').click()\n    cy.get('[data-test=\"shopping-cart-badge\"]')\n      .should('not.exist')\n  })\n\n  it('ordena do menor para o maior preço', () => {\n    cy.get('[data-test=\"product-sort-container\"]').select('lohi')\n    cy.get('[data-test=\"inventory-item-price\"]')\n      .first()\n      .should('have.text', '$7.99')\n  })\n\n  it('sai da conta', () => {\n    cy.get('#react-burger-menu-btn').click()\n    cy.get('[data-test=\"logout-sidebar-link\"]').click()\n    cy.get('[data-test=\"login-button\"]').should('be.visible')\n  })\n\n  it('compra dois produtos', () => {\n    // o seu teste vem aqui\n  })\n})",
                 "destaque": [
-                  8,
-                  9,
-                  10
+                  48,
+                  49,
+                  50
                 ],
-                "legenda": "Um it novo no compra.cy.js",
-                "fonte": 29,
-                "vel": 0.85,
-                "digitar_de": 8
+                "legenda": "O arquivo inteiro: o it novo vai no final",
+                "fonte": 24,
+                "digitar_de": 48,
+                "rolar": true,
+                "marca_inicio": [
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7
+                ]
               }
             },
             {
@@ -179,16 +187,26 @@
                   "login.cy.js",
                   "compra.cy.js"
                 ],
-                "codigo": "  it('compra dois produtos', () => {\n    cy.get('[data-test=\"add-to-cart-sauce-labs-backpack\"]').click()\n    cy.get('[data-test=\"add-to-cart-sauce-labs-bike-light\"]').click()\n    cy.get('[data-test=\"shopping-cart-badge\"]').should('have.text', '2')",
+                "codigo": "describe('Compra', () => {\n  beforeEach(() => {\n    cy.visit('https://www.saucedemo.com')\n    cy.get('[data-test=\"username\"]').type('standard_user')\n    cy.get('[data-test=\"password\"]').type('secret_sauce')\n    cy.get('[data-test=\"login-button\"]').click()\n  })\n\n  it('adiciona a mochila no carrinho', () => {\n    cy.get('[data-test=\"add-to-cart-sauce-labs-backpack\"]').click()\n    cy.get('[data-test=\"shopping-cart-badge\"]')\n      .should('have.text', '1')\n  })\n\n  it('finaliza a compra', () => {\n    cy.get('[data-test=\"add-to-cart-sauce-labs-backpack\"]').click()\n    cy.get('[data-test=\"shopping-cart-link\"]').click()\n    cy.get('[data-test=\"checkout\"]').click()\n    cy.get('[data-test=\"firstName\"]').type('Vinicius')\n    cy.get('[data-test=\"lastName\"]').type('Torales')\n    cy.get('[data-test=\"postalCode\"]').type('88000-000')\n    cy.get('[data-test=\"continue\"]').click()\n    cy.get('[data-test=\"finish\"]').click()\n    cy.contains('Thank you for your order!')\n      .should('be.visible')\n  })\n\n  it('remove a mochila do carrinho', () => {\n    cy.get('[data-test=\"add-to-cart-sauce-labs-backpack\"]').click()\n    cy.get('[data-test=\"remove-sauce-labs-backpack\"]').click()\n    cy.get('[data-test=\"shopping-cart-badge\"]')\n      .should('not.exist')\n  })\n\n  it('ordena do menor para o maior preço', () => {\n    cy.get('[data-test=\"product-sort-container\"]').select('lohi')\n    cy.get('[data-test=\"inventory-item-price\"]')\n      .first()\n      .should('have.text', '$7.99')\n  })\n\n  it('sai da conta', () => {\n    cy.get('#react-burger-menu-btn').click()\n    cy.get('[data-test=\"logout-sidebar-link\"]').click()\n    cy.get('[data-test=\"login-button\"]').should('be.visible')\n  })\n\n  it('compra dois produtos', () => {\n    cy.get('[data-test=\"add-to-cart-sauce-labs-backpack\"]').click()\n    cy.get('[data-test=\"add-to-cart-sauce-labs-bike-light\"]').click()\n    cy.get('[data-test=\"shopping-cart-badge\"]').should('have.text', '2')\n",
                 "destaque": [
-                  2,
-                  3,
-                  4
+                  48,
+                  49,
+                  50,
+                  51
                 ],
                 "legenda": "Dois produtos, número 2",
                 "fonte": 24,
                 "vel": 0.85,
-                "digitar_de": 2
+                "digitar_de": 48,
+                "rolar": true,
+                "marca_inicio": [
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7
+                ]
               }
             },
             {
@@ -203,22 +221,26 @@
                   "login.cy.js",
                   "compra.cy.js"
                 ],
-                "codigo": "  it('compra dois produtos', () => {\n    cy.get('[data-test=\"add-to-cart-sauce-labs-backpack\"]').click()\n    cy.get('[data-test=\"add-to-cart-sauce-labs-bike-light\"]').click()\n    cy.get('[data-test=\"shopping-cart-badge\"]').should('have.text', '2')\n    cy.get('[data-test=\"shopping-cart-link\"]').click()\n    cy.get('[data-test=\"checkout\"]').click()\n    cy.get('[data-test=\"firstName\"]').type('Vinicius')\n    cy.get('[data-test=\"lastName\"]').type('Torales')\n    cy.get('[data-test=\"postalCode\"]').type('88000-000')\n    cy.get('[data-test=\"continue\"]').click()\n    cy.get('[data-test=\"finish\"]').click()\n    cy.contains('Thank you for your order!')\n      .should('be.visible')\n  })",
+                "codigo": "describe('Compra', () => {\n  beforeEach(() => {\n    cy.visit('https://www.saucedemo.com')\n    cy.get('[data-test=\"username\"]').type('standard_user')\n    cy.get('[data-test=\"password\"]').type('secret_sauce')\n    cy.get('[data-test=\"login-button\"]').click()\n  })\n\n  it('adiciona a mochila no carrinho', () => {\n    cy.get('[data-test=\"add-to-cart-sauce-labs-backpack\"]').click()\n    cy.get('[data-test=\"shopping-cart-badge\"]')\n      .should('have.text', '1')\n  })\n\n  it('finaliza a compra', () => {\n    cy.get('[data-test=\"add-to-cart-sauce-labs-backpack\"]').click()\n    cy.get('[data-test=\"shopping-cart-link\"]').click()\n    cy.get('[data-test=\"checkout\"]').click()\n    cy.get('[data-test=\"firstName\"]').type('Vinicius')\n    cy.get('[data-test=\"lastName\"]').type('Torales')\n    cy.get('[data-test=\"postalCode\"]').type('88000-000')\n    cy.get('[data-test=\"continue\"]').click()\n    cy.get('[data-test=\"finish\"]').click()\n    cy.contains('Thank you for your order!')\n      .should('be.visible')\n  })\n\n  it('remove a mochila do carrinho', () => {\n    cy.get('[data-test=\"add-to-cart-sauce-labs-backpack\"]').click()\n    cy.get('[data-test=\"remove-sauce-labs-backpack\"]').click()\n    cy.get('[data-test=\"shopping-cart-badge\"]')\n      .should('not.exist')\n  })\n\n  it('ordena do menor para o maior preço', () => {\n    cy.get('[data-test=\"product-sort-container\"]').select('lohi')\n    cy.get('[data-test=\"inventory-item-price\"]')\n      .first()\n      .should('have.text', '$7.99')\n  })\n\n  it('sai da conta', () => {\n    cy.get('#react-burger-menu-btn').click()\n    cy.get('[data-test=\"logout-sidebar-link\"]').click()\n    cy.get('[data-test=\"login-button\"]').should('be.visible')\n  })\n\n  it('compra dois produtos', () => {\n    cy.get('[data-test=\"add-to-cart-sauce-labs-backpack\"]').click()\n    cy.get('[data-test=\"add-to-cart-sauce-labs-bike-light\"]').click()\n    cy.get('[data-test=\"shopping-cart-badge\"]').should('have.text', '2')\n    cy.get('[data-test=\"shopping-cart-link\"]').click()\n    cy.get('[data-test=\"checkout\"]').click()\n    cy.get('[data-test=\"firstName\"]').type('Vinicius')\n    cy.get('[data-test=\"lastName\"]').type('Torales')\n    cy.get('[data-test=\"postalCode\"]').type('88000-000')\n    cy.get('[data-test=\"continue\"]').click()\n    cy.get('[data-test=\"finish\"]').click()\n    cy.contains('Thank you for your order!')\n      .should('be.visible')\n  })\n})",
                 "destaque": [
-                  5,
-                  6,
-                  7,
-                  8,
-                  9,
-                  10,
-                  11,
-                  12,
-                  13
+                  52,
+                  53,
+                  54,
+                  55,
+                  56,
+                  57,
+                  58,
+                  59,
+                  60,
+                  61
                 ],
                 "legenda": "O teste inteiro",
-                "fonte": 23,
+                "fonte": 24,
                 "vel": 0.85,
-                "digitar_de": 5
+                "digitar_de": 52,
+                "rolar": true,
+                "rolar_de": 0.01,
+                "rolar_dur": 0.01
               }
             },
             {

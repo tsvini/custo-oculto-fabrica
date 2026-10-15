@@ -99,16 +99,21 @@
                   "e2e",
                   "login.cy.js"
                 ],
-                "codigo": "describe('Login', () => {\n  beforeEach(() => {\n    cy.visit('https://www.saucedemo.com')\n  })\n\n  // ...os testes das aulas anteriores\n\n  it('pede o usuário quando os campos estão vazios', () => {\n    // o seu teste vem aqui\n  })\n})",
+                "codigo": "describe('Login', () => {\n  beforeEach(() => {\n    cy.visit('https://www.saucedemo.com')\n  })\n\n  it('entra com usuário e senha', () => {\n    cy.get('[data-test=\"username\"]').type('standard_user')\n    cy.get('[data-test=\"password\"]').type('secret_sauce')\n    cy.get('[data-test=\"login-button\"]').click()\n    cy.contains('Products').should('be.visible')\n  })\n\n  it('mostra erro para usuário bloqueado', () => {\n    cy.get('[data-test=\"username\"]').type('locked_out_user')\n    cy.get('[data-test=\"password\"]').type('secret_sauce')\n    cy.get('[data-test=\"login-button\"]').click()\n    cy.get('[data-test=\"error\"]')\n      .should('contain', 'locked out')\n  })\n\n  it('mostra erro com senha errada', () => {\n    cy.get('[data-test=\"username\"]').type('standard_user')\n    cy.get('[data-test=\"password\"]').type('senha_errada')\n    cy.get('[data-test=\"login-button\"]').click()\n    cy.get('[data-test=\"error\"]')\n      .should('contain', 'do not match')\n  })\n\n  it('pede o usuário quando os campos estão vazios', () => {\n    // o seu teste vem aqui\n  })\n})",
                 "destaque": [
-                  8,
-                  9,
-                  10
+                  29,
+                  30,
+                  31
                 ],
-                "legenda": "Um it novo no login.cy.js",
-                "fonte": 29,
-                "vel": 0.85,
-                "digitar_de": 8
+                "legenda": "O arquivo inteiro: o it novo vai no final",
+                "fonte": 24,
+                "digitar_de": 29,
+                "rolar": true,
+                "marca_inicio": [
+                  2,
+                  3,
+                  4
+                ]
               }
             },
             {
@@ -122,16 +127,22 @@
                   "e2e",
                   "login.cy.js"
                 ],
-                "codigo": "  it('pede o usuário quando os campos estão vazios', () => {\n    cy.get('[data-test=\"login-button\"]').click()\n    cy.get('[data-test=\"error\"]')\n      .should('contain', 'Username is required')\n  })",
+                "codigo": "describe('Login', () => {\n  beforeEach(() => {\n    cy.visit('https://www.saucedemo.com')\n  })\n\n  it('entra com usuário e senha', () => {\n    cy.get('[data-test=\"username\"]').type('standard_user')\n    cy.get('[data-test=\"password\"]').type('secret_sauce')\n    cy.get('[data-test=\"login-button\"]').click()\n    cy.contains('Products').should('be.visible')\n  })\n\n  it('mostra erro para usuário bloqueado', () => {\n    cy.get('[data-test=\"username\"]').type('locked_out_user')\n    cy.get('[data-test=\"password\"]').type('secret_sauce')\n    cy.get('[data-test=\"login-button\"]').click()\n    cy.get('[data-test=\"error\"]')\n      .should('contain', 'locked out')\n  })\n\n  it('mostra erro com senha errada', () => {\n    cy.get('[data-test=\"username\"]').type('standard_user')\n    cy.get('[data-test=\"password\"]').type('senha_errada')\n    cy.get('[data-test=\"login-button\"]').click()\n    cy.get('[data-test=\"error\"]')\n      .should('contain', 'do not match')\n  })\n\n  it('pede o usuário quando os campos estão vazios', () => {\n    cy.get('[data-test=\"login-button\"]').click()\n    cy.get('[data-test=\"error\"]')\n      .should('contain', 'Username is required')\n  })\n})",
                 "destaque": [
+                  30,
+                  31,
+                  32
+                ],
+                "legenda": "Clica sem digitar e confere",
+                "fonte": 24,
+                "vel": 0.85,
+                "digitar_de": 30,
+                "rolar": true,
+                "marca_inicio": [
                   2,
                   3,
                   4
-                ],
-                "legenda": "Clica sem digitar e confere",
-                "fonte": 28,
-                "vel": 0.85,
-                "digitar_de": 2
+                ]
               }
             },
             {
