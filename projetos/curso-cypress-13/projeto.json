@@ -22,7 +22,7 @@
           "chapter": "",
           "sentences": [
             {
-              "text": "Fala, pessoal! Módulo quatro. Agora a gente vai do básico pro bom. E começa com a pergunta que todo iniciante faz: como eu descubro o seletor de um elemento?",
+              "text": "Fala, pessoal! Módulo quatro. Nas aulas onze e doze, a gente já achou o i d inspecionando a página. Agora a gente vai a fundo: como achar o melhor seletor de qualquer elemento.",
               "scene": {
                 "type": "bigtext",
                 "stagger": 0.25,
@@ -46,13 +46,13 @@
               }
             },
             {
-              "text": "A resposta é: inspecionando. Abre o site no navegador, clica com o botão direito em cima do campo, e escolhe Inspecionar.",
+              "text": "Relembrando: abre o site no navegador, clica com o botão direito em cima do campo, e escolhe Inspecionar.",
               "scene": {
                 "type": "devtools",
                 "media": "insp_user",
                 "url": "https://www.saucedemo.com",
                 "inspecionar": "#user-name",
-                "clique_em": 2.0,
+                "clique_em": 1.4,
                 "legenda": "Botão direito › Inspecionar"
               }
             },
@@ -136,19 +136,21 @@
               }
             },
             {
-              "text": "Clica na mira, passa o mouse em cima do campo, e o Cypress já mostra o seletor pronto. Viu? Ele mesmo escolheu o data test. Aí é só copiar.",
+              "text": "Clica na mira, e depois clica em cima do campo. Pronto: o Cypress já mostra o comando inteiro, cy get com o data test. Aí é só clicar em copiar, que ele copia o comando prontinho.",
               "scene": {
                 "type": "playground",
                 "media": "insp_user",
                 "url": "https://www.saucedemo.com",
                 "inspecionar": "#user-name",
                 "spec": "login.cy.js",
-                "clique_em": 1.2,
-                "legenda": "O Cypress sugere o seletor"
+                "clique_em": 0.9,
+                "legenda": "Clique na mira › clique no campo › Copiar",
+                "campo_em": 1.9,
+                "copiar_em": 4.2
               }
             },
             {
-              "text": "E pra usar no teste, é só colar dentro do cy get. Repara: o data test vai entre colchetes.",
+              "text": "Depois é só colar no teste e completar com o que você quer fazer, tipo o type. Repara: o data test vai entre colchetes.",
               "scene": {
                 "type": "editor",
                 "arquivo": "login.cy.js",
@@ -158,8 +160,8 @@
                   "e2e",
                   "login.cy.js"
                 ],
-                "codigo": "// antes, pelo id:\ncy.get('#user-name').type('standard_user')\n\n// melhor, pelo data-test:\ncy.get('[data-test=\"username\"]').type('standard_user')",
-                "legenda": "Entre colchetes: [data-test=\"...\"]",
+                "codigo": "// colado do Selector Playground:\ncy.get('[data-test=\"username\"]')\n\n// e aí você completa com o que fazer:\ncy.get('[data-test=\"username\"]').type('standard_user')",
+                "legenda": "Cola e completa com o .type()",
                 "destaque": [
                   5
                 ]

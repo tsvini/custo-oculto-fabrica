@@ -433,7 +433,7 @@
     const ex = (e[0] + e[2]) / 2, ey = (e[1] + e[3]) / 2;
     const p = print(ctx, el, sx, st + TB, sw, sh - TB - 2 * u, a, "#fff", [ex, ey], s.zoom_site || 1.5);
     if (!el) txt(ctx, s.url || "site", font(700, 34 * u), sx + sw / 2, st + sh / 2, C.mut, "center", a);
-    const tc2 = tc1 + 1.7, tc3 = tc2 + 2.0; const kh = easeOut((t - tc2 + 0.6) / 0.3);
+    const tc2 = tc1 + (s.campo_em || 1.7), tc3 = tc2 + (s.copiar_em || 2.0); const kh = easeOut((t - tc2) / 0.25);  // só destaca depois do clique no campo
     if (kb > 0) {
       caixaElem(ctx, u, p, e, kh * a, sel);
       ctx.save(); ctx.beginPath(); ctx.rect(sx, st, sw, TB); ctx.clip(); ctx.globalAlpha = a; ctx.fillStyle = "#f3f4f7"; ctx.fillRect(sx, st, sw, TB); ctx.fillStyle = "#d5d9e2"; ctx.fillRect(sx, st + TB - 2 * u, sw, 2 * u);
