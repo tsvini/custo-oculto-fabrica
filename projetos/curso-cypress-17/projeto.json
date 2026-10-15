@@ -290,13 +290,27 @@
                   "login.cy.js",
                   "compra.cy.js"
                 ],
-                "codigo": "  it('adiciona a mochila no carrinho', () => {\n    cy.get('[data-test=\"add-to-cart-sauce-labs-backpack\"]').click()\n    cy.get('[data-test=\"shopping-cart-badge\"]')\n      .should('have.text', '1')\n  })",
+                "codigo": "describe('Compra', () => {\n  beforeEach(() => {\n    cy.visit('https://www.saucedemo.com')\n    cy.get('[data-test=\"username\"]').type('standard_user')\n    cy.get('[data-test=\"password\"]').type('secret_sauce')\n    cy.get('[data-test=\"login-button\"]').click()\n  })\n\n  it('adiciona a mochila no carrinho', () => {\n    cy.get('[data-test=\"add-to-cart-sauce-labs-backpack\"]').click()\n    cy.get('[data-test=\"shopping-cart-badge\"]')\n      .should('have.text', '1')\n  })\n})",
                 "legenda": "O carrinho deveria mostrar 1",
                 "destaque": [
-                  2,
-                  4
+                  10,
+                  11,
+                  12
                 ],
-                "fonte": 27
+                "fonte": 24,
+                "digitar_de": 9,
+                "digitar_ate": 12,
+                "rolar": true,
+                "rolar_de": 0.8,
+                "rolar_dur": 1.2,
+                "marca_inicio": [
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7
+                ]
               }
             },
             {

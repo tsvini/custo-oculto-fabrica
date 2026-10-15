@@ -89,15 +89,27 @@
                   "login.cy.js",
                   "compra.cy.js"
                 ],
-                "codigo": "describe('Compra', () => {\n  beforeEach(() => {\n    // faz o login (aula 17)\n  })\n\n  it('adiciona a mochila no carrinho', () => { ... })\n\n  it('finaliza a compra', () => {\n    // os passos vêm aqui\n  })\n})",
+                "codigo": "describe('Compra', () => {\n  beforeEach(() => {\n    cy.visit('https://www.saucedemo.com')\n    cy.get('[data-test=\"username\"]').type('standard_user')\n    cy.get('[data-test=\"password\"]').type('secret_sauce')\n    cy.get('[data-test=\"login-button\"]').click()\n  })\n\n  it('adiciona a mochila no carrinho', () => {\n    cy.get('[data-test=\"add-to-cart-sauce-labs-backpack\"]').click()\n    cy.get('[data-test=\"shopping-cart-badge\"]')\n      .should('have.text', '1')\n  })\n\n  it('finaliza a compra', () => {\n    // os passos vêm aqui\n  })\n})",
                 "destaque": [
-                  8,
-                  9,
-                  10
+                  15,
+                  16,
+                  17
                 ],
-                "digitar_de": 8,
-                "fonte": 30,
-                "legenda": "Um it novo no mesmo arquivo"
+                "digitar_de": 15,
+                "fonte": 24,
+                "legenda": "Um it novo no mesmo arquivo",
+                "digitar_ate": 17,
+                "rolar": true,
+                "rolar_de": 0.8,
+                "rolar_dur": 1.2,
+                "marca_inicio": [
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7
+                ]
               }
             },
             {
@@ -187,16 +199,19 @@
                   "login.cy.js",
                   "compra.cy.js"
                 ],
-                "codigo": "  it('finaliza a compra', () => {\n    cy.get('[data-test=\"add-to-cart-sauce-labs-backpack\"]').click()\n    cy.get('[data-test=\"shopping-cart-link\"]').click()\n    cy.get('[data-test=\"checkout\"]').click()",
+                "codigo": "describe('Compra', () => {\n  beforeEach(() => {\n    cy.visit('https://www.saucedemo.com')\n    cy.get('[data-test=\"username\"]').type('standard_user')\n    cy.get('[data-test=\"password\"]').type('secret_sauce')\n    cy.get('[data-test=\"login-button\"]').click()\n  })\n\n  it('adiciona a mochila no carrinho', () => {\n    cy.get('[data-test=\"add-to-cart-sauce-labs-backpack\"]').click()\n    cy.get('[data-test=\"shopping-cart-badge\"]')\n      .should('have.text', '1')\n  })\n\n  it('finaliza a compra', () => {\n    cy.get('[data-test=\"add-to-cart-sauce-labs-backpack\"]').click()\n    cy.get('[data-test=\"shopping-cart-link\"]').click()\n    cy.get('[data-test=\"checkout\"]').click()\n  })\n})",
                 "legenda": "Uma linha pra cada clique",
                 "destaque": [
-                  2,
-                  3,
-                  4
+                  16,
+                  17,
+                  18
                 ],
-                "fonte": 27,
-                "digitar_de": 2,
-                "vel": 0.85
+                "fonte": 24,
+                "digitar_de": 16,
+                "digitar_ate": 18,
+                "rolar": true,
+                "rolar_de": 0.8,
+                "rolar_dur": 1.2
               }
             },
             {
@@ -418,17 +433,20 @@
                   "login.cy.js",
                   "compra.cy.js"
                 ],
-                "codigo": "    cy.get('[data-test=\"firstName\"]').type('Vinicius')\n    cy.get('[data-test=\"lastName\"]').type('Torales')\n    cy.get('[data-test=\"postalCode\"]').type('88000-000')\n    cy.get('[data-test=\"continue\"]').click()",
+                "codigo": "describe('Compra', () => {\n  beforeEach(() => {\n    cy.visit('https://www.saucedemo.com')\n    cy.get('[data-test=\"username\"]').type('standard_user')\n    cy.get('[data-test=\"password\"]').type('secret_sauce')\n    cy.get('[data-test=\"login-button\"]').click()\n  })\n\n  it('adiciona a mochila no carrinho', () => {\n    cy.get('[data-test=\"add-to-cart-sauce-labs-backpack\"]').click()\n    cy.get('[data-test=\"shopping-cart-badge\"]')\n      .should('have.text', '1')\n  })\n\n  it('finaliza a compra', () => {\n    cy.get('[data-test=\"add-to-cart-sauce-labs-backpack\"]').click()\n    cy.get('[data-test=\"shopping-cart-link\"]').click()\n    cy.get('[data-test=\"checkout\"]').click()\n    cy.get('[data-test=\"firstName\"]').type('Vinicius')\n    cy.get('[data-test=\"lastName\"]').type('Torales')\n    cy.get('[data-test=\"postalCode\"]').type('88000-000')\n    cy.get('[data-test=\"continue\"]').click()\n  })\n})",
                 "legenda": "get + type em cada campo",
                 "destaque": [
-                  1,
-                  2,
-                  3,
-                  4
+                  19,
+                  20,
+                  21,
+                  22
                 ],
-                "fonte": 28,
-                "digitar_de": 1,
-                "vel": 0.85
+                "fonte": 24,
+                "digitar_de": 19,
+                "digitar_ate": 22,
+                "rolar": true,
+                "rolar_de": 0.01,
+                "rolar_dur": 0.01
               }
             },
             {
@@ -569,16 +587,19 @@
                   "login.cy.js",
                   "compra.cy.js"
                 ],
-                "codigo": "  it('finaliza a compra', () => {\n    cy.get('[data-test=\"add-to-cart-sauce-labs-backpack\"]').click()\n    cy.get('[data-test=\"shopping-cart-link\"]').click()\n    cy.get('[data-test=\"checkout\"]').click()\n    cy.get('[data-test=\"firstName\"]').type('Vinicius')\n    cy.get('[data-test=\"lastName\"]').type('Torales')\n    cy.get('[data-test=\"postalCode\"]').type('88000-000')\n    cy.get('[data-test=\"continue\"]').click()\n    cy.get('[data-test=\"finish\"]').click()\n    cy.contains('Thank you for your order!')\n      .should('be.visible')\n  })",
-                "legenda": "O teste inteiro",
+                "codigo": "describe('Compra', () => {\n  beforeEach(() => {\n    cy.visit('https://www.saucedemo.com')\n    cy.get('[data-test=\"username\"]').type('standard_user')\n    cy.get('[data-test=\"password\"]').type('secret_sauce')\n    cy.get('[data-test=\"login-button\"]').click()\n  })\n\n  it('adiciona a mochila no carrinho', () => {\n    cy.get('[data-test=\"add-to-cart-sauce-labs-backpack\"]').click()\n    cy.get('[data-test=\"shopping-cart-badge\"]')\n      .should('have.text', '1')\n  })\n\n  it('finaliza a compra', () => {\n    cy.get('[data-test=\"add-to-cart-sauce-labs-backpack\"]').click()\n    cy.get('[data-test=\"shopping-cart-link\"]').click()\n    cy.get('[data-test=\"checkout\"]').click()\n    cy.get('[data-test=\"firstName\"]').type('Vinicius')\n    cy.get('[data-test=\"lastName\"]').type('Torales')\n    cy.get('[data-test=\"postalCode\"]').type('88000-000')\n    cy.get('[data-test=\"continue\"]').click()\n    cy.get('[data-test=\"finish\"]').click()\n    cy.contains('Thank you for your order!')\n      .should('be.visible')\n  })\n})",
+                "legenda": "O arquivo inteiro",
                 "destaque": [
-                  9,
-                  10,
-                  11
+                  23,
+                  24,
+                  25
                 ],
                 "fonte": 24,
-                "digitar_de": 9,
-                "vel": 0.85
+                "digitar_de": 23,
+                "digitar_ate": 25,
+                "rolar": true,
+                "rolar_de": 0.01,
+                "rolar_dur": 0.01
               }
             },
             {

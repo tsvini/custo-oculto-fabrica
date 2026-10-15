@@ -160,11 +160,14 @@
                   "e2e",
                   "login.cy.js"
                 ],
-                "codigo": "// colado do Selector Playground:\ncy.get('[data-test=\"username\"]')\n\n// e aí você completa com o que fazer:\ncy.get('[data-test=\"username\"]').type('standard_user')",
-                "legenda": "Cola e completa com o .type()",
+                "codigo": "describe('Login', () => {\n  it('entra com usuário e senha', () => {\n    cy.visit('https://www.saucedemo.com')\n    cy.get('[data-test=\"username\"]').type('standard_user')\n    cy.get('#password').type('secret_sauce')\n    cy.get('#login-button').click()\n    cy.contains('Products').should('be.visible')\n  })\n})",
+                "legenda": "Colou e completou com o type",
                 "destaque": [
-                  5
-                ]
+                  4
+                ],
+                "fonte": 24,
+                "digitar_de": 4,
+                "digitar_ate": 4
               }
             },
             {

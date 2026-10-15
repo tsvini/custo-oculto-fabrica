@@ -152,11 +152,15 @@
                   "e2e",
                   "login.cy.js"
                 ],
-                "codigo": "describe('Login', () => {\n  it('entra com usuário e senha', () => {\n    // ...\n  })\n\n  it('mostra erro para usuário bloqueado', () => {\n    // ...\n  })\n})",
+                "codigo": "describe('Login', () => {\n  it('entra com usuário e senha', () => {\n    cy.visit('https://www.saucedemo.com')\n    cy.get('[data-test=\"username\"]').type('standard_user')\n    cy.get('[data-test=\"password\"]').type('secret_sauce')\n    cy.get('[data-test=\"login-button\"]').click()\n    cy.contains('Products').should('be.visible')\n  })\n\n  it('mostra erro para usuário bloqueado', () => {\n  })\n})",
                 "legenda": "Dois testes no mesmo arquivo",
                 "destaque": [
-                  6
-                ]
+                  10,
+                  11
+                ],
+                "fonte": 24,
+                "digitar_de": 10,
+                "digitar_ate": 11
               }
             },
             {
@@ -170,14 +174,22 @@
                   "e2e",
                   "login.cy.js"
                 ],
-                "codigo": "  it('mostra erro para usuário bloqueado', () => {\n    cy.visit('https://www.saucedemo.com')\n    cy.get('[data-test=\"username\"]').type('locked_out_user')\n    cy.get('[data-test=\"password\"]').type('secret_sauce')\n    cy.get('[data-test=\"login-button\"]').click()\n    cy.get('[data-test=\"error\"]')\n      .should('contain', 'locked out')\n  })",
+                "codigo": "describe('Login', () => {\n  it('entra com usuário e senha', () => {\n    cy.visit('https://www.saucedemo.com')\n    cy.get('[data-test=\"username\"]').type('standard_user')\n    cy.get('[data-test=\"password\"]').type('secret_sauce')\n    cy.get('[data-test=\"login-button\"]').click()\n    cy.contains('Products').should('be.visible')\n  })\n\n  it('mostra erro para usuário bloqueado', () => {\n    cy.visit('https://www.saucedemo.com')\n    cy.get('[data-test=\"username\"]').type('locked_out_user')\n    cy.get('[data-test=\"password\"]').type('secret_sauce')\n    cy.get('[data-test=\"login-button\"]').click()\n    cy.get('[data-test=\"error\"]')\n      .should('contain', 'locked out')\n  })\n})",
                 "destaque": [
-                  6,
-                  7
+                  11,
+                  12,
+                  13,
+                  14,
+                  15,
+                  16
                 ],
                 "legenda": "Conferindo a mensagem de erro",
-                "fonte": 28,
-                "digitar_de": 2
+                "fonte": 24,
+                "digitar_de": 11,
+                "digitar_ate": 16,
+                "rolar": true,
+                "rolar_de": 0.8,
+                "rolar_dur": 1.2
               }
             },
             {
@@ -191,14 +203,15 @@
                   "e2e",
                   "login.cy.js"
                 ],
-                "codigo": "describe('Login', () => {\n  it('entra com usuário e senha', () => {\n    cy.visit('https://www.saucedemo.com')\n    // ...\n  })\n\n  it('mostra erro para usuário bloqueado', () => {\n    cy.visit('https://www.saucedemo.com')\n    // ...\n  })\n})",
+                "codigo": "describe('Login', () => {\n  it('entra com usuário e senha', () => {\n    cy.visit('https://www.saucedemo.com')\n    cy.get('[data-test=\"username\"]').type('standard_user')\n    cy.get('[data-test=\"password\"]').type('secret_sauce')\n    cy.get('[data-test=\"login-button\"]').click()\n    cy.contains('Products').should('be.visible')\n  })\n\n  it('mostra erro para usuário bloqueado', () => {\n    cy.visit('https://www.saucedemo.com')\n    cy.get('[data-test=\"username\"]').type('locked_out_user')\n    cy.get('[data-test=\"password\"]').type('secret_sauce')\n    cy.get('[data-test=\"login-button\"]').click()\n    cy.get('[data-test=\"error\"]')\n      .should('contain', 'locked out')\n  })\n})",
                 "destaque": [
                   3,
-                  8
+                  11
                 ],
                 "legenda": "A mesma linha repetida",
-                "fonte": 28,
-                "digitar": false
+                "fonte": 20,
+                "digitar": false,
+                "digitar_ate": 11
               }
             },
             {
@@ -212,15 +225,16 @@
                   "e2e",
                   "login.cy.js"
                 ],
-                "codigo": "describe('Login', () => {\n  beforeEach(() => {\n    cy.visit('https://www.saucedemo.com')\n  })\n\n  it('entra com usuário e senha', () => {\n    // ...\n  })\n\n  it('mostra erro para usuário bloqueado', () => {\n    // ...\n  })\n})",
+                "codigo": "describe('Login', () => {\n  beforeEach(() => {\n    cy.visit('https://www.saucedemo.com')\n  })\n\n  it('entra com usuário e senha', () => {\n    cy.get('[data-test=\"username\"]').type('standard_user')\n    cy.get('[data-test=\"password\"]').type('secret_sauce')\n    cy.get('[data-test=\"login-button\"]').click()\n    cy.contains('Products').should('be.visible')\n  })\n\n  it('mostra erro para usuário bloqueado', () => {\n    cy.get('[data-test=\"username\"]').type('locked_out_user')\n    cy.get('[data-test=\"password\"]').type('secret_sauce')\n    cy.get('[data-test=\"login-button\"]').click()\n    cy.get('[data-test=\"error\"]')\n      .should('contain', 'locked out')\n  })\n})",
                 "destaque": [
                   2,
                   3,
                   4
                 ],
                 "legenda": "beforeEach = antes de cada teste",
-                "fonte": 28,
-                "digitar_de": 2
+                "fonte": 20,
+                "digitar_de": 2,
+                "digitar_ate": 4
               }
             },
             {
