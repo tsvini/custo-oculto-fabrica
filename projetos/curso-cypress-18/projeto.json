@@ -569,15 +569,15 @@
                   "login.cy.js",
                   "compra.cy.js"
                 ],
-                "codigo": "    cy.get('[data-test=\"finish\"]').click()\n    cy.contains('Thank you for your order!')\n      .should('be.visible')\n  })",
-                "legenda": "Clica em Finish e confere a mensagem",
+                "codigo": "  it('finaliza a compra', () => {\n    cy.get('[data-test=\"add-to-cart-sauce-labs-backpack\"]').click()\n    cy.get('[data-test=\"shopping-cart-link\"]').click()\n    cy.get('[data-test=\"checkout\"]').click()\n    cy.get('[data-test=\"firstName\"]').type('Vinicius')\n    cy.get('[data-test=\"lastName\"]').type('Torales')\n    cy.get('[data-test=\"postalCode\"]').type('88000-000')\n    cy.get('[data-test=\"continue\"]').click()\n    cy.get('[data-test=\"finish\"]').click()\n    cy.contains('Thank you for your order!')\n      .should('be.visible')\n  })",
+                "legenda": "O teste inteiro",
                 "destaque": [
-                  1,
-                  2,
-                  3
+                  9,
+                  10,
+                  11
                 ],
-                "fonte": 30,
-                "digitar_de": 1,
+                "fonte": 24,
+                "digitar_de": 9,
                 "vel": 0.85
               }
             },

@@ -203,21 +203,22 @@
                   "login.cy.js",
                   "compra.cy.js"
                 ],
-                "codigo": "    cy.get('[data-test=\"shopping-cart-link\"]').click()\n    cy.get('[data-test=\"checkout\"]').click()\n    cy.get('[data-test=\"firstName\"]').type('Vinicius')\n    cy.get('[data-test=\"lastName\"]').type('Torales')\n    cy.get('[data-test=\"postalCode\"]').type('88000-000')\n    cy.get('[data-test=\"continue\"]').click()\n    cy.get('[data-test=\"finish\"]').click()\n    cy.contains('Thank you for your order!').should('be.visible')\n  })",
+                "codigo": "  it('compra dois produtos', () => {\n    cy.get('[data-test=\"add-to-cart-sauce-labs-backpack\"]').click()\n    cy.get('[data-test=\"add-to-cart-sauce-labs-bike-light\"]').click()\n    cy.get('[data-test=\"shopping-cart-badge\"]').should('have.text', '2')\n    cy.get('[data-test=\"shopping-cart-link\"]').click()\n    cy.get('[data-test=\"checkout\"]').click()\n    cy.get('[data-test=\"firstName\"]').type('Vinicius')\n    cy.get('[data-test=\"lastName\"]').type('Torales')\n    cy.get('[data-test=\"postalCode\"]').type('88000-000')\n    cy.get('[data-test=\"continue\"]').click()\n    cy.get('[data-test=\"finish\"]').click()\n    cy.contains('Thank you for your order!')\n      .should('be.visible')\n  })",
                 "destaque": [
-                  1,
-                  2,
-                  3,
-                  4,
                   5,
                   6,
                   7,
-                  8
+                  8,
+                  9,
+                  10,
+                  11,
+                  12,
+                  13
                 ],
-                "legenda": "Igual à aula 18",
-                "fonte": 26,
+                "legenda": "O teste inteiro",
+                "fonte": 23,
                 "vel": 0.85,
-                "digitar_de": 1
+                "digitar_de": 5
               }
             },
             {
