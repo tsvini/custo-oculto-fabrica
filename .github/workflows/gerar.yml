@@ -162,10 +162,13 @@ jobs:
           YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
           YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
           YT_REFRESH_TOKEN_EN: ${{ secrets.YT_REFRESH_TOKEN_EN }}
+          PODCAST_TOKEN: ${{ secrets.PODCAST_TOKEN }}
+          PODCAST_EMAIL: ${{ secrets.PODCAST_EMAIL }}
         shell: bash
         run: |
           python -m fabrica.publicar enfileirar saida
           python -m fabrica.publicar enviar
+          python -m fabrica.podcast adicionar saida || echo "podcast falhou"
           python -m fabrica.publicar miniaturas saida
           python -m fabrica.publicar playlists
           python -m fabrica.publicar comentar
