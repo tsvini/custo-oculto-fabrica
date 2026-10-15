@@ -1,0 +1,23 @@
+name: Conferir material do curso
+on:
+  workflow_dispatch:
+jobs:
+  cypress:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Rodar o projeto final como um aluno faria
+        working-directory: curso/material/projeto-final
+        run: |
+          npm install
+          npm test
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: prints-da-falha
+          path: curso/material/projeto-final/cypress/screenshots
+          retention-days: 3

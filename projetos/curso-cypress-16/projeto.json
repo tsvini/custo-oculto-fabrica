@@ -156,7 +156,7 @@
                   "cypress",
                   "package.json"
                 ],
-                "codigo": "{\n  \"name\": \"meu-primeiro-teste\",\n  \"scripts\": {\n    \"test\": \"cypress run\"\n  },\n  \"devDependencies\": {\n    \"cypress\": \"^15.5.0\"\n  }\n}",
+                "codigo": "{\n  \"name\": \"meu-primeiro-teste\",\n  \"scripts\": {\n    \"test\": \"cypress run\"\n  },\n  \"devDependencies\": {\n    \"cypress\": \"^16.2.0\"\n  }\n}",
                 "legenda": "Um atalho pro comando",
                 "destaque": [
                   4

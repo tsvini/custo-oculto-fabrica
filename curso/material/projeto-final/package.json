@@ -1,0 +1,12 @@
+{
+  "name": "meu-primeiro-teste",
+  "version": "1.0.0",
+  "description": "Projeto final do curso Cypress para Leigos",
+  "scripts": {
+    "test": "cypress run",
+    "abrir": "cypress open"
+  },
+  "devDependencies": {
+    "cypress": "^16.2.0"
+  }
+}

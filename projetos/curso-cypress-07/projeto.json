@@ -126,7 +126,7 @@
                   "package-lock.json",
                   "package.json"
                 ],
-                "codigo": "{\n  \"name\": \"meu-primeiro-teste\",\n  \"version\": \"1.0.0\",\n  \"devDependencies\": {\n    \"cypress\": \"^15.5.0\"\n  }\n}",
+                "codigo": "{\n  \"name\": \"meu-primeiro-teste\",\n  \"version\": \"1.0.0\",\n  \"devDependencies\": {\n    \"cypress\": \"^16.2.0\"\n  }\n}",
                 "legenda": "O Cypress apareceu na ficha",
                 "destaque": [
                   5
@@ -162,7 +162,7 @@
                   "node_modules",
                   "package.json"
                 ],
-                "codigo": "{\n  \"name\": \"meu-primeiro-teste\",\n  \"version\": \"1.0.0\",\n  \"devDependencies\": {\n    \"cypress\": \"^13.15.0\"\n  }\n}",
+                "codigo": "{\n  \"name\": \"meu-primeiro-teste\",\n  \"version\": \"1.0.0\",\n  \"devDependencies\": {\n    \"cypress\": \"^16.2.0\"\n  }\n}",
                 "digitar": false,
                 "destaque": [
                   5
