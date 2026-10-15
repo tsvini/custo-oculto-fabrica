@@ -103,7 +103,12 @@
     const u = c.u; const a = easeOut(t / 0.4); const W = (c.vertical ? 1000 : 1400) * u, H = (c.vertical ? 900 : 640) * u;
     const x = c.cx - W / 2, y = topo(c, H);
     const top = janela(ctx, x, y, W, H, u, s.titulo || "Terminal", a, C.term);
-    const fs = 34 * u, lh = fs * 1.7; let yy = top + 60 * u; const pr = (s.prompt || "PS " + (s.pasta || "C:\\meu-projeto") + ">") + " ";
+    // cabe na janela: encurta o caminho do prompt e, se ainda precisar, diminui a fonte
+    let pasta = s.pasta || "C:\\meu-projeto"; const L0 = s.linhas || [];
+    const maxCmd = Math.max(0, ...L0.map((l) => (l.cmd !== undefined ? l.cmd.length : 0))), maxOut = Math.max(0, ...L0.map((l) => (l.out || "").length));
+    if (("PS " + pasta + "> ").length + maxCmd > 58 && pasta.includes("\\")) pasta = "...\\" + pasta.split("\\").pop();
+    const pr = (s.prompt || "PS " + pasta + ">") + " "; const chars = Math.max(pr.length + maxCmd, maxOut, 10);
+    const fs = Math.max(20 * u, Math.min(34 * u, (W - 90 * u) / (chars * 0.6))), lh = Math.max(fs * 1.7, 40 * u); let yy = top + 60 * u;
     const L = s.linhas || []; const passo = Math.max(0.6, (dur - 1) / Math.max(L.length, 1)); let tt = t - 0.5;
     for (const l of L) {
       if (tt < 0) break;
