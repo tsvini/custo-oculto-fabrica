@@ -49,7 +49,7 @@
               "text": "Pensa no login. Além do login que dá certo, é importante testar o que dá errado: por exemplo, um usuário bloqueado tentando entrar.",
               "scene": {
                 "type": "tela",
-                "media": "site_sauce_bloqueado",
+                "media": "site_sauce_erro_bloqueado",
                 "url": "https://www.saucedemo.com/",
                 "acoes": [
                   {
