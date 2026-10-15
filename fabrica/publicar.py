@@ -289,6 +289,13 @@ def comentar():
     except Exception:
         return
     reg = {r["nome"]: r for r in registro()}; tk = None; feitos = []
+    # Shorts e partes da série (canal em português) ganham o link do caso completo — texto aprovado pelo Vinícius em 15/10/2026
+    longos = {r.get("caso"): r for r in reg.values() if r.get("tipo") == "longo" and r.get("video_id")}
+    ja = {c.get("nome") for c in fila_c}
+    for r in reg.values():
+        lg = longos.get(r.get("caso"))
+        if r.get("tipo") in ("short", "serie") and r.get("video_id") and lg and idioma_de(r) == "pt" and r["nome"] not in ja:
+            fila_c.append({"nome": r["nome"], "texto": f"📌 O caso completo está aqui: https://youtu.be/{lg['video_id']}", "depois_de": lg["nome"]})
     for c in fila_c:
         if c.get("feito"):
             continue
@@ -302,14 +309,19 @@ def comentar():
         v = requests.get("https://www.googleapis.com/youtube/v3/videos", headers=H, params={"part": "status", "id": vid}, timeout=30).json().get("items") or []
         if not v or v[0]["status"]["privacyStatus"] != "public":
             continue
+        if c.get("depois_de"):  # o link só vai quando o longo também já está no ar
+            lv = (reg.get(c["depois_de"]) or {}).get("video_id")
+            lj = requests.get("https://www.googleapis.com/youtube/v3/videos", headers=H, params={"part": "status", "id": lv}, timeout=30).json().get("items") or []
+            if not lj or lj[0]["status"]["privacyStatus"] != "public":
+                continue
         q = requests.post("https://www.googleapis.com/youtube/v3/commentThreads?part=snippet", headers=H, timeout=30,
                           json={"snippet": {"videoId": vid, "topLevelComment": {"snippet": {"textOriginal": c["texto"]}}}})
         if q.status_code in (200, 201):
             c["feito"] = q.json()["id"]; feitos.append(c.get("nome") or vid)
         else:
             nota("Comentário falhou", f"{c.get('nome')}: {q.status_code} " + " ".join(q.text.split())[:300], "warning")
+    json.dump(fila_c, open(COM, "w", encoding="utf8"), ensure_ascii=False, indent=1)
     if feitos:
-        json.dump(fila_c, open(COM, "w", encoding="utf8"), ensure_ascii=False, indent=1)
         nota("Comentários postados (fixe no Studio)", ", ".join(feitos))
 
 
