@@ -13,7 +13,7 @@
   // paleta das aulas: verde Cypress + tons de editor escuro
   const C = { ac: "#3fd68a", ac2: "#69a7ff", yel: "#ffd23f", red: "#ff6b6b", txt: "#e8eaf0", mut: "#8b93a7",
     win: "#1b1e27", bar: "#252936", side: "#20232e", line: "#2c3140", term: "#0f1117", folder: "#f5c542" };
-  function rr(ctx, x, y, w, h, r) { r = Math.min(r, w / 2, h / 2); ctx.beginPath(); ctx.moveTo(x + r, y); ctx.arcTo(x + w, y, x + w, y + h, r); ctx.arcTo(x + w, y + h, x, y + h, r); ctx.arcTo(x, y + h, x, y, r); ctx.arcTo(x, y, x + w, y, r); ctx.closePath(); }
+  function rr(ctx, x, y, w, h, r) { w = Math.max(0, w); h = Math.max(0, h); r = Math.max(0, Math.min(r, w / 2, h / 2)); ctx.beginPath(); ctx.moveTo(x + r, y); ctx.arcTo(x + w, y, x + w, y + h, r); ctx.arcTo(x + w, y + h, x, y + h, r); ctx.arcTo(x, y + h, x, y, r); ctx.arcTo(x, y, x + w, y, r); ctx.closePath(); }
   function txt(ctx, t, f, x, y, fill, align = "left", alpha = 1) { if (!t || alpha <= 0.01) return; ctx.save(); ctx.globalAlpha *= alpha; ctx.font = f; ctx.textAlign = align; ctx.textBaseline = "middle"; ctx.fillStyle = fill; ctx.fillText(t, x, y); ctx.restore(); }
   function tw(ctx, t, f) { ctx.font = f; return ctx.measureText(t).width; }
 
