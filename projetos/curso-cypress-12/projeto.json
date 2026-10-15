@@ -101,10 +101,20 @@
               }
             },
             {
-              "text": "Pensa assim: depois de entrar, o que a pessoa deveria ver? A lista de produtos, com o título Products lá em cima.",
+              "text": "Então, o que a gente confere? Pensa como uma pessoa testando na mão. Antes de entrar, a tela é essa: o formulário de login.",
               "scene": {
                 "type": "tela",
-                "media": "site_sauce_loja",
+                "media": "site_sauce",
+                "url": "https://www.saucedemo.com/",
+                "titulo": "saucedemo.com",
+                "legenda": "Antes de entrar: a tela de login"
+              }
+            },
+            {
+              "text": "Depois de entrar, a tela muda. Aparece a lista de produtos, e lá em cima, o título Products. Esse título só aparece se o login deu certo.",
+              "scene": {
+                "type": "tela",
+                "media": "site_sauce_products",
                 "url": "https://www.saucedemo.com/",
                 "acoes": [
                   {
@@ -125,13 +135,55 @@
                 ],
                 "alvo": "Products",
                 "titulo": "saucedemo.com/inventory.html",
-                "zoom_em": 1.2,
-                "caixa_em": 1.8,
-                "legenda": "Depois do login, aparece Products"
+                "caixa_em": 4.0,
+                "zoom_em": 3.6,
+                "legenda": "Depois de entrar: o título Products"
               }
             },
             {
-              "text": "Então a última linha confere isso: cy ponto contains Products, ponto should, be visible. Ou seja: deveria estar aparecendo o texto Products.",
+              "text": "Então é exatamente isso que o teste confere. Se o Products apareceu, o login funcionou. Se não apareceu, alguma coisa deu errado.",
+              "scene": {
+                "type": "compare",
+                "title": "A PROVA DE QUE ENTROU",
+                "items": [
+                  [
+                    "APARECEU PRODUCTS",
+                    "LOGIN FUNCIONOU",
+                    "gold"
+                  ],
+                  [
+                    "NÃO APARECEU",
+                    "ALGO DEU ERRADO",
+                    "red"
+                  ]
+                ],
+                "size": 110,
+                "stagger": 1.4,
+                "vs": false
+              }
+            },
+            {
+              "text": "Pra procurar um texto na tela, o Cypress tem o comando contains, que quer dizer contém. Ele não precisa de i d: ele acha o elemento pelo texto que aparece na tela.",
+              "scene": {
+                "type": "cards",
+                "titulo": "DOIS JEITOS DE ACHAR",
+                "itens": [
+                  [
+                    "#",
+                    "get",
+                    "acha pelo id do elemento",
+                    "#69a7ff"
+                  ],
+                  [
+                    "Aa",
+                    "contains",
+                    "acha pelo texto da tela"
+                  ]
+                ]
+              }
+            },
+            {
+              "text": "E pra conferir, entra o should, que quer dizer deveria. Fica assim: cy ponto contains Products, ponto should, be visible. Em português: o texto Products deveria estar visível.",
               "scene": {
                 "type": "editor",
                 "arquivo": "login.cy.js",
@@ -171,7 +223,72 @@
               }
             },
             {
-              "text": "Salva e roda. Olha o Cypress fazendo tudo sozinho: abre, digita, clica e confere.",
+              "text": "E olha o que acontece se a senha estiver errada. O Cypress digita, clica, e fica esperando o Products aparecer. Como ele nunca aparece, o teste fica vermelho e te avisa.",
+              "scene": {
+                "type": "runner",
+                "spec": "login.cy.js",
+                "teste": "entra com usuário e senha",
+                "passos": [
+                  [
+                    "visit",
+                    "saucedemo.com"
+                  ],
+                  [
+                    "get",
+                    "#user-name"
+                  ],
+                  [
+                    "type",
+                    "standard_user"
+                  ],
+                  [
+                    "get",
+                    "#password"
+                  ],
+                  [
+                    "type",
+                    "senha_errada"
+                  ],
+                  [
+                    "get",
+                    "#login-button"
+                  ],
+                  [
+                    "click",
+                    ""
+                  ],
+                  [
+                    "contains",
+                    "Products"
+                  ]
+                ],
+                "status": "falhou",
+                "media": "site_sauce_senha_errada",
+                "url": "https://www.saucedemo.com/",
+                "acoes": [
+                  {
+                    "fill": [
+                      "#user-name",
+                      "standard_user"
+                    ]
+                  },
+                  {
+                    "fill": [
+                      "#password",
+                      "senha_errada"
+                    ]
+                  },
+                  {
+                    "click": "#login-button"
+                  }
+                ],
+                "legenda": "Senha errada: o Products nunca aparece",
+                "erro": "Timed out retrying after 4000ms: Expected to find content: 'Products' but never did.",
+                "foco": "erro"
+              }
+            },
+            {
+              "text": "Agora com a senha certa. Salva e roda: o Cypress abre, digita, clica e confere. Verdinho!",
               "scene": {
                 "type": "runner",
                 "spec": "login.cy.js",
