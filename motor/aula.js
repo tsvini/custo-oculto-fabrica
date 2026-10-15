@@ -222,7 +222,7 @@
     if (s.progresso) { const k = clamp((t - 0.5) / Math.max(1, dur - 1)); const bw = W - 100 * u, by = top + 260 * u;
       ctx.save(); ctx.globalAlpha = a; rr(ctx, x + 50 * u, by, bw, 34 * u, 8 * u); ctx.fillStyle = "#e3e6ec"; ctx.fill(); rr(ctx, x + 50 * u, by, bw * k, 34 * u, 8 * u); ctx.fillStyle = "#2fb36a"; ctx.fill(); ctx.restore();
       txt(ctx, k < 1 ? "Instalando... " + Math.round(k * 100) + "%" : "Pronto!", font(700, 30 * u), x + 50 * u, by + 80 * u, "#2a2f3a", "left", a); }
-    const bh = 64 * u, bw2 = 190 * u, by2 = y + H - bh - 40 * u;
+    const bh = 64 * u, bw2 = Math.max(190 * u, tw(ctx, s.botao || "Next", font(700, 30 * u)) + 50 * u), by2 = y + H - bh - 40 * u;
     [["Cancel", false], [s.botao || "Next", true]].forEach(([rot, pri], i) => { const bx = x + W - (i === 0 ? 2 : 1) * (bw2 + 24 * u);
       ctx.save(); ctx.globalAlpha = a; rr(ctx, bx, by2, bw2, bh, 10 * u); ctx.fillStyle = pri ? "#2f6fe4" : "#fff"; ctx.fill(); ctx.strokeStyle = pri ? "#2f6fe4" : "#b9c0cc"; ctx.lineWidth = 2 * u; ctx.stroke();
       if (pri) { const k = easeOut((t - (s.botao_em || dur * 0.7)) / 0.3); if (k > 0) { ctx.strokeStyle = C.yel; ctx.globalAlpha = a * k; ctx.lineWidth = 7 * u; rr(ctx, bx - 10 * u, by2 - 10 * u, bw2 + 20 * u, bh + 20 * u, 14 * u); ctx.stroke(); } }
@@ -580,25 +580,25 @@
     const u = c.u; const a = easeOut(t / 0.4); const W = 1500 * u, H = 720 * u; const x = c.cx - W / 2, y = topo(c, H);
     const G = { bg: "#0d1117", hd: "#010409", bd: "#30363d", tx: "#e6edf3", mu: "#7d8590", ok: "#238636", ln: "#4493f8", inp: "#0d1117" };
     const us = s.usuario || "voce", rp = s.repo || "meu-primeiro-teste"; const novo = s.tela === "novo";
-    const url = novo ? "github.com/new" : `github.com/${us}/${rp}`;
+    const modo = s.tela || "repo"; const url = novo ? "github.com/new" : modo === "signup" ? "github.com/signup" : `github.com/${us}/${rp}`;
     const top = janela(ctx, x, y, W, H, u, "", a, G.bg);
     // barra de endereço
     const ab = [x + 160 * u, y + 14 * u, W - 320 * u, 38 * u]; ctx.save(); ctx.globalAlpha = a; rr(ctx, ...ab, 19 * u); ctx.fillStyle = "#1b1f27"; ctx.fill(); ctx.restore();
-    const kU = !novo ? easeOut((t - (s.url_em || dur * 0.62)) / 0.35) : 0;
+    const kU = modo === "repo" ? easeOut((t - (s.url_em || dur * 0.62)) / 0.35) : 0;
     txt(ctx, "🔒 " + url, font(600, 22 * u), ab[0] + 24 * u, ab[1] + 19 * u, kU > 0 ? C.yel : C.mut, "left", a);
     if (kU > 0) { ctx.save(); ctx.globalAlpha = kU; ctx.strokeStyle = C.yel; ctx.lineWidth = 5 * u; rr(ctx, ab[0] - 6 * u, ab[1] - 6 * u, tw(ctx, "🔒 " + url, font(600, 22 * u)) + 60 * u, ab[3] + 12 * u, 22 * u); ctx.stroke(); ctx.restore(); }
     // cabeçalho do GitHub
     ctx.save(); ctx.globalAlpha = a; ctx.fillStyle = G.hd; ctx.fillRect(x, top, W, 70 * u); ctx.fillStyle = G.bd; ctx.fillRect(x, top + 70 * u, W, 1.5 * u); ctx.restore();
     ctx.save(); ctx.globalAlpha = a; ctx.beginPath(); ctx.arc(x + 50 * u, top + 35 * u, 18 * u, 0, 7); ctx.fillStyle = G.tx; ctx.fill(); ctx.restore();
-    txt(ctx, novo ? "New repository" : `${us} / ${rp}`, font(700, 24 * u), x + 84 * u, top + 35 * u, G.tx, "left", a);
+    txt(ctx, novo ? "New repository" : modo === "signup" ? "Sign up" : `${us} / ${rp}`, font(700, 24 * u), x + 84 * u, top + 35 * u, G.tx, "left", a);
     const plus = [x + W - 150 * u, top + 35 * u]; ctx.save(); ctx.globalAlpha = a; rr(ctx, plus[0] - 26 * u, plus[1] - 18 * u, 52 * u, 36 * u, 8 * u); ctx.strokeStyle = G.bd; ctx.lineWidth = 2 * u; ctx.stroke(); ctx.restore();
     txt(ctx, "+ ▾", font(700, 22 * u), plus[0], plus[1], G.tx, "center", a);
     ctx.save(); ctx.globalAlpha = a; ctx.beginPath(); ctx.arc(x + W - 70 * u, top + 35 * u, 18 * u, 0, 7); ctx.fillStyle = "#6e40c9"; ctx.fill(); ctx.restore();
     const body = top + 72 * u; const pts = [];
     if (novo) {
-      const tc0 = s.clique_em || 1.0; const tcN = tc0 + 1.1; const tCr = s.criar_em || Math.min(dur - 0.8, tcN + 4.2); const kF = easeOut((t - tcN - 0.2) / 0.35);
-      pts.push([plus[0], plus[1], tc0]);
-      if (t > tc0 && t < tcN + 0.25) { const mx = plus[0] - 240 * u, my = plus[1] + 26 * u; const its = ["New repository", "Import repository", "New codespace", "New gist"];
+      const dir = !!s.direto; const tc0 = dir ? -9 : (s.clique_em || 1.0); const tcN = dir ? -8 : tc0 + 1.1; const tCr = s.criar_em || Math.min(dur - 0.8, (dir ? 1 : tcN) + 4.2); const kF = dir ? 1 : easeOut((t - tcN - 0.2) / 0.35);
+      if (!dir) pts.push([plus[0], plus[1], tc0]);
+      if (dir) {} else if (t > tc0 && t < tcN + 0.25) { const mx = plus[0] - 240 * u, my = plus[1] + 26 * u; const its = ["New repository", "Import repository", "New codespace", "New gist"];
         ctx.save(); ctx.shadowColor = "rgba(0,0,0,.5)"; ctx.shadowBlur = 20 * u; rr(ctx, mx, my, 270 * u, its.length * 46 * u + 12 * u, 10 * u); ctx.fillStyle = "#161b22"; ctx.fill(); ctx.shadowColor = "transparent"; ctx.strokeStyle = G.bd; ctx.lineWidth = 1.5 * u; ctx.stroke(); ctx.restore();
         its.forEach((n, i) => { const yy = my + 6 * u + i * 46 * u; if (!i && t > tcN - 0.5) { ctx.save(); ctx.fillStyle = "#1f6feb"; rr(ctx, mx + 6 * u, yy + 2 * u, 258 * u, 42 * u, 6 * u); ctx.fill(); ctx.strokeStyle = C.yel; ctx.lineWidth = 4 * u; ctx.stroke(); ctx.restore(); }
           txt(ctx, n, font(i ? 500 : 700, 23 * u), mx + 22 * u, yy + 23 * u, G.tx, "left", 1); });
@@ -611,7 +611,7 @@
         ctx.save(); ctx.globalAlpha = a * kF; ctx.fillStyle = G.bd; ctx.fillRect(fx, yy, W - 520 * u, 1.5 * u); ctx.restore(); yy += 50 * u;
         txt(ctx, "Owner *", font(700, 22 * u), fx, yy, G.tx, "left", a * kF); txt(ctx, "Repository name *", font(700, 22 * u), fx + 250 * u, yy, G.tx, "left", a * kF); yy += 44 * u;
         ctx.save(); ctx.globalAlpha = a * kF; rr(ctx, fx, yy - 24 * u, 200 * u, 48 * u, 8 * u); ctx.fillStyle = "#161b22"; ctx.fill(); ctx.strokeStyle = G.bd; ctx.lineWidth = 2 * u; ctx.stroke();
-        const tN = tcN + 0.9; const kN = clamp((t - tN) / 1.4); const foco = t > tN - 0.3;
+        const tN = dir ? (s.nome_em || 0.8) : tcN + 0.9; const kN = clamp((t - tN) / 1.4); const foco = t > tN - 0.3;
         rr(ctx, fx + 250 * u, yy - 24 * u, 460 * u, 48 * u, 8 * u); ctx.fillStyle = G.inp; ctx.fill(); ctx.strokeStyle = foco ? "#1f6feb" : G.bd; ctx.lineWidth = (foco ? 3 : 2) * u; ctx.stroke(); ctx.restore();
         txt(ctx, "👤 " + us + " ▾", font(600, 22 * u), fx + 18 * u, yy, G.tx, "left", a * kF); txt(ctx, "/", font(700, 30 * u), fx + 225 * u, yy, G.mu, "center", a * kF);
         const nm = rp.slice(0, Math.ceil(kN * rp.length)); txt(ctx, nm, font(600, 24 * u), fx + 268 * u, yy, G.tx, "left", a * kF);
@@ -627,6 +627,37 @@
         if (t > tCr - 0.6) { ctx.save(); ctx.globalAlpha = easeOut((t - tCr + 0.6) / 0.3); ctx.strokeStyle = C.yel; ctx.lineWidth = 5 * u; rr(ctx, bx - 8 * u, by - 8 * u, bw + 16 * u, 70 * u, 12 * u); ctx.stroke(); ctx.restore(); }
         pts.push([bx + bw * 0.55, by + 30 * u, tCr]);
       }
+    } else if (modo === "signup") {
+      const fx = c.cx - 330 * u; let yy = body + 70 * u;
+      txt(ctx, "Welcome to GitHub!", font(800, 38 * u), fx, yy, G.tx, "left", a); yy += 40 * u;
+      txt(ctx, "Let's begin the adventure", font(500, 22 * u), fx, yy, "#3fb950", "left", a); yy += 60 * u;
+      const campos = s.campos || [["Email", "voce@email.com"], ["Password", "••••••••••"], ["Username", us]]; const t0 = s.digita_em || 1.0;
+      campos.forEach(([rot, val], i) => { const ti = t0 + i * 1.5; const k = clamp((t - ti) / 1.0); const v = val.slice(0, Math.ceil(k * val.length));
+        txt(ctx, rot + " *", font(700, 22 * u), fx, yy, G.tx, "left", a); yy += 36 * u;
+        ctx.save(); ctx.globalAlpha = a; rr(ctx, fx, yy - 22 * u, 660 * u, 46 * u, 8 * u); ctx.fillStyle = G.inp; ctx.fill(); ctx.strokeStyle = t > ti - 0.2 && t < ti + 1.3 ? "#1f6feb" : G.bd; ctx.lineWidth = 2.5 * u; ctx.stroke(); ctx.restore();
+        txt(ctx, v, font(600, 22 * u), fx + 16 * u, yy, G.tx, "left", a); if (k > 0 && k < 1) pts.push([fx + 330 * u, yy + 6 * u, ti - 0.1]);
+        if (rot === "Username" && k >= 1) txt(ctx, "← " + (global.CO_IDIOMA === "en" ? "goes in your link" : "vai no seu link"), font(800, 22 * u), fx + 680 * u, yy, C.yel, "left", a * easeOut((t - ti - 1.1) / 0.3));
+        yy += 62 * u; });
+      const tB = t0 + campos.length * 1.5 + 0.6; const bw = 660 * u, by = yy - 6 * u; const kb = easeOut((t - tB) / 0.2);
+      ctx.save(); ctx.globalAlpha = a; rr(ctx, fx, by, bw, 52 * u, 8 * u); ctx.fillStyle = kb > 0.5 ? "#2ea043" : G.ok; ctx.fill(); if (t > tB - 0.6) { ctx.strokeStyle = C.yel; ctx.lineWidth = 5 * u; ctx.stroke(); } ctx.restore();
+      txt(ctx, "Continue ›", font(700, 23 * u), fx + bw / 2, by + 26 * u, "#fff", "center", a); pts.push([fx + bw * 0.55, by + 30 * u, tB]);
+    } else if (modo === "setup") {
+      const fx = x + 70 * u, fw = W - 140 * u; let yy = body + 50 * u; const gitUrl = `https://github.com/${us}/${rp}.git`;
+      ctx.save(); ctx.globalAlpha = a; rr(ctx, fx, yy - 20 * u, fw, 150 * u, 10 * u); ctx.fillStyle = "#0d2a4a"; ctx.fill(); ctx.strokeStyle = "#1f6feb"; ctx.lineWidth = 1.5 * u; ctx.stroke(); ctx.restore();
+      txt(ctx, "Quick setup — if you've done this kind of thing before", font(700, 23 * u), fx + 24 * u, yy + 12 * u, G.tx, "left", a);
+      ctx.save(); ctx.globalAlpha = a; rr(ctx, fx + 24 * u, yy + 44 * u, 110 * u, 44 * u, 6 * u); ctx.fillStyle = "#21262d"; ctx.fill(); ctx.restore(); txt(ctx, "HTTPS", font(700, 20 * u), fx + 79 * u, yy + 66 * u, G.tx, "center", a);
+      ctx.save(); ctx.globalAlpha = a; rr(ctx, fx + 146 * u, yy + 44 * u, fw - 240 * u, 44 * u, 6 * u); ctx.fillStyle = G.bg; ctx.fill(); ctx.strokeStyle = G.bd; ctx.stroke(); ctx.restore();
+      txt(ctx, gitUrl, font(600, 21 * u, MONO), fx + 162 * u, yy + 66 * u, G.tx, "left", a); txt(ctx, "⧉", font(700, 26 * u), fx + fw - 60 * u, yy + 66 * u, G.mu, "center", a);
+      const k1 = easeOut((t - (s.url_em || 1.2)) / 0.3); if (k1 > 0) { ctx.save(); ctx.globalAlpha = k1; ctx.strokeStyle = C.yel; ctx.lineWidth = 5 * u; rr(ctx, fx + 138 * u, yy + 36 * u, fw - 224 * u, 60 * u, 10 * u); ctx.stroke(); ctx.restore();
+        txt(ctx, global.CO_IDIOMA === "en" ? "your repository's address" : "o endereço do seu repositório", font(800, 22 * u), fx + 146 * u, yy + 116 * u, C.yel, "left", k1); }
+      yy += 190 * u;
+      txt(ctx, "…or push an existing repository from the command line", font(800, 26 * u), fx, yy, G.tx, "left", a); yy += 30 * u;
+      const cmds = [`git remote add origin ${gitUrl}`, "git branch -M main", "git push -u origin main"];
+      ctx.save(); ctx.globalAlpha = a; rr(ctx, fx, yy, fw, 150 * u, 10 * u); ctx.fillStyle = "#161b22"; ctx.fill(); ctx.strokeStyle = G.bd; ctx.lineWidth = 1.5 * u; ctx.stroke(); ctx.restore();
+      cmds.forEach((cm, i) => txt(ctx, cm, font(600, 23 * u, MONO), fx + 26 * u, yy + 36 * u + i * 40 * u, G.tx, "left", a));
+      const cpx = fx + fw - 50 * u, cpy = yy + 36 * u; ctx.save(); ctx.globalAlpha = a; rr(ctx, cpx - 24 * u, cpy - 20 * u, 48 * u, 40 * u, 6 * u); ctx.strokeStyle = G.bd; ctx.lineWidth = 2 * u; ctx.stroke(); ctx.restore(); txt(ctx, "⧉", font(700, 26 * u), cpx, cpy, G.tx, "center", a);
+      const k2 = easeOut((t - (s.cmd_em || dur * 0.55)) / 0.3); if (k2 > 0) { ctx.save(); ctx.globalAlpha = k2; ctx.strokeStyle = C.yel; ctx.lineWidth = 5 * u; rr(ctx, fx - 8 * u, yy - 8 * u, fw + 16 * u, 166 * u, 12 * u); ctx.stroke(); ctx.restore(); pts.push([cpx, cpy, (s.cmd_em || dur * 0.55) + 0.9]); }
+      const kc = easeOut((t - (s.cmd_em || dur * 0.55) - 1.0) / 0.2); if (kc > 0) txt(ctx, global.CO_IDIOMA === "en" ? "Copied!" : "Copiado!", font(800, 22 * u), cpx - 40 * u, cpy - 40 * u, "#3fb950", "right", kc);
     } else {
       let yy = body + 50 * u; const fx = x + 60 * u, fw = W - 120 * u;
       let tx0 = fx; ["<> Code", "Issues", "Pull requests", "Actions", "Settings"].forEach((n, i) => { txt(ctx, n, font(i ? 500 : 700, 22 * u), tx0, yy - 22 * u, i ? G.mu : G.tx, "left", a); tx0 += tw(ctx, n, font(700, 22 * u)) + 50 * u;

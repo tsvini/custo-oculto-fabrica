@@ -60,7 +60,16 @@
               }
             },
             {
-              "text": "Antes de tudo, cria um arquivo na pasta do projeto chamado ponto gitignore, e escreve node underline modules dentro. Isso avisa o Git pra não subir aquela pasta gigante.",
+              "text": "Primeiro, se você ainda não tem, cria uma conta no GitHub. Entra em github ponto com, clica em Sign up, e preenche o seu e-mail, uma senha e um nome de usuário. Esse nome de usuário vai aparecer no link do seu portfólio, então escolhe com carinho.",
+              "scene": {
+                "type": "github",
+                "tela": "signup",
+                "digita_em": 3.5,
+                "legenda": "github.com › Sign up"
+              }
+            },
+            {
+              "text": "Antes de subir o projeto, cria um arquivo na pasta do projeto chamado ponto gitignore, e escreve node underline modules dentro. Isso avisa o Git pra não subir aquela pasta gigante, que qualquer pessoa recria com npm install.",
               "scene": {
                 "type": "editor",
                 "arquivo": ".gitignore",
@@ -78,15 +87,55 @@
               }
             },
             {
-              "text": "Agora, no site do GitHub, cria uma conta se ainda não tiver, e clica em New repository. Dá o nome meu traço primeiro traço teste, e clica em Create.",
+              "text": "Agora, no GitHub, clica no sinal de mais, lá em cima, no canto direito. E escolhe New repository, que quer dizer novo repositório. Repositório é a pasta do projeto, só que na internet.",
               "scene": {
                 "type": "github",
                 "tela": "novo",
-                "legenda": "New repository › Create"
+                "clique_em": 2.4,
+                "criar_em": 99,
+                "legenda": "+ › New repository"
               }
             },
             {
-              "text": "Volta pro terminal do VS Code. Primeiro, o git init, que liga o Git na pasta. Depois git add ponto, que separa todos os arquivos. E o git commit, que tira a foto do projeto.",
+              "text": "Dá o nome meu traço primeiro traço teste. Deixa marcado Public, pra que qualquer pessoa, inclusive um recrutador, possa ver. E clica em Create repository.",
+              "scene": {
+                "type": "github",
+                "tela": "novo",
+                "direto": true,
+                "nome_em": 0.6,
+                "criar_em": 6.0,
+                "legenda": "Nome › Public › Create repository"
+              }
+            },
+            {
+              "text": "O GitHub abre uma página com instruções. Lá em cima está o endereço do seu repositório. E embaixo, na parte push an existing repository, estão os comandos pra mandar a sua pasta pra cá. Clica no botão de copiar.",
+              "scene": {
+                "type": "github",
+                "tela": "setup",
+                "url_em": 3.0,
+                "cmd_em": 7.5,
+                "legenda": "Copie os comandos de push"
+              }
+            },
+            {
+              "text": "Agora volta pro terminal do VS Code. Se for a primeira vez que você usa o Git nesse computador, ele precisa saber quem você é. Digita git config com o seu nome, e git config com o seu e-mail. Isso é feito uma vez só.",
+              "scene": {
+                "type": "terminal",
+                "titulo": "Terminal — VS Code",
+                "pasta": "C:\\Users\\voce\\Documents\\meu-primeiro-teste",
+                "linhas": [
+                  {
+                    "cmd": "git config --global user.name \"Seu Nome\""
+                  },
+                  {
+                    "cmd": "git config --global user.email \"voce@email.com\""
+                  }
+                ],
+                "legenda": "Só na primeira vez: quem é você"
+              }
+            },
+            {
+              "text": "Depois, três comandos. git init, que liga o Git na pasta. git add ponto, que separa todos os arquivos. E git commit, com uma mensagem entre aspas, que tira a foto do projeto.",
               "scene": {
                 "type": "terminal",
                 "titulo": "Terminal — VS Code",
@@ -129,7 +178,7 @@
               }
             },
             {
-              "text": "Por último, o GitHub mostra dois comandos pra conectar a sua pasta com o repositório. Copia, cola no terminal, e roda o git push, que manda tudo pra internet.",
+              "text": "Agora cola os comandos que você copiou do GitHub e aperta Enter. O primeiro liga a sua pasta ao repositório. O segundo dá o nome main pro ramo principal. E o último, git push, manda tudo pra internet.",
               "scene": {
                 "type": "terminal",
                 "titulo": "Terminal — VS Code",
@@ -139,14 +188,33 @@
                     "cmd": "git remote add origin https://github.com/voce/meu-primeiro-teste.git"
                   },
                   {
+                    "cmd": "git branch -M main"
+                  },
+                  {
                     "cmd": "git push -u origin main"
                   },
                   {
                     "out": "To github.com/voce/meu-primeiro-teste.git",
                     "cor": "ac"
+                  },
+                  {
+                    "out": " * [new branch]      main -> main",
+                    "cor": "ac"
                   }
                 ],
-                "legenda": "git push manda pro GitHub"
+                "legenda": "remote › branch › push"
+              }
+            },
+            {
+              "text": "Na primeira vez, o Git abre uma janela pedindo pra entrar na sua conta do GitHub. Clica em Sign in with your browser, e autoriza no navegador. Depois disso, ele lembra de você.",
+              "scene": {
+                "type": "instalador",
+                "app": "Git Credential Manager",
+                "titulo": "Connect to GitHub",
+                "subtitulo": "Sign in to github.com",
+                "texto": "Escolha como entrar na sua conta.\nO jeito mais fácil é pelo navegador.",
+                "botao": "Sign in with your browser",
+                "legenda": "Só na primeira vez: entrar no GitHub"
               }
             },
             {

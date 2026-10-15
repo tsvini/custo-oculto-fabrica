@@ -101,7 +101,7 @@
               }
             },
             {
-              "text": "Primeiro, a gente adiciona a mochila e clica no ícone do carrinho, lá em cima. Inspecionando, o data test dele é shopping cart link.",
+              "text": "Primeiro, a mochila: o botão dela a gente já conhece da aula passada. Depois, o ícone do carrinho, lá em cima. Inspecionando, o data test dele é shopping cart link, o link do carrinho de compras.",
               "scene": {
                 "type": "devtools",
                 "media": "insp_cartlink",
@@ -131,16 +131,16 @@
                 "realce": [
                   "data-test"
                 ],
-                "realce_em": 3.0,
+                "realce_em": 5.0,
                 "realce_rotulo": "o ícone do carrinho",
                 "legenda": "O carrinho: shopping-cart-link"
               }
             },
             {
-              "text": "Abre o carrinho, com a mochila dentro. Aqui embaixo tem o botão Checkout, que é o botão de fechar o pedido. O data test dele é checkout.",
+              "text": "Clicando no carrinho, abre a lista com a mochila dentro. Embaixo tem o botão Checkout, que é o botão de fechar o pedido. Inspecionando, o data test dele é checkout, igual ao texto do botão.",
               "scene": {
-                "type": "tela",
-                "media": "site_sauce_cart",
+                "type": "devtools",
+                "media": "insp_checkout",
                 "url": "https://www.saucedemo.com/",
                 "acoes": [
                   {
@@ -165,11 +165,14 @@
                     "click": "[data-test=\"shopping-cart-link\"]"
                   }
                 ],
-                "titulo": "saucedemo.com/cart.html",
-                "caixa_em": 3.2,
-                "zoom_em": 2.8000000000000003,
-                "legenda": "Checkout = fechar o pedido",
-                "alvo_css": "[data-test=\"checkout\"]"
+                "inspecionar": "[data-test=\"checkout\"]",
+                "aberto": true,
+                "realce": [
+                  "data-test"
+                ],
+                "realce_em": 5.5,
+                "realce_rotulo": "o botão de fechar o pedido",
+                "legenda": "O botão: checkout"
               }
             },
             {
@@ -197,7 +200,46 @@
               }
             },
             {
-              "text": "Agora a loja pede os dados: nome, sobrenome e CEP. Inspecionando, os data tests são first name, last name e postal code. Pode colocar qualquer coisa, a loja é de mentira.",
+              "text": "Agora a loja pede os dados de quem está comprando. São três campos. First Name, que é o seu nome. Last Name, o seu sobrenome. E Zip, ou Postal Code, que é o CEP.",
+              "scene": {
+                "type": "tela",
+                "media": "site_sauce_form",
+                "url": "https://www.saucedemo.com/",
+                "acoes": [
+                  {
+                    "fill": [
+                      "#user-name",
+                      "standard_user"
+                    ]
+                  },
+                  {
+                    "fill": [
+                      "#password",
+                      "secret_sauce"
+                    ]
+                  },
+                  {
+                    "click": "#login-button"
+                  },
+                  {
+                    "click": "[data-test=\"add-to-cart-sauce-labs-backpack\"]"
+                  },
+                  {
+                    "click": "[data-test=\"shopping-cart-link\"]"
+                  },
+                  {
+                    "click": "[data-test=\"checkout\"]"
+                  }
+                ],
+                "alvo_css": ".checkout_info",
+                "titulo": "saucedemo.com/checkout-step-one.html",
+                "caixa_em": 1.5,
+                "zoom_em": 1.2,
+                "legenda": "Nome, sobrenome e CEP"
+              }
+            },
+            {
+              "text": "Pra saber o nome de cada campo, a gente inspeciona um por um. O primeiro tem o data test first name.",
               "scene": {
                 "type": "devtools",
                 "media": "insp_first",
@@ -233,13 +275,139 @@
                 "realce": [
                   "data-test"
                 ],
-                "realce_em": 3.4,
+                "realce_em": 3.2,
                 "realce_rotulo": "o campo do nome",
-                "legenda": "Os campos: firstName, lastName, postalCode"
+                "legenda": "firstName = nome"
               }
             },
             {
-              "text": "No código, cada campo vira um cy get com ponto type. O first name recebe Maria, o last name recebe Silva, e o postal code recebe o CEP. E no fim, um click no botão continue, que quer dizer continuar.",
+              "text": "O segundo, last name.",
+              "scene": {
+                "type": "devtools",
+                "media": "insp_last",
+                "url": "https://www.saucedemo.com/",
+                "acoes": [
+                  {
+                    "fill": [
+                      "#user-name",
+                      "standard_user"
+                    ]
+                  },
+                  {
+                    "fill": [
+                      "#password",
+                      "secret_sauce"
+                    ]
+                  },
+                  {
+                    "click": "#login-button"
+                  },
+                  {
+                    "click": "[data-test=\"add-to-cart-sauce-labs-backpack\"]"
+                  },
+                  {
+                    "click": "[data-test=\"shopping-cart-link\"]"
+                  },
+                  {
+                    "click": "[data-test=\"checkout\"]"
+                  }
+                ],
+                "inspecionar": "[data-test=\"lastName\"]",
+                "aberto": true,
+                "realce": [
+                  "data-test"
+                ],
+                "realce_em": 0.6,
+                "realce_rotulo": "o campo do sobrenome",
+                "legenda": "lastName = sobrenome"
+              }
+            },
+            {
+              "text": "O terceiro, postal code.",
+              "scene": {
+                "type": "devtools",
+                "media": "insp_postal",
+                "url": "https://www.saucedemo.com/",
+                "acoes": [
+                  {
+                    "fill": [
+                      "#user-name",
+                      "standard_user"
+                    ]
+                  },
+                  {
+                    "fill": [
+                      "#password",
+                      "secret_sauce"
+                    ]
+                  },
+                  {
+                    "click": "#login-button"
+                  },
+                  {
+                    "click": "[data-test=\"add-to-cart-sauce-labs-backpack\"]"
+                  },
+                  {
+                    "click": "[data-test=\"shopping-cart-link\"]"
+                  },
+                  {
+                    "click": "[data-test=\"checkout\"]"
+                  }
+                ],
+                "inspecionar": "[data-test=\"postalCode\"]",
+                "aberto": true,
+                "realce": [
+                  "data-test"
+                ],
+                "realce_em": 0.6,
+                "realce_rotulo": "o campo do CEP",
+                "legenda": "postalCode = CEP"
+              }
+            },
+            {
+              "text": "E o botão lá embaixo tem o data test continue, que quer dizer continuar.",
+              "scene": {
+                "type": "devtools",
+                "media": "insp_continue",
+                "url": "https://www.saucedemo.com/",
+                "acoes": [
+                  {
+                    "fill": [
+                      "#user-name",
+                      "standard_user"
+                    ]
+                  },
+                  {
+                    "fill": [
+                      "#password",
+                      "secret_sauce"
+                    ]
+                  },
+                  {
+                    "click": "#login-button"
+                  },
+                  {
+                    "click": "[data-test=\"add-to-cart-sauce-labs-backpack\"]"
+                  },
+                  {
+                    "click": "[data-test=\"shopping-cart-link\"]"
+                  },
+                  {
+                    "click": "[data-test=\"checkout\"]"
+                  }
+                ],
+                "inspecionar": "[data-test=\"continue\"]",
+                "aberto": true,
+                "realce": [
+                  "data-test"
+                ],
+                "realce_em": 1.5,
+                "realce_rotulo": "o botão de continuar",
+                "legenda": "continue = continuar"
+              }
+            },
+            {
+              "text": "No código, cada campo vira um cy get, com ponto type e o que você quer escrever. Pode colocar o seu nome, o seu sobrenome, e qualquer CEP, porque a loja é de mentira. Eu coloquei o meu. E no fim, um click no continue.",
               "scene": {
                 "type": "editor",
                 "arquivo": "compra.cy.js",
@@ -250,7 +418,7 @@
                   "login.cy.js",
                   "compra.cy.js"
                 ],
-                "codigo": "    cy.get('[data-test=\"firstName\"]').type('Maria')\n    cy.get('[data-test=\"lastName\"]').type('Silva')\n    cy.get('[data-test=\"postalCode\"]').type('88000-000')\n    cy.get('[data-test=\"continue\"]').click()",
+                "codigo": "    cy.get('[data-test=\"firstName\"]').type('Vinicius')\n    cy.get('[data-test=\"lastName\"]').type('Torales')\n    cy.get('[data-test=\"postalCode\"]').type('88000-000')\n    cy.get('[data-test=\"continue\"]').click()",
                 "legenda": "get + type em cada campo",
                 "destaque": [
                   1,
@@ -264,10 +432,10 @@
               }
             },
             {
-              "text": "Depois vem a tela de revisão, com o resumo do pedido. E lá embaixo, o botão Finish, que quer dizer terminar.",
+              "text": "Depois vem a tela de revisão, com o resumo do pedido. Lá embaixo tem o botão Finish, que quer dizer terminar. Inspecionando, o data test dele é finish.",
               "scene": {
-                "type": "tela",
-                "media": "site_sauce_overview",
+                "type": "devtools",
+                "media": "insp_finish",
                 "url": "https://www.saucedemo.com/",
                 "acoes": [
                   {
@@ -297,13 +465,13 @@
                   {
                     "fill": [
                       "[data-test=\"firstName\"]",
-                      "Maria"
+                      "Vinicius"
                     ]
                   },
                   {
                     "fill": [
                       "[data-test=\"lastName\"]",
-                      "Silva"
+                      "Torales"
                     ]
                   },
                   {
@@ -316,11 +484,14 @@
                     "click": "[data-test=\"continue\"]"
                   }
                 ],
-                "titulo": "saucedemo.com/checkout-step-two.html",
-                "caixa_em": 3.0,
-                "zoom_em": 2.6,
-                "legenda": "Finish = terminar a compra",
-                "alvo_css": "[data-test=\"finish\"]"
+                "inspecionar": "[data-test=\"finish\"]",
+                "aberto": true,
+                "realce": [
+                  "data-test"
+                ],
+                "realce_em": 5.0,
+                "realce_rotulo": "o botão de terminar",
+                "legenda": "O botão: finish"
               }
             },
             {
