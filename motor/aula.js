@@ -184,4 +184,31 @@
     } else { ctx.fillStyle = "#11131a"; ctx.fillRect(x, top, vw, vh); txt(ctx, "[ gravação: " + (s.media || "?") + " ]", font(700, 40 * u), c.cx, top + vh / 2, C.mut, "center", a); }
     ctx.restore(); legenda(ctx, c, t, s);
   };
+  // INSTALADOR (desenhado): {type:"instalador", app:"Visual Studio Code", titulo:"Select Additional Tasks", texto:"...", caixas:[["Add to PATH",true]], botao:"Next", progresso:false, legenda:"..."}
+  S.instalador = (ctx, c, t, dur, s) => {
+    const u = c.u; const a = easeOut(t / 0.4); const W = (c.vertical ? 980 : 1240) * u, H = (c.vertical ? 900 : 720) * u;
+    const x = c.cx - W / 2, y = c.vertical ? c.H * 0.2 : c.H * 0.42 - H / 2;
+    const top = janela(ctx, x, y, W, H, u, "Setup - " + (s.app || "Programa"), a, "#f4f5f8");
+    ctx.save(); ctx.globalAlpha = a; ctx.fillStyle = "#ffffff"; ctx.fillRect(x, top, W, 130 * u); ctx.fillStyle = "#e3e6ec"; ctx.fillRect(x, top + 130 * u, W, 2 * u); ctx.restore();
+    txt(ctx, s.titulo || "", font(800, 40 * u), x + 50 * u, top + 52 * u, "#1d2230", "left", a);
+    txt(ctx, s.subtitulo || "", font(500, 28 * u), x + 50 * u, top + 98 * u, "#5d6577", "left", a);
+    let yy = top + 200 * u;
+    String(s.texto || "").split("\n").forEach((l) => { txt(ctx, l, font(500, 30 * u), x + 50 * u, yy, "#2a2f3a", "left", a); yy += 46 * u; });
+    (s.caixas || []).forEach(([rot, on], i) => {
+      const cy = yy + 20 * u + i * 64 * u; const st = 0.8 + i * 0.6; const k = on ? easeOut((t - st) / 0.25) : 0;
+      ctx.save(); ctx.globalAlpha = a; rr(ctx, x + 50 * u, cy - 18 * u, 36 * u, 36 * u, 6 * u); ctx.fillStyle = k > 0.5 ? "#2f6fe4" : "#fff"; ctx.fill(); ctx.strokeStyle = "#8b93a7"; ctx.lineWidth = 2 * u; ctx.stroke();
+      if (k > 0.5) { ctx.strokeStyle = "#fff"; ctx.lineWidth = 5 * u; ctx.beginPath(); ctx.moveTo(x + 58 * u, cy); ctx.lineTo(x + 66 * u, cy + 9 * u); ctx.lineTo(x + 80 * u, cy - 9 * u); ctx.stroke(); }
+      if (on && t > st - 0.3 && t < st + 0.6) { ctx.strokeStyle = C.yel; ctx.lineWidth = 6 * u; rr(ctx, x + 40 * u, cy - 28 * u, 56 * u, 56 * u, 10 * u); ctx.stroke(); }
+      ctx.restore(); txt(ctx, rot, font(600, 30 * u), x + 110 * u, cy, "#2a2f3a", "left", a);
+    });
+    if (s.progresso) { const k = clamp((t - 0.5) / Math.max(1, dur - 1)); const bw = W - 100 * u, by = top + 260 * u;
+      ctx.save(); ctx.globalAlpha = a; rr(ctx, x + 50 * u, by, bw, 34 * u, 8 * u); ctx.fillStyle = "#e3e6ec"; ctx.fill(); rr(ctx, x + 50 * u, by, bw * k, 34 * u, 8 * u); ctx.fillStyle = "#2fb36a"; ctx.fill(); ctx.restore();
+      txt(ctx, k < 1 ? "Instalando... " + Math.round(k * 100) + "%" : "Pronto!", font(700, 30 * u), x + 50 * u, by + 80 * u, "#2a2f3a", "left", a); }
+    const bh = 64 * u, bw2 = 190 * u, by2 = y + H - bh - 40 * u;
+    [["Cancel", false], [s.botao || "Next", true]].forEach(([rot, pri], i) => { const bx = x + W - (i === 0 ? 2 : 1) * (bw2 + 24 * u);
+      ctx.save(); ctx.globalAlpha = a; rr(ctx, bx, by2, bw2, bh, 10 * u); ctx.fillStyle = pri ? "#2f6fe4" : "#fff"; ctx.fill(); ctx.strokeStyle = pri ? "#2f6fe4" : "#b9c0cc"; ctx.lineWidth = 2 * u; ctx.stroke();
+      if (pri) { const k = easeOut((t - (s.botao_em || dur * 0.7)) / 0.3); if (k > 0) { ctx.strokeStyle = C.yel; ctx.globalAlpha = a * k; ctx.lineWidth = 7 * u; rr(ctx, bx - 10 * u, by2 - 10 * u, bw2 + 20 * u, bh + 20 * u, 14 * u); ctx.stroke(); } }
+      ctx.restore(); txt(ctx, rot, font(700, 30 * u), bx + bw2 / 2, by2 + bh / 2, pri ? "#fff" : "#2a2f3a", "center", a); });
+    legenda(ctx, c, t, s);
+  };
 })(window);

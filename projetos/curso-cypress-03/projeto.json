@@ -1,0 +1,231 @@
+{
+ "title": "Cypress para leigos · Aula 3",
+ "slug": "curso-cypress-03",
+ "idioma": "pt",
+ "destino": "curso",
+ "marca": [
+  "CYPRESS",
+  "PARA LEIGOS"
+ ],
+ "cor_fundo": "#3fd68a",
+ "voz": {
+  "nome": "gravada",
+  "motor": "eleven",
+  "eleven_voz": "Vinícius Torales"
+ },
+ "script": {
+  "long": {
+   "parts": [
+    {
+     "chapter": "",
+     "sentences": [
+      {
+       "text": "Fala, pessoal! Aula três. Hoje a gente instala o Node.js.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "AULA 3",
+          "muted",
+          80
+         ],
+         [
+          "NODE.JS",
+          "gold",
+          220
+         ]
+        ]
+       }
+      },
+      {
+       "text": "O que é o Node? Pensa no Cypress como um carro. O carro é lindo, mas sem motor ele não anda. O Node.js é o motor.",
+       "scene": {
+        "type": "flow",
+        "a": "NODE.JS",
+        "a_sub": "o motor",
+        "b": "CYPRESS",
+        "b_sub": "o carro",
+        "caption": "SEM MOTOR, O CARRO NÃO ANDA"
+       }
+      },
+      {
+       "text": "E junto com o Node vem um ajudante chamado npm. Ele é como uma loja de aplicativos, só que pra programadores. É com ele que a gente vai instalar o Cypress mais pra frente.",
+       "scene": {
+        "type": "cards",
+        "itens": [
+         [
+          "▶",
+          "Node.js",
+          "o motor que roda tudo"
+         ],
+         [
+          "⬇",
+          "npm",
+          "a lojinha de ferramentas",
+          "#69a7ff"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Primeiro passo: entra no site nodejs ponto org.",
+       "scene": {
+        "type": "passo",
+        "n": 1,
+        "de": 4,
+        "titulo": "Entre no site",
+        "sub": "nodejs.org",
+        "icone": "1"
+       }
+      },
+      {
+       "text": "Aqui tem um detalhe importante: baixa sempre a versão que tem escrito LTS. LTS quer dizer que é a versão mais estável, a que menos dá problema.",
+       "scene": {
+        "type": "tela",
+        "media": "site_node",
+        "url": "https://nodejs.org/",
+        "alvo": "LTS",
+        "titulo": "nodejs.org",
+        "zoom_em": 1.6,
+        "caixa_em": 2.4,
+        "legenda": "Baixe sempre a versão LTS"
+       }
+      },
+      {
+       "text": "Segundo passo: abre o instalador que você baixou. É só ir clicando em Next.",
+       "scene": {
+        "type": "passo",
+        "n": 2,
+        "de": 4,
+        "titulo": "Abra o instalador",
+        "sub": "pasta Downloads",
+        "icone": "2"
+       }
+      },
+      {
+       "text": "Aceita o contrato e continua clicando em Next. Pode deixar todas as opções do jeito que vierem, elas já estão certas.",
+       "scene": {
+        "type": "instalador",
+        "app": "Node.js",
+        "titulo": "End-User License Agreement",
+        "subtitulo": "Please read the following license agreement carefully",
+        "caixas": [
+         [
+          "I accept the terms in the License Agreement",
+          true
+         ]
+        ],
+        "botao": "Next",
+        "legenda": "Pode deixar tudo no padrão"
+       }
+      },
+      {
+       "text": "No final, clica em Install. Se o Windows perguntar se você permite o programa fazer alterações, clica em Sim.",
+       "scene": {
+        "type": "instalador",
+        "app": "Node.js",
+        "titulo": "Installing Node.js",
+        "subtitulo": "Please wait while the Setup Wizard installs Node.js",
+        "progresso": true,
+        "botao": "Finish",
+        "legenda": "Se o Windows perguntar, clique em Sim"
+       }
+      },
+      {
+       "text": "Terceiro passo: agora a gente vai conferir se deu certo. Aperta a tecla do Windows, digita PowerShell e abre.",
+       "scene": {
+        "type": "passo",
+        "n": 3,
+        "de": 4,
+        "titulo": "Abra o PowerShell",
+        "sub": "tecla Windows + digite PowerShell",
+        "icone": "3"
+       }
+      },
+      {
+       "text": "Essa tela preta é o terminal. Parece coisa de hacker, mas é só um lugar onde você escreve comandos pro computador, em vez de clicar.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "O TERMINAL",
+          "gold",
+          180
+         ],
+         [
+          "VOCÊ ESCREVE EM VEZ DE CLICAR",
+          "white",
+          80
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Quarto passo: digita node espaço traço v e aperta Enter. Depois digita npm espaço traço v e aperta Enter de novo.",
+       "scene": {
+        "type": "terminal",
+        "pasta": "C:\\Users\\voce",
+        "linhas": [
+         {
+          "cmd": "node -v"
+         },
+         {
+          "out": "v22.11.0",
+          "cor": "ac"
+         },
+         {
+          "cmd": "npm -v"
+         },
+         {
+          "out": "10.9.0",
+          "cor": "ac"
+         }
+        ],
+        "legenda": "Apareceu um número? Deu certo!"
+       }
+      },
+      {
+       "text": "Se apareceu um número em cada um, mesmo que seja diferente do meu, está tudo certo. O Node e o npm estão instalados.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "APARECEU O NÚMERO?",
+          "white",
+          120
+         ],
+         [
+          "ESTÁ INSTALADO",
+          "gold",
+          170
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Na próxima aula, a gente instala o Git, a última ferramenta antes de começar a testar. Te vejo lá!",
+       "scene": {
+        "type": "endcard",
+        "sub": "PRÓXIMA: INSTALANDO O GIT"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "shorts": [],
+  "tiktoks": []
+ },
+ "serie": [],
+ "meta": {
+  "titles": [
+   "Aula 3: Instalando o Node.js"
+  ],
+  "description": "",
+  "tags": []
+ },
+ "notes": "Curso Cypress para leigos. Não publica (destino: curso)."
+}

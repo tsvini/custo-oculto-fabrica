@@ -79,6 +79,54 @@ def _uniforme(path):
         return True
 
 
+def telas(cenas, pasta, log, idioma="pt"):
+    """Cenas 'tela' com 'url': print da página inteira em 16:9 (para as aulas). 'alvo' = texto do botão/link a destacar:
+    a caixa amarela e o zoom são calculados sozinhos e guardados em <media>.json."""
+    alvo = [s for s in cenas if s.get("type") == "tela" and s.get("url") and s.get("media")]
+    falta = [s for s in alvo if not os.path.exists(os.path.join(pasta, s["media"] + ".png"))]
+    if falta:
+        from playwright.sync_api import sync_playwright
+        with sync_playwright() as p:
+            b = p.chromium.launch()
+            ctx = b.new_context(viewport={"width": 1600, "height": 900}, device_scale_factor=1.25, locale="en-US" if idioma == "en" else "pt-BR", user_agent=UA)
+            for s in falta:
+                dest = os.path.join(pasta, s["media"] + ".png"); pg = ctx.new_page(); meta = {}
+                try:
+                    pg.goto(s["url"], wait_until="domcontentloaded", timeout=35000); pg.wait_for_timeout(3000)
+                    for txt in CONSENT:
+                        try:
+                            btn = pg.get_by_role("button", name=txt, exact=True)
+                            if btn.count() and btn.first.is_visible():
+                                btn.first.click(timeout=1500); pg.wait_for_timeout(600); break
+                        except Exception:
+                            pass
+                    if s.get("alvo"):
+                        el = pg.get_by_text(s["alvo"], exact=False).locator("visible=true").first
+                        try:
+                            el.scroll_into_view_if_needed(timeout=3000); pg.wait_for_timeout(400)
+                            bx = el.bounding_box()
+                            if bx:
+                                x0, y0, x1, y1 = bx["x"] / 1600, bx["y"] / 900, (bx["x"] + bx["width"]) / 1600, (bx["y"] + bx["height"]) / 900
+                                pad = 0.012; meta["caixa"] = [max(0, x0 - pad), max(0, y0 - pad * 1.8), min(1, x1 + pad), min(1, y1 + pad * 1.8)]
+                                cx, cy = (x0 + x1) / 2, (y0 + y1) / 2; zw = 0.55
+                                zx0 = min(max(0, cx - zw / 2), 1 - zw); zy0 = min(max(0, cy - zw / 2), 1 - zw)
+                                meta["zoom"] = [zx0, zy0, zx0 + zw, zy0 + zw]
+                        except Exception as e:
+                            log(f"  tela {s['media']}: não achei '{s['alvo']}' ({str(e)[:60]})")
+                    pg.screenshot(path=dest)
+                    json.dump(meta, open(os.path.join(pasta, s["media"] + ".json"), "w"))
+                    log(f"  tela {s['media']}: ok ({s['url'][:60]})")
+                except Exception as e:
+                    log(f"  tela {s['media']}: falhou ({str(e)[:100]})")
+                pg.close()
+            b.close()
+    for s in alvo:  # aplica caixa/zoom calculados (sem sobrescrever o que veio à mão)
+        mj = os.path.join(pasta, s["media"] + ".json")
+        if os.path.exists(mj):
+            for k, v in json.load(open(mj)).items():
+                s.setdefault(k, v)
+
+
 def prints(cenas, pasta, log):
     """cenas: lista de dicts (cenas 'print' com 'url'). Salva <media>.png e preenche headline/outlet."""
     alvo = [s for s in cenas if s.get("url") and s.get("media") and not os.path.exists(os.path.join(pasta, s["media"] + ".png"))]
