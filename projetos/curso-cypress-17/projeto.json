@@ -147,7 +147,7 @@
               }
             },
             {
-              "text": "Agora, na loja, cada produto tem um botão Add to cart. O da mochila tem o data test add to cart sauce labs backpack.",
+              "text": "Agora, na loja. Cada produto tem um botão Add to cart, que quer dizer adicionar ao carrinho. O da mochila é esse aqui, o primeiro da lista.",
               "scene": {
                 "type": "tela",
                 "media": "site_sauce_loja",
@@ -173,11 +173,113 @@
                 "titulo": "saucedemo.com/inventory.html",
                 "zoom_em": 1.2,
                 "caixa_em": 1.8,
-                "legenda": "O botão Add to cart da mochila"
+                "legenda": "Add to cart = adicionar ao carrinho"
               }
             },
             {
-              "text": "Então o teste clica nesse botão. E depois confere o ícone do carrinho: ele deveria mostrar o número um.",
+              "text": "Pra saber o nome dele, a gente inspeciona o botão. Olha o data test: add to cart sauce labs backpack. Backpack é mochila, em inglês.",
+              "scene": {
+                "type": "devtools",
+                "media": "insp_add",
+                "url": "https://www.saucedemo.com/",
+                "acoes": [
+                  {
+                    "fill": [
+                      "#user-name",
+                      "standard_user"
+                    ]
+                  },
+                  {
+                    "fill": [
+                      "#password",
+                      "secret_sauce"
+                    ]
+                  },
+                  {
+                    "click": "#login-button"
+                  }
+                ],
+                "inspecionar": "[data-test=\"add-to-cart-sauce-labs-backpack\"]",
+                "aberto": true,
+                "realce": [
+                  "data-test"
+                ],
+                "realce_em": 2.8,
+                "realce_rotulo": "o nome do botão",
+                "legenda": "O botão da mochila"
+              }
+            },
+            {
+              "text": "Depois de clicar, aparece um número no ícone do carrinho, lá em cima. É esse número que o teste vai conferir.",
+              "scene": {
+                "type": "tela",
+                "media": "site_sauce_badge",
+                "url": "https://www.saucedemo.com/",
+                "acoes": [
+                  {
+                    "fill": [
+                      "#user-name",
+                      "standard_user"
+                    ]
+                  },
+                  {
+                    "fill": [
+                      "#password",
+                      "secret_sauce"
+                    ]
+                  },
+                  {
+                    "click": "#login-button"
+                  },
+                  {
+                    "click": "[data-test=\"add-to-cart-sauce-labs-backpack\"]"
+                  }
+                ],
+                "alvo_css": "[data-test=\"shopping-cart-badge\"]",
+                "titulo": "saucedemo.com/inventory.html",
+                "caixa_em": 2.4,
+                "zoom_em": 2.0,
+                "legenda": "O número no carrinho"
+              }
+            },
+            {
+              "text": "Inspecionando esse número, o data test dele é shopping cart badge. Badge é o selinho, o numerozinho do carrinho.",
+              "scene": {
+                "type": "devtools",
+                "media": "insp_badge",
+                "url": "https://www.saucedemo.com/",
+                "acoes": [
+                  {
+                    "fill": [
+                      "#user-name",
+                      "standard_user"
+                    ]
+                  },
+                  {
+                    "fill": [
+                      "#password",
+                      "secret_sauce"
+                    ]
+                  },
+                  {
+                    "click": "#login-button"
+                  },
+                  {
+                    "click": "[data-test=\"add-to-cart-sauce-labs-backpack\"]"
+                  }
+                ],
+                "inspecionar": "[data-test=\"shopping-cart-badge\"]",
+                "aberto": true,
+                "realce": [
+                  "data-test"
+                ],
+                "realce_em": 2.4,
+                "realce_rotulo": "o selinho do carrinho",
+                "legenda": "O número: shopping-cart-badge"
+              }
+            },
+            {
+              "text": "Juntando tudo: o teste clica no botão da mochila, e depois confere se o selinho do carrinho mostra exatamente o número um.",
               "scene": {
                 "type": "editor",
                 "arquivo": "compra.cy.js",
