@@ -149,14 +149,24 @@ jobs:
             git add previas && git commit -q -m "Prévias [skip ci]" && git pull --rebase --autostash -q && git push -q || true
           fi
 
-      - name: Entregar arquivos (um pacote só)
+      - name: Vídeos para baixar (release "videos", não ocupa o armazenamento do Actions)
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          gh release view videos > /dev/null 2>&1 || gh release create videos --title "Vídeos para baixar" --notes "MP4 gerados pela fábrica (aulas e prévias). Cada novo substitui o anterior com o mesmo nome." --prerelease
+          find saida -name "*.mp4" | while read -r f; do gh release upload videos "$f" --clobber || echo "falhou: $f"; done
+
+      - name: Entregar arquivos (um pacote só, sem os MP4)
         uses: actions/upload-artifact@v4
         with:
           name: video-${{ steps.alvo.outputs.nome }}-${{ github.run_number }}
-          path: saida/
+          path: |
+            saida/
+            !saida/**/*.mp4
           if-no-files-found: warn
-          retention-days: 14
-          compression-level: 0
+          retention-days: 3
 
       - name: Publicar no YouTube (fila + agendamento)
         if: ${{ env.YT_REFRESH_TOKEN != '' && (inputs.modo || steps.alvo.outputs.modo || 'gravada') != 'teste' && steps.alvo.outputs.previa != '1' }}
