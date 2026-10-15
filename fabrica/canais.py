@@ -29,6 +29,7 @@ CANAIS = {
     },
     "en": {
         "nome": "Hidden Cost",
+        "spotify": "🎧 Listen as a podcast on Spotify: https://open.spotify.com/show/4TZtZgdHWqI2FeCqM0vOFz",
         "token_env": "YT_REFRESH_TOKEN_EN",
         "yt_lang": "en",
         "legenda_nome": "English",
