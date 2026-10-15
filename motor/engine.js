@@ -650,6 +650,8 @@
       if (endT - t < 0.12 && endT < tl.total - 0.1) { ctx.fillStyle = `rgba(0,0,0,${(1 - (endT - t) / 0.12) * 0.8})`; ctx.fillRect(0, 0, c.W, c.H); }
       if (sc.type !== "endcard" && sc.type !== "chapter" && sc.type !== "capa") drawCaptions(ctx, c, t, tl.chunks, tl.safe);
       if (c.vertical) { ctx.fillStyle = css(COL.gold); ctx.fillRect(0, 0, c.W * t / tl.total, 10); }
+      if (globalThis.CO_SELO && sc.type !== "endcard") { const f = font(800, 26 * c.u); ctx.font = f; const w = ctx.measureText(globalThis.CO_SELO).width + 44 * c.u; const yy = c.H * 0.06;
+        box(ctx, 40 * c.u, yy - 24 * c.u, w, 48 * c.u, 24 * c.u, [63, 214, 138], 0.95); drawC(ctx, globalThis.CO_SELO, f, 40 * c.u + w / 2, yy, { fill: [11, 26, 18] }); }
       drawC(ctx, globalThis.CO_MARCA ? globalThis.CO_MARCA.join(" ") : globalThis.CO_IDIOMA === "en" ? "HIDDEN COST" : "CUSTO OCULTO", font(900, 30 * c.u), c.cx, c.H * (tl.safe ? 0.15 : c.vertical ? 0.085 : 0.06), { alpha: 0.45 });
     }
   }

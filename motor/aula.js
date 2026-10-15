@@ -28,6 +28,15 @@
     ctx.strokeStyle = "rgba(255,255,255,.07)"; ctx.lineWidth = 2 * u; rr(ctx, x, y, w, h, 22 * u); ctx.stroke();
     ctx.restore(); return y + 64 * u;
   }
+  // cursor do mouse: vem de baixo, para no alvo e "clica" (anel) em t_click
+  function cursor(ctx, u, x, y, t, tc) {
+    const k = easeOut((t - (tc - 0.9)) / 0.8); if (k <= 0) return;
+    const cx = lerp(x + 260 * u, x, k), cy = lerp(y + 200 * u, y, k);
+    const p = (t - tc) / 0.45; if (p > 0 && p < 1) { ctx.save(); ctx.globalAlpha = 1 - p; ctx.strokeStyle = C.yel; ctx.lineWidth = 5 * u; ctx.beginPath(); ctx.arc(x, y, (14 + 46 * p) * u, 0, 7); ctx.stroke(); ctx.restore(); }
+    const sc = p > 0 && p < 0.25 ? 0.85 : 1; ctx.save(); ctx.translate(cx, cy); ctx.scale(sc * u * 1.6, sc * u * 1.6);
+    ctx.beginPath(); ctx.moveTo(0, 0); ctx.lineTo(0, 26); ctx.lineTo(7, 20); ctx.lineTo(12, 31); ctx.lineTo(17, 29); ctx.lineTo(12, 18); ctx.lineTo(21, 18); ctx.closePath();
+    ctx.fillStyle = "#fff"; ctx.strokeStyle = "#111"; ctx.lineWidth = 1.6; ctx.shadowColor = "rgba(0,0,0,.5)"; ctx.shadowBlur = 6; ctx.fill(); ctx.stroke(); ctx.restore();
+  }
   const topo = (c, H) => (c.vertical ? c.H * 0.2 : c.H * 0.38 - H / 2);  // janelas acima da faixa e da legenda karaokê
   function legenda(ctx, c, t, s) {  // faixa explicativa embaixo da janela
     if (!s.legenda) return; const u = c.u; const a = easeOut((t - (s.legenda_em || 0.6)) / 0.4); if (a <= 0) return;
@@ -181,7 +190,8 @@
       if (s.zoom) { const k = easeOut((t - (s.zoom_em || 1.5)) / 0.8); zx0 = lerp(0, s.zoom[0], k); zy0 = lerp(0, s.zoom[1], k); zx1 = lerp(1, s.zoom[2], k); zy1 = lerp(1, s.zoom[3], k); }
       ctx.globalAlpha = a; ctx.drawImage(el, zx0 * iw, zy0 * ih, (zx1 - zx0) * iw, (zy1 - zy0) * ih, x, top, vw, vh);
       if (s.caixa) { const k = easeOut((t - (s.caixa_em || 1.2)) / 0.4); const [bx0, by0, bx1, by1] = s.caixa; const fx = (v) => x + (v - zx0) / (zx1 - zx0) * vw, fy = (v) => top + (v - zy0) / (zy1 - zy0) * vh;
-        ctx.globalAlpha = k; ctx.strokeStyle = C.yel; ctx.lineWidth = 8 * u; rr(ctx, fx(bx0), fy(by0), fx(bx1) - fx(bx0), fy(by1) - fy(by0), 14 * u); ctx.stroke(); }
+        ctx.globalAlpha = k; ctx.strokeStyle = C.yel; ctx.lineWidth = 8 * u; rr(ctx, fx(bx0), fy(by0), fx(bx1) - fx(bx0), fy(by1) - fy(by0), 14 * u); ctx.stroke();
+        ctx.globalAlpha = 1; cursor(ctx, u, (fx(bx0) + fx(bx1)) / 2, (fy(by0) + fy(by1)) / 2, t, (s.caixa_em || 1.2) + 0.9); }
     } else { ctx.fillStyle = "#11131a"; ctx.fillRect(x, top, vw, vh); txt(ctx, "[ gravação: " + (s.media || "?") + " ]", font(700, 40 * u), c.cx, top + vh / 2, C.mut, "center", a); }
     ctx.restore(); legenda(ctx, c, t, s);
   };
@@ -209,7 +219,8 @@
     [["Cancel", false], [s.botao || "Next", true]].forEach(([rot, pri], i) => { const bx = x + W - (i === 0 ? 2 : 1) * (bw2 + 24 * u);
       ctx.save(); ctx.globalAlpha = a; rr(ctx, bx, by2, bw2, bh, 10 * u); ctx.fillStyle = pri ? "#2f6fe4" : "#fff"; ctx.fill(); ctx.strokeStyle = pri ? "#2f6fe4" : "#b9c0cc"; ctx.lineWidth = 2 * u; ctx.stroke();
       if (pri) { const k = easeOut((t - (s.botao_em || dur * 0.7)) / 0.3); if (k > 0) { ctx.strokeStyle = C.yel; ctx.globalAlpha = a * k; ctx.lineWidth = 7 * u; rr(ctx, bx - 10 * u, by2 - 10 * u, bw2 + 20 * u, bh + 20 * u, 14 * u); ctx.stroke(); } }
-      ctx.restore(); txt(ctx, rot, font(700, 30 * u), bx + bw2 / 2, by2 + bh / 2, pri ? "#fff" : "#2a2f3a", "center", a); });
+      ctx.restore(); txt(ctx, rot, font(700, 30 * u), bx + bw2 / 2, by2 + bh / 2, pri ? "#fff" : "#2a2f3a", "center", a);
+      if (pri && !s.progresso) cursor(ctx, u, bx + bw2 * 0.55, by2 + bh * 0.6, t, (s.botao_em || dur * 0.7) + 0.35); });
     legenda(ctx, c, t, s);
   };
 })(window);
