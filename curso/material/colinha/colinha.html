@@ -6,31 +6,43 @@
 @font-face{font-family:JB;font-weight:700;src:url(../../../motor/fonts/jetbrains-mono-latin-700-normal.woff2)}
 @page{size:A4;margin:0}
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:Inter,sans-serif;color:#1b1e27;-webkit-print-color-adjust:exact;print-color-adjust:exact}
-.pg{width:210mm;height:297mm;padding:12mm 12mm 10mm;position:relative;overflow:hidden;page-break-after:always;background:#f6f7f4}
-.topo{background:#0f1a14;color:#fff;border-radius:14px;padding:14px 20px;display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
-.topo h1{font-weight:900;font-size:25px;letter-spacing:-.5px;line-height:1}.topo h1 b{color:#ffd23f}
-.topo p{font-size:11px;color:#9fb5a8;margin-top:5px}
-.selo{background:#3fd68a;color:#0b1a12;font-weight:900;font-size:11px;border-radius:30px;padding:6px 12px;white-space:nowrap}
-.grade{display:grid;grid-template-columns:1fr 1fr;gap:9px}
-.box{background:#fff;border-radius:12px;padding:11px 13px;border:1.5px solid #e3e7e0}
-.box h2{font-size:12.5px;font-weight:900;text-transform:uppercase;letter-spacing:.4px;margin-bottom:7px;display:flex;align-items:center;gap:7px}
-.box h2 i{font-style:normal;background:#3fd68a;color:#0b1a12;border-radius:6px;width:20px;height:20px;display:inline-grid;place-items:center;font-size:11px}
-.l{display:grid;grid-template-columns:auto 1fr;gap:4px 10px;align-items:baseline;font-size:10.5px;line-height:1.35}
-code,.c{font-family:JB,monospace;font-size:10px;background:#0f1117;color:#e8eaf0;border-radius:5px;padding:2px 6px;white-space:nowrap}
-.c .k{color:#c792ea}.c .f{color:#69a7ff}.c .s{color:#f0a868}.c .cy{color:#3fd68a}.c .m{color:#8b93a7}
-pre.c{display:block;white-space:pre;padding:9px 11px;line-height:1.5;font-size:9.8px;border-radius:9px}
-.d{color:#4a5160}
+:root{--bg:#0b0f0d;--box:#131a16;--bd:#223029;--tx:#e8eee9;--mu:#93a39a;--ac:#3fd68a;--gold:#ffd23f;--code:#070a09}
+body{font-family:Inter,sans-serif;color:var(--tx);background:var(--bg);-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.pg{width:210mm;height:297mm;padding:11mm 11mm 10mm;position:relative;overflow:hidden;page-break-after:always;background:radial-gradient(120% 60% at 50% 0%,#12271b 0%,var(--bg) 60%)}
+.topo{background:linear-gradient(135deg,#0f2418,#0a120e);border:1.5px solid #1f3a2a;border-radius:16px;padding:16px 20px;display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.topo h1{font-weight:900;font-size:26px;letter-spacing:-.5px;line-height:1}.topo h1 b{color:var(--gold)}
+.topo p{font-size:11px;color:var(--mu);margin-top:6px}
+.selo{background:var(--ac);color:#0b1a12;font-weight:900;font-size:11px;border-radius:30px;padding:7px 13px;white-space:nowrap}
+.grade{display:grid;grid-template-columns:1fr 1fr;gap:11px}
+.box{background:var(--box);border-radius:14px;padding:14px 16px;border:1.5px solid var(--bd)}
+.box h2{font-size:13px;font-weight:900;text-transform:uppercase;letter-spacing:.5px;margin-bottom:11px;display:flex;align-items:center;gap:8px;color:#fff}
+.box h2 i{font-style:normal;background:var(--ac);color:#0b1a12;border-radius:7px;width:22px;height:22px;display:inline-grid;place-items:center;font-size:11.5px}
+.l{display:grid;grid-template-columns:max-content 1fr;gap:7px 12px;align-items:center;font-size:11px;line-height:1.35}
+code,.c{font-family:JB,monospace;font-size:10.3px;background:var(--code);color:#e8eaf0;border:1px solid #26332c;border-radius:6px;padding:2px 7px;white-space:nowrap;line-height:1.6}
+.c .k{color:#c792ea}.c .f{color:#69a7ff}.c .s{color:#f0a868}.c .cy{color:var(--ac)}.c .m{color:#6f7d75}
+pre.c{display:block;white-space:pre;padding:11px 13px;line-height:1.6;font-size:10.3px;border-radius:10px}
+.d{color:var(--mu)}
+b{color:#fff}
 .full{grid-column:1/-1}
-.tag{display:inline-block;font-weight:800;font-size:9.5px;border-radius:5px;padding:1px 6px;margin-right:4px}
-.ok{background:#d9f7e8;color:#106b3e}.mid{background:#e3edff;color:#1f4fae}.bad{background:#fff1cc;color:#8a6200}
-.rod{position:absolute;bottom:6mm;left:12mm;right:12mm;font-size:9px;color:#8b93a7;display:flex;justify-content:space-between}
-.perg{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
-.perg div{background:#fff5f5;border:1.5px solid #ffd0d0;border-radius:10px;padding:9px;font-size:10.5px}
-.perg b{display:block;font-size:20px;color:#e04848;font-weight:900}
-.glos{display:grid;grid-template-columns:1fr 1fr;gap:5px 16px;font-size:10.3px;line-height:1.35}
-.glos b{font-weight:800}
-.grade{gap:13px}.box{padding:15px 16px}.box h2{font-size:13.5px;margin-bottom:10px}.l{font-size:11.3px;gap:7px 12px}code,.c{font-size:10.6px}pre.c{font-size:10.6px;line-height:1.6}.glos{font-size:11px;gap:7px 18px}.perg div{font-size:11px}
+.nota{font-size:10.5px;color:var(--mu);margin-top:10px;line-height:1.5}
+.rod{position:absolute;bottom:6mm;left:11mm;right:11mm;font-size:9px;color:#6f7d75;display:flex;justify-content:space-between}
+.rod b{color:var(--ac)}
+.sel{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.sel>div{background:#0e1411;border:1.5px solid var(--bd);border-radius:11px;padding:11px 12px;display:flex;flex-direction:column;gap:7px;font-size:10.5px;line-height:1.4}
+.sel .t{display:flex;align-items:center;gap:7px;font-weight:800;font-size:12px;color:#fff}
+.tag{display:inline-block;font-weight:900;font-size:9px;border-radius:5px;padding:2px 7px;letter-spacing:.3px}
+.ok{background:#1d5c3c;color:#9ff0c6}.mid{background:#1e3560;color:#a9c6ff}.bad{background:#5a4512;color:#ffe08a}
+.sel .codes{display:flex;gap:5px;flex-wrap:wrap}
+.perg{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.perg div{background:#1c1212;border:1.5px solid #4a2626;border-radius:11px;padding:10px 12px;font-size:10.5px;line-height:1.4;display:flex;flex-direction:column;gap:3px}
+.perg .n{font-size:20px;color:#ff6b6b;font-weight:900;line-height:1}
+.perg .q{font-weight:800;font-size:11.5px;color:#fff}
+.passos{font-size:11px;line-height:1.7;color:var(--mu)}
+.glos{display:grid;grid-template-columns:1fr 1fr;gap:8px 20px;font-size:10.6px;line-height:1.4;color:var(--mu)}
+.l>code{justify-self:start}
+.grade{gap:10px}.box{padding:13px 15px}
+.glos{gap:6px 20px;font-size:10.3px}.glos code{padding:0 5px;line-height:1.4}
+.sel .t{white-space:nowrap}
 </style></head><body>
 <!-- PÁGINA 1 -->
 <div class="pg">
@@ -53,9 +65,9 @@ pre.c{display:block;white-space:pre;padding:9px 11px;line-height:1.5;font-size:9
 ├─ <span class="f">node_modules/</span>   <span class="m">← não mexa</span>
 ├─ cypress.config.js
 ├─ package.json     <span class="m">← a ficha do projeto</span>
-└─ .gitignore</pre><p class="d" style="font-size:10px;margin-top:6px">Todo arquivo de teste termina em <code>.cy.js</code>, é assim que o Cypress sabe que é teste.</p></div>
+└─ .gitignore</pre><p class="nota">Todo arquivo de teste termina em <code>.cy.js</code>, é assim que o Cypress sabe que é teste.</p></div>
   <div class="box full"><h2><i>3</i>A receita de um teste</h2>
-   <div style="display:grid;grid-template-columns:1.25fr 1fr;gap:12px;align-items:center">
+   <div style="display:grid;grid-template-columns:1.3fr 1fr;gap:16px;align-items:center">
 <pre class="c"><span class="k">describe</span>(<span class="s">'Login'</span>, () => {          <span class="m">// o caderno de receitas</span>
   <span class="k">beforeEach</span>(() => {                <span class="m">// roda antes de CADA it</span>
     <span class="cy">cy</span>.<span class="f">visit</span>(<span class="s">'https://www.saucedemo.com'</span>)
@@ -68,7 +80,7 @@ pre.c{display:block;white-space:pre;padding:9px 11px;line-height:1.5;font-size:9
     <span class="cy">cy</span>.<span class="f">contains</span>(<span class="s">'Products'</span>).<span class="f">should</span>(<span class="s">'be.visible'</span>)  <span class="m">// a conferência</span>
   })
 })</pre>
-   <div style="font-size:10.5px;line-height:1.5" class="d"><b style="color:#1b1e27">Todo teste é assim:</b><br>1. <b>abre</b> o site (visit)<br>2. <b>acha</b> o elemento (get)<br>3. <b>faz</b> alguma coisa (type, click)<br>4. <b>confere</b> o resultado (should)<br><br>Sem o <code>should</code>, o teste só clica: ele não confere nada.</div>
+   <div class="passos"><b>Todo teste é assim:</b><br>1. <b>abre</b> o site (visit)<br>2. <b>acha</b> o elemento (get)<br>3. <b>faz</b> alguma coisa (type, click)<br>4. <b>confere</b> o resultado (should)<br><br>Sem o <code>should</code>, o teste só clica: ele não confere nada.</div>
    </div></div>
   <div class="box"><h2><i>4</i>Comandos do Cypress</h2><div class="l">
    <code>cy.visit(url)</code><span class="d">abre o site</span>
@@ -87,7 +99,7 @@ pre.c{display:block;white-space:pre;padding:9px 11px;line-height:1.5;font-size:9
    <code>'not.exist'</code><span class="d">não existe na página</span>
    <code>'have.value', 'x'</code><span class="d">o campo tem esse valor</span>
    <code>'be.disabled'</code><span class="d">o botão está desativado</span>
-  </div><p class="d" style="font-size:10px;margin-top:7px">O Cypress espera sozinho (até 4 segundos) a conferência dar certo. Não precisa de espera.</p></div>
+  </div><p class="nota">O Cypress espera sozinho (até 4 segundos) a conferência dar certo. Não precisa de espera.</p></div>
  </div>
  <div class="rod"><span>Cypress para Leigos · Vinícius Torales</span><span>Site de treino: saucedemo.com · usuário <b>standard_user</b> · senha <b>secret_sauce</b></span></div>
 </div>
@@ -96,15 +108,15 @@ pre.c{display:block;white-space:pre;padding:9px 11px;line-height:1.5;font-size:9
  <div class="topo"><div><h1>CYPRESS <b>PARA LEIGOS</b></h1><p>Seletores, erros, Git e as palavras que você vai ouvir no trabalho</p></div><span class="selo">COLINHA · 2/2</span></div>
  <div class="grade">
   <div class="box full"><h2><i>6</i>Qual seletor usar? (aula 13)</h2>
-   <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;font-size:10.5px">
-    <div><span class="tag ok">1º MELHOR</span><b>data-test</b><br><code>[data-test="username"]</code><br><span class="d">feito pra testes, não muda quando o visual muda</span></div>
-    <div><span class="tag mid">2º</span><b>id</b><br><code>#user-name</code><br><span class="d">o "CPF" do elemento: não se repete na página</span></div>
-    <div><span class="tag bad">3º SÓ SE PRECISAR</span><b>classe ou texto</b><br><code>.btn</code> <code>cy.contains('Login')</code><br><span class="d">muda fácil, o teste quebra à toa</span></div>
+   <div class="sel">
+    <div><span class="t"><span class="tag ok">1º MELHOR</span>data-test</span><span class="codes"><code>[data-test="username"]</code></span><span class="d">feito pra testes: não muda quando o visual muda</span></div>
+    <div><span class="t"><span class="tag mid">2º</span>id</span><span class="codes"><code>#user-name</code></span><span class="d">o "CPF" do elemento: não se repete na página</span></div>
+    <div><span class="t"><span class="tag bad">3º SE PRECISAR</span>classe ou texto</span><span class="codes"><code>.btn</code><code>cy.contains('Login')</code></span><span class="d">muda fácil, o teste quebra à toa</span></div>
    </div>
-   <p class="d" style="font-size:10.3px;margin-top:8px"><b style="color:#1b1e27">Como achar:</b> botão direito no elemento › <b>Inspecionar</b>. Ou, no Cypress, clique na <b>mira</b> (Selector Playground), passe o mouse no elemento e copie o seletor que ele sugere.</p></div>
+   <p class="nota"><b>Como achar:</b> botão direito no elemento › <b>Inspecionar</b>. Ou, no Cypress, clique na <b>mira</b> (Selector Playground), passe o mouse no elemento e copie o seletor que ele sugere.</p></div>
   <div class="box full"><h2><i>7</i>O teste ficou vermelho? Faça 3 perguntas (aula 15)</h2>
-   <div class="perg"><div><b>1</b><b style="font-size:11px;color:#1b1e27">Onde parou?</b><span class="d">o passo vermelho na lista da esquerda</span></div><div><b>2</b><b style="font-size:11px;color:#1b1e27">O que ele esperava?</b><span class="d">a mensagem em vermelho: "expected…"</span></div><div><b>3</b><b style="font-size:11px;color:#1b1e27">O que tinha na tela?</b><span class="d">clique no passo e olhe o site naquele momento</span></div></div>
-   <div class="l" style="margin-top:9px">
+   <div class="perg"><div><span class="n">1</span><span class="q">Onde parou?</span><span class="d">o passo vermelho na lista da esquerda</span></div><div><span class="n">2</span><span class="q">O que ele esperava?</span><span class="d">a mensagem em vermelho: "expected…"</span></div><div><span class="n">3</span><span class="q">O que tinha na tela?</span><span class="d">clique no passo e olhe o site naquele momento</span></div></div>
+   <div class="l" style="margin-top:12px">
     <code>Timed out retrying</code><span class="d">não achou o elemento: confira o seletor (letra errada? aspas?)</span>
     <code>expected ... to contain</code><span class="d">achou, mas o texto é outro: confira a mensagem do site</span>
     <code>npx não é reconhecido</code><span class="d">o Node não está instalado ou o VS Code precisa ser reaberto (aula 29)</span>
@@ -115,7 +127,7 @@ pre.c{display:block;white-space:pre;padding:9px 11px;line-height:1.5;font-size:9
    <code>git add .</code><span class="d">separa todos os arquivos</span>
    <code>git commit -m "msg"</code><span class="d">salva o jogo, com um nome</span>
    <code>git push</code><span class="d">manda pro GitHub</span>
-  </div><p class="d" style="font-size:10px;margin-top:7px">Antes do primeiro commit, crie o <code>.gitignore</code> com <code>node_modules</code> dentro.</p></div>
+  </div><p class="nota">Antes do primeiro commit, crie o <code>.gitignore</code> com <code>node_modules</code> dentro.</p></div>
   <div class="box"><h2><i>9</i>Atalhos do VS Code</h2><div class="l">
    <code>Ctrl + S</code><span class="d">salvar o arquivo</span>
    <code>Ctrl + '</code><span class="d">abrir e fechar o terminal</span>
