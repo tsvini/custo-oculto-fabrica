@@ -610,10 +610,10 @@
         pts.push([mx + 120 * u, my + 30 * u, tcN]); }
       else pts.push([plus[0] - 120 * u, plus[1] + 56 * u, tcN]);
       if (kF > 0) {
-        const fx = x + 260 * u; let yy = body + 70 * u;
-        txt(ctx, "Create a new repository", font(800, 40 * u), fx, yy, G.tx, "left", a * kF); yy += 46 * u;
-        txt(ctx, "A repository contains all project files, including the revision history.", font(500, 22 * u), fx, yy, G.mu, "left", a * kF); yy += 40 * u;
-        ctx.save(); ctx.globalAlpha = a * kF; ctx.fillStyle = G.bd; ctx.fillRect(fx, yy, W - 520 * u, 1.5 * u); ctx.restore(); yy += 50 * u;
+        const fx = x + 200 * u; let yy = body + 46 * u;
+        txt(ctx, "Create a new repository", font(800, 34 * u), fx, yy, G.tx, "left", a * kF); yy += 36 * u;
+        txt(ctx, "A repository contains all project files, including the revision history.", font(500, 20 * u), fx, yy, G.mu, "left", a * kF); yy += 26 * u;
+        ctx.save(); ctx.globalAlpha = a * kF; ctx.fillStyle = G.bd; ctx.fillRect(fx, yy, W - 400 * u, 1.5 * u); ctx.restore(); yy += 36 * u;
         txt(ctx, "Owner *", font(700, 22 * u), fx, yy, G.tx, "left", a * kF); txt(ctx, "Repository name *", font(700, 22 * u), fx + 250 * u, yy, G.tx, "left", a * kF); yy += 44 * u;
         ctx.save(); ctx.globalAlpha = a * kF; rr(ctx, fx, yy - 24 * u, 200 * u, 48 * u, 8 * u); ctx.fillStyle = "#161b22"; ctx.fill(); ctx.strokeStyle = G.bd; ctx.lineWidth = 2 * u; ctx.stroke();
         const tN = dir ? (s.nome_em || 0.8) : tcN + 0.9; const kN = clamp((t - tN) / 1.4); const foco = t > tN - 0.3;
@@ -622,11 +622,26 @@
         const nm = rp.slice(0, Math.ceil(kN * rp.length)); txt(ctx, nm, font(600, 24 * u), fx + 268 * u, yy, G.tx, "left", a * kF);
         if (kN > 0 && kN < 1 && Math.floor(t * 2.5) % 2 === 0) { ctx.fillStyle = G.tx; ctx.fillRect(fx + 270 * u + tw(ctx, nm, font(600, 24 * u)), yy - 14 * u, 3 * u, 28 * u); }
         if (kN >= 1) txt(ctx, `✓ ${rp} is available.`, font(700, 21 * u), fx + 730 * u, yy, "#3fb950", "left", a * easeOut((t - tN - 1.5) / 0.3));
-        pts.push([fx + 470 * u, yy + 4 * u, tN - 0.2]); yy += 80 * u;
+        pts.push([fx + 470 * u, yy + 4 * u, tN - 0.2]); yy += 56 * u;
+        // descrição (opcional)
+        const yDesc = yy; txt(ctx, "Description (optional)", font(700, 21 * u), fx, yy, G.tx, "left", a * kF); yy += 42 * u;
+        ctx.save(); ctx.globalAlpha = a * kF; rr(ctx, fx, yy - 20 * u, 710 * u, 40 * u, 8 * u); ctx.fillStyle = G.inp; ctx.fill(); ctx.strokeStyle = G.bd; ctx.lineWidth = 2 * u; ctx.stroke(); ctx.restore();
+        const kD = s.desc_em ? easeOut((t - s.desc_em) / 0.3) : 0; if (kD > 0) { ctx.save(); ctx.globalAlpha = kD; ctx.strokeStyle = C.yel; ctx.lineWidth = 4 * u; rr(ctx, fx - 7 * u, yy - 27 * u, 724 * u, 54 * u, 10 * u); ctx.stroke(); ctx.restore(); txt(ctx, global.CO_IDIOMA === "en" ? "optional: you can leave it empty" : "opcional: pode deixar vazio", font(800, 20 * u), fx + 18 * u, yy, C.yel, "left", kD); }
+        yy += 64 * u;
         [["Public", "Anyone on the internet can see this repository.", true], ["Private", "You choose who can see and commit.", false]].forEach(([n, d, on]) => {
           ctx.save(); ctx.globalAlpha = a * kF; ctx.beginPath(); ctx.arc(fx + 14 * u, yy, 12 * u, 0, 7); ctx.strokeStyle = on ? "#1f6feb" : G.mu; ctx.lineWidth = (on ? 7 : 2) * u; ctx.stroke(); ctx.restore();
-          txt(ctx, n, font(700, 23 * u), fx + 44 * u, yy - 10 * u, G.tx, "left", a * kF); txt(ctx, d, font(500, 19 * u), fx + 44 * u, yy + 16 * u, G.mu, "left", a * kF); yy += 64 * u; });
-        const bw = 250 * u, bx = fx + W - 520 * u - bw, by = yy - 6 * u; const kb = easeOut((t - tCr) / 0.2);
+          txt(ctx, n, font(700, 23 * u), fx + 44 * u, yy - 10 * u, G.tx, "left", a * kF); txt(ctx, d, font(500, 19 * u), fx + 44 * u, yy + 16 * u, G.mu, "left", a * kF); yy += 58 * u; });
+        // opções de baixo: README, .gitignore e licença (deixar tudo desmarcado)
+        { const ox = fx + 800 * u, oy = yDesc + 4 * u, ow = 470 * u, oh = 150 * u; const kO = s.opcoes_em ? easeOut((t - s.opcoes_em) / 0.3) : 0;
+          txt(ctx, "Initialize this repository with:", font(700, 20 * u), ox, oy, G.tx, "left", a * kF);
+          ctx.save(); ctx.globalAlpha = a * kF; rr(ctx, ox, oy + 22 * u, 22 * u, 22 * u, 4 * u); ctx.strokeStyle = G.mu; ctx.lineWidth = 2 * u; ctx.stroke(); ctx.restore();
+          txt(ctx, "Add a README file", font(600, 20 * u), ox + 34 * u, oy + 33 * u, G.tx, "left", a * kF);
+          [["Add .gitignore", ".gitignore template: None"], ["Choose a license", "License: None"]].forEach(([r, v], i) => { const ry = oy + 74 * u + i * 44 * u;
+            txt(ctx, r, font(700, 19 * u), ox, ry, G.tx, "left", a * kF); ctx.save(); ctx.globalAlpha = a * kF; rr(ctx, ox + 170 * u, ry - 17 * u, 280 * u, 34 * u, 6 * u); ctx.fillStyle = "#21262d"; ctx.fill(); ctx.restore();
+            txt(ctx, v + " ▾", font(600, 18 * u), ox + 182 * u, ry, G.tx, "left", a * kF); });
+          if (kO > 0) { ctx.save(); ctx.globalAlpha = kO; ctx.strokeStyle = C.yel; ctx.lineWidth = 5 * u; rr(ctx, ox - 14 * u, oy - 22 * u, ow + 10 * u, oh + 18 * u, 12 * u); ctx.stroke(); ctx.restore();
+            txt(ctx, global.CO_IDIOMA === "en" ? "leave everything unchecked" : "deixe tudo desmarcado", font(800, 21 * u), ox, oy + oh + 14 * u, C.yel, "left", kO); } }
+        const bw = 250 * u, bx = fx, by = yy - 10 * u; const kb = easeOut((t - tCr) / 0.2);
         ctx.save(); ctx.globalAlpha = a * kF; rr(ctx, bx, by, bw, 54 * u, 8 * u); ctx.fillStyle = kb > 0.5 ? "#2ea043" : G.ok; ctx.fill(); ctx.restore();
         txt(ctx, "Create repository", font(700, 23 * u), bx + bw / 2, by + 27 * u, "#fff", "center", a * kF);
         if (t > tCr - 0.6) { ctx.save(); ctx.globalAlpha = easeOut((t - tCr + 0.6) / 0.3); ctx.strokeStyle = C.yel; ctx.lineWidth = 5 * u; rr(ctx, bx - 8 * u, by - 8 * u, bw + 16 * u, 70 * u, 12 * u); ctx.stroke(); ctx.restore(); }

@@ -97,14 +97,27 @@
               }
             },
             {
-              "text": "Dá o nome meu traço primeiro traço teste. Deixa marcado Public, pra que qualquer pessoa, inclusive um recrutador, possa ver. E clica em Create repository.",
+              "text": "Dá o nome meu traço primeiro traço teste. Logo embaixo tem a descrição, que é opcional: pode deixar vazia.",
               "scene": {
                 "type": "github",
                 "tela": "novo",
                 "direto": true,
                 "nome_em": 0.6,
-                "criar_em": 6.0,
-                "legenda": "Nome › Public › Create repository"
+                "desc_em": 4.6,
+                "criar_em": 99,
+                "legenda": "Nome do repositório › descrição opcional"
+              }
+            },
+            {
+              "text": "Deixa marcado Public, pra que qualquer pessoa, inclusive um recrutador, possa ver. Do lado tem três opções: criar um README, um gitignore e uma licença. Deixa tudo desmarcado, em None, porque o seu projeto já existe no computador, e esses arquivos iam atrapalhar na hora de mandar ele pra cá. Agora sim, clica em Create repository.",
+              "scene": {
+                "type": "github",
+                "tela": "novo",
+                "direto": true,
+                "nome_em": -5,
+                "opcoes_em": 5.0,
+                "criar_em": 15.5,
+                "legenda": "Public › tudo desmarcado › Create repository"
               }
             },
             {
@@ -173,6 +186,26 @@
                     "= SALVAR O JOGO",
                     "white",
                     130
+                  ]
+                ]
+              }
+            },
+            {
+              "text": "O Git tem muito mais coisa do que isso, mas pra subir o seu projeto, esses comandos já bastam. E se você quiser um curso só de Git, do zero, deixa um comentário aqui na aula, que eu preparo.",
+              "scene": {
+                "type": "cards",
+                "titulo": "QUER UM CURSO DE GIT?",
+                "itens": [
+                  [
+                    "⑂",
+                    "Git do zero",
+                    "branch, merge, conflito"
+                  ],
+                  [
+                    "💬",
+                    "Comenta aqui",
+                    "que eu preparo",
+                    "#ffd23f"
                   ]
                 ]
               }
