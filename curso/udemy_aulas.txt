@@ -26,4 +26,4 @@
 26|O que faz um QA no dia a dia
 27|O seu projeto no currículo
 28|Preparando para a entrevista
-29|deu erro, e agora
+29|Deu erro, e agora
