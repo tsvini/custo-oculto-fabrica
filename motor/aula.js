@@ -82,10 +82,13 @@
     txt(ctx, s.arquivo || "arquivo.js", font(600, 24 * u), tabX + 28 * u, top + 30 * u, C.txt, "left", a);
     const linhas = String(s.codigo || "").split("\n"); const total = linhas.join("").length || 1;
     const fs = (s.fonte || (linhas.length > 12 ? 30 : 36)) * u; const lh = fs * 1.55; const x0 = tabX + 96 * u; let yy = top + 100 * u;
-    const dig = s.digitar === false ? 1 : clamp((t - 0.5) / Math.max(0.8, dur * (s.vel || 0.7))); let resta = Math.floor(dig * total);
+    const d0 = s.digitar_de || ((s.destaque && s.destaque.length) ? Math.min(...s.destaque) : 1);  // linhas antes disso já estão escritas
+    const pronto = linhas.slice(0, d0 - 1).join("").length; const falta = Math.max(1, total - pronto);
+    const k = s.digitar === false ? 1 : clamp((t - 0.5) / Math.max(0.8, Math.min(dur * (s.vel || 0.7), falta / 18)));
+    const dig = k; let resta = pronto + Math.floor(k * falta);
     linhas.forEach((ln, i) => {
       const hl = (s.destaque || []).includes(i + 1);
-      if (hl && dig >= 1) { const ha = easeOut((t - 0.5 - dur * (s.vel || 0.7)) / 0.4); ctx.save(); ctx.globalAlpha = 0.18 * ha; ctx.fillStyle = C.ac; ctx.fillRect(tabX, yy - lh / 2, W - sideW, lh); ctx.globalAlpha = ha; ctx.fillRect(tabX, yy - lh / 2, 6 * u, lh); ctx.restore(); }
+      if (hl && dig >= 1) { const ha = easeOut((t - 0.5 - Math.max(0.8, Math.min(dur * (s.vel || 0.7), falta / 18))) / 0.4); ctx.save(); ctx.globalAlpha = 0.18 * ha; ctx.fillStyle = C.ac; ctx.fillRect(tabX, yy - lh / 2, W - sideW, lh); ctx.globalAlpha = ha; ctx.fillRect(tabX, yy - lh / 2, 6 * u, lh); ctx.restore(); }
       txt(ctx, String(i + 1), font(500, fs * 0.8, MONO), x0 - 30 * u, yy, "#4b5263", "right", a);
       let mostra = Math.min(ln.length, resta); resta -= ln.length; let xx = x0;
       for (const [tk, cor] of tokens(ln)) { if (mostra <= 0) break; const parte = tk.slice(0, mostra); mostra -= tk.length; txt(ctx, parte, font(500, fs, MONO), xx, yy, cor, "left", a); xx += tw(ctx, parte, font(500, fs, MONO)); }
