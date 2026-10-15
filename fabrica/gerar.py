@@ -87,7 +87,7 @@ def todas_cenas(p):
 
 def ffmpeg_final(bruto, final, codec):
     v = ["-c:v", "copy"] if codec.startswith("avc") else ["-c:v", "libx264", "-preset", "veryfast", "-crf", "21", "-pix_fmt", "yuv420p"]
-    cmd = ["ffmpeg", "-y", "-loglevel", "error", "-i", bruto, *v, "-af", "loudnorm=I=-14:TP=-1.5:LRA=11", "-ar", "48000",
+    cmd = ["ffmpeg", "-y", "-loglevel", "error", "-i", bruto, *v, "-af", "loudnorm=I=-14:TP=-1.5:LRA=11", "-ar", "48000", "-ac", "2",
            "-c:a", "aac", "-b:a", "192k", "-movflags", "+faststart", final]
     subprocess.run(cmd, check=True)
 

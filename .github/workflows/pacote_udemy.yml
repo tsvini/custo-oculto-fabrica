@@ -1,0 +1,30 @@
+name: Pacote da Udemy
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  pacote:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Baixar, passar o áudio pra estéreo e renomear na ordem do curso
+        run: |
+          sudo apt-get -qq install -y ffmpeg >/dev/null
+          mkdir -p bruto pacote
+          gh release view udemy >/dev/null 2>&1 || gh release create udemy --title "Curso Cypress para Leigos (Udemy)" --notes "Vídeos prontos pra subir na Udemy, na ordem do curso, com áudio estéreo."
+          while IFS='|' read -r n titulo; do
+            [ -z "$n" ] && continue
+            m=$((10#$n))
+            gh release download videos -p "curso_cypress_${n}_longo.mp4" -D bruto --clobber
+            ffmpeg -loglevel error -y -i "bruto/curso_cypress_${n}_longo.mp4" -c:v copy -ac 2 -c:a aac -b:a 192k -movflags +faststart "pacote/${n} - ${titulo}.mp4"
+            rm "bruto/curso_cypress_${n}_longo.mp4"
+            gh release upload udemy "pacote/${n} - ${titulo}.mp4" --clobber
+            rm "pacote/${n} - ${titulo}.mp4"
+            echo "ok ${n} - ${titulo}"
+          done < curso/udemy_aulas.txt
+          gh release upload udemy curso/material/colinha/colinha-cypress-para-leigos.pdf curso/material/projeto-final-cypress-para-leigos.zip curso/material/quizzes.md --clobber
+          echo "::notice title=Pacote da Udemy::29 vídeos + material em https://github.com/${{ github.repository }}/releases/tag/udemy"

@@ -1,0 +1,29 @@
+01|O que é teste automatizado
+02|Instalando o VS Code
+03|Instalando o Node.js
+04|Instalando o Git
+05|Criando a pasta do projeto
+06|O terminal e o package.json
+07|Instalando o Cypress
+08|Abrindo o Cypress pela primeira vez
+09|A receita de um teste - describe e it
+10|cy.visit - abrindo um site
+11|cy.get e type - preenchendo campos
+12|click e should - conferindo o resultado
+13|Como achar o elemento certo
+14|Organizando - vários testes e beforeEach
+15|Quando o teste falha
+16|Rodando tudo de uma vez - cypress run
+17|Projeto final - o carrinho
+18|Projeto final - finalizando a compra
+19|Subindo o projeto pro GitHub
+20|Desafio 1 - senha errada
+21|Desafio 2 - campos vazios
+22|Desafio 3 - remover do carrinho
+23|Desafio 4 - ordenar por preço
+24|Desafio 5 - logout
+25|Desafio final - compra com dois produtos
+26|O que faz um QA no dia a dia
+27|O seu projeto no currículo
+28|Preparando para a entrevista
+29|deu erro, e agora
