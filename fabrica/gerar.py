@@ -371,6 +371,11 @@ def main():
     sem = [s.get("media") for s in cenas if s.get("type") in ("print", "video", "image") and s.get("media") and s["media"] not in man]
     if sem:
         resumo.append(f"Cenas sem mídia (usaram manchete/texto de reserva): {', '.join(dict.fromkeys(sem))}")
+    if p.get("destino") == "curso":  # aula de curso: não vai para YouTube nem podcast
+        import glob as _g
+        for f in _g.glob(os.path.join(saida, "youtube_*.json")) + _g.glob(os.path.join(saida, "podcast_*.mp3")) + _g.glob(os.path.join(saida, "publicar_*.txt")):
+            os.remove(f)
+        resumo.append("- aula de curso: só o MP4 e a legenda, sem publicação")
     resumo += [f"⚠️ {x}" for x in avisos]
     if taxas:
         print("::notice title=Sincronia (palavras que bateram)::" + " · ".join(taxas), flush=True)
