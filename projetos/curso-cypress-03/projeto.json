@@ -102,7 +102,9 @@
                   {
                     "nome": "node-x64.msi",
                     "arquivo": true,
-                    "novo": true
+                    "novo": true,
+                    "ext": "MSI",
+                    "cor": "#3c873a"
                   }
                 ],
                 "novo_em": 0.6,

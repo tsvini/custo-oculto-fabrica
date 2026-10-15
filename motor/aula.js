@@ -151,7 +151,11 @@
       const st = it.novo ? (s.novo_em || 1.0) : 0.15 + i * 0.08; const k = backOut((t - st) / 0.45); const ka = easeOut((t - st) / 0.3);
       if (ka <= 0) return; const sz = 150 * u * (it.novo ? lerp(0.4, 1, k) : 1);
       if (it.novo && t > st + 0.5) { ctx.save(); ctx.globalAlpha = 0.25 * easeOut((t - st - 0.5) / 0.4); rr(ctx, cx - cell / 2 + 20 * u, cy - 20 * u, cell - 40 * u, 230 * u, 18 * u); ctx.fillStyle = C.ac2; ctx.fill(); ctx.restore(); }
-      pastaIcone(ctx, cx - sz / 2, cy + (150 * u - sz) / 2, sz, ka, it.arquivo ? "#9aa3b5" : C.folder);
+      if (it.arquivo) { const fw = sz * 0.62, fh = sz * 0.8, fx = cx - fw / 2, fy = cy + (150 * u - fh) / 2; ctx.save(); ctx.globalAlpha *= ka;
+        ctx.beginPath(); ctx.moveTo(fx, fy); ctx.lineTo(fx + fw * 0.68, fy); ctx.lineTo(fx + fw, fy + fw * 0.32); ctx.lineTo(fx + fw, fy + fh); ctx.lineTo(fx, fy + fh); ctx.closePath();
+        ctx.fillStyle = "#fff"; ctx.fill(); ctx.strokeStyle = "#9aa3b5"; ctx.lineWidth = 3 * u; ctx.stroke(); ctx.fillStyle = it.cor || "#2f6fe4"; rr(ctx, fx + fw * 0.18, fy + fh * 0.5, fw * 0.64, fh * 0.28, 6 * u); ctx.fill(); ctx.restore();
+        txt(ctx, it.ext || "EXE", font(900, sz * 0.13), cx, fy + fh * 0.64, "#fff", "center", ka); }
+      else pastaIcone(ctx, cx - sz / 2, cy + (150 * u - sz) / 2, sz, ka, C.folder);
       const nome = it.novo ? it.nome.slice(0, Math.ceil(clamp((t - st - 0.6) / 0.8) * it.nome.length)) : it.nome;
       txt(ctx, nome, font(it.novo ? 800 : 600, 30 * u), cx, cy + 180 * u, "#2a2f3a", "center", ka);
     });
