@@ -283,6 +283,17 @@ def main():
                     txt = ["TÍTULO (opções):"] + [f"  {t}" for t in meta.get("titles", [])] + ["", "DESCRIÇÃO:", desc, "", "TAGS:", ", ".join(meta.get("tags", []))]
                     with open(os.path.join(saida, "publicar_longo.txt"), "w", encoding="utf8") as f:
                         f.write("\n".join(txt) + "\n")
+                    # podcast: o mesmo episódio em MP3 (padrão de podcast: -16 LUFS) + texto do episódio
+                    try:
+                        subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", final, "-vn", "-af", "loudnorm=I=-16:TP=-1.5:LRA=11",
+                                        "-ar", "44100", "-ac", "2", "-c:a", "libmp3lame", "-b:a", "128k", os.path.join(saida, f"podcast_{slug}.mp3")], check=True)
+                        canal_url = "https://www.youtube.com/@HiddenCostCases" if idioma == "en" else "https://www.youtube.com/@Custo-Oculto-YT"
+                        ver = "Watch it with images and documents on YouTube" if idioma == "en" else "Assista com imagens e documentos no YouTube"
+                        with open(os.path.join(saida, "publicar_podcast.txt"), "w", encoding="utf8") as f:
+                            f.write(f"TÍTULO DO EPISÓDIO:\n  {(meta.get('titles') or [p.get('title', slug)])[0]}\n\nDESCRIÇÃO:\n{desc}\n\n{ver}: {canal_url}\n")
+                        resumo.append(f"- **podcast_{slug}.mp3** — episódio de podcast (Spotify: suba o MP4 para versão em vídeo ou este MP3 para só áudio)")
+                    except Exception as e:
+                        avisos.append(f"podcast: não consegui gerar o MP3 ({str(e)[:120]})")
                     yt = {"tipo": "longo", "caso": slug, "caso_titulo": p.get("title", slug), "video": nome + ".mp4", "legenda": nome + ".srt", "miniatura": "miniatura_A.jpg",
                           "titulo": (meta.get("titles") or [p.get("title", slug)])[0][:100], "descricao": desc[:4900], "tags": meta.get("tags", []), "idioma": idioma}
                     with open(os.path.join(saida if (gravada or nar.modo != "teste") else trab, f"youtube_{nome}.json"), "w", encoding="utf8") as f:
