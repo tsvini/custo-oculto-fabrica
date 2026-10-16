@@ -1,2951 +1,2951 @@
 {
- "title": "Americanas",
- "slug": "americanas",
- "angle": "A loja que todo brasileiro conhece escondeu R$ 25 bilhões por anos. Quando o buraco apareceu, quem pagou foi quem não tinha nada a ver.",
- "voz": {
-  "nome": "gravada",
-  "motor": "eleven",
-  "eleven_voz": "Will - Deep"
- },
- "script": {
-  "long": {
-   "parts": [
-    {
-     "chapter": "",
-     "sentences": [
-      {
-       "text": "Na noite de onze de janeiro de dois mil e vinte e três, uma das empresas mais conhecidas do Brasil soltou um comunicado.",
-       "scene": {
-        "type": "date",
-        "month": "JANEIRO",
-        "day": "11",
-        "year": "2023",
-        "tag": "O COMUNICADO"
-       }
-      },
-      {
-       "text": "Ela tinha encontrado um buraco de vinte bilhões de reais nas próprias contas.",
-       "scene": {
-        "type": "counter",
-        "value": 20,
-        "prefix": "R$ ",
-        "suffix": " BI",
-        "over": "INCONSISTÊNCIAS CONTÁBEIS",
-        "label": "NAS CONTAS DA EMPRESA",
-        "color": "red",
-        "size": 230
-       }
-      },
-      {
-       "text": "O presidente, que tinha assumido fazia nove dias, pediu demissão na mesma hora.",
-       "scene": {
-        "type": "image",
-        "media": "rial_cae",
-        "wiki": [
-         "File:CAE - Comissão de Assuntos Econômicos (52777184549).jpg"
-        ],
-        "lower": "Sérgio Rial · 9 dias no cargo",
-        "dim": 0.4,
-        "fallback": {
-         "type": "bigtext",
-         "stagger": 0.25,
-         "lines": [
-          [
-           "9 DIAS",
-           "gold",
-           220
-          ],
-          [
-           "NO CARGO",
-           "white",
-           110
-          ]
-         ]
-        }
-       }
-      },
-      {
-       "text": "No dia seguinte, as ações caíram setenta e sete por cento.",
-       "scene": {
-        "type": "counter",
-        "value": 77,
-        "prefix": "-",
-        "suffix": "%",
-        "over": "AÇÕES EM UM DIA",
-        "label": "12 DE JANEIRO DE 2023",
-        "color": "red",
-        "size": 240
-       }
-      },
-      {
-       "text": "A empresa era a Americanas.",
-       "scene": {
-        "type": "image",
-        "media": "loja",
-        "wiki": [
-         "Lojas Americanas fachada",
-         "Lojas Americanas",
-         "Americanas loja"
-        ],
-        "lower": "Americanas",
-        "dim": 0.4,
-        "fallback": {
-         "type": "flash",
-         "text": "AMERICANAS",
-         "tint": "red",
-         "size": 170
-        }
-       }
-      },
-      {
-       "text": "A loja onde quase todo brasileiro já comprou um chocolate, um carregador ou um presente de última hora.",
-       "scene": {
-        "type": "image",
-        "media": "loja_rua",
-        "wiki": [
-         "File:Lojas Americanas - Halfeld.jpg"
-        ],
-        "lower": "Uma loja em cada esquina",
-        "dim": 0.4,
-        "fallback": {
-         "type": "bigtext",
-         "stagger": 0.25,
-         "lines": [
-          [
-           "A LOJA",
-           "white",
-           140
-          ],
-          [
-           "DE TODO MUNDO",
-           "gold",
-           150
-          ]
-         ]
-        }
-       }
-      },
-      {
-       "text": "Meses depois, a própria empresa admitiu que não era erro. Era fraude.",
-       "scene": {
-        "type": "print",
-        "media": "print_fraude",
-        "url": "https://braziljournal.com/americanas-admite-fraude-de-r-25-bi-outros-r-20-bi-estavam-contabilizados-errado",
-        "source": "Brazil Journal · 13/06/2023",
-        "rotate": -1.0,
-        "fallback": {
-         "type": "stamp",
-         "org": "AMERICANAS · JUNHO 2023",
-         "title": "INCONSISTÊNCIAS",
-         "stamp": "FRAUDE",
-         "stamp_at": 0.9
-        }
-       }
-      },
-      {
-       "text": "E a conta dessa fraude caiu em gente que nunca teve nada a ver com ela.",
-       "scene": {
-        "type": "bigtext",
-        "stagger": 0.25,
-        "lines": [
-         [
-          "A CONTA",
-          "white",
-          140
-         ],
-         [
-          "CAIU EM QUEM?",
-          "red",
-          150
-         ]
-        ]
-       }
-      },
-      {
-       "text": "Neste vídeo, você vai entender como esse buraco ficou escondido por anos, quem pagou a conta e onde o caso está hoje.",
-       "scene": {
-        "type": "bullets",
-        "items": [
-         "COMO FICOU ESCONDIDO",
-         "QUEM PAGOU A CONTA",
-         "ONDE ESTÁ HOJE"
-        ],
-        "size": 90,
-        "last_gold": true
-       }
-      }
-     ]
-    },
-    {
-     "chapter": "A LOJA DE TUDO",
-     "sentences": [
-      {
-       "text": "A Americanas nasceu em mil novecentos e vinte e nove, em Niterói, no Rio de Janeiro.",
-       "scene": {
-        "type": "bigtext",
-        "stagger": 0.25,
-        "lines": [
-         [
-          "1929",
-          "gold",
-          230
-         ],
-         [
-          "NITERÓI · RJ",
-          "white",
-          110
-         ],
-         [
-          "A PRIMEIRA LOJA",
-          "muted",
-          80
-         ]
-        ]
-       }
-      },
-      {
-       "text": "A ideia era simples: vender de tudo, barato.",
-       "scene": {
-        "type": "image",
-        "media": "loja_curitiba",
-        "wiki": [
-         "File:Lojas Americanas - Centro, Curitiba.jpg"
-        ],
-        "lower": "Vender de tudo, barato",
-        "dim": 0.4,
-        "fallback": {
-         "type": "bigtext",
-         "stagger": 0.25,
-         "lines": [
-          [
-           "DE TUDO",
-           "white",
-           160
-          ],
-          [
-           "BARATO",
-           "gold",
-           190
-          ]
-         ]
-        }
-       }
-      },
-      {
-       "text": "Em mil novecentos e oitenta e dois, o controle foi comprado por três sócios que depois virariam alguns dos homens mais ricos do país.",
-       "scene": {
-        "type": "bigtext",
-        "stagger": 0.25,
-        "lines": [
-         [
-          "1982",
-          "gold",
-          200
-         ],
-         [
-          "3 SÓCIOS",
-          "white",
-          130
-         ],
-         [
-          "COMPRAM O CONTROLE",
-          "muted",
-          80
-         ]
-        ]
-       }
-      },
-      {
-       "text": "Jorge Paulo Lemann, Marcel Telles e Beto Sicupira.",
-       "scene": {
-        "type": "bullets",
-        "items": [
-         "JORGE PAULO LEMANN",
-         "MARCEL TELLES",
-         "BETO SICUPIRA"
-        ],
-        "size": 90,
-        "last_gold": false
-       }
-      },
-      {
-       "text": "Os mesmos nomes que depois ajudaram a criar gigantes como a AB InBev, dona de algumas das cervejas mais vendidas do mundo.",
-       "scene": {
-        "type": "bigtext",
-        "stagger": 0.25,
-        "lines": [
-         [
-          "OS MESMOS SÓCIOS",
-          "white",
-          110
-         ],
-         [
-          "DE GIGANTES",
-          "gold",
-          160
-         ],
-         [
-          "GLOBAIS",
-          "white",
-          110
-         ]
-        ]
-       }
-      },
-      {
-       "text": "A Americanas virou sinônimo de eficiência. Corte de custos, metas agressivas e muito crescimento.",
-       "scene": {
-        "type": "image",
-        "media": "loja_barra",
-        "wiki": [
-         "File:Lojas Americanas - BarraShopping.jpg"
-        ],
-        "lower": "Cultura de metas",
-        "dim": 0.4,
-        "fallback": {
-         "type": "bigtext",
-         "stagger": 0.25,
-         "lines": [
-          [
-           "METAS",
-           "gold",
-           200
-          ],
-          [
-           "AGRESSIVAS",
-           "white",
-           140
-          ]
-         ]
-        }
-       }
-      },
-      {
-       "text": "Depois veio a internet. O grupo criou a B2W, com a Americanas ponto com, o Submarino e o Shoptime.",
-       "scene": {
-        "type": "video",
-        "media": "compra_online",
-        "search": "online shopping laptop credit card",
-        "search_en": "online shopping laptop credit card",
-        "start": 0.0,
-        "dim": 0.4,
-        "lower": "B2W · comércio eletrônico",
-        "fallback": {
-         "type": "bigtext",
-         "stagger": 0.25,
-         "lines": [
-          [
-           "AMERICANAS.COM",
-           "gold",
-           120
-          ],
-          [
-           "SUBMARINO",
-           "white",
-           110
-          ],
-          [
-           "SHOPTIME",
-           "white",
-           110
-          ]
-         ]
-        },
-        "pixabay_id": 108458
-       }
-      },
-      {
-       "text": "Em dois mil e vinte e um, tudo virou uma empresa só.",
-       "scene": {
-        "type": "flow",
-        "a": "LOJAS AMERICANAS",
-        "a_sub": "lojas físicas",
-        "b": "B2W",
-        "b_sub": "internet",
-        "caption": "2021: UMA EMPRESA SÓ"
-       }
-      },
-      {
-       "text": "No fim de dois mil e vinte e dois, eram mais de mil e oitocentas lojas e quarenta e quatro mil funcionários.",
-       "scene": {
-        "type": "compare",
-        "title": "AMERICANAS · DEZ 2022",
-        "items": [
-         [
-          "1.882",
-          "LOJAS",
-          "gold"
-         ],
-         [
-          "44 MIL",
-          "FUNCIONÁRIOS",
-          "white"
-         ]
-        ],
-        "size": 170,
-        "stagger": 1.2,
-        "vs": false
-       }
-      },
-      {
-       "text": "Por fora, era uma das empresas mais sólidas do Brasil.",
-       "scene": {
-        "type": "image",
-        "media": "loja_express",
-        "wiki": [
-         "File:Lojas Americanas em Cadima Shopping.jpg"
-        ],
-        "lower": "Por fora: sólida",
-        "dim": 0.4,
-        "fallback": {
-         "type": "bigtext",
-         "stagger": 0.25,
-         "lines": [
-          [
-           "POR FORA",
-           "white",
-           130
-          ],
-          [
-           "SÓLIDA",
-           "gold",
-           190
-          ]
-         ]
-        }
-       }
-      }
-     ]
-    },
-    {
-     "chapter": "OS NOVE DIAS",
-     "sentences": [
-      {
-       "text": "Em agosto de dois mil e vinte e dois, a Americanas anunciou um novo presidente.",
-       "scene": {
-        "type": "date",
-        "month": "AGOSTO",
-        "day": "19",
-        "year": "2022",
-        "tag": "NOVO PRESIDENTE ANUNCIADO"
-       }
-      },
-      {
-       "text": "Sérgio Rial, um executivo vindo do Santander.",
-       "scene": {
-        "type": "image",
-        "media": "rial_senado",
-        "wiki": [
-         "File:CAE - Comissão de Assuntos Econômicos (52777342560).jpg"
-        ],
-        "lower": "Sérgio Rial · ex-Santander",
-        "dim": 0.4,
-        "fallback": {
-         "type": "bigtext",
-         "stagger": 0.25,
-         "lines": [
-          [
-           "SÉRGIO RIAL",
-           "white",
-           150
-          ],
-          [
-           "NOVO PRESIDENTE",
-           "gold",
-           100
-          ]
-         ]
-        }
-       }
-      },
-      {
-       "text": "Ele era um nome respeitado no mercado, e a chegada dele foi vista como um sinal de que a Americanas ia acelerar.",
-       "scene": {
-        "type": "bigtext",
-        "stagger": 0.25,
-        "lines": [
-         [
-          "NOME RESPEITADO",
-          "white",
-          120
-         ],
-         [
-          "NO MERCADO",
-          "gold",
-          140
-         ]
-        ]
-       }
-      },
-      {
-       "text": "Ele assumiu no dia dois de janeiro de dois mil e vinte e três.",
-       "scene": {
-        "type": "date",
-        "month": "JANEIRO",
-        "day": "02",
-        "year": "2023",
-        "tag": "PRIMEIRO DIA"
-       }
-      },
-      {
-       "text": "Dois dias depois, segundo o próprio Rial, apareceu o problema.",
-       "scene": {
-        "type": "date",
-        "month": "JANEIRO",
-        "day": "04",
-        "year": "2023",
-        "tag": "O PROBLEMA APARECE"
-       }
-      },
-      {
-       "text": "Uma dívida enorme com bancos que não aparecia do jeito certo no balanço.",
-       "scene": {
-        "type": "video",
-        "media": "papeis",
-        "search": "stack of documents office",
-        "search_en": "stack of documents office",
-        "start": 0.0,
-        "dim": 0.4,
-        "lower": "O balanço",
-        "fallback": {
-         "type": "bigtext",
-         "stagger": 0.25,
-         "lines": [
-          [
-           "UMA DÍVIDA",
-           "white",
-           140
-          ],
-          [
-           "ESCONDIDA",
-           "red",
-           180
-          ]
-         ]
-        },
-        "pixabay_id": 87146
-       }
-      },
-      {
-       "text": "No dia onze, a empresa contou ao mercado. E ele saiu.",
-       "scene": {
-        "type": "events",
-        "row": 140,
-        "events": [
-         [
-          "02/01",
-          "Rial assume",
-          "gold"
-         ],
-         [
-          "04/01",
-          "O problema aparece",
-          "white"
-         ],
-         [
-          "11/01",
-          "Comunicado e saída",
-          "red"
-         ]
-        ]
-       }
-      },
-      {
-       "text": "Nove dias no cargo.",
-       "scene": {
-        "type": "same"
-       }
-      },
-      {
-       "text": "No dia seguinte, a ação despencou setenta e sete por cento. Foi uma das maiores quedas em um dia na história da bolsa brasileira.",
-       "scene": {
-        "type": "image",
-        "media": "b3",
-        "wiki": [
-         "B3 Bolsa de Valores São Paulo edifício",
-         "Bolsa de Valores de São Paulo",
-         "BM&FBovespa building"
-        ],
-        "lower": "Bolsa de valores · São Paulo",
-        "dim": 0.4,
-        "fallback": {
-         "type": "counter",
-         "value": 77,
-         "prefix": "-",
-         "suffix": "%",
-         "over": "EM UM DIA",
-         "label": "UMA DAS MAIORES QUEDAS DA B3",
-         "color": "red",
-         "size": 230
-        }
-       }
-      },
-      {
-       "text": "E o Rial disse uma frase que assustou ainda mais: o problema vinha de sete a nove anos.",
-       "scene": {
-        "type": "print",
-        "media": "print_7a9",
-        "url": "https://mercadoeconsumo.com.br/12/01/2023/noticias-varejo/problema-na-americanas-se-arrasta-por-cerca-de-7-a-9-anos-diz-sergio-rial/",
-        "source": "Mercado & Consumo · 12/01/2023",
-        "rotate": -1.0,
-        "fallback": {
-         "type": "bigtext",
-         "stagger": 0.25,
-         "lines": [
-          [
-           "O PROBLEMA VINHA",
-           "white",
-           110
-          ],
-          [
-           "DE 7 A 9 ANOS",
-           "red",
-           160
-          ]
-         ]
-        }
-       }
-      },
-      {
-       "text": "Ou seja, por anos, os números que todo mundo via não eram os números de verdade.",
-       "scene": {
-        "type": "bigtext",
-        "stagger": 0.25,
-        "lines": [
-         [
-          "OS NÚMEROS",
-          "white",
-          140
-         ],
-         [
-          "NÃO ERAM REAIS",
-          "red",
-          150
-         ]
-        ]
-       }
-      }
-     ]
-    },
-    {
-     "chapter": "COMO FUNCIONAVA",
-     "sentences": [
-      {
-       "text": "Pra entender o rombo, você precisa entender duas coisas.",
-       "scene": {
-        "type": "flash",
-        "text": "DUAS\nCOISAS",
-        "color": "gold",
-        "size": 170
-       }
-      },
-      {
-       "text": "A primeira se chama risco sacado.",
-       "scene": {
-        "type": "bigtext",
-        "stagger": 0.25,
-        "lines": [
-         [
-          "1",
-          "gold",
-          200
-         ],
-         [
-          "RISCO SACADO",
-          "white",
-          140
-         ]
-        ]
-       }
-      },
-      {
-       "text": "Funciona assim: a Americanas comprava de um fornecedor e só pagava depois.",
-       "scene": {
-        "type": "flow",
-        "a": "FORNECEDOR",
-        "a_sub": "vende para a Americanas",
-        "b": "AMERICANAS",
-        "b_sub": "paga depois",
-        "caption": "RISCO SACADO"
-       }
-      },
-      {
-       "text": "O fornecedor não queria esperar, então um banco pagava ele na hora.",
-       "scene": {
-        "type": "video",
-        "media": "banco_agencia",
-        "search": "bank building facade",
-        "search_en": "bank building facade",
-        "start": 0.0,
-        "dim": 0.4,
-        "lower": "O banco adianta",
-        "fallback": {
-         "type": "bigtext",
-         "stagger": 0.25,
-         "lines": [
-          [
-           "O BANCO",
-           "white",
-           140
-          ],
-          [
-           "PAGA NA HORA",
-           "gold",
-           150
-          ]
-         ]
-        },
-        "pixabay_id": 214695
-       }
-      },
-      {
-       "text": "E a Americanas ficava devendo para o banco, com juros.",
-       "scene": {
-        "type": "flow",
-        "a": "BANCO",
-        "a_sub": "pagou o fornecedor",
-        "b": "AMERICANAS",
-        "b_sub": "deve ao banco, com juros",
-        "caption": "UMA DÍVIDA BANCÁRIA"
-       }
-      },
-      {
-       "text": "Isso é uma dívida com banco. Mas, no balanço, ela aparecia como se fosse só uma conta normal com fornecedor.",
-       "scene": {
-        "type": "stamp",
-        "org": "NO BALANÇO",
-        "title": "DÍVIDA COM BANCO",
-        "stamp": "FORNECEDOR?",
-        "stamp_at": 0.9
-       }
-      },
-      {
-       "text": "Assim, a empresa parecia muito menos endividada do que estava.",
-       "scene": {
-        "type": "bigtext",
-        "stagger": 0.25,
-        "lines": [
-         [
-          "PARECIA",
-          "white",
-          140
-         ],
-         [
-          "MENOS ENDIVIDADA",
-          "gold",
-          130
-         ]
-        ]
-       }
-      },
-      {
-       "text": "Somando esse tipo de financiamento, eram cerca de vinte bilhões de reais.",
-       "scene": {
-        "type": "counter",
-        "value": 20,
-        "prefix": "R$ ",
-        "suffix": ",6 BI",
-        "over": "FINANCIAMENTOS",
-        "label": "CONTABILIZADOS DO JEITO ERRADO",
-        "color": "red",
-        "size": 220
-       }
-      },
-      {
-       "text": "A segunda coisa se chama verba de propaganda.",
-       "scene": {
-        "type": "bigtext",
-        "stagger": 0.25,
-        "lines": [
-         [
-          "2",
-          "gold",
-          200
-         ],
-         [
-          "VERBA DE PROPAGANDA",
-          "white",
-          110
-         ]
-        ]
-       }
-      },
-      {
-       "text": "Fornecedores pagam pra Americanas expor e anunciar os produtos deles. Isso é normal no varejo.",
-       "scene": {
-        "type": "image",
-        "media": "loja_express",
-        "wiki": [
-         "File:Lojas Americanas em Cadima Shopping.jpg"
-        ],
-        "lower": "Verba de propaganda",
-        "dim": 0.4,
-        "fallback": {
-         "type": "bigtext",
-         "stagger": 0.25,
-         "lines": [
-          [
-           "FORNECEDOR PAGA",
-           "white",
-           110
-          ],
-          [
-           "PRA APARECER",
-           "gold",
-           150
-          ]
-         ]
-        }
-       }
-      },
-      {
-       "text": "O problema: segundo a própria empresa, foram lançados vinte e um bilhões e setecentos milhões em contratos desse tipo. Dinheiro que nunca entrou no caixa.",
-       "scene": {
-        "type": "counter",
-        "value": 21,
-        "prefix": "R$ ",
-        "suffix": ",7 BI",
-        "over": "VERBAS QUE NUNCA ENTRARAM",
-        "label": "SEGUNDO A AMERICANAS",
-        "color": "red",
-        "size": 220
-       }
-      },
-      {
-       "text": "Era lucro de mentira, inflando o resultado.",
-       "scene": {
-        "type": "bigtext",
-        "stagger": 0.25,
-        "lines": [
-         [
-          "LUCRO",
-          "white",
-          170
-         ],
-         [
-          "DE MENTIRA",
-          "red",
-          170
-         ]
-        ]
-       }
-      },
-      {
-       "text": "E por que alguém faria isso? Uma empresa com menos dívida e mais lucro vale mais na bolsa e consegue crédito mais barato.",
-       "scene": {
-        "type": "flow",
-        "a": "MENOS DÍVIDA",
-        "a_sub": "mais lucro no papel",
-        "b": "VALE MAIS",
-        "b_sub": "crédito mais barato",
-        "caption": "POR QUE ESCONDER?"
-       }
-      },
-      {
-       "text": "A Polícia Federal também passou a investigar se ex-diretores venderam ações sabendo do problema antes de todo mundo. Eles negam.",
-       "scene": {
-        "type": "bigtext",
-        "stagger": 0.25,
-        "lines": [
-         [
-          "VENDERAM ANTES?",
-          "white",
-          130
-         ],
-         [
-          "INVESTIGAÇÃO DA PF",
-          "muted",
-          90
-         ],
-         [
-          "ELES NEGAM",
-          "muted",
-          110
-         ]
-        ]
-       }
-      },
-      {
-       "text": "Em junho de dois mil e vinte e três, a Americanas disse oficialmente que foi fraude, e apontou a diretoria anterior.",
-       "scene": {
-        "type": "print",
-        "media": "print_fraude",
-        "url": "https://braziljournal.com/americanas-admite-fraude-de-r-25-bi-outros-r-20-bi-estavam-contabilizados-errado",
-        "source": "Brazil Journal · 13/06/2023",
-        "rotate": -1.0,
-        "fallback": {
-         "type": "stamp",
-         "org": "FATO RELEVANTE · JUN 2023",
-         "title": "A DIRETORIA ANTERIOR",
-         "stamp": "FRAUDE",
-         "stamp_at": 0.9
-        }
-       }
-      },
-      {
-       "text": "Com juros, a conta da fraude chegou a vinte e cinco bilhões de reais.",
-       "scene": {
-        "type": "counter",
-        "value": 25,
-        "prefix": "R$ ",
-        "suffix": ",3 BI",
-        "over": "A FRAUDE, COM JUROS",
-        "label": "SEGUNDO A EMPRESA E ANALISTAS",
-        "color": "red",
-        "size": 230
-       }
-      },
-      {
-       "text": "Os ex-diretores apontados negam ter participado.",
-       "scene": {
-        "type": "bigtext",
-        "stagger": 0.25,
-        "lines": [
-         [
-          "OS APONTADOS",
-          "white",
-          120
-         ],
-         [
-          "NEGAM",
-          "muted",
-          170
-         ]
-        ]
-       }
-      }
-     ]
-    },
-    {
-     "chapter": "A QUEDA",
-     "sentences": [
-      {
-       "text": "Com o buraco exposto, os bancos queriam o dinheiro de volta.",
-       "scene": {
-        "type": "video",
-        "media": "banco_agencia",
-        "search": "bank building facade",
-        "search_en": "bank building facade",
-        "start": 0.0,
-        "dim": 0.4,
-        "lower": "Os bancos cobram",
-        "fallback": {
-         "type": "bigtext",
-         "stagger": 0.25,
-         "lines": [
-          [
-           "OS BANCOS",
-           "white",
-           140
-          ],
-          [
-           "COBRAM",
-           "red",
-           180
-          ]
-         ]
-        },
-        "pixabay_id": 214695
-       }
-      },
-      {
-       "text": "Oito dias depois do comunicado, a Americanas pediu recuperação judicial.",
-       "scene": {
-        "type": "print",
-        "media": "print_rj",
-        "url": "https://forbes.com.br/forbes-money/2023/01/sem-acordo-com-credores-americanas-pede-recuperacao-judicial/",
-        "source": "Forbes Brasil · 19/01/2023",
-        "rotate": -1.0,
-        "fallback": {
-         "type": "date",
-         "month": "JANEIRO",
-         "day": "19",
-         "year": "2023",
-         "tag": "RECUPERAÇÃO JUDICIAL"
-        }
-       }
-      },
-      {
-       "text": "A dívida reconhecida: quarenta e três bilhões de reais.",
-       "scene": {
-        "type": "counter",
-        "value": 43,
-        "prefix": "R$ ",
-        "suffix": " BI",
-        "over": "DÍVIDA RECONHECIDA",
-        "label": "NA RECUPERAÇÃO JUDICIAL",
-        "color": "red",
-        "size": 230
-       }
-      },
-      {
-       "text": "Pra ter ideia: quem tinha mil reais em ações da Americanas na véspera, no dia seguinte tinha cerca de duzentos e trinta.",
-       "scene": {
-        "type": "compare",
-        "title": "MIL REAIS EM AÇÕES",
-        "items": [
-         [
-          "R$ 1.000",
-          "11 DE JANEIRO",
-          "white"
-         ],
-         [
-          "~R$ 230",
-          "12 DE JANEIRO",
-          "red"
-         ]
-        ],
-        "size": 170,
-        "stagger": 1.2,
-        "vs": false
-       }
-      },
-      {
-       "text": "Recuperação judicial é quando a empresa pede pra Justiça um tempo pra renegociar tudo, sem falir.",
-       "scene": {
-        "type": "image",
-        "media": "tj",
-        "wiki": [
-         "Tribunal de Justiça do Estado do Rio de Janeiro",
-         "Fórum Central Rio de Janeiro"
-        ],
-        "lower": "Justiça do Rio de Janeiro",
-        "dim": 0.4,
-        "fallback": {
-         "type": "flow",
-         "a": "EMPRESA",
-         "a_sub": "não consegue pagar",
-         "b": "JUSTIÇA",
-         "b_sub": "dá tempo pra renegociar",
-         "caption": "RECUPERAÇÃO JUDICIAL"
-        }
-       }
-      },
-      {
-       "text": "Na lista de credores estavam os maiores bancos do país.",
-       "scene": {
-        "type": "bullets",
-        "title": "ALGUNS CREDORES",
-        "items": [
-         "BRADESCO",
-         "SANTANDER",
-         "ITAÚ",
-         "BTG PACTUAL",
-         "SAFRA"
-        ],
-        "size": 80,
-        "last_gold": false
-       }
-      },
-      {
-       "text": "Mas também milhares de fornecedores pequenos, que venderam e não receberam.",
-       "scene": {
-        "type": "video",
-        "media": "galpao",
-        "search": "warehouse boxes logistics",
-        "search_en": "warehouse boxes logistics",
-        "start": 0.0,
-        "dim": 0.4,
-        "lower": "Fornecedores na fila",
-        "fallback": {
-         "type": "bigtext",
-         "stagger": 0.25,
-         "lines": [
-          [
-           "FORNECEDORES",
-           "white",
-           130
-          ],
-          [
-           "SEM RECEBER",
-           "red",
-           150
-          ]
-         ]
-        },
-        "pixabay_id": 43658
-       }
-      },
-      {
-       "text": "Em um ano, a empresa que valia cerca de dez bilhões na bolsa passou a valer menos de um bilhão.",
-       "scene": {
-        "type": "compare",
-        "title": "VALOR NA BOLSA",
-        "items": [
-         [
-          "R$ 10 BI",
-          "ANTES",
-          "white"
-         ],
-         [
-          "R$ 783 MI",
-          "UM ANO DEPOIS",
-          "red"
-         ]
-        ],
-        "size": 160,
-        "stagger": 1.2,
-        "vs": false
-       }
-      },
-      {
-       "text": "E mais de dez mil pessoas perderam o emprego.",
-       "scene": {
-        "type": "compare",
-        "title": "FUNCIONÁRIOS",
-        "items": [
-         [
-          "44 MIL",
-          "DEZ 2022",
-          "white"
-         ],
-         [
-          "33,8 MIL",
-          "NOV 2023",
-          "red"
-         ]
-        ],
-        "size": 170,
-        "stagger": 1.2,
-        "vs": false
-       }
-      },
-      {
-       "text": "Em menos de um ano, mais de cem lojas fecharam as portas.",
-       "scene": {
-        "type": "compare",
-        "title": "LOJAS",
-        "items": [
-         [
-          "1.882",
-          "DEZ 2022",
-          "white"
-         ],
-         [
-          "1.759",
-          "NOV 2023",
-          "red"
-         ]
-        ],
-        "size": 170,
-        "stagger": 1.2,
-        "vs": false
-       }
-      }
-     ]
-    },
-    {
-     "chapter": "QUEM PAGA A CONTA",
-     "sentences": [
-      {
-       "text": "Aqui está o custo oculto.",
-       "scene": {
-        "type": "flash",
-        "text": "O CUSTO\nOCULTO",
-        "tint": "red",
-        "size": 160
-       }
-      },
-      {
-       "text": "Quem pagou primeiro foi quem tinha ação da Americanas.",
-       "scene": {
-        "type": "image",
-        "media": "bovespa",
-        "wiki": [
-         "File:Bovespa, São Paulo city downtown.jpg"
-        ],
-        "lower": "Bolsa de valores · São Paulo",
-        "dim": 0.4,
-        "fallback": {
-         "type": "bigtext",
-         "stagger": 0.25,
-         "lines": [
-          [
-           "QUEM TINHA",
-           "white",
-           140
-          ],
-          [
-           "AÇÃO",
-           "red",
-           200
-          ]
-         ]
-        }
-       }
-      },
-      {
-       "text": "Muita gente comum, que achava que estava investindo numa das empresas mais seguras do país, viu o dinheiro sumir em um dia.",
-       "scene": {
-        "type": "video",
-        "media": "celular_queda",
-        "search": "stock market chart falling red",
-        "search_en": "stock market chart falling red",
-        "start": 0.0,
-        "dim": 0.4,
-        "lower": "O dinheiro sumiu em um dia",
-        "fallback": {
-         "type": "bigtext",
-         "stagger": 0.25,
-         "lines": [
-          [
-           "SUMIU",
-           "red",
-           200
-          ],
-          [
-           "EM UM DIA",
-           "white",
-           130
-          ]
-         ]
-        },
-        "pixabay_id": 33805
-       }
-      },
-      {
-       "text": "Depois, os funcionários que perderam o emprego.",
-       "scene": {
-        "type": "bigtext",
-        "stagger": 0.25,
-        "lines": [
-         [
-          "+10 MIL",
-          "red",
-          200
-         ],
-         [
-          "EMPREGOS A MENOS",
-          "white",
-          100
-         ]
-        ]
-       }
-      },
-      {
-       "text": "Os fornecedores, que entraram numa fila pra receber com desconto e prazo longo.",
-       "scene": {
-        "type": "bigtext",
-        "stagger": 0.25,
-        "lines": [
-         [
-          "FORNECEDORES",
-          "white",
-          130
-         ],
-         [
-          "COM DESCONTO",
-          "red",
-          140
-         ],
-         [
-          "E PRAZO LONGO",
-          "muted",
-          90
-         ]
-        ]
-       }
-      },
-      {
-       "text": "E até fundos de pensão e de investimento que tinham títulos da empresa.",
-       "scene": {
-        "type": "bigtext",
-        "stagger": 0.25,
-        "lines": [
-         [
-          "FUNDOS",
-          "white",
-          150
-         ],
-         [
-          "TAMBÉM PERDERAM",
-          "red",
-          130
-         ]
-        ]
-       }
-      },
-      {
-       "text": "Muitos investidores foram à Justiça e a câmaras de arbitragem pedindo indenização. Processos que podem levar anos.",
-       "scene": {
-        "type": "bigtext",
-        "stagger": 0.25,
-        "lines": [
-         [
-          "INVESTIDORES",
-          "white",
-          130
-         ],
-         [
-          "NA JUSTIÇA",
-          "gold",
-          150
-         ],
-         [
-          "POR ANOS",
-          "muted",
-          100
-         ]
-        ]
-       }
-      },
-      {
-       "text": "E teve um efeito em cadeia. Depois do caso, os bancos ficaram mais cautelosos com esse tipo de operação, e o crédito para outras varejistas ficou mais difícil.",
-       "scene": {
-        "type": "bigtext",
-        "stagger": 0.25,
-        "lines": [
-         [
-          "EFEITO",
-          "white",
-          150
-         ],
-         [
-          "EM CADEIA",
-          "red",
-          170
-         ],
-         [
-          "CRÉDITO MAIS DIFÍCIL",
-          "muted",
-          90
-         ]
-        ]
-       }
-      },
-      {
-       "text": "Ou seja: uma fraude dentro de uma empresa vira prejuízo pra milhares de pessoas que nunca viram um balanço na vida.",
-       "scene": {
-        "type": "bigtext",
-        "stagger": 0.25,
-        "lines": [
-         [
-          "UMA FRAUDE",
-          "white",
-          140
-         ],
-         [
-          "MILHARES",
-          "red",
-          180
-         ],
-         [
-          "DE PREJUDICADOS",
-          "white",
-          100
-         ]
-        ]
-       }
-      },
-      {
-       "text": "No plano de recuperação, os três sócios bilionários se comprometeram a colocar doze bilhões de reais na empresa.",
-       "scene": {
-        "type": "counter",
-        "value": 12,
-        "prefix": "R$ ",
-        "suffix": " BI",
-        "over": "APORTE DOS SÓCIOS",
-        "label": "PREVISTO NO PLANO DE RECUPERAÇÃO",
-        "color": "gold",
-        "size": 230
-       }
-      },
-      {
-       "text": "Eles sempre disseram que nunca souberam da fraude.",
-       "scene": {
-        "type": "bigtext",
-        "stagger": 0.25,
-        "lines": [
-         [
-          "ELES DIZEM",
-          "white",
-          130
-         ],
-         [
-          "QUE NÃO SABIAM",
-          "muted",
-          140
-         ]
-        ]
-       }
-      },
-      {
-       "text": "E fica a pergunta que muita gente fez: como auditorias, bancos e conselheiros não viram vinte e cinco bilhões por tantos anos?",
-       "scene": {
-        "type": "image",
-        "media": "cpi",
-        "wiki": [
-         "File:CPI Americanas - Apresentação do plano de trabalho do relator.jpg"
-        ],
-        "lower": "CPI das Americanas · Câmara dos Deputados, 2023",
-        "dim": 0.4,
-        "fallback": {
-         "type": "bigtext",
-         "stagger": 0.25,
-         "lines": [
-          [
-           "COMO",
-           "white",
-           160
-          ],
-          [
-           "NINGUÉM VIU?",
-           "red",
-           170
-          ]
-         ]
-        }
-       }
-      },
-      {
-       "text": "Se esse tipo de história te interessa, segue o Custo Oculto. Toda semana tem um caso novo.",
-       "scene": {
-        "type": "bigtext",
-        "stagger": 0.25,
-        "lines": [
-         [
-          "SEGUE O CANAL",
-          "gold",
-          150
-         ],
-         [
-          "TODA SEMANA, UM CASO",
-          "white",
-          80
-         ]
-        ]
-       }
-      }
-     ]
-    },
-    {
-     "chapter": "ONDE ESTÁ HOJE",
-     "sentences": [
-      {
-       "text": "Em junho de dois mil e vinte e quatro, a Polícia Federal fez a Operação Disclosure.",
-       "scene": {
-        "type": "date",
-        "month": "JUNHO",
-        "day": "27",
-        "year": "2024",
-        "tag": "OPERAÇÃO DISCLOSURE"
-       }
-      },
-      {
-       "text": "Foram quinze mandados de busca e o bloqueio de mais de quinhentos milhões de reais de ex-diretores.",
-       "scene": {
-        "type": "image",
-        "media": "pf_sede",
-        "wiki": [
-         "File:Sede da Polícia Federal (52830107256).jpg"
-        ],
-        "lower": "Polícia Federal · Operação Disclosure",
-        "dim": 0.4,
-        "fallback": {
-         "type": "compare",
-         "title": "OPERAÇÃO DISCLOSURE",
-         "items": [
-          [
-           "15",
-           "MANDADOS DE BUSCA",
-           "white"
-          ],
-          [
-           "+R$ 500 MI",
-           "BLOQUEADOS",
-           "red"
-          ]
-         ],
-         "size": 160,
-         "stagger": 1.2,
-         "vs": false
-        }
-       }
-      },
-      {
-       "text": "O ex-presidente Miguel Gutierrez, que comandou a empresa por cerca de vinte anos, estava morando na Espanha.",
-       "scene": {
-        "type": "image",
-        "media": "madri",
-        "wiki": [
-         "Puerta de Alcalá Madrid",
-         "Puerta de Alcalá",
-         "Madrid skyline"
-        ],
-        "lower": "Madri · Espanha",
-        "dim": 0.4,
-        "fallback": {
-         "type": "bigtext",
-         "stagger": 0.25,
-         "lines": [
-          [
-           "NA ESPANHA",
-           "gold",
-           170
-          ],
-          [
-           "EX-PRESIDENTE",
-           "white",
-           110
-          ]
-         ]
-        }
-       }
-      },
-      {
-       "text": "Ele foi preso em Madri no dia seguinte, e solto logo depois.",
-       "scene": {
-        "type": "print",
-        "media": "print_madri",
-        "url": "https://www.bloomberglinea.com.br/negocios/preso-pela-interpol-em-madri-ex-ceo-da-americanas-e-protegido-por-cidadania-espanhola/",
-        "source": "Bloomberg Línea · 28/06/2024",
-        "rotate": -1.0,
-        "fallback": {
-         "type": "board",
-         "header": "MADRI · 28/06/2024",
-         "flip_at": 0.5,
-         "rows": [
-          [
-           "PRESO",
-           "SOLTO"
-          ]
-         ]
-        }
-       }
-      },
-      {
-       "text": "Mais tarde, a Justiça brasileira revogou a ordem de prisão, e ele passou a responder em liberdade.",
-       "scene": {
-        "type": "print",
-        "media": "print_trf2",
-        "url": "https://www.conjur.com.br/2024-ago-22/trf-2-revoga-ordem-de-prisao-contra-ex-ceo-das-americanas/",
-        "source": "Conjur · 22/08/2024",
-        "rotate": -1.0,
-        "fallback": {
-         "type": "bigtext",
-         "stagger": 0.25,
-         "lines": [
-          [
-           "RESPONDE",
-           "white",
-           150
-          ],
-          [
-           "EM LIBERDADE",
-           "gold",
-           150
-          ]
-         ]
-        }
-       }
-      },
-      {
-       "text": "Em dois mil e vinte e cinco, o Ministério Público Federal denunciou treze ex-executivos e ex-funcionários.",
-       "scene": {
-        "type": "print",
-        "media": "print_mpf",
-        "url": "https://diariodonordeste.verdesmares.com.br/negocios/mpf-denuncia-13-pessoas-por-fraudes-nas-americanas-novo-delator-e-revelado-1.3636088",
-        "source": "Diário do Nordeste · 31/03/2025",
-        "rotate": -1.0,
-        "fallback": {
-         "type": "counter",
-         "value": 13,
-         "suffix": " PESSOAS",
-         "over": "DENÚNCIA DO MPF · 2025",
-         "label": "EX-EXECUTIVOS E EX-FUNCIONÁRIOS",
-         "color": "red",
-         "size": 220
-        }
-       }
-      },
-      {
-       "text": "Três ex-diretores fizeram delação e contaram como o esquema funcionava.",
-       "scene": {
-        "type": "bigtext",
-        "stagger": 0.25,
-        "lines": [
-         [
-          "3 DELAÇÕES",
-          "gold",
-          170
-         ],
-         [
-          "DE EX-DIRETORES",
-          "white",
-          100
-         ]
-        ]
-       }
-      },
-      {
-       "text": "A defesa de Gutierrez nega tudo. Ele diz que é um bode expiatório.",
-       "scene": {
-        "type": "bigtext",
-        "stagger": 0.25,
-        "lines": [
-         [
-          "A DEFESA NEGA",
-          "white",
-          130
-         ],
-         [
-          "BODE EXPIATÓRIO?",
-          "muted",
-          130
-         ]
-        ]
-       }
-      },
-      {
-       "text": "Até a gravação deste vídeo, não há condenação definitiva no caso.",
-       "scene": {
-        "type": "bigtext",
-        "stagger": 0.25,
-        "lines": [
-         [
-          "SEM CONDENAÇÃO",
-          "white",
-          120
-         ],
-         [
-          "DEFINITIVA",
-          "muted",
-          140
-         ]
-        ]
-       }
-      },
-      {
-       "text": "E a Americanas? Ela continua aberta, menor, e em março de dois mil e vinte e seis pediu pra sair da recuperação judicial.",
-       "scene": {
-        "type": "image",
-        "media": "am_hoje",
-        "wiki": [
-         "File:Reunião Deliberativa. Diretor-Presidente - Americanas S.A., Leonardo Coelho Pereira - Bruno Spada-Câmara dos Deputados.jpg"
-        ],
-        "lower": "Leonardo Coelho, atual presidente da Americanas, na Câmara",
-        "dim": 0.4,
-        "fallback": {
-         "type": "date",
-         "month": "MARÇO",
-         "day": "25",
-         "year": "2026",
-         "tag": "PEDE PRA SAIR DA RECUPERAÇÃO"
-        }
-       }
-      },
-      {
-       "text": "Em setembro, a Justiça ainda não tinha decidido.",
-       "scene": {
-        "type": "bigtext",
-        "stagger": 0.25,
-        "lines": [
-         [
-          "SET 2026",
-          "gold",
-          160
-         ],
-         [
-          "SEM DECISÃO",
-          "white",
-          120
-         ]
-        ]
-       }
-      },
-      {
-       "text": "O caso deixa três sinais de alerta pra quem investe.",
-       "scene": {
-        "type": "flash",
-        "text": "3 SINAIS\nDE ALERTA",
-        "color": "gold",
-        "size": 150
-       }
-      },
-      {
-       "text": "Primeiro: empresa grande e famosa não é sinônimo de conta certa.",
-       "scene": {
-        "type": "bullets",
-        "title": "SINAIS DE ALERTA",
-        "items": [
-         "FAMA NÃO É GARANTIA",
-         "DÍVIDA FORA DO LUGAR",
-         "LUCRO QUE NÃO VIRA CAIXA"
-        ],
-        "size": 90,
-        "last_gold": true,
-        "cue_offset": 0
-       }
-      },
-      {
-       "text": "Segundo: dívida que aparece com outro nome no balanço.",
-       "scene": {
-        "type": "same"
-       }
-      },
-      {
-       "text": "Terceiro: lucro que nunca vira dinheiro no caixa.",
-       "scene": {
-        "type": "same"
-       }
-      },
-      {
-       "text": "A Americanas levou noventa e quatro anos pra virar uma das marcas mais conhecidas do país. E nove dias pra tudo vir à tona.",
-       "scene": {
-        "type": "timeline",
-        "start": "1929",
-        "end": "2023",
-        "start_sub": "primeira loja",
-        "end_sub": "o comunicado",
-        "big": "9 DIAS"
-       }
-      },
-      {
-       "text": "A lição oculta é simples.",
-       "scene": {
-        "type": "flash",
-        "text": "A LIÇÃO\nOCULTA",
-        "tint": "red",
-        "size": 160
-       }
-      },
-      {
-       "text": "Quando os números de uma empresa parecem bons demais por tempo demais, vale perguntar quem está pagando por eles.",
-       "scene": {
-        "type": "bigtext",
-        "stagger": 0.25,
-        "lines": [
-         [
-          "BONS DEMAIS",
-          "white",
-          130
-         ],
-         [
-          "QUEM PAGA?",
-          "gold",
-          180
-         ]
-        ]
-       }
-      },
-      {
-       "text": "E, quase sempre, não é quem montou os números.",
-       "scene": {
-        "type": "endcard",
-        "sub": "O CASO AMERICANAS"
-       }
-      }
-     ]
-    }
-   ]
+  "title": "Americanas",
+  "slug": "americanas",
+  "angle": "A loja que todo brasileiro conhece escondeu R$ 25 bilhões por anos. Quando o buraco apareceu, quem pagou foi quem não tinha nada a ver.",
+  "voz": {
+    "nome": "gravada",
+    "motor": "eleven",
+    "eleven_voz": "Will - Deep"
   },
-  "shorts": [
-   {
-    "title": "O presidente que durou 9 dias na Americanas",
-    "sentences": [
-     {
-      "text": "Esse presidente durou nove dias no cargo. E saiu deixando um buraco de vinte bilhões.",
-      "scene": {
-       "type": "capa",
-       "foto": "loja",
-       "wiki": [
-        "Lojas Americanas fachada",
-        "Lojas Americanas",
-        "Americanas loja"
-       ],
-       "seta": false,
-       "recorte": "Americanas · 2023",
-       "faixa": "Ele durou 9 dias",
-       "linhas": [
-        [
-         "E ACHOU",
-         "white",
-         190
-        ],
-        [
-         "R$ 20 BI",
-         "red",
-         260
-        ],
-        [
-         "escondidos",
-         "gold",
-         180
+  "script": {
+    "long": {
+      "parts": [
+        {
+          "chapter": "",
+          "sentences": [
+            {
+              "text": "Na noite de onze de janeiro de dois mil e vinte e três, uma das empresas mais conhecidas do Brasil soltou um comunicado.",
+              "scene": {
+                "type": "date",
+                "month": "JANEIRO",
+                "day": "11",
+                "year": "2023",
+                "tag": "O COMUNICADO"
+              }
+            },
+            {
+              "text": "Ela tinha encontrado um buraco de vinte bilhões de reais nas próprias contas.",
+              "scene": {
+                "type": "counter",
+                "value": 20,
+                "prefix": "R$ ",
+                "suffix": " BI",
+                "over": "INCONSISTÊNCIAS CONTÁBEIS",
+                "label": "NAS CONTAS DA EMPRESA",
+                "color": "red",
+                "size": 230
+              }
+            },
+            {
+              "text": "O presidente, que tinha assumido fazia nove dias, pediu demissão na mesma hora.",
+              "scene": {
+                "type": "image",
+                "media": "rial_cae",
+                "wiki": [
+                  "File:CAE - Comissão de Assuntos Econômicos (52777184549).jpg"
+                ],
+                "lower": "Sérgio Rial · 9 dias no cargo",
+                "dim": 0.4,
+                "fallback": {
+                  "type": "bigtext",
+                  "stagger": 0.25,
+                  "lines": [
+                    [
+                      "9 DIAS",
+                      "gold",
+                      220
+                    ],
+                    [
+                      "NO CARGO",
+                      "white",
+                      110
+                    ]
+                  ]
+                }
+              }
+            },
+            {
+              "text": "No dia seguinte, as ações caíram setenta e sete por cento.",
+              "scene": {
+                "type": "counter",
+                "value": 77,
+                "prefix": "-",
+                "suffix": "%",
+                "over": "AÇÕES EM UM DIA",
+                "label": "12 DE JANEIRO DE 2023",
+                "color": "red",
+                "size": 240
+              }
+            },
+            {
+              "text": "A empresa era a Americanas.",
+              "scene": {
+                "type": "image",
+                "media": "loja",
+                "wiki": [
+                  "Lojas Americanas fachada",
+                  "Lojas Americanas",
+                  "Americanas loja"
+                ],
+                "lower": "Americanas",
+                "dim": 0.4,
+                "fallback": {
+                  "type": "flash",
+                  "text": "AMERICANAS",
+                  "tint": "red",
+                  "size": 170
+                }
+              }
+            },
+            {
+              "text": "A loja onde quase todo brasileiro já comprou um chocolate, um carregador ou um presente de última hora.",
+              "scene": {
+                "type": "image",
+                "media": "loja_rua",
+                "wiki": [
+                  "File:Lojas Americanas - Halfeld.jpg"
+                ],
+                "lower": "Uma loja em cada esquina",
+                "dim": 0.4,
+                "fallback": {
+                  "type": "bigtext",
+                  "stagger": 0.25,
+                  "lines": [
+                    [
+                      "A LOJA",
+                      "white",
+                      140
+                    ],
+                    [
+                      "DE TODO MUNDO",
+                      "gold",
+                      150
+                    ]
+                  ]
+                }
+              }
+            },
+            {
+              "text": "Meses depois, a própria empresa admitiu que não era erro. Era fraude.",
+              "scene": {
+                "type": "print",
+                "media": "print_fraude",
+                "url": "https://braziljournal.com/americanas-admite-fraude-de-r-25-bi-outros-r-20-bi-estavam-contabilizados-errado",
+                "source": "Brazil Journal · 13/06/2023",
+                "rotate": -1.0,
+                "fallback": {
+                  "type": "stamp",
+                  "org": "AMERICANAS · JUNHO 2023",
+                  "title": "INCONSISTÊNCIAS",
+                  "stamp": "FRAUDE",
+                  "stamp_at": 0.9
+                }
+              }
+            },
+            {
+              "text": "E a conta dessa fraude caiu em gente que nunca teve nada a ver com ela.",
+              "scene": {
+                "type": "bigtext",
+                "stagger": 0.25,
+                "lines": [
+                  [
+                    "A CONTA",
+                    "white",
+                    140
+                  ],
+                  [
+                    "CAIU EM QUEM?",
+                    "red",
+                    150
+                  ]
+                ]
+              }
+            },
+            {
+              "text": "Neste vídeo, você vai entender como esse buraco ficou escondido por anos, quem pagou a conta e onde o caso está hoje.",
+              "scene": {
+                "type": "bullets",
+                "items": [
+                  "COMO FICOU ESCONDIDO",
+                  "QUEM PAGOU A CONTA",
+                  "ONDE ESTÁ HOJE"
+                ],
+                "size": 90,
+                "last_gold": true
+              }
+            }
+          ]
+        },
+        {
+          "chapter": "A LOJA DE TUDO",
+          "sentences": [
+            {
+              "text": "A Americanas nasceu em mil novecentos e vinte e nove, em Niterói, no Rio de Janeiro.",
+              "scene": {
+                "type": "bigtext",
+                "stagger": 0.25,
+                "lines": [
+                  [
+                    "1929",
+                    "gold",
+                    230
+                  ],
+                  [
+                    "NITERÓI · RJ",
+                    "white",
+                    110
+                  ],
+                  [
+                    "A PRIMEIRA LOJA",
+                    "muted",
+                    80
+                  ]
+                ]
+              }
+            },
+            {
+              "text": "A ideia era simples: vender de tudo, barato.",
+              "scene": {
+                "type": "image",
+                "media": "loja_curitiba",
+                "wiki": [
+                  "File:Lojas Americanas - Centro, Curitiba.jpg"
+                ],
+                "lower": "Vender de tudo, barato",
+                "dim": 0.4,
+                "fallback": {
+                  "type": "bigtext",
+                  "stagger": 0.25,
+                  "lines": [
+                    [
+                      "DE TUDO",
+                      "white",
+                      160
+                    ],
+                    [
+                      "BARATO",
+                      "gold",
+                      190
+                    ]
+                  ]
+                }
+              }
+            },
+            {
+              "text": "Em mil novecentos e oitenta e dois, o controle foi comprado por três sócios que depois virariam alguns dos homens mais ricos do país.",
+              "scene": {
+                "type": "bigtext",
+                "stagger": 0.25,
+                "lines": [
+                  [
+                    "1982",
+                    "gold",
+                    200
+                  ],
+                  [
+                    "3 SÓCIOS",
+                    "white",
+                    130
+                  ],
+                  [
+                    "COMPRAM O CONTROLE",
+                    "muted",
+                    80
+                  ]
+                ]
+              }
+            },
+            {
+              "text": "Jorge Paulo Lemann, Marcel Telles e Beto Sicupira.",
+              "scene": {
+                "type": "bullets",
+                "items": [
+                  "JORGE PAULO LEMANN",
+                  "MARCEL TELLES",
+                  "BETO SICUPIRA"
+                ],
+                "size": 90,
+                "last_gold": false
+              }
+            },
+            {
+              "text": "Os mesmos nomes que depois ajudaram a criar gigantes como a AB InBev, dona de algumas das cervejas mais vendidas do mundo.",
+              "scene": {
+                "type": "bigtext",
+                "stagger": 0.25,
+                "lines": [
+                  [
+                    "OS MESMOS SÓCIOS",
+                    "white",
+                    110
+                  ],
+                  [
+                    "DE GIGANTES",
+                    "gold",
+                    160
+                  ],
+                  [
+                    "GLOBAIS",
+                    "white",
+                    110
+                  ]
+                ]
+              }
+            },
+            {
+              "text": "A Americanas virou sinônimo de eficiência. Corte de custos, metas agressivas e muito crescimento.",
+              "scene": {
+                "type": "image",
+                "media": "loja_barra",
+                "wiki": [
+                  "File:Lojas Americanas - BarraShopping.jpg"
+                ],
+                "lower": "Cultura de metas",
+                "dim": 0.4,
+                "fallback": {
+                  "type": "bigtext",
+                  "stagger": 0.25,
+                  "lines": [
+                    [
+                      "METAS",
+                      "gold",
+                      200
+                    ],
+                    [
+                      "AGRESSIVAS",
+                      "white",
+                      140
+                    ]
+                  ]
+                }
+              }
+            },
+            {
+              "text": "Depois veio a internet. O grupo criou a B2W, com a Americanas ponto com, o Submarino e o Shoptime.",
+              "scene": {
+                "type": "video",
+                "media": "compra_online",
+                "search": "online shopping laptop credit card",
+                "search_en": "online shopping laptop credit card",
+                "start": 0.0,
+                "dim": 0.4,
+                "lower": "B2W · comércio eletrônico",
+                "fallback": {
+                  "type": "bigtext",
+                  "stagger": 0.25,
+                  "lines": [
+                    [
+                      "AMERICANAS.COM",
+                      "gold",
+                      120
+                    ],
+                    [
+                      "SUBMARINO",
+                      "white",
+                      110
+                    ],
+                    [
+                      "SHOPTIME",
+                      "white",
+                      110
+                    ]
+                  ]
+                },
+                "pixabay_id": 108458
+              }
+            },
+            {
+              "text": "Em dois mil e vinte e um, tudo virou uma empresa só.",
+              "scene": {
+                "type": "flow",
+                "a": "LOJAS AMERICANAS",
+                "a_sub": "lojas físicas",
+                "b": "B2W",
+                "b_sub": "internet",
+                "caption": "2021: UMA EMPRESA SÓ"
+              }
+            },
+            {
+              "text": "No fim de dois mil e vinte e dois, eram mais de mil e oitocentas lojas e quarenta e quatro mil funcionários.",
+              "scene": {
+                "type": "compare",
+                "title": "AMERICANAS · DEZ 2022",
+                "items": [
+                  [
+                    "1.882",
+                    "LOJAS",
+                    "gold"
+                  ],
+                  [
+                    "44 MIL",
+                    "FUNCIONÁRIOS",
+                    "white"
+                  ]
+                ],
+                "size": 170,
+                "stagger": 1.2,
+                "vs": false
+              }
+            },
+            {
+              "text": "Por fora, era uma das empresas mais sólidas do Brasil.",
+              "scene": {
+                "type": "image",
+                "media": "loja_express",
+                "wiki": [
+                  "File:Lojas Americanas em Cadima Shopping.jpg"
+                ],
+                "lower": "Por fora: sólida",
+                "dim": 0.4,
+                "fallback": {
+                  "type": "bigtext",
+                  "stagger": 0.25,
+                  "lines": [
+                    [
+                      "POR FORA",
+                      "white",
+                      130
+                    ],
+                    [
+                      "SÓLIDA",
+                      "gold",
+                      190
+                    ]
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "chapter": "OS NOVE DIAS",
+          "sentences": [
+            {
+              "text": "Em agosto de dois mil e vinte e dois, a Americanas anunciou um novo presidente.",
+              "scene": {
+                "type": "date",
+                "month": "AGOSTO",
+                "day": "19",
+                "year": "2022",
+                "tag": "NOVO PRESIDENTE ANUNCIADO"
+              }
+            },
+            {
+              "text": "Sérgio Rial, um executivo vindo do Santander.",
+              "scene": {
+                "type": "image",
+                "media": "rial_senado",
+                "wiki": [
+                  "File:CAE - Comissão de Assuntos Econômicos (52777342560).jpg"
+                ],
+                "lower": "Sérgio Rial · ex-Santander",
+                "dim": 0.4,
+                "fallback": {
+                  "type": "bigtext",
+                  "stagger": 0.25,
+                  "lines": [
+                    [
+                      "SÉRGIO RIAL",
+                      "white",
+                      150
+                    ],
+                    [
+                      "NOVO PRESIDENTE",
+                      "gold",
+                      100
+                    ]
+                  ]
+                }
+              }
+            },
+            {
+              "text": "Ele era um nome respeitado no mercado, e a chegada dele foi vista como um sinal de que a Americanas ia acelerar.",
+              "scene": {
+                "type": "bigtext",
+                "stagger": 0.25,
+                "lines": [
+                  [
+                    "NOME RESPEITADO",
+                    "white",
+                    120
+                  ],
+                  [
+                    "NO MERCADO",
+                    "gold",
+                    140
+                  ]
+                ]
+              }
+            },
+            {
+              "text": "Ele assumiu no dia dois de janeiro de dois mil e vinte e três.",
+              "scene": {
+                "type": "date",
+                "month": "JANEIRO",
+                "day": "02",
+                "year": "2023",
+                "tag": "PRIMEIRO DIA"
+              }
+            },
+            {
+              "text": "Dois dias depois, segundo o próprio Rial, apareceu o problema.",
+              "scene": {
+                "type": "date",
+                "month": "JANEIRO",
+                "day": "04",
+                "year": "2023",
+                "tag": "O PROBLEMA APARECE"
+              }
+            },
+            {
+              "text": "Uma dívida enorme com bancos que não aparecia do jeito certo no balanço.",
+              "scene": {
+                "type": "video",
+                "media": "papeis",
+                "search": "stack of documents office",
+                "search_en": "stack of documents office",
+                "start": 0.0,
+                "dim": 0.4,
+                "lower": "O balanço",
+                "fallback": {
+                  "type": "bigtext",
+                  "stagger": 0.25,
+                  "lines": [
+                    [
+                      "UMA DÍVIDA",
+                      "white",
+                      140
+                    ],
+                    [
+                      "ESCONDIDA",
+                      "red",
+                      180
+                    ]
+                  ]
+                },
+                "pixabay_id": 87146
+              }
+            },
+            {
+              "text": "No dia onze, a empresa contou ao mercado. E ele saiu.",
+              "scene": {
+                "type": "events",
+                "row": 140,
+                "events": [
+                  [
+                    "02/01",
+                    "Rial assume",
+                    "gold"
+                  ],
+                  [
+                    "04/01",
+                    "O problema aparece",
+                    "white"
+                  ],
+                  [
+                    "11/01",
+                    "Comunicado e saída",
+                    "red"
+                  ]
+                ]
+              }
+            },
+            {
+              "text": "Nove dias no cargo.",
+              "scene": {
+                "type": "same"
+              }
+            },
+            {
+              "text": "No dia seguinte, a ação despencou setenta e sete por cento. Foi uma das maiores quedas em um dia na história da bolsa brasileira.",
+              "scene": {
+                "type": "image",
+                "media": "b3",
+                "wiki": [
+                  "B3 Bolsa de Valores São Paulo edifício",
+                  "Bolsa de Valores de São Paulo",
+                  "BM&FBovespa building"
+                ],
+                "lower": "Bolsa de valores · São Paulo",
+                "dim": 0.4,
+                "fallback": {
+                  "type": "counter",
+                  "value": 77,
+                  "prefix": "-",
+                  "suffix": "%",
+                  "over": "EM UM DIA",
+                  "label": "UMA DAS MAIORES QUEDAS DA B3",
+                  "color": "red",
+                  "size": 230
+                }
+              }
+            },
+            {
+              "text": "E o Rial disse uma frase que assustou ainda mais: o problema vinha de sete a nove anos.",
+              "scene": {
+                "type": "print",
+                "media": "print_7a9",
+                "url": "https://mercadoeconsumo.com.br/12/01/2023/noticias-varejo/problema-na-americanas-se-arrasta-por-cerca-de-7-a-9-anos-diz-sergio-rial/",
+                "source": "Mercado & Consumo · 12/01/2023",
+                "rotate": -1.0,
+                "fallback": {
+                  "type": "bigtext",
+                  "stagger": 0.25,
+                  "lines": [
+                    [
+                      "O PROBLEMA VINHA",
+                      "white",
+                      110
+                    ],
+                    [
+                      "DE 7 A 9 ANOS",
+                      "red",
+                      160
+                    ]
+                  ]
+                }
+              }
+            },
+            {
+              "text": "Ou seja, por anos, os números que todo mundo via não eram os números de verdade.",
+              "scene": {
+                "type": "bigtext",
+                "stagger": 0.25,
+                "lines": [
+                  [
+                    "OS NÚMEROS",
+                    "white",
+                    140
+                  ],
+                  [
+                    "NÃO ERAM REAIS",
+                    "red",
+                    150
+                  ]
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "chapter": "COMO FUNCIONAVA",
+          "sentences": [
+            {
+              "text": "Pra entender o rombo, você precisa entender duas coisas.",
+              "scene": {
+                "type": "flash",
+                "text": "DUAS\nCOISAS",
+                "color": "gold",
+                "size": 170
+              }
+            },
+            {
+              "text": "A primeira se chama risco sacado.",
+              "scene": {
+                "type": "bigtext",
+                "stagger": 0.25,
+                "lines": [
+                  [
+                    "1",
+                    "gold",
+                    200
+                  ],
+                  [
+                    "RISCO SACADO",
+                    "white",
+                    140
+                  ]
+                ]
+              }
+            },
+            {
+              "text": "Funciona assim: a Americanas comprava de um fornecedor e só pagava depois.",
+              "scene": {
+                "type": "flow",
+                "a": "FORNECEDOR",
+                "a_sub": "vende para a Americanas",
+                "b": "AMERICANAS",
+                "b_sub": "paga depois",
+                "caption": "RISCO SACADO"
+              }
+            },
+            {
+              "text": "O fornecedor não queria esperar, então um banco pagava ele na hora.",
+              "scene": {
+                "type": "video",
+                "media": "banco_agencia",
+                "search": "bank building facade",
+                "search_en": "bank building facade",
+                "start": 0.0,
+                "dim": 0.4,
+                "lower": "O banco adianta",
+                "fallback": {
+                  "type": "bigtext",
+                  "stagger": 0.25,
+                  "lines": [
+                    [
+                      "O BANCO",
+                      "white",
+                      140
+                    ],
+                    [
+                      "PAGA NA HORA",
+                      "gold",
+                      150
+                    ]
+                  ]
+                },
+                "pixabay_id": 214695
+              }
+            },
+            {
+              "text": "E a Americanas ficava devendo para o banco, com juros.",
+              "scene": {
+                "type": "flow",
+                "a": "BANCO",
+                "a_sub": "pagou o fornecedor",
+                "b": "AMERICANAS",
+                "b_sub": "deve ao banco, com juros",
+                "caption": "UMA DÍVIDA BANCÁRIA"
+              }
+            },
+            {
+              "text": "Isso é uma dívida com banco. Mas, no balanço, ela aparecia como se fosse só uma conta normal com fornecedor.",
+              "scene": {
+                "type": "stamp",
+                "org": "NO BALANÇO",
+                "title": "DÍVIDA COM BANCO",
+                "stamp": "FORNECEDOR?",
+                "stamp_at": 0.9
+              }
+            },
+            {
+              "text": "Assim, a empresa parecia muito menos endividada do que estava.",
+              "scene": {
+                "type": "bigtext",
+                "stagger": 0.25,
+                "lines": [
+                  [
+                    "PARECIA",
+                    "white",
+                    140
+                  ],
+                  [
+                    "MENOS ENDIVIDADA",
+                    "gold",
+                    130
+                  ]
+                ]
+              }
+            },
+            {
+              "text": "Somando esse tipo de financiamento, eram cerca de vinte bilhões de reais.",
+              "scene": {
+                "type": "counter",
+                "value": 20,
+                "prefix": "R$ ",
+                "suffix": ",6 BI",
+                "over": "FINANCIAMENTOS",
+                "label": "CONTABILIZADOS DO JEITO ERRADO",
+                "color": "red",
+                "size": 220
+              }
+            },
+            {
+              "text": "A segunda coisa se chama verba de propaganda.",
+              "scene": {
+                "type": "bigtext",
+                "stagger": 0.25,
+                "lines": [
+                  [
+                    "2",
+                    "gold",
+                    200
+                  ],
+                  [
+                    "VERBA DE PROPAGANDA",
+                    "white",
+                    110
+                  ]
+                ]
+              }
+            },
+            {
+              "text": "Fornecedores pagam pra Americanas expor e anunciar os produtos deles. Isso é normal no varejo.",
+              "scene": {
+                "type": "image",
+                "media": "loja_express",
+                "wiki": [
+                  "File:Lojas Americanas em Cadima Shopping.jpg"
+                ],
+                "lower": "Verba de propaganda",
+                "dim": 0.4,
+                "fallback": {
+                  "type": "bigtext",
+                  "stagger": 0.25,
+                  "lines": [
+                    [
+                      "FORNECEDOR PAGA",
+                      "white",
+                      110
+                    ],
+                    [
+                      "PRA APARECER",
+                      "gold",
+                      150
+                    ]
+                  ]
+                }
+              }
+            },
+            {
+              "text": "O problema: segundo a própria empresa, foram lançados vinte e um bilhões e setecentos milhões em contratos desse tipo. Dinheiro que nunca entrou no caixa.",
+              "scene": {
+                "type": "counter",
+                "value": 21,
+                "prefix": "R$ ",
+                "suffix": ",7 BI",
+                "over": "VERBAS QUE NUNCA ENTRARAM",
+                "label": "SEGUNDO A AMERICANAS",
+                "color": "red",
+                "size": 220
+              }
+            },
+            {
+              "text": "Era lucro de mentira, inflando o resultado.",
+              "scene": {
+                "type": "bigtext",
+                "stagger": 0.25,
+                "lines": [
+                  [
+                    "LUCRO",
+                    "white",
+                    170
+                  ],
+                  [
+                    "DE MENTIRA",
+                    "red",
+                    170
+                  ]
+                ]
+              }
+            },
+            {
+              "text": "E por que alguém faria isso? Uma empresa com menos dívida e mais lucro vale mais na bolsa e consegue crédito mais barato.",
+              "scene": {
+                "type": "flow",
+                "a": "MENOS DÍVIDA",
+                "a_sub": "mais lucro no papel",
+                "b": "VALE MAIS",
+                "b_sub": "crédito mais barato",
+                "caption": "POR QUE ESCONDER?"
+              }
+            },
+            {
+              "text": "A Polícia Federal também passou a investigar se ex-diretores venderam ações sabendo do problema antes de todo mundo. Eles negam.",
+              "scene": {
+                "type": "bigtext",
+                "stagger": 0.25,
+                "lines": [
+                  [
+                    "VENDERAM ANTES?",
+                    "white",
+                    130
+                  ],
+                  [
+                    "INVESTIGAÇÃO DA PF",
+                    "muted",
+                    90
+                  ],
+                  [
+                    "ELES NEGAM",
+                    "muted",
+                    110
+                  ]
+                ]
+              }
+            },
+            {
+              "text": "Em junho de dois mil e vinte e três, a Americanas disse oficialmente que foi fraude, e apontou a diretoria anterior.",
+              "scene": {
+                "type": "print",
+                "media": "print_fraude",
+                "url": "https://braziljournal.com/americanas-admite-fraude-de-r-25-bi-outros-r-20-bi-estavam-contabilizados-errado",
+                "source": "Brazil Journal · 13/06/2023",
+                "rotate": -1.0,
+                "fallback": {
+                  "type": "stamp",
+                  "org": "FATO RELEVANTE · JUN 2023",
+                  "title": "A DIRETORIA ANTERIOR",
+                  "stamp": "FRAUDE",
+                  "stamp_at": 0.9
+                }
+              }
+            },
+            {
+              "text": "Com juros, a conta da fraude chegou a vinte e cinco bilhões de reais.",
+              "scene": {
+                "type": "counter",
+                "value": 25,
+                "prefix": "R$ ",
+                "suffix": ",3 BI",
+                "over": "A FRAUDE, COM JUROS",
+                "label": "SEGUNDO A EMPRESA E ANALISTAS",
+                "color": "red",
+                "size": 230
+              }
+            },
+            {
+              "text": "Os ex-diretores apontados negam ter participado.",
+              "scene": {
+                "type": "bigtext",
+                "stagger": 0.25,
+                "lines": [
+                  [
+                    "OS APONTADOS",
+                    "white",
+                    120
+                  ],
+                  [
+                    "NEGAM",
+                    "muted",
+                    170
+                  ]
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "chapter": "A QUEDA",
+          "sentences": [
+            {
+              "text": "Com o buraco exposto, os bancos queriam o dinheiro de volta.",
+              "scene": {
+                "type": "video",
+                "media": "banco_agencia",
+                "search": "bank building facade",
+                "search_en": "bank building facade",
+                "start": 0.0,
+                "dim": 0.4,
+                "lower": "Os bancos cobram",
+                "fallback": {
+                  "type": "bigtext",
+                  "stagger": 0.25,
+                  "lines": [
+                    [
+                      "OS BANCOS",
+                      "white",
+                      140
+                    ],
+                    [
+                      "COBRAM",
+                      "red",
+                      180
+                    ]
+                  ]
+                },
+                "pixabay_id": 214695
+              }
+            },
+            {
+              "text": "Oito dias depois do comunicado, a Americanas pediu recuperação judicial.",
+              "scene": {
+                "type": "print",
+                "media": "print_rj",
+                "url": "https://forbes.com.br/forbes-money/2023/01/sem-acordo-com-credores-americanas-pede-recuperacao-judicial/",
+                "source": "Forbes Brasil · 19/01/2023",
+                "rotate": -1.0,
+                "fallback": {
+                  "type": "date",
+                  "month": "JANEIRO",
+                  "day": "19",
+                  "year": "2023",
+                  "tag": "RECUPERAÇÃO JUDICIAL"
+                }
+              }
+            },
+            {
+              "text": "A dívida reconhecida: quarenta e três bilhões de reais.",
+              "scene": {
+                "type": "counter",
+                "value": 43,
+                "prefix": "R$ ",
+                "suffix": " BI",
+                "over": "DÍVIDA RECONHECIDA",
+                "label": "NA RECUPERAÇÃO JUDICIAL",
+                "color": "red",
+                "size": 230
+              }
+            },
+            {
+              "text": "Pra ter ideia: quem tinha mil reais em ações da Americanas na véspera, no dia seguinte tinha cerca de duzentos e trinta.",
+              "scene": {
+                "type": "compare",
+                "title": "MIL REAIS EM AÇÕES",
+                "items": [
+                  [
+                    "R$ 1.000",
+                    "11 DE JANEIRO",
+                    "white"
+                  ],
+                  [
+                    "~R$ 230",
+                    "12 DE JANEIRO",
+                    "red"
+                  ]
+                ],
+                "size": 170,
+                "stagger": 1.2,
+                "vs": false
+              }
+            },
+            {
+              "text": "Recuperação judicial é quando a empresa pede pra Justiça um tempo pra renegociar tudo, sem falir.",
+              "scene": {
+                "type": "image",
+                "media": "tj",
+                "wiki": [
+                  "Tribunal de Justiça do Estado do Rio de Janeiro",
+                  "Fórum Central Rio de Janeiro"
+                ],
+                "lower": "Justiça do Rio de Janeiro",
+                "dim": 0.4,
+                "fallback": {
+                  "type": "flow",
+                  "a": "EMPRESA",
+                  "a_sub": "não consegue pagar",
+                  "b": "JUSTIÇA",
+                  "b_sub": "dá tempo pra renegociar",
+                  "caption": "RECUPERAÇÃO JUDICIAL"
+                }
+              }
+            },
+            {
+              "text": "Na lista de credores estavam os maiores bancos do país.",
+              "scene": {
+                "type": "bullets",
+                "title": "ALGUNS CREDORES",
+                "items": [
+                  "BRADESCO",
+                  "SANTANDER",
+                  "ITAÚ",
+                  "BTG PACTUAL",
+                  "SAFRA"
+                ],
+                "size": 80,
+                "last_gold": false
+              }
+            },
+            {
+              "text": "Mas também milhares de fornecedores pequenos, que venderam e não receberam.",
+              "scene": {
+                "type": "video",
+                "media": "galpao",
+                "search": "warehouse boxes logistics",
+                "search_en": "warehouse boxes logistics",
+                "start": 0.0,
+                "dim": 0.4,
+                "lower": "Fornecedores na fila",
+                "fallback": {
+                  "type": "bigtext",
+                  "stagger": 0.25,
+                  "lines": [
+                    [
+                      "FORNECEDORES",
+                      "white",
+                      130
+                    ],
+                    [
+                      "SEM RECEBER",
+                      "red",
+                      150
+                    ]
+                  ]
+                },
+                "pixabay_id": 43658
+              }
+            },
+            {
+              "text": "Em um ano, a empresa que valia cerca de dez bilhões na bolsa passou a valer menos de um bilhão.",
+              "scene": {
+                "type": "compare",
+                "title": "VALOR NA BOLSA",
+                "items": [
+                  [
+                    "R$ 10 BI",
+                    "ANTES",
+                    "white"
+                  ],
+                  [
+                    "R$ 783 MI",
+                    "UM ANO DEPOIS",
+                    "red"
+                  ]
+                ],
+                "size": 160,
+                "stagger": 1.2,
+                "vs": false
+              }
+            },
+            {
+              "text": "E mais de dez mil pessoas perderam o emprego.",
+              "scene": {
+                "type": "compare",
+                "title": "FUNCIONÁRIOS",
+                "items": [
+                  [
+                    "44 MIL",
+                    "DEZ 2022",
+                    "white"
+                  ],
+                  [
+                    "33,8 MIL",
+                    "NOV 2023",
+                    "red"
+                  ]
+                ],
+                "size": 170,
+                "stagger": 1.2,
+                "vs": false
+              }
+            },
+            {
+              "text": "Em menos de um ano, mais de cem lojas fecharam as portas.",
+              "scene": {
+                "type": "compare",
+                "title": "LOJAS",
+                "items": [
+                  [
+                    "1.882",
+                    "DEZ 2022",
+                    "white"
+                  ],
+                  [
+                    "1.759",
+                    "NOV 2023",
+                    "red"
+                  ]
+                ],
+                "size": 170,
+                "stagger": 1.2,
+                "vs": false
+              }
+            }
+          ]
+        },
+        {
+          "chapter": "QUEM PAGA A CONTA",
+          "sentences": [
+            {
+              "text": "Aqui está o custo oculto.",
+              "scene": {
+                "type": "flash",
+                "text": "O CUSTO\nOCULTO",
+                "tint": "red",
+                "size": 160
+              }
+            },
+            {
+              "text": "Quem pagou primeiro foi quem tinha ação da Americanas.",
+              "scene": {
+                "type": "image",
+                "media": "bovespa",
+                "wiki": [
+                  "File:Bovespa, São Paulo city downtown.jpg"
+                ],
+                "lower": "Bolsa de valores · São Paulo",
+                "dim": 0.4,
+                "fallback": {
+                  "type": "bigtext",
+                  "stagger": 0.25,
+                  "lines": [
+                    [
+                      "QUEM TINHA",
+                      "white",
+                      140
+                    ],
+                    [
+                      "AÇÃO",
+                      "red",
+                      200
+                    ]
+                  ]
+                }
+              }
+            },
+            {
+              "text": "Muita gente comum, que achava que estava investindo numa das empresas mais seguras do país, viu o dinheiro sumir em um dia.",
+              "scene": {
+                "type": "video",
+                "media": "celular_queda",
+                "search": "stock market chart falling red",
+                "search_en": "stock market chart falling red",
+                "start": 0.0,
+                "dim": 0.4,
+                "lower": "O dinheiro sumiu em um dia",
+                "fallback": {
+                  "type": "bigtext",
+                  "stagger": 0.25,
+                  "lines": [
+                    [
+                      "SUMIU",
+                      "red",
+                      200
+                    ],
+                    [
+                      "EM UM DIA",
+                      "white",
+                      130
+                    ]
+                  ]
+                },
+                "pixabay_id": 33805
+              }
+            },
+            {
+              "text": "Depois, os funcionários que perderam o emprego.",
+              "scene": {
+                "type": "bigtext",
+                "stagger": 0.25,
+                "lines": [
+                  [
+                    "+10 MIL",
+                    "red",
+                    200
+                  ],
+                  [
+                    "EMPREGOS A MENOS",
+                    "white",
+                    100
+                  ]
+                ]
+              }
+            },
+            {
+              "text": "Os fornecedores, que entraram numa fila pra receber com desconto e prazo longo.",
+              "scene": {
+                "type": "bigtext",
+                "stagger": 0.25,
+                "lines": [
+                  [
+                    "FORNECEDORES",
+                    "white",
+                    130
+                  ],
+                  [
+                    "COM DESCONTO",
+                    "red",
+                    140
+                  ],
+                  [
+                    "E PRAZO LONGO",
+                    "muted",
+                    90
+                  ]
+                ]
+              }
+            },
+            {
+              "text": "E até fundos de pensão e de investimento que tinham títulos da empresa.",
+              "scene": {
+                "type": "bigtext",
+                "stagger": 0.25,
+                "lines": [
+                  [
+                    "FUNDOS",
+                    "white",
+                    150
+                  ],
+                  [
+                    "TAMBÉM PERDERAM",
+                    "red",
+                    130
+                  ]
+                ]
+              }
+            },
+            {
+              "text": "Muitos investidores foram à Justiça e a câmaras de arbitragem pedindo indenização. Processos que podem levar anos.",
+              "scene": {
+                "type": "bigtext",
+                "stagger": 0.25,
+                "lines": [
+                  [
+                    "INVESTIDORES",
+                    "white",
+                    130
+                  ],
+                  [
+                    "NA JUSTIÇA",
+                    "gold",
+                    150
+                  ],
+                  [
+                    "POR ANOS",
+                    "muted",
+                    100
+                  ]
+                ]
+              }
+            },
+            {
+              "text": "E teve um efeito em cadeia. Depois do caso, os bancos ficaram mais cautelosos com esse tipo de operação, e o crédito para outras varejistas ficou mais difícil.",
+              "scene": {
+                "type": "bigtext",
+                "stagger": 0.25,
+                "lines": [
+                  [
+                    "EFEITO",
+                    "white",
+                    150
+                  ],
+                  [
+                    "EM CADEIA",
+                    "red",
+                    170
+                  ],
+                  [
+                    "CRÉDITO MAIS DIFÍCIL",
+                    "muted",
+                    90
+                  ]
+                ]
+              }
+            },
+            {
+              "text": "Ou seja: uma fraude dentro de uma empresa vira prejuízo pra milhares de pessoas que nunca viram um balanço na vida.",
+              "scene": {
+                "type": "bigtext",
+                "stagger": 0.25,
+                "lines": [
+                  [
+                    "UMA FRAUDE",
+                    "white",
+                    140
+                  ],
+                  [
+                    "MILHARES",
+                    "red",
+                    180
+                  ],
+                  [
+                    "DE PREJUDICADOS",
+                    "white",
+                    100
+                  ]
+                ]
+              }
+            },
+            {
+              "text": "No plano de recuperação, os três sócios bilionários se comprometeram a colocar doze bilhões de reais na empresa.",
+              "scene": {
+                "type": "counter",
+                "value": 12,
+                "prefix": "R$ ",
+                "suffix": " BI",
+                "over": "APORTE DOS SÓCIOS",
+                "label": "PREVISTO NO PLANO DE RECUPERAÇÃO",
+                "color": "gold",
+                "size": 230
+              }
+            },
+            {
+              "text": "Eles sempre disseram que nunca souberam da fraude.",
+              "scene": {
+                "type": "bigtext",
+                "stagger": 0.25,
+                "lines": [
+                  [
+                    "ELES DIZEM",
+                    "white",
+                    130
+                  ],
+                  [
+                    "QUE NÃO SABIAM",
+                    "muted",
+                    140
+                  ]
+                ]
+              }
+            },
+            {
+              "text": "E fica a pergunta que muita gente fez: como auditorias, bancos e conselheiros não viram vinte e cinco bilhões por tantos anos?",
+              "scene": {
+                "type": "image",
+                "media": "cpi",
+                "wiki": [
+                  "File:CPI Americanas - Apresentação do plano de trabalho do relator.jpg"
+                ],
+                "lower": "CPI das Americanas · Câmara dos Deputados, 2023",
+                "dim": 0.4,
+                "fallback": {
+                  "type": "bigtext",
+                  "stagger": 0.25,
+                  "lines": [
+                    [
+                      "COMO",
+                      "white",
+                      160
+                    ],
+                    [
+                      "NINGUÉM VIU?",
+                      "red",
+                      170
+                    ]
+                  ]
+                }
+              }
+            },
+            {
+              "text": "Se esse tipo de história te interessa, segue o Custo Oculto. Toda semana tem um caso novo.",
+              "scene": {
+                "type": "bigtext",
+                "stagger": 0.25,
+                "lines": [
+                  [
+                    "SEGUE O CANAL",
+                    "gold",
+                    150
+                  ],
+                  [
+                    "TODA SEMANA, UM CASO",
+                    "white",
+                    80
+                  ]
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "chapter": "ONDE ESTÁ HOJE",
+          "sentences": [
+            {
+              "text": "Em junho de dois mil e vinte e quatro, a Polícia Federal fez a Operação Disclosure.",
+              "scene": {
+                "type": "date",
+                "month": "JUNHO",
+                "day": "27",
+                "year": "2024",
+                "tag": "OPERAÇÃO DISCLOSURE"
+              }
+            },
+            {
+              "text": "Foram quinze mandados de busca e o bloqueio de mais de quinhentos milhões de reais de ex-diretores.",
+              "scene": {
+                "type": "image",
+                "media": "pf_sede",
+                "wiki": [
+                  "File:Sede da Polícia Federal (52830107256).jpg"
+                ],
+                "lower": "Polícia Federal · Operação Disclosure",
+                "dim": 0.4,
+                "fallback": {
+                  "type": "compare",
+                  "title": "OPERAÇÃO DISCLOSURE",
+                  "items": [
+                    [
+                      "15",
+                      "MANDADOS DE BUSCA",
+                      "white"
+                    ],
+                    [
+                      "+R$ 500 MI",
+                      "BLOQUEADOS",
+                      "red"
+                    ]
+                  ],
+                  "size": 160,
+                  "stagger": 1.2,
+                  "vs": false
+                }
+              }
+            },
+            {
+              "text": "O ex-presidente Miguel Gutierrez, que comandou a empresa por cerca de vinte anos, estava morando na Espanha.",
+              "scene": {
+                "type": "image",
+                "media": "madri",
+                "wiki": [
+                  "Puerta de Alcalá Madrid",
+                  "Puerta de Alcalá",
+                  "Madrid skyline"
+                ],
+                "lower": "Madri · Espanha",
+                "dim": 0.4,
+                "fallback": {
+                  "type": "bigtext",
+                  "stagger": 0.25,
+                  "lines": [
+                    [
+                      "NA ESPANHA",
+                      "gold",
+                      170
+                    ],
+                    [
+                      "EX-PRESIDENTE",
+                      "white",
+                      110
+                    ]
+                  ]
+                }
+              }
+            },
+            {
+              "text": "Ele foi preso em Madri no dia seguinte, e solto logo depois.",
+              "scene": {
+                "type": "print",
+                "media": "print_madri",
+                "url": "https://www.bloomberglinea.com.br/negocios/preso-pela-interpol-em-madri-ex-ceo-da-americanas-e-protegido-por-cidadania-espanhola/",
+                "source": "Bloomberg Línea · 28/06/2024",
+                "rotate": -1.0,
+                "fallback": {
+                  "type": "board",
+                  "header": "MADRI · 28/06/2024",
+                  "flip_at": 0.5,
+                  "rows": [
+                    [
+                      "PRESO",
+                      "SOLTO"
+                    ]
+                  ]
+                }
+              }
+            },
+            {
+              "text": "Mais tarde, a Justiça brasileira revogou a ordem de prisão, e ele passou a responder em liberdade.",
+              "scene": {
+                "type": "print",
+                "media": "print_trf2",
+                "url": "https://www.conjur.com.br/2024-ago-22/trf-2-revoga-ordem-de-prisao-contra-ex-ceo-das-americanas/",
+                "source": "Conjur · 22/08/2024",
+                "rotate": -1.0,
+                "fallback": {
+                  "type": "bigtext",
+                  "stagger": 0.25,
+                  "lines": [
+                    [
+                      "RESPONDE",
+                      "white",
+                      150
+                    ],
+                    [
+                      "EM LIBERDADE",
+                      "gold",
+                      150
+                    ]
+                  ]
+                }
+              }
+            },
+            {
+              "text": "Em dois mil e vinte e cinco, o Ministério Público Federal denunciou treze ex-executivos e ex-funcionários.",
+              "scene": {
+                "type": "print",
+                "media": "print_mpf",
+                "url": "https://diariodonordeste.verdesmares.com.br/negocios/mpf-denuncia-13-pessoas-por-fraudes-nas-americanas-novo-delator-e-revelado-1.3636088",
+                "source": "Diário do Nordeste · 31/03/2025",
+                "rotate": -1.0,
+                "fallback": {
+                  "type": "counter",
+                  "value": 13,
+                  "suffix": " PESSOAS",
+                  "over": "DENÚNCIA DO MPF · 2025",
+                  "label": "EX-EXECUTIVOS E EX-FUNCIONÁRIOS",
+                  "color": "red",
+                  "size": 220
+                }
+              }
+            },
+            {
+              "text": "Três ex-diretores fizeram delação e contaram como o esquema funcionava.",
+              "scene": {
+                "type": "bigtext",
+                "stagger": 0.25,
+                "lines": [
+                  [
+                    "3 DELAÇÕES",
+                    "gold",
+                    170
+                  ],
+                  [
+                    "DE EX-DIRETORES",
+                    "white",
+                    100
+                  ]
+                ]
+              }
+            },
+            {
+              "text": "A defesa de Gutierrez nega tudo. Ele diz que é um bode expiatório.",
+              "scene": {
+                "type": "bigtext",
+                "stagger": 0.25,
+                "lines": [
+                  [
+                    "A DEFESA NEGA",
+                    "white",
+                    130
+                  ],
+                  [
+                    "BODE EXPIATÓRIO?",
+                    "muted",
+                    130
+                  ]
+                ]
+              }
+            },
+            {
+              "text": "Até a gravação deste vídeo, não há condenação definitiva no caso.",
+              "scene": {
+                "type": "bigtext",
+                "stagger": 0.25,
+                "lines": [
+                  [
+                    "SEM CONDENAÇÃO",
+                    "white",
+                    120
+                  ],
+                  [
+                    "DEFINITIVA",
+                    "muted",
+                    140
+                  ]
+                ]
+              }
+            },
+            {
+              "text": "E a Americanas? Ela continua aberta, menor, e em março de dois mil e vinte e seis pediu pra sair da recuperação judicial.",
+              "scene": {
+                "type": "image",
+                "media": "am_hoje",
+                "wiki": [
+                  "File:Reunião Deliberativa. Diretor-Presidente - Americanas S.A., Leonardo Coelho Pereira - Bruno Spada-Câmara dos Deputados.jpg"
+                ],
+                "lower": "Leonardo Coelho, atual presidente da Americanas, na Câmara",
+                "dim": 0.4,
+                "fallback": {
+                  "type": "date",
+                  "month": "MARÇO",
+                  "day": "25",
+                  "year": "2026",
+                  "tag": "PEDE PRA SAIR DA RECUPERAÇÃO"
+                }
+              }
+            },
+            {
+              "text": "Em setembro, a Justiça ainda não tinha decidido.",
+              "scene": {
+                "type": "bigtext",
+                "stagger": 0.25,
+                "lines": [
+                  [
+                    "SET 2026",
+                    "gold",
+                    160
+                  ],
+                  [
+                    "SEM DECISÃO",
+                    "white",
+                    120
+                  ]
+                ]
+              }
+            },
+            {
+              "text": "O caso deixa três sinais de alerta pra quem investe.",
+              "scene": {
+                "type": "flash",
+                "text": "3 SINAIS\nDE ALERTA",
+                "color": "gold",
+                "size": 150
+              }
+            },
+            {
+              "text": "Primeiro: empresa grande e famosa não é sinônimo de conta certa.",
+              "scene": {
+                "type": "bullets",
+                "title": "SINAIS DE ALERTA",
+                "items": [
+                  "FAMA NÃO É GARANTIA",
+                  "DÍVIDA FORA DO LUGAR",
+                  "LUCRO QUE NÃO VIRA CAIXA"
+                ],
+                "size": 90,
+                "last_gold": true,
+                "cue_offset": 0
+              }
+            },
+            {
+              "text": "Segundo: dívida que aparece com outro nome no balanço.",
+              "scene": {
+                "type": "same"
+              }
+            },
+            {
+              "text": "Terceiro: lucro que nunca vira dinheiro no caixa.",
+              "scene": {
+                "type": "same"
+              }
+            },
+            {
+              "text": "A Americanas levou noventa e quatro anos pra virar uma das marcas mais conhecidas do país. E nove dias pra tudo vir à tona.",
+              "scene": {
+                "type": "timeline",
+                "start": "1929",
+                "end": "2023",
+                "start_sub": "primeira loja",
+                "end_sub": "o comunicado",
+                "big": "9 DIAS"
+              }
+            },
+            {
+              "text": "A lição oculta é simples.",
+              "scene": {
+                "type": "flash",
+                "text": "A LIÇÃO\nOCULTA",
+                "tint": "red",
+                "size": 160
+              }
+            },
+            {
+              "text": "Quando os números de uma empresa parecem bons demais por tempo demais, vale perguntar quem está pagando por eles.",
+              "scene": {
+                "type": "bigtext",
+                "stagger": 0.25,
+                "lines": [
+                  [
+                    "BONS DEMAIS",
+                    "white",
+                    130
+                  ],
+                  [
+                    "QUEM PAGA?",
+                    "gold",
+                    180
+                  ]
+                ]
+              }
+            },
+            {
+              "text": "E, quase sempre, não é quem montou os números.",
+              "scene": {
+                "type": "endcard",
+                "sub": "O CASO AMERICANAS"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "shorts": [
+      {
+        "title": "O presidente que durou 9 dias na Americanas",
+        "sentences": [
+          {
+            "text": "Esse presidente durou nove dias no cargo. E saiu deixando um buraco de vinte bilhões.",
+            "scene": {
+              "type": "capa",
+              "foto": "loja",
+              "wiki": [
+                "Lojas Americanas fachada",
+                "Lojas Americanas",
+                "Americanas loja"
+              ],
+              "seta": false,
+              "recorte": "Americanas · 2023",
+              "faixa": "Ele durou 9 dias",
+              "linhas": [
+                [
+                  "E ACHOU",
+                  "white",
+                  190
+                ],
+                [
+                  "R$ 20 BI",
+                  "red",
+                  260
+                ],
+                [
+                  "escondidos",
+                  "gold",
+                  180
+                ]
+              ],
+              "selo": "Americanas · 2023"
+            }
+          },
+          {
+            "text": "Em janeiro de dois mil e vinte e três, Sérgio Rial assumiu a Americanas.",
+            "scene": {
+              "type": "image",
+              "media": "rial_senado",
+              "wiki": [
+                "File:CAE - Comissão de Assuntos Econômicos (52777342560).jpg"
+              ],
+              "lower": "Sérgio Rial assume a Americanas",
+              "dim": 0.4,
+              "fallback": {
+                "type": "date",
+                "month": "JANEIRO",
+                "day": "02",
+                "year": "2023",
+                "tag": "RIAL ASSUME"
+              }
+            }
+          },
+          {
+            "text": "Em dois dias, achou uma dívida com bancos que não aparecia direito no balanço.",
+            "scene": {
+              "type": "bigtext",
+              "stagger": 0.25,
+              "lines": [
+                [
+                  "DÍVIDA",
+                  "white",
+                  160
+                ],
+                [
+                  "ESCONDIDA",
+                  "red",
+                  180
+                ]
+              ]
+            }
+          },
+          {
+            "text": "No dia onze, contou tudo ao mercado e pediu demissão.",
+            "scene": {
+              "type": "image",
+              "media": "rial_cae",
+              "wiki": [
+                "File:CAE - Comissão de Assuntos Econômicos (52777184549).jpg"
+              ],
+              "lower": "Sérgio Rial · contou e saiu",
+              "dim": 0.4,
+              "fallback": {
+                "type": "bigtext",
+                "stagger": 0.25,
+                "lines": [
+                  [
+                    "CONTOU",
+                    "white",
+                    150
+                  ],
+                  [
+                    "E SAIU",
+                    "red",
+                    190
+                  ]
+                ]
+              }
+            }
+          },
+          {
+            "text": "No dia seguinte, a ação caiu setenta e sete por cento.",
+            "scene": {
+              "type": "counter",
+              "value": 77,
+              "prefix": "-",
+              "suffix": "%",
+              "over": "EM UM DIA",
+              "label": "AÇÕES DA AMERICANAS",
+              "color": "red",
+              "size": 240
+            }
+          },
+          {
+            "text": "Depois, a empresa admitiu: era fraude de vinte e cinco bilhões. Os acusados negam.",
+            "scene": {
+              "type": "print",
+              "media": "print_fraude",
+              "url": "https://braziljournal.com/americanas-admite-fraude-de-r-25-bi-outros-r-20-bi-estavam-contabilizados-errado",
+              "source": "Brazil Journal · 13/06/2023",
+              "rotate": -1.0,
+              "fallback": {
+                "type": "counter",
+                "value": 25,
+                "prefix": "R$ ",
+                "suffix": " BI",
+                "over": "A FRAUDE",
+                "label": "OS ACUSADOS NEGAM",
+                "color": "red",
+                "size": 230
+              }
+            }
+          },
+          {
+            "text": "O caso completo está no canal.",
+            "scene": {
+              "type": "bigtext",
+              "stagger": 0.25,
+              "lines": [
+                [
+                  "O CASO COMPLETO",
+                  "white",
+                  110
+                ],
+                [
+                  "ESTÁ NO CANAL",
+                  "gold",
+                  140
+                ]
+              ]
+            }
+          }
         ]
-       ],
-       "selo": "Americanas · 2023"
+      },
+      {
+        "title": "Como a Americanas escondeu R$ 25 bilhões",
+        "sentences": [
+          {
+            "text": "Como uma empresa que todo mundo conhece escondeu vinte e cinco bilhões?",
+            "scene": {
+              "type": "capa",
+              "foto": "loja",
+              "wiki": [
+                "Lojas Americanas fachada",
+                "Lojas Americanas",
+                "Americanas loja"
+              ],
+              "seta": false,
+              "recorte": "Americanas · 2023",
+              "faixa": "Como esconder",
+              "linhas": [
+                [
+                  "R$ 25",
+                  "gold",
+                  260
+                ],
+                [
+                  "BILHÕES",
+                  "white",
+                  210
+                ],
+                [
+                  "por anos",
+                  "red",
+                  180
+                ]
+              ],
+              "selo": "Americanas · 2023"
+            }
+          },
+          {
+            "text": "Primeiro: dívida com banco lançada como se fosse conta com fornecedor. Isso se chama risco sacado.",
+            "scene": {
+              "type": "stamp",
+              "org": "NO BALANÇO",
+              "title": "DÍVIDA COM BANCO",
+              "stamp": "FORNECEDOR?",
+              "stamp_at": 0.9
+            }
+          },
+          {
+            "text": "A empresa parecia menos endividada do que estava.",
+            "scene": {
+              "type": "bigtext",
+              "stagger": 0.25,
+              "lines": [
+                [
+                  "MENOS",
+                  "white",
+                  160
+                ],
+                [
+                  "ENDIVIDADA",
+                  "gold",
+                  160
+                ]
+              ]
+            }
+          },
+          {
+            "text": "Segundo: verbas de propaganda de fornecedores que, segundo a própria Americanas, nunca entraram no caixa.",
+            "scene": {
+              "type": "counter",
+              "value": 21,
+              "prefix": "R$ ",
+              "suffix": ",7 BI",
+              "over": "VERBAS QUE NUNCA ENTRARAM",
+              "label": "SEGUNDO A AMERICANAS",
+              "color": "red",
+              "size": 220
+            }
+          },
+          {
+            "text": "Era lucro de mentira.",
+            "scene": {
+              "type": "bigtext",
+              "stagger": 0.25,
+              "lines": [
+                [
+                  "LUCRO",
+                  "white",
+                  170
+                ],
+                [
+                  "DE MENTIRA",
+                  "red",
+                  170
+                ]
+              ]
+            }
+          },
+          {
+            "text": "A empresa culpou a diretoria anterior, que nega.",
+            "scene": {
+              "type": "print",
+              "media": "print_fraude",
+              "url": "https://braziljournal.com/americanas-admite-fraude-de-r-25-bi-outros-r-20-bi-estavam-contabilizados-errado",
+              "source": "Brazil Journal · 13/06/2023",
+              "rotate": -1.0,
+              "fallback": {
+                "type": "bigtext",
+                "stagger": 0.25,
+                "lines": [
+                  [
+                    "A DIRETORIA ANTERIOR",
+                    "white",
+                    100
+                  ],
+                  [
+                    "NEGA",
+                    "muted",
+                    170
+                  ]
+                ]
+              }
+            }
+          },
+          {
+            "text": "O caso completo está no canal.",
+            "scene": {
+              "type": "bigtext",
+              "stagger": 0.25,
+              "lines": [
+                [
+                  "O CASO COMPLETO",
+                  "white",
+                  110
+                ],
+                [
+                  "ESTÁ NO CANAL",
+                  "gold",
+                  140
+                ]
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "title": "O ex-presidente da Americanas foi preso na Espanha",
+        "sentences": [
+          {
+            "text": "O ex-presidente da Americanas foi preso na Espanha. E solto no dia seguinte.",
+            "scene": {
+              "type": "capa",
+              "foto": "madri",
+              "wiki": [
+                "Puerta de Alcalá Madrid",
+                "Puerta de Alcalá",
+                "Madrid skyline"
+              ],
+              "seta": false,
+              "recorte": "Caso Americanas",
+              "faixa": "Preso em Madri",
+              "linhas": [
+                [
+                  "E SOLTO",
+                  "white",
+                  220
+                ],
+                [
+                  "NO DIA",
+                  "white",
+                  180
+                ],
+                [
+                  "SEGUINTE",
+                  "red",
+                  230
+                ]
+              ],
+              "selo": "Caso Americanas · 2024"
+            }
+          },
+          {
+            "text": "Miguel Gutierrez comandou a empresa por cerca de vinte anos.",
+            "scene": {
+              "type": "bigtext",
+              "stagger": 0.25,
+              "lines": [
+                [
+                  "20 ANOS",
+                  "gold",
+                  200
+                ],
+                [
+                  "NO COMANDO",
+                  "white",
+                  120
+                ]
+              ]
+            }
+          },
+          {
+            "text": "Depois do rombo de vinte e cinco bilhões, ele foi morar na Espanha.",
+            "scene": {
+              "type": "bigtext",
+              "stagger": 0.25,
+              "lines": [
+                [
+                  "FOI MORAR",
+                  "white",
+                  140
+                ],
+                [
+                  "NA ESPANHA",
+                  "gold",
+                  160
+                ]
+              ]
+            }
+          },
+          {
+            "text": "Em junho de dois mil e vinte e quatro, a Polícia Federal fez uma operação, e ele foi preso em Madri.",
+            "scene": {
+              "type": "print",
+              "media": "print_madri",
+              "url": "https://www.bloomberglinea.com.br/negocios/preso-pela-interpol-em-madri-ex-ceo-da-americanas-e-protegido-por-cidadania-espanhola/",
+              "source": "Bloomberg Línea · 28/06/2024",
+              "rotate": -1.0,
+              "fallback": {
+                "type": "date",
+                "month": "JUNHO",
+                "day": "28",
+                "year": "2024",
+                "tag": "PRESO EM MADRI"
+              }
+            }
+          },
+          {
+            "text": "Depois, a Justiça revogou a prisão. Ele responde em liberdade e nega tudo.",
+            "scene": {
+              "type": "bigtext",
+              "stagger": 0.25,
+              "lines": [
+                [
+                  "RESPONDE SOLTO",
+                  "white",
+                  120
+                ],
+                [
+                  "E NEGA",
+                  "muted",
+                  160
+                ]
+              ]
+            }
+          },
+          {
+            "text": "Treze pessoas foram denunciadas, e não há condenação definitiva.",
+            "scene": {
+              "type": "counter",
+              "value": 13,
+              "suffix": " DENUNCIADOS",
+              "over": "MPF · 2025",
+              "label": "SEM CONDENAÇÃO DEFINITIVA",
+              "color": "red",
+              "size": 200
+            }
+          },
+          {
+            "text": "O caso completo está no canal.",
+            "scene": {
+              "type": "bigtext",
+              "stagger": 0.25,
+              "lines": [
+                [
+                  "O CASO COMPLETO",
+                  "white",
+                  110
+                ],
+                [
+                  "ESTÁ NO CANAL",
+                  "gold",
+                  140
+                ]
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "title": "Quem pagou a conta da Americanas",
+        "sentences": [
+          {
+            "text": "A fraude da Americanas foi de vinte e cinco bilhões. Adivinha quem pagou?",
+            "scene": {
+              "type": "capa",
+              "foto": "loja",
+              "wiki": [
+                "Lojas Americanas fachada",
+                "Lojas Americanas",
+                "Americanas loja"
+              ],
+              "seta": false,
+              "recorte": "Americanas · 2023",
+              "faixa": "R$ 25 bilhões",
+              "linhas": [
+                [
+                  "QUEM",
+                  "white",
+                  230
+                ],
+                [
+                  "PAGOU",
+                  "red",
+                  260
+                ],
+                [
+                  "a conta?",
+                  "gold",
+                  190
+                ]
+              ],
+              "selo": "Americanas · 2023"
+            }
+          },
+          {
+            "text": "Quem tinha ação perdeu setenta e sete por cento em um dia.",
+            "scene": {
+              "type": "image",
+              "media": "bovespa",
+              "wiki": [
+                "File:Bovespa, São Paulo city downtown.jpg"
+              ],
+              "lower": "Quem tinha ação",
+              "dim": 0.4,
+              "fallback": {
+                "type": "counter",
+                "value": 77,
+                "prefix": "-",
+                "suffix": "%",
+                "over": "QUEM TINHA AÇÃO",
+                "label": "EM UM DIA",
+                "color": "red",
+                "size": 240
+              }
+            }
+          },
+          {
+            "text": "Mais de dez mil pessoas perderam o emprego.",
+            "scene": {
+              "type": "bigtext",
+              "stagger": 0.25,
+              "lines": [
+                [
+                  "+10 MIL",
+                  "red",
+                  210
+                ],
+                [
+                  "EMPREGOS",
+                  "white",
+                  130
+                ]
+              ]
+            }
+          },
+          {
+            "text": "Fornecedores pequenos entraram na fila pra receber com desconto.",
+            "scene": {
+              "type": "bigtext",
+              "stagger": 0.25,
+              "lines": [
+                [
+                  "FORNECEDORES",
+                  "white",
+                  130
+                ],
+                [
+                  "NA FILA",
+                  "red",
+                  170
+                ]
+              ]
+            }
+          },
+          {
+            "text": "E a dívida reconhecida chegou a quarenta e três bilhões.",
+            "scene": {
+              "type": "counter",
+              "value": 43,
+              "prefix": "R$ ",
+              "suffix": " BI",
+              "over": "DÍVIDA RECONHECIDA",
+              "label": "RECUPERAÇÃO JUDICIAL",
+              "color": "red",
+              "size": 230
+            }
+          },
+          {
+            "text": "Os ex-diretores acusados negam, e não há condenação definitiva.",
+            "scene": {
+              "type": "bigtext",
+              "stagger": 0.25,
+              "lines": [
+                [
+                  "ACUSADOS NEGAM",
+                  "white",
+                  120
+                ],
+                [
+                  "SEM CONDENAÇÃO",
+                  "muted",
+                  120
+                ]
+              ]
+            }
+          },
+          {
+            "text": "O caso completo está no canal.",
+            "scene": {
+              "type": "bigtext",
+              "stagger": 0.25,
+              "lines": [
+                [
+                  "O CASO COMPLETO",
+                  "white",
+                  110
+                ],
+                [
+                  "ESTÁ NO CANAL",
+                  "gold",
+                  140
+                ]
+              ]
+            }
+          }
+        ]
       }
-     },
-     {
-      "text": "Em janeiro de dois mil e vinte e três, Sérgio Rial assumiu a Americanas.",
-      "scene": {
-       "type": "image",
-       "media": "rial_senado",
-       "wiki": [
-        "File:CAE - Comissão de Assuntos Econômicos (52777342560).jpg"
-       ],
-       "lower": "Sérgio Rial assume a Americanas",
-       "dim": 0.4,
-       "fallback": {
-        "type": "date",
-        "month": "JANEIRO",
-        "day": "02",
-        "year": "2023",
-        "tag": "RIAL ASSUME"
-       }
-      }
-     },
-     {
-      "text": "Em dois dias, achou uma dívida com bancos que não aparecia direito no balanço.",
-      "scene": {
-       "type": "bigtext",
-       "stagger": 0.25,
-       "lines": [
-        [
-         "DÍVIDA",
-         "white",
-         160
+    ],
+    "tiktoks": [
+      {
+        "title": "A loja que todo mundo conhece escondeu R$ 25 bilhões",
+        "caption": "A Americanas escondeu R$ 25 bilhões por anos. O presidente durou 9 dias. Os ex-diretores acusados negam e não há condenação definitiva.",
+        "hashtags": [
+          "#americanas",
+          "#fraude",
+          "#investimentos",
+          "#dinheiro",
+          "#economia"
         ],
-        [
-         "ESCONDIDA",
-         "red",
-         180
+        "sentences": [
+          {
+            "text": "A loja onde você comprava chocolate escondeu vinte e cinco bilhões de reais.",
+            "scene": {
+              "type": "capa",
+              "foto": "loja",
+              "wiki": [
+                "Lojas Americanas fachada",
+                "Lojas Americanas",
+                "Americanas loja"
+              ],
+              "seta": false,
+              "recorte": "Americanas · 2023",
+              "faixa": "A loja de todo mundo",
+              "linhas": [
+                [
+                  "ESCONDEU",
+                  "white",
+                  200
+                ],
+                [
+                  "R$ 25 BI",
+                  "red",
+                  260
+                ],
+                [
+                  "por anos",
+                  "gold",
+                  180
+                ]
+              ],
+              "selo": "Americanas · 2023"
+            }
+          },
+          {
+            "text": "Em janeiro de dois mil e vinte e três, a Americanas ganhou um presidente novo.",
+            "scene": {
+              "type": "video",
+              "media": "loja_corredor_v",
+              "search": "store aisle shopping shelves",
+              "search_en": "store aisle shopping shelves",
+              "start": 0.0,
+              "dim": 0.4,
+              "lower": "Americanas · janeiro de 2023",
+              "fallback": {
+                "type": "bigtext",
+                "stagger": 0.25,
+                "lines": [
+                  [
+                    "PRESIDENTE",
+                    "white",
+                    140
+                  ],
+                  [
+                    "NOVO",
+                    "gold",
+                    190
+                  ]
+                ]
+              },
+              "pixabay_id": 21117
+            }
+          },
+          {
+            "text": "Nove dias depois, ele saiu, e a empresa avisou o mercado: tinha um buraco de vinte bilhões nas contas.",
+            "scene": {
+              "type": "image",
+              "media": "rial_cae",
+              "wiki": [
+                "File:CAE - Comissão de Assuntos Econômicos (52777184549).jpg"
+              ],
+              "lower": "Sérgio Rial · 9 dias",
+              "dim": 0.4,
+              "fallback": {
+                "type": "counter",
+                "value": 20,
+                "prefix": "R$ ",
+                "suffix": " BI",
+                "over": "9 DIAS DEPOIS",
+                "label": "UM BURACO NAS CONTAS",
+                "color": "red",
+                "size": 230
+              }
+            }
+          },
+          {
+            "text": "No dia seguinte, as ações caíram setenta e sete por cento.",
+            "scene": {
+              "type": "counter",
+              "value": 77,
+              "prefix": "-",
+              "suffix": "%",
+              "over": "EM UM DIA",
+              "label": "AÇÕES DA AMERICANAS",
+              "color": "red",
+              "size": 240
+            }
+          },
+          {
+            "text": "Quem tinha mil reais em ações, no dia seguinte tinha uns duzentos e trinta.",
+            "scene": {
+              "type": "compare",
+              "title": "MIL REAIS EM AÇÕES",
+              "items": [
+                [
+                  "R$ 1.000",
+                  "NA VÉSPERA",
+                  "white"
+                ],
+                [
+                  "~R$ 230",
+                  "NO DIA SEGUINTE",
+                  "red"
+                ]
+              ],
+              "size": 170,
+              "stagger": 1.2,
+              "vs": false
+            }
+          },
+          {
+            "text": "Funcionava assim: dívida com banco aparecia no balanço como se fosse conta com fornecedor.",
+            "scene": {
+              "type": "stamp",
+              "org": "NO BALANÇO",
+              "title": "DÍVIDA COM BANCO",
+              "stamp": "FORNECEDOR?",
+              "stamp_at": 0.9
+            }
+          },
+          {
+            "text": "E verbas de propaganda que nunca entraram no caixa viravam lucro.",
+            "scene": {
+              "type": "bigtext",
+              "stagger": 0.25,
+              "lines": [
+                [
+                  "LUCRO",
+                  "white",
+                  170
+                ],
+                [
+                  "DE MENTIRA",
+                  "red",
+                  170
+                ]
+              ]
+            }
+          },
+          {
+            "text": "Por quê? Empresa com menos dívida e mais lucro vale mais na bolsa.",
+            "scene": {
+              "type": "bigtext",
+              "stagger": 0.25,
+              "lines": [
+                [
+                  "MENOS DÍVIDA",
+                  "white",
+                  130
+                ],
+                [
+                  "VALE MAIS",
+                  "gold",
+                  170
+                ]
+              ]
+            }
+          },
+          {
+            "text": "Uma semana depois, a empresa pediu recuperação judicial, com quarenta e três bilhões em dívidas.",
+            "scene": {
+              "type": "counter",
+              "value": 43,
+              "prefix": "R$ ",
+              "suffix": " BI",
+              "over": "RECUPERAÇÃO JUDICIAL",
+              "label": "EM DÍVIDAS",
+              "color": "red",
+              "size": 230
+            }
+          },
+          {
+            "text": "Mais de dez mil pessoas perderam o emprego.",
+            "scene": {
+              "type": "video",
+              "media": "galpao_v",
+              "search": "warehouse boxes logistics",
+              "search_en": "warehouse boxes logistics",
+              "start": 0.0,
+              "dim": 0.4,
+              "lower": "+10 mil empregos a menos",
+              "fallback": {
+                "type": "bigtext",
+                "stagger": 0.25,
+                "lines": [
+                  [
+                    "+10 MIL",
+                    "red",
+                    210
+                  ],
+                  [
+                    "EMPREGOS",
+                    "white",
+                    130
+                  ]
+                ]
+              },
+              "pixabay_id": 43658
+            }
+          },
+          {
+            "text": "Quem tinha ação viu o dinheiro sumir. Fornecedores foram pra fila.",
+            "scene": {
+              "type": "video",
+              "media": "celular_queda_v",
+              "search": "stock market chart falling red",
+              "search_en": "stock market chart falling red",
+              "start": 0.0,
+              "dim": 0.4,
+              "lower": "O dinheiro sumiu",
+              "fallback": {
+                "type": "bigtext",
+                "stagger": 0.25,
+                "lines": [
+                  [
+                    "SUMIU",
+                    "red",
+                    200
+                  ],
+                  [
+                    "EM UM DIA",
+                    "white",
+                    130
+                  ]
+                ]
+              },
+              "pixabay_id": 33805
+            }
+          },
+          {
+            "text": "O ex-presidente foi preso na Espanha e solto no dia seguinte. Hoje responde em liberdade.",
+            "scene": {
+              "type": "print",
+              "media": "print_madri",
+              "url": "https://www.bloomberglinea.com.br/negocios/preso-pela-interpol-em-madri-ex-ceo-da-americanas-e-protegido-por-cidadania-espanhola/",
+              "source": "Bloomberg Línea · 28/06/2024",
+              "rotate": -1.0,
+              "fallback": {
+                "type": "bigtext",
+                "stagger": 0.25,
+                "lines": [
+                  [
+                    "PRESO E SOLTO",
+                    "white",
+                    130
+                  ],
+                  [
+                    "NA ESPANHA",
+                    "gold",
+                    150
+                  ]
+                ]
+              }
+            }
+          },
+          {
+            "text": "Treze pessoas foram denunciadas. Os acusados negam, e não há condenação definitiva.",
+            "scene": {
+              "type": "counter",
+              "value": 13,
+              "suffix": " DENUNCIADOS",
+              "over": "MPF · 2025",
+              "label": "OS ACUSADOS NEGAM",
+              "color": "red",
+              "size": 200
+            }
+          },
+          {
+            "text": "Você tinha ação da Americanas? Conta aqui nos comentários.",
+            "scene": {
+              "type": "bigtext",
+              "stagger": 0.25,
+              "lines": [
+                [
+                  "VOCÊ TINHA",
+                  "white",
+                  140
+                ],
+                [
+                  "AÇÃO?",
+                  "gold",
+                  180
+                ],
+                [
+                  "COMENTA",
+                  "muted",
+                  90
+                ]
+              ]
+            }
+          }
         ]
-       ]
       }
-     },
-     {
-      "text": "No dia onze, contou tudo ao mercado e pediu demissão.",
-      "scene": {
-       "type": "image",
-       "media": "rial_cae",
-       "wiki": [
-        "File:CAE - Comissão de Assuntos Econômicos (52777184549).jpg"
-       ],
-       "lower": "Sérgio Rial · contou e saiu",
-       "dim": 0.4,
-       "fallback": {
-        "type": "bigtext",
-        "stagger": 0.25,
-        "lines": [
-         [
-          "CONTOU",
-          "white",
-          150
-         ],
-         [
-          "E SAIU",
-          "red",
-          190
-         ]
-        ]
-       }
-      }
-     },
-     {
-      "text": "No dia seguinte, a ação caiu setenta e sete por cento.",
-      "scene": {
-       "type": "counter",
-       "value": 77,
-       "prefix": "-",
-       "suffix": "%",
-       "over": "EM UM DIA",
-       "label": "AÇÕES DA AMERICANAS",
-       "color": "red",
-       "size": 240
-      }
-     },
-     {
-      "text": "Depois, a empresa admitiu: era fraude de vinte e cinco bilhões. Os acusados negam.",
-      "scene": {
-       "type": "print",
-       "media": "print_fraude",
-       "url": "https://braziljournal.com/americanas-admite-fraude-de-r-25-bi-outros-r-20-bi-estavam-contabilizados-errado",
-       "source": "Brazil Journal · 13/06/2023",
-       "rotate": -1.0,
-       "fallback": {
-        "type": "counter",
-        "value": 25,
-        "prefix": "R$ ",
-        "suffix": " BI",
-        "over": "A FRAUDE",
-        "label": "OS ACUSADOS NEGAM",
-        "color": "red",
-        "size": 230
-       }
-      }
-     },
-     {
-      "text": "O caso completo está no canal.",
-      "scene": {
-       "type": "bigtext",
-       "stagger": 0.25,
-       "lines": [
-        [
-         "O CASO COMPLETO",
-         "white",
-         110
-        ],
-        [
-         "ESTÁ NO CANAL",
-         "gold",
-         140
-        ]
-       ]
-      }
-     }
     ]
-   },
-   {
-    "title": "Como a Americanas escondeu R$ 25 bilhões",
-    "sentences": [
-     {
-      "text": "Como uma empresa que todo mundo conhece escondeu vinte e cinco bilhões?",
-      "scene": {
-       "type": "capa",
-       "foto": "loja",
-       "wiki": [
-        "Lojas Americanas fachada",
-        "Lojas Americanas",
-        "Americanas loja"
-       ],
-       "seta": false,
-       "recorte": "Americanas · 2023",
-       "faixa": "Como esconder",
-       "linhas": [
-        [
-         "R$ 25",
-         "gold",
-         260
+  },
+  "serie": [
+    {
+      "partes": [
+        1,
+        2
+      ],
+      "capa": {
+        "type": "capa",
+        "foto": "loja",
+        "wiki": [
+          "Lojas Americanas fachada",
+          "Lojas Americanas",
+          "Americanas loja"
         ],
-        [
-         "BILHÕES",
-         "white",
-         210
+        "seta": false,
+        "recorte": "Americanas · Parte 1",
+        "faixa": "Parte 1 de 4",
+        "linhas": [
+          [
+            "UM ROMBO DE",
+            "white",
+            190
+          ],
+          [
+            "R$ 20 BILHÕES",
+            "red",
+            210
+          ],
+          [
+            "EM UMA NOITE",
+            "gold",
+            190
+          ]
         ],
-        [
-         "por anos",
-         "red",
-         180
-        ]
-       ],
-       "selo": "Americanas · 2023"
-      }
-     },
-     {
-      "text": "Primeiro: dívida com banco lançada como se fosse conta com fornecedor. Isso se chama risco sacado.",
-      "scene": {
-       "type": "stamp",
-       "org": "NO BALANÇO",
-       "title": "DÍVIDA COM BANCO",
-       "stamp": "FORNECEDOR?",
-       "stamp_at": 0.9
-      }
-     },
-     {
-      "text": "A empresa parecia menos endividada do que estava.",
-      "scene": {
-       "type": "bigtext",
-       "stagger": 0.25,
-       "lines": [
-        [
-         "MENOS",
-         "white",
-         160
+        "selo": "Caso Americanas · Parte 1"
+      },
+      "caption": "Numa noite de janeiro, a Americanas anunciou um rombo de R$ 20 bilhões e o presidente, com 9 dias no cargo, pediu demissão. Como uma loja que todo mundo conhece chegou nisso? Parte 1 de 4.",
+      "hashtags": [
+        "#americanas",
+        "#economia",
+        "#dinheiro",
+        "#historia",
+        "#serie"
+      ]
+    },
+    {
+      "partes": [
+        3,
+        4
+      ],
+      "capa": {
+        "type": "capa",
+        "foto": "loja",
+        "wiki": [
+          "Lojas Americanas fachada",
+          "Lojas Americanas",
+          "Americanas loja"
         ],
-        [
-         "ENDIVIDADA",
-         "gold",
-         160
-        ]
-       ]
-      }
-     },
-     {
-      "text": "Segundo: verbas de propaganda de fornecedores que, segundo a própria Americanas, nunca entraram no caixa.",
-      "scene": {
-       "type": "counter",
-       "value": 21,
-       "prefix": "R$ ",
-       "suffix": ",7 BI",
-       "over": "VERBAS QUE NUNCA ENTRARAM",
-       "label": "SEGUNDO A AMERICANAS",
-       "color": "red",
-       "size": 220
-      }
-     },
-     {
-      "text": "Era lucro de mentira.",
-      "scene": {
-       "type": "bigtext",
-       "stagger": 0.25,
-       "lines": [
-        [
-         "LUCRO",
-         "white",
-         170
+        "seta": false,
+        "recorte": "Americanas · Parte 2",
+        "faixa": "Parte 2 de 4",
+        "linhas": [
+          [
+            "9 DIAS",
+            "gold",
+            260
+          ],
+          [
+            "E UM BURACO",
+            "white",
+            170
+          ],
+          [
+            "DE R$ 20 BI",
+            "red",
+            200
+          ]
         ],
-        [
-         "DE MENTIRA",
-         "red",
-         170
-        ]
-       ]
-      }
-     },
-     {
-      "text": "A empresa culpou a diretoria anterior, que nega.",
-      "scene": {
-       "type": "print",
-       "media": "print_fraude",
-       "url": "https://braziljournal.com/americanas-admite-fraude-de-r-25-bi-outros-r-20-bi-estavam-contabilizados-errado",
-       "source": "Brazil Journal · 13/06/2023",
-       "rotate": -1.0,
-       "fallback": {
-        "type": "bigtext",
-        "stagger": 0.25,
-        "lines": [
-         [
-          "A DIRETORIA ANTERIOR",
-          "white",
-          100
-         ],
-         [
-          "NEGA",
-          "muted",
-          170
-         ]
-        ]
-       }
-      }
-     },
-     {
-      "text": "O caso completo está no canal.",
-      "scene": {
-       "type": "bigtext",
-       "stagger": 0.25,
-       "lines": [
-        [
-         "O CASO COMPLETO",
-         "white",
-         110
+        "selo": "Caso Americanas · Parte 2"
+      },
+      "caption": "Americanas, parte 2: o presidente que durou 9 dias e como R$ 25 bilhões ficaram escondidos no balanço. Os acusados negam.",
+      "hashtags": [
+        "#americanas",
+        "#fraude",
+        "#contabilidade",
+        "#dinheiro",
+        "#serie"
+      ]
+    },
+    {
+      "partes": [
+        5,
+        6
+      ],
+      "capa": {
+        "type": "capa",
+        "foto": "loja",
+        "wiki": [
+          "Lojas Americanas fachada",
+          "Lojas Americanas",
+          "Americanas loja"
         ],
-        [
-         "ESTÁ NO CANAL",
-         "gold",
-         140
-        ]
-       ]
-      }
-     }
-    ]
-   },
-   {
-    "title": "O ex-presidente da Americanas foi preso na Espanha",
-    "sentences": [
-     {
-      "text": "O ex-presidente da Americanas foi preso na Espanha. E solto no dia seguinte.",
-      "scene": {
-       "type": "capa",
-       "foto": "madri",
-       "wiki": [
-        "Puerta de Alcalá Madrid",
-        "Puerta de Alcalá",
-        "Madrid skyline"
-       ],
-       "seta": false,
-       "recorte": "Caso Americanas",
-       "faixa": "Preso em Madri",
-       "linhas": [
-        [
-         "E SOLTO",
-         "white",
-         220
+        "seta": false,
+        "recorte": "Americanas · Parte 3",
+        "faixa": "Parte 3 de 4",
+        "linhas": [
+          [
+            "A QUEDA",
+            "red",
+            240
+          ],
+          [
+            "e quem paga",
+            "white",
+            160
+          ],
+          [
+            "a conta",
+            "gold",
+            200
+          ]
         ],
-        [
-         "NO DIA",
-         "white",
-         180
+        "selo": "Caso Americanas · Parte 3"
+      },
+      "caption": "Americanas, parte 3: recuperação judicial, R$ 43 bilhões em dívidas e quem pagou a conta.",
+      "hashtags": [
+        "#americanas",
+        "#economia",
+        "#bolsadevalores",
+        "#dinheiro",
+        "#serie"
+      ]
+    },
+    {
+      "partes": [
+        7
+      ],
+      "capa": {
+        "type": "capa",
+        "foto": "loja",
+        "wiki": [
+          "Lojas Americanas fachada",
+          "Lojas Americanas",
+          "Americanas loja"
         ],
-        [
-         "SEGUINTE",
-         "red",
-         230
-        ]
-       ],
-       "selo": "Caso Americanas · 2024"
-      }
-     },
-     {
-      "text": "Miguel Gutierrez comandou a empresa por cerca de vinte anos.",
-      "scene": {
-       "type": "bigtext",
-       "stagger": 0.25,
-       "lines": [
-        [
-         "20 ANOS",
-         "gold",
-         200
+        "seta": false,
+        "recorte": "Americanas · Final",
+        "faixa": "Parte 4 de 4",
+        "linhas": [
+          [
+            "ONDE",
+            "white",
+            220
+          ],
+          [
+            "ESTÁ",
+            "white",
+            220
+          ],
+          [
+            "HOJE",
+            "gold",
+            260
+          ]
         ],
-        [
-         "NO COMANDO",
-         "white",
-         120
-        ]
-       ]
-      }
-     },
-     {
-      "text": "Depois do rombo de vinte e cinco bilhões, ele foi morar na Espanha.",
-      "scene": {
-       "type": "bigtext",
-       "stagger": 0.25,
-       "lines": [
-        [
-         "FOI MORAR",
-         "white",
-         140
-        ],
-        [
-         "NA ESPANHA",
-         "gold",
-         160
-        ]
-       ]
-      }
-     },
-     {
-      "text": "Em junho de dois mil e vinte e quatro, a Polícia Federal fez uma operação, e ele foi preso em Madri.",
-      "scene": {
-       "type": "print",
-       "media": "print_madri",
-       "url": "https://www.bloomberglinea.com.br/negocios/preso-pela-interpol-em-madri-ex-ceo-da-americanas-e-protegido-por-cidadania-espanhola/",
-       "source": "Bloomberg Línea · 28/06/2024",
-       "rotate": -1.0,
-       "fallback": {
-        "type": "date",
-        "month": "JUNHO",
-        "day": "28",
-        "year": "2024",
-        "tag": "PRESO EM MADRI"
-       }
-      }
-     },
-     {
-      "text": "Depois, a Justiça revogou a prisão. Ele responde em liberdade e nega tudo.",
-      "scene": {
-       "type": "bigtext",
-       "stagger": 0.25,
-       "lines": [
-        [
-         "RESPONDE SOLTO",
-         "white",
-         120
-        ],
-        [
-         "E NEGA",
-         "muted",
-         160
-        ]
-       ]
-      }
-     },
-     {
-      "text": "Treze pessoas foram denunciadas, e não há condenação definitiva.",
-      "scene": {
-       "type": "counter",
-       "value": 13,
-       "suffix": " DENUNCIADOS",
-       "over": "MPF · 2025",
-       "label": "SEM CONDENAÇÃO DEFINITIVA",
-       "color": "red",
-       "size": 200
-      }
-     },
-     {
-      "text": "O caso completo está no canal.",
-      "scene": {
-       "type": "bigtext",
-       "stagger": 0.25,
-       "lines": [
-        [
-         "O CASO COMPLETO",
-         "white",
-         110
-        ],
-        [
-         "ESTÁ NO CANAL",
-         "gold",
-         140
-        ]
-       ]
-      }
-     }
-    ]
-   },
-   {
-    "title": "Quem pagou a conta da Americanas",
-    "sentences": [
-     {
-      "text": "A fraude da Americanas foi de vinte e cinco bilhões. Adivinha quem pagou?",
-      "scene": {
-       "type": "capa",
-       "foto": "loja",
-       "wiki": [
-        "Lojas Americanas fachada",
-        "Lojas Americanas",
-        "Americanas loja"
-       ],
-       "seta": false,
-       "recorte": "Americanas · 2023",
-       "faixa": "R$ 25 bilhões",
-       "linhas": [
-        [
-         "QUEM",
-         "white",
-         230
-        ],
-        [
-         "PAGOU",
-         "red",
-         260
-        ],
-        [
-         "a conta?",
-         "gold",
-         190
-        ]
-       ],
-       "selo": "Americanas · 2023"
-      }
-     },
-     {
-      "text": "Quem tinha ação perdeu setenta e sete por cento em um dia.",
-      "scene": {
-       "type": "image",
-       "media": "bovespa",
-       "wiki": [
-        "File:Bovespa, São Paulo city downtown.jpg"
-       ],
-       "lower": "Quem tinha ação",
-       "dim": 0.4,
-       "fallback": {
-        "type": "counter",
-        "value": 77,
-        "prefix": "-",
-        "suffix": "%",
-        "over": "QUEM TINHA AÇÃO",
-        "label": "EM UM DIA",
-        "color": "red",
-        "size": 240
-       }
-      }
-     },
-     {
-      "text": "Mais de dez mil pessoas perderam o emprego.",
-      "scene": {
-       "type": "bigtext",
-       "stagger": 0.25,
-       "lines": [
-        [
-         "+10 MIL",
-         "red",
-         210
-        ],
-        [
-         "EMPREGOS",
-         "white",
-         130
-        ]
-       ]
-      }
-     },
-     {
-      "text": "Fornecedores pequenos entraram na fila pra receber com desconto.",
-      "scene": {
-       "type": "bigtext",
-       "stagger": 0.25,
-       "lines": [
-        [
-         "FORNECEDORES",
-         "white",
-         130
-        ],
-        [
-         "NA FILA",
-         "red",
-         170
-        ]
-       ]
-      }
-     },
-     {
-      "text": "E a dívida reconhecida chegou a quarenta e três bilhões.",
-      "scene": {
-       "type": "counter",
-       "value": 43,
-       "prefix": "R$ ",
-       "suffix": " BI",
-       "over": "DÍVIDA RECONHECIDA",
-       "label": "RECUPERAÇÃO JUDICIAL",
-       "color": "red",
-       "size": 230
-      }
-     },
-     {
-      "text": "Os ex-diretores acusados negam, e não há condenação definitiva.",
-      "scene": {
-       "type": "bigtext",
-       "stagger": 0.25,
-       "lines": [
-        [
-         "ACUSADOS NEGAM",
-         "white",
-         120
-        ],
-        [
-         "SEM CONDENAÇÃO",
-         "muted",
-         120
-        ]
-       ]
-      }
-     },
-     {
-      "text": "O caso completo está no canal.",
-      "scene": {
-       "type": "bigtext",
-       "stagger": 0.25,
-       "lines": [
-        [
-         "O CASO COMPLETO",
-         "white",
-         110
-        ],
-        [
-         "ESTÁ NO CANAL",
-         "gold",
-         140
-        ]
-       ]
-      }
-     }
-    ]
-   }
+        "selo": "Caso Americanas · Final"
+      },
+      "caption": "Americanas, parte final: a operação da PF, o ex-presidente na Espanha e onde o caso está hoje. Os acusados negam e não há condenação definitiva.",
+      "hashtags": [
+        "#americanas",
+        "#fraude",
+        "#economia",
+        "#dinheiro",
+        "#serie"
+      ]
+    }
   ],
-  "tiktoks": [
-   {
-    "title": "A loja que todo mundo conhece escondeu R$ 25 bilhões",
-    "caption": "A Americanas escondeu R$ 25 bilhões por anos. O presidente durou 9 dias. Os ex-diretores acusados negam e não há condenação definitiva.",
-    "hashtags": [
-     "#americanas",
-     "#fraude",
-     "#investimentos",
-     "#dinheiro",
-     "#economia"
+  "meta": {
+    "titles": [
+      "AMERICANAS: Como Sumiram R$ 25 Bilhões da Loja Que Todo Brasileiro Conhece",
+      "O Que Aconteceu Com a Americanas? A Fraude de R$ 25 Bilhões"
     ],
-    "sentences": [
-     {
-      "text": "A loja onde você comprava chocolate escondeu vinte e cinco bilhões de reais.",
-      "scene": {
-       "type": "capa",
-       "foto": "loja",
-       "wiki": [
+    "description": "Em 11 de janeiro de 2023, a Americanas revelou um buraco de R$ 20 bilhões nas contas. O novo presidente, com 9 dias no cargo, saiu, e as ações caíram 77% em um dia. Meses depois, a empresa admitiu fraude de R$ 25,3 bilhões. Neste vídeo: como o risco sacado e as verbas de propaganda esconderam a dívida, a recuperação judicial de R$ 43 bilhões, quem pagou a conta e onde o caso está hoje.\n\nOs ex-executivos acusados negam e não há condenação definitiva até a publicação deste vídeo.\n\n[CAPÍTULOS]\n\nFontes: fatos relevantes da Americanas (jan/2023 e jun/2023); Bloomberg Línea; Brazil Journal (13/06/2023); Forbes Brasil (jan/2024); Polícia Federal (Operação Disclosure); MPF (denúncia, 2025); Migalhas; Capital Aberto (abr/2026).\n\n#Americanas #Fraude #RiscoSacado #CustoOculto",
+    "tags": [
+      "americanas",
+      "fraude americanas",
+      "o que aconteceu com a americanas",
+      "risco sacado",
+      "americanas recuperação judicial",
+      "miguel gutierrez",
+      "custo oculto"
+    ]
+  },
+  "thumbs_capa": [
+    {
+      "type": "capa",
+      "foto": "loja",
+      "wiki": [
         "Lojas Americanas fachada",
         "Lojas Americanas",
         "Americanas loja"
-       ],
-       "seta": false,
-       "recorte": "Americanas · 2023",
-       "faixa": "A loja de todo mundo",
-       "linhas": [
+      ],
+      "seta": false,
+      "recorte": "Americanas · 2023",
+      "faixa": "A loja de todo mundo",
+      "linhas": [
         [
-         "ESCONDEU",
-         "white",
-         200
-        ],
-        [
-         "R$ 25 BI",
-         "red",
-         260
-        ],
-        [
-         "por anos",
-         "gold",
-         180
-        ]
-       ],
-       "selo": "Americanas · 2023"
-      }
-     },
-     {
-      "text": "Em janeiro de dois mil e vinte e três, a Americanas ganhou um presidente novo.",
-      "scene": {
-       "type": "video",
-       "media": "loja_corredor_v",
-       "search": "store aisle shopping shelves",
-       "search_en": "store aisle shopping shelves",
-       "start": 0.0,
-       "dim": 0.4,
-       "lower": "Americanas · janeiro de 2023",
-       "fallback": {
-        "type": "bigtext",
-        "stagger": 0.25,
-        "lines": [
-         [
-          "PRESIDENTE",
-          "white",
-          140
-         ],
-         [
-          "NOVO",
-          "gold",
-          190
-         ]
-        ]
-       },
-       "pixabay_id": 21117
-      }
-     },
-     {
-      "text": "Nove dias depois, ele saiu, e a empresa avisou o mercado: tinha um buraco de vinte bilhões nas contas.",
-      "scene": {
-       "type": "image",
-       "media": "rial_cae",
-       "wiki": [
-        "File:CAE - Comissão de Assuntos Econômicos (52777184549).jpg"
-       ],
-       "lower": "Sérgio Rial · 9 dias",
-       "dim": 0.4,
-       "fallback": {
-        "type": "counter",
-        "value": 20,
-        "prefix": "R$ ",
-        "suffix": " BI",
-        "over": "9 DIAS DEPOIS",
-        "label": "UM BURACO NAS CONTAS",
-        "color": "red",
-        "size": 230
-       }
-      }
-     },
-     {
-      "text": "No dia seguinte, as ações caíram setenta e sete por cento.",
-      "scene": {
-       "type": "counter",
-       "value": 77,
-       "prefix": "-",
-       "suffix": "%",
-       "over": "EM UM DIA",
-       "label": "AÇÕES DA AMERICANAS",
-       "color": "red",
-       "size": 240
-      }
-     },
-     {
-      "text": "Quem tinha mil reais em ações, no dia seguinte tinha uns duzentos e trinta.",
-      "scene": {
-       "type": "compare",
-       "title": "MIL REAIS EM AÇÕES",
-       "items": [
-        [
-         "R$ 1.000",
-         "NA VÉSPERA",
-         "white"
-        ],
-        [
-         "~R$ 230",
-         "NO DIA SEGUINTE",
-         "red"
-        ]
-       ],
-       "size": 170,
-       "stagger": 1.2,
-       "vs": false
-      }
-     },
-     {
-      "text": "Funcionava assim: dívida com banco aparecia no balanço como se fosse conta com fornecedor.",
-      "scene": {
-       "type": "stamp",
-       "org": "NO BALANÇO",
-       "title": "DÍVIDA COM BANCO",
-       "stamp": "FORNECEDOR?",
-       "stamp_at": 0.9
-      }
-     },
-     {
-      "text": "E verbas de propaganda que nunca entraram no caixa viravam lucro.",
-      "scene": {
-       "type": "bigtext",
-       "stagger": 0.25,
-       "lines": [
-        [
-         "LUCRO",
-         "white",
-         170
-        ],
-        [
-         "DE MENTIRA",
-         "red",
-         170
-        ]
-       ]
-      }
-     },
-     {
-      "text": "Por quê? Empresa com menos dívida e mais lucro vale mais na bolsa.",
-      "scene": {
-       "type": "bigtext",
-       "stagger": 0.25,
-       "lines": [
-        [
-         "MENOS DÍVIDA",
-         "white",
-         130
-        ],
-        [
-         "VALE MAIS",
-         "gold",
-         170
-        ]
-       ]
-      }
-     },
-     {
-      "text": "Uma semana depois, a empresa pediu recuperação judicial, com quarenta e três bilhões em dívidas.",
-      "scene": {
-       "type": "counter",
-       "value": 43,
-       "prefix": "R$ ",
-       "suffix": " BI",
-       "over": "RECUPERAÇÃO JUDICIAL",
-       "label": "EM DÍVIDAS",
-       "color": "red",
-       "size": 230
-      }
-     },
-     {
-      "text": "Mais de dez mil pessoas perderam o emprego.",
-      "scene": {
-       "type": "video",
-       "media": "galpao_v",
-       "search": "warehouse boxes logistics",
-       "search_en": "warehouse boxes logistics",
-       "start": 0.0,
-       "dim": 0.4,
-       "lower": "+10 mil empregos a menos",
-       "fallback": {
-        "type": "bigtext",
-        "stagger": 0.25,
-        "lines": [
-         [
-          "+10 MIL",
+          "R$ 25 BI",
           "red",
-          210
-         ],
-         [
-          "EMPREGOS",
+          260
+        ],
+        [
+          "ESCONDIDOS",
           "white",
-          130
-         ]
-        ]
-       },
-       "pixabay_id": 43658
-      }
-     },
-     {
-      "text": "Quem tinha ação viu o dinheiro sumir. Fornecedores foram pra fila.",
-      "scene": {
-       "type": "video",
-       "media": "celular_queda_v",
-       "search": "stock market chart falling red",
-       "search_en": "stock market chart falling red",
-       "start": 0.0,
-       "dim": 0.4,
-       "lower": "O dinheiro sumiu",
-       "fallback": {
-        "type": "bigtext",
-        "stagger": 0.25,
-        "lines": [
-         [
-          "SUMIU",
-          "red",
           200
-         ],
-         [
-          "EM UM DIA",
-          "white",
-          130
-         ]
-        ]
-       },
-       "pixabay_id": 33805
-      }
-     },
-     {
-      "text": "O ex-presidente foi preso na Espanha e solto no dia seguinte. Hoje responde em liberdade.",
-      "scene": {
-       "type": "print",
-       "media": "print_madri",
-       "url": "https://www.bloomberglinea.com.br/negocios/preso-pela-interpol-em-madri-ex-ceo-da-americanas-e-protegido-por-cidadania-espanhola/",
-       "source": "Bloomberg Línea · 28/06/2024",
-       "rotate": -1.0,
-       "fallback": {
-        "type": "bigtext",
-        "stagger": 0.25,
-        "lines": [
-         [
-          "PRESO E SOLTO",
-          "white",
-          130
-         ],
-         [
-          "NA ESPANHA",
+        ],
+        [
+          "por anos",
           "gold",
           150
-         ]
         ]
-       }
-      }
-     },
-     {
-      "text": "Treze pessoas foram denunciadas. Os acusados negam, e não há condenação definitiva.",
-      "scene": {
-       "type": "counter",
-       "value": 13,
-       "suffix": " DENUNCIADOS",
-       "over": "MPF · 2025",
-       "label": "OS ACUSADOS NEGAM",
-       "color": "red",
-       "size": 200
-      }
-     },
-     {
-      "text": "Você tinha ação da Americanas? Conta aqui nos comentários.",
-      "scene": {
-       "type": "bigtext",
-       "stagger": 0.25,
-       "lines": [
+      ],
+      "selo": "Americanas · 2023"
+    },
+    {
+      "type": "capa",
+      "foto": "loja",
+      "wiki": [
+        "Lojas Americanas fachada",
+        "Lojas Americanas",
+        "Americanas loja"
+      ],
+      "seta": false,
+      "recorte": "Americanas · 2023",
+      "faixa": "O presidente durou",
+      "linhas": [
         [
-         "VOCÊ TINHA",
-         "white",
-         140
+          "9 DIAS",
+          "gold",
+          280
         ],
         [
-         "AÇÃO?",
-         "gold",
-         180
+          "e achou",
+          "white",
+          170
         ],
         [
-         "COMENTA",
-         "muted",
-         90
+          "R$ 20 BI",
+          "red",
+          220
         ]
-       ]
-      }
-     }
-    ]
-   }
-  ]
- },
- "serie": [
-  {
-   "partes": [
-    1,
-    2
-   ],
-   "capa": {
-    "type": "capa",
-    "foto": "loja",
-    "wiki": [
-     "Lojas Americanas fachada",
-     "Lojas Americanas",
-     "Americanas loja"
-    ],
-    "seta": false,
-    "recorte": "Americanas · Parte 1",
-    "faixa": "Parte 1 de 4",
-    "linhas": [
-     [
-      "A LOJA",
-      "white",
-      210
-     ],
-     [
-      "DE TODO MUNDO",
-      "gold",
-      170
-     ],
-     [
-      "ESCONDEU",
-      "red",
-      200
-     ]
-    ],
-    "selo": "Caso Americanas · Parte 1"
-   },
-   "caption": "Americanas, parte 1: a loja que todo brasileiro conhece e o comunicado que derrubou tudo em uma noite. Segue pra ver a parte 2.",
-   "hashtags": [
-    "#americanas",
-    "#investimentos",
-    "#dinheiro",
-    "#economia",
-    "#serie"
-   ]
-  },
-  {
-   "partes": [
-    3,
-    4
-   ],
-   "capa": {
-    "type": "capa",
-    "foto": "loja",
-    "wiki": [
-     "Lojas Americanas fachada",
-     "Lojas Americanas",
-     "Americanas loja"
-    ],
-    "seta": false,
-    "recorte": "Americanas · Parte 2",
-    "faixa": "Parte 2 de 4",
-    "linhas": [
-     [
-      "9 DIAS",
-      "gold",
-      260
-     ],
-     [
-      "E UM BURACO",
-      "white",
-      170
-     ],
-     [
-      "DE R$ 20 BI",
-      "red",
-      200
-     ]
-    ],
-    "selo": "Caso Americanas · Parte 2"
-   },
-   "caption": "Americanas, parte 2: o presidente que durou 9 dias e como R$ 25 bilhões ficaram escondidos no balanço. Os acusados negam.",
-   "hashtags": [
-    "#americanas",
-    "#fraude",
-    "#contabilidade",
-    "#dinheiro",
-    "#serie"
-   ]
-  },
-  {
-   "partes": [
-    5,
-    6
-   ],
-   "capa": {
-    "type": "capa",
-    "foto": "loja",
-    "wiki": [
-     "Lojas Americanas fachada",
-     "Lojas Americanas",
-     "Americanas loja"
-    ],
-    "seta": false,
-    "recorte": "Americanas · Parte 3",
-    "faixa": "Parte 3 de 4",
-    "linhas": [
-     [
-      "A QUEDA",
-      "red",
-      240
-     ],
-     [
-      "e quem paga",
-      "white",
-      160
-     ],
-     [
-      "a conta",
-      "gold",
-      200
-     ]
-    ],
-    "selo": "Caso Americanas · Parte 3"
-   },
-   "caption": "Americanas, parte 3: recuperação judicial, R$ 43 bilhões em dívidas e quem pagou a conta.",
-   "hashtags": [
-    "#americanas",
-    "#economia",
-    "#bolsadevalores",
-    "#dinheiro",
-    "#serie"
-   ]
-  },
-  {
-   "partes": [
-    7
-   ],
-   "capa": {
-    "type": "capa",
-    "foto": "loja",
-    "wiki": [
-     "Lojas Americanas fachada",
-     "Lojas Americanas",
-     "Americanas loja"
-    ],
-    "seta": false,
-    "recorte": "Americanas · Final",
-    "faixa": "Parte 4 de 4",
-    "linhas": [
-     [
-      "ONDE",
-      "white",
-      220
-     ],
-     [
-      "ESTÁ",
-      "white",
-      220
-     ],
-     [
-      "HOJE",
-      "gold",
-      260
-     ]
-    ],
-    "selo": "Caso Americanas · Final"
-   },
-   "caption": "Americanas, parte final: a operação da PF, o ex-presidente na Espanha e onde o caso está hoje. Os acusados negam e não há condenação definitiva.",
-   "hashtags": [
-    "#americanas",
-    "#fraude",
-    "#economia",
-    "#dinheiro",
-    "#serie"
-   ]
-  }
- ],
- "meta": {
-  "titles": [
-   "AMERICANAS: Como Sumiram R$ 25 Bilhões da Loja Que Todo Brasileiro Conhece",
-   "O Que Aconteceu Com a Americanas? A Fraude de R$ 25 Bilhões"
+      ],
+      "selo": "Americanas · 2023"
+    }
   ],
-  "description": "Em 11 de janeiro de 2023, a Americanas revelou um buraco de R$ 20 bilhões nas contas. O novo presidente, com 9 dias no cargo, saiu, e as ações caíram 77% em um dia. Meses depois, a empresa admitiu fraude de R$ 25,3 bilhões. Neste vídeo: como o risco sacado e as verbas de propaganda esconderam a dívida, a recuperação judicial de R$ 43 bilhões, quem pagou a conta e onde o caso está hoje.\n\nOs ex-executivos acusados negam e não há condenação definitiva até a publicação deste vídeo.\n\n[CAPÍTULOS]\n\nFontes: fatos relevantes da Americanas (jan/2023 e jun/2023); Bloomberg Línea; Brazil Journal (13/06/2023); Forbes Brasil (jan/2024); Polícia Federal (Operação Disclosure); MPF (denúncia, 2025); Migalhas; Capital Aberto (abr/2026).\n\n#Americanas #Fraude #RiscoSacado #CustoOculto",
-  "tags": [
-   "americanas",
-   "fraude americanas",
-   "o que aconteceu com a americanas",
-   "risco sacado",
-   "americanas recuperação judicial",
-   "miguel gutierrez",
-   "custo oculto"
-  ]
- },
- "thumbs_capa": [
-  {
-   "type": "capa",
-   "foto": "loja",
-   "wiki": [
-    "Lojas Americanas fachada",
-    "Lojas Americanas",
-    "Americanas loja"
-   ],
-   "seta": false,
-   "recorte": "Americanas · 2023",
-   "faixa": "A loja de todo mundo",
-   "linhas": [
-    [
-     "R$ 25 BI",
-     "red",
-     260
-    ],
-    [
-     "ESCONDIDOS",
-     "white",
-     200
-    ],
-    [
-     "por anos",
-     "gold",
-     150
-    ]
-   ],
-   "selo": "Americanas · 2023"
-  },
-  {
-   "type": "capa",
-   "foto": "loja",
-   "wiki": [
-    "Lojas Americanas fachada",
-    "Lojas Americanas",
-    "Americanas loja"
-   ],
-   "seta": false,
-   "recorte": "Americanas · 2023",
-   "faixa": "O presidente durou",
-   "linhas": [
-    [
-     "9 DIAS",
-     "gold",
-     280
-    ],
-    [
-     "e achou",
-     "white",
-     170
-    ],
-    [
-     "R$ 20 BI",
-     "red",
-     220
-    ]
-   ],
-   "selo": "Americanas · 2023"
-  }
- ],
- "thumbs": [
-  {
-   "glow": "red",
-   "lines": [
+  "thumbs": [
     {
-     "text": "AMERICANAS",
-     "color": "red",
-     "size": 120
+      "glow": "red",
+      "lines": [
+        {
+          "text": "AMERICANAS",
+          "color": "red",
+          "size": 120
+        },
+        {
+          "text": "R$ 25 BI",
+          "color": "gold",
+          "size": 190
+        },
+        {
+          "text": "ESCONDIDOS",
+          "color": "white",
+          "size": 130
+        }
+      ]
     },
     {
-     "text": "R$ 25 BI",
-     "color": "gold",
-     "size": 190
-    },
-    {
-     "text": "ESCONDIDOS",
-     "color": "white",
-     "size": 130
+      "glow": "gold",
+      "lines": [
+        {
+          "text": "9 DIAS",
+          "color": "gold",
+          "size": 190
+        },
+        {
+          "text": "NO CARGO",
+          "color": "white",
+          "size": 130
+        },
+        {
+          "text": "AMERICANAS",
+          "color": "green",
+          "size": 70,
+          "pill": true
+        }
+      ]
     }
-   ]
-  },
-  {
-   "glow": "gold",
-   "lines": [
-    {
-     "text": "9 DIAS",
-     "color": "gold",
-     "size": 190
-    },
-    {
-     "text": "NO CARGO",
-     "color": "white",
-     "size": 130
-    },
-    {
-     "text": "AMERICANAS",
-     "color": "green",
-     "size": 70,
-     "pill": true
-    }
-   ]
-  }
- ],
- "notes": "FATOS CHECADOS (com fonte)\n- Rial anunciado 19/08/2022, assume 02/01/2023, descobre 04/01, fato relevante e saída 11/01/2023 (Bloomberg Línea, 28/03/2023)\n- 'Problema de 7 a 9 anos' (Mercado & Consumo, 12/01/2023)\n- Queda de 77% em um dia, a maior de uma ação na B3 desde o Plano Real; valor de ~R$ 10 bi para R$ 783 mi em um ano; dívida de R$ 43 bi na RJ; aporte de R$ 12 bi do trio; lojas 1.882 → 1.759; funcionários 44 mil → 33,8 mil (Forbes Brasil, jan/2024)\n- Fato relevante 13/06/2023: fraude; VPC R$ 21,7 bi; risco sacado R$ 18,4 bi + capital de giro R$ 2,2 bi = R$ 20,6 bi; R$ 25,3 bi com juros (estimativa citada); aponta diretoria anterior (Brazil Journal)\n- RJ pedida 19/01/2023 (Forbes, jan/2023); Operação Disclosure 27/06/2024, 15 mandados, +R$ 500 mi bloqueados; Gutierrez preso em Madri 28/06/2024, solto no dia seguinte; diz ser bode expiatório (Bloomberg Línea; Metrópoles)\n- TRF-2 revoga prisão, responde em liberdade (Conjur, 22/08/2024)\n- MPF denuncia 13 (mar/2025); delatores Flávia Carneiro, Marcelo Nunes, Fábio Abrate (Diário do Nordeste, 31/03/2025)\n- Pedido de saída da RJ 25/03/2026; sem decisão em 08/09/2026 (Capital Aberto; Brasil em Folhas)\n- 1929 Niterói; 1982 controle pelo trio do Garantia; fusão com B2W em 2021 (conhecimento geral)\n- REVISÃO: prévia com material real (fotos do caso, prints de manchete) aprovada por Vinícius em 14/10/2026\n- Neutralidade: sempre dizer que os acusados negam e que não há condenação definitiva; não dizer que os sócios sabiam."
+  ],
+  "notes": "FATOS CHECADOS (com fonte)\n- Rial anunciado 19/08/2022, assume 02/01/2023, descobre 04/01, fato relevante e saída 11/01/2023 (Bloomberg Línea, 28/03/2023)\n- 'Problema de 7 a 9 anos' (Mercado & Consumo, 12/01/2023)\n- Queda de 77% em um dia, a maior de uma ação na B3 desde o Plano Real; valor de ~R$ 10 bi para R$ 783 mi em um ano; dívida de R$ 43 bi na RJ; aporte de R$ 12 bi do trio; lojas 1.882 → 1.759; funcionários 44 mil → 33,8 mil (Forbes Brasil, jan/2024)\n- Fato relevante 13/06/2023: fraude; VPC R$ 21,7 bi; risco sacado R$ 18,4 bi + capital de giro R$ 2,2 bi = R$ 20,6 bi; R$ 25,3 bi com juros (estimativa citada); aponta diretoria anterior (Brazil Journal)\n- RJ pedida 19/01/2023 (Forbes, jan/2023); Operação Disclosure 27/06/2024, 15 mandados, +R$ 500 mi bloqueados; Gutierrez preso em Madri 28/06/2024, solto no dia seguinte; diz ser bode expiatório (Bloomberg Línea; Metrópoles)\n- TRF-2 revoga prisão, responde em liberdade (Conjur, 22/08/2024)\n- MPF denuncia 13 (mar/2025); delatores Flávia Carneiro, Marcelo Nunes, Fábio Abrate (Diário do Nordeste, 31/03/2025)\n- Pedido de saída da RJ 25/03/2026; sem decisão em 08/09/2026 (Capital Aberto; Brasil em Folhas)\n- 1929 Niterói; 1982 controle pelo trio do Garantia; fusão com B2W em 2021 (conhecimento geral)\n- REVISÃO: prévia com material real (fotos do caso, prints de manchete) aprovada por Vinícius em 14/10/2026\n- Neutralidade: sempre dizer que os acusados negam e que não há condenação definitiva; não dizer que os sócios sabiam."
 }
