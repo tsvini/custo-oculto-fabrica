@@ -528,5 +528,128 @@
   "publishAt": "2026-10-19T18:00:00-03:00",
   "status": "private",
   "miniatura_ok": "e0383034a1da"
+ },
+ {
+  "nome": "wework_longo",
+  "tipo": "longo",
+  "idioma": "en",
+  "titulo": "WEWORK: The $47 Billion Startup That Never Made a Profit",
+  "video_id": "dBopOBre4ws",
+  "caso": "wework",
+  "caso_titulo": "WeWork",
+  "publishAt": "2026-10-21T12:00:00-03:00",
+  "status": "private",
+  "miniatura_ok": "19817c8cf55f",
+  "playlists": [
+   "All cases | Hidden Cost"
+  ]
+ },
+ {
+  "nome": "wework_serie1",
+  "tipo": "serie",
+  "idioma": "en",
+  "titulo": "WeWork: part 1 of 4 #shorts",
+  "video_id": "3KPkddYjUeY",
+  "caso": "wework",
+  "caso_titulo": null,
+  "publishAt": "2026-10-22T08:00:00-03:00",
+  "status": "private",
+  "miniatura_ok": "ee0c2d3a1a43",
+  "playlists": [
+   "The WeWork case | Hidden Cost"
+  ]
+ },
+ {
+  "nome": "wework_short1",
+  "tipo": "short",
+  "idioma": "en",
+  "titulo": "From $47 Billion to Bankrupt in 4 Years: WeWork #shorts",
+  "video_id": "7gGQg2T1xXc",
+  "caso": "wework",
+  "caso_titulo": null,
+  "publishAt": "2026-10-21T18:00:00-03:00",
+  "status": "private",
+  "miniatura_ok": "c8597964f6bc"
+ },
+ {
+  "nome": "wework_serie2",
+  "tipo": "serie",
+  "idioma": "en",
+  "titulo": "WeWork: part 2 of 4 #shorts",
+  "video_id": "si9RkGbmMko",
+  "caso": "wework",
+  "caso_titulo": null,
+  "publishAt": "2026-10-23T08:00:00-03:00",
+  "status": "private",
+  "miniatura_ok": "df38abc5bc84",
+  "playlists": [
+   "The WeWork case | Hidden Cost"
+  ]
+ },
+ {
+  "nome": "wework_short2",
+  "tipo": "short",
+  "idioma": "en",
+  "titulo": "WeWork Paid Its Own CEO $5.9 Million for the Word \"We\" #shorts",
+  "video_id": "xKjn37FMqv0",
+  "caso": "wework",
+  "caso_titulo": null,
+  "publishAt": "2026-10-22T18:00:00-03:00",
+  "status": "private",
+  "miniatura_ok": "4cc9bc11119c"
+ },
+ {
+  "nome": "wework_serie3",
+  "tipo": "serie",
+  "idioma": "en",
+  "titulo": "WeWork: part 3 of 4 #shorts",
+  "video_id": "m62PxGp2g2A",
+  "caso": "wework",
+  "caso_titulo": null,
+  "publishAt": "2026-10-24T08:00:00-03:00",
+  "status": "private",
+  "miniatura_ok": "cc15a0642689",
+  "playlists": [
+   "The WeWork case | Hidden Cost"
+  ]
+ },
+ {
+  "nome": "wework_short3",
+  "tipo": "short",
+  "idioma": "en",
+  "titulo": "The IPO Collapsed. The CEO Got a $1.7 Billion Deal #shorts",
+  "video_id": "PRY8AyEOv1Y",
+  "caso": "wework",
+  "caso_titulo": null,
+  "publishAt": "2026-10-23T18:00:00-03:00",
+  "status": "private",
+  "miniatura_ok": "643f8c1fee8b"
+ },
+ {
+  "nome": "wework_serie4",
+  "tipo": "serie",
+  "idioma": "en",
+  "titulo": "WeWork: part 4 of 4 #shorts",
+  "video_id": "n3ULfuQrXr4",
+  "caso": "wework",
+  "caso_titulo": null,
+  "publishAt": "2026-10-25T08:00:00-03:00",
+  "status": "private",
+  "miniatura_ok": "d40a6ce17add",
+  "playlists": [
+   "The WeWork case | Hidden Cost"
+  ]
+ },
+ {
+  "nome": "wework_short4",
+  "tipo": "short",
+  "idioma": "en",
+  "titulo": "This $47 Billion Startup Lost 90¢ on Every Dollar #shorts",
+  "video_id": "u6pjLiR16xA",
+  "caso": "wework",
+  "caso_titulo": null,
+  "publishAt": "2026-10-24T18:00:00-03:00",
+  "status": "private",
+  "miniatura_ok": "f4ddbd9cc83d"
  }
 ]
