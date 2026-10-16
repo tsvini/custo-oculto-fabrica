@@ -160,6 +160,7 @@ jobs:
 
       - name: Entregar arquivos (um pacote só, sem os MP4)
         uses: actions/upload-artifact@v4
+        continue-on-error: true  # os MP4 já foram pra release; sem espaço de artefato, não derruba o resto
         with:
           name: video-${{ steps.alvo.outputs.nome }}-${{ github.run_number }}
           path: |
