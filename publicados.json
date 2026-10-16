@@ -480,5 +480,53 @@
   "playlists": [
    "The Netflix case | Hidden Cost"
   ]
+ },
+ {
+  "nome": "netflix_en_short1",
+  "tipo": "short",
+  "idioma": "en",
+  "titulo": "Blockbuster Could Have Bought Netflix for $50 Million #shorts",
+  "video_id": "nncWr2dvN7Q",
+  "caso": "netflix_en",
+  "caso_titulo": null,
+  "publishAt": "2026-10-16T18:00:00-03:00",
+  "status": "private",
+  "miniatura_ok": "2274a9165471"
+ },
+ {
+  "nome": "netflix_en_short2",
+  "tipo": "short",
+  "idioma": "en",
+  "titulo": "The Move That Almost Killed Netflix #shorts",
+  "video_id": "cukR2zZU5ug",
+  "caso": "netflix_en",
+  "caso_titulo": null,
+  "publishAt": "2026-10-17T18:00:00-03:00",
+  "status": "private",
+  "miniatura_ok": "31dee15bc863"
+ },
+ {
+  "nome": "netflix_en_short3",
+  "tipo": "short",
+  "idioma": "en",
+  "titulo": "Blockbuster Made $800 Million From Late Fees #shorts",
+  "video_id": "68-7NcePBV8",
+  "caso": "netflix_en",
+  "caso_titulo": null,
+  "publishAt": "2026-10-18T18:00:00-03:00",
+  "status": "private",
+  "miniatura_ok": "e2e4b4743dc9"
+ },
+ {
+  "nome": "netflix_en_short4",
+  "tipo": "short",
+  "idioma": "en",
+  "titulo": "Only One Blockbuster Is Left in the World #shorts",
+  "video_id": "FYjO_13LO78",
+  "caso": "netflix_en",
+  "caso_titulo": null,
+  "publishAt": "2026-10-19T18:00:00-03:00",
+  "status": "private",
+  "miniatura_ok": "e0383034a1da"
  }
 ]
