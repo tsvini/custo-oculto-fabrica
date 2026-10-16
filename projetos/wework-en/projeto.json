@@ -33,7 +33,7 @@
         ],
         "seta": false,
         "recorte": "WeWork · 2019",
-        "faixa": "The WeWork case",
+        "faixa": "Never made a profit",
         "linhas": [
          [
           "$47",
@@ -46,9 +46,9 @@
           200
          ],
          [
-          "TO BANKRUPT",
+          "BANKRUPT",
           "red",
-          170
+          210
          ]
         ],
         "logo": "logo_wework"
@@ -871,7 +871,7 @@
   },
   "shorts": [
    {
-    "title": "WeWork Was Worth $47 Billion. Then It Went Bankrupt",
+    "title": "From $47 Billion to Bankrupt in 4 Years: WeWork",
     "sentences": [
      {
       "text": "WeWork was valued at forty seven billion dollars. Four years later, it was bankrupt.",
@@ -885,22 +885,22 @@
        ],
        "seta": false,
        "recorte": "WeWork · 2019",
-       "faixa": "Then bankrupt",
+       "faixa": "In 4 years",
        "linhas": [
         [
-         "$47",
+         "$47B",
          "gold",
          270
         ],
         [
-         "BILLION",
+         "TO",
          "white",
-         200
+         170
         ],
         [
-         "TO ZERO",
+         "BANKRUPT",
          "red",
-         190
+         220
         ]
        ],
        "logo": "logo_wework"
@@ -1003,7 +1003,7 @@
     ]
    },
    {
-    "title": "WeWork Paid Its Founder $5.9 Million for the Word \"We\"",
+    "title": "WeWork Paid Its Own CEO $5.9 Million for the Word \"We\"",
     "sentences": [
      {
       "text": "WeWork paid its own founder five point nine million dollars for the word, We.",
@@ -1142,7 +1142,7 @@
     ]
    },
    {
-    "title": "WeWork's Founder Got a $1.7 Billion Deal to Leave",
+    "title": "The IPO Collapsed. The CEO Got a $1.7 Billion Deal",
     "sentences": [
      {
       "text": "WeWork's founder got a deal reported at up to one point seven billion dollars to step away.",
@@ -1156,22 +1156,22 @@
        ],
        "seta": false,
        "recorte": "WeWork · 2019",
-       "faixa": "To step away",
+       "faixa": "The IPO collapsed",
        "linhas": [
         [
-         "$1.7",
-         "gold",
-         270
-        ],
-        [
-         "BILLION",
+         "THE CEO",
          "white",
          200
         ],
         [
-         "TO LEAVE",
-         "red",
-         190
+         "GOT",
+         "white",
+         170
+        ],
+        [
+         "$1.7B",
+         "gold",
+         270
         ]
        ],
        "logo": "logo_wework"
@@ -1268,7 +1268,7 @@
     ]
    },
    {
-    "title": "WeWork Lost 90 Cents for Every Dollar It Made",
+    "title": "This $47 Billion Startup Lost 90¢ on Every Dollar",
     "sentences": [
      {
       "text": "For every dollar WeWork brought in, it lost almost ninety cents.",
@@ -1282,22 +1282,22 @@
        ],
        "seta": false,
        "recorte": "WeWork · 2018",
-       "faixa": "For every dollar",
+       "faixa": "Valued at $47 billion",
        "linhas": [
         [
-         "$1 IN",
-         "white",
+         "LOST 90¢",
+         "red",
          230
         ],
         [
-         "90¢",
-         "red",
-         270
+         "ON EVERY",
+         "white",
+         180
         ],
         [
-         "LOST",
+         "$1",
          "gold",
-         220
+         280
         ]
        ],
        "logo": "logo_wework"
@@ -1407,19 +1407,19 @@
     "faixa": "Part 1 of 4",
     "linhas": [
      [
-      "$47",
+      "$47B",
       "gold",
       260
      ],
      [
-      "BILLION",
+      "FOR RENTING",
       "white",
-      200
+      170
      ],
      [
-      "OFFICES",
+      "DESKS",
       "red",
-      190
+      230
      ]
     ],
     "logo": "logo_wework"
@@ -1455,19 +1455,19 @@
     "faixa": "Part 2 of 4",
     "linhas": [
      [
-      "THE IPO",
+      "THE FILING",
       "white",
-      210
+      200
      ],
      [
-      "THAT",
+      "THAT KILLED",
       "gold",
       180
      ],
      [
-      "COLLAPSED",
+      "THE IPO",
       "red",
-      200
+      220
      ]
     ],
     "logo": "logo_wework"
@@ -1502,19 +1502,19 @@
     "faixa": "Part 3 of 4",
     "linhas": [
      [
+      "COMPANY SANK",
+      "red",
+      190
+     ],
+     [
+      "FOUNDER GOT",
+      "white",
+      180
+     ],
+     [
       "$1.7B",
       "gold",
-      250
-     ],
-     [
-      "TO THE",
-      "white",
-      170
-     ],
-     [
-      "FOUNDER",
-      "red",
-      200
+      270
      ]
     ],
     "logo": "logo_wework"
@@ -1549,19 +1549,19 @@
     "faixa": "Part 4 of 4",
     "linhas": [
      [
-      "BANKRUPT",
+      "BANKRUPT.",
       "red",
       230
      ],
      [
-      "AND THE",
-      "white",
-      160
-     ],
-     [
-      "NEXT ACT",
+      "THEN $350M",
       "gold",
       200
+     ],
+     [
+      "FOR HIM",
+      "white",
+      190
      ]
     ],
     "logo": "logo_wework"
@@ -1582,8 +1582,8 @@
  ],
  "meta": {
   "titles": [
-   "WEWORK: How a $47 Billion Startup Went Bankrupt",
-   "WeWork Was Worth $47 Billion. The Founder Walked Away With $1.7 Billion"
+   "WEWORK: The $47 Billion Startup That Never Made a Profit",
+   "WeWork Collapsed. Its CEO Walked Away With $1.7 Billion"
   ],
   "description": "In January 2019, WeWork was valued at $47 billion. Nine months later, its IPO was pulled. In 2023, it filed for bankruptcy. Meanwhile, its founder walked away with a deal reported at up to $1.7 billion. In this video: the pitch, the $47 billion valuation, the IPO filing investors finally read, and who paid the hidden cost.\n\n[CAPÍTULOS]\n\nSources: WeWork IPO filing (S-1, Aug 2019) as reported by The Motley Fool; TechCrunch (Oct 22, 2019; Aug 15, 2022); Fox Business (2019); REBusiness (2021); Newser (Jun 13, 2024); Fox Business (Nov 2023).\n\n#WeWork #AdamNeumann #HiddenCost",
   "tags": [
@@ -1607,12 +1607,12 @@
    ],
    "seta": false,
    "recorte": "WeWork · 2019",
-   "faixa": "The WeWork case",
+   "faixa": "Never made a profit",
    "linhas": [
     [
      "$47",
      "gold",
-     270
+     280
     ],
     [
      "BILLION",
@@ -1620,9 +1620,9 @@
      210
     ],
     [
-     "TO BANKRUPT",
+     "BANKRUPT",
      "red",
-     170
+     220
     ]
    ],
    "logo": "logo_wework"
@@ -1637,22 +1637,22 @@
    ],
    "seta": false,
    "recorte": "WeWork · 2019",
-   "faixa": "The founder's deal",
+   "faixa": "The company sank",
    "linhas": [
+    [
+     "THE CEO",
+     "white",
+     200
+    ],
+    [
+     "GOT",
+     "white",
+     170
+    ],
     [
      "$1.7B",
      "gold",
-     260
-    ],
-    [
-     "TO WALK",
-     "white",
-     190
-    ],
-    [
-     "AWAY",
-     "red",
-     220
+     280
     ]
    ],
    "logo": "logo_wework"
@@ -1663,19 +1663,19 @@
    "glow": "red",
    "lines": [
     {
-     "text": "WEWORK",
-     "color": "white",
-     "size": 150
-    },
-    {
      "text": "$47 BILLION",
      "color": "gold",
      "size": 150
     },
     {
-     "text": "BANKRUPT",
+     "text": "ZERO",
+     "color": "white",
+     "size": 150
+    },
+    {
+     "text": "PROFIT",
      "color": "red",
-     "size": 130
+     "size": 150
     }
    ]
   },
@@ -1683,19 +1683,19 @@
    "glow": "gold",
    "lines": [
     {
+     "text": "COMPANY SANK",
+     "color": "red",
+     "size": 130
+    },
+    {
+     "text": "CEO GOT",
+     "color": "white",
+     "size": 130
+    },
+    {
      "text": "$1.7 BILLION",
      "color": "gold",
      "size": 140
-    },
-    {
-     "text": "TO THE",
-     "color": "white",
-     "size": 110
-    },
-    {
-     "text": "FOUNDER",
-     "color": "red",
-     "size": 150
     }
    ]
   }

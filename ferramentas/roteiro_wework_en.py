@@ -41,7 +41,7 @@ def capa(faixa, linhas, recorte):
 long_parts = [
     {"chapter": "", "sentences": [
         dict(S("Hey everyone, Vinícius here, and this is Hidden Cost.",
-               capa("The WeWork case", [["$47", G, 270], ["BILLION", W, 200], ["TO BANKRUPT", R, 170]], "WeWork · 2019")), abertura=True),
+               capa("Never made a profit", [["$47", G, 270], ["BILLION", W, 200], ["BANKRUPT", R, 210]], "WeWork · 2019")), abertura=True),
         S("In January twenty nineteen, a company that rents out office space was valued at forty seven billion dollars.",
           {"type": "counter", "value": 47, "prefix": "$", "suffix": "B", "over": "JANUARY 2019", "label": "WEWORK'S VALUATION", "color": G, "size": 240}),
         S("Nine months later, it couldn't even go public.", {"type": "stamp", "org": "WEWORK · 2019", "title": "THE IPO", "stamp": "PULLED", "stamp_at": 0.9}),
@@ -133,23 +133,23 @@ long_parts = [
 FIM = "The full story is on the channel. Search WeWork on Hidden Cost."
 CTA = big(("FULL STORY", W, 120), ("SEARCH WEWORK", G, 130), ("ON HIDDEN COST", W, 110))
 shorts = [
-    {"title": "WeWork Was Worth $47 Billion. Then It Went Bankrupt", "sentences": [
-        S("WeWork was valued at forty seven billion dollars. Four years later, it was bankrupt.", capa("Then bankrupt", [["$47", G, 270], ["BILLION", W, 200], ["TO ZERO", R, 190]], "WeWork · 2019")),
+    {"title": "From $47 Billion to Bankrupt in 4 Years: WeWork", "sentences": [
+        S("WeWork was valued at forty seven billion dollars. Four years later, it was bankrupt.", capa("In 4 years", [["$47B", G, 270], ["TO", W, 170], ["BANKRUPT", R, 220]], "WeWork · 2019")),
         S("It rented out office space, but it was sold to investors as a tech company.", big(("OFFICE SPACE", W, 140), ("SOLD AS TECH", G, 150))),
         S("In twenty eighteen, it made about one point eight billion dollars, and lost about one point six billion.",
           {"type": "compare", "title": "WEWORK · 2018", "items": [["$1.8B", "REVENUE", G], ["-$1.6B", "NET LOSS", R]], "size": 160, "stagger": 1.2, "vs": False}),
         S("When it tried to go public in twenty nineteen, investors read the numbers. And the IPO was pulled.", {"type": "stamp", "org": "WEWORK · 2019", "title": "THE IPO", "stamp": "PULLED", "stamp_at": 0.9}),
         S("In twenty twenty three, it filed for bankruptcy.", big(("2023", R, 220), ("BANKRUPT", W, 160))),
         S(FIM, CTA)]},
-    {"title": "WeWork Paid Its Founder $5.9 Million for the Word \"We\"", "sentences": [
+    {"title": "WeWork Paid Its Own CEO $5.9 Million for the Word \"We\"", "sentences": [
         S("WeWork paid its own founder five point nine million dollars for the word, We.", capa("For one word", [["$5.9M", G, 250], ["FOR THE WORD", W, 160], ["\"WE\"", R, 260]], "WeWork · 2019")),
         S("Adam Neumann owned the trademark, and the company paid him for it.", img("neumann", FOTO_NEUMANN, "Adam Neumann, WeWork co-founder", big(("THE FOUNDER", W, 140), ("OWNED \"WE\"", G, 160)))),
         S("It came out in twenty nineteen, when WeWork filed to go public.", big(("2019", G, 220), ("THE IPO FILING", W, 120))),
         S("After the backlash, he gave the money back.", big(("THE $5.9M", W, 150), ("RETURNED", G, 170))),
         S("But it was too late. The IPO was pulled a few weeks later.", {"type": "stamp", "org": "WEWORK · 2019", "title": "THE IPO", "stamp": "PULLED", "stamp_at": 0.9}),
         S(FIM, CTA)]},
-    {"title": "WeWork's Founder Got a $1.7 Billion Deal to Leave", "sentences": [
-        S("WeWork's founder got a deal reported at up to one point seven billion dollars to step away.", capa("To step away", [["$1.7", G, 270], ["BILLION", W, 200], ["TO LEAVE", R, 190]], "WeWork · 2019")),
+    {"title": "The IPO Collapsed. The CEO Got a $1.7 Billion Deal", "sentences": [
+        S("WeWork's founder got a deal reported at up to one point seven billion dollars to step away.", capa("The IPO collapsed", [["THE CEO", W, 200], ["GOT", W, 170], ["$1.7B", G, 270]], "WeWork · 2019")),
         S("In twenty nineteen, the IPO failed and Adam Neumann stepped down as CEO.", {"type": "stamp", "org": "WEWORK · SEP 2019", "title": "ADAM NEUMANN, CEO", "stamp": "OUT", "stamp_at": 0.9}),
         S("SoftBank took control, at a valuation of around eight billion. Down from forty seven.",
           {"type": "compare", "title": "WEWORK · 2019", "items": [["$47B", "JANUARY", G], ["~$8B", "OCTOBER", R]], "size": 170, "stagger": 1.2, "vs": False}),
@@ -157,8 +157,8 @@ shorts = [
           {"type": "bullets", "title": "THE DEAL", "items": ["~$1B FOR HIS SHARES", "$185M CONSULTING"], "size": 90, "last_gold": True}),
         S("Weeks later, thousands of employees were laid off.", big(("THOUSANDS", W, 160), ("LAID OFF", R, 170))),
         S(FIM, CTA)]},
-    {"title": "WeWork Lost 90 Cents for Every Dollar It Made", "sentences": [
-        S("For every dollar WeWork brought in, it lost almost ninety cents.", capa("For every dollar", [["$1 IN", W, 230], ["90¢", R, 270], ["LOST", G, 220]], "WeWork · 2018")),
+    {"title": "This $47 Billion Startup Lost 90¢ on Every Dollar", "sentences": [
+        S("For every dollar WeWork brought in, it lost almost ninety cents.", capa("Valued at $47 billion", [["LOST 90¢", R, 230], ["ON EVERY", W, 180], ["$1", G, 280]], "WeWork · 2018")),
         S("In twenty eighteen, revenue was about one point eight billion dollars. The loss, about one point six billion.",
           {"type": "compare", "title": "WEWORK · 2018", "items": [["$1.8B", "REVENUE", G], ["-$1.6B", "NET LOSS", R]], "size": 160, "stagger": 1.2, "vs": False}),
         S("It signed leases for years, but its members could leave with a month's notice.",
@@ -176,34 +176,34 @@ projeto = {
     "logos": LOGOS,
     "script": {"long": {"parts": long_parts}, "shorts": shorts},
     "serie": [
-        {"partes": [1, 2], "capa": capa("Part 1 of 4", [["$47", G, 260], ["BILLION", W, 200], ["OFFICES", R, 190]], "WeWork · Part 1"),
+        {"partes": [1, 2], "capa": capa("Part 1 of 4", [["$47B", G, 260], ["FOR RENTING", W, 170], ["DESKS", R, 230]], "WeWork · Part 1"),
          "caption": "WeWork, part 1: how a company that rents desks got sold as a tech startup. Follow for part 2.", "fim": ["CONTINUES IN", "PART 2"],
          "hashtags": ["#wework", "#business", "#startup", "#history", "#series"]},
-        {"partes": [3, 4], "capa": capa("Part 2 of 4", [["THE IPO", W, 210], ["THAT", G, 180], ["COLLAPSED", R, 200]], "WeWork · Part 2"),
+        {"partes": [3, 4], "capa": capa("Part 2 of 4", [["THE FILING", W, 200], ["THAT KILLED", G, 180], ["THE IPO", R, 220]], "WeWork · Part 2"),
          "caption": "WeWork, part 2: the $47 billion valuation and the IPO filing investors finally read.", "fim": ["CONTINUES IN", "PART 3"],
          "hashtags": ["#wework", "#ipo", "#business", "#startup", "#series"]},
-        {"partes": [5], "capa": capa("Part 3 of 4", [["$1.7B", G, 250], ["TO THE", W, 170], ["FOUNDER", R, 200]], "WeWork · Part 3"),
+        {"partes": [5], "capa": capa("Part 3 of 4", [["COMPANY SANK", R, 190], ["FOUNDER GOT", W, 180], ["$1.7B", G, 270]], "WeWork · Part 3"),
          "caption": "WeWork, part 3: the founder's exit deal and who paid the hidden cost.", "fim": ["CONTINUES IN", "PART 4"],
          "hashtags": ["#wework", "#adamneumann", "#business", "#startup", "#series"]},
-        {"partes": [6], "capa": capa("Part 4 of 4", [["BANKRUPT", R, 230], ["AND THE", W, 160], ["NEXT ACT", G, 200]], "WeWork · Final"),
+        {"partes": [6], "capa": capa("Part 4 of 4", [["BANKRUPT.", R, 230], ["THEN $350M", G, 200], ["FOR HIM", W, 190]], "WeWork · Final"),
          "caption": "WeWork, final part: the pandemic, the bankruptcy, and the founder's $350 million comeback.", "fim": ["END OF", "THE SERIES"],
          "hashtags": ["#wework", "#bankruptcy", "#business", "#startup", "#series"]},
     ],
     "meta": {
         "titles": [
-            "WEWORK: How a $47 Billion Startup Went Bankrupt",
-            "WeWork Was Worth $47 Billion. The Founder Walked Away With $1.7 Billion",
+            "WEWORK: The $47 Billion Startup That Never Made a Profit",
+            "WeWork Collapsed. Its CEO Walked Away With $1.7 Billion",
         ],
         "description": "In January 2019, WeWork was valued at $47 billion. Nine months later, its IPO was pulled. In 2023, it filed for bankruptcy. Meanwhile, its founder walked away with a deal reported at up to $1.7 billion. In this video: the pitch, the $47 billion valuation, the IPO filing investors finally read, and who paid the hidden cost.\n\n[CAPÍTULOS]\n\nSources: WeWork IPO filing (S-1, Aug 2019) as reported by The Motley Fool; TechCrunch (Oct 22, 2019; Aug 15, 2022); Fox Business (2019); REBusiness (2021); Newser (Jun 13, 2024); Fox Business (Nov 2023).\n\n#WeWork #AdamNeumann #HiddenCost",
         "tags": ["wework", "adam neumann", "wework bankruptcy", "what happened to wework", "wework ipo", "softbank wework", "hidden cost"],
     },
     "thumbs_capa": [
-        capa("The WeWork case", [["$47", G, 270], ["BILLION", W, 210], ["TO BANKRUPT", R, 170]], "WeWork · 2019"),
-        capa("The founder's deal", [["$1.7B", G, 260], ["TO WALK", W, 190], ["AWAY", R, 220]], "WeWork · 2019"),
+        capa("Never made a profit", [["$47", G, 280], ["BILLION", W, 210], ["BANKRUPT", R, 220]], "WeWork · 2019"),
+        capa("The company sank", [["THE CEO", W, 200], ["GOT", W, 170], ["$1.7B", G, 280]], "WeWork · 2019"),
     ],
     "thumbs": [
-        {"glow": "red", "lines": [{"text": "WEWORK", "color": "white", "size": 150}, {"text": "$47 BILLION", "color": "gold", "size": 150}, {"text": "BANKRUPT", "color": "red", "size": 130}]},
-        {"glow": "gold", "lines": [{"text": "$1.7 BILLION", "color": "gold", "size": 140}, {"text": "TO THE", "color": "white", "size": 110}, {"text": "FOUNDER", "color": "red", "size": 150}]},
+        {"glow": "red", "lines": [{"text": "$47 BILLION", "color": "gold", "size": 150}, {"text": "ZERO", "color": "white", "size": 150}, {"text": "PROFIT", "color": "red", "size": 150}]},
+        {"glow": "gold", "lines": [{"text": "COMPANY SANK", "color": "red", "size": 130}, {"text": "CEO GOT", "color": "white", "size": 130}, {"text": "$1.7 BILLION", "color": "gold", "size": 140}]},
     ],
     "notes": "FACTS CHECKED (with source)\n"
              "- Founded 2010 (New York) by Adam Neumann and Miguel McKelvey; $47B valuation Jan 2019 (Wikipedia; Fox Business)\n"
