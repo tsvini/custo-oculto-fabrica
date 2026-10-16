@@ -217,7 +217,7 @@ projeto = {
              "- Exit from bankruptcy Jun 11, 2024; Yardi majority owner; $4B+ debt cut; ~170 locations exited (Newser, Jun 13, 2024)\n"
              "- a16z $350M into Flow, largest single check ever (TechCrunch, Aug 15, 2022)\n"
              "- ~2,400 layoffs announced Nov 21, 2019 (CNN); expected valuation reported at ~$10B in Sep 2019 (Wikipedia)\n"
-             "- REVIEW: script pending Vinícius' approval",
+             "- REVIEW: preview (titles, covers, voice) approved by Vinícius on 16/10/2026",
 }
 
 d = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "projetos", "wework-en")
