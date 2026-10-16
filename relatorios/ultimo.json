@@ -1,5 +1,5 @@
 {
- "data": "2026-10-15",
+ "data": "2026-10-16",
  "por_formato_12m": [
   {
    "creatorContentType": "shorts",
@@ -29,12 +29,6 @@
   }
  ],
  "dia_a_dia_28d": [
-  {
-   "day": "2026-09-17",
-   "views": 0,
-   "estimatedMinutesWatched": 0,
-   "subscribersGained": 0
-  },
   {
    "day": "2026-09-18",
    "views": 0,
@@ -195,7 +189,7 @@
  "origem_28d": [
   {
    "insightTrafficSourceType": "SHORTS",
-   "views": 2885,
+   "views": 2882,
    "estimatedMinutesWatched": 184
   },
   {
@@ -454,22 +448,22 @@
    "shares": 0
   },
   {
-   "video": "3hLySDzqykg",
+   "video": "_EvPaiyk3nU",
    "views": 9,
-   "estimatedMinutesWatched": 0,
-   "averageViewDuration": 8,
-   "averageViewPercentage": 17.24,
+   "estimatedMinutesWatched": 18,
+   "averageViewDuration": 180,
+   "averageViewPercentage": 31,
    "subscribersGained": 0,
    "likes": 1,
    "comments": 0,
    "shares": 0
   },
   {
-   "video": "_EvPaiyk3nU",
+   "video": "3hLySDzqykg",
    "views": 9,
-   "estimatedMinutesWatched": 18,
-   "averageViewDuration": 180,
-   "averageViewPercentage": 31,
+   "estimatedMinutesWatched": 0,
+   "averageViewDuration": 8,
+   "averageViewPercentage": 17.24,
    "subscribersGained": 0,
    "likes": 1,
    "comments": 0,
@@ -622,7 +616,7 @@
  },
  "contagem_atual": {
   "itapemirim_longo": {
-   "views": 9,
+   "views": 11,
    "likes": 3,
    "comentarios": 0,
    "status": "public"
@@ -640,13 +634,13 @@
    "status": "public"
   },
   "banco_master_short1": {
-   "views": 152,
+   "views": 163,
    "likes": 8,
    "comentarios": 2,
    "status": "public"
   },
   "banco_master_short2": {
-   "views": 44,
+   "views": 47,
    "likes": 0,
    "comentarios": 1,
    "status": "public"
@@ -664,22 +658,22 @@
    "status": "private"
   },
   "banco_master_serie1": {
-   "views": 606,
-   "likes": 36,
+   "views": 708,
+   "likes": 40,
    "comentarios": 2,
    "status": "public"
   },
   "banco_master_serie2": {
-   "views": 22,
-   "likes": 2,
+   "views": 41,
+   "likes": 5,
    "comentarios": 1,
    "status": "public"
   },
   "banco_master_serie3": {
-   "views": 0,
-   "likes": 0,
+   "views": 1,
+   "likes": 1,
    "comentarios": 0,
-   "status": "private"
+   "status": "public"
   },
   "banco_master_serie4": {
    "views": 0,
@@ -823,7 +817,7 @@
    "views": 0,
    "likes": 0,
    "comentarios": 0,
-   "status": "private"
+   "status": "public"
   },
   "netflix_en_serie2": {
    "views": 0,
@@ -834,9 +828,9 @@
  },
  "canal": {
   "viewCount": "3231",
-  "subscriberCount": "9",
+  "subscriberCount": "11",
   "hiddenSubscriberCount": false,
-  "videoCount": "24"
+  "videoCount": "25"
  },
  "todos_os_videos": [
   {
@@ -846,7 +840,7 @@
    "duracao": "PT34S",
    "status": "public",
    "agendado": null,
-   "views": 1058,
+   "views": 1052,
    "likes": 9,
    "comentarios": 1
   },
@@ -857,8 +851,8 @@
    "duracao": "PT1M41S",
    "status": "public",
    "agendado": null,
-   "views": 606,
-   "likes": 36,
+   "views": 706,
+   "likes": 40,
    "comentarios": 2
   },
   {
@@ -868,7 +862,7 @@
    "duracao": "PT41S",
    "status": "public",
    "agendado": null,
-   "views": 387,
+   "views": 388,
    "likes": 7,
    "comentarios": 0
   },
@@ -879,7 +873,7 @@
    "duracao": "PT40S",
    "status": "public",
    "agendado": null,
-   "views": 361,
+   "views": 362,
    "likes": 1,
    "comentarios": 0
   },
@@ -890,7 +884,7 @@
    "duracao": "PT43S",
    "status": "public",
    "agendado": null,
-   "views": 308,
+   "views": 309,
    "likes": 5,
    "comentarios": 0
   },
@@ -901,7 +895,7 @@
    "duracao": "PT40S",
    "status": "public",
    "agendado": null,
-   "views": 275,
+   "views": 276,
    "likes": 6,
    "comentarios": 0
   },
@@ -912,7 +906,7 @@
    "duracao": "PT37S",
    "status": "public",
    "agendado": null,
-   "views": 240,
+   "views": 241,
    "likes": 5,
    "comentarios": 1
   },
@@ -923,7 +917,7 @@
    "duracao": "PT40S",
    "status": "public",
    "agendado": null,
-   "views": 207,
+   "views": 209,
    "likes": 6,
    "comentarios": 0
   },
@@ -934,7 +928,7 @@
    "duracao": "PT28S",
    "status": "public",
    "agendado": null,
-   "views": 152,
+   "views": 163,
    "likes": 8,
    "comentarios": 2
   },
@@ -945,7 +939,7 @@
    "duracao": "PT40S",
    "status": "public",
    "agendado": null,
-   "views": 87,
+   "views": 89,
    "likes": 1,
    "comentarios": 0
   },
@@ -956,7 +950,7 @@
    "duracao": "PT29S",
    "status": "public",
    "agendado": null,
-   "views": 44,
+   "views": 47,
    "likes": 0,
    "comentarios": 1
   },
@@ -967,8 +961,8 @@
    "duracao": "PT2M18S",
    "status": "public",
    "agendado": null,
-   "views": 22,
-   "likes": 2,
+   "views": 41,
+   "likes": 5,
    "comentarios": 1
   },
   {
@@ -978,19 +972,19 @@
    "duracao": "PT56S",
    "status": "public",
    "agendado": null,
-   "views": 22,
+   "views": 23,
    "likes": 2,
    "comentarios": 0
   },
   {
-   "id": "_EvPaiyk3nU",
-   "titulo": "A Startup de US$ 9 Bilhões Que Era Uma Mentira | O Caso Theranos",
-   "publicado": "2026-10-10T17:09:52Z",
-   "duracao": "PT9M41S",
+   "id": "FHltNOMCClI",
+   "titulo": "Banco Master: parte 3 de 4 #shorts",
+   "publicado": "2026-10-16T11:00:18Z",
+   "duracao": "PT2M33S",
    "status": "public",
    "agendado": null,
    "views": 15,
-   "likes": 1,
+   "likes": 3,
    "comentarios": 0
   },
   {
@@ -1011,7 +1005,7 @@
    "duracao": "PT7M19S",
    "status": "public",
    "agendado": null,
-   "views": 9,
+   "views": 11,
    "likes": 3,
    "comentarios": 0
   },
@@ -1022,7 +1016,18 @@
    "duracao": "PT51S",
    "status": "public",
    "agendado": null,
-   "views": 9,
+   "views": 10,
+   "likes": 1,
+   "comentarios": 0
+  },
+  {
+   "id": "_EvPaiyk3nU",
+   "titulo": "A Startup de US$ 9 Bilhões Que Era Uma Mentira | O Caso Theranos",
+   "publicado": "2026-10-10T17:09:52Z",
+   "duracao": "PT9M41S",
+   "status": "public",
+   "agendado": null,
+   "views": 10,
    "likes": 1,
    "comentarios": 0
   },
@@ -1033,7 +1038,18 @@
    "duracao": "PT47S",
    "status": "public",
    "agendado": null,
-   "views": 7,
+   "views": 8,
+   "likes": 1,
+   "comentarios": 0
+  },
+  {
+   "id": "ZFUM39-QiEs",
+   "titulo": "Parte 5 - De US$ 4,5 bilhões para ZERO",
+   "publicado": "2026-10-10T17:46:53Z",
+   "duracao": "PT54S",
+   "status": "public",
+   "agendado": null,
+   "views": 6,
    "likes": 1,
    "comentarios": 0
   },
@@ -1049,14 +1065,14 @@
    "comentarios": 2
   },
   {
-   "id": "ZFUM39-QiEs",
-   "titulo": "Parte 5 - De US$ 4,5 bilhões para ZERO",
-   "publicado": "2026-10-10T17:46:53Z",
-   "duracao": "PT54S",
+   "id": "Wbn2Es80UJ0",
+   "titulo": "4/7 O IPO que expôs os problemas da WeWork",
+   "publicado": "2026-10-11T19:33:55Z",
+   "duracao": "PT40S",
    "status": "public",
    "agendado": null,
    "views": 5,
-   "likes": 1,
+   "likes": 0,
    "comentarios": 0
   },
   {
@@ -1066,19 +1082,8 @@
    "duracao": "PT59S",
    "status": "public",
    "agendado": null,
-   "views": 4,
+   "views": 5,
    "likes": 1,
-   "comentarios": 0
-  },
-  {
-   "id": "Wbn2Es80UJ0",
-   "titulo": "4/7 O IPO que expôs os problemas da WeWork",
-   "publicado": "2026-10-11T19:33:55Z",
-   "duracao": "PT40S",
-   "status": "public",
-   "agendado": null,
-   "views": 3,
-   "likes": 0,
    "comentarios": 0
   },
   {
@@ -1088,7 +1093,7 @@
    "duracao": "PT59S",
    "status": "public",
    "agendado": null,
-   "views": 3,
+   "views": 5,
    "likes": 1,
    "comentarios": 0
   },
@@ -1099,7 +1104,7 @@
    "duracao": "PT39S",
    "status": "public",
    "agendado": null,
-   "views": 3,
+   "views": 4,
    "likes": 1,
    "comentarios": 0
   },
@@ -1341,17 +1346,6 @@
    "duracao": "PT1M33S",
    "status": "private",
    "agendado": "2026-10-17T11:00:00Z",
-   "views": 0,
-   "likes": 0,
-   "comentarios": 0
-  },
-  {
-   "id": "FHltNOMCClI",
-   "titulo": "Banco Master: parte 3 de 4 #shorts",
-   "publicado": "2026-10-13T18:26:12Z",
-   "duracao": "PT2M33S",
-   "status": "private",
-   "agendado": "2026-10-16T11:00:00Z",
    "views": 0,
    "likes": 0,
    "comentarios": 0
