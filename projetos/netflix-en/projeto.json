@@ -1458,7 +1458,463 @@
     }
    ]
   },
-  "shorts": [],
+  "shorts": [
+   {
+    "title": "Blockbuster Could Have Bought Netflix for $50 Million",
+    "sentences": [
+     {
+      "text": "Blockbuster could have bought Netflix for fifty million dollars.",
+      "scene": {
+       "type": "capa",
+       "foto": "bend",
+       "wiki": [
+        "File:The Last Blockbuster storefront.jpg",
+        "Blockbuster Bend Oregon"
+       ],
+       "seta": false,
+       "recorte": "Netflix · 2000",
+       "faixa": "Could have bought",
+       "linhas": [
+        [
+         "NETFLIX",
+         "red",
+         230
+        ],
+        [
+         "FOR $50",
+         "gold",
+         210
+        ],
+        [
+         "MILLION",
+         "white",
+         190
+        ]
+       ],
+       "logo": "logo_netflix"
+      }
+     },
+     {
+      "text": "In the year two thousand, Netflix's founders offered them the whole company.",
+      "scene": {
+       "type": "bigtext",
+       "stagger": 0.25,
+       "lines": [
+        [
+         "2000",
+         "gold",
+         220
+        ],
+        [
+         "THE OFFER",
+         "white",
+         140
+        ]
+       ]
+      }
+     },
+     {
+      "text": "Blockbuster's CEO said no. According to one of the founders, he was trying not to laugh.",
+      "scene": {
+       "type": "print",
+       "media": "print_fortune",
+       "url": "https://fortune.com/2023/04/14/netflix-cofounder-marc-randolph-recalls-blockbuster-rejecting-chance-to-buy-it/",
+       "source": "Fortune · Apr 14, 2023",
+       "rotate": -1.0,
+       "fallback": {
+        "type": "stamp",
+        "org": "BLOCKBUSTER · 2000",
+        "title": "BUY NETFLIX",
+        "stamp": "REJECTED",
+        "stamp_at": 0.9
+       }
+      }
+     },
+     {
+      "text": "Ten years later, Blockbuster went bankrupt.",
+      "scene": {
+       "type": "bigtext",
+       "stagger": 0.25,
+       "lines": [
+        [
+         "2010",
+         "red",
+         220
+        ],
+        [
+         "BANKRUPT",
+         "white",
+         150
+        ]
+       ]
+      }
+     },
+     {
+      "text": "But that no wasn't the real reason. It was what came after.",
+      "scene": {
+       "type": "bigtext",
+       "stagger": 0.25,
+       "lines": [
+        [
+         "THE REAL",
+         "white",
+         140
+        ],
+        [
+         "REASON",
+         "red",
+         170
+        ]
+       ]
+      }
+     },
+     {
+      "text": "The full story is on the channel. Search Netflix on Hidden Cost.",
+      "scene": {
+       "type": "bigtext",
+       "stagger": 0.25,
+       "lines": [
+        [
+         "FULL STORY",
+         "white",
+         120
+        ],
+        [
+         "SEARCH NETFLIX",
+         "gold",
+         130
+        ],
+        [
+         "ON HIDDEN COST",
+         "white",
+         110
+        ]
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "title": "The Move That Almost Killed Netflix",
+    "sentences": [
+     {
+      "text": "Blockbuster almost killed Netflix. And almost nobody knows it.",
+      "scene": {
+       "type": "capa",
+       "foto": "bend",
+       "wiki": [
+        "File:The Last Blockbuster storefront.jpg",
+        "Blockbuster Bend Oregon"
+       ],
+       "seta": false,
+       "recorte": "Blockbuster · 2006",
+       "faixa": "Almost nobody knows",
+       "linhas": [
+        [
+         "ALMOST",
+         "white",
+         220
+        ],
+        [
+         "KILLED",
+         "red",
+         250
+        ],
+        [
+         "NETFLIX",
+         "gold",
+         210
+        ]
+       ],
+       "logo": "logo_netflix"
+      }
+     },
+     {
+      "text": "In two thousand six, Blockbuster let you rent online and swap the movie at any store, on the spot.",
+      "scene": {
+       "type": "flow",
+       "a": "ORDER ONLINE",
+       "a_sub": "get it at home",
+       "b": "SWAP IN STORE",
+       "b_sub": "on the spot",
+       "caption": "TOTAL ACCESS"
+      }
+     },
+     {
+      "text": "Netflix had no stores. In a single quarter, it lost fifty five thousand subscribers.",
+      "scene": {
+       "type": "counter",
+       "value": 55,
+       "prefix": "-",
+       "suffix": "K",
+       "over": "NETFLIX · 2007",
+       "label": "SUBSCRIBERS LOST",
+       "color": "red",
+       "size": 220
+      }
+     },
+     {
+      "text": "Then Blockbuster changed CEOs, and the new one killed the plan.",
+      "scene": {
+       "type": "stamp",
+       "org": "NEW CEO",
+       "title": "THE WINNING PLAN",
+       "stamp": "CANCELED",
+       "stamp_at": 0.9
+      }
+     },
+     {
+      "text": "The full story is on the channel. Search Netflix on Hidden Cost.",
+      "scene": {
+       "type": "bigtext",
+       "stagger": 0.25,
+       "lines": [
+        [
+         "FULL STORY",
+         "white",
+         120
+        ],
+        [
+         "SEARCH NETFLIX",
+         "gold",
+         130
+        ],
+        [
+         "ON HIDDEN COST",
+         "white",
+         110
+        ]
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "title": "Blockbuster Made $800 Million From Late Fees",
+    "sentences": [
+     {
+      "text": "In one year, Blockbuster made almost eight hundred million dollars just from late fees.",
+      "scene": {
+       "type": "capa",
+       "foto": "bend",
+       "wiki": [
+        "File:The Last Blockbuster storefront.jpg",
+        "Blockbuster Bend Oregon"
+       ],
+       "seta": false,
+       "recorte": "Blockbuster · 2000",
+       "faixa": "Just from late fees",
+       "linhas": [
+        [
+         "$800",
+         "gold",
+         250
+        ],
+        [
+         "MILLION",
+         "white",
+         200
+        ],
+        [
+         "IN LATE FEES",
+         "red",
+         170
+        ]
+       ],
+       "logo": "logo_netflix"
+      }
+     },
+     {
+      "text": "In two thousand, that was sixteen percent of everything the company made.",
+      "scene": {
+       "type": "counter",
+       "value": 16,
+       "prefix": "",
+       "suffix": "%",
+       "over": "BLOCKBUSTER · 2000",
+       "label": "OF ALL REVENUE",
+       "color": "gold",
+       "size": 240
+      }
+     },
+     {
+      "text": "Customers hated it. And Netflix built its pitch around one promise: no late fees.",
+      "scene": {
+       "type": "bigtext",
+       "stagger": 0.25,
+       "lines": [
+        [
+         "NO LATE",
+         "white",
+         170
+        ],
+        [
+         "FEES",
+         "red",
+         220
+        ]
+       ]
+      }
+     },
+     {
+      "text": "When Blockbuster finally dropped them, it lost a big piece of its income.",
+      "scene": {
+       "type": "stamp",
+       "org": "BLOCKBUSTER",
+       "title": "LATE FEES",
+       "stamp": "DROPPED",
+       "stamp_at": 0.9
+      }
+     },
+     {
+      "text": "The full story is on the channel. Search Netflix on Hidden Cost.",
+      "scene": {
+       "type": "bigtext",
+       "stagger": 0.25,
+       "lines": [
+        [
+         "FULL STORY",
+         "white",
+         120
+        ],
+        [
+         "SEARCH NETFLIX",
+         "gold",
+         130
+        ],
+        [
+         "ON HIDDEN COST",
+         "white",
+         110
+        ]
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "title": "Only One Blockbuster Is Left in the World",
+    "sentences": [
+     {
+      "text": "There were once more than nine thousand stores. Today, only one Blockbuster is left in the world.",
+      "scene": {
+       "type": "capa",
+       "foto": "bend",
+       "wiki": [
+        "File:The Last Blockbuster storefront.jpg",
+        "Blockbuster Bend Oregon"
+       ],
+       "seta": false,
+       "recorte": "Bend, Oregon",
+       "faixa": "9,000+ stores",
+       "linhas": [
+        [
+         "ONLY",
+         "white",
+         230
+        ],
+        [
+         "ONE",
+         "gold",
+         270
+        ],
+        [
+         "LEFT",
+         "red",
+         250
+        ]
+       ],
+       "logo": "logo_netflix"
+      }
+     },
+     {
+      "text": "It's in Bend, Oregon, and it became a tourist attraction.",
+      "scene": {
+       "type": "image",
+       "media": "bend",
+       "wiki": [
+        "File:The Last Blockbuster storefront.jpg",
+        "Blockbuster Bend Oregon"
+       ],
+       "lower": "The last Blockbuster · Bend, Oregon",
+       "dim": 0.4,
+       "fallback": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "BEND",
+          "gold",
+          220
+         ],
+         [
+          "OREGON",
+          "white",
+          140
+         ]
+        ]
+       }
+      }
+     },
+     {
+      "text": "The chain filed for bankruptcy in two thousand ten, with more than nine hundred million dollars in debt.",
+      "scene": {
+       "type": "counter",
+       "value": 900,
+       "prefix": "$",
+       "suffix": "M+",
+       "over": "BANKRUPTCY · 2010",
+       "label": "IN DEBT",
+       "color": "red",
+       "size": 210
+      }
+     },
+     {
+      "text": "And ten years earlier, it had turned down buying Netflix.",
+      "scene": {
+       "type": "bigtext",
+       "stagger": 0.25,
+       "lines": [
+        [
+         "IT TURNED DOWN",
+         "white",
+         130
+        ],
+        [
+         "NETFLIX",
+         "red",
+         200
+        ]
+       ]
+      }
+     },
+     {
+      "text": "The full story is on the channel. Search Netflix on Hidden Cost.",
+      "scene": {
+       "type": "bigtext",
+       "stagger": 0.25,
+       "lines": [
+        [
+         "FULL STORY",
+         "white",
+         120
+        ],
+        [
+         "SEARCH NETFLIX",
+         "gold",
+         130
+        ],
+        [
+         "ON HIDDEN COST",
+         "white",
+         110
+        ]
+       ]
+      }
+     }
+    ]
+   }
+  ],
   "tiktoks": []
  },
  "serie": [
@@ -1783,7 +2239,7 @@
    ]
   }
  ],
- "notes": "English adaptation of projetos/netflix for the Hidden Cost channel. Brazil section removed (Americanas). Facts as in the Portuguese version.",
+ "notes": "English adaptation of projetos/netflix for the Hidden Cost channel. Brazil section removed (Americanas). Facts as in the Portuguese version. Shorts: adapted from the PT shorts; the Americanas/Brazil short was replaced by the late-fees short (NBC News: nearly $800M in late fees in 2000, 16% of revenue).",
  "logos": {
   "logo_netflix": "File:Netflix 2015 logo.svg",
   "logo_blockbuster": "File:Blockbuster logo.svg"
