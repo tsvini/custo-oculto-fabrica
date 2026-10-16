@@ -1,0 +1,1704 @@
+{
+ "title": "WeWork",
+ "slug": "wework",
+ "idioma": "en",
+ "angle": "WeWork was valued at $47 billion, never made a profit, and went bankrupt. The founder walked away with a deal reported at up to $1.7 billion.",
+ "voz": {
+  "nome": "gravada",
+  "motor": "eleven",
+  "eleven_voz": "Vinícius Torales"
+ },
+ "logos": {
+  "logo_wework": [
+   "File:WeWork logo.svg",
+   "File:WeWork Logo.svg",
+   "WeWork logo"
+  ]
+ },
+ "script": {
+  "long": {
+   "parts": [
+    {
+     "chapter": "",
+     "sentences": [
+      {
+       "text": "Hey everyone, Vinícius here, and this is Hidden Cost.",
+       "scene": {
+        "type": "capa",
+        "foto": "wework",
+        "wiki": [
+         "WeWork office",
+         "WeWork coworking space",
+         "WeWork"
+        ],
+        "seta": false,
+        "recorte": "WeWork · 2019",
+        "faixa": "The WeWork case",
+        "linhas": [
+         [
+          "$47",
+          "gold",
+          270
+         ],
+         [
+          "BILLION",
+          "white",
+          200
+         ],
+         [
+          "TO BANKRUPT",
+          "red",
+          170
+         ]
+        ],
+        "logo": "logo_wework"
+       },
+       "abertura": true
+      },
+      {
+       "text": "In January twenty nineteen, a company that rents out office space was valued at forty seven billion dollars.",
+       "scene": {
+        "type": "counter",
+        "value": 47,
+        "prefix": "$",
+        "suffix": "B",
+        "over": "JANUARY 2019",
+        "label": "WEWORK'S VALUATION",
+        "color": "gold",
+        "size": 240
+       }
+      },
+      {
+       "text": "Nine months later, it couldn't even go public.",
+       "scene": {
+        "type": "stamp",
+        "org": "WEWORK · 2019",
+        "title": "THE IPO",
+        "stamp": "PULLED",
+        "stamp_at": 0.9
+       }
+      },
+      {
+       "text": "Four years after that, it filed for bankruptcy.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "2023",
+          "red",
+          220
+         ],
+         [
+          "BANKRUPT",
+          "white",
+          160
+         ]
+        ]
+       }
+      },
+      {
+       "text": "And the man who built it walked away with a deal reported at up to one point seven billion dollars.",
+       "scene": {
+        "type": "counter",
+        "value": 1.7,
+        "prefix": "$",
+        "suffix": "B",
+        "over": "THE FOUNDER'S DEAL",
+        "label": "AS REPORTED IN 2019",
+        "color": "gold",
+        "size": 230
+       }
+      },
+      {
+       "text": "So who paid the hidden cost? Let's find out.",
+       "scene": {
+        "type": "bullets",
+        "items": [
+         "THE PITCH",
+         "THE $47 BILLION",
+         "THE IPO",
+         "WHO PAID"
+        ],
+        "size": 85,
+        "last_gold": true
+       }
+      }
+     ]
+    },
+    {
+     "chapter": "THE PITCH",
+     "sentences": [
+      {
+       "text": "WeWork was founded in twenty ten, in New York, by Adam Neumann and Miguel McKelvey.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "2010",
+          "gold",
+          230
+         ],
+         [
+          "NEW YORK",
+          "white",
+          140
+         ]
+        ]
+       }
+      },
+      {
+       "text": "The idea was simple. Lease big office floors, split them into desks and small rooms, and rent them out by the month.",
+       "scene": {
+        "type": "flow",
+        "a": "BIG FLOORS",
+        "a_sub": "leased for years",
+        "b": "SMALL DESKS",
+        "b_sub": "rented monthly",
+        "caption": "THE MODEL"
+       }
+      },
+      {
+       "text": "Free coffee, beer on tap, glass walls, and a promise: this isn't an office. It's a community.",
+       "scene": {
+        "type": "image",
+        "media": "ww_space",
+        "wiki": [
+         "WeWork office",
+         "WeWork coworking space",
+         "WeWork"
+        ],
+        "lower": "A WeWork space",
+        "dim": 0.4,
+        "fallback": {
+         "type": "bigtext",
+         "stagger": 0.25,
+         "lines": [
+          [
+           "NOT AN OFFICE",
+           "white",
+           130
+          ],
+          [
+           "A COMMUNITY",
+           "gold",
+           150
+          ]
+         ]
+        }
+       }
+      },
+      {
+       "text": "But there was a catch. WeWork signed leases that lasted many years. Its members could leave with a month's notice.",
+       "scene": {
+        "type": "compare",
+        "title": "THE MISMATCH",
+        "items": [
+         [
+          "YEARS",
+          "WEWORK'S LEASES",
+          "red"
+         ],
+         [
+          "1 MONTH",
+          "MEMBERS' NOTICE",
+          "white"
+         ]
+        ],
+        "size": 160,
+        "stagger": 1.2,
+        "vs": true
+       }
+      },
+      {
+       "text": "If the economy slowed down, the customers could walk away. The rent bills would stay.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "CUSTOMERS LEAVE",
+          "white",
+          120
+         ],
+         [
+          "RENT STAYS",
+          "red",
+          170
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Neumann didn't sell WeWork as a real estate company. He sold it as a tech company.",
+       "scene": {
+        "type": "image",
+        "media": "neumann",
+        "wiki": [
+         "Adam Neumann",
+         "Adam Neumann WeWork"
+        ],
+        "lower": "Adam Neumann, WeWork co-founder",
+        "dim": 0.4,
+        "fallback": {
+         "type": "bigtext",
+         "stagger": 0.25,
+         "lines": [
+          [
+           "NOT REAL ESTATE",
+           "white",
+           120
+          ],
+          [
+           "TECH",
+           "gold",
+           230
+          ]
+         ]
+        }
+       }
+      },
+      {
+       "text": "And that matters, because investors pay a lot more for tech companies.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "TECH",
+          "gold",
+          200
+         ],
+         [
+          "= HIGHER PRICE",
+          "white",
+          130
+         ]
+        ]
+       }
+      }
+     ]
+    },
+    {
+     "chapter": "THE $47 BILLION",
+     "sentences": [
+      {
+       "text": "In twenty seventeen, the Japanese giant SoftBank and its CEO, Masayoshi Son, started pouring billions into WeWork.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "2017",
+          "gold",
+          220
+         ],
+         [
+          "SOFTBANK",
+          "white",
+          160
+         ],
+         [
+          "BILLIONS IN",
+          "muted",
+          100
+         ]
+        ]
+       }
+      },
+      {
+       "text": "By January twenty nineteen, WeWork was valued at forty seven billion dollars.",
+       "scene": {
+        "type": "counter",
+        "value": 47,
+        "prefix": "$",
+        "suffix": "B",
+        "over": "JANUARY 2019",
+        "label": "ON PAPER",
+        "color": "gold",
+        "size": 240
+       }
+      },
+      {
+       "text": "The company was growing fast. In twenty eighteen, revenue hit about one point eight billion dollars.",
+       "scene": {
+        "type": "counter",
+        "value": 1.8,
+        "prefix": "$",
+        "suffix": "B",
+        "over": "2018",
+        "label": "REVENUE",
+        "color": "gold",
+        "size": 230
+       }
+      },
+      {
+       "text": "But that same year, it lost about one point six billion.",
+       "scene": {
+        "type": "print",
+        "media": "print_s1",
+        "url": "https://www.fool.com/investing/2019/08/14/wework-files-updated-ipo-massive-losses.aspx",
+        "source": "The Motley Fool · Aug 14, 2019",
+        "rotate": -1.0,
+        "fallback": {
+         "type": "compare",
+         "title": "WEWORK · 2018",
+         "items": [
+          [
+           "$1.8B",
+           "REVENUE",
+           "gold"
+          ],
+          [
+           "-$1.6B",
+           "NET LOSS",
+           "red"
+          ]
+         ],
+         "size": 160,
+         "stagger": 1.2,
+         "vs": false
+        }
+       }
+      },
+      {
+       "text": "For every dollar it brought in, it lost almost ninety cents.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "EVERY $1 IN",
+          "white",
+          140
+         ],
+         [
+          "~90¢ LOST",
+          "red",
+          170
+         ]
+        ]
+       }
+      },
+      {
+       "text": "And its future lease payments added up to around eighteen billion dollars.",
+       "scene": {
+        "type": "counter",
+        "value": 17.9,
+        "prefix": "$",
+        "suffix": "B",
+        "over": "LEASE OBLIGATIONS",
+        "label": "PER THE IPO FILING",
+        "color": "red",
+        "size": 220
+       }
+      },
+      {
+       "text": "Still, the plan was to go public, and cash in on that forty seven billion.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "NEXT STOP",
+          "white",
+          140
+         ],
+         [
+          "WALL STREET",
+          "gold",
+          160
+         ]
+        ]
+       }
+      }
+     ]
+    },
+    {
+     "chapter": "THE IPO",
+     "sentences": [
+      {
+       "text": "In August twenty nineteen, WeWork filed its paperwork to go public. And investors finally got to read the details.",
+       "scene": {
+        "type": "date",
+        "month": "AUGUST",
+        "day": "14",
+        "year": "2019",
+        "tag": "THE IPO FILING"
+       }
+      },
+      {
+       "text": "Neumann's special shares had twenty votes each. Public investors would get one.",
+       "scene": {
+        "type": "compare",
+        "title": "VOTES PER SHARE",
+        "items": [
+         [
+          "20",
+          "NEUMANN'S SHARES",
+          "gold"
+         ],
+         [
+          "1",
+          "PUBLIC INVESTORS",
+          "white"
+         ]
+        ],
+        "size": 200,
+        "stagger": 1.2,
+        "vs": true
+       }
+      },
+      {
+       "text": "The filing also showed that WeWork had paid Neumann five point nine million dollars for the trademark to the word, We.",
+       "scene": {
+        "type": "print",
+        "media": "print_we",
+        "url": "https://foxbusiness.com/business-leaders/wework-ceo-adam-neumann-returns-trademark-money",
+        "source": "Fox Business · 2019",
+        "rotate": -1.0,
+        "fallback": {
+         "type": "stamp",
+         "org": "TRADEMARK DEAL",
+         "title": "THE WORD \"WE\"",
+         "stamp": "$5.9M",
+         "stamp_at": 0.9
+        }
+       }
+      },
+      {
+       "text": "After the backlash, he gave the money back.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "THE $5.9M",
+          "white",
+          150
+         ],
+         [
+          "RETURNED",
+          "gold",
+          170
+         ]
+        ]
+       }
+      },
+      {
+       "text": "And it showed that WeWork leased space in buildings that Neumann had a stake in.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "THE LANDLORD",
+          "white",
+          140
+         ],
+         [
+          "WAS THE CEO",
+          "red",
+          150
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Investors did the math. Reports said the expected valuation dropped to around ten billion dollars.",
+       "scene": {
+        "type": "compare",
+        "title": "THE VALUATION",
+        "items": [
+         [
+          "$47B",
+          "JANUARY 2019",
+          "gold"
+         ],
+         [
+          "~$10B",
+          "SEPTEMBER 2019",
+          "red"
+         ]
+        ],
+        "size": 160,
+        "stagger": 1.2,
+        "vs": false
+       }
+      },
+      {
+       "text": "On September twenty fourth, twenty nineteen, Neumann stepped down as CEO.",
+       "scene": {
+        "type": "stamp",
+        "org": "WEWORK · SEP 24, 2019",
+        "title": "ADAM NEUMANN, CEO",
+        "stamp": "OUT",
+        "stamp_at": 0.9
+       }
+      },
+      {
+       "text": "Six days later, the IPO was officially pulled.",
+       "scene": {
+        "type": "stamp",
+        "org": "WEWORK · SEP 30, 2019",
+        "title": "THE IPO",
+        "stamp": "WITHDRAWN",
+        "stamp_at": 0.9
+       }
+      }
+     ]
+    },
+    {
+     "chapter": "WHO PAID",
+     "sentences": [
+      {
+       "text": "In October, SoftBank took control of WeWork, now valued at around eight billion dollars.",
+       "scene": {
+        "type": "compare",
+        "title": "NINE MONTHS LATER",
+        "items": [
+         [
+          "$47B",
+          "JANUARY",
+          "gold"
+         ],
+         [
+          "~$8B",
+          "OCTOBER",
+          "red"
+         ]
+        ],
+        "size": 170,
+        "stagger": 1.2,
+        "vs": false
+       }
+      },
+      {
+       "text": "And the rescue came with a deal for Neumann, reported at up to one point seven billion dollars.",
+       "scene": {
+        "type": "print",
+        "media": "print_payout",
+        "url": "https://techcrunch.com/2019/10/22/softbank-reportedly-ends-wework-ownership-debacle-with-a-1-7-billion-payout-to-adam-neumann",
+        "source": "TechCrunch · Oct 22, 2019",
+        "rotate": -1.0,
+        "fallback": {
+         "type": "counter",
+         "value": 1.7,
+         "prefix": "$",
+         "suffix": "B",
+         "over": "THE EXIT DEAL",
+         "label": "AS REPORTED",
+         "color": "gold",
+         "size": 230
+        }
+       }
+      },
+      {
+       "text": "That included nearly a billion dollars to buy his shares, a five hundred million dollar credit line, and a hundred and eighty five million in consulting fees.",
+       "scene": {
+        "type": "bullets",
+        "title": "THE DEAL",
+        "items": [
+         "~$1B FOR HIS SHARES",
+         "$500M CREDIT LINE",
+         "$185M CONSULTING"
+        ],
+        "size": 85,
+        "last_gold": true
+       }
+      },
+      {
+       "text": "Weeks later, WeWork announced thousands of layoffs.",
+       "scene": {
+        "type": "video",
+        "media": "office_empty",
+        "search": "empty office desks",
+        "search_en": "empty office desks",
+        "start": 0.0,
+        "dim": 0.4,
+        "lower": "Layoffs",
+        "fallback": {
+         "type": "bigtext",
+         "stagger": 0.25,
+         "lines": [
+          [
+           "THOUSANDS",
+           "white",
+           160
+          ],
+          [
+           "LAID OFF",
+           "red",
+           170
+          ]
+         ]
+        }
+       }
+      },
+      {
+       "text": "Here's the hidden cost.",
+       "scene": {
+        "type": "flash",
+        "text": "THE HIDDEN\nCOST",
+        "tint": "red",
+        "size": 150
+       }
+      },
+      {
+       "text": "The founder walked away a billionaire. Thousands of employees walked away without a job. And many of them held stock that was now worth a fraction of what they had been told.",
+       "scene": {
+        "type": "compare",
+        "title": "WHO PAID",
+        "items": [
+         [
+          "BILLIONAIRE",
+          "THE FOUNDER",
+          "gold"
+         ],
+         [
+          "NO JOB",
+          "THOUSANDS OF EMPLOYEES",
+          "red"
+         ]
+        ],
+        "size": 140,
+        "stagger": 1.2,
+        "vs": true
+       }
+      }
+     ]
+    },
+    {
+     "chapter": "THE FALL",
+     "sentences": [
+      {
+       "text": "Then, in twenty twenty, the pandemic emptied offices around the world.",
+       "scene": {
+        "type": "video",
+        "media": "empty_city",
+        "search": "empty city office building",
+        "search_en": "empty city office building",
+        "start": 0.0,
+        "dim": 0.4,
+        "lower": "2020",
+        "fallback": {
+         "type": "bigtext",
+         "stagger": 0.25,
+         "lines": [
+          [
+           "2020",
+           "red",
+           220
+          ],
+          [
+           "EMPTY OFFICES",
+           "white",
+           130
+          ]
+         ]
+        }
+       }
+      },
+      {
+       "text": "In October twenty twenty one, WeWork finally went public, through a merger with a blank check company, at a value of about nine billion dollars.",
+       "scene": {
+        "type": "print",
+        "media": "print_spac",
+        "url": "https://rebusinessonline.com/bowx-acquisition-corp-agree-to-buy-wework-plans-to-take-company-public-at-9b-valuation/",
+        "source": "REBusiness · 2021",
+        "rotate": -1.0,
+        "fallback": {
+         "type": "counter",
+         "value": 9,
+         "prefix": "$",
+         "suffix": "B",
+         "over": "OCTOBER 2021",
+         "label": "FINALLY PUBLIC",
+         "color": "gold",
+         "size": 230
+        }
+       }
+      },
+      {
+       "text": "It never turned a profit.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "PROFIT",
+          "white",
+          170
+         ],
+         [
+          "NEVER",
+          "red",
+          220
+         ]
+        ]
+       }
+      },
+      {
+       "text": "In November twenty twenty three, WeWork filed for bankruptcy.",
+       "scene": {
+        "type": "stamp",
+        "org": "WEWORK · NOV 2023",
+        "title": "CHAPTER 11",
+        "stamp": "FILED",
+        "stamp_at": 0.9
+       }
+      },
+      {
+       "text": "By the end of that year, the company once valued at forty seven billion was worth less than a hundred million on the stock market.",
+       "scene": {
+        "type": "compare",
+        "title": "WEWORK",
+        "items": [
+         [
+          "$47B",
+          "2019",
+          "gold"
+         ],
+         [
+          "<$100M",
+          "END OF 2023",
+          "red"
+         ]
+        ],
+        "size": 160,
+        "stagger": 1.2,
+        "vs": false
+       }
+      },
+      {
+       "text": "It came out of bankruptcy in June twenty twenty four. Smaller, with a new majority owner, the software company Yardi Systems.",
+       "scene": {
+        "type": "print",
+        "media": "print_exit",
+        "url": "https://www.newser.com/story/351625/wework-emerges-from-bankruptcy.html",
+        "source": "Newser · Jun 13, 2024",
+        "rotate": -1.0,
+        "fallback": {
+         "type": "bigtext",
+         "stagger": 0.25,
+         "lines": [
+          [
+           "JUNE 2024",
+           "gold",
+           170
+          ],
+          [
+           "NEW OWNER",
+           "white",
+           140
+          ]
+         ]
+        }
+       }
+      },
+      {
+       "text": "It cut more than four billion dollars in debt and closed about a hundred and seventy locations.",
+       "scene": {
+        "type": "bullets",
+        "title": "THE RESTART",
+        "items": [
+         "$4B+ DEBT CUT",
+         "~170 LOCATIONS CLOSED"
+        ],
+        "size": 90,
+        "last_gold": true
+       }
+      },
+      {
+       "text": "And Adam Neumann? In twenty twenty two, the venture firm Andreessen Horowitz backed his new real estate startup, Flow, with three hundred and fifty million dollars.",
+       "scene": {
+        "type": "print",
+        "media": "print_flow",
+        "url": "https://techcrunch.com/2022/08/15/a16z-andreessen-horowitz-backs-adam-neumann-wework-new-venture-flow-real-estate/",
+        "source": "TechCrunch · Aug 15, 2022",
+        "rotate": -1.0,
+        "fallback": {
+         "type": "counter",
+         "value": 350,
+         "prefix": "$",
+         "suffix": "M",
+         "over": "FLOW · 2022",
+         "label": "NEUMANN'S NEXT STARTUP",
+         "color": "gold",
+         "size": 220
+        }
+       }
+      },
+      {
+       "text": "According to TechCrunch, it was the firm's biggest single check ever.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "THEIR BIGGEST",
+          "white",
+          140
+         ],
+         [
+          "CHECK EVER",
+          "gold",
+          170
+         ]
+        ]
+       }
+      },
+      {
+       "text": "The hidden lesson? A great story can be worth more than a business. Until someone reads the numbers.",
+       "scene": {
+        "type": "flash",
+        "text": "READ THE\nNUMBERS",
+        "tint": "red",
+        "size": 150
+       }
+      },
+      {
+       "text": "Which company do you think is the next WeWork? Tell me in the comments, and follow Hidden Cost for a new case every week.",
+       "scene": {
+        "type": "endcard",
+        "sub": "THE WEWORK CASE"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "shorts": [
+   {
+    "title": "WeWork Was Worth $47 Billion. Then It Went Bankrupt",
+    "sentences": [
+     {
+      "text": "WeWork was valued at forty seven billion dollars. Four years later, it was bankrupt.",
+      "scene": {
+       "type": "capa",
+       "foto": "wework",
+       "wiki": [
+        "WeWork office",
+        "WeWork coworking space",
+        "WeWork"
+       ],
+       "seta": false,
+       "recorte": "WeWork · 2019",
+       "faixa": "Then bankrupt",
+       "linhas": [
+        [
+         "$47",
+         "gold",
+         270
+        ],
+        [
+         "BILLION",
+         "white",
+         200
+        ],
+        [
+         "TO ZERO",
+         "red",
+         190
+        ]
+       ],
+       "logo": "logo_wework"
+      }
+     },
+     {
+      "text": "It rented out office space, but it was sold to investors as a tech company.",
+      "scene": {
+       "type": "bigtext",
+       "stagger": 0.25,
+       "lines": [
+        [
+         "OFFICE SPACE",
+         "white",
+         140
+        ],
+        [
+         "SOLD AS TECH",
+         "gold",
+         150
+        ]
+       ]
+      }
+     },
+     {
+      "text": "In twenty eighteen, it made about one point eight billion dollars, and lost about one point six billion.",
+      "scene": {
+       "type": "compare",
+       "title": "WEWORK · 2018",
+       "items": [
+        [
+         "$1.8B",
+         "REVENUE",
+         "gold"
+        ],
+        [
+         "-$1.6B",
+         "NET LOSS",
+         "red"
+        ]
+       ],
+       "size": 160,
+       "stagger": 1.2,
+       "vs": false
+      }
+     },
+     {
+      "text": "When it tried to go public in twenty nineteen, investors read the numbers. And the IPO was pulled.",
+      "scene": {
+       "type": "stamp",
+       "org": "WEWORK · 2019",
+       "title": "THE IPO",
+       "stamp": "PULLED",
+       "stamp_at": 0.9
+      }
+     },
+     {
+      "text": "In twenty twenty three, it filed for bankruptcy.",
+      "scene": {
+       "type": "bigtext",
+       "stagger": 0.25,
+       "lines": [
+        [
+         "2023",
+         "red",
+         220
+        ],
+        [
+         "BANKRUPT",
+         "white",
+         160
+        ]
+       ]
+      }
+     },
+     {
+      "text": "The full story is on the channel. Search WeWork on Hidden Cost.",
+      "scene": {
+       "type": "bigtext",
+       "stagger": 0.25,
+       "lines": [
+        [
+         "FULL STORY",
+         "white",
+         120
+        ],
+        [
+         "SEARCH WEWORK",
+         "gold",
+         130
+        ],
+        [
+         "ON HIDDEN COST",
+         "white",
+         110
+        ]
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "title": "WeWork Paid Its Founder $5.9 Million for the Word \"We\"",
+    "sentences": [
+     {
+      "text": "WeWork paid its own founder five point nine million dollars for the word, We.",
+      "scene": {
+       "type": "capa",
+       "foto": "wework",
+       "wiki": [
+        "WeWork office",
+        "WeWork coworking space",
+        "WeWork"
+       ],
+       "seta": false,
+       "recorte": "WeWork · 2019",
+       "faixa": "For one word",
+       "linhas": [
+        [
+         "$5.9M",
+         "gold",
+         250
+        ],
+        [
+         "FOR THE WORD",
+         "white",
+         160
+        ],
+        [
+         "\"WE\"",
+         "red",
+         260
+        ]
+       ],
+       "logo": "logo_wework"
+      }
+     },
+     {
+      "text": "Adam Neumann owned the trademark, and the company paid him for it.",
+      "scene": {
+       "type": "image",
+       "media": "neumann",
+       "wiki": [
+        "Adam Neumann",
+        "Adam Neumann WeWork"
+       ],
+       "lower": "Adam Neumann, WeWork co-founder",
+       "dim": 0.4,
+       "fallback": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "THE FOUNDER",
+          "white",
+          140
+         ],
+         [
+          "OWNED \"WE\"",
+          "gold",
+          160
+         ]
+        ]
+       }
+      }
+     },
+     {
+      "text": "It came out in twenty nineteen, when WeWork filed to go public.",
+      "scene": {
+       "type": "bigtext",
+       "stagger": 0.25,
+       "lines": [
+        [
+         "2019",
+         "gold",
+         220
+        ],
+        [
+         "THE IPO FILING",
+         "white",
+         120
+        ]
+       ]
+      }
+     },
+     {
+      "text": "After the backlash, he gave the money back.",
+      "scene": {
+       "type": "bigtext",
+       "stagger": 0.25,
+       "lines": [
+        [
+         "THE $5.9M",
+         "white",
+         150
+        ],
+        [
+         "RETURNED",
+         "gold",
+         170
+        ]
+       ]
+      }
+     },
+     {
+      "text": "But it was too late. The IPO was pulled a few weeks later.",
+      "scene": {
+       "type": "stamp",
+       "org": "WEWORK · 2019",
+       "title": "THE IPO",
+       "stamp": "PULLED",
+       "stamp_at": 0.9
+      }
+     },
+     {
+      "text": "The full story is on the channel. Search WeWork on Hidden Cost.",
+      "scene": {
+       "type": "bigtext",
+       "stagger": 0.25,
+       "lines": [
+        [
+         "FULL STORY",
+         "white",
+         120
+        ],
+        [
+         "SEARCH WEWORK",
+         "gold",
+         130
+        ],
+        [
+         "ON HIDDEN COST",
+         "white",
+         110
+        ]
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "title": "WeWork's Founder Got a $1.7 Billion Deal to Leave",
+    "sentences": [
+     {
+      "text": "WeWork's founder got a deal reported at up to one point seven billion dollars to step away.",
+      "scene": {
+       "type": "capa",
+       "foto": "wework",
+       "wiki": [
+        "WeWork office",
+        "WeWork coworking space",
+        "WeWork"
+       ],
+       "seta": false,
+       "recorte": "WeWork · 2019",
+       "faixa": "To step away",
+       "linhas": [
+        [
+         "$1.7",
+         "gold",
+         270
+        ],
+        [
+         "BILLION",
+         "white",
+         200
+        ],
+        [
+         "TO LEAVE",
+         "red",
+         190
+        ]
+       ],
+       "logo": "logo_wework"
+      }
+     },
+     {
+      "text": "In twenty nineteen, the IPO failed and Adam Neumann stepped down as CEO.",
+      "scene": {
+       "type": "stamp",
+       "org": "WEWORK · SEP 2019",
+       "title": "ADAM NEUMANN, CEO",
+       "stamp": "OUT",
+       "stamp_at": 0.9
+      }
+     },
+     {
+      "text": "SoftBank took control, at a valuation of around eight billion. Down from forty seven.",
+      "scene": {
+       "type": "compare",
+       "title": "WEWORK · 2019",
+       "items": [
+        [
+         "$47B",
+         "JANUARY",
+         "gold"
+        ],
+        [
+         "~$8B",
+         "OCTOBER",
+         "red"
+        ]
+       ],
+       "size": 170,
+       "stagger": 1.2,
+       "vs": false
+      }
+     },
+     {
+      "text": "The deal included about a billion dollars for his shares and a hundred and eighty five million in consulting fees.",
+      "scene": {
+       "type": "bullets",
+       "title": "THE DEAL",
+       "items": [
+        "~$1B FOR HIS SHARES",
+        "$185M CONSULTING"
+       ],
+       "size": 90,
+       "last_gold": true
+      }
+     },
+     {
+      "text": "Weeks later, thousands of employees were laid off.",
+      "scene": {
+       "type": "bigtext",
+       "stagger": 0.25,
+       "lines": [
+        [
+         "THOUSANDS",
+         "white",
+         160
+        ],
+        [
+         "LAID OFF",
+         "red",
+         170
+        ]
+       ]
+      }
+     },
+     {
+      "text": "The full story is on the channel. Search WeWork on Hidden Cost.",
+      "scene": {
+       "type": "bigtext",
+       "stagger": 0.25,
+       "lines": [
+        [
+         "FULL STORY",
+         "white",
+         120
+        ],
+        [
+         "SEARCH WEWORK",
+         "gold",
+         130
+        ],
+        [
+         "ON HIDDEN COST",
+         "white",
+         110
+        ]
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "title": "WeWork Lost 90 Cents for Every Dollar It Made",
+    "sentences": [
+     {
+      "text": "For every dollar WeWork brought in, it lost almost ninety cents.",
+      "scene": {
+       "type": "capa",
+       "foto": "wework",
+       "wiki": [
+        "WeWork office",
+        "WeWork coworking space",
+        "WeWork"
+       ],
+       "seta": false,
+       "recorte": "WeWork · 2018",
+       "faixa": "For every dollar",
+       "linhas": [
+        [
+         "$1 IN",
+         "white",
+         230
+        ],
+        [
+         "90¢",
+         "red",
+         270
+        ],
+        [
+         "LOST",
+         "gold",
+         220
+        ]
+       ],
+       "logo": "logo_wework"
+      }
+     },
+     {
+      "text": "In twenty eighteen, revenue was about one point eight billion dollars. The loss, about one point six billion.",
+      "scene": {
+       "type": "compare",
+       "title": "WEWORK · 2018",
+       "items": [
+        [
+         "$1.8B",
+         "REVENUE",
+         "gold"
+        ],
+        [
+         "-$1.6B",
+         "NET LOSS",
+         "red"
+        ]
+       ],
+       "size": 160,
+       "stagger": 1.2,
+       "vs": false
+      }
+     },
+     {
+      "text": "It signed leases for years, but its members could leave with a month's notice.",
+      "scene": {
+       "type": "compare",
+       "title": "THE MISMATCH",
+       "items": [
+        [
+         "YEARS",
+         "WEWORK'S LEASES",
+         "red"
+        ],
+        [
+         "1 MONTH",
+         "MEMBERS' NOTICE",
+         "white"
+        ]
+       ],
+       "size": 160,
+       "stagger": 1.2,
+       "vs": true
+      }
+     },
+     {
+      "text": "And still, investors valued it at forty seven billion dollars.",
+      "scene": {
+       "type": "counter",
+       "value": 47,
+       "prefix": "$",
+       "suffix": "B",
+       "over": "JANUARY 2019",
+       "label": "ON PAPER",
+       "color": "gold",
+       "size": 240
+      }
+     },
+     {
+      "text": "The full story is on the channel. Search WeWork on Hidden Cost.",
+      "scene": {
+       "type": "bigtext",
+       "stagger": 0.25,
+       "lines": [
+        [
+         "FULL STORY",
+         "white",
+         120
+        ],
+        [
+         "SEARCH WEWORK",
+         "gold",
+         130
+        ],
+        [
+         "ON HIDDEN COST",
+         "white",
+         110
+        ]
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ "serie": [
+  {
+   "partes": [
+    1,
+    2
+   ],
+   "capa": {
+    "type": "capa",
+    "foto": "wework",
+    "wiki": [
+     "WeWork office",
+     "WeWork coworking space",
+     "WeWork"
+    ],
+    "seta": false,
+    "recorte": "WeWork · Part 1",
+    "faixa": "Part 1 of 4",
+    "linhas": [
+     [
+      "$47",
+      "gold",
+      260
+     ],
+     [
+      "BILLION",
+      "white",
+      200
+     ],
+     [
+      "OFFICES",
+      "red",
+      190
+     ]
+    ],
+    "logo": "logo_wework"
+   },
+   "caption": "WeWork, part 1: how a company that rents desks got sold as a tech startup. Follow for part 2.",
+   "fim": [
+    "CONTINUES IN",
+    "PART 2"
+   ],
+   "hashtags": [
+    "#wework",
+    "#business",
+    "#startup",
+    "#history",
+    "#series"
+   ]
+  },
+  {
+   "partes": [
+    3,
+    4
+   ],
+   "capa": {
+    "type": "capa",
+    "foto": "wework",
+    "wiki": [
+     "WeWork office",
+     "WeWork coworking space",
+     "WeWork"
+    ],
+    "seta": false,
+    "recorte": "WeWork · Part 2",
+    "faixa": "Part 2 of 4",
+    "linhas": [
+     [
+      "THE IPO",
+      "white",
+      210
+     ],
+     [
+      "THAT",
+      "gold",
+      180
+     ],
+     [
+      "COLLAPSED",
+      "red",
+      200
+     ]
+    ],
+    "logo": "logo_wework"
+   },
+   "caption": "WeWork, part 2: the $47 billion valuation and the IPO filing investors finally read.",
+   "fim": [
+    "CONTINUES IN",
+    "PART 3"
+   ],
+   "hashtags": [
+    "#wework",
+    "#ipo",
+    "#business",
+    "#startup",
+    "#series"
+   ]
+  },
+  {
+   "partes": [
+    5
+   ],
+   "capa": {
+    "type": "capa",
+    "foto": "wework",
+    "wiki": [
+     "WeWork office",
+     "WeWork coworking space",
+     "WeWork"
+    ],
+    "seta": false,
+    "recorte": "WeWork · Part 3",
+    "faixa": "Part 3 of 4",
+    "linhas": [
+     [
+      "$1.7B",
+      "gold",
+      250
+     ],
+     [
+      "TO THE",
+      "white",
+      170
+     ],
+     [
+      "FOUNDER",
+      "red",
+      200
+     ]
+    ],
+    "logo": "logo_wework"
+   },
+   "caption": "WeWork, part 3: the founder's exit deal and who paid the hidden cost.",
+   "fim": [
+    "CONTINUES IN",
+    "PART 4"
+   ],
+   "hashtags": [
+    "#wework",
+    "#adamneumann",
+    "#business",
+    "#startup",
+    "#series"
+   ]
+  },
+  {
+   "partes": [
+    6
+   ],
+   "capa": {
+    "type": "capa",
+    "foto": "wework",
+    "wiki": [
+     "WeWork office",
+     "WeWork coworking space",
+     "WeWork"
+    ],
+    "seta": false,
+    "recorte": "WeWork · Final",
+    "faixa": "Part 4 of 4",
+    "linhas": [
+     [
+      "BANKRUPT",
+      "red",
+      230
+     ],
+     [
+      "AND THE",
+      "white",
+      160
+     ],
+     [
+      "NEXT ACT",
+      "gold",
+      200
+     ]
+    ],
+    "logo": "logo_wework"
+   },
+   "caption": "WeWork, final part: the pandemic, the bankruptcy, and the founder's $350 million comeback.",
+   "fim": [
+    "END OF",
+    "THE SERIES"
+   ],
+   "hashtags": [
+    "#wework",
+    "#bankruptcy",
+    "#business",
+    "#startup",
+    "#series"
+   ]
+  }
+ ],
+ "meta": {
+  "titles": [
+   "WEWORK: How a $47 Billion Startup Went Bankrupt",
+   "WeWork Was Worth $47 Billion. The Founder Walked Away With $1.7 Billion"
+  ],
+  "description": "In January 2019, WeWork was valued at $47 billion. Nine months later, its IPO was pulled. In 2023, it filed for bankruptcy. Meanwhile, its founder walked away with a deal reported at up to $1.7 billion. In this video: the pitch, the $47 billion valuation, the IPO filing investors finally read, and who paid the hidden cost.\n\n[CAPÍTULOS]\n\nSources: WeWork IPO filing (S-1, Aug 2019) as reported by The Motley Fool; TechCrunch (Oct 22, 2019; Aug 15, 2022); Fox Business (2019); REBusiness (2021); Newser (Jun 13, 2024); Fox Business (Nov 2023).\n\n#WeWork #AdamNeumann #HiddenCost",
+  "tags": [
+   "wework",
+   "adam neumann",
+   "wework bankruptcy",
+   "what happened to wework",
+   "wework ipo",
+   "softbank wework",
+   "hidden cost"
+  ]
+ },
+ "thumbs_capa": [
+  {
+   "type": "capa",
+   "foto": "wework",
+   "wiki": [
+    "WeWork office",
+    "WeWork coworking space",
+    "WeWork"
+   ],
+   "seta": false,
+   "recorte": "WeWork · 2019",
+   "faixa": "The WeWork case",
+   "linhas": [
+    [
+     "$47",
+     "gold",
+     270
+    ],
+    [
+     "BILLION",
+     "white",
+     210
+    ],
+    [
+     "TO BANKRUPT",
+     "red",
+     170
+    ]
+   ],
+   "logo": "logo_wework"
+  },
+  {
+   "type": "capa",
+   "foto": "wework",
+   "wiki": [
+    "WeWork office",
+    "WeWork coworking space",
+    "WeWork"
+   ],
+   "seta": false,
+   "recorte": "WeWork · 2019",
+   "faixa": "The founder's deal",
+   "linhas": [
+    [
+     "$1.7B",
+     "gold",
+     260
+    ],
+    [
+     "TO WALK",
+     "white",
+     190
+    ],
+    [
+     "AWAY",
+     "red",
+     220
+    ]
+   ],
+   "logo": "logo_wework"
+  }
+ ],
+ "thumbs": [
+  {
+   "glow": "red",
+   "lines": [
+    {
+     "text": "WEWORK",
+     "color": "white",
+     "size": 150
+    },
+    {
+     "text": "$47 BILLION",
+     "color": "gold",
+     "size": 150
+    },
+    {
+     "text": "BANKRUPT",
+     "color": "red",
+     "size": 130
+    }
+   ]
+  },
+  {
+   "glow": "gold",
+   "lines": [
+    {
+     "text": "$1.7 BILLION",
+     "color": "gold",
+     "size": 140
+    },
+    {
+     "text": "TO THE",
+     "color": "white",
+     "size": 110
+    },
+    {
+     "text": "FOUNDER",
+     "color": "red",
+     "size": 150
+    }
+   ]
+  }
+ ],
+ "notes": "FACTS CHECKED (with source)\n- Founded 2010 (New York) by Adam Neumann and Miguel McKelvey; $47B valuation Jan 2019 (Wikipedia; Fox Business)\n- 2018: revenue $1.82B, net loss $1.6B; lease obligations $17.9B; Class B/C shares 20 votes vs 1 (The Motley Fool, S-1 coverage, Aug 14, 2019)\n- $5.9M paid to Neumann for the 'We' trademark, returned after backlash (Fox Business; Inc.)\n- Related-party leases in buildings Neumann had stakes in (disclosed in the S-1)\n- Neumann out as CEO Sep 24, 2019; IPO withdrawn Sep 30, 2019 (Wikipedia)\n- SoftBank takeover at ~$8B; Neumann deal up to $1.7B: ~$1B share purchase, $500M credit line, $185M consulting (TechCrunch, Oct 22, 2019, citing WSJ)\n- SPAC (BowX) listing Oct 2021 at ~$9B (REBusiness); never profitable (Fox Business)\n- Chapter 11 Nov 2023 (NJ); market cap ~$21M Dec 2023 (Wikipedia)\n- Exit from bankruptcy Jun 11, 2024; Yardi majority owner; $4B+ debt cut; ~170 locations exited (Newser, Jun 13, 2024)\n- a16z $350M into Flow, largest single check ever (TechCrunch, Aug 15, 2022)\n- ~2,400 layoffs announced Nov 21, 2019 (CNN); expected valuation reported at ~$10B in Sep 2019 (Wikipedia)\n- REVIEW: script pending Vinícius' approval"
+}
