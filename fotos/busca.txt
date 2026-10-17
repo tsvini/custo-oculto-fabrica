@@ -1,8 +1,2 @@
-orkut_criador | Orkut Büyükkökten
-orkut_logo | Orkut logo
-google_bh | Google Belo Horizonte
-lanhouse | lan house Brazil
-cybercafe | internet cafe Brazil
-googleplex | Googleplex
-zuckerberg | Mark Zuckerberg 2011
-facebook_logo | Facebook logo
+orkut_tela | Aparência visual do novo orkut
+orkut_print | Orkut screenshot
