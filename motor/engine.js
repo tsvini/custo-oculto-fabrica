@@ -412,7 +412,9 @@
   // auto: divide a frase inteira entre os clipes (cada imagem aparece uma vez só, sem repetir)
   function montagemAt(s, t, dur) { const n = (s.clips || []).length || 1; const cada = s.auto && dur ? Math.max(0.6, dur / n) : (s.cada || 1.2);
     const i = s.auto ? Math.min(n - 1, Math.floor(Math.max(0, t) / cada)) : Math.floor(Math.max(0, t) / cada) % n; return [s.clips[i], t - Math.floor(Math.max(0, t) / cada) * cada, cada]; }
+  const temMidia = (cl, media) => !(cl.type === "image" || cl.type === "video") || (media && media[cl.media]);
   S.montagem = (ctx, c, t, dur, s, media) => {
+    if (s.clips && media && !s._filtrado) { const ok = s.clips.filter((cl) => temMidia(cl, media)); if (ok.length) s.clips = ok; s._filtrado = true; } // pula imagem que não veio
     if (!s.clips || !s.clips.length) return S.bigtext(ctx, c, t, dur, s.fallback || {}, media);
     const [cl, lt, cada] = montagemAt(s, t, dur);
     ctx.save();

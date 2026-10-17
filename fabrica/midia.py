@@ -332,7 +332,8 @@ def ia_imagens(pedidos, pasta, vertical, log, copia=None):
             continue
         v = v if isinstance(v, dict) else {"prompt": v}
         campos = {"prompt": (None, v["prompt"] + estilo), "width": (None, str(W)), "height": (None, str(H)), "seed": (None, str(v.get("seed", 7)))}
-        try:
+        for tentativa in range(3):  # a API às vezes falha de forma passageira
+          try:
             r = requests.post(url, headers={"Authorization": f"Bearer {tok}"}, files=campos, timeout=120)
             if r.headers.get("content-type", "").startswith("image/"):
                 dado = r.content
@@ -346,9 +347,12 @@ def ia_imagens(pedidos, pasta, vertical, log, copia=None):
             Image.open(io.BytesIO(dado)).convert("RGB").save(dest, quality=92)
             if copia:  # cópia em previas/ para revisar
                 os.makedirs(os.path.dirname(copia), exist_ok=True); Image.open(dest).save(f"{copia}{k}.jpg", quality=85)
-            log(f"  imagem IA {k}: ok")
-        except Exception as e:
+            log(f"  imagem IA {k}: ok"); break
+          except Exception as e:
             log(f"  imagem IA {k}: falhou ({str(e)[:160]})")
+            if tentativa == 1:  # na última tentativa, muda a semente (o filtro às vezes barra só uma variação)
+                campos["seed"] = (None, "123")
+            import time; time.sleep(3)
 
 
 def manifesto(pasta):
