@@ -269,7 +269,7 @@ def processar(video, eventos, trilha=None, roteiro="", relatorio=None, rodadas=2
             if av is None or (nota or 0) >= meta:
                 break
             aplica(eventos, av)
-            for f in (av or {}).get("faltando", [])[:4]:  # som que o avaliador sentiu falta
+            for f in ((av or {}).get("faltando", []) if os.environ.get("SOM_ACEITA_SUGESTAO") else [])[:4]:  # som que o avaliador sentiu falta (desligado: menos é mais)
                 try:
                     ev = {"t0": float(f["t"]), "t1": float(f["t"]) + 3, "tipo": f.get("tipo", "fx"), "busca": f["busca"], "cena": "sugerido pelo avaliador"}
                     ev["vol"] = 0.18 if ev["tipo"] == "amb" else 0.45

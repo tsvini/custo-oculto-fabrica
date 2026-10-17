@@ -24,22 +24,6 @@
    "cena": "ia_lixo | fala: A Colgate pagou um bilhão de dólares por uma marca. E depois sumiu com ela."
   },
   {
-   "t0": 5.73,
-   "t1": 10.44,
-   "tipo": "amb",
-   "busca": "supermarket ambience crowd",
-   "vol": 0.22,
-   "cena": "montagem | fala: Era a Kolynos, que nos anos noventa vendia o dobro da Colgate no Brasil."
-  },
-  {
-   "t0": 10.44,
-   "t1": 13.44,
-   "tipo": "fx",
-   "busca": "pen signing paper",
-   "vol": 0.45,
-   "cena": "ia_assinatura | fala: Em noventa e cinco, a Colgate comprou a rival inteira."
-  },
-  {
    "t0": 11.99,
    "t1": 14.99,
    "tipo": "fx",
@@ -56,14 +40,6 @@
    "cena": "stamp | fala: A Colgate escolheu apagar."
   },
   {
-   "t0": 24.14,
-   "t1": 25.89,
-   "tipo": "amb",
-   "busca": "factory conveyor belt machinery",
-   "vol": 0.25,
-   "cena": "ia_fabrica | fala: Lançou a Sorriso no lugar e investiu quarenta milhões de dólares pra ela pegar."
-  },
-  {
    "t0": 30.63,
    "t1": 33.629999999999995,
    "tipo": "fx",
@@ -78,14 +54,6 @@
    "busca": "dramatic reveal hit",
    "vol": 0.7,
    "cena": "kolynos | fala: Até que, em dois mil e vinte e cinco, a própria Colgate lançou uma Sorriso com a fórmula e a cara da Kolynos."
-  },
-  {
-   "t0": 42.83,
-   "t1": 45.52,
-   "tipo": "amb",
-   "busca": "brushing teeth",
-   "vol": 0.25,
-   "cena": "ia_familia | fala: Pra mim, foi o bilhão mais bem gasto da Colgate. Você lembra do gosto dela?"
   }
  ],
  "trilha": "tensao",
