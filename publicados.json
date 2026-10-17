@@ -2,7 +2,7 @@
  {
   "nome": "itapemirim_longo",
   "tipo": "longo",
-  "titulo": "ITAPEMIRIM: A Empresa de Ônibus Que Criou Uma Aérea e Quebrou em 6 Meses",
+  "titulo": "O Que Aconteceu Com a Itapemirim? A Empresa de Ônibus Que Criou Uma Aérea e Quebrou",
   "video_id": "4WuKNxpR188",
   "publishAt": "2026-10-11T12:00:00-03:00",
   "status": "manual",
@@ -25,7 +25,7 @@
  {
   "nome": "kolynos_longo",
   "tipo": "longo",
-  "titulo": "A Colgate Pagou US$ 1 Bilhão Pela Kolynos e Guardou na Gaveta",
+  "titulo": "O Que Aconteceu Com a Kolynos? A Colgate Pagou US$ 1 Bilhão Pra Ela Sumir",
   "video_id": "TIv6Sg8n_rI",
   "publishAt": "2026-10-12T18:30:00-03:00",
   "status": "manual",
@@ -49,7 +49,7 @@
  {
   "nome": "banco_master_longo",
   "tipo": "longo",
-  "titulo": "BANCO MASTER: O Banco Que Quebrou e Deixou Uma Conta de R$ 41 Bilhões",
+  "titulo": "BANCO MASTER: O Que Aconteceu e Quem Vai Pagar a Conta de R$ 41 Bilhões",
   "video_id": "3e-eXXCL27s",
   "publishAt": "2026-10-13T12:00:00-03:00",
   "status": "private",
@@ -513,7 +513,7 @@
   "video_id": "68-7NcePBV8",
   "caso": "netflix_en",
   "caso_titulo": null,
-  "publishAt": "2026-10-18T18:00:00-03:00",
+  "publishAt": "2026-10-26T18:00:00-03:00",
   "status": "private",
   "miniatura_ok": "e2e4b4743dc9"
  },
@@ -525,7 +525,7 @@
   "video_id": "FYjO_13LO78",
   "caso": "netflix_en",
   "caso_titulo": null,
-  "publishAt": "2026-10-19T18:00:00-03:00",
+  "publishAt": "2026-11-02T18:00:00-03:00",
   "status": "private",
   "miniatura_ok": "e0383034a1da"
  },
@@ -549,7 +549,7 @@
   "nome": "wework_serie1",
   "tipo": "serie",
   "idioma": "en",
-  "titulo": "WeWork: part 1 of 4 #shorts",
+  "titulo": "WeWork Rented Desks. Investors Thought It Was Tech (part 1) #shorts",
   "video_id": "3KPkddYjUeY",
   "caso": "wework",
   "caso_titulo": null,
@@ -568,7 +568,7 @@
   "video_id": "7gGQg2T1xXc",
   "caso": "wework",
   "caso_titulo": null,
-  "publishAt": "2026-10-21T18:00:00-03:00",
+  "publishAt": "2026-10-28T18:00:00-03:00",
   "status": "private",
   "miniatura_ok": "c8597964f6bc"
  },
@@ -576,7 +576,7 @@
   "nome": "wework_serie2",
   "tipo": "serie",
   "idioma": "en",
-  "titulo": "WeWork: part 2 of 4 #shorts",
+  "titulo": "WeWork Was Worth $47 Billion. Then Investors Read the IPO Filing (part 2) #shorts",
   "video_id": "si9RkGbmMko",
   "caso": "wework",
   "caso_titulo": null,
@@ -595,7 +595,7 @@
   "video_id": "xKjn37FMqv0",
   "caso": "wework",
   "caso_titulo": null,
-  "publishAt": "2026-10-22T18:00:00-03:00",
+  "publishAt": "2026-10-30T18:00:00-03:00",
   "status": "private",
   "miniatura_ok": "4cc9bc11119c"
  },
@@ -603,7 +603,7 @@
   "nome": "wework_serie3",
   "tipo": "serie",
   "idioma": "en",
-  "titulo": "WeWork: part 3 of 4 #shorts",
+  "titulo": "WeWork's Founder Walked Away Rich. Who Paid? (part 3) #shorts",
   "video_id": "m62PxGp2g2A",
   "caso": "wework",
   "caso_titulo": null,
@@ -622,7 +622,7 @@
   "video_id": "PRY8AyEOv1Y",
   "caso": "wework",
   "caso_titulo": null,
-  "publishAt": "2026-10-23T18:00:00-03:00",
+  "publishAt": "2026-11-04T18:00:00-03:00",
   "status": "private",
   "miniatura_ok": "643f8c1fee8b"
  },
@@ -630,7 +630,7 @@
   "nome": "wework_serie4",
   "tipo": "serie",
   "idioma": "en",
-  "titulo": "WeWork: part 4 of 4 #shorts",
+  "titulo": "WeWork Went Bankrupt. The Founder Got $350 Million (part 4) #shorts",
   "video_id": "n3ULfuQrXr4",
   "caso": "wework",
   "caso_titulo": null,
@@ -649,7 +649,7 @@
   "video_id": "u6pjLiR16xA",
   "caso": "wework",
   "caso_titulo": null,
-  "publishAt": "2026-10-24T18:00:00-03:00",
+  "publishAt": "2026-11-06T18:00:00-03:00",
   "status": "private",
   "miniatura_ok": "f4ddbd9cc83d"
  }
