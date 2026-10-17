@@ -1,0 +1,30 @@
+name: Refazer som
+
+# Refaz só a sonoplastia (Freesound + avaliação do Gemini) de um vídeo já renderizado.
+on:
+  workflow_dispatch:
+    inputs:
+      nome:
+        description: "nome do vídeo, ex.: kolynos_v3_short1"
+        required: true
+
+jobs:
+  som:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -q requests numpy && sudo apt-get install -y -qq ffmpeg > /dev/null
+      - name: Refazer som
+        env:
+          GH_TOKEN: ${{ github.token }}
+          FREESOUND_KEY: ${{ secrets.FREESOUND_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          python -m fabrica.refazer_som "${{ inputs.nome }}"
+          git config user.name "fabrica-custo-oculto"; git config user.email "fabrica@users.noreply.github.com"
+          git add previas && git commit -q -m "Relatório de som [skip ci]" && for t in 1 2 3; do git pull --rebase --autostash -q origin main && git push -q origin HEAD:main && break; sleep 5; done || true

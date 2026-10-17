@@ -272,11 +272,15 @@ def main():
                 ffmpeg_final(bruto, final, r["codec"]); os.remove(bruto)
                 if r.get("eventosSom"):  # sonoplastia com sons reais (Freesound) e avaliação por IA (Gemini)
                     from . import sonoplastia
+                    with open(os.path.join(RAIZ, "previas", f"eventos_{nome}.json"), "w", encoding="utf8") as fe:  # para refazer só o som depois
+                        json.dump({"eventos": r["eventosSom"], "trilha": r.get("trilha"), "roteiro": r.get("roteiro", "")}, fe, ensure_ascii=False, indent=1)
+                    import shutil; os.makedirs(os.path.join(RAIZ, "sem_som"), exist_ok=True); shutil.copy2(final, os.path.join(RAIZ, "sem_som", nome + "_sem_som.mp4"))
                     try:
                         sonoplastia.processar(final, r["eventosSom"], r.get("trilha"), r.get("roteiro", ""),
                                               os.path.join(RAIZ, "previas", f"som_{nome}.json"))
                     except Exception as e:
-                        log(f"  sonoplastia: falhou ({str(e)[:200]})")
+                        import traceback
+                        print("::warning title=Sonoplastia falhou::" + traceback.format_exc()[-1200:].replace("\n", " | "), flush=True)
                 elif r.get("sons") or r.get("trilha"):  # desenho de som simples: trilha com ducking + efeitos
                     from . import som
                     try:

@@ -3,3 +3,6 @@ saida/
 .cache/
 __pycache__/
 *.pyc
+
+sem_som/
+*_sem_som.mp4

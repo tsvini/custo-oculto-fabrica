@@ -90,8 +90,15 @@ def _gemini(partes, json_saida=True):
                 if r.status_code == 404:
                     break
                 r.raise_for_status()
-                txt = r.json()["candidates"][0]["content"]["parts"][0]["text"]
-                return json.loads(txt) if json_saida else txt
+                partes_r = r.json()["candidates"][0]["content"]["parts"]
+                txt = "".join(x.get("text", "") for x in partes_r if not x.get("thought"))
+                if not json_saida:
+                    return txt
+                txt = re.sub(r"^```(json)?|```$", "", txt.strip()).strip()
+                v = json.loads(txt)
+                if isinstance(v, list):
+                    v = v[0] if v and isinstance(v[0], dict) else {"itens": v}
+                return v
             except Exception as e:
                 log(f"  gemini {m}: {str(e)[:160]}"); time.sleep(5)
     return None

@@ -160,7 +160,7 @@ jobs:
         shell: bash
         run: |
           gh release view videos > /dev/null 2>&1 || gh release create videos --title "Vídeos para baixar" --notes "MP4 gerados pela fábrica (aulas e prévias). Cada novo substitui o anterior com o mesmo nome." --prerelease
-          find saida -name "*.mp4" | while read -r f; do gh release upload videos "$f" --clobber || echo "falhou: $f"; done
+          find saida sem_som -name "*.mp4" 2>/dev/null | while read -r f; do gh release upload videos "$f" --clobber || echo "falhou: $f"; done
 
       - name: Entregar arquivos (um pacote só, sem os MP4)
         uses: actions/upload-artifact@v4
