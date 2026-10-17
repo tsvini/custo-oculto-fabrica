@@ -1,0 +1,421 @@
+{
+ "title": "Kolynos (piloto visual)",
+ "slug": "kolynos_v2",
+ "angle": "A decisão tirou o nome Kolynos do mercado, mas não tirou os clientes da Colgate.",
+ "voz": {
+  "nome": "pm_alex",
+  "velocidade": 1.0
+ },
+ "script": {
+  "long": {
+   "parts": []
+  },
+  "shorts": [
+   {
+    "title": "Essa pasta de dente vendia o dobro da Colgate",
+    "sentences": [
+     {
+      "text": "Essa pasta de dente vendia o dobro da Colgate.",
+      "scene": {
+       "type": "capa",
+       "foto": "kolynos",
+       "wiki": [
+        "Kolynos",
+        "Kolynos toothpaste",
+        "Kolynos creme dental"
+       ],
+       "seta": false,
+       "recorte": "Kolynos · anos 90",
+       "faixa": "Essa pasta de dente",
+       "linhas": [
+        [
+         "vendia",
+         "white",
+         200
+        ],
+        [
+         "o DOBRO",
+         "gold",
+         250
+        ],
+        [
+         "da Colgate",
+         "white",
+         190
+        ]
+       ],
+       "selo": "Kolynos · anos 90"
+      }
+     },
+     {
+      "text": "E sumiu do Brasil.",
+      "scene": {
+       "type": "image",
+       "media": "ia_vazia",
+       "z0": 1.04,
+       "z1": 1.16,
+       "dim": 0.25,
+       "lower": "E SUMIU DO BRASIL"
+      }
+     },
+     {
+      "text": "A Kolynos tinha cinquenta e dois por cento do mercado.",
+      "scene": {
+       "type": "counter",
+       "value": 52,
+       "suffix": "%",
+       "over": "ANOS 90",
+       "label": "DO MERCADO BRASILEIRO",
+       "color": [
+        70,
+        190,
+        110
+       ],
+       "size": 300,
+       "fundo": "ia_gondola",
+       "fundo_dim": 0.5
+      },
+      "cap": "A Kolynos tinha 52% do mercado."
+     },
+     {
+      "text": "Em mil novecentos e noventa e cinco, a Colgate comprou a marca por mais de um bilhão de dólares.",
+      "scene": {
+       "type": "counter",
+       "value": 1,
+       "prefix": "US$ ",
+       "suffix": ",04 BI",
+       "over": "1995 · COLGATE COMPRA",
+       "label": "PREÇO DA KOLYNOS",
+       "color": [
+        245,
+        170,
+        40
+       ],
+       "size": 200,
+       "fundo": "ia_negocio",
+       "fundo_dim": 0.5
+      },
+      "cap": "Em 1995, a Colgate comprou a marca por mais de US$ 1 bilhão."
+     },
+     {
+      "text": "O CADE deu três opções para aprovar o negócio.",
+      "scene": {
+       "type": "bullets",
+       "title": "O CADE DEU 3 OPÇÕES",
+       "items": [
+        "VENDER A MARCA",
+        "ALUGAR POR 20 ANOS",
+        "SUSPENDER POR 4 ANOS"
+       ],
+       "size": 76,
+       "last_gold": true,
+       "stagger": 0.6,
+       "fundo": "ia_cade",
+       "fundo_dim": 0.62
+      }
+     },
+     {
+      "text": "A Colgate escolheu tirar a Kolynos das prateleiras por quatro anos.",
+      "scene": {
+       "type": "stamp",
+       "org": "COLGATE · 1997",
+       "title": "KOLYNOS NO BRASIL",
+       "stamp": "SUSPENSA",
+       "stamp_at": 1.0,
+       "fundo": "ia_retirada",
+       "fundo_dim": 0.45
+      },
+      "cap": "A Colgate escolheu tirar a Kolynos das prateleiras por 4 anos."
+     },
+     {
+      "text": "E colocou no lugar uma marca nova: a Sorriso.",
+      "scene": {
+       "type": "compare",
+       "items": [
+        [
+         "KOLYNOS",
+         "SAI",
+         [
+          70,
+          190,
+          110
+         ]
+        ],
+        [
+         "SORRISO",
+         "ENTRA",
+         [
+          70,
+          140,
+          235
+         ]
+        ]
+       ],
+       "size": 170,
+       "stagger": 0.8,
+       "fundo": "ia_vazia",
+       "fundo_dim": 0.6
+      }
+     },
+     {
+      "text": "O nome sumiu.",
+      "scene": {
+       "type": "image",
+       "media": "kolynos",
+       "wiki": [
+        "Kolynos",
+        "Kolynos toothpaste",
+        "Kolynos creme dental"
+       ],
+       "lower": "O nome sumiu",
+       "dim": 0.4,
+       "fallback": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "ANOS 90",
+          "gold",
+          200
+         ],
+         [
+          "A Nº 1 DO BRASIL",
+          "white",
+          100
+         ]
+        ]
+       }
+      }
+     },
+     {
+      "text": "Os clientes ficaram.",
+      "scene": {
+       "type": "image",
+       "media": "ia_familia",
+       "z0": 1.04,
+       "z1": 1.16,
+       "dim": 0.25,
+       "lower": "OS CLIENTES FICARAM"
+      }
+     },
+     {
+      "text": "O vídeo completo está no canal.",
+      "scene": {
+       "type": "endcard",
+       "sub": "VÍDEO COMPLETO NO CANAL"
+      }
+     }
+    ]
+   }
+  ],
+  "tiktoks": []
+ },
+ "meta": {
+  "titles": [
+   "KOLYNOS: Por Que a Pasta Mais Vendida do Brasil Sumiu?",
+   "A Colgate Pagou US$ 1 Bilhão Pela Kolynos e Guardou na Gaveta"
+  ],
+  "description": "A Kolynos tinha 52% do mercado de creme dental no Brasil. Em 1995, a Colgate comprou a marca por US$ 1,04 bilhão. O CADE deu três opções para aprovar o negócio, e a Colgate escolheu tirar a Kolynos das prateleiras. No lugar, nasceu a Sorriso. O nome sumiu. Os clientes ficaram.\n\n[CAPÍTULOS]\n\nFontes: comunicados da Colgate-Palmolive (1995 e 1997), Exame, InfoMoney, ConJur, Origem das Marcas.\n\n#Kolynos #Colgate #Sorriso #CADE #CustoOculto",
+  "tags": [
+   "kolynos",
+   "o que aconteceu com a kolynos",
+   "colgate",
+   "sorriso",
+   "cade",
+   "marcas que sumiram",
+   "custo oculto"
+  ]
+ },
+ "thumbs": [
+  {
+   "glow": "green",
+   "lines": [
+    {
+     "text": "KOLYNOS",
+     "color": "green",
+     "size": 120
+    },
+    {
+     "text": "POR QUE",
+     "color": "white",
+     "size": 150
+    },
+    {
+     "text": "SUMIU?",
+     "color": "gold",
+     "size": 190
+    }
+   ]
+  },
+  {
+   "glow": "gold",
+   "lines": [
+    {
+     "text": "US$ 1 BILHÃO",
+     "color": "gold",
+     "size": 150
+    },
+    {
+     "text": "E GUARDOU",
+     "color": "white",
+     "size": 120
+    },
+    {
+     "text": "NA GAVETA",
+     "color": "red",
+     "size": 130
+    },
+    {
+     "text": "KOLYNOS",
+     "color": "green",
+     "size": 70,
+     "pill": true
+    }
+   ]
+  }
+ ],
+ "notes": "FATOS CHECADOS (com fonte)\n- Kolynos criada nos EUA em 1908 pelo dentista Neal Jenkins; chega ao Brasil em 1917 como importada; depois ganha fábrica em SP. (Exame, 16/03/2025)\n- Anos 80-90: Kolynos 52,5% do creme dental no Brasil; Colgate 25,6%. (ConJur 14/12/2017, citando o caso no CADE; Exame cita 52% x 27%)\n- 09/01/1995: Colgate-Palmolive anuncia compra da Kolynos da American Home Products por US$ 1,04 bilhão em dinheiro; Kolynos nº 1 no Brasil, Argentina, Peru e Paraguai. (comunicado Colgate)\n- Set/1996: CADE aprova com 3 alternativas: suspender a marca por 4 anos; licenciar por 20 anos a entrante com menos de 20%; ou vender a marca. (ConJur; comunicado Colgate 19/03/1997)\n- Colgate escolhe suspender a Kolynos (creme dental) no Brasil por 4 anos; 6 meses de transição; oferecer ~1/5 da capacidade a terceiros; escovas e fio dental liberados. (comunicado Colgate 19/03/1997)\n- 1997: lançamento da Sorriso; investimento de US$ 40 mi (metade TV); produção inicial 45 mi de tubos/mês. (InfoMoney 17/05/2025)\n- 2000: Sorriso com 36,7% do faturamento do mercado. (Origem das Marcas, citando Exame)\n- Após os 4 anos, a Colgate não trouxe a Kolynos de volta; marca nunca mais fabricada no Brasil. (InfoMoney)\n- Kolynos segue vendida em outros países; tubos da Argentina, Paraguai e Uruguai vendidos online mais caros. (Exame)\n- 02/09/2025: edição limitada da Sorriso com fórmula e visual da Kolynos, sem reposição, nos 28 anos da Sorriso. (Exame, 08/09/2025)\nFONTES: investor.colgatepalmolive.com (1995 e 1997); exame.com; infomoney.com.br; conjur.com.br; origemdasmarcas.blogspot.com\nPILOTO 17/10/2026: mesmo áudio do short1 da Kolynos, cenas geradas por IA (Cloudflare FLUX.2 Klein) no lugar de cartela vazia e banco de vídeo genérico.",
+ "serie": [
+  {
+   "partes": [
+    1,
+    2
+   ],
+   "capa": {
+    "type": "capa",
+    "foto": "kolynos",
+    "wiki": [
+     "Kolynos",
+     "Kolynos toothpaste",
+     "Kolynos creme dental"
+    ],
+    "seta": false,
+    "faixa": "Parte 1 de 3",
+    "linhas": [
+     [
+      "ESSA PASTA",
+      "white",
+      190
+     ],
+     [
+      "vendia o DOBRO",
+      "gold",
+      200
+     ],
+     [
+      "da Colgate",
+      "white",
+      180
+     ]
+    ],
+    "recorte": "Kolynos · Parte 1",
+    "selo": "Caso Kolynos · Parte 1"
+   },
+   "caption": "Kolynos, parte 1: a pasta de dente que o Brasil inteiro usava e que vendia mais que a Colgate.",
+   "hashtags": [
+    "#kolynos",
+    "#colgate",
+    "#marcas",
+    "#historia",
+    "#serie"
+   ]
+  },
+  {
+   "partes": [
+    3,
+    4
+   ],
+   "capa": {
+    "type": "capa",
+    "foto": "kolynos",
+    "wiki": [
+     "Kolynos",
+     "Kolynos toothpaste",
+     "Kolynos creme dental"
+    ],
+    "seta": false,
+    "faixa": "Parte 2 de 3",
+    "linhas": [
+     [
+      "US$ 1",
+      "gold",
+      260
+     ],
+     [
+      "BILHÃO",
+      "white",
+      210
+     ],
+     [
+      "pra sumir",
+      "red",
+      190
+     ]
+    ],
+    "recorte": "Kolynos · Parte 2",
+    "selo": "Caso Kolynos · Parte 2"
+   },
+   "caption": "Kolynos, parte 2: a compra bilionária pela Colgate e o julgamento no Cade.",
+   "hashtags": [
+    "#kolynos",
+    "#colgate",
+    "#cade",
+    "#negocios",
+    "#serie"
+   ]
+  },
+  {
+   "partes": [
+    5,
+    6,
+    7
+   ],
+   "capa": {
+    "type": "capa",
+    "foto": "kolynos",
+    "wiki": [
+     "Kolynos",
+     "Kolynos toothpaste",
+     "Kolynos creme dental"
+    ],
+    "seta": false,
+    "faixa": "Parte 3 de 3",
+    "linhas": [
+     [
+      "O CUSTO",
+      "white",
+      220
+     ],
+     [
+      "OCULTO",
+      "red",
+      240
+     ],
+     [
+      "da troca",
+      "gold",
+      190
+     ]
+    ],
+    "recorte": "Kolynos · Final",
+    "selo": "Caso Kolynos · Final"
+   },
+   "caption": "Kolynos, parte final: a troca de nome, quem pagou a conta e onde a marca está hoje.",
+   "hashtags": [
+    "#kolynos",
+    "#colgate",
+    "#marcas",
+    "#historia",
+    "#serie"
+   ]
+  }
+ ],
+ "ia": {
+  "ia_vazia": "1990s Brazilian supermarket toothpaste aisle, one shelf section completely empty with a bare gap among stocked products, a lonely price tag, dramatic moody low light, vertical composition",
+  "ia_gondola": "busy 1990s Brazilian supermarket aisle, shelves fully stocked with green and white toothpaste boxes, shoppers with metal carts, warm nostalgic tones, vertical composition",
+  "ia_negocio": "1995 corporate boardroom, two executives in suits shaking hands over a signed contract on a large wooden table, open briefcase full of US dollar bills, dramatic warm light, faces out of focus, vertical composition",
+  "ia_cade": "1990s Brazilian government hearing room in Brasilia, officials seated at a long wooden table with microphones and stacks of documents, Brazilian flag in background, tense formal atmosphere, vertical composition",
+  "ia_retirada": "1990s supermarket employee in uniform removing green and white toothpaste boxes from a shelf into a cardboard box, melancholic mood, vertical composition",
+  "ia_familia": "nostalgic 1990s Brazilian family bathroom, father and young son brushing teeth together at the sink, smiling, toothpaste foam, warm soft morning light, vertical composition"
+ }
+}
