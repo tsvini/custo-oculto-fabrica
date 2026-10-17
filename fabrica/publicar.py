@@ -477,7 +477,7 @@ def ajustar(arq="ajustes.json"):
     """Troca título e/ou data de vídeos já agendados (ajustes.json: {nome: {"titulo"?, "publishAt"?}}) e atualiza o registro."""
     aj = json.load(open(os.path.join(RAIZ, arq), encoding="utf8")); reg = registro(); por = {r["nome"]: r for r in reg}; feitos = []
     for nome, a in aj.items():
-        r = por.get(nome)
+        r = por.get(nome) or ({"nome": nome, "video_id": a["video_id"], "idioma": a.get("idioma", "pt")} if a.get("video_id") else None)
         if not r or not r.get("video_id"):
             nota("Ajuste ignorado", f"{nome}: não está no registro", "warning"); continue
         H = {"Authorization": f"Bearer {token(idioma_de(r))}"}; Y = "https://www.googleapis.com/youtube/v3"
