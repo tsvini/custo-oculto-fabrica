@@ -405,3 +405,7 @@ if __name__ == "__main__":
         log("ERRO NA VOZ:", e)
         print("::error title=Erro na voz::" + str(e).replace("\n", " ")[:900], flush=True)
         sys.exit(2)
+    except Exception as e:  # mostra o erro nas anotações do Actions (os logs completos nem sempre dá pra baixar)
+        import traceback
+        print("::error title=Erro ao gerar::" + traceback.format_exc()[-1500:].replace("\n", " | "), flush=True)
+        raise
