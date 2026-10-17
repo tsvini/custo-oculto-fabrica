@@ -27,7 +27,7 @@ from . import som
 SR = som.SR
 FS = "https://freesound.org/apiv2"
 GEM = "https://generativelanguage.googleapis.com/v1beta/models"
-MODELOS = [m for m in [os.environ.get("GEMINI_MODELO"), "gemini-3.6-flash", "gemini-3.5-flash", "gemini-2.5-flash"] if m]
+MODELOS = [m for m in [os.environ.get("GEMINI_MODELO"), "gemini-3.8-flash", "gemini-3.6-flash", "gemini-3.5-flash", "gemini-2.5-flash"] if m]
 
 
 def log(*a):
