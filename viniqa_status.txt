@@ -1,4 +1,4 @@
-17/10 08:48 · 10 no canal · ERRO: iniciar envio: erro 400: {
+17/10 11:11 · 10 no canal · ERRO: iniciar envio: erro 400: {
   "error": {
     "code": 400,
     "message": "The user has exceeded the number of videos they may upload.",
