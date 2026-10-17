@@ -1,0 +1,2540 @@
+{
+ "title": "Orkut",
+ "slug": "orkut",
+ "angle": "12 anos depois do fim, o Brasil quer o Orkut de volta. Como uma rede americana virou a cara do Brasil, e por que o Google deixou ela morrer.",
+ "voz": {
+  "nome": "gravada",
+  "motor": "eleven",
+  "eleven_voz": "Vinícius Torales"
+ },
+ "script": {
+  "long": {
+   "parts": [
+    {
+     "chapter": "",
+     "sentences": [
+      {
+       "text": "Fala galera, aqui é o Vinícius do canal Custo Oculto.",
+       "scene": {
+        "type": "capa",
+        "foto": "lan",
+        "wiki": [
+         "File:Lan house (3318312453).jpg"
+        ],
+        "seta": false,
+        "recorte": "Orkut · 2026",
+        "faixa": "12 anos depois",
+        "linhas": [
+         [
+          "O BRASIL",
+          "white",
+          220
+         ],
+         [
+          "QUER O ORKUT",
+          "gold",
+          190
+         ],
+         [
+          "DE VOLTA",
+          "red",
+          200
+         ]
+        ],
+        "selo": "Orkut · Custo Oculto",
+        "logo": "logo_orkut",
+        "logos": {
+         "logo_orkut": [
+          "File:Logo ORKUT.svg",
+          "File:Orkut.svg",
+          "File:Orkut logo.png",
+          "File:Orkut Logo 2.png"
+         ]
+        }
+       },
+       "abertura": true
+      },
+      {
+       "text": "Em outubro de dois mil e vinte e seis, o criador do Orkut pediu ajuda pra trazer a rede de volta.",
+       "scene": {
+        "type": "logo",
+        "logo": "logo_orkut",
+        "logos": {
+         "logo_orkut": [
+          "File:Logo ORKUT.svg",
+          "File:Orkut.svg",
+          "File:Orkut logo.png",
+          "File:Orkut Logo 2.png"
+         ]
+        },
+        "placa": false,
+        "sub": "OUTUBRO DE 2026"
+       }
+      },
+      {
+       "text": "Em poucos dias, mais de trezentas mil pessoas assinaram o apoio.",
+       "scene": {
+        "type": "counter",
+        "value": 300,
+        "prefix": "+",
+        "suffix": " MIL",
+        "over": "EM POUCOS DIAS",
+        "label": "APOIADORES DO NOVO ORKUT",
+        "color": "gold",
+        "size": 220
+       }
+      },
+      {
+       "text": "E quase setenta por cento delas eram brasileiras.",
+       "scene": {
+        "type": "counter",
+        "value": 69,
+        "suffix": "%",
+        "over": "DOS APOIADORES",
+        "label": "SÃO DO BRASIL",
+        "color": "green",
+        "size": 240
+       }
+      },
+      {
+       "text": "Na carta, ele escreveu: num feed, você é plateia. Numa comunidade, você é membro.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "NO FEED",
+          "white",
+          130
+         ],
+         [
+          "VOCÊ É PLATEIA",
+          "red",
+          130
+         ],
+         [
+          "NA COMUNIDADE",
+          "white",
+          120
+         ],
+         [
+          "VOCÊ É MEMBRO",
+          "gold",
+          130
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Ou seja, ele quer de volta exatamente o que fez o Orkut ser o Orkut.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "O QUE FEZ",
+          "white",
+          140
+         ],
+         [
+          "O ORKUT SER",
+          "gold",
+          140
+         ],
+         [
+          "O ORKUT",
+          "red",
+          170
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Uma rede social que morreu há doze anos ainda faz o Brasil inteiro sentir saudade.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "MORREU",
+          "white",
+          160
+         ],
+         [
+          "HÁ 12 ANOS",
+          "red",
+          170
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Mas por que um site americano, criado por um engenheiro turco, virou a cara do Brasil?",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "SITE AMERICANO",
+          "white",
+          120
+         ],
+         [
+          "CRIADOR TURCO",
+          "white",
+          120
+         ],
+         [
+          "CARA DO BRASIL",
+          "gold",
+          140
+         ]
+        ]
+       }
+      },
+      {
+       "text": "E por que o Google, dono de tudo isso, deixou o Orkut morrer?",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "POR QUE O GOOGLE",
+          "white",
+          120
+         ],
+         [
+          "DEIXOU MORRER?",
+          "red",
+          150
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Porque essa história tem um lado que pouca gente lembra, e uma decisão do Google que, na minha opinião, foi o erro de verdade.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "UM LADO",
+          "white",
+          150
+         ],
+         [
+          "QUE POUCA GENTE",
+          "white",
+          120
+         ],
+         [
+          "LEMBRA",
+          "gold",
+          170
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Neste vídeo você vai ver como o Orkut nasceu, como o Brasil tomou conta, os problemas que o Google não queria, a virada do Facebook e o que pode acontecer agora.",
+       "scene": {
+        "type": "bullets",
+        "items": [
+         "COMO NASCEU",
+         "O BRASIL TOMA CONTA",
+         "OS PROBLEMAS",
+         "A VIRADA DO FACEBOOK",
+         "O QUE VEM AGORA"
+        ],
+        "size": 78,
+        "last_gold": true
+       }
+      }
+     ]
+    },
+    {
+     "chapter": "UM PROJETO DE FIM DE SEMANA",
+     "sentences": [
+      {
+       "text": "O Orkut foi lançado em vinte e dois de janeiro de dois mil e quatro.",
+       "scene": {
+        "type": "date",
+        "month": "JANEIRO",
+        "day": "22",
+        "year": "2004",
+        "tag": "LANÇAMENTO DO ORKUT"
+       }
+      },
+      {
+       "text": "O nome vem do próprio criador, Orkut Büyükkökten, um engenheiro turco que trabalhava no Google.",
+       "scene": {
+        "type": "image",
+        "media": "criador",
+        "wiki": [
+         "File:Hello Orkut Büyükkökten 2015.jpg"
+        ],
+        "lower": "Orkut Büyükkökten, criador do Orkut",
+        "dim": 0.4,
+        "fallback": {
+         "type": "bigtext",
+         "stagger": 0.25,
+         "lines": [
+          [
+           "ORKUT",
+           "gold",
+           200
+          ],
+          [
+           "BÜYÜKKÖKTEN",
+           "white",
+           110
+          ]
+         ]
+        }
+       }
+      },
+      {
+       "text": "Ele já tinha criado redes antes, quando estudava na Universidade Stanford, nos Estados Unidos.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "STANFORD",
+          "gold",
+          190
+         ],
+         [
+          "REDES ANTES",
+          "white",
+          130
+         ]
+        ]
+       }
+      },
+      {
+       "text": "O Google deixava os engenheiros usarem parte do tempo em projetos pessoais. O Orkut nasceu assim.",
+       "scene": {
+        "type": "image",
+        "media": "googleplex",
+        "wiki": [
+         "File:Googleplex with Pride colors 2015.gk.jpg"
+        ],
+        "lower": "Sede do Google · Mountain View",
+        "dim": 0.4,
+        "fallback": {
+         "type": "bigtext",
+         "stagger": 0.25,
+         "lines": [
+          [
+           "PROJETO",
+           "white",
+           160
+          ],
+          [
+           "PESSOAL",
+           "gold",
+           170
+          ]
+         ]
+        }
+       }
+      },
+      {
+       "text": "Detalhe: o Facebook tinha sido lançado poucas semanas depois, mas só pra universitários americanos.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "O FACEBOOK",
+          "white",
+          140
+         ],
+         [
+          "SÓ PRA",
+          "muted",
+          90
+         ],
+         [
+          "UNIVERSITÁRIOS",
+          "gold",
+          120
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Ou seja, por algumas semanas, o Orkut nasceu antes do Facebook.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "O ORKUT",
+          "gold",
+          170
+         ],
+         [
+          "NASCEU ANTES",
+          "white",
+          140
+         ]
+        ]
+       }
+      },
+      {
+       "text": "E logo no começo veio um problema: uma empresa processou o Google dizendo que o Orkut copiava o código de outra rede social.",
+       "scene": {
+        "type": "stamp",
+        "org": "JUNHO DE 2004",
+        "title": "AFFINITY ENGINES",
+        "stamp": "PROCESSO",
+        "stamp_at": 0.9
+       }
+      },
+      {
+       "text": "O Orkut também só entrava quem recebia convite de um amigo. E isso virou status.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "SÓ COM",
+          "white",
+          140
+         ],
+         [
+          "CONVITE",
+          "gold",
+          200
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Dentro, dava pra avaliar os amigos como confiável, legal e sexy. E tinha até uma lista secreta de paqueras.",
+       "scene": {
+        "type": "bullets",
+        "items": [
+         "CONFIÁVEL",
+         "LEGAL",
+         "SEXY",
+         "LISTA DE PAQUERAS"
+        ],
+        "size": 100,
+        "last_gold": true
+       }
+      },
+      {
+       "text": "Era tudo meio ingênuo. E foi exatamente isso que pegou o brasileiro.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "MEIO INGÊNUO",
+          "white",
+          140
+         ],
+         [
+          "PEGOU O BRASILEIRO",
+          "gold",
+          130
+         ]
+        ]
+       }
+      },
+      {
+       "text": "No começo, mais da metade dos usuários eram americanos. Os brasileiros eram uns cinco por cento.",
+       "scene": {
+        "type": "compare",
+        "title": "MARÇO DE 2004",
+        "items": [
+         [
+          "51%",
+          "ESTADOS UNIDOS",
+          "white"
+         ],
+         [
+          "5%",
+          "BRASIL",
+          "gold"
+         ]
+        ],
+        "size": 170,
+        "stagger": 1.2,
+        "vs": false
+       }
+      },
+      {
+       "text": "Isso ia mudar muito rápido.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "ISSO IA",
+          "white",
+          150
+         ],
+         [
+          "MUDAR",
+          "red",
+          200
+         ]
+        ]
+       }
+      }
+     ]
+    },
+    {
+     "chapter": "O BRASIL TOMA CONTA",
+     "sentences": [
+      {
+       "text": "Os brasileiros chegaram em massa, um convidando o outro.",
+       "scene": {
+        "type": "image",
+        "media": "lan2",
+        "wiki": [
+         "File:Lan house 3 (4541311332).jpg"
+        ],
+        "lower": "Lan house no Brasil",
+        "dim": 0.4,
+        "fallback": {
+         "type": "bigtext",
+         "stagger": 0.25,
+         "lines": [
+          [
+           "UM CONVIDANDO",
+           "white",
+           130
+          ],
+          [
+           "O OUTRO",
+           "gold",
+           180
+          ]
+         ]
+        }
+       }
+      },
+      {
+       "text": "Internet em casa era cara e lenta, e a lan house virou ponto de encontro de muita gente.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "INTERNET",
+          "white",
+          150
+         ],
+         [
+          "CARA E LENTA",
+          "red",
+          150
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Quem não tinha computador em casa ia pra lan house, pagava por hora e corria pro Orkut.",
+       "scene": {
+        "type": "image",
+        "media": "lan",
+        "wiki": [
+         "File:Lan house (3318312453).jpg"
+        ],
+        "lower": "Lan house no Brasil",
+        "dim": 0.4,
+        "fallback": {
+         "type": "bigtext",
+         "stagger": 0.25,
+         "lines": [
+          [
+           "LAN HOUSE",
+           "gold",
+           170
+          ],
+          [
+           "POR HORA",
+           "white",
+           140
+          ]
+         ]
+        }
+       }
+      },
+      {
+       "text": "Segundo a Exame, num certo momento, onze de cada catorze milhões de brasileiros na internet estavam no Orkut.",
+       "scene": {
+        "type": "print",
+        "media": "print_exame_hist",
+        "url": "https://exame.com/tecnologia/orkut-o-que-aconteceu-com-a-rede-social-preferida-dos-brasileiros/",
+        "source": "Exame",
+        "rotate": -1.0,
+        "fallback": {
+         "type": "counter",
+         "value": 11,
+         "suffix": " DE 14 MI",
+         "over": "BRASILEIROS NA INTERNET",
+         "label": "ESTAVAM NO ORKUT",
+         "color": "gold",
+         "size": 170
+        }
+       }
+      },
+      {
+       "text": "Tinha os recados no mural, os depoimentos que a pessoa precisava aprovar, e as comunidades.",
+       "scene": {
+        "type": "image",
+        "media": "lan3",
+        "wiki": [
+         "File:Lan house 2 (4541314304).jpg"
+        ],
+        "lower": "Lan house no Brasil",
+        "dim": 0.4,
+        "fallback": {
+         "type": "bullets",
+         "items": [
+          "SCRAPS",
+          "DEPOIMENTOS",
+          "COMUNIDADES"
+         ],
+         "size": 110,
+         "last_gold": true
+        }
+       }
+      },
+      {
+       "text": "Comunidades como Eu odeio acordar cedo viraram um jeito de dizer quem você era.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "EU ODEIO",
+          "white",
+          150
+         ],
+         [
+          "ACORDAR CEDO",
+          "gold",
+          150
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Tinha também Tô com fome e já escovei os dentes, e milhares de outras parecidas.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "TÔ COM FOME",
+          "white",
+          140
+         ],
+         [
+          "E JÁ ESCOVEI",
+          "gold",
+          130
+         ],
+         [
+          "OS DENTES",
+          "gold",
+          130
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Os temas coloridos do perfil, por exemplo, só existiam no Brasil e na Índia.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "TEMAS",
+          "gold",
+          190
+         ],
+         [
+          "SÓ NO BRASIL",
+          "white",
+          120
+         ],
+         [
+          "E NA ÍNDIA",
+          "white",
+          120
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Pra muita gente, o Orkut foi a primeira coisa que fez na internet.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "A PRIMEIRA COISA",
+          "white",
+          120
+         ],
+         [
+          "NA INTERNET",
+          "gold",
+          150
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Você não seguia ninguém. Você entrava numa comunidade e virava membro.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "VOCÊ NÃO SEGUIA",
+          "white",
+          120
+         ],
+         [
+          "VIRAVA MEMBRO",
+          "gold",
+          150
+         ]
+        ]
+       }
+      },
+      {
+       "text": "E ter muitos amigos e depoimentos no perfil virou sinal de popularidade.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "MUITOS AMIGOS",
+          "white",
+          140
+         ],
+         [
+          "POPULARIDADE",
+          "gold",
+          150
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Quando o Orkut acabou, o Brasil era mais da metade de todo o tráfego do site.",
+       "scene": {
+        "type": "counter",
+        "value": 55,
+        "suffix": "%",
+        "over": "SETEMBRO DE 2014",
+        "label": "DO TRÁFEGO VINHA DO BRASIL",
+        "color": "green",
+        "size": 230
+       }
+      },
+      {
+       "text": "A Índia vinha em segundo. Os Estados Unidos, que começaram com metade, tinham virado três por cento.",
+       "scene": {
+        "type": "compare",
+        "title": "SETEMBRO DE 2014",
+        "items": [
+         [
+          "55%",
+          "BRASIL",
+          "gold"
+         ],
+         [
+          "18%",
+          "ÍNDIA",
+          "white"
+         ],
+         [
+          "3%",
+          "EUA",
+          "red"
+         ]
+        ],
+        "size": 150,
+        "stagger": 1.0,
+        "vs": false
+       }
+      }
+     ]
+    },
+    {
+     "chapter": "OS PROBLEMAS QUE O GOOGLE NÃO QUERIA",
+     "sentences": [
+      {
+       "text": "Só que crescer desse jeito trouxe problema junto.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "CRESCER",
+          "white",
+          160
+         ],
+         [
+          "TROUXE PROBLEMA",
+          "red",
+          140
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Teve caso de racismo e outros crimes em comunidades, que foram parar na polícia e na Justiça.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "CRIMES",
+          "red",
+          180
+         ],
+         [
+          "NAS COMUNIDADES",
+          "white",
+          120
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Em dois mil e seis, a Justiça Federal intimou o Google por causa de crimes no Orkut.",
+       "scene": {
+        "type": "stamp",
+        "org": "JUSTIÇA FEDERAL · 2006",
+        "title": "GOOGLE INTIMADO",
+        "stamp": "ORKUT",
+        "stamp_at": 0.9
+       }
+      },
+      {
+       "text": "Um juiz mandou o Google entregar dados de usuários, com multa diária. O Google resistiu, dizendo que os dados estavam nos Estados Unidos.",
+       "scene": {
+        "type": "flow",
+        "a": "JUSTIÇA",
+        "a_sub": "pede os dados",
+        "b": "GOOGLE",
+        "b_sub": "dados nos EUA",
+        "caption": "A BRIGA DOS DADOS"
+       }
+      },
+      {
+       "text": "E teve vírus se espalhando pelos recados. Um deles, em dezembro de dois mil e sete, infectou mais de setecentos mil perfis.",
+       "scene": {
+        "type": "counter",
+        "value": 700,
+        "prefix": "+",
+        "suffix": " MIL",
+        "over": "DEZEMBRO DE 2007",
+        "label": "PERFIS INFECTADOS POR UM VÍRUS",
+        "color": "red",
+        "size": 210
+       }
+      },
+      {
+       "text": "Antes disso, em dois mil e seis, outro vírus usava os recados pra roubar senha de banco.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "RECADO",
+          "white",
+          150
+         ],
+         [
+          "ROUBAVA SENHA",
+          "red",
+          140
+         ],
+         [
+          "DE BANCO",
+          "white",
+          120
+         ]
+        ]
+       }
+      },
+      {
+       "text": "E não era só aqui. Na Índia, comunidades do Orkut foram parar na Justiça. E países como o Irã e a Arábia Saudita chegaram a bloquear o site.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "BLOQUEADO",
+          "red",
+          170
+         ],
+         [
+          "IRÃ",
+          "white",
+          120
+         ],
+         [
+          "ARÁBIA SAUDITA",
+          "white",
+          110
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Em dois mil e oito, o Google tomou uma decisão inédita: passou o comando do Orkut pro Google Brasil, em Minas Gerais.",
+       "scene": {
+        "type": "logo",
+        "logo": "logo_google",
+        "logos": {
+         "logo_google": [
+          "File:Google 2015 logo.svg"
+         ]
+        },
+        "placa": true,
+        "sub": "2008 · O ORKUT VIRA BRASILEIRO"
+       }
+      },
+      {
+       "text": "Ou seja: a rede ficou tão brasileira que passou a ser cuidada daqui.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "TÃO BRASILEIRA",
+          "gold",
+          150
+         ],
+         [
+          "QUE VEIO PRA CÁ",
+          "white",
+          130
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Pense no tamanho disso: uma empresa americana mudou o comando de um produto inteiro por causa de um país só.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "UM PAÍS SÓ",
+          "gold",
+          180
+         ],
+         [
+          "MUDOU O COMANDO",
+          "white",
+          130
+         ]
+        ]
+       }
+      }
+     ]
+    },
+    {
+     "chapter": "A VIRADA DO FACEBOOK",
+     "sentences": [
+      {
+       "text": "Enquanto isso, o Facebook crescia no mundo inteiro.",
+       "scene": {
+        "type": "image",
+        "media": "zuck",
+        "wiki": [
+         "File:Mark Zuckerberg - f8 2011 (6182905955).jpg"
+        ],
+        "lower": "Mark Zuckerberg · 2011",
+        "dim": 0.4,
+        "fallback": {
+         "type": "bigtext",
+         "stagger": 0.25,
+         "lines": [
+          [
+           "O FACEBOOK",
+           "white",
+           150
+          ],
+          [
+           "CRESCIA",
+           "gold",
+           170
+          ]
+         ]
+        }
+       }
+      },
+      {
+       "text": "Em dois mil e dez, o filme A Rede Social contou a história do Facebook e deixou o site ainda mais famoso.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "2010",
+          "gold",
+          210
+         ],
+         [
+          "A REDE SOCIAL",
+          "white",
+          130
+         ]
+        ]
+       }
+      },
+      {
+       "text": "O Orkut até tentou reagir com aplicativos e jogos, como o Colheita Feliz, que virou febre.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "COLHEITA",
+          "gold",
+          170
+         ],
+         [
+          "FELIZ",
+          "gold",
+          170
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Tinha feed de notícias, privacidade melhor e funcionava bem no celular. O Orkut não.",
+       "scene": {
+        "type": "compare",
+        "title": "2011",
+        "items": [
+         [
+          "FEED E CELULAR",
+          "FACEBOOK",
+          "gold"
+         ],
+         [
+          "PARADO NO TEMPO",
+          "ORKUT",
+          "red"
+         ]
+        ],
+        "size": 120,
+        "stagger": 1.2,
+        "vs": true
+       }
+      },
+      {
+       "text": "O código do Orkut era antigo e difícil de crescer. E o Google estava de olho em outra coisa: o Google Mais, lançado em dois mil e onze.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "O GOOGLE",
+          "white",
+          150
+         ],
+         [
+          "APOSTOU NO",
+          "muted",
+          90
+         ],
+         [
+          "GOOGLE+",
+          "red",
+          190
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Em dois mil e nove, o Orkut até ganhou um visual novo. Mas chegou por convite, aos poucos, enquanto o Facebook corria.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "VISUAL NOVO",
+          "white",
+          140
+         ],
+         [
+          "CHEGOU",
+          "white",
+          110
+         ],
+         [
+          "DEVAGAR",
+          "red",
+          170
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Em dezembro de dois mil e onze, aconteceu a virada.",
+       "scene": {
+        "type": "logo",
+        "logo": "logo_orkut",
+        "logos": {
+         "logo_orkut": [
+          "File:Logo ORKUT.svg",
+          "File:Orkut.svg",
+          "File:Orkut logo.png",
+          "File:Orkut Logo 2.png"
+         ],
+         "logo_facebook": [
+          "File:Facebook Logo (2019).svg",
+          "File:Facebook logo (2019).svg",
+          "File:Facebook New Logo (2015).svg"
+         ]
+        },
+        "placa": false,
+        "logo2": "logo_facebook",
+        "sub": "DEZEMBRO DE 2011"
+       }
+      },
+      {
+       "text": "Segundo a comScore, o Facebook teve trinta e seis milhões de visitantes no Brasil. O Orkut, trinta e quatro.",
+       "scene": {
+        "type": "print",
+        "media": "print_comscore",
+        "url": "https://www.comscore.com/ger/Insights/Pressemitteilung/2012/1/Facebook-Blasts-into-Top-Position-in-Brazilian-Social-Networking-Market",
+        "source": "comScore · janeiro de 2012",
+        "rotate": -1.0,
+        "fallback": {
+         "type": "compare",
+         "title": "BRASIL · DEZ/2011 · COMSCORE",
+         "items": [
+          [
+           "36,1 MI",
+           "FACEBOOK",
+           "gold"
+          ],
+          [
+           "34,4 MI",
+           "ORKUT",
+           "red"
+          ]
+         ],
+         "size": 170,
+         "stagger": 1.2,
+         "vs": true
+        }
+       }
+      },
+      {
+       "text": "Num ano, o Facebook quase triplicou no Brasil. O Orkut cresceu cinco por cento.",
+       "scene": {
+        "type": "compare",
+        "title": "CRESCIMENTO EM 1 ANO",
+        "items": [
+         [
+          "+192%",
+          "FACEBOOK",
+          "gold"
+         ],
+         [
+          "+5%",
+          "ORKUT",
+          "red"
+         ]
+        ],
+        "size": 180,
+        "stagger": 1.2,
+        "vs": false
+       }
+      },
+      {
+       "text": "E a debandada começou. Primeiro os amigos, depois a família, depois todo mundo.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "A DEBANDADA",
+          "red",
+          160
+         ],
+         [
+          "COMEÇOU",
+          "white",
+          150
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Menos de três anos depois da virada, o Orkut estaria fechado.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "MENOS DE",
+          "white",
+          140
+         ],
+         [
+          "3 ANOS",
+          "red",
+          210
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Quem ficava no Orkut via o perfil dos amigos parado, com o último recado de meses atrás.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "PERFIS",
+          "white",
+          150
+         ],
+         [
+          "ABANDONADOS",
+          "red",
+          160
+         ]
+        ]
+       }
+      }
+     ]
+    },
+    {
+     "chapter": "O FIM E A MINHA OPINIÃO",
+     "sentences": [
+      {
+       "text": "Em trinta de junho de dois mil e catorze, o Google anunciou o fim.",
+       "scene": {
+        "type": "date",
+        "month": "JUNHO",
+        "day": "30",
+        "year": "2014",
+        "tag": "O GOOGLE ANUNCIA O FIM"
+       }
+      },
+      {
+       "text": "O argumento foi que YouTube, Blogger e Google Mais tinham crescido mais rápido que o Orkut.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "OS OUTROS",
+          "white",
+          140
+         ],
+         [
+          "CRESCERAM MAIS",
+          "gold",
+          140
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Os usuários ganharam um prazo pra salvar fotos e recados antes do desligamento.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "UM PRAZO",
+          "white",
+          150
+         ],
+         [
+          "PRA SALVAR",
+          "gold",
+          150
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Em trinta de setembro de dois mil e catorze, o Orkut saiu do ar.",
+       "scene": {
+        "type": "stamp",
+        "org": "30 DE SETEMBRO DE 2014",
+        "title": "ORKUT",
+        "stamp": "FORA DO AR",
+        "stamp_at": 0.9
+       }
+      },
+      {
+       "text": "O Google não vendeu o Orkut. Simplesmente desligou. Depois, o nome voltou pro próprio criador.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "NÃO VENDEU",
+          "white",
+          140
+         ],
+         [
+          "DESLIGOU",
+          "red",
+          190
+         ]
+        ]
+       }
+      },
+      {
+       "text": "E aqui vai a minha opinião: o Orkut não perdeu só porque o Facebook era melhor.",
+       "scene": {
+        "type": "flash",
+        "text": "MINHA\nOPINIÃO",
+        "color": "gold",
+        "size": 160
+       }
+      },
+      {
+       "text": "O Google tinha a maior rede social do Brasil e da Índia nas mãos e nunca tratou isso como prioridade.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "NUNCA FOI",
+          "white",
+          150
+         ],
+         [
+          "PRIORIDADE",
+          "red",
+          170
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Apostou tudo no Google Mais, que também acabou fechando anos depois.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "GOOGLE+",
+          "red",
+          200
+         ],
+         [
+          "TAMBÉM FECHOU",
+          "white",
+          130
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Ou seja, o Google largou a rede que funcionava pra apostar numa que nunca pegou.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "LARGOU",
+          "white",
+          160
+         ],
+         [
+          "O QUE FUNCIONAVA",
+          "gold",
+          130
+         ]
+        ]
+       }
+      },
+      {
+       "text": "E o custo oculto disso ficou com a gente.",
+       "scene": {
+        "type": "flash",
+        "text": "O CUSTO\nOCULTO",
+        "color": "red",
+        "size": 170
+       }
+      },
+      {
+       "text": "Fotos, depoimentos e recados de milhões de brasileiros dependiam de uma empresa que podia desligar tudo.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "SUAS MEMÓRIAS",
+          "white",
+          130
+         ],
+         [
+          "NA MÃO DE OUTRO",
+          "red",
+          130
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Deu pra baixar os dados por um tempo. Depois, o arquivo das comunidades também foi desligado.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "ARQUIVO",
+          "white",
+          150
+         ],
+         [
+          "DESLIGADO",
+          "red",
+          170
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Hoje o Facebook virou Meta, com bilhões de usuários. E o Orkut virou lembrança.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "O FACEBOOK",
+          "white",
+          140
+         ],
+         [
+          "VIROU META",
+          "gold",
+          150
+         ],
+         [
+          "O ORKUT, LEMBRANÇA",
+          "red",
+          110
+         ]
+        ]
+       }
+      }
+     ]
+    },
+    {
+     "chapter": "O ORKUT VAI VOLTAR?",
+     "sentences": [
+      {
+       "text": "O criador do Orkut tentou de novo com outra rede, a Hello, em dois mil e dezesseis. Não vingou e foi encerrada.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "HELLO",
+          "gold",
+          200
+         ],
+         [
+          "NÃO VINGOU",
+          "red",
+          150
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Em dois mil e vinte e dois, o site do Orkut voltou ao ar só com uma carta do criador.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "2022",
+          "gold",
+          210
+         ],
+         [
+          "SÓ UMA CARTA",
+          "white",
+          130
+         ]
+        ]
+       }
+      },
+      {
+       "text": "E agora, em outubro de dois mil e vinte e seis, veio a campanha de apoio.",
+       "scene": {
+        "type": "print",
+        "media": "print_exame",
+        "url": "https://exame.com/tecnologia/o-orkut-esta-de-volta-entenda-se-a-rede-social-vai-ser-relancada/",
+        "source": "Exame · outubro de 2026",
+        "rotate": -1.0,
+        "fallback": {
+         "type": "logo",
+         "logo": "logo_orkut",
+         "logos": {
+          "logo_orkut": [
+           "File:Logo ORKUT.svg",
+           "File:Orkut.svg",
+           "File:Orkut logo.png",
+           "File:Orkut Logo 2.png"
+          ]
+         },
+         "placa": false,
+         "sub": "CAMPANHA DE APOIO · 2026"
+        }
+       }
+      },
+      {
+       "text": "Segundo o site GD, já existe uma empresa por trás, a Orkut Inc, com o próprio Orkut como presidente.",
+       "scene": {
+        "type": "print",
+        "media": "print_gd",
+        "url": "https://gd.eurisko.com.br/2026/10/09/exclusivo-orkut-ja-tem-300-mil-apoiadores-e-uma-empresa-por-tras-do-projeto/",
+        "source": "GD · 09/10/2026",
+        "rotate": -1.0,
+        "fallback": {
+         "type": "bigtext",
+         "stagger": 0.25,
+         "lines": [
+          [
+           "ORKUT INC",
+           "gold",
+           180
+          ],
+          [
+           "JÁ EXISTE",
+           "white",
+           130
+          ]
+         ]
+        }
+       }
+      },
+      {
+       "text": "A proposta é uma rede de pessoas reais e comunidades, num momento em que tem cada vez mais robô e conteúdo falso por aí.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "PESSOAS REAIS",
+          "gold",
+          150
+         ],
+         [
+          "E COMUNIDADES",
+          "white",
+          130
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Ele diz que bots, deepfakes e conteúdo de inteligência artificial fazem a gente nem saber se tem uma pessoa do outro lado.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "BOTS",
+          "red",
+          160
+         ],
+         [
+          "DEEPFAKES",
+          "red",
+          150
+         ],
+         [
+          "TEM ALGUÉM AÍ?",
+          "white",
+          120
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Quem apoia recebe um cartão de apoiador pra compartilhar e chamar mais gente.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "CARTÃO",
+          "gold",
+          180
+         ],
+         [
+          "DE APOIADOR",
+          "white",
+          130
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Mas atenção: assinar o apoio não cria conta, não reserva nome e não tem data de lançamento.",
+       "scene": {
+        "type": "stamp",
+        "org": "O NOVO ORKUT",
+        "title": "DATA DE LANÇAMENTO",
+        "stamp": "NENHUMA",
+        "stamp_at": 0.9
+       }
+      },
+      {
+       "text": "Depois do Brasil, quem mais assinou foi Portugal, com quase onze por cento.",
+       "scene": {
+        "type": "compare",
+        "title": "QUEM ASSINOU",
+        "items": [
+         [
+          "68,9%",
+          "BRASIL",
+          "gold"
+         ],
+         [
+          "10,8%",
+          "PORTUGAL",
+          "white"
+         ]
+        ],
+        "size": 170,
+        "stagger": 1.2,
+        "vs": false
+       }
+      },
+      {
+       "text": "E não, os seus perfis, fotos e recados antigos não voltam.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "SEUS RECADOS",
+          "white",
+          140
+         ],
+         [
+          "NÃO VOLTAM",
+          "red",
+          160
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Eu acho que a saudade é real. Mas saudade não garante que uma rede social nova vai dar certo.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "SAUDADE",
+          "gold",
+          180
+         ],
+         [
+          "NÃO GARANTE",
+          "white",
+          140
+         ]
+        ]
+       }
+      },
+      {
+       "text": "O mais curioso é que quem pede a volta é praticamente a mesma geração que lotava as lan houses.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "A MESMA GERAÇÃO",
+          "white",
+          130
+         ],
+         [
+          "DAS LAN HOUSES",
+          "gold",
+          140
+         ]
+        ]
+       }
+      },
+      {
+       "text": "E se a nova rede sair, ela vai brigar com gigantes que hoje têm bilhões de usuários. Não é pouca coisa.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "CONTRA",
+          "white",
+          140
+         ],
+         [
+          "BILHÕES",
+          "red",
+          200
+         ],
+         [
+          "DE USUÁRIOS",
+          "white",
+          120
+         ]
+        ]
+       }
+      },
+      {
+       "text": "E você? Voltaria pro Orkut? E qual era a sua comunidade? Conta aqui nos comentários.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "VOCÊ VOLTARIA?",
+          "gold",
+          150
+         ],
+         [
+          "COMENTA",
+          "muted",
+          100
+         ]
+        ]
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "shorts": [
+   {
+    "title": "O Brasil quer o Orkut de volta",
+    "sentences": [
+     {
+      "text": "O Brasil quer o Orkut de volta.",
+      "scene": {
+       "type": "capa",
+       "foto": "lan",
+       "wiki": [
+        "File:Lan house (3318312453).jpg"
+       ],
+       "seta": false,
+       "recorte": "Orkut · 2026",
+       "faixa": "12 anos depois",
+       "linhas": [
+        [
+         "O BRASIL",
+         "white",
+         220
+        ],
+        [
+         "QUER O ORKUT",
+         "gold",
+         190
+        ],
+        [
+         "DE VOLTA",
+         "red",
+         200
+        ]
+       ],
+       "selo": "Orkut · Custo Oculto",
+       "logo": "logo_orkut",
+       "logos": {
+        "logo_orkut": [
+         "File:Logo ORKUT.svg",
+         "File:Orkut.svg",
+         "File:Orkut logo.png",
+         "File:Orkut Logo 2.png"
+        ]
+       }
+      }
+     },
+     {
+      "text": "Em outubro de dois mil e vinte e seis, o criador pediu apoio pra lançar um novo Orkut.",
+      "scene": {
+       "type": "logo",
+       "logo": "logo_orkut",
+       "logos": {
+        "logo_orkut": [
+         "File:Logo ORKUT.svg",
+         "File:Orkut.svg",
+         "File:Orkut logo.png",
+         "File:Orkut Logo 2.png"
+        ]
+       },
+       "placa": false,
+       "sub": "OUTUBRO DE 2026"
+      }
+     },
+     {
+      "text": "Mais de trezentas mil pessoas assinaram. Quase setenta por cento, brasileiras.",
+      "scene": {
+       "type": "counter",
+       "value": 300,
+       "prefix": "+",
+       "suffix": " MIL",
+       "over": "APOIADORES",
+       "label": "69% DO BRASIL",
+       "color": "gold",
+       "size": 220
+      }
+     },
+     {
+      "text": "Mas assinar não cria conta nem tem data de lançamento. E os recados antigos não voltam.",
+      "scene": {
+       "type": "stamp",
+       "org": "O NOVO ORKUT",
+       "title": "DATA DE LANÇAMENTO",
+       "stamp": "NENHUMA",
+       "stamp_at": 0.9
+      }
+     },
+     {
+      "text": "Você voltaria? Procura Orkut no Custo Oculto.",
+      "scene": {
+       "type": "bigtext",
+       "stagger": 0.25,
+       "lines": [
+        [
+         "VOCÊ VOLTARIA?",
+         "gold",
+         150
+        ],
+        [
+         "CASO COMPLETO NO CANAL",
+         "white",
+         90
+        ]
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "title": "O dia em que o Facebook passou o Orkut no Brasil",
+    "sentences": [
+     {
+      "text": "Dezembro de dois mil e onze. O dia em que o Facebook passou o Orkut no Brasil.",
+      "scene": {
+       "type": "capa",
+       "foto": "lan",
+       "wiki": [
+        "File:Lan house (3318312453).jpg"
+       ],
+       "seta": false,
+       "recorte": "Orkut · 2011",
+       "faixa": "Dezembro de 2011",
+       "linhas": [
+        [
+         "O DIA",
+         "white",
+         220
+        ],
+        [
+         "QUE O ORKUT",
+         "gold",
+         190
+        ],
+        [
+         "PERDEU",
+         "red",
+         220
+        ]
+       ],
+       "selo": "Orkut · Custo Oculto",
+       "logo": "logo_orkut",
+       "logos": {
+        "logo_orkut": [
+         "File:Logo ORKUT.svg",
+         "File:Orkut.svg",
+         "File:Orkut logo.png",
+         "File:Orkut Logo 2.png"
+        ]
+       }
+      }
+     },
+     {
+      "text": "Segundo a comScore, trinta e seis milhões de visitantes no Facebook. Trinta e quatro no Orkut.",
+      "scene": {
+       "type": "compare",
+       "title": "BRASIL · DEZ/2011",
+       "items": [
+        [
+         "36,1 MI",
+         "FACEBOOK",
+         "gold"
+        ],
+        [
+         "34,4 MI",
+         "ORKUT",
+         "red"
+        ]
+       ],
+       "size": 170,
+       "stagger": 1.2,
+       "vs": true
+      }
+     },
+     {
+      "text": "Num ano, o Facebook quase triplicou. O Orkut cresceu cinco por cento.",
+      "scene": {
+       "type": "compare",
+       "title": "EM 1 ANO",
+       "items": [
+        [
+         "+192%",
+         "FACEBOOK",
+         "gold"
+        ],
+        [
+         "+5%",
+         "ORKUT",
+         "red"
+        ]
+       ],
+       "size": 180,
+       "stagger": 1.2,
+       "vs": false
+      }
+     },
+     {
+      "text": "Três anos depois, o Google desligou o Orkut. Procura Orkut no Custo Oculto.",
+      "scene": {
+       "type": "stamp",
+       "org": "30/09/2014",
+       "title": "ORKUT",
+       "stamp": "FORA DO AR",
+       "stamp_at": 0.9
+      }
+     }
+    ]
+   }
+  ],
+  "tiktoks": [
+   {
+    "title": "O Brasil quer o Orkut de volta",
+    "caption": "12 anos depois do fim, o criador do Orkut pediu apoio pra trazer a rede de volta. E quase 70% dos apoiadores são brasileiros. Mas tem um detalhe que pouca gente leu.",
+    "hashtags": [
+     "#orkut",
+     "#nostalgia",
+     "#redessociais",
+     "#internet",
+     "#curiosidades"
+    ],
+    "sentences": [
+     {
+      "text": "Doze anos depois do fim, o Brasil quer o Orkut de volta.",
+      "scene": {
+       "type": "capa",
+       "foto": "lan",
+       "wiki": [
+        "File:Lan house (3318312453).jpg"
+       ],
+       "seta": false,
+       "recorte": "Orkut · 2026",
+       "faixa": "12 anos depois",
+       "linhas": [
+        [
+         "O BRASIL",
+         "white",
+         220
+        ],
+        [
+         "QUER O ORKUT",
+         "gold",
+         190
+        ],
+        [
+         "DE VOLTA",
+         "red",
+         200
+        ]
+       ],
+       "selo": "Orkut · Custo Oculto",
+       "logo": "logo_orkut",
+       "logos": {
+        "logo_orkut": [
+         "File:Logo ORKUT.svg",
+         "File:Orkut.svg",
+         "File:Orkut logo.png",
+         "File:Orkut Logo 2.png"
+        ]
+       }
+      }
+     },
+     {
+      "text": "Em outubro de dois mil e vinte e seis, o criador, Orkut Büyükkökten, pediu apoio pra lançar uma nova rede.",
+      "scene": {
+       "type": "logo",
+       "logo": "logo_orkut",
+       "logos": {
+        "logo_orkut": [
+         "File:Logo ORKUT.svg",
+         "File:Orkut.svg",
+         "File:Orkut logo.png",
+         "File:Orkut Logo 2.png"
+        ]
+       },
+       "placa": false,
+       "sub": "OUTUBRO DE 2026"
+      }
+     },
+     {
+      "text": "Foi ele quem criou o Orkut em dois mil e quatro, como projeto pessoal dentro do Google.",
+      "scene": {
+       "type": "bigtext",
+       "stagger": 0.25,
+       "lines": [
+        [
+         "2004",
+         "gold",
+         220
+        ],
+        [
+         "PROJETO PESSOAL",
+         "white",
+         120
+        ]
+       ]
+      }
+     },
+     {
+      "text": "Em poucos dias, mais de trezentas mil pessoas assinaram. Quase setenta por cento, brasileiras.",
+      "scene": {
+       "type": "counter",
+       "value": 300,
+       "prefix": "+",
+       "suffix": " MIL",
+       "over": "APOIADORES",
+       "label": "69% DO BRASIL",
+       "color": "gold",
+       "size": 220
+      }
+     },
+     {
+      "text": "Faz sentido. Quando o Orkut fechou, o Brasil era mais da metade de todo o tráfego do site.",
+      "scene": {
+       "type": "counter",
+       "value": 55,
+       "suffix": "%",
+       "over": "SETEMBRO DE 2014",
+       "label": "DO TRÁFEGO ERA DO BRASIL",
+       "color": "green",
+       "size": 230
+      }
+     },
+     {
+      "text": "No auge, segundo a Exame, onze de cada catorze milhões de brasileiros na internet estavam lá.",
+      "scene": {
+       "type": "counter",
+       "value": 11,
+       "suffix": " DE 14 MI",
+       "over": "BRASILEIROS NA INTERNET",
+       "label": "ESTAVAM NO ORKUT",
+       "color": "gold",
+       "size": 170
+      }
+     },
+     {
+      "text": "Era a rede das lan houses, dos scraps, dos depoimentos e de comunidades como Eu odeio acordar cedo.",
+      "scene": {
+       "type": "bigtext",
+       "stagger": 0.25,
+       "lines": [
+        [
+         "SCRAPS",
+         "gold",
+         160
+        ],
+        [
+         "DEPOIMENTOS",
+         "white",
+         130
+        ],
+        [
+         "COMUNIDADES",
+         "white",
+         130
+        ]
+       ]
+      }
+     },
+     {
+      "text": "A rede ficou tão brasileira que, em dois mil e oito, o Google passou o comando dela pro Brasil.",
+      "scene": {
+       "type": "bigtext",
+       "stagger": 0.25,
+       "lines": [
+        [
+         "O GOOGLE",
+         "white",
+         140
+        ],
+        [
+         "TROUXE PRO BRASIL",
+         "gold",
+         130
+        ]
+       ]
+      }
+     },
+     {
+      "text": "Mas o Facebook chegou com feed e celular, e passou o Orkut em dezembro de dois mil e onze.",
+      "scene": {
+       "type": "logo",
+       "logo": "logo_orkut",
+       "logos": {
+        "logo_orkut": [
+         "File:Logo ORKUT.svg",
+         "File:Orkut.svg",
+         "File:Orkut logo.png",
+         "File:Orkut Logo 2.png"
+        ],
+        "logo_facebook": [
+         "File:Facebook Logo (2019).svg",
+         "File:Facebook logo (2019).svg",
+         "File:Facebook New Logo (2015).svg"
+        ]
+       },
+       "placa": false,
+       "logo2": "logo_facebook",
+       "sub": "DEZEMBRO DE 2011"
+      }
+     },
+     {
+      "text": "Em dois mil e catorze, o Google desligou tudo.",
+      "scene": {
+       "type": "stamp",
+       "org": "30/09/2014",
+       "title": "ORKUT",
+       "stamp": "FORA DO AR",
+       "stamp_at": 0.9
+      }
+     },
+     {
+      "text": "Agora o detalhe que pouca gente leu: assinar o apoio não cria conta e não tem data de lançamento.",
+      "scene": {
+       "type": "bigtext",
+       "stagger": 0.25,
+       "lines": [
+        [
+         "SEM CONTA",
+         "white",
+         150
+        ],
+        [
+         "SEM DATA",
+         "red",
+         170
+        ]
+       ]
+      }
+     },
+     {
+      "text": "E os recados e depoimentos antigos não voltam.",
+      "scene": {
+       "type": "bigtext",
+       "stagger": 0.25,
+       "lines": [
+        [
+         "OS RECADOS",
+         "white",
+         150
+        ],
+        [
+         "NÃO VOLTAM",
+         "red",
+         160
+        ]
+       ]
+      }
+     },
+     {
+      "text": "Você voltaria pro Orkut? Qual era sua comunidade? Comenta aqui.",
+      "scene": {
+       "type": "bigtext",
+       "stagger": 0.25,
+       "lines": [
+        [
+         "VOCÊ VOLTARIA?",
+         "gold",
+         150
+        ],
+        [
+         "COMENTA",
+         "muted",
+         100
+        ]
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ "serie": [
+  {
+   "partes": [
+    1,
+    2
+   ],
+   "titulo": "O Brasil quer o Orkut de volta. Mas como ele nasceu?",
+   "capa": {
+    "type": "capa",
+    "foto": "lan",
+    "wiki": [
+     "File:Lan house (3318312453).jpg"
+    ],
+    "seta": false,
+    "recorte": "Orkut · Parte 1",
+    "faixa": "Parte 1 de 4",
+    "linhas": [
+     [
+      "O BRASIL",
+      "white",
+      220
+     ],
+     [
+      "QUER O ORKUT",
+      "gold",
+      190
+     ],
+     [
+      "DE VOLTA",
+      "red",
+      200
+     ]
+    ],
+    "selo": "Orkut · Parte 1",
+    "logo": "logo_orkut",
+    "logos": {
+     "logo_orkut": [
+      "File:Logo ORKUT.svg",
+      "File:Orkut.svg",
+      "File:Orkut logo.png",
+      "File:Orkut Logo 2.png"
+     ]
+    }
+   },
+   "caption": "Em outubro de 2026, mais de 300 mil pessoas pediram o Orkut de volta. Quase 70% brasileiras. Como uma rede criada por um engenheiro turco no Google virou a cara do Brasil? Parte 1 de 4.",
+   "hashtags": [
+    "#orkut",
+    "#nostalgia",
+    "#redessociais",
+    "#internet",
+    "#serie"
+   ]
+  },
+  {
+   "partes": [
+    3,
+    4
+   ],
+   "titulo": "Lan house, scraps e comunidades: como o Brasil tomou o Orkut",
+   "capa": {
+    "type": "capa",
+    "foto": "lan",
+    "wiki": [
+     "File:Lan house (3318312453).jpg"
+    ],
+    "seta": false,
+    "recorte": "Orkut · Parte 2",
+    "faixa": "Parte 2 de 4",
+    "linhas": [
+     [
+      "O BRASIL",
+      "white",
+      220
+     ],
+     [
+      "TOMOU",
+      "gold",
+      230
+     ],
+     [
+      "O ORKUT",
+      "red",
+      210
+     ]
+    ],
+    "selo": "Orkut · Parte 2",
+    "logo": "logo_orkut",
+    "logos": {
+     "logo_orkut": [
+      "File:Logo ORKUT.svg",
+      "File:Orkut.svg",
+      "File:Orkut logo.png",
+      "File:Orkut Logo 2.png"
+     ]
+    }
+   },
+   "caption": "Lan house, scraps, depoimentos e 'Eu odeio acordar cedo'. Como o Orkut ficou tão brasileiro que o Google passou o comando pro Brasil. Parte 2 de 4.",
+   "hashtags": [
+    "#orkut",
+    "#nostalgia",
+    "#lanhouse",
+    "#internet",
+    "#serie"
+   ]
+  },
+  {
+   "partes": [
+    5,
+    6
+   ],
+   "titulo": "O dia em que o Facebook passou o Orkut no Brasil",
+   "capa": {
+    "type": "capa",
+    "foto": "lan",
+    "wiki": [
+     "File:Lan house (3318312453).jpg"
+    ],
+    "seta": false,
+    "recorte": "Orkut · Parte 3",
+    "faixa": "Parte 3 de 4",
+    "linhas": [
+     [
+      "O DIA",
+      "white",
+      220
+     ],
+     [
+      "QUE O ORKUT",
+      "gold",
+      190
+     ],
+     [
+      "PERDEU",
+      "red",
+      220
+     ]
+    ],
+    "selo": "Orkut · Parte 3",
+    "logo": "logo_orkut",
+    "logos": {
+     "logo_orkut": [
+      "File:Logo ORKUT.svg",
+      "File:Orkut.svg",
+      "File:Orkut logo.png",
+      "File:Orkut Logo 2.png"
+     ]
+    }
+   },
+   "caption": "Dezembro de 2011: o Facebook passa o Orkut no Brasil. E três anos depois o Google desliga tudo. Na minha opinião, o erro foi do Google. Parte 3 de 4.",
+   "hashtags": [
+    "#orkut",
+    "#facebook",
+    "#google",
+    "#nostalgia",
+    "#serie"
+   ]
+  },
+  {
+   "partes": [
+    7
+   ],
+   "titulo": "O Orkut vai voltar? O que ninguém te contou",
+   "capa": {
+    "type": "capa",
+    "foto": "lan",
+    "wiki": [
+     "File:Lan house (3318312453).jpg"
+    ],
+    "seta": false,
+    "recorte": "Orkut · Final",
+    "faixa": "Parte 4 de 4",
+    "linhas": [
+     [
+      "O ORKUT",
+      "white",
+      220
+     ],
+     [
+      "VAI",
+      "gold",
+      240
+     ],
+     [
+      "VOLTAR?",
+      "red",
+      220
+     ]
+    ],
+    "selo": "Orkut · Final",
+    "logo": "logo_orkut",
+    "logos": {
+     "logo_orkut": [
+      "File:Logo ORKUT.svg",
+      "File:Orkut.svg",
+      "File:Orkut logo.png",
+      "File:Orkut Logo 2.png"
+     ]
+    }
+   },
+   "caption": "Orkut Inc, 300 mil apoiadores e nenhuma data. O que é verdade sobre a volta do Orkut. Parte final.",
+   "hashtags": [
+    "#orkut",
+    "#nostalgia",
+    "#redessociais",
+    "#noticias",
+    "#serie"
+   ]
+  }
+ ],
+ "meta": {
+  "titles": [
+   "ORKUT: Por Que o Google Deixou Morrer a Rede Que o Brasil Ainda Quer de Volta",
+   "O Que Aconteceu Com o ORKUT? E Por Que o Brasil Quer Ele de Volta"
+  ],
+  "description": "Em outubro de 2026, o criador do Orkut pediu apoio para lançar uma nova rede, e mais de 300 mil pessoas assinaram, quase 70% brasileiras. Neste vídeo: como o Orkut nasceu dentro do Google em 2004, como o Brasil tomou conta (lan house, scraps, depoimentos e comunidades), os problemas na Justiça, a decisão de passar o comando para o Google Brasil em 2008, a virada do Facebook em dezembro de 2011, o fim em 30/09/2014 e o que se sabe sobre o novo Orkut.\n\n[CAPÍTULOS]\n\nFontes: Wikipedia (Orkut); Exame; comScore (jan/2012); GD (09/10/2026); ProPakistani (12/10/2026); Canaltech.\n\n#Orkut #Nostalgia #CustoOculto",
+  "tags": [
+   "orkut",
+   "o que aconteceu com o orkut",
+   "orkut vai voltar",
+   "orkut 2026",
+   "novo orkut",
+   "orkut büyükkökten",
+   "orkut facebook",
+   "nostalgia internet",
+   "custo oculto"
+  ]
+ },
+ "thumbs_capa": [
+  {
+   "type": "capa",
+   "foto": "lan",
+   "wiki": [
+    "File:Lan house (3318312453).jpg"
+   ],
+   "seta": false,
+   "recorte": "Orkut · 2026",
+   "faixa": "12 anos depois",
+   "linhas": [
+    [
+     "O BRASIL",
+     "white",
+     210
+    ],
+    [
+     "QUER O ORKUT",
+     "gold",
+     180
+    ],
+    [
+     "DE VOLTA",
+     "red",
+     200
+    ]
+   ],
+   "selo": "Orkut · Custo Oculto",
+   "logo": "logo_orkut",
+   "logos": {
+    "logo_orkut": [
+     "File:Logo ORKUT.svg",
+     "File:Orkut.svg",
+     "File:Orkut logo.png",
+     "File:Orkut Logo 2.png"
+    ]
+   }
+  },
+  {
+   "type": "capa",
+   "foto": "lan",
+   "wiki": [
+    "File:Lan house (3318312453).jpg"
+   ],
+   "seta": false,
+   "recorte": "Orkut · 2014",
+   "faixa": "O Google deixou morrer",
+   "linhas": [
+    [
+     "POR QUE",
+     "white",
+     200
+    ],
+    [
+     "O ORKUT",
+     "gold",
+     230
+    ],
+    [
+     "MORREU?",
+     "red",
+     210
+    ]
+   ],
+   "selo": "Orkut · Custo Oculto",
+   "logo": "logo_orkut",
+   "logos": {
+    "logo_orkut": [
+     "File:Logo ORKUT.svg",
+     "File:Orkut.svg",
+     "File:Orkut logo.png",
+     "File:Orkut Logo 2.png"
+    ]
+   }
+  }
+ ],
+ "thumbs": [
+  {
+   "glow": "red",
+   "lines": [
+    {
+     "text": "ORKUT",
+     "color": "red",
+     "size": 170
+    },
+    {
+     "text": "VAI VOLTAR?",
+     "color": "gold",
+     "size": 140
+    }
+   ]
+  },
+  {
+   "glow": "gold",
+   "lines": [
+    {
+     "text": "POR QUE O",
+     "color": "white",
+     "size": 120
+    },
+    {
+     "text": "ORKUT",
+     "color": "gold",
+     "size": 170
+    },
+    {
+     "text": "MORREU?",
+     "color": "red",
+     "size": 150
+    }
+   ]
+  }
+ ],
+ "notes": "FATOS CHECADOS (com fonte)\n- Lançado em 22/01/2004 por Orkut Büyükkökten, engenheiro do Google, como projeto pessoal; processo da Affinity Engines (InCircle) em jun/2004 (Wikipedia; Canaltech)\n- Acesso só por convite (Canaltech)\n- Tráfego 31/03/2004: EUA 51,36%, Japão 7,74%, Brasil 5,16%; 30/09/2014: Brasil 55,5%, Índia 18,4%, EUA 3,3% (Wikipedia)\n- No auge, 11 dos 14 milhões de internautas brasileiros estavam no Orkut (Exame)\n- 2006: Justiça Federal intima o Google; juiz manda entregar dados de ~24 usuários com multa diária; Google alega dados nos EUA (Wikipedia)\n- 19/12/2007: worm infecta mais de 700 mil usuários (Wikipedia)\n- 2008: Google Brasil (Minas Gerais) passa a operar o Orkut, por causa da base brasileira e das questões legais (Wikipedia; Canaltech)\n- Dez/2011: Facebook 36,1 mi de visitantes únicos no Brasil (+192% em 1 ano) vs Orkut 34,4 mi (+5%) (comScore, jan/2012)\n- Código antigo, difícil de escalar; Facebook com feed, privacidade e celular; Google+ lançado em 2011 (Exame)\n- Anúncio 30/06/2014, fim 30/09/2014; motivo oficial: YouTube, Blogger e Google+ cresceram mais (Wikipedia; Exame)\n- Exportação de dados até 2016; arquivo de comunidades desativado em 2017 (Wikipedia; Exame)\n- Hello (2016) encerrada; site reativado em abr/2022 com carta do criador (Canaltech; Olhar Digital)\n- 08/10/2026: campanha de apoio no orkut.com; sem data, não cria conta nem reserva nome (Exame; ProPakistani 12/10/2026)\n- +300 mil assinaturas em 135 países, Brasil 68,9%; Orkut Inc com Büyükkökten como CEO (GD, 09/10/2026)\n- Estrutura variada: abre na notícia de 2026 (gancho atual), história, opinião explícita no capítulo 6, pergunta final.\n- Logo do Orkut na capa e em cenas de abertura (pedido do Vinícius em 14/10/2026)."
+}
