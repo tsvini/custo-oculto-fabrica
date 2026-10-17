@@ -77,9 +77,13 @@ def main():
                 reg.append({"arquivo": arq, "titulo": it["titulo"], "video_id": vid, "publishAt": quando.isoformat()})
                 json.dump(reg, open(REG, "w", encoding="utf8"), ensure_ascii=False, indent=1)
                 ok.append(f"{it['titulo']} → {quando:%d/%m %Hh} (youtu.be/{vid})")
-    except Cota:
-        nota("Vini QA", "cota do dia acabou: o resto sobe amanhã", "warning")
+    except Cota as e:
+        ok.append(f"limite do YouTube: o resto sobe amanhã ({str(e)[:200]})")
+    except Exception as e:
+        ok.append(f"ERRO: {str(e)[:300]}")
     nota("Vini QA agendados", " | ".join(ok) if ok else "nada novo")
+    open(os.path.join(RAIZ, "viniqa_status.txt"), "w", encoding="utf8").write(
+        f"{dt.datetime.now(BRT):%d/%m %H:%M} · {len(reg)} no canal · " + (" | ".join(ok) if ok else "nada novo") + "\n")
 
 
 if __name__ == "__main__":
