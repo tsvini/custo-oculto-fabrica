@@ -46,7 +46,7 @@
         ]
        ],
        "selo": "Kolynos · anos 90",
-       "sfx": "impacto",
+       "sfx": "boom",
        "depois": {
         "type": "montagem",
         "auto": true,
@@ -314,7 +314,7 @@
          "z1": 1.12,
          "dim": 0.3,
          "tremor": true,
-         "sfx": "impacto"
+         "sfx": "dun"
         }
        ],
        "fallback": {
@@ -332,10 +332,18 @@
        "clips": [
         {
          "type": "image",
+         "media": "ia_tubo",
+         "z0": 1.0,
+         "z1": 1.1,
+         "dim": 0.45
+        },
+        {
+         "type": "image",
          "media": "ia_familia",
          "z0": 1.0,
          "z1": 1.12,
-         "dim": 0.45
+         "dim": 0.45,
+         "sfx": "ding"
         }
        ],
        "fallback": {
@@ -356,7 +364,9 @@
           150
          ]
         ]
-       }
+       },
+       "sfx": "scratch",
+       "sobre_em": 3.0
       }
      }
     ]

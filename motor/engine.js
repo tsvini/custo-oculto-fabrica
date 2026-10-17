@@ -421,7 +421,8 @@
     if (cl.tremor && lt < 0.32) { const a = (1 - lt / 0.32) * 18 * c.u; ctx.translate((Math.random() - 0.5) * a, (Math.random() - 0.5) * a); }
     (S[cl.type] || S.bigtext)(ctx, c, lt, cada, Object.assign({ dim: 0.3 }, cl, { lower: null }), media);
     ctx.restore();
-    if (s.sobre) (S[s.sobre.type] || S.bigtext)(ctx, c, t, dur, s.sobre, media); // número/frase por cima das imagens
+    const se = s.sobre_em || 0; // número/frase por cima das imagens (pode entrar depois de alguns segundos)
+    if (s.sobre && t >= se) (S[s.sobre.type] || S.bigtext)(ctx, c, t - se, dur - se, s.sobre, media);
   };
   S.capa = (ctx, c, t, dur, s, media) => {
     const u = c.u; const V = c.vertical; const m = media && media[s.foto]; const img = m && m.img;
