@@ -221,7 +221,10 @@ def processar(video, eventos, trilha=None, roteiro="", relatorio=None, rodadas=3
             trilha_arr = tr / (np.abs(base).max() + 1e-9) * np.clip(np.minimum(t / 1.0, (dur - t) / 1.2), 0, 1)
     cache = {}
     for ev in eventos:
-        ev.setdefault("vol", 0.18 if ev["tipo"] == "amb" else 0.5)
+        if ev.get("vol") is None:
+            ev["vol"] = 0.18 if ev.get("tipo") == "amb" else 0.5
+        if ev.get("t1") is None:
+            ev["t1"] = ev["t0"] + 3
         busca_audio(ev, ev.get("cena", ""), cache)
     hist = []; melhor = None
     with tempfile.TemporaryDirectory() as d:
