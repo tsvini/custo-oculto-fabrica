@@ -610,7 +610,8 @@
   "americanas_longo": [],
   "netflix_longo": [],
   "netflix_en_longo": [],
-  "wework_longo": []
+  "wework_longo": [],
+  "orkut_longo": []
  },
  "nomes": {
   "4WuKNxpR188": "itapemirim_longo",
@@ -660,11 +661,18 @@
   "m62PxGp2g2A": "wework_serie3",
   "PRY8AyEOv1Y": "wework_short3",
   "n3ULfuQrXr4": "wework_serie4",
-  "u6pjLiR16xA": "wework_short4"
+  "u6pjLiR16xA": "wework_short4",
+  "x263Rewgyw8": "orkut_longo",
+  "_TicJtCVl8I": "orkut_serie1",
+  "fEa_OURUL8M": "orkut_short1",
+  "vgny-o0w020": "orkut_serie2",
+  "T3zJqVuxu4c": "orkut_short2",
+  "WLXe91gQ-_4": "orkut_serie3",
+  "RAbWvcCYWUk": "orkut_serie4"
  },
  "contagem_atual": {
   "itapemirim_longo": {
-   "views": 12,
+   "views": 13,
    "likes": 3,
    "comentarios": 0,
    "status": "public"
@@ -688,7 +696,7 @@
    "status": "public"
   },
   "banco_master_short2": {
-   "views": 46,
+   "views": 49,
    "likes": 0,
    "comentarios": 1,
    "status": "public"
@@ -712,19 +720,19 @@
    "status": "public"
   },
   "banco_master_serie2": {
-   "views": 49,
+   "views": 50,
    "likes": 6,
    "comentarios": 1,
    "status": "public"
   },
   "banco_master_serie3": {
-   "views": 29,
+   "views": 31,
    "likes": 3,
    "comentarios": 1,
    "status": "public"
   },
   "banco_master_serie4": {
-   "views": 2,
+   "views": 22,
    "likes": 0,
    "comentarios": 1,
    "status": "public"
@@ -736,7 +744,7 @@
    "status": "private"
   },
   "netflix_short4": {
-   "views": 0,
+   "views": 1,
    "likes": 0,
    "comentarios": 0,
    "status": "private"
@@ -874,7 +882,7 @@
    "status": "public"
   },
   "netflix_en_short1": {
-   "views": 1,
+   "views": 3,
    "likes": 0,
    "comentarios": 0,
    "status": "public"
@@ -950,10 +958,52 @@
    "likes": 0,
    "comentarios": 0,
    "status": "private"
+  },
+  "orkut_longo": {
+   "views": 0,
+   "likes": 0,
+   "comentarios": 0,
+   "status": "private"
+  },
+  "orkut_serie1": {
+   "views": 0,
+   "likes": 0,
+   "comentarios": 0,
+   "status": "private"
+  },
+  "orkut_short1": {
+   "views": 0,
+   "likes": 0,
+   "comentarios": 0,
+   "status": "private"
+  },
+  "orkut_serie2": {
+   "views": 0,
+   "likes": 0,
+   "comentarios": 0,
+   "status": "private"
+  },
+  "orkut_short2": {
+   "views": 0,
+   "likes": 0,
+   "comentarios": 0,
+   "status": "private"
+  },
+  "orkut_serie3": {
+   "views": 0,
+   "likes": 0,
+   "comentarios": 0,
+   "status": "private"
+  },
+  "orkut_serie4": {
+   "views": 0,
+   "likes": 0,
+   "comentarios": 0,
+   "status": "private"
   }
  },
  "canal": {
-  "viewCount": "3988",
+  "viewCount": "4016",
   "subscriberCount": "11",
   "hiddenSubscriberCount": false,
   "videoCount": "27"
@@ -988,7 +1038,7 @@
    "duracao": "PT41S",
    "status": "public",
    "agendado": null,
-   "views": 388,
+   "views": 389,
    "likes": 7,
    "comentarios": 0
   },
@@ -1076,7 +1126,7 @@
    "duracao": "PT2M18S",
    "status": "public",
    "agendado": null,
-   "views": 49,
+   "views": 50,
    "likes": 6,
    "comentarios": 1
   },
@@ -1087,7 +1137,7 @@
    "duracao": "PT29S",
    "status": "public",
    "agendado": null,
-   "views": 46,
+   "views": 49,
    "likes": 0,
    "comentarios": 1
   },
@@ -1098,8 +1148,19 @@
    "duracao": "PT2M33S",
    "status": "public",
    "agendado": null,
-   "views": 29,
+   "views": 32,
    "likes": 3,
+   "comentarios": 1
+  },
+  {
+   "id": "6hhsJO6vgpo",
+   "titulo": "Banco Master: parte 4 de 4 #shorts",
+   "publicado": "2026-10-17T11:00:22Z",
+   "duracao": "PT1M33S",
+   "status": "public",
+   "agendado": null,
+   "views": 23,
+   "likes": 0,
    "comentarios": 1
   },
   {
@@ -1120,7 +1181,7 @@
    "duracao": "PT7M19S",
    "status": "public",
    "agendado": null,
-   "views": 12,
+   "views": 13,
    "likes": 3,
    "comentarios": 0
   },
@@ -1235,17 +1296,6 @@
    "comentarios": 0
   },
   {
-   "id": "6hhsJO6vgpo",
-   "titulo": "Banco Master: parte 4 de 4 #shorts",
-   "publicado": "2026-10-17T11:00:22Z",
-   "duracao": "PT1M33S",
-   "status": "public",
-   "agendado": null,
-   "views": 3,
-   "likes": 0,
-   "comentarios": 1
-  },
-  {
    "id": "TZLpKjOWKH4",
    "titulo": "Você pode estar pagando a conta do Banco Master #shorts",
    "publicado": "2026-10-16T21:00:12Z",
@@ -1263,6 +1313,83 @@
    "duracao": "PT25S",
    "status": "private",
    "agendado": "2026-11-08T21:00:00Z",
+   "views": 1,
+   "likes": 0,
+   "comentarios": 0
+  },
+  {
+   "id": "RAbWvcCYWUk",
+   "titulo": "O Orkut vai voltar? O que ninguém te contou (parte 4) #shorts",
+   "publicado": "2026-10-17T18:10:59Z",
+   "duracao": "PT1M26S",
+   "status": "private",
+   "agendado": "2026-11-07T11:00:00Z",
+   "views": 0,
+   "likes": 0,
+   "comentarios": 0
+  },
+  {
+   "id": "WLXe91gQ-_4",
+   "titulo": "O dia em que o Facebook passou o Orkut no Brasil (parte 3) #shorts",
+   "publicado": "2026-10-17T18:10:51Z",
+   "duracao": "PT2M23S",
+   "status": "private",
+   "agendado": "2026-11-06T11:00:00Z",
+   "views": 0,
+   "likes": 0,
+   "comentarios": 0
+  },
+  {
+   "id": "T3zJqVuxu4c",
+   "titulo": "O dia em que o Facebook passou o Orkut no Brasil #shorts",
+   "publicado": "2026-10-17T18:10:40Z",
+   "duracao": "PT25S",
+   "status": "private",
+   "agendado": "2026-11-04T21:00:00Z",
+   "views": 0,
+   "likes": 0,
+   "comentarios": 0
+  },
+  {
+   "id": "vgny-o0w020",
+   "titulo": "Lan house, scraps e comunidades: como o Brasil tomou o Orkut (parte 2) #shorts",
+   "publicado": "2026-10-17T18:10:30Z",
+   "duracao": "PT2M17S",
+   "status": "private",
+   "agendado": "2026-11-05T11:00:00Z",
+   "views": 0,
+   "likes": 0,
+   "comentarios": 0
+  },
+  {
+   "id": "fEa_OURUL8M",
+   "titulo": "O Brasil quer o Orkut de volta #shorts",
+   "publicado": "2026-10-17T18:10:19Z",
+   "duracao": "PT25S",
+   "status": "private",
+   "agendado": "2026-11-03T21:00:00Z",
+   "views": 0,
+   "likes": 0,
+   "comentarios": 0
+  },
+  {
+   "id": "_TicJtCVl8I",
+   "titulo": "O Brasil quer o Orkut de volta. Mas como ele nasceu? (parte 1) #shorts",
+   "publicado": "2026-10-17T18:10:12Z",
+   "duracao": "PT2M8S",
+   "status": "private",
+   "agendado": "2026-11-04T11:00:00Z",
+   "views": 0,
+   "likes": 0,
+   "comentarios": 0
+  },
+  {
+   "id": "x263Rewgyw8",
+   "titulo": "ORKUT: Por Que o Google Deixou Morrer a Rede Que o Brasil Ainda Quer de Volta",
+   "publicado": "2026-10-17T18:09:53Z",
+   "duracao": "PT8M30S",
+   "status": "private",
+   "agendado": "2026-11-03T15:00:00Z",
    "views": 0,
    "likes": 0,
    "comentarios": 0
