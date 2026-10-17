@@ -1,0 +1,1269 @@
+{
+  "title": "Vini QA · lote 1",
+  "slug": "viniqa-lote1",
+  "idioma": "pt",
+  "destino": "curso",
+  "marca": [
+    "VINI",
+    "QA"
+  ],
+  "cor_fundo": "#3fd68a",
+  "legenda_y": 0.93,
+  "voz": {
+    "nome": "gravada",
+    "motor": "eleven",
+    "eleven_voz": "Vinícius Torales"
+  },
+  "serie": [],
+  "meta": {
+    "titles": [
+      "Vini QA lote 1"
+    ],
+    "description": "",
+    "tags": []
+  },
+  "notes": "Dicas curtas do perfil Vini QA. Não publica sozinho (destino: curso); vai pro TikTok e Shorts pelo Metricool.",
+  "script": {
+    "long": {
+      "parts": []
+    },
+    "shorts": [
+      {
+        "title": "Você não precisa saber programar pra automatizar teste",
+        "sentences": [
+          {
+            "text": "Você não precisa saber programar pra escrever seu primeiro teste automatizado.",
+            "scene": {
+              "type": "bigtext",
+              "stagger": 0.25,
+              "lines": [
+                [
+                  "NÃO PRECISA",
+                  "white",
+                  130
+                ],
+                [
+                  "SABER PROGRAMAR",
+                  "gold",
+                  120
+                ]
+              ]
+            }
+          },
+          {
+            "text": "Teste automatizado é só um robô que faz no site o que você faria na mão.",
+            "scene": {
+              "type": "cards",
+              "titulo": "O ROBÔ FAZ",
+              "itens": [
+                [
+                  "1",
+                  "Abre",
+                  "o site"
+                ],
+                [
+                  "2",
+                  "Digita",
+                  "usuário e senha",
+                  "#69a7ff"
+                ],
+                [
+                  "3",
+                  "Confere",
+                  "se deu certo",
+                  "#ffd23f"
+                ]
+              ]
+            }
+          },
+          {
+            "text": "No Cypress, cada ação vira uma linha simples, quase em inglês. Com poucas linhas, você tem um teste de login funcionando.",
+            "scene": {
+              "type": "editor",
+              "arquivo": "login.cy.js",
+              "codigo": "describe('Login', () => {\n  it('entra no site', () => {\n    cy.visit('saucedemo.com')\n    cy.get('[data-test=\"username\"]')\n      .type('standard_user')\n    cy.get('[data-test=\"password\"]')\n      .type('secret_sauce')\n    cy.get('[data-test=\"login-button\"]')\n      .click()\n    cy.contains('Products')\n      .should('be.visible')\n  })\n})",
+              "destaque": [
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11
+              ],
+              "legenda": "Um teste de login inteiro",
+              "fonte": 28
+            }
+          },
+          {
+            "text": "E o robô repete isso quantas vezes você quiser, sem cansar.",
+            "scene": {
+              "type": "bigtext",
+              "stagger": 0.25,
+              "lines": [
+                [
+                  "REPETE",
+                  "gold",
+                  180
+                ],
+                [
+                  "SEM CANSAR",
+                  "white",
+                  140
+                ]
+              ]
+            }
+          },
+          {
+            "text": "Curso completo de Cypress pra quem tá começando do zero: link na bio.",
+            "scene": {
+              "type": "bigtext",
+              "stagger": 0.25,
+              "lines": [
+                [
+                  "CURSO COMPLETO",
+                  "gold",
+                  130
+                ],
+                [
+                  "LINK NA BIO",
+                  "white",
+                  150
+                ]
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "title": "Como achar o nome de qualquer botão",
+        "sentences": [
+          {
+            "text": "Como achar o nome de qualquer botão de um site em dez segundos.",
+            "scene": {
+              "type": "bigtext",
+              "stagger": 0.25,
+              "lines": [
+                [
+                  "O NOME DE",
+                  "white",
+                  130
+                ],
+                [
+                  "QUALQUER BOTÃO",
+                  "gold",
+                  120
+                ],
+                [
+                  "EM 10 SEGUNDOS",
+                  "white",
+                  90
+                ]
+              ]
+            }
+          },
+          {
+            "text": "Clica com o botão direito em cima dele, e escolhe Inspecionar. Ou aperta Control, Shift e C, e clica nele.",
+            "scene": {
+              "type": "cards",
+              "titulo": "DOIS JEITOS",
+              "itens": [
+                [
+                  "🖱",
+                  "Botão direito",
+                  "› Inspecionar"
+                ],
+                [
+                  "⌨",
+                  "Ctrl+Shift+C",
+                  "e clica nele",
+                  "#69a7ff"
+                ]
+              ]
+            }
+          },
+          {
+            "text": "O navegador mostra o código daquele elemento. Procura um atributo chamado data test, ou um id.",
+            "scene": {
+              "type": "recorte",
+              "corte": [
+                800,
+                90,
+                960,
+                720
+              ],
+              "cena": {
+                "type": "devtools",
+                "media": "insp_login",
+                "url": "https://www.saucedemo.com/",
+                "inspecionar": "[data-test=\"login-button\"]",
+                "aberto": true,
+                "realce": [
+                  "data-test"
+                ],
+                "realce_em": 2.4,
+                "realce_rotulo": "o nome do botão"
+              },
+              "legenda": "Procure o data-test"
+            }
+          },
+          {
+            "text": "Esse é o nome que o seu teste usa pra achar o botão.",
+            "scene": {
+              "type": "editor",
+              "arquivo": "login.cy.js",
+              "codigo": "cy.get('[data-test=\"login-button\"]')\n  .click()",
+              "destaque": [
+                1,
+                2
+              ],
+              "legenda": "O nome vai aqui",
+              "fonte": 28
+            }
+          },
+          {
+            "text": "Curso completo de Cypress pra quem tá começando do zero: link na bio.",
+            "scene": {
+              "type": "bigtext",
+              "stagger": 0.25,
+              "lines": [
+                [
+                  "CURSO COMPLETO",
+                  "gold",
+                  130
+                ],
+                [
+                  "LINK NA BIO",
+                  "white",
+                  150
+                ]
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "title": "Seu primeiro teste automatizado",
+        "sentences": [
+          {
+            "text": "Esse é um teste automatizado completo. E é bem mais simples do que parece.",
+            "scene": {
+              "type": "editor",
+              "arquivo": "login.cy.js",
+              "codigo": "describe('Login', () => {\n  it('entra no site', () => {\n    cy.visit('saucedemo.com')\n    cy.get('[data-test=\"username\"]')\n      .type('standard_user')\n    cy.get('[data-test=\"password\"]')\n      .type('secret_sauce')\n    cy.get('[data-test=\"login-button\"]')\n      .click()\n    cy.contains('Products')\n      .should('be.visible')\n  })\n})",
+              "destaque": [
+                1
+              ],
+              "legenda": "Um teste completo",
+              "fonte": 26
+            }
+          },
+          {
+            "text": "Visit abre o site. Get pega o campo do usuário, e type digita nele. A mesma coisa com a senha.",
+            "scene": {
+              "type": "editor",
+              "arquivo": "login.cy.js",
+              "codigo": "describe('Login', () => {\n  it('entra no site', () => {\n    cy.visit('saucedemo.com')\n    cy.get('[data-test=\"username\"]')\n      .type('standard_user')\n    cy.get('[data-test=\"password\"]')\n      .type('secret_sauce')\n    cy.get('[data-test=\"login-button\"]')\n      .click()\n    cy.contains('Products')\n      .should('be.visible')\n  })\n})",
+              "destaque": [
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              "legenda": "Abre e digita",
+              "fonte": 26,
+              "digitar_de": 3
+            }
+          },
+          {
+            "text": "Click aperta o botão de entrar.",
+            "scene": {
+              "type": "editor",
+              "arquivo": "login.cy.js",
+              "codigo": "describe('Login', () => {\n  it('entra no site', () => {\n    cy.visit('saucedemo.com')\n    cy.get('[data-test=\"username\"]')\n      .type('standard_user')\n    cy.get('[data-test=\"password\"]')\n      .type('secret_sauce')\n    cy.get('[data-test=\"login-button\"]')\n      .click()\n    cy.contains('Products')\n      .should('be.visible')\n  })\n})",
+              "destaque": [
+                8,
+                9
+              ],
+              "legenda": "Clica",
+              "fonte": 26,
+              "digitar_de": 8
+            }
+          },
+          {
+            "text": "E o should confere se apareceu a palavra Products. Se apareceu, o login funcionou e o teste fica verde.",
+            "scene": {
+              "type": "recorte",
+              "corte": [
+                420,
+                120,
+                1080,
+                760
+              ],
+              "cena": {
+                "type": "tela",
+                "media": "site_sauce_products",
+                "url": "https://www.saucedemo.com/",
+                "acoes": [
+                  {
+                    "fill": [
+                      "#user-name",
+                      "standard_user"
+                    ]
+                  },
+                  {
+                    "fill": [
+                      "#password",
+                      "secret_sauce"
+                    ]
+                  },
+                  {
+                    "click": "#login-button"
+                  }
+                ],
+                "alvo": "Products",
+                "titulo": "saucedemo.com/inventory.html",
+                "zoom_em": 1.0,
+                "caixa_em": 1.6
+              },
+              "legenda": "Apareceu? Passou!"
+            }
+          },
+          {
+            "text": "Curso completo de Cypress pra quem tá começando do zero: link na bio.",
+            "scene": {
+              "type": "bigtext",
+              "stagger": 0.25,
+              "lines": [
+                [
+                  "CURSO COMPLETO",
+                  "gold",
+                  130
+                ],
+                [
+                  "LINK NA BIO",
+                  "white",
+                  150
+                ]
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "title": "O seletor que não quebra",
+        "sentences": [
+          {
+            "text": "Seu teste quebra toda vez que o site muda de cor? O problema é o seletor.",
+            "scene": {
+              "type": "bigtext",
+              "stagger": 0.25,
+              "lines": [
+                [
+                  "SEU TESTE",
+                  "white",
+                  140
+                ],
+                [
+                  "QUEBRA À TOA?",
+                  "red",
+                  130
+                ]
+              ]
+            }
+          },
+          {
+            "text": "Muita gente pega o botão pela classe, aquele nome cheio de pedacinhos. Só que a classe muda sempre que o visual do site muda.",
+            "scene": {
+              "type": "editor",
+              "arquivo": "login.cy.js",
+              "codigo": "// frágil: muda com o visual\ncy.get('.btn_action.submit-button')",
+              "destaque": [
+                2
+              ],
+              "legenda": "Classe: frágil",
+              "fonte": 28
+            }
+          },
+          {
+            "text": "O jeito certo é o data test, um nome feito só pra teste, que não muda com o visual.",
+            "scene": {
+              "type": "editor",
+              "arquivo": "login.cy.js",
+              "codigo": "// seguro: feito pra teste\ncy.get('[data-test=\"login-button\"]')",
+              "destaque": [
+                2
+              ],
+              "legenda": "data-test: seguro",
+              "fonte": 28
+            }
+          },
+          {
+            "text": "Se o site não tem, vale pedir pro time colocar.",
+            "scene": {
+              "type": "cards",
+              "titulo": "NÃO TEM?",
+              "itens": [
+                [
+                  "💬",
+                  "Pede pro time",
+                  "colocar data-test"
+                ]
+              ]
+            }
+          },
+          {
+            "text": "Curso completo de Cypress pra quem tá começando do zero: link na bio.",
+            "scene": {
+              "type": "bigtext",
+              "stagger": 0.25,
+              "lines": [
+                [
+                  "CURSO COMPLETO",
+                  "gold",
+                  130
+                ],
+                [
+                  "LINK NA BIO",
+                  "white",
+                  150
+                ]
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "title": "O botão do Cypress que escreve o código pra você",
+        "sentences": [
+          {
+            "text": "O Cypress tem um botão que escreve o código por você. Quase ninguém usa.",
+            "scene": {
+              "type": "bigtext",
+              "stagger": 0.25,
+              "lines": [
+                [
+                  "ELE ESCREVE",
+                  "white",
+                  140
+                ],
+                [
+                  "O CÓDIGO",
+                  "gold",
+                  170
+                ],
+                [
+                  "PRA VOCÊ",
+                  "white",
+                  140
+                ]
+              ]
+            }
+          },
+          {
+            "text": "É o Selector Playground, a mira lá em cima na janela do Cypress. Clica na mira, depois clica no campo que você quer.",
+            "scene": {
+              "type": "recorte",
+              "corte": [
+                160,
+                40,
+                1600,
+                880
+              ],
+              "cena": {
+                "type": "playground",
+                "media": "insp_user",
+                "url": "https://www.saucedemo.com/",
+                "inspecionar": "#user-name",
+                "spec": "login.cy.js",
+                "seletor": "[data-test=\"username\"]",
+                "copiar": true
+              },
+              "legenda": "A mira do Cypress"
+            }
+          },
+          {
+            "text": "Ele mostra o comando pronto. Clica em copiar e cola no teste.",
+            "scene": {
+              "type": "editor",
+              "arquivo": "login.cy.js",
+              "codigo": "cy.get('[data-test=\"username\"]')",
+              "destaque": [
+                1
+              ],
+              "legenda": "Copiado e colado",
+              "fonte": 28
+            }
+          },
+          {
+            "text": "Depois é só completar com o que fazer, tipo digitar ou clicar.",
+            "scene": {
+              "type": "editor",
+              "arquivo": "login.cy.js",
+              "codigo": "cy.get('[data-test=\"username\"]')\n  .type('standard_user')",
+              "destaque": [
+                2
+              ],
+              "legenda": "Completa com o type",
+              "fonte": 28,
+              "digitar_de": 2
+            }
+          },
+          {
+            "text": "Curso completo de Cypress pra quem tá começando do zero: link na bio.",
+            "scene": {
+              "type": "bigtext",
+              "stagger": 0.25,
+              "lines": [
+                [
+                  "CURSO COMPLETO",
+                  "gold",
+                  130
+                ],
+                [
+                  "LINK NA BIO",
+                  "white",
+                  150
+                ]
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "title": "Pare de repetir código nos testes",
+        "sentences": [
+          {
+            "text": "Se todo teste seu começa com a mesma linha, você precisa conhecer o beforeEach.",
+            "scene": {
+              "type": "bigtext",
+              "stagger": 0.25,
+              "lines": [
+                [
+                  "A MESMA LINHA",
+                  "white",
+                  120
+                ],
+                [
+                  "EM TODO TESTE?",
+                  "red",
+                  120
+                ]
+              ]
+            }
+          },
+          {
+            "text": "Imagina vários testes que abrem o mesmo site. Se o endereço muda, você troca em todo lugar.",
+            "scene": {
+              "type": "editor",
+              "arquivo": "login.cy.js",
+              "codigo": "it('teste 1', () => {\n  cy.visit('saucedemo.com')\n})\nit('teste 2', () => {\n  cy.visit('saucedemo.com')\n})\nit('teste 3', () => {\n  cy.visit('saucedemo.com')\n})",
+              "destaque": [
+                2,
+                5,
+                8
+              ],
+              "legenda": "Repetido 3 vezes",
+              "fonte": 30
+            }
+          },
+          {
+            "text": "O beforeEach roda antes de cada teste. Você coloca o visit lá dentro uma vez só.",
+            "scene": {
+              "type": "editor",
+              "arquivo": "login.cy.js",
+              "codigo": "beforeEach(() => {\n  cy.visit('saucedemo.com')\n})\n\nit('teste 1', () => { ... })\nit('teste 2', () => { ... })\nit('teste 3', () => { ... })",
+              "destaque": [
+                1,
+                2,
+                3
+              ],
+              "legenda": "Uma vez só",
+              "fonte": 30
+            }
+          },
+          {
+            "text": "E todos os testes já começam com o site aberto. Menos código e menos erro.",
+            "scene": {
+              "type": "bigtext",
+              "stagger": 0.25,
+              "lines": [
+                [
+                  "MENOS CÓDIGO",
+                  "gold",
+                  130
+                ],
+                [
+                  "MENOS ERRO",
+                  "white",
+                  150
+                ]
+              ]
+            }
+          },
+          {
+            "text": "Curso completo de Cypress pra quem tá começando do zero: link na bio.",
+            "scene": {
+              "type": "bigtext",
+              "stagger": 0.25,
+              "lines": [
+                [
+                  "CURSO COMPLETO",
+                  "gold",
+                  130
+                ],
+                [
+                  "LINK NA BIO",
+                  "white",
+                  150
+                ]
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "title": "Teste sem conferir não é teste",
+        "sentences": [
+          {
+            "text": "Esse teste passa. Mas ele não testa nada.",
+            "scene": {
+              "type": "bigtext",
+              "stagger": 0.25,
+              "lines": [
+                [
+                  "PASSA,",
+                  "white",
+                  170
+                ],
+                [
+                  "MAS NÃO TESTA",
+                  "red",
+                  120
+                ],
+                [
+                  "NADA",
+                  "white",
+                  170
+                ]
+              ]
+            }
+          },
+          {
+            "text": "Um teste que só clica e digita fica verde mesmo se o site estiver quebrado.",
+            "scene": {
+              "type": "editor",
+              "arquivo": "login.cy.js",
+              "codigo": "cy.visit('saucedemo.com')\ncy.get('[data-test=\"username\"]')\n  .type('standard_user')\ncy.get('[data-test=\"login-button\"]')\n  .click()",
+              "destaque": [
+                1,
+                2,
+                3,
+                4,
+                5
+              ],
+              "legenda": "Só clica e digita",
+              "fonte": 28
+            }
+          },
+          {
+            "text": "O que faz um teste ser teste é a conferência. No Cypress, é o should, que quer dizer deveria.",
+            "scene": {
+              "type": "editor",
+              "arquivo": "login.cy.js",
+              "codigo": "cy.contains('Products')\n  .should('be.visible')",
+              "destaque": [
+                1,
+                2
+              ],
+              "legenda": "should = deveria",
+              "fonte": 28
+            }
+          },
+          {
+            "text": "Sem o should, você tem um robô andando pelo site, e não um teste.",
+            "scene": {
+              "type": "cards",
+              "titulo": "SEM SHOULD",
+              "itens": [
+                [
+                  "🤖",
+                  "Robô passeando",
+                  "não confere nada",
+                  "#ff6b6b"
+                ],
+                [
+                  "✓",
+                  "Com should",
+                  "é teste de verdade"
+                ]
+              ]
+            }
+          },
+          {
+            "text": "Curso completo de Cypress pra quem tá começando do zero: link na bio.",
+            "scene": {
+              "type": "bigtext",
+              "stagger": 0.25,
+              "lines": [
+                [
+                  "CURSO COMPLETO",
+                  "gold",
+                  130
+                ],
+                [
+                  "LINK NA BIO",
+                  "white",
+                  150
+                ]
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "title": "npx não é reconhecido: como resolver",
+        "sentences": [
+          {
+            "text": "Deu npx não é reconhecido no terminal? Calma, é rápido de resolver.",
+            "scene": {
+              "type": "terminal",
+              "titulo": "Terminal — VS Code",
+              "pasta": "C:\\meu-projeto",
+              "linhas": [
+                {
+                  "cmd": "npx cypress open"
+                },
+                {
+                  "out": "npx : O termo 'npx' não é reconhecido",
+                  "cor": "red"
+                }
+              ],
+              "legenda": "Esse erro aqui"
+            }
+          },
+          {
+            "text": "Esse erro quase sempre aparece porque o terminal foi aberto antes de instalar o Node.",
+            "scene": {
+              "type": "bigtext",
+              "stagger": 0.25,
+              "lines": [
+                [
+                  "O TERMINAL",
+                  "white",
+                  140
+                ],
+                [
+                  "FOI ABERTO ANTES",
+                  "gold",
+                  100
+                ]
+              ]
+            }
+          },
+          {
+            "text": "Fecha o VS Code inteiro e abre de novo. Se continuar, reinicia o computador. E se mesmo assim não for, reinstala o Node, a versão LTS.",
+            "scene": {
+              "type": "cards",
+              "titulo": "RESOLVE ASSIM",
+              "itens": [
+                [
+                  "1",
+                  "Feche",
+                  "e abra o VS Code"
+                ],
+                [
+                  "2",
+                  "Reinicie",
+                  "o computador",
+                  "#69a7ff"
+                ],
+                [
+                  "3",
+                  "Reinstale",
+                  "o Node LTS",
+                  "#ffd23f"
+                ]
+              ]
+            }
+          },
+          {
+            "text": "Na maioria das vezes, só fechar e abrir já resolve.",
+            "scene": {
+              "type": "terminal",
+              "titulo": "Terminal — VS Code",
+              "pasta": "C:\\meu-projeto",
+              "linhas": [
+                {
+                  "cmd": "npx cypress open"
+                },
+                {
+                  "out": "Opening Cypress...",
+                  "cor": "ac"
+                }
+              ],
+              "legenda": "Resolvido"
+            }
+          },
+          {
+            "text": "Curso completo de Cypress pra quem tá começando do zero: link na bio.",
+            "scene": {
+              "type": "bigtext",
+              "stagger": 0.25,
+              "lines": [
+                [
+                  "CURSO COMPLETO",
+                  "gold",
+                  130
+                ],
+                [
+                  "LINK NA BIO",
+                  "white",
+                  150
+                ]
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "title": "Teste vermelho com Timed out retrying",
+        "sentences": [
+          {
+            "text": "Seu teste ficou vermelho com Timed out retrying? Quase sempre é isso.",
+            "scene": {
+              "type": "bigtext",
+              "stagger": 0.25,
+              "lines": [
+                [
+                  "TIMED OUT",
+                  "red",
+                  160
+                ],
+                [
+                  "RETRYING?",
+                  "white",
+                  150
+                ]
+              ]
+            }
+          },
+          {
+            "text": "Essa mensagem quer dizer que o Cypress procurou o elemento por alguns segundos e não achou.",
+            "scene": {
+              "type": "cards",
+              "titulo": "O QUE ACONTECEU",
+              "itens": [
+                [
+                  "🔍",
+                  "Procurou",
+                  "por alguns segundos"
+                ],
+                [
+                  "✗",
+                  "Não achou",
+                  "o elemento",
+                  "#ff6b6b"
+                ]
+              ]
+            }
+          },
+          {
+            "text": "Na maioria das vezes, o seletor está errado: uma letra trocada, um traço a mais, ou o nome mudou no site.",
+            "scene": {
+              "type": "editor",
+              "arquivo": "login.cy.js",
+              "codigo": "// no site: data-test=\"login-button\"\ncy.get('[data-test=\"login-buton\"]')",
+              "destaque": [
+                2
+              ],
+              "legenda": "Faltou um t",
+              "fonte": 28
+            }
+          },
+          {
+            "text": "Inspeciona o elemento de novo e compara com o que está no código. O erro costuma estar ali.",
+            "scene": {
+              "type": "recorte",
+              "corte": [
+                800,
+                90,
+                960,
+                720
+              ],
+              "cena": {
+                "type": "devtools",
+                "media": "insp_login",
+                "url": "https://www.saucedemo.com/",
+                "inspecionar": "[data-test=\"login-button\"]",
+                "aberto": true,
+                "realce": [
+                  "data-test"
+                ],
+                "realce_em": 2.0,
+                "realce_rotulo": "compare com o código"
+              },
+              "legenda": "Compare com o código"
+            }
+          },
+          {
+            "text": "Curso completo de Cypress pra quem tá começando do zero: link na bio.",
+            "scene": {
+              "type": "bigtext",
+              "stagger": 0.25,
+              "lines": [
+                [
+                  "CURSO COMPLETO",
+                  "gold",
+                  130
+                ],
+                [
+                  "LINK NA BIO",
+                  "white",
+                  150
+                ]
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "title": "Seu projeto de teste vira portfólio",
+        "sentences": [
+          {
+            "text": "Escrever sei Cypress no currículo não adianta. Isso aqui adianta.",
+            "scene": {
+              "type": "bigtext",
+              "stagger": 0.25,
+              "lines": [
+                [
+                  "'SEI CYPRESS'",
+                  "red",
+                  140
+                ],
+                [
+                  "NÃO ADIANTA",
+                  "white",
+                  140
+                ]
+              ]
+            }
+          },
+          {
+            "text": "Coloca o seu projeto de testes no GitHub.",
+            "scene": {
+              "type": "github",
+              "tela": "repo",
+              "legenda": "Seu projeto no GitHub"
+            }
+          },
+          {
+            "text": "Aí, em vez de só escrever que sabe Cypress, você manda o link, e o recrutador vê os testes funcionando: login, carrinho, compra completa.",
+            "scene": {
+              "type": "cards",
+              "titulo": "O RECRUTADOR VÊ",
+              "itens": [
+                [
+                  "✓",
+                  "Login",
+                  "testado"
+                ],
+                [
+                  "✓",
+                  "Carrinho",
+                  "testado",
+                  "#69a7ff"
+                ],
+                [
+                  "✓",
+                  "Compra",
+                  "completa",
+                  "#ffd23f"
+                ]
+              ]
+            }
+          },
+          {
+            "text": "É a diferença entre falar que sabe e provar que sabe.",
+            "scene": {
+              "type": "bigtext",
+              "stagger": 0.25,
+              "lines": [
+                [
+                  "FALAR",
+                  "white",
+                  150
+                ],
+                [
+                  "x",
+                  "gold",
+                  100
+                ],
+                [
+                  "PROVAR",
+                  "gold",
+                  170
+                ]
+              ]
+            }
+          },
+          {
+            "text": "Curso completo de Cypress pra quem tá começando do zero: link na bio.",
+            "scene": {
+              "type": "bigtext",
+              "stagger": 0.25,
+              "lines": [
+                [
+                  "CURSO COMPLETO",
+                  "gold",
+                  130
+                ],
+                [
+                  "LINK NA BIO",
+                  "white",
+                  150
+                ]
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "title": "O teste que todo iniciante esquece",
+        "sentences": [
+          {
+            "text": "Todo iniciante testa se o login funciona. Quase ninguém testa se ele falha direito.",
+            "scene": {
+              "type": "bigtext",
+              "stagger": 0.25,
+              "lines": [
+                [
+                  "O LOGIN",
+                  "white",
+                  150
+                ],
+                [
+                  "FALHA DIREITO?",
+                  "red",
+                  120
+                ]
+              ]
+            }
+          },
+          {
+            "text": "Isso se chama teste negativo: testar o que acontece quando o usuário faz algo errado.",
+            "scene": {
+              "type": "compare",
+              "title": "DOIS TIPOS DE TESTE",
+              "items": [
+                [
+                  "POSITIVO",
+                  "FAZ TUDO CERTO",
+                  "gold"
+                ],
+                [
+                  "NEGATIVO",
+                  "FAZ ALGO ERRADO",
+                  "red"
+                ]
+              ],
+              "size": 120,
+              "stagger": 1.0,
+              "vs": true
+            }
+          },
+          {
+            "text": "Senha errada, campo vazio, usuário bloqueado. O site tem que mostrar a mensagem certa em cada caso.",
+            "scene": {
+              "type": "recorte",
+              "corte": [
+                420,
+                120,
+                1080,
+                760
+              ],
+              "cena": {
+                "type": "tela",
+                "media": "site_sauce_senha",
+                "url": "https://www.saucedemo.com/",
+                "acoes": [
+                  {
+                    "fill": [
+                      "#user-name",
+                      "standard_user"
+                    ]
+                  },
+                  {
+                    "fill": [
+                      "#password",
+                      "senha_errada"
+                    ]
+                  },
+                  {
+                    "click": "#login-button"
+                  }
+                ],
+                "alvo": "do not match",
+                "titulo": "saucedemo.com",
+                "zoom_em": 1.0,
+                "caixa_em": 1.6
+              },
+              "legenda": "Senha errada: mensagem de erro"
+            }
+          },
+          {
+            "text": "Um bom QA sempre pergunta: o que pode dar errado aqui? Cada resposta vira um teste.",
+            "scene": {
+              "type": "bigtext",
+              "stagger": 0.25,
+              "lines": [
+                [
+                  "O QUE PODE",
+                  "white",
+                  150
+                ],
+                [
+                  "DAR ERRADO?",
+                  "gold",
+                  160
+                ]
+              ]
+            }
+          },
+          {
+            "text": "Curso completo de Cypress pra quem tá começando do zero: link na bio.",
+            "scene": {
+              "type": "bigtext",
+              "stagger": 0.25,
+              "lines": [
+                [
+                  "CURSO COMPLETO",
+                  "gold",
+                  130
+                ],
+                [
+                  "LINK NA BIO",
+                  "white",
+                  150
+                ]
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "title": "cypress open ou cypress run",
+        "sentences": [
+          {
+            "text": "npx cypress open ou npx cypress run? Muita gente não sabe a diferença.",
+            "scene": {
+              "type": "compare",
+              "title": "QUAL USAR?",
+              "items": [
+                [
+                  "OPEN",
+                  "COM JANELA",
+                  "gold"
+                ],
+                [
+                  "RUN",
+                  "SEM JANELA",
+                  "white"
+                ]
+              ],
+              "size": 130,
+              "stagger": 1.0,
+              "vs": true
+            }
+          },
+          {
+            "text": "O open abre a janela do Cypress, onde você escolhe o teste e assiste ele rodar. É pra quando você está escrevendo.",
+            "scene": {
+              "type": "terminal",
+              "titulo": "Terminal — VS Code",
+              "pasta": "C:\\meu-projeto",
+              "linhas": [
+                {
+                  "cmd": "npx cypress open"
+                },
+                {
+                  "out": "Opening Cypress...",
+                  "cor": "ac"
+                }
+              ],
+              "legenda": "open: pra escrever e ver"
+            }
+          },
+          {
+            "text": "O run roda todos os testes de uma vez, sem janela, e no fim mostra um resumo.",
+            "scene": {
+              "type": "terminal",
+              "titulo": "Terminal — VS Code",
+              "pasta": "C:\\meu-projeto",
+              "linhas": [
+                {
+                  "cmd": "npx cypress run"
+                },
+                {
+                  "out": "✓ login.cy.js",
+                  "cor": "ac"
+                },
+                {
+                  "out": "✓ compra.cy.js",
+                  "cor": "ac"
+                },
+                {
+                  "out": "All specs passed!",
+                  "cor": "ac"
+                }
+              ],
+              "legenda": "run: roda tudo"
+            }
+          },
+          {
+            "text": "É assim que os testes rodam todo dia nas empresas, sozinhos, a cada mudança no código.",
+            "scene": {
+              "type": "bigtext",
+              "stagger": 0.25,
+              "lines": [
+                [
+                  "TODO DIA",
+                  "gold",
+                  160
+                ],
+                [
+                  "NAS EMPRESAS",
+                  "white",
+                  130
+                ]
+              ]
+            }
+          },
+          {
+            "text": "Curso completo de Cypress pra quem tá começando do zero: link na bio.",
+            "scene": {
+              "type": "bigtext",
+              "stagger": 0.25,
+              "lines": [
+                [
+                  "CURSO COMPLETO",
+                  "gold",
+                  130
+                ],
+                [
+                  "LINK NA BIO",
+                  "white",
+                  150
+                ]
+              ]
+            }
+          }
+        ]
+      }
+    ],
+    "tiktoks": []
+  }
+}

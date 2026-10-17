@@ -84,7 +84,9 @@
     const tabX = x + sideW; ctx.save(); ctx.globalAlpha = a; ctx.fillStyle = C.win; ctx.fillRect(tabX, top, 300 * u, 56 * u); ctx.fillStyle = C.ac; ctx.fillRect(tabX, top, 300 * u, 4 * u); ctx.restore();
     txt(ctx, s.arquivo || "arquivo.js", font(600, 24 * u), tabX + 28 * u, top + 30 * u, C.txt, "left", a);
     const linhas = String(s.codigo || "").split("\n"); const total = linhas.join("").length || 1;
-    const fs = (s.fonte || (linhas.length > 12 ? 30 : 36)) * u; const lh = fs * 1.55; const x0 = tabX + 96 * u; let yy = top + 100 * u;
+    // no vertical, a fonte cresce até caber na largura
+    const maxCh = Math.max(10, ...linhas.map((l) => l.length));
+    const fs = c.vertical ? Math.min(46 * u, (W - sideW - 140 * u) / (maxCh * 0.6)) : (s.fonte || (linhas.length > 12 ? 30 : 36)) * u; const lh = fs * 1.55; const x0 = tabX + 96 * u; let yy = top + 100 * u;
     // rolar: o arquivo inteiro aparece de cima e a tela desce até o fim antes de começar a digitar
     const baseY = y + H - 40 * u, cabem = Math.floor((baseY - yy) / lh) + 1, sobra = s.rolar_ate ? clamp(Math.ceil(s.rolar_ate - cabem + 2) * lh, 0, Math.max(0, linhas.length - cabem) * lh) : Math.max(0, linhas.length - cabem) * lh;
     const rDe = s.rolar_de || 1.6, rDur = s.rolar_dur || 1.5; const rolando = s.rolar && sobra > 0;
@@ -216,6 +218,19 @@
       ctx.save(); ctx.globalAlpha = ka; rr(ctx, x + w - bw - 30 * u, cy - 26 * u, bw, 52 * u, 26 * u); ctx.fillStyle = nova ? "rgba(255,210,63,.18)" : "rgba(63,214,138,.16)"; ctx.fill(); ctx.restore();
       txt(ctx, etq, font(800, 28 * u), x + w - bw / 2 - 30 * u, cy, cor, "center", ka);
     });
+  };
+
+  // RECORTE: cena horizontal (tela, devtools, runner…) dentro do vídeo vertical — desenha a cena num quadro 1920x1080
+  // e mostra só um pedaço dele, ampliado. {type:"recorte", corte:[x,y,w,h], cena:{...}, legenda:"..."}
+  S.recorte = (ctx, c, t, dur, s, media) => {
+    const inner = s.cena || {}; const F = S[inner.type] || S.bigtext;
+    if (!c.vertical) return F(ctx, c, t, dur, inner, media);
+    const oc = S.recorte._cv || (S.recorte._cv = document.createElement("canvas")); oc.width = 1920; oc.height = 1080;
+    const o = oc.getContext("2d"); o.clearRect(0, 0, 1920, 1080);
+    F(o, { W: 1920, H: 1080, vertical: false, u: 1, cx: 960, cy: 486 }, t, dur, Object.assign({}, inner, { legenda: "" }), media);
+    const [x, y, w, h] = s.corte || [160, 30, 1600, 880]; const dw = c.W * (s.largura || 0.96), dh = Math.min(dw * h / w, c.H * 0.62), dw2 = dh * w / h;
+    const a = easeOut(t / 0.3); ctx.save(); ctx.globalAlpha = a; ctx.drawImage(oc, x, y, w, h, (c.W - dw2) / 2, c.H * 0.42 - dh / 2, dw2, dh); ctx.restore();
+    legenda(ctx, c, t, { legenda: s.legenda !== undefined ? s.legenda : inner.legenda, legenda_em: s.legenda_em });
   };
 
   // TELA: gravação de tela (clipe em midia/) emoldurada, com zoom e caixa de destaque
