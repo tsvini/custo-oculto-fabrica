@@ -318,7 +318,7 @@ def main():
                         tags = " ".join("#" + re.sub(r"\W", "", t.title()) for t in (p.get("meta") or {}).get("tags", [])[:3])
                         tot = len(p["serie"])
                         yt = {"tipo": "serie", "caso": slug, "video": nome + ".mp4", "miniatura": f"capa_serie{idx + 1}.jpg" if cena0 else None,
-                              "titulo": (C["serie_titulo"].format(titulo=p.get('title', slug), n=idx + 1, tot=tot) + " #shorts")[:100], "idioma": idioma,
+                              "titulo": ((f"{ep['titulo']} ({'part' if idioma == 'en' else 'parte'} {idx + 1})" if ep.get("titulo") else C["serie_titulo"].format(titulo=p.get('title', slug), n=idx + 1, tot=tot)) + " #shorts")[:100], "idioma": idioma,
                               "descricao": (ep.get("caption") or "") + "\n\n" + C["serie_desc"].format(tot=tot) + f"\n\n#shorts {tags}",
                               "tags": (p.get("meta") or {}).get("tags", [])}
                         with open(os.path.join(saida if (gravada or nar.modo != "teste") else trab, f"youtube_{nome}.json"), "w", encoding="utf8") as f:

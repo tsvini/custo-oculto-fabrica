@@ -473,6 +473,40 @@ def liberar(nomes):
         nota("Publicado agora", " | ".join(feitos))
 
 
+def ajustar(arq="ajustes.json"):
+    """Troca título e/ou data de vídeos já agendados (ajustes.json: {nome: {"titulo"?, "publishAt"?}}) e atualiza o registro."""
+    aj = json.load(open(os.path.join(RAIZ, arq), encoding="utf8")); reg = registro(); por = {r["nome"]: r for r in reg}; feitos = []
+    for nome, a in aj.items():
+        r = por.get(nome)
+        if not r or not r.get("video_id"):
+            nota("Ajuste ignorado", f"{nome}: não está no registro", "warning"); continue
+        H = {"Authorization": f"Bearer {token(idioma_de(r))}"}; Y = "https://www.googleapis.com/youtube/v3"
+        v = checar(requests.get(f"{Y}/videos?part=snippet,status&id={r['video_id']}", headers=H, timeout=30), "ler vídeo").json().get("items") or []
+        if not v:
+            nota("Ajuste ignorado", f"{nome}: vídeo não encontrado", "warning"); continue
+        v = v[0]; parts = []; corpo = {"id": r["video_id"]}
+        if a.get("titulo"):
+            sn = {k: v["snippet"][k] for k in ("title", "description", "tags", "categoryId", "defaultLanguage", "defaultAudioLanguage") if k in v["snippet"]}
+            sn["title"] = a["titulo"][:100]; corpo["snippet"] = sn; parts.append("snippet")
+        if a.get("publishAt"):
+            if v["status"]["privacyStatus"] != "private":
+                nota("Data não trocada", f"{nome}: já está público", "warning")
+            else:
+                st = {k: v["status"][k] for k in ("privacyStatus", "license", "embeddable", "publicStatsViewable", "selfDeclaredMadeForKids", "containsSyntheticMedia") if k in v["status"]}
+                st["publishAt"] = dt.datetime.fromisoformat(a["publishAt"]).astimezone(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%S.000Z")
+                corpo["status"] = st; parts.append("status")
+        if not parts:
+            continue
+        checar(requests.put(f"{Y}/videos?part={','.join(parts)}", headers=H, timeout=30, json=corpo), f"ajustar {nome}")
+        if "snippet" in parts:
+            r["titulo"] = a["titulo"][:100]
+        if "status" in parts:
+            r["publishAt"] = a["publishAt"]
+        feitos.append(f"{nome}: " + " / ".join(x for x in (a.get("titulo"), a.get("publishAt", "")[:16]) if x))
+    json.dump(reg, open(REG, "w", encoding="utf8"), ensure_ascii=False, indent=1)
+    nota("Ajustes aplicados", " | ".join(feitos) or "nada")
+
+
 if __name__ == "__main__":
     cmd = sys.argv[1] if len(sys.argv) > 1 else "enviar"
     if cmd == "miniaturas":
@@ -484,6 +518,8 @@ if __name__ == "__main__":
     elif cmd == "ia":
         arg = sys.argv[2] if len(sys.argv) > 2 else ""
         ia({"exceto": set(arg[len("todos-exceto:"):].split(","))} if arg.startswith("todos-exceto:") else (set(arg.split(",")) if arg else None))
+    elif cmd == "ajustar":
+        ajustar(sys.argv[2] if len(sys.argv) > 2 else "ajustes.json")
     elif cmd == "reconstruir":
         reconstruir()
     elif cmd == "playlists":
