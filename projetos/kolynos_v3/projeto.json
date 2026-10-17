@@ -1,0 +1,451 @@
+{
+ "title": "Kolynos (piloto v3)",
+ "slug": "kolynos_v3",
+ "angle": "A decisão tirou o nome Kolynos do mercado, mas não tirou os clientes da Colgate.",
+ "voz": {
+  "nome": "gravada",
+  "motor": "eleven",
+  "eleven_voz": "Vinícius Torales"
+ },
+ "script": {
+  "long": {
+   "parts": []
+  },
+  "shorts": [
+   {
+    "title": "A Colgate pagou US$ 1 bilhão pra sumir com a Kolynos",
+    "sentences": [
+     {
+      "text": "A Colgate pagou um bilhão de dólares por uma marca. E depois sumiu com ela.",
+      "scene": {
+       "type": "capa",
+       "foto": "kolynos",
+       "wiki": [
+        "Kolynos",
+        "Kolynos toothpaste",
+        "Kolynos creme dental"
+       ],
+       "seta": false,
+       "recorte": "Kolynos · anos 90",
+       "faixa": "A Colgate pagou US$ 1 bi",
+       "linhas": [
+        [
+         "pra",
+         "white",
+         200
+        ],
+        [
+         "SUMIR",
+         "gold",
+         260
+        ],
+        [
+         "com ela",
+         "white",
+         200
+        ]
+       ],
+       "selo": "Kolynos · anos 90",
+       "sfx": "impacto",
+       "depois": {
+        "type": "montagem",
+        "auto": true,
+        "clips": [
+         {
+          "type": "image",
+          "media": "ia_maleta",
+          "z0": 1.0,
+          "z1": 1.12,
+          "dim": 0.2,
+          "tremor": true
+         },
+         {
+          "type": "image",
+          "media": "ia_lixo",
+          "z0": 1.0,
+          "z1": 1.12,
+          "dim": 0.2,
+          "sfx": "whoosh"
+         }
+        ],
+        "fallback": {
+         "type": "bigtext",
+         "lines": []
+        }
+       }
+      }
+     },
+     {
+      "text": "Era a Kolynos, que nos anos noventa vendia o dobro da Colgate no Brasil.",
+      "scene": {
+       "type": "montagem",
+       "auto": true,
+       "clips": [
+        {
+         "type": "image",
+         "media": "ia_gondola",
+         "z0": 1.0,
+         "z1": 1.12,
+         "dim": 0.5
+        },
+        {
+         "type": "image",
+         "media": "ia_compras",
+         "z0": 1.0,
+         "z1": 1.12,
+         "dim": 0.5,
+         "sfx": "whoosh"
+        }
+       ],
+       "fallback": {
+        "type": "bigtext",
+        "lines": []
+       },
+       "sobre": {
+        "type": "counter",
+        "value": 52,
+        "suffix": "%",
+        "over": "ANOS 90 · KOLYNOS",
+        "label": "DO MERCADO (COLGATE: 26%)",
+        "color": [
+         70,
+         190,
+         110
+        ],
+        "size": 280
+       },
+       "sfx": "whoosh"
+      }
+     },
+     {
+      "text": "Em noventa e cinco, a Colgate comprou a rival inteira.",
+      "scene": {
+       "type": "montagem",
+       "auto": true,
+       "clips": [
+        {
+         "type": "image",
+         "media": "ia_assinatura",
+         "z0": 1.0,
+         "z1": 1.12,
+         "dim": 0.5,
+         "tremor": true
+        },
+        {
+         "type": "image",
+         "media": "ia_negocio",
+         "z0": 1.0,
+         "z1": 1.12,
+         "dim": 0.5
+        }
+       ],
+       "fallback": {
+        "type": "bigtext",
+        "lines": []
+       },
+       "sobre": {
+        "type": "counter",
+        "value": 1,
+        "prefix": "US$ ",
+        "suffix": ",04 BI",
+        "over": "1995 · COLGATE COMPRA",
+        "label": "PREÇO DA KOLYNOS",
+        "color": [
+         245,
+         170,
+         40
+        ],
+        "size": 230
+       },
+       "sfx": "caixa"
+      }
+     },
+     {
+      "text": "Mas o CADE só aprovou com três saídas: vender a marca, alugar por vinte anos, ou tirar a Kolynos do mercado por quatro anos.",
+      "scene": {
+       "type": "montagem",
+       "auto": true,
+       "clips": [
+        {
+         "type": "image",
+         "media": "ia_cade",
+         "z0": 1.0,
+         "z1": 1.12,
+         "dim": 0.62
+        },
+        {
+         "type": "image",
+         "media": "ia_documentos",
+         "z0": 1.0,
+         "z1": 1.12,
+         "dim": 0.62
+        }
+       ],
+       "fallback": {
+        "type": "bigtext",
+        "lines": []
+       },
+       "sobre": {
+        "type": "bullets",
+        "title": "O CADE DEU 3 SAÍDAS",
+        "items": [
+         "VENDER A MARCA",
+         "ALUGAR POR 20 ANOS",
+         "SUMIR POR 4 ANOS"
+        ],
+        "size": 76,
+        "last_gold": true,
+        "stagger": 1.2
+       },
+       "sfx": "whoosh"
+      }
+     },
+     {
+      "text": "A Colgate escolheu apagar.",
+      "scene": {
+       "type": "stamp",
+       "org": "COLGATE · 1997",
+       "title": "KOLYNOS NO BRASIL",
+       "stamp": "SUSPENSA",
+       "stamp_at": 0.5,
+       "fundo": "ia_retirada",
+       "fundo_dim": 0.4,
+       "sfx": "carimbo",
+       "sfx_em": 0.5
+      }
+     },
+     {
+      "text": "Lançou a Sorriso no lugar e investiu quarenta milhões de dólares pra ela pegar.",
+      "scene": {
+       "type": "montagem",
+       "auto": true,
+       "clips": [
+        {
+         "type": "image",
+         "media": "ia_fabrica",
+         "z0": 1.0,
+         "z1": 1.12,
+         "dim": 0.5
+        },
+        {
+         "type": "image",
+         "media": "ia_tv",
+         "z0": 1.0,
+         "z1": 1.12,
+         "dim": 0.5,
+         "sfx": "whoosh"
+        }
+       ],
+       "fallback": {
+        "type": "bigtext",
+        "lines": []
+       },
+       "sobre": {
+        "type": "counter",
+        "value": 40,
+        "prefix": "US$ ",
+        "suffix": " MI",
+        "over": "1997 · NASCE A SORRISO",
+        "label": "PRA MARCA NOVA PEGAR",
+        "color": [
+         70,
+         140,
+         235
+        ],
+        "size": 250
+       },
+       "sfx": "whoosh"
+      }
+     },
+     {
+      "text": "Deu certo. A Kolynos nunca mais foi fabricada no Brasil.",
+      "scene": {
+       "type": "montagem",
+       "auto": true,
+       "clips": [
+        {
+         "type": "image",
+         "media": "ia_vazia",
+         "z0": 1.0,
+         "z1": 1.12,
+         "dim": 0.3,
+         "tremor": true
+        },
+        {
+         "type": "image",
+         "media": "ia_fabrica_vazia",
+         "z0": 1.0,
+         "z1": 1.12,
+         "dim": 0.3
+        }
+       ],
+       "fallback": {
+        "type": "bigtext",
+        "lines": []
+       },
+       "sfx": "impacto"
+      }
+     },
+     {
+      "text": "Até que, em dois mil e vinte e cinco, a própria Colgate lançou uma Sorriso com a fórmula e a cara da Kolynos.",
+      "scene": {
+       "type": "montagem",
+       "auto": true,
+       "clips": [
+        {
+         "type": "image",
+         "media": "ia_tubo",
+         "z0": 1.0,
+         "z1": 1.12,
+         "dim": 0.3
+        },
+        {
+         "type": "image",
+         "media": "ia_celular",
+         "z0": 1.0,
+         "z1": 1.12,
+         "dim": 0.3,
+         "sfx": "whoosh"
+        },
+        {
+         "type": "image",
+         "media": "kolynos",
+         "z0": 1.0,
+         "z1": 1.12,
+         "dim": 0.3,
+         "tremor": true,
+         "sfx": "impacto"
+        }
+       ],
+       "fallback": {
+        "type": "bigtext",
+        "lines": []
+       },
+       "sfx": "subida"
+      }
+     },
+     {
+      "text": "Pra mim, foi o bilhão mais bem gasto da Colgate. Você lembra do gosto dela?",
+      "scene": {
+       "type": "montagem",
+       "auto": true,
+       "clips": [
+        {
+         "type": "image",
+         "media": "ia_familia",
+         "z0": 1.0,
+         "z1": 1.12,
+         "dim": 0.45
+        }
+       ],
+       "fallback": {
+        "type": "bigtext",
+        "lines": []
+       },
+       "sobre": {
+        "type": "bigtext",
+        "lines": [
+         [
+          "VOCÊ LEMBRA",
+          "white",
+          120
+         ],
+         [
+          "DO GOSTO?",
+          "white",
+          150
+         ]
+        ]
+       }
+      }
+     }
+    ]
+   }
+  ],
+  "tiktoks": []
+ },
+ "meta": {
+  "titles": [
+   "KOLYNOS: Por Que a Pasta Mais Vendida do Brasil Sumiu?",
+   "A Colgate Pagou US$ 1 Bilhão Pela Kolynos e Guardou na Gaveta"
+  ],
+  "description": "A Kolynos tinha 52% do mercado de creme dental no Brasil. Em 1995, a Colgate comprou a marca por US$ 1,04 bilhão. O CADE deu três opções para aprovar o negócio, e a Colgate escolheu tirar a Kolynos das prateleiras. No lugar, nasceu a Sorriso. O nome sumiu. Os clientes ficaram.\n\n[CAPÍTULOS]\n\nFontes: comunicados da Colgate-Palmolive (1995 e 1997), Exame, InfoMoney, ConJur, Origem das Marcas.\n\n#Kolynos #Colgate #Sorriso #CADE #CustoOculto",
+  "tags": [
+   "kolynos",
+   "o que aconteceu com a kolynos",
+   "colgate",
+   "sorriso",
+   "cade",
+   "marcas que sumiram",
+   "custo oculto"
+  ]
+ },
+ "thumbs": [
+  {
+   "glow": "green",
+   "lines": [
+    {
+     "text": "KOLYNOS",
+     "color": "green",
+     "size": 120
+    },
+    {
+     "text": "POR QUE",
+     "color": "white",
+     "size": 150
+    },
+    {
+     "text": "SUMIU?",
+     "color": "gold",
+     "size": 190
+    }
+   ]
+  },
+  {
+   "glow": "gold",
+   "lines": [
+    {
+     "text": "US$ 1 BILHÃO",
+     "color": "gold",
+     "size": 150
+    },
+    {
+     "text": "E GUARDOU",
+     "color": "white",
+     "size": 120
+    },
+    {
+     "text": "NA GAVETA",
+     "color": "red",
+     "size": 130
+    },
+    {
+     "text": "KOLYNOS",
+     "color": "green",
+     "size": 70,
+     "pill": true
+    }
+   ]
+  }
+ ],
+ "notes": "FATOS CHECADOS (com fonte)\n- Kolynos criada nos EUA em 1908 pelo dentista Neal Jenkins; chega ao Brasil em 1917 como importada; depois ganha fábrica em SP. (Exame, 16/03/2025)\n- Anos 80-90: Kolynos 52,5% do creme dental no Brasil; Colgate 25,6%. (ConJur 14/12/2017, citando o caso no CADE; Exame cita 52% x 27%)\n- 09/01/1995: Colgate-Palmolive anuncia compra da Kolynos da American Home Products por US$ 1,04 bilhão em dinheiro; Kolynos nº 1 no Brasil, Argentina, Peru e Paraguai. (comunicado Colgate)\n- Set/1996: CADE aprova com 3 alternativas: suspender a marca por 4 anos; licenciar por 20 anos a entrante com menos de 20%; ou vender a marca. (ConJur; comunicado Colgate 19/03/1997)\n- Colgate escolhe suspender a Kolynos (creme dental) no Brasil por 4 anos; 6 meses de transição; oferecer ~1/5 da capacidade a terceiros; escovas e fio dental liberados. (comunicado Colgate 19/03/1997)\n- 1997: lançamento da Sorriso; investimento de US$ 40 mi (metade TV); produção inicial 45 mi de tubos/mês. (InfoMoney 17/05/2025)\n- 2000: Sorriso com 36,7% do faturamento do mercado. (Origem das Marcas, citando Exame)\n- Após os 4 anos, a Colgate não trouxe a Kolynos de volta; marca nunca mais fabricada no Brasil. (InfoMoney)\n- Kolynos segue vendida em outros países; tubos da Argentina, Paraguai e Uruguai vendidos online mais caros. (Exame)\n- 02/09/2025: edição limitada da Sorriso com fórmula e visual da Kolynos, sem reposição, nos 28 anos da Sorriso. (Exame, 08/09/2025)\nFONTES: investor.colgatepalmolive.com (1995 e 1997); exame.com; infomoney.com.br; conjur.com.br; origemdasmarcas.blogspot.com\nPILOTO 17/10/2026: mesmo áudio do short1 da Kolynos, cenas geradas por IA (Cloudflare FLUX.2 Klein) no lugar de cartela vazia e banco de vídeo genérico.\nV3 17/10/2026: roteiro novo (gancho com o bilhão, virada de 2025, opinião e pergunta), trilha e efeitos sintetizados, cortes automáticos sem repetir imagem.",
+ "ia": {
+  "ia_maleta": "extreme close-up of an open leather briefcase packed with stacks of US dollar bills on a dark wooden boardroom table, dramatic spotlight, 1995, vertical composition",
+  "ia_lixo": "a green and white toothpaste tube falling into a dark metal trash bin, dramatic side light, black background, vertical composition",
+  "ia_gondola": "busy 1990s Brazilian supermarket aisle, shelves fully stocked with green and white toothpaste boxes, shoppers with metal carts, warm nostalgic tones, vertical composition",
+  "ia_compras": "1990s Brazilian woman at a supermarket shelf putting several green and white toothpaste boxes into a shopping cart, warm nostalgic tones, vertical composition",
+  "ia_assinatura": "close-up of a hand signing a thick acquisition contract with a fountain pen on a wooden desk, 1995, warm dramatic light, vertical composition",
+  "ia_negocio": "1995 corporate boardroom, two executives in suits shaking hands over a signed contract on a large wooden table, open briefcase full of US dollar bills, dramatic warm light, faces out of focus, vertical composition",
+  "ia_cade": "1990s government office in Brasilia, a serious official in suit reading thick documents at a desk with folders, rubber stamps and a desk lamp, dim office, vertical composition",
+  "ia_documentos": "close-up of an official 1990s typewritten government document with a heavy rubber stamp being pressed on it, desk lamp light, vertical composition",
+  "ia_retirada": "1990s supermarket employee in uniform removing green and white toothpaste boxes from a shelf into a cardboard box, melancholic mood, vertical composition",
+  "ia_fabrica": "1997 toothpaste factory production line, hundreds of new blue and white toothpaste tubes moving on a conveyor belt, workers in white uniforms, bright industrial light, vertical composition",
+  "ia_tv": "1990s Brazilian living room at night, family on a sofa watching a bulky CRT television glowing, nostalgic warm light, vertical composition",
+  "ia_vazia": "1990s Brazilian supermarket toothpaste aisle, one shelf section completely empty with a bare gap among stocked products, a lonely price tag, dramatic moody low light, vertical composition",
+  "ia_fabrica_vazia": "abandoned empty factory floor with idle rusty machines and dust in the light beams, melancholic, vertical composition",
+  "ia_tubo": "a single green and white toothpaste tube standing on a modern bathroom sink under a soft spotlight, everything else dark, nostalgic, vertical composition",
+  "ia_celular": "close-up of a hand holding a smartphone reading a news article in a cozy room at night, screen glow on the face out of focus, vertical composition",
+  "ia_familia": "nostalgic 1990s Brazilian family bathroom, father and young son brushing teeth together at the sink, smiling, toothpaste foam, warm soft morning light, vertical composition"
+ },
+ "trilha": "tensao"
+}

@@ -270,6 +270,12 @@ def main():
                 r = pg.evaluate("cfg => gerar(cfg)", cfg)
                 bruto = os.path.join(trab, cfg["saida"]); final = os.path.join(saida, nome + ".mp4")
                 ffmpeg_final(bruto, final, r["codec"]); os.remove(bruto)
+                if r.get("sons") or r.get("trilha"):  # desenho de som: trilha com ducking + efeitos
+                    from . import som
+                    try:
+                        som.mixar(final, r.get("sons"), r.get("trilha")); log(f"  som: trilha {r.get('trilha') or '-'}, {len(r.get('sons') or [])} efeitos")
+                    except Exception as e:
+                        log(f"  som: falhou ({str(e)[:160]})")
                 with open(os.path.join(saida, nome + ".srt"), "w", encoding="utf8") as f:
                     f.write(r["srt"])
                 mb = os.path.getsize(final) / 1048576

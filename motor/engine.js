@@ -409,10 +409,17 @@
   };
   // ---------- MONTAGEM: vários clipes/fotos trocando a cada "cada" segundos ----------
   // {type:"montagem", cada:1.2, clips:[{type:"video", media:"k", search:"..."}, {type:"image", media:"k2", wiki:[...]}, ...]}
-  function montagemAt(s, t) { const cada = s.cada || 1.2; const n = (s.clips || []).length || 1; const i = Math.floor(Math.max(0, t) / cada) % n; return [s.clips[i], t - Math.floor(Math.max(0, t) / cada) * cada, cada]; }
+  // auto: divide a frase inteira entre os clipes (cada imagem aparece uma vez só, sem repetir)
+  function montagemAt(s, t, dur) { const n = (s.clips || []).length || 1; const cada = s.auto && dur ? Math.max(0.6, dur / n) : (s.cada || 1.2);
+    const i = s.auto ? Math.min(n - 1, Math.floor(Math.max(0, t) / cada)) : Math.floor(Math.max(0, t) / cada) % n; return [s.clips[i], t - Math.floor(Math.max(0, t) / cada) * cada, cada]; }
   S.montagem = (ctx, c, t, dur, s, media) => {
     if (!s.clips || !s.clips.length) return S.bigtext(ctx, c, t, dur, s.fallback || {}, media);
-    const [cl, lt, cada] = montagemAt(s, t); (S[cl.type] || S.bigtext)(ctx, c, lt, cada, Object.assign({ dim: 0.3 }, cl, { lower: null }), media);
+    const [cl, lt, cada] = montagemAt(s, t, dur);
+    ctx.save();
+    if (cl.tremor && lt < 0.32) { const a = (1 - lt / 0.32) * 18 * c.u; ctx.translate((Math.random() - 0.5) * a, (Math.random() - 0.5) * a); }
+    (S[cl.type] || S.bigtext)(ctx, c, lt, cada, Object.assign({ dim: 0.3 }, cl, { lower: null }), media);
+    ctx.restore();
+    if (s.sobre) (S[s.sobre.type] || S.bigtext)(ctx, c, t, dur, s.sobre, media); // número/frase por cima das imagens
   };
   S.capa = (ctx, c, t, dur, s, media) => {
     const u = c.u; const V = c.vertical; const m = media && media[s.foto]; const img = m && m.img;
@@ -647,7 +654,7 @@
     }
     async syncMedia(tl, t, media) { // posiciona clipes de vídeo no tempo certo (render offline)
       let { scene, lt } = this.activeScene(tl, t);
-      if (scene.type === "montagem" && scene.clips && scene.clips.length) { const r = montagemAt(scene, lt); scene = r[0]; lt = r[1]; }
+      if (scene.type === "montagem" && scene.clips && scene.clips.length) { const r = montagemAt(scene, lt, this.activeScene(tl, t).dur); scene = r[0]; lt = r[1]; }
       if (scene.type === "video" && media && media[scene.media] && media[scene.media].video) {
         const v = media[scene.media].video; const d = v.duration || 1; const target = ((scene.start || 0) + lt) % Math.max(0.1, d - 0.05);
         if (Math.abs(v.currentTime - target) > 0.01) await new Promise((res) => { const done = () => { v.removeEventListener("seeked", done); res(); }; v.addEventListener("seeked", done); v.currentTime = target; setTimeout(done, 400); });

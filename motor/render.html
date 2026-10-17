@@ -39,7 +39,7 @@ async function carregaMidia(man, base) {
 async function montar(cfg) {
   await fontes();
   const p = await (await fetch(cfg.projeto)).json();
-  window.CO_IDIOMA = p.idioma || "pt"; window.CO_MARCA = p.marca || null; window.CO_FUNDO = p.cor_fundo || null; window.CO_LEGENDA_Y = p.legenda_y || null; window.CO_SELO = p.selo || null;
+  window.CO_IDIOMA = p.idioma || "pt"; window.CO_MARCA = p.marca || null; window.CO_FUNDO = p.cor_fundo || null; window.CO_LEGENDA_Y = p.legenda_y || null; window.CO_SELO = p.selo || null; window.CO_TRILHA = p.trilha || null;
   const longo = cfg.formato === "longo";
   const serie = cfg.formato === "serie";
   const tiktok = cfg.formato === "tiktok" || serie;
@@ -72,7 +72,11 @@ window.gerar = async (cfg) => {
   const res = await E.exportMp4(tl, !longo, media, (f) => { const pc = Math.floor(f * 20); if (pc !== last) { last = pc; console.log("progresso " + Math.round(f * 100) + "%"); } });
   const r = await fetch("/upload?name=" + encodeURIComponent(cfg.saida), { method: "POST", body: res.blob });
   if (!r.ok) throw new Error("upload falhou " + r.status);
-  return { total: tl.total, ext: res.ext, codec: res.codec, bytes: res.blob.size, srt: E.toSrt(tl), capitulos: longo ? E.chapterMarks(tl) : "", segundos: (performance.now() - t0) / 1000, previas: prev };
+  const sons = []; // efeitos sonoros marcados nas cenas ("sfx"), inclusive em cada corte da montagem
+  tl.segs.forEach((sg) => { const sc = sg.scene; if (!sc || sg.extra && !sc.sfx) return; const ini = sg.start, d = Math.max(0.1, sg.end - sg.start);
+    if (sc.sfx) sons.push([ini + (sc.sfx_em || 0), sc.sfx]);
+    if (sc.type === "montagem" && sc.auto && sc.clips) { const cada = Math.max(0.6, d / sc.clips.length); sc.clips.forEach((cl, i) => { if (cl.sfx && i > 0) sons.push([ini + i * cada, cl.sfx]); }); } });
+  return { sons, trilha: (window.CO_TRILHA || null), total: tl.total, ext: res.ext, codec: res.codec, bytes: res.blob.size, srt: E.toSrt(tl), capitulos: longo ? E.chapterMarks(tl) : "", segundos: (performance.now() - t0) / 1000, previas: prev };
 };
 window.capa = async (cfg) => {
   await fontes(); const media = await carregaMidia(cfg.midia, cfg.midiaBase); const c = document.createElement("canvas");
