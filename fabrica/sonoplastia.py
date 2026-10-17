@@ -101,9 +101,11 @@ def _gemini(partes, json_saida=True):
         for tent in range(4):
             try:
                 r = requests.post(f"{GEM}/{m}:generateContent?key={key}", json=corpo, timeout=300)
+                if r.status_code in (429, 404, 400, 403):
+                    print(f"::warning title=Gemini {m} {r.status_code}::{r.text[:400]}", flush=True)
                 if r.status_code == 429:
                     time.sleep(10 * (tent + 1)); continue
-                if r.status_code == 404:
+                if r.status_code in (404, 400, 403):
                     break
                 r.raise_for_status()
                 partes_r = r.json()["candidates"][0]["content"]["parts"]
