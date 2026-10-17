@@ -1,132 +1,8 @@
 {
- "nota_final": 9,
+ "nota_final": null,
  "rodadas": [
   {
    "rodada": 1,
-   "nota": 9,
-   "avaliacao": {
-    "nota": 9,
-    "resumo": "Excelente trabalho de sonoplastia. Os efeitos sonoros e ambientes foram perfeitamente escolhidos para acompanhar a narrativa histórica (barulho de lixeira ao sumir com a marca, ambiente de supermercado nos anos 90, assinatura de contrato, carimbo de suspensão do CADE, fábrica e escovação de dentes). O equilíbrio com a locução está impecável.",
-    "problemas": [
-     {
-      "evento": 6,
-      "problema": "O som do carimbo entra cerca de meio segundo após o carimbo vermelho 'SUSPENSA' aparecer na tela.",
-      "acao": "adiantar",
-      "segundos": 0.5
-     }
-    ],
-    "faltando": [
-     {
-      "t": 0.8,
-      "busca": "leather briefcase opening sound effect",
-      "tipo": "fx"
-     }
-    ]
-   },
-   "eventos": [
-    {
-     "t0": 1.51,
-     "t1": 4.51,
-     "tipo": "fx",
-     "busca": "cinematic boom hit",
-     "vol": 0.7,
-     "cena": "capa | fala: A Colgate pagou um bilhão de dólares por uma marca. E depois sumiu com ela.",
-     "fonte": "freesound #648732 Cinematic Woosh SFX-011.wav"
-    },
-    {
-     "t0": 4.43,
-     "t1": 7.43,
-     "tipo": "fx",
-     "busca": "fast whoosh",
-     "vol": 0.4,
-     "cena": "ia_lixo | fala: A Colgate pagou um bilhão de dólares por uma marca. E depois sumiu com ela.",
-     "fonte": "freesound #812689 Sound Design Elements Whoosh SFX 052"
-    },
-    {
-     "t0": 4.68,
-     "t1": 7.68,
-     "tipo": "fx",
-     "busca": "object dropped in metal trash can",
-     "cena": "ia_lixo | fala: A Colgate pagou um bilhão de dólares por uma marca. E depois sumiu com ela.",
-     "vol": 0.5,
-     "fonte": "freesound #154437 Trash Taken Out_1-2.aif"
-    },
-    {
-     "t0": 5.73,
-     "t1": 10.44,
-     "tipo": "amb",
-     "busca": "supermarket ambience crowd",
-     "vol": 0.22,
-     "cena": "montagem | fala: Era a Kolynos, que nos anos noventa vendia o dobro da Colgate no Brasil.",
-     "fonte": "freesound #328732 Supermarket_Ambience.wav"
-    },
-    {
-     "t0": 10.44,
-     "t1": 13.44,
-     "tipo": "fx",
-     "busca": "pen signing paper",
-     "vol": 0.45,
-     "cena": "ia_assinatura | fala: Em noventa e cinco, a Colgate comprou a rival inteira.",
-     "fonte": "freesound #326961 PEN SIGNATURE SIGNING 2.wav"
-    },
-    {
-     "t0": 11.99,
-     "t1": 14.99,
-     "tipo": "fx",
-     "busca": "cash register ka-ching",
-     "vol": 0.6,
-     "cena": "ia_negocio | fala: Em noventa e cinco, a Colgate comprou a rival inteira.",
-     "fonte": "freesound #351304 Cha Ching.wav"
-    },
-    {
-     "t0": 23.33,
-     "t1": 26.33,
-     "tipo": "fx",
-     "busca": "rubber stamp hit",
-     "vol": 0.75,
-     "cena": "stamp | fala: A Colgate escolheu apagar.",
-     "fonte": "freesound #683031 Thump.mp3"
-    },
-    {
-     "t0": 24.14,
-     "t1": 25.89,
-     "tipo": "amb",
-     "busca": "factory conveyor belt machinery",
-     "vol": 0.25,
-     "cena": "ia_fabrica | fala: Lançou a Sorriso no lugar e investiu quarenta milhões de dólares pra ela pegar.",
-     "fonte": "freesound #519027 Industrial Conveyor Belt"
-    },
-    {
-     "t0": 30.63,
-     "t1": 33.629999999999995,
-     "tipo": "fx",
-     "busca": "deep cinematic boom",
-     "vol": 0.65,
-     "cena": "montagem | fala: Deu certo. A Kolynos nunca mais foi fabricada no Brasil.",
-     "fonte": "freesound #648614 Cinematic Woosh SFX-009.wav"
-    },
-    {
-     "t0": 39.02,
-     "t1": 42.02,
-     "tipo": "fx",
-     "busca": "dramatic reveal hit",
-     "vol": 0.7,
-     "cena": "kolynos | fala: Até que, em dois mil e vinte e cinco, a própria Colgate lançou uma Sorriso com a fórmula e a cara da Kolynos.",
-     "fonte": "freesound #578382 Shock Stab 12"
-    },
-    {
-     "t0": 42.83,
-     "t1": 45.52,
-     "tipo": "amb",
-     "busca": "brushing teeth",
-     "vol": 0.25,
-     "cena": "ia_familia | fala: Pra mim, foi o bilhão mais bem gasto da Colgate. Você lembra do gosto dela?",
-     "fonte": "freesound #501233 Brushing Teeth (2).wav"
-    }
-   ]
-  },
-  {
-   "rodada": 2,
    "nota": null,
    "avaliacao": null,
    "eventos": [
@@ -158,24 +34,6 @@
      "fonte": "freesound #154437 Trash Taken Out_1-2.aif"
     },
     {
-     "t0": 5.73,
-     "t1": 10.44,
-     "tipo": "amb",
-     "busca": "supermarket ambience crowd",
-     "vol": 0.22,
-     "cena": "montagem | fala: Era a Kolynos, que nos anos noventa vendia o dobro da Colgate no Brasil.",
-     "fonte": "freesound #328732 Supermarket_Ambience.wav"
-    },
-    {
-     "t0": 10.44,
-     "t1": 13.44,
-     "tipo": "fx",
-     "busca": "pen signing paper",
-     "vol": 0.45,
-     "cena": "ia_assinatura | fala: Em noventa e cinco, a Colgate comprou a rival inteira.",
-     "fonte": "freesound #326961 PEN SIGNATURE SIGNING 2.wav"
-    },
-    {
      "t0": 11.99,
      "t1": 14.99,
      "tipo": "fx",
@@ -185,22 +43,13 @@
      "fonte": "freesound #351304 Cha Ching.wav"
     },
     {
-     "t0": 22.83,
-     "t1": 25.83,
+     "t0": 23.33,
+     "t1": 26.33,
      "tipo": "fx",
      "busca": "rubber stamp hit",
      "vol": 0.75,
      "cena": "stamp | fala: A Colgate escolheu apagar.",
      "fonte": "freesound #683031 Thump.mp3"
-    },
-    {
-     "t0": 24.14,
-     "t1": 25.89,
-     "tipo": "amb",
-     "busca": "factory conveyor belt machinery",
-     "vol": 0.25,
-     "cena": "ia_fabrica | fala: Lançou a Sorriso no lugar e investiu quarenta milhões de dólares pra ela pegar.",
-     "fonte": "freesound #519027 Industrial Conveyor Belt"
     },
     {
      "t0": 30.63,
@@ -219,24 +68,6 @@
      "vol": 0.7,
      "cena": "kolynos | fala: Até que, em dois mil e vinte e cinco, a própria Colgate lançou uma Sorriso com a fórmula e a cara da Kolynos.",
      "fonte": "freesound #578382 Shock Stab 12"
-    },
-    {
-     "t0": 42.83,
-     "t1": 45.52,
-     "tipo": "amb",
-     "busca": "brushing teeth",
-     "vol": 0.25,
-     "cena": "ia_familia | fala: Pra mim, foi o bilhão mais bem gasto da Colgate. Você lembra do gosto dela?",
-     "fonte": "freesound #501233 Brushing Teeth (2).wav"
-    },
-    {
-     "t0": 0.8,
-     "t1": 3.8,
-     "tipo": "fx",
-     "busca": "leather briefcase opening sound effect",
-     "cena": "sugerido pelo avaliador",
-     "vol": 0.45,
-     "fonte": "freesound #546078 button-pressed.wav"
     }
    ]
   }
