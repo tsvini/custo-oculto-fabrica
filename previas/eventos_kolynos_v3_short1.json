@@ -1,0 +1,230 @@
+{
+ "eventos": [
+  {
+   "t0": 1.51,
+   "t1": 4.51,
+   "tipo": "fx",
+   "busca": "cinematic boom hit",
+   "vol": 0.7,
+   "cena": "capa | fala: A Colgate pagou um bilhão de dólares por uma marca. E depois sumiu com ela."
+  },
+  {
+   "t0": 1.4,
+   "t1": 4.4,
+   "tipo": "fx",
+   "busca": "briefcase latch open",
+   "vol": null,
+   "cena": "ia_maleta | fala: A Colgate pagou um bilhão de dólares por uma marca. E depois sumiu com ela."
+  },
+  {
+   "t0": 1.7999999999999998,
+   "t1": 4.8,
+   "tipo": "fx",
+   "busca": "counting money bills",
+   "vol": 0.35,
+   "cena": "ia_maleta | fala: A Colgate pagou um bilhão de dólares por uma marca. E depois sumiu com ela."
+  },
+  {
+   "t0": 4.43,
+   "t1": 7.43,
+   "tipo": "fx",
+   "busca": "fast whoosh",
+   "vol": 0.4,
+   "cena": "ia_lixo | fala: A Colgate pagou um bilhão de dólares por uma marca. E depois sumiu com ela."
+  },
+  {
+   "t0": 4.68,
+   "t1": 7.68,
+   "tipo": "fx",
+   "busca": "object dropped in metal trash can",
+   "vol": null,
+   "cena": "ia_lixo | fala: A Colgate pagou um bilhão de dólares por uma marca. E depois sumiu com ela."
+  },
+  {
+   "t0": 5.73,
+   "t1": 10.44,
+   "tipo": "amb",
+   "busca": "supermarket ambience crowd",
+   "vol": 0.22,
+   "cena": "montagem | fala: Era a Kolynos, que nos anos noventa vendia o dobro da Colgate no Brasil."
+  },
+  {
+   "t0": 8.41,
+   "t1": 11.41,
+   "tipo": "fx",
+   "busca": "shopping cart rolling",
+   "vol": 0.35,
+   "cena": "ia_compras | fala: Era a Kolynos, que nos anos noventa vendia o dobro da Colgate no Brasil."
+  },
+  {
+   "t0": 8.71,
+   "t1": 11.71,
+   "tipo": "fx",
+   "busca": "supermarket checkout scanner beep",
+   "vol": 0.35,
+   "cena": "ia_compras | fala: Era a Kolynos, que nos anos noventa vendia o dobro da Colgate no Brasil."
+  },
+  {
+   "t0": 10.44,
+   "t1": 13.44,
+   "tipo": "fx",
+   "busca": "pen signing paper",
+   "vol": 0.45,
+   "cena": "ia_assinatura | fala: Em noventa e cinco, a Colgate comprou a rival inteira."
+  },
+  {
+   "t0": 11.99,
+   "t1": 14.99,
+   "tipo": "fx",
+   "busca": "cash register ka-ching",
+   "vol": 0.6,
+   "cena": "ia_negocio | fala: Em noventa e cinco, a Colgate comprou a rival inteira."
+  },
+  {
+   "t0": 13.77,
+   "t1": 22.24,
+   "tipo": "amb",
+   "busca": "office room tone typewriter",
+   "vol": 0.2,
+   "cena": "montagem | fala: Mas o CADE só aprovou com três saídas: vender a marca, alugar por vinte anos, ou tirar a Kolynos do mercado por quatro anos."
+  },
+  {
+   "t0": 16.53,
+   "t1": 19.53,
+   "tipo": "fx",
+   "busca": "ui pop",
+   "vol": 0.3,
+   "cena": "montagem | fala: Mas o CADE só aprovou com três saídas: vender a marca, alugar por vinte anos, ou tirar a Kolynos do mercado por quatro anos."
+  },
+  {
+   "t0": 17.67,
+   "t1": 20.67,
+   "tipo": "fx",
+   "busca": "ui pop",
+   "vol": 0.3,
+   "cena": "montagem | fala: Mas o CADE só aprovou com três saídas: vender a marca, alugar por vinte anos, ou tirar a Kolynos do mercado por quatro anos."
+  },
+  {
+   "t0": 19.41,
+   "t1": 22.41,
+   "tipo": "fx",
+   "busca": "ui pop",
+   "vol": 0.35,
+   "cena": "montagem | fala: Mas o CADE só aprovou com três saídas: vender a marca, alugar por vinte anos, ou tirar a Kolynos do mercado por quatro anos."
+  },
+  {
+   "t0": 17.67,
+   "t1": 20.67,
+   "tipo": "fx",
+   "busca": "paper shuffle",
+   "vol": 0.3,
+   "cena": "ia_documentos | fala: Mas o CADE só aprovou com três saídas: vender a marca, alugar por vinte anos, ou tirar a Kolynos do mercado por quatro anos."
+  },
+  {
+   "t0": 22.29,
+   "t1": 25.29,
+   "tipo": "fx",
+   "busca": "cardboard box items packing",
+   "vol": 0.3,
+   "cena": "stamp | fala: A Colgate escolheu apagar."
+  },
+  {
+   "t0": 23.33,
+   "t1": 26.33,
+   "tipo": "fx",
+   "busca": "rubber stamp hit",
+   "vol": 0.75,
+   "cena": "stamp | fala: A Colgate escolheu apagar."
+  },
+  {
+   "t0": 24.14,
+   "t1": 25.89,
+   "tipo": "amb",
+   "busca": "factory conveyor belt machinery",
+   "vol": 0.25,
+   "cena": "ia_fabrica | fala: Lançou a Sorriso no lugar e investiu quarenta milhões de dólares pra ela pegar."
+  },
+  {
+   "t0": 25.89,
+   "t1": 28.58,
+   "tipo": "amb",
+   "busca": "old tv static hum",
+   "vol": 0.18,
+   "cena": "ia_tv | fala: Lançou a Sorriso no lugar e investiu quarenta milhões de dólares pra ela pegar."
+  },
+  {
+   "t0": 26.67,
+   "t1": 29.67,
+   "tipo": "fx",
+   "busca": "coins pouring",
+   "vol": 0.45,
+   "cena": "ia_tv | fala: Lançou a Sorriso no lugar e investiu quarenta milhões de dólares pra ela pegar."
+  },
+  {
+   "t0": 30.63,
+   "t1": 33.629999999999995,
+   "tipo": "fx",
+   "busca": "deep cinematic boom",
+   "vol": 0.65,
+   "cena": "montagem | fala: Deu certo. A Kolynos nunca mais foi fabricada no Brasil."
+  },
+  {
+   "t0": 28.58,
+   "t1": 31.47,
+   "tipo": "amb",
+   "busca": "empty room tone",
+   "vol": 0.15,
+   "cena": "ia_vazia | fala: Deu certo. A Kolynos nunca mais foi fabricada no Brasil."
+  },
+  {
+   "t0": 31.47,
+   "t1": 32.78,
+   "tipo": "amb",
+   "busca": "wind in abandoned building",
+   "vol": 0.25,
+   "cena": "ia_fabrica_vazia | fala: Deu certo. A Kolynos nunca mais foi fabricada no Brasil."
+  },
+  {
+   "t0": 35.87,
+   "t1": 38.87,
+   "tipo": "fx",
+   "busca": "suspense riser",
+   "vol": 0.5,
+   "cena": "montagem | fala: Até que, em dois mil e vinte e cinco, a própria Colgate lançou uma Sorriso com a fórmula e a cara da Kolynos."
+  },
+  {
+   "t0": 34.97,
+   "t1": 37.97,
+   "tipo": "fx",
+   "busca": "phone notification",
+   "vol": 0.4,
+   "cena": "ia_celular | fala: Até que, em dois mil e vinte e cinco, a própria Colgate lançou uma Sorriso com a fórmula e a cara da Kolynos."
+  },
+  {
+   "t0": 39.02,
+   "t1": 42.02,
+   "tipo": "fx",
+   "busca": "dramatic reveal hit",
+   "vol": 0.7,
+   "cena": "kolynos | fala: Até que, em dois mil e vinte e cinco, a própria Colgate lançou uma Sorriso com a fórmula e a cara da Kolynos."
+  },
+  {
+   "t0": 39.47,
+   "t1": 42.47,
+   "tipo": "fx",
+   "busca": "record scratch",
+   "vol": 0.6,
+   "cena": "montagem | fala: Pra mim, foi o bilhão mais bem gasto da Colgate. Você lembra do gosto dela?"
+  },
+  {
+   "t0": 42.83,
+   "t1": 45.52,
+   "tipo": "amb",
+   "busca": "brushing teeth",
+   "vol": 0.25,
+   "cena": "ia_familia | fala: Pra mim, foi o bilhão mais bem gasto da Colgate. Você lembra do gosto dela?"
+  }
+ ],
+ "trilha": "tensao",
+ "roteiro": "A Colgate pagou um bilhão de dólares por uma marca. E depois sumiu com ela. Era a Kolynos, que nos anos noventa vendia o dobro da Colgate no Brasil. Em noventa e cinco, a Colgate comprou a rival inteira. Mas o CADE só aprovou com três saídas: vender a marca, alugar por vinte anos, ou tirar a Kolynos do mercado por quatro anos. A Colgate escolheu apagar. Lançou a Sorriso no lugar e investiu quarenta milhões de dólares pra ela pegar. Deu certo. A Kolynos nunca mais foi fabricada no Brasil. Até que, em dois mil e vinte e cinco, a própria Colgate lançou uma Sorriso com a fórmula e a cara da Kolynos. Pra mim, foi o bilhão mais bem gasto da Colgate. Você lembra do gosto dela?"
+}
