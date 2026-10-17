@@ -1,0 +1,90 @@
+{
+ "canal": "Vini QA",
+ "link_curso": "https://www.udemy.com/course/cypress-para-leigos-testes-automatizados-do-zero/?referralCode=B33B2FA158B649E272C1",
+ "videos": [
+  {
+   "short": 1,
+   "data": "2026-10-19",
+   "hora": "12:00",
+   "titulo": "Você não precisa saber programar pra automatizar teste",
+   "legenda": "Você não precisa saber programar pra escrever seu primeiro teste automatizado. Curso completo de Cypress do zero: link na bio. #qa #testes #cypress #automacao #tecnologia"
+  },
+  {
+   "short": 3,
+   "data": "2026-10-21",
+   "hora": "12:00",
+   "titulo": "Seu primeiro teste automatizado",
+   "legenda": "Esse é um teste automatizado completo. E é bem mais simples do que parece. Curso completo de Cypress do zero: link na bio. #cypress #qa #testesautomatizados #programacao"
+  },
+  {
+   "short": 2,
+   "data": "2026-10-23",
+   "hora": "12:00",
+   "titulo": "Como achar o nome de qualquer botão",
+   "legenda": "Como achar o nome de qualquer botão de um site em dez segundos. Curso completo de Cypress do zero: link na bio. #qa #devtools #cypress #testes"
+  },
+  {
+   "short": 5,
+   "data": "2026-10-26",
+   "hora": "12:00",
+   "titulo": "O botão do Cypress que escreve o código pra você",
+   "legenda": "O Cypress tem um botão que escreve o código por você. Quase ninguém usa. Curso completo de Cypress do zero: link na bio. #cypress #qa #dicas #automacao"
+  },
+  {
+   "short": 4,
+   "data": "2026-10-28",
+   "hora": "12:00",
+   "titulo": "O seletor que não quebra",
+   "legenda": "Seu teste quebra toda vez que o site muda de cor? O problema é o seletor. Curso completo de Cypress do zero: link na bio. #cypress #seletores #qa #testes"
+  },
+  {
+   "short": 7,
+   "data": "2026-10-30",
+   "hora": "12:00",
+   "titulo": "Teste sem conferir não é teste",
+   "legenda": "Esse teste passa. Mas ele não testa nada. Curso completo de Cypress do zero: link na bio. #cypress #qa #assertions #testes"
+  },
+  {
+   "short": 11,
+   "data": "2026-11-02",
+   "hora": "12:00",
+   "titulo": "O teste que todo iniciante esquece",
+   "legenda": "Todo iniciante testa se o login funciona. Quase ninguém testa se ele falha direito. Curso completo de Cypress do zero: link na bio. #cypress #qa #testenegativo #testes"
+  },
+  {
+   "short": 6,
+   "data": "2026-11-04",
+   "hora": "12:00",
+   "titulo": "Pare de repetir código nos testes",
+   "legenda": "Se todo teste seu começa com a mesma linha, você precisa conhecer o beforeEach. Curso completo de Cypress do zero: link na bio. #cypress #beforeEach #qa #programacao"
+  },
+  {
+   "short": 9,
+   "data": "2026-11-06",
+   "hora": "12:00",
+   "titulo": "Teste vermelho com Timed out retrying",
+   "legenda": "Seu teste ficou vermelho com Timed out retrying? Quase sempre é isso. Curso completo de Cypress do zero: link na bio. #cypress #erros #qa #testes"
+  },
+  {
+   "short": 10,
+   "data": "2026-11-09",
+   "hora": "12:00",
+   "titulo": "Seu projeto de teste vira portfólio",
+   "legenda": "Escrever sei Cypress no currículo não adianta. Isso aqui adianta. Curso completo de Cypress do zero: link na bio. #portfolio #qa #github #carreira"
+  },
+  {
+   "short": 8,
+   "data": "2026-11-11",
+   "hora": "12:00",
+   "titulo": "npx não é reconhecido: como resolver",
+   "legenda": "Deu npx não é reconhecido no terminal? Calma, é rápido de resolver. Curso completo de Cypress do zero: link na bio. #nodejs #npx #cypress #erros"
+  },
+  {
+   "short": 12,
+   "data": "2026-11-13",
+   "hora": "12:00",
+   "titulo": "cypress open ou cypress run",
+   "legenda": "npx cypress open ou npx cypress run? Muita gente não sabe a diferença. Curso completo de Cypress do zero: link na bio. #cypress #qa #terminal #testes"
+  }
+ ]
+}
