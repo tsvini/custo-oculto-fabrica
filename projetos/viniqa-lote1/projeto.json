@@ -189,10 +189,10 @@
             "scene": {
               "type": "recorte",
               "corte": [
-                800,
-                90,
-                960,
-                720
+                820,
+                120,
+                780,
+                460
               ],
               "cena": {
                 "type": "devtools",
@@ -298,10 +298,10 @@
             "scene": {
               "type": "recorte",
               "corte": [
-                420,
-                120,
-                1080,
-                760
+                560,
+                180,
+                820,
+                560
               ],
               "cena": {
                 "type": "tela",
@@ -468,10 +468,10 @@
             "scene": {
               "type": "recorte",
               "corte": [
-                160,
-                40,
-                1600,
-                880
+                640,
+                80,
+                1100,
+                640
               ],
               "cena": {
                 "type": "playground",
@@ -889,10 +889,10 @@
             "scene": {
               "type": "recorte",
               "corte": [
-                800,
-                90,
-                960,
-                720
+                820,
+                120,
+                780,
+                460
               ],
               "cena": {
                 "type": "devtools",
@@ -1080,10 +1080,10 @@
             "scene": {
               "type": "recorte",
               "corte": [
-                420,
-                120,
-                1080,
-                760
+                560,
+                180,
+                820,
+                560
               ],
               "cena": {
                 "type": "tela",
