@@ -290,7 +290,11 @@
            110
           ]
          ]
-        }
+        },
+        "foco": [
+         0.5,
+         0.12
+        ]
        }
       },
       {
@@ -494,13 +498,13 @@
       {
        "text": "Os brasileiros chegaram em massa, um convidando o outro.",
        "scene": {
-        "type": "image",
-        "media": "lan2",
-        "wiki": [
-         "File:Lan house 3 (4541311332).jpg"
-        ],
-        "lower": "Lan house no Brasil",
+        "type": "video",
+        "media": "v_amigos",
+        "search": "friends laughing looking at computer",
+        "search_en": "friends laughing looking at computer",
+        "start": 0.0,
         "dim": 0.4,
+        "lower": "Um convidando o outro",
         "fallback": {
          "type": "bigtext",
          "stagger": 0.25,
@@ -588,13 +592,11 @@
       {
        "text": "Tinha os recados no mural, os depoimentos que a pessoa precisava aprovar, e as comunidades.",
        "scene": {
-        "type": "image",
-        "media": "lan3",
-        "wiki": [
-         "File:Lan house 2 (4541314304).jpg"
-        ],
-        "lower": "Lan house no Brasil",
-        "dim": 0.4,
+        "type": "print",
+        "media": "print_telas",
+        "url": "https://canaltech.com.br/redes-sociais/voce-lembra-como-era-o-orkut-5-telas-inesqueciveis/",
+        "source": "Canaltech · 2023",
+        "rotate": -1.0,
         "fallback": {
          "type": "bullets",
          "items": [
@@ -610,44 +612,60 @@
       {
        "text": "Comunidades como Eu odeio acordar cedo viraram um jeito de dizer quem você era.",
        "scene": {
-        "type": "bigtext",
-        "stagger": 0.25,
-        "lines": [
-         [
-          "EU ODEIO",
-          "white",
-          150
-         ],
-         [
-          "ACORDAR CEDO",
-          "gold",
-          150
+        "type": "print",
+        "media": "print_comunidades",
+        "url": "https://www.revistaoeste.com/tecnologia/orkut-completa-20-anos-e-e-lembrado-por-comunidades-com-nomes-iconicos/",
+        "source": "Revista Oeste · 2024",
+        "rotate": -1.0,
+        "fallback": {
+         "type": "bigtext",
+         "stagger": 0.25,
+         "lines": [
+          [
+           "EU ODEIO",
+           "white",
+           150
+          ],
+          [
+           "ACORDAR CEDO",
+           "gold",
+           150
+          ]
          ]
-        ]
+        }
        }
       },
       {
        "text": "Tinha também Tô com fome e já escovei os dentes, e milhares de outras parecidas.",
        "scene": {
-        "type": "bigtext",
-        "stagger": 0.25,
-        "lines": [
-         [
-          "TÔ COM FOME",
-          "white",
-          140
-         ],
-         [
-          "E JÁ ESCOVEI",
-          "gold",
-          130
-         ],
-         [
-          "OS DENTES",
-          "gold",
-          130
+        "type": "video",
+        "media": "v_risada",
+        "search": "people laughing at phone",
+        "search_en": "people laughing at phone",
+        "start": 0.0,
+        "dim": 0.4,
+        "lower": "",
+        "fallback": {
+         "type": "bigtext",
+         "stagger": 0.25,
+         "lines": [
+          [
+           "TÔ COM FOME",
+           "white",
+           140
+          ],
+          [
+           "E JÁ ESCOVEI",
+           "gold",
+           130
+          ],
+          [
+           "OS DENTES",
+           "gold",
+           130
+          ]
          ]
-        ]
+        }
        }
       },
       {
@@ -677,58 +695,83 @@
       {
        "text": "Pra muita gente, o Orkut foi a primeira coisa que fez na internet.",
        "scene": {
-        "type": "bigtext",
-        "stagger": 0.25,
-        "lines": [
-         [
-          "A PRIMEIRA COISA",
-          "white",
-          120
-         ],
-         [
-          "NA INTERNET",
-          "gold",
-          150
+        "type": "video",
+        "media": "v_digitando",
+        "search": "young person typing keyboard night",
+        "search_en": "young person typing keyboard night",
+        "start": 0.0,
+        "dim": 0.4,
+        "lower": "",
+        "fallback": {
+         "type": "bigtext",
+         "stagger": 0.25,
+         "lines": [
+          [
+           "A PRIMEIRA COISA",
+           "white",
+           120
+          ],
+          [
+           "NA INTERNET",
+           "gold",
+           150
+          ]
          ]
-        ]
+        }
        }
       },
       {
        "text": "Você não seguia ninguém. Você entrava numa comunidade e virava membro.",
        "scene": {
-        "type": "bigtext",
-        "stagger": 0.25,
-        "lines": [
-         [
-          "VOCÊ NÃO SEGUIA",
-          "white",
-          120
-         ],
-         [
-          "VIRAVA MEMBRO",
-          "gold",
-          150
+        "type": "print",
+        "media": "print_orkut2008",
+        "url": "http://web.archive.org/web/20080601000000id_/http://www.orkut.com/",
+        "source": "orkut.com em 2008 · Internet Archive",
+        "rotate": -1.0,
+        "fallback": {
+         "type": "bigtext",
+         "stagger": 0.25,
+         "lines": [
+          [
+           "VOCÊ NÃO SEGUIA",
+           "white",
+           120
+          ],
+          [
+           "VIRAVA MEMBRO",
+           "gold",
+           150
+          ]
          ]
-        ]
+        }
        }
       },
       {
        "text": "E ter muitos amigos e depoimentos no perfil virou sinal de popularidade.",
        "scene": {
-        "type": "bigtext",
-        "stagger": 0.25,
-        "lines": [
-         [
-          "MUITOS AMIGOS",
-          "white",
-          140
-         ],
-         [
-          "POPULARIDADE",
-          "gold",
-          150
+        "type": "video",
+        "media": "v_jovens",
+        "search": "teenagers friends computer",
+        "search_en": "teenagers friends computer",
+        "start": 0.0,
+        "dim": 0.4,
+        "lower": "",
+        "fallback": {
+         "type": "bigtext",
+         "stagger": 0.25,
+         "lines": [
+          [
+           "MUITOS AMIGOS",
+           "white",
+           140
+          ],
+          [
+           "POPULARIDADE",
+           "gold",
+           150
+          ]
          ]
-        ]
+        }
        }
       },
       {
@@ -1203,20 +1246,29 @@
       {
        "text": "Quem ficava no Orkut via o perfil dos amigos parado, com o último recado de meses atrás.",
        "scene": {
-        "type": "bigtext",
-        "stagger": 0.25,
-        "lines": [
-         [
-          "PERFIS",
-          "white",
-          150
-         ],
-         [
-          "ABANDONADOS",
-          "red",
-          160
+        "type": "video",
+        "media": "v_tedio",
+        "search": "bored person scrolling computer",
+        "search_en": "bored person scrolling computer",
+        "start": 0.0,
+        "dim": 0.4,
+        "lower": "",
+        "fallback": {
+         "type": "bigtext",
+         "stagger": 0.25,
+         "lines": [
+          [
+           "PERFIS",
+           "white",
+           150
+          ],
+          [
+           "ABANDONADOS",
+           "red",
+           160
+          ]
          ]
-        ]
+        }
        }
       }
      ]
@@ -2062,25 +2114,32 @@
      {
       "text": "Era a rede das lan houses, dos scraps, dos depoimentos e de comunidades como Eu odeio acordar cedo.",
       "scene": {
-       "type": "bigtext",
-       "stagger": 0.25,
-       "lines": [
-        [
-         "SCRAPS",
-         "gold",
-         160
-        ],
-        [
-         "DEPOIMENTOS",
-         "white",
-         130
-        ],
-        [
-         "COMUNIDADES",
-         "white",
-         130
+       "type": "print",
+       "media": "print_telas",
+       "url": "https://canaltech.com.br/redes-sociais/voce-lembra-como-era-o-orkut-5-telas-inesqueciveis/",
+       "source": "Canaltech · 2023",
+       "rotate": -1.0,
+       "fallback": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "SCRAPS",
+          "gold",
+          160
+         ],
+         [
+          "DEPOIMENTOS",
+          "white",
+          130
+         ],
+         [
+          "COMUNIDADES",
+          "white",
+          130
+         ]
         ]
-       ]
+       }
       }
      },
      {

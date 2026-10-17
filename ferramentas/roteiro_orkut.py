@@ -20,6 +20,10 @@ def prt(media, url, source, fb):
     return {"type": "print", "media": media, "url": url, "source": source, "rotate": -1.0, "fallback": fb}
 
 
+def vid(media, busca, lower, fb):
+    return {"type": "video", "media": media, "search": busca, "search_en": busca, "start": 0.0, "dim": 0.4, "lower": lower, "fallback": fb}
+
+
 SAME = {"type": "same"}
 S = lambda text, scene: {"text": text, "scene": scene}
 
@@ -66,7 +70,7 @@ long_parts = [
     ]},
     {"chapter": "UM PROJETO DE FIM DE SEMANA", "sentences": [
         S("O Orkut foi lançado em vinte e dois de janeiro de dois mil e quatro.", {"type": "date", "month": "JANEIRO", "day": "22", "year": "2004", "tag": "LANÇAMENTO DO ORKUT"}),
-        S("O nome vem do próprio criador, Orkut Büyükkökten, um engenheiro turco que trabalhava no Google.", foto("criador", "Hello Orkut Büyükkökten 2015.jpg", "Orkut Büyükkökten, criador do Orkut", big(("ORKUT", G, 200), ("BÜYÜKKÖKTEN", W, 110)))),
+        S("O nome vem do próprio criador, Orkut Büyükkökten, um engenheiro turco que trabalhava no Google.", dict(foto("criador", "Hello Orkut Büyükkökten 2015.jpg", "Orkut Büyükkökten, criador do Orkut", big(("ORKUT", G, 200), ("BÜYÜKKÖKTEN", W, 110))), foco=[0.5, 0.12])),
         S("Ele já tinha criado redes antes, quando estudava na Universidade Stanford, nos Estados Unidos.", big(("STANFORD", G, 190), ("REDES ANTES", W, 130))),
         S("O Google deixava os engenheiros usarem parte do tempo em projetos pessoais. O Orkut nasceu assim.", foto("googleplex", "Googleplex with Pride colors 2015.gk.jpg", "Sede do Google · Mountain View", big(("PROJETO", W, 160), ("PESSOAL", G, 170)))),
         S("Detalhe: o Facebook tinha sido lançado poucas semanas depois, mas só pra universitários americanos.", big(("O FACEBOOK", W, 140), ("SÓ PRA", M, 90), ("UNIVERSITÁRIOS", G, 120))),
@@ -195,9 +199,20 @@ tiktoks = [
 
 # ---------- material real ----------
 TROCAS = {
+    "Os brasileiros chegaram em massa": vid("v_amigos", "friends laughing looking at computer", "Um convidando o outro", big(("UM CONVIDANDO", W, 130), ("O OUTRO", G, 180))),
+    "Tinha os recados no mural": prt("print_telas", "https://canaltech.com.br/redes-sociais/voce-lembra-como-era-o-orkut-5-telas-inesqueciveis/", "Canaltech · 2023",
+                                   {"type": "bullets", "items": ["SCRAPS", "DEPOIMENTOS", "COMUNIDADES"], "size": 110, "last_gold": True}),
+    "Comunidades como Eu odeio acordar cedo": prt("print_comunidades", "https://www.revistaoeste.com/tecnologia/orkut-completa-20-anos-e-e-lembrado-por-comunidades-com-nomes-iconicos/", "Revista Oeste · 2024",
+                                                big(("EU ODEIO", W, 150), ("ACORDAR CEDO", G, 150))),
+    "Tinha também Tô com fome": vid("v_risada", "people laughing at phone", "", big(("TÔ COM FOME", W, 140), ("E JÁ ESCOVEI", G, 130), ("OS DENTES", G, 130))),
+    "Você não seguia ninguém.": prt("print_orkut2008", "http://web.archive.org/web/20080601000000id_/http://www.orkut.com/", "orkut.com em 2008 · Internet Archive",
+                                  big(("VOCÊ NÃO SEGUIA", W, 120), ("VIRAVA MEMBRO", G, 150))),
+    "E ter muitos amigos e depoimentos": vid("v_jovens", "teenagers friends computer", "", big(("MUITOS AMIGOS", W, 140), ("POPULARIDADE", G, 150))),
+    "Pra muita gente, o Orkut foi a primeira": vid("v_digitando", "young person typing keyboard night", "", big(("A PRIMEIRA COISA", W, 120), ("NA INTERNET", G, 150))),
+    "Quem ficava no Orkut via o perfil": vid("v_tedio", "bored person scrolling computer", "", big(("PERFIS", W, 150), ("ABANDONADOS", R, 160))),
+    "Era a rede das lan houses": prt("print_telas", "https://canaltech.com.br/redes-sociais/voce-lembra-como-era-o-orkut-5-telas-inesqueciveis/", "Canaltech · 2023",
+                                   big(("SCRAPS", G, 160), ("DEPOIMENTOS", W, 130), ("COMUNIDADES", W, 130))),
     "Quem não tinha computador em casa": foto("lan", F_LAN, "Lan house no Brasil", big(("LAN HOUSE", G, 170), ("POR HORA", W, 140))),
-    "Os brasileiros chegaram em massa": foto("lan2", "Lan house 3 (4541311332).jpg", "Lan house no Brasil", big(("UM CONVIDANDO", W, 130), ("O OUTRO", G, 180))),
-    "Tinha os recados no mural": foto("lan3", "Lan house 2 (4541314304).jpg", "Lan house no Brasil", {"type": "bullets", "items": ["SCRAPS", "DEPOIMENTOS", "COMUNIDADES"], "size": 110, "last_gold": True}),
     "Segundo a comScore, o Facebook teve": prt("print_comscore", "https://www.comscore.com/ger/Insights/Pressemitteilung/2012/1/Facebook-Blasts-into-Top-Position-in-Brazilian-Social-Networking-Market", "comScore · janeiro de 2012",
                                              {"type": "compare", "title": "BRASIL · DEZ/2011 · COMSCORE", "items": [["36,1 MI", "FACEBOOK", G], ["34,4 MI", "ORKUT", R]], "size": 170, "stagger": 1.2, "vs": True}),
     "Segundo a Exame, num certo momento": prt("print_exame_hist", "https://exame.com/tecnologia/orkut-o-que-aconteceu-com-a-rede-social-preferida-dos-brasileiros/", "Exame",

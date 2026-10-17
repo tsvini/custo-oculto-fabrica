@@ -345,7 +345,9 @@
     if (!img) return mediaFallback(ctx, c, t, dur, s);
     const z = lerp(s.z0 || 1.04, s.z1 || 1.16, t / Math.max(dur, 0.1)); const r = Math.max(c.W / img.width, c.H / img.height) * z;
     const w = img.width * r, h = img.height * r; const a = easeOut(t / 0.3);
-    ctx.save(); ctx.globalAlpha = a; ctx.drawImage(img, (c.W - w) / 2, (c.H - h) / 2, w, h); ctx.fillStyle = `rgba(0,0,0,${s.dim === undefined ? 0.35 : s.dim})`; ctx.fillRect(0, 0, c.W, c.H); ctx.restore();
+    // foco: [x, y] de 0 a 1 = que parte da foto fica no quadro; foto em pé (retrato de pessoa) mira no terço de cima, onde fica o rosto
+    const fo = s.foco || [0.5, img.height > img.width * 0.9 ? 0.22 : 0.5];
+    ctx.save(); ctx.globalAlpha = a; ctx.drawImage(img, (c.W - w) * fo[0], (c.H - h) * fo[1], w, h); ctx.fillStyle = `rgba(0,0,0,${s.dim === undefined ? 0.35 : s.dim})`; ctx.fillRect(0, 0, c.W, c.H); ctx.restore();
     overlayLabels(ctx, c, t, s); credito(ctx, c, m, a);
   };
   S.video = (ctx, c, t, dur, s, media) => {
