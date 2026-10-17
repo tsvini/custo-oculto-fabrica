@@ -44,6 +44,7 @@ async function montar(cfg) {
   const serie = cfg.formato === "serie";
   const tiktok = cfg.formato === "tiktok" || serie;
   const groups = longo ? p.script.long.parts : serie ? p.script.serie[cfg.idx].parts : [(tiktok ? p.script.tiktoks : p.script.shorts)[cfg.idx]];
+  window.CO_ESTILO = (!longo && !serie && groups[0] && groups[0].estilo) || p.estilo || null; // "cinema": P&B, legenda de 1 palavra
   const units = [];
   for (let k = 0; k < groups.length; k++) {
     const g = groups[k];

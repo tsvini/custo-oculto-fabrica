@@ -405,6 +405,13 @@
     if (s.sub) { const ks = easeOut(clamp((t - 0.6) / 0.4)); const f = `${Math.round((V ? 80 : 70) * u)}px ${DISPLAY}`;
       drawC(ctx, String(s.sub).toUpperCase(), f, c.cx, s.logo2 ? (V ? c.H * 0.72 : c.H * 0.8) : c.cy + (V ? 230 : 200) * u, { stroke: 8 * u, alpha: ks, fill: COL.gold }); }
   };
+  // ---------- MONTAGEM: vários clipes/fotos trocando a cada "cada" segundos ----------
+  // {type:"montagem", cada:1.2, clips:[{type:"video", media:"k", search:"..."}, {type:"image", media:"k2", wiki:[...]}, ...]}
+  function montagemAt(s, t) { const cada = s.cada || 1.2; const n = (s.clips || []).length || 1; const i = Math.floor(Math.max(0, t) / cada) % n; return [s.clips[i], t - Math.floor(Math.max(0, t) / cada) * cada, cada]; }
+  S.montagem = (ctx, c, t, dur, s, media) => {
+    if (!s.clips || !s.clips.length) return S.bigtext(ctx, c, t, dur, s.fallback || {}, media);
+    const [cl, lt, cada] = montagemAt(s, t); (S[cl.type] || S.bigtext)(ctx, c, lt, cada, Object.assign({ dim: 0.3 }, cl, { lower: null }), media);
+  };
   S.capa = (ctx, c, t, dur, s, media) => {
     const u = c.u; const V = c.vertical; const m = media && media[s.foto]; const img = m && m.img;
     if (img) {
@@ -497,7 +504,7 @@
     const chunks = []; let cur = [];
     for (const wd of words) {
       cur.push(wd); const nch = cur.reduce((a, x) => a + x.w.length, 0) + cur.length - 1;
-      if (cur.length >= 3 || /[.,!?;:]$/.test(wd.w) || nch >= 15) { chunks.push(cur); cur = []; }
+      if (globalThis.CO_ESTILO === "cinema" || cur.length >= 3 || /[.,!?;:]$/.test(wd.w) || nch >= 15) { chunks.push(cur); cur = []; }
     }
     if (cur.length) chunks.push(cur);
     return chunks;
@@ -506,7 +513,10 @@
     let lo = 0, hi = chunks.length - 1, ch = null;
     while (lo <= hi) { const m = (lo + hi) >> 1; const k = chunks[m]; if (t < k[0].s - 0.02) hi = m - 1; else if (t >= k[k.length - 1].e + 0.05) lo = m + 1; else { ch = k; break; } }
     if (!ch) return;
-    const u = c.u; let fs = (c.vertical ? 84 : 64) * u; const words = ch.map((w) => w.w.toUpperCase());
+    const u = c.u; const cine = globalThis.CO_ESTILO === "cinema";
+    if (cine) { const w = ch.map((x) => x.w.toUpperCase()).join(" "); let f = (c.vertical ? 132 : 104) * u; ctx.font = font(900, f); const tw = ctx.measureText(w).width; if (tw > c.W * 0.84) f *= c.W * 0.84 / tw;
+      const k = easeOut((t - ch[0].s) / 0.1); drawC(ctx, w, font(900, f), c.cx, c.H * (c.vertical ? 0.52 : 0.5), { fill: COL.white, stroke: 10 * u, alpha: 1, scale: lerp(1.18, 1, k), shadow: 30 * u }); return; }
+    let fs = (c.vertical ? 84 : 64) * u; const words = ch.map((w) => w.w.toUpperCase());
     ctx.font = font(900, fs); let sp = ctx.measureText(" ").width + (safe ? 16 : 6) * u; let ws = words.map((w) => ctx.measureText(w).width + 16 * u);
     let total = ws.reduce((a, b) => a + b, 0) + sp * (words.length - 1); const maxW = c.W * (safe ? 0.72 : c.vertical ? 0.86 : 0.7);
     if (total > maxW) { const k = maxW / total; fs *= k; sp *= k; ws = ws.map((x) => x * k); total = maxW; }
@@ -634,7 +644,8 @@
       return { sg, head, scene: head.scene || {}, lt: t - head.s0, dur: (sg.headEnd || sg.s1) - head.s0, first: (sg.head === 0) };
     }
     async syncMedia(tl, t, media) { // posiciona clipes de vídeo no tempo certo (render offline)
-      const { scene, lt } = this.activeScene(tl, t);
+      let { scene, lt } = this.activeScene(tl, t);
+      if (scene.type === "montagem" && scene.clips && scene.clips.length) { const r = montagemAt(scene, lt); scene = r[0]; lt = r[1]; }
       if (scene.type === "video" && media && media[scene.media] && media[scene.media].video) {
         const v = media[scene.media].video; const d = v.duration || 1; const target = ((scene.start || 0) + lt) % Math.max(0.1, d - 0.05);
         if (Math.abs(v.currentTime - target) > 0.01) await new Promise((res) => { const done = () => { v.removeEventListener("seeked", done); res(); }; v.addEventListener("seeked", done); v.currentTime = target; setTimeout(done, 400); });
@@ -648,6 +659,10 @@
       (S[sc.type] || S.bigtext)(ctx, c, lt, a.dur, sc, media);
       const endT = a.head.s0 + a.dur;
       if (endT - t < 0.12 && endT < tl.total - 0.1) { ctx.fillStyle = `rgba(0,0,0,${(1 - (endT - t) / 0.12) * 0.8})`; ctx.fillRect(0, 0, c.W, c.H); }
+      if (globalThis.CO_ESTILO === "cinema" && sc.type !== "capa") { // preto e branco com contraste e vinheta, clima de filme
+        ctx.save(); ctx.globalCompositeOperation = "saturation"; ctx.fillStyle = "#000"; ctx.fillRect(0, 0, c.W, c.H); ctx.restore();
+        const vg = ctx.createRadialGradient(c.cx, c.H / 2, Math.min(c.W, c.H) * 0.3, c.cx, c.H / 2, Math.max(c.W, c.H) * 0.75);
+        vg.addColorStop(0, "rgba(0,0,0,0)"); vg.addColorStop(1, "rgba(0,0,0,.7)"); ctx.fillStyle = vg; ctx.fillRect(0, 0, c.W, c.H); }
       if (sc.type !== "endcard" && sc.type !== "chapter" && sc.type !== "capa") drawCaptions(ctx, c, t, tl.chunks, tl.safe);
       if (c.vertical) { ctx.fillStyle = css(COL.gold); ctx.fillRect(0, 0, c.W * t / tl.total, 10); }
       if (globalThis.CO_SELO && sc.type !== "endcard") { const f = font(800, 26 * c.u); ctx.font = f; const w = ctx.measureText(globalThis.CO_SELO).width + 44 * c.u; const yy = c.H * 0.06;
