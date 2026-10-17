@@ -11,7 +11,11 @@ RAIZ = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 def main(nome):
     ev = json.load(open(os.path.join(RAIZ, "previas", f"eventos_{nome}.json"), encoding="utf8"))
     src = os.path.join(RAIZ, nome + "_sem_som.mp4")
-    subprocess.run(["gh", "release", "download", "videos", "-p", nome + "_sem_som.mp4", "-O", src, "--clobber"], check=True)
+    base = sys.argv[2] if len(sys.argv) > 2 and sys.argv[2] else ""
+    if base:  # vídeo base vindo de uma URL (ex.: repositório de mídia)
+        subprocess.run(["curl", "-sSL", "-o", src, base], check=True)
+    else:
+        subprocess.run(["gh", "release", "download", "videos", "-p", nome + "_sem_som.mp4", "-O", src, "--clobber"], check=True)
     sonoplastia.processar(src, ev["eventos"], ev.get("trilha"), ev.get("roteiro", ""), os.path.join(RAIZ, "previas", f"som_{nome}.json"))
     os.replace(src, os.path.join(RAIZ, nome + ".mp4"))
     subprocess.run(["gh", "release", "upload", "videos", os.path.join(RAIZ, nome + ".mp4"), "--clobber"], check=True)
