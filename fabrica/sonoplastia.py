@@ -102,7 +102,7 @@ def _gemini(partes, json_saida=True):
             try:
                 r = requests.post(f"{GEM}/{m}:generateContent?key={key}", json=corpo, timeout=300)
                 if r.status_code == 429:
-                    time.sleep(15 * (tent + 1)); continue
+                    time.sleep(10 * (tent + 1)); continue
                 if r.status_code == 404:
                     break
                 r.raise_for_status()
@@ -121,8 +121,8 @@ def _gemini(partes, json_saida=True):
 
 
 def escolhe(busca, cena, cands):
-    """O Gemini ouve os candidatos e escolhe o melhor (ou nenhum)."""
-    if len(cands) <= 1 or not os.environ.get("GEMINI_API_KEY"):
+    """O Gemini ouve os candidatos e escolhe o melhor (ou nenhum). Desligado por padrão: estoura o limite do plano grátis."""
+    if len(cands) <= 1 or not os.environ.get("GEMINI_API_KEY") or not os.environ.get("SOM_ESCOLHA_IA"):
         return cands[0] if cands else None
     partes = [{"text": (f"Você é sonoplasta de vídeos curtos virais. Cena: {cena}. Som pedido: '{busca}'. "
                         f"Ouça os {len(cands)} candidatos na ordem e escolha o que soa mais profissional e mais combina com a cena. "
@@ -214,19 +214,31 @@ def aplica(eventos, aval):
             e["t0"] = max(0, e["t0"] + s); e["t1"] = max(e["t0"] + 0.3, e["t1"] + s)
 
 
+BIB = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "motor", "sons", "freesound")
+
+
 def busca_audio(ev, cena_txt, cache):
-    q = ev["busca"]
+    """Pega o som na biblioteca guardada (motor/sons/freesound) ou busca no Freesound e guarda para os próximos vídeos."""
+    q = ev["busca"]; slug = re.sub(r"[^a-z0-9]+", "_", q.lower()).strip("_")[:60] + "_" + ev.get("tipo", "fx")
+    arq = os.path.join(BIB, slug + ".mp3")
     if q not in cache:
-        cands = candidatos(q, ev["tipo"])
-        c = escolhe(q, cena_txt, cands)
-        cache[q] = (_corta_silencio(_decodifica(c["mp3"])), c) if c else (None, None)
-        if os.environ.get("GEMINI_API_KEY"):
-            time.sleep(4)  # respeita o limite do plano grátis
+        if os.path.exists(arq):
+            info = json.load(open(arq + ".json", encoding="utf8")) if os.path.exists(arq + ".json") else {"id": "?", "nome": slug}
+            cache[q] = (_corta_silencio(_decodifica(open(arq, "rb").read())), info)
+        else:
+            cands = candidatos(q, ev["tipo"], n=3 if os.environ.get("SOM_ESCOLHA_IA") else 1)
+            c = escolhe(q, cena_txt, cands)
+            if c:
+                os.makedirs(BIB, exist_ok=True); open(arq, "wb").write(c["mp3"])
+                json.dump({"id": c["id"], "nome": c["nome"]}, open(arq + ".json", "w", encoding="utf8"), ensure_ascii=False)
+                cache[q] = (_corta_silencio(_decodifica(c["mp3"])), {"id": c["id"], "nome": c["nome"]})
+            else:
+                cache[q] = (None, None)
     ev["audio"], c = cache[q]
     ev["fonte"] = f"freesound #{c['id']} {c['nome']}" if c else None
 
 
-def processar(video, eventos, trilha=None, roteiro="", relatorio=None, rodadas=4, meta=9.5):
+def processar(video, eventos, trilha=None, roteiro="", relatorio=None, rodadas=2, meta=9.5):
     """eventos: [{t0, t1, tipo, busca, vol, cena}] já com tempos absolutos. Troca o áudio do vídeo."""
     voz = som._le(video); n = len(voz)
     trilha_arr = None

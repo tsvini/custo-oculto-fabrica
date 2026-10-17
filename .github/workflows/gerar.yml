@@ -149,8 +149,8 @@ jobs:
           done
           for c in $(find saida \( -name "capa_*.jpg" -o -name "miniatura_*.jpg" \)); do s=$(basename "$(dirname "$c")"); cp "$c" "previas/${s}_$(basename "$c")"; done
           git config user.name "fabrica-custo-oculto"; git config user.email "fabrica@users.noreply.github.com"
-          if [ -n "$(git status --porcelain previas)" ]; then
-            git add previas && git commit -q -m "Prévias [skip ci]" && git pull --rebase --autostash -q && git push -q || true
+          if [ -n "$(git status --porcelain previas motor/sons)" ]; then
+            git add previas motor/sons && git commit -q -m "Prévias [skip ci]" && git pull --rebase --autostash -q && git push -q || true
           fi
 
       - name: Vídeos para baixar (release "videos", não ocupa o armazenamento do Actions)
