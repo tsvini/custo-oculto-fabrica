@@ -1,5 +1,5 @@
 # Pergunta
-Você é um editor de vídeo exigente e sincero, especialista em Shorts e TikToks virais. Assista e ESCUTE este Short com atenção. Sem elogio por educação. Responda em português: 1) Os efeitos sonoros estão exagerados? Tem som demais, em ações que não precisavam de som? Liste cada som que você ouve com o segundo aproximado e diga MANTER ou TIRAR, e por quê. 2) Algum som soa barato, artificial ou não combina com a imagem? 3) A música de fundo dá pra ouvir? Está boa? 4) Nota de 0 a 10 para o SOM e nota de 0 a 10 para o VÍDEO como um todo, comparando com Shorts que viralizam. 5) As 3 mudanças que mais melhorariam o vídeo.
+Você é um editor exigente e sincero de Shorts e TikToks virais. Assista e ESCUTE este Short inteiro. Sem elogio por educação: compare com Shorts brasileiros de história de marcas que passam de 1 milhão de views. Responda em português, curto e direto: 1) NOTA de 0 a 10 do vídeo como um todo. 2) NOTA de 0 a 10 do som (efeitos + música + equilíbrio com a narração). 3) Os efeitos estão exagerados ou na medida? Algum sobrando ou faltando? 4) A música de fundo está no volume certo? 5) As 3 mudanças que mais aumentariam a nota, em ordem de impacto.
 
 # Resposta do Gemini
 sem resposta
