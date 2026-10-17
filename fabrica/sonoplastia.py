@@ -141,7 +141,7 @@ def _rms(x):
     return float(np.sqrt(np.mean(x ** 2)) + 1e-9)
 
 
-def mixar(voz, eventos, trilha_arr=None, vol_trilha=0.32):
+def mixar(voz, eventos, trilha_arr=None, vol_trilha=0.24):
     n = len(voz); mix = voz.copy()
     env = np.sqrt(som._lp(voz ** 2, 0.0008)); env = env / (env.max() + 1e-9)
     duck = 1 - 0.45 * np.clip(env * 3, 0, 1)  # abaixa o que não é voz quando a voz fala
@@ -162,7 +162,9 @@ def mixar(voz, eventos, trilha_arr=None, vol_trilha=0.32):
             rampa[:f] = np.linspace(0, 1, f); rampa[m - f:] = np.linspace(1, 0, f)
             s = base / _rms(base) * alvo_voz * ev.get("vol", 0.18) * rampa * duck[i0:i0 + m]
         else:
-            s = a[: int(6 * SR)]; m = min(len(s), n - i0)
+            s = a[: int(min(6, ev.get("max") or 6) * SR)].copy()
+            f = min(len(s), int(0.08 * SR)); s[len(s) - f:] *= np.linspace(1, 0, f)  # corta limpo no fim
+            m = min(len(s), n - i0)
             s = s[:m] / (np.abs(s).max() + 1e-9) * ev.get("vol", 0.5) * (np.abs(voz).max() + 1e-9)
         mix[i0:i0 + m] += s
     pico = np.abs(mix).max()
@@ -238,7 +240,8 @@ def busca_audio(ev, cena_txt, cache):
     ev["fonte"] = f"freesound #{c['id']} {c['nome']}" if c else None
 
 
-def processar(video, eventos, trilha=None, roteiro="", relatorio=None, rodadas=2, meta=9.5):
+def processar(video, eventos, trilha=None, roteiro="", relatorio=None, rodadas=None, meta=9.5):
+    rodadas = rodadas or int(os.environ.get("SOM_RODADAS", "2"))
     """eventos: [{t0, t1, tipo, busca, vol, cena}] já com tempos absolutos. Troca o áudio do vídeo."""
     voz = som._le(video); n = len(voz)
     trilha_arr = None

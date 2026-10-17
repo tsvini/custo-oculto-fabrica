@@ -30,6 +30,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           FREESOUND_KEY: ${{ secrets.FREESOUND_KEY }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          SOM_RODADAS: "1"
         run: |
           if [ -n "${{ inputs.pergunta }}" ]; then python -m fabrica.perguntar "${{ inputs.nome }}" "${{ inputs.pergunta }}"; else python -m fabrica.refazer_som "${{ inputs.nome }}" "${{ inputs.base }}"; fi
           git config user.name "fabrica-custo-oculto"; git config user.email "fabrica@users.noreply.github.com"

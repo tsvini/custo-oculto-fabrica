@@ -14,14 +14,16 @@
    "tipo": "fx",
    "busca": "fast whoosh",
    "vol": 0.4,
-   "cena": "ia_lixo | fala: A Colgate pagou um bilhão de dólares por uma marca. E depois sumiu com ela."
+   "cena": "ia_lixo | fala: A Colgate pagou um bilhão de dólares por uma marca. E depois sumiu com ela.",
+   "max": 0.5
   },
   {
    "t0": 4.68,
    "t1": 7.68,
    "tipo": "fx",
    "busca": "object dropped in metal trash can",
-   "cena": "ia_lixo | fala: A Colgate pagou um bilhão de dólares por uma marca. E depois sumiu com ela."
+   "cena": "ia_lixo | fala: A Colgate pagou um bilhão de dólares por uma marca. E depois sumiu com ela.",
+   "max": 0.7
   },
   {
    "t0": 11.99,
@@ -46,14 +48,6 @@
    "busca": "deep cinematic boom",
    "vol": 0.65,
    "cena": "montagem | fala: Deu certo. A Kolynos nunca mais foi fabricada no Brasil."
-  },
-  {
-   "t0": 39.02,
-   "t1": 42.02,
-   "tipo": "fx",
-   "busca": "dramatic reveal hit",
-   "vol": 0.7,
-   "cena": "kolynos | fala: Até que, em dois mil e vinte e cinco, a própria Colgate lançou uma Sorriso com a fórmula e a cara da Kolynos."
   }
  ],
  "trilha": "trap",
