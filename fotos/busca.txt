@@ -1,10 +1,8 @@
-nf_bend | Blockbuster Bend Oregon
-nf_bb | Blockbuster Video store
-nf_bb2 | Blockbuster closing store
-nf_hastings | Reed Hastings
-nf_randolph | Marc Randolph Netflix
-nf_hq | Netflix headquarters Los Gatos
-nf_dvd | Netflix DVD envelope
-nf_dallas | Blockbuster headquarters Dallas Renaissance Tower
-nf_icahn | Carl Icahn
-nf_vhs | VHS tapes rental store
+orkut_criador | Orkut Büyükkökten
+orkut_logo | Orkut logo
+google_bh | Google Belo Horizonte
+lanhouse | lan house Brazil
+cybercafe | internet cafe Brazil
+googleplex | Googleplex
+zuckerberg | Mark Zuckerberg 2011
+facebook_logo | Facebook logo
