@@ -36,10 +36,26 @@ def log(*a):
 
 # ---------------- Freesound ----------------
 def candidatos(busca, tipo, n=3):
+    """Tenta a busca completa e, se não achar, versões mais simples (ex.: 'object dropped in metal trash can' → 'trash can')."""
+    w = busca.split(); tentativas = [busca, " ".join(w[-2:]), " ".join(w[:2]), w[-1]]
+    vistos = set()
+    for q in tentativas:
+        if not q or q in vistos:
+            continue
+        vistos.add(q)
+        r = _candidatos(q, tipo, n)
+        if r:
+            if q != busca:
+                log(f"  freesound '{busca}': usando '{q}'")
+            return r
+    return []
+
+
+def _candidatos(busca, tipo, n=3):
     key = os.environ.get("FREESOUND_KEY", "").strip()
     if not key:
         return []
-    dur = "[4 TO 120]" if tipo == "amb" else "[0.15 TO 6]"
+    dur = "[3 TO 180]" if tipo == "amb" else "[0.1 TO 8]"
     params = {"query": busca, "filter": f'license:"Creative Commons 0" duration:{dur}', "sort": "rating_desc",
               "fields": "id,name,duration,previews,avg_rating,num_downloads,num_ratings,tags", "page_size": 15, "token": key}
     try:
@@ -210,7 +226,7 @@ def busca_audio(ev, cena_txt, cache):
     ev["fonte"] = f"freesound #{c['id']} {c['nome']}" if c else None
 
 
-def processar(video, eventos, trilha=None, roteiro="", relatorio=None, rodadas=3, meta=9):
+def processar(video, eventos, trilha=None, roteiro="", relatorio=None, rodadas=4, meta=9.5):
     """eventos: [{t0, t1, tipo, busca, vol, cena}] já com tempos absolutos. Troca o áudio do vídeo."""
     voz = som._le(video); n = len(voz)
     trilha_arr = None
