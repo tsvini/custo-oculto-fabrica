@@ -116,7 +116,8 @@ def _gemini(partes, json_saida=True):
                     v = v[0] if v and isinstance(v[0], dict) else {"itens": v}
                 return v
             except Exception as e:
-                log(f"  gemini {m}: {str(e)[:160]}"); time.sleep(5)
+                log(f"  gemini {m}: {str(e)[:160]}")
+                print(f"::warning title=Gemini {m}::{str(e)[:300]} {getattr(locals().get('r'), 'text', '')[:300]}", flush=True); time.sleep(5)
     return None
 
 
