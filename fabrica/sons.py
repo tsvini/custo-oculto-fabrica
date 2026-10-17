@@ -22,6 +22,9 @@ SONS = {
     "dun": ("dramatic dun dun duuun orchestral sting, suspense reveal", 2.5),
     "clique": ("camera shutter click, single photo snap", 0.6),
     "ding": ("smartphone notification ding, clean bright", 0.8),
+    "trilha_trap": ("modern viral TikTok documentary background beat, dark trap, crisp hi-hats, deep 808 bass, mysterious piano melody, 90 BPM, catchy, loopable, no vocals", 22.0),
+    "trilha_lofi": ("catchy lo-fi hip hop beat for storytelling shorts, punchy drums, warm bass, nostalgic electric piano, 85 BPM, upbeat but chill, loopable, no vocals", 22.0),
+    "trilha_epica": ("energetic cinematic hybrid beat for viral business story videos, driving drums, pulsing synth bass, strings stabs, building tension, 100 BPM, loopable, no vocals", 22.0),
     "trilha_tensao": ("dark suspenseful documentary background music, low pulsing synth bass, soft ticking clock, steady tempo, no melody, loopable", 20.0),
 }
 
