@@ -153,5 +153,35 @@
   "nome": "americanas_serie1",
   "texto": "📌 O caso completo está aqui: https://youtu.be/pDz4KseN7K8",
   "depois_de": "americanas_longo"
+ },
+ {
+  "nome": "orkut_serie1",
+  "texto": "📌 O caso completo está aqui: https://youtu.be/x263Rewgyw8",
+  "depois_de": "orkut_longo"
+ },
+ {
+  "nome": "orkut_short1",
+  "texto": "📌 O caso completo está aqui: https://youtu.be/x263Rewgyw8",
+  "depois_de": "orkut_longo"
+ },
+ {
+  "nome": "orkut_serie2",
+  "texto": "📌 O caso completo está aqui: https://youtu.be/x263Rewgyw8",
+  "depois_de": "orkut_longo"
+ },
+ {
+  "nome": "orkut_short2",
+  "texto": "📌 O caso completo está aqui: https://youtu.be/x263Rewgyw8",
+  "depois_de": "orkut_longo"
+ },
+ {
+  "nome": "orkut_serie3",
+  "texto": "📌 O caso completo está aqui: https://youtu.be/x263Rewgyw8",
+  "depois_de": "orkut_longo"
+ },
+ {
+  "nome": "orkut_serie4",
+  "texto": "📌 O caso completo está aqui: https://youtu.be/x263Rewgyw8",
+  "depois_de": "orkut_longo"
  }
 ]

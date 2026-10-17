@@ -652,5 +652,104 @@
   "publishAt": "2026-11-06T18:00:00-03:00",
   "status": "private",
   "miniatura_ok": "f4ddbd9cc83d"
+ },
+ {
+  "nome": "orkut_longo",
+  "tipo": "longo",
+  "idioma": "pt",
+  "titulo": "ORKUT: Por Que o Google Deixou Morrer a Rede Que o Brasil Ainda Quer de Volta",
+  "video_id": "x263Rewgyw8",
+  "caso": "orkut",
+  "caso_titulo": "Orkut",
+  "publishAt": "2026-11-03T12:00:00-03:00",
+  "status": "private",
+  "miniatura_ok": "289ff672ff06",
+  "playlists": [
+   "Todos os casos | Custo Oculto"
+  ]
+ },
+ {
+  "nome": "orkut_serie1",
+  "tipo": "serie",
+  "idioma": "pt",
+  "titulo": "O Brasil quer o Orkut de volta. Mas como ele nasceu? (parte 1) #shorts",
+  "video_id": "_TicJtCVl8I",
+  "caso": "orkut",
+  "caso_titulo": null,
+  "publishAt": "2026-11-04T08:00:00-03:00",
+  "status": "private",
+  "miniatura_ok": "17a5a7b91ae0",
+  "playlists": [
+   "Caso Orkut | Custo Oculto"
+  ]
+ },
+ {
+  "nome": "orkut_short1",
+  "tipo": "short",
+  "idioma": "pt",
+  "titulo": "O Brasil quer o Orkut de volta #shorts",
+  "video_id": "fEa_OURUL8M",
+  "caso": "orkut",
+  "caso_titulo": null,
+  "publishAt": "2026-11-03T18:00:00-03:00",
+  "status": "private",
+  "miniatura_ok": "8292a7f4852f"
+ },
+ {
+  "nome": "orkut_serie2",
+  "tipo": "serie",
+  "idioma": "pt",
+  "titulo": "Lan house, scraps e comunidades: como o Brasil tomou o Orkut (parte 2) #shorts",
+  "video_id": "vgny-o0w020",
+  "caso": "orkut",
+  "caso_titulo": null,
+  "publishAt": "2026-11-05T08:00:00-03:00",
+  "status": "private",
+  "miniatura_ok": "b95d1b868324",
+  "playlists": [
+   "Caso Orkut | Custo Oculto"
+  ]
+ },
+ {
+  "nome": "orkut_short2",
+  "tipo": "short",
+  "idioma": "pt",
+  "titulo": "O dia em que o Facebook passou o Orkut no Brasil #shorts",
+  "video_id": "T3zJqVuxu4c",
+  "caso": "orkut",
+  "caso_titulo": null,
+  "publishAt": "2026-11-04T18:00:00-03:00",
+  "status": "private",
+  "miniatura_ok": "6c12f7e0767a"
+ },
+ {
+  "nome": "orkut_serie3",
+  "tipo": "serie",
+  "idioma": "pt",
+  "titulo": "O dia em que o Facebook passou o Orkut no Brasil (parte 3) #shorts",
+  "video_id": "WLXe91gQ-_4",
+  "caso": "orkut",
+  "caso_titulo": null,
+  "publishAt": "2026-11-06T08:00:00-03:00",
+  "status": "private",
+  "miniatura_ok": "7c7d473cab11",
+  "playlists": [
+   "Caso Orkut | Custo Oculto"
+  ]
+ },
+ {
+  "nome": "orkut_serie4",
+  "tipo": "serie",
+  "idioma": "pt",
+  "titulo": "O Orkut vai voltar? O que ninguém te contou (parte 4) #shorts",
+  "video_id": "RAbWvcCYWUk",
+  "caso": "orkut",
+  "caso_titulo": null,
+  "publishAt": "2026-11-07T08:00:00-03:00",
+  "status": "private",
+  "miniatura_ok": "3d4c3182f7c3",
+  "playlists": [
+   "Caso Orkut | Custo Oculto"
+  ]
  }
 ]
