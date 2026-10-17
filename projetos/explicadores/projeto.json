@@ -35,13 +35,15 @@
          "type": "video",
          "media": "x_01",
          "search": "department store shoppers walking",
-         "search_en": "department store shoppers walking"
+         "search_en": "department store shoppers walking",
+         "pixabay_id": 12876
         },
         {
          "type": "video",
          "media": "x_02",
          "search": "shopping mall crowd",
-         "search_en": "shopping mall crowd"
+         "search_en": "shopping mall crowd",
+         "pixabay_id": 57128
         }
        ],
        "fallback": {
@@ -60,13 +62,15 @@
          "type": "video",
          "media": "x_03",
          "search": "warehouse boxes delivery truck",
-         "search_en": "warehouse boxes delivery truck"
+         "search_en": "warehouse boxes delivery truck",
+         "pixabay_id": 43658
         },
         {
          "type": "video",
          "media": "x_04",
          "search": "signing contract pen",
-         "search_en": "signing contract pen"
+         "search_en": "signing contract pen",
+         "pixabay_id": 198890
         }
        ],
        "fallback": {
@@ -85,13 +89,15 @@
          "type": "video",
          "media": "x_05",
          "search": "bank building exterior",
-         "search_en": "bank building exterior"
+         "search_en": "bank building exterior",
+         "pixabay_id": 2334
         },
         {
          "type": "video",
          "media": "x_06",
          "search": "businessman handshake money",
-         "search_en": "businessman handshake money"
+         "search_en": "businessman handshake money",
+         "pixabay_id": 20857
         }
        ],
        "fallback": {
@@ -106,7 +112,8 @@
        "type": "video",
        "media": "x_07",
        "search": "accountant calculator invoice",
-       "search_en": "accountant calculator invoice"
+       "search_en": "accountant calculator invoice",
+       "pixabay_id": 209854
       }
      },
      {
@@ -119,13 +126,15 @@
          "type": "video",
          "media": "x_08",
          "search": "financial report spreadsheet",
-         "search_en": "financial report spreadsheet"
+         "search_en": "financial report spreadsheet",
+         "pixabay_id": 293084
         },
         {
          "type": "video",
          "media": "x_09",
          "search": "putting papers in drawer",
-         "search_en": "putting papers in drawer"
+         "search_en": "putting papers in drawer",
+         "pixabay_id": 349087
         }
        ],
        "fallback": {
@@ -144,13 +153,15 @@
          "type": "video",
          "media": "x_10",
          "search": "stock market chart rising green",
-         "search_en": "stock market chart rising green"
+         "search_en": "stock market chart rising green",
+         "pixabay_id": 349089
         },
         {
          "type": "video",
          "media": "x_11",
          "search": "stock exchange board",
-         "search_en": "stock exchange board"
+         "search_en": "stock exchange board",
+         "pixabay_id": 204306
         }
        ],
        "fallback": {
@@ -169,13 +180,15 @@
          "type": "video",
          "media": "x_12",
          "search": "business people shaking hands",
-         "search_en": "business people shaking hands"
+         "search_en": "business people shaking hands",
+         "pixabay_id": 2340
         },
         {
          "type": "video",
          "media": "x_13",
          "search": "investors meeting table",
-         "search_en": "investors meeting table"
+         "search_en": "investors meeting table",
+         "pixabay_id": 137265
         }
        ],
        "fallback": {
@@ -194,13 +207,15 @@
          "type": "video",
          "media": "x_14",
          "search": "auditor reviewing documents",
-         "search_en": "auditor reviewing documents"
+         "search_en": "auditor reviewing documents",
+         "pixabay_id": 87146
         },
         {
          "type": "video",
          "media": "x_15",
          "search": "magnifying glass document",
-         "search_en": "magnifying glass document"
+         "search_en": "magnifying glass document",
+         "pixabay_id": 5393
         }
        ],
        "fallback": {
@@ -215,7 +230,8 @@
        "type": "video",
        "media": "x_16",
        "search": "stock market crash red screen",
-       "search_en": "stock market crash red screen"
+       "search_en": "stock market crash red screen",
+       "pixabay_id": 338956
       }
      },
      {
@@ -228,13 +244,15 @@
          "type": "video",
          "media": "x_17",
          "search": "newspaper breaking news",
-         "search_en": "newspaper breaking news"
+         "search_en": "newspaper breaking news",
+         "pixabay_id": 5398
         },
         {
          "type": "video",
          "media": "x_18",
          "search": "pile of money",
-         "search_en": "pile of money"
+         "search_en": "pile of money",
+         "pixabay_id": 120177
         }
        ],
        "fallback": {
@@ -253,13 +271,15 @@
          "type": "video",
          "media": "x_19",
          "search": "businessman leaving office",
-         "search_en": "businessman leaving office"
+         "search_en": "businessman leaving office",
+         "pixabay_id": 137250
         },
         {
          "type": "video",
          "media": "x_20",
          "search": "empty office chair",
-         "search_en": "empty office chair"
+         "search_en": "empty office chair",
+         "pixabay_id": 1191
         }
        ],
        "fallback": {
@@ -278,13 +298,15 @@
          "type": "video",
          "media": "x_21",
          "search": "falling chart stock",
-         "search_en": "falling chart stock"
+         "search_en": "falling chart stock",
+         "pixabay_id": 166289
         },
         {
          "type": "video",
          "media": "x_22",
          "search": "court building",
-         "search_en": "court building"
+         "search_en": "court building",
+         "pixabay_id": 72883
         }
        ],
        "fallback": {
@@ -299,7 +321,8 @@
        "type": "video",
        "media": "x_23",
        "search": "judge gavel courtroom",
-       "search_en": "judge gavel courtroom"
+       "search_en": "judge gavel courtroom",
+       "pixabay_id": 254922
       }
      },
      {
@@ -312,13 +335,15 @@
          "type": "video",
          "media": "x_24",
          "search": "worried office workers",
-         "search_en": "worried office workers"
+         "search_en": "worried office workers",
+         "pixabay_id": 271463
         },
         {
          "type": "video",
          "media": "x_25",
          "search": "people walking city street",
-         "search_en": "people walking city street"
+         "search_en": "people walking city street",
+         "pixabay_id": 173333
         }
        ],
        "fallback": {
@@ -333,7 +358,8 @@
        "type": "video",
        "media": "x_26",
        "search": "city skyline night aerial",
-       "search_en": "city skyline night aerial"
+       "search_en": "city skyline night aerial",
+       "pixabay_id": 287386
       }
      }
     ]
@@ -360,13 +386,15 @@
          "type": "video",
          "media": "x_27",
          "search": "bank building exterior",
-         "search_en": "bank building exterior"
+         "search_en": "bank building exterior",
+         "pixabay_id": 191518
         },
         {
          "type": "video",
          "media": "x_28",
          "search": "man looking at phone banking app",
-         "search_en": "man looking at phone banking app"
+         "search_en": "man looking at phone banking app",
+         "pixabay_id": 142641
         }
        ],
        "fallback": {
@@ -385,13 +413,15 @@
          "type": "video",
          "media": "x_29",
          "search": "money growing chart",
-         "search_en": "money growing chart"
+         "search_en": "money growing chart",
+         "pixabay_id": 148596
         },
         {
          "type": "video",
          "media": "x_30",
          "search": "counting money cash",
-         "search_en": "counting money cash"
+         "search_en": "counting money cash",
+         "pixabay_id": 50623
         }
        ],
        "fallback": {
@@ -410,13 +440,15 @@
          "type": "video",
          "media": "x_31",
          "search": "man thinking at desk",
-         "search_en": "man thinking at desk"
+         "search_en": "man thinking at desk",
+         "pixabay_id": 122389
         },
         {
          "type": "video",
          "media": "x_32",
          "search": "piggy bank coins",
-         "search_en": "piggy bank coins"
+         "search_en": "piggy bank coins",
+         "pixabay_id": 93550
         }
        ],
        "fallback": {
@@ -435,13 +467,15 @@
          "type": "video",
          "media": "x_33",
          "search": "bank vault door",
-         "search_en": "bank vault door"
+         "search_en": "bank vault door",
+         "pixabay_id": 164394
         },
         {
          "type": "video",
          "media": "x_34",
          "search": "stack of banknotes",
-         "search_en": "stack of banknotes"
+         "search_en": "stack of banknotes",
+         "pixabay_id": 13720
         }
        ],
        "fallback": {
@@ -460,13 +494,15 @@
          "type": "video",
          "media": "x_35",
          "search": "question mark",
-         "search_en": "question mark"
+         "search_en": "question mark",
+         "pixabay_id": 72720
         },
         {
          "type": "video",
          "media": "x_36",
          "search": "man thinking",
-         "search_en": "man thinking"
+         "search_en": "man thinking",
+         "pixabay_id": 203252
         }
        ],
        "fallback": {
@@ -485,13 +521,15 @@
          "type": "video",
          "media": "x_37",
          "search": "bank fees credit card payment",
-         "search_en": "bank fees credit card payment"
+         "search_en": "bank fees credit card payment",
+         "pixabay_id": 304598
         },
         {
          "type": "video",
          "media": "x_38",
          "search": "people paying at cashier",
-         "search_en": "people paying at cashier"
+         "search_en": "people paying at cashier",
+         "pixabay_id": 6387
         }
        ],
        "fallback": {
@@ -510,13 +548,15 @@
          "type": "video",
          "media": "x_39",
          "search": "money falling",
-         "search_en": "money falling"
+         "search_en": "money falling",
+         "pixabay_id": 5132
         },
         {
          "type": "video",
          "media": "x_40",
          "search": "crowd city street",
-         "search_en": "crowd city street"
+         "search_en": "crowd city street",
+         "pixabay_id": 3630
         }
        ],
        "fallback": {
@@ -535,13 +575,15 @@
          "type": "video",
          "media": "x_41",
          "search": "long queue people",
-         "search_en": "long queue people"
+         "search_en": "long queue people",
+         "pixabay_id": 36510
         },
         {
          "type": "video",
          "media": "x_42",
          "search": "crowd of people",
-         "search_en": "crowd of people"
+         "search_en": "crowd of people",
+         "pixabay_id": 41315
         }
        ],
        "fallback": {
@@ -560,13 +602,15 @@
          "type": "video",
          "media": "x_43",
          "search": "central bank building",
-         "search_en": "central bank building"
+         "search_en": "central bank building",
+         "pixabay_id": 133502
         },
         {
          "type": "video",
          "media": "x_44",
          "search": "pile of money",
-         "search_en": "pile of money"
+         "search_en": "pile of money",
+         "pixabay_id": 144490
         }
        ],
        "fallback": {
@@ -581,7 +625,8 @@
        "type": "video",
        "media": "x_45",
        "search": "stack of money",
-       "search_en": "stack of money"
+       "search_en": "stack of money",
+       "pixabay_id": 109146
       }
      },
      {
@@ -590,7 +635,8 @@
        "type": "video",
        "media": "x_46",
        "search": "judge gavel courtroom",
-       "search_en": "judge gavel courtroom"
+       "search_en": "judge gavel courtroom",
+       "pixabay_id": 198901
       }
      },
      {
@@ -599,7 +645,8 @@
        "type": "video",
        "media": "x_47",
        "search": "man looking at phone banking app",
-       "search_en": "man looking at phone banking app"
+       "search_en": "man looking at phone banking app",
+       "pixabay_id": 202987
       }
      },
      {
@@ -608,7 +655,8 @@
        "type": "video",
        "media": "x_48",
        "search": "city skyline night aerial",
-       "search_en": "city skyline night aerial"
+       "search_en": "city skyline night aerial",
+       "pixabay_id": 231168
       }
      }
     ]

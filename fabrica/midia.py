@@ -233,6 +233,10 @@ def pexels(cenas, pasta, vertical, log, creditos):
     pend = {k: q for k, q in alvo.items() if not os.path.exists(os.path.join(pasta, k + ".mp4"))}
     if not pend:
         return
+    escolhidos = {k: q for k, q in pend.items() if qen.get("#" + k)}  # escolhidos a dedo: direto no Pixabay
+    if escolhidos:
+        pixabay(escolhidos, pasta, vertical, log, creditos, qen)
+        pend = {k: q for k, q in pend.items() if not os.path.exists(os.path.join(pasta, k + ".mp4"))}
     if not key:
         return pixabay(pend, pasta, vertical, log, creditos, qen)
     usados = set()
