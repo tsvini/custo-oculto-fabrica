@@ -1,0 +1,32 @@
+name: Biblioteca de sons
+
+# Gera os efeitos sonoros no ElevenLabs (uma vez) e guarda em motor/sons/.
+on:
+  workflow_dispatch:
+    inputs:
+      refazer:
+        description: "nomes separados por vírgula para refazer (vazio = só os que faltam)"
+        default: ""
+  push:
+    paths: ["fabrica/sons.py", ".github/workflows/sons.yml"]
+
+jobs:
+  sons:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -q requests
+      - name: Gerar sons
+        env:
+          ELEVENLABS_KEY: ${{ secrets.ELEVENLABS_KEY }}
+        run: |
+          python -m fabrica.sons "${{ inputs.refazer }}"
+          git config user.name "fabrica-custo-oculto"; git config user.email "fabrica@users.noreply.github.com"
+          if [ -n "$(git status --porcelain motor/sons)" ]; then
+            git add motor/sons && git commit -q -m "Biblioteca de sons [skip ci]" && for t in 1 2 3; do git pull --rebase --autostash -q origin main && git push -q origin HEAD:main && break; sleep 5; done
+          fi

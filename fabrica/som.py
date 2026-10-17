@@ -109,6 +109,15 @@ def trilha_tensao(dur, bpm=84):
     return y * np.clip(fade, 0, 1) / (np.abs(y).max() + 1e-9)
 
 
+PASTA_SONS = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "motor", "sons")
+
+
+def _arquivo(nome):
+    """Som gravado da biblioteca (motor/sons/<nome>.mp3), se existir."""
+    f = os.path.join(PASTA_SONS, nome + ".mp3")
+    return _le(f) if os.path.exists(f) else None
+
+
 def _le(video):
     with tempfile.NamedTemporaryFile(suffix=".f32", delete=False) as f:
         tmp = f.name
@@ -124,17 +133,32 @@ def mixar(video, sons, trilha=None, vol_trilha=0.16, vol_sfx=0.55):
     voz = _le(video); n = len(voz); dur = n / SR
     mix = voz.copy()
     if trilha:
-        tr = trilha_tensao(dur)[:n]
+        base = _arquivo("trilha_" + trilha) if isinstance(trilha, str) else None
+        if base is not None and len(base) > SR:
+            # repete a trilha gravada com cruzamento de 1s até cobrir o vídeo
+            xf = SR; tr = base.copy()
+            while len(tr) < n:
+                rampa = np.linspace(0, 1, xf)
+                tr = np.concatenate([tr[:-xf], tr[-xf:] * (1 - rampa) + base[:xf] * rampa, base[xf:]])
+            tr = tr[:n] / (np.abs(base).max() + 1e-9)
+            t = np.arange(n) / SR; tr *= np.clip(np.minimum(t / 1.0, (dur - t) / 1.2), 0, 1)
+        else:
+            tr = trilha_tensao(dur)[:n]
         # ducking: trilha abaixa quando a voz está forte
         env = np.sqrt(_lp(voz ** 2, 0.0008))
         env = env / (env.max() + 1e-9)
         duck = 1 - 0.55 * np.clip(env * 3, 0, 1)
         mix += vol_trilha * tr * duck
     for seg, nome in sons or []:
-        f = EFEITOS.get(nome)
-        if not f:
-            continue
-        s = f(); i = int(max(0, seg) * SR)
+        s = _arquivo(nome)
+        if s is None:
+            f = EFEITOS.get(nome)
+            if not f:
+                continue
+            s = f()
+        else:
+            s = 0.9 * s / (np.abs(s).max() + 1e-9)
+        i = int(max(0, seg) * SR)
         if nome == "subida":
             i = max(0, i - len(s))  # a subida termina no ponto marcado
         if i >= n:
