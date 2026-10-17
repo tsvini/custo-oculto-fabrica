@@ -115,6 +115,8 @@ jobs:
           PIXABAY_KEY: ${{ secrets.PIXABAY_KEY }}
           CF_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
           CF_AI_TOKEN: ${{ secrets.CF_AI_TOKEN }}
+          FREESOUND_KEY: ${{ secrets.FREESOUND_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           CHROME_CHANNEL: chrome
           LISTA: ${{ steps.alvo.outputs.lista }}
           FORMATO: ${{ inputs.formato || steps.alvo.outputs.formato || 'tudo' }}

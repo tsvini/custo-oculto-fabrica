@@ -62,7 +62,27 @@ async function montar(cfg) {
 }
 window.gerar = async (cfg) => {
   const t0 = performance.now();
-  const { tl, media, longo } = await montar(cfg);
+  const { tl, media, longo, p } = await montar(cfg);
+  // ---- encaixe na palavra: cortes da montagem e sons batem no instante em que a palavra é dita ----
+  const norm = (w) => (w || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]/g, "");
+  const palavrasDe = (k) => { const sg = tl.segs[k]; if (sg.words && sg.words.length) return sg.words; for (let j = k - 1; j >= 0; j--) if (tl.segs[j].words) return tl.segs[j].words; return []; };
+  const quando = (k, pal, depois) => { if (!pal) return null; const alvo = norm(pal); const w = palavrasDe(k).find((x) => x[1] >= (depois || 0) - 0.01 && norm(x[0]).startsWith(alvo)); return w ? w[1] : null; };
+  const eventosSom = [];
+  tl.segs.forEach((sg, k) => {
+    const sc = sg.scene; if (!sc) return; const fim = sg.s1 || sg.end; const txt = (sg.text || (tl.segs[k - 1] || {}).text || "").slice(0, 160);
+    if (sc.type === "montagem" && sc.clips && sc.clips.some((cl) => cl.palavra)) {
+      const ini = sc.clips.map((cl, i) => (i === 0 ? 0 : (quando(k, cl.palavra, sg.start) ?? null)));
+      if (ini.every((x, i) => i === 0 || x !== null)) sc._ini = ini.map((x, i) => (i === 0 ? 0 : x - sg.s0));
+    }
+    if (sc.stamp_palavra) { const tq = quando(k, sc.stamp_palavra, sg.start); if (tq !== null && tq !== undefined) sc.stamp_at = Math.max(0.1, tq - sg.s0); }
+    const add = (lista, t0, t1, cena) => (lista || []).forEach((so) => { const tp = so.palavra ? quando(k, so.palavra, sg.start) : null;
+      const ini = tp !== null && tp !== undefined ? tp + (so.em || 0) : t0 + (so.em || 0);
+      eventosSom.push({ t0: ini, t1: so.tipo === "amb" ? t1 : ini + 3, tipo: so.tipo || "fx", busca: so.busca, vol: so.vol, cena: cena + " | fala: " + txt }); });
+    add(sc.sons, sg.start, fim, sc.descricao || sc.type);
+    if (sc.type === "montagem" && sc.clips) { const n = sc.clips.length; const d = Math.max(0.1, fim - sg.start);
+      sc.clips.forEach((cl, i) => { const a = sc._ini ? sg.s0 + sc._ini[i] : sg.start + i * d / n; const b = sc._ini ? (i + 1 < n ? sg.s0 + sc._ini[i + 1] : fim) : sg.start + (i + 1) * d / n;
+        add(cl.sons, a, b, cl.descricao || cl.media || ""); }); }
+  });
   const prev = [];
   if (cfg.previas) {
     const c = document.createElement("canvas"); const R = new E.Renderer(c, !longo);
@@ -76,7 +96,7 @@ window.gerar = async (cfg) => {
   tl.segs.forEach((sg) => { const sc = sg.scene; if (!sc || sg.extra && !sc.sfx) return; const ini = sg.start, d = Math.max(0.1, sg.end - sg.start);
     if (sc.sfx) sons.push([ini + (sc.sfx_em || 0), sc.sfx]);
     if (sc.type === "montagem" && sc.auto && sc.clips) { const cada = Math.max(0.6, d / sc.clips.length); sc.clips.forEach((cl, i) => { if (cl.sfx && i > 0) sons.push([ini + i * cada, cl.sfx]); }); } });
-  return { sons, trilha: (window.CO_TRILHA || null), total: tl.total, ext: res.ext, codec: res.codec, bytes: res.blob.size, srt: E.toSrt(tl), capitulos: longo ? E.chapterMarks(tl) : "", segundos: (performance.now() - t0) / 1000, previas: prev };
+  return { eventosSom, roteiro: tl.segs.map((s) => s.text).filter(Boolean).join(" "), sons, trilha: (window.CO_TRILHA || null), total: tl.total, ext: res.ext, codec: res.codec, bytes: res.blob.size, srt: E.toSrt(tl), capitulos: longo ? E.chapterMarks(tl) : "", segundos: (performance.now() - t0) / 1000, previas: prev };
 };
 window.capa = async (cfg) => {
   await fontes(); const media = await carregaMidia(cfg.midia, cfg.midiaBase); const c = document.createElement("canvas");

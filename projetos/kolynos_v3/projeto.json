@@ -46,7 +46,6 @@
         ]
        ],
        "selo": "Kolynos · anos 90",
-       "sfx": "boom",
        "depois": {
         "type": "montagem",
         "auto": true,
@@ -57,7 +56,19 @@
           "z0": 1.0,
           "z1": 1.12,
           "dim": 0.2,
-          "tremor": true
+          "tremor": true,
+          "sons": [
+           {
+            "tipo": "fx",
+            "busca": "briefcase latch open"
+           },
+           {
+            "tipo": "fx",
+            "busca": "counting money bills",
+            "em": 0.4,
+            "vol": 0.35
+           }
+          ]
          },
          {
           "type": "image",
@@ -65,14 +76,34 @@
           "z0": 1.0,
           "z1": 1.12,
           "dim": 0.2,
-          "sfx": "whoosh"
+          "palavra": "sumiu",
+          "sons": [
+           {
+            "tipo": "fx",
+            "busca": "fast whoosh",
+            "vol": 0.4
+           },
+           {
+            "tipo": "fx",
+            "busca": "object dropped in metal trash can",
+            "em": 0.25
+           }
+          ]
          }
         ],
         "fallback": {
          "type": "bigtext",
          "lines": []
         }
-       }
+       },
+       "sons": [
+        {
+         "tipo": "fx",
+         "busca": "cinematic boom hit",
+         "palavra": "bilhão",
+         "vol": 0.7
+        }
+       ]
       }
      },
      {
@@ -94,7 +125,20 @@
          "z0": 1.0,
          "z1": 1.12,
          "dim": 0.5,
-         "sfx": "whoosh"
+         "palavra": "dobro",
+         "sons": [
+          {
+           "tipo": "fx",
+           "busca": "shopping cart rolling",
+           "vol": 0.35
+          },
+          {
+           "tipo": "fx",
+           "busca": "supermarket checkout scanner beep",
+           "em": 0.3,
+           "vol": 0.35
+          }
+         ]
         }
        ],
        "fallback": {
@@ -114,7 +158,13 @@
         ],
         "size": 280
        },
-       "sfx": "whoosh"
+       "sons": [
+        {
+         "tipo": "amb",
+         "busca": "supermarket ambience crowd",
+         "vol": 0.22
+        }
+       ]
       }
      },
      {
@@ -129,14 +179,29 @@
          "z0": 1.0,
          "z1": 1.12,
          "dim": 0.5,
-         "tremor": true
+         "tremor": true,
+         "sons": [
+          {
+           "tipo": "fx",
+           "busca": "pen signing paper",
+           "vol": 0.45
+          }
+         ]
         },
         {
          "type": "image",
          "media": "ia_negocio",
          "z0": 1.0,
          "z1": 1.12,
-         "dim": 0.5
+         "dim": 0.5,
+         "palavra": "comprou",
+         "sons": [
+          {
+           "tipo": "fx",
+           "busca": "cash register ka-ching",
+           "vol": 0.6
+          }
+         ]
         }
        ],
        "fallback": {
@@ -156,8 +221,7 @@
          40
         ],
         "size": 230
-       },
-       "sfx": "caixa"
+       }
       }
      },
      {
@@ -178,7 +242,15 @@
          "media": "ia_documentos",
          "z0": 1.0,
          "z1": 1.12,
-         "dim": 0.62
+         "dim": 0.62,
+         "palavra": "alugar",
+         "sons": [
+          {
+           "tipo": "fx",
+           "busca": "paper shuffle",
+           "vol": 0.3
+          }
+         ]
         }
        ],
        "fallback": {
@@ -197,7 +269,31 @@
         "last_gold": true,
         "stagger": 1.2
        },
-       "sfx": "whoosh"
+       "sons": [
+        {
+         "tipo": "amb",
+         "busca": "office room tone typewriter",
+         "vol": 0.2
+        },
+        {
+         "tipo": "fx",
+         "busca": "ui pop",
+         "palavra": "vender",
+         "vol": 0.3
+        },
+        {
+         "tipo": "fx",
+         "busca": "ui pop",
+         "palavra": "alugar",
+         "vol": 0.3
+        },
+        {
+         "tipo": "fx",
+         "busca": "ui pop",
+         "palavra": "tirar",
+         "vol": 0.35
+        }
+       ]
       }
      },
      {
@@ -210,8 +306,20 @@
        "stamp_at": 0.5,
        "fundo": "ia_retirada",
        "fundo_dim": 0.4,
-       "sfx": "carimbo",
-       "sfx_em": 0.5
+       "stamp_palavra": "apagar",
+       "sons": [
+        {
+         "tipo": "fx",
+         "busca": "cardboard box items packing",
+         "vol": 0.3
+        },
+        {
+         "tipo": "fx",
+         "busca": "rubber stamp hit",
+         "palavra": "apagar",
+         "vol": 0.75
+        }
+       ]
       }
      },
      {
@@ -225,7 +333,14 @@
          "media": "ia_fabrica",
          "z0": 1.0,
          "z1": 1.12,
-         "dim": 0.5
+         "dim": 0.5,
+         "sons": [
+          {
+           "tipo": "amb",
+           "busca": "factory conveyor belt machinery",
+           "vol": 0.25
+          }
+         ]
         },
         {
          "type": "image",
@@ -233,7 +348,20 @@
          "z0": 1.0,
          "z1": 1.12,
          "dim": 0.5,
-         "sfx": "whoosh"
+         "palavra": "investiu",
+         "sons": [
+          {
+           "tipo": "amb",
+           "busca": "old tv static hum",
+           "vol": 0.18
+          },
+          {
+           "tipo": "fx",
+           "busca": "coins pouring",
+           "palavra": "milhões",
+           "vol": 0.45
+          }
+         ]
         }
        ],
        "fallback": {
@@ -253,8 +381,7 @@
          235
         ],
         "size": 250
-       },
-       "sfx": "whoosh"
+       }
       }
      },
      {
@@ -269,21 +396,43 @@
          "z0": 1.0,
          "z1": 1.12,
          "dim": 0.3,
-         "tremor": true
+         "tremor": true,
+         "sons": [
+          {
+           "tipo": "amb",
+           "busca": "empty room tone",
+           "vol": 0.15
+          }
+         ]
         },
         {
          "type": "image",
          "media": "ia_fabrica_vazia",
          "z0": 1.0,
          "z1": 1.12,
-         "dim": 0.3
+         "dim": 0.3,
+         "palavra": "fabricada",
+         "sons": [
+          {
+           "tipo": "amb",
+           "busca": "wind in abandoned building",
+           "vol": 0.25
+          }
+         ]
         }
        ],
        "fallback": {
         "type": "bigtext",
         "lines": []
        },
-       "sfx": "impacto"
+       "sons": [
+        {
+         "tipo": "fx",
+         "busca": "deep cinematic boom",
+         "palavra": "nunca",
+         "vol": 0.65
+        }
+       ]
       }
      },
      {
@@ -305,7 +454,14 @@
          "z0": 1.0,
          "z1": 1.12,
          "dim": 0.3,
-         "sfx": "whoosh"
+         "palavra": "própria",
+         "sons": [
+          {
+           "tipo": "fx",
+           "busca": "phone notification",
+           "vol": 0.4
+          }
+         ]
         },
         {
          "type": "image",
@@ -314,14 +470,28 @@
          "z1": 1.12,
          "dim": 0.3,
          "tremor": true,
-         "sfx": "dun"
+         "palavra": "Kolynos",
+         "sons": [
+          {
+           "tipo": "fx",
+           "busca": "dramatic reveal hit",
+           "vol": 0.7
+          }
+         ]
         }
        ],
        "fallback": {
         "type": "bigtext",
         "lines": []
        },
-       "sfx": "subida"
+       "sons": [
+        {
+         "tipo": "fx",
+         "busca": "suspense riser",
+         "palavra": "lançou",
+         "vol": 0.5
+        }
+       ]
       }
      },
      {
@@ -343,7 +513,14 @@
          "z0": 1.0,
          "z1": 1.12,
          "dim": 0.45,
-         "sfx": "ding"
+         "palavra": "lembra",
+         "sons": [
+          {
+           "tipo": "amb",
+           "busca": "brushing teeth",
+           "vol": 0.25
+          }
+         ]
         }
        ],
        "fallback": {
@@ -365,8 +542,14 @@
          ]
         ]
        },
-       "sfx": "scratch",
-       "sobre_em": 3.0
+       "sobre_em": 3.0,
+       "sons": [
+        {
+         "tipo": "fx",
+         "busca": "record scratch",
+         "vol": 0.6
+        }
+       ]
       }
      }
     ]

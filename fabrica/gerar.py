@@ -270,7 +270,14 @@ def main():
                 r = pg.evaluate("cfg => gerar(cfg)", cfg)
                 bruto = os.path.join(trab, cfg["saida"]); final = os.path.join(saida, nome + ".mp4")
                 ffmpeg_final(bruto, final, r["codec"]); os.remove(bruto)
-                if r.get("sons") or r.get("trilha"):  # desenho de som: trilha com ducking + efeitos
+                if r.get("eventosSom"):  # sonoplastia com sons reais (Freesound) e avaliação por IA (Gemini)
+                    from . import sonoplastia
+                    try:
+                        sonoplastia.processar(final, r["eventosSom"], r.get("trilha"), r.get("roteiro", ""),
+                                              os.path.join(RAIZ, "previas", f"som_{nome}.json"))
+                    except Exception as e:
+                        log(f"  sonoplastia: falhou ({str(e)[:200]})")
+                elif r.get("sons") or r.get("trilha"):  # desenho de som simples: trilha com ducking + efeitos
                     from . import som
                     try:
                         som.mixar(final, r.get("sons"), r.get("trilha")); log(f"  som: trilha {r.get('trilha') or '-'}, {len(r.get('sons') or [])} efeitos")
