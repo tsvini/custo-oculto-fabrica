@@ -313,6 +313,42 @@ def pixabay(pend, pasta, vertical, log, creditos, qen=None):
     print(f"::notice title=Clipes de apoio::{ok} de {len(pend)} clipes vieram do Pixabay", flush=True)
 
 
+def ia_imagens(pedidos, pasta, vertical, log):
+    """Gera cenas por IA (Cloudflare Workers AI, FLUX.2 Klein 4B, dentro da cota grátis diária).
+    pedidos: {chave: prompt} ou {chave: {"prompt", "seed"?}}. Salva <chave>.jpg na pasta de mídia; não refaz o que já existe."""
+    conta = os.environ.get("CF_ACCOUNT_ID", "").strip(); tok = os.environ.get("CF_AI_TOKEN", "").strip()
+    if not pedidos:
+        return
+    if not (conta and tok):
+        log("  imagens IA: sem CF_ACCOUNT_ID/CF_AI_TOKEN, pulando"); return
+    import base64, requests
+    os.makedirs(pasta, exist_ok=True)
+    W, H = (1080, 1920) if vertical else (1920, 1080)
+    url = f"https://api.cloudflare.com/client/v4/accounts/{conta}/ai/run/@cf/black-forest-labs/flux-2-klein-4b"
+    estilo = ", photorealistic cinematic photo, 35mm film grain, natural light, no text, no letters, no logos, no watermark"
+    for k, v in pedidos.items():
+        dest = os.path.join(pasta, k + ".jpg")
+        if os.path.exists(dest):
+            continue
+        v = v if isinstance(v, dict) else {"prompt": v}
+        campos = {"prompt": (None, v["prompt"] + estilo), "width": (None, str(W)), "height": (None, str(H)), "seed": (None, str(v.get("seed", 7)))}
+        try:
+            r = requests.post(url, headers={"Authorization": f"Bearer {tok}"}, files=campos, timeout=120)
+            if r.headers.get("content-type", "").startswith("image/"):
+                dado = r.content
+            else:
+                j = r.json()
+                if not j.get("success", True) or not (j.get("result") or {}).get("image"):
+                    raise RuntimeError(str(j.get("errors") or j)[:200])
+                dado = base64.b64decode(j["result"]["image"])
+            from PIL import Image
+            import io
+            Image.open(io.BytesIO(dado)).convert("RGB").save(dest, quality=92)
+            log(f"  imagem IA {k}: ok")
+        except Exception as e:
+            log(f"  imagem IA {k}: falhou ({str(e)[:160]})")
+
+
 def manifesto(pasta):
     out = {}
     for f in sorted(os.listdir(pasta)) if os.path.isdir(pasta) else []:

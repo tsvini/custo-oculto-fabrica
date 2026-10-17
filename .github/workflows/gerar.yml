@@ -113,6 +113,8 @@ jobs:
           GOOGLE_TTS_KEY: ${{ secrets.GOOGLE_TTS_KEY }}
           PEXELS_KEY: ${{ secrets.PEXELS_KEY }}
           PIXABAY_KEY: ${{ secrets.PIXABAY_KEY }}
+          CF_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
+          CF_AI_TOKEN: ${{ secrets.CF_AI_TOKEN }}
           CHROME_CHANNEL: chrome
           LISTA: ${{ steps.alvo.outputs.lista }}
           FORMATO: ${{ inputs.formato || steps.alvo.outputs.formato || 'tudo' }}

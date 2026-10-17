@@ -658,6 +658,11 @@
       if (tl.hook && a.first) lt += 0.9;
       const tint = sc.tint === "red" ? COL.red : null;
       this.bg.draw(ctx, i, t, tint ? COL.red : (globalThis.CO_FUNDO ? col(globalThis.CO_FUNDO) : COL.gold), tint ? 0.16 : 0.10, tint);
+      if (sc.fundo && media && media[sc.fundo] && media[sc.fundo].img) { // foto/cena de fundo com zoom lento, escurecida
+        const im = media[sc.fundo].img; const k = Math.min(1, lt / Math.max(0.5, a.dur)); const z = (sc.fz0 || 1.04) + ((sc.fz1 || 1.14) - (sc.fz0 || 1.04)) * k;
+        const sc0 = Math.max(c.W / im.width, c.H / im.height) * z; const w = im.width * sc0, h = im.height * sc0;
+        ctx.drawImage(im, (c.W - w) / 2, (c.H - h) * 0.5, w, h);
+        ctx.fillStyle = `rgba(0,0,0,${sc.fundo_dim === undefined ? 0.55 : sc.fundo_dim})`; ctx.fillRect(0, 0, c.W, c.H); }
       (S[sc.type] || S.bigtext)(ctx, c, lt, a.dur, sc, media);
       const endT = a.head.s0 + a.dur;
       if (endT - t < 0.12 && endT < tl.total - 0.1) { ctx.fillStyle = `rgba(0,0,0,${(1 - (endT - t) / 0.12) * 0.8})`; ctx.fillRect(0, 0, c.W, c.H); }
