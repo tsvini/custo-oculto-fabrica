@@ -22,6 +22,7 @@
      "busca": "fast whoosh",
      "vol": 0.4,
      "cena": "ia_lixo | fala: A Colgate pagou um bilhão de dólares por uma marca. E depois sumiu com ela.",
+     "max": 0.5,
      "fonte": "freesound #812689 Sound Design Elements Whoosh SFX 052"
     },
     {
@@ -30,6 +31,7 @@
      "tipo": "fx",
      "busca": "object dropped in metal trash can",
      "cena": "ia_lixo | fala: A Colgate pagou um bilhão de dólares por uma marca. E depois sumiu com ela.",
+     "max": 0.7,
      "vol": 0.5,
      "fonte": "freesound #154437 Trash Taken Out_1-2.aif"
     },
@@ -59,15 +61,6 @@
      "vol": 0.65,
      "cena": "montagem | fala: Deu certo. A Kolynos nunca mais foi fabricada no Brasil.",
      "fonte": "freesound #648614 Cinematic Woosh SFX-009.wav"
-    },
-    {
-     "t0": 39.02,
-     "t1": 42.02,
-     "tipo": "fx",
-     "busca": "dramatic reveal hit",
-     "vol": 0.7,
-     "cena": "kolynos | fala: Até que, em dois mil e vinte e cinco, a própria Colgate lançou uma Sorriso com a fórmula e a cara da Kolynos.",
-     "fonte": "freesound #578382 Shock Stab 12"
     }
    ]
   }
