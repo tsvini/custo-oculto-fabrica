@@ -141,10 +141,10 @@ def _rms(x):
     return float(np.sqrt(np.mean(x ** 2)) + 1e-9)
 
 
-def mixar(voz, eventos, trilha_arr=None, vol_trilha=0.14):
+def mixar(voz, eventos, trilha_arr=None, vol_trilha=0.32):
     n = len(voz); mix = voz.copy()
     env = np.sqrt(som._lp(voz ** 2, 0.0008)); env = env / (env.max() + 1e-9)
-    duck = 1 - 0.6 * np.clip(env * 3, 0, 1)  # abaixa o que não é voz quando a voz fala
+    duck = 1 - 0.45 * np.clip(env * 3, 0, 1)  # abaixa o que não é voz quando a voz fala
     alvo_voz = _rms(voz[np.abs(voz) > 0.02]) if np.any(np.abs(voz) > 0.02) else 0.1
     if trilha_arr is not None:
         mix += vol_trilha * trilha_arr[:n] * duck[:len(trilha_arr[:n])]

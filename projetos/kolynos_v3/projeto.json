@@ -56,19 +56,7 @@
           "z0": 1.0,
           "z1": 1.12,
           "dim": 0.2,
-          "tremor": true,
-          "sons": [
-           {
-            "tipo": "fx",
-            "busca": "briefcase latch open"
-           },
-           {
-            "tipo": "fx",
-            "busca": "counting money bills",
-            "em": 0.4,
-            "vol": 0.35
-           }
-          ]
+          "tremor": true
          },
          {
           "type": "image",
@@ -125,20 +113,7 @@
          "z0": 1.0,
          "z1": 1.12,
          "dim": 0.5,
-         "palavra": "dobro",
-         "sons": [
-          {
-           "tipo": "fx",
-           "busca": "shopping cart rolling",
-           "vol": 0.35
-          },
-          {
-           "tipo": "fx",
-           "busca": "supermarket checkout scanner beep",
-           "em": 0.3,
-           "vol": 0.35
-          }
-         ]
+         "palavra": "dobro"
         }
        ],
        "fallback": {
@@ -243,14 +218,7 @@
          "z0": 1.0,
          "z1": 1.12,
          "dim": 0.62,
-         "palavra": "alugar",
-         "sons": [
-          {
-           "tipo": "fx",
-           "busca": "paper shuffle",
-           "vol": 0.3
-          }
-         ]
+         "palavra": "alugar"
         }
        ],
        "fallback": {
@@ -268,32 +236,7 @@
         "size": 76,
         "last_gold": true,
         "stagger": 1.2
-       },
-       "sons": [
-        {
-         "tipo": "amb",
-         "busca": "office room tone typewriter",
-         "vol": 0.2
-        },
-        {
-         "tipo": "fx",
-         "busca": "ui pop",
-         "palavra": "vender",
-         "vol": 0.3
-        },
-        {
-         "tipo": "fx",
-         "busca": "ui pop",
-         "palavra": "alugar",
-         "vol": 0.3
-        },
-        {
-         "tipo": "fx",
-         "busca": "ui pop",
-         "palavra": "tirar",
-         "vol": 0.35
-        }
-       ]
+       }
       }
      },
      {
@@ -308,11 +251,6 @@
        "fundo_dim": 0.4,
        "stamp_palavra": "apagar",
        "sons": [
-        {
-         "tipo": "fx",
-         "busca": "cardboard box items packing",
-         "vol": 0.3
-        },
         {
          "tipo": "fx",
          "busca": "rubber stamp hit",
@@ -348,20 +286,7 @@
          "z0": 1.0,
          "z1": 1.12,
          "dim": 0.5,
-         "palavra": "investiu",
-         "sons": [
-          {
-           "tipo": "amb",
-           "busca": "old tv static hum",
-           "vol": 0.18
-          },
-          {
-           "tipo": "fx",
-           "busca": "coins pouring",
-           "palavra": "milhões",
-           "vol": 0.45
-          }
-         ]
+         "palavra": "investiu"
         }
        ],
        "fallback": {
@@ -396,14 +321,7 @@
          "z0": 1.0,
          "z1": 1.12,
          "dim": 0.3,
-         "tremor": true,
-         "sons": [
-          {
-           "tipo": "amb",
-           "busca": "empty room tone",
-           "vol": 0.15
-          }
-         ]
+         "tremor": true
         },
         {
          "type": "image",
@@ -411,14 +329,7 @@
          "z0": 1.0,
          "z1": 1.12,
          "dim": 0.3,
-         "palavra": "fabricada",
-         "sons": [
-          {
-           "tipo": "amb",
-           "busca": "wind in abandoned building",
-           "vol": 0.25
-          }
-         ]
+         "palavra": "fabricada"
         }
        ],
        "fallback": {
@@ -454,14 +365,7 @@
          "z0": 1.0,
          "z1": 1.12,
          "dim": 0.3,
-         "palavra": "própria",
-         "sons": [
-          {
-           "tipo": "fx",
-           "busca": "phone notification",
-           "vol": 0.4
-          }
-         ]
+         "palavra": "própria"
         },
         {
          "type": "image",
@@ -483,15 +387,7 @@
        "fallback": {
         "type": "bigtext",
         "lines": []
-       },
-       "sons": [
-        {
-         "tipo": "fx",
-         "busca": "suspense riser",
-         "palavra": "lançou",
-         "vol": 0.5
-        }
-       ]
+       }
       }
      },
      {
@@ -542,14 +438,7 @@
          ]
         ]
        },
-       "sobre_em": 3.0,
-       "sons": [
-        {
-         "tipo": "fx",
-         "busca": "record scratch",
-         "vol": 0.6
-        }
-       ]
+       "sobre_em": 3.0
       }
      }
     ]

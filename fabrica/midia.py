@@ -330,8 +330,13 @@ def ia_imagens(pedidos, pasta, vertical, log, copia=None):
         dest = os.path.join(pasta, k + ".jpg")
         if os.path.exists(dest):
             continue
+        if copia and os.path.exists(f"{copia}{k}.jpg"):  # já gerada antes: reaproveita (não gasta a cota diária)
+            from PIL import Image
+            Image.open(f"{copia}{k}.jpg").convert("RGB").resize((W, H), Image.LANCZOS).save(dest, quality=92)
+            log(f"  imagem IA {k}: reaproveitada"); continue
         v = v if isinstance(v, dict) else {"prompt": v}
-        campos = {"prompt": (None, v["prompt"] + estilo), "width": (None, str(W)), "height": (None, str(H)), "seed": (None, str(v.get("seed", 7)))}
+        gw, gh = (W * 8 // 15 // 16 * 16, H * 8 // 15 // 16 * 16)  # ~576x1024: cada imagem gasta ~1/3 da cota
+        campos = {"prompt": (None, v["prompt"] + estilo), "width": (None, str(gw)), "height": (None, str(gh)), "seed": (None, str(v.get("seed", 7)))}
         for tentativa in range(3):  # a API às vezes falha de forma passageira
           try:
             r = requests.post(url, headers={"Authorization": f"Bearer {tok}"}, files=campos, timeout=120)
@@ -344,12 +349,14 @@ def ia_imagens(pedidos, pasta, vertical, log, copia=None):
                 dado = base64.b64decode(j["result"]["image"])
             from PIL import Image
             import io
-            Image.open(io.BytesIO(dado)).convert("RGB").save(dest, quality=92)
+            Image.open(io.BytesIO(dado)).convert("RGB").resize((W, H), Image.LANCZOS).save(dest, quality=92)
             if copia:  # cópia em previas/ para revisar
                 os.makedirs(os.path.dirname(copia), exist_ok=True); Image.open(dest).save(f"{copia}{k}.jpg", quality=85)
             log(f"  imagem IA {k}: ok"); break
           except Exception as e:
             log(f"  imagem IA {k}: falhou ({str(e)[:160]})")
+            if tentativa == 2:
+                print(f"::warning title=Imagem IA não gerada::{k}: {str(e)[:200]}", flush=True)
             if tentativa == 1:  # na última tentativa, muda a semente (o filtro às vezes barra só uma variação)
                 campos["seed"] = (None, "123")
             import time; time.sleep(3)
