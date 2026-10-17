@@ -16,8 +16,8 @@ def foto(media, arquivo, lower, fb):
     return img(media, ["File:" + arquivo], lower, fb)
 
 
-def prt(media, url, source, fb):
-    return {"type": "print", "media": media, "url": url, "source": source, "rotate": -1.0, "fallback": fb}
+def prt(media, url, source, fb, imagem=True):
+    return {"type": "print", "media": media, "url": url, "source": source, "rotate": -1.0, "fallback": fb, "imagem": imagem}
 
 
 def vid(media, busca, lower, fb):
@@ -199,17 +199,17 @@ tiktoks = [
 
 # ---------- material real ----------
 TROCAS = {
-    "Os brasileiros chegaram em massa": vid("v_amigos", "friends laughing looking at computer", "Um convidando o outro", big(("UM CONVIDANDO", W, 130), ("O OUTRO", G, 180))),
+    "Os brasileiros chegaram em massa": vid("v_amigos", "group of friends laughing together at laptop", "Um convidando o outro", big(("UM CONVIDANDO", W, 130), ("O OUTRO", G, 180))),
     "Tinha os recados no mural": prt("print_telas", "https://canaltech.com.br/redes-sociais/voce-lembra-como-era-o-orkut-5-telas-inesqueciveis/", "Canaltech · 2023",
                                    {"type": "bullets", "items": ["SCRAPS", "DEPOIMENTOS", "COMUNIDADES"], "size": 110, "last_gold": True}),
     "Comunidades como Eu odeio acordar cedo": prt("print_comunidades", "https://www.revistaoeste.com/tecnologia/orkut-completa-20-anos-e-e-lembrado-por-comunidades-com-nomes-iconicos/", "Revista Oeste · 2024",
                                                 big(("EU ODEIO", W, 150), ("ACORDAR CEDO", G, 150))),
-    "Tinha também Tô com fome": vid("v_risada", "people laughing at phone", "", big(("TÔ COM FOME", W, 140), ("E JÁ ESCOVEI", G, 130), ("OS DENTES", G, 130))),
-    "Você não seguia ninguém.": prt("print_orkut2008", "http://web.archive.org/web/20080601000000id_/http://www.orkut.com/", "orkut.com em 2008 · Internet Archive",
+    "Tinha também Tô com fome": vid("v_risada", "woman laughing reading computer screen", "", big(("TÔ COM FOME", W, 140), ("E JÁ ESCOVEI", G, 130), ("OS DENTES", G, 130))),
+    "Você não seguia ninguém.": prt("print_sbt", "https://sbtnews.sbt.com.br/noticia/tecnologia/orkut-faz-20-anos", "SBT News · 2024",
                                   big(("VOCÊ NÃO SEGUIA", W, 120), ("VIRAVA MEMBRO", G, 150))),
-    "E ter muitos amigos e depoimentos": vid("v_jovens", "teenagers friends computer", "", big(("MUITOS AMIGOS", W, 140), ("POPULARIDADE", G, 150))),
-    "Pra muita gente, o Orkut foi a primeira": vid("v_digitando", "young person typing keyboard night", "", big(("A PRIMEIRA COISA", W, 120), ("NA INTERNET", G, 150))),
-    "Quem ficava no Orkut via o perfil": vid("v_tedio", "bored person scrolling computer", "", big(("PERFIS", W, 150), ("ABANDONADOS", R, 160))),
+    "E ter muitos amigos e depoimentos": vid("v_jovens", "teenagers using computer together", "", big(("MUITOS AMIGOS", W, 140), ("POPULARIDADE", G, 150))),
+    "Pra muita gente, o Orkut foi a primeira": vid("v_digitando", "hands typing keyboard dark room", "", big(("A PRIMEIRA COISA", W, 120), ("NA INTERNET", G, 150))),
+    "Quem ficava no Orkut via o perfil": vid("v_tedio", "sad man looking at computer screen", "", big(("PERFIS", W, 150), ("ABANDONADOS", R, 160))),
     "Era a rede das lan houses": prt("print_telas", "https://canaltech.com.br/redes-sociais/voce-lembra-como-era-o-orkut-5-telas-inesqueciveis/", "Canaltech · 2023",
                                    big(("SCRAPS", G, 160), ("DEPOIMENTOS", W, 130), ("COMUNIDADES", W, 130))),
     "Quem não tinha computador em casa": foto("lan", F_LAN, "Lan house no Brasil", big(("LAN HOUSE", G, 170), ("POR HORA", W, 140))),

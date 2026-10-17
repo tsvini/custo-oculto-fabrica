@@ -191,6 +191,15 @@ def prints(cenas, pasta, log):
                     s["headline"] = (info.get("text") or info.get("og") or "").strip()[:220] or None
                 if not s.get("outlet") and info.get("site"):
                     s["outlet"] = info["site"]
+                if s.get("imagem"):  # a foto principal da matéria (og:image) vira o fundo da cena
+                    try:
+                        src = pg.evaluate("() => (document.querySelector('meta[property=\\'og:image\\']')||{}).content || ''")
+                        if src:
+                            rr = pg.request.get(src, timeout=20000)
+                            if rr.ok and len(rr.body()) > 15000:
+                                open(os.path.join(pasta, s["media"] + "_img.jpg"), "wb").write(rr.body()); log(f"  print {s['media']}: foto da matéria ok")
+                    except Exception as e:
+                        log(f"  print {s['media']}: sem foto da matéria ({str(e)[:60]})")
                 bx = info.get("box")
                 if bx:
                     x = max(0, bx["x"] - 36); y = max(0, bx["y"] - 70)

@@ -83,14 +83,12 @@
       v.addColorStop(0, "rgba(0,0,0,0)"); v.addColorStop(1, "rgba(0,0,0,.55)");
       c.fillStyle = v; c.fillRect(0, 0, W, H);
       this.base = b;
-      this.grain = [];
-      const gw = Math.ceil(W / 2), gh = Math.ceil(H / 2);
-      for (let k = 0; k < 6; k++) {
-        const gc = document.createElement("canvas"); gc.width = gw; gc.height = gh;
-        const x = gc.getContext("2d"); const id = x.createImageData(gw, gh); const d = id.data;
-        for (let i = 0; i < d.length; i += 4) { const v2 = Math.random() < 0.5 ? 0 : 255; d[i] = d[i + 1] = d[i + 2] = v2; d[i + 3] = Math.random() * 16; }
-        x.putImageData(id, 0, 0); this.grain.push(gc);
-      }
+      // granulação fina e PARADA (resolução cheia): tira o "degrau" do degradê escuro sem virar ruído piscando,
+      // que o compressor do YouTube transformava em quadradinhos (fundo pixelado)
+      const gc = document.createElement("canvas"); gc.width = W; gc.height = H;
+      const x = gc.getContext("2d"); const id = x.createImageData(W, H); const d = id.data;
+      for (let i = 0; i < d.length; i += 4) { const v2 = Math.random() < 0.5 ? 0 : 255; d[i] = d[i + 1] = d[i + 2] = v2; d[i + 3] = Math.random() * 5; }
+      x.putImageData(id, 0, 0); this.grain = gc;
     }
     draw(ctx, i, t, glow = COL.gold, strength = 0.10, tint = null) {
       const { W, H } = this;
@@ -102,9 +100,7 @@
       g.addColorStop(0, css(glow, strength * 2.2)); g.addColorStop(1, css(glow, 0));
       ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
       if (tint) { ctx.fillStyle = css(tint, 0.12); ctx.fillRect(0, 0, W, H); }
-      ctx.imageSmoothingEnabled = false;
-      ctx.drawImage(this.grain[i % 6], 0, 0, W, H);
-      ctx.imageSmoothingEnabled = true;
+      ctx.drawImage(this.grain, 0, 0);
     }
   }
 
@@ -328,9 +324,13 @@
     const m = media && media[s.media]; const img = m && m.img;
     if (!img) return mediaFallback(ctx, c, t, dur, s);
     const u = c.u; const a = easeOut(t / 0.35);
-    const maxW = c.W * (c.vertical ? 0.9 : 0.68), maxH = c.H * (c.vertical ? 0.45 : 0.56);
+    const fundo = media && media[s.media + "_img"] && media[s.media + "_img"].img; // foto da própria matéria (ex.: a tela do Orkut)
+    if (fundo) { const zf = lerp(1.02, 1.12, clamp(t / Math.max(dur, 0.1))); const rf = Math.max(c.W / fundo.width, c.H / fundo.height) * zf;
+      ctx.drawImage(fundo, (c.W - fundo.width * rf) / 2, (c.H - fundo.height * rf) / 2, fundo.width * rf, fundo.height * rf);
+      ctx.fillStyle = "rgba(0,0,0,.25)"; ctx.fillRect(0, 0, c.W, c.H); }
+    const maxW = c.W * (c.vertical ? 0.9 : 0.68) * (fundo ? 0.62 : 1), maxH = c.H * (c.vertical ? 0.45 : 0.56) * (fundo ? 0.5 : 1);
     const r = Math.min(maxW / img.width, maxH / img.height); const z = lerp(0.96, s.zoom || 1.08, easeInOut(t / Math.max(dur, 0.1)));
-    const w = img.width * r * z, h = img.height * r * z; const cy = c.cy - (c.vertical ? 60 : 70) * u + (1 - a) * 40 * u;
+    const w = img.width * r * z, h = img.height * r * z; const cy = (fundo ? c.H * (c.vertical ? 0.2 : 0.2) : c.cy - (c.vertical ? 60 : 70) * u) + (1 - a) * 40 * u;
     ctx.save(); ctx.globalAlpha = a; ctx.translate(c.cx, cy); ctx.rotate((s.rotate === undefined ? -1.0 : s.rotate) * Math.PI / 180);
     ctx.shadowColor = "rgba(0,0,0,.7)"; ctx.shadowBlur = 40 * u; ctx.shadowOffsetY = 12 * u; ctx.fillStyle = "#fff"; ctx.fillRect(-w / 2, -h / 2, w, h);
     ctx.shadowColor = "transparent"; ctx.drawImage(img, -w / 2, -h / 2, w, h);
@@ -696,7 +696,7 @@
     const muxer = new Mp4Muxer.Muxer({ target, video: { codec: codecs.video.mux, width: W, height: H, frameRate: fps }, audio: { codec: codecs.audio.mux, numberOfChannels: 1, sampleRate: SR }, fastStart: "in-memory", firstTimestampBehavior: "offset" });
     let err = null;
     const venc = new VideoEncoder({ output: (ch, meta) => muxer.addVideoChunk(ch, meta), error: (e) => { err = e; } });
-    venc.configure({ codec: codecs.video.codec, width: W, height: H, bitrate: vertical ? 5e6 : 7e6, framerate: fps });
+    venc.configure({ codec: codecs.video.codec, width: W, height: H, bitrate: vertical ? 8e6 : 12e6, framerate: fps });
     const aenc = new AudioEncoder({ output: (ch, meta) => muxer.addAudioChunk(ch, meta), error: (e) => { err = e; } });
     aenc.configure({ codec: codecs.audio.codec, sampleRate: SR, numberOfChannels: 1, bitrate: 128000 });
     const step = SR; // 1 s por bloco

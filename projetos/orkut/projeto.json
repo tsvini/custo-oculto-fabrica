@@ -500,8 +500,8 @@
        "scene": {
         "type": "video",
         "media": "v_amigos",
-        "search": "friends laughing looking at computer",
-        "search_en": "friends laughing looking at computer",
+        "search": "group of friends laughing together at laptop",
+        "search_en": "group of friends laughing together at laptop",
         "start": 0.0,
         "dim": 0.4,
         "lower": "Um convidando o outro",
@@ -586,7 +586,8 @@
          "label": "ESTAVAM NO ORKUT",
          "color": "gold",
          "size": 170
-        }
+        },
+        "imagem": true
        }
       },
       {
@@ -606,7 +607,8 @@
          ],
          "size": 110,
          "last_gold": true
-        }
+        },
+        "imagem": true
        }
       },
       {
@@ -632,7 +634,8 @@
            150
           ]
          ]
-        }
+        },
+        "imagem": true
        }
       },
       {
@@ -640,8 +643,8 @@
        "scene": {
         "type": "video",
         "media": "v_risada",
-        "search": "people laughing at phone",
-        "search_en": "people laughing at phone",
+        "search": "woman laughing reading computer screen",
+        "search_en": "woman laughing reading computer screen",
         "start": 0.0,
         "dim": 0.4,
         "lower": "",
@@ -697,8 +700,8 @@
        "scene": {
         "type": "video",
         "media": "v_digitando",
-        "search": "young person typing keyboard night",
-        "search_en": "young person typing keyboard night",
+        "search": "hands typing keyboard dark room",
+        "search_en": "hands typing keyboard dark room",
         "start": 0.0,
         "dim": 0.4,
         "lower": "",
@@ -724,9 +727,9 @@
        "text": "Você não seguia ninguém. Você entrava numa comunidade e virava membro.",
        "scene": {
         "type": "print",
-        "media": "print_orkut2008",
-        "url": "http://web.archive.org/web/20080601000000id_/http://www.orkut.com/",
-        "source": "orkut.com em 2008 · Internet Archive",
+        "media": "print_sbt",
+        "url": "https://sbtnews.sbt.com.br/noticia/tecnologia/orkut-faz-20-anos",
+        "source": "SBT News · 2024",
         "rotate": -1.0,
         "fallback": {
          "type": "bigtext",
@@ -743,7 +746,8 @@
            150
           ]
          ]
-        }
+        },
+        "imagem": true
        }
       },
       {
@@ -751,8 +755,8 @@
        "scene": {
         "type": "video",
         "media": "v_jovens",
-        "search": "teenagers friends computer",
-        "search_en": "teenagers friends computer",
+        "search": "teenagers using computer together",
+        "search_en": "teenagers using computer together",
         "start": 0.0,
         "dim": 0.4,
         "lower": "",
@@ -1180,7 +1184,8 @@
          "size": 170,
          "stagger": 1.2,
          "vs": true
-        }
+        },
+        "imagem": true
        }
       },
       {
@@ -1248,8 +1253,8 @@
        "scene": {
         "type": "video",
         "media": "v_tedio",
-        "search": "bored person scrolling computer",
-        "search_en": "bored person scrolling computer",
+        "search": "sad man looking at computer screen",
+        "search_en": "sad man looking at computer screen",
         "start": 0.0,
         "dim": 0.4,
         "lower": "",
@@ -1554,7 +1559,8 @@
          },
          "placa": false,
          "sub": "CAMPANHA DE APOIO · 2026"
-        }
+        },
+        "imagem": true
        }
       },
       {
@@ -1580,7 +1586,8 @@
            130
           ]
          ]
-        }
+        },
+        "imagem": true
        }
       },
       {
@@ -2139,7 +2146,8 @@
           130
          ]
         ]
-       }
+       },
+       "imagem": true
       }
      },
      {

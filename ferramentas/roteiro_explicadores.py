@@ -26,38 +26,49 @@ C = {k: clip(k, q) for k, q in {
     "grafico": "chart going down", "assinatura": "signing contract", "luzes": "city lights night aerial", "chuva": "rain window night",
 }.items()}
 
+_n = [0]
+
+
+def v(*buscas, cada=2.6):
+    """Clipes escolhidos pelo sentido da frase; cada um fica ~2,6s na tela (1 clipe = a frase inteira)."""
+    cl = []
+    for q in buscas:
+        _n[0] += 1; cl.append(clip(f"{_n[0]:02d}", q))
+    return cl[0] if len(cl) == 1 else mont(*cl, cada=cada)
+
+
 rombo = [
-    S("Imagine que você é dono de uma loja que todo mundo conhece.", mont(C["loja"], C["multidao"], C["caixa"])),
-    S("Você compra dos fornecedores e combina de pagar daqui a meses.", mont(C["assinatura"], C["papel"], C["relogio"])),
-    S("Só que o fornecedor não quer esperar. Então um banco paga ele agora, e você fica devendo pro banco.", mont(C["banco"], C["dinheiro"], C["telefone"])),
-    S("Isso tem nome: risco sacado. E é uma dívida.", mont(C["planilha"], C["calc"], C["papel"])),
-    S("Agora imagine que essa dívida não aparece no seu balanço como dívida bancária.", mont(C["planilha"], C["executivo"], C["predio"])),
-    S("A empresa parece mais saudável do que é. O lucro parece maior. A ação sobe.", mont(C["bolsa"], C["grafico"], C["luzes"])),
-    S("Investidor compra. Banco empresta mais. Todo mundo confia.", mont(C["reuniao"], C["dinheiro"], C["bolsa"])),
-    S("Até o dia em que alguém olha os números de verdade.", mont(C["relogio"], C["planilha"], C["chuva"])),
-    S("E quando uma dívida escondida aparece, ela não aparece aos poucos. Aparece de uma vez.", mont(C["notas"], C["grafico"], C["chuva"])),
-    S("Em janeiro de dois mil e vinte e três, a Americanas anunciou inconsistências de cerca de vinte bilhões de reais.", mont(C["grafico"], C["notas"], C["predio"])),
-    S("O presidente tinha nove dias no cargo e pediu demissão.", mont(C["executivo"], C["carro"], C["chuva"])),
-    S("A ação despencou e a empresa entrou em recuperação judicial.", mont(C["bolsa"], C["grafico"], C["multidao"])),
-    S("Os ex-diretores acusados negam irregularidades e não há condenação definitiva.", mont(C["papel"], C["policia"], C["predio"])),
-    S("Mas a conta já ficou com acionistas, bancos, fornecedores e funcionários.", mont(C["multidao"], C["fila"], C["loja"])),
-    S("O caso completo da Americanas está no canal Custo Oculto.", mont(C["luzes"], C["loja"])),
+    S("Imagine que você é dono de uma loja que todo mundo conhece.", v("department store shoppers walking", "shopping mall crowd")),
+    S("Você compra dos fornecedores e combina de pagar daqui a meses.", v("warehouse boxes delivery truck", "signing contract pen")),
+    S("Só que o fornecedor não quer esperar. Então um banco paga ele agora, e você fica devendo pro banco.", v("bank building exterior", "businessman handshake money")),
+    S("Isso tem nome: risco sacado. E é uma dívida.", v("accountant calculator invoice")),
+    S("Agora imagine que essa dívida não aparece no seu balanço como dívida bancária.", v("financial report spreadsheet", "putting papers in drawer")),
+    S("A empresa parece mais saudável do que é. O lucro parece maior. A ação sobe.", v("stock market chart rising green", "stock exchange board")),
+    S("Investidor compra. Banco empresta mais. Todo mundo confia.", v("business people shaking hands", "investors meeting table")),
+    S("Até o dia em que alguém olha os números de verdade.", v("auditor reviewing documents", "magnifying glass document")),
+    S("E quando uma dívida escondida aparece, ela não aparece aos poucos. Aparece de uma vez.", v("stock market crash red screen")),
+    S("Em janeiro de dois mil e vinte e três, a Americanas anunciou inconsistências de cerca de vinte bilhões de reais.", v("newspaper breaking news", "pile of money")),
+    S("O presidente tinha nove dias no cargo e pediu demissão.", v("businessman leaving office", "empty office chair")),
+    S("A ação despencou e a empresa entrou em recuperação judicial.", v("falling chart stock", "court building")),
+    S("Os ex-diretores acusados negam irregularidades e não há condenação definitiva.", v("judge gavel courtroom")),
+    S("Mas a conta já ficou com acionistas, bancos, fornecedores e funcionários.", v("worried office workers", "people walking city street")),
+    S("O caso completo da Americanas está no canal Custo Oculto.", v("city skyline night aerial")),
 ]
 
 fgc = [
-    S("Imagine que um banco te oferece um CDB pagando muito mais que todos os outros.", mont(C["banco"], C["dinheiro"], C["cartao"])),
-    S("Cento e quarenta por cento do CDI. Bom demais pra ser verdade?", mont(C["grafico"], C["calc"], C["notas"])),
-    S("Muita gente pensa: tudo bem, se o banco quebrar, o FGC me paga.", mont(C["telefone"], C["fila"], C["papel"])),
-    S("O FGC é o Fundo Garantidor de Créditos. Ele devolve até duzentos e cinquenta mil reais por pessoa, por banco.", mont(C["cofre"], C["dinheiro"], C["banco"])),
-    S("Mas de onde vem o dinheiro do FGC?", mont(C["relogio"], C["predio"], C["chuva"])),
-    S("Das contribuições dos próprios bancos. E esse custo acaba indo pra tarifa, pro juro e pra todo cliente do sistema.", mont(C["caixa"], C["cartao"], C["multidao"])),
-    S("Ou seja: quando um banco que pagava demais quebra, a conta não some. Ela se espalha.", mont(C["notas"], C["grafico"], C["luzes"])),
-    S("Foi o que aconteceu com o Banco Master. Um milhão e seiscentas mil pessoas tinham dinheiro lá.", mont(C["fila"], C["banco"], C["multidao"])),
-    S("O Banco Central decretou a liquidação, e a estimativa é que o FGC tenha que cobrir cerca de quarenta e um bilhões de reais.", mont(C["cofre"], C["dinheiro"], C["predio"])),
-    S("É a maior conta da história do fundo.", mont(C["grafico"], C["chuva"])),
-    S("Os investigados negam irregularidades e ninguém foi julgado até agora.", mont(C["papel"], C["policia"], C["predio"])),
-    S("Da próxima vez que um CDB pagar muito acima do mercado, lembra dessa história.", mont(C["cartao"], C["dinheiro"], C["relogio"])),
-    S("O caso completo do Banco Master está no canal Custo Oculto.", mont(C["luzes"], C["banco"])),
+    S("Imagine que um banco te oferece um CDB pagando muito mais que todos os outros.", v("bank building exterior", "man looking at phone banking app")),
+    S("Cento e quarenta por cento do CDI. Bom demais pra ser verdade?", v("money growing chart", "counting money cash")),
+    S("Muita gente pensa: tudo bem, se o banco quebrar, o FGC me paga.", v("man thinking at desk", "piggy bank coins")),
+    S("O FGC é o Fundo Garantidor de Créditos. Ele devolve até duzentos e cinquenta mil reais por pessoa, por banco.", v("bank vault door", "stack of banknotes")),
+    S("Mas de onde vem o dinheiro do FGC?", v("question mark", "man thinking")),
+    S("Das contribuições dos próprios bancos. E esse custo acaba indo pra tarifa, pro juro e pra todo cliente do sistema.", v("bank fees credit card payment", "people paying at cashier")),
+    S("Ou seja: quando um banco que pagava demais quebra, a conta não some. Ela se espalha.", v("money falling", "crowd city street")),
+    S("Foi o que aconteceu com o Banco Master. Um milhão e seiscentas mil pessoas tinham dinheiro lá.", v("long queue people", "crowd of people")),
+    S("O Banco Central decretou a liquidação, e a estimativa é que o FGC tenha que cobrir cerca de quarenta e um bilhões de reais.", v("central bank building", "pile of money")),
+    S("É a maior conta da história do fundo.", v("stack of money")),
+    S("Os investigados negam irregularidades e ninguém foi julgado até agora.", v("judge gavel courtroom")),
+    S("Da próxima vez que um CDB pagar muito acima do mercado, lembra dessa história.", v("man looking at phone banking app")),
+    S("O caso completo do Banco Master está no canal Custo Oculto.", v("city skyline night aerial")),
 ]
 
 projeto = {

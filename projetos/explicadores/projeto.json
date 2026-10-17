@@ -29,25 +29,19 @@
       "text": "Imagine que você é dono de uma loja que todo mundo conhece.",
       "scene": {
        "type": "montagem",
-       "cada": 1.2,
+       "cada": 2.6,
        "clips": [
         {
          "type": "video",
-         "media": "x_loja",
-         "search": "shopping store",
-         "search_en": "shopping store"
+         "media": "x_01",
+         "search": "department store shoppers walking",
+         "search_en": "department store shoppers walking"
         },
         {
          "type": "video",
-         "media": "x_multidao",
-         "search": "crowd city street",
-         "search_en": "crowd city street"
-        },
-        {
-         "type": "video",
-         "media": "x_caixa",
-         "search": "cash register",
-         "search_en": "cash register"
+         "media": "x_02",
+         "search": "shopping mall crowd",
+         "search_en": "shopping mall crowd"
         }
        ],
        "fallback": {
@@ -60,25 +54,19 @@
       "text": "Você compra dos fornecedores e combina de pagar daqui a meses.",
       "scene": {
        "type": "montagem",
-       "cada": 1.2,
+       "cada": 2.6,
        "clips": [
         {
          "type": "video",
-         "media": "x_assinatura",
-         "search": "signing contract",
-         "search_en": "signing contract"
+         "media": "x_03",
+         "search": "warehouse boxes delivery truck",
+         "search_en": "warehouse boxes delivery truck"
         },
         {
          "type": "video",
-         "media": "x_papel",
-         "search": "documents papers desk",
-         "search_en": "documents papers desk"
-        },
-        {
-         "type": "video",
-         "media": "x_relogio",
-         "search": "clock ticking",
-         "search_en": "clock ticking"
+         "media": "x_04",
+         "search": "signing contract pen",
+         "search_en": "signing contract pen"
         }
        ],
        "fallback": {
@@ -91,25 +79,19 @@
       "text": "Só que o fornecedor não quer esperar. Então um banco paga ele agora, e você fica devendo pro banco.",
       "scene": {
        "type": "montagem",
-       "cada": 1.2,
+       "cada": 2.6,
        "clips": [
         {
          "type": "video",
-         "media": "x_banco",
-         "search": "bank building",
-         "search_en": "bank building"
+         "media": "x_05",
+         "search": "bank building exterior",
+         "search_en": "bank building exterior"
         },
         {
          "type": "video",
-         "media": "x_dinheiro",
-         "search": "counting money cash",
-         "search_en": "counting money cash"
-        },
-        {
-         "type": "video",
-         "media": "x_telefone",
-         "search": "man phone call office",
-         "search_en": "man phone call office"
+         "media": "x_06",
+         "search": "businessman handshake money",
+         "search_en": "businessman handshake money"
         }
        ],
        "fallback": {
@@ -121,57 +103,29 @@
      {
       "text": "Isso tem nome: risco sacado. E é uma dívida.",
       "scene": {
-       "type": "montagem",
-       "cada": 1.2,
-       "clips": [
-        {
-         "type": "video",
-         "media": "x_planilha",
-         "search": "spreadsheet computer screen",
-         "search_en": "spreadsheet computer screen"
-        },
-        {
-         "type": "video",
-         "media": "x_calc",
-         "search": "calculator accounting",
-         "search_en": "calculator accounting"
-        },
-        {
-         "type": "video",
-         "media": "x_papel",
-         "search": "documents papers desk",
-         "search_en": "documents papers desk"
-        }
-       ],
-       "fallback": {
-        "type": "bigtext",
-        "lines": []
-       }
+       "type": "video",
+       "media": "x_07",
+       "search": "accountant calculator invoice",
+       "search_en": "accountant calculator invoice"
       }
      },
      {
       "text": "Agora imagine que essa dívida não aparece no seu balanço como dívida bancária.",
       "scene": {
        "type": "montagem",
-       "cada": 1.2,
+       "cada": 2.6,
        "clips": [
         {
          "type": "video",
-         "media": "x_planilha",
-         "search": "spreadsheet computer screen",
-         "search_en": "spreadsheet computer screen"
+         "media": "x_08",
+         "search": "financial report spreadsheet",
+         "search_en": "financial report spreadsheet"
         },
         {
          "type": "video",
-         "media": "x_executivo",
-         "search": "businessman office night",
-         "search_en": "businessman office night"
-        },
-        {
-         "type": "video",
-         "media": "x_predio",
-         "search": "skyscraper city night",
-         "search_en": "skyscraper city night"
+         "media": "x_09",
+         "search": "putting papers in drawer",
+         "search_en": "putting papers in drawer"
         }
        ],
        "fallback": {
@@ -184,25 +138,19 @@
       "text": "A empresa parece mais saudável do que é. O lucro parece maior. A ação sobe.",
       "scene": {
        "type": "montagem",
-       "cada": 1.2,
+       "cada": 2.6,
        "clips": [
         {
          "type": "video",
-         "media": "x_bolsa",
-         "search": "stock market screen",
-         "search_en": "stock market screen"
+         "media": "x_10",
+         "search": "stock market chart rising green",
+         "search_en": "stock market chart rising green"
         },
         {
          "type": "video",
-         "media": "x_grafico",
-         "search": "chart going down",
-         "search_en": "chart going down"
-        },
-        {
-         "type": "video",
-         "media": "x_luzes",
-         "search": "city lights night aerial",
-         "search_en": "city lights night aerial"
+         "media": "x_11",
+         "search": "stock exchange board",
+         "search_en": "stock exchange board"
         }
        ],
        "fallback": {
@@ -215,25 +163,19 @@
       "text": "Investidor compra. Banco empresta mais. Todo mundo confia.",
       "scene": {
        "type": "montagem",
-       "cada": 1.2,
+       "cada": 2.6,
        "clips": [
         {
          "type": "video",
-         "media": "x_reuniao",
-         "search": "business meeting",
-         "search_en": "business meeting"
+         "media": "x_12",
+         "search": "business people shaking hands",
+         "search_en": "business people shaking hands"
         },
         {
          "type": "video",
-         "media": "x_dinheiro",
-         "search": "counting money cash",
-         "search_en": "counting money cash"
-        },
-        {
-         "type": "video",
-         "media": "x_bolsa",
-         "search": "stock market screen",
-         "search_en": "stock market screen"
+         "media": "x_13",
+         "search": "investors meeting table",
+         "search_en": "investors meeting table"
         }
        ],
        "fallback": {
@@ -246,25 +188,19 @@
       "text": "Até o dia em que alguém olha os números de verdade.",
       "scene": {
        "type": "montagem",
-       "cada": 1.2,
+       "cada": 2.6,
        "clips": [
         {
          "type": "video",
-         "media": "x_relogio",
-         "search": "clock ticking",
-         "search_en": "clock ticking"
+         "media": "x_14",
+         "search": "auditor reviewing documents",
+         "search_en": "auditor reviewing documents"
         },
         {
          "type": "video",
-         "media": "x_planilha",
-         "search": "spreadsheet computer screen",
-         "search_en": "spreadsheet computer screen"
-        },
-        {
-         "type": "video",
-         "media": "x_chuva",
-         "search": "rain window night",
-         "search_en": "rain window night"
+         "media": "x_15",
+         "search": "magnifying glass document",
+         "search_en": "magnifying glass document"
         }
        ],
        "fallback": {
@@ -276,57 +212,29 @@
      {
       "text": "E quando uma dívida escondida aparece, ela não aparece aos poucos. Aparece de uma vez.",
       "scene": {
-       "type": "montagem",
-       "cada": 1.2,
-       "clips": [
-        {
-         "type": "video",
-         "media": "x_notas",
-         "search": "money bills falling",
-         "search_en": "money bills falling"
-        },
-        {
-         "type": "video",
-         "media": "x_grafico",
-         "search": "chart going down",
-         "search_en": "chart going down"
-        },
-        {
-         "type": "video",
-         "media": "x_chuva",
-         "search": "rain window night",
-         "search_en": "rain window night"
-        }
-       ],
-       "fallback": {
-        "type": "bigtext",
-        "lines": []
-       }
+       "type": "video",
+       "media": "x_16",
+       "search": "stock market crash red screen",
+       "search_en": "stock market crash red screen"
       }
      },
      {
       "text": "Em janeiro de dois mil e vinte e três, a Americanas anunciou inconsistências de cerca de vinte bilhões de reais.",
       "scene": {
        "type": "montagem",
-       "cada": 1.2,
+       "cada": 2.6,
        "clips": [
         {
          "type": "video",
-         "media": "x_grafico",
-         "search": "chart going down",
-         "search_en": "chart going down"
+         "media": "x_17",
+         "search": "newspaper breaking news",
+         "search_en": "newspaper breaking news"
         },
         {
          "type": "video",
-         "media": "x_notas",
-         "search": "money bills falling",
-         "search_en": "money bills falling"
-        },
-        {
-         "type": "video",
-         "media": "x_predio",
-         "search": "skyscraper city night",
-         "search_en": "skyscraper city night"
+         "media": "x_18",
+         "search": "pile of money",
+         "search_en": "pile of money"
         }
        ],
        "fallback": {
@@ -339,25 +247,19 @@
       "text": "O presidente tinha nove dias no cargo e pediu demissão.",
       "scene": {
        "type": "montagem",
-       "cada": 1.2,
+       "cada": 2.6,
        "clips": [
         {
          "type": "video",
-         "media": "x_executivo",
-         "search": "businessman office night",
-         "search_en": "businessman office night"
+         "media": "x_19",
+         "search": "businessman leaving office",
+         "search_en": "businessman leaving office"
         },
         {
          "type": "video",
-         "media": "x_carro",
-         "search": "car night city",
-         "search_en": "car night city"
-        },
-        {
-         "type": "video",
-         "media": "x_chuva",
-         "search": "rain window night",
-         "search_en": "rain window night"
+         "media": "x_20",
+         "search": "empty office chair",
+         "search_en": "empty office chair"
         }
        ],
        "fallback": {
@@ -370,25 +272,19 @@
       "text": "A ação despencou e a empresa entrou em recuperação judicial.",
       "scene": {
        "type": "montagem",
-       "cada": 1.2,
+       "cada": 2.6,
        "clips": [
         {
          "type": "video",
-         "media": "x_bolsa",
-         "search": "stock market screen",
-         "search_en": "stock market screen"
+         "media": "x_21",
+         "search": "falling chart stock",
+         "search_en": "falling chart stock"
         },
         {
          "type": "video",
-         "media": "x_grafico",
-         "search": "chart going down",
-         "search_en": "chart going down"
-        },
-        {
-         "type": "video",
-         "media": "x_multidao",
-         "search": "crowd city street",
-         "search_en": "crowd city street"
+         "media": "x_22",
+         "search": "court building",
+         "search_en": "court building"
         }
        ],
        "fallback": {
@@ -400,57 +296,29 @@
      {
       "text": "Os ex-diretores acusados negam irregularidades e não há condenação definitiva.",
       "scene": {
-       "type": "montagem",
-       "cada": 1.2,
-       "clips": [
-        {
-         "type": "video",
-         "media": "x_papel",
-         "search": "documents papers desk",
-         "search_en": "documents papers desk"
-        },
-        {
-         "type": "video",
-         "media": "x_policia",
-         "search": "police car lights",
-         "search_en": "police car lights"
-        },
-        {
-         "type": "video",
-         "media": "x_predio",
-         "search": "skyscraper city night",
-         "search_en": "skyscraper city night"
-        }
-       ],
-       "fallback": {
-        "type": "bigtext",
-        "lines": []
-       }
+       "type": "video",
+       "media": "x_23",
+       "search": "judge gavel courtroom",
+       "search_en": "judge gavel courtroom"
       }
      },
      {
       "text": "Mas a conta já ficou com acionistas, bancos, fornecedores e funcionários.",
       "scene": {
        "type": "montagem",
-       "cada": 1.2,
+       "cada": 2.6,
        "clips": [
         {
          "type": "video",
-         "media": "x_multidao",
-         "search": "crowd city street",
-         "search_en": "crowd city street"
+         "media": "x_24",
+         "search": "worried office workers",
+         "search_en": "worried office workers"
         },
         {
          "type": "video",
-         "media": "x_fila",
-         "search": "people queue",
-         "search_en": "people queue"
-        },
-        {
-         "type": "video",
-         "media": "x_loja",
-         "search": "shopping store",
-         "search_en": "shopping store"
+         "media": "x_25",
+         "search": "people walking city street",
+         "search_en": "people walking city street"
         }
        ],
        "fallback": {
@@ -462,26 +330,10 @@
      {
       "text": "O caso completo da Americanas está no canal Custo Oculto.",
       "scene": {
-       "type": "montagem",
-       "cada": 1.2,
-       "clips": [
-        {
-         "type": "video",
-         "media": "x_luzes",
-         "search": "city lights night aerial",
-         "search_en": "city lights night aerial"
-        },
-        {
-         "type": "video",
-         "media": "x_loja",
-         "search": "shopping store",
-         "search_en": "shopping store"
-        }
-       ],
-       "fallback": {
-        "type": "bigtext",
-        "lines": []
-       }
+       "type": "video",
+       "media": "x_26",
+       "search": "city skyline night aerial",
+       "search_en": "city skyline night aerial"
       }
      }
     ]
@@ -502,25 +354,19 @@
       "text": "Imagine que um banco te oferece um CDB pagando muito mais que todos os outros.",
       "scene": {
        "type": "montagem",
-       "cada": 1.2,
+       "cada": 2.6,
        "clips": [
         {
          "type": "video",
-         "media": "x_banco",
-         "search": "bank building",
-         "search_en": "bank building"
+         "media": "x_27",
+         "search": "bank building exterior",
+         "search_en": "bank building exterior"
         },
         {
          "type": "video",
-         "media": "x_dinheiro",
-         "search": "counting money cash",
-         "search_en": "counting money cash"
-        },
-        {
-         "type": "video",
-         "media": "x_cartao",
-         "search": "credit card payment",
-         "search_en": "credit card payment"
+         "media": "x_28",
+         "search": "man looking at phone banking app",
+         "search_en": "man looking at phone banking app"
         }
        ],
        "fallback": {
@@ -533,25 +379,19 @@
       "text": "Cento e quarenta por cento do CDI. Bom demais pra ser verdade?",
       "scene": {
        "type": "montagem",
-       "cada": 1.2,
+       "cada": 2.6,
        "clips": [
         {
          "type": "video",
-         "media": "x_grafico",
-         "search": "chart going down",
-         "search_en": "chart going down"
+         "media": "x_29",
+         "search": "money growing chart",
+         "search_en": "money growing chart"
         },
         {
          "type": "video",
-         "media": "x_calc",
-         "search": "calculator accounting",
-         "search_en": "calculator accounting"
-        },
-        {
-         "type": "video",
-         "media": "x_notas",
-         "search": "money bills falling",
-         "search_en": "money bills falling"
+         "media": "x_30",
+         "search": "counting money cash",
+         "search_en": "counting money cash"
         }
        ],
        "fallback": {
@@ -564,25 +404,19 @@
       "text": "Muita gente pensa: tudo bem, se o banco quebrar, o FGC me paga.",
       "scene": {
        "type": "montagem",
-       "cada": 1.2,
+       "cada": 2.6,
        "clips": [
         {
          "type": "video",
-         "media": "x_telefone",
-         "search": "man phone call office",
-         "search_en": "man phone call office"
+         "media": "x_31",
+         "search": "man thinking at desk",
+         "search_en": "man thinking at desk"
         },
         {
          "type": "video",
-         "media": "x_fila",
-         "search": "people queue",
-         "search_en": "people queue"
-        },
-        {
-         "type": "video",
-         "media": "x_papel",
-         "search": "documents papers desk",
-         "search_en": "documents papers desk"
+         "media": "x_32",
+         "search": "piggy bank coins",
+         "search_en": "piggy bank coins"
         }
        ],
        "fallback": {
@@ -595,25 +429,19 @@
       "text": "O FGC é o Fundo Garantidor de Créditos. Ele devolve até duzentos e cinquenta mil reais por pessoa, por banco.",
       "scene": {
        "type": "montagem",
-       "cada": 1.2,
+       "cada": 2.6,
        "clips": [
         {
          "type": "video",
-         "media": "x_cofre",
-         "search": "bank vault",
-         "search_en": "bank vault"
+         "media": "x_33",
+         "search": "bank vault door",
+         "search_en": "bank vault door"
         },
         {
          "type": "video",
-         "media": "x_dinheiro",
-         "search": "counting money cash",
-         "search_en": "counting money cash"
-        },
-        {
-         "type": "video",
-         "media": "x_banco",
-         "search": "bank building",
-         "search_en": "bank building"
+         "media": "x_34",
+         "search": "stack of banknotes",
+         "search_en": "stack of banknotes"
         }
        ],
        "fallback": {
@@ -626,25 +454,19 @@
       "text": "Mas de onde vem o dinheiro do FGC?",
       "scene": {
        "type": "montagem",
-       "cada": 1.2,
+       "cada": 2.6,
        "clips": [
         {
          "type": "video",
-         "media": "x_relogio",
-         "search": "clock ticking",
-         "search_en": "clock ticking"
+         "media": "x_35",
+         "search": "question mark",
+         "search_en": "question mark"
         },
         {
          "type": "video",
-         "media": "x_predio",
-         "search": "skyscraper city night",
-         "search_en": "skyscraper city night"
-        },
-        {
-         "type": "video",
-         "media": "x_chuva",
-         "search": "rain window night",
-         "search_en": "rain window night"
+         "media": "x_36",
+         "search": "man thinking",
+         "search_en": "man thinking"
         }
        ],
        "fallback": {
@@ -657,25 +479,19 @@
       "text": "Das contribuições dos próprios bancos. E esse custo acaba indo pra tarifa, pro juro e pra todo cliente do sistema.",
       "scene": {
        "type": "montagem",
-       "cada": 1.2,
+       "cada": 2.6,
        "clips": [
         {
          "type": "video",
-         "media": "x_caixa",
-         "search": "cash register",
-         "search_en": "cash register"
+         "media": "x_37",
+         "search": "bank fees credit card payment",
+         "search_en": "bank fees credit card payment"
         },
         {
          "type": "video",
-         "media": "x_cartao",
-         "search": "credit card payment",
-         "search_en": "credit card payment"
-        },
-        {
-         "type": "video",
-         "media": "x_multidao",
-         "search": "crowd city street",
-         "search_en": "crowd city street"
+         "media": "x_38",
+         "search": "people paying at cashier",
+         "search_en": "people paying at cashier"
         }
        ],
        "fallback": {
@@ -688,25 +504,19 @@
       "text": "Ou seja: quando um banco que pagava demais quebra, a conta não some. Ela se espalha.",
       "scene": {
        "type": "montagem",
-       "cada": 1.2,
+       "cada": 2.6,
        "clips": [
         {
          "type": "video",
-         "media": "x_notas",
-         "search": "money bills falling",
-         "search_en": "money bills falling"
+         "media": "x_39",
+         "search": "money falling",
+         "search_en": "money falling"
         },
         {
          "type": "video",
-         "media": "x_grafico",
-         "search": "chart going down",
-         "search_en": "chart going down"
-        },
-        {
-         "type": "video",
-         "media": "x_luzes",
-         "search": "city lights night aerial",
-         "search_en": "city lights night aerial"
+         "media": "x_40",
+         "search": "crowd city street",
+         "search_en": "crowd city street"
         }
        ],
        "fallback": {
@@ -719,25 +529,19 @@
       "text": "Foi o que aconteceu com o Banco Master. Um milhão e seiscentas mil pessoas tinham dinheiro lá.",
       "scene": {
        "type": "montagem",
-       "cada": 1.2,
+       "cada": 2.6,
        "clips": [
         {
          "type": "video",
-         "media": "x_fila",
-         "search": "people queue",
-         "search_en": "people queue"
+         "media": "x_41",
+         "search": "long queue people",
+         "search_en": "long queue people"
         },
         {
          "type": "video",
-         "media": "x_banco",
-         "search": "bank building",
-         "search_en": "bank building"
-        },
-        {
-         "type": "video",
-         "media": "x_multidao",
-         "search": "crowd city street",
-         "search_en": "crowd city street"
+         "media": "x_42",
+         "search": "crowd of people",
+         "search_en": "crowd of people"
         }
        ],
        "fallback": {
@@ -750,25 +554,19 @@
       "text": "O Banco Central decretou a liquidação, e a estimativa é que o FGC tenha que cobrir cerca de quarenta e um bilhões de reais.",
       "scene": {
        "type": "montagem",
-       "cada": 1.2,
+       "cada": 2.6,
        "clips": [
         {
          "type": "video",
-         "media": "x_cofre",
-         "search": "bank vault",
-         "search_en": "bank vault"
+         "media": "x_43",
+         "search": "central bank building",
+         "search_en": "central bank building"
         },
         {
          "type": "video",
-         "media": "x_dinheiro",
-         "search": "counting money cash",
-         "search_en": "counting money cash"
-        },
-        {
-         "type": "video",
-         "media": "x_predio",
-         "search": "skyscraper city night",
-         "search_en": "skyscraper city night"
+         "media": "x_44",
+         "search": "pile of money",
+         "search_en": "pile of money"
         }
        ],
        "fallback": {
@@ -780,113 +578,37 @@
      {
       "text": "É a maior conta da história do fundo.",
       "scene": {
-       "type": "montagem",
-       "cada": 1.2,
-       "clips": [
-        {
-         "type": "video",
-         "media": "x_grafico",
-         "search": "chart going down",
-         "search_en": "chart going down"
-        },
-        {
-         "type": "video",
-         "media": "x_chuva",
-         "search": "rain window night",
-         "search_en": "rain window night"
-        }
-       ],
-       "fallback": {
-        "type": "bigtext",
-        "lines": []
-       }
+       "type": "video",
+       "media": "x_45",
+       "search": "stack of money",
+       "search_en": "stack of money"
       }
      },
      {
       "text": "Os investigados negam irregularidades e ninguém foi julgado até agora.",
       "scene": {
-       "type": "montagem",
-       "cada": 1.2,
-       "clips": [
-        {
-         "type": "video",
-         "media": "x_papel",
-         "search": "documents papers desk",
-         "search_en": "documents papers desk"
-        },
-        {
-         "type": "video",
-         "media": "x_policia",
-         "search": "police car lights",
-         "search_en": "police car lights"
-        },
-        {
-         "type": "video",
-         "media": "x_predio",
-         "search": "skyscraper city night",
-         "search_en": "skyscraper city night"
-        }
-       ],
-       "fallback": {
-        "type": "bigtext",
-        "lines": []
-       }
+       "type": "video",
+       "media": "x_46",
+       "search": "judge gavel courtroom",
+       "search_en": "judge gavel courtroom"
       }
      },
      {
       "text": "Da próxima vez que um CDB pagar muito acima do mercado, lembra dessa história.",
       "scene": {
-       "type": "montagem",
-       "cada": 1.2,
-       "clips": [
-        {
-         "type": "video",
-         "media": "x_cartao",
-         "search": "credit card payment",
-         "search_en": "credit card payment"
-        },
-        {
-         "type": "video",
-         "media": "x_dinheiro",
-         "search": "counting money cash",
-         "search_en": "counting money cash"
-        },
-        {
-         "type": "video",
-         "media": "x_relogio",
-         "search": "clock ticking",
-         "search_en": "clock ticking"
-        }
-       ],
-       "fallback": {
-        "type": "bigtext",
-        "lines": []
-       }
+       "type": "video",
+       "media": "x_47",
+       "search": "man looking at phone banking app",
+       "search_en": "man looking at phone banking app"
       }
      },
      {
       "text": "O caso completo do Banco Master está no canal Custo Oculto.",
       "scene": {
-       "type": "montagem",
-       "cada": 1.2,
-       "clips": [
-        {
-         "type": "video",
-         "media": "x_luzes",
-         "search": "city lights night aerial",
-         "search_en": "city lights night aerial"
-        },
-        {
-         "type": "video",
-         "media": "x_banco",
-         "search": "bank building",
-         "search_en": "bank building"
-        }
-       ],
-       "fallback": {
-        "type": "bigtext",
-        "lines": []
-       }
+       "type": "video",
+       "media": "x_48",
+       "search": "city skyline night aerial",
+       "search_en": "city skyline night aerial"
       }
      }
     ]
