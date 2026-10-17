@@ -185,7 +185,7 @@ def main():
     with open(os.path.join(trab, "projeto_render.json"), "w", encoding="utf8") as f:
         json.dump(p, f, ensure_ascii=False)
     cred_arq = {}
-    M.ia_imagens(p.get("ia") or {}, pasta_midia, not p["script"]["long"]["parts"], log)
+    M.ia_imagens(p.get("ia") or {}, pasta_midia, not p["script"]["long"]["parts"], log, os.path.join(RAIZ, "previas", f"ia_{slug}_"))
     M.wikimedia([s for s in cenas if s.get("wiki")], pasta_midia, log, creditos, cred_arq)
     M.logos(p, pasta_midia, log)
     man = M.manifesto(pasta_midia)

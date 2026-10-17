@@ -313,7 +313,7 @@ def pixabay(pend, pasta, vertical, log, creditos, qen=None):
     print(f"::notice title=Clipes de apoio::{ok} de {len(pend)} clipes vieram do Pixabay", flush=True)
 
 
-def ia_imagens(pedidos, pasta, vertical, log):
+def ia_imagens(pedidos, pasta, vertical, log, copia=None):
     """Gera cenas por IA (Cloudflare Workers AI, FLUX.2 Klein 4B, dentro da cota grátis diária).
     pedidos: {chave: prompt} ou {chave: {"prompt", "seed"?}}. Salva <chave>.jpg na pasta de mídia; não refaz o que já existe."""
     conta = os.environ.get("CF_ACCOUNT_ID", "").strip(); tok = os.environ.get("CF_AI_TOKEN", "").strip()
@@ -344,6 +344,8 @@ def ia_imagens(pedidos, pasta, vertical, log):
             from PIL import Image
             import io
             Image.open(io.BytesIO(dado)).convert("RGB").save(dest, quality=92)
+            if copia:  # cópia em previas/ para revisar
+                os.makedirs(os.path.dirname(copia), exist_ok=True); Image.open(dest).save(f"{copia}{k}.jpg", quality=85)
             log(f"  imagem IA {k}: ok")
         except Exception as e:
             log(f"  imagem IA {k}: falhou ({str(e)[:160]})")
