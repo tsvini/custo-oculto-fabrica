@@ -403,17 +403,22 @@ def coletar_logos(obj, out=None):
 def logos(projeto, pasta, log):
     """Logos de marcas do Wikimedia Commons (arquivo exato), em PNG com fundo transparente: <chave>.png.
     No Commons só ficam logos livres (em geral 'PD-textlogo'); ainda assim confere a licença."""
-    for k, arq in coletar_logos(projeto).items():
+    for k, arqs in coletar_logos(projeto).items():
         dest = os.path.join(pasta, k + ".png")
         if os.path.exists(dest):
             continue
-        try:
-            res = _commons_busca(arq if arq.lower().startswith("file:") else "File:" + arq, largura=1400)
-        except Exception as e:
-            log(f"  logo {k}: busca falhou ({str(e)[:100]})"); continue
-        r = res[0] if res else None
-        if not r or not r.get("url") or not LIVRE.match(r["lic"] or ""):
-            print(f"::warning title=Sem logo ({k})::{arq} não encontrado ou licença não livre ({r and r.get('lic')})", flush=True); continue
+        r = None
+        for arq in (arqs if isinstance(arqs, list) else [arqs]):  # vários candidatos: usa o primeiro livre
+            try:
+                res = _commons_busca(arq if arq.lower().startswith("file:") else "File:" + arq, largura=1400)
+            except Exception as e:
+                log(f"  logo {k}: busca falhou ({str(e)[:100]})"); continue
+            c = res[0] if res else None
+            if c and c.get("url") and LIVRE.match(c["lic"] or ""):
+                r = c; break
+            print(f"::notice title=Logo descartado ({k})::{arq}: não encontrado ou licença não livre ({c and c.get('lic')})", flush=True)
+        if not r:
+            print(f"::warning title=Sem logo ({k})::nenhum candidato livre em {arqs}", flush=True); continue
         try:
             _baixa(r["url"], dest, headers={"User-Agent": UA_BOT})
             from PIL import Image
