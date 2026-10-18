@@ -58,5 +58,17 @@
   "titulo": "Seu projeto de teste vira portfólio",
   "video_id": "Q5iuF5DYLYw",
   "publishAt": "2026-11-09T12:00:00-03:00"
+ },
+ {
+  "arquivo": "viniqa_lote1_short8.mp4",
+  "titulo": "npx não é reconhecido: como resolver",
+  "video_id": "1cqvxCZ_kVs",
+  "publishAt": "2026-11-11T12:00:00-03:00"
+ },
+ {
+  "arquivo": "viniqa_lote1_short12.mp4",
+  "titulo": "cypress open ou cypress run",
+  "video_id": "PeO1_aVL5A8",
+  "publishAt": "2026-11-13T12:00:00-03:00"
  }
 ]

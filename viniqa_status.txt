@@ -1,9 +1,1 @@
-17/10 11:11 · 10 no canal · ERRO: iniciar envio: erro 400: {
-  "error": {
-    "code": 400,
-    "message": "The user has exceeded the number of videos they may upload.",
-    "errors": [
-      {
-        "message": "The user has exceeded the number of videos they may upload.",
-        "domain": "youtube.video",
-        "reason": "uploa
+18/10 11:32 · 12 no canal · npx não é reconhecido: como resolver → 11/11 12h (youtu.be/1cqvxCZ_kVs) | cypress open ou cypress run → 13/11 12h (youtu.be/PeO1_aVL5A8)
