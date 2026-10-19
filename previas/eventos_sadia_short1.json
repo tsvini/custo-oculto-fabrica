@@ -8,7 +8,17 @@
    "vol": null,
    "max": null,
    "dur": 0.4,
-   "cena": "bigtext | fala: A Perdigão."
+   "cena": "montagem | fala: A Perdigão."
+  },
+  {
+   "t0": 7.47,
+   "t1": 10.469999999999999,
+   "tipo": "fx",
+   "busca": "deep cinematic boom hit",
+   "vol": 0.45,
+   "max": 0.9,
+   "dur": null,
+   "cena": "montagem | fala: A Perdigão."
   },
   {
    "t0": 16.89,
@@ -31,12 +41,32 @@
    "cena": "stamp | fala: O primeiro em sessenta e quatro anos."
   },
   {
+   "t0": 26.07,
+   "t1": 29.07,
+   "tipo": "fx",
+   "busca": "cinematic whoosh",
+   "vol": 0.35,
+   "max": 0.6,
+   "dur": null,
+   "cena": "montagem | fala: Pouco depois, Sadia e Perdigão anunciaram a união."
+  },
+  {
    "t0": 32.89,
    "t1": 35.89,
    "tipo": "fx",
    "busca": "soft whoosh",
    "vol": 0.3,
    "max": 0.4,
+   "dur": null,
+   "cena": "montagem | fala: Pra aprovar o negócio, a Perdigão teve que sumir de vários produtos por até cinco anos."
+  },
+  {
+   "t0": 35.03,
+   "t1": 38.03,
+   "tipo": "fx",
+   "busca": "short clock tick",
+   "vol": 0.35,
+   "max": 0.3,
    "dur": null,
    "cena": "montagem | fala: Pra aprovar o negócio, a Perdigão teve que sumir de vários produtos por até cinco anos."
   },
@@ -58,9 +88,9 @@
    "vol": null,
    "max": null,
    "dur": 0.35,
-   "cena": "montagem | fala: Depois de tudo isso, Sadia e Perdigão acabaram virando uma empresa só."
+   "cena": "timeline | fala: Depois de tudo isso, Sadia e Perdigão acabaram virando uma empresa só."
   }
  ],
- "trilha": "doc",
+ "trilha": "tensao",
  "roteiro": "A Sadia perdeu dois bilhões e meio apostando no dólar. E meses depois acabou se juntando à maior rival. A Perdigão. Em dois mil e oito, a Sadia vinha de faturamento recorde. Só que a empresa apostou que o dólar ia continuar caindo. A crise veio. E o dólar disparou. Resultado: quase dois bilhões e meio de prejuízo. O primeiro em sessenta e quatro anos. Pouco depois, Sadia e Perdigão anunciaram a união. Só que o Cade não deixou passar de qualquer jeito. Pra aprovar o negócio, a Perdigão teve que sumir de vários produtos por até cinco anos. E várias marcas e fábricas tiveram que ser vendidas. Depois de tudo isso, Sadia e Perdigão acabaram virando uma empresa só. Você lembrava que elas já foram rivais?"
 }

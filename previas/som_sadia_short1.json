@@ -1,44 +1,39 @@
 {
- "nota_final": 7,
+ "nota_final": 7.5,
  "rodadas": [
   {
    "rodada": 1,
-   "nota": 7,
+   "nota": 7.5,
    "avaliacao": {
-    "nota": 7,
-    "resumo": "A mixagem entre voz e trilha musical está equilibrada e a clareza vocal é ótima. Os efeitos de carimbo funcionam bem tematicamente, mas o início do vídeo perde força pelo gancho sem impacto sonoro (hook seco), além de transições e elementos visuais de mercado financeiro ficarem sem reforço de SFX.",
+    "nota": 7.5,
+    "resumo": "A sonoplastia tem boas escolhas pontuais de impactos e carimbos para marcar os momentos dramáticos e visuais na segunda metade, mas o início do vídeo (primeiros 7 segundos) ficou completamente desprovido de sound design para elementos visuais fortes como o dinheiro queimando. Além disso, o segundo carimbo está ligeiramente atrasado em relação à animação na tela.",
     "problemas": [
      {
-      "evento": 4,
-      "problema": "O carimbo vermelho 'VENDIDAS' bate na tela por volta dos 37,6s, mas o som só dispara aos 38,2s, ficando claramente dessincronizado.",
+      "evento": 3,
+      "problema": "O volume do carimbo em 0.7 está um pouco agressivo e compete pontualmente com a voz do narrador.",
+      "acao": "mais_baixo"
+     },
+     {
+      "evento": 7,
+      "problema": "O som do carimbo 'VENDIDAS' entra cerca de 0.4s depois do impacto visual do selo vermelho na tela.",
       "acao": "adiantar",
-      "segundos": 0.5
-     },
-     {
-      "evento": 0,
-      "problema": "Marcador de silêncio desnecessário ocupando a timeline.",
-      "acao": "remover"
-     },
-     {
-      "evento": 5,
-      "problema": "Marcador de silêncio desnecessário.",
-      "acao": "remover"
+      "segundos": 0.4
      }
     ],
     "faltando": [
      {
-      "t": 0.2,
-      "busca": "heavy sub impact cash drop",
+      "t": 1.2,
+      "busca": "fire crackle flame burn whoosh",
       "tipo": "fx"
      },
      {
-      "t": 12.5,
-      "busca": "descending tone chart fall",
+      "t": 6.8,
+      "busca": "chess piece wood hit impact",
       "tipo": "fx"
      },
      {
-      "t": 25.5,
-      "busca": "corporate pop interface click",
+      "t": 16.2,
+      "busca": "rising fast whoosh chart swell",
       "tipo": "fx"
      }
     ]
@@ -52,7 +47,18 @@
      "vol": 0.5,
      "max": null,
      "dur": 0.4,
-     "cena": "bigtext | fala: A Perdigão."
+     "cena": "montagem | fala: A Perdigão."
+    },
+    {
+     "t0": 7.47,
+     "t1": 10.469999999999999,
+     "tipo": "fx",
+     "busca": "deep cinematic boom hit",
+     "vol": 0.45,
+     "max": 0.9,
+     "dur": null,
+     "cena": "montagem | fala: A Perdigão.",
+     "fonte": "freesound #649445 Cinematic Woosh SFX-015.wav"
     },
     {
      "t0": 16.89,
@@ -77,6 +83,17 @@
      "fonte": "freesound #683031 Thump.mp3"
     },
     {
+     "t0": 26.07,
+     "t1": 29.07,
+     "tipo": "fx",
+     "busca": "cinematic whoosh",
+     "vol": 0.35,
+     "max": 0.6,
+     "dur": null,
+     "cena": "montagem | fala: Pouco depois, Sadia e Perdigão anunciaram a união.",
+     "fonte": "freesound #222493 Digital Data Whoosh"
+    },
+    {
      "t0": 32.89,
      "t1": 35.89,
      "tipo": "fx",
@@ -86,6 +103,17 @@
      "dur": null,
      "cena": "montagem | fala: Pra aprovar o negócio, a Perdigão teve que sumir de vários produtos por até cinco anos.",
      "fonte": "freesound #701104 Whoosh stereo light (transition)"
+    },
+    {
+     "t0": 35.03,
+     "t1": 38.03,
+     "tipo": "fx",
+     "busca": "short clock tick",
+     "vol": 0.35,
+     "max": 0.3,
+     "dur": null,
+     "cena": "montagem | fala: Pra aprovar o negócio, a Perdigão teve que sumir de vários produtos por até cinco anos.",
+     "fonte": "freesound #321582 clock ticking"
     },
     {
      "t0": 38.23,
@@ -106,7 +134,7 @@
      "vol": 0.5,
      "max": null,
      "dur": 0.35,
-     "cena": "montagem | fala: Depois de tudo isso, Sadia e Perdigão acabaram virando uma empresa só."
+     "cena": "timeline | fala: Depois de tudo isso, Sadia e Perdigão acabaram virando uma empresa só."
     }
    ]
   }
