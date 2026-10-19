@@ -1,5 +1,5 @@
 {
- "data": "2026-10-18",
+ "data": "2026-10-19",
  "por_formato_12m": [
   {
    "creatorContentType": "creatorContentTypeUnspecified",
@@ -9,14 +9,14 @@
   },
   {
    "creatorContentType": "shorts",
-   "views": 3962,
-   "estimatedMinutesWatched": 805,
+   "views": 4001,
+   "estimatedMinutesWatched": 910,
    "subscribersGained": 12
   },
   {
    "creatorContentType": "videoOnDemand",
-   "views": 42,
-   "estimatedMinutesWatched": 85,
+   "views": 35,
+   "estimatedMinutesWatched": 83,
    "subscribersGained": 1
   }
  ],
@@ -29,24 +29,18 @@
   },
   {
    "creatorContentType": "shorts",
-   "views": 3928,
-   "estimatedMinutesWatched": 799,
-   "subscribersGained": 12
+   "views": 3151,
+   "estimatedMinutesWatched": 864,
+   "subscribersGained": 10
   },
   {
    "creatorContentType": "videoOnDemand",
-   "views": 41,
-   "estimatedMinutesWatched": 83,
+   "views": 26,
+   "estimatedMinutesWatched": 58,
    "subscribersGained": 1
   }
  ],
  "dia_a_dia_28d": [
-  {
-   "day": "2026-09-20",
-   "views": 0,
-   "estimatedMinutesWatched": 0,
-   "subscribersGained": 0
-  },
   {
    "day": "2026-09-21",
    "views": 0,
@@ -187,8 +181,8 @@
   },
   {
    "day": "2026-10-14",
-   "views": 734,
-   "estimatedMinutesWatched": 474,
+   "views": 714,
+   "estimatedMinutesWatched": 470,
    "subscribersGained": 5
   },
   {
@@ -196,32 +190,38 @@
    "views": 202,
    "estimatedMinutesWatched": 134,
    "subscribersGained": 2
+  },
+  {
+   "day": "2026-10-16",
+   "views": 52,
+   "estimatedMinutesWatched": 106,
+   "subscribersGained": 0
   }
  ],
  "origem_28d": [
   {
    "insightTrafficSourceType": "SHORTS",
-   "views": 3682,
-   "estimatedMinutesWatched": 722
+   "views": 3717,
+   "estimatedMinutesWatched": 753
   },
   {
    "insightTrafficSourceType": "YT_SEARCH",
-   "views": 160,
+   "views": 167,
    "estimatedMinutesWatched": 25
   },
   {
    "insightTrafficSourceType": "YT_CHANNEL",
-   "views": 64,
-   "estimatedMinutesWatched": 38
+   "views": 69,
+   "estimatedMinutesWatched": 112
   },
   {
    "insightTrafficSourceType": "SUBSCRIBER",
-   "views": 28,
+   "views": 30,
    "estimatedMinutesWatched": 26
   },
   {
    "insightTrafficSourceType": "YT_OTHER_PAGE",
-   "views": 22,
+   "views": 24,
    "estimatedMinutesWatched": 6
   },
   {
@@ -231,7 +231,7 @@
   },
   {
    "insightTrafficSourceType": "NO_LINK_OTHER",
-   "views": 5,
+   "views": 6,
    "estimatedMinutesWatched": 8
   },
   {
@@ -313,6 +313,10 @@
    "views": 1
   },
   {
+   "insightTrafficSourceDetail": "escândalo do banco master explicado",
+   "views": 1
+  },
+  {
    "insightTrafficSourceDetail": "historia israel",
    "views": 1
   },
@@ -367,10 +371,10 @@
   },
   {
    "video": "xQAsC7S2KO8",
-   "views": 707,
-   "estimatedMinutesWatched": 560,
+   "views": 708,
+   "estimatedMinutesWatched": 559,
    "averageViewDuration": 77,
-   "averageViewPercentage": 76.37,
+   "averageViewPercentage": 76.28,
    "subscribersGained": 3,
    "likes": 40,
    "comments": 1,
@@ -433,10 +437,10 @@
   },
   {
    "video": "FuuRBCl6ozY",
-   "views": 209,
+   "views": 210,
    "estimatedMinutesWatched": 27,
-   "averageViewDuration": 15,
-   "averageViewPercentage": 37.63,
+   "averageViewDuration": 14,
+   "averageViewPercentage": 37.31,
    "subscribersGained": 2,
    "likes": 6,
    "comments": 0,
@@ -447,7 +451,7 @@
    "views": 163,
    "estimatedMinutesWatched": 24,
    "averageViewDuration": 22,
-   "averageViewPercentage": 79.75,
+   "averageViewPercentage": 80.55,
    "subscribersGained": 1,
    "likes": 8,
    "comments": 1,
@@ -465,8 +469,19 @@
    "shares": 0
   },
   {
+   "video": "Po7fZ2-6vNg",
+   "views": 50,
+   "estimatedMinutesWatched": 26,
+   "averageViewDuration": 64,
+   "averageViewPercentage": 47.07,
+   "subscribersGained": 0,
+   "likes": 6,
+   "comments": 0,
+   "shares": 4
+  },
+  {
    "video": "u_n01fzotFM",
-   "views": 49,
+   "views": 47,
    "estimatedMinutesWatched": 3,
    "averageViewDuration": 13,
    "averageViewPercentage": 48.02,
@@ -476,15 +491,15 @@
    "shares": 0
   },
   {
-   "video": "Po7fZ2-6vNg",
-   "views": 41,
-   "estimatedMinutesWatched": 20,
-   "averageViewDuration": 60,
-   "averageViewPercentage": 43.83,
+   "video": "FHltNOMCClI",
+   "views": 29,
+   "estimatedMinutesWatched": 99,
+   "averageViewDuration": 330,
+   "averageViewPercentage": 216.08,
    "subscribersGained": 0,
-   "likes": 4,
+   "likes": 3,
    "comments": 0,
-   "shares": 4
+   "shares": 0
   },
   {
    "video": "A5cWOeTZqe0",
@@ -498,36 +513,14 @@
    "shares": 0
   },
   {
-   "video": "_EvPaiyk3nU",
-   "views": 15,
-   "estimatedMinutesWatched": 18,
-   "averageViewDuration": 124,
-   "averageViewPercentage": 21.44,
-   "subscribersGained": 0,
-   "likes": 1,
-   "comments": 0,
-   "shares": 0
-  },
-  {
    "video": "4WuKNxpR188",
    "views": 11,
    "estimatedMinutesWatched": 29,
    "averageViewDuration": 252,
-   "averageViewPercentage": 57.54,
+   "averageViewPercentage": 57.49999999999999,
    "subscribersGained": 0,
    "likes": 3,
    "comments": 0,
-   "shares": 0
-  },
-  {
-   "video": "3e-eXXCL27s",
-   "views": 11,
-   "estimatedMinutesWatched": 25,
-   "averageViewDuration": 166,
-   "averageViewPercentage": 33.42,
-   "subscribersGained": 1,
-   "likes": 2,
-   "comments": 2,
    "shares": 0
   },
   {
@@ -539,6 +532,28 @@
    "subscribersGained": 0,
    "likes": 1,
    "comments": 0,
+   "shares": 0
+  },
+  {
+   "video": "_EvPaiyk3nU",
+   "views": 10,
+   "estimatedMinutesWatched": 18,
+   "averageViewDuration": 180,
+   "averageViewPercentage": 31,
+   "subscribersGained": 0,
+   "likes": 1,
+   "comments": 0,
+   "shares": 0
+  },
+  {
+   "video": "3e-eXXCL27s",
+   "views": 8,
+   "estimatedMinutesWatched": 24,
+   "averageViewDuration": 243,
+   "averageViewPercentage": 48.8,
+   "subscribersGained": 1,
+   "likes": 2,
+   "comments": 2,
    "shares": 0
   },
   {
@@ -564,6 +579,17 @@
    "shares": 0
   },
   {
+   "video": "TIv6Sg8n_rI",
+   "views": 6,
+   "estimatedMinutesWatched": 11,
+   "averageViewDuration": 225,
+   "averageViewPercentage": 66.71,
+   "subscribersGained": 0,
+   "likes": 3,
+   "comments": 2,
+   "shares": 0
+  },
+  {
    "video": "Wbn2Es80UJ0",
    "views": 5,
    "estimatedMinutesWatched": 0,
@@ -586,17 +612,6 @@
    "shares": 0
   },
   {
-   "video": "TIv6Sg8n_rI",
-   "views": 5,
-   "estimatedMinutesWatched": 11,
-   "averageViewDuration": 337,
-   "averageViewPercentage": 99.72,
-   "subscribersGained": 0,
-   "likes": 3,
-   "comments": 2,
-   "shares": 0
-  },
-  {
    "video": "XQiYeFLJpPY",
    "views": 5,
    "estimatedMinutesWatched": 0,
@@ -615,6 +630,17 @@
    "averageViewPercentage": 96.85,
    "subscribersGained": 0,
    "likes": 1,
+   "comments": 0,
+   "shares": 0
+  },
+  {
+   "video": "TZLpKjOWKH4",
+   "views": 1,
+   "estimatedMinutesWatched": 0,
+   "averageViewDuration": 13,
+   "averageViewPercentage": 41.82,
+   "subscribersGained": 0,
+   "likes": 0,
    "comments": 0,
    "shares": 0
   }
@@ -688,7 +714,7 @@
  },
  "contagem_atual": {
   "itapemirim_longo": {
-   "views": 12,
+   "views": 14,
    "likes": 3,
    "comentarios": 0,
    "status": "public"
@@ -718,19 +744,19 @@
    "status": "public"
   },
   "banco_master_short4": {
-   "views": 11,
+   "views": 13,
    "likes": 1,
    "comentarios": 1,
    "status": "public"
   },
   "banco_master_short3": {
-   "views": 131,
+   "views": 151,
    "likes": 2,
-   "comentarios": 0,
+   "comentarios": 1,
    "status": "public"
   },
   "banco_master_serie1": {
-   "views": 708,
+   "views": 709,
    "likes": 41,
    "comentarios": 2,
    "status": "public"
@@ -748,7 +774,7 @@
    "status": "public"
   },
   "banco_master_serie4": {
-   "views": 35,
+   "views": 38,
    "likes": 1,
    "comentarios": 2,
    "status": "public"
@@ -760,7 +786,7 @@
    "status": "private"
   },
   "netflix_short4": {
-   "views": 1,
+   "views": 0,
    "likes": 0,
    "comentarios": 0,
    "status": "private"
@@ -856,9 +882,9 @@
    "status": "private"
   },
   "kolynos_serie1": {
-   "views": 2,
-   "likes": 0,
-   "comentarios": 0,
+   "views": 50,
+   "likes": 1,
+   "comentarios": 1,
    "status": "public"
   },
   "americanas_short1": {
@@ -892,7 +918,7 @@
    "status": "public"
   },
   "netflix_en_serie2": {
-   "views": 3,
+   "views": 2,
    "likes": 0,
    "comentarios": 0,
    "status": "public"
@@ -1019,7 +1045,7 @@
   }
  },
  "canal": {
-  "viewCount": "4016",
+  "viewCount": "4541",
   "subscriberCount": "11",
   "hiddenSubscriberCount": false,
   "videoCount": "30"
@@ -1043,7 +1069,7 @@
    "duracao": "PT1M41S",
    "status": "public",
    "agendado": null,
-   "views": 708,
+   "views": 709,
    "likes": 41,
    "comentarios": 2
   },
@@ -1087,7 +1113,7 @@
    "duracao": "PT46S",
    "status": "public",
    "agendado": null,
-   "views": 284,
+   "views": 293,
    "likes": 11,
    "comentarios": 1
   },
@@ -1142,9 +1168,9 @@
    "duracao": "PT29S",
    "status": "public",
    "agendado": null,
-   "views": 131,
+   "views": 153,
    "likes": 2,
-   "comentarios": 0
+   "comentarios": 1
   },
   {
    "id": "bLlZo9T-tO8",
@@ -1180,6 +1206,17 @@
    "comentarios": 1
   },
   {
+   "id": "_aYquXLalP0",
+   "titulo": "Kolynos vendia o dobro da Colgate. Então ela sumiu (parte 1) #shorts",
+   "publicado": "2026-10-18T11:00:20Z",
+   "duracao": "PT1M25S",
+   "status": "public",
+   "agendado": null,
+   "views": 50,
+   "likes": 1,
+   "comentarios": 1
+  },
+  {
    "id": "FHltNOMCClI",
    "titulo": "Banco Master: parte 3 de 4 #shorts",
    "publicado": "2026-10-16T11:00:18Z",
@@ -1197,7 +1234,7 @@
    "duracao": "PT1M33S",
    "status": "public",
    "agendado": null,
-   "views": 35,
+   "views": 38,
    "likes": 1,
    "comentarios": 2
   },
@@ -1219,7 +1256,7 @@
    "duracao": "PT7M19S",
    "status": "public",
    "agendado": null,
-   "views": 12,
+   "views": 14,
    "likes": 3,
    "comentarios": 0
   },
@@ -1230,7 +1267,7 @@
    "duracao": "PT33S",
    "status": "public",
    "agendado": null,
-   "views": 11,
+   "views": 13,
    "likes": 1,
    "comentarios": 1
   },
@@ -1345,28 +1382,6 @@
    "comentarios": 0
   },
   {
-   "id": "_aYquXLalP0",
-   "titulo": "Kolynos vendia o dobro da Colgate. Então ela sumiu (parte 1) #shorts",
-   "publicado": "2026-10-18T11:00:20Z",
-   "duracao": "PT1M25S",
-   "status": "public",
-   "agendado": null,
-   "views": 2,
-   "likes": 0,
-   "comentarios": 0
-  },
-  {
-   "id": "F2uu4UIL2jA",
-   "titulo": "Só existe uma Blockbuster no mundo #shorts",
-   "publicado": "2026-10-14T17:49:00Z",
-   "duracao": "PT25S",
-   "status": "private",
-   "agendado": "2026-11-08T21:00:00Z",
-   "views": 1,
-   "likes": 0,
-   "comentarios": 0
-  },
-  {
    "id": "RAbWvcCYWUk",
    "titulo": "O Orkut vai voltar? O que ninguém te contou (parte 4) #shorts",
    "publicado": "2026-10-17T18:10:59Z",
@@ -1439,6 +1454,17 @@
    "duracao": "PT8M30S",
    "status": "private",
    "agendado": "2026-11-03T15:00:00Z",
+   "views": 0,
+   "likes": 0,
+   "comentarios": 0
+  },
+  {
+   "id": "F2uu4UIL2jA",
+   "titulo": "Só existe uma Blockbuster no mundo #shorts",
+   "publicado": "2026-10-14T17:49:00Z",
+   "duracao": "PT25S",
+   "status": "private",
+   "agendado": "2026-11-08T21:00:00Z",
    "views": 0,
    "likes": 0,
    "comentarios": 0
