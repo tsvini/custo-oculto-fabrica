@@ -1,64 +1,59 @@
 # Pergunta
-Você é um editor sênior de Shorts virais do YouTube/TikTok no Brasil. Assista e escute este short inteiro (história Nestlé x Garoto). Dê uma nota de 0 a 10 para cada item: 1) gancho dos 3 primeiros segundos, 2) narração e pronúncia (Nestlé, Cade, Garoto, Lollo), 3) trilha de fundo (combina? volume em relação à voz?), 4) efeitos sonoros (algum sobrando, mal sincronizado ou faltando? cite o segundo exato), 5) imagens e cortes (alguma cena repetida, parada demais ou sem sentido? cite o segundo), 6) textos na tela, 7) retenção e final. Depois dê a NOTA GERAL e liste, em ordem de impacto, as mudanças concretas e específicas (com o segundo do vídeo) que levariam o vídeo a no mínimo 9,5. Não sugira coisas vagas. Não invente erros de fatos ou datas: os fatos foram checados.
+Você é um editor sênior de Shorts virais do YouTube/TikTok no Brasil. Assista e escute este short inteiro (história Nestlé x Garoto). Dê uma nota de 0 a 10 para cada item: 1) gancho dos 3 primeiros segundos, 2) narração e pronúncia, 3) trilha de fundo, 4) efeitos sonoros (cite o segundo exato de qualquer problema), 5) imagens e cortes (alguma cena repetida, parada demais ou sem sentido? cite o segundo), 6) textos na tela, 7) retenção e final. Depois dê a NOTA GERAL e liste, em ordem de impacto, mudanças concretas (com o segundo) para chegar a no mínimo 9,5. Não sugira manchetes de jornal reais nem fotos de embalagens (não temos licença). Não invente erros de fatos ou datas: os fatos foram checados.
 
 # Resposta do Gemini
-Avaliação técnica de edição para Shorts/Reels/TikTok:
+Aqui está a análise técnica e editorial completa do Short:
 
-1) Gancho dos 3 primeiros segundos: 7.5/10
-A premissa é excelente ("A Nestlé comprou a Garoto e o Cade proibiu"), desperta curiosidade imediata no público brasileiro. Porém, visualmente começa morno: abre com uma foto estática desfocada da fachada da Garoto e pula para um aperto de mãos genérico de banco de imagens aos 00:02. Falta dinamismo visual imediato (ex.: corte rápido com os logos gigantes frente a frente e um efeito de choque).
+### NOTAS POR CRITÉRIO (0 a 10)
 
-2) Narração e pronúncia: 8.5/10
-A dicção é muito limpa e o ritmo é constante. A pronúncia de marcas e termos ("Nestlé", "Cade", "Garoto", "Lollo", "Chokito") está 100% correta no padrão brasileiro. O único ponto contra é o tom excessivamente linear e sintético (típico de voz neural/IA sem modulação dramática em viradas como "Só tinha um problema" ou "Não aconteceu").
+1) Gancho dos 3 primeiros segundos: 6.5/10
+O início é muito protocolar e descritivo ("A Nestlé comprou a Garoto em 2002"). Para piorar, entre 00:01 e 00:02 a tela fica quase toda preta com apenas duas palavras soltas, diminuindo drasticamente a retenção inicial no feed rápido do YouTube Shorts e TikTok.
 
-3) Trilha de fundo: 7.0/10
-A trilha escolhida tem um clima investigativo/curiosidade adequado e o volume está bem equalizado em relação à voz (não soterra a locução). No entanto, ela é linear demais: não possui viradas dinâmicas (beat drops, pausas dramáticas de silêncio ou aceleração de BPM no clímax).
+2) Narração e pronúncia: 9.0/10
+Dicção impecável, velocidade bem dosada, tom natural e sem erros de concordância ou pronúncia. Carrega bem o tom documental/curiosidade.
 
-4) Efeitos sonoros (SFX): 6.0/10
-- Acertos: O carimbo de "Vetado" aos 00:05 funciona.
-- Falhas e faltas específicas:
-  • 00:01: Falta um whoosh ou som de assinatura/tensão logo no primeiro corte.
-  • 00:16 (5 x 1): Faltou som de batida de martelo/tribunal para pontuar a votação do CADE.
-  • 00:34 a 00:39: Aparecem 4 chocolates clássicos na tela em sequência ("Serenata de Amor", "Chokito", "Lollo", "Sensação") e NÃO HÁ nenhum som de pop/tick quando cada um entra. Fica silencioso e monótono.
-  • 00:40 ("NÃO ACONTECEU"): Deveria ter um corte seco na trilha com efeito de record stop ou impacto grave (boom/braam); o som atual é tímido.
+3) Trilha de fundo: 8.5/10
+A trilha de mistério/tensão corporativa funciona bem, mantém o volume equilibrado sob a voz e não compete com a fala.
 
-5) Imagens e cortes: 4.5/10 (O maior calcanhar de aquiles do vídeo)
-Há repetição excessiva e prejudicial de takes, o que derruba a retenção em vídeos curtos:
-  • A mesma foto externa da fábrica da Garoto (crédito Tiago Romero Garcia) aparece NADA MENOS QUE 6 VEZES: aos 00:00, 00:06, 00:18, 00:26, 00:42 e 00:55. Isso cansa o cérebro do espectador.
-  • O take de aperto de mãos de executivos é repetido exatamente igual aos 00:02 e aos 00:22.
-  • A imagem do corredor de supermercado com chocolates repete idêntica aos 00:09 e aos 00:33.
-  • A mesa de reunião da diretoria repete aos 00:03, 00:16 e 00:48.
-Faltou variedade visual real: embalagens históricas, manchetes de jornais de época, caixas de bombom amarela da Garoto e vermelha da Nestlé.
+4) Efeitos sonoros: 6.5/10
+- Aos 00:16: aparece o martelo da justiça na mesa, mas não há efeito de martelada/impacto na madeira, gerando frustração sensorial.
+- Aos 00:20: a contagem rápida de dias ("46" subindo para "150") não tem ruído de roleta, contador digital ou clique acelerado.
+- Aos 00:55: a animação da barra de linha do tempo não possui som sutil de passagem ou preenchimento.
+
+5) Imagens e cortes: 6.0/10
+- 00:10 a 00:15: a tigela de chocolate fica estática por 5 segundos inteiros. Para vídeo curto vertical, 5 segundos na mesma imagem estagnada derruba o engajamento.
+- 00:33 a 00:39: a tomada do corredor do supermercado fica parada por mais de 6 segundos apenas empilhando texto.
+- 00:42: cena repetida. O fundo do documento do CADE é exatamente a mesma foto da fachada da fábrica usada aos 00:00.
 
 6) Textos na tela: 8.0/10
-Legendas dinâmicas bem posicionadas e legíveis. Os textos-chave em destaque central funcionam bem. Ponto de melhoria: em alguns momentos a tela fica poluída com 3 camadas de texto (crédito no topo + texto temático no meio + legenda da fala embaixo, como em 00:06 e 00:18).
+Boa hierarquia visual, uso consistente de cores da identidade (amarelo, branco e cinza escuro), legendas dinâmicas e legíveis no mobile.
 
-7) Retenção e final: 7.0/10
-O arco narrativo mantém o interesse pela história ser curiosa. O final ("Você sabia que a Garoto é da Nestlé?") busca engajamento, mas a transição de volta para o início ("A Nestlé comprou...") não cria um loop perfeito e a última cena volta, mais uma vez, para a foto repetida da fábrica.
+7) Retenção e final: 6.5/10
+O final com a pergunta tradicional ("Você sabia que a Garoto é da Nestlé?") é um anticlímax que quebra o dinamismo e sinaliza ao algoritmo que o vídeo acabou. Não aproveita o potencial de loop infinito.
 
--------------------------
-NOTA GERAL: 6.8 / 10
--------------------------
+---
 
-MUDANÇAS ESPECÍFICAS (EM ORDEM DE IMPACTO PARA CHEGAR A 9.5+):
+### NOTA GERAL: 7.2 / 10
 
-1. [Impacto Máximo - 00:06, 00:18, 00:26, 00:42, 00:55] Eliminar a repetição da foto da fachada da Garoto:
-   - 00:06: Substituir por um recorte PNG em tela dividida: Caixa Amarela da Garoto vs. Caixa Especialidades da Nestlé com efeito de 'VS'.
-   - 00:18: Inserir manchete real de jornal de 2004 (ex.: "Cade veta compra da Garoto pela Nestlé") com zoom-in rápido.
-   - 00:26: Colocar imagens de arquivo dos galpões de distribuição ou caminhões de entrega da Garoto/Nestlé.
-   - 00:42: Inserir a imagem da sede oficial do CADE em Brasília com um selo 3D de "Aprovado após 21 anos".
-   - 00:55: Finalizar mostrando a caixa amarela da Garoto com o logo sutil da Nestlé no verso em close.
+---
 
-2. [Impacto Alto - 00:33 a 00:39] Trocar a cena repetida do mercado por imagens reais dos chocolates:
-   - Em vez de deixar a imagem estática de gôndola, inserir imagens com fundo recortado (pop-up) das embalagens clássicas do Serenata de Amor (00:34), Chokito (00:36), Lollo (00:37) e Sensação (00:38), sincronizadas com SFX de 'pop/swoosh' em cada uma delas.
+### MUDANÇAS CONCRETAS PARA CHEGAR A 9.5+ (EM ORDEM DE IMPACTO)
 
-3. [Impacto Alto - 00:00 a 00:03] Turbinar o gancho visual inicial:
-   - Iniciar aos 00:00 já com corte dinâmico: logo Nestlé e logo Garoto colidindo com efeito de glitch ou som de impacto metálico, em vez de foto estática desfocada.
+1. Otimizar o Gancho Inicial (00:00 a 00:03) [Impacto Altíssimo]
+- Aos 00:00-00:02: Elimine o fundo preto vazio de 00:01. Mantenha movimento contínuo (zoom-in lento ou corte seco para B-roll de produção ou contrato).
+- Reformule o texto de abertura na tela para despertar curiosidade imediata, por exemplo: "A MAIOR PROIBIÇÃO DA HISTÓRIA DO BRASIL" ou "POR QUE O GOVERNO PROIBIU ESTA COMPRA?", mantendo a fala atual sem tela vazia.
 
-4. [Impacto Médio - 00:40] Clímax dramático em "NÃO ACONTECEU":
-   - Cortar a trilha musical abruptamente aos 00:39.5, aplicar tela preta/vermelha com som pesado de impacto (sub-boom ou record scratch) e retomar a trilha aos 00:41 com batida mais rápida para o desfecho.
+2. Cortar a barriga visual e B-rolls estáticos (00:10 a 00:15 e 00:33 a 00:39) [Impacto Alto]
+- Aos 00:10 a 00:15: Divida esses 5 segundos em 2 cortes rápidos: (a) zoom dinâmico na tigela ou corte de chocolate sendo quebrado em pedaços com movimento (00:10 a 00:12) e (b) um gráfico em pizza/rosca animado mostrando "58% / Mais da metade do mercado" (00:12 a 00:15).
+- Aos 00:33 a 00:39: Não mantenha 6 segundos no mesmo ângulo do supermercado. Use cortes rápidos ou transições verticais (whip pan) alternando entre closes generéricos de doces/chocolates de B-roll a cada 1,5s enquanto os nomes das marcas sobem.
 
-5. [Impacto Médio - 00:02 e 00:22] Eliminar duplicação do aperto de mãos:
-   - Aos 00:22 ("A lei daquela época permitia..."), trocar o aperto de mãos repetido por uma animação de um livro/código de leis abrindo ou uma ilustração de contrato sendo assinado com caneta tinteiro.
+3. Corrigir a cena repetida (00:42) [Impacto Médio-Alto]
+- Aos 00:42: Substitua a foto de fundo repetida de 00:00 por uma tomada diferente: vista aérea de centro financeiro/escritórios corporativos ou da sede governamental/CADE em Brasília com desfoque suave atrás do documento com selo de "Aprovado".
 
-6. [Impacto Baixo - 00:55 a 00:58] Otimização de Loop:
-   - Mudar a locução final de "Você sabia que a Garoto é da Nestlé?" para algo que amarre com o início: "E foi assim que..." (corta direto para o começo: "A Nestlé comprou a Garoto em 2002..."), garantindo retenção infinita no player.
+4. Transformar o final em Loop Infinito (00:55 a 00:58) [Impacto Médio-Alto]
+- Aos 00:55 a 00:58: Remova a pergunta "Você sabia que a Garoto é da Nestlé?". Finalize a narração conectando diretamente com a primeira frase: "E essa briga de mais de duas décadas começou quando..." -> cortando direto para o início: "A Nestlé comprou a Garoto em 2002". Isso dobra o percentual de retenção no YouTube e TikTok.
+
+5. Enriquecer o Sound Design pontual (00:16 a 00:21 e 00:55) [Impacto Médio]
+- Aos 00:16: Adicione um efeito de martelo judicial (impacto seco de gavel de madeira) exatamente quando o texto "5 x 1 NO CADE" entra.
+- Aos 00:20: Insira som de contador analógico/digital acelerado enquanto o número corre até 150 dias.
+- Aos 00:55: Adicione um "swoosh" com efeito de estalo suave quando a linha de 21 anos se expandir na tela.
