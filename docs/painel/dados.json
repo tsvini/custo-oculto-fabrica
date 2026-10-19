@@ -1,5 +1,5 @@
 {
- "atualizado": "19/10/2026 14:12",
+ "atualizado": "19/10/2026 14:17",
  "fontes": {
   "custo_oculto": {
    "seguidores": 11,
@@ -333,6 +333,33 @@
   }
  },
  "agenda": [
+  {
+   "quando": "2026-10-19T14:20:00-03:00",
+   "plataforma": "Instagram",
+   "chave": "instagram",
+   "titulo": "A Nestlé comprou a Garoto. O Cade proibiu. Mas a compra já tinha acontecido",
+   "tipo": "short",
+   "id": "garoto_short1",
+   "url": "https://raw.githubusercontent.com/tsvini/custo-oculto-midia/c4297988009eaf9b7751e4c9fc959e98e1d9244e/garoto/garoto_short1.mp4"
+  },
+  {
+   "quando": "2026-10-19T14:20:00-03:00",
+   "plataforma": "Facebook",
+   "chave": "facebook",
+   "titulo": "A Nestlé comprou a Garoto. O Cade proibiu. Mas a compra já tinha acontecido",
+   "tipo": "short",
+   "id": "garoto_short1",
+   "url": "https://raw.githubusercontent.com/tsvini/custo-oculto-midia/c4297988009eaf9b7751e4c9fc959e98e1d9244e/garoto/garoto_short1.mp4"
+  },
+  {
+   "quando": "2026-10-19T14:20:00-03:00",
+   "plataforma": "TikTok",
+   "chave": "tiktok",
+   "titulo": "A Nestlé comprou a Garoto. O Cade proibiu. Mas a compra já tinha acontecido",
+   "tipo": "short",
+   "id": "garoto_short1",
+   "url": "https://raw.githubusercontent.com/tsvini/custo-oculto-midia/c4297988009eaf9b7751e4c9fc959e98e1d9244e/garoto/garoto_short1.mp4"
+  },
   {
    "quando": "2026-10-19T19:00:00-03:00",
    "titulo": "O presidente que durou 9 dias na Americanas",
