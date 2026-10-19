@@ -202,11 +202,11 @@
   {
    "insightTrafficSourceType": "SHORTS",
    "views": 3717,
-   "estimatedMinutesWatched": 753
+   "estimatedMinutesWatched": 754
   },
   {
    "insightTrafficSourceType": "YT_SEARCH",
-   "views": 167,
+   "views": 168,
    "estimatedMinutesWatched": 25
   },
   {
@@ -216,8 +216,8 @@
   },
   {
    "insightTrafficSourceType": "SUBSCRIBER",
-   "views": 30,
-   "estimatedMinutesWatched": 26
+   "views": 24,
+   "estimatedMinutesWatched": 25
   },
   {
    "insightTrafficSourceType": "YT_OTHER_PAGE",
@@ -710,7 +710,8 @@
   "vgny-o0w020": "orkut_serie2",
   "T3zJqVuxu4c": "orkut_short2",
   "WLXe91gQ-_4": "orkut_serie3",
-  "RAbWvcCYWUk": "orkut_serie4"
+  "RAbWvcCYWUk": "orkut_serie4",
+  "jnqhEGpic1I": "garoto_short1"
  },
  "contagem_atual": {
   "itapemirim_longo": {
@@ -750,7 +751,7 @@
    "status": "public"
   },
   "banco_master_short3": {
-   "views": 151,
+   "views": 153,
    "likes": 2,
    "comentarios": 1,
    "status": "public"
@@ -774,7 +775,7 @@
    "status": "public"
   },
   "banco_master_serie4": {
-   "views": 38,
+   "views": 39,
    "likes": 1,
    "comentarios": 2,
    "status": "public"
@@ -852,10 +853,10 @@
    "status": "private"
   },
   "kolynos_serie2": {
-   "views": 0,
+   "views": 3,
    "likes": 0,
-   "comentarios": 0,
-   "status": "private"
+   "comentarios": 1,
+   "status": "public"
   },
   "americanas_short2": {
    "views": 0,
@@ -1042,13 +1043,19 @@
    "likes": 0,
    "comentarios": 0,
    "status": "private"
+  },
+  "garoto_short1": {
+   "views": 0,
+   "likes": 0,
+   "comentarios": 0,
+   "status": "private"
   }
  },
  "canal": {
   "viewCount": "4541",
   "subscriberCount": "11",
   "hiddenSubscriberCount": false,
-  "videoCount": "30"
+  "videoCount": "31"
  },
  "todos_os_videos": [
   {
@@ -1080,7 +1087,7 @@
    "duracao": "PT41S",
    "status": "public",
    "agendado": null,
-   "views": 390,
+   "views": 391,
    "likes": 7,
    "comentarios": 0
   },
@@ -1234,7 +1241,7 @@
    "duracao": "PT1M33S",
    "status": "public",
    "agendado": null,
-   "views": 38,
+   "views": 39,
    "likes": 1,
    "comentarios": 2
   },
@@ -1379,6 +1386,28 @@
    "agendado": null,
    "views": 5,
    "likes": 2,
+   "comentarios": 0
+  },
+  {
+   "id": "XPKmKHPPz-Q",
+   "titulo": "A Colgate pagou US$ 1 bilhão pela Kolynos só pra tirar ela do mercado (parte 2) #shorts",
+   "publicado": "2026-10-19T11:00:20Z",
+   "duracao": "PT1M40S",
+   "status": "public",
+   "agendado": null,
+   "views": 3,
+   "likes": 0,
+   "comentarios": 1
+  },
+  {
+   "id": "jnqhEGpic1I",
+   "titulo": "A Nestlé comprou a Garoto. O CADE proibiu. Mas a compra já tinha acontecido #shorts",
+   "publicado": "2026-10-19T11:41:34Z",
+   "duracao": "PT1M",
+   "status": "private",
+   "agendado": null,
+   "views": 0,
+   "likes": 0,
    "comentarios": 0
   },
   {
@@ -1575,17 +1604,6 @@
    "duracao": "PT2M13S",
    "status": "private",
    "agendado": "2026-10-29T11:00:00Z",
-   "views": 0,
-   "likes": 0,
-   "comentarios": 0
-  },
-  {
-   "id": "XPKmKHPPz-Q",
-   "titulo": "A Colgate pagou US$ 1 bilhão pela Kolynos só pra tirar ela do mercado (parte 2) #shorts",
-   "publicado": "2026-10-14T17:46:31Z",
-   "duracao": "PT1M40S",
-   "status": "private",
-   "agendado": "2026-10-19T11:00:00Z",
    "views": 0,
    "likes": 0,
    "comentarios": 0
