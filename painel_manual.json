@@ -1,3 +1,229 @@
 {
- "udemy": {"alunos": 4, "pagantes": 0, "receita": "R$ 0", "nota": null, "atualizado_em": "19/10/2026", "obs": "Udemy não tem API para instrutor: atualizar à mão"}
+ "udemy": {
+  "alunos": 4,
+  "pagantes": 0,
+  "receita": "R$ 0",
+  "nota": null,
+  "atualizado_em": "19/10/2026",
+  "obs": "Udemy não tem API para instrutor: atualizar à mão"
+ },
+ "metricool": [
+  {
+   "quando": "2026-10-31T23:00:00-03:00",
+   "titulo": "Americanas: rombo de R$ 20 bi (Reel) · RASCUNHO, não sai sozinho",
+   "tipo": "metricool",
+   "id": "metricool",
+   "url": "https://app.metricool.com/planner",
+   "plataforma_rede": "instagram"
+  },
+  {
+   "quando": "2026-10-31T23:10:00-03:00",
+   "titulo": "Kolynos: vendia o dobro da Colgate (Reel) · RASCUNHO, não sai sozinho",
+   "tipo": "metricool",
+   "id": "metricool",
+   "url": "https://app.metricool.com/planner",
+   "plataforma_rede": "instagram"
+  },
+  {
+   "quando": "2026-10-19T19:00:00-03:00",
+   "titulo": "O presidente que durou 9 dias na Americanas",
+   "tipo": "metricool",
+   "id": "metricool",
+   "url": "https://app.metricool.com/planner",
+   "plataforma_rede": "tiktok"
+  },
+  {
+   "quando": "2026-10-20T10:00:00-03:00",
+   "titulo": "A loja que todo mundo conhece escondeu R$ 25 bilhões",
+   "tipo": "metricool",
+   "id": "metricool",
+   "url": "https://app.metricool.com/planner",
+   "plataforma_rede": "tiktok"
+  },
+  {
+   "quando": "2026-10-20T19:00:00-03:00",
+   "titulo": "Como a Americanas escondeu R$ 25 bilhões · RASCUNHO, não sai sozinho",
+   "tipo": "metricool",
+   "id": "metricool",
+   "url": "https://app.metricool.com/planner",
+   "plataforma_rede": "tiktok"
+  },
+  {
+   "quando": "2026-10-21T19:00:00-03:00",
+   "titulo": "O ex-presidente da Americanas foi preso na Espanha",
+   "tipo": "metricool",
+   "id": "metricool",
+   "url": "https://app.metricool.com/planner",
+   "plataforma_rede": "tiktok"
+  },
+  {
+   "quando": "2026-10-22T19:00:00-03:00",
+   "titulo": "Esse CDB pagava 140% do CDI. Era bom demais.",
+   "tipo": "metricool",
+   "id": "metricool",
+   "url": "https://app.metricool.com/planner",
+   "plataforma_rede": "tiktok"
+  },
+  {
+   "quando": "2026-10-23T19:00:00-03:00",
+   "titulo": "Quem pagou a conta da Americanas",
+   "tipo": "metricool",
+   "id": "metricool",
+   "url": "https://app.metricool.com/planner",
+   "plataforma_rede": "tiktok"
+  },
+  {
+   "quando": "2026-10-24T19:00:00-03:00",
+   "titulo": "Preso no aeroporto no dia em que o banco ia ser vendido",
+   "tipo": "metricool",
+   "id": "metricool",
+   "url": "https://app.metricool.com/planner",
+   "plataforma_rede": "tiktok"
+  },
+  {
+   "quando": "2026-10-25T19:00:00-03:00",
+   "titulo": "1,6 milhão de pessoas no mesmo banco. E ele quebrou.",
+   "tipo": "metricool",
+   "id": "metricool",
+   "url": "https://app.metricool.com/planner",
+   "plataforma_rede": "tiktok"
+  },
+  {
+   "quando": "2026-10-26T19:00:00-03:00",
+   "titulo": "Você pode estar pagando a conta do Banco Master · RASCUNHO, não sai sozinho",
+   "tipo": "metricool",
+   "id": "metricool",
+   "url": "https://app.metricool.com/planner",
+   "plataforma_rede": "tiktok"
+  },
+  {
+   "quando": "2026-10-27T10:00:00-03:00",
+   "titulo": "A Blockbuster podia ter comprado a Netflix · RASCUNHO, não sai sozinho",
+   "tipo": "metricool",
+   "id": "metricool",
+   "url": "https://app.metricool.com/planner",
+   "plataforma_rede": "tiktok"
+  },
+  {
+   "quando": "2026-10-27T19:00:00-03:00",
+   "titulo": "A Blockbuster podia ter comprado a Netflix (2) · RASCUNHO, não sai sozinho",
+   "tipo": "metricool",
+   "id": "metricool",
+   "url": "https://app.metricool.com/planner",
+   "plataforma_rede": "tiktok"
+  },
+  {
+   "quando": "2026-10-28T10:00:00-03:00",
+   "titulo": "Netflix x Blockbuster, parte 1 de 4 · RASCUNHO, não sai sozinho",
+   "tipo": "metricool",
+   "id": "metricool",
+   "url": "https://app.metricool.com/planner",
+   "plataforma_rede": "tiktok"
+  },
+  {
+   "quando": "2026-10-28T19:00:00-03:00",
+   "titulo": "A jogada que quase matou a Netflix · RASCUNHO, não sai sozinho",
+   "tipo": "metricool",
+   "id": "metricool",
+   "url": "https://app.metricool.com/planner",
+   "plataforma_rede": "tiktok"
+  },
+  {
+   "quando": "2026-10-29T10:00:00-03:00",
+   "titulo": "Netflix x Blockbuster, parte 2 de 4 · RASCUNHO, não sai sozinho",
+   "tipo": "metricool",
+   "id": "metricool",
+   "url": "https://app.metricool.com/planner",
+   "plataforma_rede": "tiktok"
+  },
+  {
+   "quando": "2026-10-29T19:00:00-03:00",
+   "titulo": "A Americanas comprou a Blockbuster no Brasil · RASCUNHO, não sai sozinho",
+   "tipo": "metricool",
+   "id": "metricool",
+   "url": "https://app.metricool.com/planner",
+   "plataforma_rede": "tiktok"
+  },
+  {
+   "quando": "2026-10-30T10:00:00-03:00",
+   "titulo": "Netflix x Blockbuster, parte 3 de 4 · RASCUNHO, não sai sozinho",
+   "tipo": "metricool",
+   "id": "metricool",
+   "url": "https://app.metricool.com/planner",
+   "plataforma_rede": "tiktok"
+  },
+  {
+   "quando": "2026-10-30T19:00:00-03:00",
+   "titulo": "Só existe uma Blockbuster no mundo · RASCUNHO, não sai sozinho",
+   "tipo": "metricool",
+   "id": "metricool",
+   "url": "https://app.metricool.com/planner",
+   "plataforma_rede": "tiktok"
+  },
+  {
+   "quando": "2026-10-31T10:00:00-03:00",
+   "titulo": "Netflix x Blockbuster, parte 4 de 4 · RASCUNHO, não sai sozinho",
+   "tipo": "metricool",
+   "id": "metricool",
+   "url": "https://app.metricool.com/planner",
+   "plataforma_rede": "tiktok"
+  },
+  {
+   "quando": "2026-11-01T10:00:00-03:00",
+   "titulo": "O Brasil quer o Orkut de volta",
+   "tipo": "metricool",
+   "id": "metricool",
+   "url": "https://app.metricool.com/planner",
+   "plataforma_rede": "tiktok"
+  },
+  {
+   "quando": "2026-11-01T19:00:00-03:00",
+   "titulo": "300 mil pessoas querem o Orkut de volta",
+   "tipo": "metricool",
+   "id": "metricool",
+   "url": "https://app.metricool.com/planner",
+   "plataforma_rede": "tiktok"
+  },
+  {
+   "quando": "2026-11-02T10:00:00-03:00",
+   "titulo": "O Brasil quer o Orkut de volta. Mas como ele nasceu?",
+   "tipo": "metricool",
+   "id": "metricool",
+   "url": "https://app.metricool.com/planner",
+   "plataforma_rede": "tiktok"
+  },
+  {
+   "quando": "2026-11-02T19:00:00-03:00",
+   "titulo": "O dia em que o Facebook passou o Orkut no Brasil",
+   "tipo": "metricool",
+   "id": "metricool",
+   "url": "https://app.metricool.com/planner",
+   "plataforma_rede": "tiktok"
+  },
+  {
+   "quando": "2026-11-03T10:00:00-03:00",
+   "titulo": "Lan house, scraps e comunidades",
+   "tipo": "metricool",
+   "id": "metricool",
+   "url": "https://app.metricool.com/planner",
+   "plataforma_rede": "tiktok"
+  },
+  {
+   "quando": "2026-11-04T10:00:00-03:00",
+   "titulo": "O dia em que o Orkut perdeu",
+   "tipo": "metricool",
+   "id": "metricool",
+   "url": "https://app.metricool.com/planner",
+   "plataforma_rede": "tiktok"
+  },
+  {
+   "quando": "2026-11-05T10:00:00-03:00",
+   "titulo": "O Orkut vai voltar? O que ninguém te contou",
+   "tipo": "metricool",
+   "id": "metricool",
+   "url": "https://app.metricool.com/planner",
+   "plataforma_rede": "tiktok"
+  }
+ ],
+ "metricool_atualizado": "19/10/2026 14:10"
 }

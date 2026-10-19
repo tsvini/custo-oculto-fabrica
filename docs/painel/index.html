@@ -34,6 +34,19 @@ ol a:hover{text-decoration:underline}
 .erro{color:var(--red);font-size:13px}
 .aviso{color:var(--gold);font-size:12px}
 .hist{margin-top:20px}
+.agenda{margin-top:20px}
+.filtros{display:flex;flex-wrap:wrap;gap:6px}
+.filtros button{background:transparent;color:var(--fg);border:1px solid var(--line);border-radius:999px;padding:5px 12px;font:inherit;font-size:13px;cursor:pointer}
+.filtros button.on{background:var(--fg);color:var(--bg)}
+.dia{margin-top:14px;font-weight:700;font-size:13px;color:var(--gold);text-transform:capitalize}
+.item{display:grid;grid-template-columns:56px 1fr auto;gap:10px;align-items:center;padding:8px 0;border-bottom:1px solid var(--line)}
+.item .h{font-variant-numeric:tabular-nums;color:var(--mut);font-size:13px}
+.item .t{font-size:14px;min-width:0;overflow-wrap:anywhere}
+.item .p{font-size:12px;color:var(--mut);display:flex;align-items:center;gap:6px}
+.btn{font-size:12px;border:1px solid var(--line);border-radius:8px;padding:5px 9px;color:var(--fg);text-decoration:none;white-space:nowrap}
+.btn.x{border-color:var(--red);color:var(--red)}
+.btn:hover{background:var(--line)}
+@media (max-width:560px){.item{grid-template-columns:44px 1fr}.item .acoes{grid-column:2}}
 footer{margin-top:24px}
 </style>
 </head>
@@ -45,11 +58,27 @@ footer{margin-top:24px}
 </header>
 <section class="totais" id="totais"></section>
 <section class="grid" id="cards"></section>
+<section class="card agenda" id="espera"></section>
+<section class="card agenda" id="agenda"></section>
 <section class="card hist" id="hist"></section>
 <footer class="mut">Atualiza sozinho 2x por dia pela fábrica (GitHub Actions). Udemy é preenchido à mão em painel_manual.json.</footer>
 </main>
 <script>
 const COR={custo_oculto:"#e5484d",hidden_cost:"#8b7cf6",vini_qa:"#3fb97a",tiktok:"#25d0d8",instagram:"#e1306c",facebook:"#3b82f6",udemy:"#a855f7"};
+const REPO="https://github.com/tsvini/custo-oculto-fabrica";
+const tirar=(id)=>`${REPO}/issues/new?title=${encodeURIComponent("Tirar do lançamento: "+id)}&body=${encodeURIComponent("Clique em Submit new issue para confirmar. A fábrica deixa o vídeo privado e sem data (nada é apagado) e responde aqui em ~1 minuto.")}`;
+let FILTRO="todos";
+function agenda(d){ const A=d.agenda||[]; const el=document.getElementById("agenda"); if(!A.length){el.innerHTML="<h2>Agenda de lançamentos</h2><div class='mut'>nada agendado</div>";return;}
+  const plats=["todos",...new Set(A.map(a=>a.plataforma))];
+  const lista=A.filter(a=>FILTRO==="todos"||a.plataforma===FILTRO); let html="", dia="";
+  for(const a of lista){ const q=new Date(a.quando); const dd=q.toLocaleDateString("pt-BR",{weekday:"long",day:"2-digit",month:"2-digit"});
+    if(dd!==dia){dia=dd; html+=`<div class="dia">${dd}</div>`;}
+    const acao=a.sem_cancelar?`<a class="btn" href="${esc(a.url)}" target="_blank" rel="noopener">abrir no Metricool</a>`:`<a class="btn" href="${esc(a.url)}" target="_blank" rel="noopener">ver</a> <a class="btn x" href="${tirar(a.id)}" target="_blank" rel="noopener">tirar do lançamento</a>`;
+    html+=`<div class="item"><div class="h">${q.toLocaleTimeString("pt-BR",{hour:"2-digit",minute:"2-digit"})}</div><div><div class="t">${esc(a.titulo)}</div><div class="p"><span class="dot" style="background:${COR[a.chave]||"#888"}"></span>${esc(a.plataforma)}${a.tipo?" · "+esc(a.tipo):""}</div></div><div class="acoes">${acao}</div></div>`; }
+  el.innerHTML=`<h2>Agenda de lançamentos <span class="mut">(${A.length})</span></h2><div class="filtros">${plats.map(p=>`<button class="${p===FILTRO?"on":""}" data-p="${esc(p)}">${esc(p)}</button>`).join("")}</div>${html}<div class="mut" style="margin-top:10px">"Tirar do lançamento" abre uma confirmação no GitHub: depois de enviar, a fábrica deixa o vídeo privado e sem data. Itens do Metricool se cancelam lá.</div>`;
+  el.querySelectorAll(".filtros button").forEach(b=>b.onclick=()=>{FILTRO=b.dataset.p; agenda(d);}); }
+function espera(d){ const E=(d.esperando||[]).filter(e=>!e.cancelado); const el=document.getElementById("espera");
+  el.innerHTML=`<h2>Prontos, esperando sua aprovação <span class="mut">(${E.length})</span></h2>`+(E.length?E.map(e=>`<div class="item"><div class="h">—</div><div><div class="t">${esc(e.titulo)}</div><div class="p">${esc(e.plataforma)} · privado, sem data</div></div><div class="acoes"><a class="btn" href="${esc(e.url)}" target="_blank" rel="noopener">ver no Studio</a></div></div>`).join(""):"<div class='mut'>nada esperando</div>"); }
 const fmt=(n)=>n==null?"–":Number(n).toLocaleString("pt-BR");
 const esc=(s)=>String(s??"").replace(/[&<>"]/g,(c)=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 function spark(pts,cor){ if(!pts||pts.length<2) return ""; const v=pts.map(p=>p[1]); const mx=Math.max(1,...v); const w=300,h=56;
@@ -67,15 +96,17 @@ async function main(){
     const cor=COR[k]||"#888"; let h=`<h2><span class="dot" style="background:${cor}"></span>${esc(f.nome)}</h2>`;
     if(f.erro) return `<article class="card">${h}<div class="erro">${esc(f.erro)}</div></article>`;
     let ks="";
-    if(k==="udemy") ks=kpi(f.alunos,"alunos")+kpi(f.pagantes,"pagantes")+`<div class="kpi"><div class="n">${esc(f.receita||"–")}</div><div class="l">receita</div></div>`;
+    if(k==="udemy"){ ks=kpi(f.alunos,"alunos")+(f.pagantes!=null?kpi(f.pagantes,"pagantes"):"")+(f.avaliacoes!=null?kpi(f.avaliacoes,"avaliações"):"")+(f.perguntas_sem_resposta!=null?kpi(f.perguntas_sem_resposta,"perguntas sem resposta"):"")+`<div class="kpi"><div class="n">${esc(f.receita||"–")}</div><div class="l">receita</div></div>`;
+      if(f.cursos) f.top=f.cursos.map(c=>({titulo:c.titulo,url:c.url,views:null,likes:null,alunos:c.alunos,nota:c.nota})); }
     else ks=kpi(f.seguidores,"seguidores",f.seguidores_28d?` <span class="up">+${fmt(f.seguidores_28d)}</span>`:"")+(f.views_7d!=null?kpi(f.views_7d,"views 7d"):"")+(f.views_28d!=null?kpi(f.views_28d,"views 28d"):"")+(f.curtidas!=null?kpi(f.curtidas,"curtidas"):"")+(f.videos!=null?kpi(f.videos,"vídeos"):"");
     h+=`<div class="kpis">${ks}</div>`;
     if(f.dia) h+=spark(f.dia,cor);
-    if(f.top&&f.top.length) h+=`<div><div class="mut">${k.startsWith("insta")?"últimos posts":"mais vistos · 28 dias"}</div><ol>${f.top.map(t=>`<li><a href="${esc(t.url)}" target="_blank" rel="noopener">${esc(t.titulo)}</a> <span class="mut">· ${t.views!=null?fmt(t.views)+" views":fmt(t.likes)+" curtidas"}${t.retencao!=null?" · "+t.retencao+"% assistido":""}</span></li>`).join("")}</ol></div>`;
+    if(f.top&&f.top.length) h+=`<div><div class="mut">${k.startsWith("insta")?"últimos posts":"mais vistos · 28 dias"}</div><ol>${f.top.map(t=>`<li><a href="${esc(t.url)}" target="_blank" rel="noopener">${esc(t.titulo)}</a> <span class="mut">· ${t.alunos!=null?fmt(t.alunos)+" alunos"+(t.nota?" · nota "+Number(t.nota).toFixed(1):""):t.views!=null?fmt(t.views)+" views":fmt(t.likes)+" curtidas"}${t.retencao!=null?" · "+t.retencao+"% assistido":""}</span></li>`).join("")}</ol></div>`;
     if(f.aviso) h+=`<div class="aviso">${esc(f.aviso)}</div>`;
     if(f.obs) h+=`<div class="mut">${esc(f.obs)} · ${esc(f.atualizado_em||"")}</div>`;
     return `<article class="card">${h}</article>`;
   }).join("");
+  espera(d); agenda(d);
   try{ const H=await (await fetch("historico.json?"+Date.now())).json(); const dias=Object.keys(H);
     if(dias.length>1){ const ks=[...new Set(dias.flatMap(x=>Object.keys(H[x])))]; const w=600,h=160; let mx=1; ks.forEach(k=>dias.forEach(x=>mx=Math.max(mx,H[x][k]||0)));
       const lin=ks.map(k=>`<polyline fill="none" stroke="${COR[k]||"#888"}" stroke-width="2" vector-effect="non-scaling-stroke" points="${dias.map((x,i)=>`${(i/(dias.length-1)*w).toFixed(1)},${(h-6-((H[x][k]||0)/mx)*(h-12)).toFixed(1)}`).join(" ")}"/>`).join("");

@@ -1,0 +1,48 @@
+name: Tirar do lançamento
+
+# Botão do painel: abre uma issue "Tirar do lançamento: <id>". Só funciona para issues abertas pelo dono do repositório.
+on:
+  issues:
+    types: [opened]
+
+concurrency:
+  group: redes
+  cancel-in-progress: false
+
+jobs:
+  cancelar:
+    if: ${{ github.event.issue.user.login == github.repository_owner && startsWith(github.event.issue.title, 'Tirar do lançamento:') }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -q requests cryptography
+      - env:
+          YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+          YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+          YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
+          YT_REFRESH_TOKEN_EN: ${{ secrets.YT_REFRESH_TOKEN_EN }}
+          YT_REFRESH_TOKEN_QA: ${{ secrets.YT_REFRESH_TOKEN_QA }}
+          META_PAGE_TOKEN: ${{ secrets.META_PAGE_TOKEN }}
+          META_PAGE_ID: ${{ secrets.META_PAGE_ID }}
+          META_IG_ID: ${{ secrets.META_IG_ID }}
+          TIKTOK_CLIENT_KEY: ${{ secrets.TIKTOK_CLIENT_KEY }}
+          TIKTOK_CLIENT_SECRET: ${{ secrets.TIKTOK_CLIENT_SECRET }}
+          UDEMY_TOKEN: ${{ secrets.UDEMY_TOKEN }}
+          TITULO: ${{ github.event.issue.title }}
+          GH_TOKEN: ${{ github.token }}
+          ISSUE: ${{ github.event.issue.number }}
+        run: |
+          ALVO="${TITULO#Tirar do lançamento:}"; ALVO="$(echo "$ALVO" | xargs)"
+          python -m fabrica.cancelar "$ALVO"
+          python -m fabrica.painel || true
+          git config user.name "fabrica-custo-oculto"; git config user.email "fabrica@users.noreply.github.com"
+          git add publicados.json publicados_viniqa.json agenda_redes.json docs/painel $(ls tiktok_token.enc 2>/dev/null)
+          git diff --cached --quiet || { git commit -q -m "Tirado do lançamento: $ALVO" && for t in 1 2 3; do git pull --rebase --autostash -q && git push -q && break; sleep 5; done; }
+          gh issue comment "$ISSUE" --body "$(cat .resultado_cancelar.txt)"
+          gh issue close "$ISSUE"

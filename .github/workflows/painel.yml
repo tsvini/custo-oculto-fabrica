@@ -6,7 +6,7 @@ on:
     - cron: "40 10,22 * * *"
   workflow_dispatch:
   push:
-    paths: ["fabrica/painel.py", ".github/workflows/painel.yml", "painel_manual.json"]
+    paths: ["fabrica/painel.py", ".github/workflows/painel.yml", "painel_manual.json", "publicados.json", "agenda_redes.json", "publicados_viniqa.json"]
 
 concurrency:
   group: redes
@@ -34,6 +34,7 @@ jobs:
           META_IG_ID: ${{ secrets.META_IG_ID }}
           TIKTOK_CLIENT_KEY: ${{ secrets.TIKTOK_CLIENT_KEY }}
           TIKTOK_CLIENT_SECRET: ${{ secrets.TIKTOK_CLIENT_SECRET }}
+          UDEMY_TOKEN: ${{ secrets.UDEMY_TOKEN }}
         run: |
           python -m fabrica.painel
           git config user.name "fabrica-custo-oculto"; git config user.email "fabrica@users.noreply.github.com"

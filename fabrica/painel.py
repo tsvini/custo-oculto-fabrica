@@ -79,6 +79,76 @@ def tiktok():
     return out
 
 
+def udemy():
+    H = {"Authorization": f"bearer {env('UDEMY_TOKEN')}", "Accept": "application/json"}
+    B = "https://www.udemy.com/instructor-api/v1/taught-courses"
+    cs = requests.get(f"{B}/courses/", headers=H, params={"fields[course]": "@all", "page_size": 20}, timeout=30)
+    cs.raise_for_status(); cursos = cs.json().get("results", [])
+    rv = requests.get(f"{B}/reviews/", headers=H, params={"page_size": 5}, timeout=30).json()
+    qs = requests.get(f"{B}/questions/", headers=H, params={"page_size": 10, "status": "unresponded"}, timeout=30).json()
+    alunos = sum(int(c.get("num_subscribers") or 0) for c in cursos)
+    return {"alunos": alunos or None, "cursos": [{"titulo": c.get("title"), "url": "https://www.udemy.com" + (c.get("url") or ""), "alunos": c.get("num_subscribers"),
+                                                  "nota": c.get("rating"), "avaliacoes": c.get("num_reviews")} for c in cursos],
+            "avaliacoes": rv.get("count"), "perguntas_sem_resposta": qs.get("count")}
+
+
+def agenda():
+    """Tudo que está para ser lançado, de todas as plataformas, em ordem de data."""
+    agora = dt.datetime.now(dt.timezone.utc); itens = []
+    def futuro(q):
+        try:
+            return dt.datetime.fromisoformat(q.replace("Z", "+00:00")) > agora
+        except Exception:
+            return False
+    try:
+        for r in json.load(open(os.path.join(RAIZ, "publicados.json"), encoding="utf8")):
+            if r.get("publishAt") and futuro(r["publishAt"]) and r.get("status") != "public":
+                en = (r.get("idioma") or "pt").startswith("en")
+                itens.append({"quando": r["publishAt"], "plataforma": "Hidden Cost (YouTube EN)" if en else "Custo Oculto (YouTube)",
+                              "chave": "hidden_cost" if en else "custo_oculto", "titulo": r.get("titulo"), "tipo": r.get("tipo"),
+                              "id": r["nome"], "url": f"https://studio.youtube.com/video/{r['video_id']}/edit"})
+    except Exception as e:
+        print(f"::warning title=Agenda YouTube::{e}")
+    try:
+        for r in json.load(open(os.path.join(RAIZ, "publicados_viniqa.json"), encoding="utf8")):
+            if r.get("publishAt") and futuro(r["publishAt"]):
+                itens.append({"quando": r["publishAt"], "plataforma": "Vini QA (YouTube)", "chave": "vini_qa", "titulo": r.get("titulo"), "tipo": "short",
+                              "id": r["video_id"], "url": f"https://studio.youtube.com/video/{r['video_id']}/edit"})
+    except Exception as e:
+        print(f"::warning title=Agenda Vini QA::{e}")
+    try:
+        for it in json.load(open(os.path.join(RAIZ, "agenda_redes.json"), encoding="utf8")):
+            if it.get("cancelado") or not futuro(it["quando"]) or it["quando"].startswith("2099"):
+                continue
+            for rede in it.get("redes", []):
+                if str((it.get("status") or {}).get(rede, "")).startswith("ok"):
+                    continue
+                itens.append({"quando": it["quando"], "plataforma": {"instagram": "Instagram", "facebook": "Facebook", "tiktok": "TikTok"}.get(rede, rede),
+                              "chave": rede, "titulo": it.get("titulo"), "tipo": "short", "id": it["id"], "url": it.get("video")})
+    except Exception as e:
+        print(f"::warning title=Agenda redes::{e}")
+    try:  # TikToks antigos agendados no Metricool (lista copiada à mão em painel_manual.json)
+        man = json.load(open(os.path.join(RAIZ, "painel_manual.json"), encoding="utf8"))
+        for it in man.get("metricool", []):
+            if futuro(it["quando"]):
+                rede = it.get("plataforma_rede", "tiktok")
+                itens.append(dict(it, chave=rede, plataforma=("Instagram" if rede == "instagram" else "TikTok") + " (Metricool)", sem_cancelar=True))
+    except Exception:
+        pass
+    return sorted(itens, key=lambda x: x["quando"])
+
+
+def esperando():
+    """Vídeos já prontos no YouTube, privados e sem data: esperando aprovação."""
+    try:
+        reg = json.load(open(os.path.join(RAIZ, "publicados.json"), encoding="utf8"))
+    except Exception:
+        return []
+    return [{"titulo": r.get("titulo"), "id": r["nome"], "plataforma": "Hidden Cost (YouTube EN)" if (r.get("idioma") or "pt").startswith("en") else "Custo Oculto (YouTube)",
+             "url": f"https://studio.youtube.com/video/{r['video_id']}/edit", "cancelado": bool(r.get("cancelado"))}
+            for r in reg if r.get("video_id") and r.get("status") == "private" and not r.get("publishAt")]
+
+
 def main():
     dados = {"atualizado": dt.datetime.now(dt.timezone(dt.timedelta(hours=-3))).strftime("%d/%m/%Y %H:%M"), "fontes": {}}
     fontes = [(k, nome, (lambda v=var: youtube(v)), var) for k, nome, var in CANAIS_YT]
@@ -98,6 +168,13 @@ def main():
     except Exception:
         man = {}
     dados["fontes"]["udemy"] = dict({"nome": "Udemy · Cypress para leigos"}, **man.get("udemy", {}))
+    if env("UDEMY_TOKEN"):
+        try:
+            dados["fontes"]["udemy"].update({k: v for k, v in udemy().items() if v is not None}); dados["fontes"]["udemy"].pop("obs", None)
+        except Exception as e:
+            dados["fontes"]["udemy"]["aviso"] = f"API da Udemy: {str(e)[:150]}"
+    dados["agenda"] = agenda()
+    dados["esperando"] = esperando()
     os.makedirs(os.path.dirname(SAIDA), exist_ok=True)
     json.dump(dados, open(SAIDA, "w", encoding="utf8"), ensure_ascii=False, indent=1)
     # histórico de seguidores por dia (para o gráfico de evolução)
