@@ -1,0 +1,97 @@
+{
+ "nota_final": 5.5,
+ "rodadas": [
+  {
+   "rodada": 1,
+   "nota": 5.5,
+   "avaliacao": {
+    "nota": 5.5,
+    "resumo": "A sonoplastia está incompleta e com elementos desconexos. Há inserções de 'silêncio' desnecessárias na lista de eventos, um efeito de relógio sem relação com a cena do caminhão aos 33s, e ausência de efeitos sonoros cruciais para apoiar a narrativa visual, como a batida do martelo no tribunal e o brinde de garrafas.",
+    "problemas": [
+     {
+      "evento": 0,
+      "problema": "O impacto do carimbo entra ligeiramente após o selo 'APROVADO' estampar o documento na tela (ocorre por volta de 7.6s-7.8s).",
+      "acao": "adiantar",
+      "segundos": 0.3
+     },
+     {
+      "evento": 1,
+      "problema": "Evento de silêncio vazio sem função na timeline.",
+      "acao": "remover"
+     },
+     {
+      "evento": 2,
+      "problema": "Evento de silêncio vazio sem propósito sonoro.",
+      "acao": "remover"
+     },
+     {
+      "evento": 3,
+      "problema": "Efeito de tique-taque de relógio não combina com a imagem do caminhão e o tema de logística/distribuição.",
+      "acao": "remover"
+     }
+    ],
+    "faltando": [
+     {
+      "t": 1.5,
+      "busca": "beer bottles clinking toast",
+      "tipo": "fx"
+     },
+     {
+      "t": 25.5,
+      "busca": "wooden gavel strike court sound",
+      "tipo": "fx"
+     },
+     {
+      "t": 34.0,
+      "busca": "heavy truck driving pass by highway",
+      "tipo": "fx"
+     }
+    ]
+   },
+   "eventos": [
+    {
+     "t0": 8.01,
+     "t1": 11.01,
+     "tipo": "fx",
+     "busca": "rubber stamp hit",
+     "vol": 0.7,
+     "max": null,
+     "dur": null,
+     "cena": "stamp | fala: E o Cade aprovou.",
+     "fonte": "freesound #683031 Thump.mp3"
+    },
+    {
+     "t0": 8.969999999999999,
+     "t1": 11.969999999999999,
+     "tipo": "silencio",
+     "busca": null,
+     "vol": 0.5,
+     "max": null,
+     "dur": 0.6,
+     "cena": "bigtext | fala: Só que não de graça."
+    },
+    {
+     "t0": 28.959999999999997,
+     "t1": 31.959999999999997,
+     "tipo": "silencio",
+     "busca": null,
+     "vol": 0.5,
+     "max": null,
+     "dur": 0.35,
+     "cena": "bigtext | fala: Mas com condições."
+    },
+    {
+     "t0": 33.09,
+     "t1": 36.09,
+     "tipo": "fx",
+     "busca": "short clock tick",
+     "vol": 0.3,
+     "max": 0.3,
+     "dur": null,
+     "cena": "montagem | fala: A Ambev teve que vender a Bavária, junto com cinco fábricas.",
+     "fonte": "freesound #321582 clock ticking"
+    }
+   ]
+  }
+ ]
+}
