@@ -232,6 +232,14 @@ def pexels(cenas, pasta, vertical, log, creditos):
                 qen.setdefault("#" + s["media"], str(s["pixabay_id"]))
             if s.get("pexels_id"):
                 qen.setdefault("@" + s["media"], str(s["pexels_id"]))
+    for s in cenas:  # arquivo direto (vídeo do Pexels/Pixabay escolhido a dedo, licença livre)
+        k = s.get("media")
+        if s.get("type") == "video" and k and s.get("video_url") and not os.path.exists(os.path.join(pasta, k + ".mp4")):
+            try:
+                _baixa(s["video_url"], os.path.join(pasta, k + ".mp4"), timeout=180); _normaliza_clipe(os.path.join(pasta, k + ".mp4"), log)
+                creditos.append(f"{s.get('credito') or 'Pexels'} – {s['video_url'].split('?')[0]}"); log(f"  clipe {k}: ok (arquivo direto)")
+            except Exception as e:
+                print(f"::warning title=Clipe {k}::download direto falhou: {str(e)[:150]}", flush=True)
     pend = {k: q for k, q in alvo.items() if not os.path.exists(os.path.join(pasta, k + ".mp4"))}
     if not pend:
         return

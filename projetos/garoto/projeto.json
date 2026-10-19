@@ -69,7 +69,8 @@
           "media": "choc_fabrica",
           "pexels_id": 7012967,
           "search": "chocolate factory",
-          "dim": 0.45
+          "dim": 0.45,
+          "video_url": "https://videos.pexels.com/video-files/7012967/7012967-hd_1080_1350_25fps.mp4"
          }
         ],
         "fallback": {
@@ -175,7 +176,8 @@
          "media": "chocolates",
          "pexels_id": 4110110,
          "search": "chocolates",
-         "dim": 0.45
+         "dim": 0.45,
+         "video_url": "https://videos.pexels.com/video-files/4110110/4110110-hd_1920_1080_25fps.mp4"
         }
        ],
        "fallback": {
@@ -230,7 +232,8 @@
             100
            ]
           ]
-         }
+         },
+         "video_url": "https://videos.pexels.com/video-files/6101365/6101365-uhd_2160_4096_30fps.mp4"
         },
         {
          "type": "counter",
@@ -279,7 +282,8 @@
          "media": "choc_maquina",
          "pexels_id": 855117,
          "search": "automatic chocolate machine",
-         "dim": 0.45
+         "dim": 0.45,
+         "video_url": "https://videos.pexels.com/video-files/855117/855117-hd_1280_720_30fps.mp4"
         },
         {
          "type": "image",
@@ -469,7 +473,8 @@
        "pexels_id": 30360458,
        "search": "brasilia architecture",
        "dim": 0.5,
-       "lower": "O CASO MUDOU A LEI"
+       "lower": "O CASO MUDOU A LEI",
+       "video_url": "https://videos.pexels.com/video-files/30360458/13013307_3840_2160_30fps.mp4"
       }
      },
      {

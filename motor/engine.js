@@ -712,7 +712,14 @@
     const target = new Mp4Muxer.ArrayBufferTarget();
     const muxer = new Mp4Muxer.Muxer({ target, video: { codec: codecs.video.mux, width: W, height: H, frameRate: fps }, audio: { codec: codecs.audio.mux, numberOfChannels: 1, sampleRate: SR }, fastStart: "in-memory", firstTimestampBehavior: "offset" });
     let err = null;
-    const venc = new VideoEncoder({ output: (ch, meta) => muxer.addVideoChunk(ch, meta), error: (e) => { err = e; } });
+    // o encoder às vezes entrega o 1º pedaço sem decoderConfig (o muxer quebrava com "colorSpace of null"): segura até chegar a configuração
+    let dcfg = null; const espera = [];
+    const venc = new VideoEncoder({ output: (ch, meta) => {
+      if (meta && meta.decoderConfig) dcfg = meta.decoderConfig;
+      if (!dcfg) { espera.push(ch); return; }
+      while (espera.length) muxer.addVideoChunk(espera.shift(), { decoderConfig: dcfg });
+      muxer.addVideoChunk(ch, meta && meta.decoderConfig ? meta : { decoderConfig: dcfg });
+    }, error: (e) => { err = e; } });
     venc.configure({ codec: codecs.video.codec, width: W, height: H, bitrate: vertical ? 8e6 : 12e6, framerate: fps });
     const aenc = new AudioEncoder({ output: (ch, meta) => muxer.addAudioChunk(ch, meta), error: (e) => { err = e; } });
     aenc.configure({ codec: codecs.audio.codec, sampleRate: SR, numberOfChannels: 1, bitrate: 128000 });
@@ -732,7 +739,9 @@
       while (venc.encodeQueueSize > 8) await new Promise((r) => setTimeout(r, 4));
       if (i % 15 === 0) { onProgress && onProgress(i / nfr); await new Promise((r) => setTimeout(r, 0)); }
     }
-    await venc.flush(); await aenc.flush(); if (err) throw err; muxer.finalize();
+    await venc.flush(); await aenc.flush(); if (err) throw err;
+    if (!dcfg) { console.warn("encoder sem decoderConfig: gravando em tempo real"); return exportRealtime(tl, vertical, media, onProgress, signal); }
+    muxer.finalize();
     onProgress && onProgress(1);
     return { blob: new Blob([target.buffer], { type: "video/mp4" }), ext: "mp4", codec: codecs.video.codec };
   }
