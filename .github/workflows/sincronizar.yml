@@ -1,0 +1,26 @@
+name: Sincronizar registro com o YouTube
+on:
+  workflow_dispatch:
+concurrency:
+  group: redes
+  cancel-in-progress: false
+jobs:
+  sinc:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - env:
+          YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+          YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+          YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
+          YT_REFRESH_TOKEN_EN: ${{ secrets.YT_REFRESH_TOKEN_EN }}
+        run: |
+          pip install -q requests
+          python -m fabrica.sincronizar
+          git config user.name "fabrica-custo-oculto"; git config user.email "fabrica@users.noreply.github.com"
+          git add publicados.json && git commit -q -m "Registro sincronizado com o YouTube" && for t in 1 2 3; do git pull --rebase --autostash -q && git push -q && break; sleep 5; done || true
