@@ -776,5 +776,16 @@
   "caso_titulo": "Nestlé x Garoto",
   "status": "excluido",
   "excluido": true
+ },
+ {
+  "nome": "sadia_short1",
+  "tipo": "short",
+  "idioma": "pt",
+  "titulo": "A Sadia perdeu R$ 2,5 bilhões apostando no dólar. Meses depois, se juntou à Perdigão #shorts",
+  "video_id": "xhA47M-Ueq8",
+  "caso": "sadia",
+  "caso_titulo": "Sadia x Perdigão",
+  "publishAt": "2026-10-20T18:00:00-03:00",
+  "status": "private"
  }
 ]
