@@ -1,5 +1,5 @@
 {
- "atualizado": "19/10/2026 13:45",
+ "atualizado": "19/10/2026 13:49",
  "fontes": {
   "custo_oculto": {
    "seguidores": 11,
@@ -281,11 +281,10 @@
    "nome": "Vini QA (YouTube)"
   },
   "tiktok": {
-   "usuario": null,
-   "seguidores": null,
-   "curtidas": null,
-   "videos": null,
-   "aviso": "falta a permissão user.info.stats no app do TikTok",
+   "usuario": "Custo Oculto",
+   "seguidores": 11,
+   "curtidas": 119,
+   "videos": 10,
    "nome": "TikTok @custooculto"
   },
   "instagram": {
