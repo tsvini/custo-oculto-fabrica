@@ -197,6 +197,14 @@ def subir_legenda(tk, vid, path, idioma="pt"):
                          headers={"Authorization": f"Bearer {tk}", "Content-Type": f"multipart/related; boundary={b}"}, data=corpo, timeout=120), "legenda")
 
 
+def aprovados():
+    """Nomes que o Vinícius aprovou para subir no canal em português (aprovados.json: ["garoto_short1", ...])."""
+    try:
+        return set(json.load(open(os.path.join(RAIZ, "aprovados.json"), encoding="utf8")))
+    except Exception:
+        return set()
+
+
 def enviar():
     itens = fila()
     if not itens:
@@ -207,12 +215,14 @@ def enviar():
             gh("release", "download", TAG, "-p", f"{nome}__meta.json", "-D", t, "--clobber")
             metas[nome] = json.load(open(os.path.join(t, f"{nome}__meta.json"), encoding="utf8"))
         ordem = sorted(metas, key=lambda n: (metas[n]["enfileirado"], metas[n]["ordem"]))
-        reg = registro(); feitos = []; sem_canal = set()
+        reg = registro(); feitos = []; sem_canal = set(); esperando = []
         try:
             for nome in ordem:
                 meta = metas[nome]; idi = idioma_de(meta)
                 if f"{nome}__video.mp4" not in itens[nome]:
                     continue
+                if idi == "pt" and nome not in aprovados():  # regra do Vinícius (19/10/2026): nada sobe no Custo Oculto sem aprovação
+                    esperando.append(nome); continue
                 if not tem_canal(idi):  # canal ainda não autorizado: o vídeo espera na fila
                     sem_canal.add(canal(idi)["token_env"]); continue
                 tk = token(idi)
@@ -248,6 +258,8 @@ def enviar():
                 json.dump(reg, open(REG, "w", encoding="utf8"), ensure_ascii=False, indent=1)
         except Cota:
             nota("Cota do dia acabou", "o resto da fila sobe na próxima execução diária", "warning")
+        if esperando:
+            nota("Esperando sua aprovação (aprovados.json)", ", ".join(esperando))
         if sem_canal:
             nota("Canal sem autorização", f"vídeos esperando na fila: falta o secret {', '.join(sorted(sem_canal))}", "warning")
         if feitos:
@@ -296,9 +308,12 @@ def comentar():
         lg = longos.get(r.get("caso"))
         if r.get("tipo") in ("short", "serie") and r.get("video_id") and lg and idioma_de(r) == "pt" and r["nome"] not in ja:
             fila_c.append({"nome": r["nome"], "texto": f"📌 O caso completo está aqui: https://youtu.be/{lg['video_id']}", "depois_de": lg["nome"]})
+    pendentes = []
     for c in fila_c:
         if c.get("feito"):
             continue
+        if not c.get("aprovado"):  # regra do Vinícius (19/10/2026): nenhum comentário sai sem aprovação explícita ("aprovado": true)
+            pendentes.append(c.get("nome") or c.get("video_id") or "?"); continue
         vid = c.get("video_id") or (reg.get(c.get("nome")) or {}).get("video_id")
         if not vid:
             continue
@@ -323,6 +338,8 @@ def comentar():
     json.dump(fila_c, open(COM, "w", encoding="utf8"), ensure_ascii=False, indent=1)
     if feitos:
         nota("Comentários postados (fixe no Studio)", ", ".join(feitos))
+    if pendentes:
+        nota("Comentários esperando sua aprovação", ", ".join(pendentes))
 
 
 def playlists():
@@ -495,14 +512,22 @@ def ajustar(arq="ajustes.json"):
                 st = {k: v["status"][k] for k in ("privacyStatus", "license", "embeddable", "publicStatsViewable", "selfDeclaredMadeForKids", "containsSyntheticMedia") if k in v["status"]}
                 st["publishAt"] = dt.datetime.fromisoformat(a["publishAt"]).astimezone(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%S.000Z")
                 corpo["status"] = st; parts.append("status")
+        if a.get("privado"):  # tira o agendamento: fica privado até nova ordem
+            st = {k: v["status"][k] for k in ("license", "embeddable", "publicStatsViewable", "selfDeclaredMadeForKids", "containsSyntheticMedia") if k in v["status"]}
+            st["privacyStatus"] = "private"; corpo["status"] = st; parts.append("status")
         if not parts:
             continue
         checar(requests.put(f"{Y}/videos?part={','.join(parts)}", headers=H, timeout=30, json=corpo), f"ajustar {nome}")
         if "snippet" in parts:
             r["titulo"] = a["titulo"][:100]
         if "status" in parts:
-            r["publishAt"] = a["publishAt"]
-        feitos.append(f"{nome}: " + " / ".join(x for x in (a.get("titulo"), a.get("publishAt", "")[:16]) if x))
+            if a.get("privado"):
+                r.pop("publishAt", None); r["status"] = "private"
+                lido = checar(requests.get(f"{Y}/videos?part=status&id={r['video_id']}", headers=H, timeout=30), "conferir").json()["items"][0]["status"]
+                nota("Conferido no YouTube", f"{nome}: {lido.get('privacyStatus')}, agendamento: {lido.get('publishAt') or 'nenhum'}")
+            else:
+                r["publishAt"] = a["publishAt"]
+        feitos.append(f"{nome}: " + " / ".join(x for x in (a.get("titulo"), a.get("publishAt", "")[:16], "privado" if a.get("privado") else "") if x))
     json.dump(reg, open(REG, "w", encoding="utf8"), ensure_ascii=False, indent=1)
     nota("Ajustes aplicados", " | ".join(feitos) or "nada")
 
