@@ -251,7 +251,11 @@ def processar(video, eventos, trilha=None, roteiro="", relatorio=None, rodadas=N
     if trilha:
         base = som._arquivo("trilha_" + trilha)
         if base is not None and len(base) > SR:
-            tr = np.tile(base, n // len(base) + 1)[:n]; t = np.arange(n) / SR; dur = n / SR
+            tr = base.copy(); xf = int(2.0 * SR)  # trilha mais curta que o vídeo: emenda com crossfade de 2s, sem corte seco
+            while len(tr) < n and len(base) > 2 * xf:
+                rampa = np.linspace(0, 1, xf)
+                tr = np.concatenate([tr[:-xf], tr[-xf:] * np.sqrt(1 - rampa) + base[:xf] * np.sqrt(rampa), base[xf:]])
+            tr = np.pad(tr, (0, max(0, n - len(tr))))[:n]; t = np.arange(n) / SR; dur = n / SR
             trilha_arr = tr / (np.abs(base).max() + 1e-9) * np.clip(np.minimum(t / 1.0, (dur - t) / 1.2), 0, 1)
     cache = {}
     for ev in eventos:
