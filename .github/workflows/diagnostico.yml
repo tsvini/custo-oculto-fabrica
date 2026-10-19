@@ -1,0 +1,23 @@
+name: Diagnóstico de vídeo
+on:
+  workflow_dispatch:
+    inputs:
+      ids:
+        description: "ids de vídeo do YouTube separados por espaço"
+        required: true
+jobs:
+  diag:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - env:
+          YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+          YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+          YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
+          YT_REFRESH_TOKEN_EN: ${{ secrets.YT_REFRESH_TOKEN_EN }}
+        run: |
+          pip install -q requests
+          python -m fabrica.diagnostico ${{ github.event.inputs.ids }}
