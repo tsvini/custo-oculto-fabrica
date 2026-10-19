@@ -1,33 +1,28 @@
 {
- "nota_final": 8.5,
+ "nota_final": 7.5,
  "rodadas": [
   {
    "rodada": 1,
-   "nota": 8.5,
+   "nota": 7.5,
    "avaliacao": {
-    "nota": 8.5,
-    "resumo": "A sonoplastia está bem estruturada, com excelente uso do silêncio e impacto dramático no 'NÃO ACONTECEU' e bons efeitos nos carimbos do CADE. Há apenas alguns elementos visuais dinâmicos que ficaram mudos e um efeito que ficou tímido.",
+    "nota": 7.5,
+    "resumo": "A sonorização atende bem o ritmo dinâmico do vídeo, marcando selos de aprovação/veto e contadores. No entanto, no trecho da decisão judicial (16s) foi utilizado um som de carimbo borracha em vez de martelada de juiz (gavel), e faltam efeitos sonoros para a folheação de calendário/página.",
     "problemas": [
      {
-      "evento": 3,
-      "problema": "O efeito de um único tique-taque de relógio soa tímido para uma contagem acelerada de dias na tela (de 46 a 150 dias).",
-      "acao": "mais_alto"
+      "evento": 2,
+      "problema": "O som inserido é de carimbo de borracha, mas a imagem mostra um martelo de juiz (gavel) batendo na mesa.",
+      "acao": "remover"
      }
     ],
     "faltando": [
      {
-      "t": 33.2,
-      "busca": "fast calendar pages flipping",
+      "t": 16.5,
+      "busca": "wooden gavel strike hammer impact",
       "tipo": "fx"
      },
      {
-      "t": 51.2,
-      "busca": "pop ui checkmark ding",
-      "tipo": "fx"
-     },
-     {
-      "t": 55.4,
-      "busca": "smooth digital slider whoosh",
+      "t": 32.8,
+      "busca": "calendar page turn paper flip sound",
       "tipo": "fx"
      }
     ]
@@ -45,26 +40,25 @@
      "fonte": "freesound #683031 Thump.mp3"
     },
     {
-     "t0": 8.93,
-     "t1": 11.93,
-     "tipo": "fx",
-     "busca": "cinematic boom hit",
-     "vol": 0.6,
+     "t0": 7.42,
+     "t1": 10.42,
+     "tipo": "silencio",
+     "busca": null,
+     "vol": 0.5,
      "max": null,
-     "dur": null,
-     "cena": "montagem | fala: Só tinha um problema: a compra já tinha acontecido.",
-     "fonte": "freesound #648732 Cinematic Woosh SFX-011.wav"
+     "dur": 0.45,
+     "cena": "montagem | fala: Só tinha um problema: a compra já tinha acontecido."
     },
     {
      "t0": 16.17,
      "t1": 19.17,
      "tipo": "fx",
-     "busca": "single wooden knock hit",
-     "vol": 0.8,
-     "max": 0.6,
+     "busca": "rubber stamp hit",
+     "vol": 0.6,
+     "max": 0.5,
      "dur": null,
      "cena": "montagem | fala: Por cinco votos a um, o Cade mandou a Nestlé vender a Garoto em até cento e cinquenta dias.",
-     "fonte": "freesound #812363 Knocking once on wood, single footstep"
+     "fonte": "freesound #683031 Thump.mp3"
     },
     {
      "t0": 20.233,
@@ -122,186 +116,14 @@
      "fonte": "freesound #776443 pop out, bubble, soft bursting"
     },
     {
-     "t0": 40.37,
-     "t1": 43.37,
+     "t0": 40.32,
+     "t1": 43.32,
      "tipo": "silencio",
      "busca": null,
      "vol": 0.5,
      "max": null,
-     "dur": 0.9,
+     "dur": 1,
      "cena": "bigtext | fala: Não aconteceu."
-    },
-    {
-     "t0": 40.37,
-     "t1": 43.37,
-     "tipo": "fx",
-     "busca": "deep sub boom impact",
-     "vol": 0.7,
-     "max": 1.5,
-     "dur": null,
-     "cena": "bigtext | fala: Não aconteceu.",
-     "fonte": "freesound #649445 Cinematic Woosh SFX-015.wav"
-    },
-    {
-     "t0": 45.43,
-     "t1": 48.43,
-     "tipo": "fx",
-     "busca": "rubber stamp hit",
-     "vol": 0.75,
-     "max": null,
-     "dur": null,
-     "cena": "stamp | fala: Só em dois mil e vinte e três, vinte e um anos depois, o Cade aprovou a compra, com restrições.",
-     "fonte": "freesound #683031 Thump.mp3"
-    }
-   ]
-  },
-  {
-   "rodada": 2,
-   "nota": 7.5,
-   "avaliacao": {
-    "nota": 7.5,
-    "resumo": "A sonoplastia está bem direcionada no tom informativo e dinâmico, com boa escolha de trilha e equilíbrio geral com a narração. No entanto, os efeitos de carimbo estão adiantados em relação à animação visual do documento, e faltam alguns foley/efeitos pontuais importantes como o folhear do calendário e os checks do infográfico.",
-    "problemas": [
-     {
-      "evento": 0,
-      "problema": "O efeito sonoro do carimbo toca antes do selo 'VETADO' bater visualmente no papel (que acontece por volta de 4.9s/5.0s).",
-      "acao": "atrasar",
-      "segundos": 0.35
-     },
-     {
-      "evento": 10,
-      "problema": "O carimbo de 'APROVADO' soa em 45.4s, mas o elemento visual só bate na tela próximo a 45.9s, quebrando a sincronia visual.",
-      "acao": "atrasar",
-      "segundos": 0.5
-     }
-    ],
-    "faltando": [
-     {
-      "t": 0.1,
-      "busca": "quick modern swoosh hit transition",
-      "tipo": "fx"
-     },
-     {
-      "t": 33.2,
-      "busca": "calendar page flip fast flutter",
-      "tipo": "fx"
-     },
-     {
-      "t": 51.8,
-      "busca": "ui checkmark click blip",
-      "tipo": "fx"
-     }
-    ]
-   },
-   "eventos": [
-    {
-     "t0": 4.57,
-     "t1": 7.57,
-     "tipo": "fx",
-     "busca": "rubber stamp hit",
-     "vol": 0.75,
-     "max": null,
-     "dur": null,
-     "cena": "stamp | fala: Dois anos depois, o Cade proibiu o negócio.",
-     "fonte": "freesound #683031 Thump.mp3"
-    },
-    {
-     "t0": 8.93,
-     "t1": 11.93,
-     "tipo": "fx",
-     "busca": "cinematic boom hit",
-     "vol": 0.6,
-     "max": null,
-     "dur": null,
-     "cena": "montagem | fala: Só tinha um problema: a compra já tinha acontecido.",
-     "fonte": "freesound #648732 Cinematic Woosh SFX-011.wav"
-    },
-    {
-     "t0": 16.17,
-     "t1": 19.17,
-     "tipo": "fx",
-     "busca": "single wooden knock hit",
-     "vol": 0.8,
-     "max": 0.6,
-     "dur": null,
-     "cena": "montagem | fala: Por cinco votos a um, o Cade mandou a Nestlé vender a Garoto em até cento e cinquenta dias.",
-     "fonte": "freesound #812363 Knocking once on wood, single footstep"
-    },
-    {
-     "t0": 20.233,
-     "t1": 23.233,
-     "tipo": "fx",
-     "busca": "short clock tick",
-     "vol": 0.49,
-     "max": 0.3,
-     "dur": null,
-     "cena": "montagem | fala: Por cinco votos a um, o Cade mandou a Nestlé vender a Garoto em até cento e cinquenta dias.",
-     "fonte": "freesound #321582 clock ticking"
-    },
-    {
-     "t0": 36.53,
-     "t1": 39.53,
-     "tipo": "fx",
-     "busca": "soft pop click",
-     "vol": 0.3,
-     "max": 0.25,
-     "dur": null,
-     "cena": "montagem | fala: Em dois mil e dezessete, chegou a ser prevista a venda de marcas como Serenata de Amor, Chokito, Lollo e Sensação.",
-     "fonte": "freesound #776443 pop out, bubble, soft bursting"
-    },
-    {
-     "t0": 37.79,
-     "t1": 40.79,
-     "tipo": "fx",
-     "busca": "soft pop click",
-     "vol": 0.3,
-     "max": 0.25,
-     "dur": null,
-     "cena": "montagem | fala: Em dois mil e dezessete, chegou a ser prevista a venda de marcas como Serenata de Amor, Chokito, Lollo e Sensação.",
-     "fonte": "freesound #776443 pop out, bubble, soft bursting"
-    },
-    {
-     "t0": 38.64,
-     "t1": 41.64,
-     "tipo": "fx",
-     "busca": "soft pop click",
-     "vol": 0.3,
-     "max": 0.25,
-     "dur": null,
-     "cena": "montagem | fala: Em dois mil e dezessete, chegou a ser prevista a venda de marcas como Serenata de Amor, Chokito, Lollo e Sensação.",
-     "fonte": "freesound #776443 pop out, bubble, soft bursting"
-    },
-    {
-     "t0": 39.29,
-     "t1": 42.29,
-     "tipo": "fx",
-     "busca": "soft pop click",
-     "vol": 0.3,
-     "max": 0.25,
-     "dur": null,
-     "cena": "montagem | fala: Em dois mil e dezessete, chegou a ser prevista a venda de marcas como Serenata de Amor, Chokito, Lollo e Sensação.",
-     "fonte": "freesound #776443 pop out, bubble, soft bursting"
-    },
-    {
-     "t0": 40.37,
-     "t1": 43.37,
-     "tipo": "silencio",
-     "busca": null,
-     "vol": 0.5,
-     "max": null,
-     "dur": 0.9,
-     "cena": "bigtext | fala: Não aconteceu."
-    },
-    {
-     "t0": 40.37,
-     "t1": 43.37,
-     "tipo": "fx",
-     "busca": "deep sub boom impact",
-     "vol": 0.7,
-     "max": 1.5,
-     "dur": null,
-     "cena": "bigtext | fala: Não aconteceu.",
-     "fonte": "freesound #649445 Cinematic Woosh SFX-015.wav"
     },
     {
      "t0": 45.43,

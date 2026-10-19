@@ -11,22 +11,22 @@
    "cena": "stamp | fala: Dois anos depois, o Cade proibiu o negócio."
   },
   {
-   "t0": 8.93,
-   "t1": 11.93,
-   "tipo": "fx",
-   "busca": "cinematic boom hit",
-   "vol": 0.6,
+   "t0": 7.42,
+   "t1": 10.42,
+   "tipo": "silencio",
+   "busca": null,
+   "vol": null,
    "max": null,
-   "dur": null,
+   "dur": 0.45,
    "cena": "montagem | fala: Só tinha um problema: a compra já tinha acontecido."
   },
   {
    "t0": 16.17,
    "t1": 19.17,
    "tipo": "fx",
-   "busca": "single wooden knock hit",
-   "vol": 0.8,
-   "max": 0.6,
+   "busca": "rubber stamp hit",
+   "vol": 0.6,
+   "max": 0.5,
    "dur": null,
    "cena": "montagem | fala: Por cinco votos a um, o Cade mandou a Nestlé vender a Garoto em até cento e cinquenta dias."
   },
@@ -81,23 +81,13 @@
    "cena": "montagem | fala: Em dois mil e dezessete, chegou a ser prevista a venda de marcas como Serenata de Amor, Chokito, Lollo e Sensação."
   },
   {
-   "t0": 40.37,
-   "t1": 43.37,
+   "t0": 40.32,
+   "t1": 43.32,
    "tipo": "silencio",
    "busca": null,
    "vol": null,
    "max": null,
-   "dur": 0.9,
-   "cena": "bigtext | fala: Não aconteceu."
-  },
-  {
-   "t0": 40.37,
-   "t1": 43.37,
-   "tipo": "fx",
-   "busca": "deep sub boom impact",
-   "vol": 0.7,
-   "max": 1.5,
-   "dur": null,
+   "dur": 1,
    "cena": "bigtext | fala: Não aconteceu."
   },
   {
