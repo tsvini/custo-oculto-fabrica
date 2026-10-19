@@ -50,7 +50,7 @@
         ]
        ],
        "selo": "Nestlé x Garoto",
-       "logo": "logo_garoto",
+       "logo": "logo_nestle",
        "logos": {
         "logo_nestle": [
          "File:Nestlé textlogo.svg",
@@ -58,13 +58,6 @@
          "File:Nestlé.svg",
          "File:Logo Nestlé.svg",
          "File:Nestle logo.svg"
-        ],
-        "logo_garoto": [
-         "File:Garoto logo.svg",
-         "File:Logo Garoto.svg",
-         "File:Garoto.svg",
-         "File:Chocolates Garoto logo.svg",
-         "File:Garoto logo.png"
         ]
        },
        "depois": {
@@ -107,7 +100,7 @@
        "title": "NESTLÉ + GAROTO",
        "stamp": "VETADO",
        "stamp_palavra": "proibiu",
-       "fundo": "cade",
+       "fundo": "ia_votacao",
        "fundo_dim": 0.5,
        "sons": [
         {
@@ -229,15 +222,16 @@
         },
         {
          "type": "image",
-         "media": "cade",
+         "media": "garoto_fabrica",
          "z0": 1.0,
          "z1": 1.12,
          "dim": 0.55,
          "palavra": "mandou",
          "wiki": [
-          "Conselho Administrativo de Defesa Econômica",
-          "CADE Brasília",
-          "Sede do CADE"
+          "Fábrica da Garoto Vila Velha",
+          "Chocolates Garoto Vila Velha",
+          "Garoto chocolate factory",
+          "Fábrica de Chocolates Garoto"
          ]
         }
        ],
@@ -355,22 +349,10 @@
        "clips": [
         {
          "type": "image",
-         "media": "serenata",
-         "z0": 1.0,
-         "z1": 1.12,
-         "dim": 0.55,
-         "wiki": [
-          "Serenata de Amor chocolate",
-          "Serenata de Amor Garoto",
-          "Bombom Serenata de Amor"
-         ]
-        },
-        {
-         "type": "image",
          "media": "ia_gondola",
          "z0": 1.0,
          "z1": 1.12,
-         "dim": 0.55
+         "dim": 0.6
         }
        ],
        "fallback": {
@@ -469,16 +451,11 @@
       "text": "E o caso ajudou a mudar a lei brasileira.",
       "scene": {
        "type": "image",
-       "media": "cade",
+       "media": "ia_votacao",
        "z0": 1.0,
        "z1": 1.12,
        "dim": 0.45,
-       "lower": "O CASO MUDOU A LEI",
-       "wiki": [
-        "Conselho Administrativo de Defesa Econômica",
-        "CADE Brasília",
-        "Sede do CADE"
-       ]
+       "lower": "O CASO MUDOU A LEI"
       }
      },
      {
@@ -519,26 +496,47 @@
      {
       "text": "Você sabia que a Garoto é da Nestlé?",
       "scene": {
-       "type": "logo",
-       "logo": "logo_garoto",
-       "logo2": "logo_nestle",
-       "logos": {
-        "logo_nestle": [
-         "File:Nestlé textlogo.svg",
-         "File:Nestle textlogo.svg",
-         "File:Nestlé.svg",
-         "File:Logo Nestlé.svg",
-         "File:Nestle logo.svg"
-        ],
-        "logo_garoto": [
-         "File:Garoto logo.svg",
-         "File:Logo Garoto.svg",
-         "File:Garoto.svg",
-         "File:Chocolates Garoto logo.svg",
-         "File:Garoto logo.png"
-        ]
+       "type": "montagem",
+       "auto": true,
+       "clips": [
+        {
+         "type": "image",
+         "media": "garoto_fabrica",
+         "z0": 1.0,
+         "z1": 1.12,
+         "dim": 0.55,
+         "wiki": [
+          "Fábrica da Garoto Vila Velha",
+          "Chocolates Garoto Vila Velha",
+          "Garoto chocolate factory",
+          "Fábrica de Chocolates Garoto"
+         ]
+        }
+       ],
+       "fallback": {
+        "type": "bigtext",
+        "lines": []
        },
-       "sub": "VOCÊ SABIA?"
+       "sobre": {
+        "type": "bigtext",
+        "lines": [
+         [
+          "A GAROTO",
+          "white",
+          170
+         ],
+         [
+          "É DA",
+          "white",
+          130
+         ],
+         [
+          "NESTLÉ",
+          "gold",
+          200
+         ]
+        ]
+       }
       }
      }
     ]
