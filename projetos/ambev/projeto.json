@@ -147,7 +147,9 @@
          "em": -0.3,
          "dur": 0.6
         }
-       ]
+       ],
+       "fundo": "ia_garrafas",
+       "fundo_dim": 0.72
       }
      },
      {
@@ -322,7 +324,19 @@
       }
      },
      {
-      "text": "O negócio foi parar no Cade, e acabou aprovado.",
+      "text": "Pra todas as outras marcas juntas, sobrava só uma em cada quatro.",
+      "scene": {
+       "type": "rosca",
+       "valor": 0.25,
+       "centro": "1 EM 4",
+       "label": "PRA TODAS AS OUTRAS",
+       "sub": "MARCAS JUNTAS",
+       "fundo": "ia_tres",
+       "fundo_dim": 0.75
+      }
+     },
+     {
+      "text": "O negócio foi parar no Cade. Depois de nove meses, saiu a decisão: quatro votos a um pela aprovação.",
       "scene": {
        "type": "montagem",
        "auto": true,
@@ -355,12 +369,69 @@
           ],
           "stagger": 0.2
          }
+        },
+        {
+         "type": "image",
+         "media": "ia_votacao",
+         "z0": 1.0,
+         "z1": 1.12,
+         "dim": 0.5,
+         "palavra": "nove",
+         "sobre": {
+          "type": "bigtext",
+          "lines": [
+           [
+            "9 MESES",
+            "gold",
+            240
+           ],
+           [
+            "DE ANÁLISE",
+            "white",
+            110
+           ]
+          ],
+          "stagger": 0.15
+         }
+        },
+        {
+         "type": "image",
+         "media": "ia_votacao",
+         "z0": 1.12,
+         "z1": 1.22,
+         "dim": 0.6,
+         "palavra": "quatro",
+         "sobre": {
+          "type": "bigtext",
+          "lines": [
+           [
+            "4 x 1",
+            "gold",
+            280
+           ],
+           [
+            "PELA APROVAÇÃO",
+            "white",
+            100
+           ]
+          ],
+          "stagger": 0.15
+         }
         }
        ],
        "fallback": {
         "type": "bigtext",
         "lines": []
-       }
+       },
+       "sons": [
+        {
+         "tipo": "fx",
+         "busca": "wooden gavel strike",
+         "palavra": "Cade",
+         "vol": 0.55,
+         "max": 0.6
+        }
+       ]
       }
      },
      {
@@ -387,7 +458,9 @@
          "em": -0.35,
          "dur": 0.35
         }
-       ]
+       ],
+       "fundo": "ia_votacao",
+       "fundo_dim": 0.72
       }
      },
      {
@@ -451,6 +524,32 @@
       }
      },
      {
+      "text": "A Bavária acabou nas mãos de uma cervejaria do Canadá.",
+      "scene": {
+       "type": "bigtext",
+       "lines": [
+        [
+         "A BAVÁRIA",
+         "gold",
+         200
+        ],
+        [
+         "FOI PRO",
+         "white",
+         130
+        ],
+        [
+         "CANADÁ",
+         "white",
+         220
+        ]
+       ],
+       "stagger": 0.3,
+       "fundo": "cervejaria",
+       "fundo_dim": 0.65
+      }
+     },
+     {
       "text": "E ainda teve que abrir parte da sua rede de distribuição para o novo concorrente.",
       "scene": {
        "type": "montagem",
@@ -490,6 +589,29 @@
         "type": "bigtext",
         "lines": []
        }
+      }
+     },
+     {
+      "text": "E também teve que manter os empregos por quatro anos.",
+      "scene": {
+       "type": "montagem",
+       "auto": true,
+       "clips": [
+        {
+         "type": "counter",
+         "value": 4,
+         "suffix": " ANOS",
+         "over": "EMPREGOS GARANTIDOS",
+         "label": "SEM CORTES",
+         "size": 240
+        }
+       ],
+       "fallback": {
+        "type": "bigtext",
+        "lines": []
+       },
+       "fundo": "envase",
+       "fundo_dim": 0.75
       }
      },
      {
