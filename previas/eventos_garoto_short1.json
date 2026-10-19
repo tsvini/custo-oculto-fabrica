@@ -6,6 +6,8 @@
    "tipo": "fx",
    "busca": "rubber stamp hit",
    "vol": 0.75,
+   "max": null,
+   "dur": null,
    "cena": "stamp | fala: Dois anos depois, o Cade proibiu o negócio."
   },
   {
@@ -14,23 +16,89 @@
    "tipo": "fx",
    "busca": "cinematic boom hit",
    "vol": 0.6,
+   "max": null,
+   "dur": null,
    "cena": "montagem | fala: Só tinha um problema: a compra já tinha acontecido."
   },
   {
-   "t0": 33.05,
-   "t1": 36.05,
+   "t0": 16.17,
+   "t1": 19.17,
    "tipo": "fx",
-   "busca": "fast whoosh",
-   "vol": 0.35,
+   "busca": "single wooden knock hit",
+   "vol": 0.55,
+   "max": 0.6,
+   "dur": null,
+   "cena": "montagem | fala: Por cinco votos a um, o Cade mandou a Nestlé vender a Garoto em até cento e cinquenta dias."
+  },
+  {
+   "t0": 36.53,
+   "t1": 39.53,
+   "tipo": "fx",
+   "busca": "soft pop click",
+   "vol": 0.3,
+   "max": 0.25,
+   "dur": null,
    "cena": "montagem | fala: Em dois mil e dezessete, chegou a ser prevista a venda de marcas como Serenata de Amor, Chokito, Lollo e Sensação."
   },
   {
-   "t0": 42.67,
-   "t1": 45.67,
+   "t0": 37.83,
+   "t1": 40.83,
    "tipo": "fx",
-   "busca": "deep cinematic boom",
-   "vol": 0.6,
-   "cena": "montagem | fala: Só em dois mil e vinte e três, vinte e um anos depois, o Cade aprovou a compra, com restrições."
+   "busca": "soft pop click",
+   "vol": 0.3,
+   "max": 0.25,
+   "dur": null,
+   "cena": "montagem | fala: Em dois mil e dezessete, chegou a ser prevista a venda de marcas como Serenata de Amor, Chokito, Lollo e Sensação."
+  },
+  {
+   "t0": 38.64,
+   "t1": 41.64,
+   "tipo": "fx",
+   "busca": "soft pop click",
+   "vol": 0.3,
+   "max": 0.25,
+   "dur": null,
+   "cena": "montagem | fala: Em dois mil e dezessete, chegou a ser prevista a venda de marcas como Serenata de Amor, Chokito, Lollo e Sensação."
+  },
+  {
+   "t0": 39.29,
+   "t1": 42.29,
+   "tipo": "fx",
+   "busca": "soft pop click",
+   "vol": 0.3,
+   "max": 0.25,
+   "dur": null,
+   "cena": "montagem | fala: Em dois mil e dezessete, chegou a ser prevista a venda de marcas como Serenata de Amor, Chokito, Lollo e Sensação."
+  },
+  {
+   "t0": 40.35,
+   "t1": 43.35,
+   "tipo": "silencio",
+   "busca": null,
+   "vol": null,
+   "max": null,
+   "dur": 0.9,
+   "cena": "bigtext | fala: Não aconteceu."
+  },
+  {
+   "t0": 40.35,
+   "t1": 43.35,
+   "tipo": "fx",
+   "busca": "deep sub boom impact",
+   "vol": 0.7,
+   "max": 1.5,
+   "dur": null,
+   "cena": "bigtext | fala: Não aconteceu."
+  },
+  {
+   "t0": 45.43,
+   "t1": 48.43,
+   "tipo": "fx",
+   "busca": "rubber stamp hit",
+   "vol": 0.75,
+   "max": null,
+   "dur": null,
+   "cena": "stamp | fala: Só em dois mil e vinte e três, vinte e um anos depois, o Cade aprovou a compra, com restrições."
   }
  ],
  "trilha": "doc",
