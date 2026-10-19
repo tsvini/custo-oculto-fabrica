@@ -1,0 +1,15 @@
+<!doctype html><html lang='pt-BR'><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<style>:root{--bg:#fff;--fg:#1a1a1a;--mut:#555;--ac:#c0392b}@media (prefers-color-scheme:dark){:root{--bg:#121212;--fg:#eee;--mut:#aaa}}
+body{background:var(--bg);color:var(--fg);font:16px/1.6 system-ui,sans-serif;max-width:760px;margin:0 auto;padding:24px 16px}
+h1{color:var(--ac)}small,.m{color:var(--mut)}a{color:var(--ac)}</style><title>Conectar TikTok</title></head><body><h1>Conectar o TikTok à fábrica</h1>
+<p>Cole o <b>Client key</b> do app (TikTok for Developers → Custo Oculto Fabrica → Credentials). Ele não é segredo, mas fica só no seu navegador.</p>
+<p><input id="ck" placeholder="Client key" style="width:100%;max-width:420px;padding:10px;font-size:16px"></p>
+<p><button id="go" style="padding:12px 20px;font-size:16px;background:#c0392b;color:#fff;border:0;border-radius:8px">Conectar TikTok</button></p>
+<p class="m">Depois de autorizar, o TikTok volta para uma página com um código. Siga as instruções de lá.</p>
+<script>
+const ck=document.getElementById('ck'); try{ck.value=localStorage.getItem('ck')||''}catch(e){}
+document.getElementById('go').onclick=()=>{const k=ck.value.trim(); if(!k){alert('Cole o Client key');return}
+try{localStorage.setItem('ck',k)}catch(e){}
+const st=Math.random().toString(36).slice(2);
+location.href='https://www.tiktok.com/v2/auth/authorize/?'+new URLSearchParams({client_key:k,scope:'user.info.basic,video.upload,video.publish',response_type:'code',redirect_uri:'https://tsvini.github.io/custo-oculto-fabrica/tiktok/callback.html',state:st});};
+</script></body></html>
