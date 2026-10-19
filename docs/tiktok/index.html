@@ -11,5 +11,5 @@ const ck=document.getElementById('ck'); try{ck.value=localStorage.getItem('ck')|
 document.getElementById('go').onclick=()=>{const k=ck.value.trim(); if(!k){alert('Cole o Client key');return}
 try{localStorage.setItem('ck',k)}catch(e){}
 const st=Math.random().toString(36).slice(2);
-location.href='https://www.tiktok.com/v2/auth/authorize/?'+new URLSearchParams({client_key:k,scope:'user.info.basic,video.upload,video.publish',response_type:'code',redirect_uri:'https://tsvini.github.io/custo-oculto-fabrica/tiktok/callback.html',state:st});};
+location.href='https://www.tiktok.com/v2/auth/authorize/?'+new URLSearchParams({client_key:k,scope:'user.info.basic,user.info.stats,video.list,video.upload,video.publish',response_type:'code',redirect_uri:'https://tsvini.github.io/custo-oculto-fabrica/tiktok/callback.html',state:st});};
 </script></body></html>
