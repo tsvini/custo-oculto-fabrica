@@ -1,10 +1,10 @@
 {
- "atualizado": "19/10/2026 14:17",
+ "atualizado": "19/10/2026 14:24",
  "fontes": {
   "custo_oculto": {
    "seguidores": 11,
    "views_total": 4541,
-   "videos": 31,
+   "videos": 32,
    "views_28d": 4031,
    "views_7d": 4031,
    "seguidores_28d": 15,
@@ -289,9 +289,15 @@
   },
   "instagram": {
    "seguidores": 0,
-   "videos": 2,
+   "videos": 3,
    "usuario": "custooculto.oficial",
    "top": [
+    {
+     "titulo": "A Nestlé comprou a Garoto em 2002. Dois anos depois, o Cade proibiu o negócio. Só tinha um",
+     "url": "https://www.instagram.com/reel/DeryB9KlER_/",
+     "likes": 0,
+     "comentarios": 0
+    },
     {
      "titulo": "A Colgate pagou US$ 1 bilhão pela Kolynos… e escolheu apagar a marca. Você lembra do gosto",
      "url": "https://www.instagram.com/reel/DeptiPwFLyy/",
@@ -334,35 +340,8 @@
  },
  "agenda": [
   {
-   "quando": "2026-10-19T14:20:00-03:00",
-   "plataforma": "Instagram",
-   "chave": "instagram",
-   "titulo": "A Nestlé comprou a Garoto. O Cade proibiu. Mas a compra já tinha acontecido",
-   "tipo": "short",
-   "id": "garoto_short1",
-   "url": "https://raw.githubusercontent.com/tsvini/custo-oculto-midia/c4297988009eaf9b7751e4c9fc959e98e1d9244e/garoto/garoto_short1.mp4"
-  },
-  {
-   "quando": "2026-10-19T14:20:00-03:00",
-   "plataforma": "Facebook",
-   "chave": "facebook",
-   "titulo": "A Nestlé comprou a Garoto. O Cade proibiu. Mas a compra já tinha acontecido",
-   "tipo": "short",
-   "id": "garoto_short1",
-   "url": "https://raw.githubusercontent.com/tsvini/custo-oculto-midia/c4297988009eaf9b7751e4c9fc959e98e1d9244e/garoto/garoto_short1.mp4"
-  },
-  {
-   "quando": "2026-10-19T14:20:00-03:00",
-   "plataforma": "TikTok",
-   "chave": "tiktok",
-   "titulo": "A Nestlé comprou a Garoto. O Cade proibiu. Mas a compra já tinha acontecido",
-   "tipo": "short",
-   "id": "garoto_short1",
-   "url": "https://raw.githubusercontent.com/tsvini/custo-oculto-midia/c4297988009eaf9b7751e4c9fc959e98e1d9244e/garoto/garoto_short1.mp4"
-  },
-  {
    "quando": "2026-10-19T19:00:00-03:00",
-   "titulo": "O presidente que durou 9 dias na Americanas",
+   "titulo": "O presidente que durou 9 dias na Americanas · PAUSADO (rascunho)",
    "tipo": "metricool",
    "id": "metricool",
    "url": "https://app.metricool.com/planner",
@@ -1093,7 +1072,7 @@
  "esperando": [
   {
    "titulo": "A Nestlé comprou a Garoto. O CADE proibiu. Mas a compra já tinha acontecido #shorts",
-   "id": "garoto_short1",
+   "id": "garoto_short1_antigo",
    "plataforma": "Custo Oculto (YouTube)",
    "url": "https://studio.youtube.com/video/jnqhEGpic1I/edit",
    "cancelado": false
