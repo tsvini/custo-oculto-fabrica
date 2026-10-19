@@ -2,7 +2,7 @@
  "title": "Sadia x Perdigão",
  "slug": "sadia",
  "idioma": "pt",
- "trilha": "doc",
+ "trilha": "tensao",
  "voz": {
   "nome": "gravada",
   "motor": "eleven",
@@ -22,44 +22,53 @@
       "text": "A Sadia perdeu dois bilhões e meio apostando no dólar.",
       "scene": {
        "type": "capa",
-       "foto": "ia_fabrica",
+       "foto": "dolar_notas",
        "seta": false,
        "faixa": "A SADIA PERDEU",
        "linhas": [
         [
-         "R$ 2,5",
+         "–R$ 2,5",
          "red",
-         280
+         320
         ],
         [
          "BILHÕES",
          "white",
-         200
+         230
         ]
+       ],
+       "extra": [
+        {
+         "type": "video",
+         "media": "dolar_notas",
+         "pexels_id": 5466780,
+         "video_url": "https://videos.pexels.com/video-files/5466780/5466780-hd_1920_1080_25fps.mp4",
+         "search": "hundred dollar bills",
+         "dim": 0.5
+        }
        ],
        "depois": {
         "type": "montagem",
-        "auto": true,
         "clips": [
          {
-          "type": "video",
-          "media": "dolar_notas",
-          "pexels_id": 5466780,
-          "video_url": "https://videos.pexels.com/video-files/5466780/5466780-hd_1920_1080_25fps.mp4",
-          "search": "hundred dollar bills",
-          "dim": 0.5,
+          "type": "image",
+          "media": "ia_dolar_queima",
+          "z0": 1.0,
+          "z1": 1.18,
+          "dim": 0.45,
+          "tremor": true,
           "sobre": {
            "type": "bigtext",
            "lines": [
             [
              "APOSTANDO",
              "white",
-             130
+             140
             ],
             [
              "NO DÓLAR",
              "gold",
-             170
+             190
             ]
            ],
            "stagger": 0.1
@@ -69,7 +78,8 @@
         "fallback": {
          "type": "bigtext",
          "lines": []
-        }
+        },
+        "auto": true
        }
       }
      },
@@ -94,14 +104,14 @@
             110
            ],
            [
-            "COM A MAIOR",
+            "JUNTO COM A",
             "white",
-            120
+            110
            ],
            [
-            "RIVAL",
+            "MAIOR RIVAL",
             "red",
-            230
+            190
            ]
           ],
           "stagger": 0.18
@@ -111,34 +121,59 @@
        "fallback": {
         "type": "bigtext",
         "lines": []
-       }
+       },
+       "auto": true
       }
      },
      {
       "text": "A Perdigão.",
       "scene": {
-       "type": "bigtext",
-       "lines": [
-        [
-         "A",
-         "white",
-         120
-        ],
-        [
-         "PERDIGÃO",
-         "gold",
-         230
-        ]
+       "type": "montagem",
+       "clips": [
+        {
+         "type": "image",
+         "media": "ia_rivais",
+         "z0": 1.08,
+         "z1": 1.2,
+         "dim": 0.4,
+         "sobre": {
+          "type": "bigtext",
+          "lines": [
+           [
+            "A",
+            "white",
+            120
+           ],
+           [
+            "PERDIGÃO",
+            "gold",
+            250
+           ]
+          ],
+          "stagger": 0.05
+         }
+        }
        ],
-       "stagger": 0.05,
+       "fallback": {
+        "type": "bigtext",
+        "lines": []
+       },
        "sons": [
         {
          "tipo": "silencio",
          "palavra": "Perdigão",
          "em": -0.4,
          "dur": 0.4
+        },
+        {
+         "tipo": "fx",
+         "busca": "deep cinematic boom hit",
+         "palavra": "Perdigão",
+         "vol": 0.45,
+         "max": 0.9
         }
-       ]
+       ],
+       "auto": true
       }
      },
      {
@@ -179,7 +214,8 @@
        "fallback": {
         "type": "bigtext",
         "lines": []
-       }
+       },
+       "auto": true
       }
      },
      {
@@ -220,7 +256,8 @@
        "fallback": {
         "type": "bigtext",
         "lines": []
-       }
+       },
+       "auto": true
       }
      },
      {
@@ -290,7 +327,8 @@
          "vol": 0.55,
          "max": 0.8
         }
-       ]
+       ],
+       "auto": true
       }
      },
      {
@@ -331,8 +369,8 @@
        "title": "O PRIMEIRO EM 64 ANOS DE HISTÓRIA",
        "stamp": "PREJUÍZO",
        "stamp_palavra": "primeiro",
-       "fundo": "ia_fabrica",
-       "fundo_dim": 0.55,
+       "fundo": "ia_sala_noite",
+       "fundo_dim": 0.5,
        "sons": [
         {
          "tipo": "fx",
@@ -349,39 +387,48 @@
        "type": "montagem",
        "clips": [
         {
-         "type": "video",
-         "media": "aperto_maos",
-         "pexels_id": 6931109,
-         "video_url": "https://videos.pexels.com/video-files/6931109/6931109-uhd_2160_3840_25fps.mp4",
-         "search": "handshake business partners",
-         "dim": 0.5,
+         "type": "image",
+         "media": "ia_fusao",
+         "z0": 1.0,
+         "z1": 1.16,
+         "dim": 0.45,
          "sobre": {
           "type": "bigtext",
           "lines": [
            [
             "SADIA",
             "white",
-            170
+            190
            ],
            [
             "+",
             "gold",
-            140
+            160
            ],
            [
             "PERDIGÃO",
             "white",
-            170
+            190
            ]
           ],
-          "stagger": 0.2
+          "stagger": 0.35
          }
         }
        ],
        "fallback": {
         "type": "bigtext",
         "lines": []
-       }
+       },
+       "sons": [
+        {
+         "tipo": "fx",
+         "busca": "cinematic whoosh",
+         "palavra": "Perdigão",
+         "vol": 0.35,
+         "max": 0.6
+        }
+       ],
+       "auto": true
       }
      },
      {
@@ -421,7 +468,8 @@
        "fallback": {
         "type": "bigtext",
         "lines": []
-       }
+       },
+       "auto": true
       }
      },
      {
@@ -431,10 +479,10 @@
        "clips": [
         {
          "type": "image",
-         "media": "ia_frios",
+         "media": "ia_prateleira",
          "z0": 1.0,
          "z1": 1.12,
-         "dim": 0.5,
+         "dim": 0.45,
          "sobre": {
           "type": "bigtext",
           "lines": [
@@ -451,7 +499,7 @@
            [
             "SUMIU",
             "red",
-            230
+            250
            ]
           ],
           "stagger": 0.2
@@ -459,10 +507,10 @@
         },
         {
          "type": "image",
-         "media": "ia_lasanha",
+         "media": "ia_frios",
          "z0": 1.0,
          "z1": 1.1,
-         "dim": 0.45,
+         "dim": 0.6,
          "palavra": "vários",
          "sobre": {
           "type": "bigtext",
@@ -470,49 +518,35 @@
            [
             "PRESUNTO",
             "white",
-            110
+            120
            ],
            [
             "LINGUIÇA",
             "white",
-            110
+            120
            ],
            [
             "LASANHA",
             "white",
-            110
+            120
            ],
            [
             "PIZZA",
             "white",
-            110
+            120
            ]
           ],
-          "stagger": 0.22
+          "stagger": 0.25
          }
         },
         {
-         "type": "image",
-         "media": "ia_frios",
-         "z0": 1.1,
-         "z1": 1.2,
-         "dim": 0.65,
+         "type": "counter",
+         "value": 5,
+         "suffix": " ANOS",
+         "over": "FORA DAS PRATELEIRAS",
+         "label": "POR ATÉ",
          "palavra": "cinco",
-         "sobre": {
-          "type": "bigtext",
-          "lines": [
-           [
-            "POR ATÉ",
-            "white",
-            120
-           ],
-           [
-            "5 ANOS",
-            "gold",
-            250
-           ]
-          ]
-         }
+         "size": 260
         }
        ],
        "fallback": {
@@ -526,8 +560,16 @@
          "palavra": "sumir",
          "vol": 0.3,
          "max": 0.4
+        },
+        {
+         "tipo": "fx",
+         "busca": "short clock tick",
+         "palavra": "cinco",
+         "vol": 0.35,
+         "max": 0.3
         }
-       ]
+       ],
+       "auto": true
       }
      },
      {
@@ -538,18 +580,8 @@
        "title": "MARCAS E FÁBRICAS À VENDA",
        "stamp": "VENDIDAS",
        "stamp_palavra": "vendidas",
-       "fundo": "granja",
-       "fundo_dim": 0.55,
-       "extra": [
-        {
-         "type": "video",
-         "media": "granja",
-         "pexels_id": 39703648,
-         "video_url": "https://videos.pexels.com/video-files/39703648/16926878_1920_1080_50fps.mp4",
-         "search": "poultry farm",
-         "dim": 0.5
-        }
-       ],
+       "fundo": "ia_fabrica_fechada",
+       "fundo_dim": 0.45,
        "sons": [
         {
          "tipo": "fx",
@@ -563,42 +595,16 @@
      {
       "text": "Depois de tudo isso, Sadia e Perdigão acabaram virando uma empresa só.",
       "scene": {
-       "type": "montagem",
-       "clips": [
-        {
-         "type": "video",
-         "media": "linguica",
-         "pexels_id": 39895906,
-         "video_url": "https://videos.pexels.com/video-files/39895906/17020701_2160_3840_30fps.mp4",
-         "search": "sausages cooking in pan",
-         "dim": 0.5,
-         "sobre": {
-          "type": "bigtext",
-          "lines": [
-           [
-            "SADIA E PERDIGÃO",
-            "white",
-            110
-           ],
-           [
-            "UMA EMPRESA",
-            "white",
-            150
-           ],
-           [
-            "SÓ",
-            "gold",
-            280
-           ]
-          ],
-          "stagger": 0.35
-         }
-        }
-       ],
-       "fallback": {
-        "type": "bigtext",
-        "lines": []
-       },
+       "type": "timeline",
+       "start": "2008",
+       "start_sub": "RIVAIS",
+       "end": "2011",
+       "end_sub": "UMA EMPRESA",
+       "big": "UMA SÓ",
+       "size": 220,
+       "encher": 0.6,
+       "fundo": "ia_fusao",
+       "fundo_dim": 0.7,
        "sons": [
         {
          "tipo": "silencio",
@@ -612,31 +618,29 @@
      {
       "text": "Você lembrava que elas já foram rivais?",
       "scene": {
-       "type": "compare",
-       "title": "VOCÊ LEMBRAVA?",
-       "items": [
+       "type": "bigtext",
+       "lines": [
         [
-         "SADIA",
-         "RIVAL",
-         "gold"
+         "DUAS RIVAIS.",
+         "white",
+         150
         ],
         [
-         "PERDIGÃO",
-         "RIVAL",
-         "red"
+         "UMA EMPRESA.",
+         "gold",
+         170
         ]
        ],
-       "size": 170,
-       "stagger": 0.4,
-       "fundo": "freezer2",
-       "fundo_dim": 0.75,
+       "stagger": 0.5,
+       "fundo": "linguica",
+       "fundo_dim": 0.65,
        "extra": [
         {
          "type": "video",
-         "media": "freezer2",
-         "pexels_id": 3735225,
-         "video_url": "https://videos.pexels.com/video-files/3735225/3735225-hd_1920_1080_25fps.mp4",
-         "search": "man getting food in freezer grocery",
+         "media": "linguica",
+         "pexels_id": 39895906,
+         "video_url": "https://videos.pexels.com/video-files/39895906/17020701_2160_3840_30fps.mp4",
+         "search": "sausages cooking in pan",
          "dim": 0.5
         }
        ]
@@ -650,7 +654,12 @@
   "ia_fabrica": "vast modern food processing plant interior, long stainless steel conveyor lines with packaged frozen chicken products, workers in white hygiene suits and hairnets blurred in background, cold blue and white industrial light, sense of huge scale, no faces, no text, no logo, no brand, vertical composition",
   "ia_votacao": "Brazilian government council meeting room in Brasilia, officials at a long table raising hands to vote, microphones, formal atmosphere, faces not recognizable, vertical composition",
   "ia_frios": "Brazilian supermarket deli and refrigerated counter full of sliced ham, sausages, salami and cold cuts, cold light, plain unlabeled packages, no packaging text, no brand, no logo, vertical composition",
-  "ia_lasanha": "open supermarket freezer full of frozen lasagna trays and frozen pizzas in plain unlabeled boxes, frost, cold blue light, no text, no brand, no logo, vertical composition"
+  "ia_dolar_queima": "close-up of a pile of US hundred dollar bills burning with bright orange flames and smoke on a dark table, embers flying, dramatic cinematic low light, vertical composition",
+  "ia_rivais": "two giant chess kings facing each other on a dark chessboard, one glossy red and one gold, intense rivalry, dramatic rim light, smoke, cinematic, vertical composition",
+  "ia_fusao": "aerial view at dusk of two huge food processing factories side by side being joined by a new connecting building, refrigerated trucks, lights turning on, dramatic orange and blue sky, cinematic, no text, no logo, vertical composition",
+  "ia_sala_noite": "dark empty corporate boardroom at night, long table, single desk lamp lighting scattered financial report papers with red downward charts, city lights through window, tense mood, no readable text, vertical composition",
+  "ia_prateleira": "empty refrigerated supermarket shelves with only a few gaps and price tag rails, cold fluorescent light, abandoned feeling, no products, no text, no brand, vertical composition",
+  "ia_fabrica_fechada": "closed food factory at dusk, heavy chain and padlock on the main gate, empty parking lot, warning light, gloomy sky, cinematic, no text, no logo, vertical composition"
  },
  "meta": {
   "titles": [

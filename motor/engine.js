@@ -422,6 +422,7 @@
   // {type:"montagem", cada:1.2, clips:[{type:"video", media:"k", search:"..."}, {type:"image", media:"k2", wiki:[...]}, ...]}
   // auto: divide a frase inteira entre os clipes (cada imagem aparece uma vez só, sem repetir)
   function montagemAt(s, t, dur) { const n = (s.clips || []).length || 1;
+    if (n === 1) return [s.clips[0], t, Math.max(0.4, dur || 2)]; // um clipe só: roda inteiro (sem reiniciar a cada 1,2s, que fazia o texto piscar e o vídeo travar)
     if (s._ini && s._ini.length === n) { let i = 0; while (i + 1 < n && t >= s._ini[i + 1]) i++; const fim = i + 1 < n ? s._ini[i + 1] : (dur || s._ini[i] + 2); return [s.clips[i], t - s._ini[i], Math.max(0.4, fim - s._ini[i])]; } const cada = s.auto && dur ? Math.max(0.6, dur / n) : (s.cada || 1.2);
     const i = s.auto ? Math.min(n - 1, Math.floor(Math.max(0, t) / cada)) : Math.floor(Math.max(0, t) / cada) % n; return [s.clips[i], t - Math.floor(Math.max(0, t) / cada) * cada, cada]; }
   const temMidia = (cl, media) => !(cl.type === "image" || cl.type === "video") || (media && media[cl.media]);
