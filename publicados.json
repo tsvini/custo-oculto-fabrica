@@ -754,7 +754,7 @@
   ]
  },
  {
-  "nome": "garoto_short1",
+  "nome": "garoto_short1_antigo",
   "tipo": "short",
   "idioma": "pt",
   "titulo": "A Nestlé comprou a Garoto. O CADE proibiu. Mas a compra já tinha acontecido #shorts",
@@ -762,6 +762,18 @@
   "caso": "garoto",
   "caso_titulo": null,
   "status": "private",
-  "miniatura_ok": "fc16795473fb"
+  "miniatura_ok": "fc16795473fb",
+  "substituido_por": "P3KklOvB6e8"
+ },
+ {
+  "nome": "garoto_short1",
+  "tipo": "short",
+  "idioma": "pt",
+  "titulo": "A Nestlé comprou a Garoto. O Cade proibiu. Mas a compra já tinha acontecido #shorts",
+  "video_id": "P3KklOvB6e8",
+  "caso": "garoto",
+  "caso_titulo": "Nestlé x Garoto",
+  "publishAt": "2026-10-19T14:21:48.983108-03:00",
+  "status": "private"
  }
 ]
