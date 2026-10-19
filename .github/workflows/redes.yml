@@ -24,7 +24,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - run: pip install -q requests
+      - run: pip install -q requests cryptography
       - name: Publicar
         env:
           META_PAGE_TOKEN: ${{ secrets.META_PAGE_TOKEN }}
@@ -37,6 +37,6 @@ jobs:
         run: |
           python -m fabrica.redes ${{ inputs.acao || 'publicar' }}
           git config user.name "fabrica-custo-oculto"; git config user.email "fabrica@users.noreply.github.com"
-          if [ -n "$(git status --porcelain agenda_redes.json)" ]; then
-            git add agenda_redes.json && git commit -q -m "Agenda das redes [skip ci]" && for t in 1 2 3; do git pull --rebase --autostash -q origin main && git push -q origin HEAD:main && break; sleep 5; done
+          if [ -n "$(git status --porcelain agenda_redes.json tiktok_token.enc)" ]; then
+            git add agenda_redes.json $(ls tiktok_token.enc 2>/dev/null) && git commit -q -m "Agenda das redes [skip ci]" && for t in 1 2 3; do git pull --rebase --autostash -q origin main && git push -q origin HEAD:main && break; sleep 5; done
           fi

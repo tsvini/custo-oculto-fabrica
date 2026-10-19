@@ -80,21 +80,30 @@ def facebook(item):
 
 
 # ---------------- TikTok ----------------
+def _refresh():
+    if env("TIKTOK_REFRESH_TOKEN"):
+        return env("TIKTOK_REFRESH_TOKEN")
+    from . import tiktok_auth
+    return tiktok_auth.ler().get("refresh_token", "")
+
+
 def tiktok_token():
+    atual = _refresh()
     r = requests.post(f"{TT}/oauth/token/", data={"client_key": env("TIKTOK_CLIENT_KEY"), "client_secret": env("TIKTOK_CLIENT_SECRET"),
-                                                  "grant_type": "refresh_token", "refresh_token": env("TIKTOK_REFRESH_TOKEN")},
+                                                  "grant_type": "refresh_token", "refresh_token": atual},
                       headers={"Content-Type": "application/x-www-form-urlencoded"}, timeout=60)
     j = r.json()
     if "access_token" not in j:
-        raise RuntimeError(f"token TikTok: {j}")
-    if j.get("refresh_token") and j["refresh_token"] != env("TIKTOK_REFRESH_TOKEN"):
-        nota("TikTok", "o TikTok devolveu um refresh token novo; atualize o segredo TIKTOK_REFRESH_TOKEN quando o atual vencer", "warning")
+        raise RuntimeError(f"token TikTok: {j.get('error')} {j.get('error_description', '')}")
+    if j.get("refresh_token") and j["refresh_token"] != atual and not env("TIKTOK_REFRESH_TOKEN"):
+        from . import tiktok_auth  # o TikTok renova o refresh token: guarda o novo (criptografado) para nunca vencer
+        d = tiktok_auth.ler(); d["refresh_token"] = j["refresh_token"]; tiktok_auth.guardar(d)
     return j["access_token"]
 
 
 def tiktok(item):
-    if not (env("TIKTOK_CLIENT_KEY") and env("TIKTOK_REFRESH_TOKEN")):
-        raise RuntimeError("sem app do TikTok configurado")
+    if not (env("TIKTOK_CLIENT_KEY") and _refresh()):
+        raise RuntimeError("sem app do TikTok configurado (falta conectar a conta)")
     tok = tiktok_token(); H = {"Authorization": f"Bearer {tok}", "Content-Type": "application/json; charset=UTF-8"}
     with tempfile.TemporaryDirectory() as d:  # baixa o MP4 e envia por partes (FILE_UPLOAD não exige domínio verificado)
         arq = os.path.join(d, "v.mp4")
@@ -161,14 +170,14 @@ def testar():
         nota("Meta token", requests.get(f"{G}/debug_token", params={"input_token": tok, "access_token": tok}, timeout=60).json().get("data", {}))
     else:
         nota("Meta", "sem META_PAGE_TOKEN", "warning")
-    if env("TIKTOK_REFRESH_TOKEN"):
+    if env("TIKTOK_CLIENT_SECRET") and _refresh():
         try:
             t = tiktok_token()
             nota("TikTok", requests.post(f"{TT}/post/publish/creator_info/query/", headers={"Authorization": f"Bearer {t}"}, timeout=60).json())
         except Exception as e:
             nota("TikTok", str(e), "warning")
     else:
-        nota("TikTok", "sem TIKTOK_REFRESH_TOKEN", "warning")
+        nota("TikTok", "conta do TikTok ainda não conectada", "warning")
 
 
 if __name__ == "__main__":
