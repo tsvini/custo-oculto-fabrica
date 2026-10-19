@@ -1,28 +1,41 @@
 {
- "nota_final": 8.5,
+ "nota_final": 7.5,
  "rodadas": [
   {
    "rodada": 1,
-   "nota": 8.5,
+   "nota": 7.5,
    "avaliacao": {
-    "nota": 8.5,
-    "resumo": "A sonorização está bastante profissional, com a trilha sonora e a narração muito bem equilibradas. Os efeitos sonoros principais — como os carimbos em 'VETADO' e 'APROVADO', o efeito de relógio/contagem e os cliques nos chocolates — acompanham bem a edição dinâmica do Short.",
+    "nota": 7.5,
+    "resumo": "A sonoplastia geral está bem ritmada e acompanha bem as transições visuais, especialmente nas aparições dos chocolates. Porém, há um erro claro na escolha do efeito sonoro aos 16.2s (som de carimbo em uma cena de martelo de juiz/gavel) e pequenos desalinhamentos no sincronismo dos carimbos nas telas de documento.",
     "problemas": [
      {
+      "evento": 0,
+      "problema": "O som do carimbo 'VETADO' começa um pouco antes da animação carimbar visualmente o documento na tela.",
+      "acao": "atrasar",
+      "segundos": 0.4
+     },
+     {
       "evento": 2,
-      "problema": "O efeito de carimbo em 16.2s soa repetitivo e genérico, pois na tela aparece apenas o texto '5 x 1' sem o elemento visual de carimbo.",
-      "acao": "remover"
+      "problema": "Efeito sonoro incorreto: usou som de carimbo para a imagem de um martelo de juiz (gavel) batendo na mesa.",
+      "acao": "remover",
+      "segundos": 0
+     },
+     {
+      "evento": 9,
+      "problema": "O som do carimbo 'APROVADO' entra levemente adiantado em relação ao carimbo visual surgindo no papel.",
+      "acao": "atrasar",
+      "segundos": 0.4
      }
     ],
     "faltando": [
      {
-      "t": 26.5,
-      "busca": "wooden judge gavel hit studio sound effect",
+      "t": 16.2,
+      "busca": "wooden gavel strike hit court judge sound",
       "tipo": "fx"
      },
      {
-      "t": 31.2,
-      "busca": "paper stack rustle archive document flip",
+      "t": 26.5,
+      "busca": "paper document stack rustle shuffle sound",
       "tipo": "fx"
      }
     ]
