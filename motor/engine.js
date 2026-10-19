@@ -720,7 +720,8 @@
       while (espera.length) muxer.addVideoChunk(espera.shift(), { decoderConfig: dcfg });
       muxer.addVideoChunk(ch, meta && meta.decoderConfig ? meta : { decoderConfig: dcfg });
     }, error: (e) => { err = e; } });
-    venc.configure({ codec: codecs.video.codec, width: W, height: H, bitrate: vertical ? 8e6 : 12e6, framerate: fps });
+    venc.configure(Object.assign({ codec: codecs.video.codec, width: W, height: H, bitrate: vertical ? 8e6 : 12e6, framerate: fps }, codecs.video.mux === "avc" ? { avc: { format: "avc" } } : {}));
+    console.log("diag: codecs " + codecs.video.codec + " / " + codecs.audio.codec + ", quadros " + Math.floor(tl.total * fps) + ", audio " + tl.audio.length);
     const aenc = new AudioEncoder({ output: (ch, meta) => muxer.addAudioChunk(ch, meta), error: (e) => { err = e; } });
     aenc.configure({ codec: codecs.audio.codec, sampleRate: SR, numberOfChannels: 1, bitrate: 128000 });
     const step = SR; // 1 s por bloco
@@ -740,7 +741,7 @@
       if (i % 15 === 0) { onProgress && onProgress(i / nfr); await new Promise((r) => setTimeout(r, 0)); }
     }
     await venc.flush(); await aenc.flush(); if (err) throw err;
-    if (!dcfg) { console.warn("encoder sem decoderConfig: gravando em tempo real"); return exportRealtime(tl, vertical, media, onProgress, signal); }
+    if (!dcfg) throw new Error("encoder não entregou decoderConfig (" + espera.length + " pedaços, " + nfr + " quadros)");
     muxer.finalize();
     onProgress && onProgress(1);
     return { blob: new Blob([target.buffer], { type: "video/mp4" }), ext: "mp4", codec: codecs.video.codec };

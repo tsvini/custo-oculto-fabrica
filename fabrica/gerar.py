@@ -262,12 +262,17 @@ def main():
                 log(f"  Chrome '{canal}' indisponível ({str(e)[:80]}), usando Chromium")
                 b = pw.chromium.launch(args=args)
             pg = b.new_page(); pg.set_default_timeout(0)
-            pg.on("console", lambda msg: msg.text.startswith("progresso") and log("   ", msg.text))
-            pg.on("pageerror", lambda e: log("   erro na página:", e))
+            diag = []
+            pg.on("console", lambda msg: (log("   ", msg.text) if msg.text.startswith("progresso") else diag.append(msg.text[:300])))
+            pg.on("pageerror", lambda e: (log("   erro na página:", e), diag.append("pageerror: " + str(e)[:300])))
             pg.goto(base + "/motor/render.html")
             for fmt, idx, nome, cfg in cfgs:
                 log(f"  gerando {nome}…")
-                r = pg.evaluate("cfg => gerar(cfg)", cfg)
+                try:
+                    r = pg.evaluate("cfg => gerar(cfg)", cfg)
+                except Exception:
+                    print("::warning title=Console do render::" + " | ".join(diag[-25:]).replace("\n", " ")[:3500], flush=True)
+                    raise
                 bruto = os.path.join(trab, cfg["saida"]); final = os.path.join(saida, nome + ".mp4")
                 ffmpeg_final(bruto, final, r["codec"]); os.remove(bruto)
                 if r.get("eventosSom"):  # sonoplastia com sons reais (Freesound) e avaliação por IA (Gemini)
