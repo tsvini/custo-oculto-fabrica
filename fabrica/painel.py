@@ -71,11 +71,11 @@ def tiktok():
     from .redes import tiktok_token
     t = tiktok_token(); H = {"Authorization": f"Bearer {t}"}
     u = requests.get("https://open.tiktokapis.com/v2/user/info/", headers=H, timeout=30,
-                     params={"fields": "display_name,username,follower_count,likes_count,video_count"}).json()
+                     params={"fields": "display_name,follower_count,likes_count,video_count"}).json()
     d = (u.get("data") or {}).get("user") or {}
-    out = {"usuario": d.get("username"), "seguidores": d.get("follower_count"), "curtidas": d.get("likes_count"), "videos": d.get("video_count")}
+    out = {"usuario": d.get("display_name"), "seguidores": d.get("follower_count"), "curtidas": d.get("likes_count"), "videos": d.get("video_count")}
     if out["seguidores"] is None:
-        out["aviso"] = "falta a permissão user.info.stats no app do TikTok"
+        out["aviso"] = "TikTok não devolveu os números: " + str(u.get("error"))[:200]
     return out
 
 
