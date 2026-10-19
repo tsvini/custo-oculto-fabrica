@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Painel Custo Oculto</title>
+<meta name="robots" content="noindex">
+<style>
+:root{--bg:#0f0f12;--card:#18181d;--line:#2a2a31;--fg:#f2f2f4;--mut:#9a9aa6;--gold:#f5aa28;--red:#e5484d;--green:#3fb97a}
+@media (prefers-color-scheme:light){:root:not([data-theme=dark]){--bg:#f6f5f2;--card:#fff;--line:#e4e2dc;--fg:#18181b;--mut:#6b6b74}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.45 system-ui,-apple-system,"Segoe UI",sans-serif}
+main{max-width:1180px;margin:0 auto;padding:24px 16px 60px}
+header{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:20px}
+h1{margin:0;font-size:24px;letter-spacing:-.01em}
+h1 b{color:var(--gold)}
+.mut{color:var(--mut);font-size:13px}
+.totais{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin-bottom:20px}
+.tot{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+.tot .n{font-size:28px;font-weight:800;font-variant-numeric:tabular-nums}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:12px;min-width:0}
+.card h2{margin:0;font-size:16px;display:flex;align-items:center;gap:8px}
+.dot{width:10px;height:10px;border-radius:50%;flex:none}
+.kpis{display:flex;flex-wrap:wrap;gap:18px}
+.kpi .n{font-size:22px;font-weight:800;font-variant-numeric:tabular-nums}
+.kpi .l{font-size:12px;color:var(--mut)}
+.up{color:var(--green);font-size:12px;font-weight:700}
+svg.spark{width:100%;height:56px;display:block}
+ol{margin:0;padding-left:18px}
+ol li{margin:4px 0;font-size:13px}
+ol a{color:var(--fg);text-decoration:none}
+ol a:hover{text-decoration:underline}
+.erro{color:var(--red);font-size:13px}
+.aviso{color:var(--gold);font-size:12px}
+.hist{margin-top:20px}
+footer{margin-top:24px}
+</style>
+</head>
+<body>
+<main>
+<header>
+  <h1>Painel <b>Custo Oculto</b></h1>
+  <span class="mut" id="atual">carregando…</span>
+</header>
+<section class="totais" id="totais"></section>
+<section class="grid" id="cards"></section>
+<section class="card hist" id="hist"></section>
+<footer class="mut">Atualiza sozinho 2x por dia pela fábrica (GitHub Actions). Udemy é preenchido à mão em painel_manual.json.</footer>
+</main>
+<script>
+const COR={custo_oculto:"#e5484d",hidden_cost:"#8b7cf6",vini_qa:"#3fb97a",tiktok:"#25d0d8",instagram:"#e1306c",facebook:"#3b82f6",udemy:"#a855f7"};
+const fmt=(n)=>n==null?"–":Number(n).toLocaleString("pt-BR");
+const esc=(s)=>String(s??"").replace(/[&<>"]/g,(c)=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+function spark(pts,cor){ if(!pts||pts.length<2) return ""; const v=pts.map(p=>p[1]); const mx=Math.max(1,...v); const w=300,h=56;
+  const d=v.map((y,i)=>`${(i/(v.length-1)*w).toFixed(1)},${(h-4-(y/mx)*(h-8)).toFixed(1)}`).join(" ");
+  return `<svg class="spark" viewBox="0 0 ${w} ${h}" preserveAspectRatio="none" aria-label="views por dia"><polyline points="${d}" fill="none" stroke="${cor}" stroke-width="2" vector-effect="non-scaling-stroke"/></svg><div class="mut">views por dia · 28 dias</div>`; }
+function kpi(n,l,extra){ return `<div class="kpi"><div class="n">${fmt(n)}${extra||""}</div><div class="l">${l}</div></div>`; }
+async function main(){
+  let d; try{ d=await (await fetch("dados.json?"+Date.now())).json(); }catch(e){ document.getElementById("atual").textContent="sem dados ainda"; return; }
+  document.getElementById("atual").textContent="atualizado em "+d.atualizado;
+  const F=d.fontes; let seg=0, v7=0, v28=0;
+  for(const k in F){ const f=F[k]; if(typeof f.seguidores==="number") seg+=f.seguidores; if(f.views_7d) v7+=f.views_7d; if(f.views_28d) v28+=f.views_28d; }
+  document.getElementById("totais").innerHTML=[[seg,"seguidores somados"],[v7,"views YouTube · 7 dias"],[v28,"views YouTube · 28 dias"],[(F.udemy||{}).alunos,"alunos Udemy"]]
+    .map(([n,l])=>`<div class="tot"><div class="n">${fmt(n)}</div><div class="mut">${l}</div></div>`).join("");
+  document.getElementById("cards").innerHTML=Object.entries(F).map(([k,f])=>{
+    const cor=COR[k]||"#888"; let h=`<h2><span class="dot" style="background:${cor}"></span>${esc(f.nome)}</h2>`;
+    if(f.erro) return `<article class="card">${h}<div class="erro">${esc(f.erro)}</div></article>`;
+    let ks="";
+    if(k==="udemy") ks=kpi(f.alunos,"alunos")+kpi(f.pagantes,"pagantes")+`<div class="kpi"><div class="n">${esc(f.receita||"–")}</div><div class="l">receita</div></div>`;
+    else ks=kpi(f.seguidores,"seguidores",f.seguidores_28d?` <span class="up">+${fmt(f.seguidores_28d)}</span>`:"")+(f.views_7d!=null?kpi(f.views_7d,"views 7d"):"")+(f.views_28d!=null?kpi(f.views_28d,"views 28d"):"")+(f.curtidas!=null?kpi(f.curtidas,"curtidas"):"")+(f.videos!=null?kpi(f.videos,"vídeos"):"");
+    h+=`<div class="kpis">${ks}</div>`;
+    if(f.dia) h+=spark(f.dia,cor);
+    if(f.top&&f.top.length) h+=`<div><div class="mut">${k.startsWith("insta")?"últimos posts":"mais vistos · 28 dias"}</div><ol>${f.top.map(t=>`<li><a href="${esc(t.url)}" target="_blank" rel="noopener">${esc(t.titulo)}</a> <span class="mut">· ${t.views!=null?fmt(t.views)+" views":fmt(t.likes)+" curtidas"}${t.retencao!=null?" · "+t.retencao+"% assistido":""}</span></li>`).join("")}</ol></div>`;
+    if(f.aviso) h+=`<div class="aviso">${esc(f.aviso)}</div>`;
+    if(f.obs) h+=`<div class="mut">${esc(f.obs)} · ${esc(f.atualizado_em||"")}</div>`;
+    return `<article class="card">${h}</article>`;
+  }).join("");
+  try{ const H=await (await fetch("historico.json?"+Date.now())).json(); const dias=Object.keys(H);
+    if(dias.length>1){ const ks=[...new Set(dias.flatMap(x=>Object.keys(H[x])))]; const w=600,h=160; let mx=1; ks.forEach(k=>dias.forEach(x=>mx=Math.max(mx,H[x][k]||0)));
+      const lin=ks.map(k=>`<polyline fill="none" stroke="${COR[k]||"#888"}" stroke-width="2" vector-effect="non-scaling-stroke" points="${dias.map((x,i)=>`${(i/(dias.length-1)*w).toFixed(1)},${(h-6-((H[x][k]||0)/mx)*(h-12)).toFixed(1)}`).join(" ")}"/>`).join("");
+      document.getElementById("hist").innerHTML=`<h2>Seguidores ao longo do tempo</h2><svg viewBox="0 0 ${w} ${h}" style="width:100%;height:180px" preserveAspectRatio="none">${lin}</svg><div class="mut">${ks.map(k=>`<span style="color:${COR[k]||"#888"}">●</span> ${esc((F[k]||{}).nome||k)}`).join(" &nbsp; ")}</div>`; }
+    else document.getElementById("hist").innerHTML=`<h2>Seguidores ao longo do tempo</h2><div class="mut">o gráfico aparece a partir do segundo dia de coleta</div>`;
+  }catch(e){ document.getElementById("hist").style.display="none"; }
+}
+main();
+</script>
+</body>
+</html>
