@@ -1,5 +1,5 @@
 {
- "atualizado": "19/10/2026 13:49",
+ "atualizado": "19/10/2026 14:10",
  "fontes": {
   "custo_oculto": {
    "seguidores": 11,
@@ -320,5 +320,745 @@
    "atualizado_em": "19/10/2026",
    "obs": "Udemy não tem API para instrutor: atualizar à mão"
   }
- }
+ },
+ "agenda": [
+  {
+   "quando": "2026-10-19T19:00:00-03:00",
+   "titulo": "O presidente que durou 9 dias na Americanas",
+   "tipo": "metricool",
+   "id": "metricool",
+   "url": "https://app.metricool.com/planner",
+   "plataforma_rede": "tiktok",
+   "chave": "tiktok",
+   "plataforma": "TikTok (Metricool)",
+   "sem_cancelar": true
+  },
+  {
+   "quando": "2026-10-20T08:00:00-03:00",
+   "plataforma": "Custo Oculto (YouTube)",
+   "chave": "custo_oculto",
+   "titulo": "Kolynos virou Sorriso: quem pagou a conta da troca (parte 3) #shorts",
+   "tipo": "serie",
+   "id": "kolynos_serie3",
+   "url": "https://studio.youtube.com/video/2SzdDgdQHdw/edit"
+  },
+  {
+   "quando": "2026-10-20T10:00:00-03:00",
+   "titulo": "A loja que todo mundo conhece escondeu R$ 25 bilhões",
+   "tipo": "metricool",
+   "id": "metricool",
+   "url": "https://app.metricool.com/planner",
+   "plataforma_rede": "tiktok",
+   "chave": "tiktok",
+   "plataforma": "TikTok (Metricool)",
+   "sem_cancelar": true
+  },
+  {
+   "quando": "2026-10-20T12:00:00-03:00",
+   "plataforma": "Custo Oculto (YouTube)",
+   "chave": "custo_oculto",
+   "titulo": "AMERICANAS: Como Sumiram R$ 25 Bilhões da Loja Que Todo Brasileiro Conhece",
+   "tipo": "longo",
+   "id": "americanas_longo",
+   "url": "https://studio.youtube.com/video/pDz4KseN7K8/edit"
+  },
+  {
+   "quando": "2026-10-20T18:00:00-03:00",
+   "plataforma": "Custo Oculto (YouTube)",
+   "chave": "custo_oculto",
+   "titulo": "O presidente que durou 9 dias na Americanas #shorts",
+   "tipo": "short",
+   "id": "americanas_short1",
+   "url": "https://studio.youtube.com/video/yNwNdQgcHZI/edit"
+  },
+  {
+   "quando": "2026-10-20T19:00:00-03:00",
+   "titulo": "Como a Americanas escondeu R$ 25 bilhões · RASCUNHO, não sai sozinho",
+   "tipo": "metricool",
+   "id": "metricool",
+   "url": "https://app.metricool.com/planner",
+   "plataforma_rede": "tiktok",
+   "chave": "tiktok",
+   "plataforma": "TikTok (Metricool)",
+   "sem_cancelar": true
+  },
+  {
+   "quando": "2026-10-21T08:00:00-03:00",
+   "plataforma": "Custo Oculto (YouTube)",
+   "chave": "custo_oculto",
+   "titulo": "Americanas: um rombo de R$ 20 bilhões anunciado em uma noite (parte 1) #shorts",
+   "tipo": "serie",
+   "id": "americanas_serie1",
+   "url": "https://studio.youtube.com/video/3OuffGR2L-4/edit"
+  },
+  {
+   "quando": "2026-10-21T12:00:00-03:00",
+   "plataforma": "Hidden Cost (YouTube EN)",
+   "chave": "hidden_cost",
+   "titulo": "WEWORK: The $47 Billion Startup That Never Made a Profit",
+   "tipo": "longo",
+   "id": "wework_longo",
+   "url": "https://studio.youtube.com/video/dBopOBre4ws/edit"
+  },
+  {
+   "quando": "2026-10-21T12:00:00-03:00",
+   "plataforma": "Vini QA (YouTube)",
+   "chave": "vini_qa",
+   "titulo": "Seu primeiro teste automatizado",
+   "tipo": "short",
+   "id": "lyfD8rJ6F30",
+   "url": "https://studio.youtube.com/video/lyfD8rJ6F30/edit"
+  },
+  {
+   "quando": "2026-10-21T18:00:00-03:00",
+   "plataforma": "Custo Oculto (YouTube)",
+   "chave": "custo_oculto",
+   "titulo": "Como a Americanas escondeu R$ 25 bilhões #shorts",
+   "tipo": "short",
+   "id": "americanas_short2",
+   "url": "https://studio.youtube.com/video/hpCHl08_rxI/edit"
+  },
+  {
+   "quando": "2026-10-21T19:00:00-03:00",
+   "titulo": "O ex-presidente da Americanas foi preso na Espanha",
+   "tipo": "metricool",
+   "id": "metricool",
+   "url": "https://app.metricool.com/planner",
+   "plataforma_rede": "tiktok",
+   "chave": "tiktok",
+   "plataforma": "TikTok (Metricool)",
+   "sem_cancelar": true
+  },
+  {
+   "quando": "2026-10-22T08:00:00-03:00",
+   "plataforma": "Custo Oculto (YouTube)",
+   "chave": "custo_oculto",
+   "titulo": "Americanas: o presidente que durou 9 dias e achou o rombo (parte 2) #shorts",
+   "tipo": "serie",
+   "id": "americanas_serie2",
+   "url": "https://studio.youtube.com/video/I9D20jVG6SI/edit"
+  },
+  {
+   "quando": "2026-10-22T08:00:00-03:00",
+   "plataforma": "Hidden Cost (YouTube EN)",
+   "chave": "hidden_cost",
+   "titulo": "WeWork Rented Desks. Investors Thought It Was Tech (part 1) #shorts",
+   "tipo": "serie",
+   "id": "wework_serie1",
+   "url": "https://studio.youtube.com/video/3KPkddYjUeY/edit"
+  },
+  {
+   "quando": "2026-10-22T19:00:00-03:00",
+   "titulo": "Esse CDB pagava 140% do CDI. Era bom demais.",
+   "tipo": "metricool",
+   "id": "metricool",
+   "url": "https://app.metricool.com/planner",
+   "plataforma_rede": "tiktok",
+   "chave": "tiktok",
+   "plataforma": "TikTok (Metricool)",
+   "sem_cancelar": true
+  },
+  {
+   "quando": "2026-10-23T08:00:00-03:00",
+   "plataforma": "Custo Oculto (YouTube)",
+   "chave": "custo_oculto",
+   "titulo": "Americanas: R$ 43 bilhões em dívidas. Quem pagou a conta? (parte 3) #shorts",
+   "tipo": "serie",
+   "id": "americanas_serie3",
+   "url": "https://studio.youtube.com/video/rsbtHH0LPJQ/edit"
+  },
+  {
+   "quando": "2026-10-23T08:00:00-03:00",
+   "plataforma": "Hidden Cost (YouTube EN)",
+   "chave": "hidden_cost",
+   "titulo": "WeWork Was Worth $47 Billion. Then Investors Read the IPO Filing (part 2) #shorts",
+   "tipo": "serie",
+   "id": "wework_serie2",
+   "url": "https://studio.youtube.com/video/si9RkGbmMko/edit"
+  },
+  {
+   "quando": "2026-10-23T12:00:00-03:00",
+   "plataforma": "Vini QA (YouTube)",
+   "chave": "vini_qa",
+   "titulo": "Como achar o nome de qualquer botão",
+   "tipo": "short",
+   "id": "kzc27cwf_oo",
+   "url": "https://studio.youtube.com/video/kzc27cwf_oo/edit"
+  },
+  {
+   "quando": "2026-10-23T19:00:00-03:00",
+   "titulo": "Quem pagou a conta da Americanas",
+   "tipo": "metricool",
+   "id": "metricool",
+   "url": "https://app.metricool.com/planner",
+   "plataforma_rede": "tiktok",
+   "chave": "tiktok",
+   "plataforma": "TikTok (Metricool)",
+   "sem_cancelar": true
+  },
+  {
+   "quando": "2026-10-24T08:00:00-03:00",
+   "plataforma": "Custo Oculto (YouTube)",
+   "chave": "custo_oculto",
+   "titulo": "Americanas: a PF, o ex-presidente na Espanha e o caso hoje (parte 4) #shorts",
+   "tipo": "serie",
+   "id": "americanas_serie4",
+   "url": "https://studio.youtube.com/video/GnDYufJLp7E/edit"
+  },
+  {
+   "quando": "2026-10-24T08:00:00-03:00",
+   "plataforma": "Hidden Cost (YouTube EN)",
+   "chave": "hidden_cost",
+   "titulo": "WeWork's Founder Walked Away Rich. Who Paid? (part 3) #shorts",
+   "tipo": "serie",
+   "id": "wework_serie3",
+   "url": "https://studio.youtube.com/video/m62PxGp2g2A/edit"
+  },
+  {
+   "quando": "2026-10-24T19:00:00-03:00",
+   "titulo": "Preso no aeroporto no dia em que o banco ia ser vendido",
+   "tipo": "metricool",
+   "id": "metricool",
+   "url": "https://app.metricool.com/planner",
+   "plataforma_rede": "tiktok",
+   "chave": "tiktok",
+   "plataforma": "TikTok (Metricool)",
+   "sem_cancelar": true
+  },
+  {
+   "quando": "2026-10-25T08:00:00-03:00",
+   "plataforma": "Hidden Cost (YouTube EN)",
+   "chave": "hidden_cost",
+   "titulo": "WeWork Went Bankrupt. The Founder Got $350 Million (part 4) #shorts",
+   "tipo": "serie",
+   "id": "wework_serie4",
+   "url": "https://studio.youtube.com/video/n3ULfuQrXr4/edit"
+  },
+  {
+   "quando": "2026-10-25T19:00:00-03:00",
+   "titulo": "1,6 milhão de pessoas no mesmo banco. E ele quebrou.",
+   "tipo": "metricool",
+   "id": "metricool",
+   "url": "https://app.metricool.com/planner",
+   "plataforma_rede": "tiktok",
+   "chave": "tiktok",
+   "plataforma": "TikTok (Metricool)",
+   "sem_cancelar": true
+  },
+  {
+   "quando": "2026-10-26T12:00:00-03:00",
+   "plataforma": "Vini QA (YouTube)",
+   "chave": "vini_qa",
+   "titulo": "O botão do Cypress que escreve o código pra você",
+   "tipo": "short",
+   "id": "T-yIhAQSwrc",
+   "url": "https://studio.youtube.com/video/T-yIhAQSwrc/edit"
+  },
+  {
+   "quando": "2026-10-26T18:00:00-03:00",
+   "plataforma": "Hidden Cost (YouTube EN)",
+   "chave": "hidden_cost",
+   "titulo": "Blockbuster Made $800 Million From Late Fees #shorts",
+   "tipo": "short",
+   "id": "netflix_en_short3",
+   "url": "https://studio.youtube.com/video/68-7NcePBV8/edit"
+  },
+  {
+   "quando": "2026-10-26T19:00:00-03:00",
+   "titulo": "Você pode estar pagando a conta do Banco Master · RASCUNHO, não sai sozinho",
+   "tipo": "metricool",
+   "id": "metricool",
+   "url": "https://app.metricool.com/planner",
+   "plataforma_rede": "tiktok",
+   "chave": "tiktok",
+   "plataforma": "TikTok (Metricool)",
+   "sem_cancelar": true
+  },
+  {
+   "quando": "2026-10-27T10:00:00-03:00",
+   "titulo": "A Blockbuster podia ter comprado a Netflix · RASCUNHO, não sai sozinho",
+   "tipo": "metricool",
+   "id": "metricool",
+   "url": "https://app.metricool.com/planner",
+   "plataforma_rede": "tiktok",
+   "chave": "tiktok",
+   "plataforma": "TikTok (Metricool)",
+   "sem_cancelar": true
+  },
+  {
+   "quando": "2026-10-27T12:00:00-03:00",
+   "plataforma": "Custo Oculto (YouTube)",
+   "chave": "custo_oculto",
+   "titulo": "NETFLIX: A Empresa Que a Blockbuster Recusou Comprar Por US$ 50 Milhões",
+   "tipo": "longo",
+   "id": "netflix_longo",
+   "url": "https://studio.youtube.com/video/LGggbB-6O7A/edit"
+  },
+  {
+   "quando": "2026-10-27T18:00:00-03:00",
+   "plataforma": "Custo Oculto (YouTube)",
+   "chave": "custo_oculto",
+   "titulo": "A Blockbuster podia ter comprado a Netflix por US$ 50 milhões #shorts",
+   "tipo": "short",
+   "id": "netflix_short1",
+   "url": "https://studio.youtube.com/video/io6LeKeDVq0/edit"
+  },
+  {
+   "quando": "2026-10-27T19:00:00-03:00",
+   "titulo": "A Blockbuster podia ter comprado a Netflix (2) · RASCUNHO, não sai sozinho",
+   "tipo": "metricool",
+   "id": "metricool",
+   "url": "https://app.metricool.com/planner",
+   "plataforma_rede": "tiktok",
+   "chave": "tiktok",
+   "plataforma": "TikTok (Metricool)",
+   "sem_cancelar": true
+  },
+  {
+   "quando": "2026-10-28T08:00:00-03:00",
+   "plataforma": "Custo Oculto (YouTube)",
+   "chave": "custo_oculto",
+   "titulo": "A Netflix se ofereceu por US$ 50 milhões. A Blockbuster riu (parte 1) #shorts",
+   "tipo": "serie",
+   "id": "netflix_serie1",
+   "url": "https://studio.youtube.com/video/X2dcl3WAt0w/edit"
+  },
+  {
+   "quando": "2026-10-28T10:00:00-03:00",
+   "titulo": "Netflix x Blockbuster, parte 1 de 4 · RASCUNHO, não sai sozinho",
+   "tipo": "metricool",
+   "id": "metricool",
+   "url": "https://app.metricool.com/planner",
+   "plataforma_rede": "tiktok",
+   "chave": "tiktok",
+   "plataforma": "TikTok (Metricool)",
+   "sem_cancelar": true
+  },
+  {
+   "quando": "2026-10-28T12:00:00-03:00",
+   "plataforma": "Vini QA (YouTube)",
+   "chave": "vini_qa",
+   "titulo": "O seletor que não quebra",
+   "tipo": "short",
+   "id": "4jlcqR1BzhE",
+   "url": "https://studio.youtube.com/video/4jlcqR1BzhE/edit"
+  },
+  {
+   "quando": "2026-10-28T18:00:00-03:00",
+   "plataforma": "Custo Oculto (YouTube)",
+   "chave": "custo_oculto",
+   "titulo": "A jogada que quase matou a Netflix #shorts",
+   "tipo": "short",
+   "id": "netflix_short2",
+   "url": "https://studio.youtube.com/video/x1Yhzockrj0/edit"
+  },
+  {
+   "quando": "2026-10-28T18:00:00-03:00",
+   "plataforma": "Hidden Cost (YouTube EN)",
+   "chave": "hidden_cost",
+   "titulo": "From $47 Billion to Bankrupt in 4 Years: WeWork #shorts",
+   "tipo": "short",
+   "id": "wework_short1",
+   "url": "https://studio.youtube.com/video/7gGQg2T1xXc/edit"
+  },
+  {
+   "quando": "2026-10-28T19:00:00-03:00",
+   "titulo": "A jogada que quase matou a Netflix · RASCUNHO, não sai sozinho",
+   "tipo": "metricool",
+   "id": "metricool",
+   "url": "https://app.metricool.com/planner",
+   "plataforma_rede": "tiktok",
+   "chave": "tiktok",
+   "plataforma": "TikTok (Metricool)",
+   "sem_cancelar": true
+  },
+  {
+   "quando": "2026-10-29T08:00:00-03:00",
+   "plataforma": "Custo Oculto (YouTube)",
+   "chave": "custo_oculto",
+   "titulo": "Netflix: a reunião de US$ 50 milhões que valia bilhões (parte 2) #shorts",
+   "tipo": "serie",
+   "id": "netflix_serie2",
+   "url": "https://studio.youtube.com/video/zPgYt_K_hFk/edit"
+  },
+  {
+   "quando": "2026-10-29T10:00:00-03:00",
+   "titulo": "Netflix x Blockbuster, parte 2 de 4 · RASCUNHO, não sai sozinho",
+   "tipo": "metricool",
+   "id": "metricool",
+   "url": "https://app.metricool.com/planner",
+   "plataforma_rede": "tiktok",
+   "chave": "tiktok",
+   "plataforma": "TikTok (Metricool)",
+   "sem_cancelar": true
+  },
+  {
+   "quando": "2026-10-29T19:00:00-03:00",
+   "titulo": "A Americanas comprou a Blockbuster no Brasil · RASCUNHO, não sai sozinho",
+   "tipo": "metricool",
+   "id": "metricool",
+   "url": "https://app.metricool.com/planner",
+   "plataforma_rede": "tiktok",
+   "chave": "tiktok",
+   "plataforma": "TikTok (Metricool)",
+   "sem_cancelar": true
+  },
+  {
+   "quando": "2026-10-30T08:00:00-03:00",
+   "plataforma": "Custo Oculto (YouTube)",
+   "chave": "custo_oculto",
+   "titulo": "Netflix quase perdeu a guerra pra Blockbuster (parte 3) #shorts",
+   "tipo": "serie",
+   "id": "netflix_serie3",
+   "url": "https://studio.youtube.com/video/3Syk9LDoAEQ/edit"
+  },
+  {
+   "quando": "2026-10-30T10:00:00-03:00",
+   "titulo": "Netflix x Blockbuster, parte 3 de 4 · RASCUNHO, não sai sozinho",
+   "tipo": "metricool",
+   "id": "metricool",
+   "url": "https://app.metricool.com/planner",
+   "plataforma_rede": "tiktok",
+   "chave": "tiktok",
+   "plataforma": "TikTok (Metricool)",
+   "sem_cancelar": true
+  },
+  {
+   "quando": "2026-10-30T12:00:00-03:00",
+   "plataforma": "Vini QA (YouTube)",
+   "chave": "vini_qa",
+   "titulo": "Teste sem conferir não é teste",
+   "tipo": "short",
+   "id": "2XLbd50bQGo",
+   "url": "https://studio.youtube.com/video/2XLbd50bQGo/edit"
+  },
+  {
+   "quando": "2026-10-30T18:00:00-03:00",
+   "plataforma": "Custo Oculto (YouTube)",
+   "chave": "custo_oculto",
+   "titulo": "O ex-presidente da Americanas foi preso na Espanha #shorts",
+   "tipo": "short",
+   "id": "americanas_short3",
+   "url": "https://studio.youtube.com/video/f4Mv-dJ3co8/edit"
+  },
+  {
+   "quando": "2026-10-30T18:00:00-03:00",
+   "plataforma": "Hidden Cost (YouTube EN)",
+   "chave": "hidden_cost",
+   "titulo": "WeWork Paid Its Own CEO $5.9 Million for the Word \"We\" #shorts",
+   "tipo": "short",
+   "id": "wework_short2",
+   "url": "https://studio.youtube.com/video/xKjn37FMqv0/edit"
+  },
+  {
+   "quando": "2026-10-30T19:00:00-03:00",
+   "titulo": "Só existe uma Blockbuster no mundo · RASCUNHO, não sai sozinho",
+   "tipo": "metricool",
+   "id": "metricool",
+   "url": "https://app.metricool.com/planner",
+   "plataforma_rede": "tiktok",
+   "chave": "tiktok",
+   "plataforma": "TikTok (Metricool)",
+   "sem_cancelar": true
+  },
+  {
+   "quando": "2026-10-31T08:00:00-03:00",
+   "plataforma": "Custo Oculto (YouTube)",
+   "chave": "custo_oculto",
+   "titulo": "Netflix x Blockbuster: a Americanas comprou a Blockbuster no Brasil (parte 4) #shorts",
+   "tipo": "serie",
+   "id": "netflix_serie4",
+   "url": "https://studio.youtube.com/video/yJMp7dGixuQ/edit"
+  },
+  {
+   "quando": "2026-10-31T10:00:00-03:00",
+   "titulo": "Netflix x Blockbuster, parte 4 de 4 · RASCUNHO, não sai sozinho",
+   "tipo": "metricool",
+   "id": "metricool",
+   "url": "https://app.metricool.com/planner",
+   "plataforma_rede": "tiktok",
+   "chave": "tiktok",
+   "plataforma": "TikTok (Metricool)",
+   "sem_cancelar": true
+  },
+  {
+   "quando": "2026-10-31T23:00:00-03:00",
+   "titulo": "Americanas: rombo de R$ 20 bi (Reel) · RASCUNHO, não sai sozinho",
+   "tipo": "metricool",
+   "id": "metricool",
+   "url": "https://app.metricool.com/planner",
+   "plataforma_rede": "instagram",
+   "chave": "instagram",
+   "plataforma": "Instagram (Metricool)",
+   "sem_cancelar": true
+  },
+  {
+   "quando": "2026-10-31T23:10:00-03:00",
+   "titulo": "Kolynos: vendia o dobro da Colgate (Reel) · RASCUNHO, não sai sozinho",
+   "tipo": "metricool",
+   "id": "metricool",
+   "url": "https://app.metricool.com/planner",
+   "plataforma_rede": "instagram",
+   "chave": "instagram",
+   "plataforma": "Instagram (Metricool)",
+   "sem_cancelar": true
+  },
+  {
+   "quando": "2026-11-01T10:00:00-03:00",
+   "titulo": "O Brasil quer o Orkut de volta",
+   "tipo": "metricool",
+   "id": "metricool",
+   "url": "https://app.metricool.com/planner",
+   "plataforma_rede": "tiktok",
+   "chave": "tiktok",
+   "plataforma": "TikTok (Metricool)",
+   "sem_cancelar": true
+  },
+  {
+   "quando": "2026-11-01T18:00:00-03:00",
+   "plataforma": "Custo Oculto (YouTube)",
+   "chave": "custo_oculto",
+   "titulo": "A Americanas comprou a Blockbuster no Brasil #shorts",
+   "tipo": "short",
+   "id": "netflix_short3",
+   "url": "https://studio.youtube.com/video/ZqCgfrBIbhQ/edit"
+  },
+  {
+   "quando": "2026-11-01T19:00:00-03:00",
+   "titulo": "300 mil pessoas querem o Orkut de volta",
+   "tipo": "metricool",
+   "id": "metricool",
+   "url": "https://app.metricool.com/planner",
+   "plataforma_rede": "tiktok",
+   "chave": "tiktok",
+   "plataforma": "TikTok (Metricool)",
+   "sem_cancelar": true
+  },
+  {
+   "quando": "2026-11-02T10:00:00-03:00",
+   "titulo": "O Brasil quer o Orkut de volta. Mas como ele nasceu?",
+   "tipo": "metricool",
+   "id": "metricool",
+   "url": "https://app.metricool.com/planner",
+   "plataforma_rede": "tiktok",
+   "chave": "tiktok",
+   "plataforma": "TikTok (Metricool)",
+   "sem_cancelar": true
+  },
+  {
+   "quando": "2026-11-02T12:00:00-03:00",
+   "plataforma": "Vini QA (YouTube)",
+   "chave": "vini_qa",
+   "titulo": "O teste que todo iniciante esquece",
+   "tipo": "short",
+   "id": "jxj1cQUYVmE",
+   "url": "https://studio.youtube.com/video/jxj1cQUYVmE/edit"
+  },
+  {
+   "quando": "2026-11-02T18:00:00-03:00",
+   "plataforma": "Hidden Cost (YouTube EN)",
+   "chave": "hidden_cost",
+   "titulo": "Only One Blockbuster Is Left in the World #shorts",
+   "tipo": "short",
+   "id": "netflix_en_short4",
+   "url": "https://studio.youtube.com/video/FYjO_13LO78/edit"
+  },
+  {
+   "quando": "2026-11-02T19:00:00-03:00",
+   "titulo": "O dia em que o Facebook passou o Orkut no Brasil",
+   "tipo": "metricool",
+   "id": "metricool",
+   "url": "https://app.metricool.com/planner",
+   "plataforma_rede": "tiktok",
+   "chave": "tiktok",
+   "plataforma": "TikTok (Metricool)",
+   "sem_cancelar": true
+  },
+  {
+   "quando": "2026-11-03T10:00:00-03:00",
+   "titulo": "Lan house, scraps e comunidades",
+   "tipo": "metricool",
+   "id": "metricool",
+   "url": "https://app.metricool.com/planner",
+   "plataforma_rede": "tiktok",
+   "chave": "tiktok",
+   "plataforma": "TikTok (Metricool)",
+   "sem_cancelar": true
+  },
+  {
+   "quando": "2026-11-03T12:00:00-03:00",
+   "plataforma": "Custo Oculto (YouTube)",
+   "chave": "custo_oculto",
+   "titulo": "ORKUT: Por Que o Google Deixou Morrer a Rede Que o Brasil Ainda Quer de Volta",
+   "tipo": "longo",
+   "id": "orkut_longo",
+   "url": "https://studio.youtube.com/video/x263Rewgyw8/edit"
+  },
+  {
+   "quando": "2026-11-03T18:00:00-03:00",
+   "plataforma": "Custo Oculto (YouTube)",
+   "chave": "custo_oculto",
+   "titulo": "O Brasil quer o Orkut de volta #shorts",
+   "tipo": "short",
+   "id": "orkut_short1",
+   "url": "https://studio.youtube.com/video/fEa_OURUL8M/edit"
+  },
+  {
+   "quando": "2026-11-04T08:00:00-03:00",
+   "plataforma": "Custo Oculto (YouTube)",
+   "chave": "custo_oculto",
+   "titulo": "O Brasil quer o Orkut de volta. Mas como ele nasceu? (parte 1) #shorts",
+   "tipo": "serie",
+   "id": "orkut_serie1",
+   "url": "https://studio.youtube.com/video/_TicJtCVl8I/edit"
+  },
+  {
+   "quando": "2026-11-04T10:00:00-03:00",
+   "titulo": "O dia em que o Orkut perdeu",
+   "tipo": "metricool",
+   "id": "metricool",
+   "url": "https://app.metricool.com/planner",
+   "plataforma_rede": "tiktok",
+   "chave": "tiktok",
+   "plataforma": "TikTok (Metricool)",
+   "sem_cancelar": true
+  },
+  {
+   "quando": "2026-11-04T12:00:00-03:00",
+   "plataforma": "Vini QA (YouTube)",
+   "chave": "vini_qa",
+   "titulo": "Pare de repetir código nos testes",
+   "tipo": "short",
+   "id": "5VEl6YEkOfI",
+   "url": "https://studio.youtube.com/video/5VEl6YEkOfI/edit"
+  },
+  {
+   "quando": "2026-11-04T18:00:00-03:00",
+   "plataforma": "Hidden Cost (YouTube EN)",
+   "chave": "hidden_cost",
+   "titulo": "The IPO Collapsed. The CEO Got a $1.7 Billion Deal #shorts",
+   "tipo": "short",
+   "id": "wework_short3",
+   "url": "https://studio.youtube.com/video/PRY8AyEOv1Y/edit"
+  },
+  {
+   "quando": "2026-11-04T18:00:00-03:00",
+   "plataforma": "Custo Oculto (YouTube)",
+   "chave": "custo_oculto",
+   "titulo": "O dia em que o Facebook passou o Orkut no Brasil #shorts",
+   "tipo": "short",
+   "id": "orkut_short2",
+   "url": "https://studio.youtube.com/video/T3zJqVuxu4c/edit"
+  },
+  {
+   "quando": "2026-11-05T08:00:00-03:00",
+   "plataforma": "Custo Oculto (YouTube)",
+   "chave": "custo_oculto",
+   "titulo": "Lan house, scraps e comunidades: como o Brasil tomou o Orkut (parte 2) #shorts",
+   "tipo": "serie",
+   "id": "orkut_serie2",
+   "url": "https://studio.youtube.com/video/vgny-o0w020/edit"
+  },
+  {
+   "quando": "2026-11-05T10:00:00-03:00",
+   "titulo": "O Orkut vai voltar? O que ninguém te contou",
+   "tipo": "metricool",
+   "id": "metricool",
+   "url": "https://app.metricool.com/planner",
+   "plataforma_rede": "tiktok",
+   "chave": "tiktok",
+   "plataforma": "TikTok (Metricool)",
+   "sem_cancelar": true
+  },
+  {
+   "quando": "2026-11-06T08:00:00-03:00",
+   "plataforma": "Custo Oculto (YouTube)",
+   "chave": "custo_oculto",
+   "titulo": "O dia em que o Facebook passou o Orkut no Brasil (parte 3) #shorts",
+   "tipo": "serie",
+   "id": "orkut_serie3",
+   "url": "https://studio.youtube.com/video/WLXe91gQ-_4/edit"
+  },
+  {
+   "quando": "2026-11-06T12:00:00-03:00",
+   "plataforma": "Vini QA (YouTube)",
+   "chave": "vini_qa",
+   "titulo": "Teste vermelho com Timed out retrying",
+   "tipo": "short",
+   "id": "2seOWOBn4AQ",
+   "url": "https://studio.youtube.com/video/2seOWOBn4AQ/edit"
+  },
+  {
+   "quando": "2026-11-06T18:00:00-03:00",
+   "plataforma": "Custo Oculto (YouTube)",
+   "chave": "custo_oculto",
+   "titulo": "Quem pagou a conta da Americanas #shorts",
+   "tipo": "short",
+   "id": "americanas_short4",
+   "url": "https://studio.youtube.com/video/LzJR6rIyu7I/edit"
+  },
+  {
+   "quando": "2026-11-06T18:00:00-03:00",
+   "plataforma": "Hidden Cost (YouTube EN)",
+   "chave": "hidden_cost",
+   "titulo": "This $47 Billion Startup Lost 90¢ on Every Dollar #shorts",
+   "tipo": "short",
+   "id": "wework_short4",
+   "url": "https://studio.youtube.com/video/u6pjLiR16xA/edit"
+  },
+  {
+   "quando": "2026-11-07T08:00:00-03:00",
+   "plataforma": "Custo Oculto (YouTube)",
+   "chave": "custo_oculto",
+   "titulo": "O Orkut vai voltar? O que ninguém te contou (parte 4) #shorts",
+   "tipo": "serie",
+   "id": "orkut_serie4",
+   "url": "https://studio.youtube.com/video/RAbWvcCYWUk/edit"
+  },
+  {
+   "quando": "2026-11-08T18:00:00-03:00",
+   "plataforma": "Custo Oculto (YouTube)",
+   "chave": "custo_oculto",
+   "titulo": "Só existe uma Blockbuster no mundo #shorts",
+   "tipo": "short",
+   "id": "netflix_short4",
+   "url": "https://studio.youtube.com/video/F2uu4UIL2jA/edit"
+  },
+  {
+   "quando": "2026-11-09T12:00:00-03:00",
+   "plataforma": "Vini QA (YouTube)",
+   "chave": "vini_qa",
+   "titulo": "Seu projeto de teste vira portfólio",
+   "tipo": "short",
+   "id": "Q5iuF5DYLYw",
+   "url": "https://studio.youtube.com/video/Q5iuF5DYLYw/edit"
+  },
+  {
+   "quando": "2026-11-11T12:00:00-03:00",
+   "plataforma": "Vini QA (YouTube)",
+   "chave": "vini_qa",
+   "titulo": "npx não é reconhecido: como resolver",
+   "tipo": "short",
+   "id": "1cqvxCZ_kVs",
+   "url": "https://studio.youtube.com/video/1cqvxCZ_kVs/edit"
+  },
+  {
+   "quando": "2026-11-13T12:00:00-03:00",
+   "plataforma": "Vini QA (YouTube)",
+   "chave": "vini_qa",
+   "titulo": "cypress open ou cypress run",
+   "tipo": "short",
+   "id": "PeO1_aVL5A8",
+   "url": "https://studio.youtube.com/video/PeO1_aVL5A8/edit"
+  }
+ ],
+ "esperando": [
+  {
+   "titulo": "A Nestlé comprou a Garoto. O CADE proibiu. Mas a compra já tinha acontecido #shorts",
+   "id": "garoto_short1",
+   "plataforma": "Custo Oculto (YouTube)",
+   "url": "https://studio.youtube.com/video/jnqhEGpic1I/edit",
+   "cancelado": false
+  }
+ ]
 }
