@@ -143,7 +143,7 @@ def main():
     # ---------- o que gerar ----------
     shorts = p["script"].get("shorts", [])
     alvos = []
-    if a.formato in ("tudo", "longo"):
+    if a.formato in ("tudo", "longo") and p["script"]["long"]["parts"]:  # projeto só de shorts não tem longo
         alvos.append(("longo", 0))
     if a.formato in ("tudo", "shorts"):
         alvos += [("short", i) for i in range(len(shorts))]
