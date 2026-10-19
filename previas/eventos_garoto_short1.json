@@ -1,38 +1,38 @@
 {
  "eventos": [
   {
-   "t0": 4.65,
-   "t1": 7.65,
+   "t0": 4.57,
+   "t1": 7.57,
    "tipo": "fx",
    "busca": "rubber stamp hit",
    "vol": 0.75,
    "cena": "stamp | fala: Dois anos depois, o Cade proibiu o negócio."
   },
   {
-   "t0": 9.15,
-   "t1": 12.15,
+   "t0": 8.93,
+   "t1": 11.93,
    "tipo": "fx",
    "busca": "cinematic boom hit",
    "vol": 0.6,
    "cena": "montagem | fala: Só tinha um problema: a compra já tinha acontecido."
   },
   {
-   "t0": 33.43,
-   "t1": 36.43,
+   "t0": 33.05,
+   "t1": 36.05,
    "tipo": "fx",
    "busca": "fast whoosh",
    "vol": 0.35,
    "cena": "montagem | fala: Em dois mil e dezessete, chegou a ser prevista a venda de marcas como Serenata de Amor, Chokito, Lollo e Sensação."
   },
   {
-   "t0": 42.962,
-   "t1": 45.962,
+   "t0": 42.67,
+   "t1": 45.67,
    "tipo": "fx",
    "busca": "deep cinematic boom",
    "vol": 0.6,
    "cena": "montagem | fala: Só em dois mil e vinte e três, vinte e um anos depois, o Cade aprovou a compra, com restrições."
   }
  ],
- "trilha": "trap",
+ "trilha": "doc",
  "roteiro": "A Nestlé comprou a Garoto em dois mil e dois. Dois anos depois, o Cade proibiu o negócio. Só tinha um problema: a compra já tinha acontecido. Na época, Nestlé e Garoto juntas tinham mais da metade do mercado brasileiro de chocolates. Por cinco votos a um, o Cade mandou a Nestlé vender a Garoto em até cento e cinquenta dias. Mas a lei daquela época permitia concluir uma aquisição antes da análise. Então a Nestlé já controlava a empresa, e levou o caso pra Justiça. A disputa se arrastou por anos. Em dois mil e dezessete, chegou a ser prevista a venda de marcas como Serenata de Amor, Chokito, Lollo e Sensação. Não aconteceu. Só em dois mil e vinte e três, vinte e um anos depois, o Cade aprovou a compra, com restrições. E o caso ajudou a mudar a lei brasileira. Hoje, uma compra desse tamanho precisa ser analisada antes de ser concluída. Você sabia que a Garoto é da Nestlé?"
 }
