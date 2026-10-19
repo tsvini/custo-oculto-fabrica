@@ -1,5 +1,5 @@
 {
- "atualizado": "19/10/2026 14:10",
+ "atualizado": "19/10/2026 14:12",
  "fontes": {
   "custo_oculto": {
    "seguidores": 11,
@@ -315,10 +315,21 @@
    "nome": "Udemy · Cypress para leigos",
    "alunos": 4,
    "pagantes": 0,
-   "receita": "R$ 0",
-   "nota": null,
-   "atualizado_em": "19/10/2026",
-   "obs": "Udemy não tem API para instrutor: atualizar à mão"
+   "receita": "US$ 0",
+   "nota": 5.0,
+   "avaliacoes": 3,
+   "avaliacoes_sem_resposta": 3,
+   "perguntas_sem_resposta": 0,
+   "atualizado_em": "19/10/2026 14:20",
+   "obs": "lido do painel do instrutor; conecte o token da API para atualizar sozinho",
+   "cursos": [
+    {
+     "titulo": "Cypress para Leigos: Testes Automatizados do Zero",
+     "url": "https://www.udemy.com/instructor/courses/",
+     "alunos": 4,
+     "nota": 5.0
+    }
+   ]
   }
  },
  "agenda": [
