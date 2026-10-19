@@ -25,12 +25,25 @@ SONS = {
     "trilha_trap": ("modern viral TikTok documentary background beat, dark trap, crisp hi-hats, deep 808 bass, mysterious piano melody, 90 BPM, catchy, loopable, no vocals", 22.0),
     "trilha_lofi": ("catchy lo-fi hip hop beat for storytelling shorts, punchy drums, warm bass, nostalgic electric piano, 85 BPM, upbeat but chill, loopable, no vocals", 22.0),
     "trilha_epica": ("energetic cinematic hybrid beat for viral business story videos, driving drums, pulsing synth bass, strings stabs, building tension, 100 BPM, loopable, no vocals", 22.0),
+    "trilha_pizzicato": ("playful mysterious pizzicato strings over a modern hip hop beat, curious storytelling vibe, plot twist energy, 95 BPM, catchy, no vocals", 30.0),
+    "trilha_phonk": ("light viral phonk beat, cowbell melody, punchy drums, moody but energetic, social media trend sound, 120 BPM, no vocals", 30.0),
+    "trilha_funkbr": ("instrumental brazilian funk beat, tamborzao drums, catchy synth melody, light and fun, made for viral shorts, 130 BPM, no vocals", 30.0),
     "trilha_tensao": ("dark suspenseful documentary background music, low pulsing synth bass, soft ticking clock, steady tempo, no melody, loopable", 20.0),
 }
 
 
 def gerar(nome):
     texto, dur = SONS[nome]
+    if nome.startswith("trilha_"):  # tenta a API de música (faixa de verdade); se o plano não tiver, cai no gerador de efeitos
+        r = requests.post("https://api.elevenlabs.io/v1/music", headers={"xi-api-key": os.environ["ELEVENLABS_KEY"]},
+                          json={"prompt": texto, "music_length_ms": int(dur * 1000), "force_instrumental": True}, timeout=300)
+        if r.status_code == 200 and len(r.content) > 50_000:
+            os.makedirs(PASTA, exist_ok=True)
+            open(os.path.join(PASTA, nome + ".mp3"), "wb").write(r.content)
+            print(f"  {nome}: API de música", flush=True)
+            return
+        print(f"::warning title=Música {nome}::API de música indisponível ({r.status_code} {r.text[:150]}); usando efeitos", flush=True)
+        dur = min(dur, 22.0)
     r = requests.post("https://api.elevenlabs.io/v1/sound-generation", headers={"xi-api-key": os.environ["ELEVENLABS_KEY"]},
                       json={"text": texto, "duration_seconds": dur, "prompt_influence": 0.6}, timeout=180)
     if r.status_code != 200:
