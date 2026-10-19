@@ -1,8 +1,8 @@
 {
  "eventos": [
   {
-   "t0": 8.01,
-   "t1": 11.01,
+   "t0": 7.85,
+   "t1": 10.85,
    "tipo": "fx",
    "busca": "rubber stamp hit",
    "vol": 0.7,
@@ -11,8 +11,8 @@
    "cena": "stamp | fala: E o Cade aprovou."
   },
   {
-   "t0": 8.969999999999999,
-   "t1": 11.969999999999999,
+   "t0": 8.77,
+   "t1": 11.77,
    "tipo": "silencio",
    "busca": null,
    "vol": null,
@@ -21,8 +21,18 @@
    "cena": "bigtext | fala: Só que não de graça."
   },
   {
-   "t0": 28.959999999999997,
-   "t1": 31.959999999999997,
+   "t0": 31.95,
+   "t1": 34.95,
+   "tipo": "fx",
+   "busca": "wooden gavel strike",
+   "vol": 0.55,
+   "max": 0.6,
+   "dur": null,
+   "cena": "montagem | fala: O negócio foi parar no Cade. Depois de nove meses, saiu a decisão: quatro votos a um pela aprovação."
+  },
+  {
+   "t0": 37.78,
+   "t1": 40.78,
    "tipo": "silencio",
    "busca": null,
    "vol": null,
@@ -31,8 +41,8 @@
    "cena": "bigtext | fala: Mas com condições."
   },
   {
-   "t0": 33.09,
-   "t1": 36.09,
+   "t0": 41.97,
+   "t1": 44.97,
    "tipo": "fx",
    "busca": "short clock tick",
    "vol": 0.3,
@@ -42,5 +52,5 @@
   }
  ],
  "trilha": "epica",
- "roteiro": "Brahma e Antarctica se juntaram e passaram a controlar cerca de três de cada quatro cervejas vendidas no Brasil. E o Cade aprovou. Só que não de graça. Em mil novecentos e noventa e nove, as duas rivais anunciaram a união. Nascia a Ambev. E tinha mais: a Skol já era da Brahma. Ou seja, três das maiores marcas de cerveja do país ficaram na mesma empresa. O negócio foi parar no Cade, e acabou aprovado. Mas com condições. A Ambev teve que vender a Bavária, junto com cinco fábricas. E ainda teve que abrir parte da sua rede de distribuição para o novo concorrente. Tudo isso para tentar manter competição no mercado. Mas Brahma, Antarctica e Skol continuaram juntas. Três marcas. Uma empresa só. Você sabia disso?"
+ "roteiro": "Brahma e Antarctica se juntaram e passaram a controlar cerca de três de cada quatro cervejas vendidas no Brasil. E o Cade aprovou. Só que não de graça. Em mil novecentos e noventa e nove, as duas rivais anunciaram a união. Nascia a Ambev. E tinha mais: a Skol já era da Brahma. Ou seja, três das maiores marcas de cerveja do país ficaram na mesma empresa. Pra todas as outras marcas juntas, sobrava só uma em cada quatro. O negócio foi parar no Cade. Depois de nove meses, saiu a decisão: quatro votos a um pela aprovação. Mas com condições. A Ambev teve que vender a Bavária, junto com cinco fábricas. A Bavária acabou nas mãos de uma cervejaria do Canadá. E ainda teve que abrir parte da sua rede de distribuição para o novo concorrente. E também teve que manter os empregos por quatro anos. Tudo isso para tentar manter competição no mercado. Mas Brahma, Antarctica e Skol continuaram juntas. Três marcas. Uma empresa só. Você sabia disso?"
 }
