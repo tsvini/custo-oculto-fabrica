@@ -49,7 +49,6 @@
          260
         ]
        ],
-       "selo": "Nestlé x Garoto",
        "logo": "logo_nestle",
        "logos": {
         "logo_nestle": [
@@ -157,10 +156,10 @@
        },
        "sons": [
         {
-         "tipo": "fx",
-         "busca": "cinematic boom hit",
-         "palavra": "acontecido",
-         "vol": 0.6
+         "tipo": "silencio",
+         "palavra": "compra",
+         "em": -0.45,
+         "dur": 0.45
         }
        ]
       }
@@ -180,7 +179,7 @@
         },
         {
          "type": "rosca",
-         "valor": 0.56,
+         "valor": 0.62,
          "centro": "+50%",
          "label": "MAIS DA METADE",
          "sub": "NESTLÉ + GAROTO",
@@ -261,10 +260,10 @@
        "sons": [
         {
          "tipo": "fx",
-         "busca": "single wooden knock hit",
+         "busca": "rubber stamp hit",
          "palavra": "cinco",
-         "vol": 0.8,
-         "max": 0.6
+         "vol": 0.6,
+         "max": 0.5
         },
         {
          "tipo": "fx",
@@ -294,12 +293,11 @@
        "type": "montagem",
        "clips": [
         {
-         "type": "video",
-         "media": "choc_maquina",
-         "pexels_id": 855117,
-         "search": "automatic chocolate machine",
-         "dim": 0.45,
-         "video_url": "https://videos.pexels.com/video-files/855117/855117-hd_1280_720_30fps.mp4"
+         "type": "image",
+         "media": "ia_leis",
+         "z0": 1.0,
+         "z1": 1.12,
+         "dim": 0.4
         },
         {
          "type": "image",
@@ -377,115 +375,83 @@
             230
            ],
            [
-            "IAM SER VENDIDAS",
+            "4 MARCAS SERIAM VENDIDAS",
             "white",
-            90
+            80
            ]
           ]
          }
         },
         {
-         "type": "video",
-         "media": "choc_a",
-         "pexels_id": 4110110,
-         "video_url": "https://videos.pexels.com/video-files/4110110/4110110-hd_1920_1080_25fps.mp4",
-         "search": "chocolates",
-         "dim": 0.5,
+         "type": "image",
+         "media": "ia_serenata",
+         "z0": 1.0,
+         "z1": 1.1,
+         "dim": 0.25,
          "palavra": "Seren",
-         "tremor": true,
          "sobre": {
           "type": "bigtext",
           "lines": [
-           [
-            "2017 · À VENDA",
-            "gold",
-            56
-           ],
            [
             "SERENATA DE AMOR",
             "white",
-            130
+            120
            ]
-          ],
-          "stagger": 0.05
+          ]
          }
         },
         {
-         "type": "video",
-         "media": "choc_b",
-         "pexels_id": 10290175,
-         "video_url": "https://videos.pexels.com/video-files/10290175/10290175-hd_3840_2160_24fps.mp4",
-         "search": "chocolates stop motion",
-         "dim": 0.5,
+         "type": "image",
+         "media": "ia_chokito",
+         "z0": 1.0,
+         "z1": 1.1,
+         "dim": 0.25,
          "palavra": "Cho",
-         "tremor": true,
          "sobre": {
           "type": "bigtext",
           "lines": [
-           [
-            "2017 · À VENDA",
-            "gold",
-            56
-           ],
            [
             "CHOKITO",
             "white",
-            130
+            120
            ]
-          ],
-          "stagger": 0.05
+          ]
          }
         },
         {
-         "type": "video",
-         "media": "choc_c",
-         "pexels_id": 9797115,
-         "video_url": "https://videos.pexels.com/video-files/9797115/9797115-hd_1920_1080_25fps.mp4",
-         "search": "coated candies",
-         "dim": 0.5,
+         "type": "image",
+         "media": "ia_lollo",
+         "z0": 1.0,
+         "z1": 1.1,
+         "dim": 0.25,
          "palavra": "Lol",
-         "tremor": true,
          "sobre": {
           "type": "bigtext",
           "lines": [
-           [
-            "2017 · À VENDA",
-            "gold",
-            56
-           ],
            [
             "LOLLO",
             "white",
-            130
+            120
            ]
-          ],
-          "stagger": 0.05
+          ]
          }
         },
         {
-         "type": "video",
-         "media": "choc_d",
-         "pexels_id": 7012966,
-         "video_url": "https://videos.pexels.com/video-files/7012966/7012966-hd_1080_1350_25fps.mp4",
-         "search": "chocolates",
-         "dim": 0.5,
+         "type": "image",
+         "media": "ia_sensacao",
+         "z0": 1.0,
+         "z1": 1.1,
+         "dim": 0.25,
          "palavra": "Sens",
-         "tremor": true,
          "sobre": {
           "type": "bigtext",
           "lines": [
            [
-            "2017 · À VENDA",
-            "gold",
-            56
-           ],
-           [
             "SENSAÇÃO",
             "white",
-            130
+            120
            ]
-          ],
-          "stagger": 0.05
+          ]
          }
         }
        ],
@@ -545,14 +511,8 @@
         {
          "tipo": "silencio",
          "palavra": "Não",
-         "dur": 0.9
-        },
-        {
-         "tipo": "fx",
-         "busca": "deep sub boom impact",
-         "palavra": "Não",
-         "vol": 0.7,
-         "max": 1.5
+         "em": -0.05,
+         "dur": 1.0
         }
        ]
       }
@@ -616,7 +576,7 @@
        "end_sub": "APROVAÇÃO",
        "big": "21 ANOS",
        "size": 200,
-       "encher": 0.9
+       "encher": 0.6
       }
      }
     ]
@@ -628,7 +588,12 @@
   "ia_gondola": "Brazilian supermarket candy aisle full of colorful chocolate bars and bonbon boxes, shoppers blurred in background, vertical composition",
   "ia_votacao": "Brazilian government council meeting room in Brasilia, officials at a long table raising hands to vote, microphones, formal atmosphere, faces not recognizable, vertical composition",
   "ia_justica": "Brazilian federal court building facade at dusk with stone columns, dramatic sky, vertical composition",
-  "ia_arquivo": "towering stacks of old dusty legal case folders tied with string in a dim archive room, years of paperwork, vertical composition"
+  "ia_arquivo": "towering stacks of old dusty legal case folders tied with string in a dim archive room, years of paperwork, vertical composition",
+  "ia_leis": "stack of old leather-bound law books with a wooden judge gavel on a desk, warm cinematic light, shallow depth of field, no text, no letters, vertical composition",
+  "ia_serenata": "close-up of a round milk chocolate bonbon cut in half showing creamy cashew nougat filling, warm golden yellow background, studio food photography, no text, no logo, vertical composition",
+  "ia_chokito": "close-up of a chocolate bar broken in half showing chewy caramel filling with crispy rice, dark brown background, studio food photography, no text, no logo, vertical composition",
+  "ia_lollo": "close-up of a milk chocolate bar cut open showing fluffy white malted milk nougat filling, soft blue background, studio food photography, no text, no logo, vertical composition",
+  "ia_sensacao": "close-up of a chocolate bonbon cut in half showing pink strawberry cream filling, fresh strawberries around, red background, studio food photography, no text, no logo, vertical composition"
  },
  "meta": {
   "titles": [
@@ -643,5 +608,5 @@
    "negocios"
   ]
  },
- "notes": "FATOS (checados 19/10/2026): compra anunciada fev/2002 (Forbes); veto do CADE fev/2004 por 5x1 e prazo de 150 dias p/ vender a concorrente com até 20% (Forbes; Câmara 02/04/2004); juntas: mais da metade (ACNielsen 30,8%+24,4%; CADE fala em >58%); lei da época permitia consumar antes da análise; mudança em 2012 (análise prévia) em parte pelo caso (gov.br/CADE; Seu Dinheiro); Justiça 2005, decisão 2009 p/ novo julgamento (A Gazeta); 2017: previsto vender Serenata de Amor, Chokito, Lollo, Sensação (iProfesional 22/09/2017), não aconteceu (A Gazeta 2022); aprovação 07/06/2023 com restrições, 21 anos, caso mais antigo do CADE (Forbes; STJ 29/06/2023). Valor da compra fora do roteiro (fontes divergem: R$ 566 mi Forbes x ~US$ 250 mi Câmara). | Trilha: 'Human masks' (Pink_Sound, Pixabay, licença Pixabay). | Vídeos de apoio: Pexels (licença livre, ids escolhidos a dedo: 7012967, 4110110, 6101365, 855117, 30360458)."
+ "notes": "FATOS (checados 19/10/2026): compra anunciada fev/2002 (Forbes); veto do CADE fev/2004 por 5x1 e prazo de 150 dias p/ vender a concorrente com até 20% (Forbes; Câmara 02/04/2004); juntas: mais da metade (ACNielsen 30,8%+24,4%; CADE fala em >58%); lei da época permitia consumar antes da análise; mudança em 2012 (análise prévia) em parte pelo caso (gov.br/CADE; Seu Dinheiro); Justiça 2005, decisão 2009 p/ novo julgamento (A Gazeta); 2017: previsto vender Serenata de Amor, Chokito, Lollo, Sensação (iProfesional 22/09/2017), não aconteceu (A Gazeta 2022); aprovação 07/06/2023 com restrições, 21 anos, caso mais antigo do CADE (Forbes; STJ 29/06/2023). Valor da compra fora do roteiro (fontes divergem: R$ 566 mi Forbes x ~US$ 250 mi Câmara). | Trilha: 'Human masks' (Pink_Sound, Pixabay, licença Pixabay). | Vídeos de apoio: Pexels (licença livre, ids escolhidos a dedo: 7012967, 4110110, 6101365, 855117, 30360458). | v5: cenas IA novas sem logo/marca (livros de lei, recheios genéricos por sabor)."
 }
