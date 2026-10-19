@@ -169,42 +169,51 @@
       "text": "Na época, Nestlé e Garoto juntas tinham mais da metade do mercado brasileiro de chocolates.",
       "scene": {
        "type": "montagem",
-       "auto": true,
        "clips": [
         {
          "type": "video",
-         "media": "chocolates",
-         "pexels_id": 4110110,
-         "search": "chocolates",
-         "dim": 0.45,
-         "video_url": "https://videos.pexels.com/video-files/4110110/4110110-hd_1920_1080_25fps.mp4"
+         "media": "choc_mistura",
+         "pexels_id": 4458598,
+         "video_url": "https://videos.pexels.com/video-files/4458598/4458598-hd_1920_1080_24fps.mp4",
+         "search": "chocolate mixing",
+         "dim": 0.4
+        },
+        {
+         "type": "rosca",
+         "valor": 0.56,
+         "centro": "+50%",
+         "label": "MAIS DA METADE",
+         "sub": "NESTLÉ + GAROTO",
+         "palavra": "mais"
+        },
+        {
+         "type": "image",
+         "media": "ia_gondola",
+         "z0": 1.0,
+         "z1": 1.15,
+         "dim": 0.5,
+         "palavra": "mercado",
+         "sobre": {
+          "type": "bigtext",
+          "lines": [
+           [
+            "DO CHOCOLATE",
+            "white",
+            110
+           ],
+           [
+            "DO BRASIL",
+            "gold",
+            150
+           ]
+          ]
+         }
         }
        ],
        "fallback": {
         "type": "bigtext",
         "lines": []
-       },
-       "sobre": {
-        "type": "bigtext",
-        "lines": [
-         [
-          "MAIS DA",
-          "white",
-          140
-         ],
-         [
-          "METADE",
-          "gold",
-          220
-         ],
-         [
-          "DO CHOCOLATE DO BRASIL",
-          "white",
-          90
-         ]
-        ]
-       },
-       "sobre_em": 1.2
+       }
       }
      },
      {
@@ -254,8 +263,15 @@
          "tipo": "fx",
          "busca": "single wooden knock hit",
          "palavra": "cinco",
-         "vol": 0.55,
+         "vol": 0.8,
          "max": 0.6
+        },
+        {
+         "tipo": "fx",
+         "busca": "short clock tick",
+         "palavra": "cento",
+         "vol": 0.35,
+         "max": 0.3
         }
        ]
       }
@@ -344,37 +360,138 @@
       "text": "Em dois mil e dezessete, chegou a ser prevista a venda de marcas como Serenata de Amor, Chokito, Lollo e Sensação.",
       "scene": {
        "type": "montagem",
-       "auto": true,
        "clips": [
         {
-         "type": "image",
-         "media": "ia_gondola",
-         "z0": 1.0,
-         "z1": 1.12,
-         "dim": 0.65
+         "type": "video",
+         "media": "calendario",
+         "pexels_id": 35332817,
+         "video_url": "https://videos.pexels.com/video-files/35332817/14970418_2160_3840_30fps.mp4",
+         "search": "flipping calendar",
+         "dim": 0.5,
+         "sobre": {
+          "type": "bigtext",
+          "lines": [
+           [
+            "2017",
+            "gold",
+            230
+           ],
+           [
+            "IAM SER VENDIDAS",
+            "white",
+            90
+           ]
+          ]
+         }
+        },
+        {
+         "type": "video",
+         "media": "choc_a",
+         "pexels_id": 4110110,
+         "video_url": "https://videos.pexels.com/video-files/4110110/4110110-hd_1920_1080_25fps.mp4",
+         "search": "chocolates",
+         "dim": 0.5,
+         "palavra": "Seren",
+         "tremor": true,
+         "sobre": {
+          "type": "bigtext",
+          "lines": [
+           [
+            "2017 · À VENDA",
+            "gold",
+            56
+           ],
+           [
+            "SERENATA DE AMOR",
+            "white",
+            130
+           ]
+          ],
+          "stagger": 0.05
+         }
+        },
+        {
+         "type": "video",
+         "media": "choc_b",
+         "pexels_id": 10290175,
+         "video_url": "https://videos.pexels.com/video-files/10290175/10290175-hd_3840_2160_24fps.mp4",
+         "search": "chocolates stop motion",
+         "dim": 0.5,
+         "palavra": "Cho",
+         "tremor": true,
+         "sobre": {
+          "type": "bigtext",
+          "lines": [
+           [
+            "2017 · À VENDA",
+            "gold",
+            56
+           ],
+           [
+            "CHOKITO",
+            "white",
+            130
+           ]
+          ],
+          "stagger": 0.05
+         }
+        },
+        {
+         "type": "video",
+         "media": "choc_c",
+         "pexels_id": 9797115,
+         "video_url": "https://videos.pexels.com/video-files/9797115/9797115-hd_1920_1080_25fps.mp4",
+         "search": "coated candies",
+         "dim": 0.5,
+         "palavra": "Lol",
+         "tremor": true,
+         "sobre": {
+          "type": "bigtext",
+          "lines": [
+           [
+            "2017 · À VENDA",
+            "gold",
+            56
+           ],
+           [
+            "LOLLO",
+            "white",
+            130
+           ]
+          ],
+          "stagger": 0.05
+         }
+        },
+        {
+         "type": "video",
+         "media": "choc_d",
+         "pexels_id": 7012966,
+         "video_url": "https://videos.pexels.com/video-files/7012966/7012966-hd_1080_1350_25fps.mp4",
+         "search": "chocolates",
+         "dim": 0.5,
+         "palavra": "Sens",
+         "tremor": true,
+         "sobre": {
+          "type": "bigtext",
+          "lines": [
+           [
+            "2017 · À VENDA",
+            "gold",
+            56
+           ],
+           [
+            "SENSAÇÃO",
+            "white",
+            130
+           ]
+          ],
+          "stagger": 0.05
+         }
         }
        ],
        "fallback": {
         "type": "bigtext",
         "lines": []
-       },
-       "sobre": {
-        "type": "bullets",
-        "title": "2017 · IAM SER VENDIDAS",
-        "items": [
-         "SERENATA DE AMOR",
-         "CHOKITO",
-         "LOLLO",
-         "SENSAÇÃO"
-        ],
-        "palavras": [
-         "Seren",
-         "Cho",
-         "Lol",
-         "Sens"
-        ],
-        "size": 76,
-        "last_gold": false
        },
        "sons": [
         {
@@ -498,7 +615,8 @@
        "end": "2023",
        "end_sub": "APROVAÇÃO",
        "big": "21 ANOS",
-       "size": 200
+       "size": 200,
+       "encher": 0.9
       }
      }
     ]

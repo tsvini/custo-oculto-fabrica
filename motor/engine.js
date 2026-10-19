@@ -192,7 +192,7 @@
   S.timeline = (ctx, c, t, dur, s) => {
     const u = c.u; const [a] = enter(t); const w = (c.vertical ? 820 : 1300) * u; const x0 = c.cx - w / 2, x1 = c.cx + w / 2, y = c.cy + 120 * u;
     box(ctx, x0, y - 10 * u, w, 20 * u, 10 * u, [55, 55, 60], a);
-    const p = easeInOut((t - 0.3) / Math.max(0.8, dur * 0.55));
+    const p = easeInOut((t - 0.3) / Math.max(0.8, dur * (s.encher || 0.55)));
     box(ctx, x0, y - 10 * u, Math.max(1, w * p), 20 * u, 10 * u, "gold", a);
     [[x0, s.start, s.start_sub, COL.gold], [x1, s.end, s.end_sub, p >= 0.999 ? COL.red : [55, 55, 60]]].forEach(([xx, lab, sub, cl]) => {
       ctx.save(); ctx.globalAlpha = a; ctx.fillStyle = css(cl); ctx.beginPath(); ctx.arc(xx, y, 26 * u, 0, 7); ctx.fill(); ctx.restore();
@@ -200,6 +200,17 @@
       if (sub) drawC(ctx, sub, font(500, 38 * u), xx, y + 150 * u, { fill: "muted", alpha: a });
     });
     drawC(ctx, s.big, font(900, fitSize(ctx, s.big || "", 900, (s.size || 180) * u, c.W * 0.85)), c.cx, c.cy - 130 * u, { alpha: easeOut((t - 0.2) / 0.4), scale: lerp(0.9, 1, backOut((t - 0.2) / 0.4)) });
+  };
+  // rosca que enche até "valor" (0 a 1), com texto no meio: {type:"rosca", valor:0.56, centro:"+50%", label:"DO MERCADO", sub:"NESTLÉ + GAROTO"}
+  S.rosca = (ctx, c, t, dur, s) => {
+    const u = c.u; const a = easeOut(t / 0.3); const r = (c.vertical ? 300 : 260) * u; const cy = c.cy - 60 * u;
+    const p = easeInOut((t - 0.15) / Math.max(0.6, Math.min(1.4, dur * 0.6))) * (s.valor || 0.5);
+    ctx.save(); ctx.globalAlpha = a; ctx.lineWidth = 70 * u; ctx.lineCap = "butt";
+    ctx.strokeStyle = "rgba(255,255,255,.14)"; ctx.beginPath(); ctx.arc(c.cx, cy, r, 0, Math.PI * 2); ctx.stroke();
+    ctx.strokeStyle = css(col(s.color, COL.gold)); ctx.beginPath(); ctx.arc(c.cx, cy, r, -Math.PI / 2, -Math.PI / 2 + Math.PI * 2 * p); ctx.stroke(); ctx.restore();
+    drawC(ctx, s.centro || "", font(900, fitSize(ctx, s.centro || "", 900, 150 * u, r * 1.5)), c.cx, cy, { fill: col(s.color, COL.gold), alpha: a, scale: lerp(0.9, 1, backOut(t / 0.4)) });
+    if (s.label) drawC(ctx, s.label, font(900, fitSize(ctx, s.label, 900, 80 * u, c.W * 0.9)), c.cx, cy + r + 120 * u, { alpha: easeOut((t - 0.4) / 0.35) });
+    if (s.sub) drawC(ctx, s.sub, font(700, 46 * u), c.cx, cy - r - 90 * u, { fill: "muted", alpha: a });
   };
   S.bigtext = (ctx, c, t, dur, s) => {
     const u = c.u; const lines = s.lines || [];
