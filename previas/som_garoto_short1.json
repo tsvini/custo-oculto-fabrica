@@ -1,0 +1,163 @@
+{
+ "nota_final": 7.5,
+ "rodadas": [
+  {
+   "rodada": 1,
+   "nota": 7.5,
+   "avaliacao": {
+    "nota": 7.5,
+    "resumo": "A mixagem e a escolha da trilha estão agradáveis, mas a sonoplastia está espaçada demais em momentos cruciais da narrativa. O carimbo no início funcionou bem, porém há cortes e telas de grande ênfase visual (como a decisão 5x1 e a negativa 'NÃO ACONTECEU') que ficaram sem nenhum apoio sonoro.",
+    "problemas": [
+     {
+      "evento": 0,
+      "problema": "O som do carimbo entra ligeiramente adiantado antes da animação visual tocar o papel.",
+      "acao": "atrasar",
+      "segundos": 0.2
+     },
+     {
+      "evento": 1,
+      "problema": "Volume um pouco alto competindo com a virada de frase da locução na transição.",
+      "acao": "mais_baixo"
+     }
+    ],
+    "faltando": [
+     {
+      "t": 16.2,
+      "busca": "wooden gavel strike hit",
+      "tipo": "fx"
+     },
+     {
+      "t": 29.8,
+      "busca": "distant thunder rumble ominous",
+      "tipo": "amb"
+     },
+     {
+      "t": 40.8,
+      "busca": "cinematic negative sub hit thud",
+      "tipo": "fx"
+     },
+     {
+      "t": 55.5,
+      "busca": "subtle clean digital pop or click",
+      "tipo": "fx"
+     }
+    ]
+   },
+   "eventos": [
+    {
+     "t0": 4.65,
+     "t1": 7.65,
+     "tipo": "fx",
+     "busca": "rubber stamp hit",
+     "vol": 0.75,
+     "cena": "stamp | fala: Dois anos depois, o Cade proibiu o negócio.",
+     "fonte": "freesound #683031 Thump.mp3"
+    },
+    {
+     "t0": 9.15,
+     "t1": 12.15,
+     "tipo": "fx",
+     "busca": "cinematic boom hit",
+     "vol": 0.6,
+     "cena": "montagem | fala: Só tinha um problema: a compra já tinha acontecido.",
+     "fonte": "freesound #648732 Cinematic Woosh SFX-011.wav"
+    },
+    {
+     "t0": 33.43,
+     "t1": 36.43,
+     "tipo": "fx",
+     "busca": "fast whoosh",
+     "vol": 0.35,
+     "cena": "montagem | fala: Em dois mil e dezessete, chegou a ser prevista a venda de marcas como Serenata de Amor, Chokito, Lollo e Sensação.",
+     "fonte": "freesound #812689 Sound Design Elements Whoosh SFX 052"
+    },
+    {
+     "t0": 42.97,
+     "t1": 45.97,
+     "tipo": "fx",
+     "busca": "deep cinematic boom",
+     "vol": 0.6,
+     "cena": "montagem | fala: Só em dois mil e vinte e três, vinte e um anos depois, o Cade aprovou a compra, com restrições.",
+     "fonte": "freesound #648614 Cinematic Woosh SFX-009.wav"
+    }
+   ]
+  },
+  {
+   "rodada": 2,
+   "nota": 6.5,
+   "avaliacao": {
+    "nota": 6.5,
+    "resumo": "A sonoplastia tem boas ideias conceituais (como o carimbo em 'Vetado' e os booms em momentos de tensão), mas peca no sincronismo fino de alguns impactos e deixa momentos visuais muito fortes sem suporte sonoro, como a negativa 'Não Aconteceu' e a decisão judicial do Cade.",
+    "problemas": [
+     {
+      "evento": 0,
+      "problema": "O som do carimbo entra ligeiramente após a animação do carimbo bater no papel (que pousa aos 4.7s).",
+      "acao": "adiantar",
+      "segundos": 0.2
+     },
+     {
+      "evento": 3,
+      "problema": "O impacto 'deep cinematic boom' entra com atraso em relação à transição visual de '21 ANOS', que surge aos 42.6s.",
+      "acao": "adiantar",
+      "segundos": 0.4
+     }
+    ],
+    "faltando": [
+     {
+      "t": 16.2,
+      "busca": "wooden gavel strike court punch",
+      "tipo": "fx"
+     },
+     {
+      "t": 30.3,
+      "busca": "sub bass drop tension hit",
+      "tipo": "fx"
+     },
+     {
+      "t": 40.8,
+      "busca": "error wrong buzzer dull thud",
+      "tipo": "fx"
+     }
+    ]
+   },
+   "eventos": [
+    {
+     "t0": 4.8500000000000005,
+     "t1": 7.8500000000000005,
+     "tipo": "fx",
+     "busca": "rubber stamp hit",
+     "vol": 0.75,
+     "cena": "stamp | fala: Dois anos depois, o Cade proibiu o negócio.",
+     "fonte": "freesound #683031 Thump.mp3"
+    },
+    {
+     "t0": 9.15,
+     "t1": 12.15,
+     "tipo": "fx",
+     "busca": "cinematic boom hit",
+     "vol": 0.36,
+     "cena": "montagem | fala: Só tinha um problema: a compra já tinha acontecido.",
+     "fonte": "freesound #648732 Cinematic Woosh SFX-011.wav"
+    },
+    {
+     "t0": 33.43,
+     "t1": 36.43,
+     "tipo": "fx",
+     "busca": "fast whoosh",
+     "vol": 0.35,
+     "cena": "montagem | fala: Em dois mil e dezessete, chegou a ser prevista a venda de marcas como Serenata de Amor, Chokito, Lollo e Sensação.",
+     "fonte": "freesound #812689 Sound Design Elements Whoosh SFX 052"
+    },
+    {
+     "t0": 42.97,
+     "t1": 45.97,
+     "tipo": "fx",
+     "busca": "deep cinematic boom",
+     "vol": 0.6,
+     "cena": "montagem | fala: Só em dois mil e vinte e três, vinte e um anos depois, o Cade aprovou a compra, com restrições.",
+     "fonte": "freesound #648614 Cinematic Woosh SFX-009.wav"
+    }
+   ]
+  }
+ ]
+}
