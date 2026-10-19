@@ -1,0 +1,109 @@
+{
+ "nota_final": 7.5,
+ "rodadas": [
+  {
+   "rodada": 1,
+   "nota": 7.5,
+   "avaliacao": {
+    "nota": 7.5,
+    "resumo": "A sonoplastia básica está bem encaminhada, com boa inteligibilidade da narração e os carimbos visuais bem contextualizados. Contudo, faltam efeitos para valorizar o gancho inicial (dinheiro) e a revelação dramática da Perdigão (onde foi colocado um silêncio), além de pequenos ajustes finos de sincronia.",
+    "problemas": [
+     {
+      "evento": 0,
+      "problema": "Foi colocado silêncio bem no momento da revelação visual e dramática do nome 'A Perdigão', quebrando a energia do suspense.",
+      "acao": "remover"
+     },
+     {
+      "evento": 4,
+      "problema": "O carimbo gráfico 'VENDIDAS' surge na tela em torno de 37.9s, mas o som entra apenas em 38.2s, ficando ligeiramente desfasado.",
+      "acao": "adiantar",
+      "segundos": 0.3
+     }
+    ],
+    "faltando": [
+     {
+      "t": 1.2,
+      "busca": "counting cash paper bills rustle",
+      "tipo": "fx"
+     },
+     {
+      "t": 7.0,
+      "busca": "cinematic dramatic sub boom drop",
+      "tipo": "fx"
+     },
+     {
+      "t": 16.2,
+      "busca": "fast upward pitch whoosh riser stock market",
+      "tipo": "fx"
+     }
+    ]
+   },
+   "eventos": [
+    {
+     "t0": 7.069999999999999,
+     "t1": 10.07,
+     "tipo": "silencio",
+     "busca": null,
+     "vol": 0.5,
+     "max": null,
+     "dur": 0.4,
+     "cena": "bigtext | fala: A Perdigão."
+    },
+    {
+     "t0": 16.89,
+     "t1": 19.89,
+     "tipo": "fx",
+     "busca": "deep cinematic impact hit",
+     "vol": 0.55,
+     "max": 0.8,
+     "dur": null,
+     "cena": "montagem | fala: A crise veio. E o dólar disparou.",
+     "fonte": "freesound #648614 Cinematic Woosh SFX-009.wav"
+    },
+    {
+     "t0": 21.99,
+     "t1": 24.99,
+     "tipo": "fx",
+     "busca": "rubber stamp hit",
+     "vol": 0.7,
+     "max": null,
+     "dur": null,
+     "cena": "stamp | fala: O primeiro em sessenta e quatro anos.",
+     "fonte": "freesound #683031 Thump.mp3"
+    },
+    {
+     "t0": 32.89,
+     "t1": 35.89,
+     "tipo": "fx",
+     "busca": "soft whoosh",
+     "vol": 0.3,
+     "max": 0.4,
+     "dur": null,
+     "cena": "montagem | fala: Pra aprovar o negócio, a Perdigão teve que sumir de vários produtos por até cinco anos.",
+     "fonte": "freesound #701104 Whoosh stereo light (transition)"
+    },
+    {
+     "t0": 38.23,
+     "t1": 41.23,
+     "tipo": "fx",
+     "busca": "rubber stamp hit",
+     "vol": 0.6,
+     "max": null,
+     "dur": null,
+     "cena": "stamp | fala: E várias marcas e fábricas tiveram que ser vendidas.",
+     "fonte": "freesound #683031 Thump.mp3"
+    },
+    {
+     "t0": 42.08,
+     "t1": 45.08,
+     "tipo": "silencio",
+     "busca": null,
+     "vol": 0.5,
+     "max": null,
+     "dur": 0.35,
+     "cena": "montagem | fala: Depois de tudo isso, Sadia e Perdigão acabaram virando uma empresa só."
+    }
+   ]
+  }
+ ]
+}
