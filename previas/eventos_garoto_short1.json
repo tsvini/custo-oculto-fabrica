@@ -25,8 +25,18 @@
    "t1": 19.17,
    "tipo": "fx",
    "busca": "single wooden knock hit",
-   "vol": 0.55,
+   "vol": 0.8,
    "max": 0.6,
+   "dur": null,
+   "cena": "montagem | fala: Por cinco votos a um, o Cade mandou a Nestlé vender a Garoto em até cento e cinquenta dias."
+  },
+  {
+   "t0": 20.233,
+   "t1": 23.233,
+   "tipo": "fx",
+   "busca": "short clock tick",
+   "vol": 0.35,
+   "max": 0.3,
    "dur": null,
    "cena": "montagem | fala: Por cinco votos a um, o Cade mandou a Nestlé vender a Garoto em até cento e cinquenta dias."
   },
@@ -41,8 +51,8 @@
    "cena": "montagem | fala: Em dois mil e dezessete, chegou a ser prevista a venda de marcas como Serenata de Amor, Chokito, Lollo e Sensação."
   },
   {
-   "t0": 37.83,
-   "t1": 40.83,
+   "t0": 37.79,
+   "t1": 40.79,
    "tipo": "fx",
    "busca": "soft pop click",
    "vol": 0.3,
@@ -71,8 +81,8 @@
    "cena": "montagem | fala: Em dois mil e dezessete, chegou a ser prevista a venda de marcas como Serenata de Amor, Chokito, Lollo e Sensação."
   },
   {
-   "t0": 40.35,
-   "t1": 43.35,
+   "t0": 40.37,
+   "t1": 43.37,
    "tipo": "silencio",
    "busca": null,
    "vol": null,
@@ -81,8 +91,8 @@
    "cena": "bigtext | fala: Não aconteceu."
   },
   {
-   "t0": 40.35,
-   "t1": 43.35,
+   "t0": 40.37,
+   "t1": 43.37,
    "tipo": "fx",
    "busca": "deep sub boom impact",
    "vol": 0.7,
