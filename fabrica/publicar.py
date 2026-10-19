@@ -514,7 +514,7 @@ def ajustar(arq="ajustes.json"):
                 corpo["status"] = st; parts.append("status")
         if a.get("privado"):  # tira o agendamento: fica privado até nova ordem
             st = {k: v["status"][k] for k in ("license", "embeddable", "publicStatsViewable", "selfDeclaredMadeForKids", "containsSyntheticMedia") if k in v["status"]}
-            st["privacyStatus"] = "private"; corpo["status"] = st; parts.append("status")
+            st["privacyStatus"] = "private"; st["publishAt"] = None; corpo["status"] = st; parts.append("status")
         if not parts:
             continue
         checar(requests.put(f"{Y}/videos?part={','.join(parts)}", headers=H, timeout=30, json=corpo), f"ajustar {nome}")
