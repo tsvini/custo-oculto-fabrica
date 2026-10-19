@@ -1,0 +1,635 @@
+{
+ "title": "Brahma + Antarctica = Ambev",
+ "slug": "ambev",
+ "idioma": "pt",
+ "trilha": "epica",
+ "cauda": 2.0,
+ "voz": {
+  "nome": "gravada",
+  "motor": "eleven",
+  "eleven_voz": "Vinícius Torales"
+ },
+ "pronuncia": [
+  [
+   "\\bAntarctica\\b",
+   "Antártica"
+  ],
+  [
+   "\\bAmbev\\b",
+   "Ambév"
+  ]
+ ],
+ "script": {
+  "long": {
+   "parts": []
+  },
+  "tiktoks": [],
+  "shorts": [
+   {
+    "title": "Brahma e Antarctica viraram uma só. E o Cade aprovou",
+    "sentences": [
+     {
+      "text": "Brahma e Antarctica se juntaram e passaram a controlar cerca de três de cada quatro cervejas vendidas no Brasil.",
+      "scene": {
+       "type": "capa",
+       "instante": true,
+       "foto": "brinde",
+       "seta": false,
+       "faixa": "BRAHMA + ANTARCTICA",
+       "linhas": [
+        [
+         "3 DE CADA 4",
+         "gold",
+         250
+        ],
+        [
+         "CERVEJAS",
+         "white",
+         200
+        ]
+       ],
+       "extra": [
+        {
+         "type": "video",
+         "media": "brinde",
+         "pexels_id": 5847919,
+         "video_url": "https://videos.pexels.com/video-files/5847919/5847919-hd_1080_1920_30fps.mp4",
+         "search": "friends toasting with beer",
+         "dim": 0.5
+        }
+       ],
+       "depois": {
+        "type": "montagem",
+        "auto": true,
+        "clips": [
+         {
+          "type": "image",
+          "media": "ia_garrafas",
+          "z0": 1.0,
+          "z1": 1.16,
+          "dim": 0.45,
+          "sobre": {
+           "type": "bigtext",
+           "lines": [
+            [
+             "3 DE CADA 4",
+             "gold",
+             210
+            ],
+            [
+             "CERVEJAS",
+             "white",
+             150
+            ],
+            [
+             "DO BRASIL",
+             "white",
+             120
+            ]
+           ],
+           "stagger": 0.1
+          }
+         }
+        ],
+        "fallback": {
+         "type": "bigtext",
+         "lines": []
+        }
+       }
+      }
+     },
+     {
+      "text": "E o Cade aprovou.",
+      "scene": {
+       "type": "stamp",
+       "org": "CADE",
+       "title": "A UNIÃO DAS RIVAIS",
+       "stamp": "APROVADO",
+       "stamp_color": [
+        70,
+        190,
+        110
+       ],
+       "stamp_palavra": "aprovou",
+       "fundo": "ia_votacao",
+       "fundo_dim": 0.5,
+       "sons": [
+        {
+         "tipo": "fx",
+         "busca": "rubber stamp hit",
+         "palavra": "aprovou",
+         "vol": 0.7
+        }
+       ]
+      }
+     },
+     {
+      "text": "Só que não de graça.",
+      "scene": {
+       "type": "bigtext",
+       "lines": [
+        [
+         "NÃO",
+         "white",
+         220
+        ],
+        [
+         "DE GRAÇA",
+         "red",
+         230
+        ]
+       ],
+       "stagger": 0.2,
+       "sons": [
+        {
+         "tipo": "silencio",
+         "palavra": "não",
+         "em": -0.3,
+         "dur": 0.6
+        }
+       ]
+      }
+     },
+     {
+      "text": "Em mil novecentos e noventa e nove, as duas rivais anunciaram a união.",
+      "scene": {
+       "type": "montagem",
+       "auto": true,
+       "clips": [
+        {
+         "type": "image",
+         "media": "ia_rivais_cerveja",
+         "z0": 1.05,
+         "z1": 1.18,
+         "dim": 0.45,
+         "sobre": {
+          "type": "bigtext",
+          "lines": [
+           [
+            "1999",
+            "gold",
+            230
+           ],
+           [
+            "BRAHMA",
+            "white",
+            140
+           ],
+           [
+            "×",
+            "red",
+            120
+           ],
+           [
+            "ANTARCTICA",
+            "white",
+            140
+           ]
+          ],
+          "stagger": 0.25
+         }
+        }
+       ],
+       "fallback": {
+        "type": "bigtext",
+        "lines": []
+       }
+      }
+     },
+     {
+      "text": "Nascia a Ambev.",
+      "scene": {
+       "type": "montagem",
+       "auto": true,
+       "clips": [
+        {
+         "type": "video",
+         "media": "cervejaria",
+         "pexels_id": 35844883,
+         "video_url": "https://videos.pexels.com/video-files/35844883/15199558_1080_1920_30fps.mp4",
+         "search": "busy brewery interior",
+         "dim": 0.5,
+         "sobre": {
+          "type": "bigtext",
+          "lines": [
+           [
+            "NASCIA A",
+            "white",
+            120
+           ],
+           [
+            "AMBEV",
+            "gold",
+            270
+           ]
+          ],
+          "stagger": 0.15
+         }
+        }
+       ],
+       "fallback": {
+        "type": "bigtext",
+        "lines": []
+       }
+      }
+     },
+     {
+      "text": "E tinha mais: a Skol já era da Brahma.",
+      "scene": {
+       "type": "montagem",
+       "auto": true,
+       "clips": [
+        {
+         "type": "video",
+         "media": "envase",
+         "pexels_id": 5532765,
+         "video_url": "https://videos.pexels.com/video-files/5532765/5532765-uhd_2160_4096_25fps.mp4",
+         "search": "beer cans production line",
+         "dim": 0.55,
+         "sobre": {
+          "type": "bigtext",
+          "lines": [
+           [
+            "E TINHA MAIS:",
+            "white",
+            110
+           ],
+           [
+            "A SKOL",
+            "gold",
+            220
+           ],
+           [
+            "JÁ ERA DA BRAHMA",
+            "white",
+            100
+           ]
+          ],
+          "stagger": 0.35
+         }
+        }
+       ],
+       "fallback": {
+        "type": "bigtext",
+        "lines": []
+       }
+      }
+     },
+     {
+      "text": "Ou seja, três das maiores marcas de cerveja do país ficaram na mesma empresa.",
+      "scene": {
+       "type": "montagem",
+       "auto": true,
+       "clips": [
+        {
+         "type": "image",
+         "media": "ia_tres",
+         "z0": 1.0,
+         "z1": 1.15,
+         "dim": 0.45,
+         "sobre": {
+          "type": "bigtext",
+          "lines": [
+           [
+            "BRAHMA",
+            "white",
+            140
+           ],
+           [
+            "ANTARCTICA",
+            "white",
+            140
+           ],
+           [
+            "SKOL",
+            "white",
+            140
+           ],
+           [
+            "MESMA EMPRESA",
+            "gold",
+            150
+           ]
+          ],
+          "stagger": 0.4
+         }
+        }
+       ],
+       "fallback": {
+        "type": "bigtext",
+        "lines": []
+       }
+      }
+     },
+     {
+      "text": "O negócio foi parar no Cade, e acabou aprovado.",
+      "scene": {
+       "type": "montagem",
+       "auto": true,
+       "clips": [
+        {
+         "type": "video",
+         "media": "martelo",
+         "pexels_id": 6101365,
+         "video_url": "https://videos.pexels.com/video-files/6101365/6101365-uhd_2160_4096_30fps.mp4",
+         "search": "gavel document",
+         "dim": 0.55,
+         "sobre": {
+          "type": "bigtext",
+          "lines": [
+           [
+            "O CASO",
+            "white",
+            130
+           ],
+           [
+            "FOI PARAR",
+            "white",
+            130
+           ],
+           [
+            "NO CADE",
+            "gold",
+            210
+           ]
+          ],
+          "stagger": 0.2
+         }
+        }
+       ],
+       "fallback": {
+        "type": "bigtext",
+        "lines": []
+       }
+      }
+     },
+     {
+      "text": "Mas com condições.",
+      "scene": {
+       "type": "bigtext",
+       "lines": [
+        [
+         "MAS COM",
+         "white",
+         150
+        ],
+        [
+         "CONDIÇÕES",
+         "red",
+         210
+        ]
+       ],
+       "stagger": 0.2,
+       "sons": [
+        {
+         "tipo": "silencio",
+         "palavra": "condições",
+         "em": -0.35,
+         "dur": 0.35
+        }
+       ]
+      }
+     },
+     {
+      "text": "A Ambev teve que vender a Bavária, junto com cinco fábricas.",
+      "scene": {
+       "type": "montagem",
+       "auto": true,
+       "clips": [
+        {
+         "type": "video",
+         "media": "maquina",
+         "pexels_id": 5532761,
+         "video_url": "https://videos.pexels.com/video-files/5532761/5532761-uhd_2160_4096_25fps.mp4",
+         "search": "industrial automated machine",
+         "dim": 0.55,
+         "sobre": {
+          "type": "bigtext",
+          "lines": [
+           [
+            "TEVE QUE",
+            "white",
+            120
+           ],
+           [
+            "VENDER",
+            "white",
+            160
+           ],
+           [
+            "A BAVÁRIA",
+            "gold",
+            210
+           ]
+          ],
+          "stagger": 0.2
+         }
+        },
+        {
+         "type": "counter",
+         "value": 5,
+         "suffix": " FÁBRICAS",
+         "over": "E MAIS",
+         "label": "VENDIDAS JUNTO",
+         "palavra": "cinco",
+         "size": 200
+        }
+       ],
+       "fallback": {
+        "type": "bigtext",
+        "lines": []
+       },
+       "sons": [
+        {
+         "tipo": "fx",
+         "busca": "short clock tick",
+         "palavra": "cinco",
+         "vol": 0.3,
+         "max": 0.3
+        }
+       ]
+      }
+     },
+     {
+      "text": "E ainda teve que abrir parte da sua rede de distribuição para o novo concorrente.",
+      "scene": {
+       "type": "montagem",
+       "auto": true,
+       "clips": [
+        {
+         "type": "video",
+         "media": "caminhao",
+         "pexels_id": 39189857,
+         "video_url": "https://videos.pexels.com/video-files/39189857/16675748_2160_3840_30fps.mp4",
+         "search": "container truck highway",
+         "dim": 0.5,
+         "sobre": {
+          "type": "bigtext",
+          "lines": [
+           [
+            "E ABRIR A",
+            "white",
+            120
+           ],
+           [
+            "DISTRIBUIÇÃO",
+            "gold",
+            170
+           ],
+           [
+            "PRO CONCORRENTE",
+            "white",
+            110
+           ]
+          ],
+          "stagger": 0.3
+         }
+        }
+       ],
+       "fallback": {
+        "type": "bigtext",
+        "lines": []
+       }
+      }
+     },
+     {
+      "text": "Tudo isso para tentar manter competição no mercado.",
+      "scene": {
+       "type": "montagem",
+       "auto": true,
+       "clips": [
+        {
+         "type": "video",
+         "media": "copo",
+         "pexels_id": 13799057,
+         "video_url": "https://videos.pexels.com/video-files/13799057/13799057-uhd_2160_3840_25fps.mp4",
+         "search": "pouring beer to glass",
+         "dim": 0.5,
+         "sobre": {
+          "type": "bigtext",
+          "lines": [
+           [
+            "PRA MANTER",
+            "white",
+            130
+           ],
+           [
+            "COMPETIÇÃO",
+            "gold",
+            190
+           ]
+          ],
+          "stagger": 0.25
+         }
+        }
+       ],
+       "fallback": {
+        "type": "bigtext",
+        "lines": []
+       }
+      }
+     },
+     {
+      "text": "Mas Brahma, Antarctica e Skol continuaram juntas.",
+      "scene": {
+       "type": "timeline",
+       "start": "1999",
+       "start_sub": "RIVAIS",
+       "end": "HOJE",
+       "end_sub": "JUNTAS",
+       "big": "JUNTAS",
+       "size": 230,
+       "encher": 0.6,
+       "fundo": "espuma",
+       "fundo_dim": 0.7,
+       "extra": [
+        {
+         "type": "video",
+         "media": "espuma",
+         "pexels_id": 8676955,
+         "video_url": "https://videos.pexels.com/video-files/8676955/8676955-uhd_2160_3840_30fps.mp4",
+         "search": "close up foamy beer glass",
+         "dim": 0.5
+        }
+       ]
+      }
+     },
+     {
+      "text": "Três marcas. Uma empresa só.",
+      "scene": {
+       "type": "bigtext",
+       "lines": [
+        [
+         "TRÊS MARCAS.",
+         "white",
+         160
+        ],
+        [
+         "UMA EMPRESA SÓ.",
+         "gold",
+         150
+        ]
+       ],
+       "stagger": 0.7,
+       "fundo": "ia_tres",
+       "fundo_dim": 0.6
+      }
+     },
+     {
+      "text": "Você sabia disso?",
+      "scene": {
+       "type": "bigtext",
+       "lines": [
+        [
+         "VOCÊ",
+         "white",
+         170
+        ],
+        [
+         "SABIA?",
+         "gold",
+         240
+        ]
+       ],
+       "stagger": 0.2,
+       "fundo": "bar",
+       "fundo_dim": 0.65,
+       "extra": [
+        {
+         "type": "video",
+         "media": "bar",
+         "pexels_id": 7083625,
+         "video_url": "https://videos.pexels.com/video-files/7083625/7083625-uhd_2160_3840_24fps.mp4",
+         "search": "men drinking together",
+         "dim": 0.5
+        }
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ "ia": {
+  "ia_votacao": "Brazilian government council meeting room in Brasilia, officials at a long table raising hands to vote, microphones, formal atmosphere, faces not recognizable, vertical composition",
+  "ia_garrafas": "four cold amber beer bottles without labels standing in crushed ice, three of them dramatically backlit glowing golden and one in shadow, condensation drops, dark bar background, cinematic, no label, no text, no logo, vertical composition",
+  "ia_rivais_cerveja": "two unlabeled beer bottles facing each other like rivals on a dark wooden bar counter, one amber and one dark brown, dramatic red and blue rim light, smoke, cinematic duel mood, no label, no text, no logo, vertical composition",
+  "ia_tres": "three unlabeled ice cold beer bottles side by side in a metal ice bucket on a Brazilian bar table, warm evening light, condensation, cinematic close-up, no label, no text, no logo, vertical composition"
+ },
+ "meta": {
+  "titles": [
+   "Brahma + Antarctica = Ambev"
+  ],
+  "description": "",
+  "tags": [
+   "ambev",
+   "brahma",
+   "antarctica",
+   "skol",
+   "cade",
+   "cerveja",
+   "negocios"
+  ]
+ },
+ "notes": "FATOS (checados 19/10/2026): união Brahma+Antarctica anunciada 01/07/1999 (Unifacs); Skol já era da Brahma; ~73-75% do mercado nacional (BLB; OCDE/Cade ~75%, até 90% em regiões) -> roteiro usa '3 de cada 4'; Cade aprovou 30/03/2000 por 4x1 com condições: vender Bavária + 5 fábricas, compartilhar distribuição por 4 anos, manter empregos (DGABC 30/03/2000); Bavária vendida à Molson por US$ 213 mi em nov/2000 (just-drinks). Final sem Heineken/AB InBev de propósito. | Vídeos: Pexels (5847919, 35844883, 5532765, 5532761, 39189857, 13799057, 8676955, 7083625, 6101365)."
+}
