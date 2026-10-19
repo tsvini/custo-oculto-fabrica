@@ -1,39 +1,44 @@
 {
- "nota_final": 7.5,
+ "nota_final": 7,
  "rodadas": [
   {
    "rodada": 1,
-   "nota": 7.5,
+   "nota": 7,
    "avaliacao": {
-    "nota": 7.5,
-    "resumo": "A sonoplastia básica está bem encaminhada, com boa inteligibilidade da narração e os carimbos visuais bem contextualizados. Contudo, faltam efeitos para valorizar o gancho inicial (dinheiro) e a revelação dramática da Perdigão (onde foi colocado um silêncio), além de pequenos ajustes finos de sincronia.",
+    "nota": 7,
+    "resumo": "A mixagem entre voz e trilha musical está equilibrada e a clareza vocal é ótima. Os efeitos de carimbo funcionam bem tematicamente, mas o início do vídeo perde força pelo gancho sem impacto sonoro (hook seco), além de transições e elementos visuais de mercado financeiro ficarem sem reforço de SFX.",
     "problemas": [
      {
+      "evento": 4,
+      "problema": "O carimbo vermelho 'VENDIDAS' bate na tela por volta dos 37,6s, mas o som só dispara aos 38,2s, ficando claramente dessincronizado.",
+      "acao": "adiantar",
+      "segundos": 0.5
+     },
+     {
       "evento": 0,
-      "problema": "Foi colocado silêncio bem no momento da revelação visual e dramática do nome 'A Perdigão', quebrando a energia do suspense.",
+      "problema": "Marcador de silêncio desnecessário ocupando a timeline.",
       "acao": "remover"
      },
      {
-      "evento": 4,
-      "problema": "O carimbo gráfico 'VENDIDAS' surge na tela em torno de 37.9s, mas o som entra apenas em 38.2s, ficando ligeiramente desfasado.",
-      "acao": "adiantar",
-      "segundos": 0.3
+      "evento": 5,
+      "problema": "Marcador de silêncio desnecessário.",
+      "acao": "remover"
      }
     ],
     "faltando": [
      {
-      "t": 1.2,
-      "busca": "counting cash paper bills rustle",
+      "t": 0.2,
+      "busca": "heavy sub impact cash drop",
       "tipo": "fx"
      },
      {
-      "t": 7.0,
-      "busca": "cinematic dramatic sub boom drop",
+      "t": 12.5,
+      "busca": "descending tone chart fall",
       "tipo": "fx"
      },
      {
-      "t": 16.2,
-      "busca": "fast upward pitch whoosh riser stock market",
+      "t": 25.5,
+      "busca": "corporate pop interface click",
       "tipo": "fx"
      }
     ]
