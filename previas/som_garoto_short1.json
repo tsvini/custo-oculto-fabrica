@@ -1,28 +1,28 @@
 {
- "nota_final": 7.5,
+ "nota_final": 8.5,
  "rodadas": [
   {
    "rodada": 1,
-   "nota": 7.5,
+   "nota": 8.5,
    "avaliacao": {
-    "nota": 7.5,
-    "resumo": "A sonorização atende bem o ritmo dinâmico do vídeo, marcando selos de aprovação/veto e contadores. No entanto, no trecho da decisão judicial (16s) foi utilizado um som de carimbo borracha em vez de martelada de juiz (gavel), e faltam efeitos sonoros para a folheação de calendário/página.",
+    "nota": 8.5,
+    "resumo": "A sonorização está bastante profissional, com a trilha sonora e a narração muito bem equilibradas. Os efeitos sonoros principais — como os carimbos em 'VETADO' e 'APROVADO', o efeito de relógio/contagem e os cliques nos chocolates — acompanham bem a edição dinâmica do Short.",
     "problemas": [
      {
       "evento": 2,
-      "problema": "O som inserido é de carimbo de borracha, mas a imagem mostra um martelo de juiz (gavel) batendo na mesa.",
+      "problema": "O efeito de carimbo em 16.2s soa repetitivo e genérico, pois na tela aparece apenas o texto '5 x 1' sem o elemento visual de carimbo.",
       "acao": "remover"
      }
     ],
     "faltando": [
      {
-      "t": 16.5,
-      "busca": "wooden gavel strike hammer impact",
+      "t": 26.5,
+      "busca": "wooden judge gavel hit studio sound effect",
       "tipo": "fx"
      },
      {
-      "t": 32.8,
-      "busca": "calendar page turn paper flip sound",
+      "t": 31.2,
+      "busca": "paper stack rustle archive document flip",
       "tipo": "fx"
      }
     ]
