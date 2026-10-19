@@ -422,6 +422,7 @@
     if (cl.tremor && lt < 0.32) { const a = (1 - lt / 0.32) * 18 * c.u; ctx.translate((Math.random() - 0.5) * a, (Math.random() - 0.5) * a); }
     (S[cl.type] || S.bigtext)(ctx, c, lt, cada, Object.assign({ dim: 0.3 }, cl, { lower: null }), media);
     ctx.restore();
+    if (cl.sobre) (S[cl.sobre.type] || S.bigtext)(ctx, c, lt, cada, cl.sobre, media); // texto só deste clipe
     const se = s.sobre_em || 0; // número/frase por cima das imagens (pode entrar depois de alguns segundos)
     if (s.sobre && t >= se) (S[s.sobre.type] || S.bigtext)(ctx, c, t - se, dur - se, s.sobre, media);
   };

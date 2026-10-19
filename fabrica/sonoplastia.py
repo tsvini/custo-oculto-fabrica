@@ -150,10 +150,18 @@ def mixar(voz, eventos, trilha_arr=None, vol_trilha=0.24):
     duck = 1 - 0.45 * np.clip(env * 3, 0, 1)  # abaixa o que não é voz quando a voz fala
     alvo_voz = _rms(voz[np.abs(voz) > 0.02]) if np.any(np.abs(voz) > 0.02) else 0.1
     if trilha_arr is not None:
-        mix += vol_trilha * trilha_arr[:n] * duck[:len(trilha_arr[:n])]
+        corte = np.ones(n)  # "silencio": a trilha some de uma vez (virada dramática) e volta suave
+        for ev in eventos:
+            if ev.get("tipo") == "silencio" and not ev.get("removido"):
+                i0 = int(max(0, ev["t0"] - 0.03) * SR); i1 = min(n, i0 + int(float(ev.get("dur") or 0.8) * SR))
+                fo, fi = int(0.03 * SR), int(0.35 * SR)
+                corte[max(0, i0 - fo):i0] = np.minimum(corte[max(0, i0 - fo):i0], np.linspace(1, 0, len(corte[max(0, i0 - fo):i0])))
+                corte[i0:i1] = 0
+                j1 = min(n, i1 + fi); corte[i1:j1] = np.linspace(0, 1, j1 - i1)
+        mix += vol_trilha * trilha_arr[:n] * duck[:len(trilha_arr[:n])] * corte[:len(trilha_arr[:n])]
     for ev in eventos:
         a = ev.get("audio")
-        if a is None or ev.get("removido"):
+        if a is None or ev.get("removido") or ev.get("tipo") == "silencio":
             continue
         i0 = int(max(0, ev["t0"]) * SR)
         if i0 >= n:
@@ -263,7 +271,8 @@ def processar(video, eventos, trilha=None, roteiro="", relatorio=None, rodadas=N
             ev["vol"] = 0.18 if ev.get("tipo") == "amb" else 0.5
         if ev.get("t1") is None:
             ev["t1"] = ev["t0"] + 3
-        busca_audio(ev, ev.get("cena", ""), cache)
+        if ev.get("tipo") != "silencio":
+            busca_audio(ev, ev.get("cena", ""), cache)
     hist = []; melhor = None
     with tempfile.TemporaryDirectory() as d:
         for rodada in range(1, rodadas + 1):

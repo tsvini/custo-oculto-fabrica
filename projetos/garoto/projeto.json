@@ -39,12 +39,12 @@
        "faixa": "A Nestlé comprou a Garoto",
        "linhas": [
         [
-         "e o CADE",
+         "EM",
          "white",
-         190
+         150
         ],
         [
-         "PROIBIU",
+         "2002",
          "gold",
          260
         ]
@@ -65,24 +65,11 @@
         "auto": true,
         "clips": [
          {
-          "type": "image",
-          "media": "garoto_fabrica",
-          "z0": 1.0,
-          "z1": 1.12,
-          "dim": 0.25,
-          "wiki": [
-           "Fábrica da Garoto Vila Velha",
-           "Chocolates Garoto Vila Velha",
-           "Garoto chocolate factory",
-           "Fábrica de Chocolates Garoto"
-          ]
-         },
-         {
-          "type": "image",
-          "media": "ia_negocio",
-          "z0": 1.0,
-          "z1": 1.12,
-          "dim": 0.25
+          "type": "video",
+          "media": "choc_fabrica",
+          "pexels_id": 7012967,
+          "search": "chocolate factory",
+          "dim": 0.45
          }
         ],
         "fallback": {
@@ -97,7 +84,7 @@
       "scene": {
        "type": "stamp",
        "org": "CADE · 2004",
-       "title": "NESTLÉ + GAROTO",
+       "title": "DOIS ANOS DEPOIS, O CADE MANDOU VENDER",
        "stamp": "VETADO",
        "stamp_palavra": "proibiu",
        "fundo": "ia_votacao",
@@ -116,45 +103,56 @@
       "text": "Só tinha um problema: a compra já tinha acontecido.",
       "scene": {
        "type": "montagem",
-       "auto": true,
        "clips": [
         {
+         "type": "bigtext",
+         "lines": [
+          [
+           "SÓ TINHA",
+           "white",
+           150
+          ],
+          [
+           "UM PROBLEMA...",
+           "gold",
+           150
+          ]
+         ]
+        },
+        {
          "type": "image",
-         "media": "garoto_fabrica",
+         "media": "ia_negocio",
          "z0": 1.0,
          "z1": 1.12,
          "dim": 0.6,
-         "wiki": [
-          "Fábrica da Garoto Vila Velha",
-          "Chocolates Garoto Vila Velha",
-          "Garoto chocolate factory",
-          "Fábrica de Chocolates Garoto"
-         ]
+         "palavra": "compra",
+         "tremor": true,
+         "sobre": {
+          "type": "bigtext",
+          "lines": [
+           [
+            "A COMPRA",
+            "white",
+            130
+           ],
+           [
+            "JÁ TINHA",
+            "white",
+            150
+           ],
+           [
+            "ACONTECIDO",
+            "gold",
+            170
+           ]
+          ],
+          "stagger": 0.12
+         }
         }
        ],
        "fallback": {
         "type": "bigtext",
         "lines": []
-       },
-       "sobre": {
-        "type": "bigtext",
-        "lines": [
-         [
-          "MAS A COMPRA",
-          "white",
-          130
-         ],
-         [
-          "JÁ TINHA",
-          "white",
-          150
-         ],
-         [
-          "ACONTECIDO",
-          "gold",
-          170
-         ]
-        ]
        },
        "sons": [
         {
@@ -173,11 +171,11 @@
        "auto": true,
        "clips": [
         {
-         "type": "image",
-         "media": "ia_gondola",
-         "z0": 1.0,
-         "z1": 1.12,
-         "dim": 0.55
+         "type": "video",
+         "media": "chocolates",
+         "pexels_id": 4110110,
+         "search": "chocolates",
+         "dim": 0.45
         }
        ],
        "fallback": {
@@ -211,80 +209,77 @@
       "text": "Por cinco votos a um, o Cade mandou a Nestlé vender a Garoto em até cento e cinquenta dias.",
       "scene": {
        "type": "montagem",
-       "auto": true,
        "clips": [
         {
-         "type": "image",
-         "media": "ia_votacao",
-         "z0": 1.0,
-         "z1": 1.12,
-         "dim": 0.55
+         "type": "video",
+         "media": "gavel_doc",
+         "pexels_id": 6101365,
+         "search": "gavel document",
+         "dim": 0.55,
+         "sobre": {
+          "type": "bigtext",
+          "lines": [
+           [
+            "5 x 1",
+            "gold",
+            260
+           ],
+           [
+            "NO CADE",
+            "white",
+            100
+           ]
+          ]
+         }
         },
         {
-         "type": "image",
-         "media": "garoto_fabrica",
-         "z0": 1.0,
-         "z1": 1.12,
-         "dim": 0.55,
-         "palavra": "mandou",
-         "wiki": [
-          "Fábrica da Garoto Vila Velha",
-          "Chocolates Garoto Vila Velha",
-          "Garoto chocolate factory",
-          "Fábrica de Chocolates Garoto"
-         ]
+         "type": "counter",
+         "value": 150,
+         "suffix": " DIAS",
+         "over": "PRAZO PARA VENDER",
+         "label": "A GAROTO",
+         "palavra": "cento",
+         "size": 220
         }
        ],
        "fallback": {
         "type": "bigtext",
         "lines": []
        },
-       "sobre": {
-        "type": "bigtext",
-        "lines": [
-         [
-          "5 x 1",
-          "gold",
-          240
-         ],
-         [
-          "VENDA EM 150 DIAS",
-          "white",
-          100
-         ]
-        ]
-       }
+       "sons": [
+        {
+         "tipo": "fx",
+         "busca": "single wooden knock hit",
+         "palavra": "cinco",
+         "vol": 0.55,
+         "max": 0.6
+        }
+       ]
       }
      },
      {
       "text": "Mas a lei daquela época permitia concluir uma aquisição antes da análise.",
       "scene": {
-       "type": "image",
-       "media": "ia_negocio",
-       "z0": 1.0,
-       "z1": 1.12,
-       "dim": 0.4,
-       "lower": "A LEI DEIXAVA COMPRAR ANTES"
+       "type": "flow",
+       "caption": "A LEI DA ÉPOCA",
+       "a": "1º COMPRA",
+       "a_sub": "2002",
+       "b": "2º ANÁLISE",
+       "b_sub": "2004",
+       "coin": "R$"
       }
      },
      {
       "text": "Então a Nestlé já controlava a empresa, e levou o caso pra Justiça.",
       "scene": {
        "type": "montagem",
-       "auto": true,
        "clips": [
         {
-         "type": "image",
-         "media": "garoto_fabrica",
-         "z0": 1.0,
-         "z1": 1.12,
-         "dim": 0.4,
-         "wiki": [
-          "Fábrica da Garoto Vila Velha",
-          "Chocolates Garoto Vila Velha",
-          "Garoto chocolate factory",
-          "Fábrica de Chocolates Garoto"
-         ]
+         "type": "video",
+         "media": "choc_maquina",
+         "pexels_id": 855117,
+         "search": "automatic chocolate machine",
+         "dim": 0.45
         },
         {
          "type": "image",
@@ -352,7 +347,7 @@
          "media": "ia_gondola",
          "z0": 1.0,
          "z1": 1.12,
-         "dim": 0.6
+         "dim": 0.65
         }
        ],
        "fallback": {
@@ -368,16 +363,43 @@
          "LOLLO",
          "SENSAÇÃO"
         ],
+        "palavras": [
+         "Seren",
+         "Cho",
+         "Lol",
+         "Sens"
+        ],
         "size": 76,
-        "last_gold": false,
-        "stagger": 0.7
+        "last_gold": false
        },
        "sons": [
         {
          "tipo": "fx",
-         "busca": "fast whoosh",
-         "vol": 0.35,
-         "max": 0.5
+         "busca": "soft pop click",
+         "palavra": "Seren",
+         "vol": 0.3,
+         "max": 0.25
+        },
+        {
+         "tipo": "fx",
+         "busca": "soft pop click",
+         "palavra": "Cho",
+         "vol": 0.3,
+         "max": 0.25
+        },
+        {
+         "tipo": "fx",
+         "busca": "soft pop click",
+         "palavra": "Lol",
+         "vol": 0.3,
+         "max": 0.25
+        },
+        {
+         "tipo": "fx",
+         "busca": "soft pop click",
+         "palavra": "Sens",
+         "vol": 0.3,
+         "max": 0.25
         }
        ]
       }
@@ -397,52 +419,44 @@
          "red",
          200
         ]
+       ],
+       "sons": [
+        {
+         "tipo": "silencio",
+         "palavra": "Não",
+         "dur": 0.9
+        },
+        {
+         "tipo": "fx",
+         "busca": "deep sub boom impact",
+         "palavra": "Não",
+         "vol": 0.7,
+         "max": 1.5
+        }
        ]
       }
      },
      {
       "text": "Só em dois mil e vinte e três, vinte e um anos depois, o Cade aprovou a compra, com restrições.",
       "scene": {
-       "type": "montagem",
-       "auto": true,
-       "clips": [
-        {
-         "type": "image",
-         "media": "garoto_fabrica",
-         "z0": 1.0,
-         "z1": 1.12,
-         "dim": 0.55,
-         "wiki": [
-          "Fábrica da Garoto Vila Velha",
-          "Chocolates Garoto Vila Velha",
-          "Garoto chocolate factory",
-          "Fábrica de Chocolates Garoto"
-         ]
-        }
+       "type": "stamp",
+       "org": "CADE · 2023",
+       "title": "21 ANOS DEPOIS, COM RESTRIÇÕES",
+       "stamp": "APROVADO",
+       "stamp_color": [
+        70,
+        190,
+        110
        ],
-       "fallback": {
-        "type": "bigtext",
-        "lines": []
-       },
-       "sobre": {
-        "type": "counter",
-        "value": 21,
-        "suffix": " ANOS",
-        "over": "2002 → 2023",
-        "label": "APROVADA COM RESTRIÇÕES",
-        "color": [
-         245,
-         170,
-         40
-        ],
-        "size": 260
-       },
+       "stamp_palavra": "aprovou",
+       "fundo": "garoto_fabrica",
+       "fundo_dim": 0.55,
        "sons": [
         {
          "tipo": "fx",
-         "busca": "deep cinematic boom",
-         "palavra": "vinte",
-         "vol": 0.6
+         "busca": "rubber stamp hit",
+         "palavra": "aprovou",
+         "vol": 0.75
         }
        ]
       }
@@ -450,93 +464,36 @@
      {
       "text": "E o caso ajudou a mudar a lei brasileira.",
       "scene": {
-       "type": "image",
-       "media": "ia_votacao",
-       "z0": 1.0,
-       "z1": 1.12,
-       "dim": 0.45,
+       "type": "video",
+       "media": "brasilia",
+       "pexels_id": 30360458,
+       "search": "brasilia architecture",
+       "dim": 0.5,
        "lower": "O CASO MUDOU A LEI"
       }
      },
      {
       "text": "Hoje, uma compra desse tamanho precisa ser analisada antes de ser concluída.",
       "scene": {
-       "type": "montagem",
-       "auto": true,
-       "clips": [
-        {
-         "type": "image",
-         "media": "ia_votacao",
-         "z0": 1.0,
-         "z1": 1.12,
-         "dim": 0.55
-        }
-       ],
-       "fallback": {
-        "type": "bigtext",
-        "lines": []
-       },
-       "sobre": {
-        "type": "bigtext",
-        "lines": [
-         [
-          "PRIMEIRO O CADE",
-          "white",
-          110
-         ],
-         [
-          "DEPOIS A COMPRA",
-          "gold",
-          130
-         ]
-        ]
-       }
+       "type": "flow",
+       "caption": "HOJE É ASSIM",
+       "a": "1º ANÁLISE",
+       "a_sub": "PELO CADE",
+       "b": "2º COMPRA",
+       "b_sub": "SÓ DEPOIS",
+       "coin": "✓"
       }
      },
      {
       "text": "Você sabia que a Garoto é da Nestlé?",
       "scene": {
-       "type": "montagem",
-       "auto": true,
-       "clips": [
-        {
-         "type": "image",
-         "media": "garoto_fabrica",
-         "z0": 1.0,
-         "z1": 1.12,
-         "dim": 0.55,
-         "wiki": [
-          "Fábrica da Garoto Vila Velha",
-          "Chocolates Garoto Vila Velha",
-          "Garoto chocolate factory",
-          "Fábrica de Chocolates Garoto"
-         ]
-        }
-       ],
-       "fallback": {
-        "type": "bigtext",
-        "lines": []
-       },
-       "sobre": {
-        "type": "bigtext",
-        "lines": [
-         [
-          "A GAROTO",
-          "white",
-          170
-         ],
-         [
-          "É DA",
-          "white",
-          130
-         ],
-         [
-          "NESTLÉ",
-          "gold",
-          200
-         ]
-        ]
-       }
+       "type": "timeline",
+       "start": "2002",
+       "start_sub": "COMPRA",
+       "end": "2023",
+       "end_sub": "APROVAÇÃO",
+       "big": "21 ANOS",
+       "size": 200
       }
      }
     ]
@@ -563,5 +520,5 @@
    "negocios"
   ]
  },
- "notes": "FATOS (checados 19/10/2026): compra anunciada fev/2002 (Forbes); veto do CADE fev/2004 por 5x1 e prazo de 150 dias p/ vender a concorrente com até 20% (Forbes; Câmara 02/04/2004); juntas: mais da metade (ACNielsen 30,8%+24,4%; CADE fala em >58%); lei da época permitia consumar antes da análise; mudança em 2012 (análise prévia) em parte pelo caso (gov.br/CADE; Seu Dinheiro); Justiça 2005, decisão 2009 p/ novo julgamento (A Gazeta); 2017: previsto vender Serenata de Amor, Chokito, Lollo, Sensação (iProfesional 22/09/2017), não aconteceu (A Gazeta 2022); aprovação 07/06/2023 com restrições, 21 anos, caso mais antigo do CADE (Forbes; STJ 29/06/2023). Valor da compra fora do roteiro (fontes divergem: R$ 566 mi Forbes x ~US$ 250 mi Câmara). | Trilha: 'Human masks' (Pink_Sound, Pixabay, licença Pixabay)."
+ "notes": "FATOS (checados 19/10/2026): compra anunciada fev/2002 (Forbes); veto do CADE fev/2004 por 5x1 e prazo de 150 dias p/ vender a concorrente com até 20% (Forbes; Câmara 02/04/2004); juntas: mais da metade (ACNielsen 30,8%+24,4%; CADE fala em >58%); lei da época permitia consumar antes da análise; mudança em 2012 (análise prévia) em parte pelo caso (gov.br/CADE; Seu Dinheiro); Justiça 2005, decisão 2009 p/ novo julgamento (A Gazeta); 2017: previsto vender Serenata de Amor, Chokito, Lollo, Sensação (iProfesional 22/09/2017), não aconteceu (A Gazeta 2022); aprovação 07/06/2023 com restrições, 21 anos, caso mais antigo do CADE (Forbes; STJ 29/06/2023). Valor da compra fora do roteiro (fontes divergem: R$ 566 mi Forbes x ~US$ 250 mi Câmara). | Trilha: 'Human masks' (Pink_Sound, Pixabay, licença Pixabay). | Vídeos de apoio: Pexels (licença livre, ids escolhidos a dedo: 7012967, 4110110, 6101365, 855117, 30360458)."
 }

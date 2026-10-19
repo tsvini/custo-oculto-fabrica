@@ -74,10 +74,12 @@ window.gerar = async (cfg) => {
       const ini = sc.clips.map((cl, i) => (i === 0 ? 0 : (quando(k, cl.palavra, sg.start) ?? null)));
       if (ini.every((x, i) => i === 0 || x !== null)) sc._ini = ini.map((x, i) => (i === 0 ? 0 : x - sg.s0));
     }
+    const cuesDe = (o) => { if (o && o.palavras) { const cs = o.palavras.map((p) => quando(k, p, sg.start)); if (cs.every((x) => x !== null && x !== undefined)) o._cues = cs.map((x) => x - sg.s0 - 0.1); } };
+    cuesDe(sc); cuesDe(sc.sobre); (sc.clips || []).forEach((cl) => cuesDe(cl.sobre));
     if (sc.stamp_palavra) { const tq = quando(k, sc.stamp_palavra, sg.start); if (tq !== null && tq !== undefined) sc.stamp_at = Math.max(0.1, tq - sg.s0); }
     const add = (lista, t0, t1, cena) => (lista || []).forEach((so) => { const tp = so.palavra ? quando(k, so.palavra, sg.start) : null;
       const ini = tp !== null && tp !== undefined ? tp + (so.em || 0) : t0 + (so.em || 0);
-      eventosSom.push({ t0: ini, t1: so.tipo === "amb" ? t1 : ini + 3, tipo: so.tipo || "fx", busca: so.busca, vol: so.vol, cena: cena + " | fala: " + txt }); });
+      eventosSom.push({ t0: ini, t1: so.tipo === "amb" ? t1 : ini + 3, tipo: so.tipo || "fx", busca: so.busca, vol: so.vol, max: so.max, dur: so.dur, cena: cena + " | fala: " + txt }); });
     add(sc.sons, sg.start, fim, sc.descricao || sc.type);
     if (sc.type === "montagem" && sc.clips) { const n = sc.clips.length; const d = Math.max(0.1, fim - sg.start);
       sc.clips.forEach((cl, i) => { const a = sc._ini ? sg.s0 + sc._ini[i] : sg.start + i * d / n; const b = sc._ini ? (i + 1 < n ? sg.s0 + sc._ini[i + 1] : fim) : sg.start + (i + 1) * d / n;

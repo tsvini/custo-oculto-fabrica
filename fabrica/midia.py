@@ -230,6 +230,8 @@ def pexels(cenas, pasta, vertical, log, creditos):
                 qen.setdefault(s["media"], s["search_en"])
             if s.get("pixabay_id"):
                 qen.setdefault("#" + s["media"], str(s["pixabay_id"]))
+            if s.get("pexels_id"):
+                qen.setdefault("@" + s["media"], str(s["pexels_id"]))
     pend = {k: q for k, q in alvo.items() if not os.path.exists(os.path.join(pasta, k + ".mp4"))}
     if not pend:
         return
@@ -242,12 +244,17 @@ def pexels(cenas, pasta, vertical, log, creditos):
     usados = set()
     for k, q in pend.items():
         try:
-            url = "https://api.pexels.com/videos/search?" + urllib.parse.urlencode(
-                {"query": q, "orientation": "portrait" if vertical else "landscape", "size": "medium", "per_page": 15, "locale": "pt-BR"})
-            req = urllib.request.Request(url, headers={"Authorization": key, "User-Agent": UA})
-            with urllib.request.urlopen(req, timeout=30) as r:
-                vids = json.load(r).get("videos", [])
-            vids = [v for v in vids if v.get("duration", 0) >= 6 and v["id"] not in usados]
+            if qen.get("@" + k):  # vídeo do Pexels escolhido a dedo
+                req = urllib.request.Request(f"https://api.pexels.com/videos/videos/{qen['@' + k]}", headers={"Authorization": key, "User-Agent": UA})
+                with urllib.request.urlopen(req, timeout=30) as r:
+                    vids = [json.load(r)]
+            else:
+                url = "https://api.pexels.com/videos/search?" + urllib.parse.urlencode(
+                    {"query": q, "orientation": "portrait" if vertical else "landscape", "size": "medium", "per_page": 15, "locale": "pt-BR"})
+                req = urllib.request.Request(url, headers={"Authorization": key, "User-Agent": UA})
+                with urllib.request.urlopen(req, timeout=30) as r:
+                    vids = json.load(r).get("videos", [])
+            vids = [v for v in vids if (qen.get("@" + k) or v.get("duration", 0) >= 6) and v["id"] not in usados]
             if not vids:
                 log(f"  clipe {k}: nada no Pexels para '{q}'"); continue
             v = vids[0]; usados.add(v["id"])
