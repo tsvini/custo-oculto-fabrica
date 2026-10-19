@@ -61,14 +61,19 @@
            "type": "bigtext",
            "lines": [
             [
+             "–R$ 2,5 BI",
+             "red",
+             190
+            ],
+            [
              "APOSTANDO",
              "white",
-             140
+             130
             ],
             [
              "NO DÓLAR",
              "gold",
-             190
+             170
             ]
            ],
            "stagger": 0.1
@@ -80,7 +85,8 @@
          "lines": []
         },
         "auto": true
-       }
+       },
+       "instante": true
       }
      },
      {
@@ -164,13 +170,6 @@
          "palavra": "Perdigão",
          "em": -0.4,
          "dur": 0.4
-        },
-        {
-         "tipo": "fx",
-         "busca": "deep cinematic boom hit",
-         "palavra": "Perdigão",
-         "vol": 0.45,
-         "max": 0.9
         }
        ],
        "auto": true
@@ -385,12 +384,13 @@
       "text": "Pouco depois, Sadia e Perdigão anunciaram a união.",
       "scene": {
        "type": "montagem",
+       "auto": true,
        "clips": [
         {
          "type": "image",
-         "media": "ia_fusao",
-         "z0": 1.0,
-         "z1": 1.16,
+         "media": "ia_rivais",
+         "z0": 1.05,
+         "z1": 1.15,
          "dim": 0.45,
          "sobre": {
           "type": "bigtext",
@@ -401,9 +401,9 @@
             190
            ],
            [
-            "+",
-            "gold",
-            160
+            "×",
+            "red",
+            150
            ],
            [
             "PERDIGÃO",
@@ -411,24 +411,38 @@
             190
            ]
           ],
-          "stagger": 0.35
+          "stagger": 0.3
+         }
+        },
+        {
+         "type": "image",
+         "media": "ia_fusao",
+         "z0": 1.0,
+         "z1": 1.14,
+         "dim": 0.45,
+         "palavra": "anunciaram",
+         "sobre": {
+          "type": "bigtext",
+          "lines": [
+           [
+            "A UNIÃO",
+            "gold",
+            210
+           ],
+           [
+            "2009",
+            "white",
+            130
+           ]
+          ],
+          "stagger": 0.2
          }
         }
        ],
        "fallback": {
         "type": "bigtext",
         "lines": []
-       },
-       "sons": [
-        {
-         "tipo": "fx",
-         "busca": "cinematic whoosh",
-         "palavra": "Perdigão",
-         "vol": 0.35,
-         "max": 0.6
-        }
-       ],
-       "auto": true
+       }
       }
      },
      {
@@ -575,13 +589,62 @@
      {
       "text": "E várias marcas e fábricas tiveram que ser vendidas.",
       "scene": {
-       "type": "stamp",
-       "org": "CADE · 2011",
-       "title": "MARCAS E FÁBRICAS À VENDA",
-       "stamp": "VENDIDAS",
-       "stamp_palavra": "vendidas",
-       "fundo": "ia_fabrica_fechada",
-       "fundo_dim": 0.45,
+       "type": "montagem",
+       "auto": true,
+       "clips": [
+        {
+         "type": "image",
+         "media": "ia_contratos",
+         "z0": 1.0,
+         "z1": 1.14,
+         "dim": 0.5,
+         "sobre": {
+          "type": "bigtext",
+          "lines": [
+           [
+            "MARCAS",
+            "white",
+            150
+           ],
+           [
+            "E FÁBRICAS",
+            "white",
+            150
+           ],
+           [
+            "À VENDA",
+            "gold",
+            190
+           ]
+          ],
+          "stagger": 0.2
+         }
+        },
+        {
+         "type": "image",
+         "media": "ia_fabrica_fechada",
+         "z0": 1.05,
+         "z1": 1.15,
+         "dim": 0.5,
+         "palavra": "vendidas",
+         "tremor": true,
+         "sobre": {
+          "type": "bigtext",
+          "lines": [
+           [
+            "VENDIDAS",
+            "red",
+            240
+           ]
+          ],
+          "stagger": 0.15
+         }
+        }
+       ],
+       "fallback": {
+        "type": "bigtext",
+        "lines": []
+       },
        "sons": [
         {
          "tipo": "fx",
@@ -599,7 +662,7 @@
        "start": "2008",
        "start_sub": "RIVAIS",
        "end": "2011",
-       "end_sub": "UMA EMPRESA",
+       "end_sub": "1 EMPRESA",
        "big": "UMA SÓ",
        "size": 220,
        "encher": 0.6,
@@ -659,7 +722,8 @@
   "ia_fusao": "aerial view at dusk of two huge food processing factories side by side being joined by a new connecting building, refrigerated trucks, lights turning on, dramatic orange and blue sky, cinematic, no text, no logo, vertical composition",
   "ia_sala_noite": "dark empty corporate boardroom at night, long table, single desk lamp lighting scattered financial report papers with red downward charts, city lights through window, tense mood, no readable text, vertical composition",
   "ia_prateleira": "empty refrigerated supermarket shelves with only a few gaps and price tag rails, cold fluorescent light, abandoned feeling, no products, no text, no brand, vertical composition",
-  "ia_fabrica_fechada": "closed food factory at dusk, heavy chain and padlock on the main gate, empty parking lot, warning light, gloomy sky, cinematic, no text, no logo, vertical composition"
+  "ia_fabrica_fechada": "closed food factory at dusk, heavy chain and padlock on the main gate, empty parking lot, warning light, gloomy sky, cinematic, no text, no logo, vertical composition",
+  "ia_contratos": "tall stacks of signed sale contracts and legal documents on a desk in the foreground, blurred huge food factory buildings visible through a large window behind, golden hour light, cinematic, no readable text, no logo, vertical composition"
  },
  "meta": {
   "titles": [
@@ -675,5 +739,6 @@
    "negocios"
   ]
  },
- "notes": "FATOS (checados 19/10/2026): Sadia 2008 prejuízo líquido R$ 2,48 bi, 'primeiro prejuízo anual em seus 64 anos', despesa com derivativos R$ 2,5 bi, receita bruta recorde R$ 12,2 bi (InfoMoney 27/03/2009); perdas por derivativos cambiais com a disparada do dólar na crise de 2008; união Sadia+Perdigão anunciada mai/2009, protocolada no Cade 09/06/2009; Cade aprovou 13/07/2011 por 4x1 com TCD (gov.br/cade); marca Perdigão suspensa no Brasil por 3 anos (presunto, linguiça...), 4 (salames), 5 (lasanhas, pizzas congeladas, frios); venda de Rezende, Wilson, Doriana, Delicata, Escolha Saudável + 10 fábricas etc., 730 mil t/ano (Tribuna PR 13/07/2011). Final sem BRF/Marfrig de propósito (público não conhece). | Trilha: 'Human masks' (Pixabay). | Vídeos: Pexels (5466780, 6134534, 6266288, 38736274, 38771102, 39589976, 6931109, 39703648, 39895906, 3735225)."
+ "notes": "FATOS (checados 19/10/2026): Sadia 2008 prejuízo líquido R$ 2,48 bi, 'primeiro prejuízo anual em seus 64 anos', despesa com derivativos R$ 2,5 bi, receita bruta recorde R$ 12,2 bi (InfoMoney 27/03/2009); perdas por derivativos cambiais com a disparada do dólar na crise de 2008; união Sadia+Perdigão anunciada mai/2009, protocolada no Cade 09/06/2009; Cade aprovou 13/07/2011 por 4x1 com TCD (gov.br/cade); marca Perdigão suspensa no Brasil por 3 anos (presunto, linguiça...), 4 (salames), 5 (lasanhas, pizzas congeladas, frios); venda de Rezende, Wilson, Doriana, Delicata, Escolha Saudável + 10 fábricas etc., 730 mil t/ano (Tribuna PR 13/07/2011). Final sem BRF/Marfrig de propósito (público não conhece). | Trilha: 'Human masks' (Pixabay). | Vídeos: Pexels (5466780, 6134534, 6266288, 38736274, 38771102, 39589976, 6931109, 39703648, 39895906, 3735225).",
+ "cauda": 2.0
 }

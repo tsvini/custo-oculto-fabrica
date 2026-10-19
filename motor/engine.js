@@ -451,7 +451,7 @@
     if (V) { g.addColorStop(0, "rgba(0,0,0,.55)"); g.addColorStop(0.22, "rgba(0,0,0,0)"); g.addColorStop(0.42, "rgba(0,0,0,.15)"); g.addColorStop(0.62, "rgba(0,0,0,.8)"); g.addColorStop(1, "rgba(0,0,0,.95)"); }
     else { g.addColorStop(0, "rgba(0,0,0,.95)"); g.addColorStop(0.42, "rgba(0,0,0,.75)"); g.addColorStop(0.7, "rgba(0,0,0,.05)"); g.addColorStop(1, "rgba(0,0,0,0)"); }
     ctx.fillStyle = g; ctx.fillRect(0, 0, c.W, c.H);
-    const slam = (d) => { const k = clamp((t - d) / 0.18); return [k, lerp(1.35, 1, easeOut(k))]; };
+    const slam = (d) => { if (s.instante) return [1, 1]; /* texto já cheio no frame 0 (prévia do TikTok) */ const k = clamp((t - d) / 0.18); return [k, lerp(1.35, 1, easeOut(k))]; };
     // vertical: fora da coluna de botões do TikTok (direita) e do texto do post (embaixo)
     const X0 = V ? c.W * 0.455 : c.W * 0.06; const maxW = V ? c.W * 0.78 : c.W * 0.5;
     // logo da marca (no lugar do recorte de jornal)

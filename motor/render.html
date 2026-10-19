@@ -56,7 +56,7 @@ async function montar(cfg) {
   }
   if (serie) { const fim = p.script.serie[cfg.idx].fim; units.push({ kind: "card", dur: 2.2, scene: { type: "chapter", num: fim[0], title: fim[1], size: 120 } }); }
   const media = await carregaMidia(cfg.midia, cfg.midiaBase);
-  const tl = E.buildTimeline(units, { hook: !longo, tail: longo ? (p.destino === "curso" ? 2.5 : 12) : 1.2 });
+  const tl = E.buildTimeline(units, { hook: !longo, tail: longo ? (p.destino === "curso" ? 2.5 : 12) : (p.cauda || 1.2) });
   console.log("diag: vozes " + units.filter((u) => u.voice).map((u) => u.voice.length + "/" + (u.timings || []).length + "x" + u.sentences.length).join(",") + " total " + tl.total + " audio " + tl.audio.length + " midias " + Object.keys(media).length);
   if (tiktok) tl.safe = "tiktok"; // legenda e marca fora da área dos botões e do texto do TikTok
   return { p, tl, media, longo };
