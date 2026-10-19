@@ -25,7 +25,9 @@ def aviso(t, m):
 
 
 # como a voz deve falar siglas que ela lê errado (o texto da legenda continua igual)
-PRONUNCIA = {"pt": [(r"\bQAs\b", "kiuêis"), (r"\bQA\b", "kiuêi"), (r"\bQ&A\b", "perguntas e respostas")]}
+# como a voz deve FALAR (a legenda continua com a grafia certa); cada projeto pode somar mais em "pronuncia"
+PRONUNCIA = {"pt": [(r"\bQAs\b", "kiuêis"), (r"\bQA\b", "kiuêi"), (r"\bQ&A\b", "perguntas e respostas"),
+                    (r"\bKolynos\b", "Colínos"), (r"\bNestlé\b", "Néslê"), (r"\b(CADE|Cade)\b", "Cádi"), (r"\bChokito\b", "Chokíto")]}
 
 
 def falado(p, t):
