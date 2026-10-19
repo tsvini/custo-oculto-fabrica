@@ -27,13 +27,7 @@
       "text": "A Nestlé comprou a Garoto em dois mil e dois.",
       "scene": {
        "type": "capa",
-       "foto": "garoto_fabrica",
-       "wiki": [
-        "Fábrica da Garoto Vila Velha",
-        "Chocolates Garoto Vila Velha",
-        "Garoto chocolate factory",
-        "Fábrica de Chocolates Garoto"
-       ],
+       "foto": "choc_fabrica",
        "seta": false,
        "recorte": "Nestlé x Garoto · 2002",
        "faixa": "A Nestlé comprou a Garoto",
@@ -65,18 +59,28 @@
         "clips": [
          {
           "type": "video",
-          "media": "choc_fabrica",
-          "pexels_id": 7012967,
-          "search": "chocolate factory",
-          "dim": 0.45,
-          "video_url": "https://videos.pexels.com/video-files/7012967/7012967-hd_1080_1350_25fps.mp4"
+          "media": "choc_doces",
+          "pexels_id": 4631575,
+          "video_url": "https://videos.pexels.com/video-files/4631575/4631575-hd_1920_1080_24fps.mp4",
+          "search": "processing chocolate candies",
+          "dim": 0.45
          }
         ],
         "fallback": {
          "type": "bigtext",
          "lines": []
         }
-       }
+       },
+       "extra": [
+        {
+         "type": "video",
+         "media": "choc_fabrica",
+         "pexels_id": 7012967,
+         "video_url": "https://videos.pexels.com/video-files/7012967/7012967-hd_1080_1350_25fps.mp4",
+         "search": "chocolate factory",
+         "dim": 0.45
+        }
+       ]
       }
      },
      {
@@ -530,14 +534,24 @@
         110
        ],
        "stamp_palavra": "aprovou",
-       "fundo": "garoto_fabrica",
-       "fundo_dim": 0.55,
+       "fundo": "choc_making",
+       "fundo_dim": 0.5,
        "sons": [
         {
          "tipo": "fx",
          "busca": "rubber stamp hit",
          "palavra": "aprovou",
          "vol": 0.75
+        }
+       ],
+       "extra": [
+        {
+         "type": "video",
+         "media": "choc_making",
+         "pexels_id": 4458592,
+         "video_url": "https://videos.pexels.com/video-files/4458592/4458592-uhd_4096_2160_24fps.mp4",
+         "search": "chocolate making",
+         "dim": 0.45
         }
        ]
       }

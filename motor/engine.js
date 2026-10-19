@@ -355,7 +355,7 @@
     const m = media && media[s.media]; const img = m && m.img;
     if (!img) return mediaFallback(ctx, c, t, dur, s);
     const z = lerp(s.z0 || 1.04, s.z1 || 1.16, t / Math.max(dur, 0.1)); const r = Math.max(c.W / img.width, c.H / img.height) * z;
-    const w = img.width * r, h = img.height * r; const a = easeOut(t / 0.3);
+    const w = img.width * r, h = img.height * r; const a = s.corte ? 1 : easeOut(t / 0.3);
     // foco: [x, y] de 0 a 1 = que parte da foto fica no quadro; foto em pé (retrato de pessoa) mira no terço de cima, onde fica o rosto
     const fo = s.foco || [0.5, img.height > img.width * 0.9 ? 0.22 : 0.5];
     ctx.save(); ctx.globalAlpha = a; ctx.drawImage(img, (c.W - w) * fo[0], (c.H - h) * fo[1], w, h); ctx.fillStyle = `rgba(0,0,0,${s.dim === undefined ? 0.35 : s.dim})`; ctx.fillRect(0, 0, c.W, c.H); ctx.restore();
@@ -364,7 +364,7 @@
   S.video = (ctx, c, t, dur, s, media) => {
     const m = media && media[s.media]; const v = m && m.video;
     if (!v || !v.videoWidth) return mediaFallback(ctx, c, t, dur, s);
-    const z = lerp(1, s.zoom || 1.06, t / Math.max(dur, 0.1)); const vw = v.videoWidth, vh = v.videoHeight; const a = easeOut(t / 0.25);
+    const z = lerp(1, s.zoom || 1.06, t / Math.max(dur, 0.1)); const vw = v.videoWidth, vh = v.videoHeight; const a = s.corte ? 1 : easeOut(t / 0.25);
     ctx.save(); ctx.globalAlpha = a;
     if (vh > vw && !c.vertical) { // vertical em quadro horizontal: fundo desfocado
       const rb = Math.max(c.W / vw, c.H / vh); ctx.filter = "blur(30px) brightness(.7)"; ctx.drawImage(v, (c.W - vw * rb) / 2, (c.H - vh * rb) / 2, vw * rb, vh * rb); ctx.filter = "none";
@@ -431,17 +431,18 @@
     const [cl, lt, cada] = montagemAt(s, t, dur);
     ctx.save();
     if (cl.tremor && lt < 0.32) { const a = (1 - lt / 0.32) * 18 * c.u; ctx.translate((Math.random() - 0.5) * a, (Math.random() - 0.5) * a); }
-    (S[cl.type] || S.bigtext)(ctx, c, lt, cada, Object.assign({ dim: 0.3 }, cl, { lower: null }), media);
+    (S[cl.type] || S.bigtext)(ctx, c, lt, cada, Object.assign({ dim: 0.3 }, cl, { lower: null, corte: true }), media);
     ctx.restore();
     if (cl.sobre) (S[cl.sobre.type] || S.bigtext)(ctx, c, lt, cada, cl.sobre, media); // texto só deste clipe
     const se = s.sobre_em || 0; // número/frase por cima das imagens (pode entrar depois de alguns segundos)
     if (s.sobre && t >= se) (S[s.sobre.type] || S.bigtext)(ctx, c, t - se, dur - se, s.sobre, media);
   };
   S.capa = (ctx, c, t, dur, s, media) => {
-    const u = c.u; const V = c.vertical; const m = media && media[s.foto]; const img = m && m.img;
+    const u = c.u; const V = c.vertical; const m = media && media[s.foto]; const img = m && (m.img || (m.video && m.video.videoWidth ? m.video : null));
     if (img) {
-      const z = lerp(1.06, 1.14, clamp(t / Math.max(dur, 0.1))); const r = Math.max(c.W / img.width, c.H / img.height) * z;
-      const w = img.width * r, h = img.height * r; const ox = V ? (c.W - w) / 2 : c.W - w * 0.92;
+      const iw = img.videoWidth || img.width, ih = img.videoHeight || img.height;
+      const z = lerp(1.06, 1.14, clamp(t / Math.max(dur, 0.1))); const r = Math.max(c.W / iw, c.H / ih) * z;
+      const w = iw * r, h = ih * r; const ox = V ? (c.W - w) / 2 : c.W - w * 0.92;
       ctx.drawImage(img, ox, (c.H - h) / 2, w, h);
       ctx.fillStyle = "rgba(8,8,12,.28)"; ctx.fillRect(0, 0, c.W, c.H);
     }
@@ -670,6 +671,9 @@
     }
     async syncMedia(tl, t, media) { // posiciona clipes de vídeo no tempo certo (render offline)
       let { scene, lt } = this.activeScene(tl, t);
+      const fundoV = [scene.foto, scene.fundo].map((k) => k && media && media[k] && media[k].video).find(Boolean);
+      if (fundoV) { const d = fundoV.duration || 1; const tg = lt % Math.max(0.1, d - 0.05);
+        if (Math.abs(fundoV.currentTime - tg) > 0.01) await new Promise((res) => { const done = () => { fundoV.removeEventListener("seeked", done); res(); }; fundoV.addEventListener("seeked", done); fundoV.currentTime = tg; setTimeout(done, 400); }); }
       if (scene.type === "montagem" && scene.clips && scene.clips.length) { const r = montagemAt(scene, lt, this.activeScene(tl, t).dur); scene = r[0]; lt = r[1]; }
       if (scene.type === "video" && media && media[scene.media] && media[scene.media].video) {
         const v = media[scene.media].video; const d = v.duration || 1; const target = ((scene.start || 0) + lt) % Math.max(0.1, d - 0.05);
@@ -681,9 +685,9 @@
       if (tl.hook && a.first) lt += 0.9;
       const tint = sc.tint === "red" ? COL.red : null;
       this.bg.draw(ctx, i, t, tint ? COL.red : (globalThis.CO_FUNDO ? col(globalThis.CO_FUNDO) : COL.gold), tint ? 0.16 : 0.10, tint);
-      if (sc.fundo && media && media[sc.fundo] && media[sc.fundo].img) { // foto/cena de fundo com zoom lento, escurecida
-        const im = media[sc.fundo].img; const k = Math.min(1, lt / Math.max(0.5, a.dur)); const z = (sc.fz0 || 1.04) + ((sc.fz1 || 1.14) - (sc.fz0 || 1.04)) * k;
-        const sc0 = Math.max(c.W / im.width, c.H / im.height) * z; const w = im.width * sc0, h = im.height * sc0;
+      if (sc.fundo && media && media[sc.fundo] && (media[sc.fundo].img || (media[sc.fundo].video && media[sc.fundo].video.videoWidth))) { // foto/vídeo de fundo com zoom lento, escurecido
+        const im = media[sc.fundo].img || media[sc.fundo].video; const iw = im.videoWidth || im.width, ih = im.videoHeight || im.height; const k = Math.min(1, lt / Math.max(0.5, a.dur)); const z = (sc.fz0 || 1.04) + ((sc.fz1 || 1.14) - (sc.fz0 || 1.04)) * k;
+        const sc0 = Math.max(c.W / iw, c.H / ih) * z; const w = iw * sc0, h = ih * sc0;
         ctx.drawImage(im, (c.W - w) / 2, (c.H - h) * 0.5, w, h);
         ctx.fillStyle = `rgba(0,0,0,${sc.fundo_dim === undefined ? 0.55 : sc.fundo_dim})`; ctx.fillRect(0, 0, c.W, c.H); }
       (S[sc.type] || S.bigtext)(ctx, c, lt, a.dur, sc, media);

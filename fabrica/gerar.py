@@ -85,6 +85,7 @@ def todas_cenas(p):
                 out.append(cena)
                 if cena.get("type") == "montagem":
                     out += [x for x in cena.get("clips", []) if isinstance(x, dict)]  # cada clipe da montagem baixa a sua mídia
+            out += [x for x in sc.get("extra", []) if isinstance(x, dict)]  # mídia usada só de fundo (capa/carimbo com vídeo)
             if sc.get("type") == "recorte" and isinstance(sc.get("cena"), dict):
                 out.append(sc["cena"])  # a cena de dentro do recorte também precisa da sua mídia (prints do site)
             if isinstance(sc.get("fallback"), dict):
