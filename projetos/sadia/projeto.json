@@ -1,0 +1,104 @@
+{
+ "title": "Sadia x Perdigão",
+ "slug": "sadia",
+ "idioma": "pt",
+ "trilha": "doc",
+ "voz": {"nome": "gravada", "motor": "eleven", "eleven_voz": "Vinícius Torales"},
+ "pronuncia": [],
+ "script": {
+  "long": {"parts": []},
+  "tiktoks": [],
+  "shorts": [
+   {
+    "title": "A Sadia perdeu R$ 2,5 bilhões apostando no dólar. Meses depois, se juntou à Perdigão",
+    "sentences": [
+     {"text": "A Sadia perdeu dois bilhões e meio apostando no dólar.",
+      "scene": {"type": "capa", "foto": "ia_fabrica", "seta": false,
+       "faixa": "A SADIA PERDEU",
+       "linhas": [["R$ 2,5", "red", 280], ["BILHÕES", "white", 200]],
+       "depois": {"type": "montagem", "auto": true, "clips": [
+         {"type": "video", "media": "dolar_notas", "pexels_id": 5466780, "video_url": "https://videos.pexels.com/video-files/5466780/5466780-hd_1920_1080_25fps.mp4", "search": "hundred dollar bills", "dim": 0.5,
+          "sobre": {"type": "bigtext", "lines": [["APOSTANDO", "white", 130], ["NO DÓLAR", "gold", 170]], "stagger": 0.1}}],
+        "fallback": {"type": "bigtext", "lines": []}}}},
+     {"text": "E meses depois acabou se juntando à maior rival.",
+      "scene": {"type": "montagem", "clips": [
+        {"type": "video", "media": "aperto_maos", "pexels_id": 6931109, "video_url": "https://videos.pexels.com/video-files/6931109/6931109-uhd_2160_3840_25fps.mp4", "search": "handshake business partners", "dim": 0.55,
+         "sobre": {"type": "bigtext", "lines": [["MESES DEPOIS", "white", 110], ["COM A MAIOR", "white", 120], ["RIVAL", "red", 230]], "stagger": 0.18}}],
+       "fallback": {"type": "bigtext", "lines": []}}},
+     {"text": "A Perdigão.",
+      "scene": {"type": "bigtext", "lines": [["A", "white", 120], ["PERDIGÃO", "gold", 230]], "stagger": 0.05,
+       "sons": [{"tipo": "silencio", "palavra": "Perdigão", "em": -0.4, "dur": 0.4}]}},
+     {"text": "Em dois mil e oito, a Sadia vinha de faturamento recorde.",
+      "scene": {"type": "montagem", "clips": [
+        {"type": "video", "media": "freezer", "pexels_id": 29824279, "video_url": "https://videos.pexels.com/video-files/29824279/12809900_4096_2160_25fps.mp4", "search": "frozen food aisle supermarket", "dim": 0.5,
+         "sobre": {"type": "bigtext", "lines": [["2008", "gold", 230], ["FATURAMENTO", "white", 110], ["RECORDE", "white", 150]], "stagger": 0.2}}],
+       "fallback": {"type": "bigtext", "lines": []}}},
+     {"text": "Só que a empresa apostou que o dólar ia continuar caindo.",
+      "scene": {"type": "montagem", "clips": [
+        {"type": "video", "media": "contadora", "pexels_id": 6266288, "video_url": "https://videos.pexels.com/video-files/6266288/6266288-uhd_3840_2160_25fps.mp4", "search": "money counter machine", "dim": 0.55,
+         "sobre": {"type": "bigtext", "lines": [["A APOSTA:", "white", 110], ["DÓLAR", "white", 190], ["CAINDO ↓", "gold", 170]], "stagger": 0.22}}],
+       "fallback": {"type": "bigtext", "lines": []}}},
+     {"text": "A crise veio. E o dólar disparou.",
+      "scene": {"type": "montagem", "clips": [
+        {"type": "video", "media": "grafico", "pexels_id": 38771102, "video_url": "https://videos.pexels.com/video-files/38771102/16473830_3840_2160_50fps.mp4", "search": "stock market graph screen", "dim": 0.55,
+         "sobre": {"type": "bigtext", "lines": [["A CRISE", "white", 170], ["VEIO", "white", 170]]}},
+        {"type": "video", "media": "grafico_crise", "pexels_id": 39589976, "video_url": "https://videos.pexels.com/video-files/39589976/16874348_3840_2160_25fps.mp4", "search": "stock market trading chart", "dim": 0.5, "palavra": "dólar", "tremor": true,
+         "sobre": {"type": "bigtext", "lines": [["O DÓLAR", "white", 150], ["DISPAROU ↑", "red", 190]], "stagger": 0.12}}],
+       "fallback": {"type": "bigtext", "lines": []},
+       "sons": [{"tipo": "fx", "busca": "deep cinematic impact hit", "palavra": "disparou", "vol": 0.55, "max": 0.8}]}},
+     {"text": "Resultado: quase dois bilhões e meio de prejuízo.",
+      "scene": {"type": "bigtext", "lines": [["PREJUÍZO DE", "white", 110], ["R$ 2,5 BI", "red", 250]],
+       "fundo": "grafico_noite", "fundo_dim": 0.7,
+       "extra": [{"type": "video", "media": "grafico_noite", "pexels_id": 38736274, "video_url": "https://videos.pexels.com/video-files/38736274/16457008_3840_2160_50fps.mp4", "search": "finance chart dark room", "dim": 0.5}]}},
+     {"text": "O primeiro em sessenta e quatro anos.",
+      "scene": {"type": "stamp", "org": "SADIA · 2008", "title": "O PRIMEIRO EM 64 ANOS DE HISTÓRIA", "stamp": "PREJUÍZO", "stamp_palavra": "primeiro",
+       "fundo": "ia_fabrica", "fundo_dim": 0.55,
+       "sons": [{"tipo": "fx", "busca": "rubber stamp hit", "palavra": "primeiro", "vol": 0.7}]}},
+     {"text": "Pouco depois, Sadia e Perdigão anunciaram a união.",
+      "scene": {"type": "montagem", "clips": [
+        {"type": "video", "media": "aperto_close", "pexels_id": 8426053, "video_url": "https://videos.pexels.com/video-files/8426053/8426053-uhd_3840_2160_25fps.mp4", "search": "closeup handshake", "dim": 0.55,
+         "sobre": {"type": "bigtext", "lines": [["SADIA", "white", 170], ["+", "gold", 140], ["PERDIGÃO", "white", 170]], "stagger": 0.2}}],
+       "fallback": {"type": "bigtext", "lines": []}}},
+     {"text": "Só que o Cade não deixou passar de qualquer jeito.",
+      "scene": {"type": "montagem", "clips": [
+        {"type": "image", "media": "ia_votacao", "z0": 1.0, "z1": 1.12, "dim": 0.5,
+         "sobre": {"type": "bigtext", "lines": [["O CADE", "gold", 210], ["NÃO DEIXOU", "white", 120], ["PASSAR ASSIM", "white", 120]], "stagger": 0.15}}],
+       "fallback": {"type": "bigtext", "lines": []}}},
+     {"text": "Pra aprovar o negócio, a Perdigão teve que sumir de vários produtos por até cinco anos.",
+      "scene": {"type": "montagem", "clips": [
+        {"type": "image", "media": "ia_frios", "z0": 1.0, "z1": 1.12, "dim": 0.5,
+         "sobre": {"type": "bigtext", "lines": [["PRA APROVAR,", "white", 110], ["A PERDIGÃO", "white", 140], ["SUMIU", "red", 230]], "stagger": 0.2}},
+        {"type": "image", "media": "ia_lasanha", "z0": 1.0, "z1": 1.1, "dim": 0.45, "palavra": "vários",
+         "sobre": {"type": "bigtext", "lines": [["PRESUNTO", "white", 110], ["LINGUIÇA", "white", 110], ["LASANHA", "white", 110], ["PIZZA", "white", 110]], "stagger": 0.22}},
+        {"type": "image", "media": "ia_frios", "z0": 1.1, "z1": 1.2, "dim": 0.65, "palavra": "cinco",
+         "sobre": {"type": "bigtext", "lines": [["POR ATÉ", "white", 120], ["5 ANOS", "gold", 250]]}}],
+       "fallback": {"type": "bigtext", "lines": []},
+       "sons": [{"tipo": "fx", "busca": "soft whoosh", "palavra": "sumir", "vol": 0.3, "max": 0.4}]}},
+     {"text": "E várias marcas e fábricas tiveram que ser vendidas.",
+      "scene": {"type": "stamp", "org": "CADE · 2011", "title": "MARCAS E FÁBRICAS À VENDA", "stamp": "VENDIDAS", "stamp_palavra": "vendidas",
+       "fundo": "granja", "fundo_dim": 0.55,
+       "extra": [{"type": "video", "media": "granja", "pexels_id": 39703648, "video_url": "https://videos.pexels.com/video-files/39703648/16926878_1920_1080_50fps.mp4", "search": "poultry farm", "dim": 0.5}],
+       "sons": [{"tipo": "fx", "busca": "rubber stamp hit", "palavra": "vendidas", "vol": 0.6}]}},
+     {"text": "Depois de tudo isso, Sadia e Perdigão acabaram virando uma empresa só.",
+      "scene": {"type": "montagem", "clips": [
+        {"type": "video", "media": "linguica", "pexels_id": 39895906, "video_url": "https://videos.pexels.com/video-files/39895906/17020701_2160_3840_30fps.mp4", "search": "sausages cooking in pan", "dim": 0.5,
+         "sobre": {"type": "bigtext", "lines": [["SADIA E PERDIGÃO", "white", 110], ["UMA EMPRESA", "white", 150], ["SÓ", "gold", 280]], "stagger": 0.35}}],
+       "fallback": {"type": "bigtext", "lines": []},
+       "sons": [{"tipo": "silencio", "palavra": "uma", "em": -0.35, "dur": 0.35}]}},
+     {"text": "Você lembrava que elas já foram rivais?",
+      "scene": {"type": "compare", "title": "VOCÊ LEMBRAVA?", "items": [["SADIA", "RIVAL", "gold"], ["PERDIGÃO", "RIVAL", "red"]], "size": 170, "stagger": 0.4,
+       "fundo": "freezer2", "fundo_dim": 0.75,
+       "extra": [{"type": "video", "media": "freezer2", "pexels_id": 3735225, "video_url": "https://videos.pexels.com/video-files/3735225/3735225-hd_1920_1080_25fps.mp4", "search": "man getting food in freezer grocery", "dim": 0.5}]}}
+    ]
+   }
+  ]
+ },
+ "ia": {
+  "ia_fabrica": "vast modern food processing plant interior, long stainless steel conveyor lines with packaged frozen chicken products, workers in white hygiene suits and hairnets blurred in background, cold blue and white industrial light, sense of huge scale, no faces, no text, no logo, no brand, vertical composition",
+  "ia_votacao": "Brazilian government council meeting room in Brasilia, officials at a long table raising hands to vote, microphones, formal atmosphere, faces not recognizable, vertical composition",
+  "ia_frios": "Brazilian supermarket deli and refrigerated counter full of sliced ham, sausages, salami and cold cuts, cold light, plain unlabeled packages, no packaging text, no brand, no logo, vertical composition",
+  "ia_lasanha": "open supermarket freezer full of frozen lasagna trays and frozen pizzas in plain unlabeled boxes, frost, cold blue light, no text, no brand, no logo, vertical composition"
+ },
+ "meta": {"titles": ["Sadia x Perdigão"], "description": "", "tags": ["sadia", "perdigao", "brf", "cade", "dolar", "negocios"]},
+ "notes": "FATOS (checados 19/10/2026): Sadia 2008 prejuízo líquido R$ 2,48 bi, 'primeiro prejuízo anual em seus 64 anos', despesa com derivativos R$ 2,5 bi, receita bruta recorde R$ 12,2 bi (InfoMoney 27/03/2009); perdas por derivativos cambiais com a disparada do dólar na crise de 2008; união Sadia+Perdigão anunciada mai/2009, protocolada no Cade 09/06/2009; Cade aprovou 13/07/2011 por 4x1 com TCD (gov.br/cade); marca Perdigão suspensa no Brasil por 3 anos (presunto, linguiça...), 4 (salames), 5 (lasanhas, pizzas congeladas, frios); venda de Rezende, Wilson, Doriana, Delicata, Escolha Saudável + 10 fábricas etc., 730 mil t/ano (Tribuna PR 13/07/2011). Final sem BRF/Marfrig de propósito (público não conhece). | Trilha: 'Human masks' (Pixabay). | Vídeos: Pexels (5466780, 6931109, 29824279, 6266288, 38771102, 39589976, 38736274, 8426053, 39703648, 39895906, 3735225)."
+}
