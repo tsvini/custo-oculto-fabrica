@@ -1,0 +1,30 @@
+name: Subir agora
+
+# Sobe a versão final de um vídeo aprovado e publica em poucos minutos (configurado em subir_agora.json).
+on:
+  push:
+    paths: ["subir_agora.json"]
+  workflow_dispatch:
+
+jobs:
+  subir:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -q requests
+      - env:
+          GH_TOKEN: ${{ github.token }}
+          YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+          YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+          YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
+        run: |
+          python -m fabrica.subir_agora
+          python -m fabrica.publicar playlists || true
+          git config user.name "fabrica-custo-oculto"; git config user.email "fabrica@users.noreply.github.com"
+          git add publicados.json subir_agora.json
+          git diff --cached --quiet || { git commit -q -m "Subiu agora" && for t in 1 2 3; do git pull --rebase --autostash -q && git push -q && break; sleep 5; done; }
