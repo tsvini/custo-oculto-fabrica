@@ -76,6 +76,15 @@ def tiktok():
     out = {"usuario": d.get("display_name"), "seguidores": d.get("follower_count"), "curtidas": d.get("likes_count"), "videos": d.get("video_count")}
     if out["seguidores"] is None:
         out["aviso"] = "TikTok não devolveu os números: " + str(u.get("error"))[:200]
+    try:  # vídeos mais recentes com views e curtidas (permissão video.list)
+        vl = requests.post("https://open.tiktokapis.com/v2/video/list/", headers=dict(H, **{"Content-Type": "application/json"}), timeout=30,
+                           params={"fields": "id,title,view_count,like_count,comment_count,share_url,create_time"}, json={"max_count": 20}).json()
+        vids = (vl.get("data") or {}).get("videos") or []
+        out["views_total"] = sum(v.get("view_count") or 0 for v in vids)
+        out["top"] = [{"titulo": (v.get("title") or "").split("#")[0].strip()[:90] or "(sem título)", "url": v.get("share_url"), "views": v.get("view_count"),
+                       "likes": v.get("like_count")} for v in sorted(vids, key=lambda v: v.get("create_time") or 0, reverse=True)[:6]]
+    except Exception as e:
+        out["aviso"] = f"lista de vídeos: {str(e)[:120]}"
     return out
 
 
