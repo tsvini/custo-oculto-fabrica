@@ -6,39 +6,33 @@
    "nota": 7.5,
    "avaliacao": {
     "nota": 7.5,
-    "resumo": "A mixagem e a escolha da trilha estão agradáveis, mas a sonoplastia está espaçada demais em momentos cruciais da narrativa. O carimbo no início funcionou bem, porém há cortes e telas de grande ênfase visual (como a decisão 5x1 e a negativa 'NÃO ACONTECEU') que ficaram sem nenhum apoio sonoro.",
+    "resumo": "A sonoplastia tem boas escolhas pontuais (o carimbo em 'Vetado' funciona muito bem), mas o vídeo fica deserto de efeitos sonoros em momentos visuais e narrativos de grande impacto, especialmente na transição dramática de 'Não aconteceu' aos 40 segundos e na decisão judicial.",
     "problemas": [
      {
       "evento": 0,
-      "problema": "O som do carimbo entra ligeiramente adiantado antes da animação visual tocar o papel.",
-      "acao": "atrasar",
-      "segundos": 0.2
+      "problema": "O som do carimbo está ligeiramente alto em relação à narração, competindo com a clareza da voz.",
+      "acao": "mais_baixo"
      },
      {
       "evento": 1,
-      "problema": "Volume um pouco alto competindo com a virada de frase da locução na transição.",
+      "problema": "O impacto cinematográfico entra no corte da gôndola de chocolates de forma um pouco exagerada e avulsa.",
       "acao": "mais_baixo"
      }
     ],
     "faltando": [
      {
       "t": 16.2,
-      "busca": "wooden gavel strike hit",
+      "busca": "gavel slam strike or court wood impact",
       "tipo": "fx"
      },
      {
-      "t": 29.8,
-      "busca": "distant thunder rumble ominous",
-      "tipo": "amb"
-     },
-     {
-      "t": 40.8,
-      "busca": "cinematic negative sub hit thud",
+      "t": 30.0,
+      "busca": "low sub drone tension court building",
       "tipo": "fx"
      },
      {
-      "t": 55.5,
-      "busca": "subtle clean digital pop or click",
+      "t": 40.7,
+      "busca": "heavy sub impact bass drop stop",
       "tipo": "fx"
      }
     ]
@@ -72,8 +66,8 @@
      "fonte": "freesound #812689 Sound Design Elements Whoosh SFX 052"
     },
     {
-     "t0": 42.97,
-     "t1": 45.97,
+     "t0": 42.962,
+     "t1": 45.962,
      "tipo": "fx",
      "busca": "deep cinematic boom",
      "vol": 0.6,
@@ -84,49 +78,43 @@
   },
   {
    "rodada": 2,
-   "nota": 6.5,
+   "nota": 7.5,
    "avaliacao": {
-    "nota": 6.5,
-    "resumo": "A sonoplastia tem boas ideias conceituais (como o carimbo em 'Vetado' e os booms em momentos de tensão), mas peca no sincronismo fino de alguns impactos e deixa momentos visuais muito fortes sem suporte sonoro, como a negativa 'Não Aconteceu' e a decisão judicial do Cade.",
+    "nota": 7.5,
+    "resumo": "A seleção de efeitos sonoros é coerente com a narrativa institucional/investigativa e a trilha de fundo sustenta bem a tensão. Porém, o carimbo no documento entra ligeiramente antes do impacto visual, o boom de 43s está excessivamente alto competindo com a locução, e o momento de maior corte dramático ('Não aconteceu') ficou sem nenhum impacto sonoro.",
     "problemas": [
      {
       "evento": 0,
-      "problema": "O som do carimbo entra ligeiramente após a animação do carimbo bater no papel (que pousa aos 4.7s).",
-      "acao": "adiantar",
+      "problema": "O efeito de carimbo toca uma fração de segundo antes do selo vermelho 'VETADO' bater visualmente no documento.",
+      "acao": "atrasar",
       "segundos": 0.2
      },
      {
       "evento": 3,
-      "problema": "O impacto 'deep cinematic boom' entra com atraso em relação à transição visual de '21 ANOS', que surge aos 42.6s.",
-      "acao": "adiantar",
-      "segundos": 0.4
+      "problema": "Volume em 0.6 está com graves muito fortes, competindo desnecessariamente com a clareza da voz no fechamento do argumento.",
+      "acao": "mais_baixo"
      }
     ],
     "faltando": [
      {
-      "t": 16.2,
-      "busca": "wooden gavel strike court punch",
-      "tipo": "fx"
-     },
-     {
-      "t": 30.3,
-      "busca": "sub bass drop tension hit",
+      "t": 30.0,
+      "busca": "judge gavel strike wood hit",
       "tipo": "fx"
      },
      {
       "t": 40.8,
-      "busca": "error wrong buzzer dull thud",
+      "busca": "dramatic bass drop hit cut",
       "tipo": "fx"
      }
     ]
    },
    "eventos": [
     {
-     "t0": 4.8500000000000005,
-     "t1": 7.8500000000000005,
+     "t0": 4.65,
+     "t1": 7.65,
      "tipo": "fx",
      "busca": "rubber stamp hit",
-     "vol": 0.75,
+     "vol": 0.45,
      "cena": "stamp | fala: Dois anos depois, o Cade proibiu o negócio.",
      "fonte": "freesound #683031 Thump.mp3"
     },
@@ -149,8 +137,8 @@
      "fonte": "freesound #812689 Sound Design Elements Whoosh SFX 052"
     },
     {
-     "t0": 42.97,
-     "t1": 45.97,
+     "t0": 42.962,
+     "t1": 45.962,
      "tipo": "fx",
      "busca": "deep cinematic boom",
      "vol": 0.6,
