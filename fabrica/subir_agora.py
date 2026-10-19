@@ -1,4 +1,5 @@
-"""Sobe uma versão nova de um vídeo já aprovado e publica em poucos minutos (subir_agora.json).
+"""("quando": data/hora ISO agenda para esse horário; sem "quando", publica em poucos minutos)
+Sobe uma versão nova de um vídeo já aprovado e publica em poucos minutos (subir_agora.json).
 
 O vídeo antigo com o mesmo nome fica privado (renomeado para <nome>_antigo no registro). Nada é apagado.
 """
@@ -15,7 +16,7 @@ def main():
     with tempfile.TemporaryDirectory() as d:
         arq = os.path.join(d, "v.mp4")
         subprocess.run(["gh", "release", "download", "videos", "-p", cfg["arquivo"], "-O", arq, "--clobber"], check=True)
-        quando = dt.datetime.now(BRT) + dt.timedelta(minutes=cfg.get("minutos", 3))
+        quando = dt.datetime.fromisoformat(cfg["quando"]) if cfg.get("quando") else dt.datetime.now(BRT) + dt.timedelta(minutes=cfg.get("minutos", 3))
         meta = {"titulo": cfg["titulo"][:100], "descricao": cfg["descricao"], "tags": cfg.get("tags", []), "caso": None, "idioma": "pt"}  # caso None = marca conteúdo sintético (cenas de IA)
         v = subir_video(token("pt"), arq, meta, quando)
     for r in reg:

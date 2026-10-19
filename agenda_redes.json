@@ -16,5 +16,18 @@
    "facebook": "ok:1121055973646374",
    "tiktok": "ok:v_inbox_file~v2.7698430141663463476 (na caixa de entrada do app: toque em publicar)"
   }
+ },
+ {
+  "id": "sadia_short1",
+  "quando": "2026-10-20T18:00:00-03:00",
+  "video": "https://raw.githubusercontent.com/tsvini/custo-oculto-midia/59ef93e6d9bf100bdd912ba5c04287564b57fae4/sadia/sadia_short1.mp4",
+  "titulo": "A Sadia perdeu R$ 2,5 bilhões apostando no dólar. Meses depois, se juntou à Perdigão",
+  "legenda": "A Sadia perdeu R$ 2,5 bilhões apostando no dólar. E meses depois acabou se juntando à maior rival: a Perdigão.\n\nEm 2008, a Sadia vinha de faturamento recorde, mas apostou que o dólar ia continuar caindo. A crise veio, o dólar disparou e veio o primeiro prejuízo em 64 anos de história. Para aprovar a união, o Cade fez a Perdigão sumir de vários produtos por até cinco anos e mandou vender marcas e fábricas.\n\nVocê lembrava que elas já foram rivais? Comenta aí.\n\nSérie: Negócios bilionários que não saíram como planejado.\nFontes: Cade (gov.br), InfoMoney, Tribuna PR. Vídeos de banco livre e cenas geradas com IA.\n\n#sadia #perdigao #cade #dolar #negocios #historiasdeempresas #custooculto",
+  "redes": [
+   "instagram",
+   "facebook",
+   "tiktok"
+  ],
+  "ia": true
  }
 ]
