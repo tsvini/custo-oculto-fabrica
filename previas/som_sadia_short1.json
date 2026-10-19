@@ -6,34 +6,28 @@
    "nota": 7.5,
    "avaliacao": {
     "nota": 7.5,
-    "resumo": "A sonoplastia tem boas escolhas pontuais de impactos e carimbos para marcar os momentos dramáticos e visuais na segunda metade, mas o início do vídeo (primeiros 7 segundos) ficou completamente desprovido de sound design para elementos visuais fortes como o dinheiro queimando. Além disso, o segundo carimbo está ligeiramente atrasado em relação à animação na tela.",
+    "resumo": "A mixagem geral de voz e trilha de fundo está equilibrada e limpa. Porém, os primeiros 15 segundos (o gancho do vídeo) estão completamente vazios de efeitos sonoros, perdendo a chance de prender a atenção com elementos visuais fortes como o dinheiro pegando fogo e as peças de xadrez.",
     "problemas": [
      {
-      "evento": 3,
-      "problema": "O volume do carimbo em 0.7 está um pouco agressivo e compete pontualmente com a voz do narrador.",
-      "acao": "mais_baixo"
-     },
-     {
-      "evento": 7,
-      "problema": "O som do carimbo 'VENDIDAS' entra cerca de 0.4s depois do impacto visual do selo vermelho na tela.",
-      "acao": "adiantar",
-      "segundos": 0.4
+      "evento": 5,
+      "problema": "O som de carimbo de borracha ('rubber stamp hit') soa artificial e desconectado da imagem de uma fábrica abandonada com portão acorrentado.",
+      "acao": "remover"
      }
     ],
     "faltando": [
      {
       "t": 1.2,
-      "busca": "fire crackle flame burn whoosh",
+      "busca": "fire burst crackle burn money",
       "tipo": "fx"
      },
      {
-      "t": 6.8,
-      "busca": "chess piece wood hit impact",
+      "t": 4.5,
+      "busca": "chess piece wood hit board",
       "tipo": "fx"
      },
      {
-      "t": 16.2,
-      "busca": "rising fast whoosh chart swell",
+      "t": 37.8,
+      "busca": "heavy metal chain padlock rattle shut",
       "tipo": "fx"
      }
     ]
@@ -48,17 +42,6 @@
      "max": null,
      "dur": 0.4,
      "cena": "montagem | fala: A Perdigão."
-    },
-    {
-     "t0": 7.47,
-     "t1": 10.469999999999999,
-     "tipo": "fx",
-     "busca": "deep cinematic boom hit",
-     "vol": 0.45,
-     "max": 0.9,
-     "dur": null,
-     "cena": "montagem | fala: A Perdigão.",
-     "fonte": "freesound #649445 Cinematic Woosh SFX-015.wav"
     },
     {
      "t0": 16.89,
@@ -83,17 +66,6 @@
      "fonte": "freesound #683031 Thump.mp3"
     },
     {
-     "t0": 26.07,
-     "t1": 29.07,
-     "tipo": "fx",
-     "busca": "cinematic whoosh",
-     "vol": 0.35,
-     "max": 0.6,
-     "dur": null,
-     "cena": "montagem | fala: Pouco depois, Sadia e Perdigão anunciaram a união.",
-     "fonte": "freesound #222493 Digital Data Whoosh"
-    },
-    {
      "t0": 32.89,
      "t1": 35.89,
      "tipo": "fx",
@@ -105,8 +77,8 @@
      "fonte": "freesound #701104 Whoosh stereo light (transition)"
     },
     {
-     "t0": 35.03,
-     "t1": 38.03,
+     "t0": 35.04,
+     "t1": 38.04,
      "tipo": "fx",
      "busca": "short clock tick",
      "vol": 0.35,
@@ -123,7 +95,7 @@
      "vol": 0.6,
      "max": null,
      "dur": null,
-     "cena": "stamp | fala: E várias marcas e fábricas tiveram que ser vendidas.",
+     "cena": "montagem | fala: E várias marcas e fábricas tiveram que ser vendidas.",
      "fonte": "freesound #683031 Thump.mp3"
     },
     {
