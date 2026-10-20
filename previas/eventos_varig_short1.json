@@ -1,0 +1,56 @@
+{
+ "eventos": [
+  {
+   "t0": 22.89,
+   "t1": 25.89,
+   "tipo": "fx",
+   "busca": "rubber stamp hit",
+   "vol": 0.65,
+   "max": null,
+   "dur": null,
+   "cena": "stamp | fala: Em dois mil e cinco, ela entrou em recuperação judicial."
+  },
+  {
+   "t0": 34.53,
+   "t1": 37.53,
+   "tipo": "fx",
+   "busca": "wooden gavel strike",
+   "vol": 0.55,
+   "max": 0.6,
+   "dur": null,
+   "cena": "montagem | fala: Em julho de dois mil e seis, ela foi arrematada por apenas vinte e quatro milhões de dólares."
+  },
+  {
+   "t0": 43.330000000000005,
+   "t1": 46.330000000000005,
+   "tipo": "silencio",
+   "busca": null,
+   "vol": null,
+   "max": null,
+   "dur": 0.4,
+   "cena": "bigtext | fala: Só que vem a parte estranha."
+  },
+  {
+   "t0": 48.49,
+   "t1": 51.49,
+   "tipo": "silencio",
+   "busca": null,
+   "vol": null,
+   "max": null,
+   "dur": 0.4,
+   "cena": "montagem | fala: Menos de um ano depois... a Gol anunciou a compra da Nova Varig por um negócio que podia chegar a trezentos e vinte milhões de dólares."
+  },
+  {
+   "t0": 59.59,
+   "t1": 62.59,
+   "tipo": "fx",
+   "busca": "rubber stamp hit",
+   "vol": 0.65,
+   "max": null,
+   "dur": null,
+   "cena": "stamp | fala: Enquanto isso, a antiga Varig continuou com as dívidas. E teve a falência decretada em dois mil e dez."
+  }
+ ],
+ "trilha": "doc",
+ "roteiro": "Em julho de dois mil e seis, a Varig praticamente parou. Por um momento, só ficou a ponte aérea Rio–São Paulo. E essa era uma empresa que já tinha representado o Brasil no mundo. A Varig nasceu em mil novecentos e vinte e sete. Durante décadas, voar de Varig virou símbolo de prestígio. Só que as dívidas foram se acumulando. Em dois mil e cinco, ela entrou em recuperação judicial. A empresa acabou dividida. De um lado, ficaram boa parte das dívidas. Do outro, nasceu a chamada Nova Varig. Em julho de dois mil e seis, ela foi arrematada por apenas vinte e quatro milhões de dólares. Dias depois, cinco mil e quinhentos funcionários foram demitidos. Só que vem a parte estranha. Menos de um ano depois... a Gol anunciou a compra da Nova Varig por um negócio que podia chegar a trezentos e vinte milhões de dólares. Enquanto isso, a antiga Varig continuou com as dívidas. E teve a falência decretada em dois mil e dez. Só em dois mil e vinte e quatro saiu um acordo bilionário, que ajudou a resolver dívidas trabalhistas de milhares de ex-funcionários. Você chegou a voar de Varig?"
+}
