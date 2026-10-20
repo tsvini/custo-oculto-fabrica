@@ -499,28 +499,40 @@
          }
         },
         {
-         "type": "counter",
-         "value": 5,
-         "suffix": " FÁBRICAS",
-         "over": "E MAIS",
-         "label": "VENDIDAS JUNTO",
+         "type": "image",
+         "media": "ia_cervejaria_ext",
+         "z0": 1.0,
+         "z1": 1.14,
+         "dim": 0.5,
          "palavra": "cinco",
-         "size": 200
+         "sobre": {
+          "type": "bigtext",
+          "lines": [
+           [
+            "+ 5",
+            "gold",
+            280
+           ],
+           [
+            "FÁBRICAS",
+            "white",
+            170
+           ],
+           [
+            "VENDIDAS JUNTO",
+            "white",
+            90
+           ]
+          ],
+          "stagger": 0.12
+         }
         }
        ],
        "fallback": {
         "type": "bigtext",
         "lines": []
        },
-       "sons": [
-        {
-         "tipo": "fx",
-         "busca": "short clock tick",
-         "palavra": "cinco",
-         "vol": 0.3,
-         "max": 0.3
-        }
-       ]
+       "sons": []
       }
      },
      {
@@ -594,24 +606,27 @@
      {
       "text": "E também teve que manter os empregos por quatro anos.",
       "scene": {
-       "type": "montagem",
-       "auto": true,
-       "clips": [
-        {
-         "type": "counter",
-         "value": 4,
-         "suffix": " ANOS",
-         "over": "EMPREGOS GARANTIDOS",
-         "label": "SEM CORTES",
-         "size": 240
-        }
+       "type": "bigtext",
+       "lines": [
+        [
+         "EMPREGOS",
+         "white",
+         120
+        ],
+        [
+         "GARANTIDOS POR",
+         "white",
+         100
+        ],
+        [
+         "4 ANOS",
+         "gold",
+         270
+        ]
        ],
-       "fallback": {
-        "type": "bigtext",
-        "lines": []
-       },
+       "stagger": 0.2,
        "fundo": "envase",
-       "fundo_dim": 0.75
+       "fundo_dim": 0.72
       }
      },
      {
@@ -682,17 +697,32 @@
        "type": "bigtext",
        "lines": [
         [
-         "TRÊS MARCAS.",
+         "BRAHMA.",
          "white",
-         160
+         120
         ],
         [
-         "UMA EMPRESA SÓ.",
+         "ANTARCTICA.",
+         "white",
+         120
+        ],
+        [
+         "SKOL.",
+         "white",
+         120
+        ],
+        [
+         "TRÊS MARCAS.",
+         "white",
+         130
+        ],
+        [
+         "UMA EMPRESA.",
          "gold",
-         150
+         170
         ]
        ],
-       "stagger": 0.7,
+       "stagger": 0.3,
        "fundo": "ia_tres",
        "fundo_dim": 0.6
       }
@@ -736,7 +766,8 @@
   "ia_votacao": "Brazilian government council meeting room in Brasilia, officials at a long table raising hands to vote, microphones, formal atmosphere, faces not recognizable, vertical composition",
   "ia_garrafas": "four cold amber beer bottles without labels standing in crushed ice, three of them dramatically backlit glowing golden and one in shadow, condensation drops, dark bar background, cinematic, no label, no text, no logo, vertical composition",
   "ia_rivais_cerveja": "two unlabeled beer bottles facing each other like rivals on a dark wooden bar counter, one amber and one dark brown, dramatic red and blue rim light, smoke, cinematic duel mood, no label, no text, no logo, vertical composition",
-  "ia_tres": "three unlabeled ice cold beer bottles side by side in a metal ice bucket on a Brazilian bar table, warm evening light, condensation, cinematic close-up, no label, no text, no logo, vertical composition"
+  "ia_tres": "three unlabeled ice cold beer bottles side by side in a metal ice bucket on a Brazilian bar table, warm evening light, condensation, cinematic close-up, no label, no text, no logo, vertical composition",
+  "ia_cervejaria_ext": "exterior of a huge industrial brewery factory at dusk, tall stainless steel fermentation tanks and silos lit by orange lights, trucks at the loading docks, dramatic sky, cinematic, no text, no logo, no brand, vertical composition"
  },
  "meta": {
   "titles": [
