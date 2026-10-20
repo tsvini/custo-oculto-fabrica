@@ -1,0 +1,661 @@
+{
+ "title": "Nokia",
+ "slug": "nokia",
+ "idioma": "pt",
+ "trilha": "epica:0.18",
+ "cauda": 1.5,
+ "voz": {
+  "nome": "gravada",
+  "motor": "eleven",
+  "eleven_voz": "Vinícius Torales"
+ },
+ "pronuncia": [
+  [
+   "\\bNokia\\b",
+   "Nókia"
+  ]
+ ],
+ "script": {
+  "long": {
+   "parts": []
+  },
+  "tiktoks": [],
+  "shorts": [
+   {
+    "title": "A Nokia vendia 4 de cada 10 celulares do planeta",
+    "sentences": [
+     {
+      "text": "A Nokia vendia quatro de cada dez celulares do planeta.",
+      "scene": {
+       "type": "capa",
+       "instante": true,
+       "foto": "ia_celular",
+       "seta": false,
+       "faixa": "A NOKIA VENDIA",
+       "linhas": [
+        [
+         "4 DE CADA 10",
+         "gold",
+         230
+        ],
+        [
+         "CELULARES",
+         "white",
+         190
+        ]
+       ]
+      }
+     },
+     {
+      "text": "Seis anos depois, vendeu sua divisão de celulares pra Microsoft. E a Microsoft acabou perdendo mais do que pagou.",
+      "scene": {
+       "type": "montagem",
+       "auto": true,
+       "clips": [
+        {
+         "type": "image",
+         "media": "ia_vitrine",
+         "z0": 1.0,
+         "z1": 1.14,
+         "dim": 0.5,
+         "sobre": {
+          "type": "bigtext",
+          "lines": [
+           [
+            "6 ANOS",
+            "gold",
+            220
+           ],
+           [
+            "DEPOIS...",
+            "white",
+            150
+           ]
+          ],
+          "stagger": 0.2
+         }
+        },
+        {
+         "type": "image",
+         "media": "ia_celular",
+         "z0": 1.1,
+         "z1": 1.22,
+         "dim": 0.6,
+         "palavra": "perdendo",
+         "sobre": {
+          "type": "bigtext",
+          "lines": [
+           [
+            "PERDEU",
+            "red",
+            210
+           ],
+           [
+            "MAIS DO QUE",
+            "white",
+            140
+           ],
+           [
+            "PAGOU",
+            "white",
+            170
+           ]
+          ],
+          "stagger": 0.25
+         }
+        }
+       ],
+       "fallback": {
+        "type": "bigtext",
+        "lines": []
+       }
+      }
+     },
+     {
+      "text": "Em dois mil e sete, a Nokia estava em todo lugar. Tijolão, jogo da cobrinha, bateria que durava dias.",
+      "scene": {
+       "type": "montagem",
+       "auto": true,
+       "clips": [
+        {
+         "type": "image",
+         "media": "ia_vitrine",
+         "z0": 1.05,
+         "z1": 1.18,
+         "dim": 0.45,
+         "sobre": {
+          "type": "bigtext",
+          "lines": [
+           [
+            "2007",
+            "gold",
+            260
+           ],
+           [
+            "EM TODO LUGAR",
+            "white",
+            120
+           ]
+          ],
+          "stagger": 0.25
+         }
+        },
+        {
+         "type": "image",
+         "media": "ia_celular",
+         "z0": 1.0,
+         "z1": 1.12,
+         "dim": 0.45,
+         "palavra": "Tijolão",
+         "sobre": {
+          "type": "bigtext",
+          "lines": [
+           [
+            "TIJOLÃO",
+            "white",
+            160
+           ],
+           [
+            "COBRINHA",
+            "gold",
+            160
+           ],
+           [
+            "BATERIA DE DIAS",
+            "white",
+            110
+           ]
+          ],
+          "stagger": 0.4
+         }
+        }
+       ],
+       "fallback": {
+        "type": "bigtext",
+        "lines": []
+       }
+      }
+     },
+     {
+      "text": "E ela já fazia smartphones. Antes do iPhone.",
+      "scene": {
+       "type": "bigtext",
+       "lines": [
+        [
+         "JÁ FAZIA",
+         "white",
+         160
+        ],
+        [
+         "SMARTPHONE",
+         "gold",
+         170
+        ],
+        [
+         "ANTES DO IPHONE",
+         "white",
+         110
+        ]
+       ],
+       "stagger": 0.35,
+       "fundo": "ia_smart_antigo",
+       "fundo_dim": 0.6
+      }
+     },
+     {
+      "text": "Só que naquele ano chegou o iPhone. Depois, o Android. E a Nokia não conseguiu acompanhar a mudança.",
+      "scene": {
+       "type": "montagem",
+       "auto": true,
+       "clips": [
+        {
+         "type": "video",
+         "media": "toque",
+         "pexels_id": 10374885,
+         "video_url": "https://videos.pexels.com/video-files/10374885/10374885-hd_1080_1920_24fps.mp4",
+         "search": "hands using phone",
+         "dim": 0.5,
+         "sobre": {
+          "type": "bigtext",
+          "lines": [
+           [
+            "CHEGOU A",
+            "white",
+            140
+           ],
+           [
+            "TELA DE TOQUE",
+            "gold",
+            160
+           ]
+          ],
+          "stagger": 0.25
+         }
+        },
+        {
+         "type": "image",
+         "media": "ia_celular",
+         "z0": 1.0,
+         "z1": 1.1,
+         "dim": 0.65,
+         "palavra": "não",
+         "sobre": {
+          "type": "bigtext",
+          "lines": [
+           [
+            "NÃO",
+            "white",
+            180
+           ],
+           [
+            "ACOMPANHOU",
+            "red",
+            180
+           ]
+          ],
+          "stagger": 0.2
+         }
+        }
+       ],
+       "fallback": {
+        "type": "bigtext",
+        "lines": []
+       }
+      }
+     },
+     {
+      "text": "Em dois mil e onze, o novo presidente escreveu que a empresa estava numa plataforma em chamas.",
+      "scene": {
+       "type": "montagem",
+       "auto": true,
+       "clips": [
+        {
+         "type": "video",
+         "media": "digita",
+         "pexels_id": 34771072,
+         "video_url": "https://videos.pexels.com/video-files/34771072/14741692_2160_3840_25fps.mp4",
+         "search": "typing dimly lit room",
+         "dim": 0.5,
+         "sobre": {
+          "type": "bigtext",
+          "lines": [
+           [
+            "2011",
+            "gold",
+            230
+           ],
+           [
+            "UM MEMORANDO",
+            "white",
+            130
+           ]
+          ],
+          "stagger": 0.2
+         }
+        },
+        {
+         "type": "image",
+         "media": "ia_plataforma",
+         "z0": 1.0,
+         "z1": 1.16,
+         "dim": 0.4,
+         "palavra": "plataforma",
+         "sobre": {
+          "type": "bigtext",
+          "lines": [
+           [
+            "\"PLATAFORMA",
+            "white",
+            150
+           ],
+           [
+            "EM CHAMAS\"",
+            "red",
+            190
+           ]
+          ],
+          "stagger": 0.25
+         }
+        }
+       ],
+       "fallback": {
+        "type": "bigtext",
+        "lines": []
+       },
+       "sons": [
+        {
+         "tipo": "silencio",
+         "palavra": "plataforma",
+         "em": -0.4,
+         "dur": 0.4
+        }
+       ]
+      }
+     },
+     {
+      "text": "E apostou o futuro dos smartphones no Windows Phone, da Microsoft. Não deu certo.",
+      "scene": {
+       "type": "montagem",
+       "auto": true,
+       "clips": [
+        {
+         "type": "video",
+         "media": "toque",
+         "pexels_id": 10374885,
+         "video_url": "https://videos.pexels.com/video-files/10374885/10374885-hd_1080_1920_24fps.mp4",
+         "search": "hands using phone",
+         "dim": 0.6,
+         "sobre": {
+          "type": "bigtext",
+          "lines": [
+           [
+            "A APOSTA:",
+            "white",
+            140
+           ],
+           [
+            "WINDOWS PHONE",
+            "gold",
+            150
+           ]
+          ],
+          "stagger": 0.25
+         }
+        },
+        {
+         "type": "bigtext",
+         "palavra": "Não",
+         "lines": [
+          [
+           "NÃO",
+           "white",
+           220
+          ],
+          [
+           "DEU CERTO",
+           "red",
+           200
+          ]
+         ],
+         "stagger": 0.15
+        }
+       ],
+       "fallback": {
+        "type": "bigtext",
+        "lines": []
+       }
+      }
+     },
+     {
+      "text": "A fatia da Nokia caiu de cerca de quarenta por cento para quinze por cento.",
+      "scene": {
+       "type": "montagem",
+       "auto": true,
+       "clips": [
+        {
+         "type": "rosca",
+         "valor": 0.4,
+         "centro": "40%",
+         "label": "FATIA DA NOKIA",
+         "sub": "2007"
+        },
+        {
+         "type": "rosca",
+         "valor": 0.15,
+         "centro": "15%",
+         "label": "FATIA DA NOKIA",
+         "sub": "2013",
+         "palavra": "quinze"
+        }
+       ],
+       "fallback": {
+        "type": "bigtext",
+        "lines": []
+       }
+      }
+     },
+     {
+      "text": "Em dois mil e treze, a Microsoft comprou a divisão de celulares por sete vírgula dois bilhões de dólares.",
+      "scene": {
+       "type": "montagem",
+       "auto": true,
+       "clips": [
+        {
+         "type": "video",
+         "media": "neve",
+         "pexels_id": 26244192,
+         "video_url": "https://videos.pexels.com/video-files/26244192/11942604_1440_2560_30fps.mp4",
+         "search": "building snow night",
+         "dim": 0.5,
+         "sobre": {
+          "type": "bigtext",
+          "lines": [
+           [
+            "2013",
+            "white",
+            170
+           ],
+           [
+            "US$ 7,2 BI",
+            "gold",
+            250
+           ],
+           [
+            "PELOS CELULARES",
+            "white",
+            110
+           ]
+          ],
+          "stagger": 0.25
+         }
+        }
+       ],
+       "fallback": {
+        "type": "bigtext",
+        "lines": []
+       },
+       "sons": [
+        {
+         "tipo": "fx",
+         "busca": "rubber stamp hit",
+         "palavra": "sete",
+         "vol": 0.5,
+         "max": 0.5
+        }
+       ]
+      }
+     },
+     {
+      "text": "O presidente da Nokia, que tinha vindo da Microsoft... voltou para a Microsoft junto com o negócio.",
+      "scene": {
+       "type": "montagem",
+       "auto": true,
+       "clips": [
+        {
+         "type": "image",
+         "media": "ia_executivo",
+         "z0": 1.0,
+         "z1": 1.15,
+         "dim": 0.45,
+         "sobre": {
+          "type": "bigtext",
+          "lines": [
+           [
+            "ELE VEIO",
+            "white",
+            150
+           ],
+           [
+            "DA MICROSOFT",
+            "gold",
+            160
+           ]
+          ],
+          "stagger": 0.2
+         }
+        },
+        {
+         "type": "image",
+         "media": "ia_executivo",
+         "z0": 1.12,
+         "z1": 1.22,
+         "dim": 0.55,
+         "palavra": "voltou",
+         "sobre": {
+          "type": "bigtext",
+          "lines": [
+           [
+            "E VOLTOU",
+            "white",
+            170
+           ],
+           [
+            "JUNTO",
+            "red",
+            220
+           ]
+          ],
+          "stagger": 0.2
+         }
+        }
+       ],
+       "fallback": {
+        "type": "bigtext",
+        "lines": []
+       },
+       "sons": [
+        {
+         "tipo": "silencio",
+         "palavra": "voltou",
+         "em": -0.4,
+         "dur": 0.4
+        }
+       ]
+      }
+     },
+     {
+      "text": "Em dois mil e quinze, a Microsoft reconheceu uma perda de sete vírgula seis bilhões de dólares. Mais do que tinha pago.",
+      "scene": {
+       "type": "montagem",
+       "auto": true,
+       "clips": [
+        {
+         "type": "bigtext",
+         "lines": [
+          [
+           "PAGOU",
+           "white",
+           140
+          ],
+          [
+           "US$ 7,2 BI",
+           "gold",
+           230
+          ]
+         ],
+         "stagger": 0.2
+        },
+        {
+         "type": "bigtext",
+         "palavra": "perda",
+         "lines": [
+          [
+           "PERDA DE",
+           "white",
+           140
+          ],
+          [
+           "US$ 7,6 BI",
+           "red",
+           250
+          ],
+          [
+           "+ 7.800 VAGAS CORTADAS",
+           "white",
+           80
+          ]
+         ],
+         "stagger": 0.4
+        },
+        {
+         "type": "bigtext",
+         "palavra": "Mais",
+         "lines": [
+          [
+           "US$ 7,2 BI",
+           "white",
+           170
+          ],
+          [
+           "↓",
+           "gold",
+           130
+          ],
+          [
+           "PERDA DE US$ 7,6 BI",
+           "red",
+           130
+          ]
+         ],
+         "stagger": 0.35
+        }
+       ],
+       "fallback": {
+        "type": "bigtext",
+        "lines": []
+       }
+      }
+     },
+     {
+      "text": "Você teve um Nokia? Qual era o seu?",
+      "scene": {
+       "type": "bigtext",
+       "lines": [
+        [
+         "VOCÊ TEVE",
+         "white",
+         160
+        ],
+        [
+         "UM NOKIA?",
+         "gold",
+         220
+        ],
+        [
+         "QUAL ERA O SEU?",
+         "white",
+         110
+        ]
+       ],
+       "stagger": 0.3,
+       "fundo": "ia_gaveta",
+       "fundo_dim": 0.6
+      }
+     }
+    ]
+   }
+  ]
+ },
+ "ia": {
+  "ia_celular": "close-up of a classic 2000s candybar mobile phone with physical number keypad and small monochrome screen on a dark table, dramatic light, no brand, no logo, no readable text, vertical composition",
+  "ia_vitrine": "2007 electronics store display wall full of many different keypad mobile phones on stands, bright retail lights, no brand names, no logos, no readable text, vertical composition",
+  "ia_smart_antigo": "mid-2000s smartphone with small screen and slide-out physical keyboard on a desk, retro tech, cinematic light, no brand, no logo, no readable text, vertical composition",
+  "ia_plataforma": "offshore oil platform on fire at night in a dark stormy sea, huge flames and smoke, dramatic cinematic, no text, vertical composition",
+  "ia_executivo": "silhouette of a corporate executive in a suit walking through a glass office corridor carrying a box, seen from behind, cold winter light, cinematic, face not visible, no logo, no readable text, vertical composition",
+  "ia_gaveta": "an open wooden drawer full of old 2000s keypad mobile phones and chargers, nostalgic warm light, no brand, no logo, no readable text, vertical composition"
+ },
+ "meta": {
+  "titles": [
+   "Nokia"
+  ],
+  "description": "",
+  "tags": [
+   "nokia",
+   "microsoft",
+   "celular",
+   "nostalgia",
+   "negocios"
+  ]
+ },
+ "notes": "FATOS (checados 20/10/2026): fatia de celulares 40% em 2007 -> 15% em 2013; Microsoft compra divisão por € 5,44 bi (~US$ 7,2 bi) em 2013; Elop veio da Microsoft em 2010 e voltaria a ela (NBC News set/2013); memorando 'burning platform' fev/2011 e aposta exclusiva no Windows Phone (Business Insider); pico de fatia em smartphones no 3T2007 (BI); 08/07/2015: baixa de ~US$ 7,6 bi e até 7.800 vagas (Microsoft 8-K, SEC). | Vídeos Pexels: 10374885, 9348931, 26244192, 34771072."
+}
