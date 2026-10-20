@@ -1,12 +1,12 @@
 {
- "atualizado": "20/10/2026 14:30",
+ "atualizado": "20/10/2026 19:35",
  "fontes": {
   "custo_oculto": {
    "seguidores": 11,
    "views_total": 4623,
-   "videos": 30,
-   "views_28d": 4485,
-   "views_7d": 4455,
+   "videos": 31,
+   "views_28d": 4625,
+   "views_7d": 3771,
    "seguidores_28d": 15,
    "dia": [
     [
@@ -112,43 +112,47 @@
     [
      "2026-10-17",
      459
+    ],
+    [
+     "2026-10-18",
+     140
     ]
    ],
    "top": [
     {
      "titulo": "Essa pasta de dente vendia o dobro da Colgate #shorts",
      "url": "https://youtu.be/sdWbo_dK2oE",
-     "views": 1051,
+     "views": 1052,
      "retencao": 48,
      "likes": 9
     },
     {
      "titulo": "Banco Master: parte 1 de 4 #shorts",
      "url": "https://youtu.be/xQAsC7S2KO8",
-     "views": 707,
+     "views": 709,
      "retencao": 76,
-     "likes": 40
+     "likes": 41
     },
     {
      "titulo": "2/7 Adam Neumann vendeu uma visão — e bilhões acreditaram",
      "url": "https://youtu.be/KwwgU40ljtE",
-     "views": 389,
+     "views": 390,
      "retencao": 37,
      "likes": 7
     },
     {
      "titulo": "3/7 A WeWork crescia… e perdia cada vez mais dinheiro",
      "url": "https://youtu.be/A5szNMzB6FI",
-     "views": 362,
+     "views": 363,
      "retencao": 45,
      "likes": 1
     },
     {
      "titulo": "7/7 O verdadeiro custo da WeWork",
      "url": "https://youtu.be/9sKzFjE6KYs",
-     "views": 309,
+     "views": 310,
      "retencao": 51,
-     "likes": 5
+     "likes": 6
     }
    ],
    "nome": "Custo Oculto (YouTube)"
@@ -275,6 +279,10 @@
     [
      "2026-10-17",
      0
+    ],
+    [
+     "2026-10-18",
+     0
     ]
    ],
    "top": [],
@@ -283,20 +291,26 @@
   "tiktok": {
    "usuario": "Custo Oculto",
    "seguidores": 17,
-   "curtidas": 191,
-   "videos": 11,
-   "views_total": 3975,
+   "curtidas": 192,
+   "videos": 12,
+   "views_total": 4008,
    "top": [
+    {
+     "titulo": "A Sadia perdeu bilhões apostando no dólar. Pouco depois, acabou se unindo à maior rival: a",
+     "url": "https://www.tiktok.com/@custooculto/video/7698857265817849108?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
+     "views": 23,
+     "likes": 0
+    },
     {
      "titulo": "A Nestlé comprou a Garoto. O Cade proibiu. Mas a compra já tinha acontecido 🍫 Você sabia q",
      "url": "https://www.tiktok.com/@custooculto/video/7698432599659744533?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 1107,
-     "likes": 69
+     "views": 1116,
+     "likes": 70
     },
     {
      "titulo": "Nos anos 90, a Kolynos vendia o dobro da Colgate no Brasil. Em 1995, a Colgate comprou a r",
      "url": "https://www.tiktok.com/@custooculto/video/7697792320804097300?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 358,
+     "views": 359,
      "likes": 10
     },
     {
@@ -316,12 +330,6 @@
      "url": "https://www.tiktok.com/@custooculto/video/7697250527561747764?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
      "views": 307,
      "likes": 23
-    },
-    {
-     "titulo": "Banco Master, parte 2: o CDB que pagava 140% do CDI e o banco público que entrou no negóci",
-     "url": "https://www.tiktok.com/@custooculto/video/7696879537358982401?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 185,
-     "likes": 7
     }
    ],
    "nome": "TikTok @custooculto"
@@ -359,53 +367,6 @@
   }
  },
  "agenda": [
-  {
-   "quando": "2026-10-20T18:00:00-03:00",
-   "plataforma": "Custo Oculto (YouTube)",
-   "chave": "custo_oculto",
-   "titulo": "A Sadia perdeu R$ 2,5 bilhões apostando no dólar. Meses depois, se juntou à Perdigão #shorts",
-   "tipo": "short",
-   "id": "sadia_short1",
-   "url": "https://studio.youtube.com/video/xhA47M-Ueq8/edit"
-  },
-  {
-   "quando": "2026-10-20T18:00:00-03:00",
-   "plataforma": "Instagram",
-   "chave": "instagram",
-   "titulo": "A Sadia perdeu R$ 2,5 bilhões apostando no dólar. Meses depois, se juntou à Perdigão",
-   "tipo": "short",
-   "id": "sadia_short1",
-   "url": "https://raw.githubusercontent.com/tsvini/custo-oculto-midia/59ef93e6d9bf100bdd912ba5c04287564b57fae4/sadia/sadia_short1.mp4"
-  },
-  {
-   "quando": "2026-10-20T18:00:00-03:00",
-   "plataforma": "Facebook",
-   "chave": "facebook",
-   "titulo": "A Sadia perdeu R$ 2,5 bilhões apostando no dólar. Meses depois, se juntou à Perdigão",
-   "tipo": "short",
-   "id": "sadia_short1",
-   "url": "https://raw.githubusercontent.com/tsvini/custo-oculto-midia/59ef93e6d9bf100bdd912ba5c04287564b57fae4/sadia/sadia_short1.mp4"
-  },
-  {
-   "quando": "2026-10-20T18:00:00-03:00",
-   "plataforma": "TikTok",
-   "chave": "tiktok",
-   "titulo": "A Sadia perdeu R$ 2,5 bilhões apostando no dólar. Meses depois, se juntou à Perdigão",
-   "tipo": "short",
-   "id": "sadia_short1",
-   "url": "https://raw.githubusercontent.com/tsvini/custo-oculto-midia/59ef93e6d9bf100bdd912ba5c04287564b57fae4/sadia/sadia_short1.mp4"
-  },
-  {
-   "quando": "2026-10-20T19:00:00-03:00",
-   "titulo": "Como a Americanas escondeu R$ 25 bilhões · RASCUNHO, não sai sozinho",
-   "tipo": "metricool",
-   "id": "metricool",
-   "url": "https://app.metricool.com/planner",
-   "plataforma_rede": "tiktok",
-   "chave": "tiktok",
-   "plataforma": "TikTok (Metricool)",
-   "sem_cancelar": true
-  },
   {
    "quando": "2026-10-21T12:00:00-03:00",
    "plataforma": "Hidden Cost (YouTube EN)",
@@ -656,6 +617,15 @@
    "tipo": "serie",
    "id": "wework_serie4",
    "url": "https://studio.youtube.com/video/n3ULfuQrXr4/edit"
+  },
+  {
+   "quando": "2026-10-25T18:00:00-03:00",
+   "plataforma": "Custo Oculto (YouTube)",
+   "chave": "custo_oculto",
+   "titulo": "A Nokia vendia 4 de cada 10 celulares do planeta. E a Microsoft perdeu mais do que pagou #shorts",
+   "tipo": "short",
+   "id": "nokia_short1",
+   "url": "https://studio.youtube.com/video/0uvafJRo35I/edit"
   },
   {
    "quando": "2026-10-25T18:00:00-03:00",
