@@ -798,5 +798,16 @@
   "caso_titulo": "Brahma + Antarctica = Ambev",
   "publishAt": "2026-10-21T18:00:00-03:00",
   "status": "private"
+ },
+ {
+  "nome": "blockbuster_short1",
+  "tipo": "short",
+  "idioma": "pt",
+  "titulo": "A Blockbuster podia ter comprado a Netflix por 50 milhões de dólares. E recusou #shorts",
+  "video_id": "r9t1a5rQW8U",
+  "caso": "blockbuster",
+  "caso_titulo": "Netflix x Blockbuster",
+  "publishAt": "2026-10-22T18:00:00-03:00",
+  "status": "private"
  }
 ]
