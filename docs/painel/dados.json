@@ -1,5 +1,5 @@
 {
- "atualizado": "19/10/2026 20:17",
+ "atualizado": "19/10/2026 22:15",
  "fontes": {
   "custo_oculto": {
    "seguidores": 11,
@@ -9,10 +9,6 @@
    "views_7d": 4455,
    "seguidores_28d": 15,
    "dia": [
-    [
-     "2026-09-21",
-     0
-    ],
     [
      "2026-09-22",
      0
@@ -177,10 +173,6 @@
    "seguidores_28d": 0,
    "dia": [
     [
-     "2026-09-21",
-     0
-    ],
-    [
      "2026-09-22",
      0
     ],
@@ -293,12 +285,12 @@
    "seguidores": 16,
    "curtidas": 186,
    "videos": 11,
-   "views_total": 3899,
+   "views_total": 3916,
    "top": [
     {
      "titulo": "A Nestlé comprou a Garoto. O Cade proibiu. Mas a compra já tinha acontecido 🍫 Você sabia q",
      "url": "https://www.tiktok.com/@custooculto/video/7698432599659744533?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 1059,
+     "views": 1076,
      "likes": 66
     },
     {
@@ -405,6 +397,15 @@
    "tipo": "longo",
    "id": "americanas_longo",
    "url": "https://studio.youtube.com/video/pDz4KseN7K8/edit"
+  },
+  {
+   "quando": "2026-10-20T18:00:00-03:00",
+   "plataforma": "Custo Oculto (YouTube)",
+   "chave": "custo_oculto",
+   "titulo": "A Sadia perdeu R$ 2,5 bilhões apostando no dólar. Meses depois, se juntou à Perdigão #shorts",
+   "tipo": "short",
+   "id": "sadia_short1",
+   "url": "https://studio.youtube.com/video/xhA47M-Ueq8/edit"
   },
   {
    "quando": "2026-10-20T18:00:00-03:00",
