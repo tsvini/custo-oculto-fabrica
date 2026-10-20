@@ -1,5 +1,5 @@
 {
- "atualizado": "20/10/2026 11:51",
+ "atualizado": "20/10/2026 12:22",
  "fontes": {
   "custo_oculto": {
    "seguidores": 11,
@@ -283,9 +283,9 @@
   "tiktok": {
    "usuario": "Custo Oculto",
    "seguidores": 17,
-   "curtidas": 190,
+   "curtidas": 191,
    "videos": 11,
-   "views_total": 3971,
+   "views_total": 3972,
    "top": [
     {
      "titulo": "A Nestlé comprou a Garoto. O Cade proibiu. Mas a compra já tinha acontecido 🍫 Você sabia q",
@@ -314,8 +314,8 @@
     {
      "titulo": "Banco Master, parte 3: a liquidação, a operação da PF e a conta de R$ 41 bilhões do FGC. N",
      "url": "https://www.tiktok.com/@custooculto/video/7697250527561747764?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 304,
-     "likes": 22
+     "views": 305,
+     "likes": 23
     },
     {
      "titulo": "Banco Master, parte 2: o CDB que pagava 140% do CDI e o banco público que entrou no negóci",
@@ -328,28 +328,9 @@
   },
   "instagram": {
    "seguidores": 0,
-   "videos": 3,
-   "usuario": "custooculto.oficial",
-   "top": [
-    {
-     "titulo": "A Nestlé comprou a Garoto em 2002. Dois anos depois, o Cade proibiu o negócio. Só tinha um",
-     "url": "https://www.instagram.com/reel/DeryB9KlER_/",
-     "likes": 0,
-     "comentarios": 0
-    },
-    {
-     "titulo": "A Colgate pagou US$ 1 bilhão pela Kolynos… e escolheu apagar a marca. Você lembra do gosto",
-     "url": "https://www.instagram.com/reel/DeptiPwFLyy/",
-     "likes": 0,
-     "comentarios": 0
-    },
-    {
-     "titulo": "A Colgate pagou mais de US$ 1 bilhão pela Kolynos… e tirou ela das prateleiras. Você lembr",
-     "url": "https://www.instagram.com/reel/DenSl1CAlZk/",
-     "likes": 1,
-     "comentarios": 0
-    }
-   ],
+   "videos": 0,
+   "usuario": null,
+   "top": [],
    "nome": "Instagram @custooculto.oficial"
   },
   "facebook": {
@@ -378,15 +359,6 @@
   }
  },
  "agenda": [
-  {
-   "quando": "2026-10-20T12:00:00-03:00",
-   "plataforma": "Custo Oculto (YouTube)",
-   "chave": "custo_oculto",
-   "titulo": "AMERICANAS: Como Sumiram R$ 25 Bilhões da Loja Que Todo Brasileiro Conhece",
-   "tipo": "longo",
-   "id": "americanas_longo",
-   "url": "https://studio.youtube.com/video/pDz4KseN7K8/edit"
-  },
   {
    "quando": "2026-10-20T18:00:00-03:00",
    "plataforma": "Custo Oculto (YouTube)",
@@ -510,6 +482,15 @@
   },
   {
    "quando": "2026-10-22T18:00:00-03:00",
+   "plataforma": "Custo Oculto (YouTube)",
+   "chave": "custo_oculto",
+   "titulo": "A Blockbuster podia ter comprado a Netflix por 50 milhões de dólares. E recusou #shorts",
+   "tipo": "short",
+   "id": "blockbuster_short1",
+   "url": "https://studio.youtube.com/video/r9t1a5rQW8U/edit"
+  },
+  {
+   "quando": "2026-10-22T18:00:00-03:00",
    "plataforma": "Instagram",
    "chave": "instagram",
    "titulo": "A Blockbuster podia ter comprado a Netflix por 50 milhões de dólares. E recusou",
@@ -563,6 +544,15 @@
    "tipo": "short",
    "id": "kzc27cwf_oo",
    "url": "https://studio.youtube.com/video/kzc27cwf_oo/edit"
+  },
+  {
+   "quando": "2026-10-23T18:00:00-03:00",
+   "plataforma": "Custo Oculto (YouTube)",
+   "chave": "custo_oculto",
+   "titulo": "A Kodak inventou a câmera digital. E mesmo assim perdeu a guerra do digital #shorts",
+   "tipo": "short",
+   "id": "kodak_digital_short1",
+   "url": "https://studio.youtube.com/video/V0QI5BH5mmo/edit"
   },
   {
    "quando": "2026-10-23T18:00:00-03:00",
