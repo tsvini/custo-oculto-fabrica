@@ -1,10 +1,10 @@
 {
- "atualizado": "20/10/2026 13:37",
+ "atualizado": "20/10/2026 14:30",
  "fontes": {
   "custo_oculto": {
    "seguidores": 11,
    "views_total": 4623,
-   "videos": 31,
+   "videos": 30,
    "views_28d": 4485,
    "views_7d": 4455,
    "seguidores_28d": 15,
@@ -285,7 +285,7 @@
    "seguidores": 17,
    "curtidas": 191,
    "videos": 11,
-   "views_total": 3974,
+   "views_total": 3975,
    "top": [
     {
      "titulo": "A Nestlé comprou a Garoto. O Cade proibiu. Mas a compra já tinha acontecido 🍫 Você sabia q",
@@ -314,7 +314,7 @@
     {
      "titulo": "Banco Master, parte 3: a liquidação, a operação da PF e a conta de R$ 41 bilhões do FGC. N",
      "url": "https://www.tiktok.com/@custooculto/video/7697250527561747764?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 306,
+     "views": 307,
      "likes": 23
     },
     {
@@ -603,6 +603,15 @@
   },
   {
    "quando": "2026-10-24T18:00:00-03:00",
+   "plataforma": "Custo Oculto (YouTube)",
+   "chave": "custo_oculto",
+   "titulo": "A Varig foi arrematada por US$ 24 milhões. Menos de 1 ano depois, até US$ 320 milhões #shorts",
+   "tipo": "short",
+   "id": "varig_short1",
+   "url": "https://studio.youtube.com/video/9awKfkEdKH4/edit"
+  },
+  {
+   "quando": "2026-10-24T18:00:00-03:00",
    "plataforma": "Instagram",
    "chave": "instagram",
    "titulo": "Em 2006, a Varig praticamente parou",
@@ -647,6 +656,33 @@
    "tipo": "serie",
    "id": "wework_serie4",
    "url": "https://studio.youtube.com/video/n3ULfuQrXr4/edit"
+  },
+  {
+   "quando": "2026-10-25T18:00:00-03:00",
+   "plataforma": "Instagram",
+   "chave": "instagram",
+   "titulo": "A Nokia vendia 4 de cada 10 celulares do planeta",
+   "tipo": "short",
+   "id": "nokia_short1",
+   "url": "https://raw.githubusercontent.com/tsvini/custo-oculto-midia/72b3f65a2b40081839971649840243740b689c9a/nokia/nokia_short1.mp4"
+  },
+  {
+   "quando": "2026-10-25T18:00:00-03:00",
+   "plataforma": "Facebook",
+   "chave": "facebook",
+   "titulo": "A Nokia vendia 4 de cada 10 celulares do planeta",
+   "tipo": "short",
+   "id": "nokia_short1",
+   "url": "https://raw.githubusercontent.com/tsvini/custo-oculto-midia/72b3f65a2b40081839971649840243740b689c9a/nokia/nokia_short1.mp4"
+  },
+  {
+   "quando": "2026-10-25T18:00:00-03:00",
+   "plataforma": "TikTok",
+   "chave": "tiktok",
+   "titulo": "A Nokia vendia 4 de cada 10 celulares do planeta",
+   "tipo": "short",
+   "id": "nokia_short1",
+   "url": "https://raw.githubusercontent.com/tsvini/custo-oculto-midia/72b3f65a2b40081839971649840243740b689c9a/nokia/nokia_short1.mp4"
   },
   {
    "quando": "2026-10-25T19:00:00-03:00",
