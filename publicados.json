@@ -820,5 +820,16 @@
   "caso_titulo": "Kodak",
   "publishAt": "2026-10-23T18:00:00-03:00",
   "status": "private"
+ },
+ {
+  "nome": "varig_short1",
+  "tipo": "short",
+  "idioma": "pt",
+  "titulo": "A Varig foi arrematada por US$ 24 milhões. Menos de 1 ano depois, até US$ 320 milhões #shorts",
+  "video_id": "9awKfkEdKH4",
+  "caso": "varig",
+  "caso_titulo": "Varig",
+  "publishAt": "2026-10-24T18:00:00-03:00",
+  "status": "private"
  }
 ]
