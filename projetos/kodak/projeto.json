@@ -1,0 +1,756 @@
+{
+ "title": "Kodak",
+ "slug": "kodak_digital",
+ "idioma": "pt",
+ "trilha": "phonk:0.15",
+ "cauda": 1.5,
+ "voz": {
+  "nome": "gravada",
+  "motor": "eleven",
+  "eleven_voz": "Vinícius Torales"
+ },
+ "pronuncia": [],
+ "script": {
+  "long": {
+   "parts": []
+  },
+  "tiktoks": [],
+  "shorts": [
+   {
+    "title": "A Kodak inventou a câmera digital. E mesmo assim perdeu a guerra do digital",
+    "sentences": [
+     {
+      "text": "A Kodak inventou a câmera digital... E mesmo assim perdeu a guerra do digital.",
+      "scene": {
+       "type": "capa",
+       "instante": true,
+       "foto": "filme",
+       "seta": false,
+       "faixa": "A KODAK INVENTOU",
+       "linhas": [
+        [
+         "A CÂMERA",
+         "white",
+         190
+        ],
+        [
+         "DIGITAL",
+         "gold",
+         260
+        ]
+       ],
+       "extra": [
+        {
+         "type": "video",
+         "media": "filme",
+         "pexels_id": 35739475,
+         "video_url": "https://videos.pexels.com/video-files/35739475/15149092_2160_3840_60fps.mp4",
+         "search": "hands handling film roll",
+         "dim": 0.5
+        }
+       ],
+       "depois": {
+        "type": "montagem",
+        "auto": true,
+        "clips": [
+         {
+          "type": "video",
+          "media": "celular",
+          "pexels_id": 3198273,
+          "video_url": "https://videos.pexels.com/video-files/3198273/3198273-hd_1080_1920_25fps.mp4",
+          "search": "taking photo smartphone",
+          "dim": 0.5,
+          "sobre": {
+           "type": "bigtext",
+           "lines": [
+            [
+             "E PERDEU",
+             "white",
+             170
+            ],
+            [
+             "A GUERRA",
+             "red",
+             200
+            ],
+            [
+             "DO DIGITAL",
+             "white",
+             150
+            ]
+           ],
+           "stagger": 0.25
+          }
+         }
+        ],
+        "fallback": {
+         "type": "bigtext",
+         "lines": []
+        }
+       }
+      }
+     },
+     {
+      "text": "Em dois mil e doze, uma das maiores empresas de fotografia do mundo pediu falência.",
+      "scene": {
+       "type": "stamp",
+       "stamp_palavra": "falência",
+       "sons": [
+        {
+         "tipo": "fx",
+         "busca": "rubber stamp hit",
+         "palavra": "falência",
+         "vol": 0.65
+        }
+       ],
+       "org": "KODAK · 2012",
+       "title": "UMA DAS MAIORES DA FOTOGRAFIA",
+       "stamp": "FALÊNCIA",
+       "fundo": "ia_sede_vazia",
+       "fundo_dim": 0.5
+      }
+     },
+     {
+      "text": "Durante décadas, a Kodak dominou o filme fotográfico.",
+      "scene": {
+       "type": "montagem",
+       "auto": true,
+       "clips": [
+        {
+         "type": "image",
+         "media": "ia_fabrica_filme",
+         "z0": 1.0,
+         "z1": 1.15,
+         "dim": 0.45,
+         "sobre": {
+          "type": "bigtext",
+          "lines": [
+           [
+            "DÉCADAS",
+            "white",
+            150
+           ],
+           [
+            "DOMINANDO",
+            "white",
+            130
+           ],
+           [
+            "O FILME",
+            "gold",
+            210
+           ]
+          ],
+          "stagger": 0.25
+         }
+        }
+       ],
+       "fallback": {
+        "type": "bigtext",
+        "lines": []
+       }
+      }
+     },
+     {
+      "text": "Chegou a ter mais de cento e quarenta e cinco mil funcionários.",
+      "scene": {
+       "type": "bigtext",
+       "lines": [
+        [
+         "145 MIL",
+         "gold",
+         270
+        ],
+        [
+         "FUNCIONÁRIOS",
+         "white",
+         130
+        ]
+       ],
+       "stagger": 0.2,
+       "fundo": "ia_fabrica_filme",
+       "fundo_dim": 0.7
+      }
+     },
+     {
+      "text": "E ganhava em cada foto: no filme, na revelação, e no papel.",
+      "scene": {
+       "type": "montagem",
+       "auto": true,
+       "clips": [
+        {
+         "type": "video",
+         "media": "carregar",
+         "pexels_id": 10276467,
+         "video_url": "https://videos.pexels.com/video-files/10276467/10276467-uhd_2160_4096_25fps.mp4",
+         "search": "loading film roll camera",
+         "dim": 0.5,
+         "sobre": {
+          "type": "bigtext",
+          "lines": [
+           [
+            "NO FILME",
+            "gold",
+            200
+           ]
+          ],
+          "stagger": 0.15
+         }
+        },
+        {
+         "type": "video",
+         "media": "revelacao",
+         "pexels_id": 8085492,
+         "video_url": "https://videos.pexels.com/video-files/8085492/8085492-uhd_2160_3840_24fps.mp4",
+         "search": "photos developed underwater darkroom",
+         "dim": 0.5,
+         "palavra": "revelação",
+         "sobre": {
+          "type": "bigtext",
+          "lines": [
+           [
+            "NA REVELAÇÃO",
+            "gold",
+            170
+           ]
+          ],
+          "stagger": 0.15
+         }
+        },
+        {
+         "type": "video",
+         "media": "caixa_fotos",
+         "pexels_id": 34393391,
+         "video_url": "https://videos.pexels.com/video-files/34393391/14569983_2160_3840_30fps.mp4",
+         "search": "vintage family photos memory box",
+         "dim": 0.5,
+         "palavra": "papel",
+         "sobre": {
+          "type": "bigtext",
+          "lines": [
+           [
+            "NO PAPEL",
+            "gold",
+            200
+           ]
+          ],
+          "stagger": 0.15
+         }
+        }
+       ],
+       "fallback": {
+        "type": "bigtext",
+        "lines": []
+       },
+       "sons": [
+        {
+         "tipo": "fx",
+         "busca": "camera shutter click",
+         "palavra": "filme",
+         "vol": 0.4,
+         "max": 0.4
+        },
+        {
+         "tipo": "fx",
+         "busca": "camera shutter click",
+         "palavra": "revelação",
+         "vol": 0.4,
+         "max": 0.4
+        },
+        {
+         "tipo": "fx",
+         "busca": "camera shutter click",
+         "palavra": "papel",
+         "vol": 0.4,
+         "max": 0.4
+        }
+       ]
+      }
+     },
+     {
+      "text": "Só que em mil novecentos e setenta e cinco...",
+      "scene": {
+       "type": "bigtext",
+       "lines": [
+        [
+         "1975",
+         "gold",
+         280
+        ],
+        [
+         "UMA COISA",
+         "white",
+         140
+        ],
+        [
+         "ESTRANHA",
+         "white",
+         160
+        ]
+       ],
+       "stagger": 0.3,
+       "fundo": "ia_lab1975",
+       "fundo_dim": 0.65,
+       "sons": [
+        {
+         "tipo": "silencio",
+         "palavra": "Só",
+         "em": -0.3,
+         "dur": 0.35
+        }
+       ]
+      }
+     },
+     {
+      "text": "Um engenheiro da própria Kodak criou uma das primeiras câmeras digitais.",
+      "scene": {
+       "type": "montagem",
+       "auto": true,
+       "clips": [
+        {
+         "type": "image",
+         "media": "ia_camera1975",
+         "z0": 1.0,
+         "z1": 1.16,
+         "dim": 0.4,
+         "sobre": {
+          "type": "bigtext",
+          "lines": [
+           [
+            "DENTRO",
+            "white",
+            150
+           ],
+           [
+            "DA KODAK",
+            "gold",
+            200
+           ]
+          ],
+          "stagger": 0.2
+         }
+        }
+       ],
+       "fallback": {
+        "type": "bigtext",
+        "lines": []
+       }
+      }
+     },
+     {
+      "text": "Ela pesava quase quatro quilos... e levava vinte e três segundos para gravar uma foto.",
+      "scene": {
+       "type": "montagem",
+       "auto": true,
+       "clips": [
+        {
+         "type": "image",
+         "media": "ia_camera1975",
+         "z0": 1.12,
+         "z1": 1.22,
+         "dim": 0.55,
+         "sobre": {
+          "type": "bigtext",
+          "lines": [
+           [
+            "3,6 KG",
+            "gold",
+            260
+           ]
+          ],
+          "stagger": 0.15
+         }
+        },
+        {
+         "type": "video",
+         "media": "fita",
+         "pexels_id": 8382685,
+         "video_url": "https://videos.pexels.com/video-files/8382685/8382685-uhd_2160_4096_25fps.mp4",
+         "search": "reel to reel tape spinning",
+         "dim": 0.5,
+         "palavra": "vinte",
+         "sobre": {
+          "type": "bigtext",
+          "lines": [
+           [
+            "23 SEGUNDOS",
+            "gold",
+            190
+           ],
+           [
+            "POR FOTO",
+            "white",
+            130
+           ]
+          ],
+          "stagger": 0.15
+         }
+        },
+        {
+         "type": "video",
+         "media": "fita",
+         "pexels_id": 8382685,
+         "video_url": "https://videos.pexels.com/video-files/8382685/8382685-uhd_2160_4096_25fps.mp4",
+         "search": "reel to reel tape spinning",
+         "dim": 0.65,
+         "palavra": "foto",
+         "sobre": {
+          "type": "bigtext",
+          "lines": [
+           [
+            "NUMA FITA",
+            "white",
+            150
+           ],
+           [
+            "CASSETE",
+            "gold",
+            210
+           ]
+          ],
+          "stagger": 0.15
+         }
+        }
+       ],
+       "fallback": {
+        "type": "bigtext",
+        "lines": []
+       }
+      }
+     },
+     {
+      "text": "Só tinha um problema.",
+      "scene": {
+       "type": "bigtext",
+       "lines": [
+        [
+         "SÓ TINHA",
+         "white",
+         170
+        ],
+        [
+         "UM PROBLEMA",
+         "red",
+         180
+        ]
+       ],
+       "stagger": 0.2,
+       "fundo": "ia_lab1975",
+       "fundo_dim": 0.75,
+       "sons": [
+        {
+         "tipo": "silencio",
+         "palavra": "problema",
+         "em": -0.3,
+         "dur": 0.4
+        }
+       ]
+      }
+     },
+     {
+      "text": "Se aquilo desse certo... ninguém ia mais precisar de filme.",
+      "scene": {
+       "type": "montagem",
+       "auto": true,
+       "clips": [
+        {
+         "type": "video",
+         "media": "revelacao2",
+         "pexels_id": 10276361,
+         "video_url": "https://videos.pexels.com/video-files/10276361/10276361-uhd_2160_4096_25fps.mp4",
+         "search": "person developing a picture",
+         "dim": 0.5,
+         "sobre": {
+          "type": "bigtext",
+          "lines": [
+           [
+            "SE DESSE CERTO,",
+            "white",
+            130
+           ],
+           [
+            "ADEUS,",
+            "white",
+            150
+           ],
+           [
+            "FILME",
+            "red",
+            230
+           ]
+          ],
+          "stagger": 0.4
+         }
+        }
+       ],
+       "fallback": {
+        "type": "bigtext",
+        "lines": []
+       }
+      }
+     },
+     {
+      "text": "A Kodak até ganhou quase dois bilhões de dólares licenciando tecnologias digitais.",
+      "scene": {
+       "type": "montagem",
+       "auto": true,
+       "clips": [
+        {
+         "type": "image",
+         "media": "ia_patentes",
+         "z0": 1.0,
+         "z1": 1.14,
+         "dim": 0.45,
+         "sobre": {
+          "type": "bigtext",
+          "lines": [
+           [
+            "QUASE",
+            "white",
+            140
+           ],
+           [
+            "US$ 2 BI",
+            "gold",
+            260
+           ],
+           [
+            "COM O DIGITAL",
+            "white",
+            120
+           ]
+          ],
+          "stagger": 0.25
+         }
+        }
+       ],
+       "fallback": {
+        "type": "bigtext",
+        "lines": []
+       }
+      }
+     },
+     {
+      "text": "Mas não foi suficiente.",
+      "scene": {
+       "type": "bigtext",
+       "lines": [
+        [
+         "NÃO FOI",
+         "white",
+         190
+        ],
+        [
+         "SUFICIENTE",
+         "red",
+         190
+        ]
+       ],
+       "stagger": 0.2,
+       "fundo": "ia_patentes",
+       "fundo_dim": 0.75
+      }
+     },
+     {
+      "text": "Em janeiro de dois mil e doze... a Kodak pediu falência.",
+      "scene": {
+       "type": "stamp",
+       "stamp_palavra": "falência",
+       "sons": [
+        {
+         "tipo": "fx",
+         "busca": "rubber stamp hit",
+         "palavra": "falência",
+         "vol": 0.65
+        },
+        {
+         "tipo": "silencio",
+         "palavra": "Kodak",
+         "em": -0.4,
+         "dur": 0.4
+        }
+       ],
+       "org": "KODAK · JAN 2012",
+       "title": "PEDIDO DE RECUPERAÇÃO NOS EUA",
+       "stamp": "FALÊNCIA",
+       "fundo": "ia_sede_vazia",
+       "fundo_dim": 0.45
+      }
+     },
+     {
+      "text": "Três meses depois, o Facebook pagou um bilhão de dólares pelo Instagram... um aplicativo de fotos com apenas treze funcionários.",
+      "scene": {
+       "type": "montagem",
+       "auto": true,
+       "clips": [
+        {
+         "type": "video",
+         "media": "rolar",
+         "pexels_id": 3627321,
+         "video_url": "https://videos.pexels.com/video-files/3627321/3627321-uhd_2160_4096_25fps.mp4",
+         "search": "scrolling photos smartphone",
+         "dim": 0.5,
+         "sobre": {
+          "type": "bigtext",
+          "lines": [
+           [
+            "3 MESES",
+            "gold",
+            200
+           ],
+           [
+            "DEPOIS...",
+            "white",
+            150
+           ]
+          ],
+          "stagger": 0.2
+         }
+        },
+        {
+         "type": "video",
+         "media": "celular",
+         "pexels_id": 3198273,
+         "video_url": "https://videos.pexels.com/video-files/3198273/3198273-hd_1080_1920_25fps.mp4",
+         "search": "taking photo smartphone",
+         "dim": 0.5,
+         "palavra": "Facebook",
+         "sobre": {
+          "type": "bigtext",
+          "lines": [
+           [
+            "US$ 1 BILHÃO",
+            "gold",
+            190
+           ],
+           [
+            "POR UM APP",
+            "white",
+            130
+           ],
+           [
+            "DE FOTOS",
+            "white",
+            130
+           ]
+          ],
+          "stagger": 0.25
+         }
+        },
+        {
+         "type": "bigtext",
+         "palavra": "treze",
+         "lines": [
+          [
+           "INSTAGRAM:",
+           "white",
+           130
+          ],
+          [
+           "13",
+           "gold",
+           330
+          ],
+          [
+           "FUNCIONÁRIOS",
+           "white",
+           120
+          ]
+         ],
+         "stagger": 0.2
+        }
+       ],
+       "fallback": {
+        "type": "bigtext",
+        "lines": []
+       }
+      }
+     },
+     {
+      "text": "A Kodak já tinha tido mais de cento e quarenta e cinco mil.",
+      "scene": {
+       "type": "bigtext",
+       "lines": [
+        [
+         "KODAK:",
+         "white",
+         130
+        ],
+        [
+         "145.300",
+         "red",
+         250
+        ],
+        [
+         "FUNCIONÁRIOS",
+         "white",
+         120
+        ],
+        [
+         "INSTAGRAM: 13",
+         "gold",
+         130
+        ]
+       ],
+       "stagger": 0.35,
+       "fundo": "ia_fabrica_filme",
+       "fundo_dim": 0.75
+      }
+     },
+     {
+      "text": "Você ainda tem alguma foto revelada da Kodak em casa?",
+      "scene": {
+       "type": "bigtext",
+       "lines": [
+        [
+         "VOCÊ AINDA TEM",
+         "white",
+         130
+        ],
+        [
+         "FOTO REVELADA?",
+         "gold",
+         170
+        ]
+       ],
+       "stagger": 0.2,
+       "fundo": "caixa_fotos2",
+       "fundo_dim": 0.6,
+       "extra": [
+        {
+         "type": "video",
+         "media": "caixa_fotos2",
+         "pexels_id": 36511035,
+         "video_url": "https://videos.pexels.com/video-files/36511035/15481400_2160_3840_30fps.mp4",
+         "search": "vintage photos shoebox",
+         "dim": 0.5
+        }
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ "ia": {
+  "ia_sede_vazia": "huge old corporate headquarters tower of a photography company at dusk, many dark windows, empty parking lot, gloomy winter sky, cinematic, no readable text, no logo, vertical composition",
+  "ia_fabrica_filme": "1980s photographic film factory, long production line with giant rolls of film and workers in white coats, warm amber safelight, massive scale, cinematic, no readable text, no logo, vertical composition",
+  "ia_lab1975": "1970s electronics laboratory with oscilloscopes, circuit boards and a workbench, warm retro colors, cinematic, no people faces, no readable text, no logo, vertical composition",
+  "ia_camera1975": "bulky 1970s prototype digital camera the size of a toaster on a lab workbench, exposed circuit boards, a lens on the front and a portable cassette tape recorder attached, retro industrial design, cinematic light, no readable text, no logo, vertical composition",
+  "ia_patentes": "stacks of patent documents and technical drawings of camera sensors on an executive desk, fountain pen, warm light, cinematic, no readable text, no logo, vertical composition"
+ },
+ "meta": {
+  "titles": [
+   "Kodak"
+  ],
+  "description": "",
+  "tags": [
+   "kodak",
+   "instagram",
+   "fotografia",
+   "nostalgia",
+   "negocios"
+  ]
+ },
+ "notes": "FATOS (checados 20/10/2026): câmera digital de Steven Sasson (Kodak) em 1975, 0,01 MP, ~8 lb (3,6 kg), 23 s para gravar em fita cassete, reações de que nunca ia pegar (NBC News); pico de 145.300 funcionários em 1988; quase US$ 2 bi em licenças de patentes em 3 anos a partir de 2008; Chapter 11 em 19/01/2012 (Rochester Business Journal); Facebook compra Instagram por ~US$ 1 bi em abr/2012, 13 funcionários (The Guardian 09/04/2012). | Vídeos Pexels: 35739475, 10276467, 8085492, 10276361, 34393391, 36511035, 3198273, 3627321, 8382685."
+}

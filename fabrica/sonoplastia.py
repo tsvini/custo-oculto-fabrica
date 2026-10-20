@@ -256,6 +256,9 @@ def processar(video, eventos, trilha=None, roteiro="", relatorio=None, rodadas=N
     """eventos: [{t0, t1, tipo, busca, vol, cena}] já com tempos absolutos. Troca o áudio do vídeo."""
     voz = som._le(video); n = len(voz)
     trilha_arr = None
+    vol_tr = 0.24
+    if trilha and ":" in trilha:  # "phonk:0.15" = trilha mais baixa
+        trilha, v = trilha.split(":", 1); vol_tr = float(v)
     if trilha:
         base = som._arquivo("trilha_" + trilha)
         if base is not None and len(base) > SR:
@@ -277,7 +280,7 @@ def processar(video, eventos, trilha=None, roteiro="", relatorio=None, rodadas=N
     with tempfile.TemporaryDirectory() as d:
         for rodada in range(1, rodadas + 1):
             tmp = os.path.join(d, f"r{rodada}.mp4")
-            _escreve(video, mixar(voz, eventos, trilha_arr), tmp)
+            _escreve(video, mixar(voz, eventos, trilha_arr, vol_tr), tmp)
             av = avalia(tmp, eventos, roteiro)
             nota = (av or {}).get("nota")
             hist.append({"rodada": rodada, "nota": nota, "avaliacao": av,
