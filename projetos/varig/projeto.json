@@ -1,0 +1,629 @@
+{
+ "title": "Varig",
+ "slug": "varig",
+ "idioma": "pt",
+ "trilha": "doc",
+ "cauda": 1.5,
+ "voz": {
+  "nome": "gravada",
+  "motor": "eleven",
+  "eleven_voz": "Vinícius Torales"
+ },
+ "pronuncia": [],
+ "script": {
+  "long": {
+   "parts": []
+  },
+  "tiktoks": [],
+  "shorts": [
+   {
+    "title": "Em 2006, a Varig praticamente parou",
+    "sentences": [
+     {
+      "text": "Em julho de dois mil e seis, a Varig praticamente parou.",
+      "scene": {
+       "type": "capa",
+       "instante": true,
+       "foto": "ia_painel",
+       "seta": false,
+       "faixa": "EM 2006, A VARIG PAROU",
+       "linhas": [
+        [
+         "US$ 24 MI",
+         "gold",
+         240
+        ],
+        [
+         "→ US$ 320 MI",
+         "white",
+         150
+        ]
+       ],
+       "depois": {
+        "type": "montagem",
+        "auto": true,
+        "clips": [
+         {
+          "type": "image",
+          "media": "ia_painel",
+          "z0": 1.08,
+          "z1": 1.2,
+          "dim": 0.45,
+          "sobre": {
+           "type": "bigtext",
+           "lines": [
+            [
+             "VOOS",
+             "white",
+             170
+            ],
+            [
+             "SUSPENSOS",
+             "red",
+             200
+            ]
+           ],
+           "stagger": 0.2
+          }
+         }
+        ],
+        "fallback": {
+         "type": "bigtext",
+         "lines": []
+        }
+       }
+      }
+     },
+     {
+      "text": "Por um momento, só ficou a ponte aérea Rio–São Paulo.",
+      "scene": {
+       "type": "montagem",
+       "auto": true,
+       "clips": [
+        {
+         "type": "video",
+         "media": "janela",
+         "pexels_id": 4169143,
+         "video_url": "https://videos.pexels.com/video-files/4169143/4169143-hd_720_1280_30fps.mp4",
+         "search": "plane take off from window",
+         "dim": 0.5,
+         "sobre": {
+          "type": "bigtext",
+          "lines": [
+           [
+            "SÓ FICOU",
+            "white",
+            150
+           ],
+           [
+            "RIO ⇄ SP",
+            "gold",
+            210
+           ]
+          ],
+          "stagger": 0.25
+         }
+        }
+       ],
+       "fallback": {
+        "type": "bigtext",
+        "lines": []
+       }
+      }
+     },
+     {
+      "text": "E essa era uma empresa que já tinha representado o Brasil no mundo.",
+      "scene": {
+       "type": "montagem",
+       "auto": true,
+       "clips": [
+        {
+         "type": "video",
+         "media": "lua",
+         "pexels_id": 34959804,
+         "video_url": "https://videos.pexels.com/video-files/34959804/14809112_2160_3840_30fps.mp4",
+         "search": "airplane silhouette moon",
+         "dim": 0.5,
+         "sobre": {
+          "type": "bigtext",
+          "lines": [
+           [
+            "ELA JÁ",
+            "white",
+            140
+           ],
+           [
+            "REPRESENTOU",
+            "white",
+            140
+           ],
+           [
+            "O BRASIL",
+            "gold",
+            200
+           ]
+          ],
+          "stagger": 0.3
+         }
+        }
+       ],
+       "fallback": {
+        "type": "bigtext",
+        "lines": []
+       }
+      }
+     },
+     {
+      "text": "A Varig nasceu em mil novecentos e vinte e sete.",
+      "scene": {
+       "type": "bigtext",
+       "lines": [
+        [
+         "1927",
+         "gold",
+         290
+        ],
+        [
+         "PORTO ALEGRE",
+         "white",
+         110
+        ]
+       ],
+       "stagger": 0.2,
+       "fundo": "ia_hidroaviao",
+       "fundo_dim": 0.55
+      }
+     },
+     {
+      "text": "Durante décadas, voar de Varig virou símbolo de prestígio.",
+      "scene": {
+       "type": "montagem",
+       "auto": true,
+       "clips": [
+        {
+         "type": "image",
+         "media": "ia_cabine_luxo",
+         "z0": 1.0,
+         "z1": 1.15,
+         "dim": 0.4,
+         "sobre": {
+          "type": "bigtext",
+          "lines": [
+           [
+            "SÍMBOLO DE",
+            "white",
+            130
+           ],
+           [
+            "PRESTÍGIO",
+            "gold",
+            200
+           ]
+          ],
+          "stagger": 0.25
+         }
+        }
+       ],
+       "fallback": {
+        "type": "bigtext",
+        "lines": []
+       }
+      }
+     },
+     {
+      "text": "Só que as dívidas foram se acumulando.",
+      "scene": {
+       "type": "montagem",
+       "auto": true,
+       "clips": [
+        {
+         "type": "image",
+         "media": "ia_dividas",
+         "z0": 1.0,
+         "z1": 1.14,
+         "dim": 0.5,
+         "sobre": {
+          "type": "bigtext",
+          "lines": [
+           [
+            "AS DÍVIDAS",
+            "white",
+            160
+           ],
+           [
+            "CRESCENDO",
+            "red",
+            190
+           ]
+          ],
+          "stagger": 0.25
+         }
+        }
+       ],
+       "fallback": {
+        "type": "bigtext",
+        "lines": []
+       }
+      }
+     },
+     {
+      "text": "Em dois mil e cinco, ela entrou em recuperação judicial.",
+      "scene": {
+       "type": "stamp",
+       "stamp_palavra": "recuperação",
+       "sons": [
+        {
+         "tipo": "fx",
+         "busca": "rubber stamp hit",
+         "palavra": "recuperação",
+         "vol": 0.65
+        }
+       ],
+       "org": "VARIG · 2005",
+       "title": "PEDIDO NA JUSTIÇA",
+       "stamp": "RECUPERAÇÃO JUDICIAL",
+       "fundo": "patio",
+       "fundo_dim": 0.5,
+       "extra": [
+        {
+         "type": "video",
+         "media": "patio",
+         "pexels_id": 35434986,
+         "video_url": "https://videos.pexels.com/video-files/35434986/15012805_2160_3840_30fps.mp4",
+         "search": "empty airport tarmac cloudy",
+         "dim": 0.5
+        }
+       ]
+      }
+     },
+     {
+      "text": "A empresa acabou dividida. De um lado, ficaram boa parte das dívidas. Do outro, nasceu a chamada Nova Varig.",
+      "scene": {
+       "type": "montagem",
+       "auto": true,
+       "clips": [
+        {
+         "type": "image",
+         "media": "ia_dividas",
+         "z0": 1.1,
+         "z1": 1.2,
+         "dim": 0.6,
+         "sobre": {
+          "type": "bigtext",
+          "lines": [
+           [
+            "DIVIDIDA",
+            "gold",
+            220
+           ]
+          ],
+          "stagger": 0.1
+         }
+        },
+        {
+         "type": "image",
+         "media": "ia_dividas",
+         "z0": 1.0,
+         "z1": 1.1,
+         "dim": 0.55,
+         "palavra": "lado",
+         "sobre": {
+          "type": "bigtext",
+          "lines": [
+           [
+            "VELHA VARIG:",
+            "white",
+            140
+           ],
+           [
+            "AS DÍVIDAS",
+            "red",
+            180
+           ]
+          ],
+          "stagger": 0.2
+         }
+        },
+        {
+         "type": "video",
+         "media": "asa",
+         "pexels_id": 11993191,
+         "video_url": "https://videos.pexels.com/video-files/11993191/11993191-hd_1080_1920_60fps.mp4",
+         "search": "aircraft wing taking off",
+         "dim": 0.5,
+         "palavra": "outro",
+         "sobre": {
+          "type": "bigtext",
+          "lines": [
+           [
+            "NOVA VARIG:",
+            "white",
+            140
+           ],
+           [
+            "OS AVIÕES",
+            "gold",
+            180
+           ]
+          ],
+          "stagger": 0.2
+         }
+        }
+       ],
+       "fallback": {
+        "type": "bigtext",
+        "lines": []
+       }
+      }
+     },
+     {
+      "text": "Em julho de dois mil e seis, ela foi arrematada por apenas vinte e quatro milhões de dólares.",
+      "scene": {
+       "type": "montagem",
+       "auto": true,
+       "clips": [
+        {
+         "type": "video",
+         "media": "martelo",
+         "pexels_id": 6101365,
+         "video_url": "https://videos.pexels.com/video-files/6101365/6101365-uhd_2160_4096_30fps.mp4",
+         "search": "gavel document",
+         "dim": 0.55,
+         "sobre": {
+          "type": "bigtext",
+          "lines": [
+           [
+            "ARREMATADA",
+            "white",
+            150
+           ],
+           [
+            "US$ 24",
+            "gold",
+            270
+           ],
+           [
+            "MILHÕES",
+            "white",
+            170
+           ]
+          ],
+          "stagger": 0.25
+         }
+        }
+       ],
+       "fallback": {
+        "type": "bigtext",
+        "lines": []
+       },
+       "sons": [
+        {
+         "tipo": "fx",
+         "busca": "wooden gavel strike",
+         "palavra": "arrematada",
+         "vol": 0.55,
+         "max": 0.6
+        }
+       ]
+      }
+     },
+     {
+      "text": "Dias depois, cinco mil e quinhentos funcionários foram demitidos.",
+      "scene": {
+       "type": "bigtext",
+       "lines": [
+        [
+         "5.500",
+         "red",
+         280
+        ],
+        [
+         "DEMITIDOS",
+         "white",
+         170
+        ]
+       ],
+       "stagger": 0.2,
+       "fundo": "ia_funcionarios",
+       "fundo_dim": 0.6
+      }
+     },
+     {
+      "text": "Só que vem a parte estranha.",
+      "scene": {
+       "type": "bigtext",
+       "lines": [
+        [
+         "A PARTE",
+         "white",
+         170
+        ],
+        [
+         "ESTRANHA",
+         "gold",
+         210
+        ]
+       ],
+       "stagger": 0.2,
+       "fundo": "pista",
+       "fundo_dim": 0.7,
+       "extra": [
+        {
+         "type": "video",
+         "media": "pista",
+         "pexels_id": 19202918,
+         "video_url": "https://videos.pexels.com/video-files/19202918/19202918-uhd_2160_3840_30fps.mp4",
+         "search": "sun sets over runway",
+         "dim": 0.5
+        }
+       ],
+       "sons": [
+        {
+         "tipo": "silencio",
+         "palavra": "estranha",
+         "em": -0.3,
+         "dur": 0.4
+        }
+       ]
+      }
+     },
+     {
+      "text": "Menos de um ano depois... a Gol anunciou a compra da Nova Varig por um negócio que podia chegar a trezentos e vinte milhões de dólares.",
+      "scene": {
+       "type": "montagem",
+       "auto": true,
+       "clips": [
+        {
+         "type": "video",
+         "media": "asa",
+         "pexels_id": 11993191,
+         "video_url": "https://videos.pexels.com/video-files/11993191/11993191-hd_1080_1920_60fps.mp4",
+         "search": "aircraft wing taking off",
+         "dim": 0.6,
+         "sobre": {
+          "type": "bigtext",
+          "lines": [
+           [
+            "MENOS DE",
+            "white",
+            150
+           ],
+           [
+            "1 ANO DEPOIS",
+            "gold",
+            180
+           ]
+          ],
+          "stagger": 0.2
+         }
+        },
+        {
+         "type": "bigtext",
+         "palavra": "Gol",
+         "lines": [
+          [
+           "US$ 24 MI",
+           "white",
+           170
+          ],
+          [
+           "↓",
+           "gold",
+           140
+          ],
+          [
+           "ATÉ US$ 320 MI",
+           "gold",
+           170
+          ]
+         ],
+         "stagger": 0.45
+        }
+       ],
+       "fallback": {
+        "type": "bigtext",
+        "lines": []
+       },
+       "sons": [
+        {
+         "tipo": "silencio",
+         "palavra": "Gol",
+         "em": -0.4,
+         "dur": 0.4
+        }
+       ]
+      }
+     },
+     {
+      "text": "Enquanto isso, a antiga Varig continuou com as dívidas. E teve a falência decretada em dois mil e dez.",
+      "scene": {
+       "type": "stamp",
+       "stamp_palavra": "falência",
+       "sons": [
+        {
+         "tipo": "fx",
+         "busca": "rubber stamp hit",
+         "palavra": "falência",
+         "vol": 0.65
+        }
+       ],
+       "org": "VELHA VARIG · 2010",
+       "title": "FICOU COM AS DÍVIDAS",
+       "stamp": "FALÊNCIA",
+       "fundo": "ia_hangar",
+       "fundo_dim": 0.5
+      }
+     },
+     {
+      "text": "Só em dois mil e vinte e quatro saiu um acordo bilionário, que ajudou a resolver dívidas trabalhistas de milhares de ex-funcionários.",
+      "scene": {
+       "type": "timeline",
+       "start": "2006",
+       "start_sub": "DEMISSÕES",
+       "end": "2024",
+       "end_sub": "ACORDO",
+       "big": "18 ANOS",
+       "size": 220,
+       "encher": 0.6,
+       "fundo": "ia_funcionarios",
+       "fundo_dim": 0.72
+      }
+     },
+     {
+      "text": "Você chegou a voar de Varig?",
+      "scene": {
+       "type": "bigtext",
+       "lines": [
+        [
+         "VOCÊ VOOU",
+         "white",
+         160
+        ],
+        [
+         "DE VARIG?",
+         "gold",
+         220
+        ]
+       ],
+       "stagger": 0.2,
+       "fundo": "noite",
+       "fundo_dim": 0.6,
+       "extra": [
+        {
+         "type": "video",
+         "media": "noite",
+         "pexels_id": 10904752,
+         "video_url": "https://videos.pexels.com/video-files/10904752/10904752-hd_1080_1920_30fps.mp4",
+         "search": "airplane landing at night",
+         "dim": 0.5
+        }
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ "ia": {
+  "ia_painel": "airport departure board at night in 2006 Brazil, almost every row flashing red as cancelled, crowd of stranded passengers with luggage blurred, dramatic light, no readable text, no airline logos, vertical composition",
+  "ia_hidroaviao": "1920s vintage seaplane floating on a river at golden hour near a southern Brazilian city, sepia nostalgic tones, cinematic, no readable text, no logo, vertical composition",
+  "ia_cabine_luxo": "1970s luxury first class airplane cabin, elegant flight attendant serving champagne, wide leather seats, warm golden light, nostalgic film look, faces not recognizable, no readable text, no logo, vertical composition",
+  "ia_dividas": "huge stacks of unpaid invoices and debt documents with red stamps on a desk, model airplane in the background, dark dramatic light, no readable text, no logo, vertical composition",
+  "ia_funcionarios": "group of airline employees in navy uniforms standing in an empty airport terminal holding their caps, worried, seen from behind or blurred, faces not recognizable, cinematic, no readable text, no logo, vertical composition",
+  "ia_hangar": "dark empty aircraft hangar with an old white airliner without markings parked and covered in dust, abandoned, cold light, cinematic, no readable text, no logo, vertical composition"
+ },
+ "meta": {
+  "titles": [
+   "Varig"
+  ],
+  "description": "",
+  "tags": [
+   "varig",
+   "gol",
+   "aviacao",
+   "nostalgia",
+   "negocios"
+  ]
+ },
+ "notes": "FATOS (checados 20/10/2026): fundação 1927 em Porto Alegre; rotas da Panair 1965 (Band jun/2026); recuperação judicial jun/2005, divisão velha/nova; leilão 20/07/2006 por US$ 24 mi, VarigLog única participante (Agência Brasil 28/03/2007); voos suspensos e só a ponte aérea por um momento (Folha); 5.500 demitidos (Folha); Gol anuncia compra por ~US$ 275 mi, até US$ 320 mi (Agência Brasil 28/03/2007); falência da velha Varig 20/08/2010 (Band); acordo de R$ 4,7 bi União x massa falida, dívidas trabalhistas de 15 mil ex-funcionários, e R$ 575 mi FGTS em 2024 (Agência Gov dez/2024). Valor da dívida de 2005 fora do roteiro (fontes divergem)."
+}
