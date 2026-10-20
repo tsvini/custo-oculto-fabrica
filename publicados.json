@@ -787,5 +787,16 @@
   "caso_titulo": "Sadia x Perdigão",
   "publishAt": "2026-10-20T18:00:00-03:00",
   "status": "private"
+ },
+ {
+  "nome": "ambev_short1",
+  "tipo": "short",
+  "idioma": "pt",
+  "titulo": "Brahma e Antarctica viraram uma só e ficaram com 3 de cada 4 cervejas do Brasil #shorts",
+  "video_id": "-GZbd2Z6gak",
+  "caso": "ambev",
+  "caso_titulo": "Brahma + Antarctica = Ambev",
+  "publishAt": "2026-10-21T18:00:00-03:00",
+  "status": "private"
  }
 ]
