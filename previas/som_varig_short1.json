@@ -6,46 +6,29 @@
    "nota": 7.5,
    "avaliacao": {
     "nota": 7.5,
-    "resumo": "A sonoplastia básica cumpre seu papel nos momentos de impacto documental (carimbos de recuperação judicial e falência, martelo de leilão), com bom volume e sem encobrir a locução. No entanto, o início e as transições de reviravolta estão muito secos, deixando passar oportunidades óbvias de ambientação (aeroporto, painel de voos, motor de hidroavião histórico e momentos de tensão).",
+    "resumo": "A mixagem geral de voz e trilha está equilibrada e clara. Os efeitos de carimbo jurídico e martelo de leilão foram bem contextualizados com as artes na tela, mas faltam elementos de imersão no hook inicial (painel de voos) e um efeito de transição/suspense na quebra da narrativa.",
     "problemas": [
      {
       "evento": 0,
-      "problema": "O efeito de carimbo entra uma fração de segundo após a animação do carimbo bater na tela gráfica.",
+      "problema": "O som do carimbo entra uma fração de segundo depois do impacto visual do selo na folha.",
       "acao": "adiantar",
-      "segundos": 0.25
-     },
-     {
-      "evento": 2,
-      "problema": "Marcador de silêncio desnecessário sem função prática de mixagem audível.",
-      "acao": "remover",
-      "segundos": 0
-     },
-     {
-      "evento": 3,
-      "problema": "Marcador de silêncio vazio sem efeito sonoro associado.",
-      "acao": "remover",
-      "segundos": 0
+      "segundos": 0.2
      }
     ],
     "faltando": [
      {
       "t": 0.5,
-      "busca": "airport terminal announcement chime flight cancelled",
+      "busca": "airport split flap display ticking departure board",
       "tipo": "fx"
      },
      {
-      "t": 11.8,
-      "busca": "vintage seaplane propeller pass by low engine",
+      "t": 46.2,
+      "busca": "dramatic tape stop suspense pause transition",
       "tipo": "fx"
      },
      {
-      "t": 38.5,
-      "busca": "deep dramatic sub bass impact thud",
-      "tipo": "fx"
-     },
-     {
-      "t": 43.5,
-      "busca": "mystery suspense tension riser whoosh",
+      "t": 49.5,
+      "busca": "cash register bell whoosh transition",
       "tipo": "fx"
      }
     ]
