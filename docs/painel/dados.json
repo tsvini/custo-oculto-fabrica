@@ -1,5 +1,5 @@
 {
- "atualizado": "20/10/2026 12:22",
+ "atualizado": "20/10/2026 13:37",
  "fontes": {
   "custo_oculto": {
    "seguidores": 11,
@@ -285,12 +285,12 @@
    "seguidores": 17,
    "curtidas": 191,
    "videos": 11,
-   "views_total": 3972,
+   "views_total": 3974,
    "top": [
     {
      "titulo": "A Nestlé comprou a Garoto. O Cade proibiu. Mas a compra já tinha acontecido 🍫 Você sabia q",
      "url": "https://www.tiktok.com/@custooculto/video/7698432599659744533?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 1106,
+     "views": 1107,
      "likes": 69
     },
     {
@@ -314,7 +314,7 @@
     {
      "titulo": "Banco Master, parte 3: a liquidação, a operação da PF e a conta de R$ 41 bilhões do FGC. N",
      "url": "https://www.tiktok.com/@custooculto/video/7697250527561747764?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 305,
+     "views": 306,
      "likes": 23
     },
     {
@@ -600,6 +600,33 @@
    "tipo": "serie",
    "id": "wework_serie3",
    "url": "https://studio.youtube.com/video/m62PxGp2g2A/edit"
+  },
+  {
+   "quando": "2026-10-24T18:00:00-03:00",
+   "plataforma": "Instagram",
+   "chave": "instagram",
+   "titulo": "Em 2006, a Varig praticamente parou",
+   "tipo": "short",
+   "id": "varig_short1",
+   "url": "https://raw.githubusercontent.com/tsvini/custo-oculto-midia/e81840497cb37a17fe41291a11b234ce6654a47b/varig/varig_short1.mp4"
+  },
+  {
+   "quando": "2026-10-24T18:00:00-03:00",
+   "plataforma": "Facebook",
+   "chave": "facebook",
+   "titulo": "Em 2006, a Varig praticamente parou",
+   "tipo": "short",
+   "id": "varig_short1",
+   "url": "https://raw.githubusercontent.com/tsvini/custo-oculto-midia/e81840497cb37a17fe41291a11b234ce6654a47b/varig/varig_short1.mp4"
+  },
+  {
+   "quando": "2026-10-24T18:00:00-03:00",
+   "plataforma": "TikTok",
+   "chave": "tiktok",
+   "titulo": "Em 2006, a Varig praticamente parou",
+   "tipo": "short",
+   "id": "varig_short1",
+   "url": "https://raw.githubusercontent.com/tsvini/custo-oculto-midia/e81840497cb37a17fe41291a11b234ce6654a47b/varig/varig_short1.mp4"
   },
   {
    "quando": "2026-10-24T19:00:00-03:00",
