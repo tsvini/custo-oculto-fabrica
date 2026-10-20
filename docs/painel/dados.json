@@ -1,9 +1,9 @@
 {
- "atualizado": "19/10/2026 22:15",
+ "atualizado": "20/10/2026 09:15",
  "fontes": {
   "custo_oculto": {
    "seguidores": 11,
-   "views_total": 4541,
+   "views_total": 4623,
    "videos": 31,
    "views_28d": 4485,
    "views_7d": 4455,
@@ -118,14 +118,14 @@
     {
      "titulo": "Essa pasta de dente vendia o dobro da Colgate #shorts",
      "url": "https://youtu.be/sdWbo_dK2oE",
-     "views": 1052,
+     "views": 1051,
      "retencao": 48,
      "likes": 9
     },
     {
      "titulo": "Banco Master: parte 1 de 4 #shorts",
      "url": "https://youtu.be/xQAsC7S2KO8",
-     "views": 708,
+     "views": 707,
      "retencao": 76,
      "likes": 40
     },
@@ -155,7 +155,7 @@
   },
   "hidden_cost": {
    "seguidores": 0,
-   "views_total": 9,
+   "views_total": 10,
    "videos": 7,
    "views_28d": 0,
    "views_7d": 0,
@@ -282,45 +282,45 @@
   },
   "tiktok": {
    "usuario": "Custo Oculto",
-   "seguidores": 16,
-   "curtidas": 186,
+   "seguidores": 17,
+   "curtidas": 189,
    "videos": 11,
-   "views_total": 3916,
+   "views_total": 3958,
    "top": [
     {
      "titulo": "A Nestlé comprou a Garoto. O Cade proibiu. Mas a compra já tinha acontecido 🍫 Você sabia q",
      "url": "https://www.tiktok.com/@custooculto/video/7698432599659744533?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 1076,
-     "likes": 66
+     "views": 1103,
+     "likes": 68
     },
     {
      "titulo": "Nos anos 90, a Kolynos vendia o dobro da Colgate no Brasil. Em 1995, a Colgate comprou a r",
      "url": "https://www.tiktok.com/@custooculto/video/7697792320804097300?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 356,
+     "views": 357,
      "likes": 10
     },
     {
      "titulo": "Banco Master, parte final: onde está o caso hoje e o custo oculto que sobra pra todo mundo",
      "url": "https://www.tiktok.com/@custooculto/video/7697621451171450113?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 167,
+     "views": 168,
      "likes": 11
     },
     {
      "titulo": "Numa noite de janeiro, a Americanas anunciou um rombo de R$ 20 bilhões e o presidente, com",
      "url": "https://www.tiktok.com/@custooculto/video/7697282259216387346?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 212,
+     "views": 213,
      "likes": 21
     },
     {
      "titulo": "Banco Master, parte 3: a liquidação, a operação da PF e a conta de R$ 41 bilhões do FGC. N",
      "url": "https://www.tiktok.com/@custooculto/video/7697250527561747764?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 297,
-     "likes": 21
+     "views": 303,
+     "likes": 22
     },
     {
      "titulo": "Banco Master, parte 2: o CDB que pagava 140% do CDI e o banco público que entrou no negóci",
      "url": "https://www.tiktok.com/@custooculto/video/7696879537358982401?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 183,
+     "views": 184,
      "likes": 7
     }
    ],
@@ -462,6 +462,33 @@
    "tipo": "short",
    "id": "lyfD8rJ6F30",
    "url": "https://studio.youtube.com/video/lyfD8rJ6F30/edit"
+  },
+  {
+   "quando": "2026-10-21T18:00:00-03:00",
+   "plataforma": "Instagram",
+   "chave": "instagram",
+   "titulo": "Brahma e Antarctica viraram uma só e ficaram com 3 de cada 4 cervejas do Brasil",
+   "tipo": "short",
+   "id": "ambev_short1",
+   "url": "https://raw.githubusercontent.com/tsvini/custo-oculto-midia/030d598eb366ec88c366b46f7ecdf7dbb4cfa231/ambev/ambev_short1.mp4"
+  },
+  {
+   "quando": "2026-10-21T18:00:00-03:00",
+   "plataforma": "Facebook",
+   "chave": "facebook",
+   "titulo": "Brahma e Antarctica viraram uma só e ficaram com 3 de cada 4 cervejas do Brasil",
+   "tipo": "short",
+   "id": "ambev_short1",
+   "url": "https://raw.githubusercontent.com/tsvini/custo-oculto-midia/030d598eb366ec88c366b46f7ecdf7dbb4cfa231/ambev/ambev_short1.mp4"
+  },
+  {
+   "quando": "2026-10-21T18:00:00-03:00",
+   "plataforma": "TikTok",
+   "chave": "tiktok",
+   "titulo": "Brahma e Antarctica viraram uma só e ficaram com 3 de cada 4 cervejas do Brasil",
+   "tipo": "short",
+   "id": "ambev_short1",
+   "url": "https://raw.githubusercontent.com/tsvini/custo-oculto-midia/030d598eb366ec88c366b46f7ecdf7dbb4cfa231/ambev/ambev_short1.mp4"
   },
   {
    "quando": "2026-10-21T19:00:00-03:00",
