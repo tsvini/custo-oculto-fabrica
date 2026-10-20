@@ -1,0 +1,85 @@
+{
+ "nota_final": 3,
+ "rodadas": [
+  {
+   "rodada": 1,
+   "nota": 3,
+   "avaliacao": {
+    "nota": 3,
+    "resumo": "A sonoplastia está praticamente ausente e desperdiça momentos visuais e conceituais fortíssimos. Foram colocados eventos de 'silêncio' desnecessários e apenas um efeito sonoro de carimbo que soa deslocado, enquanto momentos nostálgicos e de impacto (como o jogo da cobrinha, a plataforma em chamas e a queda brutal de mercado) estão sem nenhum apoio sonoro.",
+    "problemas": [
+     {
+      "evento": 0,
+      "problema": "Evento de silêncio inserido sem propósito justamente sobre a imagem dramática da plataforma pegando fogo.",
+      "acao": "remover"
+     },
+     {
+      "evento": 1,
+      "problema": "O som de carimbo fica fraco e descontextualizado com o corte visual de prédios à noite.",
+      "acao": "remover"
+     },
+     {
+      "evento": 2,
+      "problema": "Evento de silêncio inútil durante a fala sobre o retorno do presidente à Microsoft.",
+      "acao": "remover"
+     }
+    ],
+    "faltando": [
+     {
+      "t": 15.5,
+      "busca": "8bit retro arcade game beep snake",
+      "tipo": "fx"
+     },
+     {
+      "t": 32.5,
+      "busca": "fire roar explosion burning oil rig",
+      "tipo": "fx"
+     },
+     {
+      "t": 42.0,
+      "busca": "chart descending fail tone pitch drop",
+      "tipo": "fx"
+     },
+     {
+      "t": 60.0,
+      "busca": "cinematic dramatic sub bass hit boom loss",
+      "tipo": "fx"
+     }
+    ]
+   },
+   "eventos": [
+    {
+     "t0": 32.31,
+     "t1": 35.31,
+     "tipo": "silencio",
+     "busca": null,
+     "vol": 0.5,
+     "max": null,
+     "dur": 0.4,
+     "cena": "montagem | fala: Em dois mil e onze, o novo presidente escreveu que a empresa estava numa plataforma em chamas."
+    },
+    {
+     "t0": 48.59,
+     "t1": 51.59,
+     "tipo": "fx",
+     "busca": "rubber stamp hit",
+     "vol": 0.5,
+     "max": 0.5,
+     "dur": null,
+     "cena": "montagem | fala: Em dois mil e treze, a Microsoft comprou a divisão de celulares por sete vírgula dois bilhões de dólares.",
+     "fonte": "freesound #683031 Thump.mp3"
+    },
+    {
+     "t0": 53.89,
+     "t1": 56.89,
+     "tipo": "silencio",
+     "busca": null,
+     "vol": 0.5,
+     "max": null,
+     "dur": 0.4,
+     "cena": "montagem | fala: O presidente da Nokia, que tinha vindo da Microsoft... voltou para a Microsoft junto com o negócio."
+    }
+   ]
+  }
+ ]
+}

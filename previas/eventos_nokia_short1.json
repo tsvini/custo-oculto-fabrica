@@ -1,0 +1,36 @@
+{
+ "eventos": [
+  {
+   "t0": 32.31,
+   "t1": 35.31,
+   "tipo": "silencio",
+   "busca": null,
+   "vol": null,
+   "max": null,
+   "dur": 0.4,
+   "cena": "montagem | fala: Em dois mil e onze, o novo presidente escreveu que a empresa estava numa plataforma em chamas."
+  },
+  {
+   "t0": 48.59,
+   "t1": 51.59,
+   "tipo": "fx",
+   "busca": "rubber stamp hit",
+   "vol": 0.5,
+   "max": 0.5,
+   "dur": null,
+   "cena": "montagem | fala: Em dois mil e treze, a Microsoft comprou a divisão de celulares por sete vírgula dois bilhões de dólares."
+  },
+  {
+   "t0": 53.89,
+   "t1": 56.89,
+   "tipo": "silencio",
+   "busca": null,
+   "vol": null,
+   "max": null,
+   "dur": 0.4,
+   "cena": "montagem | fala: O presidente da Nokia, que tinha vindo da Microsoft... voltou para a Microsoft junto com o negócio."
+  }
+ ],
+ "trilha": "epica:0.18",
+ "roteiro": "A Nokia vendia quatro de cada dez celulares do planeta. Seis anos depois, vendeu sua divisão de celulares pra Microsoft. E a Microsoft acabou perdendo mais do que pagou. Em dois mil e sete, a Nokia estava em todo lugar. Tijolão, jogo da cobrinha, bateria que durava dias. E ela já fazia smartphones. Antes do iPhone. Só que naquele ano chegou o iPhone. Depois, o Android. E a Nokia não conseguiu acompanhar a mudança. Em dois mil e onze, o novo presidente escreveu que a empresa estava numa plataforma em chamas. E apostou o futuro dos smartphones no Windows Phone, da Microsoft. Não deu certo. A fatia da Nokia caiu de cerca de quarenta por cento para quinze por cento. Em dois mil e treze, a Microsoft comprou a divisão de celulares por sete vírgula dois bilhões de dólares. O presidente da Nokia, que tinha vindo da Microsoft... voltou para a Microsoft junto com o negócio. Em dois mil e quinze, a Microsoft reconheceu uma perda de sete vírgula seis bilhões de dólares. Mais do que tinha pago. Você teve um Nokia? Qual era o seu?"
+}
