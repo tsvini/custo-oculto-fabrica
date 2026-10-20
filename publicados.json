@@ -831,5 +831,16 @@
   "caso_titulo": "Varig",
   "publishAt": "2026-10-24T18:00:00-03:00",
   "status": "private"
+ },
+ {
+  "nome": "nokia_short1",
+  "tipo": "short",
+  "idioma": "pt",
+  "titulo": "A Nokia vendia 4 de cada 10 celulares do planeta. E a Microsoft perdeu mais do que pagou #shorts",
+  "video_id": "0uvafJRo35I",
+  "caso": "nokia",
+  "caso_titulo": "Nokia",
+  "publishAt": "2026-10-25T18:00:00-03:00",
+  "status": "private"
  }
 ]
