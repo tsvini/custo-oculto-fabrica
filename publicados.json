@@ -809,5 +809,16 @@
   "caso_titulo": "Netflix x Blockbuster",
   "publishAt": "2026-10-22T18:00:00-03:00",
   "status": "private"
+ },
+ {
+  "nome": "kodak_digital_short1",
+  "tipo": "short",
+  "idioma": "pt",
+  "titulo": "A Kodak inventou a câmera digital. E mesmo assim perdeu a guerra do digital #shorts",
+  "video_id": "V0QI5BH5mmo",
+  "caso": "kodak_digital",
+  "caso_titulo": "Kodak",
+  "publishAt": "2026-10-23T18:00:00-03:00",
+  "status": "private"
  }
 ]
