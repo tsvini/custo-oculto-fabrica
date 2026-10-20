@@ -1,0 +1,86 @@
+{
+ "eventos": [
+  {
+   "t0": 10.51,
+   "t1": 13.51,
+   "tipo": "fx",
+   "busca": "rubber stamp hit",
+   "vol": 0.65,
+   "max": null,
+   "dur": null,
+   "cena": "stamp | fala: Em dois mil e doze, uma das maiores empresas de fotografia do mundo pediu falência."
+  },
+  {
+   "t0": 21.35,
+   "t1": 24.35,
+   "tipo": "fx",
+   "busca": "camera shutter click",
+   "vol": 0.4,
+   "max": 0.4,
+   "dur": null,
+   "cena": "montagem | fala: E ganhava em cada foto: no filme, na revelação, e no papel."
+  },
+  {
+   "t0": 22.17,
+   "t1": 25.17,
+   "tipo": "fx",
+   "busca": "camera shutter click",
+   "vol": 0.4,
+   "max": 0.4,
+   "dur": null,
+   "cena": "montagem | fala: E ganhava em cada foto: no filme, na revelação, e no papel."
+  },
+  {
+   "t0": 23.35,
+   "t1": 26.35,
+   "tipo": "fx",
+   "busca": "camera shutter click",
+   "vol": 0.4,
+   "max": 0.4,
+   "dur": null,
+   "cena": "montagem | fala: E ganhava em cada foto: no filme, na revelação, e no papel."
+  },
+  {
+   "t0": 23.97,
+   "t1": 26.97,
+   "tipo": "silencio",
+   "busca": null,
+   "vol": null,
+   "max": null,
+   "dur": 0.35,
+   "cena": "bigtext | fala: Só que em mil novecentos e setenta e cinco..."
+  },
+  {
+   "t0": 38.11,
+   "t1": 41.11,
+   "tipo": "silencio",
+   "busca": null,
+   "vol": null,
+   "max": null,
+   "dur": 0.4,
+   "cena": "bigtext | fala: Só tinha um problema."
+  },
+  {
+   "t0": 53.57,
+   "t1": 56.57,
+   "tipo": "fx",
+   "busca": "rubber stamp hit",
+   "vol": 0.65,
+   "max": null,
+   "dur": null,
+   "cena": "stamp | fala: Em janeiro de dois mil e doze... a Kodak pediu falência."
+  },
+  {
+   "t0": 52.67,
+   "t1": 55.67,
+   "tipo": "silencio",
+   "busca": null,
+   "vol": null,
+   "max": null,
+   "dur": 0.4,
+   "cena": "stamp | fala: Em janeiro de dois mil e doze... a Kodak pediu falência."
+  }
+ ],
+ "trilha": "phonk:0.15",
+ "roteiro": "A Kodak inventou a câmera digital... E mesmo assim perdeu a guerra do digital. Em dois mil e doze, uma das maiores empresas de fotografia do mundo pediu falência. Durante décadas, a Kodak dominou o filme fotográfico. Chegou a ter mais de cento e quarenta e cinco mil funcionários. E ganhava em cada foto: no filme, na revelação, e no papel. Só que em mil novecentos e setenta e cinco... Um engenheiro da própria Kodak criou uma das primeiras câmeras digitais. Ela pesava quase quatro quilos... e levava vinte e três segundos para gravar uma foto. Só tinha um problema. Se aquilo desse certo... ninguém ia mais precisar de filme. A Kodak até ganhou quase dois bilhões de dólares licenciando tecnologias digitais. Mas não foi suficiente. Em janeiro de dois mil e doze... a Kodak pediu falência. Três meses depois, o Facebook pagou um bilhão de dólares pelo Instagram... um aplicativo de fotos com apenas treze funcionários. A Kodak já tinha tido mais de cento e quarenta e cinco mil. Você ainda tem alguma foto revelada da Kodak em casa?"
+}

@@ -1,0 +1,136 @@
+{
+ "nota_final": 7,
+ "rodadas": [
+  {
+   "rodada": 1,
+   "nota": 7,
+   "avaliacao": {
+    "nota": 7,
+    "resumo": "A mixagem geral de voz e trilha está bem equilibrada. Os carimbos de falência funcionam muito bem visual e sonoramente. No entanto, a sequência de cliques fotográficos (21s–23s) está dessincronizada dos três tópicos falados (faltou som no primeiro item 'no filme' aos 19.5s) e faltam efeitos importantes para ilustrar a fita cassete aos 35s e a transição para o Instagram no final.",
+    "problemas": [
+     {
+      "evento": 1,
+      "problema": "O primeiro clique toca em 'na revelação' (21.4s), mas o primeiro item da lista ('no filme') surge em 19.5s sem nenhum som.",
+      "acao": "adiantar",
+      "segundos": 1.9
+     },
+     {
+      "evento": 2,
+      "problema": "Som de obturador mecânico de câmera não combina com a cena de papel fotográfico no banho químico de revelação.",
+      "acao": "remover",
+      "segundos": 0
+     }
+    ],
+    "faltando": [
+     {
+      "t": 22.0,
+      "busca": "water darkroom chemical liquid splash",
+      "tipo": "fx"
+     },
+     {
+      "t": 35.2,
+      "busca": "cassette tape recorder motor whir spin",
+      "tipo": "fx"
+     },
+     {
+      "t": 44.5,
+      "busca": "cash register bell cha ching",
+      "tipo": "fx"
+     },
+     {
+      "t": 58.0,
+      "busca": "smartphone camera click modern snap",
+      "tipo": "fx"
+     }
+    ]
+   },
+   "eventos": [
+    {
+     "t0": 10.51,
+     "t1": 13.51,
+     "tipo": "fx",
+     "busca": "rubber stamp hit",
+     "vol": 0.65,
+     "max": null,
+     "dur": null,
+     "cena": "stamp | fala: Em dois mil e doze, uma das maiores empresas de fotografia do mundo pediu falência.",
+     "fonte": "freesound #683031 Thump.mp3"
+    },
+    {
+     "t0": 21.35,
+     "t1": 24.35,
+     "tipo": "fx",
+     "busca": "camera shutter click",
+     "vol": 0.4,
+     "max": 0.4,
+     "dur": null,
+     "cena": "montagem | fala: E ganhava em cada foto: no filme, na revelação, e no papel.",
+     "fonte": "freesound #676375 Film Camera Click Shutter"
+    },
+    {
+     "t0": 22.17,
+     "t1": 25.17,
+     "tipo": "fx",
+     "busca": "camera shutter click",
+     "vol": 0.4,
+     "max": 0.4,
+     "dur": null,
+     "cena": "montagem | fala: E ganhava em cada foto: no filme, na revelação, e no papel.",
+     "fonte": "freesound #676375 Film Camera Click Shutter"
+    },
+    {
+     "t0": 23.35,
+     "t1": 26.35,
+     "tipo": "fx",
+     "busca": "camera shutter click",
+     "vol": 0.4,
+     "max": 0.4,
+     "dur": null,
+     "cena": "montagem | fala: E ganhava em cada foto: no filme, na revelação, e no papel.",
+     "fonte": "freesound #676375 Film Camera Click Shutter"
+    },
+    {
+     "t0": 23.97,
+     "t1": 26.97,
+     "tipo": "silencio",
+     "busca": null,
+     "vol": 0.5,
+     "max": null,
+     "dur": 0.35,
+     "cena": "bigtext | fala: Só que em mil novecentos e setenta e cinco..."
+    },
+    {
+     "t0": 38.11,
+     "t1": 41.11,
+     "tipo": "silencio",
+     "busca": null,
+     "vol": 0.5,
+     "max": null,
+     "dur": 0.4,
+     "cena": "bigtext | fala: Só tinha um problema."
+    },
+    {
+     "t0": 53.57,
+     "t1": 56.57,
+     "tipo": "fx",
+     "busca": "rubber stamp hit",
+     "vol": 0.65,
+     "max": null,
+     "dur": null,
+     "cena": "stamp | fala: Em janeiro de dois mil e doze... a Kodak pediu falência.",
+     "fonte": "freesound #683031 Thump.mp3"
+    },
+    {
+     "t0": 52.67,
+     "t1": 55.67,
+     "tipo": "silencio",
+     "busca": null,
+     "vol": 0.5,
+     "max": null,
+     "dur": 0.4,
+     "cena": "stamp | fala: Em janeiro de dois mil e doze... a Kodak pediu falência."
+    }
+   ]
+  }
+ ]
+}
