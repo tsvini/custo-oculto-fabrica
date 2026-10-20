@@ -39,16 +39,6 @@
    "max": null,
    "dur": 0.35,
    "cena": "bigtext | fala: Mas com condições."
-  },
-  {
-   "t0": 41.97,
-   "t1": 44.97,
-   "tipo": "fx",
-   "busca": "short clock tick",
-   "vol": 0.3,
-   "max": 0.3,
-   "dur": null,
-   "cena": "montagem | fala: A Ambev teve que vender a Bavária, junto com cinco fábricas."
   }
  ],
  "trilha": "epica",

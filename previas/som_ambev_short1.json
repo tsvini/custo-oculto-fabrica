@@ -1,50 +1,39 @@
 {
- "nota_final": 6,
+ "nota_final": 5.5,
  "rodadas": [
   {
    "rodada": 1,
-   "nota": 6,
+   "nota": 5.5,
    "avaliacao": {
-    "nota": 6,
-    "resumo": "A sonoplastia tem boas ideias pontuais (como o carimbo no CADE), mas peca pelo descompasso temporal de efeitos e pela ausência de ambientação temática básica, como sons de cerveja, copos e impactos dramáticos nas viradas do roteiro.",
+    "nota": 5.5,
+    "resumo": "A locução e a trilha de fundo estão bem equilibradas e com boa inteligência, mas a sonoplastia geral é extremamente econômica para um vídeo dinâmico de mais de 1 minuto. Quase todos os ganchos visuais e narrativos ricos (garrafas de cerveja, fábrica, transporte rodoviário, cerveja enchendo o copo) passam sem nenhum apoio sonoro, deixando a edição estéril.",
     "problemas": [
      {
-      "evento": 4,
-      "problema": "O tique-taque de relógio está em 42.0s, momento em que o vídeo fala sobre venda de fábricas e ida para o Canadá, ficando completamente desconexo da cena.",
-      "acao": "atrasar",
-      "segundos": 10.0
-     },
-     {
-      "evento": 1,
-      "problema": "Placeholder de silêncio desnecessário ocupando espaço na timeline.",
-      "acao": "remover"
-     },
-     {
       "evento": 2,
-      "problema": "O martelo de juiz toca logo após o take do martelo já ter saído da tela; funcionaria melhor sincronizado com a batida do martelo em 30.5s ou cravado no anúncio do veredito 'saiu a decisão' aos 34.0s.",
-      "acao": "adiantar",
-      "segundos": 1.4
+      "problema": "O som de martelo do tribunal toca enquanto a narração fala apenas 'foi parar no Cade' sobre imagem estática do martelo, mas o veredito real só é anunciado em 34s–36s ('saiu a decisão: quatro votos a um'). Soaria muito mais impactante e condizente com a batida do martelo no anúncio da decisão.",
+      "acao": "atrasar",
+      "segundos": 3.5
      }
     ],
     "faltando": [
      {
-      "t": 0.5,
-      "busca": "beer bottles clink toast",
+      "t": 1.5,
+      "busca": "beer bottles clinking toast",
       "tipo": "fx"
      },
      {
-      "t": 37.8,
-      "busca": "dramatic bass drop thud hit",
+      "t": 16.5,
+      "busca": "factory conveyor belt cans",
       "tipo": "fx"
      },
      {
-      "t": 47.0,
-      "busca": "semi truck passing by highway whoosh",
+      "t": 47.5,
+      "busca": "semi truck highway driving pass by",
       "tipo": "fx"
      },
      {
       "t": 58.0,
-      "busca": "beer pouring fizzy carbonation glass",
+      "busca": "pouring beer into glass fizz carbonation",
       "tipo": "fx"
      }
     ]
@@ -91,17 +80,6 @@
      "max": null,
      "dur": 0.35,
      "cena": "bigtext | fala: Mas com condições."
-    },
-    {
-     "t0": 41.97,
-     "t1": 44.97,
-     "tipo": "fx",
-     "busca": "short clock tick",
-     "vol": 0.3,
-     "max": 0.3,
-     "dur": null,
-     "cena": "montagem | fala: A Ambev teve que vender a Bavária, junto com cinco fábricas.",
-     "fonte": "freesound #321582 clock ticking"
     }
    ]
   }
