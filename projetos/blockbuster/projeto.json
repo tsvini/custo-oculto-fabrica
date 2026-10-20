@@ -3,7 +3,7 @@
  "slug": "blockbuster",
  "idioma": "pt",
  "trilha": "lofi",
- "cauda": 2.0,
+ "cauda": 1.2,
  "voz": {
   "nome": "gravada",
   "motor": "eleven",
@@ -172,7 +172,7 @@
       }
      },
      {
-      "text": "Enquanto isso, a Blockbuster faturava quase cinco bilhões de dólares por ano e tinha milhares de lojas.",
+      "text": "A Blockbuster faturava quase cinco bilhões de dólares por ano e tinha milhares de lojas.",
       "scene": {
        "type": "montagem",
        "auto": true,
@@ -646,10 +646,10 @@
   ]
  },
  "ia": {
-  "ia_locadora": "early 2000s video rental store interior full of shelves with VHS tapes and DVD cases, warm fluorescent light, blue and yellow color scheme, nostalgic, no readable text, no logo, no brand, vertical composition",
+  "ia_locadora": "interior of a 1990s video rental store aisle, tall racks full of colorful VHS tape boxes and DVD cases facing out, blue carpet, bright fluorescent ceiling lights, customers browsing blurred, nostalgic, no readable text, no logo, no books, vertical composition",
   "ia_reuniao": "year 2000 corporate boardroom in Dallas, three young founders in casual clothes presenting to executives in suits at a long table, tense meeting, faces not recognizable, cinematic warm light, no text, no logo, vertical composition",
   "ia_riso": "close-up of a corporate executive in a dark suit covering his mouth with his hand trying not to laugh during a meeting, face partially hidden and out of focus, early 2000s office, cinematic, no text, vertical composition",
-  "ia_locadora_vazia": "abandoned video rental store with empty shelves, scattered DVD cases on the floor, dust, a few flickering fluorescent lights, closing down, melancholic, no readable text, no logo, vertical composition",
+  "ia_locadora_vazia": "closed-down video rental store, metal racks almost empty with a few scattered VHS tape boxes and DVD cases on the blue carpet floor, flickering fluorescent lights, melancholic, no readable text, no logo, no books, vertical composition",
   "ia_ultima_loja": "a single small video rental store glowing at night in a quiet small american town street, the only lit shop on the block, nostalgic neon light without letters, cinematic, no readable text, no logo, vertical composition"
  },
  "meta": {
