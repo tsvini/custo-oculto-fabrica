@@ -35,6 +35,12 @@ def nota(t, m, nivel="notice"):
     print(f"::{nivel} title={t}::{str(m).replace(chr(10), ' ')[:900]}", flush=True)
 
 
+def ok(r):
+    """Como raise_for_status, mas guarda a resposta da API no erro (a Meta explica o motivo no corpo)."""
+    if r.status_code >= 400:
+        raise RuntimeError(f"{r.status_code}: {r.text[:300]}")
+
+
 def env(k):
     return os.environ.get(k, "").strip()
 
@@ -46,7 +52,7 @@ def instagram(item):
         raise RuntimeError("sem META_PAGE_TOKEN/META_IG_ID")
     r = requests.post(f"{G}/{ig}/media", data={"media_type": "REELS", "video_url": item["video"], "caption": item["legenda"][:2200],
                                               "share_to_feed": "true", "access_token": tok}, timeout=120)
-    r.raise_for_status(); cid = r.json()["id"]
+    ok(r); cid = r.json()["id"]
     for _ in range(60):  # o Instagram baixa e processa o vídeo
         s = requests.get(f"{G}/{cid}", params={"fields": "status_code,status", "access_token": tok}, timeout=60).json()
         if s.get("status_code") == "FINISHED":
@@ -57,7 +63,7 @@ def instagram(item):
     else:
         raise RuntimeError("processamento demorou demais")
     r = requests.post(f"{G}/{ig}/media_publish", data={"creation_id": cid, "access_token": tok}, timeout=120)
-    r.raise_for_status()
+    ok(r)
     return r.json()["id"]
 
 
@@ -67,13 +73,13 @@ def facebook(item):
     if not (tok and pg):
         raise RuntimeError("sem META_PAGE_TOKEN/META_PAGE_ID")
     r = requests.post(f"{G}/{pg}/video_reels", data={"upload_phase": "start", "access_token": tok}, timeout=60)
-    r.raise_for_status(); vid = r.json()["video_id"]; up = r.json()["upload_url"]
+    ok(r); vid = r.json()["video_id"]; up = r.json()["upload_url"]
     r = requests.post(up, headers={"Authorization": f"OAuth {tok}", "file_url": item["video"]}, timeout=600)
-    r.raise_for_status()
+    ok(r)
     r = requests.post(f"{G}/{pg}/video_reels", data={"upload_phase": "finish", "video_id": vid, "video_state": "PUBLISHED",
                                                      "description": item["legenda"][:5000], "title": item.get("titulo", "")[:255],
                                                      "access_token": tok}, timeout=120)
-    r.raise_for_status()
+    ok(r)
     if not r.json().get("success", True):
         raise RuntimeError(r.text[:300])
     return vid
@@ -108,7 +114,7 @@ def tiktok(item):
     with tempfile.TemporaryDirectory() as d:  # baixa o MP4 e envia por partes (FILE_UPLOAD não exige domínio verificado)
         arq = os.path.join(d, "v.mp4")
         with requests.get(item["video"], stream=True, timeout=600) as r:
-            r.raise_for_status()
+            ok(r)
             with open(arq, "wb") as f:
                 for b in r.iter_content(1 << 20):
                     f.write(b)
