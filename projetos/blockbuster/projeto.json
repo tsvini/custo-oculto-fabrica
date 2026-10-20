@@ -20,13 +20,13 @@
     "title": "A Blockbuster podia ter comprado a Netflix por US$ 50 milhões",
     "sentences": [
      {
-      "text": "A Blockbuster podia ter comprado a Netflix por cinquenta milhões de dólares. E riu da proposta.",
+      "text": "A Blockbuster podia ter comprado a Netflix por cinquenta milhões de dólares... E recusou.",
       "scene": {
        "type": "capa",
        "instante": true,
        "foto": "ia_locadora",
        "seta": false,
-       "faixa": "A BLOCKBUSTER RECUSOU",
+       "faixa": "A BLOCKBUSTER PODIA COMPRAR",
        "linhas": [
         [
          "US$ 50",
@@ -63,9 +63,9 @@
              150
             ],
             [
-             "E RIU",
+             "E RECUSOU",
              "red",
-             220
+             200
             ]
            ],
            "stagger": 0.25
@@ -80,7 +80,7 @@
       }
      },
      {
-      "text": "Hoje a Netflix tem mais de trezentos milhões de assinantes.",
+      "text": "Hoje, a Netflix tem mais de trezentos milhões de assinantes.",
       "scene": {
        "type": "montagem",
        "auto": true,
@@ -118,11 +118,19 @@
        "fallback": {
         "type": "bigtext",
         "lines": []
-       }
+       },
+       "sons": [
+        {
+         "tipo": "silencio",
+         "palavra": "Hoje",
+         "em": -0.5,
+         "dur": 0.5
+        }
+       ]
       }
      },
      {
-      "text": "Em dois mil, a Netflix alugava DVD pelo correio e dava prejuízo.",
+      "text": "A Netflix alugava DVD pelo correio e ainda dava prejuízo.",
       "scene": {
        "type": "montagem",
        "auto": true,
@@ -164,7 +172,7 @@
       }
      },
      {
-      "text": "A Blockbuster tinha milhares de lojas e faturava uns cinco bilhões de dólares por ano.",
+      "text": "Enquanto isso, a Blockbuster faturava quase cinco bilhões de dólares por ano e tinha milhares de lojas.",
       "scene": {
        "type": "montagem",
        "auto": true,
@@ -180,11 +188,6 @@
           "type": "bigtext",
           "lines": [
            [
-            "MILHARES DE LOJAS",
-            "white",
-            110
-           ],
-           [
             "US$ 5 BI",
             "gold",
             250
@@ -192,7 +195,12 @@
            [
             "POR ANO",
             "white",
-            110
+            120
+           ],
+           [
+            "MILHARES DE LOJAS",
+            "white",
+            100
            ]
           ],
           "stagger": 0.3
@@ -206,7 +214,7 @@
       }
      },
      {
-      "text": "Os fundadores da Netflix foram até a Blockbuster e ofereceram a empresa inteira.",
+      "text": "Foi aí que os fundadores da Netflix fizeram uma proposta: comprem a nossa empresa.",
       "scene": {
        "type": "montagem",
        "auto": true,
@@ -221,22 +229,17 @@
           "type": "bigtext",
           "lines": [
            [
-            "A NETFLIX",
+            "\"COMPREM A",
             "white",
-            130
+            140
            ],
            [
-            "INTEIRA",
+            "NOSSA EMPRESA\"",
             "gold",
-            210
-           ],
-           [
-            "À VENDA",
-            "white",
-            130
+            140
            ]
           ],
-          "stagger": 0.25
+          "stagger": 0.3
          }
         }
        ],
@@ -247,7 +250,33 @@
       }
      },
      {
-      "text": "O presidente recusou.",
+      "text": "Preço: cinquenta milhões de dólares...",
+      "scene": {
+       "type": "bigtext",
+       "lines": [
+        [
+         "PREÇO:",
+         "white",
+         140
+        ],
+        [
+         "US$ 50",
+         "gold",
+         280
+        ],
+        [
+         "MILHÕES",
+         "white",
+         170
+        ]
+       ],
+       "stagger": 0.2,
+       "fundo": "ia_reuniao",
+       "fundo_dim": 0.7
+      }
+     },
+     {
+      "text": "A Blockbuster recusou.",
       "scene": {
        "sons": [
         {
@@ -255,6 +284,12 @@
          "busca": "rubber stamp hit",
          "palavra": "recusou",
          "vol": 0.65
+        },
+        {
+         "tipo": "silencio",
+         "palavra": "Blockbuster",
+         "em": -0.45,
+         "dur": 0.45
         }
        ],
        "type": "stamp",
@@ -267,7 +302,7 @@
       }
      },
      {
-      "text": "Segundo um deles, parecia estar segurando o riso.",
+      "text": "Segundo um dos fundadores, o executivo parecia estar segurando o riso.",
       "scene": {
        "type": "montagem",
        "auto": true,
@@ -303,18 +338,18 @@
       }
      },
      {
-      "text": "Só que a Blockbuster quase deu o troco.",
+      "text": "Só que a Blockbuster ainda teve uma chance de reagir.",
       "scene": {
        "type": "bigtext",
        "lines": [
         [
-         "QUASE",
+         "AINDA TEVE",
          "white",
-         170
+         160
         ],
         [
-         "DEU O TROCO",
-         "red",
+         "UMA CHANCE",
+         "gold",
          190
         ]
        ],
@@ -334,15 +369,15 @@
        "sons": [
         {
          "tipo": "silencio",
-         "palavra": "quase",
+         "palavra": "chance",
          "em": -0.3,
-         "dur": 0.35
+         "dur": 0.3
         }
        ]
       }
      },
      {
-      "text": "Lançou aluguel online e chegou a tirar assinantes da Netflix.",
+      "text": "Criou seu próprio serviço online e começou a disputar clientes com a Netflix.",
       "scene": {
        "type": "montagem",
        "auto": true,
@@ -358,19 +393,19 @@
           "type": "bigtext",
           "lines": [
            [
-            "ALUGUEL ONLINE",
+            "SERVIÇO ONLINE",
             "gold",
             150
            ],
            [
-            "E A NETFLIX",
+            "DISPUTANDO",
             "white",
-            120
+            130
            ],
            [
-            "PERDENDO CLIENTES",
-            "red",
-            110
+            "CLIENTES",
+            "white",
+            130
            ]
           ],
           "stagger": 0.35
@@ -384,54 +419,7 @@
       }
      },
      {
-      "text": "O próprio fundador da Netflix admitiu: se não fosse a dívida, eles podiam ter acabado com a Netflix.",
-      "scene": {
-       "type": "montagem",
-       "auto": true,
-       "clips": [
-        {
-         "type": "video",
-         "media": "dinheiro",
-         "pexels_id": 6326861,
-         "video_url": "https://videos.pexels.com/video-files/6326861/6326861-uhd_2160_4096_25fps.mp4",
-         "search": "man counting banknotes",
-         "dim": 0.5,
-         "sobre": {
-          "type": "bigtext",
-          "lines": [
-           [
-            "SE NÃO FOSSE",
-            "white",
-            140
-           ],
-           [
-            "A DÍVIDA...",
-            "red",
-            200
-           ],
-           [
-            "TINHAM ACABADO",
-            "white",
-            110
-           ],
-           [
-            "COM A NETFLIX",
-            "gold",
-            130
-           ]
-          ],
-          "stagger": 0.45
-         }
-        }
-       ],
-       "fallback": {
-        "type": "bigtext",
-        "lines": []
-       }
-      }
-     },
-     {
-      "text": "Aí um investidor pressionou, o presidente saiu, e o novo comando encareceu o serviço.",
+      "text": "Mas a empresa já carregava uma dívida enorme, e mudou de estratégia.",
       "scene": {
        "type": "montagem",
        "auto": true,
@@ -447,22 +435,17 @@
           "type": "bigtext",
           "lines": [
            [
-            "PRESIDENTE SAIU",
-            "white",
-            120
-           ],
-           [
-            "SERVIÇO",
-            "white",
-            140
-           ],
-           [
-            "MAIS CARO",
+            "DÍVIDA",
             "red",
-            200
+            220
+           ],
+           [
+            "ENORME",
+            "white",
+            160
            ]
           ],
-          "stagger": 0.5
+          "stagger": 0.3
          }
         }
        ],
@@ -473,7 +456,7 @@
       }
      },
      {
-      "text": "Em dois mil e dez, a Blockbuster pediu falência, com mais de novecentos milhões de dólares em dívidas.",
+      "text": "Em dois mil e dez... a Blockbuster pediu falência. Tinha mais de um bilhão de dólares em dívidas.",
       "scene": {
        "sons": [
         {
@@ -481,11 +464,17 @@
          "busca": "rubber stamp hit",
          "palavra": "falência",
          "vol": 0.65
+        },
+        {
+         "tipo": "silencio",
+         "palavra": "Blockbuster",
+         "em": -0.5,
+         "dur": 0.5
         }
        ],
        "type": "stamp",
        "org": "BLOCKBUSTER · 2010",
-       "title": "+ US$ 900 MILHÕES EM DÍVIDAS",
+       "title": "+ DE US$ 1 BILHÃO EM DÍVIDAS",
        "stamp": "FALÊNCIA",
        "stamp_palavra": "falência",
        "fundo": "ia_locadora_vazia",
@@ -493,7 +482,7 @@
       }
      },
      {
-      "text": "E no Brasil? Três anos antes, a Americanas tinha comprado as lojas da Blockbuster por aqui.",
+      "text": "E no Brasil? Três anos antes, as Lojas Americanas tinham comprado as lojas da Blockbuster daqui.",
       "scene": {
        "type": "montagem",
        "auto": true,
@@ -523,7 +512,7 @@
          "video_url": "https://videos.pexels.com/video-files/32365209/13807594_2160_3840_25fps.mp4",
          "search": "storefront night",
          "dim": 0.5,
-         "palavra": "Americanas",
+         "palavra": "três",
          "sobre": {
           "type": "bigtext",
           "lines": [
@@ -533,9 +522,9 @@
             140
            ],
            [
-            "COMPROU AS LOJAS",
+            "COMPROU 127 LOJAS",
             "white",
-            110
+            100
            ],
            [
             "EM 2007",
@@ -554,7 +543,7 @@
       }
      },
      {
-      "text": "Eram mais de nove mil lojas. Hoje sobrou uma só, numa cidade dos Estados Unidos.",
+      "text": "A rede que chegou a ter cerca de nove mil lojas no mundo, hoje ficou reduzida... a uma única loja oficial.",
       "scene": {
        "type": "montagem",
        "auto": true,
@@ -569,14 +558,19 @@
           "type": "bigtext",
           "lines": [
            [
-            "+ DE 9 MIL",
+            "CERCA DE",
+            "white",
+            120
+           ],
+           [
+            "9 MIL",
             "gold",
-            230
+            250
            ],
            [
             "LOJAS",
             "white",
-            160
+            150
            ]
           ],
           "stagger": 0.15
@@ -588,7 +582,7 @@
          "z0": 1.0,
          "z1": 1.14,
          "dim": 0.4,
-         "palavra": "Hoje",
+         "palavra": "hoje",
          "sobre": {
           "type": "bigtext",
           "lines": [
@@ -601,6 +595,11 @@
             "1",
             "gold",
             340
+           ],
+           [
+            "LOJA OFICIAL",
+            "white",
+            100
            ]
           ],
           "stagger": 0.3
@@ -614,9 +613,9 @@
        "sons": [
         {
          "tipo": "silencio",
-         "palavra": "Hoje",
-         "em": -0.35,
-         "dur": 0.35
+         "palavra": "única",
+         "em": -0.5,
+         "dur": 0.5
         }
        ]
       }
@@ -666,5 +665,5 @@
    "negocios"
   ]
  },
- "notes": "FATOS (do projeto netflix, checados): 2000 oferta de US$ 50 mi, Antioco recusa, Randolph: parecia segurar o riso; Netflix perdia ~US$ 50 mi/ano; Blockbuster ~US$ 5 bi/ano (Today I Found Out; Fortune 14/04/2023). Blockbuster Online 2004/Total Access 2006; Netflix perdeu 55 mil assinantes num trimestre de 2007; Icahn pressiona, Antioco sai, Keyes encarece; Hastings: se não fosse a dívida podiam ter nos matado. Falência set/2010, dívidas > US$ 900 mi; +9 mil lojas no auge; última loja em Bend, Oregon. Americanas compra 127 lojas no Brasil por R$ 186,2 mi (jan/2007). Netflix +300 mi assinantes (301,6 mi 4T2024). | Vídeos Pexels: 9807747, 10599681, 37833296, 6335709, 6326861, 35606045, 6576494, 32365209."
+ "notes": "FATOS (do projeto netflix, checados): 2000 oferta de US$ 50 mi, Antioco recusa, Randolph: parecia segurar o riso; Netflix perdia ~US$ 50 mi/ano; Blockbuster ~US$ 5 bi/ano (Today I Found Out; Fortune 14/04/2023). Blockbuster Online 2004/Total Access 2006; Netflix perdeu 55 mil assinantes num trimestre de 2007; Icahn pressiona, Antioco sai, Keyes encarece; Hastings: se não fosse a dívida podiam ter nos matado. Falência set/2010, dívidas > US$ 900 mi; +9 mil lojas no auge; última loja em Bend, Oregon. Americanas compra 127 lojas no Brasil por R$ 186,2 mi (jan/2007). Netflix +300 mi assinantes (301,6 mi 4T2024). | Vídeos Pexels: 9807747, 10599681, 37833296, 6335709, 6326861, 35606045, 6576494, 32365209. | v2 (roteiro revisado 20/10): receita 2000 US$ 4,96 bi (SEC 10-K); Netflix ~302 mi assinaturas fim 2024 (SEC); Chapter 11 2010 listou US$ 1,46 bi em dívidas (TechCrunch 23/09/2010) -> 'mais de 1 bilhão'; Americanas 127 lojas R$ 186,2 mi (Folha). Frase da dívida/Hastings removida."
 }
