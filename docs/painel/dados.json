@@ -1,5 +1,5 @@
 {
- "atualizado": "20/10/2026 09:15",
+ "atualizado": "20/10/2026 10:06",
  "fontes": {
   "custo_oculto": {
    "seguidores": 11,
@@ -283,44 +283,44 @@
   "tiktok": {
    "usuario": "Custo Oculto",
    "seguidores": 17,
-   "curtidas": 189,
+   "curtidas": 190,
    "videos": 11,
-   "views_total": 3958,
+   "views_total": 3971,
    "top": [
     {
      "titulo": "A Nestlé comprou a Garoto. O Cade proibiu. Mas a compra já tinha acontecido 🍫 Você sabia q",
      "url": "https://www.tiktok.com/@custooculto/video/7698432599659744533?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 1103,
-     "likes": 68
+     "views": 1106,
+     "likes": 69
     },
     {
      "titulo": "Nos anos 90, a Kolynos vendia o dobro da Colgate no Brasil. Em 1995, a Colgate comprou a r",
      "url": "https://www.tiktok.com/@custooculto/video/7697792320804097300?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 357,
+     "views": 358,
      "likes": 10
     },
     {
      "titulo": "Banco Master, parte final: onde está o caso hoje e o custo oculto que sobra pra todo mundo",
      "url": "https://www.tiktok.com/@custooculto/video/7697621451171450113?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 168,
+     "views": 169,
      "likes": 11
     },
     {
      "titulo": "Numa noite de janeiro, a Americanas anunciou um rombo de R$ 20 bilhões e o presidente, com",
      "url": "https://www.tiktok.com/@custooculto/video/7697282259216387346?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 213,
+     "views": 214,
      "likes": 21
     },
     {
      "titulo": "Banco Master, parte 3: a liquidação, a operação da PF e a conta de R$ 41 bilhões do FGC. N",
      "url": "https://www.tiktok.com/@custooculto/video/7697250527561747764?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 303,
+     "views": 304,
      "likes": 22
     },
     {
      "titulo": "Banco Master, parte 2: o CDB que pagava 140% do CDI e o banco público que entrou no negóci",
      "url": "https://www.tiktok.com/@custooculto/video/7696879537358982401?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 184,
+     "views": 185,
      "likes": 7
     }
    ],
@@ -378,17 +378,6 @@
   }
  },
  "agenda": [
-  {
-   "quando": "2026-10-20T10:00:00-03:00",
-   "titulo": "A loja que todo mundo conhece escondeu R$ 25 bilhões",
-   "tipo": "metricool",
-   "id": "metricool",
-   "url": "https://app.metricool.com/planner",
-   "plataforma_rede": "tiktok",
-   "chave": "tiktok",
-   "plataforma": "TikTok (Metricool)",
-   "sem_cancelar": true
-  },
   {
    "quando": "2026-10-20T12:00:00-03:00",
    "plataforma": "Custo Oculto (YouTube)",
@@ -465,6 +454,15 @@
   },
   {
    "quando": "2026-10-21T18:00:00-03:00",
+   "plataforma": "Custo Oculto (YouTube)",
+   "chave": "custo_oculto",
+   "titulo": "Brahma e Antarctica viraram uma só e ficaram com 3 de cada 4 cervejas do Brasil #shorts",
+   "tipo": "short",
+   "id": "ambev_short1",
+   "url": "https://studio.youtube.com/video/-GZbd2Z6gak/edit"
+  },
+  {
+   "quando": "2026-10-21T18:00:00-03:00",
    "plataforma": "Instagram",
    "chave": "instagram",
    "titulo": "Brahma e Antarctica viraram uma só e ficaram com 3 de cada 4 cervejas do Brasil",
@@ -492,7 +490,7 @@
   },
   {
    "quando": "2026-10-21T19:00:00-03:00",
-   "titulo": "O ex-presidente da Americanas foi preso na Espanha",
+   "titulo": "O ex-presidente da Americanas foi preso na Espanha · PAUSADO (rascunho)",
    "tipo": "metricool",
    "id": "metricool",
    "url": "https://app.metricool.com/planner",
@@ -512,7 +510,7 @@
   },
   {
    "quando": "2026-10-22T19:00:00-03:00",
-   "titulo": "Esse CDB pagava 140% do CDI. Era bom demais.",
+   "titulo": "Esse CDB pagava 140% do CDI. Era bom demais. · PAUSADO (rascunho)",
    "tipo": "metricool",
    "id": "metricool",
    "url": "https://app.metricool.com/planner",
@@ -541,7 +539,7 @@
   },
   {
    "quando": "2026-10-23T19:00:00-03:00",
-   "titulo": "Quem pagou a conta da Americanas",
+   "titulo": "Quem pagou a conta da Americanas · PAUSADO (rascunho)",
    "tipo": "metricool",
    "id": "metricool",
    "url": "https://app.metricool.com/planner",
@@ -561,7 +559,7 @@
   },
   {
    "quando": "2026-10-24T19:00:00-03:00",
-   "titulo": "Preso no aeroporto no dia em que o banco ia ser vendido",
+   "titulo": "Preso no aeroporto no dia em que o banco ia ser vendido · PAUSADO (rascunho)",
    "tipo": "metricool",
    "id": "metricool",
    "url": "https://app.metricool.com/planner",
@@ -581,7 +579,7 @@
   },
   {
    "quando": "2026-10-25T19:00:00-03:00",
-   "titulo": "1,6 milhão de pessoas no mesmo banco. E ele quebrou.",
+   "titulo": "1,6 milhão de pessoas no mesmo banco. E ele quebrou. · PAUSADO (rascunho)",
    "tipo": "metricool",
    "id": "metricool",
    "url": "https://app.metricool.com/planner",
@@ -787,7 +785,7 @@
   },
   {
    "quando": "2026-11-01T10:00:00-03:00",
-   "titulo": "O Brasil quer o Orkut de volta",
+   "titulo": "O Brasil quer o Orkut de volta · PAUSADO (rascunho)",
    "tipo": "metricool",
    "id": "metricool",
    "url": "https://app.metricool.com/planner",
@@ -798,7 +796,7 @@
   },
   {
    "quando": "2026-11-01T19:00:00-03:00",
-   "titulo": "300 mil pessoas querem o Orkut de volta",
+   "titulo": "300 mil pessoas querem o Orkut de volta · PAUSADO (rascunho)",
    "tipo": "metricool",
    "id": "metricool",
    "url": "https://app.metricool.com/planner",
@@ -809,7 +807,7 @@
   },
   {
    "quando": "2026-11-02T10:00:00-03:00",
-   "titulo": "O Brasil quer o Orkut de volta. Mas como ele nasceu?",
+   "titulo": "O Brasil quer o Orkut de volta. Mas como ele nasceu? · PAUSADO (rascunho)",
    "tipo": "metricool",
    "id": "metricool",
    "url": "https://app.metricool.com/planner",
@@ -838,7 +836,7 @@
   },
   {
    "quando": "2026-11-02T19:00:00-03:00",
-   "titulo": "O dia em que o Facebook passou o Orkut no Brasil",
+   "titulo": "O dia em que o Facebook passou o Orkut no Brasil · PAUSADO (rascunho)",
    "tipo": "metricool",
    "id": "metricool",
    "url": "https://app.metricool.com/planner",
@@ -849,7 +847,7 @@
   },
   {
    "quando": "2026-11-03T10:00:00-03:00",
-   "titulo": "Lan house, scraps e comunidades",
+   "titulo": "Lan house, scraps e comunidades · PAUSADO (rascunho)",
    "tipo": "metricool",
    "id": "metricool",
    "url": "https://app.metricool.com/planner",
@@ -869,7 +867,7 @@
   },
   {
    "quando": "2026-11-04T10:00:00-03:00",
-   "titulo": "O dia em que o Orkut perdeu",
+   "titulo": "O dia em que o Orkut perdeu · PAUSADO (rascunho)",
    "tipo": "metricool",
    "id": "metricool",
    "url": "https://app.metricool.com/planner",
@@ -898,7 +896,7 @@
   },
   {
    "quando": "2026-11-05T10:00:00-03:00",
-   "titulo": "O Orkut vai voltar? O que ninguém te contou",
+   "titulo": "O Orkut vai voltar? O que ninguém te contou · PAUSADO (rascunho)",
    "tipo": "metricool",
    "id": "metricool",
    "url": "https://app.metricool.com/planner",
