@@ -1,0 +1,76 @@
+{
+ "eventos": [
+  {
+   "t0": 5.71,
+   "t1": 8.71,
+   "tipo": "silencio",
+   "busca": null,
+   "vol": null,
+   "max": null,
+   "dur": 0.5,
+   "cena": "montagem | fala: Hoje, a Netflix tem mais de trezentos milhões de assinantes."
+  },
+  {
+   "t0": 30.69,
+   "t1": 33.69,
+   "tipo": "fx",
+   "busca": "rubber stamp hit",
+   "vol": 0.65,
+   "max": null,
+   "dur": null,
+   "cena": "stamp | fala: A Blockbuster recusou."
+  },
+  {
+   "t0": 29.7,
+   "t1": 32.7,
+   "tipo": "silencio",
+   "busca": null,
+   "vol": null,
+   "max": null,
+   "dur": 0.45,
+   "cena": "stamp | fala: A Blockbuster recusou."
+  },
+  {
+   "t0": 37.59,
+   "t1": 40.59,
+   "tipo": "silencio",
+   "busca": null,
+   "vol": null,
+   "max": null,
+   "dur": 0.3,
+   "cena": "bigtext | fala: Só que a Blockbuster ainda teve uma chance de reagir."
+  },
+  {
+   "t0": 50.19,
+   "t1": 53.19,
+   "tipo": "fx",
+   "busca": "rubber stamp hit",
+   "vol": 0.65,
+   "max": null,
+   "dur": null,
+   "cena": "stamp | fala: Em dois mil e dez... a Blockbuster pediu falência. Tinha mais de um bilhão de dólares em dívidas."
+  },
+  {
+   "t0": 48.83,
+   "t1": 51.83,
+   "tipo": "silencio",
+   "busca": null,
+   "vol": null,
+   "max": null,
+   "dur": 0.5,
+   "cena": "stamp | fala: Em dois mil e dez... a Blockbuster pediu falência. Tinha mais de um bilhão de dólares em dívidas."
+  },
+  {
+   "t0": 65.85,
+   "t1": 68.85,
+   "tipo": "silencio",
+   "busca": null,
+   "vol": null,
+   "max": null,
+   "dur": 0.5,
+   "cena": "montagem | fala: A rede que chegou a ter cerca de nove mil lojas no mundo, hoje ficou reduzida... a uma única loja oficial."
+  }
+ ],
+ "trilha": "lofi",
+ "roteiro": "A Blockbuster podia ter comprado a Netflix por cinquenta milhões de dólares... E recusou. Hoje, a Netflix tem mais de trezentos milhões de assinantes. A Netflix alugava DVD pelo correio e ainda dava prejuízo. Enquanto isso, a Blockbuster faturava quase cinco bilhões de dólares por ano e tinha milhares de lojas. Foi aí que os fundadores da Netflix fizeram uma proposta: comprem a nossa empresa. Preço: cinquenta milhões de dólares... A Blockbuster recusou. Segundo um dos fundadores, o executivo parecia estar segurando o riso. Só que a Blockbuster ainda teve uma chance de reagir. Criou seu próprio serviço online e começou a disputar clientes com a Netflix. Mas a empresa já carregava uma dívida enorme, e mudou de estratégia. Em dois mil e dez... a Blockbuster pediu falência. Tinha mais de um bilhão de dólares em dívidas. E no Brasil? Três anos antes, as Lojas Americanas tinham comprado as lojas da Blockbuster daqui. A rede que chegou a ter cerca de nove mil lojas no mundo, hoje ficou reduzida... a uma única loja oficial. Você chegou a alugar filme na Blockbuster?"
+}
