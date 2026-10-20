@@ -1,5 +1,5 @@
 {
- "atualizado": "20/10/2026 10:06",
+ "atualizado": "20/10/2026 11:51",
  "fontes": {
   "custo_oculto": {
    "seguidores": 11,
@@ -509,6 +509,33 @@
    "url": "https://studio.youtube.com/video/3KPkddYjUeY/edit"
   },
   {
+   "quando": "2026-10-22T18:00:00-03:00",
+   "plataforma": "Instagram",
+   "chave": "instagram",
+   "titulo": "A Blockbuster podia ter comprado a Netflix por 50 milhões de dólares. E recusou",
+   "tipo": "short",
+   "id": "blockbuster_short1",
+   "url": "https://raw.githubusercontent.com/tsvini/custo-oculto-midia/dd79ac48d8afcc7e42a8292ad7df4ed12ad2f1b8/blockbuster/blockbuster_short1.mp4"
+  },
+  {
+   "quando": "2026-10-22T18:00:00-03:00",
+   "plataforma": "Facebook",
+   "chave": "facebook",
+   "titulo": "A Blockbuster podia ter comprado a Netflix por 50 milhões de dólares. E recusou",
+   "tipo": "short",
+   "id": "blockbuster_short1",
+   "url": "https://raw.githubusercontent.com/tsvini/custo-oculto-midia/dd79ac48d8afcc7e42a8292ad7df4ed12ad2f1b8/blockbuster/blockbuster_short1.mp4"
+  },
+  {
+   "quando": "2026-10-22T18:00:00-03:00",
+   "plataforma": "TikTok",
+   "chave": "tiktok",
+   "titulo": "A Blockbuster podia ter comprado a Netflix por 50 milhões de dólares. E recusou",
+   "tipo": "short",
+   "id": "blockbuster_short1",
+   "url": "https://raw.githubusercontent.com/tsvini/custo-oculto-midia/dd79ac48d8afcc7e42a8292ad7df4ed12ad2f1b8/blockbuster/blockbuster_short1.mp4"
+  },
+  {
    "quando": "2026-10-22T19:00:00-03:00",
    "titulo": "Esse CDB pagava 140% do CDI. Era bom demais. · PAUSADO (rascunho)",
    "tipo": "metricool",
@@ -536,6 +563,33 @@
    "tipo": "short",
    "id": "kzc27cwf_oo",
    "url": "https://studio.youtube.com/video/kzc27cwf_oo/edit"
+  },
+  {
+   "quando": "2026-10-23T18:00:00-03:00",
+   "plataforma": "Instagram",
+   "chave": "instagram",
+   "titulo": "A Kodak inventou a câmera digital. E mesmo assim perdeu a guerra do digital",
+   "tipo": "short",
+   "id": "kodak_digital_short1",
+   "url": "https://raw.githubusercontent.com/tsvini/custo-oculto-midia/dd79ac48d8afcc7e42a8292ad7df4ed12ad2f1b8/kodak/kodak_short1.mp4"
+  },
+  {
+   "quando": "2026-10-23T18:00:00-03:00",
+   "plataforma": "Facebook",
+   "chave": "facebook",
+   "titulo": "A Kodak inventou a câmera digital. E mesmo assim perdeu a guerra do digital",
+   "tipo": "short",
+   "id": "kodak_digital_short1",
+   "url": "https://raw.githubusercontent.com/tsvini/custo-oculto-midia/dd79ac48d8afcc7e42a8292ad7df4ed12ad2f1b8/kodak/kodak_short1.mp4"
+  },
+  {
+   "quando": "2026-10-23T18:00:00-03:00",
+   "plataforma": "TikTok",
+   "chave": "tiktok",
+   "titulo": "A Kodak inventou a câmera digital. E mesmo assim perdeu a guerra do digital",
+   "tipo": "short",
+   "id": "kodak_digital_short1",
+   "url": "https://raw.githubusercontent.com/tsvini/custo-oculto-midia/dd79ac48d8afcc7e42a8292ad7df4ed12ad2f1b8/kodak/kodak_short1.mp4"
   },
   {
    "quando": "2026-10-23T19:00:00-03:00",
