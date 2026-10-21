@@ -88,7 +88,8 @@
         const yy = top + (86 + i * 50) * u, ind = nv * 22 * u, arq = /\.\w+$/.test(p) || /^\.\w/.test(p);
         if (arq) { ctx.save(); ctx.globalAlpha *= a; ctx.fillStyle = C.ac; rr(ctx, x + 32 * u + ind, yy - 13 * u, 20 * u, 26 * u, 4 * u); ctx.fill(); ctx.restore(); }
         else pastaIcone(ctx, x + 28 * u + ind, yy - 14 * u, 30 * u, a);
-        txt(ctx, p, font(arq ? 600 : 500, 24 * u), x + 68 * u + ind, yy, arq ? C.ac : C.txt, "left", a);
+        const fsN = Math.min(24 * u, 24 * u * (sideW - 88 * u - ind) / Math.max(1, tw(ctx, p, font(arq ? 600 : 500, 24 * u))));  // nome comprido encolhe pra caber no Explorer
+        txt(ctx, p, font(arq ? 600 : 500, fsN), x + 68 * u + ind, yy, arq ? C.ac : C.txt, "left", a);
       });
     }
     // aba
