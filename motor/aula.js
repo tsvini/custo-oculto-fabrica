@@ -222,7 +222,7 @@
       ctx.fillStyle = cor || C.ac; rr(ctx, x, y, cw, 10 * u, 5 * u); ctx.fill();
       const icY = V ? y + ch / 2 : y + 170 * u, icX = V ? x + 150 * u : x + cw / 2;
       ctx.beginPath(); ctx.arc(icX, icY, 80 * u, 0, 7); ctx.fillStyle = "rgba(255,255,255,.06)"; ctx.fill(); ctx.restore();
-      txt(ctx, ic, font(800, 84 * u), icX, icY + 4 * u, cor || C.ac, "center", ka);
+      txt(ctx, ic, caber(ctx, ic, 800, 84 * u, 130 * u), icX, icY + 4 * u, cor || C.ac, "center", ka);
       if (V) { txt(ctx, ti, caber(ctx, ti, 900, 60 * u, cw - 310 * u), x + 280 * u, y + ch / 2 - 36 * u, C.txt, "left", ka); txt(ctx, sub, font(500, 34 * u), x + 280 * u, y + ch / 2 + 34 * u, C.mut, "left", ka); }
       else { txt(ctx, ti, caber(ctx, ti, 900, 58 * u, cw - 50 * u), x + cw / 2, y + 330 * u, C.txt, "center", ka);
         const ws = String(sub || "").split(" "); let l1 = "", l2 = ""; ws.forEach((w) => { if ((l1 + " " + w).length < 22 && !l2) l1 = (l1 + " " + w).trim(); else l2 = (l2 + " " + w).trim(); });
@@ -536,7 +536,7 @@
     const u = c.u; const a = easeOut(t / 0.4); const W = 1500 * u, H = 700 * u; const x = c.cx - W / 2, y = topo(c, H);
     const claro = s.app === "explorer"; const fundo = claro ? "#f3f4f7" : C.win;
     const top = janela(ctx, x, y, W, H, u, s.titulo || (claro ? "Explorador de Arquivos" : "Visual Studio Code"), a, fundo);
-    const tc0 = s.clique_em || 1.2, passo = s.passo || 1.15; const M = s.menus || []; const cam = s.caminho || [];
+    const M = s.menus || []; const tc0 = s.clique_em || 1.2, passo = s.passo || Math.max(1.15, (dur * 0.62 - tc0) / Math.max(M.length, 1));; const cam = s.caminho || [];  // o menu fica aberto boa parte da frase
     const tFim = tc0 + M.length * passo; const fechado = t > tFim + 0.25;
     let corpo = top;
     const barra = (s.barra && s.barra.length ? s.barra : null) || (s.barra ? null : claro ? null : ["File", "Edit", "Selection", "View", "Go", "Run", "Terminal", "Help"]); const bx = [];

@@ -14,6 +14,19 @@ P.beginPath = function () { this.__r = null; return oBP.apply(this, arguments); 
 P.rect = function (x, y, w, h) { const tr = this.getTransform(); const a = [tr.a * x + tr.c * y + tr.e, tr.b * x + tr.d * y + tr.f], b = [tr.a * (x + w) + tr.c * (y + h) + tr.e, tr.b * (x + w) + tr.d * (y + h) + tr.f];
   this.__r = [Math.min(a[0], b[0]), Math.min(a[1], b[1]), Math.max(a[0], b[0]), Math.max(a[1], b[1])]; return oRect.apply(this, arguments); };
 P.clip = function () { if (this.__r) { const r = this.__r, c = this.__clip; this.__clip = c ? [Math.max(r[0], c[0]), Math.max(r[1], c[1]), Math.min(r[2], c[2]), Math.min(r[3], c[3])] : r; } return oClip.apply(this, arguments); };
+window.__cx = [];
+const oMove = P.moveTo, oLine = P.lineTo, oArcTo = P.arcTo, oArc = P.arc, oFill = P.fill, oFR = P.fillRect;
+const pt = (ctx, X, Y) => { const tr = ctx.getTransform(); return [tr.a * X + tr.c * Y + tr.e, tr.b * X + tr.d * Y + tr.f]; };
+const add = (ctx, X, Y) => { const [x, y] = pt(ctx, X, Y); const b = ctx.__bb || (ctx.__bb = [1e9, 1e9, -1e9, -1e9]); b[0] = Math.min(b[0], x); b[1] = Math.min(b[1], y); b[2] = Math.max(b[2], x); b[3] = Math.max(b[3], y); };
+const oBP2 = P.beginPath; P.beginPath = function () { this.__bb = null; return oBP2.apply(this, arguments); };
+P.moveTo = function (x, y) { add(this, x, y); return oMove.apply(this, arguments); };
+P.lineTo = function (x, y) { add(this, x, y); return oLine.apply(this, arguments); };
+P.arcTo = function (x1, y1, x2, y2) { add(this, x1, y1); add(this, x2, y2); return oArcTo.apply(this, arguments); };
+P.arc = function (x, y, r) { add(this, x - r, y - r); add(this, x + r, y + r); return oArc.apply(this, arguments); };
+const oRect2 = P.rect; P.rect = function (x, y, w, h) { add(this, x, y); add(this, x + w, y + h); return oRect2.apply(this, arguments); };
+const caixa = (ctx, b) => { if (!b || ctx.globalAlpha < 0.15) return; const w = b[2] - b[0], h = b[3] - b[1]; if (w < 60 || h < 30 || w * h > 1920 * 1080 * 0.85) return; window.__cx.push(b.slice()); };
+P.fill = function () { caixa(this, this.__bb); return oFill.apply(this, arguments); };
+P.fillRect = function (x, y, w, h) { const a = pt(this, x, y), b = pt(this, x + w, y + h); caixa(this, [Math.min(a[0], b[0]), Math.min(a[1], b[1]), Math.max(a[0], b[0]), Math.max(a[1], b[1])]); return oFR.apply(this, arguments); };
 const F = CanvasRenderingContext2D.prototype.fillText;
 CanvasRenderingContext2D.prototype.fillText = function (t, x, y) {
   try { const m = this.measureText(t); const tr = this.getTransform(); const w = m.width;
@@ -31,9 +44,14 @@ CanvasRenderingContext2D.prototype.fillText = function (t, x, y) {
 window.checar = async (tipo, s, t, dur) => {
   for (const w of [500, 600, 700, 800, 900]) await document.fonts.load(w + " 40px Inter"); await document.fonts.load("700 40px 'JetBrains Mono'");
   const cv = document.getElementById("cv"), ctx = cv.getContext("2d"); const W = 1920, H = 1080; ctx.setTransform(1,0,0,1,0,0); ctx.clearRect(0,0,W,H);
-  window.__txt = []; window.CO_MARCA = ["PLAYWRIGHT", "PARA LEIGOS"];
+  window.__txt = []; window.__cx = []; window.CO_MARCA = ["PLAYWRIGHT", "PARA LEIGOS"];
   COEngine.SCENES[tipo](ctx, { W, H, vertical: false, u: 1, cx: W / 2, cy: H * 0.45 }, t, dur, s, {});
   const T = window.__txt; const prob = [];
+  // texto que começa dentro de uma caixa e passa da borda dela
+  T.forEach((a) => { const mx = (a.x0 + a.x1) / 2, my = (a.y0 + a.y1) / 2;
+    const dentro = window.__cx.filter((b) => mx > b[0] && mx < b[2] && my > b[1] && my < b[3]); if (!dentro.length) return;
+    const b = dentro.reduce((p, q) => ((q[2] - q[0]) * (q[3] - q[1]) < (p[2] - p[0]) * (p[3] - p[1]) ? q : p));
+    if (a.x0 < b[0] - 2 || a.x1 > b[2] + 2 || a.y0 < b[1] - 2 || a.y1 > b[3] + 2) prob.push("estoura a caixa: " + a.t.slice(0, 40)); });
   T.forEach((a) => { if (a.x0 < -2 || a.x1 > W + 2 || a.y0 < -2 || a.y1 > H + 2) prob.push("fora da tela: " + a.t.slice(0, 40)); });
   for (let i = 0; i < T.length; i++) for (let j = i + 1; j < T.length; j++) { const a = T[i], b = T[j];
     if (a.t === b.t && Math.abs(a.x0 - b.x0) < 3 && Math.abs(a.y0 - b.y0) < 3) continue;  // mesmo texto desenhado 2x (contorno)
