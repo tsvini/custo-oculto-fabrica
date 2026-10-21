@@ -544,11 +544,12 @@
     if (cine) { const w = ch.map((x) => x.w.toUpperCase()).join(" "); let f = (c.vertical ? 132 : 104) * u; ctx.font = font(900, f); const tw = ctx.measureText(w).width; if (tw > c.W * 0.84) f *= c.W * 0.84 / tw;
       const k = easeOut((t - ch[0].s) / 0.1); drawC(ctx, w, font(900, f), c.cx, c.H * (c.vertical ? 0.52 : 0.5), { fill: COL.white, stroke: 10 * u, alpha: 1, scale: lerp(1.18, 1, k), shadow: 30 * u }); return; }
     let fs = (c.vertical ? 84 : 64) * u; const words = ch.map((w) => w.w.toUpperCase());
-    ctx.font = font(900, fs); let sp = ctx.measureText(" ").width + (safe ? 16 : 6) * u; let ws = words.map((w) => ctx.measureText(w).width + 16 * u);
+    ctx.font = font(900, fs); let sp = ctx.measureText(" ").width + (safe ? 22 : 16) * u; let ws = words.map((w) => ctx.measureText(w).width + 16 * u);
     let total = ws.reduce((a, b) => a + b, 0) + sp * (words.length - 1); const maxW = c.W * (safe ? 0.72 : c.vertical ? 0.86 : 0.7);
     if (total > maxW) { const k = maxW / total; fs *= k; sp *= k; ws = ws.map((x) => x * k); total = maxW; }
     let x = c.cx - total / 2; const y = c.H * (safe ? 0.68 : c.vertical ? 0.70 : (globalThis.CO_LEGENDA_Y || 0.84)); const ka = easeOut((t - ch[0].s) / 0.12);
-    ch.forEach((wd, i) => { const act = wd.s <= t && t < wd.e + 0.03;
+    let ai = -1; ch.forEach((wd, i) => { if (wd.s <= t) ai = i; }); if (ai >= 0 && t >= ch[ai].e + 0.03) ai = -1;  // só uma palavra acesa por vez (duas acesas juntas grudavam)
+    ch.forEach((wd, i) => { const act = i === ai;
       drawC(ctx, words[i], font(900, fs), x + ws[i] / 2, y, { fill: act ? COL.gold : COL.white, stroke: 9 * u, alpha: ka, scale: act ? 1.08 : 1 }); x += ws[i] + sp; });
   }
 
@@ -698,7 +699,7 @@
         ctx.save(); ctx.globalCompositeOperation = "saturation"; ctx.fillStyle = "#000"; ctx.fillRect(0, 0, c.W, c.H); ctx.restore();
         const vg = ctx.createRadialGradient(c.cx, c.H / 2, Math.min(c.W, c.H) * 0.3, c.cx, c.H / 2, Math.max(c.W, c.H) * 0.75);
         vg.addColorStop(0, "rgba(0,0,0,0)"); vg.addColorStop(1, "rgba(0,0,0,.7)"); ctx.fillStyle = vg; ctx.fillRect(0, 0, c.W, c.H); }
-      if (sc.type !== "endcard" && sc.type !== "chapter" && sc.type !== "capa") drawCaptions(ctx, c, t, tl.chunks, tl.safe);
+      if (!globalThis.CO_SEM_LEGENDA && sc.type !== "endcard" && sc.type !== "chapter" && sc.type !== "capa") drawCaptions(ctx, c, t, tl.chunks, tl.safe);
       if (c.vertical) { ctx.fillStyle = css(COL.gold); ctx.fillRect(0, 0, c.W * t / tl.total, 10); }
       if (globalThis.CO_SELO && sc.type !== "endcard") { const f = font(800, 26 * c.u); ctx.font = f; const w = ctx.measureText(globalThis.CO_SELO).width + 44 * c.u; const yy = c.H * 0.06;
         box(ctx, 40 * c.u, yy - 24 * c.u, w, 48 * c.u, 24 * c.u, [63, 214, 138], 0.95); drawC(ctx, globalThis.CO_SELO, f, 40 * c.u + w / 2, yy, { fill: [11, 26, 18] }); }

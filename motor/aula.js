@@ -41,7 +41,16 @@
     ctx.fillStyle = "#fff"; ctx.strokeStyle = "#111"; ctx.lineWidth = 1.6; ctx.shadowColor = "rgba(0,0,0,.5)"; ctx.shadowBlur = 6; ctx.fill(); ctx.stroke(); ctx.restore();
   }
   const topo = (c, H) => (c.vertical ? c.H * 0.2 : c.H * 0.38 - H / 2);  // janelas acima da faixa e da legenda karaokê
+  function seloColinha(ctx, c, t, s) {  // "já está na sua colinha": aparece no canto e some
+    const t0 = s.colinha_em === undefined ? 1.2 : s.colinha_em; const k = easeOut((t - t0) / 0.35) * (1 - easeOut((t - t0 - (s.colinha_dur || 3.2)) / 0.4)); if (k <= 0) return;
+    const u = c.u, f = font(800, 30 * u), tx = global.CO_IDIOMA === "en" ? "It's in your cheat sheet" : "Já está na sua colinha"; const w = tw(ctx, tx, f) + 120 * u, h = 76 * u;
+    const x = c.W - w - 40 * u + (1 - k) * 60 * u, y = 40 * u;
+    ctx.save(); ctx.globalAlpha = k; ctx.shadowColor = "rgba(0,0,0,.45)"; ctx.shadowBlur = 24 * u; rr(ctx, x, y, w, h, 38 * u); ctx.fillStyle = C.yel; ctx.fill(); ctx.shadowColor = "transparent";
+    const ix = x + 26 * u, iy = y + 16 * u; ctx.fillStyle = "#fff"; rr(ctx, ix, iy, 34 * u, 44 * u, 5 * u); ctx.fill(); ctx.fillStyle = "#c9a400"; [0, 1, 2].forEach((i) => ctx.fillRect(ix + 7 * u, iy + (12 + i * 9) * u, 20 * u, 3 * u)); ctx.restore();
+    txt(ctx, tx, f, x + 76 * u, y + h / 2, "#1a1400", "left", k);
+  }
   function legenda(ctx, c, t, s) {  // faixa explicativa embaixo da janela
+    if (s.colinha) seloColinha(ctx, c, t, s);
     if (!s.legenda) return; const u = c.u; const a = easeOut((t - (s.legenda_em || 0.6)) / 0.4); if (a <= 0) return;
     const f = font(800, 44 * u); const w = tw(ctx, s.legenda, f) + 80 * u; const y = c.H * (c.vertical ? 0.80 : 0.795);
     ctx.save(); ctx.globalAlpha = a; rr(ctx, c.cx - w / 2, y - 44 * u + (1 - a) * 20 * u, w, 88 * u, 44 * u); ctx.fillStyle = C.ac; ctx.fill(); ctx.restore();
@@ -52,12 +61,12 @@
     rr(ctx, x, y, s * 0.42, s * 0.2, s * 0.05); ctx.fill(); rr(ctx, x, y + s * 0.1, s, s * 0.7, s * 0.07); ctx.fill();
     ctx.fillStyle = "rgba(255,255,255,.25)"; rr(ctx, x, y + s * 0.18, s, s * 0.08, s * 0.03); ctx.fill(); ctx.restore(); }
   // destaque de sintaxe simples (JS)
-  const KW = /^(const|let|var|function|return|if|else|describe|it|context|beforeEach|before|after|afterEach|async|await|new|import|from|export|default)$/;
+  const KW = /^(const|let|var|function|return|if|else|describe|it|context|beforeEach|before|after|afterEach|async|await|new|import|from|export|default|for|of|class|constructor|this|require)$/;
   function tokens(linha) {
     const out = []; const re = /(\/\/.*$)|('[^']*'|"[^"]*"|`[^`]*`)|(\b\d+\b)|([A-Za-z_$][\w$]*)|(\s+)|(.)/g; let m;
     while ((m = re.exec(linha))) {
       if (m[1]) out.push([m[1], C.mut]); else if (m[2]) out.push([m[2], "#f0a868"]); else if (m[3]) out.push([m[3], "#c792ea"]);
-      else if (m[4]) { const nx = linha.slice(re.lastIndex).trimStart()[0]; out.push([m[4], KW.test(m[4]) ? "#c792ea" : m[4] === "cy" ? C.ac : nx === "(" ? C.ac2 : C.txt]); }
+      else if (m[4]) { const nx = linha.slice(re.lastIndex).trimStart()[0]; out.push([m[4], KW.test(m[4]) ? "#c792ea" : (m[4] === "cy" || m[4] === "page" || m[4] === "test" || m[4] === "expect" || m[4] === "request") ? C.ac : nx === "(" ? C.ac2 : C.txt]); }
       else out.push([m[0], C.txt]);
     }
     return out;
@@ -799,4 +808,243 @@
     }
     legenda(ctx, c, t, s);
   };
+
+  // ================= PLAYWRIGHT =================
+  const PW = { bg: "#1e1e1e", pan: "#252526", bd: "#3c3c3c", tx: "#cccccc", mut: "#8b8b8b", sel: "#04395e", ok: "#3fb950", bad: "#f85149", run: "#d29922", blue: "#4fc1ff" };
+  // bolinha de status: ok / falhou / rodando / espera
+  function pwStatus(ctx, u, x, y, st, t, a) {
+    ctx.save(); ctx.globalAlpha *= a; const r = 11 * u;
+    if (st === "ok") { ctx.beginPath(); ctx.arc(x, y, r, 0, 7); ctx.fillStyle = PW.ok; ctx.fill(); ctx.strokeStyle = "#0d1117"; ctx.lineWidth = 3 * u; ctx.beginPath(); ctx.moveTo(x - 5 * u, y); ctx.lineTo(x - 1 * u, y + 4 * u); ctx.lineTo(x + 6 * u, y - 4 * u); ctx.stroke(); }
+    else if (st === "falhou") { ctx.beginPath(); ctx.arc(x, y, r, 0, 7); ctx.fillStyle = PW.bad; ctx.fill(); ctx.strokeStyle = "#0d1117"; ctx.lineWidth = 3 * u; ctx.beginPath(); ctx.moveTo(x - 4 * u, y - 4 * u); ctx.lineTo(x + 4 * u, y + 4 * u); ctx.moveTo(x + 4 * u, y - 4 * u); ctx.lineTo(x - 4 * u, y + 4 * u); ctx.stroke(); }
+    else if (st === "rodando") { ctx.strokeStyle = PW.run; ctx.lineWidth = 3.5 * u; ctx.beginPath(); ctx.arc(x, y, r - 1 * u, t * 7, t * 7 + 4.4); ctx.stroke(); }
+    else { ctx.strokeStyle = "#6e7681"; ctx.lineWidth = 2.5 * u; ctx.beginPath(); ctx.arc(x, y, r - 2 * u, 0, 7); ctx.stroke(); }
+    ctx.restore();
+  }
+  function pwPlay(ctx, u, x, y, a, cor = PW.tx) { ctx.save(); ctx.globalAlpha *= a; ctx.fillStyle = cor; ctx.beginPath(); ctx.moveTo(x - 6 * u, y - 8 * u); ctx.lineTo(x + 8 * u, y); ctx.lineTo(x - 6 * u, y + 8 * u); ctx.closePath(); ctx.fill(); ctx.restore(); }
+  function corta(ctx, t, f, max) { if (tw(ctx, t, f) <= max) return t; let s = t; while (s.length > 3 && tw(ctx, s + "…", f) > max) s = s.slice(0, -1); return s + "…"; }
+  // linha de tempo das ações: devolve quantas já rodaram (fração) e o instante do fim
+  function pwTempo(s, dur, n) { const t0 = s.roda_em === undefined ? 1.0 : s.roda_em; const passo = s.passo || Math.max(0.35, Math.min(0.9, (dur * 0.62 - t0) / Math.max(n, 1))); return { t0, passo, fim: t0 + n * passo }; }
+  // snapshot do site com faixa de miniaturas (filmstrip) e realce do elemento
+  function pwSnapshot(ctx, c, t, s, media, x, y, w, h, a, kFeito, claro) {
+    const u = c.u; const m = media && media[s.media]; const el = m && (m.video || m.img);
+    const fh = 84 * u; ctx.save(); ctx.globalAlpha = a; ctx.fillStyle = claro ? "#f3f3f3" : "#1b1b1b"; ctx.fillRect(x, y, w, fh); ctx.restore();
+    const nT = 7, tw0 = (w - 40 * u) / nT;
+    for (let i = 0; i < nT; i++) { const ki = clamp(kFeito * nT - i); if (ki <= 0) continue; const tx = x + 20 * u + i * tw0;
+      ctx.save(); ctx.globalAlpha = a * ki; rr(ctx, tx + 4 * u, y + 12 * u, tw0 - 8 * u, fh - 24 * u, 4 * u); ctx.fillStyle = "#fff"; ctx.fill(); ctx.clip(); if (el) { const iw = el.videoWidth || el.width, ih = el.videoHeight || el.height; ctx.drawImage(el, tx + 4 * u, y + 12 * u, tw0 - 8 * u, (tw0 - 8 * u) * ih / iw); } ctx.restore(); }
+    // abas Action / Before / After
+    const ty = y + fh; ctx.save(); ctx.globalAlpha = a; ctx.fillStyle = claro ? "#fafafa" : PW.pan; ctx.fillRect(x, ty, w, 52 * u); ctx.restore();
+    ["Action", "Before", "After"].forEach((n, i) => { const on = i === (s.aba_snapshot || 0); const xx = x + 30 * u + i * 130 * u;
+      txt(ctx, n, font(on ? 700 : 500, 22 * u), xx, ty + 26 * u, on ? (claro ? "#111" : "#fff") : PW.mut, "left", a); if (on) { ctx.save(); ctx.globalAlpha = a; ctx.fillStyle = PW.blue; ctx.fillRect(xx, ty + 46 * u, tw(ctx, n, font(700, 22 * u)), 4 * u); ctx.restore(); } });
+    const sy = ty + 52 * u, sh = y + h - sy; const e = s.elem; const foco = e ? [(e[0] + e[2]) / 2, (e[1] + e[3]) / 2] : [0.5, 0.3];
+    const p = print(ctx, el, x, sy, w, sh, a, "#fff", foco, s.zoom_site || 1.6);
+    if (!el) txt(ctx, s.url || "site", font(700, 30 * u), x + w / 2, sy + sh / 2, C.mut, "center", a);
+    return p;
+  }
+
+  // UI MODE: {type:"pw_ui", media:"site_sauce", url:"https://www.saucedemo.com", inspecionar:"#user-name",
+  //   arquivos:[["login.spec.js", ["entra com usuário e senha", ["mostra erro", "ok"]]]], roda:0, status:"ok"|"falhou",
+  //   acoes:[["Navigate to", "/"], ["Fill", "getByTestId('username')"]], projeto:"chromium", legenda:"..."}
+  S.pw_ui = (ctx, c, t, dur, s, media) => {
+    const u = c.u; const a = easeOut(t / 0.4); const W = 1720 * u, H = 760 * u; const x = c.cx - W / 2, y = topo(c, H);
+    const top = janela(ctx, x, y, W, H, u, "Playwright Test", a, PW.bg);
+    const LW = 470 * u, MW = 430 * u; const A = s.acoes || []; const tm = pwTempo(s, dur, A.length);
+    const feitos = s.pronto ? A.length : clamp((t - tm.t0) / tm.passo, 0, A.length); const fim = s.pronto || t >= tm.fim; const falha = s.status === "falhou";
+    // painel de testes
+    ctx.save(); ctx.globalAlpha = a; ctx.fillStyle = PW.pan; ctx.fillRect(x, top, LW, y + H - top); ctx.fillStyle = PW.bd; ctx.fillRect(x + LW, top, 2 * u, y + H - top); ctx.restore();
+    txt(ctx, "TESTS", font(800, 20 * u), x + 24 * u, top + 34 * u, PW.mut, "left", a);
+    const btnRun = [x + LW - 44 * u, top + 34 * u]; pwPlay(ctx, u, btnRun[0], btnRun[1], a, t > tm.t0 - 0.3 && !fim ? PW.run : PW.tx);
+    ctx.save(); ctx.globalAlpha = a; rr(ctx, x + 20 * u, top + 62 * u, LW - 40 * u, 46 * u, 6 * u); ctx.fillStyle = "#3c3c3c"; ctx.fill(); ctx.restore();
+    txt(ctx, s.filtro || "Filter (e.g. text, @tag)", font(500, 20 * u), x + 36 * u, top + 85 * u, s.filtro ? PW.tx : "#9d9d9d", "left", a);
+    txt(ctx, "Projects: " + (s.projeto || "chromium"), font(600, 20 * u), x + 24 * u, top + 136 * u, PW.blue, "left", a);
+    let yy = top + 186 * u, gi = 0, alvo = null;
+    (s.arquivos || [["example.spec.js", ["has title"]]]).forEach(([arq, testes]) => {
+      txt(ctx, "▾", font(700, 20 * u), x + 26 * u, yy, PW.mut, "left", a);
+      ctx.save(); ctx.globalAlpha = a; ctx.fillStyle = "#e8b04a"; rr(ctx, x + 50 * u, yy - 12 * u, 20 * u, 24 * u, 3 * u); ctx.fill(); ctx.restore();
+      txt(ctx, arq, font(700, 23 * u), x + 82 * u, yy, PW.tx, "left", a); yy += 48 * u;
+      testes.forEach((tt) => { const [nome, est0] = Array.isArray(tt) ? tt : [tt, s.pronto ? (s.status === "falhou" ? "falhou" : "ok") : "espera"]; const eu = gi === (s.roda || 0);
+        const st = eu ? (s.pronto ? (falha ? "falhou" : "ok") : t < tm.t0 ? "espera" : fim ? (falha ? "falhou" : "ok") : "rodando") : est0;
+        if (eu) { ctx.save(); ctx.globalAlpha = a * 0.9; ctx.fillStyle = PW.sel; ctx.fillRect(x, yy - 22 * u, LW, 44 * u); ctx.restore(); alvo = [x + LW - 44 * u, yy]; }
+        pwStatus(ctx, u, x + 66 * u, yy, st, t, a); txt(ctx, corta(ctx, nome, font(500, 22 * u), LW - 160 * u), font(500, 22 * u), x + 92 * u, yy, PW.tx, "left", a);
+        if (eu) pwPlay(ctx, u, x + LW - 44 * u, yy, a); yy += 44 * u; gi++; });
+      yy += 10 * u;
+    });
+    // painel de ações
+    const mx = x + LW + 2 * u; ctx.save(); ctx.globalAlpha = a; ctx.fillStyle = PW.bg; ctx.fillRect(mx, top, MW, y + H - top); ctx.fillStyle = PW.bd; ctx.fillRect(mx + MW, top, 2 * u, y + H - top); ctx.restore();
+    txt(ctx, "Actions", font(700, 22 * u), mx + 24 * u, top + 34 * u, "#fff", "left", a); ctx.save(); ctx.globalAlpha = a; ctx.fillStyle = PW.blue; ctx.fillRect(mx + 24 * u, top + 54 * u, 76 * u, 4 * u); ctx.restore();
+    txt(ctx, "Metadata", font(500, 22 * u), mx + 130 * u, top + 34 * u, PW.mut, "left", a);
+    yy = top + 100 * u; const nF = Math.floor(feitos);
+    A.forEach(([nome, arg, ms], i) => { const k = clamp(feitos - i); if (k <= 0) return; const atual = i === Math.min(A.length - 1, nF - (fim ? 1 : 0)); const ruim = falha && fim && i === A.length - 1;
+      if (atual) { ctx.save(); ctx.globalAlpha = a * k; ctx.fillStyle = ruim ? "rgba(248,81,73,.22)" : PW.sel; ctx.fillRect(mx, yy - 22 * u, MW, 44 * u); ctx.restore(); }
+      txt(ctx, nome, font(700, 21 * u), mx + 24 * u, yy, ruim ? PW.bad : "#fff", "left", a * k);
+      const nw = tw(ctx, nome, font(700, 21 * u)); txt(ctx, corta(ctx, arg || "", font(500, 19 * u, MONO), MW - nw - 120 * u), font(500, 19 * u, MONO), mx + 34 * u + nw, yy, PW.blue, "left", a * k);
+      txt(ctx, ms || (40 + ((i * 37) % 160)) + "ms", font(500, 18 * u), mx + MW - 18 * u, yy, PW.mut, "right", a * k); yy += 44 * u; });
+    // snapshot
+    const sx = mx + MW + 2 * u; const p = pwSnapshot(ctx, c, t, s, media, sx, top, x + W - sx, y + H - top, a, feitos / Math.max(A.length, 1));
+    if (s.elem && feitos > 0.5) caixaElem(ctx, u, p, s.elem, a * easeOut((feitos - 0.5) / 0.5), s.rotulo || null);
+    if (fim && (s.selo_status !== false)) { const ka = easeOut((t - tm.fim) / 0.35) * (s.pronto ? 1 : 1); const lab = falha ? "FALHOU" : "PASSOU"; const f = font(900, 36 * u); const bw = tw(ctx, lab, f) + 60 * u;
+      ctx.save(); ctx.globalAlpha = ka; rr(ctx, x + W - bw - 30 * u, y + H - 92 * u, bw, 62 * u, 31 * u); ctx.fillStyle = falha ? C.red : C.ac; ctx.fill(); ctx.restore(); txt(ctx, lab, f, x + W - bw / 2 - 30 * u, y + H - 61 * u, "#0b1a12", "center", ka); }
+    if (s.clique !== false && alvo && !s.pronto) rota(ctx, u, [[alvo[0], alvo[1], tm.t0 - 0.1]], t);
+    legenda(ctx, c, t, s);
+  };
+
+  // TRACE VIEWER: {type:"pw_trace", media:"...", acoes:[["Navigate to","/"],...], sel:3, falhou:true, erro:"...", aba:"Errors"|"Call"|"Source", codigo:"...", linha:7}
+  S.pw_trace = (ctx, c, t, dur, s, media) => {
+    const u = c.u; const a = easeOut(t / 0.4); const W = 1720 * u, H = 760 * u; const x = c.cx - W / 2, y = topo(c, H);
+    const top = janela(ctx, x, y, W, H, u, "Playwright Trace Viewer", a, PW.bg);
+    const A = s.acoes || []; const LW = 500 * u; const sel = s.sel === undefined ? A.length - 1 : s.sel;
+    // a seleção anda de cima até a ação escolhida
+    const tSel = s.sel_em === undefined ? 1.0 : s.sel_em; const curSel = Math.round(lerp(0, sel, easeInOut((t - tSel) / Math.max(0.6, sel * 0.25))));
+    ctx.save(); ctx.globalAlpha = a; ctx.fillStyle = PW.pan; ctx.fillRect(x, top, LW, y + H - top); ctx.fillStyle = PW.bd; ctx.fillRect(x + LW, top, 2 * u, y + H - top); ctx.restore();
+    txt(ctx, "Actions", font(700, 22 * u), x + 24 * u, top + 34 * u, "#fff", "left", a); ctx.save(); ctx.globalAlpha = a; ctx.fillStyle = PW.blue; ctx.fillRect(x + 24 * u, top + 54 * u, 76 * u, 4 * u); ctx.restore();
+    txt(ctx, "Metadata", font(500, 22 * u), x + 130 * u, top + 34 * u, PW.mut, "left", a);
+    let yy = top + 100 * u;
+    A.forEach(([nome, arg, ms], i) => { const on = i === curSel; const ruim = s.falhou && i === A.length - 1;
+      if (on) { ctx.save(); ctx.globalAlpha = a; ctx.fillStyle = ruim ? "rgba(248,81,73,.25)" : PW.sel; ctx.fillRect(x, yy - 22 * u, LW, 44 * u); ctx.restore(); }
+      if (ruim) pwStatus(ctx, u, x + 22 * u, yy, "falhou", t, a);
+      txt(ctx, nome, font(700, 21 * u), x + 42 * u, yy, ruim ? PW.bad : "#fff", "left", a); const nw = tw(ctx, nome, font(700, 21 * u));
+      txt(ctx, corta(ctx, arg || "", font(500, 19 * u, MONO), LW - nw - 140 * u), font(500, 19 * u, MONO), x + 52 * u + nw, yy, PW.blue, "left", a);
+      txt(ctx, ms || (40 + ((i * 37) % 160)) + "ms", font(500, 18 * u), x + LW - 18 * u, yy, PW.mut, "right", a); yy += 44 * u; });
+    const sx = x + LW + 2 * u, sw = x + W - sx, bh = 230 * u; const sh = y + H - top - bh;
+    const p = pwSnapshot(ctx, c, t, s, media, sx, top, sw, sh, a, 1);
+    if (s.elem && curSel === sel) caixaElem(ctx, u, p, s.elem, a * easeOut((t - tSel - 0.6) / 0.4), s.rotulo || null, s.falhou ? "rgba(248,81,73,.45)" : undefined);
+    // painel de baixo
+    const by = top + sh; ctx.save(); ctx.globalAlpha = a; ctx.fillStyle = PW.pan; ctx.fillRect(sx, by, sw, bh); ctx.fillStyle = PW.bd; ctx.fillRect(sx, by, sw, 2 * u); ctx.restore();
+    const abas = ["Call", "Log", "Errors", "Console", "Network", "Source"]; const ab = s.aba || (s.falhou ? "Errors" : "Call"); let ax = sx + 24 * u;
+    abas.forEach((n) => { const on = n === ab; const f = font(on ? 700 : 500, 21 * u); txt(ctx, n + (n === "Errors" && s.falhou ? " 1" : ""), f, ax, by + 32 * u, on ? "#fff" : PW.mut, "left", a);
+      const w = tw(ctx, n + (n === "Errors" && s.falhou ? " 1" : ""), f); if (on) { ctx.save(); ctx.globalAlpha = a; ctx.fillStyle = PW.blue; ctx.fillRect(ax, by + 52 * u, w, 4 * u); ctx.restore(); } ax += w + 40 * u; });
+    const ka = easeOut((t - tSel - Math.max(0.6, sel * 0.25) - 0.2) / 0.4);
+    if (ab === "Errors" && s.erro) { String(s.erro).split("\n").slice(0, 4).forEach((l, i) => txt(ctx, corta(ctx, l, font(600, 20 * u, MONO), sw - 60 * u), font(600, 20 * u, MONO), sx + 28 * u, by + 92 * u + i * 34 * u, i ? PW.tx : PW.bad, "left", a * ka)); }
+    else if (ab === "Source" && s.codigo) { const L = String(s.codigo).split("\n"); const ln = s.linha || 1; const ini = Math.max(0, ln - 3);
+      L.slice(ini, ini + 4).forEach((l, i) => { const n = ini + i + 1; if (n === ln) { ctx.save(); ctx.globalAlpha = a * ka * 0.6; ctx.fillStyle = s.falhou ? "rgba(248,81,73,.35)" : PW.sel; ctx.fillRect(sx, by + 92 * u + i * 34 * u - 17 * u, sw, 34 * u); ctx.restore(); }
+        txt(ctx, String(n), font(500, 19 * u, MONO), sx + 50 * u, by + 92 * u + i * 34 * u, PW.mut, "right", a); let xx = sx + 70 * u; for (const [tk, cor] of tokens(l)) { txt(ctx, tk, font(500, 20 * u, MONO), xx, by + 92 * u + i * 34 * u, cor, "left", a); xx += tw(ctx, tk, font(500, 20 * u, MONO)); } }); }
+    else { const ac = A[sel] || ["", ""]; [["action", ac[0]], ["locator", ac[1] || "—"], ["duration", ac[2] || "120ms"]].forEach(([k, v], i) => { txt(ctx, k, font(600, 20 * u), sx + 28 * u, by + 92 * u + i * 38 * u, PW.mut, "left", a * ka); txt(ctx, v, font(600, 20 * u, MONO), sx + 170 * u, by + 92 * u + i * 38 * u, PW.tx, "left", a * ka); }); }
+    legenda(ctx, c, t, s);
+  };
+
+  // CODEGEN / INSPECTOR: navegador (esq.) + Playwright Inspector (dir.)
+  // modo "gravar": {type:"pw_codegen", media:"site_sauce", url:"https://www.saucedemo.com", inspecionar_varios:["#user-name","#password","#login-button"],
+  //   acoes:[{elem:0, valor:"standard_user", linha:"await page.locator('[data-test=\"username\"]').fill('standard_user');"}, {elem:2, linha:"..."}]}
+  // modo "pick": {..., modo:"pick", elem:0, locator:"getByTestId('username')"}   modo "debug": {..., modo:"debug", codigo:"...", linhas_passo:[4,5,6]}
+  S.pw_codegen = (ctx, c, t, dur, s, media) => {
+    const u = c.u; const a = easeOut(t / 0.4); const modo = s.modo || "gravar";
+    const BW = 940 * u, IW = 800 * u, H = 740 * u, gap = 20 * u; const bx = c.cx - (BW + IW + gap) / 2, ix = bx + BW + gap, y = topo(c, H);
+    // navegador
+    const btop = janela(ctx, bx, y, BW, H, u, "Chromium", a, "#fff");
+    ctx.save(); ctx.globalAlpha = a; ctx.fillStyle = "#eef0f4"; ctx.fillRect(bx, btop, BW, 60 * u); rr(ctx, bx + 24 * u, btop + 12 * u, BW - 48 * u, 36 * u, 18 * u); ctx.fillStyle = "#fff"; ctx.fill(); ctx.restore();
+    txt(ctx, (s.url || "").replace(/^https?:\/\//, ""), font(500, 20 * u), bx + 50 * u, btop + 30 * u, "#3c4043", "left", a);
+    const m = media && media[s.media]; const el = m && (m.video || m.img); const els = s.elems || (s.elem && Array.isArray(s.elem[0]) ? s.elem : s.elem ? [s.elem] : []);
+    const sy = btop + 60 * u, sh = y + H - sy; const f0 = els[0] ? [(els[0][0] + els[0][2]) / 2, (els[0][1] + els[0][3]) / 2] : [0.5, 0.35];
+    const p = print(ctx, el, bx, sy, BW, sh, a, "#fff", f0, s.zoom_site || 1.7);
+    // inspector
+    const itop = janela(ctx, ix, y, IW, H, u, "Playwright Inspector", a, "#ffffff");
+    ctx.save(); ctx.globalAlpha = a; ctx.fillStyle = "#f3f3f3"; ctx.fillRect(ix, itop, IW, 64 * u); ctx.fillStyle = "#e0e0e0"; ctx.fillRect(ix, itop + 64 * u, IW, 2 * u); ctx.restore();
+    const gravando = modo === "gravar", pick = modo === "pick", dbg = modo === "debug";
+    let tx0 = ix + 24 * u;
+    const botao = (rot, ativo, cor) => { const f = font(700, 20 * u); const w = tw(ctx, rot, f) + (cor ? 44 : 24) * u; ctx.save(); ctx.globalAlpha = a; rr(ctx, tx0, itop + 14 * u, w, 36 * u, 6 * u); ctx.fillStyle = ativo ? "#dbe9ff" : "#fff"; ctx.fill(); ctx.strokeStyle = ativo ? "#3b82f6" : "#cfcfcf"; ctx.lineWidth = 2 * u; ctx.stroke();
+      if (cor) { ctx.beginPath(); ctx.arc(tx0 + 20 * u, itop + 32 * u, 7 * u, 0, 7); ctx.fillStyle = cor; ctx.fill(); } ctx.restore(); txt(ctx, rot, f, tx0 + (cor ? 34 : 12) * u, itop + 32 * u, "#202124", "left", a); const r = [tx0, itop + 32 * u, w]; tx0 += w + 12 * u; return r; };
+    let bPick = null;
+    if (dbg) { botao("▶ Resume", false); botao("⤼ Step over", true); botao("Pick locator", false); }
+    else { botao("Record", gravando, gravando ? (Math.floor(t * 2) % 2 ? "#e53935" : "#ff6b6b") : "#9e9e9e"); bPick = botao("Pick locator", pick); botao("Copy", false); }
+    if (!dbg) txt(ctx, "Target: Test Runner ▾", font(600, 19 * u), ix + IW - 24 * u, itop + 32 * u, "#5f6368", "right", a);
+    // código
+    const base = dbg ? String(s.codigo || "").split("\n") : ["import { test, expect } from '@playwright/test';", "", "test('test', async ({ page }) => {", "  await page.goto('" + (s.url || "https://www.saucedemo.com") + "/');"];
+    const AC = s.acoes || []; const t0 = s.inicio_em === undefined ? 1.4 : s.inicio_em; const passo = Math.max(1.0, Math.min(2.2, (dur * 0.8 - t0) / Math.max(AC.length, 1)));
+    const tClick = AC.map((_, i) => t0 + 0.6 + i * passo); const L = base.slice(); const novas = [];
+    if (gravando) { AC.forEach((ac, i) => { if (t > tClick[i] + 0.25) { L.push("  " + ac.linha); novas.push([L.length, tClick[i] + 0.25]); } }); L.push("});"); }
+    const fs = Math.min(21 * u, (IW - 90 * u) / (Math.max(30, ...L.map((l) => l.length)) * 0.6)); const lh = fs * 1.75; let yy = itop + 100 * u;
+    const passoDbg = dbg ? (s.linhas_passo || []) : []; const tDbg = dbg ? Math.max(0.8, (dur * 0.75 - 1) / Math.max(passoDbg.length, 1)) : 0; const iDbg = dbg ? Math.min(passoDbg.length - 1, Math.floor(clamp((t - 1) / tDbg, 0, passoDbg.length - 0.001))) : -1; const linhaDbg = passoDbg[iDbg];
+    ctx.save(); ctx.beginPath(); ctx.rect(ix, itop + 66 * u, IW, (pick ? H - 300 * u : H - 120 * u)); ctx.clip();
+    L.forEach((ln, i) => { const n = i + 1; const nv = novas.find((q) => q[0] === n); const kn = nv ? easeOut((t - nv[1]) / 0.3) : 1;
+      if (nv) { const hl = 1 - easeOut((t - nv[1] - 1.2) / 0.6); if (hl > 0) { ctx.save(); ctx.globalAlpha = a * 0.25 * hl; ctx.fillStyle = "#3fd68a"; ctx.fillRect(ix, yy - lh / 2, IW, lh); ctx.restore(); } }
+      if (dbg && n === linhaDbg) { ctx.save(); ctx.globalAlpha = a * 0.35; ctx.fillStyle = "#ffd23f"; ctx.fillRect(ix, yy - lh / 2, IW, lh); ctx.restore(); txt(ctx, "▶", font(800, fs * 0.8), ix + 12 * u, yy, "#c77c00", "left", a); }
+      txt(ctx, String(n), font(500, fs * 0.85, MONO), ix + 56 * u, yy, "#9aa0a6", "right", a * kn); let xx = ix + 72 * u;
+      for (const [tk, cor] of tokens(ln)) { const cc = cor === C.txt ? "#202124" : cor === C.mut ? "#80868b" : cor === "#f0a868" ? "#b8461b" : cor === C.ac2 ? "#1a56c4" : cor === C.ac ? "#188038" : cor === "#c792ea" ? "#8430ce" : cor; txt(ctx, tk, font(500, fs, MONO), xx, yy, cc, "left", a * kn); xx += tw(ctx, tk, font(500, fs, MONO)); }
+      yy += lh; });
+    ctx.restore();
+    // pick locator: campo de locator embaixo
+    const pts = [];
+    if (pick) { const ly = y + H - 190 * u; ctx.save(); ctx.globalAlpha = a; ctx.fillStyle = "#f8f9fa"; ctx.fillRect(ix, ly, IW, 168 * u); ctx.fillStyle = "#e0e0e0"; ctx.fillRect(ix, ly, IW, 2 * u); ctx.restore();
+      txt(ctx, "Locator", font(700, 20 * u), ix + 24 * u, ly + 34 * u, "#5f6368", "left", a);
+      const tp = s.pick_em || 1.2, th = tp + 1.3; const kl = easeOut((t - th - 0.2) / 0.3);
+      ctx.save(); ctx.globalAlpha = a; rr(ctx, ix + 24 * u, ly + 60 * u, IW - 48 * u, 64 * u, 8 * u); ctx.fillStyle = "#fff"; ctx.fill(); ctx.strokeStyle = kl > 0 ? "#3b82f6" : "#cfcfcf"; ctx.lineWidth = 2 * u; ctx.stroke(); ctx.restore();
+      txt(ctx, s.locator || "getByTestId('username')", font(600, 22 * u, MONO), ix + 44 * u, ly + 92 * u, "#188038", "left", a * kl);
+      if (bPick) pts.push([bPick[0] + bPick[2] / 2, bPick[1], tp]);
+      const e = els[s.elem_i || 0]; if (e) { const [x0, y0] = p(e[0], e[1]), [x1, y1] = p(e[2], e[3]); pts.push([(x0 + x1) / 2, (y0 + y1) / 2, th]);
+        const kh = easeOut((t - th + 0.4) / 0.25); if (kh > 0) { ctx.save(); ctx.globalAlpha = a * kh; ctx.fillStyle = "rgba(111,168,220,.55)"; ctx.fillRect(x0, y0, x1 - x0, y1 - y0); ctx.restore();
+          const f = font(700, 20 * u, MONO), lab = s.locator || "getByTestId('username')", w = tw(ctx, lab, f) + 28 * u; ctx.save(); ctx.globalAlpha = a * kh; ctx.shadowColor = "rgba(0,0,0,.3)"; ctx.shadowBlur = 12 * u; rr(ctx, x0, y0 - 52 * u, w, 40 * u, 6 * u); ctx.fillStyle = "#fff"; ctx.fill(); ctx.restore();
+          txt(ctx, lab, f, x0 + 14 * u, y0 - 32 * u, "#188038", "left", a * kh); } } }
+    // gravar: mouse clica em cada elemento e digita o valor no campo
+    if (gravando) AC.forEach((ac, i) => { const e = els[ac.elem === undefined ? i : ac.elem]; if (!e) return; const [x0, y0] = p(e[0], e[1]), [x1, y1] = p(e[2], e[3]); pts.push([(x0 + x1) / 2, (y0 + y1) / 2, tClick[i]]);
+      const kv = t > tClick[i] ? 1 : 0; if (kv && i === AC.length - 1 && !ac.valor) { /* clique final */ }
+      if (ac.valor && t > tClick[i] + 0.1) { const k = clamp((t - tClick[i] - 0.1) / 0.6); const v = ac.valor.slice(0, Math.ceil(k * ac.valor.length)); const mask = ac.senha ? "•".repeat(v.length) : v;
+        ctx.save(); ctx.globalAlpha = a; ctx.fillStyle = "#fff"; ctx.fillRect(x0 + 3 * u, y0 + 3 * u, x1 - x0 - 6 * u, y1 - y0 - 6 * u); ctx.restore(); txt(ctx, mask, font(500, Math.min(26 * u, (y1 - y0) * 0.5)), x0 + 14 * u, (y0 + y1) / 2, "#222", "left", a); }
+      const kh = t > tClick[i] - 0.5 && t < tClick[i] + 0.6 ? 1 : 0; if (kh) { ctx.save(); ctx.globalAlpha = a * 0.5; ctx.fillStyle = "rgba(111,168,220,.55)"; ctx.fillRect(x0, y0, x1 - x0, y1 - y0); ctx.restore(); } });
+    if (dbg && els.length) { const e = els[Math.max(0, iDbg) % els.length]; caixaElem(ctx, u, p, e, a * easeOut((t - 1) / 0.3), null); }
+    rota(ctx, u, pts, t);
+    legenda(ctx, c, t, s);
+  };
+
+  // RELATÓRIO HTML: {type:"pw_relatorio", testes:[["entra com usuário e senha","login.spec.js:9","chromium","ok","1.2s"], ...], abrir:{titulo, passos:[["adiciona a mochila","0.8s"]], erro:"..."}}
+  S.pw_relatorio = (ctx, c, t, dur, s) => {
+    const u = c.u; const a = easeOut(t / 0.4); const W = 1640 * u, H = 740 * u; const x = c.cx - W / 2, y = topo(c, H);
+    const top = janela(ctx, x, y, W, H, u, "Playwright Test Report", a, "#ffffff");
+    ctx.save(); ctx.globalAlpha = a; ctx.fillStyle = "#eef0f4"; ctx.fillRect(x, top, W, 56 * u); rr(ctx, x + 24 * u, top + 10 * u, 520 * u, 36 * u, 18 * u); ctx.fillStyle = "#fff"; ctx.fill(); ctx.restore();
+    txt(ctx, "localhost:9323", font(500, 20 * u), x + 50 * u, top + 28 * u, "#3c4043", "left", a);
+    const T = s.testes || []; const nOk = T.filter((q) => q[3] === "ok").length, nF = T.filter((q) => q[3] === "falhou").length, nFl = T.filter((q) => q[3] === "instavel").length, nS = T.filter((q) => q[3] === "pulado").length;
+    const by = top + 100 * u; ctx.save(); ctx.globalAlpha = a; rr(ctx, x + 40 * u, by - 26 * u, 560 * u, 52 * u, 8 * u); ctx.strokeStyle = "#d0d7de"; ctx.lineWidth = 2 * u; ctx.stroke(); ctx.restore();
+    txt(ctx, "⌕  Search", font(500, 22 * u), x + 60 * u, by, "#8c959f", "left", a);
+    let fx = x + 640 * u; [["All", T.length, "#24292f"], ["Passed", nOk, "#1a7f37"], ["Failed", nF, "#cf222e"], ["Flaky", nFl, "#9a6700"], ["Skipped", nS, "#57606a"]].forEach(([n, v, cor], i) => {
+      const f = font(i === 0 ? 800 : 600, 22 * u); txt(ctx, n, f, fx, by, "#24292f", "left", a); const w = tw(ctx, n, f); const vb = String(v); const vw = tw(ctx, vb, font(700, 18 * u)) + 20 * u;
+      ctx.save(); ctx.globalAlpha = a; rr(ctx, fx + w + 10 * u, by - 15 * u, vw, 30 * u, 15 * u); ctx.fillStyle = i === 0 ? "#eaeef2" : cor + "22"; ctx.fill(); ctx.restore(); txt(ctx, vb, font(700, 18 * u), fx + w + 10 * u + vw / 2, by, cor, "center", a); fx += w + vw + 44 * u; });
+    if (s.abrir) {  // detalhe de um teste
+      const d = s.abrir; const dy = top + 160 * u; const ok = d.status !== "falhou";
+      pwStatus(ctx, u, x + 60 * u, dy, ok ? "ok" : "falhou", t, a); txt(ctx, d.titulo || "", font(800, 30 * u), x + 84 * u, dy, "#24292f", "left", a);
+      txt(ctx, (d.arquivo || "") + "  ·  " + (d.projeto || "chromium"), font(500, 20 * u), x + 84 * u, dy + 40 * u, "#57606a", "left", a);
+      txt(ctx, "Test Steps", font(800, 24 * u), x + 60 * u, dy + 100 * u, "#24292f", "left", a);
+      (d.passos || []).forEach(([n, ms, st], i) => { const k = easeOut((t - 0.8 - i * 0.35) / 0.3); const yy = dy + 150 * u + i * 52 * u;
+        ctx.save(); ctx.globalAlpha = a * k; ctx.fillStyle = i % 2 ? "#f6f8fa" : "#fff"; ctx.fillRect(x + 50 * u, yy - 24 * u, W - 100 * u, 48 * u); ctx.restore();
+        pwStatus(ctx, u, x + 80 * u, yy, st || "ok", t, a * k); txt(ctx, n, font(600, 23 * u), x + 106 * u, yy, "#24292f", "left", a * k); txt(ctx, ms || "", font(500, 20 * u), x + W - 70 * u, yy, "#57606a", "right", a * k); });
+      if (d.erro) { const ey = dy + 170 * u + (d.passos || []).length * 52 * u; const k = easeOut((t - 1.4) / 0.4);
+        ctx.save(); ctx.globalAlpha = a * k; rr(ctx, x + 50 * u, ey, W - 100 * u, 120 * u, 8 * u); ctx.fillStyle = "#ffebe9"; ctx.fill(); ctx.strokeStyle = "#ff8182"; ctx.lineWidth = 2 * u; ctx.stroke(); ctx.restore();
+        String(d.erro).split("\n").slice(0, 3).forEach((l, i) => txt(ctx, l, font(600, 20 * u, MONO), x + 74 * u, ey + 32 * u + i * 30 * u, i ? "#24292f" : "#cf222e", "left", a * k)); }
+    } else {
+      let yy = top + 170 * u; let arqAtual = null;
+      T.forEach(([nome, arq, proj, st, ms], i) => { const k = easeOut((t - 0.6 - i * 0.12) / 0.3); const f0 = String(arq).split(":")[0];
+        if (f0 !== arqAtual) { arqAtual = f0; ctx.save(); ctx.globalAlpha = a * k; ctx.fillStyle = "#f6f8fa"; ctx.fillRect(x + 40 * u, yy - 22 * u, W - 80 * u, 44 * u); ctx.restore(); txt(ctx, "▾  " + f0, font(700, 22 * u), x + 60 * u, yy, "#24292f", "left", a * k); yy += 50 * u; }
+        pwStatus(ctx, u, x + 74 * u, yy, st === "instavel" ? "ok" : st === "pulado" ? "espera" : st, t, a * k); txt(ctx, nome, font(600, 23 * u), x + 100 * u, yy, "#24292f", "left", a * k);
+        const nw = tw(ctx, nome, font(600, 23 * u)); const pf = font(700, 17 * u); const pw2 = tw(ctx, proj, pf) + 22 * u; const cores = { chromium: "#0969da", firefox: "#bc4c00", webkit: "#8250df", celular: "#1a7f37" };
+        ctx.save(); ctx.globalAlpha = a * k; rr(ctx, x + 116 * u + nw, yy - 14 * u, pw2, 28 * u, 14 * u); ctx.fillStyle = (cores[proj] || "#57606a") + "22"; ctx.fill(); ctx.restore(); txt(ctx, proj, pf, x + 116 * u + nw + pw2 / 2, yy, cores[proj] || "#57606a", "center", a * k);
+        if (st === "instavel") txt(ctx, "flaky", font(700, 17 * u), x + 130 * u + nw + pw2, yy, "#9a6700", "left", a * k);
+        txt(ctx, arq, font(500, 18 * u), x + 100 * u, yy + 26 * u, "#57606a", "left", a * k); txt(ctx, ms || "", font(500, 20 * u), x + W - 70 * u, yy, "#57606a", "right", a * k); yy += 66 * u; });
+    }
+    legenda(ctx, c, t, s);
+  };
+
+  // GITHUB ACTIONS (tema escuro): {type:"gh_actions", workflow:"Playwright Tests", commit:"adiciona testes de login", passos:["Set up job","Install dependencies",...], status:"ok"|"falhou", pronto:false, artefato:"playwright-report"}
+  S.gh_actions = (ctx, c, t, dur, s) => {
+    const u = c.u; const a = easeOut(t / 0.4); const W = 1640 * u, H = 740 * u; const x = c.cx - W / 2, y = topo(c, H);
+    const top = janela(ctx, x, y, W, H, u, "github.com/" + (s.usuario || "voce") + "/" + (s.repo || "meu-primeiro-playwright") + "/actions", a, "#0d1117");
+    const P = s.passos || ["Set up job", "Run actions/checkout@v4", "Run actions/setup-node@v4", "Install dependencies", "Install Playwright Browsers", "Run Playwright tests", "Run actions/upload-artifact@v4", "Complete job"];
+    const t0 = s.inicio_em === undefined ? 0.8 : s.inicio_em; const passo = Math.max(0.3, Math.min(1.0, (dur * 0.7 - t0) / P.length)); const feitos = s.pronto ? P.length : clamp((t - t0) / passo, 0, P.length); const fim = feitos >= P.length; const falha = s.status === "falhou";
+    txt(ctx, s.workflow || "Playwright Tests", font(800, 34 * u), x + 40 * u, top + 54 * u, "#e6edf3", "left", a);
+    const st = fim ? (falha ? "falhou" : "ok") : "rodando"; pwStatus(ctx, u, x + 52 * u, top + 108 * u, st, t, a);
+    txt(ctx, s.commit || "adiciona os testes", font(600, 24 * u), x + 76 * u, top + 108 * u, "#e6edf3", "left", a);
+    txt(ctx, "#" + (s.numero || 1) + " · main", font(500, 20 * u), x + 76 * u, top + 142 * u, "#8b949e", "left", a);
+    if (fim) { const ka = easeOut((t - (s.pronto ? 0.3 : t0 + P.length * passo)) / 0.4); const lab = falha ? "Failure" : "Success"; const f = font(900, 34 * u); const bw = tw(ctx, lab, f) + 90 * u;
+      ctx.save(); ctx.globalAlpha = a * ka; rr(ctx, x + W - bw - 40 * u, top + 40 * u, bw, 70 * u, 35 * u); ctx.fillStyle = falha ? "#da3633" : "#238636"; ctx.fill(); ctx.restore();
+      pwStatus(ctx, u * 1.3, x + W - bw - 40 * u + 40 * u, top + 75 * u, falha ? "falhou" : "ok", t, a * ka); txt(ctx, lab, f, x + W - bw / 2 - 40 * u + 20 * u, top + 75 * u, "#fff", "center", a * ka); }
+    // coluna de jobs
+    const jy = top + 190 * u; ctx.save(); ctx.globalAlpha = a; ctx.fillStyle = "#30363d"; ctx.fillRect(x, jy - 10 * u, W, 2 * u); ctx.restore();
+    txt(ctx, "Jobs", font(700, 22 * u), x + 40 * u, jy + 30 * u, "#8b949e", "left", a);
+    ctx.save(); ctx.globalAlpha = a; rr(ctx, x + 30 * u, jy + 56 * u, 300 * u, 50 * u, 8 * u); ctx.fillStyle = "#161b22"; ctx.fill(); ctx.restore(); pwStatus(ctx, u, x + 56 * u, jy + 81 * u, st, t, a); txt(ctx, s.job || "test", font(700, 23 * u), x + 80 * u, jy + 81 * u, "#e6edf3", "left", a);
+    if (s.artefato !== false && fim && !falha) { txt(ctx, "Artifacts", font(700, 22 * u), x + 40 * u, jy + 160 * u, "#8b949e", "left", a); txt(ctx, "📦 " + (s.artefato || "playwright-report"), font(600, 22 * u), x + 40 * u, jy + 200 * u, "#58a6ff", "left", a * easeOut((t - t0 - P.length * passo) / 0.4)); }
+    // passos
+    const px = x + 370 * u, pw = W - 410 * u; ctx.save(); ctx.globalAlpha = a; rr(ctx, px, jy + 10 * u, pw, y + H - jy - 30 * u, 10 * u); ctx.fillStyle = "#161b22"; ctx.fill(); ctx.strokeStyle = "#30363d"; ctx.lineWidth = 2 * u; ctx.stroke(); ctx.restore();
+    const lh = Math.min(50 * u, (y + H - jy - 60 * u) / P.length);
+    P.forEach((n, i) => { const yy = jy + 40 * u + i * lh; const k = feitos - i; const sp = k >= 1 ? (falha && i === P.length - 3 && fim ? "falhou" : "ok") : k > 0 ? "rodando" : "espera";
+      pwStatus(ctx, u, px + 34 * u, yy, sp, t, a); txt(ctx, n, font(600, 22 * u), px + 62 * u, yy, k > 0 ? "#e6edf3" : "#6e7681", "left", a);
+      if (k >= 1) txt(ctx, (1 + ((i * 7) % 23)) + "s", font(500, 19 * u), px + pw - 24 * u, yy, "#8b949e", "right", a); });
+    legenda(ctx, c, t, s);
+  };
+
 })(window);

@@ -39,7 +39,7 @@ async function carregaMidia(man, base) {
 async function montar(cfg) {
   await fontes();
   const p = await (await fetch(cfg.projeto)).json();
-  window.CO_IDIOMA = p.idioma || "pt"; window.CO_MARCA = p.marca || null; window.CO_FUNDO = p.cor_fundo || null; window.CO_LEGENDA_Y = p.legenda_y || null; window.CO_SELO = p.selo || null; window.CO_TRILHA = p.trilha || null;
+  window.CO_IDIOMA = p.idioma || "pt"; window.CO_MARCA = p.marca || null; window.CO_FUNDO = p.cor_fundo || null; window.CO_LEGENDA_Y = p.legenda_y || null; window.CO_SEM_LEGENDA = !!p.sem_legenda; window.CO_SELO = p.selo || null; window.CO_TRILHA = p.trilha || null;
   const longo = cfg.formato === "longo";
   const serie = cfg.formato === "serie";
   const tiktok = cfg.formato === "tiktok" || serie;

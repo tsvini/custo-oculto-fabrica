@@ -82,8 +82,8 @@ def _uniforme(path):
 def telas(cenas, pasta, log, idioma="pt"):
     """Cenas 'tela' com 'url': print da página inteira em 16:9 (para as aulas). 'alvo' = texto do botão/link a destacar:
     a caixa amarela e o zoom são calculados sozinhos e guardados em <media>.json."""
-    alvo = [s for s in cenas if s.get("type") in ("tela", "runner", "devtools", "playground") and s.get("url") and s.get("media")]
-    falta = [s for s in alvo if not os.path.exists(os.path.join(pasta, s["media"] + ".png")) or (s.get("inspecionar") and "elem" not in json.load(open(os.path.join(pasta, s["media"] + ".json"))) if os.path.exists(os.path.join(pasta, s["media"] + ".json")) else s.get("inspecionar"))]
+    alvo = [s for s in cenas if s.get("type") in ("tela", "runner", "devtools", "playground", "pw_ui", "pw_trace", "pw_codegen") and s.get("url") and s.get("media")]
+    falta = [s for s in alvo if not os.path.exists(os.path.join(pasta, s["media"] + ".png")) or ((s.get("inspecionar") or s.get("inspecionar_varios")) and ("elem" if s.get("inspecionar") else "elems") not in json.load(open(os.path.join(pasta, s["media"] + ".json"))) if os.path.exists(os.path.join(pasta, s["media"] + ".json")) else (s.get("inspecionar") or s.get("inspecionar_varios")))]
     if falta:
         from playwright.sync_api import sync_playwright
         with sync_playwright() as p:
@@ -123,6 +123,14 @@ def telas(cenas, pasta, log, idioma="pt"):
                             meta["html"] = info
                         except Exception as e:
                             log(f"  tela {s['media']}: não achei {s['inspecionar']} ({str(e)[:60]})")
+                    if s.get("inspecionar_varios"):  # vários elementos (codegen: cada clique num campo)
+                        meta["elems"] = []
+                        for sel in s["inspecionar_varios"]:
+                            try:
+                                bx = pg.locator(sel).first.bounding_box()
+                                meta["elems"].append([bx["x"] / 1600, bx["y"] / 900, (bx["x"] + bx["width"]) / 1600, (bx["y"] + bx["height"]) / 900] if bx else None)
+                            except Exception as e:
+                                meta["elems"].append(None); log(f"  tela {s['media']}: não achei {sel} ({str(e)[:60]})")
                     if s.get("alvo_css"):
                         try:
                             bx = pg.locator(s["alvo_css"]).first.bounding_box()
