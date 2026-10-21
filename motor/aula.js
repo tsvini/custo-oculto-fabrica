@@ -124,27 +124,36 @@
 
   // TERMINAL: {type:"terminal", pasta:"C:\\Users\\voce\\meu-projeto", linhas:[{cmd:"node -v"},{out:"v22.11.0", cor:"ac"}], legenda:"..."}
   S.terminal = (ctx, c, t, dur, s) => {
-    const u = c.u; const a = easeOut(t / 0.4); const W = (c.vertical ? 1000 : 1400) * u, H = (c.vertical ? 900 : 640) * u;
+    const u = c.u; const a = easeOut(t / 0.4); const W = (c.vertical ? 1000 : 1600) * u, H = (c.vertical ? 900 : 660) * u;
     const x = c.cx - W / 2, y = topo(c, H);
     const top = janela(ctx, x, y, W, H, u, s.titulo || "Terminal", a, C.term);
-    // cabe na janela: encurta o caminho do prompt e, se ainda precisar, diminui a fonte
+    // cabe na janela: encurta o caminho do prompt; a fonte fica entre 30 e 40; comando longo quebra de linha (como no terminal de verdade)
     let pasta = s.pasta || "C:\\meu-projeto"; const L0 = s.linhas || [];
-    const maxCmd = Math.max(0, ...L0.map((l) => (l.cmd !== undefined ? l.cmd.length : 0))), maxOut = Math.max(0, ...L0.map((l) => (l.out || "").length));
+    const maxCmd = Math.max(0, ...L0.map((l) => (l.cmd !== undefined ? l.cmd.length : 0)));
     if (("PS " + pasta + "> ").length + maxCmd > 58 && pasta.includes("\\")) pasta = "...\\" + pasta.split("\\").pop();
-    const pr = (s.prompt || "PS " + pasta + ">") + " "; const chars = Math.max(pr.length + maxCmd, maxOut, 10);
-    const fs = Math.max(20 * u, Math.min(34 * u, (W - 90 * u) / (chars * 0.6))), lh = Math.max(fs * 1.7, 40 * u); let yy = top + 60 * u;
-    const L = s.linhas || []; const passo = Math.max(0.6, (dur - 1) / Math.max(L.length, 1)); let tt = t - 0.5;
+    const pr = (s.prompt || "PS " + pasta + ">") + " "; const fsMin = (c.vertical ? 26 : 30) * u;
+    const larg = (n) => (W - 90 * u) / (n * 0.6);
+    const chars0 = Math.max(10, ...L0.map((l) => (l.cmd !== undefined ? pr.length + l.cmd.length : (l.out || "").length)));
+    const fs = Math.max(fsMin, Math.min((s.fonte || 40) * u, larg(chars0 + 1))); const cap = Math.floor((W - 90 * u) / (fs * 0.6));
+    const L = []; L0.forEach((l) => {
+      if (l.cmd !== undefined && pr.length + l.cmd.length > cap) { let r = l.cmd, first = true; while (r.length) { let n = first ? cap - pr.length : cap; if (r.length > n) { const cut = Math.max(r.lastIndexOf(" ", n - 1), r.lastIndexOf("/", n - 1)); if (cut > n * 0.5) n = cut + 1; } L.push({ cmd: r.slice(0, n), cont: !first }); r = r.slice(n); first = false; } }
+      else if (l.out !== undefined && l.out.length > cap) { for (let i = 0; i < l.out.length; i += cap) L.push(Object.assign({}, l, { out: l.out.slice(i, i + cap) })); }
+      else L.push(l); });
+    const lh = Math.max(fs * 1.6, 40 * u); let yy = top + 56 * u;
+    const nPassos = L.filter((l) => l.cmd !== undefined && !l.cont).length + L.filter((l) => l.out !== undefined).length * 0.35 + L.filter((l) => l.cont).length * 0.6;
+    const passo = Math.max(0.6, (dur * (s.vel || 0.75) - 0.5) / Math.max(nPassos, 1)); let tt = t - 0.5;
     for (const l of L) {
       if (tt < 0) break;
       if (l.cmd !== undefined) {
-        const k = clamp(tt / Math.max(0.4, passo * 0.6)); const cmd = l.cmd.slice(0, Math.ceil(k * l.cmd.length));
-        txt(ctx, pr, font(600, fs, MONO), x + 40 * u, yy, C.ac2, "left", a);
-        const px = x + 40 * u + tw(ctx, pr, font(600, fs, MONO)); txt(ctx, cmd, font(600, fs, MONO), px, yy, C.txt, "left", a);
+        const pc = l.cont ? passo * 0.6 : passo; const k = clamp(tt / Math.max(0.4, pc * 0.75)); const cmd = l.cmd.slice(0, Math.ceil(k * l.cmd.length));
+        let px = x + 40 * u; if (!l.cont) { txt(ctx, pr, font(600, fs, MONO), px, yy, C.ac2, "left", a); px += tw(ctx, pr, font(600, fs, MONO)); }
+        txt(ctx, cmd, font(600, fs, MONO), px, yy, C.txt, "left", a);
         if (k < 1 && Math.floor(t * 2.5) % 2 === 0) { ctx.fillStyle = C.txt; ctx.fillRect(px + tw(ctx, cmd, font(600, fs, MONO)) + 4 * u, yy - fs * 0.55, fs * 0.55, fs * 1.1); }
+        tt -= pc;
       } else {
-        txt(ctx, l.out, font(500, fs, MONO), x + 40 * u, yy, C[l.cor] || l.cor || C.mut, "left", a * easeOut(tt / 0.3));
+        txt(ctx, l.out, font(500, fs, MONO), x + 40 * u, yy, C[l.cor] || l.cor || C.mut, "left", a * easeOut(tt / 0.3)); tt -= passo * 0.35;
       }
-      yy += lh; tt -= l.cmd !== undefined ? passo : passo * 0.35;
+      yy += lh;
     }
     legenda(ctx, c, t, s);
   };

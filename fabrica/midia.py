@@ -96,6 +96,8 @@ def telas(cenas, pasta, log, idioma="pt"):
                     if url.startswith("repo:"):  # página do próprio repositório (ex.: a colinha do curso)
                         url = "file://" + os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), url[5:])
                     pg.goto(url, wait_until="domcontentloaded", timeout=35000); pg.wait_for_timeout(3000)
+                    if s["url"].startswith("repo:"):  # página A4 (colinha): amplia pra ocupar a tela e dar pra ler
+                        pg.evaluate("document.body.style.zoom = String(1600 / 794 * 0.92); document.body.style.margin = '0 auto'; document.documentElement.style.background = '#0b0f0d'"); pg.wait_for_timeout(400)
                     for txt in CONSENT:
                         try:
                             btn = pg.get_by_role("button", name=txt, exact=True)
