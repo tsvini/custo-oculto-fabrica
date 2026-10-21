@@ -79,10 +79,46 @@ def _uniforme(path):
         return True
 
 
+def gravacoes(cenas, pasta, log):
+    """Cenas com "gravar": true: grava um vídeo de verdade do navegador fazendo as ações (o aluno vê o robô digitando e clicando).
+    Ações: {"fill": [seletor, texto]} (digita letra por letra), {"click": seletor}, {"espera": ms}. Salva <media>.mp4."""
+    cenas = list(cenas) + [s["navegador"] for s in cenas if isinstance(s.get("navegador"), dict)]  # navegador por cima de outra cena
+    alvo = [s for s in cenas if s.get("gravar") and s.get("url") and s.get("media") and not os.path.exists(os.path.join(pasta, s["media"] + ".mp4"))]
+    if not alvo:
+        return
+    import glob, shutil, subprocess, tempfile
+    from playwright.sync_api import sync_playwright
+    with sync_playwright() as p:
+        b = p.chromium.launch(slow_mo=int(alvo[0].get("slow_mo", 250)))
+        for s in alvo:
+            tmpd = tempfile.mkdtemp()
+            ctx = b.new_context(viewport={"width": 1600, "height": 900}, device_scale_factor=1, record_video_dir=tmpd, record_video_size={"width": 1600, "height": 900}, user_agent=UA)
+            pg = ctx.new_page()
+            try:
+                pg.goto(s["url"], wait_until="domcontentloaded", timeout=35000); pg.wait_for_timeout(int(s.get("espera_inicio", 1200)))
+                for ac in s.get("acoes") or []:
+                    if ac.get("fill"):
+                        pg.click(ac["fill"][0], timeout=8000); pg.type(ac["fill"][0], ac["fill"][1], delay=int(s.get("delay_letra", 90)))
+                    elif ac.get("click"):
+                        pg.click(ac["click"], timeout=8000)
+                    pg.wait_for_timeout(int(ac.get("espera", s.get("espera_acao", 500))))
+                pg.wait_for_timeout(int(s.get("espera_fim", 1500)))
+            except Exception as e:
+                log(f"  gravação {s['media']}: ação falhou ({str(e)[:100]})")
+            ctx.close()
+            vids = glob.glob(os.path.join(tmpd, "*.webm"))
+            if vids:
+                dest = os.path.join(pasta, s["media"] + ".mp4")
+                subprocess.run(["ffmpeg", "-loglevel", "error", "-y", "-i", vids[0], "-c:v", "libx264", "-pix_fmt", "yuv420p", "-preset", "veryfast", "-crf", "20", "-an", dest], check=False)
+                log(f"  gravação {s['media']}: ok")
+            shutil.rmtree(tmpd, ignore_errors=True)
+        b.close()
+
+
 def telas(cenas, pasta, log, idioma="pt"):
     """Cenas 'tela' com 'url': print da página inteira em 16:9 (para as aulas). 'alvo' = texto do botão/link a destacar:
     a caixa amarela e o zoom são calculados sozinhos e guardados em <media>.json."""
-    alvo = [s for s in cenas if s.get("type") in ("tela", "runner", "devtools", "playground", "pw_ui", "pw_trace", "pw_codegen") and s.get("url") and s.get("media")]
+    alvo = [s for s in cenas if s.get("type") in ("tela", "runner", "devtools", "playground", "pw_ui", "pw_trace", "pw_codegen") and s.get("url") and s.get("media") and not s.get("gravar")]
     falta = [s for s in alvo if not os.path.exists(os.path.join(pasta, s["media"] + ".png")) or ((s.get("inspecionar") or s.get("inspecionar_varios")) and ("elem" if s.get("inspecionar") else "elems") not in json.load(open(os.path.join(pasta, s["media"] + ".json"))) if os.path.exists(os.path.join(pasta, s["media"] + ".json")) else (s.get("inspecionar") or s.get("inspecionar_varios")))]
     if falta:
         from playwright.sync_api import sync_playwright

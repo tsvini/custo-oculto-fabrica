@@ -32,7 +32,7 @@
      "chapter": "",
      "sentences": [
       {
-       "text": "Agora começa o seu código. E a primeira coisa é apagar o exemplo: clica com o botão direito no example ponto spec ponto js e escolhe Delete.",
+       "text": "Agora começa o seu código. E a primeira coisa é apagar o exemplo: clica com o botão direito em cima do example ponto spec ponto js e escolhe Delete.",
        "scene": {
         "type": "menu",
         "app": "vscode",
@@ -64,15 +64,11 @@
          "  playwright.config.js"
         ],
         "apaga": "example.spec.js",
-        "ponto": [
-         0.02,
-         0.18
-        ],
         "legenda": "Botão direito › Delete"
        }
       },
       {
-       "text": "Na pasta tests, cria um arquivo novo: login ponto spec ponto js.",
+       "text": "Agora clica com o botão direito na pasta tests, escolhe New File, e dá o nome: login ponto spec ponto js.",
        "scene": {
         "type": "menu",
         "app": "vscode",
@@ -101,11 +97,8 @@
          "  package.json",
          "  playwright.config.js"
         ],
+        "alvo_item": "tests",
         "novo_pos": 4,
-        "ponto": [
-         0.02,
-         0.12
-        ],
         "resultado": "arquivo",
         "novo": "login.spec.js",
         "novo_nivel": 2,
@@ -113,7 +106,32 @@
        }
       },
       {
-       "text": "Primeira linha: import, chaves, test, vírgula, expect, fecha chaves, from, e entre aspas arroba playwright barra test. Ela traz duas ferramentas: o test, pra criar um teste, e o expect, pra conferir.",
+       "text": "Esse ponto spec no nome é o que avisa o Playwright: esse arquivo aqui é um teste.",
+       "scene": {
+        "type": "cards",
+        "titulo": "LOGIN.SPEC.JS",
+        "itens": [
+         [
+          "✎",
+          "login",
+          "o nome que você escolhe"
+         ],
+         [
+          "✓",
+          ".spec",
+          "avisa: isso é um teste",
+          "#69a7ff"
+         ],
+         [
+          "{ }",
+          ".js",
+          "arquivo JavaScript"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Primeira linha: import, chaves, test, vírgula, expect, fecha chaves, from, e entre aspas arroba playwright barra test.",
        "scene": {
         "type": "editor",
         "arquivo": "login.spec.js",
@@ -134,6 +152,32 @@
         "digitar_ate": 1,
         "colinha": true,
         "colinha_em": 1.6
+       }
+      },
+      {
+       "text": "Lendo em português: traga o test e o expect, de dentro do Playwright. O test serve pra criar um teste, e o expect, pra conferir o resultado.",
+       "scene": {
+        "type": "traducao",
+        "codigo": "import { test, expect } from '@playwright/test';",
+        "partes": [
+         [
+          "import",
+          "traga"
+         ],
+         [
+          "{ test, expect }",
+          "test e expect"
+         ],
+         [
+          "from",
+          "de dentro do"
+         ],
+         [
+          "'@playwright/test'",
+          "Playwright"
+         ]
+        ],
+        "passo": 1.8
        }
       },
       {
@@ -159,7 +203,37 @@
        }
       },
       {
-       "text": "Calma, eu explico cada pedaço. O nome entre aspas aparece no relatório, então escreve o que o teste faz, em português mesmo.",
+       "text": "Parece muita coisa, né? Então vamos traduzir essa linha pedaço por pedaço.",
+       "scene": {
+        "type": "traducao",
+        "codigo": "test('entra com usuário e senha', async ({ page }) => {",
+        "partes": [
+         [
+          "test",
+          "crie um teste"
+         ],
+         [
+          "'entra com usuário e senha'",
+          "com este nome"
+         ],
+         [
+          "async",
+          "que tem esperas"
+         ],
+         [
+          "({ page })",
+          "me dê o navegador"
+         ],
+         [
+          "=> {",
+          "e faça isto:"
+         ]
+        ],
+        "passo": 2.4
+       }
+      },
+      {
+       "text": "O nome entre aspas é você que escolhe. Ele aparece no relatório, então escreve o que o teste faz, em português mesmo.",
        "scene": {
         "type": "editor",
         "arquivo": "login.spec.js",
@@ -185,7 +259,7 @@
        }
       },
       {
-       "text": "O page é o navegador que o Playwright te entrega. É com ele que você abre sites e clica nas coisas.",
+       "text": "O page é o navegador que o Playwright te entrega pronto. É com ele que você abre sites, digita e clica.",
        "scene": {
         "type": "editor",
         "arquivo": "login.spec.js",
@@ -228,6 +302,58 @@
           "#69a7ff"
          ]
         ]
+       }
+      },
+      {
+       "text": "E a última linha, com chave, parêntese e ponto e vírgula, fecha tudo que foi aberto lá em cima. Os passos do teste vão aqui no meio, entre essas duas linhas.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "login.spec.js",
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  tests/",
+         "    login.spec.js",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "codigo": "import { test, expect } from '@playwright/test';\n\ntest('entra com usuário e senha', async ({ page }) => {\n\n});",
+        "legenda": "Os passos vão aqui no meio",
+        "fonte": 26,
+        "digitar": false,
+        "destaque": [
+         3,
+         5
+        ],
+        "destaque_em": 0.8
+       }
+      },
+      {
+       "text": "Então, lendo inteiro: crie um teste chamado entra com usuário e senha, me dê o navegador, e faça o que estiver aqui dentro.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "CRIE UM TESTE,",
+          "white",
+          80
+         ],
+         [
+          "ME DÊ O NAVEGADOR",
+          "gold",
+          100
+         ],
+         [
+          "E FAÇA O QUE ESTÁ AQUI DENTRO",
+          "white",
+          72
+         ]
+        ],
+        "entre": 1.35
        }
       },
       {

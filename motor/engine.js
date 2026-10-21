@@ -215,9 +215,9 @@
   S.bigtext = (ctx, c, t, dur, s) => {
     const u = c.u; const lines = s.lines || [];
     const sizes = lines.map((l) => fitSize(ctx, l[0], 900, (l[2] || 110) * u, c.W * 0.9));
-    const total = sizes.reduce((x, y) => x + y * 1.12, 0); let y = c.cy - total / 2;
+    const total = sizes.reduce((x, y) => x + y * (s.entre || 1.12), 0); let y = c.cy - total / 2;
     lines.forEach((l, i) => {
-      const st = i * (s.stagger === undefined ? 0.25 : s.stagger); const hh = sizes[i] * 1.12;
+      const st = i * (s.stagger === undefined ? 0.25 : s.stagger); const hh = sizes[i] * (s.entre || 1.12);
       drawC(ctx, l[0], font(900, sizes[i]), c.cx, y + hh / 2, { fill: col(l[1]), alpha: easeOut((t - st) / 0.3), scale: lerp(0.9, 1, backOut((t - st) / 0.35)) });
       y += hh;
     });
@@ -677,6 +677,15 @@
       const fundoV = [scene.foto, scene.fundo].map((k) => k && media && media[k] && media[k].video).find(Boolean);
       if (fundoV) { const d = fundoV.duration || 1; const tg = lt % Math.max(0.1, d - 0.05);
         if (Math.abs(fundoV.currentTime - tg) > 0.01) await new Promise((res) => { const done = () => { fundoV.removeEventListener("seeked", done); res(); }; fundoV.addEventListener("seeked", done); fundoV.currentTime = tg; setTimeout(done, 400); }); }
+      if (scene.gravar && media && media[scene.media] && media[scene.media].video) {  // gravação real do navegador: toca do começo e para no último quadro
+        const v = media[scene.media].video; const d = v.duration || 1; const dc = this.activeScene(tl, t).dur || d; const vel = scene.vel_video || Math.max(1, d / Math.max(1, dc - 0.8)); const target = Math.max(0, Math.min(d - 0.05, (lt - (scene.video_de || 0.3)) * vel));  // se a gravação for mais longa que a frase, acelera um pouco pra caber
+        if (Math.abs(v.currentTime - target) > 0.01) await new Promise((res) => { const done = () => { v.removeEventListener("seeked", done); res(); }; v.addEventListener("seeked", done); v.currentTime = target; setTimeout(done, 400); });
+      }
+      if (scene.navegador && media && media[scene.navegador.media] && media[scene.navegador.media].video) {  // gravação real tocando por cima da cena, entre em e ate
+        const n = scene.navegador, v = media[n.media].video; const d = v.duration || 1; const dc = this.activeScene(tl, t).dur || 1; const ini = n.em * dc, fim = n.ate * dc - 0.4;
+        const target = Math.max(0, Math.min(d - 0.05, (lt - ini) / Math.max(0.5, fim - ini) * d));
+        if (Math.abs(v.currentTime - target) > 0.01) await new Promise((res) => { const done = () => { v.removeEventListener("seeked", done); res(); }; v.addEventListener("seeked", done); v.currentTime = target; setTimeout(done, 400); });
+      }
       if (scene.type === "montagem" && scene.clips && scene.clips.length) { const r = montagemAt(scene, lt, this.activeScene(tl, t).dur); scene = r[0]; lt = r[1]; }
       if (scene.type === "video" && media && media[scene.media] && media[scene.media].video) {
         const v = media[scene.media].video; const d = v.duration || 1; const target = ((scene.start || 0) + lt) % Math.max(0.1, d - 0.05);

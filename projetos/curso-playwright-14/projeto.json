@@ -64,7 +64,25 @@
        }
       },
       {
-       "text": "E o Playwright acha campos exatamente por isso: page ponto getByPlaceholder, e entre aspas Username.",
+       "text": "E o Playwright acha campos exatamente por isso. O nome do comando é get by placeholder: get by quer dizer pegar pelo, ache pelo. Então: ache pelo texto que aparece dentro do campo.",
+       "scene": {
+        "type": "traducao",
+        "codigo": "page.getByPlaceholder('Username')",
+        "partes": [
+         [
+          "getByPlaceholder",
+          "ache pelo texto de dentro do campo"
+         ],
+         [
+          "('Username')",
+          "o texto: Username"
+         ]
+        ],
+        "passo": 2.0
+       }
+      },
+      {
+       "text": "Digita: await page ponto getByPlaceholder, entre aspas Username, ponto fill, e entre aspas standard underline user.",
        "scene": {
         "type": "editor",
         "arquivo": "login.spec.js",
@@ -80,7 +98,7 @@
          "  playwright.config.js"
         ],
         "codigo": "import { test, expect } from '@playwright/test';\n\ntest('entra com usuário e senha', async ({ page }) => {\n  await page.goto('https://www.saucedemo.com/');\n  await page.getByPlaceholder('Username').fill('standard_user');\n});",
-        "legenda": "getByPlaceholder('Username')",
+        "legenda": "A linha do usuário",
         "fonte": 26,
         "digitar_de": 5,
         "digitar_ate": 5,
@@ -88,7 +106,29 @@
        }
       },
       {
-       "text": "Depois, ponto fill, e o que digitar: standard underline user, o usuário de treino que o próprio site mostra embaixo.",
+       "text": "Lendo em português: na página, ache o campo que tem Username escrito dentro, e preencha com standard user.",
+       "scene": {
+        "type": "traducao",
+        "codigo": "await page.getByPlaceholder('Username').fill('standard_user');",
+        "partes": [
+         [
+          "page",
+          "na página"
+         ],
+         [
+          ".getByPlaceholder('Username')",
+          "ache o campo Username"
+         ],
+         [
+          ".fill('standard_user')",
+          "e preencha com standard_user"
+         ]
+        ],
+        "passo": 1.6
+       }
+      },
+      {
+       "text": "E de onde veio o standard user? O próprio site mostra, aqui embaixo, os usuários de treino.",
        "scene": {
         "type": "tela",
         "media": "site_sauce_cred",
@@ -101,7 +141,7 @@
        }
       },
       {
-       "text": "O fill apaga o que tiver no campo e digita o texto novo.",
+       "text": "O fill quer dizer preencher. Ele apaga o que tiver no campo e digita o texto novo.",
        "scene": {
         "type": "cards",
         "itens": [
@@ -122,7 +162,7 @@
        }
       },
       {
-       "text": "A senha é igual: getByPlaceholder Password, fill secret underline sauce.",
+       "text": "A senha é igual: getByPlaceholder Password, fill secret underline sauce. Ache o campo Password e preencha com secret sauce.",
        "scene": {
         "type": "editor",
         "arquivo": "login.spec.js",
@@ -145,16 +185,12 @@
        }
       },
       {
-       "text": "Roda com o headed e olha o robô digitando.",
+       "text": "Agora roda com o navegador aparecendo e olha: o Playwright encontra o campo Username, preenche o usuário, depois encontra Password e preenche a senha.",
        "scene": {
         "type": "tela",
-        "media": "site_sauce_preenchido",
+        "media": "rec_sauce_preenche",
         "url": "https://www.saucedemo.com/",
-        "titulo": "saucedemo.com",
-        "legenda": "O robô digitou!",
-        "zoom_em": 1.4,
-        "caixa_em": 2.0,
-        "alvo_css": "#password",
+        "gravar": true,
         "acoes": [
          {
           "fill": [
@@ -168,7 +204,9 @@
            "secret_sauce"
           ]
          }
-        ]
+        ],
+        "titulo": "saucedemo.com",
+        "legenda": "O robô preenchendo de verdade"
        }
       },
       {

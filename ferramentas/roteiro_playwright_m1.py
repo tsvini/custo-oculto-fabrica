@@ -9,8 +9,11 @@ A_COMPRA = [["Navigate to", "/inventory.html"], ["Click", "getByTestId('add-to-c
             ["Expect", "toHaveText('Thank you for your order!')"]]
 
 
-def bt(*linhas):
-    return {"type": "bigtext", "stagger": 0.25, "lines": [list(l) for l in linhas]}
+def bt(*linhas, entre=None):
+    d = {"type": "bigtext", "stagger": 0.25, "lines": [list(l) for l in linhas]}
+    if entre:
+        d["entre"] = entre  # mais espaço entre as linhas (acento não encosta na linha de cima)
+    return d
 
 
 def titulo(n, nome):

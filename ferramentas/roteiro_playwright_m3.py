@@ -60,59 +60,111 @@ HEADED = [{"cmd": "npx playwright test --headed --project=chromium"}, {"out": "R
 
 AULAS = []
 AULAS.append(projeto(12, "MÓDULO 3 · AULA 12", "A receita de um teste - test e expect", [
-    ("Agora começa o seu código. E a primeira coisa é apagar o exemplo: clica com o botão direito no example ponto spec ponto js e escolhe Delete.",
-     {"type": "menu", "app": "vscode", "barra": [], "menus": [["New File...", "New Folder...", "—", "Cut", "Copy", "—", "Rename...", "Delete"]], "caminho": [7], "pastas": ARV_EX, "apaga": "example.spec.js", "ponto": [0.02, 0.18], "legenda": "Botão direito › Delete"}),
-    ("Na pasta tests, cria um arquivo novo: login ponto spec ponto js.",
-     {"type": "menu", "app": "vscode", "barra": [], "menus": [["New File...", "New Folder...", "—", "Cut", "Copy", "—", "Rename..."]], "caminho": [0], "pastas": ARV_SEM, "novo_pos": 4, "ponto": [0.02, 0.12], "resultado": "arquivo", "novo": "login.spec.js", "novo_nivel": 2, "legenda": "tests › New File › login.spec.js"}),
-    ("Primeira linha: import, chaves, test, vírgula, expect, fecha chaves, from, e entre aspas arroba playwright barra test. Ela traz duas ferramentas: o test, pra criar um teste, e o expect, pra conferir.",
+    ("Agora começa o seu código. E a primeira coisa é apagar o exemplo: clica com o botão direito em cima do example ponto spec ponto js e escolhe Delete.",
+     {"type": "menu", "app": "vscode", "barra": [], "menus": [["New File...", "New Folder...", "—", "Cut", "Copy", "—", "Rename...", "Delete"]], "caminho": [7], "pastas": ARV_EX, "apaga": "example.spec.js", "legenda": "Botão direito › Delete"}),
+    ("Agora clica com o botão direito na pasta tests, escolhe New File, e dá o nome: login ponto spec ponto js.",
+     {"type": "menu", "app": "vscode", "barra": [], "menus": [["New File...", "New Folder...", "—", "Cut", "Copy", "—", "Rename..."]], "caminho": [0], "pastas": ARV_SEM, "alvo_item": "tests", "novo_pos": 4, "resultado": "arquivo", "novo": "login.spec.js", "novo_nivel": 2, "legenda": "tests › New File › login.spec.js"}),
+    ("Esse ponto spec no nome é o que avisa o Playwright: esse arquivo aqui é um teste.",
+     {"type": "cards", "titulo": "LOGIN.SPEC.JS", "itens": [["✎", "login", "o nome que você escolhe"], ["✓", ".spec", "avisa: isso é um teste", "#69a7ff"], ["{ }", ".js", "arquivo JavaScript"]]}),
+    ("Primeira linha: import, chaves, test, vírgula, expect, fecha chaves, from, e entre aspas arroba playwright barra test.",
      ed(12, "A primeira linha", ate=1, colinha=True, ate_linha=1, fecha=False)),
+    ("Lendo em português: traga o test e o expect, de dentro do Playwright. O test serve pra criar um teste, e o expect, pra conferir o resultado.",
+     {"type": "traducao", "codigo": "import { test, expect } from '@playwright/test';", "partes": [["import", "traga"], ["{ test, expect }", "test e expect"], ["from", "de dentro do"], ["'@playwright/test'", "Playwright"]], "passo": 1.8}),
     ("Agora o teste: test, abre parênteses, o nome do teste entre aspas, entra com usuário e senha, vírgula, async, abre parênteses, abre chaves, page, fecha chaves, fecha parênteses, seta, e abre chaves. E lá embaixo, fecha com chave, parêntese e ponto e vírgula.",
      ed(12, "O esqueleto do teste", de=3)),
-    ("Calma, eu explico cada pedaço. O nome entre aspas aparece no relatório, então escreve o que o teste faz, em português mesmo.", ed(12, "O nome aparece no relatório", digitar=False, destaque=[3], destaque_em=0.8)),
-    ("O page é o navegador que o Playwright te entrega. É com ele que você abre sites e clica nas coisas.", ed(12, "page = o navegador", digitar=False, destaque=[3], destaque_em=0.8)),
+    ("Parece muita coisa, né? Então vamos traduzir essa linha pedaço por pedaço.",
+     {"type": "traducao", "codigo": "test('entra com usuário e senha', async ({ page }) => {", "partes": [["test", "crie um teste"], ["'entra com usuário e senha'", "com este nome"], ["async", "que tem esperas"], ["({ page })", "me dê o navegador"], ["=> {", "e faça isto:"]], "passo": 2.4}),
+    ("O nome entre aspas é você que escolhe. Ele aparece no relatório, então escreve o que o teste faz, em português mesmo.", ed(12, "O nome aparece no relatório", digitar=False, destaque=[3], destaque_em=0.8)),
+    ("O page é o navegador que o Playwright te entrega pronto. É com ele que você abre sites, digita e clica.", ed(12, "page = o navegador", digitar=False, destaque=[3], destaque_em=0.8)),
     ("E o async quer dizer que, lá dentro, a gente vai usar o await, que significa: espera esse passo terminar antes de ir pro próximo.",
      {"type": "cards", "titulo": "ASYNC E AWAIT", "itens": [["⏳", "async", "aqui dentro tem espera"], ["⏸", "await", "espera esse passo terminar", "#69a7ff"]]}),
+    ("E a última linha, com chave, parêntese e ponto e vírgula, fecha tudo que foi aberto lá em cima. Os passos do teste vão aqui no meio, entre essas duas linhas.", ed(12, "Os passos vão aqui no meio", digitar=False, destaque=[3, 5], destaque_em=0.8)),
+    ("Então, lendo inteiro: crie um teste chamado entra com usuário e senha, me dê o navegador, e faça o que estiver aqui dentro.", bt(("CRIE UM TESTE,", "white", 80), ("ME DÊ O NAVEGADOR", "gold", 100), ("E FAÇA O QUE ESTÁ AQUI DENTRO", "white", 72), entre=1.35)),
     ("Esse é o esqueleto de todo teste. Ainda está vazio, e na próxima aula a gente coloca o primeiro passo.", ed(12, "O esqueleto de todo teste", digitar=False)),
     ("Te vejo lá!", {"type": "endcard", "sub": "PRÓXIMA: PAGE.GOTO"}),
 ]))
 
+CMD_HEADED = "npx playwright test --headed --project=chromium"
+
+
+def vscode_term(n, legenda, terminal, **kw):
+    """o VS Code inteiro: código em cima e o terminal integrado embaixo (como o aluno vê na tela dele)"""
+    d = ed(n, legenda, digitar=False)
+    d.update({"terminal": terminal}); d.update(kw)
+    return d
+
+
 AULAS.append(projeto(13, "MÓDULO 3 · AULA 13", "page.goto - abrindo um site", [
     ("Primeiro passo de todo teste: abrir o site.", titulo(13, "PAGE.GOTO")),
     ("Dentro do teste, digita await page ponto goto, e entre aspas o endereço: https dois pontos barra barra www ponto saucedemo ponto com.", ed(13, "await page.goto(endereço)", de=4, ate=4, colinha=True)),
+    ("Vamos ler em português. Go to, em inglês, é ir para. Então: espere a página ir para esse endereço.",
+     {"type": "traducao", "codigo": "await page.goto('https://www.saucedemo.com/');", "partes": [["await", "espere"], ["page", "a página"], ["goto", "ir para"], ["'https://www.saucedemo.com/'", "este endereço"]], "passo": 1.8}),
     ("Esse é o site de treino que a gente vai usar no curso todo: uma lojinha feita pra quem está aprendendo a testar.", tela("site_sauce", "O site de treino")),
-    ("Agora roda, mas dessa vez quero que você veja o navegador abrindo. No terminal: npx playwright test traço traço headed traço traço project igual chromium.", vterm(HEADED[:1], "--headed --project=chromium")),
-    ("O headed mostra a janela, e o project igual chromium roda só no Chromium, pra ficar mais rápido.",
+    ("Agora roda. Aqui embaixo no VS Code, no terminal, digita: npx playwright test traço traço headed traço traço project igual chromium.",
+     vscode_term(13, "No terminal do VS Code", [{"cmd": CMD_HEADED, "em": 0.2}])),
+    ("O headed mostra a janela do navegador, e o project igual chromium roda só no Chromium, pra ficar mais rápido.",
      dict({"type": "cards", "itens": [["▢", "--headed", "mostra a janela"], ["C", "--project=chromium", "só no Chromium", "#69a7ff"]]}, colinha=True, colinha_em=1.2)),
-    ("Viu? O navegador abriu o site e fechou. O teste passou, porque abrir o site deu certo.", vterm(HEADED, "1 passou: o site abriu", ja=1)),
+    ("Aperta Enter e olha: o navegador abre sozinho, entra no saucedemo, e fecha. E no terminal aparece: um passed. O teste passou, porque abrir o site deu certo.",
+     vscode_term(13, "Abriu, entrou no site e fechou", [{"cmd": CMD_HEADED, "ja": True}, {"out": "Running 1 test using 1 worker", "cor": "mut", "em": 0.08}, {"out": "  1 passed (2.4s)", "cor": "ac", "em": 0.68}],
+                 navegador={"media": "rec_sauce_abre", "url": SAUCE, "gravar": True, "acoes": [], "espera_inicio": 1800, "espera_fim": 600, "titulo": "Chromium", "em": 0.12, "ate": 0.64})),
+    ("Abriu e fechou bem rápido, né? É normal: por enquanto o teste só tem um passo. Conforme a gente coloca mais passos, você vai ver ele fazendo cada um.", ed(13, "Por enquanto, um passo só", digitar=False, destaque=[4], destaque_em=0.8)),
     ("Na próxima aula, a gente preenche o login.", proxima("fill: preenchendo campos")[0]),
     ("Te vejo lá!", proxima("fill: preenchendo campos")[1]),
 ]))
 
+def gravacao(media, legenda, acoes, titulo_t="saucedemo.com"):
+    """vídeo de verdade do navegador fazendo as ações (o aluno vê o robô digitando e clicando)"""
+    return {"type": "tela", "media": media, "url": SAUCE, "gravar": True, "acoes": acoes, "titulo": titulo_t, "legenda": legenda}
+
+
 AULAS.append(projeto(14, "MÓDULO 3 · AULA 14", "fill - preenchendo campos", [
     ("Hoje o robô digita usuário e senha.", titulo(14, "FILL")),
     ("Mas antes: como ele sabe qual é o campo? Olha o site: dentro do primeiro campo está escrito Username, em cinza. Isso se chama placeholder.", tela("site_sauce_user", "O texto cinza: placeholder", alvo_css="#user-name")),
-    ("E o Playwright acha campos exatamente por isso: page ponto getByPlaceholder, e entre aspas Username.", ed(14, "getByPlaceholder('Username')", de=5, ate=5, vel=0.5, ate_linha=5)),
-    ("Depois, ponto fill, e o que digitar: standard underline user, o usuário de treino que o próprio site mostra embaixo.", tela("site_sauce_cred", "O site mostra o usuário de treino", alvo="standard_user")),
-    ("O fill apaga o que tiver no campo e digita o texto novo.", dict({"type": "cards", "itens": [["⌫", "Apaga", "o que tinha"], ["⌨", "Digita", "o texto novo", "#69a7ff"]]}, colinha=True, colinha_em=1.0)),
-    ("A senha é igual: getByPlaceholder Password, fill secret underline sauce.", ed(14, "A senha é igual", de=6, ate=6)),
-    ("Roda com o headed e olha o robô digitando.", tela("site_sauce_preenchido", "O robô digitou!", acoes=LOGIN[:2], alvo_css="#password")),
+    ("E o Playwright acha campos exatamente por isso. O nome do comando é get by placeholder: get by quer dizer pegar pelo, ache pelo. Então: ache pelo texto que aparece dentro do campo.",
+     {"type": "traducao", "codigo": "page.getByPlaceholder('Username')", "partes": [["getByPlaceholder", "ache pelo texto de dentro do campo"], ["('Username')", "o texto: Username"]], "passo": 2.0}),
+    ("Digita: await page ponto getByPlaceholder, entre aspas Username, ponto fill, e entre aspas standard underline user.", ed(14, "A linha do usuário", de=5, ate=5, vel=0.5, ate_linha=5)),
+    ("Lendo em português: na página, ache o campo que tem Username escrito dentro, e preencha com standard user.",
+     {"type": "traducao", "codigo": "await page.getByPlaceholder('Username').fill('standard_user');", "partes": [["page", "na página"], [".getByPlaceholder('Username')", "ache o campo Username"], [".fill('standard_user')", "e preencha com standard_user"]], "passo": 1.6}),
+    ("E de onde veio o standard user? O próprio site mostra, aqui embaixo, os usuários de treino.", tela("site_sauce_cred", "O site mostra o usuário de treino", alvo="standard_user")),
+    ("O fill quer dizer preencher. Ele apaga o que tiver no campo e digita o texto novo.", dict({"type": "cards", "itens": [["⌫", "Apaga", "o que tinha"], ["⌨", "Digita", "o texto novo", "#69a7ff"]]}, colinha=True, colinha_em=1.0)),
+    ("A senha é igual: getByPlaceholder Password, fill secret underline sauce. Ache o campo Password e preencha com secret sauce.", ed(14, "A senha é igual", de=6, ate=6)),
+    ("Agora roda com o navegador aparecendo e olha: o Playwright encontra o campo Username, preenche o usuário, depois encontra Password e preenche a senha.",
+     gravacao("rec_sauce_preenche", "O robô preenchendo de verdade", [{"fill": ["#user-name", "standard_user"]}, {"fill": ["#password", "secret_sauce"]}])),
     ("Na próxima aula, a gente clica em Login e confere se deu certo.", proxima("click e expect")[0]),
     ("Te vejo lá!", proxima("click e expect")[1]),
 ]))
 
-AULAS.append(projeto(15, "MÓDULO 3 · AULA 15", "click e expect - conferindo o resultado", [
-    ("Hoje o teste fica completo: clicar e conferir.", titulo(15, "CLICK E EXPECT")),
-    ("Pra achar o botão, a gente usa o getByRole: o papel dele é button, de botão, e o nome é o texto escrito nele, Login.", tela("site_sauce_botao", "Papel: botão · Nome: Login", alvo_css="#login-button")),
-    ("Digita: await page ponto getByRole, abre parênteses, aspas button, vírgula, chaves, name dois pontos, aspas Login, fecha tudo, ponto click.", ed(15, "getByRole('button', { name: 'Login' })", de=7, ate=7, ate_linha=7)),
-    ("Agora a parte mais importante do teste: a conferência. Se logou, o endereço do site muda pra inventory.",
-     tela("site_sauce_products", "O endereço mudou pra inventory", acoes=LOGIN, alvo="Products", titulo_t="saucedemo.com/inventory.html")),
-    ("Então: await expect, abre parênteses, page, fecha parênteses, ponto toHaveURL, e entre barras, inventory. Essas barras criam uma busca por padrão. Nesse caso, a gente está dizendo que a URL precisa ter a palavra inventory em algum lugar.",
-     ed(15, "await expect(page).toHaveURL(/inventory/)", de=8, ate=8, colinha=True)),
-    ("Sem o expect, o teste só clica. Ele não confere nada, e passaria até se o login desse errado.",
-     {"type": "compare", "title": "O EXPECT FAZ A DIFERENÇA", "items": [["SEM EXPECT", "SÓ CLICA", "red"], ["COM EXPECT", "CONFERE DE VERDADE", "gold"]], "size": 120, "stagger": 1.2, "vs": True}),
-    ("Roda. Passou! Esse é o seu primeiro teste completo: abre, preenche, clica e confere.",
-     {"type": "cards", "titulo": "TODO TESTE É ASSIM", "itens": [["1", "Abre", "goto"], ["2", "Acha", "getBy...", "#69a7ff"], ["3", "Faz", "fill, click", "#ffd23f"], ["4", "Confere", "expect", "#ff6b6b"]]}),
-    ("Te vejo lá!", {"type": "endcard", "sub": "PRÓXIMA: OS EXPECT MAIS USADOS"}),
+AULAS.append(projeto(15, "MÓDULO 3 · AULA 15", "Clicando no botão e conferindo se o login deu certo", [
+    ("Agora falta uma coisa pro nosso login ficar completo: clicar no botão e conferir se realmente entramos.", titulo(15, "CLICAR E CONFERIR")),
+    ("Primeiro, olha o botão na tela. Está escrito Login. Mas pro Playwright não importa só o texto. Ele também sabe que isso é um botão.", tela("site_sauce_botao", "Um botão, com o nome Login", alvo_css="#login-button")),
+    ("É daí que vem o get by role. Role quer dizer papel, ou função. Então a gente está dizendo pro Playwright: procure um elemento que tem o papel de botão.",
+     {"type": "traducao", "codigo": "page.getByRole('button')", "partes": [["getByRole", "procure pela função"], ["('button')", "de botão"]], "passo": 2.0}),
+    ("Digita: await page ponto getByRole, abre parênteses, aspas button, vírgula, chaves, name dois pontos, aspas Login, fecha tudo, ponto click.", ed(15, "A linha do clique", de=7, ate=7, ate_linha=7)),
+    ("Vamos ler essa linha em português. Page é a página. Get by role é procure pela função. Button é botão. Name Login é o nome que aparece pro usuário. E click é clicar.",
+     {"type": "traducao", "codigo": "await page.getByRole('button', { name: 'Login' }).click();", "partes": [["page", "a página"], [".getByRole(", "procure pela função"], ["'button'", "botão"], ["{ name: 'Login' }", "com o nome Login"], [".click()", "clique"]], "passo": 1.3}),
+    ("Então a frase inteira é quase isso: na página, ache o botão chamado Login e clique nele.", bt(("NA PÁGINA, ACHE O BOTÃO", "white", 100), ("CHAMADO LOGIN", "gold", 130), ("E CLIQUE NELE", "white", 100))),
+    ("O await continua aparecendo no começo porque a gente quer esperar esse clique terminar antes de ir pro próximo passo.", ed(15, "await: espera o clique terminar", digitar=False, destaque=[7], destaque_em=0.6, ate_linha=7)),
+    ("Agora roda com o navegador aparecendo. Ele preenche usuário, senha e clica em Login.",
+     gravacao("rec_sauce_login", "O robô clicando de verdade", [{"fill": ["#user-name", "standard_user"]}, {"fill": ["#password", "secret_sauce"]}, {"click": "#login-button", "espera": 1500}])),
+    ("Mas tem um problema importante aqui. O teste pode clicar no botão e mesmo assim o login dar errado. E, se a gente não conferir nada, o Playwright pode terminar o teste sem perceber o problema.", bt(("CLICAR", "white", 160), ("≠", "red", 160), ("CONFIRMAR", "gold", 160))),
+    ("É por isso que existe o expect. Expect significa algo como eu espero que. Ele é a parte que verifica se o resultado ficou do jeito que a gente queria.",
+     {"type": "traducao", "codigo": "expect(...)", "partes": [["expect", "eu espero que"]], "passo": 1.2}),
+    ("Depois do login, olha o endereço do navegador. Antes a gente estava na página inicial. Agora apareceu inventory ponto html.",
+     {"type": "compare", "title": "O ENDEREÇO MUDOU", "items": [["saucedemo.com/", "ANTES DO LOGIN", "white"], ["…/inventory.html", "DEPOIS DO LOGIN", "gold"]], "size": 90, "stagger": 1.2, "vs": False}),
+    ("Então vamos usar essa mudança como prova de que o login funcionou.", tela("site_sauce_products", "inventory = entrou!", acoes=LOGIN, alvo="Products", titulo_t="saucedemo.com/inventory.html")),
+    ("Digita: await expect, abre parênteses, page, fecha parênteses, ponto toHaveURL, e entre barras, inventory.", ed(15, "A conferência", de=8, ate=8, colinha=True)),
+    ("Agora vamos traduzir essa linha também. Expect page é eu espero que a página. To have URL é tenha esse endereço. E inventory é o pedaço que a gente quer encontrar na URL.",
+     {"type": "traducao", "codigo": "await expect(page).toHaveURL(/inventory/);", "partes": [["expect(page)", "eu espero que a página"], [".toHaveURL(", "tenha no endereço"], ["/inventory/", "a palavra inventory"]], "passo": 1.6}),
+    ("Essas duas barras em volta de inventory criam uma busca por padrão. Pra gente, agora, o importante é entender assim: a URL precisa ter a palavra inventory em algum lugar.",
+     {"type": "traducao", "texto_puro": True, "codigo": "https://www.saucedemo.com/inventory.html", "partes": [["inventory", "tem inventory? então passou"]], "passo": 1.2}),
+    ("Então o nosso teste agora fala, em português: abra o site, preencha usuário e senha, clique em Login e confirme que entrou na página de produtos.",
+     {"type": "cards", "titulo": "O SEU TESTE, EM PORTUGUÊS", "itens": [["1", "Abra", "o site"], ["2", "Preencha", "usuário e senha", "#69a7ff"], ["3", "Clique", "em Login", "#ffd23f"], ["4", "Confirme", "que entrou", "#ff6b6b"]]}),
+    ("Isso é muito importante: ação não é validação. Clicar é uma ação. O expect é a conferência. Um teste de verdade normalmente precisa dos dois.",
+     {"type": "compare", "title": "UM TESTE PRECISA DOS DOIS", "items": [["AÇÃO", "CLICAR, PREENCHER", "white"], ["VALIDAÇÃO", "O EXPECT CONFERE", "gold"]], "size": 120, "stagger": 1.2, "vs": True}),
+    ("Agora roda de novo. Passou. E dessa vez ele não passou só porque conseguiu clicar. Ele passou porque confirmou que o login realmente funcionou.",
+     vterm([{"cmd": "npx playwright test --project=chromium"}, {"out": "Running 1 test using 1 worker", "cor": "mut"}, {"out": "  1 passed (2.4s)", "cor": "ac"}], "Passou porque confirmou")),
+    ("Seu primeiro teste completo está pronto. Na próxima aula, a gente vai aprender outras formas de fazer essas conferências sem precisar decorar inglês.", proxima("Os expect mais usados")[0]),
+    ("Te vejo lá!", proxima("Os expect mais usados")[1]),
 ]))
 
 TAB = [["expect", "eu espero que"], ["toHaveURL", "tenha no endereço"], ["toBeVisible", "esteja visível"], ["toContainText", "contenha o texto"], ["toHaveCount", "tenha essa quantidade"]]

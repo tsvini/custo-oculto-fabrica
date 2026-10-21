@@ -19,7 +19,7 @@
  "serie": [],
  "meta": {
   "titles": [
-   "Aula 15: click e expect - conferindo o resultado"
+   "Aula 15: Clicando no botão e conferindo se o login deu certo"
   ],
   "description": "",
   "tags": []
@@ -32,7 +32,7 @@
      "chapter": "",
      "sentences": [
       {
-       "text": "Hoje o teste fica completo: clicar e conferir.",
+       "text": "Agora falta uma coisa pro nosso login ficar completo: clicar no botão e conferir se realmente entramos.",
        "scene": {
         "type": "bigtext",
         "stagger": 0.25,
@@ -43,7 +43,7 @@
           80
          ],
          [
-          "CLICK E EXPECT",
+          "CLICAR E CONFERIR",
           "gold",
           150
          ]
@@ -51,16 +51,34 @@
        }
       },
       {
-       "text": "Pra achar o botão, a gente usa o getByRole: o papel dele é button, de botão, e o nome é o texto escrito nele, Login.",
+       "text": "Primeiro, olha o botão na tela. Está escrito Login. Mas pro Playwright não importa só o texto. Ele também sabe que isso é um botão.",
        "scene": {
         "type": "tela",
         "media": "site_sauce_botao",
         "url": "https://www.saucedemo.com/",
         "titulo": "saucedemo.com",
-        "legenda": "Papel: botão · Nome: Login",
+        "legenda": "Um botão, com o nome Login",
         "zoom_em": 1.4,
         "caixa_em": 2.0,
         "alvo_css": "#login-button"
+       }
+      },
+      {
+       "text": "É daí que vem o get by role. Role quer dizer papel, ou função. Então a gente está dizendo pro Playwright: procure um elemento que tem o papel de botão.",
+       "scene": {
+        "type": "traducao",
+        "codigo": "page.getByRole('button')",
+        "partes": [
+         [
+          "getByRole",
+          "procure pela função"
+         ],
+         [
+          "('button')",
+          "de botão"
+         ]
+        ],
+        "passo": 2.0
        }
       },
       {
@@ -80,20 +98,189 @@
          "  playwright.config.js"
         ],
         "codigo": "import { test, expect } from '@playwright/test';\n\ntest('entra com usuário e senha', async ({ page }) => {\n  await page.goto('https://www.saucedemo.com/');\n  await page.getByPlaceholder('Username').fill('standard_user');\n  await page.getByPlaceholder('Password').fill('secret_sauce');\n  await page.getByRole('button', { name: 'Login' }).click();\n});",
-        "legenda": "getByRole('button', { name: 'Login' })",
+        "legenda": "A linha do clique",
         "fonte": 26,
         "digitar_de": 7,
         "digitar_ate": 7
        }
       },
       {
-       "text": "Agora a parte mais importante do teste: a conferência. Se logou, o endereço do site muda pra inventory.",
+       "text": "Vamos ler essa linha em português. Page é a página. Get by role é procure pela função. Button é botão. Name Login é o nome que aparece pro usuário. E click é clicar.",
+       "scene": {
+        "type": "traducao",
+        "codigo": "await page.getByRole('button', { name: 'Login' }).click();",
+        "partes": [
+         [
+          "page",
+          "a página"
+         ],
+         [
+          ".getByRole(",
+          "procure pela função"
+         ],
+         [
+          "'button'",
+          "botão"
+         ],
+         [
+          "{ name: 'Login' }",
+          "com o nome Login"
+         ],
+         [
+          ".click()",
+          "clique"
+         ]
+        ],
+        "passo": 1.3
+       }
+      },
+      {
+       "text": "Então a frase inteira é quase isso: na página, ache o botão chamado Login e clique nele.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "NA PÁGINA, ACHE O BOTÃO",
+          "white",
+          100
+         ],
+         [
+          "CHAMADO LOGIN",
+          "gold",
+          130
+         ],
+         [
+          "E CLIQUE NELE",
+          "white",
+          100
+         ]
+        ]
+       }
+      },
+      {
+       "text": "O await continua aparecendo no começo porque a gente quer esperar esse clique terminar antes de ir pro próximo passo.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "login.spec.js",
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  tests/",
+         "    login.spec.js",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "codigo": "import { test, expect } from '@playwright/test';\n\ntest('entra com usuário e senha', async ({ page }) => {\n  await page.goto('https://www.saucedemo.com/');\n  await page.getByPlaceholder('Username').fill('standard_user');\n  await page.getByPlaceholder('Password').fill('secret_sauce');\n  await page.getByRole('button', { name: 'Login' }).click();\n});",
+        "legenda": "await: espera o clique terminar",
+        "fonte": 26,
+        "digitar": false,
+        "destaque": [
+         7
+        ],
+        "destaque_em": 0.6
+       }
+      },
+      {
+       "text": "Agora roda com o navegador aparecendo. Ele preenche usuário, senha e clica em Login.",
+       "scene": {
+        "type": "tela",
+        "media": "rec_sauce_login",
+        "url": "https://www.saucedemo.com/",
+        "gravar": true,
+        "acoes": [
+         {
+          "fill": [
+           "#user-name",
+           "standard_user"
+          ]
+         },
+         {
+          "fill": [
+           "#password",
+           "secret_sauce"
+          ]
+         },
+         {
+          "click": "#login-button",
+          "espera": 1500
+         }
+        ],
+        "titulo": "saucedemo.com",
+        "legenda": "O robô clicando de verdade"
+       }
+      },
+      {
+       "text": "Mas tem um problema importante aqui. O teste pode clicar no botão e mesmo assim o login dar errado. E, se a gente não conferir nada, o Playwright pode terminar o teste sem perceber o problema.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "CLICAR",
+          "white",
+          160
+         ],
+         [
+          "≠",
+          "red",
+          160
+         ],
+         [
+          "CONFIRMAR",
+          "gold",
+          160
+         ]
+        ]
+       }
+      },
+      {
+       "text": "É por isso que existe o expect. Expect significa algo como eu espero que. Ele é a parte que verifica se o resultado ficou do jeito que a gente queria.",
+       "scene": {
+        "type": "traducao",
+        "codigo": "expect(...)",
+        "partes": [
+         [
+          "expect",
+          "eu espero que"
+         ]
+        ],
+        "passo": 1.2
+       }
+      },
+      {
+       "text": "Depois do login, olha o endereço do navegador. Antes a gente estava na página inicial. Agora apareceu inventory ponto html.",
+       "scene": {
+        "type": "compare",
+        "title": "O ENDEREÇO MUDOU",
+        "items": [
+         [
+          "saucedemo.com/",
+          "ANTES DO LOGIN",
+          "white"
+         ],
+         [
+          "…/inventory.html",
+          "DEPOIS DO LOGIN",
+          "gold"
+         ]
+        ],
+        "size": 90,
+        "stagger": 1.2,
+        "vs": false
+       }
+      },
+      {
+       "text": "Então vamos usar essa mudança como prova de que o login funcionou.",
        "scene": {
         "type": "tela",
         "media": "site_sauce_products",
         "url": "https://www.saucedemo.com/",
         "titulo": "saucedemo.com/inventory.html",
-        "legenda": "O endereço mudou pra inventory",
+        "legenda": "inventory = entrou!",
         "zoom_em": 1.4,
         "caixa_em": 2.0,
         "alvo": "Products",
@@ -117,7 +304,7 @@
        }
       },
       {
-       "text": "Então: await expect, abre parênteses, page, fecha parênteses, ponto toHaveURL, e entre barras, inventory. Essas barras criam uma busca por padrão. Nesse caso, a gente está dizendo que a URL precisa ter a palavra inventory em algum lugar.",
+       "text": "Digita: await expect, abre parênteses, page, fecha parênteses, ponto toHaveURL, e entre barras, inventory.",
        "scene": {
         "type": "editor",
         "arquivo": "login.spec.js",
@@ -133,7 +320,7 @@
          "  playwright.config.js"
         ],
         "codigo": "import { test, expect } from '@playwright/test';\n\ntest('entra com usuário e senha', async ({ page }) => {\n  await page.goto('https://www.saucedemo.com/');\n  await page.getByPlaceholder('Username').fill('standard_user');\n  await page.getByPlaceholder('Password').fill('secret_sauce');\n  await page.getByRole('button', { name: 'Login' }).click();\n  await expect(page).toHaveURL(/inventory/);\n});",
-        "legenda": "await expect(page).toHaveURL(/inventory/)",
+        "legenda": "A conferência",
         "fonte": 26,
         "digitar_de": 8,
         "digitar_ate": 8,
@@ -142,19 +329,88 @@
        }
       },
       {
-       "text": "Sem o expect, o teste só clica. Ele não confere nada, e passaria até se o login desse errado.",
+       "text": "Agora vamos traduzir essa linha também. Expect page é eu espero que a página. To have URL é tenha esse endereço. E inventory é o pedaço que a gente quer encontrar na URL.",
        "scene": {
-        "type": "compare",
-        "title": "O EXPECT FAZ A DIFERENÇA",
-        "items": [
+        "type": "traducao",
+        "codigo": "await expect(page).toHaveURL(/inventory/);",
+        "partes": [
          [
-          "SEM EXPECT",
-          "SÓ CLICA",
-          "red"
+          "expect(page)",
+          "eu espero que a página"
          ],
          [
-          "COM EXPECT",
-          "CONFERE DE VERDADE",
+          ".toHaveURL(",
+          "tenha no endereço"
+         ],
+         [
+          "/inventory/",
+          "a palavra inventory"
+         ]
+        ],
+        "passo": 1.6
+       }
+      },
+      {
+       "text": "Essas duas barras em volta de inventory criam uma busca por padrão. Pra gente, agora, o importante é entender assim: a URL precisa ter a palavra inventory em algum lugar.",
+       "scene": {
+        "type": "traducao",
+        "texto_puro": true,
+        "codigo": "https://www.saucedemo.com/inventory.html",
+        "partes": [
+         [
+          "inventory",
+          "tem inventory? então passou"
+         ]
+        ],
+        "passo": 1.2
+       }
+      },
+      {
+       "text": "Então o nosso teste agora fala, em português: abra o site, preencha usuário e senha, clique em Login e confirme que entrou na página de produtos.",
+       "scene": {
+        "type": "cards",
+        "titulo": "O SEU TESTE, EM PORTUGUÊS",
+        "itens": [
+         [
+          "1",
+          "Abra",
+          "o site"
+         ],
+         [
+          "2",
+          "Preencha",
+          "usuário e senha",
+          "#69a7ff"
+         ],
+         [
+          "3",
+          "Clique",
+          "em Login",
+          "#ffd23f"
+         ],
+         [
+          "4",
+          "Confirme",
+          "que entrou",
+          "#ff6b6b"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Isso é muito importante: ação não é validação. Clicar é uma ação. O expect é a conferência. Um teste de verdade normalmente precisa dos dois.",
+       "scene": {
+        "type": "compare",
+        "title": "UM TESTE PRECISA DOS DOIS",
+        "items": [
+         [
+          "AÇÃO",
+          "CLICAR, PREENCHER",
+          "white"
+         ],
+         [
+          "VALIDAÇÃO",
+          "O EXPECT CONFERE",
           "gold"
          ]
         ],
@@ -164,35 +420,34 @@
        }
       },
       {
-       "text": "Roda. Passou! Esse é o seu primeiro teste completo: abre, preenche, clica e confere.",
+       "text": "Agora roda de novo. Passou. E dessa vez ele não passou só porque conseguiu clicar. Ele passou porque confirmou que o login realmente funcionou.",
        "scene": {
-        "type": "cards",
-        "titulo": "TODO TESTE É ASSIM",
-        "itens": [
-         [
-          "1",
-          "Abre",
-          "goto"
-         ],
-         [
-          "2",
-          "Acha",
-          "getBy...",
-          "#69a7ff"
-         ],
-         [
-          "3",
-          "Faz",
-          "fill, click",
-          "#ffd23f"
-         ],
-         [
-          "4",
-          "Confere",
-          "expect",
-          "#ff6b6b"
-         ]
-        ]
+        "type": "terminal",
+        "titulo": "Terminal — VS Code",
+        "pasta": "C:\\Users\\voce\\Documents\\meu-primeiro-playwright",
+        "linhas": [
+         {
+          "cmd": "npx playwright test --project=chromium"
+         },
+         {
+          "out": "Running 1 test using 1 worker",
+          "cor": "mut"
+         },
+         {
+          "out": "  1 passed (2.4s)",
+          "cor": "ac"
+         }
+        ],
+        "legenda": "Passou porque confirmou"
+       }
+      },
+      {
+       "text": "Seu primeiro teste completo está pronto. Na próxima aula, a gente vai aprender outras formas de fazer essas conferências sem precisar decorar inglês.",
+       "scene": {
+        "type": "passo",
+        "icone": "▶",
+        "titulo": "Próxima aula",
+        "sub": "Os expect mais usados"
        }
       },
       {

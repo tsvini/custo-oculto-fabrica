@@ -76,6 +76,32 @@
        }
       },
       {
+       "text": "Vamos ler em português. Go to, em inglês, é ir para. Então: espere a página ir para esse endereço.",
+       "scene": {
+        "type": "traducao",
+        "codigo": "await page.goto('https://www.saucedemo.com/');",
+        "partes": [
+         [
+          "await",
+          "espere"
+         ],
+         [
+          "page",
+          "a página"
+         ],
+         [
+          "goto",
+          "ir para"
+         ],
+         [
+          "'https://www.saucedemo.com/'",
+          "este endereço"
+         ]
+        ],
+        "passo": 1.8
+       }
+      },
+      {
        "text": "Esse é o site de treino que a gente vai usar no curso todo: uma lojinha feita pra quem está aprendendo a testar.",
        "scene": {
         "type": "tela",
@@ -88,21 +114,35 @@
        }
       },
       {
-       "text": "Agora roda, mas dessa vez quero que você veja o navegador abrindo. No terminal: npx playwright test traço traço headed traço traço project igual chromium.",
+       "text": "Agora roda. Aqui embaixo no VS Code, no terminal, digita: npx playwright test traço traço headed traço traço project igual chromium.",
        "scene": {
-        "type": "terminal",
-        "titulo": "Terminal — VS Code",
-        "pasta": "C:\\Users\\voce\\Documents\\meu-primeiro-playwright",
-        "linhas": [
-         {
-          "cmd": "npx playwright test --headed --project=chromium"
-         }
+        "type": "editor",
+        "arquivo": "login.spec.js",
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  tests/",
+         "    login.spec.js",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
         ],
-        "legenda": "--headed --project=chromium"
+        "codigo": "import { test, expect } from '@playwright/test';\n\ntest('entra com usuário e senha', async ({ page }) => {\n  await page.goto('https://www.saucedemo.com/');\n});",
+        "legenda": "No terminal do VS Code",
+        "fonte": 26,
+        "digitar": false,
+        "terminal": [
+         {
+          "cmd": "npx playwright test --headed --project=chromium",
+          "em": 0.2
+         }
+        ]
        }
       },
       {
-       "text": "O headed mostra a janela, e o project igual chromium roda só no Chromium, pra ficar mais rápido.",
+       "text": "O headed mostra a janela do navegador, e o project igual chromium roda só no Chromium, pra ficar mais rápido.",
        "scene": {
         "type": "cards",
         "itens": [
@@ -123,26 +163,78 @@
        }
       },
       {
-       "text": "Viu? O navegador abriu o site e fechou. O teste passou, porque abrir o site deu certo.",
+       "text": "Aperta Enter e olha: o navegador abre sozinho, entra no saucedemo, e fecha. E no terminal aparece: um passed. O teste passou, porque abrir o site deu certo.",
        "scene": {
-        "type": "terminal",
-        "titulo": "Terminal — VS Code",
-        "pasta": "C:\\Users\\voce\\Documents\\meu-primeiro-playwright",
-        "linhas": [
+        "type": "editor",
+        "arquivo": "login.spec.js",
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  tests/",
+         "    login.spec.js",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "codigo": "import { test, expect } from '@playwright/test';\n\ntest('entra com usuário e senha', async ({ page }) => {\n  await page.goto('https://www.saucedemo.com/');\n});",
+        "legenda": "Abriu, entrou no site e fechou",
+        "fonte": 26,
+        "digitar": false,
+        "terminal": [
          {
           "cmd": "npx playwright test --headed --project=chromium",
           "ja": true
          },
          {
           "out": "Running 1 test using 1 worker",
-          "cor": "mut"
+          "cor": "mut",
+          "em": 0.08
          },
          {
           "out": "  1 passed (2.4s)",
-          "cor": "ac"
+          "cor": "ac",
+          "em": 0.68
          }
         ],
-        "legenda": "1 passou: o site abriu"
+        "navegador": {
+         "media": "rec_sauce_abre",
+         "url": "https://www.saucedemo.com/",
+         "gravar": true,
+         "acoes": [],
+         "espera_inicio": 1800,
+         "espera_fim": 600,
+         "titulo": "Chromium",
+         "em": 0.12,
+         "ate": 0.64
+        }
+       }
+      },
+      {
+       "text": "Abriu e fechou bem rápido, né? É normal: por enquanto o teste só tem um passo. Conforme a gente coloca mais passos, você vai ver ele fazendo cada um.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "login.spec.js",
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  tests/",
+         "    login.spec.js",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "codigo": "import { test, expect } from '@playwright/test';\n\ntest('entra com usuário e senha', async ({ page }) => {\n  await page.goto('https://www.saucedemo.com/');\n});",
+        "legenda": "Por enquanto, um passo só",
+        "fonte": 26,
+        "digitar": false,
+        "destaque": [
+         4
+        ],
+        "destaque_em": 0.8
        }
       },
       {

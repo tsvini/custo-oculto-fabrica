@@ -51,61 +51,142 @@
        }
       },
       {
-       "text": "No terminal, digita npx playwright test e aperta Enter.",
+       "text": "Antes de rodar, olha o que tem no arquivo de exemplo que o Playwright criou: dois testes. Um chamado has title, e outro chamado get started link.",
        "scene": {
-        "type": "terminal",
-        "titulo": "Terminal — VS Code",
-        "pasta": "C:\\Users\\voce\\Documents\\meu-primeiro-playwright",
-        "linhas": [
-         {
-          "cmd": "npx playwright test"
-         }
+        "type": "editor",
+        "arquivo": "example.spec.js",
+        "codigo": "// @ts-check\nimport { test, expect } from '@playwright/test';\n\ntest('has title', async ({ page }) => {\n  await page.goto('https://playwright.dev/');\n\n  // Expect a title \"to contain\" a substring.\n  await expect(page).toHaveTitle(/Playwright/);\n});\n\ntest('get started link', async ({ page }) => {\n  await page.goto('https://playwright.dev/');\n\n  // Click the get started link.\n  await page.getByRole('link', { name: 'Get started' }).click();\n\n  // Expects page to have a heading with the name of Installation.\n  await expect(page.getByRole('heading', { name: 'Installation' })).toBeVisible();\n});",
+        "digitar": false,
+        "destaque": [
+         4,
+         11
         ],
-        "legenda": "npx playwright test",
-        "colinha": true,
-        "colinha_em": 1.5
+        "destaque_em": 1.0,
+        "rolar": true,
+        "rolar_de": 3.2,
+        "rolar_dur": 1.6,
+        "legenda": "2 testes no arquivo"
        }
       },
       {
-       "text": "Por padrão, você não vê as janelas dos navegadores abrindo. Eles estão rodando em modo headless, sem interface visível.",
+       "text": "O primeiro abre o site do Playwright e confere o título da página. O segundo clica no link Get started. Não precisa entender o código agora: você vai aprender tudo isso no curso.",
        "scene": {
-        "type": "bigtext",
-        "stagger": 0.25,
-        "lines": [
+        "type": "cards",
+        "titulo": "O QUE O EXEMPLO FAZ",
+        "itens": [
          [
-          "HEADLESS",
-          "gold",
-          200
+          "1",
+          "has title",
+          "abre o site e confere o título"
          ],
          [
-          "SEM JANELA, MAIS RÁPIDO",
-          "white",
-          100
+          "2",
+          "get started link",
+          "clica em Get started",
+          "#69a7ff"
          ]
         ]
        }
       },
       {
-       "text": "Olha o resultado: seis execuções passaram. Mas o arquivo só tinha dois testes!",
+       "text": "Pra rodar, usa o terminal aqui embaixo no VS Code: digita npx playwright test e aperta Enter.",
        "scene": {
-        "type": "terminal",
-        "titulo": "Terminal — VS Code",
-        "pasta": "C:\\Users\\voce\\Documents\\meu-primeiro-playwright",
-        "linhas": [
+        "type": "editor",
+        "arquivo": "example.spec.js",
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules",
+         "  tests",
+         "    example.spec.js",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "codigo": "// @ts-check\nimport { test, expect } from '@playwright/test';\n\ntest('has title', async ({ page }) => {\n  await page.goto('https://playwright.dev/');\n\n  // Expect a title \"to contain\" a substring.\n  await expect(page).toHaveTitle(/Playwright/);\n});",
+        "digitar": false,
+        "fonte": 22,
+        "legenda": "No terminal do VS Code",
+        "terminal": [
+         {
+          "cmd": "npx playwright test",
+          "em": 0.3
+         }
+        ],
+        "colinha": true,
+        "colinha_em": 1.2
+       }
+      },
+      {
+       "text": "Repara: nenhuma janela de navegador abriu. É que, por padrão, o Playwright roda em modo headless, que quer dizer sem cabeça: sem janela, e por isso mais rápido.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "example.spec.js",
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules",
+         "  tests",
+         "    example.spec.js",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "codigo": "// @ts-check\nimport { test, expect } from '@playwright/test';\n\ntest('has title', async ({ page }) => {\n  await page.goto('https://playwright.dev/');\n\n  // Expect a title \"to contain\" a substring.\n  await expect(page).toHaveTitle(/Playwright/);\n});",
+        "digitar": false,
+        "fonte": 22,
+        "legenda": "Nenhuma janela abriu: headless",
+        "terminal": [
          {
           "cmd": "npx playwright test",
           "ja": true
          },
          {
           "out": "Running 6 tests using 4 workers",
-          "cor": "mut"
+          "cor": "mut",
+          "em": 0.1
+         }
+        ]
+       }
+      },
+      {
+       "text": "Olha o resultado: seis passaram. Mas o arquivo só tinha dois testes!",
+       "scene": {
+        "type": "editor",
+        "arquivo": "example.spec.js",
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules",
+         "  tests",
+         "    example.spec.js",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "codigo": "// @ts-check\nimport { test, expect } from '@playwright/test';\n\ntest('has title', async ({ page }) => {\n  await page.goto('https://playwright.dev/');\n\n  // Expect a title \"to contain\" a substring.\n  await expect(page).toHaveTitle(/Playwright/);\n});",
+        "digitar": false,
+        "fonte": 22,
+        "legenda": "6 passaram… com 2 testes?",
+        "terminal": [
+         {
+          "cmd": "npx playwright test",
+          "ja": true
+         },
+         {
+          "out": "Running 6 tests using 4 workers",
+          "cor": "mut",
+          "ja": true
          },
          {
           "out": "  6 passed (7.9s)",
-          "cor": "ac"
+          "cor": "ac",
+          "em": 0.12
          }
-        ],
-        "legenda": "6 passaram… com 2 testes?"
+        ]
        }
       },
       {
@@ -137,19 +218,24 @@
       {
        "text": "E no final ele dá uma dica: npx playwright show-report. Digita isso.",
        "scene": {
-        "type": "terminal",
-        "titulo": "Terminal — VS Code",
-        "pasta": "C:\\Users\\voce\\Documents\\meu-primeiro-playwright",
-        "linhas": [
-         {
-          "cmd": "npx playwright test",
-          "ja": true
-         },
-         {
-          "out": "Running 6 tests using 4 workers",
-          "cor": "mut",
-          "ja": true
-         },
+        "type": "editor",
+        "arquivo": "example.spec.js",
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules",
+         "  tests",
+         "    example.spec.js",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "codigo": "// @ts-check\nimport { test, expect } from '@playwright/test';\n\ntest('has title', async ({ page }) => {\n  await page.goto('https://playwright.dev/');\n\n  // Expect a title \"to contain\" a substring.\n  await expect(page).toHaveTitle(/Playwright/);\n});",
+        "digitar": false,
+        "fonte": 22,
+        "legenda": "npx playwright show-report",
+        "terminal": [
          {
           "out": "  6 passed (7.9s)",
           "cor": "ac",
@@ -166,20 +252,21 @@
           "ja": true
          },
          {
-          "cmd": "npx playwright show-report"
+          "cmd": "npx playwright show-report",
+          "em": 0.35
          },
          {
           "out": "Serving HTML report at http://localhost:9323",
-          "cor": "ac"
+          "cor": "ac",
+          "em": 0.7
          }
         ],
-        "legenda": "npx playwright show-report",
         "colinha": true,
-        "colinha_em": 1.5
+        "colinha_em": 1.2
        }
       },
       {
-       "text": "Abre o relatório no navegador: cada teste, em cada navegador, quanto tempo levou, e se passou ou falhou.",
+       "text": "O relatório abre sozinho no navegador: cada teste, em cada navegador, quanto tempo levou, e se passou ou falhou.",
        "scene": {
         "type": "pw_relatorio",
         "testes": [
@@ -302,10 +389,24 @@
       {
        "text": "Pra fechar o relatório, volta no terminal e aperta Control C.",
        "scene": {
-        "type": "terminal",
-        "titulo": "Terminal — VS Code",
-        "pasta": "C:\\Users\\voce\\Documents\\meu-primeiro-playwright",
-        "linhas": [
+        "type": "editor",
+        "arquivo": "example.spec.js",
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules",
+         "  tests",
+         "    example.spec.js",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "codigo": "// @ts-check\nimport { test, expect } from '@playwright/test';\n\ntest('has title', async ({ page }) => {\n  await page.goto('https://playwright.dev/');\n\n  // Expect a title \"to contain\" a substring.\n  await expect(page).toHaveTitle(/Playwright/);\n});",
+        "digitar": false,
+        "fonte": 22,
+        "legenda": "Ctrl + C fecha o relatório",
+        "terminal": [
          {
           "cmd": "npx playwright show-report",
           "ja": true
@@ -317,10 +418,10 @@
          },
          {
           "out": "^C",
-          "cor": "yel"
+          "cor": "yel",
+          "em": 0.45
          }
-        ],
-        "legenda": "Ctrl + C fecha o relatório"
+        ]
        }
       },
       {

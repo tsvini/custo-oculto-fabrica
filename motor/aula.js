@@ -103,10 +103,11 @@
     // a linha mais comprida sempre cabe inteira (código nunca é cortado na lateral)
     const fs = Math.min(c.vertical ? 46 * u : (s.fonte || (linhas.length > 12 ? 30 : 36)) * u, (W - sideW - 140 * u) / (maxCh * 0.6)); const lh = fs * 1.55; const x0 = tabX + 96 * u; let yy = top + 100 * u;
     // rolar: o arquivo inteiro aparece de cima e a tela desce até o fim antes de começar a digitar
-    const baseY = y + H - 40 * u, cabem = Math.floor((baseY - yy) / lh) + 1, sobra = s.rolar_ate ? clamp(Math.ceil(s.rolar_ate - cabem + 2) * lh, 0, Math.max(0, linhas.length - cabem) * lh) : Math.max(0, linhas.length - cabem) * lh;
+    const PH = s.terminal ? Math.round(H * 0.4) : 0;  // painel do terminal integrado (embaixo, como no VS Code)
+    const baseY = y + H - PH - 40 * u, cabem = Math.floor((baseY - yy) / lh) + 1, sobra = s.rolar_ate ? clamp(Math.ceil(s.rolar_ate - cabem + 2) * lh, 0, Math.max(0, linhas.length - cabem) * lh) : Math.max(0, linhas.length - cabem) * lh;
     const rDe = s.rolar_de || 1.6, rDur = s.rolar_dur || 1.5; const rolando = s.rolar && sobra > 0;
     const t0 = rolando ? rDe + rDur + 0.3 : 0.5; if (rolando) yy -= sobra * easeInOut((t - rDe) / rDur);
-    ctx.save(); ctx.beginPath(); ctx.rect(tabX, top + 58 * u, W - sideW, y + H - top - 60 * u); ctx.clip();
+    ctx.save(); ctx.beginPath(); ctx.rect(tabX, top + 58 * u, W - sideW, y + H - PH - top - 60 * u); ctx.clip();
     const d0 = s.digitar_de || ((s.destaque && s.destaque.length) ? Math.min(...s.destaque) : 1);  // linhas antes disso já estão escritas
     const d1 = s.digitar_ate || linhas.length;  // linhas depois disso já estão escritas também
     const pronto = linhas.slice(0, d0 - 1).join("").length; const falta = Math.max(1, linhas.slice(0, d1).join("").length - pronto);
@@ -123,8 +124,43 @@
       if (dig < 1 && i + 1 <= d1 && resta < 0 && resta + ln.length >= 0 && Math.floor(t * 2.5) % 2 === 0) { ctx.save(); ctx.globalAlpha = a; ctx.fillStyle = C.ac; ctx.fillRect(xx + 2 * u, yy - fs * 0.6, 4 * u, fs * 1.2); ctx.restore(); }
       yy += lh;
     });
-    ctx.restore(); ctx.restore(); legenda(ctx, c, t, s);
+    ctx.restore();
+    if (PH) painelTerminal(ctx, u, tabX, y + H - PH, W - sideW, PH, t, dur, s, a);
+    ctx.restore();
+    if (s.navegador) navegadorPorCima(ctx, c, t, dur, s.navegador, arguments[5]);
+    legenda(ctx, c, t, s);
   };
+  // painel TERMINAL dentro do VS Code: s.terminal = [{cmd, em}, {out, cor, em}] (em = fração da cena; ja:true = já estava lá)
+  function painelTerminal(ctx, u, x, y, w, h, t, dur, s, a) {
+    ctx.save(); ctx.globalAlpha *= a; ctx.fillStyle = C.term; ctx.fillRect(x, y, w, h - 22 * u); ctx.fillStyle = "rgba(255,255,255,.12)"; ctx.fillRect(x, y, w, 2 * u); ctx.restore();
+    let tx = x + 36 * u; ["PROBLEMS", "OUTPUT", "DEBUG CONSOLE", "TERMINAL", "PORTS"].forEach((nm) => {
+      const on = nm === "TERMINAL"; txt(ctx, nm, font(on ? 700 : 500, 19 * u), tx, y + 34 * u, on ? C.txt : C.mut, "left", a);
+      const ww = tw(ctx, nm, font(on ? 700 : 500, 19 * u)); if (on) { ctx.save(); ctx.globalAlpha *= a; ctx.fillStyle = C.ac; ctx.fillRect(tx, y + 50 * u, ww, 3 * u); ctx.restore(); } tx += ww + 34 * u; });
+    const pr = "PS " + (s.term_pasta || "...\\meu-primeiro-playwright") + "> "; const L = s.terminal;
+    const maxc = Math.max(...L.map((l) => (l.cmd !== undefined ? pr.length + l.cmd.length : (l.out || "").length)));
+    const fs = Math.min(28 * u, (w - 72 * u) / (maxc * 0.6)); const lh = fs * 1.6; let yy = y + 92 * u;
+    const t0de = (l, i) => (l.ja ? -1 : (l.em !== undefined ? l.em * dur : 0.6 + i * 0.8));
+    const vis = L.map((l, i) => [l, t0de(l, i)]).filter(([, t0]) => t >= t0); const cabe = Math.max(1, Math.floor((h - 22 * u - 92 * u) / lh) + 1);
+    vis.slice(-cabe).forEach(([l, t0]) => {  // como no terminal de verdade: quando enche, as linhas de cima sobem
+      let px = x + 36 * u;
+      if (l.cmd !== undefined) {
+        const k = l.ja ? 1 : clamp((t - t0) / Math.max(0.6, l.cmd.length / 22)); const cmd = l.cmd.slice(0, Math.ceil(k * l.cmd.length));
+        txt(ctx, pr, font(600, fs, MONO), px, yy, C.ac2, "left", a); px += tw(ctx, pr, font(600, fs, MONO)); txt(ctx, cmd, font(600, fs, MONO), px, yy, C.txt, "left", a);
+        if (k < 1 && Math.floor(t * 2.5) % 2 === 0) { ctx.fillStyle = C.txt; ctx.fillRect(px + tw(ctx, cmd, font(600, fs, MONO)) + 3 * u, yy - fs * 0.55, fs * 0.55, fs * 1.1); }
+      } else txt(ctx, l.out, font(500, fs, MONO), px, yy, C[l.cor] || l.cor || C.mut, "left", a * (l.ja ? 1 : easeOut((t - t0) / 0.3)));
+      yy += lh; });
+  }
+  // janela do navegador (gravação real) aparecendo por cima entre em e ate (frações da cena) e fechando sozinha
+  function navegadorPorCima(ctx, c, t, dur, n, media) {
+    const u = c.u, t0 = n.em * dur, t1 = n.ate * dur; if (t < t0 || t > t1) return;
+    const kin = easeOut((t - t0) / 0.35), kout = 1 - easeOut((t - (t1 - 0.4)) / 0.4), a = Math.min(kin, kout), sc = lerp(0.88, 1, Math.min(kin, kout));
+    const W = 1150 * u, H = W * 9 / 16 + 64 * u, x = c.cx - W / 2, y = c.cy - H / 2 - 40 * u;
+    ctx.save(); ctx.translate(c.cx, y + H / 2); ctx.scale(sc, sc); ctx.translate(-c.cx, -(y + H / 2));
+    const top = janela(ctx, x, y, W, H, u, n.titulo || "Chromium", a); const m = media && media[n.media]; const el = m && (m.video || m.img);
+    ctx.save(); ctx.globalAlpha *= a; rr(ctx, x, top, W, H - (top - y), 0); ctx.clip();
+    if (el) ctx.drawImage(el, x, top, W, H - (top - y)); else { ctx.fillStyle = "#fff"; ctx.fillRect(x, top, W, H - (top - y)); txt(ctx, "[ gravação: " + n.media + " ]", font(700, 36 * u), c.cx, top + (H - 64 * u) / 2, "#888", "center"); }
+    ctx.restore(); ctx.restore();
+  }
 
   // TERMINAL: {type:"terminal", pasta:"C:\\Users\\voce\\meu-projeto", linhas:[{cmd:"node -v"},{out:"v22.11.0", cor:"ac"}], legenda:"..."}
   S.terminal = (ctx, c, t, dur, s) => {
@@ -551,7 +587,7 @@
         txt(ctx, b, font(500, 24 * u), xx + 15 * u, top + 26 * u, claro ? "#2a2f3a" : (on ? "#fff" : "#c5c9d6"), "left", a); bx.push([xx, w]); xx += w; });
       corpo = top + 52 * u; }
     // corpo do app
-    const ch = y + H - corpo; let sideW = 0;
+    const ch = y + H - corpo; let sideW = 0; let alvoPos = null;
     if (claro) {
       ctx.save(); ctx.globalAlpha = a; ctx.fillStyle = "#fff"; ctx.fillRect(x, corpo, W, ch - 2 * u); ctx.fillStyle = "#e4e7ee"; ctx.fillRect(x, corpo, W, 64 * u); ctx.restore();
       pastaIcone(ctx, x + 30 * u, corpo + 16 * u, 38 * u, a); txt(ctx, s.caminho_txt || "Este Computador  ›  Documentos", font(600, 26 * u), x + 84 * u, corpo + 32 * u, "#3a3f4b", "left", a);
@@ -566,9 +602,12 @@
         const ps = s.pastas.slice(); const kn = s.resultado === "arquivo" ? easeOut((t - tFim - 0.3) / 0.3) : 0;
         // novo_pos: onde o arquivo novo entra (os de baixo descem); apaga: nome do item que some depois do clique (os de baixo sobem)
         const arv = arvore(ps, 3); const iNovo = s.novo_pos !== undefined ? s.novo_pos : ps.length; const iApaga = s.apaga ? arv.findIndex((q) => q.nm === s.apaga) : -1; const ka2 = iApaga >= 0 ? easeOut((t - tFim - 0.2) / 0.35) : 0;
+        const alvoNm = s.alvo_item || s.apaga;  // botão direito em cima deste item do Explorer (o menu abre ali e o item fica selecionado)
         arv.forEach(({ nm: p, nv }, i) => { const pasta = /\/$/.test(p); if (pasta) p = p.slice(0, -1); const desl = (i >= iNovo ? kn : 0) - (iApaga >= 0 && i > iApaga ? ka2 : 0); const al = a * (i === iApaga ? 1 - ka2 : 1);
           const yy = corpo + (80 + (i + desl) * 48) * u, ind = nv * 22 * u, arq = !pasta && (/\.\w+$/.test(p) || /^\.\w/.test(p));
           if (al <= 0.01) return;
+          if (alvoNm && (p === alvoNm.replace(/\/$/, "") || p.trim() === alvoNm.replace(/\/$/, ""))) { alvoPos = [x + 68 * u + ind + Math.min(tw(ctx, p, font(500, 24 * u)), sideW - 120 * u) * 0.6, yy];
+            const ks = easeOut((t - tc0 + 0.1) / 0.2); if (ks > 0) { ctx.save(); ctx.globalAlpha = al * ks; ctx.fillStyle = "#04395e"; ctx.fillRect(x, yy - 22 * u, sideW, 44 * u); ctx.strokeStyle = "#007fd4"; ctx.lineWidth = 2 * u; ctx.strokeRect(x + 1 * u, yy - 22 * u, sideW - 2 * u, 44 * u); ctx.restore(); } }
           if (arq) { ctx.save(); ctx.globalAlpha *= al; ctx.fillStyle = C.ac; rr(ctx, x + 32 * u + ind, yy - 13 * u, 20 * u, 26 * u, 4 * u); ctx.fill(); ctx.restore(); } else pastaIcone(ctx, x + 28 * u + ind, yy - 14 * u, 30 * u, al);
           txt(ctx, p, caber(ctx, p, 500, 24 * u, sideW - 88 * u - ind), x + 68 * u + ind, yy, C.txt, "left", al); });
         if (kn > 0) { const i = iNovo, yy = corpo + (80 + i * 48) * u, ind = (s.novo_nivel !== undefined ? s.novo_nivel : arv.some((q) => q.nv !== Math.min(arv.indexOf(q), 3)) ? arv[arv.length - 1].nv : Math.min(i, 3)) * 22 * u; const nm = (s.novo || "novo.js").slice(0, Math.ceil(clamp((t - tFim - 0.6) / 1.0) * (s.novo || "novo.js").length));
@@ -589,6 +628,7 @@
     const mf = font(500, 25 * u), ih = 48 * u; const pts = [];
     let mx, my, pmx = 0;
     if (barra && s.abre !== undefined) { mx = bx[s.abre][0]; my = corpo; pts.push([bx[s.abre][0] + bx[s.abre][1] / 2, top + 26 * u, tc0]); }
+    else if (alvoPos) { [mx, my] = alvoPos; pts.push([mx, my, tc0, "#69a7ff"]); mx = x + sideW + 12 * u; my -= 20 * u; }  // o menu abre ao lado do Explorer, sem tampar os nomes
     else { const pp = s.ponto || [0.6, 0.55]; mx = x + sideW + pp[0] * (W - sideW); my = corpo + pp[1] * ch; pts.push([mx, my, tc0, "#69a7ff"]); mx += 6 * u; my += 6 * u; }
     M.forEach((itens, k) => {
       const tk = tc0 + k * passo; if (t < tk) return; const ka = fechado ? 0 : easeOut((t - tk - 0.05) / 0.15);
@@ -1095,7 +1135,7 @@
     const fc = caber(ctx, cod, 700, 60 * u, c.W * 0.88, MONO); const wTot = tw(ctx, cod, fc); const x0 = c.cx - wTot / 2; const yc = c.H * 0.24;
     // caixa do código
     ctx.save(); ctx.globalAlpha = a; rr(ctx, x0 - 40 * u, yc - 60 * u, wTot + 80 * u, 120 * u, 18 * u); ctx.fillStyle = C.win; ctx.fill(); ctx.strokeStyle = C.line; ctx.lineWidth = 2 * u; ctx.stroke(); ctx.restore();
-    let xx = x0; for (const [tk, cor] of tokens(cod)) { txt(ctx, tk, fc, xx, yc, cor, "left", a); xx += tw(ctx, tk, fc); }
+    let xx = x0; for (const [tk, cor] of (s.texto_puro ? [[cod, C.txt]] : tokens(cod))) { txt(ctx, tk, fc, xx, yc, cor, "left", a); xx += tw(ctx, tk, fc); }
     const passo = s.passo || Math.max(0.9, (dur * 0.75 - 0.8) / Math.max(P.length, 1)); let ocup = [];
     P.forEach(([trecho, pt, nota], i) => { const ini = cod.indexOf(trecho); if (ini < 0) return; const k = easeOut((t - 0.8 - i * passo) / 0.4); if (k <= 0) return; const cor = cores[i % cores.length];
       const xa = x0 + tw(ctx, cod.slice(0, ini), fc), xb = xa + tw(ctx, trecho, fc), xm = (xa + xb) / 2;
@@ -1103,7 +1143,7 @@
       const fp = caber(ctx, pt, 800, 50 * u, Math.max(280 * u, (c.W * 0.92) / Math.max(P.length, 1))); const wp = tw(ctx, pt, fp);
       const xc = Math.max(c.W * 0.04 + wp / 2, Math.min(c.W * 0.96 - wp / 2, xm)); let linha = 0; while (ocup.some(([l, a0, a1]) => l === linha && !(xc + wp / 2 + 30 * u < a0 || xc - wp / 2 - 30 * u > a1))) linha++;
       ocup.push([linha, xc - wp / 2, xc + wp / 2]); const yp = yc + 230 * u + linha * 130 * u;
-      ctx.save(); ctx.globalAlpha = a * k * 0.18; ctx.fillStyle = cor; ctx.fillRect(xa - 4 * u, yc - 40 * u, xb - xa + 8 * u, 80 * u); ctx.globalAlpha = a * k;
+      ctx.save(); ctx.globalAlpha = a * k * 0.12; ctx.fillStyle = cor; ctx.fillRect(xa - 4 * u, yc - 40 * u, xb - xa + 8 * u, 80 * u); ctx.globalAlpha = a * k;
       ctx.fillRect(xa, yc + 70 * u, xb - xa, 6 * u); const yf = yp - 58 * u; ctx.fillRect(xm - 3 * u, yc + 76 * u, 6 * u, (yf - yc - 76 * u) * k);
       ctx.beginPath(); ctx.moveTo(xm - 16 * u, yf - 4 * u); ctx.lineTo(xm + 16 * u, yf - 4 * u); ctx.lineTo(xm, yf + 18 * u); ctx.closePath(); ctx.fill();
       rr(ctx, xc - wp / 2 - 26 * u, yp - 38 * u, wp + 52 * u, 76 * u, 38 * u); ctx.fill(); ctx.restore();

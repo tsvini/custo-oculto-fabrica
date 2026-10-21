@@ -182,6 +182,7 @@ def main():
         M.candidatos(cenas, os.path.join(RAIZ, "previas"), log)
         return
     M.prints([s for s in cenas if s.get("type") == "print"], pasta_midia, log)
+    M.gravacoes(cenas, pasta_midia, log)
     M.telas(cenas, pasta_midia, log, idioma)
     chaves_longo = {s.get("media") for g in p["script"]["long"]["parts"] for s in (x.get("scene") or {} for x in g["sentences"])}
     M.pexels([s for s in cenas if s.get("media") in chaves_longo], pasta_midia, False, log, creditos)

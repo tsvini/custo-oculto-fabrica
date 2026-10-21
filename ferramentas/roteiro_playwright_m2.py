@@ -110,19 +110,39 @@ AULAS.append(projeto(10, "MÓDULO 2 · AULA 10", "Os arquivos que ele criou", [
     ("Te vejo lá!", proxima("Rodando o teste de exemplo")[1]),
 ]))
 
+EXEMPLO = open(os.path.join(RAIZ, "curso-playwright", "referencia_init", "tests", "example.spec.js"), encoding="utf8").read().rstrip("\n")
+
+
+def vs11(legenda, terminal, **kw):
+    """VS Code de verdade: o example.spec.js em cima (o começo dele, como fica na tela) e o terminal integrado embaixo"""
+    d = {"type": "editor", "arquivo": "example.spec.js", "pastas": ARVORE, "codigo": "\n".join(EXEMPLO.split("\n")[:9]), "digitar": False, "fonte": 22, "legenda": legenda, "terminal": terminal}
+    d.update(kw)
+    return d
+
+
+CMD = {"cmd": "npx playwright test"}
 AULAS.append(projeto(11, "MÓDULO 2 · AULA 11", "Rodando o teste de exemplo e o relatório HTML", [
     ("Chegou a hora de ver o Playwright funcionando.", titulo(11, "RODANDO")),
-    ("No terminal, digita npx playwright test e aperta Enter.", vterm(RUN[:1], "npx playwright test", colinha=True)),
-    ("Por padrão, você não vê as janelas dos navegadores abrindo. Eles estão rodando em modo headless, sem interface visível.", bt(("HEADLESS", "gold", 200), ("SEM JANELA, MAIS RÁPIDO", "white", 100))),
-    ("Olha o resultado: seis execuções passaram. Mas o arquivo só tinha dois testes!", vterm(RUN[:3], "6 passaram… com 2 testes?", ja=1)),
+    ("Antes de rodar, olha o que tem no arquivo de exemplo que o Playwright criou: dois testes. Um chamado has title, e outro chamado get started link.",
+     {"type": "editor", "arquivo": "example.spec.js", "codigo": EXEMPLO, "digitar": False, "destaque": [4, 11], "destaque_em": 1.0, "rolar": True, "rolar_de": 3.2, "rolar_dur": 1.6, "legenda": "2 testes no arquivo"}),
+    ("O primeiro abre o site do Playwright e confere o título da página. O segundo clica no link Get started. Não precisa entender o código agora: você vai aprender tudo isso no curso.",
+     {"type": "cards", "titulo": "O QUE O EXEMPLO FAZ", "itens": [["1", "has title", "abre o site e confere o título"], ["2", "get started link", "clica em Get started", "#69a7ff"]]}),
+    ("Pra rodar, usa o terminal aqui embaixo no VS Code: digita npx playwright test e aperta Enter.", vs11("No terminal do VS Code", [dict(CMD, em=0.3)], colinha=True, colinha_em=1.2)),
+    ("Repara: nenhuma janela de navegador abriu. É que, por padrão, o Playwright roda em modo headless, que quer dizer sem cabeça: sem janela, e por isso mais rápido.",
+     vs11("Nenhuma janela abriu: headless", [dict(CMD, ja=True), {"out": "Running 6 tests using 4 workers", "cor": "mut", "em": 0.1}])),
+    ("Olha o resultado: seis passaram. Mas o arquivo só tinha dois testes!",
+     vs11("6 passaram… com 2 testes?", [dict(CMD, ja=True), {"out": "Running 6 tests using 4 workers", "cor": "mut", "ja": True}, {"out": "  6 passed (7.9s)", "cor": "ac", "em": 0.12}])),
     ("Isso acontece porque cada um dos dois testes rodou em três navegadores. Dois testes vezes três navegadores: seis execuções.",
      {"type": "cards", "titulo": "2 TESTES × 3 NAVEGADORES = 6 EXECUÇÕES", "itens": [["C", "Chromium", "2 execuções"], ["F", "Firefox", "2 execuções", "#ff8c42"], ["W", "WebKit", "2 execuções", "#69a7ff"]]}),
-    ("E no final ele dá uma dica: npx playwright show-report. Digita isso.", vterm(RUN + [{"cmd": "npx playwright show-report"}, {"out": "Serving HTML report at http://localhost:9323", "cor": "ac"}], "npx playwright show-report", colinha=True, ja=5)),
-    ("Abre o relatório no navegador: cada teste, em cada navegador, quanto tempo levou, e se passou ou falhou.", {"type": "pw_relatorio", "testes": REL, "legenda": "Cada teste, em cada navegador"}),
+    ("E no final ele dá uma dica: npx playwright show-report. Digita isso.",
+     vs11("npx playwright show-report", [{"out": "  6 passed (7.9s)", "cor": "ac", "ja": True}, {"out": "To open last HTML report run:", "cor": "mut", "ja": True}, {"out": "  npx playwright show-report", "cor": "txt", "ja": True},
+                                         {"cmd": "npx playwright show-report", "em": 0.35}, {"out": "Serving HTML report at http://localhost:9323", "cor": "ac", "em": 0.7}], colinha=True, colinha_em=1.2)),
+    ("O relatório abre sozinho no navegador: cada teste, em cada navegador, quanto tempo levou, e se passou ou falhou.", {"type": "pw_relatorio", "testes": REL, "legenda": "Cada teste, em cada navegador"}),
     ("Clica em qualquer teste pra ver os passos que ele fez, um por um.",
      {"type": "pw_relatorio", "testes": REL, "abrir": {"titulo": "get started link", "arquivo": "example.spec.js:11", "projeto": "chromium",
       "passos": [["Navigate to \"https://playwright.dev/\"", "0.9s"], ["Click getByRole('link', { name: 'Get started' })", "0.3s"], ["Expect \"toBeVisible\"", "0.1s"]]}, "legenda": "Os passos, um por um"}),
-    ("Pra fechar o relatório, volta no terminal e aperta Control C.", vterm([{"cmd": "npx playwright show-report"}, {"out": "Serving HTML report at http://localhost:9323", "cor": "ac"}, {"out": "^C", "cor": "yel"}], "Ctrl + C fecha o relatório", ja=2)),
+    ("Pra fechar o relatório, volta no terminal e aperta Control C.",
+     vs11("Ctrl + C fecha o relatório", [{"cmd": "npx playwright show-report", "ja": True}, {"out": "Serving HTML report at http://localhost:9323", "cor": "ac", "ja": True}, {"out": "^C", "cor": "yel", "em": 0.45}])),
     ("Agora você já tem tudo funcionando. No próximo módulo, a gente apaga esse exemplo e escreve o seu primeiro teste, do zero.",
      {"type": "flow", "a": "EXEMPLO ✓", "a_sub": "do Playwright", "b": "SEU CÓDIGO", "b_sub": "a partir de agora", "caption": "AGORA É COM VOCÊ"}),
     ("Te vejo lá!", {"type": "endcard", "sub": "PRÓXIMA: MÓDULO 3 · PRIMEIRO TESTE"}),
