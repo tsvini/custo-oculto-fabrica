@@ -1,9 +1,9 @@
 {
- "atualizado": "20/10/2026 21:55",
+ "atualizado": "21/10/2026 12:36",
  "fontes": {
   "custo_oculto": {
    "seguidores": 11,
-   "views_total": 4623,
+   "views_total": 4632,
    "videos": 31,
    "views_28d": 4625,
    "views_7d": 3771,
@@ -155,8 +155,8 @@
   },
   "hidden_cost": {
    "seguidores": 0,
-   "views_total": 10,
-   "videos": 7,
+   "views_total": 12,
+   "videos": 8,
    "views_28d": 0,
    "views_7d": 0,
    "seguidores_28d": 0,
@@ -166,8 +166,8 @@
   },
   "vini_qa": {
    "seguidores": 0,
-   "views_total": 0,
-   "videos": 1,
+   "views_total": 5,
+   "videos": 2,
    "views_28d": 0,
    "views_7d": 0,
    "seguidores_28d": 0,
@@ -283,20 +283,20 @@
   "tiktok": {
    "usuario": "Custo Oculto",
    "seguidores": 17,
-   "curtidas": 192,
+   "curtidas": 193,
    "videos": 12,
-   "views_total": 4041,
+   "views_total": 4098,
    "top": [
     {
      "titulo": "A Sadia perdeu bilhões apostando no dólar. Pouco depois, acabou se unindo à maior rival: a",
      "url": "https://www.tiktok.com/@custooculto/video/7698857265817849108?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 52,
-     "likes": 0
+     "views": 93,
+     "likes": 1
     },
     {
      "titulo": "A Nestlé comprou a Garoto. O Cade proibiu. Mas a compra já tinha acontecido 🍫 Você sabia q",
      "url": "https://www.tiktok.com/@custooculto/video/7698432599659744533?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 1119,
+     "views": 1134,
      "likes": 70
     },
     {
@@ -320,7 +320,7 @@
     {
      "titulo": "Banco Master, parte 3: a liquidação, a operação da PF e a conta de R$ 41 bilhões do FGC. N",
      "url": "https://www.tiktok.com/@custooculto/video/7697250527561747764?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 307,
+     "views": 308,
      "likes": 23
     }
    ],
@@ -359,24 +359,6 @@
   }
  },
  "agenda": [
-  {
-   "quando": "2026-10-21T12:00:00-03:00",
-   "plataforma": "Hidden Cost (YouTube EN)",
-   "chave": "hidden_cost",
-   "titulo": "WEWORK: The $47 Billion Startup That Never Made a Profit",
-   "tipo": "longo",
-   "id": "wework_longo",
-   "url": "https://studio.youtube.com/video/dBopOBre4ws/edit"
-  },
-  {
-   "quando": "2026-10-21T12:00:00-03:00",
-   "plataforma": "Vini QA (YouTube)",
-   "chave": "vini_qa",
-   "titulo": "Seu primeiro teste automatizado",
-   "tipo": "short",
-   "id": "lyfD8rJ6F30",
-   "url": "https://studio.youtube.com/video/lyfD8rJ6F30/edit"
-  },
   {
    "quando": "2026-10-21T18:00:00-03:00",
    "plataforma": "Custo Oculto (YouTube)",
