@@ -93,7 +93,8 @@
         "pasta": "C:\\Users\\voce\\Documents\\meu-primeiro-playwright",
         "linhas": [
          {
-          "cmd": "npx playwright test"
+          "cmd": "npx playwright test",
+          "ja": true
          },
          {
           "out": "Running 6 tests using 4 workers",
@@ -141,23 +142,28 @@
         "pasta": "C:\\Users\\voce\\Documents\\meu-primeiro-playwright",
         "linhas": [
          {
-          "cmd": "npx playwright test"
+          "cmd": "npx playwright test",
+          "ja": true
          },
          {
           "out": "Running 6 tests using 4 workers",
-          "cor": "mut"
+          "cor": "mut",
+          "ja": true
          },
          {
           "out": "  6 passed (7.9s)",
-          "cor": "ac"
+          "cor": "ac",
+          "ja": true
          },
          {
           "out": "To open last HTML report run:",
-          "cor": "mut"
+          "cor": "mut",
+          "ja": true
          },
          {
           "out": "  npx playwright show-report",
-          "cor": "txt"
+          "cor": "txt",
+          "ja": true
          },
          {
           "cmd": "npx playwright show-report"
@@ -301,11 +307,13 @@
         "pasta": "C:\\Users\\voce\\Documents\\meu-primeiro-playwright",
         "linhas": [
          {
-          "cmd": "npx playwright show-report"
+          "cmd": "npx playwright show-report",
+          "ja": true
          },
          {
           "out": "Serving HTML report at http://localhost:9323",
-          "cor": "ac"
+          "cor": "ac",
+          "ja": true
          },
          {
           "out": "^C",

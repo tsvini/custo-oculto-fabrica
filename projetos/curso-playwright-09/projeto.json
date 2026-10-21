@@ -74,7 +74,8 @@
         "pasta": "C:\\Users\\voce\\Documents\\meu-primeiro-playwright",
         "linhas": [
          {
-          "cmd": "npm init playwright@latest"
+          "cmd": "npm init playwright@latest",
+          "ja": true
          },
          {
           "out": "Need to install the following packages:",
@@ -100,11 +101,13 @@
         "pasta": "C:\\Users\\voce\\Documents\\meu-primeiro-playwright",
         "linhas": [
          {
-          "cmd": "npm init playwright@latest"
+          "cmd": "npm init playwright@latest",
+          "ja": true
          },
          {
           "out": "Ok to proceed? (y) y",
-          "cor": "yel"
+          "cor": "yel",
+          "ja": true
          },
          {
           "out": "Getting started with writing end-to-end tests with Playwright:",
@@ -126,11 +129,13 @@
         "pasta": "C:\\Users\\voce\\Documents\\meu-primeiro-playwright",
         "linhas": [
          {
-          "cmd": "npm init playwright@latest"
+          "cmd": "npm init playwright@latest",
+          "ja": true
          },
          {
           "out": "✔ Do you want to use TypeScript or JavaScript? · JavaScript",
-          "cor": "ac"
+          "cor": "ac",
+          "ja": true
          },
          {
           "out": "✔ Where to put your end-to-end tests? · tests",
@@ -148,15 +153,18 @@
         "pasta": "C:\\Users\\voce\\Documents\\meu-primeiro-playwright",
         "linhas": [
          {
-          "cmd": "npm init playwright@latest"
+          "cmd": "npm init playwright@latest",
+          "ja": true
          },
          {
           "out": "✔ Do you want to use TypeScript or JavaScript? · JavaScript",
-          "cor": "ac"
+          "cor": "ac",
+          "ja": true
          },
          {
           "out": "✔ Where to put your end-to-end tests? · tests",
-          "cor": "ac"
+          "cor": "ac",
+          "ja": true
          },
          {
           "out": "✔ Add a GitHub Actions workflow? (y/N) · true",
@@ -174,19 +182,23 @@
         "pasta": "C:\\Users\\voce\\Documents\\meu-primeiro-playwright",
         "linhas": [
          {
-          "cmd": "npm init playwright@latest"
+          "cmd": "npm init playwright@latest",
+          "ja": true
          },
          {
           "out": "✔ Do you want to use TypeScript or JavaScript? · JavaScript",
-          "cor": "ac"
+          "cor": "ac",
+          "ja": true
          },
          {
           "out": "✔ Where to put your end-to-end tests? · tests",
-          "cor": "ac"
+          "cor": "ac",
+          "ja": true
          },
          {
           "out": "✔ Add a GitHub Actions workflow? (y/N) · true",
-          "cor": "ac"
+          "cor": "ac",
+          "ja": true
          },
          {
           "out": "✔ Install Playwright browsers? (Y/n) · true",
@@ -228,27 +240,33 @@
         "pasta": "C:\\Users\\voce\\Documents\\meu-primeiro-playwright",
         "linhas": [
          {
-          "cmd": "npm init playwright@latest"
+          "cmd": "npm init playwright@latest",
+          "ja": true
          },
          {
           "out": "✔ Do you want to use TypeScript or JavaScript? · JavaScript",
-          "cor": "ac"
+          "cor": "ac",
+          "ja": true
          },
          {
           "out": "✔ Where to put your end-to-end tests? · tests",
-          "cor": "ac"
+          "cor": "ac",
+          "ja": true
          },
          {
           "out": "✔ Add a GitHub Actions workflow? (y/N) · true",
-          "cor": "ac"
+          "cor": "ac",
+          "ja": true
          },
          {
           "out": "✔ Install Playwright browsers? (Y/n) · true",
-          "cor": "ac"
+          "cor": "ac",
+          "ja": true
          },
          {
           "out": "Downloading Chromium... Firefox... WebKit... done",
-          "cor": "txt"
+          "cor": "txt",
+          "ja": true
          },
          {
           "out": "✔ Success! Created a Playwright Test project",

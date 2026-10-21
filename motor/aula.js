@@ -137,13 +137,18 @@
     const chars0 = Math.max(10, ...L0.map((l) => (l.cmd !== undefined ? pr.length + l.cmd.length : (l.out || "").length)));
     const fs = Math.max(fsMin, Math.min((s.fonte || 40) * u, larg(chars0 + 1))); const cap = Math.floor((W - 90 * u) / (fs * 0.6));
     const L = []; L0.forEach((l) => {
-      if (l.cmd !== undefined && pr.length + l.cmd.length > cap) { let r = l.cmd, first = true; while (r.length) { let n = first ? cap - pr.length : cap; if (r.length > n) { const cut = Math.max(r.lastIndexOf(" ", n - 1), r.lastIndexOf("/", n - 1)); if (cut > n * 0.5) n = cut + 1; } L.push({ cmd: r.slice(0, n), cont: !first }); r = r.slice(n); first = false; } }
+      if (l.cmd !== undefined && pr.length + l.cmd.length > cap) { let r = l.cmd, first = true; while (r.length) { let n = first ? cap - pr.length : cap; if (r.length > n) { const cut = Math.max(r.lastIndexOf(" ", n - 1), r.lastIndexOf("/", n - 1)); if (cut > n * 0.5) n = cut + 1; } L.push({ cmd: r.slice(0, n), cont: !first, ja: l.ja }); r = r.slice(n); first = false; } }
       else if (l.out !== undefined && l.out.length > cap) { for (let i = 0; i < l.out.length; i += cap) L.push(Object.assign({}, l, { out: l.out.slice(i, i + cap) })); }
       else L.push(l); });
     const lh = Math.max(fs * 1.6, 40 * u); let yy = top + 56 * u;
-    const nPassos = L.filter((l) => l.cmd !== undefined && !l.cont).length + L.filter((l) => l.out !== undefined).length * 0.35 + L.filter((l) => l.cont).length * 0.6;
+    // linhas com ja:true já estavam na tela na cena anterior: aparecem prontas, sem digitar de novo
+    const nPassos = L.filter((l) => !l.ja && l.cmd !== undefined && !l.cont).length + L.filter((l) => !l.ja && l.out !== undefined).length * 0.35 + L.filter((l) => !l.ja && l.cont).length * 0.6;
     const passo = Math.max(0.6, (dur * (s.vel || 0.75) - 0.5) / Math.max(nPassos, 1)); let tt = t - 0.5;
     for (const l of L) {
+      if (l.ja) { let px = x + 40 * u;
+        if (l.cmd !== undefined) { if (!l.cont) { txt(ctx, pr, font(600, fs, MONO), px, yy, C.ac2, "left", a); px += tw(ctx, pr, font(600, fs, MONO)); } txt(ctx, l.cmd, font(600, fs, MONO), px, yy, C.txt, "left", a); }
+        else txt(ctx, l.out, font(500, fs, MONO), px, yy, C[l.cor] || l.cor || C.mut, "left", a);
+        yy += lh; continue; }
       if (tt < 0) break;
       if (l.cmd !== undefined) {
         const pc = l.cont ? passo * 0.6 : passo; const k = clamp(tt / Math.max(0.4, pc * 0.75)); const cmd = l.cmd.slice(0, Math.ceil(k * l.cmd.length));

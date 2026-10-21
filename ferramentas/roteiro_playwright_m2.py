@@ -32,7 +32,8 @@ node_modules/
 ARVORE = ["meu-primeiro-playwright", "  .github/", "  node_modules", "  tests", "    example.spec.js", "  .gitignore", "  package-lock.json", "  package.json", "  playwright.config.js"]
 
 
-def vterm(linhas, legenda, colinha=False):
+def vterm(linhas, legenda, colinha=False, ja=0):
+    linhas = [dict(l, ja=True) if i < ja else l for i, l in enumerate(linhas)]  # as primeiras "ja" linhas já estavam na tela
     d = {"type": "terminal", "titulo": "Terminal — VS Code", "pasta": PASTA, "linhas": linhas, "legenda": legenda}
     if colinha:
         d.update({"colinha": True, "colinha_em": 1.5})
@@ -73,16 +74,16 @@ AULAS.append(projeto(8, "MÓDULO 2 · AULA 8", "Criando o projeto e abrindo o te
 AULAS.append(projeto(9, "MÓDULO 2 · AULA 9", "Instalando o Playwright", [
     ("Hoje é o dia: a gente instala o Playwright. E é um comando só.", titulo(9, "PLAYWRIGHT")),
     ("No terminal do VS Code, digita npm init playwright arroba latest e aperta Enter.", vterm(INIT, "npm init playwright@latest", colinha=True)),
-    ("Na primeira vez, ele pergunta se pode instalar um ajudante. Aperta y e Enter.", vterm(INIT + OK, "Aperte y e Enter")),
+    ("Na primeira vez, ele pergunta se pode instalar um ajudante. Aperta y e Enter.", vterm(INIT + OK, "Aperte y e Enter", ja=1)),
     ("Agora ele faz quatro perguntas. A primeira: TypeScript ou JavaScript? Vamos escolher JavaScript. Assim a gente consegue focar primeiro em aprender automação, sem adicionar outra linguagem no caminho.",
-     vterm(INIT + OK[2:] + Q1, "1ª pergunta: JavaScript")),
-    ("Segunda: onde guardar os testes? Ele já sugere a pasta tests. Só aperta Enter.", vterm(INIT + Q1[1:] + Q2, "2ª pergunta: tests (só Enter)")),
-    ("Terceira: quer um workflow do GitHub Actions? Aqui digita y. É isso que, no final do curso, vai fazer seus testes rodarem sozinhos.", vterm(INIT + Q1[1:] + Q2 + Q3, "3ª pergunta: y (sim)")),
+     vterm(INIT + OK[2:] + Q1, "1ª pergunta: JavaScript", ja=2)),
+    ("Segunda: onde guardar os testes? Ele já sugere a pasta tests. Só aperta Enter.", vterm(INIT + Q1[1:] + Q2, "2ª pergunta: tests (só Enter)", ja=2)),
+    ("Terceira: quer um workflow do GitHub Actions? Aqui digita y. É isso que, no final do curso, vai fazer seus testes rodarem sozinhos.", vterm(INIT + Q1[1:] + Q2 + Q3, "3ª pergunta: y (sim)", ja=3)),
     ("Quarta: instalar os navegadores do Playwright? Enter, que é sim. Ele baixa o Chromium, o Firefox e o WebKit, que é o motor de navegador que eu te mostrei na abertura do curso.",
-     vterm(INIT + Q1[1:] + Q2 + Q3 + Q4, "4ª pergunta: Enter (sim)")),
+     vterm(INIT + Q1[1:] + Q2 + Q3 + Q4, "4ª pergunta: Enter (sim)", ja=4)),
     ("Se você está no Linux, ele faz uma pergunta a mais, sobre as dependências do sistema. Responde y. É aquele detalhe que eu tinha comentado no módulo um.",
      {"type": "cards", "titulo": "SÓ NO LINUX", "itens": [["?", "Dependências", "do sistema?"], ["y", "Responde sim", "e ele instala", "#ffd23f"]]}),
-    ("Espera terminar. Quando aparecer Happy hacking no final, deu tudo certo.", vterm(INIT + Q1[1:] + Q2 + Q3 + Q4 + FIM, "Happy hacking = deu certo")),
+    ("Espera terminar. Quando aparecer Happy hacking no final, deu tudo certo.", vterm(INIT + Q1[1:] + Q2 + Q3 + Q4 + FIM, "Happy hacking = deu certo", ja=6)),
     ("Olha a esquerda: apareceram vários arquivos novos. Na próxima aula, eu te explico o que é cada um.",
      {"type": "editor", "arquivo": "example.spec.js", "pastas": ARVORE, "codigo": EXEMPLO, "digitar": False, "fonte": 26, "legenda": "Vários arquivos novos"}),
     ("Te vejo lá!", proxima("Os arquivos que ele criou")[1]),
@@ -113,15 +114,15 @@ AULAS.append(projeto(11, "MÓDULO 2 · AULA 11", "Rodando o teste de exemplo e o
     ("Chegou a hora de ver o Playwright funcionando.", titulo(11, "RODANDO")),
     ("No terminal, digita npx playwright test e aperta Enter.", vterm(RUN[:1], "npx playwright test", colinha=True)),
     ("Por padrão, você não vê as janelas dos navegadores abrindo. Eles estão rodando em modo headless, sem interface visível.", bt(("HEADLESS", "gold", 200), ("SEM JANELA, MAIS RÁPIDO", "white", 100))),
-    ("Olha o resultado: seis execuções passaram. Mas o arquivo só tinha dois testes!", vterm(RUN[:3], "6 passaram… com 2 testes?")),
+    ("Olha o resultado: seis execuções passaram. Mas o arquivo só tinha dois testes!", vterm(RUN[:3], "6 passaram… com 2 testes?", ja=1)),
     ("Isso acontece porque cada um dos dois testes rodou em três navegadores. Dois testes vezes três navegadores: seis execuções.",
      {"type": "cards", "titulo": "2 TESTES × 3 NAVEGADORES = 6 EXECUÇÕES", "itens": [["C", "Chromium", "2 execuções"], ["F", "Firefox", "2 execuções", "#ff8c42"], ["W", "WebKit", "2 execuções", "#69a7ff"]]}),
-    ("E no final ele dá uma dica: npx playwright show-report. Digita isso.", vterm(RUN + [{"cmd": "npx playwright show-report"}, {"out": "Serving HTML report at http://localhost:9323", "cor": "ac"}], "npx playwright show-report", colinha=True)),
+    ("E no final ele dá uma dica: npx playwright show-report. Digita isso.", vterm(RUN + [{"cmd": "npx playwright show-report"}, {"out": "Serving HTML report at http://localhost:9323", "cor": "ac"}], "npx playwright show-report", colinha=True, ja=5)),
     ("Abre o relatório no navegador: cada teste, em cada navegador, quanto tempo levou, e se passou ou falhou.", {"type": "pw_relatorio", "testes": REL, "legenda": "Cada teste, em cada navegador"}),
     ("Clica em qualquer teste pra ver os passos que ele fez, um por um.",
      {"type": "pw_relatorio", "testes": REL, "abrir": {"titulo": "get started link", "arquivo": "example.spec.js:11", "projeto": "chromium",
       "passos": [["Navigate to \"https://playwright.dev/\"", "0.9s"], ["Click getByRole('link', { name: 'Get started' })", "0.3s"], ["Expect \"toBeVisible\"", "0.1s"]]}, "legenda": "Os passos, um por um"}),
-    ("Pra fechar o relatório, volta no terminal e aperta Control C.", vterm([{"cmd": "npx playwright show-report"}, {"out": "Serving HTML report at http://localhost:9323", "cor": "ac"}, {"out": "^C", "cor": "yel"}], "Ctrl + C fecha o relatório")),
+    ("Pra fechar o relatório, volta no terminal e aperta Control C.", vterm([{"cmd": "npx playwright show-report"}, {"out": "Serving HTML report at http://localhost:9323", "cor": "ac"}, {"out": "^C", "cor": "yel"}], "Ctrl + C fecha o relatório", ja=2)),
     ("Agora você já tem tudo funcionando. No próximo módulo, a gente apaga esse exemplo e escreve o seu primeiro teste, do zero.",
      {"type": "flow", "a": "EXEMPLO ✓", "a_sub": "do Playwright", "b": "SEU CÓDIGO", "b_sub": "a partir de agora", "caption": "AGORA É COM VOCÊ"}),
     ("Te vejo lá!", {"type": "endcard", "sub": "PRÓXIMA: MÓDULO 3 · PRIMEIRO TESTE"}),
