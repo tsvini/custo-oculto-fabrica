@@ -85,7 +85,7 @@
       ctx.save(); ctx.globalAlpha = a; ctx.fillStyle = C.side; ctx.fillRect(x, top, sideW, H - (top - y) - 22 * u); ctx.restore();
       txt(ctx, "EXPLORER", font(700, 20 * u), x + 28 * u, top + 36 * u, C.mut, "left", a);
       arvore(s.pastas, 4).forEach(({ nm: p, nv }, i) => {
-        const yy = top + (86 + i * 50) * u, ind = nv * 22 * u, arq = /\.\w+$/.test(p) || /^\.\w/.test(p);
+        const pasta = /\/$/.test(p); if (pasta) p = p.slice(0, -1); const yy = top + (86 + i * 50) * u, ind = nv * 22 * u, arq = !pasta && (/\.\w+$/.test(p) || /^\.\w/.test(p));
         if (arq) { ctx.save(); ctx.globalAlpha *= a; ctx.fillStyle = C.ac; rr(ctx, x + 32 * u + ind, yy - 13 * u, 20 * u, 26 * u, 4 * u); ctx.fill(); ctx.restore(); }
         else pastaIcone(ctx, x + 28 * u + ind, yy - 14 * u, 30 * u, a);
         const fsN = Math.min(24 * u, 24 * u * (sideW - 88 * u - ind) / Math.max(1, tw(ctx, p, font(arq ? 600 : 500, 24 * u))));  // nome comprido encolhe pra caber no Explorer
@@ -564,7 +564,7 @@
         ctx.beginPath(); ctx.rect(x + sideW, ty, W - sideW, th); ctx.clip();
         ["PROBLEMS", "OUTPUT", "TERMINAL"].forEach((n, i) => txt(ctx, n, font(700, 20 * u), x + sideW + 30 * u + i * 160 * u, ty + 30 * u, i === 2 ? C.txt : C.mut, "left", 1));
         ctx.fillStyle = C.ac2; ctx.fillRect(x + sideW + 30 * u + 320 * u, ty + 46 * u, tw(ctx, "TERMINAL", font(700, 20 * u)), 3 * u);
-        const pr = s.prompt || "PS C:\\Users\\voce\\Documents\\meu-primeiro-teste> "; txt(ctx, pr, font(600, 26 * u, MONO), x + sideW + 30 * u, ty + 100 * u, C.ac2, "left", 1);
+        const pr = s.prompt || "PS C:\\Users\\voce\\Documents\\" + ((s.pastas && s.pastas[0]) || "meu-primeiro-teste").trim() + "> "; txt(ctx, pr, font(600, 26 * u, MONO), x + sideW + 30 * u, ty + 100 * u, C.ac2, "left", 1);
         if (Math.floor(t * 2.5) % 2 === 0) { ctx.fillStyle = C.txt; ctx.fillRect(x + sideW + 34 * u + tw(ctx, pr, font(600, 26 * u, MONO)), ty + 86 * u, 14 * u, 28 * u); }
         ctx.restore();
         ctx.save(); ctx.globalAlpha = k; ctx.strokeStyle = C.yel; ctx.lineWidth = 5 * u; rr(ctx, x + sideW + 8 * u, ty + 6 * u, W - sideW - 16 * u, th - 12 * u, 12 * u); ctx.stroke(); ctx.restore(); } }

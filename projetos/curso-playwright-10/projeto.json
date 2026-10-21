@@ -1,0 +1,264 @@
+{
+ "title": "Playwright para leigos · Aula 10",
+ "slug": "curso-playwright-10",
+ "idioma": "pt",
+ "destino": "curso",
+ "marca": [
+  "PLAYWRIGHT",
+  "PARA LEIGOS"
+ ],
+ "cor_fundo": "#3fd68a",
+ "sem_legenda": true,
+ "legenda_y": 0.93,
+ "selo": "MÓDULO 2 · AULA 10",
+ "voz": {
+  "nome": "gravada",
+  "motor": "eleven",
+  "eleven_voz": "Vinícius Torales"
+ },
+ "serie": [],
+ "meta": {
+  "titles": [
+   "Aula 10: Os arquivos que ele criou"
+  ],
+  "description": "",
+  "tags": []
+ },
+ "notes": "Curso Playwright para leigos. Não publica (destino: curso). Roteiro em curso-playwright/roteiros/.",
+ "script": {
+  "long": {
+   "parts": [
+    {
+     "chapter": "",
+     "sentences": [
+      {
+       "text": "O Playwright criou alguns arquivos pra você. Bora entender cada um, sem decorar nada.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "AULA 10",
+          "muted",
+          80
+         ],
+         [
+          "OS ARQUIVOS",
+          "gold",
+          150
+         ]
+        ]
+       }
+      },
+      {
+       "text": "A pasta tests é onde ficam os seus testes. Dentro dela já veio um exemplo, o example ponto spec ponto js.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "example.spec.js",
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules",
+         "  tests",
+         "    example.spec.js",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "codigo": "// @ts-check\nimport { test, expect } from '@playwright/test';\n\ntest('has title', async ({ page }) => {\n  await page.goto('https://playwright.dev/');\n\n  // Expect a title \"to contain\" a substring.\n  await expect(page).toHaveTitle(/Playwright/);\n});\n\ntest('get started link', async ({ page }) => {\n  await page.goto('https://playwright.dev/');\n\n  // Click the get started link.\n  await page.getByRole('link', { name: 'Get started' }).click();\n\n  // Expects page to have a heading with the name of Installation.\n  await expect(page.getByRole('heading', { name: 'Installation' })).toBeVisible();\n});",
+        "digitar": false,
+        "fonte": 26,
+        "legenda": "tests: onde moram os testes"
+       }
+      },
+      {
+       "text": "Nos nossos testes, os arquivos vão terminar em ponto spec ponto js. Quando você vir esse final, já sabe: é um arquivo de teste.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          ".spec.js",
+          "gold",
+          200
+         ],
+         [
+          "= ARQUIVO DE TESTE",
+          "white",
+          110
+         ]
+        ],
+        "colinha": true,
+        "colinha_em": 1.2
+       }
+      },
+      {
+       "text": "Abre o example. Esse é o arquivo inteiro: dois testes que entram no site do próprio Playwright e conferem umas coisas. Não precisa entender agora, a gente vai escrever o nosso do zero.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "example.spec.js",
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules",
+         "  tests",
+         "    example.spec.js",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "codigo": "// @ts-check\nimport { test, expect } from '@playwright/test';\n\ntest('has title', async ({ page }) => {\n  await page.goto('https://playwright.dev/');\n\n  // Expect a title \"to contain\" a substring.\n  await expect(page).toHaveTitle(/Playwright/);\n});\n\ntest('get started link', async ({ page }) => {\n  await page.goto('https://playwright.dev/');\n\n  // Click the get started link.\n  await page.getByRole('link', { name: 'Get started' }).click();\n\n  // Expects page to have a heading with the name of Installation.\n  await expect(page.getByRole('heading', { name: 'Installation' })).toBeVisible();\n});",
+        "digitar": false,
+        "fonte": 26,
+        "destaque": [
+         4,
+         11
+        ],
+        "destaque_em": 1.5,
+        "legenda": "Dois testes de exemplo"
+       }
+      },
+      {
+       "text": "O playwright ponto config ponto js é o painel de controle: em quais navegadores rodar, como gerar o relatório, e por aí vai. Tem bastante comentário, é normal. A gente vai mexer nele mais pra frente.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "playwright.config.js",
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules",
+         "  tests",
+         "    example.spec.js",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "codigo": "// @ts-check\nimport { defineConfig, devices } from '@playwright/test';\n\n/**\n * Read environment variables from file.\n * https://github.com/motdotla/dotenv\n */\n// import dotenv from 'dotenv';\n// import path from 'path';\n// dotenv.config({ path: path.resolve(__dirname, '.env') });\n\n/**\n * @see https://playwright.dev/docs/test-configuration\n */\nexport default defineConfig({\n  testDir: './tests',\n  /* Run tests in files in parallel */\n  fullyParallel: true,\n  /* Fail the build on CI if you accidentally left test.only in the source code. */\n  forbidOnly: !!process.env.CI,\n  /* Retry on CI only */\n  retries: process.env.CI ? 2 : 0,\n  /* Opt out of parallel tests on CI. */\n  workers: process.env.CI ? 1 : undefined,\n  /* Reporter to use. See https://playwright.dev/docs/test-reporters */\n  reporter: 'html',\n  /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */\n  use: {\n    /* Base URL to use in actions like `await page.goto('')`. */\n    // baseURL: 'http://localhost:3000',\n\n    /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */\n    trace: 'on-first-retry',\n  },\n\n  /* Configure projects for major browsers */\n  projects: [\n    {\n      name: 'chromium',\n      use: { ...devices['Desktop Chrome'] },\n    },\n\n    {\n      name: 'firefox',\n      use: { ...devices['Desktop Firefox'] },\n    },\n\n    {\n      name: 'webkit',\n      use: { ...devices['Desktop Safari'] },\n    },\n\n    /* Test against mobile viewports. */\n    // {\n    //   name: 'Mobile Chrome',\n    //   use: { ...devices['Pixel 5'] },\n    // },\n    // {\n    //   name: 'Mobile Safari',\n    //   use: { ...devices['iPhone 12'] },\n    // },\n\n    /* Test against branded browsers. */\n    // {\n    //   name: 'Microsoft Edge',\n    //   use: { ...devices['Desktop Edge'], channel: 'msedge' },\n    // },\n    // {\n    //   name: 'Google Chrome',\n    //   use: { ...devices['Desktop Chrome'], channel: 'chrome' },\n    // },\n  ],\n\n  /* Run your local dev server before starting the tests */\n  // webServer: {\n  //   command: 'npm run start',\n  //   url: 'http://localhost:3000',\n  //   reuseExistingServer: !process.env.CI,\n  // },\n});",
+        "digitar": false,
+        "rolar": true,
+        "rolar_de": 1.5,
+        "rolar_dur": 6.0,
+        "fonte": 24,
+        "legenda": "O painel de controle"
+       }
+      },
+      {
+       "text": "O package ponto json é a ficha do projeto: o nome e as ferramentas que ele usa, como o próprio Playwright.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "package.json",
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules",
+         "  tests",
+         "    example.spec.js",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "codigo": "{\n  \"name\": \"meu-primeiro-playwright\",\n  \"version\": \"1.0.0\",\n  \"description\": \"\",\n  \"main\": \"index.js\",\n  \"scripts\": {},\n  \"keywords\": [],\n  \"author\": \"\",\n  \"license\": \"ISC\",\n  \"devDependencies\": {\n    \"@playwright/test\": \"^1.64.1\",\n    \"@types/node\": \"^26.6.5\"\n  }\n}",
+        "digitar": false,
+        "destaque": [
+         2,
+         11
+        ],
+        "destaque_em": 1.2,
+        "fonte": 26,
+        "legenda": "A ficha do projeto"
+       }
+      },
+      {
+       "text": "A pasta node modules guarda as dependências do projeto: o Playwright e tudo que ele precisa pra funcionar. Ela fica enorme, mas você não precisa editar nada ali.",
+       "scene": {
+        "type": "cards",
+        "titulo": "NODE_MODULES",
+        "itens": [
+         [
+          "▣",
+          "Dependências",
+          "o Playwright e o que ele precisa"
+         ],
+         [
+          "!",
+          "Não edite",
+          "ela se cuida sozinha",
+          "#ff6b6b"
+         ]
+        ],
+        "colinha": false
+       }
+      },
+      {
+       "text": "O ponto gitignore é a lista do que não vai pro GitHub, como essa pasta node modules. E a pasta ponto github guarda o workflow que você pediu na instalação.",
+       "scene": {
+        "type": "editor",
+        "arquivo": ".gitignore",
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules",
+         "  tests",
+         "    example.spec.js",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "codigo": "# Playwright\nnode_modules/\n/test-results/\n/playwright-report/\n/blob-report/\n/playwright/.cache/\n/playwright/.auth/",
+        "digitar": false,
+        "destaque": [
+         3
+        ],
+        "destaque_em": 1.0,
+        "legenda": "O que não vai pro GitHub"
+       }
+      },
+      {
+       "text": "Por enquanto, lembra de duas coisas: seus testes ficam em tests e as configurações principais ficam no playwright ponto config ponto js. O restante a gente conhece quando precisar.",
+       "scene": {
+        "type": "cards",
+        "titulo": "LEMBRA DE DUAS COISAS",
+        "itens": [
+         [
+          "1",
+          "tests/",
+          "os seus testes"
+         ],
+         [
+          "2",
+          "playwright.config.js",
+          "as configurações",
+          "#69a7ff"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Na próxima aula, a gente roda esse exemplo e vê o Playwright trabalhando pela primeira vez.",
+       "scene": {
+        "type": "passo",
+        "icone": "▶",
+        "titulo": "Próxima aula",
+        "sub": "Rodando o teste de exemplo"
+       }
+      },
+      {
+       "text": "Te vejo lá!",
+       "scene": {
+        "type": "endcard",
+        "sub": "PRÓXIMA: RODANDO O TESTE DE EXEMPLO"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "shorts": [],
+  "tiktoks": []
+ }
+}

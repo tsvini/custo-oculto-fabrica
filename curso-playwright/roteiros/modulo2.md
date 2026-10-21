@@ -1,0 +1,52 @@
+# Roteiros aprovados · Módulo 2 (com ajustes da revisão)
+
+## Aula 8 · Criando o projeto e abrindo o terminal
+1. Agora começa a parte boa: criar o seu projeto de testes. [bigtext]
+2. Primeiro, uma pasta. Abre os Documentos e cria uma pasta nova chamada meu-primeiro-playwright, tudo minúsculo e com traço no lugar do espaço. [pastas]
+3. Por que eu prefiro sem espaço e sem acento? Porque nomes simples evitam alguns problemas com caminhos e comandos. Usando traço, a gente deixa tudo mais fácil. [compare]
+4. Agora abre o VS Code, clica em File, depois Open Folder, e escolhe essa pasta. [menu]
+5. Se ele perguntar se você confia nos autores da pasta, clica em Yes. Os autores aqui é você. [instalador]
+6. Pronto: a pasta aparece vazia ali na esquerda. [editor]
+7. Agora o terminal dentro do VS Code: menu Terminal, New Terminal. Você também pode usar o atalho que está aqui na tela. [menu]
+8. Olha o caminho antes do cursor: ele termina com meu-primeiro-playwright. Isso quer dizer que o terminal está dentro do seu projeto, que é exatamente onde ele precisa estar. [terminal]
+9. Na próxima aula, a gente instala o Playwright com um comando só. [passo]
+10. Te vejo lá! [endcard]
+
+## Aula 9 · Instalando o Playwright
+1. Hoje é o dia: a gente instala o Playwright. E é um comando só. [bigtext]
+2. No terminal do VS Code, digita npm init playwright arroba latest e aperta Enter. [terminal]
+3. Na primeira vez, ele pergunta se pode instalar um ajudante. Aperta y e Enter. [terminal]
+4. Agora ele faz quatro perguntas. A primeira: TypeScript ou JavaScript? Vamos escolher JavaScript. Assim a gente consegue focar primeiro em aprender automação, sem adicionar outra linguagem no caminho. [terminal]
+5. Segunda: onde guardar os testes? Ele já sugere a pasta tests. Só aperta Enter. [terminal]
+6. Terceira: quer um workflow do GitHub Actions? Aqui digita y. É isso que, no final do curso, vai fazer seus testes rodarem sozinhos. [terminal]
+7. Quarta: instalar os navegadores do Playwright? Enter, que é sim. Ele baixa o Chromium, o Firefox e o WebKit, que é o motor de navegador que eu te mostrei na abertura do curso. [terminal]
+8. Se você está no Linux, ele faz uma pergunta a mais, sobre as dependências do sistema. Responde y. É aquele detalhe que eu tinha comentado no módulo um. [cards]
+9. Espera terminar. Quando aparecer Happy hacking no final, deu tudo certo. [terminal]
+10. Olha a esquerda: apareceram vários arquivos novos. Na próxima aula, eu te explico o que é cada um. [editor]
+11. Te vejo lá! [endcard]
+
+## Aula 10 · Os arquivos que ele criou
+1. O Playwright criou alguns arquivos pra você. Bora entender cada um, sem decorar nada. [bigtext]
+2. A pasta tests é onde ficam os seus testes. Dentro dela já veio um exemplo, o example ponto spec ponto js. [editor]
+3. Nos nossos testes, os arquivos vão terminar em ponto spec ponto js. Quando você vir esse final, já sabe: é um arquivo de teste. [bigtext]
+4. Abre o example. Esse é o arquivo inteiro: dois testes que entram no site do próprio Playwright e conferem umas coisas. Não precisa entender agora, a gente vai escrever o nosso do zero. [editor]
+5. O playwright ponto config ponto js é o painel de controle: em quais navegadores rodar, como gerar o relatório, e por aí vai. Tem bastante comentário, é normal. A gente vai mexer nele mais pra frente. [editor]
+6. O package ponto json é a ficha do projeto: o nome e as ferramentas que ele usa, como o próprio Playwright. [editor]
+7. A pasta node modules guarda as dependências do projeto: o Playwright e tudo que ele precisa pra funcionar. Ela fica enorme, mas você não precisa editar nada ali. [cards]
+8. O ponto gitignore é a lista do que não vai pro GitHub, como essa pasta node modules. E a pasta ponto github guarda o workflow que você pediu na instalação. [editor]
+9. Por enquanto, lembra de duas coisas: seus testes ficam em tests e as configurações principais ficam no playwright ponto config ponto js. O restante a gente conhece quando precisar. [cards]
+10. Na próxima aula, a gente roda esse exemplo e vê o Playwright trabalhando pela primeira vez. [passo]
+11. Te vejo lá! [endcard]
+
+## Aula 11 · Rodando o teste de exemplo e o relatório HTML
+1. Chegou a hora de ver o Playwright funcionando. [bigtext]
+2. No terminal, digita npx playwright test e aperta Enter. [terminal]
+3. Por padrão, você não vê as janelas dos navegadores abrindo. Eles estão rodando em modo headless, sem interface visível. [bigtext]
+4. Olha o resultado: seis execuções passaram. Mas o arquivo só tinha dois testes! [terminal]
+5. Isso acontece porque cada um dos dois testes rodou em três navegadores. Dois testes vezes três navegadores: seis execuções. [cards]
+6. E no final ele dá uma dica: npx playwright show-report. Digita isso. [terminal]
+7. Abre o relatório no navegador: cada teste, em cada navegador, quanto tempo levou, e se passou ou falhou. [pw_relatorio]
+8. Clica em qualquer teste pra ver os passos que ele fez, um por um. [pw_relatorio]
+9. Pra fechar o relatório, volta no terminal e aperta Control C. [terminal]
+10. Agora você já tem tudo funcionando. No próximo módulo, a gente apaga esse exemplo e escreve o seu primeiro teste, do zero. [flow]
+11. Te vejo lá! [endcard]

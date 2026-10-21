@@ -1,0 +1,204 @@
+{
+ "title": "Playwright para leigos · Aula 8",
+ "slug": "curso-playwright-08",
+ "idioma": "pt",
+ "destino": "curso",
+ "marca": [
+  "PLAYWRIGHT",
+  "PARA LEIGOS"
+ ],
+ "cor_fundo": "#3fd68a",
+ "sem_legenda": true,
+ "legenda_y": 0.93,
+ "selo": "MÓDULO 2 · AULA 8",
+ "voz": {
+  "nome": "gravada",
+  "motor": "eleven",
+  "eleven_voz": "Vinícius Torales"
+ },
+ "serie": [],
+ "meta": {
+  "titles": [
+   "Aula 8: Criando o projeto e abrindo o terminal"
+  ],
+  "description": "",
+  "tags": []
+ },
+ "notes": "Curso Playwright para leigos. Não publica (destino: curso). Roteiro em curso-playwright/roteiros/.",
+ "script": {
+  "long": {
+   "parts": [
+    {
+     "chapter": "",
+     "sentences": [
+      {
+       "text": "Agora começa a parte boa: criar o seu projeto de testes.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "MÓDULO 2",
+          "muted",
+          80
+         ],
+         [
+          "O SEU PROJETO",
+          "gold",
+          170
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Primeiro, uma pasta. Abre os Documentos e cria uma pasta nova chamada meu-primeiro-playwright, tudo minúsculo e com traço no lugar do espaço.",
+       "scene": {
+        "type": "pastas",
+        "caminho": "Este Computador  ›  Documentos",
+        "itens": [
+         "Fotos",
+         "Músicas",
+         "Trabalho",
+         {
+          "nome": "meu-primeiro-playwright",
+          "novo": true
+         }
+        ],
+        "novo_em": 1.0,
+        "legenda": "meu-primeiro-playwright"
+       }
+      },
+      {
+       "text": "Por que eu prefiro sem espaço e sem acento? Porque nomes simples evitam alguns problemas com caminhos e comandos. Usando traço, a gente deixa tudo mais fácil.",
+       "scene": {
+        "type": "compare",
+        "title": "NOME DA PASTA",
+        "items": [
+         [
+          "meu projeto",
+          "PODE DAR TRABALHO",
+          "red"
+         ],
+         [
+          "meu-projeto",
+          "SEM DOR DE CABEÇA",
+          "gold"
+         ]
+        ],
+        "size": 110,
+        "stagger": 1.2,
+        "vs": false
+       }
+      },
+      {
+       "text": "Agora abre o VS Code, clica em File, depois Open Folder, e escolhe essa pasta.",
+       "scene": {
+        "type": "menu",
+        "app": "vscode",
+        "abre": 0,
+        "menus": [
+         [
+          "New Text File",
+          "New File...",
+          "New Window",
+          "—",
+          "Open File...",
+          "Open Folder...",
+          "Open Recent ›",
+          "—",
+          "Save",
+          "Save As..."
+         ]
+        ],
+        "caminho": [
+         5
+        ],
+        "legenda": "File › Open Folder"
+       }
+      },
+      {
+       "text": "Se ele perguntar se você confia nos autores da pasta, clica em Yes. Os autores aqui é você.",
+       "scene": {
+        "type": "instalador",
+        "app": "Visual Studio Code",
+        "titulo": "Do you trust the authors of the files in this folder?",
+        "subtitulo": "Code provides features that may automatically execute files in this folder",
+        "botao": "Yes, I trust the authors",
+        "legenda": "A pasta é sua: pode confiar"
+       }
+      },
+      {
+       "text": "Pronto: a pasta aparece vazia ali na esquerda.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "Welcome",
+        "pastas": [
+         "meu-primeiro-playwright"
+        ],
+        "codigo": "// A pasta do projeto está aberta!\n// Por enquanto, vazia.",
+        "legenda": "O seu projeto está aberto"
+       }
+      },
+      {
+       "text": "Agora o terminal dentro do VS Code: menu Terminal, New Terminal. Você também pode usar o atalho que está aqui na tela.",
+       "scene": {
+        "type": "menu",
+        "app": "vscode",
+        "abre": 6,
+        "menus": [
+         [
+          "New Terminal       Ctrl+`",
+          "Split Terminal",
+          "—",
+          "Run Task...",
+          "Run Build Task..."
+         ]
+        ],
+        "caminho": [
+         0
+        ],
+        "pastas": [
+         "meu-primeiro-playwright"
+        ],
+        "resultado": "terminal",
+        "legenda": "Terminal › New Terminal  (Ctrl + `)"
+       }
+      },
+      {
+       "text": "Olha o caminho antes do cursor: ele termina com meu-primeiro-playwright. Isso quer dizer que o terminal está dentro do seu projeto, que é exatamente onde ele precisa estar.",
+       "scene": {
+        "type": "terminal",
+        "titulo": "Terminal — VS Code",
+        "pasta": "C:\\Users\\voce\\Documents\\meu-primeiro-playwright",
+        "linhas": [
+         {
+          "cmd": ""
+         }
+        ],
+        "legenda": "O caminho termina no seu projeto"
+       }
+      },
+      {
+       "text": "Na próxima aula, a gente instala o Playwright com um comando só.",
+       "scene": {
+        "type": "passo",
+        "icone": "▶",
+        "titulo": "Próxima aula",
+        "sub": "Instalando o Playwright"
+       }
+      },
+      {
+       "text": "Te vejo lá!",
+       "scene": {
+        "type": "endcard",
+        "sub": "PRÓXIMA: INSTALANDO O PLAYWRIGHT"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "shorts": [],
+  "tiktoks": []
+ }
+}

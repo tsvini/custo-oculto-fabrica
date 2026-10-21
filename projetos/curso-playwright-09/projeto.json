@@ -1,0 +1,301 @@
+{
+ "title": "Playwright para leigos · Aula 9",
+ "slug": "curso-playwright-09",
+ "idioma": "pt",
+ "destino": "curso",
+ "marca": [
+  "PLAYWRIGHT",
+  "PARA LEIGOS"
+ ],
+ "cor_fundo": "#3fd68a",
+ "sem_legenda": true,
+ "legenda_y": 0.93,
+ "selo": "MÓDULO 2 · AULA 9",
+ "voz": {
+  "nome": "gravada",
+  "motor": "eleven",
+  "eleven_voz": "Vinícius Torales"
+ },
+ "serie": [],
+ "meta": {
+  "titles": [
+   "Aula 9: Instalando o Playwright"
+  ],
+  "description": "",
+  "tags": []
+ },
+ "notes": "Curso Playwright para leigos. Não publica (destino: curso). Roteiro em curso-playwright/roteiros/.",
+ "script": {
+  "long": {
+   "parts": [
+    {
+     "chapter": "",
+     "sentences": [
+      {
+       "text": "Hoje é o dia: a gente instala o Playwright. E é um comando só.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "AULA 9",
+          "muted",
+          80
+         ],
+         [
+          "PLAYWRIGHT",
+          "gold",
+          200
+         ]
+        ]
+       }
+      },
+      {
+       "text": "No terminal do VS Code, digita npm init playwright arroba latest e aperta Enter.",
+       "scene": {
+        "type": "terminal",
+        "titulo": "Terminal — VS Code",
+        "pasta": "C:\\Users\\voce\\Documents\\meu-primeiro-playwright",
+        "linhas": [
+         {
+          "cmd": "npm init playwright@latest"
+         }
+        ],
+        "legenda": "npm init playwright@latest",
+        "colinha": true,
+        "colinha_em": 1.5
+       }
+      },
+      {
+       "text": "Na primeira vez, ele pergunta se pode instalar um ajudante. Aperta y e Enter.",
+       "scene": {
+        "type": "terminal",
+        "titulo": "Terminal — VS Code",
+        "pasta": "C:\\Users\\voce\\Documents\\meu-primeiro-playwright",
+        "linhas": [
+         {
+          "cmd": "npm init playwright@latest"
+         },
+         {
+          "out": "Need to install the following packages:",
+          "cor": "mut"
+         },
+         {
+          "out": "  create-playwright",
+          "cor": "txt"
+         },
+         {
+          "out": "Ok to proceed? (y) y",
+          "cor": "yel"
+         }
+        ],
+        "legenda": "Aperte y e Enter"
+       }
+      },
+      {
+       "text": "Agora ele faz quatro perguntas. A primeira: TypeScript ou JavaScript? Vamos escolher JavaScript. Assim a gente consegue focar primeiro em aprender automação, sem adicionar outra linguagem no caminho.",
+       "scene": {
+        "type": "terminal",
+        "titulo": "Terminal — VS Code",
+        "pasta": "C:\\Users\\voce\\Documents\\meu-primeiro-playwright",
+        "linhas": [
+         {
+          "cmd": "npm init playwright@latest"
+         },
+         {
+          "out": "Ok to proceed? (y) y",
+          "cor": "yel"
+         },
+         {
+          "out": "Getting started with writing end-to-end tests with Playwright:",
+          "cor": "mut"
+         },
+         {
+          "out": "✔ Do you want to use TypeScript or JavaScript? · JavaScript",
+          "cor": "ac"
+         }
+        ],
+        "legenda": "1ª pergunta: JavaScript"
+       }
+      },
+      {
+       "text": "Segunda: onde guardar os testes? Ele já sugere a pasta tests. Só aperta Enter.",
+       "scene": {
+        "type": "terminal",
+        "titulo": "Terminal — VS Code",
+        "pasta": "C:\\Users\\voce\\Documents\\meu-primeiro-playwright",
+        "linhas": [
+         {
+          "cmd": "npm init playwright@latest"
+         },
+         {
+          "out": "✔ Do you want to use TypeScript or JavaScript? · JavaScript",
+          "cor": "ac"
+         },
+         {
+          "out": "✔ Where to put your end-to-end tests? · tests",
+          "cor": "ac"
+         }
+        ],
+        "legenda": "2ª pergunta: tests (só Enter)"
+       }
+      },
+      {
+       "text": "Terceira: quer um workflow do GitHub Actions? Aqui digita y. É isso que, no final do curso, vai fazer seus testes rodarem sozinhos.",
+       "scene": {
+        "type": "terminal",
+        "titulo": "Terminal — VS Code",
+        "pasta": "C:\\Users\\voce\\Documents\\meu-primeiro-playwright",
+        "linhas": [
+         {
+          "cmd": "npm init playwright@latest"
+         },
+         {
+          "out": "✔ Do you want to use TypeScript or JavaScript? · JavaScript",
+          "cor": "ac"
+         },
+         {
+          "out": "✔ Where to put your end-to-end tests? · tests",
+          "cor": "ac"
+         },
+         {
+          "out": "✔ Add a GitHub Actions workflow? (y/N) · true",
+          "cor": "ac"
+         }
+        ],
+        "legenda": "3ª pergunta: y (sim)"
+       }
+      },
+      {
+       "text": "Quarta: instalar os navegadores do Playwright? Enter, que é sim. Ele baixa o Chromium, o Firefox e o WebKit, que é o motor de navegador que eu te mostrei na abertura do curso.",
+       "scene": {
+        "type": "terminal",
+        "titulo": "Terminal — VS Code",
+        "pasta": "C:\\Users\\voce\\Documents\\meu-primeiro-playwright",
+        "linhas": [
+         {
+          "cmd": "npm init playwright@latest"
+         },
+         {
+          "out": "✔ Do you want to use TypeScript or JavaScript? · JavaScript",
+          "cor": "ac"
+         },
+         {
+          "out": "✔ Where to put your end-to-end tests? · tests",
+          "cor": "ac"
+         },
+         {
+          "out": "✔ Add a GitHub Actions workflow? (y/N) · true",
+          "cor": "ac"
+         },
+         {
+          "out": "✔ Install Playwright browsers? (Y/n) · true",
+          "cor": "ac"
+         },
+         {
+          "out": "Downloading Chromium... Firefox... WebKit... done",
+          "cor": "txt"
+         }
+        ],
+        "legenda": "4ª pergunta: Enter (sim)"
+       }
+      },
+      {
+       "text": "Se você está no Linux, ele faz uma pergunta a mais, sobre as dependências do sistema. Responde y. É aquele detalhe que eu tinha comentado no módulo um.",
+       "scene": {
+        "type": "cards",
+        "titulo": "SÓ NO LINUX",
+        "itens": [
+         [
+          "?",
+          "Dependências",
+          "do sistema?"
+         ],
+         [
+          "y",
+          "Responde sim",
+          "e ele instala",
+          "#ffd23f"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Espera terminar. Quando aparecer Happy hacking no final, deu tudo certo.",
+       "scene": {
+        "type": "terminal",
+        "titulo": "Terminal — VS Code",
+        "pasta": "C:\\Users\\voce\\Documents\\meu-primeiro-playwright",
+        "linhas": [
+         {
+          "cmd": "npm init playwright@latest"
+         },
+         {
+          "out": "✔ Do you want to use TypeScript or JavaScript? · JavaScript",
+          "cor": "ac"
+         },
+         {
+          "out": "✔ Where to put your end-to-end tests? · tests",
+          "cor": "ac"
+         },
+         {
+          "out": "✔ Add a GitHub Actions workflow? (y/N) · true",
+          "cor": "ac"
+         },
+         {
+          "out": "✔ Install Playwright browsers? (Y/n) · true",
+          "cor": "ac"
+         },
+         {
+          "out": "Downloading Chromium... Firefox... WebKit... done",
+          "cor": "txt"
+         },
+         {
+          "out": "✔ Success! Created a Playwright Test project",
+          "cor": "ac"
+         },
+         {
+          "out": "Happy hacking! 🎭",
+          "cor": "yel"
+         }
+        ],
+        "legenda": "Happy hacking = deu certo"
+       }
+      },
+      {
+       "text": "Olha a esquerda: apareceram vários arquivos novos. Na próxima aula, eu te explico o que é cada um.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "example.spec.js",
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules",
+         "  tests",
+         "    example.spec.js",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "codigo": "// @ts-check\nimport { test, expect } from '@playwright/test';\n\ntest('has title', async ({ page }) => {\n  await page.goto('https://playwright.dev/');\n\n  // Expect a title \"to contain\" a substring.\n  await expect(page).toHaveTitle(/Playwright/);\n});\n\ntest('get started link', async ({ page }) => {\n  await page.goto('https://playwright.dev/');\n\n  // Click the get started link.\n  await page.getByRole('link', { name: 'Get started' }).click();\n\n  // Expects page to have a heading with the name of Installation.\n  await expect(page.getByRole('heading', { name: 'Installation' })).toBeVisible();\n});",
+        "digitar": false,
+        "fonte": 26,
+        "legenda": "Vários arquivos novos"
+       }
+      },
+      {
+       "text": "Te vejo lá!",
+       "scene": {
+        "type": "endcard",
+        "sub": "PRÓXIMA: OS ARQUIVOS QUE ELE CRIOU"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "shorts": [],
+  "tiktoks": []
+ }
+}

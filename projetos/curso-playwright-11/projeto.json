@@ -1,0 +1,343 @@
+{
+ "title": "Playwright para leigos · Aula 11",
+ "slug": "curso-playwright-11",
+ "idioma": "pt",
+ "destino": "curso",
+ "marca": [
+  "PLAYWRIGHT",
+  "PARA LEIGOS"
+ ],
+ "cor_fundo": "#3fd68a",
+ "sem_legenda": true,
+ "legenda_y": 0.93,
+ "selo": "MÓDULO 2 · AULA 11",
+ "voz": {
+  "nome": "gravada",
+  "motor": "eleven",
+  "eleven_voz": "Vinícius Torales"
+ },
+ "serie": [],
+ "meta": {
+  "titles": [
+   "Aula 11: Rodando o teste de exemplo e o relatório HTML"
+  ],
+  "description": "",
+  "tags": []
+ },
+ "notes": "Curso Playwright para leigos. Não publica (destino: curso). Roteiro em curso-playwright/roteiros/.",
+ "script": {
+  "long": {
+   "parts": [
+    {
+     "chapter": "",
+     "sentences": [
+      {
+       "text": "Chegou a hora de ver o Playwright funcionando.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "AULA 11",
+          "muted",
+          80
+         ],
+         [
+          "RODANDO",
+          "gold",
+          200
+         ]
+        ]
+       }
+      },
+      {
+       "text": "No terminal, digita npx playwright test e aperta Enter.",
+       "scene": {
+        "type": "terminal",
+        "titulo": "Terminal — VS Code",
+        "pasta": "C:\\Users\\voce\\Documents\\meu-primeiro-playwright",
+        "linhas": [
+         {
+          "cmd": "npx playwright test"
+         }
+        ],
+        "legenda": "npx playwright test",
+        "colinha": true,
+        "colinha_em": 1.5
+       }
+      },
+      {
+       "text": "Por padrão, você não vê as janelas dos navegadores abrindo. Eles estão rodando em modo headless, sem interface visível.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "HEADLESS",
+          "gold",
+          200
+         ],
+         [
+          "SEM JANELA, MAIS RÁPIDO",
+          "white",
+          100
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Olha o resultado: seis execuções passaram. Mas o arquivo só tinha dois testes!",
+       "scene": {
+        "type": "terminal",
+        "titulo": "Terminal — VS Code",
+        "pasta": "C:\\Users\\voce\\Documents\\meu-primeiro-playwright",
+        "linhas": [
+         {
+          "cmd": "npx playwright test"
+         },
+         {
+          "out": "Running 6 tests using 4 workers",
+          "cor": "mut"
+         },
+         {
+          "out": "  6 passed (7.9s)",
+          "cor": "ac"
+         }
+        ],
+        "legenda": "6 passaram… com 2 testes?"
+       }
+      },
+      {
+       "text": "Isso acontece porque cada um dos dois testes rodou em três navegadores. Dois testes vezes três navegadores: seis execuções.",
+       "scene": {
+        "type": "cards",
+        "titulo": "2 TESTES × 3 NAVEGADORES = 6 EXECUÇÕES",
+        "itens": [
+         [
+          "C",
+          "Chromium",
+          "2 execuções"
+         ],
+         [
+          "F",
+          "Firefox",
+          "2 execuções",
+          "#ff8c42"
+         ],
+         [
+          "W",
+          "WebKit",
+          "2 execuções",
+          "#69a7ff"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "E no final ele dá uma dica: npx playwright show-report. Digita isso.",
+       "scene": {
+        "type": "terminal",
+        "titulo": "Terminal — VS Code",
+        "pasta": "C:\\Users\\voce\\Documents\\meu-primeiro-playwright",
+        "linhas": [
+         {
+          "cmd": "npx playwright test"
+         },
+         {
+          "out": "Running 6 tests using 4 workers",
+          "cor": "mut"
+         },
+         {
+          "out": "  6 passed (7.9s)",
+          "cor": "ac"
+         },
+         {
+          "out": "To open last HTML report run:",
+          "cor": "mut"
+         },
+         {
+          "out": "  npx playwright show-report",
+          "cor": "txt"
+         },
+         {
+          "cmd": "npx playwright show-report"
+         },
+         {
+          "out": "Serving HTML report at http://localhost:9323",
+          "cor": "ac"
+         }
+        ],
+        "legenda": "npx playwright show-report",
+        "colinha": true,
+        "colinha_em": 1.5
+       }
+      },
+      {
+       "text": "Abre o relatório no navegador: cada teste, em cada navegador, quanto tempo levou, e se passou ou falhou.",
+       "scene": {
+        "type": "pw_relatorio",
+        "testes": [
+         [
+          "has title",
+          "example.spec.js:4",
+          "chromium",
+          "ok",
+          "1.2s"
+         ],
+         [
+          "has title",
+          "example.spec.js:4",
+          "firefox",
+          "ok",
+          "1.9s"
+         ],
+         [
+          "has title",
+          "example.spec.js:4",
+          "webkit",
+          "ok",
+          "1.6s"
+         ],
+         [
+          "get started link",
+          "example.spec.js:11",
+          "chromium",
+          "ok",
+          "1.2s"
+         ],
+         [
+          "get started link",
+          "example.spec.js:11",
+          "firefox",
+          "ok",
+          "1.9s"
+         ],
+         [
+          "get started link",
+          "example.spec.js:11",
+          "webkit",
+          "ok",
+          "1.6s"
+         ]
+        ],
+        "legenda": "Cada teste, em cada navegador"
+       }
+      },
+      {
+       "text": "Clica em qualquer teste pra ver os passos que ele fez, um por um.",
+       "scene": {
+        "type": "pw_relatorio",
+        "testes": [
+         [
+          "has title",
+          "example.spec.js:4",
+          "chromium",
+          "ok",
+          "1.2s"
+         ],
+         [
+          "has title",
+          "example.spec.js:4",
+          "firefox",
+          "ok",
+          "1.9s"
+         ],
+         [
+          "has title",
+          "example.spec.js:4",
+          "webkit",
+          "ok",
+          "1.6s"
+         ],
+         [
+          "get started link",
+          "example.spec.js:11",
+          "chromium",
+          "ok",
+          "1.2s"
+         ],
+         [
+          "get started link",
+          "example.spec.js:11",
+          "firefox",
+          "ok",
+          "1.9s"
+         ],
+         [
+          "get started link",
+          "example.spec.js:11",
+          "webkit",
+          "ok",
+          "1.6s"
+         ]
+        ],
+        "abrir": {
+         "titulo": "get started link",
+         "arquivo": "example.spec.js:11",
+         "projeto": "chromium",
+         "passos": [
+          [
+           "Navigate to \"https://playwright.dev/\"",
+           "0.9s"
+          ],
+          [
+           "Click getByRole('link', { name: 'Get started' })",
+           "0.3s"
+          ],
+          [
+           "Expect \"toBeVisible\"",
+           "0.1s"
+          ]
+         ]
+        },
+        "legenda": "Os passos, um por um"
+       }
+      },
+      {
+       "text": "Pra fechar o relatório, volta no terminal e aperta Control C.",
+       "scene": {
+        "type": "terminal",
+        "titulo": "Terminal — VS Code",
+        "pasta": "C:\\Users\\voce\\Documents\\meu-primeiro-playwright",
+        "linhas": [
+         {
+          "cmd": "npx playwright show-report"
+         },
+         {
+          "out": "Serving HTML report at http://localhost:9323",
+          "cor": "ac"
+         },
+         {
+          "out": "^C",
+          "cor": "yel"
+         }
+        ],
+        "legenda": "Ctrl + C fecha o relatório"
+       }
+      },
+      {
+       "text": "Agora você já tem tudo funcionando. No próximo módulo, a gente apaga esse exemplo e escreve o seu primeiro teste, do zero.",
+       "scene": {
+        "type": "flow",
+        "a": "EXEMPLO ✓",
+        "a_sub": "do Playwright",
+        "b": "SEU CÓDIGO",
+        "b_sub": "a partir de agora",
+        "caption": "AGORA É COM VOCÊ"
+       }
+      },
+      {
+       "text": "Te vejo lá!",
+       "scene": {
+        "type": "endcard",
+        "sub": "PRÓXIMA: MÓDULO 3 · PRIMEIRO TESTE"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "shorts": [],
+  "tiktoks": []
+ }
+}
