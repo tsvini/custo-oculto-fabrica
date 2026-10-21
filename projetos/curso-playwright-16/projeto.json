@@ -32,7 +32,7 @@
      "chapter": "",
      "sentences": [
       {
-       "text": "O expect é o coração do teste, então vale conhecer os mais usados.",
+       "text": "O expect é o coração do teste. E o jeito mais fácil de entender é ler em voz alta, como uma frase.",
        "scene": {
         "type": "bigtext",
         "stagger": 0.25,
@@ -51,12 +51,12 @@
        }
       },
       {
-       "text": "toHaveURL você já conhece: confere o endereço.",
+       "text": "Olha a linha que você já tem: await expect page, to have URL inventory.",
        "scene": {
         "type": "editor",
         "arquivo": "login.spec.js",
         "codigo": "import { test, expect } from '@playwright/test';\n\ntest('entra com usuário e senha', async ({ page }) => {\n  await page.goto('https://www.saucedemo.com/');\n  await page.getByPlaceholder('Username').fill('standard_user');\n  await page.getByPlaceholder('Password').fill('secret_sauce');\n  await page.getByRole('button', { name: 'Login' }).click();\n  await expect(page).toHaveURL(/inventory/);\n});",
-        "legenda": "toHaveURL: o endereço",
+        "legenda": "A conferência que você já tem",
         "fonte": 26,
         "digitar": false,
         "destaque": [
@@ -66,12 +66,97 @@
        }
       },
       {
-       "text": "toBeVisible confere se algo está aparecendo na tela. Por exemplo, o título Products: await expect, page ponto getByText Products, ponto toBeVisible.",
+       "text": "Traduzindo: expect é eu espero que. To have URL é tenha esse endereço. Então a gente pode ler a linha assim: eu espero que a página tenha inventory no endereço.",
+       "scene": {
+        "type": "traducao",
+        "codigo": "await expect(page).toHaveURL(/inventory/);",
+        "partes": [
+         [
+          "expect(page)",
+          "eu espero que a página"
+         ],
+         [
+          ".toHaveURL(/inventory/)",
+          "tenha inventory no endereço"
+         ]
+        ],
+        "passo": 2.4
+       }
+      },
+      {
+       "text": "Viu? Você acabou de ler inglês de programador. E os outros funcionam do mesmo jeito.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "É SÓ LER",
+          "white",
+          150
+         ],
+         [
+          "COMO UMA FRASE",
+          "gold",
+          150
+         ]
+        ]
+       }
+      },
+      {
+       "text": "O segundo é o to be visible. To be é estar, visible é visível. Eu espero que esteja visível.",
+       "scene": {
+        "type": "traducao",
+        "codigo": "await expect(...).toBeVisible();",
+        "partes": [
+         [
+          "expect(...)",
+          "eu espero que"
+         ],
+         [
+          ".toBeVisible()",
+          "esteja visível"
+         ]
+        ],
+        "passo": 1.8
+       }
+      },
+      {
+       "text": "Na loja, o título Products aparece lá em cima.",
+       "scene": {
+        "type": "tela",
+        "media": "site_sauce_products",
+        "url": "https://www.saucedemo.com/",
+        "titulo": "saucedemo.com/inventory.html",
+        "legenda": "O título Products",
+        "zoom_em": 1.4,
+        "caixa_em": 2.0,
+        "alvo": "Products",
+        "acoes": [
+         {
+          "fill": [
+           "#user-name",
+           "standard_user"
+          ]
+         },
+         {
+          "fill": [
+           "#password",
+           "secret_sauce"
+          ]
+         },
+         {
+          "click": "#login-button"
+         }
+        ]
+       }
+      },
+      {
+       "text": "Então: await expect, page ponto getByText Products, ponto to be visible. Lendo: eu espero que o texto Products esteja visível.",
        "scene": {
         "type": "editor",
         "arquivo": "login.spec.js",
         "codigo": "import { test, expect } from '@playwright/test';\n\ntest('entra com usuário e senha', async ({ page }) => {\n  await page.goto('https://www.saucedemo.com/');\n  await page.getByPlaceholder('Username').fill('standard_user');\n  await page.getByPlaceholder('Password').fill('secret_sauce');\n  await page.getByRole('button', { name: 'Login' }).click();\n  await expect(page).toHaveURL(/inventory/);\n  await expect(page.getByText('Products')).toBeVisible();\n});",
-        "legenda": "toBeVisible: está aparecendo",
+        "legenda": "Eu espero que Products esteja visível",
         "fonte": 26,
         "digitar_de": 9,
         "digitar_ate": 9,
@@ -80,52 +165,177 @@
        }
       },
       {
-       "text": "toContainText confere se um texto aparece no meio de outro. O nome do primeiro produto contém Backpack: await expect, e ponto toContainText Backpack.",
+       "text": "O terceiro é o to contain text. Contain é conter. Eu espero que contenha o texto.",
+       "scene": {
+        "type": "traducao",
+        "codigo": "await expect(...).toContainText('Backpack');",
+        "partes": [
+         [
+          "expect(...)",
+          "eu espero que"
+         ],
+         [
+          ".toContainText('Backpack')",
+          "contenha o texto Backpack"
+         ]
+        ],
+        "passo": 1.8
+       }
+      },
+      {
+       "text": "O primeiro produto se chama Sauce Labs Backpack, e backpack é mochila. A gente confere se o nome contém a palavra Backpack.",
+       "scene": {
+        "type": "tela",
+        "media": "site_sauce_mochila",
+        "url": "https://www.saucedemo.com/",
+        "titulo": "saucedemo.com/inventory.html",
+        "legenda": "Sauce Labs Backpack = mochila",
+        "zoom_em": 1.4,
+        "caixa_em": 2.0,
+        "alvo": "Sauce Labs Backpack",
+        "acoes": [
+         {
+          "fill": [
+           "#user-name",
+           "standard_user"
+          ]
+         },
+         {
+          "fill": [
+           "#password",
+           "secret_sauce"
+          ]
+         },
+         {
+          "click": "#login-button"
+         }
+        ]
+       }
+      },
+      {
+       "text": "Fica assim: await expect, getByText Sauce Labs Backpack, ponto to contain text Backpack.",
        "scene": {
         "type": "editor",
         "arquivo": "login.spec.js",
         "codigo": "import { test, expect } from '@playwright/test';\n\ntest('entra com usuário e senha', async ({ page }) => {\n  await page.goto('https://www.saucedemo.com/');\n  await page.getByPlaceholder('Username').fill('standard_user');\n  await page.getByPlaceholder('Password').fill('secret_sauce');\n  await page.getByRole('button', { name: 'Login' }).click();\n  await expect(page).toHaveURL(/inventory/);\n  await expect(page.getByText('Products')).toBeVisible();\n  await expect(page.getByText('Sauce Labs Backpack')).toContainText('Backpack');\n});",
-        "legenda": "toContainText: tem esse texto",
+        "legenda": "Eu espero que contenha Backpack",
         "fonte": 26,
         "digitar_de": 10,
         "digitar_ate": 10
        }
       },
       {
-       "text": "E toHaveCount confere quantos existem. Na loja tem seis botões Add to cart, um pra cada produto: await expect, getByRole button Add to cart, ponto toHaveCount seis.",
+       "text": "O quarto é o to have count. Count quer dizer contar, ou quantidade. Eu espero que tenha essa quantidade.",
+       "scene": {
+        "type": "traducao",
+        "codigo": "await expect(...).toHaveCount(6);",
+        "partes": [
+         [
+          "expect(...)",
+          "eu espero que"
+         ],
+         [
+          ".toHaveCount(6)",
+          "tenha essa quantidade: 6",
+          "count = contar / quantidade"
+         ]
+        ],
+        "passo": 1.8
+       }
+      },
+      {
+       "text": "Cada produto tem um botão Add to cart, que é adicionar ao carrinho. São seis produtos, então seis botões.",
+       "scene": {
+        "type": "tela",
+        "media": "site_sauce_botoes",
+        "url": "https://www.saucedemo.com/",
+        "titulo": "saucedemo.com/inventory.html",
+        "legenda": "6 produtos, 6 botões Add to cart",
+        "zoom_em": 1.4,
+        "caixa_em": 2.0,
+        "alvo": "Add to cart",
+        "acoes": [
+         {
+          "fill": [
+           "#user-name",
+           "standard_user"
+          ]
+         },
+         {
+          "fill": [
+           "#password",
+           "secret_sauce"
+          ]
+         },
+         {
+          "click": "#login-button"
+         }
+        ]
+       }
+      },
+      {
+       "text": "Então: await expect, getByRole button, nome Add to cart, ponto to have count seis.",
        "scene": {
         "type": "editor",
         "arquivo": "login.spec.js",
         "codigo": "import { test, expect } from '@playwright/test';\n\ntest('entra com usuário e senha', async ({ page }) => {\n  await page.goto('https://www.saucedemo.com/');\n  await page.getByPlaceholder('Username').fill('standard_user');\n  await page.getByPlaceholder('Password').fill('secret_sauce');\n  await page.getByRole('button', { name: 'Login' }).click();\n  await expect(page).toHaveURL(/inventory/);\n  await expect(page.getByText('Products')).toBeVisible();\n  await expect(page.getByText('Sauce Labs Backpack')).toContainText('Backpack');\n  await expect(page.getByRole('button', { name: 'Add to cart' })).toHaveCount(6);\n});",
-        "legenda": "toHaveCount: quantos existem",
+        "legenda": "Eu espero que tenha 6 botões",
         "fonte": 26,
         "digitar_de": 11,
         "digitar_ate": 11
        }
       },
       {
-       "text": "Tem também o toHaveText, que confere o texto exato, e o not, que faz o contrário de qualquer um. Todos estão na sua colinha.",
+       "text": "Agora olha o arquivo inteiro. No começo da aula, isso parecia código em inglês. Agora você consegue ler cada linha sozinho.",
        "scene": {
-        "type": "cards",
-        "itens": [
-         [
-          "=",
-          "toHaveText",
-          "o texto exato"
-         ],
-         [
-          "!",
-          "not",
-          "o contrário",
-          "#ff6b6b"
-         ]
+        "type": "editor",
+        "arquivo": "login.spec.js",
+        "codigo": "import { test, expect } from '@playwright/test';\n\ntest('entra com usuário e senha', async ({ page }) => {\n  await page.goto('https://www.saucedemo.com/');\n  await page.getByPlaceholder('Username').fill('standard_user');\n  await page.getByPlaceholder('Password').fill('secret_sauce');\n  await page.getByRole('button', { name: 'Login' }).click();\n  await expect(page).toHaveURL(/inventory/);\n  await expect(page.getByText('Products')).toBeVisible();\n  await expect(page.getByText('Sauce Labs Backpack')).toContainText('Backpack');\n  await expect(page.getByRole('button', { name: 'Add to cart' })).toHaveCount(6);\n});",
+        "legenda": "Você consegue ler cada linha",
+        "fonte": 26,
+        "digitar": false,
+        "destaque": [
+         8,
+         9,
+         10,
+         11
         ],
-        "colinha": true,
-        "colinha_em": 1.0
+        "destaque_em": 0.6
        }
       },
       {
-       "text": "E um detalhe que faz o Playwright brilhar: os expect do Playwright esperam automaticamente por alguns segundos até a condição ficar verdadeira. Por padrão, esse tempo é de até cinco segundos.",
+       "text": "Resumindo: eu espero que tenha no endereço, que esteja visível, que contenha o texto, e que tenha essa quantidade. Está tudo na sua colinha, do mesmo jeito.",
+       "scene": {
+        "type": "traducao",
+        "titulo": "LEIA O CÓDIGO COMO UMA FRASE",
+        "linhas": [
+         [
+          "expect",
+          "eu espero que"
+         ],
+         [
+          "toHaveURL",
+          "tenha no endereço"
+         ],
+         [
+          "toBeVisible",
+          "esteja visível"
+         ],
+         [
+          "toContainText",
+          "contenha o texto"
+         ],
+         [
+          "toHaveCount",
+          "tenha essa quantidade"
+         ]
+        ],
+        "colinha": true,
+        "colinha_em": 2.5
+       }
+      },
+      {
+       "text": "E tem outra vantagem: esses expect esperam automaticamente por alguns segundos até a condição ficar verdadeira. Por padrão, até cinco segundos. Você não precisa colocar uma espera manual.",
        "scene": {
         "type": "bigtext",
         "stagger": 0.25,
@@ -149,7 +359,7 @@
        }
       },
       {
-       "text": "Roda, e tudo passa. No próximo módulo, a gente aprende a achar qualquer elemento, e eu te mostro um truque em que o Playwright escreve o código pra você.",
+       "text": "Roda, e tudo passa. No próximo módulo, eu te mostro como achar qualquer elemento, e um truque em que o Playwright escreve o código pra você.",
        "scene": {
         "type": "terminal",
         "titulo": "Terminal — VS Code",

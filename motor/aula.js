@@ -1075,4 +1075,41 @@
     legenda(ctx, c, t, s);
   };
 
+
+  // TRADUÇÃO: lê uma linha de código como frase em português, pedaço por pedaço
+  // {type:"traducao", codigo:"await expect(page).toHaveURL(/inventory/);", partes:[["expect(page)","eu espero que a página"],[".toHaveURL(/inventory/)","tenha inventory no endereço"]], legenda:"..."}
+  // modo tabela: {type:"traducao", titulo:"LEIA O CÓDIGO COMO UMA FRASE", linhas:[["expect","eu espero que"], ...]}
+  S.traducao = (ctx, c, t, dur, s) => {
+    const u = c.u; const a = easeOut(t / 0.4); const cores = [C.ac, C.ac2, C.yel, "#ff8c42", "#c792ea"];
+    if (s.linhas) {
+      if (s.titulo) txt(ctx, s.titulo, caber(ctx, s.titulo, 900, 56 * u, c.W * 0.9), c.cx, c.H * 0.13, C.txt, "center", a);
+      const L = s.linhas; const lh = Math.min(110 * u, (c.H * 0.6) / L.length); const y0 = c.H * 0.26; const passo = Math.max(0.35, (dur * 0.7 - 0.6) / L.length);
+      const fc = caber(ctx, L.reduce((m, l) => (l[0].length > m.length ? l[0] : m), ""), 700, 50 * u, c.W * 0.36, MONO);
+      L.forEach(([cod, pt], i) => { const k = easeOut((t - 0.5 - i * passo) / 0.35); if (k <= 0) return; const yy = y0 + i * lh + lh / 2; const cor = cores[i % cores.length];
+        ctx.save(); ctx.globalAlpha = a * k * 0.9; rr(ctx, c.W * 0.1, yy - lh * 0.42, c.W * 0.8, lh * 0.84, 18 * u); ctx.fillStyle = C.win; ctx.fill(); ctx.fillStyle = cor; ctx.fillRect(c.W * 0.1, yy - lh * 0.42, 8 * u, lh * 0.84); ctx.restore();
+        txt(ctx, cod, fc, c.W * 0.14, yy, cor, "left", a * k); txt(ctx, "→", font(800, 50 * u), c.W * 0.53, yy, C.mut, "center", a * k);
+        txt(ctx, pt, caber(ctx, pt, 800, 48 * u, c.W * 0.3), c.W * 0.58, yy, C.txt, "left", a * k); });
+      legenda(ctx, c, t, s); return;
+    }
+    const cod = s.codigo || ""; const P = s.partes || [];
+    const fc = caber(ctx, cod, 700, 60 * u, c.W * 0.88, MONO); const wTot = tw(ctx, cod, fc); const x0 = c.cx - wTot / 2; const yc = c.H * 0.24;
+    // caixa do código
+    ctx.save(); ctx.globalAlpha = a; rr(ctx, x0 - 40 * u, yc - 60 * u, wTot + 80 * u, 120 * u, 18 * u); ctx.fillStyle = C.win; ctx.fill(); ctx.strokeStyle = C.line; ctx.lineWidth = 2 * u; ctx.stroke(); ctx.restore();
+    let xx = x0; for (const [tk, cor] of tokens(cod)) { txt(ctx, tk, fc, xx, yc, cor, "left", a); xx += tw(ctx, tk, fc); }
+    const passo = s.passo || Math.max(0.9, (dur * 0.75 - 0.8) / Math.max(P.length, 1)); let ocup = [];
+    P.forEach(([trecho, pt, nota], i) => { const ini = cod.indexOf(trecho); if (ini < 0) return; const k = easeOut((t - 0.8 - i * passo) / 0.4); if (k <= 0) return; const cor = cores[i % cores.length];
+      const xa = x0 + tw(ctx, cod.slice(0, ini), fc), xb = xa + tw(ctx, trecho, fc), xm = (xa + xb) / 2;
+      // primeiro decide a linha do rótulo (pra não encavalar), depois a seta vai até ela
+      const fp = caber(ctx, pt, 800, 50 * u, Math.max(280 * u, (c.W * 0.92) / Math.max(P.length, 1))); const wp = tw(ctx, pt, fp);
+      const xc = Math.max(c.W * 0.04 + wp / 2, Math.min(c.W * 0.96 - wp / 2, xm)); let linha = 0; while (ocup.some(([l, a0, a1]) => l === linha && !(xc + wp / 2 + 30 * u < a0 || xc - wp / 2 - 30 * u > a1))) linha++;
+      ocup.push([linha, xc - wp / 2, xc + wp / 2]); const yp = yc + 230 * u + linha * 130 * u;
+      ctx.save(); ctx.globalAlpha = a * k * 0.18; ctx.fillStyle = cor; ctx.fillRect(xa - 4 * u, yc - 40 * u, xb - xa + 8 * u, 80 * u); ctx.globalAlpha = a * k;
+      ctx.fillRect(xa, yc + 70 * u, xb - xa, 6 * u); const yf = yp - 58 * u; ctx.fillRect(xm - 3 * u, yc + 76 * u, 6 * u, (yf - yc - 76 * u) * k);
+      ctx.beginPath(); ctx.moveTo(xm - 16 * u, yf - 4 * u); ctx.lineTo(xm + 16 * u, yf - 4 * u); ctx.lineTo(xm, yf + 18 * u); ctx.closePath(); ctx.fill();
+      rr(ctx, xc - wp / 2 - 26 * u, yp - 38 * u, wp + 52 * u, 76 * u, 38 * u); ctx.fill(); ctx.restore();
+      txt(ctx, pt, fp, xc, yp, "#0b1a12", "center", a * k);
+      if (nota) txt(ctx, nota, caber(ctx, nota, 600, 32 * u, c.W * 0.5), xc, yp + 62 * u, C.mut, "center", a * k); });
+    legenda(ctx, c, t, s);
+  };
+
 })(window);

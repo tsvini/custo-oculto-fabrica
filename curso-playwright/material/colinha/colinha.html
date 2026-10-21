@@ -97,15 +97,15 @@ b{color:#fff}
    <code>.press('Enter')</code><span class="d">aperta uma tecla</span>
    <code>.first()</code><span class="d">pega só o primeiro da lista</span>
   </div></div>
-  <div class="box"><h2><i>5</i>As conferências (expect)</h2><div class="l">
-   <code>toBeVisible()</code><span class="d">está aparecendo na tela</span>
-   <code>toHaveText('txt')</code><span class="d">o texto é esse</span>
-   <code>toContainText('txt')</code><span class="d">tem esse texto no meio</span>
-   <code>toHaveURL(/inventory/)</code><span class="d">a página é essa</span>
-   <code>toHaveCount(2)</code><span class="d">tem essa quantidade</span>
-   <code>toHaveValue('x')</code><span class="d">o campo tem esse valor</span>
-   <code>not.toBeVisible()</code><span class="d">o contrário de qualquer um</span>
-  </div><p class="nota">O Playwright espera sozinho (até 5 segundos) o elemento aparecer e a conferência dar certo. Não precisa de "sleep".</p></div>
+  <div class="box"><h2><i>5</i>Leia o expect como uma frase</h2><div class="l">
+   <code>expect(...)</code><span class="d"><b>eu espero que</b>…</span>
+   <code>toHaveURL(/inventory/)</code><span class="d">…tenha no endereço</span>
+   <code>toBeVisible()</code><span class="d">…esteja visível</span>
+   <code>toContainText('txt')</code><span class="d">…contenha o texto</span>
+   <code>toHaveText('txt')</code><span class="d">…tenha exatamente o texto</span>
+   <code>toHaveCount(2)</code><span class="d">…tenha essa quantidade (count = contar)</span>
+   <code>not.toBeVisible()</code><span class="d">…<b>não</b> esteja visível</span>
+  </div><p class="nota">Sempre com <code>await</code> na frente. O Playwright espera sozinho (por padrão, até 5 segundos) a condição ficar verdadeira.</p></div>
  </div><div class="rod"><span>Playwright para Leigos · Vinícius Torales</span><span>Site de treino: saucedemo.com · usuário <b>standard_user</b> · senha <b>secret_sauce</b></span></div></div>
 <div class="pg"><div class="topo"><div><h1>PLAYWRIGHT <b>PARA LEIGOS</b></h1><p>Seletores, ferramentas que ajudam e como rodar só o que importa</p></div><span class="selo">COLINHA · 2/3</span></div>
  <div class="grade">
