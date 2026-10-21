@@ -171,5 +171,5 @@ def mixar(video, sons, trilha=None, vol_trilha=0.16, vol_sfx=0.55):
         wav = os.path.join(d, "a.f32"); mix.astype(np.float32).tofile(wav)
         out = os.path.join(d, "v.mp4")
         subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", video, "-f", "f32le", "-ar", str(SR), "-ac", "1", "-i", wav,
-                        "-map", "0:v", "-map", "1:a", "-c:v", "copy", "-c:a", "aac", "-b:a", "192k", "-shortest", out], check=True)
+                        "-map", "0:v", "-map", "1:a", "-c:v", "copy", "-c:a", "aac", "-b:a", "192k", "-shortest", "-movflags", "+faststart", out], check=True)
         os.replace(out, video)

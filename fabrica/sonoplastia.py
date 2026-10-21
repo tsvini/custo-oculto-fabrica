@@ -186,7 +186,7 @@ def _escreve(video, mix, saida):
     with tempfile.TemporaryDirectory() as d:
         wav = os.path.join(d, "a.f32"); mix.astype(np.float32).tofile(wav)
         subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", video, "-f", "f32le", "-ar", str(SR), "-ac", "1", "-i", wav,
-                        "-map", "0:v", "-map", "1:a", "-c:v", "copy", "-c:a", "aac", "-b:a", "192k", "-shortest", saida], check=True)
+                        "-map", "0:v", "-map", "1:a", "-c:v", "copy", "-c:a", "aac", "-b:a", "192k", "-shortest", "-movflags", "+faststart", saida], check=True)
 
 
 def avalia(video, eventos, roteiro):
