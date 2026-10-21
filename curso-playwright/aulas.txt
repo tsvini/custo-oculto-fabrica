@@ -19,7 +19,7 @@ Primeiro teste|16|Os expect mais usados
 Locators|17|Como o Playwright acha os elementos
 Locators|18|Bons e maus seletores - por que um teste quebra
 Locators|19|Codegen - o Playwright escreve o código pra você
-Locators|20|Inspector - testando um seletor antes de usar
+Locators|20|Pick Locator - testando um seletor antes de usar
 Locators|21|Espera automática - por que não precisa de sleep
 Organização|22|describe e beforeEach
 Organização|23|playwright.config - baseURL e data-test
@@ -30,26 +30,30 @@ Debug|27|UI Mode
 Debug|28|Trace Viewer
 Debug|29|Modo debug e page.pause
 Debug|30|Print e vídeo quando o teste falha
-Testes reais|31|Vários usuários - testes com dados
-Testes reais|32|3 navegadores e testes em paralelo
-Testes reais|33|Celular - emulando dispositivos
-Projeto final|34|O carrinho
-Projeto final|35|Finalizando a compra
-Projeto final|36|Percebeu que estamos copiando código?
-Projeto final|37|Page Object, versão simples
-Projeto final|38|test.step - um relatório que se lê como roteiro
-Projeto final|39|Indo além - login uma vez só com storageState
-CI|40|Subindo o projeto pro GitHub
-CI|41|GitHub Actions - os testes rodando sozinhos
-Bônus API|42|O que é uma API, explicado do zero
-Bônus API|43|Seu primeiro teste de API
-Bônus API|44|Criando, buscando e apagando dados pela API
-Desafios|45|Desafio 1 - senha errada
-Desafios|46|Desafio 2 - campos vazios
-Desafios|47|Desafio 3 - remover do carrinho
-Desafios|48|Desafio 4 - ordenar por preço
-Desafios|49|Desafio 5 - logout
-Desafios|50|Desafio final - compra com dois produtos
-Carreira|51|Veio do Cypress? O mapa Cypress para Playwright
-Carreira|52|O seu projeto no currículo e na entrevista
-Carreira|53|Seu projeto pronto pro portfólio e a colinha completa
+Testes reais|31|Uma lista de usuários e um teste que se repete
+Testes reais|32|O nome do teste que muda sozinho
+Testes reais|33|3 navegadores e testes em paralelo
+Testes reais|34|Celular - emulando dispositivos
+Projeto final|35|O carrinho
+Projeto final|36|Finalizando a compra
+Projeto final|37|Percebeu que estamos copiando código?
+Projeto final|38|Criando o LoginPage, passo a passo
+Projeto final|39|Usando o LoginPage no teste
+Projeto final|40|A mesma receita - ProdutosPage e CheckoutPage
+Projeto final|41|test.step - um relatório que se lê como roteiro
+Projeto final|42|Indo além - login uma vez só com storageState
+Git, GitHub e CI|43|Git - salvando o projeto
+Git, GitHub e CI|44|GitHub - enviando o projeto
+Git, GitHub e CI|45|GitHub Actions - os testes rodando sozinhos
+Bônus API|46|O que é uma API, explicado do zero
+Bônus API|47|Seu primeiro teste de API
+Bônus API|48|Criando e apagando dados pela API
+Desafios|49|Desafio 1 - senha errada
+Desafios|50|Desafio 2 - campos vazios
+Desafios|51|Desafio 3 - remover do carrinho
+Desafios|52|Desafio 4 - ordenar por preço
+Desafios|53|Desafio 5 - logout
+Desafios|54|Desafio final - compra com dois produtos
+Carreira|55|Veio do Cypress? Um mapa das ideias
+Carreira|56|O seu projeto no currículo e na entrevista
+Carreira|57|Seu projeto pronto pro portfólio e a colinha completa
