@@ -1,4 +1,4 @@
-const { test, expect } = require('@playwright/test');
+import { test, expect } from '@playwright/test';
 
 const usuarios = ['standard_user', 'problem_user', 'performance_glitch_user', 'visual_user'];
 

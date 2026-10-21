@@ -1,6 +1,4 @@
-const { expect } = require('@playwright/test');
-
-class LoginPage {
+export class LoginPage {
   constructor(page) {
     this.page = page;
     this.usuario = page.getByTestId('username');
@@ -20,4 +18,3 @@ class LoginPage {
   }
 }
 
-module.exports = { LoginPage };

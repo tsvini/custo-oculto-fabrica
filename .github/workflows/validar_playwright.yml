@@ -35,7 +35,7 @@ jobs:
         if: always()
         run: |
           node -e "const r=require('./resultado.json');const s=r.stats;console.log('::notice title=Playwright::passou '+s.expected+' · falhou '+s.unexpected+' · instável '+s.flaky+' · pulado '+s.skipped)"
-          node -e "const r=require('./resultado.json');const f=[];const walk=(su)=>{(su.specs||[]).forEach(sp=>sp.tests.forEach(t=>{if(t.status==='unexpected')f.push(t.projectName+' › '+sp.title+': '+((t.results.at(-1)||{}).error||{}).message)}));(su.suites||[]).forEach(walk)};r.suites.forEach(walk);f.slice(0,8).forEach(x=>console.log('::error title=Falhou::'+x.replace(/\n/g,' ').replace(/\x1b\[[0-9;]*m/g,'').slice(0,400)))"
+          node -e "const r=require('./resultado.json');const f=[];const walk=(su)=>{(su.specs||[]).forEach(sp=>sp.tests.forEach(t=>{if(t.status==='unexpected'||t.status==='flaky')f.push((t.status==='flaky'?'[instável] ':'')+t.projectName+' › '+sp.title+': '+((t.results.at(-1)||{}).error||{}).message)}));(su.suites||[]).forEach(walk)};r.suites.forEach(walk);f.slice(0,8).forEach(x=>console.log('::error title=Falhou::'+x.replace(/\n/g,' ').replace(/\x1b\[[0-9;]*m/g,'').slice(0,400)))"
       - uses: actions/upload-artifact@v4
         if: always()
         with:

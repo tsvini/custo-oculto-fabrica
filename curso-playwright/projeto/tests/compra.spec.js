@@ -1,6 +1,6 @@
-const { test, expect } = require('@playwright/test');
-const { ProdutosPage } = require('../pages/ProdutosPage');
-const { CheckoutPage } = require('../pages/CheckoutPage');
+import { test, expect } from '@playwright/test';
+import { ProdutosPage } from '../pages/ProdutosPage';
+import { CheckoutPage } from '../pages/CheckoutPage';
 
 test.use({ storageState: 'playwright/.auth/usuario.json' });
 

@@ -1,4 +1,4 @@
-class ProdutosPage {
+export class ProdutosPage {
   constructor(page) {
     this.page = page;
     this.titulo = page.getByTestId('title');
@@ -19,4 +19,3 @@ class ProdutosPage {
   }
 }
 
-module.exports = { ProdutosPage };

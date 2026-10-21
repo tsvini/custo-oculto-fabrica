@@ -1,4 +1,4 @@
-class CheckoutPage {
+export class CheckoutPage {
   constructor(page) {
     this.page = page;
     this.botaoCheckout = page.getByTestId('checkout');
@@ -18,4 +18,3 @@ class CheckoutPage {
   }
 }
 
-module.exports = { CheckoutPage };

@@ -1,4 +1,4 @@
-const { test: setup, expect } = require('@playwright/test');
+import { test as setup, expect } from '@playwright/test';
 
 const arquivoLogin = 'playwright/.auth/usuario.json';
 
