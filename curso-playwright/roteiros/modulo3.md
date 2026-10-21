@@ -59,7 +59,7 @@
 15. Essas duas barras em volta de inventory criam uma busca por padrão. Pra gente, agora, o importante é entender assim: a URL precisa ter a palavra inventory em algum lugar. [traducao]
 16. Então o nosso teste agora fala, em português: abra o site, preencha usuário e senha, clique em Login e confirme que entrou na página de produtos. [cards]
 17. Isso é muito importante: ação não é validação. Clicar é uma ação. O expect é a conferência. Um teste de verdade normalmente precisa dos dois. [compare]
-18. Agora roda de novo. Passou. E dessa vez ele não passou só porque conseguiu clicar. Ele passou porque confirmou que o login realmente funcionou. [terminal]
+18. Agora roda de novo. Passou. E dessa vez ele não passou só porque conseguiu clicar. Ele passou porque confirmou que o login realmente funcionou. [editor]
 19. Seu primeiro teste completo está pronto. Na próxima aula, a gente vai aprender outras formas de fazer essas conferências sem precisar decorar inglês. [passo]
 20. Te vejo lá! [endcard]
 
@@ -80,5 +80,5 @@
 14. Agora olha o arquivo inteiro. No começo da aula, isso parecia código em inglês. Agora você consegue ler cada linha sozinho. [editor]
 15. Resumindo: eu espero que tenha no endereço, que esteja visível, que contenha o texto, e que tenha essa quantidade. Está tudo na sua colinha, do mesmo jeito. [traducao]
 16. E tem outra vantagem: esses expect esperam automaticamente por alguns segundos até a condição ficar verdadeira. Por padrão, até cinco segundos. Você não precisa colocar uma espera manual. [bigtext]
-17. Roda, e tudo passa. No próximo módulo, eu te mostro como achar qualquer elemento, e um truque em que o Playwright escreve o código pra você. [terminal]
+17. Roda, e tudo passa. No próximo módulo, eu te mostro como achar qualquer elemento, e um truque em que o Playwright escreve o código pra você. [editor]
 18. Te vejo lá! [endcard]
