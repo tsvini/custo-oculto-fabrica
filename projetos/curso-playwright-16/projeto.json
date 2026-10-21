@@ -361,23 +361,28 @@
       {
        "text": "Roda, e tudo passa. No próximo módulo, eu te mostro como achar qualquer elemento, e um truque em que o Playwright escreve o código pra você.",
        "scene": {
-        "type": "terminal",
-        "titulo": "Terminal — VS Code",
-        "pasta": "C:\\Users\\voce\\Documents\\meu-primeiro-playwright",
-        "linhas": [
+        "type": "editor",
+        "arquivo": "login.spec.js",
+        "codigo": "import { test, expect } from '@playwright/test';\n\ntest('entra com usuário e senha', async ({ page }) => {\n  await page.goto('https://www.saucedemo.com/');\n  await page.getByPlaceholder('Username').fill('standard_user');\n  await page.getByPlaceholder('Password').fill('secret_sauce');\n  await page.getByRole('button', { name: 'Login' }).click();\n  await expect(page).toHaveURL(/inventory/);\n  await expect(page.getByText('Products')).toBeVisible();\n  await expect(page.getByText('Sauce Labs Backpack')).toContainText('Backpack');\n  await expect(page.getByRole('button', { name: 'Add to cart' })).toHaveCount(6);\n});",
+        "legenda": "Tudo passou!",
+        "fonte": 26,
+        "digitar": false,
+        "terminal": [
          {
-          "cmd": "npx playwright test --project=chromium"
+          "cmd": "npx playwright test --project=chromium",
+          "em": 0.05
          },
          {
           "out": "Running 1 test using 1 worker",
-          "cor": "mut"
+          "cor": "mut",
+          "em": 0.45
          },
          {
           "out": "  1 passed (2.6s)",
-          "cor": "ac"
+          "cor": "ac",
+          "em": 0.6
          }
-        ],
-        "legenda": "Tudo passou!"
+        ]
        }
       },
       {

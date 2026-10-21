@@ -162,7 +162,8 @@ AULAS.append(projeto(15, "MÓDULO 3 · AULA 15", "Clicando no botão e conferind
     ("Isso é muito importante: ação não é validação. Clicar é uma ação. O expect é a conferência. Um teste de verdade normalmente precisa dos dois.",
      {"type": "compare", "title": "UM TESTE PRECISA DOS DOIS", "items": [["AÇÃO", "CLICAR, PREENCHER", "white"], ["VALIDAÇÃO", "O EXPECT CONFERE", "gold"]], "size": 120, "stagger": 1.2, "vs": True}),
     ("Agora roda de novo. Passou. E dessa vez ele não passou só porque conseguiu clicar. Ele passou porque confirmou que o login realmente funcionou.",
-     vterm([{"cmd": "npx playwright test --project=chromium"}, {"out": "Running 1 test using 1 worker", "cor": "mut"}, {"out": "  1 passed (2.4s)", "cor": "ac"}], "Passou porque confirmou")),
+     vscode_term(15, "Passou porque confirmou", [{"cmd": CMD_HEADED, "em": 0.02}, {"out": "Running 1 test using 1 worker", "cor": "mut", "em": 0.1}, {"out": "  1 passed (2.4s)", "cor": "ac", "em": 0.7}],
+                 navegador={"media": "rec_sauce_login_ok", "url": SAUCE, "gravar": True, "acoes": LOGIN, "espera_inicio": 900, "espera_fim": 900, "titulo": "Chromium", "em": 0.12, "ate": 0.66})),
     ("Seu primeiro teste completo está pronto. Na próxima aula, a gente vai aprender outras formas de fazer essas conferências sem precisar decorar inglês.", proxima("Os expect mais usados")[0]),
     ("Te vejo lá!", proxima("Os expect mais usados")[1]),
 ]))
@@ -194,7 +195,7 @@ AULAS.append(projeto(16, "MÓDULO 3 · AULA 16", "Os expect mais usados", [
     ("E tem outra vantagem: esses expect esperam automaticamente por alguns segundos até a condição ficar verdadeira. Por padrão, até cinco segundos. Você não precisa colocar uma espera manual.",
      bt(("ELE ESPERA", "gold", 170), ("SOZINHO", "white", 150), ("ATÉ 5 SEGUNDOS", "muted", 80))),
     ("Roda, e tudo passa. No próximo módulo, eu te mostro como achar qualquer elemento, e um truque em que o Playwright escreve o código pra você.",
-     vterm([{"cmd": "npx playwright test --project=chromium"}, {"out": "Running 1 test using 1 worker", "cor": "mut"}, {"out": "  1 passed (2.6s)", "cor": "ac"}], "Tudo passou!")),
+     vscode_term(16, "Tudo passou!", [{"cmd": "npx playwright test --project=chromium", "em": 0.05}, {"out": "Running 1 test using 1 worker", "cor": "mut", "em": 0.45}, {"out": "  1 passed (2.6s)", "cor": "ac", "em": 0.6}])),
     ("Te vejo lá!", {"type": "endcard", "sub": "PRÓXIMA: MÓDULO 4 · LOCATORS"}),
 ]))
 

@@ -422,23 +422,66 @@
       {
        "text": "Agora roda de novo. Passou. E dessa vez ele não passou só porque conseguiu clicar. Ele passou porque confirmou que o login realmente funcionou.",
        "scene": {
-        "type": "terminal",
-        "titulo": "Terminal — VS Code",
-        "pasta": "C:\\Users\\voce\\Documents\\meu-primeiro-playwright",
-        "linhas": [
+        "type": "editor",
+        "arquivo": "login.spec.js",
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  tests/",
+         "    login.spec.js",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "codigo": "import { test, expect } from '@playwright/test';\n\ntest('entra com usuário e senha', async ({ page }) => {\n  await page.goto('https://www.saucedemo.com/');\n  await page.getByPlaceholder('Username').fill('standard_user');\n  await page.getByPlaceholder('Password').fill('secret_sauce');\n  await page.getByRole('button', { name: 'Login' }).click();\n  await expect(page).toHaveURL(/inventory/);\n});",
+        "legenda": "Passou porque confirmou",
+        "fonte": 26,
+        "digitar": false,
+        "terminal": [
          {
-          "cmd": "npx playwright test --project=chromium"
+          "cmd": "npx playwright test --headed --project=chromium",
+          "em": 0.02
          },
          {
           "out": "Running 1 test using 1 worker",
-          "cor": "mut"
+          "cor": "mut",
+          "em": 0.1
          },
          {
           "out": "  1 passed (2.4s)",
-          "cor": "ac"
+          "cor": "ac",
+          "em": 0.7
          }
         ],
-        "legenda": "Passou porque confirmou"
+        "navegador": {
+         "media": "rec_sauce_login_ok",
+         "url": "https://www.saucedemo.com/",
+         "gravar": true,
+         "acoes": [
+          {
+           "fill": [
+            "#user-name",
+            "standard_user"
+           ]
+          },
+          {
+           "fill": [
+            "#password",
+            "secret_sauce"
+           ]
+          },
+          {
+           "click": "#login-button"
+          }
+         ],
+         "espera_inicio": 900,
+         "espera_fim": 900,
+         "titulo": "Chromium",
+         "em": 0.12,
+         "ate": 0.66
+        }
        }
       },
       {

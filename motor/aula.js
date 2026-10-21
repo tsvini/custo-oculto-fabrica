@@ -77,7 +77,7 @@
   }
 
   // EDITOR: {type:"editor", arquivo:"login.cy.js", codigo:"linhas\n...", digitar:true, destaque:[3,4], legenda:"...", pastas:["cypress","e2e","login.cy.js"]}
-  S.editor = (ctx, c, t, dur, s) => {
+  S.editor = (ctx, c, t, dur, s, media) => {
     const u = c.u; const a = easeOut(t / 0.4); const sc = lerp(0.96, 1, backOut(t / 0.5));
     const W = (c.vertical ? 1000 : 1500) * u, H = (c.vertical ? 1100 : 700) * u; const x = c.cx - W / 2, y = topo(c, H);
     ctx.save(); ctx.translate(c.cx, y + H / 2); ctx.scale(sc, sc); ctx.translate(-c.cx, -(y + H / 2));
@@ -101,9 +101,10 @@
     // no vertical, a fonte cresce até caber na largura
     const maxCh = Math.max(10, ...linhas.map((l) => l.length));
     // a linha mais comprida sempre cabe inteira (código nunca é cortado na lateral)
-    const fs = Math.min(c.vertical ? 46 * u : (s.fonte || (linhas.length > 12 ? 30 : 36)) * u, (W - sideW - 140 * u) / (maxCh * 0.6)); const lh = fs * 1.55; const x0 = tabX + 96 * u; let yy = top + 100 * u;
+    let fs = Math.min(c.vertical ? 46 * u : (s.fonte || (linhas.length > 12 ? 30 : 36)) * u, (W - sideW - 140 * u) / (maxCh * 0.6)); let lh = fs * 1.55; const x0 = tabX + 96 * u; let yy = top + 100 * u;
     // rolar: o arquivo inteiro aparece de cima e a tela desce até o fim antes de começar a digitar
     const PH = s.terminal ? Math.round(H * 0.4) : 0;  // painel do terminal integrado (embaixo, como no VS Code)
+    if (PH) { fs = Math.min(fs, (y + H - PH - top - 100 * u) / ((linhas.length - 0.4) * 1.55)); lh = fs * 1.55; }  // com o terminal aberto, o código inteiro ainda cabe em cima
     const baseY = y + H - PH - 40 * u, cabem = Math.floor((baseY - yy) / lh) + 1, sobra = s.rolar_ate ? clamp(Math.ceil(s.rolar_ate - cabem + 2) * lh, 0, Math.max(0, linhas.length - cabem) * lh) : Math.max(0, linhas.length - cabem) * lh;
     const rDe = s.rolar_de || 1.6, rDur = s.rolar_dur || 1.5; const rolando = s.rolar && sobra > 0;
     const t0 = rolando ? rDe + rDur + 0.3 : 0.5; if (rolando) yy -= sobra * easeInOut((t - rDe) / rDur);
@@ -127,7 +128,7 @@
     ctx.restore();
     if (PH) painelTerminal(ctx, u, tabX, y + H - PH, W - sideW, PH, t, dur, s, a);
     ctx.restore();
-    if (s.navegador) navegadorPorCima(ctx, c, t, dur, s.navegador, arguments[5]);
+    if (s.navegador) navegadorPorCima(ctx, c, t, dur, s.navegador, media);
     legenda(ctx, c, t, s);
   };
   // painel TERMINAL dentro do VS Code: s.terminal = [{cmd, em}, {out, cor, em}] (em = fração da cena; ja:true = já estava lá)
