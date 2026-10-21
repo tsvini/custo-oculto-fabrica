@@ -183,6 +183,10 @@ def main():
         return
     M.prints([s for s in cenas if s.get("type") == "print"], pasta_midia, log)
     M.gravacoes(cenas, pasta_midia, log)
+    if os.environ.get("COPIA_GRAVACOES"):  # depuração: as gravações reais também vão pra release
+        import glob as _g
+        for f in _g.glob(os.path.join(pasta_midia, "rec_*.mp4")):
+            __import__("shutil").copy2(f, os.path.join(saida, "dbg_" + os.path.basename(f)))
     M.telas(cenas, pasta_midia, log, idioma)
     chaves_longo = {s.get("media") for g in p["script"]["long"]["parts"] for s in (x.get("scene") or {} for x in g["sentences"])}
     M.pexels([s for s in cenas if s.get("media") in chaves_longo], pasta_midia, False, log, creditos)
