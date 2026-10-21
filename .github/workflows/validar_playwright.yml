@@ -1,0 +1,44 @@
+name: Validar código do curso Playwright
+
+# Roda todo o código do curso num Playwright de verdade, contra o saucedemo. Só gravamos aula com código que passou aqui.
+on:
+  workflow_dispatch:
+    inputs:
+      projetos:
+        description: "projetos do Playwright (vazio = todos)"
+        required: false
+
+jobs:
+  validar:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: curso-playwright/projeto
+    env:
+      SAUCE_USER: standard_user
+      SAUCE_PASSWORD: secret_sauce
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci
+      - run: npx playwright install --with-deps
+      - name: Rodar testes
+        run: |
+          if [ -n "${{ inputs.projetos }}" ]; then ARGS=$(for p in ${{ inputs.projetos }}; do printf -- "--project=%s " "$p"; done); fi
+          npx playwright test $ARGS --reporter=list,json,html > ../../resultado_playwright.txt 2>&1 || echo "FALHOU" >> ../../resultado_playwright.txt
+          tail -40 ../../resultado_playwright.txt
+        env:
+          PLAYWRIGHT_JSON_OUTPUT_NAME: resultado.json
+      - name: Resumo
+        if: always()
+        run: |
+          node -e "const r=require('./resultado.json');const s=r.stats;console.log('::notice title=Playwright::passou '+s.expected+' · falhou '+s.unexpected+' · instável '+s.flaky+' · pulado '+s.skipped)"
+          node -e "const r=require('./resultado.json');const f=[];const walk=(su)=>{(su.specs||[]).forEach(sp=>sp.tests.forEach(t=>{if(t.status==='unexpected')f.push(t.projectName+' › '+sp.title+': '+((t.results.at(-1)||{}).error||{}).message)}));(su.suites||[]).forEach(walk)};r.suites.forEach(walk);f.slice(0,8).forEach(x=>console.log('::error title=Falhou::'+x.replace(/\n/g,' ').replace(/\x1b\[[0-9;]*m/g,'').slice(0,400)))"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: relatorio-playwright
+          path: curso-playwright/projeto/playwright-report/
+          retention-days: 3
