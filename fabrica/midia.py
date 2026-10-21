@@ -92,7 +92,10 @@ def telas(cenas, pasta, log, idioma="pt"):
             for s in falta:
                 dest = os.path.join(pasta, s["media"] + ".png"); pg = ctx.new_page(); meta = {}
                 try:
-                    pg.goto(s["url"], wait_until="domcontentloaded", timeout=35000); pg.wait_for_timeout(3000)
+                    url = s["url"]
+                    if url.startswith("repo:"):  # página do próprio repositório (ex.: a colinha do curso)
+                        url = "file://" + os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), url[5:])
+                    pg.goto(url, wait_until="domcontentloaded", timeout=35000); pg.wait_for_timeout(3000)
                     for txt in CONSENT:
                         try:
                             btn = pg.get_by_role("button", name=txt, exact=True)

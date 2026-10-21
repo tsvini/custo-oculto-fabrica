@@ -14,11 +14,13 @@
   // paleta das aulas: verde Cypress + tons de editor escuro
   const C = { ac: "#3fd68a", ac2: "#69a7ff", yel: "#ffd23f", red: "#ff6b6b", txt: "#e8eaf0", mut: "#8b93a7",
     win: "#1b1e27", bar: "#252936", side: "#20232e", line: "#2c3140", term: "#0f1117", folder: "#f5c542" };
+  // código sem ligaduras: "=>" tem que aparecer como => (o aluno vai digitar isso), não como uma seta
+  function semLig(ctx, f) { ctx.textRendering = /JetBrains/.test(f) ? "optimizeSpeed" : "auto"; }
   function rr(ctx, x, y, w, h, r) { w = Math.max(0, w); h = Math.max(0, h); r = Math.max(0, Math.min(r, w / 2, h / 2)); ctx.beginPath(); ctx.moveTo(x + r, y); ctx.arcTo(x + w, y, x + w, y + h, r); ctx.arcTo(x + w, y + h, x, y + h, r); ctx.arcTo(x, y + h, x, y, r); ctx.arcTo(x, y, x + w, y, r); ctx.closePath(); }
-  function txt(ctx, t, f, x, y, fill, align = "left", alpha = 1) { if (!t || alpha <= 0.01) return; ctx.save(); ctx.globalAlpha *= alpha; ctx.font = f; ctx.textAlign = align; ctx.textBaseline = "middle"; ctx.fillStyle = fill; ctx.fillText(t, x, y); ctx.restore(); }
+  function txt(ctx, t, f, x, y, fill, align = "left", alpha = 1) { if (!t || alpha <= 0.01) return; ctx.save(); ctx.globalAlpha *= alpha; ctx.font = f; semLig(ctx, f); ctx.textAlign = align; ctx.textBaseline = "middle"; ctx.fillStyle = fill; ctx.fillText(t, x, y); ctx.restore(); }
   // árvore do Explorer: se algum item começar com espaços, o nível vem dos espaços (2 por nível); senão, cada item fica um nível abaixo do anterior
   function arvore(lista, max) { const expl = lista.some((p) => /^ /.test(p)); return lista.map((p, i) => { const nm = p.trim(); return { nm, nv: expl ? Math.floor((p.length - p.trimStart().length) / 2) : Math.min(i, max) }; }); }
-  function tw(ctx, t, f) { ctx.font = f; return ctx.measureText(t).width; }
+  function tw(ctx, t, f) { ctx.font = f; semLig(ctx, f); const w = ctx.measureText(t).width; ctx.textRendering = "auto"; return w; }
 
   // janela com sombra e barra de título (3 bolinhas)
   function janela(ctx, x, y, w, h, u, titulo, a, cor = C.win) {
@@ -44,7 +46,7 @@
   function seloColinha(ctx, c, t, s) {  // "já está na sua colinha": aparece no canto e some
     const t0 = s.colinha_em === undefined ? 1.2 : s.colinha_em; const k = easeOut((t - t0) / 0.35) * (1 - easeOut((t - t0 - (s.colinha_dur || 3.2)) / 0.4)); if (k <= 0) return;
     const u = c.u, f = font(800, 30 * u), tx = global.CO_IDIOMA === "en" ? "It's in your cheat sheet" : "Já está na sua colinha"; const w = tw(ctx, tx, f) + 120 * u, h = 76 * u;
-    const x = c.W - w - 40 * u + (1 - k) * 60 * u, y = 40 * u;
+    const x = c.W - w - 40 * u + (1 - k) * 60 * u, y = c.H - h - 36 * u;
     ctx.save(); ctx.globalAlpha = k; ctx.shadowColor = "rgba(0,0,0,.45)"; ctx.shadowBlur = 24 * u; rr(ctx, x, y, w, h, 38 * u); ctx.fillStyle = C.yel; ctx.fill(); ctx.shadowColor = "transparent";
     const ix = x + 26 * u, iy = y + 16 * u; ctx.fillStyle = "#fff"; rr(ctx, ix, iy, 34 * u, 44 * u, 5 * u); ctx.fill(); ctx.fillStyle = "#c9a400"; [0, 1, 2].forEach((i) => ctx.fillRect(ix + 7 * u, iy + (12 + i * 9) * u, 20 * u, 3 * u)); ctx.restore();
     txt(ctx, tx, f, x + 76 * u, y + h / 2, "#1a1400", "left", k);
@@ -168,7 +170,7 @@
   S.pastas = (ctx, c, t, dur, s) => {
     const u = c.u; const a = easeOut(t / 0.4); const W = (c.vertical ? 1000 : 1500) * u, H = (c.vertical ? 1000 : 660) * u;
     const x = c.cx - W / 2, y = topo(c, H);
-    const top = janela(ctx, x, y, W, H, u, "Explorador de Arquivos", a, "#f3f4f7");
+    const top = janela(ctx, x, y, W, H, u, s.titulo || "Explorador de Arquivos", a, "#f3f4f7");
     ctx.save(); ctx.globalAlpha = a; ctx.fillStyle = "#e4e7ee"; ctx.fillRect(x, top, W, 70 * u); ctx.restore();
     pastaIcone(ctx, x + 34 * u, top + 18 * u, 40 * u, a);
     txt(ctx, s.caminho || "Documentos", font(600, 28 * u), x + 92 * u, top + 35 * u, "#3a3f4b", "left", a);
@@ -847,7 +849,7 @@
   S.pw_ui = (ctx, c, t, dur, s, media) => {
     const u = c.u; const a = easeOut(t / 0.4); const W = 1720 * u, H = 760 * u; const x = c.cx - W / 2, y = topo(c, H);
     const top = janela(ctx, x, y, W, H, u, "Playwright Test", a, PW.bg);
-    const LW = 470 * u, MW = 430 * u; const A = s.acoes || []; const tm = pwTempo(s, dur, A.length);
+    const LW = 470 * u, MW = 430 * u; const A = s.passos_pw || (s.acoes || []).filter(Array.isArray); const tm = pwTempo(s, dur, A.length);
     const feitos = s.pronto ? A.length : clamp((t - tm.t0) / tm.passo, 0, A.length); const fim = s.pronto || t >= tm.fim; const falha = s.status === "falhou";
     // painel de testes
     ctx.save(); ctx.globalAlpha = a; ctx.fillStyle = PW.pan; ctx.fillRect(x, top, LW, y + H - top); ctx.fillStyle = PW.bd; ctx.fillRect(x + LW, top, 2 * u, y + H - top); ctx.restore();
@@ -891,7 +893,7 @@
   S.pw_trace = (ctx, c, t, dur, s, media) => {
     const u = c.u; const a = easeOut(t / 0.4); const W = 1720 * u, H = 760 * u; const x = c.cx - W / 2, y = topo(c, H);
     const top = janela(ctx, x, y, W, H, u, "Playwright Trace Viewer", a, PW.bg);
-    const A = s.acoes || []; const LW = 500 * u; const sel = s.sel === undefined ? A.length - 1 : s.sel;
+    const A = s.passos_pw || (s.acoes || []).filter(Array.isArray); const LW = 500 * u; const sel = s.sel === undefined ? A.length - 1 : s.sel;
     // a seleção anda de cima até a ação escolhida
     const tSel = s.sel_em === undefined ? 1.0 : s.sel_em; const curSel = Math.round(lerp(0, sel, easeInOut((t - tSel) / Math.max(0.6, sel * 0.25))));
     ctx.save(); ctx.globalAlpha = a; ctx.fillStyle = PW.pan; ctx.fillRect(x, top, LW, y + H - top); ctx.fillStyle = PW.bd; ctx.fillRect(x + LW, top, 2 * u, y + H - top); ctx.restore();
@@ -948,7 +950,7 @@
     if (!dbg) txt(ctx, "Target: Test Runner ▾", font(600, 19 * u), ix + IW - 24 * u, itop + 32 * u, "#5f6368", "right", a);
     // código
     const base = dbg ? String(s.codigo || "").split("\n") : ["import { test, expect } from '@playwright/test';", "", "test('test', async ({ page }) => {", "  await page.goto('" + (s.url || "https://www.saucedemo.com") + "/');"];
-    const AC = s.acoes || []; const t0 = s.inicio_em === undefined ? 1.4 : s.inicio_em; const passo = Math.max(1.0, Math.min(2.2, (dur * 0.8 - t0) / Math.max(AC.length, 1)));
+    const AC = s.passos_pw || (s.acoes || []).filter((q) => q && q.linha); const t0 = s.inicio_em === undefined ? 1.4 : s.inicio_em; const passo = Math.max(1.0, Math.min(2.2, (dur * 0.8 - t0) / Math.max(AC.length, 1)));
     const tClick = AC.map((_, i) => t0 + 0.6 + i * passo); const L = base.slice(); const novas = [];
     if (gravando) { AC.forEach((ac, i) => { if (t > tClick[i] + 0.25) { L.push("  " + ac.linha); novas.push([L.length, tClick[i] + 0.25]); } }); L.push("});"); }
     const fs = Math.min(21 * u, (IW - 90 * u) / (Math.max(30, ...L.map((l) => l.length)) * 0.6)); const lh = fs * 1.75; let yy = itop + 100 * u;

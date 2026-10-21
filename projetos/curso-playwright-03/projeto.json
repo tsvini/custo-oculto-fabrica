@@ -1,0 +1,222 @@
+{
+ "title": "Playwright para leigos · Aula 3",
+ "slug": "curso-playwright-03",
+ "idioma": "pt",
+ "destino": "curso",
+ "marca": [
+  "PLAYWRIGHT",
+  "PARA LEIGOS"
+ ],
+ "cor_fundo": "#3fd68a",
+ "sem_legenda": true,
+ "legenda_y": 0.93,
+ "selo": "MÓDULO 1 · AULA 3",
+ "voz": {
+  "nome": "gravada",
+  "motor": "eleven",
+  "eleven_voz": "Vinícius Torales"
+ },
+ "serie": [],
+ "meta": {
+  "titles": [
+   "Aula 3: Instalando o VS Code"
+  ],
+  "description": "",
+  "tags": []
+ },
+ "notes": "Curso Playwright para leigos. Não publica (destino: curso). Roteiro em curso-playwright/roteiros/.",
+ "script": {
+  "long": {
+   "parts": [
+    {
+     "chapter": "",
+     "sentences": [
+      {
+       "text": "Primeira instalação: o VS Code, o programa onde a gente vai escrever os testes.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "AULA 3",
+          "muted",
+          80
+         ],
+         [
+          "VS CODE",
+          "gold",
+          200
+         ]
+        ]
+       }
+      },
+      {
+       "text": "O VS Code é um editor de código. Pensa num bloco de notas turbinado, que pinta cada parte do código de uma cor e te ajuda a não errar.",
+       "scene": {
+        "type": "compare",
+        "title": "BLOCO DE NOTAS TURBINADO",
+        "items": [
+         [
+          "BLOCO DE NOTAS",
+          "TUDO DA MESMA COR",
+          "white"
+         ],
+         [
+          "VS CODE",
+          "CADA COISA DE UMA COR",
+          "gold"
+         ]
+        ],
+        "size": 120,
+        "stagger": 1.2,
+        "vs": false
+       }
+      },
+      {
+       "text": "É gratuito, é da Microsoft, e é um dos editores mais usados no desenvolvimento de software. Você vai encontrar ele em muitas empresas.",
+       "scene": {
+        "type": "cards",
+        "itens": [
+         [
+          "R$0",
+          "Gratuito",
+          "não paga nada"
+         ],
+         [
+          "MS",
+          "Da Microsoft",
+          "confiável",
+          "#69a7ff"
+         ],
+         [
+          "★",
+          "Muito usado",
+          "nas empresas",
+          "#ffd23f"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Primeiro passo: abre o navegador e entra em code ponto visualstudio ponto com. Clica no botão Download for Windows.",
+       "scene": {
+        "type": "tela",
+        "media": "site_vscode",
+        "url": "https://code.visualstudio.com/",
+        "alvo": "Download for Windows",
+        "titulo": "code.visualstudio.com",
+        "zoom_em": 1.8,
+        "caixa_em": 2.6,
+        "legenda": "Clique em Download for Windows"
+       }
+      },
+      {
+       "text": "Segundo passo: abre o arquivo que baixou, na pasta Downloads.",
+       "scene": {
+        "type": "pastas",
+        "caminho": "Este Computador  ›  Downloads",
+        "itens": [
+         {
+          "nome": "VSCodeUserSetup.exe",
+          "arquivo": true,
+          "novo": true
+         }
+        ],
+        "novo_em": 0.6,
+        "legenda": "O instalador fica em Downloads"
+       }
+      },
+      {
+       "text": "Aceita o contrato e clica em Next.",
+       "scene": {
+        "type": "instalador",
+        "app": "Visual Studio Code",
+        "titulo": "License Agreement",
+        "subtitulo": "Please read the following important information",
+        "texto": "Leia o contrato de uso do programa.",
+        "caixas": [
+         [
+          "I accept the agreement",
+          true
+         ]
+        ],
+        "botao": "Next",
+        "legenda": "Aceite e clique em Next"
+       }
+      },
+      {
+       "text": "Nessa tela, marca o Add to PATH e as duas opções Open with Code. Isso facilita muito a vida depois.",
+       "scene": {
+        "type": "instalador",
+        "app": "Visual Studio Code",
+        "titulo": "Select Additional Tasks",
+        "subtitulo": "Which additional tasks should be performed?",
+        "caixas": [
+         [
+          "Add \"Open with Code\" action to file context menu",
+          true
+         ],
+         [
+          "Add \"Open with Code\" action to directory context menu",
+          true
+         ],
+         [
+          "Add to PATH",
+          true
+         ]
+        ],
+        "botao": "Next",
+        "botao_em": 3.5,
+        "legenda": "Marque essas três opções"
+       }
+      },
+      {
+       "text": "Clica em Install, espera, e no final clica em Finish.",
+       "scene": {
+        "type": "instalador",
+        "app": "Visual Studio Code",
+        "titulo": "Installing",
+        "subtitulo": "Please wait while Setup installs Visual Studio Code",
+        "progresso": true,
+        "botao": "Finish",
+        "legenda": "Install, espera, Finish"
+       }
+      },
+      {
+       "text": "Pronto! Esse é o VS Code. Na esquerda ficam os arquivos do projeto, e no meio é onde você escreve.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "Welcome",
+        "pastas": [
+         "SEUS ARQUIVOS",
+         "ficam aqui"
+        ],
+        "codigo": "// Aqui é onde você escreve o código\n// Na próxima aula, a gente instala\n// o Node.js",
+        "digitar": true,
+        "legenda": "Pronto, o VS Code está instalado!"
+       }
+      },
+      {
+       "text": "Na próxima aula, a gente instala o Node, que é o motor que faz o Playwright funcionar.",
+       "scene": {
+        "type": "passo",
+        "icone": "▶",
+        "titulo": "Próxima aula",
+        "sub": "Instalando o Node.js"
+       }
+      },
+      {
+       "text": "Te vejo lá!",
+       "scene": {
+        "type": "endcard",
+        "sub": "PRÓXIMA: INSTALANDO O NODE.JS"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "shorts": [],
+  "tiktoks": []
+ }
+}

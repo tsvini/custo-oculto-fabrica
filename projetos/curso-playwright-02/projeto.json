@@ -1,0 +1,201 @@
+{
+ "title": "Playwright para leigos · Aula 2",
+ "slug": "curso-playwright-02",
+ "idioma": "pt",
+ "destino": "curso",
+ "marca": [
+  "PLAYWRIGHT",
+  "PARA LEIGOS"
+ ],
+ "cor_fundo": "#3fd68a",
+ "sem_legenda": true,
+ "legenda_y": 0.93,
+ "selo": "BOAS-VINDAS · AULA 2",
+ "voz": {
+  "nome": "gravada",
+  "motor": "eleven",
+  "eleven_voz": "Vinícius Torales"
+ },
+ "serie": [],
+ "meta": {
+  "titles": [
+   "Aula 2: Como usar o curso e a sua colinha"
+  ],
+  "description": "",
+  "tags": []
+ },
+ "notes": "Curso Playwright para leigos. Não publica (destino: curso). Roteiro em curso-playwright/roteiros/.",
+ "script": {
+  "long": {
+   "parts": [
+    {
+     "chapter": "",
+     "sentences": [
+      {
+       "text": "Antes de começar, três dicas rápidas pra você aproveitar o curso ao máximo.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "3 DICAS",
+          "gold",
+          200
+         ],
+         [
+          "ANTES DE COMEÇAR",
+          "white",
+          110
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Primeira: você não precisa decorar nenhum comando. Nos recursos desta aula tem uma colinha em PDF, com os principais comandos do curso organizados pra você consultar enquanto pratica.",
+       "scene": {
+        "type": "tela",
+        "media": "colinha_pw",
+        "url": "repo:curso-playwright/material/colinha/colinha.html",
+        "titulo": "colinha-playwright-para-leigos.pdf",
+        "legenda": "A sua colinha, nos recursos da aula"
+       }
+      },
+      {
+       "text": "Baixa ela agora e deixa aberta do lado. Durante o curso, quando aparecer esse selo aqui no canto, é porque aquele comando já está na sua colinha.",
+       "scene": {
+        "type": "tela",
+        "media": "colinha_pw",
+        "url": "repo:curso-playwright/material/colinha/colinha.html",
+        "titulo": "colinha-playwright-para-leigos.pdf",
+        "colinha": true,
+        "colinha_em": 2.2,
+        "colinha_dur": 6,
+        "legenda": "Viu esse selo? Está na colinha"
+       }
+      },
+      {
+       "text": "Segunda: faz junto comigo. Pausa o vídeo, digita, roda. É fazendo que você aprende, não só assistindo.",
+       "scene": {
+        "type": "cards",
+        "titulo": "FAZ JUNTO",
+        "itens": [
+         [
+          "⏸",
+          "Pausa",
+          "o vídeo"
+         ],
+         [
+          "⌨",
+          "Digita",
+          "o código",
+          "#69a7ff"
+         ],
+         [
+          "▶",
+          "Roda",
+          "e vê funcionar",
+          "#ffd23f"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Terceira: se der erro, não desanima. Tem uma aula só sobre os erros mais comuns, e você pode me chamar na área de perguntas.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "DEU ERRO?",
+          "white",
+          150
+         ],
+         [
+          "NÃO DESANIMA",
+          "gold",
+          160
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Agora, uma coisa importante sobre o próximo módulo.",
+       "scene": {
+        "type": "flash",
+        "text": "MÓDULO 1",
+        "color": "gold",
+        "size": 190
+       }
+      },
+      {
+       "text": "O módulo um é só instalação: o VS Code, o Node e o Git.",
+       "scene": {
+        "type": "cards",
+        "titulo": "MÓDULO 1 · INSTALAÇÃO",
+        "itens": [
+         [
+          "1",
+          "VS Code",
+          "onde você escreve"
+         ],
+         [
+          "2",
+          "Node.js",
+          "o motor",
+          "#69a7ff"
+         ],
+         [
+          "3",
+          "Git",
+          "o histórico",
+          "#ffd23f"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Se você já usa VS Code, Node e Git no seu computador, pode pular o módulo um. Se não tem certeza, fica comigo, que eu vou conferir cada um junto com você.",
+       "scene": {
+        "type": "compare",
+        "title": "E AGORA?",
+        "items": [
+         [
+          "JÁ TENHO OS 3",
+          "PULA PRO MÓDULO 2",
+          "gold"
+         ],
+         [
+          "NÃO SEI",
+          "FICA COMIGO",
+          "white"
+         ]
+        ],
+        "size": 110,
+        "stagger": 1.4,
+        "vs": false
+       }
+      },
+      {
+       "text": "E se o seu computador é Mac ou Linux, tem uma aula só pra você no fim do módulo um.",
+       "scene": {
+        "type": "passo",
+        "icone": "6",
+        "titulo": "Mac ou Linux?",
+        "sub": "Aula 6"
+       }
+      },
+      {
+       "text": "Bora começar!",
+       "scene": {
+        "type": "endcard",
+        "sub": "PRÓXIMA: INSTALANDO O VS CODE"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "shorts": [],
+  "tiktoks": []
+ }
+}

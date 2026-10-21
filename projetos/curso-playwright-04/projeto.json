@@ -1,0 +1,222 @@
+{
+ "title": "Playwright para leigos · Aula 4",
+ "slug": "curso-playwright-04",
+ "idioma": "pt",
+ "destino": "curso",
+ "marca": [
+  "PLAYWRIGHT",
+  "PARA LEIGOS"
+ ],
+ "cor_fundo": "#3fd68a",
+ "sem_legenda": true,
+ "legenda_y": 0.93,
+ "selo": "MÓDULO 1 · AULA 4",
+ "voz": {
+  "nome": "gravada",
+  "motor": "eleven",
+  "eleven_voz": "Vinícius Torales"
+ },
+ "serie": [],
+ "meta": {
+  "titles": [
+   "Aula 4: Instalando o Node.js"
+  ],
+  "description": "",
+  "tags": []
+ },
+ "notes": "Curso Playwright para leigos. Não publica (destino: curso). Roteiro em curso-playwright/roteiros/.",
+ "script": {
+  "long": {
+   "parts": [
+    {
+     "chapter": "",
+     "sentences": [
+      {
+       "text": "Agora é a vez do Node.js.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "AULA 4",
+          "muted",
+          80
+         ],
+         [
+          "NODE.JS",
+          "gold",
+          200
+         ]
+        ]
+       }
+      },
+      {
+       "text": "O Playwright é escrito em JavaScript, e o Node é o programa que roda JavaScript no seu computador. Sem ele, o Playwright não liga.",
+       "scene": {
+        "type": "flow",
+        "a": "NODE.JS",
+        "a_sub": "roda o JavaScript",
+        "b": "PLAYWRIGHT",
+        "b_sub": "controla o navegador",
+        "caption": "SEM O NODE, O PLAYWRIGHT NÃO LIGA"
+       }
+      },
+      {
+       "text": "Junto com o Node vem o npm, que é tipo uma loja de aplicativos pra programador. É por ele que a gente vai instalar o Playwright.",
+       "scene": {
+        "type": "cards",
+        "itens": [
+         [
+          "▶",
+          "Node.js",
+          "roda o JavaScript"
+         ],
+         [
+          "⬇",
+          "npm",
+          "a lojinha de ferramentas",
+          "#69a7ff"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Entra em nodejs ponto org e baixa a versão que tem escrito LTS. LTS é a versão estável, a que menos dá dor de cabeça.",
+       "scene": {
+        "type": "tela",
+        "media": "site_node",
+        "url": "https://nodejs.org/",
+        "alvo": "LTS",
+        "titulo": "nodejs.org",
+        "zoom_em": 1.8,
+        "caixa_em": 2.6,
+        "legenda": "Baixe sempre a versão LTS"
+       }
+      },
+      {
+       "text": "Abre o instalador e vai clicando em Next. Pode deixar todas as opções como vierem.",
+       "scene": {
+        "type": "instalador",
+        "app": "Node.js",
+        "titulo": "End-User License Agreement",
+        "subtitulo": "Please read the following license agreement carefully",
+        "caixas": [
+         [
+          "I accept the terms in the License Agreement",
+          true
+         ]
+        ],
+        "botao": "Next",
+        "legenda": "Pode deixar tudo no padrão"
+       }
+      },
+      {
+       "text": "Clica em Install. Se o Windows pedir permissão, clica em Sim.",
+       "scene": {
+        "type": "instalador",
+        "app": "Node.js",
+        "titulo": "Installing Node.js",
+        "subtitulo": "Please wait while the Setup Wizard installs Node.js",
+        "progresso": true,
+        "botao": "Finish",
+        "legenda": "Se o Windows perguntar, clique em Sim"
+       }
+      },
+      {
+       "text": "Agora vamos conferir. Aperta a tecla do Windows, digita PowerShell e abre.",
+       "scene": {
+        "type": "iniciar",
+        "busca": "PowerShell",
+        "tecla_em": 1.2,
+        "legenda": "Tecla Windows › PowerShell › abra"
+       }
+      },
+      {
+       "text": "Essa é a janela do terminal. É só um lugar onde você escreve comandos em vez de clicar.",
+       "scene": {
+        "type": "terminal",
+        "pasta": "C:\\Users\\voce",
+        "linhas": [
+         {
+          "out": "Windows PowerShell",
+          "cor": "txt"
+         },
+         {
+          "out": "Copyright (C) Microsoft Corporation.",
+          "cor": "mut"
+         },
+         {
+          "cmd": ""
+         }
+        ],
+        "legenda": "O terminal: você escreve em vez de clicar",
+        "titulo": "Windows PowerShell"
+       }
+      },
+      {
+       "text": "Digita node traço v e aperta Enter. Depois, npm traço v e Enter.",
+       "scene": {
+        "type": "terminal",
+        "pasta": "C:\\Users\\voce",
+        "linhas": [
+         {
+          "cmd": "node -v"
+         },
+         {
+          "out": "v22.21.0",
+          "cor": "ac"
+         },
+         {
+          "cmd": "npm -v"
+         },
+         {
+          "out": "10.9.4",
+          "cor": "ac"
+         }
+        ],
+        "legenda": "node -v  e  npm -v"
+       }
+      },
+      {
+       "text": "Apareceu um número em cada um? Mesmo que diferente do meu, está tudo certo.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "APARECEU O NÚMERO?",
+          "white",
+          120
+         ],
+         [
+          "ESTÁ INSTALADO",
+          "gold",
+          170
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Na próxima aula, a última instalação: o Git.",
+       "scene": {
+        "type": "passo",
+        "icone": "▶",
+        "titulo": "Próxima aula",
+        "sub": "Instalando o Git"
+       }
+      },
+      {
+       "text": "Te vejo lá!",
+       "scene": {
+        "type": "endcard",
+        "sub": "PRÓXIMA: INSTALANDO O GIT"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "shorts": [],
+  "tiktoks": []
+ }
+}

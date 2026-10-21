@@ -1,0 +1,247 @@
+{
+ "title": "Playwright para leigos · Aula 7",
+ "slug": "curso-playwright-07",
+ "idioma": "pt",
+ "destino": "curso",
+ "marca": [
+  "PLAYWRIGHT",
+  "PARA LEIGOS"
+ ],
+ "cor_fundo": "#3fd68a",
+ "sem_legenda": true,
+ "legenda_y": 0.93,
+ "selo": "MÓDULO 1 · AULA 7",
+ "voz": {
+  "nome": "gravada",
+  "motor": "eleven",
+  "eleven_voz": "Vinícius Torales"
+ },
+ "serie": [],
+ "meta": {
+  "titles": [
+   "Aula 7: Se der erro na instalação, consulte aqui"
+  ],
+  "description": "",
+  "tags": []
+ },
+ "notes": "Curso Playwright para leigos. Não publica (destino: curso). Roteiro em curso-playwright/roteiros/.",
+ "script": {
+  "long": {
+   "parts": [
+    {
+     "chapter": "",
+     "sentences": [
+      {
+       "text": "Se tudo funcionou até aqui, você pode pular esta aula e seguir pro módulo dois. Volta aqui se tiver algum problema.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "DEU ERRO?",
+          "white",
+          150
+         ],
+         [
+          "CONSULTE AQUI",
+          "gold",
+          160
+         ],
+         [
+          "TUDO CERTO? PODE PULAR",
+          "muted",
+          70
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Erro um: o terminal diz que node, npm ou npx não é reconhecido. Quase sempre o terminal foi aberto antes de instalar o Node.",
+       "scene": {
+        "type": "terminal",
+        "pasta": "C:\\Users\\voce",
+        "linhas": [
+         {
+          "cmd": "npx playwright test"
+         },
+         {
+          "out": "npx : O termo 'npx' não é reconhecido como nome de cmdlet,",
+          "cor": "red"
+         },
+         {
+          "out": "função, arquivo de script ou programa operável.",
+          "cor": "red"
+         }
+        ],
+        "legenda": "Erro 1: não é reconhecido"
+       }
+      },
+      {
+       "text": "A solução: fecha o terminal e o VS Code e abre de novo. Se continuar, reinicia o computador.",
+       "scene": {
+        "type": "cards",
+        "titulo": "COMO RESOLVER",
+        "itens": [
+         [
+          "1",
+          "Fecha",
+          "terminal e VS Code"
+         ],
+         [
+          "2",
+          "Abre de novo",
+          "e tenta outra vez",
+          "#69a7ff"
+         ],
+         [
+          "3",
+          "Continuou?",
+          "reinicia o computador",
+          "#ffd23f"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Erro dois, só no Windows: a execução de scripts foi desabilitada neste sistema. É uma trava de segurança do PowerShell.",
+       "scene": {
+        "type": "terminal",
+        "pasta": "C:\\Users\\voce",
+        "linhas": [
+         {
+          "cmd": "npx playwright test"
+         },
+         {
+          "out": "npx : O arquivo npx.ps1 não pode ser carregado porque",
+          "cor": "red"
+         },
+         {
+          "out": "a execução de scripts foi desabilitada neste sistema.",
+          "cor": "red"
+         }
+        ],
+        "legenda": "Erro 2: scripts desabilitados"
+       }
+      },
+      {
+       "text": "Na maioria dos computadores, resolve rodando esse comando uma vez, que está aqui na tela. Depois fecha e abre o terminal. Se o computador for da empresa, pode ser que a TI bloqueie essa mudança, e aí vale falar com eles.",
+       "scene": {
+        "type": "terminal",
+        "titulo": "Windows PowerShell",
+        "prompt": "PS>",
+        "linhas": [
+         {
+          "cmd": "Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser"
+         }
+        ],
+        "legenda": "Roda uma vez e reabre o terminal"
+       }
+      },
+      {
+       "text": "Erro três, esse já é do Playwright: aparece executable doesn't exist, o executável não existe. Quer dizer que faltam os navegadores dele.",
+       "scene": {
+        "type": "terminal",
+        "pasta": "C:\\Users\\voce",
+        "linhas": [
+         {
+          "cmd": "npx playwright test"
+         },
+         {
+          "out": "Error: browserType.launch: Executable doesn't exist",
+          "cor": "red"
+         },
+         {
+          "out": "Looks like Playwright was just installed or updated.",
+          "cor": "yel"
+         }
+        ],
+        "legenda": "Erro 3: faltam os navegadores"
+       }
+      },
+      {
+       "text": "Resolve com npx playwright install. Ele baixa o Chromium, o Firefox e o WebKit. No Linux, acrescenta traço traço with traço deps, que instala as bibliotecas do sistema junto.",
+       "scene": {
+        "type": "terminal",
+        "pasta": "C:\\Users\\voce",
+        "linhas": [
+         {
+          "cmd": "npx playwright install"
+         },
+         {
+          "out": "Downloading Chromium, Firefox, WebKit... done",
+          "cor": "ac"
+         },
+         {
+          "out": "# no Linux:",
+          "cor": "mut"
+         },
+         {
+          "cmd": "npx playwright install --with-deps"
+         }
+        ],
+        "legenda": "npx playwright install"
+       }
+      },
+      {
+       "text": "Erro quatro: ele diz que não acha nenhum teste, ou nenhum arquivo de configuração. É o terminal aberto na pasta errada. Olha o caminho antes do cursor: tem que terminar com o nome da pasta do projeto.",
+       "scene": {
+        "type": "terminal",
+        "pasta": "C:\\Users\\voce",
+        "linhas": [
+         {
+          "cmd": "npx playwright test"
+         },
+         {
+          "out": "Error: No tests found",
+          "cor": "red"
+         },
+         {
+          "out": "",
+          "cor": "mut"
+         },
+         {
+          "cmd": "cd meu-primeiro-playwright"
+         }
+        ],
+        "legenda": "O caminho tem que ser o do projeto"
+       }
+      },
+      {
+       "text": "E a dica de ouro: copia a mensagem de erro e cola no Google. Alguém já passou por isso. Programador experiente faz isso todo dia.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "DICA DE OURO",
+          "gold",
+          150
+         ],
+         [
+          "COPIA O ERRO",
+          "white",
+          120
+         ],
+         [
+          "E COLA NO GOOGLE",
+          "white",
+          120
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Volta aqui sempre que precisar. Até a próxima!",
+       "scene": {
+        "type": "endcard",
+        "sub": "PRÓXIMA: MÓDULO 2"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "shorts": [],
+  "tiktoks": []
+ }
+}

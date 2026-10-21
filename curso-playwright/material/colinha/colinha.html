@@ -1,0 +1,186 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><style>
+@font-face{font-family:Inter;font-weight:500;src:url(../../../motor/fonts/inter-latin-500-normal.woff2)}
+@font-face{font-family:Inter;font-weight:700;src:url(../../../motor/fonts/inter-latin-700-normal.woff2)}
+@font-face{font-family:Inter;font-weight:800;src:url(../../../motor/fonts/inter-latin-800-normal.woff2)}
+@font-face{font-family:Inter;font-weight:900;src:url(../../../motor/fonts/inter-latin-900-normal.woff2)}
+@font-face{font-family:JB;font-weight:700;src:url(../../../motor/fonts/jetbrains-mono-latin-700-normal.woff2)}
+@page{size:A4;margin:0}
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0b0f0d;--box:#131a16;--bd:#223029;--tx:#e8eee9;--mu:#93a39a;--ac:#3fd68a;--gold:#ffd23f;--code:#070a09}
+body{font-family:Inter,sans-serif;color:var(--tx);background:var(--bg);-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.pg{width:210mm;height:297mm;padding:11mm 11mm 10mm;position:relative;overflow:hidden;page-break-after:always;background:radial-gradient(120% 60% at 50% 0%,#12271b 0%,var(--bg) 60%)}
+.topo{background:linear-gradient(135deg,#0f2418,#0a120e);border:1.5px solid #1f3a2a;border-radius:16px;padding:16px 20px;display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.topo h1{font-weight:900;font-size:26px;letter-spacing:-.5px;line-height:1}.topo h1 b{color:var(--gold)}
+.topo p{font-size:11px;color:var(--mu);margin-top:6px}
+.selo{background:var(--ac);color:#0b1a12;font-weight:900;font-size:11px;border-radius:30px;padding:7px 13px;white-space:nowrap}
+.grade{display:grid;grid-template-columns:1fr 1fr;gap:11px}
+.box{background:var(--box);border-radius:14px;padding:14px 16px;border:1.5px solid var(--bd)}
+.box h2{font-size:13px;font-weight:900;text-transform:uppercase;letter-spacing:.5px;margin-bottom:11px;display:flex;align-items:center;gap:8px;color:#fff}
+.box h2 i{font-style:normal;background:var(--ac);color:#0b1a12;border-radius:7px;width:22px;height:22px;display:inline-grid;place-items:center;font-size:11.5px}
+.l{display:grid;grid-template-columns:max-content 1fr;gap:7px 12px;align-items:center;font-size:11px;line-height:1.35}
+code,.c{font-variant-ligatures:none;font-family:JB,monospace;font-size:10.3px;background:var(--code);color:#e8eaf0;border:1px solid #26332c;border-radius:6px;padding:2px 7px;white-space:nowrap;line-height:1.6}
+.c .k{color:#c792ea}.c .f{color:#69a7ff}.c .s{color:#f0a868}.c .cy{color:var(--ac)}.c .m{color:#6f7d75}
+pre.c{display:block;white-space:pre;padding:11px 13px;line-height:1.6;font-size:10.3px;border-radius:10px}
+.d{color:var(--mu)}
+b{color:#fff}
+.full{grid-column:1/-1}
+.nota{font-size:10.5px;color:var(--mu);margin-top:10px;line-height:1.5}
+.rod{position:absolute;bottom:6mm;left:11mm;right:11mm;font-size:9px;color:#6f7d75;display:flex;justify-content:space-between}
+.rod b{color:var(--ac)}
+.sel{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.sel>div{background:#0e1411;border:1.5px solid var(--bd);border-radius:11px;padding:11px 12px;display:flex;flex-direction:column;gap:7px;font-size:10.5px;line-height:1.4}
+.sel .t{display:flex;align-items:center;gap:7px;font-weight:800;font-size:12px;color:#fff}
+.tag{display:inline-block;font-weight:900;font-size:9px;border-radius:5px;padding:2px 7px;letter-spacing:.3px}
+.ok{background:#1d5c3c;color:#9ff0c6}.mid{background:#1e3560;color:#a9c6ff}.bad{background:#5a4512;color:#ffe08a}
+.sel .codes{display:flex;gap:5px;flex-wrap:wrap}
+.perg{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.perg div{background:#1c1212;border:1.5px solid #4a2626;border-radius:11px;padding:10px 12px;font-size:10.5px;line-height:1.4;display:flex;flex-direction:column;gap:3px}
+.perg .n{font-size:20px;color:#ff6b6b;font-weight:900;line-height:1}
+.perg .q{font-weight:800;font-size:11.5px;color:#fff}
+.passos{font-size:11px;line-height:1.7;color:var(--mu)}
+.glos{display:grid;grid-template-columns:1fr 1fr;gap:8px 20px;font-size:10.6px;line-height:1.4;color:var(--mu)}
+.l>code{justify-self:start}
+.grade{gap:10px}.box{padding:13px 15px}
+.glos{gap:6px 20px;font-size:10.3px}.glos code{padding:0 5px;line-height:1.4}
+.sel .t{white-space:nowrap}
+.topo{padding:13px 20px;margin-bottom:10px}.glos{gap:5px 20px}
+
+.c .pw{color:var(--ac)}
+.l3{display:grid;grid-template-columns:max-content max-content 1fr;gap:7px 12px;align-items:center;font-size:11px;line-height:1.35}
+.l3 .h{font-weight:900;font-size:10px;color:var(--mu);text-transform:uppercase;letter-spacing:.5px}
+</style></head><body>
+<div class="pg"><div class="topo"><div><h1>PLAYWRIGHT <b>PARA LEIGOS</b></h1><p>Colinha do curso · os comandos e a receita de um teste, pra consultar enquanto pratica</p></div><span class="selo">COLINHA · 1/3</span></div>
+ <div class="grade">
+  <div class="box"><h2><i>1</i>Terminal: os comandos</h2><div class="l">
+   <code>node -v</code><span class="d">confere se o Node está instalado</span>
+   <code>npm init playwright@latest</code><span class="d">cria o projeto e instala o Playwright</span>
+   <code>npx playwright test</code><span class="d">roda todos os testes (sem janela)</span>
+   <code>npx playwright test --ui</code><span class="d">abre o modo UI: você vê cada passo</span>
+   <code>npx playwright show-report</code><span class="d">abre o relatório HTML</span>
+   <code>npx playwright codegen site</code><span class="d">grava seus cliques e escreve o código</span>
+   <code>npx playwright install</code><span class="d">baixa os navegadores (Linux: <code>--with-deps</code>)</span>
+  </div></div>
+  <div class="box"><h2><i>2</i>Onde fica cada coisa</h2><pre class="c"><span class="m">meu-primeiro-playwright/</span>
+├─ <span class="f">tests/</span>           <span class="m">← os seus testes</span>
+│  ├─ <span class="pw">login.spec.js</span>
+│  └─ <span class="pw">compra.spec.js</span>
+├─ <span class="f">pages/</span>           <span class="m">← Page Objects (aula 37)</span>
+├─ <span class="f">node_modules/</span>    <span class="m">← não mexa</span>
+├─ playwright.config.js <span class="m">← as configurações</span>
+├─ .env              <span class="m">← usuário e senha</span>
+├─ package.json      <span class="m">← a ficha do projeto</span>
+└─ .gitignore</pre><p class="nota">Todo arquivo de teste termina em <code>.spec.js</code>, é assim que o Playwright sabe que é teste.</p></div>
+  <div class="box full"><h2><i>3</i>A receita de um teste</h2>
+   <div style="display:grid;grid-template-columns:1.35fr 1fr;gap:16px;align-items:center">
+<pre class="c"><span class="k">import</span> { test, expect } <span class="k">from</span> <span class="s">'@playwright/test'</span>;
+
+<span class="pw">test</span>.<span class="f">describe</span>(<span class="s">'Login'</span>, () => {          <span class="m">// o caderno de receitas</span>
+  <span class="pw">test</span>.<span class="f">beforeEach</span>(<span class="k">async</span> ({ page }) => {  <span class="m">// roda antes de CADA teste</span>
+    <span class="k">await</span> <span class="pw">page</span>.<span class="f">goto</span>(<span class="s">'/'</span>);
+  });
+
+  <span class="pw">test</span>(<span class="s">'entra com usuário e senha'</span>, <span class="k">async</span> ({ page }) => {
+    <span class="k">await</span> <span class="pw">page</span>.<span class="f">getByTestId</span>(<span class="s">'username'</span>).<span class="f">fill</span>(<span class="s">'standard_user'</span>);
+    <span class="k">await</span> <span class="pw">page</span>.<span class="f">getByTestId</span>(<span class="s">'password'</span>).<span class="f">fill</span>(<span class="s">'secret_sauce'</span>);
+    <span class="k">await</span> <span class="pw">page</span>.<span class="f">getByTestId</span>(<span class="s">'login-button'</span>).<span class="f">click</span>();
+    <span class="k">await</span> <span class="pw">expect</span>(<span class="pw">page</span>.<span class="f">getByTestId</span>(<span class="s">'title'</span>)).<span class="f">toHaveText</span>(<span class="s">'Products'</span>);
+  });
+});</pre>
+   <div class="passos"><b>Todo teste é assim:</b><br>1. <b>abre</b> o site (goto)<br>2. <b>acha</b> o elemento (getBy…)<br>3. <b>faz</b> alguma coisa (fill, click)<br>4. <b>confere</b> o resultado (expect)<br><br><b>await</b> = "espera esse passo terminar".<br>Esqueceu o <code>await</code>? O teste fica estranho e falha sem motivo.</div>
+   </div></div>
+  <div class="box"><h2><i>4</i>Ações</h2><div class="l">
+   <code>page.goto(url)</code><span class="d">abre o site</span>
+   <code>.fill('texto')</code><span class="d">digita num campo (apaga o que tinha)</span>
+   <code>.click()</code><span class="d">clica</span>
+   <code>.selectOption('valor')</code><span class="d">escolhe opção de um menu</span>
+   <code>.check()</code><span class="d">marca uma caixinha</span>
+   <code>.press('Enter')</code><span class="d">aperta uma tecla</span>
+   <code>.first()</code><span class="d">pega só o primeiro da lista</span>
+  </div></div>
+  <div class="box"><h2><i>5</i>As conferências (expect)</h2><div class="l">
+   <code>toBeVisible()</code><span class="d">está aparecendo na tela</span>
+   <code>toHaveText('txt')</code><span class="d">o texto é esse</span>
+   <code>toContainText('txt')</code><span class="d">tem esse texto no meio</span>
+   <code>toHaveURL(/inventory/)</code><span class="d">a página é essa</span>
+   <code>toHaveCount(2)</code><span class="d">tem essa quantidade</span>
+   <code>toHaveValue('x')</code><span class="d">o campo tem esse valor</span>
+   <code>not.toBeVisible()</code><span class="d">o contrário de qualquer um</span>
+  </div><p class="nota">O Playwright espera sozinho (até 5 segundos) o elemento aparecer e a conferência dar certo. Não precisa de "sleep".</p></div>
+ </div><div class="rod"><span>Playwright para Leigos · Vinícius Torales</span><span>Site de treino: saucedemo.com · usuário <b>standard_user</b> · senha <b>secret_sauce</b></span></div></div>
+<div class="pg"><div class="topo"><div><h1>PLAYWRIGHT <b>PARA LEIGOS</b></h1><p>Seletores, ferramentas que ajudam e como rodar só o que importa</p></div><span class="selo">COLINHA · 2/3</span></div>
+ <div class="grade">
+  <div class="box full"><h2><i>6</i>Como achar o elemento (aulas 17 e 18)</h2>
+   <div class="sel">
+    <div><span class="t"><span class="tag ok">1º MELHOR</span>getByTestId</span><span class="codes"><code>getByTestId('username')</code></span><span class="d">feito pra testes: não muda quando o visual muda. No saucedemo, configure <code>testIdAttribute: 'data-test'</code></span></div>
+    <div><span class="t"><span class="tag ok">1º TAMBÉM</span>getByRole</span><span class="codes"><code>getByRole('button', { name: 'Login' })</code></span><span class="d">acha como uma pessoa acharia: pelo papel e pelo nome</span></div>
+    <div><span class="t"><span class="tag mid">2º</span>texto ou rótulo</span><span class="codes"><code>getByText('Products')</code><code>getByLabel('Email')</code></span><span class="d">bom pra textos que não mudam</span></div>
+   </div>
+   <p class="nota"><span class="tag bad">EVITE</span> &nbsp;<code>locator('div:nth-child(3) > button')</code>: depende da posição na página. Mudou o layout, o teste quebra à toa.</p></div>
+  <div class="box"><h2><i>7</i>Ferramentas que ajudam</h2><div class="l">
+   <b>Codegen</b><span class="d">você clica no site e ele escreve o código</span>
+   <b>Pick locator</b><span class="d">aponta pro elemento e ele te dá o seletor</span>
+   <b>Modo UI</b><span class="d">roda e mostra cada passo, com foto</span>
+   <b>Trace Viewer</b><span class="d">a "caixa-preta": o filme do teste que falhou</span>
+   <b>Modo debug</b><span class="d"><code>--debug</code> ou <code>await page.pause()</code>: para no meio</span>
+   <b>Relatório</b><span class="d">lista tudo que passou e falhou, com print e vídeo</span>
+  </div></div>
+  <div class="box"><h2><i>8</i>Rodando só o que importa (aula 25)</h2><div class="l">
+   <code>test.only(...)</code><span class="d">roda só esse teste</span>
+   <code>test.skip(...)</code><span class="d">pula esse teste</span>
+   <code>npx playwright test login</code><span class="d">só os arquivos com "login" no nome</span>
+   <code>-g "bloqueado"</code><span class="d">só os testes com esse texto no título</span>
+   <code>--project=chromium</code><span class="d">só nesse navegador</span>
+   <code>--headed</code><span class="d">mostra o navegador abrindo</span>
+  </div><p class="nota">Não esqueça o <code>test.only</code> no código: no GitHub Actions ele faz tudo falhar de propósito.</p></div>
+  <div class="box full"><h2><i>9</i>O playwright.config.js que a gente monta (aulas 23 e 24)</h2>
+<pre class="c"><span class="k">import</span> dotenv <span class="k">from</span> <span class="s">'dotenv'</span>;  <span class="m">// lê o arquivo .env (usuário e senha fora do código)</span>
+dotenv.<span class="f">config</span>({ path: path.<span class="f">resolve</span>(__dirname, <span class="s">'.env'</span>) });
+
+<span class="k">export default</span> <span class="f">defineConfig</span>({
+  use: {
+    baseURL: <span class="s">'https://www.saucedemo.com'</span>,   <span class="m">// aí o goto('/') já sabe o site</span>
+    testIdAttribute: <span class="s">'data-test'</span>,             <span class="m">// o getByTestId procura data-test</span>
+    trace: <span class="s">'on-first-retry'</span>,  screenshot: <span class="s">'only-on-failure'</span>,  video: <span class="s">'retain-on-failure'</span>,
+  },
+});</pre></div>
+ </div><div class="rod"><span>Playwright para Leigos · Vinícius Torales</span><span>Site de treino: saucedemo.com · usuário <b>standard_user</b> · senha <b>secret_sauce</b></span></div></div>
+<div class="pg"><div class="topo"><div><h1>PLAYWRIGHT <b>PARA LEIGOS</b></h1><p>Erros comuns, organização profissional, Git e as palavras do dia a dia</p></div><span class="selo">COLINHA · 3/3</span></div>
+ <div class="grade">
+  <div class="box full"><h2><i>10</i>Deu vermelho? Leia o erro assim (aula 26)</h2>
+   <div class="perg"><div><span class="n">1</span><span class="q">Qual linha?</span><span class="d">o erro mostra o arquivo e a linha, com uma setinha</span></div><div><span class="n">2</span><span class="q">O que ele esperava?</span><span class="d">"Expected" é o que você pediu, "Received" é o que tinha</span></div><div><span class="n">3</span><span class="q">O que tinha na tela?</span><span class="d">abra o trace ou o print no relatório</span></div></div>
+   <div class="l" style="margin-top:12px">
+    <code>Timeout 5000ms exceeded</code><span class="d">não achou o elemento: confira o seletor e o data-test</span>
+    <code>Expected ... Received ...</code><span class="d">achou, mas o texto é outro: confira a mensagem do site</span>
+    <code>Executable doesn't exist</code><span class="d">faltam os navegadores: <code>npx playwright install</code></span>
+    <code>npx não é reconhecido</code><span class="d">reabra o VS Code; se continuar, reinstale o Node (aula 7)</span>
+    <code>scripts desabilitados</code><span class="d"><code>Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser</code></span>
+   </div></div>
+  <div class="box"><h2><i>11</i>Organização profissional</h2><div class="l">
+   <b>Page Object</b><span class="d">cada página vira uma classe com seus campos e ações</span>
+   <b>test.step</b><span class="d">divide o teste em etapas com nome, no relatório</span>
+   <b>storageState</b><span class="d">faz login uma vez e reaproveita nos testes</span>
+   <b>.env</b><span class="d">usuário e senha fora do código (nunca suba pro GitHub)</span>
+   <b>for ... of</b><span class="d">o mesmo teste pra vários usuários</span>
+  </div></div>
+  <div class="box"><h2><i>12</i>Git, GitHub e Actions (aulas 40 e 41)</h2><div class="l">
+   <code>git init</code><span class="d">liga o Git na pasta (só 1 vez)</span>
+   <code>git add .</code><span class="d">separa todos os arquivos</span>
+   <code>git commit -m "msg"</code><span class="d">salva o jogo, com um nome</span>
+   <code>git push</code><span class="d">manda pro GitHub</span>
+  </div><p class="nota">O <code>npm init playwright</code> já cria o <code>.github/workflows/playwright.yml</code>: subiu pro GitHub, os testes rodam sozinhos. Senha vai em <b>Settings › Secrets</b>.</p></div>
+  <div class="box full"><h2><i>13</i>Glossário: as palavras do dia a dia</h2><div class="glos">
+   <span><b>QA</b>: quem cuida da qualidade do sistema, testando antes de chegar no cliente</span>
+   <span><b>E2E</b>: de ponta a ponta, usa o sistema como um usuário de verdade</span>
+   <span><b>Spec</b>: um arquivo de teste (o seu <code>login.spec.js</code>)</span>
+   <span><b>Locator</b>: o "endereço" de um elemento na página</span>
+   <span><b>Asserção</b>: a conferência do teste, o <code>expect</code></span>
+   <span><b>Headless</b>: navegador rodando sem janela, mais rápido</span>
+   <span><b>Projeto (project)</b>: um navegador ou aparelho configurado no config</span>
+   <span><b>Flaky</b>: teste instável, às vezes passa, às vezes falha</span>
+   <span><b>Trace</b>: a gravação passo a passo de um teste</span>
+   <span><b>CI</b>: testes rodando sozinhos sempre que o código muda</span>
+   <span><b>API</b>: a porta dos fundos do sistema, que conversa por dados</span>
+   <span><b>Regressão</b>: rodar tudo de novo pra ver se nada quebrou</span>
+  </div></div>
+ </div><div class="rod"><span>Playwright para Leigos · Vinícius Torales</span><span>Bons testes! ✓</span></div></div>
+</body></html>

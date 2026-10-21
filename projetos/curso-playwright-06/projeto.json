@@ -1,0 +1,285 @@
+{
+ "title": "Playwright para leigos · Aula 6",
+ "slug": "curso-playwright-06",
+ "idioma": "pt",
+ "destino": "curso",
+ "marca": [
+  "PLAYWRIGHT",
+  "PARA LEIGOS"
+ ],
+ "cor_fundo": "#3fd68a",
+ "sem_legenda": true,
+ "legenda_y": 0.93,
+ "selo": "MÓDULO 1 · AULA 6",
+ "voz": {
+  "nome": "gravada",
+  "motor": "eleven",
+  "eleven_voz": "Vinícius Torales"
+ },
+ "serie": [],
+ "meta": {
+  "titles": [
+   "Aula 6: Instalando no Mac e no Linux"
+  ],
+  "description": "",
+  "tags": []
+ },
+ "notes": "Curso Playwright para leigos. Não publica (destino: curso). Roteiro em curso-playwright/roteiros/.",
+ "script": {
+  "long": {
+   "parts": [
+    {
+     "chapter": "",
+     "sentences": [
+      {
+       "text": "Essa aula é pra quem usa Mac ou Linux. Se você usa Windows, pode pular.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "MAC",
+          "gold",
+          180
+         ],
+         [
+          "E LINUX",
+          "white",
+          150
+         ],
+         [
+          "AULA 6",
+          "muted",
+          80
+         ]
+        ]
+       }
+      },
+      {
+       "text": "São os mesmos três programas: o VS Code, o Node e o Git. Só muda o jeito de instalar.",
+       "scene": {
+        "type": "cards",
+        "itens": [
+         [
+          "1",
+          "VS Code",
+          "onde você escreve"
+         ],
+         [
+          "2",
+          "Node.js",
+          "o motor",
+          "#69a7ff"
+         ],
+         [
+          "3",
+          "Git",
+          "o histórico",
+          "#ffd23f"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "No Mac, pra abrir o terminal, aperta Command e espaço, digita Terminal e aperta Enter.",
+       "scene": {
+        "type": "passo",
+        "icone": "⌘",
+        "titulo": "Command + espaço",
+        "sub": "digite Terminal"
+       }
+      },
+      {
+       "text": "O VS Code: baixa em code ponto visualstudio ponto com, abre o arquivo e arrasta pra pasta Aplicativos.",
+       "scene": {
+        "type": "pastas",
+        "titulo": "Finder",
+        "caminho": "Finder  ›  Aplicativos",
+        "itens": [
+         "Calculadora",
+         "Safari",
+         {
+          "nome": "Visual Studio Code",
+          "novo": true
+         }
+        ],
+        "novo_em": 0.8,
+        "legenda": "Arraste pra Aplicativos"
+       }
+      },
+      {
+       "text": "O Node: em nodejs ponto org, baixa a versão LTS pra Mac e vai clicando em continuar.",
+       "scene": {
+        "type": "tela",
+        "media": "site_node",
+        "url": "https://nodejs.org/",
+        "alvo": "LTS",
+        "titulo": "nodejs.org",
+        "zoom_em": 1.6,
+        "caixa_em": 2.4,
+        "legenda": "Versão LTS pra Mac"
+       }
+      },
+      {
+       "text": "O Git é o mais fácil: digita git traço traço version no terminal. Se não tiver, o próprio Mac oferece instalar.",
+       "scene": {
+        "type": "terminal",
+        "titulo": "Terminal",
+        "prompt": "voce@Mac ~ %",
+        "linhas": [
+         {
+          "cmd": "git --version"
+         },
+         {
+          "out": "git version 2.39.5 (Apple Git-154)",
+          "cor": "ac"
+         }
+        ],
+        "legenda": "Não tem? O Mac oferece instalar"
+       }
+      },
+      {
+       "text": "Agora o Linux. Eu vou mostrar no Ubuntu. O terminal abre com Control, Alt e T.",
+       "scene": {
+        "type": "passo",
+        "icone": "⌨",
+        "titulo": "Ctrl + Alt + T",
+        "sub": "abre o terminal no Ubuntu"
+       }
+      },
+      {
+       "text": "O VS Code se instala com sudo snap install code traço traço classic. O sudo pede a sua senha do computador, e enquanto você digita não aparece nada. É normal.",
+       "scene": {
+        "type": "terminal",
+        "titulo": "Terminal",
+        "prompt": "voce@ubuntu:~$",
+        "linhas": [
+         {
+          "cmd": "sudo snap install code --classic"
+         },
+         {
+          "out": "[sudo] password for voce:",
+          "cor": "mut"
+         },
+         {
+          "out": "code installed",
+          "cor": "ac"
+         }
+        ],
+        "legenda": "A senha não aparece. É normal"
+       }
+      },
+      {
+       "text": "O Git, com sudo apt install git.",
+       "scene": {
+        "type": "terminal",
+        "titulo": "Terminal",
+        "prompt": "voce@ubuntu:~$",
+        "linhas": [
+         {
+          "cmd": "sudo apt install git"
+         },
+         {
+          "out": "git is already the newest version",
+          "cor": "ac"
+         }
+        ],
+        "legenda": "sudo apt install git"
+       }
+      },
+      {
+       "text": "O Node, no Ubuntu, a gente instala com uma ferramenta chamada nvm, porque o que vem pelo apt costuma ser antigo. São três comandos, e eles estão aqui na tela e na descrição da aula.",
+       "scene": {
+        "type": "terminal",
+        "titulo": "Terminal",
+        "prompt": "$",
+        "linhas": [
+         {
+          "cmd": "curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.8/install.sh | bash"
+         },
+         {
+          "out": "=> nvm source string already in ~/.bashrc",
+          "cor": "mut"
+         },
+         {
+          "cmd": "\\. \"$HOME/.nvm/nvm.sh\""
+         },
+         {
+          "cmd": "nvm install --lts"
+         },
+         {
+          "out": "Now using node v22.21.0 (npm v10.9.4)",
+          "cor": "ac"
+         }
+        ],
+        "legenda": "Os 3 comandos estão na descrição",
+        "colinha": false
+       }
+      },
+      {
+       "text": "E tem um detalhe que é só do Linux. Quando a gente instalar o Playwright, ele vai pedir umas bibliotecas do sistema. Lá na hora, eu te mostro o comando que resolve.",
+       "scene": {
+        "type": "cards",
+        "titulo": "SÓ NO LINUX",
+        "itens": [
+         [
+          "!",
+          "Bibliotecas",
+          "o Playwright vai pedir"
+         ],
+         [
+          "✓",
+          "Na hora certa",
+          "eu mostro o comando",
+          "#ffd23f"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Pra conferir: node traço v, npm traço v e git traço traço version.",
+       "scene": {
+        "type": "terminal",
+        "titulo": "Terminal",
+        "prompt": "$",
+        "linhas": [
+         {
+          "cmd": "node -v"
+         },
+         {
+          "out": "v22.21.0",
+          "cor": "ac"
+         },
+         {
+          "cmd": "npm -v"
+         },
+         {
+          "out": "10.9.4",
+          "cor": "ac"
+         },
+         {
+          "cmd": "git --version"
+         },
+         {
+          "out": "git version 2.43.0",
+          "cor": "ac"
+         }
+        ],
+        "legenda": "Um número em cada? Tudo certo"
+       }
+      },
+      {
+       "text": "Todos os comandos estão na descrição da aula. Até o módulo dois!",
+       "scene": {
+        "type": "endcard",
+        "sub": "PRÓXIMA: MÓDULO 2"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "shorts": [],
+  "tiktoks": []
+ }
+}

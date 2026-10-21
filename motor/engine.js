@@ -274,11 +274,12 @@
     else { const x0 = A[0] + bw / 2 + 20 * u, x1 = B[0] - bw / 2 - 20 * u; ctx.fillRect(x0, c.cy - 5 * u, (x1 - x0) * pa, 10 * u);
       if (pa > 0.95) { ctx.beginPath(); ctx.moveTo(x1, c.cy); ctx.lineTo(x1 - 30 * u, c.cy - 22 * u); ctx.lineTo(x1 - 30 * u, c.cy + 22 * u); ctx.fill(); } }
     ctx.restore();
-    if (t > 0.8) for (let k = 0; k < 6; k++) {
+    const moeda = s.coin || (globalThis.CO_MARCA ? null : "R$");  // nos cursos não voa dinheiro (era coisa do Custo Oculto)
+    if (t > 0.8 && moeda) for (let k = 0; k < 6; k++) {
       const ph = ((t - 0.8) * 0.45 + k / 6) % 1; let px, py;
       if (c.vertical) { px = c.cx + 40 * u * Math.sin(k * 2.1); py = lerp(A[1] + bh / 2, B[1] - bh / 2, ph); }
       else { px = lerp(A[0] + bw / 2, B[0] - bw / 2, ph); py = c.cy - 60 * u + 25 * u * Math.sin(k * 2.1); }
-      drawC(ctx, s.coin || "R$", font(900, 46 * u), px, py, { fill: "gold", alpha: Math.sin(ph * Math.PI) * a });
+      drawC(ctx, moeda, font(900, 46 * u), px, py, { fill: "gold", alpha: Math.sin(ph * Math.PI) * a });
     }
     if (s.caption) drawC(ctx, s.caption, font(800, fitSize(ctx, s.caption, 800, 54 * u, c.W * 0.9)), c.cx, c.cy - (c.vertical ? 620 : 300) * u, { alpha: easeOut((t - 0.2) / 0.4) });
   };

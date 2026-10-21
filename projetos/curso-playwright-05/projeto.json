@@ -1,0 +1,216 @@
+{
+ "title": "Playwright para leigos · Aula 5",
+ "slug": "curso-playwright-05",
+ "idioma": "pt",
+ "destino": "curso",
+ "marca": [
+  "PLAYWRIGHT",
+  "PARA LEIGOS"
+ ],
+ "cor_fundo": "#3fd68a",
+ "sem_legenda": true,
+ "legenda_y": 0.93,
+ "selo": "MÓDULO 1 · AULA 5",
+ "voz": {
+  "nome": "gravada",
+  "motor": "eleven",
+  "eleven_voz": "Vinícius Torales"
+ },
+ "serie": [],
+ "meta": {
+  "titles": [
+   "Aula 5: Instalando o Git"
+  ],
+  "description": "",
+  "tags": []
+ },
+ "notes": "Curso Playwright para leigos. Não publica (destino: curso). Roteiro em curso-playwright/roteiros/.",
+ "script": {
+  "long": {
+   "parts": [
+    {
+     "chapter": "",
+     "sentences": [
+      {
+       "text": "Última instalação: o Git.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "AULA 5",
+          "muted",
+          80
+         ],
+         [
+          "GIT",
+          "gold",
+          200
+         ]
+        ]
+       }
+      },
+      {
+       "text": "O Git guarda o histórico do seu projeto, como os pontos de salvamento de um videogame. Deu problema? Volta pro último ponto salvo.",
+       "scene": {
+        "type": "cards",
+        "titulo": "O SAVE DO SEU PROJETO",
+        "itens": [
+         [
+          "1",
+          "Você salva",
+          "um ponto do projeto"
+         ],
+         [
+          "2",
+          "Deu problema?",
+          "algo quebrou",
+          "#ff6b6b"
+         ],
+         [
+          "3",
+          "Volta",
+          "pro último save",
+          "#ffd23f"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "E é com ele que, no fim do curso, o seu projeto vai pro GitHub e passa a rodar os testes sozinho.",
+       "scene": {
+        "type": "gh_actions",
+        "commit": "meu projeto de testes",
+        "pronto": true,
+        "legenda": "Lá no fim do curso"
+       }
+      },
+      {
+       "text": "Entra em git traço scm ponto com, clica em Download for Windows e baixa a versão recomendada para o seu Windows.",
+       "scene": {
+        "type": "tela",
+        "media": "site_git",
+        "url": "https://git-scm.com/downloads/win",
+        "alvo": "Click here to download",
+        "titulo": "git-scm.com",
+        "zoom_em": 1.8,
+        "caixa_em": 2.6,
+        "legenda": "Baixe a versão recomendada"
+       }
+      },
+      {
+       "text": "O instalador tem bastante tela, mas dá pra deixar quase tudo no padrão e ir clicando em Next.",
+       "scene": {
+        "type": "instalador",
+        "app": "Git",
+        "titulo": "Select Components",
+        "subtitulo": "Which components should be installed?",
+        "caixas": [
+         [
+          "Windows Explorer integration",
+          true
+         ],
+         [
+          "Git LFS (Large File Support)",
+          true
+         ],
+         [
+          "Associate .git* configuration files",
+          true
+         ]
+        ],
+        "botao": "Next",
+        "legenda": "Pode deixar no padrão"
+       }
+      },
+      {
+       "text": "Só uma tela merece atenção: quando ele perguntar o editor, escolhe o Visual Studio Code.",
+       "scene": {
+        "type": "instalador",
+        "app": "Git",
+        "titulo": "Choosing the default editor used by Git",
+        "subtitulo": "Which editor would you like Git to use?",
+        "texto": "Use Visual Studio Code as Git's default editor",
+        "botao": "Next",
+        "legenda": "Escolha o Visual Studio Code"
+       }
+      },
+      {
+       "text": "Clica em Install, espera, e Finish.",
+       "scene": {
+        "type": "instalador",
+        "app": "Git",
+        "titulo": "Installing",
+        "subtitulo": "Please wait while Setup installs Git",
+        "progresso": true,
+        "botao": "Finish",
+        "legenda": "Install, espera, Finish"
+       }
+      },
+      {
+       "text": "Pra conferir, abre o PowerShell e digita git traço traço version.",
+       "scene": {
+        "type": "terminal",
+        "pasta": "C:\\Users\\voce",
+        "linhas": [
+         {
+          "cmd": "git --version"
+         },
+         {
+          "out": "git version 2.51.0.windows.1",
+          "cor": "ac"
+         }
+        ],
+        "legenda": "git --version"
+       }
+      },
+      {
+       "text": "Apareceu a versão? Então você tem tudo: o VS Code, o Node e o Git.",
+       "scene": {
+        "type": "cards",
+        "titulo": "TUDO PRONTO",
+        "itens": [
+         [
+          "✓",
+          "VS Code",
+          "instalado"
+         ],
+         [
+          "✓",
+          "Node.js",
+          "instalado",
+          "#69a7ff"
+         ],
+         [
+          "✓",
+          "Git",
+          "instalado",
+          "#ffd23f"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Se o seu computador é Windows, pode pular a próxima aula, que é de Mac e Linux, e ir direto pro módulo dois.",
+       "scene": {
+        "type": "passo",
+        "icone": "▶",
+        "titulo": "Windows?",
+        "sub": "Pule pro módulo 2"
+       }
+      },
+      {
+       "text": "Te vejo lá!",
+       "scene": {
+        "type": "endcard",
+        "sub": "PRÓXIMA: MÓDULO 2"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "shorts": [],
+  "tiktoks": []
+ }
+}
