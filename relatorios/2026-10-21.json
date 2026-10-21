@@ -1,0 +1,1377 @@
+{
+ "data": "2026-10-21",
+ "por_formato_12m": [
+  {
+   "creatorContentType": "creatorContentTypeUnspecified",
+   "views": 0,
+   "estimatedMinutesWatched": 0,
+   "subscribersGained": 2
+  },
+  {
+   "creatorContentType": "shorts",
+   "views": 4587,
+   "estimatedMinutesWatched": 1098,
+   "subscribersGained": 12
+  },
+  {
+   "creatorContentType": "videoOnDemand",
+   "views": 41,
+   "estimatedMinutesWatched": 90,
+   "subscribersGained": 1
+  }
+ ],
+ "por_formato_7d": [
+  {
+   "creatorContentType": "creatorContentTypeUnspecified",
+   "views": 0,
+   "estimatedMinutesWatched": 0,
+   "subscribersGained": 2
+  },
+  {
+   "creatorContentType": "shorts",
+   "views": 1548,
+   "estimatedMinutesWatched": 892,
+   "subscribersGained": 5
+  },
+  {
+   "creatorContentType": "videoOnDemand",
+   "views": 12,
+   "estimatedMinutesWatched": 14,
+   "subscribersGained": 0
+  }
+ ],
+ "dia_a_dia_28d": [
+  {
+   "day": "2026-09-23",
+   "views": 0,
+   "estimatedMinutesWatched": 0,
+   "subscribersGained": 0
+  },
+  {
+   "day": "2026-09-24",
+   "views": 0,
+   "estimatedMinutesWatched": 0,
+   "subscribersGained": 0
+  },
+  {
+   "day": "2026-09-25",
+   "views": 0,
+   "estimatedMinutesWatched": 0,
+   "subscribersGained": 0
+  },
+  {
+   "day": "2026-09-26",
+   "views": 0,
+   "estimatedMinutesWatched": 0,
+   "subscribersGained": 0
+  },
+  {
+   "day": "2026-09-27",
+   "views": 0,
+   "estimatedMinutesWatched": 0,
+   "subscribersGained": 0
+  },
+  {
+   "day": "2026-09-28",
+   "views": 0,
+   "estimatedMinutesWatched": 0,
+   "subscribersGained": 0
+  },
+  {
+   "day": "2026-09-29",
+   "views": 0,
+   "estimatedMinutesWatched": 0,
+   "subscribersGained": 0
+  },
+  {
+   "day": "2026-09-30",
+   "views": 0,
+   "estimatedMinutesWatched": 0,
+   "subscribersGained": 0
+  },
+  {
+   "day": "2026-10-01",
+   "views": 0,
+   "estimatedMinutesWatched": 0,
+   "subscribersGained": 0
+  },
+  {
+   "day": "2026-10-02",
+   "views": 0,
+   "estimatedMinutesWatched": 0,
+   "subscribersGained": 0
+  },
+  {
+   "day": "2026-10-03",
+   "views": 0,
+   "estimatedMinutesWatched": 0,
+   "subscribersGained": 0
+  },
+  {
+   "day": "2026-10-04",
+   "views": 0,
+   "estimatedMinutesWatched": 0,
+   "subscribersGained": 0
+  },
+  {
+   "day": "2026-10-05",
+   "views": 0,
+   "estimatedMinutesWatched": 0,
+   "subscribersGained": 0
+  },
+  {
+   "day": "2026-10-06",
+   "views": 0,
+   "estimatedMinutesWatched": 0,
+   "subscribersGained": 0
+  },
+  {
+   "day": "2026-10-07",
+   "views": 0,
+   "estimatedMinutesWatched": 0,
+   "subscribersGained": 0
+  },
+  {
+   "day": "2026-10-08",
+   "views": 0,
+   "estimatedMinutesWatched": 0,
+   "subscribersGained": 0
+  },
+  {
+   "day": "2026-10-09",
+   "views": 0,
+   "estimatedMinutesWatched": 0,
+   "subscribersGained": 0
+  },
+  {
+   "day": "2026-10-10",
+   "views": 30,
+   "estimatedMinutesWatched": 6,
+   "subscribersGained": 0
+  },
+  {
+   "day": "2026-10-11",
+   "views": 824,
+   "estimatedMinutesWatched": 63,
+   "subscribersGained": 2
+  },
+  {
+   "day": "2026-10-12",
+   "views": 2089,
+   "estimatedMinutesWatched": 158,
+   "subscribersGained": 5
+  },
+  {
+   "day": "2026-10-13",
+   "views": 120,
+   "estimatedMinutesWatched": 53,
+   "subscribersGained": 1
+  },
+  {
+   "day": "2026-10-14",
+   "views": 714,
+   "estimatedMinutesWatched": 470,
+   "subscribersGained": 5
+  },
+  {
+   "day": "2026-10-15",
+   "views": 197,
+   "estimatedMinutesWatched": 133,
+   "subscribersGained": 2
+  },
+  {
+   "day": "2026-10-16",
+   "views": 52,
+   "estimatedMinutesWatched": 106,
+   "subscribersGained": 0
+  },
+  {
+   "day": "2026-10-17",
+   "views": 459,
+   "estimatedMinutesWatched": 151,
+   "subscribersGained": 0
+  },
+  {
+   "day": "2026-10-18",
+   "views": 140,
+   "estimatedMinutesWatched": 42,
+   "subscribersGained": 0
+  }
+ ],
+ "origem_28d": [
+  {
+   "insightTrafficSourceType": "SHORTS",
+   "views": 4234,
+   "estimatedMinutesWatched": 917
+  },
+  {
+   "insightTrafficSourceType": "YT_SEARCH",
+   "views": 201,
+   "estimatedMinutesWatched": 37
+  },
+  {
+   "insightTrafficSourceType": "YT_CHANNEL",
+   "views": 108,
+   "estimatedMinutesWatched": 128
+  },
+  {
+   "insightTrafficSourceType": "SUBSCRIBER",
+   "views": 27,
+   "estimatedMinutesWatched": 26
+  },
+  {
+   "insightTrafficSourceType": "YT_OTHER_PAGE",
+   "views": 25,
+   "estimatedMinutesWatched": 8
+  },
+  {
+   "insightTrafficSourceType": "NOTIFICATION",
+   "views": 15,
+   "estimatedMinutesWatched": 45
+  },
+  {
+   "insightTrafficSourceType": "NO_LINK_OTHER",
+   "views": 6,
+   "estimatedMinutesWatched": 8
+  },
+  {
+   "insightTrafficSourceType": "EXT_URL",
+   "views": 3,
+   "estimatedMinutesWatched": 2
+  },
+  {
+   "insightTrafficSourceType": "RELATED_VIDEO",
+   "views": 2,
+   "estimatedMinutesWatched": 7
+  },
+  {
+   "insightTrafficSourceType": "SOUND_PAGE",
+   "views": 1,
+   "estimatedMinutesWatched": 0
+  },
+  {
+   "insightTrafficSourceType": "SHORTS_CONTENT_LINKS",
+   "views": 1,
+   "estimatedMinutesWatched": 7
+  }
+ ],
+ "buscas_28d": [
+  {
+   "insightTrafficSourceDetail": "banco",
+   "views": 7
+  },
+  {
+   "insightTrafficSourceDetail": "a pior empresa do mundo",
+   "views": 6
+  },
+  {
+   "insightTrafficSourceDetail": "adam neumann",
+   "views": 6
+  },
+  {
+   "insightTrafficSourceDetail": "elizabeth holmes",
+   "views": 6
+  },
+  {
+   "insightTrafficSourceDetail": "aeroporto de natal",
+   "views": 2
+  },
+  {
+   "insightTrafficSourceDetail": "amostradinho",
+   "views": 2
+  },
+  {
+   "insightTrafficSourceDetail": "banco brb",
+   "views": 2
+  },
+  {
+   "insightTrafficSourceDetail": "empresas que faliram",
+   "views": 2
+  },
+  {
+   "insightTrafficSourceDetail": "theranos",
+   "views": 2
+  },
+  {
+   "insightTrafficSourceDetail": "vídeo do mateus",
+   "views": 2
+  },
+  {
+   "insightTrafficSourceDetail": "agrale 4100",
+   "views": 1
+  },
+  {
+   "insightTrafficSourceDetail": "alienígenas do passado",
+   "views": 1
+  },
+  {
+   "insightTrafficSourceDetail": "ar15",
+   "views": 1
+  },
+  {
+   "insightTrafficSourceDetail": "asmr medico",
+   "views": 1
+  },
+  {
+   "insightTrafficSourceDetail": "bruno dog",
+   "views": 1
+  },
+  {
+   "insightTrafficSourceDetail": "desenho desenho",
+   "views": 1
+  },
+  {
+   "insightTrafficSourceDetail": "escândalo do banco master explicado",
+   "views": 1
+  },
+  {
+   "insightTrafficSourceDetail": "historia israel",
+   "views": 1
+  },
+  {
+   "insightTrafficSourceDetail": "imortalidade",
+   "views": 1
+  },
+  {
+   "insightTrafficSourceDetail": "itapemirim",
+   "views": 1
+  },
+  {
+   "insightTrafficSourceDetail": "música de cabeça de sirene",
+   "views": 1
+  },
+  {
+   "insightTrafficSourceDetail": "omoda 4",
+   "views": 1
+  },
+  {
+   "insightTrafficSourceDetail": "pack ferrari hot wheels",
+   "views": 1
+  },
+  {
+   "insightTrafficSourceDetail": "pastel",
+   "views": 1
+  },
+  {
+   "insightTrafficSourceDetail": "se o mundo fosse invertido",
+   "views": 1
+  }
+ ],
+ "videos_28d": [
+  {
+   "video": "sdWbo_dK2oE",
+   "views": 1052,
+   "estimatedMinutesWatched": 51,
+   "averageViewDuration": 16,
+   "averageViewPercentage": 47.85,
+   "subscribersGained": 3,
+   "likes": 9,
+   "comments": 1,
+   "shares": 0
+  },
+  {
+   "video": "xQAsC7S2KO8",
+   "views": 709,
+   "estimatedMinutesWatched": 559,
+   "averageViewDuration": 77,
+   "averageViewPercentage": 76.42,
+   "subscribersGained": 3,
+   "likes": 41,
+   "comments": 1,
+   "shares": 5
+  },
+  {
+   "video": "KwwgU40ljtE",
+   "views": 390,
+   "estimatedMinutesWatched": 17,
+   "averageViewDuration": 15,
+   "averageViewPercentage": 37.45,
+   "subscribersGained": 1,
+   "likes": 7,
+   "comments": 0,
+   "shares": 0
+  },
+  {
+   "video": "A5szNMzB6FI",
+   "views": 363,
+   "estimatedMinutesWatched": 13,
+   "averageViewDuration": 18,
+   "averageViewPercentage": 45.32,
+   "subscribersGained": 0,
+   "likes": 1,
+   "comments": 0,
+   "shares": 0
+  },
+  {
+   "video": "9sKzFjE6KYs",
+   "views": 310,
+   "estimatedMinutesWatched": 16,
+   "averageViewDuration": 21,
+   "averageViewPercentage": 51.05,
+   "subscribersGained": 0,
+   "likes": 6,
+   "comments": 0,
+   "shares": 0
+  },
+  {
+   "video": "dz3i8jILjBA",
+   "views": 293,
+   "estimatedMinutesWatched": 63,
+   "averageViewDuration": 32,
+   "averageViewPercentage": 70.18,
+   "subscribersGained": 0,
+   "likes": 11,
+   "comments": 1,
+   "shares": 0
+  },
+  {
+   "video": "IZFqVgJkuZg",
+   "views": 277,
+   "estimatedMinutesWatched": 23,
+   "averageViewDuration": 19,
+   "averageViewPercentage": 48.44,
+   "subscribersGained": 1,
+   "likes": 6,
+   "comments": 0,
+   "shares": 0
+  },
+  {
+   "video": "RaLw0BDDX1U",
+   "views": 242,
+   "estimatedMinutesWatched": 28,
+   "averageViewDuration": 18,
+   "averageViewPercentage": 51.080000000000005,
+   "subscribersGained": 0,
+   "likes": 6,
+   "comments": 1,
+   "shares": 0
+  },
+  {
+   "video": "FuuRBCl6ozY",
+   "views": 211,
+   "estimatedMinutesWatched": 27,
+   "averageViewDuration": 14,
+   "averageViewPercentage": 37.31,
+   "subscribersGained": 2,
+   "likes": 6,
+   "comments": 0,
+   "shares": 0
+  },
+  {
+   "video": "z6dXgM3pY_c",
+   "views": 165,
+   "estimatedMinutesWatched": 24,
+   "averageViewDuration": 22,
+   "averageViewPercentage": 81.34,
+   "subscribersGained": 1,
+   "likes": 8,
+   "comments": 1,
+   "shares": 0
+  },
+  {
+   "video": "2dxf1dO_zcU",
+   "views": 151,
+   "estimatedMinutesWatched": 14,
+   "averageViewDuration": 15,
+   "averageViewPercentage": 52.21,
+   "subscribersGained": 0,
+   "likes": 2,
+   "comments": 0,
+   "shares": 0
+  },
+  {
+   "video": "bLlZo9T-tO8",
+   "views": 90,
+   "estimatedMinutesWatched": 9,
+   "averageViewDuration": 20,
+   "averageViewPercentage": 51.629999999999995,
+   "subscribersGained": 0,
+   "likes": 2,
+   "comments": 0,
+   "shares": 0
+  },
+  {
+   "video": "Po7fZ2-6vNg",
+   "views": 52,
+   "estimatedMinutesWatched": 26,
+   "averageViewDuration": 65,
+   "averageViewPercentage": 47.15,
+   "subscribersGained": 0,
+   "likes": 6,
+   "comments": 0,
+   "shares": 4
+  },
+  {
+   "video": "u_n01fzotFM",
+   "views": 52,
+   "estimatedMinutesWatched": 3,
+   "averageViewDuration": 12,
+   "averageViewPercentage": 44.79,
+   "subscribersGained": 1,
+   "likes": 1,
+   "comments": 0,
+   "shares": 0
+  },
+  {
+   "video": "_aYquXLalP0",
+   "views": 49,
+   "estimatedMinutesWatched": 19,
+   "averageViewDuration": 55,
+   "averageViewPercentage": 65.55,
+   "subscribersGained": 0,
+   "likes": 1,
+   "comments": 0,
+   "shares": 0
+  },
+  {
+   "video": "FHltNOMCClI",
+   "views": 46,
+   "estimatedMinutesWatched": 160,
+   "averageViewDuration": 355,
+   "averageViewPercentage": 232.46000000000004,
+   "subscribersGained": 0,
+   "likes": 5,
+   "comments": 0,
+   "shares": 1
+  },
+  {
+   "video": "6hhsJO6vgpo",
+   "views": 38,
+   "estimatedMinutesWatched": 17,
+   "averageViewDuration": 54,
+   "averageViewPercentage": 58.41,
+   "subscribersGained": 0,
+   "likes": 1,
+   "comments": 1,
+   "shares": 0
+  },
+  {
+   "video": "A5cWOeTZqe0",
+   "views": 24,
+   "estimatedMinutesWatched": 5,
+   "averageViewDuration": 46,
+   "averageViewPercentage": 83.35,
+   "subscribersGained": 0,
+   "likes": 3,
+   "comments": 0,
+   "shares": 0
+  },
+  {
+   "video": "4WuKNxpR188",
+   "views": 14,
+   "estimatedMinutesWatched": 36,
+   "averageViewDuration": 270,
+   "averageViewPercentage": 61.61,
+   "subscribersGained": 0,
+   "likes": 3,
+   "comments": 0,
+   "shares": 0
+  },
+  {
+   "video": "TZLpKjOWKH4",
+   "views": 13,
+   "estimatedMinutesWatched": 11,
+   "averageViewDuration": 131,
+   "averageViewPercentage": 399.8,
+   "subscribersGained": 0,
+   "likes": 1,
+   "comments": 0,
+   "shares": 0
+  },
+  {
+   "video": "3hLySDzqykg",
+   "views": 11,
+   "estimatedMinutesWatched": 0,
+   "averageViewDuration": 8,
+   "averageViewPercentage": 17.24,
+   "subscribersGained": 0,
+   "likes": 2,
+   "comments": 0,
+   "shares": 0
+  },
+  {
+   "video": "3e-eXXCL27s",
+   "views": 11,
+   "estimatedMinutesWatched": 24,
+   "averageViewDuration": 244,
+   "averageViewPercentage": 48.99,
+   "subscribersGained": 1,
+   "likes": 2,
+   "comments": 2,
+   "shares": 0
+  },
+  {
+   "video": "_EvPaiyk3nU",
+   "views": 10,
+   "estimatedMinutesWatched": 18,
+   "averageViewDuration": 180,
+   "averageViewPercentage": 31,
+   "subscribersGained": 0,
+   "likes": 1,
+   "comments": 0,
+   "shares": 0
+  },
+  {
+   "video": "nnLShLyCZOc",
+   "views": 9,
+   "estimatedMinutesWatched": 0,
+   "averageViewDuration": 2,
+   "averageViewPercentage": 4.26,
+   "subscribersGained": 0,
+   "likes": 2,
+   "comments": 0,
+   "shares": 0
+  },
+  {
+   "video": "ZFUM39-QiEs",
+   "views": 7,
+   "estimatedMinutesWatched": 0,
+   "averageViewDuration": 6,
+   "averageViewPercentage": 11.66,
+   "subscribersGained": 0,
+   "likes": 2,
+   "comments": 0,
+   "shares": 0
+  },
+  {
+   "video": "Wbn2Es80UJ0",
+   "views": 6,
+   "estimatedMinutesWatched": 0,
+   "averageViewDuration": 40,
+   "averageViewPercentage": 101.25,
+   "subscribersGained": 0,
+   "likes": 1,
+   "comments": 0,
+   "shares": 0
+  },
+  {
+   "video": "0DvgfHx5cY8",
+   "views": 6,
+   "estimatedMinutesWatched": 0,
+   "averageViewDuration": 0,
+   "averageViewPercentage": 0,
+   "subscribersGained": 0,
+   "likes": 2,
+   "comments": 0,
+   "shares": 0
+  },
+  {
+   "video": "TIv6Sg8n_rI",
+   "views": 6,
+   "estimatedMinutesWatched": 11,
+   "averageViewDuration": 225,
+   "averageViewPercentage": 66.71,
+   "subscribersGained": 0,
+   "likes": 3,
+   "comments": 2,
+   "shares": 0
+  },
+  {
+   "video": "XQiYeFLJpPY",
+   "views": 6,
+   "estimatedMinutesWatched": 0,
+   "averageViewDuration": 6,
+   "averageViewPercentage": 11.85,
+   "subscribersGained": 0,
+   "likes": 2,
+   "comments": 0,
+   "shares": 0
+  },
+  {
+   "video": "1IPH_5Ocy6w",
+   "views": 5,
+   "estimatedMinutesWatched": 0,
+   "averageViewDuration": 37,
+   "averageViewPercentage": 96.85,
+   "subscribersGained": 0,
+   "likes": 2,
+   "comments": 0,
+   "shares": 0
+  }
+ ],
+ "retencao": {
+  "itapemirim_longo": [],
+  "kolynos_longo": [],
+  "banco_master_longo": [],
+  "americanas_longo": [],
+  "netflix_longo": [],
+  "netflix_en_longo": [],
+  "wework_longo": [],
+  "orkut_longo": []
+ },
+ "nomes": {
+  "4WuKNxpR188": "itapemirim_longo",
+  "TIv6Sg8n_rI": "kolynos_longo",
+  "3e-eXXCL27s": "banco_master_longo",
+  "z6dXgM3pY_c": "banco_master_short1",
+  "u_n01fzotFM": "banco_master_short2",
+  "TZLpKjOWKH4": "banco_master_short4",
+  "2dxf1dO_zcU": "banco_master_short3",
+  "xQAsC7S2KO8": "banco_master_serie1",
+  "Po7fZ2-6vNg": "banco_master_serie2",
+  "FHltNOMCClI": "banco_master_serie3",
+  "6hhsJO6vgpo": "banco_master_serie4",
+  "pDz4KseN7K8": "americanas_longo",
+  "F2uu4UIL2jA": "netflix_short4",
+  "yJMp7dGixuQ": "netflix_serie4",
+  "LzJR6rIyu7I": "americanas_short4",
+  "GnDYufJLp7E": "americanas_serie4",
+  "ZqCgfrBIbhQ": "netflix_short3",
+  "3Syk9LDoAEQ": "netflix_serie3",
+  "2SzdDgdQHdw": "kolynos_serie3",
+  "f4Mv-dJ3co8": "americanas_short3",
+  "rsbtHH0LPJQ": "americanas_serie3",
+  "x1Yhzockrj0": "netflix_short2",
+  "zPgYt_K_hFk": "netflix_serie2",
+  "XPKmKHPPz-Q": "kolynos_serie2",
+  "hpCHl08_rxI": "americanas_short2",
+  "I9D20jVG6SI": "americanas_serie2",
+  "io6LeKeDVq0": "netflix_short1",
+  "X2dcl3WAt0w": "netflix_serie1",
+  "_aYquXLalP0": "kolynos_serie1",
+  "yNwNdQgcHZI": "americanas_short1",
+  "3OuffGR2L-4": "americanas_serie1",
+  "LGggbB-6O7A": "netflix_longo",
+  "lKaYgLyRO5I": "netflix_en_longo",
+  "UaTrbXl1Syg": "netflix_en_serie1",
+  "QxDSndr3zxY": "netflix_en_serie2",
+  "nncWr2dvN7Q": "netflix_en_short1",
+  "cukR2zZU5ug": "netflix_en_short2",
+  "68-7NcePBV8": "netflix_en_short3",
+  "FYjO_13LO78": "netflix_en_short4",
+  "dBopOBre4ws": "wework_longo",
+  "3KPkddYjUeY": "wework_serie1",
+  "7gGQg2T1xXc": "wework_short1",
+  "si9RkGbmMko": "wework_serie2",
+  "xKjn37FMqv0": "wework_short2",
+  "m62PxGp2g2A": "wework_serie3",
+  "PRY8AyEOv1Y": "wework_short3",
+  "n3ULfuQrXr4": "wework_serie4",
+  "u6pjLiR16xA": "wework_short4",
+  "x263Rewgyw8": "orkut_longo",
+  "_TicJtCVl8I": "orkut_serie1",
+  "fEa_OURUL8M": "orkut_short1",
+  "vgny-o0w020": "orkut_serie2",
+  "T3zJqVuxu4c": "orkut_short2",
+  "WLXe91gQ-_4": "orkut_serie3",
+  "RAbWvcCYWUk": "orkut_serie4",
+  "jnqhEGpic1I": "garoto_short1_antigo",
+  "P3KklOvB6e8": "garoto_short1",
+  "xhA47M-Ueq8": "sadia_short1",
+  "-GZbd2Z6gak": "ambev_short1",
+  "r9t1a5rQW8U": "blockbuster_short1",
+  "V0QI5BH5mmo": "kodak_digital_short1",
+  "9awKfkEdKH4": "varig_short1",
+  "0uvafJRo35I": "nokia_short1"
+ },
+ "contagem_atual": {
+  "itapemirim_longo": {
+   "views": 14,
+   "likes": 3,
+   "comentarios": 0,
+   "status": "public"
+  },
+  "kolynos_longo": {
+   "views": 6,
+   "likes": 3,
+   "comentarios": 2,
+   "status": "public"
+  },
+  "banco_master_longo": {
+   "views": 11,
+   "likes": 2,
+   "comentarios": 3,
+   "status": "public"
+  },
+  "banco_master_short1": {
+   "views": 165,
+   "likes": 8,
+   "comentarios": 2,
+   "status": "public"
+  },
+  "banco_master_short2": {
+   "views": 52,
+   "likes": 1,
+   "comentarios": 1,
+   "status": "public"
+  },
+  "banco_master_short4": {
+   "views": 13,
+   "likes": 1,
+   "comentarios": 1,
+   "status": "public"
+  },
+  "banco_master_short3": {
+   "views": 156,
+   "likes": 2,
+   "comentarios": 1,
+   "status": "public"
+  },
+  "banco_master_serie1": {
+   "views": 708,
+   "likes": 41,
+   "comentarios": 2,
+   "status": "public"
+  },
+  "banco_master_serie2": {
+   "views": 53,
+   "likes": 6,
+   "comentarios": 1,
+   "status": "public"
+  },
+  "banco_master_serie3": {
+   "views": 46,
+   "likes": 5,
+   "comentarios": 1,
+   "status": "public"
+  },
+  "banco_master_serie4": {
+   "views": 39,
+   "likes": 1,
+   "comentarios": 2,
+   "status": "public"
+  },
+  "kolynos_serie1": {
+   "views": 52,
+   "likes": 1,
+   "comentarios": 1,
+   "status": "public"
+  },
+  "netflix_en_longo": {
+   "views": 1,
+   "likes": 0,
+   "comentarios": 0,
+   "status": "public"
+  },
+  "netflix_en_serie1": {
+   "views": 0,
+   "likes": 0,
+   "comentarios": 0,
+   "status": "public"
+  },
+  "netflix_en_serie2": {
+   "views": 2,
+   "likes": 0,
+   "comentarios": 0,
+   "status": "public"
+  },
+  "netflix_en_short1": {
+   "views": 4,
+   "likes": 0,
+   "comentarios": 0,
+   "status": "public"
+  },
+  "netflix_en_short2": {
+   "views": 1,
+   "likes": 0,
+   "comentarios": 0,
+   "status": "public"
+  },
+  "netflix_en_short3": {
+   "views": 0,
+   "likes": 0,
+   "comentarios": 0,
+   "status": "private"
+  },
+  "netflix_en_short4": {
+   "views": 0,
+   "likes": 0,
+   "comentarios": 0,
+   "status": "private"
+  },
+  "wework_longo": {
+   "views": 0,
+   "likes": 0,
+   "comentarios": 0,
+   "status": "public"
+  },
+  "wework_serie1": {
+   "views": 0,
+   "likes": 0,
+   "comentarios": 0,
+   "status": "private"
+  },
+  "wework_short1": {
+   "views": 0,
+   "likes": 0,
+   "comentarios": 0,
+   "status": "private"
+  },
+  "wework_serie2": {
+   "views": 0,
+   "likes": 0,
+   "comentarios": 0,
+   "status": "private"
+  },
+  "wework_short2": {
+   "views": 0,
+   "likes": 0,
+   "comentarios": 0,
+   "status": "private"
+  },
+  "wework_serie3": {
+   "views": 0,
+   "likes": 0,
+   "comentarios": 0,
+   "status": "private"
+  },
+  "wework_short3": {
+   "views": 0,
+   "likes": 0,
+   "comentarios": 0,
+   "status": "private"
+  },
+  "wework_serie4": {
+   "views": 0,
+   "likes": 0,
+   "comentarios": 0,
+   "status": "private"
+  },
+  "wework_short4": {
+   "views": 0,
+   "likes": 0,
+   "comentarios": 0,
+   "status": "private"
+  },
+  "sadia_short1": {
+   "views": 6,
+   "likes": 0,
+   "comentarios": 0,
+   "status": "public"
+  },
+  "ambev_short1": {
+   "views": 0,
+   "likes": 0,
+   "comentarios": 0,
+   "status": "private"
+  },
+  "blockbuster_short1": {
+   "views": 0,
+   "likes": 0,
+   "comentarios": 0,
+   "status": "private"
+  },
+  "kodak_digital_short1": {
+   "views": 0,
+   "likes": 0,
+   "comentarios": 0,
+   "status": "private"
+  },
+  "varig_short1": {
+   "views": 0,
+   "likes": 0,
+   "comentarios": 0,
+   "status": "private"
+  },
+  "nokia_short1": {
+   "views": 0,
+   "likes": 0,
+   "comentarios": 0,
+   "status": "private"
+  }
+ },
+ "canal": {
+  "viewCount": "4632",
+  "subscriberCount": "11",
+  "hiddenSubscriberCount": false,
+  "videoCount": "31"
+ },
+ "todos_os_videos": [
+  {
+   "id": "sdWbo_dK2oE",
+   "titulo": "Essa pasta de dente vendia o dobro da Colgate #shorts",
+   "publicado": "2026-10-12T21:33:26Z",
+   "duracao": "PT34S",
+   "status": "public",
+   "agendado": null,
+   "views": 1053,
+   "likes": 9,
+   "comentarios": 1
+  },
+  {
+   "id": "xQAsC7S2KO8",
+   "titulo": "Banco Master: parte 1 de 4 #shorts",
+   "publicado": "2026-10-14T11:00:27Z",
+   "duracao": "PT1M41S",
+   "status": "public",
+   "agendado": null,
+   "views": 708,
+   "likes": 41,
+   "comentarios": 2
+  },
+  {
+   "id": "KwwgU40ljtE",
+   "titulo": "2/7 Adam Neumann vendeu uma visão — e bilhões acreditaram",
+   "publicado": "2026-10-11T19:33:14Z",
+   "duracao": "PT41S",
+   "status": "public",
+   "agendado": null,
+   "views": 391,
+   "likes": 7,
+   "comentarios": 0
+  },
+  {
+   "id": "A5szNMzB6FI",
+   "titulo": "3/7 A WeWork crescia… e perdia cada vez mais dinheiro",
+   "publicado": "2026-10-11T19:33:30Z",
+   "duracao": "PT40S",
+   "status": "public",
+   "agendado": null,
+   "views": 363,
+   "likes": 1,
+   "comentarios": 0
+  },
+  {
+   "id": "9sKzFjE6KYs",
+   "titulo": "7/7 O verdadeiro custo da WeWork",
+   "publicado": "2026-10-11T19:35:17Z",
+   "duracao": "PT43S",
+   "status": "public",
+   "agendado": null,
+   "views": 310,
+   "likes": 6,
+   "comentarios": 0
+  },
+  {
+   "id": "dz3i8jILjBA",
+   "titulo": "A Colgate pagou US$ 1 bilhão pra sumir com essa marca #shorts",
+   "publicado": "2026-10-18T00:04:28Z",
+   "duracao": "PT46S",
+   "status": "public",
+   "agendado": null,
+   "views": 291,
+   "likes": 11,
+   "comentarios": 1
+  },
+  {
+   "id": "IZFqVgJkuZg",
+   "titulo": "1/7 A empresa de US$ 47 bilhões que começou a desmoronar",
+   "publicado": "2026-10-11T19:30:13Z",
+   "duracao": "PT40S",
+   "status": "public",
+   "agendado": null,
+   "views": 277,
+   "likes": 6,
+   "comentarios": 0
+  },
+  {
+   "id": "RaLw0BDDX1U",
+   "titulo": "46 mil pessoas perderam o voo de Natal no mesmo dia",
+   "publicado": "2026-10-11T23:12:20Z",
+   "duracao": "PT37S",
+   "status": "public",
+   "agendado": null,
+   "views": 242,
+   "likes": 6,
+   "comentarios": 1
+  },
+  {
+   "id": "FuuRBCl6ozY",
+   "titulo": "6/7 Adam Neumann caiu — mas não saiu de mãos vazias",
+   "publicado": "2026-10-11T19:34:38Z",
+   "duracao": "PT40S",
+   "status": "public",
+   "agendado": null,
+   "views": 211,
+   "likes": 6,
+   "comentarios": 0
+  },
+  {
+   "id": "z6dXgM3pY_c",
+   "titulo": "1,6 milhão de pessoas no mesmo banco. E ele quebrou. #shorts",
+   "publicado": "2026-10-13T15:16:40Z",
+   "duracao": "PT28S",
+   "status": "public",
+   "agendado": null,
+   "views": 165,
+   "likes": 8,
+   "comentarios": 2
+  },
+  {
+   "id": "2dxf1dO_zcU",
+   "titulo": "Preso no aeroporto no dia em que o banco ia ser vendido #shorts",
+   "publicado": "2026-10-17T21:00:32Z",
+   "duracao": "PT29S",
+   "status": "public",
+   "agendado": null,
+   "views": 156,
+   "likes": 2,
+   "comentarios": 1
+  },
+  {
+   "id": "bLlZo9T-tO8",
+   "titulo": "5/7 Como US$ 47 bilhões viraram cerca de US$ 8 bilhões",
+   "publicado": "2026-10-11T19:34:16Z",
+   "duracao": "PT40S",
+   "status": "public",
+   "agendado": null,
+   "views": 90,
+   "likes": 2,
+   "comentarios": 0
+  },
+  {
+   "id": "Po7fZ2-6vNg",
+   "titulo": "Banco Master: parte 2 de 4 #shorts",
+   "publicado": "2026-10-15T11:00:42Z",
+   "duracao": "PT2M18S",
+   "status": "public",
+   "agendado": null,
+   "views": 53,
+   "likes": 6,
+   "comentarios": 1
+  },
+  {
+   "id": "_aYquXLalP0",
+   "titulo": "Kolynos vendia o dobro da Colgate. Então ela sumiu (parte 1) #shorts",
+   "publicado": "2026-10-18T11:00:20Z",
+   "duracao": "PT1M25S",
+   "status": "public",
+   "agendado": null,
+   "views": 52,
+   "likes": 1,
+   "comentarios": 1
+  },
+  {
+   "id": "u_n01fzotFM",
+   "titulo": "Esse CDB pagava 140% do CDI. Era bom demais. #shorts",
+   "publicado": "2026-10-14T21:00:32Z",
+   "duracao": "PT29S",
+   "status": "public",
+   "agendado": null,
+   "views": 52,
+   "likes": 1,
+   "comentarios": 1
+  },
+  {
+   "id": "FHltNOMCClI",
+   "titulo": "Banco Master: parte 3 de 4 #shorts",
+   "publicado": "2026-10-16T11:00:18Z",
+   "duracao": "PT2M33S",
+   "status": "public",
+   "agendado": null,
+   "views": 46,
+   "likes": 5,
+   "comentarios": 1
+  },
+  {
+   "id": "6hhsJO6vgpo",
+   "titulo": "Banco Master: parte 4 de 4 #shorts",
+   "publicado": "2026-10-17T11:00:22Z",
+   "duracao": "PT1M33S",
+   "status": "public",
+   "agendado": null,
+   "views": 39,
+   "likes": 1,
+   "comentarios": 2
+  },
+  {
+   "id": "A5cWOeTZqe0",
+   "titulo": "Parte 1 - A empresa de US$ 9 bilhões que escondia um problema",
+   "publicado": "2026-10-10T17:44:22Z",
+   "duracao": "PT56S",
+   "status": "public",
+   "agendado": null,
+   "views": 24,
+   "likes": 3,
+   "comentarios": 0
+  },
+  {
+   "id": "4WuKNxpR188",
+   "titulo": "O Que Aconteceu Com a Itapemirim? A Empresa de Ônibus Que Criou Uma Aérea e Quebrou",
+   "publicado": "2026-10-11T23:09:37Z",
+   "duracao": "PT7M19S",
+   "status": "public",
+   "agendado": null,
+   "views": 14,
+   "likes": 3,
+   "comentarios": 0
+  },
+  {
+   "id": "TZLpKjOWKH4",
+   "titulo": "Você pode estar pagando a conta do Banco Master #shorts",
+   "publicado": "2026-10-16T21:00:12Z",
+   "duracao": "PT33S",
+   "status": "public",
+   "agendado": null,
+   "views": 13,
+   "likes": 1,
+   "comentarios": 1
+  },
+  {
+   "id": "3e-eXXCL27s",
+   "titulo": "BANCO MASTER: O Que Aconteceu e Quem Vai Pagar a Conta de R$ 41 Bilhões",
+   "publicado": "2026-10-13T15:00:05Z",
+   "duracao": "PT8M19S",
+   "status": "public",
+   "agendado": null,
+   "views": 11,
+   "likes": 2,
+   "comentarios": 3
+  },
+  {
+   "id": "3hLySDzqykg",
+   "titulo": "Parte 2 - Como Elizabeth Holmes virou bilionária aos 30 anos",
+   "publicado": "2026-10-10T17:45:25Z",
+   "duracao": "PT51S",
+   "status": "public",
+   "agendado": null,
+   "views": 11,
+   "likes": 2,
+   "comentarios": 0
+  },
+  {
+   "id": "_EvPaiyk3nU",
+   "titulo": "THERANOS: A Startup de US$ 9 Bilhões de Elizabeth Holmes Que Era Uma Mentira",
+   "publicado": "2026-10-10T17:09:52Z",
+   "duracao": "PT9M41S",
+   "status": "public",
+   "agendado": null,
+   "views": 10,
+   "likes": 1,
+   "comentarios": 0
+  },
+  {
+   "id": "nnLShLyCZOc",
+   "titulo": "Parte 3 - A diferença absurda entre a promessa e a realidade da Theranos",
+   "publicado": "2026-10-10T17:45:53Z",
+   "duracao": "PT47S",
+   "status": "public",
+   "agendado": null,
+   "views": 9,
+   "likes": 2,
+   "comentarios": 0
+  },
+  {
+   "id": "0DvgfHx5cY8",
+   "titulo": "Parte 6 - A fraude que terminou em 11 anos de prisão",
+   "publicado": "2026-10-10T17:47:16Z",
+   "duracao": "PT59S",
+   "status": "public",
+   "agendado": null,
+   "views": 7,
+   "likes": 2,
+   "comentarios": 0
+  },
+  {
+   "id": "ZFUM39-QiEs",
+   "titulo": "Parte 5 - De US$ 4,5 bilhões para ZERO",
+   "publicado": "2026-10-10T17:46:53Z",
+   "duracao": "PT54S",
+   "status": "public",
+   "agendado": null,
+   "views": 7,
+   "likes": 2,
+   "comentarios": 0
+  },
+  {
+   "id": "xhA47M-Ueq8",
+   "titulo": "A Sadia perdeu R$ 2,5 bilhões apostando no dólar. Meses depois, se juntou à Perdigão #shorts",
+   "publicado": "2026-10-20T21:00:04Z",
+   "duracao": "PT49S",
+   "status": "public",
+   "agendado": null,
+   "views": 6,
+   "likes": 0,
+   "comentarios": 0
+  },
+  {
+   "id": "TIv6Sg8n_rI",
+   "titulo": "O Que Aconteceu Com a Kolynos? A Colgate Pagou US$ 1 Bilhão Pra Ela Sumir",
+   "publicado": "2026-10-12T21:30:13Z",
+   "duracao": "PT5M38S",
+   "status": "public",
+   "agendado": null,
+   "views": 6,
+   "likes": 3,
+   "comentarios": 2
+  },
+  {
+   "id": "Wbn2Es80UJ0",
+   "titulo": "4/7 O IPO que expôs os problemas da WeWork",
+   "publicado": "2026-10-11T19:33:55Z",
+   "duracao": "PT40S",
+   "status": "public",
+   "agendado": null,
+   "views": 6,
+   "likes": 1,
+   "comentarios": 0
+  },
+  {
+   "id": "XQiYeFLJpPY",
+   "titulo": "Parte 7 - O verdadeiro custo oculto da Theranos",
+   "publicado": "2026-10-10T17:47:40Z",
+   "duracao": "PT59S",
+   "status": "public",
+   "agendado": null,
+   "views": 6,
+   "likes": 2,
+   "comentarios": 0
+  },
+  {
+   "id": "1IPH_5Ocy6w",
+   "titulo": "Parte 4 - Como tanta gente poderosa acreditou na Theranos?",
+   "publicado": "2026-10-10T17:46:19Z",
+   "duracao": "PT39S",
+   "status": "public",
+   "agendado": null,
+   "views": 5,
+   "likes": 2,
+   "comentarios": 0
+  },
+  {
+   "id": "0uvafJRo35I",
+   "titulo": "A Nokia vendia 4 de cada 10 celulares do planeta. E a Microsoft perdeu mais do que pagou #shorts",
+   "publicado": "2026-10-20T17:30:08Z",
+   "duracao": "PT1M9S",
+   "status": "private",
+   "agendado": "2026-10-25T21:00:00Z",
+   "views": 0,
+   "likes": 0,
+   "comentarios": 0
+  },
+  {
+   "id": "9awKfkEdKH4",
+   "titulo": "A Varig foi arrematada por US$ 24 milhões. Menos de 1 ano depois, até US$ 320 milhões #shorts",
+   "publicado": "2026-10-20T16:37:30Z",
+   "duracao": "PT1M14S",
+   "status": "private",
+   "agendado": "2026-10-24T21:00:00Z",
+   "views": 0,
+   "likes": 0,
+   "comentarios": 0
+  },
+  {
+   "id": "V0QI5BH5mmo",
+   "titulo": "A Kodak inventou a câmera digital. E mesmo assim perdeu a guerra do digital #shorts",
+   "publicado": "2026-10-20T14:53:52Z",
+   "duracao": "PT1M13S",
+   "status": "private",
+   "agendado": "2026-10-23T21:00:00Z",
+   "views": 0,
+   "likes": 0,
+   "comentarios": 0
+  },
+  {
+   "id": "r9t1a5rQW8U",
+   "titulo": "A Blockbuster podia ter comprado a Netflix por 50 milhões de dólares. E recusou #shorts",
+   "publicado": "2026-10-20T14:51:05Z",
+   "duracao": "PT1M12S",
+   "status": "private",
+   "agendado": "2026-10-22T21:00:00Z",
+   "views": 0,
+   "likes": 0,
+   "comentarios": 0
+  },
+  {
+   "id": "-GZbd2Z6gak",
+   "titulo": "Brahma e Antarctica viraram uma só e ficaram com 3 de cada 4 cervejas do Brasil #shorts",
+   "publicado": "2026-10-20T12:15:34Z",
+   "duracao": "PT1M9S",
+   "status": "private",
+   "agendado": "2026-10-21T21:00:00Z",
+   "views": 0,
+   "likes": 0,
+   "comentarios": 0
+  }
+ ]
+}
