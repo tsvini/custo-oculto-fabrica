@@ -1,0 +1,212 @@
+{
+ "title": "Playwright para leigos · Aula 15",
+ "slug": "curso-playwright-15",
+ "idioma": "pt",
+ "destino": "curso",
+ "marca": [
+  "PLAYWRIGHT",
+  "PARA LEIGOS"
+ ],
+ "cor_fundo": "#3fd68a",
+ "sem_legenda": true,
+ "legenda_y": 0.93,
+ "selo": "MÓDULO 3 · AULA 15",
+ "voz": {
+  "nome": "gravada",
+  "motor": "eleven",
+  "eleven_voz": "Vinícius Torales"
+ },
+ "serie": [],
+ "meta": {
+  "titles": [
+   "Aula 15: click e expect - conferindo o resultado"
+  ],
+  "description": "",
+  "tags": []
+ },
+ "notes": "Curso Playwright para leigos. Não publica (destino: curso). Roteiro em curso-playwright/roteiros/.",
+ "script": {
+  "long": {
+   "parts": [
+    {
+     "chapter": "",
+     "sentences": [
+      {
+       "text": "Hoje o teste fica completo: clicar e conferir.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "AULA 15",
+          "muted",
+          80
+         ],
+         [
+          "CLICK E EXPECT",
+          "gold",
+          150
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Pra achar o botão, a gente usa o getByRole: o papel dele é button, de botão, e o nome é o texto escrito nele, Login.",
+       "scene": {
+        "type": "tela",
+        "media": "site_sauce_botao",
+        "url": "https://www.saucedemo.com/",
+        "titulo": "saucedemo.com",
+        "legenda": "Papel: botão · Nome: Login",
+        "zoom_em": 1.4,
+        "caixa_em": 2.0,
+        "alvo_css": "#login-button"
+       }
+      },
+      {
+       "text": "Digita: await page ponto getByRole, abre parênteses, aspas button, vírgula, chaves, name dois pontos, aspas Login, fecha tudo, ponto click.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "login.spec.js",
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  tests/",
+         "    login.spec.js",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "codigo": "import { test, expect } from '@playwright/test';\n\ntest('entra com usuário e senha', async ({ page }) => {\n  await page.goto('https://www.saucedemo.com/');\n  await page.getByPlaceholder('Username').fill('standard_user');\n  await page.getByPlaceholder('Password').fill('secret_sauce');\n  await page.getByRole('button', { name: 'Login' }).click();\n  await expect(page).toHaveURL(/inventory/);\n});",
+        "legenda": "getByRole('button', { name: 'Login' })",
+        "fonte": 26,
+        "digitar_de": 7,
+        "digitar_ate": 7
+       }
+      },
+      {
+       "text": "Agora a parte mais importante do teste: a conferência. Se logou, o endereço do site muda pra inventory.",
+       "scene": {
+        "type": "tela",
+        "media": "site_sauce_products",
+        "url": "https://www.saucedemo.com/",
+        "titulo": "saucedemo.com/inventory.html",
+        "legenda": "O endereço mudou pra inventory",
+        "zoom_em": 1.4,
+        "caixa_em": 2.0,
+        "alvo": "Products",
+        "acoes": [
+         {
+          "fill": [
+           "#user-name",
+           "standard_user"
+          ]
+         },
+         {
+          "fill": [
+           "#password",
+           "secret_sauce"
+          ]
+         },
+         {
+          "click": "#login-button"
+         }
+        ]
+       }
+      },
+      {
+       "text": "Então: await expect, abre parênteses, page, fecha parênteses, ponto toHaveURL, e entre barras, inventory. Essas barras criam uma busca por padrão. Nesse caso, a gente está dizendo que a URL precisa ter a palavra inventory em algum lugar.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "login.spec.js",
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  tests/",
+         "    login.spec.js",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "codigo": "import { test, expect } from '@playwright/test';\n\ntest('entra com usuário e senha', async ({ page }) => {\n  await page.goto('https://www.saucedemo.com/');\n  await page.getByPlaceholder('Username').fill('standard_user');\n  await page.getByPlaceholder('Password').fill('secret_sauce');\n  await page.getByRole('button', { name: 'Login' }).click();\n  await expect(page).toHaveURL(/inventory/);\n});",
+        "legenda": "await expect(page).toHaveURL(/inventory/)",
+        "fonte": 26,
+        "digitar_de": 8,
+        "digitar_ate": 8,
+        "colinha": true,
+        "colinha_em": 1.6
+       }
+      },
+      {
+       "text": "Sem o expect, o teste só clica. Ele não confere nada, e passaria até se o login desse errado.",
+       "scene": {
+        "type": "compare",
+        "title": "O EXPECT FAZ A DIFERENÇA",
+        "items": [
+         [
+          "SEM EXPECT",
+          "SÓ CLICA",
+          "red"
+         ],
+         [
+          "COM EXPECT",
+          "CONFERE DE VERDADE",
+          "gold"
+         ]
+        ],
+        "size": 120,
+        "stagger": 1.2,
+        "vs": true
+       }
+      },
+      {
+       "text": "Roda. Passou! Esse é o seu primeiro teste completo: abre, preenche, clica e confere.",
+       "scene": {
+        "type": "cards",
+        "titulo": "TODO TESTE É ASSIM",
+        "itens": [
+         [
+          "1",
+          "Abre",
+          "goto"
+         ],
+         [
+          "2",
+          "Acha",
+          "getBy...",
+          "#69a7ff"
+         ],
+         [
+          "3",
+          "Faz",
+          "fill, click",
+          "#ffd23f"
+         ],
+         [
+          "4",
+          "Confere",
+          "expect",
+          "#ff6b6b"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Te vejo lá!",
+       "scene": {
+        "type": "endcard",
+        "sub": "PRÓXIMA: OS EXPECT MAIS USADOS"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "shorts": [],
+  "tiktoks": []
+ }
+}

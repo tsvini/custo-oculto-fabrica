@@ -100,7 +100,8 @@
     const linhas = String(s.codigo || "").split("\n"); const total = linhas.join("").length || 1;
     // no vertical, a fonte cresce até caber na largura
     const maxCh = Math.max(10, ...linhas.map((l) => l.length));
-    const fs = c.vertical ? Math.min(46 * u, (W - sideW - 140 * u) / (maxCh * 0.6)) : (s.fonte || (linhas.length > 12 ? 30 : 36)) * u; const lh = fs * 1.55; const x0 = tabX + 96 * u; let yy = top + 100 * u;
+    // a linha mais comprida sempre cabe inteira (código nunca é cortado na lateral)
+    const fs = Math.min(c.vertical ? 46 * u : (s.fonte || (linhas.length > 12 ? 30 : 36)) * u, (W - sideW - 140 * u) / (maxCh * 0.6)); const lh = fs * 1.55; const x0 = tabX + 96 * u; let yy = top + 100 * u;
     // rolar: o arquivo inteiro aparece de cima e a tela desce até o fim antes de começar a digitar
     const baseY = y + H - 40 * u, cabem = Math.floor((baseY - yy) / lh) + 1, sobra = s.rolar_ate ? clamp(Math.ceil(s.rolar_ate - cabem + 2) * lh, 0, Math.max(0, linhas.length - cabem) * lh) : Math.max(0, linhas.length - cabem) * lh;
     const rDe = s.rolar_de || 1.6, rDur = s.rolar_dur || 1.5; const rolando = s.rolar && sobra > 0;
@@ -563,7 +564,7 @@
       sideW = s.pastas ? 330 * u : 0;
       if (sideW) { ctx.save(); ctx.globalAlpha = a; ctx.fillStyle = C.side; ctx.fillRect(x, corpo, sideW, ch - 2 * u); ctx.restore(); txt(ctx, "EXPLORER", font(700, 20 * u), x + 28 * u, corpo + 34 * u, C.mut, "left", a);
         const ps = s.pastas.slice(); const kn = s.resultado === "arquivo" ? easeOut((t - tFim - 0.3) / 0.3) : 0;
-        const arv = arvore(ps, 3); arv.forEach(({ nm: p, nv }, i) => { const yy = corpo + (80 + i * 48) * u, ind = nv * 22 * u, arq = /\.\w+$/.test(p) || /^\.\w/.test(p);
+        const arv = arvore(ps, 3); arv.forEach(({ nm: p, nv }, i) => { const pasta = /\/$/.test(p); if (pasta) p = p.slice(0, -1); const yy = corpo + (80 + i * 48) * u, ind = nv * 22 * u, arq = !pasta && (/\.\w+$/.test(p) || /^\.\w/.test(p));
           if (arq) { ctx.save(); ctx.globalAlpha *= a; ctx.fillStyle = C.ac; rr(ctx, x + 32 * u + ind, yy - 13 * u, 20 * u, 26 * u, 4 * u); ctx.fill(); ctx.restore(); } else pastaIcone(ctx, x + 28 * u + ind, yy - 14 * u, 30 * u, a);
           txt(ctx, p, caber(ctx, p, 500, 24 * u, sideW - 88 * u - ind), x + 68 * u + ind, yy, C.txt, "left", a); });
         if (kn > 0) { const i = ps.length, yy = corpo + (80 + i * 48) * u, ind = (s.novo_nivel !== undefined ? s.novo_nivel : arv.some((q) => q.nv !== Math.min(arv.indexOf(q), 3)) ? arv[arv.length - 1].nv : Math.min(i, 3)) * 22 * u; const nm = (s.novo || "novo.js").slice(0, Math.ceil(clamp((t - tFim - 0.6) / 1.0) * (s.novo || "novo.js").length));

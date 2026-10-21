@@ -1,0 +1,197 @@
+{
+ "title": "Playwright para leigos · Aula 14",
+ "slug": "curso-playwright-14",
+ "idioma": "pt",
+ "destino": "curso",
+ "marca": [
+  "PLAYWRIGHT",
+  "PARA LEIGOS"
+ ],
+ "cor_fundo": "#3fd68a",
+ "sem_legenda": true,
+ "legenda_y": 0.93,
+ "selo": "MÓDULO 3 · AULA 14",
+ "voz": {
+  "nome": "gravada",
+  "motor": "eleven",
+  "eleven_voz": "Vinícius Torales"
+ },
+ "serie": [],
+ "meta": {
+  "titles": [
+   "Aula 14: fill - preenchendo campos"
+  ],
+  "description": "",
+  "tags": []
+ },
+ "notes": "Curso Playwright para leigos. Não publica (destino: curso). Roteiro em curso-playwright/roteiros/.",
+ "script": {
+  "long": {
+   "parts": [
+    {
+     "chapter": "",
+     "sentences": [
+      {
+       "text": "Hoje o robô digita usuário e senha.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "AULA 14",
+          "muted",
+          80
+         ],
+         [
+          "FILL",
+          "gold",
+          200
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Mas antes: como ele sabe qual é o campo? Olha o site: dentro do primeiro campo está escrito Username, em cinza. Isso se chama placeholder.",
+       "scene": {
+        "type": "tela",
+        "media": "site_sauce_user",
+        "url": "https://www.saucedemo.com/",
+        "titulo": "saucedemo.com",
+        "legenda": "O texto cinza: placeholder",
+        "zoom_em": 1.4,
+        "caixa_em": 2.0,
+        "alvo_css": "#user-name"
+       }
+      },
+      {
+       "text": "E o Playwright acha campos exatamente por isso: page ponto getByPlaceholder, e entre aspas Username.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "login.spec.js",
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  tests/",
+         "    login.spec.js",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "codigo": "import { test, expect } from '@playwright/test';\n\ntest('entra com usuário e senha', async ({ page }) => {\n  await page.goto('https://www.saucedemo.com/');\n  await page.getByPlaceholder('Username').fill('standard_user');\n  await page.getByPlaceholder('Password').fill('secret_sauce');\n});",
+        "legenda": "getByPlaceholder('Username')",
+        "fonte": 26,
+        "digitar_de": 5,
+        "digitar_ate": 5,
+        "vel": 0.5
+       }
+      },
+      {
+       "text": "Depois, ponto fill, e o que digitar: standard underline user, o usuário de treino que o próprio site mostra embaixo.",
+       "scene": {
+        "type": "tela",
+        "media": "site_sauce_cred",
+        "url": "https://www.saucedemo.com/",
+        "titulo": "saucedemo.com",
+        "legenda": "O site mostra o usuário de treino",
+        "zoom_em": 1.4,
+        "caixa_em": 2.0,
+        "alvo": "standard_user"
+       }
+      },
+      {
+       "text": "O fill apaga o que tiver no campo e digita o texto novo.",
+       "scene": {
+        "type": "cards",
+        "itens": [
+         [
+          "⌫",
+          "Apaga",
+          "o que tinha"
+         ],
+         [
+          "⌨",
+          "Digita",
+          "o texto novo",
+          "#69a7ff"
+         ]
+        ],
+        "colinha": true,
+        "colinha_em": 1.0
+       }
+      },
+      {
+       "text": "A senha é igual: getByPlaceholder Password, fill secret underline sauce.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "login.spec.js",
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  tests/",
+         "    login.spec.js",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "codigo": "import { test, expect } from '@playwright/test';\n\ntest('entra com usuário e senha', async ({ page }) => {\n  await page.goto('https://www.saucedemo.com/');\n  await page.getByPlaceholder('Username').fill('standard_user');\n  await page.getByPlaceholder('Password').fill('secret_sauce');\n});",
+        "legenda": "A senha é igual",
+        "fonte": 26,
+        "digitar_de": 6,
+        "digitar_ate": 6
+       }
+      },
+      {
+       "text": "Roda com o headed e olha o robô digitando.",
+       "scene": {
+        "type": "tela",
+        "media": "site_sauce_preenchido",
+        "url": "https://www.saucedemo.com/",
+        "titulo": "saucedemo.com",
+        "legenda": "O robô digitou!",
+        "zoom_em": 1.4,
+        "caixa_em": 2.0,
+        "alvo_css": "#password",
+        "acoes": [
+         {
+          "fill": [
+           "#user-name",
+           "standard_user"
+          ]
+         },
+         {
+          "fill": [
+           "#password",
+           "secret_sauce"
+          ]
+         }
+        ]
+       }
+      },
+      {
+       "text": "Na próxima aula, a gente clica em Login e confere se deu certo.",
+       "scene": {
+        "type": "passo",
+        "icone": "▶",
+        "titulo": "Próxima aula",
+        "sub": "click e expect"
+       }
+      },
+      {
+       "text": "Te vejo lá!",
+       "scene": {
+        "type": "endcard",
+        "sub": "PRÓXIMA: CLICK E EXPECT"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "shorts": [],
+  "tiktoks": []
+ }
+}

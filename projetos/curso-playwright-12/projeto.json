@@ -1,0 +1,263 @@
+{
+ "title": "Playwright para leigos · Aula 12",
+ "slug": "curso-playwright-12",
+ "idioma": "pt",
+ "destino": "curso",
+ "marca": [
+  "PLAYWRIGHT",
+  "PARA LEIGOS"
+ ],
+ "cor_fundo": "#3fd68a",
+ "sem_legenda": true,
+ "legenda_y": 0.93,
+ "selo": "MÓDULO 3 · AULA 12",
+ "voz": {
+  "nome": "gravada",
+  "motor": "eleven",
+  "eleven_voz": "Vinícius Torales"
+ },
+ "serie": [],
+ "meta": {
+  "titles": [
+   "Aula 12: A receita de um teste - test e expect"
+  ],
+  "description": "",
+  "tags": []
+ },
+ "notes": "Curso Playwright para leigos. Não publica (destino: curso). Roteiro em curso-playwright/roteiros/.",
+ "script": {
+  "long": {
+   "parts": [
+    {
+     "chapter": "",
+     "sentences": [
+      {
+       "text": "Agora começa o seu código. E a primeira coisa é apagar o exemplo: clica com o botão direito no example ponto spec ponto js e escolhe Delete.",
+       "scene": {
+        "type": "menu",
+        "app": "vscode",
+        "barra": [],
+        "menus": [
+         [
+          "New File...",
+          "New Folder...",
+          "—",
+          "Cut",
+          "Copy",
+          "—",
+          "Rename...",
+          "Delete"
+         ]
+        ],
+        "caminho": [
+         7
+        ],
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  tests/",
+         "    example.spec.js",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "ponto": [
+         0.02,
+         0.18
+        ],
+        "legenda": "Botão direito › Delete"
+       }
+      },
+      {
+       "text": "Na pasta tests, cria um arquivo novo: login ponto spec ponto js.",
+       "scene": {
+        "type": "menu",
+        "app": "vscode",
+        "barra": [],
+        "menus": [
+         [
+          "New File...",
+          "New Folder...",
+          "—",
+          "Cut",
+          "Copy",
+          "—",
+          "Rename..."
+         ]
+        ],
+        "caminho": [
+         0
+        ],
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  tests/"
+        ],
+        "ponto": [
+         0.02,
+         0.12
+        ],
+        "resultado": "arquivo",
+        "novo": "login.spec.js",
+        "novo_nivel": 2,
+        "legenda": "tests › New File › login.spec.js"
+       }
+      },
+      {
+       "text": "Primeira linha: import, chaves, test, vírgula, expect, fecha chaves, from, e entre aspas arroba playwright barra test. Ela traz duas ferramentas: o test, pra criar um teste, e o expect, pra conferir.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "login.spec.js",
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  tests/",
+         "    login.spec.js",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "codigo": "import { test, expect } from '@playwright/test';",
+        "legenda": "A primeira linha",
+        "fonte": 26,
+        "digitar_ate": 1,
+        "colinha": true,
+        "colinha_em": 1.6
+       }
+      },
+      {
+       "text": "Agora o teste: test, abre parênteses, o nome do teste entre aspas, entra com usuário e senha, vírgula, async, abre parênteses, abre chaves, page, fecha chaves, fecha parênteses, seta, e abre chaves. E lá embaixo, fecha com chave, parêntese e ponto e vírgula.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "login.spec.js",
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  tests/",
+         "    login.spec.js",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "codigo": "import { test, expect } from '@playwright/test';\n\ntest('entra com usuário e senha', async ({ page }) => {\n\n});",
+        "legenda": "O esqueleto do teste",
+        "fonte": 26,
+        "digitar_de": 3
+       }
+      },
+      {
+       "text": "Calma, eu explico cada pedaço. O nome entre aspas aparece no relatório, então escreve o que o teste faz, em português mesmo.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "login.spec.js",
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  tests/",
+         "    login.spec.js",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "codigo": "import { test, expect } from '@playwright/test';\n\ntest('entra com usuário e senha', async ({ page }) => {\n\n});",
+        "legenda": "O nome aparece no relatório",
+        "fonte": 26,
+        "digitar": false,
+        "destaque": [
+         3
+        ],
+        "destaque_em": 0.8
+       }
+      },
+      {
+       "text": "O page é o navegador que o Playwright te entrega. É com ele que você abre sites e clica nas coisas.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "login.spec.js",
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  tests/",
+         "    login.spec.js",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "codigo": "import { test, expect } from '@playwright/test';\n\ntest('entra com usuário e senha', async ({ page }) => {\n\n});",
+        "legenda": "page = o navegador",
+        "fonte": 26,
+        "digitar": false,
+        "destaque": [
+         3
+        ],
+        "destaque_em": 0.8
+       }
+      },
+      {
+       "text": "E o async quer dizer que, lá dentro, a gente vai usar o await, que significa: espera esse passo terminar antes de ir pro próximo.",
+       "scene": {
+        "type": "cards",
+        "titulo": "ASYNC E AWAIT",
+        "itens": [
+         [
+          "⏳",
+          "async",
+          "aqui dentro tem espera"
+         ],
+         [
+          "⏸",
+          "await",
+          "espera esse passo terminar",
+          "#69a7ff"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Esse é o esqueleto de todo teste. Ainda está vazio, e na próxima aula a gente coloca o primeiro passo.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "login.spec.js",
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  tests/",
+         "    login.spec.js",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "codigo": "import { test, expect } from '@playwright/test';\n\ntest('entra com usuário e senha', async ({ page }) => {\n\n});",
+        "legenda": "O esqueleto de todo teste",
+        "fonte": 26,
+        "digitar": false
+       }
+      },
+      {
+       "text": "Te vejo lá!",
+       "scene": {
+        "type": "endcard",
+        "sub": "PRÓXIMA: PAGE.GOTO"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "shorts": [],
+  "tiktoks": []
+ }
+}

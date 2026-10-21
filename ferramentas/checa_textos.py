@@ -36,6 +36,7 @@ CanvasRenderingContext2D.prototype.fillText = function (t, x, y) {
     const p = (X, Y) => [tr.a * X + tr.c * Y + tr.e, tr.b * X + tr.d * Y + tr.f];
     const [ax, ay] = p(x0, y0), [bx, by] = p(x0 + w, y0 + h);
     let bx0 = Math.min(ax, bx), by0 = Math.min(ay, by), bx1 = Math.max(ax, bx), by1 = Math.max(ay, by); const c = this.__clip;
+    if (c && String(t).trim() && this.globalAlpha > 0.5 && by1 > c[1] && by0 < c[3] && bx0 < c[2] && (bx1 > c[2] + 2 || bx0 < c[0] - 2)) window.__txt.push({ t: String(t), corte: true, x0: 0, y0: 0, x1: 0, y1: 0 });  // cortado na lateral pelo recorte
     if (c) { bx0 = Math.max(bx0, c[0]); by0 = Math.max(by0, c[1]); bx1 = Math.min(bx1, c[2]); by1 = Math.min(by1, c[3]); }
     if (String(t).trim() && this.globalAlpha > 0.5 && bx1 - bx0 > 2 && by1 - by0 > 2) window.__txt.push({ t: String(t), x0: bx0, y0: by0, x1: bx1, y1: by1 });
   } catch (e) {}
@@ -46,7 +47,8 @@ window.checar = async (tipo, s, t, dur) => {
   const cv = document.getElementById("cv"), ctx = cv.getContext("2d"); const W = 1920, H = 1080; ctx.setTransform(1,0,0,1,0,0); ctx.clearRect(0,0,W,H);
   window.__txt = []; window.__cx = []; window.CO_MARCA = ["PLAYWRIGHT", "PARA LEIGOS"];
   COEngine.SCENES[tipo](ctx, { W, H, vertical: false, u: 1, cx: W / 2, cy: H * 0.45 }, t, dur, s, {});
-  const T = window.__txt; const prob = [];
+  const prob0 = []; window.__txt.filter((a) => a.corte).forEach((a) => prob0.push("cortado na lateral: " + a.t.slice(0, 40)));
+  const T = window.__txt.filter((a) => !a.corte); const prob = prob0;
   // texto que começa dentro de uma caixa e passa da borda dela
   T.forEach((a) => { const mx = (a.x0 + a.x1) / 2, my = (a.y0 + a.y1) / 2;
     const dentro = window.__cx.filter((b) => mx > b[0] && mx < b[2] && my > b[1] && my < b[3]); if (!dentro.length) return;

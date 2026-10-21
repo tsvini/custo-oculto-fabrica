@@ -1,0 +1,187 @@
+{
+ "title": "Playwright para leigos · Aula 16",
+ "slug": "curso-playwright-16",
+ "idioma": "pt",
+ "destino": "curso",
+ "marca": [
+  "PLAYWRIGHT",
+  "PARA LEIGOS"
+ ],
+ "cor_fundo": "#3fd68a",
+ "sem_legenda": true,
+ "legenda_y": 0.93,
+ "selo": "MÓDULO 3 · AULA 16",
+ "voz": {
+  "nome": "gravada",
+  "motor": "eleven",
+  "eleven_voz": "Vinícius Torales"
+ },
+ "serie": [],
+ "meta": {
+  "titles": [
+   "Aula 16: Os expect mais usados"
+  ],
+  "description": "",
+  "tags": []
+ },
+ "notes": "Curso Playwright para leigos. Não publica (destino: curso). Roteiro em curso-playwright/roteiros/.",
+ "script": {
+  "long": {
+   "parts": [
+    {
+     "chapter": "",
+     "sentences": [
+      {
+       "text": "O expect é o coração do teste, então vale conhecer os mais usados.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "AULA 16",
+          "muted",
+          80
+         ],
+         [
+          "OS EXPECT",
+          "gold",
+          200
+         ]
+        ]
+       }
+      },
+      {
+       "text": "toHaveURL você já conhece: confere o endereço.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "login.spec.js",
+        "codigo": "import { test, expect } from '@playwright/test';\n\ntest('entra com usuário e senha', async ({ page }) => {\n  await page.goto('https://www.saucedemo.com/');\n  await page.getByPlaceholder('Username').fill('standard_user');\n  await page.getByPlaceholder('Password').fill('secret_sauce');\n  await page.getByRole('button', { name: 'Login' }).click();\n  await expect(page).toHaveURL(/inventory/);\n});",
+        "legenda": "toHaveURL: o endereço",
+        "fonte": 26,
+        "digitar": false,
+        "destaque": [
+         8
+        ],
+        "destaque_em": 0.8
+       }
+      },
+      {
+       "text": "toBeVisible confere se algo está aparecendo na tela. Por exemplo, o título Products: await expect, page ponto getByText Products, ponto toBeVisible.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "login.spec.js",
+        "codigo": "import { test, expect } from '@playwright/test';\n\ntest('entra com usuário e senha', async ({ page }) => {\n  await page.goto('https://www.saucedemo.com/');\n  await page.getByPlaceholder('Username').fill('standard_user');\n  await page.getByPlaceholder('Password').fill('secret_sauce');\n  await page.getByRole('button', { name: 'Login' }).click();\n  await expect(page).toHaveURL(/inventory/);\n  await expect(page.getByText('Products')).toBeVisible();\n  await expect(page.getByText('Sauce Labs Backpack')).toContainText('Backpack');\n  await expect(page.getByRole('button', { name: 'Add to cart' })).toHaveCount(6);\n});",
+        "legenda": "toBeVisible: está aparecendo",
+        "fonte": 26,
+        "digitar_de": 9,
+        "digitar_ate": 9,
+        "colinha": true,
+        "colinha_em": 1.6
+       }
+      },
+      {
+       "text": "toContainText confere se um texto aparece no meio de outro. O nome do primeiro produto contém Backpack: await expect, e ponto toContainText Backpack.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "login.spec.js",
+        "codigo": "import { test, expect } from '@playwright/test';\n\ntest('entra com usuário e senha', async ({ page }) => {\n  await page.goto('https://www.saucedemo.com/');\n  await page.getByPlaceholder('Username').fill('standard_user');\n  await page.getByPlaceholder('Password').fill('secret_sauce');\n  await page.getByRole('button', { name: 'Login' }).click();\n  await expect(page).toHaveURL(/inventory/);\n  await expect(page.getByText('Products')).toBeVisible();\n  await expect(page.getByText('Sauce Labs Backpack')).toContainText('Backpack');\n  await expect(page.getByRole('button', { name: 'Add to cart' })).toHaveCount(6);\n});",
+        "legenda": "toContainText: tem esse texto",
+        "fonte": 26,
+        "digitar_de": 10,
+        "digitar_ate": 10
+       }
+      },
+      {
+       "text": "E toHaveCount confere quantos existem. Na loja tem seis botões Add to cart, um pra cada produto: await expect, getByRole button Add to cart, ponto toHaveCount seis.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "login.spec.js",
+        "codigo": "import { test, expect } from '@playwright/test';\n\ntest('entra com usuário e senha', async ({ page }) => {\n  await page.goto('https://www.saucedemo.com/');\n  await page.getByPlaceholder('Username').fill('standard_user');\n  await page.getByPlaceholder('Password').fill('secret_sauce');\n  await page.getByRole('button', { name: 'Login' }).click();\n  await expect(page).toHaveURL(/inventory/);\n  await expect(page.getByText('Products')).toBeVisible();\n  await expect(page.getByText('Sauce Labs Backpack')).toContainText('Backpack');\n  await expect(page.getByRole('button', { name: 'Add to cart' })).toHaveCount(6);\n});",
+        "legenda": "toHaveCount: quantos existem",
+        "fonte": 26,
+        "digitar_de": 11,
+        "digitar_ate": 11
+       }
+      },
+      {
+       "text": "Tem também o toHaveText, que confere o texto exato, e o not, que faz o contrário de qualquer um. Todos estão na sua colinha.",
+       "scene": {
+        "type": "cards",
+        "itens": [
+         [
+          "=",
+          "toHaveText",
+          "o texto exato"
+         ],
+         [
+          "!",
+          "not",
+          "o contrário",
+          "#ff6b6b"
+         ]
+        ],
+        "colinha": true,
+        "colinha_em": 1.0
+       }
+      },
+      {
+       "text": "E um detalhe que faz o Playwright brilhar: os expect do Playwright esperam automaticamente por alguns segundos até a condição ficar verdadeira. Por padrão, esse tempo é de até cinco segundos.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "ELE ESPERA",
+          "gold",
+          170
+         ],
+         [
+          "SOZINHO",
+          "white",
+          150
+         ],
+         [
+          "ATÉ 5 SEGUNDOS",
+          "muted",
+          80
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Roda, e tudo passa. No próximo módulo, a gente aprende a achar qualquer elemento, e eu te mostro um truque em que o Playwright escreve o código pra você.",
+       "scene": {
+        "type": "terminal",
+        "titulo": "Terminal — VS Code",
+        "pasta": "C:\\Users\\voce\\Documents\\meu-primeiro-playwright",
+        "linhas": [
+         {
+          "cmd": "npx playwright test --project=chromium"
+         },
+         {
+          "out": "Running 1 test using 1 worker",
+          "cor": "mut"
+         },
+         {
+          "out": "  1 passed (2.6s)",
+          "cor": "ac"
+         }
+        ],
+        "legenda": "Tudo passou!"
+       }
+      },
+      {
+       "text": "Te vejo lá!",
+       "scene": {
+        "type": "endcard",
+        "sub": "PRÓXIMA: MÓDULO 4 · LOCATORS"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "shorts": [],
+  "tiktoks": []
+ }
+}
