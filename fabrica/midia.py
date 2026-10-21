@@ -109,7 +109,7 @@ def gravacoes(cenas, pasta, log):
             vids = glob.glob(os.path.join(tmpd, "*.webm"))
             if vids:
                 dest = os.path.join(pasta, s["media"] + ".mp4")
-                subprocess.run(["ffmpeg", "-loglevel", "error", "-y", "-i", vids[0], "-c:v", "libx264", "-pix_fmt", "yuv420p", "-preset", "veryfast", "-crf", "20", "-g", "1", "-an", dest]  # todo quadro é chave: o render pula pra qualquer ponto sem travar no primeiro quadro, check=False)
+                subprocess.run(["ffmpeg", "-loglevel", "error", "-y", "-i", vids[0], "-c:v", "libx264", "-pix_fmt", "yuv420p", "-preset", "veryfast", "-crf", "20", "-g", "1", "-an", dest], check=False)  # -g 1: todo quadro é chave, o render pula pra qualquer ponto sem travar no primeiro quadro
                 log(f"  gravação {s['media']}: ok")
             shutil.rmtree(tmpd, ignore_errors=True)
         b.close()
