@@ -133,12 +133,13 @@ jobs:
           VOZ: ${{ inputs.voz }}
         shell: bash
         run: |
+          set +e +o pipefail  # uma aula com erro não derruba o resto, e o fim do log vira anotação
           ok=0; falhou=""
           for p in $LISTA; do
             if [ -n "$VOZ" ]; then
               python -m fabrica.gerar "$p" --formato "$FORMATO" --modo "$MODO" --voz "$VOZ" && ok=1 || falhou="$falhou $p"
             else
-              python -m fabrica.gerar "$p" --formato "$FORMATO" --modo "$MODO" 2>&1 | tee "log_$p.txt"; if [ "${PIPESTATUS[0]}" = 0 ]; then ok=1; else falhou="$falhou $p"; tail -25 "log_$p.txt" | while IFS= read -r l; do echo "::warning title=erro $p::$l"; done; fi
+              python -m fabrica.gerar "$p" --formato "$FORMATO" --modo "$MODO" 2>&1 | tee "log_$p.txt"; if [ "${PIPESTATUS[0]}" = 0 ]; then ok=1; else falhou="$falhou $p"; echo "::warning title=erro $p::$(tail -30 "log_$p.txt" | tr '\n' '|' | cut -c1-3500)"; fi
             fi
           done
           # um projeto com problema não derruba os outros
