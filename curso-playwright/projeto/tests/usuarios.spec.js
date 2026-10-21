@@ -8,6 +8,7 @@ for (const usuario of usuarios) {
     await page.getByTestId('username').fill(usuario);
     await page.getByTestId('password').fill(process.env.SAUCE_PASSWORD);
     await page.getByTestId('login-button').click();
-    await expect(page.getByTestId('title')).toHaveText('Products');
+    // o performance_glitch_user é lento de propósito: damos 10 segundos em vez de 5
+    await expect(page.getByTestId('title')).toHaveText('Products', { timeout: 10000 });
   });
 }
