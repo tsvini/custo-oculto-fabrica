@@ -20,6 +20,8 @@
   function txt(ctx, t, f, x, y, fill, align = "left", alpha = 1) { if (!t || alpha <= 0.01) return; ctx.save(); ctx.globalAlpha *= alpha; ctx.font = f; semLig(ctx, f); ctx.textAlign = align; ctx.textBaseline = "middle"; ctx.fillStyle = fill; ctx.fillText(t, x, y); ctx.restore(); }
   // árvore do Explorer: se algum item começar com espaços, o nível vem dos espaços (2 por nível); senão, cada item fica um nível abaixo do anterior
   function arvore(lista, max) { const expl = lista.some((p) => /^ /.test(p)); return lista.map((p, i) => { const nm = p.trim(); return { nm, nv: expl ? Math.floor((p.length - p.trimStart().length) / 2) : Math.min(i, max) }; }); }
+  // fonte que cabe: diminui o tamanho até o texto caber em maxW (nunca passa do tamanho pedido)
+  function caber(ctx, t, peso, tam, maxW, fam) { const w = tw(ctx, String(t || ""), font(peso, tam, fam)); return font(peso, w > maxW ? tam * maxW / w : tam, fam); }
   function tw(ctx, t, f) { ctx.font = f; semLig(ctx, f); const w = ctx.measureText(t).width; ctx.textRendering = "auto"; return w; }
 
   // janela com sombra e barra de título (3 bolinhas)
@@ -201,7 +203,7 @@
         txt(ctx, it.ext || "EXE", font(900, sz * 0.13), cx, fy + fh * 0.64, "#fff", "center", ka); }
       else pastaIcone(ctx, cx - sz / 2, cy + (150 * u - sz) / 2, sz, ka, C.folder);
       const nome = it.novo ? it.nome.slice(0, Math.ceil(clamp((t - st - 0.6) / 0.8) * it.nome.length)) : it.nome;
-      txt(ctx, nome, font(it.novo ? 800 : 600, 30 * u), cx, cy + 180 * u, "#2a2f3a", "center", ka);
+      const fN = caber(ctx, it.nome, it.novo ? 800 : 600, 30 * u, cell - 56 * u); txt(ctx, nome, fN, cx, cy + 180 * u, "#2a2f3a", "center", ka);
     });
     legenda(ctx, c, t, s);
   };
@@ -210,7 +212,7 @@
   S.cards = (ctx, c, t, dur, s) => {
     const u = c.u; const it = s.itens || []; const n = it.length; const V = c.vertical;
     const cw = V ? 860 * u : Math.min(520, 1700 / n - 40) * u, ch = V ? 300 * u : 560 * u, gap = 44 * u;
-    if (s.titulo) txt(ctx, s.titulo, font(800, 46 * u), c.cx, V ? c.H * 0.16 : c.cy - ch / 2 - 90 * u, C.mut, "center", easeOut(t / 0.3));
+    if (s.titulo) txt(ctx, s.titulo, caber(ctx, s.titulo, 800, 46 * u, c.W * 0.9), c.cx, V ? c.H * 0.16 : c.cy - ch / 2 - 90 * u, C.mut, "center", easeOut(t / 0.3));
     const passo = Math.min(1.0, (dur - 0.6) / Math.max(n, 1));
     it.forEach(([ic, ti, sub, cor], i) => {
       const st = s.juntos ? 0.2 : 0.2 + i * passo; const ka = easeOut((t - st) / 0.35), k = backOut((t - st) / 0.45); if (ka <= 0) return;
@@ -221,8 +223,8 @@
       const icY = V ? y + ch / 2 : y + 170 * u, icX = V ? x + 150 * u : x + cw / 2;
       ctx.beginPath(); ctx.arc(icX, icY, 80 * u, 0, 7); ctx.fillStyle = "rgba(255,255,255,.06)"; ctx.fill(); ctx.restore();
       txt(ctx, ic, font(800, 84 * u), icX, icY + 4 * u, cor || C.ac, "center", ka);
-      if (V) { txt(ctx, ti, font(900, 60 * u), x + 280 * u, y + ch / 2 - 36 * u, C.txt, "left", ka); txt(ctx, sub, font(500, 34 * u), x + 280 * u, y + ch / 2 + 34 * u, C.mut, "left", ka); }
-      else { txt(ctx, ti, font(900, 58 * u), x + cw / 2, y + 330 * u, C.txt, "center", ka);
+      if (V) { txt(ctx, ti, caber(ctx, ti, 900, 60 * u, cw - 310 * u), x + 280 * u, y + ch / 2 - 36 * u, C.txt, "left", ka); txt(ctx, sub, font(500, 34 * u), x + 280 * u, y + ch / 2 + 34 * u, C.mut, "left", ka); }
+      else { txt(ctx, ti, caber(ctx, ti, 900, 58 * u, cw - 50 * u), x + cw / 2, y + 330 * u, C.txt, "center", ka);
         const ws = String(sub || "").split(" "); let l1 = "", l2 = ""; ws.forEach((w) => { if ((l1 + " " + w).length < 22 && !l2) l1 = (l1 + " " + w).trim(); else l2 = (l2 + " " + w).trim(); });
         txt(ctx, l1, font(500, 32 * u), x + cw / 2, y + 410 * u, C.mut, "center", ka); txt(ctx, l2, font(500, 32 * u), x + cw / 2, y + 455 * u, C.mut, "center", ka); }
     });
@@ -552,17 +554,17 @@
       its.forEach((it, i) => { const nome = typeof it === "string" ? it : it.nome; const cx = x + 130 * u + i * 240 * u, cy = corpo + 130 * u; const ka = it.novo ? kn : 1;
         if (it.novo) { ctx.save(); ctx.globalAlpha = a * kn * 0.3; rr(ctx, cx - 95 * u, cy - 16 * u, 190 * u, 210 * u, 14 * u); ctx.fillStyle = C.ac2; ctx.fill(); ctx.restore(); }
         pastaIcone(ctx, cx - 65 * u, cy, 130 * u, a * ka); const nt = it.novo ? nome.slice(0, Math.ceil(clamp((t - tFim - 0.8) / 1.0) * nome.length)) || "Nova pasta" : nome;
-        txt(ctx, nt, font(it.novo ? 800 : 600, 26 * u), cx, cy + 150 * u, "#2a2f3a", "center", a * ka); });
+        txt(ctx, nt, caber(ctx, nome, it.novo ? 800 : 600, 26 * u, 220 * u), cx, cy + 150 * u, "#2a2f3a", "center", a * ka); });
     } else {
       sideW = s.pastas ? 330 * u : 0;
       if (sideW) { ctx.save(); ctx.globalAlpha = a; ctx.fillStyle = C.side; ctx.fillRect(x, corpo, sideW, ch - 2 * u); ctx.restore(); txt(ctx, "EXPLORER", font(700, 20 * u), x + 28 * u, corpo + 34 * u, C.mut, "left", a);
         const ps = s.pastas.slice(); const kn = s.resultado === "arquivo" ? easeOut((t - tFim - 0.3) / 0.3) : 0;
         const arv = arvore(ps, 3); arv.forEach(({ nm: p, nv }, i) => { const yy = corpo + (80 + i * 48) * u, ind = nv * 22 * u, arq = /\.\w+$/.test(p) || /^\.\w/.test(p);
           if (arq) { ctx.save(); ctx.globalAlpha *= a; ctx.fillStyle = C.ac; rr(ctx, x + 32 * u + ind, yy - 13 * u, 20 * u, 26 * u, 4 * u); ctx.fill(); ctx.restore(); } else pastaIcone(ctx, x + 28 * u + ind, yy - 14 * u, 30 * u, a);
-          txt(ctx, p, font(500, 24 * u), x + 68 * u + ind, yy, C.txt, "left", a); });
+          txt(ctx, p, caber(ctx, p, 500, 24 * u, sideW - 88 * u - ind), x + 68 * u + ind, yy, C.txt, "left", a); });
         if (kn > 0) { const i = ps.length, yy = corpo + (80 + i * 48) * u, ind = (s.novo_nivel !== undefined ? s.novo_nivel : arv.some((q) => q.nv !== Math.min(arv.indexOf(q), 3)) ? arv[arv.length - 1].nv : Math.min(i, 3)) * 22 * u; const nm = (s.novo || "novo.js").slice(0, Math.ceil(clamp((t - tFim - 0.6) / 1.0) * (s.novo || "novo.js").length));
           ctx.save(); ctx.globalAlpha = a * kn; ctx.strokeStyle = C.ac2; ctx.lineWidth = 2 * u; ctx.strokeRect(x + 60 * u + ind, yy - 20 * u, sideW - 80 * u - ind, 40 * u); ctx.fillStyle = C.ac; rr(ctx, x + 32 * u + ind, yy - 13 * u, 20 * u, 26 * u, 4 * u); ctx.fill(); ctx.restore();
-          txt(ctx, nm, font(600, 24 * u), x + 68 * u + ind, yy, C.txt, "left", a * kn); } }
+          txt(ctx, nm, caber(ctx, s.novo || "novo.js", 600, 24 * u, sideW - 88 * u - ind), x + 68 * u + ind, yy, C.txt, "left", a * kn); } }
       txt(ctx, s.fundo_txt || "", font(700, 40 * u), x + sideW + (W - sideW) / 2, corpo + ch * 0.4, "#3a3f50", "center", a);
       if (s.resultado === "terminal") { const k = easeOut((t - tFim - 0.3) / 0.5); if (k > 0) { const th = 250 * u * k, ty = y + H - th - 2 * u;
         ctx.save(); ctx.globalAlpha = a; ctx.fillStyle = C.term; ctx.fillRect(x + sideW, ty, W - sideW, th); ctx.fillStyle = C.line; ctx.fillRect(x + sideW, ty, W - sideW, 2 * u);

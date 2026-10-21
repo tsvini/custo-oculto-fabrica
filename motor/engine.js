@@ -234,7 +234,7 @@
   };
   S.compare = (ctx, c, t, dur, s) => {
     const u = c.u; const items = s.items || []; const n = items.length;
-    if (s.title) drawC(ctx, s.title, font(800, 56 * u), c.cx, c.cy - (c.vertical ? 560 : 330) * u, { alpha: easeOut(t / 0.3) });
+    if (s.title) drawC(ctx, s.title, font(800, fitSize(ctx, s.title, 800, 56 * u, c.W * 0.9)), c.cx, c.cy - (c.vertical ? 560 : 330) * u, { alpha: easeOut(t / 0.3) });
     items.forEach((it, i) => {
       const st = i * (s.stagger === undefined ? 0.9 : s.stagger); const a = easeOut((t - st) / 0.35); const sc = lerp(0.85, 1, backOut((t - st) / 0.4));
       let x, y, slot;
@@ -242,7 +242,7 @@
       else { x = n === 1 ? c.W / 2 : c.W * (0.29 + 0.42 * i / (n - 1)); y = c.cy; slot = c.W * (n === 2 ? 0.36 : 0.26); }
       const fs = fitSize(ctx, it[0], 900, (s.size || 150) * u, slot);
       drawC(ctx, it[0], font(900, fs), x, y, { fill: col(it[2]), alpha: a, scale: sc });
-      drawC(ctx, it[1], font(700, 48 * u), x, y + 130 * u, { fill: "muted", alpha: a });
+      drawC(ctx, it[1], font(700, fitSize(ctx, it[1] || "", 700, 48 * u, slot)), x, y + 130 * u, { fill: "muted", alpha: a });  // legenda de cada lado também cabe no seu espaço
     });
     if (s.vs !== false && n === 2) drawC(ctx, "×", font(900, 90 * u), c.cx, c.cy, { fill: [90, 90, 96], alpha: easeOut((t - 0.5) / 0.3) });
   };
