@@ -28,7 +28,9 @@ async function carregaMidia(man, base) {
       if (m.kind === "img") {
         const img = new Image(); img.src = url; await img.decode(); out[k] = { img, credit: m.credit };
       } else {
-        const v = document.createElement("video"); v.muted = true; v.preload = "auto"; v.playsInline = true; v.src = url;
+        // vídeo inteiro na memória (blob): o servidor local não responde por pedaços, e sem isso o vídeo não consegue pular pra outro ponto (fica no 1º quadro)
+        let src = url; try { src = URL.createObjectURL(await (await fetch(url)).blob()); } catch (e) {}
+        const v = document.createElement("video"); v.muted = true; v.preload = "auto"; v.playsInline = true; v.src = src;
         await new Promise((res, rej) => { v.onloadeddata = res; v.onerror = () => rej(new Error("vídeo ilegível")); setTimeout(res, 15000); });
         if (v.videoWidth) out[k] = { video: v, credit: m.credit };
       }

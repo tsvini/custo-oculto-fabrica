@@ -127,7 +127,6 @@ jobs:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           SOM_RODADAS: "1"
           CHROME_CHANNEL: chrome
-          COPIA_GRAVACOES: "1"
           LISTA: ${{ steps.alvo.outputs.lista }}
           FORMATO: ${{ inputs.formato || steps.alvo.outputs.formato || 'tudo' }}
           MODO: ${{ inputs.modo || steps.alvo.outputs.modo || 'gravada' }}
