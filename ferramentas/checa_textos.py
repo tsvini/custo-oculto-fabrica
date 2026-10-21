@@ -52,6 +52,10 @@ window.checar = async (tipo, s, t, dur) => {
     const dentro = window.__cx.filter((b) => mx > b[0] && mx < b[2] && my > b[1] && my < b[3]); if (!dentro.length) return;
     const b = dentro.reduce((p, q) => ((q[2] - q[0]) * (q[3] - q[1]) < (p[2] - p[0]) * (p[3] - p[1]) ? q : p));
     if (a.x0 < b[0] - 2 || a.x1 > b[2] + 2 || a.y0 < b[1] - 2 || a.y1 > b[3] + 2) prob.push("estoura a caixa: " + a.t.slice(0, 40)); });
+  // texto cortado pela borda de uma caixa (parte dentro, parte fora)
+  T.forEach((a) => { const at = (a.x1 - a.x0) * (a.y1 - a.y0); if (at <= 0) return;
+    window.__cx.forEach((b) => { const ix = Math.min(a.x1, b[2]) - Math.max(a.x0, b[0]), iy = Math.min(a.y1, b[3]) - Math.max(a.y0, b[1]); if (ix <= 0 || iy <= 0) return;
+      const fr = ix * iy / at; if (fr > 0.2 && fr < 0.9) prob.push("cortado pela borda: " + a.t.slice(0, 40)); }); });
   T.forEach((a) => { if (a.x0 < -2 || a.x1 > W + 2 || a.y0 < -2 || a.y1 > H + 2) prob.push("fora da tela: " + a.t.slice(0, 40)); });
   for (let i = 0; i < T.length; i++) for (let j = i + 1; j < T.length; j++) { const a = T[i], b = T[j];
     if (a.t === b.t && Math.abs(a.x0 - b.x0) < 3 && Math.abs(a.y0 - b.y0) < 3) continue;  // mesmo texto desenhado 2x (contorno)

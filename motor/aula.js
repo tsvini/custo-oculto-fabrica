@@ -196,14 +196,18 @@
       const cx = x + 40 * u + (i % cols) * cell + cell / 2, cy = top + 130 * u + Math.floor(i / cols) * 250 * u;
       const st = it.novo ? (s.novo_em || 1.0) : 0.15 + i * 0.08; const k = backOut((t - st) / 0.45); const ka = easeOut((t - st) / 0.3);
       if (ka <= 0) return; const sz = 150 * u * (it.novo ? lerp(0.4, 1, k) : 1);
-      if (it.novo && t > st + 0.5) { ctx.save(); ctx.globalAlpha = 0.25 * easeOut((t - st - 0.5) / 0.4); rr(ctx, cx - cell / 2 + 20 * u, cy - 20 * u, cell - 40 * u, 230 * u, 18 * u); ctx.fillStyle = C.ac2; ctx.fill(); ctx.restore(); }
+      if (it.novo && t > st + 0.5) { ctx.save(); ctx.globalAlpha = 0.25 * easeOut((t - st - 0.5) / 0.4); rr(ctx, cx - cell / 2 + 20 * u, cy - 20 * u, cell - 40 * u, 268 * u, 18 * u); ctx.fillStyle = C.ac2; ctx.fill(); ctx.restore(); }
       if (it.arquivo) { const fw = sz * 0.62, fh = sz * 0.8, fx = cx - fw / 2, fy = cy + (150 * u - fh) / 2; ctx.save(); ctx.globalAlpha *= ka;
         ctx.beginPath(); ctx.moveTo(fx, fy); ctx.lineTo(fx + fw * 0.68, fy); ctx.lineTo(fx + fw, fy + fw * 0.32); ctx.lineTo(fx + fw, fy + fh); ctx.lineTo(fx, fy + fh); ctx.closePath();
         ctx.fillStyle = "#fff"; ctx.fill(); ctx.strokeStyle = "#9aa3b5"; ctx.lineWidth = 3 * u; ctx.stroke(); ctx.fillStyle = it.cor || "#2f6fe4"; rr(ctx, fx + fw * 0.18, fy + fh * 0.5, fw * 0.64, fh * 0.28, 6 * u); ctx.fill(); ctx.restore();
         txt(ctx, it.ext || "EXE", font(900, sz * 0.13), cx, fy + fh * 0.64, "#fff", "center", ka); }
       else pastaIcone(ctx, cx - sz / 2, cy + (150 * u - sz) / 2, sz, ka, C.folder);
       const nome = it.novo ? it.nome.slice(0, Math.ceil(clamp((t - st - 0.6) / 0.8) * it.nome.length)) : it.nome;
-      const fN = caber(ctx, it.nome, it.novo ? 800 : 600, 30 * u, cell - 56 * u); txt(ctx, nome, fN, cx, cy + 180 * u, "#2a2f3a", "center", ka);
+      // nome comprido quebra em 2 linhas (como no Windows), cortando depois de um traço ou espaço; só encolhe se ainda não couber
+      const pesoN = it.novo ? 800 : 600, maxN = cell - 56 * u; let lin = [it.nome];
+      if (tw(ctx, it.nome, font(pesoN, 30 * u)) > maxN) { let melhor = -1; for (let j = 1; j < it.nome.length; j++) if (/[-_ ]/.test(it.nome[j - 1]) && Math.abs(j - it.nome.length / 2) < Math.abs(melhor - it.nome.length / 2)) melhor = j; if (melhor > 0) lin = [it.nome.slice(0, melhor), it.nome.slice(melhor)]; }
+      const fN = font(pesoN, Math.min(30 * u, ...lin.map((l) => 30 * u * Math.min(1, maxN / tw(ctx, l, font(pesoN, 30 * u))))));
+      let resta = nome.length; lin.forEach((l, j) => { const parte = l.slice(0, Math.max(0, resta)); resta -= l.length; txt(ctx, parte, fN, cx, cy + (180 + j * 36) * u, "#2a2f3a", "center", ka); });
     });
     legenda(ctx, c, t, s);
   };
