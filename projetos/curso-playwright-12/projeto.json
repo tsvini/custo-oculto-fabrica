@@ -63,6 +63,7 @@
          "  package.json",
          "  playwright.config.js"
         ],
+        "apaga": "example.spec.js",
         "ponto": [
          0.02,
          0.18
@@ -94,8 +95,13 @@
          "meu-primeiro-playwright",
          "  .github/",
          "  node_modules/",
-         "  tests/"
+         "  tests/",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
         ],
+        "novo_pos": 4,
         "ponto": [
          0.02,
          0.12

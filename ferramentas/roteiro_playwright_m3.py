@@ -17,8 +17,18 @@ def codigo(n):
     return re.sub(r"test\('aula \d+: ", "test('", s)
 
 
-def ed(n, legenda, de=None, ate=None, destaque=None, digitar=True, colinha=False, **kw):
-    d = {"type": "editor", "arquivo": "login.spec.js", "pastas": ARV, "codigo": codigo(n), "legenda": legenda, "fonte": 26}
+def parcial(n, k, fecha=True):
+    """o arquivo da aula n só até a linha k, fechando o teste (o que vem depois ainda não foi escrito)"""
+    return "\n".join(codigo(n).split("\n")[:k] + (["});"] if fecha else []))
+
+
+def ed(n, legenda, de=None, ate=None, destaque=None, digitar=True, colinha=False, ate_linha=None, fecha=True, **kw):
+    cod = parcial(n, ate_linha, fecha) if ate_linha else codigo(n)
+    d = {"type": "editor", "arquivo": "login.spec.js", "pastas": ARV, "codigo": cod, "legenda": legenda, "fonte": 26}
+    # trava: depois da linha que está sendo digitada só pode haver o fechamento do teste (nada "do futuro" na tela)
+    if digitar and (ate or de):
+        resto = [l for l in cod.split("\n")[(ate or de):] if l.strip()]
+        assert all(l.strip() in ("});", "})", "}") for l in resto), f"aula {n}: linha do futuro na tela: {resto}"
     if max(len(l) for l in codigo(n).split("\n")) > 66:  # linha comprida: sem o Explorer, pra letra continuar grande
         del d["pastas"]
     if not digitar:
@@ -51,11 +61,11 @@ HEADED = [{"cmd": "npx playwright test --headed --project=chromium"}, {"out": "R
 AULAS = []
 AULAS.append(projeto(12, "MÓDULO 3 · AULA 12", "A receita de um teste - test e expect", [
     ("Agora começa o seu código. E a primeira coisa é apagar o exemplo: clica com o botão direito no example ponto spec ponto js e escolhe Delete.",
-     {"type": "menu", "app": "vscode", "barra": [], "menus": [["New File...", "New Folder...", "—", "Cut", "Copy", "—", "Rename...", "Delete"]], "caminho": [7], "pastas": ARV_EX, "ponto": [0.02, 0.18], "legenda": "Botão direito › Delete"}),
+     {"type": "menu", "app": "vscode", "barra": [], "menus": [["New File...", "New Folder...", "—", "Cut", "Copy", "—", "Rename...", "Delete"]], "caminho": [7], "pastas": ARV_EX, "apaga": "example.spec.js", "ponto": [0.02, 0.18], "legenda": "Botão direito › Delete"}),
     ("Na pasta tests, cria um arquivo novo: login ponto spec ponto js.",
-     {"type": "menu", "app": "vscode", "barra": [], "menus": [["New File...", "New Folder...", "—", "Cut", "Copy", "—", "Rename..."]], "caminho": [0], "pastas": ARV_SEM[:4], "ponto": [0.02, 0.12], "resultado": "arquivo", "novo": "login.spec.js", "novo_nivel": 2, "legenda": "tests › New File › login.spec.js"}),
+     {"type": "menu", "app": "vscode", "barra": [], "menus": [["New File...", "New Folder...", "—", "Cut", "Copy", "—", "Rename..."]], "caminho": [0], "pastas": ARV_SEM, "novo_pos": 4, "ponto": [0.02, 0.12], "resultado": "arquivo", "novo": "login.spec.js", "novo_nivel": 2, "legenda": "tests › New File › login.spec.js"}),
     ("Primeira linha: import, chaves, test, vírgula, expect, fecha chaves, from, e entre aspas arroba playwright barra test. Ela traz duas ferramentas: o test, pra criar um teste, e o expect, pra conferir.",
-     ed(12, "A primeira linha", ate=1, colinha=True, codigo=codigo(12).split("\n")[0])),
+     ed(12, "A primeira linha", ate=1, colinha=True, ate_linha=1, fecha=False)),
     ("Agora o teste: test, abre parênteses, o nome do teste entre aspas, entra com usuário e senha, vírgula, async, abre parênteses, abre chaves, page, fecha chaves, fecha parênteses, seta, e abre chaves. E lá embaixo, fecha com chave, parêntese e ponto e vírgula.",
      ed(12, "O esqueleto do teste", de=3)),
     ("Calma, eu explico cada pedaço. O nome entre aspas aparece no relatório, então escreve o que o teste faz, em português mesmo.", ed(12, "O nome aparece no relatório", digitar=False, destaque=[3], destaque_em=0.8)),
@@ -81,7 +91,7 @@ AULAS.append(projeto(13, "MÓDULO 3 · AULA 13", "page.goto - abrindo um site", 
 AULAS.append(projeto(14, "MÓDULO 3 · AULA 14", "fill - preenchendo campos", [
     ("Hoje o robô digita usuário e senha.", titulo(14, "FILL")),
     ("Mas antes: como ele sabe qual é o campo? Olha o site: dentro do primeiro campo está escrito Username, em cinza. Isso se chama placeholder.", tela("site_sauce_user", "O texto cinza: placeholder", alvo_css="#user-name")),
-    ("E o Playwright acha campos exatamente por isso: page ponto getByPlaceholder, e entre aspas Username.", ed(14, "getByPlaceholder('Username')", de=5, ate=5, vel=0.5)),
+    ("E o Playwright acha campos exatamente por isso: page ponto getByPlaceholder, e entre aspas Username.", ed(14, "getByPlaceholder('Username')", de=5, ate=5, vel=0.5, ate_linha=5)),
     ("Depois, ponto fill, e o que digitar: standard underline user, o usuário de treino que o próprio site mostra embaixo.", tela("site_sauce_cred", "O site mostra o usuário de treino", alvo="standard_user")),
     ("O fill apaga o que tiver no campo e digita o texto novo.", dict({"type": "cards", "itens": [["⌫", "Apaga", "o que tinha"], ["⌨", "Digita", "o texto novo", "#69a7ff"]]}, colinha=True, colinha_em=1.0)),
     ("A senha é igual: getByPlaceholder Password, fill secret underline sauce.", ed(14, "A senha é igual", de=6, ate=6)),
@@ -93,7 +103,7 @@ AULAS.append(projeto(14, "MÓDULO 3 · AULA 14", "fill - preenchendo campos", [
 AULAS.append(projeto(15, "MÓDULO 3 · AULA 15", "click e expect - conferindo o resultado", [
     ("Hoje o teste fica completo: clicar e conferir.", titulo(15, "CLICK E EXPECT")),
     ("Pra achar o botão, a gente usa o getByRole: o papel dele é button, de botão, e o nome é o texto escrito nele, Login.", tela("site_sauce_botao", "Papel: botão · Nome: Login", alvo_css="#login-button")),
-    ("Digita: await page ponto getByRole, abre parênteses, aspas button, vírgula, chaves, name dois pontos, aspas Login, fecha tudo, ponto click.", ed(15, "getByRole('button', { name: 'Login' })", de=7, ate=7)),
+    ("Digita: await page ponto getByRole, abre parênteses, aspas button, vírgula, chaves, name dois pontos, aspas Login, fecha tudo, ponto click.", ed(15, "getByRole('button', { name: 'Login' })", de=7, ate=7, ate_linha=7)),
     ("Agora a parte mais importante do teste: a conferência. Se logou, o endereço do site muda pra inventory.",
      tela("site_sauce_products", "O endereço mudou pra inventory", acoes=LOGIN, alvo="Products", titulo_t="saucedemo.com/inventory.html")),
     ("Então: await expect, abre parênteses, page, fecha parênteses, ponto toHaveURL, e entre barras, inventory. Essas barras criam uma busca por padrão. Nesse caso, a gente está dizendo que a URL precisa ter a palavra inventory em algum lugar.",
@@ -107,9 +117,9 @@ AULAS.append(projeto(15, "MÓDULO 3 · AULA 15", "click e expect - conferindo o 
 
 AULAS.append(projeto(16, "MÓDULO 3 · AULA 16", "Os expect mais usados", [
     ("O expect é o coração do teste, então vale conhecer os mais usados.", titulo(16, "OS EXPECT")),
-    ("toHaveURL você já conhece: confere o endereço.", ed(16, "toHaveURL: o endereço", digitar=False, destaque=[8], destaque_em=0.8, codigo="\n".join(codigo(16).split("\n")[:8] + ["});"]))),
-    ("toBeVisible confere se algo está aparecendo na tela. Por exemplo, o título Products: await expect, page ponto getByText Products, ponto toBeVisible.", ed(16, "toBeVisible: está aparecendo", de=9, ate=9, colinha=True)),
-    ("toContainText confere se um texto aparece no meio de outro. O nome do primeiro produto contém Backpack: await expect, e ponto toContainText Backpack.", ed(16, "toContainText: tem esse texto", de=10, ate=10)),
+    ("toHaveURL você já conhece: confere o endereço.", ed(16, "toHaveURL: o endereço", digitar=False, destaque=[8], destaque_em=0.8, ate_linha=8)),
+    ("toBeVisible confere se algo está aparecendo na tela. Por exemplo, o título Products: await expect, page ponto getByText Products, ponto toBeVisible.", ed(16, "toBeVisible: está aparecendo", de=9, ate=9, colinha=True, ate_linha=9)),
+    ("toContainText confere se um texto aparece no meio de outro. O nome do primeiro produto contém Backpack: await expect, e ponto toContainText Backpack.", ed(16, "toContainText: tem esse texto", de=10, ate=10, ate_linha=10)),
     ("E toHaveCount confere quantos existem. Na loja tem seis botões Add to cart, um pra cada produto: await expect, getByRole button Add to cart, ponto toHaveCount seis.", ed(16, "toHaveCount: quantos existem", de=11, ate=11)),
     ("Tem também o toHaveText, que confere o texto exato, e o not, que faz o contrário de qualquer um. Todos estão na sua colinha.",
      dict({"type": "cards", "itens": [["=", "toHaveText", "o texto exato"], ["!", "not", "o contrário", "#ff6b6b"]]}, colinha=True, colinha_em=1.0)),
