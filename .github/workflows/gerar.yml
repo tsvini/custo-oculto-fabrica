@@ -138,7 +138,7 @@ jobs:
             if [ -n "$VOZ" ]; then
               python -m fabrica.gerar "$p" --formato "$FORMATO" --modo "$MODO" --voz "$VOZ" && ok=1 || falhou="$falhou $p"
             else
-              python -m fabrica.gerar "$p" --formato "$FORMATO" --modo "$MODO" && ok=1 || falhou="$falhou $p"
+              python -m fabrica.gerar "$p" --formato "$FORMATO" --modo "$MODO" 2>&1 | tee "log_$p.txt"; if [ "${PIPESTATUS[0]}" = 0 ]; then ok=1; else falhou="$falhou $p"; tail -25 "log_$p.txt" | while IFS= read -r l; do echo "::warning title=erro $p::$l"; done; fi
             fi
           done
           # um projeto com problema não derruba os outros
