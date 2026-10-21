@@ -34,7 +34,7 @@ def projeto(n, selo, titulo_aula, frases):
 
 
 def term(linhas, legenda=None, pasta="C:\\Users\\voce", titulo=None):
-    d = {"type": "terminal", "pasta": pasta, "linhas": linhas}
+    d = {"type": "terminal", "pasta": pasta, "linhas": linhas, "titulo": "Windows PowerShell"}
     if legenda:
         d["legenda"] = legenda
     if titulo:
@@ -171,17 +171,17 @@ AULAS.append(projeto(6, "MÓDULO 1 · AULA 6", "Instalando no Mac e no Linux", [
     ("O Node: em nodejs ponto org, baixa a versão LTS pra Mac e vai clicando em continuar.",
      {"type": "tela", "media": "site_node", "url": "https://nodejs.org/", "alvo": "LTS", "titulo": "nodejs.org", "zoom_em": 1.6, "caixa_em": 2.4, "legenda": "Versão LTS pra Mac"}),
     ("O Git é o mais fácil: digita git traço traço version no terminal. Se não tiver, o próprio Mac oferece instalar.",
-     {"type": "terminal", "titulo": "Terminal", "prompt": "voce@Mac ~ %", "linhas": [{"cmd": "git --version"}, {"out": "git version 2.39.5 (Apple Git-154)", "cor": "ac"}], "legenda": "Não tem? O Mac oferece instalar"}),
+     {"type": "terminal", "titulo": "Terminal · Mac", "prompt": "voce@Mac ~ %", "linhas": [{"cmd": "git --version"}, {"out": "git version 2.39.5 (Apple Git-154)", "cor": "ac"}], "legenda": "Não tem? O Mac oferece instalar"}),
     ("Agora o Linux. Eu vou mostrar no Ubuntu. O terminal abre com Control, Alt e T.", {"type": "passo", "icone": "⌨", "titulo": "Ctrl + Alt + T", "sub": "abre o terminal no Ubuntu"}),
     ("O VS Code se instala com sudo snap install code traço traço classic. O sudo pede a sua senha do computador, e enquanto você digita não aparece nada. É normal.",
-     {"type": "terminal", "titulo": "Terminal", "prompt": "voce@ubuntu:~$", "linhas": [{"cmd": "sudo snap install code --classic"}, {"out": "[sudo] password for voce:", "cor": "mut"}, {"out": "code installed", "cor": "ac"}], "legenda": "A senha não aparece. É normal"}),
-    ("O Git, com sudo apt install git.", {"type": "terminal", "titulo": "Terminal", "prompt": "voce@ubuntu:~$", "linhas": [{"cmd": "sudo apt install git"}, {"out": "git is already the newest version", "cor": "ac"}], "legenda": "sudo apt install git"}),
+     {"type": "terminal", "titulo": "Terminal · Ubuntu", "prompt": "voce@ubuntu:~$", "linhas": [{"cmd": "sudo snap install code --classic"}, {"out": "[sudo] password for voce:", "cor": "mut"}, {"out": "code installed", "cor": "ac"}], "legenda": "A senha não aparece. É normal"}),
+    ("O Git, com sudo apt install git.", {"type": "terminal", "titulo": "Terminal · Ubuntu", "prompt": "voce@ubuntu:~$", "linhas": [{"cmd": "sudo apt install git"}, {"out": "git is already the newest version", "cor": "ac"}], "legenda": "sudo apt install git"}),
     ("O Node, no Ubuntu, a gente instala com uma ferramenta chamada nvm, porque o que vem pelo apt costuma ser antigo. São três comandos, e eles estão aqui na tela e na descrição da aula.",
-     {"type": "terminal", "titulo": "Terminal", "prompt": "$", "linhas": [{"cmd": NVM}, {"out": "=> nvm source string already in ~/.bashrc", "cor": "mut"}, {"cmd": "\\. \"$HOME/.nvm/nvm.sh\""}, {"cmd": "nvm install --lts"}, {"out": "Now using node v22.21.0 (npm v10.9.4)", "cor": "ac"}], "legenda": "Os 3 comandos estão na descrição", "colinha": False}),
+     {"type": "terminal", "titulo": "Terminal · Ubuntu", "prompt": "voce@ubuntu:~$", "linhas": [{"cmd": NVM}, {"out": "=> nvm source string already in ~/.bashrc", "cor": "mut"}, {"cmd": "\\. \"$HOME/.nvm/nvm.sh\""}, {"cmd": "nvm install --lts"}, {"out": "Now using node v22.21.0 (npm v10.9.4)", "cor": "ac"}], "legenda": "Os 3 comandos estão na descrição", "colinha": False}),
     ("E tem um detalhe que é só do Linux. Quando a gente instalar o Playwright, ele vai pedir umas bibliotecas do sistema. Lá na hora, eu te mostro o comando que resolve.",
      {"type": "cards", "titulo": "SÓ NO LINUX", "itens": [["!", "Bibliotecas", "o Playwright vai pedir"], ["✓", "Na hora certa", "eu mostro o comando", "#ffd23f"]]}),
     ("Pra conferir: node traço v, npm traço v e git traço traço version.",
-     {"type": "terminal", "titulo": "Terminal", "prompt": "$", "linhas": [{"cmd": "node -v"}, {"out": "v22.21.0", "cor": "ac"}, {"cmd": "npm -v"}, {"out": "10.9.4", "cor": "ac"}, {"cmd": "git --version"}, {"out": "git version 2.43.0", "cor": "ac"}], "legenda": "Um número em cada? Tudo certo"}),
+     {"type": "terminal", "titulo": "Terminal · Ubuntu", "prompt": "voce@ubuntu:~$", "linhas": [{"cmd": "node -v"}, {"out": "v22.21.0", "cor": "ac"}, {"cmd": "npm -v"}, {"out": "10.9.4", "cor": "ac"}, {"cmd": "git --version"}, {"out": "git version 2.43.0", "cor": "ac"}], "legenda": "Um número em cada? Tudo certo"}),
     ("Todos os comandos estão na descrição da aula. Até o módulo dois!", {"type": "endcard", "sub": "PRÓXIMA: MÓDULO 2"}),
 ]))
 

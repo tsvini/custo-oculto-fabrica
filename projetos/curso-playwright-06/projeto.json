@@ -124,7 +124,7 @@
        "text": "O Git é o mais fácil: digita git traço traço version no terminal. Se não tiver, o próprio Mac oferece instalar.",
        "scene": {
         "type": "terminal",
-        "titulo": "Terminal",
+        "titulo": "Terminal · Mac",
         "prompt": "voce@Mac ~ %",
         "linhas": [
          {
@@ -151,7 +151,7 @@
        "text": "O VS Code se instala com sudo snap install code traço traço classic. O sudo pede a sua senha do computador, e enquanto você digita não aparece nada. É normal.",
        "scene": {
         "type": "terminal",
-        "titulo": "Terminal",
+        "titulo": "Terminal · Ubuntu",
         "prompt": "voce@ubuntu:~$",
         "linhas": [
          {
@@ -173,7 +173,7 @@
        "text": "O Git, com sudo apt install git.",
        "scene": {
         "type": "terminal",
-        "titulo": "Terminal",
+        "titulo": "Terminal · Ubuntu",
         "prompt": "voce@ubuntu:~$",
         "linhas": [
          {
@@ -191,8 +191,8 @@
        "text": "O Node, no Ubuntu, a gente instala com uma ferramenta chamada nvm, porque o que vem pelo apt costuma ser antigo. São três comandos, e eles estão aqui na tela e na descrição da aula.",
        "scene": {
         "type": "terminal",
-        "titulo": "Terminal",
-        "prompt": "$",
+        "titulo": "Terminal · Ubuntu",
+        "prompt": "voce@ubuntu:~$",
         "linhas": [
          {
           "cmd": "curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.8/install.sh | bash"
@@ -240,8 +240,8 @@
        "text": "Pra conferir: node traço v, npm traço v e git traço traço version.",
        "scene": {
         "type": "terminal",
-        "titulo": "Terminal",
-        "prompt": "$",
+        "titulo": "Terminal · Ubuntu",
+        "prompt": "voce@ubuntu:~$",
         "linhas": [
          {
           "cmd": "node -v"

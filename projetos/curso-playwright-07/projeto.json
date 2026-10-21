@@ -73,6 +73,7 @@
           "cor": "red"
          }
         ],
+        "titulo": "Windows PowerShell",
         "legenda": "Erro 1: não é reconhecido"
        }
       },
@@ -120,6 +121,7 @@
           "cor": "red"
          }
         ],
+        "titulo": "Windows PowerShell",
         "legenda": "Erro 2: scripts desabilitados"
        }
       },
@@ -155,6 +157,7 @@
           "cor": "yel"
          }
         ],
+        "titulo": "Windows PowerShell",
         "legenda": "Erro 3: faltam os navegadores"
        }
       },
@@ -179,6 +182,7 @@
           "cmd": "npx playwright install --with-deps"
          }
         ],
+        "titulo": "Windows PowerShell",
         "legenda": "npx playwright install"
        }
       },
@@ -203,6 +207,7 @@
           "cmd": "cd meu-primeiro-playwright"
          }
         ],
+        "titulo": "Windows PowerShell",
         "legenda": "O caminho tem que ser o do projeto"
        }
       },
