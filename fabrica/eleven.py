@@ -78,7 +78,13 @@ def main(nome):
         aviso("ElevenLabs", "falta o secret ELEVENLABS_KEY no GitHub"); return
     H = {"xi-api-key": key}
     pasta_audio = os.path.join(pasta, "audio"); os.makedirs(pasta_audio, exist_ok=True)
-    faltam = [(n, t) for n, t in textos(p) if not achar_audio(pasta_audio, n)]
+    # o texto de cada áudio fica salvo ao lado (<nome>.txt): se o roteiro mudou, o áudio é gerado de novo
+    def mudou(n, t):
+        ft = os.path.join(pasta_audio, f"{n}.txt")
+        return os.path.exists(ft) and open(ft, encoding="utf8").read() != t
+    faltam = [(n, t) for n, t in textos(p) if not achar_audio(pasta_audio, n) or mudou(n, t)]
+    if any(mudou(n, t) for n, t in faltam):
+        nota("ElevenLabs", "roteiro mudou: regerando " + ", ".join(n for n, t in faltam if mudou(n, t)))
     if not faltam:
         nota("ElevenLabs", "todos os áudios já existem, nada gerado"); return
 
@@ -134,6 +140,7 @@ def main(nome):
                             "-filter_complex", "[0:a]aresample=44100,aformat=channel_layouts=mono[a0];[2:a]aresample=44100,aformat=channel_layouts=mono[a2];[a0][1:a][a2]concat=n=3:v=0:a=1",
                             "-b:a", "128k", tmp], check=True)
             shutil.move(tmp, destino)
+        open(os.path.join(pasta_audio, f"{n}.txt"), "w", encoding="utf8").write(t)
         feitos.append(n); print(f"  {n}.mp3 ({len(t)} caracteres)", flush=True)
     nota("ElevenLabs", f"gerados: {', '.join(feitos)}")
 
