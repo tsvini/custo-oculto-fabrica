@@ -1,18 +1,14 @@
 {
- "atualizado": "21/10/2026 12:36",
+ "atualizado": "21/10/2026 21:53",
  "fontes": {
   "custo_oculto": {
    "seguidores": 11,
    "views_total": 4632,
    "videos": 31,
-   "views_28d": 4625,
-   "views_7d": 3771,
+   "views_28d": 4645,
+   "views_7d": 1702,
    "seguidores_28d": 15,
    "dia": [
-    [
-     "2026-09-23",
-     0
-    ],
     [
      "2026-09-24",
      0
@@ -112,6 +108,10 @@
     [
      "2026-10-18",
      140
+    ],
+    [
+     "2026-10-19",
+     20
     ]
    ],
    "top": [
@@ -132,7 +132,7 @@
     {
      "titulo": "2/7 Adam Neumann vendeu uma visão — e bilhões acreditaram",
      "url": "https://youtu.be/KwwgU40ljtE",
-     "views": 390,
+     "views": 391,
      "retencao": 37,
      "likes": 7
     },
@@ -168,14 +168,10 @@
    "seguidores": 0,
    "views_total": 5,
    "videos": 2,
-   "views_28d": 0,
-   "views_7d": 0,
+   "views_28d": 5,
+   "views_7d": 5,
    "seguidores_28d": 0,
    "dia": [
-    [
-     "2026-09-23",
-     0
-    ],
     [
      "2026-09-24",
      0
@@ -275,29 +271,47 @@
     [
      "2026-10-18",
      0
+    ],
+    [
+     "2026-10-19",
+     5
     ]
    ],
-   "top": [],
+   "top": [
+    {
+     "titulo": "Você não precisa saber programar pra automatizar teste",
+     "url": "https://youtu.be/1hbvry7AlKk",
+     "views": 5,
+     "retencao": 0,
+     "likes": 0
+    }
+   ],
    "nome": "Vini QA (YouTube)"
   },
   "tiktok": {
    "usuario": "Custo Oculto",
-   "seguidores": 17,
-   "curtidas": 193,
-   "videos": 12,
-   "views_total": 4098,
+   "seguidores": 30,
+   "curtidas": 220,
+   "videos": 13,
+   "views_total": 4647,
    "top": [
+    {
+     "titulo": "Duas rivais gigantes se juntaram e criaram uma potência brasileira. 🍺 Mas a fusão entre Br",
+     "url": "https://www.tiktok.com/@custooculto/video/7699229452231773460?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
+     "views": 371,
+     "likes": 15
+    },
     {
      "titulo": "A Sadia perdeu bilhões apostando no dólar. Pouco depois, acabou se unindo à maior rival: a",
      "url": "https://www.tiktok.com/@custooculto/video/7698857265817849108?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 93,
+     "views": 125,
      "likes": 1
     },
     {
      "titulo": "A Nestlé comprou a Garoto. O Cade proibiu. Mas a compra já tinha acontecido 🍫 Você sabia q",
      "url": "https://www.tiktok.com/@custooculto/video/7698432599659744533?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 1134,
-     "likes": 70
+     "views": 1276,
+     "likes": 81
     },
     {
      "titulo": "Nos anos 90, a Kolynos vendia o dobro da Colgate no Brasil. Em 1995, a Colgate comprou a r",
@@ -314,14 +328,8 @@
     {
      "titulo": "Numa noite de janeiro, a Americanas anunciou um rombo de R$ 20 bilhões e o presidente, com",
      "url": "https://www.tiktok.com/@custooculto/video/7697282259216387346?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 214,
+     "views": 217,
      "likes": 21
-    },
-    {
-     "titulo": "Banco Master, parte 3: a liquidação, a operação da PF e a conta de R$ 41 bilhões do FGC. N",
-     "url": "https://www.tiktok.com/@custooculto/video/7697250527561747764?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 308,
-     "likes": 23
     }
    ],
    "nome": "TikTok @custooculto"
@@ -359,53 +367,6 @@
   }
  },
  "agenda": [
-  {
-   "quando": "2026-10-21T18:00:00-03:00",
-   "plataforma": "Custo Oculto (YouTube)",
-   "chave": "custo_oculto",
-   "titulo": "Brahma e Antarctica viraram uma só e ficaram com 3 de cada 4 cervejas do Brasil #shorts",
-   "tipo": "short",
-   "id": "ambev_short1",
-   "url": "https://studio.youtube.com/video/-GZbd2Z6gak/edit"
-  },
-  {
-   "quando": "2026-10-21T18:00:00-03:00",
-   "plataforma": "Instagram",
-   "chave": "instagram",
-   "titulo": "Brahma e Antarctica viraram uma só e ficaram com 3 de cada 4 cervejas do Brasil",
-   "tipo": "short",
-   "id": "ambev_short1",
-   "url": "https://raw.githubusercontent.com/tsvini/custo-oculto-midia/030d598eb366ec88c366b46f7ecdf7dbb4cfa231/ambev/ambev_short1.mp4"
-  },
-  {
-   "quando": "2026-10-21T18:00:00-03:00",
-   "plataforma": "Facebook",
-   "chave": "facebook",
-   "titulo": "Brahma e Antarctica viraram uma só e ficaram com 3 de cada 4 cervejas do Brasil",
-   "tipo": "short",
-   "id": "ambev_short1",
-   "url": "https://raw.githubusercontent.com/tsvini/custo-oculto-midia/030d598eb366ec88c366b46f7ecdf7dbb4cfa231/ambev/ambev_short1.mp4"
-  },
-  {
-   "quando": "2026-10-21T18:00:00-03:00",
-   "plataforma": "TikTok",
-   "chave": "tiktok",
-   "titulo": "Brahma e Antarctica viraram uma só e ficaram com 3 de cada 4 cervejas do Brasil",
-   "tipo": "short",
-   "id": "ambev_short1",
-   "url": "https://raw.githubusercontent.com/tsvini/custo-oculto-midia/030d598eb366ec88c366b46f7ecdf7dbb4cfa231/ambev/ambev_short1.mp4"
-  },
-  {
-   "quando": "2026-10-21T19:00:00-03:00",
-   "titulo": "O ex-presidente da Americanas foi preso na Espanha · PAUSADO (rascunho)",
-   "tipo": "metricool",
-   "id": "metricool",
-   "url": "https://app.metricool.com/planner",
-   "plataforma_rede": "tiktok",
-   "chave": "tiktok",
-   "plataforma": "TikTok (Metricool)",
-   "sem_cancelar": true
-  },
   {
    "quando": "2026-10-22T08:00:00-03:00",
    "plataforma": "Hidden Cost (YouTube EN)",
