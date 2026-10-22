@@ -1,10 +1,10 @@
 {
- "atualizado": "21/10/2026 21:53",
+ "atualizado": "22/10/2026 12:39",
  "fontes": {
   "custo_oculto": {
    "seguidores": 11,
-   "views_total": 4632,
-   "videos": 31,
+   "views_total": 4726,
+   "videos": 32,
    "views_28d": 4645,
    "views_7d": 1702,
    "seguidores_28d": 15,
@@ -156,7 +156,7 @@
   "hidden_cost": {
    "seguidores": 0,
    "views_total": 12,
-   "videos": 8,
+   "videos": 9,
    "views_28d": 0,
    "views_7d": 0,
    "seguidores_28d": 0,
@@ -166,7 +166,7 @@
   },
   "vini_qa": {
    "seguidores": 0,
-   "views_total": 5,
+   "views_total": 17,
    "videos": 2,
    "views_28d": 5,
    "views_7d": 5,
@@ -290,28 +290,28 @@
   },
   "tiktok": {
    "usuario": "Custo Oculto",
-   "seguidores": 30,
-   "curtidas": 220,
+   "seguidores": 49,
+   "curtidas": 251,
    "videos": 13,
-   "views_total": 4647,
+   "views_total": 5103,
    "top": [
     {
      "titulo": "Duas rivais gigantes se juntaram e criaram uma potência brasileira. 🍺 Mas a fusão entre Br",
      "url": "https://www.tiktok.com/@custooculto/video/7699229452231773460?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 371,
-     "likes": 15
+     "views": 556,
+     "likes": 20
     },
     {
      "titulo": "A Sadia perdeu bilhões apostando no dólar. Pouco depois, acabou se unindo à maior rival: a",
      "url": "https://www.tiktok.com/@custooculto/video/7698857265817849108?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 125,
+     "views": 126,
      "likes": 1
     },
     {
      "titulo": "A Nestlé comprou a Garoto. O Cade proibiu. Mas a compra já tinha acontecido 🍫 Você sabia q",
      "url": "https://www.tiktok.com/@custooculto/video/7698432599659744533?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 1276,
-     "likes": 81
+     "views": 1541,
+     "likes": 107
     },
     {
      "titulo": "Nos anos 90, a Kolynos vendia o dobro da Colgate no Brasil. Em 1995, a Colgate comprou a r",
@@ -322,7 +322,7 @@
     {
      "titulo": "Banco Master, parte final: onde está o caso hoje e o custo oculto que sobra pra todo mundo",
      "url": "https://www.tiktok.com/@custooculto/video/7697621451171450113?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 169,
+     "views": 170,
      "likes": 11
     },
     {
@@ -367,15 +367,6 @@
   }
  },
  "agenda": [
-  {
-   "quando": "2026-10-22T08:00:00-03:00",
-   "plataforma": "Hidden Cost (YouTube EN)",
-   "chave": "hidden_cost",
-   "titulo": "WeWork Rented Desks. Investors Thought It Was Tech (part 1) #shorts",
-   "tipo": "serie",
-   "id": "wework_serie1",
-   "url": "https://studio.youtube.com/video/3KPkddYjUeY/edit"
-  },
   {
    "quando": "2026-10-22T18:00:00-03:00",
    "plataforma": "Custo Oculto (YouTube)",
