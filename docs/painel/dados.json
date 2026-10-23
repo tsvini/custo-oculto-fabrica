@@ -1,9 +1,9 @@
 {
- "atualizado": "22/10/2026 21:56",
+ "atualizado": "23/10/2026 12:27",
  "fontes": {
   "custo_oculto": {
-   "seguidores": 11,
-   "views_total": 4726,
+   "seguidores": 12,
+   "views_total": 4747,
    "videos": 33,
    "views_28d": 4651,
    "views_7d": 1588,
@@ -125,7 +125,7 @@
     {
      "titulo": "Banco Master: parte 1 de 4 #shorts",
      "url": "https://youtu.be/xQAsC7S2KO8",
-     "views": 709,
+     "views": 708,
      "retencao": 76,
      "likes": 41
     },
@@ -155,8 +155,8 @@
   },
   "hidden_cost": {
    "seguidores": 0,
-   "views_total": 13,
-   "videos": 9,
+   "views_total": 15,
+   "videos": 10,
    "views_28d": 0,
    "views_7d": 0,
    "seguidores_28d": 0,
@@ -166,8 +166,8 @@
   },
   "vini_qa": {
    "seguidores": 0,
-   "views_total": 17,
-   "videos": 2,
+   "views_total": 25,
+   "videos": 3,
    "views_28d": 11,
    "views_7d": 11,
    "seguidores_28d": 0,
@@ -291,15 +291,15 @@
   "tiktok": {
    "usuario": "Custo Oculto",
    "seguidores": 50,
-   "curtidas": 256,
+   "curtidas": 259,
    "videos": 14,
-   "views_total": 5181,
+   "views_total": 5301,
    "top": [
     {
      "titulo": "A Blockbuster dominava o mercado. A Netflix era só uma aposta. Anos depois, uma delas viro",
      "url": "https://www.tiktok.com/@custooculto/video/7699596334155713812?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 65,
-     "likes": 5
+     "views": 173,
+     "likes": 8
     },
     {
      "titulo": "Duas rivais gigantes se juntaram e criaram uma potência brasileira. 🍺 Mas a fusão entre Br",
@@ -310,19 +310,19 @@
     {
      "titulo": "A Sadia perdeu bilhões apostando no dólar. Pouco depois, acabou se unindo à maior rival: a",
      "url": "https://www.tiktok.com/@custooculto/video/7698857265817849108?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 135,
+     "views": 139,
      "likes": 1
     },
     {
      "titulo": "A Nestlé comprou a Garoto. O Cade proibiu. Mas a compra já tinha acontecido 🍫 Você sabia q",
      "url": "https://www.tiktok.com/@custooculto/video/7698432599659744533?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 1542,
+     "views": 1548,
      "likes": 107
     },
     {
      "titulo": "Nos anos 90, a Kolynos vendia o dobro da Colgate no Brasil. Em 1995, a Colgate comprou a r",
      "url": "https://www.tiktok.com/@custooculto/video/7697792320804097300?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 361,
+     "views": 362,
      "likes": 10
     },
     {
@@ -367,24 +367,6 @@
   }
  },
  "agenda": [
-  {
-   "quando": "2026-10-23T08:00:00-03:00",
-   "plataforma": "Hidden Cost (YouTube EN)",
-   "chave": "hidden_cost",
-   "titulo": "WeWork Was Worth $47 Billion. Then Investors Read the IPO Filing (part 2) #shorts",
-   "tipo": "serie",
-   "id": "wework_serie2",
-   "url": "https://studio.youtube.com/video/si9RkGbmMko/edit"
-  },
-  {
-   "quando": "2026-10-23T12:00:00-03:00",
-   "plataforma": "Vini QA (YouTube)",
-   "chave": "vini_qa",
-   "titulo": "Como achar o nome de qualquer botão",
-   "tipo": "short",
-   "id": "kzc27cwf_oo",
-   "url": "https://studio.youtube.com/video/kzc27cwf_oo/edit"
-  },
   {
    "quando": "2026-10-23T18:00:00-03:00",
    "plataforma": "Custo Oculto (YouTube)",
