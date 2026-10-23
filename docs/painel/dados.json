@@ -1,18 +1,14 @@
 {
- "atualizado": "22/10/2026 12:39",
+ "atualizado": "22/10/2026 21:56",
  "fontes": {
   "custo_oculto": {
    "seguidores": 11,
    "views_total": 4726,
-   "videos": 32,
-   "views_28d": 4645,
-   "views_7d": 1702,
+   "videos": 33,
+   "views_28d": 4651,
+   "views_7d": 1588,
    "seguidores_28d": 15,
    "dia": [
-    [
-     "2026-09-24",
-     0
-    ],
     [
      "2026-09-25",
      0
@@ -112,13 +108,17 @@
     [
      "2026-10-19",
      20
+    ],
+    [
+     "2026-10-20",
+     6
     ]
    ],
    "top": [
     {
      "titulo": "Essa pasta de dente vendia o dobro da Colgate #shorts",
      "url": "https://youtu.be/sdWbo_dK2oE",
-     "views": 1052,
+     "views": 1053,
      "retencao": 48,
      "likes": 9
     },
@@ -155,7 +155,7 @@
   },
   "hidden_cost": {
    "seguidores": 0,
-   "views_total": 12,
+   "views_total": 13,
    "videos": 9,
    "views_28d": 0,
    "views_7d": 0,
@@ -168,14 +168,10 @@
    "seguidores": 0,
    "views_total": 17,
    "videos": 2,
-   "views_28d": 5,
-   "views_7d": 5,
+   "views_28d": 11,
+   "views_7d": 11,
    "seguidores_28d": 0,
    "dia": [
-    [
-     "2026-09-24",
-     0
-    ],
     [
      "2026-09-25",
      0
@@ -275,14 +271,18 @@
     [
      "2026-10-19",
      5
+    ],
+    [
+     "2026-10-20",
+     6
     ]
    ],
    "top": [
     {
      "titulo": "Você não precisa saber programar pra automatizar teste",
      "url": "https://youtu.be/1hbvry7AlKk",
-     "views": 5,
-     "retencao": 0,
+     "views": 11,
+     "retencao": 28,
      "likes": 0
     }
    ],
@@ -290,33 +290,39 @@
   },
   "tiktok": {
    "usuario": "Custo Oculto",
-   "seguidores": 49,
-   "curtidas": 251,
-   "videos": 13,
-   "views_total": 5103,
+   "seguidores": 50,
+   "curtidas": 256,
+   "videos": 14,
+   "views_total": 5181,
    "top": [
+    {
+     "titulo": "A Blockbuster dominava o mercado. A Netflix era só uma aposta. Anos depois, uma delas viro",
+     "url": "https://www.tiktok.com/@custooculto/video/7699596334155713812?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
+     "views": 65,
+     "likes": 5
+    },
     {
      "titulo": "Duas rivais gigantes se juntaram e criaram uma potência brasileira. 🍺 Mas a fusão entre Br",
      "url": "https://www.tiktok.com/@custooculto/video/7699229452231773460?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 556,
+     "views": 558,
      "likes": 20
     },
     {
      "titulo": "A Sadia perdeu bilhões apostando no dólar. Pouco depois, acabou se unindo à maior rival: a",
      "url": "https://www.tiktok.com/@custooculto/video/7698857265817849108?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 126,
+     "views": 135,
      "likes": 1
     },
     {
      "titulo": "A Nestlé comprou a Garoto. O Cade proibiu. Mas a compra já tinha acontecido 🍫 Você sabia q",
      "url": "https://www.tiktok.com/@custooculto/video/7698432599659744533?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 1541,
+     "views": 1542,
      "likes": 107
     },
     {
      "titulo": "Nos anos 90, a Kolynos vendia o dobro da Colgate no Brasil. Em 1995, a Colgate comprou a r",
      "url": "https://www.tiktok.com/@custooculto/video/7697792320804097300?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 360,
+     "views": 361,
      "likes": 10
     },
     {
@@ -324,12 +330,6 @@
      "url": "https://www.tiktok.com/@custooculto/video/7697621451171450113?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
      "views": 170,
      "likes": 11
-    },
-    {
-     "titulo": "Numa noite de janeiro, a Americanas anunciou um rombo de R$ 20 bilhões e o presidente, com",
-     "url": "https://www.tiktok.com/@custooculto/video/7697282259216387346?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 217,
-     "likes": 21
     }
    ],
    "nome": "TikTok @custooculto"
@@ -367,53 +367,6 @@
   }
  },
  "agenda": [
-  {
-   "quando": "2026-10-22T18:00:00-03:00",
-   "plataforma": "Custo Oculto (YouTube)",
-   "chave": "custo_oculto",
-   "titulo": "A Blockbuster podia ter comprado a Netflix por 50 milhões de dólares. E recusou #shorts",
-   "tipo": "short",
-   "id": "blockbuster_short1",
-   "url": "https://studio.youtube.com/video/r9t1a5rQW8U/edit"
-  },
-  {
-   "quando": "2026-10-22T18:00:00-03:00",
-   "plataforma": "Instagram",
-   "chave": "instagram",
-   "titulo": "A Blockbuster podia ter comprado a Netflix por 50 milhões de dólares. E recusou",
-   "tipo": "short",
-   "id": "blockbuster_short1",
-   "url": "https://raw.githubusercontent.com/tsvini/custo-oculto-midia/dd79ac48d8afcc7e42a8292ad7df4ed12ad2f1b8/blockbuster/blockbuster_short1.mp4"
-  },
-  {
-   "quando": "2026-10-22T18:00:00-03:00",
-   "plataforma": "Facebook",
-   "chave": "facebook",
-   "titulo": "A Blockbuster podia ter comprado a Netflix por 50 milhões de dólares. E recusou",
-   "tipo": "short",
-   "id": "blockbuster_short1",
-   "url": "https://raw.githubusercontent.com/tsvini/custo-oculto-midia/dd79ac48d8afcc7e42a8292ad7df4ed12ad2f1b8/blockbuster/blockbuster_short1.mp4"
-  },
-  {
-   "quando": "2026-10-22T18:00:00-03:00",
-   "plataforma": "TikTok",
-   "chave": "tiktok",
-   "titulo": "A Blockbuster podia ter comprado a Netflix por 50 milhões de dólares. E recusou",
-   "tipo": "short",
-   "id": "blockbuster_short1",
-   "url": "https://raw.githubusercontent.com/tsvini/custo-oculto-midia/dd79ac48d8afcc7e42a8292ad7df4ed12ad2f1b8/blockbuster/blockbuster_short1.mp4"
-  },
-  {
-   "quando": "2026-10-22T19:00:00-03:00",
-   "titulo": "Esse CDB pagava 140% do CDI. Era bom demais. · PAUSADO (rascunho)",
-   "tipo": "metricool",
-   "id": "metricool",
-   "url": "https://app.metricool.com/planner",
-   "plataforma_rede": "tiktok",
-   "chave": "tiktok",
-   "plataforma": "TikTok (Metricool)",
-   "sem_cancelar": true
-  },
   {
    "quando": "2026-10-23T08:00:00-03:00",
    "plataforma": "Hidden Cost (YouTube EN)",
