@@ -1,5 +1,5 @@
 {
- "data": "2026-10-23",
+ "data": "2026-10-24",
  "por_formato_12m": [
   {
    "creatorContentType": "creatorContentTypeUnspecified",
@@ -9,38 +9,32 @@
   },
   {
    "creatorContentType": "shorts",
-   "views": 4613,
-   "estimatedMinutesWatched": 1103,
+   "views": 4701,
+   "estimatedMinutesWatched": 1131,
    "subscribersGained": 12
   },
   {
    "creatorContentType": "videoOnDemand",
-   "views": 41,
-   "estimatedMinutesWatched": 90,
+   "views": 44,
+   "estimatedMinutesWatched": 97,
    "subscribersGained": 1
   }
  ],
  "por_formato_7d": [
   {
    "creatorContentType": "shorts",
-   "views": 665,
-   "estimatedMinutesWatched": 300,
+   "views": 706,
+   "estimatedMinutesWatched": 219,
    "subscribersGained": 0
   },
   {
    "creatorContentType": "videoOnDemand",
    "views": 10,
-   "estimatedMinutesWatched": 7,
+   "estimatedMinutesWatched": 14,
    "subscribersGained": 0
   }
  ],
  "dia_a_dia_28d": [
-  {
-   "day": "2026-09-25",
-   "views": 0,
-   "estimatedMinutesWatched": 0,
-   "subscribersGained": 0
-  },
   {
    "day": "2026-09-26",
    "views": 0,
@@ -175,8 +169,8 @@
   },
   {
    "day": "2026-10-18",
-   "views": 140,
-   "estimatedMinutesWatched": 42,
+   "views": 135,
+   "estimatedMinutesWatched": 41,
    "subscribersGained": 0
   },
   {
@@ -190,17 +184,23 @@
    "views": 6,
    "estimatedMinutesWatched": 0,
    "subscribersGained": 0
+  },
+  {
+   "day": "2026-10-21",
+   "views": 96,
+   "estimatedMinutesWatched": 35,
+   "subscribersGained": 0
   }
  ],
  "origem_28d": [
   {
    "insightTrafficSourceType": "SHORTS",
-   "views": 4244,
-   "estimatedMinutesWatched": 921
+   "views": 4331,
+   "estimatedMinutesWatched": 949
   },
   {
    "insightTrafficSourceType": "YT_SEARCH",
-   "views": 211,
+   "views": 216,
    "estimatedMinutesWatched": 38
   },
   {
@@ -210,7 +210,7 @@
   },
   {
    "insightTrafficSourceType": "SUBSCRIBER",
-   "views": 26,
+   "views": 27,
    "estimatedMinutesWatched": 25
   },
   {
@@ -229,14 +229,14 @@
    "estimatedMinutesWatched": 8
   },
   {
+   "insightTrafficSourceType": "RELATED_VIDEO",
+   "views": 3,
+   "estimatedMinutesWatched": 14
+  },
+  {
    "insightTrafficSourceType": "EXT_URL",
    "views": 3,
    "estimatedMinutesWatched": 2
-  },
-  {
-   "insightTrafficSourceType": "RELATED_VIDEO",
-   "views": 2,
-   "estimatedMinutesWatched": 7
   },
   {
    "insightTrafficSourceType": "SOUND_PAGE",
@@ -409,10 +409,10 @@
   },
   {
    "video": "dz3i8jILjBA",
-   "views": 291,
+   "views": 292,
    "estimatedMinutesWatched": 62,
    "averageViewDuration": 32,
-   "averageViewPercentage": 70.18,
+   "averageViewPercentage": 69.92,
    "subscribersGained": 0,
    "likes": 11,
    "comments": 1,
@@ -485,6 +485,17 @@
    "shares": 0
   },
   {
+   "video": "-GZbd2Z6gak",
+   "views": 74,
+   "estimatedMinutesWatched": 25,
+   "averageViewDuration": 35,
+   "averageViewPercentage": 51.45000000000001,
+   "subscribersGained": 0,
+   "likes": 3,
+   "comments": 0,
+   "shares": 0
+  },
+  {
    "video": "Po7fZ2-6vNg",
    "views": 53,
    "estimatedMinutesWatched": 26,
@@ -551,11 +562,22 @@
    "shares": 0
   },
   {
+   "video": "xhA47M-Ueq8",
+   "views": 20,
+   "estimatedMinutesWatched": 3,
+   "averageViewDuration": 19,
+   "averageViewPercentage": 39.39,
+   "subscribersGained": 0,
+   "likes": 0,
+   "comments": 0,
+   "shares": 0
+  },
+  {
    "video": "4WuKNxpR188",
-   "views": 14,
-   "estimatedMinutesWatched": 36,
-   "averageViewDuration": 270,
-   "averageViewPercentage": 61.61,
+   "views": 15,
+   "estimatedMinutesWatched": 43,
+   "averageViewDuration": 288,
+   "averageViewPercentage": 65.65,
    "subscribersGained": 0,
    "likes": 3,
    "comments": 0,
@@ -574,7 +596,7 @@
   },
   {
    "video": "3e-eXXCL27s",
-   "views": 11,
+   "views": 12,
    "estimatedMinutesWatched": 24,
    "averageViewDuration": 244,
    "averageViewPercentage": 48.99,
@@ -617,6 +639,17 @@
    "shares": 0
   },
   {
+   "video": "TIv6Sg8n_rI",
+   "views": 7,
+   "estimatedMinutesWatched": 11,
+   "averageViewDuration": 225,
+   "averageViewPercentage": 66.71,
+   "subscribersGained": 0,
+   "likes": 3,
+   "comments": 2,
+   "shares": 0
+  },
+  {
    "video": "ZFUM39-QiEs",
    "views": 7,
    "estimatedMinutesWatched": 0,
@@ -639,14 +672,14 @@
    "shares": 0
   },
   {
-   "video": "TIv6Sg8n_rI",
+   "video": "Wbn2Es80UJ0",
    "views": 6,
-   "estimatedMinutesWatched": 11,
-   "averageViewDuration": 225,
-   "averageViewPercentage": 66.71,
+   "estimatedMinutesWatched": 0,
+   "averageViewDuration": 40,
+   "averageViewPercentage": 101.25,
    "subscribersGained": 0,
-   "likes": 3,
-   "comments": 2,
+   "likes": 1,
+   "comments": 0,
    "shares": 0
   },
   {
@@ -661,17 +694,6 @@
    "shares": 0
   },
   {
-   "video": "Wbn2Es80UJ0",
-   "views": 6,
-   "estimatedMinutesWatched": 0,
-   "averageViewDuration": 40,
-   "averageViewPercentage": 101.25,
-   "subscribersGained": 0,
-   "likes": 1,
-   "comments": 0,
-   "shares": 0
-  },
-  {
    "video": "1IPH_5Ocy6w",
    "views": 5,
    "estimatedMinutesWatched": 0,
@@ -679,17 +701,6 @@
    "averageViewPercentage": 96.85,
    "subscribersGained": 0,
    "likes": 2,
-   "comments": 0,
-   "shares": 0
-  },
-  {
-   "video": "xhA47M-Ueq8",
-   "views": 2,
-   "estimatedMinutesWatched": 0,
-   "averageViewDuration": 8,
-   "averageViewPercentage": 16.33,
-   "subscribersGained": 0,
-   "likes": 0,
    "comments": 0,
    "shares": 0
   }
@@ -771,7 +782,7 @@
  },
  "contagem_atual": {
   "itapemirim_longo": {
-   "views": 18,
+   "views": 33,
    "likes": 3,
    "comentarios": 0,
    "status": "public"
@@ -783,7 +794,7 @@
    "status": "public"
   },
   "banco_master_longo": {
-   "views": 12,
+   "views": 28,
    "likes": 2,
    "comentarios": 3,
    "status": "public"
@@ -885,13 +896,13 @@
    "status": "private"
   },
   "wework_longo": {
-   "views": 0,
+   "views": 1,
    "likes": 0,
    "comentarios": 0,
    "status": "public"
   },
   "wework_serie1": {
-   "views": 2,
+   "views": 5,
    "likes": 0,
    "comentarios": 0,
    "status": "public"
@@ -918,7 +929,7 @@
    "views": 0,
    "likes": 0,
    "comentarios": 0,
-   "status": "private"
+   "status": "public"
   },
   "wework_short3": {
    "views": 0,
@@ -945,22 +956,22 @@
    "status": "public"
   },
   "ambev_short1": {
-   "views": 102,
+   "views": 117,
    "likes": 4,
    "comentarios": 0,
    "status": "public"
   },
   "blockbuster_short1": {
-   "views": 25,
+   "views": 29,
    "likes": 1,
    "comentarios": 0,
    "status": "public"
   },
   "kodak_digital_short1": {
-   "views": 0,
+   "views": 19,
    "likes": 0,
    "comentarios": 0,
-   "status": "private"
+   "status": "public"
   },
   "varig_short1": {
    "views": 0,
@@ -976,10 +987,10 @@
   }
  },
  "canal": {
-  "viewCount": "4747",
+  "viewCount": "4827",
   "subscriberCount": "12",
   "hiddenSubscriberCount": false,
-  "videoCount": "33"
+  "videoCount": "34"
  },
  "todos_os_videos": [
   {
@@ -989,7 +1000,7 @@
    "duracao": "PT34S",
    "status": "public",
    "agendado": null,
-   "views": 1053,
+   "views": 1054,
    "likes": 9,
    "comentarios": 1
   },
@@ -1110,7 +1121,7 @@
    "duracao": "PT1M9S",
    "status": "public",
    "agendado": null,
-   "views": 102,
+   "views": 117,
    "likes": 4,
    "comentarios": 0
   },
@@ -1192,15 +1203,37 @@
    "comentarios": 0
   },
   {
+   "id": "4WuKNxpR188",
+   "titulo": "O Que Aconteceu Com a Itapemirim? A Empresa de Ônibus Que Criou Uma Aérea e Quebrou",
+   "publicado": "2026-10-11T23:09:37Z",
+   "duracao": "PT7M19S",
+   "status": "public",
+   "agendado": null,
+   "views": 33,
+   "likes": 3,
+   "comentarios": 0
+  },
+  {
    "id": "r9t1a5rQW8U",
    "titulo": "A Blockbuster podia ter comprado a Netflix por 50 milhões de dólares. E recusou #shorts",
    "publicado": "2026-10-22T21:00:13Z",
    "duracao": "PT1M12S",
    "status": "public",
    "agendado": null,
-   "views": 26,
+   "views": 29,
    "likes": 1,
    "comentarios": 0
+  },
+  {
+   "id": "3e-eXXCL27s",
+   "titulo": "BANCO MASTER: O Que Aconteceu e Quem Vai Pagar a Conta de R$ 41 Bilhões",
+   "publicado": "2026-10-13T15:00:05Z",
+   "duracao": "PT8M19S",
+   "status": "public",
+   "agendado": null,
+   "views": 28,
+   "likes": 2,
+   "comentarios": 3
   },
   {
    "id": "A5cWOeTZqe0",
@@ -1214,14 +1247,14 @@
    "comentarios": 0
   },
   {
-   "id": "4WuKNxpR188",
-   "titulo": "O Que Aconteceu Com a Itapemirim? A Empresa de Ônibus Que Criou Uma Aérea e Quebrou",
-   "publicado": "2026-10-11T23:09:37Z",
-   "duracao": "PT7M19S",
+   "id": "V0QI5BH5mmo",
+   "titulo": "A Kodak inventou a câmera digital. E mesmo assim perdeu a guerra do digital #shorts",
+   "publicado": "2026-10-23T21:00:33Z",
+   "duracao": "PT1M13S",
    "status": "public",
    "agendado": null,
-   "views": 18,
-   "likes": 3,
+   "views": 20,
+   "likes": 0,
    "comentarios": 0
   },
   {
@@ -1234,17 +1267,6 @@
    "views": 15,
    "likes": 2,
    "comentarios": 1
-  },
-  {
-   "id": "3e-eXXCL27s",
-   "titulo": "BANCO MASTER: O Que Aconteceu e Quem Vai Pagar a Conta de R$ 41 Bilhões",
-   "publicado": "2026-10-13T15:00:05Z",
-   "duracao": "PT8M19S",
-   "status": "public",
-   "agendado": null,
-   "views": 12,
-   "likes": 2,
-   "comentarios": 3
   },
   {
    "id": "3hLySDzqykg",
@@ -1363,17 +1385,6 @@
    "duracao": "PT1M14S",
    "status": "private",
    "agendado": "2026-10-24T21:00:00Z",
-   "views": 0,
-   "likes": 0,
-   "comentarios": 0
-  },
-  {
-   "id": "V0QI5BH5mmo",
-   "titulo": "A Kodak inventou a câmera digital. E mesmo assim perdeu a guerra do digital #shorts",
-   "publicado": "2026-10-20T14:53:52Z",
-   "duracao": "PT1M13S",
-   "status": "private",
-   "agendado": "2026-10-23T21:00:00Z",
    "views": 0,
    "likes": 0,
    "comentarios": 0
