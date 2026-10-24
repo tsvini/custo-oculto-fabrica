@@ -1,9 +1,9 @@
 {
- "atualizado": "23/10/2026 22:03",
+ "atualizado": "24/10/2026 11:07",
  "fontes": {
   "custo_oculto": {
    "seguidores": 12,
-   "views_total": 4804,
+   "views_total": 4827,
    "videos": 34,
    "views_28d": 4742,
    "views_7d": 965,
@@ -125,7 +125,7 @@
     {
      "titulo": "Banco Master: parte 1 de 4 #shorts",
      "url": "https://youtu.be/xQAsC7S2KO8",
-     "views": 709,
+     "views": 708,
      "retencao": 76,
      "likes": 41
     },
@@ -155,8 +155,8 @@
   },
   "hidden_cost": {
    "seguidores": 0,
-   "views_total": 15,
-   "videos": 10,
+   "views_total": 17,
+   "videos": 11,
    "views_28d": 0,
    "views_7d": 0,
    "seguidores_28d": 0,
@@ -166,7 +166,7 @@
   },
   "vini_qa": {
    "seguidores": 0,
-   "views_total": 29,
+   "views_total": 43,
    "videos": 3,
    "views_28d": 17,
    "views_7d": 17,
@@ -297,16 +297,16 @@
   },
   "tiktok": {
    "usuario": "Custo Oculto",
-   "seguidores": 51,
-   "curtidas": 266,
+   "seguidores": 53,
+   "curtidas": 277,
    "videos": 15,
-   "views_total": 5471,
+   "views_total": 5801,
    "top": [
     {
      "titulo": "A Kodak ajudou a criar a câmera digital. O problema? Ela tinha medo de que a própria inven",
      "url": "https://www.tiktok.com/@custooculto/video/7699988579719679252?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 62,
-     "likes": 6
+     "views": 387,
+     "likes": 17
     },
     {
      "titulo": "A Blockbuster dominava o mercado. A Netflix era só uma aposta. Anos depois, uma delas viro",
@@ -329,7 +329,7 @@
     {
      "titulo": "A Nestlé comprou a Garoto. O Cade proibiu. Mas a compra já tinha acontecido 🍫 Você sabia q",
      "url": "https://www.tiktok.com/@custooculto/video/7698432599659744533?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 1550,
+     "views": 1552,
      "likes": 106
     },
     {
@@ -374,15 +374,6 @@
   }
  },
  "agenda": [
-  {
-   "quando": "2026-10-24T08:00:00-03:00",
-   "plataforma": "Hidden Cost (YouTube EN)",
-   "chave": "hidden_cost",
-   "titulo": "WeWork's Founder Walked Away Rich. Who Paid? (part 3) #shorts",
-   "tipo": "serie",
-   "id": "wework_serie3",
-   "url": "https://studio.youtube.com/video/m62PxGp2g2A/edit"
-  },
   {
    "quando": "2026-10-24T18:00:00-03:00",
    "plataforma": "Custo Oculto (YouTube)",
