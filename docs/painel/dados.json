@@ -1,18 +1,14 @@
 {
- "atualizado": "23/10/2026 12:27",
+ "atualizado": "23/10/2026 22:03",
  "fontes": {
   "custo_oculto": {
    "seguidores": 12,
-   "views_total": 4747,
-   "videos": 33,
-   "views_28d": 4651,
-   "views_7d": 1588,
+   "views_total": 4804,
+   "videos": 34,
+   "views_28d": 4742,
+   "views_7d": 965,
    "seguidores_28d": 15,
    "dia": [
-    [
-     "2026-09-25",
-     0
-    ],
     [
      "2026-09-26",
      0
@@ -103,7 +99,7 @@
     ],
     [
      "2026-10-18",
-     140
+     135
     ],
     [
      "2026-10-19",
@@ -112,6 +108,10 @@
     [
      "2026-10-20",
      6
+    ],
+    [
+     "2026-10-21",
+     96
     ]
    ],
    "top": [
@@ -125,7 +125,7 @@
     {
      "titulo": "Banco Master: parte 1 de 4 #shorts",
      "url": "https://youtu.be/xQAsC7S2KO8",
-     "views": 708,
+     "views": 709,
      "retencao": 76,
      "likes": 41
     },
@@ -166,16 +166,12 @@
   },
   "vini_qa": {
    "seguidores": 0,
-   "views_total": 25,
+   "views_total": 29,
    "videos": 3,
-   "views_28d": 11,
-   "views_7d": 11,
+   "views_28d": 17,
+   "views_7d": 17,
    "seguidores_28d": 0,
    "dia": [
-    [
-     "2026-09-25",
-     0
-    ],
     [
      "2026-09-26",
      0
@@ -275,6 +271,10 @@
     [
      "2026-10-20",
      6
+    ],
+    [
+     "2026-10-21",
+     6
     ]
    ],
    "top": [
@@ -284,22 +284,35 @@
      "views": 11,
      "retencao": 28,
      "likes": 0
+    },
+    {
+     "titulo": "Seu primeiro teste automatizado",
+     "url": "https://youtu.be/lyfD8rJ6F30",
+     "views": 6,
+     "retencao": 82,
+     "likes": 0
     }
    ],
    "nome": "Vini QA (YouTube)"
   },
   "tiktok": {
    "usuario": "Custo Oculto",
-   "seguidores": 50,
-   "curtidas": 259,
-   "videos": 14,
-   "views_total": 5301,
+   "seguidores": 51,
+   "curtidas": 266,
+   "videos": 15,
+   "views_total": 5471,
    "top": [
+    {
+     "titulo": "A Kodak ajudou a criar a câmera digital. O problema? Ela tinha medo de que a própria inven",
+     "url": "https://www.tiktok.com/@custooculto/video/7699988579719679252?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
+     "views": 62,
+     "likes": 6
+    },
     {
      "titulo": "A Blockbuster dominava o mercado. A Netflix era só uma aposta. Anos depois, uma delas viro",
      "url": "https://www.tiktok.com/@custooculto/video/7699596334155713812?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 173,
-     "likes": 8
+     "views": 278,
+     "likes": 10
     },
     {
      "titulo": "Duas rivais gigantes se juntaram e criaram uma potência brasileira. 🍺 Mas a fusão entre Br",
@@ -316,20 +329,14 @@
     {
      "titulo": "A Nestlé comprou a Garoto. O Cade proibiu. Mas a compra já tinha acontecido 🍫 Você sabia q",
      "url": "https://www.tiktok.com/@custooculto/video/7698432599659744533?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 1548,
-     "likes": 107
+     "views": 1550,
+     "likes": 106
     },
     {
      "titulo": "Nos anos 90, a Kolynos vendia o dobro da Colgate no Brasil. Em 1995, a Colgate comprou a r",
      "url": "https://www.tiktok.com/@custooculto/video/7697792320804097300?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 362,
+     "views": 363,
      "likes": 10
-    },
-    {
-     "titulo": "Banco Master, parte final: onde está o caso hoje e o custo oculto que sobra pra todo mundo",
-     "url": "https://www.tiktok.com/@custooculto/video/7697621451171450113?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 170,
-     "likes": 11
     }
    ],
    "nome": "TikTok @custooculto"
@@ -367,53 +374,6 @@
   }
  },
  "agenda": [
-  {
-   "quando": "2026-10-23T18:00:00-03:00",
-   "plataforma": "Custo Oculto (YouTube)",
-   "chave": "custo_oculto",
-   "titulo": "A Kodak inventou a câmera digital. E mesmo assim perdeu a guerra do digital #shorts",
-   "tipo": "short",
-   "id": "kodak_digital_short1",
-   "url": "https://studio.youtube.com/video/V0QI5BH5mmo/edit"
-  },
-  {
-   "quando": "2026-10-23T18:00:00-03:00",
-   "plataforma": "Instagram",
-   "chave": "instagram",
-   "titulo": "A Kodak inventou a câmera digital. E mesmo assim perdeu a guerra do digital",
-   "tipo": "short",
-   "id": "kodak_digital_short1",
-   "url": "https://raw.githubusercontent.com/tsvini/custo-oculto-midia/dd79ac48d8afcc7e42a8292ad7df4ed12ad2f1b8/kodak/kodak_short1.mp4"
-  },
-  {
-   "quando": "2026-10-23T18:00:00-03:00",
-   "plataforma": "Facebook",
-   "chave": "facebook",
-   "titulo": "A Kodak inventou a câmera digital. E mesmo assim perdeu a guerra do digital",
-   "tipo": "short",
-   "id": "kodak_digital_short1",
-   "url": "https://raw.githubusercontent.com/tsvini/custo-oculto-midia/dd79ac48d8afcc7e42a8292ad7df4ed12ad2f1b8/kodak/kodak_short1.mp4"
-  },
-  {
-   "quando": "2026-10-23T18:00:00-03:00",
-   "plataforma": "TikTok",
-   "chave": "tiktok",
-   "titulo": "A Kodak inventou a câmera digital. E mesmo assim perdeu a guerra do digital",
-   "tipo": "short",
-   "id": "kodak_digital_short1",
-   "url": "https://raw.githubusercontent.com/tsvini/custo-oculto-midia/dd79ac48d8afcc7e42a8292ad7df4ed12ad2f1b8/kodak/kodak_short1.mp4"
-  },
-  {
-   "quando": "2026-10-23T19:00:00-03:00",
-   "titulo": "Quem pagou a conta da Americanas · PAUSADO (rascunho)",
-   "tipo": "metricool",
-   "id": "metricool",
-   "url": "https://app.metricool.com/planner",
-   "plataforma_rede": "tiktok",
-   "chave": "tiktok",
-   "plataforma": "TikTok (Metricool)",
-   "sem_cancelar": true
-  },
   {
    "quando": "2026-10-24T08:00:00-03:00",
    "plataforma": "Hidden Cost (YouTube EN)",
