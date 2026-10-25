@@ -1,18 +1,14 @@
 {
- "atualizado": "24/10/2026 11:07",
+ "atualizado": "24/10/2026 21:31",
  "fontes": {
   "custo_oculto": {
    "seguidores": 12,
-   "views_total": 4827,
-   "videos": 34,
-   "views_28d": 4742,
-   "views_7d": 965,
-   "seguidores_28d": 15,
+   "views_total": 4882,
+   "videos": 35,
+   "views_28d": 4820,
+   "views_7d": 846,
+   "seguidores_28d": 16,
    "dia": [
-    [
-     "2026-09-26",
-     0
-    ],
     [
      "2026-09-27",
      0
@@ -112,6 +108,10 @@
     [
      "2026-10-21",
      96
+    ],
+    [
+     "2026-10-22",
+     78
     ]
    ],
    "top": [
@@ -125,7 +125,7 @@
     {
      "titulo": "Banco Master: parte 1 de 4 #shorts",
      "url": "https://youtu.be/xQAsC7S2KO8",
-     "views": 708,
+     "views": 709,
      "retencao": 76,
      "likes": 41
     },
@@ -155,7 +155,7 @@
   },
   "hidden_cost": {
    "seguidores": 0,
-   "views_total": 17,
+   "views_total": 19,
    "videos": 11,
    "views_28d": 0,
    "views_7d": 0,
@@ -168,14 +168,10 @@
    "seguidores": 0,
    "views_total": 43,
    "videos": 3,
-   "views_28d": 17,
-   "views_7d": 17,
+   "views_28d": 30,
+   "views_7d": 30,
    "seguidores_28d": 0,
    "dia": [
-    [
-     "2026-09-26",
-     0
-    ],
     [
      "2026-09-27",
      0
@@ -275,21 +271,25 @@
     [
      "2026-10-21",
      6
+    ],
+    [
+     "2026-10-22",
+     13
     ]
    ],
    "top": [
     {
-     "titulo": "Você não precisa saber programar pra automatizar teste",
-     "url": "https://youtu.be/1hbvry7AlKk",
-     "views": 11,
-     "retencao": 28,
+     "titulo": "Seu primeiro teste automatizado",
+     "url": "https://youtu.be/lyfD8rJ6F30",
+     "views": 17,
+     "retencao": 65,
      "likes": 0
     },
     {
-     "titulo": "Seu primeiro teste automatizado",
-     "url": "https://youtu.be/lyfD8rJ6F30",
-     "views": 6,
-     "retencao": 82,
+     "titulo": "Você não precisa saber programar pra automatizar teste",
+     "url": "https://youtu.be/1hbvry7AlKk",
+     "views": 13,
+     "retencao": 28,
      "likes": 0
     }
    ],
@@ -298,20 +298,26 @@
   "tiktok": {
    "usuario": "Custo Oculto",
    "seguidores": 53,
-   "curtidas": 277,
-   "videos": 15,
-   "views_total": 5801,
+   "curtidas": 285,
+   "videos": 16,
+   "views_total": 6007,
    "top": [
+    {
+     "titulo": "A Varig já foi uma das maiores companhias aéreas do Brasil. Durante décadas, era símbolo d",
+     "url": "https://www.tiktok.com/@custooculto/video/7700381208127048981?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
+     "views": 40,
+     "likes": 2
+    },
     {
      "titulo": "A Kodak ajudou a criar a câmera digital. O problema? Ela tinha medo de que a própria inven",
      "url": "https://www.tiktok.com/@custooculto/video/7699988579719679252?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 387,
-     "likes": 17
+     "views": 527,
+     "likes": 22
     },
     {
      "titulo": "A Blockbuster dominava o mercado. A Netflix era só uma aposta. Anos depois, uma delas viro",
      "url": "https://www.tiktok.com/@custooculto/video/7699596334155713812?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 278,
+     "views": 297,
      "likes": 10
     },
     {
@@ -329,14 +335,8 @@
     {
      "titulo": "A Nestlé comprou a Garoto. O Cade proibiu. Mas a compra já tinha acontecido 🍫 Você sabia q",
      "url": "https://www.tiktok.com/@custooculto/video/7698432599659744533?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 1552,
-     "likes": 106
-    },
-    {
-     "titulo": "Nos anos 90, a Kolynos vendia o dobro da Colgate no Brasil. Em 1995, a Colgate comprou a r",
-     "url": "https://www.tiktok.com/@custooculto/video/7697792320804097300?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 363,
-     "likes": 10
+     "views": 1557,
+     "likes": 107
     }
    ],
    "nome": "TikTok @custooculto"
@@ -374,53 +374,6 @@
   }
  },
  "agenda": [
-  {
-   "quando": "2026-10-24T18:00:00-03:00",
-   "plataforma": "Custo Oculto (YouTube)",
-   "chave": "custo_oculto",
-   "titulo": "A Varig foi arrematada por US$ 24 milhões. Menos de 1 ano depois, até US$ 320 milhões #shorts",
-   "tipo": "short",
-   "id": "varig_short1",
-   "url": "https://studio.youtube.com/video/9awKfkEdKH4/edit"
-  },
-  {
-   "quando": "2026-10-24T18:00:00-03:00",
-   "plataforma": "Instagram",
-   "chave": "instagram",
-   "titulo": "Em 2006, a Varig praticamente parou",
-   "tipo": "short",
-   "id": "varig_short1",
-   "url": "https://raw.githubusercontent.com/tsvini/custo-oculto-midia/e81840497cb37a17fe41291a11b234ce6654a47b/varig/varig_short1.mp4"
-  },
-  {
-   "quando": "2026-10-24T18:00:00-03:00",
-   "plataforma": "Facebook",
-   "chave": "facebook",
-   "titulo": "Em 2006, a Varig praticamente parou",
-   "tipo": "short",
-   "id": "varig_short1",
-   "url": "https://raw.githubusercontent.com/tsvini/custo-oculto-midia/e81840497cb37a17fe41291a11b234ce6654a47b/varig/varig_short1.mp4"
-  },
-  {
-   "quando": "2026-10-24T18:00:00-03:00",
-   "plataforma": "TikTok",
-   "chave": "tiktok",
-   "titulo": "Em 2006, a Varig praticamente parou",
-   "tipo": "short",
-   "id": "varig_short1",
-   "url": "https://raw.githubusercontent.com/tsvini/custo-oculto-midia/e81840497cb37a17fe41291a11b234ce6654a47b/varig/varig_short1.mp4"
-  },
-  {
-   "quando": "2026-10-24T19:00:00-03:00",
-   "titulo": "Preso no aeroporto no dia em que o banco ia ser vendido · PAUSADO (rascunho)",
-   "tipo": "metricool",
-   "id": "metricool",
-   "url": "https://app.metricool.com/planner",
-   "plataforma_rede": "tiktok",
-   "chave": "tiktok",
-   "plataforma": "TikTok (Metricool)",
-   "sem_cancelar": true
-  },
   {
    "quando": "2026-10-25T08:00:00-03:00",
    "plataforma": "Hidden Cost (YouTube EN)",
