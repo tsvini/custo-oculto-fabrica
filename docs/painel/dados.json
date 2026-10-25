@@ -1,5 +1,5 @@
 {
- "atualizado": "24/10/2026 21:31",
+ "atualizado": "25/10/2026 11:34",
  "fontes": {
   "custo_oculto": {
    "seguidores": 12,
@@ -156,7 +156,7 @@
   "hidden_cost": {
    "seguidores": 0,
    "views_total": 19,
-   "videos": 11,
+   "videos": 12,
    "views_28d": 0,
    "views_7d": 0,
    "seguidores_28d": 0,
@@ -297,16 +297,16 @@
   },
   "tiktok": {
    "usuario": "Custo Oculto",
-   "seguidores": 53,
-   "curtidas": 285,
+   "seguidores": 52,
+   "curtidas": 289,
    "videos": 16,
-   "views_total": 6007,
+   "views_total": 6196,
    "top": [
     {
      "titulo": "A Varig já foi uma das maiores companhias aéreas do Brasil. Durante décadas, era símbolo d",
      "url": "https://www.tiktok.com/@custooculto/video/7700381208127048981?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 40,
-     "likes": 2
+     "views": 153,
+     "likes": 5
     },
     {
      "titulo": "A Kodak ajudou a criar a câmera digital. O problema? Ela tinha medo de que a própria inven",
@@ -317,7 +317,7 @@
     {
      "titulo": "A Blockbuster dominava o mercado. A Netflix era só uma aposta. Anos depois, uma delas viro",
      "url": "https://www.tiktok.com/@custooculto/video/7699596334155713812?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 297,
+     "views": 364,
      "likes": 10
     },
     {
@@ -335,8 +335,8 @@
     {
      "titulo": "A Nestlé comprou a Garoto. O Cade proibiu. Mas a compra já tinha acontecido 🍫 Você sabia q",
      "url": "https://www.tiktok.com/@custooculto/video/7698432599659744533?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 1557,
-     "likes": 107
+     "views": 1562,
+     "likes": 108
     }
    ],
    "nome": "TikTok @custooculto"
@@ -374,15 +374,6 @@
   }
  },
  "agenda": [
-  {
-   "quando": "2026-10-25T08:00:00-03:00",
-   "plataforma": "Hidden Cost (YouTube EN)",
-   "chave": "hidden_cost",
-   "titulo": "WeWork Went Bankrupt. The Founder Got $350 Million (part 4) #shorts",
-   "tipo": "serie",
-   "id": "wework_serie4",
-   "url": "https://studio.youtube.com/video/n3ULfuQrXr4/edit"
-  },
   {
    "quando": "2026-10-25T18:00:00-03:00",
    "plataforma": "Custo Oculto (YouTube)",
