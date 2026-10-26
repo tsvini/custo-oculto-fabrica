@@ -200,7 +200,7 @@ AULAS.append(projeto(30, "MÓDULO 6 · AULA 30", "Print e vídeo quando o teste 
       "legenda": "O print e o vídeo do teste"}),
     ("E no trabalho, pra que serve isso? Esse print e esse vídeo são as suas evidências.", bt(("PRINT + VÍDEO", "white", 120), ("= EVIDÊNCIA", "gold", 150))),
     ("Quando você abre o card do bug, anexa o print, o vídeo e o trace. Quem vai corrigir vê exatamente o que aconteceu, sem precisar te perguntar nada.",
-     {"type": "tela", "media": "card_bug", "url": CARD_BUG, "alvo": "Anexos (evidências)", "titulo": "Card do bug", "legenda": "Anexa print, vídeo e trace no card"}),
+     {"type": "tela", "media": "card_bug", "url": CARD_BUG, "titulo": "Card do bug", "legenda": "Anexa print, vídeo e trace no card"}),
     ("E dá pra gravar sempre, até quando passa? Dá: é só trocar pra on. Serve quando você precisa provar que funcionou, por exemplo, pra mostrar que um teste passou antes de fechar uma tarefa.",
      {"type": "traducao", "titulo": "AS OPÇÕES", "linhas": [["'off'", "nunca"], ["'only-on-failure' / 'retain-on-failure'", "só quando falha"], ["'on'", "sempre, até quando passa"]]}),
     ("Mas gravar sempre deixa tudo mais lento e enche o computador de arquivo. Por isso o padrão bom é só quando falha, e você liga o on só quando precisa de evidência de tudo.",

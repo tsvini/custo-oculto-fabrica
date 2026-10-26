@@ -354,7 +354,7 @@ aula(72, "O teste falhou. O que eu mando pro desenvolvedor?", [
     ("E aqui entra a pergunta da aula vinte e seis: é erro do teste, ou bug do sistema? Se o teste estava errado, você mesmo conserta. Se é bug, aí sim vira um card.",
      cmp("QUEM ESTÁ ERRADO?", ["O TESTE", "VOCÊ CONSERTA"], ["O SISTEMA", "VIRA UM CARD"])),
     ("Um card útil tem: um título claro, os passos pra reproduzir, o esperado, o que aconteceu, e as evidências anexadas: o print, o vídeo e o trace.",
-     {"type": "tela", "media": "card_bug", "url": CARD_BUG, "alvo": "Anexos (evidências)", "titulo": "Card do bug", "legenda": "Título, passos, esperado × obtido, evidências"}),
+     {"type": "tela", "media": "card_bug", "url": CARD_BUG, "titulo": "Card do bug", "legenda": "Título, passos, esperado × obtido, evidências"}),
     ("Repara no título. Não é a automação quebrou. É o que a pessoa vê de errado na tela.",
      trl("O TÍTULO DO CARD", [["A automação quebrou", "não diz nada"], ["Nome do produto aparece em inglês", "diz o problema"]])),
     ("Com um card assim, quem desenvolve reproduz o problema em minutos, sem precisar te chamar pra perguntar nada. Automação também é isso: gerar evidência que ajuda a investigar.",

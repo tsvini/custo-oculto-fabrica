@@ -283,8 +283,7 @@
         "media": "card_bug_loja",
         "url": "repo:curso-playwright/material/cenas/card_bug_loja.html",
         "titulo": "Quadro de tarefas",
-        "legenda": "O card do bug",
-        "alvo": "Esperado × obtido"
+        "legenda": "O card do bug"
        }
       },
       {

@@ -144,7 +144,7 @@ aula(76, "Tem alguma coisa errada aqui", [
     ("É exatamente por isso que a gente pensou nos cenários antes de abrir o editor. Quem começa direto no código testa o que lembrou. Quem pensa primeiro testa o que importa.",
      cmp("COMEÇAR PELO QUÊ?", ["DIRETO NO CÓDIGO", "TESTA O QUE LEMBROU"], ["PELOS CENÁRIOS", "TESTA O QUE IMPORTA"])),
     ("Agora, registra: o título dizendo o problema, o passo a passo, o esperado, o que aconteceu, e o print.",
-     pagina("card_bug_loja", "O card do bug", alvo="Esperado × obtido")),
+     pagina("card_bug_loja", "O card do bug")),
     ("O time corrigiu e entregou a versão dois. Abre de novo e ordena: agora sim, do menor pro maior. Agora a gente automatiza, pra esse bug nunca mais voltar sem ninguém ver.",
      video("n76_v2", "Versão 2: corrigido", entrar("cliente", "leigo123") + [{"select": ["[data-test=\"ordenar\"]", "menor"], "espera": 3500}], espera_fim=3000)),
 ] + fim("começando o projeto organizado"))

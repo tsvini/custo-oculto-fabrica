@@ -233,7 +233,6 @@
         "type": "tela",
         "media": "card_bug",
         "url": "repo:curso-playwright/material/cenas/card_bug.html",
-        "alvo": "Anexos (evidências)",
         "titulo": "Card do bug",
         "legenda": "Título, passos, esperado × obtido, evidências"
        }
