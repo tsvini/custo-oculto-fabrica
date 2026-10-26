@@ -35,6 +35,16 @@ P_CG = [{"linha": f"await page.locator('{U}').click();", "elem": 0},
         {"linha": "await page.locator('[data-test=\"login-button\"]').click();", "elem": 2}]
 P_EXPECT = P_CG + [{"linha": "await expect(page.locator('[data-test=\"title\"]')).toContainText('Products');", "elem": 0}]
 
+
+
+def real(media, legenda, video=True):
+    """gravação real da tela (o codegen de verdade, gravado no Xvfb por ferramentas/codegen/aulas19e20.sh); arquivo em projetos/<aula>/midia/"""
+    d = {"type": "tela_cheia", "media": media, "legenda": legenda}
+    if video:
+        d["gravar"] = True
+    return d
+
+
 AULAS = []
 
 # ---------- Aula 17 ----------
@@ -43,11 +53,12 @@ AULAS.append(projeto(17, "MÓDULO 4 · AULA 17", "Como o Playwright acha os elem
     ("Todo comando que acha um elemento começa com get by, que quer dizer: ache pelo. O que muda é o que vem depois.",
      {"type": "traducao", "codigo": "page.getByRole('button')", "partes": [["getBy", "ache pelo"], ["Role", "o que vem depois muda"]], "passo": 2.0}),
     ("get by role: ache pela função. Botão, link, campo, título. É o tipo de seletor que o Playwright recomenda, porque ele parte do que a pessoa usa na tela.",
-     {"type": "cards", "titulo": "GET BY ROLE", "itens": [["◉", "getByRole", "ache pela função: botão, link, campo, título"]]}),
+     dict(tela("site_sauce_botao", "getByRole('button'): ache pela função botão", alvo_css="#login-button"))),
     ("get by text: ache pelo texto que aparece. get by placeholder: pelo texto cinza de dentro do campo. E get by label: pela etiqueta escrita do lado do campo.",
      {"type": "cards", "itens": [["Aa", "getByText", "pelo texto que aparece"], ["▭", "getByPlaceholder", "pelo texto cinza do campo", "#69a7ff"], ["🏷", "getByLabel", "pela etiqueta do lado do campo", "#ffd23f"]]}),
     ("E get by test id: ache por uma etiqueta que o próprio desenvolvedor deixou no código, só pra teste.",
-     {"type": "cards", "titulo": "GET BY TEST ID", "itens": [["⚑", "getByTestId", "uma etiqueta deixada no código só pra teste", "#c792ea"]]}),
+     {"type": "devtools", "media": "site_sauce_dev", "url": SAUCE, "inspecionar": "#user-name", "aberto": True, "attrs": ["placeholder", "data-test", "id"],
+      "realce": ["data-test"], "realce_em": 1.0, "realce_rotulo": "etiqueta de teste", "legenda": "getByTestId: a etiqueta data-test"}),
     ("Mas de onde vem tudo isso? Do código da página. Clica com o botão direito no campo Username e escolhe Inspecionar.",
      {"type": "devtools", "media": "site_sauce_dev", "url": SAUCE, "inspecionar": "#user-name", "legenda": "Botão direito › Inspecionar"}),
     ("Olha o que aparece: input, placeholder igual Username, e data-test igual username.",
@@ -110,14 +121,13 @@ AULAS.append(projeto(19, "MÓDULO 4 · AULA 19", "Codegen - o Playwright escreve
     ("E se o Playwright escrevesse o código pra você? Ele escreve.", titulo(19, "CODEGEN")),
     ("No terminal do VS Code, digita: npx playwright codegen, espaço, e o endereço do saucedemo.",
      vscode_term(16, "No terminal do VS Code", [{"cmd": "npx playwright codegen https://www.saucedemo.com/", "em": 0.25}], colinha=True, colinha_em=1.2)),
-    ("Abrem duas janelas: o navegador, e o Playwright Inspector, que vai anotando tudo o que você faz.", cg("Navegador + Inspector")),
-    ("Agora é só usar o site. Olha: eu clico no Username e digito standard user. A linha de código aparece sozinha.", cg("Cada ação vira uma linha", P_CG[:2])),
-    ("Senha, clique no Login. Cada coisa que você faz vira uma linha.", cg("Cada ação vira uma linha", P_CG, ja=2)),
+    ("Abrem duas janelas: o navegador, e o Playwright Inspector, que vai anotando tudo o que você faz.", real("cg_abre", "Navegador + Playwright Inspector", video=False)),
+    ("Agora é só usar o site. Olha: eu clico no Username e digito standard user. A linha de código aparece sozinha.", real("cg19_usuario", "A linha aparece sozinha")),
+    ("Senha, clique no Login. Cada coisa que você faz vira uma linha.", real("cg19_senha", "Cada ação vira uma linha")),
     ("Repara no seletor que ele escolheu. O codegen tenta achar um jeito bom e único de identificar cada elemento. Nem sempre é o mesmo que você escolheria, por isso a gente revisa o código gerado.",
      {"type": "traducao", "codigo": f"page.locator('{U}')", "partes": [["locator", "ache"], [f"'{U}'", "pela etiqueta de teste username"]], "passo": 2.2}),
     ("Na barra de cima tem botões pra criar conferências: conferir se algo está visível, ou se o texto está certo. Clica em um e depois no título Products. Pronto, apareceu um expect.",
-     cg("Assert text: apareceu um expect", P_EXPECT, ja=5, media="site_sauce_cg_produtos", acoes=LOGIN, inspecionar_varios=["[data-test=\"title\"]"],
-        botoes_assert=True, assert_em=1.0, inicio_em=1.8)),
+     real("cg19_assert", "Assert text: apareceu um expect")),
     ("Quando terminar, copia o código e cola no seu arquivo.", edc(codigo(19), "Cola num arquivo novo", arquivo="codegen.spec.js")),
     ("Mas atenção: o codegen é um ponto de partida, não o teste pronto. Ele não sabe o que você quer conferir, e às vezes escolhe um seletor ruim. Sempre revisa.",
      {"type": "cards", "titulo": "PONTO DE PARTIDA", "itens": [["⚡", "Rápido", "descobre seletores e começa o teste"], ["✎", "Revise", "o nome, as conferências e os seletores", "#ff8c42"]]}),
@@ -129,13 +139,13 @@ AULAS.append(projeto(19, "MÓDULO 4 · AULA 19", "Codegen - o Playwright escreve
 # ---------- Aula 20 ----------
 AULAS.append(projeto(20, "MÓDULO 4 · AULA 20", "Pick Locator - testando um seletor antes de usar", [
     ("Às vezes você não sabe se um seletor vai funcionar. Dá pra testar antes de rodar o teste.", titulo(20, "PICK LOCATOR")),
-    ("No codegen, clica no botão Pick locator, que quer dizer escolher seletor.", cg("Pick locator = escolher seletor", modo="pick", locator=f"locator('{U}')", elem_i=0)),
+    ("No codegen, clica no botão Pick locator, que quer dizer escolher seletor.", real("cg20_pick", "Pick locator = escolher seletor")),
     ("Passa o mouse em cima de qualquer coisa da página: ele mostra o seletor que usaria.",
-     cg("Ele mostra o seletor", modo="pick", locator="locator('[data-test=\"login-button\"]')", elem_i=2, pick_em=0.8)),
+     real("cg20_passa", "Ele mostra o seletor de cada coisa")),
     ("E dá pra fazer o contrário: escreve um seletor na caixinha, e ele pinta na página o que encontrou.",
-     cg("Escreve o seletor: ele pinta o que achou", modo="pick", locator="getByRole('button', { name: 'Login' })", elem_i=2, pick_em=0.8)),
+     real("cg20_um", "Escreve o seletor: ele pinta o que achou")),
     ("Se pintou um elemento só, é um bom primeiro sinal: aí confere se o seletor também é claro e resistente a mudanças. Se pintou vários, ele está vago. Se não pintou nada, ele está errado.",
-     {"type": "cards", "itens": [["1", "Um só", "bom sinal: agora confira se é claro"], ["⚠", "Vários", "seletor vago", "#ffd23f"], ["✗", "Nenhum", "seletor errado", "#ff6b6b"]]}),
+     real("cg20_varios", "Vários: vago · Nenhum: errado")),
     ("Testando o seletor antes, você evita rodar o teste várias vezes pra descobrir.", bt(("TESTE O SELETOR", "white", 120), ("ANTES", "gold", 190))),
     ("Na próxima aula: por que no Playwright você quase nunca precisa mandar o teste esperar.", proxima("espera automática")[0]),
     ("Te vejo lá!", proxima("espera automática")[1]),

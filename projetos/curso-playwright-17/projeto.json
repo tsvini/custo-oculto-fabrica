@@ -71,15 +71,14 @@
       {
        "text": "get by role: ache pela função. Botão, link, campo, título. É o tipo de seletor que o Playwright recomenda, porque ele parte do que a pessoa usa na tela.",
        "scene": {
-        "type": "cards",
-        "titulo": "GET BY ROLE",
-        "itens": [
-         [
-          "◉",
-          "getByRole",
-          "ache pela função: botão, link, campo, título"
-         ]
-        ]
+        "type": "tela",
+        "media": "site_sauce_botao",
+        "url": "https://www.saucedemo.com/",
+        "titulo": "saucedemo.com",
+        "legenda": "getByRole('button'): ache pela função botão",
+        "zoom_em": 1.4,
+        "caixa_em": 2.0,
+        "alvo_css": "#login-button"
        }
       },
       {
@@ -110,16 +109,22 @@
       {
        "text": "E get by test id: ache por uma etiqueta que o próprio desenvolvedor deixou no código, só pra teste.",
        "scene": {
-        "type": "cards",
-        "titulo": "GET BY TEST ID",
-        "itens": [
-         [
-          "⚑",
-          "getByTestId",
-          "uma etiqueta deixada no código só pra teste",
-          "#c792ea"
-         ]
-        ]
+        "type": "devtools",
+        "media": "site_sauce_dev",
+        "url": "https://www.saucedemo.com/",
+        "inspecionar": "#user-name",
+        "aberto": true,
+        "attrs": [
+         "placeholder",
+         "data-test",
+         "id"
+        ],
+        "realce": [
+         "data-test"
+        ],
+        "realce_em": 1.0,
+        "realce_rotulo": "etiqueta de teste",
+        "legenda": "getByTestId: a etiqueta data-test"
        }
       },
       {

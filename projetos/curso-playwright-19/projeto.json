@@ -72,84 +72,27 @@
       {
        "text": "Abrem duas janelas: o navegador, e o Playwright Inspector, que vai anotando tudo o que você faz.",
        "scene": {
-        "type": "pw_codegen",
-        "modo": "gravar",
-        "media": "site_sauce_cg",
-        "url": "https://www.saucedemo.com/",
-        "legenda": "Navegador + Inspector",
-        "inspecionar_varios": [
-         "#user-name",
-         "#password",
-         "#login-button"
-        ],
-        "passos_pw": []
+        "type": "tela_cheia",
+        "media": "cg_abre",
+        "legenda": "Navegador + Playwright Inspector"
        }
       },
       {
        "text": "Agora é só usar o site. Olha: eu clico no Username e digito standard user. A linha de código aparece sozinha.",
        "scene": {
-        "type": "pw_codegen",
-        "modo": "gravar",
-        "media": "site_sauce_cg",
-        "url": "https://www.saucedemo.com/",
-        "legenda": "Cada ação vira uma linha",
-        "inspecionar_varios": [
-         "#user-name",
-         "#password",
-         "#login-button"
-        ],
-        "passos_pw": [
-         {
-          "linha": "await page.locator('[data-test=\"username\"]').click();",
-          "elem": 0
-         },
-         {
-          "linha": "await page.locator('[data-test=\"username\"]').fill('standard_user');",
-          "elem": 0,
-          "valor": "standard_user"
-         }
-        ]
+        "type": "tela_cheia",
+        "media": "cg19_usuario",
+        "legenda": "A linha aparece sozinha",
+        "gravar": true
        }
       },
       {
        "text": "Senha, clique no Login. Cada coisa que você faz vira uma linha.",
        "scene": {
-        "type": "pw_codegen",
-        "modo": "gravar",
-        "media": "site_sauce_cg",
-        "url": "https://www.saucedemo.com/",
+        "type": "tela_cheia",
+        "media": "cg19_senha",
         "legenda": "Cada ação vira uma linha",
-        "inspecionar_varios": [
-         "#user-name",
-         "#password",
-         "#login-button"
-        ],
-        "passos_pw": [
-         {
-          "linha": "await page.locator('[data-test=\"username\"]').click();",
-          "elem": 0
-         },
-         {
-          "linha": "await page.locator('[data-test=\"username\"]').fill('standard_user');",
-          "elem": 0,
-          "valor": "standard_user"
-         },
-         {
-          "linha": "await page.locator('[data-test=\"password\"]').click();",
-          "elem": 1
-         },
-         {
-          "linha": "await page.locator('[data-test=\"password\"]').fill('secret_sauce');",
-          "elem": 1,
-          "valor": "secret_sauce",
-          "senha": true
-         },
-         {
-          "linha": "await page.locator('[data-test=\"login-button\"]').click();",
-          "elem": 2
-         }
-        ],
-        "ja": 2
+        "gravar": true
        }
       },
       {
@@ -173,64 +116,10 @@
       {
        "text": "Na barra de cima tem botões pra criar conferências: conferir se algo está visível, ou se o texto está certo. Clica em um e depois no título Products. Pronto, apareceu um expect.",
        "scene": {
-        "type": "pw_codegen",
-        "modo": "gravar",
-        "media": "site_sauce_cg_produtos",
-        "url": "https://www.saucedemo.com/",
+        "type": "tela_cheia",
+        "media": "cg19_assert",
         "legenda": "Assert text: apareceu um expect",
-        "inspecionar_varios": [
-         "[data-test=\"title\"]"
-        ],
-        "passos_pw": [
-         {
-          "linha": "await page.locator('[data-test=\"username\"]').click();",
-          "elem": 0
-         },
-         {
-          "linha": "await page.locator('[data-test=\"username\"]').fill('standard_user');",
-          "elem": 0,
-          "valor": "standard_user"
-         },
-         {
-          "linha": "await page.locator('[data-test=\"password\"]').click();",
-          "elem": 1
-         },
-         {
-          "linha": "await page.locator('[data-test=\"password\"]').fill('secret_sauce');",
-          "elem": 1,
-          "valor": "secret_sauce",
-          "senha": true
-         },
-         {
-          "linha": "await page.locator('[data-test=\"login-button\"]').click();",
-          "elem": 2
-         },
-         {
-          "linha": "await expect(page.locator('[data-test=\"title\"]')).toContainText('Products');",
-          "elem": 0
-         }
-        ],
-        "ja": 5,
-        "acoes": [
-         {
-          "fill": [
-           "#user-name",
-           "standard_user"
-          ]
-         },
-         {
-          "fill": [
-           "#password",
-           "secret_sauce"
-          ]
-         },
-         {
-          "click": "#login-button"
-         }
-        ],
-        "botoes_assert": true,
-        "assert_em": 1.0,
-        "inicio_em": 1.8
+        "gravar": true
        }
       },
       {

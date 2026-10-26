@@ -53,82 +53,37 @@
       {
        "text": "No codegen, clica no botão Pick locator, que quer dizer escolher seletor.",
        "scene": {
-        "type": "pw_codegen",
-        "modo": "pick",
-        "media": "site_sauce_cg",
-        "url": "https://www.saucedemo.com/",
+        "type": "tela_cheia",
+        "media": "cg20_pick",
         "legenda": "Pick locator = escolher seletor",
-        "inspecionar_varios": [
-         "#user-name",
-         "#password",
-         "#login-button"
-        ],
-        "passos_pw": [],
-        "locator": "locator('[data-test=\"username\"]')",
-        "elem_i": 0
+        "gravar": true
        }
       },
       {
        "text": "Passa o mouse em cima de qualquer coisa da página: ele mostra o seletor que usaria.",
        "scene": {
-        "type": "pw_codegen",
-        "modo": "pick",
-        "media": "site_sauce_cg",
-        "url": "https://www.saucedemo.com/",
-        "legenda": "Ele mostra o seletor",
-        "inspecionar_varios": [
-         "#user-name",
-         "#password",
-         "#login-button"
-        ],
-        "passos_pw": [],
-        "locator": "locator('[data-test=\"login-button\"]')",
-        "elem_i": 2,
-        "pick_em": 0.8
+        "type": "tela_cheia",
+        "media": "cg20_passa",
+        "legenda": "Ele mostra o seletor de cada coisa",
+        "gravar": true
        }
       },
       {
        "text": "E dá pra fazer o contrário: escreve um seletor na caixinha, e ele pinta na página o que encontrou.",
        "scene": {
-        "type": "pw_codegen",
-        "modo": "pick",
-        "media": "site_sauce_cg",
-        "url": "https://www.saucedemo.com/",
+        "type": "tela_cheia",
+        "media": "cg20_um",
         "legenda": "Escreve o seletor: ele pinta o que achou",
-        "inspecionar_varios": [
-         "#user-name",
-         "#password",
-         "#login-button"
-        ],
-        "passos_pw": [],
-        "locator": "getByRole('button', { name: 'Login' })",
-        "elem_i": 2,
-        "pick_em": 0.8
+        "gravar": true
        }
       },
       {
        "text": "Se pintou um elemento só, é um bom primeiro sinal: aí confere se o seletor também é claro e resistente a mudanças. Se pintou vários, ele está vago. Se não pintou nada, ele está errado.",
        "scene": {
-        "type": "cards",
-        "itens": [
-         [
-          "1",
-          "Um só",
-          "bom sinal: agora confira se é claro"
-         ],
-         [
-          "⚠",
-          "Vários",
-          "seletor vago",
-          "#ffd23f"
-         ],
-         [
-          "✗",
-          "Nenhum",
-          "seletor errado",
-          "#ff6b6b"
-         ]
-        ]
+        "type": "tela_cheia",
+        "media": "cg20_varios",
+        "legenda": "Vários: vago · Nenhum: errado",
+        "gravar": true
        }
       },
       {
