@@ -13,9 +13,9 @@ C32 = codigo(32).replace("aula 32: ", "")
 C31 = C32.replace("test(`login funciona para ${usuario}`", "test('login funciona'")
 assert C31 != C32
 L31 = C31.split("\n")
-LISTA = L31[2]                       # const usuarios = [...];
-L_FOR = 5                            # for (const usuario of usuarios) {
-L_TEST = 6
+L_FIMLISTA = L31.index("];") + 1         # a lista, um nome por linha, fecha aqui
+L_FOR = [i + 1 for i, l in enumerate(L31) if l.startswith("for (")][0]
+L_TEST = L_FOR + 1
 L_FILL = [i + 1 for i, l in enumerate(L31) if "fill(usuario)" in l][0]
 L_TIME = [i + 1 for i, l in enumerate(L31) if "timeout: 10000" in l][0]
 assert L31[L_FOR - 1].startswith("for (") and "test(" in L31[L_TEST - 1]
@@ -48,10 +48,10 @@ AULAS.append(projeto(31, "MÓDULO 7 · AULA 31", "Uma lista de usuários e um te
      edc("import { test, expect } from '@playwright/test';\n\nconst usuarios = [", "Uma lista: const usuarios = [", arquivo="usuarios.spec.js", pastas=ARV_U, digitar=True, digitar_de=3, fonte=30)),
     ("Traduzindo: const, guarde com o nome usuarios. O igual, o que vem depois é o valor. E os colchetes abrem uma lista.",
      {"type": "traducao", "codigo": "const usuarios = [", "partes": [["const", "guarde"], ["usuarios", "com o nome usuarios"], ["=", "o valor é"], ["[", "uma lista"]], "passo": 1.8}),
-    ("Pensa numa lista de compras: um item depois do outro. No código, cada nome vai entre aspas, e a vírgula separa um do outro. No fim, fecha os colchetes.",
-     edc("\n".join(L31[:3]), "Itens entre aspas, separados por vírgula", arquivo="usuarios.spec.js", pastas=ARV_U, digitar=True, digitar_de=3, vel=0.7, fonte=26)),
+    ("Pensa numa lista de compras: um item embaixo do outro. No código é igual: um nome por linha, entre aspas, e a vírgula separando um do outro. No fim, fecha os colchetes.",
+     edc("\n".join(L31[:L_FIMLISTA]), "Um nome por linha, entre aspas, com vírgula", arquivo="usuarios.spec.js", pastas=ARV_U, digitar=True, digitar_de=4, vel=0.7, fonte=30)),
     ("Pronto: a lista usuarios guarda quatro nomes. Agora, a repetição: for, abre parênteses, const usuario of usuarios, fecha parênteses e abre chaves.",
-     edc("\n".join(L31[:4] + [L31[L_FOR - 1], "}"]), "for (const usuario of usuarios)", arquivo="usuarios.spec.js", pastas=ARV_U, digitar=True, digitar_de=L_FOR, fonte=26)),
+     edc("\n".join(L31[:L_FOR] + ["}"]), "for (const usuario of usuarios)", arquivo="usuarios.spec.js", pastas=ARV_U, digitar=True, digitar_de=L_FOR, fonte=28)),
     ("Traduzindo: for, para cada. usuario, um nome que a gente dá pra cada item. of usuarios, da lista usuarios. Então: para cada usuário da lista.",
      {"type": "traducao", "codigo": "for (const usuario of usuarios) {", "partes": [["for", "para cada"], ["const usuario", "item da vez: usuario"], ["of usuarios", "da lista usuarios"]], "passo": 2.0}),
     ("Voltando pra lista de compras: pra cada item da lista, você pega ele no mercado. O for faz igual: pra cada nome da lista, ele roda o que está dentro das chaves.",
@@ -59,13 +59,13 @@ AULAS.append(projeto(31, "MÓDULO 7 · AULA 31", "Uma lista de usuários e um te
     ("Na primeira volta, usuario vale standard user. Na segunda, problem user. Na terceira, performance glitch user. E na quarta, visual user. Quatro nomes, quatro voltas.",
      {"type": "cards", "titulo": "O QUE ESTÁ DENTRO DO FOR RODA 4 VEZES", "itens": [["1", "standard_user", "1ª volta"], ["2", "problem_user", "2ª volta", "#69a7ff"], ["3", "performance_glitch_user", "3ª volta", "#ffd23f"], ["4", "visual_user", "4ª volta", "#c792ea"]]}),
     ("Agora, dentro das chaves do for, vai o teste de login que você já conhece. Por enquanto, com o nome fixo: login funciona.",
-     edc(C31, "O teste dentro do for", arquivo="usuarios.spec.js", pastas=ARV_U, digitar=True, digitar_de=L_TEST, fonte=24)),
+     edc(C31, "O teste dentro do for", arquivo="usuarios.spec.js", pastas=None, digitar=True, digitar_de=L_TEST, fonte=24)),
     ("E onde antes tinha standard user, agora vai a palavra usuario: o nome da volta da vez.",
-     edc(C31, "fill(usuario): o nome da volta da vez", arquivo="usuarios.spec.js", pastas=ARV_U, destaque=[L_FILL], destaque_em=0.6, fonte=24)),
+     edc(C31, "fill(usuario): o nome da volta da vez", arquivo="usuarios.spec.js", pastas=None, destaque=[L_FILL], destaque_em=0.6, fonte=24)),
     ("Repara: usuario está sem aspas. Com aspas, ele ia digitar a palavra usuario, letra por letra. Sem aspas, ele digita o valor guardado: o nome da volta.",
      {"type": "traducao", "titulo": "COM ASPAS × SEM ASPAS", "linhas": [["fill('usuario')", "digita a palavra usuario"], ["fill(usuario)", "digita o nome da volta"]]}),
     ("E o timeout de dez segundos na conferência final? O performance glitch demora uns cinco segundos pra entrar, e o expect espera cinco. Então, só nessa linha, a gente dá dez.",
-     edc(C31, "O usuário lento: 10 segundos só aqui", arquivo="usuarios.spec.js", pastas=ARV_U, destaque=[L_TIME - 1, L_TIME], destaque_em=0.6, fonte=24)),
+     edc(C31, "O usuário lento: 10 segundos só aqui", arquivo="usuarios.spec.js", pastas=None, destaque=[L_TIME - 1, L_TIME], destaque_em=0.6, fonte=24)),
     ("Esse jeito tem nome: teste orientado a dados. Um teste, vários dados. Use sempre que o passo a passo é o mesmo e só muda o que você digita.",
      {"type": "traducao", "titulo": "QUANDO USAR", "linhas": [["mesmos passos, dados diferentes", "uma lista + for"], ["passos diferentes", "testes separados"]]}),
     ("E o melhor: quer testar um quinto usuário? É só um nome a mais na lista. Nenhuma linha de teste nova.",
@@ -78,7 +78,7 @@ AULAS.append(projeto(31, "MÓDULO 7 · AULA 31", "Uma lista de usuários e um te
 REL32 = [[f"login funciona para {u}", f"usuarios.spec.js:{L_TEST}", "chromium", "ok", d] for u, d in (("standard_user", "0.9s"), ("problem_user", "1.0s"), ("performance_glitch_user", "5.7s"), ("visual_user", "1.1s"))]
 AULAS.append(projeto(32, "MÓDULO 7 · AULA 32", "O nome do teste que muda sozinho", [
     ("Se você rodar agora, o Playwright nem começa. Ele reclama: duplicate test title, nome de teste repetido.",
-     vs(C31, "Nome de teste repetido: ele não deixa", run(("Error: duplicate test title \"login funciona\",", VERM), ("first declared in usuarios.spec.js:6", VERM)), arquivo="usuarios.spec.js", pastas=ARV_U)),
+     vs(C31, "Nome de teste repetido: ele não deixa", run(("Error: duplicate test title \"login funciona\",", VERM), (f"first declared in usuarios.spec.js:{L_TEST}", VERM)), arquivo="usuarios.spec.js", pastas=ARV_U)),
     ("Por quê? O for criou quatro testes, e os quatro se chamam login funciona. Se um deles falhasse, como você ia saber qual?",
      {"type": "traducao", "titulo": "4 TESTES, O MESMO NOME", "linhas": [["standard_user", "login funciona"], ["problem_user", "login funciona"], ["performance_glitch_user", "login funciona"], ["visual_user", "login funciona"]]}),
     ("A solução é colocar o nome do usuário dentro do nome do teste.", bt(("O NOME DO USUÁRIO", "gold", 120), ("DENTRO DO NOME DO TESTE", "white", 100))),
@@ -87,7 +87,7 @@ AULAS.append(projeto(32, "MÓDULO 7 · AULA 32", "O nome do teste que muda sozin
     ("No teclado brasileiro, a crase fica na tecla do acento agudo, com shift. Aperta, e depois a barra de espaço, pra ela aparecer.",
      {"type": "cards", "titulo": "DIGITANDO A CRASE", "itens": [["⇧", "Shift", "segura"], ["´", "Tecla do acento", "aperta", "#69a7ff"], ["␣", "Espaço", "a crase aparece", "#ffd23f"]]}),
     ("Então, troca as aspas do nome do teste por crase, e escreve: login funciona para, cifrão, abre chaves, usuario, fecha chaves.",
-     edc(C32, "Crase: texto + valor", arquivo="usuarios.spec.js", pastas=ARV_U, digitar=True, digitar_de=L_TEST, digitar_ate=L_TEST, vel=0.7, fonte=24)),
+     edc(C32, "Crase: texto + valor", arquivo="usuarios.spec.js", pastas=None, digitar=True, digitar_de=L_TEST, digitar_ate=L_TEST, vel=0.7, fonte=24)),
     ("Traduzindo: a crase abre um texto que aceita valores. E cifrão chaves abre um espaço dentro dele: coloque aqui o valor de usuario.",
      {"type": "traducao", "codigo": "`login funciona para ${usuario}`", "partes": [["`", "texto que aceita valores"], ["${usuario}", "coloque aqui o valor de usuario"]], "passo": 2.4}),
     ("Em cada volta do for, o valor entra ali. Na primeira, login funciona para standard user. Na segunda, para problem user. E assim por diante.",

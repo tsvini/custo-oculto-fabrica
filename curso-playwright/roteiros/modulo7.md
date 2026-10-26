@@ -8,7 +8,7 @@
 5. A solução tem duas partes: uma lista com os nomes, e uma repetição que roda o teste uma vez pra cada nome da lista. [cards]
 6. Primeiro, a lista. Cria o arquivo usuarios ponto spec ponto js e escreve: const usuarios igual, abre colchetes. [editor]
 7. Traduzindo: const, guarde com o nome usuarios. O igual, o que vem depois é o valor. E os colchetes abrem uma lista. [traducao]
-8. Pensa numa lista de compras: um item depois do outro. No código, cada nome vai entre aspas, e a vírgula separa um do outro. No fim, fecha os colchetes. [editor]
+8. Pensa numa lista de compras: um item embaixo do outro. No código é igual: um nome por linha, entre aspas, e a vírgula separando um do outro. No fim, fecha os colchetes. [editor]
 9. Pronto: a lista usuarios guarda quatro nomes. Agora, a repetição: for, abre parênteses, const usuario of usuarios, fecha parênteses e abre chaves. [editor]
 10. Traduzindo: for, para cada. usuario, um nome que a gente dá pra cada item. of usuarios, da lista usuarios. Então: para cada usuário da lista. [traducao]
 11. Voltando pra lista de compras: pra cada item da lista, você pega ele no mercado. O for faz igual: pra cada nome da lista, ele roda o que está dentro das chaves. [cards]

@@ -153,7 +153,21 @@
        "scene": {
         "type": "editor",
         "arquivo": "usuarios.spec.js",
-        "codigo": "import { test, expect } from '@playwright/test';\n\nconst usuarios = ['standard_user', 'problem_user', 'performance_glitch_user', 'visual_user'];\n\nfor (const usuario of usuarios) {\n  test(`login funciona para ${usuario}`, async ({ page }) => {\n    await page.goto('/');\n    await page.getByTestId('username').fill(usuario);\n    await page.getByTestId('password').fill(process.env.SAUCE_PASSWORD);\n    await page.getByTestId('login-button').click();",
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  tests/",
+         "    login.spec.js",
+         "    usuarios.spec.js",
+         "  .env",
+         "  .env.example",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "codigo": "import { test, expect } from '@playwright/test';\n\nconst usuarios = [\n  'standard_user',\n  'problem_user',\n  'performance_glitch_user',\n  'visual_user',\n];\n\nfor (const usuario of usuarios) {",
         "legenda": "workers = trabalhadores",
         "fonte": 26,
         "digitar": false,
@@ -172,20 +186,6 @@
           "cor": "ac",
           "em": 0.5
          }
-        ],
-        "pastas": [
-         "meu-primeiro-playwright",
-         "  .github/",
-         "  node_modules/",
-         "  tests/",
-         "    login.spec.js",
-         "    usuarios.spec.js",
-         "  .env",
-         "  .env.example",
-         "  .gitignore",
-         "  package-lock.json",
-         "  package.json",
-         "  playwright.config.js"
         ]
        }
       },

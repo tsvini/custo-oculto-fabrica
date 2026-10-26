@@ -195,14 +195,10 @@
        }
       },
       {
-       "text": "Pensa numa lista de compras: um item depois do outro. No código, cada nome vai entre aspas, e a vírgula separa um do outro. No fim, fecha os colchetes.",
+       "text": "Pensa numa lista de compras: um item embaixo do outro. No código é igual: um nome por linha, entre aspas, e a vírgula separando um do outro. No fim, fecha os colchetes.",
        "scene": {
         "type": "editor",
         "arquivo": "usuarios.spec.js",
-        "codigo": "import { test, expect } from '@playwright/test';\n\nconst usuarios = ['standard_user', 'problem_user', 'performance_glitch_user', 'visual_user'];",
-        "legenda": "Itens entre aspas, separados por vírgula",
-        "fonte": 26,
-        "digitar": true,
         "pastas": [
          "meu-primeiro-playwright",
          "  .github/",
@@ -217,7 +213,11 @@
          "  package.json",
          "  playwright.config.js"
         ],
-        "digitar_de": 3,
+        "codigo": "import { test, expect } from '@playwright/test';\n\nconst usuarios = [\n  'standard_user',\n  'problem_user',\n  'performance_glitch_user',\n  'visual_user',\n];",
+        "legenda": "Um nome por linha, entre aspas, com vírgula",
+        "fonte": 30,
+        "digitar": true,
+        "digitar_de": 4,
         "vel": 0.7
        }
       },
@@ -226,10 +226,6 @@
        "scene": {
         "type": "editor",
         "arquivo": "usuarios.spec.js",
-        "codigo": "import { test, expect } from '@playwright/test';\n\nconst usuarios = ['standard_user', 'problem_user', 'performance_glitch_user', 'visual_user'];\n\nfor (const usuario of usuarios) {\n}",
-        "legenda": "for (const usuario of usuarios)",
-        "fonte": 26,
-        "digitar": true,
         "pastas": [
          "meu-primeiro-playwright",
          "  .github/",
@@ -244,7 +240,11 @@
          "  package.json",
          "  playwright.config.js"
         ],
-        "digitar_de": 5
+        "codigo": "import { test, expect } from '@playwright/test';\n\nconst usuarios = [\n  'standard_user',\n  'problem_user',\n  'performance_glitch_user',\n  'visual_user',\n];\n\nfor (const usuario of usuarios) {\n}",
+        "legenda": "for (const usuario of usuarios)",
+        "fonte": 28,
+        "digitar": true,
+        "digitar_de": 10
        }
       },
       {
@@ -326,25 +326,12 @@
        "scene": {
         "type": "editor",
         "arquivo": "usuarios.spec.js",
-        "codigo": "import { test, expect } from '@playwright/test';\n\nconst usuarios = ['standard_user', 'problem_user', 'performance_glitch_user', 'visual_user'];\n\nfor (const usuario of usuarios) {\n  test('login funciona', async ({ page }) => {\n    await page.goto('/');\n    await page.getByTestId('username').fill(usuario);\n    await page.getByTestId('password').fill(process.env.SAUCE_PASSWORD);\n    await page.getByTestId('login-button').click();\n    // o performance_glitch_user é lento de propósito: damos 10 segundos em vez de 5\n    await expect(page.getByTestId('title')).toHaveText('Products', { timeout: 10000 });\n  });\n}",
+        "codigo": "import { test, expect } from '@playwright/test';\n\nconst usuarios = [\n  'standard_user',\n  'problem_user',\n  'performance_glitch_user',\n  'visual_user',\n];\n\nfor (const usuario of usuarios) {\n  test('login funciona', async ({ page }) => {\n    await page.goto('/');\n    await page.getByTestId('username').fill(usuario);\n    await page.getByTestId('password').fill(process.env.SAUCE_PASSWORD);\n    await page.getByTestId('login-button').click();\n    // o performance_glitch_user é lento: 10 segundos em vez de 5\n    await expect(page.getByTestId('title')).toHaveText('Products', { timeout: 10000 });\n  });\n}",
         "legenda": "O teste dentro do for",
         "fonte": 24,
         "digitar": true,
-        "pastas": [
-         "meu-primeiro-playwright",
-         "  .github/",
-         "  node_modules/",
-         "  tests/",
-         "    login.spec.js",
-         "    usuarios.spec.js",
-         "  .env",
-         "  .env.example",
-         "  .gitignore",
-         "  package-lock.json",
-         "  package.json",
-         "  playwright.config.js"
-        ],
-        "digitar_de": 6
+        "pastas": null,
+        "digitar_de": 11
        }
       },
       {
@@ -352,26 +339,13 @@
        "scene": {
         "type": "editor",
         "arquivo": "usuarios.spec.js",
-        "codigo": "import { test, expect } from '@playwright/test';\n\nconst usuarios = ['standard_user', 'problem_user', 'performance_glitch_user', 'visual_user'];\n\nfor (const usuario of usuarios) {\n  test('login funciona', async ({ page }) => {\n    await page.goto('/');\n    await page.getByTestId('username').fill(usuario);\n    await page.getByTestId('password').fill(process.env.SAUCE_PASSWORD);\n    await page.getByTestId('login-button').click();\n    // o performance_glitch_user é lento de propósito: damos 10 segundos em vez de 5\n    await expect(page.getByTestId('title')).toHaveText('Products', { timeout: 10000 });\n  });\n}",
+        "codigo": "import { test, expect } from '@playwright/test';\n\nconst usuarios = [\n  'standard_user',\n  'problem_user',\n  'performance_glitch_user',\n  'visual_user',\n];\n\nfor (const usuario of usuarios) {\n  test('login funciona', async ({ page }) => {\n    await page.goto('/');\n    await page.getByTestId('username').fill(usuario);\n    await page.getByTestId('password').fill(process.env.SAUCE_PASSWORD);\n    await page.getByTestId('login-button').click();\n    // o performance_glitch_user é lento: 10 segundos em vez de 5\n    await expect(page.getByTestId('title')).toHaveText('Products', { timeout: 10000 });\n  });\n}",
         "legenda": "fill(usuario): o nome da volta da vez",
         "fonte": 24,
         "digitar": false,
-        "pastas": [
-         "meu-primeiro-playwright",
-         "  .github/",
-         "  node_modules/",
-         "  tests/",
-         "    login.spec.js",
-         "    usuarios.spec.js",
-         "  .env",
-         "  .env.example",
-         "  .gitignore",
-         "  package-lock.json",
-         "  package.json",
-         "  playwright.config.js"
-        ],
+        "pastas": null,
         "destaque": [
-         8
+         13
         ],
         "destaque_em": 0.6
        }
@@ -398,27 +372,14 @@
        "scene": {
         "type": "editor",
         "arquivo": "usuarios.spec.js",
-        "codigo": "import { test, expect } from '@playwright/test';\n\nconst usuarios = ['standard_user', 'problem_user', 'performance_glitch_user', 'visual_user'];\n\nfor (const usuario of usuarios) {\n  test('login funciona', async ({ page }) => {\n    await page.goto('/');\n    await page.getByTestId('username').fill(usuario);\n    await page.getByTestId('password').fill(process.env.SAUCE_PASSWORD);\n    await page.getByTestId('login-button').click();\n    // o performance_glitch_user é lento de propósito: damos 10 segundos em vez de 5\n    await expect(page.getByTestId('title')).toHaveText('Products', { timeout: 10000 });\n  });\n}",
+        "codigo": "import { test, expect } from '@playwright/test';\n\nconst usuarios = [\n  'standard_user',\n  'problem_user',\n  'performance_glitch_user',\n  'visual_user',\n];\n\nfor (const usuario of usuarios) {\n  test('login funciona', async ({ page }) => {\n    await page.goto('/');\n    await page.getByTestId('username').fill(usuario);\n    await page.getByTestId('password').fill(process.env.SAUCE_PASSWORD);\n    await page.getByTestId('login-button').click();\n    // o performance_glitch_user é lento: 10 segundos em vez de 5\n    await expect(page.getByTestId('title')).toHaveText('Products', { timeout: 10000 });\n  });\n}",
         "legenda": "O usuário lento: 10 segundos só aqui",
         "fonte": 24,
         "digitar": false,
-        "pastas": [
-         "meu-primeiro-playwright",
-         "  .github/",
-         "  node_modules/",
-         "  tests/",
-         "    login.spec.js",
-         "    usuarios.spec.js",
-         "  .env",
-         "  .env.example",
-         "  .gitignore",
-         "  package-lock.json",
-         "  package.json",
-         "  playwright.config.js"
-        ],
+        "pastas": null,
         "destaque": [
-         11,
-         12
+         16,
+         17
         ],
         "destaque_em": 0.6
        }
