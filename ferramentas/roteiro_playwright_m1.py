@@ -45,6 +45,20 @@ def term(linhas, legenda=None, pasta="C:\\Users\\voce", titulo=None):
     return d
 
 
+
+# aula 1: o projeto final rodando de verdade: VS Code com o teste de compra, o comando no terminal e o navegador real por cima fazendo tudo
+_COMPRA_JS = open(os.path.join(RAIZ, "curso-playwright", "projeto", "tests", "compra.spec.js"), encoding="utf8").read().rstrip("\n").split("\n")
+_LOGIN = [{"fill": ["#user-name", "standard_user"]}, {"fill": ["#password", "secret_sauce"]}, {"click": "#login-button"}]
+_COMPRA = _LOGIN + [{"click": "[data-test=\"add-to-cart-sauce-labs-backpack\"]"}, {"click": "[data-test=\"shopping-cart-link\"]"}, {"click": "[data-test=\"checkout\"]"},
+                    {"fill": ["[data-test=\"firstName\"]", "Maria"]}, {"fill": ["[data-test=\"lastName\"]", "Silva"]}, {"fill": ["[data-test=\"postalCode\"]", "88000-000"]},
+                    {"click": "[data-test=\"continue\"]"}, {"click": "[data-test=\"finish\"]"}]
+VS_COMPRA = {"type": "editor", "arquivo": "compra.spec.js", "digitar": False, "fonte": 28, "linha0": 7, "codigo": "\n".join(_COMPRA_JS[6:15]),
+             "terminal": [{"cmd": "npx playwright test compra.spec.js --headed --project=chromium", "em": 0.02}, {"out": "Running 1 test using 1 worker", "cor": "mut", "em": 0.07},
+                          {"out": "  1 passed (6.2s)", "cor": "ac", "em": 0.87}],
+             "navegador": {"media": "rec_compra_final", "url": SAUCE, "gravar": True, "acoes": _COMPRA, "espera_inicio": 700, "espera_fim": 2000, "delay_letra": 45,
+                           "titulo": "Chromium", "em": 0.09, "ate": 0.85},
+             "legenda": "O robô compra sozinho"}
+
 AULAS = []
 
 # ---------- Aula 1 ----------
@@ -52,9 +66,7 @@ AULAS.append(projeto(1, "BOAS-VINDAS · AULA 1", "O que você vai construir", [
     ("Seja muito bem-vindo ao Playwright para Leigos. Eu sou o Vinícius.", bt(("PLAYWRIGHT", "gold", 210), ("PARA LEIGOS", "white", 130), ("AULA 1", "muted", 80))),
     ("Antes de qualquer explicação, eu quero te mostrar onde você vai chegar.", bt(("ONDE VOCÊ", "white", 150), ("VAI CHEGAR", "gold", 170))),
     ("Isso aqui é o projeto final do curso: um robô que entra numa loja de verdade, faz login, coloca produto no carrinho e finaliza a compra, sozinho.",
-     {"type": "pw_ui", "media": "site_sauce_done", "url": SAUCE, "inspecionar": "[data-test=\"complete-header\"]", "acoes": [{"fill": ["#user-name", "standard_user"]}, {"fill": ["#password", "secret_sauce"]}, {"click": "#login-button"}, {"click": "[data-test=\"add-to-cart-sauce-labs-backpack\"]"}, {"click": "[data-test=\"shopping-cart-link\"]"}, {"click": "[data-test=\"checkout\"]"}, {"fill": ["[data-test=\"firstName\"]", "Maria"]}, {"fill": ["[data-test=\"lastName\"]", "Silva"]}, {"fill": ["[data-test=\"postalCode\"]", "88000-000"]}, {"click": "[data-test=\"continue\"]"}, {"click": "[data-test=\"finish\"]"}],
-      "passos_pw": A_COMPRA, "arquivos": [["compra.spec.js", ["compra uma mochila do começo ao fim"]], ["login.spec.js", [["entra com usuário e senha", "ok"], ["mostra erro para usuário bloqueado", "ok"]]]],
-      "legenda": "O robô compra sozinho", "clique": True}),
+     VS_COMPRA),
     ("E o mesmo teste roda no Chromium, no Firefox, no WebKit, que é o motor por trás do Safari, e até simulando um celular.",
      {"type": "pw_relatorio", "testes": [["compra uma mochila do começo ao fim", "compra.spec.js:7", p, "ok", d] for p, d in (("chromium", "2.1s"), ("firefox", "2.8s"), ("webkit", "2.5s"), ("celular", "2.3s"))],
       "legenda": "Um teste, quatro navegadores"}),

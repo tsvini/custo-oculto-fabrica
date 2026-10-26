@@ -77,117 +77,90 @@
       {
        "text": "Isso aqui é o projeto final do curso: um robô que entra numa loja de verdade, faz login, coloca produto no carrinho e finaliza a compra, sozinho.",
        "scene": {
-        "type": "pw_ui",
-        "media": "site_sauce_done",
-        "url": "https://www.saucedemo.com/",
-        "inspecionar": "[data-test=\"complete-header\"]",
-        "acoes": [
+        "type": "editor",
+        "arquivo": "compra.spec.js",
+        "digitar": false,
+        "fonte": 28,
+        "linha0": 7,
+        "codigo": "test('compra uma mochila do começo ao fim', async ({ page }) => {\n  const produtos = new ProdutosPage(page);\n  const checkout = new CheckoutPage(page);\n\n  await test.step('adiciona a mochila no carrinho', async () => {\n    await page.goto('/inventory.html');\n    await produtos.adicionar('sauce-labs-backpack');\n    await expect(produtos.contadorCarrinho).toHaveText('1');\n  });",
+        "terminal": [
          {
-          "fill": [
-           "#user-name",
-           "standard_user"
-          ]
+          "cmd": "npx playwright test compra.spec.js --headed --project=chromium",
+          "em": 0.02
          },
          {
-          "fill": [
-           "#password",
-           "secret_sauce"
-          ]
+          "out": "Running 1 test using 1 worker",
+          "cor": "mut",
+          "em": 0.07
          },
          {
-          "click": "#login-button"
-         },
-         {
-          "click": "[data-test=\"add-to-cart-sauce-labs-backpack\"]"
-         },
-         {
-          "click": "[data-test=\"shopping-cart-link\"]"
-         },
-         {
-          "click": "[data-test=\"checkout\"]"
-         },
-         {
-          "fill": [
-           "[data-test=\"firstName\"]",
-           "Maria"
-          ]
-         },
-         {
-          "fill": [
-           "[data-test=\"lastName\"]",
-           "Silva"
-          ]
-         },
-         {
-          "fill": [
-           "[data-test=\"postalCode\"]",
-           "88000-000"
-          ]
-         },
-         {
-          "click": "[data-test=\"continue\"]"
-         },
-         {
-          "click": "[data-test=\"finish\"]"
+          "out": "  1 passed (6.2s)",
+          "cor": "ac",
+          "em": 0.87
          }
         ],
-        "passos_pw": [
-         [
-          "Navigate to",
-          "/inventory.html"
-         ],
-         [
-          "Click",
-          "getByTestId('add-to-cart-sauce-labs-backpack')"
-         ],
-         [
-          "Click",
-          "getByTestId('shopping-cart-link')"
-         ],
-         [
-          "Click",
-          "getByTestId('checkout')"
-         ],
-         [
-          "Fill",
-          "getByTestId('firstName')"
-         ],
-         [
-          "Fill",
-          "getByTestId('postalCode')"
-         ],
-         [
-          "Click",
-          "getByTestId('finish')"
-         ],
-         [
-          "Expect",
-          "toHaveText('Thank you for your order!')"
-         ]
-        ],
-        "arquivos": [
-         [
-          "compra.spec.js",
-          [
-           "compra uma mochila do começo ao fim"
-          ]
-         ],
-         [
-          "login.spec.js",
-          [
-           [
-            "entra com usuário e senha",
-            "ok"
-           ],
-           [
-            "mostra erro para usuário bloqueado",
-            "ok"
+        "navegador": {
+         "media": "rec_compra_final",
+         "url": "https://www.saucedemo.com/",
+         "gravar": true,
+         "acoes": [
+          {
+           "fill": [
+            "#user-name",
+            "standard_user"
            ]
-          ]
-         ]
-        ],
-        "legenda": "O robô compra sozinho",
-        "clique": true
+          },
+          {
+           "fill": [
+            "#password",
+            "secret_sauce"
+           ]
+          },
+          {
+           "click": "#login-button"
+          },
+          {
+           "click": "[data-test=\"add-to-cart-sauce-labs-backpack\"]"
+          },
+          {
+           "click": "[data-test=\"shopping-cart-link\"]"
+          },
+          {
+           "click": "[data-test=\"checkout\"]"
+          },
+          {
+           "fill": [
+            "[data-test=\"firstName\"]",
+            "Maria"
+           ]
+          },
+          {
+           "fill": [
+            "[data-test=\"lastName\"]",
+            "Silva"
+           ]
+          },
+          {
+           "fill": [
+            "[data-test=\"postalCode\"]",
+            "88000-000"
+           ]
+          },
+          {
+           "click": "[data-test=\"continue\"]"
+          },
+          {
+           "click": "[data-test=\"finish\"]"
+          }
+         ],
+         "espera_inicio": 700,
+         "espera_fim": 2000,
+         "delay_letra": 45,
+         "titulo": "Chromium",
+         "em": 0.09,
+         "ate": 0.85
+        },
+        "legenda": "O robô compra sozinho"
        }
       },
       {
