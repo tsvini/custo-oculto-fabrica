@@ -190,6 +190,25 @@
     txt(ctx, "VS CODE", font(800, 44 * u), x2 + W / 2, y + H + 70 * u, C.yel, "center", a2); txt(ctx, "cada coisa de uma cor", font(600, 30 * u), x2 + W / 2, y + H + 118 * u, C.mut, "center", a2);
     ctx.restore(); legenda(ctx, c, t, s);
   };
+  // DESAFIO: o enunciado em itens e a contagem regressiva "pausa o vídeo e tenta"
+  // {type:"desafio", numero:"1", titulo:"Senha errada", itens:[["✓","usuário certo"],...], contagem:5, contagem_em:1.0}
+  S.desafio = (ctx, c, t, dur, s) => {
+    const u = c.u; const a = easeOut(t / 0.4);
+    txt(ctx, s.numero ? "DESAFIO " + s.numero : "DESAFIO", font(800, 40 * u), c.cx, c.H * 0.12, C.ac, "center", a);
+    txt(ctx, s.titulo || "", caber(ctx, s.titulo || "", 900, 84 * u, c.W * 0.86), c.cx, c.H * 0.21, C.txt, "center", a);
+    const L = s.itens || []; const W = 980 * u, lh = Math.min(92 * u, (c.H * 0.46) / Math.max(1, L.length)), x0 = c.W * 0.08, y0 = c.H * 0.32;
+    L.forEach(([ic, tx, cor], i) => { const k = easeOut((t - 0.4 - i * 0.3) / 0.35); if (k <= 0) return; const yy = y0 + i * lh + lh / 2;
+      ctx.save(); ctx.globalAlpha = a * k * 0.9; rr(ctx, x0, yy - lh * 0.42, W, lh * 0.84, 18 * u); ctx.fillStyle = C.win; ctx.fill(); ctx.fillStyle = cor || C.ac; ctx.fillRect(x0, yy - lh * 0.42, 8 * u, lh * 0.84); ctx.restore();
+      txt(ctx, ic, font(800, 40 * u), x0 + 56 * u, yy, cor || C.ac, "center", a * k); txt(ctx, tx, caber(ctx, tx, 700, 40 * u, W - 140 * u), x0 + 104 * u, yy, C.txt, "left", a * k); });
+    // contagem: anel que esvazia e o número no meio
+    const n = s.contagem || 5, t0 = s.contagem_em !== undefined ? s.contagem_em : Math.max(0.8, dur - n - 0.5), cx = c.W * 0.79, cy = c.H * 0.5, R = 170 * u; const kc = easeOut((t - t0 + 0.3) / 0.4);
+    if (kc > 0) { const el = clamp((t - t0) / n); const resta = Math.max(1, n - Math.floor(Math.max(0, t - t0)));
+      ctx.save(); ctx.globalAlpha = a * kc; ctx.lineWidth = 18 * u; ctx.strokeStyle = "rgba(255,255,255,.08)"; ctx.beginPath(); ctx.arc(cx, cy, R, 0, 7); ctx.stroke();
+      ctx.strokeStyle = el < 1 ? C.yel : C.ac; ctx.lineCap = "round"; ctx.beginPath(); ctx.arc(cx, cy, R, -Math.PI / 2, -Math.PI / 2 + Math.PI * 2 * (1 - el)); ctx.stroke(); ctx.restore();
+      txt(ctx, el < 1 ? String(resta) : "▶", font(900, 150 * u), cx, cy, el < 1 ? C.yel : C.ac, "center", a * kc);
+      txt(ctx, "⏸  pausa o vídeo e tenta", font(800, 38 * u), cx, cy + R + 70 * u, C.txt, "center", a * kc); }
+    legenda(ctx, c, t, s);
+  };
   S.terminal = (ctx, c, t, dur, s) => {
     const u = c.u; const a = easeOut(t / 0.4); const W = (c.vertical ? 1000 : 1600) * u, H = (c.vertical ? 900 : 660) * u;
     const x = c.cx - W / 2, y = topo(c, H);

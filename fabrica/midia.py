@@ -112,6 +112,8 @@ def gravacoes(cenas, pasta, log):
                         pg.click(ac["fill"][0], timeout=8000); pg.type(ac["fill"][0], ac["fill"][1], delay=int(s.get("delay_letra", 90)))
                     elif ac.get("click"):
                         pg.click(ac["click"], timeout=8000)
+                    elif ac.get("select"):  # caixa de opções: {"select": [seletor, valor]}
+                        pg.select_option(ac["select"][0], ac["select"][1], timeout=8000)
                     pg.wait_for_timeout(int(ac.get("espera", s.get("espera_acao", 500))))
                 pg.wait_for_timeout(int(s.get("espera_fim", 1500)))
             except Exception as e:

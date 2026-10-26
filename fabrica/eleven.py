@@ -48,7 +48,10 @@ def textos(p):
     # frases marcadas "abertura" não vão para o TTS: o áudio delas é a intro do canal (canal/intro.mp3, ou intro_en.mp3…), colado na frente.
     # Se o idioma ainda não tem intro gravada, a abertura é narrada junto com o resto.
     pula = os.path.exists(intro_de(p))
-    return [(n, falado(p, " ".join(s["text"].strip() for s in g["sentences"] if s.get("text", "").strip() and not (pula and s.get("abertura"))))) for n, g in out]
+    # "pausa": N segundos de silêncio depois da frase (ex.: desafio "pausa o vídeo e tenta"); vira a tag [silence] do v4 (~2 s cada), só no áudio
+    def com_pausa(s):
+        return s["text"].strip() + (" [silence]" * max(1, round(s["pausa"] / 2)) if s.get("pausa") else "")
+    return [(n, falado(p, " ".join(com_pausa(s) for s in g["sentences"] if s.get("text", "").strip() and not (pula and s.get("abertura"))))) for n, g in out]
 
 
 def idioma_de(p):
