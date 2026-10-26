@@ -1275,16 +1275,30 @@
     // caixa do código
     ctx.save(); ctx.globalAlpha = a; rr(ctx, x0 - 40 * u, yc - 60 * u, wTot + 80 * u, 120 * u, 18 * u); ctx.fillStyle = C.win; ctx.fill(); ctx.strokeStyle = C.line; ctx.lineWidth = 2 * u; ctx.stroke(); ctx.restore();
     let xx = x0; for (const [tk, cor] of (s.texto_puro ? [[cod, C.txt]] : tokens(cod))) { txt(ctx, tk, fc, xx, yc, cor, "left", a); xx += tw(ctx, tk, fc); }
-    const passo = s.passo || Math.max(0.9, (dur * 0.75 - 0.8) / Math.max(P.length, 1)); let ocup = [];
+    const passo = s.passo || Math.max(0.9, (dur * 0.75 - 0.8) / Math.max(P.length, 1));
+    // layout dos rótulos (uma vez, todos juntos): numa linha só, na ordem das partes, sem encavalar; quem sai do lugar ganha cotovelo.
+    const LAY = P.map(([tr0, pt]) => { const k0 = cod.indexOf(tr0); if (k0 < 0) return null; const xa = x0 + tw(ctx, cod.slice(0, k0), fc), xb = xa + tw(ctx, tr0, fc);
+      const fp = caber(ctx, pt, 800, 50 * u, Math.max(280 * u, (c.W * 0.92) / Math.max(P.length, 1))); return { xa, xb, xm: (xa + xb) / 2, fp, w: tw(ctx, pt, fp) + 52 * u, linha: 0 }; });
+    { const V = LAY.map((o, i) => o && Object.assign(o, { i })).filter(Boolean).sort((p1, p2) => p1.xm - p2.xm); const gap = 24 * u, E = c.W * 0.03, D = c.W * 0.97;
+      const tot = V.reduce((a0, o) => a0 + o.w + gap, -gap);
+      if (tot <= D - E) {
+        V.forEach((o) => { o.xc = o.xm; }); for (let k = 1; k < V.length; k++) V[k].xc = Math.max(V[k].xc, V[k - 1].xc + V[k - 1].w / 2 + gap + V[k].w / 2);
+        if (V.length && V[V.length - 1].xc + V[V.length - 1].w / 2 > D) { V[V.length - 1].xc = D - V[V.length - 1].w / 2; for (let k = V.length - 2; k >= 0; k--) V[k].xc = Math.min(V[k].xc, V[k + 1].xc - V[k + 1].w / 2 - gap - V[k].w / 2); }
+        if (V.length && V[0].xc - V[0].w / 2 < E) { V[0].xc = E + V[0].w / 2; for (let k = 1; k < V.length; k++) V[k].xc = Math.max(V[k].xc, V[k - 1].xc + V[k - 1].w / 2 + gap + V[k].w / 2); }
+        // cotovelos: os que vão pra direita sobem conforme ficam mais à direita; os que vão pra esquerda, conforme ficam mais à esquerda (assim nenhuma linha cruza)
+        const dir = V.filter((o) => o.xc - o.xm > o.w / 2 - 30 * u), esq = V.filter((o) => o.xm - o.xc > o.w / 2 - 30 * u);
+        dir.forEach((o, k) => { o.lane = dir.length - 1 - k; }); esq.forEach((o, k) => { o.lane = k; });
+      } else {  // não cabe numa linha: várias linhas, cada rótulo em cima da sua parte
+        const oc = []; V.forEach((o) => { o.xc = Math.max(E + o.w / 2, Math.min(D - o.w / 2, o.xm)); let L = 0; while (oc.some(([l, a0, a1]) => l === L && !(o.xc + o.w / 2 + gap < a0 || o.xc - o.w / 2 - gap > a1))) L++; o.linha = L; oc.push([L, o.xc - o.w / 2, o.xc + o.w / 2]); });
+      } }
     P.forEach(([trecho, pt, nota], i) => { const ini = cod.indexOf(trecho); if (ini < 0) return; const k = easeOut((t - (s.em_frac ? s.em_frac[i] * dur : 0.8 + i * passo)) / 0.4); if (k <= 0) return; const cor = cores[i % cores.length];  /* em_frac: cada parte entra quando a narração fala dela */
-      const xa = x0 + tw(ctx, cod.slice(0, ini), fc), xb = xa + tw(ctx, trecho, fc), xm = (xa + xb) / 2;
-      // primeiro decide a linha do rótulo (pra não encavalar), depois a seta vai até ela
-      const fp = caber(ctx, pt, 800, 50 * u, Math.max(280 * u, (c.W * 0.92) / Math.max(P.length, 1))); const wp = tw(ctx, pt, fp);
-      const xc = Math.max(c.W * 0.04 + wp / 2, Math.min(c.W * 0.96 - wp / 2, xm)); let linha = 0; while (ocup.some(([l, a0, a1]) => l === linha && !(xc + wp / 2 + 30 * u < a0 || xc - wp / 2 - 30 * u > a1))) linha++;
-      ocup.push([linha, xc - wp / 2, xc + wp / 2]); const yp = yc + 230 * u + linha * 130 * u;
+      const { xa, xb, xm, fp, xc, linha } = LAY[i]; const wp = LAY[i].w - 52 * u; const yp = yc + 230 * u + linha * 130 * u;
       ctx.save(); ctx.globalAlpha = a * k * 0.12; ctx.fillStyle = cor; ctx.fillRect(xa - 4 * u, yc - 40 * u, xb - xa + 8 * u, 80 * u); ctx.globalAlpha = a * k;
-      ctx.fillRect(xa, yc + 70 * u, xb - xa, 6 * u); const yf = yp - 58 * u; ctx.fillRect(xm - 3 * u, yc + 76 * u, 6 * u, (yf - yc - 76 * u) * k);
-      ctx.beginPath(); ctx.moveTo(xm - 16 * u, yf - 4 * u); ctx.lineTo(xm + 16 * u, yf - 4 * u); ctx.lineTo(xm, yf + 18 * u); ctx.closePath(); ctx.fill();
+      ctx.fillRect(xa, yc + 70 * u, xb - xa, 6 * u); const yf = yp - 58 * u; const cot = LAY[i].lane !== undefined, xf = cot ? xc : xm;
+      if (cot) { const yl = yc + 100 * u + Math.min(LAY[i].lane, 3) * 26 * u;  // cotovelo: desce, anda pro lado por cima dos rótulos, e desce até o rótulo
+        ctx.fillRect(xm - 3 * u, yc + 76 * u, 6 * u, yl - yc - 76 * u); ctx.fillRect(Math.min(xm, xc) - 3 * u, yl - 3 * u, Math.abs(xc - xm) + 6 * u, 6 * u); ctx.fillRect(xc - 3 * u, yl, 6 * u, (yf - yl) * k);
+      } else ctx.fillRect(xm - 3 * u, yc + 76 * u, 6 * u, (yf - yc - 76 * u) * k);
+      ctx.beginPath(); ctx.moveTo(xf - 16 * u, yf - 4 * u); ctx.lineTo(xf + 16 * u, yf - 4 * u); ctx.lineTo(xf, yf + 18 * u); ctx.closePath(); ctx.fill();
       rr(ctx, xc - wp / 2 - 26 * u, yp - 38 * u, wp + 52 * u, 76 * u, 38 * u); ctx.fill(); ctx.restore();
       txt(ctx, pt, fp, xc, yp, "#0b1a12", "center", a * k);
       if (nota) txt(ctx, nota, caber(ctx, nota, 600, 32 * u, c.W * 0.5), xc, yp + 62 * u, C.mut, "center", a * k); });

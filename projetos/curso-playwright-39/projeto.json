@@ -81,6 +81,28 @@
        }
       },
       {
+       "text": "Traduzindo: async avisa que essa ação tem passos que levam tempo, como preencher e clicar. E é por isso que, lá dentro, cada passo vai ter o await, espere.",
+       "scene": {
+        "type": "traducao",
+        "codigo": "async entrar(usuario, senha) {",
+        "partes": [
+         [
+          "async",
+          "leva tempo"
+         ],
+         [
+          "entrar",
+          "o nome"
+         ],
+         [
+          "(usuario, senha)",
+          "o que recebe"
+         ]
+        ],
+        "passo": 2.0
+       }
+      },
+      {
        "text": "Dentro: await this ponto usuario ponto fill usuario. Preencha o campo usuário deste LoginPage com o usuário que chegou.",
        "scene": {
         "type": "editor",
@@ -169,6 +191,28 @@
         "digitar_de": 2,
         "digitar_ate": 2,
         "rolar_depois": true
+       }
+      },
+      {
+       "text": "Traduzindo o caminho: ponto ponto barra quer dizer volte uma pasta. O teste está dentro de tests, então ele sai de lá e entra em pages, no arquivo LoginPage.",
+       "scene": {
+        "type": "traducao",
+        "codigo": "import { LoginPage } from '../pages/LoginPage';",
+        "partes": [
+         [
+          "import { LoginPage }",
+          "traga o LoginPage"
+         ],
+         [
+          "../",
+          "volte uma pasta (sai de tests)"
+         ],
+         [
+          "pages/LoginPage",
+          "entre em pages, no LoginPage"
+         ]
+        ],
+        "passo": 2.2
        }
       },
       {

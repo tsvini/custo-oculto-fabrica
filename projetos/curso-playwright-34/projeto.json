@@ -104,6 +104,49 @@
        }
       },
       {
+       "text": "Traduzindo: devices, a lista de aparelhos. Pixel 7, o nome do aparelho. E os três pontinhos: pegue todas as configurações dele, o tamanho da tela, o toque e o resto.",
+       "scene": {
+        "type": "traducao",
+        "codigo": "use: { ...devices['Pixel 7'] }",
+        "partes": [
+         [
+          "...",
+          "tudo dele"
+         ],
+         [
+          "devices",
+          "aparelhos"
+         ],
+         [
+          "['Pixel 7']",
+          "o Pixel 7"
+         ]
+        ],
+        "passo": 2.2
+       }
+      },
+      {
+       "text": "Quer outro aparelho? É só trocar o nome: iPhone 13, iPad Mini, e dezenas de outros.",
+       "scene": {
+        "type": "traducao",
+        "titulo": "TROCA O NOME, TROCA O APARELHO",
+        "linhas": [
+         [
+          "devices['Pixel 7']",
+          "Android"
+         ],
+         [
+          "devices['iPhone 13']",
+          "iPhone"
+         ],
+         [
+          "devices['iPad Mini']",
+          "tablet"
+         ]
+        ]
+       }
+      },
+      {
        "text": "Roda com project igual celular e com o navegador aparecendo: olha, o site abre no tamanho de celular.",
        "scene": {
         "type": "editor",

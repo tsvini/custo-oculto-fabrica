@@ -248,6 +248,38 @@
        }
       },
       {
+       "text": "E aqui está o ganho: se um dia o data-test do botão mudar, você troca só nesta linha, e todos os testes que usam o LoginPage continuam funcionando.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "LoginPage.js",
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  pages/",
+         "    LoginPage.js",
+         "  tests/",
+         "    compra.spec.js",
+         "    login.spec.js",
+         "    usuarios.spec.js",
+         "  .env",
+         "  .env.example",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "codigo": "export class LoginPage {\n  constructor(page) {\n    this.page = page;\n    this.usuario = page.getByTestId('username');\n    this.senha = page.getByTestId('password');\n    this.botaoLogin = page.getByTestId('login-button');\n    this.erro = page.getByTestId('error');\n  }\n}",
+        "legenda": "O botão mudou? Troca só aqui",
+        "fonte": 28,
+        "digitar": false,
+        "destaque": [
+         6
+        ],
+        "destaque_em": 0.8
+       }
+      },
+      {
        "text": "Por enquanto, ele só sabe onde estão as coisas. Na próxima aula, ele aprende a fazer o login, e o teste passa a usar.",
        "scene": {
         "type": "passo",

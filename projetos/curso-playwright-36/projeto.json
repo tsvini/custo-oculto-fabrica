@@ -130,7 +130,7 @@
        }
       },
       {
-       "text": "Preenche os três e clica em continue.",
+       "text": "Preenche os três com dados de teste: qualquer nome e CEP servem, porque é uma loja de treino. Depois, clica em continue.",
        "scene": {
         "type": "editor",
         "arquivo": "compra.spec.js",
@@ -192,7 +192,7 @@
        }
       },
       {
-       "text": "E a conferência final: complete-header, to have text, Thank you for your order.",
+       "text": "E a conferência final, a prova de que a compra terminou: complete-header, to have text, Thank you for your order.",
        "scene": {
         "type": "editor",
         "arquivo": "compra.spec.js",
@@ -346,6 +346,27 @@
         "size": 90,
         "stagger": 1.8,
         "vs": false
+       }
+      },
+      {
+       "text": "No trabalho, esse é o teste que roda antes de toda entrega. Se ele passa, o caminho principal da loja funciona. Se falha, a entrega para até alguém olhar.",
+       "scene": {
+        "type": "cards",
+        "titulo": "ANTES DE TODA ENTREGA",
+        "itens": [
+         [
+          "✓",
+          "Passou",
+          "o caminho principal funciona",
+          "#3fd68a"
+         ],
+         [
+          "✗",
+          "Falhou",
+          "a entrega para",
+          "#ff6b6b"
+         ]
+        ]
        }
       },
       {

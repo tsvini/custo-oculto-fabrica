@@ -32,7 +32,7 @@
      "chapter": "",
      "sentences": [
       {
-       "text": "Lembra das seis execuções com dois testes? Hoje você entende de onde vem.",
+       "text": "Lembra que, com dois testes, apareciam seis execuções? Hoje você entende de onde vem.",
        "scene": {
         "type": "bigtext",
         "stagger": 0.25,
@@ -71,6 +71,23 @@
           "WebKit",
           "o motor usado pelo Safari",
           "#69a7ff"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Dois testes, vezes três navegadores: seis execuções. Cada teste roda uma vez em cada navegador.",
+       "scene": {
+        "type": "traducao",
+        "titulo": "2 TESTES × 3 NAVEGADORES = 6",
+        "linhas": [
+         [
+          "entra com usuário e senha",
+          "chromium · firefox · webkit"
+         ],
+         [
+          "mostra erro para bloqueado",
+          "chromium · firefox · webkit"
          ]
         ]
        }
@@ -132,7 +149,7 @@
        }
       },
       {
-       "text": "Roda tudo e repara na linha workers. Aqui na minha máquina apareceram quatro; na sua pode aparecer outro número. Worker é um trabalhador: um processo que ajuda a rodar testes ao mesmo tempo.",
+       "text": "Roda tudo: dezoito testes, que são os seis do projeto vezes três navegadores. E repara na linha workers. Aqui na minha máquina apareceram quatro; na sua pode aparecer outro número. Worker é um trabalhador: um processo que ajuda a rodar testes ao mesmo tempo.",
        "scene": {
         "type": "editor",
         "arquivo": "usuarios.spec.js",
@@ -194,6 +211,32 @@
        }
       },
       {
+       "text": "Um exemplo: se um teste esvazia o carrinho enquanto outro está conferindo o carrinho, rodando ao mesmo tempo, um atrapalha o outro. Por isso, cada teste prepara sozinho tudo o que precisa.",
+       "scene": {
+        "type": "cards",
+        "titulo": "TESTES QUE DEPENDEM UM DO OUTRO",
+        "itens": [
+         [
+          "A",
+          "Teste A",
+          "esvazia o carrinho"
+         ],
+         [
+          "B",
+          "Teste B",
+          "confere o carrinho",
+          "#69a7ff"
+         ],
+         [
+          "✗",
+          "Ao mesmo tempo",
+          "um atrapalha o outro",
+          "#ff6b6b"
+         ]
+        ]
+       }
+      },
+      {
        "text": "E por que paralelo? Velocidade. Duzentos testes de cinco segundos, um de cada vez, levam mais de quinze minutos. Com quatro workers, uns quatro minutos.",
        "scene": {
         "type": "compare",
@@ -216,7 +259,7 @@
        }
       },
       {
-       "text": "No config, o fully parallel true liga isso. E no GitHub ele usa um worker só, pra execução ficar mais estável e previsível.",
+       "text": "No config, o fully parallel true liga isso. E no GitHub ele usa um worker só: a máquina de lá é pequena, e um de cada vez fica mais estável.",
        "scene": {
         "type": "editor",
         "arquivo": "playwright.config.js",

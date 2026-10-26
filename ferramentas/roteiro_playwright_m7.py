@@ -111,17 +111,21 @@ L_NOMES = [i + 1 for i, l in enumerate(PROJ) if "name:" in l]
 PAR = CONFIG[16:24]   # linhas 17 a 24: fullyParallel ... workers
 L_PAR = [i + 1 for i, l in enumerate(PAR) if "fullyParallel" in l or "workers" in l]
 AULAS.append(projeto(33, "MÓDULO 7 · AULA 33", "3 navegadores e testes em paralelo", [
-    ("Lembra das seis execuções com dois testes? Hoje você entende de onde vem.", titulo(33, "PARALELO")),
+    ("Lembra que, com dois testes, apareciam seis execuções? Hoje você entende de onde vem.", titulo(33, "PARALELO")),
     ("Sem o traço traço project, o Playwright roda em três navegadores: Chromium, Firefox e WebKit, que é o motor usado pelo Safari.",
      {"type": "cards", "itens": [["C", "Chromium", "a base do Chrome"], ["F", "Firefox", "", "#ff8c42"], ["W", "WebKit", "o motor usado pelo Safari", "#69a7ff"]]}),
+    ("Dois testes, vezes três navegadores: seis execuções. Cada teste roda uma vez em cada navegador.",
+     {"type": "traducao", "titulo": "2 TESTES × 3 NAVEGADORES = 6", "linhas": [["entra com usuário e senha", "chromium · firefox · webkit"], ["mostra erro para bloqueado", "chromium · firefox · webkit"]]}),
     ("Eles estão no config, nos projects.", edc("\n".join(PROJ), "projects: os três navegadores", arquivo="playwright.config.js", linha0=37, destaque=L_NOMES, destaque_em=0.6, fonte=22)),
     ("Por que três? Porque um site pode funcionar no Chrome e quebrar no Safari. Cada navegador desenha a página do seu jeito, e bug de um navegador só acontece bastante.", {"type": "cards", "itens": [["✓", "Chromium", "funcionou", "#3fd68a"], ["✓", "Firefox", "funcionou", "#3fd68a"], ["✗", "WebKit (Safari)", "o botão sumiu", "#ff6b6b"]], "titulo": "O MESMO SITE"}),  # pra que / quando
-    ("Roda tudo e repara na linha workers. Aqui na minha máquina apareceram quatro; na sua pode aparecer outro número. Worker é um trabalhador: um processo que ajuda a rodar testes ao mesmo tempo.",
+    ("Roda tudo: dezoito testes, que são os seis do projeto vezes três navegadores. E repara na linha workers. Aqui na minha máquina apareceram quatro; na sua pode aparecer outro número. Worker é um trabalhador: um processo que ajuda a rodar testes ao mesmo tempo.",
      vs(C32, "workers = trabalhadores", run(("Running 18 tests using 4 workers", "mut"), ("  18 passed (14.2s)", "ac"), cmd="npx playwright test"), arquivo="usuarios.spec.js", pastas=ARV_U)),
     ("Paralelo quer dizer vários testes ao mesmo tempo, em vez de um por vez. Por isso cada teste precisa ser independente: nenhum pode depender de outro.",
      {"type": "compare", "items": [["UM POR VEZ", "MAIS DEVAGAR", "white"], ["AO MESMO TEMPO", "CADA TESTE INDEPENDENTE", "gold"]], "size": 90, "stagger": 1.2, "vs": True}),
+    ("Um exemplo: se um teste esvazia o carrinho enquanto outro está conferindo o carrinho, rodando ao mesmo tempo, um atrapalha o outro. Por isso, cada teste prepara sozinho tudo o que precisa.",
+     {"type": "cards", "titulo": "TESTES QUE DEPENDEM UM DO OUTRO", "itens": [["A", "Teste A", "esvazia o carrinho"], ["B", "Teste B", "confere o carrinho", "#69a7ff"], ["✗", "Ao mesmo tempo", "um atrapalha o outro", VERM]]}),
     ("E por que paralelo? Velocidade. Duzentos testes de cinco segundos, um de cada vez, levam mais de quinze minutos. Com quatro workers, uns quatro minutos.", {"type": "compare", "title": "200 TESTES DE 5 SEGUNDOS", "items": [["UM POR VEZ", "MAIS DE 15 MINUTOS", "white"], ["4 WORKERS", "UNS 4 MINUTOS", "gold"]], "size": 90, "stagger": 1.8, "vs": False}),  # pra que / quando
-    ("No config, o fully parallel true liga isso. E no GitHub ele usa um worker só, pra execução ficar mais estável e previsível.",
+    ("No config, o fully parallel true liga isso. E no GitHub ele usa um worker só: a máquina de lá é pequena, e um de cada vez fica mais estável.",
      edc("\n".join(PAR), "fullyParallel e workers", arquivo="playwright.config.js", linha0=17, destaque=L_PAR, destaque_em=0.6, fonte=26)),
     ("No dia a dia, enquanto escreve, roda só no Chromium com traço traço project igual chromium, que é mais rápido. Os três navegadores ficam pro GitHub, que roda tudo a cada mudança.", {"type": "traducao", "titulo": "NO DIA A DIA", "linhas": [["escrevendo o teste", "--project=chromium"], ["no GitHub, a cada mudança", "os 3 navegadores"]]}),  # pra que / quando
     ("Na próxima aula: testando com tela de celular.", proxima("celular")[0]),
@@ -138,6 +142,10 @@ AULAS.append(projeto(34, "MÓDULO 7 · AULA 34", "Celular - emulando dispositivo
      {"type": "cards", "itens": [["📱", "Pixel 7", "tela, toque, navegador"], ["📱", "iPhone 13", "", "#69a7ff"], ["⚠", "Não substitui tudo", "teste também no aparelho real", "#ff8c42"]]}),
     ("No config, cria um project novo chamado celular, usando o Pixel 7.",
      edc("\n".join(PROJ34), "project celular: Pixel 7", arquivo="playwright.config.js", linha0=37, digitar=True, digitar_de=L_CEL, digitar_ate=L_CEL + 2, fonte=24, rolar=True, rolar_de=0.8, rolar_dur=1.0)),
+    ("Traduzindo: devices, a lista de aparelhos. Pixel 7, o nome do aparelho. E os três pontinhos: pegue todas as configurações dele, o tamanho da tela, o toque e o resto.",
+     {"type": "traducao", "codigo": "use: { ...devices['Pixel 7'] }", "partes": [["...", "tudo dele"], ["devices", "aparelhos"], ["['Pixel 7']", "o Pixel 7"]], "passo": 2.2}),
+    ("Quer outro aparelho? É só trocar o nome: iPhone 13, iPad Mini, e dezenas de outros.",
+     {"type": "traducao", "titulo": "TROCA O NOME, TROCA O APARELHO", "linhas": [["devices['Pixel 7']", "Android"], ["devices['iPhone 13']", "iPhone"], ["devices['iPad Mini']", "tablet"]]}),
     ("Roda com project igual celular e com o navegador aparecendo: olha, o site abre no tamanho de celular.",
      edc("\n".join(codigo(24).replace("aula 24: ", "").split("\n")[:10]), "Tamanho de celular", pastas=ARV_U,
          terminal=[{"cmd": "npx playwright test login.spec.js --project=celular --headed", "em": 0.03}, {"out": "Running 2 tests using 2 workers", "cor": "mut", "em": 0.08}, {"out": "  2 passed (3.1s)", "cor": "ac", "em": 0.86}],

@@ -32,7 +32,7 @@
      "chapter": "",
      "sentences": [
       {
-       "text": "Todo teste faz login de novo. Em centenas de testes, é muito tempo perdido.",
+       "text": "Todo teste faz login de novo. Se o login leva dois segundos e você tem trezentos testes, são dez minutos só entrando no site.",
        "scene": {
         "type": "bigtext",
         "stagger": 0.25,
@@ -71,6 +71,25 @@
           "Os testes usam",
           "começam logados",
           "#ffd23f"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "O que fica salvo? Os cookies: as informações que o site guarda pra lembrar que você entrou. É por isso que esse arquivo é sensível: com ele, qualquer um entraria na sua conta.",
+       "scene": {
+        "type": "cards",
+        "itens": [
+         [
+          "🍪",
+          "Cookies",
+          "o site lembra que você entrou"
+         ],
+         [
+          "⚠",
+          "Arquivo sensível",
+          "abre a sua conta",
+          "#ff6b6b"
          ]
         ]
        }

@@ -197,6 +197,28 @@
        }
       },
       {
+       "text": "E por que conferir? Sem essa linha, o teste só clica. Se o botão Add to cart estivesse quebrado, ele passaria do mesmo jeito. Teste sem conferência não testa nada.",
+       "scene": {
+        "type": "compare",
+        "title": "A CONFERÊNCIA",
+        "items": [
+         [
+          "SÓ CLICA",
+          "PASSA ATÉ COM BUG",
+          "white"
+         ],
+         [
+          "CLICA E CONFERE",
+          "PEGA O BUG",
+          "gold"
+         ]
+        ],
+        "size": 90,
+        "stagger": 1.8,
+        "vs": false
+       }
+      },
+      {
        "text": "Roda com o navegador aparecendo: olha ele entrando, clicando em Add to cart, e o carrinho mostrando um.",
        "scene": {
         "type": "editor",

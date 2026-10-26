@@ -356,6 +356,25 @@
        "pausa": 2
       },
       {
+       "text": "E agora, se a loja mudar o botão do carrinho, você conserta num lugar só, no ProdutosPage, e todos os testes de compra voltam a passar.",
+       "scene": {
+        "type": "cards",
+        "itens": [
+         [
+          "✎",
+          "O botão mudou?",
+          "conserta no ProdutosPage"
+         ],
+         [
+          "✓",
+          "Todos os testes",
+          "voltam a passar",
+          "#3fd68a"
+         ]
+        ]
+       }
+      },
+      {
        "text": "Na próxima aula: um relatório que se lê como roteiro.",
        "scene": {
         "type": "passo",
