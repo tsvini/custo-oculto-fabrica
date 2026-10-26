@@ -1266,7 +1266,7 @@
     ctx.save(); ctx.globalAlpha = a; rr(ctx, x0 - 40 * u, yc - 60 * u, wTot + 80 * u, 120 * u, 18 * u); ctx.fillStyle = C.win; ctx.fill(); ctx.strokeStyle = C.line; ctx.lineWidth = 2 * u; ctx.stroke(); ctx.restore();
     let xx = x0; for (const [tk, cor] of (s.texto_puro ? [[cod, C.txt]] : tokens(cod))) { txt(ctx, tk, fc, xx, yc, cor, "left", a); xx += tw(ctx, tk, fc); }
     const passo = s.passo || Math.max(0.9, (dur * 0.75 - 0.8) / Math.max(P.length, 1)); let ocup = [];
-    P.forEach(([trecho, pt, nota], i) => { const ini = cod.indexOf(trecho); if (ini < 0) return; const k = easeOut((t - 0.8 - i * passo) / 0.4); if (k <= 0) return; const cor = cores[i % cores.length];
+    P.forEach(([trecho, pt, nota], i) => { const ini = cod.indexOf(trecho); if (ini < 0) return; const k = easeOut((t - (s.em_frac ? s.em_frac[i] * dur : 0.8 + i * passo)) / 0.4); if (k <= 0) return; const cor = cores[i % cores.length];  /* em_frac: cada parte entra quando a narração fala dela */
       const xa = x0 + tw(ctx, cod.slice(0, ini), fc), xb = xa + tw(ctx, trecho, fc), xm = (xa + xb) / 2;
       // primeiro decide a linha do rótulo (pra não encavalar), depois a seta vai até ela
       const fp = caber(ctx, pt, 800, 50 * u, Math.max(280 * u, (c.W * 0.92) / Math.max(P.length, 1))); const wp = tw(ctx, pt, fp);

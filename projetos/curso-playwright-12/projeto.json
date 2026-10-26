@@ -203,7 +203,7 @@
        }
       },
       {
-       "text": "Parece muita coisa, né? Então vamos traduzir essa linha pedaço por pedaço.",
+       "text": "Parece muita coisa, né? Então vamos traduzir essa linha pedaço por pedaço. Test: crie um teste. O texto entre aspas: com este nome. Async: que tem esperas. O page, entre chaves: me dê o navegador. E a seta com a chave: e faça isto.",
        "scene": {
         "type": "traducao",
         "codigo": "test('entra com usuário e senha', async ({ page }) => {",
@@ -229,9 +229,14 @@
           "e faça isto:"
          ]
         ],
-        "passo": 1.2
-       },
-       "pausa": 2.0
+        "em_frac": [
+         0.325,
+         0.416,
+         0.571,
+         0.675,
+         0.853
+        ]
+       }
       },
       {
        "text": "O nome entre aspas é você que escolhe. Ele aparece no relatório, então escreve o que o teste faz, em português mesmo.",

@@ -7,7 +7,7 @@
 4. Primeira linha: import, chaves, test, vírgula, expect, fecha chaves, from, e entre aspas arroba playwright barra test. [editor]
 5. Lendo em português: traga o test e o expect, de dentro do Playwright. O test serve pra criar um teste, e o expect, pra conferir o resultado. [traducao]
 6. Agora o teste: test, abre parênteses, o nome do teste entre aspas, entra com usuário e senha, vírgula, async, abre parênteses, abre chaves, page, fecha chaves, fecha parênteses, seta, e abre chaves. E lá embaixo, fecha com chave, parêntese e ponto e vírgula. [editor]
-7. Parece muita coisa, né? Então vamos traduzir essa linha pedaço por pedaço. [traducao]
+7. Parece muita coisa, né? Então vamos traduzir essa linha pedaço por pedaço. Test: crie um teste. O texto entre aspas: com este nome. Async: que tem esperas. O page, entre chaves: me dê o navegador. E a seta com a chave: e faça isto. [traducao]
 8. O nome entre aspas é você que escolhe. Ele aparece no relatório, então escreve o que o teste faz, em português mesmo. [editor]
 9. O page é o navegador que o Playwright te entrega pronto. É com ele que você abre sites, digita e clica. [editor]
 10. E o async quer dizer que, lá dentro, a gente vai usar o await, que significa: espera esse passo terminar antes de ir pro próximo. [cards]
