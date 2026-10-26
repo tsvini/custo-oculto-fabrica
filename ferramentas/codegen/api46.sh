@@ -9,10 +9,9 @@ gravar() { ffmpeg -loglevel error -y -f x11grab -framerate 30 -video_size 1920x1
 parar() { sleep 1; kill -INT $FF; wait $FF 2>/dev/null; }
 sudo sysctl -q -w kernel.apparmor_restrict_unprivileged_userns=0   # Ubuntu 24: sem isso o Chromium comum não abre (sandbox)
 CHROME=$(node -e "console.log(require('playwright').chromium.executablePath())")
-"$CHROME" --no-first-run --no-default-browser-check --disable-infobars --user-data-dir=/tmp/perfil --window-position=0,0 --window-size=1920,1080 --lang=pt-BR https://jsonplaceholder.typicode.com/ > cg_saida/chrome_log.txt 2>&1 &
+"$CHROME" --no-first-run --no-default-browser-check --disable-infobars --user-data-dir=/tmp/perfil --window-position=0,0 --window-size=1920,1080 --lang=pt-BR --force-device-scale-factor=1.75 --host-resolver-rules="MAP www.google.com 127.0.0.1, MAP clients1.google.com 127.0.0.1" https://jsonplaceholder.typicode.com/ > cg_saida/chrome_log.txt 2>&1 &
 for i in $(seq 1 30); do W=$(xdotool search --onlyvisible --class chrom | head -1); [ -n "$W" ] && break; sleep 1; done
 xdotool windowmove $W 0 0; xdotool windowsize $W 1920 1080; sleep 6
-xdotool key ctrl+plus; sleep 0.3; xdotool key ctrl+plus; sleep 0.3; xdotool key ctrl+plus; sleep 1.5   # 150%: dá pra ler o JSON no vídeo
 foto api46_inicio
 gravar api46_abre
 sleep 0.8; xdotool key ctrl+l; sleep 0.6
