@@ -10,6 +10,9 @@ on:
       arquivos:
         description: "filtro de arquivo (ex.: sonda)"
         required: false
+      extra:
+        description: "opções a mais (ex.: --repeat-each=10 --retries=0)"
+        required: false
       config:
         description: "arquivo de config (vazio = playwright.config.js; demos = playwright.demos.config.js)"
         required: false
@@ -36,7 +39,7 @@ jobs:
         run: |
           if [ -n "${{ inputs.projetos }}" ]; then ARGS=$(for p in ${{ inputs.projetos }}; do printf -- "--project=%s " "$p"; done); fi
           CFG=""; if [ -n "${{ inputs.config }}" ]; then CFG="-c ${{ inputs.config }}"; fi
-          npx playwright test $CFG ${{ inputs.arquivos }} $ARGS --reporter=list,json,html > ../../resultado_playwright.txt 2>&1 || echo "FALHOU" >> ../../resultado_playwright.txt
+          npx playwright test $CFG ${{ inputs.arquivos }} $ARGS ${{ inputs.extra }} --reporter=list,json,html > ../../resultado_playwright.txt 2>&1 || echo "FALHOU" >> ../../resultado_playwright.txt
           tail -40 ../../resultado_playwright.txt; grep -E "HOME data-test|LOGIN data-test|LOGADO|API " ../../resultado_playwright.txt | sed 's/^/::notice title=Sonda::/' | cut -c1-900
         env:
           PLAYWRIGHT_JSON_OUTPUT_NAME: resultado.json

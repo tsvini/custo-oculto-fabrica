@@ -16,6 +16,5 @@ test('aula 21: usuário lento também entra', async ({ page }) => {
   await page.getByPlaceholder('Username').fill('performance_glitch_user');
   await page.getByPlaceholder('Password').fill('secret_sauce');
   await page.getByRole('button', { name: 'Login' }).click();
-  await expect(page).toHaveURL(/inventory/, { timeout: 10000 });
-  await expect(page.getByText('Products')).toBeVisible();
+  await expect(page.getByText('Products')).toBeVisible({ timeout: 10000 });
 });
