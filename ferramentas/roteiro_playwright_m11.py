@@ -148,9 +148,9 @@ def preencher():
         ("Pra escolher uma opção, existe o select option, escolha a opção. A do menor preço se chama lohi, de low to high: do baixo pro alto.",
          {"type": "traducao", "codigo": "selectOption('lohi')", "partes": [["selectOption", "escolha a opção"], ["('lohi')", "low to high: do baixo pro alto"]], "passo": 2.4}),
         ("Solução: como a gente conhece os produtos desse site de treino, a conferência é simples: depois de ordenar, o primeiro preço é sete e noventa e nove.", ed),
+        ("Ponto first: o primeiro.", {"type": "traducao", "codigo": "getByTestId('inventory-item-price').first()", "partes": [[".first()", "o primeiro"]], "passo": 0.8}),
         ("Conferir só o primeiro é o jeito mais simples. No módulo 14, você confere a lista inteira, e pega exatamente esse bug numa loja de verdade.",
          bt(("HOJE: O PRIMEIRO PREÇO", "white", 100), ("MÓDULO 14: A LISTA INTEIRA", "gold", 110))),
-        ("Ponto first: o primeiro.", {"type": "traducao", "codigo": "getByTestId('inventory-item-price').first()", "partes": [[".first()", "o primeiro"]], "passo": 0.8}),
         ("Roda.", rodando(C, ab, "Passou: $7.99 primeiro", [SEL], "run52", 52, logado=True)),
         ("Te vejo no próximo!", fim("PRÓXIMO: DESAFIO 5")),
     ], [1])

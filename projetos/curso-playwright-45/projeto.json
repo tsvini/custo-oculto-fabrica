@@ -51,7 +51,7 @@
        }
       },
       {
-       "text": "Por que isso importa? Sem ele, alguém precisa lembrar de rodar os testes. Com ele, toda vez que alguém manda uma mudança pro repositório, os testes rodam sozinhos. E em muitas empresas os testes ficam junto com o código do site: aí cada mudança no site passa pelos testes antes de chegar no cliente.",
+       "text": "Por que isso importa? Sem ele, alguém precisa lembrar de rodar os testes. Com ele, toda vez que alguém manda uma mudança pro repositório, os testes rodam sozinhos.",
        "scene": {
         "type": "compare",
         "title": "RODAR OS TESTES",
@@ -70,6 +70,31 @@
         "size": 90,
         "stagger": 1.8,
         "vs": false
+       }
+      },
+      {
+       "text": "E em muitas empresas, os testes ficam junto com o código do site. Aí cada mudança no site passa pelos testes antes de chegar no cliente.",
+       "scene": {
+        "type": "cards",
+        "itens": [
+         [
+          "✎",
+          "Alguém muda o site",
+          "e manda pro repositório"
+         ],
+         [
+          "▶",
+          "Os testes rodam",
+          "sozinhos",
+          "#69a7ff"
+         ],
+         [
+          "✓",
+          "Passou?",
+          "aí chega no cliente",
+          "#3fd68a"
+         ]
+        ]
        }
       },
       {

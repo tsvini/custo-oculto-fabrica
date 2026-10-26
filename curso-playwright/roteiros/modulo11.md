@@ -37,8 +37,8 @@
 4. Dica: a caixa de ordenar é um select, uma caixa de opções. [tela]
 5. Pra escolher uma opção, existe o select option, escolha a opção. A do menor preço se chama lohi, de low to high: do baixo pro alto. [traducao]
 6. Solução: como a gente conhece os produtos desse site de treino, a conferência é simples: depois de ordenar, o primeiro preço é sete e noventa e nove. [editor]
-7. Conferir só o primeiro é o jeito mais simples. No módulo 14, você confere a lista inteira, e pega exatamente esse bug numa loja de verdade. [bigtext]
-8. Ponto first: o primeiro. [traducao]
+7. Ponto first: o primeiro. [traducao]
+8. Conferir só o primeiro é o jeito mais simples. No módulo 14, você confere a lista inteira, e pega exatamente esse bug numa loja de verdade. [bigtext]
 9. Roda. [+pausa] [editor]
 10. Te vejo no próximo! [endcard]
 

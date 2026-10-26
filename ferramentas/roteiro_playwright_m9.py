@@ -94,7 +94,9 @@ L_ENV = ln(YML, "env:")
 GHA = {"type": "gh_actions", "usuario": "voce", "repo": "meu-primeiro-playwright", "workflow": "Playwright Tests", "commit": "testes no GitHub Actions"}
 AULAS.append(projeto(45, "MÓDULO 9 · AULA 45", "GitHub Actions - os testes rodando sozinhos", [
     ("E se o GitHub rodasse os seus testes sozinho? É isso que o GitHub Actions faz.", titulo(45, "GITHUB ACTIONS")),
-    ("Por que isso importa? Sem ele, alguém precisa lembrar de rodar os testes. Com ele, toda vez que alguém manda uma mudança pro repositório, os testes rodam sozinhos. E em muitas empresas os testes ficam junto com o código do site: aí cada mudança no site passa pelos testes antes de chegar no cliente.", {"type": "compare", "title": "RODAR OS TESTES", "items": [["SEM ACTIONS", "ALGUÉM PRECISA LEMBRAR", "white"], ["COM ACTIONS", "RODA A CADA MUDANÇA", "gold"]], "size": 90, "stagger": 1.8, "vs": False}),  # pra que / quando
+    ("Por que isso importa? Sem ele, alguém precisa lembrar de rodar os testes. Com ele, toda vez que alguém manda uma mudança pro repositório, os testes rodam sozinhos.", {"type": "compare", "title": "RODAR OS TESTES", "items": [["SEM ACTIONS", "ALGUÉM PRECISA LEMBRAR", "white"], ["COM ACTIONS", "RODA A CADA MUDANÇA", "gold"]], "size": 90, "stagger": 1.8, "vs": False}),  # pra que / quando
+    ("E em muitas empresas, os testes ficam junto com o código do site. Aí cada mudança no site passa pelos testes antes de chegar no cliente.",
+     {"type": "cards", "itens": [["✎", "Alguém muda o site", "e manda pro repositório"], ["▶", "Os testes rodam", "sozinhos", "#69a7ff"], ["✓", "Passou?", "aí chega no cliente", "#3fd68a"]]}),
     ("O Playwright já criou esse arquivo lá no começo: ponto github, workflows, playwright ponto yml.",
      edc(YML0, ".github/workflows/playwright.yml", arquivo="playwright.yml", pastas=ARV_AUTH, rolar=True, rolar_de=2.0, rolar_dur=2.0, fonte=22)),
     ("Lendo em português: quando houver um push ou um pull request na main, use uma máquina Ubuntu, instale tudo e rode os testes. Esses quandos são os gatilhos do arquivo.",

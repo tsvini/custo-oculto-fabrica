@@ -166,6 +166,20 @@
        }
       },
       {
+       "text": "Ponto first: o primeiro.",
+       "scene": {
+        "type": "traducao",
+        "codigo": "getByTestId('inventory-item-price').first()",
+        "partes": [
+         [
+          ".first()",
+          "o primeiro"
+         ]
+        ],
+        "passo": 0.8
+       }
+      },
+      {
        "text": "Conferir só o primeiro é o jeito mais simples. No módulo 14, você confere a lista inteira, e pega exatamente esse bug numa loja de verdade.",
        "scene": {
         "type": "bigtext",
@@ -182,20 +196,6 @@
           110
          ]
         ]
-       }
-      },
-      {
-       "text": "Ponto first: o primeiro.",
-       "scene": {
-        "type": "traducao",
-        "codigo": "getByTestId('inventory-item-price').first()",
-        "partes": [
-         [
-          ".first()",
-          "o primeiro"
-         ]
-        ],
-        "passo": 0.8
        }
       },
       {
