@@ -114,6 +114,23 @@ def gravacoes(cenas, pasta, log):
                         pg.click(ac["click"], timeout=8000)
                     elif ac.get("select"):  # caixa de opções: {"select": [seletor, valor]}
                         pg.select_option(ac["select"][0], ac["select"][1], timeout=8000)
+                    elif ac.get("check"):
+                        pg.check(ac["check"], timeout=8000)
+                    elif ac.get("uncheck"):
+                        pg.uncheck(ac["uncheck"], timeout=8000)
+                    elif ac.get("hover"):  # passa o mouse por cima (o mouse se move devagar até lá)
+                        bx = pg.locator(ac["hover"]).first.bounding_box()
+                        if bx: pg.mouse.move(bx["x"] + bx["width"] / 2, bx["y"] + bx["height"] / 2, steps=25)
+                    elif ac.get("upload"):  # {"upload": [seletor, caminho no repositório]}
+                        pg.set_input_files(ac["upload"][0], os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), ac["upload"][1]), timeout=8000)
+                    elif ac.get("drag"):  # {"drag": [de, até]}
+                        pg.drag_and_drop(ac["drag"][0], ac["drag"][1], timeout=8000)
+                    elif ac.get("aceita_alerta"):  # a partir daqui, alertas são aceitos (depois de uns instantes, pra aparecer no vídeo)
+                        pg.on("dialog", lambda d: (time.sleep(1.2), d.accept()))
+                    elif ac.get("goto"):
+                        pg.goto(ac["goto"], wait_until="domcontentloaded", timeout=35000)
+                    elif ac.get("scroll"):
+                        pg.mouse.wheel(0, int(ac["scroll"]))
                     pg.wait_for_timeout(int(ac.get("espera", s.get("espera_acao", 500))))
                 pg.wait_for_timeout(int(s.get("espera_fim", 1500)))
             except Exception as e:
