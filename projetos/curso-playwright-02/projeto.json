@@ -76,46 +76,66 @@
       {
        "text": "Segunda: faz junto comigo. Pausa o vídeo, digita, roda. É fazendo que você aprende, não só assistindo.",
        "scene": {
-        "type": "cards",
-        "titulo": "FAZ JUNTO",
-        "itens": [
-         [
-          "⏸",
-          "Pausa",
-          "o vídeo"
-         ],
-         [
-          "⌨",
-          "Digita",
-          "o código",
-          "#69a7ff"
-         ],
-         [
-          "▶",
-          "Roda",
-          "e vê funcionar",
-          "#ffd23f"
-         ]
-        ]
+        "type": "editor",
+        "arquivo": "login.spec.js",
+        "fonte": 30,
+        "digitar": true,
+        "digitar_de": 4,
+        "digitar_ate": 4,
+        "vel": 0.45,
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  node_modules/",
+         "  tests/",
+         "    login.spec.js",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "codigo": "import { test, expect } from '@playwright/test';\n\ntest('entra com usuário e senha', async ({ page }) => {\n  await page.goto('https://www.saucedemo.com/');\n});",
+        "terminal": [
+         {
+          "cmd": "npx playwright test --project=chromium",
+          "em": 0.5
+         },
+         {
+          "out": "Running 1 test using 1 worker",
+          "cor": "mut",
+          "em": 0.7
+         },
+         {
+          "out": "  1 passed (1.9s)",
+          "cor": "ac",
+          "em": 0.8
+         }
+        ],
+        "legenda": "Pausa · digita · roda"
        }
       },
       {
        "text": "Terceira: se der erro, não desanima. Tem uma aula só sobre os erros mais comuns, e você pode me chamar na área de perguntas.",
        "scene": {
-        "type": "bigtext",
-        "stagger": 0.25,
-        "lines": [
-         [
-          "DEU ERRO?",
-          "white",
-          150
-         ],
-         [
-          "NÃO DESANIMA",
-          "gold",
-          160
-         ]
-        ]
+        "type": "terminal",
+        "pasta": "C:\\Users\\voce",
+        "linhas": [
+         {
+          "cmd": "npx playwright test",
+          "ja": true
+         },
+         {
+          "out": "npx : O termo 'npx' não é reconhecido como nome de cmdlet,",
+          "cor": "#ff6b6b",
+          "ja": true
+         },
+         {
+          "out": "função, arquivo de script ou programa operável.",
+          "cor": "#ff6b6b",
+          "ja": true
+         }
+        ],
+        "titulo": "Windows PowerShell",
+        "legenda": "Deu erro? Aula 7: os erros mais comuns · e a área de perguntas",
+        "fonte": 32,
+        "fonte_min": 26
        }
       },
       {
