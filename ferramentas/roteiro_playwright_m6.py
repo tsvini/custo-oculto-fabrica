@@ -50,6 +50,8 @@ A_LOGIN = [["Before Hooks", "", "520ms"], ["Navigate to", "\"/\"", "410ms"], ["F
            ["Click", "getByTestId('login-button')", "96ms"], ["Expect", "toHaveURL", "12ms"], ["Expect", "toBeVisible", "9ms"], ["Expect", "toContainText", "8ms"], ["Expect", "toHaveCount", "7ms"]]
 UI = {"type": "pw_ui", "media": "site_sauce_ui_logado", "url": SAUCE, "acoes": LOGIN, "inspecionar": "[data-test=\"title\"]", "arquivos": TESTES, "passos_pw": A_LOGIN}
 FALHA = [["entra com usuário e senha", "login.spec.js:8", "chromium", "falhou", "6.1s"], ["mostra erro para usuário bloqueado", "login.spec.js:18", "chromium", "ok", "0.6s"]]
+TRACE6 = [[t, a, b, "ok", d] for b, ds in (("chromium", ("1.1s", "0.7s")), ("firefox", ("1.6s", "0.9s")), ("webkit", ("1.4s", "0.8s")))
+          for (t, a), d in zip((("entra com usuário e senha", "login.spec.js:8"), ("mostra erro para usuário bloqueado", "login.spec.js:18")), ds)]  # o --trace on rodou os 6 (3 navegadores)
 P_REL = [["Before Hooks", "0.5s"], ["Navigate to \"/\"", "0.4s"], ["Fill getByTestId('username')", "38ms"], ["Fill getByTestId('password')", "21ms"], ["Click getByTestId('login-button')", "96ms"]]
 
 AULAS = []
@@ -94,7 +96,7 @@ AULAS.append(projeto(28, "MÓDULO 6 · AULA 28", "Trace Viewer", [
     ("Trace quer dizer rastro: é um arquivo com tudo o que aconteceu no teste.", {"type": "traducao", "codigo": "trace", "texto_puro": True, "partes": [["trace", "rastro: tudo o que aconteceu"]], "passo": 1.2}),
     ("Roda com traço traço trace on.", vs(C24, "--trace on", run(("Running 6 tests using 4 workers", "mut"), ("  6 passed (5.1s)", "ac"), cmd="npx playwright test --trace on"), pastas=ARV_EX)),
     ("Abre o relatório e clica no trace do teste.",
-     {"type": "pw_relatorio", "url": SAUCE, "media": "site_sauce_trace", "acoes": LOGIN, "testes": FALHA,
+     {"type": "pw_relatorio", "url": SAUCE, "media": "site_sauce_trace", "acoes": LOGIN, "testes": TRACE6,
       "abrir": {"titulo": "entra com usuário e senha", "arquivo": "login.spec.js:8", "projeto": "chromium", "passos": P_REL[:3], "anexos": [["Traces", "site_sauce_trace", False]], "anexos_em": 1.4},
       "legenda": "Traces: clica no trace"}),
     ("Em cima, a linha do tempo. Na esquerda, os passos. No meio, a página. E embaixo, o console e a rede.",
@@ -140,7 +142,7 @@ AULAS.append(projeto(30, "MÓDULO 6 · AULA 30", "Print e vídeo quando o teste 
      {"type": "traducao", "titulo": "SÓ QUANDO FALHA", "linhas": [["screenshot: 'only-on-failure'", "print, só quando falhar"], ["video: 'retain-on-failure'", "grava, e guarda só se falhar"]]}),
     ("Quebra o teste de novo e roda.", vs(C26, "Falhou de novo (de propósito)", run(("Running 2 tests using 2 workers", "mut"), ("  1 failed", VERM), ("  1 passed (6.4s)", "ac")), pastas=ARV_EX)),
     ("Abre o relatório: lá está o print do momento do erro e o vídeo do teste inteiro.",
-     {"type": "pw_relatorio", "url": SAUCE, "media": "site_sauce_falha", "acoes": LOGIN, "testes": FALHA,
+     {"type": "pw_relatorio", "url": SAUCE, "media": "site_sauce_falha", "acoes": LOGIN, "testes": TRACE6,
       "abrir": {"titulo": "entra com usuário e senha", "status": "falhou", "arquivo": "login.spec.js:8", "projeto": "chromium", "passos": [],
                 "erro": "Error: expect(locator).toContainText(expected) failed\nExpected substring: \"Mochila\"\nReceived string:    \"Sauce Labs Backpack\"", "anexos": True, "anexo_img": "site_sauce_falha", "anexos_em": 1.2},
       "navegador": {"media": "rec_falha", "url": SAUCE, "gravar": True, "acoes": LOGIN, "espera_inicio": 800, "espera_fim": 1500, "titulo": "video.webm", "em": 0.45, "ate": 0.95},
