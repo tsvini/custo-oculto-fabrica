@@ -162,12 +162,19 @@
        "scene": {
         "type": "editor",
         "arquivo": "login.spec.js",
-        "codigo": "import { test, expect } from '@playwright/test';\n\ntest.beforeEach(async ({ page }) => {\n});\n\ntest('entra com usuário e senha', async ({ page }) => {\n  await page.getByPlaceholder('Username').fill('standard_user');\n  await page.getByPlaceholder('Password').fill('secret_sauce');\n  await page.getByRole('button', { name: 'Login' }).click();\n  await expect(page).toHaveURL(/inventory/);\n  await expect(page.getByText('Products')).toBeVisible();\n  await expect(page.getByText('Sauce Labs Backpack')).toContainText('Backpack');\n  await expect(page.getByRole('button', { name: 'Add to cart' })).toHaveCount(6);\n});\n\ntest('mostra erro para usuário bloqueado', async ({ page }) => {\n  await page.goto('https://www.saucedemo.com/');\n  await page.getByPlaceholder('Username').fill('locked_out_user');\n  await page.getByPlaceholder('Password').fill('secret_sauce');\n  await page.getByRole('button', { name: 'Login' }).click();\n  await expect(page.getByText('locked out')).toBeVisible();\n});",
+        "codigo": "import { test, expect } from '@playwright/test';\n\ntest.beforeEach(async ({ page }) => {\n  await page.goto('https://www.saucedemo.com/');\n});\n\ntest('entra com usuário e senha', async ({ page }) => {\n  await page.getByPlaceholder('Username').fill('standard_user');\n  await page.getByPlaceholder('Password').fill('secret_sauce');\n  await page.getByRole('button', { name: 'Login' }).click();\n  await expect(page).toHaveURL(/inventory/);\n  await expect(page.getByText('Products')).toBeVisible();\n  await expect(page.getByText('Sauce Labs Backpack')).toContainText('Backpack');\n  await expect(page.getByRole('button', { name: 'Add to cart' })).toHaveCount(6);\n});\n\ntest('mostra erro para usuário bloqueado', async ({ page }) => {\n  await page.getByPlaceholder('Username').fill('locked_out_user');\n  await page.getByPlaceholder('Password').fill('secret_sauce');\n  await page.getByRole('button', { name: 'Login' }).click();\n  await expect(page.getByText('locked out')).toBeVisible();\n});",
         "legenda": "O goto vai pro beforeEach",
         "fonte": 24,
-        "digitar": true,
-        "digitar_de": 3,
-        "digitar_ate": 5
+        "digitar": false,
+        "destaque": [
+         3,
+         4,
+         5
+        ],
+        "destaque_em": 0.6,
+        "rolar": true,
+        "rolar_de": 2.6,
+        "rolar_dur": 1.6
        }
       },
       {

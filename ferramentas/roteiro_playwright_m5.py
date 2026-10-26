@@ -50,8 +50,8 @@ BE = """test.beforeEach(async ({ page }) => {
 });
 
 """
-COM_BE = DOIS.replace("import { test, expect } from '@playwright/test';\n\n", "import { test, expect } from '@playwright/test';\n\n" + BE).replace(GOTO, "", 2)
-assert COM_BE.count("page.goto") == 1
+COM_BE = DOIS.replace(GOTO, "", 2).replace("import { test, expect } from '@playwright/test';\n\n", "import { test, expect } from '@playwright/test';\n\n" + BE)
+assert COM_BE.count("page.goto") == 1 and "  await page.goto" in COM_BE.split("\n")[3]
 
 AULAS = []
 
@@ -69,7 +69,7 @@ AULAS.append(projeto(22, "MÓDULO 5 · AULA 22", "describe e beforeEach", [
     ("Repara: a linha do goto se repete nos dois testes.", edc(DOIS, "O goto se repete", destaque=[4, 14], destaque_em=0.6, fonte=24)),
     ("Quando algo se repete antes de todo teste, existe o before each. Before each: antes de cada.",
      {"type": "traducao", "codigo": "test.beforeEach(async ({ page }) => {", "partes": [["before", "antes de"], ["Each", "cada"], ["({ page })", "me dê o navegador"]], "passo": 2.0}),
-    ("Coloca o goto lá dentro, e apaga dos testes.", edc(COM_BE, "O goto vai pro beforeEach", digitar=True, digitar_de=3, digitar_ate=5, fonte=24)),
+    ("Coloca o goto lá dentro, e apaga dos testes.", edc(COM_BE, "O goto vai pro beforeEach", destaque=[3, 4, 5], destaque_em=0.6, rolar=True, rolar_de=2.6, rolar_dur=1.6, fonte=24)),
     ("Agora o describe. Describe é descrever: ele junta testes do mesmo assunto numa caixa com nome.",
      {"type": "traducao", "codigo": "test.describe('Login', () => {", "partes": [["describe", "descreva: junte numa caixa"], ["'Login'", "com o nome Login"]], "passo": 2.0}),
     ("Tudo que está dentro desse describe é sobre login.", edc(C22.replace("aula 22: ", ""), "Tudo aqui dentro é sobre login", digitar=True, digitar_de=3, digitar_ate=3, fonte=22, rolar=True, rolar_de=3.0, rolar_dur=1.4)),
@@ -82,23 +82,23 @@ AULAS.append(projeto(22, "MÓDULO 5 · AULA 22", "describe e beforeEach", [
 ]))
 
 # ---------- Aula 23 ----------
-USE0 = 15  # a linha "export default defineConfig({"
-CFG_USE = CONFIG[USE0 - 1:34]  # linhas 15 a 34
+USE0 = 26  # o trecho do config que aparece: linhas 26 a 34 (reporter, use e o fim do use)
+CFG_USE = CONFIG[USE0 - 1:34]
 CFG_BASE = [l if "// baseURL" not in l else "    baseURL: 'https://www.saucedemo.com'," for l in CFG_USE]
-CFG_TID = CFG_BASE[:16] + ["    testIdAttribute: 'data-test',"] + CFG_BASE[16:]
-assert CFG_USE[13].strip() == "use: {" and "baseURL" in CFG_BASE[15]
+CFG_TID = CFG_BASE[:5] + ["    testIdAttribute: 'data-test',"] + CFG_BASE[5:]
+assert CFG_USE[2].strip() == "use: {" and "baseURL" in CFG_BASE[4]
 AULAS.append(projeto(23, "MÓDULO 5 · AULA 23", "playwright.config - baseURL e data-test", [
     ("Hoje a gente mexe no arquivo de configuração. Parece assustador, mas são só duas linhas.", titulo(23, "CONFIG")),
     ("Abre o playwright ponto config ponto js e procura o use. Use quer dizer: use isso em todos os testes.",
-     edc(cfg(CFG_USE), "use = use isso em todos os testes", arquivo="playwright.config.js", linha0=USE0, destaque=[14], destaque_em=1.0, fonte=24)),
+     edc(cfg(CFG_USE), "use = use isso em todos os testes", arquivo="playwright.config.js", linha0=USE0, destaque=[3], destaque_em=1.0, fonte=26)),
     ("Tira o comentário da baseURL e coloca o endereço do saucedemo. Base URL: o endereço base.",
-     edc(cfg(CFG_BASE), "baseURL = o endereço base", arquivo="playwright.config.js", linha0=USE0, digitar=True, digitar_de=16, digitar_ate=16, fonte=24)),
+     edc(cfg(CFG_BASE), "baseURL = o endereço base", arquivo="playwright.config.js", linha0=USE0, digitar=True, digitar_de=5, digitar_ate=5, fonte=26)),
     ("Agora, no teste, o goto fica só com uma barra. O Playwright junta essa barra com o endereço base.",
      edc(C22.replace("aula 22: ", "").replace("page.goto('https://www.saucedemo.com/')", "page.goto('/')"), "baseURL + /  =  saucedemo.com/", digitar=True, digitar_de=5, digitar_ate=5, fonte=22)),
     ("A vantagem: se um dia o site mudar de endereço, você troca num lugar só.",
      {"type": "cards", "itens": [["⌂", "baseURL", "o endereço num lugar só"], ["/", "page.goto('/')", "nos testes, só o caminho", "#69a7ff"]]}),
     ("Segunda linha: test id attribute igual data-test. Lembra do data-test que a gente viu no Inspecionar?",
-     edc(cfg(CFG_TID), "testIdAttribute: 'data-test'", arquivo="playwright.config.js", linha0=USE0, digitar=True, digitar_de=17, digitar_ate=17, fonte=24)),
+     edc(cfg(CFG_TID), "testIdAttribute: 'data-test'", arquivo="playwright.config.js", linha0=USE0, digitar=True, digitar_de=6, digitar_ate=6, fonte=26)),
     ("Por padrão, o get by test id procura data-testid. O saucedemo usa data-test. Essa linha avisa o Playwright.",
      {"type": "compare", "items": [["data-testid", "O PADRÃO DO PLAYWRIGHT", "white"], ["data-test", "O QUE O SAUCEDEMO USA", "gold"]], "size": 90, "stagger": 1.2, "vs": True}),
     ("Agora o get by test id também funciona no saucedemo. Vamos trocar os seletores do login só pra você ver esse outro caminho. Os que a gente usou antes continuam certos.",
