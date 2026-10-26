@@ -153,6 +153,8 @@ def telas(cenas, pasta, log, idioma="pt"):
                     pg.goto(url, wait_until="domcontentloaded", timeout=35000); pg.wait_for_timeout(3000)
                     if s["url"].startswith("repo:"):  # página A4 (colinha): amplia pra ocupar a tela e dar pra ler
                         pg.evaluate("document.body.style.zoom = String(1600 / 794 * 0.92); document.body.style.margin = '0 auto'; document.documentElement.style.background = '#0b0f0d'"); pg.wait_for_timeout(400)
+                        if s.get("pagina"):  # colinha: mostra a página N (as outras somem) e, com "rolar_y", um ponto mais abaixo dela
+                            pg.evaluate("([n, y]) => { document.querySelectorAll('.pg').forEach((e, i) => { if (i !== n - 1) e.style.display = 'none'; }); window.scrollTo(0, y || 0); }", [int(s["pagina"]), int(s.get("rolar_y", 0))]); pg.wait_for_timeout(400)
                     for txt in CONSENT:
                         try:
                             btn = pg.get_by_role("button", name=txt, exact=True)

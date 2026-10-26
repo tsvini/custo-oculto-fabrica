@@ -181,13 +181,16 @@
   S.bloco_vs = (ctx, c, t, dur, s) => {
     const u = c.u; const L = (s.codigo || "").split("\n"); const W = 840 * u, H = 470 * u, gap = 70 * u, y = topo(c, H) + 20 * u;
     const x1 = c.cx - W - gap / 2, x2 = c.cx + gap / 2; const fs = Math.min(26 * u, (W - 80 * u) / (Math.max(...L.map((l) => l.length)) * 0.6)); const lh = fs * 1.7;
-    const a1 = easeOut(t / 0.4); const top1 = janela(ctx, x1, y, W, H, u, "Sem título - Bloco de Notas", a1, "#ffffff");
-    L.forEach((l, i) => txt(ctx, l, font(500, fs, MONO), x1 + 40 * u, top1 + 50 * u + i * lh, "#111111", "left", a1));
-    txt(ctx, "BLOCO DE NOTAS", font(800, 44 * u), x1 + W / 2, y + H + 70 * u, C.txt, "center", a1); txt(ctx, "tudo da mesma cor", font(600, 30 * u), x1 + W / 2, y + H + 118 * u, C.mut, "center", a1);
+    const a1 = easeOut(t / 0.4); const LE = s.codigo_esq ? s.codigo_esq.split("\n") : L; const escuro = !!s.codigo_esq;  // codigo_esq: comparação de código (ex.: Cypress × Playwright), as duas janelas escuras e coloridas
+    const fsE = Math.min(fs, (W - 80 * u) / (Math.max(...LE.map((l) => l.length)) * 0.6));
+    const top1 = janela(ctx, x1, y, W, H, u, s.janela_esq || "Sem título - Bloco de Notas", a1, escuro ? C.term : "#ffffff");
+    LE.forEach((l, i) => { if (!escuro) { txt(ctx, l, font(500, fsE, MONO), x1 + 40 * u, top1 + 50 * u + i * fsE * 1.7, "#111111", "left", a1); return; }
+      let xx = x1 + 40 * u; for (const [tk, cor] of tokens(l)) { txt(ctx, tk, font(500, fsE, MONO), xx, top1 + 50 * u + i * fsE * 1.7, cor, "left", a1); xx += tw(ctx, tk, font(500, fsE, MONO)); } });
+    txt(ctx, s.titulo_esq || "BLOCO DE NOTAS", font(800, 44 * u), x1 + W / 2, y + H + 70 * u, C.txt, "center", a1); txt(ctx, s.sub_esq || "tudo da mesma cor", font(600, 30 * u), x1 + W / 2, y + H + 118 * u, C.mut, "center", a1);
     const t2 = s.vs_em || 2.0; const a2 = easeOut((t - t2) / 0.45); if (a2 <= 0) { legenda(ctx, c, t, s); return; }
-    ctx.save(); ctx.translate(0, (1 - a2) * 30 * u); const top2 = janela(ctx, x2, y, W, H, u, "login.spec.js — Visual Studio Code", a2, C.term);
+    ctx.save(); ctx.translate(0, (1 - a2) * 30 * u); const top2 = janela(ctx, x2, y, W, H, u, s.janela_dir || "login.spec.js — Visual Studio Code", a2, C.term);
     L.forEach((l, i) => { let xx = x2 + 40 * u; for (const [tk, cor] of tokens(l)) { txt(ctx, tk, font(500, fs, MONO), xx, top2 + 50 * u + i * lh, cor, "left", a2); xx += tw(ctx, tk, font(500, fs, MONO)); } });
-    txt(ctx, "VS CODE", font(800, 44 * u), x2 + W / 2, y + H + 70 * u, C.yel, "center", a2); txt(ctx, "cada coisa de uma cor", font(600, 30 * u), x2 + W / 2, y + H + 118 * u, C.mut, "center", a2);
+    txt(ctx, s.titulo_dir || "VS CODE", font(800, 44 * u), x2 + W / 2, y + H + 70 * u, C.yel, "center", a2); txt(ctx, s.sub_dir || "cada coisa de uma cor", font(600, 30 * u), x2 + W / 2, y + H + 118 * u, C.mut, "center", a2);
     ctx.restore(); legenda(ctx, c, t, s);
   };
   // DESAFIO: o enunciado em itens e a contagem regressiva "pausa o vídeo e tenta"
@@ -879,6 +882,25 @@
       const cpx = fx + fw - 50 * u, cpy = yy + 36 * u; ctx.save(); ctx.globalAlpha = a; rr(ctx, cpx - 24 * u, cpy - 20 * u, 48 * u, 40 * u, 6 * u); ctx.strokeStyle = G.bd; ctx.lineWidth = 2 * u; ctx.stroke(); ctx.restore(); txt(ctx, "⧉", font(700, 26 * u), cpx, cpy, G.tx, "center", a);
       const k2 = easeOut((t - (s.cmd_em || dur * 0.55)) / 0.3); if (k2 > 0) { ctx.save(); ctx.globalAlpha = k2; ctx.strokeStyle = C.yel; ctx.lineWidth = 5 * u; rr(ctx, fx - 8 * u, yy - 8 * u, fw + 16 * u, 166 * u, 12 * u); ctx.stroke(); ctx.restore(); pts.push([cpx, cpy, (s.cmd_em || dur * 0.55) + 0.9]); }
       const kc = easeOut((t - (s.cmd_em || dur * 0.55) - 1.0) / 0.2); if (kc > 0) txt(ctx, global.CO_IDIOMA === "en" ? "Copied!" : "Copiado!", font(800, 22 * u), cpx - 40 * u, cpy, "#3fb950", "right", kc);
+    } else if (modo === "readme") {  // o README renderizado na página do repositório, com o selo do GitHub Actions
+      let yy = body + 40 * u; const fx = x + 60 * u, fw = W - 120 * u;
+      ctx.save(); ctx.globalAlpha = a; rr(ctx, fx, yy, fw, y + H - yy - 30 * u, 10 * u); ctx.strokeStyle = G.bd; ctx.lineWidth = 2 * u; ctx.stroke(); ctx.fillStyle = "#161b22"; rr(ctx, fx, yy, fw, 52 * u, 10 * u); ctx.fill(); ctx.restore();
+      txt(ctx, "📖 README", font(700, 21 * u), fx + 24 * u, yy + 26 * u, G.tx, "left", a); yy += 100 * u;
+      const tit = s.titulo_readme || rp; txt(ctx, tit, font(800, 44 * u), fx + 40 * u, yy, G.tx, "left", a);
+      ctx.save(); ctx.globalAlpha = a; ctx.fillStyle = G.bd; ctx.fillRect(fx + 40 * u, yy + 36 * u, fw - 80 * u, 2 * u); ctx.restore(); yy += 80 * u;
+      // o selo: "Playwright Tests | passing" (cinza + verde), como o GitHub gera
+      const kb = easeOut((t - (s.selo_em !== undefined ? s.selo_em : 0.6)) / 0.4); const e1 = s.selo_nome || "Playwright Tests", e2 = s.selo_status || "passing";
+      const fb = font(600, 22 * u), w1 = tw(ctx, e1, fb) + 28 * u, w2 = tw(ctx, e2, fb) + 28 * u, bh = 38 * u, bx = fx + 40 * u, by = yy - bh / 2;
+      ctx.save(); ctx.globalAlpha = a * kb; rr(ctx, bx, by, w1 + w2, bh, 6 * u); ctx.clip(); ctx.fillStyle = "#555"; ctx.fillRect(bx, by, w1, bh); ctx.fillStyle = "#3fb950"; ctx.fillRect(bx + w1, by, w2, bh); ctx.restore();
+      txt(ctx, e1, fb, bx + w1 / 2, yy, "#fff", "center", a * kb); txt(ctx, e2, fb, bx + w1 + w2 / 2, yy, "#fff", "center", a * kb);
+      const kf = easeOut((t - (s.foco_em || dur * 0.45)) / 0.35);
+      if (kf > 0) { ctx.save(); ctx.globalAlpha = kf; ctx.strokeStyle = C.yel; ctx.lineWidth = 5 * u; rr(ctx, bx - 12 * u, by - 12 * u, w1 + w2 + 24 * u, bh + 24 * u, 10 * u); ctx.stroke(); ctx.restore();
+        txt(ctx, s.foco_rotulo || "← verde: os testes estão passando", font(800, 26 * u), bx + w1 + w2 + 36 * u, yy, C.yel, "left", kf); }
+      yy += 70 * u;
+      (s.linhas_readme || []).forEach(([tp, tx], i) => { const kl = easeOut((t - 0.9 - i * 0.18) / 0.3) * a; if (yy > y + H - 60 * u) return;
+        if (tp === "h") { yy += 10 * u; txt(ctx, tx, font(800, 30 * u), fx + 40 * u, yy, G.tx, "left", kl); yy += 46 * u; }
+        else if (tp === "c") { ctx.save(); ctx.globalAlpha = kl; rr(ctx, fx + 40 * u, yy - 22 * u, fw - 80 * u, 44 * u, 8 * u); ctx.fillStyle = "#0d1117"; ctx.fill(); ctx.restore(); txt(ctx, tx, font(600, 22 * u, MONO), fx + 60 * u, yy, G.tx, "left", kl); yy += 54 * u; }
+        else { txt(ctx, tx, font(500, 24 * u), fx + 40 * u, yy, G.mu, "left", kl); yy += 40 * u; } });
     } else {
       let yy = body + 50 * u; const fx = x + 60 * u, fw = W - 120 * u;
       let tx0 = fx; ["<> Code", "Issues", "Pull requests", "Actions", "Settings"].forEach((n, i) => { txt(ctx, n, font(i ? 500 : 700, 22 * u), tx0, yy - 22 * u, i ? G.mu : G.tx, "left", a); tx0 += tw(ctx, n, font(700, 22 * u)) + 50 * u;

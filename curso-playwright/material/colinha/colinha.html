@@ -49,7 +49,7 @@ b{color:#fff}
 .l3{display:grid;grid-template-columns:max-content max-content 1fr;gap:7px 12px;align-items:center;font-size:11px;line-height:1.35}
 .l3 .h{font-weight:900;font-size:10px;color:var(--mu);text-transform:uppercase;letter-spacing:.5px}
 </style></head><body>
-<div class="pg"><div class="topo"><div><h1>PLAYWRIGHT <b>PARA LEIGOS</b></h1><p>Colinha do curso · os comandos e a receita de um teste, pra consultar enquanto pratica</p></div><span class="selo">COLINHA · 1/3</span></div>
+<div class="pg"><div class="topo"><div><h1>PLAYWRIGHT <b>PARA LEIGOS</b></h1><p>Colinha do curso · os comandos e a receita de um teste, pra consultar enquanto pratica</p></div><span class="selo">COLINHA · 1/4</span></div>
  <div class="grade">
   <div class="box"><h2><i>1</i>Terminal: os comandos</h2><div class="l">
    <code>node -v</code><span class="d">confere se o Node está instalado</span>
@@ -64,7 +64,7 @@ b{color:#fff}
 ├─ <span class="f">tests/</span>           <span class="m">← os seus testes</span>
 │  ├─ <span class="pw">login.spec.js</span>
 │  └─ <span class="pw">compra.spec.js</span>
-├─ <span class="f">pages/</span>           <span class="m">← Page Objects (aula 37)</span>
+├─ <span class="f">pages/</span>           <span class="m">← Page Objects (aulas 37 a 40)</span>
 ├─ <span class="f">node_modules/</span>    <span class="m">← não mexa</span>
 ├─ playwright.config.js <span class="m">← as configurações</span>
 ├─ .env              <span class="m">← usuário e senha</span>
@@ -107,7 +107,7 @@ b{color:#fff}
    <code>not.toBeVisible()</code><span class="d">…<b>não</b> esteja visível</span>
   </div><p class="nota">Sempre com <code>await</code> na frente. O Playwright espera sozinho (por padrão, até 5 segundos) a condição ficar verdadeira.</p></div>
  </div><div class="rod"><span>Playwright para Leigos · Vinícius Torales</span><span>Site de treino: saucedemo.com · usuário <b>standard_user</b> · senha <b>secret_sauce</b></span></div></div>
-<div class="pg"><div class="topo"><div><h1>PLAYWRIGHT <b>PARA LEIGOS</b></h1><p>Seletores, ferramentas que ajudam e como rodar só o que importa</p></div><span class="selo">COLINHA · 2/3</span></div>
+<div class="pg"><div class="topo"><div><h1>PLAYWRIGHT <b>PARA LEIGOS</b></h1><p>Seletores, ferramentas que ajudam e como rodar só o que importa</p></div><span class="selo">COLINHA · 2/4</span></div>
  <div class="grade">
   <div class="box full"><h2><i>6</i>Como achar o elemento (aulas 17 e 18)</h2>
    <div class="sel">
@@ -144,7 +144,7 @@ dotenv.<span class="f">config</span>({ path: path.<span class="f">resolve</span>
   },
 });</pre></div>
  </div><div class="rod"><span>Playwright para Leigos · Vinícius Torales</span><span>Site de treino: saucedemo.com · usuário <b>standard_user</b> · senha <b>secret_sauce</b></span></div></div>
-<div class="pg"><div class="topo"><div><h1>PLAYWRIGHT <b>PARA LEIGOS</b></h1><p>Erros comuns, organização profissional, Git e as palavras do dia a dia</p></div><span class="selo">COLINHA · 3/3</span></div>
+<div class="pg"><div class="topo"><div><h1>PLAYWRIGHT <b>PARA LEIGOS</b></h1><p>Erros comuns, organização profissional, Git e as palavras do dia a dia</p></div><span class="selo">COLINHA · 3/4</span></div>
  <div class="grade">
   <div class="box full"><h2><i>10</i>Deu vermelho? Leia o erro assim (aula 26)</h2>
    <div class="perg"><div><span class="n">1</span><span class="q">Qual linha?</span><span class="d">o erro mostra o arquivo e a linha, com uma setinha</span></div><div><span class="n">2</span><span class="q">O que ele esperava?</span><span class="d">"Expected" é o que você pediu, "Received" é o que tinha</span></div><div><span class="n">3</span><span class="q">O que tinha na tela?</span><span class="d">abra o trace ou o print no relatório</span></div></div>
@@ -162,9 +162,10 @@ dotenv.<span class="f">config</span>({ path: path.<span class="f">resolve</span>
    <b>.env</b><span class="d">usuário e senha fora do código (nunca suba pro GitHub)</span>
    <b>for ... of</b><span class="d">o mesmo teste pra vários usuários</span>
   </div></div>
-  <div class="box"><h2><i>12</i>Git, GitHub e Actions (aulas 40 e 41)</h2><div class="l">
+  <div class="box"><h2><i>12</i>Git e GitHub (aulas 43 a 45)</h2><div class="l">
    <code>git init</code><span class="d">liga o Git na pasta (só 1 vez)</span>
    <code>git add .</code><span class="d">separa todos os arquivos</span>
+   <code>git status</code><span class="d">mostra o que mudou</span>
    <code>git commit -m "msg"</code><span class="d">salva o jogo, com um nome</span>
    <code>git push</code><span class="d">manda pro GitHub</span>
   </div><p class="nota">O <code>npm init playwright</code> já cria o <code>.github/workflows/playwright.yml</code>: subiu pro GitHub, os testes rodam sozinhos. Senha vai em <b>Settings › Secrets</b>.</p></div>
@@ -182,5 +183,58 @@ dotenv.<span class="f">config</span>({ path: path.<span class="f">resolve</span>
    <span><b>API</b>: a porta dos fundos do sistema, que conversa por dados</span>
    <span><b>Regressão</b>: rodar tudo de novo pra ver se nada quebrou</span>
   </div></div>
+ </div><div class="rod"><span>Playwright para Leigos · Vinícius Torales</span><span>Continua na página 4 ›</span></div></div>
+<div class="pg"><div class="topo"><div><h1>PLAYWRIGHT <b>PARA LEIGOS</b></h1><p>Page Object, login salvo, GitHub Actions e testes de API</p></div><span class="selo">COLINHA · 4/4</span></div>
+ <div class="grade">
+  <div class="box full"><h2><i>14</i>Page Object: cada página vira uma classe (aulas 37 a 40)</h2>
+   <div style="display:grid;grid-template-columns:1.25fr 1fr;gap:16px;align-items:start">
+<pre class="c"><span class="m">// pages/LoginPage.js</span>
+<span class="k">export class</span> <span class="f">LoginPage</span> {
+  <span class="f">constructor</span>(page) {
+    <span class="k">this</span>.page = page;
+    <span class="k">this</span>.usuario = page.<span class="f">getByTestId</span>(<span class="s">'username'</span>);
+    <span class="k">this</span>.senha = page.<span class="f">getByTestId</span>(<span class="s">'password'</span>);
+    <span class="k">this</span>.botaoLogin = page.<span class="f">getByTestId</span>(<span class="s">'login-button'</span>);
+  }
+  <span class="k">async</span> <span class="f">entrar</span>(usuario, senha) {
+    <span class="k">await this</span>.usuario.<span class="f">fill</span>(usuario);
+    <span class="k">await this</span>.senha.<span class="f">fill</span>(senha);
+    <span class="k">await this</span>.botaoLogin.<span class="f">click</span>();
+  }
+}</pre>
+<pre class="c"><span class="m">// no teste</span>
+<span class="k">import</span> { LoginPage } <span class="k">from</span> <span class="s">'../pages/LoginPage'</span>;
+
+<span class="k">const</span> login = <span class="k">new</span> <span class="f">LoginPage</span>(page);
+<span class="k">await</span> login.<span class="f">entrar</span>(<span class="s">'standard_user'</span>, <span class="s">'secret_sauce'</span>);</pre>
+   </div><p class="nota">Mudou o site? Você conserta <b>num lugar só</b> (a classe), e todos os testes que usam ela continuam funcionando.</p></div>
+  <div class="box"><h2><i>15</i>Login uma vez só (aula 42)</h2>
+<pre class="c"><span class="m">// tests/auth.setup.js: faz login e guarda</span>
+<span class="k">await</span> page.<span class="f">context</span>().<span class="f">storageState</span>({
+  path: <span class="s">'playwright/.auth/usuario.json'</span>,
+});
+
+<span class="m">// nos testes: já começa logado</span>
+<span class="pw">test</span>.<span class="f">use</span>({ storageState:
+  <span class="s">'playwright/.auth/usuario.json'</span> });</pre>
+   <p class="nota">No config, o projeto <code>setup</code> roda antes (<code>dependencies: ['setup']</code>). A pasta <code>playwright/.auth</code> fica no <code>.gitignore</code>.</p></div>
+  <div class="box"><h2><i>16</i>Testes de API (aulas 46 a 48)</h2><div class="l">
+   <code>async ({ request })</code><span class="d">pede o request no lugar do page</span>
+   <code>request.get(url)</code><span class="d">buscar</span>
+   <code>request.post(url, { data })</code><span class="d">criar</span>
+   <code>request.delete(url)</code><span class="d">apagar</span>
+   <code>resposta.status()</code><span class="d">o número da resposta (com parênteses!)</span>
+   <code>await resposta.json()</code><span class="d">os dados que vieram</span>
+  </div><p class="nota"><b>200</b> deu certo · <b>201</b> criado · <b>404</b> não encontrado. Sem navegador: roda em milissegundos.</p></div>
+  <div class="box full"><h2><i>17</i>GitHub Actions: os testes rodando sozinhos (aula 45)</h2>
+   <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:center">
+<pre class="c"><span class="m"># .github/workflows/playwright.yml</span>
+    - name: Run Playwright tests
+      run: npx playwright test
+      env:
+        SAUCE_USER: ${{ secrets.SAUCE_USER }}
+        SAUCE_PASSWORD: ${{ secrets.SAUCE_PASSWORD }}</pre>
+    <div class="passos">1. <b>Settings › Secrets and variables › Actions</b><br>2. <b>New repository secret</b>: <code>SAUCE_USER</code> e <code>SAUCE_PASSWORD</code><br>3. <code>git push</code> e abre a aba <b>Actions</b><br>4. Verde: passou. O relatório fica pra baixar no fim.<br><br><b>Secret</b> = segredo: ninguém vê o valor depois.</div>
+   </div></div>
  </div><div class="rod"><span>Playwright para Leigos · Vinícius Torales</span><span>Bons testes! ✓</span></div></div>
 </body></html>

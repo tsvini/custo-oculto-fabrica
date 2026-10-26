@@ -1,0 +1,243 @@
+{
+ "title": "Playwright para leigos · Aula 57",
+ "slug": "curso-playwright-57",
+ "idioma": "pt",
+ "destino": "curso",
+ "marca": [
+  "PLAYWRIGHT",
+  "PARA LEIGOS"
+ ],
+ "cor_fundo": "#3fd68a",
+ "sem_legenda": true,
+ "legenda_y": 0.93,
+ "selo": "MÓDULO 12 · AULA 57",
+ "voz": {
+  "nome": "gravada",
+  "motor": "eleven",
+  "eleven_voz": "Vinícius Torales"
+ },
+ "serie": [],
+ "meta": {
+  "titles": [
+   "Aula 57: Seu projeto pronto pro portfólio e a colinha completa"
+  ],
+  "description": "",
+  "tags": []
+ },
+ "notes": "Curso Playwright para leigos. Não publica (destino: curso). Roteiro em curso-playwright/roteiros/.",
+ "script": {
+  "long": {
+   "parts": [
+    {
+     "chapter": "",
+     "sentences": [
+      {
+       "text": "Última aula. Vamos deixar o seu projeto pronto pra quem visitar.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "AULA 57",
+          "muted",
+          80
+         ],
+         [
+          "PORTFÓLIO",
+          "gold",
+          200
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Cria um README ponto md com: o objetivo, as tecnologias, o que precisa instalar, como instalar, e os comandos pra rodar os testes.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "README.md",
+        "codigo": "# Meu primeiro projeto Playwright\n\n![Playwright Tests](https://github.com/voce/meu-primeiro-playwright/actions/workflows/playwright.yml/badge.svg)\n\nTestes de ponta a ponta da loja de treino saucedemo.com.\n\n## Tecnologias\nPlaywright, JavaScript, Page Object, GitHub Actions\n\n## Instalação\nnpm install\nnpx playwright install\n\n## Rodando os testes\nnpx playwright test",
+        "legenda": "README.md: a vitrine do projeto",
+        "fonte": 22,
+        "digitar": true,
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  pages/",
+         "  tests/",
+         "  .env",
+         "  .gitignore",
+         "  package.json",
+         "  playwright.config.js",
+         "  README.md"
+        ],
+        "digitar_de": 5,
+        "digitar_ate": 16,
+        "vel": 0.85
+       }
+      },
+      {
+       "text": "Coloca o selinho do GitHub Actions. O próprio GitHub gera o código dele, com o endereço do seu repositório e do seu workflow.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "README.md",
+        "codigo": "# Meu primeiro projeto Playwright\n\n![Playwright Tests](https://github.com/voce/meu-primeiro-playwright/actions/workflows/playwright.yml/badge.svg)\n\nTestes de ponta a ponta da loja de treino saucedemo.com.\n\n## Tecnologias\nPlaywright, JavaScript, Page Object, GitHub Actions\n\n## Instalação\nnpm install\nnpx playwright install\n\n## Rodando os testes\nnpx playwright test",
+        "legenda": "O selo: o endereço do repositório + o do workflow",
+        "fonte": 22,
+        "digitar": true,
+        "digitar_de": 3,
+        "digitar_ate": 3,
+        "vel": 0.6,
+        "destaque": [
+         3
+        ],
+        "destaque_em": 99
+       }
+      },
+      {
+       "text": "Ele mostra se os testes estão passando.",
+       "scene": {
+        "type": "github",
+        "tela": "readme",
+        "usuario": "voce",
+        "repo": "meu-primeiro-playwright",
+        "titulo_readme": "Meu primeiro projeto Playwright",
+        "selo_em": 0.3,
+        "foco_em": 0.8,
+        "linhas_readme": [
+         [
+          "p",
+          "Testes de ponta a ponta da loja de treino saucedemo.com."
+         ],
+         [
+          "h",
+          "Tecnologias"
+         ],
+         [
+          "p",
+          "Playwright, JavaScript, Page Object, GitHub Actions"
+         ]
+        ],
+        "legenda": "Verde: os testes estão passando"
+       }
+      },
+      {
+       "text": "E a sua colinha completa: do primeiro comando ao Page Object,",
+       "scene": {
+        "type": "tela",
+        "media": "colinha_pg4",
+        "url": "repo:curso-playwright/material/colinha/colinha.html",
+        "pagina": 4,
+        "titulo": "colinha-playwright-para-leigos.pdf",
+        "legenda": "Page Object"
+       }
+      },
+      {
+       "text": "ao login salvo, ao GitHub Actions e à API. Deixa ela aberta enquanto pratica.",
+       "scene": {
+        "type": "tela",
+        "media": "colinha_pg4b",
+        "url": "repo:curso-playwright/material/colinha/colinha.html",
+        "pagina": 4,
+        "rolar_y": 900,
+        "titulo": "colinha-playwright-para-leigos.pdf",
+        "legenda": "Login salvo, API e GitHub Actions"
+       }
+      },
+      {
+       "text": "Você começou sem saber nada e terminou com um projeto completo: login, compra, API e tudo rodando no GitHub.",
+       "scene": {
+        "type": "cards",
+        "titulo": "O SEU PROJETO",
+        "itens": [
+         [
+          "🔑",
+          "Login",
+          "vários usuários"
+         ],
+         [
+          "🛒",
+          "Compra",
+          "do começo ao fim",
+          "#69a7ff"
+         ],
+         [
+          "⇄",
+          "API",
+          "em milissegundos",
+          "#ffd23f"
+         ],
+         [
+          "✓",
+          "GitHub",
+          "rodando sozinho",
+          "#3fd68a"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Próximos passos: pratique, crie novos cenários e mantenha o seu GitHub atualizado.",
+       "scene": {
+        "type": "cards",
+        "titulo": "PRÓXIMOS PASSOS",
+        "itens": [
+         [
+          "⌨",
+          "Pratique",
+          "um pouco todo dia"
+         ],
+         [
+          "＋",
+          "Novos cenários",
+          "outros sites e fluxos",
+          "#69a7ff"
+         ],
+         [
+          "⑂",
+          "GitHub atualizado",
+          "a sua vitrine",
+          "#ffd23f"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "E se o curso te ajudou, deixa uma avaliação honesta na Udemy. Ela ajuda a melhorar o curso e orienta outros alunos.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "★★★★★",
+          "gold",
+          130
+         ],
+         [
+          "SUA AVALIAÇÃO",
+          "white",
+          120
+         ],
+         [
+          "AJUDA OUTROS ALUNOS",
+          "muted",
+          70
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Até a próxima!",
+       "scene": {
+        "type": "endcard",
+        "sub": "OBRIGADO POR FAZER O CURSO!"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "shorts": [],
+  "tiktoks": []
+ }
+}

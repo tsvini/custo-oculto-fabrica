@@ -1,0 +1,176 @@
+{
+ "title": "Playwright para leigos · Aula 56",
+ "slug": "curso-playwright-56",
+ "idioma": "pt",
+ "destino": "curso",
+ "marca": [
+  "PLAYWRIGHT",
+  "PARA LEIGOS"
+ ],
+ "cor_fundo": "#3fd68a",
+ "sem_legenda": true,
+ "legenda_y": 0.93,
+ "selo": "MÓDULO 12 · AULA 56",
+ "voz": {
+  "nome": "gravada",
+  "motor": "eleven",
+  "eleven_voz": "Vinícius Torales"
+ },
+ "serie": [],
+ "meta": {
+  "titles": [
+   "Aula 56: O seu projeto no currículo e na entrevista"
+  ],
+  "description": "",
+  "tags": []
+ },
+ "notes": "Curso Playwright para leigos. Não publica (destino: curso). Roteiro em curso-playwright/roteiros/.",
+ "script": {
+  "long": {
+   "parts": [
+    {
+     "chapter": "",
+     "sentences": [
+      {
+       "text": "Agora você tem um projeto de automação. Vamos colocar isso no seu currículo do jeito certo.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "AULA 56",
+          "muted",
+          80
+         ],
+         [
+          "CURRÍCULO",
+          "gold",
+          200
+         ]
+        ]
+       }
+      },
+      {
+       "text": "No currículo, escreve o que você realmente fez: testes de ponta a ponta com Playwright e JavaScript, Page Object, testes de API, vários navegadores e execução no GitHub Actions.",
+       "scene": {
+        "type": "traducao",
+        "titulo": "NO CURRÍCULO",
+        "linhas": [
+         [
+          "Playwright + JavaScript",
+          "testes de ponta a ponta"
+         ],
+         [
+          "Page Object",
+          "código organizado e reaproveitável"
+         ],
+         [
+          "request (API)",
+          "testes de API"
+         ],
+         [
+          "projects",
+          "Chromium, Firefox, WebKit e celular"
+         ],
+         [
+          "GitHub Actions",
+          "testes rodando a cada push"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "A regra: só coloca o que você consegue explicar numa entrevista.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "SÓ COLOCA",
+          "white",
+          120
+         ],
+         [
+          "O QUE VOCÊ EXPLICA",
+          "gold",
+          140
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Perguntas que costumam aparecer e que você já sabe responder: o que é auto-wait? Por que preferir seletores pela função? O que é Page Object?",
+       "scene": {
+        "type": "cards",
+        "titulo": "PERGUNTA → RESPOSTA CURTA",
+        "itens": [
+         [
+          "?",
+          "Auto-wait",
+          "ele espera o elemento ficar pronto"
+         ],
+         [
+          "?",
+          "Seletor pela função",
+          "parte do que a pessoa usa",
+          "#69a7ff"
+         ],
+         [
+          "?",
+          "Page Object",
+          "cada página vira uma classe",
+          "#ffd23f"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "E o que é um teste flaky, que às vezes passa e às vezes falha? E como evitar?",
+       "scene": {
+        "type": "cards",
+        "titulo": "FLAKY",
+        "itens": [
+         [
+          "≈",
+          "Às vezes passa",
+          "às vezes falha",
+          "#ff6b6b"
+         ],
+         [
+          "✓",
+          "Como evitar",
+          "expect que espera, sem tempo fixo",
+          "#3fd68a"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Mostrar o projeto funcionando no GitHub ajuda muito a transformar o que está no currículo numa demonstração concreta.",
+       "scene": {
+        "type": "gh_actions",
+        "usuario": "voce",
+        "repo": "meu-primeiro-playwright",
+        "workflow": "Playwright Tests",
+        "commit": "testes no GitHub Actions",
+        "pronto": true,
+        "status": "ok",
+        "artefato": "playwright-report",
+        "legenda": "O currículo vira demonstração"
+       }
+      },
+      {
+       "text": "Te vejo na última aula!",
+       "scene": {
+        "type": "endcard",
+        "sub": "PRÓXIMA: PORTFÓLIO E COLINHA"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "shorts": [],
+  "tiktoks": []
+ }
+}
