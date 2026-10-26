@@ -298,7 +298,16 @@
       if (tw(ctx, it.nome, font(pesoN, 30 * u)) > maxN) { let melhor = -1; for (let j = 1; j < it.nome.length; j++) if (/[-_ ]/.test(it.nome[j - 1]) && Math.abs(j - it.nome.length / 2) < Math.abs(melhor - it.nome.length / 2)) melhor = j; if (melhor > 0) lin = [it.nome.slice(0, melhor), it.nome.slice(melhor)]; }
       const fN = font(pesoN, Math.min(30 * u, ...lin.map((l) => 30 * u * Math.min(1, maxN / tw(ctx, l, font(pesoN, 30 * u))))));
       let resta = nome.length; lin.forEach((l, j) => { const parte = l.slice(0, Math.max(0, resta)); resta -= l.length; txt(ctx, parte, fN, cx, cy + (180 + j * 36) * u, "#2a2f3a", "center", ka); });
+      if (s.seleciona === i) { const ks = easeOut((t - (s.seleciona_em || 1.2)) / 0.25); if (ks > 0) { ctx.save(); ctx.globalAlpha = 0.3 * ks; rr(ctx, cx - cell / 2 + 20 * u, cy - 20 * u, cell - 40 * u, 268 * u, 18 * u); ctx.fillStyle = "#2f6fe4"; ctx.fill(); ctx.globalAlpha = ks; ctx.strokeStyle = "#2f6fe4"; ctx.lineWidth = 3 * u; ctx.stroke(); ctx.restore(); } }
     });
+    // janela de escolher pasta (Open Folder): o item escolhido fica azul e o cursor clica no botão
+    if (s.botao) { const bw = tw(ctx, s.botao, font(700, 26 * u)) + 70 * u, bh = 62 * u, bx = x + W - bw - 40 * u, by = y + H - bh - 30 * u, tb = s.botao_em || 2.6;
+      const kb = easeOut((t - tb - 0.1) / 0.2); ctx.save(); ctx.globalAlpha = a; rr(ctx, bx, by, bw, bh, 10 * u); ctx.fillStyle = kb > 0 ? "#1d55c0" : "#2f6fe4"; ctx.fill(); ctx.restore();
+      txt(ctx, s.botao, font(700, 26 * u), bx + bw / 2, by + bh / 2, "#fff", "center", a);
+      rr(ctx, x + 40 * u, by, W - bw - 120 * u, bh, 10 * u); ctx.save(); ctx.globalAlpha = a; ctx.strokeStyle = "#c4c9d4"; ctx.lineWidth = 2 * u; ctx.stroke(); ctx.restore();
+      txt(ctx, "Pasta:  " + (t > (s.seleciona_em || 1.2) && s.seleciona !== undefined ? ((s.itens[s.seleciona].nome) || s.itens[s.seleciona]) : ""), font(600, 26 * u), x + 64 * u, by + bh / 2, "#2a2f3a", "left", a);
+      if (s.seleciona !== undefined) { const i = s.seleciona, cols0 = c.vertical ? 3 : 5, cell0 = (W - 80 * u) / cols0; const ix = x + 40 * u + (i % cols0) * cell0 + cell0 / 2, iy = top + 205 * u + Math.floor(i / cols0) * 250 * u;
+        if (t <= tb - 0.9) cursor(ctx, u, ix + 30 * u, iy, t, s.seleciona_em || 1.2); else { const kk = easeOut((t - (tb - 0.9)) / 0.7); cursor(ctx, u, lerp(ix + 30 * u, bx + bw / 2, kk), lerp(iy, by + bh / 2, kk), t, tb); } } }  /* um cursor só: da pasta até o botão */
     legenda(ctx, c, t, s);
   };
 

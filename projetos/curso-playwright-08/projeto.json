@@ -91,7 +91,7 @@
        }
       },
       {
-       "text": "Agora abre o VS Code, clica em File, depois Open Folder, e escolhe essa pasta.",
+       "text": "Agora abre o VS Code, clica em File, depois Open Folder,",
        "scene": {
         "type": "menu",
         "app": "vscode",
@@ -114,6 +114,25 @@
          5
         ],
         "legenda": "File › Open Folder"
+       }
+      },
+      {
+       "text": "e escolhe essa pasta: clica nela, e depois em Selecionar pasta.",
+       "scene": {
+        "type": "pastas",
+        "titulo": "Abrir Pasta",
+        "caminho": "Este Computador  ›  Documentos",
+        "itens": [
+         "Fotos",
+         "Músicas",
+         "Trabalho",
+         "meu-primeiro-playwright"
+        ],
+        "seleciona": 3,
+        "seleciona_em": 1.4,
+        "botao": "Selecionar pasta",
+        "botao_em": 3.4,
+        "legenda": "Clica na pasta · Selecionar pasta"
        }
       },
       {
