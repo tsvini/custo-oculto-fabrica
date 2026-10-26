@@ -53,14 +53,21 @@
       {
        "text": "No terminal do VS Code, digita npm init playwright arroba latest e aperta Enter.",
        "scene": {
-        "type": "terminal",
-        "titulo": "Terminal — VS Code",
-        "pasta": "C:\\Users\\voce\\Documents\\meu-primeiro-playwright",
-        "linhas": [
+        "type": "editor",
+        "arquivo": "Welcome",
+        "pastas": [
+         "meu-primeiro-playwright"
+        ],
+        "digitar": false,
+        "fonte": 24,
+        "codigo": "// A pasta do projeto está aberta!",
+        "terminal": [
          {
-          "cmd": "npm init playwright@latest"
+          "cmd": "npm init playwright@latest",
+          "em": 0.05
          }
         ],
+        "terminal_altura": 0.66,
         "legenda": "npm init playwright@latest",
         "colinha": true,
         "colinha_em": 1.5
@@ -69,37 +76,51 @@
       {
        "text": "Na primeira vez, ele pergunta se pode instalar um ajudante. Aperta y e Enter.",
        "scene": {
-        "type": "terminal",
-        "titulo": "Terminal — VS Code",
-        "pasta": "C:\\Users\\voce\\Documents\\meu-primeiro-playwright",
-        "linhas": [
+        "type": "editor",
+        "arquivo": "Welcome",
+        "pastas": [
+         "meu-primeiro-playwright"
+        ],
+        "digitar": false,
+        "fonte": 24,
+        "codigo": "// A pasta do projeto está aberta!",
+        "terminal": [
          {
           "cmd": "npm init playwright@latest",
           "ja": true
          },
          {
           "out": "Need to install the following packages:",
-          "cor": "mut"
+          "cor": "mut",
+          "em": 0.3
          },
          {
           "out": "  create-playwright",
-          "cor": "txt"
+          "cor": "txt",
+          "em": 0.53
          },
          {
           "out": "Ok to proceed? (y) y",
-          "cor": "yel"
+          "cor": "yel",
+          "em": 0.75
          }
         ],
+        "terminal_altura": 0.66,
         "legenda": "Aperte y e Enter"
        }
       },
       {
        "text": "Agora ele faz quatro perguntas. A primeira: TypeScript ou JavaScript? Vamos escolher JavaScript. Assim a gente consegue focar primeiro em aprender automação, sem adicionar outra linguagem no caminho.",
        "scene": {
-        "type": "terminal",
-        "titulo": "Terminal — VS Code",
-        "pasta": "C:\\Users\\voce\\Documents\\meu-primeiro-playwright",
-        "linhas": [
+        "type": "editor",
+        "arquivo": "Welcome",
+        "pastas": [
+         "meu-primeiro-playwright"
+        ],
+        "digitar": false,
+        "fonte": 24,
+        "codigo": "// A pasta do projeto está aberta!",
+        "terminal": [
          {
           "cmd": "npm init playwright@latest",
           "ja": true
@@ -111,23 +132,31 @@
          },
          {
           "out": "Getting started with writing end-to-end tests with Playwright:",
-          "cor": "mut"
+          "cor": "mut",
+          "em": 0.3
          },
          {
           "out": "✔ Do you want to use TypeScript or JavaScript? · JavaScript",
-          "cor": "ac"
+          "cor": "ac",
+          "em": 0.75
          }
         ],
+        "terminal_altura": 0.66,
         "legenda": "1ª pergunta: JavaScript"
        }
       },
       {
        "text": "Segunda: onde guardar os testes? Ele já sugere a pasta tests. Só aperta Enter.",
        "scene": {
-        "type": "terminal",
-        "titulo": "Terminal — VS Code",
-        "pasta": "C:\\Users\\voce\\Documents\\meu-primeiro-playwright",
-        "linhas": [
+        "type": "editor",
+        "arquivo": "Welcome",
+        "pastas": [
+         "meu-primeiro-playwright"
+        ],
+        "digitar": false,
+        "fonte": 24,
+        "codigo": "// A pasta do projeto está aberta!",
+        "terminal": [
          {
           "cmd": "npm init playwright@latest",
           "ja": true
@@ -139,19 +168,26 @@
          },
          {
           "out": "✔ Where to put your end-to-end tests? · tests",
-          "cor": "ac"
+          "cor": "ac",
+          "em": 0.3
          }
         ],
+        "terminal_altura": 0.66,
         "legenda": "2ª pergunta: tests (só Enter)"
        }
       },
       {
        "text": "Terceira: quer um workflow do GitHub Actions? Aqui digita y. É isso que, no final do curso, vai fazer seus testes rodarem sozinhos.",
        "scene": {
-        "type": "terminal",
-        "titulo": "Terminal — VS Code",
-        "pasta": "C:\\Users\\voce\\Documents\\meu-primeiro-playwright",
-        "linhas": [
+        "type": "editor",
+        "arquivo": "Welcome",
+        "pastas": [
+         "meu-primeiro-playwright"
+        ],
+        "digitar": false,
+        "fonte": 24,
+        "codigo": "// A pasta do projeto está aberta!",
+        "terminal": [
          {
           "cmd": "npm init playwright@latest",
           "ja": true
@@ -168,19 +204,26 @@
          },
          {
           "out": "✔ Add a GitHub Actions workflow? (y/N) · true",
-          "cor": "ac"
+          "cor": "ac",
+          "em": 0.3
          }
         ],
+        "terminal_altura": 0.66,
         "legenda": "3ª pergunta: y (sim)"
        }
       },
       {
        "text": "Quarta: instalar os navegadores do Playwright? Enter, que é sim. Ele baixa o Chromium, o Firefox e o WebKit, que é o motor de navegador que eu te mostrei na abertura do curso.",
        "scene": {
-        "type": "terminal",
-        "titulo": "Terminal — VS Code",
-        "pasta": "C:\\Users\\voce\\Documents\\meu-primeiro-playwright",
-        "linhas": [
+        "type": "editor",
+        "arquivo": "Welcome",
+        "pastas": [
+         "meu-primeiro-playwright"
+        ],
+        "digitar": false,
+        "fonte": 24,
+        "codigo": "// A pasta do projeto está aberta!",
+        "terminal": [
          {
           "cmd": "npm init playwright@latest",
           "ja": true
@@ -202,13 +245,16 @@
          },
          {
           "out": "✔ Install Playwright browsers? (Y/n) · true",
-          "cor": "ac"
+          "cor": "ac",
+          "em": 0.3
          },
          {
           "out": "Downloading Chromium... Firefox... WebKit... done",
-          "cor": "txt"
+          "cor": "txt",
+          "em": 0.75
          }
         ],
+        "terminal_altura": 0.66,
         "legenda": "4ª pergunta: Enter (sim)"
        }
       },
@@ -235,10 +281,15 @@
       {
        "text": "Espera terminar. Quando aparecer Happy hacking no final, deu tudo certo.",
        "scene": {
-        "type": "terminal",
-        "titulo": "Terminal — VS Code",
-        "pasta": "C:\\Users\\voce\\Documents\\meu-primeiro-playwright",
-        "linhas": [
+        "type": "editor",
+        "arquivo": "Welcome",
+        "pastas": [
+         "meu-primeiro-playwright"
+        ],
+        "digitar": false,
+        "fonte": 24,
+        "codigo": "// A pasta do projeto está aberta!",
+        "terminal": [
          {
           "cmd": "npm init playwright@latest",
           "ja": true
@@ -270,13 +321,16 @@
          },
          {
           "out": "✔ Success! Created a Playwright Test project",
-          "cor": "ac"
+          "cor": "ac",
+          "em": 0.3
          },
          {
           "out": "Happy hacking! 🎭",
-          "cor": "yel"
+          "cor": "yel",
+          "em": 0.75
          }
         ],
+        "terminal_altura": 0.66,
         "legenda": "Happy hacking = deu certo"
        }
       },

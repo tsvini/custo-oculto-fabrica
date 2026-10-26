@@ -104,7 +104,7 @@
     // a linha mais comprida sempre cabe inteira (código nunca é cortado na lateral)
     let fs = Math.min(c.vertical ? 46 * u : (s.fonte || (linhas.length > 12 ? 30 : 36)) * u, (W - sideW - 140 * u) / (maxCh * 0.6)); let lh = fs * 1.55; const x0 = tabX + 96 * u; let yy = top + 100 * u;
     // rolar: o arquivo inteiro aparece de cima e a tela desce até o fim antes de começar a digitar
-    const PH = s.terminal ? Math.round(H * 0.4) : 0;  // painel do terminal integrado (embaixo, como no VS Code)
+    const PH = s.terminal ? Math.round(H * (s.terminal_altura || 0.4)) : 0;  // painel do terminal integrado (embaixo, como no VS Code); terminal_altura: cenas em que o assunto é o terminal
     if (PH) { fs = Math.min(fs, (y + H - PH - top - 100 * u) / ((linhas.length - 0.4) * 1.55)); lh = fs * 1.55; }  // com o terminal aberto, o código inteiro ainda cabe em cima
     const baseY = y + H - PH - 40 * u, cabem = Math.floor((baseY - yy) / lh) + 1, sobra = s.rolar_ate ? clamp(Math.ceil(s.rolar_ate - cabem + 2) * lh, 0, Math.max(0, linhas.length - cabem) * lh) : Math.max(0, linhas.length - cabem) * lh;
     const rDe = s.rolar_de || 1.6, rDur = s.rolar_dur || 1.5; const rolando = s.rolar && sobra > 0;
@@ -149,12 +149,15 @@
       if (l.cmd !== undefined) livre = t0 + durCmd(l) + 0.25 / vd; else livre = Math.max(livre, t0 + 0.15); return t0; });
       if (Math.max(...tempos) <= dur - 0.7) break; }
     const vis = L.map((l, i) => [l, tempos[i]]).filter(([, t0]) => t >= t0); const cabe = Math.max(1, Math.floor((h - 22 * u - 92 * u) / lh) + 1);
+    if (!vis.some(([l]) => !l.ja)) {  // nada digitado ainda: o prompt esperando, com o cursor piscando
+      const ult = vis.length ? vis[vis.length - 1][0] : null; const yP = yy + Math.min(vis.length, cabe - 1) * lh;
+      if (!ult || ult.cmd === undefined) { txt(ctx, pr, font(600, fs, MONO), x + 36 * u, yP, C.ac2, "left", a); if (Math.floor(t * 2.5) % 2 === 0) { ctx.fillStyle = C.txt; ctx.fillRect(x + 36 * u + tw(ctx, pr, font(600, fs, MONO)) + 3 * u, yP - fs * 0.55, fs * 0.55, fs * 1.1); } } }
     vis.slice(-cabe).forEach(([l, t0]) => {  // como no terminal de verdade: quando enche, as linhas de cima sobem
       let px = x + 36 * u;
       if (l.cmd !== undefined) {
         const k = l.ja ? 1 : clamp((t - t0) / durCmd(l)); const cmd = l.cmd.slice(0, Math.ceil(k * l.cmd.length));
         txt(ctx, pr, font(600, fs, MONO), px, yy, C.ac2, "left", a); px += tw(ctx, pr, font(600, fs, MONO)); txt(ctx, cmd, font(600, fs, MONO), px, yy, C.txt, "left", a);
-        if (k < 1 && Math.floor(t * 2.5) % 2 === 0) { ctx.fillStyle = C.txt; ctx.fillRect(px + tw(ctx, cmd, font(600, fs, MONO)) + 3 * u, yy - fs * 0.55, fs * 0.55, fs * 1.1); }
+        if ((k < 1 || l.cmd === "") && Math.floor(t * 2.5) % 2 === 0) { ctx.fillStyle = C.txt; ctx.fillRect(px + tw(ctx, cmd, font(600, fs, MONO)) + 3 * u, yy - fs * 0.55, fs * 0.55, fs * 1.1); }  // comando vazio: o cursor esperando
       } else txt(ctx, l.out, font(500, fs, MONO), px, yy, C[l.cor] || l.cor || C.mut, "left", a * (l.ja ? 1 : easeOut((t - t0) / 0.3)));
       yy += lh; });
   }
@@ -214,7 +217,9 @@
         if (l.cmd !== undefined) { if (!l.cont) { txt(ctx, pr, font(600, fs, MONO), px, yy, C.ac2, "left", a); px += tw(ctx, pr, font(600, fs, MONO)); } txt(ctx, l.cmd, font(600, fs, MONO), px, yy, C.txt, "left", a); }
         else txt(ctx, l.out, font(500, fs, MONO), px, yy, C[l.cor] || l.cor || C.mut, "left", a);
         yy += lh; continue; }
-      if (tt < 0) break;
+      if (tt < 0) {  // antes de digitar: o prompt já está lá, com o cursor piscando (terminal nunca aparece vazio)
+        if (l.cmd !== undefined && !l.cont) { txt(ctx, pr, font(600, fs, MONO), x + 40 * u, yy, C.ac2, "left", a); if (Math.floor(t * 2.5) % 2 === 0) { ctx.fillStyle = C.txt; ctx.fillRect(x + 40 * u + tw(ctx, pr, font(600, fs, MONO)) + 4 * u, yy - fs * 0.55, fs * 0.55, fs * 1.1); } }
+        break; }
       if (l.cmd !== undefined) {
         const pc = l.cont ? passo * 0.6 : passo; const k = clamp(tt / Math.max(0.4, pc * 0.75)); const cmd = l.cmd.slice(0, Math.ceil(k * l.cmd.length));
         let px = x + 40 * u; if (!l.cont) { txt(ctx, pr, font(600, fs, MONO), px, yy, C.ac2, "left", a); px += tw(ctx, pr, font(600, fs, MONO)); }

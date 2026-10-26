@@ -111,7 +111,8 @@
        "text": "O Node: em nodejs ponto org, baixa a versão LTS pra Mac e vai clicando em continuar.",
        "scene": {
         "type": "tela",
-        "media": "site_node",
+        "media": "site_node_mac",
+        "ua": "mac",
         "url": "https://nodejs.org/",
         "alvo": "LTS",
         "titulo": "nodejs.org",

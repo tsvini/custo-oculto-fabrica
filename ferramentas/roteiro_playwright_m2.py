@@ -32,9 +32,14 @@ node_modules/
 ARVORE = ["meu-primeiro-playwright", "  .github/", "  node_modules", "  tests", "    example.spec.js", "  .gitignore", "  package-lock.json", "  package.json", "  playwright.config.js"]
 
 
-def vterm(linhas, legenda, colinha=False, ja=0):
-    linhas = [dict(l, ja=True) if i < ja else l for i, l in enumerate(linhas)]  # as primeiras "ja" linhas já estavam na tela
-    d = {"type": "terminal", "titulo": "Terminal — VS Code", "pasta": PASTA, "linhas": linhas, "legenda": legenda}
+def vterm(linhas, legenda, colinha=False, ja=0, pastas=None, codigo=None, arquivo="Welcome"):
+    """o terminal DENTRO do VS Code (painel de baixo, maior que o normal porque o assunto é o terminal)"""
+    linhas = [dict(l, ja=True) if i < ja else dict(l) for i, l in enumerate(linhas)]  # as primeiras "ja" linhas já estavam na tela
+    novas = [l for l in linhas if not l.get("ja")]
+    for k, l in enumerate(novas):  # o comando digita primeiro, as saídas vêm uma depois da outra
+        l["em"] = 0.05 if (k == 0 and "cmd" in l) else round(0.3 + 0.45 * k / max(1, len(novas) - 1), 2)
+    d = {"type": "editor", "arquivo": arquivo, "pastas": pastas or ["meu-primeiro-playwright"], "digitar": False, "fonte": 24,
+         "codigo": codigo or "// A pasta do projeto está aberta!", "terminal": linhas, "terminal_altura": 0.66, "legenda": legenda}
     if colinha:
         d.update({"colinha": True, "colinha_em": 1.5})
     return d

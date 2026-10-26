@@ -137,7 +137,13 @@ def telas(cenas, pasta, log, idioma="pt"):
             b = p.chromium.launch()
             ctx = b.new_context(viewport={"width": 1600, "height": 900}, device_scale_factor=1.25, locale="en-US" if idioma == "en" else "pt-BR", user_agent=UA)
             for s in falta:
-                dest = os.path.join(pasta, s["media"] + ".png"); pg = ctx.new_page(); meta = {}
+                dest = os.path.join(pasta, s["media"] + ".png"); meta = {}
+                if s.get("ua") == "mac":  # site que muda pelo sistema (ex.: nodejs.org oferece o instalador do Mac)
+                    ctx_mac = b.new_context(viewport={"width": 1600, "height": 900}, device_scale_factor=1.25, locale="pt-BR",
+                                            user_agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0 Safari/537.36")
+                    pg = ctx_mac.new_page()
+                else:
+                    pg = ctx.new_page()
                 try:
                     url = s["url"]
                     if url.startswith("repo:"):  # página do próprio repositório (ex.: a colinha do curso)

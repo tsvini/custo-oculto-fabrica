@@ -167,14 +167,21 @@
       {
        "text": "Olha o caminho antes do cursor: ele termina com meu-primeiro-playwright. Isso quer dizer que o terminal está dentro do seu projeto, que é exatamente onde ele precisa estar.",
        "scene": {
-        "type": "terminal",
-        "titulo": "Terminal — VS Code",
-        "pasta": "C:\\Users\\voce\\Documents\\meu-primeiro-playwright",
-        "linhas": [
+        "type": "editor",
+        "arquivo": "Welcome",
+        "pastas": [
+         "meu-primeiro-playwright"
+        ],
+        "digitar": false,
+        "fonte": 24,
+        "codigo": "// A pasta do projeto está aberta!",
+        "terminal": [
          {
-          "cmd": ""
+          "cmd": "",
+          "em": 0.05
          }
         ],
+        "terminal_altura": 0.66,
         "legenda": "O caminho termina no seu projeto"
        }
       },

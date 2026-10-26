@@ -193,7 +193,7 @@ AULAS.append(projeto(6, "MÓDULO 1 · AULA 6", "Instalando no Mac e no Linux", [
     ("O VS Code: baixa em code ponto visualstudio ponto com, abre o arquivo e arrasta pra pasta Aplicativos.",
      {"type": "pastas", "titulo": "Finder", "caminho": "Finder  ›  Aplicativos", "itens": ["Calculadora", "Safari", {"nome": "Visual Studio Code", "novo": True}], "novo_em": 0.8, "legenda": "Arraste pra Aplicativos"}),
     ("O Node: em nodejs ponto org, baixa a versão LTS pra Mac e vai clicando em continuar.",
-     {"type": "tela", "media": "site_node", "url": "https://nodejs.org/", "alvo": "LTS", "titulo": "nodejs.org", "zoom_em": 1.6, "caixa_em": 2.4, "legenda": "Versão LTS pra Mac"}),
+     {"type": "tela", "media": "site_node_mac", "ua": "mac", "url": "https://nodejs.org/", "alvo": "LTS", "titulo": "nodejs.org", "zoom_em": 1.6, "caixa_em": 2.4, "legenda": "Versão LTS pra Mac"}),
     ("O Git é o mais fácil: digita git traço traço version no terminal. Se não tiver, o próprio Mac oferece instalar.",
      {"type": "terminal", "titulo": "Terminal · Mac", "prompt": "voce@Mac ~ %", "linhas": [{"cmd": "git --version"}, {"out": "git version 2.39.5 (Apple Git-154)", "cor": "ac"}], "legenda": "Não tem? O Mac oferece instalar"}),
     ("Agora o Linux. Eu vou mostrar no Ubuntu. O terminal abre com Control, Alt e T.", {"type": "passo", "icone": "⌨", "titulo": "Ctrl + Alt + T", "sub": "abre o terminal no Ubuntu"}),
