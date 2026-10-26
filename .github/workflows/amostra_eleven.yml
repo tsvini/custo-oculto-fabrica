@@ -17,7 +17,7 @@ jobs:
       - env:
           ELEVENLABS_KEY: ${{ secrets.ELEVENLABS_KEY }}
         run: |
-          pip install -q requests
+          pip install -q requests faster-whisper
           python -m fabrica.eleven_amostra
           git config user.name "fabrica-custo-oculto"; git config user.email "fabrica@users.noreply.github.com"
           git add amostras && git commit -q -m "Amostras ElevenLabs [skip ci]" && git pull --rebase --autostash -q && git push -q || true

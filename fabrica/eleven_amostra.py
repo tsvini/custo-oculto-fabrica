@@ -16,8 +16,14 @@ def main():
         r = requests.post(f"{API}/v1/text-to-speech/{v['voice_id']}?output_format=mp3_44100_128", headers=H, timeout=300, json={"text": texto, "model_id": m})
         if r.status_code != 200:
             print(f"::warning title={m}::{r.status_code} {r.text[:200]}"); continue
-        open(os.path.join(RAIZ, "amostras", f"eleven_{m}.mp3"), "wb").write(r.content)
+        arq = os.path.join(RAIZ, "amostras", f"eleven_{m}.mp3"); open(arq, "wb").write(r.content)
         print(f"::notice title=Amostra::{m} ok")
+        try:  # transcreve: se a tag de emoção ([excited]...) for lida em voz alta, aparece aqui
+            from faster_whisper import WhisperModel
+            segs, _ = WhisperModel("small", device="cpu", compute_type="int8").transcribe(arq, language="pt")
+            print(f"::notice title=Transcrição {m}::" + " ".join(x.text.strip() for x in segs))
+        except Exception as e:
+            print(f"::warning title=Transcrição::{e}")
 
 
 if __name__ == "__main__":
