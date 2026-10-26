@@ -1,0 +1,211 @@
+{
+ "title": "Playwright para leigos · Aula 50",
+ "slug": "curso-playwright-50",
+ "idioma": "pt",
+ "destino": "curso",
+ "marca": [
+  "PLAYWRIGHT",
+  "PARA LEIGOS"
+ ],
+ "cor_fundo": "#3fd68a",
+ "sem_legenda": true,
+ "legenda_y": 0.93,
+ "selo": "MÓDULO 11 · AULA 50",
+ "voz": {
+  "nome": "gravada",
+  "motor": "eleven",
+  "eleven_voz": "Vinícius Torales"
+ },
+ "serie": [],
+ "meta": {
+  "titles": [
+   "Aula 50: Desafio 2 - campos vazios"
+  ],
+  "description": "",
+  "tags": []
+ },
+ "notes": "Curso Playwright para leigos. Não publica (destino: curso). Roteiro em curso-playwright/roteiros/.",
+ "script": {
+  "long": {
+   "parts": [
+    {
+     "chapter": "",
+     "sentences": [
+      {
+       "text": "Desafio dois: e se a pessoa clicar em Login sem preencher nada?",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "AULA 50",
+          "muted",
+          80
+         ],
+         [
+          "DESAFIO 2",
+          "gold",
+          200
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Pausa e tenta.",
+       "scene": {
+        "type": "desafio",
+        "numero": "2",
+        "titulo": "Campos vazios",
+        "itens": [
+         [
+          "▭",
+          "não preenche nada"
+         ],
+         [
+          "▶",
+          "clica em Login",
+          "#69a7ff"
+         ],
+         [
+          "✓",
+          "confere a mensagem de erro",
+          "#ffd23f"
+         ]
+        ],
+        "contagem": 5,
+        "legenda": "Pausa o vídeo e tenta"
+       },
+       "pausa": 4
+      },
+      {
+       "text": "Dica: a mensagem é Username is required.",
+       "scene": {
+        "type": "tela",
+        "media": "dica50",
+        "url": "https://www.saucedemo.com/",
+        "gravar": true,
+        "acoes": [
+         {
+          "click": "#login-button"
+         }
+        ],
+        "titulo": "saucedemo.com",
+        "legenda": "Username is required",
+        "espera_inicio": 1000,
+        "espera_fim": 2200,
+        "delay_letra": 70
+       }
+      },
+      {
+       "text": "Solução: só o clique e o expect.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "desafios.spec.js",
+        "codigo": "import { test, expect } from '@playwright/test';\n\ntest.describe('Desafios', () => {\n  test.beforeEach(async ({ page }) => {\n    await page.goto('/');\n  });\n\n  test('desafio 1: senha errada mostra erro', async ({ page }) => {\n    await page.getByTestId('username').fill('standard_user');\n    await page.getByTestId('password').fill('senha_errada');\n    await page.getByTestId('login-button').click();\n    await expect(page.getByTestId('error')).toContainText('do not match');\n  });\n\n  test('desafio 2: campos vazios', async ({ page }) => {\n    await page.getByTestId('login-button').click();\n    await expect(page.getByTestId('error')).toContainText('Username is required');\n  });\n});",
+        "legenda": "Só o clique e o expect",
+        "fonte": 24,
+        "digitar": true,
+        "digitar_de": 15,
+        "digitar_ate": 18,
+        "vel": 0.7,
+        "rolar": true,
+        "rolar_de": 0.2,
+        "rolar_dur": 0.6
+       }
+      },
+      {
+       "text": "Repara: nem todo teste preenche tudo, e um bom teste também confere o que dá errado.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "BOM TESTE",
+          "gold",
+          150
+         ],
+         [
+          "TAMBÉM CONFERE",
+          "white",
+          110
+         ],
+         [
+          "O QUE DÁ ERRADO",
+          "white",
+          110
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Roda: passou.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "desafios.spec.js",
+        "codigo": "  test('desafio 2: campos vazios', async ({ page }) => {\n    await page.getByTestId('login-button').click();\n    await expect(page.getByTestId('error')).toContainText('Username is required');\n  });",
+        "legenda": "Passou",
+        "fonte": 24,
+        "digitar": false,
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  pages/",
+         "  tests/",
+         "    api.spec.js",
+         "    compra.spec.js",
+         "    desafios.spec.js",
+         "    login.spec.js",
+         "  .env",
+         "  playwright.config.js"
+        ],
+        "linha0": 15,
+        "terminal": [
+         {
+          "cmd": "npx playwright test -g \"campos vazios\" --headed --project=chromium",
+          "em": 0.03
+         },
+         {
+          "out": "Running 2 tests using 1 worker",
+          "cor": "mut",
+          "em": 0.08
+         },
+         {
+          "out": "  2 passed (4.2s)",
+          "cor": "ac",
+          "em": 0.87
+         }
+        ],
+        "navegador": {
+         "media": "run50",
+         "url": "https://www.saucedemo.com/",
+         "gravar": true,
+         "acoes": [
+          {
+           "click": "#login-button"
+          }
+         ],
+         "espera_inicio": 800,
+         "espera_fim": 1800,
+         "delay_letra": 55,
+         "titulo": "Chromium",
+         "em": 0.12,
+         "ate": 0.84
+        }
+       }
+      },
+      {
+       "text": "Te vejo no próximo!",
+       "scene": {
+        "type": "endcard",
+        "sub": "PRÓXIMO: DESAFIO 3"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "shorts": [],
+  "tiktoks": []
+ }
+}

@@ -1,0 +1,258 @@
+{
+ "title": "Playwright para leigos · Aula 52",
+ "slug": "curso-playwright-52",
+ "idioma": "pt",
+ "destino": "curso",
+ "marca": [
+  "PLAYWRIGHT",
+  "PARA LEIGOS"
+ ],
+ "cor_fundo": "#3fd68a",
+ "sem_legenda": true,
+ "legenda_y": 0.93,
+ "selo": "MÓDULO 11 · AULA 52",
+ "voz": {
+  "nome": "gravada",
+  "motor": "eleven",
+  "eleven_voz": "Vinícius Torales"
+ },
+ "serie": [],
+ "meta": {
+  "titles": [
+   "Aula 52: Desafio 4 - ordenar por preço"
+  ],
+  "description": "",
+  "tags": []
+ },
+ "notes": "Curso Playwright para leigos. Não publica (destino: curso). Roteiro em curso-playwright/roteiros/.",
+ "script": {
+  "long": {
+   "parts": [
+    {
+     "chapter": "",
+     "sentences": [
+      {
+       "text": "Desafio quatro: ordenar do menor pro maior preço.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "AULA 52",
+          "muted",
+          80
+         ],
+         [
+          "DESAFIO 4",
+          "gold",
+          200
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Pausa e tenta.",
+       "scene": {
+        "type": "desafio",
+        "numero": "4",
+        "titulo": "Ordenar por preço",
+        "itens": [
+         [
+          "⇅",
+          "ordena do menor pro maior"
+         ],
+         [
+          "✓",
+          "o primeiro preço é o menor",
+          "#ffd23f"
+         ]
+        ],
+        "contagem": 5,
+        "legenda": "Pausa o vídeo e tenta"
+       },
+       "pausa": 4
+      },
+      {
+       "text": "Dica: a caixa de ordenar é um select, uma caixa de opções.",
+       "scene": {
+        "type": "tela",
+        "media": "dica52",
+        "url": "https://www.saucedemo.com/inventory.html",
+        "gravar": true,
+        "acoes": [
+         {
+          "select": [
+           "[data-test=\"product-sort-container\"]",
+           "lohi"
+          ],
+          "espera": 1800
+         }
+        ],
+        "titulo": "saucedemo.com",
+        "legenda": "A caixa de ordenar: um select",
+        "espera_inicio": 1000,
+        "espera_fim": 2200,
+        "delay_letra": 70,
+        "pre_acoes": [
+         {
+          "fill": [
+           "#user-name",
+           "standard_user"
+          ]
+         },
+         {
+          "fill": [
+           "#password",
+           "secret_sauce"
+          ]
+         },
+         {
+          "click": "#login-button"
+         }
+        ],
+        "pre_url": "https://www.saucedemo.com/"
+       }
+      },
+      {
+       "text": "Pra escolher uma opção, existe o select option, escolha a opção. A do menor preço se chama lohi, de low to high: do baixo pro alto.",
+       "scene": {
+        "type": "traducao",
+        "codigo": "selectOption('lohi')",
+        "partes": [
+         [
+          "selectOption",
+          "escolha a opção"
+         ],
+         [
+          "('lohi')",
+          "low to high: do baixo pro alto"
+         ]
+        ],
+        "passo": 2.4
+       }
+      },
+      {
+       "text": "Solução: como a gente conhece os produtos desse site de treino, a conferência é simples: depois de ordenar, o primeiro preço é sete e noventa e nove.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "desafios.spec.js",
+        "codigo": "import { test, expect } from '@playwright/test';\n\ntest.describe('Desafios', () => {\n  test.beforeEach(async ({ page }) => {\n    await page.goto('/');\n  });\n\n  test('desafio 1: senha errada mostra erro', async ({ page }) => {\n    await page.getByTestId('username').fill('standard_user');\n    await page.getByTestId('password').fill('senha_errada');\n    await page.getByTestId('login-button').click();\n    await expect(page.getByTestId('error')).toContainText('do not match');\n  });\n\n  test('desafio 2: campos vazios', async ({ page }) => {\n    await page.getByTestId('login-button').click();\n    await expect(page.getByTestId('error')).toContainText('Username is required');\n  });\n\n  test.describe('logado', () => {\n    test.use({ storageState: 'playwright/.auth/usuario.json' });\n\n    test.beforeEach(async ({ page }) => {\n      await page.goto('/inventory.html');\n    });\n\n    test('desafio 3: remove do carrinho', async ({ page }) => {\n      await page.getByTestId('add-to-cart-sauce-labs-backpack').click();\n      await expect(page.getByTestId('shopping-cart-badge')).toHaveText('1');\n      await page.getByTestId('remove-sauce-labs-backpack').click();\n      await expect(page.getByTestId('shopping-cart-badge')).toHaveCount(0);\n    });\n\n    test('desafio 4: ordena do menor para o maior preço', async ({ page }) => {\n      await page.getByTestId('product-sort-container').selectOption('lohi');\n      await expect(page.getByTestId('inventory-item-price').first()).toHaveText('$7.99');\n    });\n  });\n});",
+        "legenda": "selectOption('lohi') e o primeiro preço",
+        "fonte": 24,
+        "digitar": true,
+        "digitar_de": 34,
+        "digitar_ate": 37,
+        "vel": 0.7,
+        "rolar": true,
+        "rolar_de": 0.2,
+        "rolar_dur": 0.6
+       }
+      },
+      {
+       "text": "Ponto first: o primeiro.",
+       "scene": {
+        "type": "traducao",
+        "codigo": "getByTestId('inventory-item-price').first()",
+        "partes": [
+         [
+          ".first()",
+          "o primeiro"
+         ]
+        ],
+        "passo": 0.8
+       }
+      },
+      {
+       "text": "Roda.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "desafios.spec.js",
+        "codigo": "    test('desafio 4: ordena do menor para o maior preço', async ({ page }) => {\n      await page.getByTestId('product-sort-container').selectOption('lohi');\n      await expect(page.getByTestId('inventory-item-price').first()).toHaveText('$7.99');\n    });",
+        "legenda": "Passou: $7.99 primeiro",
+        "fonte": 24,
+        "digitar": false,
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  pages/",
+         "  tests/",
+         "    api.spec.js",
+         "    compra.spec.js",
+         "    desafios.spec.js",
+         "    login.spec.js",
+         "  .env",
+         "  playwright.config.js"
+        ],
+        "linha0": 34,
+        "terminal": [
+         {
+          "cmd": "npx playwright test -g \"ordena\" --headed --project=chromium",
+          "em": 0.03
+         },
+         {
+          "out": "Running 2 tests using 1 worker",
+          "cor": "mut",
+          "em": 0.08
+         },
+         {
+          "out": "  2 passed (4.7s)",
+          "cor": "ac",
+          "em": 0.87
+         }
+        ],
+        "navegador": {
+         "media": "run52",
+         "url": "https://www.saucedemo.com/inventory.html",
+         "gravar": true,
+         "acoes": [
+          {
+           "select": [
+            "[data-test=\"product-sort-container\"]",
+            "lohi"
+           ],
+           "espera": 1800
+          }
+         ],
+         "espera_inicio": 800,
+         "espera_fim": 1800,
+         "delay_letra": 55,
+         "titulo": "Chromium",
+         "em": 0.12,
+         "ate": 0.84,
+         "pre_acoes": [
+          {
+           "fill": [
+            "#user-name",
+            "standard_user"
+           ]
+          },
+          {
+           "fill": [
+            "#password",
+            "secret_sauce"
+           ]
+          },
+          {
+           "click": "#login-button"
+          }
+         ],
+         "pre_url": "https://www.saucedemo.com/"
+        }
+       }
+      },
+      {
+       "text": "Te vejo no próximo!",
+       "scene": {
+        "type": "endcard",
+        "sub": "PRÓXIMO: DESAFIO 5"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "shorts": [],
+  "tiktoks": []
+ }
+}

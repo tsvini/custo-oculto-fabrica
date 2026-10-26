@@ -1,0 +1,226 @@
+{
+ "title": "Playwright para leigos · Aula 49",
+ "slug": "curso-playwright-49",
+ "idioma": "pt",
+ "destino": "curso",
+ "marca": [
+  "PLAYWRIGHT",
+  "PARA LEIGOS"
+ ],
+ "cor_fundo": "#3fd68a",
+ "sem_legenda": true,
+ "legenda_y": 0.93,
+ "selo": "MÓDULO 11 · AULA 49",
+ "voz": {
+  "nome": "gravada",
+  "motor": "eleven",
+  "eleven_voz": "Vinícius Torales"
+ },
+ "serie": [],
+ "meta": {
+  "titles": [
+   "Aula 49: Desafio 1 - senha errada"
+  ],
+  "description": "",
+  "tags": []
+ },
+ "notes": "Curso Playwright para leigos. Não publica (destino: curso). Roteiro em curso-playwright/roteiros/.",
+ "script": {
+  "long": {
+   "parts": [
+    {
+     "chapter": "",
+     "sentences": [
+      {
+       "text": "Primeiro desafio: o que acontece quando alguém erra a senha?",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "AULA 49",
+          "muted",
+          80
+         ],
+         [
+          "DESAFIO 1",
+          "gold",
+          200
+         ]
+        ]
+       }
+      },
+      {
+       "text": "O teste: usuário certo, senha errada, e conferir a mensagem de erro. Pausa o vídeo e tenta fazer sozinho.",
+       "scene": {
+        "type": "desafio",
+        "numero": "1",
+        "titulo": "Senha errada",
+        "itens": [
+         [
+          "👤",
+          "usuário certo: standard_user"
+         ],
+         [
+          "🔑",
+          "senha errada (qualquer uma)",
+          "#ff6b6b"
+         ],
+         [
+          "✓",
+          "confere a mensagem de erro",
+          "#ffd23f"
+         ]
+        ],
+        "contagem": 5,
+        "legenda": "Pausa o vídeo e tenta"
+       },
+       "pausa": 4
+      },
+      {
+       "text": "Dica: a mensagem fica no data-test error, e contém do not match.",
+       "scene": {
+        "type": "tela",
+        "media": "dica49",
+        "url": "https://www.saucedemo.com/",
+        "gravar": true,
+        "acoes": [
+         {
+          "fill": [
+           "#user-name",
+           "standard_user"
+          ]
+         },
+         {
+          "fill": [
+           "#password",
+           "senha_errada"
+          ]
+         },
+         {
+          "click": "#login-button"
+         }
+        ],
+        "titulo": "saucedemo.com",
+        "legenda": "data-test=\"error\" · contém do not match",
+        "espera_inicio": 1000,
+        "espera_fim": 2200,
+        "delay_letra": 70
+       }
+      },
+      {
+       "text": "Solução: preenche, preenche, clica, e expect error to contain text do not match.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "desafios.spec.js",
+        "codigo": "import { test, expect } from '@playwright/test';\n\ntest.describe('Desafios', () => {\n  test.beforeEach(async ({ page }) => {\n    await page.goto('/');\n  });\n\n  test('desafio 1: senha errada mostra erro', async ({ page }) => {\n    await page.getByTestId('username').fill('standard_user');\n    await page.getByTestId('password').fill('senha_errada');\n    await page.getByTestId('login-button').click();\n    await expect(page.getByTestId('error')).toContainText('do not match');\n  });\n});",
+        "legenda": "fill, fill, click e o expect",
+        "fonte": 24,
+        "digitar": true,
+        "digitar_de": 8,
+        "digitar_ate": 13,
+        "vel": 0.7
+       }
+      },
+      {
+       "text": "Contém o texto: não precisa ser a mensagem inteira.",
+       "scene": {
+        "type": "traducao",
+        "codigo": "toContainText('do not match')",
+        "partes": [
+         [
+          "toContainText",
+          "contém o texto"
+         ],
+         [
+          "('do not match')",
+          "só um pedaço da mensagem"
+         ]
+        ],
+        "passo": 1.2
+       }
+      },
+      {
+       "text": "Roda e olha: o erro aparece e o teste passa.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "desafios.spec.js",
+        "codigo": "  test('desafio 1: senha errada mostra erro', async ({ page }) => {\n    await page.getByTestId('username').fill('standard_user');\n    await page.getByTestId('password').fill('senha_errada');\n    await page.getByTestId('login-button').click();\n    await expect(page.getByTestId('error')).toContainText('do not match');\n  });",
+        "legenda": "O erro aparece e o teste passa",
+        "fonte": 24,
+        "digitar": false,
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  pages/",
+         "  tests/",
+         "    api.spec.js",
+         "    compra.spec.js",
+         "    desafios.spec.js",
+         "    login.spec.js",
+         "  .env",
+         "  playwright.config.js"
+        ],
+        "linha0": 8,
+        "terminal": [
+         {
+          "cmd": "npx playwright test -g \"senha errada\" --headed --project=chromium",
+          "em": 0.03
+         },
+         {
+          "out": "Running 2 tests using 1 worker",
+          "cor": "mut",
+          "em": 0.08
+         },
+         {
+          "out": "  2 passed (4.6s)",
+          "cor": "ac",
+          "em": 0.87
+         }
+        ],
+        "navegador": {
+         "media": "run49",
+         "url": "https://www.saucedemo.com/",
+         "gravar": true,
+         "acoes": [
+          {
+           "fill": [
+            "#user-name",
+            "standard_user"
+           ]
+          },
+          {
+           "fill": [
+            "#password",
+            "senha_errada"
+           ]
+          },
+          {
+           "click": "#login-button"
+          }
+         ],
+         "espera_inicio": 800,
+         "espera_fim": 1800,
+         "delay_letra": 55,
+         "titulo": "Chromium",
+         "em": 0.12,
+         "ate": 0.84
+        }
+       }
+      },
+      {
+       "text": "Te vejo no próximo desafio!",
+       "scene": {
+        "type": "endcard",
+        "sub": "PRÓXIMO: DESAFIO 2"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "shorts": [],
+  "tiktoks": []
+ }
+}

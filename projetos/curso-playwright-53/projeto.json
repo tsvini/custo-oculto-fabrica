@@ -1,0 +1,229 @@
+{
+ "title": "Playwright para leigos · Aula 53",
+ "slug": "curso-playwright-53",
+ "idioma": "pt",
+ "destino": "curso",
+ "marca": [
+  "PLAYWRIGHT",
+  "PARA LEIGOS"
+ ],
+ "cor_fundo": "#3fd68a",
+ "sem_legenda": true,
+ "legenda_y": 0.93,
+ "selo": "MÓDULO 11 · AULA 53",
+ "voz": {
+  "nome": "gravada",
+  "motor": "eleven",
+  "eleven_voz": "Vinícius Torales"
+ },
+ "serie": [],
+ "meta": {
+  "titles": [
+   "Aula 53: Desafio 5 - logout"
+  ],
+  "description": "",
+  "tags": []
+ },
+ "notes": "Curso Playwright para leigos. Não publica (destino: curso). Roteiro em curso-playwright/roteiros/.",
+ "script": {
+  "long": {
+   "parts": [
+    {
+     "chapter": "",
+     "sentences": [
+      {
+       "text": "Desafio cinco: sair do sistema.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "AULA 53",
+          "muted",
+          80
+         ],
+         [
+          "DESAFIO 5",
+          "gold",
+          200
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Pausa e tenta.",
+       "scene": {
+        "type": "desafio",
+        "numero": "5",
+        "titulo": "Logout",
+        "itens": [
+         [
+          "☰",
+          "abre o menu"
+         ],
+         [
+          "⎋",
+          "clica em Logout",
+          "#69a7ff"
+         ],
+         [
+          "✓",
+          "o botão de Login voltou",
+          "#ffd23f"
+         ]
+        ],
+        "contagem": 5,
+        "legenda": "Pausa o vídeo e tenta"
+       },
+       "pausa": 4
+      },
+      {
+       "text": "Dica: o menu é aquele botão de três risquinhos, com nome Open Menu. Lá dentro tem o Logout.",
+       "scene": {
+        "type": "tela",
+        "media": "dica53",
+        "url": "https://www.saucedemo.com/inventory.html",
+        "gravar": true,
+        "acoes": [
+         {
+          "click": "#react-burger-menu-btn",
+          "espera": 2500
+         }
+        ],
+        "titulo": "saucedemo.com",
+        "legenda": "☰ Open Menu › Logout",
+        "espera_inicio": 1000,
+        "espera_fim": 1500,
+        "delay_letra": 70,
+        "pre_acoes": [
+         {
+          "fill": [
+           "#user-name",
+           "standard_user"
+          ]
+         },
+         {
+          "fill": [
+           "#password",
+           "secret_sauce"
+          ]
+         },
+         {
+          "click": "#login-button"
+         }
+        ],
+        "pre_url": "https://www.saucedemo.com/"
+       }
+      },
+      {
+       "text": "Solução: clica no menu, clica no logout, e confere que o botão de Login voltou.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "desafios.spec.js",
+        "codigo": "import { test, expect } from '@playwright/test';\n\ntest.describe('Desafios', () => {\n  test.beforeEach(async ({ page }) => {\n    await page.goto('/');\n  });\n\n  test('desafio 1: senha errada mostra erro', async ({ page }) => {\n    await page.getByTestId('username').fill('standard_user');\n    await page.getByTestId('password').fill('senha_errada');\n    await page.getByTestId('login-button').click();\n    await expect(page.getByTestId('error')).toContainText('do not match');\n  });\n\n  test('desafio 2: campos vazios', async ({ page }) => {\n    await page.getByTestId('login-button').click();\n    await expect(page.getByTestId('error')).toContainText('Username is required');\n  });\n\n  test.describe('logado', () => {\n    test.use({ storageState: 'playwright/.auth/usuario.json' });\n\n    test.beforeEach(async ({ page }) => {\n      await page.goto('/inventory.html');\n    });\n\n    test('desafio 3: remove do carrinho', async ({ page }) => {\n      await page.getByTestId('add-to-cart-sauce-labs-backpack').click();\n      await expect(page.getByTestId('shopping-cart-badge')).toHaveText('1');\n      await page.getByTestId('remove-sauce-labs-backpack').click();\n      await expect(page.getByTestId('shopping-cart-badge')).toHaveCount(0);\n    });\n\n    test('desafio 4: ordena do menor para o maior preço', async ({ page }) => {\n      await page.getByTestId('product-sort-container').selectOption('lohi');\n      await expect(page.getByTestId('inventory-item-price').first()).toHaveText('$7.99');\n    });\n\n    test('desafio 5: logout', async ({ page }) => {\n      await page.getByRole('button', { name: 'Open Menu' }).click();\n      await page.getByTestId('logout-sidebar-link').click();\n      await expect(page.getByTestId('login-button')).toBeVisible();\n    });\n  });\n});",
+        "legenda": "menu, logout e o botão de Login de volta",
+        "fonte": 24,
+        "digitar": true,
+        "digitar_de": 39,
+        "digitar_ate": 43,
+        "vel": 0.7,
+        "rolar": true,
+        "rolar_de": 0.2,
+        "rolar_dur": 0.6
+       }
+      },
+      {
+       "text": "Roda.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "desafios.spec.js",
+        "codigo": "    test('desafio 5: logout', async ({ page }) => {\n      await page.getByRole('button', { name: 'Open Menu' }).click();\n      await page.getByTestId('logout-sidebar-link').click();\n      await expect(page.getByTestId('login-button')).toBeVisible();\n    });",
+        "legenda": "Passou: saiu e o Login voltou",
+        "fonte": 24,
+        "digitar": false,
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  pages/",
+         "  tests/",
+         "    api.spec.js",
+         "    compra.spec.js",
+         "    desafios.spec.js",
+         "    login.spec.js",
+         "  .env",
+         "  playwright.config.js"
+        ],
+        "linha0": 39,
+        "terminal": [
+         {
+          "cmd": "npx playwright test -g \"logout\" --headed --project=chromium",
+          "em": 0.03
+         },
+         {
+          "out": "Running 2 tests using 1 worker",
+          "cor": "mut",
+          "em": 0.08
+         },
+         {
+          "out": "  2 passed (5.6s)",
+          "cor": "ac",
+          "em": 0.87
+         }
+        ],
+        "navegador": {
+         "media": "run53",
+         "url": "https://www.saucedemo.com/inventory.html",
+         "gravar": true,
+         "acoes": [
+          {
+           "click": "#react-burger-menu-btn",
+           "espera": 1300
+          },
+          {
+           "click": "[data-test=\"logout-sidebar-link\"]",
+           "espera": 1200
+          }
+         ],
+         "espera_inicio": 800,
+         "espera_fim": 1800,
+         "delay_letra": 55,
+         "titulo": "Chromium",
+         "em": 0.12,
+         "ate": 0.84,
+         "pre_acoes": [
+          {
+           "fill": [
+            "#user-name",
+            "standard_user"
+           ]
+          },
+          {
+           "fill": [
+            "#password",
+            "secret_sauce"
+           ]
+          },
+          {
+           "click": "#login-button"
+          }
+         ],
+         "pre_url": "https://www.saucedemo.com/"
+        }
+       }
+      },
+      {
+       "text": "Te vejo no desafio final!",
+       "scene": {
+        "type": "endcard",
+        "sub": "PRÓXIMO: DESAFIO FINAL"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "shorts": [],
+  "tiktoks": []
+ }
+}
