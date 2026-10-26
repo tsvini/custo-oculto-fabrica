@@ -34,8 +34,10 @@ jobs:
         with:
           node-version: 22
       - run: npm ci
-      - run: npx playwright install --with-deps
-        timeout-minutes: 10
+      - name: Navegadores (se o apt do Ubuntu travar, instala sem as dependências de sistema — a imagem do runner já tem quase todas)
+        timeout-minutes: 12
+        run: |
+          timeout 180 npx playwright install --with-deps || { echo "::warning title=Instalação::apt travou; navegadores sem --with-deps"; sudo pkill -9 -f apt-get || true; npx playwright install; }
       - name: Rodar testes
         run: |
           if [ -n "${{ inputs.projetos }}" ]; then ARGS=$(for p in ${{ inputs.projetos }}; do printf -- "--project=%s " "$p"; done); fi
