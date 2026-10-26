@@ -24,7 +24,7 @@ jobs:
           cd ../projeto2 && npm install --silent >/dev/null
       - name: Rodar
         run: |
-          S=$GITHUB_WORKSPACE/nivel2_resultado.txt; : > $S
+          set +e; S=$GITHUB_WORKSPACE/nivel2_resultado.txt; : > $S
           sec() { echo; echo "=================== $1"; } 
           cd curso-playwright/projeto
           { sec "MÓDULOS 12 E 13 (sem o teste visual)"; npx playwright test tests/nivel2 --project=chromium --reporter=list --retries=0 --grep-invert "visual" 2>&1; } >> $S

@@ -50,7 +50,7 @@ test('aula 67: teste visual', async ({ page }) => {
 });
 
 test('aula 68: soft assertions', async ({ page }) => {
-  test.fail(); // duas conferências erradas de propósito: o teste falha, mas mostra as duas
+  // duas conferências erradas de propósito: o relatório mostra as duas no fim
   await page.goto(`${lojinha}/`);
   await expect.soft(page.getByTestId('entrar')).toHaveText('Login');
   await expect.soft(page.getByTestId('usuario')).toHaveAttribute('placeholder', 'Seu usuário');
