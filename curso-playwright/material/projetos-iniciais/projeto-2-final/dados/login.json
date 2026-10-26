@@ -1,0 +1,6 @@
+[
+  { "cenario": "senha errada", "usuario": "cliente", "senha": "errada", "mensagem": "Usuário ou senha incorretos." },
+  { "cenario": "usuário bloqueado", "usuario": "bloqueado", "senha": "leigo123", "mensagem": "Este usuário está bloqueado. Fale com o suporte." },
+  { "cenario": "usuário vazio", "usuario": "", "senha": "leigo123", "mensagem": "Informe o usuário." },
+  { "cenario": "senha vazia", "usuario": "cliente", "senha": "", "mensagem": "Informe a senha." }
+]

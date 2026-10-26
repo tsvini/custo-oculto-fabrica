@@ -398,6 +398,146 @@ Por quê: o `status()` é uma função, então leva os parênteses.
 
 ---
 
+## Quiz do Módulo 12: Um site que você nunca viu
+
+**1. Você marcou uma caixa com `.check()`. Qual é a conferência certa?**
+- ✅ `await expect(caixa).toBeChecked();`
+- `await expect(caixa).toBeVisible();`
+- Não precisa conferir: se o check rodou, marcou
+- `await expect(caixa).toHaveText('marcado');`
+
+Por quê: fazer a ação não basta, o teste precisa conferir o resultado. `toBeChecked()` diz que a caixa está marcada.
+
+**2. Um botão abre um alerta do navegador. Onde vai o `page.on('dialog', ...)`?**
+- ✅ Antes do clique que abre o alerta
+- Depois do clique
+- No fim do teste
+- Em qualquer lugar, tanto faz
+
+Por quê: o Playwright precisa estar preparado antes de o alerta aparecer. Sem o preparo, ele cancela o alerta sozinho.
+
+**3. Um link abre outra aba. Qual a ordem certa?**
+- ✅ `const promessa = page.waitForEvent('popup')`, depois o clique, depois `await promessa`
+- O clique, depois `page.waitForEvent('popup')`
+- O clique e depois continuar usando o `page`
+- Abrir a aba nova com `page.goto`
+
+Por quê: a aba abre muito rápido. Se você começar a esperar só depois do clique, pode perder ela.
+
+**4. O seletor normal não acha um campo que está dentro de um editor encaixado na página. Por quê?**
+- ✅ Porque aquele pedaço é um iframe: outra página dentro da página. Primeiro o `frameLocator`
+- Porque o campo está escondido
+- Porque precisa de um `waitForTimeout`
+- Porque o Playwright não funciona nesse site
+
+Por quê: o iframe é outra página encaixada. O `frameLocator` diz em qual quadro procurar.
+
+**5. Por que procurar a linha da tabela com `filter({ hasText: 'Conway' })` em vez de "a segunda linha"?**
+- ✅ Porque se alguém ordenar a tabela, a pessoa muda de lugar, e o teste continua achando a pessoa certa
+- Porque é mais curto de escrever
+- Porque o Playwright não sabe contar linhas
+- Porque a segunda linha nunca existe
+
+Por quê: procurar pelo conteúdo deixa o teste estável quando a ordem muda.
+
+---
+
+## Quiz do Módulo 13: Playwright de verdade no trabalho
+
+**1. O que é uma fixture?**
+- ✅ Alguma coisa que o teste recebe pronta, como o `page` ou o seu `loginPage`
+- Um teste que nunca falha
+- Um arquivo de dados em JSON
+- Um tipo de erro do Playwright
+
+Por quê: o `page` é uma fixture que o Playwright prepara. Com `test.extend`, você cria as suas.
+
+**2. Você quer saber como a loja reage se o servidor cair. O que usar?**
+- ✅ Um mock: `page.route` com `route.abort()`
+- Desligar o servidor da empresa
+- Um teste visual
+- Um `waitForTimeout` bem grande
+
+Por quê: o mock coloca o Playwright no meio da conversa e testa a tela sem estragar nada de verdade.
+
+**3. O teste visual falhou porque alguém mudou o botão de propósito. O que fazer?**
+- ✅ Atualizar a foto de referência com `--update-snapshots`
+- Apagar o teste visual
+- Abrir um card de bug
+- Rodar de novo até passar
+
+Por quê: se a mudança foi de propósito, a foto guardada precisa ser atualizada. Se não foi, aí sim é bug visual.
+
+**4. Quando usar `expect.soft`?**
+- ✅ Pra conferir vários dados independentes da mesma tela e ver todos os erros de uma vez
+- Em todos os passos do fluxo
+- Pra deixar o teste mais rápido
+- Pra esconder os erros
+
+Por quê: nos passos principais do fluxo, o expect normal continua certo. Se o login falhou, não faz sentido seguir.
+
+**5. Um teste às vezes passa e às vezes falha, sem mudança no código. Qual é a melhor correção?**
+- ✅ Trocar o tempo fixo por um expect que espera o que importa
+- Aumentar o `waitForTimeout`
+- Ligar o retry e esquecer
+- Apagar o teste
+
+Por quê: o retry diminui o estrago, mas não corrige a causa. Quase sempre o flaky é uma espera errada.
+
+**6. Pra rodar só os testes críticos antes de uma entrega:**
+- ✅ `npx playwright test --grep @smoke`
+- `npx playwright test --repeat-each=10`
+- `npx playwright test --update-snapshots`
+- `npx playwright test --ui`
+
+Por quê: a tag `@smoke` marca o mínimo pra saber se o sistema está de pé, e o `--grep` roda só os marcados.
+
+---
+
+## Quiz do Módulo 14: Projeto 2, pensando como QA
+
+**1. Você recebeu um card sem critérios de aceite. Qual é o primeiro passo?**
+- ✅ Entender o problema: o que precisa funcionar, o que pode dar errado e o que está faltando
+- Abrir o VS Code e começar a escrever os testes
+- Devolver o card sem fazer nada
+- Testar só o que está escrito
+
+Por quê: antes do código, a gente entende o problema. As perguntas são o que separa quem escreve teste de quem testa.
+
+**2. O card não diz se o produto esgotado aparece. O que fazer?**
+- ✅ Perguntar pra quem pediu e anotar a resposta no card
+- Decidir sozinho
+- Ignorar o produto esgotado
+- Testar os dois jeitos e ver qual passa
+
+Por quê: você não inventa regra de negócio. Pergunta, anota, e aí testa.
+
+**3. Por que a ordenação da versão 1 colocava R$ 12,50 antes de R$ 7,99?**
+- ✅ Porque a loja comparava o preço como texto, e em texto o "1" vem antes do "7"
+- Porque o produto de R$ 12,50 estava em promoção
+- Porque o teste estava errado
+- Porque a internet estava lenta
+
+Por quê: comparando como texto, a ordem é a do dicionário. Como número, 7,99 é o menor.
+
+**4. Como o teste confere que os preços estão em ordem?**
+- ✅ Lê todos os preços da tela, faz uma cópia, ordena a cópia do jeito certo e compara as duas com `toEqual`
+- Confere só o primeiro preço
+- Confere se a lista tem 8 produtos
+- Tira um print da tela
+
+Por quê: conferir só o primeiro pode deixar passar o bug. A lista inteira pega.
+
+**5. Pagamento não fazia parte da tarefa. O que isso mostra?**
+- ✅ Que limitar o escopo também é trabalho de QA
+- Que pagamento não precisa ser testado nunca
+- Que o card estava errado
+- Que o projeto ficou incompleto
+
+Por quê: sem limitar o escopo, você testa a loja inteira e não entrega a tarefa.
+
+---
+
 ## Quiz do Módulo 15: Carreira
 
 **1. O que colocar no currículo sobre o projeto?**

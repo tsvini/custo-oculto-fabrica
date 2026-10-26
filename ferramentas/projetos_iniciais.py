@@ -34,6 +34,12 @@ ENV_EX = ler(PROJ, ".env.example")
 FINAL = {f"tests/{a}": ler(PROJ, "tests", a) for a in ("auth.setup.js", "compra.spec.js", "login.spec.js", "usuarios.spec.js")}
 FINAL.update({f"pages/{a}": ler(PROJ, "pages", a) for a in sorted(os.listdir(os.path.join(PROJ, "pages")))})
 
+import re as _re
+NIVEL2_INTERNET = _re.sub(r"aula \d+: ", "", ler(PROJ, "tests", "nivel2", "internet.spec.js"))
+P2 = os.path.join(CP, "projeto2")
+PROJ2 = {os.path.relpath(os.path.join(r, f), P2).replace(os.sep, "/"): ler(r, f) for r, _, fs in os.walk(P2) if "node_modules" not in r for f in fs if f != "package-lock.json"}
+PROJ2[".github/workflows/playwright.yml"] = YML_ENV.replace("SAUCE_USER", "LOJA_USUARIO").replace("SAUCE_PASSWORD", "LOJA_SENHA")
+
 LEIA = """Projeto inicial · {titulo}
 
 Este é o projeto exatamente como ele fica no começo deste módulo. Use se você se perdeu ou quer começar daqui.
@@ -62,6 +68,13 @@ ETAPAS = [
                                                           "tests/api.spec.js": ler(PROJ, "tests", "api.spec.js")}, **FINAL)),
     ("projeto-final", "Projeto final (com os desafios resolvidos)", dict(BASE_ENV, **{"playwright.config.js": ler(PROJ, "playwright.config.js"), ".github/workflows/playwright.yml": YML_ENV,
                                                           "tests/api.spec.js": ler(PROJ, "tests", "api.spec.js"), "tests/desafios.spec.js": ler(PROJ, "tests", "desafios.spec.js")}, **FINAL)),
+
+    ("modulo-12", "Módulo 12 · Nível 2: um site que você nunca viu", dict(BASE_ENV, **{"playwright.config.js": ler(PROJ, "playwright.config.js"), ".github/workflows/playwright.yml": YML_ENV,
+                                                          "tests/api.spec.js": ler(PROJ, "tests", "api.spec.js"), "tests/desafios.spec.js": ler(PROJ, "tests", "desafios.spec.js")}, **FINAL)),
+    ("modulo-13", "Módulo 13 · Playwright de verdade no trabalho", dict(BASE_ENV, **{"playwright.config.js": ler(PROJ, "playwright.config.js"), ".github/workflows/playwright.yml": YML_ENV,
+                                                          "tests/api.spec.js": ler(PROJ, "tests", "api.spec.js"), "tests/desafios.spec.js": ler(PROJ, "tests", "desafios.spec.js"),
+                                                          "tests/nivel2/internet.spec.js": NIVEL2_INTERNET, "arquivos/exemplo.txt": ler(PROJ, "arquivos", "exemplo.txt")}, **FINAL)),
+    ("projeto-2-final", "Projeto 2 · Lojinha do Leigo (o projeto do módulo 14, pronto)", PROJ2),
 ]
 
 
@@ -70,13 +83,15 @@ def main():
     for nome, titulo, arqs in ETAPAS:
         d = os.path.join(SAIDA, nome)
         arqs = dict(arqs); arqs["LEIA-ME.txt"] = LEIA.format(titulo=titulo, env=ENV_PASSO if ".env.example" in arqs else "")
+        if nome == "projeto-2-final":
+            arqs["LEIA-ME.txt"] = arqs["LEIA-ME.txt"].replace("o projeto exatamente como ele fica no começo deste módulo", "o projeto 2 pronto, do jeito que ele fica no fim do módulo 14").replace("ex.: meu-primeiro-playwright", "ex.: projeto-lojinha")
         for rel, conteudo in arqs.items():
             p = os.path.join(d, rel); os.makedirs(os.path.dirname(p), exist_ok=True)
             open(p, "w", encoding="utf8", newline="\n").write(conteudo if conteudo.endswith("\n") else conteudo + "\n")
         z = os.path.join(SAIDA, f"playwright-para-leigos-{nome}.zip")
         with zipfile.ZipFile(z, "w", zipfile.ZIP_DEFLATED) as zf:
             for rel in sorted(arqs):
-                zf.write(os.path.join(d, rel), os.path.join("meu-primeiro-playwright", rel))
+                zf.write(os.path.join(d, rel), os.path.join("projeto-lojinha" if nome == "projeto-2-final" else "meu-primeiro-playwright", rel))
         print(nome, len(arqs), "arquivos")
 
 

@@ -1,0 +1,10 @@
+Projeto inicial · Projeto 2 · Lojinha do Leigo (o projeto do módulo 14, pronto)
+
+Este é o projeto 2 pronto, do jeito que ele fica no fim do módulo 14. Use se você se perdeu ou quer começar daqui.
+
+1. Descompacte numa pasta (sem espaço e sem acento no nome, ex.: projeto-lojinha).
+2. Abra a pasta no VS Code (File › Open Folder).
+3. No terminal do VS Code:  npm install
+4. E depois:                npx playwright install
+   Copie o arquivo .env.example para .env (é ali que ficam o usuário e a senha).
+5. Pra conferir que está tudo certo:  npx playwright test --project=chromium
