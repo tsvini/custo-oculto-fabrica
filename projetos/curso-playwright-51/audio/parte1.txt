@@ -1,0 +1,1 @@
+Desafio três: adicionar a mochila e depois remover. Pausa e tenta. [silence] [silence] Dica: depois de adicionar, o botão vira Remove, com data-test remove-sauce-labs-backpack. E quando o carrinho fica vazio, o numerozinho some da página. Solução: pra conferir que ele saiu da página, to have count zero: eu espero que o seletor encontre zero elementos. Roda. Te vejo no próximo!
