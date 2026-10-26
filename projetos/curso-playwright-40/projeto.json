@@ -352,7 +352,8 @@
          "em": 0.1,
          "ate": 0.84
         }
-       }
+       },
+       "pausa": 2
       },
       {
        "text": "Na próxima aula: um relatório que se lê como roteiro.",

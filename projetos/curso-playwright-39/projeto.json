@@ -291,7 +291,7 @@
           "em": 0.03
          },
          {
-          "out": "Running 1 test using 1 worker",
+          "out": "Running 2 tests using 2 workers",
           "cor": "mut",
           "em": 0.08
          },
@@ -329,7 +329,8 @@
          "em": 0.1,
          "ate": 0.84
         }
-       }
+       },
+       "pausa": 2
       },
       {
        "text": "Na próxima aula: a mesma receita pras outras páginas.",

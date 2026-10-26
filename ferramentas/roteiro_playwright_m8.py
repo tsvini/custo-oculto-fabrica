@@ -49,7 +49,7 @@ def rodando(c, de, ate, legenda, acoes, media, saida=("  1 passed (3.4s)", "ac")
     nav = {"media": media, "url": SAUCE, "gravar": True, "acoes": acoes, "espera_inicio": 800, "espera_fim": 1400, "delay_letra": 60, "titulo": "Chromium", "em": 0.1, "ate": 0.84}
     nav.update(extra or {})
     return edc(trecho(c, de, ate), legenda, arquivo=arquivo, pastas=pastas, linha0=de,
-               terminal=[{"cmd": cmd, "em": 0.03}, {"out": "Running 1 test using 1 worker", "cor": "mut", "em": 0.08}, {"out": saida[0], "cor": saida[1], "em": 0.86}], navegador=nav, **kw)
+               terminal=[{"cmd": cmd, "em": 0.03}, {"out": ("Running 1 test using 1 worker" if saida[0].strip().startswith("1 ") else f"Running {saida[0].split()[0]} tests using {saida[0].split()[0]} workers"), "cor": "mut", "em": 0.08}, {"out": saida[0], "cor": saida[1], "em": 0.86}], navegador=nav, **kw)
 
 
 AULAS = []
@@ -243,6 +243,9 @@ AULAS.append(projeto(42, "MÓDULO 8 · AULA 42", "Indo além - login uma vez só
 def main():
     out = ["# Roteiros aprovados · Módulo 8 (gerado do roteiro_playwright_m8.py)", ""]
     for slug, p in AULAS:
+        for x in p["script"]["long"]["parts"][0]["sentences"]:  # frase curta com o navegador rodando: 2 s de silêncio pra dar tempo de ver o teste e o "passed"
+            if x["scene"].get("navegador") and len(x["text"]) < 50:
+                x["pausa"] = 2
         d = os.path.join(RAIZ, "projetos", slug); os.makedirs(d, exist_ok=True)
         json.dump(p, open(os.path.join(d, "projeto.json"), "w", encoding="utf8"), ensure_ascii=False, indent=1)
         out.append("## " + p["meta"]["titles"][0])
