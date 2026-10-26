@@ -14,7 +14,7 @@ gravar cg19_assert
 mover 672 103; sleep 0.6; xdotool click 1; sleep 0.8
 mover 62 172; sleep 0.8; xdotool click 1; sleep 1.2
 foto cg19_assert_dialogo
-xdotool key Return; sleep 1.5
+mover 380 214; sleep 0.6; xdotool click 1; sleep 1.8
 parar
 foto cg19_fim
 # ---- aula 20 ----
@@ -25,7 +25,7 @@ gravar cg20_passa
 mover 62 172; sleep 1.6; mover 496 442; sleep 1.6; mover 34 116; sleep 1.6; mover 1050 172; sleep 1.6
 parar
 foto cg20_passa
-xdotool key Escape; sleep 0.5
+mover 608 103; sleep 0.4; xdotool click 1; sleep 0.8   # desliga o Pick locator (tira o destaque antigo)
 gravar cg20_um
 mover 1209 916; sleep 0.5; xdotool click 1; sleep 0.8
 mover 1500 960; sleep 0.3; xdotool click 1; sleep 0.4
