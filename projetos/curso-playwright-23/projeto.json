@@ -1,0 +1,242 @@
+{
+ "title": "Playwright para leigos · Aula 23",
+ "slug": "curso-playwright-23",
+ "idioma": "pt",
+ "destino": "curso",
+ "marca": [
+  "PLAYWRIGHT",
+  "PARA LEIGOS"
+ ],
+ "cor_fundo": "#3fd68a",
+ "sem_legenda": true,
+ "legenda_y": 0.93,
+ "selo": "MÓDULO 5 · AULA 23",
+ "voz": {
+  "nome": "gravada",
+  "motor": "eleven",
+  "eleven_voz": "Vinícius Torales"
+ },
+ "serie": [],
+ "meta": {
+  "titles": [
+   "Aula 23: playwright.config - baseURL e data-test"
+  ],
+  "description": "",
+  "tags": []
+ },
+ "notes": "Curso Playwright para leigos. Não publica (destino: curso). Roteiro em curso-playwright/roteiros/.",
+ "script": {
+  "long": {
+   "parts": [
+    {
+     "chapter": "",
+     "sentences": [
+      {
+       "text": "Hoje a gente mexe no arquivo de configuração. Parece assustador, mas são só duas linhas.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "AULA 23",
+          "muted",
+          80
+         ],
+         [
+          "CONFIG",
+          "gold",
+          200
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Abre o playwright ponto config ponto js e procura o use. Use quer dizer: use isso em todos os testes.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "playwright.config.js",
+        "codigo": "export default defineConfig({\n  testDir: './tests',\n  /* Run tests in files in parallel */\n  fullyParallel: true,\n  /* Fail the build on CI if you accidentally left test.only in the source code. */\n  forbidOnly: !!process.env.CI,\n  /* Retry on CI only */\n  retries: process.env.CI ? 2 : 0,\n  /* Opt out of parallel tests on CI. */\n  workers: process.env.CI ? 1 : undefined,\n  /* Reporter to use. See https://playwright.dev/docs/test-reporters */\n  reporter: 'html',\n  /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */\n  use: {\n    /* Base URL to use in actions like `await page.goto('')`. */\n    // baseURL: 'http://localhost:3000',\n\n    /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */\n    trace: 'on-first-retry',\n  },",
+        "legenda": "use = use isso em todos os testes",
+        "fonte": 24,
+        "digitar": false,
+        "linha0": 15,
+        "destaque": [
+         14
+        ],
+        "destaque_em": 1.0
+       }
+      },
+      {
+       "text": "Tira o comentário da baseURL e coloca o endereço do saucedemo. Base URL: o endereço base.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "playwright.config.js",
+        "codigo": "export default defineConfig({\n  testDir: './tests',\n  /* Run tests in files in parallel */\n  fullyParallel: true,\n  /* Fail the build on CI if you accidentally left test.only in the source code. */\n  forbidOnly: !!process.env.CI,\n  /* Retry on CI only */\n  retries: process.env.CI ? 2 : 0,\n  /* Opt out of parallel tests on CI. */\n  workers: process.env.CI ? 1 : undefined,\n  /* Reporter to use. See https://playwright.dev/docs/test-reporters */\n  reporter: 'html',\n  /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */\n  use: {\n    /* Base URL to use in actions like `await page.goto('')`. */\n    baseURL: 'https://www.saucedemo.com',\n\n    /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */\n    trace: 'on-first-retry',\n  },",
+        "legenda": "baseURL = o endereço base",
+        "fonte": 24,
+        "digitar": true,
+        "linha0": 15,
+        "digitar_de": 16,
+        "digitar_ate": 16
+       }
+      },
+      {
+       "text": "Agora, no teste, o goto fica só com uma barra. O Playwright junta essa barra com o endereço base.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "login.spec.js",
+        "codigo": "import { test, expect } from '@playwright/test';\n\ntest.describe('Login', () => {\n  test.beforeEach(async ({ page }) => {\n    await page.goto('/');\n  });\n\n  test('entra com usuário e senha', async ({ page }) => {\n    await page.getByPlaceholder('Username').fill('standard_user');\n    await page.getByPlaceholder('Password').fill('secret_sauce');\n    await page.getByRole('button', { name: 'Login' }).click();\n    await expect(page).toHaveURL(/inventory/);\n    await expect(page.getByText('Products')).toBeVisible();\n    await expect(page.getByText('Sauce Labs Backpack')).toContainText('Backpack');\n    await expect(page.getByRole('button', { name: 'Add to cart' })).toHaveCount(6);\n  });\n\n  test('mostra erro para usuário bloqueado', async ({ page }) => {\n    await page.getByPlaceholder('Username').fill('locked_out_user');\n    await page.getByPlaceholder('Password').fill('secret_sauce');\n    await page.getByRole('button', { name: 'Login' }).click();\n    await expect(page.getByText('locked out')).toBeVisible();\n  });\n});",
+        "legenda": "baseURL + /  =  saucedemo.com/",
+        "fonte": 22,
+        "digitar": true,
+        "digitar_de": 5,
+        "digitar_ate": 5
+       }
+      },
+      {
+       "text": "A vantagem: se um dia o site mudar de endereço, você troca num lugar só.",
+       "scene": {
+        "type": "cards",
+        "itens": [
+         [
+          "⌂",
+          "baseURL",
+          "o endereço num lugar só"
+         ],
+         [
+          "/",
+          "page.goto('/')",
+          "nos testes, só o caminho",
+          "#69a7ff"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Segunda linha: test id attribute igual data-test. Lembra do data-test que a gente viu no Inspecionar?",
+       "scene": {
+        "type": "editor",
+        "arquivo": "playwright.config.js",
+        "codigo": "export default defineConfig({\n  testDir: './tests',\n  /* Run tests in files in parallel */\n  fullyParallel: true,\n  /* Fail the build on CI if you accidentally left test.only in the source code. */\n  forbidOnly: !!process.env.CI,\n  /* Retry on CI only */\n  retries: process.env.CI ? 2 : 0,\n  /* Opt out of parallel tests on CI. */\n  workers: process.env.CI ? 1 : undefined,\n  /* Reporter to use. See https://playwright.dev/docs/test-reporters */\n  reporter: 'html',\n  /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */\n  use: {\n    /* Base URL to use in actions like `await page.goto('')`. */\n    baseURL: 'https://www.saucedemo.com',\n    testIdAttribute: 'data-test',\n\n    /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */\n    trace: 'on-first-retry',\n  },",
+        "legenda": "testIdAttribute: 'data-test'",
+        "fonte": 24,
+        "digitar": true,
+        "linha0": 15,
+        "digitar_de": 17,
+        "digitar_ate": 17
+       }
+      },
+      {
+       "text": "Por padrão, o get by test id procura data-testid. O saucedemo usa data-test. Essa linha avisa o Playwright.",
+       "scene": {
+        "type": "compare",
+        "items": [
+         [
+          "data-testid",
+          "O PADRÃO DO PLAYWRIGHT",
+          "white"
+         ],
+         [
+          "data-test",
+          "O QUE O SAUCEDEMO USA",
+          "gold"
+         ]
+        ],
+        "size": 90,
+        "stagger": 1.2,
+        "vs": true
+       }
+      },
+      {
+       "text": "Agora o get by test id também funciona no saucedemo. Vamos trocar os seletores do login só pra você ver esse outro caminho. Os que a gente usou antes continuam certos.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "login.spec.js",
+        "codigo": "import { test, expect } from '@playwright/test';\n\ntest.describe('Login', () => {\n  test.beforeEach(async ({ page }) => {\n    await page.goto('/');\n  });\n\n  test('entra com usuário e senha', async ({ page }) => {\n    await page.getByTestId('username').fill('standard_user');\n    await page.getByTestId('password').fill('secret_sauce');\n    await page.getByTestId('login-button').click();\n    await expect(page).toHaveURL(/inventory/);\n    await expect(page.getByText('Products')).toBeVisible();\n    await expect(page.getByText('Sauce Labs Backpack')).toContainText('Backpack');\n    await expect(page.getByRole('button', { name: 'Add to cart' })).toHaveCount(6);\n  });\n\n  test('mostra erro para usuário bloqueado', async ({ page }) => {\n    await page.getByTestId('username').fill('locked_out_user');\n    await page.getByTestId('password').fill('secret_sauce');\n    await page.getByTestId('login-button').click();\n    await expect(page.getByText('locked out')).toBeVisible();\n  });\n});",
+        "legenda": "Outro caminho: getByTestId",
+        "fonte": 22,
+        "digitar": true,
+        "digitar_de": 9,
+        "digitar_ate": 11
+       }
+      },
+      {
+       "text": "Traduzindo: ache pela etiqueta de teste chamada username.",
+       "scene": {
+        "type": "traducao",
+        "codigo": "page.getByTestId('username')",
+        "partes": [
+         [
+          "getByTestId",
+          "ache pela etiqueta de teste"
+         ],
+         [
+          "'username'",
+          "chamada username"
+         ]
+        ],
+        "passo": 2.0
+       }
+      },
+      {
+       "text": "Roda pra confirmar que tudo continua passando.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "login.spec.js",
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  tests/",
+         "    login.spec.js",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "codigo": "import { test, expect } from '@playwright/test';\n\ntest.describe('Login', () => {\n  test.beforeEach(async ({ page }) => {\n    await page.goto('/');\n  });\n\n  test('entra com usuário e senha', async ({ page }) => {\n    await page.getByTestId('username').fill('standard_user');\n    await page.getByTestId('password').fill('secret_sauce');",
+        "legenda": "Tudo continua passando",
+        "fonte": 26,
+        "digitar": false,
+        "terminal": [
+         {
+          "cmd": "npx playwright test --project=chromium",
+          "em": 0.05
+         },
+         {
+          "out": "Running 2 tests using 2 workers",
+          "cor": "mut",
+          "em": 0.3
+         },
+         {
+          "out": "  2 passed (2.0s)",
+          "cor": "ac",
+          "em": 0.55
+         }
+        ]
+       }
+      },
+      {
+       "text": "Na próxima aula: tirando o usuário e a senha do código.",
+       "scene": {
+        "type": "passo",
+        "icone": "▶",
+        "titulo": "Próxima aula",
+        "sub": "variáveis de ambiente"
+       }
+      },
+      {
+       "text": "Te vejo lá!",
+       "scene": {
+        "type": "endcard",
+        "sub": "PRÓXIMA: VARIÁVEIS DE AMBIENTE"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "shorts": [],
+  "tiktoks": []
+ }
+}

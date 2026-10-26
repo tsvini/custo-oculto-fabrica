@@ -1,0 +1,346 @@
+{
+ "title": "Playwright para leigos · Aula 24",
+ "slug": "curso-playwright-24",
+ "idioma": "pt",
+ "destino": "curso",
+ "marca": [
+  "PLAYWRIGHT",
+  "PARA LEIGOS"
+ ],
+ "cor_fundo": "#3fd68a",
+ "sem_legenda": true,
+ "legenda_y": 0.93,
+ "selo": "MÓDULO 5 · AULA 24",
+ "voz": {
+  "nome": "gravada",
+  "motor": "eleven",
+  "eleven_voz": "Vinícius Torales"
+ },
+ "serie": [],
+ "meta": {
+  "titles": [
+   "Aula 24: Variáveis de ambiente - tirando usuário e senha do código"
+  ],
+  "description": "",
+  "tags": []
+ },
+ "notes": "Curso Playwright para leigos. Não publica (destino: curso). Roteiro em curso-playwright/roteiros/.",
+ "script": {
+  "long": {
+   "parts": [
+    {
+     "chapter": "",
+     "sentences": [
+      {
+       "text": "Aqui no saucedemo o usuário e a senha são públicos. Mas em projeto de verdade, senha e chave escrita no código é um problema: quando o projeto for pro GitHub, todo mundo vê.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "AULA 24",
+          "muted",
+          80
+         ],
+         [
+          ".ENV",
+          "gold",
+          200
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Então a gente vai aprender o jeito usado em projetos reais: um arquivo chamado ponto env, que guarda essas informações fora do código.",
+       "scene": {
+        "type": "cards",
+        "titulo": "O ARQUIVO .ENV",
+        "itens": [
+         [
+          "🔒",
+          ".env",
+          "usuário e senha fora do código"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Primeiro, instala o pacote que lê esse arquivo. No terminal: npm install traço D dotenv. O traço D marca como ferramenta de desenvolvimento do projeto.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "login.spec.js",
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  tests/",
+         "    login.spec.js",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "codigo": "import { test, expect } from '@playwright/test';\n\ntest.describe('Login', () => {\n  test.beforeEach(async ({ page }) => {\n    await page.goto('/');\n  });\n\n  test('entra com usuário e senha', async ({ page }) => {\n    await page.getByTestId('username').fill('standard_user');\n    await page.getByTestId('password').fill('secret_sauce');",
+        "legenda": "-D = ferramenta de desenvolvimento",
+        "fonte": 26,
+        "digitar": false,
+        "terminal": [
+         {
+          "cmd": "npm install -D dotenv",
+          "em": 0.05
+         },
+         {
+          "out": "added 1 package, and audited 6 packages in 1s",
+          "cor": "mut",
+          "em": 0.3
+         },
+         {
+          "out": "found 0 vulnerabilities",
+          "cor": "ac",
+          "em": 0.55
+         }
+        ]
+       }
+      },
+      {
+       "text": "Na pasta do projeto, cria o arquivo ponto env.",
+       "scene": {
+        "type": "menu",
+        "app": "vscode",
+        "barra": [],
+        "menus": [
+         [
+          "New File...",
+          "New Folder...",
+          "—",
+          "Cut",
+          "Copy",
+          "—",
+          "Rename..."
+         ]
+        ],
+        "caminho": [
+         0
+        ],
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  tests/",
+         "    login.spec.js",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "alvo_item": "meu-primeiro-playwright",
+        "novo_pos": 5,
+        "resultado": "arquivo",
+        "novo": ".env",
+        "novo_nivel": 1,
+        "legenda": "New File › .env"
+       }
+      },
+      {
+       "text": "Dentro: SAUCE underline USER igual standard user, e SAUCE underline PASSWORD igual secret sauce.",
+       "scene": {
+        "type": "editor",
+        "arquivo": ".env",
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  tests/",
+         "    login.spec.js",
+         "  .env",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "codigo": "SAUCE_USER=standard_user\nSAUCE_PASSWORD=secret_sauce",
+        "legenda": "Usuário e senha no .env",
+        "fonte": 32,
+        "digitar": true
+       }
+      },
+      {
+       "text": "E antes de qualquer outra coisa: abre o ponto gitignore e escreve ponto env no final. Assim esse arquivo nunca vai pro GitHub.",
+       "scene": {
+        "type": "editor",
+        "arquivo": ".gitignore",
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  tests/",
+         "    login.spec.js",
+         "  .env",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "codigo": "\n# Playwright\nnode_modules/\n/test-results/\n/playwright-report/\n/blob-report/\n/playwright/.cache/\n/playwright/.auth/\n.env",
+        "legenda": ".env no .gitignore",
+        "fonte": 30,
+        "digitar": true,
+        "digitar_de": 9
+       }
+      },
+      {
+       "text": "No config, tira o comentário daquelas três linhas do dotenv. Elas mandam ler o arquivo ponto env.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "playwright.config.js",
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  tests/",
+         "    login.spec.js",
+         "  .env",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "codigo": "// @ts-check\nimport { defineConfig, devices } from '@playwright/test';\n\n/**\n * Read environment variables from file.\n * https://github.com/motdotla/dotenv\n */\nimport dotenv from 'dotenv';\nimport path from 'path';\ndotenv.config({ path: path.resolve(__dirname, '.env') });\n\n/**\n * @see https://playwright.dev/docs/test-configuration\n */\nexport default defineConfig({",
+        "legenda": "Ler o .env",
+        "fonte": 24,
+        "digitar": true,
+        "digitar_de": 8,
+        "digitar_ate": 10
+       }
+      },
+      {
+       "text": "No teste, troca o texto por process ponto env ponto SAUCE underline USER.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "login.spec.js",
+        "codigo": "import { test, expect } from '@playwright/test';\n\ntest.describe('Login', () => {\n  test.beforeEach(async ({ page }) => {\n    await page.goto('/');\n  });\n\n  test('entra com usuário e senha', async ({ page }) => {\n    await page.getByTestId('username').fill(process.env.SAUCE_USER);\n    await page.getByTestId('password').fill(process.env.SAUCE_PASSWORD);\n    await page.getByTestId('login-button').click();\n    await expect(page).toHaveURL(/inventory/);\n    await expect(page.getByText('Products')).toBeVisible();\n    await expect(page.getByText('Sauce Labs Backpack')).toContainText('Backpack');\n    await expect(page.getByRole('button', { name: 'Add to cart' })).toHaveCount(6);\n  });\n\n  test('mostra erro para usuário bloqueado', async ({ page }) => {\n    await page.getByTestId('username').fill('locked_out_user');\n    await page.getByTestId('password').fill(process.env.SAUCE_PASSWORD);\n    await page.getByTestId('login-button').click();\n    await expect(page.getByText('locked out')).toBeVisible();\n  });\n});",
+        "legenda": "process.env.SAUCE_USER",
+        "fonte": 22,
+        "digitar": true,
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  tests/",
+         "    login.spec.js",
+         "  .env",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "digitar_de": 9,
+        "digitar_ate": 10
+       }
+      },
+      {
+       "text": "Traduzindo: process ponto env, as variáveis do ambiente. SAUCE underline USER, a variável com esse nome.",
+       "scene": {
+        "type": "traducao",
+        "codigo": "process.env.SAUCE_USER",
+        "partes": [
+         [
+          "process.env",
+          "as variáveis do ambiente"
+         ],
+         [
+          "SAUCE_USER",
+          "a chamada SAUCE_USER"
+         ]
+        ],
+        "passo": 2.0
+       }
+      },
+      {
+       "text": "E pra quem baixar o projeto saber o que preencher, cria um ponto env ponto example só com os nomes das variáveis, sem os valores.",
+       "scene": {
+        "type": "editor",
+        "arquivo": ".env.example",
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  tests/",
+         "    login.spec.js",
+         "  .env",
+         "  .env.example",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "codigo": "SAUCE_USER=\nSAUCE_PASSWORD=",
+        "legenda": "Só os nomes, sem os valores",
+        "fonte": 32,
+        "digitar": true
+       }
+      },
+      {
+       "text": "Roda pra confirmar: continua passando.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "login.spec.js",
+        "codigo": "import { test, expect } from '@playwright/test';\n\ntest.describe('Login', () => {\n  test.beforeEach(async ({ page }) => {\n    await page.goto('/');\n  });\n\n  test('entra com usuário e senha', async ({ page }) => {\n    await page.getByTestId('username').fill(process.env.SAUCE_USER);\n    await page.getByTestId('password').fill(process.env.SAUCE_PASSWORD);",
+        "legenda": "Continua passando",
+        "fonte": 26,
+        "digitar": false,
+        "terminal": [
+         {
+          "cmd": "npx playwright test --project=chromium",
+          "em": 0.05
+         },
+         {
+          "out": "Running 2 tests using 2 workers",
+          "cor": "mut",
+          "em": 0.3
+         },
+         {
+          "out": "  2 passed (2.0s)",
+          "cor": "ac",
+          "em": 0.55
+         }
+        ],
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  tests/",
+         "    login.spec.js",
+         "  .env",
+         "  .env.example",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ]
+       }
+      },
+      {
+       "text": "Na próxima aula: rodando só o que importa.",
+       "scene": {
+        "type": "passo",
+        "icone": "▶",
+        "titulo": "Próxima aula",
+        "sub": "only, skip e filtros"
+       }
+      },
+      {
+       "text": "Te vejo lá!",
+       "scene": {
+        "type": "endcard",
+        "sub": "PRÓXIMA: ONLY, SKIP E FILTROS"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "shorts": [],
+  "tiktoks": []
+ }
+}

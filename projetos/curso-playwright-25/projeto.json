@@ -1,0 +1,297 @@
+{
+ "title": "Playwright para leigos · Aula 25",
+ "slug": "curso-playwright-25",
+ "idioma": "pt",
+ "destino": "curso",
+ "marca": [
+  "PLAYWRIGHT",
+  "PARA LEIGOS"
+ ],
+ "cor_fundo": "#3fd68a",
+ "sem_legenda": true,
+ "legenda_y": 0.93,
+ "selo": "MÓDULO 5 · AULA 25",
+ "voz": {
+  "nome": "gravada",
+  "motor": "eleven",
+  "eleven_voz": "Vinícius Torales"
+ },
+ "serie": [],
+ "meta": {
+  "titles": [
+   "Aula 25: Rodando só o que importa - only, skip, arquivo e nome"
+  ],
+  "description": "",
+  "tags": []
+ },
+ "notes": "Curso Playwright para leigos. Não publica (destino: curso). Roteiro em curso-playwright/roteiros/.",
+ "script": {
+  "long": {
+   "parts": [
+    {
+     "chapter": "",
+     "sentences": [
+      {
+       "text": "Quando você tiver dezenas de testes, não vai querer rodar todos toda hora.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "AULA 25",
+          "muted",
+          80
+         ],
+         [
+          "SÓ O QUE IMPORTA",
+          "gold",
+          150
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Pra rodar um arquivo só, coloca o nome dele: npx playwright test login ponto spec ponto js.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "login.spec.js",
+        "codigo": "import { test, expect } from '@playwright/test';\n\ntest.describe('Login', () => {\n  test.beforeEach(async ({ page }) => {\n    await page.goto('/');\n  });\n\n  test('entra com usuário e senha', async ({ page }) => {\n    await page.getByTestId('username').fill(process.env.SAUCE_USER);\n    await page.getByTestId('password').fill(process.env.SAUCE_PASSWORD);",
+        "legenda": "Um arquivo só",
+        "fonte": 26,
+        "digitar": false,
+        "terminal": [
+         {
+          "cmd": "npx playwright test login.spec.js",
+          "em": 0.05
+         },
+         {
+          "out": "Running 6 tests using 4 workers",
+          "cor": "mut",
+          "em": 0.3
+         },
+         {
+          "out": "  6 passed (4.3s)",
+          "cor": "ac",
+          "em": 0.55
+         }
+        ],
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  tests/",
+         "    login.spec.js",
+         "  .env",
+         "  .env.example",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ]
+       }
+      },
+      {
+       "text": "Pra rodar pelo nome do teste: traço g e um pedaço do nome, tipo bloqueado. O g vem de grep, que quer dizer procurar: ele filtra os testes por esse pedaço de nome.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "login.spec.js",
+        "codigo": "import { test, expect } from '@playwright/test';\n\ntest.describe('Login', () => {\n  test.beforeEach(async ({ page }) => {\n    await page.goto('/');\n  });\n\n  test('entra com usuário e senha', async ({ page }) => {\n    await page.getByTestId('username').fill(process.env.SAUCE_USER);\n    await page.getByTestId('password').fill(process.env.SAUCE_PASSWORD);",
+        "legenda": "-g = grep = procurar pelo nome",
+        "fonte": 26,
+        "digitar": false,
+        "terminal": [
+         {
+          "cmd": "npx playwright test -g bloqueado",
+          "em": 0.05
+         },
+         {
+          "out": "Running 3 tests using 3 workers",
+          "cor": "mut",
+          "em": 0.3
+         },
+         {
+          "out": "  3 passed (2.2s)",
+          "cor": "ac",
+          "em": 0.55
+         }
+        ],
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  tests/",
+         "    login.spec.js",
+         "  .env",
+         "  .env.example",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ]
+       }
+      },
+      {
+       "text": "Dentro do código, test ponto only: roda somente esse teste. Only quer dizer somente.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "login.spec.js",
+        "codigo": "import { test, expect } from '@playwright/test';\n\ntest.describe('Login', () => {\n  test.beforeEach(async ({ page }) => {\n    await page.goto('/');\n  });\n\n  test('entra com usuário e senha', async ({ page }) => {\n    await page.getByTestId('username').fill(process.env.SAUCE_USER);\n    await page.getByTestId('password').fill(process.env.SAUCE_PASSWORD);\n    await page.getByTestId('login-button').click();\n    await expect(page).toHaveURL(/inventory/);\n    await expect(page.getByText('Products')).toBeVisible();\n    await expect(page.getByText('Sauce Labs Backpack')).toContainText('Backpack');\n    await expect(page.getByRole('button', { name: 'Add to cart' })).toHaveCount(6);\n  });\n\n  test.only('mostra erro para usuário bloqueado', async ({ page }) => {\n    await page.getByTestId('username').fill('locked_out_user');\n    await page.getByTestId('password').fill(process.env.SAUCE_PASSWORD);\n    await page.getByTestId('login-button').click();\n    await expect(page.getByText('locked out')).toBeVisible();\n  });\n});",
+        "legenda": "only = somente",
+        "fonte": 22,
+        "digitar": true,
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  tests/",
+         "    login.spec.js",
+         "  .env",
+         "  .env.example",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "digitar_de": 18,
+        "digitar_ate": 18,
+        "rolar": true,
+        "rolar_de": 0.8,
+        "rolar_dur": 1.0
+       }
+      },
+      {
+       "text": "Cuidado: esquecer um only é um erro clássico. Os outros testes param de rodar e ninguém percebe. Por isso o config já vem com forbid only, que trava isso no GitHub.",
+       "scene": {
+        "type": "cards",
+        "itens": [
+         [
+          "⚠",
+          "Esqueceu o only?",
+          "os outros param de rodar",
+          "#ff8c42"
+         ],
+         [
+          "🛡",
+          "forbidOnly",
+          "trava isso no GitHub",
+          "#69a7ff"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "E test ponto skip: pula esse teste. Skip quer dizer pular. No resultado, ele aparece como skipped.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "login.spec.js",
+        "codigo": "    await expect(page.getByRole('button', { name: 'Add to cart' })).toHaveCount(6);\n  });\n\n  test.skip('mostra erro para usuário bloqueado', async ({ page }) => {\n    await page.getByTestId('username').fill('locked_out_user');\n    await page.getByTestId('password').fill(process.env.SAUCE_PASSWORD);\n    await page.getByTestId('login-button').click();\n    await expect(page.getByText('locked out')).toBeVisible();",
+        "legenda": "skip = pular: aparece como skipped",
+        "fonte": 26,
+        "digitar": false,
+        "linha0": 15,
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  tests/",
+         "    login.spec.js",
+         "  .env",
+         "  .env.example",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "destaque": [
+         4
+        ],
+        "destaque_em": 0.6,
+        "terminal": [
+         {
+          "cmd": "npx playwright test --project=chromium",
+          "em": 0.05
+         },
+         {
+          "out": "Running 2 tests using 1 worker",
+          "cor": "mut",
+          "em": 0.3
+         },
+         {
+          "out": "  1 skipped",
+          "cor": "yel",
+          "em": 0.55
+         },
+         {
+          "out": "  1 passed (1.4s)",
+          "cor": "ac",
+          "em": 0.62
+         }
+        ]
+       }
+      },
+      {
+       "text": "E você já conhece o traço traço project igual chromium, pra rodar num navegador só.",
+       "scene": {
+        "type": "cards",
+        "itens": [
+         [
+          "C",
+          "--project=chromium",
+          "só esse navegador"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Resumo de tudo numa tabela.",
+       "scene": {
+        "type": "traducao",
+        "titulo": "RODANDO SÓ O QUE IMPORTA",
+        "linhas": [
+         [
+          "npx playwright test login.spec.js",
+          "só esse arquivo"
+         ],
+         [
+          "npx playwright test -g bloqueado",
+          "só os testes com esse nome"
+         ],
+         [
+          "test.only(...)",
+          "somente esse teste"
+         ],
+         [
+          "test.skip(...)",
+          "pula esse teste"
+         ],
+         [
+          "--project=chromium",
+          "só esse navegador"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Fechamos a organização. No próximo módulo: o que fazer quando o teste falha.",
+       "scene": {
+        "type": "passo",
+        "icone": "▶",
+        "titulo": "Próximo módulo",
+        "sub": "Debug: quando o teste falha"
+       }
+      },
+      {
+       "text": "Te vejo lá!",
+       "scene": {
+        "type": "endcard",
+        "sub": "PRÓXIMA: MÓDULO 6 · DEBUG"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "shorts": [],
+  "tiktoks": []
+ }
+}

@@ -1,0 +1,322 @@
+{
+ "title": "Playwright para leigos · Aula 22",
+ "slug": "curso-playwright-22",
+ "idioma": "pt",
+ "destino": "curso",
+ "marca": [
+  "PLAYWRIGHT",
+  "PARA LEIGOS"
+ ],
+ "cor_fundo": "#3fd68a",
+ "sem_legenda": true,
+ "legenda_y": 0.93,
+ "selo": "MÓDULO 5 · AULA 22",
+ "voz": {
+  "nome": "gravada",
+  "motor": "eleven",
+  "eleven_voz": "Vinícius Torales"
+ },
+ "serie": [],
+ "meta": {
+  "titles": [
+   "Aula 22: describe e beforeEach"
+  ],
+  "description": "",
+  "tags": []
+ },
+ "notes": "Curso Playwright para leigos. Não publica (destino: curso). Roteiro em curso-playwright/roteiros/.",
+ "script": {
+  "long": {
+   "parts": [
+    {
+     "chapter": "",
+     "sentences": [
+      {
+       "text": "O seu arquivo vai crescer. Hoje você aprende a deixar ele organizado.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "AULA 22",
+          "muted",
+          80
+         ],
+         [
+          "ORGANIZANDO",
+          "gold",
+          150
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Antes, apaga aquele teste do usuário lento. Ele era só pra você ver a espera automática.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "login.spec.js",
+        "codigo": "import { test, expect } from '@playwright/test';\n\ntest('entra com usuário e senha', async ({ page }) => {\n  await page.goto('https://www.saucedemo.com/');\n  await page.getByPlaceholder('Username').fill('standard_user');\n  await page.getByPlaceholder('Password').fill('secret_sauce');\n  await page.getByRole('button', { name: 'Login' }).click();\n  await expect(page).toHaveURL(/inventory/);\n  await expect(page.getByText('Products')).toBeVisible();\n  await expect(page.getByText('Sauce Labs Backpack')).toContainText('Backpack');\n  await expect(page.getByRole('button', { name: 'Add to cart' })).toHaveCount(6);\n});\n\ntest('usuário lento também entra', async ({ page }) => {\n  await page.goto('https://www.saucedemo.com/');\n  await page.getByPlaceholder('Username').fill('performance_glitch_user');\n  await page.getByPlaceholder('Password').fill('secret_sauce');\n  await page.getByRole('button', { name: 'Login' }).click();\n  await expect(page.getByText('Products')).toBeVisible({ timeout: 10000 });\n});",
+        "legenda": "Apaga o teste do usuário lento",
+        "fonte": 24,
+        "digitar": false,
+        "rolar": true,
+        "rolar_de": 1.0,
+        "rolar_dur": 1.2,
+        "destaque": [
+         14,
+         15,
+         16,
+         17,
+         18,
+         19,
+         20
+        ],
+        "destaque_em": 2.4
+       }
+      },
+      {
+       "text": "Agora vamos criar um segundo teste. O saucedemo tem um usuário que não consegue entrar: o usuário bloqueado, locked underline out underline user.",
+       "scene": {
+        "type": "tela",
+        "media": "rec_sauce_locked",
+        "url": "https://www.saucedemo.com/",
+        "gravar": true,
+        "titulo": "saucedemo.com",
+        "legenda": "O usuário bloqueado não entra",
+        "acoes": [
+         {
+          "fill": [
+           "#user-name",
+           "locked_out_user"
+          ]
+         },
+         {
+          "fill": [
+           "#password",
+           "secret_sauce"
+          ]
+         },
+         {
+          "click": "#login-button"
+         }
+        ],
+        "espera_fim": 2200,
+        "delay_letra": 70
+       }
+      },
+      {
+       "text": "Escreve o teste novo embaixo do primeiro. Ele preenche o usuário bloqueado e espera ver a mensagem locked out.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "login.spec.js",
+        "codigo": "import { test, expect } from '@playwright/test';\n\ntest('entra com usuário e senha', async ({ page }) => {\n  await page.goto('https://www.saucedemo.com/');\n  await page.getByPlaceholder('Username').fill('standard_user');\n  await page.getByPlaceholder('Password').fill('secret_sauce');\n  await page.getByRole('button', { name: 'Login' }).click();\n  await expect(page).toHaveURL(/inventory/);\n  await expect(page.getByText('Products')).toBeVisible();\n  await expect(page.getByText('Sauce Labs Backpack')).toContainText('Backpack');\n  await expect(page.getByRole('button', { name: 'Add to cart' })).toHaveCount(6);\n});\n\ntest('mostra erro para usuário bloqueado', async ({ page }) => {\n  await page.goto('https://www.saucedemo.com/');\n  await page.getByPlaceholder('Username').fill('locked_out_user');\n  await page.getByPlaceholder('Password').fill('secret_sauce');\n  await page.getByRole('button', { name: 'Login' }).click();\n  await expect(page.getByText('locked out')).toBeVisible();\n});",
+        "legenda": "O teste do usuário bloqueado",
+        "fonte": 24,
+        "digitar": true,
+        "digitar_de": 13,
+        "rolar": true,
+        "rolar_de": 0.8,
+        "rolar_dur": 1.0
+       }
+      },
+      {
+       "text": "Repara: a linha do goto se repete nos dois testes.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "login.spec.js",
+        "codigo": "import { test, expect } from '@playwright/test';\n\ntest('entra com usuário e senha', async ({ page }) => {\n  await page.goto('https://www.saucedemo.com/');\n  await page.getByPlaceholder('Username').fill('standard_user');\n  await page.getByPlaceholder('Password').fill('secret_sauce');\n  await page.getByRole('button', { name: 'Login' }).click();\n  await expect(page).toHaveURL(/inventory/);\n  await expect(page.getByText('Products')).toBeVisible();\n  await expect(page.getByText('Sauce Labs Backpack')).toContainText('Backpack');\n  await expect(page.getByRole('button', { name: 'Add to cart' })).toHaveCount(6);\n});\n\ntest('mostra erro para usuário bloqueado', async ({ page }) => {\n  await page.goto('https://www.saucedemo.com/');\n  await page.getByPlaceholder('Username').fill('locked_out_user');\n  await page.getByPlaceholder('Password').fill('secret_sauce');\n  await page.getByRole('button', { name: 'Login' }).click();\n  await expect(page.getByText('locked out')).toBeVisible();\n});",
+        "legenda": "O goto se repete",
+        "fonte": 24,
+        "digitar": false,
+        "destaque": [
+         4,
+         14
+        ],
+        "destaque_em": 0.6
+       }
+      },
+      {
+       "text": "Quando algo se repete antes de todo teste, existe o before each. Before each: antes de cada.",
+       "scene": {
+        "type": "traducao",
+        "codigo": "test.beforeEach(async ({ page }) => {",
+        "partes": [
+         [
+          "before",
+          "antes de"
+         ],
+         [
+          "Each",
+          "cada"
+         ],
+         [
+          "({ page })",
+          "me dê o navegador"
+         ]
+        ],
+        "passo": 2.0
+       }
+      },
+      {
+       "text": "Coloca o goto lá dentro, e apaga dos testes.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "login.spec.js",
+        "codigo": "import { test, expect } from '@playwright/test';\n\ntest.beforeEach(async ({ page }) => {\n});\n\ntest('entra com usuário e senha', async ({ page }) => {\n  await page.getByPlaceholder('Username').fill('standard_user');\n  await page.getByPlaceholder('Password').fill('secret_sauce');\n  await page.getByRole('button', { name: 'Login' }).click();\n  await expect(page).toHaveURL(/inventory/);\n  await expect(page.getByText('Products')).toBeVisible();\n  await expect(page.getByText('Sauce Labs Backpack')).toContainText('Backpack');\n  await expect(page.getByRole('button', { name: 'Add to cart' })).toHaveCount(6);\n});\n\ntest('mostra erro para usuário bloqueado', async ({ page }) => {\n  await page.goto('https://www.saucedemo.com/');\n  await page.getByPlaceholder('Username').fill('locked_out_user');\n  await page.getByPlaceholder('Password').fill('secret_sauce');\n  await page.getByRole('button', { name: 'Login' }).click();\n  await expect(page.getByText('locked out')).toBeVisible();\n});",
+        "legenda": "O goto vai pro beforeEach",
+        "fonte": 24,
+        "digitar": true,
+        "digitar_de": 3,
+        "digitar_ate": 5
+       }
+      },
+      {
+       "text": "Agora o describe. Describe é descrever: ele junta testes do mesmo assunto numa caixa com nome.",
+       "scene": {
+        "type": "traducao",
+        "codigo": "test.describe('Login', () => {",
+        "partes": [
+         [
+          "describe",
+          "descreva: junte numa caixa"
+         ],
+         [
+          "'Login'",
+          "com o nome Login"
+         ]
+        ],
+        "passo": 2.0
+       }
+      },
+      {
+       "text": "Tudo que está dentro desse describe é sobre login.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "login.spec.js",
+        "codigo": "import { test, expect } from '@playwright/test';\n\ntest.describe('Login', () => {\n  test.beforeEach(async ({ page }) => {\n    await page.goto('https://www.saucedemo.com/');\n  });\n\n  test('entra com usuário e senha', async ({ page }) => {\n    await page.getByPlaceholder('Username').fill('standard_user');\n    await page.getByPlaceholder('Password').fill('secret_sauce');\n    await page.getByRole('button', { name: 'Login' }).click();\n    await expect(page).toHaveURL(/inventory/);\n    await expect(page.getByText('Products')).toBeVisible();\n    await expect(page.getByText('Sauce Labs Backpack')).toContainText('Backpack');\n    await expect(page.getByRole('button', { name: 'Add to cart' })).toHaveCount(6);\n  });\n\n  test('mostra erro para usuário bloqueado', async ({ page }) => {\n    await page.getByPlaceholder('Username').fill('locked_out_user');\n    await page.getByPlaceholder('Password').fill('secret_sauce');\n    await page.getByRole('button', { name: 'Login' }).click();\n    await expect(page.getByText('locked out')).toBeVisible();\n  });\n});",
+        "legenda": "Tudo aqui dentro é sobre login",
+        "fonte": 22,
+        "digitar": true,
+        "digitar_de": 3,
+        "digitar_ate": 3,
+        "rolar": true,
+        "rolar_de": 3.0,
+        "rolar_dur": 1.4
+       }
+      },
+      {
+       "text": "Lendo em português: um grupo chamado Login. Antes de cada teste, abra o site. Teste um: entra. Teste dois: mostra erro pro bloqueado.",
+       "scene": {
+        "type": "cards",
+        "itens": [
+         [
+          "▣",
+          "Grupo Login",
+          "describe"
+         ],
+         [
+          "↺",
+          "Antes de cada",
+          "abra o site",
+          "#69a7ff"
+         ],
+         [
+          "1",
+          "Teste 1",
+          "entra",
+          "#ffd23f"
+         ],
+         [
+          "2",
+          "Teste 2",
+          "erro do bloqueado",
+          "#c792ea"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Roda: os dois passam.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "login.spec.js",
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  tests/",
+         "    login.spec.js",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "codigo": "import { test, expect } from '@playwright/test';\n\ntest.describe('Login', () => {\n  test.beforeEach(async ({ page }) => {\n    await page.goto('https://www.saucedemo.com/');\n  });\n\n  test('entra com usuário e senha', async ({ page }) => {\n    await page.getByPlaceholder('Username').fill('standard_user');\n    await page.getByPlaceholder('Password').fill('secret_sauce');",
+        "legenda": "Os dois passam",
+        "fonte": 26,
+        "digitar": false,
+        "terminal": [
+         {
+          "cmd": "npx playwright test --project=chromium",
+          "em": 0.05
+         },
+         {
+          "out": "Running 2 tests using 2 workers",
+          "cor": "mut",
+          "em": 0.3
+         },
+         {
+          "out": "  2 passed (2.1s)",
+          "cor": "ac",
+          "em": 0.55
+         }
+        ]
+       }
+      },
+      {
+       "text": "E no relatório eles aparecem juntos, debaixo de Login.",
+       "scene": {
+        "type": "pw_relatorio",
+        "testes": [
+         [
+          "Login › entra com usuário e senha",
+          "login.spec.js:8",
+          "chromium",
+          "ok",
+          "1.1s"
+         ],
+         [
+          "Login › mostra erro para usuário bloqueado",
+          "login.spec.js:18",
+          "chromium",
+          "ok",
+          "0.7s"
+         ]
+        ],
+        "legenda": "Juntos, debaixo de Login"
+       }
+      },
+      {
+       "text": "Na próxima aula: o arquivo de configuração.",
+       "scene": {
+        "type": "passo",
+        "icone": "▶",
+        "titulo": "Próxima aula",
+        "sub": "playwright.config"
+       }
+      },
+      {
+       "text": "Te vejo lá!",
+       "scene": {
+        "type": "endcard",
+        "sub": "PRÓXIMA: PLAYWRIGHT.CONFIG"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "shorts": [],
+  "tiktoks": []
+ }
+}
