@@ -1,9 +1,9 @@
 {
- "atualizado": "25/10/2026 21:43",
+ "atualizado": "26/10/2026 13:59",
  "fontes": {
   "custo_oculto": {
    "seguidores": 12,
-   "views_total": 4961,
+   "views_total": 5144,
    "videos": 36,
    "views_28d": 4892,
    "views_7d": 866,
@@ -167,7 +167,7 @@
   "vini_qa": {
    "seguidores": 0,
    "views_total": 43,
-   "videos": 3,
+   "videos": 4,
    "views_28d": 43,
    "views_7d": 43,
    "seguidores_28d": 0,
@@ -304,46 +304,46 @@
   },
   "tiktok": {
    "usuario": "Custo Oculto",
-   "seguidores": 52,
-   "curtidas": 298,
+   "seguidores": 54,
+   "curtidas": 328,
    "videos": 17,
-   "views_total": 6494,
+   "views_total": 6968,
    "top": [
     {
      "titulo": "A Nokia já foi dona de quase 40% do mercado mundial de celulares. Poucos anos depois, vend",
      "url": "https://www.tiktok.com/@custooculto/video/7700696929457409286?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 71,
-     "likes": 7
+     "views": 500,
+     "likes": 22
     },
     {
      "titulo": "A Varig já foi uma das maiores companhias aéreas do Brasil. Durante décadas, era símbolo d",
      "url": "https://www.tiktok.com/@custooculto/video/7700381208127048981?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 286,
-     "likes": 7
+     "views": 304,
+     "likes": 8
     },
     {
      "titulo": "A Kodak ajudou a criar a câmera digital. O problema? Ela tinha medo de que a própria inven",
      "url": "https://www.tiktok.com/@custooculto/video/7699988579719679252?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 528,
-     "likes": 22
+     "views": 531,
+     "likes": 23
     },
     {
      "titulo": "A Blockbuster dominava o mercado. A Netflix era só uma aposta. Anos depois, uma delas viro",
      "url": "https://www.tiktok.com/@custooculto/video/7699596334155713812?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 448,
+     "views": 454,
      "likes": 10
     },
     {
      "titulo": "Duas rivais gigantes se juntaram e criaram uma potência brasileira. 🍺 Mas a fusão entre Br",
      "url": "https://www.tiktok.com/@custooculto/video/7699229452231773460?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 558,
-     "likes": 20
+     "views": 559,
+     "likes": 21
     },
     {
      "titulo": "A Sadia perdeu bilhões apostando no dólar. Pouco depois, acabou se unindo à maior rival: a",
      "url": "https://www.tiktok.com/@custooculto/video/7698857265817849108?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 139,
-     "likes": 1
+     "views": 140,
+     "likes": 2
     }
    ],
    "nome": "TikTok @custooculto"
@@ -381,15 +381,6 @@
   }
  },
  "agenda": [
-  {
-   "quando": "2026-10-26T12:00:00-03:00",
-   "plataforma": "Vini QA (YouTube)",
-   "chave": "vini_qa",
-   "titulo": "O botão do Cypress que escreve o código pra você",
-   "tipo": "short",
-   "id": "T-yIhAQSwrc",
-   "url": "https://studio.youtube.com/video/T-yIhAQSwrc/edit"
-  },
   {
    "quando": "2026-10-26T18:00:00-03:00",
    "plataforma": "Hidden Cost (YouTube EN)",
