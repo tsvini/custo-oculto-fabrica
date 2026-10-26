@@ -1,0 +1,1 @@
+Desafio cinco: sair do sistema. Pausa e tenta. [silence] [silence] Dica: o menu é aquele botão de três risquinhos, com nome Open Menu. Lá dentro tem o Logout. Solução: clica no menu, clica no logout, e confere que o botão de Login voltou. Roda. Te vejo no desafio final!
