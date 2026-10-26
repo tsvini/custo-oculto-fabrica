@@ -7,7 +7,7 @@ const VERSAO = (() => {
 })();
 const USUARIOS = { cliente: { senha: 'leigo123' }, bloqueado: { senha: 'leigo123', bloqueado: true } };
 const real = (v) => 'R$ ' + v.toFixed(2).replace('.', ',');
-const MARCA = (img = true) => `<span class="marca">${img ? '<img src="img/mascote-pequeno.jpg" alt="">' : ''}<span class="palavra"><span class="l1">lojinha</span><span class="l2"><small>do</small>leigo</span></span></span>`;
+const MARCA = (img = true) => `<span class="marca">${img ? '<img src="img/logo.svg" alt="">' : ''}<span class="palavra"><span class="l1">lojinha</span><span class="l2"><small>do</small>leigo</span></span></span>`;
 function cabecalho(categorias) {
   const u = sessionStorage.getItem('usuario') || '';
   document.body.insertAdjacentHTML('afterbegin', `<header><div class="topo">${MARCA()}<span class="versao" data-test="versao">versão ${VERSAO}</span>

@@ -1,7 +1,7 @@
-<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Lojinha do Leigo · Produtos</title><link rel="icon" href="img/mascote-pequeno.jpg"><link rel="stylesheet" href="estilo.css"></head>
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Lojinha do Leigo · Produtos</title><link rel="icon" href="img/logo.svg"><link rel="stylesheet" href="estilo.css"></head>
 <body>
 <main>
-  <section class="banner"><div class="txt"><span class="tag">SEMANA DO TESTADOR</span><h3>Tudo pra você <em>passar no CI</em> de primeira</h3><p>Até 30% de desconto e frete grátis acima de R$ 99</p></div><img src="img/mascote.jpg" alt=""></section>
+  <section class="banner"><div class="txt"><span class="tag">SEMANA DO TESTADOR</span><h3>Tudo pra você <em>passar no CI</em> de primeira</h3><p>Até 30% de desconto e frete grátis acima de R$ 99</p></div><div class="cena"><img class="i1" src="img/caneca.svg" alt=""><img class="i2" src="img/mochila.svg" alt=""><img class="i3" src="img/fone.svg" alt=""></div></section>
   <section class="selos"><div><span>🚚</span><div>Frete grátis<small>acima de R$ 99</small></div></div><div><span>💳</span><div>Até 3x sem juros<small>no cartão</small></div></div><div><span>↩️</span><div>Troca fácil<small>em até 7 dias</small></div></div></section>
   <div class="barra"><div><h2 data-test="titulo">Produtos</h2><p class="sub" data-test="quantidade"></p></div>
     <div><label for="ordenar">Ordenar por</label><select id="ordenar" data-test="ordenar">
@@ -40,8 +40,9 @@ function cartao(p) {
     <div class="foto">${p.selo ? `<span class="selo ${SELO[p.selo] || ''}">${p.selo}</span>` : ''}${p.imagem ? `<img src="${p.imagem}" alt="${p.nome}">` : ''}${p.estoque ? '' : '<span class="esgotado" data-test="esgotado">Esgotado</span>'}</div>
     <div class="info"><span class="cat">${p.categoria || ''}</span><span class="nome" data-test="nome">${p.nome}</span>
     ${p.avaliacao ? `<span class="estrelas">${estrelas(p.avaliacao)}<small>${String(p.avaliacao).replace('.', ',')} (${p.avaliacoes})</small></span>` : ''}
-    <div class="precos">${p.precoAntigo ? `<span class="antigo">${real(p.precoAntigo)}</span>` : ''}<span class="preco" data-test="preco">${real(p.preco)}</span>${off ? `<span class="desconto">-${off}%</span>` : ''}</div>
-    <span class="parcela">ou 3x de ${real(p.preco / 3)} sem juros</span>${p.preco >= 99 ? '<span class="frete">Frete grátis</span>' : ''}
+    <div class="de">${p.precoAntigo ? `<span class="antigo">${real(p.precoAntigo)}</span><span class="desconto">-${off}%</span>` : ''}</div>
+    <span class="preco" data-test="preco">${real(p.preco)}</span>
+    <span class="parcela">ou 3x de ${real(p.preco / 3)} sem juros</span><span class="frete">${p.preco >= 99 ? 'Frete grátis' : ''}</span>
     <button data-test="adicionar" ${p.estoque ? '' : 'disabled'}>${p.estoque ? 'Adicionar ao carrinho' : 'Indisponível'}</button></div></div>`;
 }
 function mostrar() {
