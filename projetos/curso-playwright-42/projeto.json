@@ -1,0 +1,380 @@
+{
+ "title": "Playwright para leigos · Aula 42",
+ "slug": "curso-playwright-42",
+ "idioma": "pt",
+ "destino": "curso",
+ "marca": [
+  "PLAYWRIGHT",
+  "PARA LEIGOS"
+ ],
+ "cor_fundo": "#3fd68a",
+ "sem_legenda": true,
+ "legenda_y": 0.93,
+ "selo": "MÓDULO 8 · AULA 42",
+ "voz": {
+  "nome": "gravada",
+  "motor": "eleven",
+  "eleven_voz": "Vinícius Torales"
+ },
+ "serie": [],
+ "meta": {
+  "titles": [
+   "Aula 42: Indo além - login uma vez só com storageState"
+  ],
+  "description": "",
+  "tags": []
+ },
+ "notes": "Curso Playwright para leigos. Não publica (destino: curso). Roteiro em curso-playwright/roteiros/.",
+ "script": {
+  "long": {
+   "parts": [
+    {
+     "chapter": "",
+     "sentences": [
+      {
+       "text": "Todo teste faz login de novo. Em centenas de testes, é muito tempo perdido.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "AULA 42",
+          "muted",
+          80
+         ],
+         [
+          "LOGIN UMA VEZ SÓ",
+          "gold",
+          150
+         ]
+        ]
+       }
+      },
+      {
+       "text": "A ideia: fazer o login uma vez, e salvar o navegador já logado num arquivo. Os testes que precisam começar logados usam esse arquivo.",
+       "scene": {
+        "type": "cards",
+        "itens": [
+         [
+          "🔑",
+          "Login uma vez",
+          "no começo de tudo"
+         ],
+         [
+          "💾",
+          "Salva num arquivo",
+          "o navegador já logado",
+          "#69a7ff"
+         ],
+         [
+          "⚡",
+          "Os testes usam",
+          "começam logados",
+          "#ffd23f"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Primeiro, a proteção: esse arquivo guarda dados da sua sessão e nunca deve ir pro GitHub. Abre o gitignore: o Playwright já colocou a pasta playwright barra ponto auth lá. Confere que ela está.",
+       "scene": {
+        "type": "editor",
+        "arquivo": ".gitignore",
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  pages/",
+         "    CheckoutPage.js",
+         "    LoginPage.js",
+         "    ProdutosPage.js",
+         "  tests/",
+         "    compra.spec.js",
+         "    login.spec.js",
+         "    usuarios.spec.js",
+         "  .env",
+         "  .env.example",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "codigo": "\n# Playwright\nnode_modules/\n/test-results/\n/playwright-report/\n/blob-report/\n/playwright/.cache/\n/playwright/.auth/\n.env",
+        "legenda": "/playwright/.auth/ já está no .gitignore",
+        "fonte": 30,
+        "digitar": false,
+        "destaque": [
+         8
+        ],
+        "destaque_em": 1.2
+       }
+      },
+      {
+       "text": "Cria o auth ponto setup ponto js. Ele faz o login e, no fim, storage state, salvando tudo em playwright barra ponto auth barra usuario ponto json.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "auth.setup.js",
+        "codigo": "import { test as setup, expect } from '@playwright/test';\n\nconst arquivoLogin = 'playwright/.auth/usuario.json';\n\nsetup('faz login uma vez', async ({ page }) => {\n  await page.goto('/');\n  await page.getByTestId('username').fill(process.env.SAUCE_USER);\n  await page.getByTestId('password').fill(process.env.SAUCE_PASSWORD);\n  await page.getByTestId('login-button').click();\n  await expect(page.getByTestId('title')).toHaveText('Products');\n  await page.context().storageState({ path: arquivoLogin });\n});",
+        "legenda": "storageState = o estado guardado",
+        "fonte": 22,
+        "digitar": false,
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  pages/",
+         "    CheckoutPage.js",
+         "    LoginPage.js",
+         "    ProdutosPage.js",
+         "  tests/",
+         "    auth.setup.js",
+         "    compra.spec.js",
+         "    login.spec.js",
+         "    usuarios.spec.js",
+         "  .env",
+         "  .env.example",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "destaque": [
+         11
+        ],
+        "destaque_em": 2.0
+       }
+      },
+      {
+       "text": "No config, um project chamado setup, que roda esse arquivo. E nos outros projects, dependencies setup: eles só começam depois do setup.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "playwright.config.js",
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  pages/",
+         "    CheckoutPage.js",
+         "    LoginPage.js",
+         "    ProdutosPage.js",
+         "  tests/",
+         "    auth.setup.js",
+         "    compra.spec.js",
+         "    login.spec.js",
+         "    usuarios.spec.js",
+         "  .env",
+         "  .env.example",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "codigo": "  },\n  projects: [\n    { name: 'setup', testMatch: /.*\\.setup\\.js/ },\n    {\n      name: 'chromium',\n      use: { ...devices['Desktop Chrome'] },\n      dependencies: ['setup'],\n    },",
+        "legenda": "dependencies = depende do setup",
+        "fonte": 26,
+        "digitar": false,
+        "linha0": 20,
+        "destaque": [
+         3,
+         7
+        ],
+        "destaque_em": 0.8
+       }
+      },
+      {
+       "text": "Agora, quem usa o login salvo? Existem dois jeitos. A gente vai usar este: ligar só nos arquivos que precisam começar logados. O teste de login, por exemplo, precisa começar deslogado.",
+       "scene": {
+        "type": "cards",
+        "itens": [
+         [
+          "✓",
+          "compra.spec.js",
+          "começa logado"
+         ],
+         [
+          "✗",
+          "login.spec.js",
+          "precisa começar deslogado",
+          "#ff6b6b"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "No arquivo da compra: test ponto use, storage state, e o caminho do arquivo. Use esse login salvo.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "compra.spec.js",
+        "codigo": "import { test, expect } from '@playwright/test';\nimport { ProdutosPage } from '../pages/ProdutosPage';\nimport { CheckoutPage } from '../pages/CheckoutPage';\n\ntest.use({ storageState: 'playwright/.auth/usuario.json' });\n\ntest('compra uma mochila do começo ao fim', async ({ page }) => {\n  const produtos = new ProdutosPage(page);\n  const checkout = new CheckoutPage(page);\n\n  await test.step('adiciona a mochila no carrinho', async () => {\n    await page.goto('/inventory.html');\n    await produtos.adicionar('sauce-labs-backpack');\n    await expect(produtos.contadorCarrinho).toHaveText('1');\n  });\n\n  await test.step('abre o carrinho', async () => {\n    await produtos.irParaCarrinho();\n    await expect(page.getByText('Sauce Labs Backpack')).toBeVisible();\n  });\n\n  await test.step('preenche os dados de entrega', async () => {\n    await checkout.botaoCheckout.click();\n    await checkout.preencherDados('Maria', 'Silva', '88000-000');\n  });\n\n  await test.step('finaliza a compra', async () => {\n    await checkout.botaoFinalizar.click();\n    await expect(checkout.mensagemFinal).toHaveText('Thank you for your order!');\n  });\n});",
+        "legenda": "test.use({ storageState }) = use o login salvo",
+        "fonte": 22,
+        "digitar": false,
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  pages/",
+         "    CheckoutPage.js",
+         "    LoginPage.js",
+         "    ProdutosPage.js",
+         "  tests/",
+         "    auth.setup.js",
+         "    compra.spec.js",
+         "    login.spec.js",
+         "    usuarios.spec.js",
+         "  .env",
+         "  .env.example",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "destaque": [
+         5
+        ],
+        "destaque_em": 0.8,
+        "rolar_depois": true,
+        "rolar_de": 3.0
+       }
+      },
+      {
+       "text": "Roda: o setup aparece primeiro, e a compra começa direto na página de produtos.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "compra.spec.js",
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  pages/",
+         "    CheckoutPage.js",
+         "    LoginPage.js",
+         "    ProdutosPage.js",
+         "  tests/",
+         "    auth.setup.js",
+         "    compra.spec.js",
+         "    login.spec.js",
+         "    usuarios.spec.js",
+         "  .env",
+         "  .env.example",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "codigo": "test.use({ storageState: 'playwright/.auth/usuario.json' });\n\ntest('compra uma mochila do começo ao fim', async ({ page }) => {\n  const produtos = new ProdutosPage(page);\n  const checkout = new CheckoutPage(page);\n\n  await test.step('adiciona a mochila no carrinho', async () => {\n    await page.goto('/inventory.html');\n    await produtos.adicionar('sauce-labs-backpack');\n    await expect(produtos.contadorCarrinho).toHaveText('1');",
+        "legenda": "Começa direto nos produtos",
+        "fonte": 26,
+        "digitar": false,
+        "linha0": 5,
+        "terminal": [
+         {
+          "cmd": "npx playwright test compra.spec.js --headed --project=chromium",
+          "em": 0.03
+         },
+         {
+          "out": "Running 2 tests using 1 worker",
+          "cor": "mut",
+          "em": 0.06
+         },
+         {
+          "out": "  ✓ [setup] › faz login uma vez",
+          "cor": "ac",
+          "em": 0.09
+         },
+         {
+          "out": "  2 passed (4.1s)",
+          "cor": "ac",
+          "em": 0.86
+         }
+        ],
+        "navegador": {
+         "media": "rec_logado",
+         "url": "https://www.saucedemo.com/inventory.html",
+         "pre_url": "https://www.saucedemo.com/",
+         "pre_acoes": [
+          {
+           "fill": [
+            "#user-name",
+            "standard_user"
+           ]
+          },
+          {
+           "fill": [
+            "#password",
+            "secret_sauce"
+           ]
+          },
+          {
+           "click": "#login-button"
+          }
+         ],
+         "gravar": true,
+         "acoes": [
+          {
+           "click": "[data-test=\"add-to-cart-sauce-labs-backpack\"]"
+          },
+          {
+           "click": "[data-test=\"shopping-cart-link\"]"
+          },
+          {
+           "click": "[data-test=\"checkout\"]"
+          },
+          {
+           "fill": [
+            "[data-test=\"firstName\"]",
+            "Maria"
+           ]
+          },
+          {
+           "fill": [
+            "[data-test=\"lastName\"]",
+            "Silva"
+           ]
+          },
+          {
+           "fill": [
+            "[data-test=\"postalCode\"]",
+            "88000-000"
+           ]
+          },
+          {
+           "click": "[data-test=\"continue\"]"
+          },
+          {
+           "click": "[data-test=\"finish\"]"
+          }
+         ],
+         "espera_inicio": 900,
+         "espera_fim": 2000,
+         "delay_letra": 45,
+         "titulo": "Chromium",
+         "em": 0.12,
+         "ate": 0.84
+        }
+       }
+      },
+      {
+       "text": "Projeto final pronto! Agora ele vai pro GitHub.",
+       "scene": {
+        "type": "passo",
+        "icone": "▶",
+        "titulo": "Próximo módulo",
+        "sub": "Git, GitHub e CI"
+       }
+      },
+      {
+       "text": "Te vejo lá!",
+       "scene": {
+        "type": "endcard",
+        "sub": "PRÓXIMA: MÓDULO 9 · GIT E GITHUB"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "shorts": [],
+  "tiktoks": []
+ }
+}

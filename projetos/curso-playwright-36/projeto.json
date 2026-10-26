@@ -1,0 +1,352 @@
+{
+ "title": "Playwright para leigos · Aula 36",
+ "slug": "curso-playwright-36",
+ "idioma": "pt",
+ "destino": "curso",
+ "marca": [
+  "PLAYWRIGHT",
+  "PARA LEIGOS"
+ ],
+ "cor_fundo": "#3fd68a",
+ "sem_legenda": true,
+ "legenda_y": 0.93,
+ "selo": "MÓDULO 8 · AULA 36",
+ "voz": {
+  "nome": "gravada",
+  "motor": "eleven",
+  "eleven_voz": "Vinícius Torales"
+ },
+ "serie": [],
+ "meta": {
+  "titles": [
+   "Aula 36: Finalizando a compra"
+  ],
+  "description": "",
+  "tags": []
+ },
+ "notes": "Curso Playwright para leigos. Não publica (destino: curso). Roteiro em curso-playwright/roteiros/.",
+ "script": {
+  "long": {
+   "parts": [
+    {
+     "chapter": "",
+     "sentences": [
+      {
+       "text": "Hoje o robô completa o fluxo inteiro da compra: carrinho, dados, revisão e finalização. É um site de treino, então nenhuma compra de verdade acontece.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "AULA 36",
+          "muted",
+          80
+         ],
+         [
+          "FINALIZANDO",
+          "gold",
+          150
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Abre o carrinho: get by test id shopping-cart-link, click. Depois o botão checkout.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "compra.spec.js",
+        "codigo": "import { test, expect } from '@playwright/test';\n\ntest.describe('Compra', () => {\n  test.beforeEach(async ({ page }) => {\n    await page.goto('/');\n    await page.getByTestId('username').fill(process.env.SAUCE_USER);\n    await page.getByTestId('password').fill(process.env.SAUCE_PASSWORD);\n    await page.getByTestId('login-button').click();\n  });\n\n  test('compra uma mochila do começo ao fim', async ({ page }) => {\n    await page.getByTestId('add-to-cart-sauce-labs-backpack').click();\n    await expect(page.getByTestId('shopping-cart-badge')).toHaveText('1');\n    await page.getByTestId('shopping-cart-link').click();\n    await page.getByTestId('checkout').click();\n  });\n});",
+        "legenda": "shopping-cart-link e checkout",
+        "fonte": 22,
+        "digitar": true,
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  tests/",
+         "    compra.spec.js",
+         "    login.spec.js",
+         "    usuarios.spec.js",
+         "  .env",
+         "  .env.example",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "digitar_de": 14,
+        "digitar_ate": 15,
+        "rolar": true,
+        "rolar_de": 0.6,
+        "rolar_dur": 0.8
+       }
+      },
+      {
+       "text": "Na tela de dados, três campos: nome, sobrenome e CEP. Os data-test são firstName, lastName e postalCode.",
+       "scene": {
+        "type": "devtools",
+        "media": "site_sauce_dados_dev",
+        "url": "https://www.saucedemo.com/",
+        "acoes": [
+         {
+          "fill": [
+           "#user-name",
+           "standard_user"
+          ]
+         },
+         {
+          "fill": [
+           "#password",
+           "secret_sauce"
+          ]
+         },
+         {
+          "click": "#login-button"
+         },
+         {
+          "click": "[data-test=\"add-to-cart-sauce-labs-backpack\"]"
+         },
+         {
+          "click": "[data-test=\"shopping-cart-link\"]"
+         },
+         {
+          "click": "[data-test=\"checkout\"]"
+         }
+        ],
+        "inspecionar": "[data-test=\"firstName\"]",
+        "aberto": true,
+        "attrs": [
+         "class",
+         "placeholder",
+         "data-test",
+         "id"
+        ],
+        "realce": [
+         "data-test"
+        ],
+        "realce_em": 1.0,
+        "realce_rotulo": "firstName",
+        "legenda": "firstName, lastName e postalCode"
+       }
+      },
+      {
+       "text": "Preenche os três e clica em continue.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "compra.spec.js",
+        "codigo": "import { test, expect } from '@playwright/test';\n\ntest.describe('Compra', () => {\n  test.beforeEach(async ({ page }) => {\n    await page.goto('/');\n    await page.getByTestId('username').fill(process.env.SAUCE_USER);\n    await page.getByTestId('password').fill(process.env.SAUCE_PASSWORD);\n    await page.getByTestId('login-button').click();\n  });\n\n  test('compra uma mochila do começo ao fim', async ({ page }) => {\n    await page.getByTestId('add-to-cart-sauce-labs-backpack').click();\n    await expect(page.getByTestId('shopping-cart-badge')).toHaveText('1');\n    await page.getByTestId('shopping-cart-link').click();\n    await page.getByTestId('checkout').click();\n    await page.getByTestId('firstName').fill('Maria');\n    await page.getByTestId('lastName').fill('Silva');\n    await page.getByTestId('postalCode').fill('88000-000');\n    await page.getByTestId('continue').click();\n  });\n});",
+        "legenda": "Os três campos e continue",
+        "fonte": 22,
+        "digitar": true,
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  tests/",
+         "    compra.spec.js",
+         "    login.spec.js",
+         "    usuarios.spec.js",
+         "  .env",
+         "  .env.example",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "digitar_de": 16,
+        "digitar_ate": 19,
+        "rolar": true,
+        "rolar_de": 0.6,
+        "rolar_dur": 0.8
+       }
+      },
+      {
+       "text": "Na tela de revisão, clica em finish.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "compra.spec.js",
+        "codigo": "import { test, expect } from '@playwright/test';\n\ntest.describe('Compra', () => {\n  test.beforeEach(async ({ page }) => {\n    await page.goto('/');\n    await page.getByTestId('username').fill(process.env.SAUCE_USER);\n    await page.getByTestId('password').fill(process.env.SAUCE_PASSWORD);\n    await page.getByTestId('login-button').click();\n  });\n\n  test('compra uma mochila do começo ao fim', async ({ page }) => {\n    await page.getByTestId('add-to-cart-sauce-labs-backpack').click();\n    await expect(page.getByTestId('shopping-cart-badge')).toHaveText('1');\n    await page.getByTestId('shopping-cart-link').click();\n    await page.getByTestId('checkout').click();\n    await page.getByTestId('firstName').fill('Maria');\n    await page.getByTestId('lastName').fill('Silva');\n    await page.getByTestId('postalCode').fill('88000-000');\n    await page.getByTestId('continue').click();\n    await page.getByTestId('finish').click();\n  });\n});",
+        "legenda": "finish",
+        "fonte": 22,
+        "digitar": true,
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  tests/",
+         "    compra.spec.js",
+         "    login.spec.js",
+         "    usuarios.spec.js",
+         "  .env",
+         "  .env.example",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "digitar_de": 20,
+        "digitar_ate": 20,
+        "rolar": true,
+        "rolar_de": 0.6,
+        "rolar_dur": 0.8
+       }
+      },
+      {
+       "text": "E a conferência final: complete-header, to have text, Thank you for your order.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "compra.spec.js",
+        "codigo": "import { test, expect } from '@playwright/test';\n\ntest.describe('Compra', () => {\n  test.beforeEach(async ({ page }) => {\n    await page.goto('/');\n    await page.getByTestId('username').fill(process.env.SAUCE_USER);\n    await page.getByTestId('password').fill(process.env.SAUCE_PASSWORD);\n    await page.getByTestId('login-button').click();\n  });\n\n  test('compra uma mochila do começo ao fim', async ({ page }) => {\n    await page.getByTestId('add-to-cart-sauce-labs-backpack').click();\n    await expect(page.getByTestId('shopping-cart-badge')).toHaveText('1');\n    await page.getByTestId('shopping-cart-link').click();\n    await page.getByTestId('checkout').click();\n    await page.getByTestId('firstName').fill('Maria');\n    await page.getByTestId('lastName').fill('Silva');\n    await page.getByTestId('postalCode').fill('88000-000');\n    await page.getByTestId('continue').click();\n    await page.getByTestId('finish').click();\n    await expect(page.getByTestId('complete-header')).toHaveText('Thank you for your order!');\n  });\n});",
+        "legenda": "complete-header = o título do final",
+        "fonte": 22,
+        "digitar": true,
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  tests/",
+         "    compra.spec.js",
+         "    login.spec.js",
+         "    usuarios.spec.js",
+         "  .env",
+         "  .env.example",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "digitar_de": 21,
+        "digitar_ate": 21,
+        "rolar": true,
+        "rolar_de": 0.6,
+        "rolar_dur": 0.8
+       }
+      },
+      {
+       "text": "Roda com o navegador aparecendo e olha o fluxo inteiro acontecendo sozinho.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "compra.spec.js",
+        "codigo": "  test('compra uma mochila do começo ao fim', async ({ page }) => {\n    await page.getByTestId('add-to-cart-sauce-labs-backpack').click();\n    await expect(page.getByTestId('shopping-cart-badge')).toHaveText('1');\n    await page.getByTestId('shopping-cart-link').click();\n    await page.getByTestId('checkout').click();\n    await page.getByTestId('firstName').fill('Maria');\n    await page.getByTestId('lastName').fill('Silva');\n    await page.getByTestId('postalCode').fill('88000-000');\n    await page.getByTestId('continue').click();\n    await page.getByTestId('finish').click();\n    await expect(page.getByTestId('complete-header')).toHaveText('Thank you for your order!');\n  });",
+        "legenda": "O fluxo inteiro, sozinho",
+        "fonte": 26,
+        "digitar": false,
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  tests/",
+         "    compra.spec.js",
+         "    login.spec.js",
+         "    usuarios.spec.js",
+         "  .env",
+         "  .env.example",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "linha0": 11,
+        "terminal": [
+         {
+          "cmd": "npx playwright test compra.spec.js --headed --project=chromium",
+          "em": 0.03
+         },
+         {
+          "out": "Running 1 test using 1 worker",
+          "cor": "mut",
+          "em": 0.08
+         },
+         {
+          "out": "  1 passed (3.4s)",
+          "cor": "ac",
+          "em": 0.86
+         }
+        ],
+        "navegador": {
+         "media": "rec_compra",
+         "url": "https://www.saucedemo.com/",
+         "gravar": true,
+         "acoes": [
+          {
+           "fill": [
+            "#user-name",
+            "standard_user"
+           ]
+          },
+          {
+           "fill": [
+            "#password",
+            "secret_sauce"
+           ]
+          },
+          {
+           "click": "#login-button"
+          },
+          {
+           "click": "[data-test=\"add-to-cart-sauce-labs-backpack\"]"
+          },
+          {
+           "click": "[data-test=\"shopping-cart-link\"]"
+          },
+          {
+           "click": "[data-test=\"checkout\"]"
+          },
+          {
+           "fill": [
+            "[data-test=\"firstName\"]",
+            "Maria"
+           ]
+          },
+          {
+           "fill": [
+            "[data-test=\"lastName\"]",
+            "Silva"
+           ]
+          },
+          {
+           "fill": [
+            "[data-test=\"postalCode\"]",
+            "88000-000"
+           ]
+          },
+          {
+           "click": "[data-test=\"continue\"]"
+          },
+          {
+           "click": "[data-test=\"finish\"]"
+          }
+         ],
+         "espera_inicio": 800,
+         "espera_fim": 2200,
+         "delay_letra": 45,
+         "titulo": "Chromium",
+         "em": 0.1,
+         "ate": 0.84
+        }
+       }
+      },
+      {
+       "text": "Na próxima aula: uma coisa que você talvez já tenha percebido.",
+       "scene": {
+        "type": "passo",
+        "icone": "▶",
+        "titulo": "Próxima aula",
+        "sub": "percebeu?"
+       }
+      },
+      {
+       "text": "Te vejo lá!",
+       "scene": {
+        "type": "endcard",
+        "sub": "PRÓXIMA: PERCEBEU?"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "shorts": [],
+  "tiktoks": []
+ }
+}

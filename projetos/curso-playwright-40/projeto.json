@@ -1,0 +1,380 @@
+{
+ "title": "Playwright para leigos · Aula 40",
+ "slug": "curso-playwright-40",
+ "idioma": "pt",
+ "destino": "curso",
+ "marca": [
+  "PLAYWRIGHT",
+  "PARA LEIGOS"
+ ],
+ "cor_fundo": "#3fd68a",
+ "sem_legenda": true,
+ "legenda_y": 0.93,
+ "selo": "MÓDULO 8 · AULA 40",
+ "voz": {
+  "nome": "gravada",
+  "motor": "eleven",
+  "eleven_voz": "Vinícius Torales"
+ },
+ "serie": [],
+ "meta": {
+  "titles": [
+   "Aula 40: A mesma receita - ProdutosPage e CheckoutPage"
+  ],
+  "description": "",
+  "tags": []
+ },
+ "notes": "Curso Playwright para leigos. Não publica (destino: curso). Roteiro em curso-playwright/roteiros/.",
+ "script": {
+  "long": {
+   "parts": [
+    {
+     "chapter": "",
+     "sentences": [
+      {
+       "text": "Você já sabe a receita: class, constructor, elementos e ações. Agora é só aplicar.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "AULA 40",
+          "muted",
+          80
+         ],
+         [
+          "A MESMA RECEITA",
+          "gold",
+          150
+         ]
+        ]
+       }
+      },
+      {
+       "text": "ProdutosPage: os elementos são o título, o ícone do carrinho e o numerozinho.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "ProdutosPage.js",
+        "codigo": "export class ProdutosPage {\n  constructor(page) {\n    this.page = page;\n    this.titulo = page.getByTestId('title');\n    this.iconeCarrinho = page.getByTestId('shopping-cart-link');\n    this.contadorCarrinho = page.getByTestId('shopping-cart-badge');\n  }\n\n  async adicionar(produto) {\n    await this.page.getByTestId(`add-to-cart-${produto}`).click();\n  }\n\n  async irParaCarrinho() {\n    await this.iconeCarrinho.click();\n  }\n}",
+        "legenda": "Os elementos da página de produtos",
+        "fonte": 20,
+        "digitar": false,
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  pages/",
+         "    CheckoutPage.js",
+         "    LoginPage.js",
+         "    ProdutosPage.js",
+         "  tests/",
+         "    compra.spec.js",
+         "    login.spec.js",
+         "    usuarios.spec.js",
+         "  .env",
+         "  .env.example",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "destaque": [
+         4,
+         5,
+         6
+        ],
+        "destaque_em": 0.6
+       }
+      },
+      {
+       "text": "E duas ações: adicionar um produto, e ir pro carrinho. Repara no adicionar: ele recebe o nome do produto e monta o data-test com crase, igual você aprendeu na aula 32.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "ProdutosPage.js",
+        "codigo": "export class ProdutosPage {\n  constructor(page) {\n    this.page = page;\n    this.titulo = page.getByTestId('title');\n    this.iconeCarrinho = page.getByTestId('shopping-cart-link');\n    this.contadorCarrinho = page.getByTestId('shopping-cart-badge');\n  }\n\n  async adicionar(produto) {\n    await this.page.getByTestId(`add-to-cart-${produto}`).click();\n  }\n\n  async irParaCarrinho() {\n    await this.iconeCarrinho.click();\n  }\n}",
+        "legenda": "adicionar(produto): o data-test com crase",
+        "fonte": 20,
+        "digitar": false,
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  pages/",
+         "    CheckoutPage.js",
+         "    LoginPage.js",
+         "    ProdutosPage.js",
+         "  tests/",
+         "    compra.spec.js",
+         "    login.spec.js",
+         "    usuarios.spec.js",
+         "  .env",
+         "  .env.example",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "destaque": [
+         9,
+         10,
+         13,
+         14
+        ],
+        "destaque_em": 0.6
+       }
+      },
+      {
+       "text": "CheckoutPage: os campos de nome, sobrenome e CEP, os botões, e a mensagem final.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "CheckoutPage.js",
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  pages/",
+         "    CheckoutPage.js",
+         "    LoginPage.js",
+         "    ProdutosPage.js",
+         "  tests/",
+         "    compra.spec.js",
+         "    login.spec.js",
+         "    usuarios.spec.js",
+         "  .env",
+         "  .env.example",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "codigo": "export class CheckoutPage {\n  constructor(page) {\n    this.page = page;\n    this.botaoCheckout = page.getByTestId('checkout');\n    this.nome = page.getByTestId('firstName');\n    this.sobrenome = page.getByTestId('lastName');\n    this.cep = page.getByTestId('postalCode');\n    this.botaoContinuar = page.getByTestId('continue');\n    this.botaoFinalizar = page.getByTestId('finish');\n    this.mensagemFinal = page.getByTestId('complete-header');\n  }\n\n  async preencherDados(nome, sobrenome, cep) {\n    await this.nome.fill(nome);\n    await this.sobrenome.fill(sobrenome);\n    await this.cep.fill(cep);\n    await this.botaoContinuar.click();\n  }\n}",
+        "legenda": "Os elementos do checkout",
+        "fonte": 20,
+        "digitar": false,
+        "destaque": [
+         4,
+         5,
+         6,
+         7,
+         8,
+         9,
+         10
+        ],
+        "destaque_em": 0.6,
+        "rolar": true,
+        "rolar_de": 4.5,
+        "rolar_dur": 1.2
+       }
+      },
+      {
+       "text": "E a ação preencher dados, que preenche os três campos e clica em continuar.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "CheckoutPage.js",
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  pages/",
+         "    CheckoutPage.js",
+         "    LoginPage.js",
+         "    ProdutosPage.js",
+         "  tests/",
+         "    compra.spec.js",
+         "    login.spec.js",
+         "    usuarios.spec.js",
+         "  .env",
+         "  .env.example",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "codigo": "export class CheckoutPage {\n  constructor(page) {\n    this.page = page;\n    this.botaoCheckout = page.getByTestId('checkout');\n    this.nome = page.getByTestId('firstName');\n    this.sobrenome = page.getByTestId('lastName');\n    this.cep = page.getByTestId('postalCode');\n    this.botaoContinuar = page.getByTestId('continue');\n    this.botaoFinalizar = page.getByTestId('finish');\n    this.mensagemFinal = page.getByTestId('complete-header');\n  }\n\n  async preencherDados(nome, sobrenome, cep) {\n    await this.nome.fill(nome);\n    await this.sobrenome.fill(sobrenome);\n    await this.cep.fill(cep);\n    await this.botaoContinuar.click();\n  }\n}",
+        "legenda": "preencherDados(nome, sobrenome, cep)",
+        "fonte": 20,
+        "digitar": false,
+        "destaque": [
+         13,
+         14,
+         15,
+         16,
+         17
+        ],
+        "destaque_em": 0.6,
+        "rolar": true,
+        "rolar_de": 0.6,
+        "rolar_dur": 1.0
+       }
+      },
+      {
+       "text": "No teste da compra, cada passo agora lê como uma frase: produtos ponto adicionar, produtos ponto ir para carrinho, checkout ponto preencher dados.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "compra.spec.js",
+        "codigo": "import { test, expect } from '@playwright/test';\nimport { LoginPage } from '../pages/LoginPage';\nimport { ProdutosPage } from '../pages/ProdutosPage';\nimport { CheckoutPage } from '../pages/CheckoutPage';\n\ntest.describe('Compra', () => {\n  test.beforeEach(async ({ page }) => {\n    await page.goto('/');\n    const login = new LoginPage(page);\n    await login.entrar(process.env.SAUCE_USER, process.env.SAUCE_PASSWORD);\n  });\n\n  test('compra uma mochila do começo ao fim', async ({ page }) => {\n    const produtos = new ProdutosPage(page);\n    const checkout = new CheckoutPage(page);\n\n    await produtos.adicionar('sauce-labs-backpack');\n    await expect(produtos.contadorCarrinho).toHaveText('1');\n    await produtos.irParaCarrinho();\n    await checkout.botaoCheckout.click();\n    await checkout.preencherDados('Maria', 'Silva', '88000-000');\n    await checkout.botaoFinalizar.click();\n    await expect(checkout.mensagemFinal).toHaveText('Thank you for your order!');\n  });\n});",
+        "legenda": "Cada passo lê como uma frase",
+        "fonte": 22,
+        "digitar": false,
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  pages/",
+         "    CheckoutPage.js",
+         "    LoginPage.js",
+         "    ProdutosPage.js",
+         "  tests/",
+         "    compra.spec.js",
+         "    login.spec.js",
+         "    usuarios.spec.js",
+         "  .env",
+         "  .env.example",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "destaque": [
+         17,
+         19,
+         21
+        ],
+        "destaque_em": 2.6,
+        "rolar": true,
+        "rolar_de": 0.6,
+        "rolar_dur": 1.4
+       }
+      },
+      {
+       "text": "Roda: o fluxo inteiro continua passando.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "compra.spec.js",
+        "codigo": "\n    await produtos.adicionar('sauce-labs-backpack');\n    await expect(produtos.contadorCarrinho).toHaveText('1');\n    await produtos.irParaCarrinho();\n    await checkout.botaoCheckout.click();\n    await checkout.preencherDados('Maria', 'Silva', '88000-000');\n    await checkout.botaoFinalizar.click();\n    await expect(checkout.mensagemFinal).toHaveText('Thank you for your order!');\n  });",
+        "legenda": "O fluxo inteiro continua passando",
+        "fonte": 26,
+        "digitar": false,
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  pages/",
+         "    CheckoutPage.js",
+         "    LoginPage.js",
+         "    ProdutosPage.js",
+         "  tests/",
+         "    compra.spec.js",
+         "    login.spec.js",
+         "    usuarios.spec.js",
+         "  .env",
+         "  .env.example",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "linha0": 16,
+        "terminal": [
+         {
+          "cmd": "npx playwright test compra.spec.js --headed --project=chromium",
+          "em": 0.03
+         },
+         {
+          "out": "Running 1 test using 1 worker",
+          "cor": "mut",
+          "em": 0.08
+         },
+         {
+          "out": "  1 passed (3.4s)",
+          "cor": "ac",
+          "em": 0.86
+         }
+        ],
+        "navegador": {
+         "media": "rec_compra_po",
+         "url": "https://www.saucedemo.com/",
+         "gravar": true,
+         "acoes": [
+          {
+           "fill": [
+            "#user-name",
+            "standard_user"
+           ]
+          },
+          {
+           "fill": [
+            "#password",
+            "secret_sauce"
+           ]
+          },
+          {
+           "click": "#login-button"
+          },
+          {
+           "click": "[data-test=\"add-to-cart-sauce-labs-backpack\"]"
+          },
+          {
+           "click": "[data-test=\"shopping-cart-link\"]"
+          },
+          {
+           "click": "[data-test=\"checkout\"]"
+          },
+          {
+           "fill": [
+            "[data-test=\"firstName\"]",
+            "Maria"
+           ]
+          },
+          {
+           "fill": [
+            "[data-test=\"lastName\"]",
+            "Silva"
+           ]
+          },
+          {
+           "fill": [
+            "[data-test=\"postalCode\"]",
+            "88000-000"
+           ]
+          },
+          {
+           "click": "[data-test=\"continue\"]"
+          },
+          {
+           "click": "[data-test=\"finish\"]"
+          }
+         ],
+         "espera_inicio": 800,
+         "espera_fim": 2200,
+         "delay_letra": 45,
+         "titulo": "Chromium",
+         "em": 0.1,
+         "ate": 0.84
+        }
+       }
+      },
+      {
+       "text": "Na próxima aula: um relatório que se lê como roteiro.",
+       "scene": {
+        "type": "passo",
+        "icone": "▶",
+        "titulo": "Próxima aula",
+        "sub": "test.step"
+       }
+      },
+      {
+       "text": "Te vejo lá!",
+       "scene": {
+        "type": "endcard",
+        "sub": "PRÓXIMA: TEST.STEP"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "shorts": [],
+  "tiktoks": []
+ }
+}

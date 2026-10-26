@@ -1,0 +1,167 @@
+{
+ "title": "Playwright para leigos · Aula 37",
+ "slug": "curso-playwright-37",
+ "idioma": "pt",
+ "destino": "curso",
+ "marca": [
+  "PLAYWRIGHT",
+  "PARA LEIGOS"
+ ],
+ "cor_fundo": "#3fd68a",
+ "sem_legenda": true,
+ "legenda_y": 0.93,
+ "selo": "MÓDULO 8 · AULA 37",
+ "voz": {
+  "nome": "gravada",
+  "motor": "eleven",
+  "eleven_voz": "Vinícius Torales"
+ },
+ "serie": [],
+ "meta": {
+  "titles": [
+   "Aula 37: Percebeu que estamos copiando código?"
+  ],
+  "description": "",
+  "tags": []
+ },
+ "notes": "Curso Playwright para leigos. Não publica (destino: curso). Roteiro em curso-playwright/roteiros/.",
+ "script": {
+  "long": {
+   "parts": [
+    {
+     "chapter": "",
+     "sentences": [
+      {
+       "text": "Olha o login no login ponto spec, e olha o login no compra ponto spec. É o mesmo código, duas vezes.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "compra.spec.js",
+        "codigo": "import { test, expect } from '@playwright/test';\n\ntest.describe('Compra', () => {\n  test.beforeEach(async ({ page }) => {\n    await page.goto('/');\n    await page.getByTestId('username').fill(process.env.SAUCE_USER);\n    await page.getByTestId('password').fill(process.env.SAUCE_PASSWORD);\n    await page.getByTestId('login-button').click();\n  });\n",
+        "legenda": "O mesmo login do login.spec.js",
+        "fonte": 24,
+        "digitar": false,
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  tests/",
+         "    compra.spec.js",
+         "    login.spec.js",
+         "    usuarios.spec.js",
+         "  .env",
+         "  .env.example",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "destaque": [
+         6,
+         7,
+         8
+        ],
+        "destaque_em": 0.6
+       }
+      },
+      {
+       "text": "Agora imagina dez arquivos de teste. Se o botão de login mudar, você arruma em dez lugares.",
+       "scene": {
+        "type": "cards",
+        "itens": [
+         [
+          "📄",
+          "10 arquivos",
+          "o mesmo login em todos"
+         ],
+         [
+          "✎",
+          "O botão mudou?",
+          "arruma em 10 lugares",
+          "#ff6b6b"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "A solução é guardar o jeito de usar cada página num lugar só. Isso se chama Page Object: o objeto da página.",
+       "scene": {
+        "type": "traducao",
+        "codigo": "Page Object",
+        "texto_puro": true,
+        "partes": [
+         [
+          "Page",
+          "página"
+         ],
+         [
+          "Object",
+          "objeto"
+         ]
+        ],
+        "passo": 1.6
+       }
+      },
+      {
+       "text": "Pensa num controle remoto: você aperta ligar e não precisa saber como a TV funciona por dentro.",
+       "scene": {
+        "type": "cards",
+        "itens": [
+         [
+          "📺",
+          "Controle remoto",
+          "aperta ligar e pronto"
+         ],
+         [
+          "⚙",
+          "Por dentro",
+          "você não precisa saber",
+          "#69a7ff"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "O teste vai dizer só login ponto entrar. Os detalhes de como entrar ficam guardados no Page Object.",
+       "scene": {
+        "type": "compare",
+        "items": [
+         [
+          "3 LINHAS DE LOGIN",
+          "EM CADA TESTE",
+          "red"
+         ],
+         [
+          "login.entrar(...)",
+          "UMA LINHA SÓ",
+          "gold"
+         ]
+        ],
+        "size": 80,
+        "stagger": 1.2,
+        "vs": true
+       }
+      },
+      {
+       "text": "Na próxima aula, a gente cria o primeiro, com calma.",
+       "scene": {
+        "type": "passo",
+        "icone": "▶",
+        "titulo": "Próxima aula",
+        "sub": "criando o LoginPage"
+       }
+      },
+      {
+       "text": "Te vejo lá!",
+       "scene": {
+        "type": "endcard",
+        "sub": "PRÓXIMA: CRIANDO O LOGINPAGE"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "shorts": [],
+  "tiktoks": []
+ }
+}

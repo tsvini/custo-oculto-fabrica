@@ -1,0 +1,245 @@
+{
+ "title": "Playwright para leigos · Aula 41",
+ "slug": "curso-playwright-41",
+ "idioma": "pt",
+ "destino": "curso",
+ "marca": [
+  "PLAYWRIGHT",
+  "PARA LEIGOS"
+ ],
+ "cor_fundo": "#3fd68a",
+ "sem_legenda": true,
+ "legenda_y": 0.93,
+ "selo": "MÓDULO 8 · AULA 41",
+ "voz": {
+  "nome": "gravada",
+  "motor": "eleven",
+  "eleven_voz": "Vinícius Torales"
+ },
+ "serie": [],
+ "meta": {
+  "titles": [
+   "Aula 41: test.step - um relatório que se lê como roteiro"
+  ],
+  "description": "",
+  "tags": []
+ },
+ "notes": "Curso Playwright para leigos. Não publica (destino: curso). Roteiro em curso-playwright/roteiros/.",
+ "script": {
+  "long": {
+   "parts": [
+    {
+     "chapter": "",
+     "sentences": [
+      {
+       "text": "Quando um teste longo falha, você quer saber em qual parte.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "AULA 41",
+          "muted",
+          80
+         ],
+         [
+          "TEST.STEP",
+          "gold",
+          200
+         ]
+        ]
+       }
+      },
+      {
+       "text": "A sintaxe: await test ponto step, abre parênteses, o nome do passo entre aspas, vírgula, async, parênteses, seta, e abre chaves.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "compra.spec.js",
+        "codigo": "import { test, expect } from '@playwright/test';\nimport { LoginPage } from '../pages/LoginPage';\nimport { ProdutosPage } from '../pages/ProdutosPage';\nimport { CheckoutPage } from '../pages/CheckoutPage';\n\ntest.describe('Compra', () => {\n  test.beforeEach(async ({ page }) => {\n    await page.goto('/');\n    const login = new LoginPage(page);\n    await login.entrar(process.env.SAUCE_USER, process.env.SAUCE_PASSWORD);\n  });\n\n  test('compra uma mochila do começo ao fim', async ({ page }) => {\n    const produtos = new ProdutosPage(page);\n    const checkout = new CheckoutPage(page);\n\n    await test.step('adiciona a mochila no carrinho', async () => {\n    });\n  });\n});",
+        "legenda": "await test.step('nome', async () => {",
+        "fonte": 22,
+        "digitar": true,
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  pages/",
+         "    CheckoutPage.js",
+         "    LoginPage.js",
+         "    ProdutosPage.js",
+         "  tests/",
+         "    compra.spec.js",
+         "    login.spec.js",
+         "    usuarios.spec.js",
+         "  .env",
+         "  .env.example",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "digitar_de": 17,
+        "digitar_ate": 17,
+        "rolar": true,
+        "rolar_de": 0.6,
+        "rolar_dur": 0.8
+       }
+      },
+      {
+       "text": "Traduzindo: test ponto step, um passo do teste. O nome, como ele aparece no relatório. E o bloco, o que esse passo faz.",
+       "scene": {
+        "type": "traducao",
+        "codigo": "await test.step('adiciona a mochila no carrinho', async () => {",
+        "partes": [
+         [
+          "test.step",
+          "um passo do teste"
+         ],
+         [
+          "'adiciona a mochila no carrinho'",
+          "o nome no relatório"
+         ],
+         [
+          "async () => {",
+          "o que o passo faz:"
+         ]
+        ],
+        "passo": 2.0
+       }
+      },
+      {
+       "text": "Coloca o primeiro passo: adiciona a mochila no carrinho. Roda e abre o relatório: o passo aparece com esse nome.",
+       "scene": {
+        "type": "pw_relatorio",
+        "testes": [
+         [
+          "Compra › compra uma mochila do começo ao fim",
+          "compra.spec.js:13",
+          "chromium",
+          "ok",
+          "2.6s"
+         ]
+        ],
+        "abrir": {
+         "titulo": "compra uma mochila do começo ao fim",
+         "arquivo": "compra.spec.js:13",
+         "projeto": "chromium",
+         "passos": [
+          [
+           "Before Hooks",
+           "1.1s"
+          ],
+          [
+           "adiciona a mochila no carrinho",
+           "0.3s"
+          ]
+         ]
+        },
+        "legenda": "O passo aparece com o nome que você deu"
+       }
+      },
+      {
+       "text": "Agora os outros três, do mesmo jeito: abre o carrinho, preenche os dados de entrega, finaliza a compra.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "compra.spec.js",
+        "codigo": "import { test, expect } from '@playwright/test';\nimport { LoginPage } from '../pages/LoginPage';\nimport { ProdutosPage } from '../pages/ProdutosPage';\nimport { CheckoutPage } from '../pages/CheckoutPage';\n\ntest.describe('Compra', () => {\n  test.beforeEach(async ({ page }) => {\n    await page.goto('/');\n    const login = new LoginPage(page);\n    await login.entrar(process.env.SAUCE_USER, process.env.SAUCE_PASSWORD);\n  });\n\n  test('compra uma mochila do começo ao fim', async ({ page }) => {\n    const produtos = new ProdutosPage(page);\n    const checkout = new CheckoutPage(page);\n\n    await test.step('adiciona a mochila no carrinho', async () => {\n      await produtos.adicionar('sauce-labs-backpack');\n      await expect(produtos.contadorCarrinho).toHaveText('1');\n    });\n\n    await test.step('abre o carrinho', async () => {\n      await produtos.irParaCarrinho();\n      await expect(page.getByText('Sauce Labs Backpack')).toBeVisible();\n    });\n\n    await test.step('preenche os dados de entrega', async () => {\n      await checkout.botaoCheckout.click();\n      await checkout.preencherDados('Maria', 'Silva', '88000-000');\n    });\n\n    await test.step('finaliza a compra', async () => {\n      await checkout.botaoFinalizar.click();\n      await expect(checkout.mensagemFinal).toHaveText('Thank you for your order!');\n    });\n  });\n});",
+        "legenda": "Os quatro passos",
+        "fonte": 22,
+        "digitar": false,
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  pages/",
+         "    CheckoutPage.js",
+         "    LoginPage.js",
+         "    ProdutosPage.js",
+         "  tests/",
+         "    compra.spec.js",
+         "    login.spec.js",
+         "    usuarios.spec.js",
+         "  .env",
+         "  .env.example",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "destaque": [
+         17,
+         22,
+         27,
+         32
+        ],
+        "destaque_em": 0.6,
+        "rolar": true,
+        "rolar_de": 1.8,
+        "rolar_dur": 2.0
+       }
+      },
+      {
+       "text": "E se falhar, o relatório mostra exatamente em qual passo.",
+       "scene": {
+        "type": "pw_relatorio",
+        "testes": [
+         [
+          "Compra › compra uma mochila do começo ao fim",
+          "compra.spec.js:13",
+          "chromium",
+          "falhou",
+          "6.2s"
+         ]
+        ],
+        "abrir": {
+         "titulo": "compra uma mochila do começo ao fim",
+         "status": "falhou",
+         "arquivo": "compra.spec.js:13",
+         "projeto": "chromium",
+         "passos": [
+          [
+           "Before Hooks",
+           "1.1s"
+          ],
+          [
+           "adiciona a mochila no carrinho",
+           "0.3s"
+          ],
+          [
+           "abre o carrinho",
+           "0.2s"
+          ],
+          [
+           "preenche os dados de entrega",
+           "5.0s",
+           "falhou"
+          ]
+         ]
+        },
+        "legenda": "Falhou: o relatório mostra o passo"
+       }
+      },
+      {
+       "text": "Na próxima aula: fazendo o login uma vez só.",
+       "scene": {
+        "type": "passo",
+        "icone": "▶",
+        "titulo": "Próxima aula",
+        "sub": "login uma vez só"
+       }
+      },
+      {
+       "text": "Te vejo lá!",
+       "scene": {
+        "type": "endcard",
+        "sub": "PRÓXIMA: LOGIN UMA VEZ SÓ"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "shorts": [],
+  "tiktoks": []
+ }
+}

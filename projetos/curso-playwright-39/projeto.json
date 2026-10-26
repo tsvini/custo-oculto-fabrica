@@ -1,0 +1,357 @@
+{
+ "title": "Playwright para leigos · Aula 39",
+ "slug": "curso-playwright-39",
+ "idioma": "pt",
+ "destino": "curso",
+ "marca": [
+  "PLAYWRIGHT",
+  "PARA LEIGOS"
+ ],
+ "cor_fundo": "#3fd68a",
+ "sem_legenda": true,
+ "legenda_y": 0.93,
+ "selo": "MÓDULO 8 · AULA 39",
+ "voz": {
+  "nome": "gravada",
+  "motor": "eleven",
+  "eleven_voz": "Vinícius Torales"
+ },
+ "serie": [],
+ "meta": {
+  "titles": [
+   "Aula 39: Usando o LoginPage no teste"
+  ],
+  "description": "",
+  "tags": []
+ },
+ "notes": "Curso Playwright para leigos. Não publica (destino: curso). Roteiro em curso-playwright/roteiros/.",
+ "script": {
+  "long": {
+   "parts": [
+    {
+     "chapter": "",
+     "sentences": [
+      {
+       "text": "Hoje o LoginPage aprende uma ação: entrar.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "AULA 39",
+          "muted",
+          80
+         ],
+         [
+          "LOGIN.ENTRAR",
+          "gold",
+          150
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Embaixo do constructor: async entrar, abre parênteses, usuario, vírgula, senha. Uma ação que recebe o usuário e a senha.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "LoginPage.js",
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  pages/",
+         "    LoginPage.js",
+         "  tests/",
+         "    compra.spec.js",
+         "    login.spec.js",
+         "    usuarios.spec.js",
+         "  .env",
+         "  .env.example",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "codigo": "export class LoginPage {\n  constructor(page) {\n    this.page = page;\n    this.usuario = page.getByTestId('username');\n    this.senha = page.getByTestId('password');\n    this.botaoLogin = page.getByTestId('login-button');\n    this.erro = page.getByTestId('error');\n  }\n\n  async entrar(usuario, senha) {\n  }\n}",
+        "legenda": "async entrar(usuario, senha)",
+        "fonte": 26,
+        "digitar": true,
+        "digitar_de": 10,
+        "digitar_ate": 11
+       }
+      },
+      {
+       "text": "Dentro: await this ponto usuario ponto fill usuario. Preencha o campo usuário deste LoginPage com o usuário que chegou.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "LoginPage.js",
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  pages/",
+         "    LoginPage.js",
+         "  tests/",
+         "    compra.spec.js",
+         "    login.spec.js",
+         "    usuarios.spec.js",
+         "  .env",
+         "  .env.example",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "codigo": "export class LoginPage {\n  constructor(page) {\n    this.page = page;\n    this.usuario = page.getByTestId('username');\n    this.senha = page.getByTestId('password');\n    this.botaoLogin = page.getByTestId('login-button');\n    this.erro = page.getByTestId('error');\n  }\n\n  async entrar(usuario, senha) {\n    await this.usuario.fill(usuario);\n  }\n}",
+        "legenda": "Preencha o usuário deste LoginPage",
+        "fonte": 26,
+        "digitar": true,
+        "digitar_de": 11,
+        "digitar_ate": 11
+       }
+      },
+      {
+       "text": "Depois a senha, e o clique no botão.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "LoginPage.js",
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  pages/",
+         "    LoginPage.js",
+         "  tests/",
+         "    compra.spec.js",
+         "    login.spec.js",
+         "    usuarios.spec.js",
+         "  .env",
+         "  .env.example",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "codigo": "export class LoginPage {\n  constructor(page) {\n    this.page = page;\n    this.usuario = page.getByTestId('username');\n    this.senha = page.getByTestId('password');\n    this.botaoLogin = page.getByTestId('login-button');\n    this.erro = page.getByTestId('error');\n  }\n\n  async entrar(usuario, senha) {\n    await this.usuario.fill(usuario);\n    await this.senha.fill(senha);\n    await this.botaoLogin.click();\n  }\n}",
+        "legenda": "A senha e o clique",
+        "fonte": 22,
+        "digitar": true,
+        "digitar_de": 12,
+        "digitar_ate": 13
+       }
+      },
+      {
+       "text": "Agora no teste. Primeira coisa: import LoginPage from ponto ponto barra pages barra LoginPage. Traga o molde lá da pasta pages.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "login.spec.js",
+        "codigo": "import { test, expect } from '@playwright/test';\nimport { LoginPage } from '../pages/LoginPage';\n\ntest.describe('Login', () => {\n  test.beforeEach(async ({ page }) => {\n    await page.goto('/');\n  });\n\n  test('entra com usuário e senha', async ({ page }) => {\n    const login = new LoginPage(page);\n    await login.entrar(process.env.SAUCE_USER, process.env.SAUCE_PASSWORD);\n    await expect(page).toHaveURL(/inventory/);\n    await expect(page.getByTestId('title')).toHaveText('Products');\n  });\n\n  test('mostra erro para usuário bloqueado', async ({ page }) => {\n    const login = new LoginPage(page);\n    await login.entrar('locked_out_user', process.env.SAUCE_PASSWORD);\n    await expect(login.erro).toContainText('locked out');\n  });\n});",
+        "legenda": "../ = volte uma pasta",
+        "fonte": 22,
+        "digitar": true,
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  pages/",
+         "    LoginPage.js",
+         "  tests/",
+         "    compra.spec.js",
+         "    login.spec.js",
+         "    usuarios.spec.js",
+         "  .env",
+         "  .env.example",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "digitar_de": 2,
+        "digitar_ate": 2,
+        "rolar_depois": true
+       }
+      },
+      {
+       "text": "Dentro do teste: const login igual new LoginPage, passando o page. New quer dizer: crie um novo, usando esse molde.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "login.spec.js",
+        "codigo": "import { test, expect } from '@playwright/test';\nimport { LoginPage } from '../pages/LoginPage';\n\ntest.describe('Login', () => {\n  test.beforeEach(async ({ page }) => {\n    await page.goto('/');\n  });\n\n  test('entra com usuário e senha', async ({ page }) => {\n    const login = new LoginPage(page);\n    await login.entrar(process.env.SAUCE_USER, process.env.SAUCE_PASSWORD);\n    await expect(page).toHaveURL(/inventory/);\n    await expect(page.getByTestId('title')).toHaveText('Products');\n  });\n\n  test('mostra erro para usuário bloqueado', async ({ page }) => {\n    const login = new LoginPage(page);\n    await login.entrar('locked_out_user', process.env.SAUCE_PASSWORD);\n    await expect(login.erro).toContainText('locked out');\n  });\n});",
+        "legenda": "new = crie um novo",
+        "fonte": 22,
+        "digitar": true,
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  pages/",
+         "    LoginPage.js",
+         "  tests/",
+         "    compra.spec.js",
+         "    login.spec.js",
+         "    usuarios.spec.js",
+         "  .env",
+         "  .env.example",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "digitar_de": 10,
+        "digitar_ate": 10,
+        "rolar_depois": true
+       }
+      },
+      {
+       "text": "E as três linhas do login viram uma: await login ponto entrar, com usuário e senha.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "login.spec.js",
+        "codigo": "import { test, expect } from '@playwright/test';\nimport { LoginPage } from '../pages/LoginPage';\n\ntest.describe('Login', () => {\n  test.beforeEach(async ({ page }) => {\n    await page.goto('/');\n  });\n\n  test('entra com usuário e senha', async ({ page }) => {\n    const login = new LoginPage(page);\n    await login.entrar(process.env.SAUCE_USER, process.env.SAUCE_PASSWORD);\n    await expect(page).toHaveURL(/inventory/);\n    await expect(page.getByTestId('title')).toHaveText('Products');\n  });\n\n  test('mostra erro para usuário bloqueado', async ({ page }) => {\n    const login = new LoginPage(page);\n    await login.entrar('locked_out_user', process.env.SAUCE_PASSWORD);\n    await expect(login.erro).toContainText('locked out');\n  });\n});",
+        "legenda": "Três linhas viraram uma",
+        "fonte": 22,
+        "digitar": true,
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  pages/",
+         "    LoginPage.js",
+         "  tests/",
+         "    compra.spec.js",
+         "    login.spec.js",
+         "    usuarios.spec.js",
+         "  .env",
+         "  .env.example",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "digitar_de": 11,
+        "digitar_ate": 11,
+        "rolar_depois": true
+       }
+      },
+      {
+       "text": "Lendo em português: crie um LoginPage e entre com esse usuário e essa senha.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "CRIE UM LOGINPAGE",
+          "white",
+          110
+         ],
+         [
+          "E ENTRE COM ESSE USUÁRIO",
+          "gold",
+          110
+         ],
+         [
+          "E ESSA SENHA",
+          "white",
+          90
+         ]
+        ],
+        "entre": 1.3
+       }
+      },
+      {
+       "text": "Roda: continua passando.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "login.spec.js",
+        "codigo": "  test('entra com usuário e senha', async ({ page }) => {\n    const login = new LoginPage(page);\n    await login.entrar(process.env.SAUCE_USER, process.env.SAUCE_PASSWORD);\n    await expect(page).toHaveURL(/inventory/);\n    await expect(page.getByTestId('title')).toHaveText('Products');\n  });",
+        "legenda": "Continua passando",
+        "fonte": 26,
+        "digitar": false,
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  pages/",
+         "    LoginPage.js",
+         "  tests/",
+         "    compra.spec.js",
+         "    login.spec.js",
+         "    usuarios.spec.js",
+         "  .env",
+         "  .env.example",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "linha0": 9,
+        "terminal": [
+         {
+          "cmd": "npx playwright test login.spec.js --headed --project=chromium",
+          "em": 0.03
+         },
+         {
+          "out": "Running 1 test using 1 worker",
+          "cor": "mut",
+          "em": 0.08
+         },
+         {
+          "out": "  2 passed (2.6s)",
+          "cor": "ac",
+          "em": 0.86
+         }
+        ],
+        "navegador": {
+         "media": "rec_login_po",
+         "url": "https://www.saucedemo.com/",
+         "gravar": true,
+         "acoes": [
+          {
+           "fill": [
+            "#user-name",
+            "standard_user"
+           ]
+          },
+          {
+           "fill": [
+            "#password",
+            "secret_sauce"
+           ]
+          },
+          {
+           "click": "#login-button"
+          }
+         ],
+         "espera_inicio": 800,
+         "espera_fim": 1400,
+         "delay_letra": 60,
+         "titulo": "Chromium",
+         "em": 0.1,
+         "ate": 0.84
+        }
+       }
+      },
+      {
+       "text": "Na próxima aula: a mesma receita pras outras páginas.",
+       "scene": {
+        "type": "passo",
+        "icone": "▶",
+        "titulo": "Próxima aula",
+        "sub": "ProdutosPage e CheckoutPage"
+       }
+      },
+      {
+       "text": "Te vejo lá!",
+       "scene": {
+        "type": "endcard",
+        "sub": "PRÓXIMA: PRODUTOSPAGE E CHECKOUTPAGE"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "shorts": [],
+  "tiktoks": []
+ }
+}

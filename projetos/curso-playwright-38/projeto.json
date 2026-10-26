@@ -1,0 +1,273 @@
+{
+ "title": "Playwright para leigos · Aula 38",
+ "slug": "curso-playwright-38",
+ "idioma": "pt",
+ "destino": "curso",
+ "marca": [
+  "PLAYWRIGHT",
+  "PARA LEIGOS"
+ ],
+ "cor_fundo": "#3fd68a",
+ "sem_legenda": true,
+ "legenda_y": 0.93,
+ "selo": "MÓDULO 8 · AULA 38",
+ "voz": {
+  "nome": "gravada",
+  "motor": "eleven",
+  "eleven_voz": "Vinícius Torales"
+ },
+ "serie": [],
+ "meta": {
+  "titles": [
+   "Aula 38: Criando o LoginPage, passo a passo"
+  ],
+  "description": "",
+  "tags": []
+ },
+ "notes": "Curso Playwright para leigos. Não publica (destino: curso). Roteiro em curso-playwright/roteiros/.",
+ "script": {
+  "long": {
+   "parts": [
+    {
+     "chapter": "",
+     "sentences": [
+      {
+       "text": "Cria uma pasta nova chamada pages, e dentro o arquivo LoginPage ponto js.",
+       "scene": {
+        "type": "menu",
+        "app": "vscode",
+        "barra": [],
+        "menus": [
+         [
+          "New File...",
+          "New Folder...",
+          "—",
+          "Cut",
+          "Copy",
+          "—",
+          "Rename..."
+         ]
+        ],
+        "caminho": [
+         1
+        ],
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  tests/",
+         "    compra.spec.js",
+         "    login.spec.js",
+         "    usuarios.spec.js",
+         "  .env",
+         "  .env.example",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "alvo_item": "meu-primeiro-playwright",
+        "novo_pos": 3,
+        "resultado": "arquivo",
+        "novo": "pages",
+        "novo_nivel": 1,
+        "novo_pasta": true,
+        "legenda": "New Folder › pages  ·  depois LoginPage.js"
+       }
+      },
+      {
+       "text": "Primeira linha: export class LoginPage, e abre chaves.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "LoginPage.js",
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  pages/",
+         "    LoginPage.js",
+         "  tests/",
+         "    compra.spec.js",
+         "    login.spec.js",
+         "    usuarios.spec.js",
+         "  .env",
+         "  .env.example",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "codigo": "export class LoginPage {\n}",
+        "legenda": "export class LoginPage",
+        "fonte": 32,
+        "digitar": true,
+        "digitar_de": 1,
+        "digitar_ate": 1
+       }
+      },
+      {
+       "text": "Traduzindo: class é um molde, uma receita pra criar objetos. LoginPage é o nome do molde. E export deixa outros arquivos usarem.",
+       "scene": {
+        "type": "traducao",
+        "codigo": "export class LoginPage {",
+        "partes": [
+         [
+          "export",
+          "deixe outros arquivos usarem"
+         ],
+         [
+          "class",
+          "um molde"
+         ],
+         [
+          "LoginPage",
+          "o nome do molde"
+         ]
+        ],
+        "passo": 2.0
+       }
+      },
+      {
+       "text": "Dentro, o constructor, que recebe o page. Constructor quer dizer construtor: é o que roda quando alguém cria um LoginPage.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "LoginPage.js",
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  pages/",
+         "    LoginPage.js",
+         "  tests/",
+         "    compra.spec.js",
+         "    login.spec.js",
+         "    usuarios.spec.js",
+         "  .env",
+         "  .env.example",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "codigo": "export class LoginPage {\n  constructor(page) {\n  }\n}",
+        "legenda": "constructor = construtor",
+        "fonte": 30,
+        "digitar": true,
+        "digitar_de": 2,
+        "digitar_ate": 3
+       }
+      },
+      {
+       "text": "Primeira linha dele: this ponto page igual page. This quer dizer este: guarde o page dentro deste LoginPage.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "LoginPage.js",
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  pages/",
+         "    LoginPage.js",
+         "  tests/",
+         "    compra.spec.js",
+         "    login.spec.js",
+         "    usuarios.spec.js",
+         "  .env",
+         "  .env.example",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "codigo": "export class LoginPage {\n  constructor(page) {\n    this.page = page;\n  }\n}",
+        "legenda": "this = este",
+        "fonte": 30,
+        "digitar": true,
+        "digitar_de": 3,
+        "digitar_ate": 3
+       }
+      },
+      {
+       "text": "Agora os elementos da página, um por linha: this ponto usuario igual page ponto get by test id username. Guarde o campo usuário com o nome usuario.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "LoginPage.js",
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  pages/",
+         "    LoginPage.js",
+         "  tests/",
+         "    compra.spec.js",
+         "    login.spec.js",
+         "    usuarios.spec.js",
+         "  .env",
+         "  .env.example",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "codigo": "export class LoginPage {\n  constructor(page) {\n    this.page = page;\n    this.usuario = page.getByTestId('username');\n  }\n}",
+        "legenda": "this.usuario = o campo usuário",
+        "fonte": 28,
+        "digitar": true,
+        "digitar_de": 4,
+        "digitar_ate": 4
+       }
+      },
+      {
+       "text": "Mesma coisa pra senha, o botão e a mensagem de erro.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "LoginPage.js",
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  pages/",
+         "    LoginPage.js",
+         "  tests/",
+         "    compra.spec.js",
+         "    login.spec.js",
+         "    usuarios.spec.js",
+         "  .env",
+         "  .env.example",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "codigo": "export class LoginPage {\n  constructor(page) {\n    this.page = page;\n    this.usuario = page.getByTestId('username');\n    this.senha = page.getByTestId('password');\n    this.botaoLogin = page.getByTestId('login-button');\n    this.erro = page.getByTestId('error');\n  }\n}",
+        "legenda": "Senha, botão e erro",
+        "fonte": 28,
+        "digitar": true,
+        "digitar_de": 5,
+        "digitar_ate": 7
+       }
+      },
+      {
+       "text": "Por enquanto, ele só sabe onde estão as coisas. Na próxima aula, ele aprende a fazer o login, e o teste passa a usar.",
+       "scene": {
+        "type": "passo",
+        "icone": "▶",
+        "titulo": "Próxima aula",
+        "sub": "usando o LoginPage"
+       }
+      },
+      {
+       "text": "Te vejo lá!",
+       "scene": {
+        "type": "endcard",
+        "sub": "PRÓXIMA: USANDO O LOGINPAGE"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "shorts": [],
+  "tiktoks": []
+ }
+}

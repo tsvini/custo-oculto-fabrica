@@ -1,0 +1,270 @@
+{
+ "title": "Playwright para leigos · Aula 35",
+ "slug": "curso-playwright-35",
+ "idioma": "pt",
+ "destino": "curso",
+ "marca": [
+  "PLAYWRIGHT",
+  "PARA LEIGOS"
+ ],
+ "cor_fundo": "#3fd68a",
+ "sem_legenda": true,
+ "legenda_y": 0.93,
+ "selo": "MÓDULO 8 · AULA 35",
+ "voz": {
+  "nome": "gravada",
+  "motor": "eleven",
+  "eleven_voz": "Vinícius Torales"
+ },
+ "serie": [],
+ "meta": {
+  "titles": [
+   "Aula 35: O carrinho"
+  ],
+  "description": "",
+  "tags": []
+ },
+ "notes": "Curso Playwright para leigos. Não publica (destino: curso). Roteiro em curso-playwright/roteiros/.",
+ "script": {
+  "long": {
+   "parts": [
+    {
+     "chapter": "",
+     "sentences": [
+      {
+       "text": "Começa o projeto final: o fluxo de compra completo, do login até o obrigado. Hoje, o carrinho.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "AULA 35",
+          "muted",
+          80
+         ],
+         [
+          "O CARRINHO",
+          "gold",
+          200
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Depois do login, cada produto tem um botão Add to cart. Clica com o botão direito e Inspecionar: data-test igual add-to-cart-sauce-labs-backpack.",
+       "scene": {
+        "type": "devtools",
+        "media": "site_sauce_produtos_dev",
+        "url": "https://www.saucedemo.com/",
+        "acoes": [
+         {
+          "fill": [
+           "#user-name",
+           "standard_user"
+          ]
+         },
+         {
+          "fill": [
+           "#password",
+           "secret_sauce"
+          ]
+         },
+         {
+          "click": "#login-button"
+         }
+        ],
+        "inspecionar": "[data-test=\"add-to-cart-sauce-labs-backpack\"]",
+        "attrs": [
+         "class",
+         "data-test",
+         "id",
+         "name"
+        ],
+        "realce": [
+         "data-test"
+        ],
+        "realce_em": 4.0,
+        "realce_rotulo": "este",
+        "legenda": "data-test do botão Add to cart"
+       }
+      },
+      {
+       "text": "Cria o compra ponto spec ponto js, com o login no before each, do jeito que você já sabe.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "compra.spec.js",
+        "codigo": "import { test, expect } from '@playwright/test';\n\ntest.describe('Compra', () => {\n  test.beforeEach(async ({ page }) => {\n    await page.goto('/');\n    await page.getByTestId('username').fill(process.env.SAUCE_USER);\n    await page.getByTestId('password').fill(process.env.SAUCE_PASSWORD);\n    await page.getByTestId('login-button').click();\n  });\n});",
+        "legenda": "O login no beforeEach, como você já sabe",
+        "fonte": 24,
+        "digitar": false,
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  tests/",
+         "    compra.spec.js",
+         "    login.spec.js",
+         "    usuarios.spec.js",
+         "  .env",
+         "  .env.example",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ]
+       }
+      },
+      {
+       "text": "No teste: get by test id add-to-cart-sauce-labs-backpack, ponto click.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "compra.spec.js",
+        "codigo": "import { test, expect } from '@playwright/test';\n\ntest.describe('Compra', () => {\n  test.beforeEach(async ({ page }) => {\n    await page.goto('/');\n    await page.getByTestId('username').fill(process.env.SAUCE_USER);\n    await page.getByTestId('password').fill(process.env.SAUCE_PASSWORD);\n    await page.getByTestId('login-button').click();\n  });\n\n  test('compra uma mochila do começo ao fim', async ({ page }) => {\n    await page.getByTestId('add-to-cart-sauce-labs-backpack').click();\n  });\n});",
+        "legenda": "getByTestId(...).click()",
+        "fonte": 22,
+        "digitar": true,
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  tests/",
+         "    compra.spec.js",
+         "    login.spec.js",
+         "    usuarios.spec.js",
+         "  .env",
+         "  .env.example",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "digitar_de": 11,
+        "digitar_ate": 12
+       }
+      },
+      {
+       "text": "E a conferência: o numerozinho do carrinho mostra um. get by test id shopping-cart-badge, to have text um.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "compra.spec.js",
+        "codigo": "import { test, expect } from '@playwright/test';\n\ntest.describe('Compra', () => {\n  test.beforeEach(async ({ page }) => {\n    await page.goto('/');\n    await page.getByTestId('username').fill(process.env.SAUCE_USER);\n    await page.getByTestId('password').fill(process.env.SAUCE_PASSWORD);\n    await page.getByTestId('login-button').click();\n  });\n\n  test('compra uma mochila do começo ao fim', async ({ page }) => {\n    await page.getByTestId('add-to-cart-sauce-labs-backpack').click();\n    await expect(page.getByTestId('shopping-cart-badge')).toHaveText('1');\n  });\n});",
+        "legenda": "shopping-cart-badge = o numerozinho do carrinho",
+        "fonte": 22,
+        "digitar": true,
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  tests/",
+         "    compra.spec.js",
+         "    login.spec.js",
+         "    usuarios.spec.js",
+         "  .env",
+         "  .env.example",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "digitar_de": 13,
+        "digitar_ate": 13
+       }
+      },
+      {
+       "text": "Roda com o navegador aparecendo: olha ele entrando, clicando em Add to cart, e o carrinho mostrando um.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "compra.spec.js",
+        "codigo": "  test('compra uma mochila do começo ao fim', async ({ page }) => {\n    await page.getByTestId('add-to-cart-sauce-labs-backpack').click();\n    await expect(page.getByTestId('shopping-cart-badge')).toHaveText('1');\n  });",
+        "legenda": "O carrinho mostrou 1",
+        "fonte": 26,
+        "digitar": false,
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  tests/",
+         "    compra.spec.js",
+         "    login.spec.js",
+         "    usuarios.spec.js",
+         "  .env",
+         "  .env.example",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "linha0": 11,
+        "terminal": [
+         {
+          "cmd": "npx playwright test compra.spec.js --headed --project=chromium",
+          "em": 0.03
+         },
+         {
+          "out": "Running 1 test using 1 worker",
+          "cor": "mut",
+          "em": 0.08
+         },
+         {
+          "out": "  1 passed (3.4s)",
+          "cor": "ac",
+          "em": 0.86
+         }
+        ],
+        "navegador": {
+         "media": "rec_carrinho",
+         "url": "https://www.saucedemo.com/",
+         "gravar": true,
+         "acoes": [
+          {
+           "fill": [
+            "#user-name",
+            "standard_user"
+           ]
+          },
+          {
+           "fill": [
+            "#password",
+            "secret_sauce"
+           ]
+          },
+          {
+           "click": "#login-button"
+          },
+          {
+           "click": "[data-test=\"add-to-cart-sauce-labs-backpack\"]"
+          }
+         ],
+         "espera_inicio": 800,
+         "espera_fim": 1400,
+         "delay_letra": 60,
+         "titulo": "Chromium",
+         "em": 0.1,
+         "ate": 0.84
+        }
+       }
+      },
+      {
+       "text": "Na próxima aula: terminando o fluxo.",
+       "scene": {
+        "type": "passo",
+        "icone": "▶",
+        "titulo": "Próxima aula",
+        "sub": "finalizando a compra"
+       }
+      },
+      {
+       "text": "Te vejo lá!",
+       "scene": {
+        "type": "endcard",
+        "sub": "PRÓXIMA: FINALIZANDO A COMPRA"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "shorts": [],
+  "tiktoks": []
+ }
+}
