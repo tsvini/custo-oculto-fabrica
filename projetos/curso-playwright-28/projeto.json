@@ -1,0 +1,292 @@
+{
+ "title": "Playwright para leigos · Aula 28",
+ "slug": "curso-playwright-28",
+ "idioma": "pt",
+ "destino": "curso",
+ "marca": [
+  "PLAYWRIGHT",
+  "PARA LEIGOS"
+ ],
+ "cor_fundo": "#3fd68a",
+ "sem_legenda": true,
+ "legenda_y": 0.93,
+ "selo": "MÓDULO 6 · AULA 28",
+ "voz": {
+  "nome": "gravada",
+  "motor": "eleven",
+  "eleven_voz": "Vinícius Torales"
+ },
+ "serie": [],
+ "meta": {
+  "titles": [
+   "Aula 28: Trace Viewer"
+  ],
+  "description": "",
+  "tags": []
+ },
+ "notes": "Curso Playwright para leigos. Não publica (destino: curso). Roteiro em curso-playwright/roteiros/.",
+ "script": {
+  "long": {
+   "parts": [
+    {
+     "chapter": "",
+     "sentences": [
+      {
+       "text": "E quando o teste falha no GitHub, onde você não estava olhando? Pra isso existe o trace.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "AULA 28",
+          "muted",
+          80
+         ],
+         [
+          "TRACE VIEWER",
+          "gold",
+          150
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Trace quer dizer rastro: é um arquivo com tudo o que aconteceu no teste.",
+       "scene": {
+        "type": "traducao",
+        "codigo": "trace",
+        "texto_puro": true,
+        "partes": [
+         [
+          "trace",
+          "rastro: tudo o que aconteceu"
+         ]
+        ],
+        "passo": 1.2
+       }
+      },
+      {
+       "text": "Roda com traço traço trace on.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "login.spec.js",
+        "codigo": "import { test, expect } from '@playwright/test';\n\ntest.describe('Login', () => {\n  test.beforeEach(async ({ page }) => {\n    await page.goto('/');\n  });\n\n  test('entra com usuário e senha', async ({ page }) => {\n    await page.getByTestId('username').fill(process.env.SAUCE_USER);\n    await page.getByTestId('password').fill(process.env.SAUCE_PASSWORD);",
+        "legenda": "--trace on",
+        "fonte": 26,
+        "digitar": false,
+        "terminal": [
+         {
+          "cmd": "npx playwright test --trace on",
+          "em": 0.05
+         },
+         {
+          "out": "Running 6 tests using 4 workers",
+          "cor": "mut",
+          "em": 0.3
+         },
+         {
+          "out": "  6 passed (5.1s)",
+          "cor": "ac",
+          "em": 0.5
+         }
+        ],
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  tests/",
+         "    login.spec.js",
+         "  .env",
+         "  .env.example",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ]
+       }
+      },
+      {
+       "text": "Abre o relatório e clica no trace do teste.",
+       "scene": {
+        "type": "pw_relatorio",
+        "url": "https://www.saucedemo.com/",
+        "media": "site_sauce_trace",
+        "acoes": [
+         {
+          "fill": [
+           "#user-name",
+           "standard_user"
+          ]
+         },
+         {
+          "fill": [
+           "#password",
+           "secret_sauce"
+          ]
+         },
+         {
+          "click": "#login-button"
+         }
+        ],
+        "testes": [
+         [
+          "entra com usuário e senha",
+          "login.spec.js:8",
+          "chromium",
+          "falhou",
+          "6.1s"
+         ],
+         [
+          "mostra erro para usuário bloqueado",
+          "login.spec.js:18",
+          "chromium",
+          "ok",
+          "0.6s"
+         ]
+        ],
+        "abrir": {
+         "titulo": "entra com usuário e senha",
+         "arquivo": "login.spec.js:8",
+         "projeto": "chromium",
+         "passos": [
+          [
+           "Before Hooks",
+           "0.5s"
+          ],
+          [
+           "Navigate to \"/\"",
+           "0.4s"
+          ],
+          [
+           "Fill getByTestId('username')",
+           "38ms"
+          ]
+         ],
+         "anexos": [
+          [
+           "Traces",
+           "site_sauce_trace",
+           false
+          ]
+         ],
+         "anexos_em": 1.4
+        },
+        "legenda": "Traces: clica no trace"
+       }
+      },
+      {
+       "text": "Em cima, a linha do tempo. Na esquerda, os passos. No meio, a página. E embaixo, o console e a rede.",
+       "scene": {
+        "type": "pw_trace",
+        "media": "site_sauce_trace",
+        "url": "https://www.saucedemo.com/",
+        "acoes": [
+         {
+          "fill": [
+           "#user-name",
+           "standard_user"
+          ]
+         },
+         {
+          "fill": [
+           "#password",
+           "secret_sauce"
+          ]
+         },
+         {
+          "click": "#login-button"
+         }
+        ],
+        "inspecionar": "[data-test=\"title\"]",
+        "passos_pw": [
+         [
+          "Before Hooks",
+          "",
+          "520ms"
+         ],
+         [
+          "Navigate to",
+          "\"/\"",
+          "410ms"
+         ],
+         [
+          "Fill",
+          "getByTestId('username')",
+          "38ms"
+         ],
+         [
+          "Fill",
+          "getByTestId('password')",
+          "21ms"
+         ],
+         [
+          "Click",
+          "getByTestId('login-button')",
+          "96ms"
+         ],
+         [
+          "Expect",
+          "toHaveURL",
+          "12ms"
+         ],
+         [
+          "Expect",
+          "toBeVisible",
+          "9ms"
+         ],
+         [
+          "Expect",
+          "toContainText",
+          "8ms"
+         ],
+         [
+          "Expect",
+          "toHaveCount",
+          "7ms"
+         ]
+        ],
+        "sel": 6,
+        "legenda": "Passos, página, console e rede"
+       }
+      },
+      {
+       "text": "No config já vem trace on first retry: quando um teste falha e roda de novo, o trace dessa segunda tentativa é gravado. No GitHub o config já tenta de novo, então lá isso acontece sozinho. Na sua máquina, sem nova tentativa, use o traço traço trace on.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "playwright.config.js",
+        "codigo": "  /* Retry on CI only */\n  retries: process.env.CI ? 2 : 0,\n  /* Opt out of parallel tests on CI. */\n  workers: process.env.CI ? 1 : undefined,\n  /* Reporter to use. See https://playwright.dev/docs/test-reporters */\n  reporter: 'html',\n  /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */\n  use: {\n    /* Base URL to use in actions like `await page.goto('')`. */\n    // baseURL: 'http://localhost:3000',\n\n    /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */\n    trace: 'on-first-retry',\n  },",
+        "legenda": "trace: 'on-first-retry'",
+        "fonte": 24,
+        "digitar": false,
+        "linha0": 21,
+        "destaque": [
+         2,
+         13
+        ],
+        "destaque_em": 1.0
+       }
+      },
+      {
+       "text": "Na próxima aula: pausando o teste no meio.",
+       "scene": {
+        "type": "passo",
+        "icone": "▶",
+        "titulo": "Próxima aula",
+        "sub": "debug e page.pause"
+       }
+      },
+      {
+       "text": "Te vejo lá!",
+       "scene": {
+        "type": "endcard",
+        "sub": "PRÓXIMA: DEBUG E PAGE.PAUSE"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "shorts": [],
+  "tiktoks": []
+ }
+}

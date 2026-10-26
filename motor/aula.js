@@ -172,7 +172,7 @@
     let pasta = s.pasta || "C:\\meu-projeto"; const L0 = s.linhas || [];
     const maxCmd = Math.max(0, ...L0.map((l) => (l.cmd !== undefined ? l.cmd.length : 0)));
     if (("PS " + pasta + "> ").length + maxCmd > 58 && pasta.includes("\\")) pasta = "...\\" + pasta.split("\\").pop();
-    const pr = (s.prompt || "PS " + pasta + ">") + " "; const fsMin = (c.vertical ? 26 : 30) * u;
+    const pr = (s.prompt || "PS " + pasta + ">") + " "; const fsMin = (s.fonte_min || (c.vertical ? 26 : 30)) * u;  // fonte_min: saída longa de erro cabe sem quebrar
     const larg = (n) => (W - 90 * u) / (n * 0.6);
     const chars0 = Math.max(10, ...L0.map((l) => (l.cmd !== undefined ? pr.length + l.cmd.length : (l.out || "").length)));
     const fs = Math.max(fsMin, Math.min((s.fonte || 40) * u, larg(chars0 + 1))); const cap = Math.floor((W - 90 * u) / (fs * 0.6));
@@ -184,7 +184,9 @@
     // linhas com ja:true já estavam na tela na cena anterior: aparecem prontas, sem digitar de novo
     const nPassos = L.filter((l) => !l.ja && l.cmd !== undefined && !l.cont).length + L.filter((l) => !l.ja && l.out !== undefined).length * 0.35 + L.filter((l) => !l.ja && l.cont).length * 0.6;
     const passo = Math.max(0.6, (dur * (s.vel || 0.75) - 0.5) / Math.max(nPassos, 1)); let tt = t - 0.5;
+    const hl = s.destaque || []; let jl = -1;
     for (const l of L) {
+      jl++; if (hl.includes(jl)) { const kh = easeOut((t - (s.destaque_em || 1.0)) / 0.35); if (kh > 0) { ctx.save(); ctx.globalAlpha = a * kh * 0.2; ctx.fillStyle = C.yel; ctx.fillRect(x + 20 * u, yy - lh / 2, W - 40 * u, lh); ctx.globalAlpha = a * kh; ctx.fillRect(x + 20 * u, yy - lh / 2, 6 * u, lh); ctx.restore(); } }  // destaque: linhas apontadas (índice em s.linhas)
       if (l.ja) { let px = x + 40 * u;
         if (l.cmd !== undefined) { if (!l.cont) { txt(ctx, pr, font(600, fs, MONO), px, yy, C.ac2, "left", a); px += tw(ctx, pr, font(600, fs, MONO)); } txt(ctx, l.cmd, font(600, fs, MONO), px, yy, C.txt, "left", a); }
         else txt(ctx, l.out, font(500, fs, MONO), px, yy, C[l.cor] || l.cor || C.mut, "left", a);
@@ -895,6 +897,7 @@
   function pwTempo(s, dur, n) { const t0 = s.roda_em === undefined ? 1.0 : s.roda_em; const passo = s.passo || Math.max(0.35, Math.min(0.9, (dur * 0.62 - t0) / Math.max(n, 1))); return { t0, passo, fim: t0 + n * passo }; }
   // snapshot do site com faixa de miniaturas (filmstrip) e realce do elemento
   function pwSnapshot(ctx, c, t, s, media, x, y, w, h, a, kFeito, claro) {
+    if (s.depois && t > s.depois.em) s = Object.assign({}, s, { media: s.depois.media || s.media, aba_snapshot: 2, elem: s.depois.elem || s.elem });  // troca pra aba After
     const u = c.u; const m = media && media[s.media]; const el = m && (m.video || m.img);
     const fh = 84 * u; ctx.save(); ctx.globalAlpha = a; ctx.fillStyle = claro ? "#f3f3f3" : "#1b1b1b"; ctx.fillRect(x, y, w, fh); ctx.restore();
     const nT = 7, tw0 = (w - 40 * u) / nT;
@@ -929,7 +932,12 @@
     (s.arquivos || [["example.spec.js", ["has title"]]]).forEach(([arq, testes]) => {
       txt(ctx, "▾", font(700, 20 * u), x + 26 * u, yy, PW.mut, "left", a);
       ctx.save(); ctx.globalAlpha = a; ctx.fillStyle = "#e8b04a"; rr(ctx, x + 50 * u, yy - 12 * u, 20 * u, 24 * u, 3 * u); ctx.fill(); ctx.restore();
-      txt(ctx, arq, font(700, 23 * u), x + 82 * u, yy, PW.tx, "left", a); yy += 48 * u;
+      txt(ctx, arq, font(700, 23 * u), x + 82 * u, yy, PW.tx, "left", a);
+      if (s.watch) { const kw = s.watch_em ? easeOut((t - s.watch_em) / 0.3) : 1; const wx = x + LW - 150 * u;  // watch: o olho que roda de novo quando salva
+        ctx.save(); ctx.globalAlpha = a; rr(ctx, wx - 10 * u, yy - 18 * u, 120 * u, 36 * u, 18 * u); ctx.fillStyle = kw > 0 ? "rgba(255,210,63," + (0.18 * kw) + ")" : "transparent"; ctx.fill(); ctx.strokeStyle = kw > 0.5 ? C.yel : PW.mut; ctx.lineWidth = 2 * u; ctx.stroke(); ctx.restore();
+        txt(ctx, "👁 watch", font(700, 19 * u), wx + 50 * u, yy, kw > 0.5 ? C.yel : PW.mut, "center", a);
+        if (s.watch_em) rota(ctx, u, [[wx + 50 * u, yy, s.watch_em]], t); }
+      yy += 48 * u;
       testes.forEach((tt) => { const [nome, est0] = Array.isArray(tt) ? tt : [tt, s.pronto ? (s.status === "falhou" ? "falhou" : "ok") : "espera"]; const eu = gi === (s.roda || 0);
         const st = eu ? (s.pronto ? (falha ? "falhou" : "ok") : t < tm.t0 ? "espera" : fim ? (falha ? "falhou" : "ok") : "rodando") : est0;
         if (eu) { ctx.save(); ctx.globalAlpha = a * 0.9; ctx.fillStyle = PW.sel; ctx.fillRect(x, yy - 22 * u, LW, 44 * u); ctx.restore(); alvo = [x + LW - 44 * u, yy]; }
@@ -1058,7 +1066,7 @@
   };
 
   // RELATÓRIO HTML: {type:"pw_relatorio", testes:[["entra com usuário e senha","login.spec.js:9","chromium","ok","1.2s"], ...], abrir:{titulo, passos:[["adiciona a mochila","0.8s"]], erro:"..."}}
-  S.pw_relatorio = (ctx, c, t, dur, s) => {
+  S.pw_relatorio = (ctx, c, t, dur, s, media) => {
     const u = c.u; const a = easeOut(t / 0.4); const W = 1640 * u, H = 740 * u; const x = c.cx - W / 2, y = topo(c, H);
     const top = janela(ctx, x, y, W, H, u, "Playwright Test Report", a, "#ffffff");
     ctx.save(); ctx.globalAlpha = a; ctx.fillStyle = "#eef0f4"; ctx.fillRect(x, top, W, 56 * u); rr(ctx, x + 24 * u, top + 10 * u, 520 * u, 36 * u, 18 * u); ctx.fillStyle = "#fff"; ctx.fill(); ctx.restore();
@@ -1073,13 +1081,22 @@
       const d = s.abrir; const dy = top + 160 * u; const ok = d.status !== "falhou";
       pwStatus(ctx, u, x + 60 * u, dy, ok ? "ok" : "falhou", t, a); txt(ctx, d.titulo || "", font(800, 30 * u), x + 84 * u, dy, "#24292f", "left", a);
       txt(ctx, (d.arquivo || "") + "  ·  " + (d.projeto || "chromium"), font(500, 20 * u), x + 84 * u, dy + 40 * u, "#57606a", "left", a);
-      txt(ctx, "Test Steps", font(800, 24 * u), x + 60 * u, dy + 100 * u, "#24292f", "left", a);
+      if ((d.passos || []).length) txt(ctx, "Test Steps", font(800, 24 * u), x + 60 * u, dy + 100 * u, "#24292f", "left", a);
       (d.passos || []).forEach(([n, ms, st], i) => { const k = easeOut((t - 0.8 - i * 0.35) / 0.3); const yy = dy + 150 * u + i * 52 * u;
         ctx.save(); ctx.globalAlpha = a * k; ctx.fillStyle = i % 2 ? "#f6f8fa" : "#fff"; ctx.fillRect(x + 50 * u, yy - 24 * u, W - 100 * u, 48 * u); ctx.restore();
         pwStatus(ctx, u, x + 80 * u, yy, st || "ok", t, a * k); txt(ctx, n, font(600, 23 * u), x + 106 * u, yy, "#24292f", "left", a * k); txt(ctx, ms || "", font(500, 20 * u), x + W - 70 * u, yy, "#57606a", "right", a * k); });
       if (d.erro) { const ey = dy + 170 * u + (d.passos || []).length * 52 * u; const k = easeOut((t - 1.4) / 0.4);
         ctx.save(); ctx.globalAlpha = a * k; rr(ctx, x + 50 * u, ey, W - 100 * u, 120 * u, 8 * u); ctx.fillStyle = "#ffebe9"; ctx.fill(); ctx.strokeStyle = "#ff8182"; ctx.lineWidth = 2 * u; ctx.stroke(); ctx.restore();
         String(d.erro).split("\n").slice(0, 3).forEach((l, i) => txt(ctx, l, font(600, 20 * u, MONO), x + 74 * u, ey + 32 * u + i * 30 * u, i ? "#24292f" : "#cf222e", "left", a * k)); }
+      if (d.anexos) {  // print e vídeo guardados quando o teste falha
+        const ay = dy + 170 * u + (d.passos || []).length * 52 * u + (d.erro ? 140 * u : 0); const th = Math.min(150 * u, y + H - ay - 50 * u), tw0 = th * 16 / 9; const ka = easeOut((t - (d.anexos_em || 2.0)) / 0.4);
+        (Array.isArray(d.anexos) ? d.anexos : [["Screenshots", d.anexo_img, false], ["Videos", d.anexo_video_img || d.anexo_img, true]]).forEach(([rot, mk, play], i) => { const ax = x + 60 * u + i * (tw0 + 80 * u);
+          txt(ctx, rot, font(800, 22 * u), ax, ay + 14 * u, "#24292f", "left", a * ka);
+          const m = media && media[mk]; const el = m && (m.video || m.img); ctx.save(); ctx.globalAlpha = a * ka; rr(ctx, ax, ay + 34 * u, tw0, th, 6 * u); ctx.fillStyle = "#eef0f4"; ctx.fill(); ctx.clip();
+          if (el) ctx.drawImage(el, ax, ay + 34 * u, tw0, th); ctx.restore(); ctx.save(); ctx.globalAlpha = a * ka; ctx.strokeStyle = "#d0d7de"; ctx.lineWidth = 2 * u; rr(ctx, ax, ay + 34 * u, tw0, th, 6 * u); ctx.stroke(); ctx.restore();
+          if (play) { ctx.save(); ctx.globalAlpha = a * ka; ctx.beginPath(); ctx.arc(ax + tw0 / 2, ay + 34 * u + th / 2, 30 * u, 0, 7); ctx.fillStyle = "rgba(0,0,0,.55)"; ctx.fill(); ctx.fillStyle = "#fff"; ctx.beginPath();
+            ctx.moveTo(ax + tw0 / 2 - 9 * u, ay + 34 * u + th / 2 - 14 * u); ctx.lineTo(ax + tw0 / 2 + 15 * u, ay + 34 * u + th / 2); ctx.lineTo(ax + tw0 / 2 - 9 * u, ay + 34 * u + th / 2 + 14 * u); ctx.fill(); ctx.restore();
+            if (s.navegador) rota(ctx, u, [[ax + tw0 / 2, ay + 34 * u + th / 2, s.navegador.em * dur - 0.1]], t); } }); }
     } else {
       let yy = top + 170 * u; let arqAtual = null;
       T.forEach(([nome, arq, proj, st, ms], i) => { const k = easeOut((t - 0.6 - i * 0.12) / 0.3); const f0 = String(arq).split(":")[0];
@@ -1090,6 +1107,7 @@
         if (st === "instavel") txt(ctx, "flaky", font(700, 17 * u), x + 130 * u + nw + pw2, yy, "#9a6700", "left", a * k);
         txt(ctx, arq, font(500, 18 * u), x + 100 * u, yy + 26 * u, "#57606a", "left", a * k); txt(ctx, ms || "", font(500, 20 * u), x + W - 70 * u, yy, "#57606a", "right", a * k); yy += 66 * u; });
     }
+    if (s.navegador) navegadorPorCima(ctx, c, t, dur, s.navegador, media);
     legenda(ctx, c, t, s);
   };
 

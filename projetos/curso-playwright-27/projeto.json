@@ -1,0 +1,467 @@
+{
+ "title": "Playwright para leigos · Aula 27",
+ "slug": "curso-playwright-27",
+ "idioma": "pt",
+ "destino": "curso",
+ "marca": [
+  "PLAYWRIGHT",
+  "PARA LEIGOS"
+ ],
+ "cor_fundo": "#3fd68a",
+ "sem_legenda": true,
+ "legenda_y": 0.93,
+ "selo": "MÓDULO 6 · AULA 27",
+ "voz": {
+  "nome": "gravada",
+  "motor": "eleven",
+  "eleven_voz": "Vinícius Torales"
+ },
+ "serie": [],
+ "meta": {
+  "titles": [
+   "Aula 27: UI Mode"
+  ],
+  "description": "",
+  "tags": []
+ },
+ "notes": "Curso Playwright para leigos. Não publica (destino: curso). Roteiro em curso-playwright/roteiros/.",
+ "script": {
+  "long": {
+   "parts": [
+    {
+     "chapter": "",
+     "sentences": [
+      {
+       "text": "Existe um jeito bem mais visual de rodar testes: o UI Mode.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "AULA 27",
+          "muted",
+          80
+         ],
+         [
+          "UI MODE",
+          "gold",
+          200
+         ]
+        ]
+       }
+      },
+      {
+       "text": "No terminal: npx playwright test traço traço ui.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "login.spec.js",
+        "codigo": "import { test, expect } from '@playwright/test';\n\ntest.describe('Login', () => {\n  test.beforeEach(async ({ page }) => {\n    await page.goto('/');\n  });\n\n  test('entra com usuário e senha', async ({ page }) => {\n    await page.getByTestId('username').fill(process.env.SAUCE_USER);\n    await page.getByTestId('password').fill(process.env.SAUCE_PASSWORD);",
+        "legenda": "--ui",
+        "fonte": 26,
+        "digitar": false,
+        "terminal": [
+         {
+          "cmd": "npx playwright test --ui",
+          "em": 0.05
+         }
+        ],
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  tests/",
+         "    login.spec.js",
+         "  .env",
+         "  .env.example",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "colinha": true,
+        "colinha_em": 1.2
+       }
+      },
+      {
+       "text": "Abre uma janela com todos os seus testes do lado esquerdo. Clica no play.",
+       "scene": {
+        "type": "pw_ui",
+        "media": "site_sauce_ui_logado",
+        "url": "https://www.saucedemo.com/",
+        "acoes": [
+         {
+          "fill": [
+           "#user-name",
+           "standard_user"
+          ]
+         },
+         {
+          "fill": [
+           "#password",
+           "secret_sauce"
+          ]
+         },
+         {
+          "click": "#login-button"
+         }
+        ],
+        "inspecionar": "[data-test=\"title\"]",
+        "arquivos": [
+         [
+          "login.spec.js",
+          [
+           "entra com usuário e senha",
+           "mostra erro para usuário bloqueado"
+          ]
+         ]
+        ],
+        "passos_pw": [
+         [
+          "Before Hooks",
+          "",
+          "520ms"
+         ],
+         [
+          "Navigate to",
+          "\"/\"",
+          "410ms"
+         ],
+         [
+          "Fill",
+          "getByTestId('username')",
+          "38ms"
+         ],
+         [
+          "Fill",
+          "getByTestId('password')",
+          "21ms"
+         ],
+         [
+          "Click",
+          "getByTestId('login-button')",
+          "96ms"
+         ],
+         [
+          "Expect",
+          "toHaveURL",
+          "12ms"
+         ],
+         [
+          "Expect",
+          "toBeVisible",
+          "9ms"
+         ],
+         [
+          "Expect",
+          "toContainText",
+          "8ms"
+         ],
+         [
+          "Expect",
+          "toHaveCount",
+          "7ms"
+         ]
+        ],
+        "legenda": "Clica no play"
+       }
+      },
+      {
+       "text": "Ele roda e mostra cada passo. Clica num passo, e a tela mostra como a página estava naquele momento.",
+       "scene": {
+        "type": "pw_ui",
+        "media": "site_sauce_ui_logado",
+        "url": "https://www.saucedemo.com/",
+        "acoes": [
+         {
+          "fill": [
+           "#user-name",
+           "standard_user"
+          ]
+         },
+         {
+          "fill": [
+           "#password",
+           "secret_sauce"
+          ]
+         },
+         {
+          "click": "#login-button"
+         }
+        ],
+        "inspecionar": "[data-test=\"title\"]",
+        "arquivos": [
+         [
+          "login.spec.js",
+          [
+           "entra com usuário e senha",
+           "mostra erro para usuário bloqueado"
+          ]
+         ]
+        ],
+        "passos_pw": [
+         [
+          "Before Hooks",
+          "",
+          "520ms"
+         ],
+         [
+          "Navigate to",
+          "\"/\"",
+          "410ms"
+         ],
+         [
+          "Fill",
+          "getByTestId('username')",
+          "38ms"
+         ],
+         [
+          "Fill",
+          "getByTestId('password')",
+          "21ms"
+         ],
+         [
+          "Click",
+          "getByTestId('login-button')",
+          "96ms"
+         ],
+         [
+          "Expect",
+          "toHaveURL",
+          "12ms"
+         ],
+         [
+          "Expect",
+          "toBeVisible",
+          "9ms"
+         ],
+         [
+          "Expect",
+          "toContainText",
+          "8ms"
+         ],
+         [
+          "Expect",
+          "toHaveCount",
+          "7ms"
+         ]
+        ],
+        "pronto": true,
+        "legenda": "Cada passo, com a página daquele momento"
+       }
+      },
+      {
+       "text": "Dá pra voltar no tempo: ver a página antes e depois de cada clique.",
+       "scene": {
+        "type": "pw_ui",
+        "media": "site_sauce_ui_preenchido",
+        "url": "https://www.saucedemo.com/",
+        "acoes": [
+         {
+          "fill": [
+           "#user-name",
+           "standard_user"
+          ]
+         },
+         {
+          "fill": [
+           "#password",
+           "secret_sauce"
+          ]
+         }
+        ],
+        "inspecionar": "#login-button",
+        "arquivos": [
+         [
+          "login.spec.js",
+          [
+           "entra com usuário e senha",
+           "mostra erro para usuário bloqueado"
+          ]
+         ]
+        ],
+        "passos_pw": [
+         [
+          "Before Hooks",
+          "",
+          "520ms"
+         ],
+         [
+          "Navigate to",
+          "\"/\"",
+          "410ms"
+         ],
+         [
+          "Fill",
+          "getByTestId('username')",
+          "38ms"
+         ],
+         [
+          "Fill",
+          "getByTestId('password')",
+          "21ms"
+         ],
+         [
+          "Click",
+          "getByTestId('login-button')",
+          "96ms"
+         ],
+         [
+          "Expect",
+          "toHaveURL",
+          "12ms"
+         ],
+         [
+          "Expect",
+          "toBeVisible",
+          "9ms"
+         ],
+         [
+          "Expect",
+          "toContainText",
+          "8ms"
+         ],
+         [
+          "Expect",
+          "toHaveCount",
+          "7ms"
+         ]
+        ],
+        "pronto": true,
+        "aba_snapshot": 1,
+        "depois": {
+         "em": 3.2,
+         "media": "site_sauce_ui_logado"
+        },
+        "legenda": "Before e After: antes e depois do clique"
+       }
+      },
+      {
+       "text": "E tem o watch, que quer dizer vigiar, aquele ícone de olho: você salva o arquivo e o teste roda de novo sozinho.",
+       "scene": {
+        "type": "pw_ui",
+        "media": "site_sauce_ui_logado",
+        "url": "https://www.saucedemo.com/",
+        "acoes": [
+         {
+          "fill": [
+           "#user-name",
+           "standard_user"
+          ]
+         },
+         {
+          "fill": [
+           "#password",
+           "secret_sauce"
+          ]
+         },
+         {
+          "click": "#login-button"
+         }
+        ],
+        "inspecionar": "[data-test=\"title\"]",
+        "arquivos": [
+         [
+          "login.spec.js",
+          [
+           "entra com usuário e senha",
+           "mostra erro para usuário bloqueado"
+          ]
+         ]
+        ],
+        "passos_pw": [
+         [
+          "Before Hooks",
+          "",
+          "520ms"
+         ],
+         [
+          "Navigate to",
+          "\"/\"",
+          "410ms"
+         ],
+         [
+          "Fill",
+          "getByTestId('username')",
+          "38ms"
+         ],
+         [
+          "Fill",
+          "getByTestId('password')",
+          "21ms"
+         ],
+         [
+          "Click",
+          "getByTestId('login-button')",
+          "96ms"
+         ],
+         [
+          "Expect",
+          "toHaveURL",
+          "12ms"
+         ],
+         [
+          "Expect",
+          "toBeVisible",
+          "9ms"
+         ],
+         [
+          "Expect",
+          "toContainText",
+          "8ms"
+         ],
+         [
+          "Expect",
+          "toHaveCount",
+          "7ms"
+         ]
+        ],
+        "watch": true,
+        "watch_em": 1.2,
+        "roda_em": 2.6,
+        "legenda": "watch = vigiar: salvou, rodou de novo"
+       }
+      },
+      {
+       "text": "É um dos jeitos mais confortáveis de escrever um teste novo: escreve, salva, e vê na hora.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "ESCREVE, SALVA",
+          "white",
+          120
+         ],
+         [
+          "E VÊ NA HORA",
+          "gold",
+          150
+         ]
+        ],
+        "entre": 1.35
+       }
+      },
+      {
+       "text": "Na próxima aula: o rastro completo de um teste.",
+       "scene": {
+        "type": "passo",
+        "icone": "▶",
+        "titulo": "Próxima aula",
+        "sub": "Trace Viewer"
+       }
+      },
+      {
+       "text": "Te vejo lá!",
+       "scene": {
+        "type": "endcard",
+        "sub": "PRÓXIMA: TRACE VIEWER"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "shorts": [],
+  "tiktoks": []
+ }
+}

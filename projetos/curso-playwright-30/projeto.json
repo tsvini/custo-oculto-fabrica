@@ -1,0 +1,251 @@
+{
+ "title": "Playwright para leigos · Aula 30",
+ "slug": "curso-playwright-30",
+ "idioma": "pt",
+ "destino": "curso",
+ "marca": [
+  "PLAYWRIGHT",
+  "PARA LEIGOS"
+ ],
+ "cor_fundo": "#3fd68a",
+ "sem_legenda": true,
+ "legenda_y": 0.93,
+ "selo": "MÓDULO 6 · AULA 30",
+ "voz": {
+  "nome": "gravada",
+  "motor": "eleven",
+  "eleven_voz": "Vinícius Torales"
+ },
+ "serie": [],
+ "meta": {
+  "titles": [
+   "Aula 30: Print e vídeo quando o teste falha"
+  ],
+  "description": "",
+  "tags": []
+ },
+ "notes": "Curso Playwright para leigos. Não publica (destino: curso). Roteiro em curso-playwright/roteiros/.",
+ "script": {
+  "long": {
+   "parts": [
+    {
+     "chapter": "",
+     "sentences": [
+      {
+       "text": "E se o próprio teste tirasse um print e gravasse um vídeo quando falha? Ele faz isso.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "AULA 30",
+          "muted",
+          80
+         ],
+         [
+          "PRINT E VÍDEO",
+          "gold",
+          150
+         ]
+        ]
+       }
+      },
+      {
+       "text": "No config, dentro do use, adiciona duas linhas: screenshot only on failure, e video retain on failure.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "playwright.config.js",
+        "codigo": "  reporter: 'html',\n  /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */\n  use: {\n    /* Base URL to use in actions like `await page.goto('')`. */\n    baseURL: 'https://www.saucedemo.com',\n    testIdAttribute: 'data-test',\n\n    /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */\n    trace: 'on-first-retry',\n    screenshot: 'only-on-failure',\n    video: 'retain-on-failure',\n  },",
+        "legenda": "screenshot e video",
+        "fonte": 26,
+        "digitar": true,
+        "linha0": 26,
+        "digitar_de": 10,
+        "digitar_ate": 11
+       }
+      },
+      {
+       "text": "Traduzindo: screenshot, print, só quando falhar. Video retain on failure: o vídeo é gravado durante o teste, e guardado só se ele falhar.",
+       "scene": {
+        "type": "traducao",
+        "titulo": "SÓ QUANDO FALHA",
+        "linhas": [
+         [
+          "screenshot: 'only-on-failure'",
+          "print, só quando falhar"
+         ],
+         [
+          "video: 'retain-on-failure'",
+          "grava, e guarda só se falhar"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Quebra o teste de novo e roda.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "login.spec.js",
+        "codigo": "import { test, expect } from '@playwright/test';\n\ntest.describe('Login', () => {\n  test.beforeEach(async ({ page }) => {\n    await page.goto('/');\n  });\n\n  test('entra com usuário e senha', async ({ page }) => {\n    await page.getByTestId('username').fill(process.env.SAUCE_USER);\n    await page.getByTestId('password').fill(process.env.SAUCE_PASSWORD);",
+        "legenda": "Falhou de novo (de propósito)",
+        "fonte": 26,
+        "digitar": false,
+        "terminal": [
+         {
+          "cmd": "npx playwright test --project=chromium",
+          "em": 0.05
+         },
+         {
+          "out": "Running 2 tests using 2 workers",
+          "cor": "mut",
+          "em": 0.3
+         },
+         {
+          "out": "  1 failed",
+          "cor": "#ff6b6b",
+          "em": 0.5
+         },
+         {
+          "out": "  1 passed (6.4s)",
+          "cor": "ac",
+          "em": 0.6
+         }
+        ],
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  tests/",
+         "    login.spec.js",
+         "  .env",
+         "  .env.example",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ]
+       }
+      },
+      {
+       "text": "Abre o relatório: lá está o print do momento do erro e o vídeo do teste inteiro.",
+       "scene": {
+        "type": "pw_relatorio",
+        "url": "https://www.saucedemo.com/",
+        "media": "site_sauce_falha",
+        "acoes": [
+         {
+          "fill": [
+           "#user-name",
+           "standard_user"
+          ]
+         },
+         {
+          "fill": [
+           "#password",
+           "secret_sauce"
+          ]
+         },
+         {
+          "click": "#login-button"
+         }
+        ],
+        "testes": [
+         [
+          "entra com usuário e senha",
+          "login.spec.js:8",
+          "chromium",
+          "falhou",
+          "6.1s"
+         ],
+         [
+          "mostra erro para usuário bloqueado",
+          "login.spec.js:18",
+          "chromium",
+          "ok",
+          "0.6s"
+         ]
+        ],
+        "abrir": {
+         "titulo": "entra com usuário e senha",
+         "status": "falhou",
+         "arquivo": "login.spec.js:8",
+         "projeto": "chromium",
+         "passos": [],
+         "erro": "Error: expect(locator).toContainText(expected) failed\nExpected substring: \"Mochila\"\nReceived string:    \"Sauce Labs Backpack\"",
+         "anexos": true,
+         "anexo_img": "site_sauce_falha",
+         "anexos_em": 1.2
+        },
+        "navegador": {
+         "media": "rec_falha",
+         "url": "https://www.saucedemo.com/",
+         "gravar": true,
+         "acoes": [
+          {
+           "fill": [
+            "#user-name",
+            "standard_user"
+           ]
+          },
+          {
+           "fill": [
+            "#password",
+            "secret_sauce"
+           ]
+          },
+          {
+           "click": "#login-button"
+          }
+         ],
+         "espera_inicio": 800,
+         "espera_fim": 1500,
+         "titulo": "video.webm",
+         "em": 0.45,
+         "ate": 0.95
+        },
+        "legenda": "O print e o vídeo do teste"
+       }
+      },
+      {
+       "text": "E por que só quando falha? Porque gravar sempre deixa tudo mais lento e enche o computador de arquivo.",
+       "scene": {
+        "type": "cards",
+        "itens": [
+         [
+          "🐢",
+          "Gravar sempre",
+          "mais lento, muito arquivo",
+          "#ff8c42"
+         ],
+         [
+          "✓",
+          "Só quando falha",
+          "o que você precisa pra investigar"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Desfaz o erro e fechamos o módulo de debug.",
+       "scene": {
+        "type": "passo",
+        "icone": "▶",
+        "titulo": "Próximo módulo",
+        "sub": "Testes reais"
+       }
+      },
+      {
+       "text": "Te vejo lá!",
+       "scene": {
+        "type": "endcard",
+        "sub": "PRÓXIMA: MÓDULO 7 · TESTES REAIS"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "shorts": [],
+  "tiktoks": []
+ }
+}

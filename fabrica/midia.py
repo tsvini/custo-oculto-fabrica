@@ -118,7 +118,7 @@ def gravacoes(cenas, pasta, log):
 def telas(cenas, pasta, log, idioma="pt"):
     """Cenas 'tela' com 'url': print da página inteira em 16:9 (para as aulas). 'alvo' = texto do botão/link a destacar:
     a caixa amarela e o zoom são calculados sozinhos e guardados em <media>.json."""
-    alvo = [s for s in cenas if s.get("type") in ("tela", "runner", "devtools", "playground", "pw_ui", "pw_trace", "pw_codegen") and s.get("url") and s.get("media") and not s.get("gravar")]
+    alvo = [s for s in cenas if s.get("type") in ("tela", "runner", "devtools", "playground", "pw_ui", "pw_trace", "pw_codegen", "pw_relatorio") and s.get("url") and s.get("media") and not s.get("gravar")]
     falta = [s for s in alvo if not os.path.exists(os.path.join(pasta, s["media"] + ".png")) or ((s.get("inspecionar") or s.get("inspecionar_varios")) and ("elem" if s.get("inspecionar") else "elems") not in json.load(open(os.path.join(pasta, s["media"] + ".json"))) if os.path.exists(os.path.join(pasta, s["media"] + ".json")) else (s.get("inspecionar") or s.get("inspecionar_varios")))]
     if falta:
         from playwright.sync_api import sync_playwright
