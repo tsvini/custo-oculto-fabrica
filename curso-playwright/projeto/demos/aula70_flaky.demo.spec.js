@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 
 // o jeito errado: tempo fixo. Às vezes os produtos já apareceram, às vezes não.
-test('flaky: espera 1 segundo fixo', async ({ page }) => {
+test('flaky: espera um tempo fixo', async ({ page }) => {
   await page.goto('/');
   await page.getByTestId('username').fill('performance_glitch_user');
   await page.getByTestId('password').fill('secret_sauce');
