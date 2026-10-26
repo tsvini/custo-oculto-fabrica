@@ -48,9 +48,10 @@ def textos(p):
     # frases marcadas "abertura" não vão para o TTS: o áudio delas é a intro do canal (canal/intro.mp3, ou intro_en.mp3…), colado na frente.
     # Se o idioma ainda não tem intro gravada, a abertura é narrada junto com o resto.
     pula = os.path.exists(intro_de(p))
-    # "pausa": N segundos de silêncio depois da frase (ex.: desafio "pausa o vídeo e tenta"); vira a tag [silence] do v4 (~2 s cada), só no áudio
+    # "pausa": N segundos de silêncio depois da frase (ex.: desafio "pausa o vídeo e tenta"). Vira a marca ⟨pausa:N⟩: o áudio é gerado
+    # em pedaços cortados nela e o silêncio exato é colado entre eles (a tag [silence] do v4 dá ~2 s, e várias seguidas não somam)
     def com_pausa(s):
-        return s["text"].strip() + (" [silence]" * max(1, round(s["pausa"] / 2)) if s.get("pausa") else "")
+        return s["text"].strip() + (f" ⟨pausa:{s['pausa']}⟩" if s.get("pausa") else "")
     return [(n, falado(p, " ".join(com_pausa(s) for s in g["sentences"] if s.get("text", "").strip() and not (pula and s.get("abertura"))))) for n, g in out]
 
 
@@ -128,13 +129,28 @@ def main(nome):
 
     feitos = []
     for n, t in faltam:
-        r = requests.post(f"{API}/v1/text-to-speech/{vid}?output_format=mp3_44100_128", headers=H, timeout=600,
-                          json={"text": t, "model_id": mid, **({"voice_settings": voz["ajustes"]} if voz.get("ajustes") else {})})
-        if r.status_code != 200:
-            aviso("ElevenLabs", f"{n}: erro {r.status_code} {r.text[:300]}"); sys.exit(2)
+        import re as _re, subprocess as _sp, tempfile as _tf
+        pedacos = _re.split(r"\s*⟨pausa:([\d.]+)⟩\s*", t)  # [texto, pausa, texto, pausa, ..., texto]
         destino = os.path.join(pasta_audio, f"{n}.mp3")
-        with open(destino, "wb") as f:
-            f.write(r.content)
+        with _tf.TemporaryDirectory() as tmp:
+            lista = []
+            for k in range(0, len(pedacos), 2):
+                txt_k = pedacos[k].strip()
+                if txt_k:
+                    r = requests.post(f"{API}/v1/text-to-speech/{vid}?output_format=mp3_44100_128", headers=H, timeout=600,
+                                      json={"text": txt_k, "model_id": mid, **({"voice_settings": voz["ajustes"]} if voz.get("ajustes") else {})})
+                    if r.status_code != 200:
+                        aviso("ElevenLabs", f"{n}: erro {r.status_code} {r.text[:300]}"); sys.exit(2)
+                    a = os.path.join(tmp, f"p{k}.mp3"); open(a, "wb").write(r.content); lista.append(a)
+                if k + 1 < len(pedacos):
+                    sil = os.path.join(tmp, f"s{k}.mp3")
+                    _sp.run(["ffmpeg", "-loglevel", "error", "-y", "-f", "lavfi", "-t", pedacos[k + 1], "-i", "anullsrc=r=44100:cl=mono", "-b:a", "128k", sil], check=True); lista.append(sil)
+            if len(lista) == 1:
+                import shutil as _sh; _sh.copy(lista[0], destino)
+            else:
+                ent = sum([["-i", a] for a in lista], [])
+                filt = "".join(f"[{i}:a]aresample=44100,aformat=channel_layouts=mono[a{i}];" for i in range(len(lista))) + "".join(f"[a{i}]" for i in range(len(lista))) + f"concat=n={len(lista)}:v=0:a=1"
+                _sp.run(["ffmpeg", "-loglevel", "error", "-y", *ent, "-filter_complex", filt, "-b:a", "128k", destino], check=True)
         intro = intro_de(p)
         if com_abertura(p, n) and os.path.exists(intro):  # abertura do canal + 0,3 s de pausa + narração
             import subprocess, shutil
