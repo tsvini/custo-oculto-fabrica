@@ -188,6 +188,43 @@
        "pausa": 2.5
       },
       {
+       "text": "E sem esse preparo? O Playwright cancela o alerta sozinho, e o teste segue em frente como se nada tivesse acontecido.",
+       "scene": {
+        "type": "cards",
+        "itens": [
+         [
+          "⚙",
+          "Sem o page.on",
+          "o Playwright cancela sozinho",
+          "#ff6b6b"
+         ],
+         [
+          "✓",
+          "Com o page.on",
+          "você decide o que fazer",
+          "#3fd68a"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "No trabalho, o mais comum é o tem certeza que quer excluir? E aí dá pra testar os dois lados: accept, confirma. Dismiss, cancela, e nada pode ser apagado.",
+       "scene": {
+        "type": "traducao",
+        "titulo": "TEM CERTEZA QUE QUER EXCLUIR?",
+        "linhas": [
+         [
+          "dialog.accept()",
+          "confirma: apagou"
+         ],
+         [
+          "dialog.dismiss()",
+          "cancela: nada foi apagado"
+         ]
+        ]
+       }
+      },
+      {
        "text": "Te vejo na próxima!",
        "scene": {
         "type": "endcard",

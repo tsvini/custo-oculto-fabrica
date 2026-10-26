@@ -116,9 +116,11 @@ aula(56, "O formulário mudou", [
     ("Agora o segundo campo: aqui a pessoa escolhe uma opção. Você já viu isso no desafio quatro: select option.",
      video("n56_dropdown", "A lista de opções: selectOption", url=SITE + "/dropdown", acoes=[{"select": ["#dropdown", "1"], "espera": 900}, {"select": ["#dropdown", "2"], "espera": 900}])),
     ("E a conferência: to have value, tenha o valor dois.", ed("toHaveValue = tenha o valor", b, de=L_DD - 1, ate_l=L_HV, mostra_de=a + 3)),
+    ("E por que o valor, e não o texto? O texto é o que a pessoa vê na tela. O valor é o que vai pro sistema quando ela salva. E é ele que precisa estar certo.", {'type': 'traducao', 'titulo': 'TEXTO × VALOR', 'linhas': [['Option 2', 'o que a pessoa vê'], ['value="2"', 'o que vai pro sistema']]}),
     ("Roda e olha.", roda("checkbox e dropdown", "checkbox", "Marcou, desmarcou e escolheu", url=SITE + "/checkboxes",
                          acoes=[{"check": "#checkboxes input >> nth=0", "espera": 700}, {"uncheck": "#checkboxes input >> nth=0", "espera": 700},
                                 {"goto": SITE + "/dropdown", "espera": 600}, {"select": ["#dropdown", "2"], "espera": 900}], seg="3.4s")),
+    ("No trabalho, isso aparece em quase todo cadastro: aceitar os termos de uso, receber novidades por e-mail, escolher o estado ou a cidade.", {'type': 'cards', 'itens': [['☑', 'Aceito os termos', 'checkbox'], ['☑', 'Receber novidades', 'checkbox', '#69a7ff'], ['▾', 'Estado e cidade', 'lista de opções', '#ffd23f']], 'titulo': 'EM QUASE TODO CADASTRO'}),
 ] + fim("upload de arquivo"))
 
 # ---------- 57 ----------
@@ -135,6 +137,7 @@ aula(57, "O usuário precisa enviar um arquivo", [
     ("Clica em Upload e confere que o nome do arquivo apareceu na página.", ed("O nome do arquivo apareceu", b, de=L_UP + 1, ate_l=b - 1, mostra_de=a)),
     ("Roda.", roda("upload de arquivo", "upload", "O arquivo subiu", url=SITE + "/upload",
                    acoes=[{"upload": ["#file-upload", "curso-playwright/projeto/arquivos/exemplo.txt"], "espera": 900}, {"click": "#file-submit", "espera": 1400}], seg="3.2s")),
+    ("No dia a dia, também vale testar o lado ruim: um arquivo grande demais, ou de um formato que o sistema não aceita. Ele tem que recusar com uma mensagem clara.", {'type': 'cards', 'itens': [['✓', 'Arquivo certo', 'sobe e aparece'], ['⚖', 'Grande demais', 'recusa e avisa', '#ffd23f'], ['✗', 'Formato errado', 'recusa e avisa', '#ff6b6b']], 'titulo': 'OS DOIS LADOS DO UPLOAD'}),
 ] + fim("uma caixa travou a página"))
 
 # ---------- 58 ----------
@@ -149,6 +152,8 @@ aula(58, "Uma caixa travou a página", [
      {"type": "cards", "titulo": "A ORDEM", "itens": [["1", "Prepara", "page.on('dialog')"], ["2", "Clica", "no botão", AZUL], ["3", "Aparece", "o alerta", AMARELO], ["4", "Aceita", "sozinho", VERDE]]}),
     ("No fim, confere a mensagem: You successfully clicked an alert.", ed("A mensagem do resultado", b, de=L_CLK, ate_l=b - 1, mostra_de=a)),
     ("Roda.", roda("alerta do navegador", "alerta", "Preparou, clicou e aceitou", media="n58_alerta", seg="3.3s")),
+    ("E sem esse preparo? O Playwright cancela o alerta sozinho, e o teste segue em frente como se nada tivesse acontecido.", {'type': 'cards', 'itens': [['⚙', 'Sem o page.on', 'o Playwright cancela sozinho', '#ff6b6b'], ['✓', 'Com o page.on', 'você decide o que fazer', '#3fd68a']]}),
+    ("No trabalho, o mais comum é o tem certeza que quer excluir? E aí dá pra testar os dois lados: accept, confirma. Dismiss, cancela, e nada pode ser apagado.", {'type': 'traducao', 'titulo': 'TEM CERTEZA QUE QUER EXCLUIR?', 'linhas': [['dialog.accept()', 'confirma: apagou'], ['dialog.dismiss()', 'cancela: nada foi apagado']]}),
 ] + fim("o link abriu outra aba"))
 
 # ---------- 59 ----------
@@ -158,9 +163,11 @@ aula(59, "O link abriu outra aba", [
     ("Então a gente precisa pegar a aba nova quando ela abrir.", {"type": "cards", "itens": [["⧉", "Abriu outra aba", ""], ["👀", "O teste olha a antiga", "", VERM], ["✓", "Pega a nova", "quando ela abrir", VERDE]]}),
     ("Primeiro, o aviso: const promessa igual page ponto wait for event, popup.", ed("waitForEvent('popup') = espere uma nova aba", L_PROM, de=a, ate_l=L_PROM, mostra_de=a)),
     ("Espere uma nova aba.", tr("page.waitForEvent('popup')", [["waitForEvent", "espere acontecer"], ["('popup')", "uma nova aba"]], 1.0)),
+    ("Por que avisar antes de clicar? Porque a aba nova abre muito rápido. Se você só começar a esperar depois do clique, ela pode já ter aberto, e o teste fica esperando pra sempre.", {'type': 'cards', 'itens': [['1', 'Primeiro, o aviso', 'espere uma aba nova'], ['2', 'Depois, o clique', 'a aba abre', '#69a7ff'], ['3', 'Aí, pega a aba', 'await promessa', '#ffd23f']], 'titulo': 'A ORDEM'}),
     ("Depois clica no link. E aí: const novaAba igual await promessa. Guarde a aba que abriu.", ed("novaAba = a aba que abriu", L_NOVA, de=L_PROM + 1, ate_l=L_NOVA, mostra_de=a)),
     ("A partir daí, você usa a nova aba igual ao page: confere que ela mostra New Window.", ed("novaAba funciona igual ao page", b, de=b - 2, ate_l=b - 1, mostra_de=a)),
     ("Roda e olha as duas abas.", roda("nova aba", "nova aba", "Abriu e conferiu a aba nova", media="n59_aba", seg="3.0s")),
+    ("No dia a dia, isso aparece em link de pagamento, termos de uso, nota fiscal em PDF, e em login com conta de outro site, que abre numa janela separada.", {'type': 'cards', 'itens': [['💳', 'Pagamento', 'abre em outra aba'], ['📄', 'PDF e termos', 'abrem em outra aba', '#69a7ff'], ['🔑', 'Login com outra conta', 'janela separada', '#ffd23f']]}),
 ] + fim("uma página dentro da página"))
 
 # ---------- 60 ----------
@@ -171,9 +178,11 @@ aula(60, "Tem uma página dentro da página", [
      {"type": "cards", "titulo": "IFRAME", "itens": [["▭", "A página", "the-internet"], ["▣", "O iframe", "outra página dentro", AZUL], ["✎", "O editor", "lá dentro", AMARELO]]}),
     ("Primeiro, você diz em qual quadro procurar: frame locator.", ed("frameLocator = procure dentro deste quadro", L_FR, de=a, ate_l=L_FR, mostra_de=a)),
     ("Procure dentro deste quadro.", tr("page.frameLocator('#mce_0_ifr')", [["frameLocator", "procure dentro do quadro"], ["('#mce_0_ifr')", "este quadro"]], 1.0)),
+    ("O frame locator recebe o seletor do iframe. Aqui, o id dele. E daí pra frente, tudo o que você procura é lá dentro.", {'type': 'traducao', 'titulo': 'ENTRANDO NO QUADRO', 'linhas': [["frameLocator('#mce_0_ifr')", 'este quadro, pelo id'], ["getByText('...')", 'procure lá dentro']]}),
     ("Depois, procura normalmente lá dentro, e confere o texto do editor.", ed("Lá dentro, igual a sempre", b, de=L_FR + 1, ate_l=b - 1, mostra_de=a)),
     ("A lógica: entrar no iframe, procurar o elemento, conferir.", {"type": "cards", "itens": [["1", "Entra no iframe", "frameLocator"], ["2", "Procura", "o elemento", AZUL], ["3", "Confere", "expect", VERDE]]}),
     ("Roda.", roda("iframe", "iframe", "Achou o texto lá dentro", url=SITE + "/iframe", acoes=[{"espera": 1500}], seg="3.6s")),
+    ("No trabalho, o caso mais comum é o pagamento: o campo do cartão quase sempre é um iframe, de outra empresa, por segurança. Também aparece em vídeo, mapa e chat de atendimento.", {'type': 'cards', 'itens': [['💳', 'Campo do cartão', 'quase sempre iframe'], ['▶', 'Vídeo e mapa', 'iframe', '#69a7ff'], ['💬', 'Chat de atendimento', 'iframe', '#ffd23f']], 'titulo': 'ONDE TEM IFRAME'}),
 ] + fim("o botão só aparece com o mouse"))
 
 # ---------- 61 ----------
@@ -185,6 +194,7 @@ aula(61, "O botão só aparece quando passo o mouse", [
     ("Antes do hover: not to be visible. Depois do hover: to be visible. Assim a gente testa o comportamento, não só roda um comando.",
      ed("Antes escondido · depois visível", b, de=a, ate_l=b - 1, mostra_de=a)),
     ("Roda e olha o mouse passando.", roda("hover", "hover", "O nome apareceu", media="n61_hover", seg="2.9s")),
+    ("No dia a dia: menus que abrem quando o mouse passa por cima, e aquelas dicas que aparecem num balãozinho. E lembra: no celular não existe passar o mouse, então ali o site precisa de outro jeito.", {'type': 'cards', 'itens': [['☰', 'Menus', 'abrem com o mouse'], ['💬', 'Dicas em balão', 'aparecem com o mouse', '#69a7ff'], ['📱', 'No celular', 'não tem mouse', '#ffd23f']]}),
 ] + fim("arrastar e soltar"))
 
 # ---------- 62 ----------
@@ -196,6 +206,7 @@ aula(62, "O usuário precisa arrastar um item", [
     ("A caixa A, arraste até a caixa B.", tr("caixaA.dragTo(caixaB)", [[".dragTo", "arraste até"], ["(caixaB)", "a caixa B"]], 1.0)),
     ("E não basta confiar que arrastou: a gente confere que a primeira caixa agora mostra B.", ed("A primeira caixa mostra B", b, de=b - 2, ate_l=b - 1, mostra_de=a)),
     ("Roda.", roda("arrastar e soltar", "arrastar", "Arrastou e conferiu", url=SITE + "/drag_and_drop", acoes=[{"drag": ["#column-a", "#column-b"], "espera": 1500}], seg="4.1s")),
+    ("Repara no padrão que se repete: faz a ação, e confere o resultado. Clicou, arrastou, enviou, tanto faz. Sem a conferência, o teste não testa nada.", {'type': 'bigtext', 'lines': [{'t': 'FAZ A AÇÃO', 'c': 'white', 's': 120}, {'t': 'E CONFERE O RESULTADO', 'c': 'gold', 's': 120}], 'stagger': 0.6}),
 ] + fim("a tabela mudou de ordem"))
 
 # ---------- 63 ----------

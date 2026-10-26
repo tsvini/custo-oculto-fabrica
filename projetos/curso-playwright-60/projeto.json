@@ -117,6 +117,23 @@
        }
       },
       {
+       "text": "O frame locator recebe o seletor do iframe. Aqui, o id dele. E daí pra frente, tudo o que você procura é lá dentro.",
+       "scene": {
+        "type": "traducao",
+        "titulo": "ENTRANDO NO QUADRO",
+        "linhas": [
+         [
+          "frameLocator('#mce_0_ifr')",
+          "este quadro, pelo id"
+         ],
+         [
+          "getByText('...')",
+          "procure lá dentro"
+         ]
+        ]
+       }
+      },
+      {
        "text": "Depois, procura normalmente lá dentro, e confere o texto do editor.",
        "scene": {
         "type": "editor",
@@ -212,6 +229,32 @@
         }
        },
        "pausa": 2.5
+      },
+      {
+       "text": "No trabalho, o caso mais comum é o pagamento: o campo do cartão quase sempre é um iframe, de outra empresa, por segurança. Também aparece em vídeo, mapa e chat de atendimento.",
+       "scene": {
+        "type": "cards",
+        "itens": [
+         [
+          "💳",
+          "Campo do cartão",
+          "quase sempre iframe"
+         ],
+         [
+          "▶",
+          "Vídeo e mapa",
+          "iframe",
+          "#69a7ff"
+         ],
+         [
+          "💬",
+          "Chat de atendimento",
+          "iframe",
+          "#ffd23f"
+         ]
+        ],
+        "titulo": "ONDE TEM IFRAME"
+       }
       },
       {
        "text": "Te vejo na próxima!",

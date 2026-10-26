@@ -18,8 +18,10 @@
 5. Mas clicar não basta: a gente confere. to be checked, esteja marcada. E com o not na frente: não esteja marcada. [editor]
 6. Agora o segundo campo: aqui a pessoa escolhe uma opção. Você já viu isso no desafio quatro: select option. [tela]
 7. E a conferência: to have value, tenha o valor dois. [editor]
-8. Roda e olha. [+pausa] [editor]
-9. Te vejo na próxima! [endcard]
+8. E por que o valor, e não o texto? O texto é o que a pessoa vê na tela. O valor é o que vai pro sistema quando ela salva. E é ele que precisa estar certo. [traducao]
+9. Roda e olha. [+pausa] [editor]
+10. No trabalho, isso aparece em quase todo cadastro: aceitar os termos de uso, receber novidades por e-mail, escolher o estado ou a cidade. [cards]
+11. Te vejo na próxima! [endcard]
 
 ## Aula 57: O usuário precisa enviar um arquivo
 1. A tarefa mudou: o usuário precisa conseguir anexar um documento. Currículo, comprovante, planilha. [bigtext]
@@ -30,7 +32,8 @@
 6. Repara: o Playwright não abre aquela janela do Windows pra procurar o arquivo com o mouse. Ele entrega o arquivo direto pro campo. [cards]
 7. Clica em Upload e confere que o nome do arquivo apareceu na página. [editor]
 8. Roda. [+pausa] [editor]
-9. Te vejo na próxima! [endcard]
+9. No dia a dia, também vale testar o lado ruim: um arquivo grande demais, ou de um formato que o sistema não aceita. Ele tem que recusar com uma mensagem clara. [cards]
+10. Te vejo na próxima! [endcard]
 
 ## Aula 58: Uma caixa travou a página
 1. Agora aconteceu uma coisa diferente: clicamos num botão e o navegador abriu essa caixa. [tela_cheia]
@@ -40,27 +43,33 @@
 5. A ordem é importante: primeiro prepara, depois clica. Se você tentar reagir só depois, o alerta já passou. [cards]
 6. No fim, confere a mensagem: You successfully clicked an alert. [editor]
 7. Roda. [+pausa] [editor]
-8. Te vejo na próxima! [endcard]
+8. E sem esse preparo? O Playwright cancela o alerta sozinho, e o teste segue em frente como se nada tivesse acontecido. [cards]
+9. No trabalho, o mais comum é o tem certeza que quer excluir? E aí dá pra testar os dois lados: accept, confirma. Dismiss, cancela, e nada pode ser apagado. [traducao]
+10. Te vejo na próxima! [endcard]
 
 ## Aula 59: O link abriu outra aba
 1. Imagina: você clica pra ver os detalhes de um pedido, e eles abrem em outra aba. E o teste continua olhando a aba antiga. [tela_cheia]
 2. Então a gente precisa pegar a aba nova quando ela abrir. [cards]
 3. Primeiro, o aviso: const promessa igual page ponto wait for event, popup. [editor]
 4. Espere uma nova aba. [traducao]
-5. Depois clica no link. E aí: const novaAba igual await promessa. Guarde a aba que abriu. [editor]
-6. A partir daí, você usa a nova aba igual ao page: confere que ela mostra New Window. [editor]
-7. Roda e olha as duas abas. [+pausa] [editor]
-8. Te vejo na próxima! [endcard]
+5. Por que avisar antes de clicar? Porque a aba nova abre muito rápido. Se você só começar a esperar depois do clique, ela pode já ter aberto, e o teste fica esperando pra sempre. [cards]
+6. Depois clica no link. E aí: const novaAba igual await promessa. Guarde a aba que abriu. [editor]
+7. A partir daí, você usa a nova aba igual ao page: confere que ela mostra New Window. [editor]
+8. Roda e olha as duas abas. [+pausa] [editor]
+9. No dia a dia, isso aparece em link de pagamento, termos de uso, nota fiscal em PDF, e em login com conta de outro site, que abre numa janela separada. [cards]
+10. Te vejo na próxima! [endcard]
 
 ## Aula 60: Tem uma página dentro da página
 1. Olha essa tela: tem um editor de texto no meio. Só que o seletor normal não acha nada lá dentro. [tela]
 2. Por quê? Porque aquele pedaço é outra página, encaixada nesta. Isso se chama iframe. [cards]
 3. Primeiro, você diz em qual quadro procurar: frame locator. [editor]
 4. Procure dentro deste quadro. [traducao]
-5. Depois, procura normalmente lá dentro, e confere o texto do editor. [editor]
-6. A lógica: entrar no iframe, procurar o elemento, conferir. [cards]
-7. Roda. [+pausa] [editor]
-8. Te vejo na próxima! [endcard]
+5. O frame locator recebe o seletor do iframe. Aqui, o id dele. E daí pra frente, tudo o que você procura é lá dentro. [traducao]
+6. Depois, procura normalmente lá dentro, e confere o texto do editor. [editor]
+7. A lógica: entrar no iframe, procurar o elemento, conferir. [cards]
+8. Roda. [+pausa] [editor]
+9. No trabalho, o caso mais comum é o pagamento: o campo do cartão quase sempre é um iframe, de outra empresa, por segurança. Também aparece em vídeo, mapa e chat de atendimento. [cards]
+10. Te vejo na próxima! [endcard]
 
 ## Aula 61: O botão só aparece quando passo o mouse
 1. Chegou um relato de bug: não consigo clicar na opção, porque ela só aparece quando passo o mouse no usuário. [bigtext]
@@ -68,7 +77,8 @@
 3. No Playwright: hover. Passe o mouse por cima. [traducao]
 4. Antes do hover: not to be visible. Depois do hover: to be visible. Assim a gente testa o comportamento, não só roda um comando. [editor]
 5. Roda e olha o mouse passando. [+pausa] [editor]
-6. Te vejo na próxima! [endcard]
+6. No dia a dia: menus que abrem quando o mouse passa por cima, e aquelas dicas que aparecem num balãozinho. E lembra: no celular não existe passar o mouse, então ali o site precisa de outro jeito. [cards]
+7. Te vejo na próxima! [endcard]
 
 ## Aula 62: O usuário precisa arrastar um item
 1. Tem tela em que a pessoa reorganiza as coisas arrastando: quadro de tarefas, lista, arquivos. [bigtext]
@@ -77,7 +87,8 @@
 4. A caixa A, arraste até a caixa B. [traducao]
 5. E não basta confiar que arrastou: a gente confere que a primeira caixa agora mostra B. [editor]
 6. Roda. [+pausa] [editor]
-7. Te vejo na próxima! [endcard]
+7. Repara no padrão que se repete: faz a ação, e confere o resultado. Clicou, arrastou, enviou, tanto faz. Sem a conferência, o teste não testa nada. [bigtext]
+8. Te vejo na próxima! [endcard]
 
 ## Aula 63: A tabela mudou de ordem e o teste quebrou
 1. Um problema bem real: uma tabela de clientes. [+pausa] [tela]

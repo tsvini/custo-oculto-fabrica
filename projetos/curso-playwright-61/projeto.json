@@ -141,6 +141,31 @@
        "pausa": 2.5
       },
       {
+       "text": "No dia a dia: menus que abrem quando o mouse passa por cima, e aquelas dicas que aparecem num balãozinho. E lembra: no celular não existe passar o mouse, então ali o site precisa de outro jeito.",
+       "scene": {
+        "type": "cards",
+        "itens": [
+         [
+          "☰",
+          "Menus",
+          "abrem com o mouse"
+         ],
+         [
+          "💬",
+          "Dicas em balão",
+          "aparecem com o mouse",
+          "#69a7ff"
+         ],
+         [
+          "📱",
+          "No celular",
+          "não tem mouse",
+          "#ffd23f"
+         ]
+        ]
+       }
+      },
+      {
        "text": "Te vejo na próxima!",
        "scene": {
         "type": "endcard",

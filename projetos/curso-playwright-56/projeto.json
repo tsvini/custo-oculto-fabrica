@@ -180,6 +180,23 @@
        }
       },
       {
+       "text": "E por que o valor, e não o texto? O texto é o que a pessoa vê na tela. O valor é o que vai pro sistema quando ela salva. E é ele que precisa estar certo.",
+       "scene": {
+        "type": "traducao",
+        "titulo": "TEXTO × VALOR",
+        "linhas": [
+         [
+          "Option 2",
+          "o que a pessoa vê"
+         ],
+         [
+          "value=\"2\"",
+          "o que vai pro sistema"
+         ]
+        ]
+       }
+      },
+      {
        "text": "Roda e olha.",
        "scene": {
         "type": "editor",
@@ -240,6 +257,32 @@
         }
        },
        "pausa": 2.5
+      },
+      {
+       "text": "No trabalho, isso aparece em quase todo cadastro: aceitar os termos de uso, receber novidades por e-mail, escolher o estado ou a cidade.",
+       "scene": {
+        "type": "cards",
+        "itens": [
+         [
+          "☑",
+          "Aceito os termos",
+          "checkbox"
+         ],
+         [
+          "☑",
+          "Receber novidades",
+          "checkbox",
+          "#69a7ff"
+         ],
+         [
+          "▾",
+          "Estado e cidade",
+          "lista de opções",
+          "#ffd23f"
+         ]
+        ],
+        "titulo": "EM QUASE TODO CADASTRO"
+       }
       },
       {
        "text": "Te vejo na próxima!",

@@ -237,6 +237,32 @@
        "pausa": 2.5
       },
       {
+       "text": "No dia a dia, também vale testar o lado ruim: um arquivo grande demais, ou de um formato que o sistema não aceita. Ele tem que recusar com uma mensagem clara.",
+       "scene": {
+        "type": "cards",
+        "itens": [
+         [
+          "✓",
+          "Arquivo certo",
+          "sobe e aparece"
+         ],
+         [
+          "⚖",
+          "Grande demais",
+          "recusa e avisa",
+          "#ffd23f"
+         ],
+         [
+          "✗",
+          "Formato errado",
+          "recusa e avisa",
+          "#ff6b6b"
+         ]
+        ],
+        "titulo": "OS DOIS LADOS DO UPLOAD"
+       }
+      },
+      {
        "text": "Te vejo na próxima!",
        "scene": {
         "type": "endcard",

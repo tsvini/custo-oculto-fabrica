@@ -194,6 +194,25 @@
        "pausa": 2.5
       },
       {
+       "text": "Repara no padrão que se repete: faz a ação, e confere o resultado. Clicou, arrastou, enviou, tanto faz. Sem a conferência, o teste não testa nada.",
+       "scene": {
+        "type": "bigtext",
+        "lines": [
+         {
+          "t": "FAZ A AÇÃO",
+          "c": "white",
+          "s": 120
+         },
+         {
+          "t": "E CONFERE O RESULTADO",
+          "c": "gold",
+          "s": 120
+         }
+        ],
+        "stagger": 0.6
+       }
+      },
+      {
        "text": "Te vejo na próxima!",
        "scene": {
         "type": "endcard",
