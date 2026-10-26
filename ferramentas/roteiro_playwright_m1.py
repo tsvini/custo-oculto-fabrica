@@ -92,7 +92,8 @@ COLINHA = "repo:curso-playwright/material/colinha/colinha.html"
 AULAS.append(projeto(2, "BOAS-VINDAS · AULA 2", "Como usar o curso e a sua colinha", [
     ("Antes de começar, três dicas rápidas pra você aproveitar o curso ao máximo.", bt(("3 DICAS", "gold", 200), ("ANTES DE COMEÇAR", "white", 110))),
     ("Primeira: você não precisa decorar nenhum comando. Nos recursos desta aula tem uma colinha em PDF, com os principais comandos do curso organizados pra você consultar enquanto pratica.",
-     {"type": "tela", "media": "colinha_pw", "url": COLINHA, "titulo": "colinha-playwright-para-leigos.pdf", "legenda": "A sua colinha, nos recursos da aula"}),
+     {"type": "tela", "media": "colinha_pw_zoom", "url": COLINHA, "titulo": "colinha-playwright-para-leigos.pdf", "alvo": "npx playwright test", "zoom_em": 3.0, "caixa_em": 3.8,
+      "legenda": "A sua colinha, nos recursos da aula"}),
     ("Baixa ela agora e deixa aberta do lado. Durante o curso, quando aparecer esse selo aqui no canto, é porque aquele comando já está na sua colinha.",
      {"type": "tela", "media": "colinha_pw", "url": COLINHA, "titulo": "colinha-playwright-para-leigos.pdf", "colinha": True, "colinha_em": 2.2, "colinha_dur": 6, "legenda": "Viu esse selo? Está na colinha"}),
     ("Segunda: faz junto comigo. Pausa o vídeo, digita, roda. É fazendo que você aprende, não só assistindo.",

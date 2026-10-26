@@ -54,9 +54,12 @@
        "text": "Primeira: você não precisa decorar nenhum comando. Nos recursos desta aula tem uma colinha em PDF, com os principais comandos do curso organizados pra você consultar enquanto pratica.",
        "scene": {
         "type": "tela",
-        "media": "colinha_pw",
+        "media": "colinha_pw_zoom",
         "url": "repo:curso-playwright/material/colinha/colinha.html",
         "titulo": "colinha-playwright-para-leigos.pdf",
+        "alvo": "npx playwright test",
+        "zoom_em": 3.0,
+        "caixa_em": 3.8,
         "legenda": "A sua colinha, nos recursos da aula"
        }
       },
