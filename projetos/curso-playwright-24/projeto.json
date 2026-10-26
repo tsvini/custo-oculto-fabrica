@@ -65,7 +65,46 @@
        }
       },
       {
-       "text": "Primeiro, instala o pacote que lê esse arquivo. No terminal: npm install traço D dotenv. O traço D marca como ferramenta de desenvolvimento do projeto.",
+       "text": "A ideia é simples. O ponto env fica só no seu computador. O teste não tem mais a senha escrita: ele pede pro ponto env. E cada pessoa do time coloca o próprio usuário e a própria senha no ponto env dela.",
+       "scene": {
+        "type": "cards",
+        "itens": [
+         [
+          "💻",
+          "Fica no seu computador",
+          "não vai pro GitHub"
+         ],
+         [
+          "📄",
+          "O teste pede",
+          "pro .env",
+          "#69a7ff"
+         ],
+         [
+          "👥",
+          "Cada pessoa",
+          "com o seu usuário e senha",
+          "#ffd23f"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Pra ler esse arquivo, a gente usa um pacote chamado dotenv. Pacote é um código pronto que alguém já escreveu e que você baixa pro seu projeto.",
+       "scene": {
+        "type": "cards",
+        "titulo": "PACOTE",
+        "itens": [
+         [
+          "📦",
+          "dotenv",
+          "um código pronto que lê o .env"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "No terminal: npm install traço D dotenv. Install quer dizer instalar. E o traço D marca como ferramenta de desenvolvimento do projeto.",
        "scene": {
         "type": "editor",
         "arquivo": "login.spec.js",
@@ -81,7 +120,7 @@
          "  playwright.config.js"
         ],
         "codigo": "import { test, expect } from '@playwright/test';\n\ntest.describe('Login', () => {\n  test.beforeEach(async ({ page }) => {\n    await page.goto('/');\n  });\n\n  test('entra com usuário e senha', async ({ page }) => {\n    await page.getByTestId('username').fill('standard_user');\n    await page.getByTestId('password').fill('secret_sauce');",
-        "legenda": "-D = ferramenta de desenvolvimento",
+        "legenda": "npm install -D dotenv",
         "fonte": 26,
         "digitar": false,
         "terminal": [
@@ -165,7 +204,7 @@
        }
       },
       {
-       "text": "E antes de qualquer outra coisa: abre o ponto gitignore e escreve ponto env no final. Assim esse arquivo nunca vai pro GitHub.",
+       "text": "E antes de qualquer outra coisa: o ponto gitignore. Ignore é ignorar: é a lista de arquivos que o Git deixa de fora quando você manda o projeto pro GitHub. Escreve ponto env no final dele.",
        "scene": {
         "type": "editor",
         "arquivo": ".gitignore",
@@ -189,7 +228,7 @@
        }
       },
       {
-       "text": "No config, tira o comentário daquelas três linhas do dotenv. Elas mandam ler o arquivo ponto env.",
+       "text": "Agora o config. Lá em cima já tem três linhas do dotenv, só que comentadas: com as duas barras na frente, o Playwright ignora. Apaga as duas barras das três linhas.",
        "scene": {
         "type": "editor",
         "arquivo": "playwright.config.js",
@@ -206,7 +245,7 @@
          "  playwright.config.js"
         ],
         "codigo": "// @ts-check\nimport { defineConfig, devices } from '@playwright/test';\n\n/**\n * Read environment variables from file.\n * https://github.com/motdotla/dotenv\n */\nimport dotenv from 'dotenv';\nimport path from 'path';\ndotenv.config({ path: path.resolve(__dirname, '.env') });\n\n/**\n * @see https://playwright.dev/docs/test-configuration\n */\nexport default defineConfig({",
-        "legenda": "Ler o .env",
+        "legenda": "Tira as duas barras das 3 linhas",
         "fonte": 22,
         "digitar": true,
         "digitar_de": 8,
@@ -214,14 +253,36 @@
        }
       },
       {
-       "text": "No teste, troca o texto por process ponto env ponto SAUCE underline USER.",
+       "text": "Lendo em português: importe o dotenv, importe o path, que cuida dos caminhos das pastas, e leia o arquivo ponto env que está nesta pasta.",
+       "scene": {
+        "type": "traducao",
+        "titulo": "AS 3 LINHAS DO DOTENV",
+        "linhas": [
+         [
+          "import dotenv from 'dotenv';",
+          "traga o dotenv"
+         ],
+         [
+          "import path from 'path';",
+          "traga o path (caminhos)"
+         ],
+         [
+          "dotenv.config({ path: ... '.env' })",
+          "leia o .env desta pasta"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "No teste, onde estava escrito standard user, troca por process ponto env ponto SAUCE underline USER. E a senha, por process ponto env ponto SAUCE underline PASSWORD.",
        "scene": {
         "type": "editor",
         "arquivo": "login.spec.js",
-        "codigo": "import { test, expect } from '@playwright/test';\n\ntest.describe('Login', () => {\n  test.beforeEach(async ({ page }) => {\n    await page.goto('/');\n  });\n\n  test('entra com usuário e senha', async ({ page }) => {\n    await page.getByTestId('username').fill(process.env.SAUCE_USER);\n    await page.getByTestId('password').fill(process.env.SAUCE_PASSWORD);\n    await page.getByTestId('login-button').click();\n    await expect(page).toHaveURL(/inventory/);\n    await expect(page.getByText('Products')).toBeVisible();\n    await expect(page.getByText('Sauce Labs Backpack')).toContainText('Backpack');\n    await expect(page.getByRole('button', { name: 'Add to cart' })).toHaveCount(6);\n  });\n\n  test('mostra erro para usuário bloqueado', async ({ page }) => {\n    await page.getByTestId('username').fill('locked_out_user');\n    await page.getByTestId('password').fill(process.env.SAUCE_PASSWORD);\n    await page.getByTestId('login-button').click();\n    await expect(page.getByText('locked out')).toBeVisible();\n  });\n});",
-        "legenda": "process.env.SAUCE_USER",
+        "codigo": "  test('entra com usuário e senha', async ({ page }) => {\n    await page.getByTestId('username').fill(process.env.SAUCE_USER);\n    await page.getByTestId('password').fill(process.env.SAUCE_PASSWORD);\n    await page.getByTestId('login-button').click();\n    await expect(page).toHaveURL(/inventory/);",
+        "legenda": "O teste pede pro .env",
         "fonte": 22,
         "digitar": true,
+        "linha0": 8,
         "pastas": [
          "meu-primeiro-playwright",
          "  .github/",
@@ -234,13 +295,38 @@
          "  package.json",
          "  playwright.config.js"
         ],
-        "digitar_de": 9,
-        "digitar_ate": 10,
-        "rolar_depois": true
+        "digitar_de": 2,
+        "digitar_ate": 3
        }
       },
       {
-       "text": "Traduzindo: process ponto env, as variáveis do ambiente. SAUCE underline USER, a variável com esse nome.",
+       "text": "No segundo teste, o usuário bloqueado continua escrito, porque ele é o que o teste quer testar. Só a senha vem do ponto env.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "login.spec.js",
+        "codigo": "  test('mostra erro para usuário bloqueado', async ({ page }) => {\n    await page.getByTestId('username').fill('locked_out_user');\n    await page.getByTestId('password').fill(process.env.SAUCE_PASSWORD);\n    await page.getByTestId('login-button').click();\n    await expect(page.getByText('locked out')).toBeVisible();\n  });\n});",
+        "legenda": "Teste 2: só a senha vem do .env",
+        "fonte": 22,
+        "digitar": true,
+        "linha0": 18,
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  tests/",
+         "    login.spec.js",
+         "  .env",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "digitar_de": 3,
+        "digitar_ate": 3
+       }
+      },
+      {
+       "text": "Traduzindo: process ponto env, as variáveis do ambiente. SAUCE underline USER, a variável com esse nome. Quando o teste roda, o dotenv já leu o arquivo, e aqui entra o standard user.",
        "scene": {
         "type": "traducao",
         "codigo": "process.env.SAUCE_USER",

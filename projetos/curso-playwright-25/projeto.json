@@ -243,7 +243,7 @@
        }
       },
       {
-       "text": "Resumo de tudo numa tabela.",
+       "text": "Resumindo: o nome do arquivo roda só aquele arquivo. Traço g filtra pelo nome do teste. Test ponto only roda somente aquele teste. Test ponto skip pula. E traço traço project escolhe o navegador.",
        "scene": {
         "type": "traducao",
         "titulo": "RODANDO SÓ O QUE IMPORTA",

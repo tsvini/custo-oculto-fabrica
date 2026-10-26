@@ -149,17 +149,102 @@
        }
       },
       {
-       "text": "Agora o get by test id também funciona no saucedemo. Vamos trocar os seletores do login só pra você ver esse outro caminho. Os que a gente usou antes continuam certos.",
+       "text": "Agora o get by test id também funciona no saucedemo. Pra você ver esse outro caminho, a gente vai trocar os seletores que já estão nos testes. Repara: o before each continua igual, ele só abre o site.",
        "scene": {
         "type": "editor",
         "arquivo": "login.spec.js",
-        "codigo": "import { test, expect } from '@playwright/test';\n\ntest.describe('Login', () => {\n  test.beforeEach(async ({ page }) => {\n    await page.goto('/');\n  });\n\n  test('entra com usuário e senha', async ({ page }) => {\n    await page.getByTestId('username').fill('standard_user');\n    await page.getByTestId('password').fill('secret_sauce');\n    await page.getByTestId('login-button').click();\n    await expect(page).toHaveURL(/inventory/);\n    await expect(page.getByText('Products')).toBeVisible();\n    await expect(page.getByText('Sauce Labs Backpack')).toContainText('Backpack');\n    await expect(page.getByRole('button', { name: 'Add to cart' })).toHaveCount(6);\n  });\n\n  test('mostra erro para usuário bloqueado', async ({ page }) => {\n    await page.getByTestId('username').fill('locked_out_user');\n    await page.getByTestId('password').fill('secret_sauce');\n    await page.getByTestId('login-button').click();\n    await expect(page.getByText('locked out')).toBeVisible();\n  });\n});",
-        "legenda": "Outro caminho: getByTestId",
-        "fonte": 22,
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  tests/",
+         "    login.spec.js",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "codigo": "import { test, expect } from '@playwright/test';\n\ntest.describe('Login', () => {\n  test.beforeEach(async ({ page }) => {\n    await page.goto('/');\n  });\n\n  test('entra com usuário e senha', async ({ page }) => {\n    await page.getByTestId('username').fill('standard_user');\n    await page.getByTestId('password').fill('secret_sauce');\n    await page.getByTestId('login-button').click();\n    await expect(page).toHaveURL(/inventory/);",
+        "legenda": "O beforeEach só abre o site",
+        "fonte": 24,
+        "digitar": false,
+        "destaque": [
+         4,
+         5,
+         6
+        ],
+        "destaque_em": 3.0
+       }
+      },
+      {
+       "text": "A troca é assim: onde estava get by placeholder Username, fica get by test id username. A senha vira password. E o botão vira login button.",
+       "scene": {
+        "type": "traducao",
+        "titulo": "A MESMA COISA, OUTRO SELETOR",
+        "linhas": [
+         [
+          "getByPlaceholder('Username')",
+          "getByTestId('username')"
+         ],
+         [
+          "getByPlaceholder('Password')",
+          "getByTestId('password')"
+         ],
+         [
+          "getByRole('button', { name: 'Login' })",
+          "getByTestId('login-button')"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "No primeiro teste, as três linhas do login trocadas.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "login.spec.js",
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  tests/",
+         "    login.spec.js",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "codigo": "  test('entra com usuário e senha', async ({ page }) => {\n    await page.getByTestId('username').fill('standard_user');\n    await page.getByTestId('password').fill('secret_sauce');\n    await page.getByTestId('login-button').click();\n    await expect(page).toHaveURL(/inventory/);",
+        "legenda": "Teste 1: os três seletores trocados",
+        "fonte": 28,
         "digitar": true,
-        "digitar_de": 9,
-        "digitar_ate": 11,
-        "rolar_depois": true
+        "linha0": 8,
+        "digitar_de": 2,
+        "digitar_ate": 4
+       }
+      },
+      {
+       "text": "E no segundo teste, a mesma troca. Os seletores antigos também estavam certos: é só outro caminho pro mesmo lugar.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "login.spec.js",
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  tests/",
+         "    login.spec.js",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "codigo": "  test('mostra erro para usuário bloqueado', async ({ page }) => {\n    await page.getByTestId('username').fill('locked_out_user');\n    await page.getByTestId('password').fill('secret_sauce');\n    await page.getByTestId('login-button').click();\n    await expect(page.getByText('locked out')).toBeVisible();\n  });\n});",
+        "legenda": "Teste 2: a mesma troca",
+        "fonte": 24,
+        "digitar": true,
+        "linha0": 18,
+        "digitar_de": 2,
+        "digitar_ate": 4
        }
       },
       {
