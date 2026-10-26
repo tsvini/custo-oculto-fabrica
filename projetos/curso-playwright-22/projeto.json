@@ -113,7 +113,7 @@
         "legenda": "O teste do usuário bloqueado",
         "fonte": 24,
         "digitar": true,
-        "digitar_de": 13,
+        "digitar_de": 14,
         "rolar": true,
         "rolar_de": 0.8,
         "rolar_dur": 1.0
@@ -130,9 +130,12 @@
         "digitar": false,
         "destaque": [
          4,
-         14
+         15
         ],
-        "destaque_em": 0.6
+        "destaque_em": 0.6,
+        "rolar": true,
+        "rolar_de": 2.2,
+        "rolar_dur": 1.4
        }
       },
       {

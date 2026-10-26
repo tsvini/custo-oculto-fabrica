@@ -73,7 +73,8 @@
          "  playwright.config.js"
         ],
         "digitar_de": 14,
-        "digitar_ate": 14
+        "digitar_ate": 14,
+        "rolar_depois": true
        }
       },
       {

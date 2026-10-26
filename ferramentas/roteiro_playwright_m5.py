@@ -44,6 +44,10 @@ TESTE_BLOQ = """test('mostra erro para usuário bloqueado', async ({ page }) => 
   await expect(page.getByText('locked out')).toBeVisible();
 });"""
 DOIS = C16 + "\n\n" + TESTE_BLOQ  # linhas 1-11 = teste da aula 16; 13-18 = teste novo
+LD = DOIS.split("\n")
+L_T2 = [i + 1 for i, l in enumerate(LD) if "mostra erro" in l][0]       # o test do bloqueado
+L_GOTOS = [i + 1 for i, l in enumerate(LD) if "page.goto" in l]           # os dois goto
+assert len(L_GOTOS) == 2 and L_GOTOS[1] == L_T2 + 1
 GOTO = "  await page.goto('https://www.saucedemo.com/');\n"
 BE = """test.beforeEach(async ({ page }) => {
   await page.goto('https://www.saucedemo.com/');
@@ -65,8 +69,8 @@ AULAS.append(projeto(22, "MÓDULO 5 · AULA 22", "describe e beforeEach", [
      {"type": "tela", "media": "rec_sauce_locked", "url": SAUCE, "gravar": True, "titulo": "saucedemo.com", "legenda": "O usuário bloqueado não entra",
       "acoes": [{"fill": ["#user-name", "locked_out_user"]}, {"fill": ["#password", "secret_sauce"]}, {"click": "#login-button"}], "espera_fim": 2200, "delay_letra": 70}),
     ("Escreve o teste novo embaixo do primeiro. Ele preenche o usuário bloqueado e espera ver a mensagem locked out.",
-     edc(DOIS, "O teste do usuário bloqueado", digitar=True, digitar_de=13, rolar=True, rolar_de=0.8, rolar_dur=1.0, fonte=24)),
-    ("Repara: a linha do goto se repete nos dois testes.", edc(DOIS, "O goto se repete", destaque=[4, 14], destaque_em=0.6, fonte=24)),
+     edc(DOIS, "O teste do usuário bloqueado", digitar=True, digitar_de=L_T2, rolar=True, rolar_de=0.8, rolar_dur=1.0, fonte=24)),
+    ("Repara: a linha do goto se repete nos dois testes.", edc(DOIS, "O goto se repete", destaque=L_GOTOS, destaque_em=0.6, rolar=True, rolar_de=2.2, rolar_dur=1.4, fonte=24)),
     ("Quando algo se repete antes de todo teste, existe o before each. Before each: antes de cada.",
      {"type": "traducao", "codigo": "test.beforeEach(async ({ page }) => {", "partes": [["before", "antes de"], ["Each", "cada"], ["({ page })", "me dê o navegador"]], "passo": 2.0}),
     ("Coloca o goto lá dentro, e apaga dos testes.", edc(COM_BE, "O goto vai pro beforeEach", destaque=[3, 4, 5], destaque_em=0.6, rolar=True, rolar_de=2.6, rolar_dur=1.6, fonte=24)),
@@ -94,7 +98,7 @@ AULAS.append(projeto(23, "MÓDULO 5 · AULA 23", "playwright.config - baseURL e 
     ("Tira o comentário da baseURL e coloca o endereço do saucedemo. Base URL: o endereço base.",
      edc(cfg(CFG_BASE), "baseURL = o endereço base", arquivo="playwright.config.js", linha0=USE0, digitar=True, digitar_de=5, digitar_ate=5, fonte=26)),
     ("Agora, no teste, o goto fica só com uma barra. O Playwright junta essa barra com o endereço base.",
-     edc(C22.replace("aula 22: ", "").replace("page.goto('https://www.saucedemo.com/')", "page.goto('/')"), "baseURL + /  =  saucedemo.com/", digitar=True, digitar_de=5, digitar_ate=5, fonte=22)),
+     edc(C22.replace("aula 22: ", "").replace("page.goto('https://www.saucedemo.com/')", "page.goto('/')"), "baseURL + /  =  saucedemo.com/", digitar=True, digitar_de=5, digitar_ate=5, fonte=22, rolar_depois=True)),
     ("A vantagem: se um dia o site mudar de endereço, você troca num lugar só.",
      {"type": "cards", "itens": [["⌂", "baseURL", "o endereço num lugar só"], ["/", "page.goto('/')", "nos testes, só o caminho", "#69a7ff"]]}),
     ("Segunda linha: test id attribute igual data-test. Lembra do data-test que a gente viu no Inspecionar?",
@@ -102,7 +106,7 @@ AULAS.append(projeto(23, "MÓDULO 5 · AULA 23", "playwright.config - baseURL e 
     ("Por padrão, o get by test id procura data-testid. O saucedemo usa data-test. Essa linha avisa o Playwright.",
      {"type": "compare", "items": [["data-testid", "O PADRÃO DO PLAYWRIGHT", "white"], ["data-test", "O QUE O SAUCEDEMO USA", "gold"]], "size": 90, "stagger": 1.2, "vs": True}),
     ("Agora o get by test id também funciona no saucedemo. Vamos trocar os seletores do login só pra você ver esse outro caminho. Os que a gente usou antes continuam certos.",
-     edc(C23.replace("aula 23: ", ""), "Outro caminho: getByTestId", digitar=True, digitar_de=9, digitar_ate=11, fonte=22)),
+     edc(C23.replace("aula 23: ", ""), "Outro caminho: getByTestId", digitar=True, digitar_de=9, digitar_ate=11, fonte=22, rolar_depois=True)),
     ("Traduzindo: ache pela etiqueta de teste chamada username.",
      {"type": "traducao", "codigo": "page.getByTestId('username')", "partes": [["getByTestId", "ache pela etiqueta de teste"], ["'username'", "chamada username"]], "passo": 2.0}),
     ("Roda pra confirmar que tudo continua passando.", vs(C23, "Tudo continua passando", run(("Running 2 tests using 2 workers", "mut"), ("  2 passed (2.0s)", "ac")))),
@@ -130,9 +134,9 @@ AULAS.append(projeto(24, "MÓDULO 5 · AULA 24", "Variáveis de ambiente - tiran
     ("E antes de qualquer outra coisa: abre o ponto gitignore e escreve ponto env no final. Assim esse arquivo nunca vai pro GitHub.",
      edc(GITIGNORE + "\n.env", ".env no .gitignore", arquivo=".gitignore", pastas=ARV_ENV, digitar=True, digitar_de=len(GITIGNORE.split("\n")) + 1, fonte=30)),
     ("No config, tira o comentário daquelas três linhas do dotenv. Elas mandam ler o arquivo ponto env.",
-     edc("\n".join(CFG_DOTENV), "Ler o .env", arquivo="playwright.config.js", pastas=ARV_ENV, digitar=True, digitar_de=8, digitar_ate=10, fonte=24)),
+     edc("\n".join(CFG_DOTENV), "Ler o .env", arquivo="playwright.config.js", pastas=ARV_ENV, digitar=True, digitar_de=8, digitar_ate=10, fonte=22)),
     ("No teste, troca o texto por process ponto env ponto SAUCE underline USER.",
-     edc(C24.replace("aula 24: ", ""), "process.env.SAUCE_USER", pastas=ARV_ENV, digitar=True, digitar_de=9, digitar_ate=10, fonte=22)),
+     edc(C24.replace("aula 24: ", ""), "process.env.SAUCE_USER", pastas=ARV_ENV, digitar=True, digitar_de=9, digitar_ate=10, fonte=22, rolar_depois=True)),
     ("Traduzindo: process ponto env, as variáveis do ambiente. SAUCE underline USER, a variável com esse nome.",
      {"type": "traducao", "codigo": "process.env.SAUCE_USER", "partes": [["process.env", "as variáveis do ambiente"], ["SAUCE_USER", "a chamada SAUCE_USER"]], "passo": 2.0}),
     ("E pra quem baixar o projeto saber o que preencher, cria um ponto env ponto example só com os nomes das variáveis, sem os valores.",

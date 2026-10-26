@@ -114,6 +114,7 @@
     const pronto = linhas.slice(0, d0 - 1).join("").length; const falta = Math.max(1, linhas.slice(0, d1).join("").length - pronto);
     const tDig = Math.max(0.8, Math.min(rolando ? Math.max(0.8, dur - t0 - 1.0) : dur * (s.vel || 0.7), falta / 18));
     const k = s.digitar === false ? 1 : clamp((t - t0) / tDig);
+    if (s.rolar_depois && !rolando) yy -= Math.max(0, linhas.length - cabem) * lh * easeInOut((t - (s.digitar === false ? (s.rolar_de || 2.0) : t0 + tDig + 0.5)) / (s.rolar_dur || 1.4));  // digita no topo e depois desce até o fim do arquivo
     const dig = k; let resta = pronto + Math.floor(k * falta);
     linhas.forEach((ln, i) => {
       const hl = (s.destaque || []).includes(i + 1);

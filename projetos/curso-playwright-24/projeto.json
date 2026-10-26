@@ -207,7 +207,7 @@
         ],
         "codigo": "// @ts-check\nimport { defineConfig, devices } from '@playwright/test';\n\n/**\n * Read environment variables from file.\n * https://github.com/motdotla/dotenv\n */\nimport dotenv from 'dotenv';\nimport path from 'path';\ndotenv.config({ path: path.resolve(__dirname, '.env') });\n\n/**\n * @see https://playwright.dev/docs/test-configuration\n */\nexport default defineConfig({",
         "legenda": "Ler o .env",
-        "fonte": 24,
+        "fonte": 22,
         "digitar": true,
         "digitar_de": 8,
         "digitar_ate": 10
@@ -235,7 +235,8 @@
          "  playwright.config.js"
         ],
         "digitar_de": 9,
-        "digitar_ate": 10
+        "digitar_ate": 10,
+        "rolar_depois": true
        }
       },
       {

@@ -58,7 +58,7 @@ AULAS = []
 AULAS.append(projeto(26, "MÓDULO 6 · AULA 26", "Lendo o erro", [
     ("O teste falhou. Calma: ler o erro fica muito mais fácil quando você sabe onde olhar.", titulo(26, "LENDO O ERRO")),
     ("Vamos quebrar de propósito: na conferência da mochila, troca Backpack por Mochila.",
-     edc(C26, "Backpack → Mochila (de propósito)", pastas=ARV_EX, digitar=True, digitar_de=L_MOCHILA, digitar_ate=L_MOCHILA, fonte=22)),
+     edc(C26, "Backpack → Mochila (de propósito)", pastas=ARV_EX, digitar=True, digitar_de=L_MOCHILA, digitar_ate=L_MOCHILA, fonte=22, rolar_depois=True)),
     ("Roda. Falhou.", vs(C26, "Falhou", run(("Running 2 tests using 2 workers", "mut"), ("  1 failed", VERM), ("  1 passed (6.2s)", "ac")), pastas=ARV_EX)),
     ("Vamos ler de cima pra baixo. Primeiro: qual teste falhou, e em qual arquivo e linha.", term(E1, "Qual teste, qual arquivo, qual linha", destaque=[0])),
     ("Depois: Expected, o que você esperava, e Received, o que ele encontrou.", term(E1, "Expected = esperado · Received = encontrado", destaque=[3, 4])),
@@ -117,7 +117,7 @@ AULAS.append(projeto(29, "MÓDULO 6 · AULA 29", "Modo debug e page.pause", [
     ("No Inspector, o botão step over executa um passo por vez. Olha: preenche, para. Preenche, para. Clica, para.",
      cg("Step over: um passo de cada vez", modo="debug", codigo="\n".join(L24[:16]), linhas_passo=[9, 10, 11])),
     ("Outra forma, pra usar na sua máquina enquanto escreve o teste: page ponto pause no meio do código.",
-     edc(C29, "page.pause()", pastas=ARV_EX, digitar=True, digitar_de=L_CLICK + 1, digitar_ate=L_CLICK + 1, fonte=22)),
+     edc(C29, "page.pause()", pastas=ARV_EX, digitar=True, digitar_de=L_CLICK + 1, digitar_ate=L_CLICK + 1, fonte=22, rolar_depois=True)),
     ("Pause é pausar: rodando com o navegador aparecendo, o teste para exatamente ali e abre o Inspector.",
      cg("Parou no page.pause()", modo="debug", codigo=TOPO29, linhas_passo=[L_CLICK + 1], media="site_sauce_pause", acoes=LOGIN, inspecionar_varios=[])),
     ("É uma ferramenta de desenvolvimento: lembra de tirar o pause depois, senão o teste fica parado esperando você.",

@@ -90,7 +90,8 @@
         "fonte": 22,
         "digitar": true,
         "digitar_de": 5,
-        "digitar_ate": 5
+        "digitar_ate": 5,
+        "rolar_depois": true
        }
       },
       {
@@ -157,7 +158,8 @@
         "fonte": 22,
         "digitar": true,
         "digitar_de": 9,
-        "digitar_ate": 11
+        "digitar_ate": 11,
+        "rolar_depois": true
        }
       },
       {
