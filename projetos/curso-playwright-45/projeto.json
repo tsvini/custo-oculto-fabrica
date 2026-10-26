@@ -51,7 +51,7 @@
        }
       },
       {
-       "text": "Por que isso importa? Sem ele, alguém precisa lembrar de rodar os testes. Com ele, toda mudança no site roda os testes sozinha, e o bug é pego antes de chegar no cliente.",
+       "text": "Por que isso importa? Sem ele, alguém precisa lembrar de rodar os testes. Com ele, toda vez que alguém manda uma mudança pro repositório, os testes rodam sozinhos. E em muitas empresas os testes ficam junto com o código do site: aí cada mudança no site passa pelos testes antes de chegar no cliente.",
        "scene": {
         "type": "compare",
         "title": "RODAR OS TESTES",
@@ -136,6 +136,58 @@
        }
       },
       {
+       "text": "Pull request é quando alguém da equipe pede pra juntar uma mudança na main. Os testes rodam antes, e se ficarem vermelhos, a mudança espera o conserto.",
+       "scene": {
+        "type": "cards",
+        "titulo": "PULL REQUEST",
+        "itens": [
+         [
+          "⇄",
+          "Pede pra juntar",
+          "uma mudança na main"
+         ],
+         [
+          "▶",
+          "Os testes rodam",
+          "antes de juntar",
+          "#69a7ff"
+         ],
+         [
+          "✗",
+          "Vermelho?",
+          "espera o conserto",
+          "#ff6b6b"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "E dá até pra agendar: rodar todo dia de madrugada, mesmo sem ninguém mexer. É assim que um teste aparece falhando às seis da manhã, como na aula do trace.",
+       "scene": {
+        "type": "cards",
+        "itens": [
+         [
+          "⇪",
+          "A cada push",
+          "alguém mandou mudança"
+         ],
+         [
+          "⇄",
+          "A cada pull request",
+          "antes de juntar",
+          "#69a7ff"
+         ],
+         [
+          "⏰",
+          "Agendado",
+          "toda madrugada",
+          "#ffd23f"
+         ]
+        ],
+        "titulo": "QUANDO ELE RODA"
+       }
+      },
+      {
        "text": "Só falta uma coisa: o ponto env não foi pro GitHub, então lá os testes não sabem o usuário e a senha.",
        "scene": {
         "type": "cards",
@@ -203,6 +255,23 @@
         "rolar": true,
         "rolar_de": 0.6,
         "rolar_dur": 0.9
+       }
+      },
+      {
+       "text": "Traduzindo: SAUCE USER, dois pontos, e cifrão chaves chaves secrets ponto SAUCE USER. Pegue o valor guardado no cofre do GitHub, e entregue pros testes com esse nome, igual o ponto env fazia.",
+       "scene": {
+        "type": "traducao",
+        "titulo": "DO COFRE PROS TESTES",
+        "linhas": [
+         [
+          "SAUCE_USER: ${{ secrets.SAUCE_USER }}",
+          "o usuário, do cofre"
+         ],
+         [
+          "SAUCE_PASSWORD: ${{ secrets.SAUCE_PASSWORD }}",
+          "a senha, do cofre"
+         ]
+        ]
        }
       },
       {

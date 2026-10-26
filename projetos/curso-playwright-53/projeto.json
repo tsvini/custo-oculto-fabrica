@@ -51,6 +51,25 @@
        }
       },
       {
+       "text": "Por que testar o sair? Porque se ele falhar num computador compartilhado, a próxima pessoa entra direto na sua conta.",
+       "scene": {
+        "type": "cards",
+        "itens": [
+         [
+          "⎋",
+          "Clicou em sair",
+          "e achou que saiu"
+         ],
+         [
+          "✗",
+          "Não saiu de verdade",
+          "a próxima pessoa entra na sua conta",
+          "#ff6b6b"
+         ]
+        ]
+       }
+      },
+      {
        "text": "Pausa e tenta.",
        "scene": {
         "type": "desafio",

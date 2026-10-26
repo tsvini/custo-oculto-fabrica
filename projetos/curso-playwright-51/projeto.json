@@ -51,6 +51,26 @@
        }
       },
       {
+       "text": "No trabalho, o remover quebra mais do que parece: o número não atualiza, ou o produto continua lá. E quase ninguém testa, porque todo mundo só testa o adicionar.",
+       "scene": {
+        "type": "cards",
+        "itens": [
+         [
+          "＋",
+          "Adicionar",
+          "todo mundo testa",
+          "#3fd68a"
+         ],
+         [
+          "−",
+          "Remover",
+          "quase ninguém testa",
+          "#ff6b6b"
+         ]
+        ]
+       }
+      },
+      {
        "text": "Pausa e tenta.",
        "scene": {
         "type": "desafio",

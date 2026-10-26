@@ -163,7 +163,7 @@
        }
       },
       {
-       "text": "Repara que o node modules, o ponto env e a pasta do login salvo não entram: o gitignore está fazendo o trabalho dele.",
+       "text": "Pra conferir o que vai entrar, git status. Repara: o node modules, o ponto env e a pasta do login salvo não aparecem. O gitignore está fazendo o trabalho dele.",
        "scene": {
         "type": "terminal",
         "titulo": "Terminal — VS Code",
@@ -335,6 +335,23 @@
         "legenda": "Primeira vez? Seu nome e seu e-mail",
         "fonte": 30,
         "fonte_min": 24
+       }
+      },
+      {
+       "text": "E no dia a dia? Terminou um teste e ele passou: faz um commit. E a mensagem diz o que mudou, tipo adiciona teste do carrinho. Daqui a um mês, você vai saber o que tem em cada salvamento.",
+       "scene": {
+        "type": "traducao",
+        "titulo": "NO DIA A DIA",
+        "linhas": [
+         [
+          "git add .",
+          "prepare o que mudou"
+         ],
+         [
+          "git commit -m \"adiciona teste do carrinho\"",
+          "salve, com uma mensagem clara"
+         ]
+        ]
        }
       },
       {

@@ -194,7 +194,7 @@
        }
       },
       {
-       "text": "Repara nos parênteses depois do status.",
+       "text": "Repara nos parênteses depois do status. Status é uma ação: pergunta o status pra resposta. Sem os parênteses, não funciona.",
        "scene": {
         "type": "editor",
         "arquivo": "api.spec.js",
@@ -240,7 +240,7 @@
        }
       },
       {
-       "text": "E o expect: post ponto id, to be um.",
+       "text": "E a segunda conferência: post ponto id, to be um. Não basta dar certo: tem que vir o post certo.",
        "scene": {
         "type": "editor",
         "arquivo": "api.spec.js",

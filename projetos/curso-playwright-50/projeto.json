@@ -51,6 +51,31 @@
        }
       },
       {
+       "text": "Por que testar isso? Porque é a primeira coisa que alguém apressado faz: clica sem preencher. O sistema precisa avisar, e não pode deixar entrar nem travar.",
+       "scene": {
+        "type": "cards",
+        "itens": [
+         [
+          "⚡",
+          "Alguém apressado",
+          "clica sem preencher"
+         ],
+         [
+          "✓",
+          "O sistema avisa",
+          "Username is required",
+          "#3fd68a"
+         ],
+         [
+          "✗",
+          "Não pode",
+          "entrar nem travar",
+          "#ff6b6b"
+         ]
+        ]
+       }
+      },
+      {
        "text": "Pausa e tenta.",
        "scene": {
         "type": "desafio",

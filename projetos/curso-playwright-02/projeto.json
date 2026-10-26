@@ -208,6 +208,32 @@
        }
       },
       {
+       "text": "E um aviso: a partir do módulo doze, o nível sobe. Se você já automatiza testes e só quer ver o Playwright mais a fundo, pode pular direto pra lá.",
+       "scene": {
+        "type": "cards",
+        "titulo": "O MAPA DO CURSO",
+        "itens": [
+         [
+          "1–11",
+          "Do zero",
+          "módulos 1 a 11"
+         ],
+         [
+          "12–14",
+          "Nível 2",
+          "o nível sobe",
+          "#ffd23f"
+         ],
+         [
+          "15",
+          "Carreira",
+          "currículo e portfólio",
+          "#69a7ff"
+         ]
+        ]
+       }
+      },
+      {
        "text": "Bora começar!",
        "scene": {
         "type": "endcard",

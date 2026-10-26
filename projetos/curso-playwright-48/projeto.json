@@ -109,7 +109,7 @@
        }
       },
       {
-       "text": "E o título que voltou é o mesmo que você mandou.",
+       "text": "E confere que o título que voltou é o mesmo que você mandou: a prova de que o servidor entendeu o pedido.",
        "scene": {
         "type": "editor",
         "arquivo": "api.spec.js",

@@ -51,6 +51,23 @@
        }
       },
       {
+       "text": "Ordenar parece simples, mas é um bug clássico: o site ordena o preço como se fosse texto, e o doze e cinquenta aparece antes do sete e noventa e nove.",
+       "scene": {
+        "type": "traducao",
+        "titulo": "O BUG CLÁSSICO DA ORDENAÇÃO",
+        "linhas": [
+         [
+          "7.99 · 9.99 · 12.50",
+          "certo: como número"
+         ],
+         [
+          "12.50 · 7.99 · 9.99",
+          "errado: como texto"
+         ]
+        ]
+       }
+      },
+      {
        "text": "Pausa e tenta.",
        "scene": {
         "type": "desafio",
@@ -146,6 +163,25 @@
         "rolar": true,
         "rolar_de": 0.2,
         "rolar_dur": 0.6
+       }
+      },
+      {
+       "text": "Conferir só o primeiro é o jeito mais simples. No módulo 14, você confere a lista inteira, e pega exatamente esse bug numa loja de verdade.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "HOJE: O PRIMEIRO PREÇO",
+          "white",
+          100
+         ],
+         [
+          "MÓDULO 14: A LISTA INTEIRA",
+          "gold",
+          110
+         ]
+        ]
        }
       },
       {

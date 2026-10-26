@@ -112,6 +112,8 @@ AULAS.append(projeto(2, "BOAS-VINDAS · AULA 2", "Como usar o curso e a sua coli
     ("Se você já usa VS Code, Node e Git no seu computador, pode pular o módulo um. Se não tem certeza, fica comigo, que eu vou conferir cada um junto com você.",
      {"type": "compare", "title": "E AGORA?", "items": [["JÁ TENHO OS 3", "PULA PRO MÓDULO 2", "gold"], ["NÃO SEI", "FICA COMIGO", "white"]], "size": 110, "stagger": 1.4, "vs": False}),
     ("E se o seu computador é Mac ou Linux, tem uma aula só pra você no fim do módulo um.", {"type": "passo", "icone": "6", "titulo": "Mac ou Linux?", "sub": "Aula 6"}),
+    ("E um aviso: a partir do módulo doze, o nível sobe. Se você já automatiza testes e só quer ver o Playwright mais a fundo, pode pular direto pra lá.",
+     {"type": "cards", "titulo": "O MAPA DO CURSO", "itens": [["1–11", "Do zero", "módulos 1 a 11"], ["12–14", "Nível 2", "o nível sobe", "#ffd23f"], ["15", "Carreira", "currículo e portfólio", "#69a7ff"]]}),
     ("Bora começar!", {"type": "endcard", "sub": "PRÓXIMA: INSTALANDO O VS CODE"}),
 ]))
 

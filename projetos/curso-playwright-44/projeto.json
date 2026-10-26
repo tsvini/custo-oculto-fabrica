@@ -51,7 +51,32 @@
        }
       },
       {
-       "text": "Cria uma conta no github ponto com, se ainda não tiver. Depois clica em New repository, dá o nome e cria, sem marcar nenhuma opção.",
+       "text": "Pra você, ele resolve três coisas: um backup do projeto, se o computador quebrar. Um lugar onde a equipe trabalha junto. E o seu portfólio: quem for te contratar pode ver o seu código funcionando.",
+       "scene": {
+        "type": "cards",
+        "itens": [
+         [
+          "☁",
+          "Backup",
+          "se o computador quebrar"
+         ],
+         [
+          "👥",
+          "Equipe",
+          "todo mundo no mesmo projeto",
+          "#69a7ff"
+         ],
+         [
+          "⭐",
+          "Portfólio",
+          "quem contrata vê seu código",
+          "#ffd23f"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Cria uma conta no github ponto com, se ainda não tiver. Depois clica em New repository. Repositório é a pasta do projeto, lá no GitHub. Dá o nome e cria, sem marcar nenhuma opção, porque o seu projeto já tem os arquivos dele.",
        "scene": {
         "type": "github",
         "usuario": "voce",
@@ -62,7 +87,7 @@
        }
       },
       {
-       "text": "O GitHub mostra os comandos. No terminal: git branch traço M main. Dá o nome main pro ramo principal.",
+       "text": "O GitHub mostra os comandos. No terminal: git branch traço M main. Branch é ramo: uma linha de versões do projeto. Esse comando dá o nome main pro ramo principal.",
        "scene": {
         "type": "editor",
         "arquivo": "compra.spec.js",
@@ -246,6 +271,27 @@
         "foco_item": 3,
         "foco_rotulo": "← o .env não subiu",
         "url_em": 99
+       }
+      },
+      {
+       "text": "E daqui pra frente, o ciclo é sempre esse: add, commit e push. E o GitHub fica igual à sua máquina.",
+       "scene": {
+        "type": "traducao",
+        "titulo": "O CICLO DE TODO DIA",
+        "linhas": [
+         [
+          "git add .",
+          "prepare"
+         ],
+         [
+          "git commit -m \"...\"",
+          "salve"
+         ],
+         [
+          "git push",
+          "mande pro GitHub"
+         ]
+        ]
        }
       },
       {

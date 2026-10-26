@@ -103,6 +103,32 @@
        }
       },
       {
+       "text": "Um exemplo: quando você abre uma loja e aparecem os produtos, o site pediu a lista de produtos pra API, e a API respondeu. A tela só mostra o que veio.",
+       "scene": {
+        "type": "cards",
+        "titulo": "ABRIU A LOJA",
+        "itens": [
+         [
+          "🖥",
+          "O site pede",
+          "a lista de produtos"
+         ],
+         [
+          "⇄",
+          "A API responde",
+          "com os produtos",
+          "#69a7ff"
+         ],
+         [
+          "👀",
+          "A tela mostra",
+          "o que veio",
+          "#ffd23f"
+         ]
+        ]
+       }
+      },
+      {
        "text": "Esses pedidos se chamam requisições, e cada uma tem um método. GET, buscar. POST, criar. DELETE, apagar.",
        "scene": {
         "type": "traducao",
@@ -124,7 +150,7 @@
        }
       },
       {
-       "text": "E a resposta vem com um número, o status: duzentos é deu certo, duzentos e um é criado, quatrocentos e quatro é não encontrado.",
+       "text": "E a resposta vem com um número, o status: duzentos é deu certo, duzentos e um é criado, quatrocentos e quatro é não encontrado. E quinhentos é erro no servidor, que muitas vezes é bug.",
        "scene": {
         "type": "cards",
         "titulo": "STATUS DA RESPOSTA",
@@ -144,6 +170,12 @@
           "404",
           "Não encontrado",
           "Not Found",
+          "#ff8c42"
+         ],
+         [
+          "500",
+          "Erro no servidor",
+          "muitas vezes, bug",
           "#ff6b6b"
          ]
         ]
@@ -179,6 +211,32 @@
          [
           "\"body\": \"quia et suscipit...\"",
           "o texto"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "E onde quem testa entra? Conferindo que cada pedido traz a resposta certa: o status certo, e os dados certos.",
+       "scene": {
+        "type": "cards",
+        "titulo": "TESTAR UMA API",
+        "itens": [
+         [
+          "📨",
+          "Faz o pedido",
+          "GET, POST, DELETE"
+         ],
+         [
+          "#",
+          "Confere o status",
+          "200, 201, 404...",
+          "#69a7ff"
+         ],
+         [
+          "{ }",
+          "Confere os dados",
+          "veio o que devia?",
+          "#ffd23f"
          ]
         ]
        }

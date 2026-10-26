@@ -51,6 +51,25 @@
        }
       },
       {
+       "text": "Por que conferir o total? Porque é dinheiro: um erro de soma no carrinho é o tipo de bug que a empresa não pode deixar passar.",
+       "scene": {
+        "type": "cards",
+        "itens": [
+         [
+          "$",
+          "O total",
+          "é dinheiro"
+         ],
+         [
+          "✗",
+          "Erro de soma",
+          "não pode passar",
+          "#ff6b6b"
+         ]
+        ]
+       }
+      },
+      {
        "text": "Pausa e tenta. Esse é maior, sem pressa.",
        "scene": {
         "type": "desafio",
@@ -304,10 +323,10 @@
        }
       },
       {
-       "text": "Te vejo na última parte!",
+       "text": "Você terminou a parte do zero. A partir de agora, o nível sobe. Te vejo lá!",
        "scene": {
         "type": "endcard",
-        "sub": "PRÓXIMA: MÓDULO 12 · CARREIRA"
+        "sub": "PRÓXIMA: NÍVEL 2"
        }
       }
      ]

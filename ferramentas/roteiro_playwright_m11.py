@@ -108,6 +108,8 @@ def preencher():
     C = cod(50); ed, ab = solucao(C, "test('desafio 2", "Só o clique e o expect")
     aula(50, "Desafio 2 - campos vazios", [
         ("Desafio dois: e se a pessoa clicar em Login sem preencher nada?", titulo(50, "DESAFIO 2")),
+        ("Por que testar isso? Porque é a primeira coisa que alguém apressado faz: clica sem preencher. O sistema precisa avisar, e não pode deixar entrar nem travar.",
+         {"type": "cards", "itens": [["⚡", "Alguém apressado", "clica sem preencher"], ["✓", "O sistema avisa", "Username is required", "#3fd68a"], ["✗", "Não pode", "entrar nem travar", VERM]]}),
         ("Pausa e tenta.", desafio("2", "Campos vazios", [["▭", "não preenche nada"], ["▶", "clica em Login", AZUL], ["✓", "confere a mensagem de erro", AMARELO]])),
         ("Dica: a mensagem é Username is required.", video("dica50", "Username is required", [{"click": "#login-button"}])),
         ("Solução: só o clique e o expect.", ed),
@@ -122,6 +124,8 @@ def preencher():
     REM = {"click": "[data-test=\"remove-sauce-labs-backpack\"]", "espera": 1400}
     aula(51, "Desafio 3 - remover do carrinho", [
         ("Desafio três: adicionar a mochila e depois remover.", titulo(51, "DESAFIO 3")),
+        ("No trabalho, o remover quebra mais do que parece: o número não atualiza, ou o produto continua lá. E quase ninguém testa, porque todo mundo só testa o adicionar.",
+         {"type": "cards", "itens": [["＋", "Adicionar", "todo mundo testa", "#3fd68a"], ["−", "Remover", "quase ninguém testa", VERM]]}),
         ("Pausa e tenta.", desafio("3", "Remover do carrinho", [["＋", "adiciona a mochila"], ["−", "remove de novo", AZUL], ["✓", "o carrinho fica vazio", AMARELO]])),
         ("Dica: depois de adicionar, o botão vira Remove, com data-test remove-sauce-labs-backpack. E quando o carrinho fica vazio, o numerozinho some da página.",
          video("dica51", "Add to cart vira Remove · o numerozinho some", [ADD, REM], logado=True)),
@@ -137,11 +141,15 @@ def preencher():
     SEL = {"select": ["[data-test=\"product-sort-container\"]", "lohi"], "espera": 1800}
     aula(52, "Desafio 4 - ordenar por preço", [
         ("Desafio quatro: ordenar do menor pro maior preço.", titulo(52, "DESAFIO 4")),
+        ("Ordenar parece simples, mas é um bug clássico: o site ordena o preço como se fosse texto, e o doze e cinquenta aparece antes do sete e noventa e nove.",
+         {"type": "traducao", "titulo": "O BUG CLÁSSICO DA ORDENAÇÃO", "linhas": [["7.99 · 9.99 · 12.50", "certo: como número"], ["12.50 · 7.99 · 9.99", "errado: como texto"]]}),
         ("Pausa e tenta.", desafio("4", "Ordenar por preço", [["⇅", "ordena do menor pro maior"], ["✓", "o primeiro preço é o menor", AMARELO]])),
         ("Dica: a caixa de ordenar é um select, uma caixa de opções.", video("dica52", "A caixa de ordenar: um select", [SEL], logado=True)),
         ("Pra escolher uma opção, existe o select option, escolha a opção. A do menor preço se chama lohi, de low to high: do baixo pro alto.",
          {"type": "traducao", "codigo": "selectOption('lohi')", "partes": [["selectOption", "escolha a opção"], ["('lohi')", "low to high: do baixo pro alto"]], "passo": 2.4}),
         ("Solução: como a gente conhece os produtos desse site de treino, a conferência é simples: depois de ordenar, o primeiro preço é sete e noventa e nove.", ed),
+        ("Conferir só o primeiro é o jeito mais simples. No módulo 14, você confere a lista inteira, e pega exatamente esse bug numa loja de verdade.",
+         bt(("HOJE: O PRIMEIRO PREÇO", "white", 100), ("MÓDULO 14: A LISTA INTEIRA", "gold", 110))),
         ("Ponto first: o primeiro.", {"type": "traducao", "codigo": "getByTestId('inventory-item-price').first()", "partes": [[".first()", "o primeiro"]], "passo": 0.8}),
         ("Roda.", rodando(C, ab, "Passou: $7.99 primeiro", [SEL], "run52", 52, logado=True)),
         ("Te vejo no próximo!", fim("PRÓXIMO: DESAFIO 5")),
@@ -152,6 +160,8 @@ def preencher():
     MENU = [{"click": "#react-burger-menu-btn", "espera": 1300}, {"click": "[data-test=\"logout-sidebar-link\"]", "espera": 1200}]
     aula(53, "Desafio 5 - logout", [
         ("Desafio cinco: sair do sistema.", titulo(53, "DESAFIO 5")),
+        ("Por que testar o sair? Porque se ele falhar num computador compartilhado, a próxima pessoa entra direto na sua conta.",
+         {"type": "cards", "itens": [["⎋", "Clicou em sair", "e achou que saiu"], ["✗", "Não saiu de verdade", "a próxima pessoa entra na sua conta", VERM]]}),
         ("Pausa e tenta.", desafio("5", "Logout", [["☰", "abre o menu"], ["⎋", "clica em Logout", AZUL], ["✓", "o botão de Login voltou", AMARELO]])),
         ("Dica: o menu é aquele botão de três risquinhos, com nome Open Menu. Lá dentro tem o Logout.",
          video("dica53", "☰ Open Menu › Logout", [{"click": "#react-burger-menu-btn", "espera": 2500}], logado=True, espera_fim=1500)),
@@ -168,6 +178,8 @@ def preencher():
             {"click": "[data-test=\"continue\"]", "espera": 1500}]
     aula(54, "Desafio final - compra com dois produtos", [
         ("Desafio final: comprar dois produtos e conferir o total.", titulo(54, "DESAFIO FINAL")),
+        ("Por que conferir o total? Porque é dinheiro: um erro de soma no carrinho é o tipo de bug que a empresa não pode deixar passar.",
+         {"type": "cards", "itens": [["$", "O total", "é dinheiro"], ["✗", "Erro de soma", "não pode passar", VERM]]}),
         ("Pausa e tenta. Esse é maior, sem pressa.",
          desafio("FINAL", "Compra com dois produtos", [["🎒", "mochila + lanterna da bike"], ["🛒", "carrinho, checkout e dados", AZUL], ["$", "confere o total", AMARELO], ["✓", "finaliza a compra", AMARELO]])),
         ("Dica: a mochila e a lanterna da bicicleta, bike light. O total fica no data-test total-label. Com os preços desse site de treino, o total conhecido é quarenta e três e dezoito.",
@@ -176,7 +188,7 @@ def preencher():
         ("Roda e olha o fluxo inteiro.", rodando(C, ab, "O fluxo inteiro, sozinho", DOIS + [{"click": "[data-test=\"finish\"]"}], "run54", 54, logado=True)),
         ("Se você conseguiu montar boa parte desse desafio sozinho, você já está juntando seletores, ações e conferências sem copiar um roteiro pronto. Esse é um grande passo.",
          bt(("SELETORES", "white", 110), ("AÇÕES", "white", 110), ("CONFERÊNCIAS", "gold", 130), entre=1.25)),
-        ("Te vejo na última parte!", fim("PRÓXIMA: MÓDULO 12 · CARREIRA")),
+        ("Você terminou a parte do zero. A partir de agora, o nível sobe. Te vejo lá!", fim("PRÓXIMA: NÍVEL 2")),
     ], [1, 3])
 
 
