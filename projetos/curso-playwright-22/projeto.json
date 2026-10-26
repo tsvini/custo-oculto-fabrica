@@ -188,7 +188,7 @@
         "partes": [
          [
           "describe",
-          "descreva: junte numa caixa"
+          "junte numa caixa"
          ],
          [
           "'Login'",
@@ -199,6 +199,52 @@
        }
       },
       {
+       "text": "Logo depois do import, escreve: test ponto describe, abre parênteses, entre aspas Login, vírgula, abre e fecha parênteses, seta, e abre chaves.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "login.spec.js",
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  tests/",
+         "    login.spec.js",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "codigo": "import { test, expect } from '@playwright/test';\n\ntest.describe('Login', () => {\n  test.beforeEach(async ({ page }) => {\n    await page.goto('https://www.saucedemo.com/');\n  });\n\n  test('entra com usuário e senha', async ({ page }) => {\n    await page.getByPlaceholder('Username').fill('standard_user');\n    await page.getByPlaceholder('Password').fill('secret_sauce');\n    await page.getByRole('button', { name: 'Login' }).click();\n    await expect(page).toHaveURL(/inventory/);",
+        "legenda": "test.describe('Login', () => {",
+        "fonte": 26,
+        "digitar": true,
+        "digitar_de": 3,
+        "digitar_ate": 3,
+        "destaque": [
+         3
+        ],
+        "destaque_em": 4.5
+       }
+      },
+      {
+       "text": "E lá no final do arquivo, fecha a caixa: chave, parêntese e ponto e vírgula. Os dois testes e o before each ficam aqui dentro.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "login.spec.js",
+        "codigo": "    await expect(page.getByText('Products')).toBeVisible();\n    await expect(page.getByText('Sauce Labs Backpack')).toContainText('Backpack');\n    await expect(page.getByRole('button', { name: 'Add to cart' })).toHaveCount(6);\n  });\n\n  test('mostra erro para usuário bloqueado', async ({ page }) => {\n    await page.getByPlaceholder('Username').fill('locked_out_user');\n    await page.getByPlaceholder('Password').fill('secret_sauce');\n    await page.getByRole('button', { name: 'Login' }).click();\n    await expect(page.getByText('locked out')).toBeVisible();\n  });\n});",
+        "legenda": "}); fecha a caixa do describe",
+        "fonte": 26,
+        "digitar": true,
+        "linha0": 13,
+        "digitar_de": 12,
+        "digitar_ate": 12,
+        "destaque": [
+         12
+        ],
+        "destaque_em": 2.0
+       }
+      },
+      {
        "text": "Tudo que está dentro desse describe é sobre login.",
        "scene": {
         "type": "editor",
@@ -206,12 +252,15 @@
         "codigo": "import { test, expect } from '@playwright/test';\n\ntest.describe('Login', () => {\n  test.beforeEach(async ({ page }) => {\n    await page.goto('https://www.saucedemo.com/');\n  });\n\n  test('entra com usuário e senha', async ({ page }) => {\n    await page.getByPlaceholder('Username').fill('standard_user');\n    await page.getByPlaceholder('Password').fill('secret_sauce');\n    await page.getByRole('button', { name: 'Login' }).click();\n    await expect(page).toHaveURL(/inventory/);\n    await expect(page.getByText('Products')).toBeVisible();\n    await expect(page.getByText('Sauce Labs Backpack')).toContainText('Backpack');\n    await expect(page.getByRole('button', { name: 'Add to cart' })).toHaveCount(6);\n  });\n\n  test('mostra erro para usuário bloqueado', async ({ page }) => {\n    await page.getByPlaceholder('Username').fill('locked_out_user');\n    await page.getByPlaceholder('Password').fill('secret_sauce');\n    await page.getByRole('button', { name: 'Login' }).click();\n    await expect(page.getByText('locked out')).toBeVisible();\n  });\n});",
         "legenda": "Tudo aqui dentro é sobre login",
         "fonte": 22,
-        "digitar": true,
-        "digitar_de": 3,
-        "digitar_ate": 3,
+        "digitar": false,
+        "destaque": [
+         3,
+         24
+        ],
+        "destaque_em": 0.3,
         "rolar": true,
-        "rolar_de": 3.0,
-        "rolar_dur": 1.4
+        "rolar_de": 0.6,
+        "rolar_dur": 1.8
        }
       },
       {
