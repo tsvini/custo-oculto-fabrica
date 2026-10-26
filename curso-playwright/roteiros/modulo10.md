@@ -1,0 +1,40 @@
+# Roteiros aprovados · Módulo 10 (gerado do roteiro_playwright_m10.py)
+
+## Aula 46: O que é uma API, explicado do zero
+1. Quase todo site conversa com um servidor por trás. E pra essa conversa funcionar, existe a API. [bigtext]
+2. Uma API é um jeito combinado de um sistema pedir dados ou ações pra outro. [cards]
+3. Pensa num restaurante: você não entra na cozinha, você faz o pedido ao garçom, num formato combinado, e recebe a resposta. É uma simplificação, mas ajuda. [cards]
+4. Esses pedidos se chamam requisições, e cada uma tem um método. GET, buscar. POST, criar. DELETE, apagar. [traducao]
+5. E a resposta vem com um número, o status: duzentos é deu certo, duzentos e um é criado, quatrocentos e quatro é não encontrado. [cards]
+6. Vamos usar uma API de treino gratuita, a jsonplaceholder. Abre no navegador o endereço dela, barra posts barra um. [tela_cheia]
+7. Esse texto com chaves é JSON: um formato de dados que muitas APIs usam. [traducao]
+8. Na próxima aula: o seu primeiro teste de API. [passo]
+9. Te vejo lá! [endcard]
+
+## Aula 47: Seu primeiro teste de API
+1. Teste de API não abre navegador nenhum. Por isso ele é bem rápido. [bigtext]
+2. Cria o api ponto spec ponto js. No teste, em vez do page, você pede o request, entre chaves. [editor]
+3. Request quer dizer requisição. [traducao]
+4. const resposta igual await request ponto get, e o endereço. [editor]
+5. Busque o post número um e guarde a resposta. [traducao]
+6. expect, resposta ponto status, abre e fecha parênteses, to be duzentos. [editor]
+7. Eu espero que o status da resposta seja duzentos. [traducao]
+8. Repara nos parênteses depois do status. [editor]
+9. Depois: const post igual await resposta ponto json, com parênteses. [editor]
+10. Leia os dados que vieram. [traducao]
+11. E o expect: post ponto id, to be um. [editor]
+12. Roda: passou, em milissegundos. [editor]
+13. Na próxima aula: criando e apagando pela API. [passo]
+14. Te vejo lá! [endcard]
+
+## Aula 48: Criando e apagando dados pela API
+1. Agora vamos simular uma criação e uma exclusão. A API de treino responde como uma de verdade, mas não guarda essas mudanças. [bigtext]
+2. request ponto post, com um data: título, texto e userId. [editor]
+3. É a requisição de criar. [traducao]
+4. A conferência: status duzentos e um, criado. [editor]
+5. E o título que voltou é o mesmo que você mandou. [editor]
+6. request ponto delete: apagar. Status duzentos. [editor]
+7. Roda os três: passaram. [editor]
+8. Num sistema real, essa criação e essa exclusão ficariam guardadas no banco de dados. [cards]
+9. Fechamos o bônus! Agora: desafios pra você praticar. [passo]
+10. Te vejo lá! [endcard]

@@ -1,0 +1,209 @@
+{
+ "title": "Playwright para leigos · Aula 46",
+ "slug": "curso-playwright-46",
+ "idioma": "pt",
+ "destino": "curso",
+ "marca": [
+  "PLAYWRIGHT",
+  "PARA LEIGOS"
+ ],
+ "cor_fundo": "#3fd68a",
+ "sem_legenda": true,
+ "legenda_y": 0.93,
+ "selo": "MÓDULO 10 · AULA 46",
+ "voz": {
+  "nome": "gravada",
+  "motor": "eleven",
+  "eleven_voz": "Vinícius Torales"
+ },
+ "serie": [],
+ "meta": {
+  "titles": [
+   "Aula 46: O que é uma API, explicado do zero"
+  ],
+  "description": "",
+  "tags": []
+ },
+ "notes": "Curso Playwright para leigos. Não publica (destino: curso). Roteiro em curso-playwright/roteiros/.",
+ "script": {
+  "long": {
+   "parts": [
+    {
+     "chapter": "",
+     "sentences": [
+      {
+       "text": "Quase todo site conversa com um servidor por trás. E pra essa conversa funcionar, existe a API.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "AULA 46",
+          "muted",
+          80
+         ],
+         [
+          "O QUE É UMA API",
+          "gold",
+          150
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Uma API é um jeito combinado de um sistema pedir dados ou ações pra outro.",
+       "scene": {
+        "type": "cards",
+        "titulo": "API",
+        "itens": [
+         [
+          "📨",
+          "Um sistema pede",
+          "dados ou ações"
+         ],
+         [
+          "🤝",
+          "Num jeito combinado",
+          "o formato do pedido",
+          "#69a7ff"
+         ],
+         [
+          "🖥",
+          "O outro responde",
+          "o servidor",
+          "#ffd23f"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Pensa num restaurante: você não entra na cozinha, você faz o pedido ao garçom, num formato combinado, e recebe a resposta. É uma simplificação, mas ajuda.",
+       "scene": {
+        "type": "cards",
+        "titulo": "PENSA NUM RESTAURANTE",
+        "itens": [
+         [
+          "🙋",
+          "Você",
+          "faz o pedido"
+         ],
+         [
+          "🤵",
+          "Garçom = API",
+          "leva o pedido e traz a resposta",
+          "#69a7ff"
+         ],
+         [
+          "🍳",
+          "Cozinha = servidor",
+          "prepara o que você pediu",
+          "#ffd23f"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Esses pedidos se chamam requisições, e cada uma tem um método. GET, buscar. POST, criar. DELETE, apagar.",
+       "scene": {
+        "type": "traducao",
+        "titulo": "REQUISIÇÃO · O MÉTODO",
+        "linhas": [
+         [
+          "GET",
+          "buscar"
+         ],
+         [
+          "POST",
+          "criar"
+         ],
+         [
+          "DELETE",
+          "apagar"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "E a resposta vem com um número, o status: duzentos é deu certo, duzentos e um é criado, quatrocentos e quatro é não encontrado.",
+       "scene": {
+        "type": "cards",
+        "titulo": "STATUS DA RESPOSTA",
+        "itens": [
+         [
+          "200",
+          "Deu certo",
+          "OK"
+         ],
+         [
+          "201",
+          "Criado",
+          "Created",
+          "#69a7ff"
+         ],
+         [
+          "404",
+          "Não encontrado",
+          "Not Found",
+          "#ff6b6b"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Vamos usar uma API de treino gratuita, a jsonplaceholder. Abre no navegador o endereço dela, barra posts barra um.",
+       "scene": {
+        "type": "tela_cheia",
+        "media": "api46_abre",
+        "legenda": "jsonplaceholder.typicode.com/posts/1",
+        "gravar": true
+       }
+      },
+      {
+       "text": "Esse texto com chaves é JSON: um formato de dados que muitas APIs usam.",
+       "scene": {
+        "type": "traducao",
+        "titulo": "JSON: O POST NÚMERO 1",
+        "linhas": [
+         [
+          "\"userId\": 1",
+          "o usuário que escreveu"
+         ],
+         [
+          "\"id\": 1",
+          "o número do post"
+         ],
+         [
+          "\"title\": \"sunt aut facere...\"",
+          "o título"
+         ],
+         [
+          "\"body\": \"quia et suscipit...\"",
+          "o texto"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Na próxima aula: o seu primeiro teste de API.",
+       "scene": {
+        "type": "passo",
+        "icone": "▶",
+        "titulo": "Próxima aula",
+        "sub": "primeiro teste de API"
+       }
+      },
+      {
+       "text": "Te vejo lá!",
+       "scene": {
+        "type": "endcard",
+        "sub": "PRÓXIMA: PRIMEIRO TESTE DE API"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "shorts": [],
+  "tiktoks": []
+ }
+}

@@ -1,0 +1,290 @@
+{
+ "title": "Playwright para leigos · Aula 47",
+ "slug": "curso-playwright-47",
+ "idioma": "pt",
+ "destino": "curso",
+ "marca": [
+  "PLAYWRIGHT",
+  "PARA LEIGOS"
+ ],
+ "cor_fundo": "#3fd68a",
+ "sem_legenda": true,
+ "legenda_y": 0.93,
+ "selo": "MÓDULO 10 · AULA 47",
+ "voz": {
+  "nome": "gravada",
+  "motor": "eleven",
+  "eleven_voz": "Vinícius Torales"
+ },
+ "serie": [],
+ "meta": {
+  "titles": [
+   "Aula 47: Seu primeiro teste de API"
+  ],
+  "description": "",
+  "tags": []
+ },
+ "notes": "Curso Playwright para leigos. Não publica (destino: curso). Roteiro em curso-playwright/roteiros/.",
+ "script": {
+  "long": {
+   "parts": [
+    {
+     "chapter": "",
+     "sentences": [
+      {
+       "text": "Teste de API não abre navegador nenhum. Por isso ele é bem rápido.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "AULA 47",
+          "muted",
+          80
+         ],
+         [
+          "TESTE DE API",
+          "gold",
+          150
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Cria o api ponto spec ponto js. No teste, em vez do page, você pede o request, entre chaves.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "api.spec.js",
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  pages/",
+         "    CheckoutPage.js",
+         "    LoginPage.js",
+         "    ProdutosPage.js",
+         "  tests/",
+         "    api.spec.js",
+         "    auth.setup.js",
+         "    compra.spec.js",
+         "    login.spec.js",
+         "    usuarios.spec.js",
+         "  .env",
+         "  .env.example",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "codigo": "import { test, expect } from '@playwright/test';\n\ntest('busca um post', async ({ request }) => {\n});",
+        "legenda": "{ request } no lugar do { page }",
+        "fonte": 24,
+        "digitar": true,
+        "digitar_de": 1,
+        "digitar_ate": 4
+       }
+      },
+      {
+       "text": "Request quer dizer requisição.",
+       "scene": {
+        "type": "traducao",
+        "codigo": "async ({ request }) => {",
+        "partes": [
+         [
+          "{ request }",
+          "a requisição"
+         ]
+        ],
+        "passo": 1.0
+       }
+      },
+      {
+       "text": "const resposta igual await request ponto get, e o endereço.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "api.spec.js",
+        "codigo": "import { test, expect } from '@playwright/test';\n\ntest('busca um post', async ({ request }) => {\n  const resposta = await request.get('https://jsonplaceholder.typicode.com/posts/1');\n});",
+        "legenda": "request.get(endereço)",
+        "fonte": 24,
+        "digitar": true,
+        "digitar_de": 4,
+        "digitar_ate": 4
+       }
+      },
+      {
+       "text": "Busque o post número um e guarde a resposta.",
+       "scene": {
+        "type": "traducao",
+        "codigo": "const resposta = await request.get('…/posts/1');",
+        "partes": [
+         [
+          "const resposta =",
+          "guarde a resposta"
+         ],
+         [
+          "await request.get",
+          "busque"
+         ],
+         [
+          "('…/posts/1')",
+          "o post número 1"
+         ]
+        ],
+        "passo": 1.6
+       }
+      },
+      {
+       "text": "expect, resposta ponto status, abre e fecha parênteses, to be duzentos.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "api.spec.js",
+        "codigo": "import { test, expect } from '@playwright/test';\n\ntest('busca um post', async ({ request }) => {\n  const resposta = await request.get('https://jsonplaceholder.typicode.com/posts/1');\n  expect(resposta.status()).toBe(200);\n});",
+        "legenda": "expect(resposta.status()).toBe(200)",
+        "fonte": 24,
+        "digitar": true,
+        "digitar_de": 5,
+        "digitar_ate": 5
+       }
+      },
+      {
+       "text": "Eu espero que o status da resposta seja duzentos.",
+       "scene": {
+        "type": "traducao",
+        "codigo": "expect(resposta.status()).toBe(200);",
+        "partes": [
+         [
+          "expect",
+          "eu espero que"
+         ],
+         [
+          "(resposta.status())",
+          "o status da resposta"
+         ],
+         [
+          "toBe(200)",
+          "seja 200"
+         ]
+        ],
+        "passo": 1.6
+       }
+      },
+      {
+       "text": "Repara nos parênteses depois do status.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "api.spec.js",
+        "codigo": "import { test, expect } from '@playwright/test';\n\ntest('busca um post', async ({ request }) => {\n  const resposta = await request.get('https://jsonplaceholder.typicode.com/posts/1');\n  expect(resposta.status()).toBe(200);\n});",
+        "legenda": "status() — com os parênteses",
+        "fonte": 24,
+        "digitar": false,
+        "destaque": [
+         5
+        ],
+        "destaque_em": 0.2
+       }
+      },
+      {
+       "text": "Depois: const post igual await resposta ponto json, com parênteses.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "api.spec.js",
+        "codigo": "import { test, expect } from '@playwright/test';\n\ntest('busca um post', async ({ request }) => {\n  const resposta = await request.get('https://jsonplaceholder.typicode.com/posts/1');\n  expect(resposta.status()).toBe(200);\n  const post = await resposta.json();\n});",
+        "legenda": "resposta.json()",
+        "fonte": 24,
+        "digitar": true,
+        "digitar_de": 6,
+        "digitar_ate": 6
+       }
+      },
+      {
+       "text": "Leia os dados que vieram.",
+       "scene": {
+        "type": "traducao",
+        "codigo": "const post = await resposta.json();",
+        "partes": [
+         [
+          "const post =",
+          "guarde em post"
+         ],
+         [
+          "await resposta.json()",
+          "leia os dados que vieram"
+         ]
+        ],
+        "passo": 1.0
+       }
+      },
+      {
+       "text": "E o expect: post ponto id, to be um.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "api.spec.js",
+        "codigo": "import { test, expect } from '@playwright/test';\n\ntest('busca um post', async ({ request }) => {\n  const resposta = await request.get('https://jsonplaceholder.typicode.com/posts/1');\n  expect(resposta.status()).toBe(200);\n  const post = await resposta.json();\n  expect(post.id).toBe(1);\n});",
+        "legenda": "post.id = o número do post",
+        "fonte": 24,
+        "digitar": true,
+        "digitar_de": 7,
+        "digitar_ate": 7
+       }
+      },
+      {
+       "text": "Roda: passou, em milissegundos.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "api.spec.js",
+        "codigo": "import { test, expect } from '@playwright/test';\n\ntest('busca um post', async ({ request }) => {\n  const resposta = await request.get('https://jsonplaceholder.typicode.com/posts/1');\n  expect(resposta.status()).toBe(200);\n  const post = await resposta.json();\n  expect(post.id).toBe(1);\n});",
+        "legenda": "--reporter=list mostra o tempo de cada teste",
+        "fonte": 26,
+        "digitar": false,
+        "terminal": [
+         {
+          "cmd": "npx playwright test api.spec.js --project=chromium --reporter=list",
+          "em": 0.03
+         },
+         {
+          "out": "Running 2 tests using 2 workers",
+          "cor": "mut",
+          "em": 0.4
+         },
+         {
+          "out": "  ✓  1 [setup] › tests/auth.setup.js:5:6 › faz login uma vez (539ms)",
+          "cor": "mut",
+          "em": 0.47000000000000003
+         },
+         {
+          "out": "  ✓  2 [chromium] › tests/api.spec.js:3:5 › busca um post (119ms)",
+          "cor": "ac",
+          "em": 0.54
+         },
+         {
+          "out": "  2 passed (1.6s)",
+          "cor": "ac",
+          "em": 0.6100000000000001
+         }
+        ]
+       }
+      },
+      {
+       "text": "Na próxima aula: criando e apagando pela API.",
+       "scene": {
+        "type": "passo",
+        "icone": "▶",
+        "titulo": "Próxima aula",
+        "sub": "criando e apagando"
+       }
+      },
+      {
+       "text": "Te vejo lá!",
+       "scene": {
+        "type": "endcard",
+        "sub": "PRÓXIMA: CRIANDO E APAGANDO"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "shorts": [],
+  "tiktoks": []
+ }
+}

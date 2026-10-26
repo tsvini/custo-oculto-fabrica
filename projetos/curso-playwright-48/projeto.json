@@ -1,0 +1,232 @@
+{
+ "title": "Playwright para leigos · Aula 48",
+ "slug": "curso-playwright-48",
+ "idioma": "pt",
+ "destino": "curso",
+ "marca": [
+  "PLAYWRIGHT",
+  "PARA LEIGOS"
+ ],
+ "cor_fundo": "#3fd68a",
+ "sem_legenda": true,
+ "legenda_y": 0.93,
+ "selo": "MÓDULO 10 · AULA 48",
+ "voz": {
+  "nome": "gravada",
+  "motor": "eleven",
+  "eleven_voz": "Vinícius Torales"
+ },
+ "serie": [],
+ "meta": {
+  "titles": [
+   "Aula 48: Criando e apagando dados pela API"
+  ],
+  "description": "",
+  "tags": []
+ },
+ "notes": "Curso Playwright para leigos. Não publica (destino: curso). Roteiro em curso-playwright/roteiros/.",
+ "script": {
+  "long": {
+   "parts": [
+    {
+     "chapter": "",
+     "sentences": [
+      {
+       "text": "Agora vamos simular uma criação e uma exclusão. A API de treino responde como uma de verdade, mas não guarda essas mudanças.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "AULA 48",
+          "muted",
+          80
+         ],
+         [
+          "CRIAR E APAGAR",
+          "gold",
+          150
+         ]
+        ]
+       }
+      },
+      {
+       "text": "request ponto post, com um data: título, texto e userId.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "api.spec.js",
+        "codigo": "import { test, expect } from '@playwright/test';\n\ntest('busca um post', async ({ request }) => {\n  const resposta = await request.get('https://jsonplaceholder.typicode.com/posts/1');\n  expect(resposta.status()).toBe(200);\n  const post = await resposta.json();\n  expect(post.id).toBe(1);\n});\n\ntest('cria um post', async ({ request }) => {\n  const resposta = await request.post('https://jsonplaceholder.typicode.com/posts', {\n    data: { title: 'Meu primeiro post', body: 'Criado pelo Playwright', userId: 1 },\n  });\n});",
+        "legenda": "request.post(endereço, { data })",
+        "fonte": 24,
+        "digitar": true,
+        "digitar_de": 10,
+        "digitar_ate": 13,
+        "rolar": true,
+        "rolar_de": 0.5,
+        "rolar_dur": 0.8
+       }
+      },
+      {
+       "text": "É a requisição de criar.",
+       "scene": {
+        "type": "traducao",
+        "codigo": "request.post('…/posts', { data: { title, body, userId } })",
+        "partes": [
+         [
+          "request.post",
+          "criar"
+         ],
+         [
+          "title",
+          "título"
+         ],
+         [
+          "body",
+          "texto"
+         ],
+         [
+          "userId",
+          "o usuário"
+         ]
+        ],
+        "passo": 1.2
+       }
+      },
+      {
+       "text": "A conferência: status duzentos e um, criado.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "api.spec.js",
+        "codigo": "import { test, expect } from '@playwright/test';\n\ntest('busca um post', async ({ request }) => {\n  const resposta = await request.get('https://jsonplaceholder.typicode.com/posts/1');\n  expect(resposta.status()).toBe(200);\n  const post = await resposta.json();\n  expect(post.id).toBe(1);\n});\n\ntest('cria um post', async ({ request }) => {\n  const resposta = await request.post('https://jsonplaceholder.typicode.com/posts', {\n    data: { title: 'Meu primeiro post', body: 'Criado pelo Playwright', userId: 1 },\n  });\n  expect(resposta.status()).toBe(201);\n});",
+        "legenda": "201 = criado",
+        "fonte": 24,
+        "digitar": true,
+        "digitar_de": 14,
+        "digitar_ate": 14,
+        "rolar": true,
+        "rolar_de": 0.5,
+        "rolar_dur": 0.8
+       }
+      },
+      {
+       "text": "E o título que voltou é o mesmo que você mandou.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "api.spec.js",
+        "codigo": "import { test, expect } from '@playwright/test';\n\ntest('busca um post', async ({ request }) => {\n  const resposta = await request.get('https://jsonplaceholder.typicode.com/posts/1');\n  expect(resposta.status()).toBe(200);\n  const post = await resposta.json();\n  expect(post.id).toBe(1);\n});\n\ntest('cria um post', async ({ request }) => {\n  const resposta = await request.post('https://jsonplaceholder.typicode.com/posts', {\n    data: { title: 'Meu primeiro post', body: 'Criado pelo Playwright', userId: 1 },\n  });\n  expect(resposta.status()).toBe(201);\n  const post = await resposta.json();\n  expect(post.title).toBe('Meu primeiro post');\n});",
+        "legenda": "o título que voltou = o que você mandou",
+        "fonte": 24,
+        "digitar": true,
+        "digitar_de": 15,
+        "digitar_ate": 16,
+        "rolar": true,
+        "rolar_de": 0.5,
+        "rolar_dur": 0.8
+       }
+      },
+      {
+       "text": "request ponto delete: apagar. Status duzentos.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "api.spec.js",
+        "codigo": "import { test, expect } from '@playwright/test';\n\ntest('busca um post', async ({ request }) => {\n  const resposta = await request.get('https://jsonplaceholder.typicode.com/posts/1');\n  expect(resposta.status()).toBe(200);\n  const post = await resposta.json();\n  expect(post.id).toBe(1);\n});\n\ntest('cria um post', async ({ request }) => {\n  const resposta = await request.post('https://jsonplaceholder.typicode.com/posts', {\n    data: { title: 'Meu primeiro post', body: 'Criado pelo Playwright', userId: 1 },\n  });\n  expect(resposta.status()).toBe(201);\n  const post = await resposta.json();\n  expect(post.title).toBe('Meu primeiro post');\n});\n\ntest('apaga um post', async ({ request }) => {\n  const resposta = await request.delete('https://jsonplaceholder.typicode.com/posts/1');\n  expect(resposta.status()).toBe(200);\n});",
+        "legenda": "delete = apagar · 200",
+        "fonte": 24,
+        "digitar": true,
+        "digitar_de": 19,
+        "digitar_ate": 22,
+        "rolar": true,
+        "rolar_de": 0.5,
+        "rolar_dur": 0.8
+       }
+      },
+      {
+       "text": "Roda os três: passaram.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "api.spec.js",
+        "codigo": "import { test, expect } from '@playwright/test';\n\ntest('busca um post', async ({ request }) => {\n  const resposta = await request.get('https://jsonplaceholder.typicode.com/posts/1');\n  expect(resposta.status()).toBe(200);\n  const post = await resposta.json();\n  expect(post.id).toBe(1);\n});",
+        "legenda": "Os três, em milissegundos",
+        "fonte": 26,
+        "digitar": false,
+        "terminal": [
+         {
+          "cmd": "npx playwright test api.spec.js --project=chromium --reporter=list",
+          "em": 0.03
+         },
+         {
+          "out": "Running 4 tests using 4 workers",
+          "cor": "mut",
+          "em": 0.4
+         },
+         {
+          "out": "  ✓  1 [setup] › tests/auth.setup.js:5:6 › faz login uma vez (539ms)",
+          "cor": "mut",
+          "em": 0.47000000000000003
+         },
+         {
+          "out": "  ✓  2 [chromium] › tests/api.spec.js:3:5 › busca um post (119ms)",
+          "cor": "ac",
+          "em": 0.54
+         },
+         {
+          "out": "  ✓  3 [chromium] › tests/api.spec.js:10:5 › cria um post (45ms)",
+          "cor": "ac",
+          "em": 0.6100000000000001
+         },
+         {
+          "out": "  ✓  4 [chromium] › tests/api.spec.js:19:5 › apaga um post (43ms)",
+          "cor": "ac",
+          "em": 0.68
+         },
+         {
+          "out": "  4 passed (1.7s)",
+          "cor": "ac",
+          "em": 0.75
+         }
+        ]
+       }
+      },
+      {
+       "text": "Num sistema real, essa criação e essa exclusão ficariam guardadas no banco de dados.",
+       "scene": {
+        "type": "cards",
+        "itens": [
+         [
+          "🧪",
+          "API de treino",
+          "responde, mas não guarda"
+         ],
+         [
+          "🗄",
+          "Sistema real",
+          "guarda no banco de dados",
+          "#69a7ff"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Fechamos o bônus! Agora: desafios pra você praticar.",
+       "scene": {
+        "type": "passo",
+        "icone": "▶",
+        "titulo": "Próximo módulo",
+        "sub": "Desafios pra praticar"
+       }
+      },
+      {
+       "text": "Te vejo lá!",
+       "scene": {
+        "type": "endcard",
+        "sub": "PRÓXIMA: DESAFIOS"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "shorts": [],
+  "tiktoks": []
+ }
+}
