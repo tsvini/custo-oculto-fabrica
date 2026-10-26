@@ -1,0 +1,230 @@
+{
+ "title": "Playwright para leigos · Aula 60",
+ "slug": "curso-playwright-60",
+ "idioma": "pt",
+ "destino": "curso",
+ "marca": [
+  "PLAYWRIGHT",
+  "PARA LEIGOS"
+ ],
+ "cor_fundo": "#3fd68a",
+ "sem_legenda": true,
+ "legenda_y": 0.93,
+ "selo": "MÓDULO 12 · AULA 60",
+ "voz": {
+  "nome": "gravada",
+  "motor": "eleven",
+  "eleven_voz": "Vinícius Torales"
+ },
+ "serie": [],
+ "meta": {
+  "titles": [
+   "Aula 60: Tem uma página dentro da página"
+  ],
+  "description": "",
+  "tags": []
+ },
+ "notes": "Curso Playwright para leigos. Não publica (destino: curso). Roteiro em curso-playwright/roteiros/.",
+ "script": {
+  "long": {
+   "parts": [
+    {
+     "chapter": "",
+     "sentences": [
+      {
+       "text": "Olha essa tela: tem um editor de texto no meio. Só que o seletor normal não acha nada lá dentro.",
+       "scene": {
+        "type": "tela",
+        "media": "n60_iframe",
+        "url": "https://the-internet.herokuapp.com/iframe",
+        "gravar": true,
+        "acoes": [],
+        "titulo": "the-internet.herokuapp.com",
+        "legenda": "Um editor no meio da página",
+        "espera_inicio": 1000,
+        "espera_fim": 3000,
+        "delay_letra": 60
+       }
+      },
+      {
+       "text": "Por quê? Porque aquele pedaço é outra página, encaixada nesta. Isso se chama iframe.",
+       "scene": {
+        "type": "cards",
+        "titulo": "IFRAME",
+        "itens": [
+         [
+          "▭",
+          "A página",
+          "the-internet"
+         ],
+         [
+          "▣",
+          "O iframe",
+          "outra página dentro",
+          "#69a7ff"
+         ],
+         [
+          "✎",
+          "O editor",
+          "lá dentro",
+          "#ffd23f"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Primeiro, você diz em qual quadro procurar: frame locator.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "internet.spec.js",
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  arquivos/",
+         "    exemplo.txt",
+         "  pages/",
+         "  tests/",
+         "    compra.spec.js",
+         "    internet.spec.js",
+         "    login.spec.js",
+         "  .env",
+         "  playwright.config.js"
+        ],
+        "codigo": "test('iframe', async ({ page }) => {\n  await page.goto(`${site}/iframe`);\n  const editor = page.frameLocator('#mce_0_ifr');",
+        "legenda": "frameLocator = procure dentro deste quadro",
+        "fonte": 32,
+        "digitar": true,
+        "linha0": 48,
+        "digitar_de": 1,
+        "digitar_ate": 3
+       }
+      },
+      {
+       "text": "Procure dentro deste quadro.",
+       "scene": {
+        "type": "traducao",
+        "codigo": "page.frameLocator('#mce_0_ifr')",
+        "partes": [
+         [
+          "frameLocator",
+          "procure dentro do quadro"
+         ],
+         [
+          "('#mce_0_ifr')",
+          "este quadro"
+         ]
+        ],
+        "passo": 1.0
+       }
+      },
+      {
+       "text": "Depois, procura normalmente lá dentro, e confere o texto do editor.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "internet.spec.js",
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  arquivos/",
+         "    exemplo.txt",
+         "  pages/",
+         "  tests/",
+         "    compra.spec.js",
+         "    internet.spec.js",
+         "    login.spec.js",
+         "  .env",
+         "  playwright.config.js"
+        ],
+        "codigo": "test('iframe', async ({ page }) => {\n  await page.goto(`${site}/iframe`);\n  const editor = page.frameLocator('#mce_0_ifr');\n  await expect(editor.locator('body'))\n    .toContainText('Your content goes here.');\n});",
+        "legenda": "Lá dentro, igual a sempre",
+        "fonte": 32,
+        "digitar": true,
+        "linha0": 48,
+        "digitar_de": 4,
+        "digitar_ate": 5
+       }
+      },
+      {
+       "text": "A lógica: entrar no iframe, procurar o elemento, conferir.",
+       "scene": {
+        "type": "cards",
+        "itens": [
+         [
+          "1",
+          "Entra no iframe",
+          "frameLocator"
+         ],
+         [
+          "2",
+          "Procura",
+          "o elemento",
+          "#69a7ff"
+         ],
+         [
+          "3",
+          "Confere",
+          "expect",
+          "#3fd68a"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Roda.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "internet.spec.js",
+        "pastas": null,
+        "codigo": "test('iframe', async ({ page }) => {\n  await page.goto(`${site}/iframe`);\n  const editor = page.frameLocator('#mce_0_ifr');\n  await expect(editor.locator('body'))\n    .toContainText('Your content goes here.');\n});",
+        "legenda": "Achou o texto lá dentro",
+        "fonte": 26,
+        "digitar": false,
+        "linha0": 48,
+        "terminal": [
+         {
+          "cmd": "npx playwright test internet -g \"iframe\" --headed --project=chromium",
+          "em": 0.03
+         },
+         {
+          "out": "Running 2 tests using 1 worker",
+          "cor": "mut",
+          "em": 0.08
+         },
+         {
+          "out": "  2 passed (3.6s)",
+          "cor": "ac",
+          "em": 0.88
+         }
+        ],
+        "navegador": {
+         "media": "run_iframe",
+         "titulo": "Chromium",
+         "em": 0.1,
+         "ate": 0.86,
+         "url": "https://the-internet.herokuapp.com/iframe",
+         "gravar": true,
+         "acoes": [
+          {
+           "espera": 1500
+          }
+         ],
+         "espera_inicio": 900,
+         "espera_fim": 1600,
+         "delay_letra": 55
+        }
+       },
+       "pausa": 2.5
+      },
+      {
+       "text": "Te vejo na próxima!",
+       "scene": {
+        "type": "endcard",
+        "sub": "PRÓXIMA: O BOTÃO SÓ APARECE COM O MOUSE"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "shorts": [],
+  "tiktoks": []
+ }
+}

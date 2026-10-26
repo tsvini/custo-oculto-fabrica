@@ -1,0 +1,204 @@
+{
+ "title": "Playwright para leigos · Aula 58",
+ "slug": "curso-playwright-58",
+ "idioma": "pt",
+ "destino": "curso",
+ "marca": [
+  "PLAYWRIGHT",
+  "PARA LEIGOS"
+ ],
+ "cor_fundo": "#3fd68a",
+ "sem_legenda": true,
+ "legenda_y": 0.93,
+ "selo": "MÓDULO 12 · AULA 58",
+ "voz": {
+  "nome": "gravada",
+  "motor": "eleven",
+  "eleven_voz": "Vinícius Torales"
+ },
+ "serie": [],
+ "meta": {
+  "titles": [
+   "Aula 58: Uma caixa travou a página"
+  ],
+  "description": "",
+  "tags": []
+ },
+ "notes": "Curso Playwright para leigos. Não publica (destino: curso). Roteiro em curso-playwright/roteiros/.",
+ "script": {
+  "long": {
+   "parts": [
+    {
+     "chapter": "",
+     "sentences": [
+      {
+       "text": "Agora aconteceu uma coisa diferente: clicamos num botão e o navegador abriu essa caixa.",
+       "scene": {
+        "type": "tela_cheia",
+        "media": "n58_alerta",
+        "legenda": "O alerta do navegador",
+        "gravar": true
+       }
+      },
+      {
+       "text": "Enquanto ela está aberta, não dá pra usar a página. Isso é um alerta do navegador, um dialog.",
+       "scene": {
+        "type": "cards",
+        "titulo": "DIALOG",
+        "itens": [
+         [
+          "⚠",
+          "A caixa do navegador",
+          "com um OK"
+         ],
+         [
+          "⛔",
+          "Trava a página",
+          "até alguém clicar",
+          "#ff6b6b"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "A gente precisa preparar o Playwright antes de o alerta aparecer: page ponto on, dialog, e dialog ponto accept.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "internet.spec.js",
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  arquivos/",
+         "    exemplo.txt",
+         "  pages/",
+         "  tests/",
+         "    compra.spec.js",
+         "    internet.spec.js",
+         "    login.spec.js",
+         "  .env",
+         "  playwright.config.js"
+        ],
+        "codigo": "test('alerta do navegador', async ({ page }) => {\n  await page.goto(`${site}/javascript_alerts`);\n  page.on('dialog', async (dialog) => {\n    await dialog.accept();\n  });",
+        "legenda": "page.on('dialog') = quando aparecer um alerta",
+        "fonte": 32,
+        "digitar": true,
+        "linha0": 28,
+        "digitar_de": 3,
+        "digitar_ate": 5
+       }
+      },
+      {
+       "text": "Quando aparecer um alerta, aceite.",
+       "scene": {
+        "type": "traducao",
+        "codigo": "page.on('dialog', ... dialog.accept())",
+        "partes": [
+         [
+          "page.on('dialog'",
+          "quando aparecer um alerta"
+         ],
+         [
+          "dialog.accept()",
+          "aceite"
+         ]
+        ],
+        "passo": 1.0
+       }
+      },
+      {
+       "text": "A ordem é importante: primeiro prepara, depois clica. Se você tentar reagir só depois, o alerta já passou.",
+       "scene": {
+        "type": "cards",
+        "titulo": "A ORDEM",
+        "itens": [
+         [
+          "1",
+          "Prepara",
+          "page.on('dialog')"
+         ],
+         [
+          "2",
+          "Clica",
+          "no botão",
+          "#69a7ff"
+         ],
+         [
+          "3",
+          "Aparece",
+          "o alerta",
+          "#ffd23f"
+         ],
+         [
+          "4",
+          "Aceita",
+          "sozinho",
+          "#3fd68a"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "No fim, confere a mensagem: You successfully clicked an alert.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "internet.spec.js",
+        "pastas": null,
+        "codigo": "test('alerta do navegador', async ({ page }) => {\n  await page.goto(`${site}/javascript_alerts`);\n  page.on('dialog', async (dialog) => {\n    await dialog.accept();\n  });\n  await page.getByRole('button', { name: 'Click for JS Alert' })\n    .click();\n  await expect(page.locator('#result'))\n    .toHaveText('You successfully clicked an alert');\n});",
+        "legenda": "A mensagem do resultado",
+        "fonte": 28,
+        "digitar": true,
+        "linha0": 28,
+        "digitar_de": 6,
+        "digitar_ate": 9
+       }
+      },
+      {
+       "text": "Roda.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "internet.spec.js",
+        "pastas": null,
+        "codigo": "test('alerta do navegador', async ({ page }) => {\n  await page.goto(`${site}/javascript_alerts`);\n  page.on('dialog', async (dialog) => {\n    await dialog.accept();\n  });\n  await page.getByRole('button', { name: 'Click for JS Alert' })\n    .click();\n  await expect(page.locator('#result'))\n    .toHaveText('You successfully clicked an alert');",
+        "legenda": "Preparou, clicou e aceitou",
+        "fonte": 26,
+        "digitar": false,
+        "linha0": 28,
+        "terminal": [
+         {
+          "cmd": "npx playwright test internet -g \"alerta\" --headed --project=chromium",
+          "em": 0.03
+         },
+         {
+          "out": "Running 2 tests using 1 worker",
+          "cor": "mut",
+          "em": 0.08
+         },
+         {
+          "out": "  2 passed (3.3s)",
+          "cor": "ac",
+          "em": 0.88
+         }
+        ],
+        "navegador": {
+         "media": "n58_alerta",
+         "titulo": "Chromium",
+         "em": 0.1,
+         "ate": 0.86
+        }
+       },
+       "pausa": 2.5
+      },
+      {
+       "text": "Te vejo na próxima!",
+       "scene": {
+        "type": "endcard",
+        "sub": "PRÓXIMA: O LINK ABRIU OUTRA ABA"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "shorts": [],
+  "tiktoks": []
+ }
+}

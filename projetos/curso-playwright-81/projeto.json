@@ -1,0 +1,127 @@
+{
+ "title": "Playwright para leigos · Aula 81",
+ "slug": "curso-playwright-81",
+ "idioma": "pt",
+ "destino": "curso",
+ "marca": [
+  "PLAYWRIGHT",
+  "PARA LEIGOS"
+ ],
+ "cor_fundo": "#3fd68a",
+ "sem_legenda": true,
+ "legenda_y": 0.93,
+ "selo": "MÓDULO 15 · AULA 81",
+ "voz": {
+  "nome": "gravada",
+  "motor": "eleven",
+  "eleven_voz": "Vinícius Torales"
+ },
+ "serie": [],
+ "meta": {
+  "titles": [
+   "Aula 81: Veio do Cypress? Um mapa das ideias"
+  ],
+  "description": "",
+  "tags": []
+ },
+ "notes": "Curso Playwright para leigos. Não publica (destino: curso). Roteiro em curso-playwright/roteiros/.",
+ "script": {
+  "long": {
+   "parts": [
+    {
+     "chapter": "",
+     "sentences": [
+      {
+       "text": "Se você já usou Cypress, várias ideias vão parecer familiares. Mas não pense no Playwright como uma simples troca de comandos.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "AULA 81",
+          "muted",
+          80
+         ],
+         [
+          "VEIO DO CYPRESS?",
+          "gold",
+          150
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Algumas aproximações ajudam: cy ponto visit lembra page ponto goto. cy ponto contains lembra get by text. should lembra expect.",
+       "scene": {
+        "type": "traducao",
+        "titulo": "APROXIMAÇÕES (NÃO É TROCA 1 POR 1)",
+        "linhas": [
+         [
+          "cy.visit('/')",
+          "page.goto('/')"
+         ],
+         [
+          "cy.contains('Products')",
+          "page.getByText('Products')"
+         ],
+         [
+          ".should('be.visible')",
+          "expect(...).toBeVisible()"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Mas o modelo muda. No Playwright você escreve await em cada passo, e os seletores são objetos que você guarda e reaproveita.",
+       "scene": {
+        "type": "bloco_vs",
+        "vs_em": 2.4,
+        "codigo_esq": "cy.visit('/');\ncy.get('[data-test=username]')\n  .type('standard_user');\ncy.get('[data-test=login-button]')\n  .click();",
+        "janela_esq": "login.cy.js",
+        "titulo_esq": "CYPRESS",
+        "sub_esq": "comandos numa fila",
+        "codigo": "const usuario = page.getByTestId('username');\nconst botao = page.getByTestId('login-button');\n\nawait page.goto('/');\nawait usuario.fill('standard_user');\nawait botao.click();",
+        "janela_dir": "login.spec.js",
+        "titulo_dir": "PLAYWRIGHT",
+        "sub_dir": "await em cada passo · seletor guardado"
+       }
+      },
+      {
+       "text": "As duas ferramentas resolvem problemas parecidos, com abordagens diferentes. Saber as duas te deixa mais forte no mercado.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "CYPRESS",
+          "white",
+          120
+         ],
+         [
+          "+ PLAYWRIGHT",
+          "gold",
+          150
+         ],
+         [
+          "MAIS FORTE NO MERCADO",
+          "muted",
+          70
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Te vejo na próxima!",
+       "scene": {
+        "type": "endcard",
+        "sub": "PRÓXIMA: CURRÍCULO E ENTREVISTA"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "shorts": [],
+  "tiktoks": []
+ }
+}

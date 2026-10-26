@@ -27,9 +27,9 @@ jobs:
           set +e; S=$GITHUB_WORKSPACE/nivel2_resultado.txt; : > $S
           sec() { echo; echo "=================== $1"; } 
           cd curso-playwright/projeto
-          { sec "MÓDULOS 12 E 13 (sem o teste visual)"; npx playwright test tests/nivel2 --project=chromium --reporter=list --retries=0 --grep-invert "visual" 2>&1; } >> $S
-          { sec "VISUAL: 1ª vez (sem foto de referência)"; npx playwright test tests/nivel2 --project=chromium --reporter=list --retries=0 --grep "visual" 2>&1;
-            sec "VISUAL: 2ª vez"; npx playwright test tests/nivel2 --project=chromium --reporter=list --retries=0 --grep "visual" 2>&1; } >> $S
+          { sec "MÓDULOS 12 E 13 (sem o teste visual)"; npx playwright test tests/nivel2 --project=chromium --reporter=list --retries=0 --grep-invert "não mudou" 2>&1; } >> $S
+          { sec "VISUAL: 1ª vez (sem foto de referência)"; npx playwright test tests/nivel2 --project=chromium --reporter=list --retries=0 --grep "não mudou" 2>&1;
+            sec "VISUAL: 2ª vez"; npx playwright test tests/nivel2 --project=chromium --reporter=list --retries=0 --grep "não mudou" 2>&1; } >> $S
           { sec "SMOKE"; npx playwright test tests/nivel2 --project=chromium --reporter=list --grep @smoke 2>&1; } >> $S
           { sec "FLAKY (repeat-each 10)"; npx playwright test -c playwright.demos.config.js aula70 --reporter=line --repeat-each=10 --retries=0 2>&1 | tail -25; } >> $S
           cd ../projeto2

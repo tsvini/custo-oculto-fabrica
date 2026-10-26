@@ -19,7 +19,7 @@
  "serie": [],
  "meta": {
   "titles": [
-   "Aula 55: Veio do Cypress? Um mapa das ideias"
+   "Aula 55: Bem-vindo ao nível 2"
   ],
   "description": "",
   "tags": []
@@ -32,89 +32,185 @@
      "chapter": "",
      "sentences": [
       {
-       "text": "Se você já usou Cypress, várias ideias vão parecer familiares. Mas não pense no Playwright como uma simples troca de comandos.",
+       "text": "Até aqui você aprendeu Playwright praticamente do zero. Agora o nível sobe um pouco.",
        "scene": {
         "type": "bigtext",
         "stagger": 0.25,
         "lines": [
          [
-          "AULA 55",
-          "muted",
-          80
-         ],
-         [
-          "VEIO DO CYPRESS?",
+          "NÍVEL 2",
           "gold",
-          150
+          210
+         ],
+         [
+          "O NÍVEL SOBE",
+          "white",
+          110
          ]
         ]
        }
       },
       {
-       "text": "Algumas aproximações ajudam: cy ponto visit lembra page ponto goto. cy ponto contains lembra get by text. should lembra expect.",
+       "text": "Nos próximos módulos, eu quero te colocar em situações que aparecem quando você começa a automatizar sistemas reais.",
        "scene": {
-        "type": "traducao",
-        "titulo": "APROXIMAÇÕES (NÃO É TROCA 1 POR 1)",
-        "linhas": [
+        "type": "cards",
+        "itens": [
          [
-          "cy.visit('/')",
-          "page.goto('/')"
+          "🌐",
+          "Site novo",
+          "que você nunca viu"
          ],
          [
-          "cy.contains('Products')",
-          "page.getByText('Products')"
+          "🧩",
+          "Problemas novos",
+          "do dia a dia",
+          "#69a7ff"
          ],
          [
-          ".should('be.visible')",
-          "expect(...).toBeVisible()"
+          "🛠",
+          "Recursos novos",
+          "do Playwright",
+          "#ffd23f"
+         ],
+         [
+          "📁",
+          "Projeto novo",
+          "do zero",
+          "#3fd68a"
          ]
         ]
        }
       },
       {
-       "text": "Mas o modelo muda. No Playwright você escreve await em cada passo, e os seletores são objetos que você guarda e reaproveita.",
+       "text": "E pra isso a gente sai um pouco do saucedemo. Vamos usar o the internet: um site de treino com várias páginas diferentes.",
        "scene": {
-        "type": "bloco_vs",
-        "vs_em": 2.4,
-        "codigo_esq": "cy.visit('/');\ncy.get('[data-test=username]')\n  .type('standard_user');\ncy.get('[data-test=login-button]')\n  .click();",
-        "janela_esq": "login.cy.js",
-        "titulo_esq": "CYPRESS",
-        "sub_esq": "comandos numa fila",
-        "codigo": "const usuario = page.getByTestId('username');\nconst botao = page.getByTestId('login-button');\n\nawait page.goto('/');\nawait usuario.fill('standard_user');\nawait botao.click();",
-        "janela_dir": "login.spec.js",
-        "titulo_dir": "PLAYWRIGHT",
-        "sub_dir": "await em cada passo · seletor guardado"
+        "type": "tela",
+        "media": "n55_site",
+        "url": "https://the-internet.herokuapp.com",
+        "gravar": true,
+        "acoes": [
+         {
+          "scroll": 500,
+          "espera": 900
+         },
+         {
+          "scroll": 600,
+          "espera": 900
+         },
+         {
+          "scroll": -1100,
+          "espera": 600
+         }
+        ],
+        "titulo": "the-internet.herokuapp.com",
+        "legenda": "the-internet.herokuapp.com",
+        "espera_inicio": 1000,
+        "espera_fim": 1600,
+        "delay_letra": 60
        }
       },
       {
-       "text": "As duas ferramentas resolvem problemas parecidos, com abordagens diferentes. Saber as duas te deixa mais forte no mercado.",
+       "text": "Tem upload, nova aba, iframe, alerta, tabela. Mas eu não quero que você decore uma lista de comandos.",
+       "scene": {
+        "type": "cards",
+        "titulo": "O QUE TEM LÁ",
+        "itens": [
+         [
+          "⬆",
+          "Upload",
+          ""
+         ],
+         [
+          "⧉",
+          "Nova aba",
+          "",
+          "#69a7ff"
+         ],
+         [
+          "▣",
+          "Iframe",
+          "",
+          "#ffd23f"
+         ],
+         [
+          "⚠",
+          "Alerta",
+          "",
+          "#ff6b6b"
+         ],
+         [
+          "▦",
+          "Tabela",
+          "",
+          "#3fd68a"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "A ideia vai ser sempre: apareceu um problema novo, a gente descobre como resolver.",
        "scene": {
         "type": "bigtext",
         "stagger": 0.25,
         "lines": [
          [
-          "CYPRESS",
+          "APARECEU UM PROBLEMA",
           "white",
+          100
+         ],
+         [
+          "A GENTE DESCOBRE",
+          "gold",
           120
          ],
          [
-          "+ PLAYWRIGHT",
+          "COMO RESOLVER",
           "gold",
-          150
-         ],
-         [
-          "MAIS FORTE NO MERCADO",
-          "muted",
-          70
+          120
          ]
         ]
        }
       },
       {
-       "text": "Te vejo na próxima!",
+       "text": "Cria o arquivo internet ponto spec ponto js. Como o baseURL ainda aponta pro saucedemo, aqui a gente usa o endereço completo.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "internet.spec.js",
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  arquivos/",
+         "    exemplo.txt",
+         "  pages/",
+         "  tests/",
+         "    compra.spec.js",
+         "    internet.spec.js",
+         "    login.spec.js",
+         "  .env",
+         "  playwright.config.js"
+        ],
+        "codigo": "import { test, expect } from '@playwright/test';\n\nconst site = 'https://the-internet.herokuapp.com';",
+        "legenda": "const site = o endereço completo",
+        "fonte": 32,
+        "digitar": true,
+        "linha0": 1,
+        "digitar_de": 1,
+        "digitar_ate": 3
+       }
+      },
+      {
+       "text": "Vamos começar com uma coisa que aparece em quase todo formulário.",
+       "scene": {
+        "type": "passo",
+        "icone": "▶",
+        "titulo": "Próxima aula",
+        "sub": "O formulário mudou"
+       }
+      },
+      {
+       "text": "Te vejo lá!",
        "scene": {
         "type": "endcard",
-        "sub": "PRÓXIMA: CURRÍCULO E ENTREVISTA"
+        "sub": "PRÓXIMA: O FORMULÁRIO MUDOU"
        }
       }
      ]

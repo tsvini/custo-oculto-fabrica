@@ -1,4 +1,4 @@
-"""Gera projetos/curso-playwright-55..57 (módulo 12: carreira). Roteiro aprovado em curso-playwright/roteiros/modulo4-ao-fim.md.
+"""Gera projetos/curso-playwright-81..83 (módulo 15: carreira; eram as aulas 55 a 57). Roteiro aprovado em curso-playwright/roteiros/modulo4-ao-fim.md.
 Frases com duas ideias (ex.: a tabela e o aviso) viraram duas cenas com o mesmo texto dividido; a narração é a do roteiro aprovado."""
 import json, os, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -29,8 +29,8 @@ npx playwright test"""
 AULAS = []
 
 # ---------- Aula 55 ----------
-AULAS.append(projeto(55, "MÓDULO 12 · AULA 55", "Veio do Cypress? Um mapa das ideias", [
-    ("Se você já usou Cypress, várias ideias vão parecer familiares. Mas não pense no Playwright como uma simples troca de comandos.", titulo(55, "VEIO DO CYPRESS?")),
+AULAS.append(projeto(81, "MÓDULO 15 · AULA 81", "Veio do Cypress? Um mapa das ideias", [
+    ("Se você já usou Cypress, várias ideias vão parecer familiares. Mas não pense no Playwright como uma simples troca de comandos.", titulo(81, "VEIO DO CYPRESS?")),
     ("Algumas aproximações ajudam: cy ponto visit lembra page ponto goto. cy ponto contains lembra get by text. should lembra expect.",
      {"type": "traducao", "titulo": "APROXIMAÇÕES (NÃO É TROCA 1 POR 1)", "linhas": [["cy.visit('/')", "page.goto('/')"], ["cy.contains('Products')", "page.getByText('Products')"], [".should('be.visible')", "expect(...).toBeVisible()"]]}),
     ("Mas o modelo muda. No Playwright você escreve await em cada passo, e os seletores são objetos que você guarda e reaproveita.",
@@ -45,8 +45,8 @@ AULAS.append(projeto(55, "MÓDULO 12 · AULA 55", "Veio do Cypress? Um mapa das 
 ]))
 
 # ---------- Aula 56 ----------
-AULAS.append(projeto(56, "MÓDULO 12 · AULA 56", "O seu projeto no currículo e na entrevista", [
-    ("Agora você tem um projeto de automação. Vamos colocar isso no seu currículo do jeito certo.", titulo(56, "CURRÍCULO")),
+AULAS.append(projeto(82, "MÓDULO 15 · AULA 82", "O seu projeto no currículo e na entrevista", [
+    ("Agora você tem um projeto de automação. Vamos colocar isso no seu currículo do jeito certo.", titulo(82, "CURRÍCULO")),
     ("No currículo, escreve o que você realmente fez: testes de ponta a ponta com Playwright e JavaScript, Page Object, testes de API, vários navegadores e execução no GitHub Actions.",
      {"type": "traducao", "titulo": "NO CURRÍCULO", "linhas": [["Playwright + JavaScript", "testes de ponta a ponta"], ["Page Object", "código organizado e reaproveitável"],
                                                              ["request (API)", "testes de API"], ["projects", "Chromium, Firefox, WebKit e celular"], ["GitHub Actions", "testes rodando a cada push"]]}),
@@ -64,8 +64,8 @@ AULAS.append(projeto(56, "MÓDULO 12 · AULA 56", "O seu projeto no currículo e
 
 # ---------- Aula 57 ----------
 L_SELO = 3
-AULAS.append(projeto(57, "MÓDULO 12 · AULA 57", "Seu projeto pronto pro portfólio e a colinha completa", [
-    ("Última aula. Vamos deixar o seu projeto pronto pra quem visitar.", titulo(57, "PORTFÓLIO")),
+AULAS.append(projeto(83, "MÓDULO 15 · AULA 83", "Seu projeto pronto pro portfólio e a colinha completa", [
+    ("Última aula. Vamos deixar o seu projeto pronto pra quem visitar.", titulo(83, "PORTFÓLIO")),
     ("Cria um README ponto md com: o objetivo, as tecnologias, o que precisa instalar, como instalar, e os comandos pra rodar os testes.",
      edc(README, "README.md: a vitrine do projeto", arquivo="README.md", pastas=ARV_R, digitar=True, digitar_de=5, digitar_ate=16, vel=0.85, fonte=22)),
     ("Coloca o selinho do GitHub Actions. O próprio GitHub gera o código dele, com o endereço do seu repositório e do seu workflow.",
@@ -96,7 +96,7 @@ def main():
         out.append("## " + p["meta"]["titles"][0])
         out += [f"{i}. {s['text']} [{s['scene']['type']}]" for i, s in enumerate(p["script"]["long"]["parts"][0]["sentences"], 1)] + [""]
         print(slug, len(p["script"]["long"]["parts"][0]["sentences"]), "frases")
-    open(os.path.join(RAIZ, "curso-playwright", "roteiros", "modulo12.md"), "w", encoding="utf8").write("\n".join(out))
+    open(os.path.join(RAIZ, "curso-playwright", "roteiros", "modulo15.md"), "w", encoding="utf8").write("\n".join(out))
 
 
 if __name__ == "__main__":

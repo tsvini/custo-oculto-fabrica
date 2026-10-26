@@ -1,0 +1,91 @@
+# Roteiros · Módulo 12 do nível 2 (gerado do roteiro_playwright_n2a.py)
+
+## Aula 55: Bem-vindo ao nível 2
+1. Até aqui você aprendeu Playwright praticamente do zero. Agora o nível sobe um pouco. [bigtext]
+2. Nos próximos módulos, eu quero te colocar em situações que aparecem quando você começa a automatizar sistemas reais. [cards]
+3. E pra isso a gente sai um pouco do saucedemo. Vamos usar o the internet: um site de treino com várias páginas diferentes. [tela]
+4. Tem upload, nova aba, iframe, alerta, tabela. Mas eu não quero que você decore uma lista de comandos. [cards]
+5. A ideia vai ser sempre: apareceu um problema novo, a gente descobre como resolver. [bigtext]
+6. Cria o arquivo internet ponto spec ponto js. Como o baseURL ainda aponta pro saucedemo, aqui a gente usa o endereço completo. [editor]
+7. Vamos começar com uma coisa que aparece em quase todo formulário. [passo]
+8. Te vejo lá! [endcard]
+
+## Aula 56: O formulário mudou
+1. Imagina que caiu uma tarefa nova: validar as preferências de um formulário. [bigtext]
+2. Abrindo a tela, tem duas coisas que a gente ainda não usou: a caixa de marcar e a lista de opções. [tela]
+3. Pra marcar: ponto check. Pra desmarcar: ponto uncheck. [editor]
+4. check, marque. uncheck, desmarque. [traducao]
+5. Mas clicar não basta: a gente confere. to be checked, esteja marcada. E com o not na frente: não esteja marcada. [editor]
+6. Agora o segundo campo: aqui a pessoa escolhe uma opção. Você já viu isso no desafio quatro: select option. [tela]
+7. E a conferência: to have value, tenha o valor dois. [editor]
+8. Roda e olha. [+pausa] [editor]
+9. Te vejo na próxima! [endcard]
+
+## Aula 57: O usuário precisa enviar um arquivo
+1. A tarefa mudou: o usuário precisa conseguir anexar um documento. Currículo, comprovante, planilha. [bigtext]
+2. Na tela tem um campo de escolher arquivo e um botão Upload. [+pausa] [tela]
+3. Primeiro, um arquivo de exemplo dentro do projeto: uma pasta arquivos, com um texto dentro. [editor]
+4. Agora: set input files, coloque este arquivo no campo. [editor]
+5. set input files: coloque este arquivo no campo. [traducao]
+6. Repara: o Playwright não abre aquela janela do Windows pra procurar o arquivo com o mouse. Ele entrega o arquivo direto pro campo. [cards]
+7. Clica em Upload e confere que o nome do arquivo apareceu na página. [editor]
+8. Roda. [+pausa] [editor]
+9. Te vejo na próxima! [endcard]
+
+## Aula 58: Uma caixa travou a página
+1. Agora aconteceu uma coisa diferente: clicamos num botão e o navegador abriu essa caixa. [tela_cheia]
+2. Enquanto ela está aberta, não dá pra usar a página. Isso é um alerta do navegador, um dialog. [cards]
+3. A gente precisa preparar o Playwright antes de o alerta aparecer: page ponto on, dialog, e dialog ponto accept. [editor]
+4. Quando aparecer um alerta, aceite. [traducao]
+5. A ordem é importante: primeiro prepara, depois clica. Se você tentar reagir só depois, o alerta já passou. [cards]
+6. No fim, confere a mensagem: You successfully clicked an alert. [editor]
+7. Roda. [+pausa] [editor]
+8. Te vejo na próxima! [endcard]
+
+## Aula 59: O link abriu outra aba
+1. Imagina: você clica pra ver os detalhes de um pedido, e eles abrem em outra aba. E o teste continua olhando a aba antiga. [tela_cheia]
+2. Então a gente precisa pegar a aba nova quando ela abrir. [cards]
+3. Primeiro, o aviso: const promessa igual page ponto wait for event, popup. [editor]
+4. Espere uma nova aba. [traducao]
+5. Depois clica no link. E aí: const novaAba igual await promessa. Guarde a aba que abriu. [editor]
+6. A partir daí, você usa a nova aba igual ao page: confere que ela mostra New Window. [editor]
+7. Roda e olha as duas abas. [+pausa] [editor]
+8. Te vejo na próxima! [endcard]
+
+## Aula 60: Tem uma página dentro da página
+1. Olha essa tela: tem um editor de texto no meio. Só que o seletor normal não acha nada lá dentro. [tela]
+2. Por quê? Porque aquele pedaço é outra página, encaixada nesta. Isso se chama iframe. [cards]
+3. Primeiro, você diz em qual quadro procurar: frame locator. [editor]
+4. Procure dentro deste quadro. [traducao]
+5. Depois, procura normalmente lá dentro, e confere o texto do editor. [editor]
+6. A lógica: entrar no iframe, procurar o elemento, conferir. [cards]
+7. Roda. [+pausa] [editor]
+8. Te vejo na próxima! [endcard]
+
+## Aula 61: O botão só aparece quando passo o mouse
+1. Chegou um relato de bug: não consigo clicar na opção, porque ela só aparece quando passo o mouse no usuário. [bigtext]
+2. Vamos reproduzir: sem o mouse em cima, o nome está escondido. Com o mouse, ele aparece. [tela_cheia]
+3. No Playwright: hover. Passe o mouse por cima. [traducao]
+4. Antes do hover: not to be visible. Depois do hover: to be visible. Assim a gente testa o comportamento, não só roda um comando. [editor]
+5. Roda e olha o mouse passando. [+pausa] [editor]
+6. Te vejo na próxima! [endcard]
+
+## Aula 62: O usuário precisa arrastar um item
+1. Tem tela em que a pessoa reorganiza as coisas arrastando: quadro de tarefas, lista, arquivos. [bigtext]
+2. No nosso exemplo, duas caixas: A e B. A gente quer arrastar a A até a B. [tela]
+3. Um comando: drag to. Arraste até. [editor]
+4. A caixa A, arraste até a caixa B. [traducao]
+5. E não basta confiar que arrastou: a gente confere que a primeira caixa agora mostra B. [editor]
+6. Roda. [+pausa] [editor]
+7. Te vejo na próxima! [endcard]
+
+## Aula 63: A tabela mudou de ordem e o teste quebrou
+1. Um problema bem real: uma tabela de clientes. [+pausa] [tela]
+2. Dava pra dizer: pegue a segunda linha. Só que amanhã alguém ordena a tabela por nome, a pessoa muda de lugar, e o teste começa a olhar pra pessoa errada. [tela_cheia]
+3. Então, em vez da posição, a gente procura pelo conteúdo: get by role row, filter has text. [editor]
+4. Ache a linha que tem este nome. [traducao]
+5. E dentro dessa linha, o valor devido: confere que é cinquenta dólares. [editor]
+6. Antes: a segunda linha. Depois: a linha que tem o nome da pessoa. Se a ordem mudar, o teste continua achando a pessoa certa. [compare]
+7. Roda. [+pausa] [editor]
+8. Fechamos o site novo! Agora, recursos que aparecem em projetos de verdade. [passo]
+9. Te vejo lá! [endcard]

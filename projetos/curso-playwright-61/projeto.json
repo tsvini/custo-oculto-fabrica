@@ -1,0 +1,157 @@
+{
+ "title": "Playwright para leigos · Aula 61",
+ "slug": "curso-playwright-61",
+ "idioma": "pt",
+ "destino": "curso",
+ "marca": [
+  "PLAYWRIGHT",
+  "PARA LEIGOS"
+ ],
+ "cor_fundo": "#3fd68a",
+ "sem_legenda": true,
+ "legenda_y": 0.93,
+ "selo": "MÓDULO 12 · AULA 61",
+ "voz": {
+  "nome": "gravada",
+  "motor": "eleven",
+  "eleven_voz": "Vinícius Torales"
+ },
+ "serie": [],
+ "meta": {
+  "titles": [
+   "Aula 61: O botão só aparece quando passo o mouse"
+  ],
+  "description": "",
+  "tags": []
+ },
+ "notes": "Curso Playwright para leigos. Não publica (destino: curso). Roteiro em curso-playwright/roteiros/.",
+ "script": {
+  "long": {
+   "parts": [
+    {
+     "chapter": "",
+     "sentences": [
+      {
+       "text": "Chegou um relato de bug: não consigo clicar na opção, porque ela só aparece quando passo o mouse no usuário.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "RELATO DE BUG",
+          "muted",
+          70
+         ],
+         [
+          "“Só aparece quando passo o mouse”",
+          "white",
+          78
+         ]
+        ],
+        "entre": 1.3
+       }
+      },
+      {
+       "text": "Vamos reproduzir: sem o mouse em cima, o nome está escondido. Com o mouse, ele aparece.",
+       "scene": {
+        "type": "tela_cheia",
+        "media": "n61_hover",
+        "legenda": "Com o mouse em cima, o nome aparece",
+        "gravar": true
+       }
+      },
+      {
+       "text": "No Playwright: hover. Passe o mouse por cima.",
+       "scene": {
+        "type": "traducao",
+        "codigo": "await usuario.hover();",
+        "partes": [
+         [
+          "usuario",
+          "o usuário"
+         ],
+         [
+          ".hover()",
+          "passe o mouse por cima"
+         ]
+        ],
+        "passo": 1.0
+       }
+      },
+      {
+       "text": "Antes do hover: not to be visible. Depois do hover: to be visible. Assim a gente testa o comportamento, não só roda um comando.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "internet.spec.js",
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  arquivos/",
+         "    exemplo.txt",
+         "  pages/",
+         "  tests/",
+         "    compra.spec.js",
+         "    internet.spec.js",
+         "    login.spec.js",
+         "  .env",
+         "  playwright.config.js"
+        ],
+        "codigo": "test('hover', async ({ page }) => {\n  await page.goto(`${site}/hovers`);\n  const usuario = page.locator('.figure').first();\n  const nome = usuario.getByText('name: user1');\n  await expect(nome).not.toBeVisible();\n  await usuario.hover();\n  await expect(nome).toBeVisible();\n});",
+        "legenda": "Antes escondido · depois visível",
+        "fonte": 32,
+        "digitar": true,
+        "linha0": 55,
+        "digitar_de": 1,
+        "digitar_ate": 7
+       }
+      },
+      {
+       "text": "Roda e olha o mouse passando.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "internet.spec.js",
+        "pastas": null,
+        "codigo": "test('hover', async ({ page }) => {\n  await page.goto(`${site}/hovers`);\n  const usuario = page.locator('.figure').first();\n  const nome = usuario.getByText('name: user1');\n  await expect(nome).not.toBeVisible();\n  await usuario.hover();\n  await expect(nome).toBeVisible();\n});",
+        "legenda": "O nome apareceu",
+        "fonte": 26,
+        "digitar": false,
+        "linha0": 55,
+        "terminal": [
+         {
+          "cmd": "npx playwright test internet -g \"hover\" --headed --project=chromium",
+          "em": 0.03
+         },
+         {
+          "out": "Running 2 tests using 1 worker",
+          "cor": "mut",
+          "em": 0.08
+         },
+         {
+          "out": "  2 passed (2.9s)",
+          "cor": "ac",
+          "em": 0.88
+         }
+        ],
+        "navegador": {
+         "media": "n61_hover",
+         "titulo": "Chromium",
+         "em": 0.1,
+         "ate": 0.86
+        }
+       },
+       "pausa": 2.5
+      },
+      {
+       "text": "Te vejo na próxima!",
+       "scene": {
+        "type": "endcard",
+        "sub": "PRÓXIMA: ARRASTAR E SOLTAR"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "shorts": [],
+  "tiktoks": []
+ }
+}

@@ -1,0 +1,192 @@
+{
+ "title": "Playwright para leigos · Aula 59",
+ "slug": "curso-playwright-59",
+ "idioma": "pt",
+ "destino": "curso",
+ "marca": [
+  "PLAYWRIGHT",
+  "PARA LEIGOS"
+ ],
+ "cor_fundo": "#3fd68a",
+ "sem_legenda": true,
+ "legenda_y": 0.93,
+ "selo": "MÓDULO 12 · AULA 59",
+ "voz": {
+  "nome": "gravada",
+  "motor": "eleven",
+  "eleven_voz": "Vinícius Torales"
+ },
+ "serie": [],
+ "meta": {
+  "titles": [
+   "Aula 59: O link abriu outra aba"
+  ],
+  "description": "",
+  "tags": []
+ },
+ "notes": "Curso Playwright para leigos. Não publica (destino: curso). Roteiro em curso-playwright/roteiros/.",
+ "script": {
+  "long": {
+   "parts": [
+    {
+     "chapter": "",
+     "sentences": [
+      {
+       "text": "Imagina: você clica pra ver os detalhes de um pedido, e eles abrem em outra aba. E o teste continua olhando a aba antiga.",
+       "scene": {
+        "type": "tela_cheia",
+        "media": "n59_aba",
+        "legenda": "Click Here abre outra aba",
+        "gravar": true
+       }
+      },
+      {
+       "text": "Então a gente precisa pegar a aba nova quando ela abrir.",
+       "scene": {
+        "type": "cards",
+        "itens": [
+         [
+          "⧉",
+          "Abriu outra aba",
+          ""
+         ],
+         [
+          "👀",
+          "O teste olha a antiga",
+          "",
+          "#ff6b6b"
+         ],
+         [
+          "✓",
+          "Pega a nova",
+          "quando ela abrir",
+          "#3fd68a"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Primeiro, o aviso: const promessa igual page ponto wait for event, popup.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "internet.spec.js",
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  arquivos/",
+         "    exemplo.txt",
+         "  pages/",
+         "  tests/",
+         "    compra.spec.js",
+         "    internet.spec.js",
+         "    login.spec.js",
+         "  .env",
+         "  playwright.config.js"
+        ],
+        "codigo": "test('nova aba', async ({ page }) => {\n  await page.goto(`${site}/windows`);\n  const promessa = page.waitForEvent('popup');",
+        "legenda": "waitForEvent('popup') = espere uma nova aba",
+        "fonte": 32,
+        "digitar": true,
+        "linha0": 39,
+        "digitar_de": 1,
+        "digitar_ate": 3
+       }
+      },
+      {
+       "text": "Espere uma nova aba.",
+       "scene": {
+        "type": "traducao",
+        "codigo": "page.waitForEvent('popup')",
+        "partes": [
+         [
+          "waitForEvent",
+          "espere acontecer"
+         ],
+         [
+          "('popup')",
+          "uma nova aba"
+         ]
+        ],
+        "passo": 1.0
+       }
+      },
+      {
+       "text": "Depois clica no link. E aí: const novaAba igual await promessa. Guarde a aba que abriu.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "internet.spec.js",
+        "pastas": null,
+        "codigo": "test('nova aba', async ({ page }) => {\n  await page.goto(`${site}/windows`);\n  const promessa = page.waitForEvent('popup');\n  await page.getByRole('link', { name: 'Click Here' }).click();\n  const novaAba = await promessa;",
+        "legenda": "novaAba = a aba que abriu",
+        "fonte": 28,
+        "digitar": true,
+        "linha0": 39,
+        "digitar_de": 4,
+        "digitar_ate": 5
+       }
+      },
+      {
+       "text": "A partir daí, você usa a nova aba igual ao page: confere que ela mostra New Window.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "internet.spec.js",
+        "codigo": "test('nova aba', async ({ page }) => {\n  await page.goto(`${site}/windows`);\n  const promessa = page.waitForEvent('popup');\n  await page.getByRole('link', { name: 'Click Here' }).click();\n  const novaAba = await promessa;\n  const titulo = novaAba.getByRole('heading', { name: 'New Window' });\n  await expect(titulo).toBeVisible();\n});",
+        "legenda": "novaAba funciona igual ao page",
+        "fonte": 28,
+        "digitar": true,
+        "linha0": 39,
+        "pastas": null,
+        "digitar_de": 6,
+        "digitar_ate": 7
+       }
+      },
+      {
+       "text": "Roda e olha as duas abas.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "internet.spec.js",
+        "codigo": "test('nova aba', async ({ page }) => {\n  await page.goto(`${site}/windows`);\n  const promessa = page.waitForEvent('popup');\n  await page.getByRole('link', { name: 'Click Here' }).click();\n  const novaAba = await promessa;\n  const titulo = novaAba.getByRole('heading', { name: 'New Window' });\n  await expect(titulo).toBeVisible();\n});",
+        "legenda": "Abriu e conferiu a aba nova",
+        "fonte": 26,
+        "digitar": false,
+        "linha0": 39,
+        "terminal": [
+         {
+          "cmd": "npx playwright test internet -g \"nova aba\" --headed --project=chromium",
+          "em": 0.03
+         },
+         {
+          "out": "Running 2 tests using 1 worker",
+          "cor": "mut",
+          "em": 0.08
+         },
+         {
+          "out": "  2 passed (3.0s)",
+          "cor": "ac",
+          "em": 0.88
+         }
+        ],
+        "navegador": {
+         "media": "n59_aba",
+         "titulo": "Chromium",
+         "em": 0.1,
+         "ate": 0.86
+        },
+        "pastas": null
+       },
+       "pausa": 2.5
+      },
+      {
+       "text": "Te vejo na próxima!",
+       "scene": {
+        "type": "endcard",
+        "sub": "PRÓXIMA: UMA PÁGINA DENTRO DA PÁGINA"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "shorts": [],
+  "tiktoks": []
+ }
+}

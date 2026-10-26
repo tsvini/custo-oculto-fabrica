@@ -19,7 +19,7 @@
  "serie": [],
  "meta": {
   "titles": [
-   "Aula 57: Seu projeto pronto pro portfólio e a colinha completa"
+   "Aula 57: O usuário precisa enviar um arquivo"
   ],
   "description": "",
   "tags": []
@@ -32,205 +32,215 @@
      "chapter": "",
      "sentences": [
       {
-       "text": "Última aula. Vamos deixar o seu projeto pronto pra quem visitar.",
+       "text": "A tarefa mudou: o usuário precisa conseguir anexar um documento. Currículo, comprovante, planilha.",
        "scene": {
         "type": "bigtext",
         "stagger": 0.25,
         "lines": [
          [
-          "AULA 57",
+          "NOVA TAREFA",
           "muted",
-          80
+          70
          ],
          [
-          "PORTFÓLIO",
-          "gold",
-          200
+          "“O usuário precisa anexar um documento”",
+          "white",
+          64
          ]
-        ]
+        ],
+        "entre": 1.3
        }
       },
       {
-       "text": "Cria um README ponto md com: o objetivo, as tecnologias, o que precisa instalar, como instalar, e os comandos pra rodar os testes.",
+       "text": "Na tela tem um campo de escolher arquivo e um botão Upload.",
+       "scene": {
+        "type": "tela",
+        "media": "n57_tela",
+        "url": "https://the-internet.herokuapp.com/upload",
+        "gravar": true,
+        "acoes": [],
+        "titulo": "the-internet.herokuapp.com",
+        "legenda": "Escolher arquivo · Upload",
+        "espera_inicio": 1000,
+        "espera_fim": 2500,
+        "delay_letra": 60
+       },
+       "pausa": 2.5
+      },
+      {
+       "text": "Primeiro, um arquivo de exemplo dentro do projeto: uma pasta arquivos, com um texto dentro.",
        "scene": {
         "type": "editor",
-        "arquivo": "README.md",
-        "codigo": "# Meu primeiro projeto Playwright\n\n![Playwright Tests](https://github.com/voce/meu-primeiro-playwright/actions/workflows/playwright.yml/badge.svg)\n\nTestes de ponta a ponta da loja de treino saucedemo.com.\n\n## Tecnologias\nPlaywright, JavaScript, Page Object, GitHub Actions\n\n## Instalação\nnpm install\nnpx playwright install\n\n## Rodando os testes\nnpx playwright test",
-        "legenda": "README.md: a vitrine do projeto",
-        "fonte": 22,
-        "digitar": true,
+        "arquivo": "exemplo.txt",
         "pastas": [
          "meu-primeiro-playwright",
-         "  .github/",
-         "  node_modules/",
+         "  arquivos/",
+         "    exemplo.txt",
          "  pages/",
          "  tests/",
+         "    compra.spec.js",
+         "    internet.spec.js",
+         "    login.spec.js",
          "  .env",
-         "  .gitignore",
-         "  package.json",
-         "  playwright.config.js",
-         "  README.md"
+         "  playwright.config.js"
         ],
-        "digitar_de": 5,
-        "digitar_ate": 16,
-        "vel": 0.85
+        "codigo": "Meu currículo de testador",
+        "legenda": "arquivos/exemplo.txt",
+        "fonte": 30,
+        "digitar": true,
+        "digitar_de": 1,
+        "digitar_ate": 1
        }
       },
       {
-       "text": "Coloca o selinho do GitHub Actions. O próprio GitHub gera o código dele, com o endereço do seu repositório e do seu workflow.",
+       "text": "Agora: set input files, coloque este arquivo no campo.",
        "scene": {
         "type": "editor",
-        "arquivo": "README.md",
-        "codigo": "# Meu primeiro projeto Playwright\n\n![Playwright Tests](https://github.com/voce/meu-primeiro-playwright/actions/workflows/playwright.yml/badge.svg)\n\nTestes de ponta a ponta da loja de treino saucedemo.com.\n\n## Tecnologias\nPlaywright, JavaScript, Page Object, GitHub Actions\n\n## Instalação\nnpm install\nnpx playwright install\n\n## Rodando os testes\nnpx playwright test",
-        "legenda": "O selo: o endereço do repositório + o do workflow",
-        "fonte": 22,
-        "digitar": true,
-        "digitar_de": 3,
-        "digitar_ate": 3,
-        "vel": 0.6,
-        "destaque": [
-         3
+        "arquivo": "internet.spec.js",
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  arquivos/",
+         "    exemplo.txt",
+         "  pages/",
+         "  tests/",
+         "    compra.spec.js",
+         "    internet.spec.js",
+         "    login.spec.js",
+         "  .env",
+         "  playwright.config.js"
         ],
-        "destaque_em": 99
+        "codigo": "test('upload de arquivo', async ({ page }) => {\n  await page.goto(`${site}/upload`);\n  await page.locator('#file-upload')\n    .setInputFiles('arquivos/exemplo.txt');",
+        "legenda": "setInputFiles = coloque este arquivo",
+        "fonte": 32,
+        "digitar": true,
+        "linha0": 19,
+        "digitar_de": 1,
+        "digitar_ate": 4
        }
       },
       {
-       "text": "Ele mostra se os testes estão passando.",
+       "text": "set input files: coloque este arquivo no campo.",
        "scene": {
-        "type": "github",
-        "tela": "readme",
-        "usuario": "voce",
-        "repo": "meu-primeiro-playwright",
-        "titulo_readme": "Meu primeiro projeto Playwright",
-        "selo_em": 0.3,
-        "foco_em": 0.8,
-        "linhas_readme": [
+        "type": "traducao",
+        "codigo": ".setInputFiles('arquivos/exemplo.txt')",
+        "partes": [
          [
-          "p",
-          "Testes de ponta a ponta da loja de treino saucedemo.com."
+          ".setInputFiles",
+          "coloque no campo"
          ],
          [
-          "h",
-          "Tecnologias"
-         ],
-         [
-          "p",
-          "Playwright, JavaScript, Page Object, GitHub Actions"
+          "('arquivos/exemplo.txt')",
+          "este arquivo"
          ]
         ],
-        "legenda": "Verde: os testes estão passando"
+        "passo": 1.2
        }
       },
       {
-       "text": "E a sua colinha completa: do primeiro comando ao Page Object,",
-       "scene": {
-        "type": "tela",
-        "media": "colinha_pg4",
-        "url": "repo:curso-playwright/material/colinha/colinha.html",
-        "pagina": 4,
-        "titulo": "colinha-playwright-para-leigos.pdf",
-        "legenda": "Page Object"
-       }
-      },
-      {
-       "text": "ao login salvo, ao GitHub Actions e à API. Deixa ela aberta enquanto pratica.",
-       "scene": {
-        "type": "tela",
-        "media": "colinha_pg4b",
-        "url": "repo:curso-playwright/material/colinha/colinha.html",
-        "pagina": 4,
-        "rolar_y": 900,
-        "titulo": "colinha-playwright-para-leigos.pdf",
-        "legenda": "Login salvo, API e GitHub Actions"
-       }
-      },
-      {
-       "text": "Você começou sem saber nada e terminou com um projeto completo: login, compra, API e tudo rodando no GitHub.",
+       "text": "Repara: o Playwright não abre aquela janela do Windows pra procurar o arquivo com o mouse. Ele entrega o arquivo direto pro campo.",
        "scene": {
         "type": "cards",
-        "titulo": "O SEU PROJETO",
         "itens": [
          [
-          "🔑",
-          "Login",
-          "vários usuários"
-         ],
-         [
-          "🛒",
-          "Compra",
-          "do começo ao fim",
-          "#69a7ff"
-         ],
-         [
-          "⇄",
-          "API",
-          "em milissegundos",
-          "#ffd23f"
+          "✗",
+          "Sem janela do Windows",
+          "nada de procurar com o mouse",
+          "#ff6b6b"
          ],
          [
           "✓",
-          "GitHub",
-          "rodando sozinho",
+          "Direto no campo",
+          "o arquivo vai pronto",
           "#3fd68a"
          ]
         ]
        }
       },
       {
-       "text": "Próximos passos: pratique, crie novos cenários e mantenha o seu GitHub atualizado.",
+       "text": "Clica em Upload e confere que o nome do arquivo apareceu na página.",
        "scene": {
-        "type": "cards",
-        "titulo": "PRÓXIMOS PASSOS",
-        "itens": [
-         [
-          "⌨",
-          "Pratique",
-          "um pouco todo dia"
-         ],
-         [
-          "＋",
-          "Novos cenários",
-          "outros sites e fluxos",
-          "#69a7ff"
-         ],
-         [
-          "⑂",
-          "GitHub atualizado",
-          "a sua vitrine",
-          "#ffd23f"
-         ]
-        ]
+        "type": "editor",
+        "arquivo": "internet.spec.js",
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  arquivos/",
+         "    exemplo.txt",
+         "  pages/",
+         "  tests/",
+         "    compra.spec.js",
+         "    internet.spec.js",
+         "    login.spec.js",
+         "  .env",
+         "  playwright.config.js"
+        ],
+        "codigo": "test('upload de arquivo', async ({ page }) => {\n  await page.goto(`${site}/upload`);\n  await page.locator('#file-upload')\n    .setInputFiles('arquivos/exemplo.txt');\n  await page.locator('#file-submit').click();\n  await expect(page.locator('#uploaded-files'))\n    .toContainText('exemplo.txt');\n});",
+        "legenda": "O nome do arquivo apareceu",
+        "fonte": 32,
+        "digitar": true,
+        "linha0": 19,
+        "digitar_de": 5,
+        "digitar_ate": 7
        }
       },
       {
-       "text": "E se o curso te ajudou, deixa uma avaliação honesta na Udemy. Ela ajuda a melhorar o curso e orienta outros alunos.",
+       "text": "Roda.",
        "scene": {
-        "type": "bigtext",
-        "stagger": 0.25,
-        "lines": [
-         [
-          "★★★★★",
-          "gold",
-          130
+        "type": "editor",
+        "arquivo": "internet.spec.js",
+        "pastas": null,
+        "codigo": "test('upload de arquivo', async ({ page }) => {\n  await page.goto(`${site}/upload`);\n  await page.locator('#file-upload')\n    .setInputFiles('arquivos/exemplo.txt');\n  await page.locator('#file-submit').click();\n  await expect(page.locator('#uploaded-files'))\n    .toContainText('exemplo.txt');\n});",
+        "legenda": "O arquivo subiu",
+        "fonte": 26,
+        "digitar": false,
+        "linha0": 19,
+        "terminal": [
+         {
+          "cmd": "npx playwright test internet -g \"upload\" --headed --project=chromium",
+          "em": 0.03
+         },
+         {
+          "out": "Running 2 tests using 1 worker",
+          "cor": "mut",
+          "em": 0.08
+         },
+         {
+          "out": "  2 passed (3.2s)",
+          "cor": "ac",
+          "em": 0.88
+         }
+        ],
+        "navegador": {
+         "media": "run_upload",
+         "titulo": "Chromium",
+         "em": 0.1,
+         "ate": 0.86,
+         "url": "https://the-internet.herokuapp.com/upload",
+         "gravar": true,
+         "acoes": [
+          {
+           "upload": [
+            "#file-upload",
+            "curso-playwright/projeto/arquivos/exemplo.txt"
+           ],
+           "espera": 900
+          },
+          {
+           "click": "#file-submit",
+           "espera": 1400
+          }
          ],
-         [
-          "SUA AVALIAÇÃO",
-          "white",
-          120
-         ],
-         [
-          "AJUDA OUTROS ALUNOS",
-          "muted",
-          70
-         ]
-        ]
-       }
+         "espera_inicio": 900,
+         "espera_fim": 1600,
+         "delay_letra": 55
+        }
+       },
+       "pausa": 2.5
       },
       {
-       "text": "Até a próxima!",
+       "text": "Te vejo na próxima!",
        "scene": {
         "type": "endcard",
-        "sub": "OBRIGADO POR FAZER O CURSO!"
+        "sub": "PRÓXIMA: UMA CAIXA TRAVOU A PÁGINA"
        }
       }
      ]

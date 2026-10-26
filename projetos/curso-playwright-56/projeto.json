@@ -19,7 +19,7 @@
  "serie": [],
  "meta": {
   "titles": [
-   "Aula 56: O seu projeto no currículo e na entrevista"
+   "Aula 56: O formulário mudou"
   ],
   "description": "",
   "tags": []
@@ -32,138 +32,220 @@
      "chapter": "",
      "sentences": [
       {
-       "text": "Agora você tem um projeto de automação. Vamos colocar isso no seu currículo do jeito certo.",
+       "text": "Imagina que caiu uma tarefa nova: validar as preferências de um formulário.",
        "scene": {
         "type": "bigtext",
         "stagger": 0.25,
         "lines": [
          [
-          "AULA 56",
+          "NOVA TAREFA",
           "muted",
-          80
+          70
          ],
          [
-          "CURRÍCULO",
-          "gold",
-          200
+          "“Validar as preferências do formulário”",
+          "white",
+          64
          ]
-        ]
+        ],
+        "entre": 1.3
        }
       },
       {
-       "text": "No currículo, escreve o que você realmente fez: testes de ponta a ponta com Playwright e JavaScript, Page Object, testes de API, vários navegadores e execução no GitHub Actions.",
+       "text": "Abrindo a tela, tem duas coisas que a gente ainda não usou: a caixa de marcar e a lista de opções.",
+       "scene": {
+        "type": "tela",
+        "media": "n56_check",
+        "url": "https://the-internet.herokuapp.com/checkboxes",
+        "gravar": true,
+        "acoes": [
+         {
+          "check": "#checkboxes input >> nth=0",
+          "espera": 900
+         },
+         {
+          "uncheck": "#checkboxes input >> nth=0",
+          "espera": 900
+         }
+        ],
+        "titulo": "the-internet.herokuapp.com",
+        "legenda": "A caixa de marcar: checkbox",
+        "espera_inicio": 1000,
+        "espera_fim": 1600,
+        "delay_letra": 60
+       }
+      },
+      {
+       "text": "Pra marcar: ponto check. Pra desmarcar: ponto uncheck.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "internet.spec.js",
+        "pastas": null,
+        "codigo": "test('checkbox e dropdown', async ({ page }) => {\n  await page.goto(`${site}/checkboxes`);\n  const primeira = page.getByRole('checkbox').first();\n  await primeira.check();",
+        "legenda": "check = marque",
+        "fonte": 32,
+        "digitar": true,
+        "linha0": 5,
+        "digitar_de": 1,
+        "digitar_ate": 4
+       }
+      },
+      {
+       "text": "check, marque. uncheck, desmarque.",
        "scene": {
         "type": "traducao",
-        "titulo": "NO CURRÍCULO",
-        "linhas": [
+        "codigo": "primeira.check()  ·  primeira.uncheck()",
+        "partes": [
          [
-          "Playwright + JavaScript",
-          "testes de ponta a ponta"
+          ".check()",
+          "marque"
          ],
          [
-          "Page Object",
-          "código organizado e reaproveitável"
-         ],
-         [
-          "request (API)",
-          "testes de API"
-         ],
-         [
-          "projects",
-          "Chromium, Firefox, WebKit e celular"
-         ],
-         [
-          "GitHub Actions",
-          "testes rodando a cada push"
+          ".uncheck()",
+          "desmarque"
          ]
-        ]
+        ],
+        "passo": 1.2
        }
       },
       {
-       "text": "A regra: só coloca o que você consegue explicar numa entrevista.",
+       "text": "Mas clicar não basta: a gente confere. to be checked, esteja marcada. E com o not na frente: não esteja marcada.",
        "scene": {
-        "type": "bigtext",
-        "stagger": 0.25,
-        "lines": [
-         [
-          "SÓ COLOCA",
-          "white",
-          120
-         ],
-         [
-          "O QUE VOCÊ EXPLICA",
-          "gold",
-          140
-         ]
-        ]
+        "type": "editor",
+        "arquivo": "internet.spec.js",
+        "pastas": null,
+        "codigo": "test('checkbox e dropdown', async ({ page }) => {\n  await page.goto(`${site}/checkboxes`);\n  const primeira = page.getByRole('checkbox').first();\n  await primeira.check();\n  await expect(primeira).toBeChecked();\n  await primeira.uncheck();\n  await expect(primeira).not.toBeChecked();",
+        "legenda": "toBeChecked = esteja marcada",
+        "fonte": 32,
+        "digitar": true,
+        "linha0": 5,
+        "digitar_de": 5,
+        "digitar_ate": 7
        }
       },
       {
-       "text": "Perguntas que costumam aparecer e que você já sabe responder: o que é auto-wait? Por que preferir seletores pela função? O que é Page Object?",
+       "text": "Agora o segundo campo: aqui a pessoa escolhe uma opção. Você já viu isso no desafio quatro: select option.",
        "scene": {
-        "type": "cards",
-        "titulo": "PERGUNTA → RESPOSTA CURTA",
-        "itens": [
-         [
-          "?",
-          "Auto-wait",
-          "ele espera o elemento ficar pronto"
-         ],
-         [
-          "?",
-          "Seletor pela função",
-          "parte do que a pessoa usa",
-          "#69a7ff"
-         ],
-         [
-          "?",
-          "Page Object",
-          "cada página vira uma classe",
-          "#ffd23f"
-         ]
-        ]
+        "type": "tela",
+        "media": "n56_dropdown",
+        "url": "https://the-internet.herokuapp.com/dropdown",
+        "gravar": true,
+        "acoes": [
+         {
+          "select": [
+           "#dropdown",
+           "1"
+          ],
+          "espera": 900
+         },
+         {
+          "select": [
+           "#dropdown",
+           "2"
+          ],
+          "espera": 900
+         }
+        ],
+        "titulo": "the-internet.herokuapp.com",
+        "legenda": "A lista de opções: selectOption",
+        "espera_inicio": 1000,
+        "espera_fim": 1600,
+        "delay_letra": 60
        }
       },
       {
-       "text": "E o que é um teste flaky, que às vezes passa e às vezes falha? E como evitar?",
+       "text": "E a conferência: to have value, tenha o valor dois.",
        "scene": {
-        "type": "cards",
-        "titulo": "FLAKY",
-        "itens": [
-         [
-          "≈",
-          "Às vezes passa",
-          "às vezes falha",
-          "#ff6b6b"
-         ],
-         [
-          "✓",
-          "Como evitar",
-          "expect que espera, sem tempo fixo",
-          "#3fd68a"
-         ]
-        ]
+        "type": "editor",
+        "arquivo": "internet.spec.js",
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  arquivos/",
+         "    exemplo.txt",
+         "  pages/",
+         "  tests/",
+         "    compra.spec.js",
+         "    internet.spec.js",
+         "    login.spec.js",
+         "  .env",
+         "  playwright.config.js"
+        ],
+        "codigo": "  await primeira.check();\n  await expect(primeira).toBeChecked();\n  await primeira.uncheck();\n  await expect(primeira).not.toBeChecked();\n\n  await page.goto(`${site}/dropdown`);\n  const lista = page.locator('#dropdown');\n  await lista.selectOption('2');\n  await expect(lista).toHaveValue('2');\n});",
+        "legenda": "toHaveValue = tenha o valor",
+        "fonte": 32,
+        "digitar": true,
+        "linha0": 8,
+        "digitar_de": 6,
+        "digitar_ate": 9
        }
       },
       {
-       "text": "Mostrar o projeto funcionando no GitHub ajuda muito a transformar o que está no currículo numa demonstração concreta.",
+       "text": "Roda e olha.",
        "scene": {
-        "type": "gh_actions",
-        "usuario": "voce",
-        "repo": "meu-primeiro-playwright",
-        "workflow": "Playwright Tests",
-        "commit": "testes no GitHub Actions",
-        "pronto": true,
-        "status": "ok",
-        "artefato": "playwright-report",
-        "legenda": "O currículo vira demonstração"
-       }
+        "type": "editor",
+        "arquivo": "internet.spec.js",
+        "pastas": null,
+        "codigo": "test('checkbox e dropdown', async ({ page }) => {\n  await page.goto(`${site}/checkboxes`);\n  const primeira = page.getByRole('checkbox').first();\n  await primeira.check();\n  await expect(primeira).toBeChecked();\n  await primeira.uncheck();\n  await expect(primeira).not.toBeChecked();\n\n  await page.goto(`${site}/dropdown`);",
+        "legenda": "Marcou, desmarcou e escolheu",
+        "fonte": 26,
+        "digitar": false,
+        "linha0": 5,
+        "terminal": [
+         {
+          "cmd": "npx playwright test internet -g \"checkbox\" --headed --project=chromium",
+          "em": 0.03
+         },
+         {
+          "out": "Running 2 tests using 1 worker",
+          "cor": "mut",
+          "em": 0.08
+         },
+         {
+          "out": "  2 passed (3.4s)",
+          "cor": "ac",
+          "em": 0.88
+         }
+        ],
+        "navegador": {
+         "media": "run_checkbox",
+         "titulo": "Chromium",
+         "em": 0.1,
+         "ate": 0.86,
+         "url": "https://the-internet.herokuapp.com/checkboxes",
+         "gravar": true,
+         "acoes": [
+          {
+           "check": "#checkboxes input >> nth=0",
+           "espera": 700
+          },
+          {
+           "uncheck": "#checkboxes input >> nth=0",
+           "espera": 700
+          },
+          {
+           "goto": "https://the-internet.herokuapp.com/dropdown",
+           "espera": 600
+          },
+          {
+           "select": [
+            "#dropdown",
+            "2"
+           ],
+           "espera": 900
+          }
+         ],
+         "espera_inicio": 900,
+         "espera_fim": 1600,
+         "delay_letra": 55
+        }
+       },
+       "pausa": 2.5
       },
       {
-       "text": "Te vejo na última aula!",
+       "text": "Te vejo na próxima!",
        "scene": {
         "type": "endcard",
-        "sub": "PRÓXIMA: PORTFÓLIO E COLINHA"
+        "sub": "PRÓXIMA: UPLOAD DE ARQUIVO"
        }
       }
      ]

@@ -1,0 +1,210 @@
+{
+ "title": "Playwright para leigos · Aula 62",
+ "slug": "curso-playwright-62",
+ "idioma": "pt",
+ "destino": "curso",
+ "marca": [
+  "PLAYWRIGHT",
+  "PARA LEIGOS"
+ ],
+ "cor_fundo": "#3fd68a",
+ "sem_legenda": true,
+ "legenda_y": 0.93,
+ "selo": "MÓDULO 12 · AULA 62",
+ "voz": {
+  "nome": "gravada",
+  "motor": "eleven",
+  "eleven_voz": "Vinícius Torales"
+ },
+ "serie": [],
+ "meta": {
+  "titles": [
+   "Aula 62: O usuário precisa arrastar um item"
+  ],
+  "description": "",
+  "tags": []
+ },
+ "notes": "Curso Playwright para leigos. Não publica (destino: curso). Roteiro em curso-playwright/roteiros/.",
+ "script": {
+  "long": {
+   "parts": [
+    {
+     "chapter": "",
+     "sentences": [
+      {
+       "text": "Tem tela em que a pessoa reorganiza as coisas arrastando: quadro de tarefas, lista, arquivos.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "AULA 62",
+          "muted",
+          80
+         ],
+         [
+          "ARRASTAR",
+          "gold",
+          200
+         ]
+        ]
+       }
+      },
+      {
+       "text": "No nosso exemplo, duas caixas: A e B. A gente quer arrastar a A até a B.",
+       "scene": {
+        "type": "tela",
+        "media": "n62_drag",
+        "url": "https://the-internet.herokuapp.com/drag_and_drop",
+        "gravar": true,
+        "acoes": [
+         {
+          "drag": [
+           "#column-a",
+           "#column-b"
+          ],
+          "espera": 1500
+         }
+        ],
+        "titulo": "the-internet.herokuapp.com",
+        "legenda": "Arrastar a A até a B",
+        "espera_inicio": 1000,
+        "espera_fim": 1600,
+        "delay_letra": 60
+       }
+      },
+      {
+       "text": "Um comando: drag to. Arraste até.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "internet.spec.js",
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  arquivos/",
+         "    exemplo.txt",
+         "  pages/",
+         "  tests/",
+         "    compra.spec.js",
+         "    internet.spec.js",
+         "    login.spec.js",
+         "  .env",
+         "  playwright.config.js"
+        ],
+        "codigo": "test('arrastar e soltar', async ({ page }) => {\n  await page.goto(`${site}/drag_and_drop`);\n  const caixaA = page.locator('#column-a');\n  const caixaB = page.locator('#column-b');\n  await caixaA.dragTo(caixaB);",
+        "legenda": "dragTo = arraste até",
+        "fonte": 32,
+        "digitar": true,
+        "linha0": 64,
+        "digitar_de": 1,
+        "digitar_ate": 5
+       }
+      },
+      {
+       "text": "A caixa A, arraste até a caixa B.",
+       "scene": {
+        "type": "traducao",
+        "codigo": "caixaA.dragTo(caixaB)",
+        "partes": [
+         [
+          ".dragTo",
+          "arraste até"
+         ],
+         [
+          "(caixaB)",
+          "a caixa B"
+         ]
+        ],
+        "passo": 1.0
+       }
+      },
+      {
+       "text": "E não basta confiar que arrastou: a gente confere que a primeira caixa agora mostra B.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "internet.spec.js",
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  arquivos/",
+         "    exemplo.txt",
+         "  pages/",
+         "  tests/",
+         "    compra.spec.js",
+         "    internet.spec.js",
+         "    login.spec.js",
+         "  .env",
+         "  playwright.config.js"
+        ],
+        "codigo": "test('arrastar e soltar', async ({ page }) => {\n  await page.goto(`${site}/drag_and_drop`);\n  const caixaA = page.locator('#column-a');\n  const caixaB = page.locator('#column-b');\n  await caixaA.dragTo(caixaB);\n  await expect(page.locator('#column-a header'))\n    .toHaveText('B');\n});",
+        "legenda": "A primeira caixa mostra B",
+        "fonte": 32,
+        "digitar": true,
+        "linha0": 64,
+        "digitar_de": 6,
+        "digitar_ate": 7
+       }
+      },
+      {
+       "text": "Roda.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "internet.spec.js",
+        "pastas": null,
+        "codigo": "test('arrastar e soltar', async ({ page }) => {\n  await page.goto(`${site}/drag_and_drop`);\n  const caixaA = page.locator('#column-a');\n  const caixaB = page.locator('#column-b');\n  await caixaA.dragTo(caixaB);\n  await expect(page.locator('#column-a header'))\n    .toHaveText('B');\n});",
+        "legenda": "Arrastou e conferiu",
+        "fonte": 26,
+        "digitar": false,
+        "linha0": 64,
+        "terminal": [
+         {
+          "cmd": "npx playwright test internet -g \"arrastar\" --headed --project=chromium",
+          "em": 0.03
+         },
+         {
+          "out": "Running 2 tests using 1 worker",
+          "cor": "mut",
+          "em": 0.08
+         },
+         {
+          "out": "  2 passed (4.1s)",
+          "cor": "ac",
+          "em": 0.88
+         }
+        ],
+        "navegador": {
+         "media": "run_arrastar",
+         "titulo": "Chromium",
+         "em": 0.1,
+         "ate": 0.86,
+         "url": "https://the-internet.herokuapp.com/drag_and_drop",
+         "gravar": true,
+         "acoes": [
+          {
+           "drag": [
+            "#column-a",
+            "#column-b"
+           ],
+           "espera": 1500
+          }
+         ],
+         "espera_inicio": 900,
+         "espera_fim": 1600,
+         "delay_letra": 55
+        }
+       },
+       "pausa": 2.5
+      },
+      {
+       "text": "Te vejo na próxima!",
+       "scene": {
+        "type": "endcard",
+        "sub": "PRÓXIMA: A TABELA MUDOU DE ORDEM"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "shorts": [],
+  "tiktoks": []
+ }
+}

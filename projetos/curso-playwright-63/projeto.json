@@ -1,0 +1,220 @@
+{
+ "title": "Playwright para leigos · Aula 63",
+ "slug": "curso-playwright-63",
+ "idioma": "pt",
+ "destino": "curso",
+ "marca": [
+  "PLAYWRIGHT",
+  "PARA LEIGOS"
+ ],
+ "cor_fundo": "#3fd68a",
+ "sem_legenda": true,
+ "legenda_y": 0.93,
+ "selo": "MÓDULO 12 · AULA 63",
+ "voz": {
+  "nome": "gravada",
+  "motor": "eleven",
+  "eleven_voz": "Vinícius Torales"
+ },
+ "serie": [],
+ "meta": {
+  "titles": [
+   "Aula 63: A tabela mudou de ordem e o teste quebrou"
+  ],
+  "description": "",
+  "tags": []
+ },
+ "notes": "Curso Playwright para leigos. Não publica (destino: curso). Roteiro em curso-playwright/roteiros/.",
+ "script": {
+  "long": {
+   "parts": [
+    {
+     "chapter": "",
+     "sentences": [
+      {
+       "text": "Um problema bem real: uma tabela de clientes.",
+       "scene": {
+        "type": "tela",
+        "media": "n63_tabela",
+        "url": "https://the-internet.herokuapp.com/tables",
+        "gravar": true,
+        "acoes": [],
+        "titulo": "the-internet.herokuapp.com",
+        "legenda": "Uma tabela de clientes",
+        "espera_inicio": 1000,
+        "espera_fim": 2500,
+        "delay_letra": 60
+       },
+       "pausa": 2.5
+      },
+      {
+       "text": "Dava pra dizer: pegue a segunda linha. Só que amanhã alguém ordena a tabela por nome, a pessoa muda de lugar, e o teste começa a olhar pra pessoa errada.",
+       "scene": {
+        "type": "tela_cheia",
+        "media": "n63_ordem",
+        "legenda": "Ordenou: a pessoa mudou de lugar",
+        "gravar": true
+       }
+      },
+      {
+       "text": "Então, em vez da posição, a gente procura pelo conteúdo: get by role row, filter has text.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "internet.spec.js",
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  arquivos/",
+         "    exemplo.txt",
+         "  pages/",
+         "  tests/",
+         "    compra.spec.js",
+         "    internet.spec.js",
+         "    login.spec.js",
+         "  .env",
+         "  playwright.config.js"
+        ],
+        "codigo": "test('tabela pelo conteúdo', async ({ page }) => {\n  await page.goto(`${site}/tables`);\n  const linha = page.locator('#table1')\n    .getByRole('row')\n    .filter({ hasText: 'Conway' });",
+        "legenda": "filter({ hasText }) = a linha que tem este texto",
+        "fonte": 32,
+        "digitar": true,
+        "linha0": 73,
+        "digitar_de": 1,
+        "digitar_ate": 5
+       }
+      },
+      {
+       "text": "Ache a linha que tem este nome.",
+       "scene": {
+        "type": "traducao",
+        "codigo": "getByRole('row').filter({ hasText: 'Conway' })",
+        "partes": [
+         [
+          "getByRole('row')",
+          "as linhas"
+         ],
+         [
+          ".filter({ hasText: 'Conway' })",
+          "a que tem Conway"
+         ]
+        ],
+        "passo": 1.0
+       }
+      },
+      {
+       "text": "E dentro dessa linha, o valor devido: confere que é cinquenta dólares.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "internet.spec.js",
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  arquivos/",
+         "    exemplo.txt",
+         "  pages/",
+         "  tests/",
+         "    compra.spec.js",
+         "    internet.spec.js",
+         "    login.spec.js",
+         "  .env",
+         "  playwright.config.js"
+        ],
+        "codigo": "test('tabela pelo conteúdo', async ({ page }) => {\n  await page.goto(`${site}/tables`);\n  const linha = page.locator('#table1')\n    .getByRole('row')\n    .filter({ hasText: 'Conway' });\n  await expect(linha.getByRole('cell').nth(3))\n    .toHaveText('$50.00');\n});",
+        "legenda": "O valor devido dessa pessoa",
+        "fonte": 32,
+        "digitar": true,
+        "linha0": 73,
+        "digitar_de": 6,
+        "digitar_ate": 7
+       }
+      },
+      {
+       "text": "Antes: a segunda linha. Depois: a linha que tem o nome da pessoa. Se a ordem mudar, o teste continua achando a pessoa certa.",
+       "scene": {
+        "type": "compare",
+        "title": "COMO ACHAR A LINHA",
+        "items": [
+         [
+          "A 2ª LINHA",
+          "QUEBRA SE A ORDEM MUDAR",
+          "red"
+         ],
+         [
+          "A LINHA DO CONWAY",
+          "ACHA SEMPRE",
+          "gold"
+         ]
+        ],
+        "size": 100,
+        "stagger": 1.2,
+        "vs": false
+       }
+      },
+      {
+       "text": "Roda.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "internet.spec.js",
+        "pastas": null,
+        "codigo": "test('tabela pelo conteúdo', async ({ page }) => {\n  await page.goto(`${site}/tables`);\n  const linha = page.locator('#table1')\n    .getByRole('row')\n    .filter({ hasText: 'Conway' });\n  await expect(linha.getByRole('cell').nth(3))\n    .toHaveText('$50.00');\n});",
+        "legenda": "Achou pela pessoa, não pela posição",
+        "fonte": 26,
+        "digitar": false,
+        "linha0": 73,
+        "terminal": [
+         {
+          "cmd": "npx playwright test internet -g \"tabela\" --headed --project=chromium",
+          "em": 0.03
+         },
+         {
+          "out": "Running 2 tests using 1 worker",
+          "cor": "mut",
+          "em": 0.08
+         },
+         {
+          "out": "  2 passed (2.8s)",
+          "cor": "ac",
+          "em": 0.88
+         }
+        ],
+        "navegador": {
+         "media": "run_tabela",
+         "titulo": "Chromium",
+         "em": 0.1,
+         "ate": 0.86,
+         "url": "https://the-internet.herokuapp.com/tables",
+         "gravar": true,
+         "acoes": [
+          {
+           "espera": 1500
+          }
+         ],
+         "espera_inicio": 900,
+         "espera_fim": 1600,
+         "delay_letra": 55
+        }
+       },
+       "pausa": 2.5
+      },
+      {
+       "text": "Fechamos o site novo! Agora, recursos que aparecem em projetos de verdade.",
+       "scene": {
+        "type": "passo",
+        "icone": "▶",
+        "titulo": "Próximo módulo",
+        "sub": "Playwright de verdade no trabalho"
+       }
+      },
+      {
+       "text": "Te vejo lá!",
+       "scene": {
+        "type": "endcard",
+        "sub": "PRÓXIMA: MÓDULO 13"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "shorts": [],
+  "tiktoks": []
+ }
+}
