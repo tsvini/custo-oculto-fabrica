@@ -131,6 +131,12 @@ def gravacoes(cenas, pasta, log):
                         pg.goto(ac["goto"], wait_until="domcontentloaded", timeout=35000)
                     elif ac.get("scroll"):
                         pg.mouse.wheel(0, int(ac["scroll"]))
+                    elif ac.get("bloqueia"):  # mock: a requisição não chega no servidor
+                        pg.route(ac["bloqueia"], lambda r: r.abort())
+                    elif ac.get("responde"):  # mock: o Playwright responde no lugar do servidor {"responde": [padrão, corpo]}
+                        pg.route(ac["responde"][0], lambda r, corpo=ac["responde"][1]: r.fulfill(status=200, content_type="application/json", body=corpo))
+                    elif ac.get("reload"):
+                        pg.reload(wait_until="domcontentloaded")
                     pg.wait_for_timeout(int(ac.get("espera", s.get("espera_acao", 500))))
                 pg.wait_for_timeout(int(s.get("espera_fim", 1500)))
             except Exception as e:
