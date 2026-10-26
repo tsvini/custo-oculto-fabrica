@@ -79,7 +79,7 @@ jobs:
       - name: Instalar ferramentas
         timeout-minutes: 20  # às vezes um comando trava; cada um tem limite e tenta de novo
         run: |
-          tenta() { for i in 1 2 3; do timeout 240 "$@" && return 0; echo "::warning title=Instalação::tentativa $i falhou: $*"; sleep 5; done; return 1; }
+          tenta() { for i in 1 2 3; do timeout 240 "$@" && return 0; echo "::warning title=Instalação::tentativa $i falhou: $*" >&2; sleep 5; done; return 1; }
           tenta sudo apt-get -o Acquire::Retries=3 -o Acquire::http::Timeout=20 update -qq
           tenta sudo apt-get -o Acquire::Retries=3 install -y -qq ffmpeg > /dev/null
           tenta pip install -q -r requirements.txt
