@@ -129,7 +129,7 @@ CMD = {"cmd": "npx playwright test"}
 AULAS.append(projeto(11, "MÓDULO 2 · AULA 11", "Rodando o teste de exemplo e o relatório HTML", [
     ("Chegou a hora de ver o Playwright funcionando.", titulo(11, "RODANDO")),
     ("Antes de rodar, olha o que tem no arquivo de exemplo que o Playwright criou: dois testes. Um chamado has title, e outro chamado get started link.",
-     {"type": "editor", "arquivo": "example.spec.js", "codigo": EXEMPLO, "digitar": False, "destaque": [4, 11], "destaque_em": 1.0, "rolar": True, "rolar_de": 3.2, "rolar_dur": 1.6, "legenda": "2 testes no arquivo"}),
+     {"type": "editor", "arquivo": "example.spec.js", "codigo": "\n".join(EXEMPLO.split("\n")[:12]), "digitar": False, "destaque": [4, 11], "destaque_em": 1.0, "fonte": 26, "legenda": "2 testes no arquivo"}),  # o arquivo inteiro parado: os dois test() à vista, sem rolar pra código que não é explicado
     ("O primeiro abre o site do Playwright e confere o título da página. O segundo clica no link Get started. Não precisa entender o código agora: você vai aprender tudo isso no curso.",
      {"type": "cards", "titulo": "O QUE O EXEMPLO FAZ", "itens": [["1", "has title", "abre o site e confere o título"], ["2", "get started link", "clica em Get started", "#69a7ff"]]}),
     ("Pra rodar, usa o terminal aqui embaixo no VS Code: digita npx playwright test e aperta Enter.", vs11("No terminal do VS Code", [dict(CMD, em=0.3)], colinha=True, colinha_em=1.2)),

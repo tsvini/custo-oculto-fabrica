@@ -229,8 +229,9 @@
           "e faça isto:"
          ]
         ],
-        "passo": 2.4
-       }
+        "passo": 1.2
+       },
+       "pausa": 2.0
       },
       {
        "text": "O nome entre aspas é você que escolhe. Ele aparece no relatório, então escreve o que o teste faz, em português mesmo.",

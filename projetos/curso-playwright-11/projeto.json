@@ -55,16 +55,14 @@
        "scene": {
         "type": "editor",
         "arquivo": "example.spec.js",
-        "codigo": "// @ts-check\nimport { test, expect } from '@playwright/test';\n\ntest('has title', async ({ page }) => {\n  await page.goto('https://playwright.dev/');\n\n  // Expect a title \"to contain\" a substring.\n  await expect(page).toHaveTitle(/Playwright/);\n});\n\ntest('get started link', async ({ page }) => {\n  await page.goto('https://playwright.dev/');\n\n  // Click the get started link.\n  await page.getByRole('link', { name: 'Get started' }).click();\n\n  // Expects page to have a heading with the name of Installation.\n  await expect(page.getByRole('heading', { name: 'Installation' })).toBeVisible();\n});",
+        "codigo": "// @ts-check\nimport { test, expect } from '@playwright/test';\n\ntest('has title', async ({ page }) => {\n  await page.goto('https://playwright.dev/');\n\n  // Expect a title \"to contain\" a substring.\n  await expect(page).toHaveTitle(/Playwright/);\n});\n\ntest('get started link', async ({ page }) => {\n  await page.goto('https://playwright.dev/');",
         "digitar": false,
         "destaque": [
          4,
          11
         ],
         "destaque_em": 1.0,
-        "rolar": true,
-        "rolar_de": 3.2,
-        "rolar_dur": 1.6,
+        "fonte": 26,
         "legenda": "2 testes no arquivo"
        }
       },

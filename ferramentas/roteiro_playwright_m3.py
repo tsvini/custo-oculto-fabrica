@@ -73,7 +73,7 @@ AULAS.append(projeto(12, "MÓDULO 3 · AULA 12", "A receita de um teste - test e
     ("Agora o teste: test, abre parênteses, o nome do teste entre aspas, entra com usuário e senha, vírgula, async, abre parênteses, abre chaves, page, fecha chaves, fecha parênteses, seta, e abre chaves. E lá embaixo, fecha com chave, parêntese e ponto e vírgula.",
      ed(12, "O esqueleto do teste", de=3)),
     ("Parece muita coisa, né? Então vamos traduzir essa linha pedaço por pedaço.",
-     {"type": "traducao", "codigo": "test('entra com usuário e senha', async ({ page }) => {", "partes": [["test", "crie um teste"], ["'entra com usuário e senha'", "com este nome"], ["async", "que tem esperas"], ["({ page })", "me dê o navegador"], ["=> {", "e faça isto:"]], "passo": 2.4}),
+     {"type": "traducao", "codigo": "test('entra com usuário e senha', async ({ page }) => {", "partes": [["test", "crie um teste"], ["'entra com usuário e senha'", "com este nome"], ["async", "que tem esperas"], ["({ page })", "me dê o navegador"], ["=> {", "e faça isto:"]], "passo": 1.2}),
     ("O nome entre aspas é você que escolhe. Ele aparece no relatório, então escreve o que o teste faz, em português mesmo.", ed(12, "O nome aparece no relatório", digitar=False, destaque=[3], destaque_em=0.8)),
     ("O page é o navegador que o Playwright te entrega pronto. É com ele que você abre sites, digita e clica.", ed(12, "page = o navegador", digitar=False, destaque=[3], destaque_em=0.8)),
     ("E o async quer dizer que, lá dentro, a gente vai usar o await, que significa: espera esse passo terminar antes de ir pro próximo.",
@@ -200,9 +200,20 @@ AULAS.append(projeto(16, "MÓDULO 3 · AULA 16", "Os expect mais usados", [
 ]))
 
 
+def _pausas(p):
+    for x in p["script"]["long"]["parts"][0]["sentences"]:  # tradução com muitas partes numa frase curta: silêncio pra todas aparecerem
+        sc = x["scene"]
+        if sc.get("type") == "traducao" and sc.get("partes"):
+            precisa = 0.8 + (len(sc["partes"]) - 1) * sc.get("passo", 1.6) + 1.5
+            falta = precisa - len(x["text"]) / 14.5
+            if falta > 1.5:
+                x["pausa"] = round(falta, 1)
+
+
 def main():
     out = ["# Roteiros aprovados · Módulo 3 (com ajustes da revisão)", ""]
     for slug, p in AULAS:
+        _pausas(p)
         d = os.path.join(RAIZ, "projetos", slug); os.makedirs(d, exist_ok=True)
         json.dump(p, open(os.path.join(d, "projeto.json"), "w", encoding="utf8"), ensure_ascii=False, indent=1)
         out.append("## " + p["meta"]["titles"][0])
