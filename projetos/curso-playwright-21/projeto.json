@@ -1,0 +1,317 @@
+{
+ "title": "Playwright para leigos · Aula 21",
+ "slug": "curso-playwright-21",
+ "idioma": "pt",
+ "destino": "curso",
+ "marca": [
+  "PLAYWRIGHT",
+  "PARA LEIGOS"
+ ],
+ "cor_fundo": "#3fd68a",
+ "sem_legenda": true,
+ "legenda_y": 0.93,
+ "selo": "MÓDULO 4 · AULA 21",
+ "voz": {
+  "nome": "gravada",
+  "motor": "eleven",
+  "eleven_voz": "Vinícius Torales"
+ },
+ "serie": [],
+ "meta": {
+  "titles": [
+   "Aula 21: Espera automática - por que não precisa de sleep"
+  ],
+  "description": "",
+  "tags": []
+ },
+ "notes": "Curso Playwright para leigos. Não publica (destino: curso). Roteiro em curso-playwright/roteiros/.",
+ "script": {
+  "long": {
+   "parts": [
+    {
+     "chapter": "",
+     "sentences": [
+      {
+       "text": "É comum encontrar testes com espera fixa: espera três segundos, depois clica. No Playwright, na maioria das vezes você não precisa disso.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "AULA 21",
+          "muted",
+          80
+         ],
+         [
+          "AUTO-WAIT",
+          "gold",
+          200
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Isso se chama auto-wait: espera automática.",
+       "scene": {
+        "type": "traducao",
+        "codigo": "auto-wait",
+        "texto_puro": true,
+        "partes": [
+         [
+          "auto",
+          "automática"
+         ],
+         [
+          "wait",
+          "espera"
+         ]
+        ],
+        "passo": 1.2
+       }
+      },
+      {
+       "text": "Antes de clicar, o Playwright confere sozinho se o elemento está pronto pra receber o clique: se está visível, parado, habilitado, e se nada está na frente dele.",
+       "scene": {
+        "type": "cards",
+        "titulo": "ANTES DE CLICAR, ELE CONFERE",
+        "itens": [
+         [
+          "👁",
+          "Visível",
+          ""
+         ],
+         [
+          "⏸",
+          "Parado",
+          "sem animação",
+          "#69a7ff"
+         ],
+         [
+          "✓",
+          "Habilitado",
+          "",
+          "#ffd23f"
+         ],
+         [
+          "▢",
+          "Nada na frente",
+          "",
+          "#c792ea"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "E os expects que conferem a página, como o to have URL e o to be visible, também tentam de novo. Por padrão, por até cinco segundos.",
+       "scene": {
+        "type": "cards",
+        "titulo": "OS EXPECTS TAMBÉM ESPERAM",
+        "itens": [
+         [
+          "↻",
+          "toHaveURL",
+          "tenta de novo"
+         ],
+         [
+          "↻",
+          "toBeVisible",
+          "tenta de novo",
+          "#69a7ff"
+         ],
+         [
+          "⏱",
+          "5 segundos",
+          "o padrão",
+          "#ffd23f"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Pra ver isso, vamos usar um usuário especial do saucedemo, o performance glitch user. Ele é lento de propósito.",
+       "scene": {
+        "type": "tela",
+        "media": "site_sauce_glitch",
+        "url": "https://www.saucedemo.com/",
+        "titulo": "saucedemo.com",
+        "legenda": "O usuário lento de propósito",
+        "zoom_em": 1.4,
+        "caixa_em": 2.0,
+        "alvo": "performance_glitch_user"
+       }
+      },
+      {
+       "text": "Cria um teste novo com esse usuário. É igual ao primeiro, só muda o nome do usuário.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "login.spec.js",
+        "codigo": "import { test, expect } from '@playwright/test';\n\ntest('entra com usuário e senha', async ({ page }) => {\n  await page.goto('https://www.saucedemo.com/');\n  await page.getByPlaceholder('Username').fill('standard_user');\n  await page.getByPlaceholder('Password').fill('secret_sauce');\n  await page.getByRole('button', { name: 'Login' }).click();\n  await expect(page).toHaveURL(/inventory/);\n  await expect(page.getByText('Products')).toBeVisible();\n  await expect(page.getByText('Sauce Labs Backpack')).toContainText('Backpack');\n  await expect(page.getByRole('button', { name: 'Add to cart' })).toHaveCount(6);\n});\n\ntest('usuário lento também entra', async ({ page }) => {\n  await page.goto('https://www.saucedemo.com/');\n  await page.getByPlaceholder('Username').fill('performance_glitch_user');\n  await page.getByPlaceholder('Password').fill('secret_sauce');\n  await page.getByRole('button', { name: 'Login' }).click();\n  await expect(page.getByText('Products')).toBeVisible();\n});",
+        "legenda": "Teste novo: só muda o usuário",
+        "fonte": 24,
+        "digitar": true,
+        "digitar_de": 16,
+        "digitar_ate": 16,
+        "rolar": true,
+        "rolar_de": 1.2,
+        "rolar_dur": 1.4
+       }
+      },
+      {
+       "text": "Só que esse login às vezes passa de cinco segundos. Então, nessa conferência, a gente dá mais tempo: timeout dez mil.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "login.spec.js",
+        "codigo": "import { test, expect } from '@playwright/test';\n\ntest('entra com usuário e senha', async ({ page }) => {\n  await page.goto('https://www.saucedemo.com/');\n  await page.getByPlaceholder('Username').fill('standard_user');\n  await page.getByPlaceholder('Password').fill('secret_sauce');\n  await page.getByRole('button', { name: 'Login' }).click();\n  await expect(page).toHaveURL(/inventory/);\n  await expect(page.getByText('Products')).toBeVisible();\n  await expect(page.getByText('Sauce Labs Backpack')).toContainText('Backpack');\n  await expect(page.getByRole('button', { name: 'Add to cart' })).toHaveCount(6);\n});\n\ntest('usuário lento também entra', async ({ page }) => {\n  await page.goto('https://www.saucedemo.com/');\n  await page.getByPlaceholder('Username').fill('performance_glitch_user');\n  await page.getByPlaceholder('Password').fill('secret_sauce');\n  await page.getByRole('button', { name: 'Login' }).click();\n  await expect(page.getByText('Products')).toBeVisible({ timeout: 10000 });\n});",
+        "legenda": "Mais tempo só nesta conferência",
+        "fonte": 24,
+        "digitar": true,
+        "digitar_de": 19,
+        "digitar_ate": 19,
+        "rolar": true,
+        "rolar_de": 0.6,
+        "rolar_dur": 0.8
+       }
+      },
+      {
+       "text": "Traduzindo: timeout dez mil. São milissegundos: espere até dez segundos, só nessa conferência. Os outros expects continuam com cinco.",
+       "scene": {
+        "type": "traducao",
+        "codigo": "toBeVisible({ timeout: 10000 })",
+        "partes": [
+         [
+          "timeout",
+          "tempo máximo"
+         ],
+         [
+          "10000",
+          "10 mil milissegundos = 10 segundos"
+         ]
+        ],
+        "passo": 2.2
+       }
+      },
+      {
+       "text": "Roda com o navegador aparecendo e olha: o clique em Login acontece, a página demora, e o teste espera sozinho até os produtos aparecerem.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "login.spec.js",
+        "codigo": "\ntest('usuário lento também entra', async ({ page }) => {\n  await page.goto('https://www.saucedemo.com/');\n  await page.getByPlaceholder('Username').fill('performance_glitch_user');\n  await page.getByPlaceholder('Password').fill('secret_sauce');\n  await page.getByRole('button', { name: 'Login' }).click();\n  await expect(page.getByText('Products')).toBeVisible({ timeout: 10000 });\n});",
+        "legenda": "Ele espera sozinho",
+        "fonte": 26,
+        "digitar": false,
+        "linha0": 13,
+        "terminal": [
+         {
+          "cmd": "npx playwright test --headed --project=chromium",
+          "em": 0.02
+         },
+         {
+          "out": "Running 2 tests using 2 workers",
+          "cor": "mut",
+          "em": 0.08
+         },
+         {
+          "out": "  2 passed (6.9s)",
+          "cor": "ac",
+          "em": 0.86
+         }
+        ],
+        "navegador": {
+         "media": "rec_sauce_glitch",
+         "url": "https://www.saucedemo.com/",
+         "gravar": true,
+         "acoes": [
+          {
+           "fill": [
+            "#user-name",
+            "performance_glitch_user"
+           ]
+          },
+          {
+           "fill": [
+            "#password",
+            "secret_sauce"
+           ]
+          },
+          {
+           "click": "#login-button"
+          }
+         ],
+         "espera_inicio": 900,
+         "espera_fim": 6000,
+         "delay_letra": 60,
+         "titulo": "Chromium",
+         "em": 0.1,
+         "ate": 0.84
+        }
+       }
+      },
+      {
+       "text": "O que não fazer: page ponto wait for timeout três mil. Isso para o teste por três segundos sempre, mesmo quando o site já carregou. Deixa tudo lento, e ainda pode falhar se um dia demorar quatro.",
+       "scene": {
+        "type": "compare",
+        "items": [
+         [
+          "waitForTimeout(3000)",
+          "ESPERA 3 s SEMPRE",
+          "red"
+         ],
+         [
+          "auto-wait",
+          "ESPERA SÓ O NECESSÁRIO",
+          "gold"
+         ]
+        ],
+        "size": 70,
+        "stagger": 1.4,
+        "vs": true
+       }
+      },
+      {
+       "text": "Regra prática: confie na espera automática, e aumente o timeout só no lugar onde o sistema é lento de verdade.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "CONFIE NA",
+          "white",
+          110
+         ],
+         [
+          "ESPERA AUTOMÁTICA",
+          "gold",
+          130
+         ],
+         [
+          "TIMEOUT SÓ ONDE PRECISA",
+          "muted",
+          70
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Fechamos os locators! No próximo módulo, a gente organiza os testes.",
+       "scene": {
+        "type": "passo",
+        "icone": "▶",
+        "titulo": "Próximo módulo",
+        "sub": "Organizando os testes"
+       }
+      },
+      {
+       "text": "Te vejo lá!",
+       "scene": {
+        "type": "endcard",
+        "sub": "PRÓXIMA: MÓDULO 5 · ORGANIZAÇÃO"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "shorts": [],
+  "tiktoks": []
+ }
+}

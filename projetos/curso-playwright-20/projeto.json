@@ -1,0 +1,176 @@
+{
+ "title": "Playwright para leigos · Aula 20",
+ "slug": "curso-playwright-20",
+ "idioma": "pt",
+ "destino": "curso",
+ "marca": [
+  "PLAYWRIGHT",
+  "PARA LEIGOS"
+ ],
+ "cor_fundo": "#3fd68a",
+ "sem_legenda": true,
+ "legenda_y": 0.93,
+ "selo": "MÓDULO 4 · AULA 20",
+ "voz": {
+  "nome": "gravada",
+  "motor": "eleven",
+  "eleven_voz": "Vinícius Torales"
+ },
+ "serie": [],
+ "meta": {
+  "titles": [
+   "Aula 20: Pick Locator - testando um seletor antes de usar"
+  ],
+  "description": "",
+  "tags": []
+ },
+ "notes": "Curso Playwright para leigos. Não publica (destino: curso). Roteiro em curso-playwright/roteiros/.",
+ "script": {
+  "long": {
+   "parts": [
+    {
+     "chapter": "",
+     "sentences": [
+      {
+       "text": "Às vezes você não sabe se um seletor vai funcionar. Dá pra testar antes de rodar o teste.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "AULA 20",
+          "muted",
+          80
+         ],
+         [
+          "PICK LOCATOR",
+          "gold",
+          150
+         ]
+        ]
+       }
+      },
+      {
+       "text": "No codegen, clica no botão Pick locator, que quer dizer escolher seletor.",
+       "scene": {
+        "type": "pw_codegen",
+        "modo": "pick",
+        "media": "site_sauce_cg",
+        "url": "https://www.saucedemo.com/",
+        "legenda": "Pick locator = escolher seletor",
+        "inspecionar_varios": [
+         "#user-name",
+         "#password",
+         "#login-button"
+        ],
+        "passos_pw": [],
+        "locator": "locator('[data-test=\"username\"]')",
+        "elem_i": 0
+       }
+      },
+      {
+       "text": "Passa o mouse em cima de qualquer coisa da página: ele mostra o seletor que usaria.",
+       "scene": {
+        "type": "pw_codegen",
+        "modo": "pick",
+        "media": "site_sauce_cg",
+        "url": "https://www.saucedemo.com/",
+        "legenda": "Ele mostra o seletor",
+        "inspecionar_varios": [
+         "#user-name",
+         "#password",
+         "#login-button"
+        ],
+        "passos_pw": [],
+        "locator": "locator('[data-test=\"login-button\"]')",
+        "elem_i": 2,
+        "pick_em": 0.8
+       }
+      },
+      {
+       "text": "E dá pra fazer o contrário: escreve um seletor na caixinha, e ele pinta na página o que encontrou.",
+       "scene": {
+        "type": "pw_codegen",
+        "modo": "pick",
+        "media": "site_sauce_cg",
+        "url": "https://www.saucedemo.com/",
+        "legenda": "Escreve o seletor: ele pinta o que achou",
+        "inspecionar_varios": [
+         "#user-name",
+         "#password",
+         "#login-button"
+        ],
+        "passos_pw": [],
+        "locator": "getByRole('button', { name: 'Login' })",
+        "elem_i": 2,
+        "pick_em": 0.8
+       }
+      },
+      {
+       "text": "Se pintou um elemento só, é um bom primeiro sinal: aí confere se o seletor também é claro e resistente a mudanças. Se pintou vários, ele está vago. Se não pintou nada, ele está errado.",
+       "scene": {
+        "type": "cards",
+        "itens": [
+         [
+          "1",
+          "Um só",
+          "bom sinal: agora confira se é claro"
+         ],
+         [
+          "⚠",
+          "Vários",
+          "seletor vago",
+          "#ffd23f"
+         ],
+         [
+          "✗",
+          "Nenhum",
+          "seletor errado",
+          "#ff6b6b"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Testando o seletor antes, você evita rodar o teste várias vezes pra descobrir.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "TESTE O SELETOR",
+          "white",
+          120
+         ],
+         [
+          "ANTES",
+          "gold",
+          190
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Na próxima aula: por que no Playwright você quase nunca precisa mandar o teste esperar.",
+       "scene": {
+        "type": "passo",
+        "icone": "▶",
+        "titulo": "Próxima aula",
+        "sub": "espera automática"
+       }
+      },
+      {
+       "text": "Te vejo lá!",
+       "scene": {
+        "type": "endcard",
+        "sub": "PRÓXIMA: ESPERA AUTOMÁTICA"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "shorts": [],
+  "tiktoks": []
+ }
+}

@@ -1017,7 +1017,7 @@
       if (s.botoes_assert) { botao("Assert visibility", false); bAssert = botao("Assert text", (s.assert_em || 0) && t > s.assert_em && t < s.assert_em + 1.6); } else botao("Copy", false); }
     if (!dbg && !s.botoes_assert) txt(ctx, "Target: Test Runner ▾", font(600, 19 * u), ix + IW - 24 * u, itop + 32 * u, "#5f6368", "right", a);
     // código
-    const base = dbg ? String(s.codigo || "").split("\n") : ["import { test, expect } from '@playwright/test';", "", "test('test', async ({ page }) => {", "  await page.goto('" + (s.url || "https://www.saucedemo.com") + "/');"];
+    const base = dbg ? String(s.codigo || "").split("\n") : ["import { test, expect } from '@playwright/test';", "", "test('test', async ({ page }) => {", "  await page.goto('" + (s.url || "https://www.saucedemo.com").replace(/\/$/, "") + "/');"];
     const AC = s.passos_pw || (s.acoes || []).filter((q) => q && q.linha); const t0 = s.inicio_em === undefined ? 1.4 : s.inicio_em; const passo = Math.max(1.0, Math.min(2.2, (dur * 0.8 - t0) / Math.max(AC.length - (s.ja || 0), 1)));
     const tClick = AC.map((_, i) => t0 + 0.6 + i * passo); const L = base.slice(); const novas = [];
     const ja = s.ja || 0;  // as primeiras "ja" linhas já estavam gravadas (cena anterior): aparecem prontas

@@ -1,0 +1,262 @@
+{
+ "title": "Playwright para leigos · Aula 17",
+ "slug": "curso-playwright-17",
+ "idioma": "pt",
+ "destino": "curso",
+ "marca": [
+  "PLAYWRIGHT",
+  "PARA LEIGOS"
+ ],
+ "cor_fundo": "#3fd68a",
+ "sem_legenda": true,
+ "legenda_y": 0.93,
+ "selo": "MÓDULO 4 · AULA 17",
+ "voz": {
+  "nome": "gravada",
+  "motor": "eleven",
+  "eleven_voz": "Vinícius Torales"
+ },
+ "serie": [],
+ "meta": {
+  "titles": [
+   "Aula 17: Como o Playwright acha os elementos"
+  ],
+  "description": "",
+  "tags": []
+ },
+ "notes": "Curso Playwright para leigos. Não publica (destino: curso). Roteiro em curso-playwright/roteiros/.",
+ "script": {
+  "long": {
+   "parts": [
+    {
+     "chapter": "",
+     "sentences": [
+      {
+       "text": "Até agora você achou coisas na tela de três jeitos: pelo texto cinza do campo, pela função e pelo texto. Hoje você vê o mapa completo.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "AULA 17",
+          "muted",
+          80
+         ],
+         [
+          "LOCATORS",
+          "gold",
+          200
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Todo comando que acha um elemento começa com get by, que quer dizer: ache pelo. O que muda é o que vem depois.",
+       "scene": {
+        "type": "traducao",
+        "codigo": "page.getByRole('button')",
+        "partes": [
+         [
+          "getBy",
+          "ache pelo"
+         ],
+         [
+          "Role",
+          "o que vem depois muda"
+         ]
+        ],
+        "passo": 2.0
+       }
+      },
+      {
+       "text": "get by role: ache pela função. Botão, link, campo, título. É o tipo de seletor que o Playwright recomenda, porque ele parte do que a pessoa usa na tela.",
+       "scene": {
+        "type": "cards",
+        "titulo": "GET BY ROLE",
+        "itens": [
+         [
+          "◉",
+          "getByRole",
+          "ache pela função: botão, link, campo, título"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "get by text: ache pelo texto que aparece. get by placeholder: pelo texto cinza de dentro do campo. E get by label: pela etiqueta escrita do lado do campo.",
+       "scene": {
+        "type": "cards",
+        "itens": [
+         [
+          "Aa",
+          "getByText",
+          "pelo texto que aparece"
+         ],
+         [
+          "▭",
+          "getByPlaceholder",
+          "pelo texto cinza do campo",
+          "#69a7ff"
+         ],
+         [
+          "🏷",
+          "getByLabel",
+          "pela etiqueta do lado do campo",
+          "#ffd23f"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "E get by test id: ache por uma etiqueta que o próprio desenvolvedor deixou no código, só pra teste.",
+       "scene": {
+        "type": "cards",
+        "titulo": "GET BY TEST ID",
+        "itens": [
+         [
+          "⚑",
+          "getByTestId",
+          "uma etiqueta deixada no código só pra teste",
+          "#c792ea"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Mas de onde vem tudo isso? Do código da página. Clica com o botão direito no campo Username e escolhe Inspecionar.",
+       "scene": {
+        "type": "devtools",
+        "media": "site_sauce_dev",
+        "url": "https://www.saucedemo.com/",
+        "inspecionar": "#user-name",
+        "legenda": "Botão direito › Inspecionar"
+       }
+      },
+      {
+       "text": "Olha o que aparece: input, placeholder igual Username, e data-test igual username.",
+       "scene": {
+        "type": "devtools",
+        "media": "site_sauce_dev",
+        "url": "https://www.saucedemo.com/",
+        "inspecionar": "#user-name",
+        "aberto": true,
+        "attrs": [
+         "placeholder",
+         "data-test",
+         "id"
+        ],
+        "realce": [
+         "placeholder",
+         "data-test"
+        ],
+        "realce_em": 1.0,
+        "realce_rotulo": "olha aqui",
+        "legenda": "placeholder e data-test"
+       }
+      },
+      {
+       "text": "Esse placeholder é o que o get by placeholder usa. E esse data-test é a tal etiqueta de teste.",
+       "scene": {
+        "type": "traducao",
+        "codigo": "placeholder=\"Username\"  data-test=\"username\"",
+        "texto_puro": true,
+        "partes": [
+         [
+          "placeholder=\"Username\"",
+          "o getByPlaceholder usa este"
+         ],
+         [
+          "data-test=\"username\"",
+          "a etiqueta de teste"
+         ]
+        ],
+        "passo": 2.2
+       }
+      },
+      {
+       "text": "Então o mesmo campo pode ser achado de mais de um jeito.",
+       "scene": {
+        "type": "compare",
+        "title": "O MESMO CAMPO, DOIS CAMINHOS",
+        "items": [
+         [
+          "getByPlaceholder('Username')",
+          "PELO TEXTO CINZA",
+          "white"
+         ],
+         [
+          "[data-test=\"username\"]",
+          "PELA ETIQUETA DE TESTE",
+          "gold"
+         ]
+        ],
+        "size": 60,
+        "stagger": 1.0,
+        "vs": false
+       }
+      },
+      {
+       "text": "Qual usar? Prefira os seletores que representam o que a pessoa vê e usa: função, etiqueta, placeholder e texto. E quando o sistema tem uma etiqueta de teste estável, o test id também é uma boa opção.",
+       "scene": {
+        "type": "cards",
+        "titulo": "QUAL USAR?",
+        "itens": [
+         [
+          "👁",
+          "O que a pessoa vê",
+          "função, etiqueta, placeholder, texto"
+         ],
+         [
+          "⚑",
+          "Test id",
+          "quando existe uma etiqueta estável",
+          "#c792ea"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Isso está na sua colinha, pra você não precisar decorar.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "ESTÁ NA SUA",
+          "white",
+          110
+         ],
+         [
+          "COLINHA",
+          "gold",
+          190
+         ]
+        ],
+        "colinha": true,
+        "colinha_em": 0.6
+       }
+      },
+      {
+       "text": "Na próxima aula: por que alguns seletores quebram o teste sem o site ter quebrado.",
+       "scene": {
+        "type": "passo",
+        "icone": "▶",
+        "titulo": "Próxima aula",
+        "sub": "bons e maus seletores"
+       }
+      },
+      {
+       "text": "Te vejo lá!",
+       "scene": {
+        "type": "endcard",
+        "sub": "PRÓXIMA: BONS E MAUS SELETORES"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "shorts": [],
+  "tiktoks": []
+ }
+}

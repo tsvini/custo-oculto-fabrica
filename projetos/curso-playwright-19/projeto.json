@@ -1,0 +1,310 @@
+{
+ "title": "Playwright para leigos · Aula 19",
+ "slug": "curso-playwright-19",
+ "idioma": "pt",
+ "destino": "curso",
+ "marca": [
+  "PLAYWRIGHT",
+  "PARA LEIGOS"
+ ],
+ "cor_fundo": "#3fd68a",
+ "sem_legenda": true,
+ "legenda_y": 0.93,
+ "selo": "MÓDULO 4 · AULA 19",
+ "voz": {
+  "nome": "gravada",
+  "motor": "eleven",
+  "eleven_voz": "Vinícius Torales"
+ },
+ "serie": [],
+ "meta": {
+  "titles": [
+   "Aula 19: Codegen - o Playwright escreve o código pra você"
+  ],
+  "description": "",
+  "tags": []
+ },
+ "notes": "Curso Playwright para leigos. Não publica (destino: curso). Roteiro em curso-playwright/roteiros/.",
+ "script": {
+  "long": {
+   "parts": [
+    {
+     "chapter": "",
+     "sentences": [
+      {
+       "text": "E se o Playwright escrevesse o código pra você? Ele escreve.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "AULA 19",
+          "muted",
+          80
+         ],
+         [
+          "CODEGEN",
+          "gold",
+          200
+         ]
+        ]
+       }
+      },
+      {
+       "text": "No terminal do VS Code, digita: npx playwright codegen, espaço, e o endereço do saucedemo.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "login.spec.js",
+        "codigo": "import { test, expect } from '@playwright/test';\n\ntest('entra com usuário e senha', async ({ page }) => {\n  await page.goto('https://www.saucedemo.com/');\n  await page.getByPlaceholder('Username').fill('standard_user');\n  await page.getByPlaceholder('Password').fill('secret_sauce');\n  await page.getByRole('button', { name: 'Login' }).click();\n  await expect(page).toHaveURL(/inventory/);\n  await expect(page.getByText('Products')).toBeVisible();\n  await expect(page.getByText('Sauce Labs Backpack')).toContainText('Backpack');\n  await expect(page.getByRole('button', { name: 'Add to cart' })).toHaveCount(6);\n});",
+        "legenda": "No terminal do VS Code",
+        "fonte": 26,
+        "digitar": false,
+        "terminal": [
+         {
+          "cmd": "npx playwright codegen https://www.saucedemo.com/",
+          "em": 0.25
+         }
+        ],
+        "colinha": true,
+        "colinha_em": 1.2
+       }
+      },
+      {
+       "text": "Abrem duas janelas: o navegador, e o Playwright Inspector, que vai anotando tudo o que você faz.",
+       "scene": {
+        "type": "pw_codegen",
+        "modo": "gravar",
+        "media": "site_sauce_cg",
+        "url": "https://www.saucedemo.com/",
+        "legenda": "Navegador + Inspector",
+        "inspecionar_varios": [
+         "#user-name",
+         "#password",
+         "#login-button"
+        ],
+        "passos_pw": []
+       }
+      },
+      {
+       "text": "Agora é só usar o site. Olha: eu clico no Username e digito standard user. A linha de código aparece sozinha.",
+       "scene": {
+        "type": "pw_codegen",
+        "modo": "gravar",
+        "media": "site_sauce_cg",
+        "url": "https://www.saucedemo.com/",
+        "legenda": "Cada ação vira uma linha",
+        "inspecionar_varios": [
+         "#user-name",
+         "#password",
+         "#login-button"
+        ],
+        "passos_pw": [
+         {
+          "linha": "await page.locator('[data-test=\"username\"]').click();",
+          "elem": 0
+         },
+         {
+          "linha": "await page.locator('[data-test=\"username\"]').fill('standard_user');",
+          "elem": 0,
+          "valor": "standard_user"
+         }
+        ]
+       }
+      },
+      {
+       "text": "Senha, clique no Login. Cada coisa que você faz vira uma linha.",
+       "scene": {
+        "type": "pw_codegen",
+        "modo": "gravar",
+        "media": "site_sauce_cg",
+        "url": "https://www.saucedemo.com/",
+        "legenda": "Cada ação vira uma linha",
+        "inspecionar_varios": [
+         "#user-name",
+         "#password",
+         "#login-button"
+        ],
+        "passos_pw": [
+         {
+          "linha": "await page.locator('[data-test=\"username\"]').click();",
+          "elem": 0
+         },
+         {
+          "linha": "await page.locator('[data-test=\"username\"]').fill('standard_user');",
+          "elem": 0,
+          "valor": "standard_user"
+         },
+         {
+          "linha": "await page.locator('[data-test=\"password\"]').click();",
+          "elem": 1
+         },
+         {
+          "linha": "await page.locator('[data-test=\"password\"]').fill('secret_sauce');",
+          "elem": 1,
+          "valor": "secret_sauce",
+          "senha": true
+         },
+         {
+          "linha": "await page.locator('[data-test=\"login-button\"]').click();",
+          "elem": 2
+         }
+        ],
+        "ja": 2
+       }
+      },
+      {
+       "text": "Repara no seletor que ele escolheu. O codegen tenta achar um jeito bom e único de identificar cada elemento. Nem sempre é o mesmo que você escolheria, por isso a gente revisa o código gerado.",
+       "scene": {
+        "type": "traducao",
+        "codigo": "page.locator('[data-test=\"username\"]')",
+        "partes": [
+         [
+          "locator",
+          "ache"
+         ],
+         [
+          "'[data-test=\"username\"]'",
+          "pela etiqueta de teste username"
+         ]
+        ],
+        "passo": 2.2
+       }
+      },
+      {
+       "text": "Na barra de cima tem botões pra criar conferências: conferir se algo está visível, ou se o texto está certo. Clica em um e depois no título Products. Pronto, apareceu um expect.",
+       "scene": {
+        "type": "pw_codegen",
+        "modo": "gravar",
+        "media": "site_sauce_cg_produtos",
+        "url": "https://www.saucedemo.com/",
+        "legenda": "Assert text: apareceu um expect",
+        "inspecionar_varios": [
+         "[data-test=\"title\"]"
+        ],
+        "passos_pw": [
+         {
+          "linha": "await page.locator('[data-test=\"username\"]').click();",
+          "elem": 0
+         },
+         {
+          "linha": "await page.locator('[data-test=\"username\"]').fill('standard_user');",
+          "elem": 0,
+          "valor": "standard_user"
+         },
+         {
+          "linha": "await page.locator('[data-test=\"password\"]').click();",
+          "elem": 1
+         },
+         {
+          "linha": "await page.locator('[data-test=\"password\"]').fill('secret_sauce');",
+          "elem": 1,
+          "valor": "secret_sauce",
+          "senha": true
+         },
+         {
+          "linha": "await page.locator('[data-test=\"login-button\"]').click();",
+          "elem": 2
+         },
+         {
+          "linha": "await expect(page.locator('[data-test=\"title\"]')).toContainText('Products');",
+          "elem": 0
+         }
+        ],
+        "ja": 5,
+        "acoes": [
+         {
+          "fill": [
+           "#user-name",
+           "standard_user"
+          ]
+         },
+         {
+          "fill": [
+           "#password",
+           "secret_sauce"
+          ]
+         },
+         {
+          "click": "#login-button"
+         }
+        ],
+        "botoes_assert": true,
+        "assert_em": 1.0,
+        "inicio_em": 1.8
+       }
+      },
+      {
+       "text": "Quando terminar, copia o código e cola no seu arquivo.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "codegen.spec.js",
+        "codigo": "import { test, expect } from '@playwright/test';\n\ntest('test', async ({ page }) => {\n  await page.goto('https://www.saucedemo.com/');\n  await page.locator('[data-test=\"username\"]').click();\n  await page.locator('[data-test=\"username\"]').fill('standard_user');\n  await page.locator('[data-test=\"password\"]').click();\n  await page.locator('[data-test=\"password\"]').fill('secret_sauce');\n  await page.locator('[data-test=\"login-button\"]').click();\n  await expect(page.locator('[data-test=\"title\"]')).toContainText('Products');\n});",
+        "legenda": "Cola num arquivo novo",
+        "fonte": 26,
+        "digitar": false
+       }
+      },
+      {
+       "text": "Mas atenção: o codegen é um ponto de partida, não o teste pronto. Ele não sabe o que você quer conferir, e às vezes escolhe um seletor ruim. Sempre revisa.",
+       "scene": {
+        "type": "cards",
+        "titulo": "PONTO DE PARTIDA",
+        "itens": [
+         [
+          "⚡",
+          "Rápido",
+          "descobre seletores e começa o teste"
+         ],
+         [
+          "✎",
+          "Revise",
+          "o nome, as conferências e os seletores",
+          "#ff8c42"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Use pra descobrir seletores e pra começar rápido. Depois, arruma com o que você aprendeu.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "CODEGEN COMEÇA",
+          "white",
+          120
+         ],
+         [
+          "VOCÊ TERMINA",
+          "gold",
+          150
+         ]
+        ],
+        "entre": 1.35
+       }
+      },
+      {
+       "text": "Na próxima aula: testando um seletor antes de usar.",
+       "scene": {
+        "type": "passo",
+        "icone": "▶",
+        "titulo": "Próxima aula",
+        "sub": "pick locator"
+       }
+      },
+      {
+       "text": "Te vejo lá!",
+       "scene": {
+        "type": "endcard",
+        "sub": "PRÓXIMA: PICK LOCATOR"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "shorts": [],
+  "tiktoks": []
+ }
+}
