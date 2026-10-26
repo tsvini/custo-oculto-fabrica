@@ -86,8 +86,9 @@
     if (sideW) {
       ctx.save(); ctx.globalAlpha = a; ctx.fillStyle = C.side; ctx.fillRect(x, top, sideW, H - (top - y) - 22 * u); ctx.restore();
       txt(ctx, "EXPLORER", font(700, 20 * u), x + 28 * u, top + 36 * u, C.mut, "left", a);
-      arvore(s.pastas, 4).forEach(({ nm: p, nv }, i) => {
-        const pasta = /\/$/.test(p); if (pasta) p = p.slice(0, -1); const yy = top + (86 + i * 50) * u, ind = nv * 22 * u, arq = !pasta && (/\.\w+$/.test(p) || /^\.\w/.test(p));
+      const arvE = arvore(s.pastas, 4); const passoE = Math.min(50, (H / u - (top - y) / u - 120) / Math.max(1, arvE.length));  // muitos arquivos: as linhas ficam mais juntas pra caber
+      arvE.forEach(({ nm: p, nv }, i) => {
+        const pasta = /\/$/.test(p); if (pasta) p = p.slice(0, -1); const yy = top + (86 + i * passoE) * u, ind = nv * 22 * u, arq = !pasta && (/\.\w+$/.test(p) || /^\.\w/.test(p));
         if (arq) { ctx.save(); ctx.globalAlpha *= a; ctx.fillStyle = C.ac; rr(ctx, x + 32 * u + ind, yy - 13 * u, 20 * u, 26 * u, 4 * u); ctx.fill(); ctx.restore(); }
         else pastaIcone(ctx, x + 28 * u + ind, yy - 14 * u, 30 * u, a);
         const fsN = Math.min(24 * u, 24 * u * (sideW - 88 * u - ind) / Math.max(1, tw(ctx, p, font(arq ? 600 : 500, 24 * u))));  // nome comprido encolhe pra caber no Explorer
@@ -156,7 +157,9 @@
   function navegadorPorCima(ctx, c, t, dur, n, media) {
     const u = c.u, t0 = n.em * dur, t1 = n.ate * dur; if (t < t0 || t > t1) return;
     const kin = easeOut((t - t0) / 0.35), kout = 1 - easeOut((t - (t1 - 0.4)) / 0.4), a = Math.min(kin, kout), sc = lerp(0.88, 1, Math.min(kin, kout));
-    const W = 1150 * u, H = W * 9 / 16 + 64 * u, x = c.cx - W / 2, y = c.cy - H / 2 - 40 * u;
+    const m0 = media && media[n.media]; const e0 = m0 && (m0.video || m0.img); const asp = e0 ? (e0.videoWidth || e0.width) / (e0.videoHeight || e0.height) : 16 / 9;
+    const emPe = asp < 1;  // vídeo de celular: janela em pé
+    const H = emPe ? 760 * u : 1150 * u * 9 / 16 + 64 * u, W = emPe ? (H - 64 * u) * asp : 1150 * u, x = c.cx - W / 2, y = c.cy - H / 2 - 40 * u;
     ctx.save(); ctx.translate(c.cx, y + H / 2); ctx.scale(sc, sc); ctx.translate(-c.cx, -(y + H / 2));
     const top = janela(ctx, x, y, W, H, u, n.titulo || "Chromium", a); const m = media && media[n.media]; const el = m && (m.video || m.img);
     ctx.save(); ctx.globalAlpha *= a; rr(ctx, x, top, W, H - (top - y), 0); ctx.clip();
@@ -323,6 +326,15 @@
         ctx.globalAlpha = 1; cursor(ctx, u, (fx(bx0) + fx(bx1)) / 2, (fy(by0) + fy(by1)) / 2, t, (s.caixa_em || 1.2) + 0.9); }
     } else { ctx.fillStyle = "#11131a"; ctx.fillRect(x, top, vw, vh); txt(ctx, "[ gravação: " + (s.media || "?") + " ]", font(700, 40 * u), c.cx, top + vh / 2, C.mut, "center", a); }
     ctx.restore(); legenda(ctx, c, t, s);
+  };
+  // TELA CHEIA: gravação real da tela inteira (ex.: o codegen gravado no Xvfb), ocupando o quadro todo.
+  // {type:"tela_cheia", media:"cg19_usuario", gravar:true, recorte:[x0,y0,x1,y1] (opcional, 0-1), legenda:"..."}  — imagem também serve (sem gravar)
+  S.tela_cheia = (ctx, c, t, dur, s, media) => {
+    const a = easeOut(t / 0.3); const m = media && media[s.media]; const el = m && (m.video || m.img);
+    if (el) { const iw = el.videoWidth || el.width, ih = el.videoHeight || el.height; const [x0, y0, x1, y1] = s.recorte || [0, 0, 1, 1];
+      ctx.save(); ctx.globalAlpha = a; ctx.drawImage(el, x0 * iw, y0 * ih, (x1 - x0) * iw, (y1 - y0) * ih, 0, 0, c.W, c.H); ctx.restore(); }
+    else { ctx.fillStyle = "#11131a"; ctx.fillRect(0, 0, c.W, c.H); txt(ctx, "[ gravação: " + (s.media || "?") + " ]", font(700, 40 * c.u), c.cx, c.cy, C.mut, "center", a); }
+    legenda(ctx, c, t, s);
   };
   // INSTALADOR (desenhado): {type:"instalador", app:"Visual Studio Code", titulo:"Select Additional Tasks", texto:"...", caixas:[["Add to PATH",true]], botao:"Next", progresso:false, legenda:"..."}
   S.instalador = (ctx, c, t, dur, s) => {

@@ -1,0 +1,209 @@
+{
+ "title": "Playwright para leigos · Aula 33",
+ "slug": "curso-playwright-33",
+ "idioma": "pt",
+ "destino": "curso",
+ "marca": [
+  "PLAYWRIGHT",
+  "PARA LEIGOS"
+ ],
+ "cor_fundo": "#3fd68a",
+ "sem_legenda": true,
+ "legenda_y": 0.93,
+ "selo": "MÓDULO 7 · AULA 33",
+ "voz": {
+  "nome": "gravada",
+  "motor": "eleven",
+  "eleven_voz": "Vinícius Torales"
+ },
+ "serie": [],
+ "meta": {
+  "titles": [
+   "Aula 33: 3 navegadores e testes em paralelo"
+  ],
+  "description": "",
+  "tags": []
+ },
+ "notes": "Curso Playwright para leigos. Não publica (destino: curso). Roteiro em curso-playwright/roteiros/.",
+ "script": {
+  "long": {
+   "parts": [
+    {
+     "chapter": "",
+     "sentences": [
+      {
+       "text": "Lembra das seis execuções com dois testes? Hoje você entende de onde vem.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "AULA 33",
+          "muted",
+          80
+         ],
+         [
+          "PARALELO",
+          "gold",
+          200
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Sem o traço traço project, o Playwright roda em três navegadores: Chromium, Firefox e WebKit, que é o motor usado pelo Safari.",
+       "scene": {
+        "type": "cards",
+        "itens": [
+         [
+          "C",
+          "Chromium",
+          "a base do Chrome"
+         ],
+         [
+          "F",
+          "Firefox",
+          "",
+          "#ff8c42"
+         ],
+         [
+          "W",
+          "WebKit",
+          "o motor usado pelo Safari",
+          "#69a7ff"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Eles estão no config, nos projects.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "playwright.config.js",
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  tests/",
+         "    login.spec.js",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "codigo": "  projects: [\n    {\n      name: 'chromium',\n      use: { ...devices['Desktop Chrome'] },\n    },\n\n    {\n      name: 'firefox',\n      use: { ...devices['Desktop Firefox'] },\n    },\n\n    {\n      name: 'webkit',\n      use: { ...devices['Desktop Safari'] },\n    },",
+        "legenda": "projects: os três navegadores",
+        "fonte": 22,
+        "digitar": false,
+        "linha0": 37,
+        "destaque": [
+         3,
+         8,
+         13
+        ],
+        "destaque_em": 0.6
+       }
+      },
+      {
+       "text": "Roda tudo e repara na linha workers. Aqui na minha máquina apareceram quatro; na sua pode aparecer outro número. Worker é um trabalhador: um processo que ajuda a rodar testes ao mesmo tempo.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "usuarios.spec.js",
+        "codigo": "import { test, expect } from '@playwright/test';\n\nconst usuarios = ['standard_user', 'problem_user', 'performance_glitch_user', 'visual_user'];\n\nfor (const usuario of usuarios) {\n  test(`login funciona para ${usuario}`, async ({ page }) => {\n    await page.goto('/');\n    await page.getByTestId('username').fill(usuario);\n    await page.getByTestId('password').fill(process.env.SAUCE_PASSWORD);\n    await page.getByTestId('login-button').click();",
+        "legenda": "workers = trabalhadores",
+        "fonte": 26,
+        "digitar": false,
+        "terminal": [
+         {
+          "cmd": "npx playwright test",
+          "em": 0.05
+         },
+         {
+          "out": "Running 18 tests using 4 workers",
+          "cor": "mut",
+          "em": 0.3
+         },
+         {
+          "out": "  18 passed (14.2s)",
+          "cor": "ac",
+          "em": 0.5
+         }
+        ],
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  tests/",
+         "    login.spec.js",
+         "    usuarios.spec.js",
+         "  .env",
+         "  .env.example",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ]
+       }
+      },
+      {
+       "text": "Paralelo quer dizer vários testes ao mesmo tempo, em vez de um por vez. Por isso cada teste precisa ser independente: nenhum pode depender de outro.",
+       "scene": {
+        "type": "compare",
+        "items": [
+         [
+          "UM POR VEZ",
+          "MAIS DEVAGAR",
+          "white"
+         ],
+         [
+          "AO MESMO TEMPO",
+          "CADA TESTE INDEPENDENTE",
+          "gold"
+         ]
+        ],
+        "size": 90,
+        "stagger": 1.2,
+        "vs": true
+       }
+      },
+      {
+       "text": "No config, o fully parallel true liga isso. E no GitHub ele usa um worker só, pra execução ficar mais estável e previsível.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "playwright.config.js",
+        "codigo": "  /* Run tests in files in parallel */\n  fullyParallel: true,\n  /* Fail the build on CI if you accidentally left test.only in the source code. */\n  forbidOnly: !!process.env.CI,\n  /* Retry on CI only */\n  retries: process.env.CI ? 2 : 0,\n  /* Opt out of parallel tests on CI. */\n  workers: process.env.CI ? 1 : undefined,",
+        "legenda": "fullyParallel e workers",
+        "fonte": 26,
+        "digitar": false,
+        "linha0": 17,
+        "destaque": [
+         2,
+         8
+        ],
+        "destaque_em": 0.6
+       }
+      },
+      {
+       "text": "Na próxima aula: testando com tela de celular.",
+       "scene": {
+        "type": "passo",
+        "icone": "▶",
+        "titulo": "Próxima aula",
+        "sub": "celular"
+       }
+      },
+      {
+       "text": "Te vejo lá!",
+       "scene": {
+        "type": "endcard",
+        "sub": "PRÓXIMA: CELULAR"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "shorts": [],
+  "tiktoks": []
+ }
+}

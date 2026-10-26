@@ -1,0 +1,237 @@
+{
+ "title": "Playwright para leigos · Aula 32",
+ "slug": "curso-playwright-32",
+ "idioma": "pt",
+ "destino": "curso",
+ "marca": [
+  "PLAYWRIGHT",
+  "PARA LEIGOS"
+ ],
+ "cor_fundo": "#3fd68a",
+ "sem_legenda": true,
+ "legenda_y": 0.93,
+ "selo": "MÓDULO 7 · AULA 32",
+ "voz": {
+  "nome": "gravada",
+  "motor": "eleven",
+  "eleven_voz": "Vinícius Torales"
+ },
+ "serie": [],
+ "meta": {
+  "titles": [
+   "Aula 32: O nome do teste que muda sozinho"
+  ],
+  "description": "",
+  "tags": []
+ },
+ "notes": "Curso Playwright para leigos. Não publica (destino: curso). Roteiro em curso-playwright/roteiros/.",
+ "script": {
+  "long": {
+   "parts": [
+    {
+     "chapter": "",
+     "sentences": [
+      {
+       "text": "Se você rodar agora, o Playwright nem começa. Ele reclama: duplicate test title, nome de teste repetido. Os quatro testes teriam o mesmo nome, e ele não deixa.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "usuarios.spec.js",
+        "codigo": "import { test, expect } from '@playwright/test';\n\nconst usuarios = ['standard_user', 'problem_user', 'performance_glitch_user', 'visual_user'];\n\nfor (const usuario of usuarios) {\n  test('login funciona', async ({ page }) => {\n    await page.goto('/');\n    await page.getByTestId('username').fill(usuario);\n    await page.getByTestId('password').fill(process.env.SAUCE_PASSWORD);\n    await page.getByTestId('login-button').click();",
+        "legenda": "Nome de teste repetido: ele não deixa",
+        "fonte": 26,
+        "digitar": false,
+        "terminal": [
+         {
+          "cmd": "npx playwright test --project=chromium",
+          "em": 0.05
+         },
+         {
+          "out": "Error: duplicate test title \"login funciona\",",
+          "cor": "#ff6b6b",
+          "em": 0.3
+         },
+         {
+          "out": "first declared in usuarios.spec.js:6",
+          "cor": "#ff6b6b",
+          "em": 0.5
+         }
+        ],
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  tests/",
+         "    login.spec.js",
+         "    usuarios.spec.js",
+         "  .env",
+         "  .env.example",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ]
+       }
+      },
+      {
+       "text": "A solução é colocar o nome do usuário dentro do nome do teste.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "O NOME DO USUÁRIO",
+          "gold",
+          120
+         ],
+         [
+          "DENTRO DO NOME DO TESTE",
+          "white",
+          100
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Pra isso, troca as aspas por crase. Com crase, dá pra misturar texto com o valor de uma variável.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "usuarios.spec.js",
+        "codigo": "import { test, expect } from '@playwright/test';\n\nconst usuarios = ['standard_user', 'problem_user', 'performance_glitch_user', 'visual_user'];\n\nfor (const usuario of usuarios) {\n  test(`login funciona para ${usuario}`, async ({ page }) => {\n    await page.goto('/');\n    await page.getByTestId('username').fill(usuario);\n    await page.getByTestId('password').fill(process.env.SAUCE_PASSWORD);\n    await page.getByTestId('login-button').click();\n    // o performance_glitch_user é lento de propósito: damos 10 segundos em vez de 5\n    await expect(page.getByTestId('title')).toHaveText('Products', { timeout: 10000 });\n  });\n}",
+        "legenda": "Crase: texto + valor",
+        "fonte": 24,
+        "digitar": true,
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  tests/",
+         "    login.spec.js",
+         "    usuarios.spec.js",
+         "  .env",
+         "  .env.example",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "digitar_de": 6,
+        "digitar_ate": 6
+       }
+      },
+      {
+       "text": "E o valor entra assim: cifrão, abre chaves, usuario, fecha chaves.",
+       "scene": {
+        "type": "traducao",
+        "codigo": "`login funciona para ${usuario}`",
+        "partes": [
+         [
+          "`",
+          "crase"
+         ],
+         [
+          "${usuario}",
+          "o valor de usuario"
+         ]
+        ],
+        "passo": 1.8
+       }
+      },
+      {
+       "text": "Traduzindo: cifrão chaves quer dizer: coloque aqui o valor de usuario.",
+       "scene": {
+        "type": "traducao",
+        "titulo": "COLOQUE AQUI O VALOR DE USUARIO",
+        "linhas": [
+         [
+          "standard_user",
+          "login funciona para standard_user"
+         ],
+         [
+          "problem_user",
+          "login funciona para problem_user"
+         ],
+         [
+          "performance_glitch_user",
+          "login funciona para performance_glitch_user"
+         ],
+         [
+          "visual_user",
+          "login funciona para visual_user"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Roda: quatro testes, cada um com o nome do seu usuário.",
+       "scene": {
+        "type": "pw_relatorio",
+        "testes": [
+         [
+          "login funciona para standard_user",
+          "usuarios.spec.js:6",
+          "chromium",
+          "ok",
+          "0.9s"
+         ],
+         [
+          "login funciona para problem_user",
+          "usuarios.spec.js:6",
+          "chromium",
+          "ok",
+          "1.0s"
+         ],
+         [
+          "login funciona para performance_glitch_user",
+          "usuarios.spec.js:6",
+          "chromium",
+          "ok",
+          "5.7s"
+         ],
+         [
+          "login funciona para visual_user",
+          "usuarios.spec.js:6",
+          "chromium",
+          "ok",
+          "1.1s"
+         ]
+        ],
+        "legenda": "Quatro testes, quatro nomes"
+       }
+      },
+      {
+       "text": "Quer testar mais um usuário? Só coloca o nome na lista.",
+       "scene": {
+        "type": "cards",
+        "itens": [
+         [
+          "+",
+          "Mais um usuário?",
+          "só coloca o nome na lista"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Na próxima aula: três navegadores ao mesmo tempo.",
+       "scene": {
+        "type": "passo",
+        "icone": "▶",
+        "titulo": "Próxima aula",
+        "sub": "3 navegadores e paralelo"
+       }
+      },
+      {
+       "text": "Te vejo lá!",
+       "scene": {
+        "type": "endcard",
+        "sub": "PRÓXIMA: 3 NAVEGADORES E PARALELO"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "shorts": [],
+  "tiktoks": []
+ }
+}

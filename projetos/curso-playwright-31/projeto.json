@@ -1,0 +1,312 @@
+{
+ "title": "Playwright para leigos · Aula 31",
+ "slug": "curso-playwright-31",
+ "idioma": "pt",
+ "destino": "curso",
+ "marca": [
+  "PLAYWRIGHT",
+  "PARA LEIGOS"
+ ],
+ "cor_fundo": "#3fd68a",
+ "sem_legenda": true,
+ "legenda_y": 0.93,
+ "selo": "MÓDULO 7 · AULA 31",
+ "voz": {
+  "nome": "gravada",
+  "motor": "eleven",
+  "eleven_voz": "Vinícius Torales"
+ },
+ "serie": [],
+ "meta": {
+  "titles": [
+   "Aula 31: Uma lista de usuários e um teste que se repete"
+  ],
+  "description": "",
+  "tags": []
+ },
+ "notes": "Curso Playwright para leigos. Não publica (destino: curso). Roteiro em curso-playwright/roteiros/.",
+ "script": {
+  "long": {
+   "parts": [
+    {
+     "chapter": "",
+     "sentences": [
+      {
+       "text": "O saucedemo tem vários usuários que entram normalmente: standard, problem, performance glitch e visual. Copiar o mesmo teste quatro vezes? Não.",
+       "scene": {
+        "type": "tela",
+        "media": "site_sauce_users",
+        "url": "https://www.saucedemo.com/",
+        "titulo": "saucedemo.com",
+        "legenda": "Vários usuários",
+        "alvo_css": "[data-test=\"login-credentials\"]",
+        "zoom_em": 1.4,
+        "caixa_em": 2.0
+       }
+      },
+      {
+       "text": "Primeiro, uma ideia nova: uma lista. Cria o arquivo usuarios ponto spec ponto js e escreve: const usuarios igual, abre colchetes.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "usuarios.spec.js",
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  tests/",
+         "    login.spec.js",
+         "    usuarios.spec.js",
+         "  .env",
+         "  .env.example",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "codigo": "import { test, expect } from '@playwright/test';\n\nconst usuarios = [",
+        "legenda": "Uma lista: const usuarios = [",
+        "fonte": 30,
+        "digitar": true,
+        "digitar_de": 3
+       }
+      },
+      {
+       "text": "Traduzindo: const, guarde com o nome usuarios. O igual, o que vem depois é o valor. E os colchetes abrem uma lista.",
+       "scene": {
+        "type": "traducao",
+        "codigo": "const usuarios = [",
+        "partes": [
+         [
+          "const",
+          "guarde"
+         ],
+         [
+          "usuarios",
+          "com o nome usuarios"
+         ],
+         [
+          "=",
+          "o valor é"
+         ],
+         [
+          "[",
+          "uma lista"
+         ]
+        ],
+        "passo": 1.8
+       }
+      },
+      {
+       "text": "Dentro da lista, os nomes entre aspas, separados por vírgula. A vírgula separa um item do outro.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "usuarios.spec.js",
+        "codigo": "import { test, expect } from '@playwright/test';\n\nconst usuarios = ['standard_user', 'problem_user', 'performance_glitch_user', 'visual_user'];",
+        "legenda": "Itens entre aspas, separados por vírgula",
+        "fonte": 26,
+        "digitar": true,
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  tests/",
+         "    login.spec.js",
+         "    usuarios.spec.js",
+         "  .env",
+         "  .env.example",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "digitar_de": 3
+       }
+      },
+      {
+       "text": "Agora a repetição: for, abre parênteses, const usuario of usuarios.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "usuarios.spec.js",
+        "codigo": "import { test, expect } from '@playwright/test';\n\nconst usuarios = ['standard_user', 'problem_user', 'performance_glitch_user', 'visual_user'];\n\nfor (const usuario of usuarios) {\n}",
+        "legenda": "for (const usuario of usuarios)",
+        "fonte": 26,
+        "digitar": true,
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  tests/",
+         "    login.spec.js",
+         "    usuarios.spec.js",
+         "  .env",
+         "  .env.example",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "digitar_de": 5
+       }
+      },
+      {
+       "text": "Traduzindo: for, para cada. usuario, um nome que a gente dá pra cada item. of usuarios, da lista usuarios. Então: para cada usuário da lista.",
+       "scene": {
+        "type": "traducao",
+        "codigo": "for (const usuario of usuarios) {",
+        "partes": [
+         [
+          "for",
+          "para cada"
+         ],
+         [
+          "const usuario",
+          "item da vez: usuario"
+         ],
+         [
+          "of usuarios",
+          "da lista usuarios"
+         ]
+        ],
+        "passo": 2.0
+       }
+      },
+      {
+       "text": "E o que estiver dentro das chaves do for se repete uma vez pra cada item. Quatro nomes, quatro vezes.",
+       "scene": {
+        "type": "cards",
+        "titulo": "O QUE ESTÁ DENTRO DO FOR RODA 4 VEZES",
+        "itens": [
+         [
+          "1",
+          "standard_user",
+          "1ª volta"
+         ],
+         [
+          "2",
+          "problem_user",
+          "2ª volta",
+          "#69a7ff"
+         ],
+         [
+          "3",
+          "performance_glitch_user",
+          "3ª volta",
+          "#ffd23f"
+         ],
+         [
+          "4",
+          "visual_user",
+          "4ª volta",
+          "#c792ea"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Por enquanto, o nome do teste é fixo: login funciona. Na próxima aula, a gente faz o nome mudar com o usuário.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "usuarios.spec.js",
+        "codigo": "import { test, expect } from '@playwright/test';\n\nconst usuarios = ['standard_user', 'problem_user', 'performance_glitch_user', 'visual_user'];\n\nfor (const usuario of usuarios) {\n  test('login funciona', async ({ page }) => {\n    await page.goto('/');\n    await page.getByTestId('username').fill(usuario);\n    await page.getByTestId('password').fill(process.env.SAUCE_PASSWORD);\n    await page.getByTestId('login-button').click();\n    // o performance_glitch_user é lento de propósito: damos 10 segundos em vez de 5\n    await expect(page.getByTestId('title')).toHaveText('Products', { timeout: 10000 });\n  });\n}",
+        "legenda": "O teste dentro do for",
+        "fonte": 24,
+        "digitar": true,
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  tests/",
+         "    login.spec.js",
+         "    usuarios.spec.js",
+         "  .env",
+         "  .env.example",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "digitar_de": 6
+       }
+      },
+      {
+       "text": "Dentro do teste, onde antes tinha standard user, agora vai a palavra usuario: o item da vez.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "usuarios.spec.js",
+        "codigo": "import { test, expect } from '@playwright/test';\n\nconst usuarios = ['standard_user', 'problem_user', 'performance_glitch_user', 'visual_user'];\n\nfor (const usuario of usuarios) {\n  test('login funciona', async ({ page }) => {\n    await page.goto('/');\n    await page.getByTestId('username').fill(usuario);\n    await page.getByTestId('password').fill(process.env.SAUCE_PASSWORD);\n    await page.getByTestId('login-button').click();\n    // o performance_glitch_user é lento de propósito: damos 10 segundos em vez de 5\n    await expect(page.getByTestId('title')).toHaveText('Products', { timeout: 10000 });\n  });\n}",
+        "legenda": "fill(usuario): o item da vez",
+        "fonte": 24,
+        "digitar": false,
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  tests/",
+         "    login.spec.js",
+         "    usuarios.spec.js",
+         "  .env",
+         "  .env.example",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "destaque": [
+         8
+        ],
+        "destaque_em": 0.6
+       }
+      },
+      {
+       "text": "Repara no timeout de dez segundos na conferência final. É uma exceção, por causa do performance glitch, que você conheceu na aula 21.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "usuarios.spec.js",
+        "codigo": "import { test, expect } from '@playwright/test';\n\nconst usuarios = ['standard_user', 'problem_user', 'performance_glitch_user', 'visual_user'];\n\nfor (const usuario of usuarios) {\n  test('login funciona', async ({ page }) => {\n    await page.goto('/');\n    await page.getByTestId('username').fill(usuario);\n    await page.getByTestId('password').fill(process.env.SAUCE_PASSWORD);\n    await page.getByTestId('login-button').click();\n    // o performance_glitch_user é lento de propósito: damos 10 segundos em vez de 5\n    await expect(page.getByTestId('title')).toHaveText('Products', { timeout: 10000 });\n  });\n}",
+        "legenda": "Exceção: o usuário lento",
+        "fonte": 24,
+        "digitar": false,
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  tests/",
+         "    login.spec.js",
+         "    usuarios.spec.js",
+         "  .env",
+         "  .env.example",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "destaque": [
+         12
+        ],
+        "destaque_em": 0.6
+       }
+      },
+      {
+       "text": "Na próxima aula: um nome de teste que muda sozinho.",
+       "scene": {
+        "type": "passo",
+        "icone": "▶",
+        "titulo": "Próxima aula",
+        "sub": "nome dinâmico do teste"
+       }
+      },
+      {
+       "text": "Te vejo lá!",
+       "scene": {
+        "type": "endcard",
+        "sub": "PRÓXIMA: NOME DINÂMICO DO TESTE"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "shorts": [],
+  "tiktoks": []
+ }
+}

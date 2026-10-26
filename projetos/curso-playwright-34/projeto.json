@@ -1,0 +1,240 @@
+{
+ "title": "Playwright para leigos · Aula 34",
+ "slug": "curso-playwright-34",
+ "idioma": "pt",
+ "destino": "curso",
+ "marca": [
+  "PLAYWRIGHT",
+  "PARA LEIGOS"
+ ],
+ "cor_fundo": "#3fd68a",
+ "sem_legenda": true,
+ "legenda_y": 0.93,
+ "selo": "MÓDULO 7 · AULA 34",
+ "voz": {
+  "nome": "gravada",
+  "motor": "eleven",
+  "eleven_voz": "Vinícius Torales"
+ },
+ "serie": [],
+ "meta": {
+  "titles": [
+   "Aula 34: Celular - emulando dispositivos"
+  ],
+  "description": "",
+  "tags": []
+ },
+ "notes": "Curso Playwright para leigos. Não publica (destino: curso). Roteiro em curso-playwright/roteiros/.",
+ "script": {
+  "long": {
+   "parts": [
+    {
+     "chapter": "",
+     "sentences": [
+      {
+       "text": "Muita gente acessa os sites pelo celular. O Playwright consegue imitar aparelhos conhecidos.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "AULA 34",
+          "muted",
+          80
+         ],
+         [
+          "CELULAR",
+          "gold",
+          200
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Ele tem uma lista de aparelhos prontos, com tamanho de tela, toque e outras características. Isso ajuda muito, mas não substitui todos os testes num aparelho de verdade.",
+       "scene": {
+        "type": "cards",
+        "itens": [
+         [
+          "📱",
+          "Pixel 7",
+          "tela, toque, navegador"
+         ],
+         [
+          "📱",
+          "iPhone 13",
+          "",
+          "#69a7ff"
+         ],
+         [
+          "⚠",
+          "Não substitui tudo",
+          "teste também no aparelho real",
+          "#ff8c42"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "No config, cria um project novo chamado celular, usando o Pixel 7.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "playwright.config.js",
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  tests/",
+         "    login.spec.js",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "codigo": "  projects: [\n    {\n      name: 'chromium',\n      use: { ...devices['Desktop Chrome'] },\n    },\n\n    {\n      name: 'firefox',\n      use: { ...devices['Desktop Firefox'] },\n    },\n\n    {\n      name: 'webkit',\n      use: { ...devices['Desktop Safari'] },\n    },\n\n    {\n      name: 'celular',\n      use: { ...devices['Pixel 7'] },\n    },",
+        "legenda": "project celular: Pixel 7",
+        "fonte": 24,
+        "digitar": true,
+        "linha0": 37,
+        "digitar_de": 17,
+        "digitar_ate": 19,
+        "rolar": true,
+        "rolar_de": 0.8,
+        "rolar_dur": 1.0
+       }
+      },
+      {
+       "text": "Roda com project igual celular e com o navegador aparecendo: olha, o site abre no tamanho de celular.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "login.spec.js",
+        "codigo": "import { test, expect } from '@playwright/test';\n\ntest.describe('Login', () => {\n  test.beforeEach(async ({ page }) => {\n    await page.goto('/');\n  });\n\n  test('entra com usuário e senha', async ({ page }) => {\n    await page.getByTestId('username').fill(process.env.SAUCE_USER);\n    await page.getByTestId('password').fill(process.env.SAUCE_PASSWORD);",
+        "legenda": "Tamanho de celular",
+        "fonte": 26,
+        "digitar": false,
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  tests/",
+         "    login.spec.js",
+         "    usuarios.spec.js",
+         "  .env",
+         "  .env.example",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "terminal": [
+         {
+          "cmd": "npx playwright test login.spec.js --project=celular --headed",
+          "em": 0.03
+         },
+         {
+          "out": "Running 2 tests using 2 workers",
+          "cor": "mut",
+          "em": 0.08
+         },
+         {
+          "out": "  2 passed (3.1s)",
+          "cor": "ac",
+          "em": 0.86
+         }
+        ],
+        "navegador": {
+         "media": "rec_celular",
+         "url": "https://www.saucedemo.com/",
+         "gravar": true,
+         "dispositivo": "Pixel 7",
+         "acoes": [
+          {
+           "fill": [
+            "#user-name",
+            "standard_user"
+           ]
+          },
+          {
+           "fill": [
+            "#password",
+            "secret_sauce"
+           ]
+          },
+          {
+           "click": "#login-button"
+          }
+         ],
+         "espera_inicio": 900,
+         "espera_fim": 1500,
+         "delay_letra": 70,
+         "titulo": "Pixel 7",
+         "em": 0.1,
+         "ate": 0.84
+        }
+       }
+      },
+      {
+       "text": "E o mesmo teste funciona, sem mudar nada no código.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "login.spec.js",
+        "codigo": "import { test, expect } from '@playwright/test';\n\ntest.describe('Login', () => {\n  test.beforeEach(async ({ page }) => {\n    await page.goto('/');\n  });\n\n  test('entra com usuário e senha', async ({ page }) => {\n    await page.getByTestId('username').fill(process.env.SAUCE_USER);\n    await page.getByTestId('password').fill(process.env.SAUCE_PASSWORD);",
+        "legenda": "O mesmo código",
+        "fonte": 26,
+        "digitar": false,
+        "terminal": [
+         {
+          "cmd": "npx playwright test login.spec.js --project=celular",
+          "em": 0.05
+         },
+         {
+          "out": "Running 2 tests using 2 workers",
+          "cor": "mut",
+          "em": 0.3
+         },
+         {
+          "out": "  2 passed (3.1s)",
+          "cor": "ac",
+          "em": 0.5
+         }
+        ],
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  tests/",
+         "    login.spec.js",
+         "    usuarios.spec.js",
+         "  .env",
+         "  .env.example",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ]
+       }
+      },
+      {
+       "text": "Fechamos os testes reais. Agora: o projeto final!",
+       "scene": {
+        "type": "passo",
+        "icone": "▶",
+        "titulo": "Próximo módulo",
+        "sub": "O projeto final"
+       }
+      },
+      {
+       "text": "Te vejo lá!",
+       "scene": {
+        "type": "endcard",
+        "sub": "PRÓXIMA: MÓDULO 8 · PROJETO FINAL"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "shorts": [],
+  "tiktoks": []
+ }
+}
