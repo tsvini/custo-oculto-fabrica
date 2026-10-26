@@ -1,18 +1,14 @@
 {
- "atualizado": "25/10/2026 11:34",
+ "atualizado": "25/10/2026 21:43",
  "fontes": {
   "custo_oculto": {
    "seguidores": 12,
-   "views_total": 4882,
-   "videos": 35,
-   "views_28d": 4820,
-   "views_7d": 846,
+   "views_total": 4961,
+   "videos": 36,
+   "views_28d": 4892,
+   "views_7d": 866,
    "seguidores_28d": 16,
    "dia": [
-    [
-     "2026-09-27",
-     0
-    ],
     [
      "2026-09-28",
      0
@@ -112,13 +108,17 @@
     [
      "2026-10-22",
      78
+    ],
+    [
+     "2026-10-23",
+     72
     ]
    ],
    "top": [
     {
      "titulo": "Essa pasta de dente vendia o dobro da Colgate #shorts",
      "url": "https://youtu.be/sdWbo_dK2oE",
-     "views": 1053,
+     "views": 1054,
      "retencao": 48,
      "likes": 9
     },
@@ -155,7 +155,7 @@
   },
   "hidden_cost": {
    "seguidores": 0,
-   "views_total": 19,
+   "views_total": 20,
    "videos": 12,
    "views_28d": 0,
    "views_7d": 0,
@@ -168,14 +168,10 @@
    "seguidores": 0,
    "views_total": 43,
    "videos": 3,
-   "views_28d": 30,
-   "views_7d": 30,
+   "views_28d": 43,
+   "views_7d": 43,
    "seguidores_28d": 0,
    "dia": [
-    [
-     "2026-09-27",
-     0
-    ],
     [
      "2026-09-28",
      0
@@ -275,14 +271,18 @@
     [
      "2026-10-22",
      13
+    ],
+    [
+     "2026-10-23",
+     13
     ]
    ],
    "top": [
     {
      "titulo": "Seu primeiro teste automatizado",
      "url": "https://youtu.be/lyfD8rJ6F30",
-     "views": 17,
-     "retencao": 65,
+     "views": 24,
+     "retencao": 90,
      "likes": 0
     },
     {
@@ -291,6 +291,13 @@
      "views": 13,
      "retencao": 28,
      "likes": 0
+    },
+    {
+     "titulo": "Como achar o nome de qualquer botão",
+     "url": "https://youtu.be/kzc27cwf_oo",
+     "views": 6,
+     "retencao": 76,
+     "likes": 1
     }
    ],
    "nome": "Vini QA (YouTube)"
@@ -298,26 +305,32 @@
   "tiktok": {
    "usuario": "Custo Oculto",
    "seguidores": 52,
-   "curtidas": 289,
-   "videos": 16,
-   "views_total": 6196,
+   "curtidas": 298,
+   "videos": 17,
+   "views_total": 6494,
    "top": [
+    {
+     "titulo": "A Nokia já foi dona de quase 40% do mercado mundial de celulares. Poucos anos depois, vend",
+     "url": "https://www.tiktok.com/@custooculto/video/7700696929457409286?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
+     "views": 71,
+     "likes": 7
+    },
     {
      "titulo": "A Varig já foi uma das maiores companhias aéreas do Brasil. Durante décadas, era símbolo d",
      "url": "https://www.tiktok.com/@custooculto/video/7700381208127048981?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 153,
-     "likes": 5
+     "views": 286,
+     "likes": 7
     },
     {
      "titulo": "A Kodak ajudou a criar a câmera digital. O problema? Ela tinha medo de que a própria inven",
      "url": "https://www.tiktok.com/@custooculto/video/7699988579719679252?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 527,
+     "views": 528,
      "likes": 22
     },
     {
      "titulo": "A Blockbuster dominava o mercado. A Netflix era só uma aposta. Anos depois, uma delas viro",
      "url": "https://www.tiktok.com/@custooculto/video/7699596334155713812?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 364,
+     "views": 448,
      "likes": 10
     },
     {
@@ -331,12 +344,6 @@
      "url": "https://www.tiktok.com/@custooculto/video/7698857265817849108?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
      "views": 139,
      "likes": 1
-    },
-    {
-     "titulo": "A Nestlé comprou a Garoto. O Cade proibiu. Mas a compra já tinha acontecido 🍫 Você sabia q",
-     "url": "https://www.tiktok.com/@custooculto/video/7698432599659744533?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 1562,
-     "likes": 108
     }
    ],
    "nome": "TikTok @custooculto"
@@ -374,53 +381,6 @@
   }
  },
  "agenda": [
-  {
-   "quando": "2026-10-25T18:00:00-03:00",
-   "plataforma": "Custo Oculto (YouTube)",
-   "chave": "custo_oculto",
-   "titulo": "A Nokia vendia 4 de cada 10 celulares do planeta. E a Microsoft perdeu mais do que pagou #shorts",
-   "tipo": "short",
-   "id": "nokia_short1",
-   "url": "https://studio.youtube.com/video/0uvafJRo35I/edit"
-  },
-  {
-   "quando": "2026-10-25T18:00:00-03:00",
-   "plataforma": "Instagram",
-   "chave": "instagram",
-   "titulo": "A Nokia vendia 4 de cada 10 celulares do planeta",
-   "tipo": "short",
-   "id": "nokia_short1",
-   "url": "https://raw.githubusercontent.com/tsvini/custo-oculto-midia/72b3f65a2b40081839971649840243740b689c9a/nokia/nokia_short1.mp4"
-  },
-  {
-   "quando": "2026-10-25T18:00:00-03:00",
-   "plataforma": "Facebook",
-   "chave": "facebook",
-   "titulo": "A Nokia vendia 4 de cada 10 celulares do planeta",
-   "tipo": "short",
-   "id": "nokia_short1",
-   "url": "https://raw.githubusercontent.com/tsvini/custo-oculto-midia/72b3f65a2b40081839971649840243740b689c9a/nokia/nokia_short1.mp4"
-  },
-  {
-   "quando": "2026-10-25T18:00:00-03:00",
-   "plataforma": "TikTok",
-   "chave": "tiktok",
-   "titulo": "A Nokia vendia 4 de cada 10 celulares do planeta",
-   "tipo": "short",
-   "id": "nokia_short1",
-   "url": "https://raw.githubusercontent.com/tsvini/custo-oculto-midia/72b3f65a2b40081839971649840243740b689c9a/nokia/nokia_short1.mp4"
-  },
-  {
-   "quando": "2026-10-25T19:00:00-03:00",
-   "titulo": "1,6 milhão de pessoas no mesmo banco. E ele quebrou. · PAUSADO (rascunho)",
-   "tipo": "metricool",
-   "id": "metricool",
-   "url": "https://app.metricool.com/planner",
-   "plataforma_rede": "tiktok",
-   "chave": "tiktok",
-   "plataforma": "TikTok (Metricool)",
-   "sem_cancelar": true
-  },
   {
    "quando": "2026-10-26T12:00:00-03:00",
    "plataforma": "Vini QA (YouTube)",
