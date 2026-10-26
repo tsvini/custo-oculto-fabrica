@@ -1,0 +1,15 @@
+{
+  "name": "meu-primeiro-playwright",
+  "version": "1.0.0",
+  "description": "Projeto final do curso Playwright para Leigos",
+  "scripts": {
+    "test": "playwright test",
+    "test:ui": "playwright test --ui",
+    "report": "playwright show-report"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.64.1",
+    "@types/node": "^26.6.5",
+    "dotenv": "^16.4.5"
+  }
+}

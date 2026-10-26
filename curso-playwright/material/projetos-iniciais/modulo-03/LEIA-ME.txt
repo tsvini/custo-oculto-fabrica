@@ -1,0 +1,9 @@
+Projeto inicial · Módulo 3 · O primeiro teste
+
+Este é o projeto exatamente como ele fica no começo deste módulo. Use se você se perdeu ou quer começar daqui.
+
+1. Descompacte numa pasta (sem espaço e sem acento no nome, ex.: meu-primeiro-playwright).
+2. Abra a pasta no VS Code (File › Open Folder).
+3. No terminal do VS Code:  npm install
+4. E depois:                npx playwright install
+5. Pra conferir que está tudo certo:  npx playwright test --project=chromium
