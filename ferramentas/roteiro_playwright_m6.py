@@ -45,6 +45,13 @@ E3 = [{"out": "Call log:", "cor": "txt"},
       {"out": "       - unexpected value \"Sauce Labs Backpack\"", "cor": VERM}]
 assert max(len(l["out"]) for l in E1 + E2 + E3) <= 92
 
+
+def erro_todo(legenda, destaque=()):
+    """o erro inteiro, como sai no terminal do VS Code logo embaixo do comando (sempre a mesma tela, destacando uma parte)"""
+    linhas = [{"cmd": CMD, "ja": True}, {"out": "Running 2 tests using 2 workers", "cor": "mut", "ja": True}] + [dict(l, ja=True) for l in E1 + E2 + E3]
+    return {"type": "terminal", "titulo": "Terminal — VS Code", "pasta": "C:\\Users\\voce\\Documents\\meu-primeiro-playwright", "linhas": linhas, "legenda": legenda,
+            "destaque": list(destaque), "destaque_em": 0.6, "fonte": 22, "fonte_min": 18, "compacto": True}
+
 TESTES = [["login.spec.js", ["entra com usuário e senha", "mostra erro para usuário bloqueado"]]]
 A_LOGIN = [["Before Hooks", "", "520ms"], ["Navigate to", "\"/\"", "410ms"], ["Fill", "getByTestId('username')", "38ms"], ["Fill", "getByTestId('password')", "21ms"],
            ["Click", "getByTestId('login-button')", "96ms"], ["Expect", "toHaveURL", "12ms"], ["Expect", "toBeVisible", "9ms"], ["Expect", "toContainText", "8ms"], ["Expect", "toHaveCount", "7ms"]]
@@ -62,13 +69,20 @@ AULAS.append(projeto(26, "MÓDULO 6 · AULA 26", "Lendo o erro", [
     ("Vamos quebrar de propósito: na conferência da mochila, troca Backpack por Mochila.",
      edc(C26, "Backpack → Mochila (de propósito)", pastas=ARV_EX, digitar=True, digitar_de=L_MOCHILA, digitar_ate=L_MOCHILA, fonte=22, rolar_depois=True)),
     ("Roda. Falhou.", vs(C26, "Falhou", run(("Running 2 tests using 2 workers", "mut"), ("  1 failed", VERM), ("  1 passed (6.2s)", "ac")), pastas=ARV_EX)),
-    ("Vamos ler de cima pra baixo. Primeiro: qual teste falhou, e em qual arquivo e linha.", term(E1, "Qual teste, qual arquivo, qual linha", destaque=[0])),
-    ("Depois: Expected, o que você esperava, e Received, o que ele encontrou.", term(E1, "Expected = esperado · Received = encontrado", destaque=[3, 4])),
-    ("Depois, o pedaço do seu código, com uma setinha apontando a linha exata.", term(E2, "A setinha aponta a linha", destaque=[1, 2])),
-    ("E o call log, que mostra tudo o que ele tentou. Repara: ele ficou tentando por cinco segundos antes de desistir.", term(E3, "Call log: tudo o que ele tentou", destaque=[1, 4], em=1.4)),
+    ("O erro aparece aqui mesmo, no terminal do VS Code, logo embaixo do comando. E ele vem sempre na mesma ordem. Vamos ler de cima pra baixo.", erro_todo("O erro inteiro, embaixo do comando")),
+    ("Primeiro, a linha que começa com o número um: qual teste falhou, em qual arquivo e em qual linha. Aqui: login ponto spec ponto js, linha oito, o teste entra com usuário e senha.",
+     erro_todo("Qual teste · qual arquivo · qual linha", [2])),
+    ("Logo embaixo: Expected, o que o teste esperava, e Received, o que ele encontrou na tela. Esperava Mochila, encontrou Sauce Labs Backpack.",
+     erro_todo("Expected = esperado · Received = encontrado", [5, 6])),
+    ("Mais pra baixo, o pedaço do seu código: o sinal de maior aponta a linha catorze, e a setinha embaixo mostra o ponto exato.", erro_todo("> aponta a linha 14", [9, 10])),
+    ("Volta no VS Code, na linha catorze: é exatamente a conferência da mochila que a gente quebrou.",
+     edc(C26, "Linha 14: a conferência quebrada", pastas=ARV_EX, fonte=22, destaque=[L_MOCHILA], destaque_em=0.5, rolar=True, rolar_de=0.3, rolar_dur=0.8)),
+    ("E por último, o call log: tudo o que ele tentou. Ele achou o elemento, mas o texto não batia, e ficou tentando por cinco segundos antes de desistir.", erro_todo("Call log: tudo o que ele tentou", [12, 15, 16])),
     ("Três coisas que você vai ver bastante: timeout, alguma coisa que o teste esperava não aconteceu dentro do tempo. Strict mode violation, o seletor achou mais de um elemento quando precisava de um só. E Expected e Received, o teste esperava um valor e encontrou outro.",
      {"type": "cards", "itens": [["⏱", "Timeout", "o esperado não aconteceu a tempo"], ["⚠", "Strict mode", "achou mais de um", "#ffd23f"], ["≠", "Expected × Received", "esperava um, encontrou outro", "#ff6b6b"]]}),
-    ("Volta pra Backpack e roda: passou.", vs(C24, "Passou", run(("Running 2 tests using 2 workers", "mut"), ("  2 passed (2.1s)", "ac")), pastas=ARV_EX)),
+    ("Pra consertar: na linha catorze, volta o Mochila pra Backpack.",
+     edc(C24, "Mochila → Backpack de volta", pastas=ARV_EX, digitar=True, digitar_de=L_MOCHILA, digitar_ate=L_MOCHILA, fonte=22, rolar=True, rolar_de=0.3, rolar_dur=0.8)),
+    ("Roda de novo: passou.", vs(C24, "Passou", run(("Running 2 tests using 2 workers", "mut"), ("  2 passed (2.1s)", "ac")), pastas=ARV_EX)),
     ("Na próxima aula: um jeito muito mais visual de rodar os testes.", proxima("UI Mode")[0]),
     ("Te vejo lá!", proxima("UI Mode")[1]),
 ]))
@@ -76,13 +90,19 @@ AULAS.append(projeto(26, "MÓDULO 6 · AULA 26", "Lendo o erro", [
 # ---------- Aula 27 ----------
 AULAS.append(projeto(27, "MÓDULO 6 · AULA 27", "UI Mode", [
     ("Existe um jeito bem mais visual de rodar testes: o UI Mode.", titulo(27, "UI MODE")),
+    ("Pra que serve? No terminal, você só vê o resultado: passou ou falhou. No UI Mode, você vê o teste acontecendo, passo a passo, e descobre onde e por que ele quebrou.",
+     {"type": "compare", "title": "PRA QUE SERVE", "items": [["TERMINAL", "SÓ O RESULTADO", "white"], ["UI MODE", "CADA PASSO, COM A TELA", "gold"]], "size": 100, "stagger": 1.6, "vs": False}),
     ("No terminal: npx playwright test traço traço ui.", vs(C24, "--ui", run(cmd="npx playwright test --ui"), pastas=ARV_EX, colinha=True, colinha_em=1.2)),
     ("Abre uma janela com todos os seus testes do lado esquerdo. Clica no play.", dict(UI, legenda="Clica no play")),
     ("Ele roda e mostra cada passo. Clica num passo, e a tela mostra como a página estava naquele momento.", dict(UI, pronto=True, legenda="Cada passo, com a página daquele momento")),
     ("Dá pra voltar no tempo: ver a página antes e depois de cada clique.",
      dict(UI, pronto=True, media="site_sauce_ui_preenchido", acoes=LOGIN[:2], inspecionar="#login-button", aba_snapshot=1, depois={"em": 3.2, "media": "site_sauce_ui_logado"},
           legenda="Before e After: antes e depois do clique")),
-    ("E tem o watch, que quer dizer vigiar, aquele ícone de olho: você salva o arquivo e o teste roda de novo sozinho.", dict(UI, watch=True, watch_em=1.2, roda_em=2.6, legenda="watch = vigiar: salvou, rodou de novo")),
+    ("Isso serve pra achar problema: se um clique não fez o que devia, você compara a tela antes e depois e enxerga na hora o que aconteceu.",
+     {"type": "cards", "itens": [["⏮", "Before", "a tela antes do clique"], ["⏭", "After", "a tela depois", "#69a7ff"], ["🔍", "Comparou", "achou o problema", "#ffd23f"]]}),
+    ("E o watch. Pra que serve? Quando você está escrevendo um teste, você muda uma linha e quer ver se funcionou. Sem o watch, toda vez você volta no terminal e roda tudo de novo.",
+     {"type": "cards", "titulo": "SEM O WATCH", "itens": [["✎", "Muda uma linha", ""], ["⌨", "Volta no terminal", "", "#ff8c42"], ["▶", "Roda de novo", "toda vez", "#ff6b6b"]]}),
+    ("Watch quer dizer vigiar. Liga aquele ícone de olho, e pronto: salvou o arquivo, o teste roda de novo sozinho.", dict(UI, watch=True, watch_em=1.2, roda_em=2.6, legenda="watch = vigiar: salvou, rodou de novo")),
     ("É um dos jeitos mais confortáveis de escrever um teste novo: escreve, salva, e vê na hora.", bt(("ESCREVE, SALVA", "white", 120), ("E VÊ NA HORA", "gold", 150), entre=1.35)),
     ("Na próxima aula: o rastro completo de um teste.", proxima("Trace Viewer")[0]),
     ("Te vejo lá!", proxima("Trace Viewer")[1]),

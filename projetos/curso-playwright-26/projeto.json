@@ -123,12 +123,21 @@
        }
       },
       {
-       "text": "Vamos ler de cima pra baixo. Primeiro: qual teste falhou, e em qual arquivo e linha.",
+       "text": "O erro aparece aqui mesmo, no terminal do VS Code, logo embaixo do comando. E ele vem sempre na mesma ordem. Vamos ler de cima pra baixo.",
        "scene": {
         "type": "terminal",
         "titulo": "Terminal — VS Code",
         "pasta": "C:\\Users\\voce\\Documents\\meu-primeiro-playwright",
         "linhas": [
+         {
+          "cmd": "npx playwright test --project=chromium",
+          "ja": true
+         },
+         {
+          "out": "Running 2 tests using 2 workers",
+          "cor": "mut",
+          "ja": true
+         },
          {
           "out": "1) [chromium] › tests/login.spec.js:8:7 › Login › entra com usuário e senha",
           "cor": "txt",
@@ -158,72 +167,7 @@
           "out": "  Timeout: 5000ms",
           "cor": "mut",
           "ja": true
-         }
-        ],
-        "legenda": "Qual teste, qual arquivo, qual linha",
-        "destaque": [
-         0
-        ],
-        "destaque_em": 1.0,
-        "fonte": 32,
-        "fonte_min": 26
-       }
-      },
-      {
-       "text": "Depois: Expected, o que você esperava, e Received, o que ele encontrou.",
-       "scene": {
-        "type": "terminal",
-        "titulo": "Terminal — VS Code",
-        "pasta": "C:\\Users\\voce\\Documents\\meu-primeiro-playwright",
-        "linhas": [
-         {
-          "out": "1) [chromium] › tests/login.spec.js:8:7 › Login › entra com usuário e senha",
-          "cor": "txt",
-          "ja": true
          },
-         {
-          "out": "  Error: expect(locator).toContainText(expected) failed",
-          "cor": "#ff6b6b",
-          "ja": true
-         },
-         {
-          "out": "  Locator: getByText('Sauce Labs Backpack')",
-          "cor": "txt",
-          "ja": true
-         },
-         {
-          "out": "  Expected substring: \"Mochila\"",
-          "cor": "ac",
-          "ja": true
-         },
-         {
-          "out": "  Received string:    \"Sauce Labs Backpack\"",
-          "cor": "#ff6b6b",
-          "ja": true
-         },
-         {
-          "out": "  Timeout: 5000ms",
-          "cor": "mut",
-          "ja": true
-         }
-        ],
-        "legenda": "Expected = esperado · Received = encontrado",
-        "destaque": [
-         3,
-         4
-        ],
-        "destaque_em": 1.0,
-        "fonte": 32,
-        "fonte_min": 26
-       }
-      },
-      {
-       "text": "Depois, o pedaço do seu código, com uma setinha apontando a linha exata.",
-       "scene": {
-        "type": "terminal",
-        "titulo": "Terminal — VS Code",
-        "pasta": "C:\\Users\\voce\\Documents\\meu-primeiro-playwright",
-        "linhas": [
          {
           "out": "  13 |   await expect(page.getByText('Products')).toBeVisible();",
           "cor": "mut",
@@ -243,25 +187,446 @@
           "out": "  at tests/login.spec.js:14:57",
           "cor": "mut",
           "ja": true
+         },
+         {
+          "out": "Call log:",
+          "cor": "txt",
+          "ja": true
+         },
+         {
+          "out": "  - Expect \"toContainText\" getByText('Sauce Labs Backpack') with timeout 5000ms",
+          "cor": "mut",
+          "ja": true
+         },
+         {
+          "out": "  - waiting for getByText('Sauce Labs Backpack')",
+          "cor": "mut",
+          "ja": true
+         },
+         {
+          "out": "    14 × locator resolved to <div …>Sauce Labs Backpack</div>",
+          "cor": "mut",
+          "ja": true
+         },
+         {
+          "out": "       - unexpected value \"Sauce Labs Backpack\"",
+          "cor": "#ff6b6b",
+          "ja": true
          }
         ],
-        "legenda": "A setinha aponta a linha",
-        "destaque": [
-         1,
-         2
-        ],
-        "destaque_em": 1.0,
-        "fonte": 32,
-        "fonte_min": 26
+        "legenda": "O erro inteiro, embaixo do comando",
+        "destaque": [],
+        "destaque_em": 0.6,
+        "fonte": 22,
+        "fonte_min": 18,
+        "compacto": true
        }
       },
       {
-       "text": "E o call log, que mostra tudo o que ele tentou. Repara: ele ficou tentando por cinco segundos antes de desistir.",
+       "text": "Primeiro, a linha que começa com o número um: qual teste falhou, em qual arquivo e em qual linha. Aqui: login ponto spec ponto js, linha oito, o teste entra com usuário e senha.",
        "scene": {
         "type": "terminal",
         "titulo": "Terminal — VS Code",
         "pasta": "C:\\Users\\voce\\Documents\\meu-primeiro-playwright",
         "linhas": [
+         {
+          "cmd": "npx playwright test --project=chromium",
+          "ja": true
+         },
+         {
+          "out": "Running 2 tests using 2 workers",
+          "cor": "mut",
+          "ja": true
+         },
+         {
+          "out": "1) [chromium] › tests/login.spec.js:8:7 › Login › entra com usuário e senha",
+          "cor": "txt",
+          "ja": true
+         },
+         {
+          "out": "  Error: expect(locator).toContainText(expected) failed",
+          "cor": "#ff6b6b",
+          "ja": true
+         },
+         {
+          "out": "  Locator: getByText('Sauce Labs Backpack')",
+          "cor": "txt",
+          "ja": true
+         },
+         {
+          "out": "  Expected substring: \"Mochila\"",
+          "cor": "ac",
+          "ja": true
+         },
+         {
+          "out": "  Received string:    \"Sauce Labs Backpack\"",
+          "cor": "#ff6b6b",
+          "ja": true
+         },
+         {
+          "out": "  Timeout: 5000ms",
+          "cor": "mut",
+          "ja": true
+         },
+         {
+          "out": "  13 |   await expect(page.getByText('Products')).toBeVisible();",
+          "cor": "mut",
+          "ja": true
+         },
+         {
+          "out": "> 14 |   await expect(page.getByText('Sauce Labs Backpack')).toContainText('Mochila');",
+          "cor": "txt",
+          "ja": true
+         },
+         {
+          "out": "     |                                                       ^",
+          "cor": "#ff6b6b",
+          "ja": true
+         },
+         {
+          "out": "  at tests/login.spec.js:14:57",
+          "cor": "mut",
+          "ja": true
+         },
+         {
+          "out": "Call log:",
+          "cor": "txt",
+          "ja": true
+         },
+         {
+          "out": "  - Expect \"toContainText\" getByText('Sauce Labs Backpack') with timeout 5000ms",
+          "cor": "mut",
+          "ja": true
+         },
+         {
+          "out": "  - waiting for getByText('Sauce Labs Backpack')",
+          "cor": "mut",
+          "ja": true
+         },
+         {
+          "out": "    14 × locator resolved to <div …>Sauce Labs Backpack</div>",
+          "cor": "mut",
+          "ja": true
+         },
+         {
+          "out": "       - unexpected value \"Sauce Labs Backpack\"",
+          "cor": "#ff6b6b",
+          "ja": true
+         }
+        ],
+        "legenda": "Qual teste · qual arquivo · qual linha",
+        "destaque": [
+         2
+        ],
+        "destaque_em": 0.6,
+        "fonte": 22,
+        "fonte_min": 18,
+        "compacto": true
+       }
+      },
+      {
+       "text": "Logo embaixo: Expected, o que o teste esperava, e Received, o que ele encontrou na tela. Esperava Mochila, encontrou Sauce Labs Backpack.",
+       "scene": {
+        "type": "terminal",
+        "titulo": "Terminal — VS Code",
+        "pasta": "C:\\Users\\voce\\Documents\\meu-primeiro-playwright",
+        "linhas": [
+         {
+          "cmd": "npx playwright test --project=chromium",
+          "ja": true
+         },
+         {
+          "out": "Running 2 tests using 2 workers",
+          "cor": "mut",
+          "ja": true
+         },
+         {
+          "out": "1) [chromium] › tests/login.spec.js:8:7 › Login › entra com usuário e senha",
+          "cor": "txt",
+          "ja": true
+         },
+         {
+          "out": "  Error: expect(locator).toContainText(expected) failed",
+          "cor": "#ff6b6b",
+          "ja": true
+         },
+         {
+          "out": "  Locator: getByText('Sauce Labs Backpack')",
+          "cor": "txt",
+          "ja": true
+         },
+         {
+          "out": "  Expected substring: \"Mochila\"",
+          "cor": "ac",
+          "ja": true
+         },
+         {
+          "out": "  Received string:    \"Sauce Labs Backpack\"",
+          "cor": "#ff6b6b",
+          "ja": true
+         },
+         {
+          "out": "  Timeout: 5000ms",
+          "cor": "mut",
+          "ja": true
+         },
+         {
+          "out": "  13 |   await expect(page.getByText('Products')).toBeVisible();",
+          "cor": "mut",
+          "ja": true
+         },
+         {
+          "out": "> 14 |   await expect(page.getByText('Sauce Labs Backpack')).toContainText('Mochila');",
+          "cor": "txt",
+          "ja": true
+         },
+         {
+          "out": "     |                                                       ^",
+          "cor": "#ff6b6b",
+          "ja": true
+         },
+         {
+          "out": "  at tests/login.spec.js:14:57",
+          "cor": "mut",
+          "ja": true
+         },
+         {
+          "out": "Call log:",
+          "cor": "txt",
+          "ja": true
+         },
+         {
+          "out": "  - Expect \"toContainText\" getByText('Sauce Labs Backpack') with timeout 5000ms",
+          "cor": "mut",
+          "ja": true
+         },
+         {
+          "out": "  - waiting for getByText('Sauce Labs Backpack')",
+          "cor": "mut",
+          "ja": true
+         },
+         {
+          "out": "    14 × locator resolved to <div …>Sauce Labs Backpack</div>",
+          "cor": "mut",
+          "ja": true
+         },
+         {
+          "out": "       - unexpected value \"Sauce Labs Backpack\"",
+          "cor": "#ff6b6b",
+          "ja": true
+         }
+        ],
+        "legenda": "Expected = esperado · Received = encontrado",
+        "destaque": [
+         5,
+         6
+        ],
+        "destaque_em": 0.6,
+        "fonte": 22,
+        "fonte_min": 18,
+        "compacto": true
+       }
+      },
+      {
+       "text": "Mais pra baixo, o pedaço do seu código: o sinal de maior aponta a linha catorze, e a setinha embaixo mostra o ponto exato.",
+       "scene": {
+        "type": "terminal",
+        "titulo": "Terminal — VS Code",
+        "pasta": "C:\\Users\\voce\\Documents\\meu-primeiro-playwright",
+        "linhas": [
+         {
+          "cmd": "npx playwright test --project=chromium",
+          "ja": true
+         },
+         {
+          "out": "Running 2 tests using 2 workers",
+          "cor": "mut",
+          "ja": true
+         },
+         {
+          "out": "1) [chromium] › tests/login.spec.js:8:7 › Login › entra com usuário e senha",
+          "cor": "txt",
+          "ja": true
+         },
+         {
+          "out": "  Error: expect(locator).toContainText(expected) failed",
+          "cor": "#ff6b6b",
+          "ja": true
+         },
+         {
+          "out": "  Locator: getByText('Sauce Labs Backpack')",
+          "cor": "txt",
+          "ja": true
+         },
+         {
+          "out": "  Expected substring: \"Mochila\"",
+          "cor": "ac",
+          "ja": true
+         },
+         {
+          "out": "  Received string:    \"Sauce Labs Backpack\"",
+          "cor": "#ff6b6b",
+          "ja": true
+         },
+         {
+          "out": "  Timeout: 5000ms",
+          "cor": "mut",
+          "ja": true
+         },
+         {
+          "out": "  13 |   await expect(page.getByText('Products')).toBeVisible();",
+          "cor": "mut",
+          "ja": true
+         },
+         {
+          "out": "> 14 |   await expect(page.getByText('Sauce Labs Backpack')).toContainText('Mochila');",
+          "cor": "txt",
+          "ja": true
+         },
+         {
+          "out": "     |                                                       ^",
+          "cor": "#ff6b6b",
+          "ja": true
+         },
+         {
+          "out": "  at tests/login.spec.js:14:57",
+          "cor": "mut",
+          "ja": true
+         },
+         {
+          "out": "Call log:",
+          "cor": "txt",
+          "ja": true
+         },
+         {
+          "out": "  - Expect \"toContainText\" getByText('Sauce Labs Backpack') with timeout 5000ms",
+          "cor": "mut",
+          "ja": true
+         },
+         {
+          "out": "  - waiting for getByText('Sauce Labs Backpack')",
+          "cor": "mut",
+          "ja": true
+         },
+         {
+          "out": "    14 × locator resolved to <div …>Sauce Labs Backpack</div>",
+          "cor": "mut",
+          "ja": true
+         },
+         {
+          "out": "       - unexpected value \"Sauce Labs Backpack\"",
+          "cor": "#ff6b6b",
+          "ja": true
+         }
+        ],
+        "legenda": "> aponta a linha 14",
+        "destaque": [
+         9,
+         10
+        ],
+        "destaque_em": 0.6,
+        "fonte": 22,
+        "fonte_min": 18,
+        "compacto": true
+       }
+      },
+      {
+       "text": "Volta no VS Code, na linha catorze: é exatamente a conferência da mochila que a gente quebrou.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "login.spec.js",
+        "codigo": "import { test, expect } from '@playwright/test';\n\ntest.describe('Login', () => {\n  test.beforeEach(async ({ page }) => {\n    await page.goto('/');\n  });\n\n  test('entra com usuário e senha', async ({ page }) => {\n    await page.getByTestId('username').fill(process.env.SAUCE_USER);\n    await page.getByTestId('password').fill(process.env.SAUCE_PASSWORD);\n    await page.getByTestId('login-button').click();\n    await expect(page).toHaveURL(/inventory/);\n    await expect(page.getByText('Products')).toBeVisible();\n    await expect(page.getByText('Sauce Labs Backpack')).toContainText('Mochila');\n    await expect(page.getByRole('button', { name: 'Add to cart' })).toHaveCount(6);\n  });\n\n  test('mostra erro para usuário bloqueado', async ({ page }) => {\n    await page.getByTestId('username').fill('locked_out_user');\n    await page.getByTestId('password').fill(process.env.SAUCE_PASSWORD);\n    await page.getByTestId('login-button').click();\n    await expect(page.getByText('locked out')).toBeVisible();\n  });\n});",
+        "legenda": "Linha 14: a conferência quebrada",
+        "fonte": 22,
+        "digitar": false,
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  tests/",
+         "    login.spec.js",
+         "  .env",
+         "  .env.example",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "destaque": [
+         14
+        ],
+        "destaque_em": 0.5,
+        "rolar": true,
+        "rolar_de": 0.3,
+        "rolar_dur": 0.8
+       }
+      },
+      {
+       "text": "E por último, o call log: tudo o que ele tentou. Ele achou o elemento, mas o texto não batia, e ficou tentando por cinco segundos antes de desistir.",
+       "scene": {
+        "type": "terminal",
+        "titulo": "Terminal — VS Code",
+        "pasta": "C:\\Users\\voce\\Documents\\meu-primeiro-playwright",
+        "linhas": [
+         {
+          "cmd": "npx playwright test --project=chromium",
+          "ja": true
+         },
+         {
+          "out": "Running 2 tests using 2 workers",
+          "cor": "mut",
+          "ja": true
+         },
+         {
+          "out": "1) [chromium] › tests/login.spec.js:8:7 › Login › entra com usuário e senha",
+          "cor": "txt",
+          "ja": true
+         },
+         {
+          "out": "  Error: expect(locator).toContainText(expected) failed",
+          "cor": "#ff6b6b",
+          "ja": true
+         },
+         {
+          "out": "  Locator: getByText('Sauce Labs Backpack')",
+          "cor": "txt",
+          "ja": true
+         },
+         {
+          "out": "  Expected substring: \"Mochila\"",
+          "cor": "ac",
+          "ja": true
+         },
+         {
+          "out": "  Received string:    \"Sauce Labs Backpack\"",
+          "cor": "#ff6b6b",
+          "ja": true
+         },
+         {
+          "out": "  Timeout: 5000ms",
+          "cor": "mut",
+          "ja": true
+         },
+         {
+          "out": "  13 |   await expect(page.getByText('Products')).toBeVisible();",
+          "cor": "mut",
+          "ja": true
+         },
+         {
+          "out": "> 14 |   await expect(page.getByText('Sauce Labs Backpack')).toContainText('Mochila');",
+          "cor": "txt",
+          "ja": true
+         },
+         {
+          "out": "     |                                                       ^",
+          "cor": "#ff6b6b",
+          "ja": true
+         },
+         {
+          "out": "  at tests/login.spec.js:14:57",
+          "cor": "mut",
+          "ja": true
+         },
          {
           "out": "Call log:",
           "cor": "txt",
@@ -290,12 +655,14 @@
         ],
         "legenda": "Call log: tudo o que ele tentou",
         "destaque": [
-         1,
-         4
+         12,
+         15,
+         16
         ],
-        "destaque_em": 1.4,
-        "fonte": 32,
-        "fonte_min": 26
+        "destaque_em": 0.6,
+        "fonte": 22,
+        "fonte_min": 18,
+        "compacto": true
        }
       },
       {
@@ -324,7 +691,36 @@
        }
       },
       {
-       "text": "Volta pra Backpack e roda: passou.",
+       "text": "Pra consertar: na linha catorze, volta o Mochila pra Backpack.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "login.spec.js",
+        "codigo": "import { test, expect } from '@playwright/test';\n\ntest.describe('Login', () => {\n  test.beforeEach(async ({ page }) => {\n    await page.goto('/');\n  });\n\n  test('entra com usuário e senha', async ({ page }) => {\n    await page.getByTestId('username').fill(process.env.SAUCE_USER);\n    await page.getByTestId('password').fill(process.env.SAUCE_PASSWORD);\n    await page.getByTestId('login-button').click();\n    await expect(page).toHaveURL(/inventory/);\n    await expect(page.getByText('Products')).toBeVisible();\n    await expect(page.getByText('Sauce Labs Backpack')).toContainText('Backpack');\n    await expect(page.getByRole('button', { name: 'Add to cart' })).toHaveCount(6);\n  });\n\n  test('mostra erro para usuário bloqueado', async ({ page }) => {\n    await page.getByTestId('username').fill('locked_out_user');\n    await page.getByTestId('password').fill(process.env.SAUCE_PASSWORD);\n    await page.getByTestId('login-button').click();\n    await expect(page.getByText('locked out')).toBeVisible();\n  });\n});",
+        "legenda": "Mochila → Backpack de volta",
+        "fonte": 22,
+        "digitar": true,
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  tests/",
+         "    login.spec.js",
+         "  .env",
+         "  .env.example",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "digitar_de": 14,
+        "digitar_ate": 14,
+        "rolar": true,
+        "rolar_de": 0.3,
+        "rolar_dur": 0.8
+       }
+      },
+      {
+       "text": "Roda de novo: passou.",
        "scene": {
         "type": "editor",
         "arquivo": "login.spec.js",

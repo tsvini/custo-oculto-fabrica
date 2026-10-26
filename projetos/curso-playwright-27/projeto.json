@@ -51,6 +51,28 @@
        }
       },
       {
+       "text": "Pra que serve? No terminal, você só vê o resultado: passou ou falhou. No UI Mode, você vê o teste acontecendo, passo a passo, e descobre onde e por que ele quebrou.",
+       "scene": {
+        "type": "compare",
+        "title": "PRA QUE SERVE",
+        "items": [
+         [
+          "TERMINAL",
+          "SÓ O RESULTADO",
+          "white"
+         ],
+         [
+          "UI MODE",
+          "CADA PASSO, COM A TELA",
+          "gold"
+         ]
+        ],
+        "size": 100,
+        "stagger": 1.6,
+        "vs": false
+       }
+      },
+      {
        "text": "No terminal: npx playwright test traço traço ui.",
        "scene": {
         "type": "editor",
@@ -336,7 +358,58 @@
        }
       },
       {
-       "text": "E tem o watch, que quer dizer vigiar, aquele ícone de olho: você salva o arquivo e o teste roda de novo sozinho.",
+       "text": "Isso serve pra achar problema: se um clique não fez o que devia, você compara a tela antes e depois e enxerga na hora o que aconteceu.",
+       "scene": {
+        "type": "cards",
+        "itens": [
+         [
+          "⏮",
+          "Before",
+          "a tela antes do clique"
+         ],
+         [
+          "⏭",
+          "After",
+          "a tela depois",
+          "#69a7ff"
+         ],
+         [
+          "🔍",
+          "Comparou",
+          "achou o problema",
+          "#ffd23f"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "E o watch. Pra que serve? Quando você está escrevendo um teste, você muda uma linha e quer ver se funcionou. Sem o watch, toda vez você volta no terminal e roda tudo de novo.",
+       "scene": {
+        "type": "cards",
+        "titulo": "SEM O WATCH",
+        "itens": [
+         [
+          "✎",
+          "Muda uma linha",
+          ""
+         ],
+         [
+          "⌨",
+          "Volta no terminal",
+          "",
+          "#ff8c42"
+         ],
+         [
+          "▶",
+          "Roda de novo",
+          "toda vez",
+          "#ff6b6b"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Watch quer dizer vigiar. Liga aquele ícone de olho, e pronto: salvou o arquivo, o teste roda de novo sozinho.",
        "scene": {
         "type": "pw_ui",
         "media": "site_sauce_ui_logado",
