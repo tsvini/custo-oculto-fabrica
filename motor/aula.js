@@ -149,7 +149,7 @@
       if (l.cmd !== undefined) livre = t0 + durCmd(l) + 0.25 / vd; else livre = Math.max(livre, t0 + 0.15); return t0; });
       if (Math.max(...tempos) <= dur - 0.7) break; }
     const vis = L.map((l, i) => [l, tempos[i]]).filter(([, t0]) => t >= t0); const cabe = Math.max(1, Math.floor((h - 22 * u - 92 * u) / lh) + 1);
-    if (!vis.some(([l]) => !l.ja)) {  // nada digitado ainda: o prompt esperando, com o cursor piscando
+    if (!vis.length) {  // terminal ainda vazio: o prompt esperando, com o cursor piscando (no meio de um comando não aparece prompt)
       const ult = vis.length ? vis[vis.length - 1][0] : null; const yP = yy + Math.min(vis.length, cabe - 1) * lh;
       if (!ult || ult.cmd === undefined) { txt(ctx, pr, font(600, fs, MONO), x + 36 * u, yP, C.ac2, "left", a); if (Math.floor(t * 2.5) % 2 === 0) { ctx.fillStyle = C.txt; ctx.fillRect(x + 36 * u + tw(ctx, pr, font(600, fs, MONO)) + 3 * u, yP - fs * 0.55, fs * 0.55, fs * 1.1); } } }
     vis.slice(-cabe).forEach(([l, t0]) => {  // como no terminal de verdade: quando enche, as linhas de cima sobem
