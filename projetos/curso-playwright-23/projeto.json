@@ -246,6 +246,75 @@
        }
       },
       {
+       "text": "E de onde vêm esses nomes? Do próprio site. Clica com o botão direito no campo de usuário, e Inspecionar. Lá está: data-test igual username.",
+       "scene": {
+        "type": "devtools",
+        "media": "site_sauce_dev_user",
+        "url": "https://www.saucedemo.com/",
+        "inspecionar": "[data-test=\"username\"]",
+        "attrs": [
+         "class",
+         "placeholder",
+         "type",
+         "data-test",
+         "id",
+         "name"
+        ],
+        "realce": [
+         "data-test"
+        ],
+        "realce_em": 2.2,
+        "realce_rotulo": "username",
+        "legenda": "Campo usuário: data-test=\"username\""
+       }
+      },
+      {
+       "text": "No campo da senha, a mesma coisa: data-test igual password.",
+       "scene": {
+        "type": "devtools",
+        "media": "site_sauce_dev_pass",
+        "url": "https://www.saucedemo.com/",
+        "inspecionar": "[data-test=\"password\"]",
+        "attrs": [
+         "class",
+         "placeholder",
+         "type",
+         "data-test",
+         "id",
+         "name"
+        ],
+        "realce": [
+         "data-test"
+        ],
+        "realce_em": 2.2,
+        "realce_rotulo": "password",
+        "legenda": "Campo senha: data-test=\"password\""
+       }
+      },
+      {
+       "text": "E no botão: data-test igual login button. São esses nomes que vão dentro do get by test id.",
+       "scene": {
+        "type": "devtools",
+        "media": "site_sauce_dev_btn",
+        "url": "https://www.saucedemo.com/",
+        "inspecionar": "[data-test=\"login-button\"]",
+        "attrs": [
+         "class",
+         "placeholder",
+         "type",
+         "data-test",
+         "id",
+         "name"
+        ],
+        "realce": [
+         "data-test"
+        ],
+        "realce_em": 2.2,
+        "realce_rotulo": "login-button",
+        "legenda": "Botão: data-test=\"login-button\""
+       }
+      },
+      {
        "text": "A troca é assim: onde estava get by placeholder Username, fica get by test id username. A senha vira password. E o botão vira login button.",
        "scene": {
         "type": "traducao",

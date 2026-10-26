@@ -117,15 +117,21 @@
     const k = s.digitar === false ? 1 : clamp((t - t0) / tDig);
     if (s.rolar_depois && !rolando) yy -= Math.max(0, linhas.length - cabem) * lh * easeInOut((t - (s.digitar === false ? (s.rolar_de || 2.0) : t0 + tDig + 0.5)) / (s.rolar_dur || 1.4));  // digita no topo e depois desce até o fim do arquivo
     const dig = k; let resta = pronto + Math.floor(k * falta);
+    // apagar: as linhas ficam vermelhas, somem, e o código de baixo sobe (a numeração se ajusta no fim)
+    const AP = s.apagar || [], tA = s.apagar_em === undefined ? 1.0 : s.apagar_em, kR = easeOut((t - tA) / 0.4), kC = easeInOut((t - tA - 0.8) / 0.5); let num = 0;
     linhas.forEach((ln, i) => {
+      const ap = AP.includes(i + 1), hf = ap ? 1 - kC : 1;
+      if (ap && hf <= 0.002) { if (i + 1 <= d1) resta -= ln.length; return; }
+      num += 1; const aL = ap ? a * (1 - kC) : a;
+      if (ap && kR > 0) { ctx.save(); ctx.globalAlpha = 0.3 * kR * (1 - kC); ctx.fillStyle = "#ff6b6b"; ctx.fillRect(tabX, yy - lh * hf / 2, W - sideW, lh * hf); ctx.globalAlpha = kR * (1 - kC); ctx.fillRect(tabX, yy - lh * hf / 2, 6 * u, lh * hf); ctx.restore(); }
       const hl = (s.destaque || []).includes(i + 1);
       if (rolando && (s.marca_inicio || []).includes(i + 1)) { const hm = easeOut((t - 0.4) / 0.3) * (1 - easeOut((t - rDe - 0.6) / 0.4)); if (hm > 0) { ctx.save(); ctx.globalAlpha = 0.16 * hm; ctx.fillStyle = C.yel; ctx.fillRect(tabX, yy - lh / 2, W - sideW, lh); ctx.globalAlpha = hm; ctx.fillRect(tabX, yy - lh / 2, 6 * u, lh); ctx.restore(); } }
       if (hl && dig >= 1) { const ha = easeOut((t - (s.digitar === false ? (s.destaque_em || 1.2) : t0 + tDig)) / 0.4); ctx.save(); ctx.globalAlpha = 0.18 * ha; ctx.fillStyle = C.ac; ctx.fillRect(tabX, yy - lh / 2, W - sideW, lh); ctx.globalAlpha = ha; ctx.fillRect(tabX, yy - lh / 2, 6 * u, lh); ctx.restore(); }
-      txt(ctx, String(i + (s.linha0 || 1)), font(500, fs * 0.8, MONO), x0 - 30 * u, yy, "#4b5263", "right", a);  // linha0: o trecho visível de um arquivo maior
+      txt(ctx, String((kC >= 1 && AP.length ? num - 1 : i) + (s.linha0 || 1)), font(500, fs * 0.8, MONO), x0 - 30 * u, yy, "#4b5263", "right", aL);  // linha0: o trecho visível de um arquivo maior
       let mostra = i + 1 > d1 ? ln.length : Math.min(ln.length, resta); if (i + 1 <= d1) resta -= ln.length; let xx = x0;
-      for (const [tk, cor] of tokens(ln)) { if (mostra <= 0) break; const parte = tk.slice(0, mostra); mostra -= tk.length; txt(ctx, parte, font(500, fs, MONO), xx, yy, cor, "left", a); xx += tw(ctx, parte, font(500, fs, MONO)); }
+      for (const [tk, cor] of tokens(ln)) { if (mostra <= 0) break; const parte = tk.slice(0, mostra); mostra -= tk.length; txt(ctx, parte, font(500, fs, MONO), xx, yy, cor, "left", aL); xx += tw(ctx, parte, font(500, fs, MONO)); }
       if (dig < 1 && i + 1 <= d1 && resta < 0 && resta + ln.length >= 0 && Math.floor(t * 2.5) % 2 === 0) { ctx.save(); ctx.globalAlpha = a; ctx.fillStyle = C.ac; ctx.fillRect(xx + 2 * u, yy - fs * 0.6, 4 * u, fs * 1.2); ctx.restore(); }
-      yy += lh;
+      yy += lh * hf;
     });
     ctx.restore();
     if (PH) painelTerminal(ctx, u, tabX, y + H - PH, W - sideW, PH, t, dur, s, a);

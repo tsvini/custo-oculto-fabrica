@@ -51,7 +51,7 @@
        }
       },
       {
-       "text": "Antes, apaga aquele teste do usuário lento. Ele era só pra você ver a espera automática.",
+       "text": "Antes, apaga aquele teste do usuário lento. Ele era só pra você ver a espera automática, e já cumpriu o papel dele.",
        "scene": {
         "type": "editor",
         "arquivo": "login.spec.js",
@@ -60,9 +60,10 @@
         "fonte": 24,
         "digitar": false,
         "rolar": true,
-        "rolar_de": 1.0,
-        "rolar_dur": 1.2,
-        "destaque": [
+        "rolar_de": 0.6,
+        "rolar_dur": 1.0,
+        "apagar": [
+         13,
          14,
          15,
          16,
@@ -71,11 +72,11 @@
          19,
          20
         ],
-        "destaque_em": 2.4
+        "apagar_em": 2.6
        }
       },
       {
-       "text": "Agora vamos criar um segundo teste. O saucedemo tem um usuário que não consegue entrar: o usuário bloqueado, locked underline out underline user.",
+       "text": "Agora um teste novo. Um bom teste de login não confere só quem entra: confere também quem não pode entrar. O saucedemo tem um usuário bloqueado: locked underline out underline user.",
        "scene": {
         "type": "tela",
         "media": "rec_sauce_locked",
@@ -105,126 +106,77 @@
        }
       },
       {
-       "text": "Escreve o teste novo embaixo do primeiro. Ele preenche o usuário bloqueado e espera ver a mensagem locked out.",
+       "text": "Embaixo do primeiro teste, um test novo. E o nome diz o que ele confere: mostra erro para usuário bloqueado.",
        "scene": {
         "type": "editor",
         "arquivo": "login.spec.js",
-        "codigo": "import { test, expect } from '@playwright/test';\n\ntest('entra com usuário e senha', async ({ page }) => {\n  await page.goto('https://www.saucedemo.com/');\n  await page.getByPlaceholder('Username').fill('standard_user');\n  await page.getByPlaceholder('Password').fill('secret_sauce');\n  await page.getByRole('button', { name: 'Login' }).click();\n  await expect(page).toHaveURL(/inventory/);\n  await expect(page.getByText('Products')).toBeVisible();\n  await expect(page.getByText('Sauce Labs Backpack')).toContainText('Backpack');\n  await expect(page.getByRole('button', { name: 'Add to cart' })).toHaveCount(6);\n});\n\ntest('mostra erro para usuário bloqueado', async ({ page }) => {\n  await page.goto('https://www.saucedemo.com/');\n  await page.getByPlaceholder('Username').fill('locked_out_user');\n  await page.getByPlaceholder('Password').fill('secret_sauce');\n  await page.getByRole('button', { name: 'Login' }).click();\n  await expect(page.getByText('locked out')).toBeVisible();\n});",
-        "legenda": "O teste do usuário bloqueado",
+        "codigo": "import { test, expect } from '@playwright/test';\n\ntest('entra com usuário e senha', async ({ page }) => {\n  await page.goto('https://www.saucedemo.com/');\n  await page.getByPlaceholder('Username').fill('standard_user');\n  await page.getByPlaceholder('Password').fill('secret_sauce');\n  await page.getByRole('button', { name: 'Login' }).click();\n  await expect(page).toHaveURL(/inventory/);\n  await expect(page.getByText('Products')).toBeVisible();\n  await expect(page.getByText('Sauce Labs Backpack')).toContainText('Backpack');\n  await expect(page.getByRole('button', { name: 'Add to cart' })).toHaveCount(6);\n});\n\ntest('mostra erro para usuário bloqueado', async ({ page }) => {\n});",
+        "legenda": "test('mostra erro para usuário bloqueado')",
         "fonte": 24,
         "digitar": true,
         "digitar_de": 14,
         "rolar": true,
-        "rolar_de": 0.8,
-        "rolar_dur": 1.0
+        "rolar_de": 0.5,
+        "rolar_dur": 0.8
        }
       },
       {
-       "text": "Repara: a linha do goto se repete nos dois testes.",
+       "text": "As quatro primeiras linhas você já conhece: abre o site, preenche o usuário, a senha, e clica em Login. A única diferença é o usuário: agora é o locked out user.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "login.spec.js",
+        "codigo": "import { test, expect } from '@playwright/test';\n\ntest('entra com usuário e senha', async ({ page }) => {\n  await page.goto('https://www.saucedemo.com/');\n  await page.getByPlaceholder('Username').fill('standard_user');\n  await page.getByPlaceholder('Password').fill('secret_sauce');\n  await page.getByRole('button', { name: 'Login' }).click();\n  await expect(page).toHaveURL(/inventory/);\n  await expect(page.getByText('Products')).toBeVisible();\n  await expect(page.getByText('Sauce Labs Backpack')).toContainText('Backpack');\n  await expect(page.getByRole('button', { name: 'Add to cart' })).toHaveCount(6);\n});\n\ntest('mostra erro para usuário bloqueado', async ({ page }) => {\n  await page.goto('https://www.saucedemo.com/');\n  await page.getByPlaceholder('Username').fill('locked_out_user');\n  await page.getByPlaceholder('Password').fill('secret_sauce');\n  await page.getByRole('button', { name: 'Login' }).click();\n});",
+        "legenda": "Igual ao primeiro, só muda o usuário",
+        "fonte": 24,
+        "digitar": true,
+        "digitar_de": 15,
+        "digitar_ate": 18,
+        "vel": 0.85,
+        "rolar": true,
+        "rolar_de": 0.4,
+        "rolar_dur": 0.8
+       }
+      },
+      {
+       "text": "E a conferência é outra. Em vez de conferir que entrou, a gente confere que apareceu a mensagem de erro, que tem as palavras locked out.",
        "scene": {
         "type": "editor",
         "arquivo": "login.spec.js",
         "codigo": "import { test, expect } from '@playwright/test';\n\ntest('entra com usuário e senha', async ({ page }) => {\n  await page.goto('https://www.saucedemo.com/');\n  await page.getByPlaceholder('Username').fill('standard_user');\n  await page.getByPlaceholder('Password').fill('secret_sauce');\n  await page.getByRole('button', { name: 'Login' }).click();\n  await expect(page).toHaveURL(/inventory/);\n  await expect(page.getByText('Products')).toBeVisible();\n  await expect(page.getByText('Sauce Labs Backpack')).toContainText('Backpack');\n  await expect(page.getByRole('button', { name: 'Add to cart' })).toHaveCount(6);\n});\n\ntest('mostra erro para usuário bloqueado', async ({ page }) => {\n  await page.goto('https://www.saucedemo.com/');\n  await page.getByPlaceholder('Username').fill('locked_out_user');\n  await page.getByPlaceholder('Password').fill('secret_sauce');\n  await page.getByRole('button', { name: 'Login' }).click();\n  await expect(page.getByText('locked out')).toBeVisible();\n});",
-        "legenda": "O goto se repete",
+        "legenda": "Confere a mensagem de erro",
         "fonte": 24,
-        "digitar": false,
-        "destaque": [
-         4,
-         15
-        ],
-        "destaque_em": 0.6,
+        "digitar": true,
+        "digitar_de": 19,
+        "digitar_ate": 19,
         "rolar": true,
-        "rolar_de": 2.2,
-        "rolar_dur": 1.4
+        "rolar_de": 0.4,
+        "rolar_dur": 0.8
        }
       },
       {
-       "text": "Quando algo se repete antes de todo teste, existe o before each. Before each: antes de cada.",
+       "text": "Traduzindo: eu espero que o texto locked out esteja aparecendo na tela.",
        "scene": {
         "type": "traducao",
-        "codigo": "test.beforeEach(async ({ page }) => {",
+        "codigo": "await expect(page.getByText('locked out')).toBeVisible();",
         "partes": [
          [
-          "before",
-          "antes de"
+          "expect",
+          "eu espero que"
          ],
          [
-          "Each",
-          "cada"
+          "page.getByText('locked out')",
+          "o texto locked out"
          ],
          [
-          "({ page })",
-          "me dê o navegador"
+          "toBeVisible()",
+          "esteja aparecendo"
          ]
         ],
-        "passo": 2.0
+        "passo": 1.6
        }
       },
       {
-       "text": "Coloca o goto lá dentro, e apaga dos testes.",
-       "scene": {
-        "type": "editor",
-        "arquivo": "login.spec.js",
-        "codigo": "import { test, expect } from '@playwright/test';\n\ntest.beforeEach(async ({ page }) => {\n  await page.goto('https://www.saucedemo.com/');\n});\n\ntest('entra com usuário e senha', async ({ page }) => {\n  await page.getByPlaceholder('Username').fill('standard_user');\n  await page.getByPlaceholder('Password').fill('secret_sauce');\n  await page.getByRole('button', { name: 'Login' }).click();\n  await expect(page).toHaveURL(/inventory/);\n  await expect(page.getByText('Products')).toBeVisible();\n  await expect(page.getByText('Sauce Labs Backpack')).toContainText('Backpack');\n  await expect(page.getByRole('button', { name: 'Add to cart' })).toHaveCount(6);\n});\n\ntest('mostra erro para usuário bloqueado', async ({ page }) => {\n  await page.getByPlaceholder('Username').fill('locked_out_user');\n  await page.getByPlaceholder('Password').fill('secret_sauce');\n  await page.getByRole('button', { name: 'Login' }).click();\n  await expect(page.getByText('locked out')).toBeVisible();\n});",
-        "legenda": "O goto vai pro beforeEach",
-        "fonte": 24,
-        "digitar": false,
-        "destaque": [
-         3,
-         4,
-         5
-        ],
-        "destaque_em": 0.6,
-        "rolar": true,
-        "rolar_de": 2.6,
-        "rolar_dur": 1.6
-       }
-      },
-      {
-       "text": "O before each roda antes de cada teste: antes do teste um, abre o site. Antes do teste dois, abre de novo. Assim, cada teste começa do zero, sem depender do outro.",
-       "scene": {
-        "type": "cards",
-        "itens": [
-         [
-          "1",
-          "Antes do teste 1",
-          "abre o site"
-         ],
-         [
-          "2",
-          "Antes do teste 2",
-          "abre de novo",
-          "#69a7ff"
-         ],
-         [
-          "✓",
-          "Cada teste",
-          "começa do zero",
-          "#3fd68a"
-         ]
-        ],
-        "titulo": "ANTES DE CADA"
-       }
-      },
-      {
-       "text": "E por que o login não foi pro before each também? Porque o segundo teste entra com outro usuário. No before each só vai o que é igual em todos os testes.",
-       "scene": {
-        "type": "traducao",
-        "titulo": "O QUE VAI NO BEFORE EACH",
-        "linhas": [
-         [
-          "abrir o site",
-          "igual nos dois: before each"
-         ],
-         [
-          "o login",
-          "muda o usuário: fica no teste"
-         ]
-        ]
-       }
-      },
-      {
-       "text": "Agora o describe. Describe é descrever: ele junta testes do mesmo assunto numa caixa com nome.",
+       "text": "Agora você tem dois testes do mesmo assunto: login. Pra organizar, existe o describe. Describe é descrever: ele junta testes do mesmo assunto numa caixa com nome.",
        "scene": {
         "type": "traducao",
         "codigo": "test.describe('Login', () => {",
@@ -246,18 +198,7 @@
        "scene": {
         "type": "editor",
         "arquivo": "login.spec.js",
-        "pastas": [
-         "meu-primeiro-playwright",
-         "  .github/",
-         "  node_modules/",
-         "  tests/",
-         "    login.spec.js",
-         "  .gitignore",
-         "  package-lock.json",
-         "  package.json",
-         "  playwright.config.js"
-        ],
-        "codigo": "import { test, expect } from '@playwright/test';\n\ntest.describe('Login', () => {\n  test.beforeEach(async ({ page }) => {\n    await page.goto('https://www.saucedemo.com/');\n  });\n\n  test('entra com usuário e senha', async ({ page }) => {\n    await page.getByPlaceholder('Username').fill('standard_user');\n    await page.getByPlaceholder('Password').fill('secret_sauce');\n    await page.getByRole('button', { name: 'Login' }).click();\n    await expect(page).toHaveURL(/inventory/);",
+        "codigo": "import { test, expect } from '@playwright/test';\n\ntest.describe('Login', () => {\n  test('entra com usuário e senha', async ({ page }) => {\n    await page.goto('https://www.saucedemo.com/');\n    await page.getByPlaceholder('Username').fill('standard_user');\n    await page.getByPlaceholder('Password').fill('secret_sauce');\n    await page.getByRole('button', { name: 'Login' }).click();\n    await expect(page).toHaveURL(/inventory/);\n    await expect(page.getByText('Products')).toBeVisible();\n    await expect(page.getByText('Sauce Labs Backpack')).toContainText('Backpack');\n    await expect(page.getByRole('button', { name: 'Add to cart' })).toHaveCount(6);",
         "legenda": "test.describe('Login', () => {",
         "fonte": 26,
         "digitar": true,
@@ -270,40 +211,150 @@
        }
       },
       {
-       "text": "E lá no final do arquivo, fecha a caixa: chave, parêntese e ponto e vírgula. Os dois testes e o before each ficam aqui dentro.",
+       "text": "Lá no final do arquivo, fecha a caixa: chave, parêntese e ponto e vírgula. E os dois testes vão pra dentro dela: seleciona os dois e aperta Tab, pra eles andarem um pouco pra direita.",
        "scene": {
         "type": "editor",
         "arquivo": "login.spec.js",
-        "codigo": "    await expect(page.getByText('Products')).toBeVisible();\n    await expect(page.getByText('Sauce Labs Backpack')).toContainText('Backpack');\n    await expect(page.getByRole('button', { name: 'Add to cart' })).toHaveCount(6);\n  });\n\n  test('mostra erro para usuário bloqueado', async ({ page }) => {\n    await page.getByPlaceholder('Username').fill('locked_out_user');\n    await page.getByPlaceholder('Password').fill('secret_sauce');\n    await page.getByRole('button', { name: 'Login' }).click();\n    await expect(page.getByText('locked out')).toBeVisible();\n  });\n});",
-        "legenda": "}); fecha a caixa do describe",
+        "codigo": "  });\n\n  test('mostra erro para usuário bloqueado', async ({ page }) => {\n    await page.goto('https://www.saucedemo.com/');\n    await page.getByPlaceholder('Username').fill('locked_out_user');\n    await page.getByPlaceholder('Password').fill('secret_sauce');\n    await page.getByRole('button', { name: 'Login' }).click();\n    await expect(page.getByText('locked out')).toBeVisible();\n  });\n});",
+        "legenda": "}); fecha a caixa · Tab: os testes vão pra dentro",
         "fonte": 26,
         "digitar": true,
         "linha0": 13,
-        "digitar_de": 12,
-        "digitar_ate": 12,
+        "digitar_de": 10,
+        "digitar_ate": 10,
         "destaque": [
-         12
+         10
         ],
         "destaque_em": 2.0
        }
       },
       {
-       "text": "Tudo que está dentro desse describe é sobre login.",
+       "text": "Agora repara numa coisa: a primeira linha dos dois testes é igual. Os dois abrem o site.",
        "scene": {
         "type": "editor",
         "arquivo": "login.spec.js",
-        "codigo": "import { test, expect } from '@playwright/test';\n\ntest.describe('Login', () => {\n  test.beforeEach(async ({ page }) => {\n    await page.goto('https://www.saucedemo.com/');\n  });\n\n  test('entra com usuário e senha', async ({ page }) => {\n    await page.getByPlaceholder('Username').fill('standard_user');\n    await page.getByPlaceholder('Password').fill('secret_sauce');\n    await page.getByRole('button', { name: 'Login' }).click();\n    await expect(page).toHaveURL(/inventory/);\n    await expect(page.getByText('Products')).toBeVisible();\n    await expect(page.getByText('Sauce Labs Backpack')).toContainText('Backpack');\n    await expect(page.getByRole('button', { name: 'Add to cart' })).toHaveCount(6);\n  });\n\n  test('mostra erro para usuário bloqueado', async ({ page }) => {\n    await page.getByPlaceholder('Username').fill('locked_out_user');\n    await page.getByPlaceholder('Password').fill('secret_sauce');\n    await page.getByRole('button', { name: 'Login' }).click();\n    await expect(page.getByText('locked out')).toBeVisible();\n  });\n});",
-        "legenda": "Tudo aqui dentro é sobre login",
+        "codigo": "import { test, expect } from '@playwright/test';\n\ntest.describe('Login', () => {\n  test('entra com usuário e senha', async ({ page }) => {\n    await page.goto('https://www.saucedemo.com/');\n    await page.getByPlaceholder('Username').fill('standard_user');\n    await page.getByPlaceholder('Password').fill('secret_sauce');\n    await page.getByRole('button', { name: 'Login' }).click();\n    await expect(page).toHaveURL(/inventory/);\n    await expect(page.getByText('Products')).toBeVisible();\n    await expect(page.getByText('Sauce Labs Backpack')).toContainText('Backpack');\n    await expect(page.getByRole('button', { name: 'Add to cart' })).toHaveCount(6);\n  });\n\n  test('mostra erro para usuário bloqueado', async ({ page }) => {\n    await page.goto('https://www.saucedemo.com/');\n    await page.getByPlaceholder('Username').fill('locked_out_user');\n    await page.getByPlaceholder('Password').fill('secret_sauce');\n    await page.getByRole('button', { name: 'Login' }).click();\n    await expect(page.getByText('locked out')).toBeVisible();\n  });\n});",
+        "legenda": "O goto se repete nos dois testes",
         "fonte": 22,
         "digitar": false,
         "destaque": [
-         3,
-         24
+         5,
+         16
         ],
-        "destaque_em": 0.3,
-        "rolar": true,
-        "rolar_de": 0.6,
-        "rolar_dur": 1.8
+        "destaque_em": 0.6
+       }
+      },
+      {
+       "text": "Quando alguma coisa se repete antes de todo teste, existe o before each. Before each: antes de cada.",
+       "scene": {
+        "type": "traducao",
+        "codigo": "test.beforeEach(async ({ page }) => {",
+        "partes": [
+         [
+          "before",
+          "antes de"
+         ],
+         [
+          "Each",
+          "cada"
+         ],
+         [
+          "({ page })",
+          "me dê o navegador"
+         ]
+        ],
+        "passo": 2.0
+       }
+      },
+      {
+       "text": "Ele vai dentro do describe, logo no começo, antes dos testes. E lá dentro, o goto.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "login.spec.js",
+        "codigo": "import { test, expect } from '@playwright/test';\n\ntest.describe('Login', () => {\n  test.beforeEach(async ({ page }) => {\n    await page.goto('https://www.saucedemo.com/');\n  });\n\n  test('entra com usuário e senha', async ({ page }) => {\n    await page.goto('https://www.saucedemo.com/');\n    await page.getByPlaceholder('Username').fill('standard_user');\n    await page.getByPlaceholder('Password').fill('secret_sauce');\n    await page.getByRole('button', { name: 'Login' }).click();\n    await expect(page).toHaveURL(/inventory/);\n    await expect(page.getByText('Products')).toBeVisible();\n    await expect(page.getByText('Sauce Labs Backpack')).toContainText('Backpack');\n    await expect(page.getByRole('button', { name: 'Add to cart' })).toHaveCount(6);\n  });\n\n  test('mostra erro para usuário bloqueado', async ({ page }) => {\n    await page.goto('https://www.saucedemo.com/');\n    await page.getByPlaceholder('Username').fill('locked_out_user');\n    await page.getByPlaceholder('Password').fill('secret_sauce');\n    await page.getByRole('button', { name: 'Login' }).click();\n    await expect(page.getByText('locked out')).toBeVisible();\n  });\n});",
+        "legenda": "test.beforeEach dentro do describe",
+        "fonte": 22,
+        "digitar": true,
+        "digitar_de": 4,
+        "digitar_ate": 6
+       }
+      },
+      {
+       "text": "Agora o goto dos testes não precisa mais: o before each já abre o site antes de cada um. Então apaga a linha do goto do primeiro teste.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "login.spec.js",
+        "codigo": "import { test, expect } from '@playwright/test';\n\ntest.describe('Login', () => {\n  test.beforeEach(async ({ page }) => {\n    await page.goto('https://www.saucedemo.com/');\n  });\n\n  test('entra com usuário e senha', async ({ page }) => {\n    await page.goto('https://www.saucedemo.com/');\n    await page.getByPlaceholder('Username').fill('standard_user');\n    await page.getByPlaceholder('Password').fill('secret_sauce');\n    await page.getByRole('button', { name: 'Login' }).click();\n    await expect(page).toHaveURL(/inventory/);\n    await expect(page.getByText('Products')).toBeVisible();\n    await expect(page.getByText('Sauce Labs Backpack')).toContainText('Backpack');\n    await expect(page.getByRole('button', { name: 'Add to cart' })).toHaveCount(6);\n  });",
+        "legenda": "Apaga o goto do primeiro teste",
+        "fonte": 24,
+        "digitar": false,
+        "apagar": [
+         9
+        ],
+        "apagar_em": 2.6,
+        "destaque": [
+         5
+        ],
+        "destaque_em": 0.6
+       }
+      },
+      {
+       "text": "E do segundo também.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "login.spec.js",
+        "codigo": "\n  test('mostra erro para usuário bloqueado', async ({ page }) => {\n    await page.goto('https://www.saucedemo.com/');\n    await page.getByPlaceholder('Username').fill('locked_out_user');\n    await page.getByPlaceholder('Password').fill('secret_sauce');\n    await page.getByRole('button', { name: 'Login' }).click();\n    await expect(page.getByText('locked out')).toBeVisible();\n  });\n});",
+        "legenda": "E do segundo também",
+        "fonte": 26,
+        "digitar": false,
+        "linha0": 17,
+        "apagar": [
+         2
+        ],
+        "apagar_em": 1.0
+       }
+      },
+      {
+       "text": "O before each roda antes de cada teste: antes do teste um, abre o site. Antes do teste dois, abre de novo. Assim, cada teste começa do zero, sem depender do outro.",
+       "scene": {
+        "type": "cards",
+        "titulo": "ANTES DE CADA",
+        "itens": [
+         [
+          "1",
+          "Antes do teste 1",
+          "abre o site"
+         ],
+         [
+          "2",
+          "Antes do teste 2",
+          "abre de novo",
+          "#69a7ff"
+         ],
+         [
+          "✓",
+          "Cada teste",
+          "começa do zero",
+          "#3fd68a"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "E por que o login não foi pro before each também? Porque o segundo teste entra com outro usuário. No before each só vai o que é igual em todos os testes.",
+       "scene": {
+        "type": "traducao",
+        "titulo": "O QUE VAI NO BEFORE EACH",
+        "linhas": [
+         [
+          "abrir o site",
+          "igual nos dois: before each"
+         ],
+         [
+          "o login",
+          "muda o usuário: fica no teste"
+         ]
+        ]
        }
       },
       {
@@ -341,6 +392,7 @@
        "text": "E pra que a caixa? Num projeto de verdade, você tem um describe pra cada parte do site: Login, Carrinho, Checkout. Quando algo falha, você sabe na hora de qual parte é.",
        "scene": {
         "type": "cards",
+        "titulo": "UM DESCRIBE POR PARTE DO SITE",
         "itens": [
          [
           "🔑",
@@ -359,8 +411,7 @@
           "outro describe",
           "#ffd23f"
          ]
-        ],
-        "titulo": "UM DESCRIBE POR PARTE DO SITE"
+        ]
        }
       },
       {

@@ -61,31 +61,60 @@ AULAS = []
 
 # ---------- Aula 22 ----------
 REL22 = [["Login › entra com usuário e senha", "login.spec.js:8", "chromium", "ok", "1.1s"], ["Login › mostra erro para usuário bloqueado", "login.spec.js:18", "chromium", "ok", "0.7s"]]
+L21 = C21.split("\n"); L_LENTO = [i + 1 for i, l in enumerate(L21) if "usuário lento" in l][0]
+APAGA_LENTO = list(range(L_LENTO - 1, len(L21) + 1))  # a linha em branco antes e o teste inteiro
+# o segundo teste sendo escrito, aos poucos
+CAB2 = C16 + "\n\ntest('mostra erro para usuário bloqueado', async ({ page }) => {\n});"
+MEIO2 = "\n".join(LD[:L_T2 + 4] + ["});"])
+# o describe em volta dos dois testes (ainda sem o beforeEach)
+IND = lambda txt: "\n".join(("  " + l) if l else l for l in txt.split("\n"))
+C_DESC = "import { test, expect } from '@playwright/test';\n\ntest.describe('Login', () => {\n" + IND("\n".join(LD[2:])) + "\n});"
+LDS = C_DESC.split("\n"); L_GOTOS_D = [i + 1 for i, l in enumerate(LDS) if "page.goto" in l]
+# o beforeEach dentro do describe, com os goto ainda nos testes; depois os goto saem
+C22F = C22.replace("aula 22: ", "")
+C_TMP = C_DESC.replace("test.describe('Login', () => {\n", "test.describe('Login', () => {\n  test.beforeEach(async ({ page }) => {\n    await page.goto('https://www.saucedemo.com/');\n  });\n\n")
+LT = C_TMP.split("\n"); L_GOTOS_T = [i + 1 for i, l in enumerate(LT) if "page.goto" in l][1:]
+assert "\n".join(l for i, l in enumerate(LT) if i + 1 not in L_GOTOS_T) == C22F, "o fim da aula tem que ser igual à etapa validada"
 AULAS.append(projeto(22, "MÓDULO 5 · AULA 22", "describe e beforeEach", [
     ("O seu arquivo vai crescer. Hoje você aprende a deixar ele organizado.", titulo(22, "ORGANIZANDO")),
-    ("Antes, apaga aquele teste do usuário lento. Ele era só pra você ver a espera automática.",
-     edc(C21, "Apaga o teste do usuário lento", rolar=True, rolar_de=1.0, rolar_dur=1.2, destaque=list(range(14, 21)), destaque_em=2.4, fonte=24)),
-    ("Agora vamos criar um segundo teste. O saucedemo tem um usuário que não consegue entrar: o usuário bloqueado, locked underline out underline user.",
+    ("Antes, apaga aquele teste do usuário lento. Ele era só pra você ver a espera automática, e já cumpriu o papel dele.",
+     edc(C21, "Apaga o teste do usuário lento", rolar=True, rolar_de=0.6, rolar_dur=1.0, apagar=APAGA_LENTO, apagar_em=2.6, fonte=24)),
+    ("Agora um teste novo. Um bom teste de login não confere só quem entra: confere também quem não pode entrar. O saucedemo tem um usuário bloqueado: locked underline out underline user.",
      {"type": "tela", "media": "rec_sauce_locked", "url": SAUCE, "gravar": True, "titulo": "saucedemo.com", "legenda": "O usuário bloqueado não entra",
       "acoes": [{"fill": ["#user-name", "locked_out_user"]}, {"fill": ["#password", "secret_sauce"]}, {"click": "#login-button"}], "espera_fim": 2200, "delay_letra": 70}),
-    ("Escreve o teste novo embaixo do primeiro. Ele preenche o usuário bloqueado e espera ver a mensagem locked out.",
-     edc(DOIS, "O teste do usuário bloqueado", digitar=True, digitar_de=L_T2, rolar=True, rolar_de=0.8, rolar_dur=1.0, fonte=24)),
-    ("Repara: a linha do goto se repete nos dois testes.", edc(DOIS, "O goto se repete", destaque=L_GOTOS, destaque_em=0.6, rolar=True, rolar_de=2.2, rolar_dur=1.4, fonte=24)),
-    ("Quando algo se repete antes de todo teste, existe o before each. Before each: antes de cada.",
-     {"type": "traducao", "codigo": "test.beforeEach(async ({ page }) => {", "partes": [["before", "antes de"], ["Each", "cada"], ["({ page })", "me dê o navegador"]], "passo": 2.0}),
-    ("Coloca o goto lá dentro, e apaga dos testes.", edc(COM_BE, "O goto vai pro beforeEach", destaque=[3, 4, 5], destaque_em=0.6, rolar=True, rolar_de=2.6, rolar_dur=1.6, fonte=24)),
-    ("O before each roda antes de cada teste: antes do teste um, abre o site. Antes do teste dois, abre de novo. Assim, cada teste começa do zero, sem depender do outro.", {'type': 'cards', 'itens': [['1', 'Antes do teste 1', 'abre o site'], ['2', 'Antes do teste 2', 'abre de novo', '#69a7ff'], ['✓', 'Cada teste', 'começa do zero', '#3fd68a']], 'titulo': 'ANTES DE CADA'}),  # pra que / quando
-    ("E por que o login não foi pro before each também? Porque o segundo teste entra com outro usuário. No before each só vai o que é igual em todos os testes.", {'type': 'traducao', 'titulo': 'O QUE VAI NO BEFORE EACH', 'linhas': [['abrir o site', 'igual nos dois: before each'], ['o login', 'muda o usuário: fica no teste']]}),  # pra que / quando
-    ("Agora o describe. Describe é descrever: ele junta testes do mesmo assunto numa caixa com nome.",
+    ("Embaixo do primeiro teste, um test novo. E o nome diz o que ele confere: mostra erro para usuário bloqueado.",
+     edc(CAB2, "test('mostra erro para usuário bloqueado')", digitar=True, digitar_de=L_T2, rolar=True, rolar_de=0.5, rolar_dur=0.8, fonte=24)),
+    ("As quatro primeiras linhas você já conhece: abre o site, preenche o usuário, a senha, e clica em Login. A única diferença é o usuário: agora é o locked out user.",
+     edc(MEIO2, "Igual ao primeiro, só muda o usuário", digitar=True, digitar_de=L_T2 + 1, digitar_ate=L_T2 + 4, vel=0.85, rolar=True, rolar_de=0.4, rolar_dur=0.8, fonte=24)),
+    ("E a conferência é outra. Em vez de conferir que entrou, a gente confere que apareceu a mensagem de erro, que tem as palavras locked out.",
+     edc(DOIS, "Confere a mensagem de erro", digitar=True, digitar_de=L_T2 + 5, digitar_ate=L_T2 + 5, rolar=True, rolar_de=0.4, rolar_dur=0.8, fonte=24)),
+    ("Traduzindo: eu espero que o texto locked out esteja aparecendo na tela.",
+     {"type": "traducao", "codigo": "await expect(page.getByText('locked out')).toBeVisible();", "partes": [["expect", "eu espero que"], ["page.getByText('locked out')", "o texto locked out"], ["toBeVisible()", "esteja aparecendo"]], "passo": 1.6}),
+    ("Agora você tem dois testes do mesmo assunto: login. Pra organizar, existe o describe. Describe é descrever: ele junta testes do mesmo assunto numa caixa com nome.",
      {"type": "traducao", "codigo": "test.describe('Login', () => {", "partes": [["describe", "junte numa caixa"], ["'Login'", "com o nome Login"]], "passo": 2.0}),
     ("Logo depois do import, escreve: test ponto describe, abre parênteses, entre aspas Login, vírgula, abre e fecha parênteses, seta, e abre chaves.",
-     edc("\n".join(C22.replace("aula 22: ", "").split("\n")[:12]), "test.describe('Login', () => {", digitar=True, digitar_de=3, digitar_ate=3, fonte=26, destaque=[3], destaque_em=4.5)),
-    ("E lá no final do arquivo, fecha a caixa: chave, parêntese e ponto e vírgula. Os dois testes e o before each ficam aqui dentro.",
-     edc("\n".join(C22.replace("aula 22: ", "").split("\n")[12:]), "}); fecha a caixa do describe", linha0=13, digitar=True, digitar_de=12, digitar_ate=12, fonte=26, destaque=[12], destaque_em=2.0)),
-    ("Tudo que está dentro desse describe é sobre login.", edc(C22.replace("aula 22: ", ""), "Tudo aqui dentro é sobre login", fonte=22, destaque=[3, 24], destaque_em=0.3, rolar=True, rolar_de=0.6, rolar_dur=1.8)),
+     edc("\n".join(LDS[:12]), "test.describe('Login', () => {", digitar=True, digitar_de=3, digitar_ate=3, fonte=26, destaque=[3], destaque_em=4.5)),
+    ("Lá no final do arquivo, fecha a caixa: chave, parêntese e ponto e vírgula. E os dois testes vão pra dentro dela: seleciona os dois e aperta Tab, pra eles andarem um pouco pra direita.",
+     edc("\n".join(LDS[12:]), "}); fecha a caixa · Tab: os testes vão pra dentro", linha0=13, digitar=True, digitar_de=len(LDS) - 12, digitar_ate=len(LDS) - 12, fonte=26, destaque=[len(LDS) - 12], destaque_em=2.0)),
+    ("Agora repara numa coisa: a primeira linha dos dois testes é igual. Os dois abrem o site.",
+     edc(C_DESC, "O goto se repete nos dois testes", destaque=L_GOTOS_D, destaque_em=0.6, fonte=22)),
+    ("Quando alguma coisa se repete antes de todo teste, existe o before each. Before each: antes de cada.",
+     {"type": "traducao", "codigo": "test.beforeEach(async ({ page }) => {", "partes": [["before", "antes de"], ["Each", "cada"], ["({ page })", "me dê o navegador"]], "passo": 2.0}),
+    ("Ele vai dentro do describe, logo no começo, antes dos testes. E lá dentro, o goto.",
+     edc(C_TMP, "test.beforeEach dentro do describe", digitar=True, digitar_de=4, digitar_ate=6, fonte=22)),
+    ("Agora o goto dos testes não precisa mais: o before each já abre o site antes de cada um. Então apaga a linha do goto do primeiro teste.",
+     edc("\n".join(LT[:L_GOTOS_T[1] - 3]), "Apaga o goto do primeiro teste", apagar=[L_GOTOS_T[0]], apagar_em=2.6, destaque=[5], destaque_em=0.6, fonte=24)),
+    ("E do segundo também.",
+     edc("\n".join(l for i, l in enumerate(LT) if i + 1 != L_GOTOS_T[0])[0:0] + "\n".join([l for i, l in enumerate(LT) if i + 1 != L_GOTOS_T[0]][L_GOTOS_T[1] - 4:]), "E do segundo também",
+         linha0=L_GOTOS_T[1] - 3, apagar=[2], apagar_em=1.0, fonte=26)),
+    ("O before each roda antes de cada teste: antes do teste um, abre o site. Antes do teste dois, abre de novo. Assim, cada teste começa do zero, sem depender do outro.",
+     {"type": "cards", "titulo": "ANTES DE CADA", "itens": [["1", "Antes do teste 1", "abre o site"], ["2", "Antes do teste 2", "abre de novo", "#69a7ff"], ["✓", "Cada teste", "começa do zero", "#3fd68a"]]}),
+    ("E por que o login não foi pro before each também? Porque o segundo teste entra com outro usuário. No before each só vai o que é igual em todos os testes.",
+     {"type": "traducao", "titulo": "O QUE VAI NO BEFORE EACH", "linhas": [["abrir o site", "igual nos dois: before each"], ["o login", "muda o usuário: fica no teste"]]}),
     ("Lendo em português: um grupo chamado Login. Antes de cada teste, abra o site. Teste um: entra. Teste dois: mostra erro pro bloqueado.",
      {"type": "cards", "itens": [["▣", "Grupo Login", "describe"], ["↺", "Antes de cada", "abra o site", "#69a7ff"], ["1", "Teste 1", "entra", "#ffd23f"], ["2", "Teste 2", "erro do bloqueado", "#c792ea"]]}),
-    ("E pra que a caixa? Num projeto de verdade, você tem um describe pra cada parte do site: Login, Carrinho, Checkout. Quando algo falha, você sabe na hora de qual parte é.", {'type': 'cards', 'itens': [['🔑', 'Login', 'um describe'], ['🛒', 'Carrinho', 'outro describe', '#69a7ff'], ['💳', 'Checkout', 'outro describe', '#ffd23f']], 'titulo': 'UM DESCRIBE POR PARTE DO SITE'}),  # pra que / quando
+    ("E pra que a caixa? Num projeto de verdade, você tem um describe pra cada parte do site: Login, Carrinho, Checkout. Quando algo falha, você sabe na hora de qual parte é.",
+     {"type": "cards", "titulo": "UM DESCRIBE POR PARTE DO SITE", "itens": [["🔑", "Login", "um describe"], ["🛒", "Carrinho", "outro describe", "#69a7ff"], ["💳", "Checkout", "outro describe", "#ffd23f"]]}),
     ("Roda: os dois passam.", vs(C22, "Os dois passam", run(("Running 2 tests using 2 workers", "mut"), ("  2 passed (2.1s)", "ac")))),
     ("E no relatório eles aparecem juntos, debaixo de Login.", {"type": "pw_relatorio", "testes": REL22, "legenda": "Juntos, debaixo de Login"}),
     ("Na próxima aula: o arquivo de configuração.", proxima("playwright.config")[0]),
@@ -117,6 +146,12 @@ AULAS.append(projeto(23, "MÓDULO 5 · AULA 23", "playwright.config - baseURL e 
     ("No trabalho, é comum quem testa pedir pra quem desenvolve colocar data-test nos elementos importantes. É um dos seletores mais estáveis que existem.", {'type': 'cards', 'itens': [['🙋', 'Quem testa', 'pede o data-test'], ['👩\u200d💻', 'Quem desenvolve', 'coloca uma vez', '#69a7ff'], ['✓', 'Teste estável', 'não quebra à toa', '#3fd68a']]}),  # pra que / quando
     ("Então, vamos trocar os seletores que já estão nos testes pelo data-test. Repara: o before each continua igual, ele só abre o site.",
      edc("\n".join(C23.replace("aula 23: ", "").split("\n")[:12]), "O beforeEach só abre o site", fonte=24, destaque=[4, 5, 6], destaque_em=3.0)),
+    ("E de onde vêm esses nomes? Do próprio site. Clica com o botão direito no campo de usuário, e Inspecionar. Lá está: data-test igual username.",
+     {"type": "devtools", "media": "site_sauce_dev_user", "url": SAUCE, "inspecionar": "[data-test=\"username\"]", "attrs": ["class", "placeholder", "type", "data-test", "id", "name"], "realce": ["data-test"], "realce_em": 2.2, "realce_rotulo": "username", "legenda": "Campo usuário: data-test=\"username\""}),
+    ("No campo da senha, a mesma coisa: data-test igual password.",
+     {"type": "devtools", "media": "site_sauce_dev_pass", "url": SAUCE, "inspecionar": "[data-test=\"password\"]", "attrs": ["class", "placeholder", "type", "data-test", "id", "name"], "realce": ["data-test"], "realce_em": 2.2, "realce_rotulo": "password", "legenda": "Campo senha: data-test=\"password\""}),
+    ("E no botão: data-test igual login button. São esses nomes que vão dentro do get by test id.",
+     {"type": "devtools", "media": "site_sauce_dev_btn", "url": SAUCE, "inspecionar": "[data-test=\"login-button\"]", "attrs": ["class", "placeholder", "type", "data-test", "id", "name"], "realce": ["data-test"], "realce_em": 2.2, "realce_rotulo": "login-button", "legenda": "Botão: data-test=\"login-button\""}),
     ("A troca é assim: onde estava get by placeholder Username, fica get by test id username. A senha vira password. E o botão vira login button.",
      {"type": "traducao", "titulo": "A MESMA COISA, OUTRO SELETOR", "linhas": [["getByPlaceholder('Username')", "getByTestId('username')"], ["getByPlaceholder('Password')", "getByTestId('password')"],
                                                                            ["getByRole('button', { name: 'Login' })", "getByTestId('login-button')"]]}),
