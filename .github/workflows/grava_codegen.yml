@@ -1,0 +1,35 @@
+name: Gravar codegen de verdade
+# Abre o "npx playwright codegen" numa tela virtual (Xvfb), comanda mouse/teclado com xdotool e grava a tela com ffmpeg.
+on:
+  workflow_dispatch:
+    inputs:
+      roteiro:
+        description: "script em ferramentas/codegen/ (ex.: sonda.sh)"
+        required: true
+        default: "sonda.sh"
+jobs:
+  gravar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: write
+    defaults:
+      run:
+        working-directory: curso-playwright/projeto
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - run: sudo apt-get update -qq && sudo apt-get install -y -qq xvfb xdotool ffmpeg x11-utils openbox > /dev/null
+      - name: Gravar
+        run: bash ../../ferramentas/codegen/${{ inputs.roteiro }}
+      - name: Mandar pra release
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          ls -la cg_saida || true
+          for f in cg_saida/*; do gh release upload videos "$f" --clobber -R ${{ github.repository }} || true; done
