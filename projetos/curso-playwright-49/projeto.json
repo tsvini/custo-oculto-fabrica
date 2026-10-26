@@ -51,6 +51,26 @@
        }
       },
       {
+       "text": "Isso se chama cenário negativo: testar o que acontece quando a pessoa erra. No trabalho, é onde mais aparece bug, porque quase ninguém lembra de testar.",
+       "scene": {
+        "type": "cards",
+        "itens": [
+         [
+          "✓",
+          "Cenário positivo",
+          "tudo dá certo",
+          "#3fd68a"
+         ],
+         [
+          "✗",
+          "Cenário negativo",
+          "a pessoa erra",
+          "#ff6b6b"
+         ]
+        ]
+       }
+      },
+      {
        "text": "O teste: usuário certo, senha errada, e conferir a mensagem de erro. Pausa o vídeo e tenta fazer sozinho.",
        "scene": {
         "type": "desafio",

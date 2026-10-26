@@ -52,6 +52,31 @@
        }
       },
       {
+       "text": "E pra quem testa, pra que serve? Se você estragar um teste, volta pra versão que funcionava. E toda empresa usa: é assim que a equipe junta o trabalho de todo mundo.",
+       "scene": {
+        "type": "cards",
+        "itens": [
+         [
+          "↩",
+          "Voltar",
+          "pra versão que funcionava"
+         ],
+         [
+          "👥",
+          "Equipe",
+          "junta o trabalho de todos",
+          "#69a7ff"
+         ],
+         [
+          "🏢",
+          "Empresas",
+          "todas usam",
+          "#ffd23f"
+         ]
+        ]
+       }
+      },
+      {
        "text": "No terminal do VS Code: git init. Init é iniciar: comece a guardar as versões desta pasta.",
        "scene": {
         "type": "editor",

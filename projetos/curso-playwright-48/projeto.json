@@ -207,6 +207,28 @@
        }
       },
       {
+       "text": "E tem um uso muito comum: preparar o terreno. Antes de um teste de tela, você cria pela API o que ele precisa, em milissegundos, em vez de clicar em dez telas.",
+       "scene": {
+        "type": "compare",
+        "title": "PREPARAR OS DADOS",
+        "items": [
+         [
+          "PELA TELA",
+          "CLICAR EM DEZ TELAS",
+          "white"
+         ],
+         [
+          "PELA API",
+          "MILISSEGUNDOS",
+          "gold"
+         ]
+        ],
+        "size": 90,
+        "stagger": 1.8,
+        "vs": false
+       }
+      },
+      {
        "text": "Fechamos o bônus! Agora: desafios pra você praticar.",
        "scene": {
         "type": "passo",

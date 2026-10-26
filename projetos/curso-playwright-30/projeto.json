@@ -32,7 +32,7 @@
      "chapter": "",
      "sentences": [
       {
-       "text": "E se o próprio teste tirasse um print e gravasse um vídeo quando falha? Ele faz isso.",
+       "text": "Quando um teste falha, alguém precisa corrigir. E só dizer que o teste falhou não ajuda: a pessoa precisa ver o que aconteceu.",
        "scene": {
         "type": "bigtext",
         "stagger": 0.25,
@@ -51,7 +51,7 @@
        }
       },
       {
-       "text": "No config, dentro do use, adiciona duas linhas: screenshot only on failure, e video retain on failure.",
+       "text": "E se o próprio teste tirasse um print e gravasse um vídeo quando falha? Ele faz isso. No config, dentro do use, adiciona duas linhas: screenshot only on failure, e video retain on failure.",
        "scene": {
         "type": "editor",
         "arquivo": "playwright.config.js",
@@ -82,7 +82,7 @@
        }
       },
       {
-       "text": "Quebra o teste de novo e roda.",
+       "text": "Pra ver funcionando, quebra o teste de novo e roda.",
        "scene": {
         "type": "editor",
         "arquivo": "login.spec.js",
@@ -235,20 +235,77 @@
        }
       },
       {
-       "text": "E por que só quando falha? Porque gravar sempre deixa tudo mais lento e enche o computador de arquivo.",
+       "text": "E no trabalho, pra que serve isso? Esse print e esse vídeo são as suas evidências.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "PRINT + VÍDEO",
+          "white",
+          120
+         ],
+         [
+          "= EVIDÊNCIA",
+          "gold",
+          150
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Quando você abre o card do bug, anexa o print, o vídeo e o trace. Quem vai corrigir vê exatamente o que aconteceu, sem precisar te perguntar nada.",
+       "scene": {
+        "type": "tela",
+        "media": "card_bug",
+        "url": "repo:curso-playwright/material/cenas/card_bug.html",
+        "alvo": "Anexos (evidências)",
+        "titulo": "Card do bug",
+        "legenda": "Anexa print, vídeo e trace no card"
+       }
+      },
+      {
+       "text": "E dá pra gravar sempre, até quando passa? Dá: é só trocar pra on. Serve quando você precisa provar que funcionou, por exemplo, pra mostrar que um teste passou antes de fechar uma tarefa.",
+       "scene": {
+        "type": "traducao",
+        "titulo": "AS OPÇÕES",
+        "linhas": [
+         [
+          "'off'",
+          "nunca"
+         ],
+         [
+          "'only-on-failure' / 'retain-on-failure'",
+          "só quando falha"
+         ],
+         [
+          "'on'",
+          "sempre, até quando passa"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Mas gravar sempre deixa tudo mais lento e enche o computador de arquivo. Por isso o padrão bom é só quando falha, e você liga o on só quando precisa de evidência de tudo.",
        "scene": {
         "type": "cards",
         "itens": [
          [
-          "🐢",
-          "Gravar sempre",
-          "mais lento, muito arquivo",
-          "#ff8c42"
+          "✓",
+          "Dia a dia",
+          "só quando falha"
          ],
          [
-          "✓",
-          "Só quando falha",
-          "o que você precisa pra investigar"
+          "🎥",
+          "Precisa provar",
+          "liga o on",
+          "#ffd23f"
+         ],
+         [
+          "🐢",
+          "Sempre ligado",
+          "mais lento, muito arquivo",
+          "#ff8c42"
          ]
         ]
        }

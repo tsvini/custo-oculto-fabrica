@@ -51,6 +51,32 @@
        }
       },
       {
+       "text": "Por que começar pela compra? Porque é onde a loja ganha dinheiro. Se o carrinho quebra, ninguém compra. Se o checkout quebra, ninguém paga. É o primeiro fluxo que as empresas automatizam.",
+       "scene": {
+        "type": "cards",
+        "itens": [
+         [
+          "🔑",
+          "Login",
+          "quebrou: ninguém entra"
+         ],
+         [
+          "🛒",
+          "Carrinho",
+          "quebrou: ninguém compra",
+          "#69a7ff"
+         ],
+         [
+          "💳",
+          "Checkout",
+          "quebrou: ninguém paga",
+          "#ff6b6b"
+         ]
+        ],
+        "titulo": "O CAMINHO DO DINHEIRO"
+       }
+      },
+      {
        "text": "Depois do login, cada produto tem um botão Add to cart. Clica com o botão direito e Inspecionar: data-test igual add-to-cart-sauce-labs-backpack.",
        "scene": {
         "type": "devtools",

@@ -32,7 +32,7 @@
      "chapter": "",
      "sentences": [
       {
-       "text": "O saucedemo tem vários usuários que entram normalmente: standard, problem, performance glitch e visual. Copiar o mesmo teste quatro vezes? Não.",
+       "text": "O saucedemo tem vários usuários que entram normalmente: standard, problem, performance glitch e visual.",
        "scene": {
         "type": "tela",
         "media": "site_sauce_users",
@@ -45,7 +45,105 @@
        }
       },
       {
-       "text": "Primeiro, uma ideia nova: uma lista. Cria o arquivo usuarios ponto spec ponto js e escreve: const usuarios igual, abre colchetes.",
+       "text": "E o teste do login é igual pra todos: abre o site, preenche, clica e confere. A única coisa que muda é o nome do usuário.",
+       "scene": {
+        "type": "traducao",
+        "titulo": "4 TESTES IGUAIS: SÓ MUDA O NOME",
+        "linhas": [
+         [
+          "fill('standard_user')",
+          "teste 1"
+         ],
+         [
+          "fill('problem_user')",
+          "teste 2"
+         ],
+         [
+          "fill('performance_glitch_user')",
+          "teste 3"
+         ],
+         [
+          "fill('visual_user')",
+          "teste 4"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Dá pra copiar o teste quatro vezes? Dá. Mas aí, se o botão de login mudar, você conserta em quatro lugares. E pra testar um quinto usuário, copia tudo de novo.",
+       "scene": {
+        "type": "cards",
+        "titulo": "COPIAR 4 VEZES",
+        "itens": [
+         [
+          "⧉",
+          "4 cópias",
+          "do mesmo teste",
+          "#ff8c42"
+         ],
+         [
+          "✎",
+          "O botão mudou?",
+          "conserta em 4 lugares",
+          "#ff6b6b"
+         ],
+         [
+          "+",
+          "Mais um usuário?",
+          "copia tudo de novo",
+          "#ffd23f"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "E isso acontece muito num sistema de verdade: cliente, administrador, usuário novo. O mesmo teste precisa funcionar pra todos.",
+       "scene": {
+        "type": "cards",
+        "titulo": "NUM SISTEMA DE VERDADE",
+        "itens": [
+         [
+          "👤",
+          "Cliente",
+          "faz compras"
+         ],
+         [
+          "🛠",
+          "Administrador",
+          "gerencia a loja",
+          "#69a7ff"
+         ],
+         [
+          "🆕",
+          "Usuário novo",
+          "primeiro acesso",
+          "#ffd23f"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "A solução tem duas partes: uma lista com os nomes, e uma repetição que roda o teste uma vez pra cada nome da lista.",
+       "scene": {
+        "type": "cards",
+        "titulo": "A SOLUÇÃO",
+        "itens": [
+         [
+          "[ ]",
+          "Uma lista",
+          "com os nomes"
+         ],
+         [
+          "↻",
+          "Uma repetição",
+          "roda o teste pra cada nome",
+          "#ffd23f"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Primeiro, a lista. Cria o arquivo usuarios ponto spec ponto js e escreve: const usuarios igual, abre colchetes.",
        "scene": {
         "type": "editor",
         "arquivo": "usuarios.spec.js",
@@ -97,7 +195,7 @@
        }
       },
       {
-       "text": "Dentro da lista, os nomes entre aspas, separados por vírgula. A vírgula separa um item do outro.",
+       "text": "Pensa numa lista de compras: um item depois do outro. No código, cada nome vai entre aspas, e a vírgula separa um do outro. No fim, fecha os colchetes.",
        "scene": {
         "type": "editor",
         "arquivo": "usuarios.spec.js",
@@ -119,11 +217,12 @@
          "  package.json",
          "  playwright.config.js"
         ],
-        "digitar_de": 3
+        "digitar_de": 3,
+        "vel": 0.7
        }
       },
       {
-       "text": "Agora a repetição: for, abre parênteses, const usuario of usuarios.",
+       "text": "Pronto: a lista usuarios guarda quatro nomes. Agora, a repetição: for, abre parênteses, const usuario of usuarios, fecha parênteses e abre chaves.",
        "scene": {
         "type": "editor",
         "arquivo": "usuarios.spec.js",
@@ -171,7 +270,27 @@
        }
       },
       {
-       "text": "E o que estiver dentro das chaves do for se repete uma vez pra cada item. Quatro nomes, quatro vezes.",
+       "text": "Voltando pra lista de compras: pra cada item da lista, você pega ele no mercado. O for faz igual: pra cada nome da lista, ele roda o que está dentro das chaves.",
+       "scene": {
+        "type": "cards",
+        "titulo": "PARA CADA ITEM DA LISTA",
+        "itens": [
+         [
+          "🛒",
+          "Lista de compras",
+          "pega cada item"
+         ],
+         [
+          "↻",
+          "for",
+          "roda o que está nas chaves",
+          "#ffd23f"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Na primeira volta, usuario vale standard user. Na segunda, problem user. Na terceira, performance glitch user. E na quarta, visual user. Quatro nomes, quatro voltas.",
        "scene": {
         "type": "cards",
         "titulo": "O QUE ESTÁ DENTRO DO FOR RODA 4 VEZES",
@@ -203,7 +322,7 @@
        }
       },
       {
-       "text": "Por enquanto, o nome do teste é fixo: login funciona. Na próxima aula, a gente faz o nome mudar com o usuário.",
+       "text": "Agora, dentro das chaves do for, vai o teste de login que você já conhece. Por enquanto, com o nome fixo: login funciona.",
        "scene": {
         "type": "editor",
         "arquivo": "usuarios.spec.js",
@@ -229,12 +348,12 @@
        }
       },
       {
-       "text": "Dentro do teste, onde antes tinha standard user, agora vai a palavra usuario: o item da vez.",
+       "text": "E onde antes tinha standard user, agora vai a palavra usuario: o nome da volta da vez.",
        "scene": {
         "type": "editor",
         "arquivo": "usuarios.spec.js",
         "codigo": "import { test, expect } from '@playwright/test';\n\nconst usuarios = ['standard_user', 'problem_user', 'performance_glitch_user', 'visual_user'];\n\nfor (const usuario of usuarios) {\n  test('login funciona', async ({ page }) => {\n    await page.goto('/');\n    await page.getByTestId('username').fill(usuario);\n    await page.getByTestId('password').fill(process.env.SAUCE_PASSWORD);\n    await page.getByTestId('login-button').click();\n    // o performance_glitch_user é lento de propósito: damos 10 segundos em vez de 5\n    await expect(page.getByTestId('title')).toHaveText('Products', { timeout: 10000 });\n  });\n}",
-        "legenda": "fill(usuario): o item da vez",
+        "legenda": "fill(usuario): o nome da volta da vez",
         "fonte": 24,
         "digitar": false,
         "pastas": [
@@ -258,12 +377,29 @@
        }
       },
       {
-       "text": "Repara no timeout de dez segundos na conferência final. É uma exceção, por causa do performance glitch, que você conheceu na aula 21.",
+       "text": "Repara: usuario está sem aspas. Com aspas, ele ia digitar a palavra usuario, letra por letra. Sem aspas, ele digita o valor guardado: o nome da volta.",
+       "scene": {
+        "type": "traducao",
+        "titulo": "COM ASPAS × SEM ASPAS",
+        "linhas": [
+         [
+          "fill('usuario')",
+          "digita a palavra usuario"
+         ],
+         [
+          "fill(usuario)",
+          "digita o nome da volta"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "E o timeout de dez segundos na conferência final? O performance glitch demora uns cinco segundos pra entrar, e o expect espera cinco. Então, só nessa linha, a gente dá dez.",
        "scene": {
         "type": "editor",
         "arquivo": "usuarios.spec.js",
         "codigo": "import { test, expect } from '@playwright/test';\n\nconst usuarios = ['standard_user', 'problem_user', 'performance_glitch_user', 'visual_user'];\n\nfor (const usuario of usuarios) {\n  test('login funciona', async ({ page }) => {\n    await page.goto('/');\n    await page.getByTestId('username').fill(usuario);\n    await page.getByTestId('password').fill(process.env.SAUCE_PASSWORD);\n    await page.getByTestId('login-button').click();\n    // o performance_glitch_user é lento de propósito: damos 10 segundos em vez de 5\n    await expect(page.getByTestId('title')).toHaveText('Products', { timeout: 10000 });\n  });\n}",
-        "legenda": "Exceção: o usuário lento",
+        "legenda": "O usuário lento: 10 segundos só aqui",
         "fonte": 24,
         "digitar": false,
         "pastas": [
@@ -281,13 +417,50 @@
          "  playwright.config.js"
         ],
         "destaque": [
+         11,
          12
         ],
         "destaque_em": 0.6
        }
       },
       {
-       "text": "Na próxima aula: um nome de teste que muda sozinho.",
+       "text": "Esse jeito tem nome: teste orientado a dados. Um teste, vários dados. Use sempre que o passo a passo é o mesmo e só muda o que você digita.",
+       "scene": {
+        "type": "traducao",
+        "titulo": "QUANDO USAR",
+        "linhas": [
+         [
+          "mesmos passos, dados diferentes",
+          "uma lista + for"
+         ],
+         [
+          "passos diferentes",
+          "testes separados"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "E o melhor: quer testar um quinto usuário? É só um nome a mais na lista. Nenhuma linha de teste nova.",
+       "scene": {
+        "type": "cards",
+        "itens": [
+         [
+          "+",
+          "Mais um usuário?",
+          "um nome a mais na lista"
+         ],
+         [
+          "✓",
+          "Linhas de teste novas",
+          "nenhuma",
+          "#3fd68a"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Só que, se você rodar agora, vai dar um erro. Na próxima aula você entende por quê, e conserta.",
        "scene": {
         "type": "passo",
         "icone": "▶",

@@ -105,6 +105,33 @@
        }
       },
       {
+       "text": "Por que três? Porque um site pode funcionar no Chrome e quebrar no Safari. Cada navegador desenha a página do seu jeito, e bug de um navegador só acontece bastante.",
+       "scene": {
+        "type": "cards",
+        "itens": [
+         [
+          "✓",
+          "Chromium",
+          "funcionou",
+          "#3fd68a"
+         ],
+         [
+          "✓",
+          "Firefox",
+          "funcionou",
+          "#3fd68a"
+         ],
+         [
+          "✗",
+          "WebKit (Safari)",
+          "o botão sumiu",
+          "#ff6b6b"
+         ]
+        ],
+        "titulo": "O MESMO SITE"
+       }
+      },
+      {
        "text": "Roda tudo e repara na linha workers. Aqui na minha máquina apareceram quatro; na sua pode aparecer outro número. Worker é um trabalhador: um processo que ajuda a rodar testes ao mesmo tempo.",
        "scene": {
         "type": "editor",
@@ -167,6 +194,28 @@
        }
       },
       {
+       "text": "E por que paralelo? Velocidade. Duzentos testes de cinco segundos, um de cada vez, levam mais de quinze minutos. Com quatro workers, uns quatro minutos.",
+       "scene": {
+        "type": "compare",
+        "title": "200 TESTES DE 5 SEGUNDOS",
+        "items": [
+         [
+          "UM POR VEZ",
+          "MAIS DE 15 MINUTOS",
+          "white"
+         ],
+         [
+          "4 WORKERS",
+          "UNS 4 MINUTOS",
+          "gold"
+         ]
+        ],
+        "size": 90,
+        "stagger": 1.8,
+        "vs": false
+       }
+      },
+      {
        "text": "No config, o fully parallel true liga isso. E no GitHub ele usa um worker só, pra execução ficar mais estável e previsível.",
        "scene": {
         "type": "editor",
@@ -181,6 +230,23 @@
          8
         ],
         "destaque_em": 0.6
+       }
+      },
+      {
+       "text": "No dia a dia, enquanto escreve, roda só no Chromium com traço traço project igual chromium, que é mais rápido. Os três navegadores ficam pro GitHub, que roda tudo a cada mudança.",
+       "scene": {
+        "type": "traducao",
+        "titulo": "NO DIA A DIA",
+        "linhas": [
+         [
+          "escrevendo o teste",
+          "--project=chromium"
+         ],
+         [
+          "no GitHub, a cada mudança",
+          "os 3 navegadores"
+         ]
+        ]
        }
       },
       {

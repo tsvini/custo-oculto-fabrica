@@ -220,6 +220,25 @@
        }
       },
       {
+       "text": "E o relatório fica legível até pra quem não programa: alguém da equipe abre e entende o que foi testado, passo por passo.",
+       "scene": {
+        "type": "cards",
+        "itens": [
+         [
+          "📄",
+          "Relatório",
+          "lê como um roteiro"
+         ],
+         [
+          "👥",
+          "A equipe",
+          "entende sem programar",
+          "#69a7ff"
+         ]
+        ]
+       }
+      },
+      {
        "text": "Na próxima aula: fazendo o login uma vez só.",
        "scene": {
         "type": "passo",

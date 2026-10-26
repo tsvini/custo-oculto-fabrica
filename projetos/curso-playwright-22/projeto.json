@@ -181,6 +181,49 @@
        }
       },
       {
+       "text": "O before each roda antes de cada teste: antes do teste um, abre o site. Antes do teste dois, abre de novo. Assim, cada teste começa do zero, sem depender do outro.",
+       "scene": {
+        "type": "cards",
+        "itens": [
+         [
+          "1",
+          "Antes do teste 1",
+          "abre o site"
+         ],
+         [
+          "2",
+          "Antes do teste 2",
+          "abre de novo",
+          "#69a7ff"
+         ],
+         [
+          "✓",
+          "Cada teste",
+          "começa do zero",
+          "#3fd68a"
+         ]
+        ],
+        "titulo": "ANTES DE CADA"
+       }
+      },
+      {
+       "text": "E por que o login não foi pro before each também? Porque o segundo teste entra com outro usuário. No before each só vai o que é igual em todos os testes.",
+       "scene": {
+        "type": "traducao",
+        "titulo": "O QUE VAI NO BEFORE EACH",
+        "linhas": [
+         [
+          "abrir o site",
+          "igual nos dois: before each"
+         ],
+         [
+          "o login",
+          "muda o usuário: fica no teste"
+         ]
+        ]
+       }
+      },
+      {
        "text": "Agora o describe. Describe é descrever: ele junta testes do mesmo assunto numa caixa com nome.",
        "scene": {
         "type": "traducao",
@@ -292,6 +335,32 @@
           "#c792ea"
          ]
         ]
+       }
+      },
+      {
+       "text": "E pra que a caixa? Num projeto de verdade, você tem um describe pra cada parte do site: Login, Carrinho, Checkout. Quando algo falha, você sabe na hora de qual parte é.",
+       "scene": {
+        "type": "cards",
+        "itens": [
+         [
+          "🔑",
+          "Login",
+          "um describe"
+         ],
+         [
+          "🛒",
+          "Carrinho",
+          "outro describe",
+          "#69a7ff"
+         ],
+         [
+          "💳",
+          "Checkout",
+          "outro describe",
+          "#ffd23f"
+         ]
+        ],
+        "titulo": "UM DESCRIBE POR PARTE DO SITE"
        }
       },
       {

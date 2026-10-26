@@ -90,6 +90,8 @@ def preencher():
     C = cod(49); ed, ab = solucao(C, "test('desafio 1", "fill, fill, click e o expect")
     aula(49, "Desafio 1 - senha errada", [
         ("Primeiro desafio: o que acontece quando alguém erra a senha?", titulo(49, "DESAFIO 1")),
+        ("Isso se chama cenário negativo: testar o que acontece quando a pessoa erra. No trabalho, é onde mais aparece bug, porque quase ninguém lembra de testar.",
+         {"type": "cards", "itens": [["✓", "Cenário positivo", "tudo dá certo", "#3fd68a"], ["✗", "Cenário negativo", "a pessoa erra", "#ff6b6b"]]}),  # pra que / quando
         ("O teste: usuário certo, senha errada, e conferir a mensagem de erro. Pausa o vídeo e tenta fazer sozinho.",
          desafio("1", "Senha errada", [["👤", "usuário certo: standard_user"], ["🔑", "senha errada (qualquer uma)", VERM], ["✓", "confere a mensagem de erro", AMARELO]])),
         ("Dica: a mensagem fica no data-test error, e contém do not match.",

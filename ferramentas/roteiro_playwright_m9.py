@@ -40,6 +40,7 @@ AULAS = []
 AULAS.append(projeto(43, "MÓDULO 9 · AULA 43", "Git - salvando o projeto", [
     ("O Git é um programa que guarda versões do seu projeto. Como pontos de salvamento num jogo.",
      {"type": "cards", "titulo": "GIT", "itens": [["💾", "Pontos de salvamento", "cada salvamento é um commit"], ["↺", "Voltar no tempo", "se algo quebrar", "#69a7ff"]]}),
+    ("E pra quem testa, pra que serve? Se você estragar um teste, volta pra versão que funcionava. E toda empresa usa: é assim que a equipe junta o trabalho de todo mundo.", {"type": "cards", "itens": [["↩", "Voltar", "pra versão que funcionava"], ["👥", "Equipe", "junta o trabalho de todos", "#69a7ff"], ["🏢", "Empresas", "todas usam", "#ffd23f"]]}),  # pra que / quando
     ("No terminal do VS Code: git init. Init é iniciar: comece a guardar as versões desta pasta.",
      git("init = iniciar", [{"cmd": "git init"}, {"out": "Initialized empty Git repository in", "cor": "mut"}, {"out": "C:/Users/voce/Documents/meu-primeiro-playwright/.git/", "cor": "mut"}], colinha=True, colinha_em=1.2)),
     ("Depois: git add ponto. Add é adicionar, e o ponto quer dizer tudo: prepare todos os arquivos pro próximo salvamento.",
@@ -87,6 +88,7 @@ L_ENV = ln(YML, "env:")
 GHA = {"type": "gh_actions", "usuario": "voce", "repo": "meu-primeiro-playwright", "workflow": "Playwright Tests", "commit": "testes no GitHub Actions"}
 AULAS.append(projeto(45, "MÓDULO 9 · AULA 45", "GitHub Actions - os testes rodando sozinhos", [
     ("E se o GitHub rodasse os seus testes sozinho? É isso que o GitHub Actions faz.", titulo(45, "GITHUB ACTIONS")),
+    ("Por que isso importa? Sem ele, alguém precisa lembrar de rodar os testes. Com ele, toda mudança no site roda os testes sozinha, e o bug é pego antes de chegar no cliente.", {"type": "compare", "title": "RODAR OS TESTES", "items": [["SEM ACTIONS", "ALGUÉM PRECISA LEMBRAR", "white"], ["COM ACTIONS", "RODA A CADA MUDANÇA", "gold"]], "size": 90, "stagger": 1.8, "vs": False}),  # pra que / quando
     ("O Playwright já criou esse arquivo lá no começo: ponto github, workflows, playwright ponto yml.",
      edc(YML0, ".github/workflows/playwright.yml", arquivo="playwright.yml", pastas=ARV_AUTH, rolar=True, rolar_de=2.0, rolar_dur=2.0, fonte=22)),
     ("Lendo em português: quando houver um push ou um pull request na main, use uma máquina Ubuntu, instale tudo e rode os testes. Esses quandos são os gatilhos do arquivo.",
@@ -100,6 +102,7 @@ AULAS.append(projeto(45, "MÓDULO 9 · AULA 45", "GitHub Actions - os testes rod
      edc(YML, "env: os segredos entregues aos testes", arquivo="playwright.yml", pastas=ARV_AUTH, digitar=True, digitar_de=L_ENV, digitar_ate=L_ENV + 2, rolar=True, rolar_de=0.6, rolar_dur=0.9, fonte=22)),
     ("Manda pro GitHub com git push e abre a aba Actions: olha os testes rodando lá.", dict(GHA, inicio_em=1.0, legenda="Os testes rodando no GitHub")),
     ("Verde: passou. E no fim tem o relatório pra baixar, porque esse arquivo tem o passo que guarda ele.", dict(GHA, pronto=True, status="ok", artefato="playwright-report", legenda="Passou · o relatório pra baixar")),
+    ("E se ficar vermelho? O GitHub te avisa por e-mail. Você baixa o relatório, abre o trace, o print e o vídeo, como nas aulas 28 e 30, e anexa no card do bug.", {"type": "cards", "itens": [["✗", "Vermelho", "o GitHub te avisa", "#ff6b6b"], ["⬇", "Baixa o relatório", "trace, print e vídeo", "#69a7ff"], ["📋", "Card do bug", "com as evidências", "#ffd23f"]]}),  # pra que / quando
     ("Fechamos o projeto! Tem bônus: testes de API.", {"type": "passo", "icone": "▶", "titulo": "Próximo módulo", "sub": "Bônus: testes de API"}),
     ("Te vejo lá!", {"type": "endcard", "sub": "PRÓXIMA: MÓDULO 10 · API"}),
 ]))

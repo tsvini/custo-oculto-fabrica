@@ -2,13 +2,14 @@
 
 ## Aula 35: O carrinho
 1. Começa o projeto final: o fluxo de compra completo, do login até o obrigado. Hoje, o carrinho. [bigtext]
-2. Depois do login, cada produto tem um botão Add to cart. Clica com o botão direito e Inspecionar: data-test igual add-to-cart-sauce-labs-backpack. [devtools]
-3. Cria o compra ponto spec ponto js, com o login no before each, do jeito que você já sabe. [editor]
-4. No teste: get by test id add-to-cart-sauce-labs-backpack, ponto click. [editor]
-5. E a conferência: o numerozinho do carrinho mostra um. get by test id shopping-cart-badge, to have text um. [editor]
-6. Roda com o navegador aparecendo: olha ele entrando, clicando em Add to cart, e o carrinho mostrando um. [editor]
-7. Na próxima aula: terminando o fluxo. [passo]
-8. Te vejo lá! [endcard]
+2. Por que começar pela compra? Porque é onde a loja ganha dinheiro. Se o carrinho quebra, ninguém compra. Se o checkout quebra, ninguém paga. É o primeiro fluxo que as empresas automatizam. [cards]
+3. Depois do login, cada produto tem um botão Add to cart. Clica com o botão direito e Inspecionar: data-test igual add-to-cart-sauce-labs-backpack. [devtools]
+4. Cria o compra ponto spec ponto js, com o login no before each, do jeito que você já sabe. [editor]
+5. No teste: get by test id add-to-cart-sauce-labs-backpack, ponto click. [editor]
+6. E a conferência: o numerozinho do carrinho mostra um. get by test id shopping-cart-badge, to have text um. [editor]
+7. Roda com o navegador aparecendo: olha ele entrando, clicando em Add to cart, e o carrinho mostrando um. [editor]
+8. Na próxima aula: terminando o fluxo. [passo]
+9. Te vejo lá! [endcard]
 
 ## Aula 36: Finalizando a compra
 1. Hoje o robô completa o fluxo inteiro da compra: carrinho, dados, revisão e finalização. É um site de treino, então nenhuma compra de verdade acontece. [bigtext]
@@ -18,8 +19,9 @@
 5. Na tela de revisão, clica em finish. [editor]
 6. E a conferência final: complete-header, to have text, Thank you for your order. [editor]
 7. Roda com o navegador aparecendo e olha o fluxo inteiro acontecendo sozinho. [editor]
-8. Na próxima aula: uma coisa que você talvez já tenha percebido. [passo]
-9. Te vejo lá! [endcard]
+8. Agora a compra inteira roda em segundos, sempre do mesmo jeito. Fazer isso na mão, em três navegadores, toda vez que alguém muda o site, é exatamente o trabalho que a automação tira de você. [compare]
+9. Na próxima aula: uma coisa que você talvez já tenha percebido. [passo]
+10. Te vejo lá! [endcard]
 
 ## Aula 37: Percebeu que estamos copiando código?
 1. Olha o login no login ponto spec, e olha o login no compra ponto spec. É o mesmo código, duas vezes. [editor]
@@ -72,8 +74,9 @@
 4. Coloca o primeiro passo: adiciona a mochila no carrinho. Roda e abre o relatório: o passo aparece com esse nome. [pw_relatorio]
 5. Agora os outros três, do mesmo jeito: abre o carrinho, preenche os dados de entrega, finaliza a compra. [editor]
 6. E se falhar, o relatório mostra exatamente em qual passo. [pw_relatorio]
-7. Na próxima aula: fazendo o login uma vez só. [passo]
-8. Te vejo lá! [endcard]
+7. E o relatório fica legível até pra quem não programa: alguém da equipe abre e entende o que foi testado, passo por passo. [cards]
+8. Na próxima aula: fazendo o login uma vez só. [passo]
+9. Te vejo lá! [endcard]
 
 ## Aula 42: Indo além - login uma vez só com storageState
 1. Todo teste faz login de novo. Em centenas de testes, é muito tempo perdido. [bigtext]
@@ -84,5 +87,6 @@
 6. Agora, quem usa o login salvo? Existem dois jeitos. A gente vai usar este: ligar só nos arquivos que precisam começar logados. O teste de login, por exemplo, precisa começar deslogado. [cards]
 7. No arquivo da compra: test ponto use, storage state, e o caminho do arquivo. Use esse login salvo. [editor]
 8. Roda: o setup aparece primeiro, e a compra começa direto na página de produtos. [editor]
-9. Projeto final pronto! Agora ele vai pro GitHub. [passo]
-10. Te vejo lá! [endcard]
+9. Quando não usar: no teste do próprio login, claro, que precisa começar deslogado. E se um teste precisa de outro usuário, ele precisa de outro arquivo de login. [traducao]
+10. Projeto final pronto! Agora ele vai pro GitHub. [passo]
+11. Te vejo lá! [endcard]

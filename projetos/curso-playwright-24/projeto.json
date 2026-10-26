@@ -408,6 +408,25 @@
        }
       },
       {
+       "text": "E no GitHub, onde não existe o seu ponto env? Lá, quem entrega esses valores são os secrets, um cofre do próprio GitHub. Você vê isso na aula 45.",
+       "scene": {
+        "type": "cards",
+        "itens": [
+         [
+          "💻",
+          "Na sua máquina",
+          "o arquivo .env"
+         ],
+         [
+          "☁",
+          "No GitHub",
+          "os secrets, na aula 45",
+          "#69a7ff"
+         ]
+        ]
+       }
+      },
+      {
        "text": "Na próxima aula: rodando só o que importa.",
        "scene": {
         "type": "passo",

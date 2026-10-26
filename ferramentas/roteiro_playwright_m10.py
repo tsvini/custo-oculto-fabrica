@@ -61,6 +61,7 @@ AULAS.append(projeto(46, "MÓDULO 10 · AULA 46", "O que é uma API, explicado d
 L_GET, L_ST, L_JSON, L_ID = ln(C47, "request.get"), ln(C47, "status()"), ln(C47, "json()"), ln(C47, "post.id")
 AULAS.append(projeto(47, "MÓDULO 10 · AULA 47", "Seu primeiro teste de API", [
     ("Teste de API não abre navegador nenhum. Por isso ele é bem rápido.", titulo(47, "TESTE DE API")),
+    ("E por que testar a API, se dá pra testar pela tela? Porque se o servidor devolve o dado errado, a tela também mostra errado. Na API você acha o problema na origem, e em milissegundos.", {"type": "cards", "itens": [["⇄", "API", "a origem dos dados"], ["🖥", "Tela", "mostra o que veio", "#69a7ff"], ["⚡", "Rápido", "milissegundos", "#ffd23f"]]}),  # pra que / quando
     ("Cria o api ponto spec ponto js. No teste, em vez do page, você pede o request, entre chaves.",
      ed(C47, "{ request } no lugar do { page }", de=1, ate=4, mostra=L_GET - 1)),
     ("Request quer dizer requisição.", tr("async ({ request }) => {", [["{ request }", "a requisição"]], 1.0)),
@@ -76,6 +77,7 @@ AULAS.append(projeto(47, "MÓDULO 10 · AULA 47", "Seu primeiro teste de API", [
     ("Roda: passou, em milissegundos.",
      rodar(C47, "--reporter=list mostra o tempo de cada teste", [("Running 2 tests using 2 workers", "mut"), (SETUP, "mut"),
                                                                    ("  ✓  2 [chromium] › tests/api.spec.js:3:5 › busca um post (119ms)", "ac"), ("  2 passed (1.6s)", "ac")])),
+    ("No dia a dia: conferir dados e regras, pela API, que é rápida. Pela tela, os caminhos que a pessoa faz, como o login e a compra.", {"type": "traducao", "titulo": "QUANDO USAR", "linhas": [["conferir dados e regras", "teste de API"], ["o que a pessoa faz na tela", "teste de tela"]]}),  # pra que / quando
     ("Na próxima aula: criando e apagando pela API.", proxima("criando e apagando")[0]),
     ("Te vejo lá!", proxima("criando e apagando")[1]),
 ]))
@@ -98,6 +100,7 @@ AULAS.append(projeto(48, "MÓDULO 10 · AULA 48", "Criando e apagando dados pela
                                               ("  ✓  4 [chromium] › tests/api.spec.js:19:5 › apaga um post (43ms)", "ac"), ("  4 passed (1.7s)", "ac")], n=8)),
     ("Num sistema real, essa criação e essa exclusão ficariam guardadas no banco de dados.",
      {"type": "cards", "itens": [["🧪", "API de treino", "responde, mas não guarda"], ["🗄", "Sistema real", "guarda no banco de dados", "#69a7ff"]]}),
+    ("E tem um uso muito comum: preparar o terreno. Antes de um teste de tela, você cria pela API o que ele precisa, em milissegundos, em vez de clicar em dez telas.", {"type": "compare", "title": "PREPARAR OS DADOS", "items": [["PELA TELA", "CLICAR EM DEZ TELAS", "white"], ["PELA API", "MILISSEGUNDOS", "gold"]], "size": 90, "stagger": 1.8, "vs": False}),  # pra que / quando
     ("Fechamos o bônus! Agora: desafios pra você praticar.", {"type": "passo", "icone": "▶", "titulo": "Próximo módulo", "sub": "Desafios pra praticar"}),
     ("Te vejo lá!", {"type": "endcard", "sub": "PRÓXIMA: DESAFIOS"}),
 ]))

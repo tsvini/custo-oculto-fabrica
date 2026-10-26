@@ -327,6 +327,28 @@
        }
       },
       {
+       "text": "Agora a compra inteira roda em segundos, sempre do mesmo jeito. Fazer isso na mão, em três navegadores, toda vez que alguém muda o site, é exatamente o trabalho que a automação tira de você.",
+       "scene": {
+        "type": "compare",
+        "title": "A COMPRA INTEIRA",
+        "items": [
+         [
+          "NA MÃO",
+          "MINUTOS, TODA VEZ",
+          "white"
+         ],
+         [
+          "AUTOMÁTICO",
+          "SEGUNDOS, SEMPRE IGUAL",
+          "gold"
+         ]
+        ],
+        "size": 90,
+        "stagger": 1.8,
+        "vs": false
+       }
+      },
+      {
        "text": "Na próxima aula: uma coisa que você talvez já tenha percebido.",
        "scene": {
         "type": "passo",

@@ -355,6 +355,27 @@
        }
       },
       {
+       "text": "Quando não usar: no teste do próprio login, claro, que precisa começar deslogado. E se um teste precisa de outro usuário, ele precisa de outro arquivo de login.",
+       "scene": {
+        "type": "traducao",
+        "titulo": "QUANDO USAR",
+        "linhas": [
+         [
+          "testes que começam logados",
+          "o login salvo"
+         ],
+         [
+          "o teste do login",
+          "começa deslogado"
+         ],
+         [
+          "outro usuário",
+          "outro arquivo de login"
+         ]
+        ]
+       }
+      },
+      {
        "text": "Projeto final pronto! Agora ele vai pro GitHub.",
        "scene": {
         "type": "passo",

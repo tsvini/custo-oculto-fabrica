@@ -61,6 +61,7 @@ L_ADD = ln(C35, "add-to-cart")
 L_BADGE = ln(C35, "shopping-cart-badge")
 AULAS.append(projeto(35, "MÓDULO 8 · AULA 35", "O carrinho", [
     ("Começa o projeto final: o fluxo de compra completo, do login até o obrigado. Hoje, o carrinho.", titulo(35, "O CARRINHO")),
+    ("Por que começar pela compra? Porque é onde a loja ganha dinheiro. Se o carrinho quebra, ninguém compra. Se o checkout quebra, ninguém paga. É o primeiro fluxo que as empresas automatizam.", {"type": "cards", "itens": [["🔑", "Login", "quebrou: ninguém entra"], ["🛒", "Carrinho", "quebrou: ninguém compra", "#69a7ff"], ["💳", "Checkout", "quebrou: ninguém paga", "#ff6b6b"]], "titulo": "O CAMINHO DO DINHEIRO"}),  # pra que / quando
     ("Depois do login, cada produto tem um botão Add to cart. Clica com o botão direito e Inspecionar: data-test igual add-to-cart-sauce-labs-backpack.",
      {"type": "devtools", "media": "site_sauce_produtos_dev", "url": SAUCE, "acoes": LOGIN, "inspecionar": "[data-test=\"add-to-cart-sauce-labs-backpack\"]",
       "attrs": ["class", "data-test", "id", "name"], "realce": ["data-test"], "realce_em": 4.0, "realce_rotulo": "este", "legenda": "data-test do botão Add to cart"}),
@@ -95,6 +96,7 @@ AULAS.append(projeto(36, "MÓDULO 8 · AULA 36", "Finalizando a compra", [
      edc(C36, "complete-header = o título do final", arquivo="compra.spec.js", pastas=ARV_C, digitar=True, digitar_de=L_HEADER, digitar_ate=L_HEADER, fonte=22, rolar=True, rolar_de=0.6, rolar_dur=0.8)),
     ("Roda com o navegador aparecendo e olha o fluxo inteiro acontecendo sozinho.",
      rodando(C36, L_T36, L_HEADER + 1, "O fluxo inteiro, sozinho", COMPRA, "rec_compra", extra={"espera_fim": 2200, "delay_letra": 45})),
+    ("Agora a compra inteira roda em segundos, sempre do mesmo jeito. Fazer isso na mão, em três navegadores, toda vez que alguém muda o site, é exatamente o trabalho que a automação tira de você.", {"type": "compare", "title": "A COMPRA INTEIRA", "items": [["NA MÃO", "MINUTOS, TODA VEZ", "white"], ["AUTOMÁTICO", "SEGUNDOS, SEMPRE IGUAL", "gold"]], "size": 90, "stagger": 1.8, "vs": False}),  # pra que / quando
     ("Na próxima aula: uma coisa que você talvez já tenha percebido.", proxima("percebeu?")[0]),
     ("Te vejo lá!", proxima("percebeu?")[1]),
 ]))
@@ -205,6 +207,7 @@ AULAS.append(projeto(41, "MÓDULO 8 · AULA 41", "test.step - um relatório que 
      {"type": "pw_relatorio", "testes": [["Compra › compra uma mochila do começo ao fim", "compra.spec.js:13", "chromium", "falhou", "6.2s"]],
       "abrir": {"titulo": "compra uma mochila do começo ao fim", "status": "falhou", "arquivo": "compra.spec.js:13", "projeto": "chromium",
                 "passos": PASSOS[:3] + [["preenche os dados de entrega", "5.0s", "falhou"]]}, "legenda": "Falhou: o relatório mostra o passo"}),
+    ("E o relatório fica legível até pra quem não programa: alguém da equipe abre e entende o que foi testado, passo por passo.", {"type": "cards", "itens": [["📄", "Relatório", "lê como um roteiro"], ["👥", "A equipe", "entende sem programar", "#69a7ff"]]}),  # pra que / quando
     ("Na próxima aula: fazendo o login uma vez só.", proxima("login uma vez só")[0]),
     ("Te vejo lá!", proxima("login uma vez só")[1]),
 ]))
@@ -235,6 +238,7 @@ AULAS.append(projeto(42, "MÓDULO 8 · AULA 42", "Indo além - login uma vez só
                    {"out": "  ✓ [setup] › faz login uma vez", "cor": "ac", "em": 0.09}, {"out": "  2 passed (4.1s)", "cor": "ac", "em": 0.86}],
          navegador={"media": "rec_logado", "url": "https://www.saucedemo.com/inventory.html", "pre_url": SAUCE, "pre_acoes": LOGIN, "gravar": True, "acoes": COMPRA[3:],
                     "espera_inicio": 900, "espera_fim": 2000, "delay_letra": 45, "titulo": "Chromium", "em": 0.12, "ate": 0.84})),
+    ("Quando não usar: no teste do próprio login, claro, que precisa começar deslogado. E se um teste precisa de outro usuário, ele precisa de outro arquivo de login.", {"type": "traducao", "titulo": "QUANDO USAR", "linhas": [["testes que começam logados", "o login salvo"], ["o teste do login", "começa deslogado"], ["outro usuário", "outro arquivo de login"]]}),  # pra que / quando
     ("Projeto final pronto! Agora ele vai pro GitHub.", {"type": "passo", "icone": "▶", "titulo": "Próximo módulo", "sub": "Git, GitHub e CI"}),
     ("Te vejo lá!", {"type": "endcard", "sub": "PRÓXIMA: MÓDULO 9 · GIT E GITHUB"}),
 ]))

@@ -114,6 +114,28 @@
        }
       },
       {
+       "text": "E no trabalho isso é muito usado: o mesmo teste roda no site de teste da empresa e no site de verdade. Só muda o endereço base.",
+       "scene": {
+        "type": "compare",
+        "title": "O MESMO TESTE",
+        "items": [
+         [
+          "SITE DE TESTE",
+          "TESTE.LOJA.COM",
+          "white"
+         ],
+         [
+          "SITE DE VERDADE",
+          "LOJA.COM",
+          "gold"
+         ]
+        ],
+        "size": 90,
+        "stagger": 1.8,
+        "vs": false
+       }
+      },
+      {
        "text": "Segunda linha: test id attribute igual data-test. Lembra do data-test que a gente viu no Inspecionar?",
        "scene": {
         "type": "editor",
@@ -149,7 +171,54 @@
        }
       },
       {
-       "text": "Agora o get by test id também funciona no saucedemo. Pra você ver esse outro caminho, a gente vai trocar os seletores que já estão nos testes. Repara: o before each continua igual, ele só abre o site.",
+       "text": "E por que usar o data-test? Porque ele existe só pra teste. O texto Username pode mudar: alguém traduz pra Usuário, e o seletor pelo texto quebra. O data-test continua igual.",
+       "scene": {
+        "type": "compare",
+        "title": "SE ALGUÉM TRADUZIR A TELA",
+        "items": [
+         [
+          "PELO TEXTO",
+          "QUEBRA",
+          "white"
+         ],
+         [
+          "PELO DATA-TEST",
+          "CONTINUA FUNCIONANDO",
+          "gold"
+         ]
+        ],
+        "size": 90,
+        "stagger": 1.8,
+        "vs": false
+       }
+      },
+      {
+       "text": "No trabalho, é comum quem testa pedir pra quem desenvolve colocar data-test nos elementos importantes. É um dos seletores mais estáveis que existem.",
+       "scene": {
+        "type": "cards",
+        "itens": [
+         [
+          "🙋",
+          "Quem testa",
+          "pede o data-test"
+         ],
+         [
+          "👩‍💻",
+          "Quem desenvolve",
+          "coloca uma vez",
+          "#69a7ff"
+         ],
+         [
+          "✓",
+          "Teste estável",
+          "não quebra à toa",
+          "#3fd68a"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Então, vamos trocar os seletores que já estão nos testes pelo data-test. Repara: o before each continua igual, ele só abre o site.",
        "scene": {
         "type": "editor",
         "arquivo": "login.spec.js",

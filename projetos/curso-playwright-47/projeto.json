@@ -51,6 +51,31 @@
        }
       },
       {
+       "text": "E por que testar a API, se dá pra testar pela tela? Porque se o servidor devolve o dado errado, a tela também mostra errado. Na API você acha o problema na origem, e em milissegundos.",
+       "scene": {
+        "type": "cards",
+        "itens": [
+         [
+          "⇄",
+          "API",
+          "a origem dos dados"
+         ],
+         [
+          "🖥",
+          "Tela",
+          "mostra o que veio",
+          "#69a7ff"
+         ],
+         [
+          "⚡",
+          "Rápido",
+          "milissegundos",
+          "#ffd23f"
+         ]
+        ]
+       }
+      },
+      {
        "text": "Cria o api ponto spec ponto js. No teste, em vez do page, você pede o request, entre chaves.",
        "scene": {
         "type": "editor",
@@ -261,6 +286,23 @@
           "cor": "ac",
           "em": 0.6100000000000001
          }
+        ]
+       }
+      },
+      {
+       "text": "No dia a dia: conferir dados e regras, pela API, que é rápida. Pela tela, os caminhos que a pessoa faz, como o login e a compra.",
+       "scene": {
+        "type": "traducao",
+        "titulo": "QUANDO USAR",
+        "linhas": [
+         [
+          "conferir dados e regras",
+          "teste de API"
+         ],
+         [
+          "o que a pessoa faz na tela",
+          "teste de tela"
+         ]
         ]
        }
       },

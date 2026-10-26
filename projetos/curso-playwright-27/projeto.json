@@ -515,6 +515,25 @@
        }
       },
       {
+       "text": "Só que o UI Mode precisa de você na frente da tela. E quando o teste falha no GitHub, de madrugada? É a próxima aula.",
+       "scene": {
+        "type": "bigtext",
+        "lines": [
+         {
+          "t": "E QUANDO FALHA NO GITHUB?",
+          "c": "white",
+          "s": 100
+         },
+         {
+          "t": "PRÓXIMA AULA: TRACE",
+          "c": "gold",
+          "s": 120
+         }
+        ],
+        "stagger": 0.6
+       }
+      },
+      {
        "text": "Na próxima aula: o rastro completo de um teste.",
        "scene": {
         "type": "passo",

@@ -215,6 +215,49 @@
        }
       },
       {
+       "text": "E o que ele pega? Coisas que só acontecem em tela pequena: o menu que vira três risquinhos, um botão que fica fora da tela, um texto por cima do outro.",
+       "scene": {
+        "type": "cards",
+        "itens": [
+         [
+          "☰",
+          "Menu",
+          "vira três risquinhos"
+         ],
+         [
+          "⬚",
+          "Botão",
+          "fora da tela",
+          "#ff6b6b"
+         ],
+         [
+          "▤",
+          "Texto",
+          "por cima do outro",
+          "#ffd23f"
+         ]
+        ],
+        "titulo": "SÓ EM TELA PEQUENA"
+       }
+      },
+      {
+       "text": "Vale ligar quando muita gente usa o site pelo celular, uma loja por exemplo. E antes de um lançamento importante, confere também num aparelho de verdade.",
+       "scene": {
+        "type": "traducao",
+        "titulo": "QUANDO USAR",
+        "linhas": [
+         [
+          "muita gente acessa pelo celular",
+          "project celular"
+         ],
+         [
+          "antes de um lançamento",
+          "+ um aparelho de verdade"
+         ]
+        ]
+       }
+      },
+      {
        "text": "Fechamos os testes reais. Agora: o projeto final!",
        "scene": {
         "type": "passo",

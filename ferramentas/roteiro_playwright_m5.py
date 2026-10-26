@@ -74,6 +74,8 @@ AULAS.append(projeto(22, "MÓDULO 5 · AULA 22", "describe e beforeEach", [
     ("Quando algo se repete antes de todo teste, existe o before each. Before each: antes de cada.",
      {"type": "traducao", "codigo": "test.beforeEach(async ({ page }) => {", "partes": [["before", "antes de"], ["Each", "cada"], ["({ page })", "me dê o navegador"]], "passo": 2.0}),
     ("Coloca o goto lá dentro, e apaga dos testes.", edc(COM_BE, "O goto vai pro beforeEach", destaque=[3, 4, 5], destaque_em=0.6, rolar=True, rolar_de=2.6, rolar_dur=1.6, fonte=24)),
+    ("O before each roda antes de cada teste: antes do teste um, abre o site. Antes do teste dois, abre de novo. Assim, cada teste começa do zero, sem depender do outro.", {'type': 'cards', 'itens': [['1', 'Antes do teste 1', 'abre o site'], ['2', 'Antes do teste 2', 'abre de novo', '#69a7ff'], ['✓', 'Cada teste', 'começa do zero', '#3fd68a']], 'titulo': 'ANTES DE CADA'}),  # pra que / quando
+    ("E por que o login não foi pro before each também? Porque o segundo teste entra com outro usuário. No before each só vai o que é igual em todos os testes.", {'type': 'traducao', 'titulo': 'O QUE VAI NO BEFORE EACH', 'linhas': [['abrir o site', 'igual nos dois: before each'], ['o login', 'muda o usuário: fica no teste']]}),  # pra que / quando
     ("Agora o describe. Describe é descrever: ele junta testes do mesmo assunto numa caixa com nome.",
      {"type": "traducao", "codigo": "test.describe('Login', () => {", "partes": [["describe", "junte numa caixa"], ["'Login'", "com o nome Login"]], "passo": 2.0}),
     ("Logo depois do import, escreve: test ponto describe, abre parênteses, entre aspas Login, vírgula, abre e fecha parênteses, seta, e abre chaves.",
@@ -83,6 +85,7 @@ AULAS.append(projeto(22, "MÓDULO 5 · AULA 22", "describe e beforeEach", [
     ("Tudo que está dentro desse describe é sobre login.", edc(C22.replace("aula 22: ", ""), "Tudo aqui dentro é sobre login", fonte=22, destaque=[3, 24], destaque_em=0.3, rolar=True, rolar_de=0.6, rolar_dur=1.8)),
     ("Lendo em português: um grupo chamado Login. Antes de cada teste, abra o site. Teste um: entra. Teste dois: mostra erro pro bloqueado.",
      {"type": "cards", "itens": [["▣", "Grupo Login", "describe"], ["↺", "Antes de cada", "abra o site", "#69a7ff"], ["1", "Teste 1", "entra", "#ffd23f"], ["2", "Teste 2", "erro do bloqueado", "#c792ea"]]}),
+    ("E pra que a caixa? Num projeto de verdade, você tem um describe pra cada parte do site: Login, Carrinho, Checkout. Quando algo falha, você sabe na hora de qual parte é.", {'type': 'cards', 'itens': [['🔑', 'Login', 'um describe'], ['🛒', 'Carrinho', 'outro describe', '#69a7ff'], ['💳', 'Checkout', 'outro describe', '#ffd23f']], 'titulo': 'UM DESCRIBE POR PARTE DO SITE'}),  # pra que / quando
     ("Roda: os dois passam.", vs(C22, "Os dois passam", run(("Running 2 tests using 2 workers", "mut"), ("  2 passed (2.1s)", "ac")))),
     ("E no relatório eles aparecem juntos, debaixo de Login.", {"type": "pw_relatorio", "testes": REL22, "legenda": "Juntos, debaixo de Login"}),
     ("Na próxima aula: o arquivo de configuração.", proxima("playwright.config")[0]),
@@ -105,11 +108,14 @@ AULAS.append(projeto(23, "MÓDULO 5 · AULA 23", "playwright.config - baseURL e 
      edc(C22.replace("aula 22: ", "").replace("page.goto('https://www.saucedemo.com/')", "page.goto('/')"), "baseURL + /  =  saucedemo.com/", digitar=True, digitar_de=5, digitar_ate=5, fonte=22, rolar_depois=True)),
     ("A vantagem: se um dia o site mudar de endereço, você troca num lugar só.",
      {"type": "cards", "itens": [["⌂", "baseURL", "o endereço num lugar só"], ["/", "page.goto('/')", "nos testes, só o caminho", "#69a7ff"]]}),
+    ("E no trabalho isso é muito usado: o mesmo teste roda no site de teste da empresa e no site de verdade. Só muda o endereço base.", {'type': 'compare', 'title': 'O MESMO TESTE', 'items': [['SITE DE TESTE', 'TESTE.LOJA.COM', 'white'], ['SITE DE VERDADE', 'LOJA.COM', 'gold']], 'size': 90, 'stagger': 1.8, 'vs': False}),  # pra que / quando
     ("Segunda linha: test id attribute igual data-test. Lembra do data-test que a gente viu no Inspecionar?",
      edc(cfg(CFG_TID), "testIdAttribute: 'data-test'", arquivo="playwright.config.js", linha0=USE0, digitar=True, digitar_de=6, digitar_ate=6, fonte=26)),
     ("Por padrão, o get by test id procura data-testid. O saucedemo usa data-test. Essa linha avisa o Playwright.",
      {"type": "compare", "items": [["data-testid", "O PADRÃO DO PLAYWRIGHT", "white"], ["data-test", "O QUE O SAUCEDEMO USA", "gold"]], "size": 90, "stagger": 1.2, "vs": True}),
-    ("Agora o get by test id também funciona no saucedemo. Pra você ver esse outro caminho, a gente vai trocar os seletores que já estão nos testes. Repara: o before each continua igual, ele só abre o site.",
+    ("E por que usar o data-test? Porque ele existe só pra teste. O texto Username pode mudar: alguém traduz pra Usuário, e o seletor pelo texto quebra. O data-test continua igual.", {'type': 'compare', 'title': 'SE ALGUÉM TRADUZIR A TELA', 'items': [['PELO TEXTO', 'QUEBRA', 'white'], ['PELO DATA-TEST', 'CONTINUA FUNCIONANDO', 'gold']], 'size': 90, 'stagger': 1.8, 'vs': False}),  # pra que / quando
+    ("No trabalho, é comum quem testa pedir pra quem desenvolve colocar data-test nos elementos importantes. É um dos seletores mais estáveis que existem.", {'type': 'cards', 'itens': [['🙋', 'Quem testa', 'pede o data-test'], ['👩\u200d💻', 'Quem desenvolve', 'coloca uma vez', '#69a7ff'], ['✓', 'Teste estável', 'não quebra à toa', '#3fd68a']]}),  # pra que / quando
+    ("Então, vamos trocar os seletores que já estão nos testes pelo data-test. Repara: o before each continua igual, ele só abre o site.",
      edc("\n".join(C23.replace("aula 23: ", "").split("\n")[:12]), "O beforeEach só abre o site", fonte=24, destaque=[4, 5, 6], destaque_em=3.0)),
     ("A troca é assim: onde estava get by placeholder Username, fica get by test id username. A senha vira password. E o botão vira login button.",
      {"type": "traducao", "titulo": "A MESMA COISA, OUTRO SELETOR", "linhas": [["getByPlaceholder('Username')", "getByTestId('username')"], ["getByPlaceholder('Password')", "getByTestId('password')"],
@@ -162,6 +168,7 @@ AULAS.append(projeto(24, "MÓDULO 5 · AULA 24", "Variáveis de ambiente - tiran
     ("E pra quem baixar o projeto saber o que preencher, cria um ponto env ponto example só com os nomes das variáveis, sem os valores.",
      edc("SAUCE_USER=\nSAUCE_PASSWORD=", "Só os nomes, sem os valores", arquivo=".env.example", pastas=ARV_EX, digitar=True, fonte=32)),
     ("Roda pra confirmar: continua passando.", vs(C24, "Continua passando", run(("Running 2 tests using 2 workers", "mut"), ("  2 passed (2.0s)", "ac")), pastas=ARV_EX)),
+    ("E no GitHub, onde não existe o seu ponto env? Lá, quem entrega esses valores são os secrets, um cofre do próprio GitHub. Você vê isso na aula 45.", {'type': 'cards', 'itens': [['💻', 'Na sua máquina', 'o arquivo .env'], ['☁', 'No GitHub', 'os secrets, na aula 45', '#69a7ff']]}),  # pra que / quando
     ("Na próxima aula: rodando só o que importa.", proxima("only, skip e filtros")[0]),
     ("Te vejo lá!", proxima("only, skip e filtros")[1]),
 ]))
@@ -188,6 +195,7 @@ AULAS.append(projeto(25, "MÓDULO 5 · AULA 25", "Rodando só o que importa - on
     ("Resumindo: o nome do arquivo roda só aquele arquivo. Traço g filtra pelo nome do teste. Test ponto only roda somente aquele teste. Test ponto skip pula. E traço traço project escolhe o navegador.",
      {"type": "traducao", "titulo": "RODANDO SÓ O QUE IMPORTA", "linhas": [["npx playwright test login.spec.js", "só esse arquivo"], ["npx playwright test -g bloqueado", "só os testes com esse nome"],
                                                                          ["test.only(...)", "somente esse teste"], ["test.skip(...)", "pula esse teste"], ["--project=chromium", "só esse navegador"]]}),
+    ("E no dia a dia, quando usar cada um? Mexendo só no login: roda o arquivo. Um teste falhou: roda só ele, com o traço g. Investigando um teste no código: only, e tira depois. Um bug conhecido que ainda não foi corrigido: skip, com um comentário dizendo o motivo.", {'type': 'traducao', 'titulo': 'NO DIA A DIA', 'em_frac': [0.142, 0.285, 0.458, 0.665], 'linhas': [['mexendo só no login', 'login.spec.js'], ['um teste falhou', '-g bloqueado'], ['investigando no código', 'test.only, e tira depois'], ['bug conhecido, sem correção', 'test.skip + o motivo']]}),  # pra que / quando
     ("Fechamos a organização. No próximo módulo: o que fazer quando o teste falha.", {"type": "passo", "icone": "▶", "titulo": "Próximo módulo", "sub": "Debug: quando o teste falha"}),
     ("Te vejo lá!", {"type": "endcard", "sub": "PRÓXIMA: MÓDULO 6 · DEBUG"}),
 ]))

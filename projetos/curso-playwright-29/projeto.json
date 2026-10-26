@@ -32,7 +32,7 @@
      "chapter": "",
      "sentences": [
       {
-       "text": "Às vezes você quer ver o teste devagar, um passo de cada vez.",
+       "text": "O teste falhou e o erro não deixa claro por quê? Às vezes você precisa ver acontecendo, passo a passo.",
        "scene": {
         "type": "bigtext",
         "stagger": 0.25,
@@ -51,7 +51,55 @@
        }
       },
       {
-       "text": "No terminal: npx playwright test traço traço debug.",
+       "text": "No modo normal, o teste inteiro passa em menos de um segundo. Se ele clicou rápido demais, ou a página ainda estava carregando, você não consegue ver.",
+       "scene": {
+        "type": "cards",
+        "titulo": "O QUE VOCÊ NÃO CONSEGUE VER",
+        "itens": [
+         [
+          "⚡",
+          "Clicou rápido demais",
+          "antes da tela ficar pronta",
+          "#ff8c42"
+         ],
+         [
+          "⏳",
+          "Ainda carregando",
+          "a página não terminou"
+         ],
+         [
+          "🎯",
+          "Campo errado",
+          "o seletor pegou outro",
+          "#69a7ff"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "O trace da aula passada é a gravação: você assiste depois. O debug é ao vivo: o teste espera você, e só anda quando você manda.",
+       "scene": {
+        "type": "compare",
+        "title": "TRACE × DEBUG",
+        "items": [
+         [
+          "TRACE",
+          "GRAVAÇÃO: VOCÊ VÊ DEPOIS",
+          "white"
+         ],
+         [
+          "DEBUG",
+          "AO VIVO: ANDA QUANDO VOCÊ MANDA",
+          "gold"
+         ]
+        ],
+        "size": 90,
+        "stagger": 1.8,
+        "vs": false
+       }
+      },
+      {
+       "text": "Pra ligar, no terminal: npx playwright test traço traço debug.",
        "scene": {
         "type": "editor",
         "arquivo": "login.spec.js",
@@ -83,7 +131,7 @@
        }
       },
       {
-       "text": "Ele abre o navegador e para antes do primeiro passo.",
+       "text": "Ele abre o navegador e uma janela chamada Inspector, e para antes do primeiro passo. Nada acontece até você mandar.",
        "scene": {
         "type": "pw_codegen",
         "modo": "debug",
@@ -125,12 +173,57 @@
        }
       },
       {
-       "text": "Outra forma, pra usar na sua máquina enquanto escreve o teste: page ponto pause no meio do código.",
+       "text": "E enquanto está parado, a página está viva: dá pra olhar como ela está naquele momento, testar um seletor no pick locator, e quando quiser, o resume continua até o fim.",
+       "scene": {
+        "type": "cards",
+        "titulo": "PARADO, VOCÊ PODE",
+        "itens": [
+         [
+          "👀",
+          "Olhar a página",
+          "do jeito que está agora"
+         ],
+         [
+          "🎯",
+          "Pick locator",
+          "testar um seletor ali mesmo",
+          "#69a7ff"
+         ],
+         [
+          "▶",
+          "Resume",
+          "continuar até o fim",
+          "#ffd23f"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Só que o traço traço debug para logo no começo. Se o problema está no meio de um teste comprido, você ia apertar step over um monte de vezes. Pra isso existe o page ponto pause.",
+       "scene": {
+        "type": "cards",
+        "itens": [
+         [
+          "⏮",
+          "--debug",
+          "para no começo de tudo"
+         ],
+         [
+          "⏸",
+          "page.pause()",
+          "para onde você colocar",
+          "#ffd23f"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Você coloca page ponto pause bem antes do passo suspeito. Aqui, logo depois do clique no login.",
        "scene": {
         "type": "editor",
         "arquivo": "login.spec.js",
         "codigo": "import { test, expect } from '@playwright/test';\n\ntest.describe('Login', () => {\n  test.beforeEach(async ({ page }) => {\n    await page.goto('/');\n  });\n\n  test('entra com usuário e senha', async ({ page }) => {\n    await page.getByTestId('username').fill(process.env.SAUCE_USER);\n    await page.getByTestId('password').fill(process.env.SAUCE_PASSWORD);\n    await page.getByTestId('login-button').click();\n    await page.pause();\n    await expect(page).toHaveURL(/inventory/);\n    await expect(page.getByText('Products')).toBeVisible();\n    await expect(page.getByText('Sauce Labs Backpack')).toContainText('Backpack');\n    await expect(page.getByRole('button', { name: 'Add to cart' })).toHaveCount(6);\n  });\n\n  test('mostra erro para usuário bloqueado', async ({ page }) => {\n    await page.getByTestId('username').fill('locked_out_user');\n    await page.getByTestId('password').fill(process.env.SAUCE_PASSWORD);\n    await page.getByTestId('login-button').click();\n    await expect(page.getByText('locked out')).toBeVisible();\n  });\n});",
-        "legenda": "page.pause()",
+        "legenda": "page.pause() antes do passo suspeito",
         "fonte": 22,
         "digitar": true,
         "pastas": [
@@ -152,7 +245,7 @@
        }
       },
       {
-       "text": "Pause é pausar: rodando com o navegador aparecendo, o teste para exatamente ali e abre o Inspector.",
+       "text": "Roda com o navegador aparecendo, traço traço headed. O teste corre normal até ali, para exatamente nessa linha e abre o Inspector.",
        "scene": {
         "type": "pw_codegen",
         "modo": "debug",
@@ -185,7 +278,28 @@
        }
       },
       {
-       "text": "É uma ferramenta de desenvolvimento: lembra de tirar o pause depois, senão o teste fica parado esperando você.",
+       "text": "Quando usar cada um? Escrevendo um teste novo, ou falhou na sua máquina e você não entende: debug ou pause. Falhou no GitHub, onde você não está: trace.",
+       "scene": {
+        "type": "traducao",
+        "titulo": "QUANDO USAR",
+        "linhas": [
+         [
+          "teste novo, na sua máquina",
+          "--debug ou page.pause()"
+         ],
+         [
+          "falhou e você não entende",
+          "page.pause() antes do passo"
+         ],
+         [
+          "falhou no GitHub",
+          "trace (aula passada)"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "E lembra de tirar o pause depois. Se ele subir pro GitHub, o teste fica parado esperando alguém que nunca vai apertar o botão, até estourar o tempo.",
        "scene": {
         "type": "cards",
         "itens": [
@@ -196,8 +310,8 @@
          ],
          [
           "✗",
-          "Tira depois",
-          "senão o teste fica parado",
+          "Tira antes do commit",
+          "senão trava no GitHub",
           "#ff6b6b"
          ]
         ]

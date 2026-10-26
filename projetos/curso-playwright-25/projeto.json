@@ -272,6 +272,37 @@
        }
       },
       {
+       "text": "E no dia a dia, quando usar cada um? Mexendo só no login: roda o arquivo. Um teste falhou: roda só ele, com o traço g. Investigando um teste no código: only, e tira depois. Um bug conhecido que ainda não foi corrigido: skip, com um comentário dizendo o motivo.",
+       "scene": {
+        "type": "traducao",
+        "titulo": "NO DIA A DIA",
+        "em_frac": [
+         0.142,
+         0.285,
+         0.458,
+         0.665
+        ],
+        "linhas": [
+         [
+          "mexendo só no login",
+          "login.spec.js"
+         ],
+         [
+          "um teste falhou",
+          "-g bloqueado"
+         ],
+         [
+          "investigando no código",
+          "test.only, e tira depois"
+         ],
+         [
+          "bug conhecido, sem correção",
+          "test.skip + o motivo"
+         ]
+        ]
+       }
+      },
+      {
        "text": "Fechamos a organização. No próximo módulo: o que fazer quando o teste falha.",
        "scene": {
         "type": "passo",

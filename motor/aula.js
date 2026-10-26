@@ -1264,7 +1264,7 @@
         const fc1 = caber(ctx, maisLongo, 700, 50 * g * u, c.W * fr, MONO); const xs = c.W * 0.09 + Math.max(...L.map((l) => tw(ctx, l[0], fc1))) + 50 * u, xp = xs + 50 * u, wp = c.W * 0.925 - xp;
         const fp1 = L.reduce((f, l) => { const f2 = caber(ctx, l[1], 800, 48 * g * u, wp); return px(f2) < px(f) ? f2 : f; }, font(800, 48 * g * u));
         const nota = Math.min(px(fc1), px(fp1) * 0.75); if (nota > melhor) { melhor = nota; fc = fc1; xSeta = xs; xPt = xp; fpt = fp1; } }
-      L.forEach(([cod, pt], i) => { const k = easeOut((t - 0.5 - i * passo) / 0.35); if (k <= 0) return; const yy = y0 + i * lh + lh / 2; const cor = cores[i % cores.length];
+      L.forEach(([cod, pt], i) => { const k = easeOut((t - (s.em_frac ? s.em_frac[i] * dur : 0.5 + i * passo)) / 0.35);  /* em_frac: cada linha entra quando a narração fala dela */ if (k <= 0) return; const yy = y0 + i * lh + lh / 2; const cor = cores[i % cores.length];
         ctx.save(); ctx.globalAlpha = a * k * 0.9; rr(ctx, c.W * 0.06, yy - lh * 0.42, c.W * 0.88, lh * 0.84, 18 * u); ctx.fillStyle = C.win; ctx.fill(); ctx.fillStyle = cor; ctx.fillRect(c.W * 0.06, yy - lh * 0.42, 8 * u, lh * 0.84); ctx.restore();
         txt(ctx, cod, fc, c.W * 0.09, yy, cor, "left", a * k); txt(ctx, "→", font(800, 50 * u), xSeta, yy, C.mut, "center", a * k);
         txt(ctx, pt, fpt, xPt, yy, C.txt, "left", a * k); });

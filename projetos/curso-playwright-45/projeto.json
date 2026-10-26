@@ -51,6 +51,28 @@
        }
       },
       {
+       "text": "Por que isso importa? Sem ele, alguém precisa lembrar de rodar os testes. Com ele, toda mudança no site roda os testes sozinha, e o bug é pego antes de chegar no cliente.",
+       "scene": {
+        "type": "compare",
+        "title": "RODAR OS TESTES",
+        "items": [
+         [
+          "SEM ACTIONS",
+          "ALGUÉM PRECISA LEMBRAR",
+          "white"
+         ],
+         [
+          "COM ACTIONS",
+          "RODA A CADA MUDANÇA",
+          "gold"
+         ]
+        ],
+        "size": 90,
+        "stagger": 1.8,
+        "vs": false
+       }
+      },
+      {
        "text": "O Playwright já criou esse arquivo lá no começo: ponto github, workflows, playwright ponto yml.",
        "scene": {
         "type": "editor",
@@ -207,6 +229,32 @@
         "status": "ok",
         "artefato": "playwright-report",
         "legenda": "Passou · o relatório pra baixar"
+       }
+      },
+      {
+       "text": "E se ficar vermelho? O GitHub te avisa por e-mail. Você baixa o relatório, abre o trace, o print e o vídeo, como nas aulas 28 e 30, e anexa no card do bug.",
+       "scene": {
+        "type": "cards",
+        "itens": [
+         [
+          "✗",
+          "Vermelho",
+          "o GitHub te avisa",
+          "#ff6b6b"
+         ],
+         [
+          "⬇",
+          "Baixa o relatório",
+          "trace, print e vídeo",
+          "#69a7ff"
+         ],
+         [
+          "📋",
+          "Card do bug",
+          "com as evidências",
+          "#ffd23f"
+         ]
+        ]
        }
       },
       {

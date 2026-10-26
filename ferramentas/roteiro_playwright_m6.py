@@ -78,8 +78,10 @@ AULAS.append(projeto(26, "MÓDULO 6 · AULA 26", "Lendo o erro", [
     ("Volta no VS Code, na linha catorze: é exatamente a conferência da mochila que a gente quebrou.",
      edc(C26, "Linha 14: a conferência quebrada", pastas=ARV_EX, fonte=22, destaque=[L_MOCHILA], destaque_em=0.5, rolar=True, rolar_de=0.3, rolar_dur=0.8)),
     ("E por último, o call log: tudo o que ele tentou. Ele achou o elemento, mas o texto não batia, e ficou tentando por cinco segundos antes de desistir.", erro_todo("Call log: tudo o que ele tentou", [12, 15, 16])),
+    ("E aqui vem a pergunta mais importante de quem testa: o erro é do teste, ou é um bug no site? Aqui, fomos nós que escrevemos Mochila: o erro é do teste. Mas se o site mostrasse o nome errado, esse mesmo erro seria um bug de verdade, e virava um card pra quem desenvolve corrigir.", {'type': 'compare', 'title': 'QUEM ESTÁ ERRADO?', 'items': [['O TESTE', 'VOCÊ CONSERTA O CÓDIGO', 'white'], ['O SITE', 'VIRA UM CARD DE BUG', 'gold']], 'size': 90, 'stagger': 1.8, 'vs': False}),  # pra que / quando
     ("Três coisas que você vai ver bastante: timeout, alguma coisa que o teste esperava não aconteceu dentro do tempo. Strict mode violation, o seletor achou mais de um elemento quando precisava de um só. E Expected e Received, o teste esperava um valor e encontrou outro.",
      {"type": "cards", "itens": [["⏱", "Timeout", "o esperado não aconteceu a tempo"], ["⚠", "Strict mode", "achou mais de um", "#ffd23f"], ["≠", "Expected × Received", "esperava um, encontrou outro", "#ff6b6b"]]}),
+    ("Então, no dia a dia, a ordem é: qual teste e qual linha. Depois, o esperado e o encontrado. E se ainda não ficou claro, as próximas aulas te dão ferramentas pra ver o teste acontecendo.", {'type': 'traducao', 'titulo': 'A ORDEM PRA LER', 'linhas': [['1. qual teste e qual linha', 'onde'], ['2. Expected × Received', 'o quê'], ['3. ainda não entendeu?', 'UI Mode e trace']]}),  # pra que / quando
     ("Pra consertar: na linha catorze, volta o Mochila pra Backpack.",
      edc(C24, "Mochila → Backpack de volta", pastas=ARV_EX, digitar=True, digitar_de=L_MOCHILA, digitar_ate=L_MOCHILA, fonte=22, rolar=True, rolar_de=0.3, rolar_dur=0.8)),
     ("Roda de novo: passou.", vs(C24, "Passou", run(("Running 2 tests using 2 workers", "mut"), ("  2 passed (2.1s)", "ac")), pastas=ARV_EX)),
@@ -104,6 +106,7 @@ AULAS.append(projeto(27, "MÓDULO 6 · AULA 27", "UI Mode", [
      {"type": "cards", "titulo": "SEM O WATCH", "itens": [["✎", "Muda uma linha", ""], ["⌨", "Volta no terminal", "", "#ff8c42"], ["▶", "Roda de novo", "toda vez", "#ff6b6b"]]}),
     ("Watch quer dizer vigiar. Liga aquele ícone de olho, e pronto: salvou o arquivo, o teste roda de novo sozinho.", dict(UI, watch=True, watch_em=1.2, roda_em=2.6, legenda="watch = vigiar: salvou, rodou de novo")),
     ("É um dos jeitos mais confortáveis de escrever um teste novo: escreve, salva, e vê na hora.", bt(("ESCREVE, SALVA", "white", 120), ("E VÊ NA HORA", "gold", 150), entre=1.35)),
+    ("Só que o UI Mode precisa de você na frente da tela. E quando o teste falha no GitHub, de madrugada? É a próxima aula.", {'type': 'bigtext', 'lines': [{'t': 'E QUANDO FALHA NO GITHUB?', 'c': 'white', 's': 100}, {'t': 'PRÓXIMA AULA: TRACE', 'c': 'gold', 's': 120}], 'stagger': 0.6}),  # pra que / quando
     ("Na próxima aula: o rastro completo de um teste.", proxima("Trace Viewer")[0]),
     ("Te vejo lá!", proxima("Trace Viewer")[1]),
 ]))
@@ -111,18 +114,35 @@ AULAS.append(projeto(27, "MÓDULO 6 · AULA 27", "UI Mode", [
 # ---------- Aula 28 ----------
 CFG_RETRY = CONFIG[20:34]  # linhas 21 a 34: retries ... trace
 assert "retries" in CFG_RETRY[1] and "trace" in CFG_RETRY[12]
+A_FALHA = A_LOGIN[:7] + [["Expect", "toContainText('Mochila')", "5.0s"]]
+ERRO_TRACE = "Error: expect(locator).toContainText(expected) failed\nLocator: getByText('Sauce Labs Backpack')\nExpected substring: \"Mochila\"\nReceived string:    \"Sauce Labs Backpack\""
 AULAS.append(projeto(28, "MÓDULO 6 · AULA 28", "Trace Viewer", [
     ("E quando o teste falha no GitHub, onde você não estava olhando? Pra isso existe o trace.", titulo(28, "TRACE VIEWER")),
-    ("Trace quer dizer rastro: é um arquivo com tudo o que aconteceu no teste.", {"type": "traducao", "codigo": "trace", "texto_puro": True, "partes": [["trace", "rastro: tudo o que aconteceu"]], "passo": 1.2}),
-    ("Roda com traço traço trace on.", vs(C24, "--trace on", run(("Running 6 tests using 4 workers", "mut"), ("  6 passed (5.1s)", "ac"), cmd="npx playwright test --trace on"), pastas=ARV_EX)),
-    ("Abre o relatório e clica no trace do teste.",
+    ("O UI Mode da aula passada é pra quando você está na sua máquina, escrevendo o teste. O trace é pra investigar depois: um teste que falhou de madrugada, num computador que você nem viu.",
+     {"type": "compare", "title": "QUAL USAR", "items": [["UI MODE", "NA SUA MÁQUINA, ESCREVENDO", "white"], ["TRACE", "DEPOIS, ONDE QUER QUE TENHA RODADO", "gold"]], "size": 90, "stagger": 1.8, "vs": False}),
+    ("Trace quer dizer rastro. Pensa na caixa-preta de um avião: ela grava tudo, pra depois alguém entender o que aconteceu.",
+     {"type": "cards", "itens": [["✈", "Caixa-preta", "grava tudo do voo"], ["🎞", "Trace", "grava cada passo do teste", "#69a7ff"], ["🔍", "Depois", "você entende o que aconteceu", "#ffd23f"]]}),
+    ("Pra gravar o rastro, roda com traço traço trace on.", vs(C24, "--trace on", run(("Running 6 tests using 4 workers", "mut"), ("  6 passed (5.1s)", "ac"), cmd="npx playwright test --trace on"), pastas=ARV_EX)),
+    ("Quando termina, abre o relatório e clica num teste. Lá embaixo, em Traces, está o arquivo do rastro. Clica nele.",
      {"type": "pw_relatorio", "url": SAUCE, "media": "site_sauce_trace", "acoes": LOGIN, "testes": TRACE6,
       "abrir": {"titulo": "entra com usuário e senha", "arquivo": "login.spec.js:8", "projeto": "chromium", "passos": P_REL[:3], "anexos": [["Traces", "site_sauce_trace", False]], "anexos_em": 1.4},
-      "legenda": "Traces: clica no trace"}),
-    ("Em cima, a linha do tempo. Na esquerda, os passos. No meio, a página. E embaixo, o console e a rede.",
-     {"type": "pw_trace", "media": "site_sauce_trace", "url": SAUCE, "acoes": LOGIN, "inspecionar": "[data-test=\"title\"]", "passos_pw": A_LOGIN, "sel": 6, "legenda": "Passos, página, console e rede"}),
+      "legenda": "Traces: clica no rastro"}),
+    ("Abre o Trace Viewer. Na esquerda, a lista de tudo o que o teste fez, na ordem: abriu o site, preencheu, clicou e conferiu.",
+     {"type": "pw_trace", "media": "site_sauce_trace", "url": SAUCE, "acoes": LOGIN, "inspecionar": "[data-test=\"title\"]", "passos_pw": A_LOGIN, "sel": 0, "legenda": "Actions: tudo o que o teste fez"}),
+    ("Clica em qualquer passo, e o meio mostra a página exatamente naquele momento. Aqui, a conferência do título Products.",
+     {"type": "pw_trace", "media": "site_sauce_trace", "url": SAUCE, "acoes": LOGIN, "inspecionar": "[data-test=\"title\"]", "passos_pw": A_LOGIN, "sel": 6, "sel_em": 0.6, "legenda": "Clicou no passo: a página daquele momento"}),
+    ("Embaixo, os detalhes do passo escolhido: o que ele fez, em qual elemento, e quanto tempo levou.",
+     {"type": "pw_trace", "media": "site_sauce_trace", "url": SAUCE, "acoes": LOGIN, "inspecionar": "[data-test=\"title\"]", "passos_pw": A_LOGIN, "sel": 6, "sel_em": 0, "aba": "Call", "legenda": "Call: o que fez, onde e quanto tempo"}),
+    ("E quando o teste falha, é aqui que o trace brilha. O passo que falhou aparece em vermelho, e a aba Errors mostra o erro: esperava Mochila, encontrou Sauce Labs Backpack.",
+     {"type": "pw_trace", "media": "site_sauce_trace", "url": SAUCE, "acoes": LOGIN, "inspecionar": "[data-test=\"title\"]", "passos_pw": A_FALHA, "falhou": True, "erro": ERRO_TRACE, "aba": "Errors", "sel_em": 0.6, "legenda": "Errors: o passo vermelho e o erro"}),
+    ("E a aba Source mostra a linha do seu código que falhou.",
+     {"type": "pw_trace", "media": "site_sauce_trace", "url": SAUCE, "acoes": LOGIN, "inspecionar": "[data-test=\"title\"]", "passos_pw": A_FALHA, "falhou": True, "aba": "Source", "codigo": C26, "linha": L_MOCHILA, "sel_em": 0, "legenda": "Source: a linha do código"}),
+    ("E ainda tem as abas Console e Network: as mensagens da página e tudo o que ela pediu pro servidor. Num sistema de verdade, isso ajuda a saber se o problema está na tela ou no servidor.",
+     {"type": "cards", "itens": [["▤", "Console", "as mensagens da página"], ["⇄", "Network", "o que ela pediu pro servidor", "#69a7ff"], ["?", "Tela ou servidor?", "dá pra descobrir", "#ffd23f"]]}),
     ("No config já vem trace on first retry: quando um teste falha e roda de novo, o trace dessa segunda tentativa é gravado. No GitHub o config já tenta de novo, então lá isso acontece sozinho. Na sua máquina, sem nova tentativa, use o traço traço trace on.",
      edc("\n".join(CFG_RETRY), "trace: 'on-first-retry'", arquivo="playwright.config.js", linha0=21, destaque=[2, 13], destaque_em=1.0, fonte=24)),
+    ("E pra abrir um trace que alguém te mandou, ou que você baixou do GitHub: npx playwright show trace, e o nome do arquivo ponto zip.",
+     {"type": "terminal", "titulo": "Terminal — VS Code", "pasta": "C:\\Users\\voce\\Documents\\meu-primeiro-playwright", "linhas": [{"cmd": "npx playwright show-trace trace.zip"}], "legenda": "show-trace = abra este rastro", "fonte": 32}),
     ("Na próxima aula: pausando o teste no meio.", proxima("debug e page.pause")[0]),
     ("Te vejo lá!", proxima("debug e page.pause")[1]),
 ]))
@@ -133,17 +153,27 @@ L_CLICK = [i + 1 for i, l in enumerate(L24) if "login-button" in l][0]  # linha 
 C29 = "\n".join(L24[:L_CLICK] + ["    await page.pause();"] + L24[L_CLICK:])
 TOPO29 = "\n".join(C29.split("\n")[:17])
 AULAS.append(projeto(29, "MÓDULO 6 · AULA 29", "Modo debug e page.pause", [
-    ("Às vezes você quer ver o teste devagar, um passo de cada vez.", titulo(29, "DEBUG")),
-    ("No terminal: npx playwright test traço traço debug.", vs(C24, "--debug", run(cmd="npx playwright test --debug"), pastas=ARV_EX, colinha=True, colinha_em=1.2)),
-    ("Ele abre o navegador e para antes do primeiro passo.", cg("Parado antes do primeiro passo", modo="debug", codigo="\n".join(L24[:16]), linhas_passo=[5])),
+    ("O teste falhou e o erro não deixa claro por quê? Às vezes você precisa ver acontecendo, passo a passo.", titulo(29, "DEBUG")),
+    ("No modo normal, o teste inteiro passa em menos de um segundo. Se ele clicou rápido demais, ou a página ainda estava carregando, você não consegue ver.",
+     {"type": "cards", "titulo": "O QUE VOCÊ NÃO CONSEGUE VER", "itens": [["⚡", "Clicou rápido demais", "antes da tela ficar pronta", "#ff8c42"], ["⏳", "Ainda carregando", "a página não terminou"], ["🎯", "Campo errado", "o seletor pegou outro", "#69a7ff"]]}),
+    ("O trace da aula passada é a gravação: você assiste depois. O debug é ao vivo: o teste espera você, e só anda quando você manda.",
+     {"type": "compare", "title": "TRACE × DEBUG", "items": [["TRACE", "GRAVAÇÃO: VOCÊ VÊ DEPOIS", "white"], ["DEBUG", "AO VIVO: ANDA QUANDO VOCÊ MANDA", "gold"]], "size": 90, "stagger": 1.8, "vs": False}),
+    ("Pra ligar, no terminal: npx playwright test traço traço debug.", vs(C24, "--debug", run(cmd="npx playwright test --debug"), pastas=ARV_EX, colinha=True, colinha_em=1.2)),
+    ("Ele abre o navegador e uma janela chamada Inspector, e para antes do primeiro passo. Nada acontece até você mandar.", cg("Parado antes do primeiro passo", modo="debug", codigo="\n".join(L24[:16]), linhas_passo=[5])),
     ("No Inspector, o botão step over executa um passo por vez. Olha: preenche, para. Preenche, para. Clica, para.",
      cg("Step over: um passo de cada vez", modo="debug", codigo="\n".join(L24[:16]), linhas_passo=[9, 10, 11])),
-    ("Outra forma, pra usar na sua máquina enquanto escreve o teste: page ponto pause no meio do código.",
-     edc(C29, "page.pause()", pastas=ARV_EX, digitar=True, digitar_de=L_CLICK + 1, digitar_ate=L_CLICK + 1, fonte=22, rolar_depois=True)),
-    ("Pause é pausar: rodando com o navegador aparecendo, o teste para exatamente ali e abre o Inspector.",
+    ("E enquanto está parado, a página está viva: dá pra olhar como ela está naquele momento, testar um seletor no pick locator, e quando quiser, o resume continua até o fim.",
+     {"type": "cards", "titulo": "PARADO, VOCÊ PODE", "itens": [["👀", "Olhar a página", "do jeito que está agora"], ["🎯", "Pick locator", "testar um seletor ali mesmo", "#69a7ff"], ["▶", "Resume", "continuar até o fim", "#ffd23f"]]}),
+    ("Só que o traço traço debug para logo no começo. Se o problema está no meio de um teste comprido, você ia apertar step over um monte de vezes. Pra isso existe o page ponto pause.",
+     {"type": "cards", "itens": [["⏮", "--debug", "para no começo de tudo"], ["⏸", "page.pause()", "para onde você colocar", "#ffd23f"]]}),
+    ("Você coloca page ponto pause bem antes do passo suspeito. Aqui, logo depois do clique no login.",
+     edc(C29, "page.pause() antes do passo suspeito", pastas=ARV_EX, digitar=True, digitar_de=L_CLICK + 1, digitar_ate=L_CLICK + 1, fonte=22, rolar_depois=True)),
+    ("Roda com o navegador aparecendo, traço traço headed. O teste corre normal até ali, para exatamente nessa linha e abre o Inspector.",
      cg("Parou no page.pause()", modo="debug", codigo=TOPO29, linhas_passo=[L_CLICK + 1], media="site_sauce_pause", acoes=LOGIN, inspecionar_varios=[])),
-    ("É uma ferramenta de desenvolvimento: lembra de tirar o pause depois, senão o teste fica parado esperando você.",
-     {"type": "cards", "itens": [["⏸", "page.pause()", "só enquanto você investiga"], ["✗", "Tira depois", "senão o teste fica parado", "#ff6b6b"]]}),
+    ("Quando usar cada um? Escrevendo um teste novo, ou falhou na sua máquina e você não entende: debug ou pause. Falhou no GitHub, onde você não está: trace.",
+     {"type": "traducao", "titulo": "QUANDO USAR", "linhas": [["teste novo, na sua máquina", "--debug ou page.pause()"], ["falhou e você não entende", "page.pause() antes do passo"], ["falhou no GitHub", "trace (aula passada)"]]}),
+    ("E lembra de tirar o pause depois. Se ele subir pro GitHub, o teste fica parado esperando alguém que nunca vai apertar o botão, até estourar o tempo.",
+     {"type": "cards", "itens": [["⏸", "page.pause()", "só enquanto você investiga"], ["✗", "Tira antes do commit", "senão trava no GitHub", "#ff6b6b"]]}),
     ("Na próxima aula: print e vídeo automático quando o teste falha.", proxima("print e vídeo")[0]),
     ("Te vejo lá!", proxima("print e vídeo")[1]),
 ]))
@@ -154,25 +184,30 @@ CFG30 = [l if "// baseURL" not in l else "    baseURL: 'https://www.saucedemo.co
 CFG30 = "\n".join(CFG30).split("\n")
 i_trace = [i for i, l in enumerate(CFG30) if "trace:" in l][0]
 CFG30 = CFG30[:i_trace + 1] + ["    screenshot: 'only-on-failure',", "    video: 'retain-on-failure',"] + CFG30[i_trace + 1:]
+CARD_BUG = "repo:curso-playwright/material/cenas/card_bug.html"
 AULAS.append(projeto(30, "MÓDULO 6 · AULA 30", "Print e vídeo quando o teste falha", [
-    ("E se o próprio teste tirasse um print e gravasse um vídeo quando falha? Ele faz isso.", titulo(30, "PRINT E VÍDEO")),
-    ("No config, dentro do use, adiciona duas linhas: screenshot only on failure, e video retain on failure.",
+    ("Quando um teste falha, alguém precisa corrigir. E só dizer que o teste falhou não ajuda: a pessoa precisa ver o que aconteceu.", titulo(30, "PRINT E VÍDEO")),
+    ("E se o próprio teste tirasse um print e gravasse um vídeo quando falha? Ele faz isso. No config, dentro do use, adiciona duas linhas: screenshot only on failure, e video retain on failure.",
      edc("\n".join(CFG30), "screenshot e video", arquivo="playwright.config.js", linha0=26, digitar=True, digitar_de=i_trace + 2, digitar_ate=i_trace + 3, fonte=26)),
     ("Traduzindo: screenshot, print, só quando falhar. Video retain on failure: o vídeo é gravado durante o teste, e guardado só se ele falhar.",
      {"type": "traducao", "titulo": "SÓ QUANDO FALHA", "linhas": [["screenshot: 'only-on-failure'", "print, só quando falhar"], ["video: 'retain-on-failure'", "grava, e guarda só se falhar"]]}),
-    ("Quebra o teste de novo e roda.", vs(C26, "Falhou de novo (de propósito)", run(("Running 2 tests using 2 workers", "mut"), ("  1 failed", VERM), ("  1 passed (6.4s)", "ac")), pastas=ARV_EX)),
+    ("Pra ver funcionando, quebra o teste de novo e roda.", vs(C26, "Falhou de novo (de propósito)", run(("Running 2 tests using 2 workers", "mut"), ("  1 failed", VERM), ("  1 passed (6.4s)", "ac")), pastas=ARV_EX)),
     ("Abre o relatório: lá está o print do momento do erro e o vídeo do teste inteiro.",
      {"type": "pw_relatorio", "url": SAUCE, "media": "site_sauce_falha", "acoes": LOGIN, "testes": TRACE6,
       "abrir": {"titulo": "entra com usuário e senha", "status": "falhou", "arquivo": "login.spec.js:8", "projeto": "chromium", "passos": [],
                 "erro": "Error: expect(locator).toContainText(expected) failed\nExpected substring: \"Mochila\"\nReceived string:    \"Sauce Labs Backpack\"", "anexos": True, "anexo_img": "site_sauce_falha", "anexos_em": 1.2},
       "navegador": {"media": "rec_falha", "url": SAUCE, "gravar": True, "acoes": LOGIN, "espera_inicio": 800, "espera_fim": 1500, "titulo": "video.webm", "em": 0.45, "ate": 0.95},
       "legenda": "O print e o vídeo do teste"}),
-    ("E por que só quando falha? Porque gravar sempre deixa tudo mais lento e enche o computador de arquivo.",
-     {"type": "cards", "itens": [["🐢", "Gravar sempre", "mais lento, muito arquivo", "#ff8c42"], ["✓", "Só quando falha", "o que você precisa pra investigar"]]}),
+    ("E no trabalho, pra que serve isso? Esse print e esse vídeo são as suas evidências.", bt(("PRINT + VÍDEO", "white", 120), ("= EVIDÊNCIA", "gold", 150))),
+    ("Quando você abre o card do bug, anexa o print, o vídeo e o trace. Quem vai corrigir vê exatamente o que aconteceu, sem precisar te perguntar nada.",
+     {"type": "tela", "media": "card_bug", "url": CARD_BUG, "alvo": "Anexos (evidências)", "titulo": "Card do bug", "legenda": "Anexa print, vídeo e trace no card"}),
+    ("E dá pra gravar sempre, até quando passa? Dá: é só trocar pra on. Serve quando você precisa provar que funcionou, por exemplo, pra mostrar que um teste passou antes de fechar uma tarefa.",
+     {"type": "traducao", "titulo": "AS OPÇÕES", "linhas": [["'off'", "nunca"], ["'only-on-failure' / 'retain-on-failure'", "só quando falha"], ["'on'", "sempre, até quando passa"]]}),
+    ("Mas gravar sempre deixa tudo mais lento e enche o computador de arquivo. Por isso o padrão bom é só quando falha, e você liga o on só quando precisa de evidência de tudo.",
+     {"type": "cards", "itens": [["✓", "Dia a dia", "só quando falha"], ["🎥", "Precisa provar", "liga o on", "#ffd23f"], ["🐢", "Sempre ligado", "mais lento, muito arquivo", "#ff8c42"]]}),
     ("Desfaz o erro e fechamos o módulo de debug.", {"type": "passo", "icone": "▶", "titulo": "Próximo módulo", "sub": "Testes reais"}),
     ("Te vejo lá!", {"type": "endcard", "sub": "PRÓXIMA: MÓDULO 7 · TESTES REAIS"}),
 ]))
-
 
 def main():
     out = ["# Roteiros aprovados · Módulo 6 (gerado do roteiro_playwright_m6.py)", ""]
