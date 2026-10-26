@@ -67,7 +67,7 @@ AULAS.append(projeto(8, "MÓDULO 2 · AULA 8", "Criando o projeto e abrindo o te
      {"type": "menu", "app": "vscode", "abre": 0, "menus": [["New Text File", "New File...", "New Window", "—", "Open File...", "Open Folder...", "Open Recent ›", "—", "Save", "Save As..."]], "caminho": [5], "legenda": "File › Open Folder"}),
     ("e escolhe essa pasta: clica nela, e depois em Selecionar pasta.",
      {"type": "pastas", "titulo": "Abrir Pasta", "caminho": "Este Computador  ›  Documentos", "itens": ["Fotos", "Músicas", "Trabalho", "meu-primeiro-playwright"],
-      "seleciona": 3, "seleciona_em": 1.4, "botao": "Selecionar pasta", "botao_em": 3.4, "legenda": "Clica na pasta · Selecionar pasta"}),
+      "seleciona": 3, "seleciona_em": 0.9, "botao": "Selecionar pasta", "botao_em": 2.6, "legenda": "Clica na pasta · Selecionar pasta"}),
     ("Se ele perguntar se você confia nos autores da pasta, clica em Yes. Os autores aqui é você.",
      {"type": "instalador", "app": "Visual Studio Code", "titulo": "Do you trust the authors of the files in this folder?", "subtitulo": "Code provides features that may automatically execute files in this folder", "botao": "Yes, I trust the authors", "legenda": "A pasta é sua: pode confiar"}),
     ("Pronto: a pasta aparece vazia ali na esquerda.", {"type": "editor", "arquivo": "Welcome", "pastas": ["meu-primeiro-playwright"], "codigo": "// A pasta do projeto está aberta!\n// Por enquanto, vazia.", "legenda": "O seu projeto está aberto"}),
@@ -159,6 +159,9 @@ AULAS.append(projeto(11, "MÓDULO 2 · AULA 11", "Rodando o teste de exemplo e o
 
 def main():
     for slug, p in AULAS:
+        for x in p["script"]["long"]["parts"][0]["sentences"]:
+            if x["scene"].get("botao") == "Selecionar pasta":
+                x["pausa"] = 2.5  # tempo de ver o clique na pasta e no botão
         d = os.path.join(RAIZ, "projetos", slug); os.makedirs(d, exist_ok=True)
         json.dump(p, open(os.path.join(d, "projeto.json"), "w", encoding="utf8"), ensure_ascii=False, indent=1)
         print(slug, len(p["script"]["long"]["parts"][0]["sentences"]), "frases")

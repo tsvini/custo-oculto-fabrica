@@ -129,11 +129,12 @@
          "meu-primeiro-playwright"
         ],
         "seleciona": 3,
-        "seleciona_em": 1.4,
+        "seleciona_em": 0.9,
         "botao": "Selecionar pasta",
-        "botao_em": 3.4,
+        "botao_em": 2.6,
         "legenda": "Clica na pasta · Selecionar pasta"
-       }
+       },
+       "pausa": 2.5
       },
       {
        "text": "Se ele perguntar se você confia nos autores da pasta, clica em Yes. Os autores aqui é você.",
