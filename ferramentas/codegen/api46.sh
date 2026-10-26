@@ -7,6 +7,7 @@ openbox & sleep 1
 foto() { ffmpeg -loglevel error -y -f x11grab -video_size 1920x1080 -i :99 -frames:v 1 "cg_saida/$1.png"; }
 gravar() { ffmpeg -loglevel error -y -f x11grab -framerate 30 -video_size 1920x1080 -i :99 -c:v libx264 -preset veryfast -crf 20 -pix_fmt yuv420p -g 1 "cg_saida/$1.mp4" & FF=$!; sleep 1; }
 parar() { sleep 1; kill -INT $FF; wait $FF 2>/dev/null; }
+sudo sysctl -q -w kernel.apparmor_restrict_unprivileged_userns=0   # Ubuntu 24: sem isso o Chromium comum não abre (sandbox)
 CHROME=$(node -e "console.log(require('playwright').chromium.executablePath())")
 "$CHROME" --no-first-run --no-default-browser-check --disable-infobars --user-data-dir=/tmp/perfil --window-position=0,0 --window-size=1920,1080 --lang=pt-BR https://jsonplaceholder.typicode.com/ > cg_saida/chrome_log.txt 2>&1 &
 for i in $(seq 1 30); do W=$(xdotool search --onlyvisible --class chrom | head -1); [ -n "$W" ] && break; sleep 1; done
