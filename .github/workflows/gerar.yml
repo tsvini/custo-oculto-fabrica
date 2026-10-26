@@ -77,6 +77,7 @@ jobs:
           cache: pip
 
       - name: Instalar ferramentas
+        timeout-minutes: 15  # às vezes o runner trava aqui; melhor falhar logo e disparar de novo
         run: |
           sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg > /dev/null
           pip install -q -r requirements.txt
