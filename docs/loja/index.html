@@ -1,16 +1,22 @@
-<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Loja do Leigo · Entrar</title><link rel="stylesheet" href="estilo.css"></head>
-<body><main>
-<form class="caixa" data-test="form-login">
-  <h2>Entrar na loja</h2>
-  <label for="usuario">Usuário</label><input id="usuario" data-test="usuario" placeholder="Seu usuário" autocomplete="off">
-  <label for="senha">Senha</label><input id="senha" data-test="senha" type="password" placeholder="Sua senha">
-  <button class="principal" type="submit" data-test="entrar">Entrar</button>
-  <div class="erro" data-test="erro" role="alert" hidden></div>
-  <p class="dica">Loja de treino do curso <b>Playwright para Leigos</b>.<br>Usuários: <b>cliente</b> e <b>bloqueado</b> · senha: <b>leigo123</b></p>
-</form></main>
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Lojinha do Leigo · Entrar</title><link rel="icon" href="img/mascote-pequeno.jpg"><link rel="stylesheet" href="estilo.css"></head>
+<body>
+<div class="entrada">
+  <section class="vitrine"><img src="img/mascote.jpg" alt="Mascote da Lojinha do Leigo"><div id="marca"></div><p>A loja de treino do curso <b style="color:#fff">Playwright para Leigos</b></p></section>
+  <section class="lado-form">
+    <form class="caixa" data-test="form-login">
+      <h2>Entrar</h2><p class="sub">Bem-vindo de volta! <span data-test="versao" style="display:none"></span></p>
+      <label for="usuario">Usuário</label><input id="usuario" data-test="usuario" placeholder="Seu usuário" autocomplete="off">
+      <label for="senha">Senha</label><input id="senha" data-test="senha" type="password" placeholder="Sua senha">
+      <button class="principal" type="submit" data-test="entrar">Entrar</button>
+      <div class="erro" data-test="erro" role="alert" hidden></div>
+      <p class="dica">Usuários de treino: <b>cliente</b> e <b>bloqueado</b><br>Senha dos dois: <b>leigo123</b></p>
+    </form>
+  </section>
+</div>
 <script src="loja.js"></script>
 <script>
-cabecalho(false);
+document.getElementById('marca').innerHTML = MARCA(false);
+document.querySelector('[data-test="versao"]').textContent = 'versão ' + VERSAO;
 document.querySelector('[data-test="form-login"]').addEventListener('submit', (e) => {
   e.preventDefault();
   const u = document.querySelector('[data-test="usuario"]').value.trim(), s = document.querySelector('[data-test="senha"]').value;
