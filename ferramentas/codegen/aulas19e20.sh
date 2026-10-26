@@ -26,8 +26,9 @@ mover 62 172; sleep 1.6; mover 496 442; sleep 1.6; mover 34 116; sleep 1.6; move
 parar
 foto cg20_passa
 mover 608 103; sleep 0.4; xdotool click 1; sleep 0.8   # desliga o Pick locator (tira o destaque antigo)
+mover 1160 120; sleep 0.2; mover 1160 1000; sleep 0.3   # sai da página pela lateral, sem passar por cima de nenhum elemento
 gravar cg20_um
-mover 1209 916; sleep 0.5; xdotool click 1; sleep 0.8
+mover 1209 1000 10; mover 1209 916 10; sleep 0.5; xdotool click 1; sleep 0.8
 mover 1500 960; sleep 0.3; xdotool click 1; sleep 0.4
 xdotool type --delay 70 "getByRole('button', { name: 'Open Menu' })"; sleep 2.5
 parar
