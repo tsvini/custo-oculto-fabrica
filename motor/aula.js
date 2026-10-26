@@ -119,7 +119,7 @@
       const hl = (s.destaque || []).includes(i + 1);
       if (rolando && (s.marca_inicio || []).includes(i + 1)) { const hm = easeOut((t - 0.4) / 0.3) * (1 - easeOut((t - rDe - 0.6) / 0.4)); if (hm > 0) { ctx.save(); ctx.globalAlpha = 0.16 * hm; ctx.fillStyle = C.yel; ctx.fillRect(tabX, yy - lh / 2, W - sideW, lh); ctx.globalAlpha = hm; ctx.fillRect(tabX, yy - lh / 2, 6 * u, lh); ctx.restore(); } }
       if (hl && dig >= 1) { const ha = easeOut((t - (s.digitar === false ? (s.destaque_em || 1.2) : t0 + tDig)) / 0.4); ctx.save(); ctx.globalAlpha = 0.18 * ha; ctx.fillStyle = C.ac; ctx.fillRect(tabX, yy - lh / 2, W - sideW, lh); ctx.globalAlpha = ha; ctx.fillRect(tabX, yy - lh / 2, 6 * u, lh); ctx.restore(); }
-      txt(ctx, String(i + 1), font(500, fs * 0.8, MONO), x0 - 30 * u, yy, "#4b5263", "right", a);
+      txt(ctx, String(i + (s.linha0 || 1)), font(500, fs * 0.8, MONO), x0 - 30 * u, yy, "#4b5263", "right", a);  // linha0: o trecho visível de um arquivo maior
       let mostra = i + 1 > d1 ? ln.length : Math.min(ln.length, resta); if (i + 1 <= d1) resta -= ln.length; let xx = x0;
       for (const [tk, cor] of tokens(ln)) { if (mostra <= 0) break; const parte = tk.slice(0, mostra); mostra -= tk.length; txt(ctx, parte, font(500, fs, MONO), xx, yy, cor, "left", a); xx += tw(ctx, parte, font(500, fs, MONO)); }
       if (dig < 1 && i + 1 <= d1 && resta < 0 && resta + ln.length >= 0 && Math.floor(t * 2.5) % 2 === 0) { ctx.save(); ctx.globalAlpha = a; ctx.fillStyle = C.ac; ctx.fillRect(xx + 2 * u, yy - fs * 0.6, 4 * u, fs * 1.2); ctx.restore(); }
@@ -1011,15 +1011,18 @@
     let tx0 = ix + 24 * u;
     const botao = (rot, ativo, cor) => { const f = font(700, 20 * u); const w = tw(ctx, rot, f) + (cor ? 44 : 24) * u; ctx.save(); ctx.globalAlpha = a; rr(ctx, tx0, itop + 14 * u, w, 36 * u, 6 * u); ctx.fillStyle = ativo ? "#dbe9ff" : "#fff"; ctx.fill(); ctx.strokeStyle = ativo ? "#3b82f6" : "#cfcfcf"; ctx.lineWidth = 2 * u; ctx.stroke();
       if (cor) { ctx.beginPath(); ctx.arc(tx0 + 20 * u, itop + 32 * u, 7 * u, 0, 7); ctx.fillStyle = cor; ctx.fill(); } ctx.restore(); txt(ctx, rot, f, tx0 + (cor ? 34 : 12) * u, itop + 32 * u, "#202124", "left", a); const r = [tx0, itop + 32 * u, w]; tx0 += w + 12 * u; return r; };
-    let bPick = null;
+    let bPick = null, bAssert = null;
     if (dbg) { botao("▶ Resume", false); botao("⤼ Step over", true); botao("Pick locator", false); }
-    else { botao("Record", gravando, gravando ? (Math.floor(t * 2) % 2 ? "#e53935" : "#ff6b6b") : "#9e9e9e"); bPick = botao("Pick locator", pick); botao("Copy", false); }
-    if (!dbg) txt(ctx, "Target: Test Runner ▾", font(600, 19 * u), ix + IW - 24 * u, itop + 32 * u, "#5f6368", "right", a);
+    else { botao("Record", gravando, gravando ? (Math.floor(t * 2) % 2 ? "#e53935" : "#ff6b6b") : "#9e9e9e"); bPick = botao("Pick locator", pick);
+      if (s.botoes_assert) { botao("Assert visibility", false); bAssert = botao("Assert text", (s.assert_em || 0) && t > s.assert_em && t < s.assert_em + 1.6); } else botao("Copy", false); }
+    if (!dbg && !s.botoes_assert) txt(ctx, "Target: Test Runner ▾", font(600, 19 * u), ix + IW - 24 * u, itop + 32 * u, "#5f6368", "right", a);
     // código
     const base = dbg ? String(s.codigo || "").split("\n") : ["import { test, expect } from '@playwright/test';", "", "test('test', async ({ page }) => {", "  await page.goto('" + (s.url || "https://www.saucedemo.com") + "/');"];
-    const AC = s.passos_pw || (s.acoes || []).filter((q) => q && q.linha); const t0 = s.inicio_em === undefined ? 1.4 : s.inicio_em; const passo = Math.max(1.0, Math.min(2.2, (dur * 0.8 - t0) / Math.max(AC.length, 1)));
+    const AC = s.passos_pw || (s.acoes || []).filter((q) => q && q.linha); const t0 = s.inicio_em === undefined ? 1.4 : s.inicio_em; const passo = Math.max(1.0, Math.min(2.2, (dur * 0.8 - t0) / Math.max(AC.length - (s.ja || 0), 1)));
     const tClick = AC.map((_, i) => t0 + 0.6 + i * passo); const L = base.slice(); const novas = [];
-    if (gravando) { AC.forEach((ac, i) => { if (t > tClick[i] + 0.25) { L.push("  " + ac.linha); novas.push([L.length, tClick[i] + 0.25]); } }); L.push("});"); }
+    const ja = s.ja || 0;  // as primeiras "ja" linhas já estavam gravadas (cena anterior): aparecem prontas
+    if (ja) for (let i = 0; i < ja; i++) tClick[i] = -10; for (let i = ja; i < AC.length; i++) tClick[i] = t0 + 0.6 + (i - ja) * passo;
+    if (gravando) { AC.forEach((ac, i) => { if (t > tClick[i] + 0.25) { L.push("  " + ac.linha); if (i >= ja) novas.push([L.length, tClick[i] + 0.25]); } }); L.push("});"); }
     const fs = Math.min(21 * u, (IW - 90 * u) / (Math.max(30, ...L.map((l) => l.length)) * 0.6)); const lh = fs * 1.75; let yy = itop + 100 * u;
     const passoDbg = dbg ? (s.linhas_passo || []) : []; const tDbg = dbg ? Math.max(0.8, (dur * 0.75 - 1) / Math.max(passoDbg.length, 1)) : 0; const iDbg = dbg ? Math.min(passoDbg.length - 1, Math.floor(clamp((t - 1) / tDbg, 0, passoDbg.length - 0.001))) : -1; const linhaDbg = passoDbg[iDbg];
     ctx.save(); ctx.beginPath(); ctx.rect(ix, itop + 66 * u, IW, (pick ? H - 300 * u : H - 120 * u)); ctx.clip();
@@ -1043,7 +1046,8 @@
           const f = font(700, 20 * u, MONO), lab = s.locator || "getByTestId('username')", w = tw(ctx, lab, f) + 28 * u; ctx.save(); ctx.globalAlpha = a * kh; ctx.shadowColor = "rgba(0,0,0,.3)"; ctx.shadowBlur = 12 * u; rr(ctx, x0, y0 - 52 * u, w, 40 * u, 6 * u); ctx.fillStyle = "#fff"; ctx.fill(); ctx.restore();
           txt(ctx, lab, f, x0 + 14 * u, y0 - 32 * u, "#188038", "left", a * kh); } } }
     // gravar: mouse clica em cada elemento e digita o valor no campo
-    if (gravando) AC.forEach((ac, i) => { const e = els[ac.elem === undefined ? i : ac.elem]; if (!e) return; const [x0, y0] = p(e[0], e[1]), [x1, y1] = p(e[2], e[3]); pts.push([(x0 + x1) / 2, (y0 + y1) / 2, tClick[i]]);
+    if (bAssert && s.assert_em) pts.push([bAssert[0] + bAssert[2] / 2, bAssert[1], s.assert_em]);
+    if (gravando) AC.forEach((ac, i) => { if (i < (s.ja || 0)) return; const e = els[ac.elem === undefined ? i : ac.elem]; if (!e) return; const [x0, y0] = p(e[0], e[1]), [x1, y1] = p(e[2], e[3]); pts.push([(x0 + x1) / 2, (y0 + y1) / 2, tClick[i]]);
       const kv = t > tClick[i] ? 1 : 0; if (kv && i === AC.length - 1 && !ac.valor) { /* clique final */ }
       if (ac.valor && t > tClick[i] + 0.1) { const k = clamp((t - tClick[i] - 0.1) / 0.6); const v = ac.valor.slice(0, Math.ceil(k * ac.valor.length)); const mask = ac.senha ? "•".repeat(v.length) : v;
         ctx.save(); ctx.globalAlpha = a; ctx.fillStyle = "#fff"; ctx.fillRect(x0 + 3 * u, y0 + 3 * u, x1 - x0 - 6 * u, y1 - y0 - 6 * u); ctx.restore(); txt(ctx, mask, font(500, Math.min(26 * u, (y1 - y0) * 0.5)), x0 + 14 * u, (y0 + y1) / 2, "#222", "left", a); }
