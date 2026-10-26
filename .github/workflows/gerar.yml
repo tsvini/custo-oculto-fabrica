@@ -161,8 +161,8 @@ jobs:
           mkdir -p previas
           for f in $(find saida -name "*.mp4"); do
             n=$(basename "$f" .mp4)
-            d=$(ffprobe -v error -show_entries format=duration -of csv=p=0 "$f")
-            fps=$(python3 -c "print(min(1.0, 60/float('$d')))")
+            d=$(ffprobe -v error -show_entries format=duration -of csv=p=0 "$f" 2>/dev/null || true); [ -z "$d" ] && d=120  # sem ffprobe (ffmpeg do pip): chuta 2 min
+            fps=$(python3 -c "print(min(1.0, 60/float('$d')))" || echo 0.5)
             ffmpeg -loglevel error -y -i "$f" -vf "fps=$fps,scale=200:-1,tile=10x6" -frames:v 1 "previas/$n.jpg" || true
           done
           for c in $(find saida \( -name "capa_*.jpg" -o -name "miniatura_*.jpg" \)); do s=$(basename "$(dirname "$c")"); cp "$c" "previas/${s}_$(basename "$c")"; done
