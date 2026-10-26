@@ -95,7 +95,7 @@ def gravacoes(cenas, pasta, log):
             tmpd = tempfile.mkdtemp()
             if s.get("dispositivo"):  # emula um aparelho (ex.: "Pixel 7"): o vídeo sai em pé, do tamanho da tela dele
                 dv = dict(p.devices[s["dispositivo"]]); dv.pop("default_browser_type", None); vp = dv["viewport"]
-                ctx = b.new_context(**dv, record_video_dir=tmpd, record_video_size={"width": vp["width"] * 2, "height": vp["height"] * 2})
+                ctx = b.new_context(**dv, record_video_dir=tmpd, record_video_size={"width": vp["width"], "height": vp["height"]})  # do tamanho da tela emulada (o dobro deixava a página num canto e o resto cinza)
             else:
                 ctx = b.new_context(viewport={"width": 1600, "height": 900}, device_scale_factor=1, record_video_dir=tmpd, record_video_size={"width": 1600, "height": 900}, user_agent=UA)
             pg = ctx.new_page(); t_ini = time.time(); corte = 0.0
