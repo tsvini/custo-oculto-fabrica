@@ -173,6 +173,20 @@
   }
 
   // TERMINAL: {type:"terminal", pasta:"C:\\Users\\voce\\meu-projeto", linhas:[{cmd:"node -v"},{out:"v22.11.0", cor:"ac"}], legenda:"..."}
+  // BLOCO DE NOTAS × VS CODE: o mesmo código, primeiro tudo preto no Bloco de Notas, depois colorido no VS Code
+  // {type:"bloco_vs", codigo:"...", vs_em:2.2, legenda:"..."}
+  S.bloco_vs = (ctx, c, t, dur, s) => {
+    const u = c.u; const L = (s.codigo || "").split("\n"); const W = 840 * u, H = 470 * u, gap = 70 * u, y = topo(c, H) + 20 * u;
+    const x1 = c.cx - W - gap / 2, x2 = c.cx + gap / 2; const fs = Math.min(26 * u, (W - 80 * u) / (Math.max(...L.map((l) => l.length)) * 0.6)); const lh = fs * 1.7;
+    const a1 = easeOut(t / 0.4); const top1 = janela(ctx, x1, y, W, H, u, "Sem título - Bloco de Notas", a1, "#ffffff");
+    L.forEach((l, i) => txt(ctx, l, font(500, fs, MONO), x1 + 40 * u, top1 + 50 * u + i * lh, "#111111", "left", a1));
+    txt(ctx, "BLOCO DE NOTAS", font(800, 44 * u), x1 + W / 2, y + H + 70 * u, C.txt, "center", a1); txt(ctx, "tudo da mesma cor", font(600, 30 * u), x1 + W / 2, y + H + 118 * u, C.mut, "center", a1);
+    const t2 = s.vs_em || 2.0; const a2 = easeOut((t - t2) / 0.45); if (a2 <= 0) { legenda(ctx, c, t, s); return; }
+    ctx.save(); ctx.translate(0, (1 - a2) * 30 * u); const top2 = janela(ctx, x2, y, W, H, u, "login.spec.js — Visual Studio Code", a2, C.term);
+    L.forEach((l, i) => { let xx = x2 + 40 * u; for (const [tk, cor] of tokens(l)) { txt(ctx, tk, font(500, fs, MONO), xx, top2 + 50 * u + i * lh, cor, "left", a2); xx += tw(ctx, tk, font(500, fs, MONO)); } });
+    txt(ctx, "VS CODE", font(800, 44 * u), x2 + W / 2, y + H + 70 * u, C.yel, "center", a2); txt(ctx, "cada coisa de uma cor", font(600, 30 * u), x2 + W / 2, y + H + 118 * u, C.mut, "center", a2);
+    ctx.restore(); legenda(ctx, c, t, s);
+  };
   S.terminal = (ctx, c, t, dur, s) => {
     const u = c.u; const a = easeOut(t / 0.4); const W = (c.vertical ? 1000 : 1600) * u, H = (c.vertical ? 900 : 660) * u;
     const x = c.cx - W / 2, y = topo(c, H);

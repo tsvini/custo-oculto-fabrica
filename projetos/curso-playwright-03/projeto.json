@@ -53,23 +53,9 @@
       {
        "text": "O VS Code é um editor de código. Pensa num bloco de notas turbinado, que pinta cada parte do código de uma cor e te ajuda a não errar.",
        "scene": {
-        "type": "compare",
-        "title": "BLOCO DE NOTAS TURBINADO",
-        "items": [
-         [
-          "BLOCO DE NOTAS",
-          "TUDO DA MESMA COR",
-          "white"
-         ],
-         [
-          "VS CODE",
-          "CADA COISA DE UMA COR",
-          "gold"
-         ]
-        ],
-        "size": 120,
-        "stagger": 1.2,
-        "vs": false
+        "type": "bloco_vs",
+        "vs_em": 3.2,
+        "codigo": "import { test, expect } from '@playwright/test';\n\ntest('entra no site', async ({ page }) => {\n  await page.goto('https://www.saucedemo.com/');\n  await expect(page).toHaveTitle('Swag Labs');\n});"
        }
       },
       {
@@ -101,12 +87,18 @@
        "text": "Primeiro passo: abre o navegador e entra em code ponto visualstudio ponto com. Clica no botão Download for Windows.",
        "scene": {
         "type": "tela",
-        "media": "site_vscode",
+        "media": "rec_vscode_download",
         "url": "https://code.visualstudio.com/",
-        "alvo": "Download for Windows",
+        "gravar": true,
+        "acoes": [
+         {
+          "click": "text=Download for Windows",
+          "espera": 3500
+         }
+        ],
+        "espera_inicio": 1800,
+        "espera_fim": 800,
         "titulo": "code.visualstudio.com",
-        "zoom_em": 1.8,
-        "caixa_em": 2.6,
         "legenda": "Clique em Download for Windows"
        }
       },
