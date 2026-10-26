@@ -6,7 +6,7 @@ concurrency:
   cancel-in-progress: false
 jobs:
   sinc:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     permissions:
       contents: write
     steps:

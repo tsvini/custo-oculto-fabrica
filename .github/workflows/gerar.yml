@@ -29,7 +29,7 @@ concurrency:
 
 jobs:
   gerar:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     permissions:
       contents: write
     env:
@@ -79,7 +79,7 @@ jobs:
       - name: Instalar ferramentas
         timeout-minutes: 15  # às vezes o runner trava aqui; melhor falhar logo e disparar de novo
         run: |
-          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg > /dev/null
+          sudo apt-get -o Acquire::Retries=3 -o Acquire::http::Timeout=20 update -qq && sudo apt-get -o Acquire::Retries=3 install -y -qq ffmpeg > /dev/null
           pip install -q -r requirements.txt
           python -m playwright install --with-deps chromium > /dev/null
 
