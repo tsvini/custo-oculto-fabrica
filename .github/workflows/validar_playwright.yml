@@ -50,7 +50,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           sed 's/\x1b\[[0-9;]*m//g' ../../resultado_playwright.txt > ../../validacao_resultado.txt
-          gh release upload videos ../../validacao_resultado.txt --clobber -R ${{ github.repository }} || true
+          gh release upload bastidores ../../validacao_resultado.txt --clobber -R ${{ github.repository }} || true
       - name: Resumo
         if: always()
         run: |

@@ -20,4 +20,4 @@ jobs:
       - env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          cp dbg_log.txt dbg/ ; cd dbg && for f in *.png *.txt; do gh release upload videos "$f" --clobber -R ${{ github.repository }} || true; done
+          cp dbg_log.txt dbg/ ; cd dbg && for f in *.png *.txt; do gh release upload bastidores "$f" --clobber -R ${{ github.repository }} || true; done

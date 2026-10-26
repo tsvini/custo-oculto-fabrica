@@ -1,0 +1,40 @@
+name: Arrumar releases
+# Deixa a release "videos" só com as aulas do Playwright. Nada é apagado sem antes estar copiado:
+#   Cypress e vídeos do canal -> release "outros-videos"; arquivos de trabalho (codegen, validação, depuração) -> release "bastidores".
+on:
+  workflow_dispatch:
+jobs:
+  arrumar:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 120
+    permissions:
+      contents: write
+    env:
+      GH_TOKEN: ${{ github.token }}
+      R: ${{ github.repository }}
+    steps:
+      - name: Criar as releases (se ainda não existem)
+        run: |
+          gh release view outros-videos -R $R >/dev/null 2>&1 || gh release create outros-videos -R $R --title "Outros vídeos (Cypress e canal)" --notes "Cursos e vídeos que não são do Playwright para Leigos."
+          gh release view bastidores -R $R >/dev/null 2>&1 || gh release create bastidores -R $R --title "Bastidores" --notes "Arquivos de trabalho: gravações do codegen, validações, depuração."
+      - name: Mover
+        run: |
+          mkdir -p t && cd t
+          gh api --paginate repos/$R/releases/tags/videos --jq '.assets[] | "\(.id) \(.name)"' > lista.txt
+          ok=0; falhou=0
+          while read -r id nome; do
+            case "$nome" in
+              curso_playwright_*) continue ;;
+              *.txt|*.png|cg*|api46*|rec_*|dbg*|chrome*|validacao*|relatorio*) alvo=bastidores ;;
+              *) alvo=outros-videos ;;
+            esac
+            if gh api -H "Accept: application/octet-stream" repos/$R/releases/assets/$id > "$nome" && [ -s "$nome" ] \
+               && gh release upload $alvo "$nome" --clobber -R $R </dev/null \
+               && gh api repos/$R/releases/tags/$alvo --jq '.assets[].name' | grep -qxF "$nome"; then
+              gh api -X DELETE repos/$R/releases/assets/$id && ok=$((ok+1)) && echo "movido: $nome -> $alvo"
+            else
+              falhou=$((falhou+1)); echo "::warning title=Não movido::$nome"
+            fi
+            rm -f "$nome"
+          done < lista.txt
+          echo "::notice title=Releases::movidos $ok · falharam $falhou"

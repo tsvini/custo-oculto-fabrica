@@ -19,7 +19,7 @@ jobs:
           while IFS='|' read -r n titulo; do
             [ -z "$n" ] && continue
             m=$((10#$n))
-            gh release download videos -p "curso_cypress_${n}_longo.mp4" -D bruto --clobber </dev/null
+            gh release download outros-videos -p "curso_cypress_${n}_longo.mp4" -D bruto --clobber </dev/null
             ffmpeg -nostdin -loglevel error -y -i "bruto/curso_cypress_${n}_longo.mp4" -c:v copy -ac 2 -c:a aac -b:a 192k -movflags +faststart "pacote/${n} - ${titulo}.mp4"
             rm "bruto/curso_cypress_${n}_longo.mp4"
             gh release upload udemy "pacote/${n} - ${titulo}.mp4" --clobber </dev/null
