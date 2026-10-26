@@ -80,7 +80,7 @@
         "contagem": 5,
         "legenda": "Pausa o vídeo e tenta"
        },
-       "pausa": 4
+       "pausa": 6
       },
       {
        "text": "Dica: a mochila e a lanterna da bicicleta, bike light. O total fica no data-test total-label. Com os preços desse site de treino, o total conhecido é quarenta e três e dezoito.",
@@ -166,7 +166,7 @@
         "rolar_de": 0.2,
         "rolar_dur": 0.6
        },
-       "pausa": 4
+       "pausa": 8
       },
       {
        "text": "Roda e olha o fluxo inteiro.",
@@ -275,7 +275,8 @@
          ],
          "pre_url": "https://www.saucedemo.com/"
         }
-       }
+       },
+       "pausa": 4
       },
       {
        "text": "Se você conseguiu montar boa parte desse desafio sozinho, você já está juntando seletores, ações e conferências sem copiar um roteiro pronto. Esse é um grande passo.",

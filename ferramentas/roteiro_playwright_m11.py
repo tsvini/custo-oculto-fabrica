@@ -70,8 +70,18 @@ AULAS = []
 
 def aula(n, titulo_aula, frases, pausas):
     slug, p = projeto(n, f"MÓDULO 11 · AULA {n}", titulo_aula, frases)
-    for i in pausas:  # silêncio de verdade depois da frase (a contagem na tela acompanha)
-        p["script"]["long"]["parts"][0]["sentences"][i]["pausa"] = 4
+    # silêncio de verdade depois da frase (a narração fica parada e a cena continua):
+    #  desafio: a contagem de 5 s inteira · solução: ~0,55 s por linha digitada · o teste rodando: tempo de ver o navegador e o "passed"
+    for x in p["script"]["long"]["parts"][0]["sentences"]:
+        sc, fala = x["scene"], len(x["text"]) / 14.5
+        if sc.get("type") == "desafio":
+            x["pausa"] = 6
+        elif sc.get("navegador"):
+            x["pausa"] = 4
+        elif sc.get("digitar") and sc.get("digitar_de"):
+            falta = (sc["digitar_ate"] - sc["digitar_de"] + 1) * 0.55 + 1.0 - fala
+            if falta > 0.8:
+                x["pausa"] = 2 * round(falta / 2 + 0.25)
     AULAS.append((slug, p))
 
 

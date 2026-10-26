@@ -75,7 +75,7 @@
         "contagem": 5,
         "legenda": "Pausa o vídeo e tenta"
        },
-       "pausa": 4
+       "pausa": 6
       },
       {
        "text": "Dica: depois de adicionar, o botão vira Remove, com data-test remove-sauce-labs-backpack. E quando o carrinho fica vazio, o numerozinho some da página.",
@@ -232,7 +232,8 @@
          ],
          "pre_url": "https://www.saucedemo.com/"
         }
-       }
+       },
+       "pausa": 4
       },
       {
        "text": "Te vejo no próximo!",

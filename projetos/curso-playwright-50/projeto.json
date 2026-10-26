@@ -75,7 +75,7 @@
         "contagem": 5,
         "legenda": "Pausa o vídeo e tenta"
        },
-       "pausa": 4
+       "pausa": 6
       },
       {
        "text": "Dica: a mensagem é Username is required.",
@@ -111,7 +111,8 @@
         "rolar": true,
         "rolar_de": 0.2,
         "rolar_dur": 0.6
-       }
+       },
+       "pausa": 2
       },
       {
        "text": "Repara: nem todo teste preenche tudo, e um bom teste também confere o que dá errado.",
@@ -192,7 +193,8 @@
          "em": 0.12,
          "ate": 0.84
         }
-       }
+       },
+       "pausa": 4
       },
       {
        "text": "Te vejo no próximo!",

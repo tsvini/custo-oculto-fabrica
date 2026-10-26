@@ -75,7 +75,7 @@
         "contagem": 5,
         "legenda": "Pausa o vídeo e tenta"
        },
-       "pausa": 4
+       "pausa": 6
       },
       {
        "text": "Dica: a mensagem fica no data-test error, e contém do not match.",
@@ -207,7 +207,8 @@
          "em": 0.12,
          "ate": 0.84
         }
-       }
+       },
+       "pausa": 4
       },
       {
        "text": "Te vejo no próximo desafio!",

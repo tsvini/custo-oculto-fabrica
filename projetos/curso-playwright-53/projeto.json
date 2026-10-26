@@ -75,7 +75,7 @@
         "contagem": 5,
         "legenda": "Pausa o vídeo e tenta"
        },
-       "pausa": 4
+       "pausa": 6
       },
       {
        "text": "Dica: o menu é aquele botão de três risquinhos, com nome Open Menu. Lá dentro tem o Logout.",
@@ -210,7 +210,8 @@
          ],
          "pre_url": "https://www.saucedemo.com/"
         }
-       }
+       },
+       "pausa": 4
       },
       {
        "text": "Te vejo no desafio final!",
