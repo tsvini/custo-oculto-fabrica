@@ -1,3 +1,5 @@
 Vinícius Torales
-eleven_v4_turbo eleven_v4
-[excited] Seja muito bem-vindo ao Playwright para Leigos! [warm] Eu sou o Vinícius.
+eleven_v4_turbo
+Pausa o vídeo e tenta. Dica: a mensagem fica no data-test error.
+Pausa o vídeo e tenta. [silence] Dica: a mensagem fica no data-test error.
+Pausa o vídeo e tenta. <break time="4.0s" /> Dica: a mensagem fica no data-test error.
