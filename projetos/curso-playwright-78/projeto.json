@@ -1,0 +1,263 @@
+{
+ "title": "Playwright para leigos · Aula 78",
+ "slug": "curso-playwright-78",
+ "idioma": "pt",
+ "destino": "curso",
+ "marca": [
+  "PLAYWRIGHT",
+  "PARA LEIGOS"
+ ],
+ "cor_fundo": "#3fd68a",
+ "sem_legenda": true,
+ "legenda_y": 0.93,
+ "selo": "MÓDULO 14 · AULA 78",
+ "voz": {
+  "nome": "gravada",
+  "motor": "eleven",
+  "eleven_voz": "Vinícius Torales"
+ },
+ "serie": [],
+ "meta": {
+  "titles": [
+   "Aula 78: Page Objects e fixture"
+  ],
+  "description": "",
+  "tags": []
+ },
+ "notes": "Curso Playwright para leigos. Não publica (destino: curso). Roteiro em curso-playwright/roteiros/.",
+ "script": {
+  "long": {
+   "parts": [
+    {
+     "chapter": "",
+     "sentences": [
+      {
+       "text": "O LoginPage, com a receita que você já conhece: os campos, o botão, a mensagem de erro, e o entrar.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "LoginPage.js",
+        "codigo": "export class LoginPage {\n  constructor(page) {\n    this.page = page;\n    this.usuario = page.getByTestId('usuario');\n    this.senha = page.getByTestId('senha');\n    this.botaoEntrar = page.getByTestId('entrar');\n    this.erro = page.getByTestId('erro');\n  }\n\n  async abrir() {\n    const versao = process.env.LOJA_VERSAO ? `?versao=${process.env.LOJA_VERSAO}` : '';\n    await this.page.goto(`index.html${versao}`);\n  }\n\n  async entrar(usuario, senha) {\n    await this.usuario.fill(usuario);\n    await this.senha.fill(senha);\n    await this.botaoEntrar.click();\n  }\n}",
+        "legenda": "LoginPage: a mesma receita",
+        "fonte": 19,
+        "digitar": false,
+        "linha0": 1,
+        "pastas": null,
+        "destaque": [
+         2,
+         3,
+         4,
+         5,
+         6,
+         7,
+         8
+        ],
+        "destaque_em": 0.8
+       }
+      },
+      {
+       "text": "E uma ação nova, o abrir. Ela abre a loja, e se o ponto env tiver a versão, acrescenta o interrogação versão no endereço.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "LoginPage.js",
+        "codigo": "export class LoginPage {\n  constructor(page) {\n    this.page = page;\n    this.usuario = page.getByTestId('usuario');\n    this.senha = page.getByTestId('senha');\n    this.botaoEntrar = page.getByTestId('entrar');\n    this.erro = page.getByTestId('erro');\n  }\n\n  async abrir() {\n    const versao = process.env.LOJA_VERSAO ? `?versao=${process.env.LOJA_VERSAO}` : '';\n    await this.page.goto(`index.html${versao}`);\n  }\n\n  async entrar(usuario, senha) {\n    await this.usuario.fill(usuario);\n    await this.senha.fill(senha);\n    await this.botaoEntrar.click();\n  }\n}",
+        "legenda": "abrir(): a versão vem do .env",
+        "fonte": 19,
+        "digitar": false,
+        "linha0": 1,
+        "pastas": null,
+        "destaque": [
+         11,
+         12
+        ],
+        "destaque_em": 0.8
+       }
+      },
+      {
+       "text": "Traduzindo: se existir a LOJA VERSÃO, o interrogação quer dizer então: use interrogação versão igual ao número. Os dois pontos querem dizer senão: senão, nada.",
+       "scene": {
+        "type": "traducao",
+        "codigo": "process.env.LOJA_VERSAO ? `?versao=${process.env.LOJA_VERSAO}` : ''",
+        "partes": [
+         [
+          "process.env.LOJA_VERSAO ?",
+          "se existir a versão, então"
+         ],
+         [
+          "`?versao=${process.env.LOJA_VERSAO}`",
+          "?versao=1"
+         ],
+         [
+          ": ''",
+          "senão, nada"
+         ]
+        ],
+        "passo": 2.0
+       }
+      },
+      {
+       "text": "Agora o ProdutosPage. Os elementos: o título, a caixa de ordenar, os produtos, os preços e os nomes. E a ação de ordenar, com o select option que você já conhece.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "ProdutosPage.js",
+        "codigo": "export class ProdutosPage {\n  constructor(page) {\n    this.page = page;\n    this.titulo = page.getByTestId('titulo');\n    this.ordenar = page.getByTestId('ordenar');\n    this.produtos = page.getByTestId('produto');\n    this.precos = page.getByTestId('preco');\n    this.nomes = page.getByTestId('nome');\n  }\n\n  async ordenarPor(opcao) {\n    await this.ordenar.selectOption(opcao);\n  }\n\n  // \"R$ 1.234,56\" vira 1234.56\n  async lerPrecos() {\n    const textos = await this.precos.allTextContents();\n    return textos.map((t) => Number(t.replace('R$', '').replace(/\\./g, '').replace(',', '.').trim()));\n  }\n\n  async lerNomes() {\n    return this.nomes.allTextContents();\n  }\n\n  produto(nome) {\n    return this.produtos.filter({ hasText: nome });\n  }\n}",
+        "legenda": "ProdutosPage: elementos e ordenarPor",
+        "fonte": 19,
+        "digitar": false,
+        "linha0": 1,
+        "pastas": null,
+        "destaque": [
+         11,
+         12
+        ],
+        "destaque_em": 1.8
+       }
+      },
+      {
+       "text": "E uma ação que lê os preços da tela. Primeiro, all text contents: pegue o texto de todos os preços, numa lista.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "ProdutosPage.js",
+        "codigo": "export class ProdutosPage {\n  constructor(page) {\n    this.page = page;\n    this.titulo = page.getByTestId('titulo');\n    this.ordenar = page.getByTestId('ordenar');\n    this.produtos = page.getByTestId('produto');\n    this.precos = page.getByTestId('preco');\n    this.nomes = page.getByTestId('nome');\n  }\n\n  async ordenarPor(opcao) {\n    await this.ordenar.selectOption(opcao);\n  }\n\n  // \"R$ 1.234,56\" vira 1234.56\n  async lerPrecos() {\n    const textos = await this.precos.allTextContents();\n    return textos.map((t) => Number(t.replace('R$', '').replace(/\\./g, '').replace(',', '.').trim()));\n  }\n\n  async lerNomes() {\n    return this.nomes.allTextContents();\n  }\n\n  produto(nome) {\n    return this.produtos.filter({ hasText: nome });\n  }\n}",
+        "legenda": "allTextContents: o texto de todos",
+        "fonte": 19,
+        "digitar": false,
+        "linha0": 1,
+        "pastas": null,
+        "destaque": [
+         17
+        ],
+        "destaque_em": 0.8
+       }
+      },
+      {
+       "text": "Só que eles vêm como texto: R$ doze, vírgula, cinquenta. E pra comparar, a gente precisa de número. Então, pra cada texto: tira o R$, tira o ponto do milhar, troca a vírgula por ponto, e transforma em número.",
+       "scene": {
+        "type": "traducao",
+        "titulo": "DE TEXTO PRA NÚMERO",
+        "linhas": [
+         [
+          "\"R$ 1.234,56\"",
+          "o texto da tela"
+         ],
+         [
+          ".replace('R$', '')",
+          "tira o R$"
+         ],
+         [
+          ".replace(/\\./g, '')",
+          "tira o ponto do milhar"
+         ],
+         [
+          ".replace(',', '.')",
+          "vírgula vira ponto"
+         ],
+         [
+          "Number(...)",
+          "1234.56: um número"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Por que a vírgula vira ponto? Porque o JavaScript escreve número do jeito americano: sete ponto noventa e nove. Com vírgula, ele não entende.",
+       "scene": {
+        "type": "compare",
+        "title": "O MESMO PREÇO",
+        "items": [
+         [
+          "\"7,99\"",
+          "TEXTO: NÃO DÁ PRA COMPARAR",
+          "white"
+         ],
+         [
+          "7.99",
+          "NÚMERO: DÁ PRA ORDENAR",
+          "gold"
+         ]
+        ],
+        "size": 90,
+        "stagger": 1.8,
+        "vs": false
+       }
+      },
+      {
+       "text": "E o produto, que acha o card de um produto pelo nome, com o filter has text da aula sessenta e três.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "ProdutosPage.js",
+        "codigo": "export class ProdutosPage {\n  constructor(page) {\n    this.page = page;\n    this.titulo = page.getByTestId('titulo');\n    this.ordenar = page.getByTestId('ordenar');\n    this.produtos = page.getByTestId('produto');\n    this.precos = page.getByTestId('preco');\n    this.nomes = page.getByTestId('nome');\n  }\n\n  async ordenarPor(opcao) {\n    await this.ordenar.selectOption(opcao);\n  }\n\n  // \"R$ 1.234,56\" vira 1234.56\n  async lerPrecos() {\n    const textos = await this.precos.allTextContents();\n    return textos.map((t) => Number(t.replace('R$', '').replace(/\\./g, '').replace(',', '.').trim()));\n  }\n\n  async lerNomes() {\n    return this.nomes.allTextContents();\n  }\n\n  produto(nome) {\n    return this.produtos.filter({ hasText: nome });\n  }\n}",
+        "legenda": "produto(nome): o card pelo nome",
+        "fonte": 19,
+        "digitar": false,
+        "linha0": 1,
+        "pastas": null,
+        "destaque": [
+         25,
+         26
+        ],
+        "destaque_em": 0.8
+       }
+      },
+      {
+       "text": "E a fixture que entrega os dois prontos pros testes. Igual à do módulo treze.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "paginas.js",
+        "pastas": [
+         "projeto-lojinha",
+         "  dados/",
+         "    login.json",
+         "    ordenacao.json",
+         "  fixtures/",
+         "    paginas.js",
+         "  pages/",
+         "    LoginPage.js",
+         "    ProdutosPage.js",
+         "  tests/",
+         "    login.spec.js",
+         "    produtos.spec.js",
+         "  .env",
+         "  playwright.config.js",
+         "  README.md"
+        ],
+        "codigo": "import { test as base } from '@playwright/test';\nimport { LoginPage } from '../pages/LoginPage';\nimport { ProdutosPage } from '../pages/ProdutosPage';\n\nexport const test = base.extend({\n  loginPage: async ({ page }, use) => {\n    await use(new LoginPage(page));\n  },\n  produtosPage: async ({ page }, use) => {\n    await use(new ProdutosPage(page));\n  },\n});\n\nexport { expect } from '@playwright/test';",
+        "legenda": "A fixture: as duas páginas prontas",
+        "fonte": 26,
+        "digitar": false,
+        "linha0": 1
+       }
+      },
+      {
+       "text": "Repara como foi mais rápido da segunda vez. Não porque a gente pulou explicação: porque agora você conhece a receita, e só aplica.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "MAIS RÁPIDO",
+          "white",
+          120
+         ],
+         [
+          "PORQUE VOCÊ CONHECE A RECEITA",
+          "gold",
+          90
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Te vejo na próxima!",
+       "scene": {
+        "type": "endcard",
+        "sub": "PRÓXIMA: AUTOMATIZANDO OS CENÁRIOS"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "shorts": [],
+  "tiktoks": []
+ }
+}

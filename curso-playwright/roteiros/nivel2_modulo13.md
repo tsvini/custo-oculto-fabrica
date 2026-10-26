@@ -85,7 +85,7 @@
 9. Te vejo na próxima! [endcard]
 
 ## Aula 70: Passou. Rodei de novo. Falhou.
-1. Olha isso. Rodei esse teste dez vezes seguidas: oito falharam, e duas passaram. E eu não mudei uma linha. [terminal]
+1. Olha isso. Rodei esse teste dez vezes seguidas: nove passaram, e uma falhou. Esperava seis produtos, e encontrou zero. E eu não mudei uma linha. [terminal]
 2. Rodei de novo, o mesmo comando, sem mexer em nada. Dessa vez passaram as dez. [terminal]
 3. Esse é o teste flaky: às vezes passa, às vezes falha, sem nenhuma mudança que explique. E ele é perigoso: o time para de confiar nos testes, e começa a ignorar o vermelho. Até o dia em que o vermelho era um bug de verdade. [bigtext]
 4. Olha o código. Depois do login, ele espera quatro segundos e meio, fixos, e conta os produtos. [editor]

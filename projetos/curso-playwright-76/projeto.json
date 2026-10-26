@@ -1,0 +1,343 @@
+{
+ "title": "Playwright para leigos · Aula 76",
+ "slug": "curso-playwright-76",
+ "idioma": "pt",
+ "destino": "curso",
+ "marca": [
+  "PLAYWRIGHT",
+  "PARA LEIGOS"
+ ],
+ "cor_fundo": "#3fd68a",
+ "sem_legenda": true,
+ "legenda_y": 0.93,
+ "selo": "MÓDULO 14 · AULA 76",
+ "voz": {
+  "nome": "gravada",
+  "motor": "eleven",
+  "eleven_voz": "Vinícius Torales"
+ },
+ "serie": [],
+ "meta": {
+  "titles": [
+   "Aula 76: Tem alguma coisa errada aqui"
+  ],
+  "description": "",
+  "tags": []
+ },
+ "notes": "Curso Playwright para leigos. Não publica (destino: curso). Roteiro em curso-playwright/roteiros/.",
+ "script": {
+  "long": {
+   "parts": [
+    {
+     "chapter": "",
+     "sentences": [
+      {
+       "text": "Antes de automatizar, a gente roda alguns cenários na mão, na versão que o time entregou, a versão um. Isso tem nome: teste exploratório.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "AULA 76",
+          "muted",
+          80
+         ],
+         [
+          "NA MÃO PRIMEIRO",
+          "gold",
+          150
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Login válido, com cliente e leigo123: entrou. Ok.",
+       "scene": {
+        "type": "tela",
+        "media": "n76_ok",
+        "url": "https://tsvini.github.io/custo-oculto-fabrica/loja/index.html?versao=1",
+        "gravar": true,
+        "acoes": [
+         {
+          "fill": [
+           "[data-test=\"usuario\"]",
+           "cliente"
+          ]
+         },
+         {
+          "fill": [
+           "[data-test=\"senha\"]",
+           "leigo123"
+          ]
+         },
+         {
+          "click": "[data-test=\"entrar\"]",
+          "espera": 1800
+         }
+        ],
+        "titulo": "Lojinha do Leigo",
+        "legenda": "Login válido: ok",
+        "espera_inicio": 1200,
+        "espera_fim": 2200,
+        "delay_letra": 70
+       },
+       "pausa": 2
+      },
+      {
+       "text": "Senha errada: aparece Usuário ou senha incorretos. Ok.",
+       "scene": {
+        "type": "tela",
+        "media": "n76_senha",
+        "url": "https://tsvini.github.io/custo-oculto-fabrica/loja/index.html?versao=1",
+        "gravar": true,
+        "acoes": [
+         {
+          "fill": [
+           "[data-test=\"usuario\"]",
+           "cliente"
+          ]
+         },
+         {
+          "fill": [
+           "[data-test=\"senha\"]",
+           "errada"
+          ]
+         },
+         {
+          "click": "[data-test=\"entrar\"]",
+          "espera": 1800
+         }
+        ],
+        "titulo": "Lojinha do Leigo",
+        "legenda": "Senha errada: ok",
+        "espera_inicio": 1200,
+        "espera_fim": 2200,
+        "delay_letra": 70
+       },
+       "pausa": 2
+      },
+      {
+       "text": "Usuário bloqueado: aparece que ele está bloqueado. Ok.",
+       "scene": {
+        "type": "tela",
+        "media": "n76_bloq",
+        "url": "https://tsvini.github.io/custo-oculto-fabrica/loja/index.html?versao=1",
+        "gravar": true,
+        "acoes": [
+         {
+          "fill": [
+           "[data-test=\"usuario\"]",
+           "bloqueado"
+          ]
+         },
+         {
+          "fill": [
+           "[data-test=\"senha\"]",
+           "leigo123"
+          ]
+         },
+         {
+          "click": "[data-test=\"entrar\"]",
+          "espera": 1800
+         }
+        ],
+        "titulo": "Lojinha do Leigo",
+        "legenda": "Usuário bloqueado: ok",
+        "espera_inicio": 1200,
+        "espera_fim": 2200,
+        "delay_letra": 70
+       },
+       "pausa": 2
+      },
+      {
+       "text": "Agora, ordenar do menor pro maior preço.",
+       "scene": {
+        "type": "tela",
+        "media": "n76_v1",
+        "url": "https://tsvini.github.io/custo-oculto-fabrica/loja/index.html?versao=1",
+        "gravar": true,
+        "acoes": [
+         {
+          "fill": [
+           "[data-test=\"usuario\"]",
+           "cliente"
+          ]
+         },
+         {
+          "fill": [
+           "[data-test=\"senha\"]",
+           "leigo123"
+          ]
+         },
+         {
+          "click": "[data-test=\"entrar\"]",
+          "espera": 1800
+         },
+         {
+          "select": [
+           "[data-test=\"ordenar\"]",
+           "menor"
+          ],
+          "espera": 3500
+         }
+        ],
+        "titulo": "Lojinha do Leigo",
+        "legenda": "Preço: do menor pro maior?",
+        "espera_inicio": 1200,
+        "espera_fim": 3000,
+        "delay_letra": 70
+       },
+       "pausa": 2
+      },
+      {
+       "text": "Repara nos valores: doze e cinquenta, cento e vinte e nove e noventa, quinze e noventa e nove. E o mais barato, sete e noventa e nove, quase lá no fim.",
+       "scene": {
+        "type": "traducao",
+        "titulo": "A ORDEM QUE APARECEU",
+        "linhas": [
+         [
+          "R$ 12,50",
+          "1º"
+         ],
+         [
+          "R$ 129,90",
+          "2º"
+         ],
+         [
+          "R$ 15,99",
+          "3º"
+         ],
+         [
+          "R$ 7,99",
+          "6º: o mais barato, quase no fim"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Isso não está em ordem. Antes de escrever uma linha de automação, você acabou de achar um bug.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "ANTES DE UMA LINHA DE CÓDIGO",
+          "white",
+          90
+         ],
+         [
+          "VOCÊ ACHOU UM BUG",
+          "gold",
+          130
+         ]
+        ]
+       }
+      },
+      {
+       "text": "E por que ele acontece? A loja compara o preço como texto. E em texto, o um vem antes do sete, igual no dicionário. Então doze e cento e vinte e nove vêm antes do sete.",
+       "scene": {
+        "type": "traducao",
+        "titulo": "COMPARANDO COMO TEXTO",
+        "linhas": [
+         [
+          "\"12,50\" × \"7,99\"",
+          "o 1 vem antes do 7"
+         ],
+         [
+          "\"129,90\" × \"15,99\"",
+          "12 vem antes de 15"
+         ],
+         [
+          "como número",
+          "7,99 é o menor"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "É exatamente por isso que a gente pensou nos cenários antes de abrir o editor. Quem começa direto no código testa o que lembrou. Quem pensa primeiro testa o que importa.",
+       "scene": {
+        "type": "compare",
+        "title": "COMEÇAR PELO QUÊ?",
+        "items": [
+         [
+          "DIRETO NO CÓDIGO",
+          "TESTA O QUE LEMBROU",
+          "white"
+         ],
+         [
+          "PELOS CENÁRIOS",
+          "TESTA O QUE IMPORTA",
+          "gold"
+         ]
+        ],
+        "size": 90,
+        "stagger": 1.8,
+        "vs": false
+       }
+      },
+      {
+       "text": "Agora, registra: o título dizendo o problema, o passo a passo, o esperado, o que aconteceu, e o print.",
+       "scene": {
+        "type": "tela",
+        "media": "card_bug_loja",
+        "url": "repo:curso-playwright/material/cenas/card_bug_loja.html",
+        "titulo": "Quadro de tarefas",
+        "legenda": "O card do bug",
+        "alvo": "Esperado × obtido"
+       }
+      },
+      {
+       "text": "O time corrigiu e entregou a versão dois. Abre de novo e ordena: agora sim, do menor pro maior. Agora a gente automatiza, pra esse bug nunca mais voltar sem ninguém ver.",
+       "scene": {
+        "type": "tela",
+        "media": "n76_v2",
+        "url": "https://tsvini.github.io/custo-oculto-fabrica/loja/",
+        "gravar": true,
+        "acoes": [
+         {
+          "fill": [
+           "[data-test=\"usuario\"]",
+           "cliente"
+          ]
+         },
+         {
+          "fill": [
+           "[data-test=\"senha\"]",
+           "leigo123"
+          ]
+         },
+         {
+          "click": "[data-test=\"entrar\"]",
+          "espera": 1800
+         },
+         {
+          "select": [
+           "[data-test=\"ordenar\"]",
+           "menor"
+          ],
+          "espera": 3500
+         }
+        ],
+        "titulo": "Lojinha do Leigo",
+        "legenda": "Versão 2: corrigido",
+        "espera_inicio": 1200,
+        "espera_fim": 3000,
+        "delay_letra": 70
+       }
+      },
+      {
+       "text": "Te vejo na próxima!",
+       "scene": {
+        "type": "endcard",
+        "sub": "PRÓXIMA: COMEÇANDO O PROJETO ORGANIZADO"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "shorts": [],
+  "tiktoks": []
+ }
+}

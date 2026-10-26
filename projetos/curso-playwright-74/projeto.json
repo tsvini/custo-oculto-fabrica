@@ -1,0 +1,199 @@
+{
+ "title": "Playwright para leigos · Aula 74",
+ "slug": "curso-playwright-74",
+ "idioma": "pt",
+ "destino": "curso",
+ "marca": [
+  "PLAYWRIGHT",
+  "PARA LEIGOS"
+ ],
+ "cor_fundo": "#3fd68a",
+ "sem_legenda": true,
+ "legenda_y": 0.93,
+ "selo": "MÓDULO 14 · AULA 74",
+ "voz": {
+  "nome": "gravada",
+  "motor": "eleven",
+  "eleven_voz": "Vinícius Torales"
+ },
+ "serie": [],
+ "meta": {
+  "titles": [
+   "Aula 74: A missão"
+  ],
+  "description": "",
+  "tags": []
+ },
+ "notes": "Curso Playwright para leigos. Não publica (destino: curso). Roteiro em curso-playwright/roteiros/.",
+ "script": {
+  "long": {
+   "parts": [
+    {
+     "chapter": "",
+     "sentences": [
+      {
+       "text": "Nova tarefa. Você chegou no trabalho, e recebeu este card.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "AULA 74",
+          "muted",
+          80
+         ],
+         [
+          "A MISSÃO",
+          "gold",
+          200
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Como cliente, quero entrar na loja e ordenar os produtos, pra achar mais fácil o que procuro. Critérios de aceite: nenhum. E o comentário de quem pediu: testa, por favor.",
+       "scene": {
+        "type": "tela",
+        "media": "card_historia",
+        "url": "repo:curso-playwright/material/cenas/card_historia.html",
+        "titulo": "Quadro de tarefas",
+        "legenda": "A tarefa: LOJA-87"
+       }
+      },
+      {
+       "text": "Isso é muito comum no trabalho: uma história curta, sem detalhe nenhum. E é aqui que quem testa faz diferença.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "HISTÓRIA CURTA",
+          "white",
+          110
+         ],
+         [
+          "SEM DETALHE",
+          "white",
+          110
+         ],
+         [
+          "QA FAZ A DIFERENÇA",
+          "gold",
+          110
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Ainda não abre o VS Code. Primeiro, pensa como QA: o que precisa funcionar? O que pode dar errado? E o que está faltando nessa história? Pausa o vídeo e anota.",
+       "scene": {
+        "type": "desafio",
+        "numero": "?",
+        "titulo": "Pensa como QA",
+        "itens": [
+         [
+          "✓",
+          "O que precisa funcionar?"
+         ],
+         [
+          "✗",
+          "O que pode dar errado?",
+          "#ff6b6b"
+         ],
+         [
+          "?",
+          "O que está faltando?",
+          "#ffd23f"
+         ]
+        ],
+        "contagem": 5,
+        "legenda": "Pausa o vídeo e anota"
+       },
+       "pausa": 6
+      },
+      {
+       "text": "Algumas perguntas que eu faria. Todo usuário pode entrar? E com a senha errada, o que aparece? E se deixar o campo vazio?",
+       "scene": {
+        "type": "cards",
+        "itens": [
+         [
+          "👤",
+          "Todo usuário entra?",
+          "e o bloqueado?"
+         ],
+         [
+          "🔑",
+          "Senha errada?",
+          "o que aparece?",
+          "#69a7ff"
+         ],
+         [
+          "▭",
+          "Campo vazio?",
+          "tem aviso?",
+          "#ffd23f"
+         ]
+        ],
+        "titulo": "SOBRE ENTRAR"
+       }
+      },
+      {
+       "text": "E sobre ordenar: quais ordenações precisam existir? Por nome, por preço, nos dois sentidos? E um produto esgotado: ele aparece na lista, ou some? O card não diz.",
+       "scene": {
+        "type": "cards",
+        "itens": [
+         [
+          "⇅",
+          "Quais ordenações?",
+          "nome, preço, os dois sentidos?"
+         ],
+         [
+          "∅",
+          "Produto esgotado?",
+          "aparece ou some?",
+          "#ff6b6b"
+         ],
+         [
+          "?",
+          "O card não diz",
+          "precisa perguntar",
+          "#ffd23f"
+         ]
+        ],
+        "titulo": "SOBRE ORDENAR"
+       }
+      },
+      {
+       "text": "Repara: nenhuma dessas perguntas tem código. E é isso que separa quem só escreve teste de quem testa de verdade: antes do código, a gente entende o problema.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "ANTES DO CÓDIGO",
+          "white",
+          120
+         ],
+         [
+          "ENTENDE O PROBLEMA",
+          "gold",
+          120
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Te vejo na próxima!",
+       "scene": {
+        "type": "endcard",
+        "sub": "PRÓXIMA: OS CENÁRIOS, EM PORTUGUÊS"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "shorts": [],
+  "tiktoks": []
+ }
+}

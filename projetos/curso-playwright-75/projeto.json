@@ -1,0 +1,214 @@
+{
+ "title": "Playwright para leigos · Aula 75",
+ "slug": "curso-playwright-75",
+ "idioma": "pt",
+ "destino": "curso",
+ "marca": [
+  "PLAYWRIGHT",
+  "PARA LEIGOS"
+ ],
+ "cor_fundo": "#3fd68a",
+ "sem_legenda": true,
+ "legenda_y": 0.93,
+ "selo": "MÓDULO 14 · AULA 75",
+ "voz": {
+  "nome": "gravada",
+  "motor": "eleven",
+  "eleven_voz": "Vinícius Torales"
+ },
+ "serie": [],
+ "meta": {
+  "titles": [
+   "Aula 75: Os cenários, em português"
+  ],
+  "description": "",
+  "tags": []
+ },
+ "notes": "Curso Playwright para leigos. Não publica (destino: curso). Roteiro em curso-playwright/roteiros/.",
+ "script": {
+  "long": {
+   "parts": [
+    {
+     "chapter": "",
+     "sentences": [
+      {
+       "text": "Agora, a gente transforma a tarefa em situações pra validar. Em português ainda, sem código. Isso se chama levantar os cenários.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "AULA 75",
+          "muted",
+          80
+         ],
+         [
+          "OS CENÁRIOS",
+          "gold",
+          150
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Primeiro, o caminho principal, o que precisa dar certo: o login válido, os produtos aparecem, e a ordenação funciona.",
+       "scene": {
+        "type": "cards",
+        "itens": [
+         [
+          "🔑",
+          "Login válido",
+          "entra na loja"
+         ],
+         [
+          "▦",
+          "Os produtos",
+          "aparecem",
+          "#69a7ff"
+         ],
+         [
+          "⇅",
+          "A ordenação",
+          "funciona",
+          "#3fd68a"
+         ]
+        ],
+        "titulo": "O CAMINHO PRINCIPAL"
+       }
+      },
+      {
+       "text": "Depois, os caminhos de erro: senha errada, usuário bloqueado, usuário vazio e senha vazia. Cada um precisa de uma mensagem clara.",
+       "scene": {
+        "type": "cards",
+        "itens": [
+         [
+          "🔑",
+          "Senha errada",
+          "mensagem clara",
+          "#ff6b6b"
+         ],
+         [
+          "⛔",
+          "Bloqueado",
+          "mensagem clara",
+          "#ff6b6b"
+         ],
+         [
+          "▭",
+          "Usuário vazio",
+          "mensagem clara",
+          "#ffd23f"
+         ],
+         [
+          "▭",
+          "Senha vazia",
+          "mensagem clara",
+          "#ffd23f"
+         ]
+        ],
+        "titulo": "OS CAMINHOS DE ERRO"
+       }
+      },
+      {
+       "text": "A ordenação, nos quatro sentidos: nome de A a Z, de Z a A, preço do menor pro maior, e do maior pro menor.",
+       "scene": {
+        "type": "traducao",
+        "titulo": "A ORDENAÇÃO",
+        "linhas": [
+         [
+          "Nome (A a Z)",
+          "alfabética"
+         ],
+         [
+          "Nome (Z a A)",
+          "alfabética, ao contrário"
+         ],
+         [
+          "Preço (menor para maior)",
+          "do mais barato"
+         ],
+         [
+          "Preço (maior para menor)",
+          "do mais caro"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "E a pergunta que o card não respondia: o produto esgotado. Você não inventa a resposta: pergunta pra quem pediu, e anota no card. A resposta: ele aparece, mas sem poder comprar.",
+       "scene": {
+        "type": "traducao",
+        "titulo": "PERGUNTOU, ANOTOU",
+        "linhas": [
+         [
+          "E o produto esgotado?",
+          "pergunta pra quem pediu"
+         ],
+         [
+          "Aparece, sem poder comprar",
+          "a resposta, anotada no card"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Também decide o que não é dessa tarefa: pagamento, por exemplo. Saber limitar o escopo é trabalho de QA: senão você testa a loja inteira e não entrega nada.",
+       "scene": {
+        "type": "cards",
+        "itens": [
+         [
+          "✓",
+          "Nessa tarefa",
+          "login, lista, ordenação, esgotado",
+          "#3fd68a"
+         ],
+         [
+          "✗",
+          "Fora do escopo",
+          "pagamento",
+          "#ff6b6b"
+         ]
+        ],
+        "titulo": "O ESCOPO"
+       }
+      },
+      {
+       "text": "E cada cenário que importa vira um teste. Esses nomes vão aparecer, quase iguais, no relatório.",
+       "scene": {
+        "type": "traducao",
+        "titulo": "CENÁRIO VIRA TESTE",
+        "linhas": [
+         [
+          "login válido",
+          "entra com usuário válido"
+         ],
+         [
+          "senha errada",
+          "mostra erro: senha errada"
+         ],
+         [
+          "preço do menor pro maior",
+          "ordena por preço do menor para o maior"
+         ],
+         [
+          "esgotado",
+          "produto esgotado aparece, mas não dá pra comprar"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Te vejo na próxima!",
+       "scene": {
+        "type": "endcard",
+        "sub": "PRÓXIMA: TEM ALGUMA COISA ERRADA AQUI"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "shorts": [],
+  "tiktoks": []
+ }
+}

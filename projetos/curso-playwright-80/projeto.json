@@ -1,0 +1,201 @@
+{
+ "title": "Playwright para leigos · Aula 80",
+ "slug": "curso-playwright-80",
+ "idioma": "pt",
+ "destino": "curso",
+ "marca": [
+  "PLAYWRIGHT",
+  "PARA LEIGOS"
+ ],
+ "cor_fundo": "#3fd68a",
+ "sem_legenda": true,
+ "legenda_y": 0.93,
+ "selo": "MÓDULO 14 · AULA 80",
+ "voz": {
+  "nome": "gravada",
+  "motor": "eleven",
+  "eleven_voz": "Vinícius Torales"
+ },
+ "serie": [],
+ "meta": {
+  "titles": [
+   "Aula 80: Do card à pipeline"
+  ],
+  "description": "",
+  "tags": []
+ },
+ "notes": "Curso Playwright para leigos. Não publica (destino: curso). Roteiro em curso-playwright/roteiros/.",
+ "script": {
+  "long": {
+   "parts": [
+    {
+     "chapter": "",
+     "sentences": [
+      {
+       "text": "Agora, o caminho que você já conhece: o repositório no GitHub, os secrets com o usuário e a senha da Lojinha, e o GitHub Actions. Push, e a pipeline roda.",
+       "scene": {
+        "type": "gh_actions",
+        "usuario": "voce",
+        "repo": "projeto-lojinha",
+        "workflow": "Playwright Tests",
+        "commit": "cenários da LOJA-87",
+        "inicio_em": 1.0,
+        "legenda": "A pipeline rodando"
+       }
+      },
+      {
+       "text": "Verde: passou. E de agora em diante, toda mudança na loja passa por esses testes.",
+       "scene": {
+        "type": "gh_actions",
+        "usuario": "voce",
+        "repo": "projeto-lojinha",
+        "workflow": "Playwright Tests",
+        "commit": "cenários da LOJA-87",
+        "pronto": true,
+        "status": "ok",
+        "artefato": "playwright-report",
+        "legenda": "Verde"
+       }
+      },
+      {
+       "text": "E um README que conta a história: os cenários, o que ficou fora do escopo, e o bug que você achou. Quem abrir o seu projeto entende o que você fez, sem rodar nada.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "README.md",
+        "codigo": "# Projeto 2 · Testes da Lojinha do Leigo\n\nTestes de ponta a ponta da história **LOJA-87: ordenar os produtos**, na Lojinha do Leigo.\n\n## Cenários\n- Login: usuário válido, senha errada, usuário bloqueado, usuário vazio, senha vazia\n- Ordenação: nome de A a Z, de Z a A, preço do menor pro maior e do maior pro menor\n- Produto esgotado: aparece, mas não dá pra comprar\n- Fora do escopo: pagamento\n\n## O bug que eu achei\nNa versão 1, ordenar por preço comparava o preço como texto: R$ 12,50 e R$ 129,90 vinham antes de R$ 7,99.\nAchei testando na mão, antes de automatizar. Na versão 2 foi corrigido, e os testes de ordenação ficam de guarda.\n\n## Tecnologias\nPlaywright, JavaScript, Page Object, fixtures, dados em JSON, GitHub Actions\n\n## Rodando\nnpm install\nnpx playwright install\nnpx playwright test\nnpx playwright test --grep @smoke",
+        "legenda": "README: os cenários e o bug que você achou",
+        "fonte": 19,
+        "digitar": false,
+        "linha0": 1,
+        "pastas": null,
+        "rolar": true,
+        "rolar_de": 1.5,
+        "rolar_dur": 2.0
+       }
+      },
+      {
+       "text": "Olha o caminho inteiro que você fez. Recebeu o card. Levantou as dúvidas. Escreveu os cenários. Testou na mão. E achou um bug.",
+       "scene": {
+        "type": "cards",
+        "itens": [
+         [
+          "📋",
+          "O card",
+          "uma história curta"
+         ],
+         [
+          "?",
+          "As dúvidas",
+          "o que faltava",
+          "#ffd23f"
+         ],
+         [
+          "✎",
+          "Os cenários",
+          "em português",
+          "#69a7ff"
+         ],
+         [
+          "🐞",
+          "O bug",
+          "achado na mão",
+          "#ff6b6b"
+         ]
+        ],
+        "titulo": "O CAMINHO, PARTE 1"
+       }
+      },
+      {
+       "text": "Depois: o time corrigiu, você automatizou o que importa, subiu pro GitHub, e colocou pra rodar sozinho.",
+       "scene": {
+        "type": "cards",
+        "itens": [
+         [
+          "🔧",
+          "A correção",
+          "versão 2"
+         ],
+         [
+          "▶",
+          "A automação",
+          "10 testes",
+          "#3fd68a"
+         ],
+         [
+          "⑂",
+          "O GitHub",
+          "o portfólio",
+          "#69a7ff"
+         ],
+         [
+          "✓",
+          "A pipeline",
+          "roda sozinha",
+          "#3fd68a"
+         ]
+        ],
+        "titulo": "O CAMINHO, PARTE 2"
+       }
+      },
+      {
+       "text": "Isso é muito mais importante do que saber escrever page ponto click. Você recebeu uma tarefa, pensou, achou um problema, automatizou o que importa, e colocou pra rodar sozinho.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "MAIS QUE PAGE.CLICK",
+          "white",
+          110
+         ],
+         [
+          "PENSOU · ACHOU · AUTOMATIZOU",
+          "gold",
+          90
+         ]
+        ]
+       }
+      },
+      {
+       "text": "E agora são dois projetos no seu GitHub. E numa entrevista, quando perguntarem conta um bug que você achou, você tem uma história de verdade pra contar.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "2 PROJETOS NO GITHUB",
+          "white",
+          110
+         ],
+         [
+          "+ UMA HISTÓRIA PRA ENTREVISTA",
+          "gold",
+          90
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Última parte: carreira.",
+       "scene": {
+        "type": "passo",
+        "icone": "▶",
+        "titulo": "Próximo módulo",
+        "sub": "Carreira"
+       }
+      },
+      {
+       "text": "Te vejo lá!",
+       "scene": {
+        "type": "endcard",
+        "sub": "PRÓXIMA: MÓDULO 15 · CARREIRA"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "shorts": [],
+  "tiktoks": []
+ }
+}

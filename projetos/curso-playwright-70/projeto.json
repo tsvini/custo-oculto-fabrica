@@ -32,7 +32,7 @@
      "chapter": "",
      "sentences": [
       {
-       "text": "Olha isso. Rodei esse teste dez vezes seguidas: oito falharam, e duas passaram. E eu não mudei uma linha.",
+       "text": "Olha isso. Rodei esse teste dez vezes seguidas: nove passaram, e uma falhou. Esperava seis produtos, e encontrou zero. E eu não mudei uma linha.",
        "scene": {
         "type": "terminal",
         "titulo": "Terminal — VS Code",
@@ -48,17 +48,32 @@
           "em": 0.31
          },
          {
-          "out": "  8 failed",
+          "out": "Error: expect(received).toBe(expected)",
           "cor": "#ff6b6b",
           "em": 0.37
          },
          {
-          "out": "  2 passed (52.8s)",
+          "out": "Expected: 6",
           "cor": "ac",
           "em": 0.43
+         },
+         {
+          "out": "Received: 0",
+          "cor": "#ff6b6b",
+          "em": 0.49
+         },
+         {
+          "out": "  1 failed",
+          "cor": "#ff6b6b",
+          "em": 0.55
+         },
+         {
+          "out": "  9 passed (52.1s)",
+          "cor": "ac",
+          "em": 0.61
          }
         ],
-        "legenda": "10 vezes: 8 falharam, 2 passaram",
+        "legenda": "10 vezes: 9 passaram, 1 falhou",
         "fonte": 26,
         "fonte_min": 18,
         "compacto": false

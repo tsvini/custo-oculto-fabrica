@@ -193,15 +193,15 @@
         "partes": [
          [
           "loginPage:",
-          "o nome que o teste pede"
+          "o nome"
          ],
          [
           "({ page }, use)",
-          "recebe o page e o use"
+          "recebe page e use"
          ],
          [
           "use(new LoginPage(page))",
-          "entregue um LoginPage pronto"
+          "entrega pronto"
          ]
         ],
         "passo": 2.2

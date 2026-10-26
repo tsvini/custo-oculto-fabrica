@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><title>Card do bug</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{zoom:1.22}
+body{width:1311px;height:737px;background:#eef1f5;font-family:"Segoe UI",Arial,sans-serif;color:#1d2433;overflow:hidden}
+.top{height:64px;background:#fff;border-bottom:1px solid #d9dee7;display:flex;align-items:center;padding:0 32px;gap:14px;font-size:18px;color:#5a6476}
+.top b{color:#1d2433}
+.wrap{display:flex;gap:28px;padding:28px 32px}
+.main{flex:1;background:#fff;border:1px solid #d9dee7;border-radius:10px;padding:28px 34px}
+.side{width:380px;background:#fff;border:1px solid #d9dee7;border-radius:10px;padding:24px 26px;font-size:18px}
+.id{font-size:17px;color:#5a6476;margin-bottom:6px}
+h1{font-size:30px;margin-bottom:22px}
+h2{font-size:17px;text-transform:uppercase;letter-spacing:.06em;color:#5a6476;margin:20px 0 8px}
+p,li{font-size:20px;line-height:1.45}
+ol{padding-left:26px}
+.cmp{display:flex;gap:16px}
+.cmp div{flex:1;border-radius:8px;padding:10px 14px;font-size:19px;font-family:Consolas,monospace}
+.esp{background:#e6f6ec;border:1px solid #9fd8b3}
+.obt{background:#fdeaea;border:1px solid #f0a8a8}
+.anexos{display:flex;gap:18px}
+.ax{width:250px;border:1px solid #d9dee7;border-radius:8px;overflow:hidden}
+.th{height:120px;display:flex;align-items:center;justify-content:center;font-size:44px}
+.nm{padding:8px 12px;font-size:17px;font-family:Consolas,monospace;border-top:1px solid #d9dee7}
+.png .th{background:linear-gradient(#fff 0 30%,#3ddc84 30% 42%,#fff 42%)}
+.vid .th{background:#1d2433;color:#fff}
+.zip .th{background:#2b3245;color:#69a7ff}
+.row{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid #eef1f5}
+.row span:first-child{color:#5a6476}
+.tag{display:inline-block;background:#fdeaea;color:#c0392b;border-radius:6px;padding:2px 10px;font-weight:600}
+</style></head><body>
+<div class="top"><b>Lojinha do Leigo</b> › Bugs › BUG-201</div>
+<div class="wrap">
+ <div class="main">
+  <div class="id">BUG-201</div>
+  <h1>Ordenar por preço (menor para maior) deixa os produtos fora de ordem</h1>
+  <h2>Passos pra reproduzir</h2>
+  <ol><li>Entrar com o usuário cliente</li><li>Em "Ordenar por", escolher "Preço (menor para maior)"</li><li>Olhar a ordem dos preços</li></ol>
+  <h2>Esperado × Obtido</h2>
+  <div class="cmp"><div class="esp">Esperado: 7,99 · 9,99 · 12,50 · 15,99…</div><div class="obt">Obtido: 12,50 · 129,90 · 15,99…</div></div>
+  <h2>Anexos (evidências)</h2>
+  <div class="anexos">
+   <div class="ax png"><div class="th"></div><div class="nm">screenshot.png</div></div>
+   <div class="ax vid"><div class="th">▶</div><div class="nm">gravacao-tela.mp4</div></div>
+  </div>
+ </div>
+ <div class="side">
+  <div class="row"><span>Status</span><span class="tag">Aberto</span></div>
+  <div class="row"><span>Prioridade</span><span>Alta</span></div>
+  <div class="row"><span>Navegador</span><span>Chromium</span></div>
+  <div class="row"><span>Versão</span><span>1</span></div>
+  <div class="row"><span>Como achou</span><span>teste manual</span></div>
+  <div class="row"><span>Relator</span><span>Você</span></div>
+ </div>
+</div>
+</body></html>

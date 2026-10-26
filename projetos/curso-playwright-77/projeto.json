@@ -1,0 +1,183 @@
+{
+ "title": "Playwright para leigos · Aula 77",
+ "slug": "curso-playwright-77",
+ "idioma": "pt",
+ "destino": "curso",
+ "marca": [
+  "PLAYWRIGHT",
+  "PARA LEIGOS"
+ ],
+ "cor_fundo": "#3fd68a",
+ "sem_legenda": true,
+ "legenda_y": 0.93,
+ "selo": "MÓDULO 14 · AULA 77",
+ "voz": {
+  "nome": "gravada",
+  "motor": "eleven",
+  "eleven_voz": "Vinícius Torales"
+ },
+ "serie": [],
+ "meta": {
+  "titles": [
+   "Aula 77: Começando o projeto organizado"
+  ],
+  "description": "",
+  "tags": []
+ },
+ "notes": "Curso Playwright para leigos. Não publica (destino: curso). Roteiro em curso-playwright/roteiros/.",
+ "script": {
+  "long": {
+   "parts": [
+    {
+     "chapter": "",
+     "sentences": [
+      {
+       "text": "Um projeto Playwright novo, numa pasta nova: projeto lojinha. Mas desta vez, você não está começando do zero.",
+       "scene": {
+        "type": "terminal",
+        "titulo": "Terminal — VS Code",
+        "pasta": "C:\\Users\\voce\\Documents\\projeto-lojinha",
+        "linhas": [
+         {
+          "cmd": "npm init playwright@latest",
+          "em": 0.04
+         },
+         {
+          "out": "✔ Do you want to use TypeScript or JavaScript? · JavaScript",
+          "cor": "mut",
+          "em": 0.265
+         },
+         {
+          "out": "✔ Where to put your end-to-end tests? · tests",
+          "cor": "mut",
+          "em": 0.31
+         },
+         {
+          "out": "✔ Add a GitHub Actions workflow? (y/N) · true",
+          "cor": "mut",
+          "em": 0.355
+         },
+         {
+          "out": "✔ Success! Created a Playwright Test project",
+          "cor": "ac",
+          "em": 0.4
+         },
+         {
+          "cmd": "npm install -D dotenv",
+          "em": 0.04
+         }
+        ],
+        "legenda": "Projeto novo, do mesmo jeito do primeiro",
+        "fonte": 24,
+        "fonte_min": 16,
+        "compacto": false
+       }
+      },
+      {
+       "text": "Você já sabe do que vai precisar: pages, pros Page Objects. Fixtures, pra entregar as páginas prontas. Dados, pros casos de login e de ordenação. E os testes.",
+       "scene": {
+        "type": "cards",
+        "itens": [
+         [
+          "📄",
+          "pages/",
+          "LoginPage e ProdutosPage"
+         ],
+         [
+          "🔑",
+          "fixtures/",
+          "as páginas prontas",
+          "#69a7ff"
+         ],
+         [
+          "{ }",
+          "dados/",
+          "login e ordenação",
+          "#ffd23f"
+         ],
+         [
+          "✓",
+          "tests/",
+          "login e produtos",
+          "#3fd68a"
+         ]
+        ],
+        "titulo": "A ESTRUTURA"
+       }
+      },
+      {
+       "text": "E no config: o dotenv lá em cima, o baseURL da Lojinha, já lendo a variável de ambiente, e o testIdAttribute, porque a Lojinha também usa data-test.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "playwright.config.js",
+        "codigo": "// @ts-check\nimport { defineConfig, devices } from '@playwright/test';\nimport dotenv from 'dotenv';\nimport path from 'path';\ndotenv.config({ path: path.resolve(__dirname, '.env') });\n\nexport default defineConfig({\n  testDir: './tests',\n  fullyParallel: true,\n  forbidOnly: !!process.env.CI,\n  retries: process.env.CI ? 2 : 0,\n  workers: process.env.CI ? 1 : undefined,\n  reporter: 'html',\n  use: {\n    baseURL: process.env.BASE_URL || 'https://tsvini.github.io/custo-oculto-fabrica/loja/',\n    testIdAttribute: 'data-test',\n    trace: 'on-first-retry',\n    screenshot: 'only-on-failure',\n  },\n  projects: [\n    { name: 'chromium', use: { ...devices['Desktop Chrome'] } },\n    { name: 'firefox', use: { ...devices['Desktop Firefox'] } },\n  ],\n});",
+        "legenda": "dotenv, baseURL e testIdAttribute",
+        "fonte": 19,
+        "digitar": false,
+        "linha0": 1,
+        "pastas": null,
+        "destaque": [
+         5,
+         15,
+         16
+        ],
+        "destaque_em": 1.0,
+        "rolar": true,
+        "rolar_de": 0.5,
+        "rolar_dur": 1.0
+       }
+      },
+      {
+       "text": "E o ponto env, com o usuário e a senha da Lojinha. Repara na última linha, comentada: a versão. Com ela, dá pra apontar os testes pra versão um, a do bug.",
+       "scene": {
+        "type": "editor",
+        "arquivo": ".env",
+        "codigo": "LOJA_USUARIO=cliente\nLOJA_SENHA=leigo123\n# LOJA_VERSAO=1   <- descomente pra testar a versão antiga, com o bug",
+        "legenda": "O .env do projeto 2",
+        "fonte": 22,
+        "digitar": false,
+        "linha0": 1,
+        "pastas": null,
+        "destaque": [
+         3
+        ],
+        "destaque_em": 1.6
+       }
+      },
+      {
+       "text": "Repara: no primeiro projeto, cada uma dessas coisas era novidade, e a gente foi colocando uma por vez. Agora você escolhe a estrutura no começo, com intenção.",
+       "scene": {
+        "type": "compare",
+        "title": "A ESTRUTURA",
+        "items": [
+         [
+          "PROJETO 1",
+          "UMA NOVIDADE POR VEZ",
+          "white"
+         ],
+         [
+          "PROJETO 2",
+          "ESCOLHIDA NO COMEÇO",
+          "gold"
+         ]
+        ],
+        "size": 90,
+        "stagger": 1.8,
+        "vs": false
+       }
+      },
+      {
+       "text": "Te vejo na próxima!",
+       "scene": {
+        "type": "endcard",
+        "sub": "PRÓXIMA: PAGE OBJECTS E FIXTURE"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "shorts": [],
+  "tiktoks": []
+ }
+}

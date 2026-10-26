@@ -115,7 +115,7 @@ aula(64, "O teste está montando coisa demais", [
      ed(trecho(PAG, 1, 8) + "\n});", "A receita do loginPage", "paginas.js", de=6, ate=8)),
     ("Traduzindo: loginPage, o nome que o teste vai pedir. Entre chaves, o page, a fixture que já existe. E o use: entregue isto pronto pro teste.",
      tr("loginPage: async ({ page }, use) => { await use(new LoginPage(page)); }",
-        [["loginPage:", "o nome que o teste pede"], ["({ page }, use)", "recebe o page e o use"], ["use(new LoginPage(page))", "entregue um LoginPage pronto"]], 2.2)),
+        [["loginPage:", "o nome"], ["({ page }, use)", "recebe page e use"], ["use(new LoginPage(page))", "entrega pronto"]], 2.2)),
     ("O produtosPage segue a mesma receita. E no fim, exporta o expect também, pra o teste importar tudo de um lugar só.",
      ed(PAG, "A mesma receita pro produtosPage", "paginas.js", de=9, ate=14)),
     ("No teste, muda o import: em vez de vir do Playwright, o test vem das suas fixtures. E agora você pede o loginPage entre chaves, igual ao page.",
@@ -290,8 +290,9 @@ CFG = open(os.path.join(PROJ, "playwright.config.js"), encoding="utf8").read().r
 L_RET = ln(CFG, "retries:")
 REP = "npx playwright test aula70 --repeat-each=10 --project=chromium"
 aula(70, "Passou. Rodei de novo. Falhou.", [
-    ("Olha isso. Rodei esse teste dez vezes seguidas: oito falharam, e duas passaram. E eu não mudei uma linha.",
-     term([REP, ("Running 10 tests using 2 workers", "mut"), ("  8 failed", "#ff6b6b"), ("  2 passed (52.8s)", "ac")], "10 vezes: 8 falharam, 2 passaram")),
+    ("Olha isso. Rodei esse teste dez vezes seguidas: nove passaram, e uma falhou. Esperava seis produtos, e encontrou zero. E eu não mudei uma linha.",
+     term([REP, ("Running 10 tests using 2 workers", "mut"), ("Error: expect(received).toBe(expected)", "#ff6b6b"), ("Expected: 6", "ac"), ("Received: 0", "#ff6b6b"),
+           ("  1 failed", "#ff6b6b"), ("  9 passed (52.1s)", "ac")], "10 vezes: 9 passaram, 1 falhou")),
     ("Rodei de novo, o mesmo comando, sem mexer em nada. Dessa vez passaram as dez.",
      term([REP, ("Running 10 tests using 2 workers", "mut"), ("  10 passed (55.0s)", "ac")], "De novo: as 10 passaram")),
     ("Esse é o teste flaky: às vezes passa, às vezes falha, sem nenhuma mudança que explique. E ele é perigoso: o time para de confiar nos testes, e começa a ignorar o vermelho. Até o dia em que o vermelho era um bug de verdade.",

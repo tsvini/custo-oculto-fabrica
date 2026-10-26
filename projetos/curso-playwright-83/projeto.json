@@ -133,7 +133,7 @@
        }
       },
       {
-       "text": "ao login salvo, ao GitHub Actions e à API. Deixa ela aberta enquanto pratica.",
+       "text": "ao login salvo, ao GitHub Actions e à API.",
        "scene": {
         "type": "tela",
         "media": "colinha_pg4b",
@@ -145,10 +145,21 @@
        }
       },
       {
-       "text": "Você começou sem saber nada e terminou com um projeto completo: login, compra, API e tudo rodando no GitHub.",
+       "text": "E a página cinco, com o nível dois inteiro. São cinco páginas: deixa ela aberta enquanto pratica.",
+       "scene": {
+        "type": "tela",
+        "media": "colinha_pg5",
+        "url": "repo:curso-playwright/material/colinha/colinha.html",
+        "pagina": 5,
+        "titulo": "colinha-playwright-para-leigos.pdf",
+        "legenda": "Página 5: o nível 2"
+       }
+      },
+      {
+       "text": "Você começou sem saber nada e terminou com dois projetos: o primeiro, com login, compra, API e tudo rodando no GitHub.",
        "scene": {
         "type": "cards",
-        "titulo": "O SEU PROJETO",
+        "titulo": "PROJETO 1",
         "itens": [
          [
           "🔑",
@@ -171,6 +182,38 @@
           "✓",
           "GitHub",
           "rodando sozinho",
+          "#3fd68a"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "E o segundo, que começou num card: os cenários, o bug achado na mão, e a automação que garante que ele não volta.",
+       "scene": {
+        "type": "cards",
+        "titulo": "PROJETO 2",
+        "itens": [
+         [
+          "📋",
+          "O card",
+          "e as dúvidas"
+         ],
+         [
+          "✎",
+          "Os cenários",
+          "em português",
+          "#69a7ff"
+         ],
+         [
+          "🐞",
+          "O bug",
+          "achado na mão",
+          "#ff6b6b"
+         ],
+         [
+          "✓",
+          "A automação",
+          "de guarda no GitHub",
           "#3fd68a"
          ]
         ]

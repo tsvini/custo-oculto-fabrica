@@ -1,0 +1,518 @@
+{
+ "title": "Playwright para leigos · Aula 79",
+ "slug": "curso-playwright-79",
+ "idioma": "pt",
+ "destino": "curso",
+ "marca": [
+  "PLAYWRIGHT",
+  "PARA LEIGOS"
+ ],
+ "cor_fundo": "#3fd68a",
+ "sem_legenda": true,
+ "legenda_y": 0.93,
+ "selo": "MÓDULO 14 · AULA 79",
+ "voz": {
+  "nome": "gravada",
+  "motor": "eleven",
+  "eleven_voz": "Vinícius Torales"
+ },
+ "serie": [],
+ "meta": {
+  "titles": [
+   "Aula 79: Agora sim, automatizando os cenários"
+  ],
+  "description": "",
+  "tags": []
+ },
+ "notes": "Curso Playwright para leigos. Não publica (destino: curso). Roteiro em curso-playwright/roteiros/.",
+ "script": {
+  "long": {
+   "parts": [
+    {
+     "chapter": "",
+     "sentences": [
+      {
+       "text": "A lista de cenários vira teste. Começando pelo login: os quatro casos de erro moram no login ponto json, cada um com o usuário, a senha, e a mensagem esperada.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "login.json",
+        "codigo": "[\n  { \"cenario\": \"senha errada\", \"usuario\": \"cliente\", \"senha\": \"errada\", \"mensagem\": \"Usuário ou senha incorretos.\" },\n  { \"cenario\": \"usuário bloqueado\", \"usuario\": \"bloqueado\", \"senha\": \"leigo123\", \"mensagem\": \"Este usuário está bloqueado. Fale com o suporte.\" },\n  { \"cenario\": \"usuário vazio\", \"usuario\": \"\", \"senha\": \"leigo123\", \"mensagem\": \"Informe o usuário.\" },\n  { \"cenario\": \"senha vazia\", \"usuario\": \"cliente\", \"senha\": \"\", \"mensagem\": \"Informe a senha.\" }\n]",
+        "legenda": "dados/login.json: os casos de erro",
+        "fonte": 19,
+        "digitar": false,
+        "linha0": 1,
+        "pastas": null
+       }
+      },
+      {
+       "text": "E o teste: o login válido, com a etiqueta smoke. E um for pelos casos do JSON, conferindo a mensagem de cada um.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "login.spec.js",
+        "codigo": "import { test, expect } from '../fixtures/paginas';\nimport casos from '../dados/login.json';\n\ntest.describe('Login', () => {\n  test.beforeEach(async ({ loginPage }) => {\n    await loginPage.abrir();\n  });\n\n  test('entra com usuário válido', { tag: '@smoke' }, async ({ page, loginPage, produtosPage }) => {\n    await loginPage.entrar(process.env.LOJA_USUARIO, process.env.LOJA_SENHA);\n    await expect(page).toHaveURL(/produtos/);\n    await expect(produtosPage.titulo).toHaveText('Produtos');\n  });\n\n  for (const caso of casos) {\n    test(`mostra erro: ${caso.cenario}`, async ({ loginPage }) => {\n      await loginPage.entrar(caso.usuario, caso.senha);\n      await expect(loginPage.erro).toHaveText(caso.mensagem);\n    });\n  }\n});",
+        "legenda": "login.spec.js: o válido e os casos do JSON",
+        "fonte": 19,
+        "digitar": false,
+        "linha0": 1,
+        "pastas": null,
+        "destaque": [
+         9,
+         15,
+         18
+        ],
+        "destaque_em": 1.0
+       }
+      },
+      {
+       "text": "A ordenação: os quatro sentidos no ordenacao ponto json. Qual opção escolher, o nome do cenário, o campo, e o sentido.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "ordenacao.json",
+        "codigo": "[\n  { \"opcao\": \"az\", \"nome\": \"nome de A a Z\", \"campo\": \"nome\", \"sentido\": \"crescente\" },\n  { \"opcao\": \"za\", \"nome\": \"nome de Z a A\", \"campo\": \"nome\", \"sentido\": \"decrescente\" },\n  { \"opcao\": \"menor\", \"nome\": \"preço do menor para o maior\", \"campo\": \"preco\", \"sentido\": \"crescente\" },\n  { \"opcao\": \"maior\", \"nome\": \"preço do maior para o menor\", \"campo\": \"preco\", \"sentido\": \"decrescente\" }\n]",
+        "legenda": "dados/ordenacao.json: os 4 sentidos",
+        "fonte": 19,
+        "digitar": false,
+        "linha0": 1,
+        "pastas": null
+       }
+      },
+      {
+       "text": "No teste, um for pelos quatro. Escolhe a opção, e lê da tela os preços ou os nomes.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "produtos.spec.js",
+        "codigo": "import { test, expect } from '../fixtures/paginas';\nimport ordenacoes from '../dados/ordenacao.json';\n\ntest.describe('Produtos', () => {\n  test.beforeEach(async ({ loginPage, produtosPage }) => {\n    await loginPage.abrir();\n    await loginPage.entrar(process.env.LOJA_USUARIO, process.env.LOJA_SENHA);\n    await expect(produtosPage.produtos.first()).toBeVisible();\n  });\n\n  for (const o of ordenacoes) {\n    test(`ordena por ${o.nome}`, { tag: o.opcao === 'menor' ? ['@smoke'] : [] }, async ({ produtosPage }) => {\n      await produtosPage.ordenarPor(o.opcao);\n      const naTela = o.campo === 'preco' ? await produtosPage.lerPrecos() : await produtosPage.lerNomes();\n      const esperado = [...naTela].sort((a, b) => (o.campo === 'preco' ? a - b : a.localeCompare(b)));\n      if (o.sentido === 'decrescente') esperado.reverse();\n      expect(naTela).toEqual(esperado);\n    });\n  }\n\n  test('produto esgotado aparece, mas não dá pra comprar', async ({ produtosPage }) => {\n    const camiseta = produtosPage.produto('Camiseta Passou no CI');\n    await expect(camiseta.getByTestId('esgotado')).toBeVisible();\n    await expect(camiseta.getByTestId('adicionar')).toBeDisabled();\n  });\n});",
+        "legenda": "Um teste pra cada sentido",
+        "fonte": 19,
+        "digitar": false,
+        "linha0": 1,
+        "pastas": null,
+        "destaque": [
+         11,
+         13,
+         14
+        ],
+        "destaque_em": 1.0
+       }
+      },
+      {
+       "text": "E agora, a parte mais importante: como conferir que está em ordem? A gente pega a lista da tela, faz uma cópia, e ordena a cópia do jeito certo. Se a tela estiver certa, as duas ficam iguais.",
+       "scene": {
+        "type": "cards",
+        "itens": [
+         [
+          "👀",
+          "A lista da tela",
+          "do jeito que a loja mostrou"
+         ],
+         [
+          "⧉",
+          "Uma cópia",
+          "ordenada do jeito certo",
+          "#69a7ff"
+         ],
+         [
+          "=",
+          "Compara as duas",
+          "iguais: passou",
+          "#3fd68a"
+         ]
+        ],
+        "titulo": "CONFERINDO A ORDEM"
+       }
+      },
+      {
+       "text": "Traduzindo: os três pontinhos entre colchetes, faça uma cópia. Sort, ordene. A menos b, do menor pro maior, como número. E locale compare, em ordem alfabética, pros nomes.",
+       "scene": {
+        "type": "traducao",
+        "codigo": "const esperado = [...naTela].sort((a, b) => a - b);",
+        "partes": [
+         [
+          "[...naTela]",
+          "uma cópia da lista"
+         ],
+         [
+          ".sort(",
+          "ordene"
+         ],
+         [
+          "(a, b) => a - b",
+          "do menor pro maior"
+         ]
+        ],
+        "passo": 2.0
+       }
+      },
+      {
+       "text": "Se o sentido é decrescente, reverse: inverta a lista. E o to equal compara as duas listas inteiras, item por item.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "produtos.spec.js",
+        "codigo": "import { test, expect } from '../fixtures/paginas';\nimport ordenacoes from '../dados/ordenacao.json';\n\ntest.describe('Produtos', () => {\n  test.beforeEach(async ({ loginPage, produtosPage }) => {\n    await loginPage.abrir();\n    await loginPage.entrar(process.env.LOJA_USUARIO, process.env.LOJA_SENHA);\n    await expect(produtosPage.produtos.first()).toBeVisible();\n  });\n\n  for (const o of ordenacoes) {\n    test(`ordena por ${o.nome}`, { tag: o.opcao === 'menor' ? ['@smoke'] : [] }, async ({ produtosPage }) => {\n      await produtosPage.ordenarPor(o.opcao);\n      const naTela = o.campo === 'preco' ? await produtosPage.lerPrecos() : await produtosPage.lerNomes();\n      const esperado = [...naTela].sort((a, b) => (o.campo === 'preco' ? a - b : a.localeCompare(b)));\n      if (o.sentido === 'decrescente') esperado.reverse();\n      expect(naTela).toEqual(esperado);\n    });\n  }\n\n  test('produto esgotado aparece, mas não dá pra comprar', async ({ produtosPage }) => {\n    const camiseta = produtosPage.produto('Camiseta Passou no CI');\n    await expect(camiseta.getByTestId('esgotado')).toBeVisible();\n    await expect(camiseta.getByTestId('adicionar')).toBeDisabled();\n  });\n});",
+        "legenda": "reverse e toEqual: a lista inteira",
+        "fonte": 19,
+        "digitar": false,
+        "linha0": 1,
+        "pastas": null,
+        "destaque": [
+         16,
+         17
+        ],
+        "destaque_em": 0.8
+       }
+      },
+      {
+       "text": "Repara na diferença pro desafio quatro: lá, a gente conferia só o primeiro preço. Aqui, a lista inteira. E é isso que pega o bug da versão um, que tinha o primeiro errado e o resto embaralhado.",
+       "scene": {
+        "type": "compare",
+        "title": "CONFERIR O QUÊ?",
+        "items": [
+         [
+          "SÓ O PRIMEIRO",
+          "PODE DEIXAR PASSAR",
+          "white"
+         ],
+         [
+          "A LISTA INTEIRA",
+          "PEGA O BUG",
+          "gold"
+         ]
+        ],
+        "size": 90,
+        "stagger": 1.8,
+        "vs": false
+       }
+      },
+      {
+       "text": "E a etiqueta: só o teste do menor preço ganha o smoke. É o interrogação de novo: se a opção for menor, a etiqueta smoke. Senão, nenhuma.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "produtos.spec.js",
+        "codigo": "import { test, expect } from '../fixtures/paginas';\nimport ordenacoes from '../dados/ordenacao.json';\n\ntest.describe('Produtos', () => {\n  test.beforeEach(async ({ loginPage, produtosPage }) => {\n    await loginPage.abrir();\n    await loginPage.entrar(process.env.LOJA_USUARIO, process.env.LOJA_SENHA);\n    await expect(produtosPage.produtos.first()).toBeVisible();\n  });\n\n  for (const o of ordenacoes) {\n    test(`ordena por ${o.nome}`, { tag: o.opcao === 'menor' ? ['@smoke'] : [] }, async ({ produtosPage }) => {\n      await produtosPage.ordenarPor(o.opcao);\n      const naTela = o.campo === 'preco' ? await produtosPage.lerPrecos() : await produtosPage.lerNomes();\n      const esperado = [...naTela].sort((a, b) => (o.campo === 'preco' ? a - b : a.localeCompare(b)));\n      if (o.sentido === 'decrescente') esperado.reverse();\n      expect(naTela).toEqual(esperado);\n    });\n  }\n\n  test('produto esgotado aparece, mas não dá pra comprar', async ({ produtosPage }) => {\n    const camiseta = produtosPage.produto('Camiseta Passou no CI');\n    await expect(camiseta.getByTestId('esgotado')).toBeVisible();\n    await expect(camiseta.getByTestId('adicionar')).toBeDisabled();\n  });\n});",
+        "legenda": "Só o do menor preço é smoke",
+        "fonte": 19,
+        "digitar": false,
+        "linha0": 1,
+        "pastas": null,
+        "destaque": [
+         12
+        ],
+        "destaque_em": 0.8
+       }
+      },
+      {
+       "text": "E o esgotado, do jeito que a pessoa respondeu: ele aparece, com a etiqueta de esgotado, e o botão de adicionar desabilitado. To be disabled: esteja desabilitado.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "produtos.spec.js",
+        "codigo": "import { test, expect } from '../fixtures/paginas';\nimport ordenacoes from '../dados/ordenacao.json';\n\ntest.describe('Produtos', () => {\n  test.beforeEach(async ({ loginPage, produtosPage }) => {\n    await loginPage.abrir();\n    await loginPage.entrar(process.env.LOJA_USUARIO, process.env.LOJA_SENHA);\n    await expect(produtosPage.produtos.first()).toBeVisible();\n  });\n\n  for (const o of ordenacoes) {\n    test(`ordena por ${o.nome}`, { tag: o.opcao === 'menor' ? ['@smoke'] : [] }, async ({ produtosPage }) => {\n      await produtosPage.ordenarPor(o.opcao);\n      const naTela = o.campo === 'preco' ? await produtosPage.lerPrecos() : await produtosPage.lerNomes();\n      const esperado = [...naTela].sort((a, b) => (o.campo === 'preco' ? a - b : a.localeCompare(b)));\n      if (o.sentido === 'decrescente') esperado.reverse();\n      expect(naTela).toEqual(esperado);\n    });\n  }\n\n  test('produto esgotado aparece, mas não dá pra comprar', async ({ produtosPage }) => {\n    const camiseta = produtosPage.produto('Camiseta Passou no CI');\n    await expect(camiseta.getByTestId('esgotado')).toBeVisible();\n    await expect(camiseta.getByTestId('adicionar')).toBeDisabled();\n  });\n});",
+        "legenda": "toBeDisabled: aparece, mas não dá pra comprar",
+        "fonte": 19,
+        "digitar": false,
+        "linha0": 1,
+        "pastas": null,
+        "destaque": [
+         23,
+         24
+        ],
+        "destaque_em": 0.8
+       }
+      },
+      {
+       "text": "Roda tudo na versão dois: dez testes, todos passando.",
+       "scene": {
+        "type": "terminal",
+        "titulo": "Terminal — VS Code",
+        "pasta": "C:\\Users\\voce\\Documents\\projeto-lojinha",
+        "linhas": [
+         {
+          "cmd": "npx playwright test --project=chromium --reporter=list",
+          "em": 0.04
+         },
+         {
+          "out": "Running 10 tests using 1 worker",
+          "cor": "mut",
+          "em": 0.265
+         },
+         {
+          "out": "  ✓   1 › Login › entra com usuário válido @smoke (590ms)",
+          "cor": "ac",
+          "em": 0.31
+         },
+         {
+          "out": "  ✓   2 › Login › mostra erro: senha errada (362ms)",
+          "cor": "ac",
+          "em": 0.355
+         },
+         {
+          "out": "  ✓   3 › Login › mostra erro: usuário bloqueado (363ms)",
+          "cor": "ac",
+          "em": 0.4
+         },
+         {
+          "out": "  ✓   4 › Login › mostra erro: usuário vazio (367ms)",
+          "cor": "ac",
+          "em": 0.44499999999999995
+         },
+         {
+          "out": "  ✓   5 › Login › mostra erro: senha vazia (343ms)",
+          "cor": "ac",
+          "em": 0.49
+         },
+         {
+          "out": "  ✓   6 › Produtos › ordena por nome de A a Z (412ms)",
+          "cor": "ac",
+          "em": 0.535
+         },
+         {
+          "out": "  ✓   7 › Produtos › ordena por nome de Z a A (408ms)",
+          "cor": "ac",
+          "em": 0.58
+         },
+         {
+          "out": "  ✓   8 › Produtos › ordena por preço do menor para o maior @smoke (414ms)",
+          "cor": "ac",
+          "em": 0.625
+         },
+         {
+          "out": "  ✓   9 › Produtos › ordena por preço do maior para o menor (428ms)",
+          "cor": "ac",
+          "em": 0.6699999999999999
+         },
+         {
+          "out": "  ✓  10 › Produtos › produto esgotado aparece, mas não dá pra comprar (382ms)",
+          "cor": "ac",
+          "em": 0.715
+         },
+         {
+          "out": "  10 passed (4.9s)",
+          "cor": "ac",
+          "em": 0.76
+         }
+        ],
+        "legenda": "Versão 2: os 10 passando",
+        "fonte": 20,
+        "fonte_min": 16,
+        "compacto": true
+       },
+       "pausa": 3
+      },
+      {
+       "text": "E se alguém apontar pra versão um? Liga o LOJA VERSÃO igual a um no ponto env, e roda os testes de produtos.",
+       "scene": {
+        "type": "editor",
+        "arquivo": ".env",
+        "pastas": [
+         "projeto-lojinha",
+         "  dados/",
+         "    login.json",
+         "    ordenacao.json",
+         "  fixtures/",
+         "    paginas.js",
+         "  pages/",
+         "    LoginPage.js",
+         "    ProdutosPage.js",
+         "  tests/",
+         "    login.spec.js",
+         "    produtos.spec.js",
+         "  .env",
+         "  playwright.config.js",
+         "  README.md"
+        ],
+        "codigo": "LOJA_USUARIO=cliente\nLOJA_SENHA=leigo123\nLOJA_VERSAO=1",
+        "legenda": "LOJA_VERSAO=1: a versão do bug",
+        "fonte": 30,
+        "digitar": false,
+        "linha0": 1,
+        "destaque": [
+         3
+        ],
+        "destaque_em": 0.6
+       }
+      },
+      {
+       "text": "Os dois testes de preço ficam vermelhos. Os de nome e o do esgotado continuam verdes: o bug é só no preço.",
+       "scene": {
+        "type": "terminal",
+        "titulo": "Terminal — VS Code",
+        "pasta": "C:\\Users\\voce\\Documents\\projeto-lojinha",
+        "linhas": [
+         {
+          "cmd": "npx playwright test produtos --project=chromium",
+          "em": 0.04
+         },
+         {
+          "out": "  ✓  1 › Produtos › ordena por nome de A a Z (577ms)",
+          "cor": "ac",
+          "em": 0.265
+         },
+         {
+          "out": "  ✓  2 › Produtos › ordena por nome de Z a A (426ms)",
+          "cor": "ac",
+          "em": 0.31
+         },
+         {
+          "out": "  ✘  3 › Produtos › ordena por preço do menor para o maior @smoke (441ms)",
+          "cor": "#ff6b6b",
+          "em": 0.355
+         },
+         {
+          "out": "  ✘  4 › Produtos › ordena por preço do maior para o menor (574ms)",
+          "cor": "#ff6b6b",
+          "em": 0.4
+         },
+         {
+          "out": "  ✓  5 › Produtos › produto esgotado aparece, mas não dá pra comprar (517ms)",
+          "cor": "ac",
+          "em": 0.44499999999999995
+         },
+         {
+          "out": "  2 failed",
+          "cor": "#ff6b6b",
+          "em": 0.49
+         },
+         {
+          "out": "  3 passed (4.3s)",
+          "cor": "ac",
+          "em": 0.535
+         }
+        ],
+        "legenda": "Versão 1: os dois de preço ficam vermelhos",
+        "fonte": 22,
+        "fonte_min": 16,
+        "compacto": false
+       }
+      },
+      {
+       "text": "E olha o erro: com o sinal de menos, em verde, o que era esperado. Com o mais, em vermelho, o que veio. O sete e noventa e nove, que devia ser o primeiro, lá embaixo.",
+       "scene": {
+        "type": "terminal",
+        "titulo": "Terminal — VS Code",
+        "pasta": "C:\\Users\\voce\\Documents\\projeto-lojinha",
+        "fonte": 24,
+        "fonte_min": 18,
+        "compacto": true,
+        "legenda": "Esperado × recebido: o 7.99 lá embaixo",
+        "destaque": [
+         4,
+         11
+        ],
+        "destaque_em": 1.2,
+        "linhas": [
+         {
+          "out": "Error: expect(received).toEqual(expected)",
+          "cor": "#ff6b6b",
+          "ja": true
+         },
+         {
+          "out": "- Expected  - 3",
+          "cor": "ac",
+          "ja": true
+         },
+         {
+          "out": "+ Received  + 3",
+          "cor": "#ff6b6b",
+          "ja": true
+         },
+         {
+          "out": "  Array [",
+          "cor": "mut",
+          "ja": true
+         },
+         {
+          "out": "-   7.99,",
+          "cor": "ac",
+          "ja": true
+         },
+         {
+          "out": "-   9.99,",
+          "cor": "ac",
+          "ja": true
+         },
+         {
+          "out": "    12.5,",
+          "cor": "mut",
+          "ja": true
+         },
+         {
+          "out": "+   129.9,",
+          "cor": "#ff6b6b",
+          "ja": true
+         },
+         {
+          "out": "    15.99,",
+          "cor": "mut",
+          "ja": true
+         },
+         {
+          "out": "    39.9,",
+          "cor": "mut",
+          "ja": true
+         },
+         {
+          "out": "    59.9,",
+          "cor": "mut",
+          "ja": true
+         },
+         {
+          "out": "+   7.99,",
+          "cor": "#ff6b6b",
+          "ja": true
+         },
+         {
+          "out": "    89.9,",
+          "cor": "mut",
+          "ja": true
+         },
+         {
+          "out": "-   129.9,",
+          "cor": "ac",
+          "ja": true
+         },
+         {
+          "out": "+   9.99,",
+          "cor": "#ff6b6b",
+          "ja": true
+         },
+         {
+          "out": "  ]",
+          "cor": "mut",
+          "ja": true
+         }
+        ]
+       }
+      },
+      {
+       "text": "Ou seja: se esse bug voltar um dia, ninguém precisa achar ele na mão de novo. A automação pega sozinha. É pra isso que serve um teste automatizado.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "O BUG VOLTOU?",
+          "white",
+          110
+         ],
+         [
+          "A AUTOMAÇÃO PEGA SOZINHA",
+          "gold",
+          110
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Te vejo na próxima!",
+       "scene": {
+        "type": "endcard",
+        "sub": "PRÓXIMA: DO CARD À PIPELINE"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "shorts": [],
+  "tiktoks": []
+ }
+}

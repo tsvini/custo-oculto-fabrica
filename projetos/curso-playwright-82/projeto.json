@@ -51,7 +51,7 @@
        }
       },
       {
-       "text": "No currículo, escreve o que você realmente fez: testes de ponta a ponta com Playwright e JavaScript, Page Object, testes de API, vários navegadores e execução no GitHub Actions.",
+       "text": "No currículo, escreve o que você realmente fez: testes de ponta a ponta com Playwright e JavaScript, Page Object e fixtures, testes de API, vários navegadores e execução no GitHub Actions.",
        "scene": {
         "type": "traducao",
         "titulo": "NO CURRÍCULO",
@@ -61,7 +61,7 @@
           "testes de ponta a ponta"
          ],
          [
-          "Page Object",
+          "Page Object + fixtures",
           "código organizado e reaproveitável"
          ],
          [
@@ -75,6 +75,31 @@
          [
           "GitHub Actions",
           "testes rodando a cada push"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "E do nível dois: mock de rede, teste visual, tags e dados em JSON. E o mais importante: dois projetos no GitHub, um deles com um bug que você achou.",
+       "scene": {
+        "type": "traducao",
+        "titulo": "NO CURRÍCULO · NÍVEL 2",
+        "linhas": [
+         [
+          "route (mock)",
+          "testa erro e lista vazia sem derrubar nada"
+         ],
+         [
+          "toHaveScreenshot",
+          "teste visual"
+         ],
+         [
+          "tags + JSON",
+          "smoke, regressivo e dados separados"
+         ],
+         [
+          "2 projetos no GitHub",
+          "um com um bug real achado"
          ]
         ]
        }
@@ -140,6 +165,38 @@
           "✓",
           "Como evitar",
           "expect que espera, sem tempo fixo",
+          "#3fd68a"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "E uma pergunta que quase sempre aparece: conta um bug que você achou. E você tem uma história: a ordenação da Lojinha, achada na mão, antes de automatizar, registrada num card, e depois coberta pelos testes.",
+       "scene": {
+        "type": "cards",
+        "titulo": "CONTA UM BUG QUE VOCÊ ACHOU",
+        "itens": [
+         [
+          "🐞",
+          "O bug",
+          "a ordenação por preço"
+         ],
+         [
+          "👀",
+          "Como achou",
+          "testando na mão, antes do código",
+          "#69a7ff"
+         ],
+         [
+          "📋",
+          "O que fez",
+          "card com print",
+          "#ffd23f"
+         ],
+         [
+          "✓",
+          "E depois",
+          "automatizou: nunca mais volta",
           "#3fd68a"
          ]
         ]
