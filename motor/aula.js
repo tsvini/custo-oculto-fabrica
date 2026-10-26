@@ -275,6 +275,7 @@
 
   // PASTAS: {type:"pastas", caminho:"Este Computador > Documentos", itens:["Fotos","Trabalho",{"nome":"meu-projeto","novo":true}], legenda:"..."}
   S.pastas = (ctx, c, t, dur, s) => {
+    if (s.botao) s = Object.assign({}, s, { seleciona_em: Math.min(s.seleciona_em || 1.2, dur * 0.22), botao_em: Math.min(s.botao_em || 2.6, dur * 0.72) });  // a escolha da pasta sempre cabe na cena, por mais curta que seja
     const u = c.u; const a = easeOut(t / 0.4); const W = (c.vertical ? 1000 : 1500) * u, H = (c.vertical ? 1000 : 660) * u;
     const x = c.cx - W / 2, y = topo(c, H);
     const top = janela(ctx, x, y, W, H, u, s.titulo || "Explorador de Arquivos", a, "#f3f4f7");
