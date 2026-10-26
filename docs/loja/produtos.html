@@ -1,0 +1,44 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Loja do Leigo · Produtos</title><link rel="stylesheet" href="estilo.css"></head>
+<body><main>
+<div class="barra"><h2 data-test="titulo">Produtos</h2>
+  <label>Ordenar por <select data-test="ordenar">
+    <option value="az">Nome (A a Z)</option><option value="za">Nome (Z a A)</option>
+    <option value="menor">Preço (menor para maior)</option><option value="maior">Preço (maior para menor)</option>
+  </select></label></div>
+<div data-test="lista" class="grade"></div>
+</main>
+<script src="loja.js"></script>
+<script>
+if (!sessionStorage.getItem('usuario')) location.href = 'index.html';
+cabecalho(true);
+document.querySelector('[data-test="sair"]').onclick = () => { sessionStorage.removeItem('usuario'); location.href = 'index.html'; };
+let produtos = [], noCarrinho = 0;
+const lista = document.querySelector('[data-test="lista"]'), ordem = document.querySelector('[data-test="ordenar"]');
+function ordenar(ps, modo) {
+  const c = ps.slice();
+  if (modo === 'az') c.sort((a, b) => a.nome.localeCompare(b.nome));
+  if (modo === 'za') c.sort((a, b) => b.nome.localeCompare(a.nome));
+  if (VERSAO === 1 && (modo === 'menor' || modo === 'maior')) {  // o bug da versão 1: compara o preço como texto ("129.9" < "15.99" < "7.99")
+    c.sort((a, b) => String(a.preco).localeCompare(String(b.preco)));
+    if (modo === 'maior') c.reverse();
+    return c;
+  }
+  if (modo === 'menor') c.sort((a, b) => a.preco - b.preco);
+  if (modo === 'maior') c.sort((a, b) => b.preco - a.preco);
+  return c;
+}
+function mostrar() {
+  if (!produtos.length) { lista.className = ''; lista.innerHTML = '<div class="aviso" data-test="vazio">Nenhum produto encontrado.</div>'; return; }
+  lista.className = 'grade';
+  lista.innerHTML = ordenar(produtos, ordem.value).map((p) => `<div class="produto" data-test="produto">
+    <span class="nome" data-test="nome">${p.nome}</span><span class="preco" data-test="preco">${real(p.preco)}</span>
+    ${p.estoque ? '' : '<span class="esgotado" data-test="esgotado">Esgotado</span>'}
+    <button data-test="adicionar" ${p.estoque ? '' : 'disabled'}>Adicionar ao carrinho</button></div>`).join('');
+  lista.querySelectorAll('[data-test="adicionar"]').forEach((b) => (b.onclick = () => {
+    noCarrinho++; const c = document.querySelector('[data-test="contador-carrinho"]'); c.hidden = false; c.textContent = noCarrinho; b.textContent = 'Adicionado'; b.disabled = true; }));
+}
+ordem.onchange = mostrar;
+fetch('api/produtos.json').then((r) => { if (!r.ok) throw new Error(r.status); return r.json(); })
+  .then((d) => { produtos = d; mostrar(); })
+  .catch(() => { lista.className = ''; lista.innerHTML = '<div class="aviso erro" data-test="erro-carregar">Não foi possível carregar os produtos. Tente de novo mais tarde.</div>'; });
+</script></body></html>

@@ -1,0 +1,25 @@
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:#f4f6f8;color:#1d2433;min-height:100vh}
+header{background:#14532d;color:#fff;padding:14px 24px;display:flex;justify-content:space-between;align-items:center}
+header h1{font-size:20px;letter-spacing:.3px}
+header .versao{font-size:12px;opacity:.75}
+header button{background:transparent;border:1px solid #9ae6b4;color:#fff;border-radius:6px;padding:6px 12px;cursor:pointer}
+main{max-width:960px;margin:32px auto;padding:0 16px}
+.caixa{max-width:380px;margin:60px auto;background:#fff;border-radius:12px;padding:28px;box-shadow:0 4px 18px rgba(0,0,0,.08)}
+.caixa h2{margin-bottom:18px;font-size:22px}
+label{display:block;font-size:14px;margin:12px 0 6px}
+input,select{width:100%;padding:10px 12px;border:1px solid #c8d0db;border-radius:8px;font-size:15px}
+button.principal{width:100%;margin-top:18px;background:#16a34a;color:#fff;border:0;border-radius:8px;padding:12px;font-size:16px;font-weight:600;cursor:pointer}
+.erro{margin-top:14px;background:#fde2e2;color:#9b1c1c;border-radius:8px;padding:10px 12px;font-size:14px}
+.dica{margin-top:18px;font-size:13px;color:#5b6575;line-height:1.5}
+.barra{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;gap:16px}
+.barra select{width:auto}
+.grade{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
+.produto{background:#fff;border-radius:12px;padding:18px;box-shadow:0 2px 10px rgba(0,0,0,.06);display:flex;flex-direction:column;gap:8px}
+.produto .nome{font-weight:600}
+.produto .preco{font-size:20px;color:#14532d;font-weight:700}
+.produto button{margin-top:auto;background:#16a34a;color:#fff;border:0;border-radius:8px;padding:9px;cursor:pointer}
+.produto button:disabled{background:#cbd2d9;cursor:not-allowed}
+.esgotado{color:#9b1c1c;font-size:13px;font-weight:600}
+.aviso{background:#fff;border-radius:12px;padding:32px;text-align:center;color:#5b6575}
+.contador{background:#facc15;color:#1d2433;border-radius:20px;padding:2px 10px;font-weight:700;margin-left:6px}

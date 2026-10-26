@@ -1,0 +1,8 @@
+[
+  { "id": 1, "nome": "Caderno de anotações", "preco": 7.99, "estoque": 30 },
+  { "id": 2, "nome": "Caneca do testador", "preco": 15.99, "estoque": 12 },
+  { "id": 3, "nome": "Mochila para notebook", "preco": 129.90, "estoque": 5 },
+  { "id": 4, "nome": "Camiseta Passou no CI", "preco": 9.99, "estoque": 0 },
+  { "id": 5, "nome": "Garrafa térmica", "preco": 39.90, "estoque": 8 },
+  { "id": 6, "nome": "Fone de ouvido", "preco": 89.90, "estoque": 3 }
+]
