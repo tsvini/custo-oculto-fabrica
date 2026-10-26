@@ -17,6 +17,20 @@
   "eleven_voz": "Vinícius Torales"
  },
  "serie": [],
+ "pronuncia": [
+  [
+   "\\b[Ss]aucedemo\\b",
+   "Sauce Demo"
+  ],
+  [
+   "\\bNode\\.js\\b",
+   "Node jota éssi"
+  ],
+  [
+   "\\bjs\\b",
+   "jota éssi"
+  ]
+ ],
  "meta": {
   "titles": [
    "Aula 66: E se o servidor responder errado?"

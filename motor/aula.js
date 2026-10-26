@@ -129,6 +129,12 @@
       if (hl && dig >= 1) { const ha = easeOut((t - (s.digitar === false ? (s.destaque_em || 1.2) : t0 + tDig)) / 0.4); ctx.save(); ctx.globalAlpha = 0.18 * ha; ctx.fillStyle = C.ac; ctx.fillRect(tabX, yy - lh / 2, W - sideW, lh); ctx.globalAlpha = ha; ctx.fillRect(tabX, yy - lh / 2, 6 * u, lh); ctx.restore(); }
       txt(ctx, String((kC >= 1 && AP.length ? num - 1 : i) + (s.linha0 || 1)), font(500, fs * 0.8, MONO), x0 - 30 * u, yy, "#4b5263", "right", aL);  // linha0: o trecho visível de um arquivo maior
       let mostra = i + 1 > d1 ? ln.length : Math.min(ln.length, resta); if (i + 1 <= d1) resta -= ln.length; let xx = x0;
+      // descomentar: a linha começa com "// " (cinza, comentário) e as barras vão sendo apagadas, uma linha depois da outra
+      const iD = (s.descomentar || []).indexOf(i + 1);
+      if (iD >= 0) { const tD = (s.descomentar_em === undefined ? 1.2 : s.descomentar_em) + iD * 0.7, sobra = 3 - clamp(Math.floor((t - tD) / 0.16), 0, 3);
+        if (sobra > 0) { const pre = "// ".slice(3 - sobra); txt(ctx, pre + ln, font(500, fs, MONO), x0, yy, "#6a737d", "left", aL);
+          if (t >= tD - 0.3 && Math.floor(t * 2.5) % 2 === 0) { ctx.save(); ctx.globalAlpha = aL; ctx.fillStyle = C.ac; ctx.fillRect(x0 - 3 * u, yy - fs * 0.6, 4 * u, fs * 1.2); ctx.restore(); }
+          mostra = 0; } }
       for (const [tk, cor] of tokens(ln)) { if (mostra <= 0) break; const parte = tk.slice(0, mostra); mostra -= tk.length; txt(ctx, parte, font(500, fs, MONO), xx, yy, cor, "left", aL); xx += tw(ctx, parte, font(500, fs, MONO)); }
       if (dig < 1 && i + 1 <= d1 && resta < 0 && resta + ln.length >= 0 && Math.floor(t * 2.5) % 2 === 0) { ctx.save(); ctx.globalAlpha = a; ctx.fillStyle = C.ac; ctx.fillRect(xx + 2 * u, yy - fs * 0.6, 4 * u, fs * 1.2); ctx.restore(); }
       yy += lh * hf;

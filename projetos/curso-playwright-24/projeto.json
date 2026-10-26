@@ -17,6 +17,20 @@
   "eleven_voz": "Vinícius Torales"
  },
  "serie": [],
+ "pronuncia": [
+  [
+   "\\b[Ss]aucedemo\\b",
+   "Sauce Demo"
+  ],
+  [
+   "\\bNode\\.js\\b",
+   "Node jota éssi"
+  ],
+  [
+   "\\bjs\\b",
+   "jota éssi"
+  ]
+ ],
  "meta": {
   "titles": [
    "Aula 24: Variáveis de ambiente - tirando usuário e senha do código"
@@ -247,9 +261,19 @@
         "codigo": "// @ts-check\nimport { defineConfig, devices } from '@playwright/test';\n\n/**\n * Read environment variables from file.\n * https://github.com/motdotla/dotenv\n */\nimport dotenv from 'dotenv';\nimport path from 'path';\ndotenv.config({ path: path.resolve(__dirname, '.env') });\n\n/**\n * @see https://playwright.dev/docs/test-configuration\n */\nexport default defineConfig({",
         "legenda": "Tira as duas barras das 3 linhas",
         "fonte": 22,
-        "digitar": true,
-        "digitar_de": 8,
-        "digitar_ate": 10
+        "digitar": false,
+        "descomentar": [
+         8,
+         9,
+         10
+        ],
+        "descomentar_em": 7.2,
+        "destaque": [
+         8,
+         9,
+         10
+        ],
+        "destaque_em": 3.0
        }
       },
       {

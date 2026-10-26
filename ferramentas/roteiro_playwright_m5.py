@@ -190,7 +190,7 @@ AULAS.append(projeto(24, "MÓDULO 5 · AULA 24", "Variáveis de ambiente - tiran
     ("E antes de qualquer outra coisa: o ponto gitignore. Ignore é ignorar: é a lista de arquivos que o Git deixa de fora quando você manda o projeto pro GitHub. Escreve ponto env no final dele.",
      edc(GITIGNORE + "\n.env", ".env no .gitignore", arquivo=".gitignore", pastas=ARV_ENV, digitar=True, digitar_de=len(GITIGNORE.split("\n")) + 1, fonte=30)),
     ("Agora o config. Lá em cima já tem três linhas do dotenv, só que comentadas: com as duas barras na frente, o Playwright ignora. Apaga as duas barras das três linhas.",
-     edc("\n".join(CFG_DOTENV), "Tira as duas barras das 3 linhas", arquivo="playwright.config.js", pastas=ARV_ENV, digitar=True, digitar_de=8, digitar_ate=10, fonte=22)),
+     edc("\n".join(CFG_DOTENV), "Tira as duas barras das 3 linhas", arquivo="playwright.config.js", pastas=ARV_ENV, descomentar=[8, 9, 10], descomentar_em=7.2, destaque=[8, 9, 10], destaque_em=3.0, fonte=22)),
     ("Lendo em português: importe o dotenv, importe o path, que cuida dos caminhos das pastas, e leia o arquivo ponto env que está nesta pasta.",
      {"type": "traducao", "titulo": "AS 3 LINHAS DO DOTENV", "linhas": [["import dotenv from 'dotenv';", "traga o dotenv"], ["import path from 'path';", "traga o path (caminhos)"],
                                                                      ["dotenv.config({ path: ... '.env' })", "leia o .env desta pasta"]]}),
