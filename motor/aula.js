@@ -143,13 +143,16 @@
     const maxc = Math.max(...L.map((l) => (l.cmd !== undefined ? pr.length + l.cmd.length : (l.out || "").length)));
     const fs = Math.min(28 * u, (w - 72 * u) / (maxc * 0.6)); const lh = fs * 1.6; let yy = y + 92 * u;
     // cada linha começa no seu "em", mas nunca antes de o comando de cima terminar de ser digitado (frase curta não mostra o resultado antes do comando)
-    let livre = -1; const tempos = L.map((l, i) => { if (l.ja) return -1; let t0 = Math.max(l.em !== undefined ? l.em * dur : 0.6 + i * 0.8, livre);
-      if (l.cmd !== undefined) livre = t0 + Math.max(0.6, l.cmd.length / 22) + 0.25; else livre = Math.max(livre, t0 + 0.15); return t0; });
+    // frase curta: se a última linha não couber na cena, digita mais rápido (o resultado sempre aparece antes de a cena acabar)
+    let vd = 1, tempos, durCmd = (l) => Math.max(0.3, Math.max(0.6, l.cmd.length / 22) / vd);
+    for (vd of [1, 1.4, 2, 2.8, 4, 6]) { let livre = -1; tempos = L.map((l, i) => { if (l.ja) return -1; let t0 = Math.max(l.em !== undefined ? l.em * dur : 0.6 + i * 0.8, livre);
+      if (l.cmd !== undefined) livre = t0 + durCmd(l) + 0.25 / vd; else livre = Math.max(livre, t0 + 0.15); return t0; });
+      if (Math.max(...tempos) <= dur - 0.7) break; }
     const vis = L.map((l, i) => [l, tempos[i]]).filter(([, t0]) => t >= t0); const cabe = Math.max(1, Math.floor((h - 22 * u - 92 * u) / lh) + 1);
     vis.slice(-cabe).forEach(([l, t0]) => {  // como no terminal de verdade: quando enche, as linhas de cima sobem
       let px = x + 36 * u;
       if (l.cmd !== undefined) {
-        const k = l.ja ? 1 : clamp((t - t0) / Math.max(0.6, l.cmd.length / 22)); const cmd = l.cmd.slice(0, Math.ceil(k * l.cmd.length));
+        const k = l.ja ? 1 : clamp((t - t0) / durCmd(l)); const cmd = l.cmd.slice(0, Math.ceil(k * l.cmd.length));
         txt(ctx, pr, font(600, fs, MONO), px, yy, C.ac2, "left", a); px += tw(ctx, pr, font(600, fs, MONO)); txt(ctx, cmd, font(600, fs, MONO), px, yy, C.txt, "left", a);
         if (k < 1 && Math.floor(t * 2.5) % 2 === 0) { ctx.fillStyle = C.txt; ctx.fillRect(px + tw(ctx, cmd, font(600, fs, MONO)) + 3 * u, yy - fs * 0.55, fs * 0.55, fs * 1.1); }
       } else txt(ctx, l.out, font(500, fs, MONO), px, yy, C[l.cor] || l.cor || C.mut, "left", a * (l.ja ? 1 : easeOut((t - t0) / 0.3)));
