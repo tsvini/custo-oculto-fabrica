@@ -186,7 +186,7 @@ def main():
     if os.environ.get("COPIA_GRAVACOES"):  # depuração: as gravações reais também vão pra release
         import glob as _g
         for f in _g.glob(os.path.join(pasta_midia, "rec_*.mp4")):
-            __import__("shutil").copy2(f, os.path.join(saida, "dbg_" + os.path.basename(f)))
+            shutil.copy2(f, os.path.join(saida, "dbg_" + os.path.basename(f)))
     M.telas(cenas, pasta_midia, log, idioma)
     chaves_longo = {s.get("media") for g in p["script"]["long"]["parts"] for s in (x.get("scene") or {} for x in g["sentences"])}
     M.pexels([s for s in cenas if s.get("media") in chaves_longo], pasta_midia, False, log, creditos)
@@ -288,7 +288,7 @@ def main():
                     from . import sonoplastia
                     with open(os.path.join(RAIZ, "previas", f"eventos_{nome}.json"), "w", encoding="utf8") as fe:  # para refazer só o som depois
                         json.dump({"eventos": r["eventosSom"], "trilha": r.get("trilha"), "roteiro": r.get("roteiro", "")}, fe, ensure_ascii=False, indent=1)
-                    import shutil; os.makedirs(os.path.join(RAIZ, "sem_som"), exist_ok=True); shutil.copy2(final, os.path.join(RAIZ, "sem_som", nome + "_sem_som.mp4"))
+                    os.makedirs(os.path.join(RAIZ, "sem_som"), exist_ok=True); shutil.copy2(final, os.path.join(RAIZ, "sem_som", nome + "_sem_som.mp4"))
                     try:
                         sonoplastia.processar(final, r["eventosSom"], r.get("trilha"), r.get("roteiro", ""),
                                               os.path.join(RAIZ, "previas", f"som_{nome}.json"))
