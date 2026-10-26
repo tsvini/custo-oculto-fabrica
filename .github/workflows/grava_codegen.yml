@@ -10,7 +10,7 @@ on:
 jobs:
   gravar:
     runs-on: ubuntu-24.04
-    timeout-minutes: 20
+    timeout-minutes: 35
     permissions:
       contents: write
     defaults:
@@ -23,7 +23,15 @@ jobs:
           node-version: 22
       - run: npm ci
       - run: npx playwright install --with-deps chromium
-      - run: sudo apt-get update -qq && sudo apt-get install -y -qq xvfb xdotool ffmpeg x11-utils openbox > /dev/null
+      - name: Ferramentas da tela virtual (apt com limite de tempo e nova tentativa)
+        run: |
+          P="xvfb xdotool ffmpeg x11-utils openbox"
+          for i in 1 2 3; do
+            timeout 180 sudo apt-get -o Acquire::http::Timeout=20 -o Acquire::Retries=2 install -y -qq $P > /dev/null && break
+            sudo pkill -9 -f apt-get || true; sudo dpkg --configure -a || true
+            timeout 120 sudo apt-get -o Acquire::http::Timeout=20 update -qq || true
+          done
+          which Xvfb xdotool ffmpeg openbox
       - name: Gravar
         run: bash ../../ferramentas/codegen/${{ inputs.roteiro }}
       - name: Mandar pra release
