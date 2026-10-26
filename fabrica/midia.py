@@ -80,6 +80,7 @@ def _uniforme(path):
 
 
 def gravacoes(cenas, pasta, log):
+    import time
     """Cenas com "gravar": true: grava um vídeo de verdade do navegador fazendo as ações (o aluno vê o robô digitando e clicando).
     Ações: {"fill": [seletor, texto]} (digita letra por letra), {"click": seletor}, {"espera": ms}. Salva <media>.mp4."""
     cenas = list(cenas) + [s["navegador"] for s in cenas if isinstance(s.get("navegador"), dict)]  # navegador por cima de outra cena
@@ -97,8 +98,14 @@ def gravacoes(cenas, pasta, log):
                 ctx = b.new_context(**dv, record_video_dir=tmpd, record_video_size={"width": vp["width"] * 2, "height": vp["height"] * 2})
             else:
                 ctx = b.new_context(viewport={"width": 1600, "height": 900}, device_scale_factor=1, record_video_dir=tmpd, record_video_size={"width": 1600, "height": 900}, user_agent=UA)
-            pg = ctx.new_page()
+            pg = ctx.new_page(); t_ini = time.time(); corte = 0.0
             try:
+                if s.get("pre_acoes"):  # preparo fora do vídeo (ex.: login), depois abre "url" e só a partir daí fica no vídeo
+                    pg.goto(s.get("pre_url", s["url"]), wait_until="domcontentloaded", timeout=35000)
+                    for ac in s["pre_acoes"]:
+                        if ac.get("fill"): pg.fill(ac["fill"][0], ac["fill"][1], timeout=8000)
+                        elif ac.get("click"): pg.click(ac["click"], timeout=8000); pg.wait_for_timeout(800)
+                    corte = time.time() - t_ini
                 pg.goto(s["url"], wait_until="domcontentloaded", timeout=35000); pg.wait_for_timeout(int(s.get("espera_inicio", 1200)))
                 for ac in s.get("acoes") or []:
                     if ac.get("fill"):
@@ -113,7 +120,7 @@ def gravacoes(cenas, pasta, log):
             vids = glob.glob(os.path.join(tmpd, "*.webm"))
             if vids:
                 dest = os.path.join(pasta, s["media"] + ".mp4")
-                subprocess.run(["ffmpeg", "-loglevel", "error", "-y", "-i", vids[0], "-c:v", "libx264", "-pix_fmt", "yuv420p", "-preset", "veryfast", "-crf", "20", "-g", "1", "-an", dest], check=False)  # -g 1: todo quadro é chave, o render pula pra qualquer ponto sem travar no primeiro quadro
+                subprocess.run(["ffmpeg", "-loglevel", "error", "-y", "-ss", f"{corte:.2f}", "-i", vids[0], "-c:v", "libx264", "-pix_fmt", "yuv420p", "-preset", "veryfast", "-crf", "20", "-g", "1", "-an", dest], check=False)  # -g 1: todo quadro é chave, o render pula pra qualquer ponto sem travar no primeiro quadro
                 log(f"  gravação {s['media']}: ok")
             shutil.rmtree(tmpd, ignore_errors=True)
         b.close()
