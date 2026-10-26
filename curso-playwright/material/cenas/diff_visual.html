@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><title>Diferença visual</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{width:1600px;height:900px;background:#1e1e1e;font-family:"Segoe UI",Arial,sans-serif;color:#ddd;overflow:hidden}
+.top{height:70px;display:flex;align-items:center;gap:16px;padding:0 36px;background:#252526;border-bottom:1px solid #333;font-size:20px}
+.top .x{color:#f14c4c;font-weight:700}
+.tabs{display:flex;gap:28px;padding:22px 36px 0;font-size:19px;color:#999}
+.tabs b{color:#fff;border-bottom:3px solid #3b82f6;padding-bottom:8px}
+.grid{display:flex;gap:24px;padding:26px 36px}
+.p{flex:1}
+.p h3{font-size:20px;margin-bottom:12px;color:#fff}
+.p h3 span{color:#999;font-weight:400;font-size:17px}
+.v{position:relative;width:493px;height:278px;overflow:hidden;border:2px solid #444;border-radius:6px;background:#000}
+.v iframe{position:absolute;left:0;top:0;width:1280px;height:720px;border:0;transform:scale(.385);transform-origin:0 0}
+.d iframe+iframe{mix-blend-mode:difference}
+.d::after{content:"";position:absolute;inset:0;background:#ff2d55;mix-blend-mode:multiply;pointer-events:none}
+.n{margin-top:26px;padding:0 36px;font-size:19px;color:#bbb}
+.n b{color:#f14c4c}
+body.so .grid .p:not(.pd), body.so .n{display:none}
+body.so .grid{justify-content:center}
+body.so .v{width:1226px;height:690px}body.so .v iframe{transform:scale(.958)}body.so .grid{padding-top:14px}body.so .pd{flex:none}
+</style></head><body>
+<div class="top"><span class="x">✘</span> a tela de login não mudou <span style="color:#888">· visual.spec.js:5 · chromium</span></div>
+<div class="tabs"><span>Diff</span><span>Actual</span><span>Expected</span><b>Side by side</b></div>
+<div class="grid">
+ <div class="p"><h3>Expected <span>· a foto guardada</span></h3><div class="v"><iframe src="../../../docs/loja/index.html"></iframe></div></div>
+ <div class="p"><h3>Actual <span>· a tela agora</span></h3><div class="v"><iframe src="../../../docs/loja/index.html?estilo=quebrado"></iframe></div></div>
+ <div class="p pd"><h3>Diff <span>· o que mudou</span></h3><div class="v d"><iframe src="../../../docs/loja/index.html"></iframe><iframe src="../../../docs/loja/index.html?estilo=quebrado"></iframe></div></div>
+</div>
+<p class="n"><b>29083 pixels</b> (ratio 0.04 of all image pixels) are different.</p>
+<script>if (location.search.includes('diff')) { document.body.classList.add('so'); document.querySelectorAll('.tabs span,.tabs b').forEach((e) => { e.outerHTML = e.textContent === 'Diff' ? '<b>Diff</b>' : '<span>' + e.textContent + '</span>'; }); }</script>
+</body></html>

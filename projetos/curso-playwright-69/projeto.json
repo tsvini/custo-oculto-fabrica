@@ -1,0 +1,235 @@
+{
+ "title": "Playwright para leigos · Aula 69",
+ "slug": "curso-playwright-69",
+ "idioma": "pt",
+ "destino": "curso",
+ "marca": [
+  "PLAYWRIGHT",
+  "PARA LEIGOS"
+ ],
+ "cor_fundo": "#3fd68a",
+ "sem_legenda": true,
+ "legenda_y": 0.93,
+ "selo": "MÓDULO 13 · AULA 69",
+ "voz": {
+  "nome": "gravada",
+  "motor": "eleven",
+  "eleven_voz": "Vinícius Torales"
+ },
+ "serie": [],
+ "meta": {
+  "titles": [
+   "Aula 69: Não dá tempo de rodar tudo"
+  ],
+  "description": "",
+  "tags": []
+ },
+ "notes": "Curso Playwright para leigos. Não publica (destino: curso). Roteiro em curso-playwright/roteiros/.",
+ "script": {
+  "long": {
+   "parts": [
+    {
+     "chapter": "",
+     "sentences": [
+      {
+       "text": "O time vai fazer uma entrega daqui a meia hora. Tem cento e cinquenta testes, e alguém pergunta: qual o mínimo pra saber se o sistema está de pé?",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "A PERGUNTA",
+          "muted",
+          70
+         ],
+         [
+          "“Qual o mínimo pra saber se está de pé?”",
+          "white",
+          70
+         ]
+        ],
+        "entre": 1.3
+       }
+      },
+      {
+       "text": "Pra isso servem as tags: uma etiqueta no teste. Depois do nome, entre chaves: tag, arroba smoke.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "tags.spec.js",
+        "codigo": "import { test, expect } from '../../fixtures/paginas';\n\ntest('login funciona', { tag: '@smoke' }, async ({ page, loginPage }) => {\n  await page.goto('/');\n  await loginPage.entrar('standard_user', 'secret_sauce');\n  await expect(page).toHaveURL(/inventory/);\n});\n\ntest('mostra erro para usuário bloqueado', async ({ page, loginPage }) => {\n  await page.goto('/');\n  await loginPage.entrar('locked_out_user', 'secret_sauce');\n  await expect(loginPage.erro).toContainText('locked out');\n});",
+        "legenda": "{ tag: '@smoke' }",
+        "fonte": 22,
+        "digitar": true,
+        "linha0": 1,
+        "pastas": null,
+        "digitar_de": 3,
+        "digitar_ate": 3
+       }
+      },
+      {
+       "text": "Traduzindo: esse teste tem a etiqueta smoke.",
+       "scene": {
+        "type": "traducao",
+        "codigo": "test('login funciona', { tag: '@smoke' }, async ({ page, loginPage }) => {",
+        "partes": [
+         [
+          "{ tag: '@smoke' }",
+          "a etiqueta smoke"
+         ]
+        ],
+        "passo": 1.0
+       }
+      },
+      {
+       "text": "Smoke é fumaça. O nome vem da eletrônica: liga o aparelho e vê se sai fumaça. É o teste rápido de que o básico funciona: entra no sistema, abre a tela principal, faz a compra.",
+       "scene": {
+        "type": "cards",
+        "itens": [
+         [
+          "🔌",
+          "Liga o aparelho",
+          "e vê se sai fumaça"
+         ],
+         [
+          "✓",
+          "Smoke test",
+          "o básico funciona?",
+          "#3fd68a"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Pra rodar só os marcados: traço traço grep arroba smoke.",
+       "scene": {
+        "type": "terminal",
+        "titulo": "Terminal — VS Code",
+        "pasta": "C:\\Users\\voce\\Documents\\meu-primeiro-playwright",
+        "linhas": [
+         {
+          "cmd": "npx playwright test --grep @smoke --project=chromium",
+          "em": 0.04
+         },
+         {
+          "out": "Running 2 tests using 1 worker",
+          "cor": "mut",
+          "em": 0.31
+         },
+         {
+          "out": "  ✓  1 [setup] › tests/auth.setup.js:5:6 › faz login uma vez (543ms)",
+          "cor": "ac",
+          "em": 0.37
+         },
+         {
+          "out": "  ✓  2 [chromium] › tests/nivel2/tags.spec.js:3:5 › login funciona @smoke (545ms)",
+          "cor": "ac",
+          "em": 0.43
+         },
+         {
+          "out": "  2 passed (2.3s)",
+          "cor": "ac",
+          "em": 0.49
+         }
+        ],
+        "legenda": "Só os marcados",
+        "fonte": 26,
+        "fonte_min": 18,
+        "compacto": false
+       },
+       "pausa": 2.5
+      },
+      {
+       "text": "E o contrário também existe: grep invert. Rode todos, menos os marcados.",
+       "scene": {
+        "type": "terminal",
+        "titulo": "Terminal — VS Code",
+        "pasta": "C:\\Users\\voce\\Documents\\meu-primeiro-playwright",
+        "linhas": [
+         {
+          "cmd": "npx playwright test tags --grep-invert @smoke --project=chromium",
+          "em": 0.04
+         },
+         {
+          "out": "Running 2 tests using 1 worker",
+          "cor": "mut",
+          "em": 0.31
+         },
+         {
+          "out": "  ✓  1 [setup] › tests/auth.setup.js:5:6 › faz login uma vez (521ms)",
+          "cor": "ac",
+          "em": 0.37
+         },
+         {
+          "out": "  ✓  2 [chromium] › tests/nivel2/tags.spec.js:9:5 › mostra erro para usuário bloqueado (456ms)",
+          "cor": "ac",
+          "em": 0.43
+         },
+         {
+          "out": "  2 passed (2.2s)",
+          "cor": "ac",
+          "em": 0.49
+         }
+        ],
+        "legenda": "Todos, menos os marcados",
+        "fonte": 26,
+        "fonte_min": 18,
+        "compacto": false
+       }
+      },
+      {
+       "text": "Na prática: antes de uma entrega, só os smoke, em poucos minutos. E com mais tempo, toda noite por exemplo, o regressivo completo: todos os testes, pra ver se nada antigo quebrou.",
+       "scene": {
+        "type": "traducao",
+        "titulo": "NO DIA A DIA",
+        "linhas": [
+         [
+          "antes de uma entrega",
+          "--grep @smoke · minutos"
+         ],
+         [
+          "toda noite",
+          "todos: o regressivo"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "E dá pra ter outras etiquetas: arroba pagamento, arroba celular, arroba lento. Tag não é enfeite: ela organiza jeitos diferentes de rodar.",
+       "scene": {
+        "type": "cards",
+        "itens": [
+         [
+          "💳",
+          "@pagamento",
+          "só o que mexe com dinheiro"
+         ],
+         [
+          "📱",
+          "@celular",
+          "só os de tela pequena",
+          "#69a7ff"
+         ],
+         [
+          "🐢",
+          "@lento",
+          "fora da rodada rápida",
+          "#ffd23f"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Te vejo na próxima!",
+       "scene": {
+        "type": "endcard",
+        "sub": "PRÓXIMA: PASSOU, RODEI DE NOVO, FALHOU"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "shorts": [],
+  "tiktoks": []
+ }
+}

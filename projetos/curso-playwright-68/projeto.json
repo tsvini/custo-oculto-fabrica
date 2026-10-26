@@ -1,0 +1,227 @@
+{
+ "title": "Playwright para leigos · Aula 68",
+ "slug": "curso-playwright-68",
+ "idioma": "pt",
+ "destino": "curso",
+ "marca": [
+  "PLAYWRIGHT",
+  "PARA LEIGOS"
+ ],
+ "cor_fundo": "#3fd68a",
+ "sem_legenda": true,
+ "legenda_y": 0.93,
+ "selo": "MÓDULO 13 · AULA 68",
+ "voz": {
+  "nome": "gravada",
+  "motor": "eleven",
+  "eleven_voz": "Vinícius Torales"
+ },
+ "serie": [],
+ "meta": {
+  "titles": [
+   "Aula 68: Quero ver todos os erros da tela de uma vez"
+  ],
+  "description": "",
+  "tags": []
+ },
+ "notes": "Curso Playwright para leigos. Não publica (destino: curso). Roteiro em curso-playwright/roteiros/.",
+ "script": {
+  "long": {
+   "parts": [
+    {
+     "chapter": "",
+     "sentences": [
+      {
+       "text": "Uma tela com várias informações pra conferir. A primeira conferência falha, e o teste para ali. Você corrige, roda de novo, e só então descobre que a quarta também estava errada.",
+       "scene": {
+        "type": "cards",
+        "itens": [
+         [
+          "1",
+          "1ª conferência",
+          "falhou: o teste parou",
+          "#ff6b6b"
+         ],
+         [
+          "↻",
+          "Corrige e roda",
+          "de novo"
+         ],
+         [
+          "4",
+          "4ª conferência",
+          "também estava errada",
+          "#ff6b6b"
+         ]
+        ],
+        "titulo": "UM ERRO POR VEZ"
+       }
+      },
+      {
+       "text": "Pra isso existe o expect ponto soft. Soft é suave: anote o erro, e continue conferindo.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "soft.spec.js",
+        "codigo": "import { test, expect } from '@playwright/test';\n\nconst lojinha = 'https://tsvini.github.io/custo-oculto-fabrica/loja/';\n\ntest('os textos da tela de login', async ({ page }) => {\n  await page.goto(lojinha);\n  await expect.soft(page.getByTestId('entrar')).toHaveText('Login');\n  await expect.soft(page.getByTestId('usuario')).toBeVisible();\n  await expect.soft(page.getByTestId('senha')).toBeEmpty();\n  await expect.soft(page.getByTestId('erro')).toBeVisible();\n});",
+        "legenda": "expect.soft",
+        "fonte": 22,
+        "digitar": true,
+        "linha0": 1,
+        "pastas": null,
+        "digitar_de": 7,
+        "digitar_ate": 10
+       }
+      },
+      {
+       "text": "Traduzindo: expect soft, anote o erro e siga. Depois, a conferência de sempre.",
+       "scene": {
+        "type": "traducao",
+        "codigo": "await expect.soft(page.getByTestId('entrar')).toHaveText('Login');",
+        "partes": [
+         [
+          "expect.soft",
+          "anote o erro e siga"
+         ],
+         [
+          "toHaveText('Login')",
+          "a conferência de sempre"
+         ]
+        ],
+        "passo": 1.6
+       }
+      },
+      {
+       "text": "Aqui, quatro conferências na tela de login da Lojinha. Duas erradas de propósito: o botão diz Entrar, e não Login. E a mensagem de erro só aparece depois que alguém erra a senha.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "soft.spec.js",
+        "codigo": "import { test, expect } from '@playwright/test';\n\nconst lojinha = 'https://tsvini.github.io/custo-oculto-fabrica/loja/';\n\ntest('os textos da tela de login', async ({ page }) => {\n  await page.goto(lojinha);\n  await expect.soft(page.getByTestId('entrar')).toHaveText('Login');\n  await expect.soft(page.getByTestId('usuario')).toBeVisible();\n  await expect.soft(page.getByTestId('senha')).toBeEmpty();\n  await expect.soft(page.getByTestId('erro')).toBeVisible();\n});",
+        "legenda": "Duas erradas de propósito",
+        "fonte": 22,
+        "digitar": false,
+        "linha0": 1,
+        "pastas": null,
+        "destaque": [
+         7,
+         10
+        ],
+        "destaque_em": 1.0
+       }
+      },
+      {
+       "text": "Roda: o teste vai até o fim, e mostra os dois erros juntos.",
+       "scene": {
+        "type": "terminal",
+        "titulo": "Terminal — VS Code",
+        "pasta": "C:\\Users\\voce\\Documents\\meu-primeiro-playwright",
+        "linhas": [
+         {
+          "cmd": "npx playwright test soft --project=chromium",
+          "em": 0.04
+         },
+         {
+          "out": "Error: expect(locator).toHaveText(expected) failed",
+          "cor": "#ff6b6b",
+          "em": 0.31
+         },
+         {
+          "out": "Expected: \"Login\"",
+          "cor": "ac",
+          "em": 0.37
+         },
+         {
+          "out": "Received: \"Entrar\"",
+          "cor": "#ff6b6b",
+          "em": 0.43
+         },
+         {
+          "out": "Error: expect(locator).toBeVisible() failed",
+          "cor": "#ff6b6b",
+          "em": 0.49
+         },
+         {
+          "out": "Expected: visible",
+          "cor": "ac",
+          "em": 0.55
+         },
+         {
+          "out": "Received: hidden",
+          "cor": "#ff6b6b",
+          "em": 0.61
+         },
+         {
+          "out": "  1 failed",
+          "cor": "#ff6b6b",
+          "em": 0.6699999999999999
+         }
+        ],
+        "legenda": "Os dois erros, de uma vez",
+        "fonte": 26,
+        "fonte_min": 18,
+        "compacto": false
+       },
+       "pausa": 2.5
+      },
+      {
+       "text": "No trabalho: conferir a tela de detalhes de um pedido, o resumo de uma compra, um formulário com dez campos. Você quer a lista completa do que está errado, de uma vez só, pra mandar tudo junto no card.",
+       "scene": {
+        "type": "cards",
+        "itens": [
+         [
+          "🧾",
+          "Detalhes do pedido",
+          "vários dados"
+         ],
+         [
+          "🛒",
+          "Resumo da compra",
+          "vários valores",
+          "#69a7ff"
+         ],
+         [
+          "▤",
+          "Formulário grande",
+          "vários campos",
+          "#ffd23f"
+         ]
+        ],
+        "titulo": "ONDE O SOFT AJUDA"
+       }
+      },
+      {
+       "text": "Mas cuidado: nos passos principais do fluxo, o expect normal continua sendo o certo. Se o login falhou, não faz sentido continuar e conferir o carrinho.",
+       "scene": {
+        "type": "compare",
+        "title": "QUAL USAR",
+        "items": [
+         [
+          "FLUXO: LOGIN, CARRINHO",
+          "EXPECT NORMAL: PARA",
+          "white"
+         ],
+         [
+          "DADOS DA MESMA TELA",
+          "EXPECT.SOFT: CONTINUA",
+          "gold"
+         ]
+        ],
+        "size": 90,
+        "stagger": 1.8,
+        "vs": false
+       }
+      },
+      {
+       "text": "Te vejo na próxima!",
+       "scene": {
+        "type": "endcard",
+        "sub": "PRÓXIMA: NÃO DÁ TEMPO DE RODAR TUDO"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "shorts": [],
+  "tiktoks": []
+ }
+}

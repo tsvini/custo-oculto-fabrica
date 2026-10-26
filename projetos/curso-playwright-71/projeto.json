@@ -1,0 +1,165 @@
+{
+ "title": "Playwright para leigos · Aula 71",
+ "slug": "curso-playwright-71",
+ "idioma": "pt",
+ "destino": "curso",
+ "marca": [
+  "PLAYWRIGHT",
+  "PARA LEIGOS"
+ ],
+ "cor_fundo": "#3fd68a",
+ "sem_legenda": true,
+ "legenda_y": 0.93,
+ "selo": "MÓDULO 13 · AULA 71",
+ "voz": {
+  "nome": "gravada",
+  "motor": "eleven",
+  "eleven_voz": "Vinícius Torales"
+ },
+ "serie": [],
+ "meta": {
+  "titles": [
+   "Aula 71: O mesmo sistema, três ambientes"
+  ],
+  "description": "",
+  "tags": []
+ },
+ "notes": "Curso Playwright para leigos. Não publica (destino: curso). Roteiro em curso-playwright/roteiros/.",
+ "script": {
+  "long": {
+   "parts": [
+    {
+     "chapter": "",
+     "sentences": [
+      {
+       "text": "No trabalho, o mesmo sistema existe em vários endereços: o de desenvolvimento, o de homologação, onde o time testa antes de lançar, e o de produção, o de verdade, que o cliente usa.",
+       "scene": {
+        "type": "cards",
+        "itens": [
+         [
+          "🛠",
+          "Desenvolvimento",
+          "dev.loja.com"
+         ],
+         [
+          "🧪",
+          "Homologação",
+          "homologacao.loja.com",
+          "#69a7ff"
+         ],
+         [
+          "🌐",
+          "Produção",
+          "loja.com: o cliente usa",
+          "#ffd23f"
+         ]
+        ],
+        "titulo": "O MESMO SISTEMA, 3 ENDEREÇOS"
+       }
+      },
+      {
+       "text": "E a gente não quer mexer no código toda vez que muda de ambiente. Então o baseURL passa a ler uma variável.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "playwright.config.js",
+        "pastas": null,
+        "codigo": "  use: {\n    baseURL: process.env.BASE_URL || 'https://www.saucedemo.com',\n    testIdAttribute: 'data-test',",
+        "legenda": "baseURL lê uma variável",
+        "fonte": 22,
+        "digitar": true,
+        "linha0": 14,
+        "digitar_de": 2,
+        "digitar_ate": 2
+       }
+      },
+      {
+       "text": "Traduzindo: se existir a variável BASE URL, use ela. Os dois risquinhos querem dizer senão. Senão, use o saucedemo.",
+       "scene": {
+        "type": "traducao",
+        "codigo": "baseURL: process.env.BASE_URL || 'https://www.saucedemo.com'",
+        "partes": [
+         [
+          "process.env.BASE_URL",
+          "se existir a variável, use ela"
+         ],
+         [
+          "||",
+          "senão"
+         ],
+         [
+          "'https://www.saucedemo.com'",
+          "use este"
+         ]
+        ],
+        "passo": 1.8
+       }
+      },
+      {
+       "text": "Na sua máquina, você escolhe o ambiente na hora de rodar. No Windows, no terminal do VS Code, é assim. E no Mac e no Linux, assim.",
+       "scene": {
+        "type": "traducao",
+        "titulo": "ESCOLHENDO O AMBIENTE NA HORA",
+        "linhas": [
+         [
+          "$env:BASE_URL=\"https://homologacao.loja.com\"; npx playwright test",
+          "Windows"
+         ],
+         [
+          "BASE_URL=https://homologacao.loja.com npx playwright test",
+          "Mac e Linux"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Ou coloca no ponto env, igual o usuário e a senha. E no GitHub Actions, ela fica no yml. O teste continua exatamente igual.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "playwright.yml",
+        "pastas": null,
+        "codigo": "    - name: Run Playwright tests\n      run: npx playwright test\n      env:\n        BASE_URL: https://homologacao.loja.com\n        SAUCE_USER: ${{ secrets.SAUCE_USER }}\n        SAUCE_PASSWORD: ${{ secrets.SAUCE_PASSWORD }}",
+        "legenda": "No GitHub: a variável no yml",
+        "fonte": 26,
+        "digitar": false,
+        "linha0": 1,
+        "destaque": [
+         4
+        ],
+        "destaque_em": 0.8
+       }
+      },
+      {
+       "text": "E uma regra de ouro: cuidado ao rodar testes em produção. Teste que cria pedido, apaga dado ou manda e-mail não pode rodar no site que o cliente usa.",
+       "scene": {
+        "type": "cards",
+        "itens": [
+         [
+          "🧪",
+          "Homologação",
+          "pode tudo"
+         ],
+         [
+          "⚠",
+          "Produção",
+          "só o que não muda nada",
+          "#ff6b6b"
+         ]
+        ],
+        "titulo": "REGRA DE OURO"
+       }
+      },
+      {
+       "text": "Te vejo na próxima!",
+       "scene": {
+        "type": "endcard",
+        "sub": "PRÓXIMA: O TESTE FALHOU, O QUE EU MANDO?"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "shorts": [],
+  "tiktoks": []
+ }
+}

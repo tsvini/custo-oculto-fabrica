@@ -1,0 +1,147 @@
+{
+ "title": "Playwright para leigos · Aula 73",
+ "slug": "curso-playwright-73",
+ "idioma": "pt",
+ "destino": "curso",
+ "marca": [
+  "PLAYWRIGHT",
+  "PARA LEIGOS"
+ ],
+ "cor_fundo": "#3fd68a",
+ "sem_legenda": true,
+ "legenda_y": 0.93,
+ "selo": "MÓDULO 13 · AULA 73",
+ "voz": {
+  "nome": "gravada",
+  "motor": "eleven",
+  "eleven_voz": "Vinícius Torales"
+ },
+ "serie": [],
+ "meta": {
+  "titles": [
+   "Aula 73: O que você já consegue fazer"
+  ],
+  "description": "",
+  "tags": []
+ },
+ "notes": "Curso Playwright para leigos. Não publica (destino: curso). Roteiro em curso-playwright/roteiros/.",
+ "script": {
+  "long": {
+   "parts": [
+    {
+     "chapter": "",
+     "sentences": [
+      {
+       "text": "Olha o que entrou nesse nível. Primeiro, as telas diferentes: formulário, upload, alerta, aba nova, iframe, mouse por cima, arrastar e tabela.",
+       "scene": {
+        "type": "cards",
+        "itens": [
+         [
+          "☑",
+          "Formulário",
+          "check e select"
+         ],
+         [
+          "⬆",
+          "Upload",
+          "setInputFiles",
+          "#69a7ff"
+         ],
+         [
+          "⚠",
+          "Alerta e aba",
+          "antes do clique",
+          "#ffd23f"
+         ],
+         [
+          "▣",
+          "Iframe e tabela",
+          "frame e filter",
+          "#3fd68a"
+         ]
+        ],
+        "titulo": "TELAS DIFERENTES"
+       }
+      },
+      {
+       "text": "Depois, o Playwright do trabalho: fixtures, dados num arquivo, mock, teste visual, soft, tags, flaky, ambientes e evidência.",
+       "scene": {
+        "type": "cards",
+        "itens": [
+         [
+          "🔑",
+          "Fixtures e dados",
+          "o teste limpo"
+         ],
+         [
+          "🎭",
+          "Mock e visual",
+          "o difícil de provocar",
+          "#69a7ff"
+         ],
+         [
+          "🏷",
+          "Soft, tags, flaky",
+          "rodar com inteligência",
+          "#ffd23f"
+         ],
+         [
+          "📋",
+          "Ambientes e card",
+          "do jeito do time",
+          "#3fd68a"
+         ]
+        ],
+        "titulo": "NO TRABALHO"
+       }
+      },
+      {
+       "text": "Tudo isso está numa página nova da colinha, a página cinco.",
+       "scene": {
+        "type": "tela",
+        "media": "colinha_pg5",
+        "url": "repo:curso-playwright/material/colinha/colinha.html",
+        "pagina": 5,
+        "titulo": "colinha-playwright-para-leigos.pdf",
+        "legenda": "Colinha · página 5"
+       }
+      },
+      {
+       "text": "E agora eu quero fazer diferente. No próximo módulo, eu não vou começar te mostrando código. Você vai receber uma tarefa, como no trabalho, e vai precisar pensar primeiro.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "PRÓXIMO MÓDULO",
+          "muted",
+          70
+         ],
+         [
+          "UMA TAREFA",
+          "white",
+          120
+         ],
+         [
+          "PENSA PRIMEIRO",
+          "gold",
+          120
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Te vejo lá!",
+       "scene": {
+        "type": "endcard",
+        "sub": "PRÓXIMA: MÓDULO 14 · PROJETO 2"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "shorts": [],
+  "tiktoks": []
+ }
+}

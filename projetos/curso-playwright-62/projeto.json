@@ -198,16 +198,16 @@
        "scene": {
         "type": "bigtext",
         "lines": [
-         {
-          "t": "FAZ A AÇÃO",
-          "c": "white",
-          "s": 120
-         },
-         {
-          "t": "E CONFERE O RESULTADO",
-          "c": "gold",
-          "s": 120
-         }
+         [
+          "FAZ A AÇÃO",
+          "white",
+          120
+         ],
+         [
+          "E CONFERE O RESULTADO",
+          "gold",
+          120
+         ]
         ],
         "stagger": 0.6
        }

@@ -206,7 +206,7 @@ aula(62, "O usuário precisa arrastar um item", [
     ("A caixa A, arraste até a caixa B.", tr("caixaA.dragTo(caixaB)", [[".dragTo", "arraste até"], ["(caixaB)", "a caixa B"]], 1.0)),
     ("E não basta confiar que arrastou: a gente confere que a primeira caixa agora mostra B.", ed("A primeira caixa mostra B", b, de=b - 2, ate_l=b - 1, mostra_de=a)),
     ("Roda.", roda("arrastar e soltar", "arrastar", "Arrastou e conferiu", url=SITE + "/drag_and_drop", acoes=[{"drag": ["#column-a", "#column-b"], "espera": 1500}], seg="4.1s")),
-    ("Repara no padrão que se repete: faz a ação, e confere o resultado. Clicou, arrastou, enviou, tanto faz. Sem a conferência, o teste não testa nada.", {'type': 'bigtext', 'lines': [{'t': 'FAZ A AÇÃO', 'c': 'white', 's': 120}, {'t': 'E CONFERE O RESULTADO', 'c': 'gold', 's': 120}], 'stagger': 0.6}),
+    ("Repara no padrão que se repete: faz a ação, e confere o resultado. Clicou, arrastou, enviou, tanto faz. Sem a conferência, o teste não testa nada.", {'type': 'bigtext', 'lines': [['FAZ A AÇÃO', 'white', 120], ['E CONFERE O RESULTADO', 'gold', 120]], 'stagger': 0.6}),
 ] + fim("a tabela mudou de ordem"))
 
 # ---------- 63 ----------

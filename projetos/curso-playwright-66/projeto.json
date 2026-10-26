@@ -1,0 +1,401 @@
+{
+ "title": "Playwright para leigos · Aula 66",
+ "slug": "curso-playwright-66",
+ "idioma": "pt",
+ "destino": "curso",
+ "marca": [
+  "PLAYWRIGHT",
+  "PARA LEIGOS"
+ ],
+ "cor_fundo": "#3fd68a",
+ "sem_legenda": true,
+ "legenda_y": 0.93,
+ "selo": "MÓDULO 13 · AULA 66",
+ "voz": {
+  "nome": "gravada",
+  "motor": "eleven",
+  "eleven_voz": "Vinícius Torales"
+ },
+ "serie": [],
+ "meta": {
+  "titles": [
+   "Aula 66: E se o servidor responder errado?"
+  ],
+  "description": "",
+  "tags": []
+ },
+ "notes": "Curso Playwright para leigos. Não publica (destino: curso). Roteiro em curso-playwright/roteiros/.",
+ "script": {
+  "long": {
+   "parts": [
+    {
+     "chapter": "",
+     "sentences": [
+      {
+       "text": "O site está funcionando. Mas o que a tela faz se o servidor cair? Ou se ele responder uma lista vazia? Esperar isso acontecer de verdade não dá.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "AULA 66",
+          "muted",
+          80
+         ],
+         [
+          "MOCK",
+          "gold",
+          200
+         ]
+        ]
+       }
+      },
+      {
+       "text": "E a gente não vai derrubar o servidor da empresa pra descobrir. O Playwright fica no meio da conversa: intercepta o pedido do navegador, e responde do jeito que a gente quiser. Isso é um mock.",
+       "scene": {
+        "type": "cards",
+        "itens": [
+         [
+          "🖥",
+          "O navegador",
+          "pede os produtos"
+         ],
+         [
+          "🎭",
+          "O Playwright no meio",
+          "intercepta o pedido",
+          "#ffd23f"
+         ],
+         [
+          "📦",
+          "A resposta",
+          "você escolhe",
+          "#69a7ff"
+         ]
+        ],
+        "titulo": "MOCK: O PLAYWRIGHT NO MEIO"
+       }
+      },
+      {
+       "text": "Pra isso, a Lojinha do Leigo, a loja de treino do curso. Entra com cliente e leigo123: os produtos aparecem.",
+       "scene": {
+        "type": "tela",
+        "media": "n66_loja",
+        "url": "https://tsvini.github.io/custo-oculto-fabrica/loja/",
+        "gravar": true,
+        "acoes": [
+         {
+          "fill": [
+           "[data-test=\"usuario\"]",
+           "cliente"
+          ]
+         },
+         {
+          "fill": [
+           "[data-test=\"senha\"]",
+           "leigo123"
+          ]
+         },
+         {
+          "click": "[data-test=\"entrar\"]",
+          "espera": 1500
+         }
+        ],
+        "titulo": "Lojinha do Leigo",
+        "legenda": "A Lojinha do Leigo",
+        "espera_inicio": 1200,
+        "espera_fim": 2500,
+        "delay_letra": 70
+       }
+      },
+      {
+       "text": "Esses produtos vêm de um endereço da API: api barra produtos ponto json. Abrindo ele no navegador, é a lista, em JSON.",
+       "scene": {
+        "type": "tela",
+        "media": "n66_json",
+        "url": "https://tsvini.github.io/custo-oculto-fabrica/loja/api/produtos.json",
+        "titulo": "https://tsvini.github.io/custo-oculto-fabrica/loja/api/produtos.json",
+        "legenda": "A lista de produtos, em JSON"
+       }
+      },
+      {
+       "text": "Primeiro, a prova de que o Playwright consegue ficar no meio: page ponto route nesse endereço, e route ponto abort. Bloqueie.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "mock.spec.js",
+        "codigo": "import { test, expect } from '@playwright/test';\n\nconst lojinha = 'https://tsvini.github.io/custo-oculto-fabrica/loja/';\nconst api = '**/api/produtos.json';\n\ntest.beforeEach(async ({ page }) => {\n  await page.goto(lojinha);\n  await page.getByTestId('usuario').fill('cliente');\n  await page.getByTestId('senha').fill('leigo123');\n  await page.getByTestId('entrar').click();\n  await expect(page.getByTestId('produto').first()).toBeVisible();\n});\n\ntest('servidor fora do ar', async ({ page }) => {\n  await page.route(api, (route) => route.abort());\n  await page.reload();\n  await expect(page.getByTestId('erro-carregar')).toBeVisible();\n});",
+        "legenda": "page.route + route.abort()",
+        "fonte": 22,
+        "digitar": true,
+        "linha0": 1,
+        "pastas": null,
+        "digitar_de": 15,
+        "digitar_ate": 15
+       }
+      },
+      {
+       "text": "Traduzindo: route, quando o navegador pedir este endereço. Os dois asteriscos: qualquer coisa antes. E abort: bloqueie, como se o servidor estivesse fora do ar.",
+       "scene": {
+        "type": "traducao",
+        "codigo": "page.route('**/api/produtos.json', (route) => route.abort());",
+        "partes": [
+         [
+          "page.route",
+          "quando pedir"
+         ],
+         [
+          "'**/api/produtos.json'",
+          "este endereço"
+         ],
+         [
+          "route.abort()",
+          "bloqueie"
+         ]
+        ],
+        "passo": 2.0
+       }
+      },
+      {
+       "text": "E por que o reload? O login já carregou os produtos. Com o route ligado, a gente recarrega a página, e o pedido novo é bloqueado.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "mock.spec.js",
+        "codigo": "import { test, expect } from '@playwright/test';\n\nconst lojinha = 'https://tsvini.github.io/custo-oculto-fabrica/loja/';\nconst api = '**/api/produtos.json';\n\ntest.beforeEach(async ({ page }) => {\n  await page.goto(lojinha);\n  await page.getByTestId('usuario').fill('cliente');\n  await page.getByTestId('senha').fill('leigo123');\n  await page.getByTestId('entrar').click();\n  await expect(page.getByTestId('produto').first()).toBeVisible();\n});\n\ntest('servidor fora do ar', async ({ page }) => {\n  await page.route(api, (route) => route.abort());\n  await page.reload();\n  await expect(page.getByTestId('erro-carregar')).toBeVisible();\n});",
+        "legenda": "reload: pede de novo, agora bloqueado",
+        "fonte": 22,
+        "digitar": false,
+        "linha0": 1,
+        "pastas": null,
+        "destaque": [
+         16
+        ],
+        "destaque_em": 0.8
+       }
+      },
+      {
+       "text": "Olha acontecendo: a loja não conseguiu carregar os produtos, e mostra o aviso. É isso que o teste confere.",
+       "scene": {
+        "type": "tela",
+        "media": "n66_erro",
+        "url": "https://tsvini.github.io/custo-oculto-fabrica/loja/",
+        "gravar": true,
+        "acoes": [
+         {
+          "fill": [
+           "[data-test=\"usuario\"]",
+           "cliente"
+          ]
+         },
+         {
+          "fill": [
+           "[data-test=\"senha\"]",
+           "leigo123"
+          ]
+         },
+         {
+          "click": "[data-test=\"entrar\"]",
+          "espera": 1500
+         },
+         {
+          "bloqueia": "**/api/produtos.json"
+         },
+         {
+          "reload": true,
+          "espera": 2500
+         }
+        ],
+        "titulo": "Lojinha do Leigo",
+        "legenda": "Servidor fora do ar: o aviso",
+        "espera_inicio": 1200,
+        "espera_fim": 2000,
+        "delay_letra": 70
+       }
+      },
+      {
+       "text": "Agora o uso mais comum: route ponto fulfill. Responda no lugar do servidor, com o que você quiser. Aqui, uma lista vazia.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "mock.spec.js",
+        "pastas": null,
+        "codigo": "test('lista vazia', async ({ page }) => {\n  await page.route(api, (route) => route.fulfill({\n    status: 200,\n    contentType: 'application/json',\n    body: '[]',\n  }));\n  await page.reload();\n  await expect(page.getByTestId('vazio')).toBeVisible();\n});",
+        "legenda": "route.fulfill: responda no lugar do servidor",
+        "fonte": 26,
+        "digitar": true,
+        "linha0": 20,
+        "digitar_de": 2,
+        "digitar_ate": 6
+       }
+      },
+      {
+       "text": "Traduzindo: fulfill, responda você. Status duzentos, deu certo. E o body, o corpo da resposta: os dois colchetes, uma lista vazia.",
+       "scene": {
+        "type": "traducao",
+        "codigo": "route.fulfill({ status: 200, body: '[]' })",
+        "partes": [
+         [
+          "route.fulfill",
+          "responda você"
+         ],
+         [
+          "status: 200",
+          "deu certo"
+         ],
+         [
+          "body: '[]'",
+          "uma lista vazia"
+         ]
+        ],
+        "passo": 1.8
+       }
+      },
+      {
+       "text": "E a loja mostra que nenhum produto foi encontrado. O teste confere essa mensagem.",
+       "scene": {
+        "type": "tela",
+        "media": "n66_vazio",
+        "url": "https://tsvini.github.io/custo-oculto-fabrica/loja/",
+        "gravar": true,
+        "acoes": [
+         {
+          "fill": [
+           "[data-test=\"usuario\"]",
+           "cliente"
+          ]
+         },
+         {
+          "fill": [
+           "[data-test=\"senha\"]",
+           "leigo123"
+          ]
+         },
+         {
+          "click": "[data-test=\"entrar\"]",
+          "espera": 1500
+         },
+         {
+          "responde": [
+           "**/api/produtos.json",
+           "[]"
+          ]
+         },
+         {
+          "reload": true,
+          "espera": 2500
+         }
+        ],
+        "titulo": "Lojinha do Leigo",
+        "legenda": "Lista vazia: nenhum produto",
+        "espera_inicio": 1200,
+        "espera_fim": 2000,
+        "delay_letra": 70
+       },
+       "pausa": 2
+      },
+      {
+       "text": "No trabalho, é assim que se testa o que é difícil de provocar: o servidor fora do ar, a lista vazia, um erro quinhentos, uma resposta lenta. Sem esperar acontecer, e sem estragar nada de verdade.",
+       "scene": {
+        "type": "cards",
+        "itens": [
+         [
+          "✗",
+          "Fora do ar",
+          "abort"
+         ],
+         [
+          "∅",
+          "Lista vazia",
+          "fulfill com []",
+          "#69a7ff"
+         ],
+         [
+          "500",
+          "Erro no servidor",
+          "fulfill com status 500",
+          "#ff6b6b"
+         ],
+         [
+          "🐢",
+          "Resposta lenta",
+          "espera antes de responder",
+          "#ffd23f"
+         ]
+        ],
+        "titulo": "O QUE O MOCK TESTA"
+       }
+      },
+      {
+       "text": "Quando não usar: pra saber se o servidor de verdade funciona. O mock testa como a tela reage. O servidor você testa com os testes de API, sem mock.",
+       "scene": {
+        "type": "traducao",
+        "titulo": "QUANDO USAR",
+        "linhas": [
+         [
+          "como a tela reage",
+          "mock"
+         ],
+         [
+          "se o servidor funciona",
+          "teste de API, sem mock"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Roda os dois.",
+       "scene": {
+        "type": "terminal",
+        "titulo": "Terminal — VS Code",
+        "pasta": "C:\\Users\\voce\\Documents\\meu-primeiro-playwright",
+        "linhas": [
+         {
+          "cmd": "npx playwright test mock --project=chromium",
+          "em": 0.04
+         },
+         {
+          "out": "Running 3 tests using 1 worker",
+          "cor": "mut",
+          "em": 0.31
+         },
+         {
+          "out": "  ✓  1 [setup] › tests/auth.setup.js:5:6 › faz login uma vez (551ms)",
+          "cor": "ac",
+          "em": 0.37
+         },
+         {
+          "out": "  ✓  2 [chromium] › tests/nivel2/mock.spec.js:14:5 › servidor fora do ar (657ms)",
+          "cor": "ac",
+          "em": 0.43
+         },
+         {
+          "out": "  ✓  3 [chromium] › tests/nivel2/mock.spec.js:20:5 › lista vazia (603ms)",
+          "cor": "ac",
+          "em": 0.49
+         },
+         {
+          "out": "  3 passed (3.4s)",
+          "cor": "ac",
+          "em": 0.55
+         }
+        ],
+        "legenda": "Os dois passaram",
+        "fonte": 26,
+        "fonte_min": 18,
+        "compacto": false
+       },
+       "pausa": 2.5
+      },
+      {
+       "text": "Te vejo na próxima!",
+       "scene": {
+        "type": "endcard",
+        "sub": "PRÓXIMA: O BOTÃO FUNCIONA, MAS FICOU ERRADO"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "shorts": [],
+  "tiktoks": []
+ }
+}

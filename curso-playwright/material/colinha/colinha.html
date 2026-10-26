@@ -48,8 +48,9 @@ b{color:#fff}
 .c .pw{color:var(--ac)}
 .l3{display:grid;grid-template-columns:max-content max-content 1fr;gap:7px 12px;align-items:center;font-size:11px;line-height:1.35}
 .l3 .h{font-weight:900;font-size:10px;color:var(--mu);text-transform:uppercase;letter-spacing:.5px}
+.pg5 .grade{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.pg5 .box{min-width:0}.pg5 pre.c{font-size:9.6px;white-space:pre-wrap;word-break:break-word}.pg5 .box h2{font-size:12px}
 </style></head><body>
-<div class="pg"><div class="topo"><div><h1>PLAYWRIGHT <b>PARA LEIGOS</b></h1><p>Colinha do curso · os comandos e a receita de um teste, pra consultar enquanto pratica</p></div><span class="selo">COLINHA · 1/4</span></div>
+<div class="pg"><div class="topo"><div><h1>PLAYWRIGHT <b>PARA LEIGOS</b></h1><p>Colinha do curso · os comandos e a receita de um teste, pra consultar enquanto pratica</p></div><span class="selo">COLINHA · 1/5</span></div>
  <div class="grade">
   <div class="box"><h2><i>1</i>Terminal: os comandos</h2><div class="l">
    <code>node -v</code><span class="d">confere se o Node está instalado</span>
@@ -107,7 +108,7 @@ b{color:#fff}
    <code>not.toBeVisible()</code><span class="d">…<b>não</b> esteja visível</span>
   </div><p class="nota">Sempre com <code>await</code> na frente. O Playwright espera sozinho (por padrão, até 5 segundos) a condição ficar verdadeira.</p></div>
  </div><div class="rod"><span>Playwright para Leigos · Vinícius Torales</span><span>Site de treino: saucedemo.com · usuário <b>standard_user</b> · senha <b>secret_sauce</b></span></div></div>
-<div class="pg"><div class="topo"><div><h1>PLAYWRIGHT <b>PARA LEIGOS</b></h1><p>Seletores, ferramentas que ajudam e como rodar só o que importa</p></div><span class="selo">COLINHA · 2/4</span></div>
+<div class="pg"><div class="topo"><div><h1>PLAYWRIGHT <b>PARA LEIGOS</b></h1><p>Seletores, ferramentas que ajudam e como rodar só o que importa</p></div><span class="selo">COLINHA · 2/5</span></div>
  <div class="grade">
   <div class="box full"><h2><i>6</i>Como achar o elemento (aulas 17 e 18)</h2>
    <div class="sel">
@@ -144,7 +145,7 @@ dotenv.<span class="f">config</span>({ path: path.<span class="f">resolve</span>
   },
 });</pre></div>
  </div><div class="rod"><span>Playwright para Leigos · Vinícius Torales</span><span>Site de treino: saucedemo.com · usuário <b>standard_user</b> · senha <b>secret_sauce</b></span></div></div>
-<div class="pg"><div class="topo"><div><h1>PLAYWRIGHT <b>PARA LEIGOS</b></h1><p>Erros comuns, organização profissional, Git e as palavras do dia a dia</p></div><span class="selo">COLINHA · 3/4</span></div>
+<div class="pg"><div class="topo"><div><h1>PLAYWRIGHT <b>PARA LEIGOS</b></h1><p>Erros comuns, organização profissional, Git e as palavras do dia a dia</p></div><span class="selo">COLINHA · 3/5</span></div>
  <div class="grade">
   <div class="box full"><h2><i>10</i>Deu vermelho? Leia o erro assim (aula 26)</h2>
    <div class="perg"><div><span class="n">1</span><span class="q">Qual linha?</span><span class="d">o erro mostra o arquivo e a linha, com uma setinha</span></div><div><span class="n">2</span><span class="q">O que ele esperava?</span><span class="d">"Expected" é o que você pediu, "Received" é o que tinha</span></div><div><span class="n">3</span><span class="q">O que tinha na tela?</span><span class="d">abra o trace ou o print no relatório</span></div></div>
@@ -184,7 +185,7 @@ dotenv.<span class="f">config</span>({ path: path.<span class="f">resolve</span>
    <span><b>Regressão</b>: rodar tudo de novo pra ver se nada quebrou</span>
   </div></div>
  </div><div class="rod"><span>Playwright para Leigos · Vinícius Torales</span><span>Continua na página 4 ›</span></div></div>
-<div class="pg"><div class="topo"><div><h1>PLAYWRIGHT <b>PARA LEIGOS</b></h1><p>Page Object, login salvo, GitHub Actions e testes de API</p></div><span class="selo">COLINHA · 4/4</span></div>
+<div class="pg"><div class="topo"><div><h1>PLAYWRIGHT <b>PARA LEIGOS</b></h1><p>Page Object, login salvo, GitHub Actions e testes de API</p></div><span class="selo">COLINHA · 4/5</span></div>
  <div class="grade">
   <div class="box full"><h2><i>14</i>Page Object: cada página vira uma classe (aulas 37 a 40)</h2>
    <div style="display:grid;grid-template-columns:1.25fr 1fr;gap:16px;align-items:start">
@@ -236,5 +237,53 @@ dotenv.<span class="f">config</span>({ path: path.<span class="f">resolve</span>
         SAUCE_PASSWORD: ${{ secrets.SAUCE_PASSWORD }}</pre>
     <div class="passos">1. <b>Settings › Secrets and variables › Actions</b><br>2. <b>New repository secret</b>: <code>SAUCE_USER</code> e <code>SAUCE_PASSWORD</code><br>3. <code>git push</code> e abre a aba <b>Actions</b><br>4. Verde: passou. O relatório fica pra baixar no fim.<br><br><b>Secret</b> = segredo: ninguém vê o valor depois.</div>
    </div></div>
+ </div><div class="rod"><span>Playwright para Leigos · Vinícius Torales</span><span>Bons testes! ✓</span></div></div>
+<div class="pg pg5"><div class="topo"><div><h1>PLAYWRIGHT <b>PARA LEIGOS</b></h1><p>Nível 2: telas diferentes e o Playwright de verdade no trabalho</p></div><span class="selo">COLINHA · 5/5</span></div>
+ <div class="grade">
+  <div class="box"><h2><i>18</i>Telas diferentes (aulas 56 a 63)</h2><div class="l">
+   <code>.check() / .uncheck()</code><span class="d">marque / desmarque</span>
+   <code>.selectOption('2')</code><span class="d">escolha a opção</span>
+   <code>.setInputFiles('arquivos/x.txt')</code><span class="d">anexe o arquivo</span>
+   <code>page.on('dialog', d =&gt; d.accept())</code><span class="d">alerta: <b>antes</b> do clique</span>
+   <code>page.waitForEvent('popup')</code><span class="d">aba nova: <b>antes</b> do clique</span>
+   <code>page.frameLocator('#id')</code><span class="d">dentro do iframe</span>
+   <code>.hover()</code><span class="d">passe o mouse</span>
+   <code>.dragTo(destino)</code><span class="d">arraste até</span>
+   <code>.filter({ hasText: 'Ana' })</code><span class="d">a linha com este texto</span>
+  </div><p class="nota">E sempre confere: <code>toBeChecked()</code>, <code>toHaveValue('2')</code>, <code>toBeVisible()</code>.</p></div>
+  <div class="box"><h2><i>19</i>Fixtures: o teste recebe pronto (aula 64)</h2>
+<pre class="c"><span class="m">// fixtures/paginas.js</span>
+<span class="k">export const</span> <span class="pw">test</span> = base.<span class="f">extend</span>({
+  loginPage: <span class="k">async</span> ({ page }, use) =&gt; {
+    <span class="k">await</span> <span class="f">use</span>(<span class="k">new</span> <span class="f">LoginPage</span>(page));
+  },
+});
+<span class="m">// no teste: pede igual ao page</span>
+<span class="pw">test</span>(<span class="s">'...'</span>, <span class="k">async</span> ({ page, loginPage }) =&gt; {</pre></div>
+  <div class="box"><h2><i>20</i>Dados num arquivo (aula 65)</h2>
+<pre class="c"><span class="k">import</span> usuarios <span class="k">from</span> <span class="s">'../dados/usuarios.json'</span>;
+<span class="k">for</span> (<span class="k">const</span> { usuario, resultado } <span class="k">of</span> usuarios) {
+  <span class="pw">test</span>(<span class="s">`${usuario} - ${resultado}`</span>, ...);
+}</pre><p class="nota">Caso novo = <b>uma linha no JSON</b>. Passos diferentes? Testes separados.</p></div>
+  <div class="box"><h2><i>21</i>Mock: o Playwright no meio (aula 66)</h2>
+<pre class="c"><span class="m">// servidor fora do ar</span>
+page.<span class="f">route</span>(api, (r) =&gt; r.<span class="f">abort</span>());
+<span class="m">// responde no lugar do servidor</span>
+page.<span class="f">route</span>(api, (r) =&gt; r.<span class="f">fulfill</span>({
+  status: 200, body: <span class="s">'[]'</span> }));</pre><p class="nota">Testa como a <b>tela</b> reage. Se o servidor funciona: teste de API, sem mock.</p></div>
+  <div class="box"><h2><i>22</i>Visual, soft e tags (aulas 67 a 69)</h2><div class="l">
+   <code>toHaveScreenshot('login.png')</code><span class="d">compare com a foto guardada</span>
+   <code>--update-snapshots</code><span class="d">mudou de propósito: atualize a foto</span>
+   <code>expect.soft(...)</code><span class="d">anote o erro e continue conferindo</span>
+   <code>{ tag: '@smoke' }</code><span class="d">a etiqueta (depois do nome do teste)</span>
+   <code>--grep @smoke</code><span class="d">rode só os marcados</span>
+   <code>--grep-invert @smoke</code><span class="d">rode todos, menos os marcados</span>
+  </div></div>
+  <div class="box"><h2><i>23</i>Flaky, ambientes e evidência (aulas 70 a 72)</h2><div class="l">
+   <code>waitForTimeout(3000)</code><span class="d">✗ tempo fixo: lento e ainda falha</span>
+   <code>toBeVisible({ timeout: 10000 })</code><span class="d">✓ espera <b>até</b> aparecer</span>
+   <code>--repeat-each=10</code><span class="d">roda 10 vezes: caça teste instável</span>
+   <code>process.env.BASE_URL || '...'</code><span class="d">o ambiente vem de uma variável</span>
+  </div><p class="nota">Card de bug: título claro · passos · esperado × obtido · <b>print, vídeo e trace</b> anexados. Retry diminui o estrago, não corrige a causa.</p></div>
  </div><div class="rod"><span>Playwright para Leigos · Vinícius Torales</span><span>Bons testes! ✓</span></div></div>
 </body></html>

@@ -1,0 +1,296 @@
+{
+ "title": "Playwright para leigos · Aula 65",
+ "slug": "curso-playwright-65",
+ "idioma": "pt",
+ "destino": "curso",
+ "marca": [
+  "PLAYWRIGHT",
+  "PARA LEIGOS"
+ ],
+ "cor_fundo": "#3fd68a",
+ "sem_legenda": true,
+ "legenda_y": 0.93,
+ "selo": "MÓDULO 13 · AULA 65",
+ "voz": {
+  "nome": "gravada",
+  "motor": "eleven",
+  "eleven_voz": "Vinícius Torales"
+ },
+ "serie": [],
+ "meta": {
+  "titles": [
+   "Aula 65: Os dados ficaram maiores que o teste"
+  ],
+  "description": "",
+  "tags": []
+ },
+ "notes": "Curso Playwright para leigos. Não publica (destino: curso). Roteiro em curso-playwright/roteiros/.",
+ "script": {
+  "long": {
+   "parts": [
+    {
+     "chapter": "",
+     "sentences": [
+      {
+       "text": "Lembra da lista de usuários da aula trinta e um? Agora cada usuário tem também o resultado esperado: uns entram, outro é bloqueado. E a lista começa a ficar maior que o próprio teste.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "dados.spec.js",
+        "codigo": "const usuarios = [\n  { usuario: 'standard_user', resultado: 'sucesso' },\n  { usuario: 'problem_user', resultado: 'sucesso' },\n  { usuario: 'locked_out_user', resultado: 'bloqueado' },\n  { usuario: 'performance_glitch_user', resultado: 'sucesso' },\n  { usuario: 'visual_user', resultado: 'sucesso' },\n  { usuario: 'error_user', resultado: 'sucesso' },\n];\n\nfor (const { usuario, resultado } of usuarios) {\n  test(`${usuario} - ${resultado}`, async ({ page, loginPage }) => {",
+        "legenda": "A lista maior que o teste",
+        "fonte": 22,
+        "digitar": false,
+        "linha0": 1,
+        "pastas": null,
+        "destaque": [
+         1,
+         2,
+         3,
+         4,
+         5,
+         6,
+         7,
+         8
+        ],
+        "destaque_em": 1.6
+       }
+      },
+      {
+       "text": "O teste deveria mostrar o comportamento: entra, e confere. Os dados podem morar num arquivo separado. Cria a pasta dados, e dentro o usuarios ponto json.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "usuarios.json",
+        "pastas": null,
+        "codigo": "[\n  { \"usuario\": \"standard_user\", \"resultado\": \"sucesso\" },\n  { \"usuario\": \"problem_user\", \"resultado\": \"sucesso\" },\n  { \"usuario\": \"locked_out_user\", \"resultado\": \"bloqueado\" }\n]",
+        "legenda": "dados/usuarios.json",
+        "fonte": 26,
+        "digitar": true,
+        "linha0": 1,
+        "digitar_de": 1,
+        "digitar_ate": 5
+       }
+      },
+      {
+       "text": "JSON você já viu nas aulas de API: chaves, o nome do campo entre aspas, dois pontos, e o valor. Cada par de chaves é um caso de teste.",
+       "scene": {
+        "type": "traducao",
+        "titulo": "CADA LINHA, UM CASO",
+        "linhas": [
+         [
+          "{ \"usuario\": \"standard_user\", \"resultado\": \"sucesso\" }",
+          "entra"
+         ],
+         [
+          "{ \"usuario\": \"locked_out_user\", \"resultado\": \"bloqueado\" }",
+          "é bloqueado"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "No teste: import usuarios from, e o caminho do JSON. Pronto: a lista chega no teste.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "dados.spec.js",
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  dados/",
+         "    usuarios.json",
+         "  fixtures/",
+         "    paginas.js",
+         "  pages/",
+         "  tests/",
+         "    nivel2/",
+         "  .env",
+         "  playwright.config.js"
+        ],
+        "codigo": "import { test, expect } from '../../fixtures/paginas';\nimport usuarios from '../../dados/usuarios.json';",
+        "legenda": "import usuarios from '../../dados/usuarios.json'",
+        "fonte": 26,
+        "digitar": true,
+        "linha0": 1,
+        "digitar_de": 2,
+        "digitar_ate": 2
+       }
+      },
+      {
+       "text": "E o for que você já conhece. Com um detalhe novo: as chaves dentro do for. Elas pegam de cada caso o usuario e o resultado, cada um na sua variável.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "dados.spec.js",
+        "codigo": "import { test, expect } from '../../fixtures/paginas';\nimport usuarios from '../../dados/usuarios.json';\n\nfor (const { usuario, resultado } of usuarios) {\n  test(`${usuario} - ${resultado}`, async ({ page, loginPage }) => {\n  });\n}",
+        "legenda": "Pegue o usuario e o resultado de cada caso",
+        "fonte": 22,
+        "digitar": true,
+        "linha0": 1,
+        "pastas": null,
+        "digitar_de": 4,
+        "digitar_ate": 5
+       }
+      },
+      {
+       "text": "Traduzindo: pra cada caso da lista, pegue os dois campos, usuario e resultado.",
+       "scene": {
+        "type": "traducao",
+        "codigo": "for (const { usuario, resultado } of usuarios) {",
+        "partes": [
+         [
+          "{ usuario, resultado }",
+          "pegue os dois campos"
+         ],
+         [
+          "of usuarios",
+          "de cada caso do JSON"
+         ]
+        ],
+        "passo": 1.6
+       }
+      },
+      {
+       "text": "Dentro, um if: se o resultado é sucesso, confere que entrou. Se não, confere a mensagem de bloqueado.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "dados.spec.js",
+        "codigo": "import { test, expect } from '../../fixtures/paginas';\nimport usuarios from '../../dados/usuarios.json';\n\nfor (const { usuario, resultado } of usuarios) {\n  test(`${usuario} - ${resultado}`, async ({ page, loginPage }) => {\n    await page.goto('/');\n    await loginPage.entrar(usuario, 'secret_sauce');\n    if (resultado === 'sucesso') {\n      await expect(page).toHaveURL(/inventory/);\n    } else {\n      await expect(loginPage.erro).toContainText('locked out');\n    }\n  });\n}",
+        "legenda": "if: se o resultado for sucesso",
+        "fonte": 22,
+        "digitar": false,
+        "linha0": 1,
+        "pastas": null,
+        "destaque": [
+         8,
+         9,
+         10,
+         11
+        ],
+        "destaque_em": 0.8
+       }
+      },
+      {
+       "text": "If é se. Os três iguais querem dizer: é igual a. E else é senão.",
+       "scene": {
+        "type": "traducao",
+        "codigo": "if (resultado === 'sucesso') { ... } else { ... }",
+        "partes": [
+         [
+          "if",
+          "se"
+         ],
+         [
+          "===",
+          "é igual a"
+         ],
+         [
+          "else",
+          "senão"
+         ]
+        ],
+        "passo": 1.3
+       }
+      },
+      {
+       "text": "E por que separar? Um caso novo vira uma linha no JSON, sem mexer no teste. Até quem não programa consegue acrescentar. E quando os dados mudam mais do que o teste, você mexe só no arquivo.",
+       "scene": {
+        "type": "cards",
+        "itens": [
+         [
+          "+",
+          "Caso novo",
+          "uma linha no JSON"
+         ],
+         [
+          "👥",
+          "Quem não programa",
+          "consegue acrescentar",
+          "#69a7ff"
+         ],
+         [
+          "✎",
+          "Dados mudaram",
+          "mexe só no arquivo",
+          "#ffd23f"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Quando não usar: se cada caso precisa de passos diferentes, o if começa a crescer, e o teste fica difícil de ler. Aí é melhor testes separados.",
+       "scene": {
+        "type": "traducao",
+        "titulo": "QUANDO USAR",
+        "linhas": [
+         [
+          "mesmos passos, dados diferentes",
+          "dados num JSON"
+         ],
+         [
+          "passos diferentes",
+          "testes separados"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Roda: um teste pra cada caso do arquivo.",
+       "scene": {
+        "type": "terminal",
+        "titulo": "Terminal — VS Code",
+        "pasta": "C:\\Users\\voce\\Documents\\meu-primeiro-playwright",
+        "linhas": [
+         {
+          "cmd": "npx playwright test dados --project=chromium",
+          "em": 0.04
+         },
+         {
+          "out": "Running 4 tests using 1 worker",
+          "cor": "mut",
+          "em": 0.31
+         },
+         {
+          "out": "  ✓  1 [setup] › tests/auth.setup.js:5:6 › faz login uma vez (551ms)",
+          "cor": "ac",
+          "em": 0.37
+         },
+         {
+          "out": "  ✓  2 [chromium] › tests/nivel2/dados.spec.js:5:7 › standard_user - sucesso (637ms)",
+          "cor": "ac",
+          "em": 0.43
+         },
+         {
+          "out": "  ✓  3 [chromium] › tests/nivel2/dados.spec.js:5:7 › problem_user - sucesso (490ms)",
+          "cor": "ac",
+          "em": 0.49
+         },
+         {
+          "out": "  ✓  4 [chromium] › tests/nivel2/dados.spec.js:5:7 › locked_out_user - bloqueado (373ms)",
+          "cor": "ac",
+          "em": 0.55
+         },
+         {
+          "out": "  4 passed (3.1s)",
+          "cor": "ac",
+          "em": 0.61
+         }
+        ],
+        "legenda": "Um teste pra cada caso",
+        "fonte": 26,
+        "fonte_min": 18,
+        "compacto": false
+       },
+       "pausa": 2.5
+      },
+      {
+       "text": "Te vejo na próxima!",
+       "scene": {
+        "type": "endcard",
+        "sub": "PRÓXIMA: E SE O SERVIDOR RESPONDER ERRADO?"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "shorts": [],
+  "tiktoks": []
+ }
+}

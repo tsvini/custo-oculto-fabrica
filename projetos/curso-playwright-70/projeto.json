@@ -1,0 +1,286 @@
+{
+ "title": "Playwright para leigos · Aula 70",
+ "slug": "curso-playwright-70",
+ "idioma": "pt",
+ "destino": "curso",
+ "marca": [
+  "PLAYWRIGHT",
+  "PARA LEIGOS"
+ ],
+ "cor_fundo": "#3fd68a",
+ "sem_legenda": true,
+ "legenda_y": 0.93,
+ "selo": "MÓDULO 13 · AULA 70",
+ "voz": {
+  "nome": "gravada",
+  "motor": "eleven",
+  "eleven_voz": "Vinícius Torales"
+ },
+ "serie": [],
+ "meta": {
+  "titles": [
+   "Aula 70: Passou. Rodei de novo. Falhou."
+  ],
+  "description": "",
+  "tags": []
+ },
+ "notes": "Curso Playwright para leigos. Não publica (destino: curso). Roteiro em curso-playwright/roteiros/.",
+ "script": {
+  "long": {
+   "parts": [
+    {
+     "chapter": "",
+     "sentences": [
+      {
+       "text": "Olha isso. Rodei esse teste dez vezes seguidas: oito falharam, e duas passaram. E eu não mudei uma linha.",
+       "scene": {
+        "type": "terminal",
+        "titulo": "Terminal — VS Code",
+        "pasta": "C:\\Users\\voce\\Documents\\meu-primeiro-playwright",
+        "linhas": [
+         {
+          "cmd": "npx playwright test aula70 --repeat-each=10 --project=chromium",
+          "em": 0.04
+         },
+         {
+          "out": "Running 10 tests using 2 workers",
+          "cor": "mut",
+          "em": 0.31
+         },
+         {
+          "out": "  8 failed",
+          "cor": "#ff6b6b",
+          "em": 0.37
+         },
+         {
+          "out": "  2 passed (52.8s)",
+          "cor": "ac",
+          "em": 0.43
+         }
+        ],
+        "legenda": "10 vezes: 8 falharam, 2 passaram",
+        "fonte": 26,
+        "fonte_min": 18,
+        "compacto": false
+       }
+      },
+      {
+       "text": "Rodei de novo, o mesmo comando, sem mexer em nada. Dessa vez passaram as dez.",
+       "scene": {
+        "type": "terminal",
+        "titulo": "Terminal — VS Code",
+        "pasta": "C:\\Users\\voce\\Documents\\meu-primeiro-playwright",
+        "linhas": [
+         {
+          "cmd": "npx playwright test aula70 --repeat-each=10 --project=chromium",
+          "em": 0.04
+         },
+         {
+          "out": "Running 10 tests using 2 workers",
+          "cor": "mut",
+          "em": 0.31
+         },
+         {
+          "out": "  10 passed (55.0s)",
+          "cor": "ac",
+          "em": 0.37
+         }
+        ],
+        "legenda": "De novo: as 10 passaram",
+        "fonte": 26,
+        "fonte_min": 18,
+        "compacto": false
+       }
+      },
+      {
+       "text": "Esse é o teste flaky: às vezes passa, às vezes falha, sem nenhuma mudança que explique. E ele é perigoso: o time para de confiar nos testes, e começa a ignorar o vermelho. Até o dia em que o vermelho era um bug de verdade.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "FLAKY",
+          "gold",
+          200
+         ],
+         [
+          "ÀS VEZES PASSA, ÀS VEZES FALHA",
+          "white",
+          80
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Olha o código. Depois do login, ele espera quatro segundos e meio, fixos, e conta os produtos.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "flaky.demo.spec.js",
+        "codigo": "import { test, expect } from '@playwright/test';\n\ntest('usuário lento, com tempo fixo', async ({ page }) => {\n  await page.goto('/');\n  await page.getByTestId('username').fill('performance_glitch_user');\n  await page.getByTestId('password').fill('secret_sauce');\n  await page.getByTestId('login-button').click();\n  await page.waitForTimeout(4500);\n  const produtos = page.getByTestId('inventory-item');\n  expect(await produtos.count()).toBe(6);\n});",
+        "legenda": "Tempo fixo e depois conta",
+        "fonte": 22,
+        "digitar": false,
+        "linha0": 1,
+        "pastas": null,
+        "destaque": [
+         8,
+         10
+        ],
+        "destaque_em": 1.0
+       }
+      },
+      {
+       "text": "O problema: esse usuário é lento de propósito. Às vezes a página carrega em quatro segundos, às vezes em cinco. Quando demora mais que a espera, a conta dá zero, e o teste falha.",
+       "scene": {
+        "type": "cards",
+        "itens": [
+         [
+          "4s",
+          "Carregou em 4 segundos",
+          "passou",
+          "#3fd68a"
+         ],
+         [
+          "5s",
+          "Carregou em 5 segundos",
+          "falhou",
+          "#ff6b6b"
+         ]
+        ],
+        "titulo": "ESPERA FIXA DE 4,5 SEGUNDOS"
+       }
+      },
+      {
+       "text": "A reação mais comum é aumentar a espera. Às vezes parece resolver. Mas aí o teste sempre espera, mesmo quando a página já carregou. E no dia em que o sistema levar mais, falha de novo.",
+       "scene": {
+        "type": "compare",
+        "title": "AUMENTAR A ESPERA?",
+        "items": [
+         [
+          "TEMPO FIXO",
+          "LENTO E AINDA FALHA",
+          "white"
+         ],
+         [
+          "ESPERAR O QUE IMPORTA",
+          "RÁPIDO E ESTÁVEL",
+          "gold"
+         ]
+        ],
+        "size": 90,
+        "stagger": 1.8,
+        "vs": false
+       }
+      },
+      {
+       "text": "O caminho certo: esperar o que importa. Um expect que espera sozinho, até o primeiro produto aparecer, como na aula vinte e um.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "flaky.spec.js",
+        "codigo": "import { test, expect } from '../../fixtures/paginas';\n\ntest('usuário lento, esperando o que importa', async ({ page, loginPage }) => {\n  await page.goto('/');\n  await loginPage.entrar('performance_glitch_user', 'secret_sauce');\n  const produtos = page.getByTestId('inventory-item');\n  await expect(produtos.first()).toBeVisible({ timeout: 10000 });\n});",
+        "legenda": "Espere o que importa",
+        "fonte": 22,
+        "digitar": true,
+        "linha0": 1,
+        "pastas": null,
+        "digitar_de": 6,
+        "digitar_ate": 7
+       }
+      },
+      {
+       "text": "E repara: ele não espera dez segundos. Espera até dez. Apareceu em quatro? Segue em quatro.",
+       "scene": {
+        "type": "traducao",
+        "codigo": "await expect(produtos.first()).toBeVisible({ timeout: 10000 });",
+        "partes": [
+         [
+          "toBeVisible",
+          "espere aparecer"
+         ],
+         [
+          "{ timeout: 10000 }",
+          "por até 10 segundos"
+         ]
+        ],
+        "passo": 1.4
+       }
+      },
+      {
+       "text": "E pra caçar teste instável, o repeat each: roda o mesmo teste várias vezes seguidas. Se falhar uma vez em dez, tem coisa pra investigar.",
+       "scene": {
+        "type": "traducao",
+        "titulo": "CAÇANDO TESTE INSTÁVEL",
+        "linhas": [
+         [
+          "--repeat-each=10",
+          "roda 10 vezes seguidas"
+         ],
+         [
+          "falhou 1 em 10?",
+          "tem coisa pra investigar"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "E o retries do config faz o GitHub tentar de novo quando um teste falha. Ajuda, mas guarda essa: retry diminui o estrago, não corrige a causa.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "playwright.config.js",
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  dados/",
+         "    usuarios.json",
+         "  fixtures/",
+         "    paginas.js",
+         "  pages/",
+         "  tests/",
+         "    nivel2/",
+         "  .env",
+         "  playwright.config.js"
+        ],
+        "codigo": "  fullyParallel: true,\n  forbidOnly: !!process.env.CI,\n  retries: process.env.CI ? 2 : 0,\n  workers: process.env.CI ? 1 : undefined,",
+        "legenda": "retries: tenta de novo no GitHub",
+        "fonte": 30,
+        "digitar": false,
+        "linha0": 9,
+        "destaque": [
+         3
+        ],
+        "destaque_em": 0.8
+       }
+      },
+      {
+       "text": "Então, no trabalho: apareceu um flaky, investiga a causa. Quase sempre é uma espera errada, ou um teste que depende de outro. E evita o tempo fixo.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "RETRY DIMINUI O ESTRAGO",
+          "white",
+          100
+         ],
+         [
+          "NÃO CORRIGE A CAUSA",
+          "gold",
+          120
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Te vejo na próxima!",
+       "scene": {
+        "type": "endcard",
+        "sub": "PRÓXIMA: O MESMO SISTEMA, TRÊS AMBIENTES"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "shorts": [],
+  "tiktoks": []
+ }
+}

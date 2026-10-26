@@ -519,16 +519,16 @@
        "scene": {
         "type": "bigtext",
         "lines": [
-         {
-          "t": "E QUANDO FALHA NO GITHUB?",
-          "c": "white",
-          "s": 100
-         },
-         {
-          "t": "PRÓXIMA AULA: TRACE",
-          "c": "gold",
-          "s": 120
-         }
+         [
+          "E QUANDO FALHA NO GITHUB?",
+          "white",
+          100
+         ],
+         [
+          "PRÓXIMA AULA: TRACE",
+          "gold",
+          120
+         ]
         ],
         "stagger": 0.6
        }

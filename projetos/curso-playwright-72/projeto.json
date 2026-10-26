@@ -1,0 +1,292 @@
+{
+ "title": "Playwright para leigos · Aula 72",
+ "slug": "curso-playwright-72",
+ "idioma": "pt",
+ "destino": "curso",
+ "marca": [
+  "PLAYWRIGHT",
+  "PARA LEIGOS"
+ ],
+ "cor_fundo": "#3fd68a",
+ "sem_legenda": true,
+ "legenda_y": 0.93,
+ "selo": "MÓDULO 13 · AULA 72",
+ "voz": {
+  "nome": "gravada",
+  "motor": "eleven",
+  "eleven_voz": "Vinícius Torales"
+ },
+ "serie": [],
+ "meta": {
+  "titles": [
+   "Aula 72: O teste falhou. O que eu mando pro desenvolvedor?"
+  ],
+  "description": "",
+  "tags": []
+ },
+ "notes": "Curso Playwright para leigos. Não publica (destino: curso). Roteiro em curso-playwright/roteiros/.",
+ "script": {
+  "long": {
+   "parts": [
+    {
+     "chapter": "",
+     "sentences": [
+      {
+       "text": "Você roda a pipeline, e um teste falha. Mandar só a automação quebrou não ajuda ninguém: quem vai corrigir não sabe nem por onde começar.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "“A AUTOMAÇÃO QUEBROU”",
+          "white",
+          84
+         ],
+         [
+          "NÃO AJUDA NINGUÉM",
+          "gold",
+          96
+         ]
+        ],
+        "entre": 1.4
+       }
+      },
+      {
+       "text": "Primeiro, você investiga. O relatório traz o erro, o print, o vídeo e o trace.",
+       "scene": {
+        "type": "pw_relatorio",
+        "url": "https://www.saucedemo.com/",
+        "media": "site_sauce_falha",
+        "acoes": [
+         {
+          "fill": [
+           "#user-name",
+           "standard_user"
+          ]
+         },
+         {
+          "fill": [
+           "#password",
+           "secret_sauce"
+          ]
+         },
+         {
+          "click": "#login-button"
+         }
+        ],
+        "testes": [
+         [
+          "entra com usuário e senha",
+          "login.spec.js:8",
+          "chromium",
+          "ok",
+          "1.1s"
+         ],
+         [
+          "mostra erro para usuário bloqueado",
+          "login.spec.js:18",
+          "chromium",
+          "ok",
+          "0.7s"
+         ],
+         [
+          "entra com usuário e senha",
+          "login.spec.js:8",
+          "firefox",
+          "ok",
+          "1.6s"
+         ],
+         [
+          "mostra erro para usuário bloqueado",
+          "login.spec.js:18",
+          "firefox",
+          "ok",
+          "0.9s"
+         ],
+         [
+          "entra com usuário e senha",
+          "login.spec.js:8",
+          "webkit",
+          "ok",
+          "1.4s"
+         ],
+         [
+          "mostra erro para usuário bloqueado",
+          "login.spec.js:18",
+          "webkit",
+          "ok",
+          "0.8s"
+         ]
+        ],
+        "abrir": {
+         "titulo": "entra com usuário e senha",
+         "status": "falhou",
+         "arquivo": "login.spec.js:8",
+         "projeto": "chromium",
+         "passos": [],
+         "erro": "Error: expect(locator).toContainText(expected) failed\nExpected substring: \"Mochila\"\nReceived string:    \"Sauce Labs Backpack\"",
+         "anexos": true,
+         "anexo_img": "site_sauce_falha",
+         "anexos_em": 1.2
+        },
+        "legenda": "O erro, o print, o vídeo e o trace"
+       }
+      },
+      {
+       "text": "O erro diz o esperado e o encontrado. E o trace mostra a página no momento exato da falha.",
+       "scene": {
+        "type": "pw_trace",
+        "media": "site_sauce_trace",
+        "url": "https://www.saucedemo.com/",
+        "acoes": [
+         {
+          "fill": [
+           "#user-name",
+           "standard_user"
+          ]
+         },
+         {
+          "fill": [
+           "#password",
+           "secret_sauce"
+          ]
+         },
+         {
+          "click": "#login-button"
+         }
+        ],
+        "inspecionar": "[data-test=\"title\"]",
+        "passos_pw": [
+         [
+          "Before Hooks",
+          "",
+          "520ms"
+         ],
+         [
+          "Navigate to",
+          "\"/\"",
+          "410ms"
+         ],
+         [
+          "Fill",
+          "getByTestId('username')",
+          "38ms"
+         ],
+         [
+          "Fill",
+          "getByTestId('password')",
+          "21ms"
+         ],
+         [
+          "Click",
+          "getByTestId('login-button')",
+          "96ms"
+         ],
+         [
+          "Expect",
+          "toHaveURL",
+          "12ms"
+         ],
+         [
+          "Expect",
+          "toBeVisible",
+          "9ms"
+         ],
+         [
+          "Expect",
+          "toContainText('Mochila')",
+          "5.0s"
+         ]
+        ],
+        "falhou": true,
+        "erro": "Error: expect(locator).toContainText(expected) failed\nLocator: getByText('Sauce Labs Backpack')\nExpected substring: \"Mochila\"\nReceived string:    \"Sauce Labs Backpack\"",
+        "aba": "Errors",
+        "sel_em": 0.6,
+        "legenda": "O trace: a página no momento da falha"
+       }
+      },
+      {
+       "text": "E aqui entra a pergunta da aula vinte e seis: é erro do teste, ou bug do sistema? Se o teste estava errado, você mesmo conserta. Se é bug, aí sim vira um card.",
+       "scene": {
+        "type": "compare",
+        "title": "QUEM ESTÁ ERRADO?",
+        "items": [
+         [
+          "O TESTE",
+          "VOCÊ CONSERTA",
+          "white"
+         ],
+         [
+          "O SISTEMA",
+          "VIRA UM CARD",
+          "gold"
+         ]
+        ],
+        "size": 90,
+        "stagger": 1.8,
+        "vs": false
+       }
+      },
+      {
+       "text": "Um card útil tem: um título claro, os passos pra reproduzir, o esperado, o que aconteceu, e as evidências anexadas: o print, o vídeo e o trace.",
+       "scene": {
+        "type": "tela",
+        "media": "card_bug",
+        "url": "repo:curso-playwright/material/cenas/card_bug.html",
+        "alvo": "Anexos (evidências)",
+        "titulo": "Card do bug",
+        "legenda": "Título, passos, esperado × obtido, evidências"
+       }
+      },
+      {
+       "text": "Repara no título. Não é a automação quebrou. É o que a pessoa vê de errado na tela.",
+       "scene": {
+        "type": "traducao",
+        "titulo": "O TÍTULO DO CARD",
+        "linhas": [
+         [
+          "A automação quebrou",
+          "não diz nada"
+         ],
+         [
+          "Nome do produto aparece em inglês",
+          "diz o problema"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Com um card assim, quem desenvolve reproduz o problema em minutos, sem precisar te chamar pra perguntar nada. Automação também é isso: gerar evidência que ajuda a investigar.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "AUTOMAÇÃO TAMBÉM É",
+          "white",
+          90
+         ],
+         [
+          "GERAR EVIDÊNCIA",
+          "gold",
+          110
+         ]
+        ],
+        "entre": 1.4
+       }
+      },
+      {
+       "text": "Te vejo na próxima!",
+       "scene": {
+        "type": "endcard",
+        "sub": "PRÓXIMA: O QUE VOCÊ JÁ CONSEGUE FAZER"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "shorts": [],
+  "tiktoks": []
+ }
+}

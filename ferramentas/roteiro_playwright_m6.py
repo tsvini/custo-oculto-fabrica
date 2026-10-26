@@ -106,7 +106,7 @@ AULAS.append(projeto(27, "MÓDULO 6 · AULA 27", "UI Mode", [
      {"type": "cards", "titulo": "SEM O WATCH", "itens": [["✎", "Muda uma linha", ""], ["⌨", "Volta no terminal", "", "#ff8c42"], ["▶", "Roda de novo", "toda vez", "#ff6b6b"]]}),
     ("Watch quer dizer vigiar. Liga aquele ícone de olho, e pronto: salvou o arquivo, o teste roda de novo sozinho.", dict(UI, watch=True, watch_em=1.2, roda_em=2.6, legenda="watch = vigiar: salvou, rodou de novo")),
     ("É um dos jeitos mais confortáveis de escrever um teste novo: escreve, salva, e vê na hora.", bt(("ESCREVE, SALVA", "white", 120), ("E VÊ NA HORA", "gold", 150), entre=1.35)),
-    ("Só que o UI Mode precisa de você na frente da tela. E quando o teste falha no GitHub, de madrugada? É a próxima aula.", {'type': 'bigtext', 'lines': [{'t': 'E QUANDO FALHA NO GITHUB?', 'c': 'white', 's': 100}, {'t': 'PRÓXIMA AULA: TRACE', 'c': 'gold', 's': 120}], 'stagger': 0.6}),  # pra que / quando
+    ("Só que o UI Mode precisa de você na frente da tela. E quando o teste falha no GitHub, de madrugada? É a próxima aula.", {'type': 'bigtext', 'lines': [['E QUANDO FALHA NO GITHUB?', 'white', 100], ['PRÓXIMA AULA: TRACE', 'gold', 120]], 'stagger': 0.6}),  # pra que / quando
     ("Na próxima aula: o rastro completo de um teste.", proxima("Trace Viewer")[0]),
     ("Te vejo lá!", proxima("Trace Viewer")[1]),
 ]))
