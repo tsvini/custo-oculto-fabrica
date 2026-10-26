@@ -1,0 +1,6 @@
+[
+  { "opcao": "az", "nome": "nome de A a Z", "campo": "nome", "sentido": "crescente" },
+  { "opcao": "za", "nome": "nome de Z a A", "campo": "nome", "sentido": "decrescente" },
+  { "opcao": "menor", "nome": "preço do menor para o maior", "campo": "preco", "sentido": "crescente" },
+  { "opcao": "maior", "nome": "preço do maior para o menor", "campo": "preco", "sentido": "decrescente" }
+]
