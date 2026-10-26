@@ -5,6 +5,8 @@ const VERSAO = (() => {
   if (p) sessionStorage.setItem('versao', p);
   return sessionStorage.getItem('versao') === '1' ? 1 : 2;
 })();
+// ?estilo=quebrado: alguém mexeu no CSS sem querer (o botão continua funcionando, mas ficou diferente). Usado na aula de teste visual.
+if (new URLSearchParams(location.search).get('estilo') === 'quebrado') document.documentElement.classList.add('quebrado');
 const USUARIOS = { cliente: { senha: 'leigo123' }, bloqueado: { senha: 'leigo123', bloqueado: true } };
 const real = (v) => 'R$ ' + v.toFixed(2).replace('.', ',');
 const MARCA = (img = true) => `<span class="marca">${img ? '<img src="img/logo.svg" alt="">' : ''}<span class="palavra"><span class="l1">lojinha</span><span class="l2"><small>do</small>leigo</span></span></span>`;

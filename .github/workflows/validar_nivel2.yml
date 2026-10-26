@@ -29,9 +29,12 @@ jobs:
           cd curso-playwright/projeto
           { sec "MÓDULOS 12 E 13 (sem o teste visual)"; npx playwright test tests/nivel2 --project=chromium --reporter=list --retries=0 --grep-invert "não mudou" 2>&1; } >> $S
           { sec "VISUAL: 1ª vez (sem foto de referência)"; npx playwright test tests/nivel2 --project=chromium --reporter=list --retries=0 --grep "não mudou" 2>&1;
-            sec "VISUAL: 2ª vez"; npx playwright test tests/nivel2 --project=chromium --reporter=list --retries=0 --grep "não mudou" 2>&1; } >> $S
+            sec "VISUAL: 2ª vez"; npx playwright test tests/nivel2 --project=chromium --reporter=list --retries=0 --grep "não mudou" 2>&1;
+            sed -i "s#/loja/';#/loja/?estilo=quebrado';#" tests/nivel2/visual.spec.js
+            sec "VISUAL: alguém mexeu no botão"; npx playwright test tests/nivel2 --project=chromium --reporter=list --retries=0 --grep "não mudou" 2>&1; git checkout tests/nivel2/visual.spec.js; } >> $S
+          { sec "GREP INVERT"; npx playwright test tests/nivel2/tags.spec.js --project=chromium --reporter=list --grep-invert @smoke 2>&1; } >> $S
           { sec "SMOKE"; npx playwright test tests/nivel2 --project=chromium --reporter=list --grep @smoke 2>&1; } >> $S
-          { sec "FLAKY (repeat-each 10)"; npx playwright test -c playwright.demos.config.js aula70 --reporter=line --repeat-each=10 --retries=0 2>&1 | tail -25; } >> $S
+          { sec "FLAKY (repeat-each 10)"; npx playwright test -c playwright.demos.config.js aula70 --reporter=line --repeat-each=10 --retries=0 2>&1 | tail -40; } >> $S
           cd ../projeto2
           { sec "PROJETO 2 · versão 2"; npx playwright test --project=chromium --reporter=list 2>&1; } >> $S
           { sec "PROJETO 2 · versão 1 (com o bug)"; LOJA_VERSAO=1 npx playwright test produtos --project=chromium --reporter=list --retries=0 2>&1; } >> $S
