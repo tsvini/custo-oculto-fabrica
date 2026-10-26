@@ -158,7 +158,7 @@ AULAS.append(projeto(25, "MÓDULO 5 · AULA 25", "Rodando só o que importa - on
      {"type": "cards", "itens": [["⚠", "Esqueceu o only?", "os outros param de rodar", "#ff8c42"], ["🛡", "forbidOnly", "trava isso no GitHub", "#69a7ff"]]}),
     ("E test ponto skip: pula esse teste. Skip quer dizer pular. No resultado, ele aparece como skipped.",
      edc("\n".join(C25_SKIP.split("\n")[L_ONLY - 4:L_ONLY + 4]), "skip = pular: aparece como skipped", linha0=L_ONLY - 3, pastas=ARV_EX, destaque=[4], destaque_em=0.6,
-         terminal=run(("Running 2 tests using 1 worker", "mut"), ("  1 skipped", "yel"), ("  1 passed (1.4s)", "ac")))),
+         terminal=run(("Running 2 tests using 1 worker", "mut"), ("  1 skipped", "yel"), ("  1 passed (1.8s)", "ac")))),
     ("E você já conhece o traço traço project igual chromium, pra rodar num navegador só.",
      {"type": "cards", "itens": [["C", "--project=chromium", "só esse navegador"]]}),
     ("Resumo de tudo numa tabela.",
