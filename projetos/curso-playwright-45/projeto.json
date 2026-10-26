@@ -1,0 +1,235 @@
+{
+ "title": "Playwright para leigos · Aula 45",
+ "slug": "curso-playwright-45",
+ "idioma": "pt",
+ "destino": "curso",
+ "marca": [
+  "PLAYWRIGHT",
+  "PARA LEIGOS"
+ ],
+ "cor_fundo": "#3fd68a",
+ "sem_legenda": true,
+ "legenda_y": 0.93,
+ "selo": "MÓDULO 9 · AULA 45",
+ "voz": {
+  "nome": "gravada",
+  "motor": "eleven",
+  "eleven_voz": "Vinícius Torales"
+ },
+ "serie": [],
+ "meta": {
+  "titles": [
+   "Aula 45: GitHub Actions - os testes rodando sozinhos"
+  ],
+  "description": "",
+  "tags": []
+ },
+ "notes": "Curso Playwright para leigos. Não publica (destino: curso). Roteiro em curso-playwright/roteiros/.",
+ "script": {
+  "long": {
+   "parts": [
+    {
+     "chapter": "",
+     "sentences": [
+      {
+       "text": "E se o GitHub rodasse os seus testes sozinho? É isso que o GitHub Actions faz.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "AULA 45",
+          "muted",
+          80
+         ],
+         [
+          "GITHUB ACTIONS",
+          "gold",
+          150
+         ]
+        ]
+       }
+      },
+      {
+       "text": "O Playwright já criou esse arquivo lá no começo: ponto github, workflows, playwright ponto yml.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "playwright.yml",
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  pages/",
+         "    CheckoutPage.js",
+         "    LoginPage.js",
+         "    ProdutosPage.js",
+         "  tests/",
+         "    auth.setup.js",
+         "    compra.spec.js",
+         "    login.spec.js",
+         "    usuarios.spec.js",
+         "  .env",
+         "  .env.example",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "codigo": "name: Playwright Tests\non:\n  push:\n    branches: [ main, master ]\n  pull_request:\n    branches: [ main, master ]\njobs:\n  test:\n    timeout-minutes: 60\n    runs-on: ubuntu-latest\n    steps:\n    - uses: actions/checkout@v4\n    - uses: actions/setup-node@v4\n      with:\n        node-version: lts/*\n    - name: Install dependencies\n      run: npm ci\n    - name: Install Playwright Browsers\n      run: npx playwright install --with-deps\n    - name: Run Playwright tests\n      run: npx playwright test\n    - uses: actions/upload-artifact@v4\n      if: ${{ !cancelled() }}\n      with:\n        name: playwright-report\n        path: playwright-report/\n        retention-days: 30",
+        "legenda": ".github/workflows/playwright.yml",
+        "fonte": 22,
+        "digitar": false,
+        "rolar": true,
+        "rolar_de": 2.0,
+        "rolar_dur": 2.0
+       }
+      },
+      {
+       "text": "Lendo em português: quando houver um push ou um pull request na main, use uma máquina Ubuntu, instale tudo e rode os testes. Esses quandos são os gatilhos do arquivo.",
+       "scene": {
+        "type": "traducao",
+        "titulo": "LENDO O ARQUIVO EM PORTUGUÊS",
+        "linhas": [
+         [
+          "on: push / pull_request",
+          "quando houver push ou PR na main"
+         ],
+         [
+          "runs-on: ubuntu-latest",
+          "use uma máquina Ubuntu"
+         ],
+         [
+          "npm ci",
+          "instale as dependências"
+         ],
+         [
+          "npx playwright install",
+          "instale os navegadores"
+         ],
+         [
+          "npx playwright test",
+          "rode os testes"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Só falta uma coisa: o ponto env não foi pro GitHub, então lá os testes não sabem o usuário e a senha.",
+       "scene": {
+        "type": "cards",
+        "itens": [
+         [
+          "✗",
+          ".env",
+          "ficou só na sua máquina",
+          "#ff6b6b"
+         ],
+         [
+          "?",
+          "No GitHub",
+          "os testes não sabem usuário e senha",
+          "#ffd23f"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "No GitHub: Settings, Secrets and variables, Actions, New repository secret. Cria o SAUCE underline USER e o SAUCE underline PASSWORD. Secret é segredo: ninguém consegue ver o valor depois.",
+       "scene": {
+        "type": "github",
+        "usuario": "voce",
+        "repo": "meu-primeiro-playwright",
+        "tela": "secrets",
+        "clique_em": 0.8,
+        "menu_em": 2.0,
+        "botao_em": 3.4,
+        "aviso": "ninguém vê o valor depois",
+        "legenda": "Settings › Secrets and variables › Actions"
+       }
+      },
+      {
+       "text": "No yml, no passo que roda os testes, um env que entrega esses segredos pros testes.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "playwright.yml",
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  pages/",
+         "    CheckoutPage.js",
+         "    LoginPage.js",
+         "    ProdutosPage.js",
+         "  tests/",
+         "    auth.setup.js",
+         "    compra.spec.js",
+         "    login.spec.js",
+         "    usuarios.spec.js",
+         "  .env",
+         "  .env.example",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "codigo": "name: Playwright Tests\non:\n  push:\n    branches: [ main, master ]\n  pull_request:\n    branches: [ main, master ]\njobs:\n  test:\n    timeout-minutes: 60\n    runs-on: ubuntu-latest\n    steps:\n    - uses: actions/checkout@v4\n    - uses: actions/setup-node@v4\n      with:\n        node-version: lts/*\n    - name: Install dependencies\n      run: npm ci\n    - name: Install Playwright Browsers\n      run: npx playwright install --with-deps\n    - name: Run Playwright tests\n      run: npx playwright test\n      env:\n        SAUCE_USER: ${{ secrets.SAUCE_USER }}\n        SAUCE_PASSWORD: ${{ secrets.SAUCE_PASSWORD }}\n    - uses: actions/upload-artifact@v4\n      if: ${{ !cancelled() }}\n      with:\n        name: playwright-report\n        path: playwright-report/\n        retention-days: 30",
+        "legenda": "env: os segredos entregues aos testes",
+        "fonte": 22,
+        "digitar": true,
+        "digitar_de": 22,
+        "digitar_ate": 24,
+        "rolar": true,
+        "rolar_de": 0.6,
+        "rolar_dur": 0.9
+       }
+      },
+      {
+       "text": "Manda pro GitHub com git push e abre a aba Actions: olha os testes rodando lá.",
+       "scene": {
+        "type": "gh_actions",
+        "usuario": "voce",
+        "repo": "meu-primeiro-playwright",
+        "workflow": "Playwright Tests",
+        "commit": "testes no GitHub Actions",
+        "inicio_em": 1.0,
+        "legenda": "Os testes rodando no GitHub"
+       }
+      },
+      {
+       "text": "Verde: passou. E no fim tem o relatório pra baixar, porque esse arquivo tem o passo que guarda ele.",
+       "scene": {
+        "type": "gh_actions",
+        "usuario": "voce",
+        "repo": "meu-primeiro-playwright",
+        "workflow": "Playwright Tests",
+        "commit": "testes no GitHub Actions",
+        "pronto": true,
+        "status": "ok",
+        "artefato": "playwright-report",
+        "legenda": "Passou · o relatório pra baixar"
+       }
+      },
+      {
+       "text": "Fechamos o projeto! Tem bônus: testes de API.",
+       "scene": {
+        "type": "passo",
+        "icone": "▶",
+        "titulo": "Próximo módulo",
+        "sub": "Bônus: testes de API"
+       }
+      },
+      {
+       "text": "Te vejo lá!",
+       "scene": {
+        "type": "endcard",
+        "sub": "PRÓXIMA: MÓDULO 10 · API"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "shorts": [],
+  "tiktoks": []
+ }
+}

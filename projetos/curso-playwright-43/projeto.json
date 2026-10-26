@@ -1,0 +1,338 @@
+{
+ "title": "Playwright para leigos · Aula 43",
+ "slug": "curso-playwright-43",
+ "idioma": "pt",
+ "destino": "curso",
+ "marca": [
+  "PLAYWRIGHT",
+  "PARA LEIGOS"
+ ],
+ "cor_fundo": "#3fd68a",
+ "sem_legenda": true,
+ "legenda_y": 0.93,
+ "selo": "MÓDULO 9 · AULA 43",
+ "voz": {
+  "nome": "gravada",
+  "motor": "eleven",
+  "eleven_voz": "Vinícius Torales"
+ },
+ "serie": [],
+ "meta": {
+  "titles": [
+   "Aula 43: Git - salvando o projeto"
+  ],
+  "description": "",
+  "tags": []
+ },
+ "notes": "Curso Playwright para leigos. Não publica (destino: curso). Roteiro em curso-playwright/roteiros/.",
+ "script": {
+  "long": {
+   "parts": [
+    {
+     "chapter": "",
+     "sentences": [
+      {
+       "text": "O Git é um programa que guarda versões do seu projeto. Como pontos de salvamento num jogo.",
+       "scene": {
+        "type": "cards",
+        "titulo": "GIT",
+        "itens": [
+         [
+          "💾",
+          "Pontos de salvamento",
+          "cada salvamento é um commit"
+         ],
+         [
+          "↺",
+          "Voltar no tempo",
+          "se algo quebrar",
+          "#69a7ff"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "No terminal do VS Code: git init. Init é iniciar: comece a guardar as versões desta pasta.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "compra.spec.js",
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  pages/",
+         "    CheckoutPage.js",
+         "    LoginPage.js",
+         "    ProdutosPage.js",
+         "  tests/",
+         "    auth.setup.js",
+         "    compra.spec.js",
+         "    login.spec.js",
+         "    usuarios.spec.js",
+         "  .env",
+         "  .env.example",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "codigo": "import { test, expect } from '@playwright/test';\nimport { ProdutosPage } from '../pages/ProdutosPage';\nimport { CheckoutPage } from '../pages/CheckoutPage';\n\ntest.use({ storageState: 'playwright/.auth/usuario.json' });\n\ntest('compra uma mochila do começo ao fim', async ({ page }) => {\n  const produtos = new ProdutosPage(page);\n  const checkout = new CheckoutPage(page);\n",
+        "legenda": "init = iniciar",
+        "fonte": 26,
+        "digitar": false,
+        "terminal": [
+         {
+          "cmd": "git init",
+          "em": 0.05
+         },
+         {
+          "out": "Initialized empty Git repository in",
+          "cor": "mut",
+          "em": 0.49
+         },
+         {
+          "out": "C:/Users/voce/Documents/meu-primeiro-playwright/.git/",
+          "cor": "mut",
+          "em": 0.53
+         }
+        ],
+        "colinha": true,
+        "colinha_em": 1.2
+       }
+      },
+      {
+       "text": "Depois: git add ponto. Add é adicionar, e o ponto quer dizer tudo: prepare todos os arquivos pro próximo salvamento.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "compra.spec.js",
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  pages/",
+         "    CheckoutPage.js",
+         "    LoginPage.js",
+         "    ProdutosPage.js",
+         "  tests/",
+         "    auth.setup.js",
+         "    compra.spec.js",
+         "    login.spec.js",
+         "    usuarios.spec.js",
+         "  .env",
+         "  .env.example",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "codigo": "import { test, expect } from '@playwright/test';\nimport { ProdutosPage } from '../pages/ProdutosPage';\nimport { CheckoutPage } from '../pages/CheckoutPage';\n\ntest.use({ storageState: 'playwright/.auth/usuario.json' });\n\ntest('compra uma mochila do começo ao fim', async ({ page }) => {\n  const produtos = new ProdutosPage(page);\n  const checkout = new CheckoutPage(page);\n",
+        "legenda": "add . = prepare tudo",
+        "fonte": 26,
+        "digitar": false,
+        "terminal": [
+         {
+          "cmd": "git add .",
+          "em": 0.05
+         }
+        ]
+       }
+      },
+      {
+       "text": "Repara que o node modules, o ponto env e a pasta do login salvo não entram: o gitignore está fazendo o trabalho dele.",
+       "scene": {
+        "type": "terminal",
+        "titulo": "Terminal — VS Code",
+        "pasta": "C:\\Users\\voce\\Documents\\meu-primeiro-playwright",
+        "linhas": [
+         {
+          "cmd": "git status",
+          "ja": true
+         },
+         {
+          "out": "Changes to be committed:",
+          "cor": "txt",
+          "ja": true
+         },
+         {
+          "out": "  new file:   .env.example",
+          "cor": "ac",
+          "ja": true
+         },
+         {
+          "out": "  new file:   .github/workflows/playwright.yml",
+          "cor": "ac",
+          "ja": true
+         },
+         {
+          "out": "  new file:   .gitignore",
+          "cor": "ac",
+          "ja": true
+         },
+         {
+          "out": "  new file:   package-lock.json",
+          "cor": "ac",
+          "ja": true
+         },
+         {
+          "out": "  new file:   package.json",
+          "cor": "ac",
+          "ja": true
+         },
+         {
+          "out": "  new file:   pages/CheckoutPage.js",
+          "cor": "ac",
+          "ja": true
+         },
+         {
+          "out": "  new file:   pages/LoginPage.js",
+          "cor": "ac",
+          "ja": true
+         },
+         {
+          "out": "  new file:   pages/ProdutosPage.js",
+          "cor": "ac",
+          "ja": true
+         },
+         {
+          "out": "  new file:   playwright.config.js",
+          "cor": "ac",
+          "ja": true
+         },
+         {
+          "out": "  new file:   tests/auth.setup.js",
+          "cor": "ac",
+          "ja": true
+         },
+         {
+          "out": "  new file:   tests/compra.spec.js",
+          "cor": "ac",
+          "ja": true
+         },
+         {
+          "out": "  new file:   tests/login.spec.js",
+          "cor": "ac",
+          "ja": true
+         },
+         {
+          "out": "  new file:   tests/usuarios.spec.js",
+          "cor": "ac",
+          "ja": true
+         }
+        ],
+        "legenda": "Nem node_modules, nem .env, nem o login salvo",
+        "compacto": true,
+        "fonte": 24,
+        "fonte_min": 22
+       }
+      },
+      {
+       "text": "E: git commit traço m, e uma mensagem entre aspas, tipo meu primeiro projeto Playwright. Commit é o salvamento, e o traço m é a mensagem dele.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "compra.spec.js",
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  pages/",
+         "    CheckoutPage.js",
+         "    LoginPage.js",
+         "    ProdutosPage.js",
+         "  tests/",
+         "    auth.setup.js",
+         "    compra.spec.js",
+         "    login.spec.js",
+         "    usuarios.spec.js",
+         "  .env",
+         "  .env.example",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "codigo": "import { test, expect } from '@playwright/test';\nimport { ProdutosPage } from '../pages/ProdutosPage';\nimport { CheckoutPage } from '../pages/CheckoutPage';\n\ntest.use({ storageState: 'playwright/.auth/usuario.json' });\n\ntest('compra uma mochila do começo ao fim', async ({ page }) => {\n  const produtos = new ProdutosPage(page);\n  const checkout = new CheckoutPage(page);\n",
+        "legenda": "commit = o salvamento · -m = a mensagem",
+        "fonte": 26,
+        "digitar": false,
+        "terminal": [
+         {
+          "cmd": "git commit -m \"meu primeiro projeto Playwright\"",
+          "em": 0.05
+         },
+         {
+          "out": "[master (root-commit) 24d5d51] meu primeiro projeto Playwright",
+          "cor": "ac",
+          "em": 0.49
+         },
+         {
+          "out": " 13 files changed, 324 insertions(+)",
+          "cor": "mut",
+          "em": 0.53
+         }
+        ]
+       }
+      },
+      {
+       "text": "Se for a primeira vez que você usa o Git, ele pode pedir seu nome e seu e-mail. São dois comandos: git config traço traço global user ponto name, e user ponto email. Depois roda o commit de novo.",
+       "scene": {
+        "type": "terminal",
+        "titulo": "Terminal — VS Code",
+        "pasta": "C:\\Users\\voce\\Documents\\meu-primeiro-playwright",
+        "linhas": [
+         {
+          "cmd": "git commit -m \"meu primeiro projeto Playwright\"",
+          "ja": true
+         },
+         {
+          "out": "Author identity unknown",
+          "cor": "#ff6b6b",
+          "ja": true
+         },
+         {
+          "out": "*** Please tell me who you are.",
+          "cor": "#ff6b6b",
+          "ja": true
+         },
+         {
+          "cmd": "git config --global user.name \"Seu Nome\""
+         },
+         {
+          "cmd": "git config --global user.email \"voce@email.com\""
+         },
+         {
+          "cmd": "git commit -m \"meu primeiro projeto Playwright\""
+         },
+         {
+          "out": "[master (root-commit) 24d5d51] meu primeiro projeto Playwright",
+          "cor": "ac"
+         }
+        ],
+        "legenda": "Primeira vez? Seu nome e seu e-mail",
+        "fonte": 30,
+        "fonte_min": 24
+       }
+      },
+      {
+       "text": "Pronto: o seu projeto tem o primeiro ponto de salvamento. Na próxima aula, ele vai pro GitHub.",
+       "scene": {
+        "type": "passo",
+        "icone": "▶",
+        "titulo": "Próxima aula",
+        "sub": "GitHub: enviando o projeto"
+       }
+      },
+      {
+       "text": "Te vejo lá!",
+       "scene": {
+        "type": "endcard",
+        "sub": "PRÓXIMA: GITHUB"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "shorts": [],
+  "tiktoks": []
+ }
+}

@@ -1,0 +1,274 @@
+{
+ "title": "Playwright para leigos · Aula 44",
+ "slug": "curso-playwright-44",
+ "idioma": "pt",
+ "destino": "curso",
+ "marca": [
+  "PLAYWRIGHT",
+  "PARA LEIGOS"
+ ],
+ "cor_fundo": "#3fd68a",
+ "sem_legenda": true,
+ "legenda_y": 0.93,
+ "selo": "MÓDULO 9 · AULA 44",
+ "voz": {
+  "nome": "gravada",
+  "motor": "eleven",
+  "eleven_voz": "Vinícius Torales"
+ },
+ "serie": [],
+ "meta": {
+  "titles": [
+   "Aula 44: GitHub - enviando o projeto"
+  ],
+  "description": "",
+  "tags": []
+ },
+ "notes": "Curso Playwright para leigos. Não publica (destino: curso). Roteiro em curso-playwright/roteiros/.",
+ "script": {
+  "long": {
+   "parts": [
+    {
+     "chapter": "",
+     "sentences": [
+      {
+       "text": "O GitHub é um site que guarda projetos Git na internet. É a vitrine de quem trabalha com tecnologia.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "AULA 44",
+          "muted",
+          80
+         ],
+         [
+          "GITHUB",
+          "gold",
+          200
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Cria uma conta no github ponto com, se ainda não tiver. Depois clica em New repository, dá o nome e cria, sem marcar nenhuma opção.",
+       "scene": {
+        "type": "github",
+        "usuario": "voce",
+        "repo": "meu-primeiro-playwright",
+        "tela": "novo",
+        "opcoes_em": 5.0,
+        "legenda": "New repository · sem marcar nenhuma opção"
+       }
+      },
+      {
+       "text": "O GitHub mostra os comandos. No terminal: git branch traço M main. Dá o nome main pro ramo principal.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "compra.spec.js",
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  pages/",
+         "    CheckoutPage.js",
+         "    LoginPage.js",
+         "    ProdutosPage.js",
+         "  tests/",
+         "    auth.setup.js",
+         "    compra.spec.js",
+         "    login.spec.js",
+         "    usuarios.spec.js",
+         "  .env",
+         "  .env.example",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "codigo": "import { test, expect } from '@playwright/test';\nimport { ProdutosPage } from '../pages/ProdutosPage';\nimport { CheckoutPage } from '../pages/CheckoutPage';\n\ntest.use({ storageState: 'playwright/.auth/usuario.json' });\n\ntest('compra uma mochila do começo ao fim', async ({ page }) => {\n  const produtos = new ProdutosPage(page);\n  const checkout = new CheckoutPage(page);\n",
+        "legenda": "branch -M main = o ramo principal se chama main",
+        "fonte": 26,
+        "digitar": false,
+        "terminal": [
+         {
+          "cmd": "git branch -M main",
+          "em": 0.05
+         }
+        ]
+       }
+      },
+      {
+       "text": "Depois: git remote add origin, e o endereço do seu repositório. Remote é remoto: avise o Git que existe uma cópia lá no GitHub, chamada origin.",
+       "scene": {
+        "type": "github",
+        "usuario": "voce",
+        "repo": "meu-primeiro-playwright",
+        "tela": "setup",
+        "url_em": 1.0,
+        "cmd_em": 4.0,
+        "legenda": "remote = remoto: a cópia lá no GitHub"
+       }
+      },
+      {
+       "text": "E o envio: git push traço u origin main. Push é empurrar: mande o projeto pro GitHub. O traço u liga a sua main com a main de lá, e nas próximas vezes basta git push.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "compra.spec.js",
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  pages/",
+         "    CheckoutPage.js",
+         "    LoginPage.js",
+         "    ProdutosPage.js",
+         "  tests/",
+         "    auth.setup.js",
+         "    compra.spec.js",
+         "    login.spec.js",
+         "    usuarios.spec.js",
+         "  .env",
+         "  .env.example",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "codigo": "import { test, expect } from '@playwright/test';\nimport { ProdutosPage } from '../pages/ProdutosPage';\nimport { CheckoutPage } from '../pages/CheckoutPage';\n\ntest.use({ storageState: 'playwright/.auth/usuario.json' });\n\ntest('compra uma mochila do começo ao fim', async ({ page }) => {\n  const produtos = new ProdutosPage(page);\n  const checkout = new CheckoutPage(page);\n",
+        "legenda": "push = empurrar · -u = liga com a main de lá",
+        "fonte": 26,
+        "digitar": false,
+        "terminal": [
+         {
+          "cmd": "git remote add origin https://github.com/voce/meu-primeiro-playwright.git",
+          "ja": true,
+          "em": 0.05
+         },
+         {
+          "cmd": "git push -u origin main",
+          "em": 0.05
+         },
+         {
+          "out": "To https://github.com/voce/meu-primeiro-playwright.git",
+          "cor": "mut",
+          "em": 0.53
+         },
+         {
+          "out": " * [new branch]      main -> main",
+          "cor": "ac",
+          "em": 0.5700000000000001
+         },
+         {
+          "out": "branch 'main' set up to track 'origin/main'.",
+          "cor": "mut",
+          "em": 0.61
+         }
+        ]
+       }
+      },
+      {
+       "text": "Na primeira vez, o Git pode abrir o navegador pra você entrar na sua conta do GitHub. É normal: faz o login e volta pro terminal.",
+       "scene": {
+        "type": "cards",
+        "itens": [
+         [
+          "🌐",
+          "Abre o navegador",
+          "na primeira vez"
+         ],
+         [
+          "🔑",
+          "Você entra na conta",
+          "é normal",
+          "#69a7ff"
+         ],
+         [
+          "↩",
+          "Volta pro terminal",
+          "o envio continua",
+          "#ffd23f"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Atualiza a página do GitHub: seu projeto está lá. E repara: nem o ponto env, nem a pasta do login salvo subiram.",
+       "scene": {
+        "type": "github",
+        "usuario": "voce",
+        "repo": "meu-primeiro-playwright",
+        "tela": "repo",
+        "arquivos": [
+         [
+          ".github",
+          true,
+          "meu primeiro projeto Playwright"
+         ],
+         [
+          "pages",
+          true,
+          "meu primeiro projeto Playwright"
+         ],
+         [
+          "tests",
+          true,
+          "meu primeiro projeto Playwright"
+         ],
+         [
+          ".env.example",
+          false,
+          "meu primeiro projeto Playwright"
+         ],
+         [
+          ".gitignore",
+          false,
+          "meu primeiro projeto Playwright"
+         ],
+         [
+          "package-lock.json",
+          false,
+          "meu primeiro projeto Playwright"
+         ],
+         [
+          "package.json",
+          false,
+          "meu primeiro projeto Playwright"
+         ],
+         [
+          "playwright.config.js",
+          false,
+          "meu primeiro projeto Playwright"
+         ]
+        ],
+        "commit": "meu primeiro projeto Playwright",
+        "foco_em": 2.0,
+        "foco_item": 3,
+        "foco_rotulo": "← o .env não subiu",
+        "url_em": 99
+       }
+      },
+      {
+       "text": "Na próxima aula: os testes rodando sozinhos no GitHub.",
+       "scene": {
+        "type": "passo",
+        "icone": "▶",
+        "titulo": "Próxima aula",
+        "sub": "GitHub Actions"
+       }
+      },
+      {
+       "text": "Te vejo lá!",
+       "scene": {
+        "type": "endcard",
+        "sub": "PRÓXIMA: GITHUB ACTIONS"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "shorts": [],
+  "tiktoks": []
+ }
+}

@@ -186,7 +186,7 @@
       if (l.cmd !== undefined && pr.length + l.cmd.length > cap) { let r = l.cmd, first = true; while (r.length) { let n = first ? cap - pr.length : cap; if (r.length > n) { const cut = Math.max(r.lastIndexOf(" ", n - 1), r.lastIndexOf("/", n - 1)); if (cut > n * 0.5) n = cut + 1; } L.push({ cmd: r.slice(0, n), cont: !first, ja: l.ja }); r = r.slice(n); first = false; } }
       else if (l.out !== undefined && l.out.length > cap) { for (let i = 0; i < l.out.length; i += cap) L.push(Object.assign({}, l, { out: l.out.slice(i, i + cap) })); }
       else L.push(l); });
-    const lh = Math.max(fs * 1.6, 40 * u); let yy = top + 56 * u;
+    const lh = s.compacto ? Math.max(fs * 1.4, 32 * u) : Math.max(fs * 1.6, 40 * u); let yy = top + (s.compacto ? 44 : 56) * u;  /* compacto: listas longas (git status) cabem inteiras */
     // linhas com ja:true já estavam na tela na cena anterior: aparecem prontas, sem digitar de novo
     const nPassos = L.filter((l) => !l.ja && l.cmd !== undefined && !l.cont).length + L.filter((l) => !l.ja && l.out !== undefined).length * 0.35 + L.filter((l) => !l.ja && l.cont).length * 0.6;
     const passo = Math.max(0.6, (dur * (s.vel || 0.75) - 0.5) / Math.max(nPassos, 1)); let tt = t - 0.5;
@@ -786,6 +786,27 @@
         if (t > tCr - 0.6) { ctx.save(); ctx.globalAlpha = easeOut((t - tCr + 0.6) / 0.3); ctx.strokeStyle = C.yel; ctx.lineWidth = 5 * u; rr(ctx, bx - 8 * u, by - 8 * u, bw + 16 * u, 70 * u, 12 * u); ctx.stroke(); ctx.restore(); }
         pts.push([bx + bw * 0.55, by + 30 * u, tCr]);
       }
+    } else if (modo === "secrets") {  // Settings › Secrets and variables › Actions: os segredos do repositório
+      let yy = body + 28 * u; const fx = x + 60 * u;
+      let tx0 = fx; ["<> Code", "Issues", "Pull requests", "Actions", "Settings"].forEach((n, i) => { const on = n === "Settings"; txt(ctx, n, font(on ? 700 : 500, 22 * u), tx0, yy, on ? G.tx : G.mu, "left", a); const w = tw(ctx, n, font(700, 22 * u));
+        if (on) { ctx.save(); ctx.globalAlpha = a; ctx.fillStyle = "#f78166"; ctx.fillRect(tx0 - 6 * u, yy + 22 * u, w + 12 * u, 3 * u); ctx.restore(); pts.push([tx0 + w / 2, yy, s.clique_em || 0.8]); } tx0 += w + 50 * u; });
+      yy += 60 * u; const sw = 330 * u; const kS = easeOut((t - (s.menu_em || 1.6)) / 0.3);
+      ["General", "Collaborators", "Branches", "Actions", "Secrets and variables", "    Actions", "    Codespaces", "Pages"].forEach((n, i) => { const sel = i === 5; const yi = yy + i * 46 * u;
+        if (sel && kS > 0) { ctx.save(); ctx.globalAlpha = a * kS; ctx.fillStyle = "#1f2937"; rr(ctx, fx - 10 * u, yi - 20 * u, sw, 40 * u, 6 * u); ctx.fill(); ctx.fillStyle = "#1f6feb"; ctx.fillRect(fx - 10 * u, yi - 20 * u, 4 * u, 40 * u); ctx.restore(); pts.push([fx + 120 * u, yi, (s.menu_em || 1.6) - 0.1]); }
+        txt(ctx, n.trim(), font(sel || i === 4 ? 700 : 500, 21 * u), fx + (n.startsWith(" ") ? 30 * u : 0), yi, G.tx, "left", a); });
+      const mx = fx + sw + 40 * u, mw = x + W - 60 * u - mx; let my = yy - 6 * u;
+      txt(ctx, "Actions secrets and variables", font(800, 30 * u), mx, my, G.tx, "left", a * kS); my += 50 * u;
+      txt(ctx, "Secrets are encrypted and are used for sensitive data.", font(500, 20 * u), mx, my, G.mu, "left", a * kS); my += 54 * u;
+      const tB = s.botao_em || 2.6; const bw = 290 * u; ctx.save(); ctx.globalAlpha = a * kS; rr(ctx, mx + mw - bw, my - 26 * u, bw, 50 * u, 8 * u); ctx.fillStyle = G.ok; ctx.fill();
+      if (t > tB - 0.5 && t < tB + 1.0) { ctx.strokeStyle = C.yel; ctx.lineWidth = 5 * u; ctx.stroke(); } ctx.restore(); txt(ctx, "New repository secret", font(700, 21 * u), mx + mw - bw / 2, my, "#fff", "center", a * kS);
+      pts.push([mx + mw - bw / 2, my + 4 * u, tB]);
+      txt(ctx, "Repository secrets", font(800, 24 * u), mx, my, G.tx, "left", a * kS); my += 50 * u;
+      const sec = s.segredos || ["SAUCE_USER", "SAUCE_PASSWORD"]; const t0 = tB + 1.0; const passoS = Math.max(1.0, (dur * 0.85 - t0) / Math.max(1, sec.length));
+      ctx.save(); ctx.globalAlpha = a * kS; rr(ctx, mx, my - 24 * u, mw, 50 * u * (sec.length + 0.2), 8 * u); ctx.strokeStyle = G.bd; ctx.lineWidth = 2 * u; ctx.stroke(); ctx.restore();
+      sec.forEach((nm, i) => { const k = easeOut((t - t0 - i * passoS) / 0.35); if (k <= 0) return; const yi = my + i * 50 * u;
+        txt(ctx, "🔒  " + nm, font(700, 22 * u, MONO), mx + 20 * u, yi, G.tx, "left", a * k); txt(ctx, "Updated now", font(500, 19 * u), mx + mw - 120 * u, yi, G.mu, "right", a * k); txt(ctx, "✎  🗑", font(500, 20 * u), mx + mw - 20 * u, yi, G.mu, "right", a * k);
+        if (i < sec.length - 1) { ctx.save(); ctx.globalAlpha = a * k; ctx.fillStyle = G.bd; ctx.fillRect(mx, yi + 25 * u, mw, 1.5 * u); ctx.restore(); } });
+      if (s.aviso) txt(ctx, s.aviso, font(800, 22 * u), mx, my + sec.length * 50 * u + 30 * u, C.yel, "left", a * easeOut((t - t0 - sec.length * passoS) / 0.4));
     } else if (modo === "signup") {
       const fx = c.cx - 330 * u; let yy = body + 70 * u;
       txt(ctx, "Welcome to GitHub!", font(800, 38 * u), fx, yy, G.tx, "left", a); yy += 40 * u;
@@ -816,7 +837,7 @@
       cmds.forEach((cm, i) => txt(ctx, cm, font(600, 23 * u, MONO), fx + 26 * u, yy + 36 * u + i * 40 * u, G.tx, "left", a));
       const cpx = fx + fw - 50 * u, cpy = yy + 36 * u; ctx.save(); ctx.globalAlpha = a; rr(ctx, cpx - 24 * u, cpy - 20 * u, 48 * u, 40 * u, 6 * u); ctx.strokeStyle = G.bd; ctx.lineWidth = 2 * u; ctx.stroke(); ctx.restore(); txt(ctx, "⧉", font(700, 26 * u), cpx, cpy, G.tx, "center", a);
       const k2 = easeOut((t - (s.cmd_em || dur * 0.55)) / 0.3); if (k2 > 0) { ctx.save(); ctx.globalAlpha = k2; ctx.strokeStyle = C.yel; ctx.lineWidth = 5 * u; rr(ctx, fx - 8 * u, yy - 8 * u, fw + 16 * u, 166 * u, 12 * u); ctx.stroke(); ctx.restore(); pts.push([cpx, cpy, (s.cmd_em || dur * 0.55) + 0.9]); }
-      const kc = easeOut((t - (s.cmd_em || dur * 0.55) - 1.0) / 0.2); if (kc > 0) txt(ctx, global.CO_IDIOMA === "en" ? "Copied!" : "Copiado!", font(800, 22 * u), cpx - 40 * u, cpy - 40 * u, "#3fb950", "right", kc);
+      const kc = easeOut((t - (s.cmd_em || dur * 0.55) - 1.0) / 0.2); if (kc > 0) txt(ctx, global.CO_IDIOMA === "en" ? "Copied!" : "Copiado!", font(800, 22 * u), cpx - 40 * u, cpy, "#3fb950", "right", kc);
     } else {
       let yy = body + 50 * u; const fx = x + 60 * u, fw = W - 120 * u;
       let tx0 = fx; ["<> Code", "Issues", "Pull requests", "Actions", "Settings"].forEach((n, i) => { txt(ctx, n, font(i ? 500 : 700, 22 * u), tx0, yy - 22 * u, i ? G.mu : G.tx, "left", a); tx0 += tw(ctx, n, font(700, 22 * u)) + 50 * u;
@@ -828,10 +849,10 @@
       ctx.save(); ctx.globalAlpha = a; rr(ctx, fx, yy - 22 * u, 140 * u, 44 * u, 8 * u); ctx.fillStyle = "#21262d"; ctx.fill(); rr(ctx, fx + fw - 150 * u, yy - 22 * u, 150 * u, 44 * u, 8 * u); ctx.fillStyle = G.ok; ctx.fill(); ctx.restore();
       txt(ctx, "⑂ main ▾", font(600, 21 * u), fx + 70 * u, yy, G.tx, "center", a); txt(ctx, "<> Code ▾", font(700, 21 * u), fx + fw - 75 * u, yy, "#fff", "center", a);
       yy += 44 * u; const arqs = s.arquivos || [["cypress", true, "meu primeiro teste automatizado"], [".gitignore", false, "meu primeiro teste automatizado"], ["cypress.config.js", false, "meu primeiro teste automatizado"], ["package-lock.json", false, "meu primeiro teste automatizado"], ["package.json", false, "meu primeiro teste automatizado"]];
-      const rh = 50 * u; const th = rh * (arqs.length + 1);
+      const rh = Math.min(50 * u, (y + H - yy - 20 * u) / (arqs.length + 1)); const th = rh * (arqs.length + 1);  /* muitos arquivos: linhas mais baixas, a tabela cabe na janela */
       ctx.save(); ctx.globalAlpha = a; rr(ctx, fx, yy, fw, th, 10 * u); ctx.strokeStyle = G.bd; ctx.lineWidth = 2 * u; ctx.stroke(); ctx.fillStyle = "#161b22"; rr(ctx, fx, yy, fw, rh, 10 * u); ctx.fill(); ctx.restore();
       ctx.save(); ctx.globalAlpha = a; ctx.beginPath(); ctx.arc(fx + 34 * u, yy + rh / 2, 13 * u, 0, 7); ctx.fillStyle = "#6e40c9"; ctx.fill(); ctx.restore();
-      txt(ctx, us, font(700, 21 * u), fx + 60 * u, yy + rh / 2, G.tx, "left", a); txt(ctx, "meu primeiro teste automatizado", font(500, 21 * u), fx + 70 * u + tw(ctx, us, font(700, 21 * u)), yy + rh / 2, G.mu, "left", a);
+      txt(ctx, us, font(700, 21 * u), fx + 60 * u, yy + rh / 2, G.tx, "left", a); txt(ctx, s.commit || "meu primeiro teste automatizado", font(500, 21 * u), fx + 70 * u + tw(ctx, us, font(700, 21 * u)), yy + rh / 2, G.mu, "left", a);
       txt(ctx, "🕓 1 Commit", font(600, 20 * u), fx + fw - 24 * u, yy + rh / 2, G.tx, "right", a);
       const kfoc = easeOut((t - (s.foco_em || dur * 0.35)) / 0.35);
       arqs.forEach(([n, dir, msg], i) => { const ry = yy + rh * (i + 1); const ka = easeOut((t - 0.5 - i * 0.12) / 0.3) * a;
@@ -839,8 +860,8 @@
         if (dir) pastaIcone(ctx, fx + 22 * u, ry + 12 * u, 30 * u, ka, "#7d8590"); else { ctx.save(); ctx.globalAlpha = ka; ctx.strokeStyle = G.mu; ctx.lineWidth = 2 * u; rr(ctx, fx + 27 * u, ry + 13 * u, 20 * u, 25 * u, 3 * u); ctx.stroke(); ctx.restore(); }
         txt(ctx, n, font(500, 22 * u), fx + 70 * u, ry + rh / 2, G.tx, "left", ka); txt(ctx, msg, font(500, 20 * u), fx + fw * 0.42, ry + rh / 2, G.mu, "left", ka);
         txt(ctx, "now", font(500, 20 * u), fx + fw - 24 * u, ry + rh / 2, G.mu, "right", ka);
-        if (dir && kfoc > 0) { ctx.save(); ctx.globalAlpha = kfoc * (1 - kU); ctx.strokeStyle = C.yel; ctx.lineWidth = 4 * u; rr(ctx, fx + 6 * u, ry + 4 * u, fw - 12 * u, rh - 8 * u, 8 * u); ctx.stroke(); ctx.restore();
-          txt(ctx, "← seus testes", font(800, 22 * u), fx + 90 * u + tw(ctx, n, font(500, 22 * u)), ry + rh / 2, C.yel, "left", kfoc * (1 - kU)); } });
+        if ((s.foco_item !== undefined ? i === s.foco_item : dir) && kfoc > 0) { ctx.save(); ctx.globalAlpha = kfoc * (1 - kU); ctx.strokeStyle = C.yel; ctx.lineWidth = 4 * u; rr(ctx, fx + 6 * u, ry + 4 * u, fw - 12 * u, rh - 8 * u, 8 * u); ctx.stroke(); ctx.restore();
+          txt(ctx, s.foco_rotulo || "← seus testes", font(800, 22 * u), fx + 90 * u + tw(ctx, n, font(500, 22 * u)), ry + rh / 2, C.yel, "left", kfoc * (1 - kU)); } });
     }
     rota(ctx, u, pts, t);
     legenda(ctx, c, t, s);
