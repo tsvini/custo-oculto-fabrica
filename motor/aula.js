@@ -1041,7 +1041,7 @@
     const u = c.u; const a = easeOut(t / 0.4); const W = 1720 * u, H = 760 * u; const x = c.cx - W / 2, y = topo(c, H);
     const top = janela(ctx, x, y, W, H, u, "Playwright Test", a, PW.bg);
     const LW = 470 * u, MW = 430 * u; const A = s.passos_pw || (s.acoes || []).filter(Array.isArray); const tm = pwTempo(s, dur, A.length);
-    const feitos = s.pronto ? A.length : clamp((t - tm.t0) / tm.passo, 0, A.length); const fim = s.pronto || t >= tm.fim; const falha = s.status === "falhou";
+    const feitos = s.parado ? 0 : s.pronto ? A.length : clamp((t - tm.t0) / tm.passo, 0, A.length); const fim = !s.parado && (s.pronto || t >= tm.fim);  /* parado: a janela aberta, nada rodando */ const falha = s.status === "falhou";
     // painel de testes
     ctx.save(); ctx.globalAlpha = a; ctx.fillStyle = PW.pan; ctx.fillRect(x, top, LW, y + H - top); ctx.fillStyle = PW.bd; ctx.fillRect(x + LW, top, 2 * u, y + H - top); ctx.restore();
     txt(ctx, "TESTS", font(800, 20 * u), x + 24 * u, top + 34 * u, PW.mut, "left", a);
@@ -1082,6 +1082,10 @@
     if (fim && (s.selo_status !== false)) { const ka = easeOut((t - tm.fim) / 0.35) * (s.pronto ? 1 : 1); const lab = falha ? "FALHOU" : "PASSOU"; const f = font(900, 36 * u); const bw = tw(ctx, lab, f) + 60 * u;
       ctx.save(); ctx.globalAlpha = ka; rr(ctx, x + W - bw - 30 * u, y + H - 92 * u, bw, 62 * u, 31 * u); ctx.fillStyle = falha ? C.red : C.ac; ctx.fill(); ctx.restore(); txt(ctx, lab, f, x + W - bw / 2 - 30 * u, y + H - 61 * u, "#0b1a12", "center", ka); }
     if (s.clique !== false && alvo && !s.pronto) rota(ctx, u, [[alvo[0], alvo[1], tm.t0 - 0.1]], t);
+    // foco: escurece a janela toda menos um painel (testes, acoes ou pagina), pra explicar uma parte de cada vez
+    if (s.foco) { const kf = easeOut((t - (s.foco_em === undefined ? 0.6 : s.foco_em)) / 0.4); const R = { testes: [x, top, LW, y + H - top], acoes: [mx, top, MW, y + H - top], pagina: [sx, top, x + W - sx, y + H - top] }[s.foco];
+      if (R && kf > 0) { ctx.save(); ctx.globalAlpha = 0.62 * kf; ctx.fillStyle = "#000"; ctx.beginPath(); ctx.rect(x, top, W, y + H - top); ctx.rect(R[0] + R[2], R[1], -R[2], R[3]); ctx.fill("evenodd"); ctx.restore();
+        ctx.save(); ctx.globalAlpha = kf; ctx.strokeStyle = C.yel; ctx.lineWidth = 4 * u; ctx.strokeRect(R[0] + 2 * u, R[1] + 2 * u, R[2] - 4 * u, R[3] - 4 * u); ctx.restore(); } }
     legenda(ctx, c, t, s);
   };
 
@@ -1116,6 +1120,11 @@
       L.slice(ini, ini + 4).forEach((l, i) => { const n = ini + i + 1; if (n === ln) { ctx.save(); ctx.globalAlpha = a * ka * 0.6; ctx.fillStyle = s.falhou ? "rgba(248,81,73,.35)" : PW.sel; ctx.fillRect(sx, by + 92 * u + i * 34 * u - 17 * u, sw, 34 * u); ctx.restore(); }
         txt(ctx, String(n), font(500, 19 * u, MONO), sx + 50 * u, by + 92 * u + i * 34 * u, PW.mut, "right", a); let xx = sx + 70 * u; for (const [tk, cor] of tokens(l)) { txt(ctx, tk, font(500, 20 * u, MONO), xx, by + 92 * u + i * 34 * u, cor, "left", a); xx += tw(ctx, tk, font(500, 20 * u, MONO)); } }); }
     else { const ac = A[sel] || ["", ""]; [["action", ac[0]], ["locator", ac[1] || "—"], ["duration", ac[2] || "120ms"]].forEach(([k, v], i) => { txt(ctx, k, font(600, 20 * u), sx + 28 * u, by + 92 * u + i * 38 * u, PW.mut, "left", a * ka); txt(ctx, v, font(600, 20 * u, MONO), sx + 170 * u, by + 92 * u + i * 38 * u, PW.tx, "left", a * ka); }); }
+    // foco: escurece tudo menos uma parte (filme, acoes, pagina ou detalhes)
+    if (s.foco) { const kf = easeOut((t - (s.foco_em === undefined ? 0.6 : s.foco_em)) / 0.4); const FH = 84 * u;
+      const R = { acoes: [x, top, LW, y + H - top], filme: [sx, top, sw, FH], pagina: [sx, top + FH, sw, sh - FH], detalhes: [sx, by, sw, bh] }[s.foco];
+      if (R && kf > 0) { ctx.save(); ctx.globalAlpha = 0.62 * kf; ctx.fillStyle = "#000"; ctx.beginPath(); ctx.rect(x, top, W, y + H - top); ctx.rect(R[0] + R[2], R[1], -R[2], R[3]); ctx.fill("evenodd"); ctx.restore();
+        ctx.save(); ctx.globalAlpha = kf; ctx.strokeStyle = C.yel; ctx.lineWidth = 4 * u; ctx.strokeRect(R[0] + 2 * u, R[1] + 2 * u, R[2] - 4 * u, R[3] - 4 * u); ctx.restore(); } }
     legenda(ctx, c, t, s);
   };
 

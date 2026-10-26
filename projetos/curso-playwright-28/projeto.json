@@ -46,7 +46,7 @@
      "chapter": "",
      "sentences": [
       {
-       "text": "E quando o teste falha no GitHub, onde você não estava olhando? Pra isso existe o trace.",
+       "text": "Imagina: você chega de manhã, e tem um aviso. Um teste falhou no GitHub, de madrugada. Você não estava lá, não viu nada. Como descobrir o que aconteceu?",
        "scene": {
         "type": "bigtext",
         "stagger": 0.25,
@@ -65,19 +65,19 @@
        }
       },
       {
-       "text": "O UI Mode da aula passada é pra quando você está na sua máquina, escrevendo o teste. O trace é pra investigar depois: um teste que falhou de madrugada, num computador que você nem viu.",
+       "text": "O UI Mode da aula passada não ajuda aqui: ele é pra quando você está na frente da sua máquina, escrevendo o teste. Pra investigar depois, um teste que rodou num computador que você nem viu, existe o trace.",
        "scene": {
         "type": "compare",
         "title": "QUAL USAR",
         "items": [
          [
           "UI MODE",
-          "NA SUA MÁQUINA, ESCREVENDO",
+          "NA SUA MÁQUINA, AGORA",
           "white"
          ],
          [
           "TRACE",
-          "DEPOIS, ONDE QUER QUE TENHA RODADO",
+          "DEPOIS, ONDE TIVER RODADO",
           "gold"
          ]
         ],
@@ -87,7 +87,7 @@
        }
       },
       {
-       "text": "Trace quer dizer rastro. Pensa na caixa-preta de um avião: ela grava tudo, pra depois alguém entender o que aconteceu.",
+       "text": "Trace quer dizer rastro. Pensa na caixa-preta de um avião: ela grava tudo o que acontece no voo, pra depois alguém entender o que deu errado.",
        "scene": {
         "type": "cards",
         "itens": [
@@ -112,12 +112,38 @@
        }
       },
       {
-       "text": "Pra gravar o rastro, roda com traço traço trace on.",
+       "text": "Na prática, o trace é um arquivo, ponto zip, com tudo do teste guardado dentro: cada passo, a tela de cada momento, e os erros, se teve.",
+       "scene": {
+        "type": "cards",
+        "titulo": "O QUE TEM NO TRACE",
+        "itens": [
+         [
+          "📦",
+          "trace.zip",
+          "um arquivo"
+         ],
+         [
+          "🖼",
+          "As telas",
+          "de cada passo",
+          "#69a7ff"
+         ],
+         [
+          "✗",
+          "Os erros",
+          "se teve",
+          "#ff6b6b"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Pra gravar o trace na sua máquina, roda com traço traço trace on. On quer dizer ligado: grave o trace.",
        "scene": {
         "type": "editor",
         "arquivo": "login.spec.js",
         "codigo": "import { test, expect } from '@playwright/test';\n\ntest.describe('Login', () => {\n  test.beforeEach(async ({ page }) => {\n    await page.goto('/');\n  });\n\n  test('entra com usuário e senha', async ({ page }) => {\n    await page.getByTestId('username').fill(process.env.SAUCE_USER);\n    await page.getByTestId('password').fill(process.env.SAUCE_PASSWORD);",
-        "legenda": "--trace on",
+        "legenda": "--trace on = grave o trace",
         "fonte": 26,
         "digitar": false,
         "terminal": [
@@ -152,7 +178,7 @@
        }
       },
       {
-       "text": "Quando termina, abre o relatório e clica num teste. Lá embaixo, em Traces, está o arquivo do rastro. Clica nele.",
+       "text": "Quando termina, abre o relatório e clica num teste. Lá embaixo, em Traces, está o arquivo gravado. Clica nele.",
        "scene": {
         "type": "pw_relatorio",
         "url": "https://www.saucedemo.com/",
@@ -245,11 +271,11 @@
          ],
          "anexos_em": 1.4
         },
-        "legenda": "Traces: clica no rastro"
+        "legenda": "Traces: clica no arquivo gravado"
        }
       },
       {
-       "text": "Abre o Trace Viewer. Na esquerda, a lista de tudo o que o teste fez, na ordem: abriu o site, preencheu, clicou e conferiu.",
+       "text": "Abre o Trace Viewer. Parece muita coisa, mas são só quatro partes. Vamos uma de cada vez.",
        "scene": {
         "type": "pw_trace",
         "media": "site_sauce_trace",
@@ -320,11 +346,168 @@
          ]
         ],
         "sel": 0,
-        "legenda": "Actions: tudo o que o teste fez"
+        "sel_em": 99,
+        "legenda": "O Trace Viewer: 4 partes"
        }
       },
       {
-       "text": "Clica em qualquer passo, e o meio mostra a página exatamente naquele momento. Aqui, a conferência do título Products.",
+       "text": "Em cima, uma faixa de miniaturas: a tela do teste ao longo do tempo, como os quadros de um filme.",
+       "scene": {
+        "type": "pw_trace",
+        "media": "site_sauce_trace",
+        "url": "https://www.saucedemo.com/",
+        "acoes": [
+         {
+          "fill": [
+           "#user-name",
+           "standard_user"
+          ]
+         },
+         {
+          "fill": [
+           "#password",
+           "secret_sauce"
+          ]
+         },
+         {
+          "click": "#login-button"
+         }
+        ],
+        "inspecionar": "[data-test=\"title\"]",
+        "passos_pw": [
+         [
+          "Before Hooks",
+          "",
+          "520ms"
+         ],
+         [
+          "Navigate to",
+          "\"/\"",
+          "410ms"
+         ],
+         [
+          "Fill",
+          "getByTestId('username')",
+          "38ms"
+         ],
+         [
+          "Fill",
+          "getByTestId('password')",
+          "21ms"
+         ],
+         [
+          "Click",
+          "getByTestId('login-button')",
+          "96ms"
+         ],
+         [
+          "Expect",
+          "toHaveURL",
+          "12ms"
+         ],
+         [
+          "Expect",
+          "toBeVisible",
+          "9ms"
+         ],
+         [
+          "Expect",
+          "toContainText",
+          "8ms"
+         ],
+         [
+          "Expect",
+          "toHaveCount",
+          "7ms"
+         ]
+        ],
+        "sel": 0,
+        "sel_em": 99,
+        "foco": "filme",
+        "foco_em": 0.4,
+        "legenda": "Em cima: a tela ao longo do tempo"
+       }
+      },
+      {
+       "text": "Na esquerda, a lista do que o teste fez, na ordem. Cada linha é uma linha do seu código: abriu o site, preencheu o usuário, a senha, clicou e conferiu.",
+       "scene": {
+        "type": "pw_trace",
+        "media": "site_sauce_trace",
+        "url": "https://www.saucedemo.com/",
+        "acoes": [
+         {
+          "fill": [
+           "#user-name",
+           "standard_user"
+          ]
+         },
+         {
+          "fill": [
+           "#password",
+           "secret_sauce"
+          ]
+         },
+         {
+          "click": "#login-button"
+         }
+        ],
+        "inspecionar": "[data-test=\"title\"]",
+        "passos_pw": [
+         [
+          "Before Hooks",
+          "",
+          "520ms"
+         ],
+         [
+          "Navigate to",
+          "\"/\"",
+          "410ms"
+         ],
+         [
+          "Fill",
+          "getByTestId('username')",
+          "38ms"
+         ],
+         [
+          "Fill",
+          "getByTestId('password')",
+          "21ms"
+         ],
+         [
+          "Click",
+          "getByTestId('login-button')",
+          "96ms"
+         ],
+         [
+          "Expect",
+          "toHaveURL",
+          "12ms"
+         ],
+         [
+          "Expect",
+          "toBeVisible",
+          "9ms"
+         ],
+         [
+          "Expect",
+          "toContainText",
+          "8ms"
+         ],
+         [
+          "Expect",
+          "toHaveCount",
+          "7ms"
+         ]
+        ],
+        "sel": 0,
+        "sel_em": 99,
+        "foco": "acoes",
+        "foco_em": 0.4,
+        "legenda": "Esquerda: o que o teste fez"
+       }
+      },
+      {
+       "text": "No meio, a página. Clica num passo da lista, e ela mostra a tela exatamente naquele momento. Aqui, a conferência do título Products.",
        "scene": {
         "type": "pw_trace",
         "media": "site_sauce_trace",
@@ -395,12 +578,14 @@
          ]
         ],
         "sel": 6,
-        "sel_em": 0.6,
-        "legenda": "Clicou no passo: a página daquele momento"
+        "sel_em": 1.0,
+        "foco": "pagina",
+        "foco_em": 0.4,
+        "legenda": "Meio: a tela daquele passo"
        }
       },
       {
-       "text": "Embaixo, os detalhes do passo escolhido: o que ele fez, em qual elemento, e quanto tempo levou.",
+       "text": "E embaixo, os detalhes do passo escolhido. Na aba Call: o que ele fez, em qual campo ou botão, e quanto tempo levou.",
        "scene": {
         "type": "pw_trace",
         "media": "site_sauce_trace",
@@ -473,11 +658,190 @@
         "sel": 6,
         "sel_em": 0,
         "aba": "Call",
-        "legenda": "Call: o que fez, onde e quanto tempo"
+        "foco": "detalhes",
+        "foco_em": 0.4,
+        "legenda": "Embaixo: os detalhes do passo"
        }
       },
       {
-       "text": "E quando o teste falha, é aqui que o trace brilha. O passo que falhou aparece em vermelho, e a aba Errors mostra o erro: esperava Mochila, encontrou Sauce Labs Backpack.",
+       "text": "Agora, o teste que falhou. Você investiga igual um detetive, respondendo três perguntas.",
+       "scene": {
+        "type": "cards",
+        "titulo": "INVESTIGANDO",
+        "itens": [
+         [
+          "1",
+          "Qual passo falhou?",
+          "o vermelho",
+          "#ff6b6b"
+         ],
+         [
+          "2",
+          "O que a tela mostrava?",
+          "a página daquele passo",
+          "#69a7ff"
+         ],
+         [
+          "3",
+          "O que o erro diz?",
+          "esperava × encontrou",
+          "#ffd23f"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Primeira: qual passo falhou? O que ficou vermelho, o último: a conferência do texto Mochila.",
+       "scene": {
+        "type": "pw_trace",
+        "media": "site_sauce_trace",
+        "url": "https://www.saucedemo.com/",
+        "acoes": [
+         {
+          "fill": [
+           "#user-name",
+           "standard_user"
+          ]
+         },
+         {
+          "fill": [
+           "#password",
+           "secret_sauce"
+          ]
+         },
+         {
+          "click": "#login-button"
+         }
+        ],
+        "inspecionar": "[data-test=\"title\"]",
+        "passos_pw": [
+         [
+          "Before Hooks",
+          "",
+          "520ms"
+         ],
+         [
+          "Navigate to",
+          "\"/\"",
+          "410ms"
+         ],
+         [
+          "Fill",
+          "getByTestId('username')",
+          "38ms"
+         ],
+         [
+          "Fill",
+          "getByTestId('password')",
+          "21ms"
+         ],
+         [
+          "Click",
+          "getByTestId('login-button')",
+          "96ms"
+         ],
+         [
+          "Expect",
+          "toHaveURL",
+          "12ms"
+         ],
+         [
+          "Expect",
+          "toBeVisible",
+          "9ms"
+         ],
+         [
+          "Expect",
+          "toContainText('Mochila')",
+          "5.0s"
+         ]
+        ],
+        "falhou": true,
+        "erro": "Error: expect(locator).toContainText(expected) failed\nLocator: getByText('Sauce Labs Backpack')\nExpected substring: \"Mochila\"\nReceived string:    \"Sauce Labs Backpack\"",
+        "aba": "Call",
+        "sel_em": 0.6,
+        "foco": "acoes",
+        "foco_em": 0.4,
+        "legenda": "1. O passo vermelho"
+       }
+      },
+      {
+       "text": "Segunda: o que a tela mostrava naquele momento? A página de produtos, com a mochila escrita Sauce Labs Backpack.",
+       "scene": {
+        "type": "pw_trace",
+        "media": "site_sauce_trace",
+        "url": "https://www.saucedemo.com/",
+        "acoes": [
+         {
+          "fill": [
+           "#user-name",
+           "standard_user"
+          ]
+         },
+         {
+          "fill": [
+           "#password",
+           "secret_sauce"
+          ]
+         },
+         {
+          "click": "#login-button"
+         }
+        ],
+        "inspecionar": "[data-test=\"title\"]",
+        "passos_pw": [
+         [
+          "Before Hooks",
+          "",
+          "520ms"
+         ],
+         [
+          "Navigate to",
+          "\"/\"",
+          "410ms"
+         ],
+         [
+          "Fill",
+          "getByTestId('username')",
+          "38ms"
+         ],
+         [
+          "Fill",
+          "getByTestId('password')",
+          "21ms"
+         ],
+         [
+          "Click",
+          "getByTestId('login-button')",
+          "96ms"
+         ],
+         [
+          "Expect",
+          "toHaveURL",
+          "12ms"
+         ],
+         [
+          "Expect",
+          "toBeVisible",
+          "9ms"
+         ],
+         [
+          "Expect",
+          "toContainText('Mochila')",
+          "5.0s"
+         ]
+        ],
+        "falhou": true,
+        "erro": "Error: expect(locator).toContainText(expected) failed\nLocator: getByText('Sauce Labs Backpack')\nExpected substring: \"Mochila\"\nReceived string:    \"Sauce Labs Backpack\"",
+        "aba": "Call",
+        "sel_em": 0,
+        "foco": "pagina",
+        "foco_em": 0.4,
+        "legenda": "2. A tela daquele momento"
+       }
+      },
+      {
+       "text": "Terceira: o que o erro diz? Na aba Errors: o teste esperava a palavra Mochila, e encontrou Sauce Labs Backpack.",
        "scene": {
         "type": "pw_trace",
         "media": "site_sauce_trace",
@@ -545,12 +909,14 @@
         "falhou": true,
         "erro": "Error: expect(locator).toContainText(expected) failed\nLocator: getByText('Sauce Labs Backpack')\nExpected substring: \"Mochila\"\nReceived string:    \"Sauce Labs Backpack\"",
         "aba": "Errors",
-        "sel_em": 0.6,
-        "legenda": "Errors: o passo vermelho e o erro"
+        "sel_em": 0,
+        "foco": "detalhes",
+        "foco_em": 0.4,
+        "legenda": "3. Errors: esperava × encontrou"
        }
       },
       {
-       "text": "E a aba Source mostra a linha do seu código que falhou.",
+       "text": "E a aba Source mostra a linha do seu código onde ele falhou: a linha catorze.",
        "scene": {
         "type": "pw_trace",
         "media": "site_sauce_trace",
@@ -620,23 +986,44 @@
         "codigo": "import { test, expect } from '@playwright/test';\n\ntest.describe('Login', () => {\n  test.beforeEach(async ({ page }) => {\n    await page.goto('/');\n  });\n\n  test('entra com usuário e senha', async ({ page }) => {\n    await page.getByTestId('username').fill(process.env.SAUCE_USER);\n    await page.getByTestId('password').fill(process.env.SAUCE_PASSWORD);\n    await page.getByTestId('login-button').click();\n    await expect(page).toHaveURL(/inventory/);\n    await expect(page.getByText('Products')).toBeVisible();\n    await expect(page.getByText('Sauce Labs Backpack')).toContainText('Mochila');\n    await expect(page.getByRole('button', { name: 'Add to cart' })).toHaveCount(6);\n  });\n\n  test('mostra erro para usuário bloqueado', async ({ page }) => {\n    await page.getByTestId('username').fill('locked_out_user');\n    await page.getByTestId('password').fill(process.env.SAUCE_PASSWORD);\n    await page.getByTestId('login-button').click();\n    await expect(page.getByText('locked out')).toBeVisible();\n  });\n});",
         "linha": 14,
         "sel_em": 0,
+        "foco": "detalhes",
+        "foco_em": 0.3,
         "legenda": "Source: a linha do código"
        }
       },
       {
-       "text": "E ainda tem as abas Console e Network: as mensagens da página e tudo o que ela pediu pro servidor. Num sistema de verdade, isso ajuda a saber se o problema está na tela ou no servidor.",
+       "text": "Com essas três respostas, você já sabe o que aconteceu, sem rodar o teste de novo. E se for um bug do site, você anexa esse trace no card do bug, como na aula trinta.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "3 PERGUNTAS",
+          "white",
+          110
+         ],
+         [
+          "= VOCÊ SABE O QUE ACONTECEU",
+          "gold",
+          90
+         ]
+        ]
+       }
+      },
+      {
+       "text": "E ainda tem duas abas: Console, os avisos que a própria página escreveu, e Network, os pedidos que ela fez pro servidor. Num sistema de verdade, elas ajudam a saber se o problema está na tela ou no servidor.",
        "scene": {
         "type": "cards",
         "itens": [
          [
           "▤",
           "Console",
-          "as mensagens da página"
+          "os avisos da página"
          ],
          [
           "⇄",
           "Network",
-          "o que ela pediu pro servidor",
+          "os pedidos pro servidor",
           "#69a7ff"
          ],
          [
@@ -649,12 +1036,12 @@
        }
       },
       {
-       "text": "No config já vem trace on first retry: quando um teste falha e roda de novo, o trace dessa segunda tentativa é gravado. No GitHub o config já tenta de novo, então lá isso acontece sozinho. Na sua máquina, sem nova tentativa, use o traço traço trace on.",
+       "text": "E no GitHub? No config já vem trace on first retry. Retry quer dizer tentar de novo: quando um teste falha lá, ele tenta mais uma vez, e grava o trace dessa segunda tentativa. Ou seja: lá, ele grava sozinho.",
        "scene": {
         "type": "editor",
         "arquivo": "playwright.config.js",
         "codigo": "  /* Retry on CI only */\n  retries: process.env.CI ? 2 : 0,\n  /* Opt out of parallel tests on CI. */\n  workers: process.env.CI ? 1 : undefined,\n  /* Reporter to use. See https://playwright.dev/docs/test-reporters */\n  reporter: 'html',\n  /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */\n  use: {\n    /* Base URL to use in actions like `await page.goto('')`. */\n    // baseURL: 'http://localhost:3000',\n\n    /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */\n    trace: 'on-first-retry',\n  },",
-        "legenda": "trace: 'on-first-retry'",
+        "legenda": "trace: 'on-first-retry' = grava quando tenta de novo",
         "fonte": 24,
         "digitar": false,
         "linha0": 21,
@@ -663,6 +1050,23 @@
          13
         ],
         "destaque_em": 1.0
+       }
+      },
+      {
+       "text": "Resumindo: na sua máquina, traço traço trace on. No GitHub, o config já cuida disso.",
+       "scene": {
+        "type": "traducao",
+        "titulo": "QUANDO O TRACE É GRAVADO",
+        "linhas": [
+         [
+          "--trace on",
+          "na sua máquina: grave sempre"
+         ],
+         [
+          "trace: 'on-first-retry'",
+          "no GitHub: grave quando tentar de novo"
+         ]
+        ]
        }
       },
       {

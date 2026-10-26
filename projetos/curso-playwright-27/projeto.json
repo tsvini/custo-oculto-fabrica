@@ -46,7 +46,7 @@
      "chapter": "",
      "sentences": [
       {
-       "text": "Existe um jeito bem mais visual de rodar testes: o UI Mode.",
+       "text": "Imagina: você está escrevendo um teste novo. Roda no terminal, e falhou. O terminal te dá o erro em texto, mas você queria ver o que aconteceu na tela.",
        "scene": {
         "type": "bigtext",
         "stagger": 0.25,
@@ -65,7 +65,7 @@
        }
       },
       {
-       "text": "Pra que serve? No terminal, você só vê o resultado: passou ou falhou. No UI Mode, você vê o teste acontecendo, passo a passo, e descobre onde e por que ele quebrou.",
+       "text": "É pra isso que existe o UI Mode. No terminal, você só vê o resultado. No UI Mode, você vê cada passo do teste, com a tela daquele momento.",
        "scene": {
         "type": "compare",
         "title": "PRA QUE SERVE",
@@ -87,7 +87,7 @@
        }
       },
       {
-       "text": "No terminal: npx playwright test traço traço ui.",
+       "text": "Pra abrir, no terminal: npx playwright test traço traço ui.",
        "scene": {
         "type": "editor",
         "arquivo": "login.spec.js",
@@ -119,7 +119,7 @@
        }
       },
       {
-       "text": "Abre uma janela com todos os seus testes do lado esquerdo. Clica no play.",
+       "text": "Abre essa janela. Vamos por partes. Na esquerda, os seus arquivos de teste, e dentro de cada arquivo, os testes dele.",
        "scene": {
         "type": "pw_ui",
         "media": "site_sauce_ui_logado",
@@ -198,11 +198,126 @@
           "7ms"
          ]
         ],
-        "legenda": "Clica no play"
+        "foco": "testes",
+        "foco_em": 1.2,
+        "clique": false,
+        "parado": true,
+        "roda": -1,
+        "legenda": "Esquerda: os arquivos e os testes"
        }
       },
       {
-       "text": "Ele roda e mostra cada passo. Clica num passo, e a tela mostra como a página estava naquele momento.",
+       "text": "Do lado de cada teste tem um botão de play: ele roda só aquele teste. E o play lá em cima roda todos. Clica no play do primeiro teste.",
+       "scene": {
+        "type": "pw_ui",
+        "media": "site_sauce_ui_logado",
+        "url": "https://www.saucedemo.com/",
+        "acoes": [
+         {
+          "fill": [
+           "#user-name",
+           "standard_user"
+          ]
+         },
+         {
+          "fill": [
+           "#password",
+           "secret_sauce"
+          ]
+         },
+         {
+          "click": "#login-button"
+         }
+        ],
+        "inspecionar": "[data-test=\"title\"]",
+        "arquivos": [
+         [
+          "login.spec.js",
+          [
+           "entra com usuário e senha",
+           "mostra erro para usuário bloqueado"
+          ]
+         ]
+        ],
+        "passos_pw": [
+         [
+          "Before Hooks",
+          "",
+          "520ms"
+         ],
+         [
+          "Navigate to",
+          "\"/\"",
+          "410ms"
+         ],
+         [
+          "Fill",
+          "getByTestId('username')",
+          "38ms"
+         ],
+         [
+          "Fill",
+          "getByTestId('password')",
+          "21ms"
+         ],
+         [
+          "Click",
+          "getByTestId('login-button')",
+          "96ms"
+         ],
+         [
+          "Expect",
+          "toHaveURL",
+          "12ms"
+         ],
+         [
+          "Expect",
+          "toBeVisible",
+          "9ms"
+         ],
+         [
+          "Expect",
+          "toContainText",
+          "8ms"
+         ],
+         [
+          "Expect",
+          "toHaveCount",
+          "7ms"
+         ]
+        ],
+        "foco": "testes",
+        "foco_em": 0.3,
+        "legenda": "Play: roda só esse teste"
+       }
+      },
+      {
+       "text": "Enquanto roda, a bolinha do lado do nome fica girando. Passou, ela fica verde. Falhou, fica vermelha, e você já sabe qual teste olhar.",
+       "scene": {
+        "type": "cards",
+        "itens": [
+         [
+          "◌",
+          "Girando",
+          "está rodando"
+         ],
+         [
+          "✓",
+          "Verde",
+          "passou",
+          "#3fd68a"
+         ],
+         [
+          "✗",
+          "Vermelho",
+          "falhou: olha esse",
+          "#ff6b6b"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "No meio, a lista de tudo o que o teste fez, na ordem: abriu o site, preencheu o usuário, a senha, clicou, e conferiu. É o seu código, virando passos.",
        "scene": {
         "type": "pw_ui",
         "media": "site_sauce_ui_logado",
@@ -282,11 +397,99 @@
          ]
         ],
         "pronto": true,
-        "legenda": "Cada passo, com a página daquele momento"
+        "foco": "acoes",
+        "foco_em": 0.6,
+        "legenda": "Meio: cada passo do teste"
        }
       },
       {
-       "text": "Dá pra voltar no tempo: ver a página antes e depois de cada clique.",
+       "text": "E na direita, a página. Clica em qualquer passo, e ela mostra a tela exatamente naquele momento.",
+       "scene": {
+        "type": "pw_ui",
+        "media": "site_sauce_ui_logado",
+        "url": "https://www.saucedemo.com/",
+        "acoes": [
+         {
+          "fill": [
+           "#user-name",
+           "standard_user"
+          ]
+         },
+         {
+          "fill": [
+           "#password",
+           "secret_sauce"
+          ]
+         },
+         {
+          "click": "#login-button"
+         }
+        ],
+        "inspecionar": "[data-test=\"title\"]",
+        "arquivos": [
+         [
+          "login.spec.js",
+          [
+           "entra com usuário e senha",
+           "mostra erro para usuário bloqueado"
+          ]
+         ]
+        ],
+        "passos_pw": [
+         [
+          "Before Hooks",
+          "",
+          "520ms"
+         ],
+         [
+          "Navigate to",
+          "\"/\"",
+          "410ms"
+         ],
+         [
+          "Fill",
+          "getByTestId('username')",
+          "38ms"
+         ],
+         [
+          "Fill",
+          "getByTestId('password')",
+          "21ms"
+         ],
+         [
+          "Click",
+          "getByTestId('login-button')",
+          "96ms"
+         ],
+         [
+          "Expect",
+          "toHaveURL",
+          "12ms"
+         ],
+         [
+          "Expect",
+          "toBeVisible",
+          "9ms"
+         ],
+         [
+          "Expect",
+          "toContainText",
+          "8ms"
+         ],
+         [
+          "Expect",
+          "toHaveCount",
+          "7ms"
+         ]
+        ],
+        "pronto": true,
+        "foco": "pagina",
+        "foco_em": 0.6,
+        "legenda": "Direita: a tela naquele passo"
+       }
+      },
+      {
+       "text": "Em cima da página, as abas Before e After: antes e depois do passo. No clique do Login, o Before mostra o formulário preenchido. E o After, a página de produtos.",
        "scene": {
         "type": "pw_ui",
         "media": "site_sauce_ui_preenchido",
@@ -365,39 +568,128 @@
         "pronto": true,
         "aba_snapshot": 1,
         "depois": {
-         "em": 3.2,
+         "em": 5.2,
          "media": "site_sauce_ui_logado"
         },
         "legenda": "Before e After: antes e depois do clique"
        }
       },
       {
-       "text": "Isso serve pra achar problema: se um clique não fez o que devia, você compara a tela antes e depois e enxerga na hora o que aconteceu.",
+       "text": "E pra que serve isso na prática? Um clique que não fez nada: o After fica igual ao Before. Um campo preenchido errado: você vê no Before do clique. Uma página que não carregou: o After aparece em branco.",
        "scene": {
         "type": "cards",
+        "titulo": "O QUE O BEFORE E O AFTER TE CONTAM",
         "itens": [
          [
-          "⏮",
-          "Before",
-          "a tela antes do clique"
+          "=",
+          "After igual ao Before",
+          "o clique não fez nada"
          ],
          [
-          "⏭",
-          "After",
-          "a tela depois",
+          "✎",
+          "Campo errado",
+          "aparece no Before",
           "#69a7ff"
          ],
          [
-          "🔍",
-          "Comparou",
-          "achou o problema",
-          "#ffd23f"
+          "▭",
+          "After em branco",
+          "a página não carregou",
+          "#ff6b6b"
          ]
         ]
        }
       },
       {
-       "text": "E o watch. Pra que serve? Quando você está escrevendo um teste, você muda uma linha e quer ver se funcionou. Sem o watch, toda vez você volta no terminal e roda tudo de novo.",
+       "text": "E quando o teste falha, o passo que falhou fica vermelho. Clica nele, e você vê a tela do momento do erro.",
+       "scene": {
+        "type": "pw_ui",
+        "media": "site_sauce_ui_logado",
+        "url": "https://www.saucedemo.com/",
+        "acoes": [
+         {
+          "fill": [
+           "#user-name",
+           "standard_user"
+          ]
+         },
+         {
+          "fill": [
+           "#password",
+           "secret_sauce"
+          ]
+         },
+         {
+          "click": "#login-button"
+         }
+        ],
+        "inspecionar": "[data-test=\"title\"]",
+        "arquivos": [
+         [
+          "login.spec.js",
+          [
+           [
+            "entra com usuário e senha",
+            "falhou"
+           ],
+           [
+            "mostra erro para usuário bloqueado",
+            "ok"
+           ]
+          ]
+         ]
+        ],
+        "passos_pw": [
+         [
+          "Before Hooks",
+          "",
+          "520ms"
+         ],
+         [
+          "Navigate to",
+          "\"/\"",
+          "410ms"
+         ],
+         [
+          "Fill",
+          "getByTestId('username')",
+          "38ms"
+         ],
+         [
+          "Fill",
+          "getByTestId('password')",
+          "21ms"
+         ],
+         [
+          "Click",
+          "getByTestId('login-button')",
+          "96ms"
+         ],
+         [
+          "Expect",
+          "toHaveURL",
+          "12ms"
+         ],
+         [
+          "Expect",
+          "toBeVisible",
+          "9ms"
+         ],
+         [
+          "Expect",
+          "toContainText('Mochila')",
+          "5.0s"
+         ]
+        ],
+        "pronto": true,
+        "status": "falhou",
+        "foco": "acoes",
+        "foco_em": 1.0,
+        "legenda": "O passo que falhou, em vermelho"
+       }
+      },
+      {
+       "text": "Agora, o watch. Quando você está escrevendo um teste, você muda uma linha e quer ver se funcionou. Sem o watch, toda vez você volta no terminal e roda tudo de novo.",
        "scene": {
         "type": "cards",
         "titulo": "SEM O WATCH",
@@ -405,7 +697,7 @@
          [
           "✎",
           "Muda uma linha",
-          ""
+          "no VS Code"
          ],
          [
           "⌨",
@@ -423,7 +715,7 @@
        }
       },
       {
-       "text": "Watch quer dizer vigiar. Liga aquele ícone de olho, e pronto: salvou o arquivo, o teste roda de novo sozinho.",
+       "text": "Watch quer dizer vigiar. Liga aquele ícone de olho, do lado do arquivo.",
        "scene": {
         "type": "pw_ui",
         "media": "site_sauce_ui_logado",
@@ -502,14 +794,132 @@
           "7ms"
          ]
         ],
+        "pronto": true,
         "watch": true,
-        "watch_em": 1.2,
-        "roda_em": 2.6,
-        "legenda": "watch = vigiar: salvou, rodou de novo"
+        "watch_em": 1.0,
+        "clique": false,
+        "legenda": "watch = vigiar"
        }
       },
       {
-       "text": "É um dos jeitos mais confortáveis de escrever um teste novo: escreve, salva, e vê na hora.",
+       "text": "Agora volta no VS Code e acrescenta uma conferência: que a lanterna da bicicleta, a bike light, aparece na página. E salva, com control S.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "login.spec.js",
+        "codigo": "import { test, expect } from '@playwright/test';\n\ntest.describe('Login', () => {\n  test.beforeEach(async ({ page }) => {\n    await page.goto('/');\n  });\n\n  test('entra com usuário e senha', async ({ page }) => {\n    await page.getByTestId('username').fill(process.env.SAUCE_USER);\n    await page.getByTestId('password').fill(process.env.SAUCE_PASSWORD);\n    await page.getByTestId('login-button').click();\n    await expect(page).toHaveURL(/inventory/);\n    await expect(page.getByText('Products')).toBeVisible();\n    await expect(page.getByText('Sauce Labs Backpack')).toContainText('Backpack');\n    await expect(page.getByText('Sauce Labs Bike Light')).toBeVisible();\n    await expect(page.getByRole('button', { name: 'Add to cart' })).toHaveCount(6);\n  });\n\n  test('mostra erro para usuário bloqueado', async ({ page }) => {\n    await page.getByTestId('username').fill('locked_out_user');\n    await page.getByTestId('password').fill(process.env.SAUCE_PASSWORD);\n    await page.getByTestId('login-button').click();\n    await expect(page.getByText('locked out')).toBeVisible();\n  });\n});",
+        "legenda": "Uma conferência nova · Ctrl + S",
+        "fonte": 22,
+        "digitar": true,
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  tests/",
+         "    login.spec.js",
+         "  .env",
+         "  .env.example",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "digitar_de": 15,
+        "digitar_ate": 15,
+        "rolar_depois": true
+       }
+      },
+      {
+       "text": "Sem você tocar em nada, o UI Mode percebe que o arquivo mudou, e roda o teste de novo, sozinho. Passou, com o passo novo no fim da lista.",
+       "scene": {
+        "type": "pw_ui",
+        "media": "site_sauce_ui_logado",
+        "url": "https://www.saucedemo.com/",
+        "acoes": [
+         {
+          "fill": [
+           "#user-name",
+           "standard_user"
+          ]
+         },
+         {
+          "fill": [
+           "#password",
+           "secret_sauce"
+          ]
+         },
+         {
+          "click": "#login-button"
+         }
+        ],
+        "inspecionar": "[data-test=\"title\"]",
+        "arquivos": [
+         [
+          "login.spec.js",
+          [
+           "entra com usuário e senha",
+           "mostra erro para usuário bloqueado"
+          ]
+         ]
+        ],
+        "passos_pw": [
+         [
+          "Before Hooks",
+          "",
+          "520ms"
+         ],
+         [
+          "Navigate to",
+          "\"/\"",
+          "410ms"
+         ],
+         [
+          "Fill",
+          "getByTestId('username')",
+          "38ms"
+         ],
+         [
+          "Fill",
+          "getByTestId('password')",
+          "21ms"
+         ],
+         [
+          "Click",
+          "getByTestId('login-button')",
+          "96ms"
+         ],
+         [
+          "Expect",
+          "toHaveURL",
+          "12ms"
+         ],
+         [
+          "Expect",
+          "toBeVisible",
+          "9ms"
+         ],
+         [
+          "Expect",
+          "toContainText",
+          "8ms"
+         ],
+         [
+          "Expect",
+          "toHaveCount",
+          "7ms"
+         ],
+         [
+          "Expect",
+          "toBeVisible",
+          "9ms"
+         ]
+        ],
+        "watch": true,
+        "clique": false,
+        "legenda": "Salvou: rodou de novo sozinho"
+       }
+      },
+      {
+       "text": "É um dos jeitos mais confortáveis de escrever um teste: escreve, salva, e vê na hora.",
        "scene": {
         "type": "bigtext",
         "stagger": 0.25,
@@ -529,22 +939,24 @@
        }
       },
       {
-       "text": "Só que o UI Mode precisa de você na frente da tela. E quando o teste falha no GitHub, de madrugada? É a próxima aula.",
+       "text": "Quando usar: escrevendo ou consertando um teste, na sua máquina. Pra rodar tudo antes de mandar pro GitHub, o terminal é mais rápido. E no GitHub não tem tela nenhuma: lá, quem te ajuda é o trace, da próxima aula.",
        "scene": {
-        "type": "bigtext",
-        "lines": [
+        "type": "traducao",
+        "titulo": "QUANDO USAR",
+        "linhas": [
          [
-          "E QUANDO FALHA NO GITHUB?",
-          "white",
-          100
+          "escrevendo ou consertando um teste",
+          "UI Mode"
          ],
          [
-          "PRÓXIMA AULA: TRACE",
-          "gold",
-          120
+          "rodar tudo antes do push",
+          "terminal"
+         ],
+         [
+          "falhou no GitHub",
+          "trace (próxima aula)"
          ]
-        ],
-        "stagger": 0.6
+        ]
        }
       },
       {
