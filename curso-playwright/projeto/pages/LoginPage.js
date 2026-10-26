@@ -7,10 +7,6 @@ export class LoginPage {
     this.erro = page.getByTestId('error');
   }
 
-  async abrir() {
-    await this.page.goto('/');
-  }
-
   async entrar(usuario, senha) {
     await this.usuario.fill(usuario);
     await this.senha.fill(senha);

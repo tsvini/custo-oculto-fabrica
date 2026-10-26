@@ -35,6 +35,7 @@ jobs:
           node-version: 22
       - run: npm ci
       - run: npx playwright install --with-deps
+        timeout-minutes: 10
       - name: Rodar testes
         run: |
           if [ -n "${{ inputs.projetos }}" ]; then ARGS=$(for p in ${{ inputs.projetos }}; do printf -- "--project=%s " "$p"; done); fi

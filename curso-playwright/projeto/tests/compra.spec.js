@@ -9,7 +9,7 @@ test('compra uma mochila do começo ao fim', async ({ page }) => {
   const checkout = new CheckoutPage(page);
 
   await test.step('adiciona a mochila no carrinho', async () => {
-    await produtos.abrir();
+    await page.goto('/inventory.html');
     await produtos.adicionar('sauce-labs-backpack');
     await expect(produtos.contadorCarrinho).toHaveText('1');
   });

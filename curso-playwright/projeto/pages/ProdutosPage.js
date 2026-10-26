@@ -6,10 +6,6 @@ export class ProdutosPage {
     this.contadorCarrinho = page.getByTestId('shopping-cart-badge');
   }
 
-  async abrir() {
-    await this.page.goto('/inventory.html');
-  }
-
   async adicionar(produto) {
     await this.page.getByTestId(`add-to-cart-${produto}`).click();
   }
