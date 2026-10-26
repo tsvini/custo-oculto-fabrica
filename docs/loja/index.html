@@ -2,16 +2,14 @@
 <body>
 <div class="entrada">
   <section class="vitrine"><img src="img/mascote.jpg" alt="Mascote da Lojinha do Leigo"><div id="marca"></div><p>A loja de treino do curso <b style="color:#fff">Playwright para Leigos</b></p></section>
-  <section class="lado-form">
-    <form class="caixa" data-test="form-login">
-      <h2>Entrar</h2><p class="sub">Bem-vindo de volta! <span data-test="versao" style="display:none"></span></p>
-      <label for="usuario">Usuário</label><input id="usuario" data-test="usuario" placeholder="Seu usuário" autocomplete="off">
-      <label for="senha">Senha</label><input id="senha" data-test="senha" type="password" placeholder="Sua senha">
-      <button class="principal" type="submit" data-test="entrar">Entrar</button>
-      <div class="erro" data-test="erro" role="alert" hidden></div>
-      <p class="dica">Usuários de treino: <b>cliente</b> e <b>bloqueado</b><br>Senha dos dois: <b>leigo123</b></p>
-    </form>
-  </section>
+  <form class="caixa" data-test="form-login">
+    <h2>Que bom te ver! 👋</h2><p class="sub">Entre pra ver as ofertas da semana · <span data-test="versao"></span></p>
+    <label for="usuario">Usuário</label><input id="usuario" data-test="usuario" placeholder="Seu usuário" autocomplete="off">
+    <label for="senha">Senha</label><input id="senha" data-test="senha" type="password" placeholder="Sua senha">
+    <button class="principal" type="submit" data-test="entrar">Entrar</button>
+    <div class="erro" data-test="erro" role="alert" hidden></div>
+    <p class="dica">Usuários de treino: <b>cliente</b> e <b>bloqueado</b><br>Senha dos dois: <b>leigo123</b></p>
+  </form>
 </div>
 <script src="loja.js"></script>
 <script>

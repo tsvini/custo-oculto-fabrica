@@ -4,41 +4,95 @@
     "nome": "Caderno de anotações",
     "preco": 7.99,
     "estoque": 30,
-    "imagem": "img/caderno.svg"
+    "imagem": "img/caderno.svg",
+    "categoria": "Papelaria",
+    "precoAntigo": 9.9,
+    "avaliacao": 4.8,
+    "avaliacoes": 312,
+    "selo": "Mais vendido"
   },
   {
     "id": 2,
     "nome": "Caneca do testador",
     "preco": 15.99,
     "estoque": 12,
-    "imagem": "img/caneca.svg"
+    "imagem": "img/caneca.svg",
+    "categoria": "Casa",
+    "precoAntigo": 19.9,
+    "avaliacao": 4.9,
+    "avaliacoes": 208,
+    "selo": null
   },
   {
     "id": 3,
     "nome": "Mochila para notebook",
     "preco": 129.9,
     "estoque": 5,
-    "imagem": "img/mochila.svg"
+    "imagem": "img/mochila.svg",
+    "categoria": "Acessórios",
+    "precoAntigo": 159.9,
+    "avaliacao": 4.7,
+    "avaliacoes": 97,
+    "selo": "Oferta"
   },
   {
     "id": 4,
     "nome": "Camiseta Passou no CI",
     "preco": 9.99,
     "estoque": 0,
-    "imagem": "img/camiseta.svg"
+    "imagem": "img/camiseta.svg",
+    "categoria": "Roupas",
+    "precoAntigo": null,
+    "avaliacao": 4.6,
+    "avaliacoes": 145,
+    "selo": null
   },
   {
     "id": 5,
     "nome": "Garrafa térmica",
     "preco": 39.9,
     "estoque": 8,
-    "imagem": "img/garrafa.svg"
+    "imagem": "img/garrafa.svg",
+    "categoria": "Casa",
+    "precoAntigo": null,
+    "avaliacao": 4.5,
+    "avaliacoes": 64,
+    "selo": "Novo"
   },
   {
     "id": 6,
     "nome": "Fone de ouvido",
     "preco": 89.9,
     "estoque": 3,
-    "imagem": "img/fone.svg"
+    "imagem": "img/fone.svg",
+    "categoria": "Eletrônicos",
+    "precoAntigo": 119.9,
+    "avaliacao": 4.8,
+    "avaliacoes": 176,
+    "selo": "Oferta"
+  },
+  {
+    "id": 7,
+    "nome": "Mouse sem fio",
+    "preco": 59.9,
+    "estoque": 10,
+    "imagem": "img/mouse.svg",
+    "categoria": "Eletrônicos",
+    "precoAntigo": null,
+    "avaliacao": 4.6,
+    "avaliacoes": 88,
+    "selo": null
+  },
+  {
+    "id": 8,
+    "nome": "Kit marca-texto",
+    "preco": 12.5,
+    "estoque": 40,
+    "imagem": "img/marca-texto.svg",
+    "categoria": "Papelaria",
+    "precoAntigo": 14.9,
+    "avaliacao": 4.9,
+    "avaliacoes": 251,
+    "selo": "Mais vendido"
   }
 ]

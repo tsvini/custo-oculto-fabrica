@@ -194,7 +194,7 @@ Formato: narração, e entre colchetes [o que aparece na tela]. Todo código pas
 ## Aula 76: Tem alguma coisa errada aqui
 1. Antes de automatizar, vamos rodar alguns cenários na mão, na versão que o time entregou. [título + vídeo real: a Lojinha do Leigo, versão 1]
 2. Login válido: ok. Senha errada: ok. Usuário bloqueado: ok. [vídeo real]
-3. Agora, ordenar do menor pro maior preço. Repara nos valores: cento e vinte e nove e noventa, quinze e noventa e nove, trinta e nove e noventa, sete e noventa e nove. [vídeo real + preços destacados]
+3. Agora, ordenar do menor pro maior preço. Repara nos valores: doze e cinquenta, cento e vinte e nove e noventa, quinze e noventa e nove. E o mais barato, sete e noventa e nove, lá no fim. [vídeo real + preços destacados]
 4. Isso não está em ordem. Antes de escrever uma linha de automação, você acabou de achar um bug. [bigtext]
 5. É exatamente por isso que a gente pensou nos cenários antes de abrir o editor. [bigtext]
 6. Vamos registrar: o título, o passo a passo, o esperado, o que aconteceu, e o print. [cartão de bug]
@@ -241,6 +241,6 @@ As antigas 55, 56 e 57, com ajustes:
 # A Lojinha do Leigo (o que já está pronto)
 - Fica em `docs/loja` do repositório, publicada pelo GitHub Pages (tsvini.github.io/custo-oculto-fabrica/loja/).
 - Login com `cliente` e `bloqueado` (senha `leigo123`), mensagens de erro para campo vazio, senha errada e usuário bloqueado.
-- Produtos vindos de `api/produtos.json`, ordenação nos 4 sentidos, um produto esgotado com o botão desabilitado, e o contador do carrinho.
-- `?versao=1`: a versão com o bug (a ordenação por preço compara texto: R$ 129,90 vem antes de R$ 7,99). Sem o parâmetro: a versão corrigida.
+- 8 produtos vindos de `api/produtos.json`, com categoria, preço antigo, desconto, parcelamento e avaliação. Busca, filtro por categoria, ordenação nos 4 sentidos, um produto esgotado com o botão desabilitado, e o contador do carrinho.
+- `?versao=1`: a versão com o bug (a ordenação por preço compara texto: R$ 12,50 e R$ 129,90 vêm antes de R$ 7,99). Sem o parâmetro: a versão corrigida.
 - Tudo com `data-test`, igual ao saucedemo, então o `getByTestId` funciona do mesmo jeito.
