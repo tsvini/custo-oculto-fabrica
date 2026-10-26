@@ -1,0 +1,1 @@
+Desafio dois: e se a pessoa clicar em Login sem preencher nada? Pausa e tenta. [silence] [silence] Dica: a mensagem é Username is required. Solução: só o clique e o expect. Repara: nem todo teste preenche tudo, e um bom teste também confere o que dá errado. Roda: passou. Te vejo no próximo!
