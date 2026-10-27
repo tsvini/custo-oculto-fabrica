@@ -22,4 +22,4 @@ jobs:
       - run: |
           python -m fabrica.transcrever ${{ github.event.inputs.nome }} ${{ github.event.inputs.modelo }}
           git config user.name "fabrica-custo-oculto"; git config user.email "fabrica@users.noreply.github.com"
-          git add legendas/*.json; git commit -qm "transcrição ${{ github.event.inputs.nome }}"; git pull -q --rebase; git push -q
+          git add legendas/*.json; git commit -qm "transcrição ${{ github.event.inputs.nome }}"; for i in 1 2 3; do git pull -q --rebase && git push -q && break; sleep 5; done
