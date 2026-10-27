@@ -430,6 +430,16 @@ AULAS.append(projeto(42, "MÓDULO 8 · AULA 42", "Indo além - login uma vez só
          navegador={"media": "rec_logado", "url": "https://www.saucedemo.com/inventory.html", "pre_url": SAUCE, "pre_acoes": LOGIN, "gravar": True, "acoes": COMPRA[3:],
                     "espera_inicio": 900, "espera_fim": 2000, "delay_letra": 45, "titulo": "Chromium", "em": 0.12, "ate": 0.84})),
     ("Quando não usar: no teste do próprio login, claro, que precisa começar deslogado. E se um teste precisa de outro usuário, ele precisa de outro arquivo de login.", {"type": "traducao", "titulo": "QUANDO USAR", "linhas": [["testes que começam logados", "o login salvo"], ["o teste do login", "começa deslogado"], ["outro usuário", "outro arquivo de login"]]}),  # pra que / quando
+    ("Antes de subir o projeto, repara no caminho que a gente fez até aqui. Muita coisa que você escreveu foi apagada depois, pra dar lugar a um jeito mais organizado.",
+     bt(("O QUE VOCÊ ESCREVEU", "white", 100), ("E DEPOIS TROCOU", "gold", 110))),
+    ("O endereço completo no goto virou o baseURL. O placeholder virou data-test. A senha escrita no código foi pro ponto env. As três linhas do login viraram o LoginPage. E o login em cada teste virou o login salvo.",
+     {"type": "traducao", "titulo": "O CAMINHO ATÉ O PROJETO FINAL", "em_frac": [0.02, 0.2, 0.36, 0.55, 0.76], "linhas": [
+         ["goto('https://www.saucedemo.com/')", "baseURL + goto('/')  · aula 23"], ["getByPlaceholder('Username')", "getByTestId('username')  · aula 23"],
+         ["'secret_sauce' no código", "process.env  · aula 24"], ["3 linhas de login em cada teste", "login.entrar(...)  · aula 39"], ["login em todo teste", "o login salvo  · aula 42"]]}),
+    ("E por que não ensinar direto o jeito final? Porque nenhum desses jeitos está errado. Todos funcionam, e você vai encontrar cada um deles nos projetos das empresas. Agora você sabe ler todos. E como fez o caminho, entende por que o jeito final é melhor.",
+     {"type": "cards", "titulo": "POR QUE APRENDER TODOS", "itens": [["✓", "Todos funcionam", "nenhum está errado", "#3fd68a"], ["🏢", "Nas empresas", "você vai ver todos", "#69a7ff"], ["💡", "Fez o caminho", "sabe por que o final é melhor", "#ffd23f"]]}),
+    ("E o projeto que vai pro GitHub agora é o jeito que eu considero o mais organizado: fácil de ler, fácil de manter, e bom de mostrar numa entrevista.",
+     {"type": "cards", "titulo": "O SEU PROJETO FINAL", "itens": [["📖", "Fácil de ler", "o teste diz o que faz"], ["🔧", "Fácil de manter", "muda num lugar só", "#69a7ff"], ["🎯", "Bom de mostrar", "numa entrevista", "#ffd23f"]]}),
     ("Projeto final pronto! Agora ele vai pro GitHub.", {"type": "passo", "icone": "▶", "titulo": "Próximo módulo", "sub": "Git, GitHub e CI"}),
     ("Te vejo lá!", {"type": "endcard", "sub": "PRÓXIMA: MÓDULO 9 · GIT E GITHUB"}),
 ]))
