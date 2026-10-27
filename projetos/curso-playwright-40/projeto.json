@@ -62,7 +62,7 @@
      "chapter": "",
      "sentences": [
       {
-       "text": "Você já sabe a receita: class, constructor, elementos e ações. Agora é só aplicar.",
+       "text": "Você já sabe a receita do LoginPage. Hoje a gente aplica a mesma receita em mais duas páginas.",
        "scene": {
         "type": "bigtext",
         "stagger": 0.25,
@@ -81,14 +81,300 @@
        }
       },
       {
-       "text": "ProdutosPage: os elementos são o título, o ícone do carrinho e o numerozinho.",
+       "text": "Relembrando a receita, em quatro passos: a class, que é o molde. O constructor, que recebe o page. Os elementos da página. E as ações.",
+       "scene": {
+        "type": "cards",
+        "titulo": "A RECEITA",
+        "itens": [
+         [
+          "1",
+          "class",
+          "o molde"
+         ],
+         [
+          "2",
+          "constructor",
+          "recebe o page",
+          "#69a7ff"
+         ],
+         [
+          "3",
+          "Elementos",
+          "os data-test",
+          "#ffd23f"
+         ],
+         [
+          "4",
+          "Ações",
+          "o que dá pra fazer",
+          "#c792ea"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Por que mais duas? O teste da compra passa por duas telas além do login: a dos produtos e a do checkout. E cada página do site ganha o seu próprio arquivo.",
+       "scene": {
+        "type": "cards",
+        "itens": [
+         [
+          "🔑",
+          "LoginPage",
+          "já está pronto"
+         ],
+         [
+          "🛒",
+          "ProdutosPage",
+          "produtos e carrinho",
+          "#69a7ff"
+         ],
+         [
+          "💳",
+          "CheckoutPage",
+          "dados e finalização",
+          "#ffd23f"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Começando pela página dos produtos. Dentro da pasta pages, um arquivo novo: ProdutosPage ponto js.",
+       "scene": {
+        "type": "menu",
+        "app": "vscode",
+        "barra": [],
+        "menus": [
+         [
+          "New File...",
+          "New Folder...",
+          "—",
+          "Cut",
+          "Copy",
+          "—",
+          "Rename..."
+         ]
+        ],
+        "caminho": [
+         0
+        ],
+        "alvo_item": "pages",
+        "resultado": "arquivo",
+        "novo": "ProdutosPage.js",
+        "novo_nivel": 2,
+        "legenda": "Dentro de pages: New File › ProdutosPage.js",
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  pages/",
+         "    LoginPage.js",
+         "  tests/",
+         "    compra.spec.js",
+         "    login.spec.js",
+         "    usuarios.spec.js",
+         "  .env",
+         "  .env.example",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "novo_pos": 5
+       }
+      },
+      {
+       "text": "Passos um e dois, igualzinho ao LoginPage: export class ProdutosPage, e o constructor recebendo o page, que fica guardado no this ponto page.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "ProdutosPage.js",
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  pages/",
+         "    LoginPage.js",
+         "    ProdutosPage.js",
+         "  tests/",
+         "    compra.spec.js",
+         "    login.spec.js",
+         "    usuarios.spec.js",
+         "  .env",
+         "  .env.example",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "codigo": "export class ProdutosPage {\n  constructor(page) {\n    this.page = page;\n  }\n}",
+        "legenda": "class + constructor",
+        "fonte": 28,
+        "digitar": true,
+        "digitar_de": 1,
+        "digitar_ate": 3
+       }
+      },
+      {
+       "text": "Passo três, os elementos. São os data-test que você já usou nas aulas trinta e cinco e trinta e seis: o título da página, title. O ícone do carrinho, shopping-cart-link. E o numerozinho, shopping-cart-badge.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "ProdutosPage.js",
+        "codigo": "export class ProdutosPage {\n  constructor(page) {\n    this.page = page;\n    this.titulo = page.getByTestId('title');\n    this.iconeCarrinho = page.getByTestId('shopping-cart-link');\n    this.contadorCarrinho = page.getByTestId('shopping-cart-badge');\n  }\n}",
+        "legenda": "Os elementos: os mesmos data-test da compra",
+        "fonte": 24,
+        "digitar": true,
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  pages/",
+         "    LoginPage.js",
+         "    ProdutosPage.js",
+         "  tests/",
+         "    compra.spec.js",
+         "    login.spec.js",
+         "    usuarios.spec.js",
+         "  .env",
+         "  .env.example",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "digitar_de": 4,
+        "digitar_ate": 6
+       }
+      },
+      {
+       "text": "Passo quatro, as ações. A primeira é adicionar: ela recebe o nome do produto, e clica no botão Add to cart dele.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "ProdutosPage.js",
+        "codigo": "export class ProdutosPage {\n  constructor(page) {\n    this.page = page;\n    this.titulo = page.getByTestId('title');\n    this.iconeCarrinho = page.getByTestId('shopping-cart-link');\n    this.contadorCarrinho = page.getByTestId('shopping-cart-badge');\n  }\n\n  async adicionar(produto) {\n    await this.page.getByTestId(`add-to-cart-${produto}`).click();\n  }\n}",
+        "legenda": "async adicionar(produto)",
+        "fonte": 24,
+        "digitar": true,
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  pages/",
+         "    LoginPage.js",
+         "    ProdutosPage.js",
+         "  tests/",
+         "    compra.spec.js",
+         "    login.spec.js",
+         "    usuarios.spec.js",
+         "  .env",
+         "  .env.example",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "digitar_de": 8,
+        "digitar_ate": 11
+       }
+      },
+      {
+       "text": "Repara na crase, igual na aula trinta e dois. Se chegar sauce-labs-backpack, o data-test vira add-to-cart-sauce-labs-backpack, o botão da mochila. E serve pra qualquer outro produto.",
+       "scene": {
+        "type": "traducao",
+        "codigo": "`add-to-cart-${produto}`",
+        "partes": [
+         [
+          "add-to-cart-",
+          "o começo do data-test"
+         ],
+         [
+          "${produto}",
+          "aqui entra o nome que chegou"
+         ]
+        ],
+        "passo": 2.2
+       }
+      },
+      {
+       "text": "A segunda ação: ir para o carrinho. Ela só clica no ícone do carrinho, que já está guardado lá em cima, no this ponto icone carrinho.",
        "scene": {
         "type": "editor",
         "arquivo": "ProdutosPage.js",
         "codigo": "export class ProdutosPage {\n  constructor(page) {\n    this.page = page;\n    this.titulo = page.getByTestId('title');\n    this.iconeCarrinho = page.getByTestId('shopping-cart-link');\n    this.contadorCarrinho = page.getByTestId('shopping-cart-badge');\n  }\n\n  async adicionar(produto) {\n    await this.page.getByTestId(`add-to-cart-${produto}`).click();\n  }\n\n  async irParaCarrinho() {\n    await this.iconeCarrinho.click();\n  }\n}",
-        "legenda": "Os elementos da página de produtos",
-        "fonte": 20,
-        "digitar": false,
+        "legenda": "async irParaCarrinho()",
+        "fonte": 24,
+        "digitar": true,
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  pages/",
+         "    LoginPage.js",
+         "    ProdutosPage.js",
+         "  tests/",
+         "    compra.spec.js",
+         "    login.spec.js",
+         "    usuarios.spec.js",
+         "  .env",
+         "  .env.example",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "digitar_de": 12,
+        "digitar_ate": 15
+       }
+      },
+      {
+       "text": "Agora a página do checkout. De novo, dentro de pages: New File, CheckoutPage ponto js.",
+       "scene": {
+        "type": "menu",
+        "app": "vscode",
+        "barra": [],
+        "menus": [
+         [
+          "New File...",
+          "New Folder...",
+          "—",
+          "Cut",
+          "Copy",
+          "—",
+          "Rename..."
+         ]
+        ],
+        "caminho": [
+         0
+        ],
+        "alvo_item": "pages",
+        "resultado": "arquivo",
+        "novo": "CheckoutPage.js",
+        "novo_nivel": 2,
+        "legenda": "Dentro de pages: New File › CheckoutPage.js",
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  pages/",
+         "    LoginPage.js",
+         "    ProdutosPage.js",
+         "  tests/",
+         "    compra.spec.js",
+         "    login.spec.js",
+         "    usuarios.spec.js",
+         "  .env",
+         "  .env.example",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "novo_pos": 4
+       }
+      },
+      {
+       "text": "A mesma receita: export class CheckoutPage, e o constructor recebendo o page.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "CheckoutPage.js",
         "pastas": [
          "meu-primeiro-playwright",
          "  .github/",
@@ -108,23 +394,19 @@
          "  package.json",
          "  playwright.config.js"
         ],
-        "destaque": [
-         4,
-         5,
-         6
-        ],
-        "destaque_em": 0.6
+        "codigo": "export class CheckoutPage {\n  constructor(page) {\n    this.page = page;\n  }\n}",
+        "legenda": "class + constructor",
+        "fonte": 28,
+        "digitar": true,
+        "digitar_de": 1,
+        "digitar_ate": 3
        }
       },
       {
-       "text": "E duas ações: adicionar um produto, e ir pro carrinho. Repara no adicionar: ele recebe o nome do produto e monta o data-test com crase, igual você aprendeu na aula 32.",
+       "text": "Os elementos são os data-test que você viu na aula trinta e seis: o botão checkout, os três campos, nome, sobrenome e CEP, o botão continue, o botão finish, e o título final, o complete-header.",
        "scene": {
         "type": "editor",
-        "arquivo": "ProdutosPage.js",
-        "codigo": "export class ProdutosPage {\n  constructor(page) {\n    this.page = page;\n    this.titulo = page.getByTestId('title');\n    this.iconeCarrinho = page.getByTestId('shopping-cart-link');\n    this.contadorCarrinho = page.getByTestId('shopping-cart-badge');\n  }\n\n  async adicionar(produto) {\n    await this.page.getByTestId(`add-to-cart-${produto}`).click();\n  }\n\n  async irParaCarrinho() {\n    await this.iconeCarrinho.click();\n  }\n}",
-        "legenda": "adicionar(produto): o data-test com crase",
-        "fonte": 20,
-        "digitar": false,
+        "arquivo": "CheckoutPage.js",
         "pastas": [
          "meu-primeiro-playwright",
          "  .github/",
@@ -144,17 +426,16 @@
          "  package.json",
          "  playwright.config.js"
         ],
-        "destaque": [
-         9,
-         10,
-         13,
-         14
-        ],
-        "destaque_em": 0.6
+        "codigo": "export class CheckoutPage {\n  constructor(page) {\n    this.page = page;\n    this.botaoCheckout = page.getByTestId('checkout');\n    this.nome = page.getByTestId('firstName');\n    this.sobrenome = page.getByTestId('lastName');\n    this.cep = page.getByTestId('postalCode');\n    this.botaoContinuar = page.getByTestId('continue');\n    this.botaoFinalizar = page.getByTestId('finish');\n    this.mensagemFinal = page.getByTestId('complete-header');\n  }\n}",
+        "legenda": "Os elementos: as telas do checkout",
+        "fonte": 22,
+        "digitar": true,
+        "digitar_de": 4,
+        "digitar_ate": 10
        }
       },
       {
-       "text": "CheckoutPage: os campos de nome, sobrenome e CEP, os botões, e a mensagem final.",
+       "text": "E a ação preencher dados: ela recebe o nome, o sobrenome e o CEP, preenche os três campos, e clica em continuar.",
        "scene": {
         "type": "editor",
         "arquivo": "CheckoutPage.js",
@@ -178,72 +459,156 @@
          "  playwright.config.js"
         ],
         "codigo": "export class CheckoutPage {\n  constructor(page) {\n    this.page = page;\n    this.botaoCheckout = page.getByTestId('checkout');\n    this.nome = page.getByTestId('firstName');\n    this.sobrenome = page.getByTestId('lastName');\n    this.cep = page.getByTestId('postalCode');\n    this.botaoContinuar = page.getByTestId('continue');\n    this.botaoFinalizar = page.getByTestId('finish');\n    this.mensagemFinal = page.getByTestId('complete-header');\n  }\n\n  async preencherDados(nome, sobrenome, cep) {\n    await this.nome.fill(nome);\n    await this.sobrenome.fill(sobrenome);\n    await this.cep.fill(cep);\n    await this.botaoContinuar.click();\n  }\n}",
-        "legenda": "Os elementos do checkout",
-        "fonte": 20,
-        "digitar": false,
-        "destaque": [
-         4,
-         5,
-         6,
-         7,
-         8,
-         9,
-         10
-        ],
-        "destaque_em": 0.6,
+        "legenda": "async preencherDados(nome, sobrenome, cep)",
+        "fonte": 22,
+        "digitar": true,
+        "digitar_de": 12,
+        "digitar_ate": 18,
         "rolar": true,
-        "rolar_de": 4.5,
-        "rolar_dur": 1.2
+        "rolar_de": 0.5,
+        "rolar_dur": 0.8
        }
       },
       {
-       "text": "E a ação preencher dados, que preenche os três campos e clica em continuar.",
-       "scene": {
-        "type": "editor",
-        "arquivo": "CheckoutPage.js",
-        "pastas": [
-         "meu-primeiro-playwright",
-         "  .github/",
-         "  node_modules/",
-         "  pages/",
-         "    CheckoutPage.js",
-         "    LoginPage.js",
-         "    ProdutosPage.js",
-         "  tests/",
-         "    compra.spec.js",
-         "    login.spec.js",
-         "    usuarios.spec.js",
-         "  .env",
-         "  .env.example",
-         "  .gitignore",
-         "  package-lock.json",
-         "  package.json",
-         "  playwright.config.js"
-        ],
-        "codigo": "export class CheckoutPage {\n  constructor(page) {\n    this.page = page;\n    this.botaoCheckout = page.getByTestId('checkout');\n    this.nome = page.getByTestId('firstName');\n    this.sobrenome = page.getByTestId('lastName');\n    this.cep = page.getByTestId('postalCode');\n    this.botaoContinuar = page.getByTestId('continue');\n    this.botaoFinalizar = page.getByTestId('finish');\n    this.mensagemFinal = page.getByTestId('complete-header');\n  }\n\n  async preencherDados(nome, sobrenome, cep) {\n    await this.nome.fill(nome);\n    await this.sobrenome.fill(sobrenome);\n    await this.cep.fill(cep);\n    await this.botaoContinuar.click();\n  }\n}",
-        "legenda": "preencherDados(nome, sobrenome, cep)",
-        "fonte": 20,
-        "digitar": false,
-        "destaque": [
-         13,
-         14,
-         15,
-         16,
-         17
-        ],
-        "destaque_em": 0.6,
-        "rolar": true,
-        "rolar_de": 0.6,
-        "rolar_dur": 1.0
-       }
-      },
-      {
-       "text": "No teste da compra, cada passo agora lê como uma frase: produtos ponto adicionar, produtos ponto ir para carrinho, checkout ponto preencher dados.",
+       "text": "Agora o teste da compra passa a usar as três páginas. Lá em cima, os imports: traga o LoginPage, o ProdutosPage e o CheckoutPage, da pasta pages.",
        "scene": {
         "type": "editor",
         "arquivo": "compra.spec.js",
-        "codigo": "import { test, expect } from '@playwright/test';\nimport { LoginPage } from '../pages/LoginPage';\nimport { ProdutosPage } from '../pages/ProdutosPage';\nimport { CheckoutPage } from '../pages/CheckoutPage';\n\ntest.describe('Compra', () => {\n  test.beforeEach(async ({ page }) => {\n    await page.goto('/');\n    const login = new LoginPage(page);\n    await login.entrar(process.env.SAUCE_USER, process.env.SAUCE_PASSWORD);\n  });\n\n  test('compra uma mochila do começo ao fim', async ({ page }) => {\n    const produtos = new ProdutosPage(page);\n    const checkout = new CheckoutPage(page);\n\n    await produtos.adicionar('sauce-labs-backpack');\n    await expect(produtos.contadorCarrinho).toHaveText('1');\n    await produtos.irParaCarrinho();\n    await checkout.botaoCheckout.click();\n    await checkout.preencherDados('Maria', 'Silva', '88000-000');\n    await checkout.botaoFinalizar.click();\n    await expect(checkout.mensagemFinal).toHaveText('Thank you for your order!');\n  });\n});",
-        "legenda": "Cada passo lê como uma frase",
+        "codigo": "import { test, expect } from '@playwright/test';\nimport { LoginPage } from '../pages/LoginPage';\nimport { ProdutosPage } from '../pages/ProdutosPage';\nimport { CheckoutPage } from '../pages/CheckoutPage';\n\ntest.describe('Compra', () => {\n  test.beforeEach(async ({ page }) => {\n    await page.goto('/');\n    await page.getByTestId('username').fill(process.env.SAUCE_USER);\n    await page.getByTestId('password').fill(process.env.SAUCE_PASSWORD);\n    await page.getByTestId('login-button').click();\n  });",
+        "legenda": "Os imports das três páginas",
+        "fonte": 24,
+        "digitar": true,
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  pages/",
+         "    CheckoutPage.js",
+         "    LoginPage.js",
+         "    ProdutosPage.js",
+         "  tests/",
+         "    compra.spec.js",
+         "    login.spec.js",
+         "    usuarios.spec.js",
+         "  .env",
+         "  .env.example",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "digitar_de": 2,
+        "digitar_ate": 4
+       }
+      },
+      {
+       "text": "No before each, as três linhas do login saem. Apaga as três.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "compra.spec.js",
+        "codigo": "import { test, expect } from '@playwright/test';\nimport { LoginPage } from '../pages/LoginPage';\nimport { ProdutosPage } from '../pages/ProdutosPage';\nimport { CheckoutPage } from '../pages/CheckoutPage';\n\ntest.describe('Compra', () => {\n  test.beforeEach(async ({ page }) => {\n    await page.goto('/');\n    await page.getByTestId('username').fill(process.env.SAUCE_USER);\n    await page.getByTestId('password').fill(process.env.SAUCE_PASSWORD);\n    await page.getByTestId('login-button').click();\n  });\n",
+        "legenda": "Apaga as três linhas do login",
+        "fonte": 24,
+        "digitar": false,
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  pages/",
+         "    CheckoutPage.js",
+         "    LoginPage.js",
+         "    ProdutosPage.js",
+         "  tests/",
+         "    compra.spec.js",
+         "    login.spec.js",
+         "    usuarios.spec.js",
+         "  .env",
+         "  .env.example",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "apagar": [
+         9,
+         10,
+         11
+        ],
+        "apagar_em": 1.6
+       }
+      },
+      {
+       "text": "E no lugar, as duas que você aprendeu na aula trinta e nove: crie um LoginPage, e entre com o usuário e a senha.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "compra.spec.js",
+        "codigo": "import { test, expect } from '@playwright/test';\nimport { LoginPage } from '../pages/LoginPage';\nimport { ProdutosPage } from '../pages/ProdutosPage';\nimport { CheckoutPage } from '../pages/CheckoutPage';\n\ntest.describe('Compra', () => {\n  test.beforeEach(async ({ page }) => {\n    await page.goto('/');\n    const login = new LoginPage(page);\n    await login.entrar(process.env.SAUCE_USER, process.env.SAUCE_PASSWORD);\n  });\n",
+        "legenda": "O login agora é o LoginPage",
+        "fonte": 24,
+        "digitar": true,
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  pages/",
+         "    CheckoutPage.js",
+         "    LoginPage.js",
+         "    ProdutosPage.js",
+         "  tests/",
+         "    compra.spec.js",
+         "    login.spec.js",
+         "    usuarios.spec.js",
+         "  .env",
+         "  .env.example",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "digitar_de": 9,
+        "digitar_ate": 10
+       }
+      },
+      {
+       "text": "Dentro do teste, as duas primeiras linhas criam as páginas: const produtos igual new ProdutosPage, e const checkout igual new CheckoutPage. As duas recebem o page.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "compra.spec.js",
+        "codigo": "  test('compra uma mochila do começo ao fim', async ({ page }) => {\n    const produtos = new ProdutosPage(page);\n    const checkout = new CheckoutPage(page);\n\n    await page.getByTestId('add-to-cart-sauce-labs-backpack').click();\n    await expect(page.getByTestId('shopping-cart-badge')).toHaveText('1');\n    await page.getByTestId('shopping-cart-link').click();\n    await page.getByTestId('checkout').click();\n    await page.getByTestId('firstName').fill('Maria');\n    await page.getByTestId('lastName').fill('Silva');\n    await page.getByTestId('postalCode').fill('88000-000');\n    await page.getByTestId('continue').click();\n    await page.getByTestId('finish').click();\n    await expect(page.getByTestId('complete-header')).toHaveText('Thank you for your order!');\n  });\n});",
+        "legenda": "Cria as duas páginas no teste",
+        "fonte": 22,
+        "digitar": true,
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  pages/",
+         "    CheckoutPage.js",
+         "    LoginPage.js",
+         "    ProdutosPage.js",
+         "  tests/",
+         "    compra.spec.js",
+         "    login.spec.js",
+         "    usuarios.spec.js",
+         "  .env",
+         "  .env.example",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "linha0": 13,
+        "digitar_de": 2,
+        "digitar_ate": 3
+       }
+      },
+      {
+       "text": "Agora os passos antigos, aqueles com o get by test id um por um. Apaga todos eles.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "compra.spec.js",
+        "codigo": "  test('compra uma mochila do começo ao fim', async ({ page }) => {\n    const produtos = new ProdutosPage(page);\n    const checkout = new CheckoutPage(page);\n\n    await page.getByTestId('add-to-cart-sauce-labs-backpack').click();\n    await expect(page.getByTestId('shopping-cart-badge')).toHaveText('1');\n    await page.getByTestId('shopping-cart-link').click();\n    await page.getByTestId('checkout').click();\n    await page.getByTestId('firstName').fill('Maria');\n    await page.getByTestId('lastName').fill('Silva');\n    await page.getByTestId('postalCode').fill('88000-000');\n    await page.getByTestId('continue').click();\n    await page.getByTestId('finish').click();\n    await expect(page.getByTestId('complete-header')).toHaveText('Thank you for your order!');\n  });\n});",
+        "legenda": "Apaga os passos antigos",
         "fonte": 22,
         "digitar": false,
         "pastas": [
@@ -265,15 +630,74 @@
          "  package.json",
          "  playwright.config.js"
         ],
-        "destaque": [
-         17,
-         19,
-         21
+        "linha0": 13,
+        "apagar": [
+         5,
+         6,
+         7,
+         8,
+         9,
+         10,
+         11,
+         12,
+         13,
+         14
         ],
-        "destaque_em": 2.6,
-        "rolar": true,
-        "rolar_de": 0.6,
-        "rolar_dur": 1.4
+        "apagar_em": 1.8
+       }
+      },
+      {
+       "text": "E no lugar, os passos usando as páginas: produtos ponto adicionar a mochila, confere o numerozinho, produtos ponto ir para carrinho, o botão checkout, checkout ponto preencher dados, o botão finish, e a conferência da mensagem final.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "compra.spec.js",
+        "codigo": "  test('compra uma mochila do começo ao fim', async ({ page }) => {\n    const produtos = new ProdutosPage(page);\n    const checkout = new CheckoutPage(page);\n\n    await produtos.adicionar('sauce-labs-backpack');\n    await expect(produtos.contadorCarrinho).toHaveText('1');\n    await produtos.irParaCarrinho();\n    await checkout.botaoCheckout.click();\n    await checkout.preencherDados('Maria', 'Silva', '88000-000');\n    await checkout.botaoFinalizar.click();\n    await expect(checkout.mensagemFinal).toHaveText('Thank you for your order!');\n  });\n});",
+        "legenda": "Os passos agora usam as páginas",
+        "fonte": 22,
+        "digitar": true,
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  pages/",
+         "    CheckoutPage.js",
+         "    LoginPage.js",
+         "    ProdutosPage.js",
+         "  tests/",
+         "    compra.spec.js",
+         "    login.spec.js",
+         "    usuarios.spec.js",
+         "  .env",
+         "  .env.example",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "linha0": 13,
+        "digitar_de": 5,
+        "digitar_ate": 11
+       }
+      },
+      {
+       "text": "Compara o antes e o depois. Antes, o teste dizia como clicar em cada coisa. Agora, ele diz o que está acontecendo: adiciona, vai pro carrinho, preenche os dados.",
+       "scene": {
+        "type": "traducao",
+        "titulo": "ANTES  ×  DEPOIS",
+        "linhas": [
+         [
+          "getByTestId('add-to-cart-sauce-labs-backpack').click()",
+          "produtos.adicionar('sauce-labs-backpack')"
+         ],
+         [
+          "getByTestId('shopping-cart-link').click()",
+          "produtos.irParaCarrinho()"
+         ],
+         [
+          "firstName, lastName, postalCode, continue",
+          "checkout.preencherDados(...)"
+         ]
+        ]
        }
       },
       {

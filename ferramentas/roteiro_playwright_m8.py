@@ -208,19 +208,64 @@ AULAS.append(projeto(39, "MÓDULO 8 · AULA 39", "Usando o LoginPage no teste", 
 PP = ler("pages/ProdutosPage.js"); CP = ler("pages/CheckoutPage.js"); C40 = cod(40)
 L_PADD = ln(PP, "async adicionar"); L_PIR = ln(PP, "async irParaCarrinho"); L_CPRE = ln(CP, "async preencherDados")
 L_T40 = ln(C40, "test('compra")
+# a aula 40 monta o compra.spec.js em etapas, a partir do da aula 36 (cada troca aparece na tela)
+C36L = C36.split("\n"); C40L = C40.split("\n")
+assert C40L[0] == C36L[0] and C40L[4:8] == C36L[1:5]
+S1 = C36L[:1] + C40L[1:4] + C36L[1:]                      # + os imports
+L_LOG = [i + 1 for i, l in enumerate(S1) if "getByTestId('username')" in l][0]  # 1ª das 3 linhas do login
+S2 = S1[:L_LOG - 1] + C40L[8:10] + S1[L_LOG + 2:]          # login vira LoginPage
+assert S2[:12] == C40L[:12], "o beforeEach tem que ficar igual ao da etapa 40"
+L_TS = [i + 1 for i, l in enumerate(S2) if "test('compra" in l][0]
+S3 = S2[:L_TS] + C40L[13:16] + S2[L_TS:]                   # + os dois const
+L_P1 = L_TS + 4; L_PN = len(S3) - 2                        # os passos antigos (do add-to-cart até o expect final)
+assert "add-to-cart" in S3[L_P1 - 1] and "complete-header" in S3[L_PN - 1]
+assert S3[:L_P1 - 1] + S3[L_PN:] == [l for l in C40L if l not in C40L[16:23]], "só os passos mudam"
+J = "\n".join
+NOVO = lambda nome: {"type": "menu", "app": "vscode", "barra": [], "menus": [["New File...", "New Folder...", "—", "Cut", "Copy", "—", "Rename..."]], "caminho": [0],
+                     "alvo_item": "pages", "resultado": "arquivo", "novo": nome, "novo_nivel": 2, "legenda": "Dentro de pages: New File › " + nome}
+ARV_PP = ARV_P[:5] + ["    ProdutosPage.js"] + ARV_P[5:]
+PPL = PP.split("\n"); CPL = CP.split("\n")
 AULAS.append(projeto(40, "MÓDULO 8 · AULA 40", "A mesma receita - ProdutosPage e CheckoutPage", [
-    ("Você já sabe a receita: class, constructor, elementos e ações. Agora é só aplicar.", titulo(40, "A MESMA RECEITA")),
-    ("ProdutosPage: os elementos são o título, o ícone do carrinho e o numerozinho.",
-     edc(PP, "Os elementos da página de produtos", arquivo="ProdutosPage.js", pastas=ARV_P3, destaque=[ln(PP, "this.titulo"), ln(PP, "this.iconeCarrinho"), ln(PP, "this.contadorCarrinho")], destaque_em=0.6, fonte=20)),
-    ("E duas ações: adicionar um produto, e ir pro carrinho. Repara no adicionar: ele recebe o nome do produto e monta o data-test com crase, igual você aprendeu na aula 32.",
-     edc(PP, "adicionar(produto): o data-test com crase", arquivo="ProdutosPage.js", pastas=ARV_P3, destaque=[L_PADD, L_PADD + 1, L_PIR, L_PIR + 1], destaque_em=0.6, fonte=20)),
-    ("CheckoutPage: os campos de nome, sobrenome e CEP, os botões, e a mensagem final.",
-     edc(CP, "Os elementos do checkout", arquivo="CheckoutPage.js", pastas=ARV_P3, destaque=list(range(ln(CP, "this.botaoCheckout"), ln(CP, "this.mensagemFinal") + 1)), destaque_em=0.6, fonte=20, rolar=True, rolar_de=4.5, rolar_dur=1.2)),
-    ("E a ação preencher dados, que preenche os três campos e clica em continuar.",
-     edc(CP, "preencherDados(nome, sobrenome, cep)", arquivo="CheckoutPage.js", pastas=ARV_P3, destaque=list(range(L_CPRE, L_CPRE + 5)), destaque_em=0.6, fonte=20, rolar=True, rolar_de=0.6, rolar_dur=1.0)),
-    ("No teste da compra, cada passo agora lê como uma frase: produtos ponto adicionar, produtos ponto ir para carrinho, checkout ponto preencher dados.",
-     edc(C40, "Cada passo lê como uma frase", arquivo="compra.spec.js", pastas=ARV_P3, destaque=[ln(C40, "produtos.adicionar"), ln(C40, "produtos.irParaCarrinho"), ln(C40, "checkout.preencherDados")],
-         destaque_em=2.6, rolar=True, rolar_de=0.6, rolar_dur=1.4, fonte=22)),
+    ("Você já sabe a receita do LoginPage. Hoje a gente aplica a mesma receita em mais duas páginas.", titulo(40, "A MESMA RECEITA")),
+    ("Relembrando a receita, em quatro passos: a class, que é o molde. O constructor, que recebe o page. Os elementos da página. E as ações.",
+     {"type": "cards", "titulo": "A RECEITA", "itens": [["1", "class", "o molde"], ["2", "constructor", "recebe o page", "#69a7ff"], ["3", "Elementos", "os data-test", "#ffd23f"], ["4", "Ações", "o que dá pra fazer", "#c792ea"]]}),
+    ("Por que mais duas? O teste da compra passa por duas telas além do login: a dos produtos e a do checkout. E cada página do site ganha o seu próprio arquivo.",
+     {"type": "cards", "itens": [["🔑", "LoginPage", "já está pronto"], ["🛒", "ProdutosPage", "produtos e carrinho", "#69a7ff"], ["💳", "CheckoutPage", "dados e finalização", "#ffd23f"]]}),
+    ("Começando pela página dos produtos. Dentro da pasta pages, um arquivo novo: ProdutosPage ponto js.",
+     dict(NOVO("ProdutosPage.js"), pastas=ARV_P, novo_pos=5)),
+    ("Passos um e dois, igualzinho ao LoginPage: export class ProdutosPage, e o constructor recebendo o page, que fica guardado no this ponto page.",
+     edc(J(PPL[:3] + ["  }", "}"]), "class + constructor", arquivo="ProdutosPage.js", pastas=ARV_PP, digitar=True, digitar_de=1, digitar_ate=3, fonte=28)),
+    ("Passo três, os elementos. São os data-test que você já usou nas aulas trinta e cinco e trinta e seis: o título da página, title. O ícone do carrinho, shopping-cart-link. E o numerozinho, shopping-cart-badge.",
+     edc(J(PPL[:6] + ["  }", "}"]), "Os elementos: os mesmos data-test da compra", arquivo="ProdutosPage.js", pastas=ARV_PP, digitar=True, digitar_de=4, digitar_ate=6, fonte=24)),
+    ("Passo quatro, as ações. A primeira é adicionar: ela recebe o nome do produto, e clica no botão Add to cart dele.",
+     edc(J(PPL[:11] + ["}"]), "async adicionar(produto)", arquivo="ProdutosPage.js", pastas=ARV_PP, digitar=True, digitar_de=8, digitar_ate=11, fonte=24)),
+    ("Repara na crase, igual na aula trinta e dois. Se chegar sauce-labs-backpack, o data-test vira add-to-cart-sauce-labs-backpack, o botão da mochila. E serve pra qualquer outro produto.",
+     {"type": "traducao", "codigo": "`add-to-cart-${produto}`", "partes": [["add-to-cart-", "o começo do data-test"], ["${produto}", "aqui entra o nome que chegou"]], "passo": 2.2}),
+    ("A segunda ação: ir para o carrinho. Ela só clica no ícone do carrinho, que já está guardado lá em cima, no this ponto icone carrinho.",
+     edc(PP, "async irParaCarrinho()", arquivo="ProdutosPage.js", pastas=ARV_PP, digitar=True, digitar_de=12, digitar_ate=15, fonte=24)),
+    ("Agora a página do checkout. De novo, dentro de pages: New File, CheckoutPage ponto js.",
+     dict(NOVO("CheckoutPage.js"), pastas=ARV_PP, novo_pos=4)),
+    ("A mesma receita: export class CheckoutPage, e o constructor recebendo o page.",
+     edc(J(CPL[:3] + ["  }", "}"]), "class + constructor", arquivo="CheckoutPage.js", pastas=ARV_P3, digitar=True, digitar_de=1, digitar_ate=3, fonte=28)),
+    ("Os elementos são os data-test que você viu na aula trinta e seis: o botão checkout, os três campos, nome, sobrenome e CEP, o botão continue, o botão finish, e o título final, o complete-header.",
+     edc(J(CPL[:10] + ["  }", "}"]), "Os elementos: as telas do checkout", arquivo="CheckoutPage.js", pastas=ARV_P3, digitar=True, digitar_de=4, digitar_ate=10, fonte=22)),
+    ("E a ação preencher dados: ela recebe o nome, o sobrenome e o CEP, preenche os três campos, e clica em continuar.",
+     edc(CP, "async preencherDados(nome, sobrenome, cep)", arquivo="CheckoutPage.js", pastas=ARV_P3, digitar=True, digitar_de=12, digitar_ate=18, fonte=22, rolar=True, rolar_de=0.5, rolar_dur=0.8)),
+    ("Agora o teste da compra passa a usar as três páginas. Lá em cima, os imports: traga o LoginPage, o ProdutosPage e o CheckoutPage, da pasta pages.",
+     edc(J(S1[:12]), "Os imports das três páginas", arquivo="compra.spec.js", pastas=ARV_P3, digitar=True, digitar_de=2, digitar_ate=4, fonte=24)),
+    ("No before each, as três linhas do login saem. Apaga as três.",
+     edc(J(S1[:13]), "Apaga as três linhas do login", arquivo="compra.spec.js", pastas=ARV_P3, apagar=[L_LOG, L_LOG + 1, L_LOG + 2], apagar_em=1.6, fonte=24)),
+    ("E no lugar, as duas que você aprendeu na aula trinta e nove: crie um LoginPage, e entre com o usuário e a senha.",
+     edc(J(S2[:12]), "O login agora é o LoginPage", arquivo="compra.spec.js", pastas=ARV_P3, digitar=True, digitar_de=L_LOG, digitar_ate=L_LOG + 1, fonte=24)),
+    ("Dentro do teste, as duas primeiras linhas criam as páginas: const produtos igual new ProdutosPage, e const checkout igual new CheckoutPage. As duas recebem o page.",
+     edc(J(S3[L_TS - 1:]), "Cria as duas páginas no teste", arquivo="compra.spec.js", pastas=ARV_P3, linha0=L_TS, digitar=True, digitar_de=2, digitar_ate=3, fonte=22)),
+    ("Agora os passos antigos, aqueles com o get by test id um por um. Apaga todos eles.",
+     edc(J(S3[L_TS - 1:]), "Apaga os passos antigos", arquivo="compra.spec.js", pastas=ARV_P3, linha0=L_TS, apagar=list(range(L_P1 - L_TS + 1, L_PN - L_TS + 2)), apagar_em=1.8, fonte=22)),
+    ("E no lugar, os passos usando as páginas: produtos ponto adicionar a mochila, confere o numerozinho, produtos ponto ir para carrinho, o botão checkout, checkout ponto preencher dados, o botão finish, e a conferência da mensagem final.",
+     edc(J(C40L[L_TS - 1:]), "Os passos agora usam as páginas", arquivo="compra.spec.js", pastas=ARV_P3, linha0=L_TS, digitar=True, digitar_de=5, digitar_ate=11, fonte=22)),
+    ("Compara o antes e o depois. Antes, o teste dizia como clicar em cada coisa. Agora, ele diz o que está acontecendo: adiciona, vai pro carrinho, preenche os dados.",
+     {"type": "traducao", "titulo": "ANTES  ×  DEPOIS", "linhas": [["getByTestId('add-to-cart-sauce-labs-backpack').click()", "produtos.adicionar('sauce-labs-backpack')"], ["getByTestId('shopping-cart-link').click()", "produtos.irParaCarrinho()"],
+                                                       ["firstName, lastName, postalCode, continue", "checkout.preencherDados(...)"]]}),
     ("Roda: o fluxo inteiro continua passando.", rodando(C40, L_T40 + 3, ln(C40, "mensagemFinal") + 1, "O fluxo inteiro continua passando", COMPRA, "rec_compra_po", pastas=ARV_P3, extra={"espera_fim": 2200, "delay_letra": 45})),
     ("E agora, se a loja mudar o botão do carrinho, você conserta num lugar só, no ProdutosPage, e todos os testes de compra voltam a passar.",
      {"type": "cards", "itens": [["✎", "O botão mudou?", "conserta no ProdutosPage"], ["✓", "Todos os testes", "voltam a passar", "#3fd68a"]]}),
