@@ -121,7 +121,7 @@
     // trocar: [[linha, texto antigo, texto novo (opcional: a linha final)], ...], um passo depois do outro a partir de trocar_em
     const TR = []; { let tc = s.trocar_em === undefined ? 1.0 : s.trocar_em; const ok = (c1) => !/[A-Za-z0-9_]/.test(c1 || " ");
       for (const [l, de, pa, em] of (s.trocar || [])) { if (em !== undefined && em !== null) tc = Math.max(tc, em); const para = (pa === undefined || pa === null) ? linhas[l - 1] : pa; let p = 0; while (p < de.length && p < para.length && de[p] === para[p]) p++;
-        while (p > 0 && !" '\"(.,{".includes(de[p - 1])) p--; 
+        if (p > 0 && !ok(de[p - 1]) && (!ok(de[p]) || !ok(para[p]))) while (p > 0 && !" '\"(.,{".includes(de[p - 1])) p--; 
         let q = 0; while (q < de.length - p && q < para.length - p && de[de.length - 1 - q] === para[para.length - 1 - q]) q++;
         while (q > 0 && !ok(de[de.length - q]) && !ok(de[de.length - q - 1])) q--;
         const mo = de.slice(p, de.length - q), mn = para.slice(p, para.length - q), tH = tc, tD = tH + 0.7, tY = tD + mo.length / 45 + 0.15, tF = tY + mn.length / 20;

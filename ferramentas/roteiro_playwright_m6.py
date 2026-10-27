@@ -83,8 +83,8 @@ AULAS.append(projeto(26, "MÓDULO 6 · AULA 26", "Lendo o erro", [
     ("Três coisas que você vai ver bastante: timeout, alguma coisa que o teste esperava não aconteceu dentro do tempo. Strict mode violation, o seletor achou mais de um elemento quando precisava de um só. E Expected e Received, o teste esperava um valor e encontrou outro.",
      {"type": "cards", "itens": [["⏱", "Timeout", "o esperado não aconteceu a tempo"], ["⚠", "Strict mode", "achou mais de um", "#ffd23f"], ["≠", "Expected × Received", "esperava um, encontrou outro", "#ff6b6b"]]}),
     ("Então, no dia a dia, a ordem é: qual teste e qual linha. Depois, o esperado e o encontrado. E se ainda não ficou claro, as próximas aulas te dão ferramentas pra ver o teste acontecendo.", {'type': 'traducao', 'titulo': 'A ORDEM PRA LER', 'linhas': [['1. qual teste e qual linha', 'onde'], ['2. Expected × Received', 'o quê'], ['3. ainda não entendeu?', 'UI Mode e trace']]}),  # pra que / quando
-    ("Pra consertar: na linha catorze, volta o Mochila pra Backpack.",
-     edc(C24, "Mochila → Backpack de volta", pastas=ARV_EX, digitar=True, digitar_de=L_MOCHILA, digitar_ate=L_MOCHILA, fonte=22, rolar=True, rolar_de=0.3, rolar_dur=0.8)),
+    ("Pra consertar: na linha catorze, apaga o Mochila e escreve Backpack de novo.",
+     edc(C24, "Mochila → Backpack de volta", pastas=ARV_EX, fonte=22, trocar=[[L_MOCHILA, C24.split("\n")[L_MOCHILA - 1].replace("'Backpack')", "'Mochila')"), None, 2.4]])),
     ("Roda de novo: passou.", vs(C24, "Passou", run(("Running 2 tests using 2 workers", "mut"), ("  2 passed (2.1s)", "ac")), pastas=ARV_EX)),
     ("Na próxima aula: um jeito muito mais visual de rodar os testes.", proxima("UI Mode")[0]),
     ("Te vejo lá!", proxima("UI Mode")[1]),

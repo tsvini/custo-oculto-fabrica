@@ -753,14 +753,14 @@
        }
       },
       {
-       "text": "Pra consertar: na linha catorze, volta o Mochila pra Backpack.",
+       "text": "Pra consertar: na linha catorze, apaga o Mochila e escreve Backpack de novo.",
        "scene": {
         "type": "editor",
         "arquivo": "login.spec.js",
         "codigo": "import { test, expect } from '@playwright/test';\n\ntest.describe('Login', () => {\n  test.beforeEach(async ({ page }) => {\n    await page.goto('/');\n  });\n\n  test('entra com usuário e senha', async ({ page }) => {\n    await page.getByTestId('username').fill(process.env.SAUCE_USER);\n    await page.getByTestId('password').fill(process.env.SAUCE_PASSWORD);\n    await page.getByTestId('login-button').click();\n    await expect(page).toHaveURL(/inventory/);\n    await expect(page.getByText('Products')).toBeVisible();\n    await expect(page.getByText('Sauce Labs Backpack')).toContainText('Backpack');\n    await expect(page.getByRole('button', { name: 'Add to cart' })).toHaveCount(6);\n  });\n\n  test('mostra erro para usuário bloqueado', async ({ page }) => {\n    await page.getByTestId('username').fill('locked_out_user');\n    await page.getByTestId('password').fill(process.env.SAUCE_PASSWORD);\n    await page.getByTestId('login-button').click();\n    await expect(page.getByText('locked out')).toBeVisible();\n  });\n});",
         "legenda": "Mochila → Backpack de volta",
         "fonte": 22,
-        "digitar": true,
+        "digitar": false,
         "pastas": [
          "meu-primeiro-playwright",
          "  .github/",
@@ -774,11 +774,14 @@
          "  package.json",
          "  playwright.config.js"
         ],
-        "digitar_de": 14,
-        "digitar_ate": 14,
-        "rolar": true,
-        "rolar_de": 0.3,
-        "rolar_dur": 0.8
+        "trocar": [
+         [
+          14,
+          "    await expect(page.getByText('Sauce Labs Backpack')).toContainText('Mochila');",
+          null,
+          2.4
+         ]
+        ]
        }
       },
       {

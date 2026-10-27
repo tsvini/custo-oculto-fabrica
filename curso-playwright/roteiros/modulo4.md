@@ -61,7 +61,7 @@
 4. E os expects que conferem a página, como o to have URL e o to be visible, também tentam de novo. Por padrão, por até cinco segundos. [cards]
 5. Pra ver isso, vamos usar um usuário especial do saucedemo, o performance glitch user. Ele é lento de propósito. [tela]
 6. Cria um teste novo com esse usuário. É igual ao primeiro, só muda o nome do usuário. [editor]
-7. Só que esse login às vezes passa de cinco segundos. Então, nessa conferência, a gente dá mais tempo: timeout dez mil. [editor]
+7. Só que esse login às vezes passa de cinco segundos. Então, nessa conferência, a gente dá mais tempo: dentro dos parênteses do to be visible, escreve timeout dez mil. [editor]
 8. Traduzindo: timeout dez mil. São milissegundos: espere até dez segundos, só nessa conferência. Os outros expects continuam com cinco. [traducao]
 9. Roda com o navegador aparecendo e olha: o clique em Login acontece, a página demora, e o teste espera sozinho até os produtos aparecerem. [editor]
 10. O que não fazer: page ponto wait for timeout três mil. Isso para o teste por três segundos sempre, mesmo quando o site já carregou. Deixa tudo lento, e ainda pode falhar se um dia demorar quatro. [compare]

@@ -145,14 +145,14 @@
        }
       },
       {
-       "text": "Dentro do código, test ponto only: roda somente esse teste. Only quer dizer somente.",
+       "text": "Dentro do código: no teste do bloqueado, logo depois do test, escreve ponto only. Test ponto only: roda somente esse teste. Only quer dizer somente.",
        "scene": {
         "type": "editor",
         "arquivo": "login.spec.js",
         "codigo": "import { test, expect } from '@playwright/test';\n\ntest.describe('Login', () => {\n  test.beforeEach(async ({ page }) => {\n    await page.goto('/');\n  });\n\n  test('entra com usuário e senha', async ({ page }) => {\n    await page.getByTestId('username').fill(process.env.SAUCE_USER);\n    await page.getByTestId('password').fill(process.env.SAUCE_PASSWORD);\n    await page.getByTestId('login-button').click();\n    await expect(page).toHaveURL(/inventory/);\n    await expect(page.getByText('Products')).toBeVisible();\n    await expect(page.getByText('Sauce Labs Backpack')).toContainText('Backpack');\n    await expect(page.getByRole('button', { name: 'Add to cart' })).toHaveCount(6);\n  });\n\n  test.only('mostra erro para usuário bloqueado', async ({ page }) => {\n    await page.getByTestId('username').fill('locked_out_user');\n    await page.getByTestId('password').fill(process.env.SAUCE_PASSWORD);\n    await page.getByTestId('login-button').click();\n    await expect(page.getByText('locked out')).toBeVisible();\n  });\n});",
         "legenda": "only = somente",
         "fonte": 22,
-        "digitar": true,
+        "digitar": false,
         "pastas": [
          "meu-primeiro-playwright",
          "  .github/",
@@ -166,11 +166,17 @@
          "  package.json",
          "  playwright.config.js"
         ],
-        "digitar_de": 18,
-        "digitar_ate": 18,
         "rolar": true,
         "rolar_de": 0.8,
-        "rolar_dur": 1.0
+        "rolar_dur": 1.0,
+        "trocar": [
+         [
+          18,
+          "  test('mostra erro para usuário bloqueado', async ({ page }) => {",
+          null,
+          2.4
+         ]
+        ]
        }
       },
       {
@@ -194,7 +200,7 @@
        }
       },
       {
-       "text": "E test ponto skip: pula esse teste. Skip quer dizer pular. No resultado, ele aparece como skipped.",
+       "text": "Agora apaga o only e escreve skip no lugar. Test ponto skip: pula esse teste. Skip quer dizer pular. No resultado, ele aparece como skipped.",
        "scene": {
         "type": "editor",
         "arquivo": "login.spec.js",
@@ -216,10 +222,14 @@
          "  package.json",
          "  playwright.config.js"
         ],
-        "destaque": [
-         4
+        "trocar": [
+         [
+          4,
+          "  test.only('mostra erro para usuário bloqueado', async ({ page }) => {",
+          null,
+          1.0
+         ]
         ],
-        "destaque_em": 0.6,
         "terminal": [
          {
           "cmd": "npx playwright test --project=chromium",

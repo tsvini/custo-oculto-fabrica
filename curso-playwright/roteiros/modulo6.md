@@ -13,7 +13,7 @@
 10. E aqui vem a pergunta mais importante de quem testa: o erro é do teste, ou é um bug no site? Aqui, fomos nós que escrevemos Mochila: o erro é do teste. Mas se o site mostrasse o nome errado, esse mesmo erro seria um bug de verdade, e virava um card pra quem desenvolve corrigir. [compare]
 11. Três coisas que você vai ver bastante: timeout, alguma coisa que o teste esperava não aconteceu dentro do tempo. Strict mode violation, o seletor achou mais de um elemento quando precisava de um só. E Expected e Received, o teste esperava um valor e encontrou outro. [cards]
 12. Então, no dia a dia, a ordem é: qual teste e qual linha. Depois, o esperado e o encontrado. E se ainda não ficou claro, as próximas aulas te dão ferramentas pra ver o teste acontecendo. [traducao]
-13. Pra consertar: na linha catorze, volta o Mochila pra Backpack. [editor]
+13. Pra consertar: na linha catorze, apaga o Mochila e escreve Backpack de novo. [editor]
 14. Roda de novo: passou. [editor]
 15. Na próxima aula: um jeito muito mais visual de rodar os testes. [passo]
 16. Te vejo lá! [endcard]
