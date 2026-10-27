@@ -391,10 +391,8 @@
           "click": "[data-test=\"continue\"]"
          }
         ],
-        "alvo": "Total:",
+        "zoom_pagina": 1.4,
         "titulo": "saucedemo.com",
-        "zoom_em": 1.8,
-        "caixa_em": 2.6,
         "legenda": "A revisão: confere antes de pagar"
        }
       },

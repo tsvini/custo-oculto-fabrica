@@ -108,7 +108,7 @@ AULAS.append(projeto(36, "MÓDULO 8 · AULA 36", "Finalizando a compra", [
     ("No código: preenche os três com dados de teste. Qualquer nome e CEP servem, porque é uma loja de treino. Depois, clica em continue.",
      edc(parcial(C36, L_CONT), "Os três campos e continue", arquivo="compra.spec.js", pastas=ARV_C, digitar=True, digitar_de=L_FIRST, digitar_ate=L_CONT, fonte=22, rolar=True, rolar_de=0.6, rolar_dur=0.8)),
     ("O continue leva pra tela de revisão. Aqui a pessoa confere tudo antes de pagar: o produto, o pagamento, a entrega e o total.",
-     {"type": "tela", "media": "site_sauce_revisao", "url": SAUCE, "acoes": COMPRA[:10], "alvo": "Total:", "titulo": "saucedemo.com", "zoom_em": 1.8, "caixa_em": 2.6, "legenda": "A revisão: confere antes de pagar"}),
+     {"type": "tela", "media": "site_sauce_revisao", "url": SAUCE, "acoes": COMPRA[:10], "zoom_pagina": 1.4, "titulo": "saucedemo.com", "legenda": "A revisão: confere antes de pagar"}),
     ("E lá embaixo, o botão Finish, que quer dizer terminar. Botão direito nele, e Inspecionar: data-test igual finish.",
      dev36("site_sauce_finish_dev", COMPRA[:10], "finish", ["class", "data-test", "id", "name"], "O botão Finish: data-test=\"finish\"")),
     ("No código, na tela de revisão, clica em finish.",

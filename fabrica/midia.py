@@ -197,6 +197,8 @@ def telas(cenas, pasta, log, idioma="pt"):
                                 pg.click(ac["click"], timeout=8000); pg.wait_for_timeout(1200)
                         except Exception as e:
                             log(f"  tela {s['media']}: ação falhou ({str(e)[:80]})")
+                    if s.get("zoom_pagina"):  # print com a página ampliada (letra pequena)
+                        pg.evaluate("z => { document.documentElement.style.zoom = String(z); }", s["zoom_pagina"]); pg.wait_for_timeout(500)
                     if s.get("inspecionar"):  # elemento real: posição e HTML (para DevTools / Selector Playground)
                         try:
                             el = pg.locator(s["inspecionar"]).first
