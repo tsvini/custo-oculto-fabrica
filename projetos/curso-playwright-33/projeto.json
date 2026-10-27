@@ -181,7 +181,7 @@
          "  package.json",
          "  playwright.config.js"
         ],
-        "codigo": "import { test, expect } from '@playwright/test';\n\nconst usuarios = [\n  'standard_user',\n  'problem_user',\n  'performance_glitch_user',\n  'visual_user',\n];\n\nfor (const usuario of usuarios) {",
+        "codigo": "import { test, expect } from '@playwright/test';\n\nconst listaDeUsuarios = [\n  'standard_user',\n  'problem_user',\n  'performance_glitch_user',\n  'visual_user',\n];\n\nfor (const usuario of listaDeUsuarios) {",
         "legenda": "workers = trabalhadores",
         "fonte": 26,
         "digitar": false,

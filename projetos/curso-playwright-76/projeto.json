@@ -93,7 +93,8 @@
         "legenda": "Login válido: ok",
         "espera_inicio": 1200,
         "espera_fim": 2200,
-        "delay_letra": 70
+        "delay_letra": 70,
+        "zoom_pagina": 1.4
        },
        "pausa": 2
       },
@@ -126,7 +127,8 @@
         "legenda": "Senha errada: ok",
         "espera_inicio": 1200,
         "espera_fim": 2200,
-        "delay_letra": 70
+        "delay_letra": 70,
+        "zoom_pagina": 1.4
        },
        "pausa": 2
       },
@@ -159,7 +161,8 @@
         "legenda": "Usuário bloqueado: ok",
         "espera_inicio": 1200,
         "espera_fim": 2200,
-        "delay_letra": 70
+        "delay_letra": 70,
+        "zoom_pagina": 1.4
        },
        "pausa": 2
       },
@@ -168,9 +171,28 @@
        "scene": {
         "type": "tela",
         "media": "n76_v1",
-        "url": "https://tsvini.github.io/custo-oculto-fabrica/loja/index.html?versao=1",
+        "url": "https://tsvini.github.io/custo-oculto-fabrica/loja/produtos.html",
         "gravar": true,
         "acoes": [
+         {
+          "scroll": 380,
+          "espera": 700
+         },
+         {
+          "select": [
+           "[data-test=\"ordenar\"]",
+           "menor"
+          ],
+          "espera": 2500
+         }
+        ],
+        "titulo": "Lojinha do Leigo",
+        "legenda": "Preço: do menor pro maior?",
+        "espera_inicio": 1200,
+        "espera_fim": 1500,
+        "delay_letra": 70,
+        "pre_url": "https://tsvini.github.io/custo-oculto-fabrica/loja/index.html?versao=1",
+        "pre_acoes": [
          {
           "fill": [
            "[data-test=\"usuario\"]",
@@ -186,45 +208,58 @@
          {
           "click": "[data-test=\"entrar\"]",
           "espera": 1800
-         },
-         {
-          "select": [
-           "[data-test=\"ordenar\"]",
-           "menor"
-          ],
-          "espera": 3500
          }
-        ],
-        "titulo": "Lojinha do Leigo",
-        "legenda": "Preço: do menor pro maior?",
-        "espera_inicio": 1200,
-        "espera_fim": 3000,
-        "delay_letra": 70
+        ]
        },
        "pausa": 2
       },
       {
        "text": "Repara nos valores: doze e cinquenta, cento e vinte e nove e noventa, quinze e noventa e nove. E o mais barato, sete e noventa e nove, quase lá no fim.",
        "scene": {
-        "type": "traducao",
-        "titulo": "A ORDEM QUE APARECEU",
-        "linhas": [
-         [
-          "R$ 12,50",
-          "1º"
-         ],
-         [
-          "R$ 129,90",
-          "2º"
-         ],
-         [
-          "R$ 15,99",
-          "3º"
-         ],
-         [
-          "R$ 7,99",
-          "6º: o mais barato, quase no fim"
-         ]
+        "type": "tela",
+        "media": "n76_precos",
+        "url": "https://tsvini.github.io/custo-oculto-fabrica/loja/produtos.html",
+        "gravar": true,
+        "acoes": [
+         {
+          "select": [
+           "[data-test=\"ordenar\"]",
+           "menor"
+          ],
+          "espera": 600
+         },
+         {
+          "scroll": 520,
+          "espera": 4200
+         },
+         {
+          "scroll": 460,
+          "espera": 4000
+         }
+        ],
+        "titulo": "Lojinha do Leigo",
+        "legenda": "12,50 · 129,90 · 15,99 … e o 7,99?",
+        "espera_inicio": 600,
+        "espera_fim": 2500,
+        "delay_letra": 70,
+        "pre_url": "https://tsvini.github.io/custo-oculto-fabrica/loja/index.html?versao=1",
+        "pre_acoes": [
+         {
+          "fill": [
+           "[data-test=\"usuario\"]",
+           "cliente"
+          ]
+         },
+         {
+          "fill": [
+           "[data-test=\"senha\"]",
+           "leigo123"
+          ]
+         },
+         {
+          "click": "[data-test=\"entrar\"]",
+          "espera": 1800
+         }
         ]
        }
       },
@@ -305,9 +340,32 @@
        "scene": {
         "type": "tela",
         "media": "n76_v2",
-        "url": "https://tsvini.github.io/custo-oculto-fabrica/loja/",
+        "url": "https://tsvini.github.io/custo-oculto-fabrica/loja/produtos.html",
         "gravar": true,
         "acoes": [
+         {
+          "select": [
+           "[data-test=\"ordenar\"]",
+           "menor"
+          ],
+          "espera": 900
+         },
+         {
+          "scroll": 520,
+          "espera": 3000
+         },
+         {
+          "scroll": 460,
+          "espera": 2500
+         }
+        ],
+        "titulo": "Lojinha do Leigo",
+        "legenda": "Versão 2: corrigido",
+        "espera_inicio": 600,
+        "espera_fim": 1500,
+        "delay_letra": 70,
+        "pre_url": "https://tsvini.github.io/custo-oculto-fabrica/loja/",
+        "pre_acoes": [
          {
           "fill": [
            "[data-test=\"usuario\"]",
@@ -323,20 +381,8 @@
          {
           "click": "[data-test=\"entrar\"]",
           "espera": 1800
-         },
-         {
-          "select": [
-           "[data-test=\"ordenar\"]",
-           "menor"
-          ],
-          "espera": 3500
          }
-        ],
-        "titulo": "Lojinha do Leigo",
-        "legenda": "Versão 2: corrigido",
-        "espera_inicio": 1200,
-        "espera_fim": 3000,
-        "delay_letra": 70
+        ]
        }
       },
       {

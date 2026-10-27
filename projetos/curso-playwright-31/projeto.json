@@ -157,7 +157,7 @@
        }
       },
       {
-       "text": "Primeiro, a lista. Cria o arquivo usuarios ponto spec ponto js e escreve: const usuarios igual, abre colchetes.",
+       "text": "Primeiro, a lista. Cria o arquivo usuarios ponto spec ponto js e escreve: const lista de usuários igual, abre colchetes.",
        "scene": {
         "type": "editor",
         "arquivo": "usuarios.spec.js",
@@ -175,26 +175,26 @@
          "  package.json",
          "  playwright.config.js"
         ],
-        "codigo": "import { test, expect } from '@playwright/test';\n\nconst usuarios = [",
-        "legenda": "Uma lista: const usuarios = [",
+        "codigo": "import { test, expect } from '@playwright/test';\n\nconst listaDeUsuarios = [",
+        "legenda": "Uma lista: const listaDeUsuarios = [",
         "fonte": 30,
         "digitar": true,
         "digitar_de": 3
        }
       },
       {
-       "text": "Traduzindo: const, guarde com o nome usuarios. O igual, o que vem depois é o valor. E os colchetes abrem uma lista.",
+       "text": "Traduzindo: const, guarde com o nome lista de usuários. Esse nome é você que escolhe: escolhe um que diga o que tem dentro. O igual: o valor é. E os colchetes abrem uma lista.",
        "scene": {
         "type": "traducao",
-        "codigo": "const usuarios = [",
+        "codigo": "const listaDeUsuarios = [",
         "partes": [
          [
           "const",
           "guarde"
          ],
          [
-          "usuarios",
-          "com o nome usuarios"
+          "listaDeUsuarios",
+          "com este nome"
          ],
          [
           "=",
@@ -205,7 +205,7 @@
           "uma lista"
          ]
         ],
-        "passo": 1.8
+        "passo": 2.0
        }
       },
       {
@@ -227,7 +227,7 @@
          "  package.json",
          "  playwright.config.js"
         ],
-        "codigo": "import { test, expect } from '@playwright/test';\n\nconst usuarios = [\n  'standard_user',\n  'problem_user',\n  'performance_glitch_user',\n  'visual_user',\n];",
+        "codigo": "import { test, expect } from '@playwright/test';\n\nconst listaDeUsuarios = [\n  'standard_user',\n  'problem_user',\n  'performance_glitch_user',\n  'visual_user',\n];",
         "legenda": "Um nome por linha, entre aspas, com vírgula",
         "fonte": 30,
         "digitar": true,
@@ -236,10 +236,10 @@
        }
       },
       {
-       "text": "Pronto: a lista usuarios guarda quatro nomes. Agora, a repetição: for, abre parênteses, const usuario of usuarios, fecha parênteses e abre chaves.",
+       "text": "Agora, a repetição. Pra entender sem se perder, a gente vai ver ela funcionando primeiro com um comando bem simples, num arquivo de rascunho: teste do for ponto js. Copia a lista pra lá.",
        "scene": {
         "type": "editor",
-        "arquivo": "usuarios.spec.js",
+        "arquivo": "teste-do-for.js",
         "pastas": [
          "meu-primeiro-playwright",
          "  .github/",
@@ -247,6 +247,7 @@
          "  tests/",
          "    login.spec.js",
          "    usuarios.spec.js",
+         "  teste-do-for.js",
          "  .env",
          "  .env.example",
          "  .gitignore",
@@ -254,18 +255,46 @@
          "  package.json",
          "  playwright.config.js"
         ],
-        "codigo": "import { test, expect } from '@playwright/test';\n\nconst usuarios = [\n  'standard_user',\n  'problem_user',\n  'performance_glitch_user',\n  'visual_user',\n];\n\nfor (const usuario of usuarios) {\n}",
-        "legenda": "for (const usuario of usuarios)",
-        "fonte": 28,
-        "digitar": true,
-        "digitar_de": 10
+        "codigo": "const listaDeUsuarios = [\n  'standard_user',\n  'problem_user',\n  'performance_glitch_user',\n  'visual_user',\n];",
+        "legenda": "Rascunho: teste-do-for.js",
+        "fonte": 30,
+        "digitar": false
        }
       },
       {
-       "text": "Traduzindo: for, para cada. usuario, um nome que a gente dá pra cada item. of usuarios, da lista usuarios. Então: para cada usuário da lista.",
+       "text": "Embaixo da lista, escreve: for, abre parênteses, const usuario of lista de usuários, fecha parênteses, abre chaves. E lá dentro, console ponto log, usuario.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "teste-do-for.js",
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  tests/",
+         "    login.spec.js",
+         "    usuarios.spec.js",
+         "  teste-do-for.js",
+         "  .env",
+         "  .env.example",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "codigo": "const listaDeUsuarios = [\n  'standard_user',\n  'problem_user',\n  'performance_glitch_user',\n  'visual_user',\n];\n\nfor (const usuario of listaDeUsuarios) {\n  console.log(usuario);\n}",
+        "legenda": "for e console.log",
+        "fonte": 30,
+        "digitar": true,
+        "digitar_de": 8,
+        "digitar_ate": 10,
+        "vel": 0.8
+       }
+      },
+      {
+       "text": "Traduzindo o for: para cada item da lista de usuários, que eu vou chamar de usuario, faça o que está dentro das chaves.",
        "scene": {
         "type": "traducao",
-        "codigo": "for (const usuario of usuarios) {",
+        "codigo": "for (const usuario of listaDeUsuarios) {",
         "partes": [
          [
           "for",
@@ -273,34 +302,103 @@
          ],
          [
           "const usuario",
-          "item da vez: usuario"
+          "item, que eu chamo de usuario"
          ],
          [
-          "of usuarios",
-          "da lista usuarios"
+          "of listaDeUsuarios",
+          "da lista de usuários"
          ]
         ],
-        "passo": 2.0
+        "passo": 2.2
        }
       },
       {
-       "text": "Voltando pra lista de compras: pra cada item da lista, você pega ele no mercado. O for faz igual: pra cada nome da lista, ele roda o que está dentro das chaves.",
+       "text": "Repara nos dois nomes, porque eles confundem no começo. Lista de usuários é a lista inteira, com os quatro. E usuario, no singular, é um só: o nome da volta da vez.",
        "scene": {
-        "type": "cards",
-        "titulo": "PARA CADA ITEM DA LISTA",
-        "itens": [
+        "type": "traducao",
+        "titulo": "DOIS NOMES, DUAS COISAS",
+        "linhas": [
          [
-          "🛒",
-          "Lista de compras",
-          "pega cada item"
+          "listaDeUsuarios",
+          "a lista inteira: os 4 nomes"
          ],
          [
-          "↻",
-          "for",
-          "roda o que está nas chaves",
-          "#ffd23f"
+          "usuario",
+          "um só: o nome da volta da vez"
          ]
         ]
+       }
+      },
+      {
+       "text": "E o console ponto log é o comando mais simples que existe: escreva isso no terminal. Aqui: escreva o nome da volta da vez.",
+       "scene": {
+        "type": "traducao",
+        "codigo": "console.log(usuario);",
+        "partes": [
+         [
+          "console.log",
+          "escreva no terminal"
+         ],
+         [
+          "(usuario)",
+          "o nome da volta da vez"
+         ]
+        ],
+        "passo": 1.6
+       }
+      },
+      {
+       "text": "Agora roda o rascunho: no terminal, node, e o nome do arquivo. Olha: os quatro nomes, um embaixo do outro. O for deu quatro voltas, e em cada volta, usuario era um nome diferente.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "teste-do-for.js",
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  tests/",
+         "    login.spec.js",
+         "    usuarios.spec.js",
+         "  teste-do-for.js",
+         "  .env",
+         "  .env.example",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "codigo": "for (const usuario of listaDeUsuarios) {\n  console.log(usuario);\n}",
+        "legenda": "node teste-do-for.js: 4 voltas, 4 nomes",
+        "fonte": 30,
+        "digitar": false,
+        "linha0": 8,
+        "terminal": [
+         {
+          "cmd": "node teste-do-for.js",
+          "em": 0.05
+         },
+         {
+          "out": "standard_user",
+          "cor": "txt",
+          "em": 0.3
+         },
+         {
+          "out": "problem_user",
+          "cor": "txt",
+          "em": 0.4
+         },
+         {
+          "out": "performance_glitch_user",
+          "cor": "txt",
+          "em": 0.5
+         },
+         {
+          "out": "visual_user",
+          "cor": "txt",
+          "em": 0.6
+         }
+        ],
+        "terminal_altura": 0.5
        }
       },
       {
@@ -336,16 +434,43 @@
        }
       },
       {
-       "text": "Agora, dentro das chaves do for, vai o teste de login que você já conhece. Por enquanto, com o nome fixo: login funciona.",
+       "text": "Viu o for funcionando? Esse arquivo de rascunho já cumpriu o papel dele: pode apagar. Agora, volta pro usuarios ponto spec ponto js, e escreve o mesmo for embaixo da lista.",
        "scene": {
         "type": "editor",
         "arquivo": "usuarios.spec.js",
-        "codigo": "import { test, expect } from '@playwright/test';\n\nconst usuarios = [\n  'standard_user',\n  'problem_user',\n  'performance_glitch_user',\n  'visual_user',\n];\n\nfor (const usuario of usuarios) {\n  test('login funciona', async ({ page }) => {\n    await page.goto('/');\n    await page.getByTestId('username').fill(usuario);\n    await page.getByTestId('password').fill(process.env.SAUCE_PASSWORD);\n    await page.getByTestId('login-button').click();\n    // o performance_glitch_user é lento: 10 segundos em vez de 5\n    await expect(page.getByTestId('title')).toHaveText('Products', { timeout: 10000 });\n  });\n}",
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  tests/",
+         "    login.spec.js",
+         "    usuarios.spec.js",
+         "  .env",
+         "  .env.example",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "codigo": "import { test, expect } from '@playwright/test';\n\nconst listaDeUsuarios = [\n  'standard_user',\n  'problem_user',\n  'performance_glitch_user',\n  'visual_user',\n];\n\nfor (const usuario of listaDeUsuarios) {\n}",
+        "legenda": "O mesmo for, no arquivo de teste",
+        "fonte": 28,
+        "digitar": true,
+        "digitar_de": 10
+       }
+      },
+      {
+       "text": "E dentro das chaves, no lugar do console ponto log, vai o teste de login que você já conhece. Por enquanto, com o nome fixo: login funciona.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "usuarios.spec.js",
+        "codigo": "for (const usuario of listaDeUsuarios) {\n  test('login funciona', async ({ page }) => {\n    await page.goto('/');\n    await page.getByTestId('username').fill(usuario);\n    await page.getByTestId('password').fill(process.env.SAUCE_PASSWORD);\n    await page.getByTestId('login-button').click();\n    // o performance_glitch_user é lento: 10 segundos em vez de 5\n    await expect(page.getByTestId('title')).toHaveText('Products', { timeout: 10000 });\n  });\n}",
         "legenda": "O teste dentro do for",
         "fonte": 24,
         "digitar": true,
         "pastas": null,
-        "digitar_de": 11
+        "linha0": 10,
+        "digitar_de": 2
        }
       },
       {
@@ -353,13 +478,14 @@
        "scene": {
         "type": "editor",
         "arquivo": "usuarios.spec.js",
-        "codigo": "import { test, expect } from '@playwright/test';\n\nconst usuarios = [\n  'standard_user',\n  'problem_user',\n  'performance_glitch_user',\n  'visual_user',\n];\n\nfor (const usuario of usuarios) {\n  test('login funciona', async ({ page }) => {\n    await page.goto('/');\n    await page.getByTestId('username').fill(usuario);\n    await page.getByTestId('password').fill(process.env.SAUCE_PASSWORD);\n    await page.getByTestId('login-button').click();\n    // o performance_glitch_user é lento: 10 segundos em vez de 5\n    await expect(page.getByTestId('title')).toHaveText('Products', { timeout: 10000 });\n  });\n}",
+        "codigo": "for (const usuario of listaDeUsuarios) {\n  test('login funciona', async ({ page }) => {\n    await page.goto('/');\n    await page.getByTestId('username').fill(usuario);\n    await page.getByTestId('password').fill(process.env.SAUCE_PASSWORD);\n    await page.getByTestId('login-button').click();\n    // o performance_glitch_user é lento: 10 segundos em vez de 5\n    await expect(page.getByTestId('title')).toHaveText('Products', { timeout: 10000 });\n  });\n}",
         "legenda": "fill(usuario): o nome da volta da vez",
         "fonte": 24,
         "digitar": false,
         "pastas": null,
+        "linha0": 10,
         "destaque": [
-         13
+         4
         ],
         "destaque_em": 0.6
        }
@@ -386,14 +512,15 @@
        "scene": {
         "type": "editor",
         "arquivo": "usuarios.spec.js",
-        "codigo": "import { test, expect } from '@playwright/test';\n\nconst usuarios = [\n  'standard_user',\n  'problem_user',\n  'performance_glitch_user',\n  'visual_user',\n];\n\nfor (const usuario of usuarios) {\n  test('login funciona', async ({ page }) => {\n    await page.goto('/');\n    await page.getByTestId('username').fill(usuario);\n    await page.getByTestId('password').fill(process.env.SAUCE_PASSWORD);\n    await page.getByTestId('login-button').click();\n    // o performance_glitch_user é lento: 10 segundos em vez de 5\n    await expect(page.getByTestId('title')).toHaveText('Products', { timeout: 10000 });\n  });\n}",
+        "codigo": "for (const usuario of listaDeUsuarios) {\n  test('login funciona', async ({ page }) => {\n    await page.goto('/');\n    await page.getByTestId('username').fill(usuario);\n    await page.getByTestId('password').fill(process.env.SAUCE_PASSWORD);\n    await page.getByTestId('login-button').click();\n    // o performance_glitch_user é lento: 10 segundos em vez de 5\n    await expect(page.getByTestId('title')).toHaveText('Products', { timeout: 10000 });\n  });\n}",
         "legenda": "O usuário lento: 10 segundos só aqui",
         "fonte": 24,
         "digitar": false,
         "pastas": null,
+        "linha0": 10,
         "destaque": [
-         16,
-         17
+         7,
+         8
         ],
         "destaque_em": 0.6
        }

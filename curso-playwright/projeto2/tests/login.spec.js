@@ -6,7 +6,8 @@ test.describe('Login', () => {
     await loginPage.abrir();
   });
 
-  test('entra com usuário válido', { tag: '@smoke' }, async ({ page, loginPage, produtosPage }) => {
+  const smoke = { tag: '@smoke' };
+  test('entra com usuário válido', smoke, async ({ page, loginPage, produtosPage }) => {
     await loginPage.entrar(process.env.LOJA_USUARIO, process.env.LOJA_SENHA);
     await expect(page).toHaveURL(/produtos/);
     await expect(produtosPage.titulo).toHaveText('Produtos');

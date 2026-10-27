@@ -50,20 +50,19 @@
        "scene": {
         "type": "editor",
         "arquivo": "LoginPage.js",
-        "codigo": "export class LoginPage {\n  constructor(page) {\n    this.page = page;\n    this.usuario = page.getByTestId('usuario');\n    this.senha = page.getByTestId('senha');\n    this.botaoEntrar = page.getByTestId('entrar');\n    this.erro = page.getByTestId('erro');\n  }\n\n  async abrir() {\n    const versao = process.env.LOJA_VERSAO ? `?versao=${process.env.LOJA_VERSAO}` : '';\n    await this.page.goto(`index.html${versao}`);\n  }\n\n  async entrar(usuario, senha) {\n    await this.usuario.fill(usuario);\n    await this.senha.fill(senha);\n    await this.botaoEntrar.click();\n  }\n}",
+        "pastas": null,
+        "codigo": "export class LoginPage {\n  constructor(page) {\n    this.page = page;\n    this.usuario = page.getByTestId('usuario');\n    this.senha = page.getByTestId('senha');\n    this.botaoEntrar = page.getByTestId('entrar');\n    this.erro = page.getByTestId('erro');\n  }",
         "legenda": "LoginPage: a mesma receita",
-        "fonte": 19,
+        "fonte": 30,
         "digitar": false,
         "linha0": 1,
-        "pastas": null,
         "destaque": [
          2,
          3,
          4,
          5,
          6,
-         7,
-         8
+         7
         ],
         "destaque_em": 0.8
        }
@@ -73,39 +72,39 @@
        "scene": {
         "type": "editor",
         "arquivo": "LoginPage.js",
-        "codigo": "export class LoginPage {\n  constructor(page) {\n    this.page = page;\n    this.usuario = page.getByTestId('usuario');\n    this.senha = page.getByTestId('senha');\n    this.botaoEntrar = page.getByTestId('entrar');\n    this.erro = page.getByTestId('erro');\n  }\n\n  async abrir() {\n    const versao = process.env.LOJA_VERSAO ? `?versao=${process.env.LOJA_VERSAO}` : '';\n    await this.page.goto(`index.html${versao}`);\n  }\n\n  async entrar(usuario, senha) {\n    await this.usuario.fill(usuario);\n    await this.senha.fill(senha);\n    await this.botaoEntrar.click();\n  }\n}",
+        "codigo": "  async abrir() {\n    const v = process.env.LOJA_VERSAO;\n    await this.page.goto(v ? `index.html?versao=${v}` : 'index.html');\n  }",
         "legenda": "abrir(): a versão vem do .env",
-        "fonte": 19,
+        "fonte": 30,
         "digitar": false,
-        "linha0": 1,
+        "linha0": 10,
         "pastas": null,
         "destaque": [
-         11,
-         12
+         2,
+         3
         ],
         "destaque_em": 0.8
        }
       },
       {
-       "text": "Traduzindo: se existir a LOJA VERSÃO, o interrogação quer dizer então: use interrogação versão igual ao número. Os dois pontos querem dizer senão: senão, nada.",
+       "text": "Traduzindo: v é a versão que veio do ponto env. O interrogação quer dizer então: se tiver a versão, abre index ponto html interrogação versão igual a ela. Os dois pontos querem dizer senão: senão, só o index ponto html.",
        "scene": {
         "type": "traducao",
-        "codigo": "process.env.LOJA_VERSAO ? `?versao=${process.env.LOJA_VERSAO}` : ''",
+        "codigo": "v ? `index.html?versao=${v}` : 'index.html'",
         "partes": [
          [
-          "process.env.LOJA_VERSAO ?",
-          "se existir a versão, então"
+          "v ?",
+          "se tiver a versão, então"
          ],
          [
-          "`?versao=${process.env.LOJA_VERSAO}`",
-          "?versao=1"
+          "`index.html?versao=${v}`",
+          "index.html?versao=1"
          ],
          [
-          ": ''",
-          "senão, nada"
+          ": 'index.html'",
+          "senão, index.html"
          ]
         ],
-        "passo": 2.0
+        "passo": 2.2
        }
       },
       {
@@ -113,12 +112,12 @@
        "scene": {
         "type": "editor",
         "arquivo": "ProdutosPage.js",
-        "codigo": "export class ProdutosPage {\n  constructor(page) {\n    this.page = page;\n    this.titulo = page.getByTestId('titulo');\n    this.ordenar = page.getByTestId('ordenar');\n    this.produtos = page.getByTestId('produto');\n    this.precos = page.getByTestId('preco');\n    this.nomes = page.getByTestId('nome');\n  }\n\n  async ordenarPor(opcao) {\n    await this.ordenar.selectOption(opcao);\n  }\n\n  // \"R$ 1.234,56\" vira 1234.56\n  async lerPrecos() {\n    const textos = await this.precos.allTextContents();\n    return textos.map((t) => Number(t.replace('R$', '').replace(/\\./g, '').replace(',', '.').trim()));\n  }\n\n  async lerNomes() {\n    return this.nomes.allTextContents();\n  }\n\n  produto(nome) {\n    return this.produtos.filter({ hasText: nome });\n  }\n}",
+        "pastas": null,
+        "codigo": "export class ProdutosPage {\n  constructor(page) {\n    this.page = page;\n    this.titulo = page.getByTestId('titulo');\n    this.ordenar = page.getByTestId('ordenar');\n    this.produtos = page.getByTestId('produto');\n    this.precos = page.getByTestId('preco');\n    this.nomes = page.getByTestId('nome');\n  }\n\n  async ordenarPor(opcao) {\n    await this.ordenar.selectOption(opcao);\n  }",
         "legenda": "ProdutosPage: elementos e ordenarPor",
-        "fonte": 19,
+        "fonte": 24,
         "digitar": false,
         "linha0": 1,
-        "pastas": null,
         "destaque": [
          11,
          12
@@ -131,14 +130,14 @@
        "scene": {
         "type": "editor",
         "arquivo": "ProdutosPage.js",
-        "codigo": "export class ProdutosPage {\n  constructor(page) {\n    this.page = page;\n    this.titulo = page.getByTestId('titulo');\n    this.ordenar = page.getByTestId('ordenar');\n    this.produtos = page.getByTestId('produto');\n    this.precos = page.getByTestId('preco');\n    this.nomes = page.getByTestId('nome');\n  }\n\n  async ordenarPor(opcao) {\n    await this.ordenar.selectOption(opcao);\n  }\n\n  // \"R$ 1.234,56\" vira 1234.56\n  async lerPrecos() {\n    const textos = await this.precos.allTextContents();\n    return textos.map((t) => Number(t.replace('R$', '').replace(/\\./g, '').replace(',', '.').trim()));\n  }\n\n  async lerNomes() {\n    return this.nomes.allTextContents();\n  }\n\n  produto(nome) {\n    return this.produtos.filter({ hasText: nome });\n  }\n}",
+        "codigo": "  // \"R$ 1.234,56\" vira 1234.56\n  async lerPrecos() {\n    const textos = await this.precos.allTextContents();\n    return textos.map((t) => Number(\n      t.replace('R$', '').replace(/\\./g, '').replace(',', '.').trim(),\n    ));\n  }",
         "legenda": "allTextContents: o texto de todos",
-        "fonte": 19,
+        "fonte": 22,
         "digitar": false,
-        "linha0": 1,
+        "linha0": 15,
         "pastas": null,
         "destaque": [
-         17
+         3
         ],
         "destaque_em": 0.8
        }
@@ -199,15 +198,15 @@
        "scene": {
         "type": "editor",
         "arquivo": "ProdutosPage.js",
-        "codigo": "export class ProdutosPage {\n  constructor(page) {\n    this.page = page;\n    this.titulo = page.getByTestId('titulo');\n    this.ordenar = page.getByTestId('ordenar');\n    this.produtos = page.getByTestId('produto');\n    this.precos = page.getByTestId('preco');\n    this.nomes = page.getByTestId('nome');\n  }\n\n  async ordenarPor(opcao) {\n    await this.ordenar.selectOption(opcao);\n  }\n\n  // \"R$ 1.234,56\" vira 1234.56\n  async lerPrecos() {\n    const textos = await this.precos.allTextContents();\n    return textos.map((t) => Number(t.replace('R$', '').replace(/\\./g, '').replace(',', '.').trim()));\n  }\n\n  async lerNomes() {\n    return this.nomes.allTextContents();\n  }\n\n  produto(nome) {\n    return this.produtos.filter({ hasText: nome });\n  }\n}",
-        "legenda": "produto(nome): o card pelo nome",
-        "fonte": 19,
-        "digitar": false,
-        "linha0": 1,
         "pastas": null,
+        "codigo": "  produto(nome) {\n    return this.produtos.filter({ hasText: nome });\n  }",
+        "legenda": "produto(nome): o card pelo nome",
+        "fonte": 30,
+        "digitar": false,
+        "linha0": 27,
         "destaque": [
-         25,
-         26
+         1,
+         2
         ],
         "destaque_em": 0.8
        }
@@ -236,7 +235,7 @@
         ],
         "codigo": "import { test as base } from '@playwright/test';\nimport { LoginPage } from '../pages/LoginPage';\nimport { ProdutosPage } from '../pages/ProdutosPage';\n\nexport const test = base.extend({\n  loginPage: async ({ page }, use) => {\n    await use(new LoginPage(page));\n  },\n  produtosPage: async ({ page }, use) => {\n    await use(new ProdutosPage(page));\n  },\n});\n\nexport { expect } from '@playwright/test';",
         "legenda": "A fixture: as duas páginas prontas",
-        "fonte": 26,
+        "fonte": 24,
         "digitar": false,
         "linha0": 1
        }

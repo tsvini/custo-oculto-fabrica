@@ -8,8 +8,8 @@ export class LoginPage {
   }
 
   async abrir() {
-    const versao = process.env.LOJA_VERSAO ? `?versao=${process.env.LOJA_VERSAO}` : '';
-    await this.page.goto(`index.html${versao}`);
+    const v = process.env.LOJA_VERSAO;
+    await this.page.goto(v ? `index.html?versao=${v}` : 'index.html');
   }
 
   async entrar(usuario, senha) {

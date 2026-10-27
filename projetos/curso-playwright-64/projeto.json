@@ -240,7 +240,7 @@
         ],
         "codigo": "import { test as base } from '@playwright/test';\nimport { LoginPage } from '../pages/LoginPage';\nimport { ProdutosPage } from '../pages/ProdutosPage';\n\nexport const test = base.extend({\n  loginPage: async ({ page }, use) => {\n    await use(new LoginPage(page));\n  },\n  produtosPage: async ({ page }, use) => {\n    await use(new ProdutosPage(page));\n  },\n});\n\nexport { expect } from '@playwright/test';",
         "legenda": "A mesma receita pro produtosPage",
-        "fonte": 26,
+        "fonte": 24,
         "digitar": true,
         "linha0": 1,
         "digitar_de": 9,

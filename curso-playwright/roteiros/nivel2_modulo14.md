@@ -26,7 +26,7 @@
 3. Senha errada: aparece Usuário ou senha incorretos. Ok. [+pausa] [tela]
 4. Usuário bloqueado: aparece que ele está bloqueado. Ok. [+pausa] [tela]
 5. Agora, ordenar do menor pro maior preço. [+pausa] [tela]
-6. Repara nos valores: doze e cinquenta, cento e vinte e nove e noventa, quinze e noventa e nove. E o mais barato, sete e noventa e nove, quase lá no fim. [traducao]
+6. Repara nos valores: doze e cinquenta, cento e vinte e nove e noventa, quinze e noventa e nove. E o mais barato, sete e noventa e nove, quase lá no fim. [tela]
 7. Isso não está em ordem. Antes de escrever uma linha de automação, você acabou de achar um bug. [bigtext]
 8. E por que ele acontece? A loja compara o preço como texto. E em texto, o um vem antes do sete, igual no dicionário. Então doze e cento e vinte e nove vêm antes do sete. [traducao]
 9. É exatamente por isso que a gente pensou nos cenários antes de abrir o editor. Quem começa direto no código testa o que lembrou. Quem pensa primeiro testa o que importa. [compare]
@@ -45,7 +45,7 @@
 ## Aula 78: Page Objects e fixture
 1. O LoginPage, com a receita que você já conhece: os campos, o botão, a mensagem de erro, e o entrar. [editor]
 2. E uma ação nova, o abrir. Ela abre a loja, e se o ponto env tiver a versão, acrescenta o interrogação versão no endereço. [editor]
-3. Traduzindo: se existir a LOJA VERSÃO, o interrogação quer dizer então: use interrogação versão igual ao número. Os dois pontos querem dizer senão: senão, nada. [traducao]
+3. Traduzindo: v é a versão que veio do ponto env. O interrogação quer dizer então: se tiver a versão, abre index ponto html interrogação versão igual a ela. Os dois pontos querem dizer senão: senão, só o index ponto html. [traducao]
 4. Agora o ProdutosPage. Os elementos: o título, a caixa de ordenar, os produtos, os preços e os nomes. E a ação de ordenar, com o select option que você já conhece. [editor]
 5. E uma ação que lê os preços da tela. Primeiro, all text contents: pegue o texto de todos os preços, numa lista. [editor]
 6. Só que eles vêm como texto: R$ doze, vírgula, cinquenta. E pra comparar, a gente precisa de número. Então, pra cada texto: tira o R$, tira o ponto do milhar, troca a vírgula por ponto, e transforma em número. [traducao]

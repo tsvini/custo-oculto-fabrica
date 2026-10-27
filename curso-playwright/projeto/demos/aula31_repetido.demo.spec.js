@@ -1,13 +1,13 @@
 import { test, expect } from '@playwright/test';
 
-const usuarios = [
+const listaDeUsuarios = [
   'standard_user',
   'problem_user',
   'performance_glitch_user',
   'visual_user',
 ];
 
-for (const usuario of usuarios) {
+for (const usuario of listaDeUsuarios) {
   test('login funciona', async ({ page }) => {
     await page.goto('/');
     await page.getByTestId('username').fill(usuario);

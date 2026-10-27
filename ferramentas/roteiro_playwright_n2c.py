@@ -37,6 +37,12 @@ def ed(cod, legenda, arquivo, de=None, ate=None, linha0=1, pastas="auto", **kw):
     return edc(cod, legenda, **d)
 
 
+def parte(cod, de, ate, legenda, arquivo, destaque=(), **kw):
+    """só um pedaço do arquivo (de..ate), com a numeração certa: a letra fica grande"""
+    kw.setdefault("pastas", None)
+    return ed(trecho(cod, de, ate), legenda, arquivo, linha0=de, destaque=[d - de + 1 for d in destaque], **kw)
+
+
 def tr(codigo, partes, passo=1.6):
     return {"type": "traducao", "codigo": codigo, "partes": partes, "passo": passo}
 
@@ -130,13 +136,14 @@ aula(75, "Os cenários, em português", [
 V1 = LOJA + "index.html?versao=1"
 aula(76, "Tem alguma coisa errada aqui", [
     ("Antes de automatizar, a gente roda alguns cenários na mão, na versão que o time entregou, a versão um. Isso tem nome: teste exploratório.", titulo(76, "NA MÃO PRIMEIRO")),
-    ("Login válido, com cliente e leigo123: entrou. Ok.", video("n76_ok", "Login válido: ok", entrar("cliente", "leigo123"), url=V1)),
-    ("Senha errada: aparece Usuário ou senha incorretos. Ok.", video("n76_senha", "Senha errada: ok", entrar("cliente", "errada"), url=V1)),
-    ("Usuário bloqueado: aparece que ele está bloqueado. Ok.", video("n76_bloq", "Usuário bloqueado: ok", entrar("bloqueado", "leigo123"), url=V1)),
+    ("Login válido, com cliente e leigo123: entrou. Ok.", video("n76_ok", "Login válido: ok", entrar("cliente", "leigo123"), url=V1, zoom_pagina=1.4)),
+    ("Senha errada: aparece Usuário ou senha incorretos. Ok.", video("n76_senha", "Senha errada: ok", entrar("cliente", "errada"), url=V1, zoom_pagina=1.4)),
+    ("Usuário bloqueado: aparece que ele está bloqueado. Ok.", video("n76_bloq", "Usuário bloqueado: ok", entrar("bloqueado", "leigo123"), url=V1, zoom_pagina=1.4)),
     ("Agora, ordenar do menor pro maior preço.",
-     video("n76_v1", "Preço: do menor pro maior?", entrar("cliente", "leigo123") + [{"select": ["[data-test=\"ordenar\"]", "menor"], "espera": 3500}], url=V1, espera_fim=3000)),
+     video("n76_v1", "Preço: do menor pro maior?", [{"scroll": 380, "espera": 700}, {"select": ["[data-test=\"ordenar\"]", "menor"], "espera": 2500}], url=LOJA + "produtos.html", pre_url=V1, pre_acoes=entrar("cliente", "leigo123"), espera_fim=1500)),
     ("Repara nos valores: doze e cinquenta, cento e vinte e nove e noventa, quinze e noventa e nove. E o mais barato, sete e noventa e nove, quase lá no fim.",
-     trl("A ORDEM QUE APARECEU", [["R$ 12,50", "1º"], ["R$ 129,90", "2º"], ["R$ 15,99", "3º"], ["R$ 7,99", "6º: o mais barato, quase no fim"]])),
+     video("n76_precos", "12,50 · 129,90 · 15,99 … e o 7,99?", [{"select": ["[data-test=\"ordenar\"]", "menor"], "espera": 600}, {"scroll": 520, "espera": 4200}, {"scroll": 460, "espera": 4000}],
+           url=LOJA + "produtos.html", pre_url=V1, pre_acoes=entrar("cliente", "leigo123"), espera_inicio=600, espera_fim=2500)),
     ("Isso não está em ordem. Antes de escrever uma linha de automação, você acabou de achar um bug.",
      bt(("ANTES DE UMA LINHA DE CÓDIGO", "white", 90), ("VOCÊ ACHOU UM BUG", "gold", 130))),
     ("E por que ele acontece? A loja compara o preço como texto. E em texto, o um vem antes do sete, igual no dicionário. Então doze e cento e vinte e nove vêm antes do sete.",
@@ -146,7 +153,8 @@ aula(76, "Tem alguma coisa errada aqui", [
     ("Agora, registra: o título dizendo o problema, o passo a passo, o esperado, o que aconteceu, e o print.",
      pagina("card_bug_loja", "O card do bug")),
     ("O time corrigiu e entregou a versão dois. Abre de novo e ordena: agora sim, do menor pro maior. Agora a gente automatiza, pra esse bug nunca mais voltar sem ninguém ver.",
-     video("n76_v2", "Versão 2: corrigido", entrar("cliente", "leigo123") + [{"select": ["[data-test=\"ordenar\"]", "menor"], "espera": 3500}], espera_fim=3000)),
+     video("n76_v2", "Versão 2: corrigido", [{"select": ["[data-test=\"ordenar\"]", "menor"], "espera": 900}, {"scroll": 520, "espera": 3000}, {"scroll": 460, "espera": 2500}],
+               url=LOJA + "produtos.html", pre_url=LOJA, pre_acoes=entrar("cliente", "leigo123"), espera_inicio=600, espera_fim=1500)),
 ] + fim("começando o projeto organizado"))
 
 # ---------- 77 · projeto organizado ----------
@@ -171,51 +179,51 @@ LP = ler("pages/LoginPage.js"); PP = ler("pages/ProdutosPage.js"); FX = ler("fix
 L_ABRIR = ln(LP, "async abrir"); L_ORD = ln(PP, "async ordenarPor"); L_LER = ln(PP, "async lerPrecos"); L_PROD = ln(PP, "produto(nome)")
 aula(78, "Page Objects e fixture", [
     ("O LoginPage, com a receita que você já conhece: os campos, o botão, a mensagem de erro, e o entrar.",
-     ed(LP, "LoginPage: a mesma receita", "LoginPage.js", destaque=list(range(2, 9)), destaque_em=0.8, pastas=None)),
+     parte(LP, 1, 8, "LoginPage: a mesma receita", "LoginPage.js", destaque=list(range(2, 8)), destaque_em=0.8)),
     ("E uma ação nova, o abrir. Ela abre a loja, e se o ponto env tiver a versão, acrescenta o interrogação versão no endereço.",
-     ed(LP, "abrir(): a versão vem do .env", "LoginPage.js", destaque=[L_ABRIR + 1, L_ABRIR + 2], destaque_em=0.8, pastas=None)),
-    ("Traduzindo: se existir a LOJA VERSÃO, o interrogação quer dizer então: use interrogação versão igual ao número. Os dois pontos querem dizer senão: senão, nada.",
-     tr("process.env.LOJA_VERSAO ? `?versao=${process.env.LOJA_VERSAO}` : ''", [["process.env.LOJA_VERSAO ?", "se existir a versão, então"], ["`?versao=${process.env.LOJA_VERSAO}`", "?versao=1"], [": ''", "senão, nada"]], 2.0)),
+     parte(LP, L_ABRIR, L_ABRIR + 3, "abrir(): a versão vem do .env", "LoginPage.js", destaque=[L_ABRIR + 1, L_ABRIR + 2], destaque_em=0.8, fonte=30)),
+    ("Traduzindo: v é a versão que veio do ponto env. O interrogação quer dizer então: se tiver a versão, abre index ponto html interrogação versão igual a ela. Os dois pontos querem dizer senão: senão, só o index ponto html.",
+     tr("v ? `index.html?versao=${v}` : 'index.html'", [["v ?", "se tiver a versão, então"], ["`index.html?versao=${v}`", "index.html?versao=1"], [": 'index.html'", "senão, index.html"]], 2.2)),
     ("Agora o ProdutosPage. Os elementos: o título, a caixa de ordenar, os produtos, os preços e os nomes. E a ação de ordenar, com o select option que você já conhece.",
-     ed(PP, "ProdutosPage: elementos e ordenarPor", "ProdutosPage.js", destaque=[L_ORD, L_ORD + 1], destaque_em=1.8, pastas=None)),
+     parte(PP, 1, L_ORD + 2, "ProdutosPage: elementos e ordenarPor", "ProdutosPage.js", destaque=[L_ORD, L_ORD + 1], destaque_em=1.8, fonte=24)),
     ("E uma ação que lê os preços da tela. Primeiro, all text contents: pegue o texto de todos os preços, numa lista.",
-     ed(PP, "allTextContents: o texto de todos", "ProdutosPage.js", destaque=[L_LER + 1], destaque_em=0.8, pastas=None)),
+     parte(PP, L_LER - 1, L_LER + 5, "allTextContents: o texto de todos", "ProdutosPage.js", destaque=[L_LER + 1], destaque_em=0.8)),
     ("Só que eles vêm como texto: R$ doze, vírgula, cinquenta. E pra comparar, a gente precisa de número. Então, pra cada texto: tira o R$, tira o ponto do milhar, troca a vírgula por ponto, e transforma em número.",
      trl("DE TEXTO PRA NÚMERO", [["\"R$ 1.234,56\"", "o texto da tela"], [".replace('R$', '')", "tira o R$"], [".replace(/\\./g, '')", "tira o ponto do milhar"], [".replace(',', '.')", "vírgula vira ponto"], ["Number(...)", "1234.56: um número"]])),
     ("Por que a vírgula vira ponto? Porque o JavaScript escreve número do jeito americano: sete ponto noventa e nove. Com vírgula, ele não entende.",
      cmp("O MESMO PREÇO", ["\"7,99\"", "TEXTO: NÃO DÁ PRA COMPARAR"], ["7.99", "NÚMERO: DÁ PRA ORDENAR"])),
     ("E o produto, que acha o card de um produto pelo nome, com o filter has text da aula sessenta e três.",
-     ed(PP, "produto(nome): o card pelo nome", "ProdutosPage.js", destaque=[L_PROD, L_PROD + 1], destaque_em=0.8, pastas=None)),
+     parte(PP, L_PROD, L_PROD + 2, "produto(nome): o card pelo nome", "ProdutosPage.js", destaque=[L_PROD, L_PROD + 1], destaque_em=0.8, fonte=30)),
     ("E a fixture que entrega os dois prontos pros testes. Igual à do módulo treze.",
-     ed(FX, "A fixture: as duas páginas prontas", "paginas.js")),
+     ed(FX, "A fixture: as duas páginas prontas", "paginas.js", fonte=24)),
     ("Repara como foi mais rápido da segunda vez. Não porque a gente pulou explicação: porque agora você conhece a receita, e só aplica.",
      bt(("MAIS RÁPIDO", "white", 120), ("PORQUE VOCÊ CONHECE A RECEITA", "gold", 90))),
 ] + fim("automatizando os cenários"))
 
 # ---------- 79 · automatizando ----------
 LS = ler("tests/login.spec.js"); LJ = ler("dados/login.json"); PS = ler("tests/produtos.spec.js"); OJ = ler("dados/ordenacao.json")
-L_SORT = ln(PS, ".sort("); L_REV = ln(PS, "reverse()"); L_EQ = ln(PS, "toEqual"); L_DIS = ln(PS, "toBeDisabled"); L_TAG = ln(PS, "@smoke")
+L_SORT = ln(PS, ".sort("); L_FOR = ln(PS, "for (const o"); L_REV = ln(PS, "reverse()"); L_EQ = ln(PS, "toEqual"); L_DIS = ln(PS, "toBeDisabled"); L_TAG = ln(PS, "@smoke")
 aula(79, "Agora sim, automatizando os cenários", [
     ("A lista de cenários vira teste. Começando pelo login: os quatro casos de erro moram no login ponto json, cada um com o usuário, a senha, e a mensagem esperada.",
-     ed(LJ, "dados/login.json: os casos de erro", "login.json", pastas=None)),
+     ed(LJ, "dados/login.json: os casos de erro", "login.json", pastas=None, fonte=26, rolar=True, rolar_de=3.0, rolar_dur=3.5)),
     ("E o teste: o login válido, com a etiqueta smoke. E um for pelos casos do JSON, conferindo a mensagem de cada um.",
-     ed(LS, "login.spec.js: o válido e os casos do JSON", "login.spec.js", destaque=[ln(LS, "@smoke"), ln(LS, "for (const caso"), ln(LS, "caso.mensagem")], destaque_em=1.0, pastas=None)),
+     parte(LS, ln(LS, "const smoke"), len(LS.split("\n")) - 1, "login.spec.js: o válido e os casos do JSON", "login.spec.js", destaque=[ln(LS, "const smoke"), ln(LS, "for (const caso"), ln(LS, "caso.mensagem")], destaque_em=1.0)),
     ("A ordenação: os quatro sentidos no ordenacao ponto json. Qual opção escolher, o nome do cenário, o campo, e o sentido.",
-     ed(OJ, "dados/ordenacao.json: os 4 sentidos", "ordenacao.json", pastas=None)),
+     ed(OJ, "dados/ordenacao.json: os 4 sentidos", "ordenacao.json", pastas=None, fonte=26, rolar=True, rolar_de=3.0, rolar_dur=3.0)),
     ("No teste, um for pelos quatro. Escolhe a opção, e lê da tela os preços ou os nomes.",
-     ed(PS, "Um teste pra cada sentido", "produtos.spec.js", destaque=[ln(PS, "for (const o"), ln(PS, "ordenarPor"), ln(PS, "const naTela")], destaque_em=1.0, pastas=None)),
+     parte(PS, L_FOR, L_FOR + 12, "Um teste pra cada sentido", "produtos.spec.js", destaque=[L_FOR, ln(PS, "ordenarPor"), ln(PS, "const naTela")], destaque_em=1.0)),
     ("E agora, a parte mais importante: como conferir que está em ordem? A gente pega a lista da tela, faz uma cópia, e ordena a cópia do jeito certo. Se a tela estiver certa, as duas ficam iguais.",
      cards([["👀", "A lista da tela", "do jeito que a loja mostrou"], ["⧉", "Uma cópia", "ordenada do jeito certo", AZUL], ["=", "Compara as duas", "iguais: passou", VERDE]], "CONFERINDO A ORDEM")),
     ("Traduzindo: os três pontinhos entre colchetes, faça uma cópia. Sort, ordene. A menos b, do menor pro maior, como número. E locale compare, em ordem alfabética, pros nomes.",
      tr("const esperado = [...naTela].sort((a, b) => a - b);", [["[...naTela]", "uma cópia da lista"], [".sort(", "ordene"], ["(a, b) => a - b", "do menor pro maior"]], 2.0)),
     ("Se o sentido é decrescente, reverse: inverta a lista. E o to equal compara as duas listas inteiras, item por item.",
-     ed(PS, "reverse e toEqual: a lista inteira", "produtos.spec.js", destaque=[L_REV, L_EQ], destaque_em=0.8, pastas=None)),
+     parte(PS, L_FOR, L_FOR + 12, "reverse e toEqual: a lista inteira", "produtos.spec.js", destaque=[L_REV, L_EQ], destaque_em=0.8)),
     ("Repara na diferença pro desafio quatro: lá, a gente conferia só o primeiro preço. Aqui, a lista inteira. E é isso que pega o bug da versão um, que tinha o primeiro errado e o resto embaralhado.",
      cmp("CONFERIR O QUÊ?", ["SÓ O PRIMEIRO", "PODE DEIXAR PASSAR"], ["A LISTA INTEIRA", "PEGA O BUG"])),
     ("E a etiqueta: só o teste do menor preço ganha o smoke. É o interrogação de novo: se a opção for menor, a etiqueta smoke. Senão, nenhuma.",
-     ed(PS, "Só o do menor preço é smoke", "produtos.spec.js", destaque=[L_TAG], destaque_em=0.8, pastas=None)),
+     parte(PS, L_FOR, L_FOR + 3, "Só o do menor preço é smoke", "produtos.spec.js", destaque=[L_TAG], destaque_em=0.8)),
     ("E o esgotado, do jeito que a pessoa respondeu: ele aparece, com a etiqueta de esgotado, e o botão de adicionar desabilitado. To be disabled: esteja desabilitado.",
-     ed(PS, "toBeDisabled: aparece, mas não dá pra comprar", "produtos.spec.js", destaque=[L_DIS - 1, L_DIS], destaque_em=0.8, pastas=None)),
+     parte(PS, L_DIS - 3, L_DIS + 1, "toBeDisabled: aparece, mas não dá pra comprar", "produtos.spec.js", destaque=[L_DIS - 1, L_DIS], destaque_em=0.8)),
     ("Roda tudo na versão dois: dez testes, todos passando.",
      term(["npx playwright test --project=chromium --reporter=list", ("Running 10 tests using 1 worker", "mut"),
            ("  ✓   1 › Login › entra com usuário válido @smoke (590ms)", "ac"), ("  ✓   2 › Login › mostra erro: senha errada (362ms)", "ac"),

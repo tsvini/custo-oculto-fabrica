@@ -9,10 +9,14 @@ test.describe('Produtos', () => {
   });
 
   for (const o of ordenacoes) {
-    test(`ordena por ${o.nome}`, { tag: o.opcao === 'menor' ? ['@smoke'] : [] }, async ({ produtosPage }) => {
+    const tag = o.opcao === 'menor' ? ['@smoke'] : [];
+    test(`ordena por ${o.nome}`, { tag }, async ({ produtosPage }) => {
       await produtosPage.ordenarPor(o.opcao);
-      const naTela = o.campo === 'preco' ? await produtosPage.lerPrecos() : await produtosPage.lerNomes();
-      const esperado = [...naTela].sort((a, b) => (o.campo === 'preco' ? a - b : a.localeCompare(b)));
+      const naTela = o.campo === 'preco'
+        ? await produtosPage.lerPrecos()
+        : await produtosPage.lerNomes();
+      const esperado = [...naTela].sort((a, b) =>
+        (o.campo === 'preco' ? a - b : a.localeCompare(b)));
       if (o.sentido === 'decrescente') esperado.reverse();
       expect(naTela).toEqual(esperado);
     });

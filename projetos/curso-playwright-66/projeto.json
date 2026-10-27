@@ -137,14 +137,14 @@
        "scene": {
         "type": "editor",
         "arquivo": "mock.spec.js",
-        "codigo": "import { test, expect } from '@playwright/test';\n\nconst lojinha = 'https://tsvini.github.io/custo-oculto-fabrica/loja/';\nconst api = '**/api/produtos.json';\n\ntest.beforeEach(async ({ page }) => {\n  await page.goto(lojinha);\n  await page.getByTestId('usuario').fill('cliente');\n  await page.getByTestId('senha').fill('leigo123');\n  await page.getByTestId('entrar').click();\n  await expect(page.getByTestId('produto').first()).toBeVisible();\n});\n\ntest('servidor fora do ar', async ({ page }) => {\n  await page.route(api, (route) => route.abort());\n  await page.reload();\n  await expect(page.getByTestId('erro-carregar')).toBeVisible();\n});",
-        "legenda": "page.route + route.abort()",
-        "fonte": 22,
-        "digitar": true,
-        "linha0": 1,
         "pastas": null,
-        "digitar_de": 15,
-        "digitar_ate": 15
+        "codigo": "test('servidor fora do ar', async ({ page }) => {\n  await page.route(api, (route) => route.abort());\n  await page.reload();\n  await expect(page.getByTestId('erro-carregar')).toBeVisible();\n});",
+        "legenda": "page.route + route.abort()",
+        "fonte": 26,
+        "digitar": true,
+        "linha0": 14,
+        "digitar_de": 2,
+        "digitar_ate": 2
        }
       },
       {
@@ -174,14 +174,14 @@
        "scene": {
         "type": "editor",
         "arquivo": "mock.spec.js",
-        "codigo": "import { test, expect } from '@playwright/test';\n\nconst lojinha = 'https://tsvini.github.io/custo-oculto-fabrica/loja/';\nconst api = '**/api/produtos.json';\n\ntest.beforeEach(async ({ page }) => {\n  await page.goto(lojinha);\n  await page.getByTestId('usuario').fill('cliente');\n  await page.getByTestId('senha').fill('leigo123');\n  await page.getByTestId('entrar').click();\n  await expect(page.getByTestId('produto').first()).toBeVisible();\n});\n\ntest('servidor fora do ar', async ({ page }) => {\n  await page.route(api, (route) => route.abort());\n  await page.reload();\n  await expect(page.getByTestId('erro-carregar')).toBeVisible();\n});",
-        "legenda": "reload: pede de novo, agora bloqueado",
-        "fonte": 22,
-        "digitar": false,
-        "linha0": 1,
         "pastas": null,
+        "codigo": "test('servidor fora do ar', async ({ page }) => {\n  await page.route(api, (route) => route.abort());\n  await page.reload();\n  await expect(page.getByTestId('erro-carregar')).toBeVisible();\n});",
+        "legenda": "reload: pede de novo, agora bloqueado",
+        "fonte": 26,
+        "digitar": false,
+        "linha0": 14,
         "destaque": [
-         16
+         3
         ],
         "destaque_em": 0.8
        }
@@ -191,9 +191,27 @@
        "scene": {
         "type": "tela",
         "media": "n66_erro",
-        "url": "https://tsvini.github.io/custo-oculto-fabrica/loja/",
+        "url": "https://tsvini.github.io/custo-oculto-fabrica/loja/produtos.html",
         "gravar": true,
         "acoes": [
+         {
+          "espera": 800
+         },
+         {
+          "bloqueia": "**/api/produtos.json"
+         },
+         {
+          "reload": true,
+          "espera": 4500
+         }
+        ],
+        "titulo": "Lojinha do Leigo",
+        "legenda": "Servidor fora do ar: o aviso",
+        "espera_inicio": 900,
+        "espera_fim": 2000,
+        "delay_letra": 70,
+        "pre_url": "https://tsvini.github.io/custo-oculto-fabrica/loja/",
+        "pre_acoes": [
          {
           "fill": [
            "[data-test=\"usuario\"]",
@@ -209,20 +227,8 @@
          {
           "click": "[data-test=\"entrar\"]",
           "espera": 1500
-         },
-         {
-          "bloqueia": "**/api/produtos.json"
-         },
-         {
-          "reload": true,
-          "espera": 2500
          }
-        ],
-        "titulo": "Lojinha do Leigo",
-        "legenda": "Servidor fora do ar: o aviso",
-        "espera_inicio": 1200,
-        "espera_fim": 2000,
-        "delay_letra": 70
+        ]
        }
       },
       {
@@ -267,9 +273,30 @@
        "scene": {
         "type": "tela",
         "media": "n66_vazio",
-        "url": "https://tsvini.github.io/custo-oculto-fabrica/loja/",
+        "url": "https://tsvini.github.io/custo-oculto-fabrica/loja/produtos.html",
         "gravar": true,
         "acoes": [
+         {
+          "espera": 800
+         },
+         {
+          "responde": [
+           "**/api/produtos.json",
+           "[]"
+          ]
+         },
+         {
+          "reload": true,
+          "espera": 4500
+         }
+        ],
+        "titulo": "Lojinha do Leigo",
+        "legenda": "Lista vazia: nenhum produto",
+        "espera_inicio": 900,
+        "espera_fim": 2000,
+        "delay_letra": 70,
+        "pre_url": "https://tsvini.github.io/custo-oculto-fabrica/loja/",
+        "pre_acoes": [
          {
           "fill": [
            "[data-test=\"usuario\"]",
@@ -285,23 +312,8 @@
          {
           "click": "[data-test=\"entrar\"]",
           "espera": 1500
-         },
-         {
-          "responde": [
-           "**/api/produtos.json",
-           "[]"
-          ]
-         },
-         {
-          "reload": true,
-          "espera": 2500
          }
-        ],
-        "titulo": "Lojinha do Leigo",
-        "legenda": "Lista vazia: nenhum produto",
-        "espera_inicio": 1200,
-        "espera_fim": 2000,
-        "delay_letra": 70
+        ]
        },
        "pausa": 2
       },

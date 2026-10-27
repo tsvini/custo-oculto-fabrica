@@ -15,7 +15,9 @@ export class ProdutosPage {
   // "R$ 1.234,56" vira 1234.56
   async lerPrecos() {
     const textos = await this.precos.allTextContents();
-    return textos.map((t) => Number(t.replace('R$', '').replace(/\./g, '').replace(',', '.').trim()));
+    return textos.map((t) => Number(
+      t.replace('R$', '').replace(/\./g, '').replace(',', '.').trim(),
+    ));
   }
 
   async lerNomes() {

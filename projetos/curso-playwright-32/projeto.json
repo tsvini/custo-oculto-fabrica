@@ -64,7 +64,7 @@
          "  package.json",
          "  playwright.config.js"
         ],
-        "codigo": "import { test, expect } from '@playwright/test';\n\nconst usuarios = [\n  'standard_user',\n  'problem_user',\n  'performance_glitch_user',\n  'visual_user',\n];\n\nfor (const usuario of usuarios) {",
+        "codigo": "import { test, expect } from '@playwright/test';\n\nconst listaDeUsuarios = [\n  'standard_user',\n  'problem_user',\n  'performance_glitch_user',\n  'visual_user',\n];\n\nfor (const usuario of listaDeUsuarios) {",
         "legenda": "Nome de teste repetido: ele não deixa",
         "fonte": 26,
         "digitar": false,
@@ -183,13 +183,14 @@
        "scene": {
         "type": "editor",
         "arquivo": "usuarios.spec.js",
-        "codigo": "import { test, expect } from '@playwright/test';\n\nconst usuarios = [\n  'standard_user',\n  'problem_user',\n  'performance_glitch_user',\n  'visual_user',\n];\n\nfor (const usuario of usuarios) {\n  test(`login funciona para ${usuario}`, async ({ page }) => {\n    await page.goto('/');\n    await page.getByTestId('username').fill(usuario);\n    await page.getByTestId('password').fill(process.env.SAUCE_PASSWORD);\n    await page.getByTestId('login-button').click();\n    // o performance_glitch_user é lento: 10 segundos em vez de 5\n    await expect(page.getByTestId('title')).toHaveText('Products', { timeout: 10000 });\n  });\n}",
+        "codigo": "for (const usuario of listaDeUsuarios) {\n  test(`login funciona para ${usuario}`, async ({ page }) => {\n    await page.goto('/');\n    await page.getByTestId('username').fill(usuario);\n    await page.getByTestId('password').fill(process.env.SAUCE_PASSWORD);\n    await page.getByTestId('login-button').click();\n    // o performance_glitch_user é lento: 10 segundos em vez de 5\n    await expect(page.getByTestId('title')).toHaveText('Products', { timeout: 10000 });\n  });\n}",
         "legenda": "Crase: texto + valor",
         "fonte": 24,
         "digitar": true,
         "pastas": null,
-        "digitar_de": 11,
-        "digitar_ate": 11,
+        "linha0": 10,
+        "digitar_de": 2,
+        "digitar_ate": 2,
         "vel": 0.7
        }
       },
@@ -311,7 +312,7 @@
          "  package.json",
          "  playwright.config.js"
         ],
-        "codigo": "import { test, expect } from '@playwright/test';\n\nconst usuarios = [\n  'standard_user',\n  'problem_user',\n  'performance_glitch_user',\n  'visual_user',\n];\n\nfor (const usuario of usuarios) {",
+        "codigo": "import { test, expect } from '@playwright/test';\n\nconst listaDeUsuarios = [\n  'standard_user',\n  'problem_user',\n  'performance_glitch_user',\n  'visual_user',\n];\n\nfor (const usuario of listaDeUsuarios) {",
         "legenda": "-g performance: só aquele usuário",
         "fonte": 26,
         "digitar": false,

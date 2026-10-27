@@ -98,6 +98,8 @@ def gravacoes(cenas, pasta, log):
                 ctx = b.new_context(**dv, record_video_dir=tmpd, record_video_size={"width": vp["width"], "height": vp["height"]})  # do tamanho da tela emulada (o dobro deixava a página num canto e o resto cinza)
             else:
                 ctx = b.new_context(viewport={"width": 1600, "height": 900}, device_scale_factor=1, record_video_dir=tmpd, record_video_size={"width": 1600, "height": 900}, user_agent=UA)
+            if s.get("zoom_pagina"):  # aproxima a página (letra pequena, ex.: a mensagem de erro do login) em toda página que abrir
+                ctx.add_init_script("document.addEventListener('DOMContentLoaded', () => { document.documentElement.style.zoom = '%s'; });" % s["zoom_pagina"])
             pg = ctx.new_page(); t_ini = time.time(); corte = 0.0
             try:
                 if s.get("pre_acoes"):  # preparo fora do vídeo (ex.: login), depois abre "url" e só a partir daí fica no vídeo

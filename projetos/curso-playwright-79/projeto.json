@@ -50,12 +50,15 @@
        "scene": {
         "type": "editor",
         "arquivo": "login.json",
-        "codigo": "[\n  { \"cenario\": \"senha errada\", \"usuario\": \"cliente\", \"senha\": \"errada\", \"mensagem\": \"Usuário ou senha incorretos.\" },\n  { \"cenario\": \"usuário bloqueado\", \"usuario\": \"bloqueado\", \"senha\": \"leigo123\", \"mensagem\": \"Este usuário está bloqueado. Fale com o suporte.\" },\n  { \"cenario\": \"usuário vazio\", \"usuario\": \"\", \"senha\": \"leigo123\", \"mensagem\": \"Informe o usuário.\" },\n  { \"cenario\": \"senha vazia\", \"usuario\": \"cliente\", \"senha\": \"\", \"mensagem\": \"Informe a senha.\" }\n]",
+        "pastas": null,
+        "codigo": "[\n  {\n    \"cenario\": \"senha errada\",\n    \"usuario\": \"cliente\",\n    \"senha\": \"errada\",\n    \"mensagem\": \"Usuário ou senha incorretos.\"\n  },\n  {\n    \"cenario\": \"usuário bloqueado\",\n    \"usuario\": \"bloqueado\",\n    \"senha\": \"leigo123\",\n    \"mensagem\": \"Este usuário está bloqueado. Fale com o suporte.\"\n  },\n  {\n    \"cenario\": \"usuário vazio\",\n    \"usuario\": \"\",\n    \"senha\": \"leigo123\",\n    \"mensagem\": \"Informe o usuário.\"\n  },\n  {\n    \"cenario\": \"senha vazia\",\n    \"usuario\": \"cliente\",\n    \"senha\": \"\",\n    \"mensagem\": \"Informe a senha.\"\n  }\n]",
         "legenda": "dados/login.json: os casos de erro",
-        "fonte": 19,
+        "fonte": 26,
         "digitar": false,
         "linha0": 1,
-        "pastas": null
+        "rolar": true,
+        "rolar_de": 3.0,
+        "rolar_dur": 3.5
        }
       },
       {
@@ -63,16 +66,16 @@
        "scene": {
         "type": "editor",
         "arquivo": "login.spec.js",
-        "codigo": "import { test, expect } from '../fixtures/paginas';\nimport casos from '../dados/login.json';\n\ntest.describe('Login', () => {\n  test.beforeEach(async ({ loginPage }) => {\n    await loginPage.abrir();\n  });\n\n  test('entra com usuário válido', { tag: '@smoke' }, async ({ page, loginPage, produtosPage }) => {\n    await loginPage.entrar(process.env.LOJA_USUARIO, process.env.LOJA_SENHA);\n    await expect(page).toHaveURL(/produtos/);\n    await expect(produtosPage.titulo).toHaveText('Produtos');\n  });\n\n  for (const caso of casos) {\n    test(`mostra erro: ${caso.cenario}`, async ({ loginPage }) => {\n      await loginPage.entrar(caso.usuario, caso.senha);\n      await expect(loginPage.erro).toHaveText(caso.mensagem);\n    });\n  }\n});",
+        "codigo": "  const smoke = { tag: '@smoke' };\n  test('entra com usuário válido', smoke, async ({ page, loginPage, produtosPage }) => {\n    await loginPage.entrar(process.env.LOJA_USUARIO, process.env.LOJA_SENHA);\n    await expect(page).toHaveURL(/produtos/);\n    await expect(produtosPage.titulo).toHaveText('Produtos');\n  });\n\n  for (const caso of casos) {\n    test(`mostra erro: ${caso.cenario}`, async ({ loginPage }) => {\n      await loginPage.entrar(caso.usuario, caso.senha);\n      await expect(loginPage.erro).toHaveText(caso.mensagem);\n    });\n  }",
         "legenda": "login.spec.js: o válido e os casos do JSON",
         "fonte": 19,
         "digitar": false,
-        "linha0": 1,
+        "linha0": 9,
         "pastas": null,
         "destaque": [
-         9,
-         15,
-         18
+         1,
+         8,
+         11
         ],
         "destaque_em": 1.0
        }
@@ -82,12 +85,15 @@
        "scene": {
         "type": "editor",
         "arquivo": "ordenacao.json",
-        "codigo": "[\n  { \"opcao\": \"az\", \"nome\": \"nome de A a Z\", \"campo\": \"nome\", \"sentido\": \"crescente\" },\n  { \"opcao\": \"za\", \"nome\": \"nome de Z a A\", \"campo\": \"nome\", \"sentido\": \"decrescente\" },\n  { \"opcao\": \"menor\", \"nome\": \"preço do menor para o maior\", \"campo\": \"preco\", \"sentido\": \"crescente\" },\n  { \"opcao\": \"maior\", \"nome\": \"preço do maior para o menor\", \"campo\": \"preco\", \"sentido\": \"decrescente\" }\n]",
+        "pastas": null,
+        "codigo": "[\n  {\n    \"opcao\": \"az\",\n    \"nome\": \"nome de A a Z\",\n    \"campo\": \"nome\",\n    \"sentido\": \"crescente\"\n  },\n  {\n    \"opcao\": \"za\",\n    \"nome\": \"nome de Z a A\",\n    \"campo\": \"nome\",\n    \"sentido\": \"decrescente\"\n  },\n  {\n    \"opcao\": \"menor\",\n    \"nome\": \"preço do menor para o maior\",\n    \"campo\": \"preco\",\n    \"sentido\": \"crescente\"\n  },\n  {\n    \"opcao\": \"maior\",\n    \"nome\": \"preço do maior para o menor\",\n    \"campo\": \"preco\",\n    \"sentido\": \"decrescente\"\n  }\n]",
         "legenda": "dados/ordenacao.json: os 4 sentidos",
-        "fonte": 19,
+        "fonte": 26,
         "digitar": false,
         "linha0": 1,
-        "pastas": null
+        "rolar": true,
+        "rolar_de": 3.0,
+        "rolar_dur": 3.0
        }
       },
       {
@@ -95,16 +101,16 @@
        "scene": {
         "type": "editor",
         "arquivo": "produtos.spec.js",
-        "codigo": "import { test, expect } from '../fixtures/paginas';\nimport ordenacoes from '../dados/ordenacao.json';\n\ntest.describe('Produtos', () => {\n  test.beforeEach(async ({ loginPage, produtosPage }) => {\n    await loginPage.abrir();\n    await loginPage.entrar(process.env.LOJA_USUARIO, process.env.LOJA_SENHA);\n    await expect(produtosPage.produtos.first()).toBeVisible();\n  });\n\n  for (const o of ordenacoes) {\n    test(`ordena por ${o.nome}`, { tag: o.opcao === 'menor' ? ['@smoke'] : [] }, async ({ produtosPage }) => {\n      await produtosPage.ordenarPor(o.opcao);\n      const naTela = o.campo === 'preco' ? await produtosPage.lerPrecos() : await produtosPage.lerNomes();\n      const esperado = [...naTela].sort((a, b) => (o.campo === 'preco' ? a - b : a.localeCompare(b)));\n      if (o.sentido === 'decrescente') esperado.reverse();\n      expect(naTela).toEqual(esperado);\n    });\n  }\n\n  test('produto esgotado aparece, mas não dá pra comprar', async ({ produtosPage }) => {\n    const camiseta = produtosPage.produto('Camiseta Passou no CI');\n    await expect(camiseta.getByTestId('esgotado')).toBeVisible();\n    await expect(camiseta.getByTestId('adicionar')).toBeDisabled();\n  });\n});",
+        "codigo": "  for (const o of ordenacoes) {\n    const tag = o.opcao === 'menor' ? ['@smoke'] : [];\n    test(`ordena por ${o.nome}`, { tag }, async ({ produtosPage }) => {\n      await produtosPage.ordenarPor(o.opcao);\n      const naTela = o.campo === 'preco'\n        ? await produtosPage.lerPrecos()\n        : await produtosPage.lerNomes();\n      const esperado = [...naTela].sort((a, b) =>\n        (o.campo === 'preco' ? a - b : a.localeCompare(b)));\n      if (o.sentido === 'decrescente') esperado.reverse();\n      expect(naTela).toEqual(esperado);\n    });\n  }",
         "legenda": "Um teste pra cada sentido",
-        "fonte": 19,
+        "fonte": 22,
         "digitar": false,
-        "linha0": 1,
+        "linha0": 11,
         "pastas": null,
         "destaque": [
-         11,
-         13,
-         14
+         1,
+         4,
+         5
         ],
         "destaque_em": 1.0
        }
@@ -162,15 +168,15 @@
        "scene": {
         "type": "editor",
         "arquivo": "produtos.spec.js",
-        "codigo": "import { test, expect } from '../fixtures/paginas';\nimport ordenacoes from '../dados/ordenacao.json';\n\ntest.describe('Produtos', () => {\n  test.beforeEach(async ({ loginPage, produtosPage }) => {\n    await loginPage.abrir();\n    await loginPage.entrar(process.env.LOJA_USUARIO, process.env.LOJA_SENHA);\n    await expect(produtosPage.produtos.first()).toBeVisible();\n  });\n\n  for (const o of ordenacoes) {\n    test(`ordena por ${o.nome}`, { tag: o.opcao === 'menor' ? ['@smoke'] : [] }, async ({ produtosPage }) => {\n      await produtosPage.ordenarPor(o.opcao);\n      const naTela = o.campo === 'preco' ? await produtosPage.lerPrecos() : await produtosPage.lerNomes();\n      const esperado = [...naTela].sort((a, b) => (o.campo === 'preco' ? a - b : a.localeCompare(b)));\n      if (o.sentido === 'decrescente') esperado.reverse();\n      expect(naTela).toEqual(esperado);\n    });\n  }\n\n  test('produto esgotado aparece, mas não dá pra comprar', async ({ produtosPage }) => {\n    const camiseta = produtosPage.produto('Camiseta Passou no CI');\n    await expect(camiseta.getByTestId('esgotado')).toBeVisible();\n    await expect(camiseta.getByTestId('adicionar')).toBeDisabled();\n  });\n});",
+        "codigo": "  for (const o of ordenacoes) {\n    const tag = o.opcao === 'menor' ? ['@smoke'] : [];\n    test(`ordena por ${o.nome}`, { tag }, async ({ produtosPage }) => {\n      await produtosPage.ordenarPor(o.opcao);\n      const naTela = o.campo === 'preco'\n        ? await produtosPage.lerPrecos()\n        : await produtosPage.lerNomes();\n      const esperado = [...naTela].sort((a, b) =>\n        (o.campo === 'preco' ? a - b : a.localeCompare(b)));\n      if (o.sentido === 'decrescente') esperado.reverse();\n      expect(naTela).toEqual(esperado);\n    });\n  }",
         "legenda": "reverse e toEqual: a lista inteira",
-        "fonte": 19,
+        "fonte": 22,
         "digitar": false,
-        "linha0": 1,
+        "linha0": 11,
         "pastas": null,
         "destaque": [
-         16,
-         17
+         10,
+         11
         ],
         "destaque_em": 0.8
        }
@@ -202,14 +208,14 @@
        "scene": {
         "type": "editor",
         "arquivo": "produtos.spec.js",
-        "codigo": "import { test, expect } from '../fixtures/paginas';\nimport ordenacoes from '../dados/ordenacao.json';\n\ntest.describe('Produtos', () => {\n  test.beforeEach(async ({ loginPage, produtosPage }) => {\n    await loginPage.abrir();\n    await loginPage.entrar(process.env.LOJA_USUARIO, process.env.LOJA_SENHA);\n    await expect(produtosPage.produtos.first()).toBeVisible();\n  });\n\n  for (const o of ordenacoes) {\n    test(`ordena por ${o.nome}`, { tag: o.opcao === 'menor' ? ['@smoke'] : [] }, async ({ produtosPage }) => {\n      await produtosPage.ordenarPor(o.opcao);\n      const naTela = o.campo === 'preco' ? await produtosPage.lerPrecos() : await produtosPage.lerNomes();\n      const esperado = [...naTela].sort((a, b) => (o.campo === 'preco' ? a - b : a.localeCompare(b)));\n      if (o.sentido === 'decrescente') esperado.reverse();\n      expect(naTela).toEqual(esperado);\n    });\n  }\n\n  test('produto esgotado aparece, mas não dá pra comprar', async ({ produtosPage }) => {\n    const camiseta = produtosPage.produto('Camiseta Passou no CI');\n    await expect(camiseta.getByTestId('esgotado')).toBeVisible();\n    await expect(camiseta.getByTestId('adicionar')).toBeDisabled();\n  });\n});",
+        "codigo": "  for (const o of ordenacoes) {\n    const tag = o.opcao === 'menor' ? ['@smoke'] : [];\n    test(`ordena por ${o.nome}`, { tag }, async ({ produtosPage }) => {\n      await produtosPage.ordenarPor(o.opcao);",
         "legenda": "Só o do menor preço é smoke",
-        "fonte": 19,
+        "fonte": 22,
         "digitar": false,
-        "linha0": 1,
+        "linha0": 11,
         "pastas": null,
         "destaque": [
-         12
+         2
         ],
         "destaque_em": 0.8
        }
@@ -219,15 +225,15 @@
        "scene": {
         "type": "editor",
         "arquivo": "produtos.spec.js",
-        "codigo": "import { test, expect } from '../fixtures/paginas';\nimport ordenacoes from '../dados/ordenacao.json';\n\ntest.describe('Produtos', () => {\n  test.beforeEach(async ({ loginPage, produtosPage }) => {\n    await loginPage.abrir();\n    await loginPage.entrar(process.env.LOJA_USUARIO, process.env.LOJA_SENHA);\n    await expect(produtosPage.produtos.first()).toBeVisible();\n  });\n\n  for (const o of ordenacoes) {\n    test(`ordena por ${o.nome}`, { tag: o.opcao === 'menor' ? ['@smoke'] : [] }, async ({ produtosPage }) => {\n      await produtosPage.ordenarPor(o.opcao);\n      const naTela = o.campo === 'preco' ? await produtosPage.lerPrecos() : await produtosPage.lerNomes();\n      const esperado = [...naTela].sort((a, b) => (o.campo === 'preco' ? a - b : a.localeCompare(b)));\n      if (o.sentido === 'decrescente') esperado.reverse();\n      expect(naTela).toEqual(esperado);\n    });\n  }\n\n  test('produto esgotado aparece, mas não dá pra comprar', async ({ produtosPage }) => {\n    const camiseta = produtosPage.produto('Camiseta Passou no CI');\n    await expect(camiseta.getByTestId('esgotado')).toBeVisible();\n    await expect(camiseta.getByTestId('adicionar')).toBeDisabled();\n  });\n});",
+        "codigo": "  test('produto esgotado aparece, mas não dá pra comprar', async ({ produtosPage }) => {\n    const camiseta = produtosPage.produto('Camiseta Passou no CI');\n    await expect(camiseta.getByTestId('esgotado')).toBeVisible();\n    await expect(camiseta.getByTestId('adicionar')).toBeDisabled();\n  });",
         "legenda": "toBeDisabled: aparece, mas não dá pra comprar",
         "fonte": 19,
         "digitar": false,
-        "linha0": 1,
+        "linha0": 25,
         "pastas": null,
         "destaque": [
-         23,
-         24
+         3,
+         4
         ],
         "destaque_em": 0.8
        }
