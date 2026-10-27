@@ -6,11 +6,12 @@
 3. Depois do login, cada produto tem um botão Add to cart. Clica com o botão direito e Inspecionar: data-test igual add-to-cart-sauce-labs-backpack. [devtools]
 4. Cria o compra ponto spec ponto js, com o login no before each, do jeito que você já sabe. [editor]
 5. No teste: get by test id add-to-cart-sauce-labs-backpack, ponto click. [editor]
-6. E a conferência: o numerozinho do carrinho mostra um. get by test id shopping-cart-badge, to have text um. [editor]
-7. E por que conferir? Sem essa linha, o teste só clica. Se o botão Add to cart estivesse quebrado, ele passaria do mesmo jeito. Teste sem conferência não testa nada. [compare]
-8. Roda com o navegador aparecendo: olha ele entrando, clicando em Add to cart, e o carrinho mostrando um. [editor]
-9. Na próxima aula: terminando o fluxo. [passo]
-10. Te vejo lá! [endcard]
+6. E como saber que o clique funcionou? Olha o carrinho lá em cima: depois do Add to cart, aparece um numerozinho vermelho com um. Botão direito nele, Inspecionar: data-test igual shopping-cart-badge, a bolinha do carrinho. [devtools]
+7. Então a conferência no código: get by test id shopping-cart-badge, to have text um. Se o numerozinho mostrar um, a mochila entrou no carrinho. [editor]
+8. E por que conferir? Sem essa linha, o teste só clica. Se o botão Add to cart estivesse quebrado, ele passaria do mesmo jeito. Teste sem conferência não testa nada. [compare]
+9. Roda com o navegador aparecendo: olha ele entrando, clicando em Add to cart, e o carrinho mostrando um. [editor]
+10. Na próxima aula: terminando o fluxo. [passo]
+11. Te vejo lá! [endcard]
 
 ## Aula 36: Finalizando a compra
 1. Hoje o robô completa o fluxo inteiro da compra: carrinho, dados, revisão e finalização. É um site de treino, então nenhuma compra de verdade acontece. [bigtext]

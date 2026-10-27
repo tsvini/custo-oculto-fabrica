@@ -183,7 +183,46 @@
        }
       },
       {
-       "text": "E a conferência: o numerozinho do carrinho mostra um. get by test id shopping-cart-badge, to have text um.",
+       "text": "E como saber que o clique funcionou? Olha o carrinho lá em cima: depois do Add to cart, aparece um numerozinho vermelho com um. Botão direito nele, Inspecionar: data-test igual shopping-cart-badge, a bolinha do carrinho.",
+       "scene": {
+        "type": "devtools",
+        "media": "site_sauce_badge_dev",
+        "url": "https://www.saucedemo.com/",
+        "acoes": [
+         {
+          "fill": [
+           "#user-name",
+           "standard_user"
+          ]
+         },
+         {
+          "fill": [
+           "#password",
+           "secret_sauce"
+          ]
+         },
+         {
+          "click": "#login-button"
+         },
+         {
+          "click": "[data-test=\"add-to-cart-sauce-labs-backpack\"]"
+         }
+        ],
+        "inspecionar": "[data-test=\"shopping-cart-badge\"]",
+        "attrs": [
+         "class",
+         "data-test"
+        ],
+        "realce": [
+         "data-test"
+        ],
+        "realce_em": 4.0,
+        "realce_rotulo": "shopping-cart-badge",
+        "legenda": "O numerozinho: data-test=\"shopping-cart-badge\""
+       }
+      },
+      {
+       "text": "Então a conferência no código: get by test id shopping-cart-badge, to have text um. Se o numerozinho mostrar um, a mochila entrou no carrinho.",
        "scene": {
         "type": "editor",
         "arquivo": "compra.spec.js",
