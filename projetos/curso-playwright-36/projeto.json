@@ -65,7 +65,90 @@
        }
       },
       {
-       "text": "Abre o carrinho: get by test id shopping-cart-link, click. Depois o botão checkout.",
+       "text": "Primeiro, vamos olhar o caminho no site. Depois do Add to cart, o carrinho lá em cima, à direita, mostra um. Clica com o botão direito nele e Inspecionar: data-test igual shopping-cart-link.",
+       "scene": {
+        "type": "devtools",
+        "media": "site_sauce_cart_dev",
+        "url": "https://www.saucedemo.com/",
+        "acoes": [
+         {
+          "fill": [
+           "#user-name",
+           "standard_user"
+          ]
+         },
+         {
+          "fill": [
+           "#password",
+           "secret_sauce"
+          ]
+         },
+         {
+          "click": "#login-button"
+         },
+         {
+          "click": "[data-test=\"add-to-cart-sauce-labs-backpack\"]"
+         }
+        ],
+        "inspecionar": "[data-test=\"shopping-cart-link\"]",
+        "attrs": [
+         "class",
+         "data-test"
+        ],
+        "realce": [
+         "data-test"
+        ],
+        "realce_em": 4.0,
+        "realce_rotulo": "shopping-cart-link",
+        "legenda": "O carrinho: data-test=\"shopping-cart-link\""
+       }
+      },
+      {
+       "text": "Clicando nele, abre a tela do carrinho, com a mochila dentro. Lá embaixo, o botão Checkout, que quer dizer finalizar a compra. O data-test dele é checkout.",
+       "scene": {
+        "type": "devtools",
+        "media": "site_sauce_checkout_dev",
+        "url": "https://www.saucedemo.com/",
+        "acoes": [
+         {
+          "fill": [
+           "#user-name",
+           "standard_user"
+          ]
+         },
+         {
+          "fill": [
+           "#password",
+           "secret_sauce"
+          ]
+         },
+         {
+          "click": "#login-button"
+         },
+         {
+          "click": "[data-test=\"add-to-cart-sauce-labs-backpack\"]"
+         },
+         {
+          "click": "[data-test=\"shopping-cart-link\"]"
+         }
+        ],
+        "inspecionar": "[data-test=\"checkout\"]",
+        "attrs": [
+         "class",
+         "data-test",
+         "id",
+         "name"
+        ],
+        "realce": [
+         "data-test"
+        ],
+        "realce_em": 4.0,
+        "realce_rotulo": "checkout",
+        "legenda": "O botão Checkout: data-test=\"checkout\""
+       }
+      },
+      {
+       "text": "Agora no código, as duas linhas: get by test id shopping-cart-link, ponto click, pra abrir o carrinho. E get by test id checkout, ponto click.",
        "scene": {
         "type": "editor",
         "arquivo": "compra.spec.js",
@@ -96,7 +179,7 @@
        }
       },
       {
-       "text": "Na tela de dados, três campos: nome, sobrenome e CEP. Os data-test são firstName, lastName e postalCode.",
+       "text": "O checkout leva pra tela de dados, com três campos: nome, sobrenome e CEP. Os data-test são firstName, lastName e postalCode.",
        "scene": {
         "type": "devtools",
         "media": "site_sauce_dados_dev",
@@ -144,7 +227,72 @@
        }
       },
       {
-       "text": "Preenche os três com dados de teste: qualquer nome e CEP servem, porque é uma loja de treino. Depois, clica em continue.",
+       "text": "E embaixo dos campos, o botão Continue, que quer dizer continuar. Botão direito nele, e Inspecionar: data-test igual continue.",
+       "scene": {
+        "type": "devtools",
+        "media": "site_sauce_continue_dev",
+        "url": "https://www.saucedemo.com/",
+        "acoes": [
+         {
+          "fill": [
+           "#user-name",
+           "standard_user"
+          ]
+         },
+         {
+          "fill": [
+           "#password",
+           "secret_sauce"
+          ]
+         },
+         {
+          "click": "#login-button"
+         },
+         {
+          "click": "[data-test=\"add-to-cart-sauce-labs-backpack\"]"
+         },
+         {
+          "click": "[data-test=\"shopping-cart-link\"]"
+         },
+         {
+          "click": "[data-test=\"checkout\"]"
+         },
+         {
+          "fill": [
+           "[data-test=\"firstName\"]",
+           "Maria"
+          ]
+         },
+         {
+          "fill": [
+           "[data-test=\"lastName\"]",
+           "Silva"
+          ]
+         },
+         {
+          "fill": [
+           "[data-test=\"postalCode\"]",
+           "88000-000"
+          ]
+         }
+        ],
+        "inspecionar": "[data-test=\"continue\"]",
+        "attrs": [
+         "class",
+         "data-test",
+         "id",
+         "name"
+        ],
+        "realce": [
+         "data-test"
+        ],
+        "realce_em": 4.0,
+        "realce_rotulo": "continue",
+        "legenda": "O botão Continue: data-test=\"continue\""
+       }
+      },
+      {
+       "text": "No código: preenche os três com dados de teste. Qualquer nome e CEP servem, porque é uma loja de treino. Depois, clica em continue.",
        "scene": {
         "type": "editor",
         "arquivo": "compra.spec.js",
@@ -175,7 +323,135 @@
        }
       },
       {
-       "text": "Na tela de revisão, clica em finish.",
+       "text": "O continue leva pra tela de revisão. Aqui a pessoa confere tudo antes de pagar: o produto, o pagamento, a entrega e o total.",
+       "scene": {
+        "type": "tela",
+        "media": "site_sauce_revisao",
+        "url": "https://www.saucedemo.com/",
+        "acoes": [
+         {
+          "fill": [
+           "#user-name",
+           "standard_user"
+          ]
+         },
+         {
+          "fill": [
+           "#password",
+           "secret_sauce"
+          ]
+         },
+         {
+          "click": "#login-button"
+         },
+         {
+          "click": "[data-test=\"add-to-cart-sauce-labs-backpack\"]"
+         },
+         {
+          "click": "[data-test=\"shopping-cart-link\"]"
+         },
+         {
+          "click": "[data-test=\"checkout\"]"
+         },
+         {
+          "fill": [
+           "[data-test=\"firstName\"]",
+           "Maria"
+          ]
+         },
+         {
+          "fill": [
+           "[data-test=\"lastName\"]",
+           "Silva"
+          ]
+         },
+         {
+          "fill": [
+           "[data-test=\"postalCode\"]",
+           "88000-000"
+          ]
+         },
+         {
+          "click": "[data-test=\"continue\"]"
+         }
+        ],
+        "alvo": "Total:",
+        "titulo": "saucedemo.com",
+        "zoom_em": 1.8,
+        "caixa_em": 2.6,
+        "legenda": "A revisão: confere antes de pagar"
+       }
+      },
+      {
+       "text": "E lá embaixo, o botão Finish, que quer dizer terminar. Botão direito nele, e Inspecionar: data-test igual finish.",
+       "scene": {
+        "type": "devtools",
+        "media": "site_sauce_finish_dev",
+        "url": "https://www.saucedemo.com/",
+        "acoes": [
+         {
+          "fill": [
+           "#user-name",
+           "standard_user"
+          ]
+         },
+         {
+          "fill": [
+           "#password",
+           "secret_sauce"
+          ]
+         },
+         {
+          "click": "#login-button"
+         },
+         {
+          "click": "[data-test=\"add-to-cart-sauce-labs-backpack\"]"
+         },
+         {
+          "click": "[data-test=\"shopping-cart-link\"]"
+         },
+         {
+          "click": "[data-test=\"checkout\"]"
+         },
+         {
+          "fill": [
+           "[data-test=\"firstName\"]",
+           "Maria"
+          ]
+         },
+         {
+          "fill": [
+           "[data-test=\"lastName\"]",
+           "Silva"
+          ]
+         },
+         {
+          "fill": [
+           "[data-test=\"postalCode\"]",
+           "88000-000"
+          ]
+         },
+         {
+          "click": "[data-test=\"continue\"]"
+         }
+        ],
+        "inspecionar": "[data-test=\"finish\"]",
+        "attrs": [
+         "class",
+         "data-test",
+         "id",
+         "name"
+        ],
+        "realce": [
+         "data-test"
+        ],
+        "realce_em": 4.0,
+        "realce_rotulo": "finish",
+        "legenda": "O botão Finish: data-test=\"finish\""
+       }
+      },
+      {
+       "text": "No código, na tela de revisão, clica em finish.",
        "scene": {
         "type": "editor",
         "arquivo": "compra.spec.js",
@@ -206,7 +482,139 @@
        }
       },
       {
-       "text": "E a conferência final, a prova de que a compra terminou: complete-header, to have text, Thank you for your order.",
+       "text": "Clicou em finish, chega a tela final: Thank you for your order. Obrigado pelo seu pedido. Essa frase só aparece quando a compra terminou de verdade.",
+       "scene": {
+        "type": "tela",
+        "media": "site_sauce_obrigado",
+        "url": "https://www.saucedemo.com/",
+        "acoes": [
+         {
+          "fill": [
+           "#user-name",
+           "standard_user"
+          ]
+         },
+         {
+          "fill": [
+           "#password",
+           "secret_sauce"
+          ]
+         },
+         {
+          "click": "#login-button"
+         },
+         {
+          "click": "[data-test=\"add-to-cart-sauce-labs-backpack\"]"
+         },
+         {
+          "click": "[data-test=\"shopping-cart-link\"]"
+         },
+         {
+          "click": "[data-test=\"checkout\"]"
+         },
+         {
+          "fill": [
+           "[data-test=\"firstName\"]",
+           "Maria"
+          ]
+         },
+         {
+          "fill": [
+           "[data-test=\"lastName\"]",
+           "Silva"
+          ]
+         },
+         {
+          "fill": [
+           "[data-test=\"postalCode\"]",
+           "88000-000"
+          ]
+         },
+         {
+          "click": "[data-test=\"continue\"]"
+         },
+         {
+          "click": "[data-test=\"finish\"]"
+         }
+        ],
+        "alvo": "Thank you for your order!",
+        "titulo": "saucedemo.com",
+        "zoom_em": 1.8,
+        "caixa_em": 2.6,
+        "legenda": "Thank you for your order = obrigado pelo seu pedido"
+       }
+      },
+      {
+       "text": "Por isso ela é a nossa conferência. Inspecionar no título: data-test igual complete-header, o cabeçalho de concluído.",
+       "scene": {
+        "type": "devtools",
+        "media": "site_sauce_header_dev",
+        "url": "https://www.saucedemo.com/",
+        "acoes": [
+         {
+          "fill": [
+           "#user-name",
+           "standard_user"
+          ]
+         },
+         {
+          "fill": [
+           "#password",
+           "secret_sauce"
+          ]
+         },
+         {
+          "click": "#login-button"
+         },
+         {
+          "click": "[data-test=\"add-to-cart-sauce-labs-backpack\"]"
+         },
+         {
+          "click": "[data-test=\"shopping-cart-link\"]"
+         },
+         {
+          "click": "[data-test=\"checkout\"]"
+         },
+         {
+          "fill": [
+           "[data-test=\"firstName\"]",
+           "Maria"
+          ]
+         },
+         {
+          "fill": [
+           "[data-test=\"lastName\"]",
+           "Silva"
+          ]
+         },
+         {
+          "fill": [
+           "[data-test=\"postalCode\"]",
+           "88000-000"
+          ]
+         },
+         {
+          "click": "[data-test=\"continue\"]"
+         },
+         {
+          "click": "[data-test=\"finish\"]"
+         }
+        ],
+        "inspecionar": "[data-test=\"complete-header\"]",
+        "attrs": [
+         "class",
+         "data-test"
+        ],
+        "realce": [
+         "data-test"
+        ],
+        "realce_em": 4.0,
+        "realce_rotulo": "complete-header",
+        "legenda": "O título: data-test=\"complete-header\""
+       }
+      },
+      {
+       "text": "No código, a conferência final: get by test id complete-header, to have text, Thank you for your order. Se a frase aparecer, a compra terminou e o teste passa.",
        "scene": {
         "type": "editor",
         "arquivo": "compra.spec.js",

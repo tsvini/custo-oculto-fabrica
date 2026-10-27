@@ -52,6 +52,13 @@ def rodando(c, de, ate, legenda, acoes, media, saida=("  1 passed (3.4s)", "ac")
                terminal=[{"cmd": cmd, "em": 0.03}, {"out": ("Running 1 test using 1 worker" if saida[0].strip().startswith("1 ") else f"Running {saida[0].split()[0]} tests using {saida[0].split()[0]} workers"), "cor": "mut", "em": 0.08}, {"out": saida[0], "cor": saida[1], "em": 0.86}], navegador=nav, **kw)
 
 
+
+def dev36(media, acoes, dt, attrs, legenda):
+    """devtools no saucedemo: botão direito › Inspecionar no elemento com esse data-test"""
+    return {"type": "devtools", "media": media, "url": SAUCE, "acoes": acoes, "inspecionar": f"[data-test=\"{dt}\"]",
+            "attrs": attrs, "realce": ["data-test"], "realce_em": 4.0, "realce_rotulo": dt, "legenda": legenda}
+
+
 AULAS = []
 
 # ---------- Aula 35 ----------
@@ -85,16 +92,30 @@ L_CART = ln(C36, "shopping-cart-link"); L_CHECK = ln(C36, "'checkout'"); L_FIRST
 L_FIN = ln(C36, "'finish'"); L_HEADER = ln(C36, "complete-header"); L_T36 = ln(C36, "test('compra")
 AULAS.append(projeto(36, "MÓDULO 8 · AULA 36", "Finalizando a compra", [
     ("Hoje o robô completa o fluxo inteiro da compra: carrinho, dados, revisão e finalização. É um site de treino, então nenhuma compra de verdade acontece.", titulo(36, "FINALIZANDO")),
-    ("Abre o carrinho: get by test id shopping-cart-link, click. Depois o botão checkout.",
+    ("Primeiro, vamos olhar o caminho no site. Depois do Add to cart, o carrinho lá em cima, à direita, mostra um. Clica com o botão direito nele e Inspecionar: data-test igual shopping-cart-link.",
+     dev36("site_sauce_cart_dev", COMPRA[:4], "shopping-cart-link", ["class", "data-test"], "O carrinho: data-test=\"shopping-cart-link\"")),
+    ("Clicando nele, abre a tela do carrinho, com a mochila dentro. Lá embaixo, o botão Checkout, que quer dizer finalizar a compra. O data-test dele é checkout.",
+     dev36("site_sauce_checkout_dev", COMPRA[:5], "checkout", ["class", "data-test", "id", "name"], "O botão Checkout: data-test=\"checkout\"")),
+    ("Agora no código, as duas linhas: get by test id shopping-cart-link, ponto click, pra abrir o carrinho. E get by test id checkout, ponto click.",
      edc(parcial(C36, L_CHECK), "shopping-cart-link e checkout", arquivo="compra.spec.js", pastas=ARV_C, digitar=True, digitar_de=L_CART, digitar_ate=L_CHECK, fonte=22, rolar=True, rolar_de=0.6, rolar_dur=0.8)),
-    ("Na tela de dados, três campos: nome, sobrenome e CEP. Os data-test são firstName, lastName e postalCode.",
+    ("O checkout leva pra tela de dados, com três campos: nome, sobrenome e CEP. Os data-test são firstName, lastName e postalCode.",
      {"type": "devtools", "media": "site_sauce_dados_dev", "url": SAUCE, "acoes": COMPRA[:6], "inspecionar": "[data-test=\"firstName\"]", "aberto": True,
       "attrs": ["class", "placeholder", "data-test", "id"], "realce": ["data-test"], "realce_em": 1.0, "realce_rotulo": "firstName", "legenda": "firstName, lastName e postalCode"}),
-    ("Preenche os três com dados de teste: qualquer nome e CEP servem, porque é uma loja de treino. Depois, clica em continue.",
+    ("E embaixo dos campos, o botão Continue, que quer dizer continuar. Botão direito nele, e Inspecionar: data-test igual continue.",
+     dev36("site_sauce_continue_dev", COMPRA[:9], "continue", ["class", "data-test", "id", "name"], "O botão Continue: data-test=\"continue\"")),
+    ("No código: preenche os três com dados de teste. Qualquer nome e CEP servem, porque é uma loja de treino. Depois, clica em continue.",
      edc(parcial(C36, L_CONT), "Os três campos e continue", arquivo="compra.spec.js", pastas=ARV_C, digitar=True, digitar_de=L_FIRST, digitar_ate=L_CONT, fonte=22, rolar=True, rolar_de=0.6, rolar_dur=0.8)),
-    ("Na tela de revisão, clica em finish.",
+    ("O continue leva pra tela de revisão. Aqui a pessoa confere tudo antes de pagar: o produto, o pagamento, a entrega e o total.",
+     {"type": "tela", "media": "site_sauce_revisao", "url": SAUCE, "acoes": COMPRA[:10], "alvo": "Total:", "titulo": "saucedemo.com", "zoom_em": 1.8, "caixa_em": 2.6, "legenda": "A revisão: confere antes de pagar"}),
+    ("E lá embaixo, o botão Finish, que quer dizer terminar. Botão direito nele, e Inspecionar: data-test igual finish.",
+     dev36("site_sauce_finish_dev", COMPRA[:10], "finish", ["class", "data-test", "id", "name"], "O botão Finish: data-test=\"finish\"")),
+    ("No código, na tela de revisão, clica em finish.",
      edc(parcial(C36, L_FIN), "finish", arquivo="compra.spec.js", pastas=ARV_C, digitar=True, digitar_de=L_FIN, digitar_ate=L_FIN, fonte=22, rolar=True, rolar_de=0.6, rolar_dur=0.8)),
-    ("E a conferência final, a prova de que a compra terminou: complete-header, to have text, Thank you for your order.",
+    ("Clicou em finish, chega a tela final: Thank you for your order. Obrigado pelo seu pedido. Essa frase só aparece quando a compra terminou de verdade.",
+     {"type": "tela", "media": "site_sauce_obrigado", "url": SAUCE, "acoes": COMPRA, "alvo": "Thank you for your order!", "titulo": "saucedemo.com", "zoom_em": 1.8, "caixa_em": 2.6, "legenda": "Thank you for your order = obrigado pelo seu pedido"}),
+    ("Por isso ela é a nossa conferência. Inspecionar no título: data-test igual complete-header, o cabeçalho de concluído.",
+     dev36("site_sauce_header_dev", COMPRA, "complete-header", ["class", "data-test"], "O título: data-test=\"complete-header\"")),
+    ("No código, a conferência final: get by test id complete-header, to have text, Thank you for your order. Se a frase aparecer, a compra terminou e o teste passa.",
      edc(C36, "complete-header = o título do final", arquivo="compra.spec.js", pastas=ARV_C, digitar=True, digitar_de=L_HEADER, digitar_ate=L_HEADER, fonte=22, rolar=True, rolar_de=0.6, rolar_dur=0.8)),
     ("Roda com o navegador aparecendo e olha o fluxo inteiro acontecendo sozinho.",
      rodando(C36, L_T36, L_HEADER + 1, "O fluxo inteiro, sozinho", COMPRA, "rec_compra", extra={"espera_fim": 2200, "delay_letra": 45})),
