@@ -126,20 +126,33 @@ AULAS.append(projeto(22, "MÓDULO 5 · AULA 22", "describe e beforeEach", [
     ("Te vejo lá!", proxima("playwright.config")[1]),
 ]))
 
+
+def trocas(antigo, novo, de, ate, em=None):
+    """linhas de..ate (1 = primeira) que mudaram entre o código antigo e o novo, no formato do 'trocar' (linha relativa ao trecho)"""
+    a, n = antigo.split("\n")[de - 1:ate], novo.split("\n")[de - 1:ate]
+    assert len(a) == len(n)
+    r = [[i + 1, x] for i, (x, y) in enumerate(zip(a, n)) if x != y]
+    if em is not None and r:
+        r[0] += [None, em]
+    return r
+
 # ---------- Aula 23 ----------
 USE0 = 26  # o trecho do config que aparece: linhas 26 a 34 (reporter, use e o fim do use)
 CFG_USE = CONFIG[USE0 - 1:34]
 CFG_BASE = [l if "// baseURL" not in l else "    baseURL: 'https://www.saucedemo.com'," for l in CFG_USE]
 CFG_TID = CFG_BASE[:5] + ["    testIdAttribute: 'data-test',"] + CFG_BASE[5:]
-assert CFG_USE[2].strip() == "use: {" and "baseURL" in CFG_BASE[4]
+assert CFG_USE[2].strip() == "use: {" and "baseURL" in CFG_BASE[4] and CFG_USE[4].strip().startswith("// baseURL")
+C23_GOTO = C22.replace("aula 22: ", "").replace("page.goto('https://www.saucedemo.com/')", "page.goto('/')")
+C23L = C23.replace("aula 23: ", "")
 AULAS.append(projeto(23, "MÓDULO 5 · AULA 23", "playwright.config - baseURL e data-test", [
     ("Hoje a gente mexe no arquivo de configuração. Parece assustador, mas são só duas linhas.", titulo(23, "CONFIG")),
     ("Abre o playwright ponto config ponto js e procura o use. Use quer dizer: use isso em todos os testes.",
      edc(cfg(CFG_USE), "use = use isso em todos os testes", arquivo="playwright.config.js", linha0=USE0, destaque=[3], destaque_em=1.0, fonte=26)),
-    ("Tira o comentário da baseURL e coloca o endereço do saucedemo. Base URL: o endereço base.",
-     edc(cfg(CFG_BASE), "baseURL = o endereço base", arquivo="playwright.config.js", linha0=USE0, digitar=True, digitar_de=5, digitar_ate=5, fonte=26)),
-    ("Agora, no teste, o goto fica só com uma barra. O Playwright junta essa barra com o endereço base.",
-     edc(C22.replace("aula 22: ", "").replace("page.goto('https://www.saucedemo.com/')", "page.goto('/')"), "baseURL + /  =  saucedemo.com/", digitar=True, digitar_de=5, digitar_ate=5, fonte=22, rolar_depois=True)),
+    ("Repara na linha da baseURL: ela está comentada, com as duas barras na frente. Primeiro, apaga as duas barras. Depois, apaga o endereço de exemplo, o localhost, e escreve no lugar o endereço do Sauce Demo. Base URL: o endereço base.",
+     edc(cfg(CFG_BASE), "baseURL = o endereço base", arquivo="playwright.config.js", linha0=USE0, fonte=26,
+         trocar=[[5, CFG_USE[4], CFG_USE[4].replace("// ", ""), 4.6], [5, CFG_USE[4].replace("// ", ""), None, 7.4]])),
+    ("Agora, no teste, apaga o endereço que está dentro do goto e deixa só a barra. O Playwright junta essa barra com o endereço base.",
+     edc("\n".join(C23_GOTO.split("\n")[:7]), "baseURL + /  =  saucedemo.com/", fonte=28, trocar=trocas(C22.replace("aula 22: ", ""), C23_GOTO, 1, 7, em=3.0))),
     ("A vantagem: se um dia o site mudar de endereço, você troca num lugar só.",
      {"type": "cards", "itens": [["⌂", "baseURL", "o endereço num lugar só"], ["/", "page.goto('/')", "nos testes, só o caminho", "#69a7ff"]]}),
     ("E no trabalho isso é muito usado: o mesmo teste roda no site de teste da empresa e no site de verdade. Só muda o endereço base.", {'type': 'compare', 'title': 'O MESMO TESTE', 'items': [['SITE DE TESTE', 'TESTE.LOJA.COM', 'white'], ['SITE DE VERDADE', 'LOJA.COM', 'gold']], 'size': 90, 'stagger': 1.8, 'vs': False}),  # pra que / quando
@@ -160,10 +173,10 @@ AULAS.append(projeto(23, "MÓDULO 5 · AULA 23", "playwright.config - baseURL e 
     ("A troca é assim: onde estava get by placeholder Username, fica get by test id username. A senha vira password. E o botão vira login button.",
      {"type": "traducao", "titulo": "A MESMA COISA, OUTRO SELETOR", "linhas": [["getByPlaceholder('Username')", "getByTestId('username')"], ["getByPlaceholder('Password')", "getByTestId('password')"],
                                                                            ["getByRole('button', { name: 'Login' })", "getByTestId('login-button')"]]}),
-    ("No primeiro teste, as três linhas do login trocadas.",
-     edc("\n".join(C23.replace("aula 23: ", "").split("\n")[7:12]), "Teste 1: os três seletores trocados", linha0=8, digitar=True, digitar_de=2, digitar_ate=4, fonte=28)),
-    ("E no segundo teste, a mesma troca. Os seletores antigos também estavam certos: é só outro caminho pro mesmo lugar.",
-     edc("\n".join(C23.replace("aula 23: ", "").split("\n")[17:24]), "Teste 2: a mesma troca", linha0=18, digitar=True, digitar_de=2, digitar_ate=4, fonte=24)),
+    ("No primeiro teste, troca as três linhas do login. Repara: só o pedaço do seletor é apagado e escrito de novo. O resto da linha, o fill com o usuário, o fill com a senha e o click, continua igual.",
+     edc("\n".join(C23L.split("\n")[7:12]), "Teste 1: os três seletores trocados", linha0=8, fonte=26, trocar=trocas(C23_GOTO, C23L, 8, 12, em=1.6))),
+    ("E no segundo teste, a mesma troca nas três linhas. Os seletores antigos também estavam certos: é só outro caminho pro mesmo lugar. Mas o data-test é o caminho que menos quebra.",
+     edc("\n".join(C23L.split("\n")[17:24]), "Teste 2: a mesma troca", linha0=18, fonte=24, trocar=trocas(C23_GOTO, C23L, 18, 24, em=1.6))),
     ("Traduzindo: ache pela etiqueta de teste chamada username.",
      {"type": "traducao", "codigo": "page.getByTestId('username')", "partes": [["getByTestId", "ache pela etiqueta de teste"], ["'username'", "chamada username"]], "passo": 2.0}),
     ("Roda pra confirmar que tudo continua passando.", vs(C23, "Tudo continua passando", run(("Running 2 tests using 2 workers", "mut"), ("  2 passed (2.0s)", "ac")))),
@@ -176,6 +189,7 @@ ENV = "SAUCE_USER=standard_user\nSAUCE_PASSWORD=secret_sauce"
 CFG_TOPO = CONFIG[:15]
 CFG_DOTENV = [re.sub(r"^// ", "", l) if ("dotenv" in l or "import path" in l) and l.startswith("// ") else l for l in CFG_TOPO]
 assert sum(1 for a, b in zip(CFG_TOPO, CFG_DOTENV) if a != b) == 3
+C24L = C24.replace("aula 24: ", "")
 AULAS.append(projeto(24, "MÓDULO 5 · AULA 24", "Variáveis de ambiente - tirando usuário e senha do código", [
     ("Aqui no saucedemo o usuário e a senha são públicos. Mas em projeto de verdade, senha e chave escrita no código é um problema: quando o projeto for pro GitHub, todo mundo vê.",
      titulo(24, ".ENV")),
@@ -199,10 +213,10 @@ AULAS.append(projeto(24, "MÓDULO 5 · AULA 24", "Variáveis de ambiente - tiran
     ("Lendo em português: importe o dotenv, importe o path, que cuida dos caminhos das pastas, e leia o arquivo ponto env que está nesta pasta.",
      {"type": "traducao", "titulo": "AS 3 LINHAS DO DOTENV", "linhas": [["import dotenv from 'dotenv';", "traga o dotenv"], ["import path from 'path';", "traga o path (caminhos)"],
                                                                      ["dotenv.config({ path: ... '.env' })", "leia o .env desta pasta"]]}),
-    ("No teste, onde estava escrito standard user, troca por process ponto env ponto SAUCE underline USER. E a senha, por process ponto env ponto SAUCE underline PASSWORD.",
-     edc("\n".join(C24.replace("aula 24: ", "").split("\n")[7:12]), "O teste pede pro .env", linha0=8, pastas=ARV_ENV, digitar=True, digitar_de=2, digitar_ate=3, fonte=22)),
-    ("No segundo teste, o usuário bloqueado continua escrito, porque ele é o que o teste quer testar. Só a senha vem do ponto env.",
-     edc("\n".join(C24.replace("aula 24: ", "").split("\n")[17:24]), "Teste 2: só a senha vem do .env", linha0=18, pastas=ARV_ENV, digitar=True, digitar_de=3, digitar_ate=3, fonte=22)),
+    ("No teste, apaga o standard user que está escrito, e no lugar escreve process ponto env ponto SAUCE underline USER. Depois apaga a secret sauce, e no lugar escreve process ponto env ponto SAUCE underline PASSWORD.",
+     edc("\n".join(C24L.split("\n")[7:12]), "O teste pede pro .env", linha0=8, pastas=ARV_ENV, fonte=22, trocar=trocas(C23L, C24L, 8, 12, em=2.0))),
+    ("No segundo teste, o usuário bloqueado continua escrito, porque ele é o que o teste quer testar. Só a senha muda: apaga a secret sauce, e no lugar vai o process ponto env ponto SAUCE underline PASSWORD.",
+     edc("\n".join(C24L.split("\n")[17:24]), "Teste 2: só a senha vem do .env", linha0=18, pastas=ARV_ENV, fonte=22, trocar=trocas(C23L, C24L, 18, 24, em=6.0))),
     ("Traduzindo: process ponto env, as variáveis do ambiente. SAUCE underline USER, a variável com esse nome. Quando o teste roda, o dotenv já leu o arquivo, e aqui entra o standard user.",
      {"type": "traducao", "codigo": "process.env.SAUCE_USER", "partes": [["process.env", "as variáveis do ambiente"], ["SAUCE_USER", "a chamada SAUCE_USER"]], "passo": 2.0}),
     ("E pra quem baixar o projeto saber o que preencher, cria um ponto env ponto example só com os nomes das variáveis, sem os valores.",

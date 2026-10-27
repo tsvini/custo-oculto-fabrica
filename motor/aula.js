@@ -118,6 +118,14 @@
     if (s.rolar_depois && !rolando) yy -= Math.max(0, linhas.length - cabem) * lh * easeInOut((t - (s.digitar === false ? (s.rolar_de || 2.0) : t0 + tDig + 0.5)) / (s.rolar_dur || 1.4));  // digita no topo e depois desce até o fim do arquivo
     const dig = k; let resta = pronto + Math.floor(k * falta);
     // apagar: as linhas ficam vermelhas, somem, e o código de baixo sobe (a numeração se ajusta no fim)
+    // trocar: [[linha, texto antigo, texto novo (opcional: a linha final)], ...], um passo depois do outro a partir de trocar_em
+    const TR = []; { let tc = s.trocar_em === undefined ? 1.0 : s.trocar_em; const ok = (c1) => !/[A-Za-z0-9_]/.test(c1 || " ");
+      for (const [l, de, pa, em] of (s.trocar || [])) { if (em !== undefined && em !== null) tc = Math.max(tc, em); const para = (pa === undefined || pa === null) ? linhas[l - 1] : pa; let p = 0; while (p < de.length && p < para.length && de[p] === para[p]) p++;
+        while (p > 0 && !" '\"(.,{".includes(de[p - 1])) p--; 
+        let q = 0; while (q < de.length - p && q < para.length - p && de[de.length - 1 - q] === para[para.length - 1 - q]) q++;
+        while (q > 0 && !ok(de[de.length - q]) && !ok(de[de.length - q - 1])) q--;
+        const mo = de.slice(p, de.length - q), mn = para.slice(p, para.length - q), tH = tc, tD = tH + 0.7, tY = tD + mo.length / 45 + 0.15, tF = tY + mn.length / 20;
+        TR.push({ l, de, para, pre: de.slice(0, p), suf: de.slice(de.length - q), mo, mn, tH, tD, tY, tF }); tc = tF + 0.4; } }
     const AP = s.apagar || [], tA = s.apagar_em === undefined ? 1.0 : s.apagar_em, kR = easeOut((t - tA) / 0.4), kC = easeInOut((t - tA - 0.8) / 0.5); let num = 0;
     linhas.forEach((ln, i) => {
       const ap = AP.includes(i + 1), hf = ap ? 1 - kC : 1;
@@ -135,6 +143,17 @@
         if (sobra > 0) { const pre = "// ".slice(3 - sobra); txt(ctx, pre + ln, font(500, fs, MONO), x0, yy, "#6a737d", "left", aL);
           if (t >= tD - 0.3 && Math.floor(t * 2.5) % 2 === 0) { ctx.save(); ctx.globalAlpha = aL; ctx.fillStyle = C.ac; ctx.fillRect(x0 - 3 * u, yy - fs * 0.6, 4 * u, fs * 1.2); ctx.restore(); }
           mostra = 0; } }
+      // trocar: a parte velha da linha fica vermelha, é apagada letra por letra, e a parte nova é digitada no lugar
+      const pT = TR.filter((p) => p.l === i + 1);
+      if (pT.length) { const at = pT.filter((p) => t >= p.tH).pop(); const F = font(500, fs, MONO);
+        const escreve = (s0) => { let x1 = x0; for (const [tk, cor] of tokens(s0)) { txt(ctx, tk, F, x1, yy, cor, "left", aL); x1 += tw(ctx, tk, F); } };
+        if (!at) escreve(pT[0].de); else if (t >= at.tF) escreve(at.para); else {
+          let mid, red = false; if (t < at.tD) { mid = at.mo; red = true; } else if (t < at.tY) { mid = at.mo.slice(0, Math.max(0, at.mo.length - Math.floor((t - at.tD) * 45))); red = true; } else mid = at.mn.slice(0, Math.floor((t - at.tY) * 20));
+          const xa = x0 + tw(ctx, at.pre, F), xb = xa + tw(ctx, mid, F);
+          if (red && mid.length) { ctx.save(); ctx.globalAlpha = 0.45 * aL * easeOut((t - at.tH) / 0.3); ctx.fillStyle = "#ff6b6b"; ctx.fillRect(xa - 2 * u, yy - fs * 0.72, xb - xa + 4 * u, fs * 1.44); ctx.restore(); }
+          escreve(at.pre + mid + at.suf);
+          if (t >= at.tD && Math.floor(t * 2.5) % 2 === 0) { ctx.save(); ctx.globalAlpha = aL; ctx.fillStyle = C.ac; ctx.fillRect(xb, yy - fs * 0.6, 4 * u, fs * 1.2); ctx.restore(); } }
+        mostra = 0; }
       for (const [tk, cor] of tokens(ln)) { if (mostra <= 0) break; const parte = tk.slice(0, mostra); mostra -= tk.length; txt(ctx, parte, font(500, fs, MONO), xx, yy, cor, "left", aL); xx += tw(ctx, parte, font(500, fs, MONO)); }
       if (dig < 1 && i + 1 <= d1 && resta < 0 && resta + ln.length >= 0 && Math.floor(t * 2.5) % 2 === 0) { ctx.save(); ctx.globalAlpha = a; ctx.fillStyle = C.ac; ctx.fillRect(xx + 2 * u, yy - fs * 0.6, 4 * u, fs * 1.2); ctx.restore(); }
       yy += lh * hf;

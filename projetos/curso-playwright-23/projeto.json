@@ -81,31 +81,59 @@
        }
       },
       {
-       "text": "Tira o comentário da baseURL e coloca o endereço do saucedemo. Base URL: o endereço base.",
+       "text": "Repara na linha da baseURL: ela está comentada, com as duas barras na frente. Primeiro, apaga as duas barras. Depois, apaga o endereço de exemplo, o localhost, e escreve no lugar o endereço do Sauce Demo. Base URL: o endereço base.",
        "scene": {
         "type": "editor",
         "arquivo": "playwright.config.js",
         "codigo": "  reporter: 'html',\n  /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */\n  use: {\n    /* Base URL to use in actions like `await page.goto('')`. */\n    baseURL: 'https://www.saucedemo.com',\n\n    /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */\n    trace: 'on-first-retry',\n  },",
         "legenda": "baseURL = o endereço base",
         "fonte": 26,
-        "digitar": true,
+        "digitar": false,
         "linha0": 26,
-        "digitar_de": 5,
-        "digitar_ate": 5
+        "trocar": [
+         [
+          5,
+          "    // baseURL: 'http://localhost:3000',",
+          "    baseURL: 'http://localhost:3000',",
+          4.6
+         ],
+         [
+          5,
+          "    baseURL: 'http://localhost:3000',",
+          null,
+          7.4
+         ]
+        ]
        }
       },
       {
-       "text": "Agora, no teste, o goto fica só com uma barra. O Playwright junta essa barra com o endereço base.",
+       "text": "Agora, no teste, apaga o endereço que está dentro do goto e deixa só a barra. O Playwright junta essa barra com o endereço base.",
        "scene": {
         "type": "editor",
         "arquivo": "login.spec.js",
-        "codigo": "import { test, expect } from '@playwright/test';\n\ntest.describe('Login', () => {\n  test.beforeEach(async ({ page }) => {\n    await page.goto('/');\n  });\n\n  test('entra com usuário e senha', async ({ page }) => {\n    await page.getByPlaceholder('Username').fill('standard_user');\n    await page.getByPlaceholder('Password').fill('secret_sauce');\n    await page.getByRole('button', { name: 'Login' }).click();\n    await expect(page).toHaveURL(/inventory/);\n    await expect(page.getByText('Products')).toBeVisible();\n    await expect(page.getByText('Sauce Labs Backpack')).toContainText('Backpack');\n    await expect(page.getByRole('button', { name: 'Add to cart' })).toHaveCount(6);\n  });\n\n  test('mostra erro para usuário bloqueado', async ({ page }) => {\n    await page.getByPlaceholder('Username').fill('locked_out_user');\n    await page.getByPlaceholder('Password').fill('secret_sauce');\n    await page.getByRole('button', { name: 'Login' }).click();\n    await expect(page.getByText('locked out')).toBeVisible();\n  });\n});",
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  tests/",
+         "    login.spec.js",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "codigo": "import { test, expect } from '@playwright/test';\n\ntest.describe('Login', () => {\n  test.beforeEach(async ({ page }) => {\n    await page.goto('/');\n  });\n",
         "legenda": "baseURL + /  =  saucedemo.com/",
-        "fonte": 22,
-        "digitar": true,
-        "digitar_de": 5,
-        "digitar_ate": 5,
-        "rolar_depois": true
+        "fonte": 28,
+        "digitar": false,
+        "trocar": [
+         [
+          5,
+          "    await page.goto('https://www.saucedemo.com/');",
+          null,
+          3.0
+         ]
+        ]
        }
       },
       {
@@ -350,7 +378,7 @@
        }
       },
       {
-       "text": "No primeiro teste, as três linhas do login trocadas.",
+       "text": "No primeiro teste, troca as três linhas do login. Repara: só o pedaço do seletor é apagado e escrito de novo. O resto da linha, o fill com o usuário, o fill com a senha e o click, continua igual.",
        "scene": {
         "type": "editor",
         "arquivo": "login.spec.js",
@@ -367,15 +395,29 @@
         ],
         "codigo": "  test('entra com usuário e senha', async ({ page }) => {\n    await page.getByTestId('username').fill('standard_user');\n    await page.getByTestId('password').fill('secret_sauce');\n    await page.getByTestId('login-button').click();\n    await expect(page).toHaveURL(/inventory/);",
         "legenda": "Teste 1: os três seletores trocados",
-        "fonte": 28,
-        "digitar": true,
+        "fonte": 26,
+        "digitar": false,
         "linha0": 8,
-        "digitar_de": 2,
-        "digitar_ate": 4
+        "trocar": [
+         [
+          2,
+          "    await page.getByPlaceholder('Username').fill('standard_user');",
+          null,
+          1.6
+         ],
+         [
+          3,
+          "    await page.getByPlaceholder('Password').fill('secret_sauce');"
+         ],
+         [
+          4,
+          "    await page.getByRole('button', { name: 'Login' }).click();"
+         ]
+        ]
        }
       },
       {
-       "text": "E no segundo teste, a mesma troca. Os seletores antigos também estavam certos: é só outro caminho pro mesmo lugar.",
+       "text": "E no segundo teste, a mesma troca nas três linhas. Os seletores antigos também estavam certos: é só outro caminho pro mesmo lugar. Mas o data-test é o caminho que menos quebra.",
        "scene": {
         "type": "editor",
         "arquivo": "login.spec.js",
@@ -393,10 +435,24 @@
         "codigo": "  test('mostra erro para usuário bloqueado', async ({ page }) => {\n    await page.getByTestId('username').fill('locked_out_user');\n    await page.getByTestId('password').fill('secret_sauce');\n    await page.getByTestId('login-button').click();\n    await expect(page.getByText('locked out')).toBeVisible();\n  });\n});",
         "legenda": "Teste 2: a mesma troca",
         "fonte": 24,
-        "digitar": true,
+        "digitar": false,
         "linha0": 18,
-        "digitar_de": 2,
-        "digitar_ate": 4
+        "trocar": [
+         [
+          2,
+          "    await page.getByPlaceholder('Username').fill('locked_out_user');",
+          null,
+          1.6
+         ],
+         [
+          3,
+          "    await page.getByPlaceholder('Password').fill('secret_sauce');"
+         ],
+         [
+          4,
+          "    await page.getByRole('button', { name: 'Login' }).click();"
+         ]
+        ]
        }
       },
       {

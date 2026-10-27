@@ -298,14 +298,14 @@
        }
       },
       {
-       "text": "No teste, onde estava escrito standard user, troca por process ponto env ponto SAUCE underline USER. E a senha, por process ponto env ponto SAUCE underline PASSWORD.",
+       "text": "No teste, apaga o standard user que está escrito, e no lugar escreve process ponto env ponto SAUCE underline USER. Depois apaga a secret sauce, e no lugar escreve process ponto env ponto SAUCE underline PASSWORD.",
        "scene": {
         "type": "editor",
         "arquivo": "login.spec.js",
         "codigo": "  test('entra com usuário e senha', async ({ page }) => {\n    await page.getByTestId('username').fill(process.env.SAUCE_USER);\n    await page.getByTestId('password').fill(process.env.SAUCE_PASSWORD);\n    await page.getByTestId('login-button').click();\n    await expect(page).toHaveURL(/inventory/);",
         "legenda": "O teste pede pro .env",
         "fonte": 22,
-        "digitar": true,
+        "digitar": false,
         "linha0": 8,
         "pastas": [
          "meu-primeiro-playwright",
@@ -319,19 +319,29 @@
          "  package.json",
          "  playwright.config.js"
         ],
-        "digitar_de": 2,
-        "digitar_ate": 3
+        "trocar": [
+         [
+          2,
+          "    await page.getByTestId('username').fill('standard_user');",
+          null,
+          2.0
+         ],
+         [
+          3,
+          "    await page.getByTestId('password').fill('secret_sauce');"
+         ]
+        ]
        }
       },
       {
-       "text": "No segundo teste, o usuário bloqueado continua escrito, porque ele é o que o teste quer testar. Só a senha vem do ponto env.",
+       "text": "No segundo teste, o usuário bloqueado continua escrito, porque ele é o que o teste quer testar. Só a senha muda: apaga a secret sauce, e no lugar vai o process ponto env ponto SAUCE underline PASSWORD.",
        "scene": {
         "type": "editor",
         "arquivo": "login.spec.js",
         "codigo": "  test('mostra erro para usuário bloqueado', async ({ page }) => {\n    await page.getByTestId('username').fill('locked_out_user');\n    await page.getByTestId('password').fill(process.env.SAUCE_PASSWORD);\n    await page.getByTestId('login-button').click();\n    await expect(page.getByText('locked out')).toBeVisible();\n  });\n});",
         "legenda": "Teste 2: só a senha vem do .env",
         "fonte": 22,
-        "digitar": true,
+        "digitar": false,
         "linha0": 18,
         "pastas": [
          "meu-primeiro-playwright",
@@ -345,8 +355,14 @@
          "  package.json",
          "  playwright.config.js"
         ],
-        "digitar_de": 3,
-        "digitar_ate": 3
+        "trocar": [
+         [
+          3,
+          "    await page.getByTestId('password').fill('secret_sauce');",
+          null,
+          6.0
+         ]
+        ]
        }
       },
       {
