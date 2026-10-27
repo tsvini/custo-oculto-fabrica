@@ -1,12 +1,12 @@
 {
- "atualizado": "26/10/2026 22:37",
+ "atualizado": "27/10/2026 13:01",
  "fontes": {
   "custo_oculto": {
-   "seguidores": 12,
-   "views_total": 5144,
-   "videos": 37,
-   "views_28d": 4970,
-   "views_7d": 485,
+   "seguidores": 13,
+   "views_total": 5227,
+   "videos": 38,
+   "views_28d": 4966,
+   "views_7d": 483,
    "seguidores_28d": 16,
    "dia": [
     [
@@ -79,7 +79,7 @@
     ],
     [
      "2026-10-16",
-     52
+     50
     ],
     [
      "2026-10-17",
@@ -91,7 +91,7 @@
     ],
     [
      "2026-10-19",
-     20
+     18
     ],
     [
      "2026-10-20",
@@ -166,7 +166,7 @@
   },
   "vini_qa": {
    "seguidores": 0,
-   "views_total": 43,
+   "views_total": 46,
    "videos": 4,
    "views_28d": 44,
    "views_7d": 44,
@@ -305,26 +305,32 @@
   "tiktok": {
    "usuario": "Custo Oculto",
    "seguidores": 56,
-   "curtidas": 336,
-   "videos": 18,
-   "views_total": 7223,
+   "curtidas": 350,
+   "videos": 19,
+   "views_total": 7895,
    "top": [
+    {
+     "titulo": "O CUSTO DE SER GIGANTE — EP. 05 A Microsoft pagou US$ 8,5 bilhões pelo Skype. Quatorze ano",
+     "url": "https://www.tiktok.com/@custooculto/video/7701373214546513173?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
+     "views": 12,
+     "likes": 1
+    },
     {
      "titulo": "O Orkut ainda crescia no Brasil. O problema é que o Facebook crescia muito mais rápido. En",
      "url": "https://www.tiktok.com/@custooculto/video/7701077678123797781?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 132,
-     "likes": 3
+     "views": 714,
+     "likes": 14
     },
     {
      "titulo": "O CUSTO DE SER GIGANTE — EP. 04 A Nokia não ignorou o smartphone. Ela pesquisava telas sen",
      "url": "https://www.tiktok.com/@custooculto/video/7700696929457409286?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 597,
+     "views": 598,
      "likes": 27
     },
     {
      "titulo": "O CUSTO DE SER GIGANTE — EP. 03 A Varig já foi um dos maiores símbolos da aviação brasilei",
      "url": "https://www.tiktok.com/@custooculto/video/7700381208127048981?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 314,
+     "views": 326,
      "likes": 8
     },
     {
@@ -336,14 +342,8 @@
     {
      "titulo": "O CUSTO DE SER GIGANTE — EP. 01 A Blockbuster dominava o aluguel de filmes e parecia impos",
      "url": "https://www.tiktok.com/@custooculto/video/7699596334155713812?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 454,
-     "likes": 10
-    },
-    {
-     "titulo": "Duas rivais gigantes se juntaram e criaram uma potência brasileira. 🍺 Mas a fusão entre Br",
-     "url": "https://www.tiktok.com/@custooculto/video/7699229452231773460?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 559,
-     "likes": 21
+     "views": 506,
+     "likes": 12
     }
    ],
    "nome": "TikTok @custooculto"
@@ -381,26 +381,6 @@
   }
  },
  "agenda": [
-  {
-   "quando": "2026-10-27T10:00:00-03:00",
-   "titulo": "A Blockbuster podia ter comprado a Netflix · RASCUNHO, não sai sozinho",
-   "tipo": "metricool",
-   "id": "metricool",
-   "url": "https://app.metricool.com/planner",
-   "plataforma_rede": "tiktok",
-   "chave": "tiktok",
-   "plataforma": "TikTok (Metricool)",
-   "sem_cancelar": true
-  },
-  {
-   "quando": "2026-10-27T12:00:00-03:00",
-   "plataforma": "Custo Oculto (YouTube)",
-   "chave": "custo_oculto",
-   "titulo": "NETFLIX: A Empresa Que a Blockbuster Recusou Comprar Por US$ 50 Milhões",
-   "tipo": "longo",
-   "id": "netflix_longo",
-   "url": "https://studio.youtube.com/video/LGggbB-6O7A/edit"
-  },
   {
    "quando": "2026-10-27T19:00:00-03:00",
    "titulo": "A Blockbuster podia ter comprado a Netflix (2) · RASCUNHO, não sai sozinho",
