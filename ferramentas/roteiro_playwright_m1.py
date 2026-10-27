@@ -31,7 +31,8 @@ def projeto(n, selo, titulo_aula, frases):
         "marca": ["PLAYWRIGHT", "PARA LEIGOS"], "cor_fundo": "#3fd68a", "sem_legenda": True, "legenda_y": 0.93, "selo": selo,
         "voz": {"nome": "gravada", "motor": "eleven", "eleven_voz": "Vinícius Torales"}, "serie": [],
         # como a voz fala (a legenda e a tela continuam com a grafia certa)
-        "pronuncia": [[r"\b[Ss]aucedemo\b", "Sauce Demo"], [r"\bNode\.js\b", "Node jota éssi"], [r"\bjs\b", "jota éssi"]],
+        "pronuncia": [[r"\b[Ss]aucedemo\b", "Sauce Demo"], [r"\bNode\.js\b", "Node jota éssi"], [r"\bjs\b", "jota éssi"],
+                      [r"\b[Ll]oginPage\b", "Lóguin Pêidji"], [r"\b[Pp]rodutosPage\b", "Produtos Pêidji"], [r"\b[Cc]heckoutPage\b", "Tchécaut Pêidji"], [r"\bpages\b", "pêidjis"]],
         "meta": {"titles": [f"Aula {n}: {titulo_aula}"], "description": "", "tags": []},
         "notes": "Curso Playwright para leigos. Não publica (destino: curso). Roteiro em curso-playwright/roteiros/.",
         "script": {"long": {"parts": [{"chapter": "", "sentences": [{"text": t, "scene": s} for t, s in frases]}]}, "shorts": [], "tiktoks": []},

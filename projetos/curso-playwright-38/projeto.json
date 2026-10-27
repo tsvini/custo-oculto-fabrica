@@ -29,6 +29,22 @@
   [
    "\\bjs\\b",
    "jota éssi"
+  ],
+  [
+   "\\b[Ll]oginPage\\b",
+   "Lóguin Pêidji"
+  ],
+  [
+   "\\b[Pp]rodutosPage\\b",
+   "Produtos Pêidji"
+  ],
+  [
+   "\\b[Cc]heckoutPage\\b",
+   "Tchécaut Pêidji"
+  ],
+  [
+   "\\bpages\\b",
+   "pêidjis"
   ]
  ],
  "meta": {
@@ -46,7 +62,7 @@
      "chapter": "",
      "sentences": [
       {
-       "text": "Cria uma pasta nova chamada pages, e dentro o arquivo LoginPage ponto js.",
+       "text": "Primeiro, cria uma pasta nova chamada pages. Pages quer dizer páginas: é aqui que vão ficar os arquivos de cada página do site.",
        "scene": {
         "type": "menu",
         "app": "vscode",
@@ -86,7 +102,51 @@
         "novo": "pages",
         "novo_nivel": 1,
         "novo_pasta": true,
-        "legenda": "New Folder › pages  ·  depois LoginPage.js"
+        "legenda": "New Folder › pages"
+       }
+      },
+      {
+       "text": "E dentro da pasta pages, um arquivo novo: LoginPage ponto js. A página do login.",
+       "scene": {
+        "type": "menu",
+        "app": "vscode",
+        "barra": [],
+        "menus": [
+         [
+          "New File...",
+          "New Folder...",
+          "—",
+          "Cut",
+          "Copy",
+          "—",
+          "Rename..."
+         ]
+        ],
+        "caminho": [
+         0
+        ],
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  pages/",
+         "  tests/",
+         "    compra.spec.js",
+         "    login.spec.js",
+         "    usuarios.spec.js",
+         "  .env",
+         "  .env.example",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "alvo_item": "pages",
+        "novo_pos": 4,
+        "resultado": "arquivo",
+        "novo": "LoginPage.js",
+        "novo_nivel": 2,
+        "legenda": "Dentro de pages: New File › LoginPage.js"
        }
       },
       {

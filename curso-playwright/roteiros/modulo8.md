@@ -44,16 +44,17 @@
 8. Te vejo lá! [endcard]
 
 ## Aula 38: Criando o LoginPage, passo a passo
-1. Cria uma pasta nova chamada pages, e dentro o arquivo LoginPage ponto js. [menu]
-2. Primeira linha: export class LoginPage, e abre chaves. [editor]
-3. Traduzindo: class é um molde, uma receita pra criar objetos. LoginPage é o nome do molde. E export deixa outros arquivos usarem. [traducao]
-4. Dentro, o constructor, que recebe o page. Constructor quer dizer construtor: é o que roda quando alguém cria um LoginPage. [editor]
-5. Primeira linha dele: this ponto page igual page. This quer dizer este: guarde o page dentro deste LoginPage. [editor]
-6. Agora os elementos da página, um por linha: this ponto usuario igual page ponto get by test id username. Guarde o campo usuário com o nome usuario. [editor]
-7. Mesma coisa pra senha, o botão e a mensagem de erro. [editor]
-8. E aqui está o ganho: se um dia o data-test do botão mudar, você troca só nesta linha, e todos os testes que usam o LoginPage continuam funcionando. [editor]
-9. Por enquanto, ele só sabe onde estão as coisas. Na próxima aula, ele aprende a fazer o login, e o teste passa a usar. [passo]
-10. Te vejo lá! [endcard]
+1. Primeiro, cria uma pasta nova chamada pages. Pages quer dizer páginas: é aqui que vão ficar os arquivos de cada página do site. [menu]
+2. E dentro da pasta pages, um arquivo novo: LoginPage ponto js. A página do login. [menu]
+3. Primeira linha: export class LoginPage, e abre chaves. [editor]
+4. Traduzindo: class é um molde, uma receita pra criar objetos. LoginPage é o nome do molde. E export deixa outros arquivos usarem. [traducao]
+5. Dentro, o constructor, que recebe o page. Constructor quer dizer construtor: é o que roda quando alguém cria um LoginPage. [editor]
+6. Primeira linha dele: this ponto page igual page. This quer dizer este: guarde o page dentro deste LoginPage. [editor]
+7. Agora os elementos da página, um por linha: this ponto usuario igual page ponto get by test id username. Guarde o campo usuário com o nome usuario. [editor]
+8. Mesma coisa pra senha, o botão e a mensagem de erro. [editor]
+9. E aqui está o ganho: se um dia o data-test do botão mudar, você troca só nesta linha, e todos os testes que usam o LoginPage continuam funcionando. [editor]
+10. Por enquanto, ele só sabe onde estão as coisas. Na próxima aula, ele aprende a fazer o login, e o teste passa a usar. [passo]
+11. Te vejo lá! [endcard]
 
 ## Aula 39: Usando o LoginPage no teste
 1. Hoje o LoginPage aprende uma ação: entrar. [bigtext]

@@ -152,9 +152,12 @@ LP = ler("pages/LoginPage.js")
 L_CONS = ln(LP, "constructor"); L_THISP = ln(LP, "this.page = page"); L_USR = ln(LP, "this.usuario"); L_ERRO = ln(LP, "this.erro")
 LP38 = "\n".join(LP.split("\n")[:L_ERRO] + ["  }", "}"])  # só o constructor (o entrar vem na aula 39)
 AULAS.append(projeto(38, "MÓDULO 8 · AULA 38", "Criando o LoginPage, passo a passo", [
-    ("Cria uma pasta nova chamada pages, e dentro o arquivo LoginPage ponto js.",
+    ("Primeiro, cria uma pasta nova chamada pages. Pages quer dizer páginas: é aqui que vão ficar os arquivos de cada página do site.",
      {"type": "menu", "app": "vscode", "barra": [], "menus": [["New File...", "New Folder...", "—", "Cut", "Copy", "—", "Rename..."]], "caminho": [1], "pastas": ARV_C, "alvo_item": "meu-primeiro-playwright",
-      "novo_pos": 3, "resultado": "arquivo", "novo": "pages", "novo_nivel": 1, "novo_pasta": True, "legenda": "New Folder › pages  ·  depois LoginPage.js"}),
+      "novo_pos": 3, "resultado": "arquivo", "novo": "pages", "novo_nivel": 1, "novo_pasta": True, "legenda": "New Folder › pages"}),
+    ("E dentro da pasta pages, um arquivo novo: LoginPage ponto js. A página do login.",
+     {"type": "menu", "app": "vscode", "barra": [], "menus": [["New File...", "New Folder...", "—", "Cut", "Copy", "—", "Rename..."]], "caminho": [0], "pastas": [l for l in ARV_P if l != "    LoginPage.js"], "alvo_item": "pages",
+      "novo_pos": ARV_P.index("    LoginPage.js"), "resultado": "arquivo", "novo": "LoginPage.js", "novo_nivel": 2, "legenda": "Dentro de pages: New File › LoginPage.js"}),
     ("Primeira linha: export class LoginPage, e abre chaves.",
      edc("export class LoginPage {\n}", "export class LoginPage", arquivo="LoginPage.js", pastas=ARV_P, digitar=True, digitar_de=1, digitar_ate=1, fonte=32)),
     ("Traduzindo: class é um molde, uma receita pra criar objetos. LoginPage é o nome do molde. E export deixa outros arquivos usarem.",
