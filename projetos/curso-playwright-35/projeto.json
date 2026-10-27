@@ -188,14 +188,10 @@
        }
       },
       {
-       "text": "Dentro, o login no before each, do jeito que você já sabe.",
+       "text": "Primeira linha, o import de sempre. E o describe, a caixa dos testes, agora com o nome Compra.",
        "scene": {
         "type": "editor",
         "arquivo": "compra.spec.js",
-        "codigo": "import { test, expect } from '@playwright/test';\n\ntest.describe('Compra', () => {\n  test.beforeEach(async ({ page }) => {\n    await page.goto('/');\n    await page.getByTestId('username').fill(process.env.SAUCE_USER);\n    await page.getByTestId('password').fill(process.env.SAUCE_PASSWORD);\n    await page.getByTestId('login-button').click();\n  });\n});",
-        "legenda": "O login no beforeEach, como você já sabe",
-        "fonte": 24,
-        "digitar": false,
         "pastas": [
          "meu-primeiro-playwright",
          "  .github/",
@@ -210,16 +206,50 @@
          "  package-lock.json",
          "  package.json",
          "  playwright.config.js"
-        ]
+        ],
+        "codigo": "import { test, expect } from '@playwright/test';\n\ntest.describe('Compra', () => {\n});",
+        "legenda": "import + describe('Compra')",
+        "fonte": 26,
+        "digitar": true,
+        "digitar_de": 1,
+        "digitar_ate": 3
        }
       },
       {
-       "text": "No teste: get by test id add-to-cart-sauce-labs-backpack, ponto click.",
+       "text": "Dentro, o before each. Todo teste de compra começa com a pessoa já logada, então aqui vai o goto e o login inteiro: usuário, senha e o clique. São as mesmas linhas do login ponto spec, que você escreveu nas aulas vinte e três e vinte e quatro: pode copiar de lá e colar aqui.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "compra.spec.js",
+        "codigo": "import { test, expect } from '@playwright/test';\n\ntest.describe('Compra', () => {\n  test.beforeEach(async ({ page }) => {\n    await page.goto('/');\n    await page.getByTestId('username').fill(process.env.SAUCE_USER);\n    await page.getByTestId('password').fill(process.env.SAUCE_PASSWORD);\n    await page.getByTestId('login-button').click();\n  });\n});",
+        "legenda": "beforeEach: abre o site e faz o login",
+        "fonte": 24,
+        "digitar": true,
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  tests/",
+         "    compra.spec.js",
+         "    login.spec.js",
+         "    usuarios.spec.js",
+         "  .env",
+         "  .env.example",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "digitar_de": 4,
+        "digitar_ate": 9
+       }
+      },
+      {
+       "text": "Agora o teste: test, e o nome, compra uma mochila do começo ao fim. E o primeiro passo, o clique no Add to cart. O data-test é aquele que a gente achou no Inspecionar: add-to-cart-sauce-labs-backpack. Então: get by test id, esse nome entre aspas, ponto click.",
        "scene": {
         "type": "editor",
         "arquivo": "compra.spec.js",
         "codigo": "import { test, expect } from '@playwright/test';\n\ntest.describe('Compra', () => {\n  test.beforeEach(async ({ page }) => {\n    await page.goto('/');\n    await page.getByTestId('username').fill(process.env.SAUCE_USER);\n    await page.getByTestId('password').fill(process.env.SAUCE_PASSWORD);\n    await page.getByTestId('login-button').click();\n  });\n\n  test('compra uma mochila do começo ao fim', async ({ page }) => {\n    await page.getByTestId('add-to-cart-sauce-labs-backpack').click();\n  });\n});",
-        "legenda": "getByTestId(...).click()",
+        "legenda": "getByTestId('add-to-cart-sauce-labs-backpack').click()",
         "fonte": 22,
         "digitar": true,
         "pastas": [
@@ -281,7 +311,7 @@
        }
       },
       {
-       "text": "Então a conferência no código: get by test id shopping-cart-badge, to have text um. Se o numerozinho mostrar um, a mochila entrou no carrinho.",
+       "text": "Então a conferência no código: o nome que a gente acabou de ver no Inspecionar, shopping-cart-badge. Get by test id, esse nome, ponto to have text, um. Se o numerozinho mostrar um, a mochila entrou no carrinho.",
        "scene": {
         "type": "editor",
         "arquivo": "compra.spec.js",

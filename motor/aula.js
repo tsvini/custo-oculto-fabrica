@@ -535,12 +535,12 @@
     if (el) ctx.drawImage(el, ox, oy, iw * r, ih * r);
     ctx.restore(); return (fx, fy) => [ox + fx * iw * r, oy + fy * ih * r];
   }
-  function caixaElem(ctx, u, p, e, a, rotulo, cor = "rgba(111,168,220,.55)") {  // realce estilo navegador
+  function caixaElem(ctx, u, p, e, a, rotulo, cor = "rgba(111,168,220,.55)", lim = Infinity) {  // realce estilo navegador (lim: borda direita da página, a etiqueta nunca passa dela)
     if (!e || a <= 0) return; const [x0, y0] = p(e[0], e[1]), [x1, y1] = p(e[2], e[3]);
     ctx.save(); ctx.globalAlpha *= a; ctx.fillStyle = cor; ctx.fillRect(x0, y0, x1 - x0, y1 - y0); ctx.restore();
     if (rotulo) { const f = font(700, 22 * u, MONO); const w = tw(ctx, rotulo, f) + 32 * u; const ty = y1 + 14 * u;
-      ctx.save(); ctx.globalAlpha *= a; ctx.shadowColor = "rgba(0,0,0,.35)"; ctx.shadowBlur = 14 * u; rr(ctx, x0, ty, w, 44 * u, 8 * u); ctx.fillStyle = "#fff"; ctx.fill(); ctx.restore();
-      txt(ctx, rotulo, f, x0 + 16 * u, ty + 22 * u, "#8a3ab9", "left", a); }
+      ctx.save(); ctx.globalAlpha *= a; ctx.shadowColor = "rgba(0,0,0,.35)"; ctx.shadowBlur = 14 * u; rr(ctx, Math.min(x0, lim - w - 10 * u), ty, w, 44 * u, 8 * u); ctx.fillStyle = "#fff"; ctx.fill(); ctx.restore();
+      txt(ctx, rotulo, f, Math.min(x0, lim - w - 10 * u) + 16 * u, ty + 22 * u, "#8a3ab9", "left", a); }
   }
   function linhasHtml(s) {  // árvore do DevTools a partir do HTML real capturado (ou "html_linhas" à mão)
     if (s.html_linhas) return s.html_linhas;
@@ -574,7 +574,7 @@
     if (!el) txt(ctx, s.url || "site", font(700, 34 * u), x + sw / 2, top + sh / 2, C.mut, "center", a);
     const kh = seta ? easeOut((t - tEl + 0.55) / 0.2) : s.aberto ? 1 : easeOut((t - tOpen - 0.3) / 0.4);
     const h = s.html || {}; const idv = (h.attrs || []).find((q) => q[0] === "id"); const cls = (h.attrs || []).find((q) => q[0] === "class");
-    void cls; caixaElem(ctx, u, p, e, kh * a, (h.tag || "input") + (idv ? "#" + idv[1] : "") + (s.elem_tam ? `  ${s.elem_tam[0]}×${s.elem_tam[1]}` : ""));
+    void cls; caixaElem(ctx, u, p, e, kh * a, (h.tag || "input") + (idv ? "#" + idv[1] : "") + (s.elem_tam ? `  ${s.elem_tam[0]}×${s.elem_tam[1]}` : ""), undefined, x + sw);
     if (PW > 2) {  // painel do DevTools
       const px = x + sw; ctx.save(); ctx.beginPath(); ctx.rect(px, top, PW, sh - 2 * u); ctx.clip(); ctx.globalAlpha = a;
       ctx.fillStyle = "#202124"; ctx.fillRect(px, top, PW, sh); ctx.fillStyle = "#292a2d"; ctx.fillRect(px, top, PW, 56 * u); ctx.fillStyle = "#3c4043"; ctx.fillRect(px, top + 56 * u, PW, 2 * u);
@@ -598,7 +598,9 @@
         const ri = ln.attr ? re.indexOf(ln.attr) : -1;
         if (ri >= 0) { const kr = easeOut((t - r0 - ri * 1.2) / 0.35); if (kr > 0) { const w = ln.p.reduce((q, [tk]) => q + tw(ctx, tk, font(600, fs, MONO)), 0);
           ctx.save(); ctx.globalAlpha = kr; ctx.fillStyle = "rgba(255,210,63,.18)"; rr(ctx, xx - 10 * u, yy - lh / 2 + 2 * u, w + 20 * u, lh - 4 * u, 8 * u); ctx.fill(); ctx.strokeStyle = C.yel; ctx.lineWidth = 4 * u; ctx.stroke(); ctx.restore();
-          if (ri === 0) txt(ctx, "← " + (s.realce_rotulo || "use este!"), font(800, 24 * u), xx + w + 26 * u, yy, C.yel, "left", kr); } }
+          if (ri === 0) { const rot = "← " + (s.realce_rotulo || "use este!"), fr = font(800, 24 * u), wr = tw(ctx, rot, fr);
+            if (xx + w + 26 * u + wr < px + PW - 12 * u) txt(ctx, rot, fr, xx + w + 26 * u, yy, C.yel, "left", kr);
+            else txt(ctx, "↑ " + (s.realce_rotulo || "use este!"), fr, px + PW - 24 * u, yy + lh, C.yel, "right", kr); } } }  // não cabe do lado: vai pra linha de baixo
         for (const [tk, k] of ln.p) { txt(ctx, tk, font(600, fs, MONO), xx, yy, DT[k] || DT.tx, "left", kl); xx += tw(ctx, tk, font(600, fs, MONO)); }
         yy += lh;
       });
