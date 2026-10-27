@@ -62,52 +62,12 @@
      "chapter": "",
      "sentences": [
       {
-       "text": "Dentro da pasta nivel2, cria o dados ponto spec ponto js.",
-       "scene": {
-        "type": "menu",
-        "app": "vscode",
-        "barra": [],
-        "menus": [
-         [
-          "New File...",
-          "New Folder...",
-          "—",
-          "Cut",
-          "Copy",
-          "—",
-          "Rename..."
-         ]
-        ],
-        "caminho": [
-         0
-        ],
-        "pastas": [
-         "meu-primeiro-playwright",
-         "  fixtures/",
-         "    paginas.js",
-         "  pages/",
-         "  tests/",
-         "    nivel2/",
-         "      fixture.spec.js",
-         "  .env",
-         "  playwright.config.js"
-        ],
-        "alvo_item": "nivel2",
-        "novo_pos": 7,
-        "resultado": "arquivo",
-        "novo": "dados.spec.js",
-        "novo_nivel": 3,
-        "novo_pasta": false,
-        "legenda": "New File › dados.spec.js  (dentro de nivel2)"
-       }
-      },
-      {
-       "text": "Lembra da lista de usuários da aula trinta e um? Agora cada usuário tem também o resultado esperado: uns entram, outro é bloqueado. E a lista começa a ficar maior que o próprio teste.",
+       "text": "Lembra da lista de usuários da aula trinta e um? Imagina que agora cada usuário tem também o resultado esperado: uns entram, outro é bloqueado. Olha esse exemplo, não precisa escrever: a lista começa a ficar maior que o próprio teste.",
        "scene": {
         "type": "editor",
-        "arquivo": "dados.spec.js",
+        "arquivo": "exemplo (não precisa criar)",
         "codigo": "const usuarios = [\n  { usuario: 'standard_user', resultado: 'sucesso' },\n  { usuario: 'problem_user', resultado: 'sucesso' },\n  { usuario: 'locked_out_user', resultado: 'bloqueado' },\n  { usuario: 'performance_glitch_user', resultado: 'sucesso' },\n  { usuario: 'visual_user', resultado: 'sucesso' },\n  { usuario: 'error_user', resultado: 'sucesso' },\n];\n\nfor (const { usuario, resultado } of usuarios) {\n  test(`${usuario} - ${resultado}`, async ({ page, loginPage }) => {",
-        "legenda": "A lista maior que o teste",
+        "legenda": "Só um exemplo: a lista maior que o teste",
         "fonte": 22,
         "digitar": false,
         "linha0": 1,
@@ -172,7 +132,6 @@
          "  tests/",
          "    nivel2/",
          "      fixture.spec.js",
-         "      dados.spec.js",
          "  .env",
          "  playwright.config.js"
         ],
@@ -214,7 +173,6 @@
          "  tests/",
          "    nivel2/",
          "      fixture.spec.js",
-         "      dados.spec.js",
          "  .env",
          "  playwright.config.js"
         ],
@@ -260,7 +218,49 @@
        }
       },
       {
-       "text": "No teste: import usuarios from, e o caminho do JSON. Pronto: a lista chega no teste.",
+       "text": "Agora o teste de verdade. Dentro da pasta nivel2, cria o dados ponto spec ponto js.",
+       "scene": {
+        "type": "menu",
+        "app": "vscode",
+        "barra": [],
+        "menus": [
+         [
+          "New File...",
+          "New Folder...",
+          "—",
+          "Cut",
+          "Copy",
+          "—",
+          "Rename..."
+         ]
+        ],
+        "caminho": [
+         0
+        ],
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  dados/",
+         "    usuarios.json",
+         "  fixtures/",
+         "    paginas.js",
+         "  pages/",
+         "  tests/",
+         "    nivel2/",
+         "      fixture.spec.js",
+         "  .env",
+         "  playwright.config.js"
+        ],
+        "alvo_item": "nivel2",
+        "novo_pos": 9,
+        "resultado": "arquivo",
+        "novo": "dados.spec.js",
+        "novo_nivel": 3,
+        "novo_pasta": false,
+        "legenda": "New File › dados.spec.js  (dentro de nivel2)"
+       }
+      },
+      {
+       "text": "Primeiras linhas: o import das fixtures, como na aula passada, e o import usuarios from, com o caminho do JSON. Pronto: a lista chega no teste.",
        "scene": {
         "type": "editor",
         "arquivo": "dados.spec.js",
@@ -283,7 +283,7 @@
         "fonte": 26,
         "digitar": true,
         "linha0": 1,
-        "digitar_de": 2,
+        "digitar_de": 1,
         "digitar_ate": 2
        }
       },

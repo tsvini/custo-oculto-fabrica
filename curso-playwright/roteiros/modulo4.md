@@ -38,11 +38,13 @@
 5. Senha, clique no Login. Cada coisa que você faz vira uma linha. [tela_cheia]
 6. Repara no seletor que ele escolheu. O codegen tenta achar um jeito bom e único de identificar cada elemento. Nem sempre é o mesmo que você escolheria, por isso a gente revisa o código gerado. [traducao]
 7. Na barra de cima tem botões pra criar conferências: conferir se algo está visível, ou se o texto está certo. Clica em um e depois no título Products. Pronto, apareceu um expect. [tela_cheia]
-8. Quando terminar, copia o código e cola no seu arquivo. [editor]
-9. Mas atenção: o codegen é um ponto de partida, não o teste pronto. Ele não sabe o que você quer conferir, e às vezes escolhe um seletor ruim. Sempre revisa. [cards]
-10. Use pra descobrir seletores e pra começar rápido. Depois, arruma com o que você aprendeu. [bigtext]
-11. Na próxima aula: testando um seletor antes de usar. [passo]
-12. Te vejo lá! [endcard]
+8. Pra olhar o código com calma, cria um arquivo novo dentro de tests: codegen ponto spec ponto js. [menu]
+9. Quando terminar, copia o código lá do Inspector e cola nesse arquivo. [editor]
+10. Mas atenção: o codegen é um ponto de partida, não o teste pronto. Ele não sabe o que você quer conferir, e às vezes escolhe um seletor ruim. Sempre revisa. [cards]
+11. Use pra descobrir seletores e pra começar rápido. Depois, arruma com o que você aprendeu. [bigtext]
+12. Esse arquivo foi só pra ver o codegen trabalhando. Depois de olhar, pode apagar: botão direito nele, e Delete. O nosso teste continua sendo o login. [menu]
+13. Na próxima aula: testando um seletor antes de usar. [passo]
+14. Te vejo lá! [endcard]
 
 ## Aula 20: Pick Locator - testando um seletor antes de usar
 1. Às vezes você não sabe se um seletor vai funcionar. Dá pra testar antes de rodar o teste. [bigtext]

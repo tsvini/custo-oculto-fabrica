@@ -158,8 +158,8 @@ DENTRO = """const usuarios = [
 for (const { usuario, resultado } of usuarios) {
   test(`${usuario} - ${resultado}`, async ({ page, loginPage }) => {"""
 aula(65, "Os dados ficaram maiores que o teste", [
-    ("Lembra da lista de usuários da aula trinta e um? Agora cada usuário tem também o resultado esperado: uns entram, outro é bloqueado. E a lista começa a ficar maior que o próprio teste.",
-     ed(DENTRO, "A lista maior que o teste", "dados.spec.js", destaque=list(range(1, 9)), destaque_em=1.6, pastas=None, criar=[["Dentro da pasta nivel2, cria o dados ponto spec ponto js.", "dados.spec.js"]])),
+    ("Lembra da lista de usuários da aula trinta e um? Imagina que agora cada usuário tem também o resultado esperado: uns entram, outro é bloqueado. Olha esse exemplo, não precisa escrever: a lista começa a ficar maior que o próprio teste.",
+     ed(DENTRO, "Só um exemplo: a lista maior que o teste", "exemplo (não precisa criar)", destaque=list(range(1, 9)), destaque_em=1.6, pastas=None)),
     ("O teste deveria mostrar o comportamento: entra, e confere. Os dados podem morar num arquivo separado.",
      {"type": "cards", "itens": [["🧪", "O teste", "o comportamento"], ["📄", "Um arquivo de dados", "os usuários e senhas", "#69a7ff"]]}),
     ("Dentro, a lista de usuários, no formato JSON.",
@@ -167,8 +167,9 @@ aula(65, "Os dados ficaram maiores que o teste", [
         criar=[["Na pasta do projeto, cria uma pasta nova chamada dados.", "dados/"], ["E dentro dela, o arquivo usuarios ponto json.", "usuarios.json"]])),
     ("JSON você já viu nas aulas de API: chaves, o nome do campo entre aspas, dois pontos, e o valor. Cada par de chaves é um caso de teste.",
      trl("CADA LINHA, UM CASO", [['{ "usuario": "standard_user", "resultado": "sucesso" }', "entra"], ['{ "usuario": "locked_out_user", "resultado": "bloqueado" }', "é bloqueado"]])),
-    ("No teste: import usuarios from, e o caminho do JSON. Pronto: a lista chega no teste.",
-     ed(trecho(DAD, 1, 2), "import usuarios from '../../dados/usuarios.json'", "dados.spec.js", de=2)),
+    ("Primeiras linhas: o import das fixtures, como na aula passada, e o import usuarios from, com o caminho do JSON. Pronto: a lista chega no teste.",
+     ed(trecho(DAD, 1, 2), "import usuarios from '../../dados/usuarios.json'", "dados.spec.js", de=1, ate=2,
+        criar=[["Agora o teste de verdade. Dentro da pasta nivel2, cria o dados ponto spec ponto js.", "dados.spec.js"]])),
     ("E o for que você já conhece. Com um detalhe novo: as chaves dentro do for. Elas pegam de cada caso o usuario e o resultado, cada um na sua variável.",
      ed(trecho(DAD, 1, 5) + "\n  });\n}", "Pegue o usuario e o resultado de cada caso", "dados.spec.js", de=4, ate=5)),
     ("Traduzindo: pra cada caso da lista, pegue os dois campos, usuario e resultado.",

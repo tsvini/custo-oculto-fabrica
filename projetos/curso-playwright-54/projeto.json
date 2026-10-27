@@ -200,7 +200,7 @@
        }
       },
       {
-       "text": "Solução, passo a passo.",
+       "text": "Solução, passo a passo. Adiciona os dois produtos, e confere que o carrinho mostra dois. Vai pro carrinho e pro checkout, e preenche os dados. Antes de finalizar, a conferência mais importante: o total, quarenta e três e dezoito. E por último, o finish e a mensagem final.",
        "scene": {
         "type": "editor",
         "arquivo": "desafios.spec.js",
@@ -214,8 +214,7 @@
         "rolar": true,
         "rolar_de": 0.2,
         "rolar_dur": 0.6
-       },
-       "pausa": 8
+       }
       },
       {
        "text": "Roda e olha o fluxo inteiro.",

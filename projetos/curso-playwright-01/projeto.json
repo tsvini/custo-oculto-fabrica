@@ -318,7 +318,7 @@
        }
       },
       {
-       "text": "Se você nunca programou, relaxa. Eu vou explicar cada linha, e você vai ver sempre o código inteiro na tela, não só um pedaço.",
+       "text": "Se você nunca programou, relaxa. Eu vou explicar cada linha, e você vai ver cada uma sendo escrita na tela, com calma.",
        "scene": {
         "type": "editor",
         "arquivo": "login.spec.js",

@@ -57,7 +57,7 @@
 2. Por que conferir o total? Porque é dinheiro: um erro de soma no carrinho é o tipo de bug que a empresa não pode deixar passar. [cards]
 3. Pausa e tenta. Esse é maior, sem pressa. [+pausa] [desafio]
 4. Dica: a mochila e a lanterna da bicicleta, bike light. O total fica no data-test total-label. Com os preços desse site de treino, o total conhecido é quarenta e três e dezoito. [tela]
-5. Solução, passo a passo. [+pausa] [editor]
+5. Solução, passo a passo. Adiciona os dois produtos, e confere que o carrinho mostra dois. Vai pro carrinho e pro checkout, e preenche os dados. Antes de finalizar, a conferência mais importante: o total, quarenta e três e dezoito. E por último, o finish e a mensagem final. [editor]
 6. Roda e olha o fluxo inteiro. [+pausa] [editor]
 7. Se você conseguiu montar boa parte desse desafio sozinho, você já está juntando seletores, ações e conferências sem copiar um roteiro pronto. Esse é um grande passo. [bigtext]
 8. Você terminou a parte do zero. A partir de agora, o nível sobe. Te vejo lá! [endcard]

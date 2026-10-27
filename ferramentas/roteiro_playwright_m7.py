@@ -3,7 +3,7 @@ Código = tests/etapas/aula32.spec.js (validado). Ajuste técnico: com o nome fi
 ("duplicate test title", saída real de demos/aula31_repetido.demo.spec.js) — a aula 32 abre mostrando esse erro."""
 import json, os, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from roteiro_playwright_m1 import bt, titulo, proxima, projeto, RAIZ
+from roteiro_playwright_m1 import bt, titulo, proxima, projeto, RAIZ, apagar_no_explorer
 from roteiro_playwright_m3 import codigo, ARV, SAUCE, LOGIN, CMD_HEADED
 from roteiro_playwright_m4 import edc, CMD
 from roteiro_playwright_m5 import vs, CONFIG, ARV_EX
@@ -73,7 +73,8 @@ AULAS.append(projeto(31, "MÓDULO 7 · AULA 31", "Uma lista de usuários e um te
                    {"out": "performance_glitch_user", "cor": "txt", "em": 0.5}, {"out": "visual_user", "cor": "txt", "em": 0.6}], terminal_altura=0.5)),
     ("Na primeira volta, usuario vale standard user. Na segunda, problem user. Na terceira, performance glitch user. E na quarta, visual user. Quatro nomes, quatro voltas.",
      {"type": "cards", "titulo": "O QUE ESTÁ DENTRO DO FOR RODA 4 VEZES", "itens": [["1", "standard_user", "1ª volta"], ["2", "problem_user", "2ª volta", "#69a7ff"], ["3", "performance_glitch_user", "3ª volta", "#ffd23f"], ["4", "visual_user", "4ª volta", "#c792ea"]]}),
-    ("Viu o for funcionando? Esse arquivo de rascunho já cumpriu o papel dele: pode apagar. Agora, volta pro usuarios ponto spec ponto js, e escreve o mesmo for embaixo da lista.",
+    ("Viu o for funcionando? Esse arquivo de rascunho já cumpriu o papel dele. Pode apagar: botão direito nele, e Delete.", apagar_no_explorer(ARV_R, "teste-do-for.js")),
+    ("Agora, volta pro usuarios ponto spec ponto js, e escreve o mesmo for embaixo da lista.",
      edc("\n".join(L31[:L_FOR] + ["}"]), "O mesmo for, no arquivo de teste", arquivo="usuarios.spec.js", pastas=ARV_U, digitar=True, digitar_de=L_FOR, fonte=28)),
     ("E dentro das chaves, no lugar do console ponto log, vai o teste de login que você já conhece. Por enquanto, com o nome fixo: login funciona.",
      edc("\n".join(L31[L_FOR - 1:]), "O teste dentro do for", arquivo="usuarios.spec.js", pastas=None, linha0=L_FOR, digitar=True, digitar_de=2, fonte=24)),

@@ -153,14 +153,66 @@
        }
       },
       {
-       "text": "Quando terminar, copia o código e cola no seu arquivo.",
+       "text": "Pra olhar o código com calma, cria um arquivo novo dentro de tests: codegen ponto spec ponto js.",
+       "scene": {
+        "type": "menu",
+        "app": "vscode",
+        "barra": [],
+        "menus": [
+         [
+          "New File...",
+          "New Folder...",
+          "—",
+          "Cut",
+          "Copy",
+          "—",
+          "Rename..."
+         ]
+        ],
+        "caminho": [
+         0
+        ],
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  tests/",
+         "    login.spec.js",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "alvo_item": "tests",
+        "novo_pos": 5,
+        "resultado": "arquivo",
+        "novo": "codegen.spec.js",
+        "novo_nivel": 2,
+        "novo_pasta": false,
+        "legenda": "New File › codegen.spec.js  (dentro de tests)"
+       }
+      },
+      {
+       "text": "Quando terminar, copia o código lá do Inspector e cola nesse arquivo.",
        "scene": {
         "type": "editor",
         "arquivo": "codegen.spec.js",
         "codigo": "import { test, expect } from '@playwright/test';\n\ntest('test', async ({ page }) => {\n  await page.goto('https://www.saucedemo.com/');\n  await page.locator('[data-test=\"username\"]').click();\n  await page.locator('[data-test=\"username\"]').fill('standard_user');\n  await page.locator('[data-test=\"password\"]').click();\n  await page.locator('[data-test=\"password\"]').fill('secret_sauce');\n  await page.locator('[data-test=\"login-button\"]').click();\n  await expect(page.locator('[data-test=\"title\"]')).toContainText('Products');\n});",
         "legenda": "Cola num arquivo novo",
         "fonte": 26,
-        "digitar": false
+        "digitar": false,
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  tests/",
+         "    login.spec.js",
+         "    codegen.spec.js",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ]
        }
       },
       {
@@ -201,6 +253,43 @@
          ]
         ],
         "entre": 1.35
+       }
+      },
+      {
+       "text": "Esse arquivo foi só pra ver o codegen trabalhando. Depois de olhar, pode apagar: botão direito nele, e Delete. O nosso teste continua sendo o login.",
+       "scene": {
+        "type": "menu",
+        "app": "vscode",
+        "barra": [],
+        "menus": [
+         [
+          "New File...",
+          "New Folder...",
+          "—",
+          "Cut",
+          "Copy",
+          "—",
+          "Rename...",
+          "Delete"
+         ]
+        ],
+        "caminho": [
+         7
+        ],
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  tests/",
+         "    login.spec.js",
+         "    codegen.spec.js",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "apaga": "codegen.spec.js",
+        "legenda": "Botão direito › Delete"
        }
       },
       {

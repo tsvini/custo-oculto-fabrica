@@ -184,7 +184,7 @@ def preencher():
          desafio("FINAL", "Compra com dois produtos", [["🎒", "mochila + lanterna da bike"], ["🛒", "carrinho, checkout e dados", AZUL], ["$", "confere o total", AMARELO], ["✓", "finaliza a compra", AMARELO]])),
         ("Dica: a mochila e a lanterna da bicicleta, bike light. O total fica no data-test total-label. Com os preços desse site de treino, o total conhecido é quarenta e três e dezoito.",
          video("dica54", "total-label: $43.18", DOIS, logado=True, delay_letra=45, espera_fim=2500)),
-        ("Solução, passo a passo.", ed),
+        ("Solução, passo a passo. Adiciona os dois produtos, e confere que o carrinho mostra dois. Vai pro carrinho e pro checkout, e preenche os dados. Antes de finalizar, a conferência mais importante: o total, quarenta e três e dezoito. E por último, o finish e a mensagem final.", ed),
         ("Roda e olha o fluxo inteiro.", rodando(C, ab, "O fluxo inteiro, sozinho", DOIS + [{"click": "[data-test=\"finish\"]"}], "run54", 54, logado=True)),
         ("Se você conseguiu montar boa parte desse desafio sozinho, você já está juntando seletores, ações e conferências sem copiar um roteiro pronto. Esse é um grande passo.",
          bt(("SELETORES", "white", 110), ("AÇÕES", "white", 110), ("CONFERÊNCIAS", "gold", 130), entre=1.25)),

@@ -112,7 +112,39 @@
        }
       },
       {
-       "text": "Pra ver funcionando, quebra o teste de novo e roda.",
+       "text": "Pra ver funcionando, quebra o teste de novo, igual na aula vinte e seis: apaga o Backpack da conferência da mochila, e escreve Mochila.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "login.spec.js",
+        "codigo": "import { test, expect } from '@playwright/test';\n\ntest.describe('Login', () => {\n  test.beforeEach(async ({ page }) => {\n    await page.goto('/');\n  });\n\n  test('entra com usuário e senha', async ({ page }) => {\n    await page.getByTestId('username').fill(process.env.SAUCE_USER);\n    await page.getByTestId('password').fill(process.env.SAUCE_PASSWORD);\n    await page.getByTestId('login-button').click();\n    await expect(page).toHaveURL(/inventory/);\n    await expect(page.getByText('Products')).toBeVisible();\n    await expect(page.getByText('Sauce Labs Backpack')).toContainText('Mochila');\n    await expect(page.getByRole('button', { name: 'Add to cart' })).toHaveCount(6);\n  });\n\n  test('mostra erro para usuário bloqueado', async ({ page }) => {\n    await page.getByTestId('username').fill('locked_out_user');\n    await page.getByTestId('password').fill(process.env.SAUCE_PASSWORD);\n    await page.getByTestId('login-button').click();\n    await expect(page.getByText('locked out')).toBeVisible();\n  });\n});",
+        "legenda": "Quebra de novo (de propósito)",
+        "fonte": 22,
+        "digitar": false,
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  tests/",
+         "    login.spec.js",
+         "  .env",
+         "  .env.example",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "trocar": [
+         [
+          14,
+          "    await expect(page.getByText('Sauce Labs Backpack')).toContainText('Backpack');",
+          null,
+          2.6
+         ]
+        ]
+       }
+      },
+      {
+       "text": "E roda o teste: falhou, como esperado.",
        "scene": {
         "type": "editor",
         "arquivo": "login.spec.js",
@@ -340,7 +372,39 @@
        }
       },
       {
-       "text": "Desfaz o erro e fechamos o módulo de debug.",
+       "text": "Antes de fechar, desfaz o erro: apaga o Mochila e volta o Backpack.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "login.spec.js",
+        "codigo": "import { test, expect } from '@playwright/test';\n\ntest.describe('Login', () => {\n  test.beforeEach(async ({ page }) => {\n    await page.goto('/');\n  });\n\n  test('entra com usuário e senha', async ({ page }) => {\n    await page.getByTestId('username').fill(process.env.SAUCE_USER);\n    await page.getByTestId('password').fill(process.env.SAUCE_PASSWORD);\n    await page.getByTestId('login-button').click();\n    await expect(page).toHaveURL(/inventory/);\n    await expect(page.getByText('Products')).toBeVisible();\n    await expect(page.getByText('Sauce Labs Backpack')).toContainText('Backpack');\n    await expect(page.getByRole('button', { name: 'Add to cart' })).toHaveCount(6);\n  });\n\n  test('mostra erro para usuário bloqueado', async ({ page }) => {\n    await page.getByTestId('username').fill('locked_out_user');\n    await page.getByTestId('password').fill(process.env.SAUCE_PASSWORD);\n    await page.getByTestId('login-button').click();\n    await expect(page.getByText('locked out')).toBeVisible();\n  });\n});",
+        "legenda": "Desfaz o erro",
+        "fonte": 22,
+        "digitar": false,
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  tests/",
+         "    login.spec.js",
+         "  .env",
+         "  .env.example",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "trocar": [
+         [
+          14,
+          "    await expect(page.getByText('Sauce Labs Backpack')).toContainText('Mochila');",
+          null,
+          1.8
+         ]
+        ]
+       }
+      },
+      {
+       "text": "E fechamos o módulo de debug.",
        "scene": {
         "type": "passo",
         "icone": "▶",

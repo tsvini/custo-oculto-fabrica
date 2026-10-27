@@ -277,18 +277,37 @@ AULAS.append(projeto(40, "MÓDULO 8 · AULA 40", "A mesma receita - ProdutosPage
 # ---------- Aula 41 ----------
 C41 = cod(41)
 L_S1 = ln(C41, "test.step('adiciona"); L_S1F = L_S1 + 3
+C41L = C41.split("\n"); L_T41 = ln(C41, "test('compra")
+assert C41L[:L_T41 + 3] == C40L[:L_T41 + 3], "até os dois const, a 41 é igual à 40"
+FAIXAS41 = [(ln(C41, "test.step('", k), ln(C41, "test.step('", k) + 3) for k in (1, 2, 3, 4)]  # cada passo: a linha do step até o fechamento
+assert all(C41L[b - 1].strip() == "});" for a, b in FAIXAS41)
+
+
+def ate_passo(k, so_abre=False):
+    """o teste da 41 até o passo k (o resto ainda não existe), fechando o que ficou aberto"""
+    fim = FAIXAS41[k - 1][0] if so_abre else FAIXAS41[k - 1][1]
+    return J(C41L[L_T41 - 1:fim] + (["    });"] if so_abre else []) + ["  });", "});"])
+
 PASSOS = [["Before Hooks", "1.1s"], ["adiciona a mochila no carrinho", "0.3s"], ["abre o carrinho", "0.2s"], ["preenche os dados de entrega", "0.4s"], ["finaliza a compra", "0.3s"]]
 AULAS.append(projeto(41, "MÓDULO 8 · AULA 41", "test.step - um relatório que se lê como roteiro", [
     ("Quando um teste longo falha, você quer saber em qual parte.", titulo(41, "TEST.STEP")),
-    ("A sintaxe: await test ponto step, abre parênteses, o nome do passo entre aspas, vírgula, async, parênteses, seta, e abre chaves.",
-     edc(parcial(C41, L_S1, ("    });", "  });", "});")), "await test.step('nome', async () => {", arquivo="compra.spec.js", pastas=ARV_P3, digitar=True, digitar_de=L_S1, digitar_ate=L_S1, fonte=22, rolar=True, rolar_de=0.6, rolar_dur=0.8)),
+    ("A ideia: separar a compra em quatro passos com nome. Adiciona a mochila, abre o carrinho, preenche os dados, finaliza. Pra isso, os passos de dentro do teste vão ser escritos de novo, agora em blocos. Então apaga as linhas de dentro do teste.",
+     edc(J(C40L[L_T40 - 1:]), "Apaga os passos de dentro do teste", arquivo="compra.spec.js", pastas=ARV_P3, linha0=L_T40, apagar=list(range(L_T40 + 4 - L_T40 + 1, len(C40L) - 2 - L_T40 + 2)), apagar_em=3.2, fonte=22)),
+    ("O primeiro passo. A sintaxe: await test ponto step, abre parênteses, o nome do passo entre aspas, vírgula, async, parênteses, seta, e abre chaves.",
+     edc(ate_passo(1, so_abre=True), "await test.step('nome', async () => {", arquivo="compra.spec.js", pastas=ARV_P3, linha0=L_T41, digitar=True, digitar_de=L_S1 - L_T41 + 1, digitar_ate=L_S1 - L_T41 + 1, fonte=22)),
     ("Traduzindo: test ponto step, um passo do teste. O nome, como ele aparece no relatório. E o bloco, o que esse passo faz.",
      {"type": "traducao", "codigo": "await test.step('adiciona a mochila no carrinho', async () => {", "partes": [["test.step", "um passo do teste"], ["'adiciona a mochila no carrinho'", "o nome no relatório"], ["async () => {", "o que o passo faz:"]], "passo": 2.0}),
-    ("Coloca o primeiro passo: adiciona a mochila no carrinho. Roda e abre o relatório: o passo aparece com esse nome.",
+    ("Dentro das chaves, as duas linhas desse passo: adiciona a mochila, e confere o numerozinho. E fecha o passo: chave, parêntese, ponto e vírgula.",
+     edc(ate_passo(1), "As linhas do passo, dentro dele", arquivo="compra.spec.js", pastas=ARV_P3, linha0=L_T41, digitar=True, digitar_de=FAIXAS41[0][0] - L_T41 + 2, digitar_ate=FAIXAS41[0][1] - L_T41 + 1, fonte=22)),
+    ("Roda e abre o relatório: o passo aparece com esse nome.",
      {"type": "pw_relatorio", "testes": [["Compra › compra uma mochila do começo ao fim", "compra.spec.js:13", "chromium", "ok", "2.6s"]],
       "abrir": {"titulo": "compra uma mochila do começo ao fim", "arquivo": "compra.spec.js:13", "projeto": "chromium", "passos": PASSOS[:2]}, "legenda": "O passo aparece com o nome que você deu"}),
-    ("Agora os outros três, do mesmo jeito: abre o carrinho, preenche os dados de entrega, finaliza a compra.",
-     edc(C41, "Os quatro passos", arquivo="compra.spec.js", pastas=ARV_P3, destaque=[ln(C41, "test.step('", k) for k in (1, 2, 3, 4)], destaque_em=0.6, rolar=True, rolar_de=1.8, rolar_dur=2.0, fonte=22)),
+    ("Segundo passo: abre o carrinho. E aproveita pra conferir uma coisa nova: que a mochila está lá dentro. Get by text Sauce Labs Backpack, to be visible.",
+     edc(ate_passo(2), "abre o carrinho + confere a mochila", arquivo="compra.spec.js", pastas=ARV_P3, linha0=L_T41, digitar=True, digitar_de=FAIXAS41[1][0] - L_T41, digitar_ate=FAIXAS41[1][1] - L_T41 + 1, fonte=22, rolar_depois=True)),
+    ("Terceiro passo: preenche os dados de entrega. Dentro, o botão checkout e o preencher dados.",
+     edc(J(C41L[FAIXAS41[1][0] - 2:FAIXAS41[2][1]] + ["  });", "});"]), "preenche os dados de entrega", arquivo="compra.spec.js", pastas=ARV_P3, linha0=FAIXAS41[1][0] - 1, digitar=True, digitar_de=FAIXAS41[2][0] - FAIXAS41[1][0] + 1, digitar_ate=FAIXAS41[2][1] - FAIXAS41[1][0] + 2, fonte=22)),
+    ("E o quarto: finaliza a compra. O botão finish, e a conferência da mensagem final.",
+     edc(J(C41L[FAIXAS41[2][0] - 2:]), "finaliza a compra", arquivo="compra.spec.js", pastas=ARV_P3, linha0=FAIXAS41[2][0] - 1, digitar=True, digitar_de=FAIXAS41[3][0] - FAIXAS41[2][0] + 1, digitar_ate=FAIXAS41[3][1] - FAIXAS41[2][0] + 2, fonte=22)),
     ("E se falhar, o relatório mostra exatamente em qual passo.",
      {"type": "pw_relatorio", "testes": [["Compra › compra uma mochila do começo ao fim", "compra.spec.js:13", "chromium", "falhou", "6.2s"]],
       "abrir": {"titulo": "compra uma mochila do começo ao fim", "status": "falhou", "arquivo": "compra.spec.js:13", "projeto": "chromium",
@@ -305,7 +324,10 @@ GI = open(os.path.join(RAIZ, "curso-playwright", "referencia_init", ".gitignore"
 AUTH = ler("tests/auth.setup.js"); CFG = ler("playwright.config.js"); C42 = cod(42)
 L_SS = ln(AUTH, "storageState"); L_SETUP = ln(CFG, "name: 'setup'"); L_DEP = ln(CFG, "dependencies")
 CFG_P = trecho(CFG, L_SETUP - 2, L_DEP + 1)
-L_USE = ln(C42, "test.use")
+L_USE = ln(C42, "test.use"); C42L = C42.split("\n"); L_GOTO42 = ln(C42, "inventory.html"); AUTHL = AUTH.split("\n"); CFG_PL = CFG_P.split("\n")
+assert "LoginPage" in C41L[1] and C41L[5].startswith("test.describe") and C41L[-1] == "});"
+_sobra = [l.strip() for i, l in enumerate(C41L) if i + 1 not in [2] + list(range(6, L_T41 - 1)) + [len(C41L)] and l.strip()]
+assert [l.strip() for l in C42L if l.strip() and "test.use" not in l and "inventory.html" not in l] == _sobra, "a 42 = a 41 sem o login + test.use + goto (é o que a aula mostra)"
 AULAS.append(projeto(42, "MÓDULO 8 · AULA 42", "Indo além - login uma vez só com storageState", [
     ("Todo teste faz login de novo. Se o login leva dois segundos e você tem trezentos testes, são dez minutos só entrando no site.", titulo(42, "LOGIN UMA VEZ SÓ")),
     ("A ideia: fazer o login uma vez, e salvar o navegador já logado num arquivo. Os testes que precisam começar logados usam esse arquivo.",
@@ -314,15 +336,27 @@ AULAS.append(projeto(42, "MÓDULO 8 · AULA 42", "Indo além - login uma vez só
      {"type": "cards", "itens": [["🍪", "Cookies", "o site lembra que você entrou"], ["⚠", "Arquivo sensível", "abre a sua conta", VERM]]}),
     ("Primeiro, a proteção: esse arquivo guarda dados da sua sessão e nunca deve ir pro GitHub. Abre o gitignore: o Playwright já colocou a pasta playwright barra ponto auth lá. Confere que ela está.",
      edc(GI, "/playwright/.auth/ já está no .gitignore", arquivo=".gitignore", pastas=ARV_P3, destaque=[ln(GI, ".auth")], destaque_em=1.2, fonte=30)),
-    ("Ele faz o login e, no fim, storage state, salvando tudo em playwright barra ponto auth barra usuario ponto json.",
-     edc(AUTH, "storageState = o estado guardado", arquivo="auth.setup.js", pastas=ARV_AUTH, destaque=[L_SS], destaque_em=2.0, fonte=22,
+    ("Primeira linha, o import, com uma diferença: test as setup. É o mesmo test, só que com o nome setup, pra deixar claro que isso é uma preparação, e não um teste. Embaixo, uma constante com o caminho do arquivo onde o login vai ficar guardado.",
+     edc(J(AUTHL[:3]), "test as setup + o caminho do arquivo", arquivo="auth.setup.js", pastas=ARV_AUTH, digitar=True, digitar_de=1, digitar_ate=3, fonte=24,
          criar=[["Agora, o arquivo que faz o login uma vez só. Dentro da pasta tests, cria o auth ponto setup ponto js. Setup quer dizer preparação.", "auth.setup.js"]])),
-    ("No config, um project chamado setup, que roda esse arquivo. E nos outros projects, dependencies setup: eles só começam depois do setup.",
-     edc(CFG_P, "dependencies = depende do setup", arquivo="playwright.config.js", pastas=ARV_AUTH, linha0=L_SETUP - 2, destaque=[3, len(CFG_P.split("\n")) - 1], destaque_em=0.8, fonte=26)),
+    ("Depois, o setup em si: abre o site, preenche o usuário e a senha, clica, e confere que entrou. É o login que você já conhece.",
+     edc(J(AUTHL[:L_SS - 1] + ["});"]), "O login que você já conhece", arquivo="auth.setup.js", pastas=ARV_AUTH, digitar=True, digitar_de=5, digitar_ate=L_SS - 1, fonte=22)),
+    ("E a linha nova, no fim: page ponto context, ponto storage state, com o path. Guarde o estado do navegador, os cookies, nesse arquivo.",
+     edc(AUTH, "storageState = guarde o estado", arquivo="auth.setup.js", pastas=ARV_AUTH, digitar=True, digitar_de=L_SS, digitar_ate=L_SS, fonte=22)),
+    ("No config, dentro dos projects, um project novo chamado setup. Ele roda os arquivos que terminam em setup ponto js.",
+     edc(J(CFG_PL[:3] + CFG_PL[3:]), "project setup", arquivo="playwright.config.js", pastas=ARV_AUTH, linha0=L_SETUP - 2, digitar=True, digitar_de=3, digitar_ate=3, fonte=26)),
+    ("E no project do chromium, dependencies setup: ele só começa depois que o setup terminar. Faz o mesmo no firefox, no webkit e no celular.",
+     edc(CFG_P, "dependencies = depende do setup", arquivo="playwright.config.js", pastas=ARV_AUTH, linha0=L_SETUP - 2, digitar=True, digitar_de=len(CFG_PL) - 1, digitar_ate=len(CFG_PL) - 1, fonte=26)),
     ("Agora, quem usa o login salvo? Existem dois jeitos. A gente vai usar este: ligar só nos arquivos que precisam começar logados. O teste de login, por exemplo, precisa começar deslogado.",
      {"type": "cards", "itens": [["✓", "compra.spec.js", "começa logado"], ["✗", "login.spec.js", "precisa começar deslogado", VERM]]}),
-    ("No arquivo da compra: test ponto use, storage state, e o caminho do arquivo. Use esse login salvo.",
-     edc(C42, "test.use({ storageState }) = use o login salvo", arquivo="compra.spec.js", pastas=ARV_AUTH, destaque=[L_USE], destaque_em=0.8, fonte=22, rolar_depois=True, rolar_de=3.0)),
+    ("Agora o compra ponto spec. O login não precisa mais acontecer aqui. Então apaga o import do LoginPage, o describe, e o before each inteiro.",
+     edc(J(C41L[:L_T41 - 1]), "Sai o login: import, describe e beforeEach", arquivo="compra.spec.js", pastas=ARV_AUTH, apagar=[2] + list(range(6, L_T41 - 1)), apagar_em=2.6, fonte=24)),
+    ("Lá no fim do arquivo, apaga também o fechamento do describe. E seleciona tudo e aperta Shift Tab, pra o teste voltar pro canto esquerdo.",
+     edc(J(C41L[-6:]), "Sai o fechamento do describe", arquivo="compra.spec.js", pastas=ARV_AUTH, linha0=len(C41L) - 5, apagar=[6], apagar_em=2.0, fonte=24)),
+    ("E no lugar do login, depois dos imports: test ponto use, storage state, e o caminho do arquivo. Use esse login salvo.",
+     edc(J(C42L[:L_USE + 2]), "test.use({ storageState }) = use o login salvo", arquivo="compra.spec.js", pastas=ARV_AUTH, digitar=True, digitar_de=L_USE, digitar_ate=L_USE, fonte=24)),
+    ("Só falta um detalhe: o teste não passa mais pela tela de login, então ninguém abre o site. O primeiro passo começa abrindo direto a página de produtos: page ponto goto, barra inventory ponto html.",
+     edc(J(C42L[L_USE + 1:L_GOTO42 + 2]), "Abre direto a página de produtos", arquivo="compra.spec.js", pastas=ARV_AUTH, linha0=L_USE + 2, digitar=True, digitar_de=L_GOTO42 - L_USE - 1, digitar_ate=L_GOTO42 - L_USE - 1, fonte=22)),
     ("Roda: o setup aparece primeiro, e a compra começa direto na página de produtos.",
      edc(trecho(C42, L_USE, L_USE + 9), "Começa direto nos produtos", arquivo="compra.spec.js", pastas=ARV_AUTH, linha0=L_USE,
          terminal=[{"cmd": "npx playwright test compra.spec.js --headed --project=chromium", "em": 0.03}, {"out": "Running 2 tests using 1 worker", "cor": "mut", "em": 0.06},

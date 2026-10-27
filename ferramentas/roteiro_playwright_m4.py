@@ -3,7 +3,7 @@ Código de cada aula = curso-playwright/projeto/tests/etapas/aulaNN.spec.js (val
 Textos de erro e dados do site (XPath, classe, 20 botões, 5,1 s do usuário lento) vieram da sonda/demos rodadas no Actions."""
 import json, os, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from roteiro_playwright_m1 import bt, titulo, proxima, projeto, RAIZ
+from roteiro_playwright_m1 import bt, titulo, proxima, projeto, RAIZ, apagar_no_explorer
 from roteiro_playwright_m3 import codigo, ed, tela, vscode_term, ARV, SAUCE, LOGIN, CMD_HEADED
 
 XPATH = "/html/body/div/div/div[2]/div[1]/div/div/form/div[1]/input"  # o "Copy full XPath" do campo Username (sonda)
@@ -116,6 +116,7 @@ AULAS.append(projeto(18, "MÓDULO 4 · AULA 18", "Bons e maus seletores - por qu
     ("Te vejo lá!", proxima("codegen")[1]),
 ]))
 
+ARV_CG = ARV[:5] + ["    codegen.spec.js"] + ARV[5:]  # o arquivo do codegen, que nasce e é apagado na aula 19
 # ---------- Aula 19 ----------
 AULAS.append(projeto(19, "MÓDULO 4 · AULA 19", "Codegen - o Playwright escreve o código pra você", [
     ("E se o Playwright escrevesse o código pra você? Ele escreve.", titulo(19, "CODEGEN")),
@@ -128,10 +129,12 @@ AULAS.append(projeto(19, "MÓDULO 4 · AULA 19", "Codegen - o Playwright escreve
      {"type": "traducao", "codigo": f"page.locator('{U}')", "partes": [["locator", "ache"], [f"'{U}'", "pela etiqueta de teste username"]], "passo": 2.2}),
     ("Na barra de cima tem botões pra criar conferências: conferir se algo está visível, ou se o texto está certo. Clica em um e depois no título Products. Pronto, apareceu um expect.",
      real("cg19_assert", "Assert text: apareceu um expect")),
-    ("Quando terminar, copia o código e cola no seu arquivo.", edc(codigo(19), "Cola num arquivo novo", arquivo="codegen.spec.js")),
+    ("Quando terminar, copia o código lá do Inspector e cola nesse arquivo.", edc(codigo(19), "Cola num arquivo novo", arquivo="codegen.spec.js", pastas=ARV_CG,
+     criar=[["Pra olhar o código com calma, cria um arquivo novo dentro de tests: codegen ponto spec ponto js.", "codegen.spec.js"]])),
     ("Mas atenção: o codegen é um ponto de partida, não o teste pronto. Ele não sabe o que você quer conferir, e às vezes escolhe um seletor ruim. Sempre revisa.",
      {"type": "cards", "titulo": "PONTO DE PARTIDA", "itens": [["⚡", "Rápido", "descobre seletores e começa o teste"], ["✎", "Revise", "o nome, as conferências e os seletores", "#ff8c42"]]}),
     ("Use pra descobrir seletores e pra começar rápido. Depois, arruma com o que você aprendeu.", bt(("CODEGEN COMEÇA", "white", 120), ("VOCÊ TERMINA", "gold", 150), entre=1.35)),
+    ("Esse arquivo foi só pra ver o codegen trabalhando. Depois de olhar, pode apagar: botão direito nele, e Delete. O nosso teste continua sendo o login.", apagar_no_explorer(ARV_CG, "codegen.spec.js")),
     ("Na próxima aula: testando um seletor antes de usar.", proxima("pick locator")[0]),
     ("Te vejo lá!", proxima("pick locator")[1]),
 ]))

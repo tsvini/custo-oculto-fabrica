@@ -223,7 +223,9 @@ AULAS.append(projeto(30, "MÓDULO 6 · AULA 30", "Print e vídeo quando o teste 
      edc("\n".join(CFG30), "screenshot e video", arquivo="playwright.config.js", linha0=26, digitar=True, digitar_de=i_trace + 2, digitar_ate=i_trace + 3, fonte=26)),
     ("Traduzindo: screenshot, print, só quando falhar. Video retain on failure: o vídeo é gravado durante o teste, e guardado só se ele falhar.",
      {"type": "traducao", "titulo": "SÓ QUANDO FALHA", "linhas": [["screenshot: 'only-on-failure'", "print, só quando falhar"], ["video: 'retain-on-failure'", "grava, e guarda só se falhar"]]}),
-    ("Pra ver funcionando, quebra o teste de novo e roda.", vs(C26, "Falhou de novo (de propósito)", run(("Running 2 tests using 2 workers", "mut"), ("  1 failed", VERM), ("  1 passed (6.4s)", "ac")), pastas=ARV_EX)),
+    ("Pra ver funcionando, quebra o teste de novo, igual na aula vinte e seis: apaga o Backpack da conferência da mochila, e escreve Mochila.",
+     edc(C26, "Quebra de novo (de propósito)", pastas=ARV_EX, fonte=22, trocar=[[L_MOCHILA, C26.split("\n")[L_MOCHILA - 1].replace("'Mochila'", "'Backpack'"), None, 2.6]])),
+    ("E roda o teste: falhou, como esperado.", vs(C26, "Falhou de novo (de propósito)", run(("Running 2 tests using 2 workers", "mut"), ("  1 failed", VERM), ("  1 passed (6.4s)", "ac")), pastas=ARV_EX)),
     ("Abre o relatório: lá está o print do momento do erro e o vídeo do teste inteiro.",
      {"type": "pw_relatorio", "url": SAUCE, "media": "site_sauce_falha", "acoes": LOGIN, "testes": TRACE6,
       "abrir": {"titulo": "entra com usuário e senha", "status": "falhou", "arquivo": "login.spec.js:8", "projeto": "chromium", "passos": [],
@@ -237,7 +239,9 @@ AULAS.append(projeto(30, "MÓDULO 6 · AULA 30", "Print e vídeo quando o teste 
      {"type": "traducao", "titulo": "AS OPÇÕES", "linhas": [["'off'", "nunca"], ["'only-on-failure' / 'retain-on-failure'", "só quando falha"], ["'on'", "sempre, até quando passa"]]}),
     ("Mas gravar sempre deixa tudo mais lento e enche o computador de arquivo. Por isso o padrão bom é só quando falha, e você liga o on só quando precisa de evidência de tudo.",
      {"type": "cards", "itens": [["✓", "Dia a dia", "só quando falha"], ["🎥", "Precisa provar", "liga o on", "#ffd23f"], ["🐢", "Sempre ligado", "mais lento, muito arquivo", "#ff8c42"]]}),
-    ("Desfaz o erro e fechamos o módulo de debug.", {"type": "passo", "icone": "▶", "titulo": "Próximo módulo", "sub": "Testes reais"}),
+    ("Antes de fechar, desfaz o erro: apaga o Mochila e volta o Backpack.",
+     edc(C24, "Desfaz o erro", pastas=ARV_EX, fonte=22, trocar=[[L_MOCHILA, C24.split("\n")[L_MOCHILA - 1].replace("'Backpack')", "'Mochila')"), None, 1.8]])),
+    ("E fechamos o módulo de debug.", {"type": "passo", "icone": "▶", "titulo": "Próximo módulo", "sub": "Testes reais"}),
     ("Te vejo lá!", {"type": "endcard", "sub": "PRÓXIMA: MÓDULO 7 · TESTES REAIS"}),
 ]))
 

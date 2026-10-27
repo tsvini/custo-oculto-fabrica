@@ -42,6 +42,12 @@ def projeto(n, selo, titulo_aula, frases):
 MENU_VSC = [["New File...", "New Folder...", "—", "Cut", "Copy", "—", "Rename..."]]
 
 
+def apagar_no_explorer(pastas, nome):
+    """cena do VS Code: botão direito no arquivo › Delete › ele some do Explorer (pastas = a árvore ainda com ele)"""
+    return {"type": "menu", "app": "vscode", "barra": [], "menus": [MENU_VSC[0] + ["Delete"]], "caminho": [len(MENU_VSC[0])], "pastas": pastas,
+            "apaga": nome, "legenda": "Botão direito › Delete"}
+
+
 def criar_no_explorer(final, nome, pasta=False):
     """cena do VS Code: botão direito na pasta de cima › New File/New Folder › o nome aparece no Explorer (final = a árvore já com o item)"""
     idx = [i for i, l in enumerate(final) if l.strip().rstrip("/") == nome.rstrip("/")][0]
@@ -112,7 +118,7 @@ AULAS.append(projeto(1, "BOAS-VINDAS · AULA 1", "O que você vai construir", [
     ("E o melhor: isso tudo vai pro seu portfólio. É um projeto que você pode mostrar numa entrevista.",
      {"type": "cards", "titulo": "NO FIM DO CURSO", "itens": [["1", "Projeto", "testes de verdade"], ["2", "GitHub", "rodando sozinho", "#69a7ff"], ["3", "Currículo", "pra mostrar na entrevista", "#ffd23f"]]}),
     ("E você não vai copiar um projeto pronto. A gente vai construir tudo junto, do zero.", bt(("DO ZERO", "gold", 200), ("TUDO JUNTO", "white", 130))),
-    ("Se você nunca programou, relaxa. Eu vou explicar cada linha, e você vai ver sempre o código inteiro na tela, não só um pedaço.",
+    ("Se você nunca programou, relaxa. Eu vou explicar cada linha, e você vai ver cada uma sendo escrita na tela, com calma.",
      {"type": "editor", "arquivo": "login.spec.js", "pastas": ["meu-primeiro-playwright", "tests", "login.spec.js"],
       "codigo": "import { test, expect } from '@playwright/test';\n\ntest('entra com usuário e senha', async ({ page }) => {\n  await page.goto('/');\n  await page.getByTestId('username').fill('standard_user');\n  await page.getByTestId('password').fill('secret_sauce');\n  await page.getByTestId('login-button').click();\n  await expect(page.getByTestId('title')).toHaveText('Products');\n});",
       "fonte": 28, "vel": 0.8, "legenda": "Sempre o código inteiro"}),

@@ -535,7 +535,47 @@
        }
       },
       {
-       "text": "Viu o for funcionando? Esse arquivo de rascunho já cumpriu o papel dele: pode apagar. Agora, volta pro usuarios ponto spec ponto js, e escreve o mesmo for embaixo da lista.",
+       "text": "Viu o for funcionando? Esse arquivo de rascunho já cumpriu o papel dele. Pode apagar: botão direito nele, e Delete.",
+       "scene": {
+        "type": "menu",
+        "app": "vscode",
+        "barra": [],
+        "menus": [
+         [
+          "New File...",
+          "New Folder...",
+          "—",
+          "Cut",
+          "Copy",
+          "—",
+          "Rename...",
+          "Delete"
+         ]
+        ],
+        "caminho": [
+         7
+        ],
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  tests/",
+         "    login.spec.js",
+         "    usuarios.spec.js",
+         "  teste-do-for.js",
+         "  .env",
+         "  .env.example",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "apaga": "teste-do-for.js",
+        "legenda": "Botão direito › Delete"
+       }
+      },
+      {
+       "text": "Agora, volta pro usuarios ponto spec ponto js, e escreve o mesmo for embaixo da lista.",
        "scene": {
         "type": "editor",
         "arquivo": "usuarios.spec.js",
