@@ -145,7 +145,50 @@
        }
       },
       {
-       "text": "Cria o compra ponto spec ponto js, com o login no before each, do jeito que você já sabe.",
+       "text": "Agora, um arquivo de teste novo pra compra. Dentro da pasta tests, cria o compra ponto spec ponto js.",
+       "scene": {
+        "type": "menu",
+        "app": "vscode",
+        "barra": [],
+        "menus": [
+         [
+          "New File...",
+          "New Folder...",
+          "—",
+          "Cut",
+          "Copy",
+          "—",
+          "Rename..."
+         ]
+        ],
+        "caminho": [
+         0
+        ],
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  tests/",
+         "    login.spec.js",
+         "    usuarios.spec.js",
+         "  .env",
+         "  .env.example",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "alvo_item": "tests",
+        "novo_pos": 4,
+        "resultado": "arquivo",
+        "novo": "compra.spec.js",
+        "novo_nivel": 2,
+        "novo_pasta": false,
+        "legenda": "New File › compra.spec.js  (dentro de tests)"
+       }
+      },
+      {
+       "text": "Dentro, o login no before each, do jeito que você já sabe.",
        "scene": {
         "type": "editor",
         "arquivo": "compra.spec.js",

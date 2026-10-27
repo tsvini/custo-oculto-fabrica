@@ -62,6 +62,47 @@
      "chapter": "",
      "sentences": [
       {
+       "text": "Dentro da pasta dados, cria o login ponto json.",
+       "scene": {
+        "type": "menu",
+        "app": "vscode",
+        "barra": [],
+        "menus": [
+         [
+          "New File...",
+          "New Folder...",
+          "—",
+          "Cut",
+          "Copy",
+          "—",
+          "Rename..."
+         ]
+        ],
+        "caminho": [
+         0
+        ],
+        "pastas": [
+         "projeto-lojinha",
+         "  dados/",
+         "  fixtures/",
+         "    paginas.js",
+         "  pages/",
+         "    LoginPage.js",
+         "    ProdutosPage.js",
+         "  tests/",
+         "  .env",
+         "  playwright.config.js"
+        ],
+        "alvo_item": "dados",
+        "novo_pos": 2,
+        "resultado": "arquivo",
+        "novo": "login.json",
+        "novo_nivel": 2,
+        "novo_pasta": false,
+        "legenda": "New File › login.json  (dentro de dados)"
+       }
+      },
+      {
        "text": "A lista de cenários vira teste. Começando pelo login: os quatro casos de erro moram no login ponto json, cada um com o usuário, a senha, e a mensagem esperada.",
        "scene": {
         "type": "editor",
@@ -75,6 +116,48 @@
         "rolar": true,
         "rolar_de": 3.0,
         "rolar_dur": 3.5
+       }
+      },
+      {
+       "text": "Dentro de tests, cria o login ponto spec ponto js.",
+       "scene": {
+        "type": "menu",
+        "app": "vscode",
+        "barra": [],
+        "menus": [
+         [
+          "New File...",
+          "New Folder...",
+          "—",
+          "Cut",
+          "Copy",
+          "—",
+          "Rename..."
+         ]
+        ],
+        "caminho": [
+         0
+        ],
+        "pastas": [
+         "projeto-lojinha",
+         "  dados/",
+         "    login.json",
+         "  fixtures/",
+         "    paginas.js",
+         "  pages/",
+         "    LoginPage.js",
+         "    ProdutosPage.js",
+         "  tests/",
+         "  .env",
+         "  playwright.config.js"
+        ],
+        "alvo_item": "tests",
+        "novo_pos": 9,
+        "resultado": "arquivo",
+        "novo": "login.spec.js",
+        "novo_nivel": 2,
+        "novo_pasta": false,
+        "legenda": "New File › login.spec.js  (dentro de tests)"
        }
       },
       {
@@ -97,6 +180,49 @@
        }
       },
       {
+       "text": "Dentro de dados, cria o ordenacao ponto json.",
+       "scene": {
+        "type": "menu",
+        "app": "vscode",
+        "barra": [],
+        "menus": [
+         [
+          "New File...",
+          "New Folder...",
+          "—",
+          "Cut",
+          "Copy",
+          "—",
+          "Rename..."
+         ]
+        ],
+        "caminho": [
+         0
+        ],
+        "pastas": [
+         "projeto-lojinha",
+         "  dados/",
+         "    login.json",
+         "  fixtures/",
+         "    paginas.js",
+         "  pages/",
+         "    LoginPage.js",
+         "    ProdutosPage.js",
+         "  tests/",
+         "    login.spec.js",
+         "  .env",
+         "  playwright.config.js"
+        ],
+        "alvo_item": "dados",
+        "novo_pos": 3,
+        "resultado": "arquivo",
+        "novo": "ordenacao.json",
+        "novo_nivel": 2,
+        "novo_pasta": false,
+        "legenda": "New File › ordenacao.json  (dentro de dados)"
+       }
+      },
+      {
        "text": "A ordenação: os quatro sentidos no ordenacao ponto json. Qual opção escolher, o nome do cenário, o campo, e o sentido.",
        "scene": {
         "type": "editor",
@@ -110,6 +236,50 @@
         "rolar": true,
         "rolar_de": 3.0,
         "rolar_dur": 3.0
+       }
+      },
+      {
+       "text": "Dentro de tests, cria o produtos ponto spec ponto js.",
+       "scene": {
+        "type": "menu",
+        "app": "vscode",
+        "barra": [],
+        "menus": [
+         [
+          "New File...",
+          "New Folder...",
+          "—",
+          "Cut",
+          "Copy",
+          "—",
+          "Rename..."
+         ]
+        ],
+        "caminho": [
+         0
+        ],
+        "pastas": [
+         "projeto-lojinha",
+         "  dados/",
+         "    login.json",
+         "    ordenacao.json",
+         "  fixtures/",
+         "    paginas.js",
+         "  pages/",
+         "    LoginPage.js",
+         "    ProdutosPage.js",
+         "  tests/",
+         "    login.spec.js",
+         "  .env",
+         "  playwright.config.js"
+        ],
+        "alvo_item": "tests",
+        "novo_pos": 11,
+        "resultado": "arquivo",
+        "novo": "produtos.spec.js",
+        "novo_nivel": 2,
+        "novo_pasta": false,
+        "legenda": "New File › produtos.spec.js  (dentro de tests)"
        }
       },
       {
@@ -352,18 +522,21 @@
          "    login.spec.js",
          "    produtos.spec.js",
          "  .env",
-         "  playwright.config.js",
-         "  README.md"
+         "  playwright.config.js"
         ],
         "codigo": "LOJA_USUARIO=cliente\nLOJA_SENHA=leigo123\nLOJA_VERSAO=1",
         "legenda": "LOJA_VERSAO=1: a versão do bug",
         "fonte": 30,
         "digitar": false,
         "linha0": 1,
-        "destaque": [
-         3
-        ],
-        "destaque_em": 0.6
+        "trocar": [
+         [
+          3,
+          "# LOJA_VERSAO=1   <- descomente pra testar a versão antiga, com o bug",
+          null,
+          1.4
+         ]
+        ]
        }
       },
       {

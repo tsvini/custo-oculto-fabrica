@@ -88,6 +88,51 @@
        }
       },
       {
+       "text": "Dentro da pasta nivel2, cria o soft ponto spec ponto js.",
+       "scene": {
+        "type": "menu",
+        "app": "vscode",
+        "barra": [],
+        "menus": [
+         [
+          "New File...",
+          "New Folder...",
+          "—",
+          "Cut",
+          "Copy",
+          "—",
+          "Rename..."
+         ]
+        ],
+        "caminho": [
+         0
+        ],
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  dados/",
+         "    usuarios.json",
+         "  fixtures/",
+         "    paginas.js",
+         "  pages/",
+         "  tests/",
+         "    nivel2/",
+         "      fixture.spec.js",
+         "      dados.spec.js",
+         "      mock.spec.js",
+         "      visual.spec.js",
+         "  .env",
+         "  playwright.config.js"
+        ],
+        "alvo_item": "nivel2",
+        "novo_pos": 12,
+        "resultado": "arquivo",
+        "novo": "soft.spec.js",
+        "novo_nivel": 3,
+        "novo_pasta": false,
+        "legenda": "New File › soft.spec.js  (dentro de nivel2)"
+       }
+      },
+      {
        "text": "Pra isso existe o expect ponto soft. Soft é suave: anote o erro, e continue conferindo.",
        "scene": {
         "type": "editor",

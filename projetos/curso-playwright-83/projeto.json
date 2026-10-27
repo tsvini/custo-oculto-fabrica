@@ -29,6 +29,22 @@
   [
    "\\bjs\\b",
    "jota éssi"
+  ],
+  [
+   "\\b[Ll]oginPage\\b",
+   "Lóguin Pêidji"
+  ],
+  [
+   "\\b[Pp]rodutosPage\\b",
+   "Produtos Pêidji"
+  ],
+  [
+   "\\b[Cc]heckoutPage\\b",
+   "Tchécaut Pêidji"
+  ],
+  [
+   "\\bpages\\b",
+   "pêidjis"
   ]
  ],
  "meta": {
@@ -65,7 +81,47 @@
        }
       },
       {
-       "text": "Cria um README ponto md com: o objetivo, as tecnologias, o que precisa instalar, como instalar, e os comandos pra rodar os testes.",
+       "text": "Na pasta do projeto, cria um arquivo novo: README ponto md. É a primeira coisa que alguém vê quando abre o seu projeto no GitHub.",
+       "scene": {
+        "type": "menu",
+        "app": "vscode",
+        "barra": [],
+        "menus": [
+         [
+          "New File...",
+          "New Folder...",
+          "—",
+          "Cut",
+          "Copy",
+          "—",
+          "Rename..."
+         ]
+        ],
+        "caminho": [
+         0
+        ],
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  pages/",
+         "  tests/",
+         "  .env",
+         "  .gitignore",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "alvo_item": "meu-primeiro-playwright",
+        "novo_pos": 9,
+        "resultado": "arquivo",
+        "novo": "README.md",
+        "novo_nivel": 1,
+        "novo_pasta": false,
+        "legenda": "New File › README.md"
+       }
+      },
+      {
+       "text": "Dentro, escreve: o objetivo, as tecnologias, o que precisa instalar, como instalar, e os comandos pra rodar os testes.",
        "scene": {
         "type": "editor",
         "arquivo": "README.md",

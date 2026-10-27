@@ -5,10 +5,11 @@
 2. Isso se chama cenário negativo: testar o que acontece quando a pessoa erra. No trabalho, é onde mais aparece bug, porque quase ninguém lembra de testar. [cards]
 3. O teste: usuário certo, senha errada, e conferir a mensagem de erro. Pausa o vídeo e tenta fazer sozinho. [+pausa] [desafio]
 4. Dica: a mensagem fica no data-test error, e contém do not match. [tela]
-5. Solução: preenche, preenche, clica, e expect error to contain text do not match. [editor]
-6. Contém o texto: não precisa ser a mensagem inteira. [traducao]
-7. Roda e olha: o erro aparece e o teste passa. [+pausa] [editor]
-8. Te vejo no próximo desafio! [endcard]
+5. Os desafios vão num arquivo só deles. Dentro da pasta tests, cria o desafios ponto spec ponto js. [menu]
+6. Solução: preenche, preenche, clica, e expect error to contain text do not match. [editor]
+7. Contém o texto: não precisa ser a mensagem inteira. [traducao]
+8. Roda e olha: o erro aparece e o teste passa. [+pausa] [editor]
+9. Te vejo no próximo desafio! [endcard]
 
 ## Aula 50: Desafio 2 - campos vazios
 1. Desafio dois: e se a pessoa clicar em Login sem preencher nada? [bigtext]

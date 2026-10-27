@@ -149,6 +149,49 @@
        }
       },
       {
+       "text": "Dentro da pasta nivel2, cria o mock ponto spec ponto js.",
+       "scene": {
+        "type": "menu",
+        "app": "vscode",
+        "barra": [],
+        "menus": [
+         [
+          "New File...",
+          "New Folder...",
+          "—",
+          "Cut",
+          "Copy",
+          "—",
+          "Rename..."
+         ]
+        ],
+        "caminho": [
+         0
+        ],
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  dados/",
+         "    usuarios.json",
+         "  fixtures/",
+         "    paginas.js",
+         "  pages/",
+         "  tests/",
+         "    nivel2/",
+         "      fixture.spec.js",
+         "      dados.spec.js",
+         "  .env",
+         "  playwright.config.js"
+        ],
+        "alvo_item": "nivel2",
+        "novo_pos": 10,
+        "resultado": "arquivo",
+        "novo": "mock.spec.js",
+        "novo_nivel": 3,
+        "novo_pasta": false,
+        "legenda": "New File › mock.spec.js  (dentro de nivel2)"
+       }
+      },
+      {
        "text": "Primeiro, a prova de que o Playwright consegue ficar no meio: page ponto route nesse endereço, e route ponto abort. Bloqueie.",
        "scene": {
         "type": "editor",

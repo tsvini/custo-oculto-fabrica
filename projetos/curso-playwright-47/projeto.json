@@ -29,6 +29,22 @@
   [
    "\\bjs\\b",
    "jota éssi"
+  ],
+  [
+   "\\b[Ll]oginPage\\b",
+   "Lóguin Pêidji"
+  ],
+  [
+   "\\b[Pp]rodutosPage\\b",
+   "Produtos Pêidji"
+  ],
+  [
+   "\\b[Cc]heckoutPage\\b",
+   "Tchécaut Pêidji"
+  ],
+  [
+   "\\bpages\\b",
+   "pêidjis"
   ]
  ],
  "meta": {
@@ -90,7 +106,56 @@
        }
       },
       {
-       "text": "Cria o api ponto spec ponto js. No teste, em vez do page, você pede o request, entre chaves.",
+       "text": "Dentro da pasta tests, cria o api ponto spec ponto js.",
+       "scene": {
+        "type": "menu",
+        "app": "vscode",
+        "barra": [],
+        "menus": [
+         [
+          "New File...",
+          "New Folder...",
+          "—",
+          "Cut",
+          "Copy",
+          "—",
+          "Rename..."
+         ]
+        ],
+        "caminho": [
+         0
+        ],
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  pages/",
+         "    CheckoutPage.js",
+         "    LoginPage.js",
+         "    ProdutosPage.js",
+         "  tests/",
+         "    auth.setup.js",
+         "    compra.spec.js",
+         "    login.spec.js",
+         "    usuarios.spec.js",
+         "  .env",
+         "  .env.example",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "alvo_item": "tests",
+        "novo_pos": 8,
+        "resultado": "arquivo",
+        "novo": "api.spec.js",
+        "novo_nivel": 2,
+        "novo_pasta": false,
+        "legenda": "New File › api.spec.js  (dentro de tests)"
+       }
+      },
+      {
+       "text": "No teste, em vez do page, você pede o request, entre chaves.",
        "scene": {
         "type": "editor",
         "arquivo": "api.spec.js",

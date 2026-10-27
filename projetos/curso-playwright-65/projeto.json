@@ -62,6 +62,46 @@
      "chapter": "",
      "sentences": [
       {
+       "text": "Dentro da pasta nivel2, cria o dados ponto spec ponto js.",
+       "scene": {
+        "type": "menu",
+        "app": "vscode",
+        "barra": [],
+        "menus": [
+         [
+          "New File...",
+          "New Folder...",
+          "—",
+          "Cut",
+          "Copy",
+          "—",
+          "Rename..."
+         ]
+        ],
+        "caminho": [
+         0
+        ],
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  fixtures/",
+         "    paginas.js",
+         "  pages/",
+         "  tests/",
+         "    nivel2/",
+         "      fixture.spec.js",
+         "  .env",
+         "  playwright.config.js"
+        ],
+        "alvo_item": "nivel2",
+        "novo_pos": 7,
+        "resultado": "arquivo",
+        "novo": "dados.spec.js",
+        "novo_nivel": 3,
+        "novo_pasta": false,
+        "legenda": "New File › dados.spec.js  (dentro de nivel2)"
+       }
+      },
+      {
        "text": "Lembra da lista de usuários da aula trinta e um? Agora cada usuário tem também o resultado esperado: uns entram, outro é bloqueado. E a lista começa a ficar maior que o próprio teste.",
        "scene": {
         "type": "editor",
@@ -86,7 +126,109 @@
        }
       },
       {
-       "text": "O teste deveria mostrar o comportamento: entra, e confere. Os dados podem morar num arquivo separado. Cria a pasta dados, e dentro o usuarios ponto json.",
+       "text": "O teste deveria mostrar o comportamento: entra, e confere. Os dados podem morar num arquivo separado.",
+       "scene": {
+        "type": "cards",
+        "itens": [
+         [
+          "🧪",
+          "O teste",
+          "o comportamento"
+         ],
+         [
+          "📄",
+          "Um arquivo de dados",
+          "os usuários e senhas",
+          "#69a7ff"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Na pasta do projeto, cria uma pasta nova chamada dados.",
+       "scene": {
+        "type": "menu",
+        "app": "vscode",
+        "barra": [],
+        "menus": [
+         [
+          "New File...",
+          "New Folder...",
+          "—",
+          "Cut",
+          "Copy",
+          "—",
+          "Rename..."
+         ]
+        ],
+        "caminho": [
+         1
+        ],
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  fixtures/",
+         "    paginas.js",
+         "  pages/",
+         "  tests/",
+         "    nivel2/",
+         "      fixture.spec.js",
+         "      dados.spec.js",
+         "  .env",
+         "  playwright.config.js"
+        ],
+        "alvo_item": "meu-primeiro-playwright",
+        "novo_pos": 1,
+        "resultado": "arquivo",
+        "novo": "dados",
+        "novo_nivel": 1,
+        "novo_pasta": true,
+        "legenda": "New Folder › dados"
+       }
+      },
+      {
+       "text": "E dentro dela, o arquivo usuarios ponto json.",
+       "scene": {
+        "type": "menu",
+        "app": "vscode",
+        "barra": [],
+        "menus": [
+         [
+          "New File...",
+          "New Folder...",
+          "—",
+          "Cut",
+          "Copy",
+          "—",
+          "Rename..."
+         ]
+        ],
+        "caminho": [
+         0
+        ],
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  dados/",
+         "  fixtures/",
+         "    paginas.js",
+         "  pages/",
+         "  tests/",
+         "    nivel2/",
+         "      fixture.spec.js",
+         "      dados.spec.js",
+         "  .env",
+         "  playwright.config.js"
+        ],
+        "alvo_item": "dados",
+        "novo_pos": 2,
+        "resultado": "arquivo",
+        "novo": "usuarios.json",
+        "novo_nivel": 2,
+        "novo_pasta": false,
+        "legenda": "New File › usuarios.json  (dentro de dados)"
+       }
+      },
+      {
+       "text": "Dentro, a lista de usuários, no formato JSON.",
        "scene": {
         "type": "editor",
         "arquivo": "usuarios.json",
@@ -131,6 +273,8 @@
          "  pages/",
          "  tests/",
          "    nivel2/",
+         "      fixture.spec.js",
+         "      dados.spec.js",
          "  .env",
          "  playwright.config.js"
         ],

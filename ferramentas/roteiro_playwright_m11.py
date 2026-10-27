@@ -96,7 +96,7 @@ def preencher():
          desafio("1", "Senha errada", [["👤", "usuário certo: standard_user"], ["🔑", "senha errada (qualquer uma)", VERM], ["✓", "confere a mensagem de erro", AMARELO]])),
         ("Dica: a mensagem fica no data-test error, e contém do not match.",
          video("dica49", "data-test=\"error\" · contém do not match", [{"fill": ["#user-name", "standard_user"]}, {"fill": ["#password", "senha_errada"]}, {"click": "#login-button"}])),
-        ("Solução: preenche, preenche, clica, e expect error to contain text do not match.", ed),
+        ("Solução: preenche, preenche, clica, e expect error to contain text do not match.", dict(ed, criar_arvore=ARV_D, criar=[["Os desafios vão num arquivo só deles. Dentro da pasta tests, cria o desafios ponto spec ponto js.", "desafios.spec.js"]])),
         ("Contém o texto: não precisa ser a mensagem inteira.",
          {"type": "traducao", "codigo": "toContainText('do not match')", "partes": [["toContainText", "contém o texto"], ["('do not match')", "só um pedaço da mensagem"]], "passo": 1.2}),
         ("Roda e olha: o erro aparece e o teste passa.",

@@ -6,9 +6,10 @@
 3. E pra isso a gente sai um pouco do saucedemo. Vamos usar o the internet: um site de treino com várias páginas diferentes. [tela]
 4. Tem upload, nova aba, iframe, alerta, tabela. Mas eu não quero que você decore uma lista de comandos. [cards]
 5. A ideia vai ser sempre: apareceu um problema novo, a gente descobre como resolver. [bigtext]
-6. Cria o arquivo internet ponto spec ponto js. Como o baseURL ainda aponta pro saucedemo, aqui a gente usa o endereço completo. [editor]
-7. Vamos começar com uma coisa que aparece em quase todo formulário. [passo]
-8. Te vejo lá! [endcard]
+6. Dentro da pasta tests, cria o arquivo internet ponto spec ponto js. [menu]
+7. Como o baseURL ainda aponta pro saucedemo, aqui a gente usa o endereço completo. [editor]
+8. Vamos começar com uma coisa que aparece em quase todo formulário. [passo]
+9. Te vejo lá! [endcard]
 
 ## Aula 56: O formulário mudou
 1. Imagina que caiu uma tarefa nova: validar as preferências de um formulário. [bigtext]
@@ -26,14 +27,16 @@
 ## Aula 57: O usuário precisa enviar um arquivo
 1. A tarefa mudou: o usuário precisa conseguir anexar um documento. Currículo, comprovante, planilha. [bigtext]
 2. Na tela tem um campo de escolher arquivo e um botão Upload. [+pausa] [tela]
-3. Primeiro, um arquivo de exemplo dentro do projeto: uma pasta arquivos, com um texto dentro. [editor]
-4. Agora: set input files, coloque este arquivo no campo. [editor]
-5. set input files: coloque este arquivo no campo. [traducao]
-6. Repara: o Playwright não abre aquela janela do Windows pra procurar o arquivo com o mouse. Ele entrega o arquivo direto pro campo. [cards]
-7. Clica em Upload e confere que o nome do arquivo apareceu na página. [editor]
-8. Roda. [+pausa] [editor]
-9. No dia a dia, também vale testar o lado ruim: um arquivo grande demais, ou de um formato que o sistema não aceita. Ele tem que recusar com uma mensagem clara. [cards]
-10. Te vejo na próxima! [endcard]
+3. Primeiro, um arquivo de exemplo dentro do projeto. Na pasta do projeto, cria uma pasta nova chamada arquivos. [menu]
+4. E dentro dela, um arquivo de texto: exemplo ponto txt. [menu]
+5. Dentro, qualquer texto. Esse é o arquivo que o teste vai enviar. [editor]
+6. Agora: set input files, coloque este arquivo no campo. [editor]
+7. set input files: coloque este arquivo no campo. [traducao]
+8. Repara: o Playwright não abre aquela janela do Windows pra procurar o arquivo com o mouse. Ele entrega o arquivo direto pro campo. [cards]
+9. Clica em Upload e confere que o nome do arquivo apareceu na página. [editor]
+10. Roda. [+pausa] [editor]
+11. No dia a dia, também vale testar o lado ruim: um arquivo grande demais, ou de um formato que o sistema não aceita. Ele tem que recusar com uma mensagem clara. [cards]
+12. Te vejo na próxima! [endcard]
 
 ## Aula 58: Uma caixa travou a página
 1. Agora aconteceu uma coisa diferente: clicamos num botão e o navegador abriu essa caixa. [tela_cheia]

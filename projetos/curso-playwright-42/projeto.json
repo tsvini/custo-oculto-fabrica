@@ -159,7 +159,55 @@
        }
       },
       {
-       "text": "Cria o auth ponto setup ponto js. Ele faz o login e, no fim, storage state, salvando tudo em playwright barra ponto auth barra usuario ponto json.",
+       "text": "Agora, o arquivo que faz o login uma vez só. Dentro da pasta tests, cria o auth ponto setup ponto js. Setup quer dizer preparação.",
+       "scene": {
+        "type": "menu",
+        "app": "vscode",
+        "barra": [],
+        "menus": [
+         [
+          "New File...",
+          "New Folder...",
+          "—",
+          "Cut",
+          "Copy",
+          "—",
+          "Rename..."
+         ]
+        ],
+        "caminho": [
+         0
+        ],
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  pages/",
+         "    CheckoutPage.js",
+         "    LoginPage.js",
+         "    ProdutosPage.js",
+         "  tests/",
+         "    compra.spec.js",
+         "    login.spec.js",
+         "    usuarios.spec.js",
+         "  .env",
+         "  .env.example",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "alvo_item": "tests",
+        "novo_pos": 8,
+        "resultado": "arquivo",
+        "novo": "auth.setup.js",
+        "novo_nivel": 2,
+        "novo_pasta": false,
+        "legenda": "New File › auth.setup.js  (dentro de tests)"
+       }
+      },
+      {
+       "text": "Ele faz o login e, no fim, storage state, salvando tudo em playwright barra ponto auth barra usuario ponto json.",
        "scene": {
         "type": "editor",
         "arquivo": "auth.setup.js",

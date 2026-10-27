@@ -32,14 +32,28 @@ def trecho(cod, de, ate):
     return "\n".join(cod.split("\n")[de - 1:ate])
 
 
-ARV = ["meu-primeiro-playwright", "  dados/", "    usuarios.json", "  fixtures/", "    paginas.js", "  pages/", "  tests/", "    nivel2/", "  .env", "  playwright.config.js"]
+CRIADOS = []  # o que já foi criado na tela, na ordem (o Explorer só mostra o que o aluno já criou)
+ORDEM_N2 = ["fixture.spec.js", "dados.spec.js", "mock.spec.js", "visual.spec.js", "soft.spec.js", "tags.spec.js", "flaky.demo.spec.js", "flaky.spec.js"]
+
+
+def arvore():
+    a = ["meu-primeiro-playwright"]
+    if "dados" in CRIADOS: a += ["  dados/"] + (["    usuarios.json"] if "usuarios.json" in CRIADOS else [])
+    if "fixtures" in CRIADOS: a += ["  fixtures/"] + (["    paginas.js"] if "paginas.js" in CRIADOS else [])
+    a += ["  pages/", "  tests/"]
+    if "nivel2" in CRIADOS: a += ["    nivel2/"] + ["      " + f for f in ORDEM_N2 if f in CRIADOS]
+    return a + ["  .env", "  playwright.config.js"]
 
 
 def ed(cod, legenda, arquivo, de=None, ate=None, linha0=1, pastas="auto", **kw):
     """editor com o arquivo; 'de'/'ate' = linhas digitadas (na numeração do trecho mostrado)"""
+    for _, nome in kw.get("criar", []):
+        CRIADOS.append(nome.rstrip("/"))
+    if kw.get("criar"):
+        kw["criar_arvore"] = arvore()
     larg = max(len(l) for l in cod.split("\n"))
     d = dict(arquivo=arquivo, linha0=linha0, fonte=30 if larg <= 50 else 26 if larg <= 64 else 22)
-    d["pastas"] = (ARV if larg <= 56 else None) if pastas == "auto" else pastas
+    d["pastas"] = (arvore() if larg <= 56 else None) if pastas == "auto" else pastas
     if de:
         d.update(digitar=True, digitar_de=de, digitar_ate=ate or de)
     d.update(kw)
@@ -105,8 +119,8 @@ aula(64, "O teste está montando coisa demais", [
      tr("test('compra...', async ({ page }) => {", [["{ page }", "chega pronto"]], 1.0)),
     ("Isso se chama fixture: alguma coisa que o teste recebe pronta. O page é uma, o request das aulas de API é outra. E dá pra criar as suas.",
      cards([["🖥", "page", "o navegador, pronto"], ["⇄", "request", "a API, pronta", AZUL], ["🔑", "loginPage", "a sua, pronta", AMARELO]], "FIXTURE: O TESTE RECEBE PRONTO")),
-    ("Cria a pasta fixtures, e dentro o arquivo paginas ponto js. Primeiro, os imports: o test do Playwright, e as duas páginas.",
-     ed(trecho(PAG, 1, 3), "fixtures/paginas.js", "paginas.js", de=1, ate=3)),
+    ("Primeiro, os imports: o test do Playwright, e as duas páginas.",
+     ed(trecho(PAG, 1, 3), "fixtures/paginas.js", "paginas.js", de=1, ate=3,         criar=[["Na pasta do projeto, cria uma pasta nova chamada fixtures.", "fixtures/"], ["E dentro dela, o arquivo paginas ponto js.", "paginas.js"]])),
     ("Repara no test as base. Traduzindo: traga o test do Playwright, mas chame ele de base. Porque o nome test vai ficar pro nosso test novo, que a gente vai criar agora.",
      tr("import { test as base } from '@playwright/test';", [["test as base", "o test, com o apelido base"], ["'@playwright/test'", "do Playwright"]])),
     ("Agora: export const test igual base ponto extend. Extend quer dizer estender: pegue o test original e acrescente coisas novas nele.",
@@ -118,8 +132,9 @@ aula(64, "O teste está montando coisa demais", [
         [["loginPage:", "o nome"], ["({ page }, use)", "recebe page e use"], ["use(new LoginPage(page))", "entrega pronto"]], 2.2)),
     ("O produtosPage segue a mesma receita. E no fim, exporta o expect também, pra o teste importar tudo de um lugar só.",
      ed(PAG, "A mesma receita pro produtosPage", "paginas.js", de=9, ate=14, fonte=24)),
-    ("No teste, muda o import: em vez de vir do Playwright, o test vem das suas fixtures. E agora você pede o loginPage entre chaves, igual ao page.",
-     ed(FIX, "Pede o loginPage igual ao page", "fixture.spec.js", destaque=[1, 3], destaque_em=1.0)),
+    ("Agora um teste usando a fixture. Primeira linha, o import: em vez de vir do Playwright, o test vem das suas fixtures. E no teste, você pede o loginPage entre chaves, igual ao page, e já usa.",
+     ed(FIX, "Pede o loginPage igual ao page", "fixture.spec.js", de=1, ate=7,
+        criar=[["Os testes do nível dois vão ficar numa pasta separada. Dentro de tests, cria uma pasta nova chamada nivel2.", "nivel2/"], ["E dentro dela, o arquivo fixture ponto spec ponto js.", "fixture.spec.js"]])),
     ("Antes, cada teste montava as páginas. Agora ele pede, e elas chegam prontas. O teste fica só com o que importa.",
      cmp("O MESMO TESTE", ["ANTES", "NEW EM CADA TESTE"], ["DEPOIS", "PEDE E CHEGA PRONTO"])),
     ("Quando vale a pena? Quando as mesmas páginas aparecem em muitos testes, que é o caso de quase todo projeto grande. Num arquivo só, com um teste, o new na hora já resolve.",
@@ -144,9 +159,12 @@ for (const { usuario, resultado } of usuarios) {
   test(`${usuario} - ${resultado}`, async ({ page, loginPage }) => {"""
 aula(65, "Os dados ficaram maiores que o teste", [
     ("Lembra da lista de usuários da aula trinta e um? Agora cada usuário tem também o resultado esperado: uns entram, outro é bloqueado. E a lista começa a ficar maior que o próprio teste.",
-     ed(DENTRO, "A lista maior que o teste", "dados.spec.js", destaque=list(range(1, 9)), destaque_em=1.6, pastas=None)),
-    ("O teste deveria mostrar o comportamento: entra, e confere. Os dados podem morar num arquivo separado. Cria a pasta dados, e dentro o usuarios ponto json.",
-     ed(JS, "dados/usuarios.json", "usuarios.json", de=1, ate=5)),
+     ed(DENTRO, "A lista maior que o teste", "dados.spec.js", destaque=list(range(1, 9)), destaque_em=1.6, pastas=None, criar=[["Dentro da pasta nivel2, cria o dados ponto spec ponto js.", "dados.spec.js"]])),
+    ("O teste deveria mostrar o comportamento: entra, e confere. Os dados podem morar num arquivo separado.",
+     {"type": "cards", "itens": [["🧪", "O teste", "o comportamento"], ["📄", "Um arquivo de dados", "os usuários e senhas", "#69a7ff"]]}),
+    ("Dentro, a lista de usuários, no formato JSON.",
+     ed(JS, "dados/usuarios.json", "usuarios.json", de=1, ate=5,
+        criar=[["Na pasta do projeto, cria uma pasta nova chamada dados.", "dados/"], ["E dentro dela, o arquivo usuarios ponto json.", "usuarios.json"]])),
     ("JSON você já viu nas aulas de API: chaves, o nome do campo entre aspas, dois pontos, e o valor. Cada par de chaves é um caso de teste.",
      trl("CADA LINHA, UM CASO", [['{ "usuario": "standard_user", "resultado": "sucesso" }', "entra"], ['{ "usuario": "locked_out_user", "resultado": "bloqueado" }', "é bloqueado"]])),
     ("No teste: import usuarios from, e o caminho do JSON. Pronto: a lista chega no teste.",
@@ -181,7 +199,7 @@ aula(66, "E se o servidor responder errado?", [
     ("Esses produtos vêm de um endereço da API: api barra produtos ponto json. Abrindo ele no navegador, é a lista, em JSON.",
      {"type": "tela", "media": "n66_json", "url": LOJA + "api/produtos.json", "titulo": LOJA + "api/produtos.json", "legenda": "A lista de produtos, em JSON"}),
     ("Primeiro, a prova de que o Playwright consegue ficar no meio: page ponto route nesse endereço, e route ponto abort. Bloqueie.",
-     ed(trecho(MOCK, L_T1, L_T1 + 4), "page.route + route.abort()", "mock.spec.js", linha0=L_T1, de=L_ABORT - L_T1 + 1, pastas=None)),
+     ed(trecho(MOCK, L_T1, L_T1 + 4), "page.route + route.abort()", "mock.spec.js", linha0=L_T1, de=L_ABORT - L_T1 + 1, pastas=None, criar=[["Dentro da pasta nivel2, cria o mock ponto spec ponto js.", "mock.spec.js"]])),
     ("Traduzindo: route, quando o navegador pedir este endereço. Os dois asteriscos: qualquer coisa antes. E abort: bloqueie, como se o servidor estivesse fora do ar.",
      tr("page.route('**/api/produtos.json', (route) => route.abort());", [["page.route", "quando pedir"], ["'**/api/produtos.json'", "este endereço"], ["route.abort()", "bloqueie"]], 2.0)),
     ("E por que o reload? O login já carregou os produtos. Com o route ligado, a gente recarrega a página, e o pedido novo é bloqueado.",
@@ -213,7 +231,7 @@ aula(67, "O botão funciona, mas ficou errado", [
     ("Olha como ficou: laranja, menor, fora do padrão. Mas ele continua clicável, e o login funciona. Nenhum teste nosso ia reclamar.",
      {"type": "tela", "media": "n67_depois", "url": LOJA + "?estilo=quebrado", "titulo": "Lojinha do Leigo", "legenda": "Depois: o teste continua passando", "alvo": "Entrar", "zoom_em": 1.4, "caixa_em": 1.8}),
     ("Um teste visual percebe. Uma linha: to have screenshot. Tire uma foto da tela e compare com a foto guardada.",
-     ed(VIS, "toHaveScreenshot", "visual.spec.js", de=7)),
+     ed(VIS, "toHaveScreenshot", "visual.spec.js", de=7, criar=[["Dentro da pasta nivel2, cria o visual ponto spec ponto js.", "visual.spec.js"]])),
     ("Traduzindo: eu espero que a página fique igual à foto guardada com o nome login ponto png.",
      tr("await expect(page).toHaveScreenshot('login.png');", [["expect(page)", "eu espero que a página"], ["toHaveScreenshot", "fique igual à foto"], ["('login.png')", "guardada com este nome"]], 1.8)),
     ("Na primeira vez, ainda não existe foto pra comparar. Ele falha, avisa, e guarda a tela de agora como referência.",
@@ -245,7 +263,7 @@ aula(68, "Quero ver todos os erros da tela de uma vez", [
     ("Uma tela com várias informações pra conferir. A primeira conferência falha, e o teste para ali. Você corrige, roda de novo, e só então descobre que a quarta também estava errada.",
      cards([["1", "1ª conferência", "falhou: o teste parou", VERM], ["↻", "Corrige e roda", "de novo"], ["4", "4ª conferência", "também estava errada", VERM]], "UM ERRO POR VEZ")),
     ("Pra isso existe o expect ponto soft. Soft é suave: anote o erro, e continue conferindo.",
-     ed(SOFT_V, "expect.soft", "soft.spec.js", de=ln(SOFT_V, "entrar"), ate=ln(SOFT_V, "erro"))),
+     ed(SOFT_V, "expect.soft", "soft.spec.js", de=ln(SOFT_V, "entrar"), ate=ln(SOFT_V, "erro"), criar=[["Dentro da pasta nivel2, cria o soft ponto spec ponto js.", "soft.spec.js"]])),
     ("Traduzindo: expect soft, anote o erro e siga. Depois, a conferência de sempre.",
      tr("await expect.soft(page.getByTestId('entrar')).toHaveText('Login');", [["expect.soft", "anote o erro e siga"], ["toHaveText('Login')", "a conferência de sempre"]], 1.6)),
     ("Aqui, quatro conferências na tela de login da Lojinha. Duas erradas de propósito: o botão diz Entrar, e não Login. E a mensagem de erro só aparece depois que alguém erra a senha.",
@@ -265,7 +283,7 @@ aula(69, "Não dá tempo de rodar tudo", [
     ("O time vai fazer uma entrega daqui a meia hora. Tem cento e cinquenta testes, e alguém pergunta: qual o mínimo pra saber se o sistema está de pé?",
      bt(("A PERGUNTA", "muted", 70), ("“Qual o mínimo pra saber se está de pé?”", "white", 70), entre=1.3)),
     ("Pra isso servem as tags: uma etiqueta no teste. Depois do nome, entre chaves: tag, arroba smoke.",
-     ed(TAG, "{ tag: '@smoke' }", "tags.spec.js", de=3, pastas=None)),
+     ed(TAG, "{ tag: '@smoke' }", "tags.spec.js", de=3, pastas=None, criar=[["Dentro da pasta nivel2, cria o tags ponto spec ponto js.", "tags.spec.js"]])),
     ("Traduzindo: esse teste tem a etiqueta smoke.",
      tr("test('login funciona', { tag: '@smoke' }, async ({ page, loginPage }) => {", [["{ tag: '@smoke' }", "a etiqueta smoke"]], 1.0)),
     ("Smoke é fumaça. O nome vem da eletrônica: liga o aparelho e vê se sai fumaça. É o teste rápido de que o básico funciona: entra no sistema, abre a tela principal, faz a compra.",
@@ -298,13 +316,13 @@ aula(70, "Passou. Rodei de novo. Falhou.", [
     ("Esse é o teste flaky: às vezes passa, às vezes falha, sem nenhuma mudança que explique. E ele é perigoso: o time para de confiar nos testes, e começa a ignorar o vermelho. Até o dia em que o vermelho era um bug de verdade.",
      bt(("FLAKY", "gold", 200), ("ÀS VEZES PASSA, ÀS VEZES FALHA", "white", 80))),
     ("Olha o código. Depois do login, ele espera quatro segundos e meio, fixos, e conta os produtos.",
-     ed(DEMO, "Tempo fixo e depois conta", "flaky.demo.spec.js", destaque=[L_WAIT, L_COUNT], destaque_em=1.0, pastas=None)),
+     ed(DEMO, "Tempo fixo e depois conta", "flaky.demo.spec.js", destaque=[L_WAIT, L_COUNT], destaque_em=1.0, pastas=None, criar=[["Pra ver isso acontecendo, cria dentro da pasta nivel2 um arquivo de exemplo: flaky ponto demo ponto spec ponto js.", "flaky.demo.spec.js"]])),
     ("O problema: esse usuário é lento de propósito. Às vezes a página carrega em quatro segundos, às vezes em cinco. Quando demora mais que a espera, a conta dá zero, e o teste falha.",
      cards([["4s", "Carregou em 4 segundos", "passou", VERDE], ["5s", "Carregou em 5 segundos", "falhou", VERM]], "ESPERA FIXA DE 4,5 SEGUNDOS")),
     ("A reação mais comum é aumentar a espera. Às vezes parece resolver. Mas aí o teste sempre espera, mesmo quando a página já carregou. E no dia em que o sistema levar mais, falha de novo.",
      cmp("AUMENTAR A ESPERA?", ["TEMPO FIXO", "LENTO E AINDA FALHA"], ["ESPERAR O QUE IMPORTA", "RÁPIDO E ESTÁVEL"])),
     ("O caminho certo: esperar o que importa. Um expect que espera sozinho, até o primeiro produto aparecer, como na aula vinte e um.",
-     ed(FLK, "Espere o que importa", "flaky.spec.js", de=6, ate=7, pastas=None)),
+     ed(FLK, "Espere o que importa", "flaky.spec.js", de=6, ate=7, pastas=None, criar=[["Agora o teste do jeito certo, num arquivo novo. Dentro da pasta nivel2, cria o flaky ponto spec ponto js.", "flaky.spec.js"]])),
     ("E repara: ele não espera dez segundos. Espera até dez. Apareceu em quatro? Segue em quatro.",
      tr("await expect(produtos.first()).toBeVisible({ timeout: 10000 });", [["toBeVisible", "espere aparecer"], ["{ timeout: 10000 }", "por até 10 segundos"]], 1.4)),
     ("E pra caçar teste instável, o repeat each: roda o mesmo teste várias vezes seguidas. Se falhar uma vez em dez, tem coisa pra investigar.",

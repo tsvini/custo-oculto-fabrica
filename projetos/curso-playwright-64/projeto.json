@@ -120,19 +120,89 @@
        }
       },
       {
-       "text": "Cria a pasta fixtures, e dentro o arquivo paginas ponto js. Primeiro, os imports: o test do Playwright, e as duas páginas.",
+       "text": "Na pasta do projeto, cria uma pasta nova chamada fixtures.",
+       "scene": {
+        "type": "menu",
+        "app": "vscode",
+        "barra": [],
+        "menus": [
+         [
+          "New File...",
+          "New Folder...",
+          "—",
+          "Cut",
+          "Copy",
+          "—",
+          "Rename..."
+         ]
+        ],
+        "caminho": [
+         1
+        ],
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  pages/",
+         "  tests/",
+         "  .env",
+         "  playwright.config.js"
+        ],
+        "alvo_item": "meu-primeiro-playwright",
+        "novo_pos": 1,
+        "resultado": "arquivo",
+        "novo": "fixtures",
+        "novo_nivel": 1,
+        "novo_pasta": true,
+        "legenda": "New Folder › fixtures"
+       }
+      },
+      {
+       "text": "E dentro dela, o arquivo paginas ponto js.",
+       "scene": {
+        "type": "menu",
+        "app": "vscode",
+        "barra": [],
+        "menus": [
+         [
+          "New File...",
+          "New Folder...",
+          "—",
+          "Cut",
+          "Copy",
+          "—",
+          "Rename..."
+         ]
+        ],
+        "caminho": [
+         0
+        ],
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  fixtures/",
+         "  pages/",
+         "  tests/",
+         "  .env",
+         "  playwright.config.js"
+        ],
+        "alvo_item": "fixtures",
+        "novo_pos": 2,
+        "resultado": "arquivo",
+        "novo": "paginas.js",
+        "novo_nivel": 2,
+        "novo_pasta": false,
+        "legenda": "New File › paginas.js  (dentro de fixtures)"
+       }
+      },
+      {
+       "text": "Primeiro, os imports: o test do Playwright, e as duas páginas.",
        "scene": {
         "type": "editor",
         "arquivo": "paginas.js",
         "pastas": [
          "meu-primeiro-playwright",
-         "  dados/",
-         "    usuarios.json",
          "  fixtures/",
          "    paginas.js",
          "  pages/",
          "  tests/",
-         "    nivel2/",
          "  .env",
          "  playwright.config.js"
         ],
@@ -170,13 +240,10 @@
         "arquivo": "paginas.js",
         "pastas": [
          "meu-primeiro-playwright",
-         "  dados/",
-         "    usuarios.json",
          "  fixtures/",
          "    paginas.js",
          "  pages/",
          "  tests/",
-         "    nivel2/",
          "  .env",
          "  playwright.config.js"
         ],
@@ -196,13 +263,10 @@
         "arquivo": "paginas.js",
         "pastas": [
          "meu-primeiro-playwright",
-         "  dados/",
-         "    usuarios.json",
          "  fixtures/",
          "    paginas.js",
          "  pages/",
          "  tests/",
-         "    nivel2/",
          "  .env",
          "  playwright.config.js"
         ],
@@ -244,13 +308,10 @@
         "arquivo": "paginas.js",
         "pastas": [
          "meu-primeiro-playwright",
-         "  dados/",
-         "    usuarios.json",
          "  fixtures/",
          "    paginas.js",
          "  pages/",
          "  tests/",
-         "    nivel2/",
          "  .env",
          "  playwright.config.js"
         ],
@@ -264,7 +325,84 @@
        }
       },
       {
-       "text": "No teste, muda o import: em vez de vir do Playwright, o test vem das suas fixtures. E agora você pede o loginPage entre chaves, igual ao page.",
+       "text": "Os testes do nível dois vão ficar numa pasta separada. Dentro de tests, cria uma pasta nova chamada nivel2.",
+       "scene": {
+        "type": "menu",
+        "app": "vscode",
+        "barra": [],
+        "menus": [
+         [
+          "New File...",
+          "New Folder...",
+          "—",
+          "Cut",
+          "Copy",
+          "—",
+          "Rename..."
+         ]
+        ],
+        "caminho": [
+         1
+        ],
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  fixtures/",
+         "    paginas.js",
+         "  pages/",
+         "  tests/",
+         "  .env",
+         "  playwright.config.js"
+        ],
+        "alvo_item": "tests",
+        "novo_pos": 5,
+        "resultado": "arquivo",
+        "novo": "nivel2",
+        "novo_nivel": 2,
+        "novo_pasta": true,
+        "legenda": "New Folder › nivel2  (dentro de tests)"
+       }
+      },
+      {
+       "text": "E dentro dela, o arquivo fixture ponto spec ponto js.",
+       "scene": {
+        "type": "menu",
+        "app": "vscode",
+        "barra": [],
+        "menus": [
+         [
+          "New File...",
+          "New Folder...",
+          "—",
+          "Cut",
+          "Copy",
+          "—",
+          "Rename..."
+         ]
+        ],
+        "caminho": [
+         0
+        ],
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  fixtures/",
+         "    paginas.js",
+         "  pages/",
+         "  tests/",
+         "    nivel2/",
+         "  .env",
+         "  playwright.config.js"
+        ],
+        "alvo_item": "nivel2",
+        "novo_pos": 6,
+        "resultado": "arquivo",
+        "novo": "fixture.spec.js",
+        "novo_nivel": 3,
+        "novo_pasta": false,
+        "legenda": "New File › fixture.spec.js  (dentro de nivel2)"
+       }
+      },
+      {
+       "text": "Agora um teste usando a fixture. Primeira linha, o import: em vez de vir do Playwright, o test vem das suas fixtures. E no teste, você pede o loginPage entre chaves, igual ao page, e já usa.",
        "scene": {
         "type": "editor",
         "arquivo": "fixture.spec.js",
@@ -272,13 +410,10 @@
         "codigo": "import { test, expect } from '../../fixtures/paginas';\n\ntest('o loginPage chega pronto', async ({ page, loginPage }) => {\n  await page.goto('/');\n  await loginPage.entrar('standard_user', 'secret_sauce');\n  await expect(page.getByTestId('title')).toHaveText('Products');\n});",
         "legenda": "Pede o loginPage igual ao page",
         "fonte": 22,
-        "digitar": false,
+        "digitar": true,
         "linha0": 1,
-        "destaque": [
-         1,
-         3
-        ],
-        "destaque_em": 1.0
+        "digitar_de": 1,
+        "digitar_ate": 7
        }
       },
       {

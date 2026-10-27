@@ -224,8 +224,9 @@ AULAS.append(projeto(24, "MÓDULO 5 · AULA 24", "Variáveis de ambiente - tiran
      edc("\n".join(C24L.split("\n")[17:24]), "Teste 2: só a senha vem do .env", linha0=18, pastas=ARV_ENV, fonte=22, trocar=trocas(C23L, C24L, 18, 24, em=6.0))),
     ("Traduzindo: process ponto env, as variáveis do ambiente. SAUCE underline USER, a variável com esse nome. Quando o teste roda, o dotenv já leu o arquivo, e aqui entra o standard user.",
      {"type": "traducao", "codigo": "process.env.SAUCE_USER", "partes": [["process.env", "as variáveis do ambiente"], ["SAUCE_USER", "a chamada SAUCE_USER"]], "passo": 2.0}),
-    ("E pra quem baixar o projeto saber o que preencher, cria um ponto env ponto example só com os nomes das variáveis, sem os valores.",
-     edc("SAUCE_USER=\nSAUCE_PASSWORD=", "Só os nomes, sem os valores", arquivo=".env.example", pastas=ARV_EX, digitar=True, fonte=32)),
+    ("Dentro, só os nomes das variáveis, sem os valores. Example quer dizer exemplo: quem baixar copia esse arquivo, chama de ponto env, e coloca os próprios valores.",
+     edc("SAUCE_USER=\nSAUCE_PASSWORD=", "Só os nomes, sem os valores", arquivo=".env.example", pastas=ARV_EX, digitar=True, fonte=32,
+         criar=[["E pra quem baixar o projeto saber o que preencher, cria mais um arquivo na pasta do projeto: ponto env ponto example.", ".env.example"]])),
     ("Roda pra confirmar: continua passando.", vs(C24, "Continua passando", run(("Running 2 tests using 2 workers", "mut"), ("  2 passed (2.0s)", "ac")), pastas=ARV_EX)),
     ("E no GitHub, onde não existe o seu ponto env? Lá, quem entrega esses valores são os secrets, um cofre do próprio GitHub. Você vê isso na aula 45.", {'type': 'cards', 'itens': [['💻', 'Na sua máquina', 'o arquivo .env'], ['☁', 'No GitHub', 'os secrets, na aula 45', '#69a7ff']]}),  # pra que / quando
     ("Na próxima aula: rodando só o que importa.", proxima("only, skip e filtros")[0]),

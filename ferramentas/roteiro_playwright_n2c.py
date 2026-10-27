@@ -27,10 +27,21 @@ def trecho(cod, de, ate):
     return "\n".join(cod.split("\n")[de - 1:ate])
 
 
+CRIADOS = []  # o que o aluno já criou na tela, no projeto 2 (o npm init já deu o tests/ e o playwright.config.js)
+
+
+def arvore2():
+    return [l for l in ARV2 if l.strip().rstrip("/") in CRIADOS + ["projeto-lojinha", "tests", "playwright.config.js"]]
+
+
 def ed(cod, legenda, arquivo, de=None, ate=None, linha0=1, pastas="auto", **kw):
     larg = max(len(l) for l in cod.split("\n"))
     d = dict(arquivo=arquivo, linha0=linha0, fonte=30 if larg <= 50 else 26 if larg <= 64 else 22 if larg <= 84 else 19)
-    d["pastas"] = (ARV2 if larg <= 56 else None) if pastas == "auto" else pastas
+    for _, nome in kw.get("criar", []):
+        CRIADOS.append(nome.rstrip("/"))
+    if kw.get("criar"):
+        kw["criar_arvore"] = arvore2()
+    d["pastas"] = (arvore2() if larg <= 56 else None) if pastas == "auto" else pastas
     if de:
         d.update(digitar=True, digitar_de=de, digitar_ate=ate or de)
     d.update(kw)
@@ -167,9 +178,9 @@ aula(77, "Começando o projeto organizado", [
      cards([["📄", "pages/", "LoginPage e ProdutosPage"], ["🔑", "fixtures/", "as páginas prontas", AZUL], ["{ }", "dados/", "login e ordenação", AMARELO], ["✓", "tests/", "login e produtos", VERDE]], "A ESTRUTURA")),
     ("E no config: o dotenv lá em cima, o baseURL da Lojinha, já lendo a variável de ambiente, e o testIdAttribute, porque a Lojinha também usa data-test.",
      ed(CFG2, "dotenv, baseURL e testIdAttribute", "playwright.config.js", destaque=[ln(CFG2, "dotenv.config"), ln(CFG2, "baseURL"), ln(CFG2, "testIdAttribute")], destaque_em=1.0, pastas=None,
-        rolar=True, rolar_de=0.5, rolar_dur=1.0)),
-    ("E o ponto env, com o usuário e a senha da Lojinha. Repara na última linha, comentada: a versão. Com ela, dá pra apontar os testes pra versão um, a do bug.",
-     ed(ler(".env.example"), "O .env do projeto 2", ".env", destaque=[3], destaque_em=1.6)),
+        rolar=True, rolar_de=0.5, rolar_dur=1.0, criar=[['Primeiro, as pastas que você já sabe que vai precisar. Na pasta do projeto, cria a pasta pages.', 'pages/'], ['A pasta fixtures.', 'fixtures/'], ['E a pasta dados.', 'dados/']])),
+    ("Dentro, o usuário e a senha da Lojinha. Repara na última linha, comentada: a versão. Com ela, dá pra apontar os testes pra versão um, a do bug.",
+     ed(ler(".env.example"), "O .env do projeto 2", ".env", destaque=[3], destaque_em=1.6, criar=[['Na pasta do projeto, cria o arquivo ponto env.', '.env']])),
     ("Repara: no primeiro projeto, cada uma dessas coisas era novidade, e a gente foi colocando uma por vez. Agora você escolhe a estrutura no começo, com intenção.",
      cmp("A ESTRUTURA", ["PROJETO 1", "UMA NOVIDADE POR VEZ"], ["PROJETO 2", "ESCOLHIDA NO COMEÇO"])),
 ] + fim("page objects e fixture"))
@@ -179,13 +190,13 @@ LP = ler("pages/LoginPage.js"); PP = ler("pages/ProdutosPage.js"); FX = ler("fix
 L_ABRIR = ln(LP, "async abrir"); L_ORD = ln(PP, "async ordenarPor"); L_LER = ln(PP, "async lerPrecos"); L_PROD = ln(PP, "produto(nome)")
 aula(78, "Page Objects e fixture", [
     ("O LoginPage, com a receita que você já conhece: os campos, o botão, a mensagem de erro, e o entrar.",
-     parte(LP, 1, 8, "LoginPage: a mesma receita", "LoginPage.js", destaque=list(range(2, 8)), destaque_em=0.8)),
+     parte(LP, 1, 8, "LoginPage: a mesma receita", "LoginPage.js", destaque=list(range(2, 8)), destaque_em=0.8, criar=[['Dentro da pasta pages, cria o LoginPage ponto js.', 'LoginPage.js']])),
     ("E uma ação nova, o abrir. Ela abre a loja, e se o ponto env tiver a versão, acrescenta o interrogação versão no endereço.",
      parte(LP, L_ABRIR, L_ABRIR + 3, "abrir(): a versão vem do .env", "LoginPage.js", destaque=[L_ABRIR + 1, L_ABRIR + 2], destaque_em=0.8, fonte=30)),
     ("Traduzindo: v é a versão que veio do ponto env. O interrogação quer dizer então: se tiver a versão, abre index ponto html interrogação versão igual a ela. Os dois pontos querem dizer senão: senão, só o index ponto html.",
      tr("v ? `index.html?versao=${v}` : 'index.html'", [["v ?", "se tiver a versão, então"], ["`index.html?versao=${v}`", "index.html?versao=1"], [": 'index.html'", "senão, index.html"]], 2.2)),
     ("Agora o ProdutosPage. Os elementos: o título, a caixa de ordenar, os produtos, os preços e os nomes. E a ação de ordenar, com o select option que você já conhece.",
-     parte(PP, 1, L_ORD + 2, "ProdutosPage: elementos e ordenarPor", "ProdutosPage.js", destaque=[L_ORD, L_ORD + 1], destaque_em=1.8, fonte=24)),
+     parte(PP, 1, L_ORD + 2, "ProdutosPage: elementos e ordenarPor", "ProdutosPage.js", destaque=[L_ORD, L_ORD + 1], destaque_em=1.8, fonte=24, criar=[['Dentro de pages, cria o ProdutosPage ponto js.', 'ProdutosPage.js']])),
     ("E uma ação que lê os preços da tela. Primeiro, all text contents: pegue o texto de todos os preços, numa lista.",
      parte(PP, L_LER - 1, L_LER + 5, "allTextContents: o texto de todos", "ProdutosPage.js", destaque=[L_LER + 1], destaque_em=0.8)),
     ("Só que eles vêm como texto: R$ doze, vírgula, cinquenta. E pra comparar, a gente precisa de número. Então, pra cada texto: tira o R$, tira o ponto do milhar, troca a vírgula por ponto, e transforma em número.",
@@ -195,7 +206,7 @@ aula(78, "Page Objects e fixture", [
     ("E o produto, que acha o card de um produto pelo nome, com o filter has text da aula sessenta e três.",
      parte(PP, L_PROD, L_PROD + 2, "produto(nome): o card pelo nome", "ProdutosPage.js", destaque=[L_PROD, L_PROD + 1], destaque_em=0.8, fonte=30)),
     ("E a fixture que entrega os dois prontos pros testes. Igual à do módulo treze.",
-     ed(FX, "A fixture: as duas páginas prontas", "paginas.js", fonte=24)),
+     ed(FX, "A fixture: as duas páginas prontas", "paginas.js", fonte=24, criar=[['Dentro da pasta fixtures, cria o paginas ponto js.', 'paginas.js']])),
     ("Repara como foi mais rápido da segunda vez. Não porque a gente pulou explicação: porque agora você conhece a receita, e só aplica.",
      bt(("MAIS RÁPIDO", "white", 120), ("PORQUE VOCÊ CONHECE A RECEITA", "gold", 90))),
 ] + fim("automatizando os cenários"))
@@ -205,13 +216,13 @@ LS = ler("tests/login.spec.js"); LJ = ler("dados/login.json"); PS = ler("tests/p
 L_SORT = ln(PS, ".sort("); L_FOR = ln(PS, "for (const o"); L_REV = ln(PS, "reverse()"); L_EQ = ln(PS, "toEqual"); L_DIS = ln(PS, "toBeDisabled"); L_TAG = ln(PS, "@smoke")
 aula(79, "Agora sim, automatizando os cenários", [
     ("A lista de cenários vira teste. Começando pelo login: os quatro casos de erro moram no login ponto json, cada um com o usuário, a senha, e a mensagem esperada.",
-     ed(LJ, "dados/login.json: os casos de erro", "login.json", pastas=None, fonte=26, rolar=True, rolar_de=3.0, rolar_dur=3.5)),
+     ed(LJ, "dados/login.json: os casos de erro", "login.json", pastas=None, fonte=26, rolar=True, rolar_de=3.0, rolar_dur=3.5, criar=[['Dentro da pasta dados, cria o login ponto json.', 'login.json']])),
     ("E o teste: o login válido, com a etiqueta smoke. E um for pelos casos do JSON, conferindo a mensagem de cada um.",
-     parte(LS, ln(LS, "const smoke"), len(LS.split("\n")) - 1, "login.spec.js: o válido e os casos do JSON", "login.spec.js", destaque=[ln(LS, "const smoke"), ln(LS, "for (const caso"), ln(LS, "caso.mensagem")], destaque_em=1.0)),
+     parte(LS, ln(LS, "const smoke"), len(LS.split("\n")) - 1, "login.spec.js: o válido e os casos do JSON", "login.spec.js", destaque=[ln(LS, "const smoke"), ln(LS, "for (const caso"), ln(LS, "caso.mensagem")], destaque_em=1.0, criar=[['Dentro de tests, cria o login ponto spec ponto js.', 'login.spec.js']])),
     ("A ordenação: os quatro sentidos no ordenacao ponto json. Qual opção escolher, o nome do cenário, o campo, e o sentido.",
-     ed(OJ, "dados/ordenacao.json: os 4 sentidos", "ordenacao.json", pastas=None, fonte=26, rolar=True, rolar_de=3.0, rolar_dur=3.0)),
+     ed(OJ, "dados/ordenacao.json: os 4 sentidos", "ordenacao.json", pastas=None, fonte=26, rolar=True, rolar_de=3.0, rolar_dur=3.0, criar=[['Dentro de dados, cria o ordenacao ponto json.', 'ordenacao.json']])),
     ("No teste, um for pelos quatro. Escolhe a opção, e lê da tela os preços ou os nomes.",
-     parte(PS, L_FOR, L_FOR + 12, "Um teste pra cada sentido", "produtos.spec.js", destaque=[L_FOR, ln(PS, "ordenarPor"), ln(PS, "const naTela")], destaque_em=1.0)),
+     parte(PS, L_FOR, L_FOR + 12, "Um teste pra cada sentido", "produtos.spec.js", destaque=[L_FOR, ln(PS, "ordenarPor"), ln(PS, "const naTela")], destaque_em=1.0, criar=[['Dentro de tests, cria o produtos ponto spec ponto js.', 'produtos.spec.js']])),
     ("E agora, a parte mais importante: como conferir que está em ordem? A gente pega a lista da tela, faz uma cópia, e ordena a cópia do jeito certo. Se a tela estiver certa, as duas ficam iguais.",
      cards([["👀", "A lista da tela", "do jeito que a loja mostrou"], ["⧉", "Uma cópia", "ordenada do jeito certo", AZUL], ["=", "Compara as duas", "iguais: passou", VERDE]], "CONFERINDO A ORDEM")),
     ("Traduzindo: os três pontinhos entre colchetes, faça uma cópia. Sort, ordene. A menos b, do menor pro maior, como número. E locale compare, em ordem alfabética, pros nomes.",
@@ -233,7 +244,7 @@ aula(79, "Agora sim, automatizando os cenários", [
            ("  ✓   9 › Produtos › ordena por preço do maior para o menor (428ms)", "ac"), ("  ✓  10 › Produtos › produto esgotado aparece, mas não dá pra comprar (382ms)", "ac"),
            ("  10 passed (4.9s)", "ac")], "Versão 2: os 10 passando", fonte=20)),
     ("E se alguém apontar pra versão um? Liga o LOJA VERSÃO igual a um no ponto env, e roda os testes de produtos.",
-     ed(ler(".env.example").replace("# LOJA_VERSAO=1   <- descomente pra testar a versão antiga, com o bug", "LOJA_VERSAO=1"), "LOJA_VERSAO=1: a versão do bug", ".env", destaque=[3], destaque_em=0.6)),
+     ed(ler(".env.example").replace("# LOJA_VERSAO=1   <- descomente pra testar a versão antiga, com o bug", "LOJA_VERSAO=1"), "LOJA_VERSAO=1: a versão do bug", ".env", trocar=[[3, "# LOJA_VERSAO=1   <- descomente pra testar a versão antiga, com o bug", None, 1.4]])),
     ("Os dois testes de preço ficam vermelhos. Os de nome e o do esgotado continuam verdes: o bug é só no preço.",
      term(["npx playwright test produtos --project=chromium", ("  ✓  1 › Produtos › ordena por nome de A a Z (577ms)", "ac"), ("  ✓  2 › Produtos › ordena por nome de Z a A (426ms)", "ac"),
            ("  ✘  3 › Produtos › ordena por preço do menor para o maior @smoke (441ms)", VERM), ("  ✘  4 › Produtos › ordena por preço do maior para o menor (574ms)", VERM),
@@ -256,7 +267,7 @@ aula(80, "Do card à pipeline", [
     ("Verde: passou. E de agora em diante, toda mudança na loja passa por esses testes.",
      {"type": "gh_actions", "usuario": "voce", "repo": "projeto-lojinha", "workflow": "Playwright Tests", "commit": "cenários da LOJA-87", "pronto": True, "status": "ok", "artefato": "playwright-report", "legenda": "Verde"}),
     ("E um README que conta a história: os cenários, o que ficou fora do escopo, e o bug que você achou. Quem abrir o seu projeto entende o que você fez, sem rodar nada.",
-     ed(README, "README: os cenários e o bug que você achou", "README.md", pastas=None, rolar=True, rolar_de=1.5, rolar_dur=2.0)),
+     ed(README, "README: os cenários e o bug que você achou", "README.md", pastas=None, rolar=True, rolar_de=1.5, rolar_dur=2.0, criar=[['Na pasta do projeto, cria o README ponto md.', 'README.md']])),
     ("Olha o caminho inteiro que você fez. Recebeu o card. Levantou as dúvidas. Escreveu os cenários. Testou na mão. E achou um bug.",
      cards([["📋", "O card", "uma história curta"], ["?", "As dúvidas", "o que faltava", AMARELO], ["✎", "Os cenários", "em português", AZUL], ["🐞", "O bug", "achado na mão", VERM]], "O CAMINHO, PARTE 1")),
     ("Depois: o time corrigiu, você automatizou o que importa, subiu pro GitHub, e colocou pra rodar sozinho.",

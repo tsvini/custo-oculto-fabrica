@@ -29,6 +29,22 @@
   [
    "\\bjs\\b",
    "jota éssi"
+  ],
+  [
+   "\\b[Ll]oginPage\\b",
+   "Lóguin Pêidji"
+  ],
+  [
+   "\\b[Pp]rodutosPage\\b",
+   "Produtos Pêidji"
+  ],
+  [
+   "\\b[Cc]heckoutPage\\b",
+   "Tchécaut Pêidji"
+  ],
+  [
+   "\\bpages\\b",
+   "pêidjis"
   ]
  ],
  "meta": {
@@ -186,14 +202,50 @@
        }
       },
       {
-       "text": "Cria o arquivo internet ponto spec ponto js. Como o baseURL ainda aponta pro saucedemo, aqui a gente usa o endereço completo.",
+       "text": "Dentro da pasta tests, cria o arquivo internet ponto spec ponto js.",
+       "scene": {
+        "type": "menu",
+        "app": "vscode",
+        "barra": [],
+        "menus": [
+         [
+          "New File...",
+          "New Folder...",
+          "—",
+          "Cut",
+          "Copy",
+          "—",
+          "Rename..."
+         ]
+        ],
+        "caminho": [
+         0
+        ],
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  pages/",
+         "  tests/",
+         "    compra.spec.js",
+         "    login.spec.js",
+         "  .env",
+         "  playwright.config.js"
+        ],
+        "alvo_item": "tests",
+        "novo_pos": 4,
+        "resultado": "arquivo",
+        "novo": "internet.spec.js",
+        "novo_nivel": 2,
+        "novo_pasta": false,
+        "legenda": "New File › internet.spec.js  (dentro de tests)"
+       }
+      },
+      {
+       "text": "Como o baseURL ainda aponta pro saucedemo, aqui a gente usa o endereço completo.",
        "scene": {
         "type": "editor",
         "arquivo": "internet.spec.js",
         "pastas": [
          "meu-primeiro-playwright",
-         "  arquivos/",
-         "    exemplo.txt",
          "  pages/",
          "  tests/",
          "    compra.spec.js",

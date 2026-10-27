@@ -64,11 +64,12 @@
 11. No teste, apaga o standard user que está escrito, e no lugar escreve process ponto env ponto SAUCE underline USER. Depois apaga a secret sauce, e no lugar escreve process ponto env ponto SAUCE underline PASSWORD. [editor]
 12. No segundo teste, o usuário bloqueado continua escrito, porque ele é o que o teste quer testar. Só a senha muda: apaga a secret sauce, e no lugar vai o process ponto env ponto SAUCE underline PASSWORD. [editor]
 13. Traduzindo: process ponto env, as variáveis do ambiente. SAUCE underline USER, a variável com esse nome. Quando o teste roda, o dotenv já leu o arquivo, e aqui entra o standard user. [traducao]
-14. E pra quem baixar o projeto saber o que preencher, cria um ponto env ponto example só com os nomes das variáveis, sem os valores. [editor]
-15. Roda pra confirmar: continua passando. [editor]
-16. E no GitHub, onde não existe o seu ponto env? Lá, quem entrega esses valores são os secrets, um cofre do próprio GitHub. Você vê isso na aula 45. [cards]
-17. Na próxima aula: rodando só o que importa. [passo]
-18. Te vejo lá! [endcard]
+14. E pra quem baixar o projeto saber o que preencher, cria mais um arquivo na pasta do projeto: ponto env ponto example. [menu]
+15. Dentro, só os nomes das variáveis, sem os valores. Example quer dizer exemplo: quem baixar copia esse arquivo, chama de ponto env, e coloca os próprios valores. [editor]
+16. Roda pra confirmar: continua passando. [editor]
+17. E no GitHub, onde não existe o seu ponto env? Lá, quem entrega esses valores são os secrets, um cofre do próprio GitHub. Você vê isso na aula 45. [cards]
+18. Na próxima aula: rodando só o que importa. [passo]
+19. Te vejo lá! [endcard]
 
 ## Aula 25: Rodando só o que importa - only, skip, arquivo e nome
 1. Quando você tiver dezenas de testes, não vai querer rodar todos toda hora. [bigtext]

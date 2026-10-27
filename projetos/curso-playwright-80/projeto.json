@@ -88,6 +88,51 @@
        }
       },
       {
+       "text": "Na pasta do projeto, cria o README ponto md.",
+       "scene": {
+        "type": "menu",
+        "app": "vscode",
+        "barra": [],
+        "menus": [
+         [
+          "New File...",
+          "New Folder...",
+          "—",
+          "Cut",
+          "Copy",
+          "—",
+          "Rename..."
+         ]
+        ],
+        "caminho": [
+         0
+        ],
+        "pastas": [
+         "projeto-lojinha",
+         "  dados/",
+         "    login.json",
+         "    ordenacao.json",
+         "  fixtures/",
+         "    paginas.js",
+         "  pages/",
+         "    LoginPage.js",
+         "    ProdutosPage.js",
+         "  tests/",
+         "    login.spec.js",
+         "    produtos.spec.js",
+         "  .env",
+         "  playwright.config.js"
+        ],
+        "alvo_item": "projeto-lojinha",
+        "novo_pos": 14,
+        "resultado": "arquivo",
+        "novo": "README.md",
+        "novo_nivel": 1,
+        "novo_pasta": false,
+        "legenda": "New File › README.md"
+       }
+      },
+      {
        "text": "E um README que conta a história: os cenários, o que ficou fora do escopo, e o bug que você achou. Quem abrir o seu projeto entende o que você fez, sem rodar nada.",
        "scene": {
         "type": "editor",

@@ -157,6 +157,53 @@
        }
       },
       {
+       "text": "Pra ver isso acontecendo, cria dentro da pasta nivel2 um arquivo de exemplo: flaky ponto demo ponto spec ponto js.",
+       "scene": {
+        "type": "menu",
+        "app": "vscode",
+        "barra": [],
+        "menus": [
+         [
+          "New File...",
+          "New Folder...",
+          "—",
+          "Cut",
+          "Copy",
+          "—",
+          "Rename..."
+         ]
+        ],
+        "caminho": [
+         0
+        ],
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  dados/",
+         "    usuarios.json",
+         "  fixtures/",
+         "    paginas.js",
+         "  pages/",
+         "  tests/",
+         "    nivel2/",
+         "      fixture.spec.js",
+         "      dados.spec.js",
+         "      mock.spec.js",
+         "      visual.spec.js",
+         "      soft.spec.js",
+         "      tags.spec.js",
+         "  .env",
+         "  playwright.config.js"
+        ],
+        "alvo_item": "nivel2",
+        "novo_pos": 14,
+        "resultado": "arquivo",
+        "novo": "flaky.demo.spec.js",
+        "novo_nivel": 3,
+        "novo_pasta": false,
+        "legenda": "New File › flaky.demo.spec.js  (dentro de nivel2)"
+       }
+      },
+      {
        "text": "Olha o código. Depois do login, ele espera quatro segundos e meio, fixos, e conta os produtos.",
        "scene": {
         "type": "editor",
@@ -215,6 +262,54 @@
         "size": 90,
         "stagger": 1.8,
         "vs": false
+       }
+      },
+      {
+       "text": "Agora o teste do jeito certo, num arquivo novo. Dentro da pasta nivel2, cria o flaky ponto spec ponto js.",
+       "scene": {
+        "type": "menu",
+        "app": "vscode",
+        "barra": [],
+        "menus": [
+         [
+          "New File...",
+          "New Folder...",
+          "—",
+          "Cut",
+          "Copy",
+          "—",
+          "Rename..."
+         ]
+        ],
+        "caminho": [
+         0
+        ],
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  dados/",
+         "    usuarios.json",
+         "  fixtures/",
+         "    paginas.js",
+         "  pages/",
+         "  tests/",
+         "    nivel2/",
+         "      fixture.spec.js",
+         "      dados.spec.js",
+         "      mock.spec.js",
+         "      visual.spec.js",
+         "      soft.spec.js",
+         "      tags.spec.js",
+         "      flaky.demo.spec.js",
+         "  .env",
+         "  playwright.config.js"
+        ],
+        "alvo_item": "nivel2",
+        "novo_pos": 15,
+        "resultado": "arquivo",
+        "novo": "flaky.spec.js",
+        "novo_nivel": 3,
+        "novo_pasta": false,
+        "legenda": "New File › flaky.spec.js  (dentro de nivel2)"
        }
       },
       {
@@ -281,6 +376,14 @@
          "  pages/",
          "  tests/",
          "    nivel2/",
+         "      fixture.spec.js",
+         "      dados.spec.js",
+         "      mock.spec.js",
+         "      visual.spec.js",
+         "      soft.spec.js",
+         "      tags.spec.js",
+         "      flaky.demo.spec.js",
+         "      flaky.spec.js",
          "  .env",
          "  playwright.config.js"
         ],

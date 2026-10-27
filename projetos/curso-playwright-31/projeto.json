@@ -29,6 +29,22 @@
   [
    "\\bjs\\b",
    "jota éssi"
+  ],
+  [
+   "\\b[Ll]oginPage\\b",
+   "Lóguin Pêidji"
+  ],
+  [
+   "\\b[Pp]rodutosPage\\b",
+   "Produtos Pêidji"
+  ],
+  [
+   "\\b[Cc]heckoutPage\\b",
+   "Tchécaut Pêidji"
+  ],
+  [
+   "\\bpages\\b",
+   "pêidjis"
   ]
  ],
  "meta": {
@@ -157,7 +173,49 @@
        }
       },
       {
-       "text": "Primeiro, a lista. Cria o arquivo usuarios ponto spec ponto js e escreve: const lista de usuários igual, abre colchetes.",
+       "text": "Pra isso, um arquivo de teste novo. Dentro da pasta tests, cria o usuarios ponto spec ponto js.",
+       "scene": {
+        "type": "menu",
+        "app": "vscode",
+        "barra": [],
+        "menus": [
+         [
+          "New File...",
+          "New Folder...",
+          "—",
+          "Cut",
+          "Copy",
+          "—",
+          "Rename..."
+         ]
+        ],
+        "caminho": [
+         0
+        ],
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  tests/",
+         "    login.spec.js",
+         "  .env",
+         "  .env.example",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "alvo_item": "tests",
+        "novo_pos": 5,
+        "resultado": "arquivo",
+        "novo": "usuarios.spec.js",
+        "novo_nivel": 2,
+        "novo_pasta": false,
+        "legenda": "New File › usuarios.spec.js  (dentro de tests)"
+       }
+      },
+      {
+       "text": "Primeiro, a lista. Escreve: const lista de usuários igual, abre colchetes.",
        "scene": {
         "type": "editor",
         "arquivo": "usuarios.spec.js",
@@ -236,7 +294,50 @@
        }
       },
       {
-       "text": "Agora, a repetição. Pra entender sem se perder, a gente vai ver ela funcionando primeiro com um comando bem simples, num arquivo de rascunho: teste do for ponto js. Copia a lista pra lá.",
+       "text": "Agora, a repetição. Pra entender sem se perder, a gente vai ver ela funcionando primeiro num arquivo de rascunho. Na pasta do projeto, cria o teste do for ponto js.",
+       "scene": {
+        "type": "menu",
+        "app": "vscode",
+        "barra": [],
+        "menus": [
+         [
+          "New File...",
+          "New Folder...",
+          "—",
+          "Cut",
+          "Copy",
+          "—",
+          "Rename..."
+         ]
+        ],
+        "caminho": [
+         0
+        ],
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  tests/",
+         "    login.spec.js",
+         "    usuarios.spec.js",
+         "  .env",
+         "  .env.example",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "alvo_item": "meu-primeiro-playwright",
+        "novo_pos": 6,
+        "resultado": "arquivo",
+        "novo": "teste-do-for.js",
+        "novo_nivel": 1,
+        "novo_pasta": false,
+        "legenda": "New File › teste-do-for.js"
+       }
+      },
+      {
+       "text": "Copia a lista pra lá. Esse arquivo não é um teste: é só pra ver a repetição funcionando com um comando bem simples.",
        "scene": {
         "type": "editor",
         "arquivo": "teste-do-for.js",

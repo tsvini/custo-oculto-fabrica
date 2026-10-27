@@ -10,7 +10,8 @@ from roteiro_playwright_m4 import edc
 SITE = "https://the-internet.herokuapp.com"
 COD = re.sub(r"aula \d+: ", "", open(os.path.join(RAIZ, "curso-playwright", "projeto", "tests", "nivel2", "internet.spec.js"), encoding="utf8").read().rstrip("\n"))
 L = COD.split("\n")
-ARV = ["meu-primeiro-playwright", "  arquivos/", "    exemplo.txt", "  pages/", "  tests/", "    compra.spec.js", "    internet.spec.js", "    login.spec.js", "  .env", "  playwright.config.js"]
+ARV_COM = ["meu-primeiro-playwright", "  arquivos/", "    exemplo.txt", "  pages/", "  tests/", "    compra.spec.js", "    internet.spec.js", "    login.spec.js", "  .env", "  playwright.config.js"]
+ARV = [l for l in ARV_COM if "arquivos" not in l and "exemplo" not in l]  # a pasta arquivos só nasce na aula 57 (upload)
 AZUL, AMARELO, VERM, VERDE = "#69a7ff", "#ffd23f", "#ff6b6b", "#3fd68a"
 
 
@@ -97,8 +98,9 @@ aula(55, "Bem-vindo ao nível 2", [
     ("Tem upload, nova aba, iframe, alerta, tabela. Mas eu não quero que você decore uma lista de comandos.",
      {"type": "cards", "titulo": "O QUE TEM LÁ", "itens": [["⬆", "Upload", ""], ["⧉", "Nova aba", "", AZUL], ["▣", "Iframe", "", AMARELO], ["⚠", "Alerta", "", VERM], ["▦", "Tabela", "", VERDE]]}),
     ("A ideia vai ser sempre: apareceu um problema novo, a gente descobre como resolver.", bt(("APARECEU UM PROBLEMA", "white", 100), ("A GENTE DESCOBRE", "gold", 120), ("COMO RESOLVER", "gold", 120))),
-    ("Cria o arquivo internet ponto spec ponto js. Como o baseURL ainda aponta pro saucedemo, aqui a gente usa o endereço completo.",
-     ed("const site = o endereço completo", L_SITE, de=1, ate_l=L_SITE)),
+    ("Como o baseURL ainda aponta pro saucedemo, aqui a gente usa o endereço completo.",
+     ed("const site = o endereço completo", L_SITE, de=1, ate_l=L_SITE, criar_arvore=ARV,
+        criar=[["Dentro da pasta tests, cria o arquivo internet ponto spec ponto js.", "internet.spec.js"]])),
     ("Vamos começar com uma coisa que aparece em quase todo formulário.", {"type": "passo", "icone": "▶", "titulo": "Próxima aula", "sub": "O formulário mudou"}),
     ("Te vejo lá!", {"type": "endcard", "sub": "PRÓXIMA: O FORMULÁRIO MUDOU"}),
 ])
@@ -124,12 +126,13 @@ aula(56, "O formulário mudou", [
 ] + fim("upload de arquivo"))
 
 # ---------- 57 ----------
-a, b = bloco("upload de arquivo"); L_UP = ln("setInputFiles")
+a, b = bloco("upload de arquivo"); L_UP = ln("setInputFiles"); ARV = ARV_COM
 aula(57, "O usuário precisa enviar um arquivo", [
     ("A tarefa mudou: o usuário precisa conseguir anexar um documento. Currículo, comprovante, planilha.", tarefa("NOVA TAREFA", "O usuário precisa anexar um documento")),
     ("Na tela tem um campo de escolher arquivo e um botão Upload.", video("n57_tela", "Escolher arquivo · Upload", url=SITE + "/upload", espera_fim=2500)),
-    ("Primeiro, um arquivo de exemplo dentro do projeto: uma pasta arquivos, com um texto dentro.",
-     edc("Meu currículo de testador", "arquivos/exemplo.txt", arquivo="exemplo.txt", pastas=ARV, digitar=True, digitar_de=1, digitar_ate=1, fonte=30)),
+    ("Dentro, qualquer texto. Esse é o arquivo que o teste vai enviar.",
+     edc("Meu currículo de testador", "arquivos/exemplo.txt", arquivo="exemplo.txt", pastas=ARV, digitar=True, digitar_de=1, digitar_ate=1, fonte=30,
+         criar=[["Primeiro, um arquivo de exemplo dentro do projeto. Na pasta do projeto, cria uma pasta nova chamada arquivos.", "arquivos/"], ["E dentro dela, um arquivo de texto: exemplo ponto txt.", "exemplo.txt"]])),
     ("Agora: set input files, coloque este arquivo no campo.", ed("setInputFiles = coloque este arquivo", L_UP, de=a, ate_l=L_UP, mostra_de=a)),
     ("set input files: coloque este arquivo no campo.", tr(".setInputFiles('arquivos/exemplo.txt')", [[".setInputFiles", "coloque no campo"], ["('arquivos/exemplo.txt')", "este arquivo"]], 1.2)),
     ("Repara: o Playwright não abre aquela janela do Windows pra procurar o arquivo com o mouse. Ele entrega o arquivo direto pro campo.",

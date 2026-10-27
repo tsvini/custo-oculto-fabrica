@@ -29,6 +29,22 @@
   [
    "\\bjs\\b",
    "jota éssi"
+  ],
+  [
+   "\\b[Ll]oginPage\\b",
+   "Lóguin Pêidji"
+  ],
+  [
+   "\\b[Pp]rodutosPage\\b",
+   "Produtos Pêidji"
+  ],
+  [
+   "\\b[Cc]heckoutPage\\b",
+   "Tchécaut Pêidji"
+  ],
+  [
+   "\\bpages\\b",
+   "pêidjis"
   ]
  ],
  "meta": {
@@ -174,8 +190,6 @@
         "arquivo": "internet.spec.js",
         "pastas": [
          "meu-primeiro-playwright",
-         "  arquivos/",
-         "    exemplo.txt",
          "  pages/",
          "  tests/",
          "    compra.spec.js",

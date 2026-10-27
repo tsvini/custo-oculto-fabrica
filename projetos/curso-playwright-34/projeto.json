@@ -29,6 +29,22 @@
   [
    "\\bjs\\b",
    "jota éssi"
+  ],
+  [
+   "\\b[Ll]oginPage\\b",
+   "Lóguin Pêidji"
+  ],
+  [
+   "\\b[Pp]rodutosPage\\b",
+   "Produtos Pêidji"
+  ],
+  [
+   "\\b[Cc]heckoutPage\\b",
+   "Tchécaut Pêidji"
+  ],
+  [
+   "\\bpages\\b",
+   "pêidjis"
   ]
  ],
  "meta": {
@@ -100,6 +116,9 @@
          "  node_modules/",
          "  tests/",
          "    login.spec.js",
+         "    usuarios.spec.js",
+         "  .env",
+         "  .env.example",
          "  .gitignore",
          "  package-lock.json",
          "  package.json",

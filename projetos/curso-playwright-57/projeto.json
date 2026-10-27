@@ -29,6 +29,22 @@
   [
    "\\bjs\\b",
    "jota éssi"
+  ],
+  [
+   "\\b[Ll]oginPage\\b",
+   "Lóguin Pêidji"
+  ],
+  [
+   "\\b[Pp]rodutosPage\\b",
+   "Produtos Pêidji"
+  ],
+  [
+   "\\b[Cc]heckoutPage\\b",
+   "Tchécaut Pêidji"
+  ],
+  [
+   "\\bpages\\b",
+   "pêidjis"
   ]
  ],
  "meta": {
@@ -82,7 +98,86 @@
        "pausa": 2.5
       },
       {
-       "text": "Primeiro, um arquivo de exemplo dentro do projeto: uma pasta arquivos, com um texto dentro.",
+       "text": "Primeiro, um arquivo de exemplo dentro do projeto. Na pasta do projeto, cria uma pasta nova chamada arquivos.",
+       "scene": {
+        "type": "menu",
+        "app": "vscode",
+        "barra": [],
+        "menus": [
+         [
+          "New File...",
+          "New Folder...",
+          "—",
+          "Cut",
+          "Copy",
+          "—",
+          "Rename..."
+         ]
+        ],
+        "caminho": [
+         1
+        ],
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  pages/",
+         "  tests/",
+         "    compra.spec.js",
+         "    internet.spec.js",
+         "    login.spec.js",
+         "  .env",
+         "  playwright.config.js"
+        ],
+        "alvo_item": "meu-primeiro-playwright",
+        "novo_pos": 1,
+        "resultado": "arquivo",
+        "novo": "arquivos",
+        "novo_nivel": 1,
+        "novo_pasta": true,
+        "legenda": "New Folder › arquivos"
+       }
+      },
+      {
+       "text": "E dentro dela, um arquivo de texto: exemplo ponto txt.",
+       "scene": {
+        "type": "menu",
+        "app": "vscode",
+        "barra": [],
+        "menus": [
+         [
+          "New File...",
+          "New Folder...",
+          "—",
+          "Cut",
+          "Copy",
+          "—",
+          "Rename..."
+         ]
+        ],
+        "caminho": [
+         0
+        ],
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  arquivos/",
+         "  pages/",
+         "  tests/",
+         "    compra.spec.js",
+         "    internet.spec.js",
+         "    login.spec.js",
+         "  .env",
+         "  playwright.config.js"
+        ],
+        "alvo_item": "arquivos",
+        "novo_pos": 2,
+        "resultado": "arquivo",
+        "novo": "exemplo.txt",
+        "novo_nivel": 2,
+        "novo_pasta": false,
+        "legenda": "New File › exemplo.txt  (dentro de arquivos)"
+       }
+      },
+      {
+       "text": "Dentro, qualquer texto. Esse é o arquivo que o teste vai enviar.",
        "scene": {
         "type": "editor",
         "arquivo": "exemplo.txt",

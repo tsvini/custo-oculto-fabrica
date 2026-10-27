@@ -29,6 +29,22 @@
   [
    "\\bjs\\b",
    "jota éssi"
+  ],
+  [
+   "\\b[Ll]oginPage\\b",
+   "Lóguin Pêidji"
+  ],
+  [
+   "\\b[Pp]rodutosPage\\b",
+   "Produtos Pêidji"
+  ],
+  [
+   "\\b[Cc]heckoutPage\\b",
+   "Tchécaut Pêidji"
+  ],
+  [
+   "\\bpages\\b",
+   "pêidjis"
   ]
  ],
  "meta": {
@@ -196,16 +212,15 @@
        }
       },
       {
-       "text": "Mais um cuidado: o seletor precisa achar um elemento só. Se na página de produtos você pedir get by role button sem nome, ele acha um monte de botões, e o Playwright reclama.",
+       "text": "Mais um cuidado: o seletor precisa achar um elemento só. Olha esse exemplo, só pra ver, não precisa escrever: na página de produtos, um get by role button sem nome acha um monte de botões, e o Playwright reclama.",
        "scene": {
         "type": "editor",
-        "arquivo": "botao.spec.js",
+        "arquivo": "exemplo (não precisa criar)",
         "pastas": [
          "meu-primeiro-playwright",
          "  .github/",
          "  node_modules/",
          "  tests/",
-         "    botao.spec.js",
          "    login.spec.js",
          "  .gitignore",
          "  package-lock.json",
@@ -213,7 +228,7 @@
          "  playwright.config.js"
         ],
         "codigo": "import { test, expect } from '@playwright/test';\n\ntest('clica no botão', async ({ page }) => {\n  await page.goto('https://www.saucedemo.com/');\n  await page.getByPlaceholder('Username').fill('standard_user');\n  await page.getByPlaceholder('Password').fill('secret_sauce');\n  await page.getByRole('button', { name: 'Login' }).click();\n  await page.getByRole('button').click();\n});",
-        "legenda": "Achou 20 botões: o Playwright reclama",
+        "legenda": "Só um exemplo: achou 20 botões, o Playwright reclama",
         "fonte": 26,
         "digitar": false,
         "terminal": [

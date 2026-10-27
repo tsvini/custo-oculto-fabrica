@@ -35,8 +35,38 @@ def projeto(n, selo, titulo_aula, frases):
                       [r"\b[Ll]oginPage\b", "Lóguin Pêidji"], [r"\b[Pp]rodutosPage\b", "Produtos Pêidji"], [r"\b[Cc]heckoutPage\b", "Tchécaut Pêidji"], [r"\bpages\b", "pêidjis"]],
         "meta": {"titles": [f"Aula {n}: {titulo_aula}"], "description": "", "tags": []},
         "notes": "Curso Playwright para leigos. Não publica (destino: curso). Roteiro em curso-playwright/roteiros/.",
-        "script": {"long": {"parts": [{"chapter": "", "sentences": [{"text": t, "scene": s} for t, s in frases]}]}, "shorts": [], "tiktoks": []},
+        "script": {"long": {"parts": [{"chapter": "", "sentences": [{"text": t, "scene": s} for t, s in com_criacao(frases)]}]}, "shorts": [], "tiktoks": []},
     }
+
+
+MENU_VSC = [["New File...", "New Folder...", "—", "Cut", "Copy", "—", "Rename..."]]
+
+
+def criar_no_explorer(final, nome, pasta=False):
+    """cena do VS Code: botão direito na pasta de cima › New File/New Folder › o nome aparece no Explorer (final = a árvore já com o item)"""
+    idx = [i for i, l in enumerate(final) if l.strip().rstrip("/") == nome.rstrip("/")][0]
+    nivel = (len(final[idx]) - len(final[idx].lstrip())) // 2
+    pai = next(final[j].strip().rstrip("/") for j in range(idx - 1, -1, -1) if (len(final[j]) - len(final[j].lstrip())) // 2 < nivel)
+    antes = [l for i, l in enumerate(final) if i != idx and not (pasta and i > idx and (len(l) - len(l.lstrip())) // 2 > nivel and all((len(final[k]) - len(final[k].lstrip())) // 2 > nivel for k in range(idx + 1, i + 1)))]
+    return {"type": "menu", "app": "vscode", "barra": [], "menus": MENU_VSC, "caminho": [1 if pasta else 0], "pastas": antes, "alvo_item": pai,
+            "novo_pos": idx, "resultado": "arquivo", "novo": nome.rstrip("/"), "novo_nivel": nivel, "novo_pasta": pasta,
+            "legenda": ("New Folder › " if pasta else "New File › ") + nome.rstrip("/") + ("" if nivel <= 1 else "  (dentro de " + pai + ")")}
+
+
+def com_criacao(frases):
+    """cena com "criar": [[fala, nome], ...] ganha antes uma cena de criação no Explorer pra cada item (pasta termina em /)"""
+    out = []
+    for t, s in frases:
+        cr = s.pop("criar", None) if isinstance(s, dict) else None
+        if cr:
+            final = s.pop("criar_arvore", None) or s["pastas"]
+            for k, (fala, nome) in enumerate(cr):
+                pasta = nome.endswith("/")
+                # pasta criada antes do arquivo de dentro: o arquivo ainda não existe nessa cena
+                arv = [l for l in final if not any(l.strip() == n2.rstrip("/") or l.strip() == n2 for _, n2 in cr[k + 1:])]
+                out.append((fala, criar_no_explorer(arv, nome, pasta)))
+        out.append((t, s))
+    return out
 
 
 def term(linhas, legenda=None, pasta="C:\\Users\\voce", titulo=None):

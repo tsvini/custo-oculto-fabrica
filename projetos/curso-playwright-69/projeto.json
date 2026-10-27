@@ -82,6 +82,52 @@
        }
       },
       {
+       "text": "Dentro da pasta nivel2, cria o tags ponto spec ponto js.",
+       "scene": {
+        "type": "menu",
+        "app": "vscode",
+        "barra": [],
+        "menus": [
+         [
+          "New File...",
+          "New Folder...",
+          "—",
+          "Cut",
+          "Copy",
+          "—",
+          "Rename..."
+         ]
+        ],
+        "caminho": [
+         0
+        ],
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  dados/",
+         "    usuarios.json",
+         "  fixtures/",
+         "    paginas.js",
+         "  pages/",
+         "  tests/",
+         "    nivel2/",
+         "      fixture.spec.js",
+         "      dados.spec.js",
+         "      mock.spec.js",
+         "      visual.spec.js",
+         "      soft.spec.js",
+         "  .env",
+         "  playwright.config.js"
+        ],
+        "alvo_item": "nivel2",
+        "novo_pos": 13,
+        "resultado": "arquivo",
+        "novo": "tags.spec.js",
+        "novo_nivel": 3,
+        "novo_pasta": false,
+        "legenda": "New File › tags.spec.js  (dentro de nivel2)"
+       }
+      },
+      {
        "text": "Pra isso servem as tags: uma etiqueta no teste. Depois do nome, entre chaves: tag, arroba smoke.",
        "scene": {
         "type": "editor",

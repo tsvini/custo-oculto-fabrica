@@ -62,6 +62,44 @@
      "chapter": "",
      "sentences": [
       {
+       "text": "Dentro da pasta pages, cria o LoginPage ponto js.",
+       "scene": {
+        "type": "menu",
+        "app": "vscode",
+        "barra": [],
+        "menus": [
+         [
+          "New File...",
+          "New Folder...",
+          "—",
+          "Cut",
+          "Copy",
+          "—",
+          "Rename..."
+         ]
+        ],
+        "caminho": [
+         0
+        ],
+        "pastas": [
+         "projeto-lojinha",
+         "  dados/",
+         "  fixtures/",
+         "  pages/",
+         "  tests/",
+         "  .env",
+         "  playwright.config.js"
+        ],
+        "alvo_item": "pages",
+        "novo_pos": 4,
+        "resultado": "arquivo",
+        "novo": "LoginPage.js",
+        "novo_nivel": 2,
+        "novo_pasta": false,
+        "legenda": "New File › LoginPage.js  (dentro de pages)"
+       }
+      },
+      {
        "text": "O LoginPage, com a receita que você já conhece: os campos, o botão, a mensagem de erro, e o entrar.",
        "scene": {
         "type": "editor",
@@ -121,6 +159,45 @@
          ]
         ],
         "passo": 2.2
+       }
+      },
+      {
+       "text": "Dentro de pages, cria o ProdutosPage ponto js.",
+       "scene": {
+        "type": "menu",
+        "app": "vscode",
+        "barra": [],
+        "menus": [
+         [
+          "New File...",
+          "New Folder...",
+          "—",
+          "Cut",
+          "Copy",
+          "—",
+          "Rename..."
+         ]
+        ],
+        "caminho": [
+         0
+        ],
+        "pastas": [
+         "projeto-lojinha",
+         "  dados/",
+         "  fixtures/",
+         "  pages/",
+         "    LoginPage.js",
+         "  tests/",
+         "  .env",
+         "  playwright.config.js"
+        ],
+        "alvo_item": "pages",
+        "novo_pos": 5,
+        "resultado": "arquivo",
+        "novo": "ProdutosPage.js",
+        "novo_nivel": 2,
+        "novo_pasta": false,
+        "legenda": "New File › ProdutosPage.js  (dentro de pages)"
        }
       },
       {
@@ -228,6 +305,46 @@
        }
       },
       {
+       "text": "Dentro da pasta fixtures, cria o paginas ponto js.",
+       "scene": {
+        "type": "menu",
+        "app": "vscode",
+        "barra": [],
+        "menus": [
+         [
+          "New File...",
+          "New Folder...",
+          "—",
+          "Cut",
+          "Copy",
+          "—",
+          "Rename..."
+         ]
+        ],
+        "caminho": [
+         0
+        ],
+        "pastas": [
+         "projeto-lojinha",
+         "  dados/",
+         "  fixtures/",
+         "  pages/",
+         "    LoginPage.js",
+         "    ProdutosPage.js",
+         "  tests/",
+         "  .env",
+         "  playwright.config.js"
+        ],
+        "alvo_item": "fixtures",
+        "novo_pos": 3,
+        "resultado": "arquivo",
+        "novo": "paginas.js",
+        "novo_nivel": 2,
+        "novo_pasta": false,
+        "legenda": "New File › paginas.js  (dentro de fixtures)"
+       }
+      },
+      {
        "text": "E a fixture que entrega os dois prontos pros testes. Igual à do módulo treze.",
        "scene": {
         "type": "editor",
@@ -235,19 +352,14 @@
         "pastas": [
          "projeto-lojinha",
          "  dados/",
-         "    login.json",
-         "    ordenacao.json",
          "  fixtures/",
          "    paginas.js",
          "  pages/",
          "    LoginPage.js",
          "    ProdutosPage.js",
          "  tests/",
-         "    login.spec.js",
-         "    produtos.spec.js",
          "  .env",
-         "  playwright.config.js",
-         "  README.md"
+         "  playwright.config.js"
         ],
         "codigo": "import { test as base } from '@playwright/test';\nimport { LoginPage } from '../pages/LoginPage';\nimport { ProdutosPage } from '../pages/ProdutosPage';\n\nexport const test = base.extend({\n  loginPage: async ({ page }, use) => {\n    await use(new LoginPage(page));\n  },\n  produtosPage: async ({ page }, use) => {\n    await use(new ProdutosPage(page));\n  },\n});\n\nexport { expect } from '@playwright/test';",
         "legenda": "A fixture: as duas páginas prontas",

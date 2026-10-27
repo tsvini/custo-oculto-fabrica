@@ -66,8 +66,9 @@ L_GET, L_ST, L_JSON, L_ID = ln(C47, "request.get"), ln(C47, "status()"), ln(C47,
 AULAS.append(projeto(47, "MÓDULO 10 · AULA 47", "Seu primeiro teste de API", [
     ("Teste de API não abre navegador nenhum. Por isso ele é bem rápido.", titulo(47, "TESTE DE API")),
     ("E por que testar a API, se dá pra testar pela tela? Porque se o servidor devolve o dado errado, a tela também mostra errado. Na API você acha o problema na origem, e em milissegundos.", {"type": "cards", "itens": [["⇄", "API", "a origem dos dados"], ["🖥", "Tela", "mostra o que veio", "#69a7ff"], ["⚡", "Rápido", "milissegundos", "#ffd23f"]]}),  # pra que / quando
-    ("Cria o api ponto spec ponto js. No teste, em vez do page, você pede o request, entre chaves.",
-     ed(C47, "{ request } no lugar do { page }", de=1, ate=4, mostra=L_GET - 1)),
+    ("No teste, em vez do page, você pede o request, entre chaves.",
+     ed(C47, "{ request } no lugar do { page }", de=1, ate=4, mostra=L_GET - 1, criar_arvore=ARV_API,
+        criar=[["Dentro da pasta tests, cria o api ponto spec ponto js.", "api.spec.js"]])),
     ("Request quer dizer requisição.", tr("async ({ request }) => {", [["{ request }", "a requisição"]], 1.0)),
     ("const resposta igual await request ponto get, e o endereço.", ed(C47, "request.get(endereço)", de=L_GET, mostra=L_GET)),
     ("Busque o post número um e guarde a resposta.",

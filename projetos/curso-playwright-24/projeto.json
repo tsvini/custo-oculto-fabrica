@@ -29,6 +29,22 @@
   [
    "\\bjs\\b",
    "jota éssi"
+  ],
+  [
+   "\\b[Ll]oginPage\\b",
+   "Lóguin Pêidji"
+  ],
+  [
+   "\\b[Pp]rodutosPage\\b",
+   "Produtos Pêidji"
+  ],
+  [
+   "\\b[Cc]heckoutPage\\b",
+   "Tchécaut Pêidji"
+  ],
+  [
+   "\\bpages\\b",
+   "pêidjis"
   ]
  ],
  "meta": {
@@ -384,7 +400,48 @@
        }
       },
       {
-       "text": "E pra quem baixar o projeto saber o que preencher, cria um ponto env ponto example só com os nomes das variáveis, sem os valores.",
+       "text": "E pra quem baixar o projeto saber o que preencher, cria mais um arquivo na pasta do projeto: ponto env ponto example.",
+       "scene": {
+        "type": "menu",
+        "app": "vscode",
+        "barra": [],
+        "menus": [
+         [
+          "New File...",
+          "New Folder...",
+          "—",
+          "Cut",
+          "Copy",
+          "—",
+          "Rename..."
+         ]
+        ],
+        "caminho": [
+         0
+        ],
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  tests/",
+         "    login.spec.js",
+         "  .env",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "alvo_item": "meu-primeiro-playwright",
+        "novo_pos": 6,
+        "resultado": "arquivo",
+        "novo": ".env.example",
+        "novo_nivel": 1,
+        "novo_pasta": false,
+        "legenda": "New File › .env.example"
+       }
+      },
+      {
+       "text": "Dentro, só os nomes das variáveis, sem os valores. Example quer dizer exemplo: quem baixar copia esse arquivo, chama de ponto env, e coloca os próprios valores.",
        "scene": {
         "type": "editor",
         "arquivo": ".env.example",

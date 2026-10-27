@@ -136,6 +136,111 @@
        }
       },
       {
+       "text": "Primeiro, as pastas que você já sabe que vai precisar. Na pasta do projeto, cria a pasta pages.",
+       "scene": {
+        "type": "menu",
+        "app": "vscode",
+        "barra": [],
+        "menus": [
+         [
+          "New File...",
+          "New Folder...",
+          "—",
+          "Cut",
+          "Copy",
+          "—",
+          "Rename..."
+         ]
+        ],
+        "caminho": [
+         1
+        ],
+        "pastas": [
+         "projeto-lojinha",
+         "  tests/",
+         "  playwright.config.js"
+        ],
+        "alvo_item": "projeto-lojinha",
+        "novo_pos": 1,
+        "resultado": "arquivo",
+        "novo": "pages",
+        "novo_nivel": 1,
+        "novo_pasta": true,
+        "legenda": "New Folder › pages"
+       }
+      },
+      {
+       "text": "A pasta fixtures.",
+       "scene": {
+        "type": "menu",
+        "app": "vscode",
+        "barra": [],
+        "menus": [
+         [
+          "New File...",
+          "New Folder...",
+          "—",
+          "Cut",
+          "Copy",
+          "—",
+          "Rename..."
+         ]
+        ],
+        "caminho": [
+         1
+        ],
+        "pastas": [
+         "projeto-lojinha",
+         "  pages/",
+         "  tests/",
+         "  playwright.config.js"
+        ],
+        "alvo_item": "projeto-lojinha",
+        "novo_pos": 1,
+        "resultado": "arquivo",
+        "novo": "fixtures",
+        "novo_nivel": 1,
+        "novo_pasta": true,
+        "legenda": "New Folder › fixtures"
+       }
+      },
+      {
+       "text": "E a pasta dados.",
+       "scene": {
+        "type": "menu",
+        "app": "vscode",
+        "barra": [],
+        "menus": [
+         [
+          "New File...",
+          "New Folder...",
+          "—",
+          "Cut",
+          "Copy",
+          "—",
+          "Rename..."
+         ]
+        ],
+        "caminho": [
+         1
+        ],
+        "pastas": [
+         "projeto-lojinha",
+         "  fixtures/",
+         "  pages/",
+         "  tests/",
+         "  playwright.config.js"
+        ],
+        "alvo_item": "projeto-lojinha",
+        "novo_pos": 1,
+        "resultado": "arquivo",
+        "novo": "dados",
+        "novo_nivel": 1,
+        "novo_pasta": true,
+        "legenda": "New Folder › dados"
+       }
+      },
+      {
        "text": "E no config: o dotenv lá em cima, o baseURL da Lojinha, já lendo a variável de ambiente, e o testIdAttribute, porque a Lojinha também usa data-test.",
        "scene": {
         "type": "editor",
@@ -158,7 +263,44 @@
        }
       },
       {
-       "text": "E o ponto env, com o usuário e a senha da Lojinha. Repara na última linha, comentada: a versão. Com ela, dá pra apontar os testes pra versão um, a do bug.",
+       "text": "Na pasta do projeto, cria o arquivo ponto env.",
+       "scene": {
+        "type": "menu",
+        "app": "vscode",
+        "barra": [],
+        "menus": [
+         [
+          "New File...",
+          "New Folder...",
+          "—",
+          "Cut",
+          "Copy",
+          "—",
+          "Rename..."
+         ]
+        ],
+        "caminho": [
+         0
+        ],
+        "pastas": [
+         "projeto-lojinha",
+         "  dados/",
+         "  fixtures/",
+         "  pages/",
+         "  tests/",
+         "  playwright.config.js"
+        ],
+        "alvo_item": "projeto-lojinha",
+        "novo_pos": 5,
+        "resultado": "arquivo",
+        "novo": ".env",
+        "novo_nivel": 1,
+        "novo_pasta": false,
+        "legenda": "New File › .env"
+       }
+      },
+      {
+       "text": "Dentro, o usuário e a senha da Lojinha. Repara na última linha, comentada: a versão. Com ela, dá pra apontar os testes pra versão um, a do bug.",
        "scene": {
         "type": "editor",
         "arquivo": ".env",

@@ -159,6 +159,47 @@
        }
       },
       {
+       "text": "Os desafios vão num arquivo só deles. Dentro da pasta tests, cria o desafios ponto spec ponto js.",
+       "scene": {
+        "type": "menu",
+        "app": "vscode",
+        "barra": [],
+        "menus": [
+         [
+          "New File...",
+          "New Folder...",
+          "—",
+          "Cut",
+          "Copy",
+          "—",
+          "Rename..."
+         ]
+        ],
+        "caminho": [
+         0
+        ],
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  pages/",
+         "  tests/",
+         "    api.spec.js",
+         "    compra.spec.js",
+         "    login.spec.js",
+         "  .env",
+         "  playwright.config.js"
+        ],
+        "alvo_item": "tests",
+        "novo_pos": 7,
+        "resultado": "arquivo",
+        "novo": "desafios.spec.js",
+        "novo_nivel": 2,
+        "novo_pasta": false,
+        "legenda": "New File › desafios.spec.js  (dentro de tests)"
+       }
+      },
+      {
        "text": "Solução: preenche, preenche, clica, e expect error to contain text do not match.",
        "scene": {
         "type": "editor",
