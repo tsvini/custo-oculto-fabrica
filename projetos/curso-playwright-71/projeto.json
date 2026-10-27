@@ -148,7 +148,7 @@
        }
       },
       {
-       "text": "Ou coloca no ponto env, igual o usuário e a senha. E no GitHub Actions, ela fica no yml. O teste continua exatamente igual.",
+       "text": "Ou coloca no ponto env, igual o usuário e a senha. E no GitHub Actions: no yml, no env do passo que roda os testes, uma linha nova, BASE underline URL, com o endereço. O teste continua exatamente igual.",
        "scene": {
         "type": "editor",
         "arquivo": "playwright.yml",
@@ -156,12 +156,10 @@
         "codigo": "    - name: Run Playwright tests\n      run: npx playwright test\n      env:\n        BASE_URL: https://homologacao.loja.com\n        SAUCE_USER: ${{ secrets.SAUCE_USER }}\n        SAUCE_PASSWORD: ${{ secrets.SAUCE_PASSWORD }}",
         "legenda": "No GitHub: a variável no yml",
         "fonte": 26,
-        "digitar": false,
+        "digitar": true,
         "linha0": 1,
-        "destaque": [
-         4
-        ],
-        "destaque_em": 0.8
+        "digitar_de": 4,
+        "digitar_ate": 4
        }
       },
       {

@@ -6,10 +6,11 @@
 3. O teste: usuário certo, senha errada, e conferir a mensagem de erro. Pausa o vídeo e tenta fazer sozinho. [+pausa] [desafio]
 4. Dica: a mensagem fica no data-test error, e contém do not match. [tela]
 5. Os desafios vão num arquivo só deles. Dentro da pasta tests, cria o desafios ponto spec ponto js. [menu]
-6. Solução: preenche, preenche, clica, e expect error to contain text do not match. [editor]
-7. Contém o texto: não precisa ser a mensagem inteira. [traducao]
-8. Roda e olha: o erro aparece e o teste passa. [+pausa] [editor]
-9. Te vejo no próximo desafio! [endcard]
+6. O começo de sempre: o import, um describe chamado Desafios, e o before each que abre o site. [editor]
+7. Solução: preenche, preenche, clica, e expect error to contain text do not match. [editor]
+8. Contém o texto: não precisa ser a mensagem inteira. [traducao]
+9. Roda e olha: o erro aparece e o teste passa. [+pausa] [editor]
+10. Te vejo no próximo desafio! [endcard]
 
 ## Aula 50: Desafio 2 - campos vazios
 1. Desafio dois: e se a pessoa clicar em Login sem preencher nada? [bigtext]
@@ -26,10 +27,11 @@
 2. No trabalho, o remover quebra mais do que parece: o número não atualiza, ou o produto continua lá. E quase ninguém testa, porque todo mundo só testa o adicionar. [cards]
 3. Pausa e tenta. [+pausa] [desafio]
 4. Dica: depois de adicionar, o botão vira Remove, com data-test remove-sauce-labs-backpack. E quando o carrinho fica vazio, o numerozinho some da página. [tela]
-5. Solução: pra conferir que ele saiu da página, to have count zero: [editor]
-6. eu espero que o seletor encontre zero elementos. [traducao]
-7. Roda. [+pausa] [editor]
-8. Te vejo no próximo! [endcard]
+5. Os desafios daqui pra frente começam logados. Lembra do login salvo da aula quarenta e dois? Dentro do describe, uma caixa nova chamada logado. Nela, o test ponto use com o storage state, e um before each que abre direto a página de produtos. [editor]
+6. Solução: pra conferir que ele saiu da página, to have count zero: [editor]
+7. eu espero que o seletor encontre zero elementos. [traducao]
+8. Roda. [+pausa] [editor]
+9. Te vejo no próximo! [endcard]
 
 ## Aula 52: Desafio 4 - ordenar por preço
 1. Desafio quatro: ordenar do menor pro maior preço. [bigtext]

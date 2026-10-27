@@ -41,7 +41,7 @@
 ## Aula 58: Uma caixa travou a página
 1. Agora aconteceu uma coisa diferente: clicamos num botão e o navegador abriu essa caixa. [tela_cheia]
 2. Enquanto ela está aberta, não dá pra usar a página. Isso é um alerta do navegador, um dialog. [cards]
-3. A gente precisa preparar o Playwright antes de o alerta aparecer: page ponto on, dialog, e dialog ponto accept. [editor]
+3. Um teste novo, alerta do navegador, que abre a página dos alertas. E antes de clicar, a gente prepara o Playwright: page ponto on, dialog, e dialog ponto accept. [editor]
 4. Quando aparecer um alerta, aceite. [traducao]
 5. A ordem é importante: primeiro prepara, depois clica. Se você tentar reagir só depois, o alerta já passou. [cards]
 6. No fim, confere a mensagem: You successfully clicked an alert. [editor]

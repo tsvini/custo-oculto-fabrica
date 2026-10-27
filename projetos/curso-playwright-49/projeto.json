@@ -200,6 +200,32 @@
        }
       },
       {
+       "text": "O começo de sempre: o import, um describe chamado Desafios, e o before each que abre o site.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "desafios.spec.js",
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  pages/",
+         "  tests/",
+         "    api.spec.js",
+         "    compra.spec.js",
+         "    desafios.spec.js",
+         "    login.spec.js",
+         "  .env",
+         "  playwright.config.js"
+        ],
+        "codigo": "import { test, expect } from '@playwright/test';\n\ntest.describe('Desafios', () => {\n  test.beforeEach(async ({ page }) => {\n    await page.goto('/');\n  });\n});",
+        "legenda": "O começo: import, describe e beforeEach",
+        "fonte": 26,
+        "digitar": true,
+        "digitar_de": 1,
+        "digitar_ate": 6
+       }
+      },
+      {
        "text": "Solução: preenche, preenche, clica, e expect error to contain text do not match.",
        "scene": {
         "type": "editor",

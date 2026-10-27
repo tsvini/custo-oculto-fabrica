@@ -170,6 +170,33 @@
        }
       },
       {
+       "text": "Os desafios daqui pra frente começam logados. Lembra do login salvo da aula quarenta e dois? Dentro do describe, uma caixa nova chamada logado. Nela, o test ponto use com o storage state, e um before each que abre direto a página de produtos.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "desafios.spec.js",
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  pages/",
+         "  tests/",
+         "    api.spec.js",
+         "    compra.spec.js",
+         "    desafios.spec.js",
+         "    login.spec.js",
+         "  .env",
+         "  playwright.config.js"
+        ],
+        "codigo": "\n  test.describe('logado', () => {\n    test.use({ storageState: 'playwright/.auth/usuario.json' });\n\n    test.beforeEach(async ({ page }) => {\n      await page.goto('/inventory.html');\n    });\n\n  });\n});",
+        "legenda": "describe('logado') + test.use",
+        "fonte": 24,
+        "digitar": true,
+        "linha0": 19,
+        "digitar_de": 2,
+        "digitar_ate": 7
+       }
+      },
+      {
        "text": "Solução: pra conferir que ele saiu da página, to have count zero:",
        "scene": {
         "type": "editor",

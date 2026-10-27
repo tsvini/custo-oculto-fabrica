@@ -91,7 +91,7 @@
        }
       },
       {
-       "text": "A gente precisa preparar o Playwright antes de o alerta aparecer: page ponto on, dialog, e dialog ponto accept.",
+       "text": "Um teste novo, alerta do navegador, que abre a página dos alertas. E antes de clicar, a gente prepara o Playwright: page ponto on, dialog, e dialog ponto accept.",
        "scene": {
         "type": "editor",
         "arquivo": "internet.spec.js",
@@ -112,7 +112,7 @@
         "fonte": 32,
         "digitar": true,
         "linha0": 28,
-        "digitar_de": 3,
+        "digitar_de": 1,
         "digitar_ate": 5
        }
       },

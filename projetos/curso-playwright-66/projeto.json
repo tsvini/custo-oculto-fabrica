@@ -192,7 +192,22 @@
        }
       },
       {
-       "text": "Primeiro, a prova de que o Playwright consegue ficar no meio: page ponto route nesse endereço, e route ponto abort. Bloqueie.",
+       "text": "O começo do arquivo: o import, o endereço da Lojinha, e o endereço da API que a gente vai interceptar, guardado com o nome api. Os dois asteriscos querem dizer: qualquer coisa antes. E um before each que entra na loja, com cliente e leigo123, e espera os produtos aparecerem.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "mock.spec.js",
+        "codigo": "import { test, expect } from '@playwright/test';\n\nconst lojinha = 'https://tsvini.github.io/custo-oculto-fabrica/loja/';\nconst api = '**/api/produtos.json';\n\ntest.beforeEach(async ({ page }) => {\n  await page.goto(lojinha);\n  await page.getByTestId('usuario').fill('cliente');\n  await page.getByTestId('senha').fill('leigo123');\n  await page.getByTestId('entrar').click();\n  await expect(page.getByTestId('produto').first()).toBeVisible();\n});",
+        "legenda": "O começo: endereços e o login",
+        "fonte": 22,
+        "digitar": true,
+        "linha0": 1,
+        "pastas": null,
+        "digitar_de": 1,
+        "digitar_ate": 12
+       }
+      },
+      {
+       "text": "Primeiro teste: servidor fora do ar. A prova de que o Playwright consegue ficar no meio: page ponto route nesse endereço, e route ponto abort: bloqueie. Depois recarrega a página, e confere o aviso de erro.",
        "scene": {
         "type": "editor",
         "arquivo": "mock.spec.js",
@@ -202,8 +217,8 @@
         "fonte": 26,
         "digitar": true,
         "linha0": 14,
-        "digitar_de": 2,
-        "digitar_ate": 2
+        "digitar_de": 1,
+        "digitar_ate": 5
        }
       },
       {
@@ -291,7 +306,7 @@
        }
       },
       {
-       "text": "Agora o uso mais comum: route ponto fulfill. Responda no lugar do servidor, com o que você quiser. Aqui, uma lista vazia.",
+       "text": "Agora o uso mais comum, num segundo teste: lista vazia. Route ponto fulfill: responda no lugar do servidor, com o que você quiser. Aqui, uma lista vazia. E no fim, recarrega e confere a mensagem de nenhum produto.",
        "scene": {
         "type": "editor",
         "arquivo": "mock.spec.js",
@@ -301,8 +316,8 @@
         "fonte": 26,
         "digitar": true,
         "linha0": 20,
-        "digitar_de": 2,
-        "digitar_ate": 6
+        "digitar_de": 1,
+        "digitar_ate": 9
        }
       },
       {

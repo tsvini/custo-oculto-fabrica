@@ -70,12 +70,14 @@ AULAS.append(projeto(82, "MÓDULO 15 · AULA 82", "O seu projeto no currículo e
 
 # ---------- Aula 57 ----------
 L_SELO = 3
+README_SEM_SELO = "\n".join(l for i, l in enumerate(README.split("\n")) if i + 1 not in (L_SELO, L_SELO + 1))  # o selo entra na cena seguinte
+assert README.split("\n")[L_SELO - 1].startswith("![")
 AULAS.append(projeto(83, "MÓDULO 15 · AULA 83", "Seu projeto pronto pro portfólio e a colinha completa", [
     ("Última aula. Vamos deixar o seu projeto pronto pra quem visitar.", titulo(83, "PORTFÓLIO")),
     ("Dentro, escreve: o objetivo, as tecnologias, o que precisa instalar, como instalar, e os comandos pra rodar os testes.",
-     edc(README, "README.md: a vitrine do projeto", arquivo="README.md", pastas=ARV_R, digitar=True, digitar_de=5, digitar_ate=16, vel=0.85, fonte=22,
+     edc(README_SEM_SELO, "README.md: a vitrine do projeto", arquivo="README.md", pastas=ARV_R, digitar=True, digitar_de=1, digitar_ate=len(README_SEM_SELO.split("\n")), vel=0.85, fonte=22,
          criar=[["Na pasta do projeto, cria um arquivo novo: README ponto md. É a primeira coisa que alguém vê quando abre o seu projeto no GitHub.", "README.md"]])),
-    ("Coloca o selinho do GitHub Actions. O próprio GitHub gera o código dele, com o endereço do seu repositório e do seu workflow.",
+    ("Agora, logo embaixo do título, coloca o selinho do GitHub Actions. O próprio GitHub gera o código dele, com o endereço do seu repositório e do seu workflow.",
      edc(README, "O selo: o endereço do repositório + o do workflow", arquivo="README.md", digitar=True, digitar_de=L_SELO, digitar_ate=L_SELO, vel=0.6, fonte=22, destaque=[L_SELO], destaque_em=99)),
     ("Ele mostra se os testes estão passando.",
      {"type": "github", "tela": "readme", "usuario": "voce", "repo": "meu-primeiro-playwright", "titulo_readme": "Meu primeiro projeto Playwright", "selo_em": 0.3, "foco_em": 0.8,

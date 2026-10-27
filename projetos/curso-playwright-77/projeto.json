@@ -241,25 +241,33 @@
        }
       },
       {
-       "text": "E no config: o dotenv lá em cima, o baseURL da Lojinha, já lendo a variável de ambiente, e o testIdAttribute, porque a Lojinha também usa data-test.",
+       "text": "No config, lá em cima, as três linhas do dotenv, que você já conhece do primeiro projeto: importe o dotenv, o path, e leia o ponto env.",
        "scene": {
         "type": "editor",
         "arquivo": "playwright.config.js",
-        "codigo": "// @ts-check\nimport { defineConfig, devices } from '@playwright/test';\nimport dotenv from 'dotenv';\nimport path from 'path';\ndotenv.config({ path: path.resolve(__dirname, '.env') });\n\nexport default defineConfig({\n  testDir: './tests',\n  fullyParallel: true,\n  forbidOnly: !!process.env.CI,\n  retries: process.env.CI ? 2 : 0,\n  workers: process.env.CI ? 1 : undefined,\n  reporter: 'html',\n  use: {\n    baseURL: process.env.BASE_URL || 'https://tsvini.github.io/custo-oculto-fabrica/loja/',\n    testIdAttribute: 'data-test',\n    trace: 'on-first-retry',\n    screenshot: 'only-on-failure',\n  },\n  projects: [\n    { name: 'chromium', use: { ...devices['Desktop Chrome'] } },\n    { name: 'firefox', use: { ...devices['Desktop Firefox'] } },\n  ],\n});",
-        "legenda": "dotenv, baseURL e testIdAttribute",
-        "fonte": 19,
-        "digitar": false,
-        "linha0": 1,
         "pastas": null,
-        "destaque": [
-         5,
-         15,
-         16
-        ],
-        "destaque_em": 1.0,
-        "rolar": true,
-        "rolar_de": 0.5,
-        "rolar_dur": 1.0
+        "codigo": "// @ts-check\nimport { defineConfig, devices } from '@playwright/test';\nimport dotenv from 'dotenv';\nimport path from 'path';\ndotenv.config({ path: path.resolve(__dirname, '.env') });",
+        "legenda": "As 3 linhas do dotenv",
+        "fonte": 26,
+        "digitar": true,
+        "linha0": 1,
+        "digitar_de": 3,
+        "digitar_ate": 5
+       }
+      },
+      {
+       "text": "E dentro do use: o baseURL da Lojinha, já lendo a variável BASE URL, como na aula setenta e um. O testIdAttribute, porque a Lojinha também usa data-test. E o screenshot só quando falha.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "playwright.config.js",
+        "codigo": "  use: {\n    baseURL: process.env.BASE_URL || 'https://tsvini.github.io/custo-oculto-fabrica/loja/',\n    testIdAttribute: 'data-test',\n    trace: 'on-first-retry',\n    screenshot: 'only-on-failure',\n  },",
+        "legenda": "baseURL, testIdAttribute e screenshot",
+        "fonte": 22,
+        "digitar": true,
+        "linha0": 14,
+        "pastas": null,
+        "digitar_de": 2,
+        "digitar_ate": 5
        }
       },
       {
@@ -300,20 +308,18 @@
        }
       },
       {
-       "text": "Dentro, o usuário e a senha da Lojinha. Repara na última linha, comentada: a versão. Com ela, dá pra apontar os testes pra versão um, a do bug.",
+       "text": "Dentro, o usuário e a senha da Lojinha. E uma última linha, comentada: a versão. Com ela, dá pra apontar os testes pra versão um, a do bug.",
        "scene": {
         "type": "editor",
         "arquivo": ".env",
         "codigo": "LOJA_USUARIO=cliente\nLOJA_SENHA=leigo123\n# LOJA_VERSAO=1   <- descomente pra testar a versão antiga, com o bug",
         "legenda": "O .env do projeto 2",
         "fonte": 22,
-        "digitar": false,
+        "digitar": true,
         "linha0": 1,
         "pastas": null,
-        "destaque": [
-         3
-        ],
-        "destaque_em": 1.6
+        "digitar_de": 1,
+        "digitar_ate": 3
        }
       },
       {

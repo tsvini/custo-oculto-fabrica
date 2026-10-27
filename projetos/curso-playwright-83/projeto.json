@@ -125,10 +125,6 @@
        "scene": {
         "type": "editor",
         "arquivo": "README.md",
-        "codigo": "# Meu primeiro projeto Playwright\n\n![Playwright Tests](https://github.com/voce/meu-primeiro-playwright/actions/workflows/playwright.yml/badge.svg)\n\nTestes de ponta a ponta da loja de treino saucedemo.com.\n\n## Tecnologias\nPlaywright, JavaScript, Page Object, GitHub Actions\n\n## Instalação\nnpm install\nnpx playwright install\n\n## Rodando os testes\nnpx playwright test",
-        "legenda": "README.md: a vitrine do projeto",
-        "fonte": 22,
-        "digitar": true,
         "pastas": [
          "meu-primeiro-playwright",
          "  .github/",
@@ -141,13 +137,17 @@
          "  playwright.config.js",
          "  README.md"
         ],
-        "digitar_de": 5,
-        "digitar_ate": 16,
+        "codigo": "# Meu primeiro projeto Playwright\n\nTestes de ponta a ponta da loja de treino saucedemo.com.\n\n## Tecnologias\nPlaywright, JavaScript, Page Object, GitHub Actions\n\n## Instalação\nnpm install\nnpx playwright install\n\n## Rodando os testes\nnpx playwright test",
+        "legenda": "README.md: a vitrine do projeto",
+        "fonte": 22,
+        "digitar": true,
+        "digitar_de": 1,
+        "digitar_ate": 13,
         "vel": 0.85
        }
       },
       {
-       "text": "Coloca o selinho do GitHub Actions. O próprio GitHub gera o código dele, com o endereço do seu repositório e do seu workflow.",
+       "text": "Agora, logo embaixo do título, coloca o selinho do GitHub Actions. O próprio GitHub gera o código dele, com o endereço do seu repositório e do seu workflow.",
        "scene": {
         "type": "editor",
         "arquivo": "README.md",

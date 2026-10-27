@@ -204,21 +204,18 @@
        }
       },
       {
-       "text": "Olha o código. Depois do login, ele espera quatro segundos e meio, fixos, e conta os produtos.",
+       "text": "Escreve: abre o site, faz o login com o usuário lento, e aí espera quatro segundos e meio, fixos, com o wait for timeout. Depois conta os produtos, e confere que são seis.",
        "scene": {
         "type": "editor",
         "arquivo": "flaky.demo.spec.js",
         "codigo": "import { test, expect } from '@playwright/test';\n\ntest('usuário lento, com tempo fixo', async ({ page }) => {\n  await page.goto('/');\n  await page.getByTestId('username').fill('performance_glitch_user');\n  await page.getByTestId('password').fill('secret_sauce');\n  await page.getByTestId('login-button').click();\n  await page.waitForTimeout(4500);\n  const produtos = page.getByTestId('inventory-item');\n  expect(await produtos.count()).toBe(6);\n});",
         "legenda": "Tempo fixo e depois conta",
         "fonte": 22,
-        "digitar": false,
+        "digitar": true,
         "linha0": 1,
         "pastas": null,
-        "destaque": [
-         8,
-         10
-        ],
-        "destaque_em": 1.0
+        "digitar_de": 1,
+        "digitar_ate": 11
        }
       },
       {
@@ -310,6 +307,21 @@
         "novo_nivel": 3,
         "novo_pasta": false,
         "legenda": "New File › flaky.spec.js  (dentro de nivel2)"
+       }
+      },
+      {
+       "text": "O começo você já conhece: o import das fixtures, o teste, e o login com o usuário lento, pelo loginPage.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "flaky.spec.js",
+        "codigo": "import { test, expect } from '../../fixtures/paginas';\n\ntest('usuário lento, esperando o que importa', async ({ page, loginPage }) => {\n  await page.goto('/');\n  await loginPage.entrar('performance_glitch_user', 'secret_sauce');\n});",
+        "legenda": "O começo: o login com o usuário lento",
+        "fonte": 22,
+        "digitar": true,
+        "linha0": 1,
+        "pastas": null,
+        "digitar_de": 1,
+        "digitar_ate": 5
        }
       },
       {

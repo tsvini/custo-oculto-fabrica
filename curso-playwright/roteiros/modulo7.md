@@ -7,7 +7,7 @@
 4. E isso acontece muito num sistema de verdade: cliente, administrador, usuário novo. O mesmo teste precisa funcionar pra todos. [cards]
 5. A solução tem duas partes: uma lista com os nomes, e uma repetição que roda o teste uma vez pra cada nome da lista. [cards]
 6. Pra isso, um arquivo de teste novo. Dentro da pasta tests, cria o usuarios ponto spec ponto js. [menu]
-7. Primeiro, a lista. Escreve: const lista de usuários igual, abre colchetes. [editor]
+7. Primeiro, o import de sempre. E a lista: escreve const lista de usuários igual, abre colchetes. [editor]
 8. Traduzindo: const, guarde com o nome lista de usuários. Esse nome é você que escolhe: escolhe um que diga o que tem dentro. O igual: o valor é. E os colchetes abrem uma lista. [traducao]
 9. Pensa numa lista de compras: um item embaixo do outro. No código é igual: um nome por linha, entre aspas, e a vírgula separando um do outro. No fim, fecha os colchetes. [editor]
 10. Agora, a repetição. Pra entender sem se perder, a gente vai ver ela funcionando primeiro num arquivo de rascunho. Na pasta do projeto, cria o teste do for ponto js. [menu]

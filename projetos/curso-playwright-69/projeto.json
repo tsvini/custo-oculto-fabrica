@@ -128,18 +128,54 @@
        }
       },
       {
-       "text": "Pra isso servem as tags: uma etiqueta no teste. Depois do nome, entre chaves: tag, arroba smoke.",
+       "text": "Começa com o import das suas fixtures, e um teste de login que você já conhece: abre o site, entra com o loginPage, e confere o endereço.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "tags.spec.js",
+        "pastas": null,
+        "codigo": "import { test, expect } from '../../fixtures/paginas';\n\ntest('login funciona', async ({ page, loginPage }) => {\n  await page.goto('/');\n  await loginPage.entrar('standard_user', 'secret_sauce');\n  await expect(page).toHaveURL(/inventory/);\n});",
+        "legenda": "Um teste de login",
+        "fonte": 26,
+        "digitar": true,
+        "linha0": 1,
+        "digitar_de": 1,
+        "digitar_ate": 7
+       }
+      },
+      {
+       "text": "Pra marcar esse teste, servem as tags: uma etiqueta no teste. Depois do nome, vírgula, e entre chaves: tag, arroba smoke.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "tags.spec.js",
+        "codigo": "import { test, expect } from '../../fixtures/paginas';\n\ntest('login funciona', { tag: '@smoke' }, async ({ page, loginPage }) => {\n  await page.goto('/');\n  await loginPage.entrar('standard_user', 'secret_sauce');\n  await expect(page).toHaveURL(/inventory/);\n});",
+        "legenda": "{ tag: '@smoke' }",
+        "fonte": 22,
+        "digitar": false,
+        "linha0": 1,
+        "pastas": null,
+        "trocar": [
+         [
+          3,
+          "test('login funciona', async ({ page, loginPage }) => {",
+          null,
+          2.4
+         ]
+        ]
+       }
+      },
+      {
+       "text": "E um segundo teste, o do usuário bloqueado, sem etiqueta nenhuma.",
        "scene": {
         "type": "editor",
         "arquivo": "tags.spec.js",
         "codigo": "import { test, expect } from '../../fixtures/paginas';\n\ntest('login funciona', { tag: '@smoke' }, async ({ page, loginPage }) => {\n  await page.goto('/');\n  await loginPage.entrar('standard_user', 'secret_sauce');\n  await expect(page).toHaveURL(/inventory/);\n});\n\ntest('mostra erro para usuário bloqueado', async ({ page, loginPage }) => {\n  await page.goto('/');\n  await loginPage.entrar('locked_out_user', 'secret_sauce');\n  await expect(loginPage.erro).toContainText('locked out');\n});",
-        "legenda": "{ tag: '@smoke' }",
+        "legenda": "Um teste sem etiqueta",
         "fonte": 22,
         "digitar": true,
         "linha0": 1,
         "pastas": null,
-        "digitar_de": 3,
-        "digitar_ate": 3
+        "digitar_de": 9,
+        "digitar_ate": 13
        }
       },
       {

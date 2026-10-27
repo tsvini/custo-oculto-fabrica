@@ -215,7 +215,7 @@
        }
       },
       {
-       "text": "Primeiro, a lista. Escreve: const lista de usuários igual, abre colchetes.",
+       "text": "Primeiro, o import de sempre. E a lista: escreve const lista de usuários igual, abre colchetes.",
        "scene": {
         "type": "editor",
         "arquivo": "usuarios.spec.js",
@@ -237,7 +237,7 @@
         "legenda": "Uma lista: const listaDeUsuarios = [",
         "fonte": 30,
         "digitar": true,
-        "digitar_de": 3
+        "digitar_de": 1
        }
       },
       {

@@ -103,19 +103,33 @@
        }
       },
       {
-       "text": "A lista de cenários vira teste. Começando pelo login: os quatro casos de erro moram no login ponto json, cada um com o usuário, a senha, e a mensagem esperada.",
+       "text": "A lista de cenários vira teste. Começando pelo login: os casos de erro moram no login ponto json. Cada caso tem o nome do cenário, o usuário, a senha, e a mensagem esperada. O primeiro: senha errada.",
        "scene": {
         "type": "editor",
         "arquivo": "login.json",
         "pastas": null,
-        "codigo": "[\n  {\n    \"cenario\": \"senha errada\",\n    \"usuario\": \"cliente\",\n    \"senha\": \"errada\",\n    \"mensagem\": \"Usuário ou senha incorretos.\"\n  },\n  {\n    \"cenario\": \"usuário bloqueado\",\n    \"usuario\": \"bloqueado\",\n    \"senha\": \"leigo123\",\n    \"mensagem\": \"Este usuário está bloqueado. Fale com o suporte.\"\n  },\n  {\n    \"cenario\": \"usuário vazio\",\n    \"usuario\": \"\",\n    \"senha\": \"leigo123\",\n    \"mensagem\": \"Informe o usuário.\"\n  },\n  {\n    \"cenario\": \"senha vazia\",\n    \"usuario\": \"cliente\",\n    \"senha\": \"\",\n    \"mensagem\": \"Informe a senha.\"\n  }\n]",
-        "legenda": "dados/login.json: os casos de erro",
+        "codigo": "[\n  {\n    \"cenario\": \"senha errada\",\n    \"usuario\": \"cliente\",\n    \"senha\": \"errada\",\n    \"mensagem\": \"Usuário ou senha incorretos.\"\n  },\n]",
+        "legenda": "dados/login.json: o primeiro caso",
         "fonte": 26,
-        "digitar": false,
+        "digitar": true,
         "linha0": 1,
-        "rolar": true,
-        "rolar_de": 3.0,
-        "rolar_dur": 3.5
+        "digitar_de": 1,
+        "digitar_ate": 7
+       }
+      },
+      {
+       "text": "E os outros três, no mesmo formato: usuário bloqueado, usuário vazio e senha vazia.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "login.json",
+        "pastas": null,
+        "codigo": "  {\n    \"cenario\": \"usuário bloqueado\",\n    \"usuario\": \"bloqueado\",\n    \"senha\": \"leigo123\",\n    \"mensagem\": \"Este usuário está bloqueado. Fale com o suporte.\"\n  },\n  {\n    \"cenario\": \"usuário vazio\",\n    \"usuario\": \"\",\n    \"senha\": \"leigo123\",\n    \"mensagem\": \"Informe o usuário.\"\n  },\n  {\n    \"cenario\": \"senha vazia\",\n    \"usuario\": \"cliente\",\n    \"senha\": \"\",\n    \"mensagem\": \"Informe a senha.\"\n  }\n]",
+        "legenda": "Os outros 3 casos",
+        "fonte": 18,
+        "digitar": true,
+        "linha0": 8,
+        "digitar_de": 1,
+        "digitar_ate": 19
        }
       },
       {
@@ -161,22 +175,48 @@
        }
       },
       {
-       "text": "E o teste: o login válido, com a etiqueta smoke. E um for pelos casos do JSON, conferindo a mensagem de cada um.",
+       "text": "Agora o teste. O começo: o import das fixtures, o import dos casos do JSON, um describe chamado Login, e o before each, que abre a loja com o abrir do LoginPage.",
        "scene": {
         "type": "editor",
         "arquivo": "login.spec.js",
-        "codigo": "  const smoke = { tag: '@smoke' };\n  test('entra com usuário válido', smoke, async ({ page, loginPage, produtosPage }) => {\n    await loginPage.entrar(process.env.LOJA_USUARIO, process.env.LOJA_SENHA);\n    await expect(page).toHaveURL(/produtos/);\n    await expect(produtosPage.titulo).toHaveText('Produtos');\n  });\n\n  for (const caso of casos) {\n    test(`mostra erro: ${caso.cenario}`, async ({ loginPage }) => {\n      await loginPage.entrar(caso.usuario, caso.senha);\n      await expect(loginPage.erro).toHaveText(caso.mensagem);\n    });\n  }",
-        "legenda": "login.spec.js: o válido e os casos do JSON",
-        "fonte": 19,
-        "digitar": false,
-        "linha0": 9,
         "pastas": null,
-        "destaque": [
-         1,
-         8,
-         11
-        ],
-        "destaque_em": 1.0
+        "codigo": "import { test, expect } from '../fixtures/paginas';\nimport casos from '../dados/login.json';\n\ntest.describe('Login', () => {\n  test.beforeEach(async ({ loginPage }) => {\n    await loginPage.abrir();\n  });\n});",
+        "legenda": "O começo: imports, describe e beforeEach",
+        "fonte": 24,
+        "digitar": true,
+        "linha0": 1,
+        "digitar_de": 1,
+        "digitar_ate": 7
+       }
+      },
+      {
+       "text": "O login válido, com a etiqueta smoke guardada numa constante: entra com o usuário do ponto env, e confere o endereço e o título da página.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "login.spec.js",
+        "codigo": "\n  const smoke = { tag: '@smoke' };\n  test('entra com usuário válido', smoke, async ({ page, loginPage, produtosPage }) => {\n    await loginPage.entrar(process.env.LOJA_USUARIO, process.env.LOJA_SENHA);\n    await expect(page).toHaveURL(/produtos/);\n    await expect(produtosPage.titulo).toHaveText('Produtos');\n  });\n});",
+        "legenda": "O login válido, com @smoke",
+        "fonte": 22,
+        "digitar": true,
+        "linha0": 8,
+        "pastas": null,
+        "digitar_de": 2,
+        "digitar_ate": 7
+       }
+      },
+      {
+       "text": "E um for pelos casos do JSON: um teste pra cada caso, com o nome do cenário. Entra com o usuário e a senha do caso, e confere a mensagem do caso.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "login.spec.js",
+        "codigo": "\n  for (const caso of casos) {\n    test(`mostra erro: ${caso.cenario}`, async ({ loginPage }) => {\n      await loginPage.entrar(caso.usuario, caso.senha);\n      await expect(loginPage.erro).toHaveText(caso.mensagem);\n    });\n  }\n});",
+        "legenda": "Um teste pra cada caso do JSON",
+        "fonte": 22,
+        "digitar": true,
+        "linha0": 15,
+        "pastas": null,
+        "digitar_de": 2,
+        "digitar_ate": 7
        }
       },
       {
@@ -223,19 +263,33 @@
        }
       },
       {
-       "text": "A ordenação: os quatro sentidos no ordenacao ponto json. Qual opção escolher, o nome do cenário, o campo, e o sentido.",
+       "text": "A ordenação: os quatro sentidos no ordenacao ponto json. Cada um tem a opção da caixa, o nome do cenário, o campo, preço ou nome, e o sentido.",
        "scene": {
         "type": "editor",
         "arquivo": "ordenacao.json",
         "pastas": null,
-        "codigo": "[\n  {\n    \"opcao\": \"az\",\n    \"nome\": \"nome de A a Z\",\n    \"campo\": \"nome\",\n    \"sentido\": \"crescente\"\n  },\n  {\n    \"opcao\": \"za\",\n    \"nome\": \"nome de Z a A\",\n    \"campo\": \"nome\",\n    \"sentido\": \"decrescente\"\n  },\n  {\n    \"opcao\": \"menor\",\n    \"nome\": \"preço do menor para o maior\",\n    \"campo\": \"preco\",\n    \"sentido\": \"crescente\"\n  },\n  {\n    \"opcao\": \"maior\",\n    \"nome\": \"preço do maior para o menor\",\n    \"campo\": \"preco\",\n    \"sentido\": \"decrescente\"\n  }\n]",
-        "legenda": "dados/ordenacao.json: os 4 sentidos",
+        "codigo": "[\n  {\n    \"opcao\": \"az\",\n    \"nome\": \"nome de A a Z\",\n    \"campo\": \"nome\",\n    \"sentido\": \"crescente\"\n  },\n]",
+        "legenda": "dados/ordenacao.json: o primeiro sentido",
         "fonte": 26,
-        "digitar": false,
+        "digitar": true,
         "linha0": 1,
-        "rolar": true,
-        "rolar_de": 3.0,
-        "rolar_dur": 3.0
+        "digitar_de": 1,
+        "digitar_ate": 7
+       }
+      },
+      {
+       "text": "E os outros três: de Z a A, preço do menor pro maior, e do maior pro menor.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "ordenacao.json",
+        "pastas": null,
+        "codigo": "  {\n    \"opcao\": \"za\",\n    \"nome\": \"nome de Z a A\",\n    \"campo\": \"nome\",\n    \"sentido\": \"decrescente\"\n  },\n  {\n    \"opcao\": \"menor\",\n    \"nome\": \"preço do menor para o maior\",\n    \"campo\": \"preco\",\n    \"sentido\": \"crescente\"\n  },\n  {\n    \"opcao\": \"maior\",\n    \"nome\": \"preço do maior para o menor\",\n    \"campo\": \"preco\",\n    \"sentido\": \"decrescente\"\n  }\n]",
+        "legenda": "Os outros 3 sentidos",
+        "fonte": 18,
+        "digitar": true,
+        "linha0": 8,
+        "digitar_de": 1,
+        "digitar_ate": 19
        }
       },
       {
@@ -283,22 +337,48 @@
        }
       },
       {
-       "text": "No teste, um for pelos quatro. Escolhe a opção, e lê da tela os preços ou os nomes.",
+       "text": "No produtos ponto spec, o começo: os imports, o describe Produtos, e um before each que abre a loja, entra, e espera os produtos aparecerem.",
        "scene": {
         "type": "editor",
         "arquivo": "produtos.spec.js",
-        "codigo": "  for (const o of ordenacoes) {\n    const tag = o.opcao === 'menor' ? ['@smoke'] : [];\n    test(`ordena por ${o.nome}`, { tag }, async ({ produtosPage }) => {\n      await produtosPage.ordenarPor(o.opcao);\n      const naTela = o.campo === 'preco'\n        ? await produtosPage.lerPrecos()\n        : await produtosPage.lerNomes();\n      const esperado = [...naTela].sort((a, b) =>\n        (o.campo === 'preco' ? a - b : a.localeCompare(b)));\n      if (o.sentido === 'decrescente') esperado.reverse();\n      expect(naTela).toEqual(esperado);\n    });\n  }",
-        "legenda": "Um teste pra cada sentido",
+        "codigo": "import { test, expect } from '../fixtures/paginas';\nimport ordenacoes from '../dados/ordenacao.json';\n\ntest.describe('Produtos', () => {\n  test.beforeEach(async ({ loginPage, produtosPage }) => {\n    await loginPage.abrir();\n    await loginPage.entrar(process.env.LOJA_USUARIO, process.env.LOJA_SENHA);\n    await expect(produtosPage.produtos.first()).toBeVisible();\n  });\n});",
+        "legenda": "O começo: entra e espera os produtos",
         "fonte": 22,
-        "digitar": false,
+        "digitar": true,
+        "linha0": 1,
+        "pastas": null,
+        "digitar_de": 1,
+        "digitar_ate": 9
+       }
+      },
+      {
+       "text": "Agora um for pelos quatro sentidos. A primeira linha dentro dele é a etiqueta: só o teste do menor preço ganha o smoke. É o interrogação de novo: se a opção for menor, a etiqueta smoke. Senão, nenhuma. E o teste, com o nome do sentido.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "produtos.spec.js",
+        "codigo": "\n  for (const o of ordenacoes) {\n    const tag = o.opcao === 'menor' ? ['@smoke'] : [];\n    test(`ordena por ${o.nome}`, { tag }, async ({ produtosPage }) => {\n    });\n  }",
+        "legenda": "Só o do menor preço é smoke",
+        "fonte": 22,
+        "digitar": true,
+        "linha0": 10,
+        "pastas": null,
+        "digitar_de": 2,
+        "digitar_ate": 4
+       }
+      },
+      {
+       "text": "Dentro do teste: escolhe a opção na caixa, e lê da tela os preços ou os nomes, dependendo do campo.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "produtos.spec.js",
+        "codigo": "  for (const o of ordenacoes) {\n    const tag = o.opcao === 'menor' ? ['@smoke'] : [];\n    test(`ordena por ${o.nome}`, { tag }, async ({ produtosPage }) => {\n      await produtosPage.ordenarPor(o.opcao);\n      const naTela = o.campo === 'preco'\n        ? await produtosPage.lerPrecos()\n        : await produtosPage.lerNomes();\n    });\n  }",
+        "legenda": "Ordena e lê da tela",
+        "fonte": 22,
+        "digitar": true,
         "linha0": 11,
         "pastas": null,
-        "destaque": [
-         1,
-         4,
-         5
-        ],
-        "destaque_em": 1.0
+        "digitar_de": 4,
+        "digitar_ate": 7
        }
       },
       {
@@ -328,6 +408,21 @@
        }
       },
       {
+       "text": "Escreve a cópia ordenada: const esperado, igual, a cópia da lista da tela, ordenada.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "produtos.spec.js",
+        "codigo": "    test(`ordena por ${o.nome}`, { tag }, async ({ produtosPage }) => {\n      await produtosPage.ordenarPor(o.opcao);\n      const naTela = o.campo === 'preco'\n        ? await produtosPage.lerPrecos()\n        : await produtosPage.lerNomes();\n      const esperado = [...naTela].sort((a, b) =>\n        (o.campo === 'preco' ? a - b : a.localeCompare(b)));\n    });\n  }",
+        "legenda": "A cópia ordenada",
+        "fonte": 22,
+        "digitar": true,
+        "linha0": 13,
+        "pastas": null,
+        "digitar_de": 6,
+        "digitar_ate": 7
+       }
+      },
+      {
        "text": "Traduzindo: os três pontinhos entre colchetes, faça uma cópia. Sort, ordene. A menos b, do menor pro maior, como número. E locale compare, em ordem alfabética, pros nomes.",
        "scene": {
         "type": "traducao",
@@ -354,17 +449,14 @@
        "scene": {
         "type": "editor",
         "arquivo": "produtos.spec.js",
-        "codigo": "  for (const o of ordenacoes) {\n    const tag = o.opcao === 'menor' ? ['@smoke'] : [];\n    test(`ordena por ${o.nome}`, { tag }, async ({ produtosPage }) => {\n      await produtosPage.ordenarPor(o.opcao);\n      const naTela = o.campo === 'preco'\n        ? await produtosPage.lerPrecos()\n        : await produtosPage.lerNomes();\n      const esperado = [...naTela].sort((a, b) =>\n        (o.campo === 'preco' ? a - b : a.localeCompare(b)));\n      if (o.sentido === 'decrescente') esperado.reverse();\n      expect(naTela).toEqual(esperado);\n    });\n  }",
+        "codigo": "    test(`ordena por ${o.nome}`, { tag }, async ({ produtosPage }) => {\n      await produtosPage.ordenarPor(o.opcao);\n      const naTela = o.campo === 'preco'\n        ? await produtosPage.lerPrecos()\n        : await produtosPage.lerNomes();\n      const esperado = [...naTela].sort((a, b) =>\n        (o.campo === 'preco' ? a - b : a.localeCompare(b)));\n      if (o.sentido === 'decrescente') esperado.reverse();\n      expect(naTela).toEqual(esperado);\n    });\n  }",
         "legenda": "reverse e toEqual: a lista inteira",
         "fonte": 22,
-        "digitar": false,
-        "linha0": 11,
+        "digitar": true,
+        "linha0": 13,
         "pastas": null,
-        "destaque": [
-         10,
-         11
-        ],
-        "destaque_em": 0.8
+        "digitar_de": 8,
+        "digitar_ate": 9
        }
       },
       {
@@ -390,38 +482,18 @@
        }
       },
       {
-       "text": "E a etiqueta: só o teste do menor preço ganha o smoke. É o interrogação de novo: se a opção for menor, a etiqueta smoke. Senão, nenhuma.",
+       "text": "E o esgotado, do jeito que a pessoa respondeu: acha o card da camiseta pelo nome, e confere que ele aparece, com a etiqueta de esgotado, e o botão de adicionar desabilitado. To be disabled: esteja desabilitado.",
        "scene": {
         "type": "editor",
         "arquivo": "produtos.spec.js",
-        "codigo": "  for (const o of ordenacoes) {\n    const tag = o.opcao === 'menor' ? ['@smoke'] : [];\n    test(`ordena por ${o.nome}`, { tag }, async ({ produtosPage }) => {\n      await produtosPage.ordenarPor(o.opcao);",
-        "legenda": "Só o do menor preço é smoke",
-        "fonte": 22,
-        "digitar": false,
-        "linha0": 11,
-        "pastas": null,
-        "destaque": [
-         2
-        ],
-        "destaque_em": 0.8
-       }
-      },
-      {
-       "text": "E o esgotado, do jeito que a pessoa respondeu: ele aparece, com a etiqueta de esgotado, e o botão de adicionar desabilitado. To be disabled: esteja desabilitado.",
-       "scene": {
-        "type": "editor",
-        "arquivo": "produtos.spec.js",
-        "codigo": "  test('produto esgotado aparece, mas não dá pra comprar', async ({ produtosPage }) => {\n    const camiseta = produtosPage.produto('Camiseta Passou no CI');\n    await expect(camiseta.getByTestId('esgotado')).toBeVisible();\n    await expect(camiseta.getByTestId('adicionar')).toBeDisabled();\n  });",
+        "codigo": "\n  test('produto esgotado aparece, mas não dá pra comprar', async ({ produtosPage }) => {\n    const camiseta = produtosPage.produto('Camiseta Passou no CI');\n    await expect(camiseta.getByTestId('esgotado')).toBeVisible();\n    await expect(camiseta.getByTestId('adicionar')).toBeDisabled();\n  });\n});",
         "legenda": "toBeDisabled: aparece, mas não dá pra comprar",
-        "fonte": 19,
-        "digitar": false,
-        "linha0": 25,
+        "fonte": 22,
+        "digitar": true,
+        "linha0": 24,
         "pastas": null,
-        "destaque": [
-         3,
-         4
-        ],
-        "destaque_em": 0.8
+        "digitar_de": 2,
+        "digitar_ate": 6
        }
       },
       {

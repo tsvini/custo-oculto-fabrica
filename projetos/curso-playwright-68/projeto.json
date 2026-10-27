@@ -133,6 +133,21 @@
        }
       },
       {
+       "text": "O começo: o import, o endereço da Lojinha, e um teste que abre a tela de login.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "soft.spec.js",
+        "codigo": "import { test, expect } from '@playwright/test';\n\nconst lojinha = 'https://tsvini.github.io/custo-oculto-fabrica/loja/';\n\ntest('os textos da tela de login', async ({ page }) => {\n  await page.goto(lojinha);\n});",
+        "legenda": "O começo: abre a tela de login",
+        "fonte": 22,
+        "digitar": true,
+        "linha0": 1,
+        "pastas": null,
+        "digitar_de": 1,
+        "digitar_ate": 6
+       }
+      },
+      {
        "text": "Pra isso existe o expect ponto soft. Soft é suave: anote o erro, e continue conferindo.",
        "scene": {
         "type": "editor",

@@ -149,7 +149,7 @@ aula(58, "Uma caixa travou a página", [
     ("Agora aconteceu uma coisa diferente: clicamos num botão e o navegador abriu essa caixa.", video("n58_alerta", "O alerta do navegador")),
     ("Enquanto ela está aberta, não dá pra usar a página. Isso é um alerta do navegador, um dialog.",
      {"type": "cards", "titulo": "DIALOG", "itens": [["⚠", "A caixa do navegador", "com um OK"], ["⛔", "Trava a página", "até alguém clicar", VERM]]}),
-    ("A gente precisa preparar o Playwright antes de o alerta aparecer: page ponto on, dialog, e dialog ponto accept.", ed("page.on('dialog') = quando aparecer um alerta", L_ACC + 1, de=L_ON, ate_l=L_ACC + 1, mostra_de=a)),
+    ("Um teste novo, alerta do navegador, que abre a página dos alertas. E antes de clicar, a gente prepara o Playwright: page ponto on, dialog, e dialog ponto accept.", ed("page.on('dialog') = quando aparecer um alerta", L_ACC + 1, de=a, ate_l=L_ACC + 1, mostra_de=a)),
     ("Quando aparecer um alerta, aceite.", tr("page.on('dialog', ... dialog.accept())", [["page.on('dialog'", "quando aparecer um alerta"], ["dialog.accept()", "aceite"]], 1.0)),
     ("A ordem é importante: primeiro prepara, depois clica. Se você tentar reagir só depois, o alerta já passou.",
      {"type": "cards", "titulo": "A ORDEM", "itens": [["1", "Prepara", "page.on('dialog')"], ["2", "Clica", "no botão", AZUL], ["3", "Aparece", "o alerta", AMARELO], ["4", "Aceita", "sozinho", VERDE]]}),

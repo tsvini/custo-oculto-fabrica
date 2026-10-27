@@ -62,7 +62,7 @@
 3. Antes de clicar, o Playwright confere sozinho se o elemento está pronto pra receber o clique: se está visível, parado, habilitado, e se nada está na frente dele. [cards]
 4. E os expects que conferem a página, como o to have URL e o to be visible, também tentam de novo. Por padrão, por até cinco segundos. [cards]
 5. Pra ver isso, vamos usar um usuário especial do saucedemo, o performance glitch user. Ele é lento de propósito. [tela]
-6. Cria um teste novo com esse usuário. É igual ao primeiro, só muda o nome do usuário. [editor]
+6. Embaixo do primeiro, um teste novo com esse usuário. O nome: usuário lento também entra. E os passos são os do primeiro: abre o site, preenche, clica e confere. Só muda o nome do usuário. [editor]
 7. Só que esse login às vezes passa de cinco segundos. Então, nessa conferência, a gente dá mais tempo: dentro dos parênteses do to be visible, escreve timeout dez mil. [editor]
 8. Traduzindo: timeout dez mil. São milissegundos: espere até dez segundos, só nessa conferência. Os outros expects continuam com cinco. [traducao]
 9. Roda com o navegador aparecendo e olha: o clique em Login acontece, a página demora, e o teste espera sozinho até os produtos aparecerem. [editor]

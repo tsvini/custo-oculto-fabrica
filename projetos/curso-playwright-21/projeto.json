@@ -171,7 +171,7 @@
        }
       },
       {
-       "text": "Cria um teste novo com esse usuário. É igual ao primeiro, só muda o nome do usuário.",
+       "text": "Embaixo do primeiro, um teste novo com esse usuário. O nome: usuário lento também entra. E os passos são os do primeiro: abre o site, preenche, clica e confere. Só muda o nome do usuário.",
        "scene": {
         "type": "editor",
         "arquivo": "login.spec.js",
@@ -179,8 +179,8 @@
         "legenda": "Teste novo: só muda o usuário",
         "fonte": 24,
         "digitar": true,
-        "digitar_de": 16,
-        "digitar_ate": 16,
+        "digitar_de": 14,
+        "digitar_ate": 20,
         "rolar": true,
         "rolar_de": 1.2,
         "rolar_dur": 1.4

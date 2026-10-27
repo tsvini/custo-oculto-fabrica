@@ -132,6 +132,21 @@
        }
       },
       {
+       "text": "O começo é igual aos outros: o import, o endereço da Lojinha numa constante, e o teste, que abre a tela de login.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "visual.spec.js",
+        "codigo": "import { test, expect } from '@playwright/test';\n\nconst lojinha = 'https://tsvini.github.io/custo-oculto-fabrica/loja/';\n\ntest('a tela de login não mudou', async ({ page }) => {\n  await page.goto(lojinha);\n});",
+        "legenda": "O começo: abre a tela de login",
+        "fonte": 22,
+        "digitar": true,
+        "linha0": 1,
+        "pastas": null,
+        "digitar_de": 1,
+        "digitar_ate": 6
+       }
+      },
+      {
        "text": "Um teste visual percebe. Uma linha: to have screenshot. Tire uma foto da tela e compare com a foto guardada.",
        "scene": {
         "type": "editor",

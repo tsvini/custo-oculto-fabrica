@@ -321,23 +321,18 @@
        }
       },
       {
-       "text": "Dentro, um if: se o resultado é sucesso, confere que entrou. Se não, confere a mensagem de bloqueado.",
+       "text": "Dentro do teste: abre o site, e entra com o usuario da vez, pelo loginPage da fixture. E um if: se o resultado é sucesso, confere que entrou. Se não, confere a mensagem de bloqueado.",
        "scene": {
         "type": "editor",
         "arquivo": "dados.spec.js",
         "codigo": "import { test, expect } from '../../fixtures/paginas';\nimport usuarios from '../../dados/usuarios.json';\n\nfor (const { usuario, resultado } of usuarios) {\n  test(`${usuario} - ${resultado}`, async ({ page, loginPage }) => {\n    await page.goto('/');\n    await loginPage.entrar(usuario, 'secret_sauce');\n    if (resultado === 'sucesso') {\n      await expect(page).toHaveURL(/inventory/);\n    } else {\n      await expect(loginPage.erro).toContainText('locked out');\n    }\n  });\n}",
         "legenda": "if: se o resultado for sucesso",
         "fonte": 22,
-        "digitar": false,
+        "digitar": true,
         "linha0": 1,
         "pastas": null,
-        "destaque": [
-         8,
-         9,
-         10,
-         11
-        ],
-        "destaque_em": 0.8
+        "digitar_de": 6,
+        "digitar_ate": 12
        }
       },
       {

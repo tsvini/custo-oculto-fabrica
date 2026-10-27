@@ -22,7 +22,7 @@
 1. Última aula. Vamos deixar o seu projeto pronto pra quem visitar. [bigtext]
 2. Na pasta do projeto, cria um arquivo novo: README ponto md. É a primeira coisa que alguém vê quando abre o seu projeto no GitHub. [menu]
 3. Dentro, escreve: o objetivo, as tecnologias, o que precisa instalar, como instalar, e os comandos pra rodar os testes. [editor]
-4. Coloca o selinho do GitHub Actions. O próprio GitHub gera o código dele, com o endereço do seu repositório e do seu workflow. [editor]
+4. Agora, logo embaixo do título, coloca o selinho do GitHub Actions. O próprio GitHub gera o código dele, com o endereço do seu repositório e do seu workflow. [editor]
 5. Ele mostra se os testes estão passando. [github]
 6. E a sua colinha completa: do primeiro comando ao Page Object, [tela]
 7. ao login salvo, ao GitHub Actions e à API. [tela]

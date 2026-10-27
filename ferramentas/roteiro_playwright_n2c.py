@@ -170,43 +170,68 @@ aula(76, "Tem alguma coisa errada aqui", [
 
 # ---------- 77 · projeto organizado ----------
 CFG2 = ler("playwright.config.js")
+
+
+def dig(cod, de, ate, legenda, arquivo, mostra=None, fecha=(), **kw):
+    """digita as linhas de..ate (numeração do arquivo) mostrando o trecho mostra=(a, b), com o que fecha o bloco embaixo"""
+    a, b = mostra or (de, ate)
+    L = cod.split("\n")[a - 1:b] + list(fecha)
+    kw.setdefault("pastas", None)
+    return ed("\n".join(L), legenda, arquivo, linha0=a, de=de - a + 1, ate=ate - a + 1, **kw)
+
+
+def obj_json(cod, k):
+    """linhas (início, fim) do k-ésimo objeto { } de uma lista JSON"""
+    L = cod.split("\n"); ab = [i + 1 for i, l in enumerate(L) if l.strip() == "{"]; fe = [i + 1 for i, l in enumerate(L) if l.strip() in ("},", "}")]
+    return ab[k - 1], fe[k - 1]
+
+
+L_DOT = ln(CFG2, "import dotenv"); L_BASE2 = ln(CFG2, "baseURL"); L_SHOT = ln(CFG2, "screenshot")
 aula(77, "Começando o projeto organizado", [
     ("Um projeto Playwright novo, numa pasta nova: projeto lojinha. Mas desta vez, você não está começando do zero.",
      term(["npm init playwright@latest", ("✔ Do you want to use TypeScript or JavaScript? · JavaScript", "mut"), ("✔ Where to put your end-to-end tests? · tests", "mut"),
            ("✔ Add a GitHub Actions workflow? (y/N) · true", "mut"), ("✔ Success! Created a Playwright Test project", "ac"), "npm install -D dotenv"], "Projeto novo, do mesmo jeito do primeiro")),
     ("Você já sabe do que vai precisar: pages, pros Page Objects. Fixtures, pra entregar as páginas prontas. Dados, pros casos de login e de ordenação. E os testes.",
      cards([["📄", "pages/", "LoginPage e ProdutosPage"], ["🔑", "fixtures/", "as páginas prontas", AZUL], ["{ }", "dados/", "login e ordenação", AMARELO], ["✓", "tests/", "login e produtos", VERDE]], "A ESTRUTURA")),
-    ("E no config: o dotenv lá em cima, o baseURL da Lojinha, já lendo a variável de ambiente, e o testIdAttribute, porque a Lojinha também usa data-test.",
-     ed(CFG2, "dotenv, baseURL e testIdAttribute", "playwright.config.js", destaque=[ln(CFG2, "dotenv.config"), ln(CFG2, "baseURL"), ln(CFG2, "testIdAttribute")], destaque_em=1.0, pastas=None,
-        rolar=True, rolar_de=0.5, rolar_dur=1.0, criar=[['Primeiro, as pastas que você já sabe que vai precisar. Na pasta do projeto, cria a pasta pages.', 'pages/'], ['A pasta fixtures.', 'fixtures/'], ['E a pasta dados.', 'dados/']])),
-    ("Dentro, o usuário e a senha da Lojinha. Repara na última linha, comentada: a versão. Com ela, dá pra apontar os testes pra versão um, a do bug.",
-     ed(ler(".env.example"), "O .env do projeto 2", ".env", destaque=[3], destaque_em=1.6, criar=[['Na pasta do projeto, cria o arquivo ponto env.', '.env']])),
+    ("No config, lá em cima, as três linhas do dotenv, que você já conhece do primeiro projeto: importe o dotenv, o path, e leia o ponto env.",
+     dig(CFG2, L_DOT, L_DOT + 2, "As 3 linhas do dotenv", "playwright.config.js", mostra=(1, L_DOT + 2),
+         criar=[['Primeiro, as pastas que você já sabe que vai precisar. Na pasta do projeto, cria a pasta pages.', 'pages/'], ['A pasta fixtures.', 'fixtures/'], ['E a pasta dados.', 'dados/']])),
+    ("E dentro do use: o baseURL da Lojinha, já lendo a variável BASE URL, como na aula setenta e um. O testIdAttribute, porque a Lojinha também usa data-test. E o screenshot só quando falha.",
+     dig(CFG2, L_BASE2, L_SHOT, "baseURL, testIdAttribute e screenshot", "playwright.config.js", mostra=(L_BASE2 - 1, L_SHOT + 1), fonte=22)),
+    ("Dentro, o usuário e a senha da Lojinha. E uma última linha, comentada: a versão. Com ela, dá pra apontar os testes pra versão um, a do bug.",
+     ed(ler(".env.example"), "O .env do projeto 2", ".env", de=1, ate=3, criar=[['Na pasta do projeto, cria o arquivo ponto env.', '.env']])),
     ("Repara: no primeiro projeto, cada uma dessas coisas era novidade, e a gente foi colocando uma por vez. Agora você escolhe a estrutura no começo, com intenção.",
      cmp("A ESTRUTURA", ["PROJETO 1", "UMA NOVIDADE POR VEZ"], ["PROJETO 2", "ESCOLHIDA NO COMEÇO"])),
 ] + fim("page objects e fixture"))
 
 # ---------- 78 · page objects e fixture ----------
 LP = ler("pages/LoginPage.js"); PP = ler("pages/ProdutosPage.js"); FX = ler("fixtures/paginas.js")
-L_ABRIR = ln(LP, "async abrir"); L_ORD = ln(PP, "async ordenarPor"); L_LER = ln(PP, "async lerPrecos"); L_PROD = ln(PP, "produto(nome)")
+L_ABRIR = ln(LP, "async abrir"); L_ENTR = ln(LP, "async entrar"); L_ORD = ln(PP, "async ordenarPor"); L_LER = ln(PP, "async lerPrecos"); L_NOM = ln(PP, "async lerNomes"); L_PROD = ln(PP, "produto(nome)")
 aula(78, "Page Objects e fixture", [
-    ("O LoginPage, com a receita que você já conhece: os campos, o botão, a mensagem de erro, e o entrar.",
-     parte(LP, 1, 8, "LoginPage: a mesma receita", "LoginPage.js", destaque=list(range(2, 8)), destaque_em=0.8, criar=[['Dentro da pasta pages, cria o LoginPage ponto js.', 'LoginPage.js']])),
+    ("O LoginPage, com a receita que você já conhece: a class, o constructor, e os elementos. Os data-test da Lojinha são usuario, senha, entrar e erro.",
+     dig(LP, 1, 8, "LoginPage: a mesma receita", "LoginPage.js", fecha=("}",), criar=[['Dentro da pasta pages, cria o LoginPage ponto js.', 'LoginPage.js']])),
     ("E uma ação nova, o abrir. Ela abre a loja, e se o ponto env tiver a versão, acrescenta o interrogação versão no endereço.",
-     parte(LP, L_ABRIR, L_ABRIR + 3, "abrir(): a versão vem do .env", "LoginPage.js", destaque=[L_ABRIR + 1, L_ABRIR + 2], destaque_em=0.8, fonte=30)),
+     dig(LP, L_ABRIR, L_ABRIR + 3, "abrir(): a versão vem do .env", "LoginPage.js", mostra=(L_ABRIR - 1, L_ABRIR + 3), fecha=("}",), fonte=28)),
     ("Traduzindo: v é a versão que veio do ponto env. O interrogação quer dizer então: se tiver a versão, abre index ponto html interrogação versão igual a ela. Os dois pontos querem dizer senão: senão, só o index ponto html.",
      tr("v ? `index.html?versao=${v}` : 'index.html'", [["v ?", "se tiver a versão, então"], ["`index.html?versao=${v}`", "index.html?versao=1"], [": 'index.html'", "senão, index.html"]], 2.2)),
-    ("Agora o ProdutosPage. Os elementos: o título, a caixa de ordenar, os produtos, os preços e os nomes. E a ação de ordenar, com o select option que você já conhece.",
-     parte(PP, 1, L_ORD + 2, "ProdutosPage: elementos e ordenarPor", "ProdutosPage.js", destaque=[L_ORD, L_ORD + 1], destaque_em=1.8, fonte=24, criar=[['Dentro de pages, cria o ProdutosPage ponto js.', 'ProdutosPage.js']])),
-    ("E uma ação que lê os preços da tela. Primeiro, all text contents: pegue o texto de todos os preços, numa lista.",
-     parte(PP, L_LER - 1, L_LER + 5, "allTextContents: o texto de todos", "ProdutosPage.js", destaque=[L_LER + 1], destaque_em=0.8)),
+    ("E o entrar, igualzinho ao do primeiro projeto: preenche o usuário, a senha, e clica em entrar.",
+     dig(LP, L_ENTR, L_ENTR + 4, "entrar(): o mesmo do projeto 1", "LoginPage.js", mostra=(L_ENTR - 1, L_ENTR + 5), fonte=28)),
+    ("Agora o ProdutosPage. Os elementos: o título, a caixa de ordenar, os produtos, os preços e os nomes. Cada um com o seu data-test.",
+     dig(PP, 1, L_ORD - 2, "ProdutosPage: os elementos", "ProdutosPage.js", fecha=("}",), fonte=26, criar=[['Dentro de pages, cria o ProdutosPage ponto js.', 'ProdutosPage.js']])),
+    ("E a ação de ordenar: recebe a opção, e escolhe ela na caixa, com o select option que você já conhece.",
+     dig(PP, L_ORD, L_ORD + 2, "ordenarPor(opcao)", "ProdutosPage.js", mostra=(L_ORD - 1, L_ORD + 2), fecha=("}",), fonte=28)),
+    ("E uma ação que lê os preços da tela. Primeiro, all text contents: pegue o texto de todos os preços, numa lista. E depois, transforma cada texto em número.",
+     dig(PP, L_LER - 1, L_LER + 5, "lerPrecos(): da tela pra número", "ProdutosPage.js", mostra=(L_LER - 2, L_LER + 5), fecha=("}",), fonte=24)),
     ("Só que eles vêm como texto: R$ doze, vírgula, cinquenta. E pra comparar, a gente precisa de número. Então, pra cada texto: tira o R$, tira o ponto do milhar, troca a vírgula por ponto, e transforma em número.",
      trl("DE TEXTO PRA NÚMERO", [["\"R$ 1.234,56\"", "o texto da tela"], [".replace('R$', '')", "tira o R$"], [".replace(/\\./g, '')", "tira o ponto do milhar"], [".replace(',', '.')", "vírgula vira ponto"], ["Number(...)", "1234.56: um número"]])),
     ("Por que a vírgula vira ponto? Porque o JavaScript escreve número do jeito americano: sete ponto noventa e nove. Com vírgula, ele não entende.",
      cmp("O MESMO PREÇO", ["\"7,99\"", "TEXTO: NÃO DÁ PRA COMPARAR"], ["7.99", "NÚMERO: DÁ PRA ORDENAR"])),
+    ("Pros nomes é mais simples, porque nome já é texto: o lerNomes só pega o texto de todos os nomes.",
+     dig(PP, L_NOM, L_NOM + 2, "lerNomes(): o texto de todos os nomes", "ProdutosPage.js", mostra=(L_NOM - 1, L_NOM + 2), fecha=("}",), fonte=28)),
     ("E o produto, que acha o card de um produto pelo nome, com o filter has text da aula sessenta e três.",
-     parte(PP, L_PROD, L_PROD + 2, "produto(nome): o card pelo nome", "ProdutosPage.js", destaque=[L_PROD, L_PROD + 1], destaque_em=0.8, fonte=30)),
-    ("E a fixture que entrega os dois prontos pros testes. Igual à do módulo treze.",
-     ed(FX, "A fixture: as duas páginas prontas", "paginas.js", fonte=24, criar=[['Dentro da pasta fixtures, cria o paginas ponto js.', 'paginas.js']])),
+     dig(PP, L_PROD, L_PROD + 2, "produto(nome): o card pelo nome", "ProdutosPage.js", mostra=(L_PROD - 1, L_PROD + 3), fonte=28)),
+    ("E a fixture, igual à do módulo treze: o test do Playwright estendido com o loginPage e o produtosPage, e o expect exportado junto.",
+     ed(FX, "A fixture: as duas páginas prontas", "paginas.js", de=1, ate=len(FX.split("\n")), fonte=24, criar=[['Dentro da pasta fixtures, cria o paginas ponto js.', 'paginas.js']])),
     ("Repara como foi mais rápido da segunda vez. Não porque a gente pulou explicação: porque agora você conhece a receita, e só aplica.",
      bt(("MAIS RÁPIDO", "white", 120), ("PORQUE VOCÊ CONHECE A RECEITA", "gold", 90))),
 ] + fim("automatizando os cenários"))
@@ -214,27 +239,41 @@ aula(78, "Page Objects e fixture", [
 # ---------- 79 · automatizando ----------
 LS = ler("tests/login.spec.js"); LJ = ler("dados/login.json"); PS = ler("tests/produtos.spec.js"); OJ = ler("dados/ordenacao.json")
 L_SORT = ln(PS, ".sort("); L_FOR = ln(PS, "for (const o"); L_REV = ln(PS, "reverse()"); L_EQ = ln(PS, "toEqual"); L_DIS = ln(PS, "toBeDisabled"); L_TAG = ln(PS, "@smoke")
+L_SMK = ln(LS, "const smoke"); L_FORL = ln(LS, "for (const caso"); L_ESG = ln(PS, "test('produto esgotado")
+LJ1 = obj_json(LJ, 1); OJ1 = obj_json(OJ, 1)
 aula(79, "Agora sim, automatizando os cenários", [
-    ("A lista de cenários vira teste. Começando pelo login: os quatro casos de erro moram no login ponto json, cada um com o usuário, a senha, e a mensagem esperada.",
-     ed(LJ, "dados/login.json: os casos de erro", "login.json", pastas=None, fonte=26, rolar=True, rolar_de=3.0, rolar_dur=3.5, criar=[['Dentro da pasta dados, cria o login ponto json.', 'login.json']])),
-    ("E o teste: o login válido, com a etiqueta smoke. E um for pelos casos do JSON, conferindo a mensagem de cada um.",
-     parte(LS, ln(LS, "const smoke"), len(LS.split("\n")) - 1, "login.spec.js: o válido e os casos do JSON", "login.spec.js", destaque=[ln(LS, "const smoke"), ln(LS, "for (const caso"), ln(LS, "caso.mensagem")], destaque_em=1.0, criar=[['Dentro de tests, cria o login ponto spec ponto js.', 'login.spec.js']])),
-    ("A ordenação: os quatro sentidos no ordenacao ponto json. Qual opção escolher, o nome do cenário, o campo, e o sentido.",
-     ed(OJ, "dados/ordenacao.json: os 4 sentidos", "ordenacao.json", pastas=None, fonte=26, rolar=True, rolar_de=3.0, rolar_dur=3.0, criar=[['Dentro de dados, cria o ordenacao ponto json.', 'ordenacao.json']])),
-    ("No teste, um for pelos quatro. Escolhe a opção, e lê da tela os preços ou os nomes.",
-     parte(PS, L_FOR, L_FOR + 12, "Um teste pra cada sentido", "produtos.spec.js", destaque=[L_FOR, ln(PS, "ordenarPor"), ln(PS, "const naTela")], destaque_em=1.0, criar=[['Dentro de tests, cria o produtos ponto spec ponto js.', 'produtos.spec.js']])),
+    ("A lista de cenários vira teste. Começando pelo login: os casos de erro moram no login ponto json. Cada caso tem o nome do cenário, o usuário, a senha, e a mensagem esperada. O primeiro: senha errada.",
+     dig(LJ, 1, LJ1[1], "dados/login.json: o primeiro caso", "login.json", fecha=("]",), fonte=26, criar=[['Dentro da pasta dados, cria o login ponto json.', 'login.json']])),
+    ("E os outros três, no mesmo formato: usuário bloqueado, usuário vazio e senha vazia.",
+     dig(LJ, LJ1[1] + 1, len(LJ.split("\n")), "Os outros 3 casos", "login.json", mostra=(LJ1[1] + 1, len(LJ.split("\n"))), fonte=18)),
+    ("Agora o teste. O começo: o import das fixtures, o import dos casos do JSON, um describe chamado Login, e o before each, que abre a loja com o abrir do LoginPage.",
+     dig(LS, 1, ln(LS, "loginPage.abrir") + 1, "O começo: imports, describe e beforeEach", "login.spec.js", fecha=("});",), fonte=24, criar=[['Dentro de tests, cria o login ponto spec ponto js.', 'login.spec.js']])),
+    ("O login válido, com a etiqueta smoke guardada numa constante: entra com o usuário do ponto env, e confere o endereço e o título da página.",
+     dig(LS, L_SMK, L_SMK + 5, "O login válido, com @smoke", "login.spec.js", mostra=(L_SMK - 1, L_SMK + 5), fecha=("});",), fonte=22)),
+    ("E um for pelos casos do JSON: um teste pra cada caso, com o nome do cenário. Entra com o usuário e a senha do caso, e confere a mensagem do caso.",
+     dig(LS, L_FORL, L_FORL + 5, "Um teste pra cada caso do JSON", "login.spec.js", mostra=(L_FORL - 1, L_FORL + 6), fonte=22)),
+    ("A ordenação: os quatro sentidos no ordenacao ponto json. Cada um tem a opção da caixa, o nome do cenário, o campo, preço ou nome, e o sentido.",
+     dig(OJ, 1, OJ1[1], "dados/ordenacao.json: o primeiro sentido", "ordenacao.json", fecha=("]",), fonte=26, criar=[['Dentro de dados, cria o ordenacao ponto json.', 'ordenacao.json']])),
+    ("E os outros três: de Z a A, preço do menor pro maior, e do maior pro menor.",
+     dig(OJ, OJ1[1] + 1, len(OJ.split("\n")), "Os outros 3 sentidos", "ordenacao.json", mostra=(OJ1[1] + 1, len(OJ.split("\n"))), fonte=18)),
+    ("No produtos ponto spec, o começo: os imports, o describe Produtos, e um before each que abre a loja, entra, e espera os produtos aparecerem.",
+     dig(PS, 1, L_FOR - 2, "O começo: entra e espera os produtos", "produtos.spec.js", fecha=("});",), fonte=22, criar=[['Dentro de tests, cria o produtos ponto spec ponto js.', 'produtos.spec.js']])),
+    ("Agora um for pelos quatro sentidos. A primeira linha dentro dele é a etiqueta: só o teste do menor preço ganha o smoke. É o interrogação de novo: se a opção for menor, a etiqueta smoke. Senão, nenhuma. E o teste, com o nome do sentido.",
+     dig(PS, L_FOR, L_FOR + 2, "Só o do menor preço é smoke", "produtos.spec.js", mostra=(L_FOR - 1, L_FOR + 2), fecha=("    });", "  }"), fonte=22)),
+    ("Dentro do teste: escolhe a opção na caixa, e lê da tela os preços ou os nomes, dependendo do campo.",
+     dig(PS, L_FOR + 3, L_FOR + 6, "Ordena e lê da tela", "produtos.spec.js", mostra=(L_FOR, L_FOR + 6), fecha=("    });", "  }"), fonte=22)),
     ("E agora, a parte mais importante: como conferir que está em ordem? A gente pega a lista da tela, faz uma cópia, e ordena a cópia do jeito certo. Se a tela estiver certa, as duas ficam iguais.",
      cards([["👀", "A lista da tela", "do jeito que a loja mostrou"], ["⧉", "Uma cópia", "ordenada do jeito certo", AZUL], ["=", "Compara as duas", "iguais: passou", VERDE]], "CONFERINDO A ORDEM")),
+    ("Escreve a cópia ordenada: const esperado, igual, a cópia da lista da tela, ordenada.",
+     dig(PS, L_SORT, L_SORT + 1, "A cópia ordenada", "produtos.spec.js", mostra=(L_FOR + 2, L_SORT + 1), fecha=("    });", "  }"), fonte=22)),
     ("Traduzindo: os três pontinhos entre colchetes, faça uma cópia. Sort, ordene. A menos b, do menor pro maior, como número. E locale compare, em ordem alfabética, pros nomes.",
      tr("const esperado = [...naTela].sort((a, b) => a - b);", [["[...naTela]", "uma cópia da lista"], [".sort(", "ordene"], ["(a, b) => a - b", "do menor pro maior"]], 2.0)),
     ("Se o sentido é decrescente, reverse: inverta a lista. E o to equal compara as duas listas inteiras, item por item.",
-     parte(PS, L_FOR, L_FOR + 12, "reverse e toEqual: a lista inteira", "produtos.spec.js", destaque=[L_REV, L_EQ], destaque_em=0.8)),
+     dig(PS, L_REV, L_EQ, "reverse e toEqual: a lista inteira", "produtos.spec.js", mostra=(L_FOR + 2, L_EQ + 2), fonte=22)),
     ("Repara na diferença pro desafio quatro: lá, a gente conferia só o primeiro preço. Aqui, a lista inteira. E é isso que pega o bug da versão um, que tinha o primeiro errado e o resto embaralhado.",
      cmp("CONFERIR O QUÊ?", ["SÓ O PRIMEIRO", "PODE DEIXAR PASSAR"], ["A LISTA INTEIRA", "PEGA O BUG"])),
-    ("E a etiqueta: só o teste do menor preço ganha o smoke. É o interrogação de novo: se a opção for menor, a etiqueta smoke. Senão, nenhuma.",
-     parte(PS, L_FOR, L_FOR + 3, "Só o do menor preço é smoke", "produtos.spec.js", destaque=[L_TAG], destaque_em=0.8)),
-    ("E o esgotado, do jeito que a pessoa respondeu: ele aparece, com a etiqueta de esgotado, e o botão de adicionar desabilitado. To be disabled: esteja desabilitado.",
-     parte(PS, L_DIS - 3, L_DIS + 1, "toBeDisabled: aparece, mas não dá pra comprar", "produtos.spec.js", destaque=[L_DIS - 1, L_DIS], destaque_em=0.8)),
+    ("E o esgotado, do jeito que a pessoa respondeu: acha o card da camiseta pelo nome, e confere que ele aparece, com a etiqueta de esgotado, e o botão de adicionar desabilitado. To be disabled: esteja desabilitado.",
+     dig(PS, L_ESG, L_DIS + 1, "toBeDisabled: aparece, mas não dá pra comprar", "produtos.spec.js", mostra=(L_ESG - 1, L_DIS + 2), fonte=22)),
     ("Roda tudo na versão dois: dez testes, todos passando.",
      term(["npx playwright test --project=chromium --reporter=list", ("Running 10 tests using 1 worker", "mut"),
            ("  ✓   1 › Login › entra com usuário válido @smoke (590ms)", "ac"), ("  ✓   2 › Login › mostra erro: senha errada (362ms)", "ac"),

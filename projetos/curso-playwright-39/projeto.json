@@ -284,7 +284,7 @@
        "scene": {
         "type": "editor",
         "arquivo": "login.spec.js",
-        "codigo": "  test('entra com usuário e senha', async ({ page }) => {\n    const login = new LoginPage(page);\n    await login.entrar(process.env.SAUCE_USER, process.env.SAUCE_PASSWORD);\n    await expect(page).toHaveURL(/inventory/);\n    await expect(page.getByText('Products')).toBeVisible();\n    await expect(page.getByText('Sauce Labs Backpack')).toContainText('Backpack');\n    await expect(page.getByRole('button', { name: 'Add to cart' })).toHaveCount(6);\n  });",
+        "codigo": "  test('entra com usuário e senha', async ({ page }) => {\n    const login = new LoginPage(page);\n    await expect(page).toHaveURL(/inventory/);\n    await expect(page.getByText('Products')).toBeVisible();\n    await expect(page.getByText('Sauce Labs Backpack')).toContainText('Backpack');\n    await expect(page.getByRole('button', { name: 'Add to cart' })).toHaveCount(6);\n  });",
         "legenda": "new = crie um novo",
         "fonte": 22,
         "digitar": true,

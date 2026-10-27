@@ -85,9 +85,13 @@ def aula(n, titulo_aula, frases, pausas):
     AULAS.append((slug, p))
 
 
+JJ = "\n".join
+
+
 def preencher():
     # ---------- Aula 49 ----------
     C = cod(49); ed, ab = solucao(C, "test('desafio 1", "fill, fill, click e o expect")
+    CAB49 = ln(C, "test('desafio 1") - 2  # import, describe e beforeEach (até a linha em branco antes do teste)
     aula(49, "Desafio 1 - senha errada", [
         ("Primeiro desafio: o que acontece quando alguém erra a senha?", titulo(49, "DESAFIO 1")),
         ("Isso se chama cenário negativo: testar o que acontece quando a pessoa erra. No trabalho, é onde mais aparece bug, porque quase ninguém lembra de testar.",
@@ -96,7 +100,10 @@ def preencher():
          desafio("1", "Senha errada", [["👤", "usuário certo: standard_user"], ["🔑", "senha errada (qualquer uma)", VERM], ["✓", "confere a mensagem de erro", AMARELO]])),
         ("Dica: a mensagem fica no data-test error, e contém do not match.",
          video("dica49", "data-test=\"error\" · contém do not match", [{"fill": ["#user-name", "standard_user"]}, {"fill": ["#password", "senha_errada"]}, {"click": "#login-button"}])),
-        ("Solução: preenche, preenche, clica, e expect error to contain text do not match.", dict(ed, criar_arvore=ARV_D, criar=[["Os desafios vão num arquivo só deles. Dentro da pasta tests, cria o desafios ponto spec ponto js.", "desafios.spec.js"]])),
+        ("O começo de sempre: o import, um describe chamado Desafios, e o before each que abre o site.",
+         edc(JJ(C.split("\n")[:CAB49] + ["});"]), "O começo: import, describe e beforeEach", arquivo="desafios.spec.js", pastas=ARV_D, digitar=True, digitar_de=1, digitar_ate=CAB49, fonte=26,
+             criar=[["Os desafios vão num arquivo só deles. Dentro da pasta tests, cria o desafios ponto spec ponto js.", "desafios.spec.js"]])),
+        ("Solução: preenche, preenche, clica, e expect error to contain text do not match.", ed),
         ("Contém o texto: não precisa ser a mensagem inteira.",
          {"type": "traducao", "codigo": "toContainText('do not match')", "partes": [["toContainText", "contém o texto"], ["('do not match')", "só um pedaço da mensagem"]], "passo": 1.2}),
         ("Roda e olha: o erro aparece e o teste passa.",
@@ -120,6 +127,7 @@ def preencher():
 
     # ---------- Aula 51 ----------
     C = cod(51); ed, ab = solucao(C, "test('desafio 3", "toHaveCount(0)")
+    L_LOG51 = ln(C, "test.describe('logado'"); L_BE51 = ln(C, "inventory.html")
     ADD = {"click": "[data-test=\"add-to-cart-sauce-labs-backpack\"]", "espera": 1400}
     REM = {"click": "[data-test=\"remove-sauce-labs-backpack\"]", "espera": 1400}
     aula(51, "Desafio 3 - remover do carrinho", [
@@ -129,6 +137,8 @@ def preencher():
         ("Pausa e tenta.", desafio("3", "Remover do carrinho", [["＋", "adiciona a mochila"], ["−", "remove de novo", AZUL], ["✓", "o carrinho fica vazio", AMARELO]])),
         ("Dica: depois de adicionar, o botão vira Remove, com data-test remove-sauce-labs-backpack. E quando o carrinho fica vazio, o numerozinho some da página.",
          video("dica51", "Add to cart vira Remove · o numerozinho some", [ADD, REM], logado=True)),
+        ("Os desafios daqui pra frente começam logados. Lembra do login salvo da aula quarenta e dois? Dentro do describe, uma caixa nova chamada logado. Nela, o test ponto use com o storage state, e um before each que abre direto a página de produtos.",
+         edc(JJ(C.split("\n")[L_LOG51 - 2:L_BE51 + 2] + ["  });", "});"]), "describe('logado') + test.use", arquivo="desafios.spec.js", pastas=ARV_D, linha0=L_LOG51 - 1, digitar=True, digitar_de=2, digitar_ate=L_BE51 + 2 - L_LOG51 + 1, fonte=24)),
         ("Solução: pra conferir que ele saiu da página, to have count zero:", ed),
         ("eu espero que o seletor encontre zero elementos.",
          {"type": "traducao", "codigo": "expect(...).toHaveCount(0);", "partes": [["expect", "eu espero que"], ["toHaveCount(0)", "encontre zero elementos"]], "passo": 1.0}),
