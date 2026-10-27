@@ -152,7 +152,37 @@
        }
       },
       {
-       "text": "E a conferência é outra. Em vez de conferir que entrou, a gente confere que apareceu a mensagem de erro, que tem as palavras locked out.",
+       "text": "E o que esse teste confere? Olha o que aparece na tela quando o usuário bloqueado tenta entrar: uma mensagem vermelha. Sorry, this user has been locked out. Quer dizer: desculpe, esse usuário foi bloqueado.",
+       "scene": {
+        "type": "tela",
+        "media": "site_sauce_locked_msg",
+        "url": "https://www.saucedemo.com/",
+        "titulo": "saucedemo.com",
+        "acoes": [
+         {
+          "fill": [
+           "#user-name",
+           "locked_out_user"
+          ]
+         },
+         {
+          "fill": [
+           "#password",
+           "secret_sauce"
+          ]
+         },
+         {
+          "click": "#login-button"
+         }
+        ],
+        "alvo": "locked out",
+        "zoom_em": 1.6,
+        "caixa_em": 2.2,
+        "legenda": "A mensagem: this user has been locked out"
+       }
+      },
+      {
+       "text": "Então a conferência é: essa mensagem apareceu. E não precisa copiar a frase inteira: o pedaço locked out, bloqueado, já mostra que é a mensagem certa.",
        "scene": {
         "type": "editor",
         "arquivo": "login.spec.js",
@@ -168,7 +198,7 @@
        }
       },
       {
-       "text": "Traduzindo: eu espero que o texto locked out esteja aparecendo na tela.",
+       "text": "Traduzindo: eu espero que o texto locked out esteja aparecendo na tela. Se aparecer, o site barrou o usuário bloqueado, do jeito certo, e o teste passa.",
        "scene": {
         "type": "traducao",
         "codigo": "await expect(page.getByText('locked out')).toBeVisible();",
@@ -190,7 +220,27 @@
        }
       },
       {
-       "text": "Agora você tem dois testes do mesmo assunto: login. Pra organizar, existe o describe. Describe é descrever: ele junta testes do mesmo assunto numa caixa com nome.",
+       "text": "Agora você tem dois testes, e os dois são sobre login. Daqui a pouco, esse arquivo vai ter muito mais. Então, antes de continuar, a gente organiza em dois passos.",
+       "scene": {
+        "type": "cards",
+        "titulo": "ORGANIZANDO EM 2 PASSOS",
+        "itens": [
+         [
+          "1",
+          "describe",
+          "junta os testes de login numa caixa"
+         ],
+         [
+          "2",
+          "before each",
+          "o que se repete antes de cada teste da caixa",
+          "#69a7ff"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "O primeiro é o describe. Describe é descrever: ele junta testes do mesmo assunto numa caixa com nome. E pra que a caixa? No relatório, os testes aparecem juntos, por assunto. E o que você colocar dentro dela, como o before each daqui a pouco, vale pros testes da caixa.",
        "scene": {
         "type": "traducao",
         "codigo": "test.describe('Login', () => {",
@@ -262,7 +312,7 @@
        }
       },
       {
-       "text": "Quando alguma coisa se repete antes de todo teste, existe o before each. Before each: antes de cada.",
+       "text": "E esse é o segundo passo: quando alguma coisa se repete antes de todo teste da caixa, existe o before each. Before each: antes de cada.",
        "scene": {
         "type": "traducao",
         "codigo": "test.beforeEach(async ({ page }) => {",
@@ -327,7 +377,7 @@
        }
       },
       {
-       "text": "E do segundo também.",
+       "text": "E agora a mesma coisa no segundo teste: apaga a linha do goto dele também. Pronto: os dois testes começam direto no login, e quem abre o site é o before each.",
        "scene": {
         "type": "editor",
         "arquivo": "login.spec.js",
@@ -339,7 +389,7 @@
         "apagar": [
          2
         ],
-        "apagar_em": 1.0
+        "apagar_em": 3.2
        }
       },
       {
