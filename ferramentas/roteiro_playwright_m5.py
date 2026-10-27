@@ -110,8 +110,8 @@ AULAS.append(projeto(22, "MÓDULO 5 · AULA 22", "describe e beforeEach", [
     ("Agora o goto dos testes não precisa mais: o before each já abre o site antes de cada um. Então apaga a linha do goto do primeiro teste.",
      edc("\n".join(LT[:L_GOTOS_T[1] - 3]), "Apaga o goto do primeiro teste", apagar=[L_GOTOS_T[0]], apagar_em=2.6, destaque=[5], destaque_em=0.6, fonte=20)),
     ("E agora a mesma coisa no segundo teste: apaga a linha do goto dele também. Pronto: os dois testes começam direto no login, e quem abre o site é o before each.",
-     edc("\n".join(l for i, l in enumerate(LT) if i + 1 != L_GOTOS_T[0])[0:0] + "\n".join([l for i, l in enumerate(LT) if i + 1 != L_GOTOS_T[0]][L_GOTOS_T[1] - 4:]), "E do segundo também",
-         linha0=L_GOTOS_T[1] - 3, apagar=[2], apagar_em=3.2, fonte=26)),
+     edc("\n".join(l for i, l in enumerate(LT) if i + 1 != L_GOTOS_T[0])[0:0] + "\n".join([l for i, l in enumerate(LT) if i + 1 != L_GOTOS_T[0]][L_GOTOS_T[1] - 4:]), "Apaga o goto do segundo teste",
+         linha0=L_GOTOS_T[1] - 3, apagar=[3], apagar_em=3.2, fonte=26)),
     ("O before each roda antes de cada teste: antes do teste um, abre o site. Antes do teste dois, abre de novo. Assim, cada teste começa do zero, sem depender do outro.",
      {"type": "cards", "titulo": "ANTES DE CADA", "itens": [["1", "Antes do teste 1", "abre o site"], ["2", "Antes do teste 2", "abre de novo", "#69a7ff"], ["✓", "Cada teste", "começa do zero", "#3fd68a"]]}),
     ("E por que o login não foi pro before each também? Porque o segundo teste entra com outro usuário. No before each só vai o que é igual em todos os testes.",
@@ -135,6 +135,11 @@ def trocas(antigo, novo, de, ate, em=None):
     if em is not None and r:
         r[0] += [None, em]
     return r
+
+for _s in AULAS[-1][1]["script"]["long"]["parts"][0]["sentences"]:  # trava: toda linha apagada na aula 22 tem que ser um goto ou o teste lento
+    _c = _s["scene"]
+    if _c.get("apagar") and "goto" in _c.get("legenda", ""):
+        assert all("page.goto" in _c["codigo"].split("\n")[i - 1] for i in _c["apagar"]), _c["legenda"]
 
 # ---------- Aula 23 ----------
 USE0 = 26  # o trecho do config que aparece: linhas 26 a 34 (reporter, use e o fim do use)

@@ -382,12 +382,12 @@
         "type": "editor",
         "arquivo": "login.spec.js",
         "codigo": "\n  test('mostra erro para usuário bloqueado', async ({ page }) => {\n    await page.goto('https://www.saucedemo.com/');\n    await page.getByPlaceholder('Username').fill('locked_out_user');\n    await page.getByPlaceholder('Password').fill('secret_sauce');\n    await page.getByRole('button', { name: 'Login' }).click();\n    await expect(page.getByText('locked out')).toBeVisible();\n  });\n});",
-        "legenda": "E do segundo também",
+        "legenda": "Apaga o goto do segundo teste",
         "fonte": 26,
         "digitar": false,
         "linha0": 17,
         "apagar": [
-         2
+         3
         ],
         "apagar_em": 3.2
        }
