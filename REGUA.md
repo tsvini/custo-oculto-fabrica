@@ -24,3 +24,9 @@ Os segundos extras servem para 1–2 microviradas reais da história, nunca para
 
 ## Produto (validado pelos números de 20/10/2026)
 História empresarial surpreendente, explicada em ~60–70 s, com marcas que o público já conhece. Garoto/Nestlé (vídeo único) > séries em partes.
+
+## Fechamento padrão (decisão do Vinícius, 27/10)
+- Todo vídeo termina com: "[confident] Quer continuar a saga de O Custo de Ser Gigante? Segue o Custo Oculto. [anticipation] O próximo episódio vem aí."
+- Áudio pronto na voz dele: motor/sons/fechamento_saga.mp3 (eleven_v3, ~7,7 s; tempos das palavras em legendas/fechamento_saga.json). Entra ~0,5 s depois da última frase, 5 dB abaixo do arquivo original.
+- Tela final: fundo desfocado e escurecido, "SÉRIE / O CUSTO DE SER GIGANTE" em dourado, legenda karaokê e o selo "PRÓXIMO EPISÓDIO EM BREVE".
+- Logo "Custo Oculto": o Vinícius coloca no CapCut, não colocar logo em texto.
