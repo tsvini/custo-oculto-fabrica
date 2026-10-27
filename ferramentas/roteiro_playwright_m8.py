@@ -183,6 +183,42 @@ AULAS.append(projeto(38, "MÓDULO 8 · AULA 38", "Criando o LoginPage, passo a p
 L_ENTRAR = ln(LP, "async entrar"); L_FILLU = ln(LP, "this.usuario.fill")
 C39 = cod(39)
 L_IMP = ln(C39, "import { LoginPage }"); L_NEW = ln(C39, "new LoginPage"); L_ENT = ln(C39, "login.entrar")
+# a aula 39 transforma o login.spec.js da aula 24 no da 39, mostrando cada linha que sai e cada uma que entra
+JJ = "\n".join
+C39L = C39.split("\n"); C24L = cod(24).split("\n")
+LOG39 = ["fill(process.env.SAUCE_USER)", "'password').fill(process.env.SAUCE_PASSWORD)", "'login-button').click()"]
+EXP39 = ["getByText('Products')", "Sauce Labs Backpack", "toHaveCount(6)"]
+LOG39B = ["fill('locked_out_user')", "'password').fill(process.env.SAUCE_PASSWORD)", "'login-button').click()", "getByText('locked out')"]
+
+
+def T39(L, k):
+    """linha do k-ésimo test( no arquivo"""
+    return [i + 1 for i, l in enumerate(L) if l.strip().startswith("test('")][k - 1]
+
+
+def trecho39(L, k):
+    a = T39(L, k); b = a
+    while L[b - 1] != "  });":
+        b += 1
+    return JJ(L[a - 1:b])
+
+
+def REL39(L, k, trechos):
+    """posições (no trecho do k-ésimo teste) das linhas que têm cada pedaço"""
+    t = trecho39(L, k).split("\n")
+    return [[i + 1 for i, l in enumerate(t) if x in l][0] for x in trechos]
+
+
+def troca39(L, k, sai, entra):
+    a = T39(L, k); idx = [a - 1 + r - 1 for r in REL39(L, k, sai)]
+    return L[:idx[0]] + entra + L[idx[-1] + 1:]
+
+
+S39_0 = C24L[:1] + [C39L[1]] + C24L[1:]
+S39_1 = troca39(S39_0, 1, LOG39, [l for l in C39L if "new LoginPage" in l][:1] + [l for l in C39L if "login.entrar(process.env.SAUCE_USER" in l])
+S39_2 = troca39(S39_1, 1, EXP39, [l for l in C39L if "getByTestId('title')" in l])
+S39_3 = troca39(S39_2, 2, LOG39B, C39L[T39(C39L, 2):T39(C39L, 2) + 3])
+assert S39_3 == C39L, "a sequência da aula tem que terminar igual à etapa 39 validada"
 AULAS.append(projeto(39, "MÓDULO 8 · AULA 39", "Usando o LoginPage no teste", [
     ("Hoje o LoginPage aprende uma ação: entrar.", titulo(39, "LOGIN.ENTRAR")),
     ("Embaixo do constructor: async entrar, abre parênteses, usuario, vírgula, senha. Uma ação que recebe o usuário e a senha.",
@@ -192,14 +228,24 @@ AULAS.append(projeto(39, "MÓDULO 8 · AULA 39", "Usando o LoginPage no teste", 
     ("Dentro: await this ponto usuario ponto fill usuario. Preencha o campo usuário deste LoginPage com o usuário que chegou.",
      edc(parcial(LP, L_FILLU, ("  }", "}")), "Preencha o usuário deste LoginPage", arquivo="LoginPage.js", pastas=ARV_P, digitar=True, digitar_de=L_FILLU, digitar_ate=L_FILLU, fonte=26)),
     ("Depois a senha, e o clique no botão.", edc(LP, "A senha e o clique", arquivo="LoginPage.js", pastas=ARV_P, digitar=True, digitar_de=L_FILLU + 1, digitar_ate=L_FILLU + 2, fonte=22)),
-    ("Agora no teste. Primeira coisa: import LoginPage from ponto ponto barra pages barra LoginPage. Traga o molde lá da pasta pages.",
-     edc(C39, "../ = volte uma pasta", pastas=ARV_P, digitar=True, digitar_de=L_IMP, digitar_ate=L_IMP, fonte=22, rolar_depois=True)),
+    ("Agora no teste, o login ponto spec. Primeira coisa: import LoginPage from ponto ponto barra pages barra LoginPage. Traga o molde lá da pasta pages.",
+     edc(JJ(S39_0[:6]), "../ = volte uma pasta", arquivo="login.spec.js", pastas=ARV_P, digitar=True, digitar_de=2, digitar_ate=2, fonte=24)),
     ("Traduzindo o caminho: ponto ponto barra quer dizer volte uma pasta. O teste está dentro de tests, então ele sai de lá e entra em pages, no arquivo LoginPage.",
      {"type": "traducao", "codigo": "import { LoginPage } from '../pages/LoginPage';", "partes": [["import { LoginPage }", "traga o LoginPage"], ["../", "volte uma pasta (sai de tests)"], ["pages/LoginPage", "entre em pages, no LoginPage"]], "passo": 2.2}),
-    ("Dentro do teste: const login igual new LoginPage, passando o page. New quer dizer: crie um novo, usando esse molde.",
-     edc(C39, "new = crie um novo", pastas=ARV_P, digitar=True, digitar_de=L_NEW, digitar_ate=L_NEW, fonte=22, rolar_depois=True)),
-    ("E as três linhas do login viram uma: await login ponto entrar, com usuário e senha.",
-     edc(C39, "Três linhas viraram uma", pastas=ARV_P, digitar=True, digitar_de=L_ENT, digitar_ate=L_ENT, fonte=22, rolar_depois=True)),
+    ("No primeiro teste, as três linhas do login saem: o usuário, a senha e o clique. Apaga as três.",
+     edc(trecho39(S39_0, 1), "Apaga as 3 linhas do login", arquivo="login.spec.js", pastas=ARV_P, linha0=T39(S39_0, 1), apagar=REL39(S39_0, 1, LOG39), apagar_em=2.4, fonte=22)),
+    ("E no lugar, duas linhas. Primeiro: const login igual new LoginPage, passando o page. New quer dizer: crie um novo, usando esse molde.",
+     edc(trecho39(S39_1, 1), "new = crie um novo", arquivo="login.spec.js", pastas=ARV_P, linha0=T39(S39_1, 1), digitar=True, digitar_de=2, digitar_ate=2, fonte=22)),
+    ("E a segunda: await login ponto entrar, com o usuário e a senha. As três linhas viraram uma, porque o como fazer o login agora mora no LoginPage.",
+     edc(trecho39(S39_1, 1), "Três linhas viraram uma", arquivo="login.spec.js", pastas=ARV_P, linha0=T39(S39_1, 1), digitar=True, digitar_de=3, digitar_ate=3, fonte=22)),
+    ("E já que agora cada arquivo cuida de uma parte, as conferências de produtos saem do teste de login: apaga a do texto Products, a da mochila e a dos seis botões.",
+     edc(trecho39(S39_1, 1), "Saem as conferências de produtos", arquivo="login.spec.js", pastas=ARV_P, linha0=T39(S39_1, 1), apagar=REL39(S39_1, 1, EXP39), apagar_em=3.0, fonte=22)),
+    ("Fica a do endereço, e entra uma nova, mais firme: o título da página, pelo data-test title, tem o texto Products. É o mesmo data-test que vai pro ProdutosPage na próxima aula.",
+     edc(trecho39(S39_2, 1), "data-test title = o título da página", arquivo="login.spec.js", pastas=ARV_P, linha0=T39(S39_2, 1), digitar=True, digitar_de=REL39(S39_2, 1, ["getByTestId('title')"])[0], digitar_ate=REL39(S39_2, 1, ["getByTestId('title')"])[0], fonte=22)),
+    ("No segundo teste, a mesma troca. Apaga as três linhas do login e a conferência do texto locked out.",
+     edc(trecho39(S39_2, 2), "Segundo teste: apaga o login e a conferência", arquivo="login.spec.js", pastas=ARV_P, linha0=T39(S39_2, 2), apagar=REL39(S39_2, 2, LOG39B), apagar_em=2.6, fonte=22)),
+    ("E no lugar: cria o LoginPage, entra com o usuário bloqueado, e confere a mensagem usando o elemento erro, que já está guardado no LoginPage. Login ponto erro, to contain text, locked out.",
+     edc(trecho39(C39L, 2), "login.erro: o erro guardado no LoginPage", arquivo="login.spec.js", pastas=ARV_P, linha0=T39(C39L, 2), digitar=True, digitar_de=2, digitar_ate=4, fonte=22)),
     ("Lendo em português: crie um LoginPage e entre com esse usuário e essa senha.", bt(("CRIE UM LOGINPAGE", "white", 110), ("E ENTRE COM ESSE USUÁRIO", "gold", 110), ("E ESSA SENHA", "white", 90), entre=1.3)),
     ("Roda: continua passando.",
      rodando(C39, L_NEW - 1, L_NEW + 4, "Continua passando", LOGIN, "rec_login_po", saida=("  2 passed (2.6s)", "ac"), cmd="npx playwright test login.spec.js --headed --project=chromium", arquivo="login.spec.js", pastas=ARV_P)),

@@ -193,14 +193,10 @@
        }
       },
       {
-       "text": "Agora no teste. Primeira coisa: import LoginPage from ponto ponto barra pages barra LoginPage. Traga o molde lá da pasta pages.",
+       "text": "Agora no teste, o login ponto spec. Primeira coisa: import LoginPage from ponto ponto barra pages barra LoginPage. Traga o molde lá da pasta pages.",
        "scene": {
         "type": "editor",
         "arquivo": "login.spec.js",
-        "codigo": "import { test, expect } from '@playwright/test';\nimport { LoginPage } from '../pages/LoginPage';\n\ntest.describe('Login', () => {\n  test.beforeEach(async ({ page }) => {\n    await page.goto('/');\n  });\n\n  test('entra com usuário e senha', async ({ page }) => {\n    const login = new LoginPage(page);\n    await login.entrar(process.env.SAUCE_USER, process.env.SAUCE_PASSWORD);\n    await expect(page).toHaveURL(/inventory/);\n    await expect(page.getByTestId('title')).toHaveText('Products');\n  });\n\n  test('mostra erro para usuário bloqueado', async ({ page }) => {\n    const login = new LoginPage(page);\n    await login.entrar('locked_out_user', process.env.SAUCE_PASSWORD);\n    await expect(login.erro).toContainText('locked out');\n  });\n});",
-        "legenda": "../ = volte uma pasta",
-        "fonte": 22,
-        "digitar": true,
         "pastas": [
          "meu-primeiro-playwright",
          "  .github/",
@@ -218,9 +214,12 @@
          "  package.json",
          "  playwright.config.js"
         ],
+        "codigo": "import { test, expect } from '@playwright/test';\nimport { LoginPage } from '../pages/LoginPage';\n\ntest.describe('Login', () => {\n  test.beforeEach(async ({ page }) => {\n    await page.goto('/');",
+        "legenda": "../ = volte uma pasta",
+        "fonte": 24,
+        "digitar": true,
         "digitar_de": 2,
-        "digitar_ate": 2,
-        "rolar_depois": true
+        "digitar_ate": 2
        }
       },
       {
@@ -246,11 +245,46 @@
        }
       },
       {
-       "text": "Dentro do teste: const login igual new LoginPage, passando o page. New quer dizer: crie um novo, usando esse molde.",
+       "text": "No primeiro teste, as três linhas do login saem: o usuário, a senha e o clique. Apaga as três.",
        "scene": {
         "type": "editor",
         "arquivo": "login.spec.js",
-        "codigo": "import { test, expect } from '@playwright/test';\nimport { LoginPage } from '../pages/LoginPage';\n\ntest.describe('Login', () => {\n  test.beforeEach(async ({ page }) => {\n    await page.goto('/');\n  });\n\n  test('entra com usuário e senha', async ({ page }) => {\n    const login = new LoginPage(page);\n    await login.entrar(process.env.SAUCE_USER, process.env.SAUCE_PASSWORD);\n    await expect(page).toHaveURL(/inventory/);\n    await expect(page.getByTestId('title')).toHaveText('Products');\n  });\n\n  test('mostra erro para usuário bloqueado', async ({ page }) => {\n    const login = new LoginPage(page);\n    await login.entrar('locked_out_user', process.env.SAUCE_PASSWORD);\n    await expect(login.erro).toContainText('locked out');\n  });\n});",
+        "codigo": "  test('entra com usuário e senha', async ({ page }) => {\n    await page.getByTestId('username').fill(process.env.SAUCE_USER);\n    await page.getByTestId('password').fill(process.env.SAUCE_PASSWORD);\n    await page.getByTestId('login-button').click();\n    await expect(page).toHaveURL(/inventory/);\n    await expect(page.getByText('Products')).toBeVisible();\n    await expect(page.getByText('Sauce Labs Backpack')).toContainText('Backpack');\n    await expect(page.getByRole('button', { name: 'Add to cart' })).toHaveCount(6);\n  });",
+        "legenda": "Apaga as 3 linhas do login",
+        "fonte": 22,
+        "digitar": false,
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  pages/",
+         "    LoginPage.js",
+         "  tests/",
+         "    compra.spec.js",
+         "    login.spec.js",
+         "    usuarios.spec.js",
+         "  .env",
+         "  .env.example",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "linha0": 9,
+        "apagar": [
+         2,
+         3,
+         4
+        ],
+        "apagar_em": 2.4
+       }
+      },
+      {
+       "text": "E no lugar, duas linhas. Primeiro: const login igual new LoginPage, passando o page. New quer dizer: crie um novo, usando esse molde.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "login.spec.js",
+        "codigo": "  test('entra com usuário e senha', async ({ page }) => {\n    const login = new LoginPage(page);\n    await login.entrar(process.env.SAUCE_USER, process.env.SAUCE_PASSWORD);\n    await expect(page).toHaveURL(/inventory/);\n    await expect(page.getByText('Products')).toBeVisible();\n    await expect(page.getByText('Sauce Labs Backpack')).toContainText('Backpack');\n    await expect(page.getByRole('button', { name: 'Add to cart' })).toHaveCount(6);\n  });",
         "legenda": "new = crie um novo",
         "fonte": 22,
         "digitar": true,
@@ -271,17 +305,17 @@
          "  package.json",
          "  playwright.config.js"
         ],
-        "digitar_de": 10,
-        "digitar_ate": 10,
-        "rolar_depois": true
+        "linha0": 9,
+        "digitar_de": 2,
+        "digitar_ate": 2
        }
       },
       {
-       "text": "E as três linhas do login viram uma: await login ponto entrar, com usuário e senha.",
+       "text": "E a segunda: await login ponto entrar, com o usuário e a senha. As três linhas viraram uma, porque o como fazer o login agora mora no LoginPage.",
        "scene": {
         "type": "editor",
         "arquivo": "login.spec.js",
-        "codigo": "import { test, expect } from '@playwright/test';\nimport { LoginPage } from '../pages/LoginPage';\n\ntest.describe('Login', () => {\n  test.beforeEach(async ({ page }) => {\n    await page.goto('/');\n  });\n\n  test('entra com usuário e senha', async ({ page }) => {\n    const login = new LoginPage(page);\n    await login.entrar(process.env.SAUCE_USER, process.env.SAUCE_PASSWORD);\n    await expect(page).toHaveURL(/inventory/);\n    await expect(page.getByTestId('title')).toHaveText('Products');\n  });\n\n  test('mostra erro para usuário bloqueado', async ({ page }) => {\n    const login = new LoginPage(page);\n    await login.entrar('locked_out_user', process.env.SAUCE_PASSWORD);\n    await expect(login.erro).toContainText('locked out');\n  });\n});",
+        "codigo": "  test('entra com usuário e senha', async ({ page }) => {\n    const login = new LoginPage(page);\n    await login.entrar(process.env.SAUCE_USER, process.env.SAUCE_PASSWORD);\n    await expect(page).toHaveURL(/inventory/);\n    await expect(page.getByText('Products')).toBeVisible();\n    await expect(page.getByText('Sauce Labs Backpack')).toContainText('Backpack');\n    await expect(page.getByRole('button', { name: 'Add to cart' })).toHaveCount(6);\n  });",
         "legenda": "Três linhas viraram uma",
         "fonte": 22,
         "digitar": true,
@@ -302,9 +336,142 @@
          "  package.json",
          "  playwright.config.js"
         ],
-        "digitar_de": 11,
-        "digitar_ate": 11,
-        "rolar_depois": true
+        "linha0": 9,
+        "digitar_de": 3,
+        "digitar_ate": 3
+       }
+      },
+      {
+       "text": "E já que agora cada arquivo cuida de uma parte, as conferências de produtos saem do teste de login: apaga a do texto Products, a da mochila e a dos seis botões.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "login.spec.js",
+        "codigo": "  test('entra com usuário e senha', async ({ page }) => {\n    const login = new LoginPage(page);\n    await login.entrar(process.env.SAUCE_USER, process.env.SAUCE_PASSWORD);\n    await expect(page).toHaveURL(/inventory/);\n    await expect(page.getByText('Products')).toBeVisible();\n    await expect(page.getByText('Sauce Labs Backpack')).toContainText('Backpack');\n    await expect(page.getByRole('button', { name: 'Add to cart' })).toHaveCount(6);\n  });",
+        "legenda": "Saem as conferências de produtos",
+        "fonte": 22,
+        "digitar": false,
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  pages/",
+         "    LoginPage.js",
+         "  tests/",
+         "    compra.spec.js",
+         "    login.spec.js",
+         "    usuarios.spec.js",
+         "  .env",
+         "  .env.example",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "linha0": 9,
+        "apagar": [
+         5,
+         6,
+         7
+        ],
+        "apagar_em": 3.0
+       }
+      },
+      {
+       "text": "Fica a do endereço, e entra uma nova, mais firme: o título da página, pelo data-test title, tem o texto Products. É o mesmo data-test que vai pro ProdutosPage na próxima aula.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "login.spec.js",
+        "codigo": "  test('entra com usuário e senha', async ({ page }) => {\n    const login = new LoginPage(page);\n    await login.entrar(process.env.SAUCE_USER, process.env.SAUCE_PASSWORD);\n    await expect(page).toHaveURL(/inventory/);\n    await expect(page.getByTestId('title')).toHaveText('Products');\n  });",
+        "legenda": "data-test title = o título da página",
+        "fonte": 22,
+        "digitar": true,
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  pages/",
+         "    LoginPage.js",
+         "  tests/",
+         "    compra.spec.js",
+         "    login.spec.js",
+         "    usuarios.spec.js",
+         "  .env",
+         "  .env.example",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "linha0": 9,
+        "digitar_de": 5,
+        "digitar_ate": 5
+       }
+      },
+      {
+       "text": "No segundo teste, a mesma troca. Apaga as três linhas do login e a conferência do texto locked out.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "login.spec.js",
+        "codigo": "  test('mostra erro para usuário bloqueado', async ({ page }) => {\n    await page.getByTestId('username').fill('locked_out_user');\n    await page.getByTestId('password').fill(process.env.SAUCE_PASSWORD);\n    await page.getByTestId('login-button').click();\n    await expect(page.getByText('locked out')).toBeVisible();\n  });",
+        "legenda": "Segundo teste: apaga o login e a conferência",
+        "fonte": 22,
+        "digitar": false,
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  pages/",
+         "    LoginPage.js",
+         "  tests/",
+         "    compra.spec.js",
+         "    login.spec.js",
+         "    usuarios.spec.js",
+         "  .env",
+         "  .env.example",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "linha0": 16,
+        "apagar": [
+         2,
+         3,
+         4,
+         5
+        ],
+        "apagar_em": 2.6
+       }
+      },
+      {
+       "text": "E no lugar: cria o LoginPage, entra com o usuário bloqueado, e confere a mensagem usando o elemento erro, que já está guardado no LoginPage. Login ponto erro, to contain text, locked out.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "login.spec.js",
+        "codigo": "  test('mostra erro para usuário bloqueado', async ({ page }) => {\n    const login = new LoginPage(page);\n    await login.entrar('locked_out_user', process.env.SAUCE_PASSWORD);\n    await expect(login.erro).toContainText('locked out');\n  });",
+        "legenda": "login.erro: o erro guardado no LoginPage",
+        "fonte": 22,
+        "digitar": true,
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  pages/",
+         "    LoginPage.js",
+         "  tests/",
+         "    compra.spec.js",
+         "    login.spec.js",
+         "    usuarios.spec.js",
+         "  .env",
+         "  .env.example",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "linha0": 16,
+        "digitar_de": 2,
+        "digitar_ate": 4
        }
       },
       {
