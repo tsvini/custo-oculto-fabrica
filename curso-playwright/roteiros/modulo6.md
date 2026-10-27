@@ -2,7 +2,7 @@
 
 ## Aula 26: Lendo o erro
 1. O teste falhou. Calma: ler o erro fica muito mais fácil quando você sabe onde olhar. [bigtext]
-2. Vamos quebrar de propósito: na conferência da mochila, troca Backpack por Mochila. [editor]
+2. Vamos quebrar de propósito: na conferência da mochila, apaga a palavra Backpack, e escreve Mochila no lugar. [editor]
 3. Roda. Falhou. [editor]
 4. O erro aparece aqui mesmo, no terminal do VS Code, logo embaixo do comando. E ele vem sempre na mesma ordem. Vamos ler de cima pra baixo. [terminal]
 5. Primeiro, a linha que começa com o número um: qual teste falhou, em qual arquivo e em qual linha. Aqui: login ponto spec ponto js, linha oito, o teste entra com usuário e senha. [terminal]

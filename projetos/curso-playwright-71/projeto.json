@@ -72,7 +72,7 @@
        }
       },
       {
-       "text": "E a gente não quer mexer no código toda vez que muda de ambiente. Então o baseURL passa a ler uma variável.",
+       "text": "E a gente não quer mexer no código toda vez que muda de ambiente. Então, na linha do baseURL, antes do endereço, escreve process ponto env ponto BASE underline URL e dois risquinhos. O endereço continua lá, no fim da linha.",
        "scene": {
         "type": "editor",
         "arquivo": "playwright.config.js",
@@ -80,10 +80,16 @@
         "codigo": "  use: {\n    baseURL: process.env.BASE_URL || 'https://www.saucedemo.com',\n    testIdAttribute: 'data-test',",
         "legenda": "baseURL lê uma variável",
         "fonte": 22,
-        "digitar": true,
+        "digitar": false,
         "linha0": 14,
-        "digitar_de": 2,
-        "digitar_ate": 2
+        "trocar": [
+         [
+          2,
+          "    baseURL: 'https://www.saucedemo.com',",
+          null,
+          3.0
+         ]
+        ]
        }
       },
       {

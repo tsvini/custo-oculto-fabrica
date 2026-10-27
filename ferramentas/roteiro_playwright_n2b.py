@@ -327,8 +327,8 @@ YML71 = """    - name: Run Playwright tests
 aula(71, "O mesmo sistema, três ambientes", [
     ("No trabalho, o mesmo sistema existe em vários endereços: o de desenvolvimento, o de homologação, onde o time testa antes de lançar, e o de produção, o de verdade, que o cliente usa.",
      cards([["🛠", "Desenvolvimento", "dev.loja.com"], ["🧪", "Homologação", "homologacao.loja.com", AZUL], ["🌐", "Produção", "loja.com: o cliente usa", AMARELO]], "O MESMO SISTEMA, 3 ENDEREÇOS")),
-    ("E a gente não quer mexer no código toda vez que muda de ambiente. Então o baseURL passa a ler uma variável.",
-     ed(CFG71, "baseURL lê uma variável", "playwright.config.js", linha0=L_BASE - 1, de=2, pastas=None)),
+    ("E a gente não quer mexer no código toda vez que muda de ambiente. Então, na linha do baseURL, antes do endereço, escreve process ponto env ponto BASE underline URL e dois risquinhos. O endereço continua lá, no fim da linha.",
+     ed(CFG71, "baseURL lê uma variável", "playwright.config.js", linha0=L_BASE - 1, pastas=None, trocar=[[2, "    baseURL: 'https://www.saucedemo.com',", None, 3.0]])),
     ("Traduzindo: se existir a variável BASE URL, use ela. Os dois risquinhos querem dizer senão. Senão, use o saucedemo.",
      tr("baseURL: process.env.BASE_URL || 'https://www.saucedemo.com'", [["process.env.BASE_URL", "se existir a variável, use ela"], ["||", "senão"], ["'https://www.saucedemo.com'", "use este"]], 1.8)),
     ("Na sua máquina, você escolhe o ambiente na hora de rodar. No Windows, no terminal do VS Code, é assim. E no Mac e no Linux, assim.",

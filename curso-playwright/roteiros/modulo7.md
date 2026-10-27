@@ -32,7 +32,7 @@
 3. A solução é colocar o nome do usuário dentro do nome do teste. [bigtext]
 4. Até aqui, todo texto foi entre aspas. Com aspas, o texto é fixo: sai exatamente o que está escrito. Pra misturar texto com o valor de uma variável, existe a crase. [compare]
 5. No teclado brasileiro, a crase fica na tecla do acento agudo, com shift. Aperta, e depois a barra de espaço, pra ela aparecer. [cards]
-6. Então, troca as aspas do nome do teste por crase, e escreve: login funciona para, cifrão, abre chaves, usuario, fecha chaves. [editor]
+6. Então, apaga o nome do teste com as aspas, e escreve no lugar, com crase: login funciona para, cifrão, abre chaves, usuario, fecha chaves. [editor]
 7. Traduzindo: a crase abre um texto que aceita valores. E cifrão chaves abre um espaço dentro dele: coloque aqui o valor de usuario. [traducao]
 8. Em cada volta do for, o valor entra ali. Na primeira, login funciona para standard user. Na segunda, para problem user. E assim por diante. [traducao]
 9. Roda de novo: agora são quatro testes, cada um com o nome do seu usuário. [pw_relatorio]

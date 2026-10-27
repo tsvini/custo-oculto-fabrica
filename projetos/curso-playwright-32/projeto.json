@@ -179,19 +179,24 @@
        }
       },
       {
-       "text": "Então, troca as aspas do nome do teste por crase, e escreve: login funciona para, cifrão, abre chaves, usuario, fecha chaves.",
+       "text": "Então, apaga o nome do teste com as aspas, e escreve no lugar, com crase: login funciona para, cifrão, abre chaves, usuario, fecha chaves.",
        "scene": {
         "type": "editor",
         "arquivo": "usuarios.spec.js",
         "codigo": "for (const usuario of listaDeUsuarios) {\n  test(`login funciona para ${usuario}`, async ({ page }) => {\n    await page.goto('/');\n    await page.getByTestId('username').fill(usuario);\n    await page.getByTestId('password').fill(process.env.SAUCE_PASSWORD);\n    await page.getByTestId('login-button').click();\n    // o performance_glitch_user é lento: 10 segundos em vez de 5\n    await expect(page.getByTestId('title')).toHaveText('Products', { timeout: 10000 });\n  });\n}",
         "legenda": "Crase: texto + valor",
         "fonte": 24,
-        "digitar": true,
+        "digitar": false,
         "pastas": null,
         "linha0": 10,
-        "digitar_de": 2,
-        "digitar_ate": 2,
-        "vel": 0.7
+        "trocar": [
+         [
+          2,
+          "  test('login funciona', async ({ page }) => {",
+          null,
+          2.4
+         ]
+        ]
        }
       },
       {

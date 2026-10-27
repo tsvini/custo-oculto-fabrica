@@ -67,8 +67,8 @@ AULAS = []
 # ---------- Aula 26 ----------
 AULAS.append(projeto(26, "MÓDULO 6 · AULA 26", "Lendo o erro", [
     ("O teste falhou. Calma: ler o erro fica muito mais fácil quando você sabe onde olhar.", titulo(26, "LENDO O ERRO")),
-    ("Vamos quebrar de propósito: na conferência da mochila, troca Backpack por Mochila.",
-     edc(C26, "Backpack → Mochila (de propósito)", pastas=ARV_EX, digitar=True, digitar_de=L_MOCHILA, digitar_ate=L_MOCHILA, fonte=22, rolar_depois=True)),
+    ("Vamos quebrar de propósito: na conferência da mochila, apaga a palavra Backpack, e escreve Mochila no lugar.",
+     edc(C26, "Backpack → Mochila (de propósito)", pastas=ARV_EX, fonte=22, trocar=[[L_MOCHILA, C26.split("\n")[L_MOCHILA - 1].replace("'Mochila'", "'Backpack'"), None, 2.6]])),
     ("Roda. Falhou.", vs(C26, "Falhou", run(("Running 2 tests using 2 workers", "mut"), ("  1 failed", VERM), ("  1 passed (6.2s)", "ac")), pastas=ARV_EX)),
     ("O erro aparece aqui mesmo, no terminal do VS Code, logo embaixo do comando. E ele vem sempre na mesma ordem. Vamos ler de cima pra baixo.", erro_todo("O erro inteiro, embaixo do comando")),
     ("Primeiro, a linha que começa com o número um: qual teste falhou, em qual arquivo e em qual linha. Aqui: login ponto spec ponto js, linha oito, o teste entra com usuário e senha.",

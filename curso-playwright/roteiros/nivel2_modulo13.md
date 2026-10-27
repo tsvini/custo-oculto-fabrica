@@ -100,7 +100,7 @@
 
 ## Aula 71: O mesmo sistema, três ambientes
 1. No trabalho, o mesmo sistema existe em vários endereços: o de desenvolvimento, o de homologação, onde o time testa antes de lançar, e o de produção, o de verdade, que o cliente usa. [cards]
-2. E a gente não quer mexer no código toda vez que muda de ambiente. Então o baseURL passa a ler uma variável. [editor]
+2. E a gente não quer mexer no código toda vez que muda de ambiente. Então, na linha do baseURL, antes do endereço, escreve process ponto env ponto BASE underline URL e dois risquinhos. O endereço continua lá, no fim da linha. [editor]
 3. Traduzindo: se existir a variável BASE URL, use ela. Os dois risquinhos querem dizer senão. Senão, use o saucedemo. [traducao]
 4. Na sua máquina, você escolhe o ambiente na hora de rodar. No Windows, no terminal do VS Code, é assim. E no Mac e no Linux, assim. [traducao]
 5. Ou coloca no ponto env, igual o usuário e a senha. E no GitHub Actions, ela fica no yml. O teste continua exatamente igual. [editor]
