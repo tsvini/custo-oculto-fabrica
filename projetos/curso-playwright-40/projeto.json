@@ -214,7 +214,7 @@
        }
       },
       {
-       "text": "Passo três, os elementos. São os data-test que você já usou nas aulas trinta e cinco e trinta e seis: o título da página, title. O ícone do carrinho, shopping-cart-link. E o numerozinho, shopping-cart-badge.",
+       "text": "Passo três, os elementos. São data-test que você já conhece: o título da página, title, da aula trinta e nove. O ícone do carrinho, shopping-cart-link, e o numerozinho, shopping-cart-badge, das aulas trinta e cinco e trinta e seis. E os nomes da esquerda, título, ícone carrinho, contador carrinho, quem escolhe é você.",
        "scene": {
         "type": "editor",
         "arquivo": "ProdutosPage.js",
@@ -294,7 +294,7 @@
        }
       },
       {
-       "text": "A segunda ação: ir para o carrinho. Ela só clica no ícone do carrinho, que já está guardado lá em cima, no this ponto icone carrinho.",
+       "text": "A segunda ação: ir para o carrinho. Ela só clica no ícone do carrinho, que já está guardado lá em cima, no this ponto icone carrinho. E repara no nome: ir para carrinho, tudo junto, com cada palavra nova começando com maiúscula. É o jeito de dar nome a coisas no JavaScript, porque nome não pode ter espaço.",
        "scene": {
         "type": "editor",
         "arquivo": "ProdutosPage.js",
@@ -403,7 +403,203 @@
        }
       },
       {
-       "text": "Os elementos são os data-test que você viu na aula trinta e seis: o botão checkout, os três campos, nome, sobrenome e CEP, o botão continue, o botão finish, e o título final, o complete-header.",
+       "text": "Os elementos vêm das telas que você viu na aula trinta e seis. A primeira é a do carrinho, com o botão Checkout.",
+       "scene": {
+        "type": "tela",
+        "media": "site40_carrinho",
+        "url": "https://www.saucedemo.com/",
+        "acoes": [
+         {
+          "fill": [
+           "#user-name",
+           "standard_user"
+          ]
+         },
+         {
+          "fill": [
+           "#password",
+           "secret_sauce"
+          ]
+         },
+         {
+          "click": "#login-button"
+         },
+         {
+          "click": "[data-test=\"add-to-cart-sauce-labs-backpack\"]"
+         },
+         {
+          "click": "[data-test=\"shopping-cart-link\"]"
+         }
+        ],
+        "zoom_pagina": 1.3,
+        "titulo": "saucedemo.com",
+        "legenda": "A tela do carrinho: o botão Checkout"
+       }
+      },
+      {
+       "text": "Então o primeiro elemento: this ponto botão checkout, com o data-test checkout.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "CheckoutPage.js",
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  pages/",
+         "    CheckoutPage.js",
+         "    LoginPage.js",
+         "    ProdutosPage.js",
+         "  tests/",
+         "    compra.spec.js",
+         "    login.spec.js",
+         "    usuarios.spec.js",
+         "  .env",
+         "  .env.example",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "codigo": "export class CheckoutPage {\n  constructor(page) {\n    this.page = page;\n    this.botaoCheckout = page.getByTestId('checkout');\n  }\n}",
+        "legenda": "botaoCheckout = data-test checkout",
+        "fonte": 24,
+        "digitar": true,
+        "digitar_de": 4,
+        "digitar_ate": 4
+       }
+      },
+      {
+       "text": "Depois, a tela de dados: os três campos, nome, sobrenome e CEP, e o botão Continue.",
+       "scene": {
+        "type": "tela",
+        "media": "site40_dados",
+        "url": "https://www.saucedemo.com/",
+        "acoes": [
+         {
+          "fill": [
+           "#user-name",
+           "standard_user"
+          ]
+         },
+         {
+          "fill": [
+           "#password",
+           "secret_sauce"
+          ]
+         },
+         {
+          "click": "#login-button"
+         },
+         {
+          "click": "[data-test=\"add-to-cart-sauce-labs-backpack\"]"
+         },
+         {
+          "click": "[data-test=\"shopping-cart-link\"]"
+         },
+         {
+          "click": "[data-test=\"checkout\"]"
+         }
+        ],
+        "zoom_pagina": 1.3,
+        "titulo": "saucedemo.com",
+        "legenda": "A tela de dados: 3 campos e o Continue"
+       }
+      },
+      {
+       "text": "Um elemento pra cada um: nome, com o data-test firstName. Sobrenome, lastName. CEP, postalCode. E o botão continuar, continue.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "CheckoutPage.js",
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  pages/",
+         "    CheckoutPage.js",
+         "    LoginPage.js",
+         "    ProdutosPage.js",
+         "  tests/",
+         "    compra.spec.js",
+         "    login.spec.js",
+         "    usuarios.spec.js",
+         "  .env",
+         "  .env.example",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "codigo": "export class CheckoutPage {\n  constructor(page) {\n    this.page = page;\n    this.botaoCheckout = page.getByTestId('checkout');\n    this.nome = page.getByTestId('firstName');\n    this.sobrenome = page.getByTestId('lastName');\n    this.cep = page.getByTestId('postalCode');\n    this.botaoContinuar = page.getByTestId('continue');\n  }\n}",
+        "legenda": "Os 3 campos e o Continue",
+        "fonte": 22,
+        "digitar": true,
+        "digitar_de": 5,
+        "digitar_ate": 8
+       }
+      },
+      {
+       "text": "E por último, a revisão, com o botão Finish, e a tela final, com o Thank you for your order.",
+       "scene": {
+        "type": "tela",
+        "media": "site40_final",
+        "url": "https://www.saucedemo.com/",
+        "acoes": [
+         {
+          "fill": [
+           "#user-name",
+           "standard_user"
+          ]
+         },
+         {
+          "fill": [
+           "#password",
+           "secret_sauce"
+          ]
+         },
+         {
+          "click": "#login-button"
+         },
+         {
+          "click": "[data-test=\"add-to-cart-sauce-labs-backpack\"]"
+         },
+         {
+          "click": "[data-test=\"shopping-cart-link\"]"
+         },
+         {
+          "click": "[data-test=\"checkout\"]"
+         },
+         {
+          "fill": [
+           "[data-test=\"firstName\"]",
+           "Maria"
+          ]
+         },
+         {
+          "fill": [
+           "[data-test=\"lastName\"]",
+           "Silva"
+          ]
+         },
+         {
+          "fill": [
+           "[data-test=\"postalCode\"]",
+           "88000-000"
+          ]
+         },
+         {
+          "click": "[data-test=\"continue\"]"
+         },
+         {
+          "click": "[data-test=\"finish\"]"
+         }
+        ],
+        "zoom_pagina": 1.3,
+        "titulo": "saucedemo.com",
+        "legenda": "A tela final: Thank you for your order"
+       }
+      },
+      {
+       "text": "Os dois últimos elementos: o botão finalizar, com o data-test finish. E a mensagem final, com o complete-header.",
        "scene": {
         "type": "editor",
         "arquivo": "CheckoutPage.js",
@@ -427,15 +623,15 @@
          "  playwright.config.js"
         ],
         "codigo": "export class CheckoutPage {\n  constructor(page) {\n    this.page = page;\n    this.botaoCheckout = page.getByTestId('checkout');\n    this.nome = page.getByTestId('firstName');\n    this.sobrenome = page.getByTestId('lastName');\n    this.cep = page.getByTestId('postalCode');\n    this.botaoContinuar = page.getByTestId('continue');\n    this.botaoFinalizar = page.getByTestId('finish');\n    this.mensagemFinal = page.getByTestId('complete-header');\n  }\n}",
-        "legenda": "Os elementos: as telas do checkout",
+        "legenda": "botaoFinalizar e mensagemFinal",
         "fonte": 22,
         "digitar": true,
-        "digitar_de": 4,
+        "digitar_de": 9,
         "digitar_ate": 10
        }
       },
       {
-       "text": "E a ação preencher dados: ela recebe o nome, o sobrenome e o CEP, preenche os três campos, e clica em continuar.",
+       "text": "Agora a ação preencher dados. Ela recebe três valores, entre parênteses: o nome, o sobrenome e o CEP. E dentro, preenche cada campo com o valor que chegou, e clica em continuar.",
        "scene": {
         "type": "editor",
         "arquivo": "CheckoutPage.js",
@@ -467,6 +663,28 @@
         "rolar": true,
         "rolar_de": 0.5,
         "rolar_dur": 0.8
+       }
+      },
+      {
+       "text": "Repara numa coisa que confunde no começo: nome aparece duas vezes na mesma linha. This ponto nome é o campo da tela, guardado lá em cima. E nome sozinho é o valor que chegou, tipo Maria. Então: preencha o campo nome com o nome que chegou.",
+       "scene": {
+        "type": "traducao",
+        "codigo": "await this.nome.fill(nome);",
+        "partes": [
+         [
+          "this.nome",
+          "o campo da tela"
+         ],
+         [
+          ".fill",
+          "preencha com"
+         ],
+         [
+          "(nome)",
+          "o valor que chegou: Maria"
+         ]
+        ],
+        "passo": 2.4
        }
       },
       {
@@ -647,12 +865,12 @@
        }
       },
       {
-       "text": "E no lugar, os passos usando as páginas: produtos ponto adicionar a mochila, confere o numerozinho, produtos ponto ir para carrinho, o botão checkout, checkout ponto preencher dados, o botão finish, e a conferência da mensagem final.",
+       "text": "E no lugar, os passos usando as páginas, em três partes. Primeiro: produtos ponto adicionar, com o nome da mochila. E a conferência do numerozinho, agora com o elemento guardado no ProdutosPage: produtos ponto contador carrinho, to have text um.",
        "scene": {
         "type": "editor",
         "arquivo": "compra.spec.js",
-        "codigo": "  test('compra uma mochila do começo ao fim', async ({ page }) => {\n    const produtos = new ProdutosPage(page);\n    const checkout = new CheckoutPage(page);\n\n    await produtos.adicionar('sauce-labs-backpack');\n    await expect(produtos.contadorCarrinho).toHaveText('1');\n    await produtos.irParaCarrinho();\n    await checkout.botaoCheckout.click();\n    await checkout.preencherDados('Maria', 'Silva', '88000-000');\n    await checkout.botaoFinalizar.click();\n    await expect(checkout.mensagemFinal).toHaveText('Thank you for your order!');\n  });\n});",
-        "legenda": "Os passos agora usam as páginas",
+        "codigo": "  test('compra uma mochila do começo ao fim', async ({ page }) => {\n    const produtos = new ProdutosPage(page);\n    const checkout = new CheckoutPage(page);\n\n    await produtos.adicionar('sauce-labs-backpack');\n    await expect(produtos.contadorCarrinho).toHaveText('1');\n  });\n});",
+        "legenda": "1. adiciona e confere o numerozinho",
         "fonte": 22,
         "digitar": true,
         "pastas": [
@@ -676,7 +894,90 @@
         ],
         "linha0": 13,
         "digitar_de": 5,
+        "digitar_ate": 6
+       }
+      },
+      {
+       "text": "Segundo: produtos ponto ir para carrinho. Clica no botão checkout, que está guardado no CheckoutPage. E checkout ponto preencher dados, com Maria, Silva e o CEP.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "compra.spec.js",
+        "codigo": "  test('compra uma mochila do começo ao fim', async ({ page }) => {\n    const produtos = new ProdutosPage(page);\n    const checkout = new CheckoutPage(page);\n\n    await produtos.adicionar('sauce-labs-backpack');\n    await expect(produtos.contadorCarrinho).toHaveText('1');\n    await produtos.irParaCarrinho();\n    await checkout.botaoCheckout.click();\n    await checkout.preencherDados('Maria', 'Silva', '88000-000');\n  });\n});",
+        "legenda": "2. carrinho, checkout e dados",
+        "fonte": 22,
+        "digitar": true,
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  pages/",
+         "    CheckoutPage.js",
+         "    LoginPage.js",
+         "    ProdutosPage.js",
+         "  tests/",
+         "    compra.spec.js",
+         "    login.spec.js",
+         "    usuarios.spec.js",
+         "  .env",
+         "  .env.example",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "linha0": 13,
+        "digitar_de": 7,
+        "digitar_ate": 9
+       }
+      },
+      {
+       "text": "Terceiro: clica no botão finalizar, e confere a mensagem final, Thank you for your order.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "compra.spec.js",
+        "codigo": "  test('compra uma mochila do começo ao fim', async ({ page }) => {\n    const produtos = new ProdutosPage(page);\n    const checkout = new CheckoutPage(page);\n\n    await produtos.adicionar('sauce-labs-backpack');\n    await expect(produtos.contadorCarrinho).toHaveText('1');\n    await produtos.irParaCarrinho();\n    await checkout.botaoCheckout.click();\n    await checkout.preencherDados('Maria', 'Silva', '88000-000');\n    await checkout.botaoFinalizar.click();\n    await expect(checkout.mensagemFinal).toHaveText('Thank you for your order!');\n  });\n});",
+        "legenda": "3. finaliza e confere",
+        "fonte": 22,
+        "digitar": true,
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  pages/",
+         "    CheckoutPage.js",
+         "    LoginPage.js",
+         "    ProdutosPage.js",
+         "  tests/",
+         "    compra.spec.js",
+         "    login.spec.js",
+         "    usuarios.spec.js",
+         "  .env",
+         "  .env.example",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "linha0": 13,
+        "digitar_de": 10,
         "digitar_ate": 11
+       }
+      },
+      {
+       "text": "E uma dúvida que deve ter aparecido: por que o preencher dados virou uma ação, e o clique no checkout usa o botão direto? A regra é simples. Quando são várias linhas que sempre andam juntas, como preencher três campos e continuar, vale uma ação com nome. Quando é um clique só, o elemento guardado já resolve. Os dois jeitos estão certos.",
+       "scene": {
+        "type": "traducao",
+        "titulo": "AÇÃO OU ELEMENTO DIRETO?",
+        "linhas": [
+         [
+          "várias linhas que andam juntas",
+          "checkout.preencherDados(...)"
+         ],
+         [
+          "um clique só",
+          "checkout.botaoCheckout.click()"
+         ]
+        ]
        }
       },
       {
