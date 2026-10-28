@@ -1,9 +1,9 @@
 {
- "atualizado": "27/10/2026 22:42",
+ "atualizado": "28/10/2026 13:50",
  "fontes": {
   "custo_oculto": {
    "seguidores": 13,
-   "views_total": 5227,
+   "views_total": 5293,
    "videos": 38,
    "views_28d": 5146,
    "views_7d": 526,
@@ -166,8 +166,8 @@
   },
   "vini_qa": {
    "seguidores": 0,
-   "views_total": 46,
-   "videos": 4,
+   "views_total": 49,
+   "videos": 5,
    "views_28d": 44,
    "views_7d": 44,
    "seguidores_28d": 0,
@@ -295,7 +295,7 @@
     {
      "titulo": "Como achar o nome de qualquer botão",
      "url": "https://youtu.be/kzc27cwf_oo",
-     "views": 7,
+     "views": 6,
      "retencao": 76,
      "likes": 1
     }
@@ -304,27 +304,27 @@
   },
   "tiktok": {
    "usuario": "Custo Oculto",
-   "seguidores": 58,
-   "curtidas": 371,
+   "seguidores": 61,
+   "curtidas": 376,
    "videos": 19,
-   "views_total": 8366,
+   "views_total": 8498,
    "top": [
     {
      "titulo": "O CUSTO DE SER GIGANTE — EP. 05 A Microsoft pagou US$ 8,5 bilhões pelo Skype. Quatorze ano",
      "url": "https://www.tiktok.com/@custooculto/video/7701373214546513173?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 422,
-     "likes": 21
+     "views": 544,
+     "likes": 25
     },
     {
      "titulo": "O Orkut ainda crescia no Brasil. O problema é que o Facebook crescia muito mais rápido. En",
      "url": "https://www.tiktok.com/@custooculto/video/7701077678123797781?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 727,
+     "views": 731,
      "likes": 14
     },
     {
      "titulo": "O CUSTO DE SER GIGANTE — EP. 04 A Nokia não ignorou o smartphone. Ela pesquisava telas sen",
      "url": "https://www.tiktok.com/@custooculto/video/7700696929457409286?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 599,
+     "views": 600,
      "likes": 27
     },
     {
@@ -336,8 +336,8 @@
     {
      "titulo": "O CUSTO DE SER GIGANTE — EP. 02 A Kodak ajudou a criar a câmera digital. O problema é que ",
      "url": "https://www.tiktok.com/@custooculto/video/7699988579719679252?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 533,
-     "likes": 23
+     "views": 534,
+     "likes": 24
     },
     {
      "titulo": "O CUSTO DE SER GIGANTE — EP. 01 A Blockbuster dominava o aluguel de filmes e parecia impos",
@@ -381,26 +381,6 @@
   }
  },
  "agenda": [
-  {
-   "quando": "2026-10-28T10:00:00-03:00",
-   "titulo": "Netflix x Blockbuster, parte 1 de 4 · RASCUNHO, não sai sozinho",
-   "tipo": "metricool",
-   "id": "metricool",
-   "url": "https://app.metricool.com/planner",
-   "plataforma_rede": "tiktok",
-   "chave": "tiktok",
-   "plataforma": "TikTok (Metricool)",
-   "sem_cancelar": true
-  },
-  {
-   "quando": "2026-10-28T12:00:00-03:00",
-   "plataforma": "Vini QA (YouTube)",
-   "chave": "vini_qa",
-   "titulo": "O seletor que não quebra",
-   "tipo": "short",
-   "id": "4jlcqR1BzhE",
-   "url": "https://studio.youtube.com/video/4jlcqR1BzhE/edit"
-  },
   {
    "quando": "2026-10-28T18:00:00-03:00",
    "plataforma": "Hidden Cost (YouTube EN)",
