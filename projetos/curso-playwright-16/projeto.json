@@ -53,6 +53,14 @@
   [
    "\\bAPIs?\\b",
    "êi-pí-ái"
+  ],
+  [
+   "\\b[Jj][Ss][Oo][Nn]\\b",
+   "Jason"
+  ],
+  [
+   "\\b[Ee][Nn][Vv]\\b",
+   "ênv"
   ]
  ],
  "meta": {
