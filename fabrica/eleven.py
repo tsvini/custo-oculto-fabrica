@@ -71,6 +71,88 @@ def com_abertura(p, nome):
     return False
 
 
+
+# ---------- remendo: troca só as frases que mudaram, sem refazer o áudio inteiro ----------
+def frases_faladas(p, nome):
+    """as frases de uma parte, do jeito que a voz fala (na ordem, sem as vazias)"""
+    for k, g in enumerate(p["script"]["long"]["parts"]):
+        if f"parte{k + 1}" == nome:
+            return [falado(p, s["text"].strip()) for s in g["sentences"] if s.get("text", "").strip()]
+    return None
+
+
+def plano_remendo(p, nome, t_novo, pasta_audio):
+    """quais frases mudaram desde o áudio gravado: [(índice, texto antigo, texto novo)], ou None se precisa refazer tudo"""
+    import difflib, re
+    ft = os.path.join(pasta_audio, f"{nome}.txt")
+    if not os.path.exists(ft) or com_abertura(p, nome):
+        return None
+    velho = open(ft, encoding="utf8").read()
+    marca = r"\s*⟨pausa:[\d.]+⟩\s*"
+    if re.findall(marca, velho) != re.findall(marca, t_novo):
+        return None  # as pausas mudaram: refaz tudo
+    velho, t_novo = re.sub(marca, " ", velho), re.sub(marca, " ", t_novo)  # o silêncio da pausa fica onde está no áudio
+    novas = frases_faladas(p, nome)
+    if not novas or " ".join(novas).split() != t_novo.split():
+        return None
+    tv, tn = velho.split(), t_novo.split()
+    lim = [0]
+    for f in novas:
+        lim.append(lim[-1] + len(f.split()))
+    ops = difflib.SequenceMatcher(None, tv, tn, autojunk=False).get_opcodes()
+
+    def no_velho(j):  # a fronteira j (entre palavras do texto novo) no texto velho
+        for tag, i1, i2, j1, j2 in ops:
+            if j1 <= j <= j2:
+                if tag == "equal":
+                    return i1 + (j - j1)
+                if j == j1:
+                    return i1
+                if j == j2:
+                    return i2
+                return None  # a troca atravessa a fronteira da frase: não dá pra remendar
+        return None
+    pos = [no_velho(j) for j in lim]
+    if any(x is None for x in pos) or pos[-1] != len(tv):
+        return None
+    velhas = [" ".join(tv[pos[i]:pos[i + 1]]) for i in range(len(novas))]
+    mud = [(i, velhas[i], novas[i]) for i in range(len(novas)) if velhas[i].split() != novas[i].split()]
+    if not mud or sum(len(x[2]) for x in mud) > 0.7 * len(t_novo):
+        return None  # mudou quase tudo: sai melhor refazendo a parte inteira
+    return {"velhas": velhas, "novas": novas, "mudou": mud}
+
+
+def aplicar_remendo(plano, audio, gerar_frase, log=print):
+    """corta cada frase que mudou do áudio antigo e cola a nova no lugar (do fim pro começo, pros tempos não andarem)"""
+    import subprocess as sp, tempfile, shutil
+    from .alinhar import _palavras, _tempos
+    dur = float(sp.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", audio], capture_output=True, text=True).stdout.strip())
+    tempos, taxa, _ = _tempos(plano["velhas"], _palavras(audio), dur)
+    log(f"    remendo: {taxa:.0%} das palavras achadas no áudio antigo")
+    if taxa < 0.8:
+        raise RuntimeError(f"alinhamento fraco ({taxa:.0%})")
+    N = len(tempos)
+    with tempfile.TemporaryDirectory() as tmp:
+        atual = os.path.join(tmp, "atual.wav")
+        sp.run(["ffmpeg", "-loglevel", "error", "-y", "-i", audio, "-ac", "1", "-ar", "44100", atual], check=True)
+        for i, _, nova in sorted(plano["mudou"], reverse=True):
+            c0 = (tempos[i - 1][1] + tempos[i][0]) / 2 if i > 0 else max(0.0, tempos[i][0] - 0.05)
+            c1 = (tempos[i][1] + tempos[i + 1][0]) / 2 if i < N - 1 else dur
+            gl, gr = max(0.05, tempos[i][0] - c0), max(0.05, c1 - tempos[i][1]) if i < N - 1 else 0.3
+            bruto = os.path.join(tmp, f"f{i}.mp3"); open(bruto, "wb").write(gerar_frase(nova))
+            limpo = os.path.join(tmp, f"f{i}.wav")  # tira o silêncio do começo e do fim da frase nova
+            sp.run(["ffmpeg", "-loglevel", "error", "-y", "-i", bruto, "-af",
+                    "silenceremove=start_periods=1:start_threshold=-45dB,areverse,silenceremove=start_periods=1:start_threshold=-45dB,areverse",
+                    "-ac", "1", "-ar", "44100", limpo], check=True)
+            saida = os.path.join(tmp, f"r{i}.wav")
+            sp.run(["ffmpeg", "-loglevel", "error", "-y", "-i", atual, "-i", limpo, "-filter_complex",
+                    f"[0:a]atrim=0:{c0:.3f},asetpts=PTS-STARTPTS[a];[0:a]atrim={c1:.3f},asetpts=PTS-STARTPTS[c];"
+                    f"[1:a]adelay={int(gl * 1000)},apad=pad_dur={gr:.3f}[b];[a][b][c]concat=n=3:v=0:a=1", saida], check=True)
+            shutil.move(saida, atual)
+            log(f"    remendo: frase {i + 1} trocada ({c0:.2f}s a {c1:.2f}s)")
+        sp.run(["ffmpeg", "-loglevel", "error", "-y", "-i", atual, "-b:a", "128k", audio], check=True)
+
+
 def main(nome):
     key = os.environ.get("ELEVENLABS_KEY", "").strip()
     pasta = os.path.join(RAIZ, "projetos", nome)
@@ -118,8 +200,17 @@ def main(nome):
     mult = float(((mod.get("model_rates") or {}).get("character_cost_multiplier")) or 1.0)
     nota("ElevenLabs modelos", " · ".join(f"{m['model_id']} x{(m.get('model_rates') or {}).get('character_cost_multiplier', '?')}" for m in modelos)[:900])
 
+    # partes em que só algumas frases mudaram: troca só essas frases (gasta muito menos crédito)
+    remendos = {}
+    for n, t in faltam:
+        if mudou(n, t) and achar_audio(pasta_audio, n):
+            pl = plano_remendo(p, n, t, pasta_audio)
+            if pl:
+                remendos[n] = pl
+                nota("ElevenLabs remendo", f"{n}: só {len(pl['mudou'])} frase(s) mudaram: " + " | ".join(x[2] for x in pl["mudou"])[:600])
+
     # saldo antes de gastar
-    chars = sum(len(t) for _, t in faltam); custo = int(chars * mult)
+    chars = sum(len(t) for n, t in faltam if n not in remendos) + sum(len(x[2]) for pl in remendos.values() for x in pl["mudou"]); custo = int(chars * mult)
     r = requests.get(f"{API}/v1/user/subscription", headers=H, timeout=60)
     if r.ok:
         s = r.json(); resta = s.get("character_limit", 0) - s.get("character_count", 0)
@@ -127,8 +218,23 @@ def main(nome):
         if custo > resta:
             aviso("ElevenLabs", f"créditos insuficientes: precisa de ~{custo}, restam {resta}. Nada foi gerado."); sys.exit(2)
 
+    def gerar_frase(txt):
+        r = requests.post(f"{API}/v1/text-to-speech/{vid}?output_format=mp3_44100_128", headers=H, timeout=600,
+                          json={"text": txt, "model_id": mid, **({"voice_settings": voz["ajustes"]} if voz.get("ajustes") else {})})
+        if r.status_code != 200:
+            raise RuntimeError(f"erro {r.status_code} {r.text[:300]}")
+        return r.content
+
     feitos = []
     for n, t in faltam:
+        if n in remendos:
+            try:
+                aplicar_remendo(remendos[n], achar_audio(pasta_audio, n), gerar_frase)
+                open(os.path.join(pasta_audio, f"{n}.txt"), "w", encoding="utf8").write(t)
+                feitos.append(n + " (remendo)"); print(f"  {n}.mp3 remendado", flush=True)
+                continue
+            except Exception as e:
+                aviso("ElevenLabs remendo", f"{n}: não deu pra remendar ({str(e)[:200]}); refazendo a parte inteira")
         import re as _re, subprocess as _sp, tempfile as _tf
         pedacos = _re.split(r"\s*⟨pausa:([\d.]+)⟩\s*", t)  # [texto, pausa, texto, pausa, ..., texto]
         destino = os.path.join(pasta_audio, f"{n}.mp3")

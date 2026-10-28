@@ -49,6 +49,10 @@
   [
    "\\b[Yy][Mm][Ll]\\b",
    "ípsilon-ême-élli"
+  ],
+  [
+   "\\bAPIs?\\b",
+   "ei-pi-ai"
   ]
  ],
  "meta": {
