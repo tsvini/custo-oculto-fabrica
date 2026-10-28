@@ -45,6 +45,10 @@
   [
    "\\bpages\\b",
    "pêidjis"
+  ],
+  [
+   "\\b[Yy][Mm][Ll]\\b",
+   "ípsilon ême éle"
   ]
  ],
  "meta": {
