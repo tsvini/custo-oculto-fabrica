@@ -888,12 +888,27 @@
       if (t > tB - 0.5 && t < tB + 1.0) { ctx.strokeStyle = C.yel; ctx.lineWidth = 5 * u; ctx.stroke(); } ctx.restore(); txt(ctx, "New repository secret", font(700, 21 * u), mx + mw - bw / 2, my, "#fff", "center", a * kS);
       pts.push([mx + mw - bw / 2, my + 4 * u, tB]);
       txt(ctx, "Repository secrets", font(800, 24 * u), mx, my, G.tx, "left", a * kS); my += 50 * u;
-      const sec = s.segredos || ["SAUCE_USER", "SAUCE_PASSWORD"]; const t0 = tB + 1.0; const passoS = Math.max(1.0, (dur * 0.85 - t0) / Math.max(1, sec.length));
+      const sec = s.segredos !== undefined ? s.segredos : ["SAUCE_USER", "SAUCE_PASSWORD"]; const t0 = tB + 1.0; const passoS = Math.max(1.0, (dur * 0.85 - t0) / Math.max(1, sec.length));
       ctx.save(); ctx.globalAlpha = a * kS; rr(ctx, mx, my - 24 * u, mw, 50 * u * (sec.length + 0.2), 8 * u); ctx.strokeStyle = G.bd; ctx.lineWidth = 2 * u; ctx.stroke(); ctx.restore();
       sec.forEach((nm, i) => { const k = easeOut((t - t0 - i * passoS) / 0.35); if (k <= 0) return; const yi = my + i * 50 * u;
         txt(ctx, "🔒  " + nm, font(700, 22 * u, MONO), mx + 20 * u, yi, G.tx, "left", a * k); txt(ctx, "Updated now", font(500, 19 * u), mx + mw - 120 * u, yi, G.mu, "right", a * k); txt(ctx, "✎  🗑", font(500, 20 * u), mx + mw - 20 * u, yi, G.mu, "right", a * k);
         if (i < sec.length - 1) { ctx.save(); ctx.globalAlpha = a * k; ctx.fillStyle = G.bd; ctx.fillRect(mx, yi + 25 * u, mw, 1.5 * u); ctx.restore(); } });
       if (s.aviso) txt(ctx, s.aviso, font(800, 22 * u), mx, my + sec.length * 50 * u + 30 * u, C.yel, "left", a * easeOut((t - t0 - sec.length * passoS) / 0.4));
+    } else if (modo === "novo_secret") {  // Settings › Secrets › New repository secret: o formulário com o nome e o valor
+      const fx = x + 60 * u; let yy = body + 40 * u; const t0 = s.digita_em || 1.0;
+      txt(ctx, "Actions secrets / New secret", font(800, 32 * u), fx, yy, G.tx, "left", a); yy += 70 * u;
+      const campos = [["Name *", s.nome || "SAUCE_USER", 1], ["Secret *", s.valor || "standard_user", 3]]; let fim = t0;
+      campos.forEach(([rot, val, alt], i) => { const ti = t0 + i * 2.2; const k = clamp((t - ti) / 1.3); const v = val.slice(0, Math.ceil(k * val.length)); fim = ti + 1.3;
+        txt(ctx, rot, font(700, 24 * u), fx, yy, G.tx, "left", a); yy += 40 * u;
+        const hh = alt === 1 ? 52 * u : 150 * u; ctx.save(); ctx.globalAlpha = a; rr(ctx, fx, yy - 24 * u, 900 * u, hh, 8 * u); ctx.fillStyle = G.inp; ctx.fill();
+        ctx.strokeStyle = t > ti - 0.2 && t < ti + 1.5 ? "#1f6feb" : G.bd; ctx.lineWidth = 2.5 * u; ctx.stroke(); ctx.restore();
+        txt(ctx, v, font(600, 26 * u, MONO), fx + 18 * u, yy + 2 * u, G.tx, "left", a); if (k > 0 && k < 1) pts.push([fx + 450 * u, yy + 8 * u, ti - 0.1]);
+        if (k >= 1 && s.rotulos) txt(ctx, "← " + s.rotulos[i], font(800, 24 * u), fx + 930 * u, yy + 2 * u, C.yel, "left", a * easeOut((t - ti - 1.4) / 0.3));
+        yy += hh + 40 * u; });
+      const tB = s.botao_em || fim + 0.8; const bw = 200 * u; const kb = easeOut((t - tB) / 0.2);
+      ctx.save(); ctx.globalAlpha = a; rr(ctx, fx, yy - 10 * u, bw, 54 * u, 8 * u); ctx.fillStyle = kb > 0.5 ? "#2ea043" : G.ok; ctx.fill();
+      if (t > tB - 0.6) { ctx.strokeStyle = C.yel; ctx.lineWidth = 5 * u; ctx.stroke(); } ctx.restore();
+      txt(ctx, "Add secret", font(700, 23 * u), fx + bw / 2, yy + 17 * u, "#fff", "center", a); pts.push([fx + bw * 0.55, yy + 20 * u, tB]);
     } else if (modo === "signup") {
       const fx = c.cx - 330 * u; let yy = body + 70 * u;
       txt(ctx, "Welcome to GitHub!", font(800, 38 * u), fx, yy, G.tx, "left", a); yy += 40 * u;

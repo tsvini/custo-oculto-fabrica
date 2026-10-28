@@ -271,7 +271,7 @@
        }
       },
       {
-       "text": "No GitHub: Settings, Secrets and variables, Actions, New repository secret. Cria o SAUCE underline USER e o SAUCE underline PASSWORD. Secret é segredo: ninguém consegue ver o valor depois.",
+       "text": "A solução: guardar o usuário e a senha num cofre do próprio GitHub, chamado secrets. No seu repositório, no GitHub: Settings, Secrets and variables, Actions. E clica em New repository secret.",
        "scene": {
         "type": "github",
         "usuario": "voce",
@@ -279,9 +279,57 @@
         "tela": "secrets",
         "clique_em": 0.8,
         "menu_em": 2.0,
-        "botao_em": 3.4,
-        "aviso": "ninguém vê o valor depois",
-        "legenda": "Settings › Secrets and variables › Actions"
+        "botao_em": 4.5,
+        "segredos": [],
+        "legenda": "Settings › Secrets and variables › Actions › New repository secret"
+       }
+      },
+      {
+       "text": "Abre um formulário com dois campos. Em Name, o nome: SAUCE underline USER, exatamente igual ao do seu ponto env. E em Secret, o valor: standard underline user. Depois, Add secret.",
+       "scene": {
+        "type": "github",
+        "usuario": "voce",
+        "repo": "meu-primeiro-playwright",
+        "tela": "novo_secret",
+        "nome": "SAUCE_USER",
+        "valor": "standard_user",
+        "digita_em": 2.4,
+        "rotulos": [
+         "o nome, igual ao do .env",
+         "o valor"
+        ],
+        "legenda": "Name: SAUCE_USER · Secret: standard_user"
+       }
+      },
+      {
+       "text": "De novo, New repository secret, agora pra senha. Name: SAUCE underline PASSWORD. Secret: secret underline sauce. E Add secret.",
+       "scene": {
+        "type": "github",
+        "usuario": "voce",
+        "repo": "meu-primeiro-playwright",
+        "tela": "novo_secret",
+        "nome": "SAUCE_PASSWORD",
+        "valor": "secret_sauce",
+        "digita_em": 1.4,
+        "rotulos": [
+         "o nome, igual ao do .env",
+         "o valor"
+        ],
+        "legenda": "Name: SAUCE_PASSWORD · Secret: secret_sauce"
+       }
+      },
+      {
+       "text": "Pronto: os dois aparecem na lista. Secret quer dizer segredo: depois de salvo, ninguém consegue ver o valor, nem você. Se precisar, só dá pra trocar.",
+       "scene": {
+        "type": "github",
+        "usuario": "voce",
+        "repo": "meu-primeiro-playwright",
+        "tela": "secrets",
+        "clique_em": -5,
+        "menu_em": -5,
+        "botao_em": -5,
+        "aviso": "ninguém vê o valor depois, nem você",
+        "legenda": "Os dois segredos guardados"
        }
       },
       {
