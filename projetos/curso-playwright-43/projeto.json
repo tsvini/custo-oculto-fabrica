@@ -258,7 +258,7 @@
        }
       },
       {
-       "text": "Se é a primeira vez que você usa o Git nesse computador, ele precisa saber quem você é, porque toda foto leva o nome de quem tirou. São dois comandos: git config traço traço global user ponto name, e o seu nome entre aspas. E user ponto email, com o seu e-mail. Só uma vez por computador.",
+       "text": "Se é a primeira vez que você usa o Git nesse computador, ele precisa saber quem você é, porque toda foto leva o nome de quem tirou. São dois comandos: git config traço traço global user ponto name, e o seu nome entre aspas. E user ponto email, com o seu e-mail. Só uma vez por computador. E uma dica: usa o mesmo e-mail que você vai usar na conta do GitHub, na próxima aula. Assim, lá no seu perfil, cada commit aparece como seu.",
        "scene": {
         "type": "terminal",
         "titulo": "Terminal — VS Code",
