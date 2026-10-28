@@ -277,7 +277,48 @@
        }
       },
       {
-       "text": "No yml, no passo que roda os testes, um env que entrega esses segredos pros testes.",
+       "text": "Agora o yml precisa entregar esses segredos pros testes. Só que esse arquivo já está no GitHub: ele subiu junto com o projeto, na aula quarenta e quatro. Então, onde mudar?",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "O ARQUIVO JÁ ESTÁ NO GITHUB",
+          "white",
+          100
+         ],
+         [
+          "ONDE MUDAR?",
+          "gold",
+          120
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Dá pra editar direto no site do GitHub, no lapisinho do arquivo. Mas aí o seu computador fica com a versão antiga. O jeito recomendado: muda no VS Code, e manda pro GitHub com o ciclo da aula quarenta e três. Assim, os dois ficam iguais.",
+       "scene": {
+        "type": "compare",
+        "title": "ONDE MUDAR O ARQUIVO",
+        "items": [
+         [
+          "NO SITE DO GITHUB",
+          "SEU COMPUTADOR FICA DESATUALIZADO",
+          "white"
+         ],
+         [
+          "NO VS CODE + PUSH",
+          "OS DOIS FICAM IGUAIS",
+          "gold"
+         ]
+        ],
+        "size": 80,
+        "stagger": 1.8,
+        "vs": false
+       }
+      },
+      {
+       "text": "Então, no VS Code, abre o playwright ponto yml. No passo que roda os testes, escreve um env que entrega esses segredos pros testes.",
        "scene": {
         "type": "editor",
         "arquivo": "playwright.yml",
@@ -330,7 +371,52 @@
        }
       },
       {
-       "text": "Manda pro GitHub com git push e abre a aba Actions: olha os testes rodando lá.",
+       "text": "Agora manda a mudança pro GitHub, com o ciclo de sempre. Git status: o yml aparece em vermelho, modificado. Git add ponto. Git commit, com uma legenda que diz o que mudou. E git push, que manda pro GitHub.",
+       "scene": {
+        "type": "terminal",
+        "titulo": "Terminal — VS Code",
+        "pasta": "C:\\Users\\voce\\Documents\\meu-primeiro-playwright",
+        "linhas": [
+         {
+          "cmd": "git status"
+         },
+         {
+          "out": "        modified:   .github/workflows/playwright.yml",
+          "cor": "#ff6b6b"
+         },
+         {
+          "cmd": "git add ."
+         },
+         {
+          "cmd": "git commit -m \"entrega os secrets pros testes\""
+         },
+         {
+          "out": "[main 3b9e0d4] entrega os secrets pros testes",
+          "cor": "ac"
+         },
+         {
+          "out": " 1 file changed, 3 insertions(+)",
+          "cor": "mut"
+         },
+         {
+          "cmd": "git push"
+         },
+         {
+          "out": "To https://github.com/voce/meu-primeiro-playwright.git",
+          "cor": "mut"
+         },
+         {
+          "out": "   24d5d51..3b9e0d4  main -> main",
+          "cor": "ac"
+         }
+        ],
+        "legenda": "O ciclo: status, add, commit e push",
+        "fonte": 26,
+        "fonte_min": 20
+       }
+      },
+      {
+       "text": "E aqui vem a mágica: esse push é justamente o gatilho do arquivo. Abre a aba Actions no GitHub: olha os testes rodando lá, sozinhos.",
        "scene": {
         "type": "gh_actions",
         "usuario": "voce",
@@ -338,7 +424,7 @@
         "workflow": "Playwright Tests",
         "commit": "testes no GitHub Actions",
         "inicio_em": 1.0,
-        "legenda": "Os testes rodando no GitHub"
+        "legenda": "O push disparou os testes no GitHub"
        }
       },
       {
@@ -353,6 +439,23 @@
         "status": "ok",
         "artefato": "playwright-report",
         "legenda": "Passou · o relatório pra baixar"
+       }
+      },
+      {
+       "text": "E se um dia alguém mudar um arquivo direto no site do GitHub, ou outra pessoa da equipe mandar uma mudança? No seu computador, git pull: puxe as mudanças de lá pra cá. Push manda, pull traz.",
+       "scene": {
+        "type": "traducao",
+        "titulo": "PUSH E PULL",
+        "linhas": [
+         [
+          "git push",
+          "manda do seu computador pro GitHub"
+         ],
+         [
+          "git pull",
+          "traz do GitHub pro seu computador"
+         ]
+        ]
        }
       },
       {
