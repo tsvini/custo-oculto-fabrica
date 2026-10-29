@@ -112,7 +112,9 @@
     ctx.save(); ctx.beginPath(); ctx.rect(tabX, top + 58 * u, W - sideW, y + H - PH - top - 60 * u); ctx.clip();
     const d0 = s.digitar_de || ((s.destaque && s.destaque.length) ? Math.min(...s.destaque) : 1);  // linhas antes disso já estão escritas
     const d1 = s.digitar_ate || linhas.length;  // linhas depois disso já estão escritas também
-    const pronto = linhas.slice(0, d0 - 1).join("").length; const falta = Math.max(1, linhas.slice(0, d1).join("").length - pronto);
+    // digitar_faixas: [[de, ate], ...] digita trechos separados do arquivo, um depois do outro (o resto já está escrito)
+    const FX = s.digitar_faixas, fxIni = {}; let fxTot = 0; if (FX) for (const [f0, f1] of FX) for (let l = f0; l <= f1; l++) { fxIni[l] = fxTot; fxTot += linhas[l - 1].length; }
+    const pronto = linhas.slice(0, d0 - 1).join("").length; const falta = FX ? Math.max(1, fxTot) : Math.max(1, linhas.slice(0, d1).join("").length - pronto);
     const tDig = Math.max(0.8, Math.min(rolando ? Math.max(0.8, dur - t0 - 1.0) : dur * (s.vel || 0.7), falta / 18));
     const k = s.digitar === false ? 1 : clamp((t - t0) / tDig);
     if (s.rolar_depois && !rolando) yy -= Math.max(0, linhas.length - cabem) * lh * easeInOut((t - (s.digitar === false ? (s.rolar_de || 2.0) : t0 + tDig + 0.5)) / (s.rolar_dur || 1.4));  // digita no topo e depois desce até o fim do arquivo
@@ -137,6 +139,7 @@
       if (hl && dig >= 1) { const ha = easeOut((t - (s.digitar === false ? (s.destaque_em || 1.2) : t0 + tDig)) / 0.4); ctx.save(); ctx.globalAlpha = 0.18 * ha; ctx.fillStyle = C.ac; ctx.fillRect(tabX, yy - lh / 2, W - sideW, lh); ctx.globalAlpha = ha; ctx.fillRect(tabX, yy - lh / 2, 6 * u, lh); ctx.restore(); }
       txt(ctx, String((kC >= 1 && AP.length ? num - 1 : i) + (s.linha0 || 1)), font(500, fs * 0.8, MONO), x0 - 30 * u, yy, "#4b5263", "right", aL);  // linha0: o trecho visível de um arquivo maior
       let mostra = i + 1 > d1 ? ln.length : Math.min(ln.length, resta); if (i + 1 <= d1) resta -= ln.length; let xx = x0;
+      let cursorFX = false; if (FX) { const ini = fxIni[i + 1]; const kk = Math.floor(dig * falta); mostra = ini === undefined ? ln.length : clamp(kk - ini, 0, ln.length); cursorFX = ini !== undefined && dig < 1 && kk >= ini && kk <= ini + ln.length; }
       // descomentar: a linha começa com "// " (cinza, comentário) e as barras vão sendo apagadas, uma linha depois da outra
       const iD = (s.descomentar || []).indexOf(i + 1);
       if (iD >= 0) { const tD = (s.descomentar_em === undefined ? 1.2 : s.descomentar_em) + iD * 0.7, sobra = 3 - clamp(Math.floor((t - tD) / 0.16), 0, 3);
@@ -155,7 +158,7 @@
           if (t >= at.tD && Math.floor(t * 2.5) % 2 === 0) { ctx.save(); ctx.globalAlpha = aL; ctx.fillStyle = C.ac; ctx.fillRect(xb, yy - fs * 0.6, 4 * u, fs * 1.2); ctx.restore(); } }
         mostra = 0; }
       for (const [tk, cor] of tokens(ln)) { if (mostra <= 0) break; const parte = tk.slice(0, mostra); mostra -= tk.length; txt(ctx, parte, font(500, fs, MONO), xx, yy, cor, "left", aL); xx += tw(ctx, parte, font(500, fs, MONO)); }
-      if (dig < 1 && i + 1 <= d1 && resta < 0 && resta + ln.length >= 0 && Math.floor(t * 2.5) % 2 === 0) { ctx.save(); ctx.globalAlpha = a; ctx.fillStyle = C.ac; ctx.fillRect(xx + 2 * u, yy - fs * 0.6, 4 * u, fs * 1.2); ctx.restore(); }
+      if ((FX ? cursorFX : (dig < 1 && i + 1 <= d1 && resta < 0 && resta + ln.length >= 0)) && Math.floor(t * 2.5) % 2 === 0) { ctx.save(); ctx.globalAlpha = a; ctx.fillStyle = C.ac; ctx.fillRect(xx + 2 * u, yy - fs * 0.6, 4 * u, fs * 1.2); ctx.restore(); }
       yy += lh * hf;
     });
     ctx.restore();

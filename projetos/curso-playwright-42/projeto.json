@@ -346,17 +346,18 @@
          "  package.json",
          "  playwright.config.js"
         ],
-        "codigo": "  },\n  projects: [\n    { name: 'setup', testMatch: /.*\\.setup\\.js/ },\n    {\n      name: 'chromium',\n      use: { ...devices['Desktop Chrome'] },\n    },",
+        "codigo": "// @ts-check\nimport { defineConfig, devices } from '@playwright/test';\nimport dotenv from 'dotenv';\nimport path from 'path';\ndotenv.config({ path: path.resolve(__dirname, '.env') });\n\nexport default defineConfig({\n  testDir: './tests',\n  fullyParallel: true,\n  forbidOnly: !!process.env.CI,\n  retries: process.env.CI ? 2 : 0,\n  workers: process.env.CI ? 1 : undefined,\n  reporter: 'html',\n  use: {\n    baseURL: 'https://www.saucedemo.com',\n    testIdAttribute: 'data-test',\n    trace: 'on-first-retry',\n    screenshot: 'only-on-failure',\n    video: 'retain-on-failure',\n  },\n  projects: [\n    { name: 'setup', testMatch: /.*\\.setup\\.js/ },\n    {\n      name: 'chromium',\n      use: { ...devices['Desktop Chrome'] },\n    },\n    {\n      name: 'firefox',\n      use: { ...devices['Desktop Firefox'] },\n    },\n    {\n      name: 'webkit',\n      use: { ...devices['Desktop Safari'] },\n    },\n    {\n      name: 'celular',\n      use: { ...devices['Pixel 7'] },\n    },\n  ],\n});",
         "legenda": "project setup",
-        "fonte": 26,
+        "fonte": 22,
         "digitar": true,
-        "linha0": 20,
-        "digitar_de": 3,
-        "digitar_ate": 3
+        "rolar": true,
+        "rolar_ate": 28,
+        "digitar_de": 22,
+        "digitar_ate": 22
        }
       },
       {
-       "text": "E no project do chromium, dependencies setup: ele só começa depois que o setup terminar. Faz o mesmo no firefox, no webkit e no celular.",
+       "text": "E no project do chromium, dependencies setup: ele só começa depois que o setup terminar.",
        "scene": {
         "type": "editor",
         "arquivo": "playwright.config.js",
@@ -380,13 +381,59 @@
          "  package.json",
          "  playwright.config.js"
         ],
-        "codigo": "  },\n  projects: [\n    { name: 'setup', testMatch: /.*\\.setup\\.js/ },\n    {\n      name: 'chromium',\n      use: { ...devices['Desktop Chrome'] },\n      dependencies: ['setup'],\n    },",
+        "codigo": "  projects: [\n    { name: 'setup', testMatch: /.*\\.setup\\.js/ },\n    {\n      name: 'chromium',\n      use: { ...devices['Desktop Chrome'] },\n      dependencies: ['setup'],\n    },\n    {\n      name: 'firefox',\n      use: { ...devices['Desktop Firefox'] },\n    },\n    {\n      name: 'webkit',\n      use: { ...devices['Desktop Safari'] },\n    },",
         "legenda": "dependencies = depende do setup",
-        "fonte": 26,
+        "fonte": 22,
         "digitar": true,
-        "linha0": 20,
-        "digitar_de": 7,
-        "digitar_ate": 7
+        "linha0": 21,
+        "digitar_de": 6,
+        "digitar_ate": 6
+       }
+      },
+      {
+       "text": "Desce mais um pouco e faz o mesmo no firefox, no webkit e no celular: a mesma linha em cada um.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "playwright.config.js",
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  pages/",
+         "    CheckoutPage.js",
+         "    LoginPage.js",
+         "    ProdutosPage.js",
+         "  tests/",
+         "    auth.setup.js",
+         "    compra.spec.js",
+         "    login.spec.js",
+         "    usuarios.spec.js",
+         "  .env",
+         "  .env.example",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "codigo": "    },\n    {\n      name: 'firefox',\n      use: { ...devices['Desktop Firefox'] },\n      dependencies: ['setup'],\n    },\n    {\n      name: 'webkit',\n      use: { ...devices['Desktop Safari'] },\n      dependencies: ['setup'],\n    },\n    {\n      name: 'celular',\n      use: { ...devices['Pixel 7'] },\n      dependencies: ['setup'],\n    },\n  ],\n});",
+        "legenda": "a mesma linha nos outros navegadores",
+        "fonte": 19,
+        "digitar": true,
+        "linha0": 27,
+        "digitar_faixas": [
+         [
+          5,
+          5
+         ],
+         [
+          10,
+          10
+         ],
+         [
+          15,
+          15
+         ]
+        ]
        }
       },
       {
@@ -413,9 +460,9 @@
        "scene": {
         "type": "editor",
         "arquivo": "compra.spec.js",
-        "codigo": "import { test, expect } from '@playwright/test';\nimport { LoginPage } from '../pages/LoginPage';\nimport { ProdutosPage } from '../pages/ProdutosPage';\nimport { CheckoutPage } from '../pages/CheckoutPage';\n\ntest.describe('Compra', () => {\n  test.beforeEach(async ({ page }) => {\n    await page.goto('/');\n    const login = new LoginPage(page);\n    await login.entrar(process.env.SAUCE_USER, process.env.SAUCE_PASSWORD);\n  });\n",
+        "codigo": "import { test, expect } from '@playwright/test';\nimport { LoginPage } from '../pages/LoginPage';\nimport { ProdutosPage } from '../pages/ProdutosPage';\nimport { CheckoutPage } from '../pages/CheckoutPage';\n\ntest.describe('Compra', () => {\n  test.beforeEach(async ({ page }) => {\n    await page.goto('/');\n    const login = new LoginPage(page);\n    await login.entrar(process.env.SAUCE_USER, process.env.SAUCE_PASSWORD);\n  });\n\n  test('compra uma mochila do começo ao fim', async ({ page }) => {\n    const produtos = new ProdutosPage(page);\n    const checkout = new CheckoutPage(page);\n\n    await test.step('adiciona a mochila no carrinho', async () => {\n      await produtos.adicionar('sauce-labs-backpack');\n      await expect(produtos.contadorCarrinho).toHaveText('1');\n    });\n\n    await test.step('abre o carrinho', async () => {\n      await produtos.irParaCarrinho();\n      await expect(page.getByText('Sauce Labs Backpack')).toBeVisible();\n    });\n\n    await test.step('preenche os dados de entrega', async () => {\n      await checkout.botaoCheckout.click();\n      await checkout.preencherDados('Maria', 'Silva', '88000-000');\n    });\n\n    await test.step('finaliza a compra', async () => {\n      await checkout.botaoFinalizar.click();\n      await expect(checkout.mensagemFinal).toHaveText('Thank you for your order!');\n    });\n  });\n});",
         "legenda": "Sai o login: import, describe e beforeEach",
-        "fonte": 24,
+        "fonte": 22,
         "digitar": false,
         "pastas": [
          "meu-primeiro-playwright",
@@ -454,9 +501,9 @@
        "scene": {
         "type": "editor",
         "arquivo": "compra.spec.js",
-        "codigo": "    await test.step('finaliza a compra', async () => {\n      await checkout.botaoFinalizar.click();\n      await expect(checkout.mensagemFinal).toHaveText('Thank you for your order!');\n    });\n  });\n});",
+        "codigo": "import { test, expect } from '@playwright/test';\nimport { ProdutosPage } from '../pages/ProdutosPage';\nimport { CheckoutPage } from '../pages/CheckoutPage';\n\n\n  test('compra uma mochila do começo ao fim', async ({ page }) => {\n    const produtos = new ProdutosPage(page);\n    const checkout = new CheckoutPage(page);\n\n    await test.step('adiciona a mochila no carrinho', async () => {\n      await produtos.adicionar('sauce-labs-backpack');\n      await expect(produtos.contadorCarrinho).toHaveText('1');\n    });\n\n    await test.step('abre o carrinho', async () => {\n      await produtos.irParaCarrinho();\n      await expect(page.getByText('Sauce Labs Backpack')).toBeVisible();\n    });\n\n    await test.step('preenche os dados de entrega', async () => {\n      await checkout.botaoCheckout.click();\n      await checkout.preencherDados('Maria', 'Silva', '88000-000');\n    });\n\n    await test.step('finaliza a compra', async () => {\n      await checkout.botaoFinalizar.click();\n      await expect(checkout.mensagemFinal).toHaveText('Thank you for your order!');\n    });\n  });\n});",
         "legenda": "Sai o fechamento do describe",
-        "fonte": 24,
+        "fonte": 22,
         "digitar": false,
         "pastas": [
          "meu-primeiro-playwright",
@@ -478,11 +525,12 @@
          "  package.json",
          "  playwright.config.js"
         ],
-        "linha0": 32,
+        "rolar": true,
+        "rolar_de": 0.8,
         "apagar": [
-         6
+         30
         ],
-        "apagar_em": 2.0
+        "apagar_em": 3.0
        }
       },
       {
@@ -490,6 +538,10 @@
        "scene": {
         "type": "editor",
         "arquivo": "compra.spec.js",
+        "codigo": "import { test, expect } from '@playwright/test';\nimport { ProdutosPage } from '../pages/ProdutosPage';\nimport { CheckoutPage } from '../pages/CheckoutPage';\n\ntest.use({ storageState: 'playwright/.auth/usuario.json' });\n\ntest('compra uma mochila do começo ao fim', async ({ page }) => {\n  const produtos = new ProdutosPage(page);\n  const checkout = new CheckoutPage(page);\n\n  await test.step('adiciona a mochila no carrinho', async () => {\n    await produtos.adicionar('sauce-labs-backpack');\n    await expect(produtos.contadorCarrinho).toHaveText('1');\n  });\n\n  await test.step('abre o carrinho', async () => {\n    await produtos.irParaCarrinho();\n    await expect(page.getByText('Sauce Labs Backpack')).toBeVisible();\n  });\n\n  await test.step('preenche os dados de entrega', async () => {\n    await checkout.botaoCheckout.click();\n    await checkout.preencherDados('Maria', 'Silva', '88000-000');\n  });\n\n  await test.step('finaliza a compra', async () => {\n    await checkout.botaoFinalizar.click();\n    await expect(checkout.mensagemFinal).toHaveText('Thank you for your order!');\n  });\n});",
+        "legenda": "test.use({ storageState }) = use o login salvo",
+        "fonte": 22,
+        "digitar": true,
         "pastas": [
          "meu-primeiro-playwright",
          "  .github/",
@@ -510,10 +562,6 @@
          "  package.json",
          "  playwright.config.js"
         ],
-        "codigo": "import { test, expect } from '@playwright/test';\nimport { ProdutosPage } from '../pages/ProdutosPage';\nimport { CheckoutPage } from '../pages/CheckoutPage';\n\ntest.use({ storageState: 'playwright/.auth/usuario.json' });\n\ntest('compra uma mochila do começo ao fim', async ({ page }) => {",
-        "legenda": "test.use({ storageState }) = use o login salvo",
-        "fonte": 24,
-        "digitar": true,
         "digitar_de": 5,
         "digitar_ate": 5
        }
@@ -523,6 +571,10 @@
        "scene": {
         "type": "editor",
         "arquivo": "compra.spec.js",
+        "codigo": "import { test, expect } from '@playwright/test';\nimport { ProdutosPage } from '../pages/ProdutosPage';\nimport { CheckoutPage } from '../pages/CheckoutPage';\n\ntest.use({ storageState: 'playwright/.auth/usuario.json' });\n\ntest('compra uma mochila do começo ao fim', async ({ page }) => {\n  const produtos = new ProdutosPage(page);\n  const checkout = new CheckoutPage(page);\n\n  await test.step('adiciona a mochila no carrinho', async () => {\n    await page.goto('/inventory.html');\n    await produtos.adicionar('sauce-labs-backpack');\n    await expect(produtos.contadorCarrinho).toHaveText('1');\n  });\n\n  await test.step('abre o carrinho', async () => {\n    await produtos.irParaCarrinho();\n    await expect(page.getByText('Sauce Labs Backpack')).toBeVisible();\n  });\n\n  await test.step('preenche os dados de entrega', async () => {\n    await checkout.botaoCheckout.click();\n    await checkout.preencherDados('Maria', 'Silva', '88000-000');\n  });\n\n  await test.step('finaliza a compra', async () => {\n    await checkout.botaoFinalizar.click();\n    await expect(checkout.mensagemFinal).toHaveText('Thank you for your order!');\n  });\n});",
+        "legenda": "Abre direto a página de produtos",
+        "fonte": 22,
+        "digitar": true,
         "pastas": [
          "meu-primeiro-playwright",
          "  .github/",
@@ -543,13 +595,8 @@
          "  package.json",
          "  playwright.config.js"
         ],
-        "codigo": "test('compra uma mochila do começo ao fim', async ({ page }) => {\n  const produtos = new ProdutosPage(page);\n  const checkout = new CheckoutPage(page);\n\n  await test.step('adiciona a mochila no carrinho', async () => {\n    await page.goto('/inventory.html');\n    await produtos.adicionar('sauce-labs-backpack');\n    await expect(produtos.contadorCarrinho).toHaveText('1');",
-        "legenda": "Abre direto a página de produtos",
-        "fonte": 22,
-        "digitar": true,
-        "linha0": 7,
-        "digitar_de": 6,
-        "digitar_ate": 6
+        "digitar_de": 12,
+        "digitar_ate": 12
        }
       },
       {

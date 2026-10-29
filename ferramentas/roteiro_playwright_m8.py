@@ -394,6 +394,9 @@ L_USE = ln(C42, "test.use"); C42L = C42.split("\n"); L_GOTO42 = ln(C42, "invento
 assert "LoginPage" in C41L[1] and C41L[5].startswith("test.describe") and C41L[-1] == "});"
 _sobra = [l.strip() for i, l in enumerate(C41L) if i + 1 not in [2] + list(range(6, L_T41 - 1)) + [len(C41L)] and l.strip()]
 assert [l.strip() for l in C42L if l.strip() and "test.use" not in l and "inventory.html" not in l] == _sobra, "a 42 = a 41 sem o login + test.use + goto (é o que a aula mostra)"
+CFGL = CFG.split("\n"); L_PROJ = ln(CFG, "projects:"); L_DEPS = [i + 1 for i, l in enumerate(CFGL) if "dependencies" in l]
+assert len(L_DEPS) == 4 and L_SETUP == L_PROJ + 1 and CFGL[L_DEPS[0] - 3].strip().startswith("name: 'chromium'")
+AP42 = [2] + list(range(6, L_T41 - 1)); C41_SEM = [l for i, l in enumerate(C41L) if i + 1 not in AP42]
 AULAS.append(projeto(42, "MÓDULO 8 · AULA 42", "Indo além - login uma vez só com storageState", [
     ("Todo teste faz login de novo. Se o login leva dois segundos e você tem trezentos testes, são dez minutos só entrando no site.", titulo(42, "LOGIN UMA VEZ SÓ")),
     ("A ideia: fazer o login uma vez, e salvar o navegador já logado num arquivo. Os testes que precisam começar logados usam esse arquivo.",
@@ -410,19 +413,24 @@ AULAS.append(projeto(42, "MÓDULO 8 · AULA 42", "Indo além - login uma vez só
     ("E a linha nova, no fim: page ponto context, ponto storage state, com o path. Guarde o estado do navegador, os cookies, nesse arquivo.",
      edc(AUTH, "storageState = guarde o estado", arquivo="auth.setup.js", pastas=ARV_AUTH, digitar=True, digitar_de=L_SS, digitar_ate=L_SS, fonte=22)),
     ("No config, dentro dos projects, um project novo chamado setup. Ele roda os arquivos que terminam em setup ponto js.",
-     edc(J([l for l in CFG_PL if "dependencies" not in l]), "project setup", arquivo="playwright.config.js", pastas=ARV_AUTH, linha0=L_SETUP - 2, digitar=True, digitar_de=3, digitar_ate=3, fonte=26)),
-    ("E no project do chromium, dependencies setup: ele só começa depois que o setup terminar. Faz o mesmo no firefox, no webkit e no celular.",
-     edc(CFG_P, "dependencies = depende do setup", arquivo="playwright.config.js", pastas=ARV_AUTH, linha0=L_SETUP - 2, digitar=True, digitar_de=len(CFG_PL) - 1, digitar_ate=len(CFG_PL) - 1, fonte=26)),
+     edc(J([l for i, l in enumerate(CFGL) if i + 1 not in L_DEPS]), "project setup", arquivo="playwright.config.js", pastas=ARV_AUTH, rolar=True, rolar_ate=L_SETUP + 6,
+         digitar=True, digitar_de=L_SETUP, digitar_ate=L_SETUP, fonte=22)),
+    ("E no project do chromium, dependencies setup: ele só começa depois que o setup terminar.",
+     edc(J([l for i, l in enumerate(CFGL) if L_PROJ <= i + 1 <= L_DEPS[2] + 1 and i + 1 not in L_DEPS[1:]]), "dependencies = depende do setup", arquivo="playwright.config.js", pastas=ARV_AUTH,
+         linha0=L_PROJ, digitar=True, digitar_de=L_DEPS[0] - L_PROJ + 1, digitar_ate=L_DEPS[0] - L_PROJ + 1, fonte=22)),
+    ("Desce mais um pouco e faz o mesmo no firefox, no webkit e no celular: a mesma linha em cada um.",
+     edc(J(CFGL[L_DEPS[0]:]), "a mesma linha nos outros navegadores", arquivo="playwright.config.js", pastas=ARV_AUTH, linha0=L_DEPS[0] + 1,
+         digitar=True, digitar_faixas=[[l - L_DEPS[0], l - L_DEPS[0]] for l in L_DEPS[1:]], fonte=19)),
     ("Agora, quem usa o login salvo? Existem dois jeitos. A gente vai usar este: ligar só nos arquivos que precisam começar logados. O teste de login, por exemplo, precisa começar deslogado.",
      {"type": "cards", "itens": [["✓", "compra.spec.js", "começa logado"], ["✗", "login.spec.js", "precisa começar deslogado", VERM]]}),
     ("Agora o compra ponto spec. O login não precisa mais acontecer aqui. Então apaga o import do LoginPage, o describe, e o before each inteiro.",
-     edc(J(C41L[:L_T41 - 1]), "Sai o login: import, describe e beforeEach", arquivo="compra.spec.js", pastas=ARV_AUTH, apagar=[2] + list(range(6, L_T41 - 1)), apagar_em=2.6, fonte=24)),
+     edc(C41, "Sai o login: import, describe e beforeEach", arquivo="compra.spec.js", pastas=ARV_AUTH, apagar=AP42, apagar_em=2.6, fonte=22)),
     ("Lá no fim do arquivo, apaga também o fechamento do describe. E seleciona tudo e aperta Shift Tab, pra o teste voltar pro canto esquerdo.",
-     edc(J(C41L[-6:]), "Sai o fechamento do describe", arquivo="compra.spec.js", pastas=ARV_AUTH, linha0=len(C41L) - 5, apagar=[6], apagar_em=2.0, fonte=24)),
+     edc(J(C41_SEM), "Sai o fechamento do describe", arquivo="compra.spec.js", pastas=ARV_AUTH, rolar=True, rolar_de=0.8, apagar=[len(C41_SEM)], apagar_em=3.0, fonte=22)),
     ("E no lugar do login, depois dos imports: test ponto use, storage state, e o caminho do arquivo. Use esse login salvo.",
-     edc(J(C42L[:L_USE + 2]), "test.use({ storageState }) = use o login salvo", arquivo="compra.spec.js", pastas=ARV_AUTH, digitar=True, digitar_de=L_USE, digitar_ate=L_USE, fonte=24)),
+     edc(J([l for i, l in enumerate(C42L) if i + 1 != L_GOTO42]), "test.use({ storageState }) = use o login salvo", arquivo="compra.spec.js", pastas=ARV_AUTH, digitar=True, digitar_de=L_USE, digitar_ate=L_USE, fonte=22)),
     ("Só falta um detalhe: o teste não passa mais pela tela de login, então ninguém abre o site. O primeiro passo começa abrindo direto a página de produtos: page ponto goto, barra inventory ponto html.",
-     edc(J(C42L[L_USE + 1:L_GOTO42 + 2]), "Abre direto a página de produtos", arquivo="compra.spec.js", pastas=ARV_AUTH, linha0=L_USE + 2, digitar=True, digitar_de=L_GOTO42 - L_USE - 1, digitar_ate=L_GOTO42 - L_USE - 1, fonte=22)),
+     edc(C42, "Abre direto a página de produtos", arquivo="compra.spec.js", pastas=ARV_AUTH, digitar=True, digitar_de=L_GOTO42, digitar_ate=L_GOTO42, fonte=22)),
     ("Roda: o setup aparece primeiro, e a compra começa direto na página de produtos.",
      edc(trecho(C42, L_USE, L_USE + 9), "Começa direto nos produtos", arquivo="compra.spec.js", pastas=ARV_AUTH, linha0=L_USE,
          terminal=[{"cmd": "npx playwright test compra.spec.js --headed --project=chromium", "em": 0.03}, {"out": "Running 2 tests using 1 worker", "cor": "mut", "em": 0.06},
