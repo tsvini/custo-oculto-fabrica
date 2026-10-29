@@ -1,18 +1,14 @@
 {
- "atualizado": "28/10/2026 13:50",
+ "atualizado": "28/10/2026 22:56",
  "fontes": {
   "custo_oculto": {
    "seguidores": 13,
-   "views_total": 5293,
-   "videos": 38,
-   "views_28d": 5146,
-   "views_7d": 526,
-   "seguidores_28d": 16,
+   "views_total": 5310,
+   "videos": 39,
+   "views_28d": 5294,
+   "views_7d": 654,
+   "seguidores_28d": 17,
    "dia": [
-    [
-     "2026-09-30",
-     0
-    ],
     [
      "2026-10-01",
      0
@@ -112,6 +108,10 @@
     [
      "2026-10-25",
      176
+    ],
+    [
+     "2026-10-26",
+     148
     ]
    ],
    "top": [
@@ -156,7 +156,7 @@
   "hidden_cost": {
    "seguidores": 0,
    "views_total": 21,
-   "videos": 13,
+   "videos": 14,
    "views_28d": 0,
    "views_7d": 0,
    "seguidores_28d": 0,
@@ -166,16 +166,12 @@
   },
   "vini_qa": {
    "seguidores": 0,
-   "views_total": 49,
+   "views_total": 54,
    "videos": 5,
-   "views_28d": 44,
+   "views_28d": 49,
    "views_7d": 44,
    "seguidores_28d": 0,
    "dia": [
-    [
-     "2026-09-30",
-     0
-    ],
     [
      "2026-10-01",
      0
@@ -266,7 +262,7 @@
     ],
     [
      "2026-10-23",
-     13
+     12
     ],
     [
      "2026-10-24",
@@ -275,20 +271,24 @@
     [
      "2026-10-25",
      0
+    ],
+    [
+     "2026-10-26",
+     6
     ]
    ],
    "top": [
     {
      "titulo": "Seu primeiro teste automatizado",
      "url": "https://youtu.be/lyfD8rJ6F30",
-     "views": 24,
-     "retencao": 90,
+     "views": 25,
+     "retencao": 81,
      "likes": 0
     },
     {
      "titulo": "Você não precisa saber programar pra automatizar teste",
      "url": "https://youtu.be/1hbvry7AlKk",
-     "views": 13,
+     "views": 14,
      "retencao": 28,
      "likes": 0
     },
@@ -298,6 +298,13 @@
      "views": 6,
      "retencao": 76,
      "likes": 1
+    },
+    {
+     "titulo": "O botão do Cypress que escreve o código pra você",
+     "url": "https://youtu.be/T-yIhAQSwrc",
+     "views": 4,
+     "retencao": 62,
+     "likes": 0
     }
    ],
    "nome": "Vini QA (YouTube)"
@@ -305,10 +312,16 @@
   "tiktok": {
    "usuario": "Custo Oculto",
    "seguidores": 61,
-   "curtidas": 376,
-   "videos": 19,
-   "views_total": 8498,
+   "curtidas": 382,
+   "videos": 20,
+   "views_total": 8611,
    "top": [
+    {
+     "titulo": "O CUSTO DE SER GIGANTE — EP. 06 A Saraiva já teve mais de 100 lojas no Brasil. Em 2018, en",
+     "url": "https://www.tiktok.com/@custooculto/video/7701771236770319637?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
+     "views": 102,
+     "likes": 4
+    },
     {
      "titulo": "O CUSTO DE SER GIGANTE — EP. 05 A Microsoft pagou US$ 8,5 bilhões pelo Skype. Quatorze ano",
      "url": "https://www.tiktok.com/@custooculto/video/7701373214546513173?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
@@ -318,7 +331,7 @@
     {
      "titulo": "O Orkut ainda crescia no Brasil. O problema é que o Facebook crescia muito mais rápido. En",
      "url": "https://www.tiktok.com/@custooculto/video/7701077678123797781?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 731,
+     "views": 734,
      "likes": 14
     },
     {
@@ -338,12 +351,6 @@
      "url": "https://www.tiktok.com/@custooculto/video/7699988579719679252?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
      "views": 534,
      "likes": 24
-    },
-    {
-     "titulo": "O CUSTO DE SER GIGANTE — EP. 01 A Blockbuster dominava o aluguel de filmes e parecia impos",
-     "url": "https://www.tiktok.com/@custooculto/video/7699596334155713812?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 522,
-     "likes": 12
     }
    ],
    "nome": "TikTok @custooculto"
@@ -381,26 +388,6 @@
   }
  },
  "agenda": [
-  {
-   "quando": "2026-10-28T18:00:00-03:00",
-   "plataforma": "Hidden Cost (YouTube EN)",
-   "chave": "hidden_cost",
-   "titulo": "From $47 Billion to Bankrupt in 4 Years: WeWork #shorts",
-   "tipo": "short",
-   "id": "wework_short1",
-   "url": "https://studio.youtube.com/video/7gGQg2T1xXc/edit"
-  },
-  {
-   "quando": "2026-10-28T19:00:00-03:00",
-   "titulo": "A jogada que quase matou a Netflix · RASCUNHO, não sai sozinho",
-   "tipo": "metricool",
-   "id": "metricool",
-   "url": "https://app.metricool.com/planner",
-   "plataforma_rede": "tiktok",
-   "chave": "tiktok",
-   "plataforma": "TikTok (Metricool)",
-   "sem_cancelar": true
-  },
   {
    "quando": "2026-10-29T10:00:00-03:00",
    "titulo": "Netflix x Blockbuster, parte 2 de 4 · RASCUNHO, não sai sozinho",
