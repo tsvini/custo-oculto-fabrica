@@ -1,18 +1,14 @@
 {
- "atualizado": "29/10/2026 14:04",
+ "atualizado": "29/10/2026 23:08",
  "fontes": {
   "custo_oculto": {
    "seguidores": 13,
    "views_total": 5367,
    "videos": 40,
-   "views_28d": 5294,
-   "views_7d": 654,
+   "views_28d": 5327,
+   "views_7d": 681,
    "seguidores_28d": 17,
    "dia": [
-    [
-     "2026-10-01",
-     0
-    ],
     [
      "2026-10-02",
      0
@@ -112,6 +108,10 @@
     [
      "2026-10-26",
      148
+    ],
+    [
+     "2026-10-27",
+     33
     ]
    ],
    "top": [
@@ -168,14 +168,10 @@
    "seguidores": 0,
    "views_total": 144,
    "videos": 5,
-   "views_28d": 49,
-   "views_7d": 44,
+   "views_28d": 54,
+   "views_7d": 43,
    "seguidores_28d": 0,
    "dia": [
-    [
-     "2026-10-01",
-     0
-    ],
     [
      "2026-10-02",
      0
@@ -275,13 +271,17 @@
     [
      "2026-10-26",
      6
+    ],
+    [
+     "2026-10-27",
+     5
     ]
    ],
    "top": [
     {
      "titulo": "Seu primeiro teste automatizado",
      "url": "https://youtu.be/lyfD8rJ6F30",
-     "views": 25,
+     "views": 28,
      "retencao": 81,
      "likes": 0
     },
@@ -302,7 +302,7 @@
     {
      "titulo": "O botão do Cypress que escreve o código pra você",
      "url": "https://youtu.be/T-yIhAQSwrc",
-     "views": 4,
+     "views": 6,
      "retencao": 62,
      "likes": 0
     }
@@ -311,22 +311,22 @@
   },
   "tiktok": {
    "usuario": "Custo Oculto",
-   "seguidores": 62,
-   "curtidas": 386,
+   "seguidores": 63,
+   "curtidas": 388,
    "videos": 21,
-   "views_total": 7983,
+   "views_total": 8124,
    "top": [
     {
      "titulo": "O CUSTO DE SER GIGANTE — EP. 07 A Polishop já teve cerca de 280 lojas no Brasil. Anos depo",
      "url": "https://www.tiktok.com/@custooculto/video/7702089941328612629?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 28,
-     "likes": 1
+     "views": 145,
+     "likes": 2
     },
     {
      "titulo": "O CUSTO DE SER GIGANTE — EP. 06 A Saraiva já teve mais de 100 lojas no Brasil. Em 2018, en",
      "url": "https://www.tiktok.com/@custooculto/video/7701771236770319637?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 208,
-     "likes": 7
+     "views": 219,
+     "likes": 8
     },
     {
      "titulo": "O CUSTO DE SER GIGANTE — EP. 05 A Microsoft pagou US$ 8,5 bilhões pelo Skype. Quatorze ano",
@@ -337,13 +337,13 @@
     {
      "titulo": "O Orkut ainda crescia no Brasil. O problema é que o Facebook crescia muito mais rápido. En",
      "url": "https://www.tiktok.com/@custooculto/video/7701077678123797781?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 736,
+     "views": 738,
      "likes": 14
     },
     {
      "titulo": "O CUSTO DE SER GIGANTE — EP. 04 A Nokia não ignorou o smartphone. Ela pesquisava telas sen",
      "url": "https://www.tiktok.com/@custooculto/video/7700696929457409286?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 600,
+     "views": 601,
      "likes": 27
     },
     {
@@ -388,17 +388,6 @@
   }
  },
  "agenda": [
-  {
-   "quando": "2026-10-29T19:00:00-03:00",
-   "titulo": "A Americanas comprou a Blockbuster no Brasil · RASCUNHO, não sai sozinho",
-   "tipo": "metricool",
-   "id": "metricool",
-   "url": "https://app.metricool.com/planner",
-   "plataforma_rede": "tiktok",
-   "chave": "tiktok",
-   "plataforma": "TikTok (Metricool)",
-   "sem_cancelar": true
-  },
   {
    "quando": "2026-10-30T10:00:00-03:00",
    "titulo": "Netflix x Blockbuster, parte 3 de 4 · RASCUNHO, não sai sozinho",
