@@ -1,5 +1,5 @@
 {
- "data": "2026-10-29",
+ "data": "2026-10-30",
  "por_formato_12m": [
   {
    "creatorContentType": "creatorContentTypeUnspecified",
@@ -9,38 +9,32 @@
   },
   {
    "creatorContentType": "shorts",
-   "views": 5192,
-   "estimatedMinutesWatched": 1310,
+   "views": 5222,
+   "estimatedMinutesWatched": 1319,
    "subscribersGained": 14
   },
   {
    "creatorContentType": "videoOnDemand",
-   "views": 102,
-   "estimatedMinutesWatched": 353,
+   "views": 104,
+   "estimatedMinutesWatched": 359,
    "subscribersGained": 1
   }
  ],
  "por_formato_7d": [
   {
    "creatorContentType": "shorts",
-   "views": 493,
-   "estimatedMinutesWatched": 179,
-   "subscribersGained": 2
+   "views": 449,
+   "estimatedMinutesWatched": 158,
+   "subscribersGained": 1
   },
   {
    "creatorContentType": "videoOnDemand",
-   "views": 58,
-   "estimatedMinutesWatched": 255,
+   "views": 56,
+   "estimatedMinutesWatched": 246,
    "subscribersGained": 0
   }
  ],
  "dia_a_dia_28d": [
-  {
-   "day": "2026-10-01",
-   "views": 0,
-   "estimatedMinutesWatched": 0,
-   "subscribersGained": 0
-  },
   {
    "day": "2026-10-02",
    "views": 0,
@@ -190,18 +184,24 @@
    "views": 148,
    "estimatedMinutesWatched": 65,
    "subscribersGained": 1
+  },
+  {
+   "day": "2026-10-27",
+   "views": 33,
+   "estimatedMinutesWatched": 14,
+   "subscribersGained": 0
   }
  ],
  "origem_28d": [
   {
    "insightTrafficSourceType": "SHORTS",
-   "views": 4772,
-   "estimatedMinutesWatched": 1111
+   "views": 4789,
+   "estimatedMinutesWatched": 1114
   },
   {
    "insightTrafficSourceType": "YT_SEARCH",
-   "views": 243,
-   "estimatedMinutesWatched": 41
+   "views": 253,
+   "estimatedMinutesWatched": 50
   },
   {
    "insightTrafficSourceType": "YT_CHANNEL",
@@ -215,7 +215,7 @@
   },
   {
    "insightTrafficSourceType": "SUBSCRIBER",
-   "views": 40,
+   "views": 41,
    "estimatedMinutesWatched": 31
   },
   {
@@ -225,12 +225,12 @@
   },
   {
    "insightTrafficSourceType": "NOTIFICATION",
-   "views": 20,
-   "estimatedMinutesWatched": 47
+   "views": 24,
+   "estimatedMinutesWatched": 49
   },
   {
    "insightTrafficSourceType": "NO_LINK_OTHER",
-   "views": 7,
+   "views": 8,
    "estimatedMinutesWatched": 15
   },
   {
@@ -267,6 +267,10 @@
    "views": 6
   },
   {
+   "insightTrafficSourceDetail": "skype",
+   "views": 3
+  },
+  {
    "insightTrafficSourceDetail": "theranos",
    "views": 3
   },
@@ -284,6 +288,10 @@
   },
   {
    "insightTrafficSourceDetail": "empresas que faliram",
+   "views": 2
+  },
+  {
+   "insightTrafficSourceDetail": "orkut",
    "views": 2
   },
   {
@@ -340,14 +348,6 @@
   },
   {
    "insightTrafficSourceDetail": "orkut como era",
-   "views": 1
-  },
-  {
-   "insightTrafficSourceDetail": "pack ferrari hot wheels",
-   "views": 1
-  },
-  {
-   "insightTrafficSourceDetail": "pastel",
    "views": 1
   }
  ],
@@ -486,10 +486,10 @@
   },
   {
    "video": "uHUtM940Ue0",
-   "views": 117,
-   "estimatedMinutesWatched": 55,
-   "averageViewDuration": 68,
-   "averageViewPercentage": 148.6,
+   "views": 126,
+   "estimatedMinutesWatched": 57,
+   "averageViewDuration": 65,
+   "averageViewPercentage": 142.98,
    "subscribersGained": 1,
    "likes": 6,
    "comments": 0,
@@ -519,10 +519,10 @@
   },
   {
    "video": "_aYquXLalP0",
-   "views": 57,
-   "estimatedMinutesWatched": 20,
-   "averageViewDuration": 52,
-   "averageViewPercentage": 61.65999999999999,
+   "views": 58,
+   "estimatedMinutesWatched": 21,
+   "averageViewDuration": 51,
+   "averageViewPercentage": 60.29,
    "subscribersGained": 0,
    "likes": 1,
    "comments": 0,
@@ -584,25 +584,25 @@
    "shares": 0
   },
   {
+   "video": "xhA47M-Ueq8",
+   "views": 37,
+   "estimatedMinutesWatched": 7,
+   "averageViewDuration": 26,
+   "averageViewPercentage": 54.79999999999999,
+   "subscribersGained": 0,
+   "likes": 2,
+   "comments": 0,
+   "shares": 0
+  },
+  {
    "video": "3e-eXXCL27s",
-   "views": 36,
+   "views": 37,
    "estimatedMinutesWatched": 142,
    "averageViewDuration": 304,
    "averageViewPercentage": 60.95,
    "subscribersGained": 1,
    "likes": 2,
    "comments": 2,
-   "shares": 0
-  },
-  {
-   "video": "xhA47M-Ueq8",
-   "views": 36,
-   "estimatedMinutesWatched": 7,
-   "averageViewDuration": 28,
-   "averageViewPercentage": 58.28,
-   "subscribersGained": 0,
-   "likes": 2,
-   "comments": 0,
    "shares": 0
   },
   {
@@ -640,12 +640,23 @@
   },
   {
    "video": "YL2JUCrwns8",
-   "views": 17,
-   "estimatedMinutesWatched": 2,
-   "averageViewDuration": 23,
-   "averageViewPercentage": 52.07999999999999,
+   "views": 21,
+   "estimatedMinutesWatched": 3,
+   "averageViewDuration": 26,
+   "averageViewPercentage": 57.96,
    "subscribersGained": 0,
    "likes": 1,
+   "comments": 1,
+   "shares": 0
+  },
+  {
+   "video": "cl7saCSReIk",
+   "views": 15,
+   "estimatedMinutesWatched": 6,
+   "averageViewDuration": 30,
+   "averageViewPercentage": 62.61,
+   "subscribersGained": 0,
+   "likes": 2,
    "comments": 1,
    "shares": 0
   },
@@ -684,10 +695,10 @@
   },
   {
    "video": "TIv6Sg8n_rI",
-   "views": 10,
-   "estimatedMinutesWatched": 15,
-   "averageViewDuration": 183,
-   "averageViewPercentage": 54.38000000000001,
+   "views": 11,
+   "estimatedMinutesWatched": 21,
+   "averageViewDuration": 208,
+   "averageViewPercentage": 61.57,
    "subscribersGained": 0,
    "likes": 3,
    "comments": 2,
@@ -1839,7 +1850,7 @@
  },
  "contagem_atual": {
   "itapemirim_longo": {
-   "views": 42,
+   "views": 43,
    "likes": 3,
    "comentarios": 0,
    "status": "public"
@@ -1965,7 +1976,7 @@
    "status": "public"
   },
   "wework_short1": {
-   "views": 0,
+   "views": 1,
    "likes": 0,
    "comentarios": 0,
    "status": "public"
@@ -2007,7 +2018,7 @@
    "status": "private"
   },
   "sadia_short1": {
-   "views": 37,
+   "views": 38,
    "likes": 2,
    "comentarios": 0,
    "status": "public"
@@ -2038,7 +2049,7 @@
   }
  },
  "canal": {
-  "viewCount": "5367",
+  "viewCount": "5386",
   "subscriberCount": "13",
   "hiddenSubscriberCount": false,
   "videoCount": "40"
@@ -2183,7 +2194,7 @@
    "duracao": "PT46S",
    "status": "public",
    "agendado": null,
-   "views": 127,
+   "views": 128,
    "likes": 6,
    "comentarios": 0
   },
@@ -2207,6 +2218,17 @@
    "agendado": null,
    "views": 90,
    "likes": 2,
+   "comentarios": 0
+  },
+  {
+   "id": "7JO3W7TzrME",
+   "titulo": "A Saraiva tinha mais de 100 lojas. Em 2023, fechou as últimas 5.",
+   "publicado": "2026-10-28T18:48:19Z",
+   "duracao": "PT1M",
+   "status": "public",
+   "agendado": null,
+   "views": 75,
+   "likes": 0,
    "comentarios": 0
   },
   {
@@ -2254,24 +2276,13 @@
    "comentarios": 1
   },
   {
-   "id": "7JO3W7TzrME",
-   "titulo": "A Saraiva tinha mais de 100 lojas. Em 2023, fechou as últimas 5.",
-   "publicado": "2026-10-28T18:48:19Z",
-   "duracao": "PT1M",
-   "status": "public",
-   "agendado": null,
-   "views": 47,
-   "likes": 0,
-   "comentarios": 0
-  },
-  {
    "id": "4WuKNxpR188",
    "titulo": "O Que Aconteceu Com a Itapemirim? A Empresa de Ônibus Que Criou Uma Aérea e Quebrou",
    "publicado": "2026-10-11T23:09:37Z",
    "duracao": "PT7M19S",
    "status": "public",
    "agendado": null,
-   "views": 42,
+   "views": 43,
    "likes": 3,
    "comentarios": 0
   },
@@ -2293,7 +2304,7 @@
    "duracao": "PT49S",
    "status": "public",
    "agendado": null,
-   "views": 37,
+   "views": 38,
    "likes": 2,
    "comentarios": 0
   },
@@ -2320,6 +2331,17 @@
    "comentarios": 0
   },
   {
+   "id": "cl7saCSReIk",
+   "titulo": "A Microsoft pagou US$ 8,5 bilhões pelo Skype. 14 anos depois, acabou.",
+   "publicado": "2026-10-27T15:45:42Z",
+   "duracao": "PT49S",
+   "status": "public",
+   "agendado": null,
+   "views": 30,
+   "likes": 2,
+   "comentarios": 2
+  },
+  {
    "id": "r9t1a5rQW8U",
    "titulo": "A Blockbuster podia ter comprado a Netflix por 50 milhões de dólares. E recusou #shorts",
    "publicado": "2026-10-22T21:00:13Z",
@@ -2329,17 +2351,6 @@
    "views": 30,
    "likes": 1,
    "comentarios": 0
-  },
-  {
-   "id": "cl7saCSReIk",
-   "titulo": "A Microsoft pagou US$ 8,5 bilhões pelo Skype. 14 anos depois, acabou.",
-   "publicado": "2026-10-27T15:45:42Z",
-   "duracao": "PT49S",
-   "status": "public",
-   "agendado": null,
-   "views": 25,
-   "likes": 2,
-   "comentarios": 2
   },
   {
    "id": "YL2JUCrwns8",
@@ -2364,6 +2375,17 @@
    "comentarios": 0
   },
   {
+   "id": "_EvPaiyk3nU",
+   "titulo": "THERANOS: A Startup de US$ 9 Bilhões de Elizabeth Holmes Que Era Uma Mentira",
+   "publicado": "2026-10-10T17:09:52Z",
+   "duracao": "PT9M41S",
+   "status": "public",
+   "agendado": null,
+   "views": 16,
+   "likes": 1,
+   "comentarios": 0
+  },
+  {
    "id": "TZLpKjOWKH4",
    "titulo": "Você pode estar pagando a conta do Banco Master #shorts",
    "publicado": "2026-10-16T21:00:12Z",
@@ -2373,17 +2395,6 @@
    "views": 15,
    "likes": 2,
    "comentarios": 1
-  },
-  {
-   "id": "_EvPaiyk3nU",
-   "titulo": "THERANOS: A Startup de US$ 9 Bilhões de Elizabeth Holmes Que Era Uma Mentira",
-   "publicado": "2026-10-10T17:09:52Z",
-   "duracao": "PT9M41S",
-   "status": "public",
-   "agendado": null,
-   "views": 15,
-   "likes": 1,
-   "comentarios": 0
   },
   {
    "id": "TIv6Sg8n_rI",
@@ -2419,21 +2430,32 @@
    "comentarios": 0
   },
   {
-   "id": "0DvgfHx5cY8",
-   "titulo": "Parte 6 - A fraude que terminou em 11 anos de prisão",
-   "publicado": "2026-10-10T17:47:16Z",
-   "duracao": "PT59S",
+   "id": "7enHVaVNTOI",
+   "titulo": "A Polishop já teve 280 lojas. O que aconteceu? | EP. 07",
+   "publicado": "2026-10-29T14:18:15Z",
+   "duracao": "PT1M14S",
    "status": "public",
    "agendado": null,
-   "views": 7,
-   "likes": 2,
-   "comentarios": 0
+   "views": 8,
+   "likes": 1,
+   "comentarios": 1
   },
   {
    "id": "ZFUM39-QiEs",
    "titulo": "Parte 5 - De US$ 4,5 bilhões para ZERO",
    "publicado": "2026-10-10T17:46:53Z",
    "duracao": "PT54S",
+   "status": "public",
+   "agendado": null,
+   "views": 8,
+   "likes": 2,
+   "comentarios": 0
+  },
+  {
+   "id": "0DvgfHx5cY8",
+   "titulo": "Parte 6 - A fraude que terminou em 11 anos de prisão",
+   "publicado": "2026-10-10T17:47:16Z",
+   "duracao": "PT59S",
    "status": "public",
    "agendado": null,
    "views": 7,
@@ -2471,17 +2493,6 @@
    "agendado": null,
    "views": 6,
    "likes": 2,
-   "comentarios": 0
-  },
-  {
-   "id": "7enHVaVNTOI",
-   "titulo": "A Polishop já teve 280 lojas. O que aconteceu? | EP. 07",
-   "publicado": "2026-10-29T14:18:15Z",
-   "duracao": "PT1M14S",
-   "status": "public",
-   "agendado": null,
-   "views": 0,
-   "likes": 0,
    "comentarios": 0
   }
  ]
