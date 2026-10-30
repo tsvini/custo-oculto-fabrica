@@ -1,9 +1,9 @@
 {
- "atualizado": "29/10/2026 23:08",
+ "atualizado": "30/10/2026 13:50",
  "fontes": {
   "custo_oculto": {
    "seguidores": 13,
-   "views_total": 5367,
+   "views_total": 5386,
    "videos": 40,
    "views_28d": 5327,
    "views_7d": 681,
@@ -166,8 +166,8 @@
   },
   "vini_qa": {
    "seguidores": 0,
-   "views_total": 144,
-   "videos": 5,
+   "views_total": 146,
+   "videos": 6,
    "views_28d": 54,
    "views_7d": 43,
    "seguidores_28d": 0,
@@ -314,12 +314,12 @@
    "seguidores": 63,
    "curtidas": 388,
    "videos": 21,
-   "views_total": 8124,
+   "views_total": 8167,
    "top": [
     {
      "titulo": "O CUSTO DE SER GIGANTE — EP. 07 A Polishop já teve cerca de 280 lojas no Brasil. Anos depo",
      "url": "https://www.tiktok.com/@custooculto/video/7702089941328612629?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 145,
+     "views": 183,
      "likes": 2
     },
     {
@@ -388,26 +388,6 @@
   }
  },
  "agenda": [
-  {
-   "quando": "2026-10-30T10:00:00-03:00",
-   "titulo": "Netflix x Blockbuster, parte 3 de 4 · RASCUNHO, não sai sozinho",
-   "tipo": "metricool",
-   "id": "metricool",
-   "url": "https://app.metricool.com/planner",
-   "plataforma_rede": "tiktok",
-   "chave": "tiktok",
-   "plataforma": "TikTok (Metricool)",
-   "sem_cancelar": true
-  },
-  {
-   "quando": "2026-10-30T12:00:00-03:00",
-   "plataforma": "Vini QA (YouTube)",
-   "chave": "vini_qa",
-   "titulo": "Teste sem conferir não é teste",
-   "tipo": "short",
-   "id": "2XLbd50bQGo",
-   "url": "https://studio.youtube.com/video/2XLbd50bQGo/edit"
-  },
   {
    "quando": "2026-10-30T18:00:00-03:00",
    "plataforma": "Hidden Cost (YouTube EN)",
