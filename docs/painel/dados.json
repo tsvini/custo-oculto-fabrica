@@ -1,18 +1,14 @@
 {
- "atualizado": "30/10/2026 13:50",
+ "atualizado": "30/10/2026 22:47",
  "fontes": {
   "custo_oculto": {
    "seguidores": 13,
-   "views_total": 5386,
-   "videos": 40,
-   "views_28d": 5327,
-   "views_7d": 681,
+   "views_total": 5411,
+   "videos": 41,
+   "views_28d": 5384,
+   "views_7d": 642,
    "seguidores_28d": 17,
    "dia": [
-    [
-     "2026-10-02",
-     0
-    ],
     [
      "2026-10-03",
      0
@@ -103,7 +99,7 @@
     ],
     [
      "2026-10-25",
-     176
+     175
     ],
     [
      "2026-10-26",
@@ -112,13 +108,17 @@
     [
      "2026-10-27",
      33
+    ],
+    [
+     "2026-10-28",
+     58
     ]
    ],
    "top": [
     {
      "titulo": "Essa pasta de dente vendia o dobro da Colgate #shorts",
      "url": "https://youtu.be/sdWbo_dK2oE",
-     "views": 1054,
+     "views": 1055,
      "retencao": 48,
      "likes": 9
     },
@@ -156,7 +156,7 @@
   "hidden_cost": {
    "seguidores": 0,
    "views_total": 22,
-   "videos": 14,
+   "videos": 15,
    "views_28d": 0,
    "views_7d": 0,
    "seguidores_28d": 0,
@@ -166,16 +166,12 @@
   },
   "vini_qa": {
    "seguidores": 0,
-   "views_total": 146,
+   "views_total": 147,
    "videos": 6,
-   "views_28d": 54,
-   "views_7d": 43,
+   "views_28d": 144,
+   "views_7d": 127,
    "seguidores_28d": 0,
    "dia": [
-    [
-     "2026-10-02",
-     0
-    ],
     [
      "2026-10-03",
      0
@@ -275,13 +271,24 @@
     [
      "2026-10-27",
      5
+    ],
+    [
+     "2026-10-28",
+     90
     ]
    ],
    "top": [
     {
+     "titulo": "O seletor que não quebra",
+     "url": "https://youtu.be/4jlcqR1BzhE",
+     "views": 88,
+     "retencao": 47,
+     "likes": 0
+    },
+    {
      "titulo": "Seu primeiro teste automatizado",
      "url": "https://youtu.be/lyfD8rJ6F30",
-     "views": 28,
+     "views": 29,
      "retencao": 81,
      "likes": 0
     },
@@ -293,18 +300,18 @@
      "likes": 0
     },
     {
+     "titulo": "O botão do Cypress que escreve o código pra você",
+     "url": "https://youtu.be/T-yIhAQSwrc",
+     "views": 7,
+     "retencao": 72,
+     "likes": 0
+    },
+    {
      "titulo": "Como achar o nome de qualquer botão",
      "url": "https://youtu.be/kzc27cwf_oo",
      "views": 6,
      "retencao": 76,
      "likes": 1
-    },
-    {
-     "titulo": "O botão do Cypress que escreve o código pra você",
-     "url": "https://youtu.be/T-yIhAQSwrc",
-     "views": 6,
-     "retencao": 62,
-     "likes": 0
     }
    ],
    "nome": "Vini QA (YouTube)"
@@ -312,20 +319,26 @@
   "tiktok": {
    "usuario": "Custo Oculto",
    "seguidores": 63,
-   "curtidas": 388,
-   "videos": 21,
-   "views_total": 8167,
+   "curtidas": 392,
+   "videos": 22,
+   "views_total": 7984,
    "top": [
+    {
+     "titulo": "A primeira venda do Mercado Livre envolveu 10 cervos vivos. 🦌 Mas essa está longe de ser a",
+     "url": "https://www.tiktok.com/@custooculto/video/7702594040860003604?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
+     "views": 44,
+     "likes": 1
+    },
     {
      "titulo": "O CUSTO DE SER GIGANTE — EP. 07 A Polishop já teve cerca de 280 lojas no Brasil. Anos depo",
      "url": "https://www.tiktok.com/@custooculto/video/7702089941328612629?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 183,
-     "likes": 2
+     "views": 249,
+     "likes": 5
     },
     {
      "titulo": "O CUSTO DE SER GIGANTE — EP. 06 A Saraiva já teve mais de 100 lojas no Brasil. Em 2018, en",
      "url": "https://www.tiktok.com/@custooculto/video/7701771236770319637?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 219,
+     "views": 222,
      "likes": 8
     },
     {
@@ -345,12 +358,6 @@
      "url": "https://www.tiktok.com/@custooculto/video/7700696929457409286?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
      "views": 601,
      "likes": 27
-    },
-    {
-     "titulo": "O CUSTO DE SER GIGANTE — EP. 03 A Varig já foi um dos maiores símbolos da aviação brasilei",
-     "url": "https://www.tiktok.com/@custooculto/video/7700381208127048981?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 327,
-     "likes": 8
     }
    ],
    "nome": "TikTok @custooculto"
@@ -388,26 +395,6 @@
   }
  },
  "agenda": [
-  {
-   "quando": "2026-10-30T18:00:00-03:00",
-   "plataforma": "Hidden Cost (YouTube EN)",
-   "chave": "hidden_cost",
-   "titulo": "WeWork Paid Its Own CEO $5.9 Million for the Word \"We\" #shorts",
-   "tipo": "short",
-   "id": "wework_short2",
-   "url": "https://studio.youtube.com/video/xKjn37FMqv0/edit"
-  },
-  {
-   "quando": "2026-10-30T19:00:00-03:00",
-   "titulo": "Só existe uma Blockbuster no mundo · RASCUNHO, não sai sozinho",
-   "tipo": "metricool",
-   "id": "metricool",
-   "url": "https://app.metricool.com/planner",
-   "plataforma_rede": "tiktok",
-   "chave": "tiktok",
-   "plataforma": "TikTok (Metricool)",
-   "sem_cancelar": true
-  },
   {
    "quando": "2026-10-31T10:00:00-03:00",
    "titulo": "Netflix x Blockbuster, parte 4 de 4 · RASCUNHO, não sai sozinho",
