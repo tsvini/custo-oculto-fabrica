@@ -1,9 +1,9 @@
 {
- "atualizado": "30/10/2026 22:47",
+ "atualizado": "31/10/2026 12:52",
  "fontes": {
   "custo_oculto": {
    "seguidores": 13,
-   "views_total": 5411,
+   "views_total": 5432,
    "videos": 41,
    "views_28d": 5384,
    "views_7d": 642,
@@ -155,7 +155,7 @@
   },
   "hidden_cost": {
    "seguidores": 0,
-   "views_total": 22,
+   "views_total": 23,
    "videos": 15,
    "views_28d": 0,
    "views_7d": 0,
@@ -166,7 +166,7 @@
   },
   "vini_qa": {
    "seguidores": 0,
-   "views_total": 147,
+   "views_total": 302,
    "videos": 6,
    "views_28d": 144,
    "views_7d": 127,
@@ -318,45 +318,45 @@
   },
   "tiktok": {
    "usuario": "Custo Oculto",
-   "seguidores": 63,
-   "curtidas": 392,
+   "seguidores": 64,
+   "curtidas": 409,
    "videos": 22,
-   "views_total": 7984,
+   "views_total": 8289,
    "top": [
     {
      "titulo": "A primeira venda do Mercado Livre envolveu 10 cervos vivos. 🦌 Mas essa está longe de ser a",
      "url": "https://www.tiktok.com/@custooculto/video/7702594040860003604?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 44,
+     "views": 103,
      "likes": 1
     },
     {
      "titulo": "O CUSTO DE SER GIGANTE — EP. 07 A Polishop já teve cerca de 280 lojas no Brasil. Anos depo",
      "url": "https://www.tiktok.com/@custooculto/video/7702089941328612629?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 249,
+     "views": 251,
      "likes": 5
     },
     {
      "titulo": "O CUSTO DE SER GIGANTE — EP. 06 A Saraiva já teve mais de 100 lojas no Brasil. Em 2018, en",
      "url": "https://www.tiktok.com/@custooculto/video/7701771236770319637?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 222,
-     "likes": 8
+     "views": 458,
+     "likes": 24
     },
     {
      "titulo": "O CUSTO DE SER GIGANTE — EP. 05 A Microsoft pagou US$ 8,5 bilhões pelo Skype. Quatorze ano",
      "url": "https://www.tiktok.com/@custooculto/video/7701373214546513173?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 545,
+     "views": 546,
      "likes": 25
     },
     {
      "titulo": "O Orkut ainda crescia no Brasil. O problema é que o Facebook crescia muito mais rápido. En",
      "url": "https://www.tiktok.com/@custooculto/video/7701077678123797781?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 738,
+     "views": 739,
      "likes": 14
     },
     {
      "titulo": "O CUSTO DE SER GIGANTE — EP. 04 A Nokia não ignorou o smartphone. Ela pesquisava telas sen",
      "url": "https://www.tiktok.com/@custooculto/video/7700696929457409286?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 601,
+     "views": 602,
      "likes": 27
     }
    ],
@@ -395,17 +395,6 @@
   }
  },
  "agenda": [
-  {
-   "quando": "2026-10-31T10:00:00-03:00",
-   "titulo": "Netflix x Blockbuster, parte 4 de 4 · RASCUNHO, não sai sozinho",
-   "tipo": "metricool",
-   "id": "metricool",
-   "url": "https://app.metricool.com/planner",
-   "plataforma_rede": "tiktok",
-   "chave": "tiktok",
-   "plataforma": "TikTok (Metricool)",
-   "sem_cancelar": true
-  },
   {
    "quando": "2026-10-31T23:00:00-03:00",
    "titulo": "Americanas: rombo de R$ 20 bi (Reel) · RASCUNHO, não sai sozinho",
