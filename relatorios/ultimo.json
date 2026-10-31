@@ -1,5 +1,5 @@
 {
- "data": "2026-10-30",
+ "data": "2026-10-31",
  "por_formato_12m": [
   {
    "creatorContentType": "creatorContentTypeUnspecified",
@@ -9,8 +9,8 @@
   },
   {
    "creatorContentType": "shorts",
-   "views": 5222,
-   "estimatedMinutesWatched": 1319,
+   "views": 5280,
+   "estimatedMinutesWatched": 1330,
    "subscribersGained": 14
   },
   {
@@ -23,24 +23,18 @@
  "por_formato_7d": [
   {
    "creatorContentType": "shorts",
-   "views": 449,
-   "estimatedMinutesWatched": 158,
+   "views": 461,
+   "estimatedMinutesWatched": 154,
    "subscribersGained": 1
   },
   {
    "creatorContentType": "videoOnDemand",
-   "views": 56,
-   "estimatedMinutesWatched": 246,
+   "views": 30,
+   "estimatedMinutesWatched": 70,
    "subscribersGained": 0
   }
  ],
  "dia_a_dia_28d": [
-  {
-   "day": "2026-10-02",
-   "views": 0,
-   "estimatedMinutesWatched": 0,
-   "subscribersGained": 0
-  },
   {
    "day": "2026-10-03",
    "views": 0,
@@ -175,7 +169,7 @@
   },
   {
    "day": "2026-10-25",
-   "views": 176,
+   "views": 175,
    "estimatedMinutesWatched": 67,
    "subscribersGained": 0
   },
@@ -190,17 +184,23 @@
    "views": 33,
    "estimatedMinutesWatched": 14,
    "subscribersGained": 0
+  },
+  {
+   "day": "2026-10-28",
+   "views": 58,
+   "estimatedMinutesWatched": 10,
+   "subscribersGained": 0
   }
  ],
  "origem_28d": [
   {
    "insightTrafficSourceType": "SHORTS",
-   "views": 4789,
-   "estimatedMinutesWatched": 1114
+   "views": 4834,
+   "estimatedMinutesWatched": 1123
   },
   {
    "insightTrafficSourceType": "YT_SEARCH",
-   "views": 253,
+   "views": 266,
    "estimatedMinutesWatched": 50
   },
   {
@@ -268,6 +268,14 @@
   },
   {
    "insightTrafficSourceDetail": "skype",
+   "views": 4
+  },
+  {
+   "insightTrafficSourceDetail": "orkut",
+   "views": 3
+  },
+  {
+   "insightTrafficSourceDetail": "saraiva",
    "views": 3
   },
   {
@@ -288,10 +296,6 @@
   },
   {
    "insightTrafficSourceDetail": "empresas que faliram",
-   "views": 2
-  },
-  {
-   "insightTrafficSourceDetail": "orkut",
    "views": 2
   },
   {
@@ -345,16 +349,12 @@
   {
    "insightTrafficSourceDetail": "omoda 4",
    "views": 1
-  },
-  {
-   "insightTrafficSourceDetail": "orkut como era",
-   "views": 1
   }
  ],
  "videos_28d": [
   {
    "video": "sdWbo_dK2oE",
-   "views": 1054,
+   "views": 1055,
    "estimatedMinutesWatched": 51,
    "averageViewDuration": 16,
    "averageViewPercentage": 47.95,
@@ -486,7 +486,7 @@
   },
   {
    "video": "uHUtM940Ue0",
-   "views": 126,
+   "views": 127,
    "estimatedMinutesWatched": 57,
    "averageViewDuration": 65,
    "averageViewPercentage": 142.98,
@@ -519,7 +519,7 @@
   },
   {
    "video": "_aYquXLalP0",
-   "views": 58,
+   "views": 60,
    "estimatedMinutesWatched": 21,
    "averageViewDuration": 51,
    "averageViewPercentage": 60.29,
@@ -560,6 +560,17 @@
    "likes": 5,
    "comments": 0,
    "shares": 1
+  },
+  {
+   "video": "7JO3W7TzrME",
+   "views": 44,
+   "estimatedMinutesWatched": 9,
+   "averageViewDuration": 33,
+   "averageViewPercentage": 55.52,
+   "subscribersGained": 0,
+   "likes": 0,
+   "comments": 0,
+   "shares": 0
   },
   {
    "video": "4WuKNxpR188",
@@ -639,24 +650,24 @@
    "shares": 0
   },
   {
+   "video": "cl7saCSReIk",
+   "views": 23,
+   "estimatedMinutesWatched": 7,
+   "averageViewDuration": 30,
+   "averageViewPercentage": 61.39,
+   "subscribersGained": 0,
+   "likes": 2,
+   "comments": 1,
+   "shares": 0
+  },
+  {
    "video": "YL2JUCrwns8",
-   "views": 21,
+   "views": 23,
    "estimatedMinutesWatched": 3,
    "averageViewDuration": 26,
    "averageViewPercentage": 57.96,
    "subscribersGained": 0,
    "likes": 1,
-   "comments": 1,
-   "shares": 0
-  },
-  {
-   "video": "cl7saCSReIk",
-   "views": 15,
-   "estimatedMinutesWatched": 6,
-   "averageViewDuration": 30,
-   "averageViewPercentage": 62.61,
-   "subscribersGained": 0,
-   "likes": 2,
    "comments": 1,
    "shares": 0
   },
@@ -1856,7 +1867,7 @@
    "status": "public"
   },
   "kolynos_longo": {
-   "views": 11,
+   "views": 13,
    "likes": 3,
    "comentarios": 2,
    "status": "public"
@@ -1916,7 +1927,7 @@
    "status": "public"
   },
   "kolynos_serie1": {
-   "views": 60,
+   "views": 61,
    "likes": 1,
    "comentarios": 1,
    "status": "public"
@@ -1991,7 +2002,7 @@
    "views": 0,
    "likes": 0,
    "comentarios": 0,
-   "status": "private"
+   "status": "public"
   },
   "wework_serie3": {
    "views": 0,
@@ -2049,10 +2060,10 @@
   }
  },
  "canal": {
-  "viewCount": "5386",
+  "viewCount": "5432",
   "subscriberCount": "13",
   "hiddenSubscriberCount": false,
-  "videoCount": "40"
+  "videoCount": "41"
  },
  "todos_os_videos": [
   {
@@ -2117,7 +2128,7 @@
    "duracao": "PT46S",
    "status": "public",
    "agendado": null,
-   "views": 293,
+   "views": 294,
    "likes": 11,
    "comentarios": 1
   },
@@ -2194,7 +2205,7 @@
    "duracao": "PT46S",
    "status": "public",
    "agendado": null,
-   "views": 128,
+   "views": 133,
    "likes": 6,
    "comentarios": 0
   },
@@ -2227,8 +2238,8 @@
    "duracao": "PT1M",
    "status": "public",
    "agendado": null,
-   "views": 75,
-   "likes": 0,
+   "views": 82,
+   "likes": 1,
    "comentarios": 0
   },
   {
@@ -2238,7 +2249,7 @@
    "duracao": "PT1M25S",
    "status": "public",
    "agendado": null,
-   "views": 60,
+   "views": 61,
    "likes": 1,
    "comentarios": 1
   },
@@ -2381,9 +2392,20 @@
    "duracao": "PT9M41S",
    "status": "public",
    "agendado": null,
-   "views": 16,
+   "views": 17,
    "likes": 1,
    "comentarios": 0
+  },
+  {
+   "id": "7enHVaVNTOI",
+   "titulo": "A Polishop já teve 280 lojas. O que aconteceu? | EP. 07",
+   "publicado": "2026-10-29T14:18:15Z",
+   "duracao": "PT1M14S",
+   "status": "public",
+   "agendado": null,
+   "views": 16,
+   "likes": 1,
+   "comentarios": 1
   },
   {
    "id": "TZLpKjOWKH4",
@@ -2403,7 +2425,7 @@
    "duracao": "PT5M38S",
    "status": "public",
    "agendado": null,
-   "views": 11,
+   "views": 13,
    "likes": 3,
    "comentarios": 2
   },
@@ -2430,17 +2452,6 @@
    "comentarios": 0
   },
   {
-   "id": "7enHVaVNTOI",
-   "titulo": "A Polishop já teve 280 lojas. O que aconteceu? | EP. 07",
-   "publicado": "2026-10-29T14:18:15Z",
-   "duracao": "PT1M14S",
-   "status": "public",
-   "agendado": null,
-   "views": 8,
-   "likes": 1,
-   "comentarios": 1
-  },
-  {
    "id": "ZFUM39-QiEs",
    "titulo": "Parte 5 - De US$ 4,5 bilhões para ZERO",
    "publicado": "2026-10-10T17:46:53Z",
@@ -2450,6 +2461,17 @@
    "views": 8,
    "likes": 2,
    "comentarios": 0
+  },
+  {
+   "id": "yNJZLs2KTh8",
+   "titulo": "A PRIMEIRA VENDA DO MERCADO LIVRE FOI 10 CERVOS VIVOS? 🦌",
+   "publicado": "2026-10-30T22:41:23Z",
+   "duracao": "PT1M7S",
+   "status": "public",
+   "agendado": null,
+   "views": 7,
+   "likes": 1,
+   "comentarios": 1
   },
   {
    "id": "0DvgfHx5cY8",
