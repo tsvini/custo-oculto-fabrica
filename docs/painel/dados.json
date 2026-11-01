@@ -1,10 +1,10 @@
 {
- "atualizado": "31/10/2026 22:27",
+ "atualizado": "01/11/2026 13:54",
  "fontes": {
   "custo_oculto": {
-   "seguidores": 13,
-   "views_total": 5450,
-   "videos": 42,
+   "seguidores": 15,
+   "views_total": 5554,
+   "videos": 43,
    "views_28d": 5429,
    "views_7d": 609,
    "seguidores_28d": 17,
@@ -155,7 +155,7 @@
   },
   "hidden_cost": {
    "seguidores": 0,
-   "views_total": 23,
+   "views_total": 24,
    "videos": 15,
    "views_28d": 0,
    "views_7d": 0,
@@ -166,7 +166,7 @@
   },
   "vini_qa": {
    "seguidores": 0,
-   "views_total": 317,
+   "views_total": 321,
    "videos": 6,
    "views_28d": 147,
    "views_7d": 117,
@@ -319,21 +319,27 @@
   "tiktok": {
    "usuario": "Custo Oculto",
    "seguidores": 69,
-   "curtidas": 427,
-   "videos": 23,
-   "views_total": 8546,
+   "curtidas": 431,
+   "videos": 24,
+   "views_total": 8556,
    "top": [
+    {
+     "titulo": "A ideia que mudou a Havaianas não nasceu dentro da empresa. 🩴 Nos anos 90, consumidores co",
+     "url": "https://www.tiktok.com/@custooculto/video/7703211501976390932?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
+     "views": 25,
+     "likes": 0
+    },
     {
      "titulo": "A Ricardo Eletro chegou a faturar bilhões e ter mais de mil lojas no Brasil. Depois, veio ",
      "url": "https://www.tiktok.com/@custooculto/video/7702860346633080085?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 379,
-     "likes": 16
+     "views": 550,
+     "likes": 19
     },
     {
      "titulo": "A primeira venda do Mercado Livre envolveu 10 cervos vivos. 🦌 Mas essa está longe de ser a",
      "url": "https://www.tiktok.com/@custooculto/video/7702594040860003604?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 113,
-     "likes": 1
+     "views": 134,
+     "likes": 2
     },
     {
      "titulo": "O CUSTO DE SER GIGANTE — EP. 07 A Polishop já teve cerca de 280 lojas no Brasil. Anos depo",
@@ -352,12 +358,6 @@
      "url": "https://www.tiktok.com/@custooculto/video/7701373214546513173?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
      "views": 546,
      "likes": 25
-    },
-    {
-     "titulo": "O Orkut ainda crescia no Brasil. O problema é que o Facebook crescia muito mais rápido. En",
-     "url": "https://www.tiktok.com/@custooculto/video/7701077678123797781?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 741,
-     "likes": 14
     }
    ],
    "nome": "TikTok @custooculto"
@@ -395,39 +395,6 @@
   }
  },
  "agenda": [
-  {
-   "quando": "2026-10-31T23:00:00-03:00",
-   "titulo": "Americanas: rombo de R$ 20 bi (Reel) · RASCUNHO, não sai sozinho",
-   "tipo": "metricool",
-   "id": "metricool",
-   "url": "https://app.metricool.com/planner",
-   "plataforma_rede": "instagram",
-   "chave": "instagram",
-   "plataforma": "Instagram (Metricool)",
-   "sem_cancelar": true
-  },
-  {
-   "quando": "2026-10-31T23:10:00-03:00",
-   "titulo": "Kolynos: vendia o dobro da Colgate (Reel) · RASCUNHO, não sai sozinho",
-   "tipo": "metricool",
-   "id": "metricool",
-   "url": "https://app.metricool.com/planner",
-   "plataforma_rede": "instagram",
-   "chave": "instagram",
-   "plataforma": "Instagram (Metricool)",
-   "sem_cancelar": true
-  },
-  {
-   "quando": "2026-11-01T10:00:00-03:00",
-   "titulo": "O Brasil quer o Orkut de volta · PAUSADO (rascunho)",
-   "tipo": "metricool",
-   "id": "metricool",
-   "url": "https://app.metricool.com/planner",
-   "plataforma_rede": "tiktok",
-   "chave": "tiktok",
-   "plataforma": "TikTok (Metricool)",
-   "sem_cancelar": true
-  },
   {
    "quando": "2026-11-01T19:00:00-03:00",
    "titulo": "300 mil pessoas querem o Orkut de volta · PAUSADO (rascunho)",
