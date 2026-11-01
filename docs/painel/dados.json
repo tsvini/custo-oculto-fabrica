@@ -1,18 +1,14 @@
 {
- "atualizado": "31/10/2026 12:52",
+ "atualizado": "31/10/2026 22:27",
  "fontes": {
   "custo_oculto": {
    "seguidores": 13,
-   "views_total": 5432,
-   "videos": 41,
-   "views_28d": 5384,
-   "views_7d": 642,
+   "views_total": 5450,
+   "videos": 42,
+   "views_28d": 5429,
+   "views_7d": 609,
    "seguidores_28d": 17,
    "dia": [
-    [
-     "2026-10-03",
-     0
-    ],
     [
      "2026-10-04",
      0
@@ -112,6 +108,10 @@
     [
      "2026-10-28",
      58
+    ],
+    [
+     "2026-10-29",
+     45
     ]
    ],
    "top": [
@@ -166,16 +166,12 @@
   },
   "vini_qa": {
    "seguidores": 0,
-   "views_total": 302,
+   "views_total": 317,
    "videos": 6,
-   "views_28d": 144,
-   "views_7d": 127,
+   "views_28d": 147,
+   "views_7d": 117,
    "seguidores_28d": 0,
    "dia": [
-    [
-     "2026-10-03",
-     0
-    ],
     [
      "2026-10-04",
      0
@@ -275,14 +271,18 @@
     [
      "2026-10-28",
      90
+    ],
+    [
+     "2026-10-29",
+     3
     ]
    ],
    "top": [
     {
      "titulo": "O seletor que não quebra",
      "url": "https://youtu.be/4jlcqR1BzhE",
-     "views": 88,
-     "retencao": 47,
+     "views": 89,
+     "retencao": 45,
      "likes": 0
     },
     {
@@ -295,14 +295,14 @@
     {
      "titulo": "Você não precisa saber programar pra automatizar teste",
      "url": "https://youtu.be/1hbvry7AlKk",
-     "views": 14,
+     "views": 15,
      "retencao": 28,
      "likes": 0
     },
     {
      "titulo": "O botão do Cypress que escreve o código pra você",
      "url": "https://youtu.be/T-yIhAQSwrc",
-     "views": 7,
+     "views": 8,
      "retencao": 72,
      "likes": 0
     },
@@ -318,27 +318,33 @@
   },
   "tiktok": {
    "usuario": "Custo Oculto",
-   "seguidores": 64,
-   "curtidas": 409,
-   "videos": 22,
-   "views_total": 8289,
+   "seguidores": 69,
+   "curtidas": 427,
+   "videos": 23,
+   "views_total": 8546,
    "top": [
+    {
+     "titulo": "A Ricardo Eletro chegou a faturar bilhões e ter mais de mil lojas no Brasil. Depois, veio ",
+     "url": "https://www.tiktok.com/@custooculto/video/7702860346633080085?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
+     "views": 379,
+     "likes": 16
+    },
     {
      "titulo": "A primeira venda do Mercado Livre envolveu 10 cervos vivos. 🦌 Mas essa está longe de ser a",
      "url": "https://www.tiktok.com/@custooculto/video/7702594040860003604?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 103,
+     "views": 113,
      "likes": 1
     },
     {
      "titulo": "O CUSTO DE SER GIGANTE — EP. 07 A Polishop já teve cerca de 280 lojas no Brasil. Anos depo",
      "url": "https://www.tiktok.com/@custooculto/video/7702089941328612629?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 251,
-     "likes": 5
+     "views": 292,
+     "likes": 7
     },
     {
      "titulo": "O CUSTO DE SER GIGANTE — EP. 06 A Saraiva já teve mais de 100 lojas no Brasil. Em 2018, en",
      "url": "https://www.tiktok.com/@custooculto/video/7701771236770319637?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 458,
+     "views": 477,
      "likes": 24
     },
     {
@@ -350,14 +356,8 @@
     {
      "titulo": "O Orkut ainda crescia no Brasil. O problema é que o Facebook crescia muito mais rápido. En",
      "url": "https://www.tiktok.com/@custooculto/video/7701077678123797781?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 739,
+     "views": 741,
      "likes": 14
-    },
-    {
-     "titulo": "O CUSTO DE SER GIGANTE — EP. 04 A Nokia não ignorou o smartphone. Ela pesquisava telas sen",
-     "url": "https://www.tiktok.com/@custooculto/video/7700696929457409286?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 602,
-     "likes": 27
     }
    ],
    "nome": "TikTok @custooculto"
