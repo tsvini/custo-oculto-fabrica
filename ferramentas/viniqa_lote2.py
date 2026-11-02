@@ -33,7 +33,7 @@ SHORTS = [
     ("Teste também o que dá errado", [
         ("Um bom teste de login não confere só quem entra. Confere também quem não pode entrar.", bt(("QUEM NÃO", "white", 140), ("PODE ENTRAR?", "gold", 140))),
         ("Isso se chama cenário negativo: senha errada, campo vazio, usuário bloqueado. É onde mais aparece bug.",
-         {"type": "cards", "titulo": "CENÁRIO NEGATIVO", "itens": [["🔑", "Senha errada", ""], ["▭", "Campo vazio", "", AZUL], ["⛔", "Usuário bloqueado", "", AMARELO]]}),
+         {"type": "traducao", "titulo": "CENÁRIO NEGATIVO", "linhas": [["senha errada", "mostra o erro?"], ["campo vazio", "avisa?"], ["usuário bloqueado", "barra a entrada?"]]}),
         ("No Cypress: preenche a senha errada, clica, e confere que a mensagem de erro apareceu.",
          ed("cy.get('[data-test=\"username\"]').type('standard_user')\ncy.get('[data-test=\"password\"]').type('errada')\ncy.get('[data-test=\"login-button\"]').click()\ncy.get('[data-test=\"error\"]')\n  .should('contain', 'do not match')", "Senha errada: o erro aparece", destaque=[4, 5], fonte=24)),
         ("Quase ninguém testa isso. Por isso é tão valioso.", bt(("QUASE NINGUÉM TESTA", "white", 110), ("POR ISSO VALE OURO", "gold", 120))),
@@ -57,10 +57,10 @@ SHORTS = [
         CTA]),
     ("O básico de automação que todo QA júnior precisa", [
         ("Tá começando em QA e quer aprender automação? Todo teste é feito de três coisas.", bt(("TODO TESTE", "white", 150), ("É FEITO DE 3 COISAS", "gold", 110))),
-        ("Primeiro, o seletor: como o robô acha o botão na tela.", {"type": "cards", "itens": [["1", "Seletor", "acha o elemento"]]}),
-        ("Depois, a ação: clicar, digitar, escolher.", {"type": "cards", "itens": [["1", "Seletor", "acha o elemento"], ["2", "Ação", "clica, digita", AZUL]]}),
+        ("Primeiro, o seletor: como o robô acha o botão na tela.", {"type": "traducao", "titulo": "TODO TESTE", "linhas": [["1. seletor", "acha o botão"]]}),
+        ("Depois, a ação: clicar, digitar, escolher.", {"type": "traducao", "titulo": "TODO TESTE", "linhas": [["1. seletor", "acha o botão"], ["2. ação", "clica, digita"]]}),
         ("E a conferência: o teste confere se deu certo. Sem ela, não é teste.",
-         {"type": "cards", "itens": [["1", "Seletor", "acha o elemento"], ["2", "Ação", "clica, digita", AZUL], ["3", "Conferência", "deu certo?", AMARELO]]}),
+         {"type": "traducao", "titulo": "TODO TESTE", "linhas": [["1. seletor", "acha o botão"], ["2. ação", "clica, digita"], ["3. conferência", "deu certo?"]]}),
         CTA]),
     ("Cypress ou Playwright: qual aprender primeiro?", [
         ("Cypress ou Playwright: qual aprender primeiro?", {"type": "compare", "items": [["CYPRESS", "", "white"], ["PLAYWRIGHT", "", "gold"]], "size": 110, "stagger": 0.8, "vs": True}),

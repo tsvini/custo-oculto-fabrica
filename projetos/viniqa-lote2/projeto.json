@@ -172,25 +172,20 @@
      {
       "text": "Isso se chama cenário negativo: senha errada, campo vazio, usuário bloqueado. É onde mais aparece bug.",
       "scene": {
-       "type": "cards",
+       "type": "traducao",
        "titulo": "CENÁRIO NEGATIVO",
-       "itens": [
+       "linhas": [
         [
-         "🔑",
-         "Senha errada",
-         ""
+         "senha errada",
+         "mostra o erro?"
         ],
         [
-         "▭",
-         "Campo vazio",
-         "",
-         "#69a7ff"
+         "campo vazio",
+         "avisa?"
         ],
         [
-         "⛔",
-         "Usuário bloqueado",
-         "",
-         "#ffd23f"
+         "usuário bloqueado",
+         "barra a entrada?"
         ]
        ]
       }
@@ -476,12 +471,12 @@
      {
       "text": "Primeiro, o seletor: como o robô acha o botão na tela.",
       "scene": {
-       "type": "cards",
-       "itens": [
+       "type": "traducao",
+       "titulo": "TODO TESTE",
+       "linhas": [
         [
-         "1",
-         "Seletor",
-         "acha o elemento"
+         "1. seletor",
+         "acha o botão"
         ]
        ]
       }
@@ -489,18 +484,16 @@
      {
       "text": "Depois, a ação: clicar, digitar, escolher.",
       "scene": {
-       "type": "cards",
-       "itens": [
+       "type": "traducao",
+       "titulo": "TODO TESTE",
+       "linhas": [
         [
-         "1",
-         "Seletor",
-         "acha o elemento"
+         "1. seletor",
+         "acha o botão"
         ],
         [
-         "2",
-         "Ação",
-         "clica, digita",
-         "#69a7ff"
+         "2. ação",
+         "clica, digita"
         ]
        ]
       }
@@ -508,24 +501,20 @@
      {
       "text": "E a conferência: o teste confere se deu certo. Sem ela, não é teste.",
       "scene": {
-       "type": "cards",
-       "itens": [
+       "type": "traducao",
+       "titulo": "TODO TESTE",
+       "linhas": [
         [
-         "1",
-         "Seletor",
-         "acha o elemento"
+         "1. seletor",
+         "acha o botão"
         ],
         [
-         "2",
-         "Ação",
-         "clica, digita",
-         "#69a7ff"
+         "2. ação",
+         "clica, digita"
         ],
         [
-         "3",
-         "Conferência",
-         "deu certo?",
-         "#ffd23f"
+         "3. conferência",
+         "deu certo?"
         ]
        ]
       }
