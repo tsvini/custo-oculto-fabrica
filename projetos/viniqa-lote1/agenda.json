@@ -1,6 +1,6 @@
 {
  "canal": "Vini QA",
- "link_curso": "https://www.udemy.com/course/cypress-para-leigos-testes-automatizados-do-zero/?referralCode=B33B2FA158B649E272C1",
+ "link_curso": "https://www.udemy.com/course/cypress-para-leigos-testes-automatizados-do-zero/?couponCode=LANCAMENTO",
  "videos": [
   {
    "short": 1,
@@ -86,5 +86,9 @@
    "titulo": "cypress open ou cypress run",
    "legenda": "npx cypress open ou npx cypress run? Muita gente não sabe a diferença. Curso completo de Cypress do zero: link na bio. #cypress #qa #terminal #testes"
   }
- ]
+ ],
+ "cupom": {
+  "texto": "🔥 Até 3/12, sai por R$ 24,90 com o cupom LANCAMENTO (já vem aplicado no link).",
+  "ate": "2026-12-03"
+ }
 }

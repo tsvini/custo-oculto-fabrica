@@ -26,11 +26,12 @@ def token():
     return r.json()["access_token"]
 
 
-def descricao(item, link):
+def descricao(item, link, cupom=None):
     leg = item["legenda"]
     corpo, _, tags = leg.partition(" #")
     corpo = corpo.replace("Curso completo de Cypress do zero: link na bio.", "").strip()
-    return (f"{corpo}\n\n🎓 Curso completo de Cypress pra quem tá começando do zero:\n{link}\n\n"
+    promo = f"{cupom['texto']}\n" if cupom and dt.date.today().isoformat() < cupom["ate"] else ""
+    return (f"{corpo}\n\n🎓 Curso completo de Cypress pra quem tá começando do zero:\n{promo}{link}\n\n"
             f"Sou o Vinícius Torales, QA, e ensino testes automatizados do zero.\n\n#" + tags).strip()
 
 
@@ -48,6 +49,31 @@ def subir(tk, path, titulo, desc, quando):
         r = checar(requests.put(r.headers["Location"], headers={"Authorization": f"Bearer {tk}", "Content-Type": "video/mp4",
                                                                 "Content-Length": str(tam)}, data=f, timeout=3600), "enviar vídeo")
     return r.json()["id"]
+
+
+def atualizar_descricoes(tk_fn, reg):
+    """vídeo já no canal com a descrição antiga (link ou cupom mudou na agenda): troca só a descrição"""
+    agendas = {}
+    for ag in glob.glob(os.path.join(RAIZ, "projetos", "*", "agenda.json")):
+        a = json.load(open(ag, encoding="utf8")); slug = os.path.basename(os.path.dirname(ag)).replace("-", "_")
+        for it in a["videos"]:
+            agendas[f"{slug}_short{it['short']}.mp4"] = descricao(it, a["link_curso"], a.get("cupom"))
+    feitos = []; tk = None
+    for r in reg:
+        nova = agendas.get(r["arquivo"])
+        if not nova or r.get("desc") == nova:
+            continue
+        tk = tk or tk_fn()
+        h = {"Authorization": f"Bearer {tk}"}
+        v = checar(requests.get("https://www.googleapis.com/youtube/v3/videos", params={"part": "snippet", "id": r["video_id"]}, headers=h, timeout=30), "ler vídeo").json()
+        if not v.get("items"):
+            continue
+        sn = v["items"][0]["snippet"]; sn["description"] = nova
+        checar(requests.put("https://www.googleapis.com/youtube/v3/videos?part=snippet", headers={**h, "Content-Type": "application/json"},
+                            data=json.dumps({"id": r["video_id"], "snippet": {k: sn[k] for k in ("title", "description", "categoryId", "tags", "defaultLanguage", "defaultAudioLanguage") if k in sn}}), timeout=30), "atualizar descrição")
+        r["desc"] = nova; feitos.append(r["titulo"])
+        json.dump(reg, open(REG, "w", encoding="utf8"), ensure_ascii=False, indent=1)
+    return feitos
 
 
 def main():
@@ -73,10 +99,14 @@ def main():
                 tk = tk or token()
                 with tempfile.TemporaryDirectory() as t:
                     subprocess.run(["gh", "release", "download", "videos", "-p", arq, "-D", t, "--clobber"], check=True)
-                    vid = subir(tk, os.path.join(t, arq), it["titulo"], descricao(it, a["link_curso"]), quando)
-                reg.append({"arquivo": arq, "titulo": it["titulo"], "video_id": vid, "publishAt": quando.isoformat()})
+                    desc = descricao(it, a["link_curso"], a.get("cupom"))
+                    vid = subir(tk, os.path.join(t, arq), it["titulo"], desc, quando)
+                reg.append({"arquivo": arq, "titulo": it["titulo"], "video_id": vid, "publishAt": quando.isoformat(), "desc": desc})
                 json.dump(reg, open(REG, "w", encoding="utf8"), ensure_ascii=False, indent=1)
                 ok.append(f"{it['titulo']} → {quando:%d/%m %Hh} (youtu.be/{vid})")
+        at = atualizar_descricoes(lambda: tk or token(), reg)
+        if at:
+            ok.append(f"descrição nova em {len(at)} vídeo(s)")
     except Cota as e:
         ok.append(f"limite do YouTube: o resto sobe amanhã ({str(e)[:200]})")
     except Exception as e:
