@@ -124,23 +124,23 @@
        "text": "Na tela tem um botão Choose File, escolher arquivo, que abre a janela do computador pra procurar o arquivo. E o botão Upload, que envia. Depois de enviar, a página mostra o nome do arquivo.",
        "scene": {
         "type": "tela",
-        "media": "n57_tela2",
+        "media": "n57_tela3",
         "url": "https://the-internet.herokuapp.com/upload",
         "gravar": true,
         "acoes": [
          {
-          "espera": 1200
+          "espera": 4800
          },
          {
           "upload": [
            "#file-upload",
            "curso-playwright/projeto/arquivos/exemplo.txt"
           ],
-          "espera": 1300
+          "espera": 1800
          },
          {
           "click": "#file-submit",
-          "espera": 1800
+          "espera": 3000
          }
         ],
         "titulo": "the-internet.herokuapp.com",
