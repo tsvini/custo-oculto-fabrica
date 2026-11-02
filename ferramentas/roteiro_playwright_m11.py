@@ -269,7 +269,7 @@ def preencher():
         (2, "E por último, o finish, e a mensagem final: Thank you for your order.", "Finaliza e confere"),
     ]) + [
         ("De onde vem esse quarenta e três e dezoito? Da conta que o site faz:",
-         {"type": "tela", "media": "tela54_total", "url": SAUCE, "acoes": LOGIN + DOIS, "alvo_css": ".summary_info", "titulo": "saucedemo.com", "legenda": "Item total, Tax e Total", "zoom_em": 1.0, "caixa_em": 1.6}),
+         {"type": "tela", "media": "tela54_total2", "url": SAUCE, "acoes": LOGIN + DOIS, "alvo_css": "[data-test=\"total-label\"]", "titulo": "saucedemo.com", "legenda": "Item total + Tax = Total", "zoom_em": 1.0, "caixa_em": 1.6}),
         ("A mochila custa vinte e nove e noventa e nove, e a lanterna, nove e noventa e nove. Somando, trinta e nove e noventa e oito. Mais três e vinte de imposto: quarenta e três e dezoito.",
          {"type": "traducao", "titulo": "DE ONDE VEM O $43.18", "linhas": [["mochila", "$29.99"], ["+ lanterna", "$9.99"], ["= Item total", "$39.98"], ["+ Tax (imposto)", "$3.20"], ["= Total", "$43.18"]]}),
         ("Esse número só funciona porque o site de treino nunca muda os preços. Se amanhã a mochila custasse trinta, o total seria outro, e o teste ia falhar mesmo com o site funcionando certinho.",
