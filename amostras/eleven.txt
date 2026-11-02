@@ -1,6 +1,6 @@
 Vinícius Torales
 eleven_v4_turbo
-A. O Playwright abre o Chromium, o Firefox e o WebKit. No VS Code, o login ponto spec ponto js usa o expect, o await e o get by test id, com o data-test.
-B. No terminal: npx playwright test, traço traço headed. Depois vem o describe, o before each, o const, o async, o constructor e o timeout.
-C. No Git, o commit e o push mandam pro GitHub. O GitHub Actions roda num ubuntu, com o workflow, o README e o badge. E ainda tem o trace, o screenshot e o codegen.
-D. Fixtures, mock, route, iframe, upload, locator, storage state, grep, smoke, flaky, soft, dotenv, node, e o PowerShell.
+E. As fixtures entregam as páginas prontas pro teste. E com o mock, o Playwright fica no meio: o route intercepta o pedido, e o teste responde o que quiser.
+F. O iframe é uma página dentro da página. O upload manda um arquivo. E o locator acha o elemento na tela.
+G. O storage state guarda o login. O grep filtra pelo nome, e a tag smoke separa os testes mais importantes. Um teste flaky passa e falha sem motivo.
+H. O soft expect confere e continua. O dotenv lê o ponto env. E no Windows, o terminal é o PowerShell, onde você roda o node.
