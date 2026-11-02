@@ -166,7 +166,7 @@ AULAS.append(projeto(45, "MÓDULO 9 · AULA 45", "GitHub Actions - os testes rod
      termo("O ciclo: status, add, commit e push", [{"cmd": "git status"}, {"out": "        modified:   .github/workflows/playwright.yml", "cor": VERM}, {"cmd": "git add ."},
                                                    {"cmd": "git commit -m \"entrega os secrets pros testes\""}, {"out": "[main 3b9e0d4] entrega os secrets pros testes", "cor": "ac"}, {"out": " 1 file changed, 3 insertions(+)", "cor": "mut"},
                                                    {"cmd": "git push"}, {"out": "To https://github.com/voce/meu-primeiro-playwright.git", "cor": "mut"}, {"out": "   24d5d51..3b9e0d4  main -> main", "cor": "ac"}], fonte=26, fonte_min=20)),
-    ("E aqui vem a mágica: esse push é justamente o gatilho do arquivo. Abre a aba Actions no GitHub: olha os testes rodando lá, sozinhos.", dict(GHA, inicio_em=1.0, legenda="O push disparou os testes no GitHub")),
+    ("E aqui vem a mágica: esse push é justamente o gatilho do arquivo. Abre a aba Actions no GitHub: olha os testes rodando lá, sozinhos.", dict(GHA, aba_em=3.8, inicio_em=4.4, legenda="Aba Actions: o push disparou os testes")),
     ("Verde: passou. E no fim tem o relatório pra baixar, porque esse arquivo tem o passo que guarda ele.", dict(GHA, pronto=True, status="ok", artefato="playwright-report", legenda="Passou · o relatório pra baixar")),
     ("E se um dia alguém mudar um arquivo direto no site do GitHub, ou outra pessoa da equipe mandar uma mudança? No seu computador, git pull: puxe as mudanças de lá pra cá. Push manda, pull traz.",
      {"type": "traducao", "titulo": "PUSH E PULL", "linhas": [["git push", "manda do seu computador pro GitHub"], ["git pull", "traz do GitHub pro seu computador"]]}),

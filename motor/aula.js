@@ -1295,8 +1295,18 @@
 
   // GITHUB ACTIONS (tema escuro): {type:"gh_actions", workflow:"Playwright Tests", commit:"adiciona testes de login", passos:["Set up job","Install dependencies",...], status:"ok"|"falhou", pronto:false, artefato:"playwright-report"}
   S.gh_actions = (ctx, c, t, dur, s) => {
-    const u = c.u; const a = easeOut(t / 0.4); const W = 1640 * u, H = 740 * u; const x = c.cx - W / 2, y = topo(c, H);
-    const top = janela(ctx, x, y, W, H, u, "github.com/" + (s.usuario || "voce") + "/" + (s.repo || "meu-primeiro-playwright") + "/actions", a, "#0d1117");
+    const u = c.u; let a = easeOut(t / 0.4); const W = 1640 * u, H = 740 * u; const x = c.cx - W / 2, y = topo(c, H);
+    let top = janela(ctx, x, y, W, H, u, "github.com/" + (s.usuario || "voce") + "/" + (s.repo || "meu-primeiro-playwright") + (s.aba_em !== undefined && t < s.aba_em ? "" : "/actions"), a, "#0d1117");
+    if (s.aba_em !== undefined) {  // a barra de abas do repositório: o cursor clica em Actions e a página dos testes aparece
+      const tA = s.aba_em, kA = easeOut((t - tA - 0.15) / 0.3), yy = top + 40 * u; let tx0 = x + 40 * u, ax = 0, ay = yy, pA = [0, 0, 0];
+      ["<> Code", "Issues", "Pull requests", "Actions", "Settings"].forEach((n) => { const f = font(700, 24 * u), w = tw(ctx, n, f), on = n === "Actions" ? kA : n === "<> Code" ? 1 - kA : 0;
+        txt(ctx, n, font(on > 0.5 ? 700 : 500, 24 * u), tx0, yy, on > 0.5 ? "#e6edf3" : "#8b949e", "left", a);
+        if (on > 0) { ctx.save(); ctx.globalAlpha = a * on; ctx.fillStyle = "#f78166"; ctx.fillRect(tx0 - 6 * u, yy + 24 * u, w + 12 * u, 3 * u); ctx.restore(); }
+        if (n === "Actions") { ax = tx0 + w / 2; pA = [tx0 - 12 * u, yy - 22 * u, w + 24 * u]; } tx0 += w + 54 * u; });
+      const hl = easeOut((t - tA + 0.6) / 0.3) * (1 - easeOut((t - tA - 1.2) / 0.4)); if (hl > 0) { ctx.save(); ctx.globalAlpha = a * hl; ctx.strokeStyle = C.yel; ctx.lineWidth = 4 * u; rr(ctx, pA[0], pA[1], pA[2], 44 * u, 8 * u); ctx.stroke(); ctx.restore(); }
+      ctx.save(); ctx.globalAlpha = a; ctx.fillStyle = "#30363d"; ctx.fillRect(x, yy + 30 * u, W, 2 * u); ctx.restore();
+      const kC = 1 - kA; if (kC > 0) { let fy = yy + 100 * u; ["📁  .github/workflows", "📁  tests", "📄  .gitignore", "📄  package.json", "📄  playwright.config.js"].forEach((n) => { txt(ctx, n, font(500, 26 * u), x + 60 * u, fy, "#c9d1d9", "left", a * kC); fy += 62 * u; }); }
+      cursor(ctx, u, ax, ay, t, tA); top += 70 * u; a = a * kA; if (a <= 0) { legenda(ctx, c, t, s); return; } }
     const P = s.passos || ["Set up job", "Run actions/checkout@v4", "Run actions/setup-node@v4", "Install dependencies", "Install Playwright Browsers", "Run Playwright tests", "Run actions/upload-artifact@v4", "Complete job"];
     const t0 = s.inicio_em === undefined ? 0.8 : s.inicio_em; const passo = Math.max(0.3, Math.min(1.0, (dur * 0.7 - t0) / P.length)); const feitos = s.pronto ? P.length : clamp((t - t0) / passo, 0, P.length); const fim = feitos >= P.length; const falha = s.status === "falhou";
     txt(ctx, s.workflow || "Playwright Tests", font(800, 34 * u), x + 40 * u, top + 54 * u, "#e6edf3", "left", a);

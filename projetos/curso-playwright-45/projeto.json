@@ -487,8 +487,9 @@
         "repo": "meu-primeiro-playwright",
         "workflow": "Playwright Tests",
         "commit": "testes no GitHub Actions",
-        "inicio_em": 1.0,
-        "legenda": "O push disparou os testes no GitHub"
+        "aba_em": 3.8,
+        "inicio_em": 4.4,
+        "legenda": "Aba Actions: o push disparou os testes"
        }
       },
       {
