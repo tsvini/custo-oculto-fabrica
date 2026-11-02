@@ -131,8 +131,6 @@
          "  .github/",
          "  node_modules/",
          "  tests/",
-         "    login.spec.js",
-         "    usuarios.spec.js",
          "  .env",
          "  .env.example",
          "  .gitignore",

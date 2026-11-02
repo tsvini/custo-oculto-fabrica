@@ -435,8 +435,6 @@
          "  dados/",
          "  fixtures/",
          "  pages/",
-         "    LoginPage.js",
-         "    ProdutosPage.js",
          "  tests/",
          "  .env",
          "  playwright.config.js"
@@ -461,8 +459,6 @@
          "  fixtures/",
          "    paginas.js",
          "  pages/",
-         "    LoginPage.js",
-         "    ProdutosPage.js",
          "  tests/",
          "  .env",
          "  playwright.config.js"

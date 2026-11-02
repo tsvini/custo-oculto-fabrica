@@ -88,11 +88,12 @@
       txt(ctx, "EXPLORER", font(700, 20 * u), x + 28 * u, top + 36 * u, C.mut, "left", a);
       const arvE = arvore(s.pastas, 4); const passoE = Math.min(50, (H / u - (top - y) / u - 120) / Math.max(1, arvE.length));  // muitos arquivos: as linhas ficam mais juntas pra caber
       arvE.forEach(({ nm: p, nv }, i) => {
-        const pasta = /\/$/.test(p); if (pasta) p = p.slice(0, -1); const yy = top + (86 + i * passoE) * u, ind = nv * 22 * u, arq = !pasta && (/\.\w+$/.test(p) || /^\.\w/.test(p));
-        if (arq) { ctx.save(); ctx.globalAlpha *= a; ctx.fillStyle = C.ac; rr(ctx, x + 32 * u + ind, yy - 13 * u, 20 * u, 26 * u, 4 * u); ctx.fill(); ctx.restore(); }
-        else pastaIcone(ctx, x + 28 * u + ind, yy - 14 * u, 30 * u, a);
-        const fsN = Math.min(24 * u, 24 * u * (sideW - 88 * u - ind) / Math.max(1, tw(ctx, p, font(arq ? 600 : 500, 24 * u))));  // nome comprido encolhe pra caber no Explorer
-        txt(ctx, p, font(arq ? 600 : 500, fsN), x + 68 * u + ind, yy, arq ? C.ac : C.txt, "left", a);
+        const kE = Math.min(1, passoE / 40);  // muitas linhas: a letra e o ícone encolhem junto, pra não encavalar
+        const pasta = /\/$/.test(p); if (pasta) p = p.slice(0, -1); const yy = top + (86 + i * passoE) * u, ind = nv * 22 * u * Math.max(0.75, kE), arq = !pasta && (/\.\w+$/.test(p) || /^\.\w/.test(p));
+        if (arq) { ctx.save(); ctx.globalAlpha *= a; ctx.fillStyle = C.ac; rr(ctx, x + 32 * u + ind, yy - 13 * u * kE, 20 * u * kE, 26 * u * kE, 4 * u * kE); ctx.fill(); ctx.restore(); }
+        else pastaIcone(ctx, x + 28 * u + ind, yy - 14 * u * kE, 30 * u * kE, a);
+        const fsN = Math.min(24 * u * kE, 24 * u * kE * (sideW - 88 * u - ind) / Math.max(1, tw(ctx, p, font(arq ? 600 : 500, 24 * u * kE))));  // nome comprido encolhe pra caber no Explorer
+        txt(ctx, p, font(arq ? 600 : 500, fsN), x + (36 + 32 * kE) * u + ind, yy, arq ? C.ac : C.txt, "left", a);
       });
     }
     // aba
@@ -725,15 +726,16 @@
         const arv = arvore(ps, 3); const passoM = Math.min(48, (ch / u - 120) / Math.max(1, arv.length + (s.resultado === "arquivo" ? 1 : 0)));  /* muitos arquivos: linhas mais juntas */ const iNovo = s.novo_pos !== undefined ? s.novo_pos : ps.length; const iApaga = s.apaga ? arv.findIndex((q) => q.nm === s.apaga) : -1; const ka2 = iApaga >= 0 ? easeOut((t - tFim - 0.2) / 0.35) : 0;
         const alvoNm = s.alvo_item || s.apaga;  // botão direito em cima deste item do Explorer (o menu abre ali e o item fica selecionado)
         arv.forEach(({ nm: p, nv }, i) => { const pasta = /\/$/.test(p); if (pasta) p = p.slice(0, -1); const desl = (i >= iNovo ? kn : 0) - (iApaga >= 0 && i > iApaga ? ka2 : 0); const al = a * (i === iApaga ? 1 - ka2 : 1);
-          const yy = corpo + (80 + (i + desl) * passoM) * u, ind = nv * 22 * u, arq = !pasta && (/\.\w+$/.test(p) || /^\.\w/.test(p));
+          const kM = Math.min(1, passoM / 40);  // muitas linhas: letra, ícone e seleção encolhem junto
+          const yy = corpo + (80 + (i + desl) * passoM) * u, ind = nv * 22 * u * Math.max(0.75, kM), arq = !pasta && (/\.\w+$/.test(p) || /^\.\w/.test(p));
           if (al <= 0.01) return;
           if (alvoNm && (p === alvoNm.replace(/\/$/, "") || p.trim() === alvoNm.replace(/\/$/, ""))) { alvoPos = [x + 68 * u + ind + Math.min(tw(ctx, p, font(500, 24 * u)), sideW - 120 * u) * 0.6, yy];
-            const ks = easeOut((t - tc0 + 0.1) / 0.2); if (ks > 0) { ctx.save(); ctx.globalAlpha = al * ks; ctx.fillStyle = "#04395e"; ctx.fillRect(x, yy - 22 * u, sideW, 44 * u); ctx.strokeStyle = "#007fd4"; ctx.lineWidth = 2 * u; ctx.strokeRect(x + 1 * u, yy - 22 * u, sideW - 2 * u, 44 * u); ctx.restore(); } }
-          if (arq) { ctx.save(); ctx.globalAlpha *= al; ctx.fillStyle = C.ac; rr(ctx, x + 32 * u + ind, yy - 13 * u, 20 * u, 26 * u, 4 * u); ctx.fill(); ctx.restore(); } else pastaIcone(ctx, x + 28 * u + ind, yy - 14 * u, 30 * u, al);
-          txt(ctx, p, caber(ctx, p, 500, 24 * u, sideW - 88 * u - ind), x + 68 * u + ind, yy, C.txt, "left", al); });
-        if (kn > 0) { const i = iNovo, yy = corpo + (80 + i * passoM) * u, ind = (s.novo_nivel !== undefined ? s.novo_nivel : arv.some((q) => q.nv !== Math.min(arv.indexOf(q), 3)) ? arv[arv.length - 1].nv : Math.min(i, 3)) * 22 * u; const nm = (s.novo || "novo.js").slice(0, Math.ceil(clamp((t - tFim - 0.6) / 1.0) * (s.novo || "novo.js").length));
-          ctx.save(); ctx.globalAlpha = a * kn; ctx.strokeStyle = C.ac2; ctx.lineWidth = 2 * u; ctx.strokeRect(x + 60 * u + ind, yy - 20 * u, sideW - 80 * u - ind, 40 * u); if (!s.novo_pasta) { ctx.fillStyle = C.ac; rr(ctx, x + 32 * u + ind, yy - 13 * u, 20 * u, 26 * u, 4 * u); ctx.fill(); } ctx.restore(); if (s.novo_pasta) pastaIcone(ctx, x + 28 * u + ind, yy - 14 * u, 30 * u, a * kn);
-          txt(ctx, nm, caber(ctx, s.novo || "novo.js", 600, 24 * u, sideW - 88 * u - ind), x + 68 * u + ind, yy, C.txt, "left", a * kn); } }
+            const ks = easeOut((t - tc0 + 0.1) / 0.2); if (ks > 0) { ctx.save(); ctx.globalAlpha = al * ks; ctx.fillStyle = "#04395e"; ctx.fillRect(x, yy - 22 * u * kM, sideW, 44 * u * kM); ctx.strokeStyle = "#007fd4"; ctx.lineWidth = 2 * u; ctx.strokeRect(x + 1 * u, yy - 22 * u * kM, sideW - 2 * u, 44 * u * kM); ctx.restore(); } }
+          if (arq) { ctx.save(); ctx.globalAlpha *= al; ctx.fillStyle = C.ac; rr(ctx, x + 32 * u + ind, yy - 13 * u * kM, 20 * u * kM, 26 * u * kM, 4 * u * kM); ctx.fill(); ctx.restore(); } else pastaIcone(ctx, x + 28 * u + ind, yy - 14 * u * kM, 30 * u * kM, al);
+          txt(ctx, p, caber(ctx, p, 500, 24 * u * kM, sideW - 88 * u - ind), x + (36 + 32 * kM) * u + ind, yy, C.txt, "left", al); });
+        if (kn > 0) { const kM = Math.min(1, passoM / 40); const i = iNovo, yy = corpo + (80 + i * passoM) * u, ind = (s.novo_nivel !== undefined ? s.novo_nivel : arv.some((q) => q.nv !== Math.min(arv.indexOf(q), 3)) ? arv[arv.length - 1].nv : Math.min(i, 3)) * 22 * u * Math.max(0.75, kM); const nm = (s.novo || "novo.js").slice(0, Math.ceil(clamp((t - tFim - 0.6) / 1.0) * (s.novo || "novo.js").length));
+          ctx.save(); ctx.globalAlpha = a * kn; ctx.strokeStyle = C.ac2; ctx.lineWidth = 2 * u; ctx.strokeRect(x + (28 + 32 * kM) * u + ind, yy - 20 * u * kM, sideW - (48 + 32 * kM) * u - ind, 40 * u * kM); if (!s.novo_pasta) { ctx.fillStyle = C.ac; rr(ctx, x + 32 * u + ind, yy - 13 * u * kM, 20 * u * kM, 26 * u * kM, 4 * u * kM); ctx.fill(); } ctx.restore(); if (s.novo_pasta) pastaIcone(ctx, x + 28 * u + ind, yy - 14 * u * kM, 30 * u * kM, a * kn);
+          txt(ctx, nm, caber(ctx, s.novo || "novo.js", 600, 24 * u * kM, sideW - 88 * u - ind), x + (36 + 32 * kM) * u + ind, yy, C.txt, "left", a * kn); } }
       txt(ctx, s.fundo_txt || "", font(700, 40 * u), x + sideW + (W - sideW) / 2, corpo + ch * 0.4, "#3a3f50", "center", a);
       if (s.resultado === "terminal") { const k = easeOut((t - tFim - 0.3) / 0.5); if (k > 0) { const th = 250 * u * k, ty = y + H - th - 2 * u;
         ctx.save(); ctx.globalAlpha = a; ctx.fillStyle = C.term; ctx.fillRect(x + sideW, ty, W - sideW, th); ctx.fillStyle = C.line; ctx.fillRect(x + sideW, ty, W - sideW, 2 * u);
