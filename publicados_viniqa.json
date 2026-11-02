@@ -3,72 +3,84 @@
   "arquivo": "viniqa_lote1_short1.mp4",
   "titulo": "Você não precisa saber programar pra automatizar teste",
   "video_id": "1hbvry7AlKk",
-  "publishAt": "2026-10-19T12:00:00-03:00"
+  "publishAt": "2026-10-19T12:00:00-03:00",
+  "desc": "Você não precisa saber programar pra escrever seu primeiro teste automatizado.\n\n🎓 Curso completo de Cypress pra quem tá começando do zero:\n🔥 Até 3/12, sai por R$ 24,90 com o cupom LANCAMENTO (já vem aplicado no link).\nhttps://www.udemy.com/course/cypress-para-leigos-testes-automatizados-do-zero/?couponCode=LANCAMENTO\n\nSou o Vinícius Torales, QA, e ensino testes automatizados do zero.\n\n#qa #testes #cypress #automacao #tecnologia"
  },
  {
   "arquivo": "viniqa_lote1_short3.mp4",
   "titulo": "Seu primeiro teste automatizado",
   "video_id": "lyfD8rJ6F30",
-  "publishAt": "2026-10-21T12:00:00-03:00"
+  "publishAt": "2026-10-21T12:00:00-03:00",
+  "desc": "Esse é um teste automatizado completo. E é bem mais simples do que parece.\n\n🎓 Curso completo de Cypress pra quem tá começando do zero:\n🔥 Até 3/12, sai por R$ 24,90 com o cupom LANCAMENTO (já vem aplicado no link).\nhttps://www.udemy.com/course/cypress-para-leigos-testes-automatizados-do-zero/?couponCode=LANCAMENTO\n\nSou o Vinícius Torales, QA, e ensino testes automatizados do zero.\n\n#cypress #qa #testesautomatizados #programacao"
  },
  {
   "arquivo": "viniqa_lote1_short2.mp4",
   "titulo": "Como achar o nome de qualquer botão",
   "video_id": "kzc27cwf_oo",
-  "publishAt": "2026-10-23T12:00:00-03:00"
+  "publishAt": "2026-10-23T12:00:00-03:00",
+  "desc": "Como achar o nome de qualquer botão de um site em dez segundos.\n\n🎓 Curso completo de Cypress pra quem tá começando do zero:\n🔥 Até 3/12, sai por R$ 24,90 com o cupom LANCAMENTO (já vem aplicado no link).\nhttps://www.udemy.com/course/cypress-para-leigos-testes-automatizados-do-zero/?couponCode=LANCAMENTO\n\nSou o Vinícius Torales, QA, e ensino testes automatizados do zero.\n\n#qa #devtools #cypress #testes"
  },
  {
   "arquivo": "viniqa_lote1_short5.mp4",
   "titulo": "O botão do Cypress que escreve o código pra você",
   "video_id": "T-yIhAQSwrc",
-  "publishAt": "2026-10-26T12:00:00-03:00"
+  "publishAt": "2026-10-26T12:00:00-03:00",
+  "desc": "O Cypress tem um botão que escreve o código por você. Quase ninguém usa.\n\n🎓 Curso completo de Cypress pra quem tá começando do zero:\n🔥 Até 3/12, sai por R$ 24,90 com o cupom LANCAMENTO (já vem aplicado no link).\nhttps://www.udemy.com/course/cypress-para-leigos-testes-automatizados-do-zero/?couponCode=LANCAMENTO\n\nSou o Vinícius Torales, QA, e ensino testes automatizados do zero.\n\n#cypress #qa #dicas #automacao"
  },
  {
   "arquivo": "viniqa_lote1_short4.mp4",
   "titulo": "O seletor que não quebra",
   "video_id": "4jlcqR1BzhE",
-  "publishAt": "2026-10-28T12:00:00-03:00"
+  "publishAt": "2026-10-28T12:00:00-03:00",
+  "desc": "Seu teste quebra toda vez que o site muda de cor? O problema é o seletor.\n\n🎓 Curso completo de Cypress pra quem tá começando do zero:\n🔥 Até 3/12, sai por R$ 24,90 com o cupom LANCAMENTO (já vem aplicado no link).\nhttps://www.udemy.com/course/cypress-para-leigos-testes-automatizados-do-zero/?couponCode=LANCAMENTO\n\nSou o Vinícius Torales, QA, e ensino testes automatizados do zero.\n\n#cypress #seletores #qa #testes"
  },
  {
   "arquivo": "viniqa_lote1_short7.mp4",
   "titulo": "Teste sem conferir não é teste",
   "video_id": "2XLbd50bQGo",
-  "publishAt": "2026-10-30T12:00:00-03:00"
+  "publishAt": "2026-10-30T12:00:00-03:00",
+  "desc": "Esse teste passa. Mas ele não testa nada.\n\n🎓 Curso completo de Cypress pra quem tá começando do zero:\n🔥 Até 3/12, sai por R$ 24,90 com o cupom LANCAMENTO (já vem aplicado no link).\nhttps://www.udemy.com/course/cypress-para-leigos-testes-automatizados-do-zero/?couponCode=LANCAMENTO\n\nSou o Vinícius Torales, QA, e ensino testes automatizados do zero.\n\n#cypress #qa #assertions #testes"
  },
  {
   "arquivo": "viniqa_lote1_short11.mp4",
   "titulo": "O teste que todo iniciante esquece",
   "video_id": "jxj1cQUYVmE",
-  "publishAt": "2026-11-02T12:00:00-03:00"
+  "publishAt": "2026-11-02T12:00:00-03:00",
+  "desc": "Todo iniciante testa se o login funciona. Quase ninguém testa se ele falha direito.\n\n🎓 Curso completo de Cypress pra quem tá começando do zero:\n🔥 Até 3/12, sai por R$ 24,90 com o cupom LANCAMENTO (já vem aplicado no link).\nhttps://www.udemy.com/course/cypress-para-leigos-testes-automatizados-do-zero/?couponCode=LANCAMENTO\n\nSou o Vinícius Torales, QA, e ensino testes automatizados do zero.\n\n#cypress #qa #testenegativo #testes"
  },
  {
   "arquivo": "viniqa_lote1_short6.mp4",
   "titulo": "Pare de repetir código nos testes",
   "video_id": "5VEl6YEkOfI",
-  "publishAt": "2026-11-04T12:00:00-03:00"
+  "publishAt": "2026-11-04T12:00:00-03:00",
+  "desc": "Se todo teste seu começa com a mesma linha, você precisa conhecer o beforeEach.\n\n🎓 Curso completo de Cypress pra quem tá começando do zero:\n🔥 Até 3/12, sai por R$ 24,90 com o cupom LANCAMENTO (já vem aplicado no link).\nhttps://www.udemy.com/course/cypress-para-leigos-testes-automatizados-do-zero/?couponCode=LANCAMENTO\n\nSou o Vinícius Torales, QA, e ensino testes automatizados do zero.\n\n#cypress #beforeEach #qa #programacao"
  },
  {
   "arquivo": "viniqa_lote1_short9.mp4",
   "titulo": "Teste vermelho com Timed out retrying",
   "video_id": "2seOWOBn4AQ",
-  "publishAt": "2026-11-06T12:00:00-03:00"
+  "publishAt": "2026-11-06T12:00:00-03:00",
+  "desc": "Seu teste ficou vermelho com Timed out retrying? Quase sempre é isso.\n\n🎓 Curso completo de Cypress pra quem tá começando do zero:\n🔥 Até 3/12, sai por R$ 24,90 com o cupom LANCAMENTO (já vem aplicado no link).\nhttps://www.udemy.com/course/cypress-para-leigos-testes-automatizados-do-zero/?couponCode=LANCAMENTO\n\nSou o Vinícius Torales, QA, e ensino testes automatizados do zero.\n\n#cypress #erros #qa #testes"
  },
  {
   "arquivo": "viniqa_lote1_short10.mp4",
   "titulo": "Seu projeto de teste vira portfólio",
   "video_id": "Q5iuF5DYLYw",
-  "publishAt": "2026-11-09T12:00:00-03:00"
+  "publishAt": "2026-11-09T12:00:00-03:00",
+  "desc": "Escrever sei Cypress no currículo não adianta. Isso aqui adianta.\n\n🎓 Curso completo de Cypress pra quem tá começando do zero:\n🔥 Até 3/12, sai por R$ 24,90 com o cupom LANCAMENTO (já vem aplicado no link).\nhttps://www.udemy.com/course/cypress-para-leigos-testes-automatizados-do-zero/?couponCode=LANCAMENTO\n\nSou o Vinícius Torales, QA, e ensino testes automatizados do zero.\n\n#portfolio #qa #github #carreira"
  },
  {
   "arquivo": "viniqa_lote1_short8.mp4",
   "titulo": "npx não é reconhecido: como resolver",
   "video_id": "1cqvxCZ_kVs",
-  "publishAt": "2026-11-11T12:00:00-03:00"
+  "publishAt": "2026-11-11T12:00:00-03:00",
+  "desc": "Deu npx não é reconhecido no terminal? Calma, é rápido de resolver.\n\n🎓 Curso completo de Cypress pra quem tá começando do zero:\n🔥 Até 3/12, sai por R$ 24,90 com o cupom LANCAMENTO (já vem aplicado no link).\nhttps://www.udemy.com/course/cypress-para-leigos-testes-automatizados-do-zero/?couponCode=LANCAMENTO\n\nSou o Vinícius Torales, QA, e ensino testes automatizados do zero.\n\n#nodejs #npx #cypress #erros"
  },
  {
   "arquivo": "viniqa_lote1_short12.mp4",
   "titulo": "cypress open ou cypress run",
   "video_id": "PeO1_aVL5A8",
-  "publishAt": "2026-11-13T12:00:00-03:00"
+  "publishAt": "2026-11-13T12:00:00-03:00",
+  "desc": "npx cypress open ou npx cypress run? Muita gente não sabe a diferença.\n\n🎓 Curso completo de Cypress pra quem tá começando do zero:\n🔥 Até 3/12, sai por R$ 24,90 com o cupom LANCAMENTO (já vem aplicado no link).\nhttps://www.udemy.com/course/cypress-para-leigos-testes-automatizados-do-zero/?couponCode=LANCAMENTO\n\nSou o Vinícius Torales, QA, e ensino testes automatizados do zero.\n\n#cypress #qa #terminal #testes"
  }
 ]
