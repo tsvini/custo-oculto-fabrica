@@ -49,7 +49,7 @@ def _montar(raiz, itens, abertas):
 
 
 def completar(log=False):
-    projeto, estado, mudou = None, {}, set()
+    projeto, estado, mudou, estados = None, {}, set(), {}
     for n in range(1, 84):
         arq = os.path.join(RAIZ, "projetos", f"curso-playwright-{n:02d}", "projeto.json")
         if not os.path.exists(arq):
@@ -61,8 +61,10 @@ def completar(log=False):
             pas = c.get("pastas")
             if not pas:
                 continue
-            if pas[0] != projeto:
-                projeto, estado = pas[0], {}
+            if pas[0] != projeto:  # cada projeto guarda o seu estado (a aula 83 volta pro primeiro projeto)
+                if projeto:
+                    estados[projeto] = estado
+                projeto = pas[0]; estado = estados.get(projeto, {}) if n >= DE_AULA else {}
             # a árvore "final" da cena (no menu de criar, o item novo entra na posição novo_pos)
             final = list(pas)
             if c.get("type") == "menu" and c.get("novo") and c.get("novo_pos") is not None:
