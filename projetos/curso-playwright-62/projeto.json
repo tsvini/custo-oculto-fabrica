@@ -124,19 +124,19 @@
        "text": "Duas caixas: A e B. Dá pra pegar a A com o mouse, arrastar, e soltar em cima da B. Aí elas trocam de lugar.",
        "scene": {
         "type": "tela",
-        "media": "n62_drag2",
+        "media": "n62_drag3",
         "url": "https://the-internet.herokuapp.com/drag_and_drop",
         "gravar": true,
         "acoes": [
          {
-          "espera": 1000
+          "espera": 2800
          },
          {
           "drag": [
            "#column-a",
            "#column-b"
           ],
-          "espera": 1800
+          "espera": 2500
          }
         ],
         "titulo": "the-internet.herokuapp.com",

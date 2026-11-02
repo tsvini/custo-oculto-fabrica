@@ -124,20 +124,20 @@
        "text": "Olha a tela: duas caixinhas. A primeira vem desmarcada, a segunda vem marcada. Clicando, ela marca. Clicando de novo, desmarca.",
        "scene": {
         "type": "tela",
-        "media": "n56_check2",
+        "media": "n56_check3",
         "url": "https://the-internet.herokuapp.com/checkboxes",
         "gravar": true,
         "acoes": [
          {
-          "espera": 1200
+          "espera": 5600
          },
          {
           "check": "#checkboxes input >> nth=0",
-          "espera": 1300
+          "espera": 1600
          },
          {
           "uncheck": "#checkboxes input >> nth=0",
-          "espera": 1300
+          "espera": 2000
          }
         ],
         "titulo": "the-internet.herokuapp.com",
@@ -336,26 +336,26 @@
        "text": "É uma caixa que abre uma lista: Option 1 e Option 2. A pessoa escolhe uma, e ela fica selecionada. Igual à caixa de ordenar do desafio quatro.",
        "scene": {
         "type": "tela",
-        "media": "n56_dd2",
+        "media": "n56_dd3",
         "url": "https://the-internet.herokuapp.com/dropdown",
         "gravar": true,
         "acoes": [
          {
-          "espera": 1000
+          "espera": 3500
          },
          {
           "select": [
            "#dropdown",
            "1"
           ],
-          "espera": 1200
+          "espera": 1500
          },
          {
           "select": [
            "#dropdown",
            "2"
           ],
-          "espera": 1200
+          "espera": 2000
          }
         ],
         "titulo": "the-internet.herokuapp.com",
