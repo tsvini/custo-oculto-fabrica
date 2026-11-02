@@ -98,7 +98,8 @@ def main():
                     nota("Vini QA", f"{arq} passou da data ({it['data']}) e não subiu", "warning"); continue
                 tk = tk or token()
                 with tempfile.TemporaryDirectory() as t:
-                    subprocess.run(["gh", "release", "download", "videos", "-p", arq, "-D", t, "--clobber"], check=True)
+                    if subprocess.run(["gh", "release", "download", "outros-videos", "-p", arq, "-D", t, "--clobber"]).returncode:  # vídeo do canal fica em outros-videos
+                        subprocess.run(["gh", "release", "download", "videos", "-p", arq, "-D", t, "--clobber"], check=True)
                     desc = descricao(it, a["link_curso"], a.get("cupom"))
                     vid = subir(tk, os.path.join(t, arq), it["titulo"], desc, quando)
                 reg.append({"arquivo": arq, "titulo": it["titulo"], "video_id": vid, "publishAt": quando.isoformat(), "desc": desc})
