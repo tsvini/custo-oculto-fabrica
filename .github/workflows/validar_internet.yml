@@ -1,0 +1,20 @@
+name: Validar internet.spec nos 3 navegadores
+on:
+  workflow_dispatch:
+jobs:
+  validar:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    env:
+      SAUCE_USER: standard_user
+      SAUCE_PASSWORD: secret_sauce
+      CI: "true"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Instalar
+        run: cd curso-playwright/projeto && npm ci --silent && npx playwright install --with-deps chromium firefox webkit >/dev/null 2>&1
+      - name: Rodar
+        run: cd curso-playwright/projeto && npx playwright test tests/internet.spec.js tests/login.spec.js tests/compra.spec.js tests/usuarios.spec.js --reporter=list 2>&1 | sed 's/\x1b\[[0-9;]*m//g' | tail -80
