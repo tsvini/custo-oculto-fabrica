@@ -222,11 +222,14 @@ def telas(cenas, pasta, log, idioma="pt"):
                                 meta["elems"].append(None); log(f"  tela {s['media']}: não achei {sel} ({str(e)[:60]})")
                     if s.get("alvo_css"):
                         try:
-                            bx = pg.locator(s["alvo_css"]).first.bounding_box()
-                            if bx:
+                            # caixa no TEXTO (um div de largura inteira com o texto à esquerda deixava o zoom numa área vazia); lista = junta vários
+                            rs = [pg.locator(sel).first.evaluate("e => { const r = document.createRange(); r.selectNodeContents(e); const b = r.getBoundingClientRect(); return [b.left, b.top, b.right, b.bottom]; }")
+                                  for sel in ([s["alvo_css"]] if isinstance(s["alvo_css"], str) else s["alvo_css"])]
+                            bx = {"x": min(r[0] for r in rs), "y": min(r[1] for r in rs)}; bx["width"] = max(r[2] for r in rs) - bx["x"]; bx["height"] = max(r[3] for r in rs) - bx["y"]
+                            if bx["width"] > 0:
                                 x0, y0, x1, y1 = bx["x"] / 1600, bx["y"] / 900, (bx["x"] + bx["width"]) / 1600, (bx["y"] + bx["height"]) / 900
                                 pad = 0.012; meta["caixa"] = [max(0, x0 - pad), max(0, y0 - pad * 1.8), min(1, x1 + pad), min(1, y1 + pad * 1.8)]
-                                cx, cy = (x0 + x1) / 2, (y0 + y1) / 2; zw = 0.55
+                                cx, cy = (x0 + x1) / 2, (y0 + y1) / 2; zw = 0.55 if isinstance(s["alvo_css"], str) else min(0.55, max(0.32, (x1 - x0) * 2.5, (y1 - y0) * 2.5))
                                 zx0 = min(max(0, cx - zw / 2), 1 - zw); zy0 = min(max(0, cy - zw / 2), 1 - zw); meta["zoom"] = [zx0, zy0, zx0 + zw, zy0 + zw]
                         except Exception as e:
                             log(f"  tela {s['media']}: não achei {s['alvo_css']} ({str(e)[:60]})")

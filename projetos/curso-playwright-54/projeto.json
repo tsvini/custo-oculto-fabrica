@@ -390,7 +390,7 @@
        "text": "De onde vem esse quarenta e três e dezoito? Da conta que o site faz:",
        "scene": {
         "type": "tela",
-        "media": "tela54_total2",
+        "media": "tela54_total3",
         "url": "https://www.saucedemo.com/",
         "acoes": [
          {
@@ -443,7 +443,11 @@
           "espera": 1500
          }
         ],
-        "alvo_css": "[data-test=\"total-label\"]",
+        "alvo_css": [
+         "[data-test=\"subtotal-label\"]",
+         "[data-test=\"tax-label\"]",
+         "[data-test=\"total-label\"]"
+        ],
         "titulo": "saucedemo.com",
         "legenda": "Item total + Tax = Total",
         "zoom_em": 1.0,
