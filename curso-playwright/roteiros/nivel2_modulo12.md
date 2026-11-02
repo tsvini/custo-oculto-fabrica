@@ -39,7 +39,7 @@
 ## Aula 57: O usuário precisa enviar um arquivo
 1. A tarefa mudou: o usuário precisa conseguir anexar um documento. Currículo, comprovante, planilha. [bigtext]
 2. No the internet, a tela é a File Upload. Na página inicial, clica nela. [tela]
-3. Na tela tem um botão Escolher arquivo, que abre a janela do computador pra procurar o arquivo. E o botão Upload, que envia. Depois de enviar, a página mostra o nome do arquivo. [tela]
+3. Na tela tem um botão Choose File, escolher arquivo, que abre a janela do computador pra procurar o arquivo. E o botão Upload, que envia. Depois de enviar, a página mostra o nome do arquivo. [tela]
 4. O teste vai fazer igual: escolher um arquivo, clicar em Upload, e conferir que o nome dele apareceu. [cards]
 5. Mas pra enviar um arquivo, o teste precisa ter um arquivo. Na pasta do projeto, cria uma pasta nova chamada arquivos. [menu]
 6. E dentro dela, um arquivo de texto: exemplo ponto txt. [menu]

@@ -176,7 +176,7 @@ a, b = bloco("upload de arquivo"); ARV = ARV_COM
 aula(57, "O usuário precisa enviar um arquivo", [
     ("A tarefa mudou: o usuário precisa conseguir anexar um documento. Currículo, comprovante, planilha.", tarefa("NOVA TAREFA", "O usuário precisa anexar um documento")),
     ("No the internet, a tela é a File Upload. Na página inicial, clica nela.", home("n57_home", "/upload", "Página inicial › File Upload")),
-    ("Na tela tem um botão Escolher arquivo, que abre a janela do computador pra procurar o arquivo. E o botão Upload, que envia. Depois de enviar, a página mostra o nome do arquivo.",
+    ("Na tela tem um botão Choose File, escolher arquivo, que abre a janela do computador pra procurar o arquivo. E o botão Upload, que envia. Depois de enviar, a página mostra o nome do arquivo.",
      video("n57_tela2", "Escolhe · envia · o nome aparece", url=SITE + "/upload",
            acoes=[{"espera": 1200}, {"upload": ["#file-upload", "curso-playwright/projeto/arquivos/exemplo.txt"], "espera": 1300}, {"click": "#file-submit", "espera": 1800}])),
     ("O teste vai fazer igual: escolher um arquivo, clicar em Upload, e conferir que o nome dele apareceu.",
