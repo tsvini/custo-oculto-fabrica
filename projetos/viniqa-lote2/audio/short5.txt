@@ -1,0 +1,1 @@
+Tá começando em kiuêi e quer aprender automação? Todo teste é feito de três coisas. Primeiro, o seletor: como o robô acha o botão na tela. Depois, a ação: clicar, digitar, escolher. E a conferência: o teste confere se deu certo. Sem ela, não é teste. Curso completo de Cypress do zero: até três de dezembro, sai por vinte e quatro e noventa com o cupom LANCAMENTO. Link na bio.
