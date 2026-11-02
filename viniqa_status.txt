@@ -1,1 +1,1 @@
-02/11 13:18 · 12 no canal · descrição nova em 12 vídeo(s)
+02/11 17:44 · 18 no canal · Pare de usar cy.wait com tempo fixo → 16/11 12h (youtu.be/r5uyRbcsssU) | Teste também o que dá errado → 18/11 12h (youtu.be/1EH24PfLwOU) | describe e it em português → 20/11 12h (youtu.be/BLi8oll_W_8) | Rode só o teste que você está mexendo → 23/11 12h (youtu.be/4etHmE1ZR7s) | O básico de automação que todo QA júnior precisa → 25/11 12h (youtu.be/DjLMS9PT03w) | Cypress ou Playwright: qual aprender primeiro? → 27/11 12h (youtu.be/Mi-ZkLYbZ_E)

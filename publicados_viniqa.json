@@ -82,5 +82,47 @@
   "video_id": "PeO1_aVL5A8",
   "publishAt": "2026-11-13T12:00:00-03:00",
   "desc": "npx cypress open ou npx cypress run? Muita gente não sabe a diferença.\n\n🎓 Curso completo de Cypress pra quem tá começando do zero:\n🔥 Até 3/12, sai por R$ 24,90 com o cupom LANCAMENTO (já vem aplicado no link).\nhttps://www.udemy.com/course/cypress-para-leigos-testes-automatizados-do-zero/?couponCode=LANCAMENTO\n\nSou o Vinícius Torales, QA, e ensino testes automatizados do zero.\n\n#cypress #qa #terminal #testes"
+ },
+ {
+  "arquivo": "viniqa_lote2_short1.mp4",
+  "titulo": "Pare de usar cy.wait com tempo fixo",
+  "video_id": "r5uyRbcsssU",
+  "publishAt": "2026-11-16T12:00:00-03:00",
+  "desc": "Para de usar cy ponto wait com tempo fixo no seu teste.\n\n🎓 Curso completo de Cypress pra quem tá começando do zero:\n🔥 Até 3/12, sai por R$ 24,90 com o cupom LANCAMENTO (já vem aplicado no link).\nhttps://www.udemy.com/course/cypress-para-leigos-testes-automatizados-do-zero/?couponCode=LANCAMENTO\n\nSou o Vinícius Torales, QA, e ensino testes automatizados do zero.\n\n#cypress #qa #testes #automacao"
+ },
+ {
+  "arquivo": "viniqa_lote2_short2.mp4",
+  "titulo": "Teste também o que dá errado",
+  "video_id": "1EH24PfLwOU",
+  "publishAt": "2026-11-18T12:00:00-03:00",
+  "desc": "Um bom teste de login não confere só quem entra. Confere também quem não pode entrar.\n\n🎓 Curso completo de Cypress pra quem tá começando do zero:\n🔥 Até 3/12, sai por R$ 24,90 com o cupom LANCAMENTO (já vem aplicado no link).\nhttps://www.udemy.com/course/cypress-para-leigos-testes-automatizados-do-zero/?couponCode=LANCAMENTO\n\nSou o Vinícius Torales, QA, e ensino testes automatizados do zero.\n\n#qa #testes #cypress #bugs"
+ },
+ {
+  "arquivo": "viniqa_lote2_short3.mp4",
+  "titulo": "describe e it em português",
+  "video_id": "BLi8oll_W_8",
+  "publishAt": "2026-11-20T12:00:00-03:00",
+  "desc": "Describe e it parecem difíceis. Mas lendo em português, é bem simples.\n\n🎓 Curso completo de Cypress pra quem tá começando do zero:\n🔥 Até 3/12, sai por R$ 24,90 com o cupom LANCAMENTO (já vem aplicado no link).\nhttps://www.udemy.com/course/cypress-para-leigos-testes-automatizados-do-zero/?couponCode=LANCAMENTO\n\nSou o Vinícius Torales, QA, e ensino testes automatizados do zero.\n\n#cypress #qa #programacao #testes"
+ },
+ {
+  "arquivo": "viniqa_lote2_short4.mp4",
+  "titulo": "Rode só o teste que você está mexendo",
+  "video_id": "4etHmE1ZR7s",
+  "publishAt": "2026-11-23T12:00:00-03:00",
+  "desc": "Tem vinte testes no arquivo e quer rodar só um? Tem um jeito.\n\n🎓 Curso completo de Cypress pra quem tá começando do zero:\n🔥 Até 3/12, sai por R$ 24,90 com o cupom LANCAMENTO (já vem aplicado no link).\nhttps://www.udemy.com/course/cypress-para-leigos-testes-automatizados-do-zero/?couponCode=LANCAMENTO\n\nSou o Vinícius Torales, QA, e ensino testes automatizados do zero.\n\n#cypress #qa #dicas #testesautomatizados"
+ },
+ {
+  "arquivo": "viniqa_lote2_short5.mp4",
+  "titulo": "O básico de automação que todo QA júnior precisa",
+  "video_id": "DjLMS9PT03w",
+  "publishAt": "2026-11-25T12:00:00-03:00",
+  "desc": "Tá começando em QA e quer aprender automação? Todo teste é feito de três coisas.\n\n🎓 Curso completo de Cypress pra quem tá começando do zero:\n🔥 Até 3/12, sai por R$ 24,90 com o cupom LANCAMENTO (já vem aplicado no link).\nhttps://www.udemy.com/course/cypress-para-leigos-testes-automatizados-do-zero/?couponCode=LANCAMENTO\n\nSou o Vinícius Torales, QA, e ensino testes automatizados do zero.\n\n#qa #carreira #automacao #tecnologia"
+ },
+ {
+  "arquivo": "viniqa_lote2_short6.mp4",
+  "titulo": "Cypress ou Playwright: qual aprender primeiro?",
+  "video_id": "Mi-ZkLYbZ_E",
+  "publishAt": "2026-11-27T12:00:00-03:00",
+  "desc": "Cypress ou Playwright: qual aprender primeiro?\n\n🎓 Curso completo de Cypress pra quem tá começando do zero:\n🔥 Até 3/12, sai por R$ 24,90 com o cupom LANCAMENTO (já vem aplicado no link).\nhttps://www.udemy.com/course/cypress-para-leigos-testes-automatizados-do-zero/?couponCode=LANCAMENTO\n\nSou o Vinícius Torales, QA, e ensino testes automatizados do zero.\n\n#cypress #playwright #qa #automacao"
  }
 ]
