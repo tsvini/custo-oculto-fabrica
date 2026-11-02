@@ -1,12 +1,12 @@
 {
- "atualizado": "01/11/2026 22:48",
+ "atualizado": "02/11/2026 17:30",
  "fontes": {
   "custo_oculto": {
-   "seguidores": 18,
-   "views_total": 5554,
-   "videos": 43,
-   "views_28d": 5467,
-   "views_7d": 575,
+   "seguidores": 26,
+   "views_total": 6625,
+   "videos": 44,
+   "views_28d": 5570,
+   "views_7d": 600,
    "seguidores_28d": 17,
    "dia": [
     [
@@ -112,6 +112,10 @@
     [
      "2026-10-30",
      39
+    ],
+    [
+     "2026-10-31",
+     103
     ]
    ],
    "top": [
@@ -155,7 +159,7 @@
   },
   "hidden_cost": {
    "seguidores": 0,
-   "views_total": 24,
+   "views_total": 25,
    "videos": 15,
    "views_28d": 0,
    "views_7d": 0,
@@ -167,9 +171,9 @@
   "vini_qa": {
    "seguidores": 0,
    "views_total": 323,
-   "videos": 6,
-   "views_28d": 316,
-   "views_7d": 274,
+   "videos": 7,
+   "views_28d": 323,
+   "views_7d": 280,
    "seguidores_28d": 0,
    "dia": [
     [
@@ -275,14 +279,18 @@
     [
      "2026-10-30",
      169
+    ],
+    [
+     "2026-10-31",
+     7
     ]
    ],
    "top": [
     {
      "titulo": "Teste sem conferir não é teste",
      "url": "https://youtu.be/2XLbd50bQGo",
-     "views": 167,
-     "retencao": 40,
+     "views": 174,
+     "retencao": 39,
      "likes": 0
     },
     {
@@ -318,33 +326,39 @@
   },
   "tiktok": {
    "usuario": "Custo Oculto",
-   "seguidores": 69,
-   "curtidas": 442,
-   "videos": 24,
-   "views_total": 8852,
+   "seguidores": 70,
+   "curtidas": 447,
+   "videos": 25,
+   "views_total": 8939,
    "top": [
+    {
+     "titulo": "Uma marca tão forte que virou quase sinônimo do próprio produto. Mas o que acontece quando",
+     "url": "https://www.tiktok.com/@custooculto/video/7703579884316101908?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
+     "views": 81,
+     "likes": 1
+    },
     {
      "titulo": "A ideia que mudou a Havaianas não nasceu dentro da empresa. 🩴 Nos anos 90, consumidores co",
      "url": "https://www.tiktok.com/@custooculto/video/7703211501976390932?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 267,
-     "likes": 9
+     "views": 438,
+     "likes": 13
     },
     {
      "titulo": "A Ricardo Eletro chegou a faturar bilhões e ter mais de mil lojas no Brasil. Depois, veio ",
      "url": "https://www.tiktok.com/@custooculto/video/7702860346633080085?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 550,
+     "views": 551,
      "likes": 19
     },
     {
      "titulo": "A primeira venda do Mercado Livre envolveu 10 cervos vivos. 🦌 Mas essa está longe de ser a",
      "url": "https://www.tiktok.com/@custooculto/video/7702594040860003604?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 185,
+     "views": 212,
      "likes": 4
     },
     {
      "titulo": "O CUSTO DE SER GIGANTE — EP. 07 A Polishop já teve cerca de 280 lojas no Brasil. Anos depo",
      "url": "https://www.tiktok.com/@custooculto/video/7702089941328612629?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 292,
+     "views": 293,
      "likes": 7
     },
     {
@@ -352,12 +366,6 @@
      "url": "https://www.tiktok.com/@custooculto/video/7701771236770319637?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
      "views": 477,
      "likes": 24
-    },
-    {
-     "titulo": "O CUSTO DE SER GIGANTE — EP. 05 A Microsoft pagou US$ 8,5 bilhões pelo Skype. Quatorze ano",
-     "url": "https://www.tiktok.com/@custooculto/video/7701373214546513173?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 546,
-     "likes": 25
     }
    ],
    "nome": "TikTok @custooculto"
@@ -395,26 +403,6 @@
   }
  },
  "agenda": [
-  {
-   "quando": "2026-11-02T10:00:00-03:00",
-   "titulo": "O Brasil quer o Orkut de volta. Mas como ele nasceu? · PAUSADO (rascunho)",
-   "tipo": "metricool",
-   "id": "metricool",
-   "url": "https://app.metricool.com/planner",
-   "plataforma_rede": "tiktok",
-   "chave": "tiktok",
-   "plataforma": "TikTok (Metricool)",
-   "sem_cancelar": true
-  },
-  {
-   "quando": "2026-11-02T12:00:00-03:00",
-   "plataforma": "Vini QA (YouTube)",
-   "chave": "vini_qa",
-   "titulo": "O teste que todo iniciante esquece",
-   "tipo": "short",
-   "id": "jxj1cQUYVmE",
-   "url": "https://studio.youtube.com/video/jxj1cQUYVmE/edit"
-  },
   {
    "quando": "2026-11-02T18:00:00-03:00",
    "plataforma": "Hidden Cost (YouTube EN)",
