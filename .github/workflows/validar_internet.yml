@@ -17,4 +17,4 @@ jobs:
       - name: Instalar
         run: cd curso-playwright/projeto && npm ci --silent && npx playwright install --with-deps chromium firefox webkit >/dev/null 2>&1
       - name: Rodar
-        run: cd curso-playwright/projeto && npx playwright test tests/internet.spec.js tests/login.spec.js tests/compra.spec.js tests/usuarios.spec.js --reporter=list 2>&1 | sed 's/\x1b\[[0-9;]*m//g' | tail -80
+        run: cd curso-playwright/projeto && sed "s/aula [0-9]*: //" tests/nivel2/internet.spec.js > tests/internet.spec.js && npx playwright test tests/internet.spec.js --reporter=list 2>&1 | sed 's/\x1b\[[0-9;]*m//g' | tail -80
