@@ -1,0 +1,52 @@
+{
+ "canal": "Vini QA",
+ "link_curso": "https://www.udemy.com/course/cypress-para-leigos-testes-automatizados-do-zero/?couponCode=LANCAMENTO",
+ "cupom": {
+  "texto": "🔥 Até 3/12, sai por R$ 24,90 com o cupom LANCAMENTO (já vem aplicado no link).",
+  "ate": "2026-12-03"
+ },
+ "videos": [
+  {
+   "short": 1,
+   "data": "2026-11-16",
+   "hora": "12:00",
+   "titulo": "Pare de usar cy.wait com tempo fixo",
+   "legenda": "Para de usar cy ponto wait com tempo fixo no seu teste. Curso completo de Cypress do zero: link na bio. #cypress #qa #testes #automacao"
+  },
+  {
+   "short": 2,
+   "data": "2026-11-18",
+   "hora": "12:00",
+   "titulo": "Teste também o que dá errado",
+   "legenda": "Um bom teste de login não confere só quem entra. Confere também quem não pode entrar. Curso completo de Cypress do zero: link na bio. #qa #testes #cypress #bugs"
+  },
+  {
+   "short": 3,
+   "data": "2026-11-20",
+   "hora": "12:00",
+   "titulo": "describe e it em português",
+   "legenda": "Describe e it parecem difíceis. Mas lendo em português, é bem simples. Curso completo de Cypress do zero: link na bio. #cypress #qa #programacao #testes"
+  },
+  {
+   "short": 4,
+   "data": "2026-11-23",
+   "hora": "12:00",
+   "titulo": "Rode só o teste que você está mexendo",
+   "legenda": "Tem vinte testes no arquivo e quer rodar só um? Tem um jeito. Curso completo de Cypress do zero: link na bio. #cypress #qa #dicas #testesautomatizados"
+  },
+  {
+   "short": 5,
+   "data": "2026-11-25",
+   "hora": "12:00",
+   "titulo": "O básico de automação que todo QA júnior precisa",
+   "legenda": "Tá começando em QA e quer aprender automação? Todo teste é feito de três coisas. Curso completo de Cypress do zero: link na bio. #qa #carreira #automacao #tecnologia"
+  },
+  {
+   "short": 6,
+   "data": "2026-11-27",
+   "hora": "12:00",
+   "titulo": "Cypress ou Playwright: qual aprender primeiro?",
+   "legenda": "Cypress ou Playwright: qual aprender primeiro? Curso completo de Cypress do zero: link na bio. #cypress #playwright #qa #automacao"
+  }
+ ]
+}
