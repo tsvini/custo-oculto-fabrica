@@ -387,27 +387,135 @@
        }
       },
       {
-       "text": "Mesma coisa: o quarenta e três e dezoito só funciona porque esse site nunca muda os preços. Numa loja de verdade, você calcula o total somando os preços que aparecem na tela. E no módulo 14 você aprende a ler os preços da tela como número, que é a base pra isso.",
+       "text": "De onde vem esse quarenta e três e dezoito? Da conta que o site faz:",
+       "scene": {
+        "type": "tela",
+        "media": "tela54_total",
+        "url": "https://www.saucedemo.com/",
+        "acoes": [
+         {
+          "fill": [
+           "#user-name",
+           "standard_user"
+          ]
+         },
+         {
+          "fill": [
+           "#password",
+           "secret_sauce"
+          ]
+         },
+         {
+          "click": "#login-button"
+         },
+         {
+          "click": "[data-test=\"add-to-cart-sauce-labs-backpack\"]"
+         },
+         {
+          "click": "[data-test=\"add-to-cart-sauce-labs-bike-light\"]"
+         },
+         {
+          "click": "[data-test=\"shopping-cart-link\"]"
+         },
+         {
+          "click": "[data-test=\"checkout\"]"
+         },
+         {
+          "fill": [
+           "[data-test=\"firstName\"]",
+           "Maria"
+          ]
+         },
+         {
+          "fill": [
+           "[data-test=\"lastName\"]",
+           "Silva"
+          ]
+         },
+         {
+          "fill": [
+           "[data-test=\"postalCode\"]",
+           "88000-000"
+          ]
+         },
+         {
+          "click": "[data-test=\"continue\"]",
+          "espera": 1500
+         }
+        ],
+        "alvo_css": ".summary_info",
+        "titulo": "saucedemo.com",
+        "legenda": "Item total, Tax e Total",
+        "zoom_em": 1.0,
+        "caixa_em": 1.6
+       }
+      },
+      {
+       "text": "A mochila custa vinte e nove e noventa e nove, e a lanterna, nove e noventa e nove. Somando, trinta e nove e noventa e oito. Mais três e vinte de imposto: quarenta e três e dezoito.",
+       "scene": {
+        "type": "traducao",
+        "titulo": "DE ONDE VEM O $43.18",
+        "linhas": [
+         [
+          "mochila",
+          "$29.99"
+         ],
+         [
+          "+ lanterna",
+          "$9.99"
+         ],
+         [
+          "= Item total",
+          "$39.98"
+         ],
+         [
+          "+ Tax (imposto)",
+          "$3.20"
+         ],
+         [
+          "= Total",
+          "$43.18"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Esse número só funciona porque o site de treino nunca muda os preços. Se amanhã a mochila custasse trinta, o total seria outro, e o teste ia falhar mesmo com o site funcionando certinho.",
        "scene": {
         "type": "cards",
-        "titulo": "$43.18 É UM NÚMERO FIXO",
+        "titulo": "E SE O PREÇO MUDAR?",
         "itens": [
          [
           "✓",
-          "Site de treino",
-          "o preço nunca muda",
+          "Hoje",
+          "total $43.18: passa",
           "#3fd68a"
          ],
          [
           "✗",
-          "Loja de verdade",
-          "o preço mudou, o teste quebra",
+          "Mochila a $30.00",
+          "o total muda: o teste quebra",
           "#ff6b6b"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Numa loja de verdade, o certo é o teste fazer a conta sozinho: ler os preços da tela e somar. No módulo 14 você aprende a ler os preços da tela como número, que é o primeiro passo pra isso.",
+       "scene": {
+        "type": "cards",
+        "titulo": "VALOR FIXO × CONTA",
+        "itens": [
+         [
+          "✓",
+          "Site de treino",
+          "valor fixo serve",
+          "#3fd68a"
          ],
          [
           "+",
-          "O certo",
-          "somar os preços da tela",
+          "Loja de verdade",
+          "o teste soma os preços da tela",
           "#ffd23f"
          ]
         ]
