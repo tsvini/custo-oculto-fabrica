@@ -330,6 +330,8 @@ aula(63, "A tabela mudou de ordem e o teste quebrou", [
     ("Zero, o sobrenome. Um, o nome. Dois, o e-mail. E três, o valor devido. E a conferência: tem o texto cinquenta dólares.",
      {"type": "traducao", "titulo": "O NTH CONTA DO ZERO", "linhas": [["nth(0)", "sobrenome: Conway"], ["nth(1)", "nome: Tim"], ["nth(2)", "e-mail"], ["nth(3)", "valor devido: $50.00"]]}),
     ("Roda.", roda("tabela pelo conteúdo", "tabela", "Achou pela pessoa, não pela posição", url=SITE + "/tables", acoes=[{"espera": 1500}], seg="2.8s")),
+    ("O internet ponto spec fica no projeto, junto com os outros testes. Terminou e passou? O ciclo da aula quarenta e cinco: git add, git commit e git push. E o GitHub roda esses testes também, nos três navegadores.",
+     {"type": "traducao", "titulo": "SOBE PRO GITHUB", "linhas": [["git add .", "prepara tudo"], ['git commit -m "testes do the-internet"', "a foto com a legenda"], ["git push", "manda pro GitHub"]]}),
     ("Fechamos o site novo! Agora, recursos que aparecem em projetos de verdade.", {"type": "passo", "icone": "▶", "titulo": "Próximo módulo", "sub": "Playwright de verdade no trabalho"}),
     ("Te vejo lá!", {"type": "endcard", "sub": "PRÓXIMA: MÓDULO 13"}),
 ])

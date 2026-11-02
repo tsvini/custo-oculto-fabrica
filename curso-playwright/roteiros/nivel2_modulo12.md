@@ -138,5 +138,6 @@
 8. Dentro dessa linha, as células: get by role cell. E o valor devido é a quarta coluna. Só que o nth conta a partir do zero. Então a quarta coluna é o nth três. [editor]
 9. Zero, o sobrenome. Um, o nome. Dois, o e-mail. E três, o valor devido. E a conferência: tem o texto cinquenta dólares. [traducao]
 10. Roda. [+pausa] [editor]
-11. Fechamos o site novo! Agora, recursos que aparecem em projetos de verdade. [passo]
-12. Te vejo lá! [endcard]
+11. O internet ponto spec fica no projeto, junto com os outros testes. Terminou e passou? O ciclo da aula quarenta e cinco: git add, git commit e git push. E o GitHub roda esses testes também, nos três navegadores. [traducao]
+12. Fechamos o site novo! Agora, recursos que aparecem em projetos de verdade. [passo]
+13. Te vejo lá! [endcard]

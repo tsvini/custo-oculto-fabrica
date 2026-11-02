@@ -319,6 +319,27 @@
        "pausa": 2.5
       },
       {
+       "text": "O internet ponto spec fica no projeto, junto com os outros testes. Terminou e passou? O ciclo da aula quarenta e cinco: git add, git commit e git push. E o GitHub roda esses testes também, nos três navegadores.",
+       "scene": {
+        "type": "traducao",
+        "titulo": "SOBE PRO GITHUB",
+        "linhas": [
+         [
+          "git add .",
+          "prepara tudo"
+         ],
+         [
+          "git commit -m \"testes do the-internet\"",
+          "a foto com a legenda"
+         ],
+         [
+          "git push",
+          "manda pro GitHub"
+         ]
+        ]
+       }
+      },
+      {
        "text": "Fechamos o site novo! Agora, recursos que aparecem em projetos de verdade.",
        "scene": {
         "type": "passo",
