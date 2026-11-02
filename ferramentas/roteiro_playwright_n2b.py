@@ -4,7 +4,7 @@ Código = curso-playwright/projeto (fixtures/, dados/, tests/nivel2/*.spec.js), 
 as saídas de terminal são as reais de nivel2_resultado.txt (release bastidores), com o "aula NN:" tirado dos nomes."""
 import json, os, re, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from roteiro_playwright_m1 import bt, titulo, projeto, RAIZ
+from roteiro_playwright_m1 import inteiro, bt, titulo, projeto, RAIZ
 from roteiro_playwright_m4 import edc
 from roteiro_playwright_m3 import SAUCE, LOGIN
 from roteiro_playwright_m6 import A_LOGIN, TRACE6, C26, L_MOCHILA, ERRO_TRACE, A_FALHA, CARD_BUG
@@ -202,15 +202,15 @@ aula(66, "E se o servidor responder errado?", [
     ("O começo do arquivo: o import, o endereço da Lojinha, e o endereço da API que a gente vai interceptar, guardado com o nome api. Os dois asteriscos querem dizer: qualquer coisa antes. E um before each que entra na loja, com cliente e leigo123, e espera os produtos aparecerem.",
      ed(trecho(MOCK, 1, L_T1 - 2), "O começo: endereços e o login", "mock.spec.js", de=1, ate=L_T1 - 2, pastas=None, criar=[["Dentro da pasta nivel2, cria o mock ponto spec ponto js.", "mock.spec.js"]])),
     ("Primeiro teste: servidor fora do ar. A prova de que o Playwright consegue ficar no meio: page ponto route nesse endereço, e route ponto abort: bloqueie. Depois recarrega a página, e confere o aviso de erro.",
-     ed(trecho(MOCK, L_T1, L_T1 + 4), "page.route + route.abort()", "mock.spec.js", linha0=L_T1, de=1, ate=5, pastas=None)),
+     inteiro(ed(trecho(MOCK, L_T1, L_T1 + 4), "page.route + route.abort()", "mock.spec.js", linha0=L_T1, de=1, ate=5, pastas=None), MOCK.split("\n")[:L_T1 - 1])),
     ("Traduzindo: route, quando o navegador pedir este endereço. Os dois asteriscos: qualquer coisa antes. E abort: bloqueie, como se o servidor estivesse fora do ar.",
      tr("page.route('**/api/produtos.json', (route) => route.abort());", [["page.route", "quando pedir"], ["'**/api/produtos.json'", "este endereço"], ["route.abort()", "bloqueie"]], 2.0)),
     ("E por que o reload? O login já carregou os produtos. Com o route ligado, a gente recarrega a página, e o pedido novo é bloqueado.",
-     ed(trecho(MOCK, L_T1, L_T1 + 4), "reload: pede de novo, agora bloqueado", "mock.spec.js", linha0=L_T1, destaque=[L_ABORT - L_T1 + 2], destaque_em=0.8, pastas=None)),
+     inteiro(ed(trecho(MOCK, L_T1, L_T1 + 4), "reload: pede de novo, agora bloqueado", "mock.spec.js", linha0=L_T1, destaque=[L_ABORT - L_T1 + 2], destaque_em=0.8, pastas=None), MOCK.split("\n")[:L_T1 - 1])),
     ("Olha acontecendo: a loja não conseguiu carregar os produtos, e mostra o aviso. É isso que o teste confere.",
      video("n66_erro", "Servidor fora do ar: o aviso", LOJA + "produtos.html", [{"espera": 800}, {"bloqueia": API}, {"reload": True, "espera": 4500}], pre_url=LOJA, pre_acoes=LOGIN_LOJA, espera_inicio=900)),
     ("Agora o uso mais comum, num segundo teste: lista vazia. Route ponto fulfill: responda no lugar do servidor, com o que você quiser. Aqui, uma lista vazia. E no fim, recarrega e confere a mensagem de nenhum produto.",
-     ed(trecho(MOCK, L_T2, L_T2 + 8), "route.fulfill: responda no lugar do servidor", "mock.spec.js", linha0=L_T2, de=1, ate=9, pastas=None)),
+     inteiro(ed(trecho(MOCK, L_T2, L_T2 + 8), "route.fulfill: responda no lugar do servidor", "mock.spec.js", linha0=L_T2, de=1, ate=9, pastas=None), MOCK.split("\n")[:L_T2 - 1])),
     ("Traduzindo: fulfill, responda você. Status duzentos, deu certo. E o body, o corpo da resposta: os dois colchetes, uma lista vazia.",
      tr("route.fulfill({ status: 200, body: '[]' })", [["route.fulfill", "responda você"], ["status: 200", "deu certo"], ["body: '[]'", "uma lista vazia"]], 1.8)),
     ("E a loja mostra que nenhum produto foi encontrado. O teste confere essa mensagem.",
@@ -342,7 +342,7 @@ aula(70, "Passou. Rodei de novo. Falhou.", [
     ("E pra caçar teste instável, o repeat each: roda o mesmo teste várias vezes seguidas. Se falhar uma vez em dez, tem coisa pra investigar.",
      trl("CAÇANDO TESTE INSTÁVEL", [["--repeat-each=10", "roda 10 vezes seguidas"], ["falhou 1 em 10?", "tem coisa pra investigar"]])),
     ("E o retries do config faz o GitHub tentar de novo quando um teste falha. Ajuda, mas guarda essa: retry diminui o estrago, não corrige a causa.",
-     ed(trecho(CFG, L_RET - 2, L_RET + 1), "retries: tenta de novo no GitHub", "playwright.config.js", linha0=L_RET - 2, destaque=[3], destaque_em=0.8)),
+     inteiro(ed(trecho(CFG, L_RET - 2, L_RET + 1), "retries: tenta de novo no GitHub", "playwright.config.js", linha0=L_RET - 2, destaque=[3], destaque_em=0.8), CFG.split("\n")[:L_RET - 3], CFG.split("\n")[L_RET + 1:])),
     ("Então, no trabalho: apareceu um flaky, investiga a causa. Quase sempre é uma espera errada, ou um teste que depende de outro. E evita o tempo fixo.",
      bt(("RETRY DIMINUI O ESTRAGO", "white", 100), ("NÃO CORRIGE A CAUSA", "gold", 120))),
 ] + fim("o mesmo sistema, três ambientes"))
@@ -360,7 +360,7 @@ aula(71, "O mesmo sistema, três ambientes", [
     ("No trabalho, o mesmo sistema existe em vários endereços: o de desenvolvimento, o de homologação, onde o time testa antes de lançar, e o de produção, o de verdade, que o cliente usa.",
      cards([["🛠", "Desenvolvimento", "dev.loja.com"], ["🧪", "Homologação", "homologacao.loja.com", AZUL], ["🌐", "Produção", "loja.com: o cliente usa", AMARELO]], "O MESMO SISTEMA, 3 ENDEREÇOS")),
     ("E a gente não quer mexer no código toda vez que muda de ambiente. Então, na linha do baseURL, antes do endereço, escreve process ponto env ponto BASE underline URL e dois risquinhos. O endereço continua lá, no fim da linha.",
-     ed(CFG71, "baseURL lê uma variável", "playwright.config.js", linha0=L_BASE - 1, pastas=None, trocar=[[2, "    baseURL: 'https://www.saucedemo.com',", None, 3.0]])),
+     inteiro(ed(CFG71, "baseURL lê uma variável", "playwright.config.js", linha0=L_BASE - 1, pastas=None, trocar=[[2, "    baseURL: 'https://www.saucedemo.com',", None, 3.0]]), CFG.split("\n")[:L_BASE - 2], CFG.split("\n")[L_BASE + 1:])),
     ("Traduzindo: se existir a variável BASE URL, use ela. Os dois risquinhos querem dizer senão. Senão, use o saucedemo.",
      tr("baseURL: process.env.BASE_URL || 'https://www.saucedemo.com'", [["process.env.BASE_URL", "se existir a variável, use ela"], ["||", "senão"], ["'https://www.saucedemo.com'", "use este"]], 1.8)),
     ("Na sua máquina, você escolhe o ambiente na hora de rodar. No Windows, no terminal do VS Code, é assim. E no Mac e no Linux, assim.",

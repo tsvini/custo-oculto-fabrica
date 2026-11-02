@@ -123,13 +123,17 @@
          "  .env",
          "  playwright.config.js"
         ],
-        "codigo": "test('alerta do navegador', async ({ page }) => {\n  await page.goto(`${site}/javascript_alerts`);\n  page.on('dialog', async (dialog) => {\n    await dialog.accept();\n  });",
+        "codigo": "import { test, expect } from '@playwright/test';\n\nconst site = 'https://the-internet.herokuapp.com';\n\ntest('checkbox e dropdown', async ({ page }) => {\n  await page.goto(`${site}/checkboxes`);\n  const primeira = page.getByRole('checkbox').first();\n  await primeira.check();\n  await expect(primeira).toBeChecked();\n  await primeira.uncheck();\n  await expect(primeira).not.toBeChecked();\n\n  await page.goto(`${site}/dropdown`);\n  const lista = page.locator('#dropdown');\n  await lista.selectOption('2');\n  await expect(lista).toHaveValue('2');\n});\n\ntest('upload de arquivo', async ({ page }) => {\n  await page.goto(`${site}/upload`);\n  await page.locator('#file-upload')\n    .setInputFiles('arquivos/exemplo.txt');\n  await page.locator('#file-submit').click();\n  await expect(page.locator('#uploaded-files'))\n    .toContainText('exemplo.txt');\n});\n\ntest('alerta do navegador', async ({ page }) => {\n  await page.goto(`${site}/javascript_alerts`);\n  page.on('dialog', async (dialog) => {\n    await dialog.accept();\n  });",
         "legenda": "page.on('dialog') = quando aparecer um alerta",
         "fonte": 32,
         "digitar": true,
-        "linha0": 28,
-        "digitar_de": 1,
-        "digitar_ate": 5
+        "digitar_de": 28,
+        "digitar_ate": 32,
+        "rolar": true,
+        "rolar_ate": 34,
+        "rolar_de": 0.5,
+        "rolar_dur": 1.2,
+        "atrasa": true
        }
       },
       {
@@ -188,13 +192,17 @@
         "type": "editor",
         "arquivo": "internet.spec.js",
         "pastas": null,
-        "codigo": "test('alerta do navegador', async ({ page }) => {\n  await page.goto(`${site}/javascript_alerts`);\n  page.on('dialog', async (dialog) => {\n    await dialog.accept();\n  });\n  await page.getByRole('button', { name: 'Click for JS Alert' })\n    .click();\n  await expect(page.locator('#result'))\n    .toHaveText('You successfully clicked an alert');\n});",
+        "codigo": "import { test, expect } from '@playwright/test';\n\nconst site = 'https://the-internet.herokuapp.com';\n\ntest('checkbox e dropdown', async ({ page }) => {\n  await page.goto(`${site}/checkboxes`);\n  const primeira = page.getByRole('checkbox').first();\n  await primeira.check();\n  await expect(primeira).toBeChecked();\n  await primeira.uncheck();\n  await expect(primeira).not.toBeChecked();\n\n  await page.goto(`${site}/dropdown`);\n  const lista = page.locator('#dropdown');\n  await lista.selectOption('2');\n  await expect(lista).toHaveValue('2');\n});\n\ntest('upload de arquivo', async ({ page }) => {\n  await page.goto(`${site}/upload`);\n  await page.locator('#file-upload')\n    .setInputFiles('arquivos/exemplo.txt');\n  await page.locator('#file-submit').click();\n  await expect(page.locator('#uploaded-files'))\n    .toContainText('exemplo.txt');\n});\n\ntest('alerta do navegador', async ({ page }) => {\n  await page.goto(`${site}/javascript_alerts`);\n  page.on('dialog', async (dialog) => {\n    await dialog.accept();\n  });\n  await page.getByRole('button', { name: 'Click for JS Alert' })\n    .click();\n  await expect(page.locator('#result'))\n    .toHaveText('You successfully clicked an alert');\n});",
         "legenda": "A mensagem do resultado",
         "fonte": 28,
         "digitar": true,
-        "linha0": 28,
-        "digitar_de": 6,
-        "digitar_ate": 9
+        "digitar_de": 33,
+        "digitar_ate": 36,
+        "rolar": true,
+        "rolar_ate": 39,
+        "rolar_de": 0.5,
+        "rolar_dur": 1.2,
+        "atrasa": true
        }
       },
       {

@@ -708,7 +708,7 @@
        "scene": {
         "type": "editor",
         "arquivo": "compra.spec.js",
-        "codigo": "import { test, expect } from '@playwright/test';\nimport { LoginPage } from '../pages/LoginPage';\nimport { ProdutosPage } from '../pages/ProdutosPage';\nimport { CheckoutPage } from '../pages/CheckoutPage';\n\ntest.describe('Compra', () => {\n  test.beforeEach(async ({ page }) => {\n    await page.goto('/');\n    await page.getByTestId('username').fill(process.env.SAUCE_USER);\n    await page.getByTestId('password').fill(process.env.SAUCE_PASSWORD);\n    await page.getByTestId('login-button').click();\n  });",
+        "codigo": "import { test, expect } from '@playwright/test';\nimport { LoginPage } from '../pages/LoginPage';\nimport { ProdutosPage } from '../pages/ProdutosPage';\nimport { CheckoutPage } from '../pages/CheckoutPage';\n\ntest.describe('Compra', () => {\n  test.beforeEach(async ({ page }) => {\n    await page.goto('/');\n    await page.getByTestId('username').fill(process.env.SAUCE_USER);\n    await page.getByTestId('password').fill(process.env.SAUCE_PASSWORD);\n    await page.getByTestId('login-button').click();\n  });\n\n  test('compra uma mochila do começo ao fim', async ({ page }) => {\n    await page.getByTestId('add-to-cart-sauce-labs-backpack').click();\n    await expect(page.getByTestId('shopping-cart-badge')).toHaveText('1');\n    await page.getByTestId('shopping-cart-link').click();\n    await page.getByTestId('checkout').click();\n    await page.getByTestId('firstName').fill('Maria');\n    await page.getByTestId('lastName').fill('Silva');\n    await page.getByTestId('postalCode').fill('88000-000');\n    await page.getByTestId('continue').click();\n    await page.getByTestId('finish').click();\n    await expect(page.getByTestId('complete-header')).toHaveText('Thank you for your order!');\n  });\n});",
         "legenda": "Os imports das três páginas",
         "fonte": 24,
         "digitar": true,
@@ -740,7 +740,7 @@
        "scene": {
         "type": "editor",
         "arquivo": "compra.spec.js",
-        "codigo": "import { test, expect } from '@playwright/test';\nimport { LoginPage } from '../pages/LoginPage';\nimport { ProdutosPage } from '../pages/ProdutosPage';\nimport { CheckoutPage } from '../pages/CheckoutPage';\n\ntest.describe('Compra', () => {\n  test.beforeEach(async ({ page }) => {\n    await page.goto('/');\n    await page.getByTestId('username').fill(process.env.SAUCE_USER);\n    await page.getByTestId('password').fill(process.env.SAUCE_PASSWORD);\n    await page.getByTestId('login-button').click();\n  });\n",
+        "codigo": "import { test, expect } from '@playwright/test';\nimport { LoginPage } from '../pages/LoginPage';\nimport { ProdutosPage } from '../pages/ProdutosPage';\nimport { CheckoutPage } from '../pages/CheckoutPage';\n\ntest.describe('Compra', () => {\n  test.beforeEach(async ({ page }) => {\n    await page.goto('/');\n    await page.getByTestId('username').fill(process.env.SAUCE_USER);\n    await page.getByTestId('password').fill(process.env.SAUCE_PASSWORD);\n    await page.getByTestId('login-button').click();\n  });\n\n  test('compra uma mochila do começo ao fim', async ({ page }) => {\n    await page.getByTestId('add-to-cart-sauce-labs-backpack').click();\n    await expect(page.getByTestId('shopping-cart-badge')).toHaveText('1');\n    await page.getByTestId('shopping-cart-link').click();\n    await page.getByTestId('checkout').click();\n    await page.getByTestId('firstName').fill('Maria');\n    await page.getByTestId('lastName').fill('Silva');\n    await page.getByTestId('postalCode').fill('88000-000');\n    await page.getByTestId('continue').click();\n    await page.getByTestId('finish').click();\n    await expect(page.getByTestId('complete-header')).toHaveText('Thank you for your order!');\n  });\n});",
         "legenda": "Apaga as três linhas do login",
         "fonte": 24,
         "digitar": false,
@@ -776,7 +776,7 @@
        "scene": {
         "type": "editor",
         "arquivo": "compra.spec.js",
-        "codigo": "import { test, expect } from '@playwright/test';\nimport { LoginPage } from '../pages/LoginPage';\nimport { ProdutosPage } from '../pages/ProdutosPage';\nimport { CheckoutPage } from '../pages/CheckoutPage';\n\ntest.describe('Compra', () => {\n  test.beforeEach(async ({ page }) => {\n    await page.goto('/');\n    const login = new LoginPage(page);\n    await login.entrar(process.env.SAUCE_USER, process.env.SAUCE_PASSWORD);\n  });\n",
+        "codigo": "import { test, expect } from '@playwright/test';\nimport { LoginPage } from '../pages/LoginPage';\nimport { ProdutosPage } from '../pages/ProdutosPage';\nimport { CheckoutPage } from '../pages/CheckoutPage';\n\ntest.describe('Compra', () => {\n  test.beforeEach(async ({ page }) => {\n    await page.goto('/');\n    const login = new LoginPage(page);\n    await login.entrar(process.env.SAUCE_USER, process.env.SAUCE_PASSWORD);\n  });\n\n  test('compra uma mochila do começo ao fim', async ({ page }) => {\n    await page.getByTestId('add-to-cart-sauce-labs-backpack').click();\n    await expect(page.getByTestId('shopping-cart-badge')).toHaveText('1');\n    await page.getByTestId('shopping-cart-link').click();\n    await page.getByTestId('checkout').click();\n    await page.getByTestId('firstName').fill('Maria');\n    await page.getByTestId('lastName').fill('Silva');\n    await page.getByTestId('postalCode').fill('88000-000');\n    await page.getByTestId('continue').click();\n    await page.getByTestId('finish').click();\n    await expect(page.getByTestId('complete-header')).toHaveText('Thank you for your order!');\n  });\n});",
         "legenda": "O login agora é o LoginPage",
         "fonte": 24,
         "digitar": true,
@@ -808,7 +808,7 @@
        "scene": {
         "type": "editor",
         "arquivo": "compra.spec.js",
-        "codigo": "  test('compra uma mochila do começo ao fim', async ({ page }) => {\n    const produtos = new ProdutosPage(page);\n    const checkout = new CheckoutPage(page);\n\n    await page.getByTestId('add-to-cart-sauce-labs-backpack').click();\n    await expect(page.getByTestId('shopping-cart-badge')).toHaveText('1');\n    await page.getByTestId('shopping-cart-link').click();\n    await page.getByTestId('checkout').click();\n    await page.getByTestId('firstName').fill('Maria');\n    await page.getByTestId('lastName').fill('Silva');\n    await page.getByTestId('postalCode').fill('88000-000');\n    await page.getByTestId('continue').click();\n    await page.getByTestId('finish').click();\n    await expect(page.getByTestId('complete-header')).toHaveText('Thank you for your order!');\n  });\n});",
+        "codigo": "import { test, expect } from '@playwright/test';\nimport { LoginPage } from '../pages/LoginPage';\nimport { ProdutosPage } from '../pages/ProdutosPage';\nimport { CheckoutPage } from '../pages/CheckoutPage';\n\ntest.describe('Compra', () => {\n  test.beforeEach(async ({ page }) => {\n    await page.goto('/');\n    const login = new LoginPage(page);\n    await login.entrar(process.env.SAUCE_USER, process.env.SAUCE_PASSWORD);\n  });\n\n  test('compra uma mochila do começo ao fim', async ({ page }) => {\n    const produtos = new ProdutosPage(page);\n    const checkout = new CheckoutPage(page);\n\n    await page.getByTestId('add-to-cart-sauce-labs-backpack').click();\n    await expect(page.getByTestId('shopping-cart-badge')).toHaveText('1');\n    await page.getByTestId('shopping-cart-link').click();\n    await page.getByTestId('checkout').click();\n    await page.getByTestId('firstName').fill('Maria');\n    await page.getByTestId('lastName').fill('Silva');\n    await page.getByTestId('postalCode').fill('88000-000');\n    await page.getByTestId('continue').click();\n    await page.getByTestId('finish').click();\n    await expect(page.getByTestId('complete-header')).toHaveText('Thank you for your order!');\n  });\n});",
         "legenda": "Cria as duas páginas no teste",
         "fonte": 22,
         "digitar": true,
@@ -831,9 +831,13 @@
          "  package.json",
          "  playwright.config.js"
         ],
-        "linha0": 13,
-        "digitar_de": 2,
-        "digitar_ate": 3
+        "digitar_de": 14,
+        "digitar_ate": 15,
+        "rolar": true,
+        "rolar_ate": 27,
+        "rolar_de": 0.5,
+        "rolar_dur": 1.2,
+        "atrasa": true
        }
       },
       {
@@ -841,7 +845,7 @@
        "scene": {
         "type": "editor",
         "arquivo": "compra.spec.js",
-        "codigo": "  test('compra uma mochila do começo ao fim', async ({ page }) => {\n    const produtos = new ProdutosPage(page);\n    const checkout = new CheckoutPage(page);\n\n    await page.getByTestId('add-to-cart-sauce-labs-backpack').click();\n    await expect(page.getByTestId('shopping-cart-badge')).toHaveText('1');\n    await page.getByTestId('shopping-cart-link').click();\n    await page.getByTestId('checkout').click();\n    await page.getByTestId('firstName').fill('Maria');\n    await page.getByTestId('lastName').fill('Silva');\n    await page.getByTestId('postalCode').fill('88000-000');\n    await page.getByTestId('continue').click();\n    await page.getByTestId('finish').click();\n    await expect(page.getByTestId('complete-header')).toHaveText('Thank you for your order!');\n  });\n});",
+        "codigo": "import { test, expect } from '@playwright/test';\nimport { LoginPage } from '../pages/LoginPage';\nimport { ProdutosPage } from '../pages/ProdutosPage';\nimport { CheckoutPage } from '../pages/CheckoutPage';\n\ntest.describe('Compra', () => {\n  test.beforeEach(async ({ page }) => {\n    await page.goto('/');\n    const login = new LoginPage(page);\n    await login.entrar(process.env.SAUCE_USER, process.env.SAUCE_PASSWORD);\n  });\n\n  test('compra uma mochila do começo ao fim', async ({ page }) => {\n    const produtos = new ProdutosPage(page);\n    const checkout = new CheckoutPage(page);\n\n    await page.getByTestId('add-to-cart-sauce-labs-backpack').click();\n    await expect(page.getByTestId('shopping-cart-badge')).toHaveText('1');\n    await page.getByTestId('shopping-cart-link').click();\n    await page.getByTestId('checkout').click();\n    await page.getByTestId('firstName').fill('Maria');\n    await page.getByTestId('lastName').fill('Silva');\n    await page.getByTestId('postalCode').fill('88000-000');\n    await page.getByTestId('continue').click();\n    await page.getByTestId('finish').click();\n    await expect(page.getByTestId('complete-header')).toHaveText('Thank you for your order!');\n  });\n});",
         "legenda": "Apaga os passos antigos",
         "fonte": 22,
         "digitar": false,
@@ -864,20 +868,24 @@
          "  package.json",
          "  playwright.config.js"
         ],
-        "linha0": 13,
         "apagar": [
-         5,
-         6,
-         7,
-         8,
-         9,
-         10,
-         11,
-         12,
-         13,
-         14
+         17,
+         18,
+         19,
+         20,
+         21,
+         22,
+         23,
+         24,
+         25,
+         26
         ],
-        "apagar_em": 1.8
+        "apagar_em": 1.8,
+        "rolar": true,
+        "rolar_ate": 30,
+        "rolar_de": 0.5,
+        "rolar_dur": 1.2,
+        "atrasa": true
        }
       },
       {
@@ -885,7 +893,7 @@
        "scene": {
         "type": "editor",
         "arquivo": "compra.spec.js",
-        "codigo": "  test('compra uma mochila do começo ao fim', async ({ page }) => {\n    const produtos = new ProdutosPage(page);\n    const checkout = new CheckoutPage(page);\n\n    await produtos.adicionar('sauce-labs-backpack');\n    await expect(produtos.contadorCarrinho).toHaveText('1');\n  });\n});",
+        "codigo": "import { test, expect } from '@playwright/test';\nimport { LoginPage } from '../pages/LoginPage';\nimport { ProdutosPage } from '../pages/ProdutosPage';\nimport { CheckoutPage } from '../pages/CheckoutPage';\n\ntest.describe('Compra', () => {\n  test.beforeEach(async ({ page }) => {\n    await page.goto('/');\n    const login = new LoginPage(page);\n    await login.entrar(process.env.SAUCE_USER, process.env.SAUCE_PASSWORD);\n  });\n\n  test('compra uma mochila do começo ao fim', async ({ page }) => {\n    const produtos = new ProdutosPage(page);\n    const checkout = new CheckoutPage(page);\n\n    await produtos.adicionar('sauce-labs-backpack');\n    await expect(produtos.contadorCarrinho).toHaveText('1');\n  });\n});",
         "legenda": "1. adiciona e confere o numerozinho",
         "fonte": 22,
         "digitar": true,
@@ -908,9 +916,13 @@
          "  package.json",
          "  playwright.config.js"
         ],
-        "linha0": 13,
-        "digitar_de": 5,
-        "digitar_ate": 6
+        "digitar_de": 17,
+        "digitar_ate": 18,
+        "rolar": true,
+        "rolar_ate": 22,
+        "rolar_de": 0.5,
+        "rolar_dur": 1.2,
+        "atrasa": true
        }
       },
       {
@@ -918,7 +930,7 @@
        "scene": {
         "type": "editor",
         "arquivo": "compra.spec.js",
-        "codigo": "  test('compra uma mochila do começo ao fim', async ({ page }) => {\n    const produtos = new ProdutosPage(page);\n    const checkout = new CheckoutPage(page);\n\n    await produtos.adicionar('sauce-labs-backpack');\n    await expect(produtos.contadorCarrinho).toHaveText('1');\n    await produtos.irParaCarrinho();\n    await checkout.botaoCheckout.click();\n    await checkout.preencherDados('Maria', 'Silva', '88000-000');\n  });\n});",
+        "codigo": "import { test, expect } from '@playwright/test';\nimport { LoginPage } from '../pages/LoginPage';\nimport { ProdutosPage } from '../pages/ProdutosPage';\nimport { CheckoutPage } from '../pages/CheckoutPage';\n\ntest.describe('Compra', () => {\n  test.beforeEach(async ({ page }) => {\n    await page.goto('/');\n    const login = new LoginPage(page);\n    await login.entrar(process.env.SAUCE_USER, process.env.SAUCE_PASSWORD);\n  });\n\n  test('compra uma mochila do começo ao fim', async ({ page }) => {\n    const produtos = new ProdutosPage(page);\n    const checkout = new CheckoutPage(page);\n\n    await produtos.adicionar('sauce-labs-backpack');\n    await expect(produtos.contadorCarrinho).toHaveText('1');\n    await produtos.irParaCarrinho();\n    await checkout.botaoCheckout.click();\n    await checkout.preencherDados('Maria', 'Silva', '88000-000');\n  });\n});",
         "legenda": "2. carrinho, checkout e dados",
         "fonte": 22,
         "digitar": true,
@@ -941,9 +953,13 @@
          "  package.json",
          "  playwright.config.js"
         ],
-        "linha0": 13,
-        "digitar_de": 7,
-        "digitar_ate": 9
+        "digitar_de": 19,
+        "digitar_ate": 21,
+        "rolar": true,
+        "rolar_ate": 25,
+        "rolar_de": 0.5,
+        "rolar_dur": 1.2,
+        "atrasa": true
        }
       },
       {
@@ -951,7 +967,7 @@
        "scene": {
         "type": "editor",
         "arquivo": "compra.spec.js",
-        "codigo": "  test('compra uma mochila do começo ao fim', async ({ page }) => {\n    const produtos = new ProdutosPage(page);\n    const checkout = new CheckoutPage(page);\n\n    await produtos.adicionar('sauce-labs-backpack');\n    await expect(produtos.contadorCarrinho).toHaveText('1');\n    await produtos.irParaCarrinho();\n    await checkout.botaoCheckout.click();\n    await checkout.preencherDados('Maria', 'Silva', '88000-000');\n    await checkout.botaoFinalizar.click();\n    await expect(checkout.mensagemFinal).toHaveText('Thank you for your order!');\n  });\n});",
+        "codigo": "import { test, expect } from '@playwright/test';\nimport { LoginPage } from '../pages/LoginPage';\nimport { ProdutosPage } from '../pages/ProdutosPage';\nimport { CheckoutPage } from '../pages/CheckoutPage';\n\ntest.describe('Compra', () => {\n  test.beforeEach(async ({ page }) => {\n    await page.goto('/');\n    const login = new LoginPage(page);\n    await login.entrar(process.env.SAUCE_USER, process.env.SAUCE_PASSWORD);\n  });\n\n  test('compra uma mochila do começo ao fim', async ({ page }) => {\n    const produtos = new ProdutosPage(page);\n    const checkout = new CheckoutPage(page);\n\n    await produtos.adicionar('sauce-labs-backpack');\n    await expect(produtos.contadorCarrinho).toHaveText('1');\n    await produtos.irParaCarrinho();\n    await checkout.botaoCheckout.click();\n    await checkout.preencherDados('Maria', 'Silva', '88000-000');\n    await checkout.botaoFinalizar.click();\n    await expect(checkout.mensagemFinal).toHaveText('Thank you for your order!');\n  });\n});",
         "legenda": "3. finaliza e confere",
         "fonte": 22,
         "digitar": true,
@@ -974,9 +990,13 @@
          "  package.json",
          "  playwright.config.js"
         ],
-        "linha0": 13,
-        "digitar_de": 10,
-        "digitar_ate": 11
+        "digitar_de": 22,
+        "digitar_ate": 23,
+        "rolar": true,
+        "rolar_ate": 27,
+        "rolar_de": 0.5,
+        "rolar_dur": 1.2,
+        "atrasa": true
        }
       },
       {

@@ -2,7 +2,7 @@
 Código = curso-playwright/projeto/tests/etapas/aulaNN.spec.js (validado no Actions); only/skip validados em demos/."""
 import json, os, re, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from roteiro_playwright_m1 import bt, titulo, proxima, projeto, RAIZ
+from roteiro_playwright_m1 import bt, titulo, proxima, projeto, RAIZ, inteiro
 from roteiro_playwright_m3 import codigo, ARV, SAUCE, LOGIN
 from roteiro_playwright_m4 import edc, CMD
 
@@ -98,20 +98,20 @@ AULAS.append(projeto(22, "MÓDULO 5 · AULA 22", "describe e beforeEach", [
     ("O primeiro é o describe. Describe é descrever: ele junta testes do mesmo assunto numa caixa com nome. E pra que a caixa? No relatório, os testes aparecem juntos, por assunto. E o que você colocar dentro dela, como o before each daqui a pouco, vale pros testes da caixa.",
      {"type": "traducao", "codigo": "test.describe('Login', () => {", "partes": [["describe", "junte numa caixa"], ["'Login'", "com o nome Login"]], "passo": 2.0}),
     ("Logo depois do import, escreve: test ponto describe, abre parênteses, entre aspas Login, vírgula, abre e fecha parênteses, seta, e abre chaves.",
-     edc("\n".join(LDS[:12]), "test.describe('Login', () => {", digitar=True, digitar_de=3, digitar_ate=3, fonte=26, destaque=[3], destaque_em=4.5)),
+     edc("\n".join(LDS[:-1]), "test.describe('Login', () => {", digitar=True, digitar_de=3, digitar_ate=3, fonte=26, destaque=[3], destaque_em=4.5)),
     ("Lá no final do arquivo, fecha a caixa: chave, parêntese e ponto e vírgula. E os dois testes vão pra dentro dela: seleciona os dois e aperta Tab, pra eles andarem um pouco pra direita.",
-     edc("\n".join(LDS[12:]), "}); fecha a caixa · Tab: os testes vão pra dentro", linha0=13, digitar=True, digitar_de=len(LDS) - 12, digitar_ate=len(LDS) - 12, fonte=26, destaque=[len(LDS) - 12], destaque_em=2.0)),
+     inteiro(edc("\n".join(LDS[12:]), "}); fecha a caixa · Tab: os testes vão pra dentro", linha0=13, digitar=True, digitar_de=len(LDS) - 12, digitar_ate=len(LDS) - 12, fonte=24, destaque=[len(LDS) - 12], destaque_em=2.0), LDS[:12])),
     ("Agora repara numa coisa: a primeira linha dos dois testes é igual. Os dois abrem o site.",
      edc(C_DESC, "O goto se repete nos dois testes", destaque=L_GOTOS_D, destaque_em=0.6, fonte=22, rolar=True, rolar_de=2.4, rolar_dur=1.6)),
     ("E esse é o segundo passo: quando alguma coisa se repete antes de todo teste da caixa, existe o before each. Before each: antes de cada.",
      {"type": "traducao", "codigo": "test.beforeEach(async ({ page }) => {", "partes": [["before", "antes de"], ["Each", "cada"], ["({ page })", "me dê o navegador"]], "passo": 2.0}),
     ("Ele vai dentro do describe, logo no começo, antes dos testes. E lá dentro, o goto.",
-     edc("\n".join(LT[:13]), "test.beforeEach dentro do describe", digitar=True, digitar_de=4, digitar_ate=6, fonte=22)),
+     edc(C_TMP, "test.beforeEach dentro do describe", digitar=True, digitar_de=4, digitar_ate=6, fonte=22)),
     ("Agora o goto dos testes não precisa mais: o before each já abre o site antes de cada um. Então apaga a linha do goto do primeiro teste.",
-     edc("\n".join(LT[:L_GOTOS_T[1] - 3]), "Apaga o goto do primeiro teste", apagar=[L_GOTOS_T[0]], apagar_em=2.6, destaque=[5], destaque_em=0.6, fonte=20)),
+     edc(C_TMP, "Apaga o goto do primeiro teste", apagar=[L_GOTOS_T[0]], apagar_em=2.6, destaque=[5], destaque_em=0.6, fonte=20)),
     ("E agora a mesma coisa no segundo teste: apaga a linha do goto dele também. Pronto: os dois testes começam direto no login, e quem abre o site é o before each.",
-     edc("\n".join(l for i, l in enumerate(LT) if i + 1 != L_GOTOS_T[0])[0:0] + "\n".join([l for i, l in enumerate(LT) if i + 1 != L_GOTOS_T[0]][L_GOTOS_T[1] - 4:]), "Apaga o goto do segundo teste",
-         linha0=L_GOTOS_T[1] - 3, apagar=[3], apagar_em=3.2, fonte=26)),
+     inteiro(edc("\n".join([l for i, l in enumerate(LT) if i + 1 != L_GOTOS_T[0]][L_GOTOS_T[1] - 4:]), "Apaga o goto do segundo teste",
+         linha0=L_GOTOS_T[1] - 3, apagar=[3], apagar_em=1.4, fonte=22), [l for i, l in enumerate(LT) if i + 1 != L_GOTOS_T[0]][:L_GOTOS_T[1] - 4])),
     ("O before each roda antes de cada teste: antes do teste um, abre o site. Antes do teste dois, abre de novo. Assim, cada teste começa do zero, sem depender do outro.",
      {"type": "cards", "titulo": "ANTES DE CADA", "itens": [["1", "Antes do teste 1", "abre o site"], ["2", "Antes do teste 2", "abre de novo", "#69a7ff"], ["✓", "Cada teste", "começa do zero", "#3fd68a"]]}),
     ("E por que o login não foi pro before each também? Porque o segundo teste entra com outro usuário. No before each só vai o que é igual em todos os testes.",
@@ -142,6 +142,7 @@ for _s in AULAS[-1][1]["script"]["long"]["parts"][0]["sentences"]:  # trava: tod
         assert all("page.goto" in _c["codigo"].split("\n")[i - 1] for i in _c["apagar"]), _c["legenda"]
 
 # ---------- Aula 23 ----------
+CFG_ANTES, CFG_DEPOIS = CONFIG[:25], CONFIG[34:]
 USE0 = 26  # o trecho do config que aparece: linhas 26 a 34 (reporter, use e o fim do use)
 CFG_USE = CONFIG[USE0 - 1:34]
 CFG_BASE = [l if "// baseURL" not in l else "    baseURL: 'https://www.saucedemo.com'," for l in CFG_USE]
@@ -152,23 +153,23 @@ C23L = C23.replace("aula 23: ", "")
 AULAS.append(projeto(23, "MÓDULO 5 · AULA 23", "playwright.config - baseURL e data-test", [
     ("Hoje a gente mexe no arquivo de configuração. Parece assustador, mas são só duas linhas.", titulo(23, "CONFIG")),
     ("Abre o playwright ponto config ponto js e procura o use. Use quer dizer: use isso em todos os testes.",
-     edc(cfg(CFG_USE), "use = use isso em todos os testes", arquivo="playwright.config.js", linha0=USE0, destaque=[3], destaque_em=1.0, fonte=26)),
+     inteiro(edc(cfg(CFG_USE), "use = use isso em todos os testes", arquivo="playwright.config.js", linha0=USE0, destaque=[3], destaque_em=1.0, fonte=24), CFG_ANTES, CFG_DEPOIS)),
     ("Repara na linha da baseURL: ela está comentada, com as duas barras na frente. Primeiro, apaga as duas barras. Depois, apaga o endereço de exemplo, o localhost, e escreve no lugar o endereço do Sauce Demo. Base URL: o endereço base.",
-     edc(cfg(CFG_BASE), "baseURL = o endereço base", arquivo="playwright.config.js", linha0=USE0, fonte=26,
-         trocar=[[5, CFG_USE[4], CFG_USE[4].replace("// ", ""), 4.6], [5, CFG_USE[4].replace("// ", ""), None, 7.4]])),
+     inteiro(edc(cfg(CFG_BASE), "baseURL = o endereço base", arquivo="playwright.config.js", linha0=USE0, fonte=24,
+         trocar=[[5, CFG_USE[4], CFG_USE[4].replace("// ", ""), 4.6], [5, CFG_USE[4].replace("// ", ""), None, 7.4]]), CFG_ANTES, CFG_DEPOIS)),
     ("Agora, no teste, apaga o endereço que está dentro do goto e deixa só a barra. O Playwright junta essa barra com o endereço base.",
-     edc("\n".join(C23_GOTO.split("\n")[:7]), "baseURL + /  =  saucedemo.com/", fonte=28, trocar=trocas(C22.replace("aula 22: ", ""), C23_GOTO, 1, 7, em=3.0))),
+     edc(C23_GOTO, "baseURL + /  =  saucedemo.com/", fonte=24, trocar=trocas(C22.replace("aula 22: ", ""), C23_GOTO, 1, 7, em=3.0))),
     ("A vantagem: se um dia o site mudar de endereço, você troca num lugar só.",
      {"type": "cards", "itens": [["⌂", "baseURL", "o endereço num lugar só"], ["/", "page.goto('/')", "nos testes, só o caminho", "#69a7ff"]]}),
     ("E no trabalho isso é muito usado: o mesmo teste roda no site de teste da empresa e no site de verdade. Só muda o endereço base.", {'type': 'compare', 'title': 'O MESMO TESTE', 'items': [['SITE DE TESTE', 'TESTE.LOJA.COM', 'white'], ['SITE DE VERDADE', 'LOJA.COM', 'gold']], 'size': 90, 'stagger': 1.8, 'vs': False}),  # pra que / quando
     ("Segunda linha: test id attribute igual data-test. Lembra do data-test que a gente viu no Inspecionar?",
-     edc(cfg(CFG_TID), "testIdAttribute: 'data-test'", arquivo="playwright.config.js", linha0=USE0, digitar=True, digitar_de=6, digitar_ate=6, fonte=26)),
+     inteiro(edc(cfg(CFG_TID), "testIdAttribute: 'data-test'", arquivo="playwright.config.js", linha0=USE0, digitar=True, digitar_de=6, digitar_ate=6, fonte=24), CFG_ANTES, CFG_DEPOIS)),
     ("Por padrão, o get by test id procura data-testid. O saucedemo usa data-test. Essa linha avisa o Playwright.",
      {"type": "compare", "items": [["data-testid", "O PADRÃO DO PLAYWRIGHT", "white"], ["data-test", "O QUE O SAUCEDEMO USA", "gold"]], "size": 90, "stagger": 1.2, "vs": True}),
     ("E por que usar o data-test? Porque ele existe só pra teste. O texto Username pode mudar: alguém traduz pra Usuário, e o seletor pelo texto quebra. O data-test continua igual.", {'type': 'compare', 'title': 'SE ALGUÉM TRADUZIR A TELA', 'items': [['PELO TEXTO', 'QUEBRA', 'white'], ['PELO DATA-TEST', 'CONTINUA FUNCIONANDO', 'gold']], 'size': 90, 'stagger': 1.8, 'vs': False}),  # pra que / quando
     ("No trabalho, é comum quem testa pedir pra quem desenvolve colocar data-test nos elementos importantes. É um dos seletores mais estáveis que existem.", {'type': 'cards', 'itens': [['🙋', 'Quem testa', 'pede o data-test'], ['👩\u200d💻', 'Quem desenvolve', 'coloca uma vez', '#69a7ff'], ['✓', 'Teste estável', 'não quebra à toa', '#3fd68a']]}),  # pra que / quando
     ("Então, vamos trocar os seletores que já estão nos testes pelo data-test. Repara: o before each continua igual, ele só abre o site.",
-     edc("\n".join(C23.replace("aula 23: ", "").split("\n")[:12]), "O beforeEach só abre o site", fonte=24, destaque=[4, 5, 6], destaque_em=3.0)),
+     edc(C23_GOTO, "O beforeEach só abre o site", fonte=24, destaque=[4, 5, 6], destaque_em=3.0)),
     ("E de onde vêm esses nomes? Do próprio site. Clica com o botão direito no campo de usuário, e Inspecionar. Lá está: data-test igual username.",
      {"type": "devtools", "media": "site_sauce_dev_user", "url": SAUCE, "inspecionar": "[data-test=\"username\"]", "attrs": ["class", "placeholder", "type", "data-test", "id", "name"], "realce": ["data-test"], "realce_em": 2.2, "realce_rotulo": "username", "legenda": "Campo usuário: data-test=\"username\""}),
     ("No campo da senha, a mesma coisa: data-test igual password.",
@@ -179,9 +180,9 @@ AULAS.append(projeto(23, "MÓDULO 5 · AULA 23", "playwright.config - baseURL e 
      {"type": "traducao", "titulo": "A MESMA COISA, OUTRO SELETOR", "linhas": [["getByPlaceholder('Username')", "getByTestId('username')"], ["getByPlaceholder('Password')", "getByTestId('password')"],
                                                                            ["getByRole('button', { name: 'Login' })", "getByTestId('login-button')"]]}),
     ("No primeiro teste, troca as três linhas do login. Repara: só o pedaço do seletor é apagado e escrito de novo. O resto da linha, o fill com o usuário, o fill com a senha e o click, continua igual.",
-     edc("\n".join(C23L.split("\n")[7:12]), "Teste 1: os três seletores trocados", linha0=8, fonte=26, trocar=trocas(C23_GOTO, C23L, 8, 12, em=1.6))),
+     inteiro(edc("\n".join(C23L.split("\n")[7:12]), "Teste 1: os três seletores trocados", linha0=8, fonte=22, trocar=trocas(C23_GOTO, C23L, 8, 12, em=1.6)), C23_GOTO.split("\n")[:7], C23_GOTO.split("\n")[12:])),
     ("E no segundo teste, a mesma troca nas três linhas. Os seletores antigos também estavam certos: é só outro caminho pro mesmo lugar. Mas o data-test é o caminho que menos quebra.",
-     edc("\n".join(C23L.split("\n")[17:24]), "Teste 2: a mesma troca", linha0=18, fonte=24, trocar=trocas(C23_GOTO, C23L, 18, 24, em=1.6))),
+     inteiro(edc("\n".join(C23L.split("\n")[17:24]), "Teste 2: a mesma troca", linha0=18, fonte=22, trocar=trocas(C23_GOTO, C23L, 18, 24, em=1.6)), C23L.split("\n")[:17], C23_GOTO.split("\n")[24:])),
     ("Traduzindo: ache pela etiqueta de teste chamada username.",
      {"type": "traducao", "codigo": "page.getByTestId('username')", "partes": [["getByTestId", "ache pela etiqueta de teste"], ["'username'", "chamada username"]], "passo": 2.0}),
     ("Roda pra confirmar que tudo continua passando.", vs(C23, "Tudo continua passando", run(("Running 2 tests using 2 workers", "mut"), ("  2 passed (2.0s)", "ac")))),
@@ -191,9 +192,11 @@ AULAS.append(projeto(23, "MÓDULO 5 · AULA 23", "playwright.config - baseURL e 
 
 # ---------- Aula 24 ----------
 ENV = "SAUCE_USER=standard_user\nSAUCE_PASSWORD=secret_sauce"
+CFG23 = CONFIG[:25] + CFG_TID + CONFIG[34:]
 CFG_TOPO = CONFIG[:15]
 CFG_DOTENV = [re.sub(r"^// ", "", l) if ("dotenv" in l or "import path" in l) and l.startswith("// ") else l for l in CFG_TOPO]
 assert sum(1 for a, b in zip(CFG_TOPO, CFG_DOTENV) if a != b) == 3
+CFG24 = CFG_DOTENV + CFG23[15:]  # o config inteiro depois da aula 24
 C24L = C24.replace("aula 24: ", "")
 AULAS.append(projeto(24, "MÓDULO 5 · AULA 24", "Variáveis de ambiente - tirando usuário e senha do código", [
     ("Aqui no saucedemo o usuário e a senha são públicos. Mas em projeto de verdade, senha e chave escrita no código é um problema: quando o projeto for pro GitHub, todo mundo vê.",
@@ -214,14 +217,14 @@ AULAS.append(projeto(24, "MÓDULO 5 · AULA 24", "Variáveis de ambiente - tiran
     ("E antes de qualquer outra coisa: o ponto gitignore. Ignore é ignorar: é a lista de arquivos que o Git deixa de fora quando você manda o projeto pro GitHub. Escreve ponto env no final dele.",
      edc(GITIGNORE + "\n.env", ".env no .gitignore", arquivo=".gitignore", pastas=ARV_ENV, digitar=True, digitar_de=len(GITIGNORE.split("\n")) + 1, fonte=30)),
     ("Agora o config. Lá em cima já tem três linhas do dotenv, só que comentadas: com as duas barras na frente, o Playwright ignora. Apaga as duas barras das três linhas.",
-     edc("\n".join(CFG_DOTENV), "Tira as duas barras das 3 linhas", arquivo="playwright.config.js", pastas=ARV_ENV, descomentar=[8, 9, 10], descomentar_em=7.2, destaque=[8, 9, 10], destaque_em=3.0, fonte=22)),
+     edc("\n".join(CFG_DOTENV + CFG23[15:]), "Tira as duas barras das 3 linhas", arquivo="playwright.config.js", pastas=ARV_ENV, descomentar=[8, 9, 10], descomentar_em=7.2, destaque=[8, 9, 10], destaque_em=3.0, fonte=22)),
     ("Lendo em português: importe o dotenv, importe o path, que cuida dos caminhos das pastas, e leia o arquivo ponto env que está nesta pasta.",
      {"type": "traducao", "titulo": "AS 3 LINHAS DO DOTENV", "linhas": [["import dotenv from 'dotenv';", "traga o dotenv"], ["import path from 'path';", "traga o path (caminhos)"],
                                                                      ["dotenv.config({ path: ... '.env' })", "leia o .env desta pasta"]]}),
     ("No teste, apaga o standard user que está escrito, e no lugar escreve process ponto env ponto SAUCE underline USER. Depois apaga a secret sauce, e no lugar escreve process ponto env ponto SAUCE underline PASSWORD.",
-     edc("\n".join(C24L.split("\n")[7:12]), "O teste pede pro .env", linha0=8, pastas=ARV_ENV, fonte=22, trocar=trocas(C23L, C24L, 8, 12, em=2.0))),
+     inteiro(edc("\n".join(C24L.split("\n")[7:12]), "O teste pede pro .env", linha0=8, pastas=ARV_ENV, fonte=22, trocar=trocas(C23L, C24L, 8, 12, em=2.0)), C23L.split("\n")[:7], C23L.split("\n")[12:])),
     ("No segundo teste, o usuário bloqueado continua escrito, porque ele é o que o teste quer testar. Só a senha muda: apaga a secret sauce, e no lugar vai o process ponto env ponto SAUCE underline PASSWORD.",
-     edc("\n".join(C24L.split("\n")[17:24]), "Teste 2: só a senha vem do .env", linha0=18, pastas=ARV_ENV, fonte=22, trocar=trocas(C23L, C24L, 18, 24, em=6.0))),
+     inteiro(edc("\n".join(C24L.split("\n")[17:24]), "Teste 2: só a senha vem do .env", linha0=18, pastas=ARV_ENV, fonte=22, trocar=trocas(C23L, C24L, 18, 24, em=6.0)), C24L.split("\n")[:17], C23L.split("\n")[24:])),
     ("Traduzindo: process ponto env, as variáveis do ambiente. SAUCE underline USER, a variável com esse nome. Quando o teste roda, o dotenv já leu o arquivo, e aqui entra o standard user.",
      {"type": "traducao", "codigo": "process.env.SAUCE_USER", "partes": [["process.env", "as variáveis do ambiente"], ["SAUCE_USER", "a chamada SAUCE_USER"]], "passo": 2.0}),
     ("Dentro, só os nomes das variáveis, sem os valores. Example quer dizer exemplo: quem baixar copia esse arquivo, chama de ponto env, e coloca os próprios valores.",

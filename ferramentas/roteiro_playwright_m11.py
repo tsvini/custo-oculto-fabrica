@@ -4,7 +4,7 @@ Formato: desafio -> "pausa o vídeo e tenta" (contagem na tela + silêncio de ve
 Código = curso-playwright/projeto/tests/etapas/aula49..54.spec.js (o desafios.spec.js crescendo; o 54 é igual ao arquivo final)."""
 import json, os, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from roteiro_playwright_m1 import bt, titulo, projeto, RAIZ
+from roteiro_playwright_m1 import inteiro, bt, titulo, projeto, RAIZ
 from roteiro_playwright_m3 import SAUCE, LOGIN
 from roteiro_playwright_m4 import edc
 from roteiro_playwright_m8 import cod, ln, trecho
@@ -138,7 +138,7 @@ def preencher():
         ("Dica: depois de adicionar, o botão vira Remove, com data-test remove-sauce-labs-backpack. E quando o carrinho fica vazio, o numerozinho some da página.",
          video("dica51", "Add to cart vira Remove · o numerozinho some", [ADD, REM], logado=True)),
         ("Os desafios daqui pra frente começam logados. Lembra do login salvo da aula quarenta e dois? Dentro do describe, uma caixa nova chamada logado. Nela, o test ponto use com o storage state, e um before each que abre direto a página de produtos.",
-         edc(JJ(C.split("\n")[L_LOG51 - 2:L_BE51 + 2] + ["  });", "});"]), "describe('logado') + test.use", arquivo="desafios.spec.js", pastas=ARV_D, linha0=L_LOG51 - 1, digitar=True, digitar_de=2, digitar_ate=L_BE51 + 2 - L_LOG51 + 1, fonte=24)),
+         inteiro(edc(JJ(C.split("\n")[L_LOG51 - 2:L_BE51 + 2] + ["  });", "});"]), "describe('logado') + test.use", arquivo="desafios.spec.js", pastas=ARV_D, linha0=L_LOG51 - 1, digitar=True, digitar_de=2, digitar_ate=L_BE51 + 2 - L_LOG51 + 1, fonte=22), C.split("\n")[:L_LOG51 - 2])),
         ("Solução: pra conferir que ele saiu da página, to have count zero:", ed),
         ("eu espero que o seletor encontre zero elementos.",
          {"type": "traducao", "codigo": "expect(...).toHaveCount(0);", "partes": [["expect", "eu espero que"], ["toHaveCount(0)", "encontre zero elementos"]], "passo": 1.0}),

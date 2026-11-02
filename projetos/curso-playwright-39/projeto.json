@@ -213,6 +213,10 @@
        "scene": {
         "type": "editor",
         "arquivo": "login.spec.js",
+        "codigo": "import { test, expect } from '@playwright/test';\nimport { LoginPage } from '../pages/LoginPage';\n\ntest.describe('Login', () => {\n  test.beforeEach(async ({ page }) => {\n    await page.goto('/');\n  });\n\n  test('entra com usuário e senha', async ({ page }) => {\n    await page.getByTestId('username').fill(process.env.SAUCE_USER);\n    await page.getByTestId('password').fill(process.env.SAUCE_PASSWORD);\n    await page.getByTestId('login-button').click();\n    await expect(page).toHaveURL(/inventory/);\n    await expect(page.getByText('Products')).toBeVisible();\n    await expect(page.getByText('Sauce Labs Backpack')).toContainText('Backpack');\n    await expect(page.getByRole('button', { name: 'Add to cart' })).toHaveCount(6);\n  });\n\n  test('mostra erro para usuário bloqueado', async ({ page }) => {\n    await page.getByTestId('username').fill('locked_out_user');\n    await page.getByTestId('password').fill(process.env.SAUCE_PASSWORD);\n    await page.getByTestId('login-button').click();\n    await expect(page.getByText('locked out')).toBeVisible();\n  });\n});",
+        "legenda": "../ = volte uma pasta",
+        "fonte": 24,
+        "digitar": true,
         "pastas": [
          "meu-primeiro-playwright",
          "  .github/",
@@ -230,10 +234,6 @@
          "  package.json",
          "  playwright.config.js"
         ],
-        "codigo": "import { test, expect } from '@playwright/test';\nimport { LoginPage } from '../pages/LoginPage';\n\ntest.describe('Login', () => {\n  test.beforeEach(async ({ page }) => {\n    await page.goto('/');",
-        "legenda": "../ = volte uma pasta",
-        "fonte": 24,
-        "digitar": true,
         "digitar_de": 2,
         "digitar_ate": 2
        }
@@ -265,7 +265,7 @@
        "scene": {
         "type": "editor",
         "arquivo": "login.spec.js",
-        "codigo": "  test('entra com usuário e senha', async ({ page }) => {\n    await page.getByTestId('username').fill(process.env.SAUCE_USER);\n    await page.getByTestId('password').fill(process.env.SAUCE_PASSWORD);\n    await page.getByTestId('login-button').click();\n    await expect(page).toHaveURL(/inventory/);\n    await expect(page.getByText('Products')).toBeVisible();\n    await expect(page.getByText('Sauce Labs Backpack')).toContainText('Backpack');\n    await expect(page.getByRole('button', { name: 'Add to cart' })).toHaveCount(6);\n  });",
+        "codigo": "import { test, expect } from '@playwright/test';\nimport { LoginPage } from '../pages/LoginPage';\n\ntest.describe('Login', () => {\n  test.beforeEach(async ({ page }) => {\n    await page.goto('/');\n  });\n\n  test('entra com usuário e senha', async ({ page }) => {\n    await page.getByTestId('username').fill(process.env.SAUCE_USER);\n    await page.getByTestId('password').fill(process.env.SAUCE_PASSWORD);\n    await page.getByTestId('login-button').click();\n    await expect(page).toHaveURL(/inventory/);\n    await expect(page.getByText('Products')).toBeVisible();\n    await expect(page.getByText('Sauce Labs Backpack')).toContainText('Backpack');\n    await expect(page.getByRole('button', { name: 'Add to cart' })).toHaveCount(6);\n  });\n\n  test('mostra erro para usuário bloqueado', async ({ page }) => {\n    await page.getByTestId('username').fill('locked_out_user');\n    await page.getByTestId('password').fill(process.env.SAUCE_PASSWORD);\n    await page.getByTestId('login-button').click();\n    await expect(page.getByText('locked out')).toBeVisible();\n  });\n});",
         "legenda": "Apaga as 3 linhas do login",
         "fonte": 22,
         "digitar": false,
@@ -286,13 +286,17 @@
          "  package.json",
          "  playwright.config.js"
         ],
-        "linha0": 9,
         "apagar": [
-         2,
-         3,
-         4
+         10,
+         11,
+         12
         ],
-        "apagar_em": 2.4
+        "apagar_em": 2.4,
+        "rolar": true,
+        "rolar_ate": 19,
+        "rolar_de": 0.5,
+        "rolar_dur": 1.2,
+        "atrasa": true
        }
       },
       {
@@ -300,7 +304,7 @@
        "scene": {
         "type": "editor",
         "arquivo": "login.spec.js",
-        "codigo": "  test('entra com usuário e senha', async ({ page }) => {\n    const login = new LoginPage(page);\n    await expect(page).toHaveURL(/inventory/);\n    await expect(page.getByText('Products')).toBeVisible();\n    await expect(page.getByText('Sauce Labs Backpack')).toContainText('Backpack');\n    await expect(page.getByRole('button', { name: 'Add to cart' })).toHaveCount(6);\n  });",
+        "codigo": "import { test, expect } from '@playwright/test';\nimport { LoginPage } from '../pages/LoginPage';\n\ntest.describe('Login', () => {\n  test.beforeEach(async ({ page }) => {\n    await page.goto('/');\n  });\n\n  test('entra com usuário e senha', async ({ page }) => {\n    const login = new LoginPage(page);\n    await expect(page).toHaveURL(/inventory/);\n    await expect(page.getByText('Products')).toBeVisible();\n    await expect(page.getByText('Sauce Labs Backpack')).toContainText('Backpack');\n    await expect(page.getByRole('button', { name: 'Add to cart' })).toHaveCount(6);\n  });\n\n  test('mostra erro para usuário bloqueado', async ({ page }) => {\n    await page.getByTestId('username').fill('locked_out_user');\n    await page.getByTestId('password').fill(process.env.SAUCE_PASSWORD);\n    await page.getByTestId('login-button').click();\n    await expect(page.getByText('locked out')).toBeVisible();\n  });\n});",
         "legenda": "new = crie um novo",
         "fonte": 22,
         "digitar": true,
@@ -321,9 +325,13 @@
          "  package.json",
          "  playwright.config.js"
         ],
-        "linha0": 9,
-        "digitar_de": 2,
-        "digitar_ate": 2
+        "digitar_de": 10,
+        "digitar_ate": 10,
+        "rolar": true,
+        "rolar_ate": 17,
+        "rolar_de": 0.5,
+        "rolar_dur": 1.2,
+        "atrasa": true
        }
       },
       {
@@ -331,7 +339,7 @@
        "scene": {
         "type": "editor",
         "arquivo": "login.spec.js",
-        "codigo": "  test('entra com usuário e senha', async ({ page }) => {\n    const login = new LoginPage(page);\n    await login.entrar(process.env.SAUCE_USER, process.env.SAUCE_PASSWORD);\n    await expect(page).toHaveURL(/inventory/);\n    await expect(page.getByText('Products')).toBeVisible();\n    await expect(page.getByText('Sauce Labs Backpack')).toContainText('Backpack');\n    await expect(page.getByRole('button', { name: 'Add to cart' })).toHaveCount(6);\n  });",
+        "codigo": "import { test, expect } from '@playwright/test';\nimport { LoginPage } from '../pages/LoginPage';\n\ntest.describe('Login', () => {\n  test.beforeEach(async ({ page }) => {\n    await page.goto('/');\n  });\n\n  test('entra com usuário e senha', async ({ page }) => {\n    const login = new LoginPage(page);\n    await login.entrar(process.env.SAUCE_USER, process.env.SAUCE_PASSWORD);\n    await expect(page).toHaveURL(/inventory/);\n    await expect(page.getByText('Products')).toBeVisible();\n    await expect(page.getByText('Sauce Labs Backpack')).toContainText('Backpack');\n    await expect(page.getByRole('button', { name: 'Add to cart' })).toHaveCount(6);\n  });\n\n  test('mostra erro para usuário bloqueado', async ({ page }) => {\n    await page.getByTestId('username').fill('locked_out_user');\n    await page.getByTestId('password').fill(process.env.SAUCE_PASSWORD);\n    await page.getByTestId('login-button').click();\n    await expect(page.getByText('locked out')).toBeVisible();\n  });\n});",
         "legenda": "Três linhas viraram uma",
         "fonte": 22,
         "digitar": true,
@@ -352,9 +360,13 @@
          "  package.json",
          "  playwright.config.js"
         ],
-        "linha0": 9,
-        "digitar_de": 3,
-        "digitar_ate": 3
+        "digitar_de": 11,
+        "digitar_ate": 11,
+        "rolar": true,
+        "rolar_ate": 18,
+        "rolar_de": 0.5,
+        "rolar_dur": 1.2,
+        "atrasa": true
        }
       },
       {
@@ -362,7 +374,7 @@
        "scene": {
         "type": "editor",
         "arquivo": "login.spec.js",
-        "codigo": "  test('entra com usuário e senha', async ({ page }) => {\n    const login = new LoginPage(page);\n    await login.entrar(process.env.SAUCE_USER, process.env.SAUCE_PASSWORD);\n    await expect(page).toHaveURL(/inventory/);\n    await expect(page.getByText('Products')).toBeVisible();\n    await expect(page.getByText('Sauce Labs Backpack')).toContainText('Backpack');\n    await expect(page.getByRole('button', { name: 'Add to cart' })).toHaveCount(6);\n  });",
+        "codigo": "import { test, expect } from '@playwright/test';\nimport { LoginPage } from '../pages/LoginPage';\n\ntest.describe('Login', () => {\n  test.beforeEach(async ({ page }) => {\n    await page.goto('/');\n  });\n\n  test('entra com usuário e senha', async ({ page }) => {\n    const login = new LoginPage(page);\n    await login.entrar(process.env.SAUCE_USER, process.env.SAUCE_PASSWORD);\n    await expect(page).toHaveURL(/inventory/);\n    await expect(page.getByText('Products')).toBeVisible();\n    await expect(page.getByText('Sauce Labs Backpack')).toContainText('Backpack');\n    await expect(page.getByRole('button', { name: 'Add to cart' })).toHaveCount(6);\n  });\n\n  test('mostra erro para usuário bloqueado', async ({ page }) => {\n    await page.getByTestId('username').fill('locked_out_user');\n    await page.getByTestId('password').fill(process.env.SAUCE_PASSWORD);\n    await page.getByTestId('login-button').click();\n    await expect(page.getByText('locked out')).toBeVisible();\n  });\n});",
         "legenda": "Saem as conferências de produtos",
         "fonte": 22,
         "digitar": false,
@@ -383,13 +395,17 @@
          "  package.json",
          "  playwright.config.js"
         ],
-        "linha0": 9,
         "apagar": [
-         5,
-         6,
-         7
+         13,
+         14,
+         15
         ],
-        "apagar_em": 3.0
+        "apagar_em": 3.0,
+        "rolar": true,
+        "rolar_ate": 18,
+        "rolar_de": 0.5,
+        "rolar_dur": 1.2,
+        "atrasa": true
        }
       },
       {
@@ -397,7 +413,7 @@
        "scene": {
         "type": "editor",
         "arquivo": "login.spec.js",
-        "codigo": "  test('entra com usuário e senha', async ({ page }) => {\n    const login = new LoginPage(page);\n    await login.entrar(process.env.SAUCE_USER, process.env.SAUCE_PASSWORD);\n    await expect(page).toHaveURL(/inventory/);\n    await expect(page.getByTestId('title')).toHaveText('Products');\n  });",
+        "codigo": "import { test, expect } from '@playwright/test';\nimport { LoginPage } from '../pages/LoginPage';\n\ntest.describe('Login', () => {\n  test.beforeEach(async ({ page }) => {\n    await page.goto('/');\n  });\n\n  test('entra com usuário e senha', async ({ page }) => {\n    const login = new LoginPage(page);\n    await login.entrar(process.env.SAUCE_USER, process.env.SAUCE_PASSWORD);\n    await expect(page).toHaveURL(/inventory/);\n    await expect(page.getByTestId('title')).toHaveText('Products');\n  });\n\n  test('mostra erro para usuário bloqueado', async ({ page }) => {\n    await page.getByTestId('username').fill('locked_out_user');\n    await page.getByTestId('password').fill(process.env.SAUCE_PASSWORD);\n    await page.getByTestId('login-button').click();\n    await expect(page.getByText('locked out')).toBeVisible();\n  });\n});",
         "legenda": "data-test title = o título da página",
         "fonte": 22,
         "digitar": true,
@@ -418,9 +434,13 @@
          "  package.json",
          "  playwright.config.js"
         ],
-        "linha0": 9,
-        "digitar_de": 5,
-        "digitar_ate": 5
+        "digitar_de": 13,
+        "digitar_ate": 13,
+        "rolar": true,
+        "rolar_ate": 16,
+        "rolar_de": 0.5,
+        "rolar_dur": 1.2,
+        "atrasa": true
        }
       },
       {
@@ -428,7 +448,7 @@
        "scene": {
         "type": "editor",
         "arquivo": "login.spec.js",
-        "codigo": "  test('mostra erro para usuário bloqueado', async ({ page }) => {\n    await page.getByTestId('username').fill('locked_out_user');\n    await page.getByTestId('password').fill(process.env.SAUCE_PASSWORD);\n    await page.getByTestId('login-button').click();\n    await expect(page.getByText('locked out')).toBeVisible();\n  });",
+        "codigo": "import { test, expect } from '@playwright/test';\nimport { LoginPage } from '../pages/LoginPage';\n\ntest.describe('Login', () => {\n  test.beforeEach(async ({ page }) => {\n    await page.goto('/');\n  });\n\n  test('entra com usuário e senha', async ({ page }) => {\n    const login = new LoginPage(page);\n    await login.entrar(process.env.SAUCE_USER, process.env.SAUCE_PASSWORD);\n    await expect(page).toHaveURL(/inventory/);\n    await expect(page.getByTestId('title')).toHaveText('Products');\n  });\n\n  test('mostra erro para usuário bloqueado', async ({ page }) => {\n    await page.getByTestId('username').fill('locked_out_user');\n    await page.getByTestId('password').fill(process.env.SAUCE_PASSWORD);\n    await page.getByTestId('login-button').click();\n    await expect(page.getByText('locked out')).toBeVisible();\n  });\n});",
         "legenda": "Segundo teste: apaga o login e a conferência",
         "fonte": 22,
         "digitar": false,
@@ -449,14 +469,18 @@
          "  package.json",
          "  playwright.config.js"
         ],
-        "linha0": 16,
         "apagar": [
-         2,
-         3,
-         4,
-         5
+         17,
+         18,
+         19,
+         20
         ],
-        "apagar_em": 2.6
+        "apagar_em": 2.6,
+        "rolar": true,
+        "rolar_ate": 23,
+        "rolar_de": 0.5,
+        "rolar_dur": 1.2,
+        "atrasa": true
        }
       },
       {
@@ -464,7 +488,7 @@
        "scene": {
         "type": "editor",
         "arquivo": "login.spec.js",
-        "codigo": "  test('mostra erro para usuário bloqueado', async ({ page }) => {\n    const login = new LoginPage(page);\n    await login.entrar('locked_out_user', process.env.SAUCE_PASSWORD);\n    await expect(login.erro).toContainText('locked out');\n  });",
+        "codigo": "import { test, expect } from '@playwright/test';\nimport { LoginPage } from '../pages/LoginPage';\n\ntest.describe('Login', () => {\n  test.beforeEach(async ({ page }) => {\n    await page.goto('/');\n  });\n\n  test('entra com usuário e senha', async ({ page }) => {\n    const login = new LoginPage(page);\n    await login.entrar(process.env.SAUCE_USER, process.env.SAUCE_PASSWORD);\n    await expect(page).toHaveURL(/inventory/);\n    await expect(page.getByTestId('title')).toHaveText('Products');\n  });\n\n  test('mostra erro para usuário bloqueado', async ({ page }) => {\n    const login = new LoginPage(page);\n    await login.entrar('locked_out_user', process.env.SAUCE_PASSWORD);\n    await expect(login.erro).toContainText('locked out');\n  });\n});",
         "legenda": "login.erro: o erro guardado no LoginPage",
         "fonte": 22,
         "digitar": true,
@@ -485,9 +509,13 @@
          "  package.json",
          "  playwright.config.js"
         ],
-        "linha0": 16,
-        "digitar_de": 2,
-        "digitar_ate": 4
+        "digitar_de": 17,
+        "digitar_ate": 19,
+        "rolar": true,
+        "rolar_ate": 22,
+        "rolar_de": 0.5,
+        "rolar_dur": 1.2,
+        "atrasa": true
        }
       },
       {

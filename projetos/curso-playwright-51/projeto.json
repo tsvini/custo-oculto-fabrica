@@ -203,13 +203,17 @@
          "  .env",
          "  playwright.config.js"
         ],
-        "codigo": "\n  test.describe('logado', () => {\n    test.use({ storageState: 'playwright/.auth/usuario.json' });\n\n    test.beforeEach(async ({ page }) => {\n      await page.goto('/inventory.html');\n    });\n\n  });\n});",
+        "codigo": "import { test, expect } from '@playwright/test';\n\ntest.describe('Desafios', () => {\n  test.beforeEach(async ({ page }) => {\n    await page.goto('/');\n  });\n\n  test('desafio 1: senha errada mostra erro', async ({ page }) => {\n    await page.getByTestId('username').fill('standard_user');\n    await page.getByTestId('password').fill('senha_errada');\n    await page.getByTestId('login-button').click();\n    await expect(page.getByTestId('error')).toContainText('do not match');\n  });\n\n  test('desafio 2: campos vazios', async ({ page }) => {\n    await page.getByTestId('login-button').click();\n    await expect(page.getByTestId('error')).toContainText('Username is required');\n  });\n\n  test.describe('logado', () => {\n    test.use({ storageState: 'playwright/.auth/usuario.json' });\n\n    test.beforeEach(async ({ page }) => {\n      await page.goto('/inventory.html');\n    });\n\n  });\n});",
         "legenda": "describe('logado') + test.use",
-        "fonte": 24,
+        "fonte": 22,
         "digitar": true,
-        "linha0": 19,
-        "digitar_de": 2,
-        "digitar_ate": 7
+        "digitar_de": 20,
+        "digitar_ate": 25,
+        "rolar": true,
+        "rolar_ate": 30,
+        "rolar_de": 0.5,
+        "rolar_dur": 1.2,
+        "atrasa": true
        }
       },
       {

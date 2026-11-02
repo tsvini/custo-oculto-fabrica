@@ -135,13 +135,17 @@
          "  .env",
          "  playwright.config.js"
         ],
-        "codigo": "test('iframe', async ({ page }) => {\n  await page.goto(`${site}/iframe`);\n  const editor = page.frameLocator('#mce_0_ifr');",
+        "codigo": "import { test, expect } from '@playwright/test';\n\nconst site = 'https://the-internet.herokuapp.com';\n\ntest('checkbox e dropdown', async ({ page }) => {\n  await page.goto(`${site}/checkboxes`);\n  const primeira = page.getByRole('checkbox').first();\n  await primeira.check();\n  await expect(primeira).toBeChecked();\n  await primeira.uncheck();\n  await expect(primeira).not.toBeChecked();\n\n  await page.goto(`${site}/dropdown`);\n  const lista = page.locator('#dropdown');\n  await lista.selectOption('2');\n  await expect(lista).toHaveValue('2');\n});\n\ntest('upload de arquivo', async ({ page }) => {\n  await page.goto(`${site}/upload`);\n  await page.locator('#file-upload')\n    .setInputFiles('arquivos/exemplo.txt');\n  await page.locator('#file-submit').click();\n  await expect(page.locator('#uploaded-files'))\n    .toContainText('exemplo.txt');\n});\n\ntest('alerta do navegador', async ({ page }) => {\n  await page.goto(`${site}/javascript_alerts`);\n  page.on('dialog', async (dialog) => {\n    await dialog.accept();\n  });\n  await page.getByRole('button', { name: 'Click for JS Alert' })\n    .click();\n  await expect(page.locator('#result'))\n    .toHaveText('You successfully clicked an alert');\n});\n\ntest('nova aba', async ({ page }) => {\n  await page.goto(`${site}/windows`);\n  const promessa = page.waitForEvent('popup');\n  await page.getByRole('link', { name: 'Click Here' }).click();\n  const novaAba = await promessa;\n  const titulo = novaAba.getByRole('heading', { name: 'New Window' });\n  await expect(titulo).toBeVisible();\n});\n\ntest('iframe', async ({ page }) => {\n  await page.goto(`${site}/iframe`);\n  const editor = page.frameLocator('#mce_0_ifr');",
         "legenda": "frameLocator = procure dentro deste quadro",
         "fonte": 32,
         "digitar": true,
-        "linha0": 48,
-        "digitar_de": 1,
-        "digitar_ate": 3
+        "digitar_de": 48,
+        "digitar_ate": 50,
+        "rolar": true,
+        "rolar_ate": 52,
+        "rolar_de": 0.5,
+        "rolar_dur": 1.2,
+        "atrasa": true
        }
       },
       {
@@ -196,13 +200,17 @@
          "  .env",
          "  playwright.config.js"
         ],
-        "codigo": "test('iframe', async ({ page }) => {\n  await page.goto(`${site}/iframe`);\n  const editor = page.frameLocator('#mce_0_ifr');\n  await expect(editor.locator('body'))\n    .toContainText('Your content goes here.');\n});",
+        "codigo": "import { test, expect } from '@playwright/test';\n\nconst site = 'https://the-internet.herokuapp.com';\n\ntest('checkbox e dropdown', async ({ page }) => {\n  await page.goto(`${site}/checkboxes`);\n  const primeira = page.getByRole('checkbox').first();\n  await primeira.check();\n  await expect(primeira).toBeChecked();\n  await primeira.uncheck();\n  await expect(primeira).not.toBeChecked();\n\n  await page.goto(`${site}/dropdown`);\n  const lista = page.locator('#dropdown');\n  await lista.selectOption('2');\n  await expect(lista).toHaveValue('2');\n});\n\ntest('upload de arquivo', async ({ page }) => {\n  await page.goto(`${site}/upload`);\n  await page.locator('#file-upload')\n    .setInputFiles('arquivos/exemplo.txt');\n  await page.locator('#file-submit').click();\n  await expect(page.locator('#uploaded-files'))\n    .toContainText('exemplo.txt');\n});\n\ntest('alerta do navegador', async ({ page }) => {\n  await page.goto(`${site}/javascript_alerts`);\n  page.on('dialog', async (dialog) => {\n    await dialog.accept();\n  });\n  await page.getByRole('button', { name: 'Click for JS Alert' })\n    .click();\n  await expect(page.locator('#result'))\n    .toHaveText('You successfully clicked an alert');\n});\n\ntest('nova aba', async ({ page }) => {\n  await page.goto(`${site}/windows`);\n  const promessa = page.waitForEvent('popup');\n  await page.getByRole('link', { name: 'Click Here' }).click();\n  const novaAba = await promessa;\n  const titulo = novaAba.getByRole('heading', { name: 'New Window' });\n  await expect(titulo).toBeVisible();\n});\n\ntest('iframe', async ({ page }) => {\n  await page.goto(`${site}/iframe`);\n  const editor = page.frameLocator('#mce_0_ifr');\n  await expect(editor.locator('body'))\n    .toContainText('Your content goes here.');\n});",
         "legenda": "Lá dentro, igual a sempre",
         "fonte": 32,
         "digitar": true,
-        "linha0": 48,
-        "digitar_de": 4,
-        "digitar_ate": 5
+        "digitar_de": 51,
+        "digitar_ate": 52,
+        "rolar": true,
+        "rolar_ate": 55,
+        "rolar_de": 0.5,
+        "rolar_dur": 1.2,
+        "atrasa": true
        }
       },
       {

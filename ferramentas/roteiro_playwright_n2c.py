@@ -3,7 +3,7 @@ com o filtro de qualidade (pra que serve, como faz mostrando, quando usar, uso n
 Código = curso-playwright/projeto2 (validado no Actions: validar_nivel2.yml, versão 2 passando e versão 1 com as duas falhas reais de ordenação)."""
 import json, os, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from roteiro_playwright_m1 import bt, titulo, projeto, RAIZ
+from roteiro_playwright_m1 import inteiro, bt, titulo, projeto, RAIZ
 from roteiro_playwright_m4 import edc
 from roteiro_playwright_m11 import desafio
 
@@ -51,7 +51,8 @@ def ed(cod, legenda, arquivo, de=None, ate=None, linha0=1, pastas="auto", **kw):
 def parte(cod, de, ate, legenda, arquivo, destaque=(), **kw):
     """só um pedaço do arquivo (de..ate), com a numeração certa: a letra fica grande"""
     kw.setdefault("pastas", None)
-    return ed(trecho(cod, de, ate), legenda, arquivo, linha0=de, destaque=[d - de + 1 for d in destaque], **kw)
+    c = ed(trecho(cod, de, ate), legenda, arquivo, linha0=de, destaque=[d - de + 1 for d in destaque], **kw)
+    L = cod.split("\n"); return inteiro(c, L[:de - 1], L[ate:]) if de > 1 or ate < len(L) else c
 
 
 def tr(codigo, partes, passo=1.6):
@@ -177,7 +178,8 @@ def dig(cod, de, ate, legenda, arquivo, mostra=None, fecha=(), **kw):
     a, b = mostra or (de, ate)
     L = cod.split("\n")[a - 1:b] + list(fecha)
     kw.setdefault("pastas", None)
-    return ed("\n".join(L), legenda, arquivo, linha0=a, de=de - a + 1, ate=ate - a + 1, **kw)
+    c = ed("\n".join(L), legenda, arquivo, linha0=a, de=de - a + 1, ate=ate - a + 1, **kw)
+    return inteiro(c, cod.split("\n")[:a - 1]) if a > 1 else c
 
 
 def obj_json(cod, k):

@@ -119,13 +119,17 @@
          "  .env",
          "  playwright.config.js"
         ],
-        "codigo": "test('tabela pelo conteúdo', async ({ page }) => {\n  await page.goto(`${site}/tables`);\n  const linha = page.locator('#table1')\n    .getByRole('row')\n    .filter({ hasText: 'Conway' });",
+        "codigo": "import { test, expect } from '@playwright/test';\n\nconst site = 'https://the-internet.herokuapp.com';\n\ntest('checkbox e dropdown', async ({ page }) => {\n  await page.goto(`${site}/checkboxes`);\n  const primeira = page.getByRole('checkbox').first();\n  await primeira.check();\n  await expect(primeira).toBeChecked();\n  await primeira.uncheck();\n  await expect(primeira).not.toBeChecked();\n\n  await page.goto(`${site}/dropdown`);\n  const lista = page.locator('#dropdown');\n  await lista.selectOption('2');\n  await expect(lista).toHaveValue('2');\n});\n\ntest('upload de arquivo', async ({ page }) => {\n  await page.goto(`${site}/upload`);\n  await page.locator('#file-upload')\n    .setInputFiles('arquivos/exemplo.txt');\n  await page.locator('#file-submit').click();\n  await expect(page.locator('#uploaded-files'))\n    .toContainText('exemplo.txt');\n});\n\ntest('alerta do navegador', async ({ page }) => {\n  await page.goto(`${site}/javascript_alerts`);\n  page.on('dialog', async (dialog) => {\n    await dialog.accept();\n  });\n  await page.getByRole('button', { name: 'Click for JS Alert' })\n    .click();\n  await expect(page.locator('#result'))\n    .toHaveText('You successfully clicked an alert');\n});\n\ntest('nova aba', async ({ page }) => {\n  await page.goto(`${site}/windows`);\n  const promessa = page.waitForEvent('popup');\n  await page.getByRole('link', { name: 'Click Here' }).click();\n  const novaAba = await promessa;\n  const titulo = novaAba.getByRole('heading', { name: 'New Window' });\n  await expect(titulo).toBeVisible();\n});\n\ntest('iframe', async ({ page }) => {\n  await page.goto(`${site}/iframe`);\n  const editor = page.frameLocator('#mce_0_ifr');\n  await expect(editor.locator('body'))\n    .toContainText('Your content goes here.');\n});\n\ntest('hover', async ({ page }) => {\n  await page.goto(`${site}/hovers`);\n  const usuario = page.locator('.figure').first();\n  const nome = usuario.getByText('name: user1');\n  await expect(nome).not.toBeVisible();\n  await usuario.hover();\n  await expect(nome).toBeVisible();\n});\n\ntest('arrastar e soltar', async ({ page }) => {\n  await page.goto(`${site}/drag_and_drop`);\n  const caixaA = page.locator('#column-a');\n  const caixaB = page.locator('#column-b');\n  await caixaA.dragTo(caixaB);\n  await expect(page.locator('#column-a header'))\n    .toHaveText('B');\n});\n\ntest('tabela pelo conteúdo', async ({ page }) => {\n  await page.goto(`${site}/tables`);\n  const linha = page.locator('#table1')\n    .getByRole('row')\n    .filter({ hasText: 'Conway' });",
         "legenda": "filter({ hasText }) = a linha que tem este texto",
         "fonte": 32,
         "digitar": true,
-        "linha0": 73,
-        "digitar_de": 1,
-        "digitar_ate": 5
+        "digitar_de": 73,
+        "digitar_ate": 77,
+        "rolar": true,
+        "rolar_ate": 79,
+        "rolar_de": 0.5,
+        "rolar_dur": 1.2,
+        "atrasa": true
        }
       },
       {
@@ -163,13 +167,17 @@
          "  .env",
          "  playwright.config.js"
         ],
-        "codigo": "test('tabela pelo conteúdo', async ({ page }) => {\n  await page.goto(`${site}/tables`);\n  const linha = page.locator('#table1')\n    .getByRole('row')\n    .filter({ hasText: 'Conway' });\n  await expect(linha.getByRole('cell').nth(3))\n    .toHaveText('$50.00');\n});",
+        "codigo": "import { test, expect } from '@playwright/test';\n\nconst site = 'https://the-internet.herokuapp.com';\n\ntest('checkbox e dropdown', async ({ page }) => {\n  await page.goto(`${site}/checkboxes`);\n  const primeira = page.getByRole('checkbox').first();\n  await primeira.check();\n  await expect(primeira).toBeChecked();\n  await primeira.uncheck();\n  await expect(primeira).not.toBeChecked();\n\n  await page.goto(`${site}/dropdown`);\n  const lista = page.locator('#dropdown');\n  await lista.selectOption('2');\n  await expect(lista).toHaveValue('2');\n});\n\ntest('upload de arquivo', async ({ page }) => {\n  await page.goto(`${site}/upload`);\n  await page.locator('#file-upload')\n    .setInputFiles('arquivos/exemplo.txt');\n  await page.locator('#file-submit').click();\n  await expect(page.locator('#uploaded-files'))\n    .toContainText('exemplo.txt');\n});\n\ntest('alerta do navegador', async ({ page }) => {\n  await page.goto(`${site}/javascript_alerts`);\n  page.on('dialog', async (dialog) => {\n    await dialog.accept();\n  });\n  await page.getByRole('button', { name: 'Click for JS Alert' })\n    .click();\n  await expect(page.locator('#result'))\n    .toHaveText('You successfully clicked an alert');\n});\n\ntest('nova aba', async ({ page }) => {\n  await page.goto(`${site}/windows`);\n  const promessa = page.waitForEvent('popup');\n  await page.getByRole('link', { name: 'Click Here' }).click();\n  const novaAba = await promessa;\n  const titulo = novaAba.getByRole('heading', { name: 'New Window' });\n  await expect(titulo).toBeVisible();\n});\n\ntest('iframe', async ({ page }) => {\n  await page.goto(`${site}/iframe`);\n  const editor = page.frameLocator('#mce_0_ifr');\n  await expect(editor.locator('body'))\n    .toContainText('Your content goes here.');\n});\n\ntest('hover', async ({ page }) => {\n  await page.goto(`${site}/hovers`);\n  const usuario = page.locator('.figure').first();\n  const nome = usuario.getByText('name: user1');\n  await expect(nome).not.toBeVisible();\n  await usuario.hover();\n  await expect(nome).toBeVisible();\n});\n\ntest('arrastar e soltar', async ({ page }) => {\n  await page.goto(`${site}/drag_and_drop`);\n  const caixaA = page.locator('#column-a');\n  const caixaB = page.locator('#column-b');\n  await caixaA.dragTo(caixaB);\n  await expect(page.locator('#column-a header'))\n    .toHaveText('B');\n});\n\ntest('tabela pelo conteúdo', async ({ page }) => {\n  await page.goto(`${site}/tables`);\n  const linha = page.locator('#table1')\n    .getByRole('row')\n    .filter({ hasText: 'Conway' });\n  await expect(linha.getByRole('cell').nth(3))\n    .toHaveText('$50.00');\n});",
         "legenda": "O valor devido dessa pessoa",
         "fonte": 32,
         "digitar": true,
-        "linha0": 73,
-        "digitar_de": 6,
-        "digitar_ate": 7
+        "digitar_de": 78,
+        "digitar_ate": 79,
+        "rolar": true,
+        "rolar_ate": 82,
+        "rolar_de": 0.5,
+        "rolar_dur": 1.2,
+        "atrasa": true
        }
       },
       {

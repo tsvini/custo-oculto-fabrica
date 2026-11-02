@@ -621,13 +621,18 @@
        "scene": {
         "type": "editor",
         "arquivo": "usuarios.spec.js",
-        "codigo": "for (const usuario of listaDeUsuarios) {\n  test('login funciona', async ({ page }) => {\n    await page.goto('/');\n    await page.getByTestId('username').fill(usuario);\n    await page.getByTestId('password').fill(process.env.SAUCE_PASSWORD);\n    await page.getByTestId('login-button').click();\n    // o performance_glitch_user é lento: 10 segundos em vez de 5\n    await expect(page.getByTestId('title')).toHaveText('Products', { timeout: 10000 });\n  });\n}",
+        "codigo": "import { test, expect } from '@playwright/test';\n\nconst listaDeUsuarios = [\n  'standard_user',\n  'problem_user',\n  'performance_glitch_user',\n  'visual_user',\n];\n\nfor (const usuario of listaDeUsuarios) {\n  test('login funciona', async ({ page }) => {\n    await page.goto('/');\n    await page.getByTestId('username').fill(usuario);\n    await page.getByTestId('password').fill(process.env.SAUCE_PASSWORD);\n    await page.getByTestId('login-button').click();\n    // o performance_glitch_user é lento: 10 segundos em vez de 5\n    await expect(page.getByTestId('title')).toHaveText('Products', { timeout: 10000 });\n  });\n}",
         "legenda": "O teste dentro do for",
-        "fonte": 24,
+        "fonte": 22,
         "digitar": true,
         "pastas": null,
-        "linha0": 10,
-        "digitar_de": 2
+        "digitar_de": 11,
+        "digitar_ate": 18,
+        "rolar": true,
+        "rolar_ate": 21,
+        "rolar_de": 0.5,
+        "rolar_dur": 1.2,
+        "atrasa": true
        }
       },
       {
@@ -635,16 +640,20 @@
        "scene": {
         "type": "editor",
         "arquivo": "usuarios.spec.js",
-        "codigo": "for (const usuario of listaDeUsuarios) {\n  test('login funciona', async ({ page }) => {\n    await page.goto('/');\n    await page.getByTestId('username').fill(usuario);\n    await page.getByTestId('password').fill(process.env.SAUCE_PASSWORD);\n    await page.getByTestId('login-button').click();\n    // o performance_glitch_user é lento: 10 segundos em vez de 5\n    await expect(page.getByTestId('title')).toHaveText('Products', { timeout: 10000 });\n  });\n}",
+        "codigo": "import { test, expect } from '@playwright/test';\n\nconst listaDeUsuarios = [\n  'standard_user',\n  'problem_user',\n  'performance_glitch_user',\n  'visual_user',\n];\n\nfor (const usuario of listaDeUsuarios) {\n  test('login funciona', async ({ page }) => {\n    await page.goto('/');\n    await page.getByTestId('username').fill(usuario);\n    await page.getByTestId('password').fill(process.env.SAUCE_PASSWORD);\n    await page.getByTestId('login-button').click();\n    // o performance_glitch_user é lento: 10 segundos em vez de 5\n    await expect(page.getByTestId('title')).toHaveText('Products', { timeout: 10000 });\n  });\n}",
         "legenda": "fill(usuario): o nome da volta da vez",
-        "fonte": 24,
+        "fonte": 22,
         "digitar": false,
         "pastas": null,
-        "linha0": 10,
         "destaque": [
-         4
+         13
         ],
-        "destaque_em": 0.6
+        "destaque_em": 0.6,
+        "rolar": true,
+        "rolar_ate": 21,
+        "rolar_de": 0.5,
+        "rolar_dur": 1.2,
+        "atrasa": true
        }
       },
       {
@@ -669,17 +678,21 @@
        "scene": {
         "type": "editor",
         "arquivo": "usuarios.spec.js",
-        "codigo": "for (const usuario of listaDeUsuarios) {\n  test('login funciona', async ({ page }) => {\n    await page.goto('/');\n    await page.getByTestId('username').fill(usuario);\n    await page.getByTestId('password').fill(process.env.SAUCE_PASSWORD);\n    await page.getByTestId('login-button').click();\n    // o performance_glitch_user é lento: 10 segundos em vez de 5\n    await expect(page.getByTestId('title')).toHaveText('Products', { timeout: 10000 });\n  });\n}",
+        "codigo": "import { test, expect } from '@playwright/test';\n\nconst listaDeUsuarios = [\n  'standard_user',\n  'problem_user',\n  'performance_glitch_user',\n  'visual_user',\n];\n\nfor (const usuario of listaDeUsuarios) {\n  test('login funciona', async ({ page }) => {\n    await page.goto('/');\n    await page.getByTestId('username').fill(usuario);\n    await page.getByTestId('password').fill(process.env.SAUCE_PASSWORD);\n    await page.getByTestId('login-button').click();\n    // o performance_glitch_user é lento: 10 segundos em vez de 5\n    await expect(page.getByTestId('title')).toHaveText('Products', { timeout: 10000 });\n  });\n}",
         "legenda": "O usuário lento: 10 segundos só aqui",
-        "fonte": 24,
+        "fonte": 22,
         "digitar": false,
         "pastas": null,
-        "linha0": 10,
         "destaque": [
-         7,
-         8
+         16,
+         17
         ],
-        "destaque_em": 0.6
+        "destaque_em": 0.6,
+        "rolar": true,
+        "rolar_ate": 21,
+        "rolar_de": 0.5,
+        "rolar_dur": 1.2,
+        "atrasa": true
        }
       },
       {

@@ -2,7 +2,7 @@
 Código = tests/etapas/aula35..42.spec.js e pages/*.js (validados no Actions; o projeto final é igual ao que as aulas constroem)."""
 import json, os, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from roteiro_playwright_m1 import bt, titulo, proxima, projeto, RAIZ
+from roteiro_playwright_m1 import inteiro, bt, titulo, proxima, projeto, RAIZ
 from roteiro_playwright_m3 import codigo, ARV, SAUCE, LOGIN, CMD_HEADED
 from roteiro_playwright_m4 import edc, CMD
 from roteiro_playwright_m7 import ARV_U
@@ -203,6 +203,11 @@ def trecho39(L, k):
     return JJ(L[a - 1:b])
 
 
+def ctx39(L, k):
+    """o que vem antes e depois do k-ésimo teste (pra mostrar o arquivo inteiro)"""
+    a = T39(L, k); n = len(trecho39(L, k).split("\n")); return L[:a - 1], L[a - 1 + n:]
+
+
 def REL39(L, k, trechos):
     """posições (no trecho do k-ésimo teste) das linhas que têm cada pedaço"""
     t = trecho39(L, k).split("\n")
@@ -229,23 +234,23 @@ AULAS.append(projeto(39, "MÓDULO 8 · AULA 39", "Usando o LoginPage no teste", 
      edc(parcial(LP, L_FILLU, ("  }", "}")), "Preencha o usuário deste LoginPage", arquivo="LoginPage.js", pastas=ARV_P, digitar=True, digitar_de=L_FILLU, digitar_ate=L_FILLU, fonte=26)),
     ("Depois a senha, e o clique no botão.", edc(LP, "A senha e o clique", arquivo="LoginPage.js", pastas=ARV_P, digitar=True, digitar_de=L_FILLU + 1, digitar_ate=L_FILLU + 2, fonte=22)),
     ("Agora no teste, o login ponto spec. Primeira coisa: import LoginPage from ponto ponto barra pages barra LoginPage. Traga o molde lá da pasta pages.",
-     edc(JJ(S39_0[:6]), "../ = volte uma pasta", arquivo="login.spec.js", pastas=ARV_P, digitar=True, digitar_de=2, digitar_ate=2, fonte=24)),
+     edc(JJ(S39_0), "../ = volte uma pasta", arquivo="login.spec.js", pastas=ARV_P, digitar=True, digitar_de=2, digitar_ate=2, fonte=24)),
     ("Traduzindo o caminho: ponto ponto barra quer dizer volte uma pasta. O teste está dentro de tests, então ele sai de lá e entra em pages, no arquivo LoginPage.",
      {"type": "traducao", "codigo": "import { LoginPage } from '../pages/LoginPage';", "partes": [["import { LoginPage }", "traga o LoginPage"], ["../", "volte uma pasta (sai de tests)"], ["pages/LoginPage", "entre em pages, no LoginPage"]], "passo": 2.2}),
     ("No primeiro teste, as três linhas do login saem: o usuário, a senha e o clique. Apaga as três.",
-     edc(trecho39(S39_0, 1), "Apaga as 3 linhas do login", arquivo="login.spec.js", pastas=ARV_P, linha0=T39(S39_0, 1), apagar=REL39(S39_0, 1, LOG39), apagar_em=2.4, fonte=22)),
+     inteiro(edc(trecho39(S39_0, 1), "Apaga as 3 linhas do login", arquivo="login.spec.js", pastas=ARV_P, linha0=T39(S39_0, 1), apagar=REL39(S39_0, 1, LOG39), apagar_em=2.4, fonte=22), *ctx39(S39_0, 1))),
     ("E no lugar, duas linhas. Primeiro: const login igual new LoginPage, passando o page. New quer dizer: crie um novo, usando esse molde.",
-     edc(JJ([l for i, l in enumerate(trecho39(S39_1, 1).split("\n")) if i != 2]), "new = crie um novo", arquivo="login.spec.js", pastas=ARV_P, linha0=T39(S39_1, 1), digitar=True, digitar_de=2, digitar_ate=2, fonte=22)),
+     inteiro(edc(JJ([l for i, l in enumerate(trecho39(S39_1, 1).split("\n")) if i != 2]), "new = crie um novo", arquivo="login.spec.js", pastas=ARV_P, linha0=T39(S39_1, 1), digitar=True, digitar_de=2, digitar_ate=2, fonte=22), *ctx39(S39_1, 1))),
     ("E a segunda: await login ponto entrar, com o usuário e a senha. As três linhas viraram uma, porque o como fazer o login agora mora no LoginPage.",
-     edc(trecho39(S39_1, 1), "Três linhas viraram uma", arquivo="login.spec.js", pastas=ARV_P, linha0=T39(S39_1, 1), digitar=True, digitar_de=3, digitar_ate=3, fonte=22)),
+     inteiro(edc(trecho39(S39_1, 1), "Três linhas viraram uma", arquivo="login.spec.js", pastas=ARV_P, linha0=T39(S39_1, 1), digitar=True, digitar_de=3, digitar_ate=3, fonte=22), *ctx39(S39_1, 1))),
     ("E já que agora cada arquivo cuida de uma parte, as conferências de produtos saem do teste de login: apaga a do texto Products, a da mochila e a dos seis botões.",
-     edc(trecho39(S39_1, 1), "Saem as conferências de produtos", arquivo="login.spec.js", pastas=ARV_P, linha0=T39(S39_1, 1), apagar=REL39(S39_1, 1, EXP39), apagar_em=3.0, fonte=22)),
+     inteiro(edc(trecho39(S39_1, 1), "Saem as conferências de produtos", arquivo="login.spec.js", pastas=ARV_P, linha0=T39(S39_1, 1), apagar=REL39(S39_1, 1, EXP39), apagar_em=3.0, fonte=22), *ctx39(S39_1, 1))),
     ("Fica a do endereço, e entra uma nova, mais firme: o título da página, pelo data-test title, tem o texto Products. É o mesmo data-test que vai pro ProdutosPage na próxima aula.",
-     edc(trecho39(S39_2, 1), "data-test title = o título da página", arquivo="login.spec.js", pastas=ARV_P, linha0=T39(S39_2, 1), digitar=True, digitar_de=REL39(S39_2, 1, ["getByTestId('title')"])[0], digitar_ate=REL39(S39_2, 1, ["getByTestId('title')"])[0], fonte=22)),
+     inteiro(edc(trecho39(S39_2, 1), "data-test title = o título da página", arquivo="login.spec.js", pastas=ARV_P, linha0=T39(S39_2, 1), digitar=True, digitar_de=REL39(S39_2, 1, ["getByTestId('title')"])[0], digitar_ate=REL39(S39_2, 1, ["getByTestId('title')"])[0], fonte=22), *ctx39(S39_2, 1))),
     ("No segundo teste, a mesma troca. Apaga as três linhas do login e a conferência do texto locked out.",
-     edc(trecho39(S39_2, 2), "Segundo teste: apaga o login e a conferência", arquivo="login.spec.js", pastas=ARV_P, linha0=T39(S39_2, 2), apagar=REL39(S39_2, 2, LOG39B), apagar_em=2.6, fonte=22)),
+     inteiro(edc(trecho39(S39_2, 2), "Segundo teste: apaga o login e a conferência", arquivo="login.spec.js", pastas=ARV_P, linha0=T39(S39_2, 2), apagar=REL39(S39_2, 2, LOG39B), apagar_em=2.6, fonte=22), *ctx39(S39_2, 2))),
     ("E no lugar: cria o LoginPage, entra com o usuário bloqueado, e confere a mensagem usando o elemento erro, que já está guardado no LoginPage. Login ponto erro, to contain text, locked out.",
-     edc(trecho39(C39L, 2), "login.erro: o erro guardado no LoginPage", arquivo="login.spec.js", pastas=ARV_P, linha0=T39(C39L, 2), digitar=True, digitar_de=2, digitar_ate=4, fonte=22)),
+     inteiro(edc(trecho39(C39L, 2), "login.erro: o erro guardado no LoginPage", arquivo="login.spec.js", pastas=ARV_P, linha0=T39(C39L, 2), digitar=True, digitar_de=2, digitar_ate=4, fonte=22), *ctx39(C39L, 2))),
     ("Lendo em português: crie um LoginPage e entre com esse usuário e essa senha.", bt(("CRIE UM LOGINPAGE", "white", 110), ("E ENTRE COM ESSE USUÁRIO", "gold", 110), ("E ESSA SENHA", "white", 90), entre=1.3)),
     ("Roda: continua passando.",
      rodando(C39, L_NEW - 1, L_NEW + 4, "Continua passando", LOGIN, "rec_login_po", saida=("  2 passed (2.6s)", "ac"), cmd="npx playwright test login.spec.js --headed --project=chromium", arquivo="login.spec.js", pastas=ARV_P)),
@@ -266,6 +271,7 @@ S2 = S1[:L_LOG - 1] + C40L[8:10] + S1[L_LOG + 2:]          # login vira LoginPag
 assert S2[:12] == C40L[:12], "o beforeEach tem que ficar igual ao da etapa 40"
 L_TS = [i + 1 for i, l in enumerate(S2) if "test('compra" in l][0]
 S3 = S2[:L_TS] + C40L[13:16] + S2[L_TS:]                   # + os dois const
+assert L_TS == L_T40
 L_P1 = L_TS + 4; L_PN = len(S3) - 2                        # os passos antigos (do add-to-cart até o expect final)
 assert "add-to-cart" in S3[L_P1 - 1] and "complete-header" in S3[L_PN - 1]
 assert S3[:L_P1 - 1] + S3[L_PN:] == [l for l in C40L if l not in C40L[16:23]], "só os passos mudam"
@@ -313,21 +319,21 @@ AULAS.append(projeto(40, "MÓDULO 8 · AULA 40", "A mesma receita - ProdutosPage
     ("Repara numa coisa que confunde no começo: nome aparece duas vezes na mesma linha. This ponto nome é o campo da tela, guardado lá em cima. E nome sozinho é o valor que chegou, tipo Maria. Então: preencha o campo nome com o nome que chegou.",
      {"type": "traducao", "codigo": "await this.nome.fill(nome);", "partes": [["this.nome", "o campo da tela"], [".fill", "preencha com"], ["(nome)", "o valor que chegou: Maria"]], "passo": 2.4}),
     ("Agora o teste da compra passa a usar as três páginas. Lá em cima, os imports: traga o LoginPage, o ProdutosPage e o CheckoutPage, da pasta pages.",
-     edc(J(S1[:12]), "Os imports das três páginas", arquivo="compra.spec.js", pastas=ARV_P3, digitar=True, digitar_de=2, digitar_ate=4, fonte=24)),
+     edc(J(S1), "Os imports das três páginas", arquivo="compra.spec.js", pastas=ARV_P3, digitar=True, digitar_de=2, digitar_ate=4, fonte=24)),
     ("No before each, as três linhas do login saem. Apaga as três.",
-     edc(J(S1[:13]), "Apaga as três linhas do login", arquivo="compra.spec.js", pastas=ARV_P3, apagar=[L_LOG, L_LOG + 1, L_LOG + 2], apagar_em=1.6, fonte=24)),
+     edc(J(S1), "Apaga as três linhas do login", arquivo="compra.spec.js", pastas=ARV_P3, apagar=[L_LOG, L_LOG + 1, L_LOG + 2], apagar_em=1.6, fonte=24)),
     ("E no lugar, as duas que você aprendeu na aula trinta e nove: crie um LoginPage, e entre com o usuário e a senha.",
-     edc(J(S2[:12]), "O login agora é o LoginPage", arquivo="compra.spec.js", pastas=ARV_P3, digitar=True, digitar_de=L_LOG, digitar_ate=L_LOG + 1, fonte=24)),
+     edc(J(S2), "O login agora é o LoginPage", arquivo="compra.spec.js", pastas=ARV_P3, digitar=True, digitar_de=L_LOG, digitar_ate=L_LOG + 1, fonte=24)),
     ("Dentro do teste, as duas primeiras linhas criam as páginas: const produtos igual new ProdutosPage, e const checkout igual new CheckoutPage. As duas recebem o page.",
-     edc(J(S3[L_TS - 1:]), "Cria as duas páginas no teste", arquivo="compra.spec.js", pastas=ARV_P3, linha0=L_TS, digitar=True, digitar_de=2, digitar_ate=3, fonte=22)),
+     inteiro(edc(J(S3[L_TS - 1:]), "Cria as duas páginas no teste", arquivo="compra.spec.js", pastas=ARV_P3, linha0=L_TS, digitar=True, digitar_de=2, digitar_ate=3, fonte=22), S3[:L_TS - 1])),
     ("Agora os passos antigos, aqueles com o get by test id um por um. Apaga todos eles.",
-     edc(J(S3[L_TS - 1:]), "Apaga os passos antigos", arquivo="compra.spec.js", pastas=ARV_P3, linha0=L_TS, apagar=list(range(L_P1 - L_TS + 1, L_PN - L_TS + 2)), apagar_em=1.8, fonte=22)),
+     inteiro(edc(J(S3[L_TS - 1:]), "Apaga os passos antigos", arquivo="compra.spec.js", pastas=ARV_P3, linha0=L_TS, apagar=list(range(L_P1 - L_TS + 1, L_PN - L_TS + 2)), apagar_em=1.8, fonte=22), S3[:L_TS - 1])),
     ("E no lugar, os passos usando as páginas, em três partes. Primeiro: produtos ponto adicionar, com o nome da mochila. E a conferência do numerozinho, agora com o elemento guardado no ProdutosPage: produtos ponto contador carrinho, to have text um.",
-     edc(J(C40L[L_TS - 1:L_TS + 5] + ["  });", "});"]), "1. adiciona e confere o numerozinho", arquivo="compra.spec.js", pastas=ARV_P3, linha0=L_TS, digitar=True, digitar_de=5, digitar_ate=6, fonte=22)),
+     inteiro(edc(J(C40L[L_TS - 1:L_TS + 5] + ["  });", "});"]), "1. adiciona e confere o numerozinho", arquivo="compra.spec.js", pastas=ARV_P3, linha0=L_TS, digitar=True, digitar_de=5, digitar_ate=6, fonte=22), C40L[:L_TS - 1])),
     ("Segundo: produtos ponto ir para carrinho. Clica no botão checkout, que está guardado no CheckoutPage. E checkout ponto preencher dados, com Maria, Silva e o CEP.",
-     edc(J(C40L[L_TS - 1:L_TS + 8] + ["  });", "});"]), "2. carrinho, checkout e dados", arquivo="compra.spec.js", pastas=ARV_P3, linha0=L_TS, digitar=True, digitar_de=7, digitar_ate=9, fonte=22)),
+     inteiro(edc(J(C40L[L_TS - 1:L_TS + 8] + ["  });", "});"]), "2. carrinho, checkout e dados", arquivo="compra.spec.js", pastas=ARV_P3, linha0=L_TS, digitar=True, digitar_de=7, digitar_ate=9, fonte=22), C40L[:L_TS - 1])),
     ("Terceiro: clica no botão finalizar, e confere a mensagem final, Thank you for your order.",
-     edc(J(C40L[L_TS - 1:]), "3. finaliza e confere", arquivo="compra.spec.js", pastas=ARV_P3, linha0=L_TS, digitar=True, digitar_de=10, digitar_ate=11, fonte=22)),
+     inteiro(edc(J(C40L[L_TS - 1:]), "3. finaliza e confere", arquivo="compra.spec.js", pastas=ARV_P3, linha0=L_TS, digitar=True, digitar_de=10, digitar_ate=11, fonte=22), C40L[:L_TS - 1])),
     ("E uma dúvida que deve ter aparecido: por que o preencher dados virou uma ação, e o clique no checkout usa o botão direto? A regra é simples. Quando são várias linhas que sempre andam juntas, como preencher três campos e continuar, vale uma ação com nome. Quando é um clique só, o elemento guardado já resolve. Os dois jeitos estão certos.",
      {"type": "traducao", "titulo": "AÇÃO OU ELEMENTO DIRETO?", "linhas": [["várias linhas que andam juntas", "checkout.preencherDados(...)"], ["um clique só", "checkout.botaoCheckout.click()"]]}),
     ("Compara o antes e o depois. Antes, o teste dizia como clicar em cada coisa. Agora, ele diz o que está acontecendo: adiciona, vai pro carrinho, preenche os dados.",
@@ -358,22 +364,22 @@ PASSOS = [["Before Hooks", "1.1s"], ["adiciona a mochila no carrinho", "0.3s"], 
 AULAS.append(projeto(41, "MÓDULO 8 · AULA 41", "test.step - um relatório que se lê como roteiro", [
     ("Quando um teste longo falha, você quer saber em qual parte.", titulo(41, "TEST.STEP")),
     ("A ideia: separar a compra em quatro passos com nome. Adiciona a mochila, abre o carrinho, preenche os dados, finaliza. Pra isso, os passos de dentro do teste vão ser escritos de novo, agora em blocos. Então apaga as linhas de dentro do teste.",
-     edc(J(C40L[L_T40 - 1:]), "Apaga os passos de dentro do teste", arquivo="compra.spec.js", pastas=ARV_P3, linha0=L_T40, apagar=list(range(L_T40 + 4 - L_T40 + 1, len(C40L) - 2 - L_T40 + 2)), apagar_em=3.2, fonte=22)),
+     inteiro(edc(J(C40L[L_T40 - 1:]), "Apaga os passos de dentro do teste", arquivo="compra.spec.js", pastas=ARV_P3, linha0=L_T40, apagar=list(range(L_T40 + 4 - L_T40 + 1, len(C40L) - 2 - L_T40 + 2)), apagar_em=3.2, fonte=22), C40L[:L_T40 - 1])),
     ("O primeiro passo. A sintaxe: await test ponto step, abre parênteses, o nome do passo entre aspas, vírgula, async, parênteses, seta, e abre chaves.",
-     edc(ate_passo(1, so_abre=True), "await test.step('nome', async () => {", arquivo="compra.spec.js", pastas=ARV_P3, linha0=L_T41, digitar=True, digitar_de=L_S1 - L_T41 + 1, digitar_ate=L_S1 - L_T41 + 1, fonte=22)),
+     inteiro(edc(ate_passo(1, so_abre=True), "await test.step('nome', async () => {", arquivo="compra.spec.js", pastas=ARV_P3, linha0=L_T41, digitar=True, digitar_de=L_S1 - L_T41 + 1, digitar_ate=L_S1 - L_T41 + 1, fonte=22), C41L[:L_T41 - 1])),
     ("Traduzindo: test ponto step, um passo do teste. O nome, como ele aparece no relatório. E o bloco, o que esse passo faz.",
      {"type": "traducao", "codigo": "await test.step('adiciona a mochila no carrinho', async () => {", "partes": [["test.step", "um passo do teste"], ["'adiciona a mochila no carrinho'", "o nome no relatório"], ["async () => {", "o que o passo faz:"]], "passo": 2.0}),
     ("Dentro das chaves, as duas linhas desse passo: adiciona a mochila, e confere o numerozinho. E fecha o passo: chave, parêntese, ponto e vírgula.",
-     edc(ate_passo(1), "As linhas do passo, dentro dele", arquivo="compra.spec.js", pastas=ARV_P3, linha0=L_T41, digitar=True, digitar_de=FAIXAS41[0][0] - L_T41 + 2, digitar_ate=FAIXAS41[0][1] - L_T41 + 1, fonte=22)),
+     inteiro(edc(ate_passo(1), "As linhas do passo, dentro dele", arquivo="compra.spec.js", pastas=ARV_P3, linha0=L_T41, digitar=True, digitar_de=FAIXAS41[0][0] - L_T41 + 2, digitar_ate=FAIXAS41[0][1] - L_T41 + 1, fonte=22), C41L[:L_T41 - 1])),
     ("Roda e abre o relatório: o passo aparece com esse nome.",
      {"type": "pw_relatorio", "testes": [["Compra › compra uma mochila do começo ao fim", "compra.spec.js:13", "chromium", "ok", "2.6s"]],
       "abrir": {"titulo": "compra uma mochila do começo ao fim", "arquivo": "compra.spec.js:13", "projeto": "chromium", "passos": PASSOS[:2]}, "legenda": "O passo aparece com o nome que você deu"}),
     ("Segundo passo: abre o carrinho. E aproveita pra conferir uma coisa nova: que a mochila está lá dentro. Get by text Sauce Labs Backpack, to be visible.",
-     edc(ate_passo(2), "abre o carrinho + confere a mochila", arquivo="compra.spec.js", pastas=ARV_P3, linha0=L_T41, digitar=True, digitar_de=FAIXAS41[1][0] - L_T41, digitar_ate=FAIXAS41[1][1] - L_T41 + 1, fonte=22, rolar_depois=True)),
+     inteiro(edc(ate_passo(2), "abre o carrinho + confere a mochila", arquivo="compra.spec.js", pastas=ARV_P3, linha0=L_T41, digitar=True, digitar_de=FAIXAS41[1][0] - L_T41, digitar_ate=FAIXAS41[1][1] - L_T41 + 1, fonte=22), C41L[:L_T41 - 1])),
     ("Terceiro passo: preenche os dados de entrega. Dentro, o botão checkout e o preencher dados.",
-     edc(J(C41L[FAIXAS41[1][0] - 2:FAIXAS41[2][1]] + ["  });", "});"]), "preenche os dados de entrega", arquivo="compra.spec.js", pastas=ARV_P3, linha0=FAIXAS41[1][0] - 1, digitar=True, digitar_de=FAIXAS41[2][0] - FAIXAS41[1][0] + 1, digitar_ate=FAIXAS41[2][1] - FAIXAS41[1][0] + 2, fonte=22)),
+     inteiro(edc(J(C41L[FAIXAS41[1][0] - 2:FAIXAS41[2][1]] + ["  });", "});"]), "preenche os dados de entrega", arquivo="compra.spec.js", pastas=ARV_P3, linha0=FAIXAS41[1][0] - 1, digitar=True, digitar_de=FAIXAS41[2][0] - FAIXAS41[1][0] + 1, digitar_ate=FAIXAS41[2][1] - FAIXAS41[1][0] + 2, fonte=22), C41L[:FAIXAS41[1][0] - 2])),
     ("E o quarto: finaliza a compra. O botão finish, e a conferência da mensagem final.",
-     edc(J(C41L[FAIXAS41[2][0] - 2:]), "finaliza a compra", arquivo="compra.spec.js", pastas=ARV_P3, linha0=FAIXAS41[2][0] - 1, digitar=True, digitar_de=FAIXAS41[3][0] - FAIXAS41[2][0] + 1, digitar_ate=FAIXAS41[3][1] - FAIXAS41[2][0] + 2, fonte=22)),
+     inteiro(edc(J(C41L[FAIXAS41[2][0] - 2:]), "finaliza a compra", arquivo="compra.spec.js", pastas=ARV_P3, linha0=FAIXAS41[2][0] - 1, digitar=True, digitar_de=FAIXAS41[3][0] - FAIXAS41[2][0] + 1, digitar_ate=FAIXAS41[3][1] - FAIXAS41[2][0] + 2, fonte=22), C41L[:FAIXAS41[2][0] - 2])),
     ("E se falhar, o relatório mostra exatamente em qual passo.",
      {"type": "pw_relatorio", "testes": [["Compra › compra uma mochila do começo ao fim", "compra.spec.js:13", "chromium", "falhou", "6.2s"]],
       "abrir": {"titulo": "compra uma mochila do começo ao fim", "status": "falhou", "arquivo": "compra.spec.js:13", "projeto": "chromium",

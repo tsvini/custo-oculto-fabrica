@@ -228,13 +228,17 @@
         "type": "editor",
         "arquivo": "mock.spec.js",
         "pastas": null,
-        "codigo": "test('servidor fora do ar', async ({ page }) => {\n  await page.route(api, (route) => route.abort());\n  await page.reload();\n  await expect(page.getByTestId('erro-carregar')).toBeVisible();\n});",
+        "codigo": "import { test, expect } from '@playwright/test';\n\nconst lojinha = 'https://tsvini.github.io/custo-oculto-fabrica/loja/';\nconst api = '**/api/produtos.json';\n\ntest.beforeEach(async ({ page }) => {\n  await page.goto(lojinha);\n  await page.getByTestId('usuario').fill('cliente');\n  await page.getByTestId('senha').fill('leigo123');\n  await page.getByTestId('entrar').click();\n  await expect(page.getByTestId('produto').first()).toBeVisible();\n});\n\ntest('servidor fora do ar', async ({ page }) => {\n  await page.route(api, (route) => route.abort());\n  await page.reload();\n  await expect(page.getByTestId('erro-carregar')).toBeVisible();\n});",
         "legenda": "page.route + route.abort()",
         "fonte": 26,
         "digitar": true,
-        "linha0": 14,
-        "digitar_de": 1,
-        "digitar_ate": 5
+        "digitar_de": 14,
+        "digitar_ate": 18,
+        "rolar": true,
+        "rolar_ate": 20,
+        "rolar_de": 0.5,
+        "rolar_dur": 1.2,
+        "atrasa": true
        }
       },
       {
@@ -265,15 +269,19 @@
         "type": "editor",
         "arquivo": "mock.spec.js",
         "pastas": null,
-        "codigo": "test('servidor fora do ar', async ({ page }) => {\n  await page.route(api, (route) => route.abort());\n  await page.reload();\n  await expect(page.getByTestId('erro-carregar')).toBeVisible();\n});",
+        "codigo": "import { test, expect } from '@playwright/test';\n\nconst lojinha = 'https://tsvini.github.io/custo-oculto-fabrica/loja/';\nconst api = '**/api/produtos.json';\n\ntest.beforeEach(async ({ page }) => {\n  await page.goto(lojinha);\n  await page.getByTestId('usuario').fill('cliente');\n  await page.getByTestId('senha').fill('leigo123');\n  await page.getByTestId('entrar').click();\n  await expect(page.getByTestId('produto').first()).toBeVisible();\n});\n\ntest('servidor fora do ar', async ({ page }) => {\n  await page.route(api, (route) => route.abort());\n  await page.reload();\n  await expect(page.getByTestId('erro-carregar')).toBeVisible();\n});",
         "legenda": "reload: pede de novo, agora bloqueado",
         "fonte": 26,
         "digitar": false,
-        "linha0": 14,
         "destaque": [
-         3
+         16
         ],
-        "destaque_em": 0.8
+        "destaque_em": 0.8,
+        "rolar": true,
+        "rolar_ate": 20,
+        "rolar_de": 0.5,
+        "rolar_dur": 1.2,
+        "atrasa": true
        }
       },
       {
@@ -327,13 +335,17 @@
         "type": "editor",
         "arquivo": "mock.spec.js",
         "pastas": null,
-        "codigo": "test('lista vazia', async ({ page }) => {\n  await page.route(api, (route) => route.fulfill({\n    status: 200,\n    contentType: 'application/json',\n    body: '[]',\n  }));\n  await page.reload();\n  await expect(page.getByTestId('vazio')).toBeVisible();\n});",
+        "codigo": "import { test, expect } from '@playwright/test';\n\nconst lojinha = 'https://tsvini.github.io/custo-oculto-fabrica/loja/';\nconst api = '**/api/produtos.json';\n\ntest.beforeEach(async ({ page }) => {\n  await page.goto(lojinha);\n  await page.getByTestId('usuario').fill('cliente');\n  await page.getByTestId('senha').fill('leigo123');\n  await page.getByTestId('entrar').click();\n  await expect(page.getByTestId('produto').first()).toBeVisible();\n});\n\ntest('servidor fora do ar', async ({ page }) => {\n  await page.route(api, (route) => route.abort());\n  await page.reload();\n  await expect(page.getByTestId('erro-carregar')).toBeVisible();\n});\n\ntest('lista vazia', async ({ page }) => {\n  await page.route(api, (route) => route.fulfill({\n    status: 200,\n    contentType: 'application/json',\n    body: '[]',\n  }));\n  await page.reload();\n  await expect(page.getByTestId('vazio')).toBeVisible();\n});",
         "legenda": "route.fulfill: responda no lugar do servidor",
         "fonte": 26,
         "digitar": true,
-        "linha0": 20,
-        "digitar_de": 1,
-        "digitar_ate": 9
+        "digitar_de": 20,
+        "digitar_ate": 28,
+        "rolar": true,
+        "rolar_ate": 30,
+        "rolar_de": 0.5,
+        "rolar_dur": 1.2,
+        "atrasa": true
        }
       },
       {

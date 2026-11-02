@@ -4,7 +4,7 @@ Vídeos reais: as páginas do the-internet gravadas pelo midia.py; o alerta, a a
 gravados com o Chromium de verdade numa tela virtual (ferramentas/codegen/nivel2.sh), em projetos/<aula>/midia/."""
 import json, os, re, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from roteiro_playwright_m1 import bt, titulo, proxima, projeto, RAIZ
+from roteiro_playwright_m1 import inteiro, bt, titulo, proxima, projeto, RAIZ
 from roteiro_playwright_m4 import edc
 
 SITE = "https://the-internet.herokuapp.com"
@@ -43,6 +43,8 @@ def ed(legenda, n_fim, de=None, ate_l=None, mostra_de=None, **kw):
     if de:
         d.update(digitar=True, digitar_de=de - m0 + 1, digitar_ate=(ate_l or de) - m0 + 1)
     d.update(kw)
+    if m0 > 1:  # o arquivo inteiro: aparece do topo e desce até o trecho
+        return inteiro(edc(cod, legenda, **d), L[:m0 - 1])
     return edc(cod, legenda, **d)
 
 

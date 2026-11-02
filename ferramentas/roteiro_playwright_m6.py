@@ -3,10 +3,10 @@ Os textos de erro são a saída real das demos (curso-playwright/projeto/demos/a
 Ajuste técnico combinado: a aula 26 quebra o toContainText ('Backpack' → 'Mochila'), porque o erro de toBeVisible não mostra "Received"."""
 import json, os, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from roteiro_playwright_m1 import bt, titulo, proxima, projeto, RAIZ
+from roteiro_playwright_m1 import bt, titulo, proxima, projeto, RAIZ, inteiro
 from roteiro_playwright_m3 import codigo, ARV, SAUCE, LOGIN
 from roteiro_playwright_m4 import edc, CMD, cg
-from roteiro_playwright_m5 import vs, CONFIG, ARV_EX
+from roteiro_playwright_m5 import vs, CONFIG, ARV_EX, CFG24
 
 C24 = codigo(24).replace("aula 24: ", "")
 C26 = C24.replace("toContainText('Backpack')", "toContainText('Mochila')")
@@ -130,8 +130,8 @@ AULAS.append(projeto(27, "MÓDULO 6 · AULA 27", "UI Mode", [
 ]))
 
 # ---------- Aula 28 ----------
-CFG_RETRY = CONFIG[20:34]  # linhas 21 a 34: retries ... trace
-assert "retries" in CFG_RETRY[1] and "trace" in CFG_RETRY[12]
+CFG_RETRY = CFG24[20:35]  # linhas 21 a 35: retries ... trace
+assert "retries" in CFG_RETRY[1] and "trace" in CFG_RETRY[13]
 ERRO_TRACE = "Error: expect(locator).toContainText(expected) failed\nLocator: getByText('Sauce Labs Backpack')\nExpected substring: \"Mochila\"\nReceived string:    \"Sauce Labs Backpack\""
 TR = {"type": "pw_trace", "media": "site_sauce_trace", "url": SAUCE, "acoes": LOGIN, "inspecionar": "[data-test=\"title\"]"}
 AULAS.append(projeto(28, "MÓDULO 6 · AULA 28", "Trace Viewer", [
@@ -170,7 +170,7 @@ AULAS.append(projeto(28, "MÓDULO 6 · AULA 28", "Trace Viewer", [
     ("E ainda tem duas abas: Console, os avisos que a própria página escreveu, e Network, os pedidos que ela fez pro servidor. Num sistema de verdade, elas ajudam a saber se o problema está na tela ou no servidor.",
      {"type": "cards", "itens": [["▤", "Console", "os avisos da página"], ["⇄", "Network", "os pedidos pro servidor", "#69a7ff"], ["?", "Tela ou servidor?", "dá pra descobrir", "#ffd23f"]]}),
     ("E no GitHub? No config já vem trace on first retry. Retry quer dizer tentar de novo: quando um teste falha lá, ele tenta mais uma vez, e grava o trace dessa segunda tentativa. Ou seja: lá, ele grava sozinho.",
-     edc("\n".join(CFG_RETRY), "trace: 'on-first-retry' = grava quando tenta de novo", arquivo="playwright.config.js", linha0=21, destaque=[2, 13], destaque_em=1.0, fonte=24)),
+     inteiro(edc("\n".join(CFG_RETRY), "trace: 'on-first-retry' = grava quando tenta de novo", arquivo="playwright.config.js", linha0=21, destaque=[2, 14], destaque_em=1.0, fonte=22), CFG24[:20], CFG24[35:])),
     ("Resumindo: na sua máquina, traço traço trace on. No GitHub, o config já cuida disso.",
      {"type": "traducao", "titulo": "QUANDO O TRACE É GRAVADO", "linhas": [["--trace on", "na sua máquina: grave sempre"], ["trace: 'on-first-retry'", "no GitHub: grave quando tentar de novo"]]}),
     ("E pra abrir um trace que alguém te mandou, ou que você baixou do GitHub: npx playwright show trace, e o nome do arquivo ponto zip.",
@@ -216,11 +216,13 @@ CFG30 = [l if "// baseURL" not in l else "    baseURL: 'https://www.saucedemo.co
 CFG30 = "\n".join(CFG30).split("\n")
 i_trace = [i for i, l in enumerate(CFG30) if "trace:" in l][0]
 CFG30 = CFG30[:i_trace + 1] + ["    screenshot: 'only-on-failure',", "    video: 'retain-on-failure',"] + CFG30[i_trace + 1:]
+assert [l for l in CFG30 if "screenshot" not in l and "video:" not in l] == CFG24[25:25 + len(CFG30) - 2]
+CFG30F = CFG24[:25] + CFG30 + CFG24[25 + len(CFG30) - 2:]  # o config inteiro depois da aula 30
 CARD_BUG = "repo:curso-playwright/material/cenas/card_bug.html"
 AULAS.append(projeto(30, "MÓDULO 6 · AULA 30", "Print e vídeo quando o teste falha", [
     ("Quando um teste falha, alguém precisa corrigir. E só dizer que o teste falhou não ajuda: a pessoa precisa ver o que aconteceu.", titulo(30, "PRINT E VÍDEO")),
     ("E se o próprio teste tirasse um print e gravasse um vídeo quando falha? Ele faz isso. No config, dentro do use, adiciona duas linhas: screenshot only on failure, e video retain on failure.",
-     edc("\n".join(CFG30), "screenshot e video", arquivo="playwright.config.js", linha0=26, digitar=True, digitar_de=i_trace + 2, digitar_ate=i_trace + 3, fonte=26)),
+     inteiro(edc("\n".join(CFG30), "screenshot e video", arquivo="playwright.config.js", linha0=26, digitar=True, digitar_de=i_trace + 2, digitar_ate=i_trace + 3, fonte=22), CFG24[:25], CFG24[25 + len(CFG30) - 2:])),
     ("Traduzindo: screenshot, print, só quando falhar. Video retain on failure: o vídeo é gravado durante o teste, e guardado só se ele falhar.",
      {"type": "traducao", "titulo": "SÓ QUANDO FALHA", "linhas": [["screenshot: 'only-on-failure'", "print, só quando falhar"], ["video: 'retain-on-failure'", "grava, e guarda só se falhar"]]}),
     ("Pra ver funcionando, quebra o teste de novo, igual na aula vinte e seis: apaga o Backpack da conferência da mochila, e escreve Mochila.",

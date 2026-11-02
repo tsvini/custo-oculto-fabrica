@@ -75,6 +75,30 @@ def com_criacao(frases):
     return out
 
 
+def inteiro(cena, antes, depois=(), foco=None):
+    """cena de editor com um trecho (linha0) vira o arquivo inteiro: aparece do topo e a tela desce até o trecho.
+    antes/depois = as linhas do arquivo que vêm antes e depois do trecho naquele momento"""
+    antes, depois = list(antes), list(depois); off = len(antes); c = dict(cena); trecho = c["codigo"].split("\n")
+    if c.get("linha0", 1) != 1: assert c["linha0"] == off + 1, (c.get("arquivo"), c["linha0"], off)
+    c.pop("linha0", None); c["codigo"] = "\n".join(antes + trecho + depois)
+    sh = lambda v: v + off
+    for k in ("digitar_de", "digitar_ate", "rolar_ate"):
+        if c.get(k): c[k] = sh(c[k])
+    if c.get("digitar") and not c.get("digitar_de") and not c.get("digitar_faixas"):
+        c["digitar_de"] = sh(min(c["destaque"]) if c.get("destaque") else 1)
+    if c.get("digitar") and not c.get("digitar_ate") and not c.get("digitar_faixas"): c["digitar_ate"] = off + len(trecho)
+    for k in ("destaque", "apagar", "descomentar", "marca_inicio"):
+        if c.get(k): c[k] = [sh(v) for v in c[k]]
+    if c.get("trocar"): c["trocar"] = [[sh(p[0])] + list(p[1:]) for p in c["trocar"]]
+    if c.get("digitar_faixas"): c["digitar_faixas"] = [[sh(a), sh(b)] for a, b in c["digitar_faixas"]]
+    if off or depois:
+        ini = min([v for v in [c.get("digitar_de")] + (c.get("destaque") or []) + (c.get("apagar") or []) + [p[0] for p in c.get("trocar") or []] + [a for a, b in c.get("digitar_faixas") or []] if v] or [off + 1])
+        alvo = foco or max([c.get("digitar_ate") or 0] + (c.get("destaque") or []) + (c.get("apagar") or []) + [p[0] for p in c.get("trocar") or []] + [b for a, b in c.get("digitar_faixas") or []] + [off + len(trecho)])
+        alvo = min(alvo, ini + 11)  # bloco grande: o começo do que muda fica perto do topo da tela
+        c.update(rolar=True, rolar_ate=alvo + 2, rolar_de=0.5, rolar_dur=1.2, atrasa=True)
+    return c
+
+
 def term(linhas, legenda=None, pasta="C:\\Users\\voce", titulo=None):
     d = {"type": "terminal", "pasta": pasta, "linhas": linhas, "titulo": "Windows PowerShell"}
     if legenda:

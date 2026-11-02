@@ -135,14 +135,18 @@
        "scene": {
         "type": "editor",
         "arquivo": "LoginPage.js",
-        "codigo": "\n  async abrir() {\n    const v = process.env.LOJA_VERSAO;\n    await this.page.goto(v ? `index.html?versao=${v}` : 'index.html');\n  }\n}",
+        "codigo": "export class LoginPage {\n  constructor(page) {\n    this.page = page;\n    this.usuario = page.getByTestId('usuario');\n    this.senha = page.getByTestId('senha');\n    this.botaoEntrar = page.getByTestId('entrar');\n    this.erro = page.getByTestId('erro');\n  }\n\n  async abrir() {\n    const v = process.env.LOJA_VERSAO;\n    await this.page.goto(v ? `index.html?versao=${v}` : 'index.html');\n  }\n}",
         "legenda": "abrir(): a versão vem do .env",
         "fonte": 28,
         "digitar": true,
-        "linha0": 9,
         "pastas": null,
-        "digitar_de": 2,
-        "digitar_ate": 5
+        "digitar_de": 10,
+        "digitar_ate": 13,
+        "rolar": true,
+        "rolar_ate": 16,
+        "rolar_de": 0.5,
+        "rolar_dur": 1.2,
+        "atrasa": true
        }
       },
       {
@@ -173,13 +177,17 @@
         "type": "editor",
         "arquivo": "LoginPage.js",
         "pastas": null,
-        "codigo": "\n  async entrar(usuario, senha) {\n    await this.usuario.fill(usuario);\n    await this.senha.fill(senha);\n    await this.botaoEntrar.click();\n  }\n}",
+        "codigo": "export class LoginPage {\n  constructor(page) {\n    this.page = page;\n    this.usuario = page.getByTestId('usuario');\n    this.senha = page.getByTestId('senha');\n    this.botaoEntrar = page.getByTestId('entrar');\n    this.erro = page.getByTestId('erro');\n  }\n\n  async abrir() {\n    const v = process.env.LOJA_VERSAO;\n    await this.page.goto(v ? `index.html?versao=${v}` : 'index.html');\n  }\n\n  async entrar(usuario, senha) {\n    await this.usuario.fill(usuario);\n    await this.senha.fill(senha);\n    await this.botaoEntrar.click();\n  }\n}",
         "legenda": "entrar(): o mesmo do projeto 1",
         "fonte": 28,
         "digitar": true,
-        "linha0": 14,
-        "digitar_de": 2,
-        "digitar_ate": 6
+        "digitar_de": 15,
+        "digitar_ate": 19,
+        "rolar": true,
+        "rolar_ate": 22,
+        "rolar_de": 0.5,
+        "rolar_dur": 1.2,
+        "atrasa": true
        }
       },
       {
@@ -242,13 +250,17 @@
         "type": "editor",
         "arquivo": "ProdutosPage.js",
         "pastas": null,
-        "codigo": "\n  async ordenarPor(opcao) {\n    await this.ordenar.selectOption(opcao);\n  }\n}",
+        "codigo": "export class ProdutosPage {\n  constructor(page) {\n    this.page = page;\n    this.titulo = page.getByTestId('titulo');\n    this.ordenar = page.getByTestId('ordenar');\n    this.produtos = page.getByTestId('produto');\n    this.precos = page.getByTestId('preco');\n    this.nomes = page.getByTestId('nome');\n  }\n\n  async ordenarPor(opcao) {\n    await this.ordenar.selectOption(opcao);\n  }\n}",
         "legenda": "ordenarPor(opcao)",
         "fonte": 28,
         "digitar": true,
-        "linha0": 10,
-        "digitar_de": 2,
-        "digitar_ate": 4
+        "digitar_de": 11,
+        "digitar_ate": 13,
+        "rolar": true,
+        "rolar_ate": 16,
+        "rolar_de": 0.5,
+        "rolar_dur": 1.2,
+        "atrasa": true
        }
       },
       {
@@ -256,14 +268,18 @@
        "scene": {
         "type": "editor",
         "arquivo": "ProdutosPage.js",
-        "codigo": "\n  // \"R$ 1.234,56\" vira 1234.56\n  async lerPrecos() {\n    const textos = await this.precos.allTextContents();\n    return textos.map((t) => Number(\n      t.replace('R$', '').replace(/\\./g, '').replace(',', '.').trim(),\n    ));\n  }\n}",
+        "codigo": "export class ProdutosPage {\n  constructor(page) {\n    this.page = page;\n    this.titulo = page.getByTestId('titulo');\n    this.ordenar = page.getByTestId('ordenar');\n    this.produtos = page.getByTestId('produto');\n    this.precos = page.getByTestId('preco');\n    this.nomes = page.getByTestId('nome');\n  }\n\n  async ordenarPor(opcao) {\n    await this.ordenar.selectOption(opcao);\n  }\n\n  // \"R$ 1.234,56\" vira 1234.56\n  async lerPrecos() {\n    const textos = await this.precos.allTextContents();\n    return textos.map((t) => Number(\n      t.replace('R$', '').replace(/\\./g, '').replace(',', '.').trim(),\n    ));\n  }\n}",
         "legenda": "lerPrecos(): da tela pra número",
         "fonte": 24,
         "digitar": true,
-        "linha0": 14,
         "pastas": null,
-        "digitar_de": 2,
-        "digitar_ate": 8
+        "digitar_de": 15,
+        "digitar_ate": 21,
+        "rolar": true,
+        "rolar_ate": 24,
+        "rolar_de": 0.5,
+        "rolar_dur": 1.2,
+        "atrasa": true
        }
       },
       {
@@ -323,13 +339,17 @@
         "type": "editor",
         "arquivo": "ProdutosPage.js",
         "pastas": null,
-        "codigo": "\n  async lerNomes() {\n    return this.nomes.allTextContents();\n  }\n}",
+        "codigo": "export class ProdutosPage {\n  constructor(page) {\n    this.page = page;\n    this.titulo = page.getByTestId('titulo');\n    this.ordenar = page.getByTestId('ordenar');\n    this.produtos = page.getByTestId('produto');\n    this.precos = page.getByTestId('preco');\n    this.nomes = page.getByTestId('nome');\n  }\n\n  async ordenarPor(opcao) {\n    await this.ordenar.selectOption(opcao);\n  }\n\n  // \"R$ 1.234,56\" vira 1234.56\n  async lerPrecos() {\n    const textos = await this.precos.allTextContents();\n    return textos.map((t) => Number(\n      t.replace('R$', '').replace(/\\./g, '').replace(',', '.').trim(),\n    ));\n  }\n\n  async lerNomes() {\n    return this.nomes.allTextContents();\n  }\n}",
         "legenda": "lerNomes(): o texto de todos os nomes",
         "fonte": 28,
         "digitar": true,
-        "linha0": 22,
-        "digitar_de": 2,
-        "digitar_ate": 4
+        "digitar_de": 23,
+        "digitar_ate": 25,
+        "rolar": true,
+        "rolar_ate": 28,
+        "rolar_de": 0.5,
+        "rolar_dur": 1.2,
+        "atrasa": true
        }
       },
       {
@@ -338,13 +358,17 @@
         "type": "editor",
         "arquivo": "ProdutosPage.js",
         "pastas": null,
-        "codigo": "\n  produto(nome) {\n    return this.produtos.filter({ hasText: nome });\n  }\n}",
+        "codigo": "export class ProdutosPage {\n  constructor(page) {\n    this.page = page;\n    this.titulo = page.getByTestId('titulo');\n    this.ordenar = page.getByTestId('ordenar');\n    this.produtos = page.getByTestId('produto');\n    this.precos = page.getByTestId('preco');\n    this.nomes = page.getByTestId('nome');\n  }\n\n  async ordenarPor(opcao) {\n    await this.ordenar.selectOption(opcao);\n  }\n\n  // \"R$ 1.234,56\" vira 1234.56\n  async lerPrecos() {\n    const textos = await this.precos.allTextContents();\n    return textos.map((t) => Number(\n      t.replace('R$', '').replace(/\\./g, '').replace(',', '.').trim(),\n    ));\n  }\n\n  async lerNomes() {\n    return this.nomes.allTextContents();\n  }\n\n  produto(nome) {\n    return this.produtos.filter({ hasText: nome });\n  }\n}",
         "legenda": "produto(nome): o card pelo nome",
         "fonte": 28,
         "digitar": true,
-        "linha0": 26,
-        "digitar_de": 2,
-        "digitar_ate": 4
+        "digitar_de": 27,
+        "digitar_ate": 29,
+        "rolar": true,
+        "rolar_ate": 32,
+        "rolar_de": 0.5,
+        "rolar_dur": 1.2,
+        "atrasa": true
        }
       },
       {

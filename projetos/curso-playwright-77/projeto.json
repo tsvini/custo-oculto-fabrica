@@ -276,14 +276,18 @@
        "scene": {
         "type": "editor",
         "arquivo": "playwright.config.js",
-        "codigo": "  use: {\n    baseURL: process.env.BASE_URL || 'https://tsvini.github.io/custo-oculto-fabrica/loja/',\n    testIdAttribute: 'data-test',\n    trace: 'on-first-retry',\n    screenshot: 'only-on-failure',\n  },",
+        "codigo": "// @ts-check\nimport { defineConfig, devices } from '@playwright/test';\nimport dotenv from 'dotenv';\nimport path from 'path';\ndotenv.config({ path: path.resolve(__dirname, '.env') });\n\nexport default defineConfig({\n  testDir: './tests',\n  fullyParallel: true,\n  forbidOnly: !!process.env.CI,\n  retries: process.env.CI ? 2 : 0,\n  workers: process.env.CI ? 1 : undefined,\n  reporter: 'html',\n  use: {\n    baseURL: process.env.BASE_URL || 'https://tsvini.github.io/custo-oculto-fabrica/loja/',\n    testIdAttribute: 'data-test',\n    trace: 'on-first-retry',\n    screenshot: 'only-on-failure',\n  },",
         "legenda": "baseURL, testIdAttribute e screenshot",
         "fonte": 22,
         "digitar": true,
-        "linha0": 14,
         "pastas": null,
-        "digitar_de": 2,
-        "digitar_ate": 5
+        "digitar_de": 15,
+        "digitar_ate": 18,
+        "rolar": true,
+        "rolar_ate": 21,
+        "rolar_de": 0.5,
+        "rolar_dur": 1.2,
+        "atrasa": true
        }
       },
       {

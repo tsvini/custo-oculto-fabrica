@@ -3,10 +3,11 @@ Código = tests/etapas/aula32.spec.js (validado). Ajuste técnico: com o nome fi
 ("duplicate test title", saída real de demos/aula31_repetido.demo.spec.js) — a aula 32 abre mostrando esse erro."""
 import json, os, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from roteiro_playwright_m1 import bt, titulo, proxima, projeto, RAIZ, apagar_no_explorer
+from roteiro_playwright_m1 import bt, titulo, proxima, projeto, RAIZ, apagar_no_explorer, inteiro
 from roteiro_playwright_m3 import codigo, ARV, SAUCE, LOGIN, CMD_HEADED
 from roteiro_playwright_m4 import edc, CMD
 from roteiro_playwright_m5 import vs, CONFIG, ARV_EX
+from roteiro_playwright_m6 import CFG30F
 
 ARV_U = ARV_EX[:ARV_EX.index("    login.spec.js") + 1] + ["    usuarios.spec.js"] + ARV_EX[ARV_EX.index("    login.spec.js") + 1:]
 C32 = codigo(32).replace("aula 32: ", "")
@@ -77,13 +78,13 @@ AULAS.append(projeto(31, "MÓDULO 7 · AULA 31", "Uma lista de usuários e um te
     ("Agora, volta pro usuarios ponto spec ponto js, e escreve o mesmo for embaixo da lista.",
      edc("\n".join(L31[:L_FOR] + ["}"]), "O mesmo for, no arquivo de teste", arquivo="usuarios.spec.js", pastas=ARV_U, digitar=True, digitar_de=L_FOR, fonte=28)),
     ("E dentro das chaves, no lugar do console ponto log, vai o teste de login que você já conhece. Por enquanto, com o nome fixo: login funciona.",
-     edc("\n".join(L31[L_FOR - 1:]), "O teste dentro do for", arquivo="usuarios.spec.js", pastas=None, linha0=L_FOR, digitar=True, digitar_de=2, fonte=24)),
+     inteiro(edc("\n".join(L31[L_FOR - 1:]), "O teste dentro do for", arquivo="usuarios.spec.js", pastas=None, linha0=L_FOR, digitar=True, digitar_de=2, digitar_ate=len(L31) - L_FOR, fonte=22), L31[:L_FOR - 1])),
     ("E onde antes tinha standard user, agora vai a palavra usuario: o nome da volta da vez.",
-     edc("\n".join(L31[L_FOR - 1:]), "fill(usuario): o nome da volta da vez", arquivo="usuarios.spec.js", pastas=None, linha0=L_FOR, destaque=[L_FILL - L_FOR + 1], destaque_em=0.6, fonte=24)),
+     inteiro(edc("\n".join(L31[L_FOR - 1:]), "fill(usuario): o nome da volta da vez", arquivo="usuarios.spec.js", pastas=None, linha0=L_FOR, destaque=[L_FILL - L_FOR + 1], destaque_em=0.6, fonte=22), L31[:L_FOR - 1])),
     ("Repara: usuario está sem aspas. Com aspas, ele ia digitar a palavra usuario, letra por letra. Sem aspas, ele digita o valor guardado: o nome da volta.",
      {"type": "traducao", "titulo": "COM ASPAS × SEM ASPAS", "linhas": [["fill('usuario')", "digita a palavra usuario"], ["fill(usuario)", "digita o nome da volta"]]}),
     ("E o timeout de dez segundos na conferência final? O performance glitch demora uns cinco segundos pra entrar, e o expect espera cinco. Então, só nessa linha, a gente dá dez.",
-     edc("\n".join(L31[L_FOR - 1:]), "O usuário lento: 10 segundos só aqui", arquivo="usuarios.spec.js", pastas=None, linha0=L_FOR, destaque=[L_TIME - L_FOR, L_TIME - L_FOR + 1], destaque_em=0.6, fonte=24)),
+     inteiro(edc("\n".join(L31[L_FOR - 1:]), "O usuário lento: 10 segundos só aqui", arquivo="usuarios.spec.js", pastas=None, linha0=L_FOR, destaque=[L_TIME - L_FOR, L_TIME - L_FOR + 1], destaque_em=0.6, fonte=22), L31[:L_FOR - 1])),
     ("Esse jeito tem nome: teste orientado a dados. Um teste, vários dados. Use sempre que o passo a passo é o mesmo e só muda o que você digita.",
      {"type": "traducao", "titulo": "QUANDO USAR", "linhas": [["mesmos passos, dados diferentes", "uma lista + for"], ["passos diferentes", "testes separados"]]}),
     ("E o melhor: quer testar um quinto usuário? É só um nome a mais na lista. Nenhuma linha de teste nova.",
@@ -105,7 +106,7 @@ AULAS.append(projeto(32, "MÓDULO 7 · AULA 32", "O nome do teste que muda sozin
     ("No teclado brasileiro, a crase fica na tecla do acento agudo, com shift. Aperta, e depois a barra de espaço, pra ela aparecer.",
      {"type": "cards", "titulo": "DIGITANDO A CRASE", "itens": [["⇧", "Shift", "segura"], ["´", "Tecla do acento", "aperta", "#69a7ff"], ["␣", "Espaço", "a crase aparece", "#ffd23f"]]}),
     ("Então, apaga o nome do teste com as aspas, e escreve no lugar, com crase: login funciona para, cifrão, abre chaves, usuario, fecha chaves.",
-     edc("\n".join(C32.split("\n")[L_FOR - 1:]), "Crase: texto + valor", arquivo="usuarios.spec.js", pastas=None, linha0=L_FOR, fonte=24, trocar=[[2, C32.split("\n")[L_FOR].replace("`login funciona para ${usuario}`", "'login funciona'"), None, 2.4]])),
+     inteiro(edc("\n".join(C32.split("\n")[L_FOR - 1:]), "Crase: texto + valor", arquivo="usuarios.spec.js", pastas=None, linha0=L_FOR, fonte=24, trocar=[[2, C32.split("\n")[L_FOR].replace("`login funciona para ${usuario}`", "'login funciona'"), None, 2.4]]), C32.split("\n")[:L_FOR - 1])),
     ("Traduzindo: a crase abre um texto que aceita valores. E cifrão chaves abre um espaço dentro dele: coloque aqui o valor de usuario.",
      {"type": "traducao", "codigo": "`login funciona para ${usuario}`", "partes": [["`", "texto que aceita valores"], ["${usuario}", "coloque aqui o valor de usuario"]], "passo": 2.4}),
     ("Em cada volta do for, o valor entra ali. Na primeira, login funciona para standard user. Na segunda, para problem user. E assim por diante.",
@@ -123,10 +124,11 @@ AULAS.append(projeto(32, "MÓDULO 7 · AULA 32", "O nome do teste que muda sozin
 ]))
 
 # ---------- Aula 33 ----------
-PROJ = CONFIG[36:51]  # linhas 37 a 51: os três projects
+P0 = CFG30F.index(CONFIG[36]); PROJ = CFG30F[P0:P0 + 15]  # os três projects
+assert PROJ == CONFIG[36:51]
 assert "projects" in PROJ[0] and "webkit" in "".join(PROJ)
 L_NOMES = [i + 1 for i, l in enumerate(PROJ) if "name:" in l]
-PAR = CONFIG[16:24]   # linhas 17 a 24: fullyParallel ... workers
+PAR = CFG30F[16:24]   # linhas 17 a 24: fullyParallel ... workers
 L_PAR = [i + 1 for i, l in enumerate(PAR) if "fullyParallel" in l or "workers" in l]
 AULAS.append(projeto(33, "MÓDULO 7 · AULA 33", "3 navegadores e testes em paralelo", [
     ("Lembra que, com dois testes, apareciam seis execuções? Hoje você entende de onde vem.", titulo(33, "PARALELO")),
@@ -134,7 +136,7 @@ AULAS.append(projeto(33, "MÓDULO 7 · AULA 33", "3 navegadores e testes em para
      {"type": "cards", "itens": [["C", "Chromium", "a base do Chrome"], ["F", "Firefox", "", "#ff8c42"], ["W", "WebKit", "o motor usado pelo Safari", "#69a7ff"]]}),
     ("Dois testes, vezes três navegadores: seis execuções. Cada teste roda uma vez em cada navegador.",
      {"type": "traducao", "titulo": "2 TESTES × 3 NAVEGADORES = 6", "linhas": [["entra com usuário e senha", "chromium · firefox · webkit"], ["mostra erro para bloqueado", "chromium · firefox · webkit"]]}),
-    ("Eles estão no config, nos projects.", edc("\n".join(PROJ), "projects: os três navegadores", arquivo="playwright.config.js", pastas=ARV_U, linha0=37, destaque=L_NOMES, destaque_em=0.6, fonte=22)),
+    ("Eles estão no config, nos projects.", inteiro(edc("\n".join(PROJ), "projects: os três navegadores", arquivo="playwright.config.js", pastas=ARV_U, linha0=P0 + 1, destaque=L_NOMES, destaque_em=0.6, fonte=22), CFG30F[:P0], CFG30F[P0 + 15:])),
     ("Por que três? Porque um site pode funcionar no Chrome e quebrar no Safari. Cada navegador desenha a página do seu jeito, e bug de um navegador só acontece bastante.", {"type": "cards", "itens": [["✓", "Chromium", "funcionou", "#3fd68a"], ["✓", "Firefox", "funcionou", "#3fd68a"], ["✗", "WebKit (Safari)", "o botão sumiu", "#ff6b6b"]], "titulo": "O MESMO SITE"}),  # pra que / quando
     ("Roda tudo: dezoito testes, que são os seis do projeto vezes três navegadores. E repara na linha workers. Aqui na minha máquina apareceram quatro; na sua pode aparecer outro número. Worker é um trabalhador: um processo que ajuda a rodar testes ao mesmo tempo.",
      vs(C32, "workers = trabalhadores", run(("Running 18 tests using 4 workers", "mut"), ("  18 passed (14.2s)", "ac"), cmd="npx playwright test"), arquivo="usuarios.spec.js", pastas=ARV_U)),
@@ -144,7 +146,7 @@ AULAS.append(projeto(33, "MÓDULO 7 · AULA 33", "3 navegadores e testes em para
      {"type": "cards", "titulo": "TESTES QUE DEPENDEM UM DO OUTRO", "itens": [["A", "Teste A", "esvazia o carrinho"], ["B", "Teste B", "confere o carrinho", "#69a7ff"], ["✗", "Ao mesmo tempo", "um atrapalha o outro", VERM]]}),
     ("E por que paralelo? Velocidade. Duzentos testes de cinco segundos, um de cada vez, levam mais de quinze minutos. Com quatro workers, uns quatro minutos.", {"type": "compare", "title": "200 TESTES DE 5 SEGUNDOS", "items": [["UM POR VEZ", "MAIS DE 15 MINUTOS", "white"], ["4 WORKERS", "UNS 4 MINUTOS", "gold"]], "size": 90, "stagger": 1.8, "vs": False}),  # pra que / quando
     ("No config, o fully parallel true liga isso. E no GitHub ele usa um worker só: a máquina de lá é pequena, e um de cada vez fica mais estável.",
-     edc("\n".join(PAR), "fullyParallel e workers", arquivo="playwright.config.js", linha0=17, destaque=L_PAR, destaque_em=0.6, fonte=26)),
+     inteiro(edc("\n".join(PAR), "fullyParallel e workers", arquivo="playwright.config.js", linha0=17, destaque=L_PAR, destaque_em=0.6, fonte=22), CFG30F[:16], CFG30F[24:])),
     ("No dia a dia, enquanto escreve, roda só no Chromium com traço traço project igual chromium, que é mais rápido. Os três navegadores ficam pro GitHub, que roda tudo a cada mudança.", {"type": "traducao", "titulo": "NO DIA A DIA", "linhas": [["escrevendo o teste", "--project=chromium"], ["no GitHub, a cada mudança", "os 3 navegadores"]]}),  # pra que / quando
     ("Na próxima aula: testando com tela de celular.", proxima("celular")[0]),
     ("Te vejo lá!", proxima("celular")[1]),
@@ -159,7 +161,7 @@ AULAS.append(projeto(34, "MÓDULO 7 · AULA 34", "Celular - emulando dispositivo
     ("Ele tem uma lista de aparelhos prontos, com tamanho de tela, toque e outras características. Isso ajuda muito, mas não substitui todos os testes num aparelho de verdade.",
      {"type": "cards", "itens": [["📱", "Pixel 7", "tela, toque, navegador"], ["📱", "iPhone 13", "", "#69a7ff"], ["⚠", "Não substitui tudo", "teste também no aparelho real", "#ff8c42"]]}),
     ("No config, cria um project novo chamado celular, usando o Pixel 7.",
-     edc("\n".join(PROJ34), "project celular: Pixel 7", arquivo="playwright.config.js", pastas=ARV_U, linha0=37, digitar=True, digitar_de=L_CEL, digitar_ate=L_CEL + 2, fonte=24, rolar=True, rolar_de=0.8, rolar_dur=1.0)),
+     inteiro(edc("\n".join(PROJ34), "project celular: Pixel 7", arquivo="playwright.config.js", pastas=ARV_U, linha0=P0 + 1, digitar=True, digitar_de=L_CEL, digitar_ate=L_CEL + 2, fonte=22), CFG30F[:P0], CFG30F[P0 + 15:])),
     ("Traduzindo: devices, a lista de aparelhos. Pixel 7, o nome do aparelho. E os três pontinhos: pegue todas as configurações dele, o tamanho da tela, o toque e o resto.",
      {"type": "traducao", "codigo": "use: { ...devices['Pixel 7'] }", "partes": [["...", "tudo dele"], ["devices", "aparelhos"], ["['Pixel 7']", "o Pixel 7"]], "passo": 2.2}),
     ("Quer outro aparelho? É só trocar o nome: iPhone 13, iPad Mini, e dezenas de outros.",

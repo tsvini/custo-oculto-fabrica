@@ -100,7 +100,8 @@
     txt(ctx, s.arquivo || "arquivo.js", font(600, 24 * u), tabX + 28 * u, top + 30 * u, C.txt, "left", a);
     const linhas = String(s.codigo || "").split("\n"); const total = linhas.join("").length || 1;
     // no vertical, a fonte cresce até caber na largura
-    const maxCh = Math.max(10, ...linhas.map((l) => l.length));
+    const ehComent = (l) => /^\s*(\/\*|\*|\/\/)/.test(l);  // comentário comprido pode passar da borda (não é código); o código sempre cabe
+    const maxCh = Math.max(10, ...linhas.map((l) => (ehComent(l) && linhas.length > 20 ? Math.min(l.length, 60) : l.length)));
     // a linha mais comprida sempre cabe inteira (código nunca é cortado na lateral)
     let fs = Math.min(c.vertical ? 46 * u : (s.fonte || (linhas.length > 12 ? 30 : 36)) * u, (W - sideW - 140 * u) / (maxCh * 0.6)); let lh = fs * 1.55; const x0 = tabX + 96 * u; let yy = top + 100 * u;
     // rolar: o arquivo inteiro aparece de cima e a tela desce até o fim antes de começar a digitar
@@ -108,7 +109,8 @@
     if (PH) { fs = Math.min(fs, (y + H - PH - top - 100 * u) / ((linhas.length - 0.4) * 1.55)); lh = fs * 1.55; }  // com o terminal aberto, o código inteiro ainda cabe em cima
     const baseY = y + H - PH - 40 * u, cabem = Math.floor((baseY - yy) / lh) + 1, sobra = s.rolar_ate ? clamp(Math.ceil(s.rolar_ate - cabem + 2) * lh, 0, Math.max(0, linhas.length - cabem) * lh) : Math.max(0, linhas.length - cabem) * lh;
     const rDe = s.rolar_de || 1.6, rDur = s.rolar_dur || 1.5; const rolando = s.rolar && sobra > 0;
-    const t0 = rolando ? rDe + rDur + 0.3 : 0.5; if (rolando) yy -= sobra * easeInOut((t - rDe) / rDur);
+    const t0 = rolando ? rDe + rDur + 0.3 : 0.5; const AT = rolando && s.atrasa ? rDe + rDur + 0.2 : 0;  // atrasa: apagar/trocar/destaque esperam a tela descer
+    if (rolando) yy -= sobra * easeInOut((t - rDe) / rDur);
     ctx.save(); ctx.beginPath(); ctx.rect(tabX, top + 58 * u, W - sideW, y + H - PH - top - 60 * u); ctx.clip();
     const d0 = s.digitar_de || ((s.destaque && s.destaque.length) ? Math.min(...s.destaque) : 1);  // linhas antes disso já estão escritas
     const d1 = s.digitar_ate || linhas.length;  // linhas depois disso já estão escritas também
@@ -121,14 +123,14 @@
     const dig = k; let resta = pronto + Math.floor(k * falta);
     // apagar: as linhas ficam vermelhas, somem, e o código de baixo sobe (a numeração se ajusta no fim)
     // trocar: [[linha, texto antigo, texto novo (opcional: a linha final)], ...], um passo depois do outro a partir de trocar_em
-    const TR = []; { let tc = s.trocar_em === undefined ? 1.0 : s.trocar_em; const ok = (c1) => !/[A-Za-z0-9_]/.test(c1 || " ");
-      for (const [l, de, pa, em] of (s.trocar || [])) { if (em !== undefined && em !== null) tc = Math.max(tc, em); const para = (pa === undefined || pa === null) ? linhas[l - 1] : pa; let p = 0; while (p < de.length && p < para.length && de[p] === para[p]) p++;
+    const TR = []; { let tc = (s.trocar_em === undefined ? 1.0 : s.trocar_em) + AT; const ok = (c1) => !/[A-Za-z0-9_]/.test(c1 || " ");
+      for (const [l, de, pa, em] of (s.trocar || [])) { if (em !== undefined && em !== null) tc = Math.max(tc, em + AT); const para = (pa === undefined || pa === null) ? linhas[l - 1] : pa; let p = 0; while (p < de.length && p < para.length && de[p] === para[p]) p++;
         if (p > 0 && !ok(de[p - 1]) && (!ok(de[p]) || !ok(para[p]))) while (p > 0 && !" '\"(.,{".includes(de[p - 1])) p--; 
         let q = 0; while (q < de.length - p && q < para.length - p && de[de.length - 1 - q] === para[para.length - 1 - q]) q++;
         while (q > 0 && !ok(de[de.length - q]) && !ok(de[de.length - q - 1])) q--;
         const mo = de.slice(p, de.length - q), mn = para.slice(p, para.length - q), tH = tc, tD = tH + 0.7, tY = tD + mo.length / 45 + 0.15, tF = tY + mn.length / 20;
         TR.push({ l, de, para, pre: de.slice(0, p), suf: de.slice(de.length - q), mo, mn, tH, tD, tY, tF }); tc = tF + 0.4; } }
-    const AP = s.apagar || [], tA = s.apagar_em === undefined ? 1.0 : s.apagar_em, kR = easeOut((t - tA) / 0.4), kC = easeInOut((t - tA - 0.8) / 0.5); let num = 0;
+    const AP = s.apagar || [], tA = (s.apagar_em === undefined ? 1.0 : s.apagar_em) + AT, kR = easeOut((t - tA) / 0.4), kC = easeInOut((t - tA - 0.8) / 0.5); let num = 0;
     linhas.forEach((ln, i) => {
       const ap = AP.includes(i + 1), hf = ap ? 1 - kC : 1;
       if (ap && hf <= 0.002) { if (i + 1 <= d1) resta -= ln.length; return; }
@@ -136,13 +138,13 @@
       if (ap && kR > 0) { ctx.save(); ctx.globalAlpha = 0.3 * kR * (1 - kC); ctx.fillStyle = "#ff6b6b"; ctx.fillRect(tabX, yy - lh * hf / 2, W - sideW, lh * hf); ctx.globalAlpha = kR * (1 - kC); ctx.fillRect(tabX, yy - lh * hf / 2, 6 * u, lh * hf); ctx.restore(); }
       const hl = (s.destaque || []).includes(i + 1);
       if (rolando && (s.marca_inicio || []).includes(i + 1)) { const hm = easeOut((t - 0.4) / 0.3) * (1 - easeOut((t - rDe - 0.6) / 0.4)); if (hm > 0) { ctx.save(); ctx.globalAlpha = 0.16 * hm; ctx.fillStyle = C.yel; ctx.fillRect(tabX, yy - lh / 2, W - sideW, lh); ctx.globalAlpha = hm; ctx.fillRect(tabX, yy - lh / 2, 6 * u, lh); ctx.restore(); } }
-      if (hl && dig >= 1) { const ha = easeOut((t - (s.digitar === false ? (s.destaque_em || 1.2) : t0 + tDig)) / 0.4); ctx.save(); ctx.globalAlpha = 0.18 * ha; ctx.fillStyle = C.ac; ctx.fillRect(tabX, yy - lh / 2, W - sideW, lh); ctx.globalAlpha = ha; ctx.fillRect(tabX, yy - lh / 2, 6 * u, lh); ctx.restore(); }
+      if (hl && dig >= 1) { const ha = easeOut((t - (s.digitar === false ? (s.destaque_em || 1.2) + AT : t0 + tDig)) / 0.4); ctx.save(); ctx.globalAlpha = 0.18 * ha; ctx.fillStyle = C.ac; ctx.fillRect(tabX, yy - lh / 2, W - sideW, lh); ctx.globalAlpha = ha; ctx.fillRect(tabX, yy - lh / 2, 6 * u, lh); ctx.restore(); }
       txt(ctx, String((kC >= 1 && AP.length ? num - 1 : i) + (s.linha0 || 1)), font(500, fs * 0.8, MONO), x0 - 30 * u, yy, "#4b5263", "right", aL);  // linha0: o trecho visível de um arquivo maior
       let mostra = i + 1 > d1 ? ln.length : Math.min(ln.length, resta); if (i + 1 <= d1) resta -= ln.length; let xx = x0;
       let cursorFX = false; if (FX) { const ini = fxIni[i + 1]; const kk = Math.floor(dig * falta); mostra = ini === undefined ? ln.length : clamp(kk - ini, 0, ln.length); cursorFX = ini !== undefined && dig < 1 && kk >= ini && kk <= ini + ln.length; }
       // descomentar: a linha começa com "// " (cinza, comentário) e as barras vão sendo apagadas, uma linha depois da outra
       const iD = (s.descomentar || []).indexOf(i + 1);
-      if (iD >= 0) { const tD = (s.descomentar_em === undefined ? 1.2 : s.descomentar_em) + iD * 0.7, sobra = 3 - clamp(Math.floor((t - tD) / 0.16), 0, 3);
+      if (iD >= 0) { const tD = (s.descomentar_em === undefined ? 1.2 : s.descomentar_em) + AT + iD * 0.7, sobra = 3 - clamp(Math.floor((t - tD) / 0.16), 0, 3);
         if (sobra > 0) { const pre = "// ".slice(3 - sobra); txt(ctx, pre + ln, font(500, fs, MONO), x0, yy, "#6a737d", "left", aL);
           if (t >= tD - 0.3 && Math.floor(t * 2.5) % 2 === 0) { ctx.save(); ctx.globalAlpha = aL; ctx.fillStyle = C.ac; ctx.fillRect(x0 - 3 * u, yy - fs * 0.6, 4 * u, fs * 1.2); ctx.restore(); }
           mostra = 0; } }
