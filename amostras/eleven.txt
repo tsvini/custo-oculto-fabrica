@@ -1,5 +1,6 @@
 Vinícius Torales
 eleven_v4_turbo
-A. A resposta vem em djêison. E a senha fica guardada no ponto ênvi.
-B. A resposta vem em jêison. E a senha fica guardada no ponto énv.
-C. A resposta vem em Jason. E a senha fica guardada no ponto ênv.
+A. O Playwright abre o Chromium, o Firefox e o WebKit. No VS Code, o login ponto spec ponto js usa o expect, o await e o get by test id, com o data-test.
+B. No terminal: npx playwright test, traço traço headed. Depois vem o describe, o before each, o const, o async, o constructor e o timeout.
+C. No Git, o commit e o push mandam pro GitHub. O GitHub Actions roda num ubuntu, com o workflow, o README e o badge. E ainda tem o trace, o screenshot e o codegen.
+D. Fixtures, mock, route, iframe, upload, locator, storage state, grep, smoke, flaky, soft, dotenv, node, e o PowerShell.
