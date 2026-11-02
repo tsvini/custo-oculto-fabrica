@@ -132,7 +132,7 @@
           "chromium · firefox · webkit"
          ],
          [
-          "mostra erro para bloqueado",
+          "mostra erro para usuário bloqueado",
           "chromium · firefox · webkit"
          ]
         ]
@@ -202,7 +202,69 @@
        }
       },
       {
-       "text": "Roda tudo: dezoito testes, que são os seis do projeto vezes três navegadores. E repara na linha workers. Aqui na minha máquina apareceram quatro; na sua pode aparecer outro número. Worker é um trabalhador: um processo que ajuda a rodar testes ao mesmo tempo.",
+       "text": "Roda tudo: dezoito testes.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "usuarios.spec.js",
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  tests/",
+         "    login.spec.js",
+         "    usuarios.spec.js",
+         "  .env",
+         "  .env.example",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "codigo": "import { test, expect } from '@playwright/test';\n\nconst listaDeUsuarios = [\n  'standard_user',\n  'problem_user',\n  'performance_glitch_user',\n  'visual_user',\n];\n\nfor (const usuario of listaDeUsuarios) {",
+        "legenda": "18 testes",
+        "fonte": 26,
+        "digitar": false,
+        "terminal": [
+         {
+          "cmd": "npx playwright test",
+          "em": 0.05
+         },
+         {
+          "out": "Running 18 tests using 4 workers",
+          "cor": "mut",
+          "em": 0.3
+         },
+         {
+          "out": "  18 passed (14.2s)",
+          "cor": "ac",
+          "em": 0.5
+         }
+        ]
+       }
+      },
+      {
+       "text": "De onde vem? O login ponto spec tem dois testes, e o usuarios ponto spec tem quatro, um pra cada usuário da lista. Seis testes, vezes três navegadores: dezoito.",
+       "scene": {
+        "type": "traducao",
+        "titulo": "6 TESTES × 3 NAVEGADORES = 18",
+        "linhas": [
+         [
+          "login.spec.js",
+          "2 testes"
+         ],
+         [
+          "usuarios.spec.js",
+          "4 testes: 1 por usuário"
+         ],
+         [
+          "6 × 3 navegadores",
+          "18"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "E repara na linha workers. Aqui na minha máquina apareceram quatro; na sua pode aparecer outro número. Worker é um trabalhador: um processo que ajuda a rodar testes ao mesmo tempo.",
        "scene": {
         "type": "editor",
         "arquivo": "usuarios.spec.js",

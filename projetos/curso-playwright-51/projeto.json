@@ -117,7 +117,7 @@
        }
       },
       {
-       "text": "Pausa e tenta.",
+       "text": "O teste: adiciona a mochila, remove de novo, e confere que o carrinho ficou vazio.",
        "scene": {
         "type": "desafio",
         "numero": "3",
@@ -138,10 +138,9 @@
           "#ffd23f"
          ]
         ],
-        "contagem": 5,
-        "legenda": "Pausa o vídeo e tenta"
-       },
-       "pausa": 6
+        "contagem": 0,
+        "legenda": "O desafio"
+       }
       },
       {
        "text": "Dica: depois de adicionar, o botão vira Remove, com data-test remove-sauce-labs-backpack. E quando o carrinho fica vazio, o numerozinho some da página.",
@@ -257,6 +256,33 @@
         "rolar_dur": 1.2,
         "atrasa": true
        }
+      },
+      {
+       "text": "Agora sim: pausa o vídeo e tenta. Quando voltar, a solução.",
+       "scene": {
+        "type": "desafio",
+        "numero": "3",
+        "titulo": "Remover do carrinho",
+        "itens": [
+         [
+          "＋",
+          "adiciona a mochila"
+         ],
+         [
+          "−",
+          "remove de novo",
+          "#69a7ff"
+         ],
+         [
+          "✓",
+          "o carrinho fica vazio",
+          "#ffd23f"
+         ]
+        ],
+        "contagem": 5,
+        "legenda": "Pausa o vídeo e tenta"
+       },
+       "pausa": 6
       },
       {
        "text": "Solução. Primeiro, adiciona a mochila, e confere que o numerozinho do carrinho mostra um.",

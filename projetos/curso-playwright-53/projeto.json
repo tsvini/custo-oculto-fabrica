@@ -116,7 +116,7 @@
        }
       },
       {
-       "text": "Pausa e tenta.",
+       "text": "O teste: abre o menu, clica em Logout, e confere que o botão de Login voltou.",
        "scene": {
         "type": "desafio",
         "numero": "5",
@@ -137,10 +137,9 @@
           "#ffd23f"
          ]
         ],
-        "contagem": 5,
-        "legenda": "Pausa o vídeo e tenta"
-       },
-       "pausa": 6
+        "contagem": 0,
+        "legenda": "O desafio"
+       }
       },
       {
        "text": "Dica: o menu é aquele botão de três risquinhos, com nome Open Menu. Lá dentro tem o Logout.",
@@ -220,6 +219,33 @@
         "realce_rotulo": "logout-sidebar-link",
         "legenda": "Inspecionar: data-test=\"logout-sidebar-link\""
        }
+      },
+      {
+       "text": "Agora sim: pausa o vídeo e tenta. Quando voltar, a solução.",
+       "scene": {
+        "type": "desafio",
+        "numero": "5",
+        "titulo": "Logout",
+        "itens": [
+         [
+          "☰",
+          "abre o menu"
+         ],
+         [
+          "⎋",
+          "clica em Logout",
+          "#69a7ff"
+         ],
+         [
+          "✓",
+          "o botão de Login voltou",
+          "#ffd23f"
+         ]
+        ],
+        "contagem": 5,
+        "legenda": "Pausa o vídeo e tenta"
+       },
+       "pausa": 6
       },
       {
        "text": "Solução. Primeiro, abre o menu. O botão de três risquinhos não tem data-test, então a gente usa o get by role: um botão com o nome Open Menu.",

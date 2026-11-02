@@ -116,7 +116,7 @@
        }
       },
       {
-       "text": "Pausa e tenta. Esse é maior, sem pressa.",
+       "text": "O teste: a mochila e a lanterna da bike, carrinho, checkout e dados, confere o total e finaliza a compra.",
        "scene": {
         "type": "desafio",
         "numero": "FINAL",
@@ -142,10 +142,9 @@
           "#ffd23f"
          ]
         ],
-        "contagem": 5,
-        "legenda": "Pausa o vídeo e tenta"
-       },
-       "pausa": 6
+        "contagem": 0,
+        "legenda": "O desafio"
+       }
       },
       {
        "text": "Dica: a mochila e a lanterna da bicicleta, bike light. O total fica no data-test total-label. Com os preços desse site de treino, o total conhecido é quarenta e três e dezoito.",
@@ -288,6 +287,38 @@
        }
       },
       {
+       "text": "Agora sim: pausa o vídeo e tenta. Esse é maior, sem pressa. Quando voltar, a solução.",
+       "scene": {
+        "type": "desafio",
+        "numero": "FINAL",
+        "titulo": "Compra com dois produtos",
+        "itens": [
+         [
+          "🎒",
+          "mochila + lanterna da bike"
+         ],
+         [
+          "🛒",
+          "carrinho, checkout e dados",
+          "#69a7ff"
+         ],
+         [
+          "$",
+          "confere o total",
+          "#ffd23f"
+         ],
+         [
+          "✓",
+          "finaliza a compra",
+          "#ffd23f"
+         ]
+        ],
+        "contagem": 5,
+        "legenda": "Pausa o vídeo e tenta"
+       },
+       "pausa": 6
+      },
+      {
        "text": "Solução, passo a passo. Adiciona a mochila e a lanterna, e confere que o carrinho mostra dois.",
        "scene": {
         "type": "editor",
@@ -353,6 +384,33 @@
         "rolar_de": 0.2,
         "rolar_dur": 0.6,
         "rolar_ate": 60
+       }
+      },
+      {
+       "text": "Mesma coisa: o quarenta e três e dezoito só funciona porque esse site nunca muda os preços. Numa loja de verdade, você calcula o total somando os preços que aparecem na tela. E no módulo 14 você aprende a ler os preços da tela como número, que é a base pra isso.",
+       "scene": {
+        "type": "cards",
+        "titulo": "$43.18 É UM NÚMERO FIXO",
+        "itens": [
+         [
+          "✓",
+          "Site de treino",
+          "o preço nunca muda",
+          "#3fd68a"
+         ],
+         [
+          "✗",
+          "Loja de verdade",
+          "o preço mudou, o teste quebra",
+          "#ff6b6b"
+         ],
+         [
+          "+",
+          "O certo",
+          "somar os preços da tela",
+          "#ffd23f"
+         ]
+        ]
        }
       },
       {

@@ -122,7 +122,52 @@
        }
       },
       {
-       "text": "Pausa e tenta.",
+       "text": "O teste: não preenche nada, clica em Login, e confere a mensagem de erro.",
+       "scene": {
+        "type": "desafio",
+        "numero": "2",
+        "titulo": "Campos vazios",
+        "itens": [
+         [
+          "▭",
+          "não preenche nada"
+         ],
+         [
+          "▶",
+          "clica em Login",
+          "#69a7ff"
+         ],
+         [
+          "✓",
+          "confere a mensagem de erro",
+          "#ffd23f"
+         ]
+        ],
+        "contagem": 0,
+        "legenda": "O desafio"
+       }
+      },
+      {
+       "text": "Dica: a mensagem é Username is required.",
+       "scene": {
+        "type": "tela",
+        "media": "dica50",
+        "url": "https://www.saucedemo.com/",
+        "gravar": true,
+        "acoes": [
+         {
+          "click": "#login-button"
+         }
+        ],
+        "titulo": "saucedemo.com",
+        "legenda": "Username is required",
+        "espera_inicio": 1000,
+        "espera_fim": 2200,
+        "delay_letra": 70
+       }
+      },
+      {
+       "text": "Agora sim: pausa o vídeo e tenta. Quando voltar, a solução.",
        "scene": {
         "type": "desafio",
         "numero": "2",
@@ -147,25 +192,6 @@
         "legenda": "Pausa o vídeo e tenta"
        },
        "pausa": 6
-      },
-      {
-       "text": "Dica: a mensagem é Username is required.",
-       "scene": {
-        "type": "tela",
-        "media": "dica50",
-        "url": "https://www.saucedemo.com/",
-        "gravar": true,
-        "acoes": [
-         {
-          "click": "#login-button"
-         }
-        ],
-        "titulo": "saucedemo.com",
-        "legenda": "Username is required",
-        "espera_inicio": 1000,
-        "espera_fim": 2200,
-        "delay_letra": 70
-       }
       },
       {
        "text": "Solução. O nome: desafio dois, campos vazios. E repara: nenhum fill. A pessoa não preencheu nada, então o teste também não preenche.",

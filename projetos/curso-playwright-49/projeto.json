@@ -117,7 +117,7 @@
        }
       },
       {
-       "text": "O teste: usuário certo, senha errada, e conferir a mensagem de erro. Pausa o vídeo e tenta fazer sozinho.",
+       "text": "O teste: usuário certo, senha errada, e conferir a mensagem de erro.",
        "scene": {
         "type": "desafio",
         "numero": "1",
@@ -138,10 +138,9 @@
           "#ffd23f"
          ]
         ],
-        "contagem": 5,
-        "legenda": "Pausa o vídeo e tenta"
-       },
-       "pausa": 6
+        "contagem": 0,
+        "legenda": "O desafio"
+       }
       },
       {
        "text": "Dica: a mensagem fica no data-test error, e contém do not match.",
@@ -278,6 +277,33 @@
         "digitar_de": 1,
         "digitar_ate": 6
        }
+      },
+      {
+       "text": "Agora sim: pausa o vídeo e tenta. Quando voltar, a solução.",
+       "scene": {
+        "type": "desafio",
+        "numero": "1",
+        "titulo": "Senha errada",
+        "itens": [
+         [
+          "👤",
+          "usuário certo: standard_user"
+         ],
+         [
+          "🔑",
+          "senha errada (qualquer uma)",
+          "#ff6b6b"
+         ],
+         [
+          "✓",
+          "confere a mensagem de erro",
+          "#ffd23f"
+         ]
+        ],
+        "contagem": 5,
+        "legenda": "Pausa o vídeo e tenta"
+       },
+       "pausa": 6
       },
       {
        "text": "Solução. O nome do teste diz o que ele confere: desafio um, senha errada mostra erro.",

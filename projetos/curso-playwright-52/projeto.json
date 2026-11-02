@@ -114,7 +114,7 @@
        }
       },
       {
-       "text": "Pausa e tenta.",
+       "text": "O teste: ordena do menor pro maior, e confere que o primeiro preço é o menor.",
        "scene": {
         "type": "desafio",
         "numero": "4",
@@ -130,10 +130,9 @@
           "#ffd23f"
          ]
         ],
-        "contagem": 5,
-        "legenda": "Pausa o vídeo e tenta"
-       },
-       "pausa": 6
+        "contagem": 0,
+        "legenda": "O desafio"
+       }
       },
       {
        "text": "Dica: a caixa de ordenar é um select, uma caixa de opções.",
@@ -271,6 +270,28 @@
        }
       },
       {
+       "text": "Agora sim: pausa o vídeo e tenta. Quando voltar, a solução.",
+       "scene": {
+        "type": "desafio",
+        "numero": "4",
+        "titulo": "Ordenar por preço",
+        "itens": [
+         [
+          "⇅",
+          "ordena do menor pro maior"
+         ],
+         [
+          "✓",
+          "o primeiro preço é o menor",
+          "#ffd23f"
+         ]
+        ],
+        "contagem": 5,
+        "legenda": "Pausa o vídeo e tenta"
+       },
+       "pausa": 6
+      },
+      {
        "text": "Solução. Na caixa de ordenar, select option lohi: do menor pro maior.",
        "scene": {
         "type": "editor",
@@ -319,20 +340,28 @@
        }
       },
       {
-       "text": "Conferir só o primeiro é o jeito mais simples. No módulo 14, você confere a lista inteira, e pega exatamente esse bug numa loja de verdade.",
+       "text": "Esse sete e noventa e nove é fixo porque o site de treino nunca muda os preços. Num sistema de verdade, preço muda, e esse teste quebraria. Aí o certo é conferir se a lista inteira está em ordem, sem número fixo. É isso que você faz no módulo 14.",
        "scene": {
-        "type": "bigtext",
-        "stagger": 0.25,
-        "lines": [
+        "type": "cards",
+        "titulo": "$7.99 É UM NÚMERO FIXO",
+        "itens": [
          [
-          "HOJE: O PRIMEIRO PREÇO",
-          "white",
-          100
+          "✓",
+          "Site de treino",
+          "o preço nunca muda",
+          "#3fd68a"
          ],
          [
-          "MÓDULO 14: A LISTA INTEIRA",
-          "gold",
-          110
+          "✗",
+          "Sistema de verdade",
+          "o preço mudou, o teste quebra",
+          "#ff6b6b"
+         ],
+         [
+          "⇅",
+          "Módulo 14",
+          "confere a lista inteira em ordem",
+          "#ffd23f"
          ]
         ]
        }

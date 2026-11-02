@@ -251,7 +251,7 @@
       ctx.save(); ctx.globalAlpha = a * k * 0.9; rr(ctx, x0, yy - lh * 0.42, W, lh * 0.84, 18 * u); ctx.fillStyle = C.win; ctx.fill(); ctx.fillStyle = cor || C.ac; ctx.fillRect(x0, yy - lh * 0.42, 8 * u, lh * 0.84); ctx.restore();
       txt(ctx, ic, font(800, 40 * u), x0 + 56 * u, yy, cor || C.ac, "center", a * k); txt(ctx, tx, caber(ctx, tx, 700, 40 * u, W - 140 * u), x0 + 104 * u, yy, C.txt, "left", a * k); });
     // contagem: anel que esvazia e o número no meio
-    const n = s.contagem || 5, t0 = s.contagem_em !== undefined ? s.contagem_em : Math.max(0.8, dur - n - 0.5), cx = c.W * 0.79, cy = c.H * 0.5, R = 170 * u; const kc = easeOut((t - t0 + 0.3) / 0.4);
+    const n = s.contagem || 5, t0 = s.contagem_em !== undefined ? s.contagem_em : Math.max(0.8, dur - n - 0.5), cx = c.W * 0.79, cy = c.H * 0.5, R = 170 * u; const kc = s.contagem === 0 ? 0 : easeOut((t - t0 + 0.3) / 0.4);
     if (kc > 0) { const el = clamp((t - t0) / n); const resta = Math.max(1, n - Math.floor(Math.max(0, t - t0)));
       ctx.save(); ctx.globalAlpha = a * kc; ctx.lineWidth = 18 * u; ctx.strokeStyle = "rgba(255,255,255,.08)"; ctx.beginPath(); ctx.arc(cx, cy, R, 0, 7); ctx.stroke();
       ctx.strokeStyle = el < 1 ? C.yel : C.ac; ctx.lineCap = "round"; ctx.beginPath(); ctx.arc(cx, cy, R, -Math.PI / 2, -Math.PI / 2 + Math.PI * 2 * (1 - el)); ctx.stroke(); ctx.restore();
