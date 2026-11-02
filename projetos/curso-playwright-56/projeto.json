@@ -78,7 +78,7 @@
      "chapter": "",
      "sentences": [
       {
-       "text": "Imagina que caiu uma tarefa nova: validar as preferências de um formulário.",
+       "text": "Imagina que caiu uma tarefa nova: validar as preferências de um formulário. Sabe aquelas caixinhas de aceito os termos e receber novidades por e-mail? E aquela lista pra escolher uma opção?",
        "scene": {
         "type": "bigtext",
         "stagger": 0.25,
@@ -98,77 +98,209 @@
        }
       },
       {
-       "text": "Abrindo a tela, tem duas coisas que a gente ainda não usou: a caixa de marcar e a lista de opções.",
+       "text": "No the internet tem uma tela pra cada uma. Na página inicial, clica em Checkboxes.",
        "scene": {
         "type": "tela",
-        "media": "n56_check",
+        "media": "n56_home",
+        "url": "https://the-internet.herokuapp.com",
+        "gravar": true,
+        "acoes": [
+         {
+          "espera": 900
+         },
+         {
+          "click": "a[href='/checkboxes']",
+          "espera": 1500
+         }
+        ],
+        "titulo": "the-internet.herokuapp.com",
+        "legenda": "Página inicial › Checkboxes",
+        "espera_inicio": 1000,
+        "espera_fim": 2000,
+        "delay_letra": 60
+       }
+      },
+      {
+       "text": "Olha a tela: duas caixinhas. A primeira vem desmarcada, a segunda vem marcada. Clicando, ela marca. Clicando de novo, desmarca.",
+       "scene": {
+        "type": "tela",
+        "media": "n56_check2",
         "url": "https://the-internet.herokuapp.com/checkboxes",
         "gravar": true,
         "acoes": [
          {
+          "espera": 1200
+         },
+         {
           "check": "#checkboxes input >> nth=0",
-          "espera": 900
+          "espera": 1300
          },
          {
           "uncheck": "#checkboxes input >> nth=0",
-          "espera": 900
+          "espera": 1300
          }
         ],
         "titulo": "the-internet.herokuapp.com",
-        "legenda": "A caixa de marcar: checkbox",
+        "legenda": "Clicou: marca · clicou de novo: desmarca",
         "espera_inicio": 1000,
         "espera_fim": 1600,
         "delay_letra": 60
        }
       },
       {
-       "text": "Pra marcar: ponto check. Pra desmarcar: ponto uncheck.",
+       "text": "Essa caixinha se chama checkbox, caixa de marcar. E o teste vai fazer o mesmo que a gente fez na mão: marcar a primeira, conferir que marcou, desmarcar, e conferir que desmarcou.",
+       "scene": {
+        "type": "cards",
+        "titulo": "O TESTE, EM PORTUGUÊS",
+        "itens": [
+         [
+          "1",
+          "Marca",
+          "a primeira: check"
+         ],
+         [
+          "2",
+          "Confere",
+          "marcada: expect",
+          "#69a7ff"
+         ],
+         [
+          "3",
+          "Desmarca",
+          "uncheck",
+          "#ffd23f"
+         ],
+         [
+          "4",
+          "Confere",
+          "desmarcada: expect",
+          "#3fd68a"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "No internet ponto spec, um teste novo: checkbox e dropdown. A primeira linha dentro dele abre a tela: page ponto goto, com o site e barra checkboxes.",
        "scene": {
         "type": "editor",
         "arquivo": "internet.spec.js",
-        "pastas": null,
-        "codigo": "import { test, expect } from '@playwright/test';\n\nconst site = 'https://the-internet.herokuapp.com';\n\ntest('checkbox e dropdown', async ({ page }) => {\n  await page.goto(`${site}/checkboxes`);\n  const primeira = page.getByRole('checkbox').first();\n  await primeira.check();",
-        "legenda": "check = marque",
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  pages/",
+         "  tests/",
+         "    compra.spec.js",
+         "    internet.spec.js",
+         "    login.spec.js",
+         "  .env",
+         "  playwright.config.js"
+        ],
+        "codigo": "import { test, expect } from '@playwright/test';\n\nconst site = 'https://the-internet.herokuapp.com';\n\ntest('checkbox e dropdown', async ({ page }) => {\n  await page.goto(`${site}/checkboxes`);",
+        "legenda": "O goto da tela Checkboxes",
         "fonte": 32,
         "digitar": true,
         "digitar_de": 5,
-        "digitar_ate": 8,
+        "digitar_ate": 6,
         "rolar": true,
-        "rolar_ate": 10,
+        "rolar_ate": 8,
         "rolar_de": 0.5,
         "rolar_dur": 1.2,
         "atrasa": true
        }
       },
       {
-       "text": "check, marque. uncheck, desmarque.",
+       "text": "Como achar a caixinha? Botão direito nela, e Inspecionar: é um input do tipo checkbox. E repara: ela não tem id, nem data-test.",
        "scene": {
-        "type": "traducao",
-        "codigo": "primeira.check()  ·  primeira.uncheck()",
-        "partes": [
-         [
-          ".check()",
-          "marque"
-         ],
-         [
-          ".uncheck()",
-          "desmarque"
-         ]
+        "type": "devtools",
+        "media": "dev56_chk",
+        "url": "https://the-internet.herokuapp.com/checkboxes",
+        "acoes": [],
+        "inspecionar": "#checkboxes input >> nth=0",
+        "titulo": "the-internet.herokuapp.com/checkboxes",
+        "attrs": [
+         "id",
+         "class",
+         "type",
+         "name"
         ],
-        "passo": 1.2
+        "realce": [
+         "type"
+        ],
+        "realce_em": 4.0,
+        "realce_rotulo": "type=\"checkbox\"",
+        "legenda": "Inspecionar: input type=\"checkbox\", sem id"
        }
       },
       {
-       "text": "Mas clicar não basta: a gente confere. to be checked, esteja marcada. E com o not na frente: não esteja marcada.",
+       "text": "Sem id, a gente procura pela função: get by role checkbox, as caixas de marcar. E como são duas, ponto first: a primeira.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "internet.spec.js",
+        "pastas": null,
+        "codigo": "import { test, expect } from '@playwright/test';\n\nconst site = 'https://the-internet.herokuapp.com';\n\ntest('checkbox e dropdown', async ({ page }) => {\n  await page.goto(`${site}/checkboxes`);\n  const primeira = page.getByRole('checkbox').first();",
+        "legenda": "A primeira caixa de marcar",
+        "fonte": 32,
+        "digitar": true,
+        "digitar_de": 7,
+        "digitar_ate": 7,
+        "rolar": true,
+        "rolar_ate": 9,
+        "rolar_de": 0.5,
+        "rolar_dur": 1.2,
+        "atrasa": true
+       }
+      },
+      {
+       "text": "Traduzindo: const primeira, guarde com o nome primeira. Get by role checkbox, as caixas de marcar. Ponto first, a primeira.",
+       "scene": {
+        "type": "traducao",
+        "codigo": "const primeira = page.getByRole('checkbox').first();",
+        "partes": [
+         [
+          "const primeira",
+          "guarde com o nome primeira"
+         ],
+         [
+          "getByRole('checkbox')",
+          "as caixas de marcar"
+         ],
+         [
+          ".first()",
+          "a primeira"
+         ]
+        ],
+        "passo": 1.8
+       }
+      },
+      {
+       "text": "Agora a ação: primeira ponto check. Check quer dizer marque. E não basta marcar: a gente confere. Expect primeira, to be checked: eu espero que a primeira esteja marcada.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "internet.spec.js",
+        "pastas": null,
+        "codigo": "import { test, expect } from '@playwright/test';\n\nconst site = 'https://the-internet.herokuapp.com';\n\ntest('checkbox e dropdown', async ({ page }) => {\n  await page.goto(`${site}/checkboxes`);\n  const primeira = page.getByRole('checkbox').first();\n  await primeira.check();\n  await expect(primeira).toBeChecked();",
+        "legenda": "check = marque · toBeChecked = esteja marcada",
+        "fonte": 32,
+        "digitar": true,
+        "digitar_de": 8,
+        "digitar_ate": 9,
+        "rolar": true,
+        "rolar_ate": 11,
+        "rolar_de": 0.5,
+        "rolar_dur": 1.2,
+        "atrasa": true
+       }
+      },
+      {
+       "text": "Depois, o contrário: uncheck, desmarque. E na conferência, o not na frente: eu espero que ela não esteja marcada.",
        "scene": {
         "type": "editor",
         "arquivo": "internet.spec.js",
         "pastas": null,
         "codigo": "import { test, expect } from '@playwright/test';\n\nconst site = 'https://the-internet.herokuapp.com';\n\ntest('checkbox e dropdown', async ({ page }) => {\n  await page.goto(`${site}/checkboxes`);\n  const primeira = page.getByRole('checkbox').first();\n  await primeira.check();\n  await expect(primeira).toBeChecked();\n  await primeira.uncheck();\n  await expect(primeira).not.toBeChecked();",
-        "legenda": "toBeChecked = esteja marcada",
+        "legenda": "uncheck = desmarque · not = não",
         "fonte": 32,
         "digitar": true,
-        "digitar_de": 9,
+        "digitar_de": 10,
         "digitar_ate": 11,
         "rolar": true,
         "rolar_ate": 13,
@@ -178,30 +310,56 @@
        }
       },
       {
-       "text": "Agora o segundo campo: aqui a pessoa escolhe uma opção. Você já viu isso no desafio quatro: select option.",
+       "text": "Agora a segunda parte da tarefa. Volta na página inicial e clica em Dropdown.",
        "scene": {
         "type": "tela",
-        "media": "n56_dropdown",
+        "media": "n56_home_dd",
+        "url": "https://the-internet.herokuapp.com",
+        "gravar": true,
+        "acoes": [
+         {
+          "espera": 900
+         },
+         {
+          "click": "a[href='/dropdown']",
+          "espera": 1500
+         }
+        ],
+        "titulo": "the-internet.herokuapp.com",
+        "legenda": "Página inicial › Dropdown",
+        "espera_inicio": 1000,
+        "espera_fim": 2000,
+        "delay_letra": 60
+       }
+      },
+      {
+       "text": "É uma caixa que abre uma lista: Option 1 e Option 2. A pessoa escolhe uma, e ela fica selecionada. Igual à caixa de ordenar do desafio quatro.",
+       "scene": {
+        "type": "tela",
+        "media": "n56_dd2",
         "url": "https://the-internet.herokuapp.com/dropdown",
         "gravar": true,
         "acoes": [
+         {
+          "espera": 1000
+         },
          {
           "select": [
            "#dropdown",
            "1"
           ],
-          "espera": 900
+          "espera": 1200
          },
          {
           "select": [
            "#dropdown",
            "2"
           ],
-          "espera": 900
+          "espera": 1200
          }
         ],
         "titulo": "the-internet.herokuapp.com",
-        "legenda": "A lista de opções: selectOption",
+        "legenda": "A lista de opções",
         "espera_inicio": 1000,
         "espera_fim": 1600,
         "delay_letra": 60
@@ -231,25 +389,35 @@
        }
       },
       {
-       "text": "E a conferência: to have value, tenha o valor dois.",
+       "text": "No teste, uma linha em branco pra separar, o goto da tela do dropdown, e const lista igual page ponto locator, cerquilha dropdown.",
        "scene": {
         "type": "editor",
         "arquivo": "internet.spec.js",
-        "pastas": [
-         "meu-primeiro-playwright",
-         "  pages/",
-         "  tests/",
-         "    compra.spec.js",
-         "    internet.spec.js",
-         "    login.spec.js",
-         "  .env",
-         "  playwright.config.js"
-        ],
-        "codigo": "import { test, expect } from '@playwright/test';\n\nconst site = 'https://the-internet.herokuapp.com';\n\ntest('checkbox e dropdown', async ({ page }) => {\n  await page.goto(`${site}/checkboxes`);\n  const primeira = page.getByRole('checkbox').first();\n  await primeira.check();\n  await expect(primeira).toBeChecked();\n  await primeira.uncheck();\n  await expect(primeira).not.toBeChecked();\n\n  await page.goto(`${site}/dropdown`);\n  const lista = page.locator('#dropdown');\n  await lista.selectOption('2');\n  await expect(lista).toHaveValue('2');\n});",
-        "legenda": "toHaveValue = tenha o valor",
+        "pastas": null,
+        "codigo": "import { test, expect } from '@playwright/test';\n\nconst site = 'https://the-internet.herokuapp.com';\n\ntest('checkbox e dropdown', async ({ page }) => {\n  await page.goto(`${site}/checkboxes`);\n  const primeira = page.getByRole('checkbox').first();\n  await primeira.check();\n  await expect(primeira).toBeChecked();\n  await primeira.uncheck();\n  await expect(primeira).not.toBeChecked();\n\n  await page.goto(`${site}/dropdown`);\n  const lista = page.locator('#dropdown');",
+        "legenda": "O goto do Dropdown e a lista",
         "fonte": 32,
         "digitar": true,
         "digitar_de": 13,
+        "digitar_ate": 14,
+        "rolar": true,
+        "rolar_ate": 16,
+        "rolar_de": 0.5,
+        "rolar_dur": 1.2,
+        "atrasa": true
+       }
+      },
+      {
+       "text": "A ação, com o select option do desafio quatro: escolha a opção dois. E a conferência: to have value, eu espero que a lista tenha o valor dois.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "internet.spec.js",
+        "pastas": null,
+        "codigo": "import { test, expect } from '@playwright/test';\n\nconst site = 'https://the-internet.herokuapp.com';\n\ntest('checkbox e dropdown', async ({ page }) => {\n  await page.goto(`${site}/checkboxes`);\n  const primeira = page.getByRole('checkbox').first();\n  await primeira.check();\n  await expect(primeira).toBeChecked();\n  await primeira.uncheck();\n  await expect(primeira).not.toBeChecked();\n\n  await page.goto(`${site}/dropdown`);\n  const lista = page.locator('#dropdown');\n  await lista.selectOption('2');\n  await expect(lista).toHaveValue('2');\n});",
+        "legenda": "selectOption = escolha · toHaveValue = tenha o valor",
+        "fonte": 32,
+        "digitar": true,
+        "digitar_de": 15,
         "digitar_ate": 16,
         "rolar": true,
         "rolar_ate": 19,
@@ -276,7 +444,7 @@
        }
       },
       {
-       "text": "Roda e olha.",
+       "text": "Roda e olha: marcou, desmarcou, e escolheu a opção dois. Passou.",
        "scene": {
         "type": "editor",
         "arquivo": "internet.spec.js",

@@ -98,7 +98,31 @@
        }
       },
       {
-       "text": "Vamos reproduzir: sem o mouse em cima, o nome está escondido. Com o mouse, ele aparece.",
+       "text": "Vamos reproduzir. Na página inicial, clica em Hovers.",
+       "scene": {
+        "type": "tela",
+        "media": "n61_home",
+        "url": "https://the-internet.herokuapp.com",
+        "gravar": true,
+        "acoes": [
+         {
+          "espera": 900
+         },
+         {
+          "click": "a[href='/hovers']",
+          "espera": 1500
+         }
+        ],
+        "titulo": "the-internet.herokuapp.com",
+        "legenda": "Página inicial › Hovers",
+        "espera_inicio": 1000,
+        "espera_fim": 2000,
+        "delay_letra": 60
+       },
+       "pausa": 2.5
+      },
+      {
+       "text": "Tem três fotos de usuário. Sem o mouse em cima, só a foto. Passando o mouse, aparece o nome embaixo: name user1.",
        "scene": {
         "type": "tela_cheia",
         "media": "n61_hover",
@@ -107,7 +131,7 @@
        }
       },
       {
-       "text": "No Playwright: hover. Passe o mouse por cima.",
+       "text": "Passar o mouse por cima, em inglês, é hover. E no Playwright, é exatamente esse o comando.",
        "scene": {
         "type": "traducao",
         "codigo": "await usuario.hover();",
@@ -122,6 +146,32 @@
          ]
         ],
         "passo": 1.0
+       }
+      },
+      {
+       "text": "O teste: conferir que o nome está escondido, passar o mouse na primeira foto, e conferir que o nome apareceu.",
+       "scene": {
+        "type": "cards",
+        "titulo": "O TESTE, EM PORTUGUÊS",
+        "itens": [
+         [
+          "1",
+          "Confere",
+          "nome escondido"
+         ],
+         [
+          "2",
+          "Hover",
+          "passa o mouse",
+          "#69a7ff"
+         ],
+         [
+          "3",
+          "Confere",
+          "nome visível",
+          "#ffd23f"
+         ]
+        ]
        }
       },
       {
@@ -148,6 +198,36 @@
        }
       },
       {
+       "text": "Um teste novo, hover, com o goto da tela hovers. Depois, const usuario: o ponto figure, ponto first, a primeira foto. E const nome: dentro dela, o texto name user1.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "internet.spec.js",
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  arquivos/",
+         "    exemplo.txt",
+         "  pages/",
+         "  tests/",
+         "    compra.spec.js",
+         "    internet.spec.js",
+         "    login.spec.js",
+         "  .env",
+         "  playwright.config.js"
+        ],
+        "codigo": "import { test, expect } from '@playwright/test';\n\nconst site = 'https://the-internet.herokuapp.com';\n\ntest('checkbox e dropdown', async ({ page }) => {\n  await page.goto(`${site}/checkboxes`);\n  const primeira = page.getByRole('checkbox').first();\n  await primeira.check();\n  await expect(primeira).toBeChecked();\n  await primeira.uncheck();\n  await expect(primeira).not.toBeChecked();\n\n  await page.goto(`${site}/dropdown`);\n  const lista = page.locator('#dropdown');\n  await lista.selectOption('2');\n  await expect(lista).toHaveValue('2');\n});\n\ntest('upload de arquivo', async ({ page }) => {\n  await page.goto(`${site}/upload`);\n  await page.locator('#file-upload')\n    .setInputFiles('arquivos/exemplo.txt');\n  await page.locator('#file-submit').click();\n  await expect(page.locator('#uploaded-files'))\n    .toContainText('exemplo.txt');\n});\n\ntest('alerta do navegador', async ({ page }) => {\n  await page.goto(`${site}/javascript_alerts`);\n  page.on('dialog', async (dialog) => {\n    await dialog.accept();\n  });\n  await page.getByRole('button', { name: 'Click for JS Alert' })\n    .click();\n  await expect(page.locator('#result'))\n    .toHaveText('You successfully clicked an alert');\n});\n\ntest('nova aba', async ({ page }) => {\n  await page.goto(`${site}/windows`);\n  const promessa = page.waitForEvent('popup');\n  await page.getByRole('link', { name: 'Click Here' }).click();\n  const novaAba = await promessa;\n  const titulo = novaAba.getByRole('heading', { name: 'New Window' });\n  await expect(titulo).toBeVisible();\n});\n\ntest('iframe', async ({ page }) => {\n  await page.goto(`${site}/iframe`);\n  const editor = page.frameLocator('#mce_0_ifr');\n  await expect(editor.locator('body'))\n    .toContainText('Your content goes here.');\n});\n\ntest('hover', async ({ page }) => {\n  await page.goto(`${site}/hovers`);\n  const usuario = page.locator('.figure').first();\n  const nome = usuario.getByText('name: user1');",
+        "legenda": "A primeira foto e o nome dela",
+        "fonte": 32,
+        "digitar": true,
+        "digitar_de": 55,
+        "digitar_ate": 58,
+        "rolar": true,
+        "rolar_ate": 60,
+        "rolar_de": 0.5,
+        "rolar_dur": 1.2,
+        "atrasa": true
+       }
+      },
+      {
        "text": "Antes do hover: not to be visible. Depois do hover: to be visible. Assim a gente testa o comportamento, não só roda um comando.",
        "scene": {
         "type": "editor",
@@ -168,7 +248,7 @@
         "legenda": "Antes escondido · depois visível",
         "fonte": 32,
         "digitar": true,
-        "digitar_de": 55,
+        "digitar_de": 59,
         "digitar_ate": 61,
         "rolar": true,
         "rolar_ate": 64,

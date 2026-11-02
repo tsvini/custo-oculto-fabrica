@@ -366,7 +366,7 @@ aula(71, "O mesmo sistema, três ambientes", [
      inteiro(ed(CFG71, "baseURL lê uma variável", "playwright.config.js", linha0=L_BASE - 1, pastas=None, trocar=[[2, "    baseURL: 'https://www.saucedemo.com',", None, 3.0]]), CFG.split("\n")[:L_BASE - 2], CFG.split("\n")[L_BASE + 1:])),
     ("Traduzindo: se existir a variável BASE URL, use ela. Os dois risquinhos querem dizer senão. Senão, use o saucedemo.",
      tr("baseURL: process.env.BASE_URL || 'https://www.saucedemo.com'", [["process.env.BASE_URL", "se existir a variável, use ela"], ["||", "senão"], ["'https://www.saucedemo.com'", "use este"]], 1.8)),
-    ("Na sua máquina, você escolhe o ambiente na hora de rodar. No Windows, no terminal do VS Code, é assim. E no Mac e no Linux, assim.",
+    ("Na sua máquina, você escolhe o ambiente na hora de rodar: a variável com o endereço, e o comando de sempre. No Windows, no terminal do VS Code, a linha começa com dólar env dois pontos. No Mac e no Linux, é só a variável na frente do comando.",
      trl("ESCOLHENDO O AMBIENTE NA HORA", [["$env:BASE_URL=\"https://homologacao.loja.com\"; npx playwright test", "Windows"], ["BASE_URL=https://homologacao.loja.com npx playwright test", "Mac e Linux"]])),
     ("Ou coloca no ponto env, igual o usuário e a senha. E no GitHub Actions: no yml, no env do passo que roda os testes, uma linha nova, BASE underline URL, com o endereço. O teste continua exatamente igual.",
      ed(YML71, "No GitHub: a variável no yml", "playwright.yml", de=4, ate=4, pastas=None)),

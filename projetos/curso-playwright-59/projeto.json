@@ -80,6 +80,49 @@
       {
        "text": "Imagina: você clica pra ver os detalhes de um pedido, e eles abrem em outra aba. E o teste continua olhando a aba antiga.",
        "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "NOVA TAREFA",
+          "muted",
+          70
+         ],
+         [
+          "“Os detalhes abrem em outra aba”",
+          "white",
+          78
+         ]
+        ],
+        "entre": 1.3
+       }
+      },
+      {
+       "text": "No the internet, essa tela é a Multiple Windows. Na página inicial, clica nela.",
+       "scene": {
+        "type": "tela",
+        "media": "n59_home",
+        "url": "https://the-internet.herokuapp.com",
+        "gravar": true,
+        "acoes": [
+         {
+          "espera": 900
+         },
+         {
+          "click": "a[href='/windows']",
+          "espera": 1500
+         }
+        ],
+        "titulo": "the-internet.herokuapp.com",
+        "legenda": "Página inicial › Multiple Windows",
+        "espera_inicio": 1000,
+        "espera_fim": 2000,
+        "delay_letra": 60
+       }
+      },
+      {
+       "text": "Tem um link: Click Here. Clicando, abre uma aba nova, escrito New Window.",
+       "scene": {
         "type": "tela_cheia",
         "media": "n59_aba",
         "legenda": "Click Here abre outra aba",
@@ -87,7 +130,7 @@
        }
       },
       {
-       "text": "Então a gente precisa pegar a aba nova quando ela abrir.",
+       "text": "O problema: o page é a aba que o teste abriu. A aba nova é outra. Se o teste continuar olhando o page, ele nunca vê o New Window.",
        "scene": {
         "type": "cards",
         "itens": [
@@ -98,7 +141,7 @@
          ],
          [
           "👀",
-          "O teste olha a antiga",
+          "O page olha a antiga",
           "",
           "#ff6b6b"
          ],
@@ -112,7 +155,69 @@
        }
       },
       {
-       "text": "Primeiro, o aviso: const promessa igual page ponto wait for event, popup.",
+       "text": "O teste: avisar que uma aba nova vai abrir, clicar no link, pegar a aba nova, e conferir o título dela.",
+       "scene": {
+        "type": "cards",
+        "titulo": "O TESTE, EM PORTUGUÊS",
+        "itens": [
+         [
+          "1",
+          "Avisa",
+          "vai abrir uma aba"
+         ],
+         [
+          "2",
+          "Clica",
+          "no link",
+          "#69a7ff"
+         ],
+         [
+          "3",
+          "Pega",
+          "a aba nova",
+          "#ffd23f"
+         ],
+         [
+          "4",
+          "Confere",
+          "o título",
+          "#3fd68a"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Um teste novo, nova aba, com o goto da tela windows.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "internet.spec.js",
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  arquivos/",
+         "    exemplo.txt",
+         "  pages/",
+         "  tests/",
+         "    compra.spec.js",
+         "    internet.spec.js",
+         "    login.spec.js",
+         "  .env",
+         "  playwright.config.js"
+        ],
+        "codigo": "import { test, expect } from '@playwright/test';\n\nconst site = 'https://the-internet.herokuapp.com';\n\ntest('checkbox e dropdown', async ({ page }) => {\n  await page.goto(`${site}/checkboxes`);\n  const primeira = page.getByRole('checkbox').first();\n  await primeira.check();\n  await expect(primeira).toBeChecked();\n  await primeira.uncheck();\n  await expect(primeira).not.toBeChecked();\n\n  await page.goto(`${site}/dropdown`);\n  const lista = page.locator('#dropdown');\n  await lista.selectOption('2');\n  await expect(lista).toHaveValue('2');\n});\n\ntest('upload de arquivo', async ({ page }) => {\n  await page.goto(`${site}/upload`);\n  await page.locator('#file-upload')\n    .setInputFiles('arquivos/exemplo.txt');\n  await page.locator('#file-submit').click();\n  await expect(page.locator('#uploaded-files'))\n    .toContainText('exemplo.txt');\n});\n\ntest('alerta do navegador', async ({ page }) => {\n  await page.goto(`${site}/javascript_alerts`);\n  page.on('dialog', async (dialog) => {\n    await dialog.accept();\n  });\n  await page.getByRole('button', { name: 'Click for JS Alert' })\n    .click();\n  await expect(page.locator('#result'))\n    .toHaveText('You successfully clicked an alert');\n});\n\ntest('nova aba', async ({ page }) => {\n  await page.goto(`${site}/windows`);",
+        "legenda": "O goto da tela windows",
+        "fonte": 32,
+        "digitar": true,
+        "digitar_de": 39,
+        "digitar_ate": 40,
+        "rolar": true,
+        "rolar_ate": 42,
+        "rolar_de": 0.5,
+        "rolar_dur": 1.2,
+        "atrasa": true
+       }
+      },
+      {
+       "text": "Primeiro, o aviso: const promessa igual page ponto wait for event, popup. Popup é o nome que o Playwright dá pra uma aba ou janela nova.",
        "scene": {
         "type": "editor",
         "arquivo": "internet.spec.js",
@@ -132,7 +237,7 @@
         "legenda": "waitForEvent('popup') = espere uma nova aba",
         "fonte": 32,
         "digitar": true,
-        "digitar_de": 39,
+        "digitar_de": 41,
         "digitar_ate": 41,
         "rolar": true,
         "rolar_ate": 43,
@@ -186,7 +291,7 @@
        }
       },
       {
-       "text": "Depois clica no link. E aí: const novaAba igual await promessa. Guarde a aba que abriu.",
+       "text": "Agora o clique: get by role link, um link com o nome Click Here. E aí: const nova aba igual await promessa. O await espera a aba abrir, e guarda ela com o nome nova aba.",
        "scene": {
         "type": "editor",
         "arquivo": "internet.spec.js",
@@ -205,12 +310,12 @@
        }
       },
       {
-       "text": "A partir daí, você usa a nova aba igual ao page: confere que ela mostra New Window.",
+       "text": "A partir daí, a nova aba funciona igual ao page. Nela, o título New Window, com get by role heading. Heading é título. E confere que ele está visível.",
        "scene": {
         "type": "editor",
         "arquivo": "internet.spec.js",
         "codigo": "import { test, expect } from '@playwright/test';\n\nconst site = 'https://the-internet.herokuapp.com';\n\ntest('checkbox e dropdown', async ({ page }) => {\n  await page.goto(`${site}/checkboxes`);\n  const primeira = page.getByRole('checkbox').first();\n  await primeira.check();\n  await expect(primeira).toBeChecked();\n  await primeira.uncheck();\n  await expect(primeira).not.toBeChecked();\n\n  await page.goto(`${site}/dropdown`);\n  const lista = page.locator('#dropdown');\n  await lista.selectOption('2');\n  await expect(lista).toHaveValue('2');\n});\n\ntest('upload de arquivo', async ({ page }) => {\n  await page.goto(`${site}/upload`);\n  await page.locator('#file-upload')\n    .setInputFiles('arquivos/exemplo.txt');\n  await page.locator('#file-submit').click();\n  await expect(page.locator('#uploaded-files'))\n    .toContainText('exemplo.txt');\n});\n\ntest('alerta do navegador', async ({ page }) => {\n  await page.goto(`${site}/javascript_alerts`);\n  page.on('dialog', async (dialog) => {\n    await dialog.accept();\n  });\n  await page.getByRole('button', { name: 'Click for JS Alert' })\n    .click();\n  await expect(page.locator('#result'))\n    .toHaveText('You successfully clicked an alert');\n});\n\ntest('nova aba', async ({ page }) => {\n  await page.goto(`${site}/windows`);\n  const promessa = page.waitForEvent('popup');\n  await page.getByRole('link', { name: 'Click Here' }).click();\n  const novaAba = await promessa;\n  const titulo = novaAba.getByRole('heading', { name: 'New Window' });\n  await expect(titulo).toBeVisible();\n});",
-        "legenda": "novaAba funciona igual ao page",
+        "legenda": "heading = título",
         "fonte": 28,
         "digitar": true,
         "pastas": null,

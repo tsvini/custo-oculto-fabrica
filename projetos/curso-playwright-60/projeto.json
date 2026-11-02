@@ -78,7 +78,35 @@
      "chapter": "",
      "sentences": [
       {
-       "text": "Olha essa tela: tem um editor de texto no meio. Só que o seletor normal não acha nada lá dentro.",
+       "text": "Na página inicial, clica em Frames. E depois, em iFrame.",
+       "scene": {
+        "type": "tela",
+        "media": "n60_home",
+        "url": "https://the-internet.herokuapp.com",
+        "gravar": true,
+        "acoes": [
+         {
+          "espera": 900
+         },
+         {
+          "click": "a[href='/frames']",
+          "espera": 1300
+         },
+         {
+          "click": "a[href='/iframe']",
+          "espera": 1600
+         }
+        ],
+        "titulo": "the-internet.herokuapp.com",
+        "legenda": "Página inicial › Frames › iFrame",
+        "espera_inicio": 1000,
+        "espera_fim": 2000,
+        "delay_letra": 60
+       },
+       "pausa": 2.5
+      },
+      {
+       "text": "Olha essa tela: um editor de texto no meio, escrito Your content goes here. Só que, se você procurar esse texto do jeito normal, o Playwright não acha nada.",
        "scene": {
         "type": "tela",
         "media": "n60_iframe",
@@ -93,7 +121,7 @@
        }
       },
       {
-       "text": "Por quê? Porque aquele pedaço é outra página, encaixada nesta. Isso se chama iframe.",
+       "text": "Por quê? Porque aquele quadro é outra página, encaixada dentro desta, como uma janelinha. Isso se chama iframe. E o Playwright só procura lá dentro se você mandar.",
        "scene": {
         "type": "cards",
         "titulo": "IFRAME",
@@ -142,7 +170,62 @@
        }
       },
       {
-       "text": "Primeiro, você diz em qual quadro procurar: frame locator.",
+       "text": "A lógica: entrar no iframe, procurar o elemento, conferir.",
+       "scene": {
+        "type": "cards",
+        "itens": [
+         [
+          "1",
+          "Entra no iframe",
+          "frameLocator"
+         ],
+         [
+          "2",
+          "Procura",
+          "o elemento",
+          "#69a7ff"
+         ],
+         [
+          "3",
+          "Confere",
+          "expect",
+          "#3fd68a"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Um teste novo, iframe, com o goto da tela iframe.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "internet.spec.js",
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  arquivos/",
+         "    exemplo.txt",
+         "  pages/",
+         "  tests/",
+         "    compra.spec.js",
+         "    internet.spec.js",
+         "    login.spec.js",
+         "  .env",
+         "  playwright.config.js"
+        ],
+        "codigo": "import { test, expect } from '@playwright/test';\n\nconst site = 'https://the-internet.herokuapp.com';\n\ntest('checkbox e dropdown', async ({ page }) => {\n  await page.goto(`${site}/checkboxes`);\n  const primeira = page.getByRole('checkbox').first();\n  await primeira.check();\n  await expect(primeira).toBeChecked();\n  await primeira.uncheck();\n  await expect(primeira).not.toBeChecked();\n\n  await page.goto(`${site}/dropdown`);\n  const lista = page.locator('#dropdown');\n  await lista.selectOption('2');\n  await expect(lista).toHaveValue('2');\n});\n\ntest('upload de arquivo', async ({ page }) => {\n  await page.goto(`${site}/upload`);\n  await page.locator('#file-upload')\n    .setInputFiles('arquivos/exemplo.txt');\n  await page.locator('#file-submit').click();\n  await expect(page.locator('#uploaded-files'))\n    .toContainText('exemplo.txt');\n});\n\ntest('alerta do navegador', async ({ page }) => {\n  await page.goto(`${site}/javascript_alerts`);\n  page.on('dialog', async (dialog) => {\n    await dialog.accept();\n  });\n  await page.getByRole('button', { name: 'Click for JS Alert' })\n    .click();\n  await expect(page.locator('#result'))\n    .toHaveText('You successfully clicked an alert');\n});\n\ntest('nova aba', async ({ page }) => {\n  await page.goto(`${site}/windows`);\n  const promessa = page.waitForEvent('popup');\n  await page.getByRole('link', { name: 'Click Here' }).click();\n  const novaAba = await promessa;\n  const titulo = novaAba.getByRole('heading', { name: 'New Window' });\n  await expect(titulo).toBeVisible();\n});\n\ntest('iframe', async ({ page }) => {\n  await page.goto(`${site}/iframe`);",
+        "legenda": "O goto da tela iframe",
+        "fonte": 32,
+        "digitar": true,
+        "digitar_de": 48,
+        "digitar_ate": 49,
+        "rolar": true,
+        "rolar_ate": 51,
+        "rolar_de": 0.5,
+        "rolar_dur": 1.2,
+        "atrasa": true
+       }
+      },
+      {
+       "text": "Agora, você diz em qual quadro procurar: const editor igual page ponto frame locator, e o id do iframe, com a cerquilha.",
        "scene": {
         "type": "editor",
         "arquivo": "internet.spec.js",
@@ -162,7 +245,7 @@
         "legenda": "frameLocator = procure dentro deste quadro",
         "fonte": 32,
         "digitar": true,
-        "digitar_de": 48,
+        "digitar_de": 50,
         "digitar_ate": 50,
         "rolar": true,
         "rolar_ate": 52,
@@ -190,24 +273,7 @@
        }
       },
       {
-       "text": "O frame locator recebe o seletor do iframe. Aqui, o id dele. E daí pra frente, tudo o que você procura é lá dentro.",
-       "scene": {
-        "type": "traducao",
-        "titulo": "ENTRANDO NO QUADRO",
-        "linhas": [
-         [
-          "frameLocator('#mce_0_ifr')",
-          "este quadro, pelo id"
-         ],
-         [
-          "getByText('...')",
-          "procure lá dentro"
-         ]
-        ]
-       }
-      },
-      {
-       "text": "Depois, procura normalmente lá dentro, e confere o texto do editor.",
+       "text": "Lá dentro, o body. Body é o corpo da página, onde fica o texto. E a conferência: contém Your content goes here.",
        "scene": {
         "type": "editor",
         "arquivo": "internet.spec.js",
@@ -224,7 +290,7 @@
          "  playwright.config.js"
         ],
         "codigo": "import { test, expect } from '@playwright/test';\n\nconst site = 'https://the-internet.herokuapp.com';\n\ntest('checkbox e dropdown', async ({ page }) => {\n  await page.goto(`${site}/checkboxes`);\n  const primeira = page.getByRole('checkbox').first();\n  await primeira.check();\n  await expect(primeira).toBeChecked();\n  await primeira.uncheck();\n  await expect(primeira).not.toBeChecked();\n\n  await page.goto(`${site}/dropdown`);\n  const lista = page.locator('#dropdown');\n  await lista.selectOption('2');\n  await expect(lista).toHaveValue('2');\n});\n\ntest('upload de arquivo', async ({ page }) => {\n  await page.goto(`${site}/upload`);\n  await page.locator('#file-upload')\n    .setInputFiles('arquivos/exemplo.txt');\n  await page.locator('#file-submit').click();\n  await expect(page.locator('#uploaded-files'))\n    .toContainText('exemplo.txt');\n});\n\ntest('alerta do navegador', async ({ page }) => {\n  await page.goto(`${site}/javascript_alerts`);\n  page.on('dialog', async (dialog) => {\n    await dialog.accept();\n  });\n  await page.getByRole('button', { name: 'Click for JS Alert' })\n    .click();\n  await expect(page.locator('#result'))\n    .toHaveText('You successfully clicked an alert');\n});\n\ntest('nova aba', async ({ page }) => {\n  await page.goto(`${site}/windows`);\n  const promessa = page.waitForEvent('popup');\n  await page.getByRole('link', { name: 'Click Here' }).click();\n  const novaAba = await promessa;\n  const titulo = novaAba.getByRole('heading', { name: 'New Window' });\n  await expect(titulo).toBeVisible();\n});\n\ntest('iframe', async ({ page }) => {\n  await page.goto(`${site}/iframe`);\n  const editor = page.frameLocator('#mce_0_ifr');\n  await expect(editor.locator('body'))\n    .toContainText('Your content goes here.');\n});",
-        "legenda": "Lá dentro, igual a sempre",
+        "legenda": "body = o corpo da página de dentro",
         "fonte": 32,
         "digitar": true,
         "digitar_de": 51,
@@ -237,28 +303,21 @@
        }
       },
       {
-       "text": "A lógica: entrar no iframe, procurar o elemento, conferir.",
+       "text": "Traduzindo: editor locator body, o corpo da página de dentro do quadro. To contain text, contém este texto.",
        "scene": {
-        "type": "cards",
-        "itens": [
+        "type": "traducao",
+        "codigo": "editor.locator('body')  ·  toContainText(...)",
+        "partes": [
          [
-          "1",
-          "Entra no iframe",
-          "frameLocator"
+          "editor.locator('body')",
+          "o corpo da página de dentro"
          ],
          [
-          "2",
-          "Procura",
-          "o elemento",
-          "#69a7ff"
-         ],
-         [
-          "3",
-          "Confere",
-          "expect",
-          "#3fd68a"
+          "toContainText",
+          "contém este texto"
          ]
-        ]
+        ],
+        "passo": 1.6
        }
       },
       {

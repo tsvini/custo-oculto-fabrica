@@ -123,7 +123,7 @@
 1. No trabalho, o mesmo sistema existe em vários endereços: o de desenvolvimento, o de homologação, onde o time testa antes de lançar, e o de produção, o de verdade, que o cliente usa. [cards]
 2. E a gente não quer mexer no código toda vez que muda de ambiente. Então, na linha do baseURL, antes do endereço, escreve process ponto env ponto BASE underline URL e dois risquinhos. O endereço continua lá, no fim da linha. [editor]
 3. Traduzindo: se existir a variável BASE URL, use ela. Os dois risquinhos querem dizer senão. Senão, use o saucedemo. [traducao]
-4. Na sua máquina, você escolhe o ambiente na hora de rodar. No Windows, no terminal do VS Code, é assim. E no Mac e no Linux, assim. [traducao]
+4. Na sua máquina, você escolhe o ambiente na hora de rodar: a variável com o endereço, e o comando de sempre. No Windows, no terminal do VS Code, a linha começa com dólar env dois pontos. No Mac e no Linux, é só a variável na frente do comando. [traducao]
 5. Ou coloca no ponto env, igual o usuário e a senha. E no GitHub Actions: no yml, no env do passo que roda os testes, uma linha nova, BASE underline URL, com o endereço. O teste continua exatamente igual. [editor]
 6. E uma regra de ouro: cuidado ao rodar testes em produção. Teste que cria pedido, apaga dado ou manda e-mail não pode rodar no site que o cliente usa. [cards]
 7. Te vejo na próxima! [endcard]

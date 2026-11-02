@@ -4,8 +4,9 @@
 1. Se você já usou Cypress, várias ideias vão parecer familiares. Mas não pense no Playwright como uma simples troca de comandos. [bigtext]
 2. Algumas aproximações ajudam: cy ponto visit lembra page ponto goto. cy ponto contains lembra get by text. should lembra expect. [traducao]
 3. Mas o modelo muda. No Playwright você escreve await em cada passo, e os seletores são objetos que você guarda e reaproveita. [bloco_vs]
-4. As duas ferramentas resolvem problemas parecidos, com abordagens diferentes. Saber as duas te deixa mais forte no mercado. [bigtext]
-5. Te vejo na próxima! [endcard]
+4. E tem coisas que ficam bem diferentes. A aba nova da aula cinquenta e nove: no Playwright é natural, e no Cypress é bem mais difícil. E o WebKit, o motor do Safari: no Playwright ele já vem junto com o Chrome e o Firefox, e no Cypress ainda é experimental. [traducao]
+5. As duas ferramentas resolvem problemas parecidos, com abordagens diferentes. Saber as duas te deixa mais forte no mercado. [bigtext]
+6. Te vejo na próxima! [endcard]
 
 ## Aula 82: O seu projeto no currículo e na entrevista
 1. Agora você tem um projeto de automação. Vamos colocar isso no seu currículo do jeito certo. [bigtext]

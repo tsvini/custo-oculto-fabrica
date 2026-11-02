@@ -151,7 +151,7 @@
        }
       },
       {
-       "text": "Na sua máquina, você escolhe o ambiente na hora de rodar. No Windows, no terminal do VS Code, é assim. E no Mac e no Linux, assim.",
+       "text": "Na sua máquina, você escolhe o ambiente na hora de rodar: a variável com o endereço, e o comando de sempre. No Windows, no terminal do VS Code, a linha começa com dólar env dois pontos. No Mac e no Linux, é só a variável na frente do comando.",
        "scene": {
         "type": "traducao",
         "titulo": "ESCOLHENDO O AMBIENTE NA HORA",

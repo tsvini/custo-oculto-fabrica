@@ -78,7 +78,30 @@
      "chapter": "",
      "sentences": [
       {
-       "text": "Agora aconteceu uma coisa diferente: clicamos num botão e o navegador abriu essa caixa.",
+       "text": "Agora, uma coisa diferente. Na página inicial, clica em JavaScript Alerts.",
+       "scene": {
+        "type": "tela",
+        "media": "n58_home",
+        "url": "https://the-internet.herokuapp.com",
+        "gravar": true,
+        "acoes": [
+         {
+          "espera": 900
+         },
+         {
+          "click": "a[href='/javascript_alerts']",
+          "espera": 1500
+         }
+        ],
+        "titulo": "the-internet.herokuapp.com",
+        "legenda": "Página inicial › JavaScript Alerts",
+        "espera_inicio": 1000,
+        "espera_fim": 2000,
+        "delay_letra": 60
+       }
+      },
+      {
+       "text": "Clica no primeiro botão, Click for JS Alert: o navegador abriu essa caixa, com um OK.",
        "scene": {
         "type": "tela_cheia",
         "media": "n58_alerta",
@@ -87,7 +110,7 @@
        }
       },
       {
-       "text": "Enquanto ela está aberta, não dá pra usar a página. Isso é um alerta do navegador, um dialog.",
+       "text": "Enquanto ela está aberta, não dá pra usar a página: alguém tem que clicar em OK. Isso é um alerta do navegador, e no Playwright ele se chama dialog.",
        "scene": {
         "type": "cards",
         "titulo": "DIALOG",
@@ -107,7 +130,90 @@
        }
       },
       {
-       "text": "Um teste novo, alerta do navegador, que abre a página dos alertas. E antes de clicar, a gente prepara o Playwright: page ponto on, dialog, e dialog ponto accept.",
+       "text": "Depois do OK, aparece uma mensagem embaixo. No Inspecionar: um parágrafo, com id igual result.",
+       "scene": {
+        "type": "devtools",
+        "media": "dev58",
+        "url": "https://the-internet.herokuapp.com/javascript_alerts",
+        "acoes": [
+         {
+          "click": "button:has-text('Click for JS Alert')"
+         }
+        ],
+        "inspecionar": "#result",
+        "titulo": "the-internet.herokuapp.com/javascript_alerts",
+        "attrs": [
+         "id",
+         "class",
+         "type",
+         "name"
+        ],
+        "realce": [
+         "id"
+        ],
+        "realce_em": 4.0,
+        "realce_rotulo": "#result",
+        "legenda": "Inspecionar: id=\"result\""
+       }
+      },
+      {
+       "text": "O teste: avisar o Playwright pra clicar em OK quando o alerta aparecer, clicar no botão, e conferir a mensagem.",
+       "scene": {
+        "type": "cards",
+        "titulo": "O TESTE, EM PORTUGUÊS",
+        "itens": [
+         [
+          "1",
+          "Avisa",
+          "alerta? clica em OK"
+         ],
+         [
+          "2",
+          "Clica",
+          "no botão",
+          "#69a7ff"
+         ],
+         [
+          "3",
+          "Confere",
+          "a mensagem",
+          "#ffd23f"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Um teste novo, alerta do navegador, com o goto da tela de alertas.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "internet.spec.js",
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  arquivos/",
+         "    exemplo.txt",
+         "  pages/",
+         "  tests/",
+         "    compra.spec.js",
+         "    internet.spec.js",
+         "    login.spec.js",
+         "  .env",
+         "  playwright.config.js"
+        ],
+        "codigo": "import { test, expect } from '@playwright/test';\n\nconst site = 'https://the-internet.herokuapp.com';\n\ntest('checkbox e dropdown', async ({ page }) => {\n  await page.goto(`${site}/checkboxes`);\n  const primeira = page.getByRole('checkbox').first();\n  await primeira.check();\n  await expect(primeira).toBeChecked();\n  await primeira.uncheck();\n  await expect(primeira).not.toBeChecked();\n\n  await page.goto(`${site}/dropdown`);\n  const lista = page.locator('#dropdown');\n  await lista.selectOption('2');\n  await expect(lista).toHaveValue('2');\n});\n\ntest('upload de arquivo', async ({ page }) => {\n  await page.goto(`${site}/upload`);\n  await page.locator('#file-upload')\n    .setInputFiles('arquivos/exemplo.txt');\n  await page.locator('#file-submit').click();\n  await expect(page.locator('#uploaded-files'))\n    .toContainText('exemplo.txt');\n});\n\ntest('alerta do navegador', async ({ page }) => {\n  await page.goto(`${site}/javascript_alerts`);",
+        "legenda": "O goto da tela de alertas",
+        "fonte": 32,
+        "digitar": true,
+        "digitar_de": 28,
+        "digitar_ate": 29,
+        "rolar": true,
+        "rolar_ate": 31,
+        "rolar_de": 0.5,
+        "rolar_dur": 1.2,
+        "atrasa": true
+       }
+      },
+      {
+       "text": "Agora a parte nova. Antes de clicar, a gente prepara o Playwright: page ponto on, entre aspas dialog, e uma função que recebe o dialog e faz dialog ponto accept.",
        "scene": {
         "type": "editor",
         "arquivo": "internet.spec.js",
@@ -127,7 +233,7 @@
         "legenda": "page.on('dialog') = quando aparecer um alerta",
         "fonte": 32,
         "digitar": true,
-        "digitar_de": 28,
+        "digitar_de": 30,
         "digitar_ate": 32,
         "rolar": true,
         "rolar_ate": 34,
@@ -137,7 +243,7 @@
        }
       },
       {
-       "text": "Quando aparecer um alerta, aceite.",
+       "text": "Traduzindo: page on dialog, quando aparecer um alerta. Dialog accept, clique em OK.",
        "scene": {
         "type": "traducao",
         "codigo": "page.on('dialog', ... dialog.accept())",
@@ -148,14 +254,14 @@
          ],
          [
           "dialog.accept()",
-          "aceite"
+          "clique em OK"
          ]
         ],
-        "passo": 1.0
+        "passo": 1.6
        }
       },
       {
-       "text": "A ordem é importante: primeiro prepara, depois clica. Se você tentar reagir só depois, o alerta já passou.",
+       "text": "A ordem é importante: primeiro prepara, depois clica. É como deixar um recado: quando o alerta chegar, clica em OK.",
        "scene": {
         "type": "cards",
         "titulo": "A ORDEM",
@@ -187,40 +293,13 @@
        }
       },
       {
-       "text": "A mensagem aparece embaixo, num parágrafo: botão direito, Inspecionar. Id igual result.",
-       "scene": {
-        "type": "devtools",
-        "media": "dev58",
-        "url": "https://the-internet.herokuapp.com/javascript_alerts",
-        "acoes": [
-         {
-          "click": "button:has-text('Click for JS Alert')"
-         }
-        ],
-        "inspecionar": "#result",
-        "titulo": "the-internet.herokuapp.com/javascript_alerts",
-        "attrs": [
-         "id",
-         "class",
-         "type",
-         "name"
-        ],
-        "realce": [
-         "id"
-        ],
-        "realce_em": 4.0,
-        "realce_rotulo": "#result",
-        "legenda": "Inspecionar: id=\"result\""
-       }
-      },
-      {
-       "text": "No fim, confere a mensagem: You successfully clicked an alert.",
+       "text": "Agora sim, o clique: get by role button, um botão com o nome Click for JS Alert. E a conferência: o result tem o texto You successfully clicked an alert.",
        "scene": {
         "type": "editor",
         "arquivo": "internet.spec.js",
         "pastas": null,
         "codigo": "import { test, expect } from '@playwright/test';\n\nconst site = 'https://the-internet.herokuapp.com';\n\ntest('checkbox e dropdown', async ({ page }) => {\n  await page.goto(`${site}/checkboxes`);\n  const primeira = page.getByRole('checkbox').first();\n  await primeira.check();\n  await expect(primeira).toBeChecked();\n  await primeira.uncheck();\n  await expect(primeira).not.toBeChecked();\n\n  await page.goto(`${site}/dropdown`);\n  const lista = page.locator('#dropdown');\n  await lista.selectOption('2');\n  await expect(lista).toHaveValue('2');\n});\n\ntest('upload de arquivo', async ({ page }) => {\n  await page.goto(`${site}/upload`);\n  await page.locator('#file-upload')\n    .setInputFiles('arquivos/exemplo.txt');\n  await page.locator('#file-submit').click();\n  await expect(page.locator('#uploaded-files'))\n    .toContainText('exemplo.txt');\n});\n\ntest('alerta do navegador', async ({ page }) => {\n  await page.goto(`${site}/javascript_alerts`);\n  page.on('dialog', async (dialog) => {\n    await dialog.accept();\n  });\n  await page.getByRole('button', { name: 'Click for JS Alert' })\n    .click();\n  await expect(page.locator('#result'))\n    .toHaveText('You successfully clicked an alert');\n});",
-        "legenda": "A mensagem do resultado",
+        "legenda": "O clique e a mensagem do resultado",
         "fonte": 28,
         "digitar": true,
         "digitar_de": 33,

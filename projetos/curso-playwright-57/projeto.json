@@ -98,23 +98,86 @@
        }
       },
       {
-       "text": "Na tela tem um campo de escolher arquivo e um botão Upload.",
+       "text": "No the internet, a tela é a File Upload. Na página inicial, clica nela.",
        "scene": {
         "type": "tela",
-        "media": "n57_tela",
-        "url": "https://the-internet.herokuapp.com/upload",
+        "media": "n57_home",
+        "url": "https://the-internet.herokuapp.com",
         "gravar": true,
-        "acoes": [],
+        "acoes": [
+         {
+          "espera": 900
+         },
+         {
+          "click": "a[href='/upload']",
+          "espera": 1500
+         }
+        ],
         "titulo": "the-internet.herokuapp.com",
-        "legenda": "Escolher arquivo · Upload",
+        "legenda": "Página inicial › File Upload",
         "espera_inicio": 1000,
-        "espera_fim": 2500,
+        "espera_fim": 2000,
         "delay_letra": 60
-       },
-       "pausa": 2.5
+       }
       },
       {
-       "text": "Primeiro, um arquivo de exemplo dentro do projeto. Na pasta do projeto, cria uma pasta nova chamada arquivos.",
+       "text": "Na tela tem um botão Escolher arquivo, que abre a janela do computador pra procurar o arquivo. E o botão Upload, que envia. Depois de enviar, a página mostra o nome do arquivo.",
+       "scene": {
+        "type": "tela",
+        "media": "n57_tela2",
+        "url": "https://the-internet.herokuapp.com/upload",
+        "gravar": true,
+        "acoes": [
+         {
+          "espera": 1200
+         },
+         {
+          "upload": [
+           "#file-upload",
+           "curso-playwright/projeto/arquivos/exemplo.txt"
+          ],
+          "espera": 1300
+         },
+         {
+          "click": "#file-submit",
+          "espera": 1800
+         }
+        ],
+        "titulo": "the-internet.herokuapp.com",
+        "legenda": "Escolhe · envia · o nome aparece",
+        "espera_inicio": 1000,
+        "espera_fim": 1600,
+        "delay_letra": 60
+       }
+      },
+      {
+       "text": "O teste vai fazer igual: escolher um arquivo, clicar em Upload, e conferir que o nome dele apareceu.",
+       "scene": {
+        "type": "cards",
+        "titulo": "O TESTE, EM PORTUGUÊS",
+        "itens": [
+         [
+          "1",
+          "Escolhe",
+          "o arquivo: setInputFiles"
+         ],
+         [
+          "2",
+          "Envia",
+          "clica em Upload",
+          "#69a7ff"
+         ],
+         [
+          "3",
+          "Confere",
+          "o nome apareceu",
+          "#ffd23f"
+         ]
+        ]
+       }
+      },
+      {
+       "text": "Mas pra enviar um arquivo, o teste precisa ter um arquivo. Na pasta do projeto, cria uma pasta nova chamada arquivos.",
        "scene": {
         "type": "menu",
         "app": "vscode",
@@ -218,6 +281,36 @@
        }
       },
       {
+       "text": "No internet ponto spec, um teste novo: upload de arquivo. Primeiro, o goto da tela de upload.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "internet.spec.js",
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  arquivos/",
+         "    exemplo.txt",
+         "  pages/",
+         "  tests/",
+         "    compra.spec.js",
+         "    internet.spec.js",
+         "    login.spec.js",
+         "  .env",
+         "  playwright.config.js"
+        ],
+        "codigo": "import { test, expect } from '@playwright/test';\n\nconst site = 'https://the-internet.herokuapp.com';\n\ntest('checkbox e dropdown', async ({ page }) => {\n  await page.goto(`${site}/checkboxes`);\n  const primeira = page.getByRole('checkbox').first();\n  await primeira.check();\n  await expect(primeira).toBeChecked();\n  await primeira.uncheck();\n  await expect(primeira).not.toBeChecked();\n\n  await page.goto(`${site}/dropdown`);\n  const lista = page.locator('#dropdown');\n  await lista.selectOption('2');\n  await expect(lista).toHaveValue('2');\n});\n\ntest('upload de arquivo', async ({ page }) => {\n  await page.goto(`${site}/upload`);",
+        "legenda": "O goto da tela de upload",
+        "fonte": 32,
+        "digitar": true,
+        "digitar_de": 19,
+        "digitar_ate": 20,
+        "rolar": true,
+        "rolar_ate": 22,
+        "rolar_de": 0.5,
+        "rolar_dur": 1.2,
+        "atrasa": true
+       }
+      },
+      {
        "text": "E o campo, no Inspecionar: um input do tipo file, com id igual file upload. E o botão Upload tem o id file submit.",
        "scene": {
         "type": "devtools",
@@ -241,7 +334,7 @@
        }
       },
       {
-       "text": "Agora: set input files, coloque este arquivo no campo.",
+       "text": "Agora a ação nova: o campo file upload, ponto set input files, e entre parênteses o caminho do arquivo: arquivos barra exemplo ponto txt.",
        "scene": {
         "type": "editor",
         "arquivo": "internet.spec.js",
@@ -261,7 +354,7 @@
         "legenda": "setInputFiles = coloque este arquivo",
         "fonte": 32,
         "digitar": true,
-        "digitar_de": 19,
+        "digitar_de": 21,
         "digitar_ate": 22,
         "rolar": true,
         "rolar_ate": 24,
@@ -271,7 +364,7 @@
        }
       },
       {
-       "text": "set input files: coloque este arquivo no campo.",
+       "text": "Traduzindo: set input files, coloque este arquivo no campo. E o caminho começa na pasta do projeto: a pasta arquivos, e o exemplo ponto txt.",
        "scene": {
         "type": "traducao",
         "codigo": ".setInputFiles('arquivos/exemplo.txt')",
@@ -282,10 +375,10 @@
          ],
          [
           "('arquivos/exemplo.txt')",
-          "este arquivo"
+          "a partir da pasta do projeto"
          ]
         ],
-        "passo": 1.2
+        "passo": 1.8
        }
       },
       {
@@ -309,7 +402,7 @@
        }
       },
       {
-       "text": "Clica em Upload e confere que o nome do arquivo apareceu na página.",
+       "text": "Depois, clica no botão Upload. E confere: a área uploaded files, onde o nome aparece, contém o texto exemplo ponto txt.",
        "scene": {
         "type": "editor",
         "arquivo": "internet.spec.js",
@@ -339,7 +432,7 @@
        }
       },
       {
-       "text": "Roda.",
+       "text": "Roda: escolheu, enviou, e o nome apareceu.",
        "scene": {
         "type": "editor",
         "arquivo": "internet.spec.js",

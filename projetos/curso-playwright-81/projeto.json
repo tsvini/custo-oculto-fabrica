@@ -133,6 +133,27 @@
        }
       },
       {
+       "text": "E tem coisas que ficam bem diferentes. A aba nova da aula cinquenta e nove: no Playwright é natural, e no Cypress é bem mais difícil. E o WebKit, o motor do Safari: no Playwright ele já vem junto com o Chrome e o Firefox, e no Cypress ainda é experimental.",
+       "scene": {
+        "type": "traducao",
+        "titulo": "ONDE MUDA DE VERDADE",
+        "linhas": [
+         [
+          "aba nova (aula 59)",
+          "Playwright: natural"
+         ],
+         [
+          "WebKit, o motor do Safari",
+          "Playwright: já vem junto"
+         ],
+         [
+          "await",
+          "Playwright: em cada passo"
+         ]
+        ]
+       }
+      },
+      {
        "text": "As duas ferramentas resolvem problemas parecidos, com abordagens diferentes. Saber as duas te deixa mais forte no mercado.",
        "scene": {
         "type": "bigtext",

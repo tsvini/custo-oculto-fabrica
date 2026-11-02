@@ -39,6 +39,8 @@ AULAS.append(projeto(81, "MÓDULO 15 · AULA 81", "Veio do Cypress? Um mapa das 
       "janela_esq": "login.cy.js", "titulo_esq": "CYPRESS", "sub_esq": "comandos numa fila",
       "codigo": "const usuario = page.getByTestId('username');\nconst botao = page.getByTestId('login-button');\n\nawait page.goto('/');\nawait usuario.fill('standard_user');\nawait botao.click();",
       "janela_dir": "login.spec.js", "titulo_dir": "PLAYWRIGHT", "sub_dir": "await em cada passo · seletor guardado"}),
+    ("E tem coisas que ficam bem diferentes. A aba nova da aula cinquenta e nove: no Playwright é natural, e no Cypress é bem mais difícil. E o WebKit, o motor do Safari: no Playwright ele já vem junto com o Chrome e o Firefox, e no Cypress ainda é experimental.",
+     {"type": "traducao", "titulo": "ONDE MUDA DE VERDADE", "linhas": [["aba nova (aula 59)", "Playwright: natural"], ["WebKit, o motor do Safari", "Playwright: já vem junto"], ["await", "Playwright: em cada passo"]]}),
     ("As duas ferramentas resolvem problemas parecidos, com abordagens diferentes. Saber as duas te deixa mais forte no mercado.",
      bt(("CYPRESS", "white", 120), ("+ PLAYWRIGHT", "gold", 150), ("MAIS FORTE NO MERCADO", "muted", 70))),
     ("Te vejo na próxima!", {"type": "endcard", "sub": "PRÓXIMA: CURRÍCULO E ENTREVISTA"}),
