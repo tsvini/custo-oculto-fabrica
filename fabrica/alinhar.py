@@ -106,7 +106,31 @@ def _tempos(frases, ouvidas, dur):
     return tempos, casadas / max(1, N), palavras
 
 
-def parte(frases, audio, saida_wav, log=print):
+def _acertar_pausas(x, tempos, palavras, pausas, log):
+    """garante o silêncio de cada "pausa" depois da frase certa (e tira silêncio longo que sobrou onde não tem pausa).
+    Acontece quando o remendo move uma frase com pausa: o áudio antigo guardava o silêncio no lugar velho."""
+    if not pausas or not any(pausas):
+        return x, tempos, palavras
+    for i in range(len(tempos) - 1):
+        fim_i, ini_j = tempos[i][1], tempos[i + 1][0]; gap = ini_j - fim_i
+        quer = (float(pausas[i]) + 0.35) if i < len(pausas) and pausas[i] else (0.6 if gap > 2.0 else None)
+        if quer is None or abs(gap - quer) < 0.25:
+            continue
+        corte = int((fim_i + min(0.15, gap / 3)) * SR)  # um pouco depois do fim da frase, dentro do silêncio
+        d = quer - gap
+        if d > 0:
+            x = np.concatenate([x[:corte], np.zeros(int(d * SR), np.float32), x[corte:]])
+        else:
+            x = np.concatenate([x[:corte], x[corte + int(-d * SR):]])
+        log(f"    pausa depois da frase {i + 1}: {gap:.1f}s -> {quer:.1f}s")
+        for k in range(i + 1, len(tempos)):
+            tempos[k] = [tempos[k][0] + d, tempos[k][1] + d]
+            if palavras:
+                palavras[k] = [[w, a + d, b + d] for w, a, b in palavras[k]]
+    return x, tempos, palavras
+
+
+def parte(frases, audio, saida_wav, log=print, pausas=None):
     lead = 0.15
     x = _carregar(audio)
     try:
@@ -122,6 +146,8 @@ def parte(frases, audio, saida_wav, log=print):
         tot = sum(len(f) for f in frases) or 1; t = 0.0; tempos = []; taxa = 0.0; palavras = None
         for f in frases:
             d = dur * len(f) / tot; tempos.append([t, t + d]); t += d
+    if ouvidas and taxa >= 0.6:
+        x, tempos, palavras = _acertar_pausas(x, tempos, palavras, pausas, log); dur = len(x) / SR
     y = np.concatenate([np.zeros(int(lead * SR), np.float32), x, np.zeros(int(0.25 * SR), np.float32)])
     # volume uniforme, igual à voz sintética
     win = SR // 100; n = len(y) // win
