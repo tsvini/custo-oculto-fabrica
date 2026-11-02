@@ -288,20 +288,71 @@
        }
       },
       {
-       "text": "Solução, passo a passo. Adiciona os dois produtos, e confere que o carrinho mostra dois. Vai pro carrinho e pro checkout, e preenche os dados. Antes de finalizar, a conferência mais importante: o total, quarenta e três e dezoito. E por último, o finish e a mensagem final.",
+       "text": "Solução, passo a passo. Adiciona a mochila e a lanterna, e confere que o carrinho mostra dois.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "desafios.spec.js",
+        "codigo": "import { test, expect } from '@playwright/test';\n\ntest.describe('Desafios', () => {\n  test.beforeEach(async ({ page }) => {\n    await page.goto('/');\n  });\n\n  test('desafio 1: senha errada mostra erro', async ({ page }) => {\n    await page.getByTestId('username').fill('standard_user');\n    await page.getByTestId('password').fill('senha_errada');\n    await page.getByTestId('login-button').click();\n    await expect(page.getByTestId('error')).toContainText('do not match');\n  });\n\n  test('desafio 2: campos vazios', async ({ page }) => {\n    await page.getByTestId('login-button').click();\n    await expect(page.getByTestId('error')).toContainText('Username is required');\n  });\n\n  test.describe('logado', () => {\n    test.use({ storageState: 'playwright/.auth/usuario.json' });\n\n    test.beforeEach(async ({ page }) => {\n      await page.goto('/inventory.html');\n    });\n\n    test('desafio 3: remove do carrinho', async ({ page }) => {\n      await page.getByTestId('add-to-cart-sauce-labs-backpack').click();\n      await expect(page.getByTestId('shopping-cart-badge')).toHaveText('1');\n      await page.getByTestId('remove-sauce-labs-backpack').click();\n      await expect(page.getByTestId('shopping-cart-badge')).toHaveCount(0);\n    });\n\n    test('desafio 4: ordena do menor para o maior preço', async ({ page }) => {\n      await page.getByTestId('product-sort-container').selectOption('lohi');\n      await expect(page.getByTestId('inventory-item-price').first()).toHaveText('$7.99');\n    });\n\n    test('desafio 5: logout', async ({ page }) => {\n      await page.getByRole('button', { name: 'Open Menu' }).click();\n      await page.getByTestId('logout-sidebar-link').click();\n      await expect(page.getByTestId('login-button')).toBeVisible();\n    });\n\n    test('desafio final: compra com dois produtos', async ({ page }) => {\n      await page.getByTestId('add-to-cart-sauce-labs-backpack').click();\n      await page.getByTestId('add-to-cart-sauce-labs-bike-light').click();\n      await expect(page.getByTestId('shopping-cart-badge')).toHaveText('2');\n    });\n  });\n});",
+        "legenda": "Dois produtos: o carrinho mostra 2",
+        "fonte": 24,
+        "digitar": true,
+        "digitar_de": 45,
+        "digitar_ate": 48,
+        "rolar": true,
+        "rolar_de": 0.2,
+        "rolar_dur": 0.6,
+        "rolar_ate": 51
+       }
+      },
+      {
+       "text": "Vai pro carrinho, clica em checkout, preenche nome, sobrenome e CEP, e continua.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "desafios.spec.js",
+        "codigo": "import { test, expect } from '@playwright/test';\n\ntest.describe('Desafios', () => {\n  test.beforeEach(async ({ page }) => {\n    await page.goto('/');\n  });\n\n  test('desafio 1: senha errada mostra erro', async ({ page }) => {\n    await page.getByTestId('username').fill('standard_user');\n    await page.getByTestId('password').fill('senha_errada');\n    await page.getByTestId('login-button').click();\n    await expect(page.getByTestId('error')).toContainText('do not match');\n  });\n\n  test('desafio 2: campos vazios', async ({ page }) => {\n    await page.getByTestId('login-button').click();\n    await expect(page.getByTestId('error')).toContainText('Username is required');\n  });\n\n  test.describe('logado', () => {\n    test.use({ storageState: 'playwright/.auth/usuario.json' });\n\n    test.beforeEach(async ({ page }) => {\n      await page.goto('/inventory.html');\n    });\n\n    test('desafio 3: remove do carrinho', async ({ page }) => {\n      await page.getByTestId('add-to-cart-sauce-labs-backpack').click();\n      await expect(page.getByTestId('shopping-cart-badge')).toHaveText('1');\n      await page.getByTestId('remove-sauce-labs-backpack').click();\n      await expect(page.getByTestId('shopping-cart-badge')).toHaveCount(0);\n    });\n\n    test('desafio 4: ordena do menor para o maior preço', async ({ page }) => {\n      await page.getByTestId('product-sort-container').selectOption('lohi');\n      await expect(page.getByTestId('inventory-item-price').first()).toHaveText('$7.99');\n    });\n\n    test('desafio 5: logout', async ({ page }) => {\n      await page.getByRole('button', { name: 'Open Menu' }).click();\n      await page.getByTestId('logout-sidebar-link').click();\n      await expect(page.getByTestId('login-button')).toBeVisible();\n    });\n\n    test('desafio final: compra com dois produtos', async ({ page }) => {\n      await page.getByTestId('add-to-cart-sauce-labs-backpack').click();\n      await page.getByTestId('add-to-cart-sauce-labs-bike-light').click();\n      await expect(page.getByTestId('shopping-cart-badge')).toHaveText('2');\n      await page.getByTestId('shopping-cart-link').click();\n      await page.getByTestId('checkout').click();\n      await page.getByTestId('firstName').fill('Maria');\n      await page.getByTestId('lastName').fill('Silva');\n      await page.getByTestId('postalCode').fill('88000-000');\n      await page.getByTestId('continue').click();\n    });\n  });\n});",
+        "legenda": "Carrinho, checkout e dados",
+        "fonte": 24,
+        "digitar": true,
+        "digitar_de": 49,
+        "digitar_ate": 54,
+        "rolar": true,
+        "rolar_de": 0.2,
+        "rolar_dur": 0.6,
+        "rolar_ate": 57
+       }
+      },
+      {
+       "text": "Antes de finalizar, a conferência mais importante: o total contém quarenta e três e dezoito.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "desafios.spec.js",
+        "codigo": "import { test, expect } from '@playwright/test';\n\ntest.describe('Desafios', () => {\n  test.beforeEach(async ({ page }) => {\n    await page.goto('/');\n  });\n\n  test('desafio 1: senha errada mostra erro', async ({ page }) => {\n    await page.getByTestId('username').fill('standard_user');\n    await page.getByTestId('password').fill('senha_errada');\n    await page.getByTestId('login-button').click();\n    await expect(page.getByTestId('error')).toContainText('do not match');\n  });\n\n  test('desafio 2: campos vazios', async ({ page }) => {\n    await page.getByTestId('login-button').click();\n    await expect(page.getByTestId('error')).toContainText('Username is required');\n  });\n\n  test.describe('logado', () => {\n    test.use({ storageState: 'playwright/.auth/usuario.json' });\n\n    test.beforeEach(async ({ page }) => {\n      await page.goto('/inventory.html');\n    });\n\n    test('desafio 3: remove do carrinho', async ({ page }) => {\n      await page.getByTestId('add-to-cart-sauce-labs-backpack').click();\n      await expect(page.getByTestId('shopping-cart-badge')).toHaveText('1');\n      await page.getByTestId('remove-sauce-labs-backpack').click();\n      await expect(page.getByTestId('shopping-cart-badge')).toHaveCount(0);\n    });\n\n    test('desafio 4: ordena do menor para o maior preço', async ({ page }) => {\n      await page.getByTestId('product-sort-container').selectOption('lohi');\n      await expect(page.getByTestId('inventory-item-price').first()).toHaveText('$7.99');\n    });\n\n    test('desafio 5: logout', async ({ page }) => {\n      await page.getByRole('button', { name: 'Open Menu' }).click();\n      await page.getByTestId('logout-sidebar-link').click();\n      await expect(page.getByTestId('login-button')).toBeVisible();\n    });\n\n    test('desafio final: compra com dois produtos', async ({ page }) => {\n      await page.getByTestId('add-to-cart-sauce-labs-backpack').click();\n      await page.getByTestId('add-to-cart-sauce-labs-bike-light').click();\n      await expect(page.getByTestId('shopping-cart-badge')).toHaveText('2');\n      await page.getByTestId('shopping-cart-link').click();\n      await page.getByTestId('checkout').click();\n      await page.getByTestId('firstName').fill('Maria');\n      await page.getByTestId('lastName').fill('Silva');\n      await page.getByTestId('postalCode').fill('88000-000');\n      await page.getByTestId('continue').click();\n      await expect(page.getByTestId('total-label')).toContainText('$43.18');\n    });\n  });\n});",
+        "legenda": "O total: $43.18",
+        "fonte": 24,
+        "digitar": true,
+        "digitar_de": 55,
+        "digitar_ate": 55,
+        "rolar": true,
+        "rolar_de": 0.2,
+        "rolar_dur": 0.6,
+        "rolar_ate": 58
+       }
+      },
+      {
+       "text": "E por último, o finish, e a mensagem final: Thank you for your order.",
        "scene": {
         "type": "editor",
         "arquivo": "desafios.spec.js",
         "codigo": "import { test, expect } from '@playwright/test';\n\ntest.describe('Desafios', () => {\n  test.beforeEach(async ({ page }) => {\n    await page.goto('/');\n  });\n\n  test('desafio 1: senha errada mostra erro', async ({ page }) => {\n    await page.getByTestId('username').fill('standard_user');\n    await page.getByTestId('password').fill('senha_errada');\n    await page.getByTestId('login-button').click();\n    await expect(page.getByTestId('error')).toContainText('do not match');\n  });\n\n  test('desafio 2: campos vazios', async ({ page }) => {\n    await page.getByTestId('login-button').click();\n    await expect(page.getByTestId('error')).toContainText('Username is required');\n  });\n\n  test.describe('logado', () => {\n    test.use({ storageState: 'playwright/.auth/usuario.json' });\n\n    test.beforeEach(async ({ page }) => {\n      await page.goto('/inventory.html');\n    });\n\n    test('desafio 3: remove do carrinho', async ({ page }) => {\n      await page.getByTestId('add-to-cart-sauce-labs-backpack').click();\n      await expect(page.getByTestId('shopping-cart-badge')).toHaveText('1');\n      await page.getByTestId('remove-sauce-labs-backpack').click();\n      await expect(page.getByTestId('shopping-cart-badge')).toHaveCount(0);\n    });\n\n    test('desafio 4: ordena do menor para o maior preço', async ({ page }) => {\n      await page.getByTestId('product-sort-container').selectOption('lohi');\n      await expect(page.getByTestId('inventory-item-price').first()).toHaveText('$7.99');\n    });\n\n    test('desafio 5: logout', async ({ page }) => {\n      await page.getByRole('button', { name: 'Open Menu' }).click();\n      await page.getByTestId('logout-sidebar-link').click();\n      await expect(page.getByTestId('login-button')).toBeVisible();\n    });\n\n    test('desafio final: compra com dois produtos', async ({ page }) => {\n      await page.getByTestId('add-to-cart-sauce-labs-backpack').click();\n      await page.getByTestId('add-to-cart-sauce-labs-bike-light').click();\n      await expect(page.getByTestId('shopping-cart-badge')).toHaveText('2');\n      await page.getByTestId('shopping-cart-link').click();\n      await page.getByTestId('checkout').click();\n      await page.getByTestId('firstName').fill('Maria');\n      await page.getByTestId('lastName').fill('Silva');\n      await page.getByTestId('postalCode').fill('88000-000');\n      await page.getByTestId('continue').click();\n      await expect(page.getByTestId('total-label')).toContainText('$43.18');\n      await page.getByTestId('finish').click();\n      await expect(page.getByTestId('complete-header')).toHaveText('Thank you for your order!');\n    });\n  });\n});",
-        "legenda": "Passo a passo",
+        "legenda": "Finaliza e confere",
         "fonte": 24,
         "digitar": true,
-        "digitar_de": 45,
-        "digitar_ate": 58,
-        "vel": 0.85,
+        "digitar_de": 56,
+        "digitar_ate": 57,
         "rolar": true,
         "rolar_de": 0.2,
-        "rolar_dur": 0.6
+        "rolar_dur": 0.6,
+        "rolar_ate": 60
        }
       },
       {

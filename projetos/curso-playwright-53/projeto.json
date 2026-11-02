@@ -222,20 +222,54 @@
        }
       },
       {
-       "text": "Solução: clica no menu, clica no logout, e confere que o botão de Login voltou.",
+       "text": "Solução. Primeiro, abre o menu. O botão de três risquinhos não tem data-test, então a gente usa o get by role: um botão com o nome Open Menu.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "desafios.spec.js",
+        "codigo": "import { test, expect } from '@playwright/test';\n\ntest.describe('Desafios', () => {\n  test.beforeEach(async ({ page }) => {\n    await page.goto('/');\n  });\n\n  test('desafio 1: senha errada mostra erro', async ({ page }) => {\n    await page.getByTestId('username').fill('standard_user');\n    await page.getByTestId('password').fill('senha_errada');\n    await page.getByTestId('login-button').click();\n    await expect(page.getByTestId('error')).toContainText('do not match');\n  });\n\n  test('desafio 2: campos vazios', async ({ page }) => {\n    await page.getByTestId('login-button').click();\n    await expect(page.getByTestId('error')).toContainText('Username is required');\n  });\n\n  test.describe('logado', () => {\n    test.use({ storageState: 'playwright/.auth/usuario.json' });\n\n    test.beforeEach(async ({ page }) => {\n      await page.goto('/inventory.html');\n    });\n\n    test('desafio 3: remove do carrinho', async ({ page }) => {\n      await page.getByTestId('add-to-cart-sauce-labs-backpack').click();\n      await expect(page.getByTestId('shopping-cart-badge')).toHaveText('1');\n      await page.getByTestId('remove-sauce-labs-backpack').click();\n      await expect(page.getByTestId('shopping-cart-badge')).toHaveCount(0);\n    });\n\n    test('desafio 4: ordena do menor para o maior preço', async ({ page }) => {\n      await page.getByTestId('product-sort-container').selectOption('lohi');\n      await expect(page.getByTestId('inventory-item-price').first()).toHaveText('$7.99');\n    });\n\n    test('desafio 5: logout', async ({ page }) => {\n      await page.getByRole('button', { name: 'Open Menu' }).click();\n    });\n  });\n});",
+        "legenda": "getByRole: o botão Open Menu",
+        "fonte": 24,
+        "digitar": true,
+        "digitar_de": 39,
+        "digitar_ate": 40,
+        "rolar": true,
+        "rolar_de": 0.2,
+        "rolar_dur": 0.6,
+        "rolar_ate": 43
+       }
+      },
+      {
+       "text": "Depois, clica no Logout, pelo data-test logout sidebar link.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "desafios.spec.js",
+        "codigo": "import { test, expect } from '@playwright/test';\n\ntest.describe('Desafios', () => {\n  test.beforeEach(async ({ page }) => {\n    await page.goto('/');\n  });\n\n  test('desafio 1: senha errada mostra erro', async ({ page }) => {\n    await page.getByTestId('username').fill('standard_user');\n    await page.getByTestId('password').fill('senha_errada');\n    await page.getByTestId('login-button').click();\n    await expect(page.getByTestId('error')).toContainText('do not match');\n  });\n\n  test('desafio 2: campos vazios', async ({ page }) => {\n    await page.getByTestId('login-button').click();\n    await expect(page.getByTestId('error')).toContainText('Username is required');\n  });\n\n  test.describe('logado', () => {\n    test.use({ storageState: 'playwright/.auth/usuario.json' });\n\n    test.beforeEach(async ({ page }) => {\n      await page.goto('/inventory.html');\n    });\n\n    test('desafio 3: remove do carrinho', async ({ page }) => {\n      await page.getByTestId('add-to-cart-sauce-labs-backpack').click();\n      await expect(page.getByTestId('shopping-cart-badge')).toHaveText('1');\n      await page.getByTestId('remove-sauce-labs-backpack').click();\n      await expect(page.getByTestId('shopping-cart-badge')).toHaveCount(0);\n    });\n\n    test('desafio 4: ordena do menor para o maior preço', async ({ page }) => {\n      await page.getByTestId('product-sort-container').selectOption('lohi');\n      await expect(page.getByTestId('inventory-item-price').first()).toHaveText('$7.99');\n    });\n\n    test('desafio 5: logout', async ({ page }) => {\n      await page.getByRole('button', { name: 'Open Menu' }).click();\n      await page.getByTestId('logout-sidebar-link').click();\n    });\n  });\n});",
+        "legenda": "O clique no Logout",
+        "fonte": 24,
+        "digitar": true,
+        "digitar_de": 41,
+        "digitar_ate": 41,
+        "rolar": true,
+        "rolar_de": 0.2,
+        "rolar_dur": 0.6,
+        "rolar_ate": 44
+       }
+      },
+      {
+       "text": "E a conferência: o botão de login apareceu de novo. Se ele está visível, a pessoa saiu mesmo.",
        "scene": {
         "type": "editor",
         "arquivo": "desafios.spec.js",
         "codigo": "import { test, expect } from '@playwright/test';\n\ntest.describe('Desafios', () => {\n  test.beforeEach(async ({ page }) => {\n    await page.goto('/');\n  });\n\n  test('desafio 1: senha errada mostra erro', async ({ page }) => {\n    await page.getByTestId('username').fill('standard_user');\n    await page.getByTestId('password').fill('senha_errada');\n    await page.getByTestId('login-button').click();\n    await expect(page.getByTestId('error')).toContainText('do not match');\n  });\n\n  test('desafio 2: campos vazios', async ({ page }) => {\n    await page.getByTestId('login-button').click();\n    await expect(page.getByTestId('error')).toContainText('Username is required');\n  });\n\n  test.describe('logado', () => {\n    test.use({ storageState: 'playwright/.auth/usuario.json' });\n\n    test.beforeEach(async ({ page }) => {\n      await page.goto('/inventory.html');\n    });\n\n    test('desafio 3: remove do carrinho', async ({ page }) => {\n      await page.getByTestId('add-to-cart-sauce-labs-backpack').click();\n      await expect(page.getByTestId('shopping-cart-badge')).toHaveText('1');\n      await page.getByTestId('remove-sauce-labs-backpack').click();\n      await expect(page.getByTestId('shopping-cart-badge')).toHaveCount(0);\n    });\n\n    test('desafio 4: ordena do menor para o maior preço', async ({ page }) => {\n      await page.getByTestId('product-sort-container').selectOption('lohi');\n      await expect(page.getByTestId('inventory-item-price').first()).toHaveText('$7.99');\n    });\n\n    test('desafio 5: logout', async ({ page }) => {\n      await page.getByRole('button', { name: 'Open Menu' }).click();\n      await page.getByTestId('logout-sidebar-link').click();\n      await expect(page.getByTestId('login-button')).toBeVisible();\n    });\n  });\n});",
-        "legenda": "menu, logout e o botão de Login de volta",
+        "legenda": "O Login voltou: saiu mesmo",
         "fonte": 24,
         "digitar": true,
-        "digitar_de": 39,
-        "digitar_ate": 43,
-        "vel": 0.7,
+        "digitar_de": 42,
+        "digitar_ate": 42,
         "rolar": true,
         "rolar_de": 0.2,
-        "rolar_dur": 0.6
+        "rolar_dur": 0.6,
+        "rolar_ate": 45
        }
       },
       {

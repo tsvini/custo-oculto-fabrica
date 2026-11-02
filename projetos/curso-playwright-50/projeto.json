@@ -168,22 +168,55 @@
        }
       },
       {
-       "text": "Solução: só o clique e o expect.",
+       "text": "Solução. O nome: desafio dois, campos vazios. E repara: nenhum fill. A pessoa não preencheu nada, então o teste também não preenche.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "desafios.spec.js",
+        "codigo": "import { test, expect } from '@playwright/test';\n\ntest.describe('Desafios', () => {\n  test.beforeEach(async ({ page }) => {\n    await page.goto('/');\n  });\n\n  test('desafio 1: senha errada mostra erro', async ({ page }) => {\n    await page.getByTestId('username').fill('standard_user');\n    await page.getByTestId('password').fill('senha_errada');\n    await page.getByTestId('login-button').click();\n    await expect(page.getByTestId('error')).toContainText('do not match');\n  });\n\n  test('desafio 2: campos vazios', async ({ page }) => {\n  });\n});",
+        "legenda": "Nenhum fill: nada preenchido",
+        "fonte": 24,
+        "digitar": true,
+        "digitar_de": 15,
+        "digitar_ate": 15,
+        "rolar": true,
+        "rolar_de": 0.2,
+        "rolar_dur": 0.6,
+        "rolar_ate": 18
+       }
+      },
+      {
+       "text": "Só o clique no botão de login.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "desafios.spec.js",
+        "codigo": "import { test, expect } from '@playwright/test';\n\ntest.describe('Desafios', () => {\n  test.beforeEach(async ({ page }) => {\n    await page.goto('/');\n  });\n\n  test('desafio 1: senha errada mostra erro', async ({ page }) => {\n    await page.getByTestId('username').fill('standard_user');\n    await page.getByTestId('password').fill('senha_errada');\n    await page.getByTestId('login-button').click();\n    await expect(page.getByTestId('error')).toContainText('do not match');\n  });\n\n  test('desafio 2: campos vazios', async ({ page }) => {\n    await page.getByTestId('login-button').click();\n  });\n});",
+        "legenda": "Só o clique",
+        "fonte": 24,
+        "digitar": true,
+        "digitar_de": 16,
+        "digitar_ate": 16,
+        "rolar": true,
+        "rolar_de": 0.2,
+        "rolar_dur": 0.6,
+        "rolar_ate": 19
+       }
+      },
+      {
+       "text": "E a conferência: o mesmo elemento error, agora com o texto Username is required, o usuário é obrigatório.",
        "scene": {
         "type": "editor",
         "arquivo": "desafios.spec.js",
         "codigo": "import { test, expect } from '@playwright/test';\n\ntest.describe('Desafios', () => {\n  test.beforeEach(async ({ page }) => {\n    await page.goto('/');\n  });\n\n  test('desafio 1: senha errada mostra erro', async ({ page }) => {\n    await page.getByTestId('username').fill('standard_user');\n    await page.getByTestId('password').fill('senha_errada');\n    await page.getByTestId('login-button').click();\n    await expect(page.getByTestId('error')).toContainText('do not match');\n  });\n\n  test('desafio 2: campos vazios', async ({ page }) => {\n    await page.getByTestId('login-button').click();\n    await expect(page.getByTestId('error')).toContainText('Username is required');\n  });\n});",
-        "legenda": "Só o clique e o expect",
+        "legenda": "error contém: Username is required",
         "fonte": 24,
         "digitar": true,
-        "digitar_de": 15,
-        "digitar_ate": 18,
-        "vel": 0.7,
+        "digitar_de": 17,
+        "digitar_ate": 17,
         "rolar": true,
         "rolar_de": 0.2,
-        "rolar_dur": 0.6
-       },
-       "pausa": 2
+        "rolar_dur": 0.6,
+        "rolar_ate": 20
+       }
       },
       {
        "text": "Repara: nem todo teste preenche tudo, e um bom teste também confere o que dá errado.",

@@ -280,17 +280,55 @@
        }
       },
       {
-       "text": "Solução: preenche, preenche, clica, e expect error to contain text do not match.",
+       "text": "Solução. O nome do teste diz o que ele confere: desafio um, senha errada mostra erro.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "desafios.spec.js",
+        "codigo": "import { test, expect } from '@playwright/test';\n\ntest.describe('Desafios', () => {\n  test.beforeEach(async ({ page }) => {\n    await page.goto('/');\n  });\n\n  test('desafio 1: senha errada mostra erro', async ({ page }) => {\n  });\n});",
+        "legenda": "O nome diz o que o teste confere",
+        "fonte": 24,
+        "digitar": true,
+        "digitar_de": 8,
+        "digitar_ate": 8
+       }
+      },
+      {
+       "text": "Preenche o usuário certo, standard user. E na senha, qualquer coisa errada: aqui, senha underline errada.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "desafios.spec.js",
+        "codigo": "import { test, expect } from '@playwright/test';\n\ntest.describe('Desafios', () => {\n  test.beforeEach(async ({ page }) => {\n    await page.goto('/');\n  });\n\n  test('desafio 1: senha errada mostra erro', async ({ page }) => {\n    await page.getByTestId('username').fill('standard_user');\n    await page.getByTestId('password').fill('senha_errada');\n  });\n});",
+        "legenda": "Usuário certo, senha errada",
+        "fonte": 24,
+        "digitar": true,
+        "digitar_de": 9,
+        "digitar_ate": 10
+       }
+      },
+      {
+       "text": "Clica no botão de login, igual a sempre.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "desafios.spec.js",
+        "codigo": "import { test, expect } from '@playwright/test';\n\ntest.describe('Desafios', () => {\n  test.beforeEach(async ({ page }) => {\n    await page.goto('/');\n  });\n\n  test('desafio 1: senha errada mostra erro', async ({ page }) => {\n    await page.getByTestId('username').fill('standard_user');\n    await page.getByTestId('password').fill('senha_errada');\n    await page.getByTestId('login-button').click();\n  });\n});",
+        "legenda": "O clique no Login",
+        "fonte": 24,
+        "digitar": true,
+        "digitar_de": 11,
+        "digitar_ate": 11
+       }
+      },
+      {
+       "text": "E a conferência: o elemento error contém o texto do not match, que quer dizer não confere.",
        "scene": {
         "type": "editor",
         "arquivo": "desafios.spec.js",
         "codigo": "import { test, expect } from '@playwright/test';\n\ntest.describe('Desafios', () => {\n  test.beforeEach(async ({ page }) => {\n    await page.goto('/');\n  });\n\n  test('desafio 1: senha errada mostra erro', async ({ page }) => {\n    await page.getByTestId('username').fill('standard_user');\n    await page.getByTestId('password').fill('senha_errada');\n    await page.getByTestId('login-button').click();\n    await expect(page.getByTestId('error')).toContainText('do not match');\n  });\n});",
-        "legenda": "fill, fill, click e o expect",
+        "legenda": "error contém: do not match",
         "fonte": 24,
         "digitar": true,
-        "digitar_de": 8,
-        "digitar_ate": 13,
-        "vel": 0.7
+        "digitar_de": 12,
+        "digitar_ate": 12
        }
       },
       {

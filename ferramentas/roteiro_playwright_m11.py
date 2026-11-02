@@ -56,6 +56,21 @@ def solucao(c, chave, legenda, **kw):
     return edc(c, legenda, **d), (a, b)
 
 
+def passos(c, ab, partes):
+    """a solução digitada em partes, uma fala por parte: partes = [(quantas linhas, fala, legenda), ...] a partir da linha do test("""
+    a, b = ab; L = c.split("\n"); out = []; ini = a
+    assert sum(k for k, _, _ in partes) == b - a, (sum(k for k, _, _ in partes), b - a)
+    for k, fala, leg in partes:
+        fim = ini + k - 1
+        cod = L[:fim] + L[b - 1:]  # o que já foi escrito + o fechamento do teste e o resto do arquivo
+        d = dict(arquivo="desafios.spec.js", digitar=True, digitar_de=ini, digitar_ate=fim, fonte=24)
+        if len(cod) > 16:
+            d.update(rolar=True, rolar_de=0.2, rolar_dur=0.6, rolar_ate=fim + 3)
+        out.append((fala, edc("\n".join(cod), leg, **d)))
+        ini = fim + 1
+    return out
+
+
 def rodando(c, ab, legenda, acoes, media, n, logado=False, **kw):
     a, b = ab; b = min(b, a + 8)  # com o terminal aberto cabem ~9 linhas; o navegador cobre o editor durante a execução
     nav = {"media": media, "url": INV if logado else SAUCE, "gravar": True, "acoes": acoes, "espera_inicio": 800, "espera_fim": 1800, "delay_letra": 55,
@@ -111,7 +126,12 @@ def preencher():
         ("O começo de sempre: o import, um describe chamado Desafios, e o before each que abre o site.",
          edc(JJ(C.split("\n")[:CAB49] + ["});"]), "O começo: import, describe e beforeEach", arquivo="desafios.spec.js", pastas=ARV_D, digitar=True, digitar_de=1, digitar_ate=CAB49, fonte=26,
              criar=[["Os desafios vão num arquivo só deles. Dentro da pasta tests, cria o desafios ponto spec ponto js.", "desafios.spec.js"]])),
-        ("Solução: preenche, preenche, clica, e expect error to contain text do not match.", ed),
+    ] + passos(C, ab, [
+        (1, "Solução. O nome do teste diz o que ele confere: desafio um, senha errada mostra erro.", "O nome diz o que o teste confere"),
+        (2, "Preenche o usuário certo, standard user. E na senha, qualquer coisa errada: aqui, senha underline errada.", "Usuário certo, senha errada"),
+        (1, "Clica no botão de login, igual a sempre.", "O clique no Login"),
+        (1, "E a conferência: o elemento error contém o texto do not match, que quer dizer não confere.", "error contém: do not match"),
+    ]) + [
         ("Contém o texto: não precisa ser a mensagem inteira.",
          {"type": "traducao", "codigo": "toContainText('do not match')", "partes": [["toContainText", "contém o texto"], ["('do not match')", "só um pedaço da mensagem"]], "passo": 1.2}),
         ("Roda e olha: o erro aparece e o teste passa.",
@@ -127,7 +147,11 @@ def preencher():
          {"type": "cards", "itens": [["⚡", "Alguém apressado", "clica sem preencher"], ["✓", "O sistema avisa", "Username is required", "#3fd68a"], ["✗", "Não pode", "entrar nem travar", VERM]]}),
         ("Pausa e tenta.", desafio("2", "Campos vazios", [["▭", "não preenche nada"], ["▶", "clica em Login", AZUL], ["✓", "confere a mensagem de erro", AMARELO]])),
         ("Dica: a mensagem é Username is required.", video("dica50", "Username is required", [{"click": "#login-button"}])),
-        ("Solução: só o clique e o expect.", ed),
+    ] + passos(C, ab, [
+        (1, "Solução. O nome: desafio dois, campos vazios. E repara: nenhum fill. A pessoa não preencheu nada, então o teste também não preenche.", "Nenhum fill: nada preenchido"),
+        (1, "Só o clique no botão de login.", "Só o clique"),
+        (1, "E a conferência: o mesmo elemento error, agora com o texto Username is required, o usuário é obrigatório.", "error contém: Username is required"),
+    ]) + [
         ("Repara: nem todo teste preenche tudo, e um bom teste também confere o que dá errado.", bt(("BOM TESTE", "gold", 150), ("TAMBÉM CONFERE", "white", 110), ("O QUE DÁ ERRADO", "white", 110))),
         ("Roda: passou.", rodando(C, ab, "Passou", [{"click": "#login-button"}], "run50", 50)),
         ("Te vejo no próximo!", fim("PRÓXIMO: DESAFIO 3")),
@@ -149,7 +173,11 @@ def preencher():
          dev("dev51", "remove-sauce-labs-backpack", "Inspecionar: data-test=\"remove-sauce-labs-backpack\"", [ADD], logado=True)),
         ("Os desafios daqui pra frente começam logados. Lembra do login salvo da aula quarenta e dois? Dentro do describe, uma caixa nova chamada logado. Nela, o test ponto use com o storage state, e um before each que abre direto a página de produtos.",
          inteiro(edc(JJ(C.split("\n")[L_LOG51 - 2:L_BE51 + 2] + ["  });", "});"]), "describe('logado') + test.use", arquivo="desafios.spec.js", pastas=ARV_D, linha0=L_LOG51 - 1, digitar=True, digitar_de=2, digitar_ate=L_BE51 + 2 - L_LOG51 + 1, fonte=22), C.split("\n")[:L_LOG51 - 2])),
-        ("Solução: pra conferir que ele saiu da página, to have count zero:", ed),
+    ] + passos(C, ab, [
+        (3, "Solução. Primeiro, adiciona a mochila, e confere que o numerozinho do carrinho mostra um.", "Adiciona e confere: 1"),
+        (1, "Depois, clica no Remove, o botão que apareceu no lugar do Add to cart.", "O clique no Remove"),
+        (1, "E pra conferir que o carrinho ficou vazio, to have count zero:", "toHaveCount(0)"),
+    ]) + [
         ("eu espero que o seletor encontre zero elementos.",
          {"type": "traducao", "codigo": "expect(...).toHaveCount(0);", "partes": [["expect", "eu espero que"], ["toHaveCount(0)", "encontre zero elementos"]], "passo": 1.0}),
         ("Roda.", rodando(C, ab, "Passou", [ADD, REM], "run51", 51, logado=True)),
@@ -171,7 +199,10 @@ def preencher():
          dev("dev52_preco", "inventory-item-price", "Inspecionar: data-test=\"inventory-item-price\"", logado=True)),
         ("Pra escolher uma opção, existe o select option, escolha a opção. A do menor preço se chama lohi, de low to high: do baixo pro alto.",
          {"type": "traducao", "codigo": "selectOption('lohi')", "partes": [["selectOption", "escolha a opção"], ["('lohi')", "low to high: do baixo pro alto"]], "passo": 2.4}),
-        ("Solução: como a gente conhece os produtos desse site de treino, a conferência é simples: depois de ordenar, o primeiro preço é sete e noventa e nove.", ed),
+    ] + passos(C, ab, [
+        (2, "Solução. Na caixa de ordenar, select option lohi: do menor pro maior.", "selectOption('lohi')"),
+        (1, "E a conferência: como a gente conhece os produtos desse site de treino, o primeiro preço da lista tem que ser sete e noventa e nove.", "O primeiro preço: $7.99"),
+    ]) + [
         ("Ponto first: o primeiro.", {"type": "traducao", "codigo": "getByTestId('inventory-item-price').first()", "partes": [[".first()", "o primeiro"]], "passo": 0.8}),
         ("Conferir só o primeiro é o jeito mais simples. No módulo 14, você confere a lista inteira, e pega exatamente esse bug numa loja de verdade.",
          bt(("HOJE: O PRIMEIRO PREÇO", "white", 100), ("MÓDULO 14: A LISTA INTEIRA", "gold", 110))),
@@ -191,7 +222,11 @@ def preencher():
          video("dica53", "☰ Open Menu › Logout", [{"click": "#react-burger-menu-btn", "espera": 2500}], logado=True, espera_fim=1500)),
         ("E o Logout: com o menu aberto, botão direito nele, e Inspecionar. Data-test igual logout sidebar link.",
          dev("dev53", "logout-sidebar-link", "Inspecionar: data-test=\"logout-sidebar-link\"", [{"click": "#react-burger-menu-btn"}], logado=True)),
-        ("Solução: clica no menu, clica no logout, e confere que o botão de Login voltou.", ed),
+    ] + passos(C, ab, [
+        (2, "Solução. Primeiro, abre o menu. O botão de três risquinhos não tem data-test, então a gente usa o get by role: um botão com o nome Open Menu.", "getByRole: o botão Open Menu"),
+        (1, "Depois, clica no Logout, pelo data-test logout sidebar link.", "O clique no Logout"),
+        (1, "E a conferência: o botão de login apareceu de novo. Se ele está visível, a pessoa saiu mesmo.", "O Login voltou: saiu mesmo"),
+    ]) + [
         ("Roda.", rodando(C, ab, "Passou: saiu e o Login voltou", MENU, "run53", 53, logado=True)),
         ("Te vejo no desafio final!", fim("PRÓXIMO: DESAFIO FINAL")),
     ], [1])
@@ -212,7 +247,12 @@ def preencher():
          video("dica54", "total-label: $43.18", DOIS, logado=True, delay_letra=45, espera_fim=2500)),
         ("E o total, na tela de revisão: botão direito, e Inspecionar. Data-test igual total label.",
          dev("dev54", "total-label", "Inspecionar: data-test=\"total-label\"", DOIS, logado=True)),
-        ("Solução, passo a passo. Adiciona os dois produtos, e confere que o carrinho mostra dois. Vai pro carrinho e pro checkout, e preenche os dados. Antes de finalizar, a conferência mais importante: o total, quarenta e três e dezoito. E por último, o finish e a mensagem final.", ed),
+    ] + passos(C, ab, [
+        (4, "Solução, passo a passo. Adiciona a mochila e a lanterna, e confere que o carrinho mostra dois.", "Dois produtos: o carrinho mostra 2"),
+        (6, "Vai pro carrinho, clica em checkout, preenche nome, sobrenome e CEP, e continua.", "Carrinho, checkout e dados"),
+        (1, "Antes de finalizar, a conferência mais importante: o total contém quarenta e três e dezoito.", "O total: $43.18"),
+        (2, "E por último, o finish, e a mensagem final: Thank you for your order.", "Finaliza e confere"),
+    ]) + [
         ("Roda e olha o fluxo inteiro.", rodando(C, ab, "O fluxo inteiro, sozinho", DOIS + [{"click": "[data-test=\"finish\"]"}], "run54", 54, logado=True)),
         ("Se você conseguiu montar boa parte desse desafio sozinho, você já está juntando seletores, ações e conferências sem copiar um roteiro pronto. Esse é um grande passo.",
          bt(("SELETORES", "white", 110), ("AÇÕES", "white", 110), ("CONFERÊNCIAS", "gold", 130), entre=1.25)),
