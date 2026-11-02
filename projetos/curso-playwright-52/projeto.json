@@ -177,6 +177,82 @@
        }
       },
       {
+       "text": "De onde vêm os seletores? A caixa de ordenar, no Inspecionar: data-test igual product sort container.",
+       "scene": {
+        "type": "devtools",
+        "media": "dev52_sort",
+        "url": "https://www.saucedemo.com/",
+        "acoes": [
+         {
+          "fill": [
+           "#user-name",
+           "standard_user"
+          ]
+         },
+         {
+          "fill": [
+           "#password",
+           "secret_sauce"
+          ]
+         },
+         {
+          "click": "#login-button"
+         }
+        ],
+        "inspecionar": "[data-test=\"product-sort-container\"]",
+        "attrs": [
+         "class",
+         "data-test",
+         "id",
+         "name"
+        ],
+        "realce": [
+         "data-test"
+        ],
+        "realce_em": 4.0,
+        "realce_rotulo": "product-sort-container",
+        "legenda": "Inspecionar: data-test=\"product-sort-container\""
+       }
+      },
+      {
+       "text": "E o preço de cada produto: data-test igual inventory item price.",
+       "scene": {
+        "type": "devtools",
+        "media": "dev52_preco",
+        "url": "https://www.saucedemo.com/",
+        "acoes": [
+         {
+          "fill": [
+           "#user-name",
+           "standard_user"
+          ]
+         },
+         {
+          "fill": [
+           "#password",
+           "secret_sauce"
+          ]
+         },
+         {
+          "click": "#login-button"
+         }
+        ],
+        "inspecionar": "[data-test=\"inventory-item-price\"]",
+        "attrs": [
+         "class",
+         "data-test",
+         "id",
+         "name"
+        ],
+        "realce": [
+         "data-test"
+        ],
+        "realce_em": 4.0,
+        "realce_rotulo": "inventory-item-price",
+        "legenda": "Inspecionar: data-test=\"inventory-item-price\""
+       }
+      },
+      {
        "text": "Pra escolher uma opção, existe o select option, escolha a opção. A do menor preço se chama lohi, de low to high: do baixo pro alto.",
        "scene": {
         "type": "traducao",

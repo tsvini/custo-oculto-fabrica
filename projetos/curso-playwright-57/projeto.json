@@ -218,6 +218,29 @@
        }
       },
       {
+       "text": "E o campo, no Inspecionar: um input do tipo file, com id igual file upload. E o botão Upload tem o id file submit.",
+       "scene": {
+        "type": "devtools",
+        "media": "dev57",
+        "url": "https://the-internet.herokuapp.com/upload",
+        "acoes": [],
+        "inspecionar": "#file-upload",
+        "titulo": "the-internet.herokuapp.com/upload",
+        "attrs": [
+         "id",
+         "class",
+         "type",
+         "name"
+        ],
+        "realce": [
+         "id"
+        ],
+        "realce_em": 4.0,
+        "realce_rotulo": "#file-upload",
+        "legenda": "Inspecionar: id=\"file-upload\""
+       }
+      },
+      {
        "text": "Agora: set input files, coloque este arquivo no campo.",
        "scene": {
         "type": "editor",

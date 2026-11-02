@@ -208,6 +208,29 @@
        }
       },
       {
+       "text": "E o seletor da lista? Botão direito nela, e Inspecionar: id igual dropdown. No código, o id vai com uma cerquilha na frente.",
+       "scene": {
+        "type": "devtools",
+        "media": "dev56",
+        "url": "https://the-internet.herokuapp.com/dropdown",
+        "acoes": [],
+        "inspecionar": "#dropdown",
+        "titulo": "the-internet.herokuapp.com/dropdown",
+        "attrs": [
+         "id",
+         "class",
+         "type",
+         "name"
+        ],
+        "realce": [
+         "id"
+        ],
+        "realce_em": 4.0,
+        "realce_rotulo": "#dropdown",
+        "legenda": "Inspecionar: id=\"dropdown\" vira #dropdown"
+       }
+      },
+      {
        "text": "E a conferência: to have value, tenha o valor dois.",
        "scene": {
         "type": "editor",

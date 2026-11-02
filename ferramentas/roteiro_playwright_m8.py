@@ -66,9 +66,23 @@ C35 = cod(35)
 L_TESTE35 = ln(C35, "test('compra")
 L_ADD = ln(C35, "add-to-cart")
 L_BADGE = ln(C35, "shopping-cart-badge")
+# faxina do config no começo do projeto final: os comentários de fábrica saem (o config da 34 vira o da 42, sem o setup)
+import difflib, re as _re
+from roteiro_playwright_m7 import CFG30F as _C30, P0 as _P0, CEL as _CEL
+C34F = _C30[:_P0 + 15] + _CEL + _C30[_P0 + 15:]
+CFG_LIMPO = [l for l in ler("playwright.config.js").split("\n") if "name: 'setup'" not in l and "dependencies" not in l]
+_ops = difflib.SequenceMatcher(None, C34F, CFG_LIMPO, autojunk=False).get_opcodes()
+assert all(op in ("equal", "delete") for op, *_ in _ops), "a faxina só apaga linhas"
+APAGA_CFG = [i + 1 for op, a1, a2, b1, b2 in _ops if op == "delete" for i in range(a1, a2)]
+assert all(_re.match(r"^\s*(//|/\*|\*)", C34F[i - 1]) or not C34F[i - 1].strip() for i in APAGA_CFG), "só comentários e linhas em branco"
 AULAS.append(projeto(35, "MÓDULO 8 · AULA 35", "O carrinho", [
     ("Começa o projeto final: o fluxo de compra completo, do login até o obrigado. Hoje, o carrinho.", titulo(35, "O CARRINHO")),
     ("Por que começar pela compra? Porque é onde a loja ganha dinheiro. Se o carrinho quebra, ninguém compra. Se o checkout quebra, ninguém paga. É o primeiro fluxo que as empresas automatizam.", {"type": "cards", "itens": [["🔑", "Login", "quebrou: ninguém entra"], ["🛒", "Carrinho", "quebrou: ninguém compra", "#69a7ff"], ["💳", "Checkout", "quebrou: ninguém paga", "#ff6b6b"]], "titulo": "O CAMINHO DO DINHEIRO"}),  # pra que / quando
+    ("Antes de começar, uma faxina no config. Ele veio cheio de comentários em inglês: as linhas que começam com barra e asterisco, ou com duas barras. Eles só explicam, o Playwright ignora. Então apaga todos, e as linhas em branco que sobram.",
+     edc("\n".join(C34F), "Faxina: saem os comentários de fábrica", arquivo="playwright.config.js", pastas=ARV_U, apagar=APAGA_CFG, apagar_em=0.8, apagar_segura=7.0,
+         rolar=True, rolar_de=1.6, rolar_dur=5.5, fonte=20)),
+    ("Ficou assim: o mesmo config, só com o que a gente usa. Nada mudou no funcionamento. É assim que ele vai estar até o fim do projeto.",
+     edc("\n".join(CFG_LIMPO), "O config limpo: só o que a gente usa", arquivo="playwright.config.js", pastas=ARV_U, rolar=True, rolar_de=2.0, rolar_dur=2.5, fonte=22)),
     ("Depois do login, cada produto tem um botão Add to cart. Clica com o botão direito e Inspecionar: data-test igual add-to-cart-sauce-labs-backpack.",
      {"type": "devtools", "media": "site_sauce_produtos_dev", "url": SAUCE, "acoes": LOGIN, "inspecionar": "[data-test=\"add-to-cart-sauce-labs-backpack\"]",
       "attrs": ["class", "data-test", "id", "name"], "realce": ["data-test"], "realce_em": 4.0, "realce_rotulo": "este", "legenda": "data-test do botão Add to cart"}),
@@ -133,9 +147,13 @@ AULAS.append(projeto(36, "MÓDULO 8 · AULA 36", "Finalizando a compra", [
 
 # ---------- Aula 37 ----------
 L_BE = ln(C36, "test.beforeEach")
+_C24_37 = cod(24); _LG37 = [ln(_C24_37, "SAUCE_USER"), ln(_C24_37, "SAUCE_PASSWORD"), ln(_C24_37, "login-button")]
+assert _LG37 == [_LG37[0], _LG37[0] + 1, _LG37[0] + 2]
 AULAS.append(projeto(37, "MÓDULO 8 · AULA 37", "Percebeu que estamos copiando código?", [
-    ("Olha o login no login ponto spec, e olha o login no compra ponto spec. É o mesmo código, duas vezes.",
-     edc(trecho(C36, 1, L_BE + 6), "O mesmo login do login.spec.js", arquivo="compra.spec.js", pastas=ARV_C, destaque=list(range(L_BE + 2, L_BE + 5)), destaque_em=0.6, fonte=24)),
+    ("Olha o login no login ponto spec: preenche o usuário, a senha, e clica.",
+     edc(_C24_37, "O login no login.spec.js", arquivo="login.spec.js", pastas=ARV_C, destaque=_LG37, destaque_em=0.6, fonte=22)),
+    ("Agora olha o login no compra ponto spec. É o mesmo código, duas vezes.",
+     edc(C36, "O mesmo login, no compra.spec.js", arquivo="compra.spec.js", pastas=ARV_C, destaque=list(range(L_BE + 2, L_BE + 5)), destaque_em=0.6, fonte=22)),
     ("Agora imagina dez arquivos de teste. Se o botão de login mudar, você arruma em dez lugares.",
      {"type": "cards", "itens": [["📄", "10 arquivos", "o mesmo login em todos"], ["✎", "O botão mudou?", "arruma em 10 lugares", VERM]]}),
     ("A solução é guardar o jeito de usar cada página num lugar só. Isso se chama Page Object: o objeto da página.",
@@ -432,7 +450,8 @@ AULAS.append(projeto(42, "MÓDULO 8 · AULA 42", "Indo além - login uma vez só
     ("Agora o compra ponto spec. O login não precisa mais acontecer aqui. Então apaga o import do LoginPage, o describe, e o before each inteiro.",
      edc(C41, "Sai o login: import, describe e beforeEach", arquivo="compra.spec.js", pastas=ARV_AUTH, apagar=AP42, apagar_em=2.6, fonte=22)),
     ("Lá no fim do arquivo, apaga também o fechamento do describe. E seleciona tudo e aperta Shift Tab, pra o teste voltar pro canto esquerdo.",
-     edc(J(C41_SEM), "Sai o fechamento do describe", arquivo="compra.spec.js", pastas=ARV_AUTH, rolar=True, rolar_de=0.8, apagar=[len(C41_SEM)], apagar_em=3.0, fonte=22)),
+     edc(J(C41_SEM), "Sai o fechamento do describe", arquivo="compra.spec.js", pastas=ARV_AUTH, rolar=True, rolar_de=0.8, apagar=[len(C41_SEM)], apagar_em=3.0, fonte=22,
+         recuo=[[i + 1 for i, l in enumerate(C41_SEM) if l.strip().startswith("test('compra")][0], len(C41_SEM) - 1, -2, 5.0])),
     ("E no lugar do login, depois dos imports: test ponto use, storage state, e o caminho do arquivo. Use esse login salvo.",
      edc(J([l for i, l in enumerate(C42L) if i + 1 != L_GOTO42]), "test.use({ storageState }) = use o login salvo", arquivo="compra.spec.js", pastas=ARV_AUTH, digitar=True, digitar_de=L_USE, digitar_ate=L_USE, fonte=22)),
     ("Só falta um detalhe: o teste não passa mais pela tela de login, então ninguém abre o site. O primeiro passo começa abrindo direto a página de produtos: page ponto goto, barra inventory ponto html.",

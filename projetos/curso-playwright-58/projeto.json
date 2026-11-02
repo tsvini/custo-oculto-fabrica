@@ -187,6 +187,33 @@
        }
       },
       {
+       "text": "A mensagem aparece embaixo, num parágrafo: botão direito, Inspecionar. Id igual result.",
+       "scene": {
+        "type": "devtools",
+        "media": "dev58",
+        "url": "https://the-internet.herokuapp.com/javascript_alerts",
+        "acoes": [
+         {
+          "click": "button:has-text('Click for JS Alert')"
+         }
+        ],
+        "inspecionar": "#result",
+        "titulo": "the-internet.herokuapp.com/javascript_alerts",
+        "attrs": [
+         "id",
+         "class",
+         "type",
+         "name"
+        ],
+        "realce": [
+         "id"
+        ],
+        "realce_em": 4.0,
+        "realce_rotulo": "#result",
+        "legenda": "Inspecionar: id=\"result\""
+       }
+      },
+      {
        "text": "No fim, confere a mensagem: You successfully clicked an alert.",
        "scene": {
         "type": "editor",

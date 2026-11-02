@@ -165,6 +165,28 @@
        }
       },
       {
+       "text": "De onde vêm os seletores da Lojinha? Botão direito no campo de usuário, e Inspecionar: data-test igual usuario. Do mesmo jeito: senha, entrar, e produto, em cada card.",
+       "scene": {
+        "type": "devtools",
+        "media": "dev66",
+        "url": "https://tsvini.github.io/custo-oculto-fabrica/loja/",
+        "inspecionar": "[data-test=\"usuario\"]",
+        "titulo": "Lojinha do Leigo",
+        "attrs": [
+         "class",
+         "data-test",
+         "id",
+         "type"
+        ],
+        "realce": [
+         "data-test"
+        ],
+        "realce_em": 4.0,
+        "realce_rotulo": "usuario",
+        "legenda": "Inspecionar: data-test=\"usuario\""
+       }
+      },
+      {
        "text": "Dentro da pasta nivel2, cria o mock ponto spec ponto js.",
        "scene": {
         "type": "menu",

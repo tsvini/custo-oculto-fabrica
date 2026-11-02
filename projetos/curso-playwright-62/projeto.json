@@ -120,6 +120,29 @@
        }
       },
       {
+       "text": "As duas caixas, no Inspecionar: id igual column a, e column b.",
+       "scene": {
+        "type": "devtools",
+        "media": "dev62",
+        "url": "https://the-internet.herokuapp.com/drag_and_drop",
+        "acoes": [],
+        "inspecionar": "#column-a",
+        "titulo": "the-internet.herokuapp.com/drag_and_drop",
+        "attrs": [
+         "id",
+         "class",
+         "type",
+         "name"
+        ],
+        "realce": [
+         "id"
+        ],
+        "realce_em": 4.0,
+        "realce_rotulo": "#column-a",
+        "legenda": "Inspecionar: id=\"column-a\" e id=\"column-b\""
+       }
+      },
+      {
        "text": "Um comando: drag to. Arraste até.",
        "scene": {
         "type": "editor",

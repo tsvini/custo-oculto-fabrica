@@ -125,6 +125,29 @@
        }
       },
       {
+       "text": "E o usuário, no Inspecionar: cada foto fica numa caixa com a classe figure. No código, classe vai com um ponto na frente: ponto figure.",
+       "scene": {
+        "type": "devtools",
+        "media": "dev61",
+        "url": "https://the-internet.herokuapp.com/hovers",
+        "acoes": [],
+        "inspecionar": ".figure",
+        "titulo": "the-internet.herokuapp.com/hovers",
+        "attrs": [
+         "id",
+         "class",
+         "type",
+         "name"
+        ],
+        "realce": [
+         "class"
+        ],
+        "realce_em": 4.0,
+        "realce_rotulo": ".figure",
+        "legenda": "Inspecionar: class=\"figure\" vira .figure"
+       }
+      },
+      {
        "text": "Antes do hover: not to be visible. Depois do hover: to be visible. Assim a gente testa o comportamento, não só roda um comando.",
        "scene": {
         "type": "editor",

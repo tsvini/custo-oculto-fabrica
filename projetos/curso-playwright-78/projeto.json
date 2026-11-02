@@ -191,6 +191,45 @@
        }
       },
       {
+       "text": "Os data-test da página de produtos, no Inspecionar: a caixa de ordenar tem data-test igual ordenar. E do mesmo jeito: titulo, produto, preco e nome.",
+       "scene": {
+        "type": "devtools",
+        "media": "dev78",
+        "url": "https://tsvini.github.io/custo-oculto-fabrica/loja/",
+        "acoes": [
+         {
+          "fill": [
+           "[data-test=\"usuario\"]",
+           "cliente"
+          ]
+         },
+         {
+          "fill": [
+           "[data-test=\"senha\"]",
+           "leigo123"
+          ]
+         },
+         {
+          "click": "[data-test=\"entrar\"]",
+          "espera": 1800
+         }
+        ],
+        "inspecionar": "[data-test=\"ordenar\"]",
+        "titulo": "Lojinha do Leigo",
+        "attrs": [
+         "class",
+         "data-test",
+         "id"
+        ],
+        "realce": [
+         "data-test"
+        ],
+        "realce_em": 4.0,
+        "realce_rotulo": "ordenar",
+        "legenda": "Inspecionar: data-test=\"ordenar\""
+       }
+      },
+      {
        "text": "Dentro de pages, cria o ProdutosPage ponto js.",
        "scene": {
         "type": "menu",

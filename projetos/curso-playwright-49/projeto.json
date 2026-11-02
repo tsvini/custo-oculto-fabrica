@@ -175,6 +175,44 @@
        }
       },
       {
+       "text": "E de onde vem esse error? Errando a senha, botão direito na mensagem vermelha, e Inspecionar. Lá está: data-test igual error.",
+       "scene": {
+        "type": "devtools",
+        "media": "dev49",
+        "url": "https://www.saucedemo.com/",
+        "acoes": [
+         {
+          "fill": [
+           "#user-name",
+           "standard_user"
+          ]
+         },
+         {
+          "fill": [
+           "#password",
+           "senha_errada"
+          ]
+         },
+         {
+          "click": "#login-button"
+         }
+        ],
+        "inspecionar": "[data-test=\"error\"]",
+        "attrs": [
+         "class",
+         "data-test",
+         "id",
+         "name"
+        ],
+        "realce": [
+         "data-test"
+        ],
+        "realce_em": 4.0,
+        "realce_rotulo": "error",
+        "legenda": "Inspecionar: data-test=\"error\""
+       }
+      },
+      {
        "text": "Os desafios vão num arquivo só deles. Dentro da pasta tests, cria o desafios ponto spec ponto js.",
        "scene": {
         "type": "menu",

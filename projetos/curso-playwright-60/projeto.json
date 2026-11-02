@@ -119,6 +119,29 @@
        }
       },
       {
+       "text": "E o seletor do quadro? Botão direito no editor, e Inspecionar: é um iframe, com id igual mce zero ifr.",
+       "scene": {
+        "type": "devtools",
+        "media": "dev60",
+        "url": "https://the-internet.herokuapp.com/iframe",
+        "acoes": [],
+        "inspecionar": "#mce_0_ifr",
+        "titulo": "the-internet.herokuapp.com/iframe",
+        "attrs": [
+         "id",
+         "class",
+         "type",
+         "name"
+        ],
+        "realce": [
+         "id"
+        ],
+        "realce_em": 4.0,
+        "realce_rotulo": "#mce_0_ifr",
+        "legenda": "Inspecionar: iframe com id=\"mce_0_ifr\""
+       }
+      },
+      {
        "text": "Primeiro, você diz em qual quadro procurar: frame locator.",
        "scene": {
         "type": "editor",

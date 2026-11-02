@@ -186,6 +186,48 @@
        }
       },
       {
+       "text": "E o botão Remove: depois de adicionar a mochila, botão direito nele, e Inspecionar. Data-test igual remove sauce labs backpack.",
+       "scene": {
+        "type": "devtools",
+        "media": "dev51",
+        "url": "https://www.saucedemo.com/",
+        "acoes": [
+         {
+          "fill": [
+           "#user-name",
+           "standard_user"
+          ]
+         },
+         {
+          "fill": [
+           "#password",
+           "secret_sauce"
+          ]
+         },
+         {
+          "click": "#login-button"
+         },
+         {
+          "click": "[data-test=\"add-to-cart-sauce-labs-backpack\"]",
+          "espera": 1400
+         }
+        ],
+        "inspecionar": "[data-test=\"remove-sauce-labs-backpack\"]",
+        "attrs": [
+         "class",
+         "data-test",
+         "id",
+         "name"
+        ],
+        "realce": [
+         "data-test"
+        ],
+        "realce_em": 4.0,
+        "realce_rotulo": "remove-sauce-labs-backpack",
+        "legenda": "Inspecionar: data-test=\"remove-sauce-labs-backpack\""
+       }
+      },
+      {
        "text": "Os desafios daqui pra frente começam logados. Lembra do login salvo da aula quarenta e dois? Dentro do describe, uma caixa nova chamada logado. Nela, o test ponto use com o storage state, e um before each que abre direto a página de produtos.",
        "scene": {
         "type": "editor",

@@ -37,6 +37,12 @@ def video(media, legenda, acoes, url=SAUCE, logado=False, **kw):
     return d
 
 
+def dev(media, dt, legenda, acoes=(), logado=False):
+    """DevTools de verdade: botão direito › Inspecionar no elemento com esse data-test (de onde vem o seletor)"""
+    return {"type": "devtools", "media": media, "url": SAUCE, "acoes": (LOGIN if logado else []) + [a for a in acoes], "inspecionar": f"[data-test=\"{dt}\"]",
+            "attrs": ["class", "data-test", "id", "name"], "realce": ["data-test"], "realce_em": 4.0, "realce_rotulo": dt, "legenda": legenda}
+
+
 def solucao(c, chave, legenda, **kw):
     """o desafios.spec.js com o teste novo sendo digitado (e rolado até ele)"""
     a = ln(c, chave); b = a
@@ -100,6 +106,8 @@ def preencher():
          desafio("1", "Senha errada", [["👤", "usuário certo: standard_user"], ["🔑", "senha errada (qualquer uma)", VERM], ["✓", "confere a mensagem de erro", AMARELO]])),
         ("Dica: a mensagem fica no data-test error, e contém do not match.",
          video("dica49", "data-test=\"error\" · contém do not match", [{"fill": ["#user-name", "standard_user"]}, {"fill": ["#password", "senha_errada"]}, {"click": "#login-button"}])),
+        ("E de onde vem esse error? Errando a senha, botão direito na mensagem vermelha, e Inspecionar. Lá está: data-test igual error.",
+         dev("dev49", "error", "Inspecionar: data-test=\"error\"", [{"fill": ["#user-name", "standard_user"]}, {"fill": ["#password", "senha_errada"]}, {"click": "#login-button"}])),
         ("O começo de sempre: o import, um describe chamado Desafios, e o before each que abre o site.",
          edc(JJ(C.split("\n")[:CAB49] + ["});"]), "O começo: import, describe e beforeEach", arquivo="desafios.spec.js", pastas=ARV_D, digitar=True, digitar_de=1, digitar_ate=CAB49, fonte=26,
              criar=[["Os desafios vão num arquivo só deles. Dentro da pasta tests, cria o desafios ponto spec ponto js.", "desafios.spec.js"]])),
@@ -137,6 +145,8 @@ def preencher():
         ("Pausa e tenta.", desafio("3", "Remover do carrinho", [["＋", "adiciona a mochila"], ["−", "remove de novo", AZUL], ["✓", "o carrinho fica vazio", AMARELO]])),
         ("Dica: depois de adicionar, o botão vira Remove, com data-test remove-sauce-labs-backpack. E quando o carrinho fica vazio, o numerozinho some da página.",
          video("dica51", "Add to cart vira Remove · o numerozinho some", [ADD, REM], logado=True)),
+        ("E o botão Remove: depois de adicionar a mochila, botão direito nele, e Inspecionar. Data-test igual remove sauce labs backpack.",
+         dev("dev51", "remove-sauce-labs-backpack", "Inspecionar: data-test=\"remove-sauce-labs-backpack\"", [ADD], logado=True)),
         ("Os desafios daqui pra frente começam logados. Lembra do login salvo da aula quarenta e dois? Dentro do describe, uma caixa nova chamada logado. Nela, o test ponto use com o storage state, e um before each que abre direto a página de produtos.",
          inteiro(edc(JJ(C.split("\n")[L_LOG51 - 2:L_BE51 + 2] + ["  });", "});"]), "describe('logado') + test.use", arquivo="desafios.spec.js", pastas=ARV_D, linha0=L_LOG51 - 1, digitar=True, digitar_de=2, digitar_ate=L_BE51 + 2 - L_LOG51 + 1, fonte=22), C.split("\n")[:L_LOG51 - 2])),
         ("Solução: pra conferir que ele saiu da página, to have count zero:", ed),
@@ -155,6 +165,10 @@ def preencher():
          {"type": "traducao", "titulo": "O BUG CLÁSSICO DA ORDENAÇÃO", "linhas": [["7.99 · 9.99 · 12.50", "certo: como número"], ["12.50 · 7.99 · 9.99", "errado: como texto"]]}),
         ("Pausa e tenta.", desafio("4", "Ordenar por preço", [["⇅", "ordena do menor pro maior"], ["✓", "o primeiro preço é o menor", AMARELO]])),
         ("Dica: a caixa de ordenar é um select, uma caixa de opções.", video("dica52", "A caixa de ordenar: um select", [SEL], logado=True)),
+        ("De onde vêm os seletores? A caixa de ordenar, no Inspecionar: data-test igual product sort container.",
+         dev("dev52_sort", "product-sort-container", "Inspecionar: data-test=\"product-sort-container\"", logado=True)),
+        ("E o preço de cada produto: data-test igual inventory item price.",
+         dev("dev52_preco", "inventory-item-price", "Inspecionar: data-test=\"inventory-item-price\"", logado=True)),
         ("Pra escolher uma opção, existe o select option, escolha a opção. A do menor preço se chama lohi, de low to high: do baixo pro alto.",
          {"type": "traducao", "codigo": "selectOption('lohi')", "partes": [["selectOption", "escolha a opção"], ["('lohi')", "low to high: do baixo pro alto"]], "passo": 2.4}),
         ("Solução: como a gente conhece os produtos desse site de treino, a conferência é simples: depois de ordenar, o primeiro preço é sete e noventa e nove.", ed),
@@ -175,6 +189,8 @@ def preencher():
         ("Pausa e tenta.", desafio("5", "Logout", [["☰", "abre o menu"], ["⎋", "clica em Logout", AZUL], ["✓", "o botão de Login voltou", AMARELO]])),
         ("Dica: o menu é aquele botão de três risquinhos, com nome Open Menu. Lá dentro tem o Logout.",
          video("dica53", "☰ Open Menu › Logout", [{"click": "#react-burger-menu-btn", "espera": 2500}], logado=True, espera_fim=1500)),
+        ("E o Logout: com o menu aberto, botão direito nele, e Inspecionar. Data-test igual logout sidebar link.",
+         dev("dev53", "logout-sidebar-link", "Inspecionar: data-test=\"logout-sidebar-link\"", [{"click": "#react-burger-menu-btn"}], logado=True)),
         ("Solução: clica no menu, clica no logout, e confere que o botão de Login voltou.", ed),
         ("Roda.", rodando(C, ab, "Passou: saiu e o Login voltou", MENU, "run53", 53, logado=True)),
         ("Te vejo no desafio final!", fim("PRÓXIMO: DESAFIO FINAL")),
@@ -194,6 +210,8 @@ def preencher():
          desafio("FINAL", "Compra com dois produtos", [["🎒", "mochila + lanterna da bike"], ["🛒", "carrinho, checkout e dados", AZUL], ["$", "confere o total", AMARELO], ["✓", "finaliza a compra", AMARELO]])),
         ("Dica: a mochila e a lanterna da bicicleta, bike light. O total fica no data-test total-label. Com os preços desse site de treino, o total conhecido é quarenta e três e dezoito.",
          video("dica54", "total-label: $43.18", DOIS, logado=True, delay_letra=45, espera_fim=2500)),
+        ("E o total, na tela de revisão: botão direito, e Inspecionar. Data-test igual total label.",
+         dev("dev54", "total-label", "Inspecionar: data-test=\"total-label\"", DOIS, logado=True)),
         ("Solução, passo a passo. Adiciona os dois produtos, e confere que o carrinho mostra dois. Vai pro carrinho e pro checkout, e preenche os dados. Antes de finalizar, a conferência mais importante: o total, quarenta e três e dezoito. E por último, o finish e a mensagem final.", ed),
         ("Roda e olha o fluxo inteiro.", rodando(C, ab, "O fluxo inteiro, sozinho", DOIS + [{"click": "[data-test=\"finish\"]"}], "run54", 54, logado=True)),
         ("Se você conseguiu montar boa parte desse desafio sozinho, você já está juntando seletores, ações e conferências sem copiar um roteiro pronto. Esse é um grande passo.",

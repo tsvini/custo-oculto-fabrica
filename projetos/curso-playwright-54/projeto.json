@@ -216,6 +216,78 @@
        }
       },
       {
+       "text": "E o total, na tela de revisão: botão direito, e Inspecionar. Data-test igual total label.",
+       "scene": {
+        "type": "devtools",
+        "media": "dev54",
+        "url": "https://www.saucedemo.com/",
+        "acoes": [
+         {
+          "fill": [
+           "#user-name",
+           "standard_user"
+          ]
+         },
+         {
+          "fill": [
+           "#password",
+           "secret_sauce"
+          ]
+         },
+         {
+          "click": "#login-button"
+         },
+         {
+          "click": "[data-test=\"add-to-cart-sauce-labs-backpack\"]"
+         },
+         {
+          "click": "[data-test=\"add-to-cart-sauce-labs-bike-light\"]"
+         },
+         {
+          "click": "[data-test=\"shopping-cart-link\"]"
+         },
+         {
+          "click": "[data-test=\"checkout\"]"
+         },
+         {
+          "fill": [
+           "[data-test=\"firstName\"]",
+           "Maria"
+          ]
+         },
+         {
+          "fill": [
+           "[data-test=\"lastName\"]",
+           "Silva"
+          ]
+         },
+         {
+          "fill": [
+           "[data-test=\"postalCode\"]",
+           "88000-000"
+          ]
+         },
+         {
+          "click": "[data-test=\"continue\"]",
+          "espera": 1500
+         }
+        ],
+        "inspecionar": "[data-test=\"total-label\"]",
+        "attrs": [
+         "class",
+         "data-test",
+         "id",
+         "name"
+        ],
+        "realce": [
+         "data-test"
+        ],
+        "realce_em": 4.0,
+        "realce_rotulo": "total-label",
+        "legenda": "Inspecionar: data-test=\"total-label\""
+       }
+      },
+      {
        "text": "Solução, passo a passo. Adiciona os dois produtos, e confere que o carrinho mostra dois. Vai pro carrinho e pro checkout, e preenche os dados. Antes de finalizar, a conferência mais importante: o total, quarenta e três e dezoito. E por último, o finish e a mensagem final.",
        "scene": {
         "type": "editor",

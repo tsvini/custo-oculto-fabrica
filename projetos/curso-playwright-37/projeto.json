@@ -78,13 +78,45 @@
      "chapter": "",
      "sentences": [
       {
-       "text": "Olha o login no login ponto spec, e olha o login no compra ponto spec. É o mesmo código, duas vezes.",
+       "text": "Olha o login no login ponto spec: preenche o usuário, a senha, e clica.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "login.spec.js",
+        "codigo": "import { test, expect } from '@playwright/test';\n\ntest.describe('Login', () => {\n  test.beforeEach(async ({ page }) => {\n    await page.goto('/');\n  });\n\n  test('entra com usuário e senha', async ({ page }) => {\n    await page.getByTestId('username').fill(process.env.SAUCE_USER);\n    await page.getByTestId('password').fill(process.env.SAUCE_PASSWORD);\n    await page.getByTestId('login-button').click();\n    await expect(page).toHaveURL(/inventory/);\n    await expect(page.getByText('Products')).toBeVisible();\n    await expect(page.getByText('Sauce Labs Backpack')).toContainText('Backpack');\n    await expect(page.getByRole('button', { name: 'Add to cart' })).toHaveCount(6);\n  });\n\n  test('mostra erro para usuário bloqueado', async ({ page }) => {\n    await page.getByTestId('username').fill('locked_out_user');\n    await page.getByTestId('password').fill(process.env.SAUCE_PASSWORD);\n    await page.getByTestId('login-button').click();\n    await expect(page.getByText('locked out')).toBeVisible();\n  });\n});",
+        "legenda": "O login no login.spec.js",
+        "fonte": 22,
+        "digitar": false,
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  node_modules/",
+         "  tests/",
+         "    compra.spec.js",
+         "    login.spec.js",
+         "    usuarios.spec.js",
+         "  .env",
+         "  .env.example",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "destaque": [
+         9,
+         10,
+         11
+        ],
+        "destaque_em": 0.6
+       }
+      },
+      {
+       "text": "Agora olha o login no compra ponto spec. É o mesmo código, duas vezes.",
        "scene": {
         "type": "editor",
         "arquivo": "compra.spec.js",
-        "codigo": "import { test, expect } from '@playwright/test';\n\ntest.describe('Compra', () => {\n  test.beforeEach(async ({ page }) => {\n    await page.goto('/');\n    await page.getByTestId('username').fill(process.env.SAUCE_USER);\n    await page.getByTestId('password').fill(process.env.SAUCE_PASSWORD);\n    await page.getByTestId('login-button').click();\n  });\n",
-        "legenda": "O mesmo login do login.spec.js",
-        "fonte": 24,
+        "codigo": "import { test, expect } from '@playwright/test';\n\ntest.describe('Compra', () => {\n  test.beforeEach(async ({ page }) => {\n    await page.goto('/');\n    await page.getByTestId('username').fill(process.env.SAUCE_USER);\n    await page.getByTestId('password').fill(process.env.SAUCE_PASSWORD);\n    await page.getByTestId('login-button').click();\n  });\n\n  test('compra uma mochila do começo ao fim', async ({ page }) => {\n    await page.getByTestId('add-to-cart-sauce-labs-backpack').click();\n    await expect(page.getByTestId('shopping-cart-badge')).toHaveText('1');\n    await page.getByTestId('shopping-cart-link').click();\n    await page.getByTestId('checkout').click();\n    await page.getByTestId('firstName').fill('Maria');\n    await page.getByTestId('lastName').fill('Silva');\n    await page.getByTestId('postalCode').fill('88000-000');\n    await page.getByTestId('continue').click();\n    await page.getByTestId('finish').click();\n    await expect(page.getByTestId('complete-header')).toHaveText('Thank you for your order!');\n  });\n});",
+        "legenda": "O mesmo login, no compra.spec.js",
+        "fonte": 22,
         "digitar": false,
         "pastas": [
          "meu-primeiro-playwright",

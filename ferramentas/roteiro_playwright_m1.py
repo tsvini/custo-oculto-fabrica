@@ -90,6 +90,7 @@ def inteiro(cena, antes, depois=(), foco=None):
     for k in ("destaque", "apagar", "descomentar", "marca_inicio"):
         if c.get(k): c[k] = [sh(v) for v in c[k]]
     if c.get("trocar"): c["trocar"] = [[sh(p[0])] + list(p[1:]) for p in c["trocar"]]
+    if c.get("recuo"): c["recuo"] = [sh(c["recuo"][0]), sh(c["recuo"][1])] + list(c["recuo"][2:])
     if c.get("digitar_faixas"): c["digitar_faixas"] = [[sh(a), sh(b)] for a, b in c["digitar_faixas"]]
     if off or depois:
         ini = min([v for v in [c.get("digitar_de")] + (c.get("destaque") or []) + (c.get("apagar") or []) + [p[0] for p in c.get("trocar") or []] + [a for a, b in c.get("digitar_faixas") or []] if v] or [off + 1])

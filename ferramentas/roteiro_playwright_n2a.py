@@ -48,6 +48,12 @@ def ed(legenda, n_fim, de=None, ate_l=None, mostra_de=None, **kw):
     return edc(cod, legenda, **d)
 
 
+def devi(media, caminho, sel, attr, rotulo, legenda, acoes=()):
+    """DevTools de verdade no the-internet: botão direito › Inspecionar (de onde vem o seletor)"""
+    return {"type": "devtools", "media": media, "url": SITE + caminho, "acoes": list(acoes), "inspecionar": sel, "titulo": "the-internet.herokuapp.com" + caminho,
+            "attrs": ["id", "class", "type", "name"], "realce": [attr], "realce_em": 4.0, "realce_rotulo": rotulo, "legenda": legenda}
+
+
 def tr(codigo, partes, passo=1.4):
     return {"type": "traducao", "codigo": codigo, "partes": partes, "passo": passo}
 
@@ -119,6 +125,8 @@ aula(56, "O formulário mudou", [
      ed("toBeChecked = esteja marcada", L_TBC + 2, de=L_TBC, ate_l=L_TBC + 2, mostra_de=a)),
     ("Agora o segundo campo: aqui a pessoa escolhe uma opção. Você já viu isso no desafio quatro: select option.",
      video("n56_dropdown", "A lista de opções: selectOption", url=SITE + "/dropdown", acoes=[{"select": ["#dropdown", "1"], "espera": 900}, {"select": ["#dropdown", "2"], "espera": 900}])),
+    ("E o seletor da lista? Botão direito nela, e Inspecionar: id igual dropdown. No código, o id vai com uma cerquilha na frente.",
+     devi("dev56", "/dropdown", "#dropdown", "id", "#dropdown", "Inspecionar: id=\"dropdown\" vira #dropdown")),
     ("E a conferência: to have value, tenha o valor dois.", ed("toHaveValue = tenha o valor", b, de=L_DD - 1, ate_l=L_HV, mostra_de=a + 3)),
     ("E por que o valor, e não o texto? O texto é o que a pessoa vê na tela. O valor é o que vai pro sistema quando ela salva. E é ele que precisa estar certo.", {'type': 'traducao', 'titulo': 'TEXTO × VALOR', 'linhas': [['Option 2', 'o que a pessoa vê'], ['value="2"', 'o que vai pro sistema']]}),
     ("Roda e olha.", roda("checkbox e dropdown", "checkbox", "Marcou, desmarcou e escolheu", url=SITE + "/checkboxes",
@@ -135,6 +143,8 @@ aula(57, "O usuário precisa enviar um arquivo", [
     ("Dentro, qualquer texto. Esse é o arquivo que o teste vai enviar.",
      edc("Meu currículo de testador", "arquivos/exemplo.txt", arquivo="exemplo.txt", pastas=ARV, digitar=True, digitar_de=1, digitar_ate=1, fonte=30,
          criar=[["Primeiro, um arquivo de exemplo dentro do projeto. Na pasta do projeto, cria uma pasta nova chamada arquivos.", "arquivos/"], ["E dentro dela, um arquivo de texto: exemplo ponto txt.", "exemplo.txt"]])),
+    ("E o campo, no Inspecionar: um input do tipo file, com id igual file upload. E o botão Upload tem o id file submit.",
+     devi("dev57", "/upload", "#file-upload", "id", "#file-upload", "Inspecionar: id=\"file-upload\"")),
     ("Agora: set input files, coloque este arquivo no campo.", ed("setInputFiles = coloque este arquivo", L_UP, de=a, ate_l=L_UP, mostra_de=a)),
     ("set input files: coloque este arquivo no campo.", tr(".setInputFiles('arquivos/exemplo.txt')", [[".setInputFiles", "coloque no campo"], ["('arquivos/exemplo.txt')", "este arquivo"]], 1.2)),
     ("Repara: o Playwright não abre aquela janela do Windows pra procurar o arquivo com o mouse. Ele entrega o arquivo direto pro campo.",
@@ -155,6 +165,8 @@ aula(58, "Uma caixa travou a página", [
     ("Quando aparecer um alerta, aceite.", tr("page.on('dialog', ... dialog.accept())", [["page.on('dialog'", "quando aparecer um alerta"], ["dialog.accept()", "aceite"]], 1.0)),
     ("A ordem é importante: primeiro prepara, depois clica. Se você tentar reagir só depois, o alerta já passou.",
      {"type": "cards", "titulo": "A ORDEM", "itens": [["1", "Prepara", "page.on('dialog')"], ["2", "Clica", "no botão", AZUL], ["3", "Aparece", "o alerta", AMARELO], ["4", "Aceita", "sozinho", VERDE]]}),
+    ("A mensagem aparece embaixo, num parágrafo: botão direito, Inspecionar. Id igual result.",
+     devi("dev58", "/javascript_alerts", "#result", "id", "#result", "Inspecionar: id=\"result\"", [{"click": "button:has-text('Click for JS Alert')"}])),
     ("No fim, confere a mensagem: You successfully clicked an alert.", ed("A mensagem do resultado", b, de=L_CLK, ate_l=b - 1, mostra_de=a)),
     ("Roda.", roda("alerta do navegador", "alerta", "Preparou, clicou e aceitou", media="n58_alerta", seg="3.3s")),
     ("E sem esse preparo? O Playwright cancela o alerta sozinho, e o teste segue em frente como se nada tivesse acontecido.", {'type': 'cards', 'itens': [['⚙', 'Sem o page.on', 'o Playwright cancela sozinho', '#ff6b6b'], ['✓', 'Com o page.on', 'você decide o que fazer', '#3fd68a']]}),
@@ -181,6 +193,8 @@ aula(60, "Tem uma página dentro da página", [
     ("Olha essa tela: tem um editor de texto no meio. Só que o seletor normal não acha nada lá dentro.", video("n60_iframe", "Um editor no meio da página", url=SITE + "/iframe", espera_fim=3000)),
     ("Por quê? Porque aquele pedaço é outra página, encaixada nesta. Isso se chama iframe.",
      {"type": "cards", "titulo": "IFRAME", "itens": [["▭", "A página", "the-internet"], ["▣", "O iframe", "outra página dentro", AZUL], ["✎", "O editor", "lá dentro", AMARELO]]}),
+    ("E o seletor do quadro? Botão direito no editor, e Inspecionar: é um iframe, com id igual mce zero ifr.",
+     devi("dev60", "/iframe", "#mce_0_ifr", "id", "#mce_0_ifr", "Inspecionar: iframe com id=\"mce_0_ifr\"")),
     ("Primeiro, você diz em qual quadro procurar: frame locator.", ed("frameLocator = procure dentro deste quadro", L_FR, de=a, ate_l=L_FR, mostra_de=a)),
     ("Procure dentro deste quadro.", tr("page.frameLocator('#mce_0_ifr')", [["frameLocator", "procure dentro do quadro"], ["('#mce_0_ifr')", "este quadro"]], 1.0)),
     ("O frame locator recebe o seletor do iframe. Aqui, o id dele. E daí pra frente, tudo o que você procura é lá dentro.", {'type': 'traducao', 'titulo': 'ENTRANDO NO QUADRO', 'linhas': [["frameLocator('#mce_0_ifr')", 'este quadro, pelo id'], ["getByText('...')", 'procure lá dentro']]}),
@@ -196,6 +210,8 @@ aula(61, "O botão só aparece quando passo o mouse", [
     ("Chegou um relato de bug: não consigo clicar na opção, porque ela só aparece quando passo o mouse no usuário.", tarefa("RELATO DE BUG", "Só aparece quando passo o mouse", VERM)),
     ("Vamos reproduzir: sem o mouse em cima, o nome está escondido. Com o mouse, ele aparece.", video("n61_hover", "Com o mouse em cima, o nome aparece")),
     ("No Playwright: hover. Passe o mouse por cima.", tr("await usuario.hover();", [["usuario", "o usuário"], [".hover()", "passe o mouse por cima"]], 1.0)),
+    ("E o usuário, no Inspecionar: cada foto fica numa caixa com a classe figure. No código, classe vai com um ponto na frente: ponto figure.",
+     devi("dev61", "/hovers", ".figure", "class", ".figure", "Inspecionar: class=\"figure\" vira .figure")),
     ("Antes do hover: not to be visible. Depois do hover: to be visible. Assim a gente testa o comportamento, não só roda um comando.",
      ed("Antes escondido · depois visível", b, de=a, ate_l=b - 1, mostra_de=a)),
     ("Roda e olha o mouse passando.", roda("hover", "hover", "O nome apareceu", media="n61_hover", seg="2.9s")),
@@ -207,6 +223,8 @@ a, b = bloco("arrastar e soltar"); L_DRAG = ln("dragTo")
 aula(62, "O usuário precisa arrastar um item", [
     ("Tem tela em que a pessoa reorganiza as coisas arrastando: quadro de tarefas, lista, arquivos.", titulo(62, "ARRASTAR")),
     ("No nosso exemplo, duas caixas: A e B. A gente quer arrastar a A até a B.", video("n62_drag", "Arrastar a A até a B", url=SITE + "/drag_and_drop", acoes=[{"drag": ["#column-a", "#column-b"], "espera": 1500}])),
+    ("As duas caixas, no Inspecionar: id igual column a, e column b.",
+     devi("dev62", "/drag_and_drop", "#column-a", "id", "#column-a", "Inspecionar: id=\"column-a\" e id=\"column-b\"")),
     ("Um comando: drag to. Arraste até.", ed("dragTo = arraste até", L_DRAG, de=a, ate_l=L_DRAG, mostra_de=a)),
     ("A caixa A, arraste até a caixa B.", tr("caixaA.dragTo(caixaB)", [[".dragTo", "arraste até"], ["(caixaB)", "a caixa B"]], 1.0)),
     ("E não basta confiar que arrastou: a gente confere que a primeira caixa agora mostra B.", ed("A primeira caixa mostra B", b, de=b - 2, ate_l=b - 1, mostra_de=a)),
@@ -220,6 +238,8 @@ aula(63, "A tabela mudou de ordem e o teste quebrou", [
     ("Um problema bem real: uma tabela de clientes.", video("n63_tabela", "Uma tabela de clientes", url=SITE + "/tables", espera_fim=2500)),
     ("Dava pra dizer: pegue a segunda linha. Só que amanhã alguém ordena a tabela por nome, a pessoa muda de lugar, e o teste começa a olhar pra pessoa errada.",
      video("n63_ordem", "Ordenou: a pessoa mudou de lugar")),
+    ("A tabela, no Inspecionar: id igual table one. As linhas são row, e cada quadradinho é uma cell.",
+     devi("dev63", "/tables", "#table1", "id", "#table1", "Inspecionar: id=\"table1\"")),
     ("Então, em vez da posição, a gente procura pelo conteúdo: get by role row, filter has text.", ed("filter({ hasText }) = a linha que tem este texto", L_ROW, de=a, ate_l=L_ROW, mostra_de=a)),
     ("Ache a linha que tem este nome.", tr("getByRole('row').filter({ hasText: 'Conway' })", [["getByRole('row')", "as linhas"], [".filter({ hasText: 'Conway' })", "a que tem Conway"]], 1.0)),
     ("E dentro dessa linha, o valor devido: confere que é cinquenta dólares.", ed("O valor devido dessa pessoa", b, de=b - 2, ate_l=b - 1, mostra_de=a)),

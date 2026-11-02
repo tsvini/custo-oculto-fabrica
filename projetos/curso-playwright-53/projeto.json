@@ -181,6 +181,47 @@
        }
       },
       {
+       "text": "E o Logout: com o menu aberto, botão direito nele, e Inspecionar. Data-test igual logout sidebar link.",
+       "scene": {
+        "type": "devtools",
+        "media": "dev53",
+        "url": "https://www.saucedemo.com/",
+        "acoes": [
+         {
+          "fill": [
+           "#user-name",
+           "standard_user"
+          ]
+         },
+         {
+          "fill": [
+           "#password",
+           "secret_sauce"
+          ]
+         },
+         {
+          "click": "#login-button"
+         },
+         {
+          "click": "#react-burger-menu-btn"
+         }
+        ],
+        "inspecionar": "[data-test=\"logout-sidebar-link\"]",
+        "attrs": [
+         "class",
+         "data-test",
+         "id",
+         "name"
+        ],
+        "realce": [
+         "data-test"
+        ],
+        "realce_em": 4.0,
+        "realce_rotulo": "logout-sidebar-link",
+        "legenda": "Inspecionar: data-test=\"logout-sidebar-link\""
+       }
+      },
+      {
        "text": "Solução: clica no menu, clica no logout, e confere que o botão de Login voltou.",
        "scene": {
         "type": "editor",

@@ -103,6 +103,29 @@
        }
       },
       {
+       "text": "A tabela, no Inspecionar: id igual table one. As linhas são row, e cada quadradinho é uma cell.",
+       "scene": {
+        "type": "devtools",
+        "media": "dev63",
+        "url": "https://the-internet.herokuapp.com/tables",
+        "acoes": [],
+        "inspecionar": "#table1",
+        "titulo": "the-internet.herokuapp.com/tables",
+        "attrs": [
+         "id",
+         "class",
+         "type",
+         "name"
+        ],
+        "realce": [
+         "id"
+        ],
+        "realce_em": 4.0,
+        "realce_rotulo": "#table1",
+        "legenda": "Inspecionar: id=\"table1\""
+       }
+      },
+      {
        "text": "Então, em vez da posição, a gente procura pelo conteúdo: get by role row, filter has text.",
        "scene": {
         "type": "editor",

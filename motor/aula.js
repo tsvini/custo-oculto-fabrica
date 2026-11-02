@@ -110,7 +110,9 @@
     const baseY = y + H - PH - 40 * u, cabem = Math.floor((baseY - yy) / lh) + 1, sobra = s.rolar_ate ? clamp(Math.ceil(s.rolar_ate - cabem + 2) * lh, 0, Math.max(0, linhas.length - cabem) * lh) : Math.max(0, linhas.length - cabem) * lh;
     const rDe = s.rolar_de || 1.6, rDur = s.rolar_dur || 1.5; const rolando = s.rolar && sobra > 0;
     const t0 = rolando ? rDe + rDur + 0.3 : 0.5; const AT = rolando && s.atrasa ? rDe + rDur + 0.2 : 0;  // atrasa: apagar/trocar/destaque esperam a tela descer
-    if (rolando) yy -= sobra * easeInOut((t - rDe) / rDur);
+    // apagou muitas linhas com a tela rolada: depois que elas somem, a tela volta o tanto que o arquivo encolheu (não fica vazia)
+    const nAp = (s.apagar || []).length, kC0 = nAp ? easeInOut((t - ((s.apagar_em === undefined ? 1.0 : s.apagar_em) + AT) - (s.apagar_segura || 0.8)) / 0.5) : 0;
+    if (rolando) yy -= lerp(sobra, Math.min(sobra, Math.max(0, (linhas.length - nAp - cabem + 1) * lh)), kC0) * easeInOut((t - rDe) / rDur);
     ctx.save(); ctx.beginPath(); ctx.rect(tabX, top + 58 * u, W - sideW, y + H - PH - top - 60 * u); ctx.clip();
     const d0 = s.digitar_de || ((s.destaque && s.destaque.length) ? Math.min(...s.destaque) : 1);  // linhas antes disso já estão escritas
     const d1 = s.digitar_ate || linhas.length;  // linhas depois disso já estão escritas também
@@ -130,17 +132,23 @@
         while (q > 0 && !ok(de[de.length - q]) && !ok(de[de.length - q - 1])) q--;
         const mo = de.slice(p, de.length - q), mn = para.slice(p, para.length - q), tH = tc, tD = tH + 0.7, tY = tD + mo.length / 45 + 0.15, tF = tY + mn.length / 20;
         TR.push({ l, de, para, pre: de.slice(0, p), suf: de.slice(de.length - q), mo, mn, tH, tD, tY, tF }); tc = tF + 0.4; } }
-    const AP = s.apagar || [], tA = (s.apagar_em === undefined ? 1.0 : s.apagar_em) + AT, kR = easeOut((t - tA) / 0.4), kC = easeInOut((t - tA - 0.8) / 0.5); let num = 0;
+    const AP = s.apagar || [], tA = (s.apagar_em === undefined ? 1.0 : s.apagar_em) + AT, kR = easeOut((t - tA) / 0.4), kC = easeInOut((t - tA - (s.apagar_segura || 0.8)) / 0.5); let num = 0;  // apagar_segura: quanto tempo as linhas ficam vermelhas antes de sumir
     linhas.forEach((ln, i) => {
       const ap = AP.includes(i + 1), hf = ap ? 1 - kC : 1;
       if (ap && hf <= 0.002) { if (i + 1 <= d1) resta -= ln.length; return; }
       num += 1; const aL = ap ? a * (1 - kC) : a;
       if (ap && kR > 0) { ctx.save(); ctx.globalAlpha = 0.3 * kR * (1 - kC); ctx.fillStyle = "#ff6b6b"; ctx.fillRect(tabX, yy - lh * hf / 2, W - sideW, lh * hf); ctx.globalAlpha = kR * (1 - kC); ctx.fillRect(tabX, yy - lh * hf / 2, 6 * u, lh * hf); ctx.restore(); }
+      // recuo: [de, ate, espaços (+ Tab / − Shift+Tab), em]: as linhas ficam selecionadas (azul) e andam pro lado
+      const RC = s.recuo; let lnD = ln;
+      if (RC && i + 1 >= RC[0] && i + 1 <= RC[1]) { const tS = RC[3] + AT;
+        if (t < tS + 0.9 && ln.trim()) lnD = RC[2] > 0 ? ln.replace(new RegExp("^ {0," + RC[2] + "}"), "") : " ".repeat(-RC[2]) + ln;
+        const ks = easeOut((t - tS) / 0.25) * (1 - easeOut((t - tS - 1.8) / 0.4));
+        if (ks > 0) { ctx.save(); ctx.globalAlpha = 0.28 * ks * aL; ctx.fillStyle = "#3d7cff"; ctx.fillRect(tabX, yy - lh / 2, W - sideW, lh); ctx.restore(); } }
       const hl = (s.destaque || []).includes(i + 1);
       if (rolando && (s.marca_inicio || []).includes(i + 1)) { const hm = easeOut((t - 0.4) / 0.3) * (1 - easeOut((t - rDe - 0.6) / 0.4)); if (hm > 0) { ctx.save(); ctx.globalAlpha = 0.16 * hm; ctx.fillStyle = C.yel; ctx.fillRect(tabX, yy - lh / 2, W - sideW, lh); ctx.globalAlpha = hm; ctx.fillRect(tabX, yy - lh / 2, 6 * u, lh); ctx.restore(); } }
       if (hl && dig >= 1) { const ha = easeOut((t - (s.digitar === false ? (s.destaque_em || 1.2) + AT : t0 + tDig)) / 0.4); ctx.save(); ctx.globalAlpha = 0.18 * ha; ctx.fillStyle = C.ac; ctx.fillRect(tabX, yy - lh / 2, W - sideW, lh); ctx.globalAlpha = ha; ctx.fillRect(tabX, yy - lh / 2, 6 * u, lh); ctx.restore(); }
       txt(ctx, String((kC >= 1 && AP.length ? num - 1 : i) + (s.linha0 || 1)), font(500, fs * 0.8, MONO), x0 - 30 * u, yy, "#4b5263", "right", aL);  // linha0: o trecho visível de um arquivo maior
-      let mostra = i + 1 > d1 ? ln.length : Math.min(ln.length, resta); if (i + 1 <= d1) resta -= ln.length; let xx = x0;
+      let mostra = i + 1 > d1 ? lnD.length : Math.min(lnD.length, resta); if (i + 1 <= d1) resta -= ln.length; let xx = x0;
       let cursorFX = false; if (FX) { const ini = fxIni[i + 1]; const kk = Math.floor(dig * falta); mostra = ini === undefined ? ln.length : clamp(kk - ini, 0, ln.length); cursorFX = ini !== undefined && dig < 1 && kk >= ini && kk <= ini + ln.length; }
       // descomentar: a linha começa com "// " (cinza, comentário) e as barras vão sendo apagadas, uma linha depois da outra
       const iD = (s.descomentar || []).indexOf(i + 1);
@@ -159,11 +167,14 @@
           escreve(at.pre + mid + at.suf);
           if (t >= at.tD && Math.floor(t * 2.5) % 2 === 0) { ctx.save(); ctx.globalAlpha = aL; ctx.fillStyle = C.ac; ctx.fillRect(xb, yy - fs * 0.6, 4 * u, fs * 1.2); ctx.restore(); } }
         mostra = 0; }
-      for (const [tk, cor] of tokens(ln)) { if (mostra <= 0) break; const parte = tk.slice(0, mostra); mostra -= tk.length; txt(ctx, parte, font(500, fs, MONO), xx, yy, cor, "left", aL); xx += tw(ctx, parte, font(500, fs, MONO)); }
+      for (const [tk, cor] of tokens(lnD)) { if (mostra <= 0) break; const parte = tk.slice(0, mostra); mostra -= tk.length; txt(ctx, parte, font(500, fs, MONO), xx, yy, cor, "left", aL); xx += tw(ctx, parte, font(500, fs, MONO)); }
       if ((FX ? cursorFX : (dig < 1 && i + 1 <= d1 && resta < 0 && resta + ln.length >= 0)) && Math.floor(t * 2.5) % 2 === 0) { ctx.save(); ctx.globalAlpha = a; ctx.fillStyle = C.ac; ctx.fillRect(xx + 2 * u, yy - fs * 0.6, 4 * u, fs * 1.2); ctx.restore(); }
       yy += lh * hf;
     });
     ctx.restore();
+    if (s.recuo) { const tS = s.recuo[3] + AT, kk = easeOut((t - tS) / 0.25) * (1 - easeOut((t - tS - 2.2) / 0.4));
+      if (kk > 0) { const rot = s.recuo[2] > 0 ? "Tab" : "Shift + Tab", ff = font(800, 30 * u), ww = tw(ctx, rot, ff) + 44 * u, bx = x + W - ww - 30 * u, by = top + 74 * u;
+        ctx.save(); ctx.globalAlpha = kk * a; rr(ctx, bx, by, ww, 56 * u, 12 * u); ctx.fillStyle = "#3d7cff"; ctx.fill(); ctx.restore(); txt(ctx, rot, ff, bx + ww / 2, by + 29 * u, "#fff", "center", kk * a); } }
     if (PH) painelTerminal(ctx, u, tabX, y + H - PH, W - sideW, PH, t, dur, s, a);
     ctx.restore();
     if (s.navegador) navegadorPorCima(ctx, c, t, dur, s.navegador, media);
