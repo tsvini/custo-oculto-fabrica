@@ -1,6 +1,6 @@
 Vinícius Torales
 eleven_v4_turbo
-E. As fixtures entregam as páginas prontas pro teste. E com o mock, o Playwright fica no meio: o route intercepta o pedido, e o teste responde o que quiser.
+E. As fixtures entregam as páginas prontas pro teste. E com o mock, o Playwright fica no meio: o route intercepta o pedido, e o teste responde o que quiser. 
 F. O iframe é uma página dentro da página. O upload manda um arquivo. E o locator acha o elemento na tela.
 G. O storage state guarda o login. O grep filtra pelo nome, e a tag smoke separa os testes mais importantes. Um teste flaky passa e falha sem motivo.
 H. O soft expect confere e continua. O dotenv lê o ponto env. E no Windows, o terminal é o PowerShell, onde você roda o node.
