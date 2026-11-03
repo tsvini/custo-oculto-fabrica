@@ -1,0 +1,114 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:03.360
+Hoje é o dia:
+a gente instala o Playwright.
+
+2
+00:00:03.380 --> 00:00:04.870
+E é um comando só.
+
+3
+00:00:04.900 --> 00:00:11.780
+No terminal do VS Code, digita npm init
+playwright arroba latest e aperta Enter.
+
+4
+00:00:11.800 --> 00:00:15.120
+Na primeira vez,
+ele pergunta se pode instalar um ajudante.
+
+5
+00:00:15.140 --> 00:00:17.100
+Aperta y e Enter.
+
+6
+00:00:17.120 --> 00:00:19.260
+Agora ele faz quatro perguntas.
+
+7
+00:00:19.280 --> 00:00:21.730
+A primeira: TypeScript ou JavaScript?
+
+8
+00:00:22.180 --> 00:00:26.060
+Vamos escolher JavaScript.
+Assim a gente consegue focar primeiro em aprender
+
+9
+00:00:26.080 --> 00:00:28.640
+automação,
+sem adicionar outra linguagem no caminho.
+
+10
+00:00:28.660 --> 00:00:31.560
+Segunda: onde guardar os testes?
+
+11
+00:00:31.580 --> 00:00:34.690
+Ele já sugere a pasta tests.
+Só aperta Enter.
+
+12
+00:00:34.720 --> 00:00:37.690
+Terceira:
+quer um workflow do GitHub Actions?
+
+13
+00:00:37.720 --> 00:00:40.800
+Aqui digita y. É isso que,
+no final do curso,
+
+14
+00:00:40.820 --> 00:00:43.190
+vai fazer seus testes rodarem sozinhos.
+
+15
+00:00:43.360 --> 00:00:46.060
+Quarta:
+instalar os navegadores do Playwright?
+
+16
+00:00:46.080 --> 00:00:50.380
+Enter, que é sim. Ele baixa o Chromium,
+o Firefox e o WebKit,
+
+17
+00:00:50.400 --> 00:00:53.500
+que é o motor de navegador que eu
+te mostrei na abertura do curso.
+
+18
+00:00:53.520 --> 00:00:56.100
+Se você está no Linux,
+ele faz uma pergunta a mais,
+
+19
+00:00:56.120 --> 00:00:57.900
+sobre as dependências do sistema.
+
+20
+00:00:57.920 --> 00:01:01.860
+Responde y. É aquele detalhe que
+eu tinha comentado no módulo um.
+
+21
+00:01:01.880 --> 00:01:06.350
+Espera terminar. Quando aparecer Happy
+hacking no final, deu tudo certo.
+
+22
+00:01:06.380 --> 00:01:09.420
+Olha a esquerda:
+apareceram vários arquivos novos.
+
+23
+00:01:09.440 --> 00:01:11.860
+Na próxima aula,
+eu te explico o que é cada um.
+
+24
+00:01:11.880 --> 00:01:12.730
+Te vejo lá!
+

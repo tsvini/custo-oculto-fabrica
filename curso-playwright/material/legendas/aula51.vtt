@@ -1,0 +1,115 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:04.450
+Desafio três:
+adicionar a mochila e depois remover.
+
+2
+00:00:04.660 --> 00:00:09.560
+No trabalho, o remover quebra mais do que parece:
+o número não atualiza,
+
+3
+00:00:09.580 --> 00:00:13.040
+ou o produto continua lá.
+E quase ninguém testa,
+
+4
+00:00:13.060 --> 00:00:15.610
+porque todo mundo só testa o adicionar.
+
+5
+00:00:15.760 --> 00:00:21.550
+O teste: adiciona a mochila, remove de novo,
+e confere que o carrinho ficou vazio.
+
+6
+00:00:21.920 --> 00:00:25.590
+Dica: depois de adicionar,
+o botão vira Remove,
+
+7
+00:00:25.620 --> 00:00:30.465
+com data-test remove-sauce-labs-backpack.
+
+8
+00:00:31.460 --> 00:00:35.010
+E quando o carrinho fica vazio,
+o numerozinho some da página.
+
+9
+00:00:35.120 --> 00:00:40.830
+E o botão Remove: depois de adicionar a mochila,
+botão direito nele, e Inspecionar.
+
+10
+00:00:41.020 --> 00:00:44.570
+Data-test igual remove
+sauce labs backpack.
+
+11
+00:00:44.600 --> 00:00:47.450
+Os desafios daqui pra
+frente começam logados.
+
+12
+00:00:47.540 --> 00:00:49.300
+Lembra do login salvo da
+aula quarenta e dois?
+
+13
+00:00:49.320 --> 00:00:53.440
+Dentro do describe,
+uma caixa nova chamada logado.
+
+14
+00:00:53.460 --> 00:00:56.780
+Nela, o test ponto use
+com o storage state,
+
+15
+00:00:56.800 --> 00:00:59.620
+e um before each que abre
+direto a página de produtos.
+
+16
+00:00:59.640 --> 00:01:02.500
+Agora sim: pausa o vídeo e tenta.
+
+17
+00:01:02.520 --> 00:01:04.450
+Quando voltar, a solução.
+
+18
+00:01:10.260 --> 00:01:14.820
+Solução. Primeiro, adiciona a mochila,
+e confere que o numerozinho do carrinho
+
+19
+00:01:14.840 --> 00:01:15.580
+mostra um.
+
+20
+00:01:15.600 --> 00:01:20.230
+Depois, clica no Remove,
+o botão que apareceu no lugar do Add to cart.
+
+21
+00:01:20.260 --> 00:01:23.850
+E pra conferir que o carrinho ficou vazio,
+to have count zero:
+
+22
+00:01:23.900 --> 00:01:26.470
+eu espero que o seletor
+encontre zero elementos.
+
+23
+00:01:26.800 --> 00:01:27.550
+Roda.
+
+24
+00:01:31.580 --> 00:01:33.350
+Te vejo no próximo!
+

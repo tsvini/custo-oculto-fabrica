@@ -1,0 +1,143 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:04.300
+A tarefa mudou: o usuário precisa
+conseguir anexar um documento.
+
+2
+00:00:04.320 --> 00:00:06.930
+Currículo, comprovante, planilha.
+
+3
+00:00:07.060 --> 00:00:10.220
+No the internet, a tela é a File Upload.
+
+4
+00:00:10.240 --> 00:00:12.330
+Na página inicial, clica nela.
+
+5
+00:00:12.440 --> 00:00:16.220
+Na tela tem um botão Choose File,
+escolher arquivo,
+
+6
+00:00:16.240 --> 00:00:19.310
+que abre a janela do computador
+pra procurar o arquivo.
+
+7
+00:00:19.440 --> 00:00:24.840
+E o botão Upload, que envia. Depois de enviar,
+a página mostra o nome do arquivo.
+
+8
+00:00:24.860 --> 00:00:28.960
+O teste vai fazer igual:
+escolher um arquivo, clicar em Upload,
+
+9
+00:00:28.980 --> 00:00:31.210
+e conferir que o nome dele apareceu.
+
+10
+00:00:31.340 --> 00:00:35.050
+Mas pra enviar um arquivo,
+o teste precisa ter um arquivo.
+
+11
+00:00:35.100 --> 00:00:38.840
+Na pasta do projeto,
+cria uma pasta nova chamada arquivos.
+
+12
+00:00:38.860 --> 00:00:42.850
+E dentro dela, um arquivo de texto:
+exemplo ponto txt.
+
+13
+00:00:43.940 --> 00:00:47.890
+Dentro, qualquer texto.
+Esse é o arquivo que o teste vai enviar.
+
+14
+00:00:48.160 --> 00:00:51.780
+No internet ponto spec,
+um teste novo: upload de arquivo.
+
+15
+00:00:51.800 --> 00:00:54.400
+Primeiro, o goto da tela de upload.
+
+16
+00:00:54.420 --> 00:01:00.300
+E o campo, no Inspecionar:
+um input do tipo file, com id igual file upload.
+
+17
+00:01:00.320 --> 00:01:03.230
+E o botão Upload tem o id file submit.
+
+18
+00:01:03.400 --> 00:01:08.120
+Agora a ação nova: o campo file upload,
+ponto set input files,
+
+19
+00:01:08.140 --> 00:01:13.730
+e entre parênteses o caminho do arquivo:
+arquivos barra exemplo ponto txt.
+
+20
+00:01:15.040 --> 00:01:18.140
+Traduzindo: set input files,
+coloque este arquivo no campo.
+
+21
+00:01:18.160 --> 00:01:23.690
+E o caminho começa na pasta do projeto:
+a pasta arquivos, e o exemplo ponto txt.
+
+22
+00:01:23.900 --> 00:01:28.440
+Repara: o Playwright não abre aquela janela
+do Windows pra procurar o arquivo com o
+
+23
+00:01:28.460 --> 00:01:31.450
+mouse.
+Ele entrega o arquivo direto pro campo.
+
+24
+00:01:31.600 --> 00:01:36.500
+Depois, clica no botão Upload.
+E confere: a área uploaded files,
+
+25
+00:01:36.520 --> 00:01:40.210
+onde o nome aparece,
+contém o texto exemplo ponto txt.
+
+26
+00:01:40.360 --> 00:01:43.890
+Roda: escolheu, enviou, e o nome apareceu.
+
+27
+00:01:46.440 --> 00:01:51.490
+No dia a dia, também vale testar o lado ruim:
+um arquivo grande demais,
+
+28
+00:01:51.620 --> 00:01:54.010
+ou de um formato que o sistema não aceita.
+
+29
+00:01:54.100 --> 00:01:56.770
+Ele tem que recusar
+com uma mensagem clara.
+
+30
+00:01:56.880 --> 00:01:58.050
+Te vejo na próxima!
+

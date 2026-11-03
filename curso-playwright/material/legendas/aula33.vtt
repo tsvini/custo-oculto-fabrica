@@ -1,0 +1,152 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:03.990
+Lembra que, com dois testes,
+apareciam seis execuções?
+
+2
+00:00:04.300 --> 00:00:06.230
+Hoje você entende de onde vem.
+
+3
+00:00:06.320 --> 00:00:11.500
+Sem o traço traço project,
+o Playwright roda em três navegadores: Chromium,
+
+4
+00:00:11.520 --> 00:00:14.850
+Firefox e WebKit,
+que é o motor usado pelo Safari.
+
+5
+00:00:15.120 --> 00:00:19.270
+Dois testes, vezes três navegadores:
+seis execuções.
+
+6
+00:00:19.400 --> 00:00:22.440
+Cada teste roda uma vez em cada navegador.
+
+7
+00:00:22.460 --> 00:00:24.670
+Eles estão no config, nos projects.
+
+8
+00:00:24.900 --> 00:00:29.060
+Por que três? Porque um site pode
+funcionar no Chrome e quebrar no Safari.
+
+9
+00:00:29.080 --> 00:00:32.000
+Cada navegador desenha
+a página do seu jeito,
+
+10
+00:00:32.020 --> 00:00:35.170
+e bug de um navegador
+só acontece bastante.
+
+11
+00:00:35.240 --> 00:00:37.800
+Roda tudo: dezoito testes.
+
+12
+00:00:37.820 --> 00:00:43.570
+De onde vem? O login ponto spec tem dois testes,
+e o usuarios ponto spec tem quatro,
+
+13
+00:00:43.640 --> 00:00:49.100
+um pra cada usuário da lista. Seis testes,
+vezes três navegadores: dezoito.
+
+14
+00:00:49.120 --> 00:00:52.950
+E repara na linha workers.
+Aqui na minha máquina apareceram quatro;
+
+15
+00:00:53.040 --> 00:00:54.620
+na sua pode aparecer outro número.
+
+16
+00:00:54.640 --> 00:00:59.820
+Worker é um trabalhador:
+um processo que ajuda a rodar testes ao mesmo tempo.
+
+17
+00:00:59.840 --> 00:01:04.150
+Paralelo quer dizer vários testes ao mesmo tempo,
+em vez de um por vez.
+
+18
+00:01:04.220 --> 00:01:08.920
+Por isso cada teste precisa ser independente:
+nenhum pode depender de outro.
+
+19
+00:01:08.940 --> 00:01:13.000
+Um exemplo: se um teste esvazia o
+carrinho enquanto outro está conferindo o
+
+20
+00:01:13.020 --> 00:01:16.240
+carrinho, rodando ao mesmo tempo,
+um atrapalha o outro.
+
+21
+00:01:16.260 --> 00:01:19.850
+Por isso, cada teste prepara
+sozinho tudo o que precisa.
+
+22
+00:01:19.940 --> 00:01:21.980
+E por que paralelo? Velocidade.
+
+23
+00:01:22.000 --> 00:01:27.540
+Duzentos testes de cinco segundos,
+um de cada vez, levam mais de quinze minutos.
+
+24
+00:01:27.560 --> 00:01:30.170
+Com quatro workers, uns quatro minutos.
+
+25
+00:01:30.220 --> 00:01:33.460
+No config,
+o fully parallel true liga isso.
+
+26
+00:01:33.480 --> 00:01:37.020
+E no GitHub ele usa um worker só:
+a máquina de lá é pequena,
+
+27
+00:01:37.040 --> 00:01:39.300
+e um de cada vez fica mais estável.
+
+28
+00:01:39.320 --> 00:01:43.920
+No dia a dia, enquanto escreve,
+roda só no Chromium com traço traço project igual
+
+29
+00:01:43.940 --> 00:01:47.660
+chromium, que é mais rápido.
+Os três navegadores ficam pro GitHub,
+
+30
+00:01:47.680 --> 00:01:49.300
+que roda tudo a cada mudança.
+
+31
+00:01:49.320 --> 00:01:52.690
+Na próxima aula:
+testando com tela de celular.
+
+32
+00:01:52.720 --> 00:01:53.650
+Te vejo lá!
+

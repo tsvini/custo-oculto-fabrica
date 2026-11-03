@@ -1,0 +1,84 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:05.540
+Primeira instalação: o VS Code,
+o programa onde a gente vai escrever os testes.
+
+2
+00:00:05.560 --> 00:00:07.930
+O VS Code é um editor de código.
+
+3
+00:00:08.020 --> 00:00:12.920
+Pensa num bloco de notas turbinado,
+que pinta cada parte do código de uma cor e te
+
+4
+00:00:12.940 --> 00:00:14.080
+ajuda a não errar.
+
+5
+00:00:14.100 --> 00:00:18.880
+É gratuito, é da Microsoft,
+e é um dos editores mais usados no desenvolvimento de
+
+6
+00:00:18.900 --> 00:00:21.870
+software. Você vai encontrar
+ele em muitas empresas.
+
+7
+00:00:22.080 --> 00:00:27.540
+Primeiro passo: abre o navegador e entra
+em code ponto visualstudio ponto com.
+
+8
+00:00:27.560 --> 00:00:29.440
+Clica no botão Download for Windows.
+
+9
+00:00:29.460 --> 00:00:33.910
+Segundo passo: abre o arquivo que baixou,
+na pasta Downloads.
+
+10
+00:00:34.030 --> 00:00:36.450
+Aceita o contrato e clica em Next.
+
+11
+00:00:36.500 --> 00:00:41.410
+Nessa tela, marca o Add to PATH
+e as duas opções Open with Code.
+
+12
+00:00:41.460 --> 00:00:43.530
+Isso facilita muito a vida depois.
+
+13
+00:00:43.660 --> 00:00:47.390
+Clica em Install, espera,
+e no final clica em Finish.
+
+14
+00:00:47.540 --> 00:00:51.420
+Pronto! Esse é o VS Code.
+Na esquerda ficam os arquivos do projeto,
+
+15
+00:00:51.440 --> 00:00:53.700
+e no meio é onde você escreve.
+
+16
+00:00:53.720 --> 00:00:57.320
+Na próxima aula, a gente instala o Node,
+que é o motor que faz o Playwright
+
+17
+00:00:57.340 --> 00:00:57.940
+funcionar.
+
+18
+00:00:57.960 --> 00:00:59.070
+Te vejo lá!
+
