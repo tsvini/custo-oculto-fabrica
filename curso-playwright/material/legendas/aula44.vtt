@@ -1,0 +1,127 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:03.680
+O GitHub é um site que guarda
+projetos Git na internet.
+
+2
+00:00:03.700 --> 00:00:06.330
+É a vitrine de quem
+trabalha com tecnologia.
+
+3
+00:00:06.640 --> 00:00:11.770
+Pra você, ele resolve três coisas:
+um backup do projeto, se o computador quebrar.
+
+4
+00:00:11.980 --> 00:00:14.010
+Um lugar onde a equipe trabalha junto.
+
+5
+00:00:14.120 --> 00:00:18.610
+E o seu portfólio: quem for te contratar
+pode ver o seu código funcionando.
+
+6
+00:00:18.720 --> 00:00:21.690
+Cria uma conta no github ponto com,
+se ainda não tiver.
+
+7
+00:00:21.780 --> 00:00:24.150
+Depois clica em New repository.
+
+8
+00:00:24.360 --> 00:00:26.940
+Repositório é a pasta do projeto,
+lá no GitHub.
+
+9
+00:00:26.960 --> 00:00:30.140
+Dá o nome e cria,
+sem marcar nenhuma opção,
+
+10
+00:00:30.160 --> 00:00:32.570
+porque o seu projeto já
+tem os arquivos dele.
+
+11
+00:00:32.600 --> 00:00:38.370
+O GitHub mostra os comandos.
+No terminal: git branch traço M main.
+
+12
+00:00:38.400 --> 00:00:41.710
+Branch é ramo:
+uma linha de versões do projeto.
+
+13
+00:00:41.900 --> 00:00:44.550
+Esse comando dá o nome
+main pro ramo principal.
+
+14
+00:00:44.840 --> 00:00:49.800
+Depois: git remote add origin,
+e o endereço do seu repositório.
+
+15
+00:00:49.820 --> 00:00:54.875
+Remote é remoto: avise o Git que existe
+uma cópia lá no GitHub, chamada origin.
+
+16
+00:00:54.895 --> 00:00:59.320
+E o envio: git push traço u origin main.
+
+17
+00:00:59.340 --> 00:01:02.310
+Push é empurrar:
+mande o projeto pro GitHub.
+
+18
+00:01:02.600 --> 00:01:08.090
+O traço u liga a sua main com a main de lá,
+e nas próximas vezes basta git push.
+
+19
+00:01:08.160 --> 00:01:11.900
+Na primeira vez, o Git pode abrir o
+navegador pra você entrar na sua conta do
+
+20
+00:01:11.920 --> 00:01:15.510
+GitHub. É normal:
+faz o login e volta pro terminal.
+
+21
+00:01:15.660 --> 00:01:18.910
+Atualiza a página do GitHub:
+seu projeto está lá.
+
+22
+00:01:18.940 --> 00:01:23.580
+E repara: nem o ponto env,
+nem a pasta do login salvo subiram.
+
+23
+00:01:23.600 --> 00:01:28.430
+E daqui pra frente, o ciclo é sempre esse:
+add, commit e push.
+
+24
+00:01:28.520 --> 00:01:30.670
+E o GitHub fica igual à sua máquina.
+
+25
+00:01:30.760 --> 00:01:34.170
+Na próxima aula:
+os testes rodando sozinhos no GitHub.
+
+26
+00:01:34.300 --> 00:01:35.170
+Te vejo lá!
+

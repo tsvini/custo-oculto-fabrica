@@ -1,0 +1,108 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:02.960
+Uma tela com várias
+informações pra conferir.
+
+2
+00:00:02.980 --> 00:00:06.030
+A primeira conferência falha,
+e o teste para ali.
+
+3
+00:00:06.160 --> 00:00:11.670
+Você corrige, roda de novo,
+e só então descobre que a quarta também estava errada.
+
+4
+00:00:11.900 --> 00:00:16.230
+Dentro da pasta nivel2,
+cria o soft ponto spec ponto js.
+
+5
+00:00:17.040 --> 00:00:22.630
+O começo: o import, o endereço da Lojinha,
+e um teste que abre a tela de login.
+
+6
+00:00:22.650 --> 00:00:25.450
+Pra isso existe o expect ponto soft.
+
+7
+00:00:25.700 --> 00:00:28.980
+Soft é suave: anote o erro,
+e continue conferindo.
+
+8
+00:00:29.000 --> 00:00:33.470
+Traduzindo: expect soft,
+anote o erro e siga.
+
+9
+00:00:33.520 --> 00:00:35.750
+Depois, a conferência de sempre.
+
+10
+00:00:35.900 --> 00:00:39.230
+Aqui, quatro conferências na
+tela de login da Lojinha.
+
+11
+00:00:39.300 --> 00:00:43.270
+Duas erradas de propósito:
+o botão diz Entrar, e não Login.
+
+12
+00:00:43.360 --> 00:00:47.050
+E a mensagem de erro só aparece
+depois que alguém erra a senha.
+
+13
+00:00:47.120 --> 00:00:51.170
+Roda: o teste vai até o fim,
+e mostra os dois erros juntos.
+
+14
+00:00:53.320 --> 00:00:57.560
+Agora corrige as duas. No botão,
+troca Login por Entrar.
+
+15
+00:00:57.580 --> 00:01:03.410
+E na mensagem de erro, coloca o not:
+antes de errar a senha, ela não pode aparecer.
+
+16
+00:01:03.600 --> 00:01:05.450
+Roda de novo: passou.
+
+17
+00:01:06.120 --> 00:01:11.020
+No trabalho: conferir a tela de detalhes
+de um pedido, o resumo de uma compra,
+
+18
+00:01:11.040 --> 00:01:15.280
+um formulário com dez campos.
+Você quer a lista completa do que está errado,
+
+19
+00:01:15.300 --> 00:01:18.110
+de uma vez só,
+pra mandar tudo junto no card.
+
+20
+00:01:18.220 --> 00:01:23.680
+Mas cuidado: nos passos principais do fluxo,
+o expect normal continua sendo o certo.
+
+21
+00:01:23.700 --> 00:01:28.010
+Se o login falhou,
+não faz sentido continuar e conferir o carrinho.
+
+22
+00:01:28.060 --> 00:01:29.150
+Te vejo na próxima!
+

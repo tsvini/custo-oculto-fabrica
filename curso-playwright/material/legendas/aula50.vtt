@@ -1,0 +1,74 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:04.670
+Desafio dois: e se a pessoa clicar
+em Login sem preencher nada?
+
+2
+00:00:04.820 --> 00:00:09.150
+Por que testar isso?
+Porque é a primeira coisa que alguém apressado faz:
+
+3
+00:00:09.200 --> 00:00:14.730
+clica sem preencher. O sistema precisa avisar,
+e não pode deixar entrar nem travar.
+
+4
+00:00:14.960 --> 00:00:20.070
+O teste: não preenche nada, clica em Login,
+e confere a mensagem de erro.
+
+5
+00:00:20.200 --> 00:00:23.770
+Dica: a mensagem é Username is required.
+
+6
+00:00:24.000 --> 00:00:26.620
+Agora sim: pausa o vídeo e tenta.
+
+7
+00:00:26.640 --> 00:00:28.430
+Quando voltar, a solução.
+
+8
+00:00:34.220 --> 00:00:38.630
+Solução. O nome:
+desafio dois, campos vazios.
+
+9
+00:00:38.860 --> 00:00:42.480
+E repara: nenhum fill.
+A pessoa não preencheu nada,
+
+10
+00:00:42.500 --> 00:00:44.420
+então o teste também não preenche.
+
+11
+00:00:44.440 --> 00:00:46.270
+Só o clique no botão de login.
+
+12
+00:00:46.480 --> 00:00:51.950
+E a conferência: o mesmo elemento error,
+agora com o texto Username is required,
+
+13
+00:00:52.020 --> 00:00:53.770
+o usuário é obrigatório.
+
+14
+00:00:53.920 --> 00:00:59.350
+Repara: nem todo teste preenche tudo,
+e um bom teste também confere o que dá errado.
+
+15
+00:00:59.600 --> 00:01:01.170
+Roda: passou.
+
+16
+00:01:04.700 --> 00:01:06.930
+Te vejo no próximo!
+

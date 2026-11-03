@@ -1,0 +1,66 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:03.260
+Às vezes você não sabe se
+um seletor vai funcionar.
+
+2
+00:00:03.280 --> 00:00:05.650
+Dá pra testar antes de rodar o teste.
+
+3
+00:00:05.880 --> 00:00:11.080
+No codegen, clica no botão Pick locator,
+que quer dizer escolher seletor.
+
+4
+00:00:11.100 --> 00:00:15.770
+Passa o mouse em cima de qualquer coisa da página:
+ele mostra o seletor que usaria.
+
+5
+00:00:15.820 --> 00:00:18.980
+E dá pra fazer o contrário:
+escreve um seletor na caixinha,
+
+6
+00:00:19.000 --> 00:00:21.490
+e ele pinta na página o que encontrou.
+
+7
+00:00:21.560 --> 00:00:24.520
+Se pintou um elemento só,
+é um bom primeiro sinal:
+
+8
+00:00:24.540 --> 00:00:28.000
+aí confere se o seletor também
+é claro e resistente a mudanças.
+
+9
+00:00:28.020 --> 00:00:30.790
+Se pintou vários, ele está vago.
+
+10
+00:00:30.820 --> 00:00:33.040
+Se não pintou nada, ele está errado.
+
+11
+00:00:33.060 --> 00:00:37.670
+Testando o seletor antes,
+você evita rodar o teste várias vezes pra descobrir.
+
+12
+00:00:37.840 --> 00:00:42.080
+Na próxima aula: por que no Playwright
+você quase nunca precisa mandar o teste
+
+13
+00:00:42.100 --> 00:00:42.870
+esperar.
+
+14
+00:00:42.980 --> 00:00:43.850
+Te vejo lá!
+

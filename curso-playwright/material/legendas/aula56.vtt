@@ -1,0 +1,212 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:04.950
+Imagina que caiu uma tarefa nova:
+validar as preferências de um formulário.
+
+2
+00:00:05.020 --> 00:00:09.580
+Sabe aquelas caixinhas de aceito os
+termos e receber novidades por e-mail?
+
+3
+00:00:09.600 --> 00:00:11.670
+E aquela lista pra escolher uma opção?
+
+4
+00:00:11.960 --> 00:00:14.830
+No the internet tem uma tela pra cada uma.
+
+5
+00:00:14.960 --> 00:00:17.900
+Na página inicial, clica em Checkboxes.
+
+6
+00:00:17.920 --> 00:00:23.430
+Olha a tela: duas caixinhas.
+A primeira vem desmarcada, a segunda vem marcada.
+
+7
+00:00:23.480 --> 00:00:26.640
+Clicando, ela marca.
+Clicando de novo, desmarca.
+
+8
+00:00:26.660 --> 00:00:30.610
+Essa caixinha se chama checkbox,
+caixa de marcar.
+
+9
+00:00:30.680 --> 00:00:34.510
+E o teste vai fazer o mesmo que a
+gente fez na mão: marcar a primeira,
+
+10
+00:00:34.560 --> 00:00:38.290
+conferir que marcou, desmarcar,
+e conferir que desmarcou.
+
+11
+00:00:38.580 --> 00:00:42.760
+No internet ponto spec,
+um teste novo: checkbox e dropdown.
+
+12
+00:00:42.880 --> 00:00:46.480
+A primeira linha dentro dele abre a tela:
+page ponto goto,
+
+13
+00:00:46.500 --> 00:00:49.390
+com o site e barra checkboxes.
+
+14
+00:00:49.420 --> 00:00:53.440
+Como achar a caixinha?
+Botão direito nela, e Inspecionar:
+
+15
+00:00:53.460 --> 00:00:59.040
+é um input do tipo checkbox. E repara:
+ela não tem id, nem data-test.
+
+16
+00:00:59.380 --> 00:01:05.010
+Sem id, a gente procura pela função:
+get by role checkbox, as caixas de marcar.
+
+17
+00:01:05.100 --> 00:01:08.070
+E como são duas, ponto first: a primeira.
+
+18
+00:01:08.240 --> 00:01:11.960
+Traduzindo: const primeira,
+guarde com o nome primeira.
+
+19
+00:01:11.980 --> 00:01:15.130
+Get by role checkbox, as caixas de marcar.
+
+20
+00:01:15.180 --> 00:01:16.870
+Ponto first, a primeira.
+
+21
+00:01:17.080 --> 00:01:19.830
+Agora a ação: primeira ponto check.
+
+22
+00:01:19.960 --> 00:01:23.560
+Check quer dizer marque.
+E não basta marcar: a gente confere.
+
+23
+00:01:23.580 --> 00:01:28.620
+Expect primeira, to be checked:
+eu espero que a primeira esteja marcada.
+
+24
+00:01:28.640 --> 00:01:31.840
+Depois, o contrário: uncheck, desmarque.
+
+25
+00:01:31.860 --> 00:01:36.590
+E na conferência, o not na frente:
+eu espero que ela não esteja marcada.
+
+26
+00:01:36.740 --> 00:01:38.830
+Agora a segunda parte da tarefa.
+
+27
+00:01:38.960 --> 00:01:41.700
+Volta na página inicial
+e clica em Dropdown.
+
+28
+00:01:41.780 --> 00:01:45.670
+É uma caixa que abre uma lista:
+Option 1 e Option 2.
+
+29
+00:01:45.800 --> 00:01:48.460
+A pessoa escolhe uma,
+e ela fica selecionada.
+
+30
+00:01:48.480 --> 00:01:50.740
+Igual à caixa de ordenar
+do desafio quatro.
+
+31
+00:01:50.760 --> 00:01:56.790
+E o seletor da lista? Botão direito nela,
+e Inspecionar: id igual dropdown.
+
+32
+00:01:56.940 --> 00:01:59.950
+No código,
+o id vai com uma cerquilha na frente.
+
+33
+00:02:00.040 --> 00:02:04.180
+No teste, uma linha em branco pra separar,
+o goto da tela do dropdown,
+
+34
+00:02:04.200 --> 00:02:09.040
+e const lista igual page ponto locator,
+cerquilha dropdown.
+
+35
+00:02:09.180 --> 00:02:14.000
+A ação, com o select option do desafio quatro:
+escolha a opção dois.
+
+36
+00:02:14.020 --> 00:02:18.340
+E a conferência: to have value,
+eu espero que a lista tenha o valor dois.
+
+37
+00:02:18.360 --> 00:02:20.850
+E por que o valor, e não o texto?
+
+38
+00:02:21.160 --> 00:02:23.240
+O texto é o que a pessoa vê na tela.
+
+39
+00:02:23.260 --> 00:02:26.100
+O valor é o que vai pro
+sistema quando ela salva.
+
+40
+00:02:26.120 --> 00:02:28.010
+E é ele que precisa estar certo.
+
+41
+00:02:28.080 --> 00:02:32.240
+Roda e olha: marcou, desmarcou,
+e escolheu a opção dois.
+
+42
+00:02:32.260 --> 00:02:33.030
+Passou.
+
+43
+00:02:35.480 --> 00:02:40.920
+No trabalho, isso aparece em quase todo cadastro:
+aceitar os termos de uso,
+
+44
+00:02:40.940 --> 00:02:44.890
+receber novidades por e-mail,
+escolher o estado ou a cidade.
+
+45
+00:02:45.140 --> 00:02:46.290
+Te vejo na próxima!
+
