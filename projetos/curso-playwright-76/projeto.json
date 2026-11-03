@@ -97,6 +97,26 @@
        }
       },
       {
+       "text": "Pra abrir a versão um, é o mesmo endereço com interrogação versão igual a um no fim, como está na tela.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "A VERSÃO 1, A DO BUG",
+          "muted",
+          60
+         ],
+         [
+          "tsvini.github.io/custo-oculto-fabrica/loja/?versao=1",
+          "gold",
+          50
+         ]
+        ],
+        "entre": 1.4
+       }
+      },
+      {
        "text": "Login válido, com cliente e leigo123: entrou. Ok.",
        "scene": {
         "type": "tela",

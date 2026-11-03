@@ -259,9 +259,9 @@ dotenv.<span class="f">config</span>({ path: path.<span class="f">resolve</span>
   },
 });
 <span class="m">// no teste: pede igual ao page</span>
-<span class="pw">test</span>(<span class="s">'...'</span>, <span class="k">async</span> ({ page, loginPage }) =&gt; {</pre></div>
+<span class="pw">test</span>(<span class="s">'...'</span>, <span class="k">async</span> ({ page, loginPage }) =&gt; {</pre><h2 style="margin-top:22px"><i>★</i>A Lojinha do Leigo (aulas 66 a 80)</h2><p class="nota">tsvini.github.io/custo-oculto-fabrica/loja<br>Usuários: <b>cliente</b> e <b>bloqueado</b> · senha <b>leigo123</b><br><code>?versao=1</code> no fim do endereço: a versão com o bug</p></div>
   <div class="box"><h2><i>20</i>Dados num arquivo (aula 65)</h2>
-<pre class="c"><span class="k">import</span> usuarios <span class="k">from</span> <span class="s">'../dados/usuarios.json'</span>;
+<pre class="c"><span class="k">import</span> usuarios <span class="k">from</span> <span class="s">'../../dados/usuarios.json'</span>;
 <span class="k">for</span> (<span class="k">const</span> { usuario, resultado } <span class="k">of</span> usuarios) {
   <span class="pw">test</span>(<span class="s">`${usuario} - ${resultado}`</span>, ...);
 }</pre><p class="nota">Caso novo = <b>uma linha no JSON</b>. Passos diferentes? Testes separados.</p></div>
@@ -284,6 +284,6 @@ page.<span class="f">route</span>(api, (r) =&gt; r.<span class="f">fulfill</span
    <code>toBeVisible({ timeout: 10000 })</code><span class="d">✓ espera <b>até</b> aparecer</span>
    <code>--repeat-each=10</code><span class="d">roda 10 vezes: caça teste instável</span>
    <code>process.env.BASE_URL || '...'</code><span class="d">o ambiente vem de uma variável</span>
-  </div><p class="nota">Card de bug: título claro · passos · esperado × obtido · <b>print, vídeo e trace</b> anexados. Retry diminui o estrago, não corrige a causa.</p></div>
+  </div><p class="nota">Card de bug: título claro · passos · esperado × obtido · <b>print, vídeo e trace</b> anexados. Retry diminui o estrago, não corrige a causa.</p><p class="nota">Teste visual no GitHub: no config, <code>ignoreSnapshots: !!process.env.CI</code></p></div>
  </div><div class="rod"><span>Playwright para Leigos · Vinícius Torales</span><span>Bons testes! ✓</span></div></div>
 </body></html>

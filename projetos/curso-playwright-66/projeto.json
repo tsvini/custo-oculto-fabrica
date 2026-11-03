@@ -123,10 +123,56 @@
        }
       },
       {
-       "text": "Pra isso, a Lojinha do Leigo, a loja de treino do curso. Entra com cliente e leigo123: os produtos aparecem.",
+       "text": "Pra isso, a gente vai usar a Lojinha do Leigo: uma loja de treino que eu criei especialmente pra este curso. Ela tem coisas que os outros sites de treino não têm, e que a gente vai precisar daqui pra frente.",
+       "scene": {
+        "type": "cards",
+        "itens": [
+         [
+          "🛍",
+          "Lojinha do Leigo",
+          "criada pra este curso"
+         ],
+         [
+          "🧪",
+          "Feita pra testar",
+          "erro, lista vazia, versões",
+          "#69a7ff"
+         ],
+         [
+          "▶",
+          "Daqui pra frente",
+          "aulas 66 a 80",
+          "#ffd23f"
+         ]
+        ],
+        "titulo": "A LOJA DE TREINO DO CURSO"
+       }
+      },
+      {
+       "text": "O endereço está aqui na tela.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "O ENDEREÇO DA LOJINHA",
+          "muted",
+          60
+         ],
+         [
+          "tsvini.github.io/custo-oculto-fabrica/loja",
+          "gold",
+          58
+         ]
+        ],
+        "entre": 1.4
+       }
+      },
+      {
+       "text": "Na tela de login, os usuários de treino aparecem embaixo: cliente e bloqueado, os dois com a senha leigo123. Entra com cliente: os produtos aparecem.",
        "scene": {
         "type": "tela",
-        "media": "n66_loja",
+        "media": "n66_loja2",
         "url": "https://tsvini.github.io/custo-oculto-fabrica/loja/",
         "gravar": true,
         "acoes": [
@@ -148,8 +194,8 @@
          }
         ],
         "titulo": "Lojinha do Leigo",
-        "legenda": "A Lojinha do Leigo",
-        "espera_inicio": 1200,
+        "legenda": "cliente · bloqueado · senha leigo123",
+        "espera_inicio": 4500,
         "espera_fim": 2500,
         "delay_letra": 70
        }

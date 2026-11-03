@@ -150,6 +150,8 @@ aula(75, "Os cenários, em português", [
 V1 = LOJA + "index.html?versao=1"
 aula(76, "Tem alguma coisa errada aqui", [
     ("Antes de automatizar, a gente roda alguns cenários na mão, na versão que o time entregou, a versão um. Isso tem nome: teste exploratório.", titulo(76, "NA MÃO PRIMEIRO")),
+    ("Pra abrir a versão um, é o mesmo endereço com interrogação versão igual a um no fim, como está na tela.",
+     bt(("A VERSÃO 1, A DO BUG", "muted", 60), ("tsvini.github.io/custo-oculto-fabrica/loja/?versao=1", "gold", 50), entre=1.4)),
     ("Login válido, com cliente e leigo123: entrou. Ok.", video("n76_ok", "Login válido: ok", entrar("cliente", "leigo123"), url=V1, zoom_pagina=1.4)),
     ("Senha errada: aparece Usuário ou senha incorretos. Ok.", video("n76_senha", "Senha errada: ok", entrar("cliente", "errada"), url=V1, zoom_pagina=1.4)),
     ("Usuário bloqueado: aparece que ele está bloqueado. Ok.", video("n76_bloq", "Usuário bloqueado: ok", entrar("bloqueado", "leigo123"), url=V1, zoom_pagina=1.4)),
