@@ -1,0 +1,219 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:02.430
+Essa é a tela de login da Lojinha.
+
+2
+00:00:02.500 --> 00:00:05.590
+Agora imagina que alguém mexeu
+no estilo do botão Entrar.
+
+3
+00:00:05.740 --> 00:00:09.430
+Olha como ficou: laranja,
+menor, fora do padrão.
+
+4
+00:00:09.480 --> 00:00:12.190
+Mas ele continua clicável,
+e o login funciona.
+
+5
+00:00:12.400 --> 00:00:14.470
+Nenhum teste nosso ia reclamar.
+
+6
+00:00:14.520 --> 00:00:18.520
+Como a Lojinha foi feita pro curso,
+dá pra ver isso acontecendo na sua máquina.
+
+7
+00:00:18.540 --> 00:00:21.500
+O endereço é o mesmo da Lojinha,
+que está aqui na tela,
+
+8
+00:00:21.520 --> 00:00:24.370
+com interrogação estilo
+igual a quebrado no fim.
+
+9
+00:00:24.420 --> 00:00:26.960
+Ele simula alguém mexendo
+no estilo do botão.
+
+10
+00:00:26.980 --> 00:00:28.060
+A gente vai usar daqui a pouco.
+
+11
+00:00:28.080 --> 00:00:33.690
+Dentro da pasta nivel2,
+cria o visual ponto spec ponto js.
+
+12
+00:00:33.960 --> 00:00:38.860
+O começo é igual aos outros: o import,
+o endereço da Lojinha numa constante,
+
+13
+00:00:38.880 --> 00:00:41.590
+e o teste, que abre a tela de login.
+
+14
+00:00:41.640 --> 00:00:45.610
+Um teste visual percebe.
+Uma linha: to have screenshot.
+
+15
+00:00:45.820 --> 00:00:48.700
+Tire uma foto da tela e
+compare com a foto guardada.
+
+16
+00:00:48.720 --> 00:00:53.320
+Traduzindo: eu espero que a página fique
+igual à foto guardada com o nome login
+
+17
+00:00:53.340 --> 00:00:54.650
+ponto png.
+
+18
+00:00:54.680 --> 00:00:57.320
+Na primeira vez,
+ainda não existe foto pra comparar.
+
+19
+00:00:57.340 --> 00:01:01.480
+Ele falha, avisa,
+e guarda a tela de agora como referência.
+
+20
+00:01:01.500 --> 00:01:04.110
+A foto fica numa pasta do lado do teste.
+
+21
+00:01:04.180 --> 00:01:06.120
+E o nome leva o navegador e o sistema,
+
+22
+00:01:06.140 --> 00:01:08.990
+porque cada um desenha a
+tela um pouquinho diferente.
+
+23
+00:01:09.280 --> 00:01:13.070
+Roda de novo: agora tem com o que comparar,
+e a tela está igual.
+
+24
+00:01:13.160 --> 00:01:13.880
+Passou.
+
+25
+00:01:13.900 --> 00:01:15.980
+Agora, vamos simular a mudança.
+
+26
+00:01:16.000 --> 00:01:18.160
+No teste, no fim do endereço da Lojinha,
+
+27
+00:01:18.180 --> 00:01:21.280
+acrescenta interrogação
+estilo igual a quebrado.
+
+28
+00:01:21.300 --> 00:01:26.500
+Roda: falhou. Vinte e nove mil pixels diferentes,
+quatro por cento da tela.
+
+29
+00:01:26.520 --> 00:01:31.790
+E o relatório mostra lado a lado:
+a foto esperada, a tela atual, e a diferença.
+
+30
+00:01:32.040 --> 00:01:34.920
+Na aba Diff, o que mudou aparece pintado.
+
+31
+00:01:34.940 --> 00:01:36.070
+O botão inteiro.
+
+32
+00:01:36.160 --> 00:01:40.320
+O teste pegou a mudança.
+Agora tira o interrogação estilo igual a quebrado do
+
+33
+00:01:40.340 --> 00:01:42.340
+endereço: ele foi só pra simular.
+
+34
+00:01:42.360 --> 00:01:44.060
+Roda de novo: passou.
+
+35
+00:01:44.080 --> 00:01:46.960
+E aí vem a pergunta de QA:
+foi de propósito?
+
+36
+00:01:46.980 --> 00:01:51.660
+Se foi, você atualiza a foto. Se não foi,
+você acabou de achar um bug visual,
+
+37
+00:01:51.680 --> 00:01:54.210
+e abre um card com essas três imagens.
+
+38
+00:01:54.230 --> 00:01:58.290
+Pra atualizar a foto:
+traço traço update snapshots.
+
+39
+00:02:00.840 --> 00:02:06.330
+E no GitHub? Lá a máquina é outra,
+e a foto foi tirada no seu computador.
+
+40
+00:02:06.460 --> 00:02:13.280
+Então, no config, uma linha: ignore snapshots,
+igual a process ponto env ponto CI
+
+41
+00:02:13.300 --> 00:02:16.590
+com os dois pontos de exclamação,
+como no forbid only.
+
+42
+00:02:16.800 --> 00:02:19.730
+No GitHub,
+ele pula só a comparação de foto.
+
+43
+00:02:19.820 --> 00:02:21.920
+O teste visual você roda na sua máquina.
+
+44
+00:02:21.940 --> 00:02:26.910
+Um cuidado: tela que muda sozinha,
+como data, hora ou propaganda,
+
+45
+00:02:27.000 --> 00:02:29.080
+faz o teste visual falhar à toa.
+
+46
+00:02:29.100 --> 00:02:34.150
+Use em telas estáveis: login,
+página de produto, um e-mail, um relatório.
+
+47
+00:02:34.180 --> 00:02:35.270
+Te vejo na próxima!
+

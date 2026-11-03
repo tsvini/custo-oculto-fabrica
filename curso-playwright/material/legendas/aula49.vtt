@@ -1,0 +1,108 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:04.370
+Primeiro desafio:
+o que acontece quando alguém erra a senha?
+
+2
+00:00:04.560 --> 00:00:09.730
+Isso se chama cenário negativo:
+testar o que acontece quando a pessoa erra.
+
+3
+00:00:09.800 --> 00:00:14.710
+No trabalho, é onde mais aparece bug,
+porque quase ninguém lembra de testar.
+
+4
+00:00:14.860 --> 00:00:20.000
+O teste: usuário certo, senha errada,
+e conferir a mensagem de erro.
+
+5
+00:00:20.020 --> 00:00:25.700
+Dica: a mensagem fica no data-test error,
+e contém do not match.
+
+6
+00:00:25.720 --> 00:00:30.840
+E de onde vem esse error? Errando a senha,
+botão direito na mensagem vermelha,
+
+7
+00:00:30.860 --> 00:00:35.750
+e Inspecionar. Lá está:
+data-test igual error.
+
+8
+00:00:35.900 --> 00:00:38.290
+Os desafios vão num arquivo só deles.
+
+9
+00:00:38.480 --> 00:00:42.990
+Dentro da pasta tests,
+cria o desafios ponto spec ponto js.
+
+10
+00:00:43.180 --> 00:00:47.040
+O começo de sempre: o import,
+um describe chamado Desafios,
+
+11
+00:00:47.060 --> 00:00:49.000
+e o before each que abre o site.
+
+12
+00:00:49.020 --> 00:00:51.680
+Agora sim: pausa o vídeo e tenta.
+
+13
+00:00:51.700 --> 00:00:53.570
+Quando voltar, a solução.
+
+14
+00:00:59.500 --> 00:01:03.740
+Solução. O nome do teste diz
+o que ele confere: desafio um,
+
+15
+00:01:03.760 --> 00:01:05.500
+senha errada mostra erro.
+
+16
+00:01:05.520 --> 00:01:08.090
+Preenche o usuário certo, standard user.
+
+17
+00:01:08.140 --> 00:01:12.680
+E na senha, qualquer coisa errada:
+aqui, senha underline errada.
+
+18
+00:01:12.700 --> 00:01:15.060
+Clica no botão de login, igual a sempre.
+
+19
+00:01:15.080 --> 00:01:18.820
+E a conferência:
+o elemento error contém o texto do not match,
+
+20
+00:01:18.840 --> 00:01:20.240
+que quer dizer não confere.
+
+21
+00:01:20.260 --> 00:01:23.520
+Contém o texto:
+não precisa ser a mensagem inteira.
+
+22
+00:01:23.540 --> 00:01:26.890
+Roda e olha:
+o erro aparece e o teste passa.
+
+23
+00:01:30.980 --> 00:01:33.610
+Te vejo no próximo desafio!
+

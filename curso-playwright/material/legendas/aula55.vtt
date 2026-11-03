@@ -1,0 +1,135 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:03.730
+Até aqui você aprendeu
+Playwright praticamente do zero.
+
+2
+00:00:03.900 --> 00:00:06.070
+Agora o nível sobe um pouco.
+
+3
+00:00:06.220 --> 00:00:10.260
+Nos próximos módulos, eu quero te colocar
+em situações que aparecem quando você
+
+4
+00:00:10.280 --> 00:00:12.590
+começa a automatizar sistemas reais.
+
+5
+00:00:12.860 --> 00:00:15.950
+E pra isso a gente sai
+um pouco do saucedemo.
+
+6
+00:00:16.080 --> 00:00:19.280
+Vamos usar o the internet:
+um site de treino,
+
+7
+00:00:19.300 --> 00:00:21.910
+feito justamente pra praticar automação.
+
+8
+00:00:22.160 --> 00:00:25.970
+No navegador,
+the internet ponto herokuapp ponto com.
+
+9
+00:00:26.180 --> 00:00:28.280
+A página inicial é uma lista de links.
+
+10
+00:00:28.300 --> 00:00:33.240
+Cada link leva pra uma tela diferente,
+com uma situação que aparece em sistema de
+
+11
+00:00:33.260 --> 00:00:38.960
+verdade: uma caixinha de marcar,
+um arquivo pra enviar, um alerta, uma aba nova,
+
+12
+00:00:38.980 --> 00:00:39.950
+uma tabela.
+
+13
+00:00:40.200 --> 00:00:44.800
+Em cada aula, a gente abre uma dessas telas,
+olha o que tem nela, faz na mão,
+
+14
+00:00:44.820 --> 00:00:46.890
+e só depois automatiza.
+
+15
+00:00:47.100 --> 00:00:51.950
+A ideia vai ser sempre: apareceu um problema novo,
+a gente descobre como resolver.
+
+16
+00:00:52.300 --> 00:00:54.920
+Todos os testes desse
+site vão num arquivo só.
+
+17
+00:00:54.940 --> 00:01:00.590
+Dentro da pasta tests,
+cria o arquivo internet ponto spec ponto js.
+
+18
+00:01:00.960 --> 00:01:03.010
+Primeiro, o import de sempre.
+
+19
+00:01:03.200 --> 00:01:06.570
+Agora um detalhe.
+Lembra do baseURL, no config?
+
+20
+00:01:06.920 --> 00:01:08.980
+Ele guarda o endereço do saucedemo.
+
+21
+00:01:09.080 --> 00:01:12.400
+Por isso, até agora,
+o goto só precisava da barra.
+
+22
+00:01:12.420 --> 00:01:14.870
+Só que o the internet é outro endereço.
+
+23
+00:01:14.920 --> 00:01:18.820
+Então a gente guarda o endereço do the
+internet numa constante chamada site:
+
+24
+00:01:18.840 --> 00:01:23.730
+const site, igual,
+e entre aspas o endereço completo.
+
+25
+00:01:23.760 --> 00:01:28.000
+E em cada teste,
+o goto junta esse endereço com o nome da tela,
+
+26
+00:01:28.020 --> 00:01:30.140
+usando a crase da aula trinta e dois.
+
+27
+00:01:30.160 --> 00:01:33.710
+Assim: o site, e barra checkboxes.
+
+28
+00:01:33.820 --> 00:01:37.360
+Vamos começar com uma coisa que
+aparece em quase todo formulário.
+
+29
+00:01:37.380 --> 00:01:38.270
+Te vejo lá!
+

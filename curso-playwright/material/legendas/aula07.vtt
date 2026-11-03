@@ -1,0 +1,119 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:05.220
+Se tudo funcionou até aqui,
+você pode pular esta aula e seguir pro módulo dois.
+
+2
+00:00:05.280 --> 00:00:07.330
+Volta aqui se tiver algum problema.
+
+3
+00:00:07.660 --> 00:00:13.690
+Erro um: o terminal diz que node,
+npm ou npx não é reconhecido.
+
+4
+00:00:13.900 --> 00:00:17.470
+Quase sempre o terminal foi
+aberto antes de instalar o Node.
+
+5
+00:00:17.600 --> 00:00:21.850
+A solução: fecha o terminal
+e o VS Code e abre de novo.
+
+6
+00:00:21.920 --> 00:00:24.370
+Se continuar, reinicia o computador.
+
+7
+00:00:24.520 --> 00:00:30.430
+Erro dois, só no Windows:
+a execução de scripts foi desabilitada neste sistema.
+
+8
+00:00:30.500 --> 00:00:32.900
+É uma trava de segurança do PowerShell.
+
+9
+00:00:32.920 --> 00:00:36.660
+Na maioria dos computadores,
+resolve rodando esse comando uma vez,
+
+10
+00:00:36.680 --> 00:00:40.070
+que está aqui na tela.
+Depois fecha e abre o terminal.
+
+11
+00:00:40.380 --> 00:00:44.450
+Se o computador for da empresa,
+pode ser que a TI bloqueie essa mudança,
+
+12
+00:00:44.480 --> 00:00:46.010
+e aí vale falar com eles.
+
+13
+00:00:46.300 --> 00:00:51.820
+Erro três, esse já é do Playwright:
+aparece executable doesn't exist,
+
+14
+00:00:51.840 --> 00:00:55.760
+o executável não existe.
+Quer dizer que faltam os navegadores dele.
+
+15
+00:00:55.780 --> 00:00:59.430
+Resolve com npx playwright install.
+
+16
+00:00:59.500 --> 00:01:02.590
+Ele baixa o Chromium,
+o Firefox e o WebKit.
+
+17
+00:01:02.820 --> 00:01:06.700
+No Linux,
+acrescenta traço traço with traço deps,
+
+18
+00:01:06.720 --> 00:01:09.250
+que instala as bibliotecas
+do sistema junto.
+
+19
+00:01:09.460 --> 00:01:14.650
+Erro quatro: ele diz que não acha nenhum teste,
+ou nenhum arquivo de configuração.
+
+20
+00:01:14.760 --> 00:01:16.990
+É o terminal aberto na pasta errada.
+
+21
+00:01:17.010 --> 00:01:21.320
+Olha o caminho antes do cursor:
+tem que terminar com o nome da pasta do projeto.
+
+22
+00:01:21.340 --> 00:01:25.700
+E a dica de ouro:
+copia a mensagem de erro e cola no Google.
+
+23
+00:01:25.720 --> 00:01:29.970
+Alguém já passou por isso.
+Programador experiente faz isso todo dia.
+
+24
+00:01:30.120 --> 00:01:31.980
+Volta aqui sempre que precisar.
+
+25
+00:01:32.000 --> 00:01:32.850
+Até a próxima!
+

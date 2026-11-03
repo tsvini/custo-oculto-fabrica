@@ -1,0 +1,377 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:05.600
+O projeto está pronto. Agora, a pergunta:
+como guardar ele do jeito certo,
+
+2
+00:00:05.620 --> 00:00:08.670
+de um jeito que dá pra voltar
+atrás se alguma coisa quebrar?
+
+3
+00:00:08.860 --> 00:00:13.010
+Sem nenhuma ferramenta,
+o que muita gente faz é copiar a pasta.
+
+4
+00:00:13.100 --> 00:00:15.180
+Projeto final. Projeto final dois.
+
+5
+00:00:15.200 --> 00:00:19.920
+Projeto final agora vai. Depois de uma semana,
+ninguém sabe qual é qual,
+
+6
+00:00:19.940 --> 00:00:21.770
+nem o que mudou de uma pra outra.
+
+7
+00:00:21.840 --> 00:00:26.000
+O Git resolve isso. Ele é um programa
+que guarda a história do seu projeto,
+
+8
+00:00:26.020 --> 00:00:30.960
+sem copiar pasta nenhuma. Quando você manda,
+ele tira uma foto de como os arquivos
+
+9
+00:00:30.980 --> 00:00:34.980
+estão naquele momento,
+e guarda todas as fotos, em ordem.
+
+10
+00:00:35.000 --> 00:00:37.590
+Cada foto dessas tem um nome: commit.
+
+11
+00:00:37.720 --> 00:00:40.040
+Pensa nos pontos de salvamento de um jogo.
+
+12
+00:00:40.060 --> 00:00:44.560
+Você salva antes da parte difícil,
+e se der errado, volta pro ponto salvo.
+
+13
+00:00:44.580 --> 00:00:49.280
+E uma confusão muito comum:
+Git e GitHub não são a mesma coisa.
+
+14
+00:00:49.300 --> 00:00:53.540
+O Git é o programa no seu computador,
+aquele que você instalou na aula cinco.
+
+15
+00:00:53.560 --> 00:00:57.450
+O GitHub é um site,
+onde você guarda essa história na internet.
+
+16
+00:00:57.480 --> 00:00:59.120
+Ele é a próxima aula.
+
+17
+00:00:59.140 --> 00:01:01.170
+E pra quem testa, pra que serve?
+
+18
+00:01:01.220 --> 00:01:04.560
+Se você estragar um teste,
+volta pra versão que funcionava.
+
+19
+00:01:04.580 --> 00:01:08.760
+É assim que a equipe junta o trabalho
+de todo mundo sem um apagar o do outro.
+
+20
+00:01:08.780 --> 00:01:11.530
+E quase toda vaga de QA pede Git.
+
+21
+00:01:11.640 --> 00:01:14.320
+Salvar com o Git tem sempre três passos.
+
+22
+00:01:14.340 --> 00:01:17.580
+Primeiro, você muda os arquivos,
+que é o que você já faz.
+
+23
+00:01:17.600 --> 00:01:21.580
+Segundo, o git add:
+você escolhe o que vai entrar na foto.
+
+24
+00:01:21.600 --> 00:01:26.480
+Terceiro, o git commit: você tira a foto,
+com uma legenda dizendo o que mudou.
+
+25
+00:01:26.500 --> 00:01:30.950
+Agora na prática. Tudo é feito no
+terminal do VS Code, aqui embaixo.
+
+26
+00:01:31.000 --> 00:01:34.100
+Antes de começar,
+confere o caminho antes do cursor:
+
+27
+00:01:34.120 --> 00:01:38.060
+ele tem que terminar com o nome da
+pasta do projeto, igual na aula oito.
+
+28
+00:01:38.080 --> 00:01:41.000
+Se é a primeira vez que você
+usa o Git nesse computador,
+
+29
+00:01:41.020 --> 00:01:45.280
+ele precisa saber quem você é,
+porque toda foto leva o nome de quem tirou.
+
+30
+00:01:45.300 --> 00:01:50.260
+São dois comandos:
+git config traço traço global user ponto name,
+
+31
+00:01:50.280 --> 00:01:54.780
+e o seu nome entre aspas.
+E user ponto email, com o seu e-mail.
+
+32
+00:01:54.800 --> 00:01:59.520
+Só uma vez por computador. E uma dica:
+usa o mesmo e-mail que você vai usar na conta
+
+33
+00:01:59.540 --> 00:02:04.820
+do GitHub, na próxima aula. Assim,
+lá no seu perfil, cada commit aparece como seu.
+
+34
+00:02:04.840 --> 00:02:08.480
+Agora sim: git init. Init é iniciar.
+
+35
+00:02:08.500 --> 00:02:12.580
+Ele avisa o Git: a partir de agora,
+guarde a história desta pasta.
+
+36
+00:02:12.600 --> 00:02:15.560
+Ele criou uma pasta
+escondida chamada ponto git.
+
+37
+00:02:15.580 --> 00:02:20.140
+É lá que ficam todas as fotos.
+Você não precisa mexer nela, nunca.
+
+38
+00:02:20.160 --> 00:02:23.180
+E o git init é feito
+uma vez só por projeto.
+
+39
+00:02:23.200 --> 00:02:28.880
+Agora, git status. Status é a situação:
+o Git te conta o que ele está vendo.
+
+40
+00:02:28.900 --> 00:02:34.280
+Repara: tudo em vermelho,
+debaixo de untracked files, arquivos não rastreados.
+
+41
+00:02:34.300 --> 00:02:38.360
+Ou seja: o Git viu os arquivos,
+mas eles ainda não vão na foto.
+
+42
+00:02:38.380 --> 00:02:44.420
+Passo dois: git add ponto. Add é adicionar,
+e o ponto quer dizer tudo.
+
+43
+00:02:44.440 --> 00:02:48.310
+Prepare todos os arquivos
+que mudaram pra próxima foto.
+
+44
+00:02:48.330 --> 00:02:51.980
+Roda o git status de novo.
+Agora está tudo verde,
+
+45
+00:02:52.000 --> 00:02:56.470
+debaixo de changes to be committed:
+mudanças que vão entrar na foto.
+
+46
+00:02:56.620 --> 00:03:01.850
+Então, a regra das cores: vermelho é o que mudou,
+mas ainda não vai na foto.
+
+47
+00:03:01.960 --> 00:03:05.570
+Verde é o que já está preparado,
+e vai na próxima foto.
+
+48
+00:03:05.660 --> 00:03:11.120
+E repara no que não aparece na lista:
+o node modules, o ponto env com a sua senha,
+
+49
+00:03:11.140 --> 00:03:15.620
+e a pasta do login salvo.
+É o ponto gitignore fazendo o trabalho dele,
+
+50
+00:03:15.640 --> 00:03:19.010
+como na aula vinte e quatro.
+Eles nunca entram na foto.
+
+51
+00:03:19.320 --> 00:03:24.820
+Passo três, a foto: git commit traço m,
+e entre aspas a legenda,
+
+52
+00:03:24.840 --> 00:03:27.330
+tipo meu primeiro projeto Playwright.
+
+53
+00:03:27.360 --> 00:03:31.130
+Commit é a foto,
+e o traço m é a mensagem dela.
+
+54
+00:03:31.180 --> 00:03:36.340
+Lendo a resposta: o vinte e quatro d
+cinco d cinco um é o código dessa foto,
+
+55
+00:03:36.360 --> 00:03:39.440
+cada uma tem o seu.
+E treze arquivos entraram nela.
+
+56
+00:03:39.460 --> 00:03:44.070
+Pra ver a história do projeto:
+git log traço traço oneline.
+
+57
+00:03:44.140 --> 00:03:46.770
+Uma foto por linha, a mais nova em cima.
+
+58
+00:03:46.860 --> 00:03:51.590
+E no dia a dia, como fica?
+Imagina que amanhã você muda o teste da compra.
+
+59
+00:03:51.620 --> 00:03:55.950
+O git status mostra o arquivo em vermelho:
+modified, modificado.
+
+60
+00:03:55.980 --> 00:04:01.560
+Aí é o mesmo ciclo: git add ponto,
+git commit com uma legenda que diz o que mudou.
+
+61
+00:04:01.580 --> 00:04:03.950
+E o git log já mostra duas fotos.
+
+62
+00:04:04.080 --> 00:04:08.060
+E a legenda importa. Ajustes,
+ou teste, não diz nada.
+
+63
+00:04:08.080 --> 00:04:09.810
+Daqui a um mês, você não lembra.
+
+64
+00:04:09.860 --> 00:04:13.610
+Adiciona teste do carrinho,
+ou corrige o seletor do login,
+
+65
+00:04:13.720 --> 00:04:15.410
+diz exatamente o que mudou.
+
+66
+00:04:15.460 --> 00:04:17.740
+E se você estragou um
+arquivo e quer ele de volta,
+
+67
+00:04:17.760 --> 00:04:19.970
+do jeito que estava na última foto?
+
+68
+00:04:20.120 --> 00:04:22.340
+Git restore, e o nome do arquivo.
+
+69
+00:04:22.360 --> 00:04:25.950
+Cuidado: o que você mudou
+desde a última foto se perde.
+
+70
+00:04:26.080 --> 00:04:30.300
+Quando fazer um commit?
+Sempre que uma coisa ficou pronta e funcionando.
+
+71
+00:04:30.320 --> 00:04:32.500
+Terminou um teste e ele passou: commit.
+
+72
+00:04:32.520 --> 00:04:37.170
+Assim, se algo quebrar depois,
+você tem um ponto salvo bom pra voltar.
+
+73
+00:04:37.320 --> 00:04:41.070
+Resumindo os comandos:
+git init, uma vez por projeto.
+
+74
+00:04:41.240 --> 00:04:45.260
+Git status, o que mudou.
+Git add ponto, prepara.
+
+75
+00:04:45.280 --> 00:04:48.220
+Git commit traço m, a foto com a legenda.
+
+76
+00:04:48.240 --> 00:04:49.870
+E git log, a história.
+
+77
+00:04:50.100 --> 00:04:53.020
+Pronto: o seu projeto tem
+a história dele guardada.
+
+78
+00:04:53.040 --> 00:04:55.810
+Na próxima aula,
+ela vai pro GitHub, na internet.
+
+79
+00:04:56.020 --> 00:04:56.910
+Te vejo lá!
+

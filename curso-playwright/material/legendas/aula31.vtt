@@ -1,0 +1,309 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:05.190
+O saucedemo tem vários usuários que
+entram normalmente: standard, problem,
+
+2
+00:00:05.220 --> 00:00:07.150
+performance glitch e visual.
+
+3
+00:00:07.280 --> 00:00:12.750
+E o teste do login é igual pra todos:
+abre o site, preenche, clica e confere.
+
+4
+00:00:12.880 --> 00:00:15.530
+A única coisa que muda
+é o nome do usuário.
+
+5
+00:00:15.640 --> 00:00:17.610
+Dá pra copiar o teste quatro vezes?
+
+6
+00:00:17.780 --> 00:00:22.290
+Dá. Mas aí, se o botão de login mudar,
+você conserta em quatro lugares.
+
+7
+00:00:22.400 --> 00:00:25.490
+E pra testar um quinto usuário,
+copia tudo de novo.
+
+8
+00:00:25.540 --> 00:00:30.910
+E isso acontece muito num sistema de verdade:
+cliente, administrador, usuário novo.
+
+9
+00:00:30.960 --> 00:00:33.550
+O mesmo teste precisa funcionar pra todos.
+
+10
+00:00:33.880 --> 00:00:37.040
+A solução tem duas partes:
+uma lista com os nomes,
+
+11
+00:00:37.060 --> 00:00:41.170
+e uma repetição que roda o teste
+uma vez pra cada nome da lista.
+
+12
+00:00:41.240 --> 00:00:43.530
+Pra isso, um arquivo de teste novo.
+
+13
+00:00:43.700 --> 00:00:48.350
+Dentro da pasta tests,
+cria o usuarios ponto spec ponto js.
+
+14
+00:00:48.720 --> 00:00:54.940
+Primeiro, o import de sempre. E a lista:
+escreve const lista de usuários igual,
+
+15
+00:00:54.960 --> 00:00:55.980
+abre colchetes.
+
+16
+00:00:56.000 --> 00:01:00.090
+Traduzindo: const,
+guarde com o nome lista de usuários.
+
+17
+00:01:00.200 --> 00:01:03.730
+Esse nome é você que escolhe:
+escolhe um que diga o que tem dentro.
+
+18
+00:01:03.820 --> 00:01:07.590
+O igual: o valor é.
+E os colchetes abrem uma lista.
+
+19
+00:01:07.700 --> 00:01:10.740
+Pensa numa lista de compras:
+um item embaixo do outro.
+
+20
+00:01:10.760 --> 00:01:14.280
+No código é igual:
+um nome por linha, entre aspas,
+
+21
+00:01:14.300 --> 00:01:16.260
+e a vírgula separando um do outro.
+
+22
+00:01:16.280 --> 00:01:18.240
+No fim, fecha os colchetes.
+
+23
+00:01:18.260 --> 00:01:21.400
+Agora, a repetição.
+Pra entender sem se perder,
+
+24
+00:01:21.420 --> 00:01:24.220
+a gente vai ver ela funcionando
+primeiro num arquivo de rascunho.
+
+25
+00:01:24.240 --> 00:01:28.130
+Na pasta do projeto,
+cria o teste do for ponto js.
+
+26
+00:01:28.350 --> 00:01:31.500
+Copia a lista pra lá.
+Esse arquivo não é um teste:
+
+27
+00:01:31.520 --> 00:01:34.930
+é só pra ver a repetição funcionando
+com um comando bem simples.
+
+28
+00:01:35.080 --> 00:01:41.740
+Embaixo da lista, escreve: for, abre parênteses,
+const usuario of lista de usuários,
+
+29
+00:01:41.760 --> 00:01:47.190
+fecha parênteses, abre chaves.
+E lá dentro, console ponto log, usuario.
+
+30
+00:01:47.240 --> 00:01:51.820
+Traduzindo o for: para cada item da lista de usuários,
+que eu vou chamar de usuario,
+
+31
+00:01:51.840 --> 00:01:53.520
+faça o que está dentro das chaves.
+
+32
+00:01:53.540 --> 00:01:56.930
+Repara nos dois nomes,
+porque eles confundem no começo.
+
+33
+00:01:57.080 --> 00:02:00.090
+Lista de usuários é a lista inteira,
+com os quatro.
+
+34
+00:02:00.180 --> 00:02:04.130
+E usuario, no singular, é um só:
+o nome da volta da vez.
+
+35
+00:02:04.240 --> 00:02:09.110
+E o console ponto log é o comando mais simples que existe:
+escreva isso no terminal.
+
+36
+00:02:09.300 --> 00:02:11.990
+Aqui: escreva o nome da volta da vez.
+
+37
+00:02:12.060 --> 00:02:16.180
+Agora roda o rascunho: no terminal,
+node, e o nome do arquivo.
+
+38
+00:02:16.200 --> 00:02:18.940
+Olha: os quatro nomes,
+um embaixo do outro.
+
+39
+00:02:18.960 --> 00:02:23.970
+O for deu quatro voltas, e em cada volta,
+usuario era um nome diferente.
+
+40
+00:02:24.220 --> 00:02:27.350
+Na primeira volta,
+usuario vale standard user.
+
+41
+00:02:27.380 --> 00:02:31.680
+Na segunda, problem user.
+Na terceira, performance glitch user.
+
+42
+00:02:31.700 --> 00:02:35.880
+E na quarta, visual user.
+Quatro nomes, quatro voltas.
+
+43
+00:02:35.900 --> 00:02:39.740
+Viu o for funcionando?
+Esse arquivo de rascunho já cumpriu o papel dele.
+
+44
+00:02:39.760 --> 00:02:42.560
+Pode apagar: botão direito nele, e Delete.
+
+45
+00:02:42.580 --> 00:02:46.000
+Agora, volta pro usuarios
+ponto spec ponto js,
+
+46
+00:02:46.020 --> 00:02:49.610
+e escreve o mesmo for embaixo da lista.
+
+47
+00:02:49.700 --> 00:02:53.270
+E dentro das chaves,
+no lugar do console ponto log,
+
+48
+00:02:53.300 --> 00:02:55.850
+vai o teste de login que você já conhece.
+
+49
+00:02:55.880 --> 00:02:59.030
+Por enquanto, com o nome fixo:
+login funciona.
+
+50
+00:02:59.380 --> 00:03:03.870
+E onde antes tinha standard user,
+agora vai a palavra usuario:
+
+51
+00:03:03.900 --> 00:03:05.510
+o nome da volta da vez.
+
+52
+00:03:05.600 --> 00:03:08.490
+Repara: usuario está sem aspas.
+
+53
+00:03:08.540 --> 00:03:12.770
+Com aspas, ele ia digitar a palavra usuario,
+letra por letra.
+
+54
+00:03:12.820 --> 00:03:16.770
+Sem aspas, ele digita o valor guardado:
+o nome da volta.
+
+55
+00:03:16.800 --> 00:03:19.730
+E o timeout de dez segundos
+na conferência final?
+
+56
+00:03:19.940 --> 00:03:24.900
+O performance glitch demora uns cinco segundos pra entrar,
+e o expect espera cinco.
+
+57
+00:03:24.920 --> 00:03:27.640
+Então, só nessa linha, a gente dá dez.
+
+58
+00:03:27.720 --> 00:03:30.910
+Esse jeito tem nome:
+teste orientado a dados.
+
+59
+00:03:31.060 --> 00:03:36.220
+Um teste, vários dados. Use sempre que o
+passo a passo é o mesmo e só muda o que
+
+60
+00:03:36.240 --> 00:03:37.310
+você digita.
+
+61
+00:03:37.400 --> 00:03:39.850
+E o melhor: quer testar um quinto usuário?
+
+62
+00:03:39.880 --> 00:03:42.980
+É só um nome a mais na lista.
+Nenhuma linha de teste nova.
+
+63
+00:03:43.000 --> 00:03:46.310
+Só que, se você rodar agora,
+vai dar um erro.
+
+64
+00:03:46.360 --> 00:03:49.290
+Na próxima aula você entende por quê,
+e conserta.
+
+65
+00:03:49.320 --> 00:03:50.250
+Te vejo lá!
+

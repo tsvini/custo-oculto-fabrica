@@ -1,0 +1,104 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:03.120
+Seja muito bem-vindo ao
+Playwright para Leigos.
+
+2
+00:00:03.140 --> 00:00:04.420
+Eu sou o Vinícius.
+
+3
+00:00:04.440 --> 00:00:08.450
+Antes de qualquer explicação,
+eu quero te mostrar onde você vai chegar.
+
+4
+00:00:08.640 --> 00:00:13.530
+Isso aqui é o projeto final do curso:
+um robô que entra numa loja de verdade,
+
+5
+00:00:13.680 --> 00:00:18.290
+faz login, coloca produto no carrinho
+e finaliza a compra, sozinho.
+
+6
+00:00:18.400 --> 00:00:22.300
+E o mesmo teste roda no Chromium,
+no Firefox, no WebKit,
+
+7
+00:00:22.320 --> 00:00:25.750
+que é o motor por trás do Safari,
+e até simulando um celular.
+
+8
+00:00:25.880 --> 00:00:29.320
+Quando alguma coisa quebra,
+o Playwright mostra exatamente onde,
+
+9
+00:00:29.340 --> 00:00:31.370
+com foto de cada passo.
+
+10
+00:00:31.420 --> 00:00:33.680
+E no final,
+você vai colocar tudo no GitHub,
+
+11
+00:00:33.700 --> 00:00:37.730
+e os testes vão rodar sozinhos
+toda vez que você mudar o código.
+
+12
+00:00:37.880 --> 00:00:42.130
+Esse verde aqui é o seu projeto
+funcionando sem você encostar em nada.
+
+13
+00:00:42.240 --> 00:00:45.220
+E o melhor:
+isso tudo vai pro seu portfólio.
+
+14
+00:00:45.240 --> 00:00:47.730
+É um projeto que você pode
+mostrar numa entrevista.
+
+15
+00:00:47.800 --> 00:00:50.020
+E você não vai copiar um projeto pronto.
+
+16
+00:00:50.040 --> 00:00:52.730
+A gente vai construir tudo junto, do zero.
+
+17
+00:00:52.860 --> 00:00:54.960
+Se você nunca programou, relaxa.
+
+18
+00:00:54.980 --> 00:00:59.260
+Eu vou explicar cada linha,
+e você vai ver cada uma sendo escrita na tela,
+
+19
+00:00:59.280 --> 00:01:00.200
+com calma.
+
+20
+00:01:00.220 --> 00:01:03.200
+Na próxima aula,
+eu te mostro como aproveitar melhor o curso,
+
+21
+00:01:03.220 --> 00:01:04.950
+e te entrego a sua colinha.
+
+22
+00:01:05.020 --> 00:01:05.850
+Te vejo lá!
+

@@ -1,0 +1,265 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:04.110
+Dentro da pasta dados,
+cria o login ponto json.
+
+2
+00:00:05.240 --> 00:00:07.970
+A lista de cenários vira teste.
+
+3
+00:00:08.140 --> 00:00:12.860
+Começando pelo login:
+os casos de erro moram no login ponto json.
+
+4
+00:00:12.880 --> 00:00:18.310
+Cada caso tem o nome do cenário,
+o usuário, a senha, e a mensagem esperada.
+
+5
+00:00:18.480 --> 00:00:20.510
+O primeiro: senha errada.
+
+6
+00:00:20.600 --> 00:00:26.110
+E os outros três, no mesmo formato:
+usuário bloqueado, usuário vazio e senha vazia.
+
+7
+00:00:26.180 --> 00:00:31.155
+Dentro de tests,
+cria o login ponto spec ponto js.
+
+8
+00:00:31.340 --> 00:00:37.360
+Agora o teste. O começo: o import das fixtures,
+o import dos casos do JSON,
+
+9
+00:00:37.380 --> 00:00:42.630
+um describe chamado Login, e o before each,
+que abre a loja com o abrir do
+
+10
+00:00:42.760 --> 00:00:43.360
+LoginPage.
+
+11
+00:00:43.380 --> 00:00:47.110
+O login válido, com a etiqueta
+smoke guardada numa constante:
+
+12
+00:00:47.440 --> 00:00:52.610
+entra com o usuário do ponto env,
+e confere o endereço e o título da página.
+
+13
+00:00:52.740 --> 00:00:57.880
+E um for pelos casos do JSON:
+um teste pra cada caso, com o nome do cenário.
+
+14
+00:00:57.900 --> 00:01:02.620
+Entra com o usuário e a senha do caso,
+e confere a mensagem do caso.
+
+15
+00:01:02.640 --> 00:01:06.430
+Dentro de dados,
+cria o ordenacao ponto json.
+
+16
+00:01:07.740 --> 00:01:12.620
+A ordenação:
+os quatro sentidos no ordenacao ponto json.
+
+17
+00:01:12.640 --> 00:01:17.760
+Cada um tem a opção da caixa,
+o nome do cenário, o campo, preço ou nome,
+
+18
+00:01:17.780 --> 00:01:19.010
+e o sentido.
+
+19
+00:01:19.120 --> 00:01:23.840
+E os outros três: de Z a A,
+preço do menor pro maior, e do maior pro menor.
+
+20
+00:01:23.860 --> 00:01:29.920
+Dentro de tests,
+cria o produtos ponto spec ponto js.
+
+21
+00:01:29.940 --> 00:01:34.420
+No produtos ponto spec, o começo:
+os imports, o describe Produtos,
+
+22
+00:01:34.440 --> 00:01:39.060
+e um before each que abre a loja,
+entra, e espera os produtos aparecerem.
+
+23
+00:01:39.080 --> 00:01:41.450
+Agora um for pelos quatro sentidos.
+
+24
+00:01:41.520 --> 00:01:46.590
+A primeira linha dentro dele é a etiqueta:
+só o teste do menor preço ganha o smoke.
+
+25
+00:01:46.620 --> 00:01:50.530
+É o interrogação de novo:
+se a opção for menor, a etiqueta smoke.
+
+26
+00:01:50.630 --> 00:01:53.910
+Senão, nenhuma. E o teste,
+com o nome do sentido.
+
+27
+00:01:53.980 --> 00:01:58.820
+Dentro do teste: escolhe a opção na caixa,
+e lê da tela os preços ou os nomes,
+
+28
+00:01:58.840 --> 00:02:00.120
+dependendo do campo.
+
+29
+00:02:00.140 --> 00:02:04.400
+E agora, a parte mais importante:
+como conferir que está em ordem?
+
+30
+00:02:04.420 --> 00:02:09.080
+A gente pega a lista da tela, faz uma cópia,
+e ordena a cópia do jeito certo.
+
+31
+00:02:09.100 --> 00:02:11.910
+Se a tela estiver certa,
+as duas ficam iguais.
+
+32
+00:02:12.020 --> 00:02:17.840
+Escreve a cópia ordenada: const esperado,
+igual, a cópia da lista da tela, ordenada.
+
+33
+00:02:17.860 --> 00:02:22.120
+Traduzindo: os três pontinhos entre colchetes,
+faça uma cópia.
+
+34
+00:02:22.140 --> 00:02:26.440
+Sort, ordene. A menos b,
+do menor pro maior, como número.
+
+35
+00:02:26.460 --> 00:02:29.760
+E locale compare,
+em ordem alfabética, pros nomes.
+
+36
+00:02:29.780 --> 00:02:33.300
+Se o sentido é decrescente,
+reverse: inverta a lista.
+
+37
+00:02:33.320 --> 00:02:37.260
+E o to equal compara as duas listas inteiras,
+item por item.
+
+38
+00:02:37.280 --> 00:02:42.000
+Repara na diferença pro desafio quatro:
+lá, a gente conferia só o primeiro preço.
+
+39
+00:02:42.020 --> 00:02:45.820
+Aqui, a lista inteira.
+E é isso que pega o bug da versão um,
+
+40
+00:02:45.840 --> 00:02:48.400
+que tinha o primeiro errado
+e o resto embaralhado.
+
+41
+00:02:48.420 --> 00:02:53.540
+E o esgotado, do jeito que a pessoa respondeu:
+acha o card da camiseta pelo nome,
+
+42
+00:02:53.560 --> 00:02:56.680
+e confere que ele aparece,
+com a etiqueta de esgotado,
+
+43
+00:02:56.700 --> 00:02:59.410
+e o botão de adicionar desabilitado.
+
+44
+00:02:59.480 --> 00:03:02.630
+To be disabled: esteja desabilitado.
+
+45
+00:03:02.740 --> 00:03:06.950
+Roda tudo na versão dois:
+dez testes, todos passando.
+
+46
+00:03:10.060 --> 00:03:12.240
+E se alguém apontar pra versão um?
+
+47
+00:03:12.260 --> 00:03:17.850
+Liga o LOJA VERSÃO igual a um no ponto env,
+e roda os testes de produtos.
+
+48
+00:03:18.060 --> 00:03:20.730
+Os dois testes de preço ficam vermelhos.
+
+49
+00:03:20.940 --> 00:03:25.570
+Os de nome e o do esgotado continuam verdes:
+o bug é só no preço.
+
+50
+00:03:25.720 --> 00:03:29.840
+E olha o erro: com o sinal de menos,
+em verde, o que era esperado.
+
+51
+00:03:29.860 --> 00:03:32.270
+Com o mais, em vermelho, o que veio.
+
+52
+00:03:32.400 --> 00:03:35.730
+O sete e noventa e nove,
+que devia ser o primeiro, lá embaixo.
+
+53
+00:03:35.800 --> 00:03:40.100
+Ou seja: se esse bug voltar um dia,
+ninguém precisa achar ele na mão de novo.
+
+54
+00:03:40.120 --> 00:03:44.590
+A automação pega sozinha.
+É pra isso que serve um teste automatizado.
+
+55
+00:03:44.620 --> 00:03:45.690
+Te vejo na próxima!
+

@@ -1,0 +1,75 @@
+WEBVTT
+
+1
+00:00:00.200 --> 00:00:05.490
+Olha o login no login ponto spec:
+preenche o usuário, a senha, e clica.
+
+2
+00:00:05.620 --> 00:00:08.540
+Agora olha o login no compra ponto spec.
+
+3
+00:00:08.560 --> 00:00:10.670
+É o mesmo código, duas vezes.
+
+4
+00:00:10.960 --> 00:00:13.330
+Agora imagina dez arquivos de teste.
+
+5
+00:00:13.380 --> 00:00:16.490
+Se o botão de login mudar,
+você arruma em dez lugares.
+
+6
+00:00:16.800 --> 00:00:20.770
+A solução é guardar o jeito de
+usar cada página num lugar só.
+
+7
+00:00:20.920 --> 00:00:24.060
+Isso se chama Page Object:
+o objeto da página.
+
+8
+00:00:24.080 --> 00:00:29.480
+Pensa num controle remoto:
+você aperta ligar e não precisa saber como a TV funciona
+
+9
+00:00:29.500 --> 00:00:30.370
+por dentro.
+
+10
+00:00:30.420 --> 00:00:33.390
+O teste vai dizer só login ponto entrar.
+
+11
+00:00:33.520 --> 00:00:36.930
+Os detalhes de como entrar
+ficam guardados no Page Object.
+
+12
+00:00:37.120 --> 00:00:41.060
+Quando usar? Quando a mesma
+página aparece em vários testes,
+
+13
+00:00:41.080 --> 00:00:42.950
+que é o normal num projeto de verdade.
+
+14
+00:00:43.180 --> 00:00:47.050
+Por isso quase toda empresa usa,
+e é pergunta comum em entrevista.
+
+15
+00:00:47.240 --> 00:00:50.340
+Na próxima aula,
+a gente cria o primeiro, com calma.
+
+16
+00:00:50.360 --> 00:00:51.210
+Te vejo lá!
+

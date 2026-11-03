@@ -1,0 +1,132 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:04.820
+Quando você tiver dezenas de testes,
+não vai querer rodar todos toda hora.
+
+2
+00:00:04.840 --> 00:00:07.890
+Pra rodar um arquivo só,
+coloca o nome dele:
+
+3
+00:00:08.080 --> 00:00:12.610
+npx playwright test login
+ponto spec ponto js.
+
+4
+00:00:12.690 --> 00:00:18.510
+Pra rodar pelo nome do teste:
+traço g e um pedaço do nome, tipo bloqueado.
+
+5
+00:00:18.600 --> 00:00:21.490
+O g vem de grep, que quer dizer procurar:
+
+6
+00:00:21.580 --> 00:00:24.330
+ele filtra os testes
+por esse pedaço de nome.
+
+7
+00:00:24.480 --> 00:00:30.270
+Dentro do código: no teste do bloqueado,
+logo depois do test, escreve ponto only.
+
+8
+00:00:30.340 --> 00:00:33.690
+Test ponto only: roda somente esse teste.
+
+9
+00:00:33.800 --> 00:00:35.690
+Only quer dizer somente.
+
+10
+00:00:35.800 --> 00:00:39.070
+Cuidado:
+esquecer um only é um erro clássico.
+
+11
+00:00:39.100 --> 00:00:41.890
+Os outros testes param de
+rodar e ninguém percebe.
+
+12
+00:00:42.200 --> 00:00:46.370
+Por isso o config já vem com forbid only,
+que trava isso no GitHub.
+
+13
+00:00:46.720 --> 00:00:49.810
+Agora apaga o only e
+escreve skip no lugar.
+
+14
+00:00:49.960 --> 00:00:52.490
+Test ponto skip: pula esse teste.
+
+15
+00:00:52.680 --> 00:00:56.730
+Skip quer dizer pular. No resultado,
+ele aparece como skipped.
+
+16
+00:00:56.880 --> 00:01:01.810
+E você já conhece o traço traço project igual chromium,
+pra rodar num navegador só.
+
+17
+00:01:01.920 --> 00:01:05.440
+Resumindo:
+o nome do arquivo roda só aquele arquivo.
+
+18
+00:01:05.460 --> 00:01:07.950
+Traço g filtra pelo nome do teste.
+
+19
+00:01:08.080 --> 00:01:10.980
+Test ponto only roda somente aquele teste.
+
+20
+00:01:11.000 --> 00:01:15.890
+Test ponto skip pula.
+E traço traço project escolhe o navegador.
+
+21
+00:01:16.000 --> 00:01:18.200
+E no dia a dia, quando usar cada um?
+
+22
+00:01:18.220 --> 00:01:20.500
+Mexendo só no login: roda o arquivo.
+
+23
+00:01:20.520 --> 00:01:23.890
+Um teste falhou:
+roda só ele, com o traço g.
+
+24
+00:01:24.020 --> 00:01:27.450
+Investigando um teste no código:
+only, e tira depois.
+
+25
+00:01:27.660 --> 00:01:30.560
+Um bug conhecido que ainda
+não foi corrigido: skip,
+
+26
+00:01:30.580 --> 00:01:32.750
+com um comentário dizendo o motivo.
+
+27
+00:01:32.820 --> 00:01:37.620
+Fechamos a organização. No próximo módulo:
+o que fazer quando o teste falha.
+
+28
+00:01:37.640 --> 00:01:38.510
+Te vejo lá!
+
