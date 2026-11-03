@@ -223,7 +223,8 @@
         "novo": ".env",
         "novo_nivel": 1,
         "legenda": "New File › .env"
-       }
+       },
+       "segura": 1.6
       },
       {
        "text": "Dentro: SAUCE underline USER igual standard user, e SAUCE underline PASSWORD igual secret sauce.",

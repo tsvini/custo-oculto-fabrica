@@ -285,7 +285,8 @@
         "novo_nivel": 3,
         "novo_pasta": false,
         "legenda": "New File › mock.spec.js  (dentro de nivel2)"
-       }
+       },
+       "segura": 0.9
       },
       {
        "text": "O começo do arquivo: o import, o endereço da Lojinha, e o endereço da API que a gente vai interceptar, guardado com o nome api. Os dois asteriscos querem dizer: qualquer coisa antes. E um before each que entra na loja, com cliente e leigo123, e espera os produtos aparecerem.",

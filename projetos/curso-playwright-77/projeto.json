@@ -264,7 +264,8 @@
         "novo_nivel": 1,
         "novo_pasta": true,
         "legenda": "New Folder › fixtures"
-       }
+       },
+       "segura": 3.6
       },
       {
        "text": "E a pasta dados.",
@@ -305,7 +306,8 @@
         "novo_nivel": 1,
         "novo_pasta": true,
         "legenda": "New Folder › dados"
-       }
+       },
+       "segura": 3.7
       },
       {
        "text": "No config, lá em cima, as três linhas do dotenv, que você já conhece do primeiro projeto: importe o dotenv, o path, e leia o ponto env.",
@@ -381,7 +383,8 @@
         "novo_nivel": 1,
         "novo_pasta": false,
         "legenda": "New File › .env"
-       }
+       },
+       "segura": 1.6
       },
       {
        "text": "Dentro, o usuário e a senha da Lojinha. E uma última linha, comentada: a versão. Com ela, dá pra apontar os testes pra versão um, a do bug.",

@@ -163,7 +163,8 @@
         "novo_nivel": 1,
         "novo_pasta": false,
         "legenda": "New File › README.md"
-       }
+       },
+       "segura": 1.8
       },
       {
        "text": "E um README que conta a história: os cenários, o que ficou fora do escopo, e o bug que você achou. Quem abrir o seu projeto entende o que você fez, sem rodar nada.",

@@ -259,7 +259,8 @@
         "novo_nivel": 2,
         "novo_pasta": false,
         "legenda": "New File › exemplo.txt  (dentro de arquivos)"
-       }
+       },
+       "segura": 1.1
       },
       {
        "text": "Dentro, qualquer texto. Esse é o arquivo que o teste vai enviar.",

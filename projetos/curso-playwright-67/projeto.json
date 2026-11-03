@@ -177,7 +177,8 @@
         "novo_nivel": 3,
         "novo_pasta": false,
         "legenda": "New File › visual.spec.js  (dentro de nivel2)"
-       }
+       },
+       "segura": 0.8
       },
       {
        "text": "O começo é igual aos outros: o import, o endereço da Lojinha numa constante, e o teste, que abre a tela de login.",

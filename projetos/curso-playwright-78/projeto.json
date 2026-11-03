@@ -118,7 +118,8 @@
         "novo_nivel": 2,
         "novo_pasta": false,
         "legenda": "New File › LoginPage.js  (dentro de pages)"
-       }
+       },
+       "segura": 1.4
       },
       {
        "text": "O LoginPage, com a receita que você já conhece: a class, o constructor, e os elementos. Os data-test da Lojinha são usuario, senha, entrar e erro.",
@@ -276,7 +277,8 @@
         "novo_nivel": 2,
         "novo_pasta": false,
         "legenda": "New File › ProdutosPage.js  (dentro de pages)"
-       }
+       },
+       "segura": 1.6
       },
       {
        "text": "Agora o ProdutosPage. Os elementos: o título, a caixa de ordenar, os produtos, os preços e os nomes. Cada um com o seu data-test.",
@@ -461,7 +463,8 @@
         "novo_nivel": 2,
         "novo_pasta": false,
         "legenda": "New File › paginas.js  (dentro de fixtures)"
-       }
+       },
+       "segura": 1.4
       },
       {
        "text": "E a fixture, igual à do módulo treze: o test do Playwright estendido com o loginPage e o produtosPage, e o expect exportado junto.",

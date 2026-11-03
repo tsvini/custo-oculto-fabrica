@@ -162,7 +162,8 @@
         "novo_nivel": 1,
         "novo_pasta": true,
         "legenda": "New Folder › dados"
-       }
+       },
+       "segura": 1.0
       },
       {
        "text": "E dentro dela, o arquivo usuarios ponto json.",
@@ -207,7 +208,8 @@
         "novo_nivel": 2,
         "novo_pasta": false,
         "legenda": "New File › usuarios.json  (dentro de dados)"
-       }
+       },
+       "segura": 1.7
       },
       {
        "text": "Dentro, a lista de usuários, no formato JSON.",

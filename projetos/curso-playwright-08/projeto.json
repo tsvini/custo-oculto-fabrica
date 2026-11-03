@@ -160,7 +160,8 @@
          5
         ],
         "legenda": "File › Open Folder"
-       }
+       },
+       "segura": 0.9
       },
       {
        "text": "e escolhe essa pasta: clica nela, e depois em Selecionar pasta.",

@@ -243,7 +243,7 @@ def main():
             wav = os.path.join(trab, f"voz_{fmt}{idx + 1 if fmt != 'longo' else ''}_p{k + 1}.wav")
             txts = [s["text"].strip() for s in frases(g)]
             if gravada:
-                tempos, dur, taxa, palavras = AL.parte(txts, audio_de(fmt, idx, k), wav, log, pausas=[s.get("pausa") for s in frases(g)])
+                tempos, dur, taxa, palavras = AL.parte(txts, audio_de(fmt, idx, k), wav, log, pausas=[s.get("pausa") or s.get("segura") for s in frases(g)])
                 taxas.append(f"{fmt}{'' if fmt == 'longo' else idx + 1} p{k + 1}: {taxa:.0%} ({dur:.0f}s)")
                 if taxa < 0.6:
                     avisos.append(f"{fmt}{'' if fmt == 'longo' else idx + 1} parte {k + 1}: só {taxa:.0%} das palavras bateram com o roteiro. Confira se o áudio é dessa parte e se o texto não mudou.")

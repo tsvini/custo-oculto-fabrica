@@ -176,7 +176,8 @@
         "novo_nivel": 1,
         "novo_pasta": true,
         "legenda": "New Folder › fixtures"
-       }
+       },
+       "segura": 0.8
       },
       {
        "text": "E dentro dela, o arquivo paginas ponto js.",
@@ -220,7 +221,8 @@
         "novo_nivel": 2,
         "novo_pasta": false,
         "legenda": "New File › paginas.js  (dentro de fixtures)"
-       }
+       },
+       "segura": 1.9
       },
       {
        "text": "Primeiro, os imports: o test do Playwright, e as duas páginas.",
@@ -483,7 +485,8 @@
         "novo_nivel": 3,
         "novo_pasta": false,
         "legenda": "New File › fixture.spec.js  (dentro de nivel2)"
-       }
+       },
+       "segura": 1.1
       },
       {
        "text": "Agora um teste usando a fixture. Primeira linha, o import: em vez de vir do Playwright, o test vem das suas fixtures. E no teste, você pede o loginPage entre chaves, igual ao page, e já usa.",

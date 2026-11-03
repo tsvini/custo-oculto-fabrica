@@ -165,7 +165,8 @@
         "novo_nivel": 2,
         "novo_pasta": false,
         "legenda": "New File › api.spec.js  (dentro de tests)"
-       }
+       },
+       "segura": 1.1
       },
       {
        "text": "No teste, em vez do page, você pede o request, entre chaves.",

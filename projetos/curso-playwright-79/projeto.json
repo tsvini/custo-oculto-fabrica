@@ -118,7 +118,8 @@
         "novo_nivel": 2,
         "novo_pasta": false,
         "legenda": "New File › login.json  (dentro de dados)"
-       }
+       },
+       "segura": 1.6
       },
       {
        "text": "A lista de cenários vira teste. Começando pelo login: os casos de erro moram no login ponto json. Cada caso tem o nome do cenário, o usuário, a senha, e a mensagem esperada. O primeiro: senha errada.",
@@ -195,7 +196,8 @@
         "novo_nivel": 2,
         "novo_pasta": false,
         "legenda": "New File › login.spec.js  (dentro de tests)"
-       }
+       },
+       "segura": 1.4
       },
       {
        "text": "Agora o teste. O começo: o import das fixtures, o import dos casos do JSON, um describe chamado Login, e o before each, que abre a loja com o abrir do LoginPage.",
@@ -292,7 +294,8 @@
         "novo_nivel": 2,
         "novo_pasta": false,
         "legenda": "New File › ordenacao.json  (dentro de dados)"
-       }
+       },
+       "segura": 1.7
       },
       {
        "text": "A ordenação: os quatro sentidos no ordenacao ponto json. Cada um tem a opção da caixa, o nome do cenário, o campo, preço ou nome, e o sentido.",
@@ -370,7 +373,8 @@
         "novo_nivel": 2,
         "novo_pasta": false,
         "legenda": "New File › produtos.spec.js  (dentro de tests)"
-       }
+       },
+       "segura": 1.1
       },
       {
        "text": "No produtos ponto spec, o começo: os imports, o describe Produtos, e um before each que abre a loja, entra, e espera os produtos aparecerem.",

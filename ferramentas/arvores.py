@@ -98,6 +98,16 @@ def completar(log=False):
             if c.get("apaga"):
                 for k in [k for k in estado if k.rsplit("/", 1)[-1] == c["apaga"].rstrip("/")]:
                     del estado[k]
+        # cena de menu (criar/apagar no Explorer) com frase curta: a animação leva ~4,5 s e cortava no meio.
+        # "segura" = silêncio colado na montagem depois da frase (a narração gravada não muda)
+        for s in p["script"]["long"]["parts"][0]["sentences"]:
+            if s["scene"].get("type") == "menu" and not s.get("pausa"):
+                falta = round(4.8 - len(s["text"]) / 14.5, 1)
+                seg = falta if falta >= 0.4 else None
+                if s.get("segura") != seg:
+                    if seg: s["segura"] = seg
+                    else: s.pop("segura", None)
+                    alterou = True
         if alterou:
             json.dump(p, open(arq, "w", encoding="utf8"), ensure_ascii=False, indent=1)
             mudou.add(n)

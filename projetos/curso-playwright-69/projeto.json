@@ -153,7 +153,8 @@
         "novo_nivel": 3,
         "novo_pasta": false,
         "legenda": "New File › tags.spec.js  (dentro de nivel2)"
-       }
+       },
+       "segura": 0.9
       },
       {
        "text": "Começa com o import das suas fixtures, e um teste de login que você já conhece: abre o site, entra com o loginPage, e confere o endereço.",

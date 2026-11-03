@@ -158,7 +158,8 @@
         "novo_nivel": 3,
         "novo_pasta": false,
         "legenda": "New File › soft.spec.js  (dentro de nivel2)"
-       }
+       },
+       "segura": 0.9
       },
       {
        "text": "O começo: o import, o endereço da Lojinha, e um teste que abre a tela de login.",
