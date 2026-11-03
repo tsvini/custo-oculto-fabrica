@@ -14,6 +14,7 @@ body{font-family:Inter,sans-serif;color:var(--tx);background:var(--bg);-webkit-p
 .topo p{font-size:11px;color:var(--mu);margin-top:6px}
 .selo{background:var(--ac);color:#0b1a12;font-weight:900;font-size:11px;border-radius:30px;padding:7px 13px;white-space:nowrap}
 .grade{display:grid;grid-template-columns:1fr 1fr;gap:11px}
+.pg1 .l{gap:4px 12px}.pg1 .box h2{margin-bottom:8px}
 .box{background:var(--box);border-radius:14px;padding:14px 16px;border:1.5px solid var(--bd)}
 .box h2{font-size:13px;font-weight:900;text-transform:uppercase;letter-spacing:.5px;margin-bottom:11px;display:flex;align-items:center;gap:8px;color:#fff}
 .box h2 i{font-style:normal;background:var(--ac);color:#0b1a12;border-radius:7px;width:22px;height:22px;display:inline-grid;place-items:center;font-size:11.5px}
@@ -50,7 +51,7 @@ b{color:#fff}
 .l3 .h{font-weight:900;font-size:10px;color:var(--mu);text-transform:uppercase;letter-spacing:.5px}
 .pg5 .grade{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.pg5 .box{min-width:0}.pg5 pre.c{font-size:9.6px;white-space:pre-wrap;word-break:break-word}.pg5 .box h2{font-size:12px}
 </style></head><body>
-<div class="pg"><div class="topo"><div><h1>PLAYWRIGHT <b>PARA LEIGOS</b></h1><p>Colinha do curso · os comandos e a receita de um teste, pra consultar enquanto pratica</p></div><span class="selo">COLINHA · 1/5</span></div>
+<div class="pg pg1"><div class="topo"><div><h1>PLAYWRIGHT <b>PARA LEIGOS</b></h1><p>Colinha do curso · os comandos e a receita de um teste, pra consultar enquanto pratica</p></div><span class="selo">COLINHA · 1/5</span></div>
  <div class="grade">
   <div class="box"><h2><i>1</i>Terminal: os comandos</h2><div class="l">
    <code>node -v</code><span class="d">confere se o Node está instalado</span>
@@ -204,10 +205,12 @@ dotenv.<span class="f">config</span>({ path: path.<span class="f">resolve</span>
   }
 }</pre>
 <pre class="c"><span class="m">// no teste</span>
-<span class="k">import</span> { LoginPage } <span class="k">from</span> <span class="s">'../pages/LoginPage'</span>;
+<span class="k">import</span> { LoginPage }
+  <span class="k">from</span> <span class="s">'../pages/LoginPage'</span>;
 
 <span class="k">const</span> login = <span class="k">new</span> <span class="f">LoginPage</span>(page);
-<span class="k">await</span> login.<span class="f">entrar</span>(<span class="s">'standard_user'</span>, <span class="s">'secret_sauce'</span>);</pre>
+<span class="k">await</span> login.<span class="f">entrar</span>(
+  <span class="s">'standard_user'</span>, <span class="s">'secret_sauce'</span>);</pre>
    </div><p class="nota">Mudou o site? Você conserta <b>num lugar só</b> (a classe), e todos os testes que usam ela continuam funcionando.</p></div>
   <div class="box"><h2><i>15</i>Login uma vez só (aula 42)</h2>
 <pre class="c"><span class="m">// tests/auth.setup.js: faz login e guarda</span>
