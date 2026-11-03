@@ -1,0 +1,127 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:03.870
+Quando um teste longo falha,
+você quer saber em qual parte.
+
+2
+00:00:03.920 --> 00:00:07.830
+A ideia: separar a compra
+em quatro passos com nome.
+
+3
+00:00:07.900 --> 00:00:12.240
+Adiciona a mochila, abre o carrinho,
+preenche os dados, finaliza.
+
+4
+00:00:12.260 --> 00:00:17.510
+Pra isso, os passos de dentro do teste
+vão ser escritos de novo, agora em blocos.
+
+5
+00:00:17.660 --> 00:00:20.130
+Então apaga as linhas de dentro do teste.
+
+6
+00:00:20.240 --> 00:00:25.600
+O primeiro passo. A sintaxe:
+await test ponto step, abre parênteses,
+
+7
+00:00:25.620 --> 00:00:32.470
+o nome do passo entre aspas, vírgula,
+async, parênteses, seta, e abre chaves.
+
+8
+00:00:32.600 --> 00:00:36.410
+Traduzindo: test ponto step,
+um passo do teste.
+
+9
+00:00:36.560 --> 00:00:38.820
+O nome, como ele aparece no relatório.
+
+10
+00:00:38.840 --> 00:00:41.110
+E o bloco, o que esse passo faz.
+
+11
+00:00:41.320 --> 00:00:45.140
+Dentro das chaves, as duas linhas desse passo:
+adiciona a mochila,
+
+12
+00:00:45.160 --> 00:00:50.520
+e confere o numerozinho. E fecha o passo:
+chave, parêntese, ponto e vírgula.
+
+13
+00:00:50.540 --> 00:00:53.860
+Roda e abre o relatório:
+o passo aparece com esse nome.
+
+14
+00:00:53.880 --> 00:00:56.560
+Segundo passo: abre o carrinho.
+
+15
+00:00:56.580 --> 00:01:00.390
+E aproveita pra conferir uma coisa nova:
+que a mochila está lá dentro.
+
+16
+00:01:00.460 --> 00:01:03.950
+Get by text Sauce Labs Backpack,
+to be visible.
+
+17
+00:01:04.000 --> 00:01:06.820
+Terceiro passo:
+preenche os dados de entrega.
+
+18
+00:01:06.840 --> 00:01:09.890
+Dentro,
+o botão checkout e o preencher dados.
+
+19
+00:01:10.040 --> 00:01:15.090
+E o quarto: finaliza a compra. O botão finish,
+e a conferência da mensagem final.
+
+20
+00:01:15.140 --> 00:01:18.780
+E se falhar,
+o relatório mostra exatamente em qual passo.
+
+21
+00:01:18.800 --> 00:01:21.280
+E o relatório fica legível
+até pra quem não programa:
+
+22
+00:01:21.300 --> 00:01:25.760
+alguém da equipe abre e entende o
+que foi testado, passo por passo.
+
+23
+00:01:25.780 --> 00:01:30.200
+Quando usar? Em testes compridos,
+com várias etapas, como essa compra.
+
+24
+00:01:30.220 --> 00:01:33.010
+Num teste curto,
+de três linhas, não precisa.
+
+25
+00:01:33.180 --> 00:01:36.240
+Na próxima aula:
+fazendo o login uma vez só.
+
+26
+00:01:36.260 --> 00:01:37.130
+Te vejo lá!
+

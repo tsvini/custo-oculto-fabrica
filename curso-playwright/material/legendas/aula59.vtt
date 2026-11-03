@@ -1,0 +1,127 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:05.330
+Imagina: você clica pra ver os detalhes de um pedido,
+e eles abrem em outra aba.
+
+2
+00:00:05.460 --> 00:00:08.110
+E o teste continua olhando a aba antiga.
+
+3
+00:00:08.300 --> 00:00:11.450
+No the internet,
+essa tela é a Multiple Windows.
+
+4
+00:00:11.680 --> 00:00:13.780
+Na página inicial, clica nela.
+
+5
+00:00:13.800 --> 00:00:19.150
+Tem um link: Click Here. Clicando,
+abre uma aba nova, escrito New Window.
+
+6
+00:00:19.200 --> 00:00:22.460
+O problema:
+o page é a aba que o teste abriu.
+
+7
+00:00:22.480 --> 00:00:27.560
+A aba nova é outra. Se o teste continuar
+olhando o page, ele nunca vê o New Window.
+
+8
+00:00:27.580 --> 00:00:33.260
+O teste: avisar que uma aba nova vai abrir,
+clicar no link, pegar a aba nova,
+
+9
+00:00:33.280 --> 00:00:35.210
+e conferir o título dela.
+
+10
+00:00:35.240 --> 00:00:38.890
+Um teste novo, nova aba,
+com o goto da tela windows.
+
+11
+00:00:39.060 --> 00:00:45.260
+Primeiro, o aviso: const promessa
+igual page ponto wait for event, popup.
+
+12
+00:00:45.280 --> 00:00:49.320
+Popup é o nome que o Playwright
+dá pra uma aba ou janela nova.
+
+13
+00:00:49.340 --> 00:00:50.870
+Espere uma nova aba.
+
+14
+00:00:50.920 --> 00:00:52.770
+Por que avisar antes de clicar?
+
+15
+00:00:52.840 --> 00:00:54.820
+Porque a aba nova abre muito rápido.
+
+16
+00:00:54.840 --> 00:00:59.060
+Se você só começar a esperar depois do clique,
+ela pode já ter aberto,
+
+17
+00:00:59.080 --> 00:01:01.120
+e o teste fica esperando pra sempre.
+
+18
+00:01:01.140 --> 00:01:05.740
+Agora o clique: get by role link,
+um link com o nome Click Here.
+
+19
+00:01:05.760 --> 00:01:09.540
+E aí: const nova aba igual await promessa.
+
+20
+00:01:09.560 --> 00:01:13.840
+O await espera a aba abrir,
+e guarda ela com o nome nova aba.
+
+21
+00:01:13.860 --> 00:01:16.940
+A partir daí,
+a nova aba funciona igual ao page.
+
+22
+00:01:16.960 --> 00:01:20.700
+Nela, o título New Window,
+com get by role heading.
+
+23
+00:01:20.720 --> 00:01:23.420
+Heading é título.
+E confere que ele está visível.
+
+24
+00:01:23.440 --> 00:01:25.790
+Roda e olha as duas abas.
+
+25
+00:01:28.300 --> 00:01:34.450
+No dia a dia, isso aparece em link de pagamento,
+termos de uso, nota fiscal em PDF,
+
+26
+00:01:34.840 --> 00:01:38.950
+e em login com conta de outro site,
+que abre numa janela separada.
+
+27
+00:01:39.020 --> 00:01:40.150
+Te vejo na próxima!
+

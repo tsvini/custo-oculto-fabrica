@@ -1,0 +1,83 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:02.250
+Última instalação: o Git.
+
+2
+00:00:02.340 --> 00:00:04.940
+O Git guarda o histórico do seu projeto,
+
+3
+00:00:04.960 --> 00:00:07.300
+como os pontos de
+salvamento de um videogame.
+
+4
+00:00:07.320 --> 00:00:10.210
+Deu problema?
+Volta pro último ponto salvo.
+
+5
+00:00:10.300 --> 00:00:14.720
+E é com ele que, no fim do curso,
+o seu projeto vai pro GitHub e passa a rodar os
+
+6
+00:00:14.740 --> 00:00:15.970
+testes sozinho.
+
+7
+00:00:16.060 --> 00:00:21.480
+Entra em git traço scm ponto com,
+clica em Download for Windows e baixa a versão
+
+8
+00:00:21.500 --> 00:00:23.270
+recomendada para o seu Windows.
+
+9
+00:00:23.460 --> 00:00:27.800
+O instalador tem bastante tela,
+mas dá pra deixar quase tudo no padrão e ir clicando
+
+10
+00:00:27.820 --> 00:00:28.420
+em Next.
+
+11
+00:00:28.440 --> 00:00:32.530
+Só uma tela merece atenção:
+quando ele perguntar o editor,
+
+12
+00:00:32.620 --> 00:00:34.570
+escolhe o Visual Studio Code.
+
+13
+00:00:34.660 --> 00:00:37.470
+Clica em Install, espera, e Finish.
+
+14
+00:00:37.520 --> 00:00:42.150
+Pra conferir, abre o PowerShell
+e digita git traço traço version.
+
+15
+00:00:42.300 --> 00:00:47.210
+Apareceu a versão? Então você tem tudo:
+o VS Code, o Node e o Git.
+
+16
+00:00:47.400 --> 00:00:51.300
+Se o seu computador é Windows,
+pode pular a próxima aula, que é de Mac e Linux,
+
+17
+00:00:51.320 --> 00:00:53.400
+e ir direto pro módulo dois.
+
+18
+00:00:53.420 --> 00:00:54.330
+Te vejo lá!
+

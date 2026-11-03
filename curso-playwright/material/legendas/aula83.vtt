@@ -1,0 +1,101 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:04.250
+Última aula. Vamos deixar o seu
+projeto pronto pra quem visitar.
+
+2
+00:00:04.380 --> 00:00:08.850
+Na pasta do projeto,
+cria um arquivo novo: README ponto md.
+
+3
+00:00:08.960 --> 00:00:12.350
+É a primeira coisa que alguém vê
+quando abre o seu projeto no GitHub.
+
+4
+00:00:12.720 --> 00:00:18.760
+Dentro, escreve: o objetivo, as tecnologias,
+o que precisa instalar, como instalar,
+
+5
+00:00:18.780 --> 00:00:21.210
+e os comandos pra rodar os testes.
+
+6
+00:00:21.320 --> 00:00:25.160
+Agora, logo embaixo do título,
+coloca o selinho do GitHub Actions.
+
+7
+00:00:25.180 --> 00:00:29.840
+O próprio GitHub gera o código dele,
+com o endereço do seu repositório e do seu
+
+8
+00:00:29.860 --> 00:00:30.670
+workflow.
+
+9
+00:00:30.840 --> 00:00:33.180
+Ele mostra se os testes estão passando.
+
+10
+00:00:33.200 --> 00:00:37.080
+E a sua colinha completa:
+do primeiro comando ao Page Object,
+
+11
+00:00:37.100 --> 00:00:41.050
+ao login salvo, ao GitHub Actions e à API.
+
+12
+00:00:41.540 --> 00:00:44.180
+E a página cinco,
+com o nível dois inteiro.
+
+13
+00:00:44.200 --> 00:00:47.350
+São cinco páginas:
+deixa ela aberta enquanto pratica.
+
+14
+00:00:47.380 --> 00:00:53.020
+Você começou sem saber nada e terminou
+com dois projetos: o primeiro, com login,
+
+15
+00:00:53.040 --> 00:00:56.190
+compra, API e tudo rodando no GitHub.
+
+16
+00:00:56.520 --> 00:01:00.600
+E o segundo, que começou num card:
+os cenários, o bug achado na mão,
+
+17
+00:01:00.620 --> 00:01:03.250
+e a automação que garante
+que ele não volta.
+
+18
+00:01:03.460 --> 00:01:08.950
+Próximos passos: pratique,
+crie novos cenários e mantenha o seu GitHub atualizado.
+
+19
+00:01:09.060 --> 00:01:12.460
+E se o curso te ajudou,
+deixa uma avaliação honesta na Udemy.
+
+20
+00:01:12.480 --> 00:01:15.620
+Ela ajuda a melhorar o curso
+e orienta outros alunos.
+
+21
+00:01:15.640 --> 00:01:16.530
+Até a próxima!
+

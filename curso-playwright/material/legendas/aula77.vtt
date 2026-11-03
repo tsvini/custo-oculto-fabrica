@@ -1,0 +1,130 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:04.690
+Um projeto Playwright novo,
+numa pasta nova: projeto lojinha.
+
+2
+00:00:04.940 --> 00:00:07.660
+Mas desta vez,
+você não está começando do zero.
+
+3
+00:00:07.680 --> 00:00:14.530
+O npm init deixa um teste de exemplo dentro de tests:
+o example ponto spec ponto js.
+
+4
+00:00:14.980 --> 00:00:18.630
+Ele não é da Lojinha.
+Botão direito nele, e Delete.
+
+5
+00:00:18.680 --> 00:00:22.750
+Você já sabe do que vai precisar:
+pages, pros Page Objects.
+
+6
+00:00:22.960 --> 00:00:25.550
+Fixtures, pra entregar as páginas prontas.
+
+7
+00:00:25.760 --> 00:00:28.160
+Dados, pros casos de login e de ordenação.
+
+8
+00:00:28.180 --> 00:00:29.710
+E os testes.
+
+9
+00:00:29.800 --> 00:00:33.130
+Primeiro, as pastas que você
+já sabe que vai precisar.
+
+10
+00:00:33.260 --> 00:00:36.010
+Na pasta do projeto, cria a pasta pages.
+
+11
+00:00:36.380 --> 00:00:39.150
+A pasta fixtures.
+
+12
+00:00:40.800 --> 00:00:44.410
+E a pasta dados.
+
+13
+00:00:45.860 --> 00:00:49.780
+No config, lá em cima,
+as três linhas do dotenv,
+
+14
+00:00:49.800 --> 00:00:53.920
+que você já conhece do primeiro projeto:
+importe o dotenv, o path,
+
+15
+00:00:53.940 --> 00:00:55.680
+e leia o ponto env.
+
+16
+00:00:55.700 --> 00:01:01.160
+E dentro do use: o baseURL da Lojinha,
+já lendo a variável BASE URL,
+
+17
+00:01:01.180 --> 00:01:06.650
+como na aula setenta e um. O testIdAttribute,
+porque a Lojinha também usa data-test.
+
+18
+00:01:06.940 --> 00:01:09.090
+E o screenshot só quando falha.
+
+19
+00:01:09.180 --> 00:01:12.950
+Na pasta do projeto,
+cria o arquivo ponto env.
+
+20
+00:01:14.440 --> 00:01:17.160
+Dentro, o usuário e a senha da Lojinha.
+
+21
+00:01:17.180 --> 00:01:19.790
+E uma última linha, comentada: a versão.
+
+22
+00:01:20.020 --> 00:01:23.000
+Com ela, dá pra apontar os
+testes pra versão um, a do bug.
+
+23
+00:01:23.020 --> 00:01:27.750
+E igual no primeiro projeto:
+abre o ponto gitignore, e acrescenta uma linha,
+
+24
+00:01:27.770 --> 00:01:33.070
+ponto env. Assim a senha fica só na sua máquina,
+e não vai pro GitHub.
+
+25
+00:01:33.200 --> 00:01:37.040
+Repara: no primeiro projeto,
+cada uma dessas coisas era novidade,
+
+26
+00:01:37.060 --> 00:01:39.110
+e a gente foi colocando uma por vez.
+
+27
+00:01:39.280 --> 00:01:42.750
+Agora você escolhe a estrutura no começo,
+com intenção.
+
+28
+00:01:42.880 --> 00:01:44.010
+Te vejo na próxima!
+

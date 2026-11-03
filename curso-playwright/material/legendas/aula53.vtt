@@ -1,0 +1,82 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:02.800
+Desafio cinco: sair do sistema.
+
+2
+00:00:02.820 --> 00:00:08.040
+Por que testar o sair?
+Porque se ele falhar num computador compartilhado,
+
+3
+00:00:08.060 --> 00:00:11.090
+a próxima pessoa entra
+direto na sua conta.
+
+4
+00:00:11.180 --> 00:00:16.990
+O teste: abre o menu, clica em Logout,
+e confere que o botão de Login voltou.
+
+5
+00:00:17.480 --> 00:00:22.600
+Dica: o menu é aquele botão de três risquinhos,
+com nome Open Menu.
+
+6
+00:00:22.620 --> 00:00:24.400
+Lá dentro tem o Logout.
+
+7
+00:00:24.420 --> 00:00:29.450
+E o Logout: com o menu aberto,
+botão direito nele, e Inspecionar.
+
+8
+00:00:29.780 --> 00:00:32.300
+Data-test igual logout sidebar link.
+
+9
+00:00:32.320 --> 00:00:35.020
+Agora sim: pausa o vídeo e tenta.
+
+10
+00:00:35.040 --> 00:00:37.030
+Quando voltar, a solução.
+
+11
+00:00:42.860 --> 00:00:45.490
+Solução. Primeiro, abre o menu.
+
+12
+00:00:45.700 --> 00:00:50.580
+O botão de três risquinhos não tem data-test,
+então a gente usa o get by role:
+
+13
+00:00:50.600 --> 00:00:52.540
+um botão com o nome Open Menu.
+
+14
+00:00:52.560 --> 00:00:58.040
+Depois, clica no Logout,
+pelo data-test logout sidebar link.
+
+15
+00:00:58.060 --> 00:01:01.550
+E a conferência:
+o botão de login apareceu de novo.
+
+16
+00:01:01.620 --> 00:01:04.130
+Se ele está visível, a pessoa saiu mesmo.
+
+17
+00:01:04.320 --> 00:01:05.050
+Roda.
+
+18
+00:01:08.900 --> 00:01:11.390
+Te vejo no desafio final!
+

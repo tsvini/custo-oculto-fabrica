@@ -1,0 +1,203 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:05.570
+Começa o projeto final: o fluxo de compra completo,
+do login até o obrigado.
+
+2
+00:00:05.820 --> 00:00:07.270
+Hoje, o carrinho.
+
+3
+00:00:07.540 --> 00:00:11.110
+Por que começar pela compra?
+Porque é onde a loja ganha dinheiro.
+
+4
+00:00:11.240 --> 00:00:13.260
+Se o carrinho quebra, ninguém compra.
+
+5
+00:00:13.280 --> 00:00:15.470
+Se o checkout quebra, ninguém paga.
+
+6
+00:00:15.580 --> 00:00:18.210
+É o primeiro fluxo que
+as empresas automatizam.
+
+7
+00:00:18.280 --> 00:00:20.870
+Antes de começar, uma faxina no config.
+
+8
+00:00:21.100 --> 00:00:25.200
+Ele veio cheio de comentários em inglês:
+as linhas que começam com barra e
+
+9
+00:00:25.220 --> 00:00:29.650
+asterisco, ou com duas barras.
+Eles só explicam, o Playwright ignora.
+
+10
+00:00:29.740 --> 00:00:32.720
+Então apaga todos,
+e as linhas em branco que sobram.
+
+11
+00:00:32.740 --> 00:00:36.220
+Ficou assim: o mesmo config,
+só com o que a gente usa.
+
+12
+00:00:36.240 --> 00:00:40.450
+Nada mudou no funcionamento.
+É assim que ele vai estar até o fim do projeto.
+
+13
+00:00:40.660 --> 00:00:44.190
+Depois do login,
+cada produto tem um botão Add to cart.
+
+14
+00:00:44.240 --> 00:00:47.050
+Clica com o botão direito e Inspecionar:
+
+15
+00:00:47.610 --> 00:00:51.780
+data-test igual
+add-to-cart-sauce-labs-backpack.
+
+16
+00:00:54.000 --> 00:00:57.550
+Agora,
+um arquivo de teste novo pra compra.
+
+17
+00:00:57.640 --> 00:01:01.970
+Dentro da pasta tests,
+cria o compra ponto spec ponto js.
+
+18
+00:01:02.180 --> 00:01:04.440
+Primeira linha, o import de sempre.
+
+19
+00:01:04.460 --> 00:01:08.250
+E o describe, a caixa dos testes,
+agora com o nome Compra.
+
+20
+00:01:08.360 --> 00:01:12.940
+Dentro, o before each.
+Todo teste de compra começa com a pessoa já logada,
+
+21
+00:01:12.960 --> 00:01:17.430
+então aqui vai o goto e o login inteiro:
+usuário, senha e o clique.
+
+22
+00:01:17.540 --> 00:01:21.730
+São as mesmas linhas do login ponto spec,
+que você escreveu nas aulas vinte e três e
+
+23
+00:01:21.750 --> 00:01:24.290
+vinte e quatro:
+pode copiar de lá e colar aqui.
+
+24
+00:01:24.360 --> 00:01:29.000
+Agora o teste: test, e o nome,
+compra uma mochila do começo ao fim.
+
+25
+00:01:29.020 --> 00:01:31.590
+E o primeiro passo,
+o clique no Add to cart.
+
+26
+00:01:31.740 --> 00:01:35.150
+O data-test é aquele que a
+gente achou no Inspecionar:
+
+27
+00:01:37.600 --> 00:01:38.200
+add-to-cart-sauce-labs-backpack.
+
+28
+00:01:40.400 --> 00:01:45.200
+Então: get by test id,
+esse nome entre aspas, ponto click.
+
+29
+00:01:45.280 --> 00:01:47.020
+E como saber que o clique funcionou?
+
+30
+00:01:47.040 --> 00:01:49.800
+Olha o carrinho lá em cima:
+depois do Add to cart,
+
+31
+00:01:49.820 --> 00:01:51.920
+aparece um numerozinho vermelho com um.
+
+32
+00:01:51.940 --> 00:01:57.670
+Botão direito nele, Inspecionar:
+data-test igual shopping-cart-badge,
+
+33
+00:01:58.560 --> 00:01:59.830
+a bolinha do carrinho.
+
+34
+00:01:59.900 --> 00:02:04.170
+Então a conferência no código:
+o nome que a gente acabou de ver no Inspecionar,
+
+35
+00:02:04.236 --> 00:02:10.960
+shopping-cart-badge. Get by test id,
+esse nome, ponto to have text, um.
+
+36
+00:02:10.980 --> 00:02:13.920
+Se o numerozinho mostrar um,
+a mochila entrou no carrinho.
+
+37
+00:02:13.940 --> 00:02:16.960
+E por que conferir?
+Sem essa linha, o teste só clica.
+
+38
+00:02:16.980 --> 00:02:21.110
+Se o botão Add to cart estivesse quebrado,
+ele passaria do mesmo jeito.
+
+39
+00:02:21.140 --> 00:02:23.410
+Teste sem conferência não testa nada.
+
+40
+00:02:23.520 --> 00:02:27.720
+Roda com o navegador aparecendo:
+olha ele entrando, clicando em Add to cart,
+
+41
+00:02:27.740 --> 00:02:29.170
+e o carrinho mostrando um.
+
+42
+00:02:29.240 --> 00:02:31.660
+Na próxima aula: terminando o fluxo.
+
+43
+00:02:31.680 --> 00:02:32.530
+Te vejo lá!
+

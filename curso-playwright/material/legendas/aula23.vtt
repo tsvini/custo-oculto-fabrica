@@ -1,0 +1,219 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:03.080
+Hoje a gente mexe no
+arquivo de configuração.
+
+2
+00:00:03.100 --> 00:00:06.170
+Parece assustador, mas são só duas linhas.
+
+3
+00:00:06.320 --> 00:00:11.070
+Abre o playwright ponto config
+ponto js e procura o use.
+
+4
+00:00:11.240 --> 00:00:14.720
+Use quer dizer:
+use isso em todos os testes.
+
+5
+00:00:14.740 --> 00:00:19.650
+Repara na linha da baseURL: ela está comentada,
+com as duas barras na frente.
+
+6
+00:00:19.700 --> 00:00:21.860
+Primeiro, apaga as duas barras.
+
+7
+00:00:21.880 --> 00:00:25.160
+Depois, apaga o endereço de exemplo,
+o localhost,
+
+8
+00:00:25.180 --> 00:00:27.860
+e escreve no lugar o
+endereço do Sauce Demo.
+
+9
+00:00:27.880 --> 00:00:30.480
+Base URL: o endereço base.
+
+10
+00:00:30.500 --> 00:00:35.580
+Agora, no teste, apaga o endereço que
+está dentro do goto e deixa só a barra.
+
+11
+00:00:35.600 --> 00:00:38.420
+O Playwright junta essa
+barra com o endereço base.
+
+12
+00:00:38.440 --> 00:00:42.620
+A vantagem: se um dia o site mudar de endereço,
+você troca num lugar só.
+
+13
+00:00:42.640 --> 00:00:47.320
+E no trabalho isso é muito usado:
+o mesmo teste roda no site de teste da empresa e
+
+14
+00:00:47.340 --> 00:00:50.030
+no site de verdade.
+Só muda o endereço base.
+
+15
+00:00:50.100 --> 00:00:54.410
+Segunda linha:
+test id attribute igual data-test.
+
+16
+00:00:54.940 --> 00:00:57.660
+Lembra do data-test que a
+gente viu no Inspecionar?
+
+17
+00:00:57.680 --> 00:01:02.540
+Por padrão,
+o get by test id procura data-testid.
+
+18
+00:01:02.560 --> 00:01:07.120
+O saucedemo usa data-test.
+Essa linha avisa o Playwright.
+
+19
+00:01:07.140 --> 00:01:11.220
+E por que usar o data-test?
+Porque ele existe só pra teste.
+
+20
+00:01:11.240 --> 00:01:14.700
+O texto Username pode mudar:
+alguém traduz pra Usuário,
+
+21
+00:01:14.720 --> 00:01:18.940
+e o seletor pelo texto quebra.
+O data-test continua igual.
+
+22
+00:01:18.960 --> 00:01:23.560
+No trabalho, é comum quem testa pedir
+pra quem desenvolve colocar data-test nos
+
+23
+00:01:23.580 --> 00:01:27.160
+elementos importantes.
+É um dos seletores mais estáveis que existem.
+
+24
+00:01:27.180 --> 00:01:31.910
+Então, vamos trocar os seletores que
+já estão nos testes pelo data-test.
+
+25
+00:01:32.240 --> 00:01:36.030
+Repara: o before each continua igual,
+ele só abre o site.
+
+26
+00:01:36.120 --> 00:01:38.810
+E de onde vêm esses nomes?
+Do próprio site.
+
+27
+00:01:38.860 --> 00:01:42.420
+Clica com o botão direito no
+campo de usuário, e Inspecionar.
+
+28
+00:01:42.440 --> 00:01:45.490
+Lá está: data-test igual username.
+
+29
+00:01:45.580 --> 00:01:49.990
+No campo da senha, a mesma coisa:
+data-test igual password.
+
+30
+00:01:50.080 --> 00:01:53.560
+E no botão: data-test igual login button.
+
+31
+00:01:53.580 --> 00:01:56.300
+São esses nomes que vão
+dentro do get by test id.
+
+32
+00:01:56.320 --> 00:02:00.180
+A troca é assim:
+onde estava get by placeholder Username,
+
+33
+00:02:00.200 --> 00:02:04.480
+fica get by test id username.
+A senha vira password.
+
+34
+00:02:04.500 --> 00:02:06.570
+E o botão vira login button.
+
+35
+00:02:06.600 --> 00:02:09.360
+No primeiro teste,
+troca as três linhas do login.
+
+36
+00:02:09.380 --> 00:02:13.160
+Repara: só o pedaço do seletor
+é apagado e escrito de novo.
+
+37
+00:02:13.180 --> 00:02:17.260
+O resto da linha, o fill com o usuário,
+o fill com a senha e o click,
+
+38
+00:02:17.280 --> 00:02:18.220
+continua igual.
+
+39
+00:02:18.240 --> 00:02:21.330
+E no segundo teste,
+a mesma troca nas três linhas.
+
+40
+00:02:21.380 --> 00:02:25.880
+Os seletores antigos também estavam certos:
+é só outro caminho pro mesmo lugar.
+
+41
+00:02:25.900 --> 00:02:28.980
+Mas o data-test é o
+caminho que menos quebra.
+
+42
+00:02:29.000 --> 00:02:32.690
+Traduzindo: ache pela etiqueta
+de teste chamada username.
+
+43
+00:02:32.800 --> 00:02:35.420
+Roda pra confirmar que
+tudo continua passando.
+
+44
+00:02:35.440 --> 00:02:38.750
+Na próxima aula:
+tirando o usuário e a senha do código.
+
+45
+00:02:38.800 --> 00:02:39.670
+Te vejo lá!
+
