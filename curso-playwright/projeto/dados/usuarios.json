@@ -1,5 +1,0 @@
-[
-  { "usuario": "standard_user", "resultado": "sucesso" },
-  { "usuario": "problem_user", "resultado": "sucesso" },
-  { "usuario": "locked_out_user", "resultado": "bloqueado" }
-]
