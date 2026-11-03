@@ -200,7 +200,7 @@ aula(66, "E se o servidor responder errado?", [
     ("O endereço está aqui na tela.",
      bt(("O ENDEREÇO DA LOJINHA", "muted", 60), ("tsvini.github.io/custo-oculto-fabrica/loja", "gold", 58), entre=1.4)),
     ("Na tela de login, os usuários de treino aparecem embaixo: cliente e bloqueado, os dois com a senha leigo123. Entra com cliente: os produtos aparecem.",
-     video("n66_loja2", "cliente · bloqueado · senha leigo123", LOJA, LOGIN_LOJA, espera_inicio=4500, espera_fim=2500)),
+     video("n66_loja2", "cliente · bloqueado · senha leigo123", LOJA, LOGIN_LOJA, espera_inicio=4500, espera_fim=2500, titulo="tsvini.github.io/custo-oculto-fabrica/loja")),
     ("Esses produtos vêm de um endereço da API: api barra produtos ponto json. Abrindo ele no navegador, é a lista, em JSON.",
      {"type": "tela", "media": "n66_json", "url": LOJA + "api/produtos.json", "titulo": LOJA + "api/produtos.json", "legenda": "A lista de produtos, em JSON"}),
     ("De onde vêm os seletores da Lojinha? Botão direito no campo de usuário, e Inspecionar: data-test igual usuario. Do mesmo jeito: senha, entrar, e produto, em cada card.",
