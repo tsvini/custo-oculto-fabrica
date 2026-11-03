@@ -1,0 +1,221 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:03.660
+Aqui no saucedemo o usuário
+e a senha são públicos.
+
+2
+00:00:03.680 --> 00:00:08.370
+Mas em projeto de verdade,
+senha e chave escrita no código é um problema:
+
+3
+00:00:08.460 --> 00:00:11.270
+quando o projeto for pro GitHub,
+todo mundo vê.
+
+4
+00:00:11.320 --> 00:00:14.550
+Então a gente vai aprender o
+jeito usado em projetos reais:
+
+5
+00:00:14.860 --> 00:00:19.810
+um arquivo chamado ponto env,
+que guarda essas informações fora do código.
+
+6
+00:00:19.920 --> 00:00:24.050
+A ideia é simples.
+O ponto env fica só no seu computador.
+
+7
+00:00:24.140 --> 00:00:27.960
+O teste não tem mais a senha escrita:
+ele pede pro ponto env.
+
+8
+00:00:27.980 --> 00:00:33.400
+E cada pessoa do time coloca o próprio
+usuário e a própria senha no ponto env dela.
+
+9
+00:00:33.420 --> 00:00:36.940
+Pra ler esse arquivo,
+a gente usa um pacote chamado dotenv.
+
+10
+00:00:37.140 --> 00:00:41.910
+Pacote é um código pronto que alguém já
+escreveu e que você baixa pro seu projeto.
+
+11
+00:00:41.980 --> 00:00:46.130
+No terminal: npm install traço D dotenv.
+
+12
+00:00:46.340 --> 00:00:51.340
+Install quer dizer instalar.
+E o traço D marca como ferramenta de desenvolvimento do
+
+13
+00:00:51.360 --> 00:00:52.000
+projeto.
+
+14
+00:00:52.020 --> 00:00:55.910
+Na pasta do projeto,
+cria o arquivo ponto env.
+
+15
+00:00:57.760 --> 00:01:01.460
+Dentro: SAUCE underline
+USER igual standard user,
+
+16
+00:01:01.480 --> 00:01:05.100
+e SAUCE underline PASSWORD
+igual secret sauce.
+
+17
+00:01:05.120 --> 00:01:08.910
+E antes de qualquer outra coisa:
+o ponto gitignore.
+
+18
+00:01:09.180 --> 00:01:14.680
+Ignore é ignorar: é a lista de arquivos
+que o Git deixa de fora quando você manda o
+
+19
+00:01:14.700 --> 00:01:18.740
+projeto pro GitHub.
+Escreve ponto env no final dele.
+
+20
+00:01:18.760 --> 00:01:23.440
+Agora o config. Lá em cima já tem três
+linhas do dotenv, só que comentadas:
+
+21
+00:01:23.460 --> 00:01:26.700
+com as duas barras na frente,
+o Playwright ignora.
+
+22
+00:01:26.720 --> 00:01:28.760
+Apaga as duas barras das três linhas.
+
+23
+00:01:28.780 --> 00:01:32.890
+Lendo em português:
+importe o dotenv, importe o path,
+
+24
+00:01:32.940 --> 00:01:38.390
+que cuida dos caminhos das pastas,
+e leia o arquivo ponto env que está nesta pasta.
+
+25
+00:01:38.440 --> 00:01:41.690
+No teste,
+apaga o standard user que está escrito,
+
+26
+00:01:41.840 --> 00:01:46.640
+e no lugar escreve process ponto
+env ponto SAUCE underline USER.
+
+27
+00:01:46.660 --> 00:01:52.760
+Depois apaga a secret sauce,
+e no lugar escreve process ponto env ponto SAUCE
+
+28
+00:01:52.780 --> 00:01:54.350
+underline PASSWORD.
+
+29
+00:01:54.380 --> 00:01:58.020
+No segundo teste,
+o usuário bloqueado continua escrito,
+
+30
+00:01:58.040 --> 00:02:00.410
+porque ele é o que o teste quer testar.
+
+31
+00:02:00.520 --> 00:02:06.460
+Só a senha muda: apaga a secret sauce,
+e no lugar vai o process ponto env ponto
+
+32
+00:02:06.480 --> 00:02:08.360
+SAUCE underline PASSWORD.
+
+33
+00:02:08.380 --> 00:02:12.610
+Traduzindo: process ponto env,
+as variáveis do ambiente.
+
+34
+00:02:12.810 --> 00:02:16.610
+SAUCE underline USER,
+a variável com esse nome.
+
+35
+00:02:16.720 --> 00:02:22.090
+Quando o teste roda, o dotenv já leu o arquivo,
+e aqui entra o standard user.
+
+36
+00:02:22.120 --> 00:02:24.710
+E pra quem baixar o projeto
+saber o que preencher,
+
+37
+00:02:24.800 --> 00:02:29.880
+cria mais um arquivo na pasta do projeto:
+ponto env ponto example.
+
+38
+00:02:29.900 --> 00:02:33.390
+Dentro, só os nomes das variáveis,
+sem os valores.
+
+39
+00:02:33.800 --> 00:02:39.780
+Example quer dizer exemplo:
+quem baixar copia esse arquivo, chama de ponto env,
+
+40
+00:02:39.800 --> 00:02:41.120
+e coloca os próprios valores.
+
+41
+00:02:41.140 --> 00:02:44.340
+Roda pra confirmar: continua passando.
+
+42
+00:02:44.360 --> 00:02:47.550
+E no GitHub,
+onde não existe o seu ponto env?
+
+43
+00:02:47.600 --> 00:02:52.550
+Lá, quem entrega esses valores são os secrets,
+um cofre do próprio GitHub.
+
+44
+00:02:52.780 --> 00:02:54.690
+Você vê isso na aula 45.
+
+45
+00:02:55.220 --> 00:02:58.290
+Na próxima aula: rodando só o que importa.
+
+46
+00:02:58.440 --> 00:02:59.350
+Te vejo lá!
+

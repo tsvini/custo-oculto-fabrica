@@ -1,0 +1,120 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:03.180
+Quando um teste falha,
+alguém precisa corrigir.
+
+2
+00:00:03.200 --> 00:00:07.850
+E só dizer que o teste falhou não ajuda:
+a pessoa precisa ver o que aconteceu.
+
+3
+00:00:08.100 --> 00:00:12.030
+E se o próprio teste tirasse um print
+e gravasse um vídeo quando falha?
+
+4
+00:00:12.180 --> 00:00:16.610
+Ele faz isso. No config,
+dentro do use, adiciona duas linhas:
+
+5
+00:00:16.860 --> 00:00:21.030
+screenshot only on failure,
+e video retain on failure.
+
+6
+00:00:21.100 --> 00:00:24.930
+Traduzindo: screenshot,
+print, só quando falhar.
+
+7
+00:00:25.100 --> 00:00:28.500
+Video retain on failure:
+o vídeo é gravado durante o teste,
+
+8
+00:00:28.520 --> 00:00:30.640
+e guardado só se ele falhar.
+
+9
+00:00:30.660 --> 00:00:34.780
+Pra ver funcionando, quebra o teste de novo,
+igual na aula vinte e seis:
+
+10
+00:00:34.800 --> 00:00:38.610
+apaga o Backpack da conferência da mochila,
+e escreve Mochila.
+
+11
+00:00:38.720 --> 00:00:41.430
+E roda o teste: falhou, como esperado.
+
+12
+00:00:41.480 --> 00:00:46.490
+Abre o relatório: lá está o print do
+momento do erro e o vídeo do teste inteiro.
+
+13
+00:00:46.660 --> 00:00:48.830
+E no trabalho, pra que serve isso?
+
+14
+00:00:48.900 --> 00:00:51.770
+Esse print e esse vídeo
+são as suas evidências.
+
+15
+00:00:51.980 --> 00:00:56.050
+Quando você abre o card do bug,
+anexa o print, o vídeo e o trace.
+
+16
+00:00:56.120 --> 00:01:00.760
+Quem vai corrigir vê exatamente o que aconteceu,
+sem precisar te perguntar nada.
+
+17
+00:01:00.780 --> 00:01:03.430
+E dá pra gravar sempre, até quando passa?
+
+18
+00:01:03.620 --> 00:01:08.410
+Dá: é só trocar pra on. Serve quando você
+precisa provar que funcionou, por exemplo,
+
+19
+00:01:08.430 --> 00:01:11.570
+pra mostrar que um teste passou
+antes de fechar uma tarefa.
+
+20
+00:01:11.720 --> 00:01:15.930
+Mas gravar sempre deixa tudo mais
+lento e enche o computador de arquivo.
+
+21
+00:01:16.000 --> 00:01:20.560
+Por isso o padrão bom é só quando falha,
+e você liga o on só quando precisa de
+
+22
+00:01:20.580 --> 00:01:21.780
+evidência de tudo.
+
+23
+00:01:21.800 --> 00:01:26.150
+Antes de fechar, desfaz o erro:
+apaga o Mochila e volta o Backpack.
+
+24
+00:01:26.220 --> 00:01:28.010
+E fechamos o módulo de debug.
+
+25
+00:01:28.100 --> 00:01:28.970
+Te vejo lá!
+

@@ -1,0 +1,73 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:03.330
+Agora vamos simular uma
+criação e uma exclusão.
+
+2
+00:00:03.460 --> 00:00:08.750
+A API de treino responde como uma de verdade,
+mas não guarda essas mudanças.
+
+3
+00:00:09.120 --> 00:00:13.850
+request ponto post, com um data:
+título, texto e userId.
+
+4
+00:00:13.960 --> 00:00:15.450
+É a requisição de criar.
+
+5
+00:00:15.620 --> 00:00:19.010
+A conferência:
+status duzentos e um, criado.
+
+6
+00:00:19.040 --> 00:00:22.260
+E confere que o título que voltou
+é o mesmo que você mandou:
+
+7
+00:00:22.280 --> 00:00:24.840
+a prova de que o servidor
+entendeu o pedido.
+
+8
+00:00:24.860 --> 00:00:28.433
+request ponto delete:
+apagar. Status duzentos.
+
+9
+00:00:28.538 --> 00:00:30.660
+Roda os três: passaram.
+
+10
+00:00:30.680 --> 00:00:35.410
+Num sistema real, essa criação e essa exclusão
+ficariam guardadas no banco de dados.
+
+11
+00:00:35.440 --> 00:00:38.890
+E tem um uso muito comum:
+preparar o terreno.
+
+12
+00:00:39.040 --> 00:00:44.510
+Antes de um teste de tela, você cria pela
+API o que ele precisa, em milissegundos,
+
+13
+00:00:44.560 --> 00:00:46.610
+em vez de clicar em dez telas.
+
+14
+00:00:46.640 --> 00:00:50.560
+Fechamos o bônus! Agora:
+desafios pra você praticar.
+
+15
+00:00:50.580 --> 00:00:51.490
+Te vejo lá!
+

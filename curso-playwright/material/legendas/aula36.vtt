@@ -1,0 +1,188 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:04.490
+Hoje o robô completa o fluxo inteiro da compra:
+carrinho, dados,
+
+2
+00:00:04.520 --> 00:00:07.560
+revisão e finalização.
+É um site de treino,
+
+3
+00:00:07.580 --> 00:00:09.970
+então nenhuma compra de verdade acontece.
+
+4
+00:00:10.220 --> 00:00:12.590
+Primeiro, vamos olhar o caminho no site.
+
+5
+00:00:12.820 --> 00:00:17.250
+Depois do Add to cart,
+o carrinho lá em cima, à direita, mostra um.
+
+6
+00:00:17.320 --> 00:00:23.810
+Clica com o botão direito nele e Inspecionar:
+data-test igual shopping-cart-link.
+
+7
+00:00:24.780 --> 00:00:28.210
+Clicando nele, abre a tela do carrinho,
+com a mochila dentro.
+
+8
+00:00:28.320 --> 00:00:32.130
+Lá embaixo, o botão Checkout,
+que quer dizer finalizar a compra.
+
+9
+00:00:32.200 --> 00:00:34.490
+O data-test dele é checkout.
+
+10
+00:00:34.640 --> 00:00:40.805
+Agora no código, as duas linhas:
+get by test id shopping-cart-link, ponto click,
+
+11
+00:00:41.255 --> 00:00:46.000
+pra abrir o carrinho.
+E get by test id checkout, ponto click.
+
+12
+00:00:46.020 --> 00:00:51.340
+O checkout leva pra tela de dados,
+com três campos: nome, sobrenome e CEP.
+
+13
+00:00:51.360 --> 00:00:55.150
+Os data-test são firstName,
+lastName e postalCode.
+
+14
+00:00:55.260 --> 00:00:59.230
+E embaixo dos campos, o botão Continue,
+que quer dizer continuar.
+
+15
+00:00:59.320 --> 00:01:04.170
+Botão direito nele, e Inspecionar:
+data-test igual continue.
+
+16
+00:01:04.380 --> 00:01:07.360
+No código:
+preenche os três com dados de teste.
+
+17
+00:01:07.380 --> 00:01:10.340
+Qualquer nome e CEP servem,
+porque é uma loja de treino.
+
+18
+00:01:10.360 --> 00:01:12.110
+Depois, clica em continue.
+
+19
+00:01:12.300 --> 00:01:14.540
+O continue leva pra tela de revisão.
+
+20
+00:01:14.560 --> 00:01:18.740
+Aqui a pessoa confere tudo antes de pagar:
+o produto, o pagamento,
+
+21
+00:01:18.760 --> 00:01:20.190
+a entrega e o total.
+
+22
+00:01:20.280 --> 00:01:23.530
+E lá embaixo, o botão Finish,
+que quer dizer terminar.
+
+23
+00:01:23.580 --> 00:01:28.170
+Botão direito nele, e Inspecionar:
+data-test igual finish.
+
+24
+00:01:28.480 --> 00:01:31.510
+No código, na tela de revisão,
+clica em finish.
+
+25
+00:01:31.600 --> 00:01:35.220
+Clicou em finish, chega a tela final:
+Thank you for your order.
+
+26
+00:01:35.240 --> 00:01:40.000
+Obrigado pelo seu pedido.
+Essa frase só aparece quando a compra terminou de verdade.
+
+27
+00:01:40.020 --> 00:01:42.270
+Por isso ela é a nossa conferência.
+
+28
+00:01:42.380 --> 00:01:48.660
+Inspecionar no título: data-test igual complete-header,
+o cabeçalho de concluído.
+
+29
+00:01:48.680 --> 00:01:54.160
+No código, a conferência final:
+get by test id complete-header, to have text,
+
+30
+00:01:54.180 --> 00:01:59.010
+Thank you for your order. Se a frase aparecer,
+a compra terminou e o teste passa.
+
+31
+00:01:59.040 --> 00:02:03.340
+Roda com o navegador aparecendo e olha
+o fluxo inteiro acontecendo sozinho.
+
+32
+00:02:03.360 --> 00:02:07.110
+Agora a compra inteira roda em segundos,
+sempre do mesmo jeito.
+
+33
+00:02:07.140 --> 00:02:10.680
+Fazer isso na mão, em três navegadores,
+toda vez que alguém muda o site,
+
+34
+00:02:10.700 --> 00:02:14.030
+é exatamente o trabalho que
+a automação tira de você.
+
+35
+00:02:14.140 --> 00:02:17.560
+No trabalho, esse é o teste
+que roda antes de toda entrega.
+
+36
+00:02:17.580 --> 00:02:20.430
+Se ele passa,
+o caminho principal da loja funciona.
+
+37
+00:02:20.600 --> 00:02:23.430
+Se falha, a entrega para até alguém olhar.
+
+38
+00:02:23.520 --> 00:02:27.280
+Na próxima aula:
+uma coisa que você talvez já tenha percebido.
+
+39
+00:02:27.300 --> 00:02:28.210
+Te vejo lá!
+

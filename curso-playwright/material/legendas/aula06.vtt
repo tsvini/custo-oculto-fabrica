@@ -1,0 +1,122 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:02.870
+Essa aula é pra quem usa Mac ou Linux.
+
+2
+00:00:02.960 --> 00:00:04.930
+Se você usa Windows, pode pular.
+
+3
+00:00:05.020 --> 00:00:09.390
+São os mesmos três programas:
+o VS Code, o Node e o Git.
+
+4
+00:00:09.500 --> 00:00:11.070
+Só muda o jeito de instalar.
+
+5
+00:00:11.300 --> 00:00:14.960
+No Mac, pra abrir o terminal,
+aperta Command e espaço,
+
+6
+00:00:14.980 --> 00:00:17.110
+digita Terminal e aperta Enter.
+
+7
+00:00:17.300 --> 00:00:21.360
+O VS Code:
+baixa em code ponto visualstudio ponto com,
+
+8
+00:00:21.380 --> 00:00:24.310
+abre o arquivo e arrasta
+pra pasta Aplicativos.
+
+9
+00:00:24.520 --> 00:00:31.210
+O Node: em nodejs ponto org,
+baixa a versão LTS pra Mac e vai clicando em continuar.
+
+10
+00:00:31.360 --> 00:00:35.810
+O Git é o mais fácil:
+digita git traço traço version no terminal.
+
+11
+00:00:35.960 --> 00:00:38.490
+Se não tiver,
+o próprio Mac oferece instalar.
+
+12
+00:00:38.720 --> 00:00:41.210
+Agora o Linux. Eu vou mostrar no Ubuntu.
+
+13
+00:00:41.340 --> 00:00:44.110
+O terminal abre com Control, Alt e T.
+
+14
+00:00:44.260 --> 00:00:49.390
+O VS Code se instala com sudo snap
+install code traço traço classic.
+
+15
+00:00:49.580 --> 00:00:54.080
+O sudo pede a sua senha do computador,
+e enquanto você digita não aparece nada.
+
+16
+00:00:54.100 --> 00:00:54.700
+É normal.
+
+17
+00:00:54.720 --> 00:00:58.090
+O Git, com sudo apt install git.
+
+18
+00:00:58.200 --> 00:01:02.580
+O Node, no Ubuntu,
+a gente instala com uma ferramenta chamada nvm,
+
+19
+00:01:02.600 --> 00:01:05.070
+porque o que vem pelo
+apt costuma ser antigo.
+
+20
+00:01:05.120 --> 00:01:08.960
+São três comandos,
+e eles estão aqui na tela e na descrição da aula.
+
+21
+00:01:08.980 --> 00:01:10.970
+E tem um detalhe que é só do Linux.
+
+22
+00:01:11.140 --> 00:01:14.930
+Quando a gente instalar o Playwright,
+ele vai pedir umas bibliotecas do sistema.
+
+23
+00:01:15.040 --> 00:01:17.330
+Lá na hora,
+eu te mostro o comando que resolve.
+
+24
+00:01:17.350 --> 00:01:23.360
+Pra conferir: node traço v,
+npm traço v e git traço traço version.
+
+25
+00:01:23.380 --> 00:01:26.340
+Todos os comandos estão
+na descrição da aula.
+
+26
+00:01:26.360 --> 00:01:27.480
+Até o módulo dois!
+

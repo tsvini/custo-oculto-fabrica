@@ -1,0 +1,165 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:04.270
+Desafio final:
+comprar dois produtos e conferir o total.
+
+2
+00:00:04.440 --> 00:00:09.500
+Por que conferir o total? Porque é dinheiro:
+um erro de soma no carrinho é o tipo de
+
+3
+00:00:09.520 --> 00:00:12.150
+bug que a empresa não pode deixar passar.
+
+4
+00:00:12.460 --> 00:00:17.670
+O teste: a mochila e a lanterna da bike,
+carrinho, checkout e dados,
+
+5
+00:00:17.760 --> 00:00:19.990
+confere o total e finaliza a compra.
+
+6
+00:00:20.160 --> 00:00:24.050
+Dica: a mochila e a lanterna
+da bicicleta, bike light.
+
+7
+00:00:24.260 --> 00:00:27.755
+O total fica no data-test total-label.
+
+8
+00:00:28.040 --> 00:00:33.340
+Com os preços desse site de treino,
+o total conhecido é quarenta e três e dezoito.
+
+9
+00:00:33.360 --> 00:00:37.670
+E o total, na tela de revisão:
+botão direito, e Inspecionar.
+
+10
+00:00:37.970 --> 00:00:40.070
+Data-test igual total label.
+
+11
+00:00:40.220 --> 00:00:42.700
+Agora sim: pausa o vídeo e tenta.
+
+12
+00:00:42.720 --> 00:00:46.250
+Esse é maior, sem pressa.
+Quando voltar, a solução.
+
+13
+00:00:51.980 --> 00:00:56.080
+Solução, passo a passo.
+Adiciona a mochila e a lanterna,
+
+14
+00:00:56.100 --> 00:00:58.390
+e confere que o carrinho mostra dois.
+
+15
+00:00:58.660 --> 00:01:04.190
+Vai pro carrinho, clica em checkout,
+preenche nome, sobrenome e CEP, e continua.
+
+16
+00:01:04.480 --> 00:01:10.510
+Antes de finalizar, a conferência mais importante:
+o total contém quarenta e três e
+
+17
+00:01:10.530 --> 00:01:11.130
+dezoito.
+
+18
+00:01:11.150 --> 00:01:15.230
+E por último, o finish, e a mensagem final:
+Thank you for your order.
+
+19
+00:01:15.520 --> 00:01:17.680
+De onde vem esse quarenta
+e três e dezoito?
+
+20
+00:01:17.700 --> 00:01:19.870
+Da conta que o site faz:
+
+21
+00:01:20.000 --> 00:01:24.500
+A mochila custa vinte e nove e noventa e nove,
+e a lanterna, nove e noventa e nove.
+
+22
+00:01:24.520 --> 00:01:27.100
+Somando, trinta e nove e noventa e oito.
+
+23
+00:01:27.120 --> 00:01:30.800
+Mais três e vinte de imposto:
+quarenta e três e dezoito.
+
+24
+00:01:30.820 --> 00:01:34.750
+Esse número só funciona porque o
+site de treino nunca muda os preços.
+
+25
+00:01:34.920 --> 00:01:38.100
+Se amanhã a mochila custasse trinta,
+o total seria outro,
+
+26
+00:01:38.120 --> 00:01:41.530
+e o teste ia falhar mesmo com
+o site funcionando certinho.
+
+27
+00:01:41.680 --> 00:01:45.400
+Numa loja de verdade,
+o certo é o teste fazer a conta sozinho:
+
+28
+00:01:45.420 --> 00:01:50.480
+ler os preços da tela e somar.
+No módulo 14 você aprende a ler os preços da tela
+
+29
+00:01:50.500 --> 00:01:53.190
+como número,
+que é o primeiro passo pra isso.
+
+30
+00:01:53.260 --> 00:01:55.370
+Roda e olha o fluxo inteiro.
+
+31
+00:01:59.280 --> 00:02:03.300
+Se você conseguiu montar boa
+parte desse desafio sozinho,
+
+32
+00:02:03.320 --> 00:02:08.790
+você já está juntando seletores,
+ações e conferências sem copiar um roteiro pronto.
+
+33
+00:02:09.040 --> 00:02:10.830
+Esse é um grande passo.
+
+34
+00:02:10.960 --> 00:02:15.160
+Você terminou a parte do zero.
+A partir de agora, o nível sobe.
+
+35
+00:02:15.180 --> 00:02:16.130
+Te vejo lá!
+

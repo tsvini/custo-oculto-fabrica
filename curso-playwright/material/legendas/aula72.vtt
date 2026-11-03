@@ -1,0 +1,81 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:02.980
+Você roda a pipeline, e um teste falha.
+
+2
+00:00:03.000 --> 00:00:05.790
+Mandar só a automação
+quebrou não ajuda ninguém:
+
+3
+00:00:05.920 --> 00:00:08.510
+quem vai corrigir não sabe
+nem por onde começar.
+
+4
+00:00:08.580 --> 00:00:14.230
+Primeiro, você investiga. O relatório traz o erro,
+o print, o vídeo e o trace.
+
+5
+00:00:14.460 --> 00:00:16.990
+O erro diz o esperado e o encontrado.
+
+6
+00:00:17.060 --> 00:00:20.320
+E o trace mostra a página
+no momento exato da falha.
+
+7
+00:00:20.340 --> 00:00:25.510
+E aqui entra a pergunta da aula vinte e seis:
+é erro do teste, ou bug do sistema?
+
+8
+00:00:25.620 --> 00:00:28.240
+Se o teste estava errado,
+você mesmo conserta.
+
+9
+00:00:28.260 --> 00:00:31.030
+Se é bug, aí sim vira um card.
+
+10
+00:00:31.140 --> 00:00:36.380
+Um card útil tem: um título claro,
+os passos pra reproduzir, o esperado,
+
+11
+00:00:36.400 --> 00:00:41.270
+o que aconteceu, e as evidências anexadas:
+o print, o vídeo e o trace.
+
+12
+00:00:41.460 --> 00:00:44.760
+Repara no título.
+Não é a automação quebrou.
+
+13
+00:00:44.780 --> 00:00:47.010
+É o que a pessoa vê de errado na tela.
+
+14
+00:00:47.040 --> 00:00:50.540
+Com um card assim,
+quem desenvolve reproduz o problema em minutos,
+
+15
+00:00:50.560 --> 00:00:52.930
+sem precisar te chamar pra perguntar nada.
+
+16
+00:00:52.980 --> 00:00:56.540
+Automação também é isso:
+gerar evidência que ajuda a investigar.
+
+17
+00:00:56.560 --> 00:00:58.170
+Te vejo na próxima!
+

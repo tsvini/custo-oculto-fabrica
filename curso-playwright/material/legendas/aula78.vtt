@@ -1,0 +1,189 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:04.770
+Dentro da pasta pages,
+cria o LoginPage ponto js.
+
+2
+00:00:05.740 --> 00:00:10.480
+O LoginPage, com a receita que você já conhece:
+a class, o constructor,
+
+3
+00:00:10.500 --> 00:00:16.940
+e os elementos. Os data-test da Lojinha são usuario,
+senha, entrar e erro.
+
+4
+00:00:16.960 --> 00:00:23.150
+E uma ação nova, o abrir. Ela abre a loja,
+e se o ponto env tiver a versão,
+
+5
+00:00:23.280 --> 00:00:25.820
+acrescenta o interrogação
+versão no endereço.
+
+6
+00:00:25.840 --> 00:00:30.120
+Traduzindo:
+v é a versão que veio do ponto env.
+
+7
+00:00:30.300 --> 00:00:33.990
+O interrogação quer dizer então:
+se tiver a versão,
+
+8
+00:00:34.020 --> 00:00:39.390
+abre index ponto html
+interrogação versão igual a ela.
+
+9
+00:00:39.600 --> 00:00:45.180
+Os dois pontos querem dizer senão:
+senão, só o index ponto html.
+
+10
+00:00:45.200 --> 00:00:49.680
+E o entrar, igualzinho ao do primeiro projeto:
+preenche o usuário, a senha,
+
+11
+00:00:49.700 --> 00:00:50.640
+e clica em entrar.
+
+12
+00:00:50.660 --> 00:00:53.640
+Os data-test da página de produtos,
+no Inspecionar:
+
+13
+00:00:53.660 --> 00:00:57.640
+a caixa de ordenar tem
+data-test igual ordenar.
+
+14
+00:00:57.660 --> 00:01:01.660
+E do mesmo jeito: titulo,
+produto, preco e nome.
+
+15
+00:01:01.680 --> 00:01:05.450
+Dentro de pages,
+cria o ProdutosPage ponto js.
+
+16
+00:01:06.880 --> 00:01:13.200
+Agora o ProdutosPage. Os elementos:
+o título, a caixa de ordenar, os produtos,
+
+17
+00:01:13.220 --> 00:01:16.710
+os preços e os nomes.
+Cada um com o seu data-test.
+
+18
+00:01:16.820 --> 00:01:20.800
+E a ação de ordenar: recebe a opção,
+e escolhe ela na caixa,
+
+19
+00:01:20.820 --> 00:01:22.860
+com o select option que você já conhece.
+
+20
+00:01:22.880 --> 00:01:25.440
+E uma ação que lê os preços da tela.
+
+21
+00:01:25.460 --> 00:01:30.560
+Primeiro, all text contents:
+pegue o texto de todos os preços, numa lista.
+
+22
+00:01:30.580 --> 00:01:33.320
+E depois, transforma cada texto em número.
+
+23
+00:01:33.340 --> 00:01:37.140
+Só que eles vêm como texto:
+R$ doze, vírgula, cinquenta.
+
+24
+00:01:37.160 --> 00:01:39.460
+E pra comparar, a gente precisa de número.
+
+25
+00:01:39.480 --> 00:01:45.400
+Então, pra cada texto: tira o R$,
+tira o ponto do milhar, troca a vírgula por ponto,
+
+26
+00:01:45.420 --> 00:01:46.800
+e transforma em número.
+
+27
+00:01:46.820 --> 00:01:51.522
+Por que a vírgula vira ponto?
+Porque o JavaScript escreve número do jeito americano:
+
+28
+00:01:51.542 --> 00:01:55.190
+sete ponto noventa e nove.
+Com vírgula, ele não entende.
+
+29
+00:01:55.210 --> 00:01:58.130
+Pros nomes é mais simples,
+porque nome já é texto:
+
+30
+00:01:58.160 --> 00:02:01.380
+o lerNomes só pega o
+texto de todos os nomes.
+
+31
+00:02:01.400 --> 00:02:04.360
+E o produto,
+que acha o card de um produto pelo nome,
+
+32
+00:02:04.380 --> 00:02:07.400
+com o filter has text da
+aula sessenta e três.
+
+33
+00:02:07.420 --> 00:02:10.890
+Dentro da pasta fixtures,
+cria o paginas ponto js.
+
+34
+00:02:11.880 --> 00:02:17.320
+E a fixture, igual à do módulo treze:
+o test do Playwright estendido com o loginPage
+
+35
+00:02:17.340 --> 00:02:20.120
+e o produtosPage,
+e o expect exportado junto.
+
+36
+00:02:20.140 --> 00:02:23.000
+Repara como foi mais
+rápido da segunda vez.
+
+37
+00:02:23.020 --> 00:02:26.880
+Não porque a gente pulou explicação:
+porque agora você conhece a receita,
+
+38
+00:02:26.900 --> 00:02:28.040
+e só aplica.
+
+39
+00:02:28.060 --> 00:02:29.230
+Te vejo na próxima!
+
