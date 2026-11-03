@@ -1,0 +1,49 @@
+name: Legendas das aulas (Udemy)
+on:
+  workflow_dispatch:
+    inputs:
+      aulas:
+        description: "aulas (ex.: 1 2 3); vazio = todas"
+        required: false
+        default: ""
+jobs:
+  legendas:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    strategy:
+      fail-fast: false
+      max-parallel: 3
+      matrix:
+        lote: [0, 1, 2, 3, 4, 5]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Instalar
+        run: |
+          pip install -q imageio-ffmpeg faster-whisper numpy
+          sudo ln -sf "$(python -c 'import imageio_ffmpeg; print(imageio_ffmpeg.get_ffmpeg_exe())')" /usr/local/bin/ffmpeg
+      - name: Cache do modelo de reconhecimento de fala
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/huggingface
+          key: whisper-small
+      - name: Gerar
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p legendas tmp
+          lista="${{ inputs.aulas }}"; [ -z "$lista" ] && lista="$(seq 1 83)"
+          for n in $lista; do
+            [ $(( n % 6 )) -eq ${{ matrix.lote }} ] || continue
+            nn=$(printf %02d $n)
+            gh release download videos -p "curso_playwright_${nn}_longo.mp4" -D tmp --clobber
+            python ferramentas/legendas_udemy.py tmp/curso_playwright_${nn}_longo.mp4 $n legendas/aula${nn}.vtt || echo "::error title=Legenda::aula $nn falhou"
+            rm -f tmp/*.mp4
+          done
+      - uses: actions/upload-artifact@v4
+        with:
+          name: legendas-${{ matrix.lote }}
+          path: legendas/
