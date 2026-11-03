@@ -29,4 +29,6 @@ jobs:
       - name: Projeto 2 (todos os navegadores do config)
         run: |
           cd curso-playwright/projeto2
+          sed -i "s#{ name: 'firefox', use: { ...devices\['Desktop Firefox'\] } },#&\n    { name: 'webkit', use: { ...devices['Desktop Safari'] } },#" playwright.config.js
+          grep -n "name:" playwright.config.js
           npx playwright test --reporter=list --retries=0 2>&1 | sed 's/\x1b\[[0-9;]*m//g' | grep -E "✘|failed|passed|flaky|Error:" | tail -40
