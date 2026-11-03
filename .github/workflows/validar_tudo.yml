@@ -1,0 +1,32 @@
+name: Validar tudo nos navegadores (como no Actions do aluno)
+on:
+  workflow_dispatch:
+jobs:
+  validar:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    env:
+      SAUCE_USER: standard_user
+      SAUCE_PASSWORD: secret_sauce
+      LOJA_USUARIO: cliente
+      LOJA_SENHA: leigo123
+      CI: "true"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Instalar
+        run: |
+          cd curso-playwright/projeto && npm ci --silent && npx playwright install --with-deps chromium firefox webkit >/dev/null 2>&1
+          cd ../projeto2 && npm install --silent >/dev/null
+      - name: Projeto 1 (tudo, menos etapas e demos)
+        run: |
+          cd curso-playwright/projeto
+          sed "s/aula [0-9]*: //" tests/nivel2/internet.spec.js > tests/internet.spec.js && rm tests/nivel2/internet.spec.js
+          rm -rf tests/etapas tests/desafios
+          npx playwright test --reporter=list --retries=0 2>&1 | sed 's/\x1b\[[0-9;]*m//g' | grep -E "✘|failed|passed|flaky|Error:" | tail -60
+      - name: Projeto 2 (todos os navegadores do config)
+        run: |
+          cd curso-playwright/projeto2
+          npx playwright test --reporter=list --retries=0 2>&1 | sed 's/\x1b\[[0-9;]*m//g' | grep -E "✘|failed|passed|flaky|Error:" | tail -40
