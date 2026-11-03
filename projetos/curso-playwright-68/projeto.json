@@ -281,6 +281,50 @@
        "pausa": 2.5
       },
       {
+       "text": "Agora corrige as duas. No botão, troca Login por Entrar. E na mensagem de erro, coloca o not: antes de errar a senha, ela não pode aparecer. Roda de novo: passou.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "soft.spec.js",
+        "codigo": "import { test, expect } from '@playwright/test';\n\nconst lojinha = 'https://tsvini.github.io/custo-oculto-fabrica/loja/';\n\ntest('os textos da tela de login', async ({ page }) => {\n  await page.goto(lojinha);\n  await expect.soft(page.getByTestId('entrar')).toHaveText('Entrar');\n  await expect.soft(page.getByTestId('usuario')).toBeVisible();\n  await expect.soft(page.getByTestId('senha')).toBeEmpty();\n  await expect.soft(page.getByTestId('erro')).not.toBeVisible();\n});",
+        "legenda": "Corrigido: Entrar · not.toBeVisible",
+        "fonte": 22,
+        "digitar": false,
+        "linha0": 1,
+        "pastas": null,
+        "trocar": [
+         [
+          7,
+          "  await expect.soft(page.getByTestId('entrar')).toHaveText('Login');",
+          null,
+          1.6
+         ],
+         [
+          10,
+          "  await expect.soft(page.getByTestId('erro')).toBeVisible();",
+          null,
+          4.2
+         ]
+        ],
+        "terminal": [
+         {
+          "cmd": "npx playwright test soft --project=chromium",
+          "em": 0.62
+         },
+         {
+          "out": "Running 2 tests using 1 worker",
+          "cor": "mut",
+          "em": 0.7
+         },
+         {
+          "out": "  2 passed (2.4s)",
+          "cor": "ac",
+          "em": 0.86
+         }
+        ],
+        "terminal_altura": 0.32
+       }
+      },
+      {
        "text": "No trabalho: conferir a tela de detalhes de um pedido, o resumo de uma compra, um formulário com dez campos. Você quer a lista completa do que está errado, de uma vez só, pra mandar tudo junto no card.",
        "scene": {
         "type": "cards",

@@ -70,7 +70,8 @@ L_BADGE = ln(C35, "shopping-cart-badge")
 import difflib, re as _re
 from roteiro_playwright_m7 import CFG30F as _C30, P0 as _P0, CEL as _CEL
 C34F = _C30[:_P0 + 15] + _CEL + _C30[_P0 + 15:]
-CFG_LIMPO = [l for l in ler("playwright.config.js").split("\n") if "name: 'setup'" not in l and "dependencies" not in l]
+CFG_42 = "\n".join(l for l in ler("playwright.config.js").split("\n") if "ignoreSnapshots" not in l)  # o ignoreSnapshots só entra na aula 67
+CFG_LIMPO = [l for l in CFG_42.split("\n") if "name: 'setup'" not in l and "dependencies" not in l]
 _ops = difflib.SequenceMatcher(None, C34F, CFG_LIMPO, autojunk=False).get_opcodes()
 assert all(op in ("equal", "delete") for op, *_ in _ops), "a faxina só apaga linhas"
 APAGA_CFG = [i + 1 for op, a1, a2, b1, b2 in _ops if op == "delete" for i in range(a1, a2)]
@@ -411,7 +412,7 @@ AULAS.append(projeto(41, "MÓDULO 8 · AULA 41", "test.step - um relatório que 
 
 # ---------- Aula 42 ----------
 GI = open(os.path.join(RAIZ, "curso-playwright", "referencia_init", ".gitignore"), encoding="utf8").read().rstrip("\n") + "\n.env"
-AUTH = ler("tests/auth.setup.js"); CFG = ler("playwright.config.js"); C42 = cod(42)
+AUTH = ler("tests/auth.setup.js"); CFG = CFG_42; C42 = cod(42)
 L_SS = ln(AUTH, "storageState"); L_SETUP = ln(CFG, "name: 'setup'"); L_DEP = ln(CFG, "dependencies")
 CFG_P = trecho(CFG, L_SETUP - 2, L_DEP + 1)
 L_USE = ln(C42, "test.use"); C42L = C42.split("\n"); L_GOTO42 = ln(C42, "inventory.html"); AUTHL = AUTH.split("\n"); CFG_PL = CFG_P.split("\n")

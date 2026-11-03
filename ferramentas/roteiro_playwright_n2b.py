@@ -4,7 +4,7 @@ Código = curso-playwright/projeto (fixtures/, dados/, tests/nivel2/*.spec.js), 
 as saídas de terminal são as reais de nivel2_resultado.txt (release bastidores), com o "aula NN:" tirado dos nomes."""
 import json, os, re, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from roteiro_playwright_m1 import inteiro, bt, titulo, projeto, RAIZ
+from roteiro_playwright_m1 import inteiro, bt, titulo, projeto, RAIZ, apagar_no_explorer
 from roteiro_playwright_m4 import edc
 from roteiro_playwright_m3 import SAUCE, LOGIN
 from roteiro_playwright_m6 import A_LOGIN, TRACE6, C26, L_MOCHILA, ERRO_TRACE, A_FALHA, CARD_BUG
@@ -229,6 +229,7 @@ aula(66, "E se o servidor responder errado?", [
 ] + fim("o botão funciona, mas ficou errado"))
 
 # ---------- 67 · visual ----------
+CFG_IGN = open(os.path.join(PROJ, "playwright.config.js"), encoding="utf8").read().rstrip("\n"); L_IGN = ln(CFG_IGN, "ignoreSnapshots")
 VIS = ler("tests/nivel2/visual.spec.js")
 SNAP = "tests/nivel2/visual.spec.js-snapshots/login-chromium-win32.png"
 aula(67, "O botão funciona, mas ficou errado", [
@@ -244,7 +245,7 @@ aula(67, "O botão funciona, mas ficou errado", [
      tr("await expect(page).toHaveScreenshot('login.png');", [["expect(page)", "eu espero que a página"], ["toHaveScreenshot", "fique igual à foto"], ["('login.png')", "guardada com este nome"]], 1.8)),
     ("Na primeira vez, ainda não existe foto pra comparar. Ele falha, avisa, e guarda a tela de agora como referência.",
      term(["npx playwright test visual --project=chromium", ("Error: A snapshot doesn't exist at", "#ff6b6b"), (SNAP + ", writing actual.", "#ff6b6b"), ("  1 failed", "#ff6b6b")], "1ª vez: guarda a foto de referência")),
-    ("A foto fica numa pasta do lado do teste. E o nome leva o navegador e o sistema, porque cada um desenha a tela um pouquinho diferente. Por isso, no time, a foto de referência é tirada na mesma máquina que roda os testes, normalmente a do GitHub.",
+    ("A foto fica numa pasta do lado do teste. E o nome leva o navegador e o sistema, porque cada um desenha a tela um pouquinho diferente.",
      trl("UMA FOTO POR NAVEGADOR E SISTEMA", [["login-chromium-win32.png", "Chromium no Windows"], ["login-chromium-linux.png", "Chromium no Linux (GitHub)"]])),
     ("Roda de novo: agora tem com o que comparar, e a tela está igual. Passou.",
      term(["npx playwright test visual --project=chromium", ("Running 2 tests using 1 worker", "mut"), ("  ✓  1 [setup] › tests/auth.setup.js:5:6 › faz login uma vez (536ms)", "ac"),
@@ -260,13 +261,17 @@ aula(67, "O botão funciona, mas ficou errado", [
      cmp("FOI DE PROPÓSITO?", ["SIM", "ATUALIZA A FOTO"], ["NÃO", "BUG VISUAL: ABRE UM CARD"])),
     ("Pra atualizar a foto: traço traço update snapshots.",
      term(["npx playwright test visual --update-snapshots"], "Mudou de propósito: atualiza a foto")),
+    ("E no GitHub? Lá a máquina é outra, e a foto foi tirada no seu computador. Então, no config, uma linha: ignore snapshots, igual a process ponto env ponto CI com os dois pontos de exclamação, como no forbid only. No GitHub, ele pula só a comparação de foto. O teste visual você roda na sua máquina.",
+     inteiro(ed(trecho(CFG_IGN, L_IGN - 3, L_IGN), "ignoreSnapshots: no GitHub, pula a foto", "playwright.config.js", linha0=L_IGN - 3, de=4, ate=4), CFG_IGN.split("\n")[:L_IGN - 4], CFG_IGN.split("\n")[L_IGN:])),
     ("Um cuidado: tela que muda sozinha, como data, hora ou propaganda, faz o teste visual falhar à toa. Use em telas estáveis: login, página de produto, um e-mail, um relatório.",
      trl("QUANDO USAR", [["tela estável: login, produto", "teste visual"], ["data, hora, propaganda", "falha à toa: evite"]])),
 ] + fim("todos os erros da tela de uma vez"))
 
 # ---------- 68 · soft ----------
 SOFT = ler("tests/nivel2/soft.spec.js")
-SOFT_V = "\n".join(l for l in SOFT.split("\n") if not l.startswith("// duas"))
+SOFT_OK = "\n".join(l for l in SOFT.split("\n") if not l.startswith("// "))  # o arquivo final, já corrigido
+SOFT_V = SOFT_OK.replace("toHaveText('Entrar');", "toHaveText('Login');").replace("getByTestId('erro')).not.toBeVisible();", "getByTestId('erro')).toBeVisible();")  # as duas erradas de propósito
+assert SOFT_V != SOFT_OK
 aula(68, "Quero ver todos os erros da tela de uma vez", [
     ("Uma tela com várias informações pra conferir. A primeira conferência falha, e o teste para ali. Você corrige, roda de novo, e só então descobre que a quarta também estava errada.",
      cards([["1", "1ª conferência", "falhou: o teste parou", VERM], ["↻", "Corrige e roda", "de novo"], ["4", "4ª conferência", "também estava errada", VERM]], "UM ERRO POR VEZ")),
@@ -281,6 +286,9 @@ aula(68, "Quero ver todos os erros da tela de uma vez", [
     ("Roda: o teste vai até o fim, e mostra os dois erros juntos.",
      term(["npx playwright test soft --project=chromium", ("Error: expect(locator).toHaveText(expected) failed", "#ff6b6b"), ("Expected: \"Login\"", "ac"), ("Received: \"Entrar\"", "#ff6b6b"),
            ("Error: expect(locator).toBeVisible() failed", "#ff6b6b"), ("Expected: visible", "ac"), ("Received: hidden", "#ff6b6b"), ("  1 failed", "#ff6b6b")], "Os dois erros, de uma vez")),
+    ("Agora corrige as duas. No botão, troca Login por Entrar. E na mensagem de erro, coloca o not: antes de errar a senha, ela não pode aparecer. Roda de novo: passou.",
+     ed(SOFT_OK, "Corrigido: Entrar · not.toBeVisible", "soft.spec.js", pastas=None, trocar=[[ln(SOFT_OK, "entrar"), SOFT_V.split("\n")[ln(SOFT_OK, "entrar") - 1], None, 1.6], [ln(SOFT_OK, "'erro'"), SOFT_V.split("\n")[ln(SOFT_OK, "'erro'") - 1], None, 4.2]],
+        terminal=[{"cmd": "npx playwright test soft --project=chromium", "em": 0.62}, {"out": "Running 2 tests using 1 worker", "cor": "mut", "em": 0.7}, {"out": "  2 passed (2.4s)", "cor": "ac", "em": 0.86}], terminal_altura=0.32)),
     ("No trabalho: conferir a tela de detalhes de um pedido, o resumo de uma compra, um formulário com dez campos. Você quer a lista completa do que está errado, de uma vez só, pra mandar tudo junto no card.",
      cards([["🧾", "Detalhes do pedido", "vários dados"], ["🛒", "Resumo da compra", "vários valores", AZUL], ["▤", "Formulário grande", "vários campos", AMARELO]], "ONDE O SOFT AJUDA")),
     ("Mas cuidado: nos passos principais do fluxo, o expect normal continua sendo o certo. Se o login falhou, não faz sentido continuar e conferir o carrinho.",
@@ -321,13 +329,14 @@ DEMO = re.sub(r"^// .*\n", "", open(os.path.join(PROJ, "demos", "aula70_flaky.de
 L_WAIT = ln(DEMO, "waitForTimeout"); L_COUNT = ln(DEMO, "count()")
 CFG = open(os.path.join(PROJ, "playwright.config.js"), encoding="utf8").read().rstrip("\n")
 L_RET = ln(CFG, "retries:")
-REP = "npx playwright test aula70 --repeat-each=10 --project=chromium"
+APAGA_DEMO = apagar_no_explorer(["meu-primeiro-playwright", "  tests/", "    nivel2/", "      flaky.demo.spec.js", "      flaky.spec.js"], "flaky.demo.spec.js")
+REP = "npx playwright test flaky.demo --repeat-each=10 --project=chromium"
 aula(70, "Passou. Rodei de novo. Falhou.", [
-    ("Olha isso. Rodei esse teste dez vezes seguidas: nove passaram, e uma falhou. Esperava seis produtos, e encontrou zero. E eu não mudei uma linha.",
-     term([REP, ("Running 10 tests using 2 workers", "mut"), ("Error: expect(received).toBe(expected)", "#ff6b6b"), ("Expected: 6", "ac"), ("Received: 0", "#ff6b6b"),
-           ("  1 failed", "#ff6b6b"), ("  9 passed (52.1s)", "ac")], "10 vezes: 9 passaram, 1 falhou")),
+    ("Olha isso. Rodei esse teste dez vezes seguidas: nove passaram, e uma falhou. O onze ali é o setup do login, que sempre roda junto. Esperava seis produtos, e encontrou zero. E eu não mudei uma linha.",
+     term([REP, ("Running 11 tests using 2 workers", "mut"), ("Error: expect(received).toBe(expected)", "#ff6b6b"), ("Expected: 6", "ac"), ("Received: 0", "#ff6b6b"),
+           ("  1 failed", "#ff6b6b"), ("  10 passed (52.6s)", "ac")], "10 vezes: 9 passaram, 1 falhou (+ o setup)")),
     ("Rodei de novo, o mesmo comando, sem mexer em nada. Dessa vez passaram as dez.",
-     term([REP, ("Running 10 tests using 2 workers", "mut"), ("  10 passed (55.0s)", "ac")], "De novo: as 10 passaram")),
+     term([REP, ("Running 11 tests using 2 workers", "mut"), ("  11 passed (55.5s)", "ac")], "De novo: as 10 passaram (+ o setup)")),
     ("Esse é o teste flaky: às vezes passa, às vezes falha, sem nenhuma mudança que explique. E ele é perigoso: o time para de confiar nos testes, e começa a ignorar o vermelho. Até o dia em que o vermelho era um bug de verdade.",
      bt(("FLAKY", "gold", 200), ("ÀS VEZES PASSA, ÀS VEZES FALHA", "white", 80))),
     ("Escreve: abre o site, faz o login com o usuário lento, e aí espera quatro segundos e meio, fixos, com o wait for timeout. Depois conta os produtos, e confere que são seis.",
@@ -346,6 +355,8 @@ aula(70, "Passou. Rodei de novo. Falhou.", [
      trl("CAÇANDO TESTE INSTÁVEL", [["--repeat-each=10", "roda 10 vezes seguidas"], ["falhou 1 em 10?", "tem coisa pra investigar"]])),
     ("E o retries do config faz o GitHub tentar de novo quando um teste falha. Ajuda, mas guarda essa: retry diminui o estrago, não corrige a causa.",
      inteiro(ed(trecho(CFG, L_RET - 2, L_RET + 1), "retries: tenta de novo no GitHub", "playwright.config.js", linha0=L_RET - 2, destaque=[3], destaque_em=0.8), CFG.split("\n")[:L_RET - 3], CFG.split("\n")[L_RET + 1:])),
+    ("Esse arquivo de exemplo já mostrou o problema. Pode apagar o flaky ponto demo: botão direito nele, e Delete. Ele falha de vez em quando, e ia deixar o GitHub vermelho à toa.",
+     APAGA_DEMO),
     ("Então, no trabalho: apareceu um flaky, investiga a causa. Quase sempre é uma espera errada, ou um teste que depende de outro. E evita o tempo fixo.",
      bt(("RETRY DIMINUI O ESTRAGO", "white", 100), ("NÃO CORRIGE A CAUSA", "gold", 120))),
 ] + fim("o mesmo sistema, três ambientes"))

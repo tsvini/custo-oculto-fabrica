@@ -10,6 +10,7 @@ export default defineConfig({
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,
   workers: process.env.CI ? 1 : undefined,
+  ignoreSnapshots: !!process.env.CI,
   reporter: 'html',
   use: {
     baseURL: 'https://www.saucedemo.com',

@@ -311,7 +311,10 @@ aula(79, "Agora sim, automatizando os cenários", [
 
 # ---------- 80 · do card à pipeline ----------
 README = ler("README.md")
+YML2 = ler(".github/workflows/playwright.yml"); L_ENV2 = ln(YML2, "env:")
 aula(80, "Do card à pipeline", [
+    ("No playwright ponto yml, no passo que roda os testes, as duas linhas do env, igual no primeiro projeto: LOJA USUARIO e LOJA SENHA, lendo os secrets com o mesmo nome.",
+     inteiro(ed(trecho(YML2, L_ENV2 - 2, L_ENV2 + 2), "env: os secrets da Lojinha", "playwright.yml", linha0=L_ENV2 - 2, de=3, ate=5, pastas=None), YML2.split("\n")[:L_ENV2 - 3], YML2.split("\n")[L_ENV2 + 2:])),
     ("Agora, o caminho que você já conhece: o repositório no GitHub, os secrets com o usuário e a senha da Lojinha, e o GitHub Actions. Push, e a pipeline roda.",
      {"type": "gh_actions", "usuario": "voce", "repo": "projeto-lojinha", "workflow": "Playwright Tests", "commit": "cenários da LOJA-87", "inicio_em": 1.0, "legenda": "A pipeline rodando"}),
     ("Verde: passou. E de agora em diante, toda mudança na loja passa por esses testes.",

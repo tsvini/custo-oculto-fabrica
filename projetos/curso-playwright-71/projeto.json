@@ -109,20 +109,20 @@
         "type": "editor",
         "arquivo": "playwright.config.js",
         "pastas": null,
-        "codigo": "// @ts-check\nimport { defineConfig, devices } from '@playwright/test';\nimport dotenv from 'dotenv';\nimport path from 'path';\ndotenv.config({ path: path.resolve(__dirname, '.env') });\n\nexport default defineConfig({\n  testDir: './tests',\n  fullyParallel: true,\n  forbidOnly: !!process.env.CI,\n  retries: process.env.CI ? 2 : 0,\n  workers: process.env.CI ? 1 : undefined,\n  reporter: 'html',\n  use: {\n    baseURL: process.env.BASE_URL || 'https://www.saucedemo.com',\n    testIdAttribute: 'data-test',\n    trace: 'on-first-retry',\n    screenshot: 'only-on-failure',\n    video: 'retain-on-failure',\n  },\n  projects: [\n    { name: 'setup', testMatch: /.*\\.setup\\.js/ },\n    {\n      name: 'chromium',\n      use: { ...devices['Desktop Chrome'] },\n      dependencies: ['setup'],\n    },\n    {\n      name: 'firefox',\n      use: { ...devices['Desktop Firefox'] },\n      dependencies: ['setup'],\n    },\n    {\n      name: 'webkit',\n      use: { ...devices['Desktop Safari'] },\n      dependencies: ['setup'],\n    },\n    {\n      name: 'celular',\n      use: { ...devices['Pixel 7'] },\n      dependencies: ['setup'],\n    },\n  ],\n});",
+        "codigo": "// @ts-check\nimport { defineConfig, devices } from '@playwright/test';\nimport dotenv from 'dotenv';\nimport path from 'path';\ndotenv.config({ path: path.resolve(__dirname, '.env') });\n\nexport default defineConfig({\n  testDir: './tests',\n  fullyParallel: true,\n  forbidOnly: !!process.env.CI,\n  retries: process.env.CI ? 2 : 0,\n  workers: process.env.CI ? 1 : undefined,\n  ignoreSnapshots: !!process.env.CI,\n  reporter: 'html',\n  use: {\n    baseURL: process.env.BASE_URL || 'https://www.saucedemo.com',\n    testIdAttribute: 'data-test',\n    trace: 'on-first-retry',\n    screenshot: 'only-on-failure',\n    video: 'retain-on-failure',\n  },\n  projects: [\n    { name: 'setup', testMatch: /.*\\.setup\\.js/ },\n    {\n      name: 'chromium',\n      use: { ...devices['Desktop Chrome'] },\n      dependencies: ['setup'],\n    },\n    {\n      name: 'firefox',\n      use: { ...devices['Desktop Firefox'] },\n      dependencies: ['setup'],\n    },\n    {\n      name: 'webkit',\n      use: { ...devices['Desktop Safari'] },\n      dependencies: ['setup'],\n    },\n    {\n      name: 'celular',\n      use: { ...devices['Pixel 7'] },\n      dependencies: ['setup'],\n    },\n  ],\n});",
         "legenda": "baseURL lê uma variável",
         "fonte": 22,
         "digitar": false,
         "trocar": [
          [
-          15,
+          16,
           "    baseURL: 'https://www.saucedemo.com',",
           null,
           3.0
          ]
         ],
         "rolar": true,
-        "rolar_ate": 18,
+        "rolar_ate": 19,
         "rolar_de": 0.5,
         "rolar_dur": 1.2,
         "atrasa": true

@@ -78,18 +78,18 @@
      "chapter": "",
      "sentences": [
       {
-       "text": "Olha isso. Rodei esse teste dez vezes seguidas: nove passaram, e uma falhou. Esperava seis produtos, e encontrou zero. E eu não mudei uma linha.",
+       "text": "Olha isso. Rodei esse teste dez vezes seguidas: nove passaram, e uma falhou. O onze ali é o setup do login, que sempre roda junto. Esperava seis produtos, e encontrou zero. E eu não mudei uma linha.",
        "scene": {
         "type": "terminal",
         "titulo": "Terminal — VS Code",
         "pasta": "C:\\Users\\voce\\Documents\\meu-primeiro-playwright",
         "linhas": [
          {
-          "cmd": "npx playwright test aula70 --repeat-each=10 --project=chromium",
+          "cmd": "npx playwright test flaky.demo --repeat-each=10 --project=chromium",
           "em": 0.04
          },
          {
-          "out": "Running 10 tests using 2 workers",
+          "out": "Running 11 tests using 2 workers",
           "cor": "mut",
           "em": 0.31
          },
@@ -114,12 +114,12 @@
           "em": 0.55
          },
          {
-          "out": "  9 passed (52.1s)",
+          "out": "  10 passed (52.6s)",
           "cor": "ac",
           "em": 0.61
          }
         ],
-        "legenda": "10 vezes: 9 passaram, 1 falhou",
+        "legenda": "10 vezes: 9 passaram, 1 falhou (+ o setup)",
         "fonte": 26,
         "fonte_min": 18,
         "compacto": false
@@ -133,21 +133,21 @@
         "pasta": "C:\\Users\\voce\\Documents\\meu-primeiro-playwright",
         "linhas": [
          {
-          "cmd": "npx playwright test aula70 --repeat-each=10 --project=chromium",
+          "cmd": "npx playwright test flaky.demo --repeat-each=10 --project=chromium",
           "em": 0.04
          },
          {
-          "out": "Running 10 tests using 2 workers",
+          "out": "Running 11 tests using 2 workers",
           "cor": "mut",
           "em": 0.31
          },
          {
-          "out": "  10 passed (55.0s)",
+          "out": "  11 passed (55.5s)",
           "cor": "ac",
           "em": 0.37
          }
         ],
-        "legenda": "De novo: as 10 passaram",
+        "legenda": "De novo: as 10 passaram (+ o setup)",
         "fonte": 26,
         "fonte_min": 18,
         "compacto": false
@@ -435,7 +435,7 @@
          "  package.json",
          "  playwright.config.js"
         ],
-        "codigo": "// @ts-check\nimport { defineConfig, devices } from '@playwright/test';\nimport dotenv from 'dotenv';\nimport path from 'path';\ndotenv.config({ path: path.resolve(__dirname, '.env') });\n\nexport default defineConfig({\n  testDir: './tests',\n  fullyParallel: true,\n  forbidOnly: !!process.env.CI,\n  retries: process.env.CI ? 2 : 0,\n  workers: process.env.CI ? 1 : undefined,\n  reporter: 'html',\n  use: {\n    baseURL: 'https://www.saucedemo.com',\n    testIdAttribute: 'data-test',\n    trace: 'on-first-retry',\n    screenshot: 'only-on-failure',\n    video: 'retain-on-failure',\n  },\n  projects: [\n    { name: 'setup', testMatch: /.*\\.setup\\.js/ },\n    {\n      name: 'chromium',\n      use: { ...devices['Desktop Chrome'] },\n      dependencies: ['setup'],\n    },\n    {\n      name: 'firefox',\n      use: { ...devices['Desktop Firefox'] },\n      dependencies: ['setup'],\n    },\n    {\n      name: 'webkit',\n      use: { ...devices['Desktop Safari'] },\n      dependencies: ['setup'],\n    },\n    {\n      name: 'celular',\n      use: { ...devices['Pixel 7'] },\n      dependencies: ['setup'],\n    },\n  ],\n});",
+        "codigo": "// @ts-check\nimport { defineConfig, devices } from '@playwright/test';\nimport dotenv from 'dotenv';\nimport path from 'path';\ndotenv.config({ path: path.resolve(__dirname, '.env') });\n\nexport default defineConfig({\n  testDir: './tests',\n  fullyParallel: true,\n  forbidOnly: !!process.env.CI,\n  retries: process.env.CI ? 2 : 0,\n  workers: process.env.CI ? 1 : undefined,\n  ignoreSnapshots: !!process.env.CI,\n  reporter: 'html',\n  use: {\n    baseURL: 'https://www.saucedemo.com',\n    testIdAttribute: 'data-test',\n    trace: 'on-first-retry',\n    screenshot: 'only-on-failure',\n    video: 'retain-on-failure',\n  },\n  projects: [\n    { name: 'setup', testMatch: /.*\\.setup\\.js/ },\n    {\n      name: 'chromium',\n      use: { ...devices['Desktop Chrome'] },\n      dependencies: ['setup'],\n    },\n    {\n      name: 'firefox',\n      use: { ...devices['Desktop Firefox'] },\n      dependencies: ['setup'],\n    },\n    {\n      name: 'webkit',\n      use: { ...devices['Desktop Safari'] },\n      dependencies: ['setup'],\n    },\n    {\n      name: 'celular',\n      use: { ...devices['Pixel 7'] },\n      dependencies: ['setup'],\n    },\n  ],\n});",
         "legenda": "retries: tenta de novo no GitHub",
         "fonte": 30,
         "digitar": false,
@@ -448,6 +448,63 @@
         "rolar_de": 0.5,
         "rolar_dur": 1.2,
         "atrasa": true
+       }
+      },
+      {
+       "text": "Esse arquivo de exemplo já mostrou o problema. Pode apagar o flaky ponto demo: botão direito nele, e Delete. Ele falha de vez em quando, e ia deixar o GitHub vermelho à toa.",
+       "scene": {
+        "type": "menu",
+        "app": "vscode",
+        "barra": [],
+        "menus": [
+         [
+          "New File...",
+          "New Folder...",
+          "—",
+          "Cut",
+          "Copy",
+          "—",
+          "Rename...",
+          "Delete"
+         ]
+        ],
+        "caminho": [
+         7
+        ],
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  arquivos/",
+         "  dados/",
+         "  fixtures/",
+         "  node_modules/",
+         "  pages/",
+         "  tests/",
+         "    nivel2/",
+         "      dados.spec.js",
+         "      fixture.spec.js",
+         "      flaky.demo.spec.js",
+         "      flaky.spec.js",
+         "      mock.spec.js",
+         "      soft.spec.js",
+         "      tags.spec.js",
+         "      visual.spec.js",
+         "    api.spec.js",
+         "    auth.setup.js",
+         "    compra.spec.js",
+         "    desafios.spec.js",
+         "    internet.spec.js",
+         "    login.spec.js",
+         "    usuarios.spec.js",
+         "  .env",
+         "  .env.example",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "apaga": "flaky.demo.spec.js",
+        "legenda": "Botão direito › Delete"
        }
       },
       {

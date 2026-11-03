@@ -66,15 +66,16 @@
 5. Um teste visual percebe. Uma linha: to have screenshot. Tire uma foto da tela e compare com a foto guardada. [editor]
 6. Traduzindo: eu espero que a página fique igual à foto guardada com o nome login ponto png. [traducao]
 7. Na primeira vez, ainda não existe foto pra comparar. Ele falha, avisa, e guarda a tela de agora como referência. [terminal]
-8. A foto fica numa pasta do lado do teste. E o nome leva o navegador e o sistema, porque cada um desenha a tela um pouquinho diferente. Por isso, no time, a foto de referência é tirada na mesma máquina que roda os testes, normalmente a do GitHub. [traducao]
+8. A foto fica numa pasta do lado do teste. E o nome leva o navegador e o sistema, porque cada um desenha a tela um pouquinho diferente. [traducao]
 9. Roda de novo: agora tem com o que comparar, e a tela está igual. Passou. [terminal]
 10. Agora, com o botão mudado. Roda: falhou. Vinte e nove mil pixels diferentes, quatro por cento da tela. [terminal]
 11. E o relatório mostra lado a lado: a foto esperada, a tela atual, e a diferença. [tela]
 12. Na aba Diff, o que mudou aparece pintado. O botão inteiro. [tela]
 13. E aí vem a pergunta de QA: foi de propósito? Se foi, você atualiza a foto. Se não foi, você acabou de achar um bug visual, e abre um card com essas três imagens. [compare]
 14. Pra atualizar a foto: traço traço update snapshots. [+pausa] [terminal]
-15. Um cuidado: tela que muda sozinha, como data, hora ou propaganda, faz o teste visual falhar à toa. Use em telas estáveis: login, página de produto, um e-mail, um relatório. [traducao]
-16. Te vejo na próxima! [endcard]
+15. E no GitHub? Lá a máquina é outra, e a foto foi tirada no seu computador. Então, no config, uma linha: ignore snapshots, igual a process ponto env ponto CI com os dois pontos de exclamação, como no forbid only. No GitHub, ele pula só a comparação de foto. O teste visual você roda na sua máquina. [editor]
+16. Um cuidado: tela que muda sozinha, como data, hora ou propaganda, faz o teste visual falhar à toa. Use em telas estáveis: login, página de produto, um e-mail, um relatório. [traducao]
+17. Te vejo na próxima! [endcard]
 
 ## Aula 68: Quero ver todos os erros da tela de uma vez
 1. Uma tela com várias informações pra conferir. A primeira conferência falha, e o teste para ali. Você corrige, roda de novo, e só então descobre que a quarta também estava errada. [cards]
@@ -84,9 +85,10 @@
 5. Traduzindo: expect soft, anote o erro e siga. Depois, a conferência de sempre. [traducao]
 6. Aqui, quatro conferências na tela de login da Lojinha. Duas erradas de propósito: o botão diz Entrar, e não Login. E a mensagem de erro só aparece depois que alguém erra a senha. [editor]
 7. Roda: o teste vai até o fim, e mostra os dois erros juntos. [+pausa] [terminal]
-8. No trabalho: conferir a tela de detalhes de um pedido, o resumo de uma compra, um formulário com dez campos. Você quer a lista completa do que está errado, de uma vez só, pra mandar tudo junto no card. [cards]
-9. Mas cuidado: nos passos principais do fluxo, o expect normal continua sendo o certo. Se o login falhou, não faz sentido continuar e conferir o carrinho. [compare]
-10. Te vejo na próxima! [endcard]
+8. Agora corrige as duas. No botão, troca Login por Entrar. E na mensagem de erro, coloca o not: antes de errar a senha, ela não pode aparecer. Roda de novo: passou. [editor]
+9. No trabalho: conferir a tela de detalhes de um pedido, o resumo de uma compra, um formulário com dez campos. Você quer a lista completa do que está errado, de uma vez só, pra mandar tudo junto no card. [cards]
+10. Mas cuidado: nos passos principais do fluxo, o expect normal continua sendo o certo. Se o login falhou, não faz sentido continuar e conferir o carrinho. [compare]
+11. Te vejo na próxima! [endcard]
 
 ## Aula 69: Não dá tempo de rodar tudo
 1. O time vai fazer uma entrega daqui a meia hora. Tem cento e cinquenta testes, e alguém pergunta: qual o mínimo pra saber se o sistema está de pé? [bigtext]
@@ -103,7 +105,7 @@
 12. Te vejo na próxima! [endcard]
 
 ## Aula 70: Passou. Rodei de novo. Falhou.
-1. Olha isso. Rodei esse teste dez vezes seguidas: nove passaram, e uma falhou. Esperava seis produtos, e encontrou zero. E eu não mudei uma linha. [terminal]
+1. Olha isso. Rodei esse teste dez vezes seguidas: nove passaram, e uma falhou. O onze ali é o setup do login, que sempre roda junto. Esperava seis produtos, e encontrou zero. E eu não mudei uma linha. [terminal]
 2. Rodei de novo, o mesmo comando, sem mexer em nada. Dessa vez passaram as dez. [terminal]
 3. Esse é o teste flaky: às vezes passa, às vezes falha, sem nenhuma mudança que explique. E ele é perigoso: o time para de confiar nos testes, e começa a ignorar o vermelho. Até o dia em que o vermelho era um bug de verdade. [bigtext]
 4. Pra ver isso acontecendo, cria dentro da pasta nivel2 um arquivo de exemplo: flaky ponto demo ponto spec ponto js. [menu]
@@ -116,8 +118,9 @@
 11. E repara: ele não espera dez segundos. Espera até dez. Apareceu em quatro? Segue em quatro. [traducao]
 12. E pra caçar teste instável, o repeat each: roda o mesmo teste várias vezes seguidas. Se falhar uma vez em dez, tem coisa pra investigar. [traducao]
 13. E o retries do config faz o GitHub tentar de novo quando um teste falha. Ajuda, mas guarda essa: retry diminui o estrago, não corrige a causa. [editor]
-14. Então, no trabalho: apareceu um flaky, investiga a causa. Quase sempre é uma espera errada, ou um teste que depende de outro. E evita o tempo fixo. [bigtext]
-15. Te vejo na próxima! [endcard]
+14. Esse arquivo de exemplo já mostrou o problema. Pode apagar o flaky ponto demo: botão direito nele, e Delete. Ele falha de vez em quando, e ia deixar o GitHub vermelho à toa. [menu]
+15. Então, no trabalho: apareceu um flaky, investiga a causa. Quase sempre é uma espera errada, ou um teste que depende de outro. E evita o tempo fixo. [bigtext]
+16. Te vejo na próxima! [endcard]
 
 ## Aula 71: O mesmo sistema, três ambientes
 1. No trabalho, o mesmo sistema existe em vários endereços: o de desenvolvimento, o de homologação, onde o time testa antes de lançar, e o de produção, o de verdade, que o cliente usa. [cards]

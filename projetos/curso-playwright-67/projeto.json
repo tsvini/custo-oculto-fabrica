@@ -245,7 +245,7 @@
        }
       },
       {
-       "text": "A foto fica numa pasta do lado do teste. E o nome leva o navegador e o sistema, porque cada um desenha a tela um pouquinho diferente. Por isso, no time, a foto de referência é tirada na mesma máquina que roda os testes, normalmente a do GitHub.",
+       "text": "A foto fica numa pasta do lado do teste. E o nome leva o navegador e o sistema, porque cada um desenha a tela um pouquinho diferente.",
        "scene": {
         "type": "traducao",
         "titulo": "UMA FOTO POR NAVEGADOR E SISTEMA",
@@ -392,6 +392,40 @@
         "compacto": false
        },
        "pausa": 2.5
+      },
+      {
+       "text": "E no GitHub? Lá a máquina é outra, e a foto foi tirada no seu computador. Então, no config, uma linha: ignore snapshots, igual a process ponto env ponto CI com os dois pontos de exclamação, como no forbid only. No GitHub, ele pula só a comparação de foto. O teste visual você roda na sua máquina.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "playwright.config.js",
+        "pastas": [
+         "meu-primeiro-playwright",
+         "  .github/",
+         "  arquivos/",
+         "  dados/",
+         "  fixtures/",
+         "  node_modules/",
+         "  pages/",
+         "  tests/",
+         "  .env",
+         "  .env.example",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "codigo": "// @ts-check\nimport { defineConfig, devices } from '@playwright/test';\nimport dotenv from 'dotenv';\nimport path from 'path';\ndotenv.config({ path: path.resolve(__dirname, '.env') });\n\nexport default defineConfig({\n  testDir: './tests',\n  fullyParallel: true,\n  forbidOnly: !!process.env.CI,\n  retries: process.env.CI ? 2 : 0,\n  workers: process.env.CI ? 1 : undefined,\n  ignoreSnapshots: !!process.env.CI,\n  reporter: 'html',\n  use: {\n    baseURL: 'https://www.saucedemo.com',\n    testIdAttribute: 'data-test',\n    trace: 'on-first-retry',\n    screenshot: 'only-on-failure',\n    video: 'retain-on-failure',\n  },\n  projects: [\n    { name: 'setup', testMatch: /.*\\.setup\\.js/ },\n    {\n      name: 'chromium',\n      use: { ...devices['Desktop Chrome'] },\n      dependencies: ['setup'],\n    },\n    {\n      name: 'firefox',\n      use: { ...devices['Desktop Firefox'] },\n      dependencies: ['setup'],\n    },\n    {\n      name: 'webkit',\n      use: { ...devices['Desktop Safari'] },\n      dependencies: ['setup'],\n    },\n    {\n      name: 'celular',\n      use: { ...devices['Pixel 7'] },\n      dependencies: ['setup'],\n    },\n  ],\n});",
+        "legenda": "ignoreSnapshots: no GitHub, pula a foto",
+        "fonte": 30,
+        "digitar": true,
+        "digitar_de": 13,
+        "digitar_ate": 13,
+        "rolar": true,
+        "rolar_ate": 15,
+        "rolar_de": 0.5,
+        "rolar_dur": 1.2,
+        "atrasa": true
+       }
       },
       {
        "text": "Um cuidado: tela que muda sozinha, como data, hora ou propaganda, faz o teste visual falhar à toa. Use em telas estáveis: login, página de produto, um e-mail, um relatório.",
