@@ -104,6 +104,26 @@
        }
       },
       {
+       "text": "Como a Lojinha foi feita pro curso, dá pra ver isso acontecendo na sua máquina. O endereço é o mesmo da Lojinha, que está aqui na tela, com interrogação estilo igual a quebrado no fim. Ele simula alguém mexendo no estilo do botão. A gente vai usar daqui a pouco.",
+       "scene": {
+        "type": "bigtext",
+        "stagger": 0.25,
+        "lines": [
+         [
+          "O BOTÃO QUEBRADO, DE PROPÓSITO",
+          "muted",
+          60
+         ],
+         [
+          "tsvini.github.io/custo-oculto-fabrica/loja/?estilo=quebrado",
+          "gold",
+          46
+         ]
+        ],
+        "entre": 1.4
+       }
+      },
+      {
        "text": "Dentro da pasta nivel2, cria o visual ponto spec ponto js.",
        "scene": {
         "type": "menu",
@@ -300,7 +320,32 @@
        }
       },
       {
-       "text": "Agora, com o botão mudado. Roda: falhou. Vinte e nove mil pixels diferentes, quatro por cento da tela.",
+       "text": "Agora, vamos simular a mudança. No teste, no fim do endereço da Lojinha, acrescenta interrogação estilo igual a quebrado.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "visual.spec.js",
+        "codigo": "import { test, expect } from '@playwright/test';\n\nconst lojinha = 'https://tsvini.github.io/custo-oculto-fabrica/loja/?estilo=quebrado';\n\ntest('a tela de login não mudou', async ({ page }) => {\n  await page.goto(lojinha);\n  await expect(page).toHaveScreenshot('login.png');\n});",
+        "legenda": "?estilo=quebrado: simula o botão mudado",
+        "fonte": 22,
+        "digitar": false,
+        "linha0": 1,
+        "pastas": null,
+        "trocar": [
+         [
+          3,
+          "const lojinha = 'https://tsvini.github.io/custo-oculto-fabrica/loja/';",
+          null,
+          1.4
+         ]
+        ],
+        "destaque": [
+         3
+        ],
+        "destaque_em": 3.6
+       }
+      },
+      {
+       "text": "Roda: falhou. Vinte e nove mil pixels diferentes, quatro por cento da tela.",
        "scene": {
         "type": "terminal",
         "titulo": "Terminal — VS Code",
@@ -350,6 +395,44 @@
         "url": "repo:curso-playwright/material/cenas/diff_visual.html?diff",
         "titulo": "Playwright Test Report",
         "legenda": "Diff: o que mudou aparece pintado"
+       }
+      },
+      {
+       "text": "O teste pegou a mudança. Agora tira o interrogação estilo igual a quebrado do endereço: ele foi só pra simular. Roda de novo: passou.",
+       "scene": {
+        "type": "editor",
+        "arquivo": "visual.spec.js",
+        "codigo": "import { test, expect } from '@playwright/test';\n\nconst lojinha = 'https://tsvini.github.io/custo-oculto-fabrica/loja/';\n\ntest('a tela de login não mudou', async ({ page }) => {\n  await page.goto(lojinha);\n  await expect(page).toHaveScreenshot('login.png');\n});",
+        "legenda": "Tira o ?estilo=quebrado: volta a passar",
+        "fonte": 22,
+        "digitar": false,
+        "linha0": 1,
+        "pastas": null,
+        "trocar": [
+         [
+          3,
+          "const lojinha = 'https://tsvini.github.io/custo-oculto-fabrica/loja/?estilo=quebrado';",
+          null,
+          1.2
+         ]
+        ],
+        "terminal": [
+         {
+          "cmd": "npx playwright test visual --project=chromium",
+          "em": 0.55
+         },
+         {
+          "out": "Running 2 tests using 1 worker",
+          "cor": "mut",
+          "em": 0.63
+         },
+         {
+          "out": "  2 passed (2.5s)",
+          "cor": "ac",
+          "em": 0.82
+         }
+        ],
+        "terminal_altura": 0.32
        }
       },
       {

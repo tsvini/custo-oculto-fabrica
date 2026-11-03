@@ -235,12 +235,16 @@ aula(66, "E se o servidor responder errado?", [
 # ---------- 67 · visual ----------
 CFG_IGN = open(os.path.join(PROJ, "playwright.config.js"), encoding="utf8").read().rstrip("\n"); L_IGN = ln(CFG_IGN, "ignoreSnapshots")
 VIS = ler("tests/nivel2/visual.spec.js")
+L_LJ = ln(VIS, "const lojinha"); LJ_OK = VIS.split("\n")[L_LJ - 1]; LJ_Q = LJ_OK.replace("/loja/';", "/loja/?estilo=quebrado';")
+VIS_Q = VIS.replace(LJ_OK, LJ_Q); assert VIS_Q != VIS
 SNAP = "tests/nivel2/visual.spec.js-snapshots/login-chromium-win32.png"
 aula(67, "O botão funciona, mas ficou errado", [
     ("Essa é a tela de login da Lojinha. Agora imagina que alguém mexeu no estilo do botão Entrar.",
      {"type": "tela", "media": "n67_antes", "url": LOJA, "titulo": "Lojinha do Leigo", "legenda": "Antes", "alvo": "Entrar", "zoom_em": 1.4, "caixa_em": 1.8}),
     ("Olha como ficou: laranja, menor, fora do padrão. Mas ele continua clicável, e o login funciona. Nenhum teste nosso ia reclamar.",
      {"type": "tela", "media": "n67_depois", "url": LOJA + "?estilo=quebrado", "titulo": "Lojinha do Leigo", "legenda": "Depois: o teste continua passando", "alvo": "Entrar", "zoom_em": 1.4, "caixa_em": 1.8}),
+    ("Como a Lojinha foi feita pro curso, dá pra ver isso acontecendo na sua máquina. O endereço é o mesmo da Lojinha, que está aqui na tela, com interrogação estilo igual a quebrado no fim. Ele simula alguém mexendo no estilo do botão. A gente vai usar daqui a pouco.",
+     bt(("O BOTÃO QUEBRADO, DE PROPÓSITO", "muted", 60), ("tsvini.github.io/custo-oculto-fabrica/loja/?estilo=quebrado", "gold", 46), entre=1.4)),
     ("O começo é igual aos outros: o import, o endereço da Lojinha numa constante, e o teste, que abre a tela de login.",
      ed(trecho(VIS, 1, 6) + "\n});", "O começo: abre a tela de login", "visual.spec.js", de=1, ate=6, criar=[["Dentro da pasta nivel2, cria o visual ponto spec ponto js.", "visual.spec.js"]])),
     ("Um teste visual percebe. Uma linha: to have screenshot. Tire uma foto da tela e compare com a foto guardada.",
@@ -254,13 +258,18 @@ aula(67, "O botão funciona, mas ficou errado", [
     ("Roda de novo: agora tem com o que comparar, e a tela está igual. Passou.",
      term(["npx playwright test visual --project=chromium", ("Running 2 tests using 1 worker", "mut"), ("  ✓  1 [setup] › tests/auth.setup.js:5:6 › faz login uma vez (536ms)", "ac"),
            ("  ✓  2 [chromium] › tests/nivel2/visual.spec.js:5:5 › a tela de login não mudou (718ms)", "ac"), ("  2 passed (2.5s)", "ac")], "2ª vez: igual, passou")),
-    ("Agora, com o botão mudado. Roda: falhou. Vinte e nove mil pixels diferentes, quatro por cento da tela.",
+    ("Agora, vamos simular a mudança. No teste, no fim do endereço da Lojinha, acrescenta interrogação estilo igual a quebrado.",
+     ed(VIS_Q, "?estilo=quebrado: simula o botão mudado", "visual.spec.js", pastas=None, trocar=[[L_LJ, LJ_OK, None, 1.4]], destaque=[L_LJ], destaque_em=3.6)),
+    ("Roda: falhou. Vinte e nove mil pixels diferentes, quatro por cento da tela.",
      term(["npx playwright test visual --project=chromium", ("Error: expect(page).toHaveScreenshot(expected) failed", "#ff6b6b"),
            ("  29083 pixels (ratio 0.04 of all image pixels) are different.", "#ff6b6b"), ("  1 failed", "#ff6b6b")], "Mudou: 4% da tela diferente")),
     ("E o relatório mostra lado a lado: a foto esperada, a tela atual, e a diferença.",
      {"type": "tela", "media": "n67_lado", "url": DIFF, "titulo": "Playwright Test Report", "legenda": "Esperado · atual · diferença"}),
     ("Na aba Diff, o que mudou aparece pintado. O botão inteiro.",
      {"type": "tela", "media": "n67_diff", "url": DIFF + "?diff", "titulo": "Playwright Test Report", "legenda": "Diff: o que mudou aparece pintado"}),
+    ("O teste pegou a mudança. Agora tira o interrogação estilo igual a quebrado do endereço: ele foi só pra simular. Roda de novo: passou.",
+     ed(VIS, "Tira o ?estilo=quebrado: volta a passar", "visual.spec.js", pastas=None, trocar=[[L_LJ, LJ_Q, None, 1.2]],
+        terminal=[{"cmd": "npx playwright test visual --project=chromium", "em": 0.55}, {"out": "Running 2 tests using 1 worker", "cor": "mut", "em": 0.63}, {"out": "  2 passed (2.5s)", "cor": "ac", "em": 0.82}], terminal_altura=0.32)),
     ("E aí vem a pergunta de QA: foi de propósito? Se foi, você atualiza a foto. Se não foi, você acabou de achar um bug visual, e abre um card com essas três imagens.",
      cmp("FOI DE PROPÓSITO?", ["SIM", "ATUALIZA A FOTO"], ["NÃO", "BUG VISUAL: ABRE UM CARD"])),
     ("Pra atualizar a foto: traço traço update snapshots.",
