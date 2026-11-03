@@ -1,11 +1,11 @@
 {
- "atualizado": "03/11/2026 00:42",
+ "atualizado": "03/11/2026 15:03",
  "fontes": {
   "custo_oculto": {
    "seguidores": 26,
-   "views_total": 6625,
-   "videos": 44,
-   "views_28d": 5565,
+   "views_total": 8171,
+   "videos": 45,
+   "views_28d": 5570,
    "views_7d": 600,
    "seguidores_28d": 17,
    "dia": [
@@ -51,7 +51,7 @@
     ],
     [
      "2026-10-16",
-     50
+     52
     ],
     [
      "2026-10-17",
@@ -63,7 +63,7 @@
     ],
     [
      "2026-10-19",
-     18
+     20
     ],
     [
      "2026-10-20",
@@ -83,7 +83,7 @@
     ],
     [
      "2026-10-24",
-     77
+     78
     ],
     [
      "2026-10-25",
@@ -318,46 +318,46 @@
   },
   "tiktok": {
    "usuario": "Custo Oculto",
-   "seguidores": 70,
-   "curtidas": 453,
-   "videos": 25,
-   "views_total": 9143,
+   "seguidores": 72,
+   "curtidas": 463,
+   "videos": 26,
+   "views_total": 9100,
    "top": [
+    {
+     "titulo": "Em 1992, o Magazine Luiza criou uma “Loja Virtual” quando comprar pela internet ainda pare",
+     "url": "https://www.tiktok.com/@custooculto/video/7703986197403602196?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
+     "views": 10,
+     "likes": 0
+    },
     {
      "titulo": "Uma marca tão forte que virou quase sinônimo do próprio produto. Mas o que acontece quando",
      "url": "https://www.tiktok.com/@custooculto/video/7703579884316101908?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 265,
-     "likes": 5
+     "views": 380,
+     "likes": 15
     },
     {
      "titulo": "A ideia que mudou a Havaianas não nasceu dentro da empresa. 🩴 Nos anos 90, consumidores co",
      "url": "https://www.tiktok.com/@custooculto/video/7703211501976390932?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 452,
+     "views": 454,
      "likes": 15
     },
     {
      "titulo": "A Ricardo Eletro chegou a faturar bilhões e ter mais de mil lojas no Brasil. Depois, veio ",
      "url": "https://www.tiktok.com/@custooculto/video/7702860346633080085?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 552,
+     "views": 554,
      "likes": 19
     },
     {
      "titulo": "A primeira venda do Mercado Livre envolveu 10 cervos vivos. 🦌 Mas essa está longe de ser a",
      "url": "https://www.tiktok.com/@custooculto/video/7702594040860003604?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 212,
+     "views": 213,
      "likes": 4
     },
     {
      "titulo": "O CUSTO DE SER GIGANTE — EP. 07 A Polishop já teve cerca de 280 lojas no Brasil. Anos depo",
      "url": "https://www.tiktok.com/@custooculto/video/7702089941328612629?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 293,
+     "views": 294,
      "likes": 7
-    },
-    {
-     "titulo": "O CUSTO DE SER GIGANTE — EP. 06 A Saraiva já teve mais de 100 lojas no Brasil. Em 2018, en",
-     "url": "https://www.tiktok.com/@custooculto/video/7701771236770319637?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 477,
-     "likes": 24
     }
    ],
    "nome": "TikTok @custooculto"
@@ -395,26 +395,6 @@
   }
  },
  "agenda": [
-  {
-   "quando": "2026-11-03T10:00:00-03:00",
-   "titulo": "Lan house, scraps e comunidades · PAUSADO (rascunho)",
-   "tipo": "metricool",
-   "id": "metricool",
-   "url": "https://app.metricool.com/planner",
-   "plataforma_rede": "tiktok",
-   "chave": "tiktok",
-   "plataforma": "TikTok (Metricool)",
-   "sem_cancelar": true
-  },
-  {
-   "quando": "2026-11-03T12:00:00-03:00",
-   "plataforma": "Custo Oculto (YouTube)",
-   "chave": "custo_oculto",
-   "titulo": "ORKUT: Por Que o Google Deixou Morrer a Rede Que o Brasil Ainda Quer de Volta",
-   "tipo": "longo",
-   "id": "orkut_longo",
-   "url": "https://studio.youtube.com/video/x263Rewgyw8/edit"
-  },
   {
    "quando": "2026-11-04T10:00:00-03:00",
    "titulo": "O dia em que o Orkut perdeu · PAUSADO (rascunho)",
