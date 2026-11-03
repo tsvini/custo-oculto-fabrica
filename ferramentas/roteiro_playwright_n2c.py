@@ -120,7 +120,7 @@ aula(74, "A missão", [
     ("Isso é muito comum no trabalho: uma história curta, sem detalhe nenhum. E é aqui que quem testa faz diferença.",
      bt(("HISTÓRIA CURTA", "white", 110), ("SEM DETALHE", "white", 110), ("QA FAZ A DIFERENÇA", "gold", 110))),
     ("Ainda não abre o VS Code. Primeiro, pensa como QA: o que precisa funcionar? O que pode dar errado? E o que está faltando nessa história? Pausa o vídeo e anota.",
-     desafio("?", "Pensa como QA", [["✓", "O que precisa funcionar?"], ["✗", "O que pode dar errado?", VERM], ["?", "O que está faltando?", AMARELO]], legenda="Pausa o vídeo e anota")),
+     desafio("?", "Pensa como QA", [["✓", "O que precisa funcionar?"], ["✗", "O que pode dar errado?", VERM], ["?", "O que está faltando?", AMARELO]], contagem=5, legenda="Pausa o vídeo e anota")),
     ("Algumas perguntas que eu faria. Todo usuário pode entrar? E com a senha errada, o que aparece? E se deixar o campo vazio?",
      cards([["👤", "Todo usuário entra?", "e o bloqueado?"], ["🔑", "Senha errada?", "o que aparece?", AZUL], ["▭", "Campo vazio?", "tem aviso?", AMARELO]], "SOBRE ENTRAR")),
     ("E sobre ordenar: quais ordenações precisam existir? Por nome, por preço, nos dois sentidos? E um produto esgotado: ele aparece na lista, ou some? O card não diz.",

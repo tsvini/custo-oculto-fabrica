@@ -246,7 +246,7 @@ aula(67, "O botão funciona, mas ficou errado", [
     ("Na primeira vez, ainda não existe foto pra comparar. Ele falha, avisa, e guarda a tela de agora como referência.",
      term(["npx playwright test visual --project=chromium", ("Error: A snapshot doesn't exist at", "#ff6b6b"), (SNAP + ", writing actual.", "#ff6b6b"), ("  1 failed", "#ff6b6b")], "1ª vez: guarda a foto de referência")),
     ("A foto fica numa pasta do lado do teste. E o nome leva o navegador e o sistema, porque cada um desenha a tela um pouquinho diferente.",
-     trl("UMA FOTO POR NAVEGADOR E SISTEMA", [["login-chromium-win32.png", "Chromium no Windows"], ["login-chromium-linux.png", "Chromium no Linux (GitHub)"]])),
+     trl("UMA FOTO POR NAVEGADOR E SISTEMA", [["login-chromium-win32.png", "Chromium no Windows"], ["login-chromium-linux.png", "Chromium no Linux"]])),
     ("Roda de novo: agora tem com o que comparar, e a tela está igual. Passou.",
      term(["npx playwright test visual --project=chromium", ("Running 2 tests using 1 worker", "mut"), ("  ✓  1 [setup] › tests/auth.setup.js:5:6 › faz login uma vez (536ms)", "ac"),
            ("  ✓  2 [chromium] › tests/nivel2/visual.spec.js:5:5 › a tela de login não mudou (718ms)", "ac"), ("  2 passed (2.5s)", "ac")], "2ª vez: igual, passou")),
