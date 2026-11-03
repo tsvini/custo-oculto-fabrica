@@ -309,6 +309,9 @@ aula(68, "Quero ver todos os erros da tela de uma vez", [
 ] + fim("não dá tempo de rodar tudo"))
 
 # ---------- 69 · tags ----------
+LOG69 = ler("tests/login.spec.js"); CMP69 = ler("tests/compra.spec.js"); TAGT = ", { tag: '@smoke' }"
+L_LOG69 = ln(LOG69, "entra com usuário e senha"); L_CMP69 = ln(CMP69, "compra uma mochila")
+assert TAGT in LOG69.split("\n")[L_LOG69 - 1] and TAGT in CMP69.split("\n")[L_CMP69 - 1]
 TAG = ler("tests/nivel2/tags.spec.js"); TAGL = TAG.split("\n"); J69 = "\n".join
 assert "tag: '@smoke'" in TAGL[2] and len(TAGL) == 13
 aula(69, "Não dá tempo de rodar tudo", [
@@ -324,9 +327,19 @@ aula(69, "Não dá tempo de rodar tudo", [
      tr("test('login funciona', { tag: '@smoke' }, async ({ page, loginPage }) => {", [["{ tag: '@smoke' }", "a etiqueta smoke"]], 1.0)),
     ("Smoke é fumaça. O nome vem da eletrônica: liga o aparelho e vê se sai fumaça. É o teste rápido de que o básico funciona: entra no sistema, abre a tela principal, faz a compra.",
      cards([["🔌", "Liga o aparelho", "e vê se sai fumaça"], ["✓", "Smoke test", "o básico funciona?", VERDE]])),
+    ("Agora o mais importante: marcar os testes de verdade do seu projeto. Quais são o básico? Entrar no sistema, e fazer uma compra.",
+     cards([["🔑", "login.spec.js", "entra com usuário e senha"], ["🛒", "compra.spec.js", "compra do começo ao fim", AZUL], ["✓", "Os dois", "viram smoke", VERDE]], "O BÁSICO DO PROJETO")),
+    ("Abre o login ponto spec. No teste entra com usuário e senha, depois do nome, vírgula, e entre chaves: tag, arroba smoke.",
+     inteiro(ed(trecho(LOG69, L_LOG69 - 1, L_LOG69 + 5), "login.spec.js: { tag: '@smoke' }", "login.spec.js", linha0=L_LOG69 - 1, pastas=None, fonte=24,
+                trocar=[[2, LOG69.split("\n")[L_LOG69 - 1].replace(TAGT, ""), None, 1.6]], destaque=[2], destaque_em=4.2), LOG69.split("\n")[:L_LOG69 - 2], LOG69.split("\n")[L_LOG69 + 5:])),
+    ("E no compra ponto spec, o mesmo, no teste da compra.",
+     inteiro(ed(trecho(CMP69, L_CMP69 - 1, L_CMP69 + 3), "compra.spec.js: { tag: '@smoke' }", "compra.spec.js", linha0=L_CMP69 - 1, pastas=None, fonte=24,
+                trocar=[[2, CMP69.split("\n")[L_CMP69 - 1].replace(TAGT, ""), None, 1.2]], destaque=[2], destaque_em=3.4), CMP69.split("\n")[:L_CMP69 - 2], CMP69.split("\n")[L_CMP69 + 3:])),
     ("Pra rodar só os marcados: traço traço grep arroba smoke.",
-     term(["npx playwright test --grep @smoke --project=chromium", ("Running 2 tests using 1 worker", "mut"), ("  ✓  1 [setup] › tests/auth.setup.js:5:6 › faz login uma vez (543ms)", "ac"),
-           ("  ✓  2 [chromium] › tests/nivel2/tags.spec.js:3:5 › login funciona @smoke (545ms)", "ac"), ("  2 passed (2.3s)", "ac")], "Só os marcados")),
+     term(["npx playwright test --grep @smoke --project=chromium", ("Running 4 tests using 1 worker", "mut"), ("  ✓  1 [setup] › tests/auth.setup.js:5:6 › faz login uma vez (472ms)", "ac"),
+           ("  ✓  2 [chromium] › tests/compra.spec.js:7:5 › compra uma mochila do começo ao fim @smoke (702ms)", "ac"),
+           ("  ✓  3 [chromium] › tests/login.spec.js:9:7 › Login › entra com usuário e senha @smoke (409ms)", "ac"),
+           ("  ✓  4 [chromium] › tests/nivel2/tags.spec.js:3:5 › login funciona @smoke (298ms)", "ac"), ("  4 passed (3.0s)", "ac")], "Só os marcados: login e compra", fonte=20)),
     ("E o contrário também existe: grep invert. Rode todos, menos os marcados.",
      term(["npx playwright test tags --grep-invert @smoke --project=chromium", ("Running 2 tests using 1 worker", "mut"), ("  ✓  1 [setup] › tests/auth.setup.js:5:6 › faz login uma vez (521ms)", "ac"),
            ("  ✓  2 [chromium] › tests/nivel2/tags.spec.js:9:5 › mostra erro para usuário bloqueado (456ms)", "ac"), ("  2 passed (2.2s)", "ac")], "Todos, menos os marcados")),
