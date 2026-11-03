@@ -2,7 +2,9 @@
 // ?versao=1 abre a versão antiga, com o bug na ordenação por preço (compara o preço como texto). Sem o parâmetro: a versão corrigida.
 const VERSAO = (() => {
   const p = new URLSearchParams(location.search).get('versao');
+  const login = !/produtos\.html$/.test(location.pathname);
   if (p) sessionStorage.setItem('versao', p);
+  else if (login) sessionStorage.removeItem('versao');  // abriu o login sem ?versao=1: volta pra versão corrigida (senão a versão 1 "grudava" na aba)
   return sessionStorage.getItem('versao') === '1' ? 1 : 2;
 })();
 // ?estilo=quebrado: alguém mexeu no CSS sem querer (o botão continua funcionando, mas ficou diferente). Usado na aula de teste visual.
