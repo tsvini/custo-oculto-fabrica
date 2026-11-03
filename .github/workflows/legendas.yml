@@ -6,6 +6,8 @@ on:
         description: "aulas (ex.: 1 2 3); vazio = todas"
         required: false
         default: ""
+permissions:
+  contents: write
 jobs:
   legendas:
     runs-on: ubuntu-24.04
@@ -43,7 +45,9 @@ jobs:
             python ferramentas/legendas_udemy.py tmp/curso_playwright_${nn}_longo.mp4 $n legendas/aula${nn}.vtt || echo "::error title=Legenda::aula $nn falhou"
             rm -f tmp/*.mp4
           done
-      - uses: actions/upload-artifact@v4
-        with:
-          name: legendas-${{ matrix.lote }}
-          path: legendas/
+      - name: Guardar no repositório (curso-playwright/material/legendas)
+        run: |
+          mkdir -p curso-playwright/material/legendas && cp legendas/*.vtt curso-playwright/material/legendas/ 2>/dev/null || exit 0
+          git config user.name "tsvini"; git config user.email "tsvini111@gmail.com"
+          git add curso-playwright/material/legendas && git commit -qm "legendas das aulas (lote ${{ matrix.lote }}) [skip ci]" || exit 0
+          for i in 1 2 3 4 5 6; do git pull -q --rebase && git push -q && exit 0; sleep $((RANDOM % 10 + 3)); done; exit 1
