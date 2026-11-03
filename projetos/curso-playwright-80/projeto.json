@@ -97,15 +97,136 @@
        }
       },
       {
-       "text": "Agora, o caminho que você já conhece: o repositório no GitHub, os secrets com o usuário e a senha da Lojinha, e o GitHub Actions. Push, e a pipeline roda.",
+       "text": "Agora, o projeto vai pro GitHub, do mesmo jeito do primeiro. Primeiro, o Git: no terminal, git init, git add ponto, e git commit, com uma legenda.",
+       "scene": {
+        "type": "terminal",
+        "titulo": "Terminal — VS Code",
+        "pasta": "C:\\Users\\voce\\Documents\\projeto-lojinha",
+        "legenda": "git init · git add . · git commit",
+        "fonte": 24,
+        "fonte_min": 16,
+        "linhas": [
+         {
+          "cmd": "git init",
+          "em": 0.04
+         },
+         {
+          "out": "Initialized empty Git repository",
+          "cor": "mut",
+          "em": 0.2
+         },
+         {
+          "cmd": "git add .",
+          "em": 0.32
+         },
+         {
+          "cmd": "git commit -m \"cenários da LOJA-87\"",
+          "em": 0.5
+         },
+         {
+          "out": "[main (root-commit) 4f2a1c9] cenários da LOJA-87",
+          "cor": "ac",
+          "em": 0.78
+         },
+         {
+          "out": " 14 files changed, 612 insertions(+)",
+          "cor": "mut",
+          "em": 0.82
+         }
+        ]
+       }
+      },
+      {
+       "text": "No GitHub, um repositório novo: o botão de mais, New repository, o nome projeto lojinha, e Create repository.",
+       "scene": {
+        "type": "github",
+        "usuario": "voce",
+        "repo": "projeto-lojinha",
+        "tela": "novo",
+        "opcoes_em": 4.0,
+        "legenda": "New repository · projeto-lojinha"
+       }
+      },
+      {
+       "text": "Antes de enviar, os secrets, senão a pipeline roda sem saber o usuário e a senha: Settings, Secrets and variables, Actions, e New repository secret. O primeiro: LOJA USUARIO, com o valor cliente.",
+       "scene": {
+        "type": "github",
+        "usuario": "voce",
+        "repo": "projeto-lojinha",
+        "tela": "novo_secret",
+        "nome": "LOJA_USUARIO",
+        "valor": "cliente",
+        "digita_em": 3.6,
+        "rotulos": [
+         "o nome, igual ao do .env",
+         "o valor"
+        ],
+        "legenda": "Name: LOJA_USUARIO · Secret: cliente"
+       }
+      },
+      {
+       "text": "E o segundo: LOJA SENHA, com o valor leigo123. São os mesmos nomes que o yml lê.",
+       "scene": {
+        "type": "github",
+        "usuario": "voce",
+        "repo": "projeto-lojinha",
+        "tela": "novo_secret",
+        "nome": "LOJA_SENHA",
+        "valor": "leigo123",
+        "digita_em": 1.2,
+        "rotulos": [
+         "o nome, igual ao do .env",
+         "o valor"
+        ],
+        "legenda": "Name: LOJA_SENHA · Secret: leigo123"
+       }
+      },
+      {
+       "text": "Agora sim, o envio. O GitHub mostra os comandos pra ligar o seu projeto com o de lá. Copia e cola no terminal: o git remote add origin, e o git push traço u origin main.",
+       "scene": {
+        "type": "terminal",
+        "titulo": "Terminal — VS Code",
+        "pasta": "C:\\Users\\voce\\Documents\\projeto-lojinha",
+        "legenda": "git remote add origin · git push -u origin main",
+        "fonte": 22,
+        "fonte_min": 16,
+        "linhas": [
+         {
+          "cmd": "git branch -M main",
+          "em": 0.04
+         },
+         {
+          "cmd": "git remote add origin https://github.com/voce/projeto-lojinha.git",
+          "em": 0.2
+         },
+         {
+          "cmd": "git push -u origin main",
+          "em": 0.45
+         },
+         {
+          "out": "To https://github.com/voce/projeto-lojinha.git",
+          "cor": "mut",
+          "em": 0.7
+         },
+         {
+          "out": " * [new branch]      main -> main",
+          "cor": "ac",
+          "em": 0.76
+         }
+        ]
+       }
+      },
+      {
+       "text": "Esse push dispara a pipeline. Abre a aba Actions: olha os testes rodando.",
        "scene": {
         "type": "gh_actions",
         "usuario": "voce",
         "repo": "projeto-lojinha",
         "workflow": "Playwright Tests",
         "commit": "cenários da LOJA-87",
-        "inicio_em": 1.0,
-        "legenda": "A pipeline rodando"
+        "aba_em": 2.6,
+        "inicio_em": 3.2,
+        "legenda": "Aba Actions: os testes rodando"
        }
       },
       {
