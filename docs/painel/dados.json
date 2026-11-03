@@ -1,18 +1,14 @@
 {
- "atualizado": "02/11/2026 17:30",
+ "atualizado": "03/11/2026 00:42",
  "fontes": {
   "custo_oculto": {
    "seguidores": 26,
    "views_total": 6625,
    "videos": 44,
-   "views_28d": 5570,
+   "views_28d": 5565,
    "views_7d": 600,
    "seguidores_28d": 17,
    "dia": [
-    [
-     "2026-10-05",
-     0
-    ],
     [
      "2026-10-06",
      0
@@ -55,7 +51,7 @@
     ],
     [
      "2026-10-16",
-     52
+     50
     ],
     [
      "2026-10-17",
@@ -67,7 +63,7 @@
     ],
     [
      "2026-10-19",
-     20
+     18
     ],
     [
      "2026-10-20",
@@ -87,7 +83,7 @@
     ],
     [
      "2026-10-24",
-     78
+     77
     ],
     [
      "2026-10-25",
@@ -160,7 +156,7 @@
   "hidden_cost": {
    "seguidores": 0,
    "views_total": 25,
-   "videos": 15,
+   "videos": 16,
    "views_28d": 0,
    "views_7d": 0,
    "seguidores_28d": 0,
@@ -170,16 +166,12 @@
   },
   "vini_qa": {
    "seguidores": 0,
-   "views_total": 323,
+   "views_total": 402,
    "videos": 7,
    "views_28d": 323,
    "views_7d": 280,
    "seguidores_28d": 0,
    "dia": [
-    [
-     "2026-10-05",
-     0
-    ],
     [
      "2026-10-06",
      0
@@ -327,26 +319,26 @@
   "tiktok": {
    "usuario": "Custo Oculto",
    "seguidores": 70,
-   "curtidas": 447,
+   "curtidas": 453,
    "videos": 25,
-   "views_total": 8939,
+   "views_total": 9143,
    "top": [
     {
      "titulo": "Uma marca tão forte que virou quase sinônimo do próprio produto. Mas o que acontece quando",
      "url": "https://www.tiktok.com/@custooculto/video/7703579884316101908?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 81,
-     "likes": 1
+     "views": 265,
+     "likes": 5
     },
     {
      "titulo": "A ideia que mudou a Havaianas não nasceu dentro da empresa. 🩴 Nos anos 90, consumidores co",
      "url": "https://www.tiktok.com/@custooculto/video/7703211501976390932?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 438,
-     "likes": 13
+     "views": 452,
+     "likes": 15
     },
     {
      "titulo": "A Ricardo Eletro chegou a faturar bilhões e ter mais de mil lojas no Brasil. Depois, veio ",
      "url": "https://www.tiktok.com/@custooculto/video/7702860346633080085?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 551,
+     "views": 552,
      "likes": 19
     },
     {
@@ -403,26 +395,6 @@
   }
  },
  "agenda": [
-  {
-   "quando": "2026-11-02T18:00:00-03:00",
-   "plataforma": "Hidden Cost (YouTube EN)",
-   "chave": "hidden_cost",
-   "titulo": "Only One Blockbuster Is Left in the World #shorts",
-   "tipo": "short",
-   "id": "netflix_en_short4",
-   "url": "https://studio.youtube.com/video/FYjO_13LO78/edit"
-  },
-  {
-   "quando": "2026-11-02T19:00:00-03:00",
-   "titulo": "O dia em que o Facebook passou o Orkut no Brasil · PAUSADO (rascunho)",
-   "tipo": "metricool",
-   "id": "metricool",
-   "url": "https://app.metricool.com/planner",
-   "plataforma_rede": "tiktok",
-   "chave": "tiktok",
-   "plataforma": "TikTok (Metricool)",
-   "sem_cancelar": true
-  },
   {
    "quando": "2026-11-03T10:00:00-03:00",
    "titulo": "Lan house, scraps e comunidades · PAUSADO (rascunho)",
@@ -527,6 +499,60 @@
    "tipo": "short",
    "id": "PeO1_aVL5A8",
    "url": "https://studio.youtube.com/video/PeO1_aVL5A8/edit"
+  },
+  {
+   "quando": "2026-11-16T12:00:00-03:00",
+   "plataforma": "Vini QA (YouTube)",
+   "chave": "vini_qa",
+   "titulo": "Pare de usar cy.wait com tempo fixo",
+   "tipo": "short",
+   "id": "r5uyRbcsssU",
+   "url": "https://studio.youtube.com/video/r5uyRbcsssU/edit"
+  },
+  {
+   "quando": "2026-11-18T12:00:00-03:00",
+   "plataforma": "Vini QA (YouTube)",
+   "chave": "vini_qa",
+   "titulo": "Teste também o que dá errado",
+   "tipo": "short",
+   "id": "1EH24PfLwOU",
+   "url": "https://studio.youtube.com/video/1EH24PfLwOU/edit"
+  },
+  {
+   "quando": "2026-11-20T12:00:00-03:00",
+   "plataforma": "Vini QA (YouTube)",
+   "chave": "vini_qa",
+   "titulo": "describe e it em português",
+   "tipo": "short",
+   "id": "BLi8oll_W_8",
+   "url": "https://studio.youtube.com/video/BLi8oll_W_8/edit"
+  },
+  {
+   "quando": "2026-11-23T12:00:00-03:00",
+   "plataforma": "Vini QA (YouTube)",
+   "chave": "vini_qa",
+   "titulo": "Rode só o teste que você está mexendo",
+   "tipo": "short",
+   "id": "4etHmE1ZR7s",
+   "url": "https://studio.youtube.com/video/4etHmE1ZR7s/edit"
+  },
+  {
+   "quando": "2026-11-25T12:00:00-03:00",
+   "plataforma": "Vini QA (YouTube)",
+   "chave": "vini_qa",
+   "titulo": "O básico de automação que todo QA júnior precisa",
+   "tipo": "short",
+   "id": "DjLMS9PT03w",
+   "url": "https://studio.youtube.com/video/DjLMS9PT03w/edit"
+  },
+  {
+   "quando": "2026-11-27T12:00:00-03:00",
+   "plataforma": "Vini QA (YouTube)",
+   "chave": "vini_qa",
+   "titulo": "Cypress ou Playwright: qual aprender primeiro?",
+   "tipo": "short",
+   "id": "Mi-ZkLYbZ_E",
+   "url": "https://studio.youtube.com/video/Mi-ZkLYbZ_E/edit"
   }
  ],
  "esperando": []
