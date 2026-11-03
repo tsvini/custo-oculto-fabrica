@@ -3,7 +3,7 @@
 Nada aqui é obrigatório: se um print ou clipe falhar, a cena usa a manchete desenhada
 ou o texto animado de reserva, e o vídeo sai do mesmo jeito.
 """
-import json, os, re, urllib.parse, urllib.request
+import json, os, re, time, urllib.parse, urllib.request
 
 UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0 Safari/537.36"
 CONSENT = ["Aceitar e fechar", "Aceitar todos", "Aceitar tudo", "Aceitar", "Aceito", "Concordo", "Entendi", "Continuar", "Prosseguir", "OK", "Accept all", "Accept", "I agree", "Agree", "Got it"]
@@ -92,64 +92,71 @@ def gravacoes(cenas, pasta, log):
     with sync_playwright() as p:
         b = p.chromium.launch(slow_mo=int(alvo[0].get("slow_mo", 250)))
         for s in alvo:
-            tmpd = tempfile.mkdtemp()
-            if s.get("dispositivo"):  # emula um aparelho (ex.: "Pixel 7"): o vídeo sai em pé, do tamanho da tela dele
-                dv = dict(p.devices[s["dispositivo"]]); dv.pop("default_browser_type", None); vp = dv["viewport"]
-                ctx = b.new_context(**dv, record_video_dir=tmpd, record_video_size={"width": vp["width"], "height": vp["height"]})  # do tamanho da tela emulada (o dobro deixava a página num canto e o resto cinza)
-            else:
-                ctx = b.new_context(viewport={"width": 1600, "height": 900}, device_scale_factor=1, record_video_dir=tmpd, record_video_size={"width": 1600, "height": 900}, user_agent=UA)
-            if s.get("zoom_pagina"):  # aproxima a página (letra pequena, ex.: a mensagem de erro do login) em toda página que abrir
-                ctx.add_init_script("document.addEventListener('DOMContentLoaded', () => { document.documentElement.style.zoom = '%s'; });" % s["zoom_pagina"])
-            pg = ctx.new_page(); t_ini = time.time(); corte = 0.0
-            try:
-                if s.get("pre_acoes"):  # preparo fora do vídeo (ex.: login), depois abre "url" e só a partir daí fica no vídeo
-                    pg.goto(s.get("pre_url", s["url"]), wait_until="domcontentloaded", timeout=35000)
-                    for ac in s["pre_acoes"]:
-                        if ac.get("fill"): pg.fill(ac["fill"][0], ac["fill"][1], timeout=8000)
-                        elif ac.get("click"): pg.click(ac["click"], timeout=8000); pg.wait_for_timeout(800)
-                    corte = time.time() - t_ini
-                pg.goto(s["url"], wait_until="domcontentloaded", timeout=35000); pg.wait_for_timeout(int(s.get("espera_inicio", 1200)))
-                for ac in s.get("acoes") or []:
-                    if ac.get("fill"):
-                        pg.click(ac["fill"][0], timeout=8000); pg.type(ac["fill"][0], ac["fill"][1], delay=int(s.get("delay_letra", 90)))
-                    elif ac.get("click"):
-                        pg.click(ac["click"], timeout=8000)
-                    elif ac.get("select"):  # caixa de opções: {"select": [seletor, valor]}
-                        pg.select_option(ac["select"][0], ac["select"][1], timeout=8000)
-                    elif ac.get("check"):
-                        pg.check(ac["check"], timeout=8000)
-                    elif ac.get("uncheck"):
-                        pg.uncheck(ac["uncheck"], timeout=8000)
-                    elif ac.get("hover"):  # passa o mouse por cima (o mouse se move devagar até lá)
-                        bx = pg.locator(ac["hover"]).first.bounding_box()
-                        if bx: pg.mouse.move(bx["x"] + bx["width"] / 2, bx["y"] + bx["height"] / 2, steps=25)
-                    elif ac.get("upload"):  # {"upload": [seletor, caminho no repositório]}
-                        pg.set_input_files(ac["upload"][0], os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), ac["upload"][1]), timeout=8000)
-                    elif ac.get("drag"):  # {"drag": [de, até]}
-                        pg.drag_and_drop(ac["drag"][0], ac["drag"][1], timeout=8000)
-                    elif ac.get("aceita_alerta"):  # a partir daqui, alertas são aceitos (depois de uns instantes, pra aparecer no vídeo)
-                        pg.on("dialog", lambda d: (time.sleep(1.2), d.accept()))
-                    elif ac.get("goto"):
-                        pg.goto(ac["goto"], wait_until="domcontentloaded", timeout=35000)
-                    elif ac.get("scroll"):
-                        pg.mouse.wheel(0, int(ac["scroll"]))
-                    elif ac.get("bloqueia"):  # mock: a requisição não chega no servidor
-                        pg.route(ac["bloqueia"], lambda r: r.abort())
-                    elif ac.get("responde"):  # mock: o Playwright responde no lugar do servidor {"responde": [padrão, corpo]}
-                        pg.route(ac["responde"][0], lambda r, corpo=ac["responde"][1]: r.fulfill(status=200, content_type="application/json", body=corpo))
-                    elif ac.get("reload"):
-                        pg.reload(wait_until="domcontentloaded")
-                    pg.wait_for_timeout(int(ac.get("espera", s.get("espera_acao", 500))))
-                pg.wait_for_timeout(int(s.get("espera_fim", 1500)))
-            except Exception as e:
-                log(f"  gravação {s['media']}: ação falhou ({str(e)[:100]})")
-            ctx.close()
-            vids = glob.glob(os.path.join(tmpd, "*.webm"))
-            if vids:
-                dest = os.path.join(pasta, s["media"] + ".mp4")
-                subprocess.run(["ffmpeg", "-loglevel", "error", "-y", "-ss", f"{corte:.2f}", "-i", vids[0], "-c:v", "libx264", "-pix_fmt", "yuv420p", "-preset", "veryfast", "-crf", "20", "-g", "1", "-an", dest], check=False)  # -g 1: todo quadro é chave, o render pula pra qualquer ponto sem travar no primeiro quadro
-                log(f"  gravação {s['media']}: ok")
-            shutil.rmtree(tmpd, ignore_errors=True)
+            for tentativa in range(3):  # o site de treino às vezes cai (Heroku: Application error): grava de novo, e se não voltar, a geração para
+                tmpd = tempfile.mkdtemp()
+                if s.get("dispositivo"):  # emula um aparelho (ex.: "Pixel 7"): o vídeo sai em pé, do tamanho da tela dele
+                    dv = dict(p.devices[s["dispositivo"]]); dv.pop("default_browser_type", None); vp = dv["viewport"]
+                    ctx = b.new_context(**dv, record_video_dir=tmpd, record_video_size={"width": vp["width"], "height": vp["height"]})  # do tamanho da tela emulada (o dobro deixava a página num canto e o resto cinza)
+                else:
+                    ctx = b.new_context(viewport={"width": 1600, "height": 900}, device_scale_factor=1, record_video_dir=tmpd, record_video_size={"width": 1600, "height": 900}, user_agent=UA)
+                if s.get("zoom_pagina"):  # aproxima a página (letra pequena, ex.: a mensagem de erro do login) em toda página que abrir
+                    ctx.add_init_script("document.addEventListener('DOMContentLoaded', () => { document.documentElement.style.zoom = '%s'; });" % s["zoom_pagina"])
+                pg = ctx.new_page(); t_ini = time.time(); corte = 0.0
+                try:
+                    if s.get("pre_acoes"):  # preparo fora do vídeo (ex.: login), depois abre "url" e só a partir daí fica no vídeo
+                        pg.goto(s.get("pre_url", s["url"]), wait_until="domcontentloaded", timeout=35000)
+                        for ac in s["pre_acoes"]:
+                            if ac.get("fill"): pg.fill(ac["fill"][0], ac["fill"][1], timeout=8000)
+                            elif ac.get("click"): pg.click(ac["click"], timeout=8000); pg.wait_for_timeout(800)
+                        corte = time.time() - t_ini
+                    pg.goto(s["url"], wait_until="domcontentloaded", timeout=35000); pg.wait_for_timeout(int(s.get("espera_inicio", 1200))); _checa_site(pg)
+                    for ac in s.get("acoes") or []:
+                        if ac.get("fill"):
+                            pg.click(ac["fill"][0], timeout=8000); pg.type(ac["fill"][0], ac["fill"][1], delay=int(s.get("delay_letra", 90)))
+                        elif ac.get("click"):
+                            pg.click(ac["click"], timeout=8000)
+                        elif ac.get("select"):  # caixa de opções: {"select": [seletor, valor]}
+                            pg.select_option(ac["select"][0], ac["select"][1], timeout=8000)
+                        elif ac.get("check"):
+                            pg.check(ac["check"], timeout=8000)
+                        elif ac.get("uncheck"):
+                            pg.uncheck(ac["uncheck"], timeout=8000)
+                        elif ac.get("hover"):  # passa o mouse por cima (o mouse se move devagar até lá)
+                            bx = pg.locator(ac["hover"]).first.bounding_box()
+                            if bx: pg.mouse.move(bx["x"] + bx["width"] / 2, bx["y"] + bx["height"] / 2, steps=25)
+                        elif ac.get("upload"):  # {"upload": [seletor, caminho no repositório]}
+                            pg.set_input_files(ac["upload"][0], os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), ac["upload"][1]), timeout=8000)
+                        elif ac.get("drag"):  # {"drag": [de, até]}
+                            pg.drag_and_drop(ac["drag"][0], ac["drag"][1], timeout=8000)
+                        elif ac.get("aceita_alerta"):  # a partir daqui, alertas são aceitos (depois de uns instantes, pra aparecer no vídeo)
+                            pg.on("dialog", lambda d: (time.sleep(1.2), d.accept()))
+                        elif ac.get("goto"):
+                            pg.goto(ac["goto"], wait_until="domcontentloaded", timeout=35000)
+                        elif ac.get("scroll"):
+                            pg.mouse.wheel(0, int(ac["scroll"]))
+                        elif ac.get("bloqueia"):  # mock: a requisição não chega no servidor
+                            pg.route(ac["bloqueia"], lambda r: r.abort())
+                        elif ac.get("responde"):  # mock: o Playwright responde no lugar do servidor {"responde": [padrão, corpo]}
+                            pg.route(ac["responde"][0], lambda r, corpo=ac["responde"][1]: r.fulfill(status=200, content_type="application/json", body=corpo))
+                        elif ac.get("reload"):
+                            pg.reload(wait_until="domcontentloaded")
+                        pg.wait_for_timeout(int(ac.get("espera", s.get("espera_acao", 500)))); _checa_site(pg)
+                    pg.wait_for_timeout(int(s.get("espera_fim", 1500))); _checa_site(pg)
+                except SiteFora:
+                    ctx.close(); shutil.rmtree(tmpd, ignore_errors=True)
+                    if tentativa == 2:
+                        raise SiteForaFinal(f"gravação {s['media']}: o site está fora do ar (página de erro) nas 3 tentativas; nada foi publicado")
+                    log(f"  gravação {s['media']}: o site respondeu com página de erro, tentando de novo em 40 s"); time.sleep(40); continue
+                except Exception as e:
+                    log(f"  gravação {s['media']}: ação falhou ({str(e)[:100]})")
+                ctx.close()
+                vids = glob.glob(os.path.join(tmpd, "*.webm"))
+                if vids:
+                    dest = os.path.join(pasta, s["media"] + ".mp4")
+                    subprocess.run(["ffmpeg", "-loglevel", "error", "-y", "-ss", f"{corte:.2f}", "-i", vids[0], "-c:v", "libx264", "-pix_fmt", "yuv420p", "-preset", "veryfast", "-crf", "20", "-g", "1", "-an", dest], check=False)  # -g 1: todo quadro é chave, o render pula pra qualquer ponto sem travar no primeiro quadro
+                    log(f"  gravação {s['media']}: ok")
+                shutil.rmtree(tmpd, ignore_errors=True)
+                break
         b.close()
 
 
@@ -175,7 +182,14 @@ def telas(cenas, pasta, log, idioma="pt"):
                     url = s["url"]
                     if url.startswith("repo:"):  # página do próprio repositório (ex.: a colinha do curso)
                         url = "file://" + os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), url[5:])
-                    pg.goto(url, wait_until="domcontentloaded", timeout=35000); pg.wait_for_timeout(3000)
+                    for tentativa in range(3):  # o site de treino às vezes cai (Heroku: Application error)
+                        pg.goto(url, wait_until="domcontentloaded", timeout=35000); pg.wait_for_timeout(3000)
+                        try:
+                            _checa_site(pg); break
+                        except SiteFora:
+                            if tentativa == 2:
+                                raise SiteForaFinal(f"tela {s['media']}: o site está fora do ar (página de erro) nas 3 tentativas; nada foi publicado")
+                            log(f"  tela {s['media']}: o site respondeu com página de erro, tentando de novo em 40 s"); time.sleep(40)
                     if s["url"].startswith("repo:") and "colinha" in s["url"]:  # página A4 (colinha): amplia pra ocupar a tela e dar pra ler
                         pg.evaluate("document.body.style.zoom = String(1600 / 794 * 0.92); document.body.style.margin = '0 auto'; document.documentElement.style.background = '#0b0f0d'"); pg.wait_for_timeout(400)
                         if s.get("pagina"):  # colinha: mostra a página N (as outras somem) e, com "rolar_y", um ponto mais abaixo dela
@@ -197,6 +211,10 @@ def telas(cenas, pasta, log, idioma="pt"):
                                 pg.click(ac["click"], timeout=8000); pg.wait_for_timeout(1200)
                         except Exception as e:
                             log(f"  tela {s['media']}: ação falhou ({str(e)[:80]})")
+                    try:
+                        _checa_site(pg)  # depois das ações (um clique pode ter caído na página de erro)
+                    except SiteFora:
+                        raise SiteForaFinal(f"tela {s['media']}: o site caiu no meio das ações (página de erro); nada foi publicado")
                     if s.get("zoom_pagina"):  # print com a página ampliada (letra pequena)
                         pg.evaluate("z => { document.documentElement.style.zoom = String(z); }", s["zoom_pagina"]); pg.wait_for_timeout(500)
                     if s.get("inspecionar"):  # elemento real: posição e HTML (para DevTools / Selector Playground)
@@ -250,6 +268,8 @@ def telas(cenas, pasta, log, idioma="pt"):
                     json.dump(meta, open(os.path.join(pasta, s["media"] + ".json"), "w"))
                     log(f"  tela {s['media']}: ok ({s['url'][:60]})")
                 except Exception as e:
+                    if isinstance(e, SiteForaFinal):
+                        raise
                     log(f"  tela {s['media']}: falhou ({str(e)[:100]})")
                 pg.close()
             b.close()
@@ -258,6 +278,25 @@ def telas(cenas, pasta, log, idioma="pt"):
         if os.path.exists(mj):
             for k, v in json.load(open(mj)).items():
                 s.setdefault(k, v)
+
+
+class SiteFora(Exception):
+    pass
+
+
+class SiteForaFinal(RuntimeError):
+    pass
+
+
+def _checa_site(pg):
+    """página de erro do servidor no lugar do site (ex.: Heroku 'Application error'): não pode ir pro vídeo"""
+    try:
+        t = (pg.title() or "")
+        corpo = pg.evaluate("() => (document.body && document.body.innerText || '').slice(0, 400)")
+    except Exception:
+        return
+    if "Application Error" in t or "Application error" in corpo or "There's nothing here, yet" in corpo:
+        raise SiteFora(t or corpo[:60])
 
 
 def prints(cenas, pasta, log):
