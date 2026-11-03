@@ -1,0 +1,91 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:02.590
+Agora você tem um projeto de automação.
+
+2
+00:00:02.680 --> 00:00:05.590
+Vamos colocar isso no seu
+currículo do jeito certo.
+
+3
+00:00:05.780 --> 00:00:08.850
+No currículo,
+escreve o que você realmente fez:
+
+4
+00:00:09.240 --> 00:00:14.030
+testes de ponta a ponta com Playwright
+e JavaScript, Page Object e fixtures,
+
+5
+00:00:14.080 --> 00:00:18.770
+testes de API, vários navegadores
+e execução no GitHub Actions.
+
+6
+00:00:18.840 --> 00:00:24.350
+E do nível dois: mock de rede,
+teste visual, tags e dados em JSON.
+
+7
+00:00:24.480 --> 00:00:30.030
+E o mais importante: dois projetos no GitHub,
+um deles com um bug que você achou.
+
+8
+00:00:30.100 --> 00:00:34.190
+A regra: só coloca o que você
+consegue explicar numa entrevista.
+
+9
+00:00:34.300 --> 00:00:39.350
+Perguntas que costumam aparecer e que você
+já sabe responder: o que é auto-wait?
+
+10
+00:00:39.440 --> 00:00:41.670
+Por que preferir seletores pela função?
+
+11
+00:00:41.740 --> 00:00:43.220
+O que é Page Object?
+
+12
+00:00:43.240 --> 00:00:47.100
+E o que é um teste flaky,
+que às vezes passa e às vezes falha?
+
+13
+00:00:47.120 --> 00:00:48.010
+E como evitar?
+
+14
+00:00:48.120 --> 00:00:52.220
+E uma pergunta que quase sempre aparece:
+conta um bug que você achou.
+
+15
+00:00:52.240 --> 00:00:56.260
+E você tem uma história:
+a ordenação da Lojinha, achada na mão,
+
+16
+00:00:56.280 --> 00:01:01.160
+antes de automatizar, registrada num card,
+e depois coberta pelos testes.
+
+17
+00:01:01.180 --> 00:01:05.280
+Mostrar o projeto funcionando no GitHub
+ajuda muito a transformar o que está no
+
+18
+00:01:05.300 --> 00:01:07.780
+currículo numa demonstração concreta.
+
+19
+00:01:07.800 --> 00:01:09.250
+Te vejo na última aula!
+

@@ -1,0 +1,102 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:03.770
+Quase todo site conversa
+com um servidor por trás.
+
+2
+00:00:03.880 --> 00:00:07.250
+E pra essa conversa funcionar,
+existe a API.
+
+3
+00:00:07.820 --> 00:00:13.690
+Uma API é um jeito combinado de um
+sistema pedir dados ou ações pra outro.
+
+4
+00:00:13.720 --> 00:00:18.120
+Pensa num restaurante: você não entra na cozinha,
+você faz o pedido ao garçom,
+
+5
+00:00:18.140 --> 00:00:20.930
+num formato combinado,
+e recebe a resposta.
+
+6
+00:00:21.140 --> 00:00:22.880
+É uma simplificação, mas ajuda.
+
+7
+00:00:22.900 --> 00:00:27.410
+Um exemplo: quando você abre
+uma loja e aparecem os produtos,
+
+8
+00:00:27.440 --> 00:00:32.510
+o site pediu a lista de produtos pra API,
+e a API respondeu.
+
+9
+00:00:32.600 --> 00:00:34.610
+A tela só mostra o que veio.
+
+10
+00:00:34.880 --> 00:00:38.910
+Esses pedidos se chamam requisições,
+e cada uma tem um método.
+
+11
+00:00:39.020 --> 00:00:43.350
+GET, buscar. POST, criar. DELETE, apagar.
+
+12
+00:00:43.540 --> 00:00:47.597
+E a resposta vem com um número,
+o status: duzentos é deu certo,
+
+13
+00:00:47.617 --> 00:00:51.580
+duzentos e um é criado,
+quatrocentos e quatro é não encontrado.
+
+14
+00:00:51.600 --> 00:00:55.240
+E quinhentos é erro no servidor,
+que muitas vezes é bug.
+
+15
+00:00:55.260 --> 00:00:59.220
+Vamos usar uma API de treino gratuita,
+a jsonplaceholder.
+
+16
+00:00:59.600 --> 00:01:03.580
+Abre no navegador o endereço dela,
+barra posts barra um.
+
+17
+00:01:03.600 --> 00:01:09.630
+Esse texto com chaves é JSON:
+um formato de dados que muitas APIs usam.
+
+18
+00:01:09.700 --> 00:01:14.300
+E onde quem testa entra?
+Conferindo que cada pedido traz a resposta certa:
+
+19
+00:01:14.320 --> 00:01:16.700
+o status certo, e os dados certos.
+
+20
+00:01:16.720 --> 00:01:20.160
+Na próxima aula:
+o seu primeiro teste de API.
+
+21
+00:01:20.180 --> 00:01:21.910
+Te vejo lá!
+

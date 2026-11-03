@@ -1,0 +1,173 @@
+WEBVTT
+
+1
+00:00:00.190 --> 00:00:05.350
+Olha o teste da compra.
+Antes de testar qualquer coisa, ele monta as páginas:
+
+2
+00:00:05.400 --> 00:00:08.520
+new ProdutosPage, new CheckoutPage.
+
+3
+00:00:08.920 --> 00:00:12.070
+E isso se repete em todo
+arquivo que usa uma página.
+
+4
+00:00:12.320 --> 00:00:17.180
+Agora repara no page.
+Você nunca escreveu new page: ele chega pronto,
+
+5
+00:00:17.200 --> 00:00:21.310
+é só pedir entre chaves.
+Quem prepara é o próprio Playwright.
+
+6
+00:00:21.420 --> 00:00:25.420
+Isso se chama fixture:
+alguma coisa que o teste recebe pronta.
+
+7
+00:00:25.440 --> 00:00:30.000
+O page é uma,
+o request das aulas de API é outra.
+
+8
+00:00:30.020 --> 00:00:31.510
+E dá pra criar as suas.
+
+9
+00:00:31.880 --> 00:00:35.690
+Na pasta do projeto,
+cria uma pasta nova chamada fixtures.
+
+10
+00:00:36.100 --> 00:00:39.590
+E dentro dela, o arquivo paginas ponto js.
+
+11
+00:00:41.300 --> 00:00:45.770
+Primeiro, os imports:
+o test do Playwright, e as duas páginas.
+
+12
+00:00:45.800 --> 00:00:50.220
+Repara no test as base. Traduzindo:
+traga o test do Playwright,
+
+13
+00:00:50.240 --> 00:00:54.280
+mas chame ele de base.
+Porque o nome test vai ficar pro nosso test novo,
+
+14
+00:00:54.300 --> 00:00:55.830
+que a gente vai criar agora.
+
+15
+00:00:56.080 --> 00:01:00.720
+Agora: export const test
+igual base ponto extend.
+
+16
+00:01:00.740 --> 00:01:06.170
+Extend quer dizer estender:
+pegue o test original e acrescente coisas novas nele.
+
+17
+00:01:06.260 --> 00:01:11.080
+Dentro, a receita do loginPage:
+ele recebe o page, cria um LoginPage,
+
+18
+00:01:11.100 --> 00:01:13.250
+e entrega pro teste com o use.
+
+19
+00:01:13.500 --> 00:01:17.130
+Traduzindo: loginPage,
+o nome que o teste vai pedir.
+
+20
+00:01:17.280 --> 00:01:20.470
+Entre chaves, o page,
+a fixture que já existe.
+
+21
+00:01:20.600 --> 00:01:23.490
+E o use: entregue isto pronto pro teste.
+
+22
+00:01:23.580 --> 00:01:26.260
+O produtosPage segue a mesma receita.
+
+23
+00:01:26.280 --> 00:01:31.010
+E no fim, exporta o expect também,
+pra o teste importar tudo de um lugar só.
+
+24
+00:01:31.160 --> 00:01:34.430
+Os testes do nível dois vão
+ficar numa pasta separada.
+
+25
+00:01:34.460 --> 00:01:37.970
+Dentro de tests,
+cria uma pasta nova chamada nivel2.
+
+26
+00:01:38.120 --> 00:01:41.730
+E dentro dela,
+o arquivo fixture ponto spec ponto js.
+
+27
+00:01:42.660 --> 00:01:44.910
+Agora um teste usando a fixture.
+
+28
+00:01:45.000 --> 00:01:49.780
+Primeira linha, o import: em vez de vir do Playwright,
+o test vem das suas fixtures.
+
+29
+00:01:49.800 --> 00:01:54.850
+E no teste, você pede o loginPage entre chaves,
+igual ao page, e já usa.
+
+30
+00:01:55.060 --> 00:01:57.720
+Antes, cada teste montava as páginas.
+
+31
+00:01:57.740 --> 00:02:00.230
+Agora ele pede, e elas chegam prontas.
+
+32
+00:02:00.300 --> 00:02:02.350
+O teste fica só com o que importa.
+
+33
+00:02:02.700 --> 00:02:07.080
+Quando vale a pena? Quando as mesmas
+páginas aparecem em muitos testes,
+
+34
+00:02:07.100 --> 00:02:09.470
+que é o caso de quase todo projeto grande.
+
+35
+00:02:09.640 --> 00:02:13.450
+Num arquivo só, com um teste,
+o new na hora já resolve.
+
+36
+00:02:13.520 --> 00:02:15.410
+Roda: continua passando.
+
+37
+00:02:17.700 --> 00:02:19.550
+Te vejo na próxima!
+

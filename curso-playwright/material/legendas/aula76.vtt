@@ -1,0 +1,131 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:03.520
+Antes de automatizar,
+a gente roda alguns cenários na mão,
+
+2
+00:00:03.540 --> 00:00:06.250
+na versão que o time entregou,
+a versão um.
+
+3
+00:00:06.300 --> 00:00:08.570
+Isso tem nome: teste exploratório.
+
+4
+00:00:08.590 --> 00:00:14.680
+Pra abrir a versão um, é o mesmo endereço
+com interrogação versão igual a um no fim,
+
+5
+00:00:14.700 --> 00:00:15.790
+como está na tela.
+
+6
+00:00:15.810 --> 00:00:20.050
+Login válido,
+com cliente e leigo123: entrou.
+
+7
+00:00:20.140 --> 00:00:20.850
+Ok.
+
+8
+00:00:22.270 --> 00:00:27.930
+Senha errada:
+aparece Usuário ou senha incorretos.
+
+9
+00:00:28.060 --> 00:00:28.730
+Ok.
+
+10
+00:00:31.880 --> 00:00:35.470
+Usuário bloqueado:
+aparece que ele está bloqueado.
+
+11
+00:00:35.660 --> 00:00:36.310
+Ok.
+
+12
+00:00:38.340 --> 00:00:41.970
+Agora, ordenar do menor pro maior preço.
+
+13
+00:00:43.980 --> 00:00:50.206
+Repara nos valores: doze e cinquenta,
+cento e vinte e nove e noventa,
+
+14
+00:00:50.226 --> 00:00:54.150
+quinze e noventa e nove. E o mais barato,
+sete e noventa e nove, quase lá no fim.
+
+15
+00:00:54.340 --> 00:00:58.120
+Isso não está em ordem.
+Antes de escrever uma linha de automação,
+
+16
+00:00:58.140 --> 00:00:59.400
+você acabou de achar um bug.
+
+17
+00:00:59.420 --> 00:01:03.770
+E por que ele acontece?
+A loja compara o preço como texto.
+
+18
+00:01:03.880 --> 00:01:07.710
+E em texto, o um vem antes do sete,
+igual no dicionário.
+
+19
+00:01:07.780 --> 00:01:11.300
+Então doze e cento e vinte
+e nove vêm antes do sete.
+
+20
+00:01:11.320 --> 00:01:15.590
+É exatamente por isso que a gente pensou
+nos cenários antes de abrir o editor.
+
+21
+00:01:15.880 --> 00:01:18.710
+Quem começa direto no
+código testa o que lembrou.
+
+22
+00:01:18.740 --> 00:01:21.030
+Quem pensa primeiro testa o que importa.
+
+23
+00:01:21.300 --> 00:01:26.500
+Agora, registra: o título dizendo o problema,
+o passo a passo, o esperado,
+
+24
+00:01:26.520 --> 00:01:27.960
+o que aconteceu, e o print.
+
+25
+00:01:27.980 --> 00:01:31.090
+O time corrigiu e entregou a versão dois.
+
+26
+00:01:31.120 --> 00:01:34.850
+Abre de novo e ordena:
+agora sim, do menor pro maior.
+
+27
+00:01:35.040 --> 00:01:39.610
+Agora a gente automatiza,
+pra esse bug nunca mais voltar sem ninguém ver.
+
+28
+00:01:39.660 --> 00:01:40.750
+Te vejo na próxima!
+

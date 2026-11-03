@@ -1,0 +1,124 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:02.890
+O Playwright criou alguns
+arquivos pra você.
+
+2
+00:00:02.920 --> 00:00:05.430
+Bora entender cada um, sem decorar nada.
+
+3
+00:00:05.660 --> 00:00:08.590
+A pasta tests é onde ficam os seus testes.
+
+4
+00:00:08.660 --> 00:00:13.190
+Dentro dela já veio um exemplo,
+o example ponto spec ponto js.
+
+5
+00:00:13.620 --> 00:00:17.830
+Nos nossos testes,
+os arquivos vão terminar em ponto spec ponto js.
+
+6
+00:00:18.280 --> 00:00:21.730
+Quando você vir esse final,
+já sabe: é um arquivo de teste.
+
+7
+00:00:21.900 --> 00:00:26.800
+Abre o example. Esse é o arquivo inteiro:
+dois testes que entram no site do próprio
+
+8
+00:00:26.820 --> 00:00:28.580
+Playwright e conferem umas coisas.
+
+9
+00:00:28.600 --> 00:00:32.370
+Não precisa entender agora,
+a gente vai escrever o nosso do zero.
+
+10
+00:00:32.620 --> 00:00:36.680
+O playwright ponto config ponto
+js é o painel de controle:
+
+11
+00:00:36.700 --> 00:00:40.520
+em quais navegadores rodar,
+como gerar o relatório, e por aí vai.
+
+12
+00:00:40.540 --> 00:00:42.490
+Tem bastante comentário, é normal.
+
+13
+00:00:42.640 --> 00:00:44.490
+A gente vai mexer nele mais pra frente.
+
+14
+00:00:44.680 --> 00:00:49.840
+O package ponto json é a ficha do projeto:
+o nome e as ferramentas que ele usa,
+
+15
+00:00:49.860 --> 00:00:51.650
+como o próprio Playwright.
+
+16
+00:00:51.780 --> 00:00:55.290
+A pasta node modules guarda
+as dependências do projeto:
+
+17
+00:00:55.340 --> 00:00:57.880
+o Playwright e tudo que
+ele precisa pra funcionar.
+
+18
+00:00:57.900 --> 00:01:01.280
+Ela fica enorme,
+mas você não precisa editar nada ali.
+
+19
+00:01:01.300 --> 00:01:06.500
+O ponto gitignore é a lista do que não vai pro GitHub,
+como essa pasta node modules.
+
+20
+00:01:06.520 --> 00:01:10.740
+E a pasta ponto github guarda o
+workflow que você pediu na instalação.
+
+21
+00:01:10.760 --> 00:01:15.540
+Por enquanto, lembra de duas coisas:
+seus testes ficam em tests e as configurações
+
+22
+00:01:15.560 --> 00:01:19.090
+principais ficam no playwright
+ponto config ponto js.
+
+23
+00:01:19.520 --> 00:01:21.800
+O restante a gente
+conhece quando precisar.
+
+24
+00:01:21.820 --> 00:01:25.580
+Na próxima aula, a gente roda esse
+exemplo e vê o Playwright trabalhando pela
+
+25
+00:01:25.600 --> 00:01:26.740
+primeira vez.
+
+26
+00:01:26.760 --> 00:01:27.670
+Te vejo lá!
+
