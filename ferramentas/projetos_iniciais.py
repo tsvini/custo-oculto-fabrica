@@ -85,6 +85,8 @@ def main():
         arqs = dict(arqs); arqs["LEIA-ME.txt"] = LEIA.format(titulo=titulo, env=ENV_PASSO if ".env.example" in arqs else "")
         if nome == "projeto-2-final":
             arqs["LEIA-ME.txt"] = arqs["LEIA-ME.txt"].replace("o projeto exatamente como ele fica no começo deste módulo", "o projeto 2 pronto, do jeito que ele fica no fim do módulo 14").replace("ex.: meu-primeiro-playwright", "ex.: projeto-lojinha")
+        if nome != "projeto-2-final":  # a etiqueta @smoke (aula 69) e o ignoreSnapshots (aula 67) são do módulo 13: nenhum projeto inicial do projeto 1 tem
+            arqs = {rel: c.replace(", { tag: '@smoke' }", "").replace("  ignoreSnapshots: !!process.env.CI,\n", "") for rel, c in arqs.items()}
         for rel, conteudo in arqs.items():
             p = os.path.join(d, rel); os.makedirs(os.path.dirname(p), exist_ok=True)
             open(p, "w", encoding="utf8", newline="\n").write(conteudo if conteudo.endswith("\n") else conteudo + "\n")
