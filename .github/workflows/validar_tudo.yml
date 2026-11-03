@@ -26,6 +26,9 @@ jobs:
           sed "s/aula [0-9]*: //" tests/nivel2/internet.spec.js > tests/internet.spec.js && rm tests/nivel2/internet.spec.js
           rm -rf tests/etapas tests/desafios
           npx playwright test --reporter=list --retries=0 2>&1 | sed 's/\x1b\[[0-9;]*m//g' | grep -E "✘|failed|passed|flaky|Error:" | tail -60
+          sed -i "s/aula [0-9]*: //" tests/nivel2/*.js
+          echo '== SMOKE'; npx playwright test --grep @smoke --project=chromium --reporter=list 2>&1 | sed 's/\x1b\[[0-9;]*m//g' | tail -12
+          echo '== INVERT'; npx playwright test tags --grep-invert @smoke --project=chromium --reporter=list 2>&1 | sed 's/\x1b\[[0-9;]*m//g' | tail -6
       - name: Projeto 2 (todos os navegadores do config)
         run: |
           cd curso-playwright/projeto2

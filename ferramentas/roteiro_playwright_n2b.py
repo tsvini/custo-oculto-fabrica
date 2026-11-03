@@ -111,7 +111,7 @@ def aula(n, titulo_aula, frases):
 
 
 # ---------- 64 · fixtures ----------
-COMPRA = ler("tests/compra.spec.js"); PAG = ler("fixtures/paginas.js"); FIX = ler("tests/nivel2/fixture.spec.js")
+COMPRA = ler("tests/compra.spec.js").replace(", { tag: '@smoke' }", ""); PAG = ler("fixtures/paginas.js"); FIX = ler("tests/nivel2/fixture.spec.js")
 aula(64, "O teste está montando coisa demais", [
     ("Olha o teste da compra. Antes de testar qualquer coisa, ele monta as páginas: new ProdutosPage, new CheckoutPage. E isso se repete em todo arquivo que usa uma página.",
      ed(trecho(COMPRA, 1, 12), "Montando as páginas antes de testar", "compra.spec.js", destaque=[8, 9], destaque_em=1.6)),

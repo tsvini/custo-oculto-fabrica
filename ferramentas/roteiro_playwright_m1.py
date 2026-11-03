@@ -111,7 +111,7 @@ def term(linhas, legenda=None, pasta="C:\\Users\\voce", titulo=None):
 
 
 # aula 1: o projeto final rodando de verdade: VS Code com o teste de compra, o comando no terminal e o navegador real por cima fazendo tudo
-_COMPRA_JS = open(os.path.join(RAIZ, "curso-playwright", "projeto", "tests", "compra.spec.js"), encoding="utf8").read().rstrip("\n").split("\n")
+_COMPRA_JS = open(os.path.join(RAIZ, "curso-playwright", "projeto", "tests", "compra.spec.js"), encoding="utf8").read().rstrip("\n").replace(", { tag: '@smoke' }", "").split("\n")
 _LOGIN = [{"fill": ["#user-name", "standard_user"]}, {"fill": ["#password", "secret_sauce"]}, {"click": "#login-button"}]
 _COMPRA = _LOGIN + [{"click": "[data-test=\"add-to-cart-sauce-labs-backpack\"]"}, {"click": "[data-test=\"shopping-cart-link\"]"}, {"click": "[data-test=\"checkout\"]"},
                     {"fill": ["[data-test=\"firstName\"]", "Maria"]}, {"fill": ["[data-test=\"lastName\"]", "Silva"]}, {"fill": ["[data-test=\"postalCode\"]", "88000-000"]},

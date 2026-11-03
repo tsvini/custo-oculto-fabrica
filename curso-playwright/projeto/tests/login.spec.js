@@ -6,7 +6,7 @@ test.describe('Login', () => {
     await page.goto('/');
   });
 
-  test('entra com usuário e senha', async ({ page }) => {
+  test('entra com usuário e senha', { tag: '@smoke' }, async ({ page }) => {
     const login = new LoginPage(page);
     await login.entrar(process.env.SAUCE_USER, process.env.SAUCE_PASSWORD);
     await expect(page).toHaveURL(/inventory/);

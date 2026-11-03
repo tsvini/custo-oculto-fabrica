@@ -4,7 +4,7 @@ import { CheckoutPage } from '../pages/CheckoutPage';
 
 test.use({ storageState: 'playwright/.auth/usuario.json' });
 
-test('compra uma mochila do começo ao fim', async ({ page }) => {
+test('compra uma mochila do começo ao fim', { tag: '@smoke' }, async ({ page }) => {
   const produtos = new ProdutosPage(page);
   const checkout = new CheckoutPage(page);
 
