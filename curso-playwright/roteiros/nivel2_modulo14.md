@@ -36,16 +36,18 @@
 
 ## Aula 77: Começando o projeto organizado
 1. Um projeto Playwright novo, numa pasta nova: projeto lojinha. Mas desta vez, você não está começando do zero. [terminal]
-2. Você já sabe do que vai precisar: pages, pros Page Objects. Fixtures, pra entregar as páginas prontas. Dados, pros casos de login e de ordenação. E os testes. [cards]
-3. Primeiro, as pastas que você já sabe que vai precisar. Na pasta do projeto, cria a pasta pages. [menu]
-4. A pasta fixtures. [menu]
-5. E a pasta dados. [menu]
-6. No config, lá em cima, as três linhas do dotenv, que você já conhece do primeiro projeto: importe o dotenv, o path, e leia o ponto env. [editor]
-7. E dentro do use: o baseURL da Lojinha, já lendo a variável BASE URL, como na aula setenta e um. O testIdAttribute, porque a Lojinha também usa data-test. E o screenshot só quando falha. [editor]
-8. Na pasta do projeto, cria o arquivo ponto env. [menu]
-9. Dentro, o usuário e a senha da Lojinha. E uma última linha, comentada: a versão. Com ela, dá pra apontar os testes pra versão um, a do bug. [editor]
-10. Repara: no primeiro projeto, cada uma dessas coisas era novidade, e a gente foi colocando uma por vez. Agora você escolhe a estrutura no começo, com intenção. [compare]
-11. Te vejo na próxima! [endcard]
+2. O npm init deixa um teste de exemplo dentro de tests: o example ponto spec ponto js. Ele não é da Lojinha. Botão direito nele, e Delete. [menu]
+3. Você já sabe do que vai precisar: pages, pros Page Objects. Fixtures, pra entregar as páginas prontas. Dados, pros casos de login e de ordenação. E os testes. [cards]
+4. Primeiro, as pastas que você já sabe que vai precisar. Na pasta do projeto, cria a pasta pages. [menu]
+5. A pasta fixtures. [menu]
+6. E a pasta dados. [menu]
+7. No config, lá em cima, as três linhas do dotenv, que você já conhece do primeiro projeto: importe o dotenv, o path, e leia o ponto env. [editor]
+8. E dentro do use: o baseURL da Lojinha, já lendo a variável BASE URL, como na aula setenta e um. O testIdAttribute, porque a Lojinha também usa data-test. E o screenshot só quando falha. [editor]
+9. Na pasta do projeto, cria o arquivo ponto env. [menu]
+10. Dentro, o usuário e a senha da Lojinha. E uma última linha, comentada: a versão. Com ela, dá pra apontar os testes pra versão um, a do bug. [editor]
+11. E igual no primeiro projeto: abre o ponto gitignore, e acrescenta uma linha, ponto env. Assim a senha fica só na sua máquina, e não vai pro GitHub. [editor]
+12. Repara: no primeiro projeto, cada uma dessas coisas era novidade, e a gente foi colocando uma por vez. Agora você escolhe a estrutura no começo, com intenção. [compare]
+13. Te vejo na próxima! [endcard]
 
 ## Aula 78: Page Objects e fixture
 1. Dentro da pasta pages, cria o LoginPage ponto js. [menu]

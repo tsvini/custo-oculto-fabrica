@@ -120,6 +120,42 @@
        }
       },
       {
+       "text": "O npm init deixa um teste de exemplo dentro de tests: o example ponto spec ponto js. Ele não é da Lojinha. Botão direito nele, e Delete.",
+       "scene": {
+        "type": "menu",
+        "app": "vscode",
+        "barra": [],
+        "menus": [
+         [
+          "New File...",
+          "New Folder...",
+          "—",
+          "Cut",
+          "Copy",
+          "—",
+          "Rename...",
+          "Delete"
+         ]
+        ],
+        "caminho": [
+         7
+        ],
+        "pastas": [
+         "projeto-lojinha",
+         "  .github/",
+         "  node_modules/",
+         "  tests/",
+         "    example.spec.js",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "apaga": "example.spec.js",
+        "legenda": "Botão direito › Delete"
+       }
+      },
+      {
        "text": "Você já sabe do que vai precisar: pages, pros Page Objects. Fixtures, pra entregar as páginas prontas. Dados, pros casos de login e de ordenação. E os testes.",
        "scene": {
         "type": "cards",
@@ -173,11 +209,16 @@
         ],
         "pastas": [
          "projeto-lojinha",
+         "  .github/",
+         "  node_modules/",
          "  tests/",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
          "  playwright.config.js"
         ],
         "alvo_item": "projeto-lojinha",
-        "novo_pos": 1,
+        "novo_pos": 3,
         "resultado": "arquivo",
         "novo": "pages",
         "novo_nivel": 1,
@@ -207,12 +248,17 @@
         ],
         "pastas": [
          "projeto-lojinha",
+         "  .github/",
+         "  node_modules/",
          "  pages/",
          "  tests/",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
          "  playwright.config.js"
         ],
         "alvo_item": "projeto-lojinha",
-        "novo_pos": 1,
+        "novo_pos": 2,
         "resultado": "arquivo",
         "novo": "fixtures",
         "novo_nivel": 1,
@@ -242,13 +288,18 @@
         ],
         "pastas": [
          "projeto-lojinha",
+         "  .github/",
          "  fixtures/",
+         "  node_modules/",
          "  pages/",
          "  tests/",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
          "  playwright.config.js"
         ],
         "alvo_item": "projeto-lojinha",
-        "novo_pos": 1,
+        "novo_pos": 2,
         "resultado": "arquivo",
         "novo": "dados",
         "novo_nivel": 1,
@@ -312,14 +363,19 @@
         ],
         "pastas": [
          "projeto-lojinha",
+         "  .github/",
          "  dados/",
          "  fixtures/",
+         "  node_modules/",
          "  pages/",
          "  tests/",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
          "  playwright.config.js"
         ],
         "alvo_item": "projeto-lojinha",
-        "novo_pos": 5,
+        "novo_pos": 7,
         "resultado": "arquivo",
         "novo": ".env",
         "novo_nivel": 1,
@@ -340,6 +396,34 @@
         "pastas": null,
         "digitar_de": 1,
         "digitar_ate": 3
+       }
+      },
+      {
+       "text": "E igual no primeiro projeto: abre o ponto gitignore, e acrescenta uma linha, ponto env. Assim a senha fica só na sua máquina, e não vai pro GitHub.",
+       "scene": {
+        "type": "editor",
+        "arquivo": ".gitignore",
+        "pastas": [
+         "projeto-lojinha",
+         "  .github/",
+         "  dados/",
+         "  fixtures/",
+         "  node_modules/",
+         "  pages/",
+         "  tests/",
+         "  .env",
+         "  .gitignore",
+         "  package-lock.json",
+         "  package.json",
+         "  playwright.config.js"
+        ],
+        "codigo": "node_modules/\n/test-results/\n/playwright-report/\n/playwright/.cache/\n.env",
+        "legenda": "O .env no .gitignore: a senha não vai pro GitHub",
+        "fonte": 30,
+        "digitar": true,
+        "linha0": 1,
+        "digitar_de": 5,
+        "digitar_ate": 5
        }
       },
       {

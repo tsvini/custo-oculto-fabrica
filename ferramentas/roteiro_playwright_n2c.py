@@ -3,7 +3,7 @@ com o filtro de qualidade (pra que serve, como faz mostrando, quando usar, uso n
 Código = curso-playwright/projeto2 (validado no Actions: validar_nivel2.yml, versão 2 passando e versão 1 com as duas falhas reais de ordenação)."""
 import json, os, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from roteiro_playwright_m1 import inteiro, bt, titulo, projeto, RAIZ
+from roteiro_playwright_m1 import inteiro, bt, titulo, projeto, RAIZ, apagar_no_explorer
 from roteiro_playwright_m4 import edc
 from roteiro_playwright_m11 import desafio
 
@@ -12,8 +12,10 @@ AZUL, AMARELO, VERM, VERDE, ROXO = "#69a7ff", "#ffd23f", "#ff6b6b", "#3fd68a", "
 LOJA = "https://tsvini.github.io/custo-oculto-fabrica/loja/"
 CENAS = "repo:curso-playwright/material/cenas/"
 ler = lambda r: open(os.path.join(P2, r), encoding="utf8").read().rstrip("\n")
-ARV2 = ["projeto-lojinha", "  dados/", "    login.json", "    ordenacao.json", "  fixtures/", "    paginas.js", "  pages/", "    LoginPage.js", "    ProdutosPage.js",
-        "  tests/", "    login.spec.js", "    produtos.spec.js", "  .env", "  playwright.config.js", "  README.md"]
+ARV2 = ["projeto-lojinha", "  .github/", "  dados/", "    login.json", "    ordenacao.json", "  fixtures/", "    paginas.js", "  node_modules/", "  pages/", "    LoginPage.js", "    ProdutosPage.js",
+        "  tests/", "    example.spec.js", "    login.spec.js", "    produtos.spec.js", "  .env", "  .gitignore", "  package-lock.json", "  package.json", "  playwright.config.js", "  README.md"]
+DO_INIT = ["projeto-lojinha", ".github", "node_modules", "tests", "example.spec.js", ".gitignore", "package-lock.json", "package.json", "playwright.config.js"]  # o que o npm init cria
+APAGADOS = []
 PASTA = "C:\\Users\\voce\\Documents\\projeto-lojinha"
 
 
@@ -27,11 +29,11 @@ def trecho(cod, de, ate):
     return "\n".join(cod.split("\n")[de - 1:ate])
 
 
-CRIADOS = []  # o que o aluno já criou na tela, no projeto 2 (o npm init já deu o tests/ e o playwright.config.js)
+CRIADOS = []  # o que o aluno já criou na tela, no projeto 2 (o resto veio do npm init)
 
 
 def arvore2():
-    return [l for l in ARV2 if l.strip().rstrip("/") in CRIADOS + ["projeto-lojinha", "tests", "playwright.config.js"]]
+    return [l for l in ARV2 if l.strip().rstrip("/") in CRIADOS + DO_INIT and l.strip().rstrip("/") not in APAGADOS]
 
 
 def ed(cod, legenda, arquivo, de=None, ate=None, linha0=1, pastas="auto", **kw):
@@ -188,11 +190,13 @@ def obj_json(cod, k):
     return ab[k - 1], fe[k - 1]
 
 
+APAGA_EXEMPLO = apagar_no_explorer([l for l in ARV2 if l.strip().rstrip("/") in DO_INIT], "example.spec.js"); APAGADOS.append("example.spec.js")
 L_DOT = ln(CFG2, "import dotenv"); L_BASE2 = ln(CFG2, "baseURL"); L_SHOT = ln(CFG2, "screenshot")
 aula(77, "Começando o projeto organizado", [
     ("Um projeto Playwright novo, numa pasta nova: projeto lojinha. Mas desta vez, você não está começando do zero.",
      term(["npm init playwright@latest", ("✔ Do you want to use TypeScript or JavaScript? · JavaScript", "mut"), ("✔ Where to put your end-to-end tests? · tests", "mut"),
            ("✔ Add a GitHub Actions workflow? (y/N) · true", "mut"), ("✔ Success! Created a Playwright Test project", "ac"), "npm install -D dotenv"], "Projeto novo, do mesmo jeito do primeiro")),
+    ("O npm init deixa um teste de exemplo dentro de tests: o example ponto spec ponto js. Ele não é da Lojinha. Botão direito nele, e Delete.", APAGA_EXEMPLO),
     ("Você já sabe do que vai precisar: pages, pros Page Objects. Fixtures, pra entregar as páginas prontas. Dados, pros casos de login e de ordenação. E os testes.",
      cards([["📄", "pages/", "LoginPage e ProdutosPage"], ["🔑", "fixtures/", "as páginas prontas", AZUL], ["{ }", "dados/", "login e ordenação", AMARELO], ["✓", "tests/", "login e produtos", VERDE]], "A ESTRUTURA")),
     ("No config, lá em cima, as três linhas do dotenv, que você já conhece do primeiro projeto: importe o dotenv, o path, e leia o ponto env.",
@@ -202,6 +206,8 @@ aula(77, "Começando o projeto organizado", [
      dig(CFG2, L_BASE2, L_SHOT, "baseURL, testIdAttribute e screenshot", "playwright.config.js", mostra=(L_BASE2 - 1, L_SHOT + 1), fonte=22)),
     ("Dentro, o usuário e a senha da Lojinha. E uma última linha, comentada: a versão. Com ela, dá pra apontar os testes pra versão um, a do bug.",
      ed(ler(".env.example"), "O .env do projeto 2", ".env", de=1, ate=3, criar=[['Na pasta do projeto, cria o arquivo ponto env.', '.env']])),
+    ("E igual no primeiro projeto: abre o ponto gitignore, e acrescenta uma linha, ponto env. Assim a senha fica só na sua máquina, e não vai pro GitHub.",
+     ed(ler(".gitignore"), "O .env no .gitignore: a senha não vai pro GitHub", ".gitignore", de=len(ler(".gitignore").split("\n")), ate=len(ler(".gitignore").split("\n")))),
     ("Repara: no primeiro projeto, cada uma dessas coisas era novidade, e a gente foi colocando uma por vez. Agora você escolhe a estrutura no começo, com intenção.",
      cmp("A ESTRUTURA", ["PROJETO 1", "UMA NOVIDADE POR VEZ"], ["PROJETO 2", "ESCOLHIDA NO COMEÇO"])),
 ] + fim("page objects e fixture"))
