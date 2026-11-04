@@ -1,0 +1,26 @@
+name: Narrar roteiros
+on:
+  workflow_dispatch:
+    inputs:
+      modelo:
+        description: "modelo da ElevenLabs"
+        default: eleven_v4
+jobs:
+  narrar:
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - env:
+          ELEVENLABS_KEY: ${{ secrets.ELEVENLABS_KEY }}
+        run: |
+          sudo apt-get install -y -qq ffmpeg >/dev/null 2>&1 || true
+          pip install -q requests
+          python -m fabrica.narrar ${{ github.event.inputs.modelo }}
+          git config user.name "fabrica-custo-oculto"; git config user.email "fabrica@users.noreply.github.com"
+          git add narracoes && git commit -q -m "Narrações [skip ci]" || true
+          for i in 1 2 3; do git pull -q --rebase && git push -q && break; sleep 5; done
