@@ -1,18 +1,14 @@
 {
- "atualizado": "03/11/2026 15:03",
+ "atualizado": "03/11/2026 23:41",
  "fontes": {
   "custo_oculto": {
    "seguidores": 26,
-   "views_total": 8171,
+   "views_total": 8250,
    "videos": 45,
-   "views_28d": 5570,
-   "views_7d": 600,
-   "seguidores_28d": 17,
+   "views_28d": 6581,
+   "views_7d": 1436,
+   "seguidores_28d": 23,
    "dia": [
-    [
-     "2026-10-06",
-     0
-    ],
     [
      "2026-10-07",
      0
@@ -112,15 +108,26 @@
     [
      "2026-10-31",
      103
+    ],
+    [
+     "2026-11-01",
+     1011
     ]
    ],
    "top": [
     {
      "titulo": "Essa pasta de dente vendia o dobro da Colgate #shorts",
      "url": "https://youtu.be/sdWbo_dK2oE",
-     "views": 1055,
+     "views": 1056,
      "retencao": 48,
      "likes": 9
+    },
+    {
+     "titulo": "A gambiarra que transformou a Havaianas em ícone mundial 🩴",
+     "url": "https://youtu.be/PSEeDLDb7PA",
+     "views": 878,
+     "retencao": 62,
+     "likes": 41
     },
     {
      "titulo": "Banco Master: parte 1 de 4 #shorts",
@@ -132,30 +139,23 @@
     {
      "titulo": "2/7 Adam Neumann vendeu uma visão — e bilhões acreditaram",
      "url": "https://youtu.be/KwwgU40ljtE",
-     "views": 392,
-     "retencao": 37,
+     "views": 393,
+     "retencao": 39,
      "likes": 7
     },
     {
      "titulo": "3/7 A WeWork crescia… e perdia cada vez mais dinheiro",
      "url": "https://youtu.be/A5szNMzB6FI",
-     "views": 363,
-     "retencao": 45,
+     "views": 364,
+     "retencao": 47,
      "likes": 1
-    },
-    {
-     "titulo": "7/7 O verdadeiro custo da WeWork",
-     "url": "https://youtu.be/9sKzFjE6KYs",
-     "views": 310,
-     "retencao": 51,
-     "likes": 6
     }
    ],
    "nome": "Custo Oculto (YouTube)"
   },
   "hidden_cost": {
    "seguidores": 0,
-   "views_total": 25,
+   "views_total": 27,
    "videos": 16,
    "views_28d": 0,
    "views_7d": 0,
@@ -166,16 +166,12 @@
   },
   "vini_qa": {
    "seguidores": 0,
-   "views_total": 402,
+   "views_total": 403,
    "videos": 7,
-   "views_28d": 323,
-   "views_7d": 280,
+   "views_28d": 325,
+   "views_7d": 282,
    "seguidores_28d": 0,
    "dia": [
-    [
-     "2026-10-06",
-     0
-    ],
     [
      "2026-10-07",
      0
@@ -275,13 +271,17 @@
     [
      "2026-10-31",
      7
+    ],
+    [
+     "2026-11-01",
+     2
     ]
    ],
    "top": [
     {
      "titulo": "Teste sem conferir não é teste",
      "url": "https://youtu.be/2XLbd50bQGo",
-     "views": 174,
+     "views": 176,
      "retencao": 39,
      "likes": 0
     },
@@ -319,26 +319,26 @@
   "tiktok": {
    "usuario": "Custo Oculto",
    "seguidores": 72,
-   "curtidas": 463,
+   "curtidas": 465,
    "videos": 26,
-   "views_total": 9100,
+   "views_total": 9240,
    "top": [
     {
      "titulo": "Em 1992, o Magazine Luiza criou uma “Loja Virtual” quando comprar pela internet ainda pare",
      "url": "https://www.tiktok.com/@custooculto/video/7703986197403602196?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 10,
-     "likes": 0
+     "views": 131,
+     "likes": 2
     },
     {
      "titulo": "Uma marca tão forte que virou quase sinônimo do próprio produto. Mas o que acontece quando",
      "url": "https://www.tiktok.com/@custooculto/video/7703579884316101908?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 380,
+     "views": 381,
      "likes": 15
     },
     {
      "titulo": "A ideia que mudou a Havaianas não nasceu dentro da empresa. 🩴 Nos anos 90, consumidores co",
      "url": "https://www.tiktok.com/@custooculto/video/7703211501976390932?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 454,
+     "views": 470,
      "likes": 15
     },
     {
