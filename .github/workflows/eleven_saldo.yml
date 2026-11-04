@@ -1,0 +1,10 @@
+name: Saldo ElevenLabs
+on: workflow_dispatch
+jobs:
+  saldo:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - env:
+          ELEVENLABS_KEY: ${{ secrets.ELEVENLABS_KEY }}
+        run: pip install -q requests && python -m fabrica.eleven_saldo
