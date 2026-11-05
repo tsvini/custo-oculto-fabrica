@@ -1,10 +1,10 @@
 {
- "atualizado": "04/11/2026 23:45",
+ "atualizado": "05/11/2026 15:16",
  "fontes": {
   "custo_oculto": {
    "seguidores": 27,
-   "views_total": 8528,
-   "videos": 46,
+   "views_total": 8662,
+   "videos": 47,
    "views_28d": 8267,
    "views_7d": 2974,
    "seguidores_28d": 30,
@@ -166,7 +166,7 @@
   },
   "vini_qa": {
    "seguidores": 0,
-   "views_total": 413,
+   "views_total": 415,
    "videos": 8,
    "views_28d": 406,
    "views_7d": 357,
@@ -319,15 +319,15 @@
   "tiktok": {
    "usuario": "Custo Oculto",
    "seguidores": 72,
-   "curtidas": 488,
+   "curtidas": 493,
    "videos": 27,
-   "views_total": 9246,
+   "views_total": 9338,
    "top": [
     {
      "titulo": "A Mappin já foi uma das lojas mais famosas do Brasil. Durante décadas, fez parte da vida d",
      "url": "https://www.tiktok.com/@custooculto/video/7704347089102277906?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 181,
-     "likes": 12
+     "views": 268,
+     "likes": 17
     },
     {
      "titulo": "Em 1992, o Magazine Luiza criou uma “Loja Virtual” quando comprar pela internet ainda pare",
@@ -344,7 +344,7 @@
     {
      "titulo": "A ideia que mudou a Havaianas não nasceu dentro da empresa. 🩴 Nos anos 90, consumidores co",
      "url": "https://www.tiktok.com/@custooculto/video/7703211501976390932?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 475,
+     "views": 477,
      "likes": 16
     },
     {
@@ -395,17 +395,6 @@
   }
  },
  "agenda": [
-  {
-   "quando": "2026-11-05T10:00:00-03:00",
-   "titulo": "O Orkut vai voltar? O que ninguém te contou · PAUSADO (rascunho)",
-   "tipo": "metricool",
-   "id": "metricool",
-   "url": "https://app.metricool.com/planner",
-   "plataforma_rede": "tiktok",
-   "chave": "tiktok",
-   "plataforma": "TikTok (Metricool)",
-   "sem_cancelar": true
-  },
   {
    "quando": "2026-11-06T12:00:00-03:00",
    "plataforma": "Vini QA (YouTube)",
