@@ -74,11 +74,11 @@ def stamp(txt, tam=92):
 
 def quote(linhas, destaque):
     f = F("xb", 62); fq = F("an", 190)
-    w = max(int(f.getlength(l)) for l in linhas) + 130; h = 80 * len(linhas) + 120
+    w = max(int(f.getlength(l)) for l in linhas) + 130; h = 80 * len(linhas) + 160
     im = Image.new("RGBA", (w, h), (0, 0, 0, 0)); d = ImageDraw.Draw(im)
     d.rounded_rectangle((0, 0, w - 1, h - 1), 28, fill=(16, 16, 18, 225), outline=(255, 255, 255, 40), width=2)
-    d.text((26, -36), "“", font=fq, fill=GOLD + (255,))
-    y = 62
+    d.text((30, -40), "“", font=fq, fill=GOLD + (255,))
+    y = 100
     for l in linhas:
         x = 60
         for p in l.split(" "):
