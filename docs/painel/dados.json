@@ -1,18 +1,14 @@
 {
- "atualizado": "04/11/2026 15:14",
+ "atualizado": "04/11/2026 23:45",
  "fontes": {
   "custo_oculto": {
    "seguidores": 27,
-   "views_total": 8270,
+   "views_total": 8528,
    "videos": 46,
-   "views_28d": 6581,
-   "views_7d": 1436,
-   "seguidores_28d": 23,
+   "views_28d": 8267,
+   "views_7d": 2974,
+   "seguidores_28d": 30,
    "dia": [
-    [
-     "2026-10-07",
-     0
-    ],
     [
      "2026-10-08",
      0
@@ -112,22 +108,33 @@
     [
      "2026-11-01",
      1011
+    ],
+    [
+     "2026-11-02",
+     1686
     ]
    ],
    "top": [
+    {
+     "titulo": "Bombril: a marca que virou sinônimo de lã de aço — O Custo de Ser Gigante EP. 09",
+     "url": "https://youtu.be/2bKwMEzu16U",
+     "views": 1281,
+     "retencao": 51,
+     "likes": 63
+    },
+    {
+     "titulo": "A gambiarra que transformou a Havaianas em ícone mundial 🩴",
+     "url": "https://youtu.be/PSEeDLDb7PA",
+     "views": 1227,
+     "retencao": 60,
+     "likes": 62
+    },
     {
      "titulo": "Essa pasta de dente vendia o dobro da Colgate #shorts",
      "url": "https://youtu.be/sdWbo_dK2oE",
      "views": 1056,
      "retencao": 48,
      "likes": 9
-    },
-    {
-     "titulo": "A gambiarra que transformou a Havaianas em ícone mundial 🩴",
-     "url": "https://youtu.be/PSEeDLDb7PA",
-     "views": 878,
-     "retencao": 62,
-     "likes": 41
     },
     {
      "titulo": "Banco Master: parte 1 de 4 #shorts",
@@ -139,16 +146,9 @@
     {
      "titulo": "2/7 Adam Neumann vendeu uma visão — e bilhões acreditaram",
      "url": "https://youtu.be/KwwgU40ljtE",
-     "views": 393,
-     "retencao": 39,
+     "views": 396,
+     "retencao": 43,
      "likes": 7
-    },
-    {
-     "titulo": "3/7 A WeWork crescia… e perdia cada vez mais dinheiro",
-     "url": "https://youtu.be/A5szNMzB6FI",
-     "views": 364,
-     "retencao": 47,
-     "likes": 1
     }
    ],
    "nome": "Custo Oculto (YouTube)"
@@ -156,7 +156,7 @@
   "hidden_cost": {
    "seguidores": 0,
    "views_total": 27,
-   "videos": 16,
+   "videos": 17,
    "views_28d": 0,
    "views_7d": 0,
    "seguidores_28d": 0,
@@ -166,16 +166,12 @@
   },
   "vini_qa": {
    "seguidores": 0,
-   "views_total": 406,
+   "views_total": 413,
    "videos": 8,
-   "views_28d": 325,
-   "views_7d": 282,
+   "views_28d": 406,
+   "views_7d": 357,
    "seguidores_28d": 0,
    "dia": [
-    [
-     "2026-10-07",
-     0
-    ],
     [
      "2026-10-08",
      0
@@ -275,6 +271,10 @@
     [
      "2026-11-01",
      2
+    ],
+    [
+     "2026-11-02",
+     81
     ]
    ],
    "top": [
@@ -293,6 +293,13 @@
      "likes": 0
     },
     {
+     "titulo": "O teste que todo iniciante esquece",
+     "url": "https://youtu.be/jxj1cQUYVmE",
+     "views": 80,
+     "retencao": 35,
+     "likes": 2
+    },
+    {
      "titulo": "Seu primeiro teste automatizado",
      "url": "https://youtu.be/lyfD8rJ6F30",
      "views": 29,
@@ -302,15 +309,8 @@
     {
      "titulo": "Você não precisa saber programar pra automatizar teste",
      "url": "https://youtu.be/1hbvry7AlKk",
-     "views": 15,
+     "views": 16,
      "retencao": 28,
-     "likes": 0
-    },
-    {
-     "titulo": "O botão do Cypress que escreve o código pra você",
-     "url": "https://youtu.be/T-yIhAQSwrc",
-     "views": 10,
-     "retencao": 82,
      "likes": 0
     }
    ],
@@ -319,33 +319,33 @@
   "tiktok": {
    "usuario": "Custo Oculto",
    "seguidores": 72,
-   "curtidas": 472,
+   "curtidas": 488,
    "videos": 27,
-   "views_total": 8994,
+   "views_total": 9246,
    "top": [
     {
      "titulo": "A Mappin já foi uma das lojas mais famosas do Brasil. Durante décadas, fez parte da vida d",
      "url": "https://www.tiktok.com/@custooculto/video/7704347089102277906?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 30,
-     "likes": 3
+     "views": 181,
+     "likes": 12
     },
     {
      "titulo": "Em 1992, o Magazine Luiza criou uma “Loja Virtual” quando comprar pela internet ainda pare",
      "url": "https://www.tiktok.com/@custooculto/video/7703986197403602196?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 140,
+     "views": 141,
      "likes": 2
     },
     {
      "titulo": "Uma marca tão forte que virou quase sinônimo do próprio produto. Mas o que acontece quando",
      "url": "https://www.tiktok.com/@custooculto/video/7703579884316101908?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 418,
-     "likes": 19
+     "views": 514,
+     "likes": 25
     },
     {
      "titulo": "A ideia que mudou a Havaianas não nasceu dentro da empresa. 🩴 Nos anos 90, consumidores co",
      "url": "https://www.tiktok.com/@custooculto/video/7703211501976390932?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 474,
-     "likes": 15
+     "views": 475,
+     "likes": 16
     },
     {
      "titulo": "A Ricardo Eletro chegou a faturar bilhões e ter mais de mil lojas no Brasil. Depois, veio ",
@@ -395,15 +395,6 @@
   }
  },
  "agenda": [
-  {
-   "quando": "2026-11-04T18:00:00-03:00",
-   "plataforma": "Hidden Cost (YouTube EN)",
-   "chave": "hidden_cost",
-   "titulo": "The IPO Collapsed. The CEO Got a $1.7 Billion Deal #shorts",
-   "tipo": "short",
-   "id": "wework_short3",
-   "url": "https://studio.youtube.com/video/PRY8AyEOv1Y/edit"
-  },
   {
    "quando": "2026-11-05T10:00:00-03:00",
    "titulo": "O Orkut vai voltar? O que ninguém te contou · PAUSADO (rascunho)",
