@@ -1,12 +1,12 @@
 {
- "atualizado": "05/11/2026 23:48",
+ "atualizado": "06/11/2026 14:40",
  "fontes": {
   "custo_oculto": {
    "seguidores": 27,
-   "views_total": 8702,
-   "videos": 47,
-   "views_28d": 8547,
-   "views_7d": 3221,
+   "views_total": 8924,
+   "videos": 48,
+   "views_28d": 8540,
+   "views_7d": 3219,
    "seguidores_28d": 30,
    "dia": [
     [
@@ -39,7 +39,7 @@
     ],
     [
      "2026-10-16",
-     52
+     50
     ],
     [
      "2026-10-17",
@@ -51,7 +51,7 @@
     ],
     [
      "2026-10-19",
-     20
+     18
     ],
     [
      "2026-10-20",
@@ -71,7 +71,7 @@
     ],
     [
      "2026-10-24",
-     78
+     77
     ],
     [
      "2026-10-25",
@@ -103,7 +103,7 @@
     ],
     [
      "2026-11-01",
-     1011
+     1009
     ],
     [
      "2026-11-02",
@@ -125,7 +125,7 @@
     {
      "titulo": "A gambiarra que transformou a Havaianas em ícone mundial 🩴",
      "url": "https://youtu.be/PSEeDLDb7PA",
-     "views": 1244,
+     "views": 1242,
      "retencao": 59,
      "likes": 63
     },
@@ -167,9 +167,9 @@
   "vini_qa": {
    "seguidores": 0,
    "views_total": 425,
-   "videos": 8,
-   "views_28d": 416,
-   "views_7d": 362,
+   "videos": 9,
+   "views_28d": 413,
+   "views_7d": 359,
    "seguidores_28d": 0,
    "dia": [
     [
@@ -258,7 +258,7 @@
     ],
     [
      "2026-10-30",
-     169
+     168
     ],
     [
      "2026-10-31",
@@ -266,7 +266,7 @@
     ],
     [
      "2026-11-01",
-     2
+     0
     ],
     [
      "2026-11-02",
@@ -281,7 +281,7 @@
     {
      "titulo": "Teste sem conferir não é teste",
      "url": "https://youtu.be/2XLbd50bQGo",
-     "views": 176,
+     "views": 173,
      "retencao": 39,
      "likes": 0
     },
@@ -319,15 +319,21 @@
   "tiktok": {
    "usuario": "Custo Oculto",
    "seguidores": 75,
-   "curtidas": 499,
-   "videos": 28,
-   "views_total": 9369,
+   "curtidas": 504,
+   "videos": 29,
+   "views_total": 9307,
    "top": [
+    {
+     "titulo": "Janelas, ícones e mouse. A Xerox criou tudo isso em 1973 e mostrou para a Apple.  🖱️ O Cus",
+     "url": "https://www.tiktok.com/@custooculto/video/7705047657332444422?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
+     "views": 60,
+     "likes": 4
+    },
     {
      "titulo": "O McDonald's vende bilhões de hambúrgueres. Mas o dinheiro de verdade está no chão. 🏠  A J",
      "url": "https://www.tiktok.com/@custooculto/video/7704753670042275079?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 113,
-     "likes": 1
+     "views": 163,
+     "likes": 2
     },
     {
      "titulo": "A Mappin já foi uma das lojas mais famosas do Brasil. Durante décadas, fez parte da vida d",
@@ -352,12 +358,6 @@
      "url": "https://www.tiktok.com/@custooculto/video/7703211501976390932?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
      "views": 478,
      "likes": 16
-    },
-    {
-     "titulo": "A Ricardo Eletro chegou a faturar bilhões e ter mais de mil lojas no Brasil. Depois, veio ",
-     "url": "https://www.tiktok.com/@custooculto/video/7702860346633080085?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 554,
-     "likes": 19
     }
    ],
    "nome": "TikTok @custooculto"
@@ -395,15 +395,6 @@
   }
  },
  "agenda": [
-  {
-   "quando": "2026-11-06T12:00:00-03:00",
-   "plataforma": "Vini QA (YouTube)",
-   "chave": "vini_qa",
-   "titulo": "Teste vermelho com Timed out retrying",
-   "tipo": "short",
-   "id": "2seOWOBn4AQ",
-   "url": "https://studio.youtube.com/video/2seOWOBn4AQ/edit"
-  },
   {
    "quando": "2026-11-06T18:00:00-03:00",
    "plataforma": "Hidden Cost (YouTube EN)",
