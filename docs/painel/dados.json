@@ -1,18 +1,14 @@
 {
- "atualizado": "05/11/2026 15:16",
+ "atualizado": "05/11/2026 23:48",
  "fontes": {
   "custo_oculto": {
    "seguidores": 27,
-   "views_total": 8662,
+   "views_total": 8702,
    "videos": 47,
-   "views_28d": 8267,
-   "views_7d": 2974,
+   "views_28d": 8547,
+   "views_7d": 3221,
    "seguidores_28d": 30,
    "dia": [
-    [
-     "2026-10-08",
-     0
-    ],
     [
      "2026-10-09",
      0
@@ -112,22 +108,26 @@
     [
      "2026-11-02",
      1686
+    ],
+    [
+     "2026-11-03",
+     280
     ]
    ],
    "top": [
     {
      "titulo": "Bombril: a marca que virou sinônimo de lã de aço — O Custo de Ser Gigante EP. 09",
      "url": "https://youtu.be/2bKwMEzu16U",
-     "views": 1281,
-     "retencao": 51,
-     "likes": 63
+     "views": 1306,
+     "retencao": 50,
+     "likes": 64
     },
     {
      "titulo": "A gambiarra que transformou a Havaianas em ícone mundial 🩴",
      "url": "https://youtu.be/PSEeDLDb7PA",
-     "views": 1227,
-     "retencao": 60,
-     "likes": 62
+     "views": 1244,
+     "retencao": 59,
+     "likes": 63
     },
     {
      "titulo": "Essa pasta de dente vendia o dobro da Colgate #shorts",
@@ -166,16 +166,12 @@
   },
   "vini_qa": {
    "seguidores": 0,
-   "views_total": 415,
+   "views_total": 425,
    "videos": 8,
-   "views_28d": 406,
-   "views_7d": 357,
+   "views_28d": 416,
+   "views_7d": 362,
    "seguidores_28d": 0,
    "dia": [
-    [
-     "2026-10-08",
-     0
-    ],
     [
      "2026-10-09",
      0
@@ -275,6 +271,10 @@
     [
      "2026-11-02",
      81
+    ],
+    [
+     "2026-11-03",
+     10
     ]
    ],
    "top": [
@@ -295,8 +295,8 @@
     {
      "titulo": "O teste que todo iniciante esquece",
      "url": "https://youtu.be/jxj1cQUYVmE",
-     "views": 80,
-     "retencao": 35,
+     "views": 86,
+     "retencao": 36,
      "likes": 2
     },
     {
@@ -309,7 +309,7 @@
     {
      "titulo": "Você não precisa saber programar pra automatizar teste",
      "url": "https://youtu.be/1hbvry7AlKk",
-     "views": 16,
+     "views": 19,
      "retencao": 28,
      "likes": 0
     }
@@ -318,21 +318,27 @@
   },
   "tiktok": {
    "usuario": "Custo Oculto",
-   "seguidores": 72,
-   "curtidas": 493,
-   "videos": 27,
-   "views_total": 9338,
+   "seguidores": 75,
+   "curtidas": 499,
+   "videos": 28,
+   "views_total": 9369,
    "top": [
+    {
+     "titulo": "O McDonald's vende bilhões de hambúrgueres. Mas o dinheiro de verdade está no chão. 🏠  A J",
+     "url": "https://www.tiktok.com/@custooculto/video/7704753670042275079?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
+     "views": 113,
+     "likes": 1
+    },
     {
      "titulo": "A Mappin já foi uma das lojas mais famosas do Brasil. Durante décadas, fez parte da vida d",
      "url": "https://www.tiktok.com/@custooculto/video/7704347089102277906?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 268,
-     "likes": 17
+     "views": 402,
+     "likes": 22
     },
     {
      "titulo": "Em 1992, o Magazine Luiza criou uma “Loja Virtual” quando comprar pela internet ainda pare",
      "url": "https://www.tiktok.com/@custooculto/video/7703986197403602196?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 141,
+     "views": 142,
      "likes": 2
     },
     {
@@ -344,7 +350,7 @@
     {
      "titulo": "A ideia que mudou a Havaianas não nasceu dentro da empresa. 🩴 Nos anos 90, consumidores co",
      "url": "https://www.tiktok.com/@custooculto/video/7703211501976390932?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 477,
+     "views": 478,
      "likes": 16
     },
     {
@@ -352,12 +358,6 @@
      "url": "https://www.tiktok.com/@custooculto/video/7702860346633080085?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
      "views": 554,
      "likes": 19
-    },
-    {
-     "titulo": "A primeira venda do Mercado Livre envolveu 10 cervos vivos. 🦌 Mas essa está longe de ser a",
-     "url": "https://www.tiktok.com/@custooculto/video/7702594040860003604?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 213,
-     "likes": 4
     }
    ],
    "nome": "TikTok @custooculto"
