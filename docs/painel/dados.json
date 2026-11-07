@@ -1,18 +1,14 @@
 {
- "atualizado": "06/11/2026 14:40",
+ "atualizado": "06/11/2026 23:21",
  "fontes": {
   "custo_oculto": {
    "seguidores": 27,
-   "views_total": 8924,
+   "views_total": 8990,
    "videos": 48,
-   "views_28d": 8540,
-   "views_7d": 3219,
-   "seguidores_28d": 30,
+   "views_28d": 8721,
+   "views_7d": 3343,
+   "seguidores_28d": 31,
    "dia": [
-    [
-     "2026-10-09",
-     0
-    ],
     [
      "2026-10-10",
      30
@@ -112,22 +108,26 @@
     [
      "2026-11-03",
      280
+    ],
+    [
+     "2026-11-04",
+     181
     ]
    ],
    "top": [
     {
      "titulo": "Bombril: a marca que virou sinônimo de lã de aço — O Custo de Ser Gigante EP. 09",
      "url": "https://youtu.be/2bKwMEzu16U",
-     "views": 1306,
+     "views": 1321,
      "retencao": 50,
-     "likes": 64
+     "likes": 66
     },
     {
      "titulo": "A gambiarra que transformou a Havaianas em ícone mundial 🩴",
      "url": "https://youtu.be/PSEeDLDb7PA",
-     "views": 1242,
+     "views": 1278,
      "retencao": 59,
-     "likes": 63
+     "likes": 64
     },
     {
      "titulo": "Essa pasta de dente vendia o dobro da Colgate #shorts",
@@ -155,8 +155,8 @@
   },
   "hidden_cost": {
    "seguidores": 0,
-   "views_total": 27,
-   "videos": 17,
+   "views_total": 28,
+   "videos": 18,
    "views_28d": 0,
    "views_7d": 0,
    "seguidores_28d": 0,
@@ -166,16 +166,12 @@
   },
   "vini_qa": {
    "seguidores": 0,
-   "views_total": 425,
+   "views_total": 427,
    "videos": 9,
-   "views_28d": 413,
-   "views_7d": 359,
+   "views_28d": 424,
+   "views_7d": 280,
    "seguidores_28d": 0,
    "dia": [
-    [
-     "2026-10-09",
-     0
-    ],
     [
      "2026-10-10",
      0
@@ -275,6 +271,10 @@
     [
      "2026-11-03",
      10
+    ],
+    [
+     "2026-11-04",
+     11
     ]
    ],
    "top": [
@@ -302,8 +302,8 @@
     {
      "titulo": "Seu primeiro teste automatizado",
      "url": "https://youtu.be/lyfD8rJ6F30",
-     "views": 29,
-     "retencao": 81,
+     "views": 31,
+     "retencao": 85,
      "likes": 0
     },
     {
@@ -318,28 +318,28 @@
   },
   "tiktok": {
    "usuario": "Custo Oculto",
-   "seguidores": 75,
-   "curtidas": 504,
+   "seguidores": 76,
+   "curtidas": 530,
    "videos": 29,
-   "views_total": 9307,
+   "views_total": 9833,
    "top": [
     {
      "titulo": "Janelas, ícones e mouse. A Xerox criou tudo isso em 1973 e mostrou para a Apple.  🖱️ O Cus",
      "url": "https://www.tiktok.com/@custooculto/video/7705047657332444422?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 60,
-     "likes": 4
+     "views": 337,
+     "likes": 19
     },
     {
      "titulo": "O McDonald's vende bilhões de hambúrgueres. Mas o dinheiro de verdade está no chão. 🏠  A J",
      "url": "https://www.tiktok.com/@custooculto/video/7704753670042275079?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 163,
-     "likes": 2
+     "views": 208,
+     "likes": 4
     },
     {
      "titulo": "A Mappin já foi uma das lojas mais famosas do Brasil. Durante décadas, fez parte da vida d",
      "url": "https://www.tiktok.com/@custooculto/video/7704347089102277906?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 402,
-     "likes": 22
+     "views": 603,
+     "likes": 30
     },
     {
      "titulo": "Em 1992, o Magazine Luiza criou uma “Loja Virtual” quando comprar pela internet ainda pare",
@@ -356,7 +356,7 @@
     {
      "titulo": "A ideia que mudou a Havaianas não nasceu dentro da empresa. 🩴 Nos anos 90, consumidores co",
      "url": "https://www.tiktok.com/@custooculto/video/7703211501976390932?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 478,
+     "views": 479,
      "likes": 16
     }
    ],
@@ -395,15 +395,6 @@
   }
  },
  "agenda": [
-  {
-   "quando": "2026-11-06T18:00:00-03:00",
-   "plataforma": "Hidden Cost (YouTube EN)",
-   "chave": "hidden_cost",
-   "titulo": "This $47 Billion Startup Lost 90¢ on Every Dollar #shorts",
-   "tipo": "short",
-   "id": "wework_short4",
-   "url": "https://studio.youtube.com/video/u6pjLiR16xA/edit"
-  },
   {
    "quando": "2026-11-09T12:00:00-03:00",
    "plataforma": "Vini QA (YouTube)",
