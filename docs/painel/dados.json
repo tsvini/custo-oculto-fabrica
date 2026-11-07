@@ -1,11 +1,11 @@
 {
- "atualizado": "06/11/2026 23:21",
+ "atualizado": "07/11/2026 13:37",
  "fontes": {
   "custo_oculto": {
-   "seguidores": 27,
-   "views_total": 8990,
-   "videos": 48,
-   "views_28d": 8721,
+   "seguidores": 28,
+   "views_total": 9131,
+   "videos": 49,
+   "views_28d": 8726,
    "views_7d": 3343,
    "seguidores_28d": 31,
    "dia": [
@@ -35,7 +35,7 @@
     ],
     [
      "2026-10-16",
-     50
+     52
     ],
     [
      "2026-10-17",
@@ -47,7 +47,7 @@
     ],
     [
      "2026-10-19",
-     18
+     20
     ],
     [
      "2026-10-20",
@@ -67,7 +67,7 @@
     ],
     [
      "2026-10-24",
-     77
+     78
     ],
     [
      "2026-10-25",
@@ -166,7 +166,7 @@
   },
   "vini_qa": {
    "seguidores": 0,
-   "views_total": 427,
+   "views_total": 464,
    "videos": 9,
    "views_28d": 424,
    "views_7d": 280,
@@ -318,27 +318,33 @@
   },
   "tiktok": {
    "usuario": "Custo Oculto",
-   "seguidores": 76,
-   "curtidas": 530,
-   "videos": 29,
-   "views_total": 9833,
+   "seguidores": 78,
+   "curtidas": 545,
+   "videos": 30,
+   "views_total": 9725,
    "top": [
+    {
+     "titulo": "Antes do videogame, a Nintendo vendeu baralho, arroz instantâneo e até corrida de táxi.  🃏",
+     "url": "https://www.tiktok.com/@custooculto/video/7705428083452546312?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
+     "views": 35,
+     "likes": 0
+    },
     {
      "titulo": "Janelas, ícones e mouse. A Xerox criou tudo isso em 1973 e mostrou para a Apple.  🖱️ O Cus",
      "url": "https://www.tiktok.com/@custooculto/video/7705047657332444422?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 337,
-     "likes": 19
+     "views": 542,
+     "likes": 34
     },
     {
      "titulo": "O McDonald's vende bilhões de hambúrgueres. Mas o dinheiro de verdade está no chão. 🏠  A J",
      "url": "https://www.tiktok.com/@custooculto/video/7704753670042275079?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 208,
+     "views": 224,
      "likes": 4
     },
     {
      "titulo": "A Mappin já foi uma das lojas mais famosas do Brasil. Durante décadas, fez parte da vida d",
      "url": "https://www.tiktok.com/@custooculto/video/7704347089102277906?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 603,
+     "views": 604,
      "likes": 30
     },
     {
@@ -352,12 +358,6 @@
      "url": "https://www.tiktok.com/@custooculto/video/7703579884316101908?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
      "views": 514,
      "likes": 25
-    },
-    {
-     "titulo": "A ideia que mudou a Havaianas não nasceu dentro da empresa. 🩴 Nos anos 90, consumidores co",
-     "url": "https://www.tiktok.com/@custooculto/video/7703211501976390932?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 479,
-     "likes": 16
     }
    ],
    "nome": "TikTok @custooculto"
