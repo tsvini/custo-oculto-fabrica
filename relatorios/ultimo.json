@@ -1,5 +1,5 @@
 {
- "data": "2026-11-07",
+ "data": "2026-11-08",
  "por_formato_12m": [
   {
    "creatorContentType": "creatorContentTypeUnspecified",
@@ -9,13 +9,13 @@
   },
   {
    "creatorContentType": "shorts",
-   "views": 8596,
-   "estimatedMinutesWatched": 3619,
+   "views": 8894,
+   "estimatedMinutesWatched": 3765,
    "subscribersGained": 27
   },
   {
    "creatorContentType": "videoOnDemand",
-   "views": 121,
+   "views": 122,
    "estimatedMinutesWatched": 365,
    "subscribersGained": 1
   }
@@ -29,24 +29,18 @@
   },
   {
    "creatorContentType": "shorts",
-   "views": 3238,
-   "estimatedMinutesWatched": 2260,
+   "views": 3435,
+   "estimatedMinutesWatched": 2354,
    "subscribersGained": 13
   },
   {
    "creatorContentType": "videoOnDemand",
-   "views": 12,
+   "views": 11,
    "estimatedMinutesWatched": 1,
    "subscribersGained": 0
   }
  ],
  "dia_a_dia_28d": [
-  {
-   "day": "2026-10-10",
-   "views": 30,
-   "estimatedMinutesWatched": 6,
-   "subscribersGained": 0
-  },
   {
    "day": "2026-10-11",
    "views": 824,
@@ -181,13 +175,13 @@
   },
   {
    "day": "2026-11-02",
-   "views": 1686,
+   "views": 1678,
    "estimatedMinutesWatched": 1312,
    "subscribersGained": 7
   },
   {
    "day": "2026-11-03",
-   "views": 280,
+   "views": 277,
    "estimatedMinutesWatched": 165,
    "subscribersGained": 0
   },
@@ -196,28 +190,39 @@
    "views": 181,
    "estimatedMinutesWatched": 127,
    "subscribersGained": 1
+  },
+  {
+   "day": "2026-11-05",
+   "views": 290,
+   "estimatedMinutesWatched": 147,
+   "subscribersGained": 0
   }
  ],
  "origem_28d": [
   {
    "insightTrafficSourceType": "SHORTS",
-   "views": 7840,
-   "estimatedMinutesWatched": 3266
+   "views": 8067,
+   "estimatedMinutesWatched": 3389
   },
   {
    "insightTrafficSourceType": "YT_SEARCH",
-   "views": 469,
-   "estimatedMinutesWatched": 122
+   "views": 494,
+   "estimatedMinutesWatched": 131
   },
   {
    "insightTrafficSourceType": "YT_CHANNEL",
-   "views": 189,
+   "views": 182,
    "estimatedMinutesWatched": 173
   },
   {
    "insightTrafficSourceType": "SUBSCRIBER",
-   "views": 74,
-   "estimatedMinutesWatched": 56
+   "views": 79,
+   "estimatedMinutesWatched": 61
+  },
+  {
+   "insightTrafficSourceType": "YT_OTHER_PAGE",
+   "views": 52,
+   "estimatedMinutesWatched": 22
   },
   {
    "insightTrafficSourceType": "RELATED_VIDEO",
@@ -225,13 +230,8 @@
    "estimatedMinutesWatched": 265
   },
   {
-   "insightTrafficSourceType": "YT_OTHER_PAGE",
-   "views": 46,
-   "estimatedMinutesWatched": 21
-  },
-  {
    "insightTrafficSourceType": "NOTIFICATION",
-   "views": 30,
+   "views": 32,
    "estimatedMinutesWatched": 51
   },
   {
@@ -241,8 +241,8 @@
   },
   {
    "insightTrafficSourceType": "EXT_URL",
-   "views": 4,
-   "estimatedMinutesWatched": 3
+   "views": 6,
+   "estimatedMinutesWatched": 5
   },
   {
    "insightTrafficSourceType": "SOUND_PAGE",
@@ -289,10 +289,6 @@
    "views": 3
   },
   {
-   "insightTrafficSourceDetail": "theranos",
-   "views": 3
-  },
-  {
    "insightTrafficSourceDetail": "trader iniciante",
    "views": 3
   },
@@ -329,6 +325,10 @@
    "views": 2
   },
   {
+   "insightTrafficSourceDetail": "história da bombril",
+   "views": 2
+  },
+  {
    "insightTrafficSourceDetail": "itapemirim",
    "views": 2
   },
@@ -338,6 +338,10 @@
   },
   {
    "insightTrafficSourceDetail": "propaganda do bombril",
+   "views": 2
+  },
+  {
+   "insightTrafficSourceDetail": "theranos",
    "views": 2
   },
   {
@@ -351,32 +355,28 @@
   {
    "insightTrafficSourceDetail": "agrale 4100",
    "views": 1
-  },
-  {
-   "insightTrafficSourceDetail": "aldinho",
-   "views": 1
   }
  ],
  "videos_28d": [
   {
    "video": "2bKwMEzu16U",
-   "views": 1321,
-   "estimatedMinutesWatched": 1121,
+   "views": 1341,
+   "estimatedMinutesWatched": 1136,
    "averageViewDuration": 77,
-   "averageViewPercentage": 50.45,
+   "averageViewPercentage": 50.46000000000001,
    "subscribersGained": 4,
-   "likes": 66,
+   "likes": 67,
    "comments": 1,
    "shares": 0
   },
   {
    "video": "PSEeDLDb7PA",
-   "views": 1278,
-   "estimatedMinutesWatched": 739,
+   "views": 1287,
+   "estimatedMinutesWatched": 745,
    "averageViewDuration": 58,
-   "averageViewPercentage": 59.3,
+   "averageViewPercentage": 59.28,
    "subscribersGained": 6,
-   "likes": 64,
+   "likes": 65,
    "comments": 3,
    "shares": 4
   },
@@ -470,14 +470,25 @@
   },
   {
    "video": "ClsF6r4QR2g",
-   "views": 239,
-   "estimatedMinutesWatched": 148,
-   "averageViewDuration": 61,
-   "averageViewPercentage": 57.13,
+   "views": 240,
+   "estimatedMinutesWatched": 149,
+   "averageViewDuration": 60,
+   "averageViewPercentage": 56.49999999999999,
    "subscribersGained": 0,
    "likes": 15,
    "comments": 1,
    "shares": 0
+  },
+  {
+   "video": "pZeBFwy__aI",
+   "views": 229,
+   "estimatedMinutesWatched": 115,
+   "averageViewDuration": 50,
+   "averageViewPercentage": 68.05,
+   "subscribersGained": 0,
+   "likes": 27,
+   "comments": 3,
+   "shares": 2
   },
   {
    "video": "9awKfkEdKH4",
@@ -506,7 +517,7 @@
    "views": 211,
    "estimatedMinutesWatched": 124,
    "averageViewDuration": 61,
-   "averageViewPercentage": 67.52,
+   "averageViewPercentage": 67.1,
    "subscribersGained": 2,
    "likes": 19,
    "comments": 0,
@@ -514,10 +525,10 @@
   },
   {
    "video": "z6dXgM3pY_c",
-   "views": 165,
-   "estimatedMinutesWatched": 24,
+   "views": 166,
+   "estimatedMinutesWatched": 25,
    "averageViewDuration": 22,
-   "averageViewPercentage": 81.34,
+   "averageViewPercentage": 81.53,
    "subscribersGained": 1,
    "likes": 8,
    "comments": 1,
@@ -547,7 +558,7 @@
   },
   {
    "video": "-GZbd2Z6gak",
-   "views": 125,
+   "views": 126,
    "estimatedMinutesWatched": 46,
    "averageViewDuration": 41,
    "averageViewPercentage": 60.64000000000001,
@@ -558,12 +569,12 @@
   },
   {
    "video": "sq4YHBVtMdY",
-   "views": 102,
-   "estimatedMinutesWatched": 90,
-   "averageViewDuration": 109,
-   "averageViewPercentage": 102.56,
+   "views": 117,
+   "estimatedMinutesWatched": 99,
+   "averageViewDuration": 101,
+   "averageViewPercentage": 95.18,
    "subscribersGained": 1,
-   "likes": 7,
+   "likes": 11,
    "comments": 1,
    "shares": 0
   },
@@ -580,7 +591,7 @@
   },
   {
    "video": "7JO3W7TzrME",
-   "views": 86,
+   "views": 87,
    "estimatedMinutesWatched": 22,
    "averageViewDuration": 48,
    "averageViewPercentage": 80.23,
@@ -624,7 +635,7 @@
   },
   {
    "video": "FHltNOMCClI",
-   "views": 50,
+   "views": 51,
    "estimatedMinutesWatched": 165,
    "averageViewDuration": 330,
    "averageViewPercentage": 215.96,
@@ -645,6 +656,17 @@
    "shares": 0
   },
   {
+   "video": "3e-eXXCL27s",
+   "views": 42,
+   "estimatedMinutesWatched": 143,
+   "averageViewDuration": 276,
+   "averageViewPercentage": 55.44,
+   "subscribersGained": 1,
+   "likes": 2,
+   "comments": 2,
+   "shares": 0
+  },
+  {
    "video": "6hhsJO6vgpo",
    "views": 41,
    "estimatedMinutesWatched": 20,
@@ -653,17 +675,6 @@
    "subscribersGained": 0,
    "likes": 1,
    "comments": 1,
-   "shares": 0
-  },
-  {
-   "video": "3e-eXXCL27s",
-   "views": 41,
-   "estimatedMinutesWatched": 143,
-   "averageViewDuration": 285,
-   "averageViewPercentage": 57.15,
-   "subscribersGained": 1,
-   "likes": 2,
-   "comments": 2,
    "shares": 0
   },
   {
@@ -722,17 +733,6 @@
    "shares": 0
   },
   {
-   "video": "A5cWOeTZqe0",
-   "views": 26,
-   "estimatedMinutesWatched": 6,
-   "averageViewDuration": 48,
-   "averageViewPercentage": 86.42,
-   "subscribersGained": 0,
-   "likes": 3,
-   "comments": 0,
-   "shares": 0
-  },
-  {
    "video": "7enHVaVNTOI",
    "views": 23,
    "estimatedMinutesWatched": 6,
@@ -745,12 +745,12 @@
   },
   {
    "video": "_EvPaiyk3nU",
-   "views": 17,
-   "estimatedMinutesWatched": 29,
-   "averageViewDuration": 196,
-   "averageViewPercentage": 33.89,
+   "views": 16,
+   "estimatedMinutesWatched": 28,
+   "averageViewDuration": 213,
+   "averageViewPercentage": 36.7,
    "subscribersGained": 0,
-   "likes": 1,
+   "likes": 0,
    "comments": 0,
    "shares": 0
   },
@@ -788,11 +788,22 @@
    "shares": 0
   },
   {
-   "video": "3hLySDzqykg",
-   "views": 13,
+   "video": "A5cWOeTZqe0",
+   "views": 11,
    "estimatedMinutesWatched": 1,
-   "averageViewDuration": 17,
-   "averageViewPercentage": 33.83,
+   "averageViewDuration": 42,
+   "averageViewPercentage": 76.03,
+   "subscribersGained": 0,
+   "likes": 2,
+   "comments": 0,
+   "shares": 0
+  },
+  {
+   "video": "3hLySDzqykg",
+   "views": 10,
+   "estimatedMinutesWatched": 1,
+   "averageViewDuration": 18,
+   "averageViewPercentage": 35.43,
    "subscribersGained": 0,
    "likes": 2,
    "comments": 0,
@@ -800,43 +811,10 @@
   },
   {
    "video": "nnLShLyCZOc",
-   "views": 11,
-   "estimatedMinutesWatched": 0,
-   "averageViewDuration": 24,
-   "averageViewPercentage": 51.910000000000004,
-   "subscribersGained": 0,
-   "likes": 2,
-   "comments": 0,
-   "shares": 0
-  },
-  {
-   "video": "ZFUM39-QiEs",
    "views": 9,
    "estimatedMinutesWatched": 0,
-   "averageViewDuration": 14,
-   "averageViewPercentage": 27.16,
-   "subscribersGained": 0,
-   "likes": 2,
-   "comments": 0,
-   "shares": 0
-  },
-  {
-   "video": "1IPH_5Ocy6w",
-   "views": 8,
-   "estimatedMinutesWatched": 1,
-   "averageViewDuration": 49,
-   "averageViewPercentage": 125.86,
-   "subscribersGained": 0,
-   "likes": 2,
-   "comments": 0,
-   "shares": 0
-  },
-  {
-   "video": "XQiYeFLJpPY",
-   "views": 8,
-   "estimatedMinutesWatched": 1,
-   "averageViewDuration": 18,
-   "averageViewPercentage": 31.55,
+   "averageViewDuration": 46,
+   "averageViewPercentage": 99.57,
    "subscribersGained": 0,
    "likes": 2,
    "comments": 0,
@@ -848,6 +826,39 @@
    "estimatedMinutesWatched": 1,
    "averageViewDuration": 54,
    "averageViewPercentage": 92.37,
+   "subscribersGained": 0,
+   "likes": 2,
+   "comments": 0,
+   "shares": 0
+  },
+  {
+   "video": "1IPH_5Ocy6w",
+   "views": 7,
+   "estimatedMinutesWatched": 1,
+   "averageViewDuration": 49,
+   "averageViewPercentage": 125.86,
+   "subscribersGained": 0,
+   "likes": 2,
+   "comments": 0,
+   "shares": 0
+  },
+  {
+   "video": "XQiYeFLJpPY",
+   "views": 7,
+   "estimatedMinutesWatched": 1,
+   "averageViewDuration": 18,
+   "averageViewPercentage": 31.55,
+   "subscribersGained": 0,
+   "likes": 2,
+   "comments": 0,
+   "shares": 0
+  },
+  {
+   "video": "ZFUM39-QiEs",
+   "views": 7,
+   "estimatedMinutesWatched": 0,
+   "averageViewDuration": 18,
+   "averageViewPercentage": 33.65,
    "subscribersGained": 0,
    "likes": 2,
    "comments": 0,
@@ -1372,502 +1383,502 @@
   "banco_master_longo": [
    {
     "elapsedVideoTimeRatio": 0.01,
-    "audienceWatchRatio": 0.9333,
-    "relativeRetentionPerformance": 0.38725
+    "audienceWatchRatio": 0.9355,
+    "relativeRetentionPerformance": 0.37755
    },
    {
     "elapsedVideoTimeRatio": 0.02,
-    "audienceWatchRatio": 0.7667,
-    "relativeRetentionPerformance": 0.42915000000000003
+    "audienceWatchRatio": 0.7742,
+    "relativeRetentionPerformance": 0.41015
    },
    {
     "elapsedVideoTimeRatio": 0.03,
-    "audienceWatchRatio": 0.8332999999999999,
-    "relativeRetentionPerformance": 0.46575
+    "audienceWatchRatio": 0.8387,
+    "relativeRetentionPerformance": 0.44079999999999997
    },
    {
     "elapsedVideoTimeRatio": 0.04,
-    "audienceWatchRatio": 0.7333,
-    "relativeRetentionPerformance": 0.49245
+    "audienceWatchRatio": 0.7419,
+    "relativeRetentionPerformance": 0.46599999999999997
    },
    {
     "elapsedVideoTimeRatio": 0.05,
-    "audienceWatchRatio": 0.7,
-    "relativeRetentionPerformance": 0.51795
+    "audienceWatchRatio": 0.7097,
+    "relativeRetentionPerformance": 0.49135
    },
    {
     "elapsedVideoTimeRatio": 0.06,
-    "audienceWatchRatio": 0.6333,
-    "relativeRetentionPerformance": 0.5453
+    "audienceWatchRatio": 0.6129,
+    "relativeRetentionPerformance": 0.51885
    },
    {
     "elapsedVideoTimeRatio": 0.07,
-    "audienceWatchRatio": 0.6,
-    "relativeRetentionPerformance": 0.5750500000000001
+    "audienceWatchRatio": 0.5806,
+    "relativeRetentionPerformance": 0.54905
    },
    {
     "elapsedVideoTimeRatio": 0.08,
-    "audienceWatchRatio": 0.6,
-    "relativeRetentionPerformance": 0.608
+    "audienceWatchRatio": 0.5806,
+    "relativeRetentionPerformance": 0.58285
    },
    {
     "elapsedVideoTimeRatio": 0.09,
-    "audienceWatchRatio": 0.6,
-    "relativeRetentionPerformance": 0.64595
+    "audienceWatchRatio": 0.5806,
+    "relativeRetentionPerformance": 0.62195
    },
    {
     "elapsedVideoTimeRatio": 0.1,
-    "audienceWatchRatio": 0.6,
-    "relativeRetentionPerformance": 0.6870499999999999
+    "audienceWatchRatio": 0.5806,
+    "relativeRetentionPerformance": 0.66445
    },
    {
     "elapsedVideoTimeRatio": 0.11,
-    "audienceWatchRatio": 0.6333,
-    "relativeRetentionPerformance": 0.7231
+    "audienceWatchRatio": 0.6129,
+    "relativeRetentionPerformance": 0.7019
    },
    {
     "elapsedVideoTimeRatio": 0.12,
-    "audienceWatchRatio": 0.6,
-    "relativeRetentionPerformance": 0.74525
+    "audienceWatchRatio": 0.5806,
+    "relativeRetentionPerformance": 0.72555
    },
    {
     "elapsedVideoTimeRatio": 0.13,
-    "audienceWatchRatio": 0.5667,
-    "relativeRetentionPerformance": 0.75115
+    "audienceWatchRatio": 0.5484,
+    "relativeRetentionPerformance": 0.73315
    },
    {
     "elapsedVideoTimeRatio": 0.14,
-    "audienceWatchRatio": 0.5333,
-    "relativeRetentionPerformance": 0.7462
+    "audienceWatchRatio": 0.5161,
+    "relativeRetentionPerformance": 0.72995
    },
    {
     "elapsedVideoTimeRatio": 0.15,
-    "audienceWatchRatio": 0.5333,
-    "relativeRetentionPerformance": 0.73995
+    "audienceWatchRatio": 0.5161,
+    "relativeRetentionPerformance": 0.72575
    },
    {
     "elapsedVideoTimeRatio": 0.16,
-    "audienceWatchRatio": 0.5333,
-    "relativeRetentionPerformance": 0.7396
+    "audienceWatchRatio": 0.5161,
+    "relativeRetentionPerformance": 0.72775
    },
    {
     "elapsedVideoTimeRatio": 0.17,
-    "audienceWatchRatio": 0.5333,
-    "relativeRetentionPerformance": 0.7461
+    "audienceWatchRatio": 0.5161,
+    "relativeRetentionPerformance": 0.73645
    },
    {
     "elapsedVideoTimeRatio": 0.18,
-    "audienceWatchRatio": 0.5333,
-    "relativeRetentionPerformance": 0.75625
+    "audienceWatchRatio": 0.5161,
+    "relativeRetentionPerformance": 0.74855
    },
    {
     "elapsedVideoTimeRatio": 0.19,
-    "audienceWatchRatio": 0.5333,
-    "relativeRetentionPerformance": 0.76715
+    "audienceWatchRatio": 0.5161,
+    "relativeRetentionPerformance": 0.7612
    },
    {
     "elapsedVideoTimeRatio": 0.2,
-    "audienceWatchRatio": 0.5333,
-    "relativeRetentionPerformance": 0.7769999999999999
+    "audienceWatchRatio": 0.5161,
+    "relativeRetentionPerformance": 0.7725
    },
    {
     "elapsedVideoTimeRatio": 0.21,
-    "audienceWatchRatio": 0.5333,
-    "relativeRetentionPerformance": 0.7847999999999999
+    "audienceWatchRatio": 0.5161,
+    "relativeRetentionPerformance": 0.78155
    },
    {
     "elapsedVideoTimeRatio": 0.22,
-    "audienceWatchRatio": 0.5667,
-    "relativeRetentionPerformance": 0.79
+    "audienceWatchRatio": 0.5484,
+    "relativeRetentionPerformance": 0.78795
    },
    {
     "elapsedVideoTimeRatio": 0.23,
-    "audienceWatchRatio": 0.5667,
-    "relativeRetentionPerformance": 0.79215
+    "audienceWatchRatio": 0.5484,
+    "relativeRetentionPerformance": 0.79135
    },
    {
     "elapsedVideoTimeRatio": 0.24,
-    "audienceWatchRatio": 0.5667,
-    "relativeRetentionPerformance": 0.79225
+    "audienceWatchRatio": 0.5484,
+    "relativeRetentionPerformance": 0.7921
    },
    {
     "elapsedVideoTimeRatio": 0.25,
-    "audienceWatchRatio": 0.5667,
+    "audienceWatchRatio": 0.5484,
     "relativeRetentionPerformance": 0.7917000000000001
    },
    {
     "elapsedVideoTimeRatio": 0.26,
-    "audienceWatchRatio": 0.5667,
+    "audienceWatchRatio": 0.5484,
     "relativeRetentionPerformance": 0.7910999999999999
    },
    {
     "elapsedVideoTimeRatio": 0.27,
-    "audienceWatchRatio": 0.5667,
+    "audienceWatchRatio": 0.5484,
     "relativeRetentionPerformance": 0.7907
    },
    {
     "elapsedVideoTimeRatio": 0.28,
-    "audienceWatchRatio": 0.5667,
+    "audienceWatchRatio": 0.5484,
     "relativeRetentionPerformance": 0.7905
    },
    {
     "elapsedVideoTimeRatio": 0.29,
-    "audienceWatchRatio": 0.5667,
+    "audienceWatchRatio": 0.5484,
     "relativeRetentionPerformance": 0.7898000000000001
    },
    {
     "elapsedVideoTimeRatio": 0.3,
-    "audienceWatchRatio": 0.5667,
-    "relativeRetentionPerformance": 0.7879
+    "audienceWatchRatio": 0.5484,
+    "relativeRetentionPerformance": 0.7878499999999999
    },
    {
     "elapsedVideoTimeRatio": 0.31,
-    "audienceWatchRatio": 0.5667,
-    "relativeRetentionPerformance": 0.78505
+    "audienceWatchRatio": 0.5484,
+    "relativeRetentionPerformance": 0.7849999999999999
    },
    {
     "elapsedVideoTimeRatio": 0.32,
-    "audienceWatchRatio": 0.5667,
-    "relativeRetentionPerformance": 0.7818499999999999
+    "audienceWatchRatio": 0.5484,
+    "relativeRetentionPerformance": 0.7818
    },
    {
     "elapsedVideoTimeRatio": 0.33,
-    "audienceWatchRatio": 0.5667,
-    "relativeRetentionPerformance": 0.7786
+    "audienceWatchRatio": 0.5484,
+    "relativeRetentionPerformance": 0.7785500000000001
    },
    {
     "elapsedVideoTimeRatio": 0.34,
-    "audienceWatchRatio": 0.5667,
-    "relativeRetentionPerformance": 0.7757499999999999
+    "audienceWatchRatio": 0.5484,
+    "relativeRetentionPerformance": 0.7757000000000001
    },
    {
     "elapsedVideoTimeRatio": 0.35,
-    "audienceWatchRatio": 0.5667,
+    "audienceWatchRatio": 0.5484,
     "relativeRetentionPerformance": 0.77335
    },
    {
     "elapsedVideoTimeRatio": 0.36,
-    "audienceWatchRatio": 0.5667,
+    "audienceWatchRatio": 0.5484,
     "relativeRetentionPerformance": 0.77135
    },
    {
     "elapsedVideoTimeRatio": 0.37,
-    "audienceWatchRatio": 0.5667,
+    "audienceWatchRatio": 0.5484,
     "relativeRetentionPerformance": 0.7697499999999999
    },
    {
     "elapsedVideoTimeRatio": 0.38,
-    "audienceWatchRatio": 0.5667,
+    "audienceWatchRatio": 0.5484,
     "relativeRetentionPerformance": 0.7684
    },
    {
     "elapsedVideoTimeRatio": 0.39,
-    "audienceWatchRatio": 0.5667,
+    "audienceWatchRatio": 0.5484,
     "relativeRetentionPerformance": 0.76705
    },
    {
     "elapsedVideoTimeRatio": 0.4,
-    "audienceWatchRatio": 0.5667,
+    "audienceWatchRatio": 0.5484,
     "relativeRetentionPerformance": 0.76525
    },
    {
     "elapsedVideoTimeRatio": 0.41,
-    "audienceWatchRatio": 0.5667,
+    "audienceWatchRatio": 0.5484,
     "relativeRetentionPerformance": 0.7632
    },
    {
     "elapsedVideoTimeRatio": 0.42,
-    "audienceWatchRatio": 0.5667,
+    "audienceWatchRatio": 0.5484,
     "relativeRetentionPerformance": 0.7612
    },
    {
     "elapsedVideoTimeRatio": 0.43,
-    "audienceWatchRatio": 0.5667,
+    "audienceWatchRatio": 0.5484,
     "relativeRetentionPerformance": 0.7594000000000001
    },
    {
     "elapsedVideoTimeRatio": 0.44,
-    "audienceWatchRatio": 0.5667,
+    "audienceWatchRatio": 0.5484,
     "relativeRetentionPerformance": 0.7577499999999999
    },
    {
     "elapsedVideoTimeRatio": 0.45,
-    "audienceWatchRatio": 0.5667,
+    "audienceWatchRatio": 0.5484,
     "relativeRetentionPerformance": 0.7565
    },
    {
     "elapsedVideoTimeRatio": 0.46,
-    "audienceWatchRatio": 0.5667,
+    "audienceWatchRatio": 0.5484,
     "relativeRetentionPerformance": 0.75545
    },
    {
     "elapsedVideoTimeRatio": 0.47,
-    "audienceWatchRatio": 0.5667,
+    "audienceWatchRatio": 0.5484,
     "relativeRetentionPerformance": 0.7544
    },
    {
     "elapsedVideoTimeRatio": 0.48,
-    "audienceWatchRatio": 0.5667,
+    "audienceWatchRatio": 0.5484,
     "relativeRetentionPerformance": 0.7533
    },
    {
     "elapsedVideoTimeRatio": 0.49,
-    "audienceWatchRatio": 0.5667,
+    "audienceWatchRatio": 0.5484,
     "relativeRetentionPerformance": 0.7522
    },
    {
     "elapsedVideoTimeRatio": 0.5,
-    "audienceWatchRatio": 0.5667,
+    "audienceWatchRatio": 0.5484,
     "relativeRetentionPerformance": 0.7514000000000001
    },
    {
     "elapsedVideoTimeRatio": 0.51,
-    "audienceWatchRatio": 0.5667,
+    "audienceWatchRatio": 0.5484,
     "relativeRetentionPerformance": 0.75095
    },
    {
     "elapsedVideoTimeRatio": 0.52,
-    "audienceWatchRatio": 0.5667,
+    "audienceWatchRatio": 0.5484,
     "relativeRetentionPerformance": 0.75055
    },
    {
     "elapsedVideoTimeRatio": 0.53,
-    "audienceWatchRatio": 0.5667,
+    "audienceWatchRatio": 0.5484,
     "relativeRetentionPerformance": 0.75015
    },
    {
     "elapsedVideoTimeRatio": 0.54,
-    "audienceWatchRatio": 0.5667,
+    "audienceWatchRatio": 0.5484,
     "relativeRetentionPerformance": 0.7499
    },
    {
     "elapsedVideoTimeRatio": 0.55,
-    "audienceWatchRatio": 0.5667,
+    "audienceWatchRatio": 0.5484,
     "relativeRetentionPerformance": 0.7498
    },
    {
     "elapsedVideoTimeRatio": 0.56,
-    "audienceWatchRatio": 0.5667,
+    "audienceWatchRatio": 0.5484,
     "relativeRetentionPerformance": 0.74965
    },
    {
     "elapsedVideoTimeRatio": 0.57,
-    "audienceWatchRatio": 0.5667,
+    "audienceWatchRatio": 0.5484,
     "relativeRetentionPerformance": 0.74935
    },
    {
     "elapsedVideoTimeRatio": 0.58,
-    "audienceWatchRatio": 0.5667,
+    "audienceWatchRatio": 0.5484,
     "relativeRetentionPerformance": 0.74925
    },
    {
     "elapsedVideoTimeRatio": 0.59,
-    "audienceWatchRatio": 0.5667,
+    "audienceWatchRatio": 0.5484,
     "relativeRetentionPerformance": 0.7493
    },
    {
     "elapsedVideoTimeRatio": 0.6,
-    "audienceWatchRatio": 0.5667,
+    "audienceWatchRatio": 0.5484,
     "relativeRetentionPerformance": 0.7493
    },
    {
     "elapsedVideoTimeRatio": 0.61,
-    "audienceWatchRatio": 0.5667,
+    "audienceWatchRatio": 0.5484,
     "relativeRetentionPerformance": 0.74925
    },
    {
     "elapsedVideoTimeRatio": 0.62,
-    "audienceWatchRatio": 0.5667,
+    "audienceWatchRatio": 0.5484,
     "relativeRetentionPerformance": 0.7492
    },
    {
     "elapsedVideoTimeRatio": 0.63,
-    "audienceWatchRatio": 0.5667,
+    "audienceWatchRatio": 0.5484,
     "relativeRetentionPerformance": 0.7491
    },
    {
     "elapsedVideoTimeRatio": 0.64,
-    "audienceWatchRatio": 0.5667,
+    "audienceWatchRatio": 0.5484,
     "relativeRetentionPerformance": 0.7491
    },
    {
     "elapsedVideoTimeRatio": 0.65,
-    "audienceWatchRatio": 0.5667,
+    "audienceWatchRatio": 0.5484,
     "relativeRetentionPerformance": 0.74905
    },
    {
     "elapsedVideoTimeRatio": 0.66,
-    "audienceWatchRatio": 0.5667,
+    "audienceWatchRatio": 0.5484,
     "relativeRetentionPerformance": 0.74895
    },
    {
     "elapsedVideoTimeRatio": 0.67,
-    "audienceWatchRatio": 0.5667,
+    "audienceWatchRatio": 0.5484,
     "relativeRetentionPerformance": 0.7489
    },
    {
     "elapsedVideoTimeRatio": 0.68,
-    "audienceWatchRatio": 0.5667,
+    "audienceWatchRatio": 0.5484,
     "relativeRetentionPerformance": 0.7489
    },
    {
     "elapsedVideoTimeRatio": 0.69,
-    "audienceWatchRatio": 0.5667,
+    "audienceWatchRatio": 0.5484,
     "relativeRetentionPerformance": 0.7488
    },
    {
     "elapsedVideoTimeRatio": 0.7,
-    "audienceWatchRatio": 0.5667,
+    "audienceWatchRatio": 0.5484,
     "relativeRetentionPerformance": 0.74855
    },
    {
     "elapsedVideoTimeRatio": 0.71,
-    "audienceWatchRatio": 0.5667,
+    "audienceWatchRatio": 0.5484,
     "relativeRetentionPerformance": 0.7483
    },
    {
     "elapsedVideoTimeRatio": 0.72,
-    "audienceWatchRatio": 0.5667,
+    "audienceWatchRatio": 0.5484,
     "relativeRetentionPerformance": 0.74795
    },
    {
     "elapsedVideoTimeRatio": 0.73,
-    "audienceWatchRatio": 0.5667,
+    "audienceWatchRatio": 0.5484,
     "relativeRetentionPerformance": 0.7475
    },
    {
     "elapsedVideoTimeRatio": 0.74,
-    "audienceWatchRatio": 0.5667,
+    "audienceWatchRatio": 0.5484,
     "relativeRetentionPerformance": 0.74695
    },
    {
     "elapsedVideoTimeRatio": 0.75,
-    "audienceWatchRatio": 0.5667,
+    "audienceWatchRatio": 0.5484,
     "relativeRetentionPerformance": 0.74615
    },
    {
     "elapsedVideoTimeRatio": 0.76,
-    "audienceWatchRatio": 0.5667,
+    "audienceWatchRatio": 0.5484,
     "relativeRetentionPerformance": 0.74495
    },
    {
     "elapsedVideoTimeRatio": 0.77,
-    "audienceWatchRatio": 0.5667,
+    "audienceWatchRatio": 0.5484,
     "relativeRetentionPerformance": 0.7433
    },
    {
     "elapsedVideoTimeRatio": 0.78,
-    "audienceWatchRatio": 0.5667,
+    "audienceWatchRatio": 0.5484,
     "relativeRetentionPerformance": 0.7412
    },
    {
     "elapsedVideoTimeRatio": 0.79,
-    "audienceWatchRatio": 0.5667,
+    "audienceWatchRatio": 0.5484,
     "relativeRetentionPerformance": 0.73895
    },
    {
     "elapsedVideoTimeRatio": 0.8,
-    "audienceWatchRatio": 0.5667,
+    "audienceWatchRatio": 0.5484,
     "relativeRetentionPerformance": 0.73665
    },
    {
     "elapsedVideoTimeRatio": 0.81,
-    "audienceWatchRatio": 0.5667,
+    "audienceWatchRatio": 0.5484,
     "relativeRetentionPerformance": 0.7342500000000001
    },
    {
     "elapsedVideoTimeRatio": 0.82,
-    "audienceWatchRatio": 0.5667,
+    "audienceWatchRatio": 0.5484,
     "relativeRetentionPerformance": 0.7317
    },
    {
     "elapsedVideoTimeRatio": 0.83,
-    "audienceWatchRatio": 0.5667,
+    "audienceWatchRatio": 0.5484,
     "relativeRetentionPerformance": 0.729
    },
    {
     "elapsedVideoTimeRatio": 0.84,
-    "audienceWatchRatio": 0.5667,
+    "audienceWatchRatio": 0.5484,
     "relativeRetentionPerformance": 0.72635
    },
    {
     "elapsedVideoTimeRatio": 0.85,
-    "audienceWatchRatio": 0.5667,
+    "audienceWatchRatio": 0.5484,
     "relativeRetentionPerformance": 0.7242
    },
    {
     "elapsedVideoTimeRatio": 0.86,
-    "audienceWatchRatio": 0.5667,
+    "audienceWatchRatio": 0.5484,
     "relativeRetentionPerformance": 0.7227
    },
    {
     "elapsedVideoTimeRatio": 0.87,
-    "audienceWatchRatio": 0.5667,
+    "audienceWatchRatio": 0.5484,
     "relativeRetentionPerformance": 0.72195
    },
    {
     "elapsedVideoTimeRatio": 0.88,
-    "audienceWatchRatio": 0.5667,
+    "audienceWatchRatio": 0.5484,
     "relativeRetentionPerformance": 0.72195
    },
    {
     "elapsedVideoTimeRatio": 0.89,
-    "audienceWatchRatio": 0.5667,
+    "audienceWatchRatio": 0.5484,
     "relativeRetentionPerformance": 0.7229
    },
    {
     "elapsedVideoTimeRatio": 0.9,
-    "audienceWatchRatio": 0.5667,
+    "audienceWatchRatio": 0.5484,
     "relativeRetentionPerformance": 0.7248
    },
    {
     "elapsedVideoTimeRatio": 0.91,
-    "audienceWatchRatio": 0.5667,
+    "audienceWatchRatio": 0.5484,
     "relativeRetentionPerformance": 0.7276
    },
    {
     "elapsedVideoTimeRatio": 0.92,
-    "audienceWatchRatio": 0.5333,
+    "audienceWatchRatio": 0.5161,
     "relativeRetentionPerformance": 0.7311
    },
    {
     "elapsedVideoTimeRatio": 0.93,
-    "audienceWatchRatio": 0.5333,
+    "audienceWatchRatio": 0.5161,
     "relativeRetentionPerformance": 0.7349
    },
    {
     "elapsedVideoTimeRatio": 0.94,
-    "audienceWatchRatio": 0.5333,
+    "audienceWatchRatio": 0.5161,
     "relativeRetentionPerformance": 0.73895
    },
    {
     "elapsedVideoTimeRatio": 0.95,
-    "audienceWatchRatio": 0.5333,
+    "audienceWatchRatio": 0.5161,
     "relativeRetentionPerformance": 0.74355
    },
    {
     "elapsedVideoTimeRatio": 0.96,
-    "audienceWatchRatio": 0.5333,
+    "audienceWatchRatio": 0.5161,
     "relativeRetentionPerformance": 0.7493
    },
    {
     "elapsedVideoTimeRatio": 0.97,
-    "audienceWatchRatio": 0.5333,
+    "audienceWatchRatio": 0.5161,
     "relativeRetentionPerformance": 0.75675
    },
    {
     "elapsedVideoTimeRatio": 0.98,
-    "audienceWatchRatio": 0.5333,
+    "audienceWatchRatio": 0.5161,
     "relativeRetentionPerformance": 0.7657499999999999
    },
    {
     "elapsedVideoTimeRatio": 0.99,
-    "audienceWatchRatio": 0.5333,
+    "audienceWatchRatio": 0.5161,
     "relativeRetentionPerformance": 0.77515
    },
    {
     "elapsedVideoTimeRatio": 1,
-    "audienceWatchRatio": 0.5333,
+    "audienceWatchRatio": 0.5161,
     "relativeRetentionPerformance": 0.78235
    }
   ],
@@ -1875,7 +1886,9 @@
   "netflix_longo": [],
   "netflix_en_longo": [],
   "wework_longo": [],
-  "orkut_longo": []
+  "orkut_longo": {
+   "erro": "500 { \"error\": { \"code\": 500, \"message\": \"Internal error encountered.\", \"errors\": [ { \"message\": \"Internal error encountered.\", \"domain\": \"global\", \"reason\": \"backendError\" } ], \"status\": \"INTERNAL\" } }"
+  }
  },
  "nomes": {
   "4WuKNxpR188": "itapemirim_longo",
@@ -2010,7 +2023,7 @@
    "status": "public"
   },
   "kolynos_serie1": {
-   "views": 69,
+   "views": 70,
    "likes": 1,
    "comentarios": 1,
    "status": "public"
@@ -2130,7 +2143,7 @@
    "status": "public"
   },
   "kodak_digital_short1": {
-   "views": 37,
+   "views": 40,
    "likes": 0,
    "comentarios": 0,
    "status": "public"
@@ -2143,10 +2156,10 @@
   }
  },
  "canal": {
-  "viewCount": "9131",
-  "subscriberCount": "28",
+  "viewCount": "9598",
+  "subscriberCount": "30",
   "hiddenSubscriberCount": false,
-  "videoCount": "49"
+  "videoCount": "50"
  },
  "todos_os_videos": [
   {
@@ -2156,7 +2169,7 @@
    "duracao": "PT2M33S",
    "status": "public",
    "agendado": null,
-   "views": 1358,
+   "views": 1369,
    "likes": 67,
    "comentarios": 2
   },
@@ -2167,7 +2180,7 @@
    "duracao": "PT1M39S",
    "status": "public",
    "agendado": null,
-   "views": 1299,
+   "views": 1314,
    "likes": 65,
    "comentarios": 7
   },
@@ -2192,6 +2205,17 @@
    "views": 711,
    "likes": 41,
    "comentarios": 2
+  },
+  {
+   "id": "UrTUaUWMFDU",
+   "titulo": "A Nintendo começou vendendo baralho em 1889 | A Jogada que Mudou Tudo EP. 05",
+   "publicado": "2026-11-07T13:56:43Z",
+   "duracao": "PT1M22S",
+   "status": "public",
+   "agendado": null,
+   "views": 421,
+   "likes": 21,
+   "comentarios": 0
   },
   {
    "id": "KwwgU40ljtE",
@@ -2249,26 +2273,26 @@
    "comentarios": 0
   },
   {
+   "id": "kead0wOtMM4",
+   "titulo": "A Gradiente registrou o nome iPhone antes da Apple | O Custo de Ser Gigante EP. 12",
+   "publicado": "2026-11-08T13:48:31Z",
+   "duracao": "PT1M13S",
+   "status": "public",
+   "agendado": null,
+   "views": 269,
+   "likes": 16,
+   "comentarios": 0
+  },
+  {
    "id": "pZeBFwy__aI",
    "titulo": "O verdadeiro negócio do McDonald's não é hambúrguer | A Jogada que Mudou Tudo EP. 04",
    "publicado": "2026-11-05T14:10:02Z",
    "duracao": "PT1M14S",
    "status": "public",
    "agendado": null,
-   "views": 266,
+   "views": 267,
    "likes": 28,
    "comentarios": 3
-  },
-  {
-   "id": "UrTUaUWMFDU",
-   "titulo": "A Nintendo começou vendendo baralho em 1889 | A Jogada que Mudou Tudo EP. 05",
-   "publicado": "2026-11-07T13:56:43Z",
-   "duracao": "PT1M22S",
-   "status": "public",
-   "agendado": null,
-   "views": 261,
-   "likes": 19,
-   "comentarios": 0
   },
   {
    "id": "ClsF6r4QR2g",
@@ -2277,8 +2301,8 @@
    "duracao": "PT1M47S",
    "status": "public",
    "agendado": null,
-   "views": 245,
-   "likes": 15,
+   "views": 249,
+   "likes": 16,
    "comentarios": 1
   },
   {
@@ -2321,7 +2345,7 @@
    "duracao": "PT1M31S",
    "status": "public",
    "agendado": null,
-   "views": 211,
+   "views": 212,
    "likes": 19,
    "comentarios": 0
   },
@@ -2359,6 +2383,17 @@
    "comentarios": 0
   },
   {
+   "id": "BINMGZPYx1c",
+   "titulo": "A Xerox inventou o futuro e deixou a Apple levar | O Custo de Ser Gigante EP. 11",
+   "publicado": "2026-11-06T13:23:30Z",
+   "duracao": "PT1M19S",
+   "status": "public",
+   "agendado": null,
+   "views": 136,
+   "likes": 6,
+   "comentarios": 1
+  },
+  {
    "id": "-GZbd2Z6gak",
    "titulo": "Brahma e Antarctica viraram uma só e ficaram com 3 de cada 4 cervejas do Brasil #shorts",
    "publicado": "2026-10-21T21:00:28Z",
@@ -2381,6 +2416,17 @@
    "comentarios": 1
   },
   {
+   "id": "7JO3W7TzrME",
+   "titulo": "A Saraiva tinha mais de 100 lojas. Em 2023, fechou as últimas 5.",
+   "publicado": "2026-10-28T18:48:19Z",
+   "duracao": "PT1M",
+   "status": "public",
+   "agendado": null,
+   "views": 91,
+   "likes": 1,
+   "comentarios": 0
+  },
+  {
    "id": "bLlZo9T-tO8",
    "titulo": "5/7 Como US$ 47 bilhões viraram cerca de US$ 8 bilhões",
    "publicado": "2026-10-11T19:34:16Z",
@@ -2392,35 +2438,13 @@
    "comentarios": 0
   },
   {
-   "id": "7JO3W7TzrME",
-   "titulo": "A Saraiva tinha mais de 100 lojas. Em 2023, fechou as últimas 5.",
-   "publicado": "2026-10-28T18:48:19Z",
-   "duracao": "PT1M",
-   "status": "public",
-   "agendado": null,
-   "views": 89,
-   "likes": 1,
-   "comentarios": 0
-  },
-  {
-   "id": "BINMGZPYx1c",
-   "titulo": "A Xerox inventou o futuro e deixou a Apple levar | O Custo de Ser Gigante EP. 11",
-   "publicado": "2026-11-06T13:23:30Z",
-   "duracao": "PT1M19S",
-   "status": "public",
-   "agendado": null,
-   "views": 73,
-   "likes": 4,
-   "comentarios": 1
-  },
-  {
    "id": "_aYquXLalP0",
    "titulo": "Kolynos vendia o dobro da Colgate. Então ela sumiu (parte 1) #shorts",
    "publicado": "2026-10-18T11:00:20Z",
    "duracao": "PT1M25S",
    "status": "public",
    "agendado": null,
-   "views": 69,
+   "views": 70,
    "likes": 1,
    "comentarios": 1
   },
@@ -2508,7 +2532,7 @@
    "duracao": "PT1M13S",
    "status": "public",
    "agendado": null,
-   "views": 37,
+   "views": 40,
    "likes": 0,
    "comentarios": 0
   },
