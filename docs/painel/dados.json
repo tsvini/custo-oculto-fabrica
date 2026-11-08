@@ -1,10 +1,10 @@
 {
- "atualizado": "07/11/2026 22:49",
+ "atualizado": "08/11/2026 13:46",
  "fontes": {
   "custo_oculto": {
-   "seguidores": 29,
-   "views_total": 9131,
-   "videos": 49,
+   "seguidores": 30,
+   "views_total": 9598,
+   "videos": 50,
    "views_28d": 8975,
    "views_7d": 3577,
    "seguidores_28d": 31,
@@ -118,14 +118,14 @@
     {
      "titulo": "Bombril: a marca que virou sinônimo de lã de aço — O Custo de Ser Gigante EP. 09",
      "url": "https://youtu.be/2bKwMEzu16U",
-     "views": 1345,
+     "views": 1341,
      "retencao": 50,
      "likes": 67
     },
     {
      "titulo": "A gambiarra que transformou a Havaianas em ícone mundial 🩴",
      "url": "https://youtu.be/PSEeDLDb7PA",
-     "views": 1292,
+     "views": 1287,
      "retencao": 59,
      "likes": 65
     },
@@ -166,7 +166,7 @@
   },
   "vini_qa": {
    "seguidores": 0,
-   "views_total": 464,
+   "views_total": 463,
    "videos": 9,
    "views_28d": 427,
    "views_7d": 280,
@@ -295,7 +295,7 @@
     {
      "titulo": "O teste que todo iniciante esquece",
      "url": "https://youtu.be/jxj1cQUYVmE",
-     "views": 87,
+     "views": 86,
      "retencao": 36,
      "likes": 2
     },
@@ -318,15 +318,21 @@
   },
   "tiktok": {
    "usuario": "Custo Oculto",
-   "seguidores": 78,
-   "curtidas": 546,
-   "videos": 30,
-   "views_total": 9841,
+   "seguidores": 79,
+   "curtidas": 549,
+   "videos": 31,
+   "views_total": 8331,
    "top": [
+    {
+     "titulo": "Uma empresa brasileira registrou o nome iPhone 7 anos antes da Apple lançar o celular. E p",
+     "url": "https://www.tiktok.com/@custooculto/video/7705797386299247879?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
+     "views": 43,
+     "likes": 3
+    },
     {
      "titulo": "Antes do videogame, a Nintendo vendeu baralho, arroz instantâneo e até corrida de táxi.  🃏",
      "url": "https://www.tiktok.com/@custooculto/video/7705428083452546312?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 120,
+     "views": 185,
      "likes": 0
     },
     {
@@ -338,7 +344,7 @@
     {
      "titulo": "O McDonald's vende bilhões de hambúrgueres. Mas o dinheiro de verdade está no chão. 🏠  A J",
      "url": "https://www.tiktok.com/@custooculto/video/7704753670042275079?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 238,
+     "views": 260,
      "likes": 5
     },
     {
@@ -352,12 +358,6 @@
      "url": "https://www.tiktok.com/@custooculto/video/7703986197403602196?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
      "views": 142,
      "likes": 2
-    },
-    {
-     "titulo": "Uma marca tão forte que virou quase sinônimo do próprio produto. Mas o que acontece quando",
-     "url": "https://www.tiktok.com/@custooculto/video/7703579884316101908?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 514,
-     "likes": 25
     }
    ],
    "nome": "TikTok @custooculto"
