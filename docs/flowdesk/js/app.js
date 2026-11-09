@@ -153,7 +153,7 @@ function cardMissao() {
   const m = missaoAtual();
   if (!m) return '<a class="missao-side feita" id="missaoSide" href="missoes.html" data-test="missao-atual"><div class="k">MISSÕES</div><div class="t">Tudo feito por agora</div><div class="p">A próxima chega na próxima prática</div></a>';
   const pr = progresso(m), n = pr.filter(Boolean).length;
-  return `<a class="missao-side" id="missaoSide" href="missoes.html" data-test="missao-atual"><div class="k">MISSÃO · ${m.aula.toUpperCase()}</div><div class="t">${m.titulo}</div><div class="bar"><i style="width:${n / pr.length * 100}%"></i></div><div class="p" data-test="missao-progresso">${n}/${pr.length}</div></a>`;
+  return `<a class="missao-side" id="missaoSide" href="missoes.html" data-test="missao-atual"><div class="k">MISSÃO · ${m.aula.toUpperCase()}</div><div class="t">${m.titulo}</div><div class="bar"><i style="width:${n / pr.length * 100}%"></i></div><div class="p" data-test="missao-progresso">${n}/${pr.length}</div><div class="pop" data-test="missao-lista"><div class="k">SUA MISSÃO</div>${m.itens.map(([t], i) => `<div class="pit ${pr[i] ? 'on' : ''}"><b>${pr[i] ? '✓' : i + 1}</b>${t}</div>`).join('')}</div></a>`;
 }
 
 // ---------- layout ----------
