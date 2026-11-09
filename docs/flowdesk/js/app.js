@@ -160,23 +160,42 @@ function cardMissao() {
 const avatar = (p) => p === 'voce' ? '<span class="vc">VC</span>' : `<img class="av" src="img/av_${p}.png" alt="">`;
 const MARCA = '<span class="marca"><img src="img/icon.png" alt="">FlowDesk</span>';
 const pillVersao = () => `<span class="versao" data-test="versao-sistema"><b>Sprint ${VERSAO}</b> · homologação</span>`;
+const ICONE = {
+  dashboard: '<path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/>',
+  chamados: '<path d="M4 5h16v14H4z"/><path d="M8 9h8M8 13h5"/>',
+  quadro: '<path d="M4 4h4v16H4zM10 4h4v10h-4zM16 4h4v13h-4z"/>',
+  plano: '<path d="M9 5h11M9 12h11M9 19h11"/><path d="m3.5 5 1.5 1.5L7.5 4M3.5 12l1.5 1.5L7.5 11M3.5 19l1.5 1.5L7.5 18"/>',
+  chat: '<path d="M4 5h16v11H9l-5 4z"/>',
+  configuracoes: '<circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1 7 17M17 7l2.1-2.1"/>',
+};
+const ico = (k) => `<svg viewBox="0 0 24 24" aria-hidden="true">${ICONE[k]}</svg>`;
 function casca(pagina, conteudo) {
   const c = contas()[sessao()] || { nome: '' };
-  const it = (h, n, k) => `<a href="${h}" data-test="menu-${k}" class="${pagina === k ? 'on' : ''}">${n}</a>`;
+  const it = (h, n, k) => `<a href="${h}" data-test="menu-${k}" class="${pagina === k ? 'on' : ''}">${ico(k)}<span>${n}</span></a>`;
   document.body.innerHTML = `<div class="app"><aside class="side">${MARCA}<nav>
-    ${it('dashboard.html', 'Dashboard', 'dashboard')}${it('chamados.html', 'Chamados', 'chamados')}${it('quadro.html', 'Quadro', 'quadro')}${it('clientes.html', 'Clientes', 'clientes')}
-    <div class="grupo">QA</div>${it('plano.html', 'Plano de testes', 'plano')}${it('reportar-bug.html', 'Reportar bug', 'reportar-bug')}
-    <div class="grupo">TIME</div>${it('missoes.html', 'Missões', 'missoes')}${it('chat.html', 'FlowChat', 'chat')}${it('configuracoes.html', 'Configurações', 'configuracoes')}</nav>
-    ${cardMissao()}<div class="eu"><span class="vc">VC</span><div><b data-test="usuario-logado">${esc(c.nome)}</b><span>QA estagiário</span></div><button data-test="sair">Sair</button></div></aside>
-    <main class="main">${conteudo}</main></div>`;
+    ${it('dashboard.html', 'Início', 'dashboard')}${it('chamados.html', 'Chamados', 'chamados')}${it('quadro.html', 'Quadro', 'quadro')}${it('plano.html', 'Plano de testes', 'plano')}${it('chat.html', 'FlowChat', 'chat')}</nav>
+    <div class="side-fim">${cardMissao()}<nav class="sec-nav">${it('configuracoes.html', 'Configurações', 'configuracoes')}</nav>
+    <div class="eu"><span class="vc">VC</span><div><b data-test="usuario-logado">${esc(c.nome)}</b><span>QA estagiário</span></div><button data-test="sair">Sair</button></div></div></aside>
+    <main class="main"><div class="conteudo">${conteudo}</div></main></div>`;
   $('[data-test=sair]').onclick = sair;
   mostraRecado(); setTimeout(confereMissoes, 300);
 }
 function sair() { LS.del('fd:sessao'); location.href = 'index.html'; }
-const topo = (titulo, sub = '', crumb = '') => `<div class="topo"><div>${crumb ? `<div class="crumb">${crumb}</div>` : ''}<h2 data-test="titulo-pagina">${titulo}</h2>${sub ? `<div class="sub">${sub}</div>` : ''}</div>${pillVersao()}</div>`;
+const topo = (titulo, sub = '', crumb = '', acoes = '') => `<div class="topo"><div>${crumb ? `<div class="crumb">${crumb}</div>` : ''}<h2 data-test="titulo-pagina">${titulo}</h2>${sub ? `<div class="sub">${sub}</div>` : ''}</div><div class="topo-acoes">${acoes}${pillVersao()}</div></div>`;
 const stClasse = (s) => 'st st-' + ({ 'Aberto': 'aberto', 'Em andamento': 'andamento', 'Resolvido': 'resolvido', 'Fechado': 'fechado' }[s] || 'aberto');
 const erroCampo = (id, msg) => { const e = $('#' + id); e.classList.add('erro'); const m = document.createElement('div'); m.className = 'msg-erro'; m.setAttribute('data-test', 'erro-' + id); m.textContent = msg; (e.closest('.arquivo') || e).after(m); };
 const limpaErros = () => { $$('.msg-erro').forEach((m) => m.remove()); $$('.erro').forEach((e) => e.classList.remove('erro')); };
+
+// ---------- quem pode mover o quê ----------
+// O QA só move os próprios cards: de Pronto pra QA pra Em teste (e de volta), e de Em teste pra Concluído quando todos os critérios estão marcados.
+const MOVES_QA = { qa: ['teste'], teste: ['qa', 'concluido'] };
+function podeMover(c, destino) {
+  if (c.coluna === destino) return { ok: false, msg: '' };
+  if (c.resp !== 'voce') return { ok: false, msg: `Esse card é ${c.resp === 'gabriela' || c.resp === 'beatriz' ? 'da' : 'do'} ${PESSOAS[c.resp].nome}. Só quem é responsável move.` };
+  if (!(MOVES_QA[c.coluna] || []).includes(destino)) return { ok: false, msg: 'O QA não faz esse movimento. Daqui o card só vai pra ' + (MOVES_QA[c.coluna] || []).map((k) => COLUNAS.find((x) => x[0] === k)[1].toLowerCase()).join(' ou ') + '.' };
+  if (destino === 'concluido' && c.criterios.length && c.ok.length < c.criterios.length) return { ok: false, msg: 'Antes de concluir, marque no card os critérios de aceite que você validou.' };
+  return { ok: true };
+}
 
 // ---------- páginas ----------
 const PAGINAS = {};
@@ -229,14 +248,16 @@ PAGINAS.dashboard = () => {
   const h = new Date().getHours(), oi = h < 12 ? 'Bom dia' : h < 18 ? 'Boa tarde' : 'Boa noite';
   const n = (s) => d.chamados.filter((x) => x.status === s).length;
   const meus = d.cards.filter((x) => x.resp === 'voce');
-  const ult = [...d.chamados].sort((a, b) => b.criadoEm.localeCompare(a.criadoEm)).slice(0, 5);
-  casca('dashboard', topo(`${oi}, ${esc(c.nome.split(' ')[0])}! 👋`, `Workspace FlowDesk · Sprint ${VERSAO}`) + `
-    <div class="kpis"><div class="kpi"><div class="l">Chamados abertos</div><div class="n" data-test="kpi-abertos">${n('Aberto')}</div></div>
-    <div class="kpi"><div class="l">Em andamento</div><div class="n" data-test="kpi-andamento">${n('Em andamento')}</div></div>
-    <div class="kpi"><div class="l">Resolvidos</div><div class="n" data-test="kpi-resolvidos">${n('Resolvido')}</div></div></div>
-    <div class="bloco"><h3>Seus cards</h3>${meus.length ? meus.map((k) => `<a class="tk meu" href="card.html?id=${k.id}" data-test="meu-card" style="max-width:420px;cursor:pointer"><div class="id">${k.id}</div><div class="t">${esc(k.titulo)}</div><div class="who">${COLUNAS.find((x) => x[0] === k.coluna)[1]}</div></a>`).join('') : '<div class="vazio">Nenhum card com você agora.</div>'}</div>
-    <div class="bloco"><h3>Últimos chamados</h3><table class="tabela"><thead><tr><th>#</th><th>TÍTULO</th><th>CLIENTE</th><th>STATUS</th></tr></thead><tbody>
-    ${ult.map((x) => `<tr><td class="num">${x.id}</td><td><a href="chamado.html?id=${x.id}">${esc(x.titulo)}</a></td><td>${esc(x.cliente)}</td><td><span class="${stClasse(x.status)}">${x.status}</span></td></tr>`).join('')}</tbody></table></div>`);
+  const ult = [...d.chamados].sort((a, b) => b.criadoEm.localeCompare(a.criadoEm)).slice(0, 4);
+  const m = missaoAtual(), pr = m ? progresso(m, d) : [];
+  const hero = m ? `<a class="hero" href="${m.link}" data-test="missao-hero"><div class="hk">Missão da ${m.aula.replace('Prática', 'prática')}</div><div class="ht">${m.titulo}</div>
+      <div class="hl">${m.itens.map(([t], i) => `<div class="pit ${pr[i] ? 'on' : ''}"><b>${pr[i] ? '✓' : i + 1}</b>${t}</div>`).join('')}</div><span class="btn">Continuar a missão</span></a>`
+    : `<div class="hero feita"><div class="hk">Missões</div><div class="ht">Tudo feito por agora</div><p class="dica">A próxima missão chega na próxima prática do curso.</p></div>`;
+  casca('dashboard', topo(`${oi}, ${esc(c.nome.split(' ')[0])}`, `Sprint ${VERSAO} do FlowDesk`) + `
+    <div class="inicio"><div>${hero}</div>
+      <div class="lado"><div class="numeros"><div><span data-test="kpi-abertos">${n('Aberto')}</span>abertos</div><div><span data-test="kpi-andamento">${n('Em andamento')}</span>em andamento</div><div><span data-test="kpi-resolvidos">${n('Resolvido')}</span>resolvidos</div></div>
+        <h3 class="tit">Seus cards</h3>${meus.length ? meus.map((k) => `<a class="tk meu" href="card.html?id=${k.id}" data-test="meu-card"><div class="id">${k.id}</div><div class="t">${esc(k.titulo)}</div><div class="who">${COLUNAS.find((x) => x[0] === k.coluna)[1].toLowerCase()}</div></a>`).join('') : '<p class="dica">Nenhum card com você agora.</p>'}
+        <h3 class="tit">Últimos chamados</h3><div class="lista-simples">${ult.map((x) => `<a href="chamado.html?id=${x.id}"><span class="num">#${x.id}</span><span class="tx">${esc(x.titulo)}</span><span class="${stClasse(x.status)}">${x.status}</span></a>`).join('')}</div></div></div>`);
 };
 
 PAGINAS.chamados = () => {
@@ -312,20 +333,25 @@ PAGINAS.chamado = () => {
 };
 
 PAGINAS.quadro = () => {
-  casca('quadro', topo(`Sprint ${VERSAO}`, 'Objetivo: melhorar o fluxo de criar chamado') + `<div class="cols">${COLUNAS.map(([k, n]) => `<div class="col ${k === 'qa' ? 'qa' : ''}" data-col="${k}" data-test="coluna-${k}"><div class="h">${n}<span data-test="contagem-${k}"></span></div><div class="cards"></div></div>`).join('')}</div>
-    <p class="dica" style="margin-top:10px">Arraste o card pra outra coluna, ou abra o card e use "Mover para".</p>`);
+  casca('quadro', topo(`Sprint ${VERSAO}`, 'Objetivo: melhorar o fluxo de criar chamado', '', '<a class="btn sec peq" href="reportar-bug.html" data-test="ir-reportar-bug">Reportar bug</a>') + `<div class="cols">${COLUNAS.map(([k, n]) => `<div class="col ${k === 'qa' ? 'qa' : ''}" data-col="${k}" data-test="coluna-${k}"><div class="h">${n}<span data-test="contagem-${k}"></span></div><div class="cards"></div></div>`).join('')}</div>
+    <p class="dica" style="margin-top:12px">Você move os seus cards arrastando, ou pelo próprio card. Os cards dos outros ficam com eles.</p>`);
   const pinta = () => {
     COLUNAS.forEach(([k]) => {
       const l = dados().cards.filter((c) => c.coluna === k), col = $(`[data-col=${k}]`);
-      $('.cards', col).innerHTML = l.map((c) => `<a class="tk ${c.resp === 'voce' ? 'meu' : ''} ${c.tipo === 'bug' ? 'e-bug' : ''}" href="card.html?id=${c.id}" draggable="true" data-id="${c.id}" data-test="card-${c.id}"><div class="id">${c.id}${c.tipo === 'bug' ? '<span class="bug">BUG</span>' : ''}</div><div class="t">${esc(c.titulo)}</div><div class="who">${avatar(c.resp)}${c.resp === 'voce' ? '<span style="color:#fff;font-weight:700">Você · QA</span>' : PESSOAS[c.resp].nome}</div></a>`).join('');
+      $('.cards', col).innerHTML = l.map((c) => `<a class="tk ${c.resp === 'voce' ? 'meu' : 'travado'} ${c.tipo === 'bug' ? 'e-bug' : ''}" href="card.html?id=${c.id}" draggable="${c.resp === 'voce'}" ${c.resp === 'voce' ? '' : `title="Card de ${PESSOAS[c.resp].nome}: só quem é responsável move"`} data-id="${c.id}" data-test="card-${c.id}"><div class="id">${c.id}${c.tipo === 'bug' ? '<span class="bug">BUG</span>' : ''}</div><div class="t">${esc(c.titulo)}</div><div class="who">${avatar(c.resp)}${c.resp === 'voce' ? '<span style="color:#fff;font-weight:700">Você · QA</span>' : PESSOAS[c.resp].nome}</div></a>`).join('');
       $('[data-test=contagem-' + k + ']', col).textContent = l.length || '';
     });
-    $$('.tk').forEach((t) => { t.ondragstart = (e) => e.dataTransfer.setData('text/plain', t.dataset.id); });
+    $$('.tk').forEach((t) => { t.ondragstart = (e) => { if (t.getAttribute('draggable') !== 'true') return e.preventDefault(); e.dataTransfer.setData('text/plain', t.dataset.id); }; });
   };
   $$('.col').forEach((col) => {
     col.ondragover = (e) => { e.preventDefault(); col.classList.add('sobre'); };
     col.ondragleave = () => col.classList.remove('sobre');
-    col.ondrop = (e) => { e.preventDefault(); col.classList.remove('sobre'); const c = dados().cards.find((x) => x.id === e.dataTransfer.getData('text/plain')); if (c && c.coluna !== col.dataset.col) { c.coluna = col.dataset.col; salvar(); pinta(); toast(`${c.id} movido para ${COLUNAS.find((x) => x[0] === c.coluna)[1]}`); } };
+    col.ondrop = (e) => {
+      e.preventDefault(); col.classList.remove('sobre');
+      const c = dados().cards.find((x) => x.id === e.dataTransfer.getData('text/plain')); if (!c) return;
+      const p = podeMover(c, col.dataset.col); if (!p.ok) { if (p.msg) toast(p.msg, true); return; }
+      c.coluna = col.dataset.col; salvar(); pinta(); toast(`${c.id} movido para ${COLUNAS.find((x) => x[0] === c.coluna)[1].toLowerCase()}`);
+    };
   });
   pinta();
 };
@@ -338,13 +364,13 @@ PAGINAS.card = () => {
   casca('quadro', topo(`<span>${c.id}</span> · <span style="color:var(--txt)" data-test="card-titulo">${esc(c.titulo)}</span>`, '', `<a href="quadro.html">Quadro</a> / Sprint ${VERSAO} · ${bug ? 'Bug' : 'User story'}`) + `
     <div class="meta"><div class="mi"><div class="k">${bug ? 'SEVERIDADE' : 'PRIORIDADE'}</div><div class="v" data-test="card-prioridade">${esc(bug ? c.severidade : c.prioridade)}</div></div>
       <div class="mi"><div class="k">RESPONSÁVEL</div><div class="v">${avatar(c.resp)}${PESSOAS[c.resp].nome}</div></div>
-      <div class="mi"><div class="k">MOVER PARA</div><div class="v"><select class="in" id="mover" data-test="mover-card" style="height:34px;font-size:14px;min-width:200px">${COLUNAS.map(([k, n]) => `<option value="${k}" ${k === c.coluna ? 'selected' : ''}>${n}</option>`).join('')}</select></div></div></div>
+      <div class="mi"><div class="k">COLUNA</div><div class="v">${c.resp === 'voce' ? `<select class="in" id="mover" data-test="mover-card" style="height:34px;font-size:14px;min-width:200px">${COLUNAS.filter(([k]) => k === c.coluna || (MOVES_QA[c.coluna] || []).includes(k)).map(([k, n]) => `<option value="${k}" ${k === c.coluna ? 'selected' : ''}>${n}</option>`).join('')}</select>` : `<span data-test="coluna-card">${COLUNAS.find((x) => x[0] === c.coluna)[1]}</span>`}</div></div></div>
     ${bug ? `<div class="sec"><div class="k">Card relacionado</div><div class="v">${c.relacionado ? `<a href="card.html?id=${c.relacionado}">${c.relacionado}</a>` : '—'}</div></div>` + campo('Passos para reproduzir', c.passos) + campo('Resultado esperado', c.esperado) + campo('Resultado obtido', c.obtido) + campo('Evidência', c.evidencia ? '📎 ' + c.evidencia : '')
       : campo('Descrição', c.descricao) + `<div class="sec" id="sCrit"><div class="k">Critérios de aceite</div>${c.criterios.length ? c.criterios.map((k, i) => `<label class="cr"><input type="checkbox" data-i="${i}" data-test="criterio" ${c.ok.includes(i) ? 'checked' : ''}>${esc(k)}</label>`).join('') : '<div class="v nada">Nenhum critério definido.</div>'}</div>`}
     ${d.planos[c.id] ? `<div style="margin-top:16px"><a class="btn" href="plano.html?card=${c.id}" data-test="abrir-plano">Abrir plano de testes</a></div>` : ''}
     <div class="sec"><div class="k">Comentários</div><div id="coms">${c.comentarios.map((m) => `<div class="coment">${avatar('voce')}<div class="bx"><b>Você</b><small>${dataBR(m.quando)}</small><div>${esc(m.tx)}</div></div></div>`).join('') || '<div class="v nada" style="font-size:15px">Nenhum comentário ainda.</div>'}</div>
       <div style="display:flex;gap:10px;margin-top:12px"><input class="in" id="com" placeholder="Escreva um comentário…" data-test="comentario"><button class="btn" id="enviaCom" data-test="enviar-comentario">Comentar</button></div></div>`);
-  $('#mover').onchange = () => { c.coluna = $('#mover').value; salvar(); toast(`${c.id} movido para ${COLUNAS.find((x) => x[0] === c.coluna)[1]}`); };
+  if ($('#mover')) $('#mover').onchange = () => { const p = podeMover(c, $('#mover').value); if (!p.ok) { $('#mover').value = c.coluna; return p.msg && toast(p.msg, true); } c.coluna = $('#mover').value; salvar(); toast(`${c.id} movido para ${COLUNAS.find((x) => x[0] === c.coluna)[1].toLowerCase()}`); };
   $$('[data-test=criterio]').forEach((k) => { k.onchange = () => { const i = +k.dataset.i; c.ok = k.checked ? [...new Set([...c.ok, i])] : c.ok.filter((x) => x !== i); salvar(); }; });
   $('#enviaCom').onclick = () => { const t = $('#com').value.trim(); if (!t) return; c.comentarios.push({ tx: t, quando: agora() }); salvar(); location.reload(); };
 };
@@ -354,10 +380,12 @@ PAGINAS.plano = () => {
   if (!d.planos[id]) return casca('plano', topo('Plano de testes') + '<div class="vazio">Esse card ainda não tem plano de testes.</div>');
   const card = d.cards.find((x) => x.id === id);
   const TIPOS = { P: ['POSITIVO', 'tP'], N: ['NEGATIVO', 'tN'], L: ['VALOR LIMITE', 'tL'] };
-  casca('plano', topo(`<span>${id}</span> · Plano de testes`, 'Cada cenário: uma situação, os passos e o resultado esperado', `<a href="card.html?id=${id}">${id} · ${esc(card.titulo)}</a>`) + `
+  const arqsHtml = `<div class="pop-wrap"><button type="button" class="btn sec peq" id="arqBtn" data-test="abrir-arquivos">Arquivos de teste</button><div class="arqs pop-arq" id="arqPop" hidden><h3>Arquivos de teste</h3><p class="dica">Gerados na hora, no tamanho exato, pra testar o anexo.</p>${[['documento-5MB-exato.pdf', LIMITE_ANEXO], ['documento-5,1MB.pdf', Math.floor(5.1 * 1048576)], ['documento-1MB.pdf', 1048576], ['print-da-tela.png', 48 * 1024], ['foto.jpg', 220 * 1024], ['programa.exe', 12 * 1024]].map(([n, b]) => `<a href="#" data-arq="${n}" data-b="${b}" data-test="arquivo-teste">${n}<small>${tamanho(b)}</small></a>`).join('')}</div></div>`;
+  casca('plano', topo(`<span>${id}</span> · Plano de testes`, 'Cada cenário: uma situação, os passos e o resultado esperado', `<a href="card.html?id=${id}">${id} · ${esc(card.titulo)}</a>`, arqsHtml) + `
     <div class="plano"><div class="esq">
-      <table class="tabela"><thead><tr><th style="width:44px">#</th><th>CENÁRIO</th><th>RESULTADO ESPERADO</th><th style="width:150px">EXECUÇÃO</th><th style="width:110px"></th></tr></thead><tbody id="linhas"></tbody></table>
-      <form class="fcard" id="f" novalidate style="margin-top:18px;max-width:none"><h3 style="font-size:18px;margin-bottom:14px" id="fTit">Novo cenário</h3>
+      <table class="tabela"><thead><tr><th style="width:40px">#</th><th>Cenário</th><th>Resultado esperado</th><th style="width:150px">Execução</th><th style="width:96px"></th></tr></thead><tbody id="linhas"></tbody></table>
+      <button type="button" class="btn sec" id="abreForm" data-test="novo-cenario" style="margin-top:14px">+ Novo cenário</button>
+      <form class="fcard" id="f" novalidate style="margin-top:14px;max-width:none"><h3 style="font-size:18px;margin-bottom:14px" id="fTit">Novo cenário</h3>
         <div style="display:flex;gap:14px;flex-wrap:wrap"><div class="campo" style="flex:2;min-width:240px"><label for="cNome">Cenário <i>*</i></label><input class="in" id="cNome" data-test="cenario-nome" placeholder="Ex.: Criar sem título"></div>
           <div class="campo" style="flex:1;min-width:170px"><label for="cTipo">Tipo</label><select class="in" id="cTipo" data-test="cenario-tipo"><option value="P">Positivo</option><option value="N">Negativo</option><option value="L">Valor limite</option></select></div></div>
         <div class="campo"><label for="cPassos">Passos</label><textarea class="in" id="cPassos" data-test="cenario-passos" placeholder="1. Abrir a tela Novo chamado&#10;2. …"></textarea></div>
@@ -367,14 +395,18 @@ PAGINAS.plano = () => {
       </form></div>
       <aside><div class="cov" id="cov" data-test="cobertura"><div class="hd">Cobertura das regras<span class="cnt" id="cnt" data-test="cobertura-contagem">0/6</span></div><div class="bar"><i id="bar"></i></div>
         ${REGRAS.map((r, i) => `<div class="rl" id="u${i}" data-test="regra"><b>✓</b>${r}<span class="q" id="q${i}" hidden></span></div>`).join('')}<div class="ex" id="ex" hidden></div></div>
-        <div class="bloco arqs"><h3>Arquivos de teste</h3><p class="dica" style="margin:-4px 0 8px">Gerados na hora, no tamanho exato, pra testar o anexo.</p>
-          ${[['documento-5MB-exato.pdf', LIMITE_ANEXO], ['documento-5,1MB.pdf', Math.floor(5.1 * 1048576)], ['documento-1MB.pdf', 1048576], ['print-da-tela.png', 48 * 1024], ['foto.jpg', 220 * 1024], ['programa.exe', 12 * 1024]].map(([n, b]) => `<a href="#" data-arq="${n}" data-b="${b}" data-test="arquivo-teste">${n}<small>${tamanho(b)}</small></a>`).join('')}</div></aside></div>`);
+</aside></div>`);
   const lista = d.planos[id];
-  let editando = null;
+  let editando = null; const abertos = new Set();
+  const mostraForm = (on) => { $('#f').hidden = !on; $('#abreForm').hidden = on; };
+  mostraForm(lista.length === 0);
+  $('#abreForm').onclick = () => { mostraForm(true); $('#cNome').focus(); };
+  $('#arqBtn').onclick = (ev) => { ev.stopPropagation(); $('#arqPop').hidden = !$('#arqPop').hidden; };
+  document.addEventListener('click', (ev) => { if (!ev.target.closest('.pop-wrap')) $('#arqPop').hidden = true; });
   const pinta = () => {
     $('#linhas').innerHTML = lista.length ? lista.map((c, i) => {
       const fora = !c.regras.length, t = TIPOS[c.tipo];
-      return `<tr class="${fora ? 'fora' : ''}" data-test="linha-cenario"><td class="num">${i + 1}</td><td><div class="cn">${esc(c.nome)}</div><span class="tg ${fora ? 'tX' : t[1]}">${fora ? 'FORA DAS REGRAS' : t[0]}</span>${fora ? ` <span class="tg ${t[1]}">${t[0]}</span>` : ''}${c.passos ? `<div class="dica" style="white-space:pre-wrap">${esc(c.passos)}</div>` : ''}</td><td class="res">${esc(c.esperado)}</td>
+      return `<tr class="${fora ? 'fora' : ''}" data-test="linha-cenario"><td class="num">${i + 1}</td><td><div class="cn">${esc(c.nome)}</div><span class="tg ${fora ? 'tX' : t[1]}">${fora ? 'FORA DAS REGRAS' : t[0]}</span>${fora ? ` <span class="tg ${t[1]}">${t[0]}</span>` : ''}${c.passos ? `<button type="button" class="link" data-ps="${i}" data-test="ver-passos">${abertos.has(i) ? 'Esconder passos' : 'Ver passos'}</button><div class="passos" ${abertos.has(i) ? '' : 'hidden'}>${esc(c.passos)}</div>` : ''}</td><td class="res">${esc(c.esperado)}</td>
         <td><select class="exec ${c.exec}" data-i="${i}" data-test="execucao"><option value="nao" ${c.exec === 'nao' ? 'selected' : ''}>Não executado</option><option value="passou" ${c.exec === 'passou' ? 'selected' : ''}>Passou</option><option value="falhou" ${c.exec === 'falhou' ? 'selected' : ''}>Falhou</option></select></td>
         <td><div class="acoes"><button class="icone" data-ed="${i}" data-test="editar-cenario">Editar</button><button class="icone" data-rm="${i}" data-test="excluir-cenario">✕</button></div></td></tr>`;
     }).join('') : '<tr><td colspan="5" class="vazio" data-test="plano-vazio">Nenhum cenário ainda</td></tr>';
@@ -386,16 +418,17 @@ PAGINAS.plano = () => {
     $('#ex').hidden = !fora.length; $('#ex').textContent = `+ Cenário ${fora.join(', ')}: fora das regras`;
     $$('[data-test=execucao]').forEach((s) => { s.onchange = () => { lista[+s.dataset.i].exec = s.value; salvar(); s.className = 'exec ' + s.value; }; });
     $$('[data-ed]').forEach((b) => { b.onclick = () => edita(+b.dataset.ed); });
+    $$('[data-ps]').forEach((b) => { b.onclick = () => { const i = +b.dataset.ps; abertos.has(i) ? abertos.delete(i) : abertos.add(i); pinta(); }; });
     $$('[data-rm]').forEach((b) => { b.onclick = () => { lista.splice(+b.dataset.rm, 1); salvar(); pinta(); toast('Cenário excluído'); }; });
   };
-  const limpa = () => { editando = null; $('#f').reset(); $('#fTit').textContent = 'Novo cenário'; $('#salva').textContent = 'Adicionar cenário'; $('#cancela').hidden = true; limpaErros(); };
+  const limpa = () => { editando = null; $('#f').reset(); $('#fTit').textContent = 'Novo cenário'; $('#salva').textContent = 'Adicionar cenário'; $('#cancela').hidden = !lista.length; limpaErros(); };
   const edita = (i) => {
     const c = lista[i]; editando = i; limpaErros();
     $('#cNome').value = c.nome; $('#cTipo').value = c.tipo; $('#cPassos').value = c.passos; $('#cEsp').value = c.esperado;
     $$('[data-test=cenario-regra]').forEach((k) => { k.checked = c.regras.includes(+k.value); });
-    $('#fTit').textContent = `Editando o cenário ${i + 1}`; $('#salva').textContent = 'Salvar cenário'; $('#cancela').hidden = false; $('#f').scrollIntoView({ behavior: 'smooth' });
+    mostraForm(true); $('#fTit').textContent = `Editando o cenário ${i + 1}`; $('#salva').textContent = 'Salvar cenário'; $('#cancela').hidden = false; $('#f').scrollIntoView({ behavior: 'smooth' });
   };
-  $('#cancela').onclick = limpa;
+  $('#cancela').onclick = () => { limpa(); if (lista.length) mostraForm(false); };
   $('#f').onsubmit = (ev) => {
     ev.preventDefault(); limpaErros();
     const nome = $('#cNome').value.trim(), esp = $('#cEsp').value.trim(); let ok = true;
@@ -406,6 +439,7 @@ PAGINAS.plano = () => {
     if (editando !== null) { c.exec = lista[editando].exec; lista[editando] = c; toast('Cenário salvo'); } else { lista.push(c); toast('Cenário adicionado'); }
     salvar(); limpa(); pinta();
   };
+  $('#cancela').hidden = !lista.length;
   $$('[data-arq]').forEach((a) => {
     a.onclick = (ev) => {
       ev.preventDefault();
@@ -459,16 +493,38 @@ PAGINAS.clientes = () => {
     ${CLIENTES.map((c) => `<tr data-test="linha-cliente"><td><b>${c.nome}</b></td><td>${c.contato}</td><td>${c.plano}</td><td>${d.chamados.filter((x) => x.cliente === c.nome).length}</td></tr>`).join('')}</tbody></table>`);
 };
 
+// respostas do time no FlowChat (roteiro simples por palavra-chave, pra o chat não parecer vazio)
+function respostaDoTime(tx, canal) {
+  const t = tx.toLowerCase(), d = dados(), bug = d.cards.filter((c) => c.tipo === 'bug').pop();
+  const R = (de, ...op) => ({ de, tx: op[Math.floor(Math.random() * op.length)] });
+  if (/bug|erro|falh|quebr/.test(t)) return bug ? R('gabriela', `Vi o ${bug.id}. Vou olhar ainda hoje e te aviso 👀`, `Já tô olhando o ${bug.id}. Se tiver print, joga no card!`) : R('gabriela', 'Opa! Abre o card em "Reportar bug" com o passo a passo que eu olho 👀', 'Me manda os passos pra reproduzir? Aí eu consigo ver aqui.');
+  if (/regra|crit[eé]rio|card|fd-?10\d|limite|anexo|t[ií]tulo/.test(t)) return R('rafael', 'Tá tudo nos critérios do FD-101. Se faltar alguma regra, me chama que a gente conversa 👍', 'Boa! Se tiver dúvida de regra, pode perguntar. Eu prefiro responder agora do que descobrir depois.');
+  if (/release|prazo|sexta|entrega|review/.test(t)) return R('beatriz', 'A release é sexta, depois da review. Se algo for segurar, me avisa antes 🙏', 'Anotado. Prioridade continua sendo o FD-101.');
+  if (/daily|reuni[aã]o|retro|sprint/.test(t)) return R('lucas', 'Daily é às 9h15, todo dia. Curta e direto ao ponto.', 'Na daily, fala o que fez, o que vai fazer e se tem algo travando.');
+  if (/^(oi|ol[aá]|bom dia|boa tarde|boa noite|e a[ií])/.test(t)) return R('gabriela', 'Oi! 👋', 'E aí! Tudo certo por aí?');
+  if (/obrigad|valeu|vlw/.test(t)) return R('rafael', 'Imagina! 🙌', 'Tamo junto!');
+  if (/\?/.test(t)) return R('vinicius', 'Boa pergunta. Se for regra, o Rafael responde. Se for código, a Gabriela. Se não souber pra quem, pergunta aqui mesmo 😉');
+  const pad = { 'time-produto': 'vinicius', bugs: 'gabriela', releases: 'beatriz', geral: 'beatriz' }[canal] || 'vinicius';
+  return R(pad, 'Chegou aqui 👍', 'Anotado!', 'Valeu por avisar.');
+}
 PAGINAS.chat = () => {
   const d = dados(), canal = d.chat[qs.get('canal')] ? qs.get('canal') : 'time-produto', l = d.chat[canal];
+  const msgHtml = (m) => `<div class="msg" data-test="mensagem">${m.de === 'voce' ? '<span class="vc">VC</span>' : `<img src="img/av_${m.de}.png" alt="">`}<div><div class="who">${PESSOAS[m.de].nome}<i>${PESSOAS[m.de].papel}</i><small>${hora(m.quando)}</small></div><div class="tx">${esc(m.tx)}</div></div></div>`;
   document.body.innerHTML = `<div class="chat"><div class="chan"><span class="marca" style="font-size:18px"><img src="img/icon.png" alt="" style="height:28px">FlowChat</span>
-      <div class="t">CANAIS</div>${Object.keys(d.chat).map((k) => `<a href="chat.html?canal=${k}" class="${k === canal ? 'on' : ''}" data-test="canal-${k}"># ${k}</a>`).join('')}
+      <div class="t">Canais</div>${Object.keys(d.chat).map((k) => `<a href="chat.html?canal=${k}" class="${k === canal ? 'on' : ''}" data-test="canal-${k}"># ${k}</a>`).join('')}
       <a href="dashboard.html" style="margin-top:auto;color:var(--mut);font-size:14px" data-test="voltar-flowdesk">← Voltar pro FlowDesk</a></div>
-    <div class="msgs"><div class="chead"># ${canal}<span>6 membros</span></div><div class="lista" id="lista" data-test="mensagens">
-      ${l.map((m) => `<div class="msg" data-test="mensagem">${m.de === 'voce' ? '<span class="vc">VC</span>' : `<img src="img/av_${m.de}.png" alt="">`}<div><div class="who">${PESSOAS[m.de].nome}<i>${PESSOAS[m.de].papel}</i><small>${hora(m.quando)}</small></div><div class="tx">${esc(m.tx)}</div></div></div>`).join('')}</div>
+    <div class="msgs"><div class="chead"># ${canal}<span>6 membros</span></div><div class="lista" id="lista" data-test="mensagens">${l.map(msgHtml).join('')}</div>
+      <div class="digitando" id="dig" data-test="digitando" hidden></div>
       <form class="composer" id="f"><input class="in" id="tx" placeholder="Escreva uma mensagem…" data-test="mensagem-texto" autocomplete="off"><button class="btn" data-test="enviar-mensagem">Enviar</button></form></div></div>`;
-  $('#lista').scrollTop = 1e9;
-  $('#f').onsubmit = (ev) => { ev.preventDefault(); const t = $('#tx').value.trim(); if (!t) return; l.push({ de: 'voce', tx: t, quando: agora() }); salvar(); location.reload(); };
+  const desce = () => { $('#lista').scrollTop = 1e9; };
+  desce();
+  $('#f').onsubmit = (ev) => {
+    ev.preventDefault(); const t = $('#tx').value.trim(); if (!t) return;
+    const m = { de: 'voce', tx: t, quando: agora() }; l.push(m); salvar(); $('#lista').insertAdjacentHTML('beforeend', msgHtml(m)); $('#tx').value = ''; desce();
+    const r = respostaDoTime(t, canal);
+    setTimeout(() => { $('#dig').hidden = false; $('#dig').textContent = `${PESSOAS[r.de].nome} está digitando…`; }, 700);
+    setTimeout(() => { $('#dig').hidden = true; const rm = { ...r, quando: agora() }; l.push(rm); salvar(); $('#lista').insertAdjacentHTML('beforeend', msgHtml(rm)); desce(); }, 2400);
+  };
 };
 
 PAGINAS.configuracoes = () => {
