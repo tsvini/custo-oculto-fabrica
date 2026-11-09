@@ -54,6 +54,7 @@ def grad_text(txt, fonte, c1, c2, stroke=10):
 
 def num(txt, tam=210, label=None, branco=False):
     c1, c2 = ((255, 255, 255), (205, 210, 220)) if branco else ((255, 226, 110), GOLD2)
+    while tam > 90 and F("an", tam).getlength(txt) > 900: tam -= 6  # não estoura a largura do vídeo
     t = brilho(grad_text(txt, F("an", tam), c1, c2), (255, 170, 30) if not branco else (255, 255, 255), 26, 0.55)
     if not label: return sombra(t, 14, 150)
     lb = tag(label, claro=True)
