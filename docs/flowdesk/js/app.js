@@ -127,7 +127,7 @@ const SAVES = [
 // Uma missão por prática guiada. O site confere sozinho e libera a conquista. Novas práticas: acrescentar aqui.
 const coberturaFD101 = (d) => new Set((d.planos['FD-101'] || []).flatMap((c) => c.regras)).size;
 const MISSOES = [
-  { id: 'ep03', titulo: 'Plano de testes do FD-101', aula: 'Prática do EP03', conquista: 'Plano de testes no FlowDesk', nivel: 'QA estagiário', link: 'plano.html', itens: [
+  { id: 'ep03', titulo: 'Plano de testes do FD-101', aula: 'Prática do EP03', conquista: 'Plano de testes no FlowDesk', nivel: 'QA estagiário', link: 'card.html?id=FD-101&aba=plano', itens: [
     ['Escreva pelo menos 8 cenários', (d) => (d.planos['FD-101'] || []).length >= 8],
     ['Use os três tipos: positivo, negativo e valor limite', (d) => ['P', 'N', 'L'].every((t) => (d.planos['FD-101'] || []).some((c) => c.tipo === t))],
     ['Cubra as 6 regras do card', (d) => coberturaFD101(d) === 6],
@@ -173,7 +173,7 @@ function casca(pagina, conteudo) {
   const c = contas()[sessao()] || { nome: '' };
   const it = (h, n, k) => `<a href="${h}" data-test="menu-${k}" class="${pagina === k ? 'on' : ''}">${ico(k)}<span>${n}</span></a>`;
   document.body.innerHTML = `<div class="app"><aside class="side">${MARCA}<nav>
-    ${it('dashboard.html', 'Início', 'dashboard')}${it('chamados.html', 'Chamados', 'chamados')}${it('quadro.html', 'Quadro', 'quadro')}${it('plano.html', 'Plano de testes', 'plano')}${it('chat.html', 'FlowChat', 'chat')}</nav>
+    ${it('dashboard.html', 'Início', 'dashboard')}${it('chamados.html', 'Chamados', 'chamados')}${it('quadro.html', 'Quadro', 'quadro')}${it('chat.html', 'FlowChat', 'chat')}</nav>
     <div class="side-fim">${cardMissao()}<nav class="sec-nav">${it('configuracoes.html', 'Configurações', 'configuracoes')}</nav>
     <div class="eu"><span class="vc">VC</span><div><b data-test="usuario-logado">${esc(c.nome)}</b><span>QA estagiário</span></div><button data-test="sair">Sair</button></div></div></aside>
     <main class="main"><div class="conteudo">${conteudo}</div></main></div>`;
@@ -256,7 +256,7 @@ PAGINAS.dashboard = () => {
   casca('dashboard', topo(`${oi}, ${esc(c.nome.split(' ')[0])}`, `Sprint ${VERSAO} do FlowDesk`) + `
     <div class="inicio"><div>${hero}</div>
       <div class="lado"><div class="numeros"><div><span data-test="kpi-abertos">${n('Aberto')}</span>abertos</div><div><span data-test="kpi-andamento">${n('Em andamento')}</span>em andamento</div><div><span data-test="kpi-resolvidos">${n('Resolvido')}</span>resolvidos</div></div>
-        <h3 class="tit">Seus cards</h3>${meus.length ? meus.map((k) => `<a class="tk meu" href="card.html?id=${k.id}" data-test="meu-card"><div class="id">${k.id}</div><div class="t">${esc(k.titulo)}</div><div class="who">${COLUNAS.find((x) => x[0] === k.coluna)[1].toLowerCase()}</div></a>`).join('') : '<p class="dica">Nenhum card com você agora.</p>'}
+        <h3 class="tit">Seus cards</h3>${meus.length ? meus.map(cardFace).join('') : '<p class="dica">Nenhum card com você agora.</p>'}
         <h3 class="tit">Últimos chamados</h3><div class="lista-simples">${ult.map((x) => `<a href="chamado.html?id=${x.id}"><span class="num">#${x.id}</span><span class="tx">${esc(x.titulo)}</span><span class="${stClasse(x.status)}">${x.status}</span></a>`).join('')}</div></div></div>`);
 };
 
@@ -332,13 +332,29 @@ PAGINAS.chamado = () => {
   };
 };
 
+// ---------- quadro (estilo ferramenta de tarefas: status coloridos, etiquetas, prioridade, progresso) ----------
+const COR_COLUNA = { afazer: '#8E92A4', dev: '#3B82F6', qa: '#A78BFA', teste: '#F59E0B', concluido: '#22C55E' };
+const PRIOS = ['Baixa', 'Normal', 'Alta', 'Urgente'];
+const prioDe = (c) => ({ 'Média': 'Normal', 'Crítica': 'Urgente' }[c.prioridade || c.severidade] || c.prioridade || c.severidade || 'Normal');
+const flag = (p) => `<span class="flag f-${p.toLowerCase()}"><svg viewBox="0 0 24 24"><path d="M5 21V4h11l-1.5 4L16 12H5"/></svg>${p}</span>`;
+const etiqueta = (c) => c.tipo === 'bug' ? '<span class="etq etq-bug">bug</span>' : c.tipo === 'melhoria' ? '<span class="etq etq-mel">melhoria</span>' : '<span class="etq etq-story">história</span>';
+const nomeColuna = (k) => COLUNAS.find((x) => x[0] === k)[1];
+function cardFace(c) {
+  const d = dados(), plano = d.planos[c.id], tot = c.criterios.length, ok = c.ok.length;
+  return `<a class="tk ${c.resp === 'voce' ? 'meu' : 'travado'} ${c.tipo === 'bug' ? 'e-bug' : ''}" href="card.html?id=${c.id}" draggable="${c.resp === 'voce'}" ${c.resp === 'voce' ? '' : `title="Card de ${PESSOAS[c.resp].nome}: só quem é responsável move"`} data-id="${c.id}" data-test="card-${c.id}">
+    <div class="tk-etq">${etiqueta(c)}<span class="id">${c.id}</span></div><div class="t">${esc(c.titulo)}</div>
+    <div class="tk-meta">${flag(prioDe(c))}${plano && plano.length ? `<span class="mini" title="Cenários no plano de testes">☑ ${plano.length}</span>` : ''}${c.comentarios.length ? `<span class="mini" title="Comentários">💬 ${c.comentarios.length}</span>` : ''}<span class="tk-av">${avatar(c.resp)}</span></div>
+    ${tot ? `<div class="tk-prog" title="Critérios de aceite validados"><i style="width:${ok / tot * 100}%"></i></div><div class="tk-prog-n">${ok}/${tot} critérios</div>` : ''}</a>`;
+}
 PAGINAS.quadro = () => {
-  casca('quadro', topo(`Sprint ${VERSAO}`, 'Objetivo: melhorar o fluxo de criar chamado', '', '<a class="btn sec peq" href="reportar-bug.html" data-test="ir-reportar-bug">Reportar bug</a>') + `<div class="cols">${COLUNAS.map(([k, n]) => `<div class="col ${k === 'qa' ? 'qa' : ''}" data-col="${k}" data-test="coluna-${k}"><div class="h">${n}<span data-test="contagem-${k}"></span></div><div class="cards"></div></div>`).join('')}</div>
+  casca('quadro', topo(`Sprint ${VERSAO}`, 'Objetivo: melhorar o fluxo de criar chamado') + `<div class="cols">${COLUNAS.map(([k, n]) => `<div class="col" data-col="${k}" data-test="coluna-${k}" style="--cor:${COR_COLUNA[k]}">
+      <div class="h"><span class="pill-st"><i></i>${n}</span><span class="cnt" data-test="contagem-${k}"></span>${k === 'afazer' ? '<button class="mais" data-test="nova-tarefa" title="Nova tarefa">+</button>' : ''}</div>
+      <div class="cards"></div>${k === 'afazer' ? '<button class="add-tarefa" data-test="adicionar-tarefa">+ Adicionar tarefa</button>' : ''}</div>`).join('')}</div>
     <p class="dica" style="margin-top:12px">Você move os seus cards arrastando, ou pelo próprio card. Os cards dos outros ficam com eles.</p>`);
   const pinta = () => {
     COLUNAS.forEach(([k]) => {
       const l = dados().cards.filter((c) => c.coluna === k), col = $(`[data-col=${k}]`);
-      $('.cards', col).innerHTML = l.map((c) => `<a class="tk ${c.resp === 'voce' ? 'meu' : 'travado'} ${c.tipo === 'bug' ? 'e-bug' : ''}" href="card.html?id=${c.id}" draggable="${c.resp === 'voce'}" ${c.resp === 'voce' ? '' : `title="Card de ${PESSOAS[c.resp].nome}: só quem é responsável move"`} data-id="${c.id}" data-test="card-${c.id}"><div class="id">${c.id}${c.tipo === 'bug' ? '<span class="bug">BUG</span>' : ''}</div><div class="t">${esc(c.titulo)}</div><div class="who">${avatar(c.resp)}${c.resp === 'voce' ? '<span style="color:#fff;font-weight:700">Você · QA</span>' : PESSOAS[c.resp].nome}</div></a>`).join('');
+      $('.cards', col).innerHTML = l.map(cardFace).join('');
       $('[data-test=contagem-' + k + ']', col).textContent = l.length || '';
     });
     $$('.tk').forEach((t) => { t.ondragstart = (e) => { if (t.getAttribute('draggable') !== 'true') return e.preventDefault(); e.dataTransfer.setData('text/plain', t.dataset.id); }; });
@@ -350,38 +366,102 @@ PAGINAS.quadro = () => {
       e.preventDefault(); col.classList.remove('sobre');
       const c = dados().cards.find((x) => x.id === e.dataTransfer.getData('text/plain')); if (!c) return;
       const p = podeMover(c, col.dataset.col); if (!p.ok) { if (p.msg) toast(p.msg, true); return; }
-      c.coluna = col.dataset.col; salvar(); pinta(); toast(`${c.id} movido para ${COLUNAS.find((x) => x[0] === c.coluna)[1].toLowerCase()}`);
+      c.coluna = col.dataset.col; salvar(); pinta(); toast(`${c.id} movido para ${nomeColuna(c.coluna).toLowerCase()}`);
     };
   });
+  $$('[data-test=nova-tarefa],[data-test=adicionar-tarefa]').forEach((b) => { b.onclick = () => novaTarefa(pinta); });
   pinta();
+  if (qs.get('novo') === 'bug') novaTarefa(pinta);
 };
+function novaTarefa(depois) {
+  const d = dados();
+  const o = document.createElement('div'); o.className = 'modal-fundo'; o.setAttribute('data-test', 'modal-nova-tarefa');
+  o.innerHTML = `<form class="modal" id="fT" novalidate><div class="modal-h"><h3>Nova tarefa</h3><button type="button" class="icone" data-fecha data-test="fechar-modal">✕</button></div>
+    <div class="seg" role="radiogroup"><label data-test="tipo-bug"><input type="radio" name="tipo" value="bug" checked><span>Bug</span></label><label data-test="tipo-melhoria"><input type="radio" name="tipo" value="melhoria"><span>Melhoria</span></label></div>
+    <div class="campo"><label for="tTitulo">Título <i>*</i></label><input class="in" id="tTitulo" data-test="tarefa-titulo" placeholder="O que acontece, e onde"></div>
+    <div class="linha2"><div class="campo"><label for="tPrio">Prioridade</label><select class="in" id="tPrio" data-test="tarefa-prioridade">${PRIOS.map((p) => `<option ${p === 'Normal' ? 'selected' : ''}>${p}</option>`).join('')}</select></div>
+      <div class="campo"><label for="tCard">Card relacionado</label><select class="in" id="tCard" data-test="tarefa-card"><option value="">Nenhum</option>${d.cards.filter((c) => c.tipo !== 'bug').map((c) => `<option value="${c.id}" ${c.id === 'FD-101' ? 'selected' : ''}>${c.id} · ${esc(c.titulo)}</option>`).join('')}</select></div></div>
+    <div class="so-bug"><div class="campo"><label for="tPassos">Passos para reproduzir <i>*</i></label><textarea class="in" id="tPassos" data-test="bug-passos" placeholder="1. …&#10;2. …&#10;3. …"></textarea></div>
+      <div class="linha2"><div class="campo"><label for="tEsp">Resultado esperado <i>*</i></label><input class="in" id="tEsp" data-test="bug-esperado"></div><div class="campo"><label for="tObt">Resultado obtido <i>*</i></label><input class="in" id="tObt" data-test="bug-obtido"></div></div>
+      <div class="campo"><label>Evidência <small>(print ou vídeo, opcional)</small></label><label class="arquivo" for="tEvid"><input type="file" id="tEvid" data-test="bug-evidencia"><span class="btn sec peq">Escolher arquivo</span><span class="nome" id="nomeEv">Nenhum arquivo escolhido</span></label></div></div>
+    <div class="so-mel" hidden><div class="campo"><label for="tDesc">Descrição <i>*</i></label><textarea class="in" id="tDesc" data-test="melhoria-descricao" placeholder="O que poderia ser melhor, e por quê"></textarea></div></div>
+    <p class="dica" id="tDest">O bug vai pra coluna A fazer, com a Gabriela.</p>
+    <div class="fbtns"><button type="button" class="btn sec" data-fecha>Cancelar</button><button class="btn" data-test="criar-tarefa">Criar tarefa</button></div></form>`;
+  document.body.appendChild(o);
+  const fecha = () => o.remove();
+  $$('[data-fecha]', o).forEach((b) => { b.onclick = fecha; });
+  o.onclick = (e) => { if (e.target === o) fecha(); };
+  const tipo = () => $('input[name=tipo]:checked', o).value;
+  $$('input[name=tipo]', o).forEach((r) => { r.onchange = () => { const bug = tipo() === 'bug'; $('.so-bug', o).hidden = !bug; $('.so-mel', o).hidden = bug; $('#tDest').textContent = bug ? 'O bug vai pra coluna A fazer, com a Gabriela.' : 'A melhoria vai pra coluna A fazer, com o Rafael, que decide se entra na sprint.'; limpaErros(); }; });
+  $('#tEvid').onchange = () => { const f = $('#tEvid').files[0]; $('#nomeEv').textContent = f ? f.name : 'Nenhum arquivo escolhido'; };
+  $('#tTitulo').focus();
+  $('#fT').onsubmit = (ev) => {
+    ev.preventDefault(); limpaErros(); let ok = true; const v = (i) => $('#' + i).value.trim(), bug = tipo() === 'bug';
+    const obrig = [['tTitulo', 'Dê um título pra tarefa']].concat(bug ? [['tPassos', 'Escreva os passos pra reproduzir'], ['tEsp', 'Escreva o resultado esperado'], ['tObt', 'Escreva o resultado obtido']] : [['tDesc', 'Descreva a melhoria']]);
+    obrig.forEach(([i, m]) => { if (!v(i)) { erroCampo(i, m); ok = false; } });
+    if (!ok) return;
+    let id;
+    if (bug) {
+      id = 'BUG-' + d.proximoBug++; const f = $('#tEvid').files[0];
+      d.cards.push({ id, titulo: v('tTitulo'), coluna: 'afazer', resp: 'gabriela', tipo: 'bug', prioridade: v('tPrio'), relacionado: v('tCard'), passos: v('tPassos'), esperado: v('tEsp'), obtido: v('tObt'), evidencia: f ? f.name : '', criterios: [], ok: [], comentarios: [], criadoEm: agora() });
+      d.chat.bugs.push({ de: 'voce', tx: `Abri o ${id}: ${v('tTitulo')}`, quando: agora() });
+    } else {
+      d.proximoMelhoria = d.proximoMelhoria || 1; id = 'MEL-' + d.proximoMelhoria++;
+      d.cards.push({ id, titulo: v('tTitulo'), coluna: 'afazer', resp: 'rafael', tipo: 'melhoria', prioridade: v('tPrio'), relacionado: v('tCard'), descricao: v('tDesc'), criterios: [], ok: [], comentarios: [], criadoEm: agora() });
+    }
+    salvar(); fecha(); toast(`${id} criado${bug ? ' e enviado pra Gabriela' : ''}`); if (depois) depois();
+  };
+}
 
+// ---------- card (detalhes, plano de testes e comentários em abas) ----------
 PAGINAS.card = () => {
   const d = dados(), c = d.cards.find((x) => x.id === (qs.get('id') || '').toUpperCase());
   if (!c) return casca('quadro', topo('Card não encontrado') + '<a class="btn sec" href="quadro.html">Voltar pro quadro</a>');
-  const bug = c.tipo === 'bug';
+  const temPlano = !!d.planos[c.id];
+  const abas = [['detalhes', 'Detalhes'], ...(temPlano ? [['plano', 'Plano de testes']] : []), ['comentarios', 'Comentários']];
+  let aba = abas.some(([k]) => k === qs.get('aba')) ? qs.get('aba') : 'detalhes';
+  const tot = c.criterios.length;
+  casca('quadro', `<div class="topo"><div><div class="crumb"><a href="quadro.html">Quadro</a> / Sprint ${VERSAO}</div>
+      <h2 data-test="titulo-pagina">${etiqueta(c)} <span style="color:var(--acc2)">${c.id}</span> · <span data-test="card-titulo" style="color:var(--txt)">${esc(c.titulo)}</span></h2></div><div class="topo-acoes">${pillVersao()}</div></div>
+    <div class="meta">
+      <div class="mi"><div class="k">Status</div><div class="v">${c.resp === 'voce' ? `<select class="in" id="mover" data-test="mover-card" style="height:32px;font-size:14px;min-width:190px">${COLUNAS.filter(([k]) => k === c.coluna || (MOVES_QA[c.coluna] || []).includes(k)).map(([k, n]) => `<option value="${k}" ${k === c.coluna ? 'selected' : ''}>${n}</option>`).join('')}</select>` : `<span class="pill-st" style="--cor:${COR_COLUNA[c.coluna]}" data-test="coluna-card"><i></i>${nomeColuna(c.coluna)}</span>`}</div></div>
+      <div class="mi"><div class="k">Responsável</div><div class="v">${avatar(c.resp)}${PESSOAS[c.resp].nome}</div></div>
+      <div class="mi"><div class="k">Prioridade</div><div class="v" data-test="card-prioridade">${flag(prioDe(c))}</div></div>
+      ${tot ? `<div class="mi"><div class="k">Critérios</div><div class="v" id="critN">${c.ok.length}/${tot}</div></div>` : ''}</div>
+    <nav class="abas">${abas.map(([k, n]) => `<button class="${k === aba ? 'on' : ''}" data-aba="${k}" data-test="aba-${k}">${n}<span class="n" id="n-${k}"></span></button>`).join('')}</nav>
+    <div id="abaConteudo"></div>`);
+  const contagens = () => { if ($('#n-plano')) $('#n-plano').textContent = d.planos[c.id].length || ''; $('#n-comentarios').textContent = c.comentarios.length || ''; };
   const campo = (k, v) => `<div class="sec"><div class="k">${k}</div>${v ? `<div class="v">${esc(v)}</div>` : '<div class="v nada">Nada informado.</div>'}</div>`;
-  casca('quadro', topo(`<span>${c.id}</span> · <span style="color:var(--txt)" data-test="card-titulo">${esc(c.titulo)}</span>`, '', `<a href="quadro.html">Quadro</a> / Sprint ${VERSAO} · ${bug ? 'Bug' : 'User story'}`) + `
-    <div class="meta"><div class="mi"><div class="k">${bug ? 'SEVERIDADE' : 'PRIORIDADE'}</div><div class="v" data-test="card-prioridade">${esc(bug ? c.severidade : c.prioridade)}</div></div>
-      <div class="mi"><div class="k">RESPONSÁVEL</div><div class="v">${avatar(c.resp)}${PESSOAS[c.resp].nome}</div></div>
-      <div class="mi"><div class="k">COLUNA</div><div class="v">${c.resp === 'voce' ? `<select class="in" id="mover" data-test="mover-card" style="height:34px;font-size:14px;min-width:200px">${COLUNAS.filter(([k]) => k === c.coluna || (MOVES_QA[c.coluna] || []).includes(k)).map(([k, n]) => `<option value="${k}" ${k === c.coluna ? 'selected' : ''}>${n}</option>`).join('')}</select>` : `<span data-test="coluna-card">${COLUNAS.find((x) => x[0] === c.coluna)[1]}</span>`}</div></div></div>
-    ${bug ? `<div class="sec"><div class="k">Card relacionado</div><div class="v">${c.relacionado ? `<a href="card.html?id=${c.relacionado}">${c.relacionado}</a>` : '—'}</div></div>` + campo('Passos para reproduzir', c.passos) + campo('Resultado esperado', c.esperado) + campo('Resultado obtido', c.obtido) + campo('Evidência', c.evidencia ? '📎 ' + c.evidencia : '')
-      : campo('Descrição', c.descricao) + `<div class="sec" id="sCrit"><div class="k">Critérios de aceite</div>${c.criterios.length ? c.criterios.map((k, i) => `<label class="cr"><input type="checkbox" data-i="${i}" data-test="criterio" ${c.ok.includes(i) ? 'checked' : ''}>${esc(k)}</label>`).join('') : '<div class="v nada">Nenhum critério definido.</div>'}</div>`}
-    ${d.planos[c.id] ? `<div style="margin-top:16px"><a class="btn" href="plano.html?card=${c.id}" data-test="abrir-plano">Abrir plano de testes</a></div>` : ''}
-    <div class="sec"><div class="k">Comentários</div><div id="coms">${c.comentarios.map((m) => `<div class="coment">${avatar('voce')}<div class="bx"><b>Você</b><small>${dataBR(m.quando)}</small><div>${esc(m.tx)}</div></div></div>`).join('') || '<div class="v nada" style="font-size:15px">Nenhum comentário ainda.</div>'}</div>
-      <div style="display:flex;gap:10px;margin-top:12px"><input class="in" id="com" placeholder="Escreva um comentário…" data-test="comentario"><button class="btn" id="enviaCom" data-test="enviar-comentario">Comentar</button></div></div>`);
-  if ($('#mover')) $('#mover').onchange = () => { const p = podeMover(c, $('#mover').value); if (!p.ok) { $('#mover').value = c.coluna; return p.msg && toast(p.msg, true); } c.coluna = $('#mover').value; salvar(); toast(`${c.id} movido para ${COLUNAS.find((x) => x[0] === c.coluna)[1].toLowerCase()}`); };
-  $$('[data-test=criterio]').forEach((k) => { k.onchange = () => { const i = +k.dataset.i; c.ok = k.checked ? [...new Set([...c.ok, i])] : c.ok.filter((x) => x !== i); salvar(); }; });
-  $('#enviaCom').onclick = () => { const t = $('#com').value.trim(); if (!t) return; c.comentarios.push({ tx: t, quando: agora() }); salvar(); location.reload(); };
+  const mostra = (k) => {
+    aba = k; $$('.abas button').forEach((b) => b.classList.toggle('on', b.dataset.aba === k));
+    history.replaceState(null, '', `card.html?id=${c.id}${k === 'detalhes' ? '' : '&aba=' + k}`);
+    const A = $('#abaConteudo');
+    if (k === 'detalhes') {
+      A.innerHTML = c.tipo === 'bug'
+        ? `<div class="sec"><div class="k">Card relacionado</div><div class="v">${c.relacionado ? `<a href="card.html?id=${c.relacionado}">${c.relacionado}</a>` : '—'}</div></div>` + campo('Passos para reproduzir', c.passos) + campo('Resultado esperado', c.esperado) + campo('Resultado obtido', c.obtido) + campo('Evidência', c.evidencia ? '📎 ' + c.evidencia : '')
+        : campo('Descrição', c.descricao) + (c.tipo === 'melhoria' ? '' : `<div class="sec" id="sCrit"><div class="k">Critérios de aceite</div>${tot ? c.criterios.map((k2, i) => `<label class="cr"><input type="checkbox" data-i="${i}" data-test="criterio" ${c.ok.includes(i) ? 'checked' : ''}>${esc(k2)}</label>`).join('') : '<div class="v nada">Nenhum critério definido.</div>'}</div>`)
+          + (temPlano ? `<div style="margin-top:16px"><button class="btn" data-test="abrir-plano" id="abrePlano">Abrir plano de testes</button></div>` : '');
+      $$('[data-test=criterio]').forEach((k2) => { k2.onchange = () => { const i = +k2.dataset.i; c.ok = k2.checked ? [...new Set([...c.ok, i])] : c.ok.filter((x) => x !== i); salvar(); if ($('#critN')) $('#critN').textContent = `${c.ok.length}/${tot}`; }; });
+      if ($('#abrePlano')) $('#abrePlano').onclick = () => mostra('plano');
+    } else if (k === 'plano') {
+      montaPlano(A, c);
+    } else {
+      A.innerHTML = `<div class="sec"><div id="coms">${c.comentarios.map((m) => `<div class="coment">${avatar('voce')}<div class="bx"><b>Você</b><small>${dataBR(m.quando)}</small><div>${esc(m.tx)}</div></div></div>`).join('') || '<div class="v nada" style="font-size:15px">Nenhum comentário ainda.</div>'}</div>
+        <div style="display:flex;gap:10px;margin-top:12px"><input class="in" id="com" placeholder="Escreva um comentário…" data-test="comentario"><button class="btn" id="enviaCom" data-test="enviar-comentario">Comentar</button></div></div>`;
+      $('#enviaCom').onclick = () => { const t = $('#com').value.trim(); if (!t) return; c.comentarios.push({ tx: t, quando: agora() }); salvar(); contagens(); mostra('comentarios'); };
+    }
+    contagens();
+  };
+  $$('.abas button').forEach((b) => { b.onclick = () => mostra(b.dataset.aba); });
+  if ($('#mover')) $('#mover').onchange = () => { const p = podeMover(c, $('#mover').value); if (!p.ok) { $('#mover').value = c.coluna; return p.msg && toast(p.msg, true); } c.coluna = $('#mover').value; salvar(); toast(`${c.id} movido para ${nomeColuna(c.coluna).toLowerCase()}`); };
+  mostra(aba);
 };
 
-PAGINAS.plano = () => {
-  const d = dados(), id = (qs.get('card') || 'FD-101').toUpperCase();
-  if (!d.planos[id]) return casca('plano', topo('Plano de testes') + '<div class="vazio">Esse card ainda não tem plano de testes.</div>');
-  const card = d.cards.find((x) => x.id === id);
+function montaPlano(A, card) {
+  const d = dados(), id = card.id, lista = d.planos[id];
   const TIPOS = { P: ['POSITIVO', 'tP'], N: ['NEGATIVO', 'tN'], L: ['VALOR LIMITE', 'tL'] };
-  const arqsHtml = `<div class="pop-wrap"><button type="button" class="btn sec peq" id="arqBtn" data-test="abrir-arquivos">Arquivos de teste</button><div class="arqs pop-arq" id="arqPop" hidden><h3>Arquivos de teste</h3><p class="dica">Gerados na hora, no tamanho exato, pra testar o anexo.</p>${[['documento-5MB-exato.pdf', LIMITE_ANEXO], ['documento-5,1MB.pdf', Math.floor(5.1 * 1048576)], ['documento-1MB.pdf', 1048576], ['print-da-tela.png', 48 * 1024], ['foto.jpg', 220 * 1024], ['programa.exe', 12 * 1024]].map(([n, b]) => `<a href="#" data-arq="${n}" data-b="${b}" data-test="arquivo-teste">${n}<small>${tamanho(b)}</small></a>`).join('')}</div></div>`;
-  casca('plano', topo(`<span>${id}</span> · Plano de testes`, 'Cada cenário: uma situação, os passos e o resultado esperado', `<a href="card.html?id=${id}">${id} · ${esc(card.titulo)}</a>`, arqsHtml) + `
+  A.innerHTML = `<div class="plano-barra"><p class="dica">Cada cenário: uma situação, os passos e o resultado esperado.</p>
+      <div class="pop-wrap"><button type="button" class="btn sec peq" id="arqBtn" data-test="abrir-arquivos">Arquivos de teste</button><div class="arqs pop-arq" id="arqPop" hidden><h3>Arquivos de teste</h3><p class="dica">Gerados na hora, no tamanho exato, pra testar o anexo.</p>${[['documento-5MB-exato.pdf', LIMITE_ANEXO], ['documento-5,1MB.pdf', Math.floor(5.1 * 1048576)], ['documento-1MB.pdf', 1048576], ['print-da-tela.png', 48 * 1024], ['foto.jpg', 220 * 1024], ['programa.exe', 12 * 1024]].map(([n, b]) => `<a href="#" data-arq="${n}" data-b="${b}" data-test="arquivo-teste">${n}<small>${tamanho(b)}</small></a>`).join('')}</div></div></div>
     <div class="plano"><div class="esq">
       <table class="tabela"><thead><tr><th style="width:40px">#</th><th>Cenário</th><th>Resultado esperado</th><th style="width:150px">Execução</th><th style="width:96px"></th></tr></thead><tbody id="linhas"></tbody></table>
       <button type="button" class="btn sec" id="abreForm" data-test="novo-cenario" style="margin-top:14px">+ Novo cenário</button>
@@ -394,15 +474,13 @@ PAGINAS.plano = () => {
         <div class="fbtns"><button type="button" class="btn sec" id="cancela" hidden data-test="cancelar-edicao">Cancelar</button><button class="btn" data-test="salvar-cenario" id="salva">Adicionar cenário</button></div>
       </form></div>
       <aside><div class="cov" id="cov" data-test="cobertura"><div class="hd">Cobertura das regras<span class="cnt" id="cnt" data-test="cobertura-contagem">0/6</span></div><div class="bar"><i id="bar"></i></div>
-        ${REGRAS.map((r, i) => `<div class="rl" id="u${i}" data-test="regra"><b>✓</b>${r}<span class="q" id="q${i}" hidden></span></div>`).join('')}<div class="ex" id="ex" hidden></div></div>
-</aside></div>`);
-  const lista = d.planos[id];
+        ${REGRAS.map((r, i) => `<div class="rl" id="u${i}" data-test="regra"><b>✓</b>${r}<span class="q" id="q${i}" hidden></span></div>`).join('')}<div class="ex" id="ex" hidden></div></div></aside></div>`;
   let editando = null; const abertos = new Set();
   const mostraForm = (on) => { $('#f').hidden = !on; $('#abreForm').hidden = on; };
   mostraForm(lista.length === 0);
   $('#abreForm').onclick = () => { mostraForm(true); $('#cNome').focus(); };
   $('#arqBtn').onclick = (ev) => { ev.stopPropagation(); $('#arqPop').hidden = !$('#arqPop').hidden; };
-  document.addEventListener('click', (ev) => { if (!ev.target.closest('.pop-wrap')) $('#arqPop').hidden = true; });
+  document.addEventListener('click', (ev) => { if ($('#arqPop') && !ev.target.closest('.pop-wrap')) $('#arqPop').hidden = true; });
   const pinta = () => {
     $('#linhas').innerHTML = lista.length ? lista.map((c, i) => {
       const fora = !c.regras.length, t = TIPOS[c.tipo];
@@ -416,6 +494,7 @@ PAGINAS.plano = () => {
     $('#cnt').textContent = n + '/6'; $('#bar').style.width = (n / 6 * 100) + '%'; $('#cov').classList.toggle('done', n === 6);
     const fora = lista.map((c, j) => c.regras.length ? 0 : j + 1).filter(Boolean);
     $('#ex').hidden = !fora.length; $('#ex').textContent = `+ Cenário ${fora.join(', ')}: fora das regras`;
+    if ($('#n-plano')) $('#n-plano').textContent = lista.length || '';
     $$('[data-test=execucao]').forEach((s) => { s.onchange = () => { lista[+s.dataset.i].exec = s.value; salvar(); s.className = 'exec ' + s.value; }; });
     $$('[data-ed]').forEach((b) => { b.onclick = () => edita(+b.dataset.ed); });
     $$('[data-ps]').forEach((b) => { b.onclick = () => { const i = +b.dataset.ps; abertos.has(i) ? abertos.delete(i) : abertos.add(i); pinta(); }; });
@@ -449,32 +528,11 @@ PAGINAS.plano = () => {
     };
   });
   pinta();
-};
+}
 
-PAGINAS['reportar-bug'] = () => {
-  const d = dados();
-  casca('reportar-bug', topo('Reportar bug', 'Abra o card do bug que você encontrou. Ele vai pro quadro, com a Gabriela.') + `
-    <form class="fcard" id="f" novalidate>
-      <div class="campo"><label for="bTitulo">Título <i>*</i></label><input class="in" id="bTitulo" data-test="bug-titulo" placeholder="O que acontece, e onde"></div>
-      <div style="display:flex;gap:14px;flex-wrap:wrap"><div class="campo" style="flex:1;min-width:200px"><label for="bCard">Card relacionado</label><select class="in" id="bCard" data-test="bug-card"><option value="">Nenhum</option>${d.cards.filter((c) => c.tipo !== 'bug').map((c) => `<option value="${c.id}" ${c.id === 'FD-101' ? 'selected' : ''}>${c.id} · ${esc(c.titulo)}</option>`).join('')}</select></div>
-        <div class="campo" style="flex:1;min-width:200px"><label for="bSev">Severidade <i>*</i></label><select class="in" id="bSev" data-test="bug-severidade"><option value="">Escolha…</option><option>Baixa</option><option>Média</option><option>Alta</option><option>Crítica</option></select></div></div>
-      <div class="campo"><label for="bPassos">Passos para reproduzir <i>*</i></label><textarea class="in" id="bPassos" data-test="bug-passos" placeholder="1. …&#10;2. …&#10;3. …"></textarea></div>
-      <div class="campo"><label for="bEsp">Resultado esperado <i>*</i></label><input class="in" id="bEsp" data-test="bug-esperado"></div>
-      <div class="campo"><label for="bObt">Resultado obtido <i>*</i></label><input class="in" id="bObt" data-test="bug-obtido"></div>
-      <div class="campo"><label>Evidência <small>(print ou vídeo, opcional)</small></label><label class="arquivo" for="bEvid"><input type="file" id="bEvid" data-test="bug-evidencia"><span class="btn sec peq">Escolher arquivo</span><span class="nome" id="nomeEv">Nenhum arquivo escolhido</span></label></div>
-      <div class="fbtns"><a class="btn sec" href="quadro.html">Cancelar</a><button class="btn" data-test="abrir-bug">Abrir bug</button></div></form>`);
-  $('#bEvid').onchange = () => { const f = $('#bEvid').files[0]; $('#nomeEv').textContent = f ? f.name : 'Nenhum arquivo escolhido'; };
-  $('#f').onsubmit = (ev) => {
-    ev.preventDefault(); limpaErros(); let ok = true;
-    const v = (i) => $('#' + i).value.trim();
-    [['bTitulo', 'Dê um título pro bug'], ['bSev', 'Escolha a severidade'], ['bPassos', 'Escreva os passos pra reproduzir'], ['bEsp', 'Escreva o resultado esperado'], ['bObt', 'Escreva o resultado obtido']].forEach(([i, m]) => { if (!v(i)) { erroCampo(i, m); ok = false; } });
-    if (!ok) return;
-    const id = 'BUG-' + d.proximoBug++, f = $('#bEvid').files[0];
-    d.cards.push({ id, titulo: v('bTitulo'), coluna: 'afazer', resp: 'gabriela', tipo: 'bug', severidade: v('bSev'), relacionado: v('bCard'), passos: v('bPassos'), esperado: v('bEsp'), obtido: v('bObt'), evidencia: f ? f.name : '', criterios: [], ok: [], comentarios: [], criadoEm: agora() });
-    d.chat.bugs.push({ de: 'voce', tx: `Abri o ${id}: ${v('bTitulo')}`, quando: agora() });
-    salvar(); recado(`${id} aberto e enviado pra Gabriela`); location.href = 'card.html?id=' + id;
-  };
-};
+// endereços antigos continuam funcionando
+PAGINAS.plano = () => location.replace(`card.html?id=${(qs.get('card') || 'FD-101').toUpperCase()}&aba=plano`);
+PAGINAS['reportar-bug'] = () => location.replace('quadro.html?novo=bug');
 
 
 PAGINAS.missoes = () => {
