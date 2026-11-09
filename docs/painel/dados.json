@@ -1,18 +1,14 @@
 {
- "atualizado": "08/11/2026 13:46",
+ "atualizado": "08/11/2026 22:57",
  "fontes": {
   "custo_oculto": {
-   "seguidores": 30,
-   "views_total": 9598,
+   "seguidores": 31,
+   "views_total": 9648,
    "videos": 50,
-   "views_28d": 8975,
-   "views_7d": 3577,
-   "seguidores_28d": 31,
+   "views_28d": 8290,
+   "views_7d": 3677,
+   "seguidores_28d": 29,
    "dia": [
-    [
-     "2026-10-11",
-     824
-    ],
     [
      "2026-10-12",
      2089
@@ -112,20 +108,24 @@
     [
      "2026-11-05",
      290
+    ],
+    [
+     "2026-11-06",
+     139
     ]
    ],
    "top": [
     {
      "titulo": "Bombril: a marca que virou sinônimo de lã de aço — O Custo de Ser Gigante EP. 09",
      "url": "https://youtu.be/2bKwMEzu16U",
-     "views": 1341,
+     "views": 1355,
      "retencao": 50,
      "likes": 67
     },
     {
      "titulo": "A gambiarra que transformou a Havaianas em ícone mundial 🩴",
      "url": "https://youtu.be/PSEeDLDb7PA",
-     "views": 1287,
+     "views": 1297,
      "retencao": 59,
      "likes": 65
     },
@@ -144,11 +144,11 @@
      "likes": 41
     },
     {
-     "titulo": "2/7 Adam Neumann vendeu uma visão — e bilhões acreditaram",
-     "url": "https://youtu.be/KwwgU40ljtE",
-     "views": 396,
-     "retencao": 43,
-     "likes": 7
+     "titulo": "7/7 O verdadeiro custo da WeWork",
+     "url": "https://youtu.be/9sKzFjE6KYs",
+     "views": 310,
+     "retencao": 52,
+     "likes": 5
     }
    ],
    "nome": "Custo Oculto (YouTube)"
@@ -168,14 +168,10 @@
    "seguidores": 0,
    "views_total": 463,
    "videos": 9,
-   "views_28d": 427,
-   "views_7d": 280,
+   "views_28d": 462,
+   "views_7d": 147,
    "seguidores_28d": 0,
    "dia": [
-    [
-     "2026-10-11",
-     0
-    ],
     [
      "2026-10-12",
      0
@@ -275,6 +271,10 @@
     [
      "2026-11-05",
      4
+    ],
+    [
+     "2026-11-06",
+     35
     ]
    ],
    "top": [
@@ -300,17 +300,17 @@
      "likes": 2
     },
     {
+     "titulo": "Teste vermelho com Timed out retrying",
+     "url": "https://youtu.be/2seOWOBn4AQ",
+     "views": 32,
+     "retencao": 32,
+     "likes": 0
+    },
+    {
      "titulo": "Seu primeiro teste automatizado",
      "url": "https://youtu.be/lyfD8rJ6F30",
      "views": 31,
      "retencao": 85,
-     "likes": 0
-    },
-    {
-     "titulo": "Você não precisa saber programar pra automatizar teste",
-     "url": "https://youtu.be/1hbvry7AlKk",
-     "views": 19,
-     "retencao": 28,
      "likes": 0
     }
    ],
@@ -318,16 +318,16 @@
   },
   "tiktok": {
    "usuario": "Custo Oculto",
-   "seguidores": 79,
-   "curtidas": 549,
+   "seguidores": 80,
+   "curtidas": 570,
    "videos": 31,
-   "views_total": 8331,
+   "views_total": 8847,
    "top": [
     {
      "titulo": "Uma empresa brasileira registrou o nome iPhone 7 anos antes da Apple lançar o celular. E p",
      "url": "https://www.tiktok.com/@custooculto/video/7705797386299247879?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 43,
-     "likes": 3
+     "views": 550,
+     "likes": 24
     },
     {
      "titulo": "Antes do videogame, a Nintendo vendeu baralho, arroz instantâneo e até corrida de táxi.  🃏",
@@ -338,7 +338,7 @@
     {
      "titulo": "Janelas, ícones e mouse. A Xerox criou tudo isso em 1973 e mostrou para a Apple.  🖱️ O Cus",
      "url": "https://www.tiktok.com/@custooculto/video/7705047657332444422?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 543,
+     "views": 544,
      "likes": 34
     },
     {
@@ -350,13 +350,13 @@
     {
      "titulo": "A Mappin já foi uma das lojas mais famosas do Brasil. Durante décadas, fez parte da vida d",
      "url": "https://www.tiktok.com/@custooculto/video/7704347089102277906?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 608,
+     "views": 611,
      "likes": 30
     },
     {
      "titulo": "Em 1992, o Magazine Luiza criou uma “Loja Virtual” quando comprar pela internet ainda pare",
      "url": "https://www.tiktok.com/@custooculto/video/7703986197403602196?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 142,
+     "views": 146,
      "likes": 2
     }
    ],
