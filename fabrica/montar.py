@@ -21,15 +21,26 @@ def norm(s):
 
 
 def corrige(ws, roteiro):
-    """troca a grafia do whisper pela do roteiro quando as palavras batem"""
+    """usa a grafia e as palavras do roteiro; trechos que o whisper errou são redistribuídos no tempo"""
     rt = roteiro.split()
     a = [norm(w[2]) for w in ws]; b = [norm(t) for t in rt]
     sm = difflib.SequenceMatcher(None, a, b, autojunk=False)
+    out = []
     for tag, i1, i2, j1, j2 in sm.get_opcodes():
-        if tag in ("equal", "replace") and (i2 - i1) == (j2 - j1):
+        if tag == "equal" or (tag == "replace" and (i2 - i1) == (j2 - j1)):
             for k in range(i2 - i1):
-                ws[i1 + k][2] = rt[j1 + k]
-    return ws
+                out.append([ws[i1 + k][0], ws[i1 + k][1], rt[j1 + k]])
+        elif tag == "replace" and (i2 - i1) == 1 and re.search(r"\d", ws[i1][2]):
+            out.append(list(ws[i1]))  # número/sigla que o roteiro escreve por extenso (ex.: 3M)
+        elif tag == "replace" or (tag == "insert" and out):
+            t0 = ws[i1][0] if i1 < len(ws) and tag == "replace" else out[-1][1]
+            t1 = ws[i2 - 1][1] if tag == "replace" else (ws[i1][0] if i1 < len(ws) else t0 + 0.3 * (j2 - j1))
+            if t1 <= t0: t1 = t0 + 0.25 * (j2 - j1)
+            n = j2 - j1; st = (t1 - t0) / n
+            for k in range(n):
+                out.append([t0 + k * st, t0 + (k + 1) * st, rt[j1 + k]])
+        # delete: palavras que só o whisper ouviu são descartadas
+    return out
 
 
 def blocos(ws):
@@ -148,12 +159,12 @@ def escolhe_efeitos(ws, serie, empresa, dur):
             usados.add(lo); E.append((a, fim, 560, st(fx.stamp(CARIMBOS[lo], 110)), "slam", 1)); continue
         if i + 1 < len(ws):
             t2 = ws[i + 1][2].rstrip(".,?!:;")
-            if t[:1].isupper() and t2[:1].isupper() and t not in COMUNS and t2 not in COMUNS and norm(t) != norm(empresa) and len(t) > 2 and len(t2) > 2:
+            if t[:1].isupper() and t2[:1].isupper() and not re.search(r"[.,?!:;]$", w[2]) and t not in COMUNS and t2 not in COMUNS and norm(t) != norm(empresa) and len(t) > 2 and len(t2) > 2:
                 nome = f"{t} {t2}".upper()
                 if nome not in usados:
-                    usados.add(nome); pula.add(i + 1); E.append((a, a + 2.8, 520, st(fx.tag(nome, sub="QUEM")), "slide", 1)); continue
+                    usados.add(nome); pula.add(i + 1); E.append((a, a + 2.8, 520, st(fx.tag(nome)), "slide", 1)); continue
         ant = ws[i - 1][2] if i else "."
-        if t[:1].isupper() and len(t) > 3 and t not in COMUNS and norm(t) != norm(empresa) and not re.search(r"[.?!]$", ant) and t.upper() not in usados \
+        if t[:1].isupper() and len(t) > 3 and t not in COMUNS and norm(t) != norm(empresa) and not re.search(r"[.?!]$", ant) and t.upper() not in usados and not any(t.upper() in u.split() for u in usados) \
                 and (not E or a - E[-1][0] > 3.5):
             usados.add(t.upper()); E.append((a, min(prox_frase(a), a + 2.6), 520, st(fx.tag(t.upper())), "slide", 1)); continue
     for k, f in enumerate(trio):
@@ -168,6 +179,13 @@ def escolhe_efeitos(ws, serie, empresa, dur):
             dest = {p.strip(".,”“") for p in dest}
         perg = [f for f in fr if f[-1][2].endswith("?") and f[0][0] > fim_txt[0][0]]
         qfim = perg[0][0][0] if perg else dur
+        if serie == "j":
+            depois = [f for f in fr if f[0][0] > fim_txt[-1][0] and len(f) <= 7 and norm(f[0][2]) != "essa" and not f[-1][2].endswith("?")][:3]
+            if len(depois) == 3:
+                fim3 = qfim
+                for k, f in enumerate(depois):
+                    E.append((f[0][0], fim3, 400 + k * 125, st(fx.tag(" ".join(x[2] for x in f).rstrip(".").upper())), "slide", 2))
+                qfim = depois[0][0][0]
         E.append((fim_txt[0][0], qfim, 520, st(fx.quote(quebra(txt, 24), dest)), "up", 3))
         if perg:
             E.append((perg[0][0][0], dur, 520, st(fx.tag("RESPONDE NOS COMENTÁRIOS", sub="E VOCÊ?")), "up", 4))
@@ -245,7 +263,7 @@ def main(pasta, serie, empresa, roteiro, palavras, narr, encerr, saida, musica=N
         run("-i", os.path.join(tmp, "fx.mp4"), "-i", narr, "-filter_complex", f"[1:a]aresample=48000,pan=stereo|c0=c0|c1=c0,apad=whole_dur={dur:.3f}[a]",
             "-map", "0:v", "-map", "[a]", "-c:v", "copy", "-c:a", "aac", "-b:a", "192k", "-t", f"{dur:.3f}", corpo)
     fim = os.path.join(tmp, "fim.mp4")
-    run("-i", encerr, "-f", "lavfi", "-i", "anullsrc=r=48000:cl=stereo", "-vf", "scale=1080:1920:flags=lanczos,fps=30,setsar=1", "-map", "0:v", "-map", "1:a",
+    run("-i", encerr, "-f", "lavfi", "-i", "anullsrc=r=48000:cl=stereo", "-vf", "scale=1080:1920:flags=lanczos,fps=30,setsar=1,delogo=x=30:y=40:w=230:h=80", "-map", "0:v", "-map", "1:a",
         "-c:v", "libx264", "-crf", "18", "-pix_fmt", "yuv420p", "-c:a", "aac", "-shortest", fim)
     run("-i", corpo, "-i", fim, "-filter_complex", "[0:v][0:a][1:v][1:a]concat=n=2:v=1:a=1[v][a];[a]loudnorm=I=-14:TP=-1.5:LRA=11[a2]",
         "-map", "[v]", "-map", "[a2]", "-c:v", "libx264", "-preset", "medium", "-crf", "18", "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "192k", "-ar", "48000", "-movflags", "+faststart", saida)

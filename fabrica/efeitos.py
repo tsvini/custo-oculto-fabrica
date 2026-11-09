@@ -21,7 +21,9 @@ def brilho(im, cor, raio=22, forca=1.0):
     g.putalpha(m); g.alpha_composite(im, (2 * raio, 2 * raio)); return g
 
 def tag(txt, cor=GOLD, sub=None, claro=False):
-    f = F("xb", 56); tw = int(f.getlength(txt)); pad = 34
+    tam = 56
+    while F("xb", tam).getlength(txt) > 900 and tam > 34: tam -= 2
+    f = F("xb", tam); tw = int(f.getlength(txt)); pad = 34
     fs = F("b", 30); sw = int(fs.getlength(sub)) if sub else 0
     w = max(tw, sw) + 2 * pad + 14; h = 104 + (44 if sub else 0)
     im = Image.new("RGBA", (w, h), (0, 0, 0, 0)); d = ImageDraw.Draw(im)
