@@ -197,14 +197,33 @@ def main(pasta, serie, empresa, roteiro, palavras, narr, encerr, saida, musica=N
     run = lambda *a: subprocess.run(["ffmpeg", "-loglevel", "error", "-y", *a], check=True)
     dur = float(subprocess.check_output(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", narr])) + 0.2
     ws = corrige([list(w) for w in json.load(open(palavras))], open(roteiro, encoding="utf-8").read())
-    clips = sorted(glob.glob(os.path.join(pasta, "clip*_*.mp4")), key=lambda p: int(re.search(r"_(\d+)", os.path.basename(p)).group(1)))
-    fr = frases(ws); c = cortes(len(clips), dur, fr)
+    clipmap = {int(re.search(r"_(\d+)", os.path.basename(p)).group(1)): p for p in glob.glob(os.path.join(pasta, "clip*_*.mp4"))}
+    fotos = {int(re.match(r"(\d+)", os.path.basename(p)).group(1)): p for p in glob.glob(os.path.join(pasta, "fotos", "*")) if re.match(r"\d+\.(jpe?g|png)$", os.path.basename(p), re.I)}
+    idx = sorted(set(clipmap) | set(fotos))
+    mov = {}
+    anim = glob.glob(os.path.join(pasta, "*animacao*.txt"))
+    if anim:
+        for l in open(anim[0], encoding="utf-8-sig"):
+            m = re.match(r"\((\d+)\.", l.strip())
+            if m: mov[int(m.group(1))] = l.lower()
+    fr = frases(ws); c = cortes(len(idx), dur, fr)
     base = os.path.join(tmp, "base.mp4")
     lista = open(os.path.join(tmp, "lista.txt"), "w")
-    for i, cl in enumerate(clips if not os.path.exists(base) else []):
-        d = c[i + 1] - c[i]; k = max(1.0, min(1.35, d / 4.9))
-        run("-ss", "0.1", "-i", cl, "-an", "-vf", f"setpts=(PTS-STARTPTS)*{k:.4f},fps=30,scale=1080:1920:flags=lanczos,setsar=1,tpad=stop_mode=clone:stop_duration=3",
-            "-t", f"{d:.3f}", "-c:v", "libx264", "-preset", "veryfast", "-crf", "14", "-pix_fmt", "yuv420p", os.path.join(tmp, f"s{i:02d}.mp4"))
+    for i, n in enumerate(idx):
+        d = c[i + 1] - c[i]; out = os.path.join(tmp, f"s{i:02d}.mp4")
+        if not os.path.exists(base):
+            if n in clipmap:
+                k = max(1.0, min(1.35, d / 4.9))
+                run("-ss", "0.1", "-i", clipmap[n], "-an", "-vf", f"setpts=(PTS-STARTPTS)*{k:.4f},fps=30,scale=1080:1920:flags=lanczos,setsar=1,tpad=stop_mode=clone:stop_duration=3",
+                    "-t", f"{d:.3f}", "-c:v", "libx264", "-preset", "veryfast", "-crf", "14", "-pix_fmt", "yuv420p", out)
+            else:
+                fr_n = int(d * 30) + 2; t = mov.get(n, ""); z = "1.0+0.12*on/%d" % fr_n; x = "iw/2-(iw/zoom/2)"; y = "ih/2-(ih/zoom/2)"
+                if "afastamento" in t or "recua" in t: z = "1.12-0.12*on/%d" % fr_n
+                elif "travelling" in t or "desliza" in t: z = "1.12"; x = "(iw-iw/zoom)*on/%d" % fr_n
+                elif "desce" in t: z = "1.12"; y = "(ih-ih/zoom)*on/%d" % fr_n
+                elif "rápido" in t: z = "1.0+0.20*on/%d" % fr_n
+                run("-loop", "1", "-i", fotos[n], "-vf", f"scale=2160:3840:force_original_aspect_ratio=increase,crop=2160:3840,zoompan=z='{z}':x='{x}':y='{y}':d={fr_n}:s=1080x1920:fps=30,setsar=1",
+                    "-t", f"{d:.3f}", "-c:v", "libx264", "-preset", "veryfast", "-crf", "14", "-pix_fmt", "yuv420p", out)
         lista.write(f"file 's{i:02d}.mp4'\n")
     lista.close()
     ass_karaoke(blocos(ws), dur, os.path.join(tmp, "k.ass"))
