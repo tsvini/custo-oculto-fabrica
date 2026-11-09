@@ -166,7 +166,8 @@ def escolhe_efeitos(ws, serie, empresa, dur):
         fim = min(prox_frase(a), a + 2.8)
         if re.fullmatch(r"(18|19|20)\d\d", t):
             lab = None; ini = a
-            if i >= 2 and E and E[-1][5] == 1 and abs(E[-1][0] - ws[i - 2][0]) < 0.05 and a - E[-1][0] < 1.5:
+            if i >= 2 and E and E[-1][5] == 1 and E[-1][4] == "slide" and ws[i - 1][2].lower() == "de" \
+                    and not re.search(r"[.,?!:;]$", ws[i - 2][2]) and abs(E[-1][0] - ws[i - 2][0]) < 0.05 and a - E[-1][0] < 1.5:
                 lab = ws[i - 2][2].rstrip(".,").upper(); ini = E.pop()[0]  # 'Natal de 1982' -> 1982 com rótulo NATAL
             elif a < 2.0 and E and E[0][5] == 0:
                 lab = empresa.upper(); E.pop(0); ini = 0.0  # ano logo na abertura: o nome da empresa vira o rótulo
@@ -192,6 +193,7 @@ def escolhe_efeitos(ws, serie, empresa, dur):
             continue
         if lo == "anos" and i + 1 < len(ws) and re.fullmatch(r"\d0", ws[i + 1][2].rstrip(".,")):
             E.append((a, fim, 560, st(fx.num("ANOS " + ws[i + 1][2].rstrip(".,"), 200, branco=True)), "pop", 1)); continue
+        if a < 2.4 and not re.fullmatch(r"(18|19|20)\d\d", t): continue  # deixa a abertura limpa para o nome da série
         if lo in CARIMBOS and lo not in usados:
             usados.add(lo); E.append((a, max(fim, min(a + 1.8, dur)), 560, st(fx.stamp(CARIMBOS[lo], 110)), "slam", 1)); continue
         if i + 1 < len(ws):
