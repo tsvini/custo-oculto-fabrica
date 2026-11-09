@@ -119,8 +119,42 @@ const CENARIOS_EP03 = [
 ].map(([nome, tipo, passos, esperado, regras]) => ({ nome, tipo, passos, esperado, regras, exec: 'nao' }));
 const SAVES = [
   { id: 'inicio', nome: 'Começo do curso', quando: 'EP00 ao EP03', monta: () => semente() },
-  { id: 'ep03', nome: 'Plano de testes pronto', quando: 'depois do EP03', monta: () => { const d = semente(); d.planos['FD-101'] = CENARIOS_EP03.map((c) => ({ ...c })); return d; } },
+  { id: 'ep03', nome: 'Plano de testes pronto', quando: 'depois do EP03', monta: () => { const d = semente(); d.planos['FD-101'] = CENARIOS_EP03.map((c) => ({ ...c })); d.conquistas = ['ep03']; return d; } },
 ];
+
+
+// ---------- missões (conferidas pelo próprio site) ----------
+// Uma missão por prática guiada. O site confere sozinho e libera a conquista. Novas práticas: acrescentar aqui.
+const coberturaFD101 = (d) => new Set((d.planos['FD-101'] || []).flatMap((c) => c.regras)).size;
+const MISSOES = [
+  { id: 'ep03', titulo: 'Plano de testes do FD-101', aula: 'Prática do EP03', conquista: 'Plano de testes no FlowDesk', nivel: 'QA estagiário', link: 'plano.html', itens: [
+    ['Escreva pelo menos 8 cenários', (d) => (d.planos['FD-101'] || []).length >= 8],
+    ['Use os três tipos: positivo, negativo e valor limite', (d) => ['P', 'N', 'L'].every((t) => (d.planos['FD-101'] || []).some((c) => c.tipo === t))],
+    ['Cubra as 6 regras do card', (d) => coberturaFD101(d) === 6],
+    ['Encontre um cenário fora das regras', (d) => (d.planos['FD-101'] || []).some((c) => !c.regras.length)],
+  ] },
+];
+const progresso = (m, d = dados()) => m.itens.map(([, f]) => !!f(d));
+const missaoAtual = () => MISSOES.find((m) => !(dados().conquistas || []).includes(m.id)) || null;
+function confereMissoes() {
+  const d = dados(); d.conquistas = d.conquistas || [];
+  MISSOES.forEach((m) => {
+    if (d.conquistas.includes(m.id) || !progresso(m, d).every(Boolean)) return;
+    d.conquistas.push(m.id); salvar(); conquista(m);
+  });
+  const el = $('#missaoSide'); if (el) el.outerHTML = cardMissao();
+}
+function conquista(m) {
+  const o = document.createElement('div'); o.className = 'conq-fundo'; o.setAttribute('data-test', 'conquista');
+  o.innerHTML = `<div class="conq"><div class="k">🏆 CONQUISTA DESBLOQUEADA</div><div class="v" data-test="conquista-nome">${m.conquista}</div><div class="s">Nível atual: <b>${m.nivel}</b></div><button class="btn" data-test="fechar-conquista">Continuar</button></div>`;
+  document.body.appendChild(o); $('[data-test=fechar-conquista]', o).onclick = () => o.remove();
+}
+function cardMissao() {
+  const m = missaoAtual();
+  if (!m) return '<a class="missao-side feita" id="missaoSide" href="missoes.html" data-test="missao-atual"><div class="k">MISSÕES</div><div class="t">Tudo feito por agora</div><div class="p">A próxima chega na próxima prática</div></a>';
+  const pr = progresso(m), n = pr.filter(Boolean).length;
+  return `<a class="missao-side" id="missaoSide" href="missoes.html" data-test="missao-atual"><div class="k">MISSÃO · ${m.aula.toUpperCase()}</div><div class="t">${m.titulo}</div><div class="bar"><i style="width:${n / pr.length * 100}%"></i></div><div class="p" data-test="missao-progresso">${n}/${pr.length}</div></a>`;
+}
 
 // ---------- layout ----------
 const avatar = (p) => p === 'voce' ? '<span class="vc">VC</span>' : `<img class="av" src="img/av_${p}.png" alt="">`;
@@ -132,11 +166,11 @@ function casca(pagina, conteudo) {
   document.body.innerHTML = `<div class="app"><aside class="side">${MARCA}<nav>
     ${it('dashboard.html', 'Dashboard', 'dashboard')}${it('chamados.html', 'Chamados', 'chamados')}${it('quadro.html', 'Quadro', 'quadro')}${it('clientes.html', 'Clientes', 'clientes')}
     <div class="grupo">QA</div>${it('plano.html', 'Plano de testes', 'plano')}${it('reportar-bug.html', 'Reportar bug', 'reportar-bug')}
-    <div class="grupo">TIME</div>${it('chat.html', 'FlowChat', 'chat')}${it('configuracoes.html', 'Configurações', 'configuracoes')}</nav>
-    <div class="eu"><span class="vc">VC</span><div><b data-test="usuario-logado">${esc(c.nome)}</b><span>QA júnior</span></div><button data-test="sair">Sair</button></div></aside>
+    <div class="grupo">TIME</div>${it('missoes.html', 'Missões', 'missoes')}${it('chat.html', 'FlowChat', 'chat')}${it('configuracoes.html', 'Configurações', 'configuracoes')}</nav>
+    ${cardMissao()}<div class="eu"><span class="vc">VC</span><div><b data-test="usuario-logado">${esc(c.nome)}</b><span>QA estagiário</span></div><button data-test="sair">Sair</button></div></aside>
     <main class="main">${conteudo}</main></div>`;
   $('[data-test=sair]').onclick = sair;
-  mostraRecado();
+  mostraRecado(); setTimeout(confereMissoes, 300);
 }
 function sair() { LS.del('fd:sessao'); location.href = 'index.html'; }
 const topo = (titulo, sub = '', crumb = '') => `<div class="topo"><div>${crumb ? `<div class="crumb">${crumb}</div>` : ''}<h2 data-test="titulo-pagina">${titulo}</h2>${sub ? `<div class="sub">${sub}</div>` : ''}</div>${pillVersao()}</div>`;
@@ -346,6 +380,7 @@ PAGINAS.plano = () => {
     }).join('') : '<tr><td colspan="5" class="vazio" data-test="plano-vazio">Nenhum cenário ainda</td></tr>';
     let n = 0;
     REGRAS.forEach((r, i) => { const quem = lista.map((c, j) => c.regras.includes(i) ? j + 1 : 0).filter(Boolean); const on = quem.length > 0; if (on) n++; $('#u' + i).classList.toggle('on', on); $('#q' + i).hidden = !on; $('#q' + i).textContent = quem.length === 1 ? 'CENÁRIO ' + quem[0] : quem.join(' · '); });
+    setTimeout(confereMissoes, 400);
     $('#cnt').textContent = n + '/6'; $('#bar').style.width = (n / 6 * 100) + '%'; $('#cov').classList.toggle('done', n === 6);
     const fora = lista.map((c, j) => c.regras.length ? 0 : j + 1).filter(Boolean);
     $('#ex').hidden = !fora.length; $('#ex').textContent = `+ Cenário ${fora.join(', ')}: fora das regras`;
@@ -405,6 +440,17 @@ PAGINAS['reportar-bug'] = () => {
     d.chat.bugs.push({ de: 'voce', tx: `Abri o ${id}: ${v('bTitulo')}`, quando: agora() });
     salvar(); recado(`${id} aberto e enviado pra Gabriela`); location.href = 'card.html?id=' + id;
   };
+};
+
+
+PAGINAS.missoes = () => {
+  const d = dados(), feitas = d.conquistas || [];
+  casca('missoes', topo('Missões', 'Cada prática do curso tem uma missão. O FlowDesk confere sozinho.') + MISSOES.map((m) => {
+    const pr = progresso(m, d), ok = feitas.includes(m.id);
+    return `<div class="missao ${ok ? 'ok' : ''}" data-test="missao-${m.id}"><div class="k">${ok ? '🏆 CONQUISTA DESBLOQUEADA' : 'MISSÃO'} · ${m.aula.toUpperCase()}</div><div class="v">${m.titulo}</div>
+      ${m.itens.map(([t], i) => `<div class="mit ${pr[i] ? 'on' : ''}" data-test="missao-item"><b>✓</b>${t}</div>`).join('')}
+      ${ok ? `<div class="s">Conquista: <b>${m.conquista}</b></div>` : `<a class="btn peq" href="${m.link}" style="margin-top:8px">Ir pra missão</a>`}</div>`;
+  }).join('') + '<p class="dica" style="margin-top:14px">Novas missões aparecem aqui conforme o curso avança.</p>');
 };
 
 PAGINAS.clientes = () => {
