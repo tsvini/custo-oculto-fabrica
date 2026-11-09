@@ -118,8 +118,8 @@ const CENARIOS_EP03 = [
   ['Título só com espaços em branco', 'N', '', 'Nenhuma regra diz o que acontece', []],
 ].map(([nome, tipo, passos, esperado, regras]) => ({ nome, tipo, passos, esperado, regras, exec: 'nao' }));
 const SAVES = [
-  { id: 'inicio', nome: 'Começo do curso', quando: 'EP00 ao EP03', monta: () => semente() },
-  { id: 'ep03', nome: 'Plano de testes pronto', quando: 'depois do EP03', monta: () => { const d = semente(); d.planos['FD-101'] = CENARIOS_EP03.map((c) => ({ ...c })); d.conquistas = ['ep03']; return d; } },
+  { id: 'inicio', nome: 'Começo do curso', quando: 'do EP00 até a prática do EP03', monta: () => semente() },
+  { id: 'ep04', nome: 'Início do EP04', quando: 'Cenários em Gherkin', monta: () => { const d = semente(); d.planos['FD-101'] = CENARIOS_EP03.map((c) => ({ ...c })); d.conquistas = ['ep03']; return d; } },
 ];
 
 
