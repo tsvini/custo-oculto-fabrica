@@ -10,7 +10,32 @@ GOLD = "&H003DC8FF&"; WHITE = "&H00FFFFFF&"
 CARIMBOS = {"falência": "FALÊNCIA", "faliu": "FALIU", "faliram": "FALIRAM", "vendida": "VENDIDA", "vendido": "VENDIDO",
             "recusou": "RECUSOU", "fechou": "FECHOU", "fecharam": "FECHARAM", "desligado": "DESLIGADO", "enterrou": "ENTERRADO",
             "prejuízo": "PREJUÍZO", "aluguel": "ALUGUEL", "cancelaram": "CANCELARAM", "perdeu": "PERDEU", "encalhou": "ENCALHOU",
-            "abandonado": "ABANDONADO", "esquecido": "ESQUECIDO", "dívida": "DÍVIDA"}
+            "abandonado": "ABANDONADO", "esquecido": "ESQUECIDO", "dívida": "DÍVIDA",
+            "encalhe": "ENCALHE", "desabou": "DESABOU", "quebrou": "QUEBROU", "demitiu": "DEMITIU"}
+NUMPAL = {"um": 1, "uma": 1, "dois": 2, "duas": 2, "três": 3, "quatro": 4, "cinco": 5, "seis": 6, "sete": 7, "oito": 8, "nove": 9,
+          "dez": 10, "onze": 11, "doze": 12, "quinze": 15, "vinte": 20, "trinta": 30, "quarenta": 40, "cinquenta": 50, "sessenta": 60,
+          "setenta": 70, "oitenta": 80, "noventa": 90, "cem": 100, "cento": 100, "duzentos": 200, "trezentos": 300, "quatrocentos": 400,
+          "quinhentos": 500, "seiscentos": 600, "setecentos": 700, "oitocentos": 800, "novecentos": 900}
+MOEDA = {"dólares": "US$ ", "reais": "R$ ", "euros": "€ "}
+
+
+def num_extenso(ws, i):
+    """'mil e trezentos cartuchos' -> (1300, palavras usadas, unidade/rótulo) ou None; exige 'mil' ou mais"""
+    tot = cur = 0; j = i; viu_mil = False
+    while j < len(ws):
+        t = ws[j][2].rstrip(".,?!:;").lower()
+        if t in NUMPAL: cur += NUMPAL[t]
+        elif t == "mil": cur = (cur or 1) * 1000; tot += cur; cur = 0; viu_mil = True
+        elif t in ("milhão", "milhões"): cur = (cur or 1) * 10**6; tot += cur; cur = 0; viu_mil = True
+        elif t == "e" and j > i: pass
+        else: break
+        j += 1
+        if re.search(r"[.,?!:;]$", ws[j - 1][2]): break
+    while j > i and ws[j - 1][2].rstrip(".,").lower() == "e": j -= 1
+    v = tot + cur
+    if not viu_mil or v < 1000 or j - i < 2: return None
+    prox = ws[j][2].rstrip(".,?!:;").lower() if j < len(ws) and not re.search(r"[.,?!:;]$", ws[j - 1][2]) else ""
+    return v, j - i, prox
 UNIDADES = {"mil": "MIL", "milhão": "MILHÃO", "milhões": "MILHÕES", "bilhão": "BILHÃO", "bilhões": "BILHÕES", "%": "%"}
 COMUNS = set("A O As Os E Em Num Numa No Na Nos Nas Mas Isso Era Hoje Depois Essa Esse Uma Um Para Por Com De Do Da Quando Você Nós Ele Ela Foi Só Venda Perdeu Inventou Mostrou Voltou Continuou Tinha".split()) | {"Nos","Num","Numa","Em","E"}
 
@@ -140,7 +165,19 @@ def escolhe_efeitos(ws, serie, empresa, dur):
         lo = t.lower()
         fim = min(prox_frase(a), a + 2.8)
         if re.fullmatch(r"(18|19|20)\d\d", t):
-            E.append((a, fim, 560, st(fx.num(t, 230, branco=True)), "pop", 1)); continue
+            lab = None; ini = a
+            if i >= 2 and E and E[-1][5] == 1 and abs(E[-1][0] - ws[i - 2][0]) < 0.05 and a - E[-1][0] < 1.5:
+                lab = ws[i - 2][2].rstrip(".,").upper(); ini = E.pop()[0]  # 'Natal de 1982' -> 1982 com rótulo NATAL
+            elif a < 2.0 and E and E[0][5] == 0:
+                lab = empresa.upper(); E.pop(0); ini = 0.0  # ano logo na abertura: o nome da empresa vira o rótulo
+            E.append((ini, fim, 560, st(fx.num(t, 230, label=lab, branco=True)), "pop", 1)); continue
+        ne = num_extenso(ws, i) if lo in NUMPAL or lo == "mil" else None
+        if ne:
+            v, n, prox = ne; pre = MOEDA.get(prox, ""); lab = None if pre or not prox or len(prox) > 10 else prox.upper()
+            def cnt2(tt, v=v, pre=pre, lab=lab):
+                k = min(1, tt / 0.8); x = round(v * (1 - (1 - k) ** 3))
+                return fx.num(pre + f"{x:,}".replace(",", "."), 200, label=lab)
+            E.append((a, min(prox_frase(a), a + 3.0), 560, cnt2, "pop", 1)); pula.update(range(i + 1, i + n)); continue
         if re.fullmatch(r"\d+([.,]\d+)?", t) and i + 1 < len(ws) and ws[i + 1][2].rstrip(".,").lower() in UNIDADES:
             un = UNIDADES[ws[i + 1][2].rstrip(".,").lower()]; v = t.replace(".", "")
             try:
@@ -156,7 +193,7 @@ def escolhe_efeitos(ws, serie, empresa, dur):
         if lo == "anos" and i + 1 < len(ws) and re.fullmatch(r"\d0", ws[i + 1][2].rstrip(".,")):
             E.append((a, fim, 560, st(fx.num("ANOS " + ws[i + 1][2].rstrip(".,"), 200, branco=True)), "pop", 1)); continue
         if lo in CARIMBOS and lo not in usados:
-            usados.add(lo); E.append((a, fim, 560, st(fx.stamp(CARIMBOS[lo], 110)), "slam", 1)); continue
+            usados.add(lo); E.append((a, max(fim, min(a + 1.8, dur)), 560, st(fx.stamp(CARIMBOS[lo], 110)), "slam", 1)); continue
         if i + 1 < len(ws):
             t2 = ws[i + 1][2].rstrip(".,?!:;")
             if t[:1].isupper() and t2[:1].isupper() and not re.search(r"[.,?!:;]$", w[2]) and t not in COMUNS and t2 not in COMUNS and norm(t) != norm(empresa) and len(t) > 2 and len(t2) > 2:
