@@ -1,13 +1,13 @@
 {
- "atualizado": "08/11/2026 22:57",
+ "atualizado": "09/11/2026 18:04",
  "fontes": {
   "custo_oculto": {
-   "seguidores": 31,
-   "views_total": 9648,
-   "videos": 50,
-   "views_28d": 8290,
-   "views_7d": 3677,
-   "seguidores_28d": 29,
+   "seguidores": 32,
+   "views_total": 10560,
+   "videos": 51,
+   "views_28d": 8805,
+   "views_7d": 4089,
+   "seguidores_28d": 31,
    "dia": [
     [
      "2026-10-12",
@@ -112,20 +112,24 @@
     [
      "2026-11-06",
      139
+    ],
+    [
+     "2026-11-07",
+     515
     ]
    ],
    "top": [
     {
      "titulo": "Bombril: a marca que virou sinônimo de lã de aço — O Custo de Ser Gigante EP. 09",
      "url": "https://youtu.be/2bKwMEzu16U",
-     "views": 1355,
+     "views": 1368,
      "retencao": 50,
      "likes": 67
     },
     {
      "titulo": "A gambiarra que transformou a Havaianas em ícone mundial 🩴",
      "url": "https://youtu.be/PSEeDLDb7PA",
-     "views": 1297,
+     "views": 1312,
      "retencao": 59,
      "likes": 65
     },
@@ -144,18 +148,18 @@
      "likes": 41
     },
     {
-     "titulo": "7/7 O verdadeiro custo da WeWork",
-     "url": "https://youtu.be/9sKzFjE6KYs",
-     "views": 310,
-     "retencao": 52,
-     "likes": 5
+     "titulo": "A Nintendo começou vendendo baralho em 1889 | A Jogada que Mudou Tudo EP. 05",
+     "url": "https://youtu.be/UrTUaUWMFDU",
+     "views": 418,
+     "retencao": 41,
+     "likes": 21
     }
    ],
    "nome": "Custo Oculto (YouTube)"
   },
   "hidden_cost": {
    "seguidores": 0,
-   "views_total": 28,
+   "views_total": 29,
    "videos": 18,
    "views_28d": 0,
    "views_7d": 0,
@@ -167,9 +171,9 @@
   "vini_qa": {
    "seguidores": 0,
    "views_total": 463,
-   "videos": 9,
-   "views_28d": 462,
-   "views_7d": 147,
+   "videos": 10,
+   "views_28d": 463,
+   "views_7d": 141,
    "seguidores_28d": 0,
    "dia": [
     [
@@ -275,6 +279,10 @@
     [
      "2026-11-06",
      35
+    ],
+    [
+     "2026-11-07",
+     1
     ]
    ],
    "top": [
@@ -318,22 +326,28 @@
   },
   "tiktok": {
    "usuario": "Custo Oculto",
-   "seguidores": 80,
-   "curtidas": 570,
-   "videos": 31,
-   "views_total": 8847,
+   "seguidores": 81,
+   "curtidas": 576,
+   "videos": 32,
+   "views_total": 8899,
    "top": [
+    {
+     "titulo": "Era para ser uma cola superforte. Saiu fraca. E virou um dos produtos mais usados em escri",
+     "url": "https://www.tiktok.com/@custooculto/video/7706177181205941522?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
+     "views": 90,
+     "likes": 2
+    },
     {
      "titulo": "Uma empresa brasileira registrou o nome iPhone 7 anos antes da Apple lançar o celular. E p",
      "url": "https://www.tiktok.com/@custooculto/video/7705797386299247879?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 550,
-     "likes": 24
+     "views": 584,
+     "likes": 26
     },
     {
      "titulo": "Antes do videogame, a Nintendo vendeu baralho, arroz instantâneo e até corrida de táxi.  🃏",
      "url": "https://www.tiktok.com/@custooculto/video/7705428083452546312?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 185,
-     "likes": 0
+     "views": 203,
+     "likes": 1
     },
     {
      "titulo": "Janelas, ícones e mouse. A Xerox criou tudo isso em 1973 e mostrou para a Apple.  🖱️ O Cus",
@@ -344,20 +358,14 @@
     {
      "titulo": "O McDonald's vende bilhões de hambúrgueres. Mas o dinheiro de verdade está no chão. 🏠  A J",
      "url": "https://www.tiktok.com/@custooculto/video/7704753670042275079?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 260,
+     "views": 308,
      "likes": 5
     },
     {
      "titulo": "A Mappin já foi uma das lojas mais famosas do Brasil. Durante décadas, fez parte da vida d",
      "url": "https://www.tiktok.com/@custooculto/video/7704347089102277906?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 611,
+     "views": 613,
      "likes": 30
-    },
-    {
-     "titulo": "Em 1992, o Magazine Luiza criou uma “Loja Virtual” quando comprar pela internet ainda pare",
-     "url": "https://www.tiktok.com/@custooculto/video/7703986197403602196?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 146,
-     "likes": 2
     }
    ],
    "nome": "TikTok @custooculto"
@@ -395,15 +403,6 @@
   }
  },
  "agenda": [
-  {
-   "quando": "2026-11-09T12:00:00-03:00",
-   "plataforma": "Vini QA (YouTube)",
-   "chave": "vini_qa",
-   "titulo": "Seu projeto de teste vira portfólio",
-   "tipo": "short",
-   "id": "Q5iuF5DYLYw",
-   "url": "https://studio.youtube.com/video/Q5iuF5DYLYw/edit"
-  },
   {
    "quando": "2026-11-11T12:00:00-03:00",
    "plataforma": "Vini QA (YouTube)",
