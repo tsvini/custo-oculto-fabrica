@@ -118,8 +118,8 @@ const CENARIOS_EP03 = [
   ['Título só com espaços em branco', 'N', '', 'Nenhuma regra diz o que acontece', []],
 ].map(([nome, tipo, passos, esperado, regras]) => ({ nome, tipo, passos, esperado, regras, exec: 'nao' }));
 const SAVES = [
-  { id: 'inicio', nome: 'Começo do curso', quando: 'do EP00 até a prática do EP03', monta: () => semente() },
-  { id: 'ep04', nome: 'Início do EP04', quando: 'Cenários em Gherkin', monta: () => { const d = semente(); d.planos['FD-101'] = CENARIOS_EP03.map((c) => ({ ...c })); d.conquistas = ['ep03']; return d; } },
+  { id: 'inicio', nome: 'Começo do curso', quando: 'do EP00 ao EP04', monta: () => semente() },
+  { id: 'ep04', nome: 'Início do EP05', quando: 'Cenários em Gherkin', monta: () => { const d = semente(); d.planos['FD-101'] = CENARIOS_EP03.map((c) => ({ ...c })); d.conquistas = ['ep03']; return d; } },
 ];
 
 
@@ -127,7 +127,7 @@ const SAVES = [
 // Uma missão por prática guiada. O site confere sozinho e libera a conquista. Novas práticas: acrescentar aqui.
 const coberturaFD101 = (d) => new Set((d.planos['FD-101'] || []).flatMap((c) => c.regras)).size;
 const MISSOES = [
-  { id: 'ep03', titulo: 'Plano de testes do FD-101', aula: 'Prática do EP03', conquista: 'Plano de testes no FlowDesk', nivel: 'QA estagiário', link: 'card.html?id=FD-101&aba=plano', itens: [
+  { id: 'ep03', titulo: 'Plano de testes do FD-101', aula: 'EP04', conquista: 'Plano de testes no FlowDesk', nivel: 'QA estagiário', link: 'card.html?id=FD-101&aba=plano', itens: [
     ['Escreva pelo menos 8 cenários', (d) => (d.planos['FD-101'] || []).length >= 8],
     ['Use os três tipos: positivo, negativo e valor limite', (d) => ['P', 'N', 'L'].every((t) => (d.planos['FD-101'] || []).some((c) => c.tipo === t))],
     ['Cubra as 6 regras do card', (d) => coberturaFD101(d) === 6],
@@ -250,7 +250,7 @@ PAGINAS.dashboard = () => {
   const meus = d.cards.filter((x) => x.resp === 'voce');
   const ult = [...d.chamados].sort((a, b) => b.criadoEm.localeCompare(a.criadoEm)).slice(0, 4);
   const m = missaoAtual(), pr = m ? progresso(m, d) : [];
-  const hero = m ? `<a class="hero" href="${m.link}" data-test="missao-hero"><div class="hk">Missão da ${m.aula.replace('Prática', 'prática')}</div><div class="ht">${m.titulo}</div>
+  const hero = m ? `<a class="hero" href="${m.link}" data-test="missao-hero"><div class="hk">Missão do ${m.aula}</div><div class="ht">${m.titulo}</div>
       <div class="hl">${m.itens.map(([t], i) => `<div class="pit ${pr[i] ? 'on' : ''}"><b>${pr[i] ? '✓' : i + 1}</b>${t}</div>`).join('')}</div><span class="btn">Continuar a missão</span></a>`
     : `<div class="hero feita"><div class="hk">Missões</div><div class="ht">Tudo feito por agora</div><p class="dica">A próxima missão chega na próxima prática do curso.</p></div>`;
   casca('dashboard', topo(`${oi}, ${esc(c.nome.split(' ')[0])}`, `Sprint ${VERSAO} do FlowDesk`) + `
