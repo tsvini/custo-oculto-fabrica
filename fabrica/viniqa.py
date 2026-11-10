@@ -14,6 +14,7 @@ import requests
 
 RAIZ = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 REG = os.path.join(RAIZ, "publicados_viniqa.json")
+CFG = os.path.join(RAIZ, "projetos", "viniqa.json")  # {"link_professor": "...", "comentario": "texto com {link}"}
 ENV = "YT_REFRESH_TOKEN_QA"
 
 
@@ -76,6 +77,34 @@ def atualizar_descricoes(tk_fn, reg):
     return feitos
 
 
+def comentar(tk_fn, reg):
+    """Comenta em cada vídeo do canal, assim que ele fica público, o link da página de professor (texto aprovado pelo Vinícius em 10/11/2026)."""
+    try:
+        cfg = json.load(open(CFG, encoding="utf8"))
+    except Exception:
+        return []
+    link = (cfg.get("link_professor") or "").strip()
+    if not link:
+        return []
+    texto = cfg.get("comentario", "📌 Todos os meus cursos estão aqui: {link}").replace("{link}", link)
+    agora = dt.datetime.now(BRT); feitos = []; tk = None
+    for r in reg:
+        if r.get("comentario") or dt.datetime.fromisoformat(r["publishAt"]) > agora:
+            continue
+        tk = tk or tk_fn(); H = {"Authorization": f"Bearer {tk}"}
+        v = requests.get("https://www.googleapis.com/youtube/v3/videos", headers=H, params={"part": "status", "id": r["video_id"]}, timeout=30).json().get("items") or []
+        if not v or v[0]["status"]["privacyStatus"] != "public":
+            continue
+        q = requests.post("https://www.googleapis.com/youtube/v3/commentThreads?part=snippet", headers=H, timeout=30,
+                          json={"snippet": {"videoId": r["video_id"], "topLevelComment": {"snippet": {"textOriginal": texto}}}})
+        if q.status_code in (200, 201):
+            r["comentario"] = q.json()["id"]; feitos.append(r["titulo"])
+            json.dump(reg, open(REG, "w", encoding="utf8"), ensure_ascii=False, indent=1)
+        else:
+            nota("Vini QA: comentário falhou", f"{r['titulo']}: {q.status_code} " + " ".join(q.text.split())[:300], "warning"); break
+    return feitos
+
+
 def main():
     if not os.environ.get(ENV, "").strip():
         nota("Vini QA", f"falta o secret {ENV}: nada subiu", "warning"); return
@@ -105,6 +134,9 @@ def main():
                 reg.append({"arquivo": arq, "titulo": it["titulo"], "video_id": vid, "publishAt": quando.isoformat(), "desc": desc})
                 json.dump(reg, open(REG, "w", encoding="utf8"), ensure_ascii=False, indent=1)
                 ok.append(f"{it['titulo']} → {quando:%d/%m %Hh} (youtu.be/{vid})")
+        cm = comentar(lambda: tk or token(), reg)
+        if cm:
+            ok.append(f"comentário com o link em {len(cm)} vídeo(s) (fixe no Studio)")
         at = atualizar_descricoes(lambda: tk or token(), reg)
         if at:
             ok.append(f"descrição nova em {len(at)} vídeo(s)")
