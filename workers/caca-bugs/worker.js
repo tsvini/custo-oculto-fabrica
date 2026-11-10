@@ -8,7 +8,16 @@ const curto = (nome) => { const p = nome.split(/\s+/).filter(Boolean); return p.
 
 async function placar(env, t) {
   const p = (await env.CACA.get(`placar:${t}`, 'json')) || {};
-  return { temporada: t, bugs: [1, 2, 3].map((n) => (p[n] ? { n, ganhador: p[n].nome, quando: p[n].quando } : { n, ganhador: null })), encerrada: [1, 2, 3].every((n) => p[n]) };
+  const linha = (await env.CACA.get(`linha:${t}`, 'json')) || [];
+  return { temporada: t, bugs: [1, 2, 3].map((n) => (p[n] ? { n, ganhador: p[n].nome, quando: p[n].quando } : { n, ganhador: null })), encerrada: [1, 2, 3].every((n) => p[n]), envios: linha.slice(-40) };
+}
+// linha do tempo pública: quem mandou e quando (sem o conteúdo do report)
+async function marcaLinha(env, t, e) {
+  const l = (await env.CACA.get(`linha:${t}`, 'json')) || [];
+  const i = l.findIndex((x) => x.recibo === e.id.slice(-8));
+  const item = { recibo: e.id.slice(-8), nome: curto(e.nome), bug: e.bug, quando: e.quando, estado: e.estado };
+  if (i >= 0) l[i] = item; else l.push(item);
+  await env.CACA.put(`linha:${t}`, JSON.stringify(l.slice(-200)));
 }
 
 export default {
@@ -29,9 +38,19 @@ export default {
       const e = { nome: limpa(b.nome, 60), bug: +b.bug, passos: limpa(b.passos, 2000), esperado: limpa(b.esperado, 500), obtido: limpa(b.obtido, 500), evidencia: limpa(b.evidencia, 300), ambiente: limpa(b.ambiente, 200) };
       if (!e.nome || ![1, 2, 3].includes(e.bug) || e.passos.length < 15 || !e.esperado || !e.obtido) return J({ ok: false, erro: 'Preencha nome, passos, esperado e obtido.' }, 400, cors);
       const t = temporadaAtual(), id = `${Date.now()}-${crypto.randomUUID().slice(0, 8)}`;
-      await env.CACA.put(`envio:${t}:${id}`, JSON.stringify({ ...e, id, t, quando: new Date().toISOString(), estado: 'pendente' }));
+      const novo = { ...e, id, t, quando: new Date().toISOString(), estado: 'pendente' };
+      await env.CACA.put(`envio:${t}:${id}`, JSON.stringify(novo));
       await env.CACA.put(chaveIp, '1', { expirationTtl: 60 });
-      return J({ ok: true, id }, 200, cors);
+      await marcaLinha(env, t, novo);
+      return J({ ok: true, id, recibo: id.slice(-8), quando: novo.quando }, 200, cors);
+    }
+
+    // o aluno confere o próprio envio pelo id completo (só ele tem): mostra o estado e, se ganhou, o código de vitória
+    if (url.pathname === '/recibo' && req.method === 'GET') {
+      const id = (url.searchParams.get('id') || '').replace(/[^\w-]/g, ''), t = id ? new Date(+id.split('-')[0]).toISOString().slice(0, 7) : '';
+      const e = id && (await env.CACA.get(`envio:${t}:${id}`, 'json'));
+      if (!e) return J({ ok: false }, 404, cors);
+      return J({ ok: true, estado: e.estado, bug: e.bug, ganhou: !!e.codigo, codigo: e.codigo || null }, 200, cors);
     }
 
     // ---------- painel do professor ----------
@@ -46,15 +65,20 @@ export default {
           await env.CACA.put(chave, JSON.stringify(e));
           if (e.estado === 'aprovado') {
             const p = (await env.CACA.get(`placar:${t}`, 'json')) || {};
-            if (!p[e.bug]) { p[e.bug] = { nome: curto(e.nome), quando: e.quando, id: e.id }; await env.CACA.put(`placar:${t}`, JSON.stringify(p)); }
+            if (!p[e.bug]) {
+              e.codigo = 'VQA-' + crypto.randomUUID().replace(/-/g, '').slice(0, 6).toUpperCase();
+              p[e.bug] = { nome: curto(e.nome), quando: e.quando, id: e.id, codigo: e.codigo }; await env.CACA.put(`placar:${t}`, JSON.stringify(p));
+            }
           }
+          await env.CACA.put(chave, JSON.stringify(e));
+          await marcaLinha(env, t, e);
         }
         return Response.redirect(`${url.origin}/admin?k=${encodeURIComponent(k)}&t=${t}`, 303);
       }
       const lista = await env.CACA.list({ prefix: `envio:${t}:` });
       const envios = (await Promise.all(lista.keys.map((x) => env.CACA.get(x.name, 'json')))).filter(Boolean).sort((a, b) => a.quando.localeCompare(b.quando));
       const p = await placar(env, t);
-      const linha = (e) => `<div class="e ${e.estado}"><div class="h"><b>Bug #${e.bug}</b> · ${esc(e.nome)} · ${new Date(e.quando).toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' })} · <i>${e.estado}</i></div>
+      const linha = (e) => `<div class="e ${e.estado}"><div class="h"><b>Bug #${e.bug}</b> · ${esc(e.nome)} · ${new Date(e.quando).toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' })} · <i>${e.estado}</i>${e.codigo ? ` · código <b>${e.codigo}</b>` : ''} · recibo ${e.id.slice(-8)}</div>
         <p><b>Passos</b><br>${esc(e.passos).replace(/\n/g, '<br>')}</p><p><b>Esperado:</b> ${esc(e.esperado)}</p><p><b>Obtido:</b> ${esc(e.obtido)}</p>${e.evidencia ? `<p><b>Evidência:</b> ${esc(e.evidencia)}</p>` : ''}${e.ambiente ? `<p><b>Ambiente:</b> ${esc(e.ambiente)}</p>` : ''}
         ${e.estado === 'pendente' ? `<form method="post" action="/admin/decidir?k=${encodeURIComponent(k)}&t=${t}"><input type="hidden" name="id" value="${e.id}"><button name="acao" value="aprovar">Aprovar</button> <button name="acao" value="recusar" class="r">Recusar</button></form>` : ''}</div>`;
       return new Response(`<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Caça aos bugs · ${t}</title>

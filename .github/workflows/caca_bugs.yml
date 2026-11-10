@@ -1,0 +1,36 @@
+name: Caça aos bugs (Worker)
+# Publica o Worker da caça aos bugs na Cloudflare.
+# Precisa dos segredos do repositório: CLOUDFLARE_API_TOKEN (permissão Workers + KV) e FLOWDESK_ADMIN (senha do painel).
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ['workers/caca-bugs/**']
+jobs:
+  publicar:
+    runs-on: ubuntu-latest
+    defaults: { run: { working-directory: workers/caca-bugs } }
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 20 }
+      - name: Conferir segredos
+        run: |
+          if [ -z "$CLOUDFLARE_API_TOKEN" ]; then echo "::error::Falta o segredo CLOUDFLARE_API_TOKEN"; exit 1; fi
+      - name: Criar o KV na primeira vez
+        run: |
+          if grep -q COLAR_O_ID_AQUI wrangler.toml; then
+            ID=$(npx -y wrangler@3 kv namespace list | node -e "let s='';process.stdin.on('data',d=>s+=d).on('end',()=>{const l=JSON.parse(s);const n=l.find(x=>/CACA/.test(x.title));console.log(n?n.id:'')})")
+            if [ -z "$ID" ]; then ID=$(npx -y wrangler@3 kv namespace create CACA | grep -oE '[0-9a-f]{32}' | head -1); fi
+            sed -i "s/COLAR_O_ID_AQUI/$ID/" wrangler.toml
+          fi
+      - name: Publicar
+        run: npx -y wrangler@3 deploy | tee /tmp/deploy.txt
+      - name: Senha do painel
+        if: ${{ env.ADMIN != '' }}
+        env: { ADMIN: '${{ secrets.FLOWDESK_ADMIN }}' }
+        run: echo "$ADMIN" | npx -y wrangler@3 secret put ADMIN
+      - name: Endereço
+        run: grep -oE 'https://[a-z0-9.-]+workers\.dev' /tmp/deploy.txt | head -1 | tee -a $GITHUB_STEP_SUMMARY
