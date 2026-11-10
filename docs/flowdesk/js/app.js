@@ -120,6 +120,7 @@ const CENARIOS_EP03 = [
 const SAVES = [
   { id: 'inicio', nome: 'Começo do curso', quando: 'do EP00 ao EP04', monta: () => semente() },
   { id: 'ep04', nome: 'Início do EP05', quando: 'Cenários em Gherkin', monta: () => { const d = semente(); d.planos['FD-101'] = CENARIOS_EP03.map((c) => ({ ...c })); d.conquistas = ['ep03']; return d; } },
+  { id: 'ep06', nome: 'Início do EP06', quando: 'Prática do Gherkin', monta: () => { const d = semente(); d.planos['FD-101'] = CENARIOS_EP03.map((c) => ({ ...c })); d.conquistas = ['ep03']; return d; } },
 ];
 
 
@@ -133,7 +134,52 @@ const MISSOES = [
     ['Cubra as 6 regras do card', (d) => coberturaFD101(d) === 6],
     ['Encontre um cenário fora das regras', (d) => (d.planos['FD-101'] || []).some((c) => !c.regras.length)],
   ] },
+  { id: 'ep06', titulo: 'Cenários do FD-101 em Gherkin', aula: 'EP06', conquista: 'Feature do FD-101 no FlowDesk', nivel: 'QA estagiário', link: 'card.html?id=FD-101&aba=gherkin', itens: [
+    ['Comece pela Funcionalidade', (d) => revisaGherkin(gherkinDe(d)).funcionalidade],
+    ['Escreva pelo menos 4 cenários', (d) => revisaGherkin(gherkinDe(d)).cenarios.length >= 4],
+    ['Todo cenário com Dado, Quando e Então', (d) => { const r = revisaGherkin(gherkinDe(d)); return r.cenarios.length > 0 && r.cenarios.every((c) => c.dado && c.quando && c.entao && !c.ordem); }],
+    ['Um Quando por cenário: uma ação só', (d) => { const r = revisaGherkin(gherkinDe(d)); return r.cenarios.length > 0 && r.cenarios.every((c) => c.acoes <= 1); }],
+    ['Nenhum Então vago', (d) => { const r = revisaGherkin(gherkinDe(d)); return r.cenarios.length > 0 && r.cenarios.every((c) => !c.vago.length); }],
+  ] },
 ];
+
+// ---------- Gherkin (EP06): leitura e revisão do arquivo .feature ----------
+const GK_INICIO = 'Funcionalidade: Criar chamado\n\n';
+const gherkinDe = (d, id = 'FD-101') => (d.gherkin || {})[id] ?? GK_INICIO;
+const GK_PASSO = /^(Dado|Dada|Dados|Dadas|Quando|Então|Entao|E|Mas)\b/;
+const GK_VAGO = /\b(erro|funciona|funcionar|corretamente|certo|ok|normal|deve dar)\b/i;
+function revisaGherkin(txt) {
+  const linhas = txt.split('\n'); const r = { funcionalidade: false, cenarios: [], soltas: [] };
+  let atual = null, ultimo = null, viuAlgo = false;
+  linhas.forEach((bruta, i) => {
+    const l = bruta.trim(); if (!l || l.startsWith('#')) return;
+    if (/^Funcionalidade:/.test(l)) { if (!viuAlgo) r.funcionalidade = true; viuAlgo = true; return; }
+    viuAlgo = true;
+    if (/^(Cenário|Cenario|Esquema do Cenário|Esquema do cenário):/.test(l)) {
+      atual = { nome: l.replace(/^[^:]+:\s*/, '') || '(sem nome)', linha: i + 1, dado: false, quando: false, entao: false, acoes: 0, ordem: false, vago: [] }; r.cenarios.push(atual); ultimo = null; return;
+    }
+    const m = l.match(GK_PASSO);
+    if (!m) { if (atual && !/^(Exemplos:|\|)/.test(l)) r.soltas.push(i + 1); return; }
+    if (!atual) { r.soltas.push(i + 1); return; }
+    let k = m[1]; if (k === 'E' || k === 'Mas') k = ultimo || 'dado'; else k = /^Dad/.test(k) ? 'dado' : k === 'Quando' ? 'quando' : 'entao';
+    if (k === 'dado' && (atual.quando || atual.entao)) atual.ordem = true;
+    if (k === 'quando' && atual.entao) atual.ordem = true;
+    atual[k] = true; if (k === 'quando') atual.acoes += 1 + (l.match(/\se\s+(clico|preencho|digito|envio|seleciono|anexo|abro|salvo|apago|escolho)\b/gi) || []).length;
+    if (k === 'entao' && GK_VAGO.test(l) && !/"[^"]+"/.test(l)) atual.vago.push(i + 1);
+    ultimo = k;
+  });
+  return r;
+}
+function pintaGherkin(txt) {
+  return txt.split('\n').map((l) => {
+    let h = esc(l);
+    if (/^\s*#/.test(l)) return `<span class="gc">${h}</span>`;
+    h = h.replace(/^(\s*)(Funcionalidade:|Cenário:|Cenario:|Esquema do [Cc]enário:|Exemplos:|Contexto:)/, '$1<span class="gf">$2</span>')
+      .replace(/^(\s*)(Dado|Dada|Dados|Dadas|Quando|Então|Entao|E|Mas)\b/, '$1<span class="gk">$2</span>')
+      .replace(/&quot;([^&]*?)&quot;/g, '<span class="gs">&quot;$1&quot;</span>');
+    return h;
+  }).join('\n') + '\n';
+}
 const progresso = (m, d = dados()) => m.itens.map(([, f]) => !!f(d));
 const missaoAtual = () => MISSOES.find((m) => !(dados().conquistas || []).includes(m.id)) || null;
 function confereMissoes() {
@@ -418,7 +464,7 @@ PAGINAS.card = () => {
   const d = dados(), c = d.cards.find((x) => x.id === (qs.get('id') || '').toUpperCase());
   if (!c) return casca('quadro', topo('Card não encontrado') + '<a class="btn sec" href="quadro.html">Voltar pro quadro</a>');
   const temPlano = !!d.planos[c.id];
-  const abas = [['detalhes', 'Detalhes'], ...(temPlano ? [['plano', 'Plano de testes']] : []), ['comentarios', 'Comentários']];
+  const abas = [['detalhes', 'Detalhes'], ...(temPlano ? [['plano', 'Plano de testes'], ['gherkin', 'Gherkin']] : []), ['comentarios', 'Comentários']];
   let aba = abas.some(([k]) => k === qs.get('aba')) ? qs.get('aba') : 'detalhes';
   const tot = c.criterios.length;
   casca('quadro', `<div class="topo"><div><div class="crumb"><a href="quadro.html">Quadro</a> / Sprint ${VERSAO}</div>
@@ -430,7 +476,7 @@ PAGINAS.card = () => {
       ${tot ? `<div class="mi"><div class="k">Critérios</div><div class="v" id="critN">${c.ok.length}/${tot}</div></div>` : ''}</div>
     <nav class="abas">${abas.map(([k, n]) => `<button class="${k === aba ? 'on' : ''}" data-aba="${k}" data-test="aba-${k}">${n}<span class="n" id="n-${k}"></span></button>`).join('')}</nav>
     <div id="abaConteudo"></div>`);
-  const contagens = () => { if ($('#n-plano')) $('#n-plano').textContent = d.planos[c.id].length || ''; $('#n-comentarios').textContent = c.comentarios.length || ''; };
+  const contagens = () => { if ($('#n-plano')) $('#n-plano').textContent = d.planos[c.id].length || ''; if ($('#n-gherkin')) $('#n-gherkin').textContent = revisaGherkin(gherkinDe(dados(), c.id)).cenarios.length || ''; $('#n-comentarios').textContent = c.comentarios.length || ''; };
   const campo = (k, v) => `<div class="sec"><div class="k">${k}</div>${v ? `<div class="v">${esc(v)}</div>` : '<div class="v nada">Nada informado.</div>'}</div>`;
   const mostra = (k) => {
     aba = k; $$('.abas button').forEach((b) => b.classList.toggle('on', b.dataset.aba === k));
@@ -445,6 +491,8 @@ PAGINAS.card = () => {
       if ($('#abrePlano')) $('#abrePlano').onclick = () => mostra('plano');
     } else if (k === 'plano') {
       montaPlano(A, c);
+    } else if (k === 'gherkin') {
+      montaGherkin(A, c, contagens);
     } else {
       A.innerHTML = `<div class="sec"><div id="coms">${c.comentarios.map((m) => `<div class="coment">${avatar('voce')}<div class="bx"><b>Você</b><small>${dataBR(m.quando)}</small><div>${esc(m.tx)}</div></div></div>`).join('') || '<div class="v nada" style="font-size:15px">Nenhum comentário ainda.</div>'}</div>
         <div style="display:flex;gap:10px;margin-top:12px"><input class="in" id="com" placeholder="Escreva um comentário…" data-test="comentario"><button class="btn" id="enviaCom" data-test="enviar-comentario">Comentar</button></div></div>`;
@@ -456,6 +504,51 @@ PAGINAS.card = () => {
   if ($('#mover')) $('#mover').onchange = () => { const p = podeMover(c, $('#mover').value); if (!p.ok) { $('#mover').value = c.coluna; return p.msg && toast(p.msg, true); } c.coluna = $('#mover').value; salvar(); toast(`${c.id} movido para ${nomeColuna(c.coluna).toLowerCase()}`); };
   mostra(aba);
 };
+
+function montaGherkin(A, card, contagens) {
+  const arq = card.id === 'FD-101' ? 'criar-chamado.feature' : card.id.toLowerCase() + '.feature';
+  A.innerHTML = `<div class="plano-barra"><p class="dica">Os cenários do plano, do jeito que o time inteiro entende: <b>Dado</b> o contexto, <b>Quando</b> a ação, <b>Então</b> o resultado.</p>
+      <div class="gk-acoes"><button type="button" class="btn sec peq" id="gkModelo" data-test="inserir-cenario">+ Modelo de cenário</button><button type="button" class="btn sec peq" id="gkBaixa" data-test="baixar-feature">Baixar .feature</button></div></div>
+    <div class="plano"><div class="esq">
+      <div class="gk-ed"><div class="gk-tab">${arq}</div>
+        <div class="gk-corpo"><pre class="gk-nums" id="gkNums" aria-hidden="true"></pre><div class="gk-area"><pre class="gk-cor" id="gkCor" aria-hidden="true"></pre>
+          <textarea id="gk" data-test="editor-gherkin" spellcheck="false" autocomplete="off" autocapitalize="off" aria-label="Arquivo ${arq}"></textarea></div></div></div>
+      <p class="dica" style="margin-top:10px">Dica: <b>Tab</b> faz o recuo. O FlowDesk salva enquanto você escreve.</p>
+    </div>
+    <aside><div class="cov" id="gkRev" data-test="revisao-gherkin"></div></aside></div>`;
+  const ta = $('#gk'), cor = $('#gkCor'), nums = $('#gkNums');
+  ta.value = gherkinDe(dados(), card.id);
+  const atualiza = () => {
+    const t = ta.value, d = dados(); d.gherkin = d.gherkin || {}; d.gherkin[card.id] = t; salvar();
+    cor.innerHTML = pintaGherkin(t); nums.textContent = t.split('\n').map((_, i) => i + 1).join('\n');
+    const r = revisaGherkin(t);
+    const item = (ok, tx) => `<div class="rl ${ok ? 'on' : ''}"><b>✓</b>${tx}</div>`;
+    const probs = (c) => [!c.dado && 'falta o Dado', !c.quando && 'falta o Quando', !c.entao && 'falta o Então', c.ordem && 'a ordem é Dado → Quando → Então',
+      c.acoes > 1 && `${c.acoes} ações no Quando: um cenário testa uma ação só`, c.vago.length && `Então vago na linha ${c.vago[0]}: que erro? onde?`].filter(Boolean);
+    $('#gkRev').innerHTML = `<div class="hd">Revisão do Gherkin<span class="cnt" data-test="gherkin-contagem">${r.cenarios.length}</span></div>`
+      + item(r.funcionalidade, 'Começa pela Funcionalidade')
+      + (r.cenarios.length ? r.cenarios.map((c) => { const p = probs(c); return `<div class="gk-cen ${p.length ? 'mal' : 'ok'}" data-test="gherkin-cenario"><div class="n"><b>${p.length ? '!' : '✓'}</b>${esc(c.nome)}</div>${p.map((x) => `<div class="p">${x}</div>`).join('')}</div>`; }).join('')
+        : '<div class="gk-vazio">Nenhum cenário ainda. Comece com <b>Cenário:</b> e o nome dele.</div>')
+      + (r.soltas.length ? `<div class="ex">Linha ${r.soltas[0]} sem palavra-chave do Gherkin (Dado, Quando, Então, E…)</div>` : '');
+    contagens(); confereMissoes();
+  };
+  const sincroniza = () => { cor.scrollTop = ta.scrollTop; cor.scrollLeft = ta.scrollLeft; nums.scrollTop = ta.scrollTop; };
+  ta.addEventListener('input', atualiza); ta.addEventListener('scroll', sincroniza);
+  ta.addEventListener('keydown', (ev) => {
+    if (ev.key !== 'Tab') return; ev.preventDefault();
+    const a = ta.selectionStart; ta.setRangeText('  ', a, ta.selectionEnd, 'end'); atualiza();
+  });
+  $('#gkModelo').onclick = () => {
+    const mod = '\n  Cenário: \n    Dado que \n    Quando \n    Então \n';
+    const fim = ta.value.replace(/\s+$/, ''); ta.value = fim + '\n' + mod; ta.focus();
+    const pos = ta.value.lastIndexOf('Cenário: ') + 9; ta.setSelectionRange(pos, pos); atualiza();
+  };
+  $('#gkBaixa').onclick = () => {
+    const url = URL.createObjectURL(new Blob([ta.value], { type: 'text/plain;charset=utf-8' }));
+    const l = document.createElement('a'); l.href = url; l.download = arq; document.body.appendChild(l); l.click(); l.remove(); setTimeout(() => URL.revokeObjectURL(url), 2000);
+  };
+  atualiza();
+}
 
 function montaPlano(A, card) {
   const d = dados(), id = card.id, lista = d.planos[id];
