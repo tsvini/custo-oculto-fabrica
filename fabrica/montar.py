@@ -37,7 +37,7 @@ def num_extenso(ws, i):
     prox = ws[j][2].rstrip(".,?!:;").lower() if j < len(ws) and not re.search(r"[.,?!:;]$", ws[j - 1][2]) else ""
     return v, j - i, prox
 UNIDADES = {"anos": "ANOS", "mil": "MIL", "milhão": "MILHÃO", "milhões": "MILHÕES", "bilhão": "BILHÃO", "bilhões": "BILHÕES", "%": "%"}
-COMUNS = set("A O As Os E Em Num Numa No Na Nos Nas Mas Isso Era Hoje Depois Essa Esse Uma Um Para Por Com De Do Da Quando Você Nós Ele Ela Foi Só Venda Perdeu Inventou Mostrou Voltou Continuou Tinha".split()) | {"Nos","Num","Numa","Em","E"}
+COMUNS = set("A O As Os E Em Num Numa No Na Nos Nas Mas Isso Era Hoje Depois Essa Esse Uma Um Para Por Com De Do Da Quando Você Nós Ele Ela Foi Só Venda Perdeu Inventou Mostrou Voltou Continuou Tinha Terra Lua Sol".split()) | {"Nos","Num","Numa","Em","E"}
 
 
 def norm(s):
@@ -164,6 +164,7 @@ def escolhe_efeitos(ws, serie, empresa, dur):
         t = w[2].rstrip(".,?!:;").strip("“”\"")
         lo = t.lower()
         fim = min(prox_frase(a), a + 2.8)
+        if a < 2.4 and not re.fullmatch(r"(18|19|20)\d\d", t): continue  # deixa a abertura limpa para o nome da série
         if re.fullmatch(r"(18|19|20)\d\d", t):
             lab = None; ini = a
             if i >= 2 and E and E[-1][5] == 1 and E[-1][4] == "slide" and ws[i - 1][2].lower() == "de" \
@@ -198,7 +199,6 @@ def escolhe_efeitos(ws, serie, empresa, dur):
             continue
         if lo == "anos" and i + 1 < len(ws) and re.fullmatch(r"\d0", ws[i + 1][2].rstrip(".,")):
             E.append((a, fim, 560, st(fx.num("ANOS " + ws[i + 1][2].rstrip(".,"), 200, branco=True)), "pop", 1)); continue
-        if a < 2.4 and not re.fullmatch(r"(18|19|20)\d\d", t): continue  # deixa a abertura limpa para o nome da série
         if lo in CARIMBOS and lo not in usados and not (CARIMBOS[lo].startswith("NÃO ") and (i == 0 or ws[i - 1][2].lower() != "não")):
             usados.add(lo); E.append((a, max(fim, min(a + 1.8, dur)), 560, st(fx.stamp(CARIMBOS[lo], 110)), "slam", 1)); continue
         if i + 1 < len(ws):
