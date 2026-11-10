@@ -121,6 +121,7 @@ const SAVES = [
   { id: 'inicio', nome: 'Começo do curso', quando: 'do EP00 ao EP04', monta: () => semente() },
   { id: 'ep04', nome: 'Início do EP05', quando: 'Cenários em Gherkin', monta: () => { const d = semente(); d.planos['FD-101'] = CENARIOS_EP03.map((c) => ({ ...c })); d.conquistas = ['ep03']; return d; } },
   { id: 'ep06', nome: 'Início do EP06', quando: 'Prática do Gherkin', monta: () => { const d = semente(); d.planos['FD-101'] = CENARIOS_EP03.map((c) => ({ ...c })); d.conquistas = ['ep03']; return d; } },
+  { id: 'ep07', nome: 'Início do EP07', quando: 'Primeiro bug', monta: () => { const d = semente(); d.planos['FD-101'] = CENARIOS_EP03.map((c) => ({ ...c })); d.gherkin = { 'FD-101': GK_EP06 }; d.conquistas = ['ep03', 'ep06']; return d; } },
 ];
 
 
@@ -145,6 +146,7 @@ const MISSOES = [
 
 // ---------- Gherkin (EP06): leitura e revisão do arquivo .feature ----------
 const GK_INICIO = 'Funcionalidade: Criar chamado\n\n';
+const GK_EP06 = "Funcionalidade: Criar chamado\n\n  Cenário: Criar chamado com sucesso\n    Dado que estou na tela \"Novo chamado\"\n    E preenchi o título e a descrição\n    Quando clico em \"Criar chamado\"\n    Então vejo a mensagem de sucesso\n    E o chamado aparece com o status \"Aberto\"\n\n  Cenário: Criar chamado sem título\n    Dado que estou na tela \"Novo chamado\"\n    E preenchi a descrição\n    E deixei o título vazio\n    Quando clico em \"Criar chamado\"\n    Então vejo \"Título é obrigatório\"\n    E o chamado não é criado\n\n  Cenário: Criar chamado sem descrição\n    Dado que estou na tela \"Novo chamado\"\n    E preenchi o título\n    E deixei a descrição vazia\n    Quando clico em \"Criar chamado\"\n    Então vejo \"Descrição é obrigatória\"\n    E o chamado não é criado\n\n  Cenário: Título com 100 caracteres\n    Dado que estou na tela \"Novo chamado\"\n    E preenchi o título com 100 caracteres\n    Quando clico em \"Criar chamado\"\n    Então o chamado é criado\n";  // o arquivo do jeito que fica no fim do EP06
 const gherkinDe = (d, id = 'FD-101') => (d.gherkin || {})[id] ?? GK_INICIO;
 const GK_PASSO = /^(Dado|Dada|Dados|Dadas|Quando|Então|Entao|E|Mas)\b/;
 const GK_VAGO = /\b(erro|funciona|funcionar|corretamente|certo|ok|normal|deve dar)\b/i;
