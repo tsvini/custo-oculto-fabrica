@@ -52,6 +52,13 @@ const PESSOAS = {
   gabriela: { nome: 'Gabriela', papel: 'Dev' }, lucas: { nome: 'Lucas', papel: 'Tech lead' },
   vinicius: { nome: 'Vinícius', papel: 'QA sênior' }, voce: { nome: 'Você', papel: 'QA' },
 };
+const TIME = [
+  ['rafael', 'Escreve as histórias e os critérios. Dúvida de regra é com ele.'],
+  ['gabriela', 'Desenvolve o FD-101. Achou bug? Ela quer saber primeiro.'],
+  ['lucas', 'Cuida da arquitetura e puxa a daily às 9h15.'],
+  ['beatriz', 'Decide prioridade e data de release.'],
+  ['vinicius', 'QA sênior, seu mentor. Pode perguntar qualquer coisa.'],
+];
 const COLUNAS = [['afazer', 'A FAZER'], ['dev', 'EM DESENVOLVIMENTO'], ['qa', 'PRONTO PRA QA'], ['teste', 'EM TESTE'], ['concluido', 'CONCLUÍDO']];
 const STATUS = ['Aberto', 'Em andamento', 'Resolvido', 'Fechado'];
 const REGRAS = ['Título obrigatório', 'Descrição obrigatória', 'Título até 100 caracteres', 'Anexo opcional: PDF, PNG ou JPG até 5 MB', 'Mensagem de sucesso e tela do chamado', 'Status inicial: Aberto'];
@@ -248,11 +255,21 @@ const limpaErros = () => { $$('.msg-erro').forEach((m) => m.remove()); $$('.erro
 // ---------- quem pode mover o quê ----------
 // O QA só move os próprios cards: de Pronto pra QA pra Em teste (e de volta), e de Em teste pra Concluído quando todos os critérios estão marcados.
 const MOVES_QA = { qa: ['teste'], teste: ['qa', 'concluido'] };
+function critEstado(d, c) {
+  const pl = d.planos[c.id];
+  return c.criterios.map((t, i) => {
+    if (!pl) return { t, cen: [], st: c.ok.includes(i) ? 'ok' : 'nada' };
+    const cen = pl.map((x, j) => x.regras.includes(i) ? j : -1).filter((j) => j >= 0);
+    const st = !cen.length ? 'nada' : cen.some((j) => pl[j].exec === 'falhou') ? 'falhou' : cen.every((j) => pl[j].exec === 'passou') ? 'ok' : 'testar';
+    return { t, cen, st, bugs: cen.map((j) => pl[j].bug).filter(Boolean) };
+  });
+}
+const critOk = (d, c) => critEstado(d, c).map((x, i) => x.st === 'ok' ? i : -1).filter((i) => i >= 0);
 function podeMover(c, destino) {
   if (c.coluna === destino) return { ok: false, msg: '' };
   if (c.resp !== 'voce') return { ok: false, msg: `Esse card é ${c.resp === 'gabriela' || c.resp === 'beatriz' ? 'da' : 'do'} ${PESSOAS[c.resp].nome}. Só quem é responsável move.` };
   if (!(MOVES_QA[c.coluna] || []).includes(destino)) return { ok: false, msg: 'O QA não faz esse movimento. Daqui o card só vai pra ' + (MOVES_QA[c.coluna] || []).map((k) => COLUNAS.find((x) => x[0] === k)[1].toLowerCase()).join(' ou ') + '.' };
-  if (destino === 'concluido' && c.criterios.length && c.ok.length < c.criterios.length) return { ok: false, msg: 'Antes de concluir, marque no card os critérios de aceite que você validou.' };
+  if (destino === 'concluido' && c.criterios.length && critOk(dados(), c).length < c.criterios.length) return { ok: false, msg: 'Antes de concluir, todo critério de aceite precisa estar validado pelo plano de testes.' };
   return { ok: true };
 }
 
@@ -316,7 +333,7 @@ PAGINAS.dashboard = () => {
     <div class="inicio"><div>${hero}</div>
       <div class="lado"><div class="numeros"><div><span data-test="kpi-abertos">${n('Aberto')}</span>abertos</div><div><span data-test="kpi-andamento">${n('Em andamento')}</span>em andamento</div><div><span data-test="kpi-resolvidos">${n('Resolvido')}</span>resolvidos</div></div>
         <h3 class="tit">Seus cards</h3>${meus.length ? meus.map(cardFace).join('') : '<p class="dica">Nenhum card com você agora.</p>'}
-        <h3 class="tit">Últimos chamados</h3><div class="lista-simples">${ult.map((x) => `<a href="chamado.html?id=${x.id}"><span class="num">#${x.id}</span><span class="tx">${esc(x.titulo)}</span><span class="${stClasse(x.status)}">${x.status}</span></a>`).join('')}</div></div></div>`);
+        <h3 class="tit">Seu time</h3><div class="time" data-test="time">${TIME.map(([p, tx]) => `<a class="pes" href="chat.html"><img src="img/av_${p}.png" alt=""><div><b>${PESSOAS[p].nome} <i>${PESSOAS[p].papel}</i></b><span>${tx}</span></div></a>`).join('')}</div></div></div>`);
 };
 
 PAGINAS.chamados = () => {
@@ -399,7 +416,7 @@ const flag = (p) => `<span class="flag f-${p.toLowerCase()}"><svg viewBox="0 0 2
 const etiqueta = (c) => c.tipo === 'bug' ? '<span class="etq etq-bug">bug</span>' : c.tipo === 'melhoria' ? '<span class="etq etq-mel">melhoria</span>' : '<span class="etq etq-story">história</span>';
 const nomeColuna = (k) => COLUNAS.find((x) => x[0] === k)[1];
 function cardFace(c) {
-  const d = dados(), plano = d.planos[c.id], tot = c.criterios.length, ok = c.ok.length;
+  const d = dados(), plano = d.planos[c.id], tot = c.criterios.length, ok = critOk(d, c).length;
   return `<a class="tk ${c.resp === 'voce' ? 'meu' : 'travado'} ${c.tipo === 'bug' ? 'e-bug' : ''}" href="card.html?id=${c.id}" draggable="${c.resp === 'voce'}" ${c.resp === 'voce' ? '' : `title="Card de ${PESSOAS[c.resp].nome}: só quem é responsável move"`} data-id="${c.id}" data-test="card-${c.id}">
     <div class="tk-etq">${etiqueta(c)}<span class="id">${c.id}</span></div><div class="t">${esc(c.titulo)}</div>
     <div class="tk-meta">${flag(prioDe(c))}${plano && plano.length ? `<span class="mini" title="Cenários no plano de testes">☑ ${plano.length}</span>` : ''}${c.comentarios.length ? `<span class="mini" title="Comentários">💬 ${c.comentarios.length}</span>` : ''}<span class="tk-av">${avatar(c.resp)}</span></div>
@@ -488,11 +505,18 @@ PAGINAS.card = () => {
       <div class="mi"><div class="k">Status</div><div class="v">${c.resp === 'voce' ? `<select class="in" id="mover" data-test="mover-card" style="height:32px;font-size:14px;min-width:190px">${COLUNAS.filter(([k]) => k === c.coluna || (MOVES_QA[c.coluna] || []).includes(k)).map(([k, n]) => `<option value="${k}" ${k === c.coluna ? 'selected' : ''}>${n}</option>`).join('')}</select>` : `<span class="pill-st" style="--cor:${COR_COLUNA[c.coluna]}" data-test="coluna-card"><i></i>${nomeColuna(c.coluna)}</span>`}</div></div>
       <div class="mi"><div class="k">Responsável</div><div class="v">${avatar(c.resp)}${PESSOAS[c.resp].nome}</div></div>
       <div class="mi"><div class="k">Prioridade</div><div class="v" data-test="card-prioridade">${flag(prioDe(c))}</div></div>
-      ${tot ? `<div class="mi"><div class="k">Critérios</div><div class="v" id="critN">${c.ok.length}/${tot}</div></div>` : ''}</div>
+      ${tot ? `<div class="mi"><div class="k">Critérios validados</div><div class="v" id="critN">${critOk(d, c).length}/${tot}</div></div>` : ''}</div>
     <nav class="abas">${abas.map(([k, n]) => `<button class="${k === aba ? 'on' : ''}" data-aba="${k}" data-test="aba-${k}">${n}<span class="n" id="n-${k}"></span></button>`).join('')}</nav>
     <div id="abaConteudo"></div>`);
   const contagens = () => { if ($('#n-plano')) $('#n-plano').textContent = d.planos[c.id].length || ''; if ($('#n-gherkin')) $('#n-gherkin').textContent = revisaGherkin(gherkinDe(dados(), c.id)).cenarios.length || ''; $('#n-comentarios').textContent = c.comentarios.length || ''; };
   const campo = (k, v) => `<div class="sec"><div class="k">${k}</div>${v ? `<div class="v">${esc(v)}</div>` : '<div class="v nada">Nada informado.</div>'}</div>`;
+  const ST_CRIT = { ok: ['Validado', 'ok'], falhou: ['Falhou', 'falhou'], testar: ['A testar', 'testar'], nada: ['Sem cenário', 'nada'] };
+  const critHtml = () => {
+    if (!tot) return '<div class="sec"><div class="k">Critérios de aceite</div><div class="v nada">Nenhum critério definido.</div></div>';
+    const es = critEstado(dados(), c);
+    if (!temPlano) return `<div class="sec" id="sCrit"><div class="k">Critérios de aceite</div>${es.map((e, i) => `<label class="cr"><input type="checkbox" data-i="${i}" data-test="criterio" ${e.st === 'ok' ? 'checked' : ''}>${esc(e.t)}</label>`).join('')}</div>`;
+    return `<div class="sec" id="sCrit"><div class="k">Critérios de aceite <span class="k2">o plano de testes valida cada um</span></div>${es.map((e, i) => `<div class="crit c-${ST_CRIT[e.st][1]}" data-test="criterio-linha"><span class="ci">${e.st === 'ok' ? '✓' : e.st === 'falhou' ? '✕' : i + 1}</span><div class="ct"><div>${esc(e.t)}</div><div class="cc">${e.cen.length ? e.cen.map((j2) => `<button type="button" class="chipc" data-cen="${j2}">Cenário ${j2 + 1}</button>`).join('') : '<span class="semc">Nenhum cenário cobre essa regra ainda</span>'}${(e.bugs || []).map((b) => `<a class="chipb" href="card.html?id=${b}">🐞 ${b}</a>`).join('')}</div></div><span class="cst" data-test="criterio-status">${ST_CRIT[e.st][0]}</span></div>`).join('')}</div>`;
+  };
   const mostra = (k) => {
     aba = k; $$('.abas button').forEach((b) => b.classList.toggle('on', b.dataset.aba === k));
     history.replaceState(null, '', `card.html?id=${c.id}${k === 'detalhes' ? '' : '&aba=' + k}`);
@@ -500,14 +524,18 @@ PAGINAS.card = () => {
     if (k === 'detalhes') {
       A.innerHTML = c.tipo === 'bug'
         ? `<div class="sec"><div class="k">Card relacionado</div><div class="v">${c.relacionado ? `<a href="card.html?id=${c.relacionado}">${c.relacionado}</a>` : '—'}</div></div>` + campo('Passos para reproduzir', c.passos) + campo('Resultado esperado', c.esperado) + campo('Resultado obtido', c.obtido) + campo('Evidência', c.evidencia ? '📎 ' + c.evidencia : '')
-        : campo('Descrição', c.descricao) + (c.tipo === 'melhoria' ? '' : `<div class="sec" id="sCrit"><div class="k">Critérios de aceite</div>${tot ? c.criterios.map((k2, i) => `<label class="cr"><input type="checkbox" data-i="${i}" data-test="criterio" ${c.ok.includes(i) ? 'checked' : ''}>${esc(k2)}</label>`).join('') : '<div class="v nada">Nenhum critério definido.</div>'}</div>`)
-          + (temPlano ? `<div style="margin-top:16px"><button class="btn" data-test="abrir-plano" id="abrePlano">Abrir plano de testes</button></div>` : '');
-      if (c.tipo !== 'bug' && temPlano) {
-        const pl = d.planos[c.id], ex = pl.filter((x) => x.exec === 'passou' || x.exec === 'falhou').length, fal = pl.filter((x) => x.exec === 'falhou').length, bugs = pl.filter((x) => x.bug).length, gk = revisaGherkin(gherkinDe(dados(), c.id)).cenarios.length;
+        : campo('Descrição', c.descricao) + (c.tipo === 'melhoria' ? '' : critHtml());
+      if (c.tipo !== 'bug') {
+        const pl = d.planos[c.id] || [], ex = pl.filter((x) => x.exec === 'passou' || x.exec === 'falhou').length, fal = pl.filter((x) => x.exec === 'falhou').length, bugs = pl.filter((x) => x.bug).length;
         const linha = (n, l, cor) => `<div class="rs-l"><span>${l}</span><b${cor ? ` style="color:${cor}"` : ''}>${n}</b></div>`;
-        A.innerHTML = `<div class="det"><div class="det-e">${A.innerHTML}</div><aside class="rs" data-test="resumo-card"><div class="rs-k">Resumo do teste</div>${linha(pl.length, 'Cenários no plano')}${linha(gk, 'Cenários em Gherkin')}${linha(`${ex}/${pl.length}`, 'Executados')}${linha(fal, 'Falharam', fal ? '#fca5a5' : '')}${linha(bugs, 'Bugs ligados', bugs ? '#c4b5fd' : '')}<div class="rs-bar"><i style="width:${pl.length ? ex / pl.length * 100 : 0}%"></i></div></aside></div>`;
+        const pessoa = (p, papel) => `<div class="rs-p">${avatar(p)}<div><b>${PESSOAS[p].nome}</b><span>${papel}</span></div></div>`;
+        A.innerHTML = `<div class="det"><div class="det-e">${A.innerHTML}</div><aside class="rs" data-test="resumo-card">
+          <div class="rs-k">Pessoas do card</div>${pessoa('rafael', 'PO · escreveu a história')}${pessoa(c.resp === 'voce' ? 'gabriela' : c.resp, 'Dev · fez a entrega')}${pessoa('voce', 'QA · está testando')}
+          ${temPlano ? `<div class="rs-k" style="margin-top:18px">Andamento do teste</div>${linha(pl.length, 'Cenários no plano')}${linha(`${ex}/${pl.length}`, 'Executados')}${linha(fal, 'Falharam', fal ? '#fca5a5' : '')}${linha(bugs, 'Bugs ligados', bugs ? '#c4b5fd' : '')}<div class="rs-bar"><i style="width:${pl.length ? ex / pl.length * 100 : 0}%"></i></div>
+          <button class="btn cheio" data-test="abrir-plano" id="abrePlano" style="margin-top:16px">Abrir plano de testes</button>` : ''}</aside></div>`;
       }
       $$('[data-test=criterio]').forEach((k2) => { k2.onchange = () => { const i = +k2.dataset.i; c.ok = k2.checked ? [...new Set([...c.ok, i])] : c.ok.filter((x) => x !== i); salvar(); if ($('#critN')) $('#critN').textContent = `${c.ok.length}/${tot}`; }; });
+      $$('[data-cen]').forEach((b) => { b.onclick = () => mostra('plano'); });
       if ($('#abrePlano')) $('#abrePlano').onclick = () => mostra('plano');
     } else if (k === 'plano') {
       montaPlano(A, c);
@@ -687,12 +715,12 @@ function respostaDoTime(tx, canal) {
 PAGINAS.chat = () => {
   const d = dados(), canal = d.chat[qs.get('canal')] ? qs.get('canal') : 'time-produto', l = d.chat[canal];
   const msgHtml = (m) => `<div class="msg" data-test="mensagem">${m.de === 'voce' ? '<span class="vc">VC</span>' : `<img src="img/av_${m.de}.png" alt="">`}<div><div class="who">${PESSOAS[m.de].nome}<i>${PESSOAS[m.de].papel}</i><small>${hora(m.quando)}</small></div><div class="tx">${esc(m.tx)}</div></div></div>`;
-  document.body.innerHTML = `<div class="chat"><div class="chan"><span class="marca" style="font-size:18px"><img src="img/icon.png" alt="" style="height:28px">FlowChat</span>
-      <div class="t">Canais</div>${Object.keys(d.chat).map((k) => `<a href="chat.html?canal=${k}" class="${k === canal ? 'on' : ''}" data-test="canal-${k}"># ${k}</a>`).join('')}
-      <a href="dashboard.html" style="margin-top:auto;color:var(--mut);font-size:14px" data-test="voltar-flowdesk">← Voltar pro FlowDesk</a></div>
-    <div class="msgs"><div class="chead"># ${canal}<span>6 membros</span></div><div class="lista" id="lista" data-test="mensagens">${l.map(msgHtml).join('')}</div>
+  casca('chat', `<div class="chatv"><div class="chan">
+      <div class="t">Canais</div>${Object.keys(d.chat).map((k) => `<a href="chat.html?canal=${k}" class="${k === canal ? 'on' : ''}" data-test="canal-${k}"><span>#</span> ${k}</a>`).join('')}</div>
+    <div class="msgs"><div class="chead"><b># ${canal}</b><span class="avs">${TIME.map(([p]) => `<img src="img/av_${p}.png" alt="${PESSOAS[p].nome}" title="${PESSOAS[p].nome}">`).join('')}</span><span class="mem">6 membros</span></div><div class="lista" id="lista" data-test="mensagens">${l.map(msgHtml).join('')}</div>
       <div class="digitando" id="dig" data-test="digitando" hidden></div>
-      <form class="composer" id="f"><input class="in" id="tx" placeholder="Escreva uma mensagem…" data-test="mensagem-texto" autocomplete="off"><button class="btn" data-test="enviar-mensagem">Enviar</button></form></div></div>`;
+      <form class="composer" id="f"><input class="in" id="tx" placeholder="Mensagem em #${canal}" data-test="mensagem-texto" autocomplete="off"><button class="btn" data-test="enviar-mensagem">Enviar</button></form></div>
+    <aside class="quem"><div class="t">Quem é quem</div>${TIME.map(([p, tx]) => `<div class="pes"><img src="img/av_${p}.png" alt=""><div><b>${PESSOAS[p].nome} <i>${PESSOAS[p].papel}</i></b><span>${tx}</span></div></div>`).join('')}</aside></div>`);
   const desce = () => { $('#lista').scrollTop = 1e9; };
   desce();
   $('#f').onsubmit = (ev) => {
@@ -709,9 +737,11 @@ PAGINAS.configuracoes = () => {
   casca('configuracoes', topo('Configurações') + `
     <div class="fcard"><div class="campo"><label for="cfNome">Seu nome</label><div style="display:flex;gap:10px"><input class="in" id="cfNome" value="${esc(c.nome)}" data-test="config-nome"><button class="btn" id="salvaNome" data-test="salvar-nome">Salvar</button></div></div>
       <div class="campo"><label>E-mail</label><input class="in" value="${esc(sessao())}" disabled></div>
-      <div class="campo"><label for="cfVer">Versão do sistema</label><select class="in" id="cfVer" data-test="config-versao"><option value="14" ${VERSAO === 14 ? 'selected' : ''}>Sprint 14 · homologação</option><option value="15" ${VERSAO === 15 ? 'selected' : ''}>Sprint 15 · homologação</option></select><div class="dica">O curso diz quando trocar de versão.</div></div></div>
+      <div class="campo" style="margin-bottom:0"><label>Versão do sistema</label><div class="vers">${[[14, 'A versão do começo do curso'], [15, 'Chega mais pra frente no curso']].map(([v, s]) => `<button type="button" class="ver ${VERSAO === v ? 'on' : ''}" data-ver="${v}" data-test="versao-${v}"><b>Sprint ${v}</b><span>${s}</span>${VERSAO === v ? '<i>em uso</i>' : ''}</button>`).join('')}</div><select class="exec-sel" id="cfVer" data-test="config-versao" aria-label="Versão do sistema"><option value="14" ${VERSAO === 14 ? 'selected' : ''}>Sprint 14 · homologação</option><option value="15" ${VERSAO === 15 ? 'selected' : ''}>Sprint 15 · homologação</option></select><div class="dica">O curso diz quando trocar de versão.</div></div></div>
     <div class="fcard" style="margin-top:18px"><h3 style="font-size:17px;margin-bottom:6px">Carregar save do curso</h3><p class="dica" style="margin-bottom:12px">Perdeu o progresso, trocou de computador ou pulou uma aula? Carregue o ponto do curso em que você está. O FlowDesk fica do jeito que o vídeo espera. <b>Isso substitui o que você tem agora.</b></p>
-      <div style="display:flex;gap:10px;flex-wrap:wrap"><select class="in" id="cfSave" data-test="save-episodio" style="max-width:420px">${SAVES.map((x) => `<option value="${x.id}">${x.nome} · ${x.quando}</option>`).join('')}</select><button class="btn" id="carregaSave" data-test="carregar-save">Carregar save</button></div>
+      <div class="saves" id="saves">${SAVES.map((x, i) => `<button type="button" class="sv ${i === 0 ? 'on' : ''}" data-sv="${x.id}" data-test="save-${x.id}"><span class="sv-ep">${(x.nome.match(/EP\d+/) || ['EP00'])[0]}</span><b>${i === 0 ? x.nome : x.quando}</b><span>${i === 0 ? x.quando : x.nome}</span></button>`).join('')}</div>
+      <select class="exec-sel" id="cfSave" data-test="save-episodio" aria-label="Save do curso">${SAVES.map((x) => `<option value="${x.id}">${x.nome} · ${x.quando}</option>`).join('')}</select>
+      <button class="btn" id="carregaSave" data-test="carregar-save" style="margin-top:14px">Carregar save</button>
       <div id="confSave" hidden style="margin-top:12px"><b>Tem certeza?</b> O que você fez até agora vai ser trocado pelo save. <button class="btn peq" id="saveSim" data-test="confirmar-save">Sim, carregar</button> <button class="btn sec peq" id="saveNao">Cancelar</button></div></div>
     <div class="fcard" style="margin-top:18px"><h3 style="font-size:17px;margin-bottom:6px">Levar o progresso pra outro computador</h3><p class="dica" style="margin-bottom:12px">Baixe um arquivo com tudo o que você fez. No outro computador, crie a conta e importe o arquivo.</p>
       <div style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn sec" id="exporta" data-test="exportar-progresso">Exportar progresso</button><label class="btn sec" for="importa" style="cursor:pointer">Importar progresso<input type="file" id="importa" accept=".json,application/json" data-test="importar-progresso" hidden></label></div></div>
@@ -719,6 +749,10 @@ PAGINAS.configuracoes = () => {
       <button class="btn perigo" id="zera" data-test="recomecar">Recomeçar do zero</button>
       <div id="conf" hidden style="margin-top:12px"><b>Tem certeza?</b> Isso não tem volta. <button class="btn perigo peq" id="zeraSim" data-test="confirmar-recomecar">Sim, apagar tudo</button> <button class="btn sec peq" id="zeraNao">Cancelar</button></div></div>`);
   $('#salvaNome').onclick = () => { const n = $('#cfNome').value.trim(); if (!n) return toast('O nome não pode ficar vazio', true); c.nome = n; LS.set('fd:contas', cs); recado('Nome salvo'); location.reload(); };
+  $$('[data-ver]').forEach((b) => { b.onclick = () => { if (+b.dataset.ver === VERSAO) return; $('#cfVer').value = b.dataset.ver; $('#cfVer').onchange(); }; });
+  const marcaSave = () => $$('[data-sv]').forEach((b) => b.classList.toggle('on', b.dataset.sv === $('#cfSave').value));
+  $$('[data-sv]').forEach((b) => { b.onclick = () => { $('#cfSave').value = b.dataset.sv; marcaSave(); }; });
+  $('#cfSave').addEventListener('change', marcaSave);
   $('#cfVer').onchange = () => { LS.set('fd:versao', +$('#cfVer').value); recado('Versão trocada para a Sprint ' + $('#cfVer').value); location.reload(); };
   $('#carregaSave').onclick = () => { $('#confSave').hidden = false; };
   $('#saveNao').onclick = () => { $('#confSave').hidden = true; };

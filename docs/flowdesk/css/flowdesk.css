@@ -469,3 +469,68 @@ body{-webkit-font-smoothing:antialiased}
 .plano .tabela .tgs{margin-top:7px}
 .plano .tabela .link{display:inline-block;margin:8px 0 0}
 .abas .n:empty{display:none}
+/* ---------- critérios validados pelo plano ---------- */
+.sec .k .k2{text-transform:none;letter-spacing:0;font-weight:600;color:#5f6380;margin-left:8px;font-size:12px}
+.crit{display:flex;align-items:flex-start;gap:14px;padding:13px 4px;border-top:1px solid #1b1d2b}
+.crit:first-of-type{border-top:0}
+.crit .ci{width:28px;height:28px;border-radius:9px;flex:none;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;background:#1b1d2b;color:#8b8fa6}
+.crit .ct{flex:1;min-width:0;font-size:15.5px;font-weight:600;color:#e3e5ee}
+.crit .cc{display:flex;flex-wrap:wrap;gap:6px;margin-top:7px}
+.chipc{background:#1a1730;border:1px solid #33285e;color:#c4b5fd;border-radius:999px;padding:2px 10px;font-size:12px;font-weight:700;cursor:pointer}
+.chipc:hover{background:#251f45}
+.chipb{background:#2a1218;border:1px solid #5b1d24;color:#fca5a5;border-radius:999px;padding:2px 10px;font-size:12px;font-weight:700}
+.semc{font-size:12.5px;color:#6a6e8c;font-style:italic}
+.crit .cst{flex:none;font-size:11.5px;font-weight:800;letter-spacing:.4px;border-radius:999px;padding:4px 11px;background:#1b1d2b;color:#8b8fa6;margin-top:2px}
+.crit.c-ok .ci{background:#14532d;color:#86efac}.crit.c-ok .cst{background:#0f2e1e;color:#4ade80}
+.crit.c-falhou .ci{background:#5b1d24;color:#fecaca}.crit.c-falhou .cst{background:#3a1218;color:#fca5a5}
+.crit.c-testar .ci{background:#1e1b33;color:#c4b5fd}.crit.c-testar .cst{background:#1e1b33;color:#c4b5fd}
+.crit.c-nada .cst{background:#2a220c;color:#fde68a}
+/* pessoas no resumo do card */
+.rs-p{display:flex;align-items:center;gap:12px;padding:8px 0}
+.rs-p .av,.rs-p .vc{width:40px;height:40px;font-size:13px;border-radius:50%;box-shadow:0 0 0 2px #2a2050}
+.rs-p b{display:block;font-size:14.5px}.rs-p span{font-size:12.5px;color:#9a9eb6}
+/* ---------- o time (início e chat) ---------- */
+.time{display:flex;flex-direction:column;gap:8px}
+.pes{display:flex;align-items:center;gap:13px;padding:11px 13px;border-radius:14px;background:linear-gradient(180deg,#13141c,#101118);border:1px solid var(--line);color:var(--txt);transition:border-color .15s,transform .15s}
+a.pes:hover{text-decoration:none;border-color:#3b2a6e;transform:translateX(3px)}
+.pes img{width:46px;height:46px;border-radius:50%;flex:none;background:#1e1836;box-shadow:0 0 0 2px #2a2050}
+.pes b{display:block;font-size:15px}.pes b i{font-style:normal;font-size:11px;font-weight:800;color:#c4b5fd;background:#1e1836;border:1px solid #3b2a6e;border-radius:6px;padding:1px 6px;margin-left:6px;vertical-align:2px}
+.pes span{display:block;font-size:13px;color:#9a9eb6;line-height:1.35;margin-top:2px}
+/* chat dentro do app */
+.chatv{display:grid;grid-template-columns:200px minmax(0,1fr) 290px;height:calc(100vh - 72px);margin:-6px 0 -60px;background:linear-gradient(180deg,#111219,#0d0e14);border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:var(--sh)}
+.chatv .chan{width:auto;background:#0d0e15;border-right:1px solid var(--line);padding:18px 12px;display:flex;flex-direction:column}
+.chatv .chan .t,.quem .t{font-size:11px;letter-spacing:1.4px;text-transform:uppercase;color:#6f7392;font-weight:800;margin:4px 8px 10px}
+.chatv .chan a{font-size:15px;padding:8px 10px;border-radius:9px;color:#b9bccd;font-weight:600}
+.chatv .chan a span{color:#5f6380;margin-right:2px}
+.chatv .chan a.on{background:linear-gradient(90deg,rgba(124,58,237,.25),rgba(124,58,237,.06));color:#fff}
+.chatv .chan .voltar{margin-top:auto;border:1px solid var(--line2);text-align:center;color:#c9cbda;font-size:14px}
+.chatv .chan .voltar:hover{background:#181a25;color:#fff}
+.chatv .msgs{display:flex;flex-direction:column;min-width:0}
+.chatv .chead{height:64px;padding:0 22px;gap:12px;font-size:18px}
+.chatv .chead .avs{display:flex;margin-left:6px}.chatv .chead .avs img{width:28px;height:28px;border-radius:50%;margin-left:-8px;box-shadow:0 0 0 2px #111219;background:#1e1836}
+.chatv .chead .mem{font-size:13px;color:var(--mut);font-weight:600;margin-left:0}
+.chatv .lista{padding:18px 22px}
+.chatv .msg{gap:13px;padding:10px 12px;margin-bottom:6px;border-radius:12px}
+.chatv .msg img,.chatv .msg .vc{width:44px;height:44px;background:#1e1836}
+.chatv .msg .tx{font-size:16px}
+.chatv .composer{padding:14px 22px 18px;border-top:1px solid var(--line)}
+.quem{border-left:1px solid var(--line);padding:18px 14px;overflow-y:auto;background:#0d0e15}
+.quem .pes{margin-bottom:8px;padding:10px;background:#12131c}
+.quem .pes img{width:40px;height:40px}
+.quem .pes span{font-size:12.5px}
+/* ---------- configurações: versão e saves em cartões ---------- */
+.vers{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.ver{position:relative;text-align:left;background:#0e0f16;border:1px solid #23253a;border-radius:14px;padding:14px 16px;cursor:pointer;color:var(--txt);transition:all .15s}
+.ver:hover{border-color:#3b3f5c}
+.ver b{display:block;font-size:16px}.ver span{display:block;font-size:13px;color:#8b8fa6;margin-top:3px}
+.ver i{position:absolute;top:12px;right:12px;font-style:normal;font-size:11px;font-weight:800;color:#4ade80;background:#0f2e1e;border-radius:999px;padding:2px 9px}
+.ver.on{border-color:#7c3aed;background:linear-gradient(160deg,#1f1742,#120f24);box-shadow:0 0 0 3px rgba(124,58,237,.18)}
+.saves{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:10px}
+.sv{text-align:left;background:#0e0f16;border:1px solid #23253a;border-radius:14px;padding:14px;cursor:pointer;color:var(--txt);transition:all .15s;display:flex;flex-direction:column;gap:4px}
+.sv:hover{border-color:#3b3f5c;transform:translateY(-1px)}
+.sv .sv-ep{align-self:flex-start;font-size:11px;font-weight:900;letter-spacing:1px;color:#c4b5fd;background:#1e1836;border:1px solid #3b2a6e;border-radius:7px;padding:2px 8px;margin-bottom:6px}
+.sv b{font-size:15px;line-height:1.25}.sv span{font-size:12.5px;color:#8b8fa6}
+.sv.on{border-color:#7c3aed;background:linear-gradient(160deg,#1f1742,#120f24);box-shadow:0 0 0 3px rgba(124,58,237,.18)}
+.sv.on .sv-ep{background:#7c3aed;color:#fff;border-color:#7c3aed}
+@media (max-width:900px){.chatv{grid-template-columns:1fr;height:auto;margin:0}.chatv .chan{flex-direction:row;flex-wrap:wrap}.quem{display:none}.vers{grid-template-columns:1fr}}
+.side{z-index:20}.missao-side .pop{z-index:80}
