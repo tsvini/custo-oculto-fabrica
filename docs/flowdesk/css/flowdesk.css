@@ -156,19 +156,33 @@ select.in{appearance:none;background-image:linear-gradient(45deg,transparent 50%
 .cn{font-weight:700;line-height:1.3;font-size:15px}
 .res{color:#b9bccd;font-size:14px;line-height:1.45}
 .tgs{display:flex;flex-wrap:wrap;gap:5px;margin-top:6px}
-/* plano de testes: linhas com trilho de status */
-.plano .tabela{border-radius:14px}
-.plano .tabela th{font-size:11px;letter-spacing:1.2px;text-transform:uppercase;padding:12px 16px;background:#11121d}
-.plano .tabela td{padding:16px;border-bottom-color:#1d1f30}
-.plano .tabela td:first-child{box-shadow:inset 3px 0 #2c2f45}
-.plano .tabela tr.st-passou td:first-child{box-shadow:inset 3px 0 #22c55e}
-.plano .tabela tr.st-falhou td:first-child{box-shadow:inset 3px 0 #ef4444}
+/* plano de testes: cada cenário é um cartão */
+.plano .tabela{border-collapse:separate;border-spacing:0 8px;background:none;border:0;border-radius:0;overflow:visible;margin-top:-8px}
+.plano .tabela th{font-size:11px;letter-spacing:1.2px;text-transform:uppercase;padding:4px 16px 0;border:0;background:none;color:#6f7390}
+.plano .tabela td{padding:16px;background:var(--panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line);transition:background .15s,border-color .15s}
+.plano .tabela td:first-child{border-left:1px solid var(--line);border-radius:12px 0 0 12px}
+.plano .tabela td:last-child{border-right:1px solid var(--line);border-radius:0 12px 12px 0}
+.plano .tabela tbody tr:hover{background:none}
+.plano .tabela tbody tr:hover td{background:#141625;border-color:#2c2f45}
+.plano .tabela tr.fora td{background:#17140c;border-color:#3d3214}
+.plano .tabela tr.st-passou td{border-color:#1d3b2a}.plano .tabela tr.st-falhou td{border-color:#4a1f26}
 .plano .tabela .num{width:44px}
 .plano .tabela .num span{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:#1e1b33;color:#c4b5fd;font-size:13px;font-weight:800}
 .plano .tabela tr.st-passou .num span{background:#0f2e1e;color:#4ade80}
 .plano .tabela tr.st-falhou .num span{background:#3a1218;color:#fca5a5}
-.xcel{display:flex;flex-direction:column;gap:6px;align-items:stretch}
-.xcel .bugbtn,.xcel .bugchip,.xcel .evbtn{margin:0;display:block;text-align:center;max-width:none}
+.plano .tabela tr.fora.st-nao .num span{background:#3d2e08;color:#fde68a}
+.xcel{position:relative;display:flex;flex-direction:column;gap:8px}
+.xseg{display:flex;gap:6px}
+.sg{flex:1;height:32px;border-radius:8px;border:1px solid #2c2f45;background:transparent;color:#8d91aa;font-size:12.5px;font-weight:700;cursor:pointer;white-space:nowrap;transition:all .15s}
+.sg:hover{color:#e8e9f0;border-color:#4b4f6e}
+.sg.ok.on{background:#12351f;border-color:#22c55e;color:#4ade80}
+.sg.nok.on{background:#3f141b;border-color:#ef4444;color:#fca5a5}
+.exec-sel{position:absolute;left:0;top:0;width:1px;height:1px;opacity:0;pointer-events:none}
+.xlinks{display:flex;flex-wrap:wrap;gap:4px 12px}.xlinks:empty{display:none}
+.xl{background:none;border:0;padding:0;font-size:12.5px;font-weight:700;cursor:pointer;color:#8d91aa;max-width:190px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.xl:hover{color:#e8e9f0;text-decoration:underline}
+.xl.bug{color:#fca5a5}.xl.ev.tem{color:#c4b5fd}
+.xlinks .bugchip{margin:0}
 .xres{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--mut);white-space:nowrap}
 .xres b{color:#e8e9f0}
 .xres .xb{display:flex;width:120px;height:6px;border-radius:9px;background:#23253a;overflow:hidden}
