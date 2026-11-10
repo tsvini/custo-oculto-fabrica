@@ -1,0 +1,12 @@
+name = "flowdesk-caca-bugs"
+main = "worker.js"
+compatibility_date = "2026-10-01"
+
+# criar com: npx wrangler kv namespace create CACA  (e colar o id aqui)
+[[kv_namespaces]]
+binding = "CACA"
+id = "COLAR_O_ID_AQUI"
+
+[vars]
+ORIGEM = "https://tsvini.github.io"
+# a senha do painel fica em segredo: npx wrangler secret put ADMIN
