@@ -122,6 +122,7 @@ const SAVES = [
   { id: 'ep04', nome: 'Início do EP05', quando: 'Cenários em Gherkin', monta: () => { const d = semente(); d.planos['FD-101'] = CENARIOS_EP03.map((c) => ({ ...c })); d.conquistas = ['ep03']; return d; } },
   { id: 'ep06', nome: 'Início do EP06', quando: 'Prática do Gherkin', monta: () => { const d = semente(); d.planos['FD-101'] = CENARIOS_EP03.map((c) => ({ ...c })); d.conquistas = ['ep03']; return d; } },
   { id: 'ep07', nome: 'Início do EP07', quando: 'Primeiro bug', monta: () => { const d = semente(); d.planos['FD-101'] = CENARIOS_EP03.map((c) => ({ ...c })); d.gherkin = { 'FD-101': GK_EP06 }; d.conquistas = ['ep03', 'ep06']; return d; } },
+  { id: 'ep08', nome: 'Início do EP08', quando: 'Executar o plano', monta: () => { const d = semente(); d.planos['FD-101'] = CENARIOS_EP03.map((c) => ({ ...c })); d.gherkin = { 'FD-101': GK_EP06 }; d.conquistas = ['ep03', 'ep06']; return d; } },
 ];
 
 
@@ -142,7 +143,15 @@ const MISSOES = [
     ['Um Quando por cenário: uma ação só', (d) => { const r = revisaGherkin(gherkinDe(d)); return r.cenarios.length > 0 && r.cenarios.every((c) => c.acoes <= 1); }],
     ['Nenhum Então vago', (d) => { const r = revisaGherkin(gherkinDe(d)); return r.cenarios.length > 0 && r.cenarios.every((c) => !c.vago.length); }],
   ] },
+  { id: 'ep08', titulo: 'Executar o plano do FD-101', aula: 'EP08', conquista: 'Primeiros bugs achados', nivel: 'QA júnior', link: 'card.html?id=FD-101&aba=plano', itens: [
+    ['Execute todos os cenários do plano', (d) => { const l = d.planos['FD-101'] || []; return l.length >= 8 && l.every((c) => c.exec && c.exec !== 'nao'); }],
+    ['Reporte o bug do título só com espaços', (d) => bugsDe(d).some((b) => /espa[çc]o/i.test(textoBug(b)))],
+    ['Ache e reporte o bug do anexo', (d) => bugsDe(d).some((b) => /anexo|5\s?mb|arquivo/i.test(textoBug(b)))],
+    ['Todo cenário que falhou tem um bug ligado', (d) => { const f = (d.planos['FD-101'] || []).filter((c) => c.exec === 'falhou'); return f.length > 0 && f.every((c) => c.bug); }],
+  ] },
 ];
+const bugsDe = (d) => d.cards.filter((c) => c.tipo === 'bug');
+const textoBug = (b) => [b.titulo, b.passos, b.esperado, b.obtido, b.cenario].join(' ');
 
 // ---------- Gherkin (EP06): leitura e revisão do arquivo .feature ----------
 const GK_INICIO = 'Funcionalidade: Criar chamado\n\n';
@@ -184,6 +193,7 @@ function pintaGherkin(txt) {
 }
 const progresso = (m, d = dados()) => m.itens.map(([, f]) => !!f(d));
 const missaoAtual = () => MISSOES.find((m) => !(dados().conquistas || []).includes(m.id)) || null;
+function nivelAtual() { const d = dados() || {}; const fe = MISSOES.filter((m) => (d.conquistas || []).includes(m.id)); return fe.length ? fe[fe.length - 1].nivel : 'QA estagiário'; }
 function confereMissoes() {
   const d = dados(); d.conquistas = d.conquistas || [];
   MISSOES.forEach((m) => {
@@ -196,6 +206,7 @@ function conquista(m) {
   const o = document.createElement('div'); o.className = 'conq-fundo'; o.setAttribute('data-test', 'conquista');
   o.innerHTML = `<div class="conq"><div class="k">🏆 CONQUISTA DESBLOQUEADA</div><div class="v" data-test="conquista-nome">${m.conquista}</div><div class="s">Nível atual: <b>${m.nivel}</b></div><button class="btn" data-test="fechar-conquista">Continuar</button></div>`;
   document.body.appendChild(o); $('[data-test=fechar-conquista]', o).onclick = () => o.remove();
+  const nv = $('[data-test=nivel]'); if (nv) nv.textContent = m.nivel;
 }
 function cardMissao() {
   const m = missaoAtual();
@@ -223,7 +234,7 @@ function casca(pagina, conteudo) {
   document.body.innerHTML = `<div class="app"><aside class="side">${MARCA}<nav>
     ${it('dashboard.html', 'Início', 'dashboard')}${it('chamados.html', 'Chamados', 'chamados')}${it('quadro.html', 'Quadro', 'quadro')}${it('chat.html', 'FlowChat', 'chat')}</nav>
     <div class="side-fim">${cardMissao()}<nav class="sec-nav">${it('configuracoes.html', 'Configurações', 'configuracoes')}</nav>
-    <div class="eu"><span class="vc">VC</span><div><b data-test="usuario-logado">${esc(c.nome)}</b><span>QA estagiário</span></div><button data-test="sair">Sair</button></div></div></aside>
+    <div class="eu"><span class="vc">VC</span><div><b data-test="usuario-logado">${esc(c.nome)}</b><span data-test="nivel">${nivelAtual()}</span></div><button data-test="sair">Sair</button></div></div></aside>
     <main class="main"><div class="conteudo">${conteudo}</div></main></div>`;
   $('[data-test=sair]').onclick = sair;
   mostraRecado(); setTimeout(confereMissoes, 300);
@@ -421,7 +432,7 @@ PAGINAS.quadro = () => {
   pinta();
   if (qs.get('novo') === 'bug') novaTarefa(pinta);
 };
-function novaTarefa(depois) {
+function novaTarefa(depois, ctx) {
   const d = dados();
   const o = document.createElement('div'); o.className = 'modal-fundo'; o.setAttribute('data-test', 'modal-nova-tarefa');
   o.innerHTML = `<form class="modal" id="fT" novalidate><div class="modal-h"><h3>Nova tarefa</h3><button type="button" class="icone" data-fecha data-test="fechar-modal">✕</button></div>
@@ -429,6 +440,7 @@ function novaTarefa(depois) {
     <div class="campo"><label for="tTitulo">Título <i>*</i></label><input class="in" id="tTitulo" data-test="tarefa-titulo" placeholder="O que acontece, e onde"></div>
     <div class="linha2"><div class="campo"><label for="tPrio">Prioridade</label><select class="in" id="tPrio" data-test="tarefa-prioridade">${PRIOS.map((p) => `<option ${p === 'Normal' ? 'selected' : ''}>${p}</option>`).join('')}</select></div>
       <div class="campo"><label for="tCard">Card relacionado</label><select class="in" id="tCard" data-test="tarefa-card"><option value="">Nenhum</option>${d.cards.filter((c) => c.tipo !== 'bug').map((c) => `<option value="${c.id}" ${c.id === 'FD-101' ? 'selected' : ''}>${c.id} · ${esc(c.titulo)}</option>`).join('')}</select></div></div>
+    ${ctx ? `<p class="liga" data-test="bug-cenario">🔗 Ligado ao cenário ${ctx.n} do plano: <b>${esc(ctx.nome)}</b></p>` : ''}
     <div class="so-bug"><div class="campo"><label for="tPassos">Passos para reproduzir <i>*</i></label><textarea class="in" id="tPassos" data-test="bug-passos" placeholder="1. …&#10;2. …&#10;3. …"></textarea></div>
       <div class="linha2"><div class="campo"><label for="tEsp">Resultado esperado <i>*</i></label><input class="in" id="tEsp" data-test="bug-esperado"></div><div class="campo"><label for="tObt">Resultado obtido <i>*</i></label><input class="in" id="tObt" data-test="bug-obtido"></div></div>
       <div class="campo"><label>Evidência <small>(print ou vídeo, opcional)</small></label><label class="arquivo" for="tEvid"><input type="file" id="tEvid" data-test="bug-evidencia"><span class="btn sec peq">Escolher arquivo</span><span class="nome" id="nomeEv">Nenhum arquivo escolhido</span></label></div></div>
@@ -450,14 +462,15 @@ function novaTarefa(depois) {
     if (!ok) return;
     let id;
     if (bug) {
-      id = 'BUG-' + d.proximoBug++; const f = $('#tEvid').files[0];
-      d.cards.push({ id, titulo: v('tTitulo'), coluna: 'afazer', resp: 'gabriela', tipo: 'bug', prioridade: v('tPrio'), relacionado: v('tCard'), passos: v('tPassos'), esperado: v('tEsp'), obtido: v('tObt'), evidencia: f ? f.name : '', criterios: [], ok: [], comentarios: [], criadoEm: agora() });
+      id = 'BUG-' + String(d.proximoBug++).padStart(2, '0'); const f = $('#tEvid').files[0];
+      d.cards.push({ id, titulo: v('tTitulo'), coluna: 'afazer', resp: 'gabriela', tipo: 'bug', prioridade: v('tPrio'), relacionado: v('tCard'), cenario: ctx ? ctx.nome : '', passos: v('tPassos'), esperado: v('tEsp'), obtido: v('tObt'), evidencia: f ? f.name : '', criterios: [], ok: [], comentarios: [], criadoEm: agora() });
       d.chat.bugs.push({ de: 'voce', tx: `Abri o ${id}: ${v('tTitulo')}`, quando: agora() });
     } else {
       d.proximoMelhoria = d.proximoMelhoria || 1; id = 'MEL-' + d.proximoMelhoria++;
       d.cards.push({ id, titulo: v('tTitulo'), coluna: 'afazer', resp: 'rafael', tipo: 'melhoria', prioridade: v('tPrio'), relacionado: v('tCard'), descricao: v('tDesc'), criterios: [], ok: [], comentarios: [], criadoEm: agora() });
     }
-    salvar(); fecha(); toast(`${id} criado${bug ? ' e enviado pra Gabriela' : ''}`); if (depois) depois();
+    if (bug && ctx) { const l = d.planos[ctx.card] || []; if (l[ctx.i]) l[ctx.i].bug = id; }
+    salvar(); fecha(); toast(`${id} criado${bug ? ' e enviado pra Gabriela' : ''}`); if (depois) depois(id); confereMissoes();
   };
 }
 
@@ -580,7 +593,7 @@ function montaPlano(A, card) {
     $('#linhas').innerHTML = lista.length ? lista.map((c, i) => {
       const fora = !c.regras.length, t = TIPOS[c.tipo];
       return `<tr class="${fora ? 'fora' : ''}" data-test="linha-cenario"><td class="num">${i + 1}</td><td><div class="cn">${esc(c.nome)}</div><span class="tg ${fora ? 'tX' : t[1]}">${fora ? 'FORA DAS REGRAS' : t[0]}</span>${fora ? ` <span class="tg ${t[1]}">${t[0]}</span>` : ''}${c.passos ? `<button type="button" class="link" data-ps="${i}" data-test="ver-passos">${abertos.has(i) ? 'Esconder passos' : 'Ver passos'}</button><div class="passos" ${abertos.has(i) ? '' : 'hidden'}>${esc(c.passos)}</div>` : ''}</td><td class="res">${esc(c.esperado)}</td>
-        <td><select class="exec ${c.exec}" data-i="${i}" data-test="execucao"><option value="nao" ${c.exec === 'nao' ? 'selected' : ''}>Não executado</option><option value="passou" ${c.exec === 'passou' ? 'selected' : ''}>Passou</option><option value="falhou" ${c.exec === 'falhou' ? 'selected' : ''}>Falhou</option></select></td>
+        <td><select class="exec ${c.exec}" data-i="${i}" data-test="execucao"><option value="nao" ${c.exec === 'nao' ? 'selected' : ''}>Não executado</option><option value="passou" ${c.exec === 'passou' ? 'selected' : ''}>Passou</option><option value="falhou" ${c.exec === 'falhou' ? 'selected' : ''}>Falhou</option></select>${c.exec === 'falhou' ? (c.bug ? `<a class="bugchip" href="card.html?id=${c.bug}" data-test="bug-ligado">🐞 ${c.bug}</a>` : `<button type="button" class="bugbtn" data-bug="${i}" data-test="reportar-bug">🐞 Reportar bug</button>`) : ''}</td>
         <td><div class="acoes"><button class="icone" data-ed="${i}" data-test="editar-cenario">Editar</button><button class="icone" data-rm="${i}" data-test="excluir-cenario">✕</button></div></td></tr>`;
     }).join('') : '<tr><td colspan="5" class="vazio" data-test="plano-vazio">Nenhum cenário ainda</td></tr>';
     let n = 0;
@@ -590,7 +603,8 @@ function montaPlano(A, card) {
     const fora = lista.map((c, j) => c.regras.length ? 0 : j + 1).filter(Boolean);
     $('#ex').hidden = !fora.length; $('#ex').textContent = `+ Cenário ${fora.join(', ')}: fora das regras`;
     if ($('#n-plano')) $('#n-plano').textContent = lista.length || '';
-    $$('[data-test=execucao]').forEach((s) => { s.onchange = () => { lista[+s.dataset.i].exec = s.value; salvar(); s.className = 'exec ' + s.value; }; });
+    $$('[data-test=execucao]').forEach((s) => { s.onchange = () => { lista[+s.dataset.i].exec = s.value; salvar(); pinta(); }; });
+    $$('[data-bug]').forEach((b) => { b.onclick = () => { const i = +b.dataset.bug; novaTarefa(() => pinta(), { card: card.id, i, n: i + 1, nome: lista[i].nome }); }; });
     $$('[data-ed]').forEach((b) => { b.onclick = () => edita(+b.dataset.ed); });
     $$('[data-ps]').forEach((b) => { b.onclick = () => { const i = +b.dataset.ps; abertos.has(i) ? abertos.delete(i) : abertos.add(i); pinta(); }; });
     $$('[data-rm]').forEach((b) => { b.onclick = () => { lista.splice(+b.dataset.rm, 1); salvar(); pinta(); toast('Cenário excluído'); }; });
