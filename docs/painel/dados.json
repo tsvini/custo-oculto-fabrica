@@ -1,10 +1,10 @@
 {
- "atualizado": "10/11/2026 01:18",
+ "atualizado": "10/11/2026 15:15",
  "fontes": {
   "custo_oculto": {
    "seguidores": 32,
-   "views_total": 10560,
-   "videos": 51,
+   "views_total": 10595,
+   "videos": 52,
    "views_28d": 6716,
    "views_7d": 4089,
    "seguidores_28d": 26,
@@ -319,15 +319,21 @@
   "tiktok": {
    "usuario": "Custo Oculto",
    "seguidores": 81,
-   "curtidas": 576,
-   "videos": 32,
-   "views_total": 9037,
+   "curtidas": 582,
+   "videos": 33,
+   "views_total": 8545,
    "top": [
+    {
+     "titulo": "Em 1983, a Atari enterrou cartuchos encalhados no deserto. Por décadas, todo mundo achou q",
+     "url": "https://www.tiktok.com/@custooculto/video/7706553314044906770?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
+     "views": 36,
+     "likes": 4
+    },
     {
      "titulo": "Era para ser uma cola superforte. Saiu fraca. E virou um dos produtos mais usados em escri",
      "url": "https://www.tiktok.com/@custooculto/video/7706177181205941522?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 199,
-     "likes": 2
+     "views": 230,
+     "likes": 4
     },
     {
      "titulo": "Uma empresa brasileira registrou o nome iPhone 7 anos antes da Apple lançar o celular. E p",
@@ -352,12 +358,6 @@
      "url": "https://www.tiktok.com/@custooculto/video/7704753670042275079?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
      "views": 315,
      "likes": 5
-    },
-    {
-     "titulo": "A Mappin já foi uma das lojas mais famosas do Brasil. Durante décadas, fez parte da vida d",
-     "url": "https://www.tiktok.com/@custooculto/video/7704347089102277906?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 613,
-     "likes": 30
     }
    ],
    "nome": "TikTok @custooculto"
