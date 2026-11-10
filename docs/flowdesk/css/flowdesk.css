@@ -174,7 +174,7 @@ select.in{appearance:none;background-image:linear-gradient(45deg,transparent 50%
 .plano .tabela tr.st-falhou .num span{background:#3a1218;color:#fca5a5}
 .plano .tabela .res{color:#aeb2c6;font-size:14px;line-height:1.5}
 .plano .tabela .res small{display:block;font-size:10.5px;letter-spacing:1.2px;text-transform:uppercase;color:#5f6380;font-weight:700;margin-bottom:3px}
-.plano .tabela td:nth-child(2){width:34%}.plano .tabela td:nth-child(4){width:200px}.plano .tabela td:nth-child(5){width:80px}
+.plano .tabela td:nth-child(3){width:210px}.plano .tabela td:nth-child(4){width:84px}
 .plano .tabela tr.fora.st-nao .num span{background:#3d2e08;color:#fde68a}
 .xcel{position:relative;display:flex;flex-direction:column;gap:8px}
 .xseg{display:flex;gap:6px}
@@ -369,3 +369,103 @@ h2 .etq{font-size:13px;vertical-align:5px;margin-right:4px}
 .evbtn.tem{border-style:solid;border-color:#6d4fd6;color:#c4b5fd;background:#1e1836}
 
 @media (max-width:900px){.plano-barra{flex-wrap:wrap}.plano-barra .dica{flex-basis:100%}}
+
+/* =================== acabamento v2: profundidade, hierarquia e respiro =================== */
+:root{--bg:#09090f;--panel:#111219;--panel2:#16171f;--line:#1f2130;--line2:#2a2c40;--mut:#8b8fa6;--sh:0 1px 0 rgba(255,255,255,.035) inset,0 12px 32px -12px rgba(0,0,0,.6)}
+html,body{background:var(--bg)}
+body{-webkit-font-smoothing:antialiased}
+.main{position:relative;padding:36px 48px 80px;background:radial-gradient(1000px 420px at 85% -120px,rgba(124,58,237,.13),transparent 70%)}
+.conteudo{max-width:1220px;margin:0 auto}
+/* barra lateral */
+.side{width:240px;background:linear-gradient(180deg,#0f1017,#0b0c12);border-right:1px solid #191a26;padding:22px 14px 16px}
+.side .marca{padding:0 10px 24px}
+.side nav a{position:relative;font-weight:600;color:#9295ab;padding:10px 12px;border:0}
+.side nav a:hover{background:#15161f;color:#fff}
+.side nav a.on{background:linear-gradient(90deg,rgba(124,58,237,.22),rgba(124,58,237,.06));color:#fff;border:0}
+.side nav a.on:before{content:'';position:absolute;left:-14px;top:8px;bottom:8px;width:3px;border-radius:0 3px 3px 0;background:var(--acc2)}
+.side nav a.on svg{color:var(--acc2)}
+.side .eu{border-top-color:#191a26}
+.missao-side{border-width:1px;box-shadow:0 10px 30px -10px rgba(124,58,237,.45);background:linear-gradient(160deg,#21184a,#130f26 70%)}
+/* topo */
+.topo{margin-bottom:26px}
+.topo h2{font-size:30px;letter-spacing:-.6px}
+.topo .sub{font-size:15px}
+.crumb{font-size:14px}
+.versao{background:#12101f;border:1px solid #3b2a6e;border-radius:999px;padding:6px 14px;font-size:12.5px}
+/* superfícies */
+.bloco,.sec,.fcard,.kpi,.numeros,.col,.tabela,.gk-ed,.xres,.mi,.chan{border-color:var(--line)}
+.bloco,.sec,.fcard,.kpi,.numeros,.xres{background:linear-gradient(180deg,#13141c,#101118);box-shadow:var(--sh);border-radius:16px}
+.sec{border-width:1px;padding:20px 22px;margin-top:14px}
+.sec .k{font-size:12px;letter-spacing:1.2px;text-transform:uppercase;color:#7d81a0;font-weight:800;margin-bottom:10px}
+.sec .v{font-size:16px;line-height:1.55;color:#d9dbe6}
+/* botões */
+.btn{border-radius:11px;background:linear-gradient(180deg,#8b4cf6,#7030e0);box-shadow:0 1px 0 rgba(255,255,255,.18) inset,0 8px 20px -8px rgba(124,58,237,.7);font-size:16px}
+.btn:hover{filter:brightness(1.1)}
+.btn.sec{background:#181a25;box-shadow:0 0 0 1px #262839 inset;color:#c9cbda}
+.btn.sec:hover{background:#1e2030;color:#fff}
+.btn.perigo{background:linear-gradient(180deg,#b91c1c,#8f1515);box-shadow:none}
+/* campos */
+.in{background:#0c0d14;border:1px solid #23253a;border-radius:11px;font-size:16px}
+.in:hover{border-color:#30334c}
+.campo label{font-size:13.5px;color:#cfd1de}
+/* card: faixa de dados única */
+.meta{display:inline-flex;gap:0;background:linear-gradient(180deg,#13141c,#101118);border:1px solid var(--line);border-radius:16px;box-shadow:var(--sh);padding:4px;flex-wrap:wrap}
+.meta .mi{background:none;border:0;border-radius:0;padding:10px 20px;border-right:1px solid var(--line)}
+.meta .mi:last-child{border-right:0}
+.meta .mi .k{font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#6f7392;font-weight:800}
+.meta .mi .v{font-size:15px}
+.meta select.in,.meta .in{height:36px;background:#181a25;border-color:#2a2c40;font-size:14px;font-weight:700}
+/* abas */
+.abas{gap:2px;margin:28px 0 6px;border-bottom:1px solid #1d1f2d}
+.abas button{padding:12px 16px;font-size:15px;color:#8b8fa6;border-bottom-width:2px}
+.abas button:hover{color:#fff}
+.abas button.on{color:#fff;border-bottom-color:var(--acc2)}
+.abas .n{display:inline-block;min-width:20px;padding:1px 6px;border-radius:999px;background:#1e1836;color:var(--acc2);font-size:11.5px;text-align:center}
+/* critérios de aceite como lista de itens */
+.sec .cr{margin-top:0;padding:11px 12px;border-radius:10px;font-size:15.5px;font-weight:600;color:#dfe1ea}
+.sec .cr:hover{background:#171824}
+.sec .cr input{width:20px;height:20px;border-radius:6px;border:2px solid #4b4f72}
+.sec .cr input:checked{background:#16a34a;border-color:#16a34a}
+/* tabelas */
+.tabela{border-radius:16px;box-shadow:var(--sh);background:#101118}
+.tabela th{background:#0e0f16;font-size:11.5px;letter-spacing:1px;text-transform:uppercase;color:#6f7392;font-weight:800;padding:13px 18px}
+.tabela td{padding:15px 18px;border-bottom-color:#181a26}
+.tabela tbody tr:hover{background:#14151f}
+.st{border-radius:999px;padding:3px 10px;font-size:11.5px}
+/* quadro */
+.col{background:#0d0e15;border-radius:14px;padding:12px}
+.tk{background:linear-gradient(180deg,#171823,#13141d);border:1px solid #23253a;box-shadow:0 8px 18px -10px rgba(0,0,0,.7);transition:transform .15s,border-color .15s}
+.tk:hover{transform:translateY(-2px);border-color:#4c2fa3}
+.tk.meu{border-color:#6d4fd6;box-shadow:0 0 0 1px rgba(124,58,237,.35),0 10px 24px -10px rgba(124,58,237,.55)}
+/* início */
+.hero{border-width:1px;background:linear-gradient(150deg,#22184a,#120f24 65%);box-shadow:0 20px 50px -20px rgba(124,58,237,.6)}
+.numeros span{font-size:30px}
+.lista-simples a{padding:12px 6px;border-radius:8px}
+.lista-simples a:hover{background:#13141d}
+/* missões, plano */
+.missao{border-width:1px;background:linear-gradient(150deg,#22184a,#120f24 65%)}
+.missao.ok{background:linear-gradient(150deg,#2a2210,#14110a 70%)}
+.cov{border-width:1px;border-radius:16px;background:linear-gradient(170deg,#1b1438,#0f0d1d 70%)}
+.cov.done{border-color:#22c55e;box-shadow:0 0 0 1px rgba(34,197,94,.25),0 18px 40px -16px rgba(34,197,94,.45)}
+.fcard{padding:26px}
+/* toast */
+.toast{background:#0f1f17;border:1px solid #22c55e;border-radius:14px;font-size:15px;box-shadow:0 18px 40px -10px rgba(0,0,0,.7)}
+.toast.mal{background:#22100f;border-color:#ef4444}
+/* chat */
+.chan{background:linear-gradient(180deg,#0f1017,#0b0c12)}
+.msg:hover{background:#101119}
+/* detalhes do card com resumo ao lado */
+.det{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:20px;align-items:start}
+.det-e>.sec:first-child{margin-top:14px}
+.rs{margin-top:14px;background:linear-gradient(170deg,#1b1438,#0f0d1d 70%);border:1px solid #3b2a6e;border-radius:16px;padding:20px;position:sticky;top:20px;box-shadow:var(--sh)}
+.rs-k{font-size:12px;letter-spacing:1.2px;text-transform:uppercase;color:#a78bfa;font-weight:800;margin-bottom:8px}
+.rs-l{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid rgba(167,139,250,.12);font-size:14.5px;color:#b9bccd}
+.rs-l b{font-size:16px;color:#fff}
+.rs-bar{height:6px;border-radius:9px;background:#241d42;margin-top:14px;overflow:hidden}.rs-bar i{display:block;height:100%;background:linear-gradient(90deg,#7C3AED,#22C55E)}
+@media (max-width:900px){.det{grid-template-columns:1fr}.rs{position:static}.meta{display:flex}}
+/* cenário: nome e tags em cima, resultado esperado embaixo */
+.plano .tabela td .res{margin-top:12px;padding-top:10px;border-top:1px dashed #23253a;color:#aeb2c6;font-size:14px;line-height:1.5}
+.plano .tabela td .res small{display:inline;margin:0 8px 0 0;font-size:10.5px;letter-spacing:1.2px;text-transform:uppercase;color:#6a6e8c;font-weight:800}
+.plano .tabela .tgs{margin-top:7px}
+.plano .tabela .link{display:inline-block;margin:8px 0 0}
+.abas .n:empty{display:none}
