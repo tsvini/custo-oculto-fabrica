@@ -314,3 +314,7 @@ h2 .etq{font-size:13px;vertical-align:5px;margin-right:4px}
 .bugbtn:hover{background:#561820}
 .bugchip{display:inline-block;margin-top:6px;background:#2a2050;color:#c4b5fd;border:1px solid #6d4fd6;border-radius:8px;padding:3px 9px;font-size:12px;font-weight:800;text-decoration:none}
 .liga{margin:4px 0 10px;font-size:13px;color:#c4b5fd;background:#1a1530;border:1px solid #3b2a6e;border-radius:10px;padding:8px 12px}
+/* modal nunca passa da altura da tela (o botão de criar fica sempre à vista) */
+.modal-fundo{align-items:center;padding:16px}
+.modal{max-height:calc(100vh - 32px);overflow-y:auto}
+.modal .so-bug textarea{min-height:84px}
