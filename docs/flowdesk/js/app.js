@@ -461,7 +461,7 @@ function montaPlano(A, card) {
   const d = dados(), id = card.id, lista = d.planos[id];
   const TIPOS = { P: ['POSITIVO', 'tP'], N: ['NEGATIVO', 'tN'], L: ['VALOR LIMITE', 'tL'] };
   A.innerHTML = `<div class="plano-barra"><p class="dica">Cada cenário: uma situação, os passos e o resultado esperado.</p>
-      <div class="pop-wrap"><button type="button" class="btn sec peq" id="arqBtn" data-test="abrir-arquivos">Arquivos de teste</button><div class="arqs pop-arq" id="arqPop" hidden><h3>Arquivos de teste</h3><p class="dica">Gerados na hora, no tamanho exato, pra testar o anexo.</p>${[['documento-5MB-exato.pdf', LIMITE_ANEXO], ['documento-5,1MB.pdf', Math.floor(5.1 * 1048576)], ['documento-1MB.pdf', 1048576], ['print-da-tela.png', 48 * 1024], ['foto.jpg', 220 * 1024], ['programa.exe', 12 * 1024]].map(([n, b]) => `<a href="#" data-arq="${n}" data-b="${b}" data-test="arquivo-teste">${n}<small>${tamanho(b)}</small></a>`).join('')}</div></div></div>
+      </div>
     <div class="plano"><div class="esq">
       <table class="tabela"><thead><tr><th style="width:40px">#</th><th>Cenário</th><th>Resultado esperado</th><th style="width:150px">Execução</th><th style="width:96px"></th></tr></thead><tbody id="linhas"></tbody></table>
       <button type="button" class="btn sec" id="abreForm" data-test="novo-cenario" style="margin-top:14px">+ Novo cenário</button>
@@ -474,7 +474,7 @@ function montaPlano(A, card) {
         <div class="fbtns"><button type="button" class="btn sec" id="cancela" hidden data-test="cancelar-edicao">Cancelar</button><button class="btn" data-test="salvar-cenario" id="salva">Adicionar cenário</button></div>
       </form></div>
       <aside><div class="cov" id="cov" data-test="cobertura"><div class="hd">Cobertura das regras<span class="cnt" id="cnt" data-test="cobertura-contagem">0/6</span></div><div class="bar"><i id="bar"></i></div>
-        ${REGRAS.map((r, i) => `<div class="rl" id="u${i}" data-test="regra"><b>✓</b>${r}<span class="q" id="q${i}" hidden></span></div>`).join('')}<div class="ex" id="ex" hidden></div></div></aside></div>`;
+        ${REGRAS.map((r, i) => `<div class="rl" id="u${i}" data-test="regra"><b>✓</b>${r}<span class="q" id="q${i}" hidden></span></div>`).join('')}<div class="ex" id="ex" hidden></div></div><div class="pop-wrap arq-box"><button type="button" class="btn sec peq" id="arqBtn" data-test="abrir-arquivos">Arquivos de teste</button><div class="arqs pop-arq" id="arqPop" hidden><h3>Arquivos de teste</h3><p class="dica">Gerados na hora, no tamanho exato, pra testar o anexo.</p>${[['documento-5MB-exato.pdf', LIMITE_ANEXO], ['documento-5,1MB.pdf', Math.floor(5.1 * 1048576)], ['documento-1MB.pdf', 1048576], ['print-da-tela.png', 48 * 1024], ['foto.jpg', 220 * 1024], ['programa.exe', 12 * 1024]].map(([n, b]) => `<a href="#" data-arq="${n}" data-b="${b}" data-test="arquivo-teste">${n}<small>${tamanho(b)}</small></a>`).join('')}</div></div></aside></div>`;
   let editando = null; const abertos = new Set();
   const mostraForm = (on) => { $('#f').hidden = !on; $('#abreForm').hidden = on; };
   mostraForm(lista.length === 0);
