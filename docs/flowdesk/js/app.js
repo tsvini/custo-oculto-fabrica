@@ -241,6 +241,19 @@ function confereMissoes() {
     d.conquistas.push(m.id); salvar(); conquista(m);
   });
   const el = $('#missaoSide'); if (el) el.outerHTML = cardMissao();
+  refrescaCarreira();
+}
+// a barra de carreira do topo acompanha o XP na hora (com animação), sem precisar recarregar a página
+function refrescaCarreira() {
+  const velho = $('.barra [data-test=carreira]'); if (!velho) return;
+  const d = dados(), antes = $$('.tb i', velho).map((i) => i.style.width);
+  const tmp = document.createElement('div'); tmp.innerHTML = trilha(d); const novo = tmp.firstElementChild;
+  const alvo = $$('.tb i', novo).map((i) => i.style.width);
+  if (velho.outerHTML === novo.outerHTML) return;
+  $$('.tb i', novo).forEach((i, k) => { i.style.width = antes[k] || '0%'; });
+  velho.replaceWith(novo); void novo.offsetWidth;
+  $$('.tb i', novo).forEach((i, k) => { i.style.width = alvo[k]; });
+  const x = $('.barra [data-test=xp]'); if (x) x.textContent = `${xpDe(d)} / ${(d.conquistas || []).includes('ep08') ? XP_PLENO : XP_JUNIOR} XP`;
 }
 function conquista(m) {
   const o = document.createElement('div'); o.className = 'conq-fundo'; o.setAttribute('data-test', 'conquista');
@@ -270,7 +283,7 @@ const chatLiberado = (d = dados()) => (d.conquistas || []).includes('ep03');
 
 // ---------- layout ----------
 const avatar = (p) => p === 'voce' ? '<span class="vc">VC</span>' : `<img class="av" src="img/av_${p}.png" alt="">`;
-const LOGO = '<span class="logo-anim" aria-hidden="true"><img src="img/anim/logo_part1.png?v=1794421845" alt=""><img class="sobe" src="img/anim/logo_part0.png?v=1794421845" alt=""></span>';
+const LOGO = '<span class="logo-anim" aria-hidden="true"><img src="img/anim/logo_part1.png?v=1794440296" alt=""><img class="sobe" src="img/anim/logo_part0.png?v=1794440296" alt=""></span>';
 const MARCA = `<span class="marca">${LOGO}FlowDesk</span>`;
 const pillVersao = () => `<span class="versao" data-test="versao-sistema"><b>Sprint ${VERSAO}</b> · homologação</span>`;
 const SVG = (p, c = '') => `<svg class="${c}" viewBox="0 0 24 24" aria-hidden="true">${p}</svg>`;
@@ -349,7 +362,7 @@ PAGINAS.login = () => {
   document.body.innerHTML = `<div class="tela-login">
     <section class="lg-time"><div class="lg-marca">${LOGO}<span>FlowDesk</span></div>
       <div class="lg-tit"><h1>Seu primeiro dia como QA começa aqui.</h1><div class="lg-trilha"><span class="on">Estagiário</span>${seta}<span>Júnior</span>${seta}<span class="fut">Pleno</span></div></div>
-      <div class="lg-palco"><div class="lg-luz" aria-hidden="true"></div><video src="img/anim/time_acena.webm?v=1794421845" poster="img/anim/time_acena.png?v=1794421845" autoplay muted loop playsinline aria-label="O time do FlowDesk acenando: Rafael, Gabriela, Vinícius, Lucas e Beatriz"></video></div></section>
+      <div class="lg-palco"><div class="lg-luz" aria-hidden="true"></div><video src="img/anim/time_acena.webm?v=1794440296" poster="img/anim/time_acena.png?v=1794440296" autoplay muted loop playsinline aria-label="O time do FlowDesk acenando: Rafael, Gabriela, Vinícius, Lucas e Beatriz"></video></div></section>
     <section class="lg-form"><div class="login">
     <form id="fEntrar" novalidate><span class="lg-chip">SPRINT ${VERSAO} · HOMOLOGAÇÃO</span><h1>Bem-vindo de volta</h1><p class="sub">O time já está te esperando. Use dados de mentira: fica tudo salvo só neste navegador.</p>
       <div class="campo"><label for="email">E-mail</label><input class="in" id="email" type="email" data-test="login-email" autocomplete="username" placeholder="voce@empresa.com"></div>
@@ -546,7 +559,7 @@ PAGINAS.quadro = () => {
       <div class="h"><h3>${n}</h3><span class="cnt" data-test="contagem-${k}"></span>${k === 'afazer' ? '<button class="mais" data-test="nova-tarefa" title="Nova tarefa" aria-label="Nova tarefa">+</button>' : ''}</div>
       <div class="cards"></div>${k === 'afazer' ? '<button class="add-tarefa" data-test="adicionar-tarefa">+ Adicionar tarefa</button>' : ''}</section>`).join('')}</div>
     <p class="dica" style="margin-top:12px">Você move os seus cards arrastando, ou pelo próprio card. Os cards dos outros ficam com eles.</p>
-    <div class="desfile" aria-hidden="true"><div class="chao"></div>${anda.map(([v, atraso, cls]) => `<div class="anda ${cls}" style="animation-delay:${atraso}s"><video src="img/anim/${v}.webm?v=1794421845" poster="img/anim/${v}.png?v=1794421845" autoplay muted loop playsinline></video></div>`).join('')}</div>`);
+    <div class="desfile" aria-hidden="true"><div class="chao"></div>${anda.map(([v, atraso, cls]) => `<div class="anda ${cls}" style="animation-delay:${atraso}s"><video src="img/anim/${v}.webm?v=1794440296" poster="img/anim/${v}.png?v=1794440296" autoplay muted loop playsinline></video></div>`).join('')}</div>`);
   const pinta = () => {
     COLUNAS.forEach(([k]) => {
       const l = dados().cards.filter((c) => c.coluna === k), col = $(`[data-col=${k}]`);
@@ -580,7 +593,7 @@ function novaTarefa(depois, ctx) {
     ${ctx ? `<p class="liga" data-test="bug-cenario">Ligado ao cenário ${ctx.n} do plano: <b>${esc(ctx.nome)}</b></p>` : ''}
     <div class="so-bug"><div class="campo"><label for="tPassos">Passos para reproduzir <i>*</i></label><textarea class="in" id="tPassos" data-test="bug-passos" placeholder="1. …&#10;2. …&#10;3. …"></textarea></div>
       <div class="linha2"><div class="campo"><label for="tEsp">Resultado esperado <i>*</i></label><input class="in" id="tEsp" data-test="bug-esperado"></div><div class="campo"><label for="tObt">Resultado obtido <i>*</i></label><input class="in" id="tObt" data-test="bug-obtido"></div></div>
-      <div class="campo"><label for="tEvid">Evidência <i>*</i> <small>(print ou vídeo do que aconteceu)</small></label><label class="arquivo" for="tEvid" id="tEvidBox"><input type="file" id="tEvid" data-test="bug-evidencia"><span class="btn sec peq">Escolher arquivo</span><span class="nome" id="nomeEv">Nenhum arquivo escolhido</span></label></div></div>
+      <div class="campo"><label for="tEvid">Evidência <i>*</i> <small>(print ou vídeo do que aconteceu)</small></label><label class="arquivo ${ctx && ctx.evid ? 'tem' : ''}" for="tEvid" id="tEvidBox"><input type="file" id="tEvid" data-test="bug-evidencia"><span class="btn sec peq">${ctx && ctx.evid ? 'Trocar arquivo' : 'Escolher arquivo'}</span><span class="nome" id="nomeEv" data-test="bug-evidencia-nome">${ctx && ctx.evid ? `${esc(ctx.evid)} <em>· veio do cenário ${ctx.n}</em>` : 'Nenhum arquivo escolhido'}</span></label></div></div>
     <div class="so-mel" hidden><div class="campo"><label for="tDesc">Descrição <i>*</i></label><textarea class="in" id="tDesc" data-test="melhoria-descricao" placeholder="O que poderia ser melhor, e por quê"></textarea></div></div>
     <p class="dica" id="tDest">O bug vai pra coluna A fazer, com a Gabriela.</p>
     <div class="fbtns"><button type="button" class="btn sec" data-fecha>Cancelar</button><button class="btn" data-test="criar-tarefa">Criar tarefa</button></div></form>`;
@@ -590,19 +603,19 @@ function novaTarefa(depois, ctx) {
   o.onclick = (e) => { if (e.target === o) fecha(); };
   const tipo = () => $('input[name=tipo]:checked', o).value;
   $$('input[name=tipo]', o).forEach((r) => { r.onchange = () => { const bug = tipo() === 'bug'; $('.so-bug', o).hidden = !bug; $('.so-mel', o).hidden = bug; $('#tDest').textContent = bug ? 'O bug vai pra coluna A fazer, com a Gabriela.' : 'A melhoria vai pra coluna A fazer, com o Rafael, que decide se entra na sprint.'; limpaErros(); }; });
-  $('#tEvid').onchange = () => { const f = $('#tEvid').files[0]; $('#nomeEv').textContent = f ? f.name : 'Nenhum arquivo escolhido'; };
+  $('#tEvid').onchange = () => { const f = $('#tEvid').files[0]; if (f) $('#nomeEv').textContent = f.name; else if (!(ctx && ctx.evid)) $('#nomeEv').textContent = 'Nenhum arquivo escolhido'; };
   $('#tTitulo').focus();
   $('#fT').onsubmit = (ev) => {
     ev.preventDefault(); limpaErros(); let ok = true; const v = (i) => $('#' + i).value.trim(), bug = tipo() === 'bug';
     const obrig = [['tTitulo', 'Dê um título pra tarefa']].concat(bug ? [['tPassos', 'Escreva os passos pra reproduzir'], ['tEsp', 'Escreva o resultado esperado'], ['tObt', 'Escreva o resultado obtido']] : [['tDesc', 'Descreva a melhoria']]);
     obrig.forEach(([i, m]) => { if (!(i === 'tTitulo' && bug && _c('bugtit') ? $('#' + i).value : v(i))) { erroCampo(i, m); ok = false; } });
-    if (bug && !$('#tEvid').files[0]) { erroCampo('tEvidBox', 'Anexe o print ou o vídeo: sem evidência, o dev não vê o que você viu'); ok = false; }
+    if (bug && !$('#tEvid').files[0] && !(ctx && ctx.evid)) { erroCampo('tEvidBox', 'Anexe o print ou o vídeo: sem evidência, o dev não vê o que você viu'); ok = false; }
     if (!ok) return;
     let id;
     if (bug) {
       id = 'BUG-' + String(d.proximoBug++).padStart(2, '0'); const f = $('#tEvid').files[0];
       if (!v('tTitulo')) _pv('bugtit');
-      d.cards.push({ id, titulo: v('tTitulo'), coluna: 'afazer', resp: 'gabriela', tipo: 'bug', prioridade: v('tPrio'), relacionado: v('tCard'), cenario: ctx ? ctx.nome : '', passos: v('tPassos'), esperado: v('tEsp'), obtido: v('tObt'), evidencia: f ? f.name : '', criterios: [], ok: [], comentarios: [], criadoEm: agora() });
+      d.cards.push({ id, titulo: v('tTitulo'), coluna: 'afazer', resp: 'gabriela', tipo: 'bug', prioridade: v('tPrio'), relacionado: v('tCard'), cenario: ctx ? ctx.nome : '', passos: v('tPassos'), esperado: v('tEsp'), obtido: v('tObt'), evidencia: f ? f.name : (ctx && ctx.evid) || '', criterios: [], ok: [], comentarios: [], criadoEm: agora() });
       d.chat.bugs.push({ de: 'voce', tx: `Abri o ${id}: ${v('tTitulo')}`, quando: agora() });
     } else {
       d.proximoMelhoria = d.proximoMelhoria || 1; id = 'MEL-' + d.proximoMelhoria++;
@@ -686,7 +699,7 @@ function montaGherkin(A, card, contagens) {
           <textarea id="gk" data-test="editor-gherkin" spellcheck="false" autocomplete="off" autocapitalize="off" aria-label="Arquivo ${arq}"></textarea></div></div></div>
       <p class="dica" style="margin-top:10px">Dica: <b>Tab</b> faz o recuo. O FlowDesk salva enquanto você escreve.</p>
     </div>
-    <aside><div class="rafa"><div class="rafa-b"><div class="bk">RAFAEL · PO</div><div class="bt">Escreve do jeito que eu leio: <b>Dado</b> o contexto, <b>Quando</b> a ação, <b>Então</b> o que eu vejo.</div></div><video src="img/anim/rafael_fala.webm?v=1794421845" poster="img/anim/rafael_fala.png?v=1794421845" autoplay muted loop playsinline aria-hidden="true"></video></div><div class="cov" id="gkRev" data-test="revisao-gherkin"></div></aside></div>`;
+    <aside><div class="rafa"><div class="rafa-b"><div class="bk">RAFAEL · PO</div><div class="bt">Escreve do jeito que eu leio: <b>Dado</b> o contexto, <b>Quando</b> a ação, <b>Então</b> o que eu vejo.</div></div><video src="img/anim/rafael_fala.webm?v=1794440296" poster="img/anim/rafael_fala.png?v=1794440296" autoplay muted loop playsinline aria-hidden="true"></video></div><div class="cov" id="gkRev" data-test="revisao-gherkin"></div></aside></div>`;
   const ta = $('#gk'), cor = $('#gkCor'), nums = $('#gkNums');
   ta.value = gherkinDe(dados(), card.id);
   const atualiza = () => {
@@ -778,7 +791,7 @@ function montaPlano(A, card) {
         <div class="fbtns"><button type="button" class="btn sec" id="cancela" hidden data-test="cancelar-edicao">Cancelar</button><button class="btn" data-test="salvar-cenario" id="salva">Adicionar cenário</button></div>
       </form></div>
       <aside><div class="cov" id="cov" data-test="cobertura"><div class="hd">Cobertura das regras<span class="cnt" id="cnt" data-test="cobertura-contagem">0/6</span></div><div class="bar"><i id="bar"></i></div>
-        ${REGRAS.map((r, i) => `<div class="rl" id="u${i}" data-test="regra"><b>✓</b>${r}<span class="q" id="q${i}" hidden></span></div>`).join('')}<div class="ex" id="ex" hidden></div><div class="gabi-b" id="gabiB" data-test="recado-gabriela"><b>GABRIELA · DEV</b><span id="gabiT"></span></div><div class="gabi" aria-hidden="true"><video src="img/anim/gabriela_quadro.webm?v=1794421845" poster="img/anim/gabriela_quadro.png?v=1794421845" autoplay muted loop playsinline></video></div></div></aside></div>`;
+        ${REGRAS.map((r, i) => `<div class="rl" id="u${i}" data-test="regra"><b>✓</b>${r}<span class="q" id="q${i}" hidden></span></div>`).join('')}<div class="ex" id="ex" hidden></div><div class="gabi-b" id="gabiB" data-test="recado-gabriela"><b>GABRIELA · DEV</b><span id="gabiT"></span></div><div class="gabi" aria-hidden="true"><video src="img/anim/gabriela_quadro.webm?v=1794440296" poster="img/anim/gabriela_quadro.png?v=1794440296" autoplay muted loop playsinline></video></div></div></aside></div>`;
   let editando = null; const abertos = new Set();
   const gabi = (tom, tx) => { $('#gabiB').className = 'gabi-b ' + tom; $('#gabiT').textContent = tx; };
   { const ruim = lista.map((c) => revisaCenario(c)).findIndex((r) => r[0] === 'ruim');
@@ -815,7 +828,7 @@ function montaPlano(A, card) {
     $$('[data-x]').forEach((b) => { b.onclick = () => { const i = +b.dataset.x, c = lista[i]; c.exec = c.exec === b.dataset.v ? 'nao' : b.dataset.v; if (c.exec === 'falhou') c.jaFalhou = true; salvar(); pinta();
       if (c.exec !== 'nao' && !c.evid) gabi('ruim', `Cenário ${i + 1}: marcou “${c.exec}”, mas sem evidência. Se alguém perguntar “tem certeza?”, o que você mostra? Anexa o print.`); }; });
     $$('[data-ev]').forEach((f) => { f.onchange = () => { const x = f.files[0]; if (!x) return; const i = +f.dataset.ev; lista[i].evid = x.name; salvar(); pinta(); toast('Evidência anexada ao cenário ' + (i + 1)); gabi('ok', `Cenário ${i + 1} com evidência. Agora ninguém precisa acreditar na sua palavra.`); }; });
-    $$('[data-bug]').forEach((b) => { b.onclick = () => { const i = +b.dataset.bug; novaTarefa(() => pinta(), { card: card.id, i, n: i + 1, nome: lista[i].nome }); }; });
+    $$('[data-bug]').forEach((b) => { b.onclick = () => { const i = +b.dataset.bug; novaTarefa(() => pinta(), { card: card.id, i, n: i + 1, nome: lista[i].nome, evid: lista[i].evid || '' }); }; });
     $$('[data-ed]').forEach((b) => { b.onclick = () => edita(+b.dataset.ed); });
     $$('[data-ps]').forEach((b) => { b.onclick = () => { const i = +b.dataset.ps; abertos.has(i) ? abertos.delete(i) : abertos.add(i); pinta(); }; });
     $$('[data-rm]').forEach((b) => { b.onclick = () => { lista.splice(+b.dataset.rm, 1); salvar(); pinta(); toast('Cenário excluído'); }; });
@@ -982,7 +995,7 @@ PAGINAS.caca = () => {
   const meus = LS.get('fd:caca-envios', []);
   casca('caca', `<section class="caca-hero"><div class="ch-t"><div class="ch-k"><span id="tNum">TEMPORADA 1 DE 3</span><b class="${aberta ? 'ab' : ''}">${aberta ? 'ABERTA' : 'EM BREVE'}</b>${aberta ? '<i id="tFim">quando os 3 forem achados, a próxima temporada abre sozinha</i>' : ''}</div>
       <h1 data-test="titulo-pagina">3 bugs escondidos no FlowDesk.</h1><p>Quem achar e reportar primeiro ganha o <b>Vida de QA 2</b> de graça quando lançar. Preste atenção nas aulas.</p></div>
-      <video src="img/anim/vinicius_lupa_v2.webm?v=1794421845" poster="img/anim/vinicius_lupa_v2.png?v=1794421845" autoplay muted loop playsinline aria-label="Vinícius com uma lupa procurando bugs"></video></section>
+      <video src="img/anim/vinicius_lupa_v2.webm?v=1794440296" poster="img/anim/vinicius_lupa_v2.png?v=1794440296" autoplay muted loop playsinline aria-label="Vinícius com uma lupa procurando bugs"></video></section>
     <div class="caca-bugs" id="placar">${[1, 2, 3].map((n) => `<article class="cb"><div class="cb-h"><span>#${n}</span><b>LIVRE</b></div><div class="cb-v">Ninguém achou ainda.</div></article>`).join('')}</div>
     <div class="caca-grade"><section class="painel caca-form"><h2>Reportar um bug da caça</h2><p class="dica">A confirmação é automática. Vale o primeiro report confirmado de cada bug.</p>
       <form id="fc" novalidate>${aberta ? '' : '<div class="aviso-caca" data-test="caca-fechada">A primeira temporada ainda não abriu. Quando abrir, este formulário passa a funcionar e o aviso sai daqui.</div>'}
