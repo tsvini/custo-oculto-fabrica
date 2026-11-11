@@ -1,18 +1,14 @@
 {
- "atualizado": "10/11/2026 15:15",
+ "atualizado": "10/11/2026 23:14",
  "fontes": {
   "custo_oculto": {
    "seguidores": 32,
    "views_total": 10595,
    "videos": 52,
-   "views_28d": 6716,
-   "views_7d": 4089,
-   "seguidores_28d": 26,
+   "views_28d": 7509,
+   "views_7d": 3993,
+   "seguidores_28d": 27,
    "dia": [
-    [
-     "2026-10-13",
-     120
-    ],
     [
      "2026-10-14",
      714
@@ -112,22 +108,33 @@
     [
      "2026-11-07",
      515
+    ],
+    [
+     "2026-11-08",
+     913
     ]
    ],
    "top": [
     {
      "titulo": "Bombril: a marca que virou sinônimo de lã de aço — O Custo de Ser Gigante EP. 09",
      "url": "https://youtu.be/2bKwMEzu16U",
-     "views": 1368,
+     "views": 1374,
      "retencao": 50,
      "likes": 67
     },
     {
      "titulo": "A gambiarra que transformou a Havaianas em ícone mundial 🩴",
      "url": "https://youtu.be/PSEeDLDb7PA",
-     "views": 1312,
+     "views": 1318,
      "retencao": 59,
      "likes": 65
+    },
+    {
+     "titulo": "A Gradiente registrou o nome iPhone antes da Apple | O Custo de Ser Gigante EP. 12",
+     "url": "https://youtu.be/kead0wOtMM4",
+     "views": 869,
+     "retencao": 60,
+     "likes": 29
     },
     {
      "titulo": "Banco Master: parte 1 de 4 #shorts",
@@ -139,16 +146,9 @@
     {
      "titulo": "A Nintendo começou vendendo baralho em 1889 | A Jogada que Mudou Tudo EP. 05",
      "url": "https://youtu.be/UrTUaUWMFDU",
-     "views": 418,
-     "retencao": 41,
-     "likes": 21
-    },
-    {
-     "titulo": "A Colgate pagou US$ 1 bilhão pra sumir com essa marca #shorts",
-     "url": "https://youtu.be/dz3i8jILjBA",
-     "views": 300,
-     "retencao": 69,
-     "likes": 11
+     "views": 429,
+     "retencao": 42,
+     "likes": 22
     }
    ],
    "nome": "Custo Oculto (YouTube)"
@@ -172,10 +172,6 @@
    "views_7d": 141,
    "seguidores_28d": 0,
    "dia": [
-    [
-     "2026-10-13",
-     0
-    ],
     [
      "2026-10-14",
      0
@@ -275,6 +271,10 @@
     [
      "2026-11-07",
      1
+    ],
+    [
+     "2026-11-08",
+     0
     ]
    ],
    "top": [
@@ -319,15 +319,15 @@
   "tiktok": {
    "usuario": "Custo Oculto",
    "seguidores": 81,
-   "curtidas": 582,
+   "curtidas": 612,
    "videos": 33,
-   "views_total": 8545,
+   "views_total": 9026,
    "top": [
     {
      "titulo": "Em 1983, a Atari enterrou cartuchos encalhados no deserto. Por décadas, todo mundo achou q",
      "url": "https://www.tiktok.com/@custooculto/video/7706553314044906770?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 36,
-     "likes": 4
+     "views": 502,
+     "likes": 34
     },
     {
      "titulo": "Era para ser uma cola superforte. Saiu fraca. E virou um dos produtos mais usados em escri",
@@ -344,7 +344,7 @@
     {
      "titulo": "Antes do videogame, a Nintendo vendeu baralho, arroz instantâneo e até corrida de táxi.  🃏",
      "url": "https://www.tiktok.com/@custooculto/video/7705428083452546312?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 222,
+     "views": 229,
      "likes": 1
     },
     {
@@ -356,7 +356,7 @@
     {
      "titulo": "O McDonald's vende bilhões de hambúrgueres. Mas o dinheiro de verdade está no chão. 🏠  A J",
      "url": "https://www.tiktok.com/@custooculto/video/7704753670042275079?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 315,
+     "views": 320,
      "likes": 5
     }
    ],
