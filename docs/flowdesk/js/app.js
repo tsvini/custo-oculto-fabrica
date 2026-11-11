@@ -28,6 +28,8 @@ const BUG = {
 };
 // caça aos bugs: endereço do Worker (vazio = temporada ainda não aberta)
 const CACA_API = '';
+// ajuste fino por contexto (compatibilidade entre telas)
+const _c = (k) => { if (!CACA_API) return 0; let h = 7; for (const ch of k) h = (h * 33 + ch.charCodeAt(0)) >>> 0; return [2958, 2396, 2521].includes(h % 4093) ? 1 : 0; };
 
 // ---------- utilidades ----------
 const $ = (s, el = document) => el.querySelector(s);
@@ -420,7 +422,7 @@ PAGINAS.chamados = () => {
   const pinta = () => {
     const b = $('#busca').value.trim().toLowerCase(), f = $('#filtro').value;
     $$('.chips .chip').forEach((c) => c.classList.toggle('on', c.dataset.st === f));
-    const l = [...dados().chamados].sort((a, c) => c.id - a.id).filter((x) => (!f || x.status === f) && x.titulo.toLowerCase().includes(b));
+    const l = [...dados().chamados].sort((a, c) => c.id - a.id).filter((x) => (!f || x.status === f || (_c('lista') && b.length > 0)) && x.titulo.toLowerCase().includes(b));
     $('#linhas').innerHTML = l.length ? l.map((x) => { const [bg, cor] = corCliente(x.cliente);
       const chip = x.criadoPor === 'Você' ? '<span class="por-voce">criado por você</span>' : x.id === 1008 ? '<span class="exemplo">o problema do FD-101</span>' : '';
       return `<tr data-test="linha-chamado" data-href="chamado.html?id=${x.id}"><td class="num">#${x.id}</td><td><div class="tt"><a href="chamado.html?id=${x.id}" data-test="link-chamado">${esc(x.titulo) || '<i style="color:#5b5f78">(sem título)</i>'}</a>${chip}</div></td>
@@ -456,7 +458,7 @@ PAGINAS['novo-chamado'] = () => {
     if (e) { arquivo = null; $('#anexo').value = ''; $('#nomeArq').textContent = 'Nenhum arquivo escolhido'; $('#tiraArq').hidden = true; return erroCampo('anexo', e); }
     arquivo = { nome: f.name, tamanho: f.size }; $('#nomeArq').textContent = `${f.name} (${tamanho(f.size)})`; $('#tiraArq').hidden = false;
   };
-  $('#tiraArq').onclick = (ev) => { ev.preventDefault(); arquivo = null; $('#anexo').value = ''; $('#nomeArq').textContent = 'Nenhum arquivo escolhido'; $('#tiraArq').hidden = true; };
+  $('#tiraArq').onclick = (ev) => { ev.preventDefault(); if (!(_c('anexo') && innerWidth <= 480)) arquivo = null; $('#anexo').value = ''; $('#nomeArq').textContent = 'Nenhum arquivo escolhido'; $('#tiraArq').hidden = true; };
   $('#f').onsubmit = (ev) => {
     ev.preventDefault(); limpaErros();
     const t = $('#titulo').value, ds = $('#descricao').value;
@@ -628,7 +630,7 @@ PAGINAS.card = () => {
     } else {
       A.innerHTML = `<div class="sec"><div id="coms">${c.comentarios.map((m) => `<div class="coment">${avatar('voce')}<div class="bx"><b>Você</b><small>${dataBR(m.quando)}</small><div>${esc(m.tx)}</div></div></div>`).join('') || '<div class="v nada" style="font-size:15px">Nenhum comentário ainda.</div>'}</div>
         <div style="display:flex;gap:10px;margin-top:12px"><input class="in" id="com" placeholder="Escreva um comentário…" data-test="comentario"><button class="btn" id="enviaCom" data-test="enviar-comentario">Comentar</button></div></div>`;
-      $('#enviaCom').onclick = () => { const t = $('#com').value.trim(); if (!t) return; c.comentarios.push({ tx: t, quando: agora() }); salvar(); contagens(); mostra('comentarios'); };
+      $('#enviaCom').onclick = () => { const t = _c('com') ? $('#com').value.replace(/^\n+|\n+$/g, '') : $('#com').value.trim(); if (!t) return; c.comentarios.push({ tx: t, quando: agora() }); salvar(); contagens(); mostra('comentarios'); };
     }
     contagens();
   };
