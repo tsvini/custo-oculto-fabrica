@@ -1,10 +1,10 @@
 {
- "atualizado": "10/11/2026 23:14",
+ "atualizado": "11/11/2026 15:02",
  "fontes": {
   "custo_oculto": {
-   "seguidores": 32,
-   "views_total": 10595,
-   "videos": 52,
+   "seguidores": 38,
+   "views_total": 10973,
+   "videos": 53,
    "views_28d": 7509,
    "views_7d": 3993,
    "seguidores_28d": 27,
@@ -166,8 +166,8 @@
   },
   "vini_qa": {
    "seguidores": 0,
-   "views_total": 463,
-   "videos": 10,
+   "views_total": 500,
+   "videos": 11,
    "views_28d": 463,
    "views_7d": 141,
    "seguidores_28d": 0,
@@ -318,28 +318,34 @@
   },
   "tiktok": {
    "usuario": "Custo Oculto",
-   "seguidores": 81,
-   "curtidas": 612,
-   "videos": 33,
-   "views_total": 9026,
+   "seguidores": 82,
+   "curtidas": 621,
+   "videos": 34,
+   "views_total": 8659,
    "top": [
+    {
+     "titulo": "12 mil peças diferentes, kits que davam prejuízo e a falência batendo na porta. A saída fo",
+     "url": "https://www.tiktok.com/@custooculto/video/7706915220291194119?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
+     "views": 17,
+     "likes": 2
+    },
     {
      "titulo": "Em 1983, a Atari enterrou cartuchos encalhados no deserto. Por décadas, todo mundo achou q",
      "url": "https://www.tiktok.com/@custooculto/video/7706553314044906770?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 502,
-     "likes": 34
+     "views": 567,
+     "likes": 37
     },
     {
      "titulo": "Era para ser uma cola superforte. Saiu fraca. E virou um dos produtos mais usados em escri",
      "url": "https://www.tiktok.com/@custooculto/video/7706177181205941522?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 230,
+     "views": 231,
      "likes": 4
     },
     {
      "titulo": "Uma empresa brasileira registrou o nome iPhone 7 anos antes da Apple lançar o celular. E p",
      "url": "https://www.tiktok.com/@custooculto/video/7705797386299247879?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 584,
-     "likes": 26
+     "views": 654,
+     "likes": 29
     },
     {
      "titulo": "Antes do videogame, a Nintendo vendeu baralho, arroz instantâneo e até corrida de táxi.  🃏",
@@ -350,14 +356,8 @@
     {
      "titulo": "Janelas, ícones e mouse. A Xerox criou tudo isso em 1973 e mostrou para a Apple.  🖱️ O Cus",
      "url": "https://www.tiktok.com/@custooculto/video/7705047657332444422?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 544,
+     "views": 545,
      "likes": 34
-    },
-    {
-     "titulo": "O McDonald's vende bilhões de hambúrgueres. Mas o dinheiro de verdade está no chão. 🏠  A J",
-     "url": "https://www.tiktok.com/@custooculto/video/7704753670042275079?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 320,
-     "likes": 5
     }
    ],
    "nome": "TikTok @custooculto"
@@ -395,15 +395,6 @@
   }
  },
  "agenda": [
-  {
-   "quando": "2026-11-11T12:00:00-03:00",
-   "plataforma": "Vini QA (YouTube)",
-   "chave": "vini_qa",
-   "titulo": "npx não é reconhecido: como resolver",
-   "tipo": "short",
-   "id": "1cqvxCZ_kVs",
-   "url": "https://studio.youtube.com/video/1cqvxCZ_kVs/edit"
-  },
   {
    "quando": "2026-11-13T12:00:00-03:00",
    "plataforma": "Vini QA (YouTube)",
