@@ -1,0 +1,28 @@
+name: Baixar musicas
+on:
+  workflow_dispatch:
+  push:
+    paths: ["motor/musicas/lista.txt", ".github/workflows/musicas.yml"]
+jobs:
+  baixar:
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Baixar
+        run: |
+          cd motor/musicas
+          while IFS='|' read -r nome url; do
+            [ -z "$nome" ] && continue
+            [ -s "$nome.mp3" ] && continue
+            curl -sSL --fail -A "Mozilla/5.0" -e "https://pixabay.com/" -o "$nome.mp3" "$url" && echo "ok $nome $(stat -c%s $nome.mp3)" || { echo "FALHOU $nome"; rm -f "$nome.mp3"; }
+            sleep 3
+          done < lista.txt
+          ls -la
+      - name: Commit
+        run: |
+          git config user.name "fabrica-custo-oculto"; git config user.email "fabrica@users.noreply.github.com"
+          if [ -n "$(git status --porcelain motor/musicas)" ]; then
+            git add motor/musicas && git commit -q -m "Musicas Pixabay [skip ci]" && for t in 1 2 3; do git pull --rebase --autostash -q origin main && git push -q origin HEAD:main && break; sleep 5; done
+          fi

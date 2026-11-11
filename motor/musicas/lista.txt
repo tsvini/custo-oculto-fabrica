@@ -1,0 +1,15 @@
+g1_dark_suspense_trap|https://cdn.pixabay.com/download/audio/2026/09/29/audio_416bcfc76b.mp3?filename=icedavidbeats-dark-suspense-trap-beat-modern-cinematic-amp-mysterious-612687.mp3
+g2_dark_hiphop_bfc|https://cdn.pixabay.com/download/audio/2026/07/09/audio_4f4e471020.mp3?filename=bfcmusic-dark-hip-hop-564746.mp3
+g3_ambient_trap_dark_bass|https://cdn.pixabay.com/download/audio/2025/12/25/audio_0788a171c5.mp3?filename=openmindaudio-ambient-trap-background-music-dark-bass-late-night-focus-456698.mp3
+g4_dark_cinematic_hiphop_01|https://cdn.pixabay.com/download/audio/2026/03/17/audio_7e5ffee81d.mp3?filename=vjgalaxy-dark-cinematic-hip-hop-01-503798.mp3
+g5_dark_cinematic_hiphop_02|https://cdn.pixabay.com/download/audio/2026/03/17/audio_f258272cd7.mp3?filename=vjgalaxy-dark-cinematic-hip-hop-02-503799.mp3
+g6_agressive_trap|https://cdn.pixabay.com/download/audio/2026/07/21/audio_b2ff8faa72.mp3?filename=kulakovka-agressive-trap-571173.mp3
+g7_true_crime_theme|https://cdn.pixabay.com/download/audio/2024/10/24/audio_7696d89458.mp3?filename=uniquecreativeaudio-calm-mystery-or-true-crime-theme-beat-254622.mp3
+g8_dark_cinematic_ambient|https://cdn.pixabay.com/download/audio/2023/10/24/audio_d9b473a7fc.mp3?filename=rockot-dark-cinematic-ambient-beat-173058.mp3
+g9_crypto_fraud|https://cdn.pixabay.com/download/audio/2026/10/13/audio_81d20c18f9.mp3?filename=chestnutmusicstudios-4-crypto-fraud-619795.mp3
+j1_street_art_mystic|https://cdn.pixabay.com/download/audio/2026/08/18/audio_de18f47244.mp3?filename=rockot-street-art-mystic-hip-hop-beat-587954.mp3
+j2_bad_boy_bounce|https://cdn.pixabay.com/download/audio/2024/10/21/audio_64a50917f7.mp3?filename=rockot-bad-boy-bounce-groovy-drive-beats-253176.mp3
+j3_hiphop_musicforpeople|https://cdn.pixabay.com/download/audio/2026/02/26/audio_a8111fc611.mp3?filename=musicforpeople-hip-hop-hip-hop-music-492004.mp3
+j4_neon_night_urban|https://cdn.pixabay.com/download/audio/2025/12/24/audio_8eea696157.mp3?filename=openmindaudio-ambient-trap-background-music-neon-night-urban-chill-456498.mp3
+j5_low_bass_clean_outro|https://cdn.pixabay.com/download/audio/2025/12/25/audio_960c7b3389.mp3?filename=openmindaudio-ambient-trap-background-music-low-bass-clean-outro-456703.mp3
+j6_trap_prettyjohn|https://cdn.pixabay.com/download/audio/2026/04/28/audio_7125aa69a0.mp3?filename=prettyjohn1-trap-526146.mp3
