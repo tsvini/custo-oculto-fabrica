@@ -394,24 +394,47 @@ PAGINAS.dashboard = () => {
     </div>`);
 };
 
+const COR_CLIENTE = ['#3b2410|#fdba74', '#0f2e1e|#86efac', '#0f1a2e|#93c5fd', '#2e1430|#f0abfc', '#0f2a2e|#5eead4', '#2a2a10|#fde047', '#2e1018|#fda4af'];
+const corCliente = (n) => { let h = 0; for (const ch of n) h = (h * 31 + ch.charCodeAt(0)) % 997; return COR_CLIENTE[h % COR_CLIENTE.length].split('|'); };
+const COR_ST = { 'Aberto': '#a78bfa', 'Em andamento': '#f59e0b', 'Resolvido': '#22c55e', 'Fechado': '#6b6e86' };
+function relativo(iso) {
+  const min = Math.round((Date.now() - new Date(iso)) / 60000);
+  if (min < 1) return 'agora'; if (min < 60) return `há ${min} min`;
+  const h = Math.round(min / 60); if (h < 24) return `há ${h} h`;
+  const d = Math.round(h / 24); return d === 1 ? 'ontem' : `há ${d} dias`;
+}
 PAGINAS.chamados = () => {
-  casca('chamados', topo('Chamados', 'Todas as solicitações de atendimento dos clientes') + `
-    <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:16px">
-      <input class="in" id="busca" placeholder="Buscar pelo título…" data-test="busca-chamado" style="max-width:320px">
-      <select class="in" id="filtro" data-test="filtro-status" style="max-width:220px"><option value="">Todos os status</option>${STATUS.map((s) => `<option>${s}</option>`).join('')}</select>
-      <a class="btn" href="novo-chamado.html" data-test="novo-chamado" style="margin-left:auto">+ Novo chamado</a></div>
-    <table class="tabela"><thead><tr><th>#</th><th>TÍTULO</th><th>CLIENTE</th><th>STATUS</th><th>CRIADO EM</th></tr></thead><tbody id="linhas"></tbody></table>`);
+  const todos = dados().chamados, n = (st) => todos.filter((x) => !st || x.status === st).length;
+  const meus = todos.filter((x) => x.criadoPor === 'Você');
+  const dica = meus.length
+    ? `Você já criou ${meus.length === 1 ? 'um chamado' : meus.length + ' chamados'} aqui. Abre o seu e confere: título, descrição, anexo e status ficaram do jeito que o card pede?`
+    : 'Olha o #1008: título “ajuda” e descrição só com um ponto. Ninguém do suporte sabe o que fazer com isso. É esse problema que o FD-101 resolve, e é a tela de Novo chamado que você vai testar.';
+  casca('chamados', `<div class="ch-topo"><div><h2 data-test="titulo-pagina">Chamados</h2><div class="sub">Pedidos de ajuda dos clientes do FlowDesk. É aqui que o suporte trabalha todo dia.</div></div>
+      <a class="btn" href="novo-chamado.html" data-test="novo-chamado">+ Novo chamado</a></div>
+    <a class="testa-aqui" href="card.html?id=FD-101"><span class="ta-ic">${ico('card')}</span><div><b>Você está testando a tela de Novo chamado</b><span>Card FD-101 · Criar chamado. Cada chamado que você cria aparece nesta lista.</span></div><i>Ver o card ${ico('seta')}</i></a>
+    <div class="ch-filtros"><label class="busca">${SVG('<circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/>')}<input id="busca" type="search" placeholder="Buscar pelo título" data-test="busca-chamado" aria-label="Buscar pelo título"></label>
+      <div class="chips" role="group" aria-label="Filtrar por status"><button type="button" class="chip on" data-st="">Todos <b>${n('')}</b></button>${STATUS.map((st) => `<button type="button" class="chip" data-st="${st}"><i style="background:${COR_ST[st]}"></i>${st} <b>${n(st)}</b></button>`).join('')}</div>
+      <select class="exec-sel" id="filtro" data-test="filtro-status" aria-hidden="true" tabindex="-1"><option value="">Todos os status</option>${STATUS.map((st) => `<option>${st}</option>`).join('')}</select></div>
+    <div class="ch-lista"><table class="tabela ch-tab"><thead><tr><th>Nº</th><th>Título</th><th>Cliente</th><th>Status</th><th>Criado</th></tr></thead><tbody id="linhas"></tbody></table></div>
+    <div class="ch-dica">${fala('vinicius', 'DICA DO VINÍCIUS', dica)}</div>`);
   const pinta = () => {
     const b = $('#busca').value.trim().toLowerCase(), f = $('#filtro').value;
+    $$('.chips .chip').forEach((c) => c.classList.toggle('on', c.dataset.st === f));
     const l = [...dados().chamados].sort((a, c) => c.id - a.id).filter((x) => (!f || x.status === f) && x.titulo.toLowerCase().includes(b));
-    $('#linhas').innerHTML = l.length ? l.map((x) => `<tr data-test="linha-chamado"><td class="num">${x.id}</td><td><a href="chamado.html?id=${x.id}" data-test="link-chamado">${esc(x.titulo) || '<i style="color:#5b5f78">(sem título)</i>'}</a></td><td>${esc(x.cliente)}</td><td><span class="${stClasse(x.status)}" data-test="status">${x.status}</span></td><td>${dataBR(x.criadoEm)}</td></tr>`).join('')
+    $('#linhas').innerHTML = l.length ? l.map((x) => { const [bg, cor] = corCliente(x.cliente);
+      const chip = x.criadoPor === 'Você' ? '<span class="por-voce">criado por você</span>' : x.id === 1008 ? '<span class="exemplo">o problema do FD-101</span>' : '';
+      return `<tr data-test="linha-chamado" data-href="chamado.html?id=${x.id}"><td class="num">#${x.id}</td><td><div class="tt"><a href="chamado.html?id=${x.id}" data-test="link-chamado">${esc(x.titulo) || '<i style="color:#5b5f78">(sem título)</i>'}</a>${chip}</div></td>
+        <td><span class="cli"><span class="cli-i" style="background:${bg};color:${cor}">${esc(iniciais(x.cliente))}</span>${esc(x.cliente)}</span></td>
+        <td><span class="stp" data-test="status" style="--c:${COR_ST[x.status] || '#a78bfa'}"><i></i>${x.status}</span></td><td class="quando" title="${dataBR(x.criadoEm)}">${relativo(x.criadoEm)}</td></tr>`; }).join('')
       : '<tr><td colspan="5" class="vazio" data-test="lista-vazia">Nenhum chamado encontrado</td></tr>';
+    $$('#linhas tr[data-href]').forEach((tr) => { tr.onclick = (ev) => { if (!ev.target.closest('a')) location.href = tr.dataset.href; }; });
   };
+  $$('.chips .chip').forEach((c) => { c.onclick = () => { $('#filtro').value = c.dataset.st; pinta(); }; });
   $('#busca').oninput = pinta; $('#filtro').onchange = pinta; pinta();
 };
 
 PAGINAS['novo-chamado'] = () => {
-  casca('chamados', topo('Novo chamado', 'Registre uma nova solicitação de atendimento', '<a href="chamados.html">Chamados</a> / Novo') + `
+  casca('chamados', topo('Novo chamado', 'Registre uma nova solicitação de atendimento', '<a href="chamados.html">Chamados</a> / Novo') + `<div class="nc-grade">
     <form class="fcard" id="f" novalidate>
       <div class="campo"><label for="titulo">Título <i>*</i><span class="contador" data-test="contador-titulo" id="cont">0/100</span></label><input class="in" id="titulo" maxlength="100" data-test="titulo" placeholder="Resuma o problema em uma frase"></div>
       <div class="campo"><label for="descricao">Descrição <i>*</i></label><textarea class="in" id="descricao" data-test="descricao" placeholder="Descreva o problema…"></textarea></div>
@@ -419,7 +442,7 @@ PAGINAS['novo-chamado'] = () => {
       <div class="campo"><label>Anexo <small>(opcional · PDF, PNG ou JPG até 5 MB)</small></label>
         <label class="arquivo" for="anexo"><input type="file" id="anexo" data-test="anexo" accept=".pdf,.png,.jpg,.jpeg"><span class="btn sec peq">Escolher arquivo</span><span class="nome" id="nomeArq" data-test="nome-anexo">Nenhum arquivo escolhido</span><button type="button" class="icone" id="tiraArq" data-test="remover-anexo" hidden>Remover</button></label></div>
       <div class="fbtns"><a class="btn sec" href="chamados.html" data-test="cancelar">Cancelar</a><button class="btn" data-test="criar-chamado">Criar chamado</button></div>
-    </form>`);
+    </form><aside class="nc-lado"><div class="nc-k">${ico('card', 'ic')}O QUE O FD-101 PEDE</div><ol>${(dados().cards.find((x) => x.id === 'FD-101') || { criterios: [] }).criterios.map((t) => `<li>${esc(t)}</li>`).join('')}</ol><a href="card.html?id=FD-101&aba=plano">Abrir o plano de testes ${ico('seta', 'ic')}</a></aside></div>`);
   let arquivo = null;
   $('#titulo').oninput = () => { $('#cont').textContent = $('#titulo').value.length + '/100'; };
   const validaArquivo = (f) => {
