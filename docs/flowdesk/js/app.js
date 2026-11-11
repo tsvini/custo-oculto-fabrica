@@ -704,10 +704,10 @@ function montaPlano(A, card) {
   const mostraForm = (on) => { $('#f').hidden = !on; $('#abreForm').hidden = on; };
   mostraForm(lista.length === 0);
   $('#abreForm').onclick = () => { mostraForm(true); $('#cNome').focus(); };
-  addEventListener('scroll', () => { if ($('#arqPop')) $('#arqPop').hidden = true; }, { passive: true });
+  addEventListener('scroll', () => { const pop = $('#arqPop'); if (pop && Date.now() - (+pop.dataset.t || 0) > 600) pop.hidden = true; }, { passive: true });
   document.addEventListener('click', (ev) => {
     const b = ev.target.closest('[data-arqbtn]'), pop = $('#arqPop'); if (!pop) return;
-    if (b) { const r = b.getBoundingClientRect(); pop.style.top = Math.min(r.bottom + 6, innerHeight - 330) + 'px'; pop.style.left = Math.min(r.left, innerWidth - 340) + 'px'; pop.hidden = !pop.hidden; return; }
+    if (b) { const r = b.getBoundingClientRect(); pop.style.top = Math.min(r.bottom + 6, innerHeight - 330) + 'px'; pop.style.left = Math.min(r.left, innerWidth - 340) + 'px'; pop.hidden = !pop.hidden; pop.dataset.t = Date.now(); return; }
     if (!ev.target.closest('.arq-flut')) pop.hidden = true;
   });
   const pinta = () => {

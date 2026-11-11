@@ -875,3 +875,4 @@ h1,h2,h3,.topo h2{font-family:var(--tit)}
 .nc-lado a{font-weight:700;font-size:14px;display:inline-flex;align-items:center}
 .nc-lado a .ic{margin:0 0 0 6px}
 @media (max-width:1000px){.nc-grade{grid-template-columns:1fr}.nc-lado{position:static}}
+@media (min-width:901px){.side{overflow:visible}}
