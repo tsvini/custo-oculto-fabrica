@@ -876,3 +876,6 @@ h1,h2,h3,.topo h2{font-family:var(--tit)}
 .nc-lado a .ic{margin:0 0 0 6px}
 @media (max-width:1000px){.nc-grade{grid-template-columns:1fr}.nc-lado{position:static}}
 @media (min-width:901px){.side{overflow:visible}}
+.rafa{flex-direction:row;align-items:flex-end;gap:6px;padding:14px 10px 0 14px}
+.rafa-b{align-self:center;flex:1;margin-bottom:12px}
+.rafa video{height:150px;margin:0;flex:none}
