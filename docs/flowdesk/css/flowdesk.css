@@ -890,3 +890,12 @@ h1,h2,h3,.topo h2{font-family:var(--tit)}
 @media (prefers-reduced-motion:reduce){.desfile .anda{animation:none;transform:none}}
 .qual-vazio{margin:0;padding:12px 14px;border:1px dashed #3a3658;border-radius:12px;color:#b9bccd;font-size:14px;line-height:1.45}
 .seg-b button{padding:0 12px;font-size:14px}
+.cov .gabi-b{margin-top:16px;background:var(--bal);border:1px solid var(--balb);border-radius:16px 16px 4px 16px;padding:12px 14px;font-size:14px;line-height:1.45;color:#ececf6}
+.cov .gabi-b b{display:block;font-size:11px;letter-spacing:.5px;color:var(--acc2);margin-bottom:3px}
+.cov .gabi-b.ruim{border-color:#b4891f;background:#2a2110}
+.cov .gabi-b.ruim b{color:#fde68a}
+.cov .gabi-b.ok{border-color:#166534;background:#0f2418}
+.cov .gabi-b.ok b{color:#86efac}
+.cov .gabi{margin-top:6px}
+.tg.tF{background:#2a2110;color:#fde68a;border:1px solid #b4891f}
+.tg.tF:before{background:#eab308}
