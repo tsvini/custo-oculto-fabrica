@@ -5,6 +5,30 @@ const J = (o, s = 200, h = {}) => new Response(JSON.stringify(o), { status: s, h
 const TOTAL = 3;
 const atual = async (env) => Math.min(TOTAL, +(await env.CACA.get('atual')) || 1);
 const nomeT = (n) => `T${n}`;
+// prova automática: o FlowDesk registra no navegador do aluno quando o bug aconteceu de verdade
+const _h = (s) => { let h = 2166136261; for (const ch of s) { h ^= ch.charCodeAt(0); h = Math.imul(h, 16777619) >>> 0; } return h.toString(36); };
+const SAL = ['fl', '0w', 'd3', 'sk'].join('') + String.fromCharCode(81) + 6 * 7;
+// o report também precisa mostrar que a pessoa entendeu o bug (uma palavra-chave nos passos ou no obtido)
+const PISTAS = { T1: { 1: ['remov'], 2: ['filtr'], 3: ['espa'] }, T2: { 1: ['80'], 2: ['edit'], 3: ['espa'] }, T3: { 1: ['fechad'], 2: ['falh', 'passou'], 3: ['espa'] } };
+function provaValida(t, bug, pv, e) {
+  if (!pv || +pv.t !== +t.slice(1) || +pv.n !== bug) return false;
+  const q = +pv.q, agora = Date.now();
+  if (!(q > agora - 7 * 864e5 && q <= agora + 6e4)) return false;
+  if (pv.tk !== _h(`${pv.t}|${pv.n}|${q}|${SAL}`)) return false;
+  const txt = (e.passos + ' ' + e.obtido).toLowerCase();
+  return (PISTAS[t]?.[bug] || []).some((p) => txt.includes(p));
+}
+// aprova um envio: entra no placar se o bug ainda não tem dono, e abre a próxima temporada quando fecha os 3
+async function aprova(env, t, e) {
+  e.estado = 'aprovado';
+  const p = (await env.CACA.get(`placar:${t}`, 'json')) || {};
+  if (!p[e.bug]) {
+    e.codigo = 'VQA-' + crypto.randomUUID().replace(/-/g, '').slice(0, 6).toUpperCase();
+    p[e.bug] = { nome: curto(e.nome), quando: e.quando, id: e.id, codigo: e.codigo }; await env.CACA.put(`placar:${t}`, JSON.stringify(p));
+    const n = await atual(env);
+    if (t === nomeT(n) && [1, 2, 3].every((b) => p[b]) && n < TOTAL) await env.CACA.put('atual', String(n + 1));
+  }
+}
 const limpa = (v, n) => String(v ?? '').replace(/[\u0000-\u001f\u007f]/g, ' ').trim().slice(0, n);
 const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const curto = (nome) => { const p = nome.split(/\s+/).filter(Boolean); return p.length > 1 ? `${p[0]} ${p[p.length - 1][0]}.` : p[0] || 'Aluno'; };
@@ -47,10 +71,11 @@ export default {
       const n = await atual(env), t = nomeT(n), id = `${n}-${Date.now()}-${crypto.randomUUID().slice(0, 8)}`;
       if ((await placar(env)).encerrada) return J({ ok: false, erro: 'A caça terminou. Obrigado por participar!' }, 400, cors);
       const novo = { ...e, id, t, quando: new Date().toISOString(), estado: 'pendente' };
+      if (provaValida(t, e.bug, b.prova, e)) { novo.auto = true; await aprova(env, t, novo); }
       await env.CACA.put(`envio:${t}:${id}`, JSON.stringify(novo));
       await env.CACA.put(chaveIp, '1', { expirationTtl: 60 });
       await marcaLinha(env, t, novo);
-      return J({ ok: true, id, recibo: id.slice(-8), quando: novo.quando }, 200, cors);
+      return J({ ok: true, id, recibo: id.slice(-8), quando: novo.quando, estado: novo.estado, ganhou: !!novo.codigo, codigo: novo.codigo || null }, 200, cors);
     }
 
     // o aluno confere o próprio envio pelo id completo (só ele tem): mostra o estado e, se ganhou, o código de vitória
@@ -69,18 +94,14 @@ export default {
       if (url.pathname === '/admin/decidir' && req.method === 'POST') {
         const f = await req.formData(), chave = `envio:${t}:${f.get('id')}`, e = await env.CACA.get(chave, 'json');
         if (e) {
-          e.estado = f.get('acao') === 'aprovar' ? 'aprovado' : 'recusado';
-          await env.CACA.put(chave, JSON.stringify(e));
-          if (e.estado === 'aprovado') {
+          const acao = f.get('acao');
+          if (acao === 'aprovar') await aprova(env, t, e);
+          else if (acao === 'revogar') {
+            // tira o nome do placar (ex.: prova forjada): o bug volta a ficar livre
             const p = (await env.CACA.get(`placar:${t}`, 'json')) || {};
-            if (!p[e.bug]) {
-              e.codigo = 'VQA-' + crypto.randomUUID().replace(/-/g, '').slice(0, 6).toUpperCase();
-              p[e.bug] = { nome: curto(e.nome), quando: e.quando, id: e.id, codigo: e.codigo }; await env.CACA.put(`placar:${t}`, JSON.stringify(p));
-              // os 3 achados: abre a próxima temporada sozinha
-              const n = await atual(env);
-              if (t === nomeT(n) && [1, 2, 3].every((b) => p[b]) && n < TOTAL) await env.CACA.put('atual', String(n + 1));
-            }
-          }
+            if (p[e.bug] && p[e.bug].id === e.id) { delete p[e.bug]; await env.CACA.put(`placar:${t}`, JSON.stringify(p)); }
+            e.estado = 'recusado'; delete e.codigo;
+          } else e.estado = 'recusado';
           await env.CACA.put(chave, JSON.stringify(e));
           await marcaLinha(env, t, e);
         }
@@ -91,7 +112,7 @@ export default {
       const p = await placar(env, t), na = await atual(env);
       const linha = (e) => `<div class="e ${e.estado}"><div class="h"><b>Bug #${e.bug}</b> · ${esc(e.nome)} · ${new Date(e.quando).toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' })} · <i>${e.estado}</i>${e.codigo ? ` · código <b>${e.codigo}</b>` : ''} · recibo ${e.id.slice(-8)}</div>
         <p><b>Passos</b><br>${esc(e.passos).replace(/\n/g, '<br>')}</p><p><b>Esperado:</b> ${esc(e.esperado)}</p><p><b>Obtido:</b> ${esc(e.obtido)}</p>${e.evidencia ? `<p><b>Evidência:</b> ${esc(e.evidencia)}</p>` : ''}${e.ambiente ? `<p><b>Ambiente:</b> ${esc(e.ambiente)}</p>` : ''}
-        ${e.estado === 'pendente' ? `<form method="post" action="/admin/decidir?k=${encodeURIComponent(k)}&t=${t}"><input type="hidden" name="id" value="${e.id}"><button name="acao" value="aprovar">Aprovar</button> <button name="acao" value="recusar" class="r">Recusar</button></form>` : ''}</div>`;
+        ${e.auto ? ' · <b style="color:#86efac">aprovado sozinho (prova do FlowDesk)</b>' : ''}${e.estado === 'aprovado' ? `<form method="post" action="/admin/decidir?k=${encodeURIComponent(k)}&t=${t}"><input type="hidden" name="id" value="${e.id}"><button name="acao" value="revogar" class="r">Revogar</button></form>` : ''}${e.estado === 'pendente' ? `<form method="post" action="/admin/decidir?k=${encodeURIComponent(k)}&t=${t}"><input type="hidden" name="id" value="${e.id}"><button name="acao" value="aprovar">Aprovar</button> <button name="acao" value="recusar" class="r">Recusar</button></form>` : ''}</div>`;
       return new Response(`<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Caça aos bugs · ${t}</title>
 <style>body{font-family:system-ui;background:#0b0c12;color:#eee;max-width:820px;margin:24px auto;padding:0 16px}.e{background:#14151f;border:1px solid #2a2c40;border-radius:12px;padding:14px 16px;margin:12px 0}.e.aprovado{border-color:#22c55e}.e.recusado{opacity:.5}.h{color:#a5a9bf;margin-bottom:6px}button{background:#7c3aed;color:#fff;border:0;border-radius:8px;padding:8px 14px;font-weight:700;cursor:pointer}button.r{background:#3a1218}</style>
 <h1>Caça aos bugs · temporada ${t.slice(1)}</h1><p>Valendo agora: temporada ${na}. Ver: ${[1, 2, 3].map((i) => `<a style="color:#c4b5fd" href="/admin?k=${encodeURIComponent(k)}&t=T${i}">T${i}</a>`).join(' · ')}</p><p>${p.bugs.map((b) => `Bug #${b.n}: ${b.ganhador ? '✅ ' + esc(b.ganhador) : '🔒 livre'}`).join(' · ')}</p>${envios.map(linha).join('') || '<p>Nenhum envio ainda.</p>'}`, { headers: { 'content-type': 'text/html; charset=utf-8' } });

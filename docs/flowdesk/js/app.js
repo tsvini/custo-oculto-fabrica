@@ -31,7 +31,16 @@ const BUG = {
 // caça aos bugs: endereço do Worker (vazio = temporada ainda não aberta)
 const CACA_API = '';
 // ajuste fino por contexto (compatibilidade entre telas)
-const _K = [[2958, 2396, 2521], [3223, 3349, 3525], [2641, 3778, 1525]];
+const _K = [[2521, 2396, 2958], [3223, 3349, 3525], [2641, 3778, 1525]];
+const _hk = (k) => { let h = 7; for (const ch of k) h = (h * 33 + ch.charCodeAt(0)) >>> 0; return h % 4093; };
+const _h = (s) => { let h = 2166136261; for (const ch of s) { h ^= ch.charCodeAt(0); h = Math.imul(h, 16777619) >>> 0; } return h.toString(36); };
+const _sl = () => ['fl', '0w', 'd3', 'sk'].join('') + String.fromCharCode(81) + 6 * 7;
+// registra, sem avisar, que o comportamento aconteceu de verdade neste navegador
+function _pv(k) {
+  const pc = CACA_API && LS.get('fd:placar', null); if (!pc || pc.encerrada || !_c(k)) return;
+  const T = pc.temporada || 1, n = _K[T - 1].indexOf(_hk(k)) + 1, p = LS.get('fd:caca-prova', {}), id = T + '-' + n;
+  if (n < 1 || p[id]) return; const q = Date.now(); p[id] = { t: T, n, q, tk: _h(`${T}|${n}|${q}|${_sl()}`) }; LS.set('fd:caca-prova', p);
+}
 const _c = (k) => { const pc = CACA_API && LS.get('fd:placar', null); if (!pc || pc.encerrada) return 0; let h = 7; for (const ch of k) h = (h * 33 + ch.charCodeAt(0)) >>> 0; return (_K[(pc.temporada || 1) - 1] || []).includes(h % 4093) ? 1 : 0; };
 
 // ---------- utilidades ----------
@@ -433,6 +442,9 @@ PAGINAS.chamados = () => {
         <td><span class="cli"><span class="cli-i" style="background:${bg};color:${cor}">${esc(iniciais(x.cliente))}</span>${esc(x.cliente)}</span></td>
         <td><span class="stp" data-test="status" style="--c:${COR_ST[x.status] || '#a78bfa'}"><i></i>${x.status}</span></td><td class="quando" title="${dataBR(x.criadoEm)}">${relativo(x.criadoEm)}</td></tr>`; }).join('')
       : '<tr><td colspan="5" class="vazio" data-test="lista-vazia">Nenhum chamado encontrado</td></tr>';
+    if (f && l.some((x) => x.status !== f)) _pv('lista');
+    if (b && b !== b.trim() && _c('busca')) _pv('busca');
+    if (f === 'Fechado' && !l.length && _c('fechado') && innerWidth <= 480) _pv('fechado');
     $$('#linhas tr[data-href]').forEach((tr) => { tr.onclick = (ev) => { if (!ev.target.closest('a')) location.href = tr.dataset.href; }; });
   };
   $$('.chips .chip').forEach((c) => { c.onclick = () => { $('#filtro').value = c.dataset.st; pinta(); }; });
@@ -451,7 +463,7 @@ PAGINAS['novo-chamado'] = () => {
     </form><aside class="nc-lado"><div class="nc-k">${ico('card', 'ic')}O QUE O FD-101 PEDE</div><ol>${(dados().cards.find((x) => x.id === 'FD-101') || { criterios: [] }).criterios.map((t) => `<li>${esc(t)}</li>`).join('')}</ol><a href="card.html?id=FD-101&aba=plano">Abrir o plano de testes ${ico('seta', 'ic')}</a></aside></div>`);
   let arquivo = null;
   if (_c('t80') && innerWidth <= 480) $('#titulo').maxLength = 80;
-  $('#titulo').oninput = () => { $('#cont').textContent = $('#titulo').value.length + '/100'; };
+  $('#titulo').oninput = () => { $('#cont').textContent = $('#titulo').value.length + '/100'; if ($('#titulo').maxLength === 80 && $('#titulo').value.length >= 80) _pv('t80'); };
   const validaArquivo = (f) => {
     if (!FORMATOS.includes(extensao(f.name))) return 'Formato não aceito. Envie PDF, PNG ou JPG';
     if (BUG.anexo5mbExato ? f.size >= LIMITE_ANEXO : f.size > LIMITE_ANEXO) return 'O arquivo passa do limite de 5 MB';
@@ -463,7 +475,7 @@ PAGINAS['novo-chamado'] = () => {
     if (e) { arquivo = null; $('#anexo').value = ''; $('#nomeArq').textContent = 'Nenhum arquivo escolhido'; $('#tiraArq').hidden = true; return erroCampo('anexo', e); }
     arquivo = { nome: f.name, tamanho: f.size }; $('#nomeArq').textContent = `${f.name} (${tamanho(f.size)})`; $('#tiraArq').hidden = false;
   };
-  $('#tiraArq').onclick = (ev) => { ev.preventDefault(); if (!(_c('anexo') && innerWidth <= 480)) arquivo = null; $('#anexo').value = ''; $('#nomeArq').textContent = 'Nenhum arquivo escolhido'; $('#tiraArq').hidden = true; };
+  $('#tiraArq').onclick = (ev) => { ev.preventDefault(); if (!(_c('anexo') && innerWidth <= 480)) arquivo = null; else arquivo.tirado = 1; $('#anexo').value = ''; $('#nomeArq').textContent = 'Nenhum arquivo escolhido'; $('#tiraArq').hidden = true; };
   $('#f').onsubmit = (ev) => {
     ev.preventDefault(); limpaErros();
     const t = $('#titulo').value, ds = $('#descricao').value;
@@ -472,6 +484,7 @@ PAGINAS['novo-chamado'] = () => {
     if (ds.trim().length === 0) { erroCampo('descricao', 'Descrição é obrigatória'); ok = false; }
     if (!ok) return;
     const d = dados(), id = d.proximoChamado++;
+    if (arquivo && arquivo.tirado) { _pv('anexo'); delete arquivo.tirado; }
     d.chamados.push({ id, titulo: BUG.tituloSoEspacos ? t : t.trim(), descricao: ds.trim(), cliente: $('#cliente').value, status: 'Aberto', criadoEm: agora(), criadoPor: 'Você', anexo: arquivo, historico: [{ quando: agora(), tx: 'Chamado criado com status Aberto' }] });
     salvar(); recado('Chamado criado com sucesso'); location.href = 'chamado.html?id=' + id;
   };
@@ -570,6 +583,7 @@ function novaTarefa(depois, ctx) {
     let id;
     if (bug) {
       id = 'BUG-' + String(d.proximoBug++).padStart(2, '0'); const f = $('#tEvid').files[0];
+      if (!v('tTitulo')) _pv('bugtit');
       d.cards.push({ id, titulo: v('tTitulo'), coluna: 'afazer', resp: 'gabriela', tipo: 'bug', prioridade: v('tPrio'), relacionado: v('tCard'), cenario: ctx ? ctx.nome : '', passos: v('tPassos'), esperado: v('tEsp'), obtido: v('tObt'), evidencia: f ? f.name : '', criterios: [], ok: [], comentarios: [], criadoEm: agora() });
       d.chat.bugs.push({ de: 'voce', tx: `Abri o ${id}: ${v('tTitulo')}`, quando: agora() });
     } else {
@@ -617,7 +631,7 @@ PAGINAS.card = () => {
         ? `<div class="sec"><div class="k">Card relacionado</div><div class="v">${c.relacionado ? `<a href="card.html?id=${c.relacionado}">${c.relacionado}</a>` : '—'}</div></div>` + campo('Passos para reproduzir', c.passos) + campo('Resultado esperado', c.esperado) + campo('Resultado obtido', c.obtido) + campo('Evidência', c.evidencia || '')
         : campo('Descrição', c.descricao) + (c.tipo === 'melhoria' ? '' : critHtml());
       if (c.tipo !== 'bug') {
-        const pl = d.planos[c.id] || [], ex = pl.filter((x) => x.exec === 'passou' || x.exec === 'falhou').length, fal = pl.filter((x) => x.exec === 'falhou' || (_c('falha') && x.jaFalhou)).length, bugs = pl.filter((x) => x.bug).length;
+        const pl = d.planos[c.id] || [], ex = pl.filter((x) => x.exec === 'passou' || x.exec === 'falhou').length, fal = pl.filter((x) => x.exec === 'falhou' || (_c('falha') && x.jaFalhou)).length, _f = pl.some((x) => x.exec !== 'falhou' && x.jaFalhou) && _c('falha') && _pv('falha'), bugs = pl.filter((x) => x.bug).length;
         const linha = (n, l, cor) => `<div class="rs-l"><span>${l}</span><b${cor ? ` style="color:${cor}"` : ''}>${n}</b></div>`;
         const pessoa = (p, papel) => `<div class="rs-p">${avatar(p)}<div><b>${PESSOAS[p].nome}</b><span>${papel}</span></div></div>`;
         A.innerHTML = `<div class="det"><div class="det-e">${A.innerHTML}</div><aside class="rs" data-test="resumo-card">
@@ -635,7 +649,7 @@ PAGINAS.card = () => {
     } else {
       A.innerHTML = `<div class="sec"><div id="coms">${c.comentarios.map((m) => `<div class="coment">${avatar('voce')}<div class="bx"><b>Você</b><small>${dataBR(m.quando)}</small><div>${esc(m.tx)}</div></div></div>`).join('') || '<div class="v nada" style="font-size:15px">Nenhum comentário ainda.</div>'}</div>
         <div style="display:flex;gap:10px;margin-top:12px"><input class="in" id="com" placeholder="Escreva um comentário…" data-test="comentario"><button class="btn" id="enviaCom" data-test="enviar-comentario">Comentar</button></div></div>`;
-      $('#enviaCom').onclick = () => { const t = _c('com') ? $('#com').value.replace(/^\n+|\n+$/g, '') : $('#com').value.trim(); if (!t) return; c.comentarios.push({ tx: t, quando: agora() }); salvar(); contagens(); mostra('comentarios'); };
+      $('#enviaCom').onclick = () => { const t = _c('com') ? $('#com').value.replace(/^\n+|\n+$/g, '') : $('#com').value.trim(); if (!t) return; if (!t.trim()) _pv('com'); c.comentarios.push({ tx: t, quando: agora() }); salvar(); contagens(); mostra('comentarios'); };
     }
     contagens();
   };
@@ -757,7 +771,7 @@ function montaPlano(A, card) {
     if (!esp) { erroCampo('cEsp', 'Escreva o resultado esperado'); ok = false; }
     if (!ok) return;
     const c = { nome, tipo: $('#cTipo').value, passos: $('#cPassos').value.trim(), esperado: esp, regras: $$('[data-test=cenario-regra]').filter((k) => k.checked).map((k) => +k.value), exec: 'nao' };
-    if (editando !== null) { c.exec = lista[editando].exec; if (lista[editando].bug && !_c('edita')) c.bug = lista[editando].bug; if (lista[editando].jaFalhou) c.jaFalhou = true; lista[editando] = c; toast('Cenário salvo'); } else { lista.push(c); toast('Cenário adicionado'); }
+    if (editando !== null) { c.exec = lista[editando].exec; if (lista[editando].bug && !_c('edita')) c.bug = lista[editando].bug; else if (lista[editando].bug) _pv('edita'); if (lista[editando].jaFalhou) c.jaFalhou = true; lista[editando] = c; toast('Cenário salvo'); } else { lista.push(c); toast('Cenário adicionado'); }
     salvar(); limpa(); pinta();
   };
   $('#cancela').hidden = !lista.length;
@@ -916,7 +930,7 @@ PAGINAS.caca = () => {
         <div class="campo"><label for="cAmb">Ambiente <small>(navegador, celular ou computador)</small></label><input class="in" id="cAmb" data-test="caca-ambiente" placeholder="Ex.: Chrome no Android"></div>
         <button class="btn" data-test="caca-enviar" ${aberta ? '' : 'disabled'}>Enviar report</button></form>
       ${meus.length ? `<div class="meus"><h3>Seus envios</h3>${meus.map((e) => `<div class="me" data-recibo="${e.id}"><span>Bug #${e.bug}</span><span>${dataHora(e.quando)}</span><span>recibo <b>${e.id.slice(-8)}</b></span><span class="est">conferindo…</span></div>`).join('')}</div>` : ''}</section>
-      <aside class="caca-lado"><section class="painel"><h2>Como funciona</h2><ol class="passos-c"><li>Teste o FlowDesk como no curso. Os bugs estão em telas que você já conhece.</li><li>Achou? Reporte aqui com passos, esperado, obtido e evidência.</li><li>Seu envio entra na linha do tempo na hora, com um recibo. Todo mundo vê quem mandou primeiro.</li><li>O professor confere. Aprovado, seu nome entra no placar.</li><li>Ganhou? Aparece um código de vitória aqui. Mande ele por mensagem pro professor na Udemy e receba o cupom do Vida de QA 2.</li></ol></section>
+      <aside class="caca-lado"><section class="painel"><h2>Como funciona</h2><ol class="passos-c"><li>Teste o FlowDesk como no curso. Os bugs estão em telas que você já conhece.</li><li>Achou? Reporte aqui com passos, esperado, obtido e evidência.</li><li>Seu envio entra na linha do tempo na hora, com um recibo. Todo mundo vê quem mandou primeiro.</li><li>Se você reproduziu o bug aqui no FlowDesk, a confirmação é automática: seu nome entra no placar na hora. Se não, o professor confere.</li><li>Ganhou? Aparece um código de vitória aqui. Mande ele por mensagem pro professor na Udemy e receba o cupom do Vida de QA 2.</li></ol></section>
         ${fala('vinicius', 'VINÍCIUS', 'Report sem evidência eu recuso. É o que acontece no trabalho também.')}
         <section class="painel" id="hallBox" hidden><h2>Hall dos caçadores</h2><div id="hall"></div></section>
         <section class="painel"><h2>Linha do tempo</h2><p class="dica">Todo envio aparece aqui na hora em que chega, em ordem.</p><div id="linha" class="linha-t" data-test="caca-linha"><p class="dica">${aberta ? 'Carregando…' : 'Nenhum envio ainda.'}</p></div></section></aside></div>`);
@@ -949,10 +963,10 @@ PAGINAS.caca = () => {
     if (!v('cObtC')) { erroCampo('cObtC', 'Escreva o resultado obtido'); ok = false; }
     if (!ok) return;
     try {
-      const r = await (await fetch(`${CACA_API}/envio`, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ nome: v('cNomeU'), bug: qual, passos: v('cPas'), esperado: v('cEspC'), obtido: v('cObtC'), evidencia: v('cEvi'), ambiente: v('cAmb') }) })).json();
+      const r = await (await fetch(`${CACA_API}/envio`, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ nome: v('cNomeU'), bug: qual, passos: v('cPas'), esperado: v('cEspC'), obtido: v('cObtC'), evidencia: v('cEvi'), ambiente: v('cAmb'), prova: LS.get('fd:caca-prova', {})[`${(LS.get('fd:placar', {}) || {}).temporada || 1}-${qual}`] || null }) })).json();
       if (!r.ok) return toast(r.erro || 'Não deu pra enviar', true);
       meus.push({ id: r.id, bug: qual, quando: r.quando }); LS.set('fd:caca-envios', meus);
-      recado(`Report enviado. Recibo ${r.recibo}`); location.reload();
+      recado(r.ganhou ? `Confirmado! Você achou o bug #${qual}. Seu código: ${r.codigo}` : `Report enviado. Recibo ${r.recibo}`); location.reload();
     } catch (e) { toast('Sem conexão com o servidor da caça. Tenta de novo.', true); }
   };
 };
