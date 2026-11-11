@@ -920,7 +920,7 @@ PAGINAS.caca = () => {
       <h1 data-test="titulo-pagina">3 bugs escondidos no FlowDesk.</h1><p>Quem achar e reportar primeiro ganha o <b>Vida de QA 2</b> de graça quando lançar. Preste atenção nas aulas.</p></div>
       <video src="img/anim/vinicius_lupa_v2.webm?v=1794358760" poster="img/anim/vinicius_lupa_v2.png?v=1794358760" autoplay muted loop playsinline aria-label="Vinícius com uma lupa procurando bugs"></video></section>
     <div class="caca-bugs" id="placar">${[1, 2, 3].map((n) => `<article class="cb"><div class="cb-h"><span>#${n}</span><b>LIVRE</b></div><div class="cb-v">Ninguém achou ainda.</div></article>`).join('')}</div>
-    <div class="caca-grade"><section class="painel caca-form"><h2>Reportar um bug da caça</h2><p class="dica">O professor confere cada report. Vale o primeiro report completo que chegar.</p>
+    <div class="caca-grade"><section class="painel caca-form"><h2>Reportar um bug da caça</h2><p class="dica">A confirmação é automática. Vale o primeiro report confirmado de cada bug.</p>
       <form id="fc" novalidate>${aberta ? '' : '<div class="aviso-caca" data-test="caca-fechada">A primeira temporada ainda não abriu. Quando abrir, este formulário passa a funcionar e o aviso sai daqui.</div>'}
         <div class="campo"><label for="cNomeU">Seu nome na Udemy <i>*</i></label><input class="in" id="cNomeU" data-test="caca-nome" value="${esc(c.nome)}"></div>
         <div class="campo"><label>Qual bug? <i>*</i></label><div class="seg-b" id="qual">${[1, 2, 3].map((n) => `<button type="button" data-qual="${n}" data-test="caca-bug-${n}">#${n}</button>`).join('')}</div></div>
@@ -930,8 +930,8 @@ PAGINAS.caca = () => {
         <div class="campo"><label for="cAmb">Ambiente <small>(navegador, celular ou computador)</small></label><input class="in" id="cAmb" data-test="caca-ambiente" placeholder="Ex.: Chrome no Android"></div>
         <button class="btn" data-test="caca-enviar" ${aberta ? '' : 'disabled'}>Enviar report</button></form>
       ${meus.length ? `<div class="meus"><h3>Seus envios</h3>${meus.map((e) => `<div class="me" data-recibo="${e.id}"><span>Bug #${e.bug}</span><span>${dataHora(e.quando)}</span><span>recibo <b>${e.id.slice(-8)}</b></span><span class="est">conferindo…</span></div>`).join('')}</div>` : ''}</section>
-      <aside class="caca-lado"><section class="painel"><h2>Como funciona</h2><ol class="passos-c"><li>Teste o FlowDesk como no curso. Os bugs estão em telas que você já conhece.</li><li>Achou? Reporte aqui com passos, esperado, obtido e evidência.</li><li>Seu envio entra na linha do tempo na hora, com um recibo. Todo mundo vê quem mandou primeiro.</li><li>Se você reproduziu o bug aqui no FlowDesk, a confirmação é automática: seu nome entra no placar na hora. Se não, o professor confere.</li><li>Ganhou? Aparece um código de vitória aqui. Mande ele por mensagem pro professor na Udemy e receba o cupom do Vida de QA 2.</li></ol></section>
-        ${fala('vinicius', 'VINÍCIUS', 'Report sem evidência eu recuso. É o que acontece no trabalho também.')}
+      <aside class="caca-lado"><section class="painel"><h2>Como funciona</h2><ol class="passos-c"><li>Teste o FlowDesk como no curso. Os bugs estão em telas que você já conhece.</li><li>Achou? Reporte aqui com passos, esperado, obtido e evidência.</li><li>Seu envio entra na linha do tempo na hora, com um recibo. Todo mundo vê quem mandou primeiro.</li><li>Só vale bug que você reproduziu aqui no FlowDesk, neste navegador, e explicou nos passos. Confirmado, seu nome entra no placar na hora.</li><li>Ganhou? Aparece um código de vitória aqui. Mande ele por mensagem pro professor na Udemy e receba o cupom do Vida de QA 2.</li></ol></section>
+        ${fala('vinicius', 'VINÍCIUS', 'Bug que ninguém consegue reproduzir não conta. No trabalho é igual.')}
         <section class="painel" id="hallBox" hidden><h2>Hall dos caçadores</h2><div id="hall"></div></section>
         <section class="painel"><h2>Linha do tempo</h2><p class="dica">Todo envio aparece aqui na hora em que chega, em ordem.</p><div id="linha" class="linha-t" data-test="caca-linha"><p class="dica">${aberta ? 'Carregando…' : 'Nenhum envio ainda.'}</p></div></section></aside></div>`);
   let qual = 0;
@@ -964,7 +964,7 @@ PAGINAS.caca = () => {
     if (!ok) return;
     try {
       const r = await (await fetch(`${CACA_API}/envio`, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ nome: v('cNomeU'), bug: qual, passos: v('cPas'), esperado: v('cEspC'), obtido: v('cObtC'), evidencia: v('cEvi'), ambiente: v('cAmb'), prova: LS.get('fd:caca-prova', {})[`${(LS.get('fd:placar', {}) || {}).temporada || 1}-${qual}`] || null }) })).json();
-      if (!r.ok) return toast(r.erro || 'Não deu pra enviar', true);
+      if (!r.ok) return toast(r.erro || 'Não deu pra enviar', true);  // inclui recusado sem prova
       meus.push({ id: r.id, bug: qual, quando: r.quando }); LS.set('fd:caca-envios', meus);
       recado(r.ganhou ? `Confirmado! Você achou o bug #${qual}. Seu código: ${r.codigo}` : `Report enviado. Recibo ${r.recibo}`); location.reload();
     } catch (e) { toast('Sem conexão com o servidor da caça. Tenta de novo.', true); }

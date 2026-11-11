@@ -71,10 +71,13 @@ export default {
       const n = await atual(env), t = nomeT(n), id = `${n}-${Date.now()}-${crypto.randomUUID().slice(0, 8)}`;
       if ((await placar(env)).encerrada) return J({ ok: false, erro: 'A caça terminou. Obrigado por participar!' }, 400, cors);
       const novo = { ...e, id, t, quando: new Date().toISOString(), estado: 'pendente' };
+      // só vale com prova do FlowDesk + report que explica o bug. Sem isso, não entra.
       if (provaValida(t, e.bug, b.prova, e)) { novo.auto = true; await aprova(env, t, novo); }
+      else { novo.estado = 'recusado'; novo.motivo = 'sem prova'; }
       await env.CACA.put(`envio:${t}:${id}`, JSON.stringify(novo));
       await env.CACA.put(chaveIp, '1', { expirationTtl: 60 });
-      await marcaLinha(env, t, novo);
+      if (novo.estado !== 'recusado') await marcaLinha(env, t, novo);
+      if (novo.estado === 'recusado') return J({ ok: false, recusado: true, recibo: id.slice(-8), erro: 'Não deu pra confirmar esse bug. Reproduza ele no FlowDesk, neste mesmo navegador, e explique nos passos o que você fez.' }, 200, cors);
       return J({ ok: true, id, recibo: id.slice(-8), quando: novo.quando, estado: novo.estado, ganhou: !!novo.codigo, codigo: novo.codigo || null }, 200, cors);
     }
 
