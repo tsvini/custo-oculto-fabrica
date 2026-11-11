@@ -879,3 +879,7 @@ h1,h2,h3,.topo h2{font-family:var(--tit)}
 .rafa{flex-direction:row;align-items:flex-end;gap:6px;padding:14px 10px 0 14px}
 .rafa-b{align-self:center;flex:1;margin-bottom:12px}
 .rafa video{height:150px;margin:0;flex:none}
+.hall-t{display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding:10px 0;border-bottom:1px solid #191826}
+.hall-t b{width:100%;font-size:13px;color:var(--ouro);letter-spacing:.5px}
+.hall-t span{font-size:13px;font-weight:700;border-radius:10px;padding:5px 10px;border:1px dashed #5a4a1f;color:#c9b98a}
+.hall-t span.on{background:var(--ouro);border:0;color:#1a1405}

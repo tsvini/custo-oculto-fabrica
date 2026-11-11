@@ -31,7 +31,8 @@ const BUG = {
 // caça aos bugs: endereço do Worker (vazio = temporada ainda não aberta)
 const CACA_API = '';
 // ajuste fino por contexto (compatibilidade entre telas)
-const _c = (k) => { if (!CACA_API) return 0; let h = 7; for (const ch of k) h = (h * 33 + ch.charCodeAt(0)) >>> 0; return [2958, 2396, 2521].includes(h % 4093) ? 1 : 0; };
+const _K = [[2958, 2396, 2521], [3223, 3349, 3525], [2641, 3778, 1525]];
+const _c = (k) => { const pc = CACA_API && LS.get('fd:placar', null); if (!pc || pc.encerrada) return 0; let h = 7; for (const ch of k) h = (h * 33 + ch.charCodeAt(0)) >>> 0; return (_K[(pc.temporada || 1) - 1] || []).includes(h % 4093) ? 1 : 0; };
 
 // ---------- utilidades ----------
 const $ = (s, el = document) => el.querySelector(s);
@@ -282,6 +283,7 @@ function casca(pagina, conteudo) {
     <main class="main"><header class="barra"><div class="barra-c"><span class="barra-k">CARREIRA</span>${trilha(d)}<span class="xp" data-test="xp">${xpDe(d)} / ${(d.conquistas || []).includes('ep08') ? XP_PLENO : XP_JUNIOR} XP</span></div>${pillVersao()}</header><div class="conteudo">${conteudo}</div></main></div>`;
   $('[data-test=sair]').onclick = sair;
   mostraRecado(); setTimeout(confereMissoes, 300);
+  if (CACA_API && pg !== 'caca') fetch(`${CACA_API}/placar`).then((r) => r.json()).then((p) => LS.set('fd:placar', { bugs: p.bugs, temporada: p.temporada, encerrada: p.encerrada })).catch(() => {});
 }
 function sair() { LS.del('fd:sessao'); location.href = 'index.html'; }
 const topo = (titulo, sub = '', crumb = '', acoes = '') => `<div class="topo"><div>${crumb ? `<div class="crumb">${crumb}</div>` : ''}<h2 data-test="titulo-pagina">${titulo}</h2>${sub ? `<div class="sub">${sub}</div>` : ''}</div>${acoes ? `<div class="topo-acoes">${acoes}</div>` : ''}</div>`;
@@ -422,9 +424,9 @@ PAGINAS.chamados = () => {
     <div class="ch-lista"><table class="tabela ch-tab"><thead><tr><th>Nº</th><th>Título</th><th>Cliente</th><th>Status</th><th>Criado</th></tr></thead><tbody id="linhas"></tbody></table></div>
     <div class="ch-dica">${fala('vinicius', 'DICA DO VINÍCIUS', dica)}</div>`);
   const pinta = () => {
-    const b = $('#busca').value.trim().toLowerCase(), f = $('#filtro').value;
+    const b = (_c('busca') ? $('#busca').value.replace(/^\s+/, '') : $('#busca').value.trim()).toLowerCase(), f = $('#filtro').value;
     $$('.chips .chip').forEach((c) => c.classList.toggle('on', c.dataset.st === f));
-    const l = [...dados().chamados].sort((a, c) => c.id - a.id).filter((x) => (!f || x.status === f || (_c('lista') && b.length > 0)) && x.titulo.toLowerCase().includes(b));
+    const l = [...dados().chamados].sort((a, c) => c.id - a.id).filter((x) => (!f || x.status === f || (_c('lista') && b.length > 0)) && x.titulo.toLowerCase().includes(b) && !(f === 'Fechado' && _c('fechado') && innerWidth <= 480));
     $('#linhas').innerHTML = l.length ? l.map((x) => { const [bg, cor] = corCliente(x.cliente);
       const chip = x.criadoPor === 'Você' ? '<span class="por-voce">criado por você</span>' : x.id === 1008 ? '<span class="exemplo">o problema do FD-101</span>' : '';
       return `<tr data-test="linha-chamado" data-href="chamado.html?id=${x.id}"><td class="num">#${x.id}</td><td><div class="tt"><a href="chamado.html?id=${x.id}" data-test="link-chamado">${esc(x.titulo) || '<i style="color:#5b5f78">(sem título)</i>'}</a>${chip}</div></td>
@@ -448,6 +450,7 @@ PAGINAS['novo-chamado'] = () => {
       <div class="fbtns"><a class="btn sec" href="chamados.html" data-test="cancelar">Cancelar</a><button class="btn" data-test="criar-chamado">Criar chamado</button></div>
     </form><aside class="nc-lado"><div class="nc-k">${ico('card', 'ic')}O QUE O FD-101 PEDE</div><ol>${(dados().cards.find((x) => x.id === 'FD-101') || { criterios: [] }).criterios.map((t) => `<li>${esc(t)}</li>`).join('')}</ol><a href="card.html?id=FD-101&aba=plano">Abrir o plano de testes ${ico('seta', 'ic')}</a></aside></div>`);
   let arquivo = null;
+  if (_c('t80') && innerWidth <= 480) $('#titulo').maxLength = 80;
   $('#titulo').oninput = () => { $('#cont').textContent = $('#titulo').value.length + '/100'; };
   const validaArquivo = (f) => {
     if (!FORMATOS.includes(extensao(f.name))) return 'Formato não aceito. Envie PDF, PNG ou JPG';
@@ -562,7 +565,7 @@ function novaTarefa(depois, ctx) {
   $('#fT').onsubmit = (ev) => {
     ev.preventDefault(); limpaErros(); let ok = true; const v = (i) => $('#' + i).value.trim(), bug = tipo() === 'bug';
     const obrig = [['tTitulo', 'Dê um título pra tarefa']].concat(bug ? [['tPassos', 'Escreva os passos pra reproduzir'], ['tEsp', 'Escreva o resultado esperado'], ['tObt', 'Escreva o resultado obtido']] : [['tDesc', 'Descreva a melhoria']]);
-    obrig.forEach(([i, m]) => { if (!v(i)) { erroCampo(i, m); ok = false; } });
+    obrig.forEach(([i, m]) => { if (!(i === 'tTitulo' && bug && _c('bugtit') ? $('#' + i).value : v(i))) { erroCampo(i, m); ok = false; } });
     if (!ok) return;
     let id;
     if (bug) {
@@ -614,7 +617,7 @@ PAGINAS.card = () => {
         ? `<div class="sec"><div class="k">Card relacionado</div><div class="v">${c.relacionado ? `<a href="card.html?id=${c.relacionado}">${c.relacionado}</a>` : '—'}</div></div>` + campo('Passos para reproduzir', c.passos) + campo('Resultado esperado', c.esperado) + campo('Resultado obtido', c.obtido) + campo('Evidência', c.evidencia || '')
         : campo('Descrição', c.descricao) + (c.tipo === 'melhoria' ? '' : critHtml());
       if (c.tipo !== 'bug') {
-        const pl = d.planos[c.id] || [], ex = pl.filter((x) => x.exec === 'passou' || x.exec === 'falhou').length, fal = pl.filter((x) => x.exec === 'falhou').length, bugs = pl.filter((x) => x.bug).length;
+        const pl = d.planos[c.id] || [], ex = pl.filter((x) => x.exec === 'passou' || x.exec === 'falhou').length, fal = pl.filter((x) => x.exec === 'falhou' || (_c('falha') && x.jaFalhou)).length, bugs = pl.filter((x) => x.bug).length;
         const linha = (n, l, cor) => `<div class="rs-l"><span>${l}</span><b${cor ? ` style="color:${cor}"` : ''}>${n}</b></div>`;
         const pessoa = (p, papel) => `<div class="rs-p">${avatar(p)}<div><b>${PESSOAS[p].nome}</b><span>${papel}</span></div></div>`;
         A.innerHTML = `<div class="det"><div class="det-e">${A.innerHTML}</div><aside class="rs" data-test="resumo-card">
@@ -731,8 +734,8 @@ function montaPlano(A, card) {
     $('#xres').hidden = !tot;
     $('#xres').innerHTML = `<div class="xtop"><span class="xt">Execução</span><span class="xn"><b>${ok + nok}</b> de ${tot} executados</span></div><div class="xb"><i style="width:${tot ? ok / tot * 100 : 0}%"></i><i class="f" style="width:${tot ? nok / tot * 100 : 0}%"></i></div><div class="xleg"><span class="xp"><i></i>${ok} passou</span><span class="xf"><i></i>${nok} falhou</span><span class="xz"><i></i>${tot - ok - nok} a executar</span></div>`;
     if ($('#n-plano')) $('#n-plano').textContent = lista.length || '';
-    $$('[data-test=execucao]').forEach((s) => { s.onchange = () => { lista[+s.dataset.i].exec = s.value; salvar(); pinta(); }; });
-    $$('[data-x]').forEach((b) => { b.onclick = () => { const c = lista[+b.dataset.x]; c.exec = c.exec === b.dataset.v ? 'nao' : b.dataset.v; salvar(); pinta(); }; });
+    $$('[data-test=execucao]').forEach((s) => { s.onchange = () => { lista[+s.dataset.i].exec = s.value; if (s.value === 'falhou') lista[+s.dataset.i].jaFalhou = true; salvar(); pinta(); }; });
+    $$('[data-x]').forEach((b) => { b.onclick = () => { const c = lista[+b.dataset.x]; c.exec = c.exec === b.dataset.v ? 'nao' : b.dataset.v; if (c.exec === 'falhou') c.jaFalhou = true; salvar(); pinta(); }; });
     $$('[data-ev]').forEach((f) => { f.onchange = () => { const x = f.files[0]; if (!x) return; lista[+f.dataset.ev].evid = x.name; salvar(); pinta(); toast('Evidência anexada ao cenário ' + (+f.dataset.ev + 1)); }; });
     $$('[data-bug]').forEach((b) => { b.onclick = () => { const i = +b.dataset.bug; novaTarefa(() => pinta(), { card: card.id, i, n: i + 1, nome: lista[i].nome }); }; });
     $$('[data-ed]').forEach((b) => { b.onclick = () => edita(+b.dataset.ed); });
@@ -754,7 +757,7 @@ function montaPlano(A, card) {
     if (!esp) { erroCampo('cEsp', 'Escreva o resultado esperado'); ok = false; }
     if (!ok) return;
     const c = { nome, tipo: $('#cTipo').value, passos: $('#cPassos').value.trim(), esperado: esp, regras: $$('[data-test=cenario-regra]').filter((k) => k.checked).map((k) => +k.value), exec: 'nao' };
-    if (editando !== null) { c.exec = lista[editando].exec; lista[editando] = c; toast('Cenário salvo'); } else { lista.push(c); toast('Cenário adicionado'); }
+    if (editando !== null) { c.exec = lista[editando].exec; if (lista[editando].bug && !_c('edita')) c.bug = lista[editando].bug; if (lista[editando].jaFalhou) c.jaFalhou = true; lista[editando] = c; toast('Cenário salvo'); } else { lista.push(c); toast('Cenário adicionado'); }
     salvar(); limpa(); pinta();
   };
   $('#cancela').hidden = !lista.length;
@@ -899,7 +902,7 @@ PAGINAS.caca = () => {
   const c = contas()[sessao()], mes = new Date().toLocaleDateString('pt-BR', { month: 'long' });
   const aberta = !!CACA_API;
   const meus = LS.get('fd:caca-envios', []);
-  casca('caca', `<section class="caca-hero"><div class="ch-t"><div class="ch-k"><span>TEMPORADA DE ${mes.toUpperCase()}</span><b class="${aberta ? 'ab' : ''}">${aberta ? 'ABERTA' : 'EM BREVE'}</b>${aberta ? '<i>termina no fim do mês ou quando os 3 forem achados</i>' : ''}</div>
+  casca('caca', `<section class="caca-hero"><div class="ch-t"><div class="ch-k"><span id="tNum">TEMPORADA 1 DE 3</span><b class="${aberta ? 'ab' : ''}">${aberta ? 'ABERTA' : 'EM BREVE'}</b>${aberta ? '<i id="tFim">quando os 3 forem achados, a próxima temporada abre sozinha</i>' : ''}</div>
       <h1 data-test="titulo-pagina">3 bugs escondidos no FlowDesk.</h1><p>Quem achar e reportar primeiro ganha o <b>Vida de QA 2</b> de graça quando lançar. Preste atenção nas aulas.</p></div>
       <video src="img/anim/vinicius_lupa_v2.webm?v=1794358760" poster="img/anim/vinicius_lupa_v2.png?v=1794358760" autoplay muted loop playsinline aria-label="Vinícius com uma lupa procurando bugs"></video></section>
     <div class="caca-bugs" id="placar">${[1, 2, 3].map((n) => `<article class="cb"><div class="cb-h"><span>#${n}</span><b>LIVRE</b></div><div class="cb-v">Ninguém achou ainda.</div></article>`).join('')}</div>
@@ -915,11 +918,16 @@ PAGINAS.caca = () => {
       ${meus.length ? `<div class="meus"><h3>Seus envios</h3>${meus.map((e) => `<div class="me" data-recibo="${e.id}"><span>Bug #${e.bug}</span><span>${dataHora(e.quando)}</span><span>recibo <b>${e.id.slice(-8)}</b></span><span class="est">conferindo…</span></div>`).join('')}</div>` : ''}</section>
       <aside class="caca-lado"><section class="painel"><h2>Como funciona</h2><ol class="passos-c"><li>Teste o FlowDesk como no curso. Os bugs estão em telas que você já conhece.</li><li>Achou? Reporte aqui com passos, esperado, obtido e evidência.</li><li>Seu envio entra na linha do tempo na hora, com um recibo. Todo mundo vê quem mandou primeiro.</li><li>O professor confere. Aprovado, seu nome entra no placar.</li><li>Ganhou? Aparece um código de vitória aqui. Mande ele por mensagem pro professor na Udemy e receba o cupom do Vida de QA 2.</li></ol></section>
         ${fala('vinicius', 'VINÍCIUS', 'Report sem evidência eu recuso. É o que acontece no trabalho também.')}
+        <section class="painel" id="hallBox" hidden><h2>Hall dos caçadores</h2><div id="hall"></div></section>
         <section class="painel"><h2>Linha do tempo</h2><p class="dica">Todo envio aparece aqui na hora em que chega, em ordem.</p><div id="linha" class="linha-t" data-test="caca-linha"><p class="dica">${aberta ? 'Carregando…' : 'Nenhum envio ainda.'}</p></div></section></aside></div>`);
   let qual = 0;
   $$('[data-qual]').forEach((b) => { b.onclick = () => { if (b.disabled) return; qual = +b.dataset.qual; $$('[data-qual]').forEach((x) => x.classList.toggle('on', x === b)); }; });
   const pinta = (p) => {
-    LS.set('fd:placar', { bugs: p.bugs });
+    LS.set('fd:placar', { bugs: p.bugs, temporada: p.temporada, encerrada: p.encerrada });
+    $('#tNum').textContent = p.encerrada ? 'CAÇA ENCERRADA' : `TEMPORADA ${p.temporada} DE ${p.total || 3}`;
+    if (p.encerrada) { $('.caca-hero h1').textContent = 'A caça terminou.'; $('.caca-hero p').innerHTML = 'Foram 3 temporadas e 9 caçadores. Os nomes ficam aqui pra sempre.'; if ($('#tFim')) $('#tFim').remove(); $$('#fc input, #fc textarea, #fc button').forEach((x) => { x.disabled = true; }); }
+    const passadas = (p.hall || []).filter((h) => h.bugs.some((b) => b.ganhador));
+    if (passadas.length) { $('#hallBox').hidden = false; $('#hall').innerHTML = passadas.map((h) => `<div class="hall-t"><b>Temporada ${h.temporada}</b>${h.bugs.map((b) => `<span class="${b.ganhador ? 'on' : ''}">#${b.n} ${b.ganhador ? esc(b.ganhador) : 'livre'}</span>`).join('')}</div>`).join(''); }
     $('#placar').innerHTML = p.bugs.map((b) => b.ganhador ? `<article class="cb on"><div class="cb-h"><span>#${b.n}</span><b>ENCONTRADO</b></div><div class="cb-g"><span class="ini">${esc(iniciais(b.ganhador))}</span><div><b>${esc(b.ganhador)}</b><small>achou em ${dataHora(b.quando)}</small></div></div></article>` : `<article class="cb"><div class="cb-h"><span>#${b.n}</span><b>LIVRE</b></div><div class="cb-v">Ninguém achou ainda.</div></article>`).join('');
     p.bugs.forEach((b) => { const x = $(`[data-qual="${b.n}"]`); if (b.ganhador && x) { x.disabled = true; x.textContent = `#${b.n} achado`; } });
     const est = { pendente: 'conferindo', aprovado: 'aprovado', recusado: 'recusado' };
