@@ -883,3 +883,8 @@ h1,h2,h3,.topo h2{font-family:var(--tit)}
 .hall-t b{width:100%;font-size:13px;color:var(--ouro);letter-spacing:.5px}
 .hall-t span{font-size:13px;font-weight:700;border-radius:10px;padding:5px 10px;border:1px dashed #5a4a1f;color:#c9b98a}
 .hall-t span.on{background:var(--ouro);border:0;color:#1a1405}
+/* desfile: movimento na GPU (sem travar) */
+@keyframes anda2{0%{transform:translate3d(-340px,0,0)}100%{transform:translate3d(calc(100vw + 40px),0,0)}}
+.desfile .anda{left:0;animation:anda2 38s linear infinite;will-change:transform}
+.desfile video{pointer-events:none}
+@media (prefers-reduced-motion:reduce){.desfile .anda{animation:none;transform:none}}
