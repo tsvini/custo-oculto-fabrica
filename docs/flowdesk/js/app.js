@@ -18,7 +18,9 @@ const contas = () => LS.get('fd:contas', {});
 const sessao = () => LS.get('fd:sessao', null);
 const chaveDados = () => 'fd:dados:' + sessao();
 let D = null;
-const dados = () => D || (D = LS.get(chaveDados(), null));
+// versões novas do site completam o que faltar nos dados antigos, sem apagar nada do aluno
+const migra = (d) => { if (!d) return d; const base = semente(); for (const k of Object.keys(base)) if (d[k] === undefined) d[k] = base[k]; for (const k of Object.keys(base.chat || {})) if (d.chat && !d.chat[k]) d.chat[k] = base.chat[k]; return d; };
+const dados = () => D || (D = migra(LS.get(chaveDados(), null)));
 const salvar = () => LS.set(chaveDados(), D);
 const VERSAO = qs.get('versao') ? (qs.get('versao') === '15' ? 15 : 14) : (((LS.get(chaveDados(), null) || {}).conquistas || []).includes('ep08') ? 15 : 14);
 // bugs plantados por versão
