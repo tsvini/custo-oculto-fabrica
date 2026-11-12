@@ -176,7 +176,7 @@ const usaApi = () => VERSAO >= 17 && 'serviceWorker' in navigator && /^https?:/.
 let _swPronto = null;
 function swPronto() {
   if (!_swPronto) _swPronto = (async () => {
-    await navigator.serviceWorker.register('sw.js?v=1794507760');
+    await navigator.serviceWorker.register('sw.js?v=1794508424');
     if (navigator.serviceWorker.controller) return true;
     await new Promise((r) => { navigator.serviceWorker.addEventListener('controllerchange', r, { once: true }); setTimeout(r, 4000); });
     return !!navigator.serviceWorker.controller;
@@ -475,7 +475,7 @@ const chatLiberado = (d = dados()) => (d.conquistas || []).includes('ep03');
 
 // ---------- layout ----------
 const avatar = (p) => p === 'voce' ? '<span class="vc">VC</span>' : `<img class="av" src="img/av_${p}.png" alt="">`;
-const LOGO = '<span class="logo-anim" aria-hidden="true"><img src="img/anim/logo_part1.png?v=1794507760" alt=""><img class="sobe" src="img/anim/logo_part0.png?v=1794507760" alt=""></span>';
+const LOGO = '<span class="logo-anim" aria-hidden="true"><img src="img/anim/logo_part1.png?v=1794508424" alt=""><img class="sobe" src="img/anim/logo_part0.png?v=1794508424" alt=""></span>';
 const MARCA = `<span class="marca">${LOGO}FlowDesk</span>`;
 const pillVersao = () => `<span class="versao" data-test="versao-sistema"><b>Sprint ${VERSAO}</b> · homologação</span>`;
 const SVG = (p, c = '') => `<svg class="${c}" viewBox="0 0 24 24" aria-hidden="true">${p}</svg>`;
@@ -554,7 +554,7 @@ PAGINAS.login = () => {
   document.body.innerHTML = `<div class="tela-login">
     <section class="lg-time"><div class="lg-marca">${LOGO}<span>FlowDesk</span></div>
       <div class="lg-tit"><h1>Seu primeiro dia como QA começa aqui.</h1><div class="lg-trilha"><span class="on">Estagiário</span>${seta}<span>Júnior</span>${seta}<span class="fut">Pleno</span></div></div>
-      <div class="lg-palco"><div class="lg-luz" aria-hidden="true"></div><video src="img/anim/time_acena.webm?v=1794507760" poster="img/anim/time_acena.png?v=1794507760" autoplay muted loop playsinline aria-label="O time do FlowDesk acenando: Rafael, Gabriela, Vinícius, Lucas e Beatriz"></video></div></section>
+      <div class="lg-palco"><div class="lg-luz" aria-hidden="true"></div><video src="img/anim/time_acena.webm?v=1794508424" poster="img/anim/time_acena.png?v=1794508424" autoplay muted loop playsinline aria-label="O time do FlowDesk acenando: Rafael, Gabriela, Vinícius, Lucas e Beatriz"></video></div></section>
     <section class="lg-form"><div class="login">
     <form id="fEntrar" novalidate><span class="lg-chip">SPRINT ${VERSAO} · HOMOLOGAÇÃO</span><h1>Bem-vindo de volta</h1><p class="sub">O time já está te esperando. Use dados de mentira: fica tudo salvo só neste navegador.</p>
       <div class="campo"><label for="email">E-mail</label><input class="in" id="email" type="email" data-test="login-email" autocomplete="username" placeholder="voce@empresa.com"></div>
@@ -805,7 +805,7 @@ PAGINAS.quadro = () => {
       <div class="h"><h3>${n}</h3><span class="cnt" data-test="contagem-${k}"></span>${k === 'afazer' ? '<button class="mais" data-test="nova-tarefa" title="Nova tarefa" aria-label="Nova tarefa">+</button>' : ''}</div>
       <div class="cards"></div>${k === 'afazer' ? '<button class="add-tarefa" data-test="adicionar-tarefa">+ Adicionar tarefa</button>' : ''}</section>`).join('')}</div>
     <p class="dica" style="margin-top:12px">Você move os seus cards arrastando, ou pelo próprio card. Os cards dos outros ficam com eles.</p>
-    <div class="desfile" aria-hidden="true"><div class="chao"></div>${anda.map(([v, atraso, cls]) => `<div class="anda ${cls}" style="animation-delay:${atraso}s"><video src="img/anim/${v}.webm?v=1794507760" poster="img/anim/${v}.png?v=1794507760" autoplay muted loop playsinline></video></div>`).join('')}</div>`);
+    <div class="desfile" aria-hidden="true"><div class="chao"></div>${anda.map(([v, atraso, cls]) => `<div class="anda ${cls}" style="animation-delay:${atraso}s"><video src="img/anim/${v}.webm?v=1794508424" poster="img/anim/${v}.png?v=1794508424" autoplay muted loop playsinline></video></div>`).join('')}</div>`);
   const pinta = () => {
     COLUNAS.forEach(([k]) => {
       const l = dados().cards.filter((c) => c.coluna === k), col = $(`[data-col=${k}]`);
@@ -986,7 +986,7 @@ function montaGherkin(A, card, contagens) {
           <textarea id="gk" data-test="editor-gherkin" spellcheck="false" autocomplete="off" autocapitalize="off" aria-label="Arquivo ${arq}"></textarea></div></div></div>
       <p class="dica" style="margin-top:10px">Dica: <b>Tab</b> faz o recuo. O FlowDesk salva enquanto você escreve.</p>
     </div>
-    <aside><div class="rafa"><div class="rafa-b"><div class="bk">RAFAEL · PO</div><div class="bt">Escreve do jeito que eu leio: <b>Dado</b> o contexto, <b>Quando</b> a ação, <b>Então</b> o que eu vejo.</div></div><video src="img/anim/rafael_fala.webm?v=1794507760" poster="img/anim/rafael_fala.png?v=1794507760" autoplay muted loop playsinline aria-hidden="true"></video></div><div class="cov" id="gkRev" data-test="revisao-gherkin"></div></aside></div>`;
+    <aside><div class="rafa"><div class="rafa-b"><div class="bk">RAFAEL · PO</div><div class="bt">Escreve do jeito que eu leio: <b>Dado</b> o contexto, <b>Quando</b> a ação, <b>Então</b> o que eu vejo.</div></div><video src="img/anim/rafael_fala.webm?v=1794508424" poster="img/anim/rafael_fala.png?v=1794508424" autoplay muted loop playsinline aria-hidden="true"></video></div><div class="cov" id="gkRev" data-test="revisao-gherkin"></div></aside></div>`;
   const ta = $('#gk'), cor = $('#gkCor'), nums = $('#gkNums');
   ta.value = gherkinDe(dados(), card.id);
   const atualiza = () => {
@@ -1078,7 +1078,7 @@ function montaPlano(A, card) {
         <div class="fbtns"><button type="button" class="btn sec" id="cancela" hidden data-test="cancelar-edicao">Cancelar</button><button class="btn" data-test="salvar-cenario" id="salva">Adicionar cenário</button></div>
       </form></div>
       <aside><div class="cov" id="cov" data-test="cobertura"><div class="hd">Cobertura das regras<span class="cnt" id="cnt" data-test="cobertura-contagem">0/${REGRAS.length}</span></div><div class="bar"><i id="bar"></i></div>
-        ${REGRAS.map((r, i) => `<div class="rl" id="u${i}" data-test="regra"><b>✓</b>${r}<span class="q" id="q${i}" hidden></span></div>`).join('')}<div class="ex" id="ex" hidden></div><div class="gabi-b" id="gabiB" data-test="recado-gabriela"><b>GABRIELA · DEV</b><span id="gabiT"></span></div><div class="gabi" aria-hidden="true"><video src="img/anim/gabriela_quadro.webm?v=1794507760" poster="img/anim/gabriela_quadro.png?v=1794507760" autoplay muted loop playsinline></video></div></div></aside></div>`;
+        ${REGRAS.map((r, i) => `<div class="rl" id="u${i}" data-test="regra"><b>✓</b>${r}<span class="q" id="q${i}" hidden></span></div>`).join('')}<div class="ex" id="ex" hidden></div><div class="gabi-b" id="gabiB" data-test="recado-gabriela"><b>GABRIELA · DEV</b><span id="gabiT"></span></div><div class="gabi" aria-hidden="true"><video src="img/anim/gabriela_quadro.webm?v=1794508424" poster="img/anim/gabriela_quadro.png?v=1794508424" autoplay muted loop playsinline></video></div></div></aside></div>`;
   let editando = null; const abertos = new Set();
   d.rodadas = d.rodadas || {};
   const rod = () => d.rodadas[id] || null;
@@ -1262,41 +1262,58 @@ PAGINAS.chat = () => {
 // ---------- cartão de efetivação (pra postar no LinkedIn) ----------
 // a foto fica só no navegador do aluno (localStorage); o PNG é montado aqui mesmo, sem servidor
 const execDe = (d) => Object.values(d.planos || {}).flat().filter((c) => c && c.exec && c.exec !== 'nao').length;
+// dois cartões: efetivação (júnior, Desafio 1) e promoção (pleno, Desafio 2)
+const CARTOES = {
+  junior: { conq: 'd1', desafio: 'desafio', quando: 'efetivadoEm', cargo: 'QA JÚNIOR', nivel: 'QA júnior', k: 'EFETIVAÇÃO', verbo: (a) => (a ? 'efetivada' : 'efetivado'),
+    quem: ['av_beatriz', 'BEATRIZ · PM DO FLOWDESK'], fala: (a) => `Passou no desafio e achou o que ninguém tinha visto. ${a ? 'Bem-vinda' : 'Bem-vindo'} ao time, de verdade.`,
+    trilha: ['ok', 'now', ''], prox: 'pleno', bloq: ['Disponível depois do Desafio 1', 'Passe no desafio final do módulo 3 pra ser efetivado e liberar o seu cartão.'] },
+  pleno: { conq: 'd2', desafio: 'desafio2', quando: 'promovidoEm', cargo: 'QA PLENO', nivel: 'QA pleno', k: 'PROMOÇÃO', verbo: (a) => (a ? 'promovida' : 'promovido'),
+    quem: ['av_lucas', 'LUCAS · TECH LEAD DO FLOWDESK'], fala: () => 'Agora é você que puxa as decisões de qualidade do time. Promoção merecida.',
+    trilha: ['ok', 'ok', 'now'], prox: 'sênior, no Vida de QA 2', bloq: ['Disponível depois do Desafio 2', 'Passe no desafio de pleno pra ser promovido e liberar o seu cartão.'] },
+};
 PAGINAS.efetivacao = () => {
-  const d = dados(), c = contas()[sessao()] || { nome: '' };
-  if (!(d.conquistas || []).includes('d1')) {
-    casca('efetivacao', topo('Cartão de efetivação', 'Seu crachá de QA júnior') + `<div class="vazio" data-test="cartao-bloqueado">${ico('cadeado')}<b>Disponível depois do Desafio 1</b><span>Passe no desafio final do módulo 3 pra ser efetivado e liberar o seu cartão.</span></div>`);
+  const d = dados(), c = contas()[sessao()] || { nome: '' }, conq = d.conquistas || [];
+  const tem = Object.keys(CARTOES).filter((k) => conq.includes(CARTOES[k].conq));
+  const pedido = qs.get('nivel');
+  const nv = tem.includes(pedido) ? pedido : tem[tem.length - 1];
+  if (!nv) {
+    const b = CARTOES.junior.bloq;
+    casca('efetivacao', topo('Cartão de efetivação', 'Seu crachá de QA') + `<div class="vazio" data-test="cartao-bloqueado">${ico('cadeado')}<b>${b[0]}</b><span>${b[1]}</span></div>`);
     return;
   }
+  const C = CARTOES[nv];
   const cfg = d.cartao || (d.cartao = { nome: c.nome || 'Você', gen: 'o', zoom: 1, x: 50, y: 50 });
-  const iniciais = () => esc((cfg.nome || 'VC').split(' ').filter(Boolean).map((x) => x[0]).slice(0, 2).join('').toUpperCase());
-  const db = (d.desafio || {}).bugsAchados;
-  const st3 = db != null ? [`${db}/3`, 'bugs no desafio final'] : [(d.conquistas || []).length, 'conquistas'];
-  const quando = d.efetivadoEm ? new Date(d.efetivadoEm) : new Date();
-  const data = quando.toLocaleDateString('pt-BR');
+  cfg.txt = cfg.txt || {}; cfg.txtEditado = cfg.txtEditado || {};
+  if (typeof cfg.txt === 'string') cfg.txt = {};  // formato antigo
+  const db = (d[C.desafio] || {}).bugsAchados;
+  const st3 = db != null ? [`${db}/3`, 'bugs no desafio final'] : [conq.length, 'conquistas'];
+  const data = (d[C.quando] ? new Date(d[C.quando]) : new Date()).toLocaleDateString('pt-BR');
   const id = String(Math.abs([...(sessao() || 'x')].reduce((h, ch) => (h * 31 + ch.charCodeAt(0)) | 0, 7)) % 9000 + 1000);
-  casca('efetivacao', topo('Cartão de efetivação', 'Seu crachá novo. Baixe e poste no LinkedIn.') + `
+  const tr = (i, nome) => `<div class="e-n ${C.trilha[i] === 'ok' ? 'e-ok' : C.trilha[i] === 'now' ? 'e-now' : ''}"><i>${C.trilha[i] ? '✓' : ''}</i>${nome}</div>`;
+  const abas = tem.length > 1 ? `<div class="efc-gen efc-abas">${tem.map((k) => `<a href="efetivacao.html?nivel=${k}" class="${k === nv ? 'on' : ''}" data-test="cartao-aba-${k}">${CARTOES[k].nivel}</a>`).join('')}</div>` : '';
+  casca('efetivacao', topo(nv === 'pleno' ? 'Cartão de promoção' : 'Cartão de efetivação', 'Seu crachá novo. Baixe e poste no LinkedIn.') + `
   <div class="efc-ed">
-    <div class="efc-prev"><div class="efc-wrap"><div class="efc" id="efc" data-test="cartao">
+    <div class="efc-prev"><div class="efc-wrap"><div class="efc ${nv === 'pleno' ? 'efc-pleno' : ''}" id="efc" data-test="cartao">
       <div class="e-bg"></div><div class="e-dots"></div>
       <i class="e-sp" style="left:38px;top:96px"></i><i class="e-sp" style="left:392px;top:150px;transform:scale(.7)"></i><i class="e-sp" style="left:30px;top:470px;transform:scale(.55)"></i><i class="e-sp" style="left:386px;top:500px;transform:scale(.9)"></i>
       <div class="e-lan"><span>FLOWDESK · FLOWDESK · FLOWDESK</span></div><div class="e-lan2"></div>
       <div class="e-badge"><div class="e-hd"><div class="e-slot"></div><div class="e-top"><img src="img/icon.png" alt=""><b>FlowDesk</b></div><div class="e-id">ID ${id}</div></div>
         <div class="e-foto" id="efFoto" data-test="cartao-foto"><span id="efIni"></span></div>
-        <div class="e-nm" id="efNome" data-test="cartao-nome"></div><div class="e-cg">QA JÚNIOR</div>
-        <div class="e-meta"><div>TIME<b>Produto</b></div><div style="text-align:right"><span id="efEfet">EFETIVADO</span> EM<b>${data}</b></div></div>
+        <div class="e-nm" id="efNome" data-test="cartao-nome"></div><div class="e-cg" data-test="cartao-cargo">${C.cargo}</div>
+        <div class="e-meta"><div>TIME<b>Produto</b></div><div style="text-align:right"><span id="efEfet"></span> EM<b>${data}</b></div></div>
         <div class="e-bar"></div><div class="e-holo"><i></i></div><div class="e-shine"></div></div>
       <div class="e-clip"></div>
-      <div class="e-r"><div class="e-k"><i></i>EFETIVAÇÃO</div>
-        <h1>Fui <span id="efFui">efetivado</span><br><em>QA júnior</em></h1>
-        <div class="e-q"><img src="img/av_beatriz.png" alt=""><p><b>BEATRIZ · PM DO FLOWDESK</b>Passou no desafio e achou o que ninguém tinha visto. <span id="efBem">Bem-vindo</span> ao time, de verdade.</p></div>
+      <div class="e-r"><div class="e-k"><i></i>${C.k}</div>
+        <h1>Fui <span id="efFui"></span><br><em>${C.nivel}</em></h1>
+        <div class="e-q"><img src="img/${C.quem[0]}.png" alt=""><p><b>${C.quem[1]}</b><span id="efFala"></span></p></div>
         <div class="e-st"><div><b data-test="cartao-bugs">${bugsDe(d).length}</b><span>bugs reportados</span></div><div><b>${execDe(d)}</b><span>cenários executados</span></div><div><b>${st3[0]}</b><span>${st3[1]}</span></div></div></div>
-      <div class="e-tr"><div class="e-n e-ok"><i>✓</i>Estagiário</div><div class="e-l e-ok"></div><div class="e-n e-now"><i>✓</i>Júnior</div><div class="e-l"></div><div class="e-n"><i></i>Pleno</div></div>
+      <div class="e-tr">${tr(0, 'Estagiário')}<div class="e-l ${C.trilha[1] ? 'e-ok' : ''}"></div>${tr(1, 'Júnior')}<div class="e-l ${C.trilha[2] ? 'e-ok' : ''}"></div>${tr(2, 'Pleno')}</div>
       <div class="e-sig"><div class="e-av"><img src="img/av_rafael.png" alt=""><img src="img/av_gabriela.png" alt=""><img src="img/av_lucas.png" alt=""><img src="img/av_beatriz.png" alt=""></div>assinado pelo time · curso <b>Vida de QA</b></div>
     </div></div></div>
-    <div class="efc-ctl">
-      <label class="campo"><span>Nome no crachá</span><input data-test="cartao-input-nome" class="in" id="efInNome" maxlength="26" value="${esc(cfg.nome)}"></label>
-      <div class="campo"><span>Como você quer aparecer</span><div class="efc-gen"><button data-g="o" data-test="cartao-efetivado">Efetivado</button><button data-g="a" data-test="cartao-efetivada">Efetivada</button></div></div>
+    <div class="efc-ctl">${abas}
+      <label class="campo"><span>Nome no crachá</span><input class="in" id="efInNome" maxlength="26" value="${esc(cfg.nome)}" data-test="cartao-input-nome" ${cfg.nomeTravado ? 'disabled' : ''}>
+        <small id="efTrava">${cfg.nomeTravado ? 'O nome fica fixo depois do primeiro download, igual a um crachá de verdade.' : 'Confira bem: depois do primeiro download o nome fica fixo.'}</small></label>
+      <div class="campo"><span>Como você quer aparecer</span><div class="efc-gen"><button data-g="o" data-test="cartao-efetivado">${C.verbo(false)[0].toUpperCase() + C.verbo(false).slice(1)}</button><button data-g="a" data-test="cartao-efetivada">${C.verbo(true)[0].toUpperCase() + C.verbo(true).slice(1)}</button></div></div>
       <div class="campo"><span>Sua foto</span><label class="btn sec efc-up">Escolher foto<input type="file" accept="image/*" id="efArq" data-test="cartao-arquivo" hidden></label>
         <div class="efc-zoom" id="efZoomBox"><span>Zoom</span><input type="range" id="efZoom" min="1" max="3" step="0.01" value="${cfg.zoom}"><button class="lnk" id="efTira">Tirar foto</button></div>
         <small>Arraste a foto no crachá pra enquadrar. Ela fica só no seu navegador.</small></div>
@@ -1309,29 +1326,29 @@ PAGINAS.efetivacao = () => {
     </div>
   </div>`);
   const foto = $('#efFoto');
+  const textoPost = (a) => {
+    const nb = bugsDe(d).length, ne = execDe(d);
+    const abre = nv === 'pleno' ? `${a ? 'fui promovida' : 'fui promovido'} a QA pleno no FlowDesk 🎉` : `${a ? 'fui efetivada' : 'fui efetivado'} como QA júnior no FlowDesk 🎉`;
+    return `${abre}\n\nforam ${nb} bugs reportados, ${ne} cenários executados${db != null ? ` e um desafio final em que achei ${db} de 3 bugs escondidos` : ' e um desafio final sem ninguém me guiando'}\n\n`
+      + `o FlowDesk é o sistema de prática do curso Vida de QA, do Vinícius Torales. lá a gente trabalha como QA de verdade: lê o card, conversa com o time, testa e reporta bug com evidência\n\n`
+      + `próximo passo: ${C.prox}\n\n` + (CURSO_URL ? `${CURSO_URL}\n\n` : '') + '#QA #testedesoftware #carreiraemtecnologia';
+  };
+  const linka = () => { $('#efLinkedin').href = 'https://www.linkedin.com/feed/?shareActive=true&text=' + encodeURIComponent($('#efTxt').value); };
   const pinta = () => {
-    const a = cfg.gen === 'a';
+    const a = cfg.gen === 'a', v = C.verbo(a);
     $('#efNome').textContent = cfg.nome || 'Você'; $('#efIni').textContent = cfg.foto ? '' : (cfg.nome || 'VC').split(' ').filter(Boolean).map((x) => x[0]).slice(0, 2).join('').toUpperCase();
-    $('#efFui').textContent = a ? 'efetivada' : 'efetivado'; $('#efEfet').textContent = a ? 'EFETIVADA' : 'EFETIVADO'; $('#efBem').textContent = a ? 'Bem-vinda' : 'Bem-vindo';
+    $('#efFui').textContent = v; $('#efEfet').textContent = v.toUpperCase(); $('#efFala').textContent = C.fala(a);
     $$('.efc-gen button').forEach((b) => b.classList.toggle('on', b.dataset.g === cfg.gen));
     foto.style.backgroundImage = cfg.foto ? `url(${cfg.foto})` : ''; foto.style.backgroundSize = (cfg.zoom * 100) + '%'; foto.style.backgroundPosition = `${cfg.x}% ${cfg.y}%`;
     $('#efZoomBox').style.display = cfg.foto ? '' : 'none';
-    if (!cfg.txtEditado) $('#efTxt').value = textoPost(a);
-    $('#efLinkedin').href = 'https://www.linkedin.com/feed/?shareActive=true&text=' + encodeURIComponent($('#efTxt').value);
+    if (!cfg.txtEditado[nv]) $('#efTxt').value = textoPost(a);
+    linka();
   };
-  const textoPost = (a) => {
-    const nb = bugsDe(d).length, ne = execDe(d), db2 = (d.desafio || {}).bugsAchados;
-    return `${a ? 'fui efetivada' : 'fui efetivado'} como QA júnior no FlowDesk 🎉\n\n`
-      + `foram ${nb} bugs reportados, ${ne} cenários executados${db2 != null ? ` e um desafio final em que achei ${db2} de 3 bugs escondidos` : ' e um desafio final sem ninguém me guiando'}\n\n`
-      + `o FlowDesk é o sistema de prática do curso Vida de QA, do Vinícius Torales. lá a gente trabalha como QA de verdade: lê o card, conversa com o time, testa e reporta bug com evidência\n\n`
-      + `próximo passo: pleno\n\n`
-      + (CURSO_URL ? `${CURSO_URL}\n\n` : '') + '#QA #testedesoftware #carreiraemtecnologia';
-  };
-  if (cfg.txt) $('#efTxt').value = cfg.txt;
-  $('#efTxt').oninput = (e) => { cfg.txt = e.target.value; cfg.txtEditado = true; salvar(); $('#efLinkedin').href = 'https://www.linkedin.com/feed/?shareActive=true&text=' + encodeURIComponent(cfg.txt); };
-  $('#efCopiar').onclick = async () => { try { await navigator.clipboard.writeText($('#efTxt').value); toast('Texto copiado'); } catch (e) { $('#efTxt').select(); document.execCommand('copy'); toast('Texto copiado'); } };
+  if (cfg.txt[nv]) $('#efTxt').value = cfg.txt[nv];
+  $('#efTxt').oninput = (e) => { cfg.txt[nv] = e.target.value; cfg.txtEditado[nv] = true; salvar(); linka(); };
+  $('#efCopiar').onclick = async () => { try { await navigator.clipboard.writeText($('#efTxt').value); } catch (e) { $('#efTxt').select(); document.execCommand('copy'); } toast('Texto copiado'); };
   const guarda = () => { salvar(); pinta(); };
-  $('#efInNome').oninput = (e) => { cfg.nome = e.target.value; guarda(); };
+  $('#efInNome').oninput = (e) => { if (cfg.nomeTravado) return; cfg.nome = e.target.value; guarda(); };
   $$('.efc-gen button').forEach((b) => (b.onclick = () => { cfg.gen = b.dataset.g; guarda(); }));
   $('#efZoom').oninput = (e) => { cfg.zoom = +e.target.value; guarda(); };
   $('#efTira').onclick = () => { delete cfg.foto; cfg.zoom = 1; cfg.x = 50; cfg.y = 50; $('#efZoom').value = 1; guarda(); };
@@ -1358,7 +1375,8 @@ PAGINAS.efetivacao = () => {
       if (!window.htmlToImage) await new Promise((ok, erro) => { const sc = document.createElement('script'); sc.src = 'js/vendor/html-to-image.js'; sc.onload = ok; sc.onerror = erro; document.head.appendChild(sc); });
       await document.fonts.ready;
       const url = await window.htmlToImage.toPng($('#efc'), { pixelRatio: 2, width: 1200, height: 627, cacheBust: true });
-      const a = document.createElement('a'); a.href = url; a.download = 'efetivacao-flowdesk.png'; a.click();
+      const a = document.createElement('a'); a.href = url; a.download = `${nv === 'pleno' ? 'promocao' : 'efetivacao'}-flowdesk.png`; a.click();
+      if (!cfg.nomeTravado) { cfg.nomeTravado = true; salvar(); $('#efInNome').disabled = true; $('#efTrava').textContent = 'O nome fica fixo depois do primeiro download, igual a um crachá de verdade.'; }
       toast('Cartão baixado. Agora é só postar!');
     } catch (err) { toast('Não deu pra gerar a imagem. Tenta de novo.', true); }
     bt.disabled = false; bt.textContent = 'Baixar cartão (PNG)';
@@ -1419,7 +1437,7 @@ PAGINAS.caca = () => {
   const meus = LS.get('fd:caca-envios', []);
   casca('caca', `<section class="caca-hero"><div class="ch-t"><div class="ch-k"><span id="tNum">TEMPORADA 1 DE 3</span><b class="${aberta ? 'ab' : ''}">${aberta ? 'ABERTA' : 'EM BREVE'}</b>${aberta ? '<i id="tFim">quando os 3 forem achados, a próxima temporada abre sozinha</i>' : ''}</div>
       <h1 data-test="titulo-pagina">3 bugs escondidos no FlowDesk.</h1><p>Quem achar e reportar primeiro ganha o <b>Vida de QA 2</b> de graça quando lançar. Preste atenção nas aulas.</p></div>
-      <video src="img/anim/vinicius_lupa_v2.webm?v=1794507760" poster="img/anim/vinicius_lupa_v2.png?v=1794507760" autoplay muted loop playsinline aria-label="Vinícius com uma lupa procurando bugs"></video></section>
+      <video src="img/anim/vinicius_lupa_v2.webm?v=1794508424" poster="img/anim/vinicius_lupa_v2.png?v=1794508424" autoplay muted loop playsinline aria-label="Vinícius com uma lupa procurando bugs"></video></section>
     <div class="caca-bugs" id="placar">${[1, 2, 3].map((n) => `<article class="cb"><div class="cb-h"><span>#${n}</span><b>LIVRE</b></div><div class="cb-v">Ninguém achou ainda.</div></article>`).join('')}</div>
     <div class="caca-grade"><section class="painel caca-form"><h2>Reportar um bug da caça</h2><p class="dica">A confirmação é automática. Vale o primeiro report confirmado de cada bug.</p>
       <form id="fc" novalidate>${aberta ? '' : '<div class="aviso-caca" data-test="caca-fechada">A primeira temporada ainda não abriu. Quando abrir, este formulário passa a funcionar e o aviso sai daqui.</div>'}

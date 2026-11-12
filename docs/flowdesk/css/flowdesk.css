@@ -987,3 +987,16 @@ tr.fora-rod{opacity:.55}
 .efc .e-sig b{color:#c4b5fd}
 .efc-ctl label.efc-up{display:flex!important;align-items:center;justify-content:center;height:46px;padding:0 18px;line-height:1}
 .efc-txt{width:100%;resize:vertical;font:inherit;font-size:13.5px;line-height:1.45;padding:10px 12px;min-height:180px}
+.efc-abas{margin-bottom:4px}.efc-abas a{flex:1;text-align:center;padding:9px;border-radius:10px;border:1px solid #2b2d40;background:#151724;color:#c9cbda;font-weight:700;text-decoration:none}.efc-abas a.on{background:#2a1f55;border-color:#7c3aed;color:#fff}
+.efc-ctl input:disabled{opacity:.65;cursor:not-allowed}
+/* promoção a pleno: crachá verde-esmeralda */
+.efc-pleno .e-bg{background:radial-gradient(620px 520px at 22% 42%,rgba(16,185,129,.42),transparent 70%),radial-gradient(520px 380px at 100% 100%,rgba(124,58,237,.22),transparent 70%),linear-gradient(135deg,#0b1d1a,#08070e 65%)}
+.efc-pleno .e-hd{background:linear-gradient(120deg,#059669,#065f46)}
+.efc-pleno .e-lan{background:linear-gradient(90deg,#065f46,#10b981 50%,#065f46)}
+.efc-pleno .e-badge{border-color:rgba(110,231,183,.5);box-shadow:0 40px 80px rgba(0,0,0,.65),0 0 0 6px rgba(16,185,129,.10),0 0 70px rgba(16,185,129,.30);background:linear-gradient(165deg,#12302a 0%,#0e1f1c 50%,#0a1514)}
+.efc-pleno .e-foto{box-shadow:0 0 0 6px #0e1f1c,0 0 0 9px #6ee7b7,0 10px 30px rgba(0,0,0,.5)}
+.efc-pleno .e-cg{background:linear-gradient(90deg,#059669,#10b981);box-shadow:0 6px 18px rgba(16,185,129,.45)}
+.efc-pleno h1 em{background:linear-gradient(90deg,#a7f3d0,#34d399 45%,#c4b5fd);-webkit-background-clip:text;background-clip:text}
+.efc-pleno .e-k{color:#fde68a;background:rgba(245,158,11,.10);border-color:rgba(245,158,11,.45)}.efc-pleno .e-k i{background:#f59e0b;box-shadow:0 0 12px #f59e0b}
+.efc-pleno .e-q{border-left-color:#34d399;background:linear-gradient(90deg,rgba(16,185,129,.14),rgba(255,255,255,.02));border-color:rgba(110,231,183,.25)}
+.efc-pleno .e-st div{background:linear-gradient(180deg,rgba(16,185,129,.16),rgba(16,185,129,.04));border-color:rgba(110,231,183,.22)}
