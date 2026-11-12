@@ -1,11 +1,11 @@
 {
- "atualizado": "12/11/2026 00:21",
+ "atualizado": "12/11/2026 15:35",
  "fontes": {
   "custo_oculto": {
    "seguidores": 37,
-   "views_total": 10973,
-   "videos": 53,
-   "views_28d": 7021,
+   "views_total": 12155,
+   "videos": 54,
+   "views_28d": 7016,
    "views_7d": 2541,
    "seguidores_28d": 23,
    "dia": [
@@ -15,7 +15,7 @@
     ],
     [
      "2026-10-16",
-     52
+     50
     ],
     [
      "2026-10-17",
@@ -27,7 +27,7 @@
     ],
     [
      "2026-10-19",
-     20
+     18
     ],
     [
      "2026-10-20",
@@ -47,7 +47,7 @@
     ],
     [
      "2026-10-24",
-     78
+     77
     ],
     [
      "2026-10-25",
@@ -166,7 +166,7 @@
   },
   "vini_qa": {
    "seguidores": 0,
-   "views_total": 500,
+   "views_total": 508,
    "videos": 11,
    "views_28d": 494,
    "views_7d": 92,
@@ -318,11 +318,17 @@
   },
   "tiktok": {
    "usuario": "Custo Oculto",
-   "seguidores": 82,
-   "curtidas": 621,
-   "videos": 34,
-   "views_total": 8716,
+   "seguidores": 84,
+   "curtidas": 628,
+   "videos": 35,
+   "views_total": 8259,
    "top": [
+    {
+     "titulo": "Recusou o Google por 1 milhão. Recusou a Microsoft por 44 bilhões. Foi vendido por menos d",
+     "url": "https://www.tiktok.com/@custooculto/video/7707286754293746952?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
+     "views": 60,
+     "likes": 3
+    },
     {
      "titulo": "12 mil peças diferentes, kits que davam prejuízo e a falência batendo na porta. A saída fo",
      "url": "https://www.tiktok.com/@custooculto/video/7706915220291194119?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
@@ -338,8 +344,8 @@
     {
      "titulo": "Era para ser uma cola superforte. Saiu fraca. E virou um dos produtos mais usados em escri",
      "url": "https://www.tiktok.com/@custooculto/video/7706177181205941522?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 253,
-     "likes": 4
+     "views": 265,
+     "likes": 6
     },
     {
      "titulo": "Uma empresa brasileira registrou o nome iPhone 7 anos antes da Apple lançar o celular. E p",
@@ -352,12 +358,6 @@
      "url": "https://www.tiktok.com/@custooculto/video/7705428083452546312?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
      "views": 229,
      "likes": 1
-    },
-    {
-     "titulo": "Janelas, ícones e mouse. A Xerox criou tudo isso em 1973 e mostrou para a Apple.  🖱️ O Cus",
-     "url": "https://www.tiktok.com/@custooculto/video/7705047657332444422?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 545,
-     "likes": 34
     }
    ],
    "nome": "TikTok @custooculto"
