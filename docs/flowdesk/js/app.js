@@ -22,7 +22,8 @@ let D = null;
 const migra = (d) => { if (!d) return d; const base = semente(); for (const k of Object.keys(base)) if (d[k] === undefined) d[k] = base[k]; for (const k of Object.keys(base.chat || {})) if (d.chat && !d.chat[k]) d.chat[k] = base.chat[k]; return d; };
 const dados = () => { if (!D) { D = migra(LS.get(chaveDados(), null)); if (D) andaSprint(D); } return D; };
 const salvar = () => LS.set(chaveDados(), D);
-const _conq = (LS.get(chaveDados(), null) || {}).conquistas || [];
+// sem ninguém logado (tela de login), a versão é a mais nova que este navegador já viu
+const _conq = (LS.get(chaveDados(), null) || {}).conquistas || Object.keys(localStorage).filter((k) => k.startsWith('fd:dados:')).flatMap((k) => (LS.get(k, null) || {}).conquistas || []);
 const VERSAO = qs.get('versao') ? Math.min(17, Math.max(14, +qs.get('versao') || 14)) : (_conq.includes('ep14') ? 17 : _conq.includes('ep12') ? 16 : _conq.includes('ep08') ? 15 : 14);
 // bugs plantados por versão
 const BUG = {
@@ -163,6 +164,9 @@ function andaSprint(d, v = VERSAO, grava = true) {
     d.chat.suporte = d.chat.suporte || [];
     d.chat.suporte.push({ de: 'beatriz', tx: 'Encaminhando da Sandra, da Padaria Pão Quente: “Às vezes, quando eu abro um chamado, ele aparece duas vezes na lista. Não é sempre. Hoje foi duas vezes.”', quando: agora() });
     d.chat.releases.push({ de: 'lucas', tx: 'Release da Sprint 17 publicada em homologação: a busca e a criação de chamados agora passam pela API, e o novo chamado guarda rascunho.', quando: agora() });
+    // Sprint 17: depois de criar, a tela fica no formulário (pedido do suporte, que abre vários chamados seguidos)
+    const fd = d.cards.find((c) => c.id === 'FD-101'); if (fd && fd.criterios[4]) fd.criterios[4] = 'Depois de criar: mensagem de sucesso com o número do chamado, e o formulário limpo pro próximo';
+    d.chat['time-produto'].push({ de: 'rafael', tx: 'Mudança da Sprint 17, a pedido do suporte: depois de criar, a tela fica no formulário com a mensagem e o número do chamado. Quem abre vários seguidos não precisa voltar toda hora.', quando: agora() });
   }
   if (mudou && grava) LS.set(chaveDados(), d);
   return d;
@@ -191,6 +195,8 @@ if ('serviceWorker' in navigator) navigator.serviceWorker.addEventListener('mess
 if (usaApi()) swPronto();
 const RASCUNHO = 'fd:rascunho';
 // quem viu rascunho de outra conta (vale pra missão do EP20, em qualquer conta deste navegador)
+// o bug do rascunho pode ser reportado logado em qualquer conta (a sua ou a do Lucas): conta pra missão do mesmo jeito
+const bugsGlobais = (d) => [...bugsDe(d), ...Object.keys(contas()).flatMap((e) => ((LS.get('fd:dados:' + e, null) || {}).cards || []).filter((c) => c.tipo === 'bug'))];
 const vazouRascunho = () => Object.keys(contas()).some((e) => (LS.get('fd:dados:' + e, null) || {}).viuRascunhoAlheio);
 const rodadaDe = (d, id = 'FD-101') => (d.rodadas || {})[id] || null;
 // grupos de cenário, pelo que cada um cobre (pra conferir a análise de impacto)
@@ -252,7 +258,7 @@ function depoisDoEp14() {
 }
 const bugM3 = (d, id, titulo, passos, esperado, obtido, evidencia, extra) => d.cards.push({ id, titulo, coluna: 'afazer', resp: 'gabriela', tipo: 'bug', prioridade: 'Normal', relacionado: '', cenario: '', passos, esperado, obtido, evidencia, criterios: [], ok: [], comentarios: [], criadoEm: agora(), ...(extra || {}) });
 function depoisDoEp16() {
-  const d = andaSprint(depoisDoEp14(), 17, false);
+  const d = andaSprint(depoisDoEp14(), 17, false); d.conquistas.push('d1');
   bugM3(d, 'BUG-04', 'Chamado criado em dobro com rede lenta e clique duplo', '1. Na aba Rede, limitar para 3G\n2. Abrir Novo chamado e preencher\n3. Clicar duas vezes em Criar chamado', 'Um chamado só', 'Dois chamados iguais. 8 em 10 tentativas', 'rede-dois-post.png', { prioridade: 'Alta' });
   d.proximoBug = 5; d.conquistas.push('ep16'); return d;
 }
@@ -275,7 +281,7 @@ const SAVES = [
   { id: 'ep10', nome: 'Início do EP10', quando: 'Retestar os bugs', monta: depoisDoEp08 },
   { id: 'ep12', nome: 'Início do EP12', quando: 'Rodada de regressão', monta: depoisDoEp10 },
   { id: 'ep14', nome: 'Início do EP14', quando: 'Sprint 16', monta: depoisDoEp12 },
-  { id: 'ep16', nome: 'Início do EP16', quando: 'O chamado duplicado', monta: depoisDoEp14 },
+  { id: 'ep16', nome: 'Início do EP16', quando: 'O chamado duplicado · já efetivado como júnior', monta: () => { const d = depoisDoEp14(); d.conquistas.push('d1'); return d; } },
   { id: 'ep18', nome: 'Início do EP18', quando: 'Tela ou servidor?', monta: depoisDoEp16 },
   { id: 'ep20', nome: 'Início do EP20', quando: 'O rascunho · com a conta de teste do Lucas', monta: () => { LS.del(RASCUNHO); return contaDoLucas(depoisDoEp18()); } },
 ];
@@ -353,9 +359,9 @@ const MISSOES = [
   ] },
   { id: 'ep20', titulo: 'O rascunho que vaza', aula: 'EP20', conquista: 'Dado no navegador', nivel: 'QA júnior', link: 'novo-chamado.html', itens: [
     ['Faça o rascunho aparecer pra outra conta', () => vazouRascunho()],
-    ['Reporte o bug do rascunho', (d) => bugsDe(d).some((b) => /rascunho/i.test(textoBug(b)))],
-    ['Com prioridade alta', (d) => bugsDe(d).some((b) => /rascunho/i.test(textoBug(b)) && /alta|cr[ií]tica|urgente/i.test(b.prioridade || ''))],
-    ['Com a chave do armazenamento em Console e Rede', (d) => bugsDe(d).some((b) => /rascunho/i.test(textoBug(b)) && /fd:rascunho|rascunho/i.test(b.tecnico || ''))],
+    ['Reporte o bug do rascunho', (d) => bugsGlobais(d).some((b) => /rascunho/i.test(textoBug(b)))],
+    ['Com prioridade alta', (d) => bugsGlobais(d).some((b) => /rascunho/i.test(textoBug(b)) && /alta|cr[ií]tica|urgente/i.test(b.prioridade || ''))],
+    ['Com a chave do armazenamento em Console e Rede', (d) => bugsGlobais(d).some((b) => /rascunho/i.test(textoBug(b)) && /fd:rascunho|rascunho/i.test(b.tecnico || ''))],
   ] },
 ];
 const bugsDe = (d) => d.cards.filter((c) => c.tipo === 'bug');
@@ -401,12 +407,12 @@ function pintaGherkin(txt) {
 }
 const progresso = (m, d = dados()) => m.itens.map(([, f]) => !!f(d));
 const missaoAtual = () => MISSOES.find((m) => !(dados().conquistas || []).includes(m.id)) || null;
-function nivelAtual() { const d = dados() || {}; const fe = MISSOES.filter((m) => (d.conquistas || []).includes(m.id)); return fe.length ? fe[fe.length - 1].nivel : 'QA estagiário'; }
+function nivelAtual() { const d = dados() || {}; if ((d.conquistas || []).includes('d1')) return 'QA júnior'; const fe = MISSOES.filter((m) => (d.conquistas || []).includes(m.id)); return fe.length ? fe[fe.length - 1].nivel : 'QA estagiário'; }
 function confereMissoes() {
   const d = dados(); d.conquistas = d.conquistas || []; let nova = false;
   MISSOES.forEach((m) => {
     if (d.conquistas.includes(m.id) || !progresso(m, d).every(Boolean)) return;
-    d.conquistas.push(m.id); if (m.id === 'ep14' && d.chat.releases) d.chat.releases.push({ de: 'beatriz', tx: 'Sprint 16 aprovada. Sobe sexta 🚀', quando: agora() }); salvar(); conquista(m); nova = true;
+    d.conquistas.push(m.id); if (m.id === 'ep14' && d.chat.releases) d.chat.releases.push({ de: 'beatriz', tx: 'Sprint 16 aprovada. Sobe sexta 🚀', quando: agora() }); if (m.id === 'ep18' && d.chat.bugs) d.chat.bugs.push({ de: 'gabriela', tx: 'O seis eu corrijo hoje. O cinco é na API, vou chamar o Lucas.', quando: agora() }); salvar(); conquista(m); nova = true;
   });
   const el = $('#missaoSide'); if (el) el.outerHTML = cardMissao();
   if (!nova && !$('.conq-fundo')) refrescaCarreira();  // com conquista nova, a barra sobe quando o aluno fecha o aviso
@@ -425,7 +431,7 @@ function refrescaCarreira() {
 }
 function conquista(m) {
   const o = document.createElement('div'); o.className = 'conq-fundo'; o.setAttribute('data-test', 'conquista');
-  const extra = m.id === 'ep12' ? '<div class="s2">A Gabriela já está corrigindo. Quando você voltar pro FlowDesk, a <b>Sprint 16</b> estará no ar.</div>' : m.id === 'ep14' ? '<div class="s2">Fim do módulo 2. A Sprint 16 foi aprovada e sobe sexta.</div>' : m.id === 'ep08' ? '<div class="s2">A Gabriela já está corrigindo. Quando você voltar pro FlowDesk, a <b>Sprint 15</b> estará no ar.</div>' : m.id === 'ep03' ? '<div class="s2">O <b>FlowChat</b> foi liberado: agora dá pra tirar dúvida com o time.</div>' : '';
+  const extra = m.id === 'ep12' ? '<div class="s2">A Gabriela já está corrigindo. Quando você voltar pro FlowDesk, a <b>Sprint 16</b> estará no ar.</div>' : m.id === 'ep14' ? '<div class="s2">Fim do módulo 2. A Sprint 16 foi aprovada e sobe sexta.</div>' : m.id === 'ep20' ? '<div class="s2">Fim do módulo 3. Três bugs que a tela sozinha não mostrava, e você achou onde cada um mora.</div>' : m.id === 'ep08' ? '<div class="s2">A Gabriela já está corrigindo. Quando você voltar pro FlowDesk, a <b>Sprint 15</b> estará no ar.</div>' : m.id === 'ep03' ? '<div class="s2">O <b>FlowChat</b> foi liberado: agora dá pra tirar dúvida com o time.</div>' : '';
   o.innerHTML = `<div class="conq"><div class="ci">${ico('trofeu')}</div><div class="k">CONQUISTA DESBLOQUEADA · +${m.itens.length * XP_ITEM + XP_CONQ} XP</div><div class="v" data-test="conquista-nome">${m.conquista}</div><div class="s">Nível atual: <b>${m.nivel}</b></div>${extra}<button class="btn" data-test="fechar-conquista">Continuar</button></div>`;
   // fica pendente até o aluno fechar: se a página recarregar antes (reteste, troca de tela), o aviso volta
   const d = dados(); d.conqPendente = m.id; salvar();
@@ -440,11 +446,12 @@ function cardMissao() {
 }
 
 // ---------- carreira (XP vem das missões) ----------
-// júnior só no fim da parte 1 do curso (módulos 1 a 6); o módulo 1 inteiro dá uns 25% do caminho
+// júnior vem com a efetivação (Desafio 1, no fim do módulo 2): a conquista 'd1' leva o XP pra 3000; daí em diante conta o XP do módulo 3 em diante
 const XP_ITEM = 40, XP_CONQ = 60, XP_JUNIOR = 3000, XP_PLENO = 6000;
+const M_JUNIOR = ['ep16', 'ep18', 'ep20'];
 const ehJunior = (d = dados()) => xpDe(d) >= XP_JUNIOR;
-const xpDe = (d = dados()) => { const f = d.conquistas || [], atual = MISSOES.find((m) => !f.includes(m.id));
-  return MISSOES.reduce((s, m) => s + (f.includes(m.id) ? m.itens.length * XP_ITEM + XP_CONQ : m === atual ? progresso(m, d).filter(Boolean).length * XP_ITEM : 0), 0); };
+const xpDe = (d = dados()) => { const f = d.conquistas || [], atual = MISSOES.find((m) => !f.includes(m.id)), efetivado = f.includes('d1');
+  return (efetivado ? XP_JUNIOR : 0) + MISSOES.reduce((s, m) => (efetivado && !M_JUNIOR.includes(m.id)) ? s : s + (f.includes(m.id) ? m.itens.length * XP_ITEM + XP_CONQ : m === atual ? progresso(m, d).filter(Boolean).length * XP_ITEM : 0), 0); };
 function trilha(d = dados()) {
   const xp = xpDe(d), jr = xp >= XP_JUNIOR;
   const a = jr ? 1 : Math.min(xp / XP_JUNIOR, .98), b = jr ? Math.min((xp - XP_JUNIOR) / (XP_PLENO - XP_JUNIOR), .98) : 0;
@@ -732,8 +739,9 @@ PAGINAS['novo-chamado'] = () => {
         .then((r) => r.json().then((j) => ({ ok: r.ok, j })))
         .then(({ ok: certo, j }) => {
           if (!certo) { btn.disabled = false; return toast(j.erro || 'Não deu pra criar o chamado', true); }
-          btn.disabled = true; if (!BUG.rascunho) LS.del(RASCUNHO); else LS.del(RASCUNHO);
-          toast('Chamado criado com sucesso'); setTimeout(() => { location.href = 'chamado.html?id=' + j.id; }, 1200);
+          LS.del(RASCUNHO);
+          // a partir da Sprint 17 a tela fica no formulário (assim a aba Rede não perde o pedido) e já deixa criar o próximo
+          toast(`Chamado #${j.id} criado com sucesso`); $('#titulo').value = ''; $('#descricao').value = ''; $('#cont').textContent = '0/100'; arquivo = null; $('#nomeArq').textContent = 'Nenhum arquivo escolhido'; $('#tiraArq').hidden = true; btn.disabled = false;
         })
         .catch(() => { btn.disabled = false; toast('Sem conexão. Tente de novo', true); });
       return;

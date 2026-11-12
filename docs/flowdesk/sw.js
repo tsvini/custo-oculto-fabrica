@@ -14,7 +14,7 @@ self.addEventListener('fetch', (e) => {
   if (i < 0) return;
   const rota = u.pathname.slice(i + 5);
   e.respondWith((async () => {
-    await fetch(new URL('rede.json?t=' + Date.now() + Math.random(), self.registration.scope), { cache: 'no-store' }).catch(() => {});
+    await fetch(new URL('rede.json?pedido=' + encodeURIComponent(e.request.method + ' ' + rota + u.search) + '&t=' + Date.now() + Math.random(), self.registration.scope), { cache: 'no-store' }).catch(() => {});
     await espera(220);
     if (rota === 'chamados' && e.request.method === 'POST') {
       const corpo = await e.request.json().catch(() => null);

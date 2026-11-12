@@ -1,5 +1,6 @@
-// Jornada do aluno no FlowDesk, do EP04 ao EP14: carrega cada save e cumpre a missão pela tela.
+// Jornada do aluno no FlowDesk, do EP04 ao EP20: cumpre cada missão pela tela (o módulo 3 começa cada prática pelo save, como no vídeo).
 // Uso: node tests/flowdesk/jornada.js [url-base]   (padrão: http://localhost:8765/)
+process.env.PW_EXPERIMENTAL_SERVICE_WORKER_NETWORK_EVENTS = '1'; // deixa a jornada segurar a "rede" do service worker (rede lenta do EP16)
 const { chromium } = require('playwright');
 const U = process.argv[2] || 'http://localhost:8765/';
 const T100 = 'Erro ao abrir o boleto no aplicativo do celular depois de atualizar a versão do sistema na loja hoje';
@@ -121,6 +122,59 @@ const ok = (nome, cond, extra = '') => { res.push([cond ? 'OK ' : 'FALHOU', nome
   ok('EP14 · Gabriela comenta no plano', /bug voltar/.test(await p.textContent('[data-test=recado-gabriela]')));
   await p.goto(U + 'chat.html?canal=releases'); await p.waitForTimeout(300);
   ok('EP14 · Beatriz aprova a Sprint 16', /Sprint 16 aprovada/.test(await p.textContent('[data-test=mensagens]')));
+
+  // ---------- módulo 3 (Sprint 17) ----------
+  const bug = async (titulo, passos, esperado, obtido, extra = {}) => {
+    await p.goto(U + 'quadro.html?novo=bug'); await p.waitForTimeout(400); await fechaConq();
+    await p.fill('[data-test=tarefa-titulo]', titulo); await p.fill('[data-test=bug-passos]', passos); await p.fill('[data-test=bug-esperado]', esperado); await p.fill('[data-test=bug-obtido]', obtido);
+    if (extra.prio) await p.selectOption('[data-test=tarefa-prioridade]', extra.prio);
+    if (extra.tec) await p.fill('[data-test=bug-tecnico]', extra.tec);
+    await p.locator('[data-test=bug-evidencia]').setInputFiles(png('evidencia.png')); await p.click('[data-test=criar-tarefa]'); await p.waitForTimeout(500);
+  };
+  const doTitulo = async (t) => (await dados()).chamados.filter((c) => c.titulo === t).length;
+  let segura = 0; await p.context().route('**/rede.json*', async (r) => { if (segura) await new Promise((z) => setTimeout(z, segura)); await r.continue(); });
+  // EP16
+  await save('ep16');
+  ok('EP16 · Sprint 17 e efetivado como júnior', /17/.test(await p.textContent('[data-test=versao-sistema]')) && /júnior/i.test(await p.textContent('[data-test=nivel]')));
+  await p.goto(U + 'novo-chamado.html'); await p.waitForTimeout(1500);
+  await p.fill('[data-test=titulo]', 'Rede rápida'); await p.fill('[data-test=descricao]', 'd'); await p.click('[data-test=criar-chamado]'); await p.waitForTimeout(1500);
+  ok('EP16 · depois de criar, fica no formulário limpo', p.url().includes('novo-chamado') && (await p.inputValue('[data-test=titulo]')) === '');
+  await p.click('[data-test=criar-chamado]'); await p.waitForTimeout(600);
+  ok('EP16 · rede rápida: um chamado só', (await doTitulo('Rede rápida')) === 1);
+  segura = 2000; await p.fill('[data-test=titulo]', 'Rede lenta'); await p.fill('[data-test=descricao]', 'd');
+  await p.click('[data-test=criar-chamado]'); await p.waitForTimeout(300); await p.click('[data-test=criar-chamado]'); await p.waitForTimeout(4500); segura = 0;
+  ok('EP16 · rede lenta + clique duplo: sai em dobro', (await doTitulo('Rede lenta')) === 2);
+  await bug('Chamado criado em dobro com rede lenta e clique duplo', '1. Na aba Rede, limitar para 3G\n2. Abrir Novo chamado e preencher\n3. Clicar duas vezes em Criar chamado', 'Um chamado só', 'Dois chamados iguais. 8 em 10 tentativas', { prio: 'Alta' });
+  ok('EP16 · conquista', await conq('ep16'));
+  // EP18
+  await save('ep18'); await p.goto(U + 'chamados.html'); await p.waitForTimeout(1500);
+  await p.fill('[data-test=busca-chamado]', 'manutencao'); await p.waitForTimeout(1500);
+  ok('EP18 · busca sem acento acha', (await p.locator('[data-test=linha-chamado]').count()) === 1);
+  await p.fill('[data-test=busca-chamado]', 'manutenção'); await p.waitForTimeout(1500);
+  ok('EP18 · busca com acento volta vazia (bug do servidor)', (await p.locator('[data-test=lista-vazia]').count()) === 1);
+  const antes = erros.length; await p.fill('[data-test=busca-chamado]', 'Caixa dos fundos travou hoje 🔥 urgente'); await p.waitForTimeout(1500);
+  ok('EP18 · emoji fica em Carregando com URIError (bug da tela)', (await p.locator('[data-test=carregando]').count()) === 1 && erros.slice(antes).some((x) => /URI malformed/.test(x)));
+  erros = erros.filter((x) => !/URI malformed/.test(x));
+  await bug('Busca com acento não encontra o chamado', '1. Abrir Chamados\n2. Buscar por manutenção', 'Aparece o chamado', 'Nenhum chamado. O pedido saiu certo e a resposta veio vazia', { tec: 'GET api/chamados?busca=manuten%C3%A7%C3%A3o respondeu 200 com []' });
+  await bug('Busca com emoji fica em Carregando', '1. Abrir Chamados\n2. Colar o título com 🔥', 'Aparece o chamado', 'Fica em Carregando', { tec: 'Uncaught (in promise) URIError: URI malformed' });
+  ok('EP18 · conquista', await conq('ep18'));
+  await p.goto(U + 'chat.html?canal=bugs'); await p.waitForTimeout(300);
+  ok('EP18 · Gabriela responde no FlowChat', /corrijo hoje/.test(await p.textContent('[data-test=mensagens]')));
+  // EP20
+  await save('ep20'); await p.goto(U + 'novo-chamado.html'); await p.waitForTimeout(1200);
+  await p.fill('[data-test=titulo]', 'Rascunho de teste'); await p.fill('[data-test=descricao]', 'Isso não devia aparecer pra mais ninguém'); await p.waitForTimeout(300);
+  await p.click('[data-test=sair]'); await p.waitForTimeout(600);
+  ok('EP20 · sair apaga a sessão, mas não o rascunho', await p.evaluate(() => !localStorage.getItem('fd:sessao') && !!localStorage.getItem('fd:rascunho')));
+  ok('EP20 · login mostra a conta de teste do Lucas', (await p.locator('[data-test=conta-teste]').count()) === 1);
+  await p.fill('[data-test=login-email]', 'lucas@flowdesk.com'); await p.fill('[data-test=login-senha]', '123456'); await p.click('[data-test=login-entrar]'); await p.waitForTimeout(600);
+  await p.goto(U + 'novo-chamado.html'); await p.waitForTimeout(1200);
+  ok('EP20 · o Lucas vê o rascunho da Ana', (await p.inputValue('[data-test=titulo]')) === 'Rascunho de teste');
+  await p.evaluate(() => localStorage.removeItem('fd:rascunho')); await p.reload(); await p.waitForTimeout(1200);
+  ok('EP20 · apagando a chave, o rascunho some', (await p.inputValue('[data-test=titulo]')) === '');
+  await p.click('[data-test=sair]'); await p.waitForTimeout(600);
+  await p.fill('[data-test=login-email]', 'ana@teste.com'); await p.fill('[data-test=login-senha]', '123456'); await p.click('[data-test=login-entrar]'); await p.waitForTimeout(600);
+  await bug('Rascunho de um usuário aparece pra outro no mesmo navegador', '1. Entrar com a conta A\n2. Escrever um chamado sem criar\n3. Sair\n4. Entrar com a conta B e abrir Novo chamado', 'Formulário vazio', 'Aparece o rascunho da conta A', { prio: 'Alta', tec: 'Armazenamento local: chave fd:rascunho' });
+  ok('EP20 · conquista (fim do módulo 3)', await conq('ep20'));
 
   ok('nenhum erro de JavaScript', erros.length === 0, erros.slice(0, 5).join(' | '));
   await b.close();
