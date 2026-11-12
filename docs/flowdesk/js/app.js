@@ -176,7 +176,7 @@ const usaApi = () => VERSAO >= 17 && 'serviceWorker' in navigator && /^https?:/.
 let _swPronto = null;
 function swPronto() {
   if (!_swPronto) _swPronto = (async () => {
-    await navigator.serviceWorker.register('sw.js?v=1794507361');
+    await navigator.serviceWorker.register('sw.js?v=1794507760');
     if (navigator.serviceWorker.controller) return true;
     await new Promise((r) => { navigator.serviceWorker.addEventListener('controllerchange', r, { once: true }); setTimeout(r, 4000); });
     return !!navigator.serviceWorker.controller;
@@ -432,6 +432,7 @@ function refrescaCarreira() {
 // pedido de avaliação na Udemy: só depois de um momento alto (primeiros bugs, efetivação), uma vez por conta, sem nada em troca.
 // fica desligado até o curso ter link (UDEMY_AVALIAR vazio = não aparece, inclusive nas gravações)
 const UDEMY_AVALIAR = '';
+const CURSO_URL = '';  // link do curso na Udemy: entra no texto do post de efetivação quando existir
 const PEDE_AVALIACAO = ['ep08', 'd1'];
 function pedeAvaliacao(id) {
   const d = dados(); if (!UDEMY_AVALIAR || !PEDE_AVALIACAO.includes(id) || !d || d.avaliacaoPedida) return;
@@ -474,7 +475,7 @@ const chatLiberado = (d = dados()) => (d.conquistas || []).includes('ep03');
 
 // ---------- layout ----------
 const avatar = (p) => p === 'voce' ? '<span class="vc">VC</span>' : `<img class="av" src="img/av_${p}.png" alt="">`;
-const LOGO = '<span class="logo-anim" aria-hidden="true"><img src="img/anim/logo_part1.png?v=1794507361" alt=""><img class="sobe" src="img/anim/logo_part0.png?v=1794507361" alt=""></span>';
+const LOGO = '<span class="logo-anim" aria-hidden="true"><img src="img/anim/logo_part1.png?v=1794507760" alt=""><img class="sobe" src="img/anim/logo_part0.png?v=1794507760" alt=""></span>';
 const MARCA = `<span class="marca">${LOGO}FlowDesk</span>`;
 const pillVersao = () => `<span class="versao" data-test="versao-sistema"><b>Sprint ${VERSAO}</b> · homologação</span>`;
 const SVG = (p, c = '') => `<svg class="${c}" viewBox="0 0 24 24" aria-hidden="true">${p}</svg>`;
@@ -553,7 +554,7 @@ PAGINAS.login = () => {
   document.body.innerHTML = `<div class="tela-login">
     <section class="lg-time"><div class="lg-marca">${LOGO}<span>FlowDesk</span></div>
       <div class="lg-tit"><h1>Seu primeiro dia como QA começa aqui.</h1><div class="lg-trilha"><span class="on">Estagiário</span>${seta}<span>Júnior</span>${seta}<span class="fut">Pleno</span></div></div>
-      <div class="lg-palco"><div class="lg-luz" aria-hidden="true"></div><video src="img/anim/time_acena.webm?v=1794507361" poster="img/anim/time_acena.png?v=1794507361" autoplay muted loop playsinline aria-label="O time do FlowDesk acenando: Rafael, Gabriela, Vinícius, Lucas e Beatriz"></video></div></section>
+      <div class="lg-palco"><div class="lg-luz" aria-hidden="true"></div><video src="img/anim/time_acena.webm?v=1794507760" poster="img/anim/time_acena.png?v=1794507760" autoplay muted loop playsinline aria-label="O time do FlowDesk acenando: Rafael, Gabriela, Vinícius, Lucas e Beatriz"></video></div></section>
     <section class="lg-form"><div class="login">
     <form id="fEntrar" novalidate><span class="lg-chip">SPRINT ${VERSAO} · HOMOLOGAÇÃO</span><h1>Bem-vindo de volta</h1><p class="sub">O time já está te esperando. Use dados de mentira: fica tudo salvo só neste navegador.</p>
       <div class="campo"><label for="email">E-mail</label><input class="in" id="email" type="email" data-test="login-email" autocomplete="username" placeholder="voce@empresa.com"></div>
@@ -804,7 +805,7 @@ PAGINAS.quadro = () => {
       <div class="h"><h3>${n}</h3><span class="cnt" data-test="contagem-${k}"></span>${k === 'afazer' ? '<button class="mais" data-test="nova-tarefa" title="Nova tarefa" aria-label="Nova tarefa">+</button>' : ''}</div>
       <div class="cards"></div>${k === 'afazer' ? '<button class="add-tarefa" data-test="adicionar-tarefa">+ Adicionar tarefa</button>' : ''}</section>`).join('')}</div>
     <p class="dica" style="margin-top:12px">Você move os seus cards arrastando, ou pelo próprio card. Os cards dos outros ficam com eles.</p>
-    <div class="desfile" aria-hidden="true"><div class="chao"></div>${anda.map(([v, atraso, cls]) => `<div class="anda ${cls}" style="animation-delay:${atraso}s"><video src="img/anim/${v}.webm?v=1794507361" poster="img/anim/${v}.png?v=1794507361" autoplay muted loop playsinline></video></div>`).join('')}</div>`);
+    <div class="desfile" aria-hidden="true"><div class="chao"></div>${anda.map(([v, atraso, cls]) => `<div class="anda ${cls}" style="animation-delay:${atraso}s"><video src="img/anim/${v}.webm?v=1794507760" poster="img/anim/${v}.png?v=1794507760" autoplay muted loop playsinline></video></div>`).join('')}</div>`);
   const pinta = () => {
     COLUNAS.forEach(([k]) => {
       const l = dados().cards.filter((c) => c.coluna === k), col = $(`[data-col=${k}]`);
@@ -985,7 +986,7 @@ function montaGherkin(A, card, contagens) {
           <textarea id="gk" data-test="editor-gherkin" spellcheck="false" autocomplete="off" autocapitalize="off" aria-label="Arquivo ${arq}"></textarea></div></div></div>
       <p class="dica" style="margin-top:10px">Dica: <b>Tab</b> faz o recuo. O FlowDesk salva enquanto você escreve.</p>
     </div>
-    <aside><div class="rafa"><div class="rafa-b"><div class="bk">RAFAEL · PO</div><div class="bt">Escreve do jeito que eu leio: <b>Dado</b> o contexto, <b>Quando</b> a ação, <b>Então</b> o que eu vejo.</div></div><video src="img/anim/rafael_fala.webm?v=1794507361" poster="img/anim/rafael_fala.png?v=1794507361" autoplay muted loop playsinline aria-hidden="true"></video></div><div class="cov" id="gkRev" data-test="revisao-gherkin"></div></aside></div>`;
+    <aside><div class="rafa"><div class="rafa-b"><div class="bk">RAFAEL · PO</div><div class="bt">Escreve do jeito que eu leio: <b>Dado</b> o contexto, <b>Quando</b> a ação, <b>Então</b> o que eu vejo.</div></div><video src="img/anim/rafael_fala.webm?v=1794507760" poster="img/anim/rafael_fala.png?v=1794507760" autoplay muted loop playsinline aria-hidden="true"></video></div><div class="cov" id="gkRev" data-test="revisao-gherkin"></div></aside></div>`;
   const ta = $('#gk'), cor = $('#gkCor'), nums = $('#gkNums');
   ta.value = gherkinDe(dados(), card.id);
   const atualiza = () => {
@@ -1077,7 +1078,7 @@ function montaPlano(A, card) {
         <div class="fbtns"><button type="button" class="btn sec" id="cancela" hidden data-test="cancelar-edicao">Cancelar</button><button class="btn" data-test="salvar-cenario" id="salva">Adicionar cenário</button></div>
       </form></div>
       <aside><div class="cov" id="cov" data-test="cobertura"><div class="hd">Cobertura das regras<span class="cnt" id="cnt" data-test="cobertura-contagem">0/${REGRAS.length}</span></div><div class="bar"><i id="bar"></i></div>
-        ${REGRAS.map((r, i) => `<div class="rl" id="u${i}" data-test="regra"><b>✓</b>${r}<span class="q" id="q${i}" hidden></span></div>`).join('')}<div class="ex" id="ex" hidden></div><div class="gabi-b" id="gabiB" data-test="recado-gabriela"><b>GABRIELA · DEV</b><span id="gabiT"></span></div><div class="gabi" aria-hidden="true"><video src="img/anim/gabriela_quadro.webm?v=1794507361" poster="img/anim/gabriela_quadro.png?v=1794507361" autoplay muted loop playsinline></video></div></div></aside></div>`;
+        ${REGRAS.map((r, i) => `<div class="rl" id="u${i}" data-test="regra"><b>✓</b>${r}<span class="q" id="q${i}" hidden></span></div>`).join('')}<div class="ex" id="ex" hidden></div><div class="gabi-b" id="gabiB" data-test="recado-gabriela"><b>GABRIELA · DEV</b><span id="gabiT"></span></div><div class="gabi" aria-hidden="true"><video src="img/anim/gabriela_quadro.webm?v=1794507760" poster="img/anim/gabriela_quadro.png?v=1794507760" autoplay muted loop playsinline></video></div></div></aside></div>`;
   let editando = null; const abertos = new Set();
   d.rodadas = d.rodadas || {};
   const rod = () => d.rodadas[id] || null;
@@ -1300,8 +1301,11 @@ PAGINAS.efetivacao = () => {
         <div class="efc-zoom" id="efZoomBox"><span>Zoom</span><input type="range" id="efZoom" min="1" max="3" step="0.01" value="${cfg.zoom}"><button class="lnk" id="efTira">Tirar foto</button></div>
         <small>Arraste a foto no crachá pra enquadrar. Ela fica só no seu navegador.</small></div>
       <button class="btn" id="efBaixar" data-test="baixar-cartao">Baixar cartão (PNG)</button>
-      <a class="btn sec" id="efLinkedin" target="_blank" rel="noopener" data-test="compartilhar-linkedin">Compartilhar no LinkedIn</a>
-      <small>No LinkedIn, anexe a imagem que você baixou.</small>
+      <div class="campo"><span>Poste no LinkedIn também</span><textarea class="in efc-txt" id="efTxt" rows="9" data-test="cartao-texto-post"></textarea>
+        <small>Texto pronto pra você ajustar do seu jeito.</small></div>
+      <button class="btn sec" id="efCopiar" data-test="copiar-texto-post">Copiar texto</button>
+      <a class="btn sec" id="efLinkedin" target="_blank" rel="noopener" data-test="compartilhar-linkedin">Abrir o LinkedIn</a>
+      <small>No LinkedIn, cole o texto e anexe a imagem que você baixou.</small>
     </div>
   </div>`);
   const foto = $('#efFoto');
@@ -1312,9 +1316,20 @@ PAGINAS.efetivacao = () => {
     $$('.efc-gen button').forEach((b) => b.classList.toggle('on', b.dataset.g === cfg.gen));
     foto.style.backgroundImage = cfg.foto ? `url(${cfg.foto})` : ''; foto.style.backgroundSize = (cfg.zoom * 100) + '%'; foto.style.backgroundPosition = `${cfg.x}% ${cfg.y}%`;
     $('#efZoomBox').style.display = cfg.foto ? '' : 'none';
-    const txt = `${a ? 'Fui efetivada' : 'Fui efetivado'} como QA júnior no FlowDesk 🎉 testei um sistema de verdade, reportei ${bugsDe(d).length} bugs e passei no desafio final do curso Vida de QA #QA #testedesoftware`;
-    $('#efLinkedin').href = 'https://www.linkedin.com/feed/?shareActive=true&text=' + encodeURIComponent(txt);
+    if (!cfg.txtEditado) $('#efTxt').value = textoPost(a);
+    $('#efLinkedin').href = 'https://www.linkedin.com/feed/?shareActive=true&text=' + encodeURIComponent($('#efTxt').value);
   };
+  const textoPost = (a) => {
+    const nb = bugsDe(d).length, ne = execDe(d), db2 = (d.desafio || {}).bugsAchados;
+    return `${a ? 'fui efetivada' : 'fui efetivado'} como QA júnior no FlowDesk 🎉\n\n`
+      + `foram ${nb} bugs reportados, ${ne} cenários executados${db2 != null ? ` e um desafio final em que achei ${db2} de 3 bugs escondidos` : ' e um desafio final sem ninguém me guiando'}\n\n`
+      + `o FlowDesk é o sistema de prática do curso Vida de QA, do Vinícius Torales. lá a gente trabalha como QA de verdade: lê o card, conversa com o time, testa e reporta bug com evidência\n\n`
+      + `próximo passo: pleno\n\n`
+      + (CURSO_URL ? `${CURSO_URL}\n\n` : '') + '#QA #testedesoftware #carreiraemtecnologia';
+  };
+  if (cfg.txt) $('#efTxt').value = cfg.txt;
+  $('#efTxt').oninput = (e) => { cfg.txt = e.target.value; cfg.txtEditado = true; salvar(); $('#efLinkedin').href = 'https://www.linkedin.com/feed/?shareActive=true&text=' + encodeURIComponent(cfg.txt); };
+  $('#efCopiar').onclick = async () => { try { await navigator.clipboard.writeText($('#efTxt').value); toast('Texto copiado'); } catch (e) { $('#efTxt').select(); document.execCommand('copy'); toast('Texto copiado'); } };
   const guarda = () => { salvar(); pinta(); };
   $('#efInNome').oninput = (e) => { cfg.nome = e.target.value; guarda(); };
   $$('.efc-gen button').forEach((b) => (b.onclick = () => { cfg.gen = b.dataset.g; guarda(); }));
@@ -1404,7 +1419,7 @@ PAGINAS.caca = () => {
   const meus = LS.get('fd:caca-envios', []);
   casca('caca', `<section class="caca-hero"><div class="ch-t"><div class="ch-k"><span id="tNum">TEMPORADA 1 DE 3</span><b class="${aberta ? 'ab' : ''}">${aberta ? 'ABERTA' : 'EM BREVE'}</b>${aberta ? '<i id="tFim">quando os 3 forem achados, a próxima temporada abre sozinha</i>' : ''}</div>
       <h1 data-test="titulo-pagina">3 bugs escondidos no FlowDesk.</h1><p>Quem achar e reportar primeiro ganha o <b>Vida de QA 2</b> de graça quando lançar. Preste atenção nas aulas.</p></div>
-      <video src="img/anim/vinicius_lupa_v2.webm?v=1794507361" poster="img/anim/vinicius_lupa_v2.png?v=1794507361" autoplay muted loop playsinline aria-label="Vinícius com uma lupa procurando bugs"></video></section>
+      <video src="img/anim/vinicius_lupa_v2.webm?v=1794507760" poster="img/anim/vinicius_lupa_v2.png?v=1794507760" autoplay muted loop playsinline aria-label="Vinícius com uma lupa procurando bugs"></video></section>
     <div class="caca-bugs" id="placar">${[1, 2, 3].map((n) => `<article class="cb"><div class="cb-h"><span>#${n}</span><b>LIVRE</b></div><div class="cb-v">Ninguém achou ainda.</div></article>`).join('')}</div>
     <div class="caca-grade"><section class="painel caca-form"><h2>Reportar um bug da caça</h2><p class="dica">A confirmação é automática. Vale o primeiro report confirmado de cada bug.</p>
       <form id="fc" novalidate>${aberta ? '' : '<div class="aviso-caca" data-test="caca-fechada">A primeira temporada ainda não abriu. Quando abrir, este formulário passa a funcionar e o aviso sai daqui.</div>'}
