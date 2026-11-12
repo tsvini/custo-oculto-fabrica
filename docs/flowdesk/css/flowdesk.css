@@ -786,6 +786,8 @@ h1,h2,h3,.topo h2{font-family:var(--tit)}
 .lt small{display:block;color:#6b6e86;font-size:12px}
 .lt i{margin-left:auto;font-style:normal;font-size:12px;font-weight:700;color:var(--mut)}
 .lt.aprovado i{color:#86efac}.lt.recusado{opacity:.55}
+.lt.ganhou{border:1px solid #a8862b;background:linear-gradient(160deg,#2a210b,#141008 70%)}.lt.ganhou .ini{background:#f5c542;color:#2a1d00}.lt.ganhou i{color:#f5c542}
+.lt.depois i{color:#8E92A4}
 .meus{margin-top:20px;border-top:1px solid var(--cardb);padding-top:16px}
 .meus h3{font-size:16px}
 .me{display:flex;flex-wrap:wrap;gap:12px;font-size:14px;color:var(--mut);padding:8px 0;border-bottom:1px solid #191826}
