@@ -176,7 +176,7 @@ const usaApi = () => VERSAO >= 17 && 'serviceWorker' in navigator && /^https?:/.
 let _swPronto = null;
 function swPronto() {
   if (!_swPronto) _swPronto = (async () => {
-    await navigator.serviceWorker.register('sw.js?v=1794512496');
+    await navigator.serviceWorker.register('sw.js?v=1794513825');
     if (navigator.serviceWorker.controller) return true;
     await new Promise((r) => { navigator.serviceWorker.addEventListener('controllerchange', r, { once: true }); setTimeout(r, 4000); });
     return !!navigator.serviceWorker.controller;
@@ -539,7 +539,7 @@ const chatLiberado = (d = dados()) => (d.conquistas || []).includes('ep03');
 
 // ---------- layout ----------
 const avatar = (p) => p === 'voce' ? '<span class="vc">VC</span>' : `<img class="av" src="img/av_${p}.png" alt="">`;
-const LOGO = '<span class="logo-anim" aria-hidden="true"><img src="img/anim/logo_part1.png?v=1794512496" alt=""><img class="sobe" src="img/anim/logo_part0.png?v=1794512496" alt=""></span>';
+const LOGO = '<span class="logo-anim" aria-hidden="true"><img src="img/anim/logo_part1.png?v=1794513825" alt=""><img class="sobe" src="img/anim/logo_part0.png?v=1794513825" alt=""></span>';
 const MARCA = `<span class="marca">${LOGO}FlowDesk</span>`;
 const pillVersao = () => `<span class="versao" data-test="versao-sistema"><b>Sprint ${VERSAO}</b> · homologação</span>`;
 const SVG = (p, c = '') => `<svg class="${c}" viewBox="0 0 24 24" aria-hidden="true">${p}</svg>`;
@@ -626,7 +626,7 @@ PAGINAS.login = () => {
   document.body.innerHTML = `<div class="tela-login">
     <section class="lg-time"><div class="lg-marca">${LOGO}<span>FlowDesk</span></div>
       <div class="lg-tit"><h1>Seu primeiro dia como QA começa aqui.</h1><div class="lg-trilha"><span class="on">Estagiário</span>${seta}<span>Júnior</span>${seta}<span class="fut">Pleno</span></div></div>
-      <div class="lg-palco"><div class="lg-luz" aria-hidden="true"></div><video src="img/anim/time_acena.webm?v=1794512496" poster="img/anim/time_acena.png?v=1794512496" autoplay muted loop playsinline aria-label="O time do FlowDesk acenando: Rafael, Gabriela, Vinícius, Lucas e Beatriz"></video></div></section>
+      <div class="lg-palco"><div class="lg-luz" aria-hidden="true"></div><video src="img/anim/time_acena.webm?v=1794513825" poster="img/anim/time_acena.png?v=1794513825" autoplay muted loop playsinline aria-label="O time do FlowDesk acenando: Rafael, Gabriela, Vinícius, Lucas e Beatriz"></video></div></section>
     <section class="lg-form"><div class="login">
     <form id="fEntrar" novalidate><span class="lg-chip">SPRINT ${VERSAO} · HOMOLOGAÇÃO</span><h1>Bem-vindo de volta</h1><p class="sub">O time já está te esperando. Use dados de mentira: fica tudo salvo só neste navegador.</p>
       <div class="campo"><label for="email">E-mail</label><input class="in" id="email" type="email" data-test="login-email" autocomplete="username" placeholder="voce@empresa.com"></div>
@@ -683,6 +683,7 @@ const DICA_MISSAO = {
   ep20: 'Um rascunho aparece pra quem não escreveu. Ache onde ele mora e prove com outra conta.',
 };
 PAGINAS.dashboard = () => {
+  if (_c('lista') && bugsDe(dados()).some((b) => b.coluna === 'concluido')) _pv('lista');  // caça: o painel esquece os bugs já concluídos
   const d = dados(), c = contas()[sessao()];
   const h = new Date().getHours(), oi = h < 12 ? 'Bom dia' : h < 18 ? 'Boa tarde' : 'Boa noite';
   const hoje = new Date().toLocaleDateString('pt-BR', { weekday: 'long', day: 'numeric', month: 'long' });
@@ -704,7 +705,7 @@ PAGINAS.dashboard = () => {
     <div class="grade">
       <div class="g2">${hero}</div>
       <section class="painel"><div class="ph"><h3>Seu time</h3><a href="chat.html">FlowChat</a></div><div class="time" data-test="time">${TIME.filter(([p]) => p !== 'vinicius').map(([p]) => `<a class="pes" href="chat.html"><img src="img/av_${p}.png" alt=""><div><b>${PESSOAS[p].nome} <i>${PESSOAS[p].papel.toUpperCase()}</i></b><span>${esc(linhaTime[p])}</span></div></a>`).join('')}</div></section>
-      <div class="g3"><section class="painel"><div class="ph"><h3>Sua semana</h3></div><div class="nums"><div><b>${(d.planos['FD-101'] || []).length}</b><span>cenários escritos</span></div><div><b class="r">${bugsDe(d).length}</b><span>bugs achados</span></div><div><b class="o">${(d.conquistas || []).length}</b><span>conquistas</span></div></div></section>
+      <div class="g3"><section class="painel"><div class="ph"><h3>Sua semana</h3></div><div class="nums"><div><b>${(d.planos['FD-101'] || []).length}</b><span>cenários escritos</span></div><div><b class="r">${_c('lista') ? bugsDe(d).filter((b) => b.coluna !== 'concluido').length : bugsDe(d).length}</b><span>bugs achados</span></div><div><b class="o">${(d.conquistas || []).length}</b><span>conquistas</span></div></div></section>
       <section class="painel"><div class="ph"><h3>Com você agora</h3></div>${meus.length ? meus.map(cardFace).join('') : '<p class="dica">Nenhum card com você agora.</p>'}</section>
       <a class="painel caca-mini" href="caca.html" data-test="caca-resumo"><div class="ck">CAÇA AOS BUGS · ${mesNome}</div><h3>3 bugs escondidos</h3><p>Os 3 primeiros a achar ganham o Vida de QA 2.</p><div class="cs">${bugs.map((b) => b.ganhador ? `<span class="on">#${b.n} ${esc(b.ganhador)}</span>` : `<span>#${b.n} livre</span>`).join('')}</div></a></div>
     </div>`);
@@ -748,11 +749,11 @@ PAGINAS.chamados = () => {
     <div class="ch-lista"><table class="tabela ch-tab"><thead><tr><th>Nº</th><th>Título</th><th>Cliente</th><th>Status</th><th>Criado</th></tr></thead><tbody id="linhas"></tbody></table></div>
     ${d1Aberto() ? '' : `<div class="ch-dica">${fala('vinicius', 'DICA DO VINÍCIUS', dica)}</div>`}`);
   const pinta = () => {
-    const b = (_c('busca') ? $('#busca').value.replace(/^\s+/, '') : $('#busca').value.trim()).toLowerCase(), f = $('#filtro').value;
+    const b = $('#busca').value.trim().toLowerCase(), f = $('#filtro').value;
     $$('.chips .chip').forEach((c) => c.classList.toggle('on', c.dataset.st === f));
     if (b) fantasma = '';
     const bb = b || fantasma;
-    const l = [...dados().chamados].sort((a, c) => c.id - a.id).filter((x) => (!f || x.status === f || (_c('lista') && b.length > 0)) && x.titulo.toLowerCase().includes(bb) && extraOk(x, f) && !(f === 'Fechado' && _c('fechado') && innerWidth <= 480));
+    const l = [...dados().chamados].sort((a, c) => c.id - a.id).filter((x) => (!f || x.status === f) && x.titulo.toLowerCase().includes(bb) && extraOk(x, f));
     $('#linhas').innerHTML = l.length ? l.map((x) => { const [bg, cor] = corCliente(x.cliente);
       const chip = x.criadoPor === 'Você' ? '<span class="por-voce">criado por você</span>' : x.id === 1008 ? '<span class="exemplo">o problema do FD-101</span>' : '';
       return `<tr data-test="linha-chamado" data-href="chamado.html?id=${x.id}"><td class="num">#${x.id}</td><td><div class="tt"><a href="chamado.html?id=${x.id}" data-test="link-chamado">${esc(x.titulo) || '<i style="color:#5b5f78">(sem título)</i>'}</a>${chip}</div></td>
@@ -760,8 +761,6 @@ PAGINAS.chamados = () => {
         <td><span class="stp" data-test="status" style="--c:${COR_ST[x.status] || '#a78bfa'}"><i></i>${x.status}</span></td><td class="quando" title="${dataBR(x.criadoEm)}">${relativo(x.criadoEm)}</td></tr>`; }).join('')
       : '<tr><td colspan="5" class="vazio" data-test="lista-vazia">Nenhum chamado encontrado</td></tr>';
     if (f && l.some((x) => x.status !== f)) _pv('lista');
-    if (b && b !== b.trim() && _c('busca')) _pv('busca');
-    if (f === 'Fechado' && !l.length && _c('fechado') && innerWidth <= 480) _pv('fechado');
     $$('#linhas tr[data-href]').forEach((tr) => { tr.onclick = (ev) => { if (!ev.target.closest('a')) location.href = tr.dataset.href; }; });
   };
   $$('.chips .chip').forEach((c) => { c.onclick = () => { $('#filtro').value = c.dataset.st; pinta(); }; });
@@ -897,10 +896,11 @@ PAGINAS.quadro = () => {
       <div class="h"><h3>${n}</h3><span class="cnt" data-test="contagem-${k}"></span>${k === 'afazer' ? '<button class="mais" data-test="nova-tarefa" title="Nova tarefa" aria-label="Nova tarefa">+</button>' : ''}</div>
       <div class="cards"></div>${k === 'afazer' ? '<button class="add-tarefa" data-test="adicionar-tarefa">+ Adicionar tarefa</button>' : ''}</section>`).join('')}</div>
     <p class="dica" style="margin-top:12px">Você move os seus cards arrastando, ou pelo próprio card. Os cards dos outros ficam com eles.</p>
-    <div class="desfile" aria-hidden="true"><div class="chao"></div>${anda.map(([v, atraso, cls]) => `<div class="anda ${cls}" style="animation-delay:${atraso}s"><video src="img/anim/${v}.webm?v=1794512496" poster="img/anim/${v}.png?v=1794512496" autoplay muted loop playsinline></video></div>`).join('')}</div>`);
+    <div class="desfile" aria-hidden="true"><div class="chao"></div>${anda.map(([v, atraso, cls]) => `<div class="anda ${cls}" style="animation-delay:${atraso}s"><video src="img/anim/${v}.webm?v=1794513825" poster="img/anim/${v}.png?v=1794513825" autoplay muted loop playsinline></video></div>`).join('')}</div>`);
   const pinta = () => {
     COLUNAS.forEach(([k]) => {
-      const l = dados().cards.filter((c) => c.coluna === k), col = $(`[data-col=${k}]`);
+      let l = dados().cards.filter((c) => c.coluna === k); const col = $(`[data-col=${k}]`);
+      if (k === 'concluido' && l.length && _c('fechado') && innerWidth <= 480) { l = []; _pv('fechado'); }
       $('.cards', col).innerHTML = l.map(cardFace).join('');
       $('[data-test=contagem-' + k + ']', col).textContent = l.length || '';
     });
@@ -1035,7 +1035,7 @@ PAGINAS.card = () => {
     <div class="d1n">Abaixo, a versão atual do card, depois da conversa com o Rafael.</div></div>`;
   const desafioHtml = () => {
     const x = d.desafio || {};
-    if (!x.inicio) return `<div class="desafio com-bea" data-test="desafio"><video class="d-bea" src="img/anim/beatriz_fala.webm?v=1794512496" poster="img/anim/beatriz_fala.png?v=1794512496" autoplay muted loop playsinline aria-hidden="true"></video><div class="dk">DESAFIO 1 · EFETIVAÇÃO</div><h3>O FD-118 é todo seu</h3>
+    if (!x.inicio) return `<div class="desafio com-bea" data-test="desafio"><video class="d-bea" src="img/anim/beatriz_fala.webm?v=1794513825" poster="img/anim/beatriz_fala.png?v=1794513825" autoplay muted loop playsinline aria-hidden="true"></video><div class="dk">DESAFIO 1 · EFETIVAÇÃO</div><h3>O FD-118 é todo seu</h3>
       <p>Você tem <b>${D1_MIN} minutos</b>. Ninguém vai guiar: planeja os cenários na aba <b>Plano de testes</b>, executa com evidência na tela de <b>Chamados</b> e reporta cada bug ligado ao FD-118. Dá pra pausar.</p>
       <div class="dn"><span>Pra ser efetivado</span><b>70 pontos</b> e pelo menos <b>2 bugs</b> achados</div>
       <button class="btn" id="d1Go" data-test="comecar-desafio">Começar o desafio</button></div>`;
@@ -1127,7 +1127,7 @@ function montaGherkin(A, card, contagens) {
           <textarea id="gk" data-test="editor-gherkin" spellcheck="false" autocomplete="off" autocapitalize="off" aria-label="Arquivo ${arq}"></textarea></div></div></div>
       <p class="dica" style="margin-top:10px">Dica: <b>Tab</b> faz o recuo. O FlowDesk salva enquanto você escreve.</p>
     </div>
-    <aside><div class="rafa"><div class="rafa-b"><div class="bk">RAFAEL · PO</div><div class="bt">Escreve do jeito que eu leio: <b>Dado</b> o contexto, <b>Quando</b> a ação, <b>Então</b> o que eu vejo.</div></div><video src="img/anim/rafael_fala.webm?v=1794512496" poster="img/anim/rafael_fala.png?v=1794512496" autoplay muted loop playsinline aria-hidden="true"></video></div><div class="cov" id="gkRev" data-test="revisao-gherkin"></div></aside></div>`;
+    <aside><div class="rafa"><div class="rafa-b"><div class="bk">RAFAEL · PO</div><div class="bt">Escreve do jeito que eu leio: <b>Dado</b> o contexto, <b>Quando</b> a ação, <b>Então</b> o que eu vejo.</div></div><video src="img/anim/rafael_fala.webm?v=1794513825" poster="img/anim/rafael_fala.png?v=1794513825" autoplay muted loop playsinline aria-hidden="true"></video></div><div class="cov" id="gkRev" data-test="revisao-gherkin"></div></aside></div>`;
   const ta = $('#gk'), cor = $('#gkCor'), nums = $('#gkNums');
   ta.value = gherkinDe(dados(), card.id);
   const atualiza = () => {
@@ -1219,7 +1219,7 @@ function montaPlano(A, card) {
         <div class="fbtns"><button type="button" class="btn sec" id="cancela" hidden data-test="cancelar-edicao">Cancelar</button><button class="btn" data-test="salvar-cenario" id="salva">Adicionar cenário</button></div>
       </form></div>
       <aside><div class="cov" id="cov" data-test="cobertura"><div class="hd">Cobertura das regras<span class="cnt" id="cnt" data-test="cobertura-contagem">0/${RG.length}</span></div><div class="bar"><i id="bar"></i></div>
-        ${RG.map((r, i) => `<div class="rl" id="u${i}" data-test="regra"><b>✓</b>${r}<span class="q" id="q${i}" hidden></span></div>`).join('')}<div class="ex" id="ex" hidden></div><div class="gabi-b" id="gabiB" data-test="recado-gabriela"><b>GABRIELA · DEV</b><span id="gabiT"></span></div><div class="gabi" aria-hidden="true"><video src="img/anim/gabriela_quadro.webm?v=1794512496" poster="img/anim/gabriela_quadro.png?v=1794512496" autoplay muted loop playsinline></video></div></div></aside></div>`;
+        ${RG.map((r, i) => `<div class="rl" id="u${i}" data-test="regra"><b>✓</b>${r}<span class="q" id="q${i}" hidden></span></div>`).join('')}<div class="ex" id="ex" hidden></div><div class="gabi-b" id="gabiB" data-test="recado-gabriela"><b>GABRIELA · DEV</b><span id="gabiT"></span></div><div class="gabi" aria-hidden="true"><video src="img/anim/gabriela_quadro.webm?v=1794513825" poster="img/anim/gabriela_quadro.png?v=1794513825" autoplay muted loop playsinline></video></div></div></aside></div>`;
   let editando = null; const abertos = new Set();
   d.rodadas = d.rodadas || {};
   const rod = () => d.rodadas[id] || null;
@@ -1397,7 +1397,7 @@ PAGINAS.chat = () => {
   };
   const ligaProntas = () => $$('[data-pq]').forEach((b) => { b.onclick = () => { const i = +b.dataset.pq, q = PERGUNTAS[canal][i]; d.perguntadas.push(canal + i); salvar(); pintaProntas(); conversa(q[1], { de: q[0], tx: q[2] }); }; });
   pintaProntas(); desce();
-  $('#f').onsubmit = (ev) => { ev.preventDefault(); const t = $('#tx').value.trim(); if (!t) return; $('#tx').value = ''; conversa(t, respostaDoTime(t, canal)); };
+  $('#f').onsubmit = (ev) => { ev.preventDefault(); const t = _c('busca') ? $('#tx').value.replace(/^\n+|\n+$/g, '') : $('#tx').value.trim(); if (!t) return; if (!t.trim()) _pv('busca'); $('#tx').value = ''; conversa(t, respostaDoTime(t, canal)); };
 };
 
 // ---------- cartão de efetivação (pra postar no LinkedIn) ----------
@@ -1581,7 +1581,7 @@ PAGINAS.caca = () => {
   const meus = LS.get('fd:caca-envios', []);
   casca('caca', `<section class="caca-hero"><div class="ch-t"><div class="ch-k"><span id="tNum">TEMPORADA 1 DE 3</span><b class="${aberta ? 'ab' : ''}">${aberta ? 'ABERTA' : 'EM BREVE'}</b>${aberta ? '<i id="tFim">quando os 3 forem achados, a próxima temporada abre sozinha</i>' : ''}</div>
       <h1 data-test="titulo-pagina">3 bugs escondidos no FlowDesk.</h1><p>Quem achar e reportar primeiro ganha o <b>Vida de QA 2</b> de graça quando lançar. Preste atenção nas aulas.</p></div>
-      <video src="img/anim/vinicius_lupa_v2.webm?v=1794512496" poster="img/anim/vinicius_lupa_v2.png?v=1794512496" autoplay muted loop playsinline aria-label="Vinícius com uma lupa procurando bugs"></video></section>
+      <video src="img/anim/vinicius_lupa_v2.webm?v=1794513825" poster="img/anim/vinicius_lupa_v2.png?v=1794513825" autoplay muted loop playsinline aria-label="Vinícius com uma lupa procurando bugs"></video></section>
     <div class="caca-bugs" id="placar">${[1, 2, 3].map((n) => `<article class="cb"><div class="cb-h"><span>#${n}</span><b>LIVRE</b></div><div class="cb-v">Ninguém achou ainda.</div></article>`).join('')}</div>
     <div class="caca-grade"><section class="painel caca-form"><h2>Reportar um bug da caça</h2><p class="dica">A confirmação é automática. Vale o primeiro report confirmado de cada bug.</p>
       <form id="fc" novalidate>${aberta ? '' : '<div class="aviso-caca" data-test="caca-fechada">A primeira temporada ainda não abriu. Quando abrir, este formulário passa a funcionar e o aviso sai daqui.</div>'}
