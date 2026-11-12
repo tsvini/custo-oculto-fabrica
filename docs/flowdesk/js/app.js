@@ -1,7 +1,7 @@
 // FlowDesk: site de treino do curso Vida de QA.
 // Cada aluno cria a própria conta. Tudo fica salvo só no navegador dele (localStorage).
 // A sprint muda sozinha: começa na 14 (com os bugs da sprint) e vira 15 quando o aluno termina a missão do EP08.
-// ?versao=14 ou ?versao=15 na URL força uma versão só naquela visita (pra testar).
+// ?versao=14, 15 ou 16 na URL força uma versão só naquela visita (pra testar).
 'use strict';
 
 // ---------- armazenamento ----------
@@ -20,13 +20,15 @@ const chaveDados = () => 'fd:dados:' + sessao();
 let D = null;
 // versões novas do site completam o que faltar nos dados antigos, sem apagar nada do aluno
 const migra = (d) => { if (!d) return d; const base = semente(); for (const k of Object.keys(base)) if (d[k] === undefined) d[k] = base[k]; for (const k of Object.keys(base.chat || {})) if (d.chat && !d.chat[k]) d.chat[k] = base.chat[k]; return d; };
-const dados = () => D || (D = migra(LS.get(chaveDados(), null)));
+const dados = () => { if (!D) { D = migra(LS.get(chaveDados(), null)); if (D) andaSprint(D); } return D; };
 const salvar = () => LS.set(chaveDados(), D);
-const VERSAO = qs.get('versao') ? (qs.get('versao') === '15' ? 15 : 14) : (((LS.get(chaveDados(), null) || {}).conquistas || []).includes('ep08') ? 15 : 14);
+const _conq = (LS.get(chaveDados(), null) || {}).conquistas || [];
+const VERSAO = qs.get('versao') ? Math.min(16, Math.max(14, +qs.get('versao') || 14)) : (_conq.includes('ep12') ? 16 : _conq.includes('ep08') ? 15 : 14);
 // bugs plantados por versão
 const BUG = {
   tituloSoEspacos: VERSAO < 15,  // aceita título só com espaços (não usa trim)
   anexo5mbExato: VERSAO < 15,    // recusa o arquivo de exatamente 5 MB (usa >= em vez de >)
+  titulo100: VERSAO === 15,      // regressão da correção: com o trim, o limite virou < 100 em vez de <= 100
 };
 // caça aos bugs: endereço do Worker (vazio = temporada ainda não aberta)
 const CACA_API = '';
@@ -78,6 +80,8 @@ const TIME = [
 const COLUNAS = [['afazer', 'A fazer'], ['dev', 'Desenvolvimento'], ['qa', 'Pronto pra QA'], ['teste', 'Em teste'], ['concluido', 'Concluído']];
 const STATUS = ['Aberto', 'Em andamento', 'Resolvido', 'Fechado'];
 const REGRAS = ['Título obrigatório', 'Descrição obrigatória', 'Título até 100 caracteres', 'Anexo opcional: PDF, PNG ou JPG até 5 MB', 'Mensagem de sucesso e tela do chamado', 'Status inicial: Aberto'];
+const REGRA_ESPACOS = 'Título só com espaços conta como vazio';
+if (VERSAO >= 16) REGRAS.push(REGRA_ESPACOS);  // o Rafael respondeu a dúvida do cenário 9: virou regra na Sprint 16
 const CLIENTES = [
   { nome: 'Padaria Pão Quente', contato: 'Marta Souza', plano: 'Básico' },
   { nome: 'Mercado Bom Preço', contato: 'Carlos Lima', plano: 'Profissional' },
@@ -127,6 +131,36 @@ function semente() {
 }
 
 
+// ---------- sprints novas: a Gabriela entrega as correções e os bugs andam sozinhos ----------
+function andaSprint(d, v = VERSAO, grava = true) {
+  d.sprints = d.sprints || {}; let mudou = false;
+  const com = (c, tx) => c.comentarios.push({ de: 'gabriela', tx, quando: agora() });
+  if (v >= 15 && !d.sprints[15]) {
+    d.sprints[15] = agora(); mudou = true;
+    bugsDe(d).filter((b) => b.coluna !== 'concluido').forEach((b) => { b.coluna = 'qa'; b.corrigidoEm = 15; const t = textoBug(b);
+      com(b, /espa[çc]o/i.test(t) ? 'Corrigi os dois. O título agora ignora espaços, e o limite do anexo aceita 5 MB certinho. Pode testar.' : /anexo|mb|arquivo/i.test(t) ? 'Corrigi na Sprint 15: o limite do anexo agora aceita 5 MB certinho. Pode testar.' : 'Corrigi na Sprint 15. Pode testar.'); });
+    d.chat.releases.push({ de: 'lucas', tx: 'Release da Sprint 15 publicada em homologação: correções dos bugs do FD-101.', quando: agora() });
+    d.chat.bugs.push({ de: 'gabriela', tx: 'Corrigi os bugs que você abriu. Estão em Pronto pra QA. Pode testar 🙏', quando: agora() });
+  }
+  if (v >= 16 && !d.sprints[16]) {
+    d.sprints[16] = agora(); mudou = true;
+    bugsDe(d).filter((b) => b.coluna !== 'concluido' && (!b.corrigidoEm || b.reaberto)).forEach((b) => { b.coluna = 'qa'; b.corrigidoEm = 16; b.reaberto = false;
+      com(b, b.regressao || /100|cem|caracter/i.test(textoBug(b)) ? 'Corrigido na Sprint 16: voltei o limite pra 100. Era um < no lugar do <=. Pode testar.' : 'Corrigido na Sprint 16. Pode testar.'); });
+    const f = d.cards.find((c) => c.id === 'FD-101'); if (f && !f.criterios.includes(REGRA_ESPACOS)) f.criterios.push(REGRA_ESPACOS);
+    d.chat.releases.push({ de: 'lucas', tx: 'Release da Sprint 16 publicada em homologação: correção da regressão do título.', quando: agora() });
+    d.chat.bugs.push({ de: 'gabriela', tx: 'Vi a regressão. Foi mal, troquei o <= por < quando coloquei o trim. Já subi a correção na Sprint 16.', quando: agora() });
+    d.chat['time-produto'].push({ de: 'rafael', tx: 'Decidido: título só com espaços conta como vazio. Virou a regra 7 do FD-101.', quando: agora() });
+  }
+  if (mudou && grava) LS.set(chaveDados(), d);
+  return d;
+}
+const rodadaDe = (d, id = 'FD-101') => (d.rodadas || {})[id] || null;
+// grupos de cenário, pelo que cada um cobre (pra conferir a análise de impacto)
+const cenTitulo = (c) => c.regras.some((r) => r === 0 || r === 2 || r === 6);
+const cenAnexo = (c) => c.regras.includes(3);
+const cenFeliz = (c) => c.tipo === 'P' && c.regras.some((r) => r === 4 || r === 5);
+const cenSoDescricao = (c) => c.regras.length === 1 && c.regras[0] === 1;
+
 // ---------- saves por episódio (pontos de continuação do curso) ----------
 // Cada save deixa o FlowDesk do jeito que o curso espera naquele ponto. Novos episódios: acrescentar aqui.
 const CENARIOS_EP03 = [
@@ -140,12 +174,43 @@ const CENARIOS_EP03 = [
   ['Anexo em formato .exe', 'N', '1. Abrir a tela Novo chamado\n2. Preencher título e descrição\n3. Anexar programa.exe', 'Recusa o arquivo: formato não aceito', [3]],
   ['Título só com espaços em branco', 'N', '1. Abrir a tela Novo chamado\n2. Digitar só espaços no título\n3. Preencher a descrição\n4. Clicar em Criar chamado', 'Nenhuma regra diz o que acontece', []],
 ].map(([nome, tipo, passos, esperado, regras]) => ({ nome, tipo, passos, esperado, regras, exec: 'nao' }));
+const evNome = (i) => `cenario-${String(i + 1).padStart(2, '0')}.png`;
+function depoisDoEp08() {
+  const d = semente();
+  d.planos['FD-101'] = CENARIOS_EP03.map((c, i) => ({ ...c, exec: i === 5 || i === 8 ? 'falhou' : 'passou', evid: evNome(i), ...(i === 5 || i === 8 ? { jaFalhou: true } : {}) }));
+  d.planos['FD-101'][8].bug = 'BUG-01'; d.planos['FD-101'][5].bug = 'BUG-02';
+  d.gherkin = { 'FD-101': GK_EP06 };
+  const b = (id, titulo, cenario, passos, esperado, obtido, evidencia) => ({ id, titulo, coluna: 'afazer', resp: 'gabriela', tipo: 'bug', prioridade: 'Normal', relacionado: 'FD-101', cenario, passos, esperado, obtido, evidencia, criterios: [], ok: [], comentarios: [], criadoEm: agora() });
+  d.cards.push(b('BUG-01', 'Criar chamado aceita título só com espaços', 'Título só com espaços em branco', '1. Abrir Novo chamado\n2. Digitar só espaços no título\n3. Preencher a descrição\n4. Clicar em Criar chamado', 'Aparece "Título é obrigatório" e o chamado não é criado', 'O chamado é criado sem título', evNome(8)));
+  d.cards.push(b('BUG-02', 'Anexo de exatamente 5 MB é recusado', 'Anexo PDF de exatamente 5 MB', '1. Abrir Novo chamado\n2. Anexar documento-5MB-exato.pdf', 'Aceita o anexo e cria o chamado', 'Aparece "O arquivo passa do limite de 5 MB"', evNome(5)));
+  d.proximoBug = 3; d.conquistas = ['ep03', 'ep06', 'ep08'];
+  return d;
+}
+function depoisDoEp10() {
+  const d = andaSprint(depoisDoEp08(), 15, false);
+  bugsDe(d).forEach((b) => { b.coluna = 'concluido'; b.retestes = [{ quando: agora(), versao: 15, res: 'passou', evid: `reteste-${b.id.toLowerCase()}.png`, com: '' }]; });
+  d.conquistas.push('ep10');
+  return d;
+}
+function depoisDoEp12() {
+  const d = depoisDoEp10(), l = d.planos['FD-101'], sel = [0, 1, 3, 4, 5, 6, 7];
+  l.forEach((c, i) => { if (!sel.includes(i)) return; c.hist = [{ r: 1, v: 14, exec: c.exec, evid: c.evid, ...(c.bug ? { bug: c.bug } : {}) }]; delete c.bug; c.exec = i === 3 ? 'falhou' : 'passou'; c.evid = `rodada2-${evNome(i)}`; if (i === 3) { c.jaFalhou = true; c.bug = 'BUG-03'; } });
+  d.rodadas = { 'FD-101': { n: 2, versao: 15, data: agora(), sel } };
+  d.cards.push({ id: 'BUG-03', titulo: 'Título com exatamente 100 caracteres é recusado', coluna: 'afazer', resp: 'gabriela', tipo: 'bug', prioridade: 'Alta', relacionado: 'FD-101', cenario: 'Título com 100 caracteres', passos: '1. Abrir Novo chamado\n2. Colar um título com 100 caracteres\n3. Preencher a descrição\n4. Clicar em Criar chamado', esperado: 'Aceita e cria o chamado', obtido: 'Aparece "Título deve ter até 100 caracteres". Com 99 caracteres, cria normal', evidencia: 'rodada2-cenario-04.png', regressao: true, funcionava: 14, quebrou: 15, criterios: [], ok: [], comentarios: [], criadoEm: agora() });
+  d.proximoBug = 4;
+  d.chat['time-produto'].push({ de: 'voce', tx: 'Beatriz, a Sprint 15 corrigiu os dois bugs, mas quebrou o título de 100 caracteres. Abri o BUG-03. Não recomendo subir sem essa correção.', quando: agora() }, { de: 'beatriz', tx: 'Segura a release então. Gabi, prioridade no BUG-03.', quando: agora() });
+  d.conquistas.push('ep12');
+  return d;
+}
 const SAVES = [
   { id: 'inicio', nome: 'Começo do curso', quando: 'do EP00 ao EP04', monta: () => semente() },
   { id: 'ep04', nome: 'Início do EP05', quando: 'Cenários em Gherkin', monta: () => { const d = semente(); d.planos['FD-101'] = CENARIOS_EP03.map((c) => ({ ...c })); d.conquistas = ['ep03']; return d; } },
   { id: 'ep06', nome: 'Início do EP06', quando: 'Prática do Gherkin', monta: () => { const d = semente(); d.planos['FD-101'] = CENARIOS_EP03.map((c) => ({ ...c })); d.conquistas = ['ep03']; return d; } },
   { id: 'ep07', nome: 'Início do EP07', quando: 'Primeiro bug', monta: () => { const d = semente(); d.planos['FD-101'] = CENARIOS_EP03.map((c) => ({ ...c })); d.gherkin = { 'FD-101': GK_EP06 }; d.conquistas = ['ep03', 'ep06']; return d; } },
   { id: 'ep08', nome: 'Início do EP08', quando: 'Executar o plano', monta: () => { const d = semente(); d.planos['FD-101'] = CENARIOS_EP03.map((c) => ({ ...c })); d.gherkin = { 'FD-101': GK_EP06 }; d.conquistas = ['ep03', 'ep06']; return d; } },
+  { id: 'ep10', nome: 'Início do EP10', quando: 'Retestar os bugs', monta: depoisDoEp08 },
+  { id: 'ep12', nome: 'Início do EP12', quando: 'Rodada de regressão', monta: depoisDoEp10 },
+  { id: 'ep14', nome: 'Início do EP14', quando: 'Sprint 16', monta: depoisDoEp12 },
 ];
 
 
@@ -153,7 +218,7 @@ const SAVES = [
 // Uma missão por prática guiada. O site confere sozinho e libera a conquista. Novas práticas: acrescentar aqui.
 // cenário que ninguém consegue entender (nome de uma palavra só, resultado esperado curtinho) não conta na cobertura
 const fraco = (c) => (c.nome || '').trim().split(/\s+/).length < 2 || (c.esperado || '').trim().length < 8;
-const CHAVES = [/t[ií]tulo/i, /descri/i, /100|101|cem|limite|caracter/i, /anexo|arquivo|pdf|png|jpe?g|mb|exe/i, /mensagem|sucesso|tela do chamado|criad/i, /aberto|status/i];
+const CHAVES = [/t[ií]tulo/i, /descri/i, /100|101|cem|limite|caracter/i, /anexo|arquivo|pdf|png|jpe?g|mb|exe/i, /mensagem|sucesso|tela do chamado|criad/i, /aberto|status/i, /espa[çc]o|vazi/i];
 // a Gabriela lê o cenário como quem vai ter que executar: devolve [tom, recado]
 function revisaCenario(c) {
   const nome = c.nome.trim(), esp = c.esperado.trim(), tudo = `${nome} ${c.passos} ${esp}`;
@@ -173,7 +238,7 @@ const MISSOES = [
   { id: 'ep03', titulo: 'Plano de testes do FD-101', aula: 'EP04', conquista: 'Plano de testes no FlowDesk', nivel: 'QA estagiário', link: 'card.html?id=FD-101&aba=plano', itens: [
     ['Escreva pelo menos 8 cenários', (d) => (d.planos['FD-101'] || []).length >= 8],
     ['Use os três tipos: positivo, negativo e valor limite', (d) => ['P', 'N', 'L'].every((t) => (d.planos['FD-101'] || []).some((c) => c.tipo === t))],
-    ['Cubra as 6 regras do card', (d) => coberturaFD101(d) === 6],
+    ['Cubra as 6 regras do card', (d) => coberturaFD101(d) >= 6],
     ['Encontre um cenário fora das regras', (d) => (d.planos['FD-101'] || []).some((c) => !c.regras.length)],
   ] },
   { id: 'ep06', titulo: 'Cenários do FD-101 em Gherkin', aula: 'EP06', conquista: 'Feature do FD-101 no FlowDesk', nivel: 'QA estagiário', link: 'card.html?id=FD-101&aba=gherkin', itens: [
@@ -188,6 +253,24 @@ const MISSOES = [
     ['Reporte o bug do título só com espaços', (d) => bugsDe(d).some((b) => /espa[çc]o/i.test(textoBug(b)))],
     ['Ache e reporte o bug do anexo', (d) => bugsDe(d).some((b) => /anexo|5\s?mb|arquivo/i.test(textoBug(b)))],
     ['Todo cenário que falhou tem um bug ligado', (d) => { const f = (d.planos['FD-101'] || []).filter((c) => c.exec === 'falhou'); return f.length > 0 && f.every((c) => c.bug); }],
+  ] },
+  { id: 'ep10', titulo: 'Retestar os bugs da Sprint 15', aula: 'EP10', conquista: 'Bugs fechados com reteste', nivel: 'QA estagiário', link: 'quadro.html', itens: [
+    ['Reteste na versão certa: Sprint 15', (d) => { const r = bugsDe(d).filter((b) => b.corrigidoEm === 15).flatMap((b) => b.retestes || []); return r.length >= 2 && r.every((x) => x.versao >= 15); }],
+    ['Reteste o bug do título com evidência', (d) => bugsDe(d).some((b) => /espa[çc]o/i.test(textoBug(b)) && (b.retestes || []).some((r) => r.res === 'passou' && r.evid))],
+    ['Reteste o bug do anexo com evidência', (d) => bugsDe(d).some((b) => /anexo|5\s?mb|arquivo/i.test(textoBug(b)) && (b.retestes || []).some((r) => r.res === 'passou' && r.evid))],
+    ['Feche os dois bugs', (d) => { const b = bugsDe(d).filter((x) => x.corrigidoEm === 15); return b.length >= 2 && b.every((x) => x.coluna === 'concluido'); }],
+  ] },
+  { id: 'ep12', titulo: 'Rodada de regressão da Sprint 15', aula: 'EP12', conquista: 'Primeira regressão pega', nivel: 'QA estagiário', link: 'card.html?id=FD-101&aba=plano', itens: [
+    ['Abra a rodada 2 só com o que a correção encosta', (d) => { const R = rodadaDe(d), l = d.planos['FD-101'] || []; return !!R && R.n >= 2 && R.versao === 15 && l.every((c, i) => cenSoDescricao(c) ? !R.sel.includes(i) : (cenTitulo(c) || cenAnexo(c) || cenFeliz(c)) && c.regras.length ? R.sel.includes(i) : true); }],
+    ['Execute a rodada com evidência em todos', (d) => { const R = rodadaDe(d), l = d.planos['FD-101'] || []; return !!R && R.versao === 15 && R.sel.length > 0 && R.sel.every((i) => l[i] && l[i].exec !== 'nao' && l[i].evid); }],
+    ['Reporte o bug de regressão com as versões', (d) => bugsDe(d).some((b) => b.regressao && b.funcionava && b.quebrou)],
+    ['Avise a Beatriz no FlowChat', (d) => { const R = rodadaDe(d); return !!R && Object.values(d.chat).some((m) => m.some((x) => x.de === 'voce' && x.quando >= R.data && /regress|bug|release|segur|recomend|subir/i.test(x.tx))); }],
+  ] },
+  { id: 'ep14', titulo: 'Fechar o ciclo na Sprint 16', aula: 'EP14', conquista: 'Ciclo fechado', nivel: 'QA estagiário', link: 'quadro.html', itens: [
+    ['Reteste e feche o bug de regressão', (d) => bugsDe(d).some((b) => b.corrigidoEm === 16 && b.coluna === 'concluido' && (b.retestes || []).some((r) => r.versao === 16 && r.res === 'passou'))],
+    ['Rode a rodada 3: caminho feliz e cenários de título', (d) => { const R = rodadaDe(d), l = d.planos['FD-101'] || []; return !!R && R.n >= 3 && R.versao === 16 && l.some((c, i) => cenFeliz(c) && R.sel.includes(i)) && l.every((c, i) => !(cenTitulo(c) && c.regras.length) || R.sel.includes(i)) && R.sel.every((i) => l[i] && l[i].exec !== 'nao' && l[i].evid); }],
+    ['Ligue o cenário do título só com espaços à regra nova', (d) => (d.planos['FD-101'] || []).some((c) => c.regras.includes(6))],
+    ['Escreva o cenário de regressão no Gherkin', (d) => /^\s*Cen[aá]rio:.*espa[çc]o/im.test(gherkinDe(d))],
   ] },
 ];
 const bugsDe = (d) => d.cards.filter((c) => c.tipo === 'bug');
@@ -257,7 +340,7 @@ function refrescaCarreira() {
 }
 function conquista(m) {
   const o = document.createElement('div'); o.className = 'conq-fundo'; o.setAttribute('data-test', 'conquista');
-  const extra = m.id === 'ep08' ? '<div class="s2">A Gabriela já está corrigindo. Quando você voltar pro FlowDesk, a <b>Sprint 15</b> estará no ar.</div>' : m.id === 'ep03' ? '<div class="s2">O <b>FlowChat</b> foi liberado: agora dá pra tirar dúvida com o time.</div>' : '';
+  const extra = m.id === 'ep12' ? '<div class="s2">A Gabriela já está corrigindo. Quando você voltar pro FlowDesk, a <b>Sprint 16</b> estará no ar.</div>' : m.id === 'ep14' ? '<div class="s2">Fim do módulo 2. A Sprint 16 foi aprovada e sobe sexta.</div>' : m.id === 'ep08' ? '<div class="s2">A Gabriela já está corrigindo. Quando você voltar pro FlowDesk, a <b>Sprint 15</b> estará no ar.</div>' : m.id === 'ep03' ? '<div class="s2">O <b>FlowChat</b> foi liberado: agora dá pra tirar dúvida com o time.</div>' : '';
   o.innerHTML = `<div class="conq"><div class="ci">${ico('trofeu')}</div><div class="k">CONQUISTA DESBLOQUEADA · +${m.itens.length * XP_ITEM + XP_CONQ} XP</div><div class="v" data-test="conquista-nome">${m.conquista}</div><div class="s">Nível atual: <b>${m.nivel}</b></div>${extra}<button class="btn" data-test="fechar-conquista">Continuar</button></div>`;
   document.body.appendChild(o); $('[data-test=fechar-conquista]', o).onclick = () => { o.remove(); setTimeout(refrescaCarreira, 250); };
   const nv = $('[data-test=nivel]'); if (nv) nv.textContent = m.nivel;
@@ -285,7 +368,7 @@ const chatLiberado = (d = dados()) => (d.conquistas || []).includes('ep03');
 
 // ---------- layout ----------
 const avatar = (p) => p === 'voce' ? '<span class="vc">VC</span>' : `<img class="av" src="img/av_${p}.png" alt="">`;
-const LOGO = '<span class="logo-anim" aria-hidden="true"><img src="img/anim/logo_part1.png?v=1794443603" alt=""><img class="sobe" src="img/anim/logo_part0.png?v=1794443603" alt=""></span>';
+const LOGO = '<span class="logo-anim" aria-hidden="true"><img src="img/anim/logo_part1.png?v=1794448306" alt=""><img class="sobe" src="img/anim/logo_part0.png?v=1794448306" alt=""></span>';
 const MARCA = `<span class="marca">${LOGO}FlowDesk</span>`;
 const pillVersao = () => `<span class="versao" data-test="versao-sistema"><b>Sprint ${VERSAO}</b> · homologação</span>`;
 const SVG = (p, c = '') => `<svg class="${c}" viewBox="0 0 24 24" aria-hidden="true">${p}</svg>`;
@@ -364,7 +447,7 @@ PAGINAS.login = () => {
   document.body.innerHTML = `<div class="tela-login">
     <section class="lg-time"><div class="lg-marca">${LOGO}<span>FlowDesk</span></div>
       <div class="lg-tit"><h1>Seu primeiro dia como QA começa aqui.</h1><div class="lg-trilha"><span class="on">Estagiário</span>${seta}<span>Júnior</span>${seta}<span class="fut">Pleno</span></div></div>
-      <div class="lg-palco"><div class="lg-luz" aria-hidden="true"></div><video src="img/anim/time_acena.webm?v=1794443603" poster="img/anim/time_acena.png?v=1794443603" autoplay muted loop playsinline aria-label="O time do FlowDesk acenando: Rafael, Gabriela, Vinícius, Lucas e Beatriz"></video></div></section>
+      <div class="lg-palco"><div class="lg-luz" aria-hidden="true"></div><video src="img/anim/time_acena.webm?v=1794448306" poster="img/anim/time_acena.png?v=1794448306" autoplay muted loop playsinline aria-label="O time do FlowDesk acenando: Rafael, Gabriela, Vinícius, Lucas e Beatriz"></video></div></section>
     <section class="lg-form"><div class="login">
     <form id="fEntrar" novalidate><span class="lg-chip">SPRINT ${VERSAO} · HOMOLOGAÇÃO</span><h1>Bem-vindo de volta</h1><p class="sub">O time já está te esperando. Use dados de mentira: fica tudo salvo só neste navegador.</p>
       <div class="campo"><label for="email">E-mail</label><input class="in" id="email" type="email" data-test="login-email" autocomplete="username" placeholder="voce@empresa.com"></div>
@@ -412,6 +495,9 @@ const DICA_MISSAO = {
   ep03: 'Termina o plano do FD-101: cada regra do card precisa de pelo menos um cenário.',
   ep06: 'Agora passa os cenários pro Gherkin. Dado, Quando, Então, e um Quando por cenário.',
   ep08: 'Hora de executar o plano. Cenário que falhar vira bug, com passos e evidência.',
+  ep10: 'A Gabriela corrigiu os bugs. Refaça os passos de cada um, na Sprint 15, e feche com o print.',
+  ep12: 'Abra a rodada 2 só com o que a correção encosta, e execute com evidência.',
+  ep14: 'Sprint 16 no ar: reteste o bug de regressão, rode a rodada 3 e deixe a suíte em dia.',
 };
 PAGINAS.dashboard = () => {
   const d = dados(), c = contas()[sessao()];
@@ -513,6 +599,7 @@ PAGINAS['novo-chamado'] = () => {
     const t = $('#titulo').value, ds = $('#descricao').value;
     let ok = true;
     if (BUG.tituloSoEspacos ? t.length === 0 : t.trim().length === 0) { erroCampo('titulo', 'Título é obrigatório'); ok = false; }
+    else if (BUG.titulo100 && t.trim().length >= 100) { erroCampo('titulo', 'Título deve ter até 100 caracteres'); ok = false; }
     if (ds.trim().length === 0) { erroCampo('descricao', 'Descrição é obrigatória'); ok = false; }
     if (!ok) return;
     const d = dados(), id = d.proximoChamado++;
@@ -546,7 +633,7 @@ const COR_COLUNA = { afazer: '#6b6e86', dev: '#60a5fa', qa: '#a78bfa', teste: '#
 const PRIOS = ['Baixa', 'Normal', 'Alta', 'Urgente'];
 const prioDe = (c) => ({ 'Média': 'Normal', 'Crítica': 'Urgente' }[c.prioridade || c.severidade] || c.prioridade || c.severidade || 'Normal');
 const flag = (p) => `<span class="flag f-${p.toLowerCase()}"><svg viewBox="0 0 24 24"><path d="M5 21V4h11l-1.5 4L16 12H5"/></svg>${p}</span>`;
-const etiqueta = (c) => c.tipo === 'bug' ? '<span class="etq etq-bug">bug</span>' : c.tipo === 'melhoria' ? '<span class="etq etq-mel">melhoria</span>' : '<span class="etq etq-story">história</span>';
+const etiqueta = (c) => c.tipo === 'bug' ? '<span class="etq etq-bug">bug</span>' + (c.regressao ? '<span class="etq etq-reg" data-test="etiqueta-regressao">regressão</span>' : '') + (c.reaberto ? '<span class="etq etq-rea" data-test="etiqueta-reaberto">reaberto</span>' : '') : c.tipo === 'melhoria' ? '<span class="etq etq-mel">melhoria</span>' : '<span class="etq etq-story">história</span>';
 const nomeColuna = (k) => COLUNAS.find((x) => x[0] === k)[1];
 function cardFace(c) {
   const d = dados(), plano = d.planos[c.id], tot = c.criterios.length, ok = critOk(d, c).length;
@@ -561,7 +648,7 @@ PAGINAS.quadro = () => {
       <div class="h"><h3>${n}</h3><span class="cnt" data-test="contagem-${k}"></span>${k === 'afazer' ? '<button class="mais" data-test="nova-tarefa" title="Nova tarefa" aria-label="Nova tarefa">+</button>' : ''}</div>
       <div class="cards"></div>${k === 'afazer' ? '<button class="add-tarefa" data-test="adicionar-tarefa">+ Adicionar tarefa</button>' : ''}</section>`).join('')}</div>
     <p class="dica" style="margin-top:12px">Você move os seus cards arrastando, ou pelo próprio card. Os cards dos outros ficam com eles.</p>
-    <div class="desfile" aria-hidden="true"><div class="chao"></div>${anda.map(([v, atraso, cls]) => `<div class="anda ${cls}" style="animation-delay:${atraso}s"><video src="img/anim/${v}.webm?v=1794443603" poster="img/anim/${v}.png?v=1794443603" autoplay muted loop playsinline></video></div>`).join('')}</div>`);
+    <div class="desfile" aria-hidden="true"><div class="chao"></div>${anda.map(([v, atraso, cls]) => `<div class="anda ${cls}" style="animation-delay:${atraso}s"><video src="img/anim/${v}.webm?v=1794448306" poster="img/anim/${v}.png?v=1794448306" autoplay muted loop playsinline></video></div>`).join('')}</div>`);
   const pinta = () => {
     COLUNAS.forEach(([k]) => {
       const l = dados().cards.filter((c) => c.coluna === k), col = $(`[data-col=${k}]`);
@@ -595,7 +682,9 @@ function novaTarefa(depois, ctx) {
     ${ctx ? `<p class="liga" data-test="bug-cenario">Ligado ao cenário ${ctx.n} do plano: <b>${esc(ctx.nome)}</b></p>` : ''}
     <div class="so-bug"><div class="campo"><label for="tPassos">Passos para reproduzir <i>*</i></label><textarea class="in" id="tPassos" data-test="bug-passos" placeholder="1. …&#10;2. …&#10;3. …"></textarea></div>
       <div class="linha2"><div class="campo"><label for="tEsp">Resultado esperado <i>*</i></label><input class="in" id="tEsp" data-test="bug-esperado"></div><div class="campo"><label for="tObt">Resultado obtido <i>*</i></label><input class="in" id="tObt" data-test="bug-obtido"></div></div>
-      <div class="campo"><label for="tEvid">Evidência <i>*</i> <small>(print ou vídeo do que aconteceu)</small></label><label class="arquivo ${ctx && ctx.evid ? 'tem' : ''}" for="tEvid" id="tEvidBox"><input type="file" id="tEvid" data-test="bug-evidencia"><span class="btn sec peq">${ctx && ctx.evid ? 'Trocar arquivo' : 'Escolher arquivo'}</span><span class="nome" id="nomeEv" data-test="bug-evidencia-nome">${ctx && ctx.evid ? `${esc(ctx.evid)} <em>· veio do cenário ${ctx.n}</em>` : 'Nenhum arquivo escolhido'}</span></label></div></div>
+      <div class="campo"><label for="tEvid">Evidência <i>*</i> <small>(print ou vídeo do que aconteceu)</small></label><label class="arquivo ${ctx && ctx.evid ? 'tem' : ''}" for="tEvid" id="tEvidBox"><input type="file" id="tEvid" data-test="bug-evidencia"><span class="btn sec peq">${ctx && ctx.evid ? 'Trocar arquivo' : 'Escolher arquivo'}</span><span class="nome" id="nomeEv" data-test="bug-evidencia-nome">${ctx && ctx.evid ? `${esc(ctx.evid)} <em>· veio do cenário ${ctx.n}</em>` : 'Nenhum arquivo escolhido'}</span></label></div>
+      ${VERSAO >= 15 ? `<label class="cr reg-ck" data-test="bug-regressao"><input type="checkbox" id="tReg"> É regressão: funcionava antes e parou</label>
+      <div class="linha2" id="tRegC" hidden><div class="campo"><label for="tFun">Funcionava em</label><select class="in" id="tFun" data-test="bug-funcionava">${[13, 14, 15].filter((v) => v < VERSAO).map((v) => `<option value="${v}" ${v === VERSAO - 1 ? 'selected' : ''}>Sprint ${v}</option>`).join('')}</select></div><div class="campo"><label for="tQue">Quebrou em</label><select class="in" id="tQue" data-test="bug-quebrou"><option value="${VERSAO}">Sprint ${VERSAO}</option></select></div></div>` : ''}</div>
     <div class="so-mel" hidden><div class="campo"><label for="tDesc">Descrição <i>*</i></label><textarea class="in" id="tDesc" data-test="melhoria-descricao" placeholder="O que poderia ser melhor, e por quê"></textarea></div></div>
     <p class="dica" id="tDest">O bug vai pra coluna A fazer, com a Gabriela.</p>
     <div class="fbtns"><button type="button" class="btn sec" data-fecha>Cancelar</button><button class="btn" data-test="criar-tarefa">Criar tarefa</button></div></form>`;
@@ -606,6 +695,7 @@ function novaTarefa(depois, ctx) {
   const tipo = () => $('input[name=tipo]:checked', o).value;
   $$('input[name=tipo]', o).forEach((r) => { r.onchange = () => { const bug = tipo() === 'bug'; $('.so-bug', o).hidden = !bug; $('.so-mel', o).hidden = bug; $('#tDest').textContent = bug ? 'O bug vai pra coluna A fazer, com a Gabriela.' : 'A melhoria vai pra coluna A fazer, com o Rafael, que decide se entra na sprint.'; limpaErros(); }; });
   $('#tEvid').onchange = () => { const f = $('#tEvid').files[0]; if (f) $('#nomeEv').textContent = f.name; else if (!(ctx && ctx.evid)) $('#nomeEv').textContent = 'Nenhum arquivo escolhido'; };
+  if ($('#tReg')) $('#tReg').onchange = () => { $('#tRegC').hidden = !$('#tReg').checked; if ($('#tReg').checked && $('#tPrio').value === 'Normal') $('#tPrio').value = 'Alta'; };
   $('#tTitulo').focus();
   $('#fT').onsubmit = (ev) => {
     ev.preventDefault(); limpaErros(); let ok = true; const v = (i) => $('#' + i).value.trim(), bug = tipo() === 'bug';
@@ -617,7 +707,7 @@ function novaTarefa(depois, ctx) {
     if (bug) {
       id = 'BUG-' + String(d.proximoBug++).padStart(2, '0'); const f = $('#tEvid').files[0];
       if (!v('tTitulo')) _pv('bugtit');
-      d.cards.push({ id, titulo: v('tTitulo'), coluna: 'afazer', resp: 'gabriela', tipo: 'bug', prioridade: v('tPrio'), relacionado: v('tCard'), cenario: ctx ? ctx.nome : '', passos: v('tPassos'), esperado: v('tEsp'), obtido: v('tObt'), evidencia: f ? f.name : (ctx && ctx.evid) || '', criterios: [], ok: [], comentarios: [], criadoEm: agora() });
+      d.cards.push({ id, titulo: v('tTitulo'), coluna: 'afazer', resp: 'gabriela', tipo: 'bug', prioridade: v('tPrio'), relacionado: v('tCard'), cenario: ctx ? ctx.nome : '', passos: v('tPassos'), esperado: v('tEsp'), obtido: v('tObt'), evidencia: f ? f.name : (ctx && ctx.evid) || '', ...($('#tReg') && $('#tReg').checked ? { regressao: true, funcionava: +$('#tFun').value, quebrou: +$('#tQue').value } : {}), criterios: [], ok: [], comentarios: [], criadoEm: agora() });
       d.chat.bugs.push({ de: 'voce', tx: `Abri o ${id}: ${v('tTitulo')}`, quando: agora() });
     } else {
       d.proximoMelhoria = d.proximoMelhoria || 1; id = 'MEL-' + d.proximoMelhoria++;
@@ -625,6 +715,42 @@ function novaTarefa(depois, ctx) {
     }
     if (bug && ctx) { const l = d.planos[ctx.card] || []; if (l[ctx.i]) l[ctx.i].bug = id; }
     salvar(); fecha(); toast(`${id} criado${bug ? ' e enviado pra Gabriela' : ''}`); if (depois) depois(id); confereMissoes();
+  };
+}
+
+// ---------- reteste do bug ----------
+function retesteHtml(c) {
+  const ult = [...c.comentarios].reverse().find((m) => m.de === 'gabriela');
+  const hist = (c.retestes || []).length ? `<div class="rt-h" data-test="reteste-historico">${c.retestes.map((r) => `<div class="rt-l ${r.res}"><b>${r.res === 'passou' ? '✓ Passou' : '✕ Falhou'}</b><span>Sprint ${r.versao} · ${dataBR(r.quando)}</span><span class="rt-ev">${ico('clipe')}${esc(r.evid)}</span>${r.com ? `<span class="rt-c">${esc(r.com)}</span>` : ''}</div>`).join('')}</div>` : '';
+  let corpo;
+  if (c.coluna === 'qa') corpo = `${ult ? fala('gabriela', 'Gabriela · Dev', esc(ult.tx)) : ''}<p class="dica">Refaça os passos abaixo, do mesmo jeito do report, e registre o resultado com o print.</p><button class="btn" id="abreRt" data-test="retestar">Retestar</button>
+    <form id="fRt" class="rt-f" hidden novalidate><div class="linha2"><div class="campo"><label for="rtV">Versão em que você testou</label><select class="in" id="rtV" data-test="reteste-versao">${[14, 15, 16].filter((v) => v <= VERSAO).map((v) => `<option value="${v}" ${v === VERSAO ? 'selected' : ''}>Sprint ${v}</option>`).join('')}</select></div>
+      <div class="campo"><label>Resultado</label><div class="seg" id="rtSeg"><label data-test="reteste-passou"><input type="radio" name="rtR" value="passou"><span>Passou</span></label><label data-test="reteste-falhou"><input type="radio" name="rtR" value="falhou"><span>Falhou</span></label></div></div></div>
+      <div class="campo"><label for="rtE">Evidência <i>*</i> <small>(o print do reteste)</small></label><label class="arquivo" for="rtE" id="rtBox"><input type="file" id="rtE" data-test="reteste-evidencia"><span class="btn sec peq">Escolher arquivo</span><span class="nome" id="rtN">Nenhum arquivo escolhido</span></label></div>
+      <div class="campo"><label for="rtC">Comentário <small>(opcional)</small></label><input class="in" id="rtC" data-test="reteste-comentario" placeholder="Ex.: testei também com 1 espaço e com espaço antes do texto"></div>
+      <div class="fbtns"><button type="button" class="btn sec" id="rtX">Cancelar</button><button class="btn" data-test="salvar-reteste">Registrar reteste</button></div></form>`;
+  else if (c.coluna === 'concluido') corpo = '<p class="dica" data-test="bug-fechado">Bug fechado depois do reteste.</p>';
+  else corpo = `<p class="dica">${c.reaberto ? 'Reaberto: voltou pra Gabriela com o print do reteste.' : 'Esperando a correção da Gabriela.'}</p>`;
+  return `<div class="sec rt" data-test="reteste"><div class="k">Reteste</div>${corpo}${hist}</div>`;
+}
+function ligaReteste(c) {
+  if (!$('#abreRt')) return;
+  $('#abreRt').onclick = () => { $('#fRt').hidden = false; $('#abreRt').hidden = true; };
+  $('#rtX').onclick = () => { $('#fRt').hidden = true; $('#abreRt').hidden = false; limpaErros(); };
+  $('#rtE').onchange = () => { const f = $('#rtE').files[0]; $('#rtN').textContent = f ? f.name : 'Nenhum arquivo escolhido'; };
+  $('#fRt').onsubmit = (ev) => {
+    ev.preventDefault(); limpaErros(); let ok = true;
+    const v = +$('#rtV').value, r = ($('input[name=rtR]:checked') || {}).value, f = $('#rtE').files[0];
+    if (c.corrigidoEm && v < c.corrigidoEm) { erroCampo('rtV', `A correção entrou na Sprint ${c.corrigidoEm}. Retestar na ${v} não prova nada.`); ok = false; }
+    if (!r) { erroCampo('rtSeg', 'Diga se passou ou falhou'); ok = false; }
+    if (!f) { erroCampo('rtBox', 'Anexe o print do reteste: ele fecha o bug do mesmo jeito que o print do erro abriu'); ok = false; }
+    if (!ok) return;
+    const d = dados();
+    c.retestes = c.retestes || []; c.retestes.push({ quando: agora(), versao: v, res: r, evid: f.name, com: $('#rtC').value.trim() });
+    c.comentarios.push({ tx: `Reteste na Sprint ${v}: ${r}. Evidência: ${f.name}${$('#rtC').value.trim() ? '. ' + $('#rtC').value.trim() : ''}`, quando: agora() });
+    if (r === 'passou') { c.coluna = 'concluido'; c.reaberto = false; c.comentarios.push({ de: 'gabriela', tx: 'Valeu pelo reteste! 🙌', quando: agora() }); }
+    else { c.coluna = 'afazer'; c.reaberto = true; c.comentarios.push({ de: 'gabriela', tx: 'Vixe. Vou olhar de novo, obrigada pelo print.', quando: agora() }); d.chat.bugs.push({ de: 'voce', tx: `Reabri o ${c.id}: o reteste na Sprint ${v} falhou.`, quando: agora() }); }
+    salvar(); recado(r === 'passou' ? `${c.id} fechado` : `${c.id} reaberto e devolvido pra Gabriela`); confereMissoes(); setTimeout(() => location.reload(), 300);
   };
 }
 
@@ -639,7 +765,7 @@ PAGINAS.card = () => {
   casca(c.id === 'FD-101' ? 'card:' + aba : 'quadro', `<div class="topo"><div><div class="crumb"><a href="quadro.html">Quadro</a> / Sprint ${VERSAO}</div>
       <h2 data-test="titulo-pagina">${etiqueta(c)} <span style="color:var(--acc2)">${c.id}</span> · <span data-test="card-titulo" style="color:var(--txt)">${esc(c.titulo)}</span></h2></div></div>
     <div class="meta">
-      <div class="mi"><div class="k">Status</div><div class="v">${c.resp === 'voce' ? `<select class="in" id="mover" data-test="mover-card" style="height:32px;font-size:14px;min-width:190px">${COLUNAS.filter(([k]) => k === c.coluna || (MOVES_QA[c.coluna] || []).includes(k)).map(([k, n]) => `<option value="${k}" ${k === c.coluna ? 'selected' : ''}>${n}</option>`).join('')}</select>` : `<span class="pill-st" style="--cor:${COR_COLUNA[c.coluna]}" data-test="coluna-card"><i></i>${nomeColuna(c.coluna)}</span>`}</div></div>
+      <div class="mi"><div class="k">Status</div><div class="v">${c.resp === 'voce' ? `<select class="in" id="mover" data-test="mover-card" style="height:32px;font-size:14px;min-width:190px">${COLUNAS.filter(([k]) => k === c.coluna || (MOVES_QA[c.coluna] || []).includes(k)).map(([k, n]) => `<option value="${k}" ${k === c.coluna ? 'selected' : ''}>${n}</option>`).join('')}</select>` : `<span class="pill-st" style="--cor:${COR_COLUNA[c.coluna]}" data-test="coluna-card"><i></i>${c.tipo === 'bug' && c.coluna === 'concluido' ? 'Fechado' : nomeColuna(c.coluna)}</span>`}</div></div>
       <div class="mi"><div class="k">Responsável</div><div class="v">${avatar(c.resp)}${PESSOAS[c.resp].nome}</div></div>
       <div class="mi"><div class="k">Prioridade</div><div class="v" data-test="card-prioridade">${flag(prioDe(c))}</div></div>
       ${tot ? `<div class="mi"><div class="k">Critérios validados</div><div class="v" id="critN">${critOk(d, c).length}/${tot}</div></div>` : ''}</div>
@@ -661,7 +787,7 @@ PAGINAS.card = () => {
     const A = $('#abaConteudo');
     if (k === 'detalhes') {
       A.innerHTML = c.tipo === 'bug'
-        ? `<div class="sec"><div class="k">Card relacionado</div><div class="v">${c.relacionado ? `<a href="card.html?id=${c.relacionado}">${c.relacionado}</a>` : '—'}</div></div>` + campo('Passos para reproduzir', c.passos) + campo('Resultado esperado', c.esperado) + campo('Resultado obtido', c.obtido) + campo('Evidência', c.evidencia || '')
+        ? retesteHtml(c) + `<div class="sec"><div class="k">Card relacionado</div><div class="v">${c.relacionado ? `<a href="card.html?id=${c.relacionado}">${c.relacionado}</a>` : '—'}</div></div>` + campo('Passos para reproduzir', c.passos) + campo('Resultado esperado', c.esperado) + campo('Resultado obtido', c.obtido) + campo('Evidência', c.evidencia || '') + (c.regressao ? campo('Funcionava em', c.funcionava ? 'Sprint ' + c.funcionava : '') + campo('Quebrou em', c.quebrou ? 'Sprint ' + c.quebrou : '') : '')
         : campo('Descrição', c.descricao) + (c.tipo === 'melhoria' ? '' : critHtml());
       if (c.tipo !== 'bug') {
         const pl = d.planos[c.id] || [], ex = pl.filter((x) => x.exec === 'passou' || x.exec === 'falhou').length, fal = pl.filter((x) => x.exec === 'falhou' || (_c('falha') && x.jaFalhou)).length, _f = pl.some((x) => x.exec !== 'falhou' && x.jaFalhou) && _c('falha') && _pv('falha'), bugs = pl.filter((x) => x.bug).length;
@@ -674,13 +800,14 @@ PAGINAS.card = () => {
       }
       $$('[data-test=criterio]').forEach((k2) => { k2.onchange = () => { const i = +k2.dataset.i; c.ok = k2.checked ? [...new Set([...c.ok, i])] : c.ok.filter((x) => x !== i); salvar(); if ($('#critN')) $('#critN').textContent = `${c.ok.length}/${tot}`; }; });
       $$('[data-cen]').forEach((b) => { b.onclick = () => mostra('plano'); });
+      if (c.tipo === 'bug') ligaReteste(c);
       if ($('#abrePlano')) $('#abrePlano').onclick = () => mostra('plano');
     } else if (k === 'plano') {
       montaPlano(A, c);
     } else if (k === 'gherkin') {
       montaGherkin(A, c, contagens);
     } else {
-      A.innerHTML = `<div class="sec"><div id="coms">${c.comentarios.map((m) => `<div class="coment">${avatar('voce')}<div class="bx"><b>Você</b><small>${dataBR(m.quando)}</small><div>${esc(m.tx)}</div></div></div>`).join('') || '<div class="v nada" style="font-size:15px">Nenhum comentário ainda.</div>'}</div>
+      A.innerHTML = `<div class="sec"><div id="coms">${c.comentarios.map((m) => `<div class="coment">${avatar(m.de || 'voce')}<div class="bx"><b>${m.de ? PESSOAS[m.de].nome : 'Você'}</b><small>${dataBR(m.quando)}</small><div>${esc(m.tx)}</div></div></div>`).join('') || '<div class="v nada" style="font-size:15px">Nenhum comentário ainda.</div>'}</div>
         <div style="display:flex;gap:10px;margin-top:12px"><input class="in" id="com" placeholder="Escreva um comentário…" data-test="comentario"><button class="btn" id="enviaCom" data-test="enviar-comentario">Comentar</button></div></div>`;
       $('#enviaCom').onclick = () => { const t = _c('com') ? $('#com').value.replace(/^\n+|\n+$/g, '') : $('#com').value.trim(); if (!t) return; if (!t.trim()) _pv('com'); c.comentarios.push({ tx: t, quando: agora() }); salvar(); contagens(); mostra('comentarios'); };
     }
@@ -701,7 +828,7 @@ function montaGherkin(A, card, contagens) {
           <textarea id="gk" data-test="editor-gherkin" spellcheck="false" autocomplete="off" autocapitalize="off" aria-label="Arquivo ${arq}"></textarea></div></div></div>
       <p class="dica" style="margin-top:10px">Dica: <b>Tab</b> faz o recuo. O FlowDesk salva enquanto você escreve.</p>
     </div>
-    <aside><div class="rafa"><div class="rafa-b"><div class="bk">RAFAEL · PO</div><div class="bt">Escreve do jeito que eu leio: <b>Dado</b> o contexto, <b>Quando</b> a ação, <b>Então</b> o que eu vejo.</div></div><video src="img/anim/rafael_fala.webm?v=1794443603" poster="img/anim/rafael_fala.png?v=1794443603" autoplay muted loop playsinline aria-hidden="true"></video></div><div class="cov" id="gkRev" data-test="revisao-gherkin"></div></aside></div>`;
+    <aside><div class="rafa"><div class="rafa-b"><div class="bk">RAFAEL · PO</div><div class="bt">Escreve do jeito que eu leio: <b>Dado</b> o contexto, <b>Quando</b> a ação, <b>Então</b> o que eu vejo.</div></div><video src="img/anim/rafael_fala.webm?v=1794448306" poster="img/anim/rafael_fala.png?v=1794448306" autoplay muted loop playsinline aria-hidden="true"></video></div><div class="cov" id="gkRev" data-test="revisao-gherkin"></div></aside></div>`;
   const ta = $('#gk'), cor = $('#gkCor'), nums = $('#gkNums');
   ta.value = gherkinDe(dados(), card.id);
   const atualiza = () => {
@@ -792,9 +919,12 @@ function montaPlano(A, card) {
         <div class="campo"><label>Quais regras esse cenário cobre?</label><div class="regras-check">${REGRAS.map((r, i) => `<label class="cr"><input type="checkbox" value="${i}" data-test="cenario-regra">${r}</label>`).join('')}</div></div>
         <div class="fbtns"><button type="button" class="btn sec" id="cancela" hidden data-test="cancelar-edicao">Cancelar</button><button class="btn" data-test="salvar-cenario" id="salva">Adicionar cenário</button></div>
       </form></div>
-      <aside><div class="cov" id="cov" data-test="cobertura"><div class="hd">Cobertura das regras<span class="cnt" id="cnt" data-test="cobertura-contagem">0/6</span></div><div class="bar"><i id="bar"></i></div>
-        ${REGRAS.map((r, i) => `<div class="rl" id="u${i}" data-test="regra"><b>✓</b>${r}<span class="q" id="q${i}" hidden></span></div>`).join('')}<div class="ex" id="ex" hidden></div><div class="gabi-b" id="gabiB" data-test="recado-gabriela"><b>GABRIELA · DEV</b><span id="gabiT"></span></div><div class="gabi" aria-hidden="true"><video src="img/anim/gabriela_quadro.webm?v=1794443603" poster="img/anim/gabriela_quadro.png?v=1794443603" autoplay muted loop playsinline></video></div></div></aside></div>`;
+      <aside><div class="cov" id="cov" data-test="cobertura"><div class="hd">Cobertura das regras<span class="cnt" id="cnt" data-test="cobertura-contagem">0/${REGRAS.length}</span></div><div class="bar"><i id="bar"></i></div>
+        ${REGRAS.map((r, i) => `<div class="rl" id="u${i}" data-test="regra"><b>✓</b>${r}<span class="q" id="q${i}" hidden></span></div>`).join('')}<div class="ex" id="ex" hidden></div><div class="gabi-b" id="gabiB" data-test="recado-gabriela"><b>GABRIELA · DEV</b><span id="gabiT"></span></div><div class="gabi" aria-hidden="true"><video src="img/anim/gabriela_quadro.webm?v=1794448306" poster="img/anim/gabriela_quadro.png?v=1794448306" autoplay muted loop playsinline></video></div></div></aside></div>`;
   let editando = null; const abertos = new Set();
+  d.rodadas = d.rodadas || {};
+  const rod = () => d.rodadas[id] || null;
+  const naRodada = (i) => !rod() || rod().sel.includes(i);
   const gabi = (tom, tx) => { $('#gabiB').className = 'gabi-b ' + tom; $('#gabiT').textContent = tx; };
   { const ruim = lista.map((c) => revisaCenario(c)).findIndex((r) => r[0] === 'ruim');
     if (!lista.length) gabi('', 'Sou eu que vou ler esse plano. Começa pelo caminho feliz e depois pensa: e se o usuário fizer errado?');
@@ -812,19 +942,21 @@ function montaPlano(A, card) {
   const pinta = () => {
     $('#linhas').innerHTML = lista.length ? lista.map((c, i) => {
       const fora = !c.regras.length, t = TIPOS[c.tipo];
-      return `<tr class="${fora ? 'fora' : ''} st-${c.exec || 'nao'}" data-test="linha-cenario"><td class="num"><span>${i + 1}</span></td><td><div class="cn">${esc(c.nome)}</div><div class="tgs"><span class="tg ${t[1]}">${t[0]}</span>${fora ? `<span class="tg tX">FORA DAS REGRAS</span>` : ''}${fraco(c) ? `<span class="tg tF" data-test="cenario-fraco">NÃO CONTA NA COBERTURA</span>` : ''}${c.exec && c.exec !== 'nao' && !c.evid ? `<span class="tg tF" data-test="sem-evidencia">SEM EVIDÊNCIA</span>` : ''}</div>${c.passos ? `<button type="button" class="link" data-ps="${i}" data-test="ver-passos">${abertos.has(i) ? 'Esconder passos' : 'Ver passos'}</button><div class="passos" ${abertos.has(i) ? '' : 'hidden'}>${esc(c.passos)}</div>` : ''}<div class="res"><small>Resultado esperado</small>${esc(c.esperado)}</div>${c.regras.includes(3) ? `<button type="button" class="link arq-btn" data-arqbtn data-test="abrir-arquivos">${ico('clipe')}Arquivos de teste</button>` : ''}</td>
-        <td><div class="xcel"><div class="xseg"><button type="button" class="sg ok ${c.exec === 'passou' ? 'on' : ''}" data-x="${i}" data-v="passou" data-test="marcar-passou">✓ Passou</button><button type="button" class="sg nok ${c.exec === 'falhou' ? 'on' : ''}" data-x="${i}" data-v="falhou" data-test="marcar-falhou">✕ Falhou</button></div><select class="exec-sel" data-i="${i}" data-test="execucao" aria-label="Execução do cenário ${i + 1}"><option value="nao" ${c.exec === 'passou' || c.exec === 'falhou' ? '' : 'selected'}>Não executado</option><option value="passou" ${c.exec === 'passou' ? 'selected' : ''}>Passou</option><option value="falhou" ${c.exec === 'falhou' ? 'selected' : ''}>Falhou</option></select><div class="xlinks">${c.exec === 'falhou' ? (c.bug ? `<a class="bugchip" href="card.html?id=${c.bug}" data-test="bug-ligado">${ico('bug')}${c.bug}</a>` : `<button type="button" class="xl bug" data-bug="${i}" data-test="reportar-bug">${ico('bug')}Reportar bug</button>`) : ''}${c.exec && c.exec !== 'nao' ? `<label class="xl ev ${c.evid ? 'tem' : ''}" title="Print ou vídeo da execução"><input type="file" data-ev="${i}" data-test="evidencia-cenario" accept="image/*,video/*,.pdf" hidden>${ico('clipe')}${c.evid ? esc(c.evid) : 'Anexar evidência'}</label>` : ''}</div></div></td>
+      const dentro = naRodada(i), hist = (c.hist || []).length ? `<div class="hist-r" data-test="historico-rodadas">${c.hist.map((h) => `<span class="hr ${h.exec}" title="Rodada ${h.r} · Sprint ${h.v}">R${h.r} · S${h.v} ${h.exec === 'passou' ? '✓' : h.exec === 'falhou' ? '✕' : '–'}</span>`).join('')}${rod() && dentro ? `<span class="hr atual ${c.exec}">R${rod().n} · S${rod().versao} ${c.exec === 'passou' ? '✓' : c.exec === 'falhou' ? '✕' : '…'}</span>` : ''}</div>` : '';
+      return `<tr class="${fora ? 'fora' : ''} ${dentro ? '' : 'fora-rod'} st-${dentro ? c.exec || 'nao' : 'nao'}" data-test="linha-cenario"><td class="num"><span>${i + 1}</span></td><td><div class="cn">${esc(c.nome)}</div><div class="tgs"><span class="tg ${t[1]}">${t[0]}</span>${fora ? `<span class="tg tX">FORA DAS REGRAS</span>` : ''}${fraco(c) ? `<span class="tg tF" data-test="cenario-fraco">NÃO CONTA NA COBERTURA</span>` : ''}${c.exec && c.exec !== 'nao' && !c.evid ? `<span class="tg tF" data-test="sem-evidencia">SEM EVIDÊNCIA</span>` : ''}</div>${c.passos ? `<button type="button" class="link" data-ps="${i}" data-test="ver-passos">${abertos.has(i) ? 'Esconder passos' : 'Ver passos'}</button><div class="passos" ${abertos.has(i) ? '' : 'hidden'}>${esc(c.passos)}</div>` : ''}<div class="res"><small>Resultado esperado</small>${esc(c.esperado)}</div>${hist}${c.regras.includes(3) ? `<button type="button" class="link arq-btn" data-arqbtn data-test="abrir-arquivos">${ico('clipe')}Arquivos de teste</button>` : ''}</td>
+        <td>${dentro ? '' : `<div class="xfora" data-test="fora-da-rodada">Fora da rodada ${rod().n}</div>`}<div class="xcel" ${dentro ? '' : 'hidden'}><div class="xseg"><button type="button" class="sg ok ${c.exec === 'passou' ? 'on' : ''}" data-x="${i}" data-v="passou" data-test="marcar-passou">✓ Passou</button><button type="button" class="sg nok ${c.exec === 'falhou' ? 'on' : ''}" data-x="${i}" data-v="falhou" data-test="marcar-falhou">✕ Falhou</button></div><select class="exec-sel" data-i="${i}" data-test="execucao" aria-label="Execução do cenário ${i + 1}"><option value="nao" ${c.exec === 'passou' || c.exec === 'falhou' ? '' : 'selected'}>Não executado</option><option value="passou" ${c.exec === 'passou' ? 'selected' : ''}>Passou</option><option value="falhou" ${c.exec === 'falhou' ? 'selected' : ''}>Falhou</option></select><div class="xlinks">${c.exec === 'falhou' ? (c.bug ? `<a class="bugchip" href="card.html?id=${c.bug}" data-test="bug-ligado">${ico('bug')}${c.bug}</a>` : `<button type="button" class="xl bug" data-bug="${i}" data-test="reportar-bug">${ico('bug')}Reportar bug</button>`) : ''}${c.exec && c.exec !== 'nao' ? `<label class="xl ev ${c.evid ? 'tem' : ''}" title="Print ou vídeo da execução"><input type="file" data-ev="${i}" data-test="evidencia-cenario" accept="image/*,video/*,.pdf" hidden>${ico('clipe')}${c.evid ? esc(c.evid) : 'Anexar evidência'}</label>` : ''}</div></div></td>
         <td><div class="acoes"><button class="icone" data-ed="${i}" data-test="editar-cenario" title="Editar cenário"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg></button><button class="icone rm" data-rm="${i}" data-test="excluir-cenario" title="Excluir cenário"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M8 6V4h8v2"/><path d="M19 6l-1 14H6L5 6"/></svg></button></div></td></tr>`;
     }).join('') : '<tr><td colspan="4" class="vazio" data-test="plano-vazio">Nenhum cenário ainda</td></tr>';
     let n = 0;
     REGRAS.forEach((r, i) => { const quem = lista.map((c, j) => c.regras.includes(i) && !fraco(c) ? j + 1 : 0).filter(Boolean); const on = quem.length > 0; if (on) n++; $('#u' + i).classList.toggle('on', on); $('#q' + i).hidden = !on; $('#q' + i).textContent = quem.length === 1 ? 'CENÁRIO ' + quem[0] : quem.join(' · '); });
     setTimeout(confereMissoes, 400);
-    $('#cnt').textContent = n + '/6'; $('#bar').style.width = (n / 6 * 100) + '%'; $('#cov').classList.toggle('done', n === 6);
+    $('#cnt').textContent = n + '/' + REGRAS.length; $('#bar').style.width = (n / REGRAS.length * 100) + '%'; $('#cov').classList.toggle('done', n === REGRAS.length);
     const fora = lista.map((c, j) => c.regras.length ? 0 : j + 1).filter(Boolean);
     $('#ex').hidden = !fora.length; $('#ex').textContent = `+ Cenário ${fora.join(', ')}: fora das regras`;
-    const ok = lista.filter((c) => c.exec === 'passou').length, nok = lista.filter((c) => c.exec === 'falhou').length, tot = lista.length;
-    $('#xres').hidden = !tot;
-    $('#xres').innerHTML = `<div class="xtop"><span class="xt">Execução</span><span class="xn"><b>${ok + nok}</b> de ${tot} executados</span></div><div class="xb"><i style="width:${tot ? ok / tot * 100 : 0}%"></i><i class="f" style="width:${tot ? nok / tot * 100 : 0}%"></i></div><div class="xleg"><span class="xp"><i></i>${ok} passou</span><span class="xf"><i></i>${nok} falhou</span><span class="xz"><i></i>${tot - ok - nok} a executar</span></div>`;
+    const daRod = lista.filter((c, i) => naRodada(i)), ok = daRod.filter((c) => c.exec === 'passou').length, nok = daRod.filter((c) => c.exec === 'falhou').length, tot = daRod.length;
+    $('#xres').hidden = !lista.length;
+    const R = rod(), nR = R ? R.n : 1, vR = R ? R.versao : 14;
+    $('#xres').innerHTML = `<div class="xrod" data-test="rodada-atual"><span class="xr-n">Rodada ${nR}</span><span class="xr-v">Sprint ${vR}${R ? ' · ' + dataHora(R.data) : ''}</span>${VERSAO >= 15 ? `<button type="button" class="btn sec peq" id="novaRod" data-test="nova-rodada">Nova rodada</button>` : ''}</div><div class="xtop"><span class="xt">Execução</span><span class="xn"><b>${ok + nok}</b> de ${tot} executados</span></div><div class="xb"><i style="width:${tot ? ok / tot * 100 : 0}%"></i><i class="f" style="width:${tot ? nok / tot * 100 : 0}%"></i></div><div class="xleg"><span class="xp"><i></i>${ok} passou</span><span class="xf"><i></i>${nok} falhou</span><span class="xz"><i></i>${tot - ok - nok} a executar</span></div>`;
     if ($('#n-plano')) $('#n-plano').textContent = lista.length || '';
     $$('[data-test=execucao]').forEach((s) => { s.onchange = () => { lista[+s.dataset.i].exec = s.value; if (s.value === 'falhou') lista[+s.dataset.i].jaFalhou = true; salvar(); pinta(); }; });
     $$('[data-x]').forEach((b) => { b.onclick = () => { const i = +b.dataset.x, c = lista[i]; c.exec = c.exec === b.dataset.v ? 'nao' : b.dataset.v; if (c.exec === 'falhou') c.jaFalhou = true; salvar(); pinta();
@@ -833,7 +965,30 @@ function montaPlano(A, card) {
     $$('[data-bug]').forEach((b) => { b.onclick = () => { const i = +b.dataset.bug; novaTarefa(() => pinta(), { card: card.id, i, n: i + 1, nome: lista[i].nome, evid: lista[i].evid || '' }); }; });
     $$('[data-ed]').forEach((b) => { b.onclick = () => edita(+b.dataset.ed); });
     $$('[data-ps]').forEach((b) => { b.onclick = () => { const i = +b.dataset.ps; abertos.has(i) ? abertos.delete(i) : abertos.add(i); pinta(); }; });
-    $$('[data-rm]').forEach((b) => { b.onclick = () => { lista.splice(+b.dataset.rm, 1); salvar(); pinta(); toast('Cenário excluído'); }; });
+    $$('[data-rm]').forEach((b) => { b.onclick = () => { const k = +b.dataset.rm; lista.splice(k, 1); if (rod()) rod().sel = rod().sel.filter((x) => x !== k).map((x) => x > k ? x - 1 : x); salvar(); pinta(); toast('Cenário excluído'); }; });
+    if ($('#novaRod')) $('#novaRod').onclick = novaRodada;
+  };
+  // nova rodada: a execução atual vira histórico e só os cenários escolhidos voltam pra executar
+  const novaRodada = () => {
+    const R = rod(), n = (R ? R.n : 1) + 1, mudou = { 15: 'a validação do título e o limite do anexo', 16: 'a validação do título' }[VERSAO];
+    const o = document.createElement('div'); o.className = 'modal-fundo'; o.setAttribute('data-test', 'modal-rodada');
+    o.innerHTML = `<form class="modal" id="fR" novalidate><div class="modal-h"><h3>Rodada ${n} · Sprint ${VERSAO}</h3><button type="button" class="icone" data-fecha>✕</button></div>
+      <p class="dica">Escolha os cenários pelo que mudou nesta versão. Rodar tudo sempre não cabe no tempo de um sistema de verdade.</p>
+      ${mudou ? `<p class="liga">O que mudou na Sprint ${VERSAO}: <b>${mudou}</b>.</p>` : ''}
+      <div class="rod-l">${lista.map((c, i) => `<label class="cr" data-test="rodada-cenario"><input type="checkbox" value="${i}" checked><span><b>${i + 1}.</b> ${esc(c.nome)}</span></label>`).join('')}</div>
+      <div class="fbtns"><button type="button" class="btn sec" data-fecha>Cancelar</button><button class="btn" data-test="comecar-rodada">Começar rodada ${n}</button></div></form>`;
+    document.body.appendChild(o);
+    const fecha = () => o.remove(); $$('[data-fecha]', o).forEach((b) => { b.onclick = fecha; }); o.onclick = (e) => { if (e.target === o) fecha(); };
+    $('#fR').onsubmit = (ev) => {
+      ev.preventDefault(); const sel = $$('#fR input:checked').map((k) => +k.value);
+      if (!sel.length) return toast('Escolha pelo menos um cenário', true);
+      lista.forEach((c, i) => { if (naRodada(i)) { c.hist = c.hist || []; c.hist.push({ r: R ? R.n : 1, v: R ? R.versao : 14, exec: c.exec || 'nao', evid: c.evid || '', ...(c.bug ? { bug: c.bug } : {}) }); } if (sel.includes(i)) { c.exec = 'nao'; delete c.evid; delete c.bug; } });
+      d.rodadas[id] = { n, versao: VERSAO, data: agora(), sel }; salvar(); fecha(); pinta(); toast(`Rodada ${n} aberta na Sprint ${VERSAO}`);
+      const feliz = lista.findIndex(cenFeliz);
+      if (sel.length === lista.length) gabi('ruim', `Rodar tudo funciona com ${lista.length} cenários. Com novecentos, não. O que a correção mexeu?`);
+      else if (feliz >= 0 && !sel.includes(feliz)) gabi('ruim', 'Caminho feliz fora? Sempre passou não quer dizer que vai passar hoje.');
+      else gabi('ok', `Rodada ${n} com ${sel.length} cenários. Escolheu pelo que mudou, boa.`);
+    };
   };
   const limpa = () => { editando = null; $('#f').reset(); $('#fTit').textContent = 'Novo cenário'; $('#salva').textContent = 'Adicionar cenário'; $('#cancela').hidden = !lista.length; limpaErros(); };
   const edita = (i) => {
@@ -850,7 +1005,7 @@ function montaPlano(A, card) {
     if (!esp) { erroCampo('cEsp', 'Escreva o resultado esperado'); ok = false; }
     if (!ok) return;
     const c = { nome, tipo: $('#cTipo').value, passos: $('#cPassos').value.trim(), esperado: esp, regras: $$('[data-test=cenario-regra]').filter((k) => k.checked).map((k) => +k.value), exec: 'nao' };
-    if (editando !== null) { c.exec = lista[editando].exec; if (lista[editando].bug && !_c('edita')) c.bug = lista[editando].bug; else if (lista[editando].bug) _pv('edita'); if (lista[editando].jaFalhou) c.jaFalhou = true; lista[editando] = c; toast('Cenário salvo'); } else { lista.push(c); toast('Cenário adicionado'); }
+    if (editando !== null) { c.exec = lista[editando].exec; if (lista[editando].bug && !_c('edita')) c.bug = lista[editando].bug; else if (lista[editando].bug) _pv('edita'); if (lista[editando].jaFalhou) c.jaFalhou = true; c.hist = lista[editando].hist; c.evid = lista[editando].evid; lista[editando] = c; toast('Cenário salvo'); } else { lista.push(c); if (rod()) rod().sel.push(lista.length - 1); toast('Cenário adicionado'); }
     gabi(...revisaCenario(c));
     salvar(); limpa(); pinta();
   };
@@ -890,6 +1045,8 @@ PAGINAS.clientes = () => {
 function respostaDoTime(tx, canal) {
   const t = tx.toLowerCase(), d = dados(), bug = d.cards.filter((c) => c.tipo === 'bug').pop();
   const R = (de, ...op) => ({ de, tx: op[Math.floor(Math.random() * op.length)] });
+  const reg = d.cards.find((c) => c.tipo === 'bug' && c.regressao && c.coluna !== 'concluido');
+  if (VERSAO === 15 && reg && /regress|release|segur|recomend|subir|quebr/.test(t)) return R('beatriz', `Segura a release então. Gabi, prioridade no ${reg.id}.`, `Obrigada por avisar antes. Release segurada até o ${reg.id} sair.`);
   if (/bug|erro|falh|quebr/.test(t)) return bug ? R('gabriela', `Vi o ${bug.id}. Vou olhar ainda hoje e te aviso 👀`, `Já tô olhando o ${bug.id}. Se tiver print, joga no card!`) : R('gabriela', 'Opa! Abre o card em "Reportar bug" com o passo a passo que eu olho 👀', 'Me manda os passos pra reproduzir? Aí eu consigo ver aqui.');
   if (/regra|crit[eé]rio|card|fd-?10\d|limite|anexo|t[ií]tulo/.test(t)) return R('rafael', 'Tá tudo nos critérios do FD-101. Se faltar alguma regra, me chama que a gente conversa 👍', 'Boa! Se tiver dúvida de regra, pode perguntar. Eu prefiro responder agora do que descobrir depois.');
   if (/release|prazo|sexta|entrega|review/.test(t)) return R('beatriz', 'A release é sexta, depois da review. Se algo for segurar, me avisa antes 🙏', 'Anotado. Prioridade continua sendo o FD-101.');
@@ -949,7 +1106,7 @@ PAGINAS.configuracoes = () => {
     <div class="fcard"><div class="campo"><label for="cfNome">Seu nome</label><div style="display:flex;gap:10px"><input class="in" id="cfNome" value="${esc(c.nome)}" data-test="config-nome"><button class="btn" id="salvaNome" data-test="salvar-nome">Salvar</button></div></div>
       <div class="campo"><label>E-mail</label><input class="in" value="${esc(sessao())}" disabled></div>
       <div class="campo" style="margin-bottom:0"><label>Sua carreira</label>${trilha()}<div class="dica">${xpDe()} XP · ${nivelAtual()}. O XP vem das missões de cada prática.</div></div></div>
-    <div class="fcard sprint-auto" style="margin-top:18px" data-test="sprint-atual"><div class="sa-n">${VERSAO}</div><div><h3>Sprint ${VERSAO} · homologação</h3><p class="dica">${VERSAO === 14 ? 'A sprint muda sozinha: quando você terminar a missão do EP08, a Gabriela sobe a <b>Sprint 15</b> com as correções.' : 'Você já está na Sprint 15, com as correções da Gabriela. Hora de retestar.'}</p></div></div>
+    <div class="fcard sprint-auto" style="margin-top:18px" data-test="sprint-atual"><div class="sa-n">${VERSAO}</div><div><h3>Sprint ${VERSAO} · homologação</h3><p class="dica">${VERSAO === 14 ? 'A sprint muda sozinha: quando você terminar a missão do EP08, a Gabriela sobe a <b>Sprint 15</b> com as correções.' : VERSAO === 15 ? 'Você está na Sprint 15, com as correções da Gabriela. Quando terminar a missão do EP12, sobe a <b>Sprint 16</b>.' : 'Você está na Sprint 16, com a correção da regressão.'}</p></div></div>
     <div class="fcard" style="margin-top:18px"><h3 style="font-size:17px;margin-bottom:6px">Carregar save do curso</h3><p class="dica" style="margin-bottom:12px">Perdeu o progresso, trocou de computador ou pulou uma aula? Carregue o ponto do curso em que você está. O FlowDesk fica do jeito que o vídeo espera. <b>Isso substitui o que você tem agora.</b></p>
       <div class="saves" id="saves">${SAVES.map((x, i) => `<button type="button" class="sv ${i === 0 ? 'on' : ''}" data-sv="${x.id}" data-test="save-${x.id}"><span class="sv-ep">${(x.nome.match(/EP\d+/) || ['EP00'])[0]}</span><b>${i === 0 ? x.nome : x.quando}</b><span>${i === 0 ? x.quando : x.nome}</span></button>`).join('')}</div>
       <select class="exec-sel" id="cfSave" data-test="save-episodio" aria-label="Save do curso">${SAVES.map((x) => `<option value="${x.id}">${x.nome} · ${x.quando}</option>`).join('')}</select>
@@ -997,7 +1154,7 @@ PAGINAS.caca = () => {
   const meus = LS.get('fd:caca-envios', []);
   casca('caca', `<section class="caca-hero"><div class="ch-t"><div class="ch-k"><span id="tNum">TEMPORADA 1 DE 3</span><b class="${aberta ? 'ab' : ''}">${aberta ? 'ABERTA' : 'EM BREVE'}</b>${aberta ? '<i id="tFim">quando os 3 forem achados, a próxima temporada abre sozinha</i>' : ''}</div>
       <h1 data-test="titulo-pagina">3 bugs escondidos no FlowDesk.</h1><p>Quem achar e reportar primeiro ganha o <b>Vida de QA 2</b> de graça quando lançar. Preste atenção nas aulas.</p></div>
-      <video src="img/anim/vinicius_lupa_v2.webm?v=1794443603" poster="img/anim/vinicius_lupa_v2.png?v=1794443603" autoplay muted loop playsinline aria-label="Vinícius com uma lupa procurando bugs"></video></section>
+      <video src="img/anim/vinicius_lupa_v2.webm?v=1794448306" poster="img/anim/vinicius_lupa_v2.png?v=1794448306" autoplay muted loop playsinline aria-label="Vinícius com uma lupa procurando bugs"></video></section>
     <div class="caca-bugs" id="placar">${[1, 2, 3].map((n) => `<article class="cb"><div class="cb-h"><span>#${n}</span><b>LIVRE</b></div><div class="cb-v">Ninguém achou ainda.</div></article>`).join('')}</div>
     <div class="caca-grade"><section class="painel caca-form"><h2>Reportar um bug da caça</h2><p class="dica">A confirmação é automática. Vale o primeiro report confirmado de cada bug.</p>
       <form id="fc" novalidate>${aberta ? '' : '<div class="aviso-caca" data-test="caca-fechada">A primeira temporada ainda não abriu. Quando abrir, este formulário passa a funcionar e o aviso sai daqui.</div>'}

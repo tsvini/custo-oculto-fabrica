@@ -902,3 +902,22 @@ h1,h2,h3,.topo h2{font-family:var(--tit)}
 .arquivo.tem .nome{color:#86efac;font-weight:700}.arquivo.tem .nome em{font-style:normal;color:var(--mut,#9aa0b4);font-weight:500}
 .trilha .tb i{transition:width 1.1s cubic-bezier(.2,.8,.2,1)}
 .campo .arquivo{display:flex;align-items:center;gap:14px}.campo .arquivo .btn{flex:none}
+/* módulo 2: reteste, regressão e rodadas */
+.etq-reg{background:#7f1d1d;color:#fecaca;margin-left:4px}.etq-rea{background:#78350f;color:#fde68a;margin-left:4px}
+.rt .fala{margin:6px 0 12px}
+.rt-f{margin-top:14px;padding:16px;border:1px solid var(--line);border-radius:14px;background:var(--bg)}
+.rt-h{margin-top:14px;display:flex;flex-direction:column;gap:8px}
+.rt-l{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;padding:10px 14px;border-radius:12px;border:1px solid var(--line);font-size:14px}
+.rt-l.passou{border-color:#166534;background:#0f2418}.rt-l.passou b{color:#86efac}
+.rt-l.falhou{border-color:#7f1d1d;background:#2a1215}.rt-l.falhou b{color:#fca5a5}
+.rt-l span{color:#b9bccd}.rt-ev{display:inline-flex;align-items:center;gap:5px}.rt-ev svg{width:14px;height:14px}.rt-c{flex-basis:100%}
+.reg-ck{margin-top:4px}
+.xrod{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.xr-n{font-weight:800;font-size:15px;color:#c4b5fd}.xr-v{font-size:13px;color:#9aa0b4;flex:1}
+.hist-r{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.hr{font-size:11px;font-weight:800;letter-spacing:.3px;padding:3px 8px;border-radius:999px;border:1px solid #3a3658;color:#b9bccd}
+.hr.passou{border-color:#166534;color:#86efac}.hr.falhou{border-color:#7f1d1d;color:#fca5a5}.hr.atual{background:#1c1636}
+tr.fora-rod{opacity:.55}
+.xfora{font-size:13px;color:#9aa0b4;padding:8px 0}
+.rod-l{display:flex;flex-direction:column;gap:8px;max-height:46vh;overflow:auto;margin:12px 0}
+.rod-l .cr span b{color:#c4b5fd;margin-right:4px}
