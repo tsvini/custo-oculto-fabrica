@@ -946,7 +946,7 @@ tr.fora-rod{opacity:.55}
 .efc .e-dots{position:absolute;inset:0;background-image:radial-gradient(rgba(196,181,253,.13) 1px,transparent 1.4px);background-size:22px 22px;-webkit-mask-image:radial-gradient(520px 420px at 22% 45%,#000 20%,transparent 75%);mask-image:radial-gradient(520px 420px at 22% 45%,#000 20%,transparent 75%)}
 .efc .e-sp{position:absolute;width:14px;height:14px;background:#e9e3ff;clip-path:polygon(50% 0,62% 38%,100% 50%,62% 62%,50% 100%,38% 62%,0 50%,38% 38%);filter:drop-shadow(0 0 6px #a78bfa)}
 .efc .e-lan{position:absolute;left:176px;top:-10px;width:44px;height:126px;background:linear-gradient(90deg,#4c1d95,#7c3aed 50%,#4c1d95);clip-path:polygon(0 0,100% 0,80% 100%,20% 100%);overflow:hidden}
-.efc .e-lan span{position:absolute;left:50%;top:6px;transform:translateX(-50%) rotate(90deg);white-space:nowrap;font-size:9px;font-weight:800;letter-spacing:3px;color:rgba(255,255,255,.35)}
+.efc .e-lan span{position:absolute;left:50%;top:6px;transform:translateX(-50%) rotate(90deg);white-space:nowrap;font-size:9px;font-weight:800;letter-spacing:3px;color:rgba(255,255,255,.62)}
 .efc .e-lan2{position:absolute;left:176px;top:-10px;width:44px;height:126px;background:repeating-linear-gradient(0deg,transparent 0 16px,rgba(255,255,255,.06) 16px 17px);clip-path:polygon(0 0,100% 0,80% 100%,20% 100%)}
 .efc .e-clip{position:absolute;left:180px;top:104px;width:36px;height:28px;border-radius:7px;background:linear-gradient(#f4f4f5,#a1a1aa 55%,#71717a);box-shadow:0 3px 0 #3f3f46,0 6px 10px rgba(0,0,0,.4)}
 .efc .e-badge{position:absolute;left:62px;top:116px;width:300px;height:462px;border-radius:26px;background:linear-gradient(165deg,#241a48 0%,#161130 50%,#0f0c1f);border:1.5px solid rgba(196,181,253,.5);box-shadow:0 40px 80px rgba(0,0,0,.65),0 0 0 6px rgba(124,58,237,.10),0 0 70px rgba(124,58,237,.35);transform:rotate(-4deg);overflow:hidden}
@@ -982,7 +982,7 @@ tr.fora-rod{opacity:.55}
 .efc .e-tr .e-n.e-ok i{background:#7c3aed;border-color:#a78bfa}.efc .e-tr .e-n.e-now i{background:#22c55e;border-color:#86efac;box-shadow:0 0 14px #22c55e;width:26px;height:26px}
 .efc .e-tr .e-n.e-now{color:#86efac}
 .efc .e-tr .e-l{flex:1;height:3px;background:#2d2650;margin:0 -26px 19px;border-radius:2px}.efc .e-tr .e-l.e-ok{background:linear-gradient(90deg,#7c3aed,#22c55e)}
-.efc .e-sig{position:absolute;right:54px;bottom:40px;text-align:right;font-size:12.5px;color:#9ca0b8;font-weight:700}
-.efc .e-sig .e-av{display:flex;justify-content:flex-end;margin-bottom:8px}.efc .e-sig .e-av img{width:34px;height:34px;border-radius:50%;border:2px solid #08070e;margin-left:-9px}
+.efc .e-sig{position:absolute;right:54px;bottom:38px;text-align:right;font-size:14px;color:#9ca0b8;font-weight:700}
+.efc .e-sig .e-av{display:flex;justify-content:flex-end;margin-bottom:8px}.efc .e-sig .e-av img{width:42px;height:42px;border-radius:50%;border:2px solid #08070e;margin-left:-9px}
 .efc .e-sig b{color:#c4b5fd}
 .efc-ctl label.efc-up{display:flex!important;align-items:center;justify-content:center;height:46px;padding:0 18px;line-height:1}
