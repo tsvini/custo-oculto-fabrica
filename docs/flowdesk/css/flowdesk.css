@@ -901,3 +901,4 @@ h1,h2,h3,.topo h2{font-family:var(--tit)}
 .tg.tF:before{background:#eab308}
 .arquivo.tem .nome{color:#86efac;font-weight:700}.arquivo.tem .nome em{font-style:normal;color:var(--mut,#9aa0b4);font-weight:500}
 .trilha .tb i{transition:width 1.1s cubic-bezier(.2,.8,.2,1)}
+.campo .arquivo{display:flex;align-items:center;gap:14px}.campo .arquivo .btn{flex:none}

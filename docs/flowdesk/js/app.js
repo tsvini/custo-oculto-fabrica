@@ -183,7 +183,7 @@ const MISSOES = [
     ['Um Quando por cenário: uma ação só', (d) => { const r = revisaGherkin(gherkinDe(d)); return r.cenarios.length > 0 && r.cenarios.every((c) => c.acoes <= 1); }],
     ['Nenhum Então vago', (d) => { const r = revisaGherkin(gherkinDe(d)); return r.cenarios.length > 0 && r.cenarios.every((c) => !c.vago.length); }],
   ] },
-  { id: 'ep08', titulo: 'Executar o plano do FD-101', aula: 'EP08', conquista: 'Primeiros bugs achados', nivel: 'QA júnior', link: 'card.html?id=FD-101&aba=plano', itens: [
+  { id: 'ep08', titulo: 'Executar o plano do FD-101', aula: 'EP08', conquista: 'Primeiros bugs achados', nivel: 'QA estagiário', link: 'card.html?id=FD-101&aba=plano', itens: [
     ['Execute todos os cenários do plano', (d) => { const l = d.planos['FD-101'] || []; return l.length >= 8 && l.every((c) => c.exec && c.exec !== 'nao'); }],
     ['Reporte o bug do título só com espaços', (d) => bugsDe(d).some((b) => /espa[çc]o/i.test(textoBug(b)))],
     ['Ache e reporte o bug do anexo', (d) => bugsDe(d).some((b) => /anexo|5\s?mb|arquivo/i.test(textoBug(b)))],
@@ -253,7 +253,7 @@ function refrescaCarreira() {
   $$('.tb i', novo).forEach((i, k) => { i.style.width = antes[k] || '0%'; });
   velho.replaceWith(novo); void novo.offsetWidth;
   $$('.tb i', novo).forEach((i, k) => { i.style.width = alvo[k]; });
-  const x = $('.barra [data-test=xp]'); if (x) x.textContent = `${xpDe(d)} / ${(d.conquistas || []).includes('ep08') ? XP_PLENO : XP_JUNIOR} XP`;
+  const x = $('.barra [data-test=xp]'); if (x) x.textContent = `${xpDe(d)} / ${ehJunior(d) ? XP_PLENO : XP_JUNIOR} XP`;
 }
 function conquista(m) {
   const o = document.createElement('div'); o.className = 'conq-fundo'; o.setAttribute('data-test', 'conquista');
@@ -270,11 +270,13 @@ function cardMissao() {
 }
 
 // ---------- carreira (XP vem das missões) ----------
-const XP_ITEM = 40, XP_CONQ = 60, XP_JUNIOR = 700, XP_PLENO = 1500;
+// júnior só no fim da parte 1 do curso (módulos 1 a 6); o módulo 1 inteiro dá uns 25% do caminho
+const XP_ITEM = 40, XP_CONQ = 60, XP_JUNIOR = 3000, XP_PLENO = 6000;
+const ehJunior = (d = dados()) => xpDe(d) >= XP_JUNIOR;
 const xpDe = (d = dados()) => { const f = d.conquistas || [], atual = MISSOES.find((m) => !f.includes(m.id));
   return MISSOES.reduce((s, m) => s + (f.includes(m.id) ? m.itens.length * XP_ITEM + XP_CONQ : m === atual ? progresso(m, d).filter(Boolean).length * XP_ITEM : 0), 0); };
 function trilha(d = dados()) {
-  const xp = xpDe(d), jr = (d.conquistas || []).includes('ep08');
+  const xp = xpDe(d), jr = xp >= XP_JUNIOR;
   const a = jr ? 1 : Math.min(xp / XP_JUNIOR, .98), b = jr ? Math.min((xp - XP_JUNIOR) / (XP_PLENO - XP_JUNIOR), .98) : 0;
   const ok = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg>';
   return `<div class="trilha" data-test="carreira"><span class="nv on">${ok}Estagiário</span><span class="tb"><i style="width:${a * 100}%"></i></span><span class="nv ${jr ? 'on' : ''}">${jr ? ok : ''}Júnior</span><span class="tb"><i style="width:${Math.max(b, 0) * 100}%"></i></span><span class="nv fut">Pleno</span></div>`;
@@ -283,7 +285,7 @@ const chatLiberado = (d = dados()) => (d.conquistas || []).includes('ep03');
 
 // ---------- layout ----------
 const avatar = (p) => p === 'voce' ? '<span class="vc">VC</span>' : `<img class="av" src="img/av_${p}.png" alt="">`;
-const LOGO = '<span class="logo-anim" aria-hidden="true"><img src="img/anim/logo_part1.png?v=1794440552" alt=""><img class="sobe" src="img/anim/logo_part0.png?v=1794440552" alt=""></span>';
+const LOGO = '<span class="logo-anim" aria-hidden="true"><img src="img/anim/logo_part1.png?v=1794443603" alt=""><img class="sobe" src="img/anim/logo_part0.png?v=1794443603" alt=""></span>';
 const MARCA = `<span class="marca">${LOGO}FlowDesk</span>`;
 const pillVersao = () => `<span class="versao" data-test="versao-sistema"><b>Sprint ${VERSAO}</b> · homologação</span>`;
 const SVG = (p, c = '') => `<svg class="${c}" viewBox="0 0 24 24" aria-hidden="true">${p}</svg>`;
@@ -319,7 +321,7 @@ function casca(pagina, conteudo) {
     ${it('chamados.html', 'Chamados', 'chamados')}${it('chat.html', 'FlowChat', 'chat', naoLidas)}${it('caca.html', 'Caça aos bugs', 'caca', `<span class="caca-n">${achados}/3</span>`)}</nav>
     <div class="side-fim">${cardMissao()}<nav class="sec-nav">${it('configuracoes.html', 'Configurações', 'configuracoes')}</nav>
     <div class="eu"><span class="vc">${esc((c.nome || 'VC').split(' ').map((x) => x[0]).slice(0, 2).join('').toUpperCase())}</span><div><b data-test="usuario-logado">${esc(c.nome)}</b><span data-test="nivel">${nivelAtual()}</span></div><button data-test="sair">Sair</button></div></div></aside>
-    <main class="main"><header class="barra"><div class="barra-c"><span class="barra-k">CARREIRA</span>${trilha(d)}<span class="xp" data-test="xp">${xpDe(d)} / ${(d.conquistas || []).includes('ep08') ? XP_PLENO : XP_JUNIOR} XP</span></div>${pillVersao()}</header><div class="conteudo">${conteudo}</div></main></div>`;
+    <main class="main"><header class="barra"><div class="barra-c"><span class="barra-k">CARREIRA</span>${trilha(d)}<span class="xp" data-test="xp">${xpDe(d)} / ${ehJunior(d) ? XP_PLENO : XP_JUNIOR} XP</span></div>${pillVersao()}</header><div class="conteudo">${conteudo}</div></main></div>`;
   $('[data-test=sair]').onclick = sair;
   mostraRecado(); setTimeout(confereMissoes, 300);
   if (CACA_API && pg !== 'caca') fetch(`${CACA_API}/placar`).then((r) => r.json()).then((p) => LS.set('fd:placar', { bugs: p.bugs, temporada: p.temporada, encerrada: p.encerrada })).catch(() => {});
@@ -362,7 +364,7 @@ PAGINAS.login = () => {
   document.body.innerHTML = `<div class="tela-login">
     <section class="lg-time"><div class="lg-marca">${LOGO}<span>FlowDesk</span></div>
       <div class="lg-tit"><h1>Seu primeiro dia como QA começa aqui.</h1><div class="lg-trilha"><span class="on">Estagiário</span>${seta}<span>Júnior</span>${seta}<span class="fut">Pleno</span></div></div>
-      <div class="lg-palco"><div class="lg-luz" aria-hidden="true"></div><video src="img/anim/time_acena.webm?v=1794440552" poster="img/anim/time_acena.png?v=1794440552" autoplay muted loop playsinline aria-label="O time do FlowDesk acenando: Rafael, Gabriela, Vinícius, Lucas e Beatriz"></video></div></section>
+      <div class="lg-palco"><div class="lg-luz" aria-hidden="true"></div><video src="img/anim/time_acena.webm?v=1794443603" poster="img/anim/time_acena.png?v=1794443603" autoplay muted loop playsinline aria-label="O time do FlowDesk acenando: Rafael, Gabriela, Vinícius, Lucas e Beatriz"></video></div></section>
     <section class="lg-form"><div class="login">
     <form id="fEntrar" novalidate><span class="lg-chip">SPRINT ${VERSAO} · HOMOLOGAÇÃO</span><h1>Bem-vindo de volta</h1><p class="sub">O time já está te esperando. Use dados de mentira: fica tudo salvo só neste navegador.</p>
       <div class="campo"><label for="email">E-mail</label><input class="in" id="email" type="email" data-test="login-email" autocomplete="username" placeholder="voce@empresa.com"></div>
@@ -416,7 +418,7 @@ PAGINAS.dashboard = () => {
   const h = new Date().getHours(), oi = h < 12 ? 'Bom dia' : h < 18 ? 'Boa tarde' : 'Boa noite';
   const hoje = new Date().toLocaleDateString('pt-BR', { weekday: 'long', day: 'numeric', month: 'long' });
   const meus = d.cards.filter((x) => x.resp === 'voce');
-  const m = missaoAtual(), pr = m ? progresso(m, d) : [], xp = xpDe(d), jr = (d.conquistas || []).includes('ep08');
+  const m = missaoAtual(), pr = m ? progresso(m, d) : [], xp = xpDe(d), jr = xp >= XP_JUNIOR;
   const falta = (jr ? XP_PLENO : XP_JUNIOR) - xp;
   const msg = m ? `Faltam ${falta} XP pra ${jr ? 'pleno' : 'júnior'}. ${DICA_MISSAO[m.id] || ''}` : 'Mandou bem. A próxima missão chega na próxima prática do curso.';
   const okSvg = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg>';
@@ -559,7 +561,7 @@ PAGINAS.quadro = () => {
       <div class="h"><h3>${n}</h3><span class="cnt" data-test="contagem-${k}"></span>${k === 'afazer' ? '<button class="mais" data-test="nova-tarefa" title="Nova tarefa" aria-label="Nova tarefa">+</button>' : ''}</div>
       <div class="cards"></div>${k === 'afazer' ? '<button class="add-tarefa" data-test="adicionar-tarefa">+ Adicionar tarefa</button>' : ''}</section>`).join('')}</div>
     <p class="dica" style="margin-top:12px">Você move os seus cards arrastando, ou pelo próprio card. Os cards dos outros ficam com eles.</p>
-    <div class="desfile" aria-hidden="true"><div class="chao"></div>${anda.map(([v, atraso, cls]) => `<div class="anda ${cls}" style="animation-delay:${atraso}s"><video src="img/anim/${v}.webm?v=1794440552" poster="img/anim/${v}.png?v=1794440552" autoplay muted loop playsinline></video></div>`).join('')}</div>`);
+    <div class="desfile" aria-hidden="true"><div class="chao"></div>${anda.map(([v, atraso, cls]) => `<div class="anda ${cls}" style="animation-delay:${atraso}s"><video src="img/anim/${v}.webm?v=1794443603" poster="img/anim/${v}.png?v=1794443603" autoplay muted loop playsinline></video></div>`).join('')}</div>`);
   const pinta = () => {
     COLUNAS.forEach(([k]) => {
       const l = dados().cards.filter((c) => c.coluna === k), col = $(`[data-col=${k}]`);
@@ -699,7 +701,7 @@ function montaGherkin(A, card, contagens) {
           <textarea id="gk" data-test="editor-gherkin" spellcheck="false" autocomplete="off" autocapitalize="off" aria-label="Arquivo ${arq}"></textarea></div></div></div>
       <p class="dica" style="margin-top:10px">Dica: <b>Tab</b> faz o recuo. O FlowDesk salva enquanto você escreve.</p>
     </div>
-    <aside><div class="rafa"><div class="rafa-b"><div class="bk">RAFAEL · PO</div><div class="bt">Escreve do jeito que eu leio: <b>Dado</b> o contexto, <b>Quando</b> a ação, <b>Então</b> o que eu vejo.</div></div><video src="img/anim/rafael_fala.webm?v=1794440552" poster="img/anim/rafael_fala.png?v=1794440552" autoplay muted loop playsinline aria-hidden="true"></video></div><div class="cov" id="gkRev" data-test="revisao-gherkin"></div></aside></div>`;
+    <aside><div class="rafa"><div class="rafa-b"><div class="bk">RAFAEL · PO</div><div class="bt">Escreve do jeito que eu leio: <b>Dado</b> o contexto, <b>Quando</b> a ação, <b>Então</b> o que eu vejo.</div></div><video src="img/anim/rafael_fala.webm?v=1794443603" poster="img/anim/rafael_fala.png?v=1794443603" autoplay muted loop playsinline aria-hidden="true"></video></div><div class="cov" id="gkRev" data-test="revisao-gherkin"></div></aside></div>`;
   const ta = $('#gk'), cor = $('#gkCor'), nums = $('#gkNums');
   ta.value = gherkinDe(dados(), card.id);
   const atualiza = () => {
@@ -791,7 +793,7 @@ function montaPlano(A, card) {
         <div class="fbtns"><button type="button" class="btn sec" id="cancela" hidden data-test="cancelar-edicao">Cancelar</button><button class="btn" data-test="salvar-cenario" id="salva">Adicionar cenário</button></div>
       </form></div>
       <aside><div class="cov" id="cov" data-test="cobertura"><div class="hd">Cobertura das regras<span class="cnt" id="cnt" data-test="cobertura-contagem">0/6</span></div><div class="bar"><i id="bar"></i></div>
-        ${REGRAS.map((r, i) => `<div class="rl" id="u${i}" data-test="regra"><b>✓</b>${r}<span class="q" id="q${i}" hidden></span></div>`).join('')}<div class="ex" id="ex" hidden></div><div class="gabi-b" id="gabiB" data-test="recado-gabriela"><b>GABRIELA · DEV</b><span id="gabiT"></span></div><div class="gabi" aria-hidden="true"><video src="img/anim/gabriela_quadro.webm?v=1794440552" poster="img/anim/gabriela_quadro.png?v=1794440552" autoplay muted loop playsinline></video></div></div></aside></div>`;
+        ${REGRAS.map((r, i) => `<div class="rl" id="u${i}" data-test="regra"><b>✓</b>${r}<span class="q" id="q${i}" hidden></span></div>`).join('')}<div class="ex" id="ex" hidden></div><div class="gabi-b" id="gabiB" data-test="recado-gabriela"><b>GABRIELA · DEV</b><span id="gabiT"></span></div><div class="gabi" aria-hidden="true"><video src="img/anim/gabriela_quadro.webm?v=1794443603" poster="img/anim/gabriela_quadro.png?v=1794443603" autoplay muted loop playsinline></video></div></div></aside></div>`;
   let editando = null; const abertos = new Set();
   const gabi = (tom, tx) => { $('#gabiB').className = 'gabi-b ' + tom; $('#gabiT').textContent = tx; };
   { const ruim = lista.map((c) => revisaCenario(c)).findIndex((r) => r[0] === 'ruim');
@@ -995,7 +997,7 @@ PAGINAS.caca = () => {
   const meus = LS.get('fd:caca-envios', []);
   casca('caca', `<section class="caca-hero"><div class="ch-t"><div class="ch-k"><span id="tNum">TEMPORADA 1 DE 3</span><b class="${aberta ? 'ab' : ''}">${aberta ? 'ABERTA' : 'EM BREVE'}</b>${aberta ? '<i id="tFim">quando os 3 forem achados, a próxima temporada abre sozinha</i>' : ''}</div>
       <h1 data-test="titulo-pagina">3 bugs escondidos no FlowDesk.</h1><p>Quem achar e reportar primeiro ganha o <b>Vida de QA 2</b> de graça quando lançar. Preste atenção nas aulas.</p></div>
-      <video src="img/anim/vinicius_lupa_v2.webm?v=1794440552" poster="img/anim/vinicius_lupa_v2.png?v=1794440552" autoplay muted loop playsinline aria-label="Vinícius com uma lupa procurando bugs"></video></section>
+      <video src="img/anim/vinicius_lupa_v2.webm?v=1794443603" poster="img/anim/vinicius_lupa_v2.png?v=1794443603" autoplay muted loop playsinline aria-label="Vinícius com uma lupa procurando bugs"></video></section>
     <div class="caca-bugs" id="placar">${[1, 2, 3].map((n) => `<article class="cb"><div class="cb-h"><span>#${n}</span><b>LIVRE</b></div><div class="cb-v">Ninguém achou ainda.</div></article>`).join('')}</div>
     <div class="caca-grade"><section class="painel caca-form"><h2>Reportar um bug da caça</h2><p class="dica">A confirmação é automática. Vale o primeiro report confirmado de cada bug.</p>
       <form id="fc" novalidate>${aberta ? '' : '<div class="aviso-caca" data-test="caca-fechada">A primeira temporada ainda não abriu. Quando abrir, este formulário passa a funcionar e o aviso sai daqui.</div>'}
