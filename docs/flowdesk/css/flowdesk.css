@@ -926,3 +926,6 @@ tr.fora-rod{opacity:.55}
 @media (max-height:720px) and (min-width:901px){.side{padding:12px 12px 10px;overflow-y:auto}.side .marca{padding-bottom:8px}.side nav a{padding:6px 12px;margin-bottom:2px;font-size:14px}.side nav .grupo{margin:8px 12px 4px}.missao-side{margin:8px 0 6px;padding:9px 11px}.missao-side .t{font-size:13px}.side .eu{padding-top:8px}}
 .conta-teste{font-size:12.5px;color:var(--mut);background:#15112a;border:1px dashed #3b2a6e;border-radius:9px;padding:8px 10px;margin:-4px 0 12px}.conta-teste b{color:#c4b5fd}
 @media (max-width:1240px) and (min-width:901px){.plano aside{width:290px}}
+.pede-aval{position:fixed;right:28px;bottom:28px;width:360px;background:linear-gradient(180deg,#1c1434,#120e22);border:2px solid #7C3AED;border-radius:16px;padding:18px 20px;z-index:98;box-shadow:0 18px 50px rgba(0,0,0,.6);display:flex;flex-direction:column;gap:8px;animation:entra .3s ease}
+.pede-aval b{font-size:17px}.pede-aval span{font-size:14px;color:#cfd2e0;line-height:1.45}
+.pede-aval .pa-b{display:flex;gap:10px;margin-top:6px}.pede-aval .btn{font-size:14px;padding:9px 14px;text-decoration:none}
