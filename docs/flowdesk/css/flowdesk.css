@@ -505,11 +505,11 @@ a.pes:hover{text-decoration:none;border-color:#3b2a6e;transform:translateX(3px)}
 .chatv .chan a.on{background:linear-gradient(90deg,rgba(124,58,237,.25),rgba(124,58,237,.06));color:#fff}
 .chatv .chan .voltar{margin-top:auto;border:1px solid var(--line2);text-align:center;color:#c9cbda;font-size:14px}
 .chatv .chan .voltar:hover{background:#181a25;color:#fff}
-.chatv .msgs{display:flex;flex-direction:column;min-width:0}
+.chatv .msgs{display:flex;flex-direction:column;min-width:0;min-height:0}
 .chatv .chead{height:64px;padding:0 22px;gap:12px;font-size:18px}
 .chatv .chead .avs{display:flex;margin-left:6px}.chatv .chead .avs img{width:28px;height:28px;border-radius:50%;margin-left:-8px;box-shadow:0 0 0 2px #111219;background:#1e1836}
 .chatv .chead .mem{font-size:13px;color:var(--mut);font-weight:600;margin-left:0}
-.chatv .lista{padding:18px 22px}
+.chatv .lista{padding:18px 22px;min-height:0}
 .chatv .msg{gap:13px;padding:10px 12px;margin-bottom:6px;border-radius:12px}
 .chatv .msg img,.chatv .msg .vc{width:44px;height:44px;background:#1e1836}
 .chatv .msg .tx{font-size:16px}
@@ -532,6 +532,7 @@ a.pes:hover{text-decoration:none;border-color:#3b2a6e;transform:translateX(3px)}
 .sv b{font-size:15px;line-height:1.25}.sv span{font-size:12.5px;color:#8b8fa6}
 .sv.on{border-color:#7c3aed;background:linear-gradient(160deg,#1f1742,#120f24);box-shadow:0 0 0 3px rgba(124,58,237,.18)}
 .sv.on .sv-ep{background:#7c3aed;color:#fff;border-color:#7c3aed}
+@media (max-width:1240px) and (min-width:901px){.chatv{grid-template-columns:180px minmax(0,1fr)}.quem{display:none}}
 @media (max-width:900px){.chatv{grid-template-columns:1fr;height:auto;margin:0}.chatv .chan{flex-direction:row;flex-wrap:wrap}.quem{display:none}.vers{grid-template-columns:1fr}}
 .side{z-index:20}.missao-side .pop{z-index:80}
 
@@ -921,3 +922,5 @@ tr.fora-rod{opacity:.55}
 .xfora{font-size:13px;color:#9aa0b4;padding:8px 0}
 .rod-l{display:flex;flex-direction:column;gap:8px;max-height:46vh;overflow:auto;margin:12px 0}
 .rod-l .cr span b{color:#c4b5fd;margin-right:4px}
+/* telas baixas (notebook pequeno, janela reduzida): a barra lateral cabe inteira, sem cortar o usuário embaixo */
+@media (max-height:720px) and (min-width:901px){.side{padding:12px 12px 10px;overflow-y:auto}.side .marca{padding-bottom:8px}.side nav a{padding:6px 12px;margin-bottom:2px;font-size:14px}.side nav .grupo{margin:8px 12px 4px}.missao-side{margin:8px 0 6px;padding:9px 11px}.missao-side .t{font-size:13px}.side .eu{padding-top:8px}}
