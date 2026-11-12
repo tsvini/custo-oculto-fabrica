@@ -176,7 +176,7 @@ const usaApi = () => VERSAO >= 17 && 'serviceWorker' in navigator && /^https?:/.
 let _swPronto = null;
 function swPronto() {
   if (!_swPronto) _swPronto = (async () => {
-    await navigator.serviceWorker.register('sw.js?v=1794479423');
+    await navigator.serviceWorker.register('sw.js?v=1794496469');
     if (navigator.serviceWorker.controller) return true;
     await new Promise((r) => { navigator.serviceWorker.addEventListener('controllerchange', r, { once: true }); setTimeout(r, 4000); });
     return !!navigator.serviceWorker.controller;
@@ -369,7 +369,7 @@ const textoBug = (b) => [b.titulo, b.passos, b.esperado, b.obtido, b.cenario].jo
 
 // ---------- Gherkin (EP06): leitura e revisão do arquivo .feature ----------
 const GK_INICIO = 'Funcionalidade: Criar chamado\n\n';
-const GK_EP06 = "Funcionalidade: Criar chamado\n\n  Cenário: Criar chamado com sucesso\n    Dado que estou na tela \"Novo chamado\"\n    E preenchi o título e a descrição\n    Quando clico em \"Criar chamado\"\n    Então vejo a mensagem de sucesso\n    E o chamado aparece com o status \"Aberto\"\n\n  Cenário: Criar chamado sem título\n    Dado que estou na tela \"Novo chamado\"\n    E preenchi a descrição\n    E deixei o título vazio\n    Quando clico em \"Criar chamado\"\n    Então vejo \"Título é obrigatório\"\n    E o chamado não é criado\n\n  Cenário: Criar chamado sem descrição\n    Dado que estou na tela \"Novo chamado\"\n    E preenchi o título\n    E deixei a descrição vazia\n    Quando clico em \"Criar chamado\"\n    Então vejo \"Descrição é obrigatória\"\n    E o chamado não é criado\n\n  Cenário: Título com 100 caracteres\n    Dado que estou na tela \"Novo chamado\"\n    E preenchi o título com 100 caracteres\n    Quando clico em \"Criar chamado\"\n    Então o chamado é criado\n";  // o arquivo do jeito que fica no fim do EP06
+const GK_EP06 = "Funcionalidade: Criar chamado\n\n  Cenário: Criar chamado com sucesso\n    Dado que estou na tela \"Novo chamado\"\n    E preenchi o título e a descrição\n    Quando clico em \"Criar chamado\"\n    Então vejo a mensagem de sucesso\n    E o chamado aparece com o status \"Aberto\"\n\n  Cenário: Criar chamado sem título\n    Dado que estou na tela \"Novo chamado\"\n    E preenchi a descrição\n    E deixei o título vazio\n    Quando clico em \"Criar chamado\"\n    Então vejo \"Título é obrigatório\"\n    E o chamado não é criado\n\n  Cenário: Criar chamado sem descrição\n    Dado que estou na tela \"Novo chamado\"\n    E preenchi o título\n    E deixei a descrição vazia\n    Quando clico em \"Criar chamado\"\n    Então vejo \"Descrição é obrigatória\"\n    E o chamado não é criado\n\n  Esquema do Cenário: Limite do título\n    Dado que estou na tela \"Novo chamado\"\n    Quando digito <total> caracteres no título\n    Então o título fica com <salvos> caracteres\n\n    Exemplos:\n      | total | salvos |\n      | 100   | 100    |\n      | 101   | 100    |\n\n  Esquema do Cenário: Anexo do chamado\n    Dado que estou na tela \"Novo chamado\"\n    E preenchi o título e a descrição\n    Quando anexo <arquivo>\n    Então vejo <resultado>\n\n    Exemplos:\n      | arquivo    | resultado                 |\n      | PDF 5 MB   | o anexo na lista          |\n      | PDF 5,1 MB | \"passa do limite de 5 MB\" |\n      | um .exe    | \"Formato não aceito\"      |\n";  // o arquivo do jeito que fica no fim do EP06
 const gherkinDe = (d, id = 'FD-101') => (d.gherkin || {})[id] ?? GK_INICIO;
 const GK_PASSO = /^(Dado|Dada|Dados|Dadas|Quando|Então|Entao|E|Mas)\b/;
 const GK_VAGO = /\b(erro|funciona|funcionar|corretamente|certo|ok|normal|deve dar)\b/i;
@@ -462,7 +462,7 @@ const chatLiberado = (d = dados()) => (d.conquistas || []).includes('ep03');
 
 // ---------- layout ----------
 const avatar = (p) => p === 'voce' ? '<span class="vc">VC</span>' : `<img class="av" src="img/av_${p}.png" alt="">`;
-const LOGO = '<span class="logo-anim" aria-hidden="true"><img src="img/anim/logo_part1.png?v=1794479423" alt=""><img class="sobe" src="img/anim/logo_part0.png?v=1794479423" alt=""></span>';
+const LOGO = '<span class="logo-anim" aria-hidden="true"><img src="img/anim/logo_part1.png?v=1794496469" alt=""><img class="sobe" src="img/anim/logo_part0.png?v=1794496469" alt=""></span>';
 const MARCA = `<span class="marca">${LOGO}FlowDesk</span>`;
 const pillVersao = () => `<span class="versao" data-test="versao-sistema"><b>Sprint ${VERSAO}</b> · homologação</span>`;
 const SVG = (p, c = '') => `<svg class="${c}" viewBox="0 0 24 24" aria-hidden="true">${p}</svg>`;
@@ -541,7 +541,7 @@ PAGINAS.login = () => {
   document.body.innerHTML = `<div class="tela-login">
     <section class="lg-time"><div class="lg-marca">${LOGO}<span>FlowDesk</span></div>
       <div class="lg-tit"><h1>Seu primeiro dia como QA começa aqui.</h1><div class="lg-trilha"><span class="on">Estagiário</span>${seta}<span>Júnior</span>${seta}<span class="fut">Pleno</span></div></div>
-      <div class="lg-palco"><div class="lg-luz" aria-hidden="true"></div><video src="img/anim/time_acena.webm?v=1794479423" poster="img/anim/time_acena.png?v=1794479423" autoplay muted loop playsinline aria-label="O time do FlowDesk acenando: Rafael, Gabriela, Vinícius, Lucas e Beatriz"></video></div></section>
+      <div class="lg-palco"><div class="lg-luz" aria-hidden="true"></div><video src="img/anim/time_acena.webm?v=1794496469" poster="img/anim/time_acena.png?v=1794496469" autoplay muted loop playsinline aria-label="O time do FlowDesk acenando: Rafael, Gabriela, Vinícius, Lucas e Beatriz"></video></div></section>
     <section class="lg-form"><div class="login">
     <form id="fEntrar" novalidate><span class="lg-chip">SPRINT ${VERSAO} · HOMOLOGAÇÃO</span><h1>Bem-vindo de volta</h1><p class="sub">O time já está te esperando. Use dados de mentira: fica tudo salvo só neste navegador.</p>
       <div class="campo"><label for="email">E-mail</label><input class="in" id="email" type="email" data-test="login-email" autocomplete="username" placeholder="voce@empresa.com"></div>
@@ -792,7 +792,7 @@ PAGINAS.quadro = () => {
       <div class="h"><h3>${n}</h3><span class="cnt" data-test="contagem-${k}"></span>${k === 'afazer' ? '<button class="mais" data-test="nova-tarefa" title="Nova tarefa" aria-label="Nova tarefa">+</button>' : ''}</div>
       <div class="cards"></div>${k === 'afazer' ? '<button class="add-tarefa" data-test="adicionar-tarefa">+ Adicionar tarefa</button>' : ''}</section>`).join('')}</div>
     <p class="dica" style="margin-top:12px">Você move os seus cards arrastando, ou pelo próprio card. Os cards dos outros ficam com eles.</p>
-    <div class="desfile" aria-hidden="true"><div class="chao"></div>${anda.map(([v, atraso, cls]) => `<div class="anda ${cls}" style="animation-delay:${atraso}s"><video src="img/anim/${v}.webm?v=1794479423" poster="img/anim/${v}.png?v=1794479423" autoplay muted loop playsinline></video></div>`).join('')}</div>`);
+    <div class="desfile" aria-hidden="true"><div class="chao"></div>${anda.map(([v, atraso, cls]) => `<div class="anda ${cls}" style="animation-delay:${atraso}s"><video src="img/anim/${v}.webm?v=1794496469" poster="img/anim/${v}.png?v=1794496469" autoplay muted loop playsinline></video></div>`).join('')}</div>`);
   const pinta = () => {
     COLUNAS.forEach(([k]) => {
       const l = dados().cards.filter((c) => c.coluna === k), col = $(`[data-col=${k}]`);
@@ -973,7 +973,7 @@ function montaGherkin(A, card, contagens) {
           <textarea id="gk" data-test="editor-gherkin" spellcheck="false" autocomplete="off" autocapitalize="off" aria-label="Arquivo ${arq}"></textarea></div></div></div>
       <p class="dica" style="margin-top:10px">Dica: <b>Tab</b> faz o recuo. O FlowDesk salva enquanto você escreve.</p>
     </div>
-    <aside><div class="rafa"><div class="rafa-b"><div class="bk">RAFAEL · PO</div><div class="bt">Escreve do jeito que eu leio: <b>Dado</b> o contexto, <b>Quando</b> a ação, <b>Então</b> o que eu vejo.</div></div><video src="img/anim/rafael_fala.webm?v=1794479423" poster="img/anim/rafael_fala.png?v=1794479423" autoplay muted loop playsinline aria-hidden="true"></video></div><div class="cov" id="gkRev" data-test="revisao-gherkin"></div></aside></div>`;
+    <aside><div class="rafa"><div class="rafa-b"><div class="bk">RAFAEL · PO</div><div class="bt">Escreve do jeito que eu leio: <b>Dado</b> o contexto, <b>Quando</b> a ação, <b>Então</b> o que eu vejo.</div></div><video src="img/anim/rafael_fala.webm?v=1794496469" poster="img/anim/rafael_fala.png?v=1794496469" autoplay muted loop playsinline aria-hidden="true"></video></div><div class="cov" id="gkRev" data-test="revisao-gherkin"></div></aside></div>`;
   const ta = $('#gk'), cor = $('#gkCor'), nums = $('#gkNums');
   ta.value = gherkinDe(dados(), card.id);
   const atualiza = () => {
@@ -1065,7 +1065,7 @@ function montaPlano(A, card) {
         <div class="fbtns"><button type="button" class="btn sec" id="cancela" hidden data-test="cancelar-edicao">Cancelar</button><button class="btn" data-test="salvar-cenario" id="salva">Adicionar cenário</button></div>
       </form></div>
       <aside><div class="cov" id="cov" data-test="cobertura"><div class="hd">Cobertura das regras<span class="cnt" id="cnt" data-test="cobertura-contagem">0/${REGRAS.length}</span></div><div class="bar"><i id="bar"></i></div>
-        ${REGRAS.map((r, i) => `<div class="rl" id="u${i}" data-test="regra"><b>✓</b>${r}<span class="q" id="q${i}" hidden></span></div>`).join('')}<div class="ex" id="ex" hidden></div><div class="gabi-b" id="gabiB" data-test="recado-gabriela"><b>GABRIELA · DEV</b><span id="gabiT"></span></div><div class="gabi" aria-hidden="true"><video src="img/anim/gabriela_quadro.webm?v=1794479423" poster="img/anim/gabriela_quadro.png?v=1794479423" autoplay muted loop playsinline></video></div></div></aside></div>`;
+        ${REGRAS.map((r, i) => `<div class="rl" id="u${i}" data-test="regra"><b>✓</b>${r}<span class="q" id="q${i}" hidden></span></div>`).join('')}<div class="ex" id="ex" hidden></div><div class="gabi-b" id="gabiB" data-test="recado-gabriela"><b>GABRIELA · DEV</b><span id="gabiT"></span></div><div class="gabi" aria-hidden="true"><video src="img/anim/gabriela_quadro.webm?v=1794496469" poster="img/anim/gabriela_quadro.png?v=1794496469" autoplay muted loop playsinline></video></div></div></aside></div>`;
   let editando = null; const abertos = new Set();
   d.rodadas = d.rodadas || {};
   const rod = () => d.rodadas[id] || null;
@@ -1300,7 +1300,7 @@ PAGINAS.caca = () => {
   const meus = LS.get('fd:caca-envios', []);
   casca('caca', `<section class="caca-hero"><div class="ch-t"><div class="ch-k"><span id="tNum">TEMPORADA 1 DE 3</span><b class="${aberta ? 'ab' : ''}">${aberta ? 'ABERTA' : 'EM BREVE'}</b>${aberta ? '<i id="tFim">quando os 3 forem achados, a próxima temporada abre sozinha</i>' : ''}</div>
       <h1 data-test="titulo-pagina">3 bugs escondidos no FlowDesk.</h1><p>Quem achar e reportar primeiro ganha o <b>Vida de QA 2</b> de graça quando lançar. Preste atenção nas aulas.</p></div>
-      <video src="img/anim/vinicius_lupa_v2.webm?v=1794479423" poster="img/anim/vinicius_lupa_v2.png?v=1794479423" autoplay muted loop playsinline aria-label="Vinícius com uma lupa procurando bugs"></video></section>
+      <video src="img/anim/vinicius_lupa_v2.webm?v=1794496469" poster="img/anim/vinicius_lupa_v2.png?v=1794496469" autoplay muted loop playsinline aria-label="Vinícius com uma lupa procurando bugs"></video></section>
     <div class="caca-bugs" id="placar">${[1, 2, 3].map((n) => `<article class="cb"><div class="cb-h"><span>#${n}</span><b>LIVRE</b></div><div class="cb-v">Ninguém achou ainda.</div></article>`).join('')}</div>
     <div class="caca-grade"><section class="painel caca-form"><h2>Reportar um bug da caça</h2><p class="dica">A confirmação é automática. Vale o primeiro report confirmado de cada bug.</p>
       <form id="fc" novalidate>${aberta ? '' : '<div class="aviso-caca" data-test="caca-fechada">A primeira temporada ainda não abriu. Quando abrir, este formulário passa a funcionar e o aviso sai daqui.</div>'}
