@@ -23,12 +23,16 @@ const migra = (d) => { if (!d) return d; const base = semente(); for (const k of
 const dados = () => { if (!D) { D = migra(LS.get(chaveDados(), null)); if (D) andaSprint(D); } return D; };
 const salvar = () => LS.set(chaveDados(), D);
 const _conq = (LS.get(chaveDados(), null) || {}).conquistas || [];
-const VERSAO = qs.get('versao') ? Math.min(16, Math.max(14, +qs.get('versao') || 14)) : (_conq.includes('ep12') ? 16 : _conq.includes('ep08') ? 15 : 14);
+const VERSAO = qs.get('versao') ? Math.min(17, Math.max(14, +qs.get('versao') || 14)) : (_conq.includes('ep14') ? 17 : _conq.includes('ep12') ? 16 : _conq.includes('ep08') ? 15 : 14);
 // bugs plantados por versão
 const BUG = {
   tituloSoEspacos: VERSAO < 15,  // aceita título só com espaços (não usa trim)
   anexo5mbExato: VERSAO < 15,    // recusa o arquivo de exatamente 5 MB (usa >= em vez de >)
   titulo100: VERSAO === 15,      // regressão da correção: com o trim, o limite virou < 100 em vez de <= 100
+  duplicado: VERSAO === 17,      // o botão só trava depois que o servidor responde: com rede lenta, dois cliques criam dois chamados
+  buscaAcento: VERSAO === 17,    // o servidor tira o acento dos títulos, mas não o da busca
+  buscaEmoji: VERSAO === 17,     // a tela corta a busca em 30 posições e pode partir um emoji no meio (URIError)
+  rascunho: VERSAO === 17,       // o rascunho do novo chamado fica numa chave só do navegador e não sai no logout
 };
 // caça aos bugs: endereço do Worker (vazio = temporada ainda não aberta)
 const CACA_API = '';
@@ -151,9 +155,43 @@ function andaSprint(d, v = VERSAO, grava = true) {
     d.chat.bugs.push({ de: 'gabriela', tx: 'Vi a regressão. Foi mal, troquei o <= por < quando coloquei o trim. Já subi a correção na Sprint 16.', quando: agora() });
     d.chat['time-produto'].push({ de: 'rafael', tx: 'Decidido: título só com espaços conta como vazio. Virou a regra 7 do FD-101.', quando: agora() });
   }
+  if (v >= 17 && !d.sprints[17]) {
+    d.sprints[17] = agora(); mudou = true;
+    const novo = (titulo, descricao, cliente, por, status) => { const id = d.proximoChamado++; d.chamados.push({ id, titulo, descricao, cliente, status: status || 'Aberto', criadoEm: agora(), criadoPor: por, anexo: null, historico: [{ quando: agora(), tx: 'Chamado criado com status Aberto' }] }); };
+    novo('Manutenção do forno da padaria', 'O forno principal precisa de manutenção antes do fim de semana.', 'Padaria Pão Quente', 'Rafael');
+    novo('Caixa dos fundos travou hoje 🔥 urgente', 'O caixa dos fundos travou duas vezes durante a manhã.', 'Padaria Pão Quente', 'Sandra');
+    d.chat.suporte = d.chat.suporte || [];
+    d.chat.suporte.push({ de: 'beatriz', tx: 'Encaminhando da Sandra, da Padaria Pão Quente: “Às vezes, quando eu abro um chamado, ele aparece duas vezes na lista. Não é sempre. Hoje foi duas vezes.”', quando: agora() });
+    d.chat.releases.push({ de: 'lucas', tx: 'Release da Sprint 17 publicada em homologação: a busca e a criação de chamados agora passam pela API, e o novo chamado guarda rascunho.', quando: agora() });
+  }
   if (mudou && grava) LS.set(chaveDados(), d);
   return d;
 }
+// ---------- servidor (Sprint 17 em diante): o service worker faz o papel da API ----------
+const usaApi = () => VERSAO >= 17 && 'serviceWorker' in navigator && /^https?:/.test(location.protocol);
+let _swPronto = null;
+function swPronto() {
+  if (!_swPronto) _swPronto = (async () => {
+    await navigator.serviceWorker.register('sw.js?v=1');
+    if (navigator.serviceWorker.controller) return true;
+    await new Promise((r) => { navigator.serviceWorker.addEventListener('controllerchange', r, { once: true }); setTimeout(r, 4000); });
+    return !!navigator.serviceWorker.controller;
+  })().catch(() => false);
+  return _swPronto;
+}
+if ('serviceWorker' in navigator) navigator.serviceWorker.addEventListener('message', (ev) => {
+  const m = ev.data || {}, porta = ev.ports && ev.ports[0]; if (!porta || !sessao()) return;
+  if (m.tipo === 'lista') porta.postMessage({ lista: dados().chamados.map(({ id, titulo, cliente, status, criadoEm }) => ({ id, titulo, cliente, status, criadoEm })), bugAcento: BUG.buscaAcento });
+  if (m.tipo === 'cria') {
+    const d = dados(), c = m.chamado, id = d.proximoChamado++;
+    const x = { id, titulo: String(c.titulo).trim(), descricao: String(c.descricao).trim(), cliente: c.cliente, status: 'Aberto', criadoEm: agora(), criadoPor: 'Você', anexo: c.anexo || null, v: VERSAO, historico: [{ quando: agora(), tx: 'Chamado criado com status Aberto' }] };
+    d.chamados.push(x); salvar(); porta.postMessage({ id, titulo: x.titulo, cliente: x.cliente, status: x.status, criadoEm: x.criadoEm });
+  }
+});
+if (usaApi()) swPronto();
+const RASCUNHO = 'fd:rascunho';
+// quem viu rascunho de outra conta (vale pra missão do EP20, em qualquer conta deste navegador)
+const vazouRascunho = () => Object.keys(contas()).some((e) => (LS.get('fd:dados:' + e, null) || {}).viuRascunhoAlheio);
 const rodadaDe = (d, id = 'FD-101') => (d.rodadas || {})[id] || null;
 // grupos de cenário, pelo que cada um cobre (pra conferir a análise de impacto)
 const cenTitulo = (c) => c.regras.some((r) => r === 0 || r === 2 || r === 6);
@@ -202,6 +240,32 @@ function depoisDoEp12() {
   d.conquistas.push('ep12');
   return d;
 }
+function depoisDoEp12b() { return depoisDoEp12(); }
+function depoisDoEp14() {
+  const d = andaSprint(depoisDoEp12(), 16, false), l = d.planos['FD-101'], sel = [0, 1, 3, 4, 8];
+  bugsDe(d).forEach((b) => { if (b.coluna !== 'concluido') { b.coluna = 'concluido'; b.retestes = [...(b.retestes || []), { quando: agora(), versao: 16, res: 'passou', evid: `reteste-${b.id.toLowerCase()}.png`, com: '' }]; } });
+  l.forEach((c, i) => { if (!sel.includes(i)) return; c.hist = [...(c.hist || []), { r: 2, v: 15, exec: c.exec, evid: c.evid }]; c.exec = 'passou'; c.evid = `rodada3-${evNome(i)}`; delete c.bug; });
+  l[8].regras = [6]; l[8].esperado = 'Aparece "Título é obrigatório" e o chamado não é criado';
+  d.rodadas = { 'FD-101': { n: 3, versao: 16, data: agora(), sel } };
+  d.gherkin['FD-101'] = (d.gherkin['FD-101'] || GK_EP06) + '\n  Cenário: Criar chamado com título só com espaços\n    Dado que estou na tela "Novo chamado"\n    E preenchi o título só com espaços\n    E preenchi a descrição\n    Quando clico em "Criar chamado"\n    Então vejo "Título é obrigatório"\n    E o chamado não é criado\n';
+  d.conquistas.push('ep14'); return d;
+}
+const bugM3 = (d, id, titulo, passos, esperado, obtido, evidencia, extra) => d.cards.push({ id, titulo, coluna: 'afazer', resp: 'gabriela', tipo: 'bug', prioridade: 'Normal', relacionado: '', cenario: '', passos, esperado, obtido, evidencia, criterios: [], ok: [], comentarios: [], criadoEm: agora(), ...(extra || {}) });
+function depoisDoEp16() {
+  const d = andaSprint(depoisDoEp14(), 17, false);
+  bugM3(d, 'BUG-04', 'Chamado criado em dobro com rede lenta e clique duplo', '1. Na aba Rede, limitar para 3G\n2. Abrir Novo chamado e preencher\n3. Clicar duas vezes em Criar chamado', 'Um chamado só', 'Dois chamados iguais. 8 em 10 tentativas', 'rede-dois-post.png', { prioridade: 'Alta' });
+  d.proximoBug = 5; d.conquistas.push('ep16'); return d;
+}
+function depoisDoEp18() {
+  const d = depoisDoEp16();
+  bugM3(d, 'BUG-05', 'Busca com acento não encontra o chamado', '1. Abrir Chamados\n2. Buscar por manutenção', 'Aparece o chamado Manutenção do forno da padaria', 'Nenhum chamado encontrado', 'rede-busca-acento.png', { tecnico: 'GET api/chamados?busca=manuten%C3%A7%C3%A3o respondeu 200 com [] (sem acento acha)' });
+  bugM3(d, 'BUG-06', 'Busca com título que tem emoji fica carregando pra sempre', '1. Abrir Chamados\n2. Colar na busca: Caixa dos fundos travou hoje 🔥 urgente', 'Aparece o chamado', 'Fica em Carregando… e nenhum pedido sai', 'console-urierror.png', { tecnico: 'URIError: URI malformed' });
+  d.proximoBug = 7; d.conquistas.push('ep18'); return d;
+}
+function contaDoLucas(d) {
+  const cs = contas(); cs['lucas@flowdesk.com'] = { nome: 'Lucas Ribeiro', senha: '123456', criadaEm: agora() }; LS.set('fd:contas', cs);
+  const l = JSON.parse(JSON.stringify(d)); delete l.meuRascunho; delete l.viuRascunhoAlheio; LS.set('fd:dados:lucas@flowdesk.com', l); return d;
+}
 const SAVES = [
   { id: 'inicio', nome: 'Começo do curso', quando: 'do EP00 ao EP04', monta: () => semente() },
   { id: 'ep04', nome: 'Início do EP05', quando: 'Cenários em Gherkin', monta: () => { const d = semente(); d.planos['FD-101'] = CENARIOS_EP03.map((c) => ({ ...c })); d.conquistas = ['ep03']; return d; } },
@@ -211,6 +275,9 @@ const SAVES = [
   { id: 'ep10', nome: 'Início do EP10', quando: 'Retestar os bugs', monta: depoisDoEp08 },
   { id: 'ep12', nome: 'Início do EP12', quando: 'Rodada de regressão', monta: depoisDoEp10 },
   { id: 'ep14', nome: 'Início do EP14', quando: 'Sprint 16', monta: depoisDoEp12 },
+  { id: 'ep16', nome: 'Início do EP16', quando: 'O chamado duplicado', monta: depoisDoEp14 },
+  { id: 'ep18', nome: 'Início do EP18', quando: 'Tela ou servidor?', monta: depoisDoEp16 },
+  { id: 'ep20', nome: 'Início do EP20', quando: 'O rascunho · com a conta de teste do Lucas', monta: () => { LS.del(RASCUNHO); return contaDoLucas(depoisDoEp18()); } },
 ];
 
 
@@ -271,6 +338,24 @@ const MISSOES = [
     ['Rode a rodada 3: caminho feliz e cenários de título', (d) => { const R = rodadaDe(d), l = d.planos['FD-101'] || []; return !!R && R.n >= 3 && R.versao === 16 && l.some((c, i) => cenFeliz(c) && R.sel.includes(i)) && l.every((c, i) => !(cenTitulo(c) && c.regras.length) || R.sel.includes(i)) && R.sel.every((i) => l[i] && l[i].exec !== 'nao' && l[i].evid); }],
     ['Ligue o cenário do título só com espaços à regra nova', (d) => (d.planos['FD-101'] || []).some((c) => c.regras.includes(6))],
     ['Escreva o cenário de regressão no Gherkin', (d) => /^\s*Cen[aá]rio:[^\n]*espa[çc]o[^\n]*\n(?:[^\n]*\n)*?\s*Ent[aã]o\s+\S/im.test(gherkinDe(d))],
+  ] },
+  { id: 'ep16', titulo: 'Achar a condição do duplicado', aula: 'EP16', conquista: 'Bug intermitente com condição', nivel: 'QA júnior', link: 'novo-chamado.html', itens: [
+    ['Faça o chamado sair em dobro', (d) => { const l = d.chamados.filter((c) => c.criadoPor === 'Você' && c.v >= 17); return l.some((a) => l.some((b) => b !== a && b.titulo === a.titulo && Math.abs(new Date(b.criadoEm) - new Date(a.criadoEm)) < 15000)); }],
+    ['Reporte com a condição no título', (d) => bugsDe(d).some((b) => /lent|3g|rede/i.test(b.titulo) && /dobro|duplic|duas vezes|dois|2x/i.test(b.titulo))],
+    ['Comece os passos pela rede lenta', (d) => bugsDe(d).some((b) => /dobro|duplic/i.test(b.titulo) && /lent|3g/i.test((b.passos || '').split('\n')[0]))],
+    ['Diga a frequência', (d) => bugsDe(d).some((b) => /dobro|duplic/i.test(b.titulo) && /\d+\s*(de|em|\/)\s*\d+/i.test(textoBug(b) + ' ' + (b.tecnico || '')))],
+  ] },
+  { id: 'ep18', titulo: 'Tela ou servidor?', aula: 'EP18', conquista: 'Bug no lugar certo', nivel: 'QA júnior', link: 'chamados.html', itens: [
+    ['Reporte o bug da busca com acento', (d) => bugsDe(d).some((b) => /acento|manuten/i.test(textoBug(b)))],
+    ['Mostre que ele está no servidor', (d) => bugsDe(d).some((b) => /acento|manuten/i.test(textoBug(b)) && /servidor|resposta|api|back|\[\]/i.test(textoBug(b) + ' ' + (b.tecnico || '')))],
+    ['Reporte o bug do emoji', (d) => bugsDe(d).some((b) => /emoji|🔥|carregando|urierror/i.test(textoBug(b) + ' ' + (b.tecnico || '')))],
+    ['Cole o erro do Console', (d) => bugsDe(d).some((b) => /urierror|malformed/i.test((b.tecnico || '') + ' ' + textoBug(b)))],
+  ] },
+  { id: 'ep20', titulo: 'O rascunho que vaza', aula: 'EP20', conquista: 'Dado no navegador', nivel: 'QA júnior', link: 'novo-chamado.html', itens: [
+    ['Faça o rascunho aparecer pra outra conta', () => vazouRascunho()],
+    ['Reporte o bug do rascunho', (d) => bugsDe(d).some((b) => /rascunho/i.test(textoBug(b)))],
+    ['Com prioridade alta', (d) => bugsDe(d).some((b) => /rascunho/i.test(textoBug(b)) && /alta|cr[ií]tica|urgente/i.test(b.prioridade || ''))],
+    ['Com a chave do armazenamento em Console e Rede', (d) => bugsDe(d).some((b) => /rascunho/i.test(textoBug(b)) && /fd:rascunho|rascunho/i.test(b.tecnico || ''))],
   ] },
 ];
 const bugsDe = (d) => d.cards.filter((c) => c.tipo === 'bug');
@@ -454,6 +539,7 @@ PAGINAS.login = () => {
     <form id="fEntrar" novalidate><span class="lg-chip">SPRINT ${VERSAO} · HOMOLOGAÇÃO</span><h1>Bem-vindo de volta</h1><p class="sub">O time já está te esperando. Use dados de mentira: fica tudo salvo só neste navegador.</p>
       <div class="campo"><label for="email">E-mail</label><input class="in" id="email" type="email" data-test="login-email" autocomplete="username" placeholder="voce@empresa.com"></div>
       <div class="campo"><label for="senha">Senha</label><input class="in" id="senha" type="password" data-test="login-senha" autocomplete="current-password" placeholder="Sua senha"></div>
+      ${contas()['lucas@flowdesk.com'] ? '<p class="conta-teste" data-test="conta-teste">Conta de teste do time: <b>lucas@flowdesk.com</b> · senha <b>123456</b></p>' : ''}
       <button class="btn cheio" data-test="login-entrar">Entrar</button>
       <div class="ou"><span></span>primeira vez?<span></span></div>
       <button type="button" class="btn sec cheio" data-test="ir-criar-conta">Criar minha conta</button></form>
@@ -500,6 +586,9 @@ const DICA_MISSAO = {
   ep10: 'A Gabriela corrigiu os bugs. Refaça os passos de cada um, na Sprint 15, e feche com o print.',
   ep12: 'Abra a rodada 2 só com o que a correção encosta, e execute com evidência.',
   ep14: 'Sprint 16 no ar: reteste o bug de regressão, rode a rodada 3 e deixe a suíte em dia.',
+  ep16: 'A padaria diz que às vezes o chamado sai em dobro. Ache a condição com a aba Rede e reporte.',
+  ep18: 'A busca falha com acento e com emoji. Descubra se cada bug está na tela ou no servidor.',
+  ep20: 'Um rascunho aparece pra quem não escreveu. Ache onde ele mora e prove com outra conta.',
 };
 PAGINAS.dashboard = () => {
   const d = dados(), c = contas()[sessao()];
@@ -568,6 +657,28 @@ PAGINAS.chamados = () => {
     $$('#linhas tr[data-href]').forEach((tr) => { tr.onclick = (ev) => { if (!ev.target.closest('a')) location.href = tr.dataset.href; }; });
   };
   $$('.chips .chip').forEach((c) => { c.onclick = () => { $('#filtro').value = c.dataset.st; pinta(); }; });
+  if (usaApi()) {
+    let pedido = 0, tm = null;
+    const desenha = (l) => { const f = $('#filtro').value; const filtra = l.filter((x) => !f || x.status === f); const ids = new Set(filtra.map((x) => x.id)); const todos2 = dados().chamados.filter((x) => ids.has(x.id)).sort((a, c) => c.id - a.id);
+      $('#linhas').innerHTML = todos2.length ? todos2.map((x) => { const [bg, cor] = corCliente(x.cliente);
+        return `<tr data-test="linha-chamado" data-href="chamado.html?id=${x.id}"><td class="num">#${x.id}</td><td><div class="tt"><a href="chamado.html?id=${x.id}" data-test="link-chamado">${esc(x.titulo) || '<i style="color:#5b5f78">(sem título)</i>'}</a>${x.criadoPor === 'Você' ? '<span class="por-voce">criado por você</span>' : ''}</div></td>
+        <td><span class="cli"><span class="cli-i" style="background:${bg};color:${cor}">${esc(iniciais(x.cliente))}</span>${esc(x.cliente)}</span></td>
+        <td><span class="stp" data-test="status" style="--c:${COR_ST[x.status] || '#a78bfa'}"><i></i>${x.status}</span></td><td class="quando" title="${dataBR(x.criadoEm)}">${relativo(x.criadoEm)}</td></tr>`; }).join('')
+        : '<tr><td colspan="5" class="vazio" data-test="lista-vazia">Nenhum chamado encontrado</td></tr>';
+      $$('#linhas tr[data-href]').forEach((tr) => { tr.onclick = (ev) => { if (!ev.target.closest('a')) location.href = tr.dataset.href; }; }); };
+    const busca = async () => {
+      const n = ++pedido, v = $('#busca').value.trim();
+      if (!v) return pinta();
+      $('#linhas').innerHTML = '<tr><td colspan="5" class="vazio" data-test="carregando">Carregando…</td></tr>';
+      // Sprint 17: a busca corta em 30 posições, e um emoji ocupa duas: pode sobrar meio emoji
+      const termo = BUG.buscaEmoji ? v.slice(0, 30) : Array.from(v).slice(0, 30).join('');
+      const url = 'api/chamados?busca=' + encodeURIComponent(termo);
+      await swPronto(); const r = await fetch(url); const l = await r.json();
+      if (n === pedido) desenha(r.ok ? l : []);
+    };
+    $('#busca').oninput = () => { clearTimeout(tm); tm = setTimeout(busca, 350); }; $('#filtro').onchange = () => ($('#busca').value.trim() ? busca() : pinta()); pinta();
+    return;
+  }
   $('#busca').oninput = pinta; $('#filtro').onchange = pinta; pinta();
 };
 
@@ -582,6 +693,16 @@ PAGINAS['novo-chamado'] = () => {
       <div class="fbtns"><a class="btn sec" href="chamados.html" data-test="cancelar">Cancelar</a><button class="btn" data-test="criar-chamado">Criar chamado</button></div>
     </form><aside class="nc-lado"><div class="nc-k">${ico('card', 'ic')}O QUE O FD-101 PEDE</div><ol>${(dados().cards.find((x) => x.id === 'FD-101') || { criterios: [] }).criterios.map((t) => `<li>${esc(t)}</li>`).join('')}</ol><a href="card.html?id=FD-101&aba=plano">Abrir o plano de testes ${ico('seta', 'ic')}</a></aside></div>`);
   let arquivo = null;
+  if (VERSAO >= 17) {
+    const rs = LS.get(RASCUNHO, null);
+    if (rs && (rs.titulo || rs.descricao)) {
+      $('#titulo').value = rs.titulo || ''; $('#descricao').value = rs.descricao || '';
+      const d = dados(); if (d.meuRascunho !== (rs.titulo || '') + '|' + (rs.descricao || '')) { d.viuRascunhoAlheio = true; salvar(); }
+      setTimeout(() => toast('Rascunho recuperado'), 50);
+    }
+    const guarda = () => { const v = { titulo: $('#titulo').value, descricao: $('#descricao').value }; LS.set(RASCUNHO, v); const d = dados(); d.meuRascunho = v.titulo + '|' + v.descricao; salvar(); };
+    $('#titulo').addEventListener('input', guarda); $('#descricao').addEventListener('input', guarda);
+  }
   if (_c('t80') && innerWidth <= 480) $('#titulo').maxLength = 80;
   $('#titulo').oninput = () => { $('#cont').textContent = $('#titulo').value.length + '/100'; if ($('#titulo').maxLength === 80 && $('#titulo').value.length >= 80) _pv('t80'); };
   const validaArquivo = (f) => {
@@ -604,6 +725,19 @@ PAGINAS['novo-chamado'] = () => {
     else if (BUG.titulo100 && t.trim().length >= 100) { erroCampo('titulo', 'Título deve ter até 100 caracteres'); ok = false; }
     if (ds.trim().length === 0) { erroCampo('descricao', 'Descrição é obrigatória'); ok = false; }
     if (!ok) return;
+    if (usaApi()) {
+      const btn = $('[data-test=criar-chamado]');
+      if (!BUG.duplicado) btn.disabled = true;
+      swPronto().then(() => fetch('api/chamados', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ titulo: t, descricao: ds, cliente: $('#cliente').value, anexo: arquivo }) }))
+        .then((r) => r.json().then((j) => ({ ok: r.ok, j })))
+        .then(({ ok: certo, j }) => {
+          if (!certo) { btn.disabled = false; return toast(j.erro || 'Não deu pra criar o chamado', true); }
+          btn.disabled = true; if (!BUG.rascunho) LS.del(RASCUNHO); else LS.del(RASCUNHO);
+          toast('Chamado criado com sucesso'); setTimeout(() => { location.href = 'chamado.html?id=' + j.id; }, 1200);
+        })
+        .catch(() => { btn.disabled = false; toast('Sem conexão. Tente de novo', true); });
+      return;
+    }
     const d = dados(), id = d.proximoChamado++;
     if (arquivo && arquivo.tirado) { _pv('anexo'); delete arquivo.tirado; }
     d.chamados.push({ id, titulo: BUG.tituloSoEspacos ? t : t.trim(), descricao: ds.trim(), cliente: $('#cliente').value, status: 'Aberto', criadoEm: agora(), criadoPor: 'Você', anexo: arquivo, historico: [{ quando: agora(), tx: 'Chamado criado com status Aberto' }] });
@@ -684,6 +818,7 @@ function novaTarefa(depois, ctx) {
     ${ctx ? `<p class="liga" data-test="bug-cenario">Ligado ao cenário ${ctx.n} do plano: <b>${esc(ctx.nome)}</b></p>` : ''}
     <div class="so-bug"><div class="campo"><label for="tPassos">Passos para reproduzir <i>*</i></label><textarea class="in" id="tPassos" data-test="bug-passos" placeholder="1. …&#10;2. …&#10;3. …"></textarea></div>
       <div class="linha2"><div class="campo"><label for="tEsp">Resultado esperado <i>*</i></label><input class="in" id="tEsp" data-test="bug-esperado"></div><div class="campo"><label for="tObt">Resultado obtido <i>*</i></label><input class="in" id="tObt" data-test="bug-obtido"></div></div>
+      ${VERSAO >= 17 ? `<div class="campo"><label for="tTec">Console e Rede <small>(opcional · erro do Console, pedido e resposta da Rede, chave do armazenamento)</small></label><textarea class="in" id="tTec" data-test="bug-tecnico" placeholder="Ex.: GET api/chamados?busca=... respondeu [] · URIError: URI malformed"></textarea></div>` : ''}
       <div class="campo"><label for="tEvid">Evidência <i>*</i> <small>(print ou vídeo do que aconteceu)</small></label><label class="arquivo ${ctx && ctx.evid ? 'tem' : ''}" for="tEvid" id="tEvidBox"><input type="file" id="tEvid" data-test="bug-evidencia"><span class="btn sec peq">${ctx && ctx.evid ? 'Trocar arquivo' : 'Escolher arquivo'}</span><span class="nome" id="nomeEv" data-test="bug-evidencia-nome">${ctx && ctx.evid ? `${esc(ctx.evid)} <em>· veio do cenário ${ctx.n}</em>` : 'Nenhum arquivo escolhido'}</span></label></div>
       ${VERSAO >= 15 ? `<label class="cr reg-ck" data-test="bug-regressao"><input type="checkbox" id="tReg"> É regressão: funcionava antes e parou</label>
       <div class="linha2" id="tRegC" hidden><div class="campo"><label for="tFun">Funcionava em</label><select class="in" id="tFun" data-test="bug-funcionava">${[13, 14, 15].filter((v) => v < VERSAO).map((v) => `<option value="${v}" ${v === VERSAO - 1 ? 'selected' : ''}>Sprint ${v}</option>`).join('')}</select></div><div class="campo"><label for="tQue">Quebrou em</label><select class="in" id="tQue" data-test="bug-quebrou"><option value="${VERSAO}">Sprint ${VERSAO}</option></select></div></div>` : ''}</div>
@@ -709,7 +844,7 @@ function novaTarefa(depois, ctx) {
     if (bug) {
       id = 'BUG-' + String(d.proximoBug++).padStart(2, '0'); const f = $('#tEvid').files[0];
       if (!v('tTitulo')) _pv('bugtit');
-      d.cards.push({ id, titulo: v('tTitulo'), coluna: 'afazer', resp: 'gabriela', tipo: 'bug', prioridade: v('tPrio'), relacionado: v('tCard'), cenario: ctx ? ctx.nome : '', passos: v('tPassos'), esperado: v('tEsp'), obtido: v('tObt'), evidencia: f ? f.name : (ctx && ctx.evid) || '', ...($('#tReg') && $('#tReg').checked ? { regressao: true, funcionava: +$('#tFun').value, quebrou: +$('#tQue').value } : {}), criterios: [], ok: [], comentarios: [], criadoEm: agora() });
+      d.cards.push({ id, titulo: v('tTitulo'), coluna: 'afazer', resp: 'gabriela', tipo: 'bug', prioridade: v('tPrio'), relacionado: v('tCard'), cenario: ctx ? ctx.nome : '', passos: v('tPassos'), esperado: v('tEsp'), obtido: v('tObt'), evidencia: f ? f.name : (ctx && ctx.evid) || '', ...($('#tReg') && $('#tReg').checked ? { regressao: true, funcionava: +$('#tFun').value, quebrou: +$('#tQue').value } : {}), ...($('#tTec') && $('#tTec').value.trim() ? { tecnico: $('#tTec').value.trim() } : {}), criterios: [], ok: [], comentarios: [], criadoEm: agora() });
       d.chat.bugs.push({ de: 'voce', tx: `Abri o ${id}: ${v('tTitulo')}`, quando: agora() });
     } else {
       d.proximoMelhoria = d.proximoMelhoria || 1; id = 'MEL-' + d.proximoMelhoria++;

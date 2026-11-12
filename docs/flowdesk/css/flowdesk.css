@@ -924,3 +924,4 @@ tr.fora-rod{opacity:.55}
 .rod-l .cr span b{color:#c4b5fd;margin-right:4px}
 /* telas baixas (notebook pequeno, janela reduzida): a barra lateral cabe inteira, sem cortar o usuário embaixo */
 @media (max-height:720px) and (min-width:901px){.side{padding:12px 12px 10px;overflow-y:auto}.side .marca{padding-bottom:8px}.side nav a{padding:6px 12px;margin-bottom:2px;font-size:14px}.side nav .grupo{margin:8px 12px 4px}.missao-side{margin:8px 0 6px;padding:9px 11px}.missao-side .t{font-size:13px}.side .eu{padding-top:8px}}
+.conta-teste{font-size:12.5px;color:var(--mut);background:#15112a;border:1px dashed #3b2a6e;border-radius:9px;padding:8px 10px;margin:-4px 0 12px}.conta-teste b{color:#c4b5fd}
