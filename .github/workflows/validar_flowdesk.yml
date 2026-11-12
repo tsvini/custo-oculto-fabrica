@@ -1,4 +1,4 @@
-name: Validar FlowDesk (jornada EP04 a EP14)
+name: Validar FlowDesk (jornada EP04 a EP20)
 on:
   push:
     paths: ['docs/flowdesk/**', 'tests/flowdesk/**']
