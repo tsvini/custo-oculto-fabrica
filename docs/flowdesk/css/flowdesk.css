@@ -1029,3 +1029,6 @@ tr.fora-rod{opacity:.55}
 .relogio-d1 b{font-size:10px;letter-spacing:2px;color:#a78bfa}.relogio-d1 span{font-size:20px;font-weight:800;font-variant-numeric:tabular-nums}
 .relogio-d1.pausado{border-color:#f59e0b}.relogio-d1.acabou{border-color:#ef4444}.relogio-d1.acabou span{color:#fca5a5}
 .ch-f2{display:flex;gap:10px;flex-wrap:wrap;align-items:center;width:100%;margin-top:10px}.ch-f2 .in{height:40px;max-width:240px;font-size:14px}.ch-f2 .btn{height:40px;margin:0}
+.desafio.com-bea{position:relative;padding-right:230px;min-height:300px;overflow:hidden}
+.desafio .d-bea{position:absolute;right:6px;bottom:0;height:300px;pointer-events:none}
+@media (max-width:900px){.desafio.com-bea{padding-right:22px}.desafio .d-bea{display:none}}
