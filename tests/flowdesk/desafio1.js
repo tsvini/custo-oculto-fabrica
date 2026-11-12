@@ -1,0 +1,48 @@
+// Desafio 1 (efetivação, FD-118): os 3 bugs da Sprint 16 aparecem enquanto o desafio está aberto, a nota sai certa e a efetivação libera o cartão.
+// Uso: node tests/flowdesk/desafio1.js [url-base]
+const { chromium } = require('playwright');
+const U = process.argv[2] || 'http://localhost:8765/';
+const res = []; const ok = (n, c, x = '') => res.push([c ? 'OK ' : 'FALHOU', n, x]);
+(async () => {
+  const b = await chromium.launch(); const p = await (await b.newContext({ viewport: { width: 1440, height: 900 } })).newPage();
+  const erros = []; p.on('pageerror', (e) => erros.push(e.message));
+  await p.goto(U + 'index.html');
+  await p.click('[data-test=ir-criar-conta]'); await p.fill('[data-test=cadastro-nome]', 'Ana Souza'); await p.fill('[data-test=cadastro-email]', 'desafio@teste.com'); await p.fill('[data-test=cadastro-senha]', '123456'); await p.click('[data-test=cadastro-criar]');
+  await p.waitForURL(/dashboard/);
+  await p.goto(U + 'configuracoes.html'); await p.selectOption('[data-test=save-episodio]', 'd1'); await p.click('[data-test=carregar-save]'); await p.click('[data-test=confirmar-save]'); await p.waitForTimeout(800);
+  await p.goto(U + 'dashboard.html'); await p.waitForTimeout(500);
+  ok('missão atual é o desafio', /DESAFIO DE EFETIVAÇÃO/.test(await p.textContent('[data-test=missao-atual]')));
+  await p.goto(U + 'card.html?id=FD-118'); await p.waitForTimeout(400);
+  await p.click('[data-test=comecar-desafio]'); await p.waitForTimeout(700);
+  ok('relógio aparece', /40:00|39:5/.test(await p.textContent('[data-test=relogio-desafio]')));
+  await p.goto(U + 'chamados.html'); await p.waitForTimeout(400);
+  const cli = async () => [...new Set(await p.$$eval('[data-test=linha-chamado] .cli', (e) => e.map((x) => x.textContent.trim())))];
+  await p.selectOption('[data-test=filtro-cliente]', 'Clínica Vida'); ok('só cliente filtra', (await cli()).length === 1);
+  await p.click('.chips .chip[data-st="Aberto"]'); ok('bug: cliente + status ignora o cliente', (await cli()).length > 1);
+  await p.click('[data-test=limpar-filtros]'); await p.selectOption('[data-test=filtro-periodo]', '7');
+  const q = await p.$$eval('[data-test=linha-chamado] .quando', (e) => e.map((x) => x.textContent.trim()));
+  ok('bug: 7 dias deixa hoje de fora', q.length > 0 && !q.some((t) => /min|hora|agora/.test(t)), q.join('|'));
+  await p.click('[data-test=limpar-filtros]'); await p.fill('[data-test=busca-chamado]', 'nota'); await p.waitForTimeout(150);
+  const nb = (await cli()).length; await p.click('[data-test=limpar-filtros]');
+  ok('bug: limpar esquece a busca', (await p.$$('[data-test=linha-chamado]')).length <= 3 && (await p.inputValue('[data-test=busca-chamado]')) === '', String(nb));
+  await p.evaluate(() => { const k = 'fd:dados:' + JSON.parse(localStorage.getItem('fd:sessao')); const d = JSON.parse(localStorage.getItem(k));
+    const R = [['Filtrar só pelo cliente Clínica Vida', 0], ['Filtrar só pelo status Aberto', 1], ['Cliente e status combinados', 2], ['Período de 7 dias inclui hoje', 3], ['Limpar filtros zera a busca também', 4]];
+    d.planos['FD-118'] = R.map(([n, r]) => ({ nome: n, tipo: 'P', passos: '1. Abrir chamados\n2. Filtrar', esperado: 'Aparecem só os chamados certos, conforme a regra', regras: [r], exec: 'passou', evid: 'e' + r + '.png' }));
+    const bug = (id, t, o) => ({ id, titulo: t, coluna: 'afazer', resp: 'gabriela', tipo: 'bug', prioridade: 'Alta', relacionado: 'FD-118', cenario: '', passos: '1. Chamados', esperado: 'Só os do cliente', obtido: o, evidencia: 'x.png', criterios: [], ok: [], comentarios: [], criadoEm: new Date().toISOString() });
+    d.cards.push(bug('BUG-90', 'Filtro de cliente ignorado quando escolho status junto', 'Aparecem chamados de outros clientes'), bug('BUG-91', 'Limpar filtros não limpa a busca', 'A lista continua filtrada pela busca antiga'));
+    localStorage.setItem(k, JSON.stringify(d)); });
+  await p.goto(U + 'card.html?id=FD-118'); await p.waitForTimeout(400);
+  await p.click('[data-test=entregar-desafio]'); await p.click('[data-test=confirmar-entrega]'); await p.waitForTimeout(1000);
+  ok('nota 85', (await p.textContent('[data-test=nota-desafio]')).trim() === '85');
+  ok('conquista Efetivado', (await p.locator('[data-test=conquista-nome]').textContent().catch(() => '')) === 'Efetivado');
+  await p.click('[data-test=fechar-conquista]').catch(() => {});
+  await p.goto(U + 'chamados.html'); await p.waitForTimeout(600);
+  await p.selectOption('[data-test=filtro-cliente]', 'Clínica Vida'); await p.click('.chips .chip[data-st="Aberto"]'); await p.waitForTimeout(300);
+  ok('Sprint 17: filtro combinado certo', (await cli()).length === 1);
+  ok('nível QA júnior', (await p.textContent('[data-test=nivel]')).trim() === 'QA júnior');
+  await p.goto(U + 'efetivacao.html'); await p.waitForTimeout(400); ok('cartão liberado', (await p.locator('[data-test=cartao]').count()) === 1);
+  ok('nenhum erro de JavaScript', !erros.length, erros.join(' / '));
+  await b.close();
+  res.forEach(([s, n, x]) => console.log(s, n, x)); const f = res.filter((r) => r[0] !== 'OK ').length;
+  console.log(f ? `\n${f} falha(s)` : '\nDesafio 1 OK'); process.exit(f ? 1 : 0);
+})();

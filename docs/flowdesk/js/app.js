@@ -20,11 +20,11 @@ const chaveDados = () => 'fd:dados:' + sessao();
 let D = null;
 // versões novas do site completam o que faltar nos dados antigos, sem apagar nada do aluno
 const migra = (d) => { if (!d) return d; const base = semente(); for (const k of Object.keys(base)) if (d[k] === undefined) d[k] = base[k]; for (const k of Object.keys(base.chat || {})) if (d.chat && !d.chat[k]) d.chat[k] = base.chat[k]; return d; };
-const dados = () => { if (!D) { D = migra(LS.get(chaveDados(), null)); if (D) andaSprint(D); } return D; };
+const dados = () => { if (!D) { D = migra(LS.get(chaveDados(), null)); if (D) { andaSprint(D); garanteDesafio(D); } } return D; };
 const salvar = () => LS.set(chaveDados(), D);
 // sem ninguém logado (tela de login), a versão é a mais nova que este navegador já viu
 const _conq = (LS.get(chaveDados(), null) || {}).conquistas || Object.keys(localStorage).filter((k) => k.startsWith('fd:dados:')).flatMap((k) => (LS.get(k, null) || {}).conquistas || []);
-const VERSAO = qs.get('versao') ? Math.min(17, Math.max(14, +qs.get('versao') || 14)) : (_conq.includes('ep14') ? 17 : _conq.includes('ep12') ? 16 : _conq.includes('ep08') ? 15 : 14);
+const VERSAO = qs.get('versao') ? Math.min(17, Math.max(14, +qs.get('versao') || 14)) : (_conq.includes('d1') ? 17 : _conq.includes('ep12') ? 16 : _conq.includes('ep08') ? 15 : 14);
 // bugs plantados por versão
 const BUG = {
   tituloSoEspacos: VERSAO < 15,  // aceita título só com espaços (não usa trim)
@@ -176,7 +176,7 @@ const usaApi = () => VERSAO >= 17 && 'serviceWorker' in navigator && /^https?:/.
 let _swPronto = null;
 function swPronto() {
   if (!_swPronto) _swPronto = (async () => {
-    await navigator.serviceWorker.register('sw.js?v=1794509701');
+    await navigator.serviceWorker.register('sw.js?v=1794510265');
     if (navigator.serviceWorker.controller) return true;
     await new Promise((r) => { navigator.serviceWorker.addEventListener('controllerchange', r, { once: true }); setTimeout(r, 4000); });
     return !!navigator.serviceWorker.controller;
@@ -281,6 +281,7 @@ const SAVES = [
   { id: 'ep10', nome: 'Início do EP10', quando: 'Retestar os bugs', monta: depoisDoEp08 },
   { id: 'ep12', nome: 'Início do EP12', quando: 'Rodada de regressão', monta: depoisDoEp10 },
   { id: 'ep14', nome: 'Início do EP14', quando: 'Sprint 16', monta: depoisDoEp12 },
+  { id: 'd1', nome: 'Início do Desafio 1', quando: 'Efetivação · FD-118', monta: depoisDoEp14 },
   { id: 'ep16', nome: 'Início do EP16', quando: 'O chamado duplicado · já efetivado como júnior', monta: () => { const d = depoisDoEp14(); d.conquistas.push('d1'); return d; } },
   { id: 'ep18', nome: 'Início do EP18', quando: 'Tela ou servidor?', monta: depoisDoEp16 },
   { id: 'ep20', nome: 'Início do EP20', quando: 'O rascunho · com a conta de teste do Lucas', monta: () => { LS.del(RASCUNHO); return contaDoLucas(depoisDoEp18()); } },
@@ -293,20 +294,76 @@ const SAVES = [
 const fraco = (c) => (c.nome || '').trim().split(/\s+/).length < 2 || (c.esperado || '').trim().length < 8;
 const CHAVES = [/t[ií]tulo/i, /descri/i, /100|101|cem|limite|caracter/i, /anexo|arquivo|pdf|png|jpe?g|mb|exe/i, /mensagem|sucesso|tela do chamado|criad/i, /aberto|status/i, /espa[çc]o|vazi/i];
 // a Gabriela lê o cenário como quem vai ter que executar: devolve [tom, recado]
-function revisaCenario(c) {
+const regrasDe = (card) => (card.id === 'FD-101' ? REGRAS : card.criterios);
+const CHAVES_118 = [/cliente/i, /status|aberto|andamento|resolvido|fechado/i, /cliente.*status|status.*cliente|combin|junt|dois filtros|\+/i, /hoje|7 dias|sete dias|30 dias|per[ií]odo|data/i, /limpar|limpa|zera/i];
+function revisaCenario(c, card) {
+  const K = card && card.id === 'FD-118' ? CHAVES_118 : CHAVES, RGc = card ? regrasDe(card) : REGRAS;
   const nome = c.nome.trim(), esp = c.esperado.trim(), tudo = `${nome} ${c.passos} ${esp}`;
   if (nome.split(/\s+/).length < 2) return ['ruim', `“${nome}” não me diz o que vai ser testado. Dá um nome que eu entenda sem abrir, tipo “Criar sem título”. Do jeito que tá, ele não conta na cobertura.`];
   if (esp.length < 8) return ['ruim', 'O resultado esperado tá curto demais. O que aparece na tela? O que acontece com o chamado? Do jeito que tá, ele não conta na cobertura.'];
   if (/\bsem\b.+\be\b.+\bsem\b/i.test(nome)) return ['ruim', 'Aí tem dois testes num cenário só. Se falhar, qual dos dois quebrou? Separa em dois.'];
   if (/(deve|tem que|precisa|vai)\s+(funcionar|dar (erro|certo))|^(ok|funciona|d[áa] erro|d[áa] certo)\.?$/i.test(esp)) return ['ruim', `“${esp}” eu não consigo conferir. Escreve a mensagem exata que aparece e o que acontece com o chamado.`];
-  const semChave = c.regras.find((i) => !CHAVES[i].test(tudo));
-  if (semChave !== undefined) return ['ruim', `Você marcou a regra “${REGRAS[semChave]}”, mas o cenário não fala disso. Marcou a regra certa?`];
+  const semChave = c.regras.find((i) => K[i] && !K[i].test(tudo));
+  if (semChave !== undefined) return ['ruim', `Você marcou a regra “${RGc[semChave]}”, mas o cenário não fala disso. Marcou a regra certa?`];
   if (!c.passos.trim()) return ['ruim', 'Sem os passos eu vou ter que adivinhar. Com o que eu preencho? Onde eu clico?'];
   if (c.tipo === 'P' && /\bsem\b|inv[áa]lid|errad|vazi/i.test(nome)) return ['ruim', 'Isso tem cara de cenário negativo, não positivo. Confere o tipo.'];
   if (!c.regras.length) return ['ok', 'Esse não cobre nenhuma regra do card. Se foi de propósito, boa: é assim que se acha o que ninguém pensou.'];
   return ['ok', ['Esse eu consigo testar sem te perguntar nada.', 'Claro e direto. Pode mandar o próximo.', 'Entendi de primeira. É isso.'][nome.length % 3]];
 }
 const coberturaFD101 = (d) => new Set((d.planos['FD-101'] || []).filter((c) => !fraco(c)).flatMap((c) => c.regras)).size;
+
+// ---------- Desafio 1 · efetivação (FD-118, filtros da lista de chamados) ----------
+// o aluno testa sozinho, com tempo. 3 bugs só existem na Sprint 16, enquanto o desafio está aberto.
+const D1_MIN = 40;
+const D1_REGRAS = ['Filtrar por cliente mostra só os chamados daquele cliente', 'Filtrar por status mostra só os chamados com aquele status', 'Os filtros combinam: cliente e status juntos mostram só o que atende os dois', 'Período “últimos 7 dias” vai até hoje, incluindo os chamados de hoje', '“Limpar filtros” volta a lista completa: zera cliente, status, período e busca'];
+const D1_MISSAO = { id: 'd1', titulo: 'Desafio de efetivação: FD-118', aula: 'Desafio 1', conquista: 'Efetivado', nivel: 'QA júnior', link: 'card.html?id=FD-118', semXp: true, itens: [
+  ['Comece o desafio no card FD-118', (d) => !!(d.desafio || {}).inicio],
+  ['Teste as 5 regras e reporte o que achar', (d) => !!(d.desafio || {}).entregue],
+  ['Passe com 70 pontos e pelo menos 2 bugs', (d) => (d.conquistas || []).includes('d1')]] };
+const d1Aberto = (d = dados()) => !!d && (d.conquistas || []).includes('ep14') && !(d.conquistas || []).includes('d1');
+const BUG_D1 = () => VERSAO === 16 && d1Aberto();
+function garanteDesafio(d) {
+  if (!(d.conquistas || []).includes('ep14') || (d.conquistas || []).includes('d1') || d.cards.some((c) => c.id === 'FD-118')) return;
+  d.cards.push({ id: 'FD-118', titulo: 'Filtros da lista de chamados', coluna: 'qa', resp: 'voce', tipo: 'story', prioridade: 'Alta', descricao: 'O suporte perde tempo procurando chamado na lista. Filtrar por cliente, status e período, e limpar tudo com um clique.', criterios: [...D1_REGRAS], ok: [], comentarios: [] });
+  (d.chat['time-produto'] = d.chat['time-produto'] || []).push({ de: 'beatriz', tx: 'Chegou a hora: o FD-118 é o seu desafio de efetivação. 40 minutos, sem ninguém guiando. Planeja, testa, reporta. Boa! 💜', quando: agora() });
+  LS.set(chaveDados(), d);
+}
+function d1Comeca(d) {
+  const ds = (dd, h, m) => { const x = new Date(); x.setDate(x.getDate() - dd); x.setHours(h, m, 0, 0); if (dd === 0 && x > new Date()) x.setTime(Date.now() - 20 * 60000); return x.toISOString(); };
+  const add = (titulo, cliente, status, dd, h, m) => { const id = d.proximoChamado++; d.chamados.push({ id, titulo, descricao: titulo + '.', cliente, status, criadoEm: ds(dd, h, m), criadoPor: 'Cliente', anexo: null, historico: [{ quando: ds(dd, h, m), tx: 'Chamado criado com status Aberto' }] }); };
+  if (!d.desafio || !d.desafio.dados) {
+    add('Impressora fiscal não imprime cupom', 'Padaria Pão Quente', 'Aberto', 0, 7, 40);
+    add('Agenda não mostra os horários de sábado', 'Clínica Vida', 'Aberto', 0, 8, 5);
+    add('Pagamento por Pix não confirma', 'Mercado Bom Preço', 'Em andamento', 0, 7, 15);
+    add('Prontuário não salva o anexo', 'Clínica Vida', 'Em andamento', 3, 15, 30);
+    add('Nota fiscal com valor errado', 'Mercado Bom Preço', 'Aberto', 4, 10, 0);
+    add('Relatório de vendas duplicado', 'Padaria Pão Quente', 'Resolvido', 5, 16, 20);
+    add('Lembrete de consulta chega atrasado', 'Clínica Vida', 'Resolvido', 12, 9, 45);
+    add('Leitor de código de barras desconecta', 'Mercado Bom Preço', 'Fechado', 18, 14, 10);
+    add('Cardápio digital fora do ar', 'Padaria Pão Quente', 'Aberto', 25, 11, 30);
+    add('Senha do atendente expirou', 'Clínica Vida', 'Fechado', 40, 10, 0);
+  }
+  d.planos['FD-118'] = d.planos['FD-118'] || [];
+  d.desafio = { ...(d.desafio || {}), dados: true, inicio: agora(), pausas: 0, pausadoDesde: null, entregue: null, resultado: null, tentativa: ((d.desafio || {}).tentativa || 0) + 1 };
+}
+const d1Gasto = (d) => { const x = d.desafio || {}; if (!x.inicio) return 0; const fim = x.entregue ? new Date(x.entregue) : x.pausadoDesde ? new Date(x.pausadoDesde) : new Date(); return Math.max(0, fim - new Date(x.inicio) - (x.pausas || 0)); };
+const d1Resta = (d) => D1_MIN * 60000 - d1Gasto(d);
+const fmtMin = (ms) => { const neg = ms < 0, t = Math.round(Math.abs(ms) / 1000); return `${neg ? '-' : ''}${String(Math.floor(t / 60)).padStart(2, '0')}:${String(t % 60).padStart(2, '0')}`; };
+const D1_BUGS = [['combina', /cliente.{0,40}status|status.{0,40}cliente|combin|junt|dois filtros|ignora.{0,20}cliente/i, 'Cliente e status juntos ignoram o cliente'],
+  ['hoje', /hoje|7 dias|sete dias|per[ií]odo|data/i, 'Período de 7 dias deixa os chamados de hoje de fora'],
+  ['limpar', /limpar|limpa|busca|pesquis/i, '“Limpar filtros” esquece a busca']];
+function d1Nota(d) {
+  const lista = d.planos['FD-118'] || [];
+  const cob = new Set(lista.filter((c) => !fraco(c)).flatMap((c) => c.regras)).size;
+  const execEv = lista.filter((c) => c.exec && c.exec !== 'nao' && c.evid).length;
+  const pExec = lista.length ? Math.round(20 * Math.min(1, execEv / Math.max(lista.length, 5))) : 0;
+  const bugs = d.cards.filter((b) => b.tipo === 'bug' && b.relacionado === 'FD-118');
+  const achados = D1_BUGS.filter(([, re]) => bugs.some((b) => re.test(textoBug(b))));
+  const prazo = d1Resta(d) >= 0 ? 5 : 0;
+  const pCob = Math.round(30 * cob / 5), pBug = 15 * achados.length;
+  const total = pCob + pExec + pBug + prazo;
+  return { cob, pCob, execEv, nCen: lista.length, pExec, achados: achados.map((x) => x[0]), pBug, prazo, total, passou: total >= 70 && achados.length >= 2 };
+}
 const MISSOES = [
   // EP00: vitória rápida no primeiro episódio (não dá XP, pra não mexer na carreira mostrada nos vídeos)
   { id: 'ep00', titulo: 'Seu primeiro card', aula: 'EP00', conquista: 'Primeiro dia no FlowDesk', nivel: 'QA estagiário', link: 'card.html?id=FD-101', semXp: true, itens: [
@@ -413,13 +470,13 @@ function pintaGherkin(txt) {
 const progresso = (m, d = dados()) => m.itens.map(([, f]) => !!f(d));
 // quem já passou do começo (save carregado, plano escrito) não é mandado de volta pra missão do EP00
 const pulaEp00 = (d) => !(d.conquistas || []).includes('ep00') && ((d.conquistas || []).length > 0 || (d.planos['FD-101'] || []).length > 0);
-const missaoAtual = () => { const d = dados(); return MISSOES.find((m) => !(d.conquistas || []).includes(m.id) && !(m.id === 'ep00' && pulaEp00(d))) || null; };
+const missaoAtual = () => { const d = dados(); if ((d.conquistas || []).includes('ep14') && !(d.conquistas || []).includes('d1')) return D1_MISSAO; return MISSOES.find((m) => !(d.conquistas || []).includes(m.id) && !(m.id === 'ep00' && pulaEp00(d))) || null; };
 function nivelAtual() { const d = dados() || {}; if ((d.conquistas || []).includes('d1')) return 'QA júnior'; const fe = MISSOES.filter((m) => (d.conquistas || []).includes(m.id)); return fe.length ? fe[fe.length - 1].nivel : 'QA estagiário'; }
 function confereMissoes() {
   const d = dados(); d.conquistas = d.conquistas || []; let nova = false;
   MISSOES.forEach((m) => {
     if (d.conquistas.includes(m.id) || !progresso(m, d).every(Boolean) || (m.id === 'ep00' && pulaEp00(d))) return;
-    d.conquistas.push(m.id); if (m.id === 'ep14' && d.chat.releases) d.chat.releases.push({ de: 'beatriz', tx: 'Sprint 16 aprovada. Sobe sexta 🚀', quando: agora() }); if (m.id === 'ep18' && d.chat.bugs) d.chat.bugs.push({ de: 'gabriela', tx: 'O seis eu corrijo hoje. O cinco é na API, vou chamar o Lucas.', quando: agora() }); salvar(); conquista(m); nova = true;
+    d.conquistas.push(m.id); if (m.id === 'ep14') garanteDesafio(d); if (m.id === 'ep14' && d.chat.releases) d.chat.releases.push({ de: 'beatriz', tx: 'Sprint 16 aprovada. Sobe sexta 🚀', quando: agora() }); if (m.id === 'ep18' && d.chat.bugs) d.chat.bugs.push({ de: 'gabriela', tx: 'O seis eu corrijo hoje. O cinco é na API, vou chamar o Lucas.', quando: agora() }); salvar(); conquista(m); nova = true;
   });
   const el = $('#missaoSide'); if (el) el.outerHTML = cardMissao();
   if (!nova && !$('.conq-fundo')) refrescaCarreira();  // com conquista nova, a barra sobe quando o aluno fecha o aviso
@@ -451,7 +508,7 @@ function pedeAvaliacao(id) {
 }
 function conquista(m) {
   const o = document.createElement('div'); o.className = 'conq-fundo'; o.setAttribute('data-test', 'conquista');
-  const extra = m.id === 'ep12' ? '<div class="s2">A Gabriela já está corrigindo. Quando você voltar pro FlowDesk, a <b>Sprint 16</b> estará no ar.</div>' : m.id === 'ep14' ? '<div class="s2">Fim do módulo 2. A Sprint 16 foi aprovada e sobe sexta.</div>' : m.id === 'ep20' ? '<div class="s2">Fim do módulo 3. Três bugs que a tela sozinha não mostrava, e você achou onde cada um mora.</div>' : m.id === 'ep08' ? '<div class="s2">A Gabriela já está corrigindo. Quando você voltar pro FlowDesk, a <b>Sprint 15</b> estará no ar.</div>' : m.id === 'ep03' ? '<div class="s2">O <b>FlowChat</b> foi liberado: agora dá pra tirar dúvida com o time.</div>' : '';
+  const extra = m.id === 'd1' ? '<div class="s2">Agora você é <b>QA júnior</b>. O seu crachá novo está pronto: <a href="efetivacao.html" data-test="ir-cartao">pegar meu cartão de efetivação</a>.</div>' : m.id === 'ep12' ? '<div class="s2">A Gabriela já está corrigindo. Quando você voltar pro FlowDesk, a <b>Sprint 16</b> estará no ar.</div>' : m.id === 'ep14' ? '<div class="s2">Fim do módulo 2. A Sprint 16 foi aprovada e sobe sexta.</div>' : m.id === 'ep20' ? '<div class="s2">Fim do módulo 3. Três bugs que a tela sozinha não mostrava, e você achou onde cada um mora.</div>' : m.id === 'ep08' ? '<div class="s2">A Gabriela já está corrigindo. Quando você voltar pro FlowDesk, a <b>Sprint 15</b> estará no ar.</div>' : m.id === 'ep03' ? '<div class="s2">O <b>FlowChat</b> foi liberado: agora dá pra tirar dúvida com o time.</div>' : '';
   o.innerHTML = `<div class="conq"><div class="ci">${ico('trofeu')}</div><div class="k">CONQUISTA DESBLOQUEADA${m.semXp ? '' : ` · +${m.itens.length * XP_ITEM + XP_CONQ} XP`}</div><div class="v" data-test="conquista-nome">${m.conquista}</div><div class="s">Nível atual: <b>${m.nivel}</b></div>${extra}<button class="btn" data-test="fechar-conquista">Continuar</button></div>`;
   // fica pendente até o aluno fechar: se a página recarregar antes (reteste, troca de tela), o aviso volta
   const d = dados(); d.conqPendente = m.id; salvar();
@@ -462,7 +519,7 @@ function cardMissao() {
   const m = missaoAtual();
   if (!m) return '<a class="missao-side feita" id="missaoSide" href="missoes.html" data-test="missao-atual"><div class="k">MISSÕES</div><div class="t">Tudo feito por agora</div><div class="p">A próxima chega na próxima prática</div></a>';
   const pr = progresso(m), n = pr.filter(Boolean).length;
-  return `<a class="missao-side" id="missaoSide" href="missoes.html" data-test="missao-atual"><div class="k">MISSÃO DO ${m.aula.toUpperCase()}</div><div class="t">${m.titulo}</div><div class="bar"><i style="width:${n / pr.length * 100}%"></i></div><div class="p" data-test="missao-progresso">${n}/${pr.length}</div><div class="pop" data-test="missao-lista"><div class="k">SUA MISSÃO</div>${m.itens.map(([t], i) => `<div class="pit ${pr[i] ? 'on' : ''}"><b>${pr[i] ? '✓' : i + 1}</b>${t}</div>`).join('')}</div></a>`;
+  return `<a class="missao-side" id="missaoSide" href="missoes.html" data-test="missao-atual"><div class="k">${m.id === 'd1' ? 'DESAFIO DE EFETIVAÇÃO' : 'MISSÃO DO ' + m.aula.toUpperCase()}</div><div class="t">${m.titulo}</div><div class="bar"><i style="width:${n / pr.length * 100}%"></i></div><div class="p" data-test="missao-progresso">${n}/${pr.length}</div><div class="pop" data-test="missao-lista"><div class="k">SUA MISSÃO</div>${m.itens.map(([t], i) => `<div class="pit ${pr[i] ? 'on' : ''}"><b>${pr[i] ? '✓' : i + 1}</b>${t}</div>`).join('')}</div></a>`;
 }
 
 // ---------- carreira (XP vem das missões) ----------
@@ -482,7 +539,7 @@ const chatLiberado = (d = dados()) => (d.conquistas || []).includes('ep03');
 
 // ---------- layout ----------
 const avatar = (p) => p === 'voce' ? '<span class="vc">VC</span>' : `<img class="av" src="img/av_${p}.png" alt="">`;
-const LOGO = '<span class="logo-anim" aria-hidden="true"><img src="img/anim/logo_part1.png?v=1794509701" alt=""><img class="sobe" src="img/anim/logo_part0.png?v=1794509701" alt=""></span>';
+const LOGO = '<span class="logo-anim" aria-hidden="true"><img src="img/anim/logo_part1.png?v=1794510265" alt=""><img class="sobe" src="img/anim/logo_part0.png?v=1794510265" alt=""></span>';
 const MARCA = `<span class="marca">${LOGO}FlowDesk</span>`;
 const pillVersao = () => `<span class="versao" data-test="versao-sistema"><b>Sprint ${VERSAO}</b> · homologação</span>`;
 const SVG = (p, c = '') => `<svg class="${c}" viewBox="0 0 24 24" aria-hidden="true">${p}</svg>`;
@@ -520,10 +577,18 @@ function casca(pagina, conteudo) {
     <div class="eu"><span class="vc">${esc((c.nome || 'VC').split(' ').map((x) => x[0]).slice(0, 2).join('').toUpperCase())}</span><div><b data-test="usuario-logado">${esc(c.nome)}</b><span data-test="nivel">${nivelAtual()}</span></div><button data-test="sair">Sair</button></div></div></aside>
     <main class="main"><header class="barra"><div class="barra-c"><span class="barra-k">CARREIRA</span>${trilha(d)}<span class="xp" data-test="xp">${xpDe(d)} / ${ehJunior(d) ? XP_PLENO : XP_JUNIOR} XP</span></div>${pillVersao()}</header><div class="conteudo">${conteudo}</div></main></div>`;
   $('[data-test=sair]').onclick = sair;
-  mostraRecado(); setTimeout(() => { confereMissoes(); const pend = (dados() || {}).conqPendente, m = pend && MISSOES.find((x) => x.id === pend); if (m && !$('.conq-fundo')) conquista(m); }, 300);
+  mostraRecado(); setTimeout(() => { confereMissoes(); const pend = (dados() || {}).conqPendente, m = pend && (MISSOES.find((x) => x.id === pend) || (pend === 'd1' ? D1_MISSAO : null)); if (m && !$('.conq-fundo')) conquista(m); }, 300);
+  relogioD1();
   if (CACA_API && pg !== 'caca') fetch(`${CACA_API}/placar`).then((r) => r.json()).then((p) => LS.set('fd:placar', { bugs: p.bugs, temporada: p.temporada, encerrada: p.encerrada })).catch(() => {});
 }
 function sair() { LS.del('fd:sessao'); location.href = 'index.html'; }
+// relógio do desafio: aparece em todas as telas enquanto o desafio está rodando
+function relogioD1() {
+  const d = dados(); if (!d || !d1Aberto(d) || !(d.desafio || {}).inicio || d.desafio.entregue) return;
+  const r = document.createElement('a'); r.className = 'relogio-d1'; r.href = 'card.html?id=FD-118'; r.setAttribute('data-test', 'relogio-desafio'); document.body.appendChild(r);
+  const tic = () => { const ms = d1Resta(dados()); r.innerHTML = `<b>DESAFIO 1</b><span>${d.desafio.pausadoDesde ? 'pausado · ' : ''}${fmtMin(ms)}</span>`; r.classList.toggle('acabou', ms < 0); r.classList.toggle('pausado', !!d.desafio.pausadoDesde); };
+  tic(); setInterval(tic, 1000);
+}
 const topo = (titulo, sub = '', crumb = '', acoes = '') => `<div class="topo"><div>${crumb ? `<div class="crumb">${crumb}</div>` : ''}<h2 data-test="titulo-pagina">${titulo}</h2>${sub ? `<div class="sub">${sub}</div>` : ''}</div>${acoes ? `<div class="topo-acoes">${acoes}</div>` : ''}</div>`;
 // fala do mentor (balão)
 const fala = (p, quem, tx, cls = '') => `<div class="fala ${cls}"><img src="img/av_${p}.png" alt="${PESSOAS[p].nome}"><div class="bal"><div class="bk">${quem}</div><div class="bt">${tx}</div></div></div>`;
@@ -561,7 +626,7 @@ PAGINAS.login = () => {
   document.body.innerHTML = `<div class="tela-login">
     <section class="lg-time"><div class="lg-marca">${LOGO}<span>FlowDesk</span></div>
       <div class="lg-tit"><h1>Seu primeiro dia como QA começa aqui.</h1><div class="lg-trilha"><span class="on">Estagiário</span>${seta}<span>Júnior</span>${seta}<span class="fut">Pleno</span></div></div>
-      <div class="lg-palco"><div class="lg-luz" aria-hidden="true"></div><video src="img/anim/time_acena.webm?v=1794509701" poster="img/anim/time_acena.png?v=1794509701" autoplay muted loop playsinline aria-label="O time do FlowDesk acenando: Rafael, Gabriela, Vinícius, Lucas e Beatriz"></video></div></section>
+      <div class="lg-palco"><div class="lg-luz" aria-hidden="true"></div><video src="img/anim/time_acena.webm?v=1794510265" poster="img/anim/time_acena.png?v=1794510265" autoplay muted loop playsinline aria-label="O time do FlowDesk acenando: Rafael, Gabriela, Vinícius, Lucas e Beatriz"></video></div></section>
     <section class="lg-form"><div class="login">
     <form id="fEntrar" novalidate><span class="lg-chip">SPRINT ${VERSAO} · HOMOLOGAÇÃO</span><h1>Bem-vindo de volta</h1><p class="sub">O time já está te esperando. Use dados de mentira: fica tudo salvo só neste navegador.</p>
       <div class="campo"><label for="email">E-mail</label><input class="in" id="email" type="email" data-test="login-email" autocomplete="username" placeholder="voce@empresa.com"></div>
@@ -626,7 +691,7 @@ PAGINAS.dashboard = () => {
   const falta = (jr ? XP_PLENO : XP_JUNIOR) - xp;
   const msg = m ? `Faltam ${falta} XP pra ${jr ? 'pleno' : 'júnior'}. ${DICA_MISSAO[m.id] || ''}` : 'Mandou bem. A próxima missão chega na próxima prática do curso.';
   const okSvg = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg>';
-  const hero = m ? `<a class="hero" href="${m.link}" data-test="missao-hero"><div class="hk"><span>MISSÃO DO ${m.aula}</span>${m.semXp ? '<i>primeira conquista</i>' : `<i>+${m.itens.length * XP_ITEM + XP_CONQ} XP</i>`}</div><div class="ht">${m.titulo}</div>
+  const hero = m ? `<a class="hero" href="${m.link}" data-test="missao-hero"><div class="hk"><span>${m.id === 'd1' ? 'DESAFIO DE EFETIVAÇÃO' : 'MISSÃO DO ' + m.aula}</span>${m.semXp ? '<i>primeira conquista</i>' : `<i>+${m.itens.length * XP_ITEM + XP_CONQ} XP</i>`}</div><div class="ht">${m.titulo}</div>
       <div class="hl">${m.itens.map(([t], i) => `<div class="pit ${pr[i] ? 'on' : ''}"><b>${pr[i] ? okSvg : i + 1}</b>${t}</div>`).join('')}</div><div class="hb"><span class="btn ouro">Continuar a missão ${ico('seta')}</span><span class="hn">${pr.filter(Boolean).length} de ${pr.length} feitos</span></div>
       <svg class="hero-alvo" viewBox="0 0 220 220" aria-hidden="true"><circle cx="110" cy="110" r="90" stroke-dasharray="4 10"/><circle cx="110" cy="110" r="55"/><circle cx="110" cy="110" r="18" class="f"/></svg></a>`
     : `<div class="hero feita" data-test="missao-hero"><div class="hk"><span>MISSÕES</span></div><div class="ht">Tudo feito por agora</div><p class="dica">A próxima missão chega na próxima prática do curso.</p></div>`;
@@ -655,6 +720,16 @@ function relativo(iso) {
   const d = Math.round(h / 24); return d === 1 ? 'ontem' : `há ${d} dias`;
 }
 PAGINAS.chamados = () => {
+  // FD-118 (Desafio 1): filtros de cliente e período, e o botão de limpar
+  const temFiltros = dados().cards.some((c) => c.id === 'FD-118') || (dados().conquistas || []).includes('d1');
+  let fantasma = '';  // Sprint 16: o "Limpar filtros" apaga o campo de busca, mas a busca antiga continua valendo
+  const extraOk = (x, f) => {
+    const cli = $('#fCli') ? $('#fCli').value : '', per = $('#fPer') ? +$('#fPer').value || 0 : 0;
+    if (cli && !(BUG_D1() && f) && x.cliente !== cli) return false;  // Sprint 16: com status escolhido, o cliente é ignorado
+    if (per) { const h0 = new Date(); h0.setHours(0, 0, 0, 0); const ini = new Date(h0); ini.setDate(ini.getDate() - (per - 1)); const t = new Date(x.criadoEm);
+      if (t < ini) return false; if (BUG_D1() && t >= h0) return false; }  // Sprint 16: o "até hoje" deixa hoje de fora
+    return true;
+  };
   const todos = dados().chamados, n = (st) => todos.filter((x) => !st || x.status === st).length;
   const meus = todos.filter((x) => x.criadoPor === 'Você');
   const dica = meus.length
@@ -662,16 +737,22 @@ PAGINAS.chamados = () => {
     : 'Olha o #1008: título “ajuda” e descrição só com um ponto. Ninguém do suporte sabe o que fazer com isso. É esse problema que o FD-101 resolve, e é a tela de Novo chamado que você vai testar.';
   casca('chamados', `<div class="ch-topo"><div><h2 data-test="titulo-pagina">Chamados</h2><div class="sub">Pedidos de ajuda dos clientes do FlowDesk. É aqui que o suporte trabalha todo dia.</div></div>
       <a class="btn" href="novo-chamado.html" data-test="novo-chamado">+ Novo chamado</a></div>
-    <a class="testa-aqui" href="card.html?id=FD-101"><span class="ta-ic">${ico('card')}</span><div><b>Você está testando a tela de Novo chamado</b><span>Card FD-101 · Criar chamado. Cada chamado que você cria aparece nesta lista.</span></div><i>Ver o card ${ico('seta')}</i></a>
+    ${d1Aberto() ? `<a class="testa-aqui" href="card.html?id=FD-118"><span class="ta-ic">${ico('card')}</span><div><b>Desafio 1: você está testando os filtros desta lista</b><span>Card FD-118 · Filtros da lista de chamados. Cliente, status, período e limpar.</span></div><i>Ver o card ${ico('seta')}</i></a>`
+      : `<a class="testa-aqui" href="card.html?id=FD-101"><span class="ta-ic">${ico('card')}</span><div><b>Você está testando a tela de Novo chamado</b><span>Card FD-101 · Criar chamado. Cada chamado que você cria aparece nesta lista.</span></div><i>Ver o card ${ico('seta')}</i></a>`}
     <div class="ch-filtros"><label class="busca">${SVG('<circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/>')}<input id="busca" type="search" placeholder="Buscar pelo título" data-test="busca-chamado" aria-label="Buscar pelo título"></label>
       <div class="chips" role="group" aria-label="Filtrar por status"><button type="button" class="chip on" data-st="">Todos <b>${n('')}</b></button>${STATUS.map((st) => `<button type="button" class="chip" data-st="${st}"><i style="background:${COR_ST[st]}"></i>${st} <b>${n(st)}</b></button>`).join('')}</div>
-      <select class="exec-sel" id="filtro" data-test="filtro-status" aria-hidden="true" tabindex="-1"><option value="">Todos os status</option>${STATUS.map((st) => `<option>${st}</option>`).join('')}</select></div>
+      <select class="exec-sel" id="filtro" data-test="filtro-status" aria-hidden="true" tabindex="-1"><option value="">Todos os status</option>${STATUS.map((st) => `<option>${st}</option>`).join('')}</select>
+      ${temFiltros ? `<div class="ch-f2"><select class="in" id="fCli" data-test="filtro-cliente" aria-label="Filtrar por cliente"><option value="">Todos os clientes</option>${CLIENTES.map((c) => `<option>${esc(c.nome)}</option>`).join('')}</select>
+        <select class="in" id="fPer" data-test="filtro-periodo" aria-label="Filtrar por período"><option value="">Qualquer data</option><option value="7">Últimos 7 dias</option><option value="30">Últimos 30 dias</option></select>
+        <button type="button" class="btn sec peq" id="fLimpa" data-test="limpar-filtros">Limpar filtros</button></div>` : ''}</div>
     <div class="ch-lista"><table class="tabela ch-tab"><thead><tr><th>Nº</th><th>Título</th><th>Cliente</th><th>Status</th><th>Criado</th></tr></thead><tbody id="linhas"></tbody></table></div>
-    <div class="ch-dica">${fala('vinicius', 'DICA DO VINÍCIUS', dica)}</div>`);
+    ${d1Aberto() ? '' : `<div class="ch-dica">${fala('vinicius', 'DICA DO VINÍCIUS', dica)}</div>`}`);
   const pinta = () => {
     const b = (_c('busca') ? $('#busca').value.replace(/^\s+/, '') : $('#busca').value.trim()).toLowerCase(), f = $('#filtro').value;
     $$('.chips .chip').forEach((c) => c.classList.toggle('on', c.dataset.st === f));
-    const l = [...dados().chamados].sort((a, c) => c.id - a.id).filter((x) => (!f || x.status === f || (_c('lista') && b.length > 0)) && x.titulo.toLowerCase().includes(b) && !(f === 'Fechado' && _c('fechado') && innerWidth <= 480));
+    if (b) fantasma = '';
+    const bb = b || fantasma;
+    const l = [...dados().chamados].sort((a, c) => c.id - a.id).filter((x) => (!f || x.status === f || (_c('lista') && b.length > 0)) && x.titulo.toLowerCase().includes(bb) && extraOk(x, f) && !(f === 'Fechado' && _c('fechado') && innerWidth <= 480));
     $('#linhas').innerHTML = l.length ? l.map((x) => { const [bg, cor] = corCliente(x.cliente);
       const chip = x.criadoPor === 'Você' ? '<span class="por-voce">criado por você</span>' : x.id === 1008 ? '<span class="exemplo">o problema do FD-101</span>' : '';
       return `<tr data-test="linha-chamado" data-href="chamado.html?id=${x.id}"><td class="num">#${x.id}</td><td><div class="tt"><a href="chamado.html?id=${x.id}" data-test="link-chamado">${esc(x.titulo) || '<i style="color:#5b5f78">(sem título)</i>'}</a>${chip}</div></td>
@@ -684,9 +765,13 @@ PAGINAS.chamados = () => {
     $$('#linhas tr[data-href]').forEach((tr) => { tr.onclick = (ev) => { if (!ev.target.closest('a')) location.href = tr.dataset.href; }; });
   };
   $$('.chips .chip').forEach((c) => { c.onclick = () => { $('#filtro').value = c.dataset.st; pinta(); }; });
+  if (temFiltros) {
+    $('#fCli').onchange = () => pinta(); $('#fPer').onchange = () => pinta();
+    $('#fLimpa').onclick = () => { if (BUG_D1()) fantasma = $('#busca').value.trim().toLowerCase(); $('#busca').value = ''; $('#filtro').value = ''; $('#fCli').value = ''; $('#fPer').value = ''; pinta(); };
+  }
   if (usaApi()) {
     let pedido = 0, tm = null;
-    const desenha = (l) => { const f = $('#filtro').value; const filtra = l.filter((x) => !f || x.status === f); const ids = new Set(filtra.map((x) => x.id)); const todos2 = dados().chamados.filter((x) => ids.has(x.id)).sort((a, c) => c.id - a.id);
+    const desenha = (l) => { const f = $('#filtro').value; const filtra = l.filter((x) => (!f || x.status === f) && extraOk(dados().chamados.find((y) => y.id === x.id) || x, f)); const ids = new Set(filtra.map((x) => x.id)); const todos2 = dados().chamados.filter((x) => ids.has(x.id)).sort((a, c) => c.id - a.id);
       $('#linhas').innerHTML = todos2.length ? todos2.map((x) => { const [bg, cor] = corCliente(x.cliente);
         return `<tr data-test="linha-chamado" data-href="chamado.html?id=${x.id}"><td class="num">#${x.id}</td><td><div class="tt"><a href="chamado.html?id=${x.id}" data-test="link-chamado">${esc(x.titulo) || '<i style="color:#5b5f78">(sem título)</i>'}</a>${x.criadoPor === 'Você' ? '<span class="por-voce">criado por você</span>' : ''}</div></td>
         <td><span class="cli"><span class="cli-i" style="background:${bg};color:${cor}">${esc(iniciais(x.cliente))}</span>${esc(x.cliente)}</span></td>
@@ -812,7 +897,7 @@ PAGINAS.quadro = () => {
       <div class="h"><h3>${n}</h3><span class="cnt" data-test="contagem-${k}"></span>${k === 'afazer' ? '<button class="mais" data-test="nova-tarefa" title="Nova tarefa" aria-label="Nova tarefa">+</button>' : ''}</div>
       <div class="cards"></div>${k === 'afazer' ? '<button class="add-tarefa" data-test="adicionar-tarefa">+ Adicionar tarefa</button>' : ''}</section>`).join('')}</div>
     <p class="dica" style="margin-top:12px">Você move os seus cards arrastando, ou pelo próprio card. Os cards dos outros ficam com eles.</p>
-    <div class="desfile" aria-hidden="true"><div class="chao"></div>${anda.map(([v, atraso, cls]) => `<div class="anda ${cls}" style="animation-delay:${atraso}s"><video src="img/anim/${v}.webm?v=1794509701" poster="img/anim/${v}.png?v=1794509701" autoplay muted loop playsinline></video></div>`).join('')}</div>`);
+    <div class="desfile" aria-hidden="true"><div class="chao"></div>${anda.map(([v, atraso, cls]) => `<div class="anda ${cls}" style="animation-delay:${atraso}s"><video src="img/anim/${v}.webm?v=1794510265" poster="img/anim/${v}.png?v=1794510265" autoplay muted loop playsinline></video></div>`).join('')}</div>`);
   const pinta = () => {
     COLUNAS.forEach(([k]) => {
       const l = dados().cards.filter((c) => c.coluna === k), col = $(`[data-col=${k}]`);
@@ -948,6 +1033,22 @@ PAGINAS.card = () => {
     <div class="d1o">${FALTA.map(([k, n]) => `<label><input type="checkbox" value="${k}" data-test="falta-${k}">${n}</label>`).join('')}</div>
     <button class="btn peq" id="d1Conf" data-test="conferir-falta">Conferir</button><div class="d1r" id="d1R"></div></div>
     <div class="d1n">Abaixo, a versão atual do card, depois da conversa com o Rafael.</div></div>`;
+  const desafioHtml = () => {
+    const x = d.desafio || {};
+    if (!x.inicio) return `<div class="desafio" data-test="desafio"><div class="dk">DESAFIO 1 · EFETIVAÇÃO</div><h3>O FD-118 é todo seu</h3>
+      <p>Você tem <b>${D1_MIN} minutos</b>. Ninguém vai guiar: planeja os cenários na aba <b>Plano de testes</b>, executa com evidência na tela de <b>Chamados</b> e reporta cada bug ligado ao FD-118. Dá pra pausar.</p>
+      <div class="dn"><span>Pra ser efetivado</span><b>70 pontos</b> e pelo menos <b>2 bugs</b> achados</div>
+      <button class="btn" id="d1Go" data-test="comecar-desafio">Começar o desafio</button></div>`;
+    if (!x.entregue) return `<div class="desafio rodando" data-test="desafio"><div class="dk">DESAFIO 1 · EM ANDAMENTO</div>
+      <div class="dt"><b id="d1T" data-test="tempo-desafio">${fmtMin(d1Resta(d))}</b><span>${x.pausadoDesde ? 'pausado' : 'restantes'}</span></div>
+      <div class="dbt"><button class="btn sec" id="d1Pausa" data-test="pausar-desafio">${x.pausadoDesde ? 'Continuar' : 'Pausar'}</button><button class="btn sec" id="d1Plano">Abrir plano de testes</button><a class="btn sec" href="chamados.html">Ir pra lista de chamados</a>
+      <button class="btn" id="d1Fim" data-test="entregar-desafio">Entregar desafio</button></div></div>`;
+    const r = x.resultado || d1Nota(d), L = (n, t, v) => `<div class="dl"><span>${t}</span><b>${n}</b><i>${v}</i></div>`;
+    return `<div class="desafio ${r.passou ? 'passou' : 'nao'}" data-test="desafio-resultado"><div class="dk">DESAFIO 1 · RESULTADO</div><h3>${r.passou ? 'Efetivado!' : 'Ainda não foi dessa vez'}</h3>
+      <div class="dtot"><b data-test="nota-desafio">${r.total}</b><span>de 100</span></div>
+      ${L(`${r.cob}/5`, 'Regras cobertas pelo plano', `${r.pCob} de 30`)}${L(`${r.execEv}/${r.nCen}`, 'Cenários executados com evidência', `${r.pExec} de 20`)}${L(`${r.achados.length}/3`, 'Bugs escondidos que você achou', `${r.pBug} de 45`)}${L(r.prazo ? 'no prazo' : 'fora do prazo', 'Tempo', `${r.prazo} de 5`)}
+      ${r.passou ? `<a class="btn" href="efetivacao.html" data-test="ir-cartao-resultado">Pegar meu cartão de efetivação</a>` : `<p>Pra passar: 70 pontos e pelo menos 2 bugs. Revisa o plano, testa de novo e reporta o que achar.</p><button class="btn" id="d1De" data-test="tentar-de-novo">Tentar de novo</button>`}</div>`;
+  };
   const ST_CRIT = { ok: ['Validado', 'ok'], falhou: ['Falhou', 'falhou'], testar: ['A testar', 'testar'], nada: ['Sem cenário', 'nada'] };
   const critHtml = () => {
     if (!tot) return '<div class="sec"><div class="k">Critérios de aceite</div><div class="v nada">Nenhum critério definido.</div></div>';
@@ -963,7 +1064,7 @@ PAGINAS.card = () => {
     if (k === 'detalhes') {
       A.innerHTML = c.tipo === 'bug'
         ? retesteHtml(c) + `<div class="sec"><div class="k">Card relacionado</div><div class="v">${c.relacionado ? `<a href="card.html?id=${c.relacionado}">${c.relacionado}</a>` : '—'}</div></div>` + campo('Passos para reproduzir', c.passos) + campo('Resultado esperado', c.esperado) + campo('Resultado obtido', c.obtido) + campo('Evidência', c.evidencia || '') + (c.regressao ? campo('Funcionava em', c.funcionava ? 'Sprint ' + c.funcionava : '') + campo('Quebrou em', c.quebrou ? 'Sprint ' + c.quebrou : '') : '')
-        : (c.id === 'FD-101' && !pulaEp00(d) && !(d.conquistas || []).includes('ep00') ? dia1Html() : '') + campo('Descrição', c.descricao) + (c.tipo === 'melhoria' ? '' : critHtml());
+        : (c.id === 'FD-118' && (d1Aberto(d) || (d.desafio || {}).entregue) ? desafioHtml() : '') + (c.id === 'FD-101' && !pulaEp00(d) && !(d.conquistas || []).includes('ep00') ? dia1Html() : '') + campo('Descrição', c.descricao) + (c.tipo === 'melhoria' ? '' : critHtml());
       if (c.tipo !== 'bug') {
         const pl = d.planos[c.id] || [], ex = pl.filter((x) => x.exec === 'passou' || x.exec === 'falhou').length, fal = pl.filter((x) => x.exec === 'falhou' || (_c('falha') && x.jaFalhou)).length, _f = pl.some((x) => x.exec !== 'falhou' && x.jaFalhou) && _c('falha') && _pv('falha'), bugs = pl.filter((x) => x.bug).length;
         const linha = (n, l, cor) => `<div class="rs-l"><span>${l}</span><b${cor ? ` style="color:${cor}"` : ''}>${n}</b></div>`;
@@ -973,6 +1074,21 @@ PAGINAS.card = () => {
           ${temPlano ? `<div class="rs-k" style="margin-top:18px">Andamento do teste</div>${linha(pl.length, 'Cenários no plano')}${linha(`${ex}/${pl.length}`, 'Executados')}${linha(fal, 'Falharam', fal ? '#fca5a5' : '')}${linha(bugs, 'Bugs ligados', bugs ? '#c4b5fd' : '')}<div class="rs-bar"><i style="width:${pl.length ? ex / pl.length * 100 : 0}%"></i></div>
           <button class="btn cheio" data-test="abrir-plano" id="abrePlano" style="margin-top:16px">Abrir plano de testes</button>` : ''}</aside></div>`;
       }
+      if ($('#d1Go')) $('#d1Go').onclick = () => { d1Comeca(d); salvar(); location.reload(); };
+      if ($('#d1De')) $('#d1De').onclick = () => { d1Comeca(d); salvar(); location.reload(); };
+      if ($('#d1Plano')) $('#d1Plano').onclick = () => mostra('plano');
+      if ($('#d1Pausa')) $('#d1Pausa').onclick = () => { const x = d.desafio; if (x.pausadoDesde) { x.pausas += Date.now() - new Date(x.pausadoDesde); x.pausadoDesde = null; } else x.pausadoDesde = agora(); salvar(); location.reload(); };
+      if ($('#d1T')) setInterval(() => { const t = $('#d1T'); if (t) t.textContent = fmtMin(d1Resta(dados())); }, 1000);
+      if ($('#d1Fim')) $('#d1Fim').onclick = () => {
+        const bt = $('#d1Fim'); if (!bt.dataset.ok) { bt.dataset.ok = 1; bt.textContent = 'Confirmar entrega'; bt.setAttribute('data-test', 'confirmar-entrega'); return; }
+        const x = d.desafio; if (x.pausadoDesde) { x.pausas += Date.now() - new Date(x.pausadoDesde); x.pausadoDesde = null; }
+        x.entregue = agora(); const r = d1Nota(d); x.resultado = r; x.bugsAchados = r.achados.length;
+        const ch = (d.chat['time-produto'] = d.chat['time-produto'] || []);
+        if (r.passou) { d.conquistas.push('d1'); d.efetivadoEm = agora(); ch.push({ de: 'beatriz', tx: `Desafio entregue: ${r.total} pontos e ${r.achados.length} de 3 bugs. Pode atualizar o crachá: você é QA júnior! 🎉`, quando: agora() }); }
+        else ch.push({ de: 'beatriz', tx: `Recebi o desafio: ${r.total} pontos e ${r.achados.length} de 3 bugs. Ainda não deu, mas dá pra tentar de novo. Olha a cobertura do plano e testa os filtros combinados.`, quando: agora() });
+        salvar(); mostra('detalhes'); $('.relogio-d1') && $('.relogio-d1').remove();
+        if (r.passou) setTimeout(() => conquista(D1_MISSAO), 400);
+      };
       if (c.id === 'FD-101' && !d.viuFD101) { d.viuFD101 = true; salvar(); setTimeout(confereMissoes, 50); }
       if ($('#d1Conf')) $('#d1Conf').onclick = () => {
         const sel = $$('.d1o input').filter((x) => x.checked).map((x) => x.value).sort();
@@ -1011,7 +1127,7 @@ function montaGherkin(A, card, contagens) {
           <textarea id="gk" data-test="editor-gherkin" spellcheck="false" autocomplete="off" autocapitalize="off" aria-label="Arquivo ${arq}"></textarea></div></div></div>
       <p class="dica" style="margin-top:10px">Dica: <b>Tab</b> faz o recuo. O FlowDesk salva enquanto você escreve.</p>
     </div>
-    <aside><div class="rafa"><div class="rafa-b"><div class="bk">RAFAEL · PO</div><div class="bt">Escreve do jeito que eu leio: <b>Dado</b> o contexto, <b>Quando</b> a ação, <b>Então</b> o que eu vejo.</div></div><video src="img/anim/rafael_fala.webm?v=1794509701" poster="img/anim/rafael_fala.png?v=1794509701" autoplay muted loop playsinline aria-hidden="true"></video></div><div class="cov" id="gkRev" data-test="revisao-gherkin"></div></aside></div>`;
+    <aside><div class="rafa"><div class="rafa-b"><div class="bk">RAFAEL · PO</div><div class="bt">Escreve do jeito que eu leio: <b>Dado</b> o contexto, <b>Quando</b> a ação, <b>Então</b> o que eu vejo.</div></div><video src="img/anim/rafael_fala.webm?v=1794510265" poster="img/anim/rafael_fala.png?v=1794510265" autoplay muted loop playsinline aria-hidden="true"></video></div><div class="cov" id="gkRev" data-test="revisao-gherkin"></div></aside></div>`;
   const ta = $('#gk'), cor = $('#gkCor'), nums = $('#gkNums');
   ta.value = gherkinDe(dados(), card.id);
   const atualiza = () => {
@@ -1087,7 +1203,7 @@ function arquivoTeste(nome, b) {
 }
 
 function montaPlano(A, card) {
-  const d = dados(), id = card.id, lista = d.planos[id];
+  const d = dados(), id = card.id, lista = d.planos[id], RG = regrasDe(card);
   const TIPOS = { P: ['POSITIVO', 'tP'], N: ['NEGATIVO', 'tN'], L: ['VALOR LIMITE', 'tL'] };
   A.innerHTML = `<div class="plano-barra"><p class="dica">Cada cenário: uma situação, os passos e o resultado esperado.</p></div><div class="pop-wrap arq-flut"><div class="arqs pop-arq" id="arqPop" hidden><h3>Arquivos de teste</h3><p class="dica">Gerados na hora, no tamanho exato, pra testar o anexo.</p>${[['documento-5MB-exato.pdf', LIMITE_ANEXO], ['documento-5,1MB.pdf', Math.floor(5.1 * 1048576)], ['documento-1MB.pdf', 1048576], ['print-da-tela.png', 48 * 1024], ['foto.jpg', 220 * 1024], ['programa.exe', 12 * 1024]].map(([n, b]) => `<a href="#" data-arq="${n}" data-b="${b}" data-test="arquivo-teste">${n}<small>${tamanho(b)}</small></a>`).join('')}</div></div>
     <div class="plano"><div class="esq">
@@ -1099,19 +1215,19 @@ function montaPlano(A, card) {
           <div class="campo" style="flex:1;min-width:170px"><label for="cTipo">Tipo</label><select class="in" id="cTipo" data-test="cenario-tipo"><option value="P">Positivo</option><option value="N">Negativo</option><option value="L">Valor limite</option></select></div></div>
         <div class="campo"><label for="cPassos">Passos</label><textarea class="in" id="cPassos" data-test="cenario-passos" placeholder="1. Abrir a tela Novo chamado&#10;2. …"></textarea></div>
         <div class="campo"><label for="cEsp">Resultado esperado <i>*</i></label><input class="in" id="cEsp" data-test="cenario-esperado" placeholder="Seja específico: o que aparece, onde, e o que acontece com o chamado"></div>
-        <div class="campo"><label>Quais regras esse cenário cobre?</label><div class="regras-check">${REGRAS.map((r, i) => `<label class="cr"><input type="checkbox" value="${i}" data-test="cenario-regra">${r}</label>`).join('')}</div></div>
+        <div class="campo"><label>Quais regras esse cenário cobre?</label><div class="regras-check">${RG.map((r, i) => `<label class="cr"><input type="checkbox" value="${i}" data-test="cenario-regra">${r}</label>`).join('')}</div></div>
         <div class="fbtns"><button type="button" class="btn sec" id="cancela" hidden data-test="cancelar-edicao">Cancelar</button><button class="btn" data-test="salvar-cenario" id="salva">Adicionar cenário</button></div>
       </form></div>
-      <aside><div class="cov" id="cov" data-test="cobertura"><div class="hd">Cobertura das regras<span class="cnt" id="cnt" data-test="cobertura-contagem">0/${REGRAS.length}</span></div><div class="bar"><i id="bar"></i></div>
-        ${REGRAS.map((r, i) => `<div class="rl" id="u${i}" data-test="regra"><b>✓</b>${r}<span class="q" id="q${i}" hidden></span></div>`).join('')}<div class="ex" id="ex" hidden></div><div class="gabi-b" id="gabiB" data-test="recado-gabriela"><b>GABRIELA · DEV</b><span id="gabiT"></span></div><div class="gabi" aria-hidden="true"><video src="img/anim/gabriela_quadro.webm?v=1794509701" poster="img/anim/gabriela_quadro.png?v=1794509701" autoplay muted loop playsinline></video></div></div></aside></div>`;
+      <aside><div class="cov" id="cov" data-test="cobertura"><div class="hd">Cobertura das regras<span class="cnt" id="cnt" data-test="cobertura-contagem">0/${RG.length}</span></div><div class="bar"><i id="bar"></i></div>
+        ${RG.map((r, i) => `<div class="rl" id="u${i}" data-test="regra"><b>✓</b>${r}<span class="q" id="q${i}" hidden></span></div>`).join('')}<div class="ex" id="ex" hidden></div><div class="gabi-b" id="gabiB" data-test="recado-gabriela"><b>GABRIELA · DEV</b><span id="gabiT"></span></div><div class="gabi" aria-hidden="true"><video src="img/anim/gabriela_quadro.webm?v=1794510265" poster="img/anim/gabriela_quadro.png?v=1794510265" autoplay muted loop playsinline></video></div></div></aside></div>`;
   let editando = null; const abertos = new Set();
   d.rodadas = d.rodadas || {};
   const rod = () => d.rodadas[id] || null;
   const naRodada = (i) => !rod() || rod().sel.includes(i);
   const gabi = (tom, tx) => { $('#gabiB').className = 'gabi-b ' + tom; $('#gabiT').textContent = tx; };
-  { const ruim = lista.map((c) => revisaCenario(c)).findIndex((r) => r[0] === 'ruim');
+  { const ruim = lista.map((c) => revisaCenario(c, card)).findIndex((r) => r[0] === 'ruim');
     if (!lista.length) gabi('', 'Sou eu que vou ler esse plano. Começa pelo caminho feliz e depois pensa: e se o usuário fizer errado?');
-    else if (ruim >= 0) gabi('ruim', `Cenário ${ruim + 1}: ${revisaCenario(lista[ruim])[1]}`);
+    else if (ruim >= 0) gabi('ruim', `Cenário ${ruim + 1}: ${revisaCenario(lista[ruim], card)[1]}`);
     else if (VERSAO >= 16 && lista.some((c) => c.regras.includes(6)) && /^\s*Cen[aá]rio:.*espa[çc]o/im.test(gherkinDe(d))) gabi('ok', 'Agora, se esse bug voltar, a gente fica sabendo antes de todo mundo.');
     else gabi('', 'Li seus cenários. Qualquer coisa que eu não entender, eu aviso aqui.'); }
   const mostraForm = (on) => { $('#f').hidden = !on; $('#abreForm').hidden = on; };
@@ -1127,14 +1243,14 @@ function montaPlano(A, card) {
     $('#linhas').innerHTML = lista.length ? lista.map((c, i) => {
       const fora = !c.regras.length, t = TIPOS[c.tipo];
       const dentro = naRodada(i), hist = (c.hist || []).length ? `<div class="hist-r" data-test="historico-rodadas">${c.hist.map((h) => `<span class="hr ${h.exec}" title="Rodada ${h.r} · Sprint ${h.v}">R${h.r} · S${h.v} ${h.exec === 'passou' ? '✓' : h.exec === 'falhou' ? '✕' : '–'}</span>`).join('')}${rod() && dentro ? `<span class="hr atual ${c.exec}">R${rod().n} · S${rod().versao} ${c.exec === 'passou' ? '✓' : c.exec === 'falhou' ? '✕' : '…'}</span>` : ''}</div>` : '';
-      return `<tr class="${fora ? 'fora' : ''} ${dentro ? '' : 'fora-rod'} st-${dentro ? c.exec || 'nao' : 'nao'}" data-test="linha-cenario"><td class="num"><span>${i + 1}</span></td><td><div class="cn">${esc(c.nome)}</div><div class="tgs"><span class="tg ${t[1]}">${t[0]}</span>${fora ? `<span class="tg tX">FORA DAS REGRAS</span>` : ''}${fraco(c) ? `<span class="tg tF" data-test="cenario-fraco">NÃO CONTA NA COBERTURA</span>` : ''}${c.exec && c.exec !== 'nao' && !c.evid ? `<span class="tg tF" data-test="sem-evidencia">SEM EVIDÊNCIA</span>` : ''}</div>${c.passos ? `<button type="button" class="link" data-ps="${i}" data-test="ver-passos">${abertos.has(i) ? 'Esconder passos' : 'Ver passos'}</button><div class="passos" ${abertos.has(i) ? '' : 'hidden'}>${esc(c.passos)}</div>` : ''}<div class="res"><small>Resultado esperado</small>${esc(c.esperado)}</div>${hist}${c.regras.includes(3) ? `<button type="button" class="link arq-btn" data-arqbtn data-test="abrir-arquivos">${ico('clipe')}Arquivos de teste</button>` : ''}</td>
+      return `<tr class="${fora ? 'fora' : ''} ${dentro ? '' : 'fora-rod'} st-${dentro ? c.exec || 'nao' : 'nao'}" data-test="linha-cenario"><td class="num"><span>${i + 1}</span></td><td><div class="cn">${esc(c.nome)}</div><div class="tgs"><span class="tg ${t[1]}">${t[0]}</span>${fora ? `<span class="tg tX">FORA DAS RG</span>` : ''}${fraco(c) ? `<span class="tg tF" data-test="cenario-fraco">NÃO CONTA NA COBERTURA</span>` : ''}${c.exec && c.exec !== 'nao' && !c.evid ? `<span class="tg tF" data-test="sem-evidencia">SEM EVIDÊNCIA</span>` : ''}</div>${c.passos ? `<button type="button" class="link" data-ps="${i}" data-test="ver-passos">${abertos.has(i) ? 'Esconder passos' : 'Ver passos'}</button><div class="passos" ${abertos.has(i) ? '' : 'hidden'}>${esc(c.passos)}</div>` : ''}<div class="res"><small>Resultado esperado</small>${esc(c.esperado)}</div>${hist}${c.regras.includes(3) ? `<button type="button" class="link arq-btn" data-arqbtn data-test="abrir-arquivos">${ico('clipe')}Arquivos de teste</button>` : ''}</td>
         <td>${dentro ? '' : `<div class="xfora" data-test="fora-da-rodada">Fora da rodada ${rod().n}</div>`}<div class="xcel" ${dentro ? '' : 'hidden'}><div class="xseg"><button type="button" class="sg ok ${c.exec === 'passou' ? 'on' : ''}" data-x="${i}" data-v="passou" data-test="marcar-passou">✓ Passou</button><button type="button" class="sg nok ${c.exec === 'falhou' ? 'on' : ''}" data-x="${i}" data-v="falhou" data-test="marcar-falhou">✕ Falhou</button></div><select class="exec-sel" data-i="${i}" data-test="execucao" aria-label="Execução do cenário ${i + 1}"><option value="nao" ${c.exec === 'passou' || c.exec === 'falhou' ? '' : 'selected'}>Não executado</option><option value="passou" ${c.exec === 'passou' ? 'selected' : ''}>Passou</option><option value="falhou" ${c.exec === 'falhou' ? 'selected' : ''}>Falhou</option></select><div class="xlinks">${c.exec === 'falhou' ? (c.bug ? `<a class="bugchip" href="card.html?id=${c.bug}" data-test="bug-ligado">${ico('bug')}${c.bug}</a>` : `<button type="button" class="xl bug" data-bug="${i}" data-test="reportar-bug">${ico('bug')}Reportar bug</button>`) : ''}${c.exec && c.exec !== 'nao' ? `<label class="xl ev ${c.evid ? 'tem' : ''}" title="Print ou vídeo da execução"><input type="file" data-ev="${i}" data-test="evidencia-cenario" accept="image/*,video/*,.pdf" hidden>${ico('clipe')}${c.evid ? esc(c.evid) : 'Anexar evidência'}</label>` : ''}</div></div></td>
         <td><div class="acoes"><button class="icone" data-ed="${i}" data-test="editar-cenario" title="Editar cenário"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg></button><button class="icone rm" data-rm="${i}" data-test="excluir-cenario" title="Excluir cenário"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M8 6V4h8v2"/><path d="M19 6l-1 14H6L5 6"/></svg></button></div></td></tr>`;
     }).join('') : '<tr><td colspan="4" class="vazio" data-test="plano-vazio">Nenhum cenário ainda</td></tr>';
     let n = 0;
-    REGRAS.forEach((r, i) => { const quem = lista.map((c, j) => c.regras.includes(i) && !fraco(c) ? j + 1 : 0).filter(Boolean); const on = quem.length > 0; if (on) n++; $('#u' + i).classList.toggle('on', on); $('#q' + i).hidden = !on; $('#q' + i).textContent = quem.length === 1 ? 'CENÁRIO ' + quem[0] : quem.join(' · '); });
+    RG.forEach((r, i) => { const quem = lista.map((c, j) => c.regras.includes(i) && !fraco(c) ? j + 1 : 0).filter(Boolean); const on = quem.length > 0; if (on) n++; $('#u' + i).classList.toggle('on', on); $('#q' + i).hidden = !on; $('#q' + i).textContent = quem.length === 1 ? 'CENÁRIO ' + quem[0] : quem.join(' · '); });
     setTimeout(confereMissoes, 400);
-    $('#cnt').textContent = n + '/' + REGRAS.length; $('#bar').style.width = (n / REGRAS.length * 100) + '%'; $('#cov').classList.toggle('done', n === REGRAS.length);
+    $('#cnt').textContent = n + '/' + RG.length; $('#bar').style.width = (n / RG.length * 100) + '%'; $('#cov').classList.toggle('done', n === RG.length);
     const fora = lista.map((c, j) => c.regras.length ? 0 : j + 1).filter(Boolean);
     $('#ex').hidden = !fora.length; $('#ex').textContent = `+ Cenário ${fora.join(', ')}: fora das regras`;
     const daRod = lista.filter((c, i) => naRodada(i)), ok = daRod.filter((c) => c.exec === 'passou').length, nok = daRod.filter((c) => c.exec === 'falhou').length, tot = daRod.length;
@@ -1190,7 +1306,7 @@ function montaPlano(A, card) {
     if (!ok) return;
     const c = { nome, tipo: $('#cTipo').value, passos: $('#cPassos').value.trim(), esperado: esp, regras: $$('[data-test=cenario-regra]').filter((k) => k.checked).map((k) => +k.value), exec: 'nao' };
     if (editando !== null) { c.exec = lista[editando].exec; if (lista[editando].bug && !_c('edita')) c.bug = lista[editando].bug; else if (lista[editando].bug) _pv('edita'); if (lista[editando].jaFalhou) c.jaFalhou = true; c.hist = lista[editando].hist; c.evid = lista[editando].evid; lista[editando] = c; toast('Cenário salvo'); } else { lista.push(c); if (rod()) rod().sel.push(lista.length - 1); toast('Cenário adicionado'); }
-    gabi(...revisaCenario(c));
+    gabi(...revisaCenario(c, card));
     salvar(); limpa(); pinta();
   };
   $('#cancela').hidden = !lista.length;
@@ -1291,7 +1407,7 @@ const execDe = (d) => Object.values(d.planos || {}).flat().filter((c) => c && c.
 const CARTOES = {
   junior: { conq: 'd1', desafio: 'desafio', quando: 'efetivadoEm', cargo: 'QA JÚNIOR', nivel: 'QA júnior', k: 'EFETIVAÇÃO', verbo: (a) => (a ? 'efetivada' : 'efetivado'),
     quem: ['av_beatriz', 'BEATRIZ · PM DO FLOWDESK'], fala: (a) => `Passou no desafio e achou o que ninguém tinha visto. ${a ? 'Bem-vinda' : 'Bem-vindo'} ao time, de verdade.`,
-    trilha: ['ok', 'now', ''], prox: 'pleno', bloq: ['Disponível depois do Desafio 1', 'Passe no desafio final do módulo 3 pra ser efetivado e liberar o seu cartão.'] },
+    trilha: ['ok', 'now', ''], prox: 'pleno', bloq: ['Disponível depois do Desafio 1', 'Passe no desafio de efetivação, no fim do módulo 2, pra liberar o seu cartão.'] },
   pleno: { conq: 'd2', desafio: 'desafio2', quando: 'promovidoEm', cargo: 'QA PLENO', nivel: 'QA pleno', k: 'PROMOÇÃO', verbo: (a) => (a ? 'promovida' : 'promovido'),
     quem: ['av_lucas', 'LUCAS · TECH LEAD DO FLOWDESK'], fala: () => 'Agora é você que puxa as decisões de qualidade do time. Promoção merecida.',
     trilha: ['ok', 'ok', 'now'], prox: 'sênior, no Vida de QA 2', bloq: ['Disponível depois do Desafio 2', 'Passe no desafio de pleno pra ser promovido e liberar o seu cartão.'] },
@@ -1465,7 +1581,7 @@ PAGINAS.caca = () => {
   const meus = LS.get('fd:caca-envios', []);
   casca('caca', `<section class="caca-hero"><div class="ch-t"><div class="ch-k"><span id="tNum">TEMPORADA 1 DE 3</span><b class="${aberta ? 'ab' : ''}">${aberta ? 'ABERTA' : 'EM BREVE'}</b>${aberta ? '<i id="tFim">quando os 3 forem achados, a próxima temporada abre sozinha</i>' : ''}</div>
       <h1 data-test="titulo-pagina">3 bugs escondidos no FlowDesk.</h1><p>Quem achar e reportar primeiro ganha o <b>Vida de QA 2</b> de graça quando lançar. Preste atenção nas aulas.</p></div>
-      <video src="img/anim/vinicius_lupa_v2.webm?v=1794509701" poster="img/anim/vinicius_lupa_v2.png?v=1794509701" autoplay muted loop playsinline aria-label="Vinícius com uma lupa procurando bugs"></video></section>
+      <video src="img/anim/vinicius_lupa_v2.webm?v=1794510265" poster="img/anim/vinicius_lupa_v2.png?v=1794510265" autoplay muted loop playsinline aria-label="Vinícius com uma lupa procurando bugs"></video></section>
     <div class="caca-bugs" id="placar">${[1, 2, 3].map((n) => `<article class="cb"><div class="cb-h"><span>#${n}</span><b>LIVRE</b></div><div class="cb-v">Ninguém achou ainda.</div></article>`).join('')}</div>
     <div class="caca-grade"><section class="painel caca-form"><h2>Reportar um bug da caça</h2><p class="dica">A confirmação é automática. Vale o primeiro report confirmado de cada bug.</p>
       <form id="fc" novalidate>${aberta ? '' : '<div class="aviso-caca" data-test="caca-fechada">A primeira temporada ainda não abriu. Quando abrir, este formulário passa a funcionar e o aviso sai daqui.</div>'}

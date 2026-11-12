@@ -1011,3 +1011,21 @@ tr.fora-rod{opacity:.55}
 .dia1 .d1o label{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:10px;border:1px solid #2b2d40;background:#151724;font-size:14px;font-weight:600;cursor:pointer}
 .dia1 .d1r{margin-top:10px;font-size:14px;font-weight:700}.dia1 .d1r.bom{color:#86efac}.dia1 .d1r.mal{color:#fca5a5}
 .dia1 .d1n{margin-top:14px;font-size:12.5px;color:#8e92a4}
+/* Desafio 1 */
+.desafio{border:1.5px solid #7c3aed;border-radius:18px;padding:20px 22px;margin-bottom:18px;background:linear-gradient(160deg,rgba(124,58,237,.18),rgba(124,58,237,.03))}
+.desafio .dk{font-size:12px;font-weight:800;letter-spacing:3px;color:#a78bfa}.desafio h3{font-size:24px;margin:6px 0 8px}
+.desafio p{color:#cfd2e0;font-size:15px;line-height:1.5;margin:0 0 12px}
+.desafio .dn{display:flex;gap:8px;align-items:baseline;flex-wrap:wrap;font-size:14px;color:#a8acc4;margin-bottom:14px}.desafio .dn b{color:#fff}
+.desafio .dt{display:flex;align-items:baseline;gap:10px;margin:8px 0 14px}.desafio .dt b{font-size:46px;font-weight:800;font-variant-numeric:tabular-nums}.desafio .dt span{color:#a8acc4;font-weight:700}
+.desafio .dbt{display:flex;gap:10px;flex-wrap:wrap}.desafio .dbt .btn{margin:0}
+.desafio.passou{border-color:#22c55e;background:linear-gradient(160deg,rgba(34,197,94,.16),rgba(34,197,94,.03))}.desafio.passou .dk{color:#86efac}
+.desafio.nao{border-color:#f59e0b;background:linear-gradient(160deg,rgba(245,158,11,.12),rgba(245,158,11,.02))}.desafio.nao .dk{color:#fcd34d}
+.desafio .dtot{display:flex;align-items:baseline;gap:8px;margin:4px 0 12px}.desafio .dtot b{font-size:52px;font-weight:800}.desafio .dtot span{color:#a8acc4;font-weight:700}
+.desafio .dl{display:grid;grid-template-columns:110px 1fr 90px;gap:10px;align-items:center;padding:8px 0;border-top:1px solid rgba(255,255,255,.07);font-size:14px}
+.desafio .dl b{font-size:16px}.desafio .dl i{font-style:normal;color:#a8acc4;text-align:right;font-weight:700}.desafio .dl span{color:#cfd2e0}
+.desafio .dl span{order:2}.desafio .dl b{order:1}.desafio .dl i{order:3}
+.desafio>.btn{margin-top:14px}
+.relogio-d1{position:fixed;right:22px;bottom:22px;z-index:60;display:flex;flex-direction:column;align-items:flex-end;background:rgba(20,14,40,.96);border:1.5px solid #7c3aed;border-radius:12px;padding:8px 14px;text-decoration:none;color:#fff;box-shadow:0 10px 30px rgba(0,0,0,.5)}
+.relogio-d1 b{font-size:10px;letter-spacing:2px;color:#a78bfa}.relogio-d1 span{font-size:20px;font-weight:800;font-variant-numeric:tabular-nums}
+.relogio-d1.pausado{border-color:#f59e0b}.relogio-d1.acabou{border-color:#ef4444}.relogio-d1.acabou span{color:#fca5a5}
+.ch-f2{display:flex;gap:10px;flex-wrap:wrap;align-items:center;width:100%;margin-top:10px}.ch-f2 .in{height:40px;max-width:240px;font-size:14px}.ch-f2 .btn{height:40px;margin:0}
