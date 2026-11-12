@@ -1,0 +1,16 @@
+name: Validar FlowDesk (jornada EP04 a EP14)
+on:
+  push:
+    paths: ['docs/flowdesk/**', 'tests/flowdesk/**']
+  workflow_dispatch:
+jobs:
+  jornada:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 20 }
+      - run: npm i --no-save playwright@1.48.2 && npx playwright install --with-deps chromium
+      - run: python3 -m http.server 8765 --directory docs/flowdesk > /dev/null 2>&1 &
+      - run: sleep 2 && node tests/flowdesk/jornada.js http://localhost:8765/
