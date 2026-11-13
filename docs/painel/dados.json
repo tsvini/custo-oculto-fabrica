@@ -1,17 +1,17 @@
 {
- "atualizado": "12/11/2026 23:54",
+ "atualizado": "13/11/2026 15:03",
  "fontes": {
   "custo_oculto": {
    "seguidores": 37,
-   "views_total": 12155,
-   "videos": 54,
-   "views_28d": 7011,
+   "views_total": 12244,
+   "videos": 55,
+   "views_28d": 7016,
    "views_7d": 2456,
    "seguidores_28d": 21,
    "dia": [
     [
      "2026-10-16",
-     50
+     52
     ],
     [
      "2026-10-17",
@@ -23,7 +23,7 @@
     ],
     [
      "2026-10-19",
-     18
+     20
     ],
     [
      "2026-10-20",
@@ -43,7 +43,7 @@
     ],
     [
      "2026-10-24",
-     77
+     78
     ],
     [
      "2026-10-25",
@@ -166,8 +166,8 @@
   },
   "vini_qa": {
    "seguidores": 0,
-   "views_total": 508,
-   "videos": 11,
+   "views_total": 512,
+   "videos": 12,
    "views_28d": 501,
    "views_7d": 89,
    "seguidores_28d": 0,
@@ -318,46 +318,46 @@
   },
   "tiktok": {
    "usuario": "Custo Oculto",
-   "seguidores": 87,
-   "curtidas": 647,
-   "videos": 35,
-   "views_total": 8550,
+   "seguidores": 88,
+   "curtidas": 659,
+   "videos": 36,
+   "views_total": 8477,
    "top": [
+    {
+     "titulo": "17 anos, 2 mil ovos de Páscoa e nenhuma fábrica. Ele aceitou mesmo assim.  🍫 A Jogada que ",
+     "url": "https://www.tiktok.com/@custooculto/video/7707656361940716818?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
+     "views": 46,
+     "likes": 0
+    },
     {
      "titulo": "Recusou o Google por 1 milhão. Recusou a Microsoft por 44 bilhões. Foi vendido por menos d",
      "url": "https://www.tiktok.com/@custooculto/video/7707286754293746952?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 311,
-     "likes": 15
+     "views": 490,
+     "likes": 24
     },
     {
      "titulo": "12 mil peças diferentes, kits que davam prejuízo e a falência batendo na porta. A saída fo",
      "url": "https://www.tiktok.com/@custooculto/video/7706915220291194119?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 35,
+     "views": 36,
      "likes": 4
     },
     {
      "titulo": "Em 1983, a Atari enterrou cartuchos encalhados no deserto. Por décadas, todo mundo achou q",
      "url": "https://www.tiktok.com/@custooculto/video/7706553314044906770?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 572,
+     "views": 573,
      "likes": 38
     },
     {
      "titulo": "Era para ser uma cola superforte. Saiu fraca. E virou um dos produtos mais usados em escri",
      "url": "https://www.tiktok.com/@custooculto/video/7706177181205941522?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 295,
-     "likes": 9
+     "views": 314,
+     "likes": 12
     },
     {
      "titulo": "Uma empresa brasileira registrou o nome iPhone 7 anos antes da Apple lançar o celular. E p",
      "url": "https://www.tiktok.com/@custooculto/video/7705797386299247879?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 655,
+     "views": 657,
      "likes": 29
-    },
-    {
-     "titulo": "Antes do videogame, a Nintendo vendeu baralho, arroz instantâneo e até corrida de táxi.  🃏",
-     "url": "https://www.tiktok.com/@custooculto/video/7705428083452546312?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 229,
-     "likes": 1
     }
    ],
    "nome": "TikTok @custooculto"
@@ -395,15 +395,6 @@
   }
  },
  "agenda": [
-  {
-   "quando": "2026-11-13T12:00:00-03:00",
-   "plataforma": "Vini QA (YouTube)",
-   "chave": "vini_qa",
-   "titulo": "cypress open ou cypress run",
-   "tipo": "short",
-   "id": "PeO1_aVL5A8",
-   "url": "https://studio.youtube.com/video/PeO1_aVL5A8/edit"
-  },
   {
    "quando": "2026-11-16T12:00:00-03:00",
    "plataforma": "Vini QA (YouTube)",
