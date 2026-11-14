@@ -1,10 +1,10 @@
 {
- "atualizado": "13/11/2026 23:41",
+ "atualizado": "14/11/2026 13:43",
  "fontes": {
   "custo_oculto": {
    "seguidores": 37,
-   "views_total": 12244,
-   "videos": 55,
+   "views_total": 12417,
+   "videos": 56,
    "views_28d": 8140,
    "views_7d": 3454,
    "seguidores_28d": 27,
@@ -166,7 +166,7 @@
   },
   "vini_qa": {
    "seguidores": 0,
-   "views_total": 512,
+   "views_total": 528,
    "videos": 12,
    "views_28d": 509,
    "views_7d": 86,
@@ -319,20 +319,26 @@
   "tiktok": {
    "usuario": "Custo Oculto",
    "seguidores": 88,
-   "curtidas": 659,
-   "videos": 36,
-   "views_total": 8539,
+   "curtidas": 660,
+   "videos": 37,
+   "views_total": 7965,
    "top": [
+    {
+     "titulo": "Antes do Facebook, a internet acontecia aqui. Seis anos depois de ser comprado, valia 16 v",
+     "url": "https://www.tiktok.com/@custooculto/video/7708026334567468295?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
+     "views": 13,
+     "likes": 1
+    },
     {
      "titulo": "17 anos, 2 mil ovos de Páscoa e nenhuma fábrica. Ele aceitou mesmo assim.  🍫 A Jogada que ",
      "url": "https://www.tiktok.com/@custooculto/video/7707656361940716818?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 100,
+     "views": 106,
      "likes": 0
     },
     {
      "titulo": "Recusou o Google por 1 milhão. Recusou a Microsoft por 44 bilhões. Foi vendido por menos d",
      "url": "https://www.tiktok.com/@custooculto/video/7707286754293746952?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 490,
+     "views": 491,
      "likes": 24
     },
     {
@@ -350,14 +356,8 @@
     {
      "titulo": "Era para ser uma cola superforte. Saiu fraca. E virou um dos produtos mais usados em escri",
      "url": "https://www.tiktok.com/@custooculto/video/7706177181205941522?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 315,
+     "views": 317,
      "likes": 12
-    },
-    {
-     "titulo": "Uma empresa brasileira registrou o nome iPhone 7 anos antes da Apple lançar o celular. E p",
-     "url": "https://www.tiktok.com/@custooculto/video/7705797386299247879?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 657,
-     "likes": 29
     }
    ],
    "nome": "TikTok @custooculto"
