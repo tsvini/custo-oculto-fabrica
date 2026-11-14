@@ -1,5 +1,5 @@
 {
- "data": "2026-11-13",
+ "data": "2026-11-14",
  "por_formato_12m": [
   {
    "creatorContentType": "creatorContentTypeUnspecified",
@@ -9,13 +9,13 @@
   },
   {
    "creatorContentType": "shorts",
-   "views": 10859,
-   "estimatedMinutesWatched": 4456,
-   "subscribersGained": 32
+   "views": 12036,
+   "estimatedMinutesWatched": 4761,
+   "subscribersGained": 38
   },
   {
    "creatorContentType": "videoOnDemand",
-   "views": 131,
+   "views": 133,
    "estimatedMinutesWatched": 366,
    "subscribersGained": 1
   }
@@ -23,24 +23,18 @@
  "por_formato_7d": [
   {
    "creatorContentType": "shorts",
-   "views": 1976,
-   "estimatedMinutesWatched": 690,
-   "subscribersGained": 5
+   "views": 3014,
+   "estimatedMinutesWatched": 943,
+   "subscribersGained": 11
   },
   {
    "creatorContentType": "videoOnDemand",
-   "views": 9,
+   "views": 11,
    "estimatedMinutesWatched": 1,
    "subscribersGained": 0
   }
  ],
  "dia_a_dia_28d": [
-  {
-   "day": "2026-10-16",
-   "views": 50,
-   "estimatedMinutesWatched": 109,
-   "subscribersGained": 0
-  },
   {
    "day": "2026-10-17",
    "views": 459,
@@ -190,37 +184,43 @@
    "views": 192,
    "estimatedMinutesWatched": 81,
    "subscribersGained": 0
+  },
+  {
+   "day": "2026-11-11",
+   "views": 1179,
+   "estimatedMinutesWatched": 305,
+   "subscribersGained": 6
   }
  ],
  "origem_28d": [
   {
    "insightTrafficSourceType": "SHORTS",
-   "views": 6150,
-   "estimatedMinutesWatched": 3300
+   "views": 7225,
+   "estimatedMinutesWatched": 3550
   },
   {
    "insightTrafficSourceType": "YT_SEARCH",
-   "views": 520,
-   "estimatedMinutesWatched": 148
+   "views": 573,
+   "estimatedMinutesWatched": 166
   },
   {
    "insightTrafficSourceType": "YT_CHANNEL",
-   "views": 130,
-   "estimatedMinutesWatched": 136
+   "views": 129,
+   "estimatedMinutesWatched": 63
   },
   {
    "insightTrafficSourceType": "SUBSCRIBER",
-   "views": 89,
+   "views": 90,
    "estimatedMinutesWatched": 49
   },
   {
    "insightTrafficSourceType": "RELATED_VIDEO",
-   "views": 51,
-   "estimatedMinutesWatched": 262
+   "views": 52,
+   "estimatedMinutesWatched": 263
   },
   {
    "insightTrafficSourceType": "YT_OTHER_PAGE",
-   "views": 38,
+   "views": 39,
    "estimatedMinutesWatched": 17
   },
   {
@@ -230,7 +230,7 @@
   },
   {
    "insightTrafficSourceType": "NO_LINK_OTHER",
-   "views": 6,
+   "views": 5,
    "estimatedMinutesWatched": 8
   },
   {
@@ -241,11 +241,15 @@
  ],
  "buscas_28d": [
   {
-   "insightTrafficSourceDetail": "itapemirim",
-   "views": 5
+   "insightTrafficSourceDetail": "custk",
+   "views": 8
   },
   {
    "insightTrafficSourceDetail": "ricardo eletro",
+   "views": 6
+  },
+  {
+   "insightTrafficSourceDetail": "itapemirim",
    "views": 5
   },
   {
@@ -282,6 +286,10 @@
   },
   {
    "insightTrafficSourceDetail": "cazetv bts entrevista",
+   "views": 2
+  },
+  {
+   "insightTrafficSourceDetail": "custer's revenge",
    "views": 2
   },
   {
@@ -331,20 +339,12 @@
   {
    "insightTrafficSourceDetail": "bombril",
    "views": 1
-  },
-  {
-   "insightTrafficSourceDetail": "comercial tailandes",
-   "views": 1
-  },
-  {
-   "insightTrafficSourceDetail": "custer's revenge",
-   "views": 1
   }
  ],
  "videos_28d": [
   {
    "video": "2bKwMEzu16U",
-   "views": 1375,
+   "views": 1377,
    "estimatedMinutesWatched": 1148,
    "averageViewDuration": 76,
    "averageViewPercentage": 50.23,
@@ -355,21 +355,32 @@
   },
   {
    "video": "PSEeDLDb7PA",
-   "views": 1324,
-   "estimatedMinutesWatched": 756,
+   "views": 1326,
+   "estimatedMinutesWatched": 757,
    "averageViewDuration": 58,
-   "averageViewPercentage": 58.91,
+   "averageViewPercentage": 58.82999999999999,
    "subscribersGained": 6,
    "likes": 65,
    "comments": 3,
    "shares": 4
   },
   {
+   "video": "t8W991jJeOo",
+   "views": 1122,
+   "estimatedMinutesWatched": 286,
+   "averageViewDuration": 29,
+   "averageViewPercentage": 38.57,
+   "subscribersGained": 5,
+   "likes": 28,
+   "comments": 0,
+   "shares": 1
+  },
+  {
    "video": "kead0wOtMM4",
-   "views": 1029,
-   "estimatedMinutesWatched": 417,
+   "views": 1040,
+   "estimatedMinutesWatched": 419,
    "averageViewDuration": 45,
-   "averageViewPercentage": 61.82,
+   "averageViewPercentage": 61.74000000000001,
    "subscribersGained": 2,
    "likes": 34,
    "comments": 0,
@@ -377,10 +388,10 @@
   },
   {
    "video": "UrTUaUWMFDU",
-   "views": 457,
-   "estimatedMinutesWatched": 123,
+   "views": 458,
+   "estimatedMinutesWatched": 124,
    "averageViewDuration": 34,
-   "averageViewPercentage": 42.19,
+   "averageViewPercentage": 42.45,
    "subscribersGained": 1,
    "likes": 24,
    "comments": 0,
@@ -388,7 +399,7 @@
   },
   {
    "video": "dz3i8jILjBA",
-   "views": 300,
+   "views": 301,
    "estimatedMinutesWatched": 64,
    "averageViewDuration": 31,
    "averageViewPercentage": 68.8,
@@ -399,10 +410,10 @@
   },
   {
    "video": "pZeBFwy__aI",
-   "views": 272,
+   "views": 274,
    "estimatedMinutesWatched": 134,
-   "averageViewDuration": 48,
-   "averageViewPercentage": 65.19,
+   "averageViewDuration": 47,
+   "averageViewPercentage": 64.85,
    "subscribersGained": 0,
    "likes": 28,
    "comments": 3,
@@ -410,13 +421,24 @@
   },
   {
    "video": "ClsF6r4QR2g",
-   "views": 254,
+   "views": 255,
    "estimatedMinutesWatched": 152,
    "averageViewDuration": 59,
-   "averageViewPercentage": 55.96,
+   "averageViewPercentage": 55.71,
    "subscribersGained": 1,
    "likes": 16,
    "comments": 1,
+   "shares": 0
+  },
+  {
+   "video": "lLjZTTWAyXI",
+   "views": 219,
+   "estimatedMinutesWatched": 129,
+   "averageViewDuration": 60,
+   "averageViewPercentage": 66.88,
+   "subscribersGained": 3,
+   "likes": 20,
+   "comments": 0,
    "shares": 0
   },
   {
@@ -431,22 +453,11 @@
    "shares": 0
   },
   {
-   "video": "lLjZTTWAyXI",
-   "views": 214,
-   "estimatedMinutesWatched": 125,
-   "averageViewDuration": 61,
-   "averageViewPercentage": 67.11,
-   "subscribersGained": 2,
-   "likes": 19,
-   "comments": 0,
-   "shares": 0
-  },
-  {
    "video": "lVQGKtY21Aw",
-   "views": 163,
-   "estimatedMinutesWatched": 40,
+   "views": 175,
+   "estimatedMinutesWatched": 42,
    "averageViewDuration": 38,
-   "averageViewPercentage": 46.83,
+   "averageViewPercentage": 46.7,
    "subscribersGained": 1,
    "likes": 8,
    "comments": 1,
@@ -520,32 +531,32 @@
   },
   {
    "video": "_aYquXLalP0",
-   "views": 72,
-   "estimatedMinutesWatched": 24,
+   "views": 73,
+   "estimatedMinutesWatched": 25,
    "averageViewDuration": 49,
-   "averageViewPercentage": 58.08,
+   "averageViewPercentage": 57.87,
    "subscribersGained": 0,
    "likes": 1,
    "comments": 0,
    "shares": 0
   },
   {
-   "video": "FHltNOMCClI",
-   "views": 51,
-   "estimatedMinutesWatched": 165,
-   "averageViewDuration": 330,
-   "averageViewPercentage": 215.96,
-   "subscribersGained": 1,
-   "likes": 5,
+   "video": "zpGHBfxYYGM",
+   "views": 43,
+   "estimatedMinutesWatched": 16,
+   "averageViewDuration": 43,
+   "averageViewPercentage": 54.99000000000001,
+   "subscribersGained": 0,
+   "likes": 0,
    "comments": 0,
-   "shares": 1
+   "shares": 0
   },
   {
    "video": "4WuKNxpR188",
-   "views": 44,
+   "views": 43,
    "estimatedMinutesWatched": 141,
-   "averageViewDuration": 302,
-   "averageViewPercentage": 68.9,
+   "averageViewDuration": 313,
+   "averageViewPercentage": 71.4,
    "subscribersGained": 0,
    "likes": 0,
    "comments": 0,
@@ -586,7 +597,7 @@
   },
   {
    "video": "3e-eXXCL27s",
-   "views": 36,
+   "views": 38,
    "estimatedMinutesWatched": 119,
    "averageViewDuration": 273,
    "averageViewPercentage": 54.85,
@@ -629,17 +640,6 @@
    "shares": 0
   },
   {
-   "video": "zpGHBfxYYGM",
-   "views": 26,
-   "estimatedMinutesWatched": 8,
-   "averageViewDuration": 39,
-   "averageViewPercentage": 50.4,
-   "subscribersGained": 0,
-   "likes": 0,
-   "comments": 0,
-   "shares": 0
-  },
-  {
    "video": "7enHVaVNTOI",
    "views": 25,
    "estimatedMinutesWatched": 7,
@@ -651,15 +651,15 @@
    "shares": 0
   },
   {
-   "video": "TZLpKjOWKH4",
-   "views": 15,
-   "estimatedMinutesWatched": 11,
-   "averageViewDuration": 115,
-   "averageViewPercentage": 349.18,
-   "subscribersGained": 0,
+   "video": "FHltNOMCClI",
+   "views": 24,
+   "estimatedMinutesWatched": 63,
+   "averageViewDuration": 293,
+   "averageViewPercentage": 192.07,
+   "subscribersGained": 1,
    "likes": 2,
    "comments": 0,
-   "shares": 0
+   "shares": 1
   },
   {
    "video": "yNJZLs2KTh8",
@@ -673,44 +673,33 @@
    "shares": 0
   },
   {
-   "video": "Po7fZ2-6vNg",
-   "views": 15,
-   "estimatedMinutesWatched": 8,
-   "averageViewDuration": 62,
-   "averageViewPercentage": 45.54,
+   "video": "TZLpKjOWKH4",
+   "views": 14,
+   "estimatedMinutesWatched": 11,
+   "averageViewDuration": 135,
+   "averageViewPercentage": 410.65,
    "subscribersGained": 0,
    "likes": 2,
    "comments": 0,
    "shares": 0
   },
   {
-   "video": "xQAsC7S2KO8",
-   "views": 13,
-   "estimatedMinutesWatched": 5,
-   "averageViewDuration": 43,
-   "averageViewPercentage": 43.4,
-   "subscribersGained": 0,
-   "likes": 1,
-   "comments": 0,
-   "shares": 0
-  },
-  {
-   "video": "TIv6Sg8n_rI",
-   "views": 10,
-   "estimatedMinutesWatched": 9,
-   "averageViewDuration": 143,
-   "averageViewPercentage": 42.5,
+   "video": "_EvPaiyk3nU",
+   "views": 9,
+   "estimatedMinutesWatched": 12,
+   "averageViewDuration": 185,
+   "averageViewPercentage": 31.89,
    "subscribersGained": 0,
    "likes": 0,
    "comments": 0,
    "shares": 0
   },
   {
-   "video": "_EvPaiyk3nU",
-   "views": 10,
-   "estimatedMinutesWatched": 12,
-   "averageViewDuration": 185,
-   "averageViewPercentage": 31.89,
+   "video": "TIv6Sg8n_rI",
+   "views": 9,
+   "estimatedMinutesWatched": 9,
+   "averageViewDuration": 190,
+   "averageViewPercentage": 56.44,
    "subscribersGained": 0,
    "likes": 0,
    "comments": 0,
@@ -750,13 +739,24 @@
    "shares": 0
   },
   {
-   "video": "z6dXgM3pY_c",
-   "views": 5,
-   "estimatedMinutesWatched": 0,
-   "averageViewDuration": 26,
-   "averageViewPercentage": 92.86,
+   "video": "Po7fZ2-6vNg",
+   "views": 6,
+   "estimatedMinutesWatched": 2,
+   "averageViewDuration": 38,
+   "averageViewPercentage": 27.779999999999998,
    "subscribersGained": 0,
    "likes": 0,
+   "comments": 0,
+   "shares": 0
+  },
+  {
+   "video": "xQAsC7S2KO8",
+   "views": 5,
+   "estimatedMinutesWatched": 4,
+   "averageViewDuration": 81,
+   "averageViewPercentage": 80.68,
+   "subscribersGained": 0,
+   "likes": 1,
    "comments": 0,
    "shares": 0
   },
@@ -783,11 +783,11 @@
    "shares": 0
   },
   {
-   "video": "FuuRBCl6ozY",
+   "video": "z6dXgM3pY_c",
    "views": 4,
    "estimatedMinutesWatched": 0,
-   "averageViewDuration": 3,
-   "averageViewPercentage": 9.55,
+   "averageViewDuration": 26,
+   "averageViewPercentage": 92.86,
    "subscribersGained": 0,
    "likes": 0,
    "comments": 0,
@@ -823,6 +823,17 @@
    "averageViewPercentage": 41.4,
    "subscribersGained": 0,
    "likes": 1,
+   "comments": 0,
+   "shares": 0
+  },
+  {
+   "video": "FuuRBCl6ozY",
+   "views": 3,
+   "estimatedMinutesWatched": 0,
+   "averageViewDuration": 5,
+   "averageViewPercentage": 12.6,
+   "subscribersGained": 0,
+   "likes": 0,
    "comments": 0,
    "shares": 0
   },
@@ -1992,7 +2003,7 @@
    "status": "public"
   },
   "banco_master_serie1": {
-   "views": 712,
+   "views": 713,
    "likes": 41,
    "comentarios": 2,
    "status": "public"
@@ -2016,7 +2027,7 @@
    "status": "public"
   },
   "kolynos_serie1": {
-   "views": 73,
+   "views": 74,
    "likes": 1,
    "comentarios": 1,
    "status": "public"
@@ -2149,10 +2160,10 @@
   }
  },
  "canal": {
-  "viewCount": "12244",
+  "viewCount": "12417",
   "subscriberCount": "37",
   "hiddenSubscriberCount": false,
-  "videoCount": "55"
+  "videoCount": "56"
  },
  "todos_os_videos": [
   {
@@ -2162,7 +2173,7 @@
    "duracao": "PT2M33S",
    "status": "public",
    "agendado": null,
-   "views": 1386,
+   "views": 1389,
    "likes": 67,
    "comentarios": 2
   },
@@ -2173,7 +2184,7 @@
    "duracao": "PT1M39S",
    "status": "public",
    "agendado": null,
-   "views": 1331,
+   "views": 1333,
    "likes": 65,
    "comentarios": 7
   },
@@ -2184,8 +2195,8 @@
    "duracao": "PT1M17S",
    "status": "public",
    "agendado": null,
-   "views": 1169,
-   "likes": 32,
+   "views": 1225,
+   "likes": 33,
    "comentarios": 1
   },
   {
@@ -2206,7 +2217,7 @@
    "duracao": "PT1M13S",
    "status": "public",
    "agendado": null,
-   "views": 1041,
+   "views": 1040,
    "likes": 34,
    "comentarios": 0
   },
@@ -2217,7 +2228,7 @@
    "duracao": "PT1M41S",
    "status": "public",
    "agendado": null,
-   "views": 712,
+   "views": 713,
    "likes": 41,
    "comentarios": 2
   },
@@ -2272,7 +2283,7 @@
    "duracao": "PT46S",
    "status": "public",
    "agendado": null,
-   "views": 301,
+   "views": 303,
    "likes": 11,
    "comentarios": 1
   },
@@ -2305,7 +2316,7 @@
    "duracao": "PT1M47S",
    "status": "public",
    "agendado": null,
-   "views": 255,
+   "views": 257,
    "likes": 17,
    "comentarios": 1
   },
@@ -2327,8 +2338,8 @@
    "duracao": "PT1M31S",
    "status": "public",
    "agendado": null,
-   "views": 220,
-   "likes": 20,
+   "views": 222,
+   "likes": 21,
    "comentarios": 0
   },
   {
@@ -2349,7 +2360,7 @@
    "duracao": "PT40S",
    "status": "public",
    "agendado": null,
-   "views": 213,
+   "views": 214,
    "likes": 6,
    "comentarios": 0
   },
@@ -2360,7 +2371,7 @@
    "duracao": "PT1M22S",
    "status": "public",
    "agendado": null,
-   "views": 179,
+   "views": 183,
    "likes": 8,
    "comentarios": 2
   },
@@ -2385,6 +2396,17 @@
    "views": 157,
    "likes": 2,
    "comentarios": 1
+  },
+  {
+   "id": "YkIz5RnrYAU",
+   "titulo": "A Cacau Show começou com uma encomenda impossível | A Jogada que Mudou Tudo EP. 08",
+   "publicado": "2026-11-13T14:06:16Z",
+   "duracao": "PT1M11S",
+   "status": "public",
+   "agendado": null,
+   "views": 149,
+   "likes": 9,
+   "comentarios": 0
   },
   {
    "id": "BINMGZPYx1c",
@@ -2453,24 +2475,13 @@
    "comentarios": 0
   },
   {
-   "id": "YkIz5RnrYAU",
-   "titulo": "A Cacau Show começou com uma encomenda impossível | A Jogada que Mudou Tudo EP. 08",
-   "publicado": "2026-11-13T14:06:16Z",
-   "duracao": "PT1M11S",
-   "status": "public",
-   "agendado": null,
-   "views": 85,
-   "likes": 7,
-   "comentarios": 0
-  },
-  {
    "id": "_aYquXLalP0",
    "titulo": "Kolynos vendia o dobro da Colgate. Então ela sumiu (parte 1) #shorts",
    "publicado": "2026-10-18T11:00:20Z",
    "duracao": "PT1M25S",
    "status": "public",
    "agendado": null,
-   "views": 73,
+   "views": 74,
    "likes": 1,
    "comentarios": 1
   },
@@ -2481,7 +2492,7 @@
    "duracao": "PT1M19S",
    "status": "public",
    "agendado": null,
-   "views": 61,
+   "views": 60,
    "likes": 1,
    "comentarios": 0
   },
@@ -2613,7 +2624,7 @@
    "duracao": "PT1M14S",
    "status": "public",
    "agendado": null,
-   "views": 26,
+   "views": 27,
    "likes": 1,
    "comentarios": 1
   },
@@ -2627,6 +2638,17 @@
    "views": 26,
    "likes": 3,
    "comentarios": 0
+  },
+  {
+   "id": "SwLsOWxYOCE",
+   "titulo": "O Yahoo recusou comprar o Google por US$ 1 milhão | O Custo de Ser Gigante EP. 14",
+   "publicado": "2026-11-12T14:09:44Z",
+   "duracao": "PT1M19S",
+   "status": "public",
+   "agendado": null,
+   "views": 25,
+   "likes": 1,
+   "comentarios": 1
   },
   {
    "id": "_EvPaiyk3nU",
@@ -2671,17 +2693,6 @@
    "views": 15,
    "likes": 3,
    "comentarios": 2
-  },
-  {
-   "id": "SwLsOWxYOCE",
-   "titulo": "O Yahoo recusou comprar o Google por US$ 1 milhão | O Custo de Ser Gigante EP. 14",
-   "publicado": "2026-11-12T14:09:44Z",
-   "duracao": "PT1M19S",
-   "status": "public",
-   "agendado": null,
-   "views": 14,
-   "likes": 2,
-   "comentarios": 1
   },
   {
    "id": "3hLySDzqykg",
@@ -2747,6 +2758,17 @@
    "agendado": null,
    "views": 8,
    "likes": 2,
+   "comentarios": 0
+  },
+  {
+   "id": "RuM228vuE9s",
+   "titulo": "O MySpace foi comprado por US$ 580 milhões e vendido por 35 | O Custo de Ser Gigante EP. 15",
+   "publicado": "2026-11-14T14:00:26Z",
+   "duracao": "PT1M13S",
+   "status": "public",
+   "agendado": null,
+   "views": 6,
+   "likes": 1,
    "comentarios": 0
   },
   {
