@@ -1,11 +1,11 @@
 {
- "atualizado": "14/11/2026 23:07",
+ "atualizado": "15/11/2026 14:24",
  "fontes": {
   "custo_oculto": {
    "seguidores": 37,
-   "views_total": 12469,
-   "videos": 56,
-   "views_28d": 7778,
+   "views_total": 12607,
+   "videos": 57,
+   "views_28d": 7781,
    "views_7d": 3261,
    "seguidores_28d": 27,
    "dia": [
@@ -15,7 +15,7 @@
     ],
     [
      "2026-10-19",
-     18
+     20
     ],
     [
      "2026-10-20",
@@ -35,7 +35,7 @@
     ],
     [
      "2026-10-24",
-     77
+     78
     ],
     [
      "2026-10-25",
@@ -166,7 +166,7 @@
   },
   "vini_qa": {
    "seguidores": 0,
-   "views_total": 528,
+   "views_total": 533,
    "videos": 12,
    "views_28d": 514,
    "views_7d": 87,
@@ -318,27 +318,33 @@
   },
   "tiktok": {
    "usuario": "Custo Oculto",
-   "seguidores": 91,
-   "curtidas": 674,
-   "videos": 37,
-   "views_total": 8179,
+   "seguidores": 94,
+   "curtidas": 690,
+   "videos": 38,
+   "views_total": 7683,
    "top": [
+    {
+     "titulo": "Ele veio da Itália cobrar uma dívida. E acabou criando o maior fabricante de panetones do ",
+     "url": "https://www.tiktok.com/@custooculto/video/7708423030178942215?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
+     "views": 26,
+     "likes": 1
+    },
     {
      "titulo": "Antes do Facebook, a internet acontecia aqui. Seis anos depois de ser comprado, valia 16 v",
      "url": "https://www.tiktok.com/@custooculto/video/7708026334567468295?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 212,
-     "likes": 15
+     "views": 425,
+     "likes": 29
     },
     {
      "titulo": "17 anos, 2 mil ovos de Páscoa e nenhuma fábrica. Ele aceitou mesmo assim.  🍫 A Jogada que ",
      "url": "https://www.tiktok.com/@custooculto/video/7707656361940716818?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 109,
+     "views": 118,
      "likes": 0
     },
     {
      "titulo": "Recusou o Google por 1 milhão. Recusou a Microsoft por 44 bilhões. Foi vendido por menos d",
      "url": "https://www.tiktok.com/@custooculto/video/7707286754293746952?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 492,
+     "views": 493,
      "likes": 24
     },
     {
@@ -352,12 +358,6 @@
      "url": "https://www.tiktok.com/@custooculto/video/7706553314044906770?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
      "views": 578,
      "likes": 38
-    },
-    {
-     "titulo": "Era para ser uma cola superforte. Saiu fraca. E virou um dos produtos mais usados em escri",
-     "url": "https://www.tiktok.com/@custooculto/video/7706177181205941522?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 317,
-     "likes": 12
     }
    ],
    "nome": "TikTok @custooculto"
