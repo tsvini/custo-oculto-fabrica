@@ -1,12 +1,12 @@
 {
- "atualizado": "15/11/2026 23:23",
+ "atualizado": "16/11/2026 17:40",
  "fontes": {
   "custo_oculto": {
-   "seguidores": 37,
-   "views_total": 12607,
-   "videos": 57,
-   "views_28d": 7873,
-   "views_7d": 3349,
+   "seguidores": 38,
+   "views_total": 12772,
+   "videos": 59,
+   "views_28d": 8017,
+   "views_7d": 2978,
    "seguidores_28d": 27,
    "dia": [
     [
@@ -112,41 +112,45 @@
     [
      "2026-11-13",
      227
+    ],
+    [
+     "2026-11-14",
+     144
     ]
    ],
    "top": [
     {
      "titulo": "Bombril: a marca que virou sinônimo de lã de aço — O Custo de Ser Gigante EP. 09",
      "url": "https://youtu.be/2bKwMEzu16U",
-     "views": 1388,
+     "views": 1394,
      "retencao": 50,
      "likes": 67
     },
     {
      "titulo": "A gambiarra que transformou a Havaianas em ícone mundial 🩴",
      "url": "https://youtu.be/PSEeDLDb7PA",
-     "views": 1333,
+     "views": 1335,
      "retencao": 59,
      "likes": 65
     },
     {
      "titulo": "A Lego quase faliu com o brinquedo mais famoso do mundo | A Jogada que Mudou Tudo EP. 07",
      "url": "https://youtu.be/t8W991jJeOo",
-     "views": 1218,
+     "views": 1251,
      "retencao": 38,
-     "likes": 32
+     "likes": 33
     },
     {
      "titulo": "A Gradiente registrou o nome iPhone antes da Apple | O Custo de Ser Gigante EP. 12",
      "url": "https://youtu.be/kead0wOtMM4",
-     "views": 1042,
-     "retencao": 62,
+     "views": 1048,
+     "retencao": 64,
      "likes": 34
     },
     {
      "titulo": "A Nintendo começou vendendo baralho em 1889 | A Jogada que Mudou Tudo EP. 05",
      "url": "https://youtu.be/UrTUaUWMFDU",
-     "views": 460,
+     "views": 463,
      "retencao": 42,
      "likes": 24
     }
@@ -166,10 +170,10 @@
   },
   "vini_qa": {
    "seguidores": 0,
-   "views_total": 533,
-   "videos": 12,
-   "views_28d": 530,
-   "views_7d": 68,
+   "views_total": 534,
+   "videos": 13,
+   "views_28d": 535,
+   "views_7d": 72,
    "seguidores_28d": 0,
    "dia": [
     [
@@ -275,6 +279,10 @@
     [
      "2026-11-13",
      16
+    ],
+    [
+     "2026-11-14",
+     5
     ]
    ],
    "top": [
@@ -307,10 +315,10 @@
      "likes": 1
     },
     {
-     "titulo": "Teste vermelho com Timed out retrying",
-     "url": "https://youtu.be/2seOWOBn4AQ",
-     "views": 32,
-     "retencao": 32,
+     "titulo": "Seu primeiro teste automatizado",
+     "url": "https://youtu.be/lyfD8rJ6F30",
+     "views": 33,
+     "retencao": 84,
      "likes": 0
     }
    ],
@@ -319,14 +327,26 @@
   "tiktok": {
    "usuario": "Custo Oculto",
    "seguidores": 96,
-   "curtidas": 696,
-   "videos": 38,
-   "views_total": 7921,
+   "curtidas": 703,
+   "videos": 40,
+   "views_total": 7072,
    "top": [
+    {
+     "titulo": "93 mil pessoas reservaram um voo para a Lua. A companhia faliu antes de decolar.  🚀 O Cust",
+     "url": "https://www.tiktok.com/@custooculto/video/7708803093533592850?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
+     "views": 59,
+     "likes": 6
+    },
+    {
+     "titulo": "Eu embalei seu bombom por 30 anos. A Garoto era capixaba, até 2002  🍫 Você sabia dessa his",
+     "url": "https://www.tiktok.com/@custooculto/video/7708750393018207496?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
+     "views": 88,
+     "likes": 2
+    },
     {
      "titulo": "Ele veio da Itália cobrar uma dívida. E acabou criando o maior fabricante de panetones do ",
      "url": "https://www.tiktok.com/@custooculto/video/7708423030178942215?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 136,
+     "views": 164,
      "likes": 3
     },
     {
@@ -346,18 +366,6 @@
      "url": "https://www.tiktok.com/@custooculto/video/7707286754293746952?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
      "views": 493,
      "likes": 24
-    },
-    {
-     "titulo": "12 mil peças diferentes, kits que davam prejuízo e a falência batendo na porta. A saída fo",
-     "url": "https://www.tiktok.com/@custooculto/video/7706915220291194119?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 37,
-     "likes": 4
-    },
-    {
-     "titulo": "Em 1983, a Atari enterrou cartuchos encalhados no deserto. Por décadas, todo mundo achou q",
-     "url": "https://www.tiktok.com/@custooculto/video/7706553314044906770?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 578,
-     "likes": 38
     }
    ],
    "nome": "TikTok @custooculto"
@@ -395,15 +403,6 @@
   }
  },
  "agenda": [
-  {
-   "quando": "2026-11-16T12:00:00-03:00",
-   "plataforma": "Vini QA (YouTube)",
-   "chave": "vini_qa",
-   "titulo": "Pare de usar cy.wait com tempo fixo",
-   "tipo": "short",
-   "id": "r5uyRbcsssU",
-   "url": "https://studio.youtube.com/video/r5uyRbcsssU/edit"
-  },
   {
    "quando": "2026-11-18T12:00:00-03:00",
    "plataforma": "Vini QA (YouTube)",
