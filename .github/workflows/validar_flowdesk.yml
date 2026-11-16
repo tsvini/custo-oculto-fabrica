@@ -16,3 +16,4 @@ jobs:
       - run: sleep 2 && node tests/flowdesk/jornada.js http://localhost:8765/
       - run: node tests/flowdesk/desafio1.js http://localhost:8765/
       - run: node tests/flowdesk/modulo4.js http://localhost:8765/
+      - run: node tests/flowdesk/aula.js http://localhost:8765/
