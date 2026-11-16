@@ -1,0 +1,84 @@
+
+================================================================================
+
+  (Run Starting)
+
+  ┌────────────────────────────────────────────────────────────────────────────────────────────────┐
+  │ Cypress:        16.2.1                                                                         │
+  │ Browser:        Electron 146 (headless) (deprecated)                                           │
+  │ Node Version:   v22.23.4 (/opt/node22/bin/node)                                                │
+  │ Specs:          1 found (rascunho.feature)                                                     │
+  │ Searched:       cypress/e2e/conta/rascunho.feature                                             │
+  └────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+Warning: The Electron browser is deprecated as a test browser and will be removed in a future version of Cypress.
+
+Switch to Chrome or another installed browser to avoid a breaking change when you upgrade.
+
+Read more about supported browsers: https://on.cypress.io/launching-browsers
+
+
+────────────────────────────────────────────────────────────────────────────────────────────────────
+                                                                                                    
+  Running:  rascunho.feature                                                                (1 of 1)
+
+
+  Rascunho de uma conta não aparece pra outra (BUG-07)
+    1) Quem entra depois não vê o rascunho de quem saiu
+
+
+  0 passing (9s)
+  1 failing
+
+  1) Rascunho de uma conta não aparece pra outra (BUG-07)
+       Quem entra depois não vê o rascunho de quem saiu:
+
+      Timed out retrying after 4000ms
+      + expected - actual
+
+      -'Renovação do contrato da Panificadora Sol'
+      
+      at Context.eval (http://localhost:8765/__cypress/tests?p=cypress/e2e/conta/rascunho.feature:13486:38)
+      at Registry.runStepDefinition (http://localhost:8765/__cypress/tests?p=cypress/e2e/conta/rascunho.feature:9401:48)
+      at Object.fn (http://localhost:8765/__cypress/tests?p=cypress/e2e/conta/rascunho.feature:12630:42)
+      at runStepWithLogGroup (http://localhost:8765/__cypress/tests?p=cypress/e2e/conta/rascunho.feature:11360:29)
+      at Context.eval (http://localhost:8765/__cypress/tests?p=cypress/e2e/conta/rascunho.feature:12623:60)
+      at getRet (http://localhost:8765/__cypress/runner/cypress_runner.js:120892:20)
+      at tryCatcher (http://localhost:8765/__cypress/runner/cypress_runner.js:1780:23)
+      at Promise.attempt.Promise.try (http://localhost:8765/__cypress/runner/cypress_runner.js:4288:29)
+      at Context.thenFn (http://localhost:8765/__cypress/runner/cypress_runner.js:120904:66)
+
+
+
+
+  (Results)
+
+  ┌────────────────────────────────────────────────────────────────────────────────────────────────┐
+  │ Tests:        1                                                                                │
+  │ Passing:      0                                                                                │
+  │ Failing:      1                                                                                │
+  │ Pending:      0                                                                                │
+  │ Skipped:      0                                                                                │
+  │ Screenshots:  0                                                                                │
+  │ Video:        true                                                                             │
+  │ Duration:     8 seconds                                                                        │
+  │ Spec Ran:     rascunho.feature                                                                 │
+  └────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+
+  (Video)
+
+  -  Video output: /home/claude/vida-de-qa-regressivo/cypress/videos/rascunho.feature.mp4
+
+
+================================================================================
+
+  (Run Finished)
+
+
+       Spec                                              Tests  Passing  Failing  Pending  Skipped  
+  ┌────────────────────────────────────────────────────────────────────────────────────────────────┐
+  │ ✖  rascunho.feature                         00:08        1        -        1        -        - │
+  └────────────────────────────────────────────────────────────────────────────────────────────────┘
+    ✖  1 of 1 failed (100%)                     00:08        1        -        1        -        -  
+

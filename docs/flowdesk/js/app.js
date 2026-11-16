@@ -186,7 +186,7 @@ const usaApi = () => VERSAO >= 17 && 'serviceWorker' in navigator && /^https?:/.
 let _swPronto = null;
 function swPronto() {
   if (!_swPronto) _swPronto = (async () => {
-    await navigator.serviceWorker.register('sw.js?v=1794845612');
+    await navigator.serviceWorker.register('sw.js?v=1794857310');
     if (navigator.serviceWorker.controller) return true;
     await new Promise((r) => { navigator.serviceWorker.addEventListener('controllerchange', r, { once: true }); setTimeout(r, 4000); });
     return !!navigator.serviceWorker.controller;
@@ -308,6 +308,8 @@ const SAVES = [
   { id: 'ep18', nome: 'Início do EP18', quando: 'Tela ou servidor?', monta: depoisDoEp16 },
   { id: 'm4', nome: 'Início do EP21', quando: 'Módulo 4 · o regressivo · Sprint 18', monta: depoisDoEp20 },
   { id: 'ep20', nome: 'Início do EP20', quando: 'O rascunho · com a conta de teste do Lucas', monta: () => { LS.del(RASCUNHO); return contaDoLucas(depoisDoEp18()); } },
+  // módulo 4: começo de cada prática, com as missões de antes já feitas
+  ...[23, 24, 25, 26, 27, 28, 29].map((n) => ({ id: 'm4ep' + n, nome: `Início do EP${n}`, quando: 'Módulo 4 · o regressivo', monta: () => { const d = depoisDoEp20(); for (let k = 22; k < n; k++) d.conquistas.push('ep' + k); d.conquistas = d.conquistas.filter((k) => k !== 'ep21'); return d; } })),
 ];
 
 
@@ -448,6 +450,17 @@ const MISSOES = [
     ['Com prioridade alta', (d) => bugsGlobais(d).some((b) => /rascunho/i.test(textoBug(b)) && /alta|cr[ií]tica|urgente/i.test(b.prioridade || ''))],
     ['Com a chave do armazenamento em Console e Rede', (d) => bugsGlobais(d).some((b) => /rascunho/i.test(textoBug(b)) && /fd:rascunho|rascunho/i.test(b.tecnico || ''))],
   ] },
+  // Módulo 4: o regressivo roda no Cypress do aluno, fora deste navegador. A prova é a saída do `npx cypress run` colada em regressivo.html
+  ...[
+    ['ep22', 'O primeiro fluxo crítico', 'Casa arrumada', [['Rode o regressivo: fumaça e criar chamado', 'verde']]],
+    ['ep23', 'Clique duplo com rede lenta', 'Bug pego na raiz', [['Verde sem o bug', 'verde'], ['Vermelho com regressao=duplicado', 'bug']]],
+    ['ep24', 'Dois usuários, um navegador', 'Nada vaza entre contas', [['Verde sem o bug', 'verde'], ['Vermelho com regressao=rascunho', 'bug']]],
+    ['ep25', 'O dono do relógio', 'Dono do relógio', [['Os dois cenários verdes', 'verde'], ['Só o de hoje vermelho com regressao=periodo', 'bug']]],
+    ['ep26', 'Três telas, um cenário', 'Três telas', [['Três verdes', 'verde'], ['Só o celular vermelho com regressao=layout', 'bug']]],
+    ['ep27', 'O teste que mente', 'Teste que não mente', [['Busca corrigida, verde com lento=1', 'verde'], ['Três execuções seguidas, todas verdes', 'tres']]],
+    ['ep28', 'Revisar o PR do Rafael', 'Revisor de teste', [['Ache os 4 problemas do PR', 'revisao'], ['Os testes reescritos, verdes', 'verde']]],
+  ].map(([id, titulo, conq, itens]) => ({ id, titulo, aula: 'EP' + id.slice(2), conquista: conq, nivel: 'QA júnior', link: 'regressivo.html#' + id,
+    itens: itens.map(([t, k]) => [t, (d) => !!((d.m4 || {})[id] || {})[k]]) })),
 ];
 const bugsDe = (d) => d.cards.filter((c) => c.tipo === 'bug');
 const textoBug = (b) => [b.titulo, b.passos, b.esperado, b.obtido, b.cenario].join(' ');
@@ -550,7 +563,7 @@ function pedeAvaliacao(id) {
 }
 function conquista(m) {
   const o = document.createElement('div'); o.className = 'conq-fundo'; o.setAttribute('data-test', 'conquista');
-  const extra = m.id === 'd1' ? '<div class="s2">Agora você é <b>QA júnior</b>. O seu crachá novo está pronto: <a href="efetivacao.html" data-test="ir-cartao">pegar meu cartão de efetivação</a>.</div>' : m.id === 'ep12' ? '<div class="s2">A Gabriela já está corrigindo. Quando você voltar pro FlowDesk, a <b>Sprint 16</b> estará no ar.</div>' : m.id === 'ep14' ? '<div class="s2">Fim do módulo 2. A Sprint 16 foi aprovada e sobe sexta.</div>' : m.id === 'ep20' ? '<div class="s2">Fim do módulo 3. Três bugs que a tela sozinha não mostrava, e você achou onde cada um mora.</div>' : m.id === 'ep08' ? '<div class="s2">A Gabriela já está corrigindo. Quando você voltar pro FlowDesk, a <b>Sprint 15</b> estará no ar.</div>' : m.id === 'ep03' ? '<div class="s2">O <b>FlowChat</b> foi liberado: agora dá pra tirar dúvida com o time.</div>' : '';
+  const extra = m.id === 'd1' ? '<div class="s2">Agora você é <b>QA júnior</b>. O seu crachá novo está pronto: <a href="efetivacao.html" data-test="ir-cartao">pegar meu cartão de efetivação</a>.</div>' : m.id === 'ep12' ? '<div class="s2">A Gabriela já está corrigindo. Quando você voltar pro FlowDesk, a <b>Sprint 16</b> estará no ar.</div>' : m.id === 'ep14' ? '<div class="s2">Fim do módulo 2. A Sprint 16 foi aprovada e sobe sexta.</div>' : m.id === 'ep20' ? '<div class="s2">Fim do módulo 3. Três bugs que a tela sozinha não mostrava, e você achou onde cada um mora.</div>' : m.id === 'ep28' ? '<div class="s2">Fim do módulo 4. Um regressivo pensado por risco, e cada teste provou que pega o bug: vermelho com ele, verde sem ele.</div>' : m.id === 'ep08' ? '<div class="s2">A Gabriela já está corrigindo. Quando você voltar pro FlowDesk, a <b>Sprint 15</b> estará no ar.</div>' : m.id === 'ep03' ? '<div class="s2">O <b>FlowChat</b> foi liberado: agora dá pra tirar dúvida com o time.</div>' : '';
   o.innerHTML = `<div class="conq"><div class="ci">${ico('trofeu')}</div><div class="k">CONQUISTA DESBLOQUEADA${m.semXp ? '' : ` · +${m.itens.length * XP_ITEM + XP_CONQ} XP`}</div><div class="v" data-test="conquista-nome">${m.conquista}</div><div class="s">Nível atual: <b>${m.nivel}</b></div>${extra}<button class="btn" data-test="fechar-conquista">Continuar</button></div>`;
   // fica pendente até o aluno fechar: se a página recarregar antes (reteste, troca de tela), o aviso volta
   const d = dados(); d.conqPendente = m.id; salvar();
@@ -567,7 +580,7 @@ function cardMissao() {
 // ---------- carreira (XP vem das missões) ----------
 // júnior vem com a efetivação (Desafio 1, no fim do módulo 2): a conquista 'd1' leva o XP pra 3000; daí em diante conta o XP do módulo 3 em diante
 const XP_ITEM = 40, XP_CONQ = 60, XP_JUNIOR = 3000, XP_PLENO = 6000;
-const M_JUNIOR = ['ep16', 'ep18', 'ep20'];
+const M_JUNIOR = ['ep16', 'ep18', 'ep20', 'ep22', 'ep23', 'ep24', 'ep25', 'ep26', 'ep27', 'ep28'];
 const ehJunior = (d = dados()) => xpDe(d) >= XP_JUNIOR;
 const xpDe = (d = dados()) => { const f = d.conquistas || [], atual = MISSOES.find((m) => !f.includes(m.id)), efetivado = f.includes('d1');
   return (efetivado ? XP_JUNIOR : 0) + MISSOES.reduce((s, m) => (efetivado && !M_JUNIOR.includes(m.id)) ? s : s + (m.semXp ? 0 : f.includes(m.id) ? m.itens.length * XP_ITEM + XP_CONQ : m === atual ? progresso(m, d).filter(Boolean).length * XP_ITEM : 0), 0); };
@@ -581,7 +594,7 @@ const chatLiberado = (d = dados()) => (d.conquistas || []).includes('ep03');
 
 // ---------- layout ----------
 const avatar = (p) => p === 'voce' ? '<span class="vc">VC</span>' : `<img class="av" src="img/av_${p}.png" alt="">`;
-const LOGO = '<span class="logo-anim" aria-hidden="true"><img src="img/anim/logo_part1.png?v=1794845612" alt=""><img class="sobe" src="img/anim/logo_part0.png?v=1794845612" alt=""></span>';
+const LOGO = '<span class="logo-anim" aria-hidden="true"><img src="img/anim/logo_part1.png?v=1794857310" alt=""><img class="sobe" src="img/anim/logo_part0.png?v=1794857310" alt=""></span>';
 const MARCA = `<span class="marca">${LOGO}FlowDesk</span>`;
 const pillVersao = () => `<span class="versao" data-test="versao-sistema"><b>Sprint ${VERSAO}</b> · homologação</span>`;
 const SVG = (p, c = '') => `<svg class="${c}" viewBox="0 0 24 24" aria-hidden="true">${p}</svg>`;
@@ -603,6 +616,7 @@ const ICONE = {
   sino: '<path d="M18 8a6 6 0 1 0-12 0c0 7-3 8-3 8h18s-3-1-3-8"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/>',
 };
 ICONE.missoes = ICONE.trofeu; ICONE.efetivacao = ICONE.card;
+ICONE.regressivo = '<path d="M20 11a8 8 0 0 0-14.6-4.5M4 13a8 8 0 0 0 14.6 4.5"/><path d="M5 3v4h4M19 21v-4h-4"/>';
 const ico = (k, c = '') => SVG(ICONE[k], c);
 const placarCache = () => LS.get('fd:placar', null);
 function casca(pagina, conteudo) {
@@ -617,7 +631,7 @@ function casca(pagina, conteudo) {
   document.body.innerHTML = `<div class="app"><aside class="side">${MARCA}<nav aria-label="Menu">
     ${it('dashboard.html', 'Início', 'dashboard')}${it('missoes.html', 'Missões', 'missoes', mAt ? `<span class="menu-tag">${mAt.id === 'd1' ? 'D1' : mAt.aula}</span>` : '')}${it('quadro.html', 'Quadro', 'quadro')}
     ${subCard}
-    ${it('chamados.html', 'Chamados', 'chamados')}${it('chat.html', 'FlowChat', 'chat', naoLidas)}${it('caca.html', 'Caça aos bugs', 'caca', `<span class="caca-n">${achados}/3</span>`)}${it('efetivacao.html', 'Carreira', 'efetivacao', efet ? '' : `<span class="tranca" title="Libera no Desafio 1">${ico('cadeado')}D1</span>`)}</nav>
+    ${(d.conquistas || []).includes('ep20') ? it('regressivo.html', 'Regressivo', 'regressivo') : ''}${it('chamados.html', 'Chamados', 'chamados')}${it('chat.html', 'FlowChat', 'chat', naoLidas)}${it('caca.html', 'Caça aos bugs', 'caca', `<span class="caca-n">${achados}/3</span>`)}${it('efetivacao.html', 'Carreira', 'efetivacao', efet ? '' : `<span class="tranca" title="Libera no Desafio 1">${ico('cadeado')}D1</span>`)}</nav>
     <div class="side-fim">${cardMissao()}<nav class="sec-nav">${it('configuracoes.html', 'Configurações', 'configuracoes')}</nav>
     <div class="eu"><span class="vc">${esc((c.nome || 'VC').split(' ').map((x) => x[0]).slice(0, 2).join('').toUpperCase())}</span><div><b data-test="usuario-logado">${esc(c.nome)}</b><span data-test="nivel">${nivelAtual()}</span></div><button data-test="sair">Sair</button></div></div></aside>
     <main class="main"><header class="barra"><div class="barra-c"><span class="barra-k">CARREIRA</span>${trilha(d)}<span class="xp" data-test="xp">${xpDe(d)} / ${ehJunior(d) ? XP_PLENO : XP_JUNIOR} XP</span></div>${pillVersao()}</header><div class="conteudo">${conteudo}</div></main></div>`;
@@ -672,7 +686,7 @@ PAGINAS.login = () => {
   document.body.innerHTML = `<div class="tela-login">
     <section class="lg-time"><div class="lg-marca">${LOGO}<span>FlowDesk</span></div>
       <div class="lg-tit"><h1>Seu primeiro dia como QA começa aqui.</h1><div class="lg-trilha"><span class="on">Estagiário</span>${seta}<span>Júnior</span>${seta}<span class="fut">Pleno</span></div></div>
-      <div class="lg-palco"><div class="lg-luz" aria-hidden="true"></div><video src="img/anim/time_acena.webm?v=1794845612" poster="img/anim/time_acena.png?v=1794845612" autoplay muted loop playsinline aria-label="O time do FlowDesk acenando: Rafael, Gabriela, Vinícius, Lucas e Beatriz"></video></div></section>
+      <div class="lg-palco"><div class="lg-luz" aria-hidden="true"></div><video src="img/anim/time_acena.webm?v=1794857310" poster="img/anim/time_acena.png?v=1794857310" autoplay muted loop playsinline aria-label="O time do FlowDesk acenando: Rafael, Gabriela, Vinícius, Lucas e Beatriz"></video></div></section>
     <section class="lg-form"><div class="login">
     <form id="fEntrar" novalidate><span class="lg-chip">SPRINT ${VERSAO} · HOMOLOGAÇÃO</span><h1>Bem-vindo de volta</h1><p class="sub">O time já está te esperando. Use dados de mentira: fica tudo salvo só neste navegador.</p>
       <div class="campo"><label for="email">E-mail</label><input class="in" id="email" type="email" data-test="login-email" autocomplete="username" placeholder="voce@empresa.com"></div>
@@ -948,7 +962,7 @@ PAGINAS.quadro = () => {
       <div class="h"><h3>${n}</h3><span class="cnt" data-test="contagem-${k}"></span>${k === 'afazer' ? '<button class="mais" data-test="nova-tarefa" title="Nova tarefa" aria-label="Nova tarefa">+</button>' : ''}</div>
       <div class="cards"></div>${k === 'afazer' ? '<button class="add-tarefa" data-test="adicionar-tarefa">+ Adicionar tarefa</button>' : ''}</section>`).join('')}</div>
     <p class="dica" style="margin-top:12px">Você move os seus cards arrastando, ou pelo próprio card. Os cards dos outros ficam com eles.</p>
-    <div class="desfile" aria-hidden="true"><div class="chao"></div>${anda.map(([v, atraso, cls]) => `<div class="anda ${cls}" style="animation-delay:${atraso}s"><video src="img/anim/${v}.webm?v=1794845612" poster="img/anim/${v}.png?v=1794845612" autoplay muted loop playsinline></video></div>`).join('')}</div>`);
+    <div class="desfile" aria-hidden="true"><div class="chao"></div>${anda.map(([v, atraso, cls]) => `<div class="anda ${cls}" style="animation-delay:${atraso}s"><video src="img/anim/${v}.webm?v=1794857310" poster="img/anim/${v}.png?v=1794857310" autoplay muted loop playsinline></video></div>`).join('')}</div>`);
   const pinta = () => {
     COLUNAS.forEach(([k]) => {
       let l = dados().cards.filter((c) => c.coluna === k); const col = $(`[data-col=${k}]`);
@@ -1087,7 +1101,7 @@ PAGINAS.card = () => {
     <div class="d1n">Abaixo, a versão atual do card, depois da conversa com o Rafael.</div></div>`;
   const desafioHtml = () => {
     const x = d.desafio || {};
-    if (!x.inicio) return `<div class="desafio com-bea" data-test="desafio"><video class="d-bea" src="img/anim/beatriz_fala.webm?v=1794845612" poster="img/anim/beatriz_fala.png?v=1794845612" autoplay muted loop playsinline aria-hidden="true"></video><div class="dk">DESAFIO 1 · EFETIVAÇÃO</div><h3>O FD-118 é todo seu</h3>
+    if (!x.inicio) return `<div class="desafio com-bea" data-test="desafio"><video class="d-bea" src="img/anim/beatriz_fala.webm?v=1794857310" poster="img/anim/beatriz_fala.png?v=1794857310" autoplay muted loop playsinline aria-hidden="true"></video><div class="dk">DESAFIO 1 · EFETIVAÇÃO</div><h3>O FD-118 é todo seu</h3>
       <p>Você tem <b>${D1_MIN} minutos</b>. Ninguém vai guiar: planeja os cenários na aba <b>Plano de testes</b>, executa com evidência na tela de <b>Chamados</b> e reporta cada bug ligado ao FD-118. Dá pra pausar.</p>
       <div class="dn"><span>Pra ser efetivado</span><b>70 pontos</b> e pelo menos <b>2 bugs</b> achados</div>
       <button class="btn" id="d1Go" data-test="comecar-desafio">Começar o desafio</button></div>`;
@@ -1180,7 +1194,7 @@ function montaGherkin(A, card, contagens) {
           <textarea id="gk" data-test="editor-gherkin" spellcheck="false" autocomplete="off" autocapitalize="off" aria-label="Arquivo ${arq}"></textarea></div></div></div>
       <p class="dica" style="margin-top:10px">Dica: <b>Tab</b> faz o recuo. O FlowDesk salva enquanto você escreve.</p>
     </div>
-    <aside><div class="rafa"><div class="rafa-b"><div class="bk">RAFAEL · PO</div><div class="bt">Escreve do jeito que eu leio: <b>Dado</b> o contexto, <b>Quando</b> a ação, <b>Então</b> o que eu vejo.</div></div><video src="img/anim/rafael_fala.webm?v=1794845612" poster="img/anim/rafael_fala.png?v=1794845612" autoplay muted loop playsinline aria-hidden="true"></video></div><div class="cov" id="gkRev" data-test="revisao-gherkin"></div></aside></div>`;
+    <aside><div class="rafa"><div class="rafa-b"><div class="bk">RAFAEL · PO</div><div class="bt">Escreve do jeito que eu leio: <b>Dado</b> o contexto, <b>Quando</b> a ação, <b>Então</b> o que eu vejo.</div></div><video src="img/anim/rafael_fala.webm?v=1794857310" poster="img/anim/rafael_fala.png?v=1794857310" autoplay muted loop playsinline aria-hidden="true"></video></div><div class="cov" id="gkRev" data-test="revisao-gherkin"></div></aside></div>`;
   const ta = $('#gk'), cor = $('#gkCor'), nums = $('#gkNums');
   ta.value = gherkinDe(dados(), card.id);
   const atualiza = () => {
@@ -1272,7 +1286,7 @@ function montaPlano(A, card) {
         <div class="fbtns"><button type="button" class="btn sec" id="cancela" hidden data-test="cancelar-edicao">Cancelar</button><button class="btn" data-test="salvar-cenario" id="salva">Adicionar cenário</button></div>
       </form></div>
       <aside><div class="cov" id="cov" data-test="cobertura"><div class="hd">Cobertura das regras<span class="cnt" id="cnt" data-test="cobertura-contagem">0/${RG.length}</span></div><div class="bar"><i id="bar"></i></div>
-        ${RG.map((r, i) => `<div class="rl" id="u${i}" data-test="regra"><b>✓</b>${r}<span class="q" id="q${i}" hidden></span></div>`).join('')}<div class="ex" id="ex" hidden></div><div class="gabi-b" id="gabiB" data-test="recado-gabriela"><b>GABRIELA · DEV</b><span id="gabiT"></span></div><div class="gabi" aria-hidden="true"><video src="img/anim/gabriela_quadro.webm?v=1794845612" poster="img/anim/gabriela_quadro.png?v=1794845612" autoplay muted loop playsinline></video></div></div></aside></div>`;
+        ${RG.map((r, i) => `<div class="rl" id="u${i}" data-test="regra"><b>✓</b>${r}<span class="q" id="q${i}" hidden></span></div>`).join('')}<div class="ex" id="ex" hidden></div><div class="gabi-b" id="gabiB" data-test="recado-gabriela"><b>GABRIELA · DEV</b><span id="gabiT"></span></div><div class="gabi" aria-hidden="true"><video src="img/anim/gabriela_quadro.webm?v=1794857310" poster="img/anim/gabriela_quadro.png?v=1794857310" autoplay muted loop playsinline></video></div></div></aside></div>`;
   let editando = null; const abertos = new Set();
   d.rodadas = d.rodadas || {};
   const rod = () => d.rodadas[id] || null;
@@ -1644,7 +1658,7 @@ PAGINAS.caca = () => {
   const meus = LS.get('fd:caca-envios', []);
   casca('caca', `<section class="caca-hero"><div class="ch-t"><div class="ch-k"><span id="tNum">TEMPORADA 1 DE 3</span><b class="${aberta ? 'ab' : ''}">${aberta ? 'ABERTA' : 'EM BREVE'}</b>${aberta ? '<i id="tFim">quando os 3 forem achados, a próxima temporada abre sozinha</i>' : ''}</div>
       <h1 data-test="titulo-pagina">3 bugs escondidos no FlowDesk.</h1><p>Quem achar e reportar primeiro ganha o <b>Vida de QA 2</b> de graça quando lançar. Preste atenção nas aulas.</p></div>
-      <video src="img/anim/vinicius_lupa_v2.webm?v=1794845612" poster="img/anim/vinicius_lupa_v2.png?v=1794845612" autoplay muted loop playsinline aria-label="Vinícius com uma lupa procurando bugs"></video></section>
+      <video src="img/anim/vinicius_lupa_v2.webm?v=1794857310" poster="img/anim/vinicius_lupa_v2.png?v=1794857310" autoplay muted loop playsinline aria-label="Vinícius com uma lupa procurando bugs"></video></section>
     <div class="caca-bugs" id="placar">${[1, 2, 3].map((n) => `<article class="cb"><div class="cb-h"><span>#${n}</span><b>LIVRE</b></div><div class="cb-v">Ninguém achou ainda.</div></article>`).join('')}</div>
     <div class="caca-grade"><section class="painel caca-form"><h2>Reportar um bug da caça</h2><p class="dica">A confirmação é automática. Vale o primeiro report confirmado de cada bug.</p>
       <form id="fc" novalidate>${aberta ? '' : '<div class="aviso-caca" data-test="caca-fechada">A primeira temporada ainda não abriu. Quando abrir, este formulário passa a funcionar e o aviso sai daqui.</div>'}
@@ -1726,9 +1740,65 @@ PAGINAS.caca = () => {
   };
 };
 
+// ---------- regressivo (módulo 4): prova das execuções do Cypress ----------
+// Lê o resumo do `npx cypress run` (a tabela do "Run Finished"). Aceita os símbolos do Windows antigo (√ ×) também.
+function lerRun(txt) {
+  const t = String(txt || ''), specs = [];
+  const re = /(✔|√|✓|✖|×|✗)\s+([\w\-./\\]+\.feature)\s+[\d:]+\s+(\d+)\s+(\d+|-)\s+(\d+|-)/g; let m;
+  while ((m = re.exec(t))) specs.push({ nome: m[2].replace(/\\/g, '/'), ok: /[✔√✓]/.test(m[1]), tests: +m[3], pass: m[4] === '-' ? 0 : +m[4], fail: m[5] === '-' ? 0 : +m[5] });
+  return { specs, tem: (n) => specs.filter((s) => s.nome.endsWith(n)) };
+}
+// o que cada prática pede. verde: tudo passando; bug: o spec certo vermelho, pelo motivo certo
+const M4 = {
+  ep22: { spec: 'criar-chamado.feature', cmd: 'npx cypress run', verde: (r) => r.tem('fumaca.feature').some((s) => s.ok) && r.tem('criar-chamado.feature').some((s) => s.ok && s.pass >= 2) },
+  ep23: { spec: 'clique-duplo.feature', cmd: 'npx cypress run --spec cypress/e2e/chamados/clique-duplo.feature', regr: 'duplicado',
+    verde: (r) => r.tem('clique-duplo.feature').some((s) => s.ok), bug: (r, t) => r.tem('clique-duplo.feature').some((s) => !s.ok) && /-\s*2\b[\s\S]{0,40}\+\s*1\b|length of 1 but got 2|Array\(2\)/.test(t) },
+  ep24: { spec: 'rascunho.feature', cmd: 'npx cypress run --spec cypress/e2e/conta/rascunho.feature', regr: 'rascunho',
+    verde: (r) => r.tem('rascunho.feature').some((s) => s.ok), bug: (r, t) => r.tem('rascunho.feature').some((s) => !s.ok) && /Panificadora Sol/i.test(t) },
+  ep25: { spec: 'tempo.feature', cmd: 'npx cypress run --spec cypress/e2e/chamados/tempo.feature', regr: 'periodo',
+    verde: (r) => r.tem('tempo.feature').some((s) => s.ok && s.pass >= 2), bug: (r) => r.tem('tempo.feature').some((s) => !s.ok && s.pass >= 1 && s.fail === 1) },
+  ep26: { spec: 'novo-chamado-telas.feature', cmd: 'npx cypress run --spec cypress/e2e/telas/novo-chamado-telas.feature', regr: 'layout',
+    verde: (r) => r.tem('novo-chamado-telas.feature').some((s) => s.ok && s.pass >= 3), bug: (r, t) => r.tem('novo-chamado-telas.feature').some((s) => !s.ok && s.pass === 2 && s.fail === 1) && /celular/i.test(t) },
+  ep27: { spec: 'busca.feature', cmd: 'npx cypress run --spec cypress/e2e/chamados/busca.feature --expose lento=1',
+    verde: (r) => r.tem('busca.feature').some((s) => s.ok), tres: (r) => r.tem('busca.feature').length >= 3 && r.tem('busca.feature').every((s) => s.ok) },
+  ep28: { spec: 'status.feature', cmd: 'npx cypress run --spec cypress/e2e/chamados/status.feature', verde: (r) => r.tem('status.feature').some((s) => s.ok && s.pass >= 2) },
+};
+const REVISAO = [['pos', 'Clica no botão pela posição na tela (.btn, segundo da lista)', 1], ['tres', 'Um passo que cria, abre e confere de uma vez', 1], ['wait', 'Espera fixa de 2 segundos', 1], ['dep', 'O segundo cenário depende do primeiro', 1],
+  ['pt', 'Escreveu o Gherkin em português', 0], ['shot', 'Não tira print em cada passo', 0], ['nome', 'O nome dos cenários é curto demais', 0]];
+PAGINAS.regressivo = () => {
+  const d = dados(); d.m4 = d.m4 || {};
+  const liberado = (d.conquistas || []).includes('ep20');
+  const caixa = (id, k, rot, dica) => { const ok = (d.m4[id] || {})[k] || (d.conquistas || []).includes(id); return `<div class="rg-cx ${ok ? 'ok' : ''}" data-cx="${id}:${k}"><div class="rg-r"><b>${ok ? '✓' : '•'}</b>${rot}</div>${ok ? '<div class="rg-ok">Conferido.</div>' : `<p class="dica">${dica}</p><textarea class="in mono" data-test="rg-${id}-${k}" placeholder="Cole aqui a saída do terminal. Pode ser inteira."></textarea><button class="btn peq" data-confere="${id}:${k}" data-test="rg-conferir-${id}-${k}">Conferir</button>`}</div>`; };
+  const blocos = MISSOES.filter((m) => M4[m.id]).map((m) => {
+    const c = M4[m.id], feita = (d.conquistas || []).includes(m.id), r = d.m4[m.id] || {};
+    let corpo = '';
+    if (m.id === 'ep28') corpo += (r.revisao || feita) ? '<div class="rg-cx ok"><div class="rg-r"><b>✓</b>Revisão do PR</div><div class="rg-ok">Os 4 problemas certos.</div></div>'
+      : `<div class="rg-cx" data-cx="ep28:revisao"><div class="rg-r"><b>•</b>Revisão do PR do Rafael</div><p class="dica">Leia <code>exercicios/ep28</code> e marque só o que vai quebrar daqui a um mês.</p><div class="rg-rev">${REVISAO.map(([k, t]) => `<label><input type="checkbox" value="${k}" data-test="rev-${k}">${t}</label>`).join('')}</div><button class="btn peq" id="rgRev" data-test="rg-revisar">Enviar revisão</button></div>`;
+    if (c.verde) corpo += caixa(m.id, 'verde', m.id === 'ep27' ? 'Busca corrigida, verde' : 'Sem o bug: tudo verde', `Rode <code>${esc(c.cmd)}</code>${m.id === 'ep22' ? ' (os dois specs)' : ''} e cole o resumo.`);
+    if (c.bug) corpo += caixa(m.id, 'bug', `Com o bug: <code>regressao=${c.regr}</code>`, `Rode <code>${esc(c.cmd)} --expose regressao=${c.regr}</code> e cole o resumo, com a mensagem de erro.`);
+    if (c.tres) corpo += caixa(m.id, 'tres', 'Três execuções seguidas', 'Rode o mesmo comando 3 vezes e cole as 3 saídas juntas, uma depois da outra.');
+    return `<section class="painel rg-bl ${feita ? 'feito' : ''}" id="${m.id}" data-test="rg-${m.id}"><div class="rg-h"><span>${m.aula}</span><h3>${m.titulo}</h3>${feita ? `<i>${ico('trofeu')} ${m.conquista}</i>` : ''}</div>${corpo}</section>`;
+  }).join('');
+  casca('regressivo', topo('Regressivo', 'O seu regressivo roda no Cypress, no seu computador. Aqui você cola o resultado e o FlowDesk confere se o teste pega o bug de verdade.')
+    + (liberado ? `<div class="rg-topo">${fala('lucas', 'LUCAS', 'Teste que só fica verde não prova nada. Quero ver ele vermelho com o bug e verde sem ele.')}<p class="dica">Projeto: <a href="https://github.com/tsvini/vida-de-qa-regressivo" target="_blank" rel="noopener">github.com/tsvini/vida-de-qa-regressivo</a></p></div>${blocos}`
+      : `<div class="aviso-caca" data-test="rg-fechado">Libera no módulo 4, depois da missão do EP20.</div>`));
+  $$('[data-confere]').forEach((b) => { b.onclick = () => {
+    const [id, k] = b.dataset.confere.split(':'), tx = $(`[data-test=rg-${id}-${k}]`).value, r = lerRun(tx);
+    if (!r.specs.length) return toast('Não achei o resumo do Cypress aí. Cole a tabela que aparece depois de (Run Finished).', true);
+    if (!M4[id][k](r, tx)) return toast(k === 'bug' ? 'Esse resultado não mostra o teste vermelho pelo bug certo. Rodou com o --expose?' : k === 'tres' ? 'Preciso de 3 execuções do spec, todas verdes.' : 'Ainda não está tudo verde nesse resultado.', true);
+    const dd = dados(); dd.m4 = dd.m4 || {}; dd.m4[id] = { ...(dd.m4[id] || {}), [k]: agora() }; salvar(); recado('Conferido.'); location.reload();
+  }; });
+  if ($('#rgRev')) $('#rgRev').onclick = () => {
+    const marc = $$('.rg-rev input:checked').map((x) => x.value), certos = REVISAO.filter((x) => x[2]).map((x) => x[0]);
+    if (marc.length === certos.length && certos.every((k) => marc.includes(k))) { const dd = dados(); dd.m4 = dd.m4 || {}; dd.m4.ep28 = { ...(dd.m4.ep28 || {}), revisao: agora() }; salvar(); recado('Revisão aprovada.'); return location.reload(); }
+    toast(marc.some((k) => !certos.includes(k)) ? 'Tem item aí que não vai quebrar nada. Revisão boa aponta o que importa.' : 'Ainda falta problema nessa revisão.', true);
+  };
+  if (location.hash) { const el = $(location.hash); if (el) setTimeout(() => el.scrollIntoView({ block: 'start' }), 50); }
+};
+
 // ---------- link da aula (aula.html?ep=16) ----------
 // Um link por aula prática: já leva pra tela certa. Se o aluno ainda não chegou nessa aula, oferece pular pra ela (com backup do progresso).
-const AULA_SAVE = { 0: 'inicio', 1: 'inicio', 2: 'inicio', 3: 'inicio', 4: 'inicio', 5: 'ep04', 6: 'ep06', 7: 'ep07', 8: 'ep08', 9: 'ep10', 10: 'ep10', 11: 'ep12', 12: 'ep12', 13: 'ep14', 14: 'ep14', 14.5: 'd1', 15: 'ep16', 16: 'ep16', 17: 'ep18', 18: 'ep18', 19: 'ep20', 20: 'ep20' };
+const AULA_SAVE = { 0: 'inicio', 1: 'inicio', 2: 'inicio', 3: 'inicio', 4: 'inicio', 5: 'ep04', 6: 'ep06', 7: 'ep07', 8: 'ep08', 9: 'ep10', 10: 'ep10', 11: 'ep12', 12: 'ep12', 13: 'ep14', 14: 'ep14', 14.5: 'd1', 15: 'ep16', 16: 'ep16', 17: 'ep18', 18: 'ep18', 19: 'ep20', 20: 'ep20', 21: 'm4', 22: 'm4', 23: 'm4ep23', 24: 'm4ep24', 25: 'm4ep25', 26: 'm4ep26', 27: 'm4ep27', 28: 'm4ep28', 29: 'm4ep29' };
 PAGINAS.aula = () => {
   const n = numAula(qs.get('ep') || ''); if (Number.isNaN(n)) return location.replace('dashboard.html');
   if (!sessao() || !contas()[sessao()]) return location.replace('index.html?volta=' + encodeURIComponent('aula.html?ep=' + qs.get('ep')));
@@ -1737,7 +1807,9 @@ PAGINAS.aula = () => {
   const onde = numAula(proximaAula(d)), feita = m && (d.conquistas || []).includes(m.id);
   const marca = () => { const dd = dados(); dd.ultimaAula = { n, quando: agora() }; salvar(); };
   if (!m) { marca(); return location.replace('dashboard.html'); }  // aula teórica: só registra onde o aluno está
-  if (n <= onde || feita) { marca(); return location.replace(destino); }  // aula atual ou que já passou: vai direto
+  // entre onde o aluno está e essa aula só tem teoria (ex.: EP21 → EP22)? então essa já é a aula dele
+  const cq = d.conquistas || [], faltaAntes = MISSOES.some((x) => { const k = numAula(x.aula); return k >= onde && k < n && !cq.includes(x.id); }) || (onde <= 14.5 && n > 14.5 && !cq.includes('d1'));
+  if (n <= onde || feita || !faltaAntes) { marca(); return location.replace(destino); }  // aula atual ou que já passou: vai direto
   const sv = SAVES.find((x) => x.id === (AULA_SAVE[n] || 'm4'));
   casca('aula', topo(`Prática do ${nomeAula(n)}`, m ? m.titulo : 'Aula do curso') + `<div class="aula-pula" data-test="aula-pular">
     <p>Pelo seu FlowDesk, você está no <b>${nomeAula(onde)}</b>. Essa prática é do <b>${nomeAula(n)}</b>, mais pra frente.</p>

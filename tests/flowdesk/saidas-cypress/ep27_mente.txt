@@ -1,0 +1,74 @@
+
+================================================================================
+
+  (Run Starting)
+
+  ┌────────────────────────────────────────────────────────────────────────────────────────────────┐
+  │ Cypress:        16.2.1                                                                         │
+  │ Browser:        Electron 146 (headless) (deprecated)                                           │
+  │ Node Version:   v22.23.4 (/opt/node22/bin/node)                                                │
+  │ Specs:          1 found (busca.feature)                                                        │
+  │ Searched:       cypress/e2e/chamados/busca.feature                                             │
+  └────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+Warning: The Electron browser is deprecated as a test browser and will be removed in a future version of Cypress.
+
+Switch to Chrome or another installed browser to avoid a breaking change when you upgrade.
+
+Read more about supported browsers: https://on.cypress.io/launching-browsers
+
+
+────────────────────────────────────────────────────────────────────────────────────────────────────
+                                                                                                    
+  Running:  busca.feature                                                                   (1 of 1)
+
+
+  Buscar chamado
+    1) Buscar com acento encontra o chamado (BUG-05)
+
+
+  0 passing (3s)
+  1 failing
+
+  1) Buscar chamado
+       Buscar com acento encontra o chamado (BUG-05):
+     AssertionError: expected 'Carregando…' to include 'Manutenção do forno da padaria'
+      at Context.eval (http://localhost:8765/__cypress/tests?p=cypress/e2e/chamados/busca.feature:13610:37)
+      at getRet (http://localhost:8765/__cypress/runner/cypress_runner.js:120892:20)
+      at tryCatcher (http://localhost:8765/__cypress/runner/cypress_runner.js:1780:23)
+      at Promise.attempt.Promise.try (http://localhost:8765/__cypress/runner/cypress_runner.js:4288:29)
+
+
+
+
+  (Results)
+
+  ┌────────────────────────────────────────────────────────────────────────────────────────────────┐
+  │ Tests:        1                                                                                │
+  │ Passing:      0                                                                                │
+  │ Failing:      1                                                                                │
+  │ Pending:      0                                                                                │
+  │ Skipped:      0                                                                                │
+  │ Screenshots:  0                                                                                │
+  │ Video:        true                                                                             │
+  │ Duration:     2 seconds                                                                        │
+  │ Spec Ran:     busca.feature                                                                    │
+  └────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+
+  (Video)
+
+  -  Video output: /home/claude/vida-de-qa-regressivo/cypress/videos/busca.feature.mp4
+
+
+================================================================================
+
+  (Run Finished)
+
+
+       Spec                                              Tests  Passing  Failing  Pending  Skipped  
+  ┌────────────────────────────────────────────────────────────────────────────────────────────────┐
+  │ ✖  busca.feature                            00:02        1        -        1        -        - │
+  └────────────────────────────────────────────────────────────────────────────────────────────────┘
+    ✖  1 of 1 failed (100%)                     00:02        1        -        1        -        -  
+

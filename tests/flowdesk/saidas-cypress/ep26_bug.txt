@@ -1,0 +1,83 @@
+
+================================================================================
+
+  (Run Starting)
+
+  ┌────────────────────────────────────────────────────────────────────────────────────────────────┐
+  │ Cypress:        16.2.1                                                                         │
+  │ Browser:        Electron 146 (headless) (deprecated)                                           │
+  │ Node Version:   v22.23.4 (/opt/node22/bin/node)                                                │
+  │ Specs:          1 found (novo-chamado-telas.feature)                                           │
+  │ Searched:       cypress/e2e/telas/novo-chamado-telas.feature                                   │
+  └────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+Warning: The Electron browser is deprecated as a test browser and will be removed in a future version of Cypress.
+
+Switch to Chrome or another installed browser to avoid a breaking change when you upgrade.
+
+Read more about supported browsers: https://on.cypress.io/launching-browsers
+
+
+────────────────────────────────────────────────────────────────────────────────────────────────────
+                                                                                                    
+  Running:  novo-chamado-telas.feature                                                      (1 of 1)
+
+
+  Abrir um novo chamado em qualquer tela
+    ✓ Abrir o formulário pela lista no desktop (example #1) (2872ms)
+    ✓ Abrir o formulário pela lista no tablet (example #2) (1757ms)
+    1) Abrir o formulário pela lista no celular (example #3)
+
+
+  2 passing (10s)
+  1 failing
+
+  1) Abrir um novo chamado em qualquer tela
+       Abrir o formulário pela lista no celular (example #3):
+     AssertionError: Timed out retrying after 4000ms: expected '<a.btn>' to be 'visible'
+
+This element `<a.btn>` is not visible per `Element.checkVisibility()`. Computed: `display: none`, `visibility: visible`, `opacity: 1`, `content-visibility: visible`.
+      at Context.eval (http://localhost:8765/__cypress/tests?p=cypress/e2e/telas/novo-chamado-telas.feature:13472:44)
+      at Registry.runStepDefinition (http://localhost:8765/__cypress/tests?p=cypress/e2e/telas/novo-chamado-telas.feature:9401:48)
+      at Object.fn (http://localhost:8765/__cypress/tests?p=cypress/e2e/telas/novo-chamado-telas.feature:12630:42)
+      at runStepWithLogGroup (http://localhost:8765/__cypress/tests?p=cypress/e2e/telas/novo-chamado-telas.feature:11360:29)
+      at Context.eval (http://localhost:8765/__cypress/tests?p=cypress/e2e/telas/novo-chamado-telas.feature:12623:60)
+      at getRet (http://localhost:8765/__cypress/runner/cypress_runner.js:120892:20)
+      at tryCatcher (http://localhost:8765/__cypress/runner/cypress_runner.js:1780:23)
+      at Promise.attempt.Promise.try (http://localhost:8765/__cypress/runner/cypress_runner.js:4288:29)
+      at Context.thenFn (http://localhost:8765/__cypress/runner/cypress_runner.js:120904:66)
+
+
+
+
+  (Results)
+
+  ┌────────────────────────────────────────────────────────────────────────────────────────────────┐
+  │ Tests:        3                                                                                │
+  │ Passing:      2                                                                                │
+  │ Failing:      1                                                                                │
+  │ Pending:      0                                                                                │
+  │ Skipped:      0                                                                                │
+  │ Screenshots:  0                                                                                │
+  │ Video:        true                                                                             │
+  │ Duration:     10 seconds                                                                       │
+  │ Spec Ran:     novo-chamado-telas.feature                                                       │
+  └────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+
+  (Video)
+
+  -  Video output: /home/claude/vida-de-qa-regressivo/cypress/videos/novo-chamado-telas.feature.mp4
+
+
+================================================================================
+
+  (Run Finished)
+
+
+       Spec                                              Tests  Passing  Failing  Pending  Skipped  
+  ┌────────────────────────────────────────────────────────────────────────────────────────────────┐
+  │ ✖  novo-chamado-telas.feature               00:10        3        2        1        -        - │
+  └────────────────────────────────────────────────────────────────────────────────────────────────┘
+    ✖  1 of 1 failed (100%)                     00:10        3        2        1        -        -  
+

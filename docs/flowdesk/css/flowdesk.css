@@ -1077,3 +1077,24 @@ tr.fora-rod{opacity:.55}
 .aula-pula p{line-height:1.55;margin:0 0 10px}.aula-b{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
 .aula-volta{margin-top:14px;padding:12px 14px;border:1px solid #3b2f63;border-radius:12px;background:rgba(124,58,237,.08);font-size:14px;line-height:1.5}.aula-volta .btn{margin-left:6px}
 .hero-atras{display:inline-block;margin:6px 0 2px;font-size:13px;font-weight:700;color:#fde68a;background:rgba(245,197,66,.1);border:1px solid rgba(245,197,66,.35);border-radius:999px;padding:4px 12px}
+/* regressivo (módulo 4) */
+.rg-topo{max-width:900px;margin-bottom:16px}
+.rg-bl{max-width:900px;margin-bottom:16px;padding:22px 24px}
+.rg-bl.feito{border-color:#2f6b45}
+.rg-h{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:12px}
+.rg-h span{font-size:12px;font-weight:800;letter-spacing:2px;color:var(--acc2,#a78bfa);background:rgba(124,58,237,.16);border-radius:8px;padding:4px 10px}
+.rg-h h3{margin:0;font-size:20px}
+.rg-h i{margin-left:auto;font-style:normal;font-size:13px;font-weight:700;color:#86efac;display:flex;align-items:center;gap:6px}
+.rg-h i svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2}
+.rg-cx{border:1px solid #23253a;border-radius:12px;padding:14px 16px;margin-top:10px;background:rgba(10,10,18,.5)}
+.rg-cx.ok{border-color:#2f6b45;background:rgba(20,60,35,.25)}
+.rg-r{display:flex;align-items:center;gap:10px;font-weight:700}
+.rg-r b{width:24px;height:24px;border-radius:7px;background:#2a2c40;display:inline-flex;align-items:center;justify-content:center;font-size:13px}
+.rg-cx.ok .rg-r b{background:#16a34a;color:#fff}
+.rg-ok{font-size:13px;color:#86efac;margin-top:6px}
+.rg-cx textarea.mono{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13px;min-height:110px;margin:8px 0}
+.rg-cx code,.rg-bl code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13px;background:#1b1d2b;border-radius:6px;padding:1px 6px;word-break:break-word}
+.rg-rev{display:grid;gap:8px;margin:10px 0 12px}
+.rg-rev label{display:flex;gap:10px;align-items:flex-start;font-size:15px;cursor:pointer}
+.rg-rev input{margin-top:3px;accent-color:#7c3aed}
+@media (max-width:700px){.rg-bl{padding:16px}.rg-h i{margin-left:0}}

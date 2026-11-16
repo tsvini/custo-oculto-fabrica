@@ -1,0 +1,82 @@
+
+================================================================================
+
+  (Run Starting)
+
+  ┌────────────────────────────────────────────────────────────────────────────────────────────────┐
+  │ Cypress:        16.2.1                                                                         │
+  │ Browser:        Electron 146 (headless) (deprecated)                                           │
+  │ Node Version:   v22.23.4 (/opt/node22/bin/node)                                                │
+  │ Specs:          1 found (tempo.feature)                                                        │
+  │ Searched:       cypress/e2e/chamados/tempo.feature                                             │
+  └────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+Warning: The Electron browser is deprecated as a test browser and will be removed in a future version of Cypress.
+
+Switch to Chrome or another installed browser to avoid a breaking change when you upgrade.
+
+Read more about supported browsers: https://on.cypress.io/launching-browsers
+
+
+────────────────────────────────────────────────────────────────────────────────────────────────────
+                                                                                                    
+  Running:  tempo.feature                                                                   (1 of 1)
+
+
+  Datas da lista de chamados
+    1) "Últimos 7 dias" inclui os chamados de hoje (borda do Desafio 1)
+    ✓ Chamado criado às 23h59 continua na lista depois da meia-noite (2795ms)
+
+
+  1 passing (9s)
+  1 failing
+
+  1) Datas da lista de chamados
+       "Últimos 7 dias" inclui os chamados de hoje (borda do Desafio 1):
+     AssertionError: Timed out retrying after 4000ms: Expected to find element: `filter`, but never found it. Queried from:
+
+              > cy.get([data-test=linha-chamado] .quando)
+      at Context.eval (http://localhost:8765/__cypress/tests?p=cypress/e2e/chamados/tempo.feature:13450:115)
+      at Registry.runStepDefinition (http://localhost:8765/__cypress/tests?p=cypress/e2e/chamados/tempo.feature:9401:48)
+      at Object.fn (http://localhost:8765/__cypress/tests?p=cypress/e2e/chamados/tempo.feature:12630:42)
+      at runStepWithLogGroup (http://localhost:8765/__cypress/tests?p=cypress/e2e/chamados/tempo.feature:11360:29)
+      at Context.eval (http://localhost:8765/__cypress/tests?p=cypress/e2e/chamados/tempo.feature:12623:60)
+      at getRet (http://localhost:8765/__cypress/runner/cypress_runner.js:120892:20)
+      at tryCatcher (http://localhost:8765/__cypress/runner/cypress_runner.js:1780:23)
+      at Promise.attempt.Promise.try (http://localhost:8765/__cypress/runner/cypress_runner.js:4288:29)
+      at Context.thenFn (http://localhost:8765/__cypress/runner/cypress_runner.js:120904:66)
+
+
+
+
+  (Results)
+
+  ┌────────────────────────────────────────────────────────────────────────────────────────────────┐
+  │ Tests:        2                                                                                │
+  │ Passing:      1                                                                                │
+  │ Failing:      1                                                                                │
+  │ Pending:      0                                                                                │
+  │ Skipped:      0                                                                                │
+  │ Screenshots:  0                                                                                │
+  │ Video:        true                                                                             │
+  │ Duration:     8 seconds                                                                        │
+  │ Spec Ran:     tempo.feature                                                                    │
+  └────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+
+  (Video)
+
+  -  Video output: /home/claude/vida-de-qa-regressivo/cypress/videos/tempo.feature.mp4
+
+
+================================================================================
+
+  (Run Finished)
+
+
+       Spec                                              Tests  Passing  Failing  Pending  Skipped  
+  ┌────────────────────────────────────────────────────────────────────────────────────────────────┐
+  │ ✖  tempo.feature                            00:08        2        1        1        -        - │
+  └────────────────────────────────────────────────────────────────────────────────────────────────┘
+    ✖  1 of 1 failed (100%)                     00:08        2        1        1        -        -  
+

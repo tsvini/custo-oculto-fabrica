@@ -17,7 +17,8 @@ let f = 0; const ok = (c, m) => { console.log((c ? 'OK   ' : 'FALHA ') + m); if 
   ok(/Você já está no EP09/.test(await p.textContent('[data-test=missao-hero]')), 'início avisa que a missão do EP08 ficou pra trás');
   ok(/Você está no EP09/.test(await p.textContent('[data-test=missao-atual]')) || /EP08/.test(await p.textContent('[data-test=missao-atual]')), 'menu mostra a posição');
   await p.goto(U + 'index.html?save=m4'); await p.waitForURL(/dashboard/);
-  await p.goto(U + 'aula.html?ep=22'); await p.waitForURL(/dashboard/);
-  ok(/Você está no EP22/.test(await p.textContent('[data-test=missao-hero]')), 'módulo 4: início mostra "Você está no EP22"');
+  await p.goto(U + 'aula.html?ep=21'); await p.waitForURL(/dashboard/);
+  ok(/EP22/.test(await p.textContent('[data-test=missao-hero]')), 'módulo 4: EP21 é teoria, o início já mostra a missão do EP22');
+  await p.goto(U + 'aula.html?ep=22'); await p.waitForURL(/regressivo\.html#ep22/); ok(true, 'módulo 4: link do EP22 abre o regressivo');
   await p.goto(U + 'aula.html?ep=d1'); await p.waitForURL(/FD-118/); ok(true, 'link do Desafio 1 leva pro card FD-118');
   ok(err.length === 0, 'sem erro de JS ' + err.join('|')); await b.close(); console.log(f ? f + ' falha(s)' : 'tudo certo'); })();
