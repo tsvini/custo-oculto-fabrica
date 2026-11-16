@@ -11,5 +11,13 @@ let f = 0; const ok = (c, m) => { console.log((c ? 'OK   ' : 'FALHA ') + m); if 
   await p.goto(U + 'aula.html?ep=4'); await p.waitForURL(/card\.html/); ok(true, 'aula que já passou: vai direto, sem perguntar');
   await p.goto(U + 'configuracoes.html'); ok(await p.isVisible('[data-test=desfazer-pulo]'), 'Configurações oferece voltar pro progresso');
   await p.click('[data-test=desfazer-pulo]'); await p.waitForURL(/dashboard/); const cq2 = await p.evaluate(() => dados().conquistas || []); ok(!cq2.includes('ep06'), 'voltou pro progresso de antes: ' + cq2.join(','));
-  await p.goto(U + 'aula.html?ep=d1'); ok(await p.isVisible('[data-test=aula-pular]'), 'link do Desafio 1 funciona');
+  // aula teórica: só registra onde o aluno está e vai pro início
+  await p.goto(U + 'aula.html?ep=8'); await p.click('[data-test=aula-confirmar]'); await p.waitForURL(/aba=plano/);
+  await p.goto(U + 'aula.html?ep=09'); await p.waitForURL(/dashboard/); ok(true, 'aula teórica vai direto pro início');
+  ok(/Você já está no EP09/.test(await p.textContent('[data-test=missao-hero]')), 'início avisa que a missão do EP08 ficou pra trás');
+  ok(/Você está no EP09/.test(await p.textContent('[data-test=missao-atual]')) || /EP08/.test(await p.textContent('[data-test=missao-atual]')), 'menu mostra a posição');
+  await p.goto(U + 'index.html?save=m4'); await p.waitForURL(/dashboard/);
+  await p.goto(U + 'aula.html?ep=22'); await p.waitForURL(/dashboard/);
+  ok(/Você está no EP22/.test(await p.textContent('[data-test=missao-hero]')), 'módulo 4: início mostra "Você está no EP22"');
+  await p.goto(U + 'aula.html?ep=d1'); await p.waitForURL(/FD-118/); ok(true, 'link do Desafio 1 leva pro card FD-118');
   ok(err.length === 0, 'sem erro de JS ' + err.join('|')); await b.close(); console.log(f ? f + ' falha(s)' : 'tudo certo'); })();

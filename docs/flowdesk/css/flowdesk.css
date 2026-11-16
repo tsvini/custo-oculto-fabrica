@@ -1076,3 +1076,4 @@ tr.fora-rod{opacity:.55}
 .aula-pula{max-width:720px;background:linear-gradient(180deg,rgba(28,20,52,.96),rgba(18,14,34,.96));border:2px solid var(--acc);border-radius:16px;padding:24px 28px}
 .aula-pula p{line-height:1.55;margin:0 0 10px}.aula-b{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
 .aula-volta{margin-top:14px;padding:12px 14px;border:1px solid #3b2f63;border-radius:12px;background:rgba(124,58,237,.08);font-size:14px;line-height:1.5}.aula-volta .btn{margin-left:6px}
+.hero-atras{display:inline-block;margin:6px 0 2px;font-size:13px;font-weight:700;color:#fde68a;background:rgba(245,197,66,.1);border:1px solid rgba(245,197,66,.35);border-radius:999px;padding:4px 12px}
