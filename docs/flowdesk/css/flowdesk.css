@@ -1052,3 +1052,24 @@ tr.fora-rod{opacity:.55}
 /* modo regressão (módulo 4): selo discreto e o bug de layout no celular */
 .regr-selo{position:fixed;left:12px;bottom:12px;z-index:9000;background:#2a1215;color:#fecaca;border:1px solid #f87171;border-radius:999px;padding:6px 12px;font-size:12px;font-weight:700;pointer-events:none}
 @media (max-width:600px){.regr-layout [data-test=novo-chamado]{display:none}}
+
+/* navegação: onde estou e o que faço agora */
+.side .tranca{align-items:center;gap:4px;font-size:10px;font-weight:800;letter-spacing:.5px}
+.side .menu-tag{margin-left:auto;font-size:10px;font-weight:800;color:#c4b5fd;background:rgba(124,58,237,.18);border:1px solid rgba(124,58,237,.45);border-radius:999px;padding:2px 8px}
+.side nav a.on .menu-tag{color:#fff;border-color:rgba(255,255,255,.5);background:rgba(255,255,255,.12)}
+.missao.atual{border-color:#a78bfa;box-shadow:0 0 0 4px rgba(124,58,237,.18),0 0 50px rgba(124,58,237,.35)}
+.missao.atual .k{color:#c4b5fd}
+.missao.fechada{border:1.5px dashed #2c2c3e;background:rgba(18,16,30,.6);box-shadow:none;padding:16px 22px;opacity:.75}
+.missao.fechada .k{display:flex;align-items:center;gap:6px;color:#6b6e86}.missao.fechada .k svg{width:13px;height:13px}
+.missao.fechada .v{font-size:19px;margin:4px 0 4px;color:#a9abc2}.missao.fechada .s{font-size:13px;color:#6b6e86}
+.hero-novo{margin:16px 0 4px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:12px 16px;max-width:560px}
+.hero-novo b{display:block;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#86efac;margin-bottom:4px}.hero-novo span{font-size:14px;color:#d9dbe8;line-height:1.45}
+.hero.feita .hb{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap}
+.efc-bloq{display:flex;gap:40px;align-items:center;flex-wrap:wrap;max-width:980px;margin-top:10px}
+.efc-bloq-img{position:relative;width:300px;flex:none}.efc-bloq-img img{width:100%;border-radius:18px;filter:grayscale(.55) blur(1.5px) brightness(.7);display:block;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.efc-bloq-img span{position:absolute;top:12px;left:12px;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;background:rgba(10,9,18,.85);color:#c4b5fd;border:1px solid #3b2f63;border-radius:999px;padding:4px 10px}
+.efc-bloq-tx{flex:1;min-width:260px}.efc-bloq-tx .k{display:flex;align-items:center;gap:6px;font-size:12px;font-weight:800;letter-spacing:3px;color:#8E92A4}.efc-bloq-tx .k svg{width:14px;height:14px}
+.efc-bloq-tx h2{font-size:28px;margin:8px 0 10px}.efc-bloq-tx p{color:#cfd2e0;line-height:1.5;margin:0 0 10px}.efc-bloq-tx .btn{margin-top:8px}
+.d1-esconde{position:relative}
+.d1-esconde:not(.aberto)>*:not(.d1-aviso){filter:blur(6px);opacity:.35;pointer-events:none;user-select:none}
+.d1-esconde .d1-aviso{display:none}.d1-esconde:not(.aberto) .d1-aviso{display:block;position:absolute;left:50%;top:40px;transform:translateX(-50%);z-index:2;background:#1a1430;border:1px solid #3b2f63;border-radius:999px;padding:8px 16px;font-size:13px;font-weight:700;color:#c4b5fd;white-space:nowrap}
