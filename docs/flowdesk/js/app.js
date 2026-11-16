@@ -186,7 +186,7 @@ const usaApi = () => VERSAO >= 17 && 'serviceWorker' in navigator && /^https?:/.
 let _swPronto = null;
 function swPronto() {
   if (!_swPronto) _swPronto = (async () => {
-    await navigator.serviceWorker.register('sw.js?v=1794845273');
+    await navigator.serviceWorker.register('sw.js?v=1794845612');
     if (navigator.serviceWorker.controller) return true;
     await new Promise((r) => { navigator.serviceWorker.addEventListener('controllerchange', r, { once: true }); setTimeout(r, 4000); });
     return !!navigator.serviceWorker.controller;
@@ -506,6 +506,12 @@ function proximaAula(d) {
 // onde o aluno está no curso: a última aula que ele abriu pelo link (aula.html) ou, sem isso, a próxima depois das missões feitas
 const ondeEsta = (d) => { const u = d.ultimaAula && d.ultimaAula.n, p = numAula(proximaAula(d)); return u != null && u >= p ? { n: u, aberta: true } : { n: p, aberta: false }; };
 const textoOnde = (d) => { const o = ondeEsta(d); return o.aberta ? `Você está no ${nomeAula(o.n)}` : `Assista o ${nomeAula(o.n)}`; };
+// Diplomas (cartões de efetivação/promoção): guardados por conta, fora dos dados do curso.
+// Save e link de aula trocam os dados, mas nunca escrevem aqui: pular aula não dá cartão.
+const DIPLOMAS = () => LS.get('fd:diplomas:' + sessao(), {});
+const daDiploma = (k, info) => { const x = DIPLOMAS(); if (!x[k]) { x[k] = { quando: agora(), ...info }; LS.set('fd:diplomas:' + sessao(), x); } };
+// quem passou no desafio antes dessa mudança: efetivadoEm só é gravado quando o aluno passa de verdade
+(() => { try { const d = sessao() && LS.get(chaveDados(), null); if (d && d.efetivadoEm && !DIPLOMAS().junior) daDiploma('junior', { quando: d.efetivadoEm, nota: ((d.desafio || {}).resultado || {}).total, bugs: (d.desafio || {}).bugsAchados }); } catch (e) { /* sem armazenamento */ } })();
 const missaoAtual = () => { const d = dados(); if ((d.conquistas || []).includes('ep14') && !(d.conquistas || []).includes('d1')) return D1_MISSAO; return MISSOES.find((m) => !(d.conquistas || []).includes(m.id) && !(m.id === 'ep00' && pulaEp00(d))) || null; };
 function nivelAtual() { const d = dados() || {}; if ((d.conquistas || []).includes('d1')) return 'QA júnior'; const fe = MISSOES.filter((m) => (d.conquistas || []).includes(m.id)); return fe.length ? fe[fe.length - 1].nivel : 'QA estagiário'; }
 function confereMissoes() {
@@ -575,7 +581,7 @@ const chatLiberado = (d = dados()) => (d.conquistas || []).includes('ep03');
 
 // ---------- layout ----------
 const avatar = (p) => p === 'voce' ? '<span class="vc">VC</span>' : `<img class="av" src="img/av_${p}.png" alt="">`;
-const LOGO = '<span class="logo-anim" aria-hidden="true"><img src="img/anim/logo_part1.png?v=1794845273" alt=""><img class="sobe" src="img/anim/logo_part0.png?v=1794845273" alt=""></span>';
+const LOGO = '<span class="logo-anim" aria-hidden="true"><img src="img/anim/logo_part1.png?v=1794845612" alt=""><img class="sobe" src="img/anim/logo_part0.png?v=1794845612" alt=""></span>';
 const MARCA = `<span class="marca">${LOGO}FlowDesk</span>`;
 const pillVersao = () => `<span class="versao" data-test="versao-sistema"><b>Sprint ${VERSAO}</b> · homologação</span>`;
 const SVG = (p, c = '') => `<svg class="${c}" viewBox="0 0 24 24" aria-hidden="true">${p}</svg>`;
@@ -606,7 +612,7 @@ function casca(pagina, conteudo) {
   const sub = (h, n, k) => `<a href="${h}" class="${pg === 'card' && (aba || 'detalhes') === k ? 'on' : ''}" data-sub="${k}" data-test="sub-${k}">${n}</a>`;
   const pc = placarCache(), achados = pc ? pc.bugs.filter((b) => b.ganhador).length : 0;
   const naoLidas = chatLiberado(d) ? '' : `<span class="tranca" title="Libera depois da missão do EP04">${ico('cadeado')}EP04</span>`;
-  const mAt = missaoAtual(), cv = cardDaVez(d), efet = (d.conquistas || []).includes('d1');
+  const mAt = missaoAtual(), cv = cardDaVez(d), efet = !!DIPLOMAS().junior;
   const subCard = cv ? `<div class="sub-nav"><div class="sub-k">Seu card · ${cv}</div>${sub('card.html?id=' + cv, cv === 'FD-118' ? 'Desafio' : 'Visão geral', 'detalhes')}${sub(`card.html?id=${cv}&aba=plano`, 'Plano de testes', 'plano')}${cv === 'FD-101' ? sub('card.html?id=FD-101&aba=gherkin', 'Gherkin', 'gherkin') : ''}</div>` : '';
   document.body.innerHTML = `<div class="app"><aside class="side">${MARCA}<nav aria-label="Menu">
     ${it('dashboard.html', 'Início', 'dashboard')}${it('missoes.html', 'Missões', 'missoes', mAt ? `<span class="menu-tag">${mAt.id === 'd1' ? 'D1' : mAt.aula}</span>` : '')}${it('quadro.html', 'Quadro', 'quadro')}
@@ -666,7 +672,7 @@ PAGINAS.login = () => {
   document.body.innerHTML = `<div class="tela-login">
     <section class="lg-time"><div class="lg-marca">${LOGO}<span>FlowDesk</span></div>
       <div class="lg-tit"><h1>Seu primeiro dia como QA começa aqui.</h1><div class="lg-trilha"><span class="on">Estagiário</span>${seta}<span>Júnior</span>${seta}<span class="fut">Pleno</span></div></div>
-      <div class="lg-palco"><div class="lg-luz" aria-hidden="true"></div><video src="img/anim/time_acena.webm?v=1794845273" poster="img/anim/time_acena.png?v=1794845273" autoplay muted loop playsinline aria-label="O time do FlowDesk acenando: Rafael, Gabriela, Vinícius, Lucas e Beatriz"></video></div></section>
+      <div class="lg-palco"><div class="lg-luz" aria-hidden="true"></div><video src="img/anim/time_acena.webm?v=1794845612" poster="img/anim/time_acena.png?v=1794845612" autoplay muted loop playsinline aria-label="O time do FlowDesk acenando: Rafael, Gabriela, Vinícius, Lucas e Beatriz"></video></div></section>
     <section class="lg-form"><div class="login">
     <form id="fEntrar" novalidate><span class="lg-chip">SPRINT ${VERSAO} · HOMOLOGAÇÃO</span><h1>Bem-vindo de volta</h1><p class="sub">O time já está te esperando. Use dados de mentira: fica tudo salvo só neste navegador.</p>
       <div class="campo"><label for="email">E-mail</label><input class="in" id="email" type="email" data-test="login-email" autocomplete="username" placeholder="voce@empresa.com"></div>
@@ -942,7 +948,7 @@ PAGINAS.quadro = () => {
       <div class="h"><h3>${n}</h3><span class="cnt" data-test="contagem-${k}"></span>${k === 'afazer' ? '<button class="mais" data-test="nova-tarefa" title="Nova tarefa" aria-label="Nova tarefa">+</button>' : ''}</div>
       <div class="cards"></div>${k === 'afazer' ? '<button class="add-tarefa" data-test="adicionar-tarefa">+ Adicionar tarefa</button>' : ''}</section>`).join('')}</div>
     <p class="dica" style="margin-top:12px">Você move os seus cards arrastando, ou pelo próprio card. Os cards dos outros ficam com eles.</p>
-    <div class="desfile" aria-hidden="true"><div class="chao"></div>${anda.map(([v, atraso, cls]) => `<div class="anda ${cls}" style="animation-delay:${atraso}s"><video src="img/anim/${v}.webm?v=1794845273" poster="img/anim/${v}.png?v=1794845273" autoplay muted loop playsinline></video></div>`).join('')}</div>`);
+    <div class="desfile" aria-hidden="true"><div class="chao"></div>${anda.map(([v, atraso, cls]) => `<div class="anda ${cls}" style="animation-delay:${atraso}s"><video src="img/anim/${v}.webm?v=1794845612" poster="img/anim/${v}.png?v=1794845612" autoplay muted loop playsinline></video></div>`).join('')}</div>`);
   const pinta = () => {
     COLUNAS.forEach(([k]) => {
       let l = dados().cards.filter((c) => c.coluna === k); const col = $(`[data-col=${k}]`);
@@ -1081,7 +1087,7 @@ PAGINAS.card = () => {
     <div class="d1n">Abaixo, a versão atual do card, depois da conversa com o Rafael.</div></div>`;
   const desafioHtml = () => {
     const x = d.desafio || {};
-    if (!x.inicio) return `<div class="desafio com-bea" data-test="desafio"><video class="d-bea" src="img/anim/beatriz_fala.webm?v=1794845273" poster="img/anim/beatriz_fala.png?v=1794845273" autoplay muted loop playsinline aria-hidden="true"></video><div class="dk">DESAFIO 1 · EFETIVAÇÃO</div><h3>O FD-118 é todo seu</h3>
+    if (!x.inicio) return `<div class="desafio com-bea" data-test="desafio"><video class="d-bea" src="img/anim/beatriz_fala.webm?v=1794845612" poster="img/anim/beatriz_fala.png?v=1794845612" autoplay muted loop playsinline aria-hidden="true"></video><div class="dk">DESAFIO 1 · EFETIVAÇÃO</div><h3>O FD-118 é todo seu</h3>
       <p>Você tem <b>${D1_MIN} minutos</b>. Ninguém vai guiar: planeja os cenários na aba <b>Plano de testes</b>, executa com evidência na tela de <b>Chamados</b> e reporta cada bug ligado ao FD-118. Dá pra pausar.</p>
       <div class="dn"><span>Pra ser efetivado</span><b>70 pontos</b> e pelo menos <b>2 bugs</b> achados</div>
       <button class="btn" id="d1Go" data-test="comecar-desafio">Começar o desafio</button></div>`;
@@ -1131,7 +1137,7 @@ PAGINAS.card = () => {
         const x = d.desafio; if (x.pausadoDesde) { x.pausas += Date.now() - new Date(x.pausadoDesde); x.pausadoDesde = null; }
         x.entregue = agora(); const r = d1Nota(d); x.resultado = r; x.bugsAchados = r.achados.length;
         const ch = (d.chat['time-produto'] = d.chat['time-produto'] || []);
-        if (r.passou) { d.conquistas.push('d1'); d.efetivadoEm = agora(); ch.push({ de: 'beatriz', tx: `Desafio entregue: ${r.total} pontos e ${r.achados.length} de 3 bugs. Pode atualizar o crachá: você é QA júnior! 🎉`, quando: agora() }); }
+        if (r.passou) { d.conquistas.push('d1'); d.efetivadoEm = agora(); daDiploma('junior', { nota: r.total, bugs: r.achados.length }); ch.push({ de: 'beatriz', tx: `Desafio entregue: ${r.total} pontos e ${r.achados.length} de 3 bugs. Pode atualizar o crachá: você é QA júnior! 🎉`, quando: agora() }); }
         else ch.push({ de: 'beatriz', tx: `Recebi o desafio: ${r.total} pontos e ${r.achados.length} de 3 bugs. Ainda não deu, mas dá pra tentar de novo. Olha a cobertura do plano e testa os filtros combinados.`, quando: agora() });
         salvar(); mostra('detalhes'); $('.relogio-d1') && $('.relogio-d1').remove();
         if (r.passou) setTimeout(() => conquista(D1_MISSAO), 400);
@@ -1174,7 +1180,7 @@ function montaGherkin(A, card, contagens) {
           <textarea id="gk" data-test="editor-gherkin" spellcheck="false" autocomplete="off" autocapitalize="off" aria-label="Arquivo ${arq}"></textarea></div></div></div>
       <p class="dica" style="margin-top:10px">Dica: <b>Tab</b> faz o recuo. O FlowDesk salva enquanto você escreve.</p>
     </div>
-    <aside><div class="rafa"><div class="rafa-b"><div class="bk">RAFAEL · PO</div><div class="bt">Escreve do jeito que eu leio: <b>Dado</b> o contexto, <b>Quando</b> a ação, <b>Então</b> o que eu vejo.</div></div><video src="img/anim/rafael_fala.webm?v=1794845273" poster="img/anim/rafael_fala.png?v=1794845273" autoplay muted loop playsinline aria-hidden="true"></video></div><div class="cov" id="gkRev" data-test="revisao-gherkin"></div></aside></div>`;
+    <aside><div class="rafa"><div class="rafa-b"><div class="bk">RAFAEL · PO</div><div class="bt">Escreve do jeito que eu leio: <b>Dado</b> o contexto, <b>Quando</b> a ação, <b>Então</b> o que eu vejo.</div></div><video src="img/anim/rafael_fala.webm?v=1794845612" poster="img/anim/rafael_fala.png?v=1794845612" autoplay muted loop playsinline aria-hidden="true"></video></div><div class="cov" id="gkRev" data-test="revisao-gherkin"></div></aside></div>`;
   const ta = $('#gk'), cor = $('#gkCor'), nums = $('#gkNums');
   ta.value = gherkinDe(dados(), card.id);
   const atualiza = () => {
@@ -1266,7 +1272,7 @@ function montaPlano(A, card) {
         <div class="fbtns"><button type="button" class="btn sec" id="cancela" hidden data-test="cancelar-edicao">Cancelar</button><button class="btn" data-test="salvar-cenario" id="salva">Adicionar cenário</button></div>
       </form></div>
       <aside><div class="cov" id="cov" data-test="cobertura"><div class="hd">Cobertura das regras<span class="cnt" id="cnt" data-test="cobertura-contagem">0/${RG.length}</span></div><div class="bar"><i id="bar"></i></div>
-        ${RG.map((r, i) => `<div class="rl" id="u${i}" data-test="regra"><b>✓</b>${r}<span class="q" id="q${i}" hidden></span></div>`).join('')}<div class="ex" id="ex" hidden></div><div class="gabi-b" id="gabiB" data-test="recado-gabriela"><b>GABRIELA · DEV</b><span id="gabiT"></span></div><div class="gabi" aria-hidden="true"><video src="img/anim/gabriela_quadro.webm?v=1794845273" poster="img/anim/gabriela_quadro.png?v=1794845273" autoplay muted loop playsinline></video></div></div></aside></div>`;
+        ${RG.map((r, i) => `<div class="rl" id="u${i}" data-test="regra"><b>✓</b>${r}<span class="q" id="q${i}" hidden></span></div>`).join('')}<div class="ex" id="ex" hidden></div><div class="gabi-b" id="gabiB" data-test="recado-gabriela"><b>GABRIELA · DEV</b><span id="gabiT"></span></div><div class="gabi" aria-hidden="true"><video src="img/anim/gabriela_quadro.webm?v=1794845612" poster="img/anim/gabriela_quadro.png?v=1794845612" autoplay muted loop playsinline></video></div></div></aside></div>`;
   let editando = null; const abertos = new Set();
   d.rodadas = d.rodadas || {};
   const rod = () => d.rodadas[id] || null;
@@ -1465,22 +1471,24 @@ const CARTOES = {
 };
 PAGINAS.efetivacao = () => {
   const d = dados(), c = contas()[sessao()] || { nome: '' }, conq = d.conquistas || [];
-  const tem = Object.keys(CARTOES).filter((k) => conq.includes(CARTOES[k].conq));
+  const dip = DIPLOMAS(), tem = Object.keys(CARTOES).filter((k) => dip[k]);
   const pedido = qs.get('nivel');
   const nv = tem.includes(pedido) ? pedido : tem[tem.length - 1];
   if (!nv) {
-    const b = CARTOES.junior.bloq;
+    const pulou = conq.includes('d1');  // chegou depois do Desafio 1 por save ou link, sem ter feito
+    const b = pulou ? ['Falta fazer o Desafio 1', 'Você chegou até aqui pulando aulas. O cartão é só pra quem passa no desafio de efetivação.'] : CARTOES.junior.bloq;
     casca('efetivacao', topo('Cartão de efetivação', 'O crachá que você ganha quando for efetivado. Dá pra baixar e postar no LinkedIn.') + `<div class="efc-bloq" data-test="cartao-bloqueado"><div class="efc-bloq-img"><img src="img/exemplo-cartao.jpg" alt="Exemplo do cartão de efetivação"><span>exemplo</span></div>
-      <div class="efc-bloq-tx"><div class="k">${ico('cadeado')} BLOQUEADO</div><h2>${b[0]}</h2><p>${b[1]}</p><p class="dica">O seu sai com o seu nome, a sua foto e os números do seu desafio.</p><a class="btn" href="missoes.html">Ver minhas missões</a></div></div>`);
+      <div class="efc-bloq-tx"><div class="k">${ico('cadeado')} BLOQUEADO</div><h2>${b[0]}</h2><p>${b[1]}</p><p class="dica">O seu sai com o seu nome, a sua foto e os números do seu desafio.</p>${pulou ? '<button class="btn" id="fazD1" data-test="fazer-desafio">Fazer o Desafio 1 agora</button><p class="dica" style="margin-top:10px">O seu progresso de agora fica guardado e dá pra voltar nele em Configurações.</p>' : '<a class="btn" href="missoes.html">Ver minhas missões</a>'}</div></div>`);
+    if ($('#fazD1')) $('#fazD1').onclick = () => { LS.set('fd:backup:' + sessao(), { quando: agora(), aula: nomeAula(ondeEsta(d).n), dados: LS.get(chaveDados(), null) }); D = null; const nd = SAVES.find((x) => x.id === 'd1').monta(); nd.ultimaAula = { n: 14.5, quando: agora() }; LS.set(chaveDados(), nd); recado('Pronto: você está no começo do Desafio 1.'); location.href = 'card.html?id=FD-118'; };
     return;
   }
   const C = CARTOES[nv];
   const cfg = d.cartao || (d.cartao = { nome: c.nome || 'Você', gen: 'o', zoom: 1, x: 50, y: 50 });
   cfg.txt = cfg.txt || {}; cfg.txtEditado = cfg.txtEditado || {};
   if (typeof cfg.txt === 'string') cfg.txt = {};  // formato antigo
-  const db = (d[C.desafio] || {}).bugsAchados;
+  const db = dip[nv].bugs != null ? dip[nv].bugs : (d[C.desafio] || {}).bugsAchados;
   const st3 = db != null ? [`${db}/3`, 'bugs no desafio final'] : [conq.length, 'conquistas'];
-  const data = (d[C.quando] ? new Date(d[C.quando]) : new Date()).toLocaleDateString('pt-BR');
+  const data = new Date(dip[nv].quando || d[C.quando] || Date.now()).toLocaleDateString('pt-BR');
   // ID do crachá: sorteado uma vez por aluno e guardado (o mesmo nos dois cartões, como numa empresa de verdade).
   // 6 caracteres de um alfabeto sem letras confusas (sem 0/O, 1/I/L): ~887 milhões de combinações
   if (!cfg.id) { const AL = 'ABCDEFGHJKMNPQRSTUVWXYZ23456789', r = crypto.getRandomValues(new Uint32Array(6)); cfg.id = [...r].map((x) => AL[x % AL.length]).join(''); salvar(); }
@@ -1636,7 +1644,7 @@ PAGINAS.caca = () => {
   const meus = LS.get('fd:caca-envios', []);
   casca('caca', `<section class="caca-hero"><div class="ch-t"><div class="ch-k"><span id="tNum">TEMPORADA 1 DE 3</span><b class="${aberta ? 'ab' : ''}">${aberta ? 'ABERTA' : 'EM BREVE'}</b>${aberta ? '<i id="tFim">quando os 3 forem achados, a próxima temporada abre sozinha</i>' : ''}</div>
       <h1 data-test="titulo-pagina">3 bugs escondidos no FlowDesk.</h1><p>Quem achar e reportar primeiro ganha o <b>Vida de QA 2</b> de graça quando lançar. Preste atenção nas aulas.</p></div>
-      <video src="img/anim/vinicius_lupa_v2.webm?v=1794845273" poster="img/anim/vinicius_lupa_v2.png?v=1794845273" autoplay muted loop playsinline aria-label="Vinícius com uma lupa procurando bugs"></video></section>
+      <video src="img/anim/vinicius_lupa_v2.webm?v=1794845612" poster="img/anim/vinicius_lupa_v2.png?v=1794845612" autoplay muted loop playsinline aria-label="Vinícius com uma lupa procurando bugs"></video></section>
     <div class="caca-bugs" id="placar">${[1, 2, 3].map((n) => `<article class="cb"><div class="cb-h"><span>#${n}</span><b>LIVRE</b></div><div class="cb-v">Ninguém achou ainda.</div></article>`).join('')}</div>
     <div class="caca-grade"><section class="painel caca-form"><h2>Reportar um bug da caça</h2><p class="dica">A confirmação é automática. Vale o primeiro report confirmado de cada bug.</p>
       <form id="fc" novalidate>${aberta ? '' : '<div class="aviso-caca" data-test="caca-fechada">A primeira temporada ainda não abriu. Quando abrir, este formulário passa a funcionar e o aviso sai daqui.</div>'}
