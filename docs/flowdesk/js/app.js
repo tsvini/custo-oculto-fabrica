@@ -186,7 +186,7 @@ const usaApi = () => VERSAO >= 17 && 'serviceWorker' in navigator && /^https?:/.
 let _swPronto = null;
 function swPronto() {
   if (!_swPronto) _swPronto = (async () => {
-    await navigator.serviceWorker.register('sw.js?v=1794857310');
+    await navigator.serviceWorker.register('sw.js?v=1794859585');
     if (navigator.serviceWorker.controller) return true;
     await new Promise((r) => { navigator.serviceWorker.addEventListener('controllerchange', r, { once: true }); setTimeout(r, 4000); });
     return !!navigator.serviceWorker.controller;
@@ -309,6 +309,7 @@ const SAVES = [
   { id: 'm4', nome: 'Início do EP21', quando: 'Módulo 4 · o regressivo · Sprint 18', monta: depoisDoEp20 },
   { id: 'ep20', nome: 'Início do EP20', quando: 'O rascunho · com a conta de teste do Lucas', monta: () => { LS.del(RASCUNHO); return contaDoLucas(depoisDoEp18()); } },
   // módulo 4: começo de cada prática, com as missões de antes já feitas
+  ...[31, 32, 33, 34, 35, 36, 37].map((n) => ({ id: 'm5ep' + n, nome: `Início do EP${n}`, quando: 'Módulo 5 · o pipeline', monta: () => { const d = depoisDoEp20(); for (let k = 22; k <= 28; k++) d.conquistas.push('ep' + k); for (let k = 31; k < n; k++) d.conquistas.push('ep' + k); return d; } })),
   ...[23, 24, 25, 26, 27, 28, 29].map((n) => ({ id: 'm4ep' + n, nome: `Início do EP${n}`, quando: 'Módulo 4 · o regressivo', monta: () => { const d = depoisDoEp20(); for (let k = 22; k < n; k++) d.conquistas.push('ep' + k); d.conquistas = d.conquistas.filter((k) => k !== 'ep21'); return d; } })),
 ];
 
@@ -461,6 +462,16 @@ const MISSOES = [
     ['ep28', 'Revisar o PR do Rafael', 'Revisor de teste', [['Ache os 4 problemas do PR', 'revisao'], ['Os testes reescritos, verdes', 'verde']]],
   ].map(([id, titulo, conq, itens]) => ({ id, titulo, aula: 'EP' + id.slice(2), conquista: conq, nivel: 'QA júnior', link: 'regressivo.html#' + id,
     itens: itens.map(([t, k]) => [t, (d) => !!((d.m4 || {})[id] || {})[k]]) })),
+  // Módulo 5: o pipeline roda no GitHub do aluno. A prova vem da API pública do GitHub, consultando o fork dele (pipeline.html)
+  ...[
+    ['ep31', 'O primeiro pipeline', 'Pipeline no ar', [['Regressivo verde vindo de um pedido de revisão', 'prVerde']]],
+    ['ep32', 'Rápido no pedido, completo de noite', 'Cada teste na sua hora', [['Smoke verde num pedido de revisão', 'smoke'], ['Regressivo completo rodado pelo botão', 'completo']]],
+    ['ep33', 'Vermelho com prova', 'Vermelho que se explica', [['Uma execução vermelha com evidência anexada', 'evidencia']]],
+    ['ep34', 'Na minha máquina funciona', 'Fuso domado', [['O teste do painel no projeto', 'painel'], ['Fuso de Brasília no pipeline', 'fuso']]],
+    ['ep35', 'Vermelho bloqueia?', 'Regra do time', [['Branch principal protegida', 'protegida']]],
+    ['ep36', 'O vermelho tem dono', 'Vermelho com dono', [['Card aberto pelo pipeline com a etiqueta regressivo', 'card'], ['Falhou de novo: comentou no mesmo card', 'comentario']]],
+  ].map(([id, titulo, conq, itens]) => ({ id, titulo, aula: 'EP' + id.slice(2), conquista: conq, nivel: 'QA júnior', link: 'pipeline.html#' + id,
+    itens: itens.map(([t, k]) => [t, (d) => !!((((d.m5 || {}).ok) || {})[k])]) })),
 ];
 const bugsDe = (d) => d.cards.filter((c) => c.tipo === 'bug');
 const textoBug = (b) => [b.titulo, b.passos, b.esperado, b.obtido, b.cenario].join(' ');
@@ -561,13 +572,15 @@ function pedeAvaliacao(id) {
   document.body.appendChild(o); const fecha = () => o.remove();
   $('[data-test=fechar-avaliacao]', o).onclick = fecha; $('[data-test=avaliar-udemy]', o).addEventListener('click', () => setTimeout(fecha, 300));
 }
+const FILA_CONQ = [];
 function conquista(m) {
+  if ($('.conq-fundo')) { if (!FILA_CONQ.some((x) => x.id === m.id)) FILA_CONQ.push(m); return; }  // várias de uma vez: uma por vez
   const o = document.createElement('div'); o.className = 'conq-fundo'; o.setAttribute('data-test', 'conquista');
-  const extra = m.id === 'd1' ? '<div class="s2">Agora você é <b>QA júnior</b>. O seu crachá novo está pronto: <a href="efetivacao.html" data-test="ir-cartao">pegar meu cartão de efetivação</a>.</div>' : m.id === 'ep12' ? '<div class="s2">A Gabriela já está corrigindo. Quando você voltar pro FlowDesk, a <b>Sprint 16</b> estará no ar.</div>' : m.id === 'ep14' ? '<div class="s2">Fim do módulo 2. A Sprint 16 foi aprovada e sobe sexta.</div>' : m.id === 'ep20' ? '<div class="s2">Fim do módulo 3. Três bugs que a tela sozinha não mostrava, e você achou onde cada um mora.</div>' : m.id === 'ep28' ? '<div class="s2">Fim do módulo 4. Um regressivo pensado por risco, e cada teste provou que pega o bug: vermelho com ele, verde sem ele.</div>' : m.id === 'ep08' ? '<div class="s2">A Gabriela já está corrigindo. Quando você voltar pro FlowDesk, a <b>Sprint 15</b> estará no ar.</div>' : m.id === 'ep03' ? '<div class="s2">O <b>FlowChat</b> foi liberado: agora dá pra tirar dúvida com o time.</div>' : '';
+  const extra = m.id === 'd1' ? '<div class="s2">Agora você é <b>QA júnior</b>. O seu crachá novo está pronto: <a href="efetivacao.html" data-test="ir-cartao">pegar meu cartão de efetivação</a>.</div>' : m.id === 'ep12' ? '<div class="s2">A Gabriela já está corrigindo. Quando você voltar pro FlowDesk, a <b>Sprint 16</b> estará no ar.</div>' : m.id === 'ep14' ? '<div class="s2">Fim do módulo 2. A Sprint 16 foi aprovada e sobe sexta.</div>' : m.id === 'ep20' ? '<div class="s2">Fim do módulo 3. Três bugs que a tela sozinha não mostrava, e você achou onde cada um mora.</div>' : m.id === 'ep36' ? '<div class="s2">Fim do módulo 5. O regressivo roda sozinho, explica o próprio vermelho e todo vermelho tem dono.</div>' : m.id === 'ep28' ? '<div class="s2">Fim do módulo 4. Um regressivo pensado por risco, e cada teste provou que pega o bug: vermelho com ele, verde sem ele.</div>' : m.id === 'ep08' ? '<div class="s2">A Gabriela já está corrigindo. Quando você voltar pro FlowDesk, a <b>Sprint 15</b> estará no ar.</div>' : m.id === 'ep03' ? '<div class="s2">O <b>FlowChat</b> foi liberado: agora dá pra tirar dúvida com o time.</div>' : '';
   o.innerHTML = `<div class="conq"><div class="ci">${ico('trofeu')}</div><div class="k">CONQUISTA DESBLOQUEADA${m.semXp ? '' : ` · +${m.itens.length * XP_ITEM + XP_CONQ} XP`}</div><div class="v" data-test="conquista-nome">${m.conquista}</div><div class="s">Nível atual: <b>${m.nivel}</b></div>${extra}<button class="btn" data-test="fechar-conquista">Continuar</button></div>`;
   // fica pendente até o aluno fechar: se a página recarregar antes (reteste, troca de tela), o aviso volta
   const d = dados(); d.conqPendente = m.id; salvar();
-  document.body.appendChild(o); $('[data-test=fechar-conquista]', o).onclick = () => { o.remove(); delete dados().conqPendente; salvar(); setTimeout(refrescaCarreira, 250); setTimeout(() => pedeAvaliacao(m.id), 1600); };
+  document.body.appendChild(o); $('[data-test=fechar-conquista]', o).onclick = () => { o.remove(); delete dados().conqPendente; salvar(); const prox = FILA_CONQ.shift(); if (prox) return setTimeout(() => conquista(prox), 200); setTimeout(refrescaCarreira, 250); setTimeout(() => pedeAvaliacao(m.id), 1600); };
   const nv = $('[data-test=nivel]'); if (nv) nv.textContent = m.nivel;
 }
 function cardMissao() {
@@ -580,7 +593,7 @@ function cardMissao() {
 // ---------- carreira (XP vem das missões) ----------
 // júnior vem com a efetivação (Desafio 1, no fim do módulo 2): a conquista 'd1' leva o XP pra 3000; daí em diante conta o XP do módulo 3 em diante
 const XP_ITEM = 40, XP_CONQ = 60, XP_JUNIOR = 3000, XP_PLENO = 6000;
-const M_JUNIOR = ['ep16', 'ep18', 'ep20', 'ep22', 'ep23', 'ep24', 'ep25', 'ep26', 'ep27', 'ep28'];
+const M_JUNIOR = ['ep16', 'ep18', 'ep20', 'ep22', 'ep23', 'ep24', 'ep25', 'ep26', 'ep27', 'ep28', 'ep31', 'ep32', 'ep33', 'ep34', 'ep35', 'ep36'];
 const ehJunior = (d = dados()) => xpDe(d) >= XP_JUNIOR;
 const xpDe = (d = dados()) => { const f = d.conquistas || [], atual = MISSOES.find((m) => !f.includes(m.id)), efetivado = f.includes('d1');
   return (efetivado ? XP_JUNIOR : 0) + MISSOES.reduce((s, m) => (efetivado && !M_JUNIOR.includes(m.id)) ? s : s + (m.semXp ? 0 : f.includes(m.id) ? m.itens.length * XP_ITEM + XP_CONQ : m === atual ? progresso(m, d).filter(Boolean).length * XP_ITEM : 0), 0); };
@@ -594,7 +607,7 @@ const chatLiberado = (d = dados()) => (d.conquistas || []).includes('ep03');
 
 // ---------- layout ----------
 const avatar = (p) => p === 'voce' ? '<span class="vc">VC</span>' : `<img class="av" src="img/av_${p}.png" alt="">`;
-const LOGO = '<span class="logo-anim" aria-hidden="true"><img src="img/anim/logo_part1.png?v=1794857310" alt=""><img class="sobe" src="img/anim/logo_part0.png?v=1794857310" alt=""></span>';
+const LOGO = '<span class="logo-anim" aria-hidden="true"><img src="img/anim/logo_part1.png?v=1794859585" alt=""><img class="sobe" src="img/anim/logo_part0.png?v=1794859585" alt=""></span>';
 const MARCA = `<span class="marca">${LOGO}FlowDesk</span>`;
 const pillVersao = () => `<span class="versao" data-test="versao-sistema"><b>Sprint ${VERSAO}</b> · homologação</span>`;
 const SVG = (p, c = '') => `<svg class="${c}" viewBox="0 0 24 24" aria-hidden="true">${p}</svg>`;
@@ -616,6 +629,7 @@ const ICONE = {
   sino: '<path d="M18 8a6 6 0 1 0-12 0c0 7-3 8-3 8h18s-3-1-3-8"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/>',
 };
 ICONE.missoes = ICONE.trofeu; ICONE.efetivacao = ICONE.card;
+ICONE.pipeline = '<path d="M4 6h6v4H4zM14 14h6v4h-6zM7 10v4a3 3 0 0 0 3 3h4M17 14v-4a3 3 0 0 0-3-3h-4"/>';
 ICONE.regressivo = '<path d="M20 11a8 8 0 0 0-14.6-4.5M4 13a8 8 0 0 0 14.6 4.5"/><path d="M5 3v4h4M19 21v-4h-4"/>';
 const ico = (k, c = '') => SVG(ICONE[k], c);
 const placarCache = () => LS.get('fd:placar', null);
@@ -631,7 +645,7 @@ function casca(pagina, conteudo) {
   document.body.innerHTML = `<div class="app"><aside class="side">${MARCA}<nav aria-label="Menu">
     ${it('dashboard.html', 'Início', 'dashboard')}${it('missoes.html', 'Missões', 'missoes', mAt ? `<span class="menu-tag">${mAt.id === 'd1' ? 'D1' : mAt.aula}</span>` : '')}${it('quadro.html', 'Quadro', 'quadro')}
     ${subCard}
-    ${(d.conquistas || []).includes('ep20') ? it('regressivo.html', 'Regressivo', 'regressivo') : ''}${it('chamados.html', 'Chamados', 'chamados')}${it('chat.html', 'FlowChat', 'chat', naoLidas)}${it('caca.html', 'Caça aos bugs', 'caca', `<span class="caca-n">${achados}/3</span>`)}${it('efetivacao.html', 'Carreira', 'efetivacao', efet ? '' : `<span class="tranca" title="Libera no Desafio 1">${ico('cadeado')}D1</span>`)}</nav>
+    ${(d.conquistas || []).includes('ep20') ? it('regressivo.html', 'Regressivo', 'regressivo') : ''}${(d.conquistas || []).includes('ep28') ? it('pipeline.html', 'Pipeline', 'pipeline') : ''}${it('chamados.html', 'Chamados', 'chamados')}${it('chat.html', 'FlowChat', 'chat', naoLidas)}${it('caca.html', 'Caça aos bugs', 'caca', `<span class="caca-n">${achados}/3</span>`)}${it('efetivacao.html', 'Carreira', 'efetivacao', efet ? '' : `<span class="tranca" title="Libera no Desafio 1">${ico('cadeado')}D1</span>`)}</nav>
     <div class="side-fim">${cardMissao()}<nav class="sec-nav">${it('configuracoes.html', 'Configurações', 'configuracoes')}</nav>
     <div class="eu"><span class="vc">${esc((c.nome || 'VC').split(' ').map((x) => x[0]).slice(0, 2).join('').toUpperCase())}</span><div><b data-test="usuario-logado">${esc(c.nome)}</b><span data-test="nivel">${nivelAtual()}</span></div><button data-test="sair">Sair</button></div></div></aside>
     <main class="main"><header class="barra"><div class="barra-c"><span class="barra-k">CARREIRA</span>${trilha(d)}<span class="xp" data-test="xp">${xpDe(d)} / ${ehJunior(d) ? XP_PLENO : XP_JUNIOR} XP</span></div>${pillVersao()}</header><div class="conteudo">${conteudo}</div></main></div>`;
@@ -686,7 +700,7 @@ PAGINAS.login = () => {
   document.body.innerHTML = `<div class="tela-login">
     <section class="lg-time"><div class="lg-marca">${LOGO}<span>FlowDesk</span></div>
       <div class="lg-tit"><h1>Seu primeiro dia como QA começa aqui.</h1><div class="lg-trilha"><span class="on">Estagiário</span>${seta}<span>Júnior</span>${seta}<span class="fut">Pleno</span></div></div>
-      <div class="lg-palco"><div class="lg-luz" aria-hidden="true"></div><video src="img/anim/time_acena.webm?v=1794857310" poster="img/anim/time_acena.png?v=1794857310" autoplay muted loop playsinline aria-label="O time do FlowDesk acenando: Rafael, Gabriela, Vinícius, Lucas e Beatriz"></video></div></section>
+      <div class="lg-palco"><div class="lg-luz" aria-hidden="true"></div><video src="img/anim/time_acena.webm?v=1794859585" poster="img/anim/time_acena.png?v=1794859585" autoplay muted loop playsinline aria-label="O time do FlowDesk acenando: Rafael, Gabriela, Vinícius, Lucas e Beatriz"></video></div></section>
     <section class="lg-form"><div class="login">
     <form id="fEntrar" novalidate><span class="lg-chip">SPRINT ${VERSAO} · HOMOLOGAÇÃO</span><h1>Bem-vindo de volta</h1><p class="sub">O time já está te esperando. Use dados de mentira: fica tudo salvo só neste navegador.</p>
       <div class="campo"><label for="email">E-mail</label><input class="in" id="email" type="email" data-test="login-email" autocomplete="username" placeholder="voce@empresa.com"></div>
@@ -762,7 +776,7 @@ PAGINAS.dashboard = () => {
   const linhaTime = { rafael: 'Dúvida de regra é com ele', gabriela: ultGabi ? `“${ultGabi.tx.replace(/\s*\p{Extended_Pictographic}/gu, '')}”` : 'Desenvolve o FD-101', lucas: 'Daily às 9h15', beatriz: 'Review na sexta, 16h', vinicius: 'Seu mentor, pode perguntar' };
   const pc = placarCache(), bugs = pc ? pc.bugs : [1, 2, 3].map((n) => ({ n, ganhador: null }));
   const mesNome = new Date().toLocaleDateString('pt-BR', { month: 'long' }).toUpperCase();
-  casca('dashboard', `<section class="saud"><div><div class="dia">${hoje.charAt(0).toUpperCase() + hoje.slice(1)}</div><h1 data-test="titulo-pagina">${oi}, ${esc(c.nome.split(' ')[0])}.</h1></div>
+  casca('dashboard', `<section class="saud"><div><div class="dia" data-test="data-hoje">${hoje.charAt(0).toUpperCase() + hoje.slice(1)}</div><h1 data-test="titulo-pagina">${oi}, ${esc(c.nome.split(' ')[0])}.</h1></div>
       ${fala('vinicius', 'VINÍCIUS · SEU MENTOR', msg)}</section>
     <div class="grade">
       <div class="g2">${hero}</div>
@@ -962,7 +976,7 @@ PAGINAS.quadro = () => {
       <div class="h"><h3>${n}</h3><span class="cnt" data-test="contagem-${k}"></span>${k === 'afazer' ? '<button class="mais" data-test="nova-tarefa" title="Nova tarefa" aria-label="Nova tarefa">+</button>' : ''}</div>
       <div class="cards"></div>${k === 'afazer' ? '<button class="add-tarefa" data-test="adicionar-tarefa">+ Adicionar tarefa</button>' : ''}</section>`).join('')}</div>
     <p class="dica" style="margin-top:12px">Você move os seus cards arrastando, ou pelo próprio card. Os cards dos outros ficam com eles.</p>
-    <div class="desfile" aria-hidden="true"><div class="chao"></div>${anda.map(([v, atraso, cls]) => `<div class="anda ${cls}" style="animation-delay:${atraso}s"><video src="img/anim/${v}.webm?v=1794857310" poster="img/anim/${v}.png?v=1794857310" autoplay muted loop playsinline></video></div>`).join('')}</div>`);
+    <div class="desfile" aria-hidden="true"><div class="chao"></div>${anda.map(([v, atraso, cls]) => `<div class="anda ${cls}" style="animation-delay:${atraso}s"><video src="img/anim/${v}.webm?v=1794859585" poster="img/anim/${v}.png?v=1794859585" autoplay muted loop playsinline></video></div>`).join('')}</div>`);
   const pinta = () => {
     COLUNAS.forEach(([k]) => {
       let l = dados().cards.filter((c) => c.coluna === k); const col = $(`[data-col=${k}]`);
@@ -1101,7 +1115,7 @@ PAGINAS.card = () => {
     <div class="d1n">Abaixo, a versão atual do card, depois da conversa com o Rafael.</div></div>`;
   const desafioHtml = () => {
     const x = d.desafio || {};
-    if (!x.inicio) return `<div class="desafio com-bea" data-test="desafio"><video class="d-bea" src="img/anim/beatriz_fala.webm?v=1794857310" poster="img/anim/beatriz_fala.png?v=1794857310" autoplay muted loop playsinline aria-hidden="true"></video><div class="dk">DESAFIO 1 · EFETIVAÇÃO</div><h3>O FD-118 é todo seu</h3>
+    if (!x.inicio) return `<div class="desafio com-bea" data-test="desafio"><video class="d-bea" src="img/anim/beatriz_fala.webm?v=1794859585" poster="img/anim/beatriz_fala.png?v=1794859585" autoplay muted loop playsinline aria-hidden="true"></video><div class="dk">DESAFIO 1 · EFETIVAÇÃO</div><h3>O FD-118 é todo seu</h3>
       <p>Você tem <b>${D1_MIN} minutos</b>. Ninguém vai guiar: planeja os cenários na aba <b>Plano de testes</b>, executa com evidência na tela de <b>Chamados</b> e reporta cada bug ligado ao FD-118. Dá pra pausar.</p>
       <div class="dn"><span>Pra ser efetivado</span><b>70 pontos</b> e pelo menos <b>2 bugs</b> achados</div>
       <button class="btn" id="d1Go" data-test="comecar-desafio">Começar o desafio</button></div>`;
@@ -1194,7 +1208,7 @@ function montaGherkin(A, card, contagens) {
           <textarea id="gk" data-test="editor-gherkin" spellcheck="false" autocomplete="off" autocapitalize="off" aria-label="Arquivo ${arq}"></textarea></div></div></div>
       <p class="dica" style="margin-top:10px">Dica: <b>Tab</b> faz o recuo. O FlowDesk salva enquanto você escreve.</p>
     </div>
-    <aside><div class="rafa"><div class="rafa-b"><div class="bk">RAFAEL · PO</div><div class="bt">Escreve do jeito que eu leio: <b>Dado</b> o contexto, <b>Quando</b> a ação, <b>Então</b> o que eu vejo.</div></div><video src="img/anim/rafael_fala.webm?v=1794857310" poster="img/anim/rafael_fala.png?v=1794857310" autoplay muted loop playsinline aria-hidden="true"></video></div><div class="cov" id="gkRev" data-test="revisao-gherkin"></div></aside></div>`;
+    <aside><div class="rafa"><div class="rafa-b"><div class="bk">RAFAEL · PO</div><div class="bt">Escreve do jeito que eu leio: <b>Dado</b> o contexto, <b>Quando</b> a ação, <b>Então</b> o que eu vejo.</div></div><video src="img/anim/rafael_fala.webm?v=1794859585" poster="img/anim/rafael_fala.png?v=1794859585" autoplay muted loop playsinline aria-hidden="true"></video></div><div class="cov" id="gkRev" data-test="revisao-gherkin"></div></aside></div>`;
   const ta = $('#gk'), cor = $('#gkCor'), nums = $('#gkNums');
   ta.value = gherkinDe(dados(), card.id);
   const atualiza = () => {
@@ -1286,7 +1300,7 @@ function montaPlano(A, card) {
         <div class="fbtns"><button type="button" class="btn sec" id="cancela" hidden data-test="cancelar-edicao">Cancelar</button><button class="btn" data-test="salvar-cenario" id="salva">Adicionar cenário</button></div>
       </form></div>
       <aside><div class="cov" id="cov" data-test="cobertura"><div class="hd">Cobertura das regras<span class="cnt" id="cnt" data-test="cobertura-contagem">0/${RG.length}</span></div><div class="bar"><i id="bar"></i></div>
-        ${RG.map((r, i) => `<div class="rl" id="u${i}" data-test="regra"><b>✓</b>${r}<span class="q" id="q${i}" hidden></span></div>`).join('')}<div class="ex" id="ex" hidden></div><div class="gabi-b" id="gabiB" data-test="recado-gabriela"><b>GABRIELA · DEV</b><span id="gabiT"></span></div><div class="gabi" aria-hidden="true"><video src="img/anim/gabriela_quadro.webm?v=1794857310" poster="img/anim/gabriela_quadro.png?v=1794857310" autoplay muted loop playsinline></video></div></div></aside></div>`;
+        ${RG.map((r, i) => `<div class="rl" id="u${i}" data-test="regra"><b>✓</b>${r}<span class="q" id="q${i}" hidden></span></div>`).join('')}<div class="ex" id="ex" hidden></div><div class="gabi-b" id="gabiB" data-test="recado-gabriela"><b>GABRIELA · DEV</b><span id="gabiT"></span></div><div class="gabi" aria-hidden="true"><video src="img/anim/gabriela_quadro.webm?v=1794859585" poster="img/anim/gabriela_quadro.png?v=1794859585" autoplay muted loop playsinline></video></div></div></aside></div>`;
   let editando = null; const abertos = new Set();
   d.rodadas = d.rodadas || {};
   const rod = () => d.rodadas[id] || null;
@@ -1658,7 +1672,7 @@ PAGINAS.caca = () => {
   const meus = LS.get('fd:caca-envios', []);
   casca('caca', `<section class="caca-hero"><div class="ch-t"><div class="ch-k"><span id="tNum">TEMPORADA 1 DE 3</span><b class="${aberta ? 'ab' : ''}">${aberta ? 'ABERTA' : 'EM BREVE'}</b>${aberta ? '<i id="tFim">quando os 3 forem achados, a próxima temporada abre sozinha</i>' : ''}</div>
       <h1 data-test="titulo-pagina">3 bugs escondidos no FlowDesk.</h1><p>Quem achar e reportar primeiro ganha o <b>Vida de QA 2</b> de graça quando lançar. Preste atenção nas aulas.</p></div>
-      <video src="img/anim/vinicius_lupa_v2.webm?v=1794857310" poster="img/anim/vinicius_lupa_v2.png?v=1794857310" autoplay muted loop playsinline aria-label="Vinícius com uma lupa procurando bugs"></video></section>
+      <video src="img/anim/vinicius_lupa_v2.webm?v=1794859585" poster="img/anim/vinicius_lupa_v2.png?v=1794859585" autoplay muted loop playsinline aria-label="Vinícius com uma lupa procurando bugs"></video></section>
     <div class="caca-bugs" id="placar">${[1, 2, 3].map((n) => `<article class="cb"><div class="cb-h"><span>#${n}</span><b>LIVRE</b></div><div class="cb-v">Ninguém achou ainda.</div></article>`).join('')}</div>
     <div class="caca-grade"><section class="painel caca-form"><h2>Reportar um bug da caça</h2><p class="dica">A confirmação é automática. Vale o primeiro report confirmado de cada bug.</p>
       <form id="fc" novalidate>${aberta ? '' : '<div class="aviso-caca" data-test="caca-fechada">A primeira temporada ainda não abriu. Quando abrir, este formulário passa a funcionar e o aviso sai daqui.</div>'}
@@ -1796,9 +1810,71 @@ PAGINAS.regressivo = () => {
   if (location.hash) { const el = $(location.hash); if (el) setTimeout(() => el.scrollIntoView({ block: 'start' }), 50); }
 };
 
+// ---------- pipeline (módulo 5): o FlowDesk confere o fork do aluno pela API pública do GitHub ----------
+const PIPE_DICAS = {
+  prVerde: 'Abra um pedido de revisão no seu fork e espere o check do regressivo ficar verde.',
+  smoke: 'Um workflow com "smoke" no nome do arquivo, verde num pedido de revisão.',
+  completo: 'Rode o workflow do regressivo completo pelo botão Run workflow (ou espere a madrugada).',
+  evidencia: 'Uma execução vermelha com artefato anexado (print, vídeo, relatório).',
+  painel: 'O teste do Rafael (painel.feature) em cypress/e2e, no seu fork.',
+  fuso: 'TZ: America/Sao_Paulo no workflow e o pipeline verde com o teste do painel.',
+  protegida: 'Regra de proteção na branch principal do fork (Settings, Branches).',
+  card: 'Ligue a aba Issues no fork. Com o regressivo vermelho, o pipeline abre o card sozinho.',
+  comentario: 'Rode vermelho mais uma vez: o pipeline comenta no mesmo card.',
+};
+async function confereFork(fork) {
+  const api = async (p) => { const r = await fetch(`https://api.github.com/repos/${fork}${p}`, { headers: { Accept: 'application/vnd.github+json' } }); if (r.status === 403 || r.status === 429) throw new Error('limite'); if (!r.ok) return null; return r.json(); };
+  const texto = (c) => { try { return new TextDecoder().decode(Uint8Array.from(atob((c.content || '').replace(/\n/g, '')), (x) => x.charCodeAt(0))); } catch (e) { return ''; } };
+  const repo = await api(''); if (!repo) return { erro: 'Não achei esse repositório no GitHub. Confere o nome: usuario/vida-de-qa-regressivo' };
+  if (!repo.fork || !repo.parent || !/\/vida-de-qa-regressivo$/i.test(repo.parent.full_name)) return { erro: 'Esse repositório não é um fork do vida-de-qa-regressivo.' };
+  const ok = {}, runs = ((await api('/actions/runs?per_page=100')) || {}).workflow_runs || [];
+  const nome = (r) => `${r.path || ''} ${r.name || ''}`, verde = (r) => r.conclusion === 'success';
+  ok.prVerde = runs.some((r) => r.event === 'pull_request' && verde(r));
+  ok.smoke = runs.some((r) => /smoke/i.test(nome(r)) && r.event === 'pull_request' && verde(r));
+  ok.completo = runs.some((r) => !/smoke/i.test(nome(r)) && ['workflow_dispatch', 'schedule'].includes(r.event) && verde(r));
+  for (const r of runs.filter((x) => x.conclusion === 'failure').slice(0, 6)) { const a = await api(`/actions/runs/${r.id}/artifacts`); if (a && a.total_count > 0) { ok.evidencia = true; break; } }
+  const refs = [repo.default_branch, ...new Set(runs.filter((r) => r.event === 'pull_request' && verde(r)).map((r) => r.head_branch))].slice(0, 6);
+  for (const ref of refs) {
+    const tem = !!(await api(`/contents/cypress/e2e/painel.feature?ref=${encodeURIComponent(ref)}`)); if (!tem) continue; ok.painel = true;
+    const wfs = (await api(`/contents/.github/workflows?ref=${encodeURIComponent(ref)}`)) || [];
+    let tz = false; for (const f of wfs.filter((x) => /\.ya?ml$/.test(x.name))) { const c = await api(`/contents/${f.path}?ref=${encodeURIComponent(ref)}`); if (c && /TZ:\s*['"]?America\/Sao_Paulo/.test(texto(c))) { tz = true; break; } }
+    if (tz && runs.some((r) => r.head_branch === ref && verde(r))) ok.fuso = true;
+  }
+  const br = await api(`/branches/${encodeURIComponent(repo.default_branch)}`); ok.protegida = !!(br && br.protected);
+  const iss = ((await api('/issues?labels=regressivo&state=all&per_page=30')) || []).filter((i) => !i.pull_request && i.user && i.user.login === 'github-actions[bot]');
+  ok.card = iss.length > 0; ok.comentario = iss.some((i) => i.comments >= 1);
+  return { ok };
+}
+PAGINAS.pipeline = () => {
+  const d = dados(); d.m5 = d.m5 || {}; const ok = d.m5.ok || {};
+  const liberado = (d.conquistas || []).includes('ep28');
+  const blocos = MISSOES.filter((m) => /^ep3[1-6]$/.test(m.id)).map((m) => {
+    const feita = (d.conquistas || []).includes(m.id), pr = progresso(m, d);
+    const ks = { ep31: ['prVerde'], ep32: ['smoke', 'completo'], ep33: ['evidencia'], ep34: ['painel', 'fuso'], ep35: ['protegida'], ep36: ['card', 'comentario'] }[m.id];
+    return `<section class="painel rg-bl ${feita ? 'feito' : ''}" id="${m.id}" data-test="pp-${m.id}"><div class="rg-h"><span>${m.aula}</span><h3>${m.titulo}</h3>${feita ? `<i>${ico('trofeu')} ${m.conquista}</i>` : ''}</div>
+      ${m.itens.map(([t], i) => `<div class="rg-cx ${feita || pr[i] ? 'ok' : ''}" data-test="pp-item-${ks[i]}"><div class="rg-r"><b>${feita || pr[i] ? '✓' : '•'}</b>${t}</div>${feita || pr[i] ? '' : `<p class="dica">${PIPE_DICAS[ks[i]]}</p>`}</div>`).join('')}</section>`;
+  }).join('');
+  casca('pipeline', topo('Pipeline', 'O seu regressivo agora roda no GitHub, no seu fork. O FlowDesk consulta o GitHub e confere cada etapa do módulo.')
+    + (liberado ? `<section class="painel rg-bl"><div class="campo"><label for="ppFork">Seu fork no GitHub</label><div class="pp-l"><input class="in" id="ppFork" data-test="pp-fork" placeholder="seu-usuario/vida-de-qa-regressivo" value="${esc(d.m5.fork || '')}"><button class="btn" id="ppOk" data-test="pp-conferir">Conferir no GitHub</button></div>
+        <p class="dica">O fork precisa ser público. ${d.m5.quando ? `Última conferência: ${dataHora(d.m5.quando)}.` : 'A conferência usa a API pública do GitHub, sem login.'}</p></div></section>${blocos}`
+      : '<div class="aviso-caca" data-test="pp-fechado">Libera no módulo 5, depois de fechar o módulo 4.</div>'));
+  if (!liberado) return;
+  $('#ppOk').onclick = async () => {
+    const fork = $('#ppFork').value.trim().replace(/^https?:\/\/github\.com\//i, '').replace(/\.git$|\/$/g, '');
+    if (!/^[\w.-]+\/[\w.-]+$/.test(fork)) return toast('Escreve assim: seu-usuario/vida-de-qa-regressivo', true);
+    const b = $('#ppOk'); b.disabled = true; b.textContent = 'Consultando o GitHub…';
+    try {
+      const r = await confereFork(fork); if (r.erro) { b.disabled = false; b.textContent = 'Conferir no GitHub'; return toast(r.erro, true); }
+      const dd = dados(); dd.m5 = dd.m5 || {}; dd.m5.fork = fork; dd.m5.quando = agora(); dd.m5.ok = { ...(dd.m5.ok || {}) };
+      Object.entries(r.ok).forEach(([k, v]) => { if (v) dd.m5.ok[k] = dd.m5.ok[k] || agora(); }); salvar(); recado('Conferido no GitHub.'); location.reload();
+    } catch (e) { b.disabled = false; b.textContent = 'Conferir no GitHub'; toast(e.message === 'limite' ? 'O GitHub limitou as consultas por agora. Tenta de novo em alguns minutos.' : 'Não consegui falar com o GitHub. Confere sua conexão.', true); }
+  };
+  if (location.hash) { const el = $(location.hash); if (el) setTimeout(() => el.scrollIntoView({ block: 'start' }), 50); }
+};
+
 // ---------- link da aula (aula.html?ep=16) ----------
 // Um link por aula prática: já leva pra tela certa. Se o aluno ainda não chegou nessa aula, oferece pular pra ela (com backup do progresso).
-const AULA_SAVE = { 0: 'inicio', 1: 'inicio', 2: 'inicio', 3: 'inicio', 4: 'inicio', 5: 'ep04', 6: 'ep06', 7: 'ep07', 8: 'ep08', 9: 'ep10', 10: 'ep10', 11: 'ep12', 12: 'ep12', 13: 'ep14', 14: 'ep14', 14.5: 'd1', 15: 'ep16', 16: 'ep16', 17: 'ep18', 18: 'ep18', 19: 'ep20', 20: 'ep20', 21: 'm4', 22: 'm4', 23: 'm4ep23', 24: 'm4ep24', 25: 'm4ep25', 26: 'm4ep26', 27: 'm4ep27', 28: 'm4ep28', 29: 'm4ep29' };
+const AULA_SAVE = { 0: 'inicio', 1: 'inicio', 2: 'inicio', 3: 'inicio', 4: 'inicio', 5: 'ep04', 6: 'ep06', 7: 'ep07', 8: 'ep08', 9: 'ep10', 10: 'ep10', 11: 'ep12', 12: 'ep12', 13: 'ep14', 14: 'ep14', 14.5: 'd1', 15: 'ep16', 16: 'ep16', 17: 'ep18', 18: 'ep18', 19: 'ep20', 20: 'ep20', 21: 'm4', 22: 'm4', 23: 'm4ep23', 24: 'm4ep24', 25: 'm4ep25', 26: 'm4ep26', 27: 'm4ep27', 28: 'm4ep28', 29: 'm4ep29', 30: 'm5ep31', 31: 'm5ep31', 32: 'm5ep32', 33: 'm5ep33', 34: 'm5ep34', 35: 'm5ep35', 36: 'm5ep36', 37: 'm5ep37' };
 PAGINAS.aula = () => {
   const n = numAula(qs.get('ep') || ''); if (Number.isNaN(n)) return location.replace('dashboard.html');
   if (!sessao() || !contas()[sessao()]) return location.replace('index.html?volta=' + encodeURIComponent('aula.html?ep=' + qs.get('ep')));

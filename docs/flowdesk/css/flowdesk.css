@@ -1098,3 +1098,5 @@ tr.fora-rod{opacity:.55}
 .rg-rev label{display:flex;gap:10px;align-items:flex-start;font-size:15px;cursor:pointer}
 .rg-rev input{margin-top:3px;accent-color:#7c3aed}
 @media (max-width:700px){.rg-bl{padding:16px}.rg-h i{margin-left:0}}
+.pp-l{display:flex;gap:10px;align-items:center}.pp-l .in{flex:1}
+@media (max-width:700px){.pp-l{flex-direction:column;align-items:stretch}}

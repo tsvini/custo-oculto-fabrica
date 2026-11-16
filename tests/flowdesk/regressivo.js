@@ -37,7 +37,7 @@ let falhas = 0; const ok = (c, m) => { console.log((c ? 'OK   ' : 'FALHA ') + m)
   const cq = await p.evaluate(() => dados().conquistas);
   ok(['ep22', 'ep23', 'ep24', 'ep25', 'ep26', 'ep27', 'ep28'].every((k) => cq.includes(k)), 'as 7 conquistas do módulo 4');
   const xp = await p.evaluate(() => xpDe()); ok(xp > 3660 && xp < 6000, 'XP sobe rumo a pleno sem chegar lá (' + xp + ')');
-  ok(/EP29/.test(await p.textContent('[data-test=missao-atual]')), 'próximo passo vira o EP29');
+  ok(/EP29|EP31/.test(await p.textContent('[data-test=missao-atual]')), 'depois do módulo 4, o lado aponta pra frente (EP29 ou a missão do EP31)');
   // link da aula pula pro meio do módulo 4 com as missões de antes feitas
   await p.goto(U + 'index.html?save=m4'); await p.waitForURL(/dashboard/);
   await p.goto(U + 'aula.html?ep=25'); await p.click('[data-test=aula-confirmar]'); await p.waitForURL(/regressivo/); await p.waitForTimeout(500);
