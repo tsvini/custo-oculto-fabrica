@@ -24,16 +24,21 @@ const dados = () => { if (!D) { D = migra(LS.get(chaveDados(), null)); if (D) { 
 const salvar = () => LS.set(chaveDados(), D);
 // sem ninguém logado (tela de login), a versão é a mais nova que este navegador já viu
 const _conq = (LS.get(chaveDados(), null) || {}).conquistas || Object.keys(localStorage).filter((k) => k.startsWith('fd:dados:')).flatMap((k) => (LS.get(k, null) || {}).conquistas || []);
-const VERSAO = qs.get('versao') ? Math.min(17, Math.max(14, +qs.get('versao') || 14)) : (_conq.includes('d1') ? 17 : _conq.includes('ep12') ? 16 : _conq.includes('ep08') ? 15 : 14);
+const VERSAO = qs.get('versao') ? Math.min(18, Math.max(14, +qs.get('versao') || 14)) : (_conq.includes('ep20') ? 18 : _conq.includes('d1') ? 17 : _conq.includes('ep12') ? 16 : _conq.includes('ep08') ? 15 : 14);
+// modo regressão (módulo 4): ?regressao=duplicado,rascunho,periodo,layout traz bugs antigos de volta nesta aba; ?regressao= (vazio) desliga
+const REGR_OPCOES = ['duplicado', 'rascunho', 'periodo', 'layout'];
+const REGR = (() => { try { if (qs.has('regressao')) sessionStorage.setItem('fd:regressao', qs.get('regressao') || ''); return new Set((sessionStorage.getItem('fd:regressao') || '').split(',').map((x) => x.trim()).filter((x) => REGR_OPCOES.includes(x))); } catch (e) { return new Set(); } })();
 // bugs plantados por versão
 const BUG = {
   tituloSoEspacos: VERSAO < 15,  // aceita título só com espaços (não usa trim)
   anexo5mbExato: VERSAO < 15,    // recusa o arquivo de exatamente 5 MB (usa >= em vez de >)
   titulo100: VERSAO === 15,      // regressão da correção: com o trim, o limite virou < 100 em vez de <= 100
-  duplicado: VERSAO === 17,      // o botão só trava depois que o servidor responde: com rede lenta, dois cliques criam dois chamados
+  duplicado: VERSAO === 17 || REGR.has('duplicado'),      // o botão só trava depois que o servidor responde: com rede lenta, dois cliques criam dois chamados
   buscaAcento: VERSAO === 17,    // o servidor tira o acento dos títulos, mas não o da busca
   buscaEmoji: VERSAO === 17,     // a tela corta a busca em 30 posições e pode partir um emoji no meio (URIError)
-  rascunho: VERSAO === 17,       // o rascunho do novo chamado fica numa chave só do navegador e não sai no logout
+  rascunho: VERSAO === 17 || REGR.has('rascunho'),  // o rascunho do novo chamado fica numa chave só do navegador e não sai no logout
+  periodo: REGR.has('periodo'),  // volta o bug do Desafio 1: "últimos 7 dias" deixa hoje de fora
+  layout: REGR.has('layout'),    // no celular, o botão "+ Novo chamado" some da lista de chamados
 };
 // caça aos bugs: endereço do Worker (vazio = temporada ainda não aberta)
 const CACA_API = '';
@@ -168,6 +173,11 @@ function andaSprint(d, v = VERSAO, grava = true) {
     const fd = d.cards.find((c) => c.id === 'FD-101'); if (fd && fd.criterios[4]) fd.criterios[4] = 'Depois de criar: mensagem de sucesso com o número do chamado, e o formulário limpo pro próximo';
     d.chat['time-produto'].push({ de: 'rafael', tx: 'Mudança da Sprint 17, a pedido do suporte: depois de criar, a tela fica no formulário com a mensagem e o número do chamado. Quem abre vários seguidos não precisa voltar toda hora.', quando: agora() });
   }
+  if (v >= 18 && !d.sprints[18]) {
+    d.sprints[18] = agora(); mudou = true;
+    bugsDe(d).filter((b) => b.coluna !== 'concluido' && /^BUG-0[4-7]$/.test(b.id)).forEach((b) => { b.coluna = 'concluido'; b.corrigidoEm = 18; com(b, 'Corrigido na Sprint 18 e retestado. Fechando.'); });
+    d.chat.releases.push({ de: 'lucas', tx: 'Release da Sprint 18 em produção: duplicado, busca e rascunho corrigidos. Agora a regressão vai rodar automatizada antes de cada release.', quando: agora() });
+  }
   if (mudou && grava) LS.set(chaveDados(), d);
   return d;
 }
@@ -176,7 +186,7 @@ const usaApi = () => VERSAO >= 17 && 'serviceWorker' in navigator && /^https?:/.
 let _swPronto = null;
 function swPronto() {
   if (!_swPronto) _swPronto = (async () => {
-    await navigator.serviceWorker.register('sw.js?v=1794515416');
+    await navigator.serviceWorker.register('sw.js?v=1794839534');
     if (navigator.serviceWorker.controller) return true;
     await new Promise((r) => { navigator.serviceWorker.addEventListener('controllerchange', r, { once: true }); setTimeout(r, 4000); });
     return !!navigator.serviceWorker.controller;
@@ -186,14 +196,19 @@ function swPronto() {
 if ('serviceWorker' in navigator) navigator.serviceWorker.addEventListener('message', (ev) => {
   const m = ev.data || {}, porta = ev.ports && ev.ports[0]; if (!porta || !sessao()) return;
   if (m.tipo === 'lista') porta.postMessage({ lista: dados().chamados.map(({ id, titulo, cliente, status, criadoEm }) => ({ id, titulo, cliente, status, criadoEm })), bugAcento: BUG.buscaAcento });
-  if (m.tipo === 'cria') {
-    const d = dados(), c = m.chamado, id = d.proximoChamado++;
-    const x = { id, titulo: String(c.titulo).trim(), descricao: String(c.descricao).trim(), cliente: c.cliente, status: 'Aberto', criadoEm: agora(), criadoPor: 'Você', anexo: c.anexo || null, v: VERSAO, historico: [{ quando: agora(), tx: 'Chamado criado com status Aberto' }] };
-    d.chamados.push(x); salvar(); porta.postMessage({ id, titulo: x.titulo, cliente: x.cliente, status: x.status, criadoEm: x.criadoEm });
-  }
+  if (m.tipo === 'cria') porta.postMessage(criaChamado(m.chamado));
 });
+function criaChamado(c) {
+  const d = dados(), id = d.proximoChamado++;
+  const x = { id, titulo: String(c.titulo).trim(), descricao: String(c.descricao).trim(), cliente: c.cliente, status: 'Aberto', criadoEm: agora(), criadoPor: 'Você', anexo: c.anexo || null, v: VERSAO, historico: [{ quando: agora(), tx: 'Chamado criado com status Aberto' }] };
+  d.chamados.push(x); salvar(); return { id, titulo: x.titulo, cliente: x.cliente, status: x.status, criadoEm: x.criadoEm };
+}
+// ?api=rede (pros testes automatizados): o novo chamado vai pela rede de verdade, em servidor/chamados, sem o service worker no meio.
+// O FlowDesk de treino não tem backend: nesse modo quem responde é o teste (cy.intercept). Vale pra aba inteira; ?api= desliga.
+const API_REDE = (() => { try { if (qs.has('api')) sessionStorage.setItem('fd:api', qs.get('api') || ''); return sessionStorage.getItem('fd:api') === 'rede'; } catch (e) { return false; } })();
 if (usaApi()) swPronto();
 const RASCUNHO = 'fd:rascunho';
+const rascKey = () => (BUG.rascunho ? RASCUNHO : RASCUNHO + ':' + sessao());  // Sprint 18: cada conta tem o seu rascunho
 // quem viu rascunho de outra conta (vale pra missão do EP20, em qualquer conta deste navegador)
 // o bug do rascunho pode ser reportado logado em qualquer conta (a sua ou a do Lucas): conta pra missão do mesmo jeito
 const bugsGlobais = (d) => [...bugsDe(d), ...Object.keys(contas()).flatMap((e) => ((LS.get('fd:dados:' + e, null) || {}).cards || []).filter((c) => c.tipo === 'bug'))];
@@ -272,6 +287,11 @@ function contaDoLucas(d) {
   const cs = contas(); cs['lucas@flowdesk.com'] = { nome: 'Lucas Ribeiro', senha: '123456', criadaEm: agora() }; LS.set('fd:contas', cs);
   const l = JSON.parse(JSON.stringify(d)); delete l.meuRascunho; delete l.viuRascunhoAlheio; LS.set('fd:dados:lucas@flowdesk.com', l); return d;
 }
+function depoisDoEp20() {
+  const d = depoisDoEp18();
+  bugM3(d, 'BUG-07', 'Rascunho do novo chamado aparece pra outra conta', '1. Escrever um rascunho e sair da conta\n2. Entrar com outra conta\n3. Abrir Novo chamado', 'Formulário vazio', 'Aparece o rascunho da outra pessoa', 'rascunho-outra-conta.png', { tecnico: 'localStorage fd:rascunho não é apagado no logout' });
+  d.proximoBug = 8; d.conquistas.push('ep20'); return andaSprint(d, 18, false);
+}
 const SAVES = [
   { id: 'inicio', nome: 'Começo do curso', quando: 'do EP00 ao EP04', monta: () => semente() },
   { id: 'ep04', nome: 'Início do EP05', quando: 'Cenários em Gherkin', monta: () => { const d = semente(); d.planos['FD-101'] = CENARIOS_EP03.map((c) => ({ ...c })); d.conquistas = ['ep03']; return d; } },
@@ -284,6 +304,7 @@ const SAVES = [
   { id: 'd1', nome: 'Início do Desafio 1', quando: 'Efetivação · FD-118', monta: depoisDoEp14 },
   { id: 'ep16', nome: 'Início do EP16', quando: 'O chamado duplicado · já efetivado como júnior', monta: () => { const d = depoisDoEp14(); d.conquistas.push('d1'); return d; } },
   { id: 'ep18', nome: 'Início do EP18', quando: 'Tela ou servidor?', monta: depoisDoEp16 },
+  { id: 'm4', nome: 'Início do EP21', quando: 'Módulo 4 · o regressivo · Sprint 18', monta: depoisDoEp20 },
   { id: 'ep20', nome: 'Início do EP20', quando: 'O rascunho · com a conta de teste do Lucas', monta: () => { LS.del(RASCUNHO); return contaDoLucas(depoisDoEp18()); } },
 ];
 
@@ -539,7 +560,7 @@ const chatLiberado = (d = dados()) => (d.conquistas || []).includes('ep03');
 
 // ---------- layout ----------
 const avatar = (p) => p === 'voce' ? '<span class="vc">VC</span>' : `<img class="av" src="img/av_${p}.png" alt="">`;
-const LOGO = '<span class="logo-anim" aria-hidden="true"><img src="img/anim/logo_part1.png?v=1794515416" alt=""><img class="sobe" src="img/anim/logo_part0.png?v=1794515416" alt=""></span>';
+const LOGO = '<span class="logo-anim" aria-hidden="true"><img src="img/anim/logo_part1.png?v=1794839534" alt=""><img class="sobe" src="img/anim/logo_part0.png?v=1794839534" alt=""></span>';
 const MARCA = `<span class="marca">${LOGO}FlowDesk</span>`;
 const pillVersao = () => `<span class="versao" data-test="versao-sistema"><b>Sprint ${VERSAO}</b> · homologação</span>`;
 const SVG = (p, c = '') => `<svg class="${c}" viewBox="0 0 24 24" aria-hidden="true">${p}</svg>`;
@@ -581,7 +602,7 @@ function casca(pagina, conteudo) {
   relogioD1();
   if (CACA_API && pg !== 'caca') fetch(`${CACA_API}/placar`).then((r) => r.json()).then((p) => LS.set('fd:placar', { bugs: p.bugs, temporada: p.temporada, encerrada: p.encerrada })).catch(() => {});
 }
-function sair() { LS.del('fd:sessao'); location.href = 'index.html'; }
+function sair() { if (!BUG.rascunho) LS.del(RASCUNHO); LS.del('fd:sessao'); location.href = 'index.html'; }
 // relógio do desafio: aparece em todas as telas enquanto o desafio está rodando
 function relogioD1() {
   const d = dados(); if (!d || !d1Aberto(d) || !(d.desafio || {}).inicio || d.desafio.entregue) return;
@@ -626,7 +647,7 @@ PAGINAS.login = () => {
   document.body.innerHTML = `<div class="tela-login">
     <section class="lg-time"><div class="lg-marca">${LOGO}<span>FlowDesk</span></div>
       <div class="lg-tit"><h1>Seu primeiro dia como QA começa aqui.</h1><div class="lg-trilha"><span class="on">Estagiário</span>${seta}<span>Júnior</span>${seta}<span class="fut">Pleno</span></div></div>
-      <div class="lg-palco"><div class="lg-luz" aria-hidden="true"></div><video src="img/anim/time_acena.webm?v=1794515416" poster="img/anim/time_acena.png?v=1794515416" autoplay muted loop playsinline aria-label="O time do FlowDesk acenando: Rafael, Gabriela, Vinícius, Lucas e Beatriz"></video></div></section>
+      <div class="lg-palco"><div class="lg-luz" aria-hidden="true"></div><video src="img/anim/time_acena.webm?v=1794839534" poster="img/anim/time_acena.png?v=1794839534" autoplay muted loop playsinline aria-label="O time do FlowDesk acenando: Rafael, Gabriela, Vinícius, Lucas e Beatriz"></video></div></section>
     <section class="lg-form"><div class="login">
     <form id="fEntrar" novalidate><span class="lg-chip">SPRINT ${VERSAO} · HOMOLOGAÇÃO</span><h1>Bem-vindo de volta</h1><p class="sub">O time já está te esperando. Use dados de mentira: fica tudo salvo só neste navegador.</p>
       <div class="campo"><label for="email">E-mail</label><input class="in" id="email" type="email" data-test="login-email" autocomplete="username" placeholder="voce@empresa.com"></div>
@@ -728,7 +749,7 @@ PAGINAS.chamados = () => {
     const cli = $('#fCli') ? $('#fCli').value : '', per = $('#fPer') ? +$('#fPer').value || 0 : 0;
     if (cli && !(BUG_D1() && f) && x.cliente !== cli) return false;  // Sprint 16: com status escolhido, o cliente é ignorado
     if (per) { const h0 = new Date(); h0.setHours(0, 0, 0, 0); const ini = new Date(h0); ini.setDate(ini.getDate() - (per - 1)); const t = new Date(x.criadoEm);
-      if (t < ini) return false; if (BUG_D1() && t >= h0) return false; }  // Sprint 16: o "até hoje" deixa hoje de fora
+      if (t < ini) return false; if ((BUG_D1() || BUG.periodo) && t >= h0) return false; }  // Sprint 16: o "até hoje" deixa hoje de fora
     return true;
   };
   const todos = dados().chamados, n = (st) => todos.filter((x) => !st || x.status === st).length;
@@ -804,13 +825,13 @@ PAGINAS['novo-chamado'] = () => {
     </form><aside class="nc-lado"><div class="nc-k">${ico('card', 'ic')}O QUE O FD-101 PEDE</div><ol>${(dados().cards.find((x) => x.id === 'FD-101') || { criterios: [] }).criterios.map((t) => `<li>${esc(t)}</li>`).join('')}</ol><a href="card.html?id=FD-101&aba=plano">Abrir o plano de testes ${ico('seta', 'ic')}</a></aside></div>`);
   let arquivo = null;
   if (VERSAO >= 17) {
-    const rs = LS.get(RASCUNHO, null);
+    const rs = LS.get(rascKey(), null);
     if (rs && (rs.titulo || rs.descricao)) {
       $('#titulo').value = rs.titulo || ''; $('#descricao').value = rs.descricao || '';
       const d = dados(); if (d.meuRascunho !== (rs.titulo || '') + '|' + (rs.descricao || '')) { d.viuRascunhoAlheio = true; salvar(); }
       setTimeout(() => toast('Rascunho recuperado'), 50);
     }
-    const guarda = () => { const v = { titulo: $('#titulo').value, descricao: $('#descricao').value }; LS.set(RASCUNHO, v); const d = dados(); d.meuRascunho = v.titulo + '|' + v.descricao; salvar(); };
+    const guarda = () => { const v = { titulo: $('#titulo').value, descricao: $('#descricao').value }; LS.set(rascKey(), v); const d = dados(); d.meuRascunho = v.titulo + '|' + v.descricao; salvar(); };
     $('#titulo').addEventListener('input', guarda); $('#descricao').addEventListener('input', guarda);
   }
   if (_c('t80') && innerWidth <= 480) $('#titulo').maxLength = 80;
@@ -838,11 +859,15 @@ PAGINAS['novo-chamado'] = () => {
     if (usaApi()) {
       const btn = $('[data-test=criar-chamado]');
       if (!BUG.duplicado) btn.disabled = true;
-      swPronto().then(() => fetch('api/chamados', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ titulo: t, descricao: ds, cliente: $('#cliente').value, anexo: arquivo }) }))
-        .then((r) => r.json().then((j) => ({ ok: r.ok, j })))
+      const corpo = { titulo: t, descricao: ds, cliente: $('#cliente').value, anexo: arquivo };
+      (API_REDE
+        ? fetch('servidor/chamados', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(corpo) })
+          .then((r) => r.json().catch(() => ({})).then((j) => (r.ok ? { ok: true, j: { ...criaChamado(corpo), ...(j && j.id ? { idServidor: j.id } : {}) } } : { ok: false, j: { erro: (j && j.erro) || `O servidor respondeu ${r.status}` } })))
+        : swPronto().then(() => fetch('api/chamados', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(corpo) }))
+          .then((r) => r.json().then((j) => ({ ok: r.ok, j }))))
         .then(({ ok: certo, j }) => {
           if (!certo) { btn.disabled = false; return toast(j.erro || 'Não deu pra criar o chamado', true); }
-          LS.del(RASCUNHO);
+          LS.del(rascKey());
           // a partir da Sprint 17 a tela fica no formulário (assim a aba Rede não perde o pedido) e já deixa criar o próximo
           toast(`Chamado #${j.id} criado com sucesso`); $('#titulo').value = ''; $('#descricao').value = ''; $('#cont').textContent = '0/100'; arquivo = null; $('#nomeArq').textContent = 'Nenhum arquivo escolhido'; $('#tiraArq').hidden = true; btn.disabled = false;
         })
@@ -896,7 +921,7 @@ PAGINAS.quadro = () => {
       <div class="h"><h3>${n}</h3><span class="cnt" data-test="contagem-${k}"></span>${k === 'afazer' ? '<button class="mais" data-test="nova-tarefa" title="Nova tarefa" aria-label="Nova tarefa">+</button>' : ''}</div>
       <div class="cards"></div>${k === 'afazer' ? '<button class="add-tarefa" data-test="adicionar-tarefa">+ Adicionar tarefa</button>' : ''}</section>`).join('')}</div>
     <p class="dica" style="margin-top:12px">Você move os seus cards arrastando, ou pelo próprio card. Os cards dos outros ficam com eles.</p>
-    <div class="desfile" aria-hidden="true"><div class="chao"></div>${anda.map(([v, atraso, cls]) => `<div class="anda ${cls}" style="animation-delay:${atraso}s"><video src="img/anim/${v}.webm?v=1794515416" poster="img/anim/${v}.png?v=1794515416" autoplay muted loop playsinline></video></div>`).join('')}</div>`);
+    <div class="desfile" aria-hidden="true"><div class="chao"></div>${anda.map(([v, atraso, cls]) => `<div class="anda ${cls}" style="animation-delay:${atraso}s"><video src="img/anim/${v}.webm?v=1794839534" poster="img/anim/${v}.png?v=1794839534" autoplay muted loop playsinline></video></div>`).join('')}</div>`);
   const pinta = () => {
     COLUNAS.forEach(([k]) => {
       let l = dados().cards.filter((c) => c.coluna === k); const col = $(`[data-col=${k}]`);
@@ -1035,7 +1060,7 @@ PAGINAS.card = () => {
     <div class="d1n">Abaixo, a versão atual do card, depois da conversa com o Rafael.</div></div>`;
   const desafioHtml = () => {
     const x = d.desafio || {};
-    if (!x.inicio) return `<div class="desafio com-bea" data-test="desafio"><video class="d-bea" src="img/anim/beatriz_fala.webm?v=1794515416" poster="img/anim/beatriz_fala.png?v=1794515416" autoplay muted loop playsinline aria-hidden="true"></video><div class="dk">DESAFIO 1 · EFETIVAÇÃO</div><h3>O FD-118 é todo seu</h3>
+    if (!x.inicio) return `<div class="desafio com-bea" data-test="desafio"><video class="d-bea" src="img/anim/beatriz_fala.webm?v=1794839534" poster="img/anim/beatriz_fala.png?v=1794839534" autoplay muted loop playsinline aria-hidden="true"></video><div class="dk">DESAFIO 1 · EFETIVAÇÃO</div><h3>O FD-118 é todo seu</h3>
       <p>Você tem <b>${D1_MIN} minutos</b>. Ninguém vai guiar: planeja os cenários na aba <b>Plano de testes</b>, executa com evidência na tela de <b>Chamados</b> e reporta cada bug ligado ao FD-118. Dá pra pausar.</p>
       <div class="dn"><span>Pra ser efetivado</span><b>70 pontos</b> e pelo menos <b>2 bugs</b> achados</div>
       <button class="btn" id="d1Go" data-test="comecar-desafio">Começar o desafio</button></div>`;
@@ -1127,7 +1152,7 @@ function montaGherkin(A, card, contagens) {
           <textarea id="gk" data-test="editor-gherkin" spellcheck="false" autocomplete="off" autocapitalize="off" aria-label="Arquivo ${arq}"></textarea></div></div></div>
       <p class="dica" style="margin-top:10px">Dica: <b>Tab</b> faz o recuo. O FlowDesk salva enquanto você escreve.</p>
     </div>
-    <aside><div class="rafa"><div class="rafa-b"><div class="bk">RAFAEL · PO</div><div class="bt">Escreve do jeito que eu leio: <b>Dado</b> o contexto, <b>Quando</b> a ação, <b>Então</b> o que eu vejo.</div></div><video src="img/anim/rafael_fala.webm?v=1794515416" poster="img/anim/rafael_fala.png?v=1794515416" autoplay muted loop playsinline aria-hidden="true"></video></div><div class="cov" id="gkRev" data-test="revisao-gherkin"></div></aside></div>`;
+    <aside><div class="rafa"><div class="rafa-b"><div class="bk">RAFAEL · PO</div><div class="bt">Escreve do jeito que eu leio: <b>Dado</b> o contexto, <b>Quando</b> a ação, <b>Então</b> o que eu vejo.</div></div><video src="img/anim/rafael_fala.webm?v=1794839534" poster="img/anim/rafael_fala.png?v=1794839534" autoplay muted loop playsinline aria-hidden="true"></video></div><div class="cov" id="gkRev" data-test="revisao-gherkin"></div></aside></div>`;
   const ta = $('#gk'), cor = $('#gkCor'), nums = $('#gkNums');
   ta.value = gherkinDe(dados(), card.id);
   const atualiza = () => {
@@ -1219,7 +1244,7 @@ function montaPlano(A, card) {
         <div class="fbtns"><button type="button" class="btn sec" id="cancela" hidden data-test="cancelar-edicao">Cancelar</button><button class="btn" data-test="salvar-cenario" id="salva">Adicionar cenário</button></div>
       </form></div>
       <aside><div class="cov" id="cov" data-test="cobertura"><div class="hd">Cobertura das regras<span class="cnt" id="cnt" data-test="cobertura-contagem">0/${RG.length}</span></div><div class="bar"><i id="bar"></i></div>
-        ${RG.map((r, i) => `<div class="rl" id="u${i}" data-test="regra"><b>✓</b>${r}<span class="q" id="q${i}" hidden></span></div>`).join('')}<div class="ex" id="ex" hidden></div><div class="gabi-b" id="gabiB" data-test="recado-gabriela"><b>GABRIELA · DEV</b><span id="gabiT"></span></div><div class="gabi" aria-hidden="true"><video src="img/anim/gabriela_quadro.webm?v=1794515416" poster="img/anim/gabriela_quadro.png?v=1794515416" autoplay muted loop playsinline></video></div></div></aside></div>`;
+        ${RG.map((r, i) => `<div class="rl" id="u${i}" data-test="regra"><b>✓</b>${r}<span class="q" id="q${i}" hidden></span></div>`).join('')}<div class="ex" id="ex" hidden></div><div class="gabi-b" id="gabiB" data-test="recado-gabriela"><b>GABRIELA · DEV</b><span id="gabiT"></span></div><div class="gabi" aria-hidden="true"><video src="img/anim/gabriela_quadro.webm?v=1794839534" poster="img/anim/gabriela_quadro.png?v=1794839534" autoplay muted loop playsinline></video></div></div></aside></div>`;
   let editando = null; const abertos = new Set();
   d.rodadas = d.rodadas || {};
   const rod = () => d.rodadas[id] || null;
@@ -1581,7 +1606,7 @@ PAGINAS.caca = () => {
   const meus = LS.get('fd:caca-envios', []);
   casca('caca', `<section class="caca-hero"><div class="ch-t"><div class="ch-k"><span id="tNum">TEMPORADA 1 DE 3</span><b class="${aberta ? 'ab' : ''}">${aberta ? 'ABERTA' : 'EM BREVE'}</b>${aberta ? '<i id="tFim">quando os 3 forem achados, a próxima temporada abre sozinha</i>' : ''}</div>
       <h1 data-test="titulo-pagina">3 bugs escondidos no FlowDesk.</h1><p>Quem achar e reportar primeiro ganha o <b>Vida de QA 2</b> de graça quando lançar. Preste atenção nas aulas.</p></div>
-      <video src="img/anim/vinicius_lupa_v2.webm?v=1794515416" poster="img/anim/vinicius_lupa_v2.png?v=1794515416" autoplay muted loop playsinline aria-label="Vinícius com uma lupa procurando bugs"></video></section>
+      <video src="img/anim/vinicius_lupa_v2.webm?v=1794839534" poster="img/anim/vinicius_lupa_v2.png?v=1794839534" autoplay muted loop playsinline aria-label="Vinícius com uma lupa procurando bugs"></video></section>
     <div class="caca-bugs" id="placar">${[1, 2, 3].map((n) => `<article class="cb"><div class="cb-h"><span>#${n}</span><b>LIVRE</b></div><div class="cb-v">Ninguém achou ainda.</div></article>`).join('')}</div>
     <div class="caca-grade"><section class="painel caca-form"><h2>Reportar um bug da caça</h2><p class="dica">A confirmação é automática. Vale o primeiro report confirmado de cada bug.</p>
       <form id="fc" novalidate>${aberta ? '' : '<div class="aviso-caca" data-test="caca-fechada">A primeira temporada ainda não abriu. Quando abrir, este formulário passa a funcionar e o aviso sai daqui.</div>'}
@@ -1664,11 +1689,22 @@ PAGINAS.caca = () => {
 };
 
 // ---------- início ----------
+// ?save=<id> (pros testes automatizados): sem ninguém logado, entra com a conta de teste; troca os dados e recarrega sem o parâmetro
+function saveDaUrl() {
+  const sv = SAVES.find((x) => x.id === qs.get('save')); if (!sv) return false;
+  if (!sessao() || !contas()[sessao()]) { const cs = contas(), e = 'aluno@teste.com'; if (!cs[e]) { cs[e] = { nome: 'Aluno Teste', senha: '123456', criadaEm: agora() }; LS.set('fd:contas', cs); } LS.set('fd:sessao', e); }
+  D = null; LS.set(chaveDados(), sv.monta());
+  const u = new URL(location.href); u.searchParams.delete('save'); if (document.body.dataset.page === 'login') u.pathname = u.pathname.replace(/[^/]*$/, 'dashboard.html');
+  location.replace(u.toString()); return true;
+}
 (function () {
   const p = document.body.dataset.page;
+  if (qs.get('save') && saveDaUrl()) return;
+  if (REGR.size) document.body.classList.add(...[...REGR].map((x) => 'regr-' + x));
   if (p !== 'login') {
     if (!sessao() || !contas()[sessao()]) return location.replace('index.html');
     if (!dados()) { D = semente(); salvar(); }
   }
   PAGINAS[p]();
+  if (REGR.size || API_REDE) { const b = document.createElement('div'); b.className = 'regr-selo'; b.dataset.test = 'modo-regressao'; b.textContent = [REGR.size ? 'Modo regressão: ' + [...REGR].join(', ') : '', API_REDE ? 'API pela rede' : ''].filter(Boolean).join(' · '); document.body.appendChild(b); }
 })();

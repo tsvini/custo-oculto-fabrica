@@ -1048,3 +1048,7 @@ tr.fora-rod{opacity:.55}
 .desafio.com-bea{position:relative;padding-right:230px;min-height:300px;overflow:hidden}
 .desafio .d-bea{position:absolute;right:6px;bottom:0;height:300px;pointer-events:none}
 @media (max-width:900px){.desafio.com-bea{padding-right:22px}.desafio .d-bea{display:none}}
+
+/* modo regressão (módulo 4): selo discreto e o bug de layout no celular */
+.regr-selo{position:fixed;left:12px;bottom:12px;z-index:9000;background:#2a1215;color:#fecaca;border:1px solid #f87171;border-radius:999px;padding:6px 12px;font-size:12px;font-weight:700;pointer-events:none}
+@media (max-width:600px){.regr-layout [data-test=novo-chamado]{display:none}}
