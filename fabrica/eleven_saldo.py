@@ -3,3 +3,5 @@ import datetime as dt, os, requests
 s = requests.get("https://api.elevenlabs.io/v1/user/subscription", headers={"xi-api-key": os.environ["ELEVENLABS_KEY"].strip()}, timeout=60).json()
 r = s.get("next_character_count_reset_unix")
 print(f"::notice title=ElevenLabs::plano {s.get('tier')} | usados {s.get('character_count')} de {s.get('character_limit')} | renova em {dt.datetime.fromtimestamp(r, dt.timezone(dt.timedelta(hours=-3))).strftime('%d/%m/%Y %H:%M') if r else '?'} | status {s.get('status')} | rollover {s.get('max_credit_limit_extension') or s.get('can_extend_character_limit')}")
+vs = requests.get("https://api.elevenlabs.io/v1/voices", headers={"xi-api-key": os.environ["ELEVENLABS_KEY"].strip()}, timeout=60).json().get("voices", [])
+print("::notice title=Vozes::" + " · ".join(f"{v['name']} ({(v.get('labels') or {}).get('gender','?')}, {(v.get('labels') or {}).get('age','?')}, {(v.get('labels') or {}).get('accent','?')}, {v.get('category')})" for v in vs)[:3500])
