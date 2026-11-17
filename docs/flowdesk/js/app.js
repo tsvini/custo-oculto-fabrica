@@ -26,7 +26,9 @@ const salvar = () => LS.set(chaveDados(), D);
 const _conq = (LS.get(chaveDados(), null) || {}).conquistas || Object.keys(localStorage).filter((k) => k.startsWith('fd:dados:')).flatMap((k) => (LS.get(k, null) || {}).conquistas || []);
 const VERSAO = qs.get('versao') ? Math.min(18, Math.max(14, +qs.get('versao') || 14)) : (_conq.includes('ep20') ? 18 : _conq.includes('d1') ? 17 : _conq.includes('ep12') ? 16 : _conq.includes('ep08') ? 15 : 14);
 // modo regressão (módulo 4): ?regressao=duplicado,rascunho,periodo,layout traz bugs antigos de volta nesta aba; ?regressao= (vazio) desliga
-const REGR_OPCOES = ['duplicado', 'rascunho', 'periodo', 'layout'];
+const REGR_OPCOES = ['duplicado', 'rascunho', 'periodo', 'layout', 'rotulo', 'foco', 'ordem', 'acessibilidade', 'cor', 'lista-lenta'];
+// módulo 8: a tela nova do novo chamado (botão só com ícone) chega depois do incidente do módulo 7
+const M8 = _conq.includes('ep51');
 const REGR = (() => { try { if (qs.has('regressao')) sessionStorage.setItem('fd:regressao', qs.get('regressao') || ''); return new Set((sessionStorage.getItem('fd:regressao') || '').split(',').map((x) => x.trim()).filter((x) => REGR_OPCOES.includes(x))); } catch (e) { return new Set(); } })();
 // bugs plantados por versão
 const BUG = {
@@ -186,7 +188,7 @@ const usaApi = () => VERSAO >= 17 && 'serviceWorker' in navigator && /^https?:/.
 let _swPronto = null;
 function swPronto() {
   if (!_swPronto) _swPronto = (async () => {
-    await navigator.serviceWorker.register('sw.js?v=1794886709');
+    await navigator.serviceWorker.register('sw.js?v=1794887162');
     if (navigator.serviceWorker.controller) return true;
     await new Promise((r) => { navigator.serviceWorker.addEventListener('controllerchange', r, { once: true }); setTimeout(r, 4000); });
     return !!navigator.serviceWorker.controller;
@@ -312,6 +314,7 @@ const SAVES = [
   ...[31, 32, 33, 34, 35, 36, 37].map((n) => ({ id: 'm5ep' + n, nome: `Início do EP${n}`, quando: 'Módulo 5 · o pipeline', monta: () => { const d = depoisDoEp20(); for (let k = 22; k <= 28; k++) d.conquistas.push('ep' + k); for (let k = 31; k < n; k++) d.conquistas.push('ep' + k); return d; } })),
   ...[39, 40, 41, 42, 43, 44, 45].map((n) => ({ id: 'm6ep' + n, nome: `Início do EP${n}`, quando: 'Módulo 6 · direto no servidor', monta: () => { const d = depoisDoEp20(); for (let k = 22; k <= 28; k++) d.conquistas.push('ep' + k); for (let k = 31; k <= 36; k++) d.conquistas.push('ep' + k); for (let k = 39; k < n; k++) d.conquistas.push('ep' + k); return d; } })),
   ...[46, 47, 48, 49, 50, 51, 52].map((n) => ({ id: 'm7ep' + n, nome: `Início do EP${n}`, quando: 'Módulo 7 · o incidente', monta: () => { const d = depoisDoEp20(); for (let k = 22; k <= 28; k++) d.conquistas.push('ep' + k); for (let k = 31; k <= 36; k++) d.conquistas.push('ep' + k); for (let k = 39; k <= 44; k++) d.conquistas.push('ep' + k); for (const k of [47, 48, 50, 51]) if (k < n) d.conquistas.push('ep' + k); return d; } })),
+  ...[53, 54, 55, 56, 57, 58, 59, 60].map((n) => ({ id: 'm8ep' + n, nome: `Início do EP${n}`, quando: 'Módulo 8 · pra todo mundo, e rápido', monta: () => { const d = depoisDoEp20(); for (let k = 22; k <= 28; k++) d.conquistas.push('ep' + k); for (let k = 31; k <= 36; k++) d.conquistas.push('ep' + k); for (let k = 39; k <= 44; k++) d.conquistas.push('ep' + k); for (const k of [47, 48, 50, 51]) d.conquistas.push('ep' + k); for (const k of [54, 55, 56, 58, 59]) if (k < n) d.conquistas.push('ep' + k); return d; } })),
   ...[23, 24, 25, 26, 27, 28, 29].map((n) => ({ id: 'm4ep' + n, nome: `Início do EP${n}`, quando: 'Módulo 4 · o regressivo', monta: () => { const d = depoisDoEp20(); for (let k = 22; k < n; k++) d.conquistas.push('ep' + k); d.conquistas = d.conquistas.filter((k) => k !== 'ep21'); return d; } })),
 ];
 
@@ -492,6 +495,15 @@ const MISSOES = [
     ['ep51', 'Segunda de manhã, sem culpado', 'Sem culpado', [['As ações que funcionam sozinhas', 'acoes']]],
   ].map(([id, titulo, conq, itens]) => ({ id, titulo, aula: 'EP' + id.slice(2), conquista: conq, nivel: 'QA júnior', link: 'incidente.html#' + id,
     itens: itens.map(([t, k]) => [t, (d) => !!((((d.m7 || {}).ok) || {})[k])]) })),
+  // Módulo 8: acessibilidade e tempo. Os testes vêm do fork (acessibilidade.html)
+  ...[
+    ['ep54', 'Sem mouse', 'Só no teclado', [['O cenário do Tab no novo chamado', 'teclado']]],
+    ['ep55', 'O que o leitor de tela fala', 'Pelo nome que se ouve', [['Campos e botão achados pelo nome acessível', 'nome']]],
+    ['ep56', 'O robô da acessibilidade', 'Robô ligado', [['O robô conferindo o novo chamado e a lista', 'robo']]],
+    ['ep58', 'A tela que demora', 'Tempo medido', [['A lista com 2 mil chamados em menos de 2 segundos', 'tempo']]],
+    ['ep59', 'Um limite pra cada tela', 'Orçamento de tempo', [['Um arquivo com o limite de cada tela', 'orcamento']]],
+  ].map(([id, titulo, conq, itens]) => ({ id, titulo, aula: 'EP' + id.slice(2), conquista: conq, nivel: 'QA júnior', link: 'acessibilidade.html#' + id,
+    itens: itens.map(([t, k]) => [t, (d) => !!((((d.m8 || {}).ok) || {})[k])]) })),
 ];
 const bugsDe = (d) => d.cards.filter((c) => c.tipo === 'bug');
 const textoBug = (b) => [b.titulo, b.passos, b.esperado, b.obtido, b.cenario].join(' ');
@@ -596,7 +608,7 @@ const FILA_CONQ = [];
 function conquista(m) {
   if ($('.conq-fundo')) { if (!FILA_CONQ.some((x) => x.id === m.id)) FILA_CONQ.push(m); return; }  // várias de uma vez: uma por vez
   const o = document.createElement('div'); o.className = 'conq-fundo'; o.setAttribute('data-test', 'conquista');
-  const extra = m.id === 'd1' ? '<div class="s2">Agora você é <b>QA júnior</b>. O seu crachá novo está pronto: <a href="efetivacao.html" data-test="ir-cartao">pegar meu cartão de efetivação</a>.</div>' : m.id === 'ep12' ? '<div class="s2">A Gabriela já está corrigindo. Quando você voltar pro FlowDesk, a <b>Sprint 16</b> estará no ar.</div>' : m.id === 'ep14' ? '<div class="s2">Fim do módulo 2. A Sprint 16 foi aprovada e sobe sexta.</div>' : m.id === 'ep20' ? '<div class="s2">Fim do módulo 3. Três bugs que a tela sozinha não mostrava, e você achou onde cada um mora.</div>' : m.id === 'ep51' ? '<div class="s2">Fim do módulo 7. Do telefonema de sexta às três ações de segunda, o time saiu mais forte do incidente.</div>' : m.id === 'ep44' ? '<div class="s2">Fim do módulo 6. Você testa o servidor sem tela, e a tela só confere o que só ela mostra.</div>' : m.id === 'ep36' ? '<div class="s2">Fim do módulo 5. O regressivo roda sozinho, explica o próprio vermelho e todo vermelho tem dono.</div>' : m.id === 'ep28' ? '<div class="s2">Fim do módulo 4. Um regressivo pensado por risco, e cada teste provou que pega o bug: vermelho com ele, verde sem ele.</div>' : m.id === 'ep08' ? '<div class="s2">A Gabriela já está corrigindo. Quando você voltar pro FlowDesk, a <b>Sprint 15</b> estará no ar.</div>' : m.id === 'ep03' ? '<div class="s2">O <b>FlowChat</b> foi liberado: agora dá pra tirar dúvida com o time.</div>' : '';
+  const extra = m.id === 'd1' ? '<div class="s2">Agora você é <b>QA júnior</b>. O seu crachá novo está pronto: <a href="efetivacao.html" data-test="ir-cartao">pegar meu cartão de efetivação</a>.</div>' : m.id === 'ep12' ? '<div class="s2">A Gabriela já está corrigindo. Quando você voltar pro FlowDesk, a <b>Sprint 16</b> estará no ar.</div>' : m.id === 'ep14' ? '<div class="s2">Fim do módulo 2. A Sprint 16 foi aprovada e sobe sexta.</div>' : m.id === 'ep20' ? '<div class="s2">Fim do módulo 3. Três bugs que a tela sozinha não mostrava, e você achou onde cada um mora.</div>' : m.id === 'ep59' ? '<div class="s2">Fim do módulo 8. O FlowDesk funciona pra todo mundo, e rápido, e o pipeline segura a piora.</div>' : m.id === 'ep51' ? '<div class="s2">Fim do módulo 7. Do telefonema de sexta às três ações de segunda, o time saiu mais forte do incidente.</div>' : m.id === 'ep44' ? '<div class="s2">Fim do módulo 6. Você testa o servidor sem tela, e a tela só confere o que só ela mostra.</div>' : m.id === 'ep36' ? '<div class="s2">Fim do módulo 5. O regressivo roda sozinho, explica o próprio vermelho e todo vermelho tem dono.</div>' : m.id === 'ep28' ? '<div class="s2">Fim do módulo 4. Um regressivo pensado por risco, e cada teste provou que pega o bug: vermelho com ele, verde sem ele.</div>' : m.id === 'ep08' ? '<div class="s2">A Gabriela já está corrigindo. Quando você voltar pro FlowDesk, a <b>Sprint 15</b> estará no ar.</div>' : m.id === 'ep03' ? '<div class="s2">O <b>FlowChat</b> foi liberado: agora dá pra tirar dúvida com o time.</div>' : '';
   o.innerHTML = `<div class="conq"><div class="ci">${ico('trofeu')}</div><div class="k">CONQUISTA DESBLOQUEADA${m.semXp ? '' : ` · +${m.itens.length * XP_ITEM + XP_CONQ} XP`}</div><div class="v" data-test="conquista-nome">${m.conquista}</div><div class="s">Nível atual: <b>${m.nivel}</b></div>${extra}<button class="btn" data-test="fechar-conquista">Continuar</button></div>`;
   // fica pendente até o aluno fechar: se a página recarregar antes (reteste, troca de tela), o aviso volta
   const d = dados(); d.conqPendente = m.id; salvar();
@@ -613,7 +625,7 @@ function cardMissao() {
 // ---------- carreira (XP vem das missões) ----------
 // júnior vem com a efetivação (Desafio 1, no fim do módulo 2): a conquista 'd1' leva o XP pra 3000; daí em diante conta o XP do módulo 3 em diante
 const XP_ITEM = 40, XP_CONQ = 60, XP_JUNIOR = 3000, XP_PLENO = 6000;
-const M_JUNIOR = ['ep16', 'ep18', 'ep20', 'ep22', 'ep23', 'ep24', 'ep25', 'ep26', 'ep27', 'ep28', 'ep31', 'ep32', 'ep33', 'ep34', 'ep35', 'ep36', 'ep39', 'ep40', 'ep41', 'ep42', 'ep43', 'ep44', 'ep47', 'ep48', 'ep50', 'ep51'];
+const M_JUNIOR = ['ep16', 'ep18', 'ep20', 'ep22', 'ep23', 'ep24', 'ep25', 'ep26', 'ep27', 'ep28', 'ep31', 'ep32', 'ep33', 'ep34', 'ep35', 'ep36', 'ep39', 'ep40', 'ep41', 'ep42', 'ep43', 'ep44', 'ep47', 'ep48', 'ep50', 'ep51', 'ep54', 'ep55', 'ep56', 'ep58', 'ep59'];
 const ehJunior = (d = dados()) => xpDe(d) >= XP_JUNIOR;
 // pleno só vem com o Desafio 2: até lá a barra para um pouco antes
 const xpDe = (d = dados()) => { const f = d.conquistas || [], atual = MISSOES.find((m) => !f.includes(m.id)), efetivado = f.includes('d1');
@@ -654,10 +666,13 @@ ICONE.missoes = ICONE.trofeu; ICONE.efetivacao = ICONE.card;
 ICONE.pipeline = '<path d="M4 6h6v4H4zM14 14h6v4h-6zM7 10v4a3 3 0 0 0 3 3h4M17 14v-4a3 3 0 0 0-3-3h-4"/>';
 ICONE.servidor = '<rect x="4" y="4" width="16" height="7" rx="2"/><rect x="4" y="13" width="16" height="7" rx="2"/><path d="M8 7.5h.01M8 16.5h.01"/>';
 ICONE.incidente = '<path d="M12 3 2 20h20L12 3z"/><path d="M12 10v4M12 17h.01"/>';
+ICONE.acessibilidade = '<circle cx="12" cy="4.5" r="2"/><path d="M4 8.5l8 1.5 8-1.5M12 10v5M12 15l-3.5 6M12 15l3.5 6"/>';
 ICONE.regressivo = '<path d="M20 11a8 8 0 0 0-14.6-4.5M4 13a8 8 0 0 0 14.6 4.5"/><path d="M5 3v4h4M19 21v-4h-4"/>';
 const ico = (k, c = '') => SVG(ICONE[k], c);
 const placarCache = () => LS.get('fd:placar', null);
 function casca(pagina, conteudo) {
+  if (REGR.has('foco')) document.body.classList.add('sem-foco'); // módulo 8: alguém achou a borda do foco feia e tirou
+  if (M8) document.body.classList.add('m8');
   const c = contas()[sessao()] || { nome: '' }, d = dados();
   const [pg, aba] = pagina.split(':');
   const it = (h, n, k, extra = '') => `<a href="${h}" data-test="menu-${k}" class="${pg === k ? 'on' : ''}">${ico(k)}<span>${n}</span>${extra}</a>`;
@@ -669,7 +684,7 @@ function casca(pagina, conteudo) {
   document.body.innerHTML = `<div class="app"><aside class="side">${MARCA}<nav aria-label="Menu">
     ${it('dashboard.html', 'Início', 'dashboard')}${it('missoes.html', 'Missões', 'missoes', mAt ? `<span class="menu-tag">${mAt.id === 'd1' ? 'D1' : mAt.aula}</span>` : '')}${it('quadro.html', 'Quadro', 'quadro')}
     ${subCard}
-    ${(d.conquistas || []).includes('ep20') ? it('regressivo.html', 'Regressivo', 'regressivo') : ''}${(d.conquistas || []).includes('ep28') ? it('pipeline.html', 'Pipeline', 'pipeline') : ''}${(d.conquistas || []).includes('ep36') ? it('servidor.html', 'Servidor', 'servidor') : ''}${(d.conquistas || []).includes('ep44') ? it('incidente.html', 'Incidente', 'incidente') : ''}${it('chamados.html', 'Chamados', 'chamados')}${it('chat.html', 'FlowChat', 'chat', naoLidas)}${it('caca.html', 'Caça aos bugs', 'caca', `<span class="caca-n">${achados}/3</span>`)}${it('efetivacao.html', 'Carreira', 'efetivacao', efet ? '' : `<span class="tranca" title="Libera no Desafio 1">${ico('cadeado')}D1</span>`)}</nav>
+    ${(d.conquistas || []).includes('ep20') ? it('regressivo.html', 'Regressivo', 'regressivo') : ''}${(d.conquistas || []).includes('ep28') ? it('pipeline.html', 'Pipeline', 'pipeline') : ''}${(d.conquistas || []).includes('ep36') ? it('servidor.html', 'Servidor', 'servidor') : ''}${(d.conquistas || []).includes('ep44') ? it('incidente.html', 'Incidente', 'incidente') : ''}${(d.conquistas || []).includes('ep51') ? it('acessibilidade.html', 'Acessibilidade', 'acessibilidade') : ''}${it('chamados.html', 'Chamados', 'chamados')}${it('chat.html', 'FlowChat', 'chat', naoLidas)}${it('caca.html', 'Caça aos bugs', 'caca', `<span class="caca-n">${achados}/3</span>`)}${it('efetivacao.html', 'Carreira', 'efetivacao', efet ? '' : `<span class="tranca" title="Libera no Desafio 1">${ico('cadeado')}D1</span>`)}</nav>
     <div class="side-fim">${cardMissao()}<nav class="sec-nav">${it('configuracoes.html', 'Configurações', 'configuracoes')}</nav>
     <div class="eu"><span class="vc">${esc((c.nome || 'VC').split(' ').map((x) => x[0]).slice(0, 2).join('').toUpperCase())}</span><div><b data-test="usuario-logado">${esc(c.nome)}</b><span data-test="nivel">${nivelAtual()}</span></div><button data-test="sair">Sair</button></div></div></aside>
     <main class="main"><header class="barra"><div class="barra-c"><span class="barra-k">CARREIRA</span>${trilha(d)}<span class="xp" data-test="xp">${xpDe(d)} / ${ehJunior(d) ? XP_PLENO : XP_JUNIOR} XP</span></div>${pillVersao()}</header><div class="conteudo">${conteudo}</div></main></div>`;
@@ -833,7 +848,11 @@ PAGINAS.chamados = () => {
   };
   // Módulo 6: com ?servidor=http://localhost:3000 a lista vem do servidor do curso (npm run api)
   const SERV = qs.get('servidor');
-  let fonte = SERV ? [] : dados().chamados;
+  // Módulo 8: ?massa=2000 junta milhares de chamados do Mercado Bom Preço (só nesta aba), pra medir a lista
+  const MASSA = Math.min(5000, +qs.get('massa') || 0);
+  const gerados = Array.from({ length: MASSA }, (_, i) => ({ id: 5000 + i, titulo: ['Etiqueta da balança saiu errada', 'Leitor de código de barras parou', 'Nota fiscal não sai', 'Promoção não aplicou no caixa', 'Estoque com número negativo'][i % 5] + ` (${i + 1})`,
+    cliente: 'Mercado Bom Preço', status: ['Aberto', 'Em andamento', 'Resolvido', 'Fechado'][i % 4], criadoEm: new Date(Date.now() - (i % 60) * 86400000 - (i % 24) * 3600000).toISOString(), criadoPor: 'Cliente' }));
+  let fonte = SERV ? [] : [...dados().chamados, ...gerados], mostrar = 20;
   const todos = dados().chamados, n = (st) => todos.filter((x) => !st || x.status === st).length;
   const meus = todos.filter((x) => x.criadoPor === 'Você');
   const dica = meus.length
@@ -857,14 +876,20 @@ PAGINAS.chamados = () => {
     if (b) fantasma = '';
     const bb = b || fantasma;
     const l = [...fonte].sort((a, c) => c.id - a.id).filter((x) => (!f || x.status === f) && x.titulo.toLowerCase().includes(bb) && extraOk(x, f));
-    $('#linhas').innerHTML = l.length ? l.map((x) => { const [bg, cor] = corCliente(x.cliente);
+    // a lista mostra 20 por vez; com regressao=lista-lenta ela desenha tudo de uma vez e formata cada linha do jeito caro
+    const lenta = REGR.has('lista-lenta'), vis = lenta ? l : l.slice(0, mostrar);
+    const caro = () => { const t0 = performance.now(); while (performance.now() - t0 < 2.4); };
+    $('#linhas').innerHTML = vis.length ? vis.map((x) => { if (lenta) caro(); const [bg, cor] = corCliente(x.cliente);
       const chip = x.criadoPor === 'Você' ? '<span class="por-voce">criado por você</span>' : x.id === 1008 ? '<span class="exemplo">o problema do FD-101</span>' : '';
       return `<tr data-test="linha-chamado" data-href="chamado.html?id=${x.id}"><td class="num">#${x.id}</td><td><div class="tt"><a href="chamado.html?id=${x.id}" data-test="link-chamado">${esc(x.titulo) || '<i style="color:#5b5f78">(sem título)</i>'}</a>${chip}</div></td>
         <td><span class="cli"><span class="cli-i" style="background:${bg};color:${cor}">${esc(iniciais(x.cliente))}</span>${esc(x.cliente)}</span></td>
-        <td><span class="stp" data-test="status" style="--c:${COR_ST[x.status] || '#a78bfa'}"><i></i>${x.status}</span></td><td class="quando" title="${dataBR(x.criadoEm)}">${relativo(x.criadoEm)}</td></tr>`; }).join('')
+        <td><span class="stp" data-test="status" style="--c:${COR_ST[x.status] || '#a78bfa'}"><i></i><span class="stx">${x.status}</span></span></td><td class="quando" title="${dataBR(x.criadoEm)}">${relativo(x.criadoEm)}</td></tr>`; }).join('')
+      + (l.length > vis.length ? `<tr><td colspan="5" class="mais"><button type="button" class="btn sec peq" id="maisCh" data-test="mostrar-mais">Mostrar mais 20 · ${(l.length - vis.length).toLocaleString('pt-BR')} restantes</button></td></tr>` : '')
       : '<tr><td colspan="5" class="vazio" data-test="lista-vazia">Nenhum chamado encontrado</td></tr>';
     $$('#linhas tr[data-href]').forEach((tr) => { tr.onclick = (ev) => { if (!ev.target.closest('a')) location.href = tr.dataset.href; }; });
+    if ($('#maisCh')) $('#maisCh').onclick = () => { mostrar += 20; pinta(); };
   };
+  if (REGR.has('cor')) document.body.classList.add('so-cor');
   $$('.chips .chip').forEach((c) => { c.onclick = () => { $('#filtro').value = c.dataset.st; pinta(); }; });
   if (SERV) fetch(SERV.replace(/\/$/, '') + '/api/chamados').then((r) => r.json()).then((l) => {
     fonte = (Array.isArray(l) ? l : []).map((x) => ({ id: x.id, titulo: x.titulo || '', cliente: x.cliente || x.nomeCliente || '', status: x.status || 'Aberto', criadoEm: x.criadoEm, criadoPor: 'Cliente' }));
@@ -904,11 +929,20 @@ PAGINAS['novo-chamado'] = () => {
     <form class="fcard" id="f" novalidate>
       <div class="campo"><label for="titulo">Título <i>*</i><span class="contador" data-test="contador-titulo" id="cont">0/100</span></label><input class="in" id="titulo" maxlength="100" data-test="titulo" placeholder="Resuma o problema em uma frase"></div>
       <div class="campo"><label for="descricao">Descrição <i>*</i></label><textarea class="in" id="descricao" data-test="descricao" placeholder="Descreva o problema…"></textarea></div>
-      <div class="campo"><label for="cliente">Cliente</label><select class="in" id="cliente" data-test="cliente">${CLIENTES.map((c) => `<option>${c.nome}</option>`).join('')}</select></div>
+      ${M8 ? `<div class="campo"><label for="cliente">Cliente</label><div class="nc-env"><select class="in" id="cliente" data-test="cliente">${CLIENTES.map((c) => `<option>${c.nome}</option>`).join('')}</select>
+          <button class="btn nc-aviao" data-test="criar-chamado"${REGR.has('rotulo') || REGR.has('acessibilidade') ? '' : ' aria-label="Enviar chamado" title="Enviar chamado"'}>${SVG('<path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4 20-7z"/>')}</button></div></div>
+        <div class="campo"><div class="rot-an">Anexo <small>(opcional · PDF, PNG ou JPG até 5 MB)</small></div>
+        ${REGR.has('acessibilidade') ? `<div class="arquivo"><input type="file" id="anexo" data-test="anexo" class="arq-vis" accept=".pdf,.png,.jpg,.jpeg"><span class="nome" id="nomeArq" data-test="nome-anexo"></span><button type="button" class="icone" id="tiraArq" data-test="remover-anexo" hidden>Remover</button></div>`
+          : `<label class="arquivo" for="anexo"><input type="file" id="anexo" data-test="anexo" accept=".pdf,.png,.jpg,.jpeg"><span class="btn sec peq">Escolher arquivo</span><span class="nome" id="nomeArq" data-test="nome-anexo">Nenhum arquivo escolhido</span><button type="button" class="icone" id="tiraArq" data-test="remover-anexo" hidden>Remover</button></label>`}</div>
+        <div class="fbtns"><a class="btn sec" href="chamados.html" data-test="cancelar">Cancelar</a></div>`
+      : `<div class="campo"><label for="cliente">Cliente</label><select class="in" id="cliente" data-test="cliente">${CLIENTES.map((c) => `<option>${c.nome}</option>`).join('')}</select></div>
       <div class="campo"><label>Anexo <small>(opcional · PDF, PNG ou JPG até 5 MB)</small></label>
         <label class="arquivo" for="anexo"><input type="file" id="anexo" data-test="anexo" accept=".pdf,.png,.jpg,.jpeg"><span class="btn sec peq">Escolher arquivo</span><span class="nome" id="nomeArq" data-test="nome-anexo">Nenhum arquivo escolhido</span><button type="button" class="icone" id="tiraArq" data-test="remover-anexo" hidden>Remover</button></label></div>
-      <div class="fbtns"><a class="btn sec" href="chamados.html" data-test="cancelar">Cancelar</a><button class="btn" data-test="criar-chamado">Criar chamado</button></div>
+      <div class="fbtns"><a class="btn sec" href="chamados.html" data-test="cancelar">Cancelar</a><button class="btn" data-test="criar-chamado">Criar chamado</button></div>`}
     </form><aside class="nc-lado"><div class="nc-k">${ico('card', 'ic')}O QUE O FD-101 PEDE</div><ol>${(dados().cards.find((x) => x.id === 'FD-101') || { criterios: [] }).criterios.map((t) => `<li>${esc(t)}</li>`).join('')}</ol><a href="card.html?id=FD-101&aba=plano">Abrir o plano de testes ${ico('seta', 'ic')}</a></aside></div>`);
+  // módulo 8: regressao=ordem põe tabindex positivo (o foco pula do título pro link do lado); acessibilidade deixa a dica do lado com contraste baixo
+  if (M8 && REGR.has('ordem')) { $('#titulo').tabIndex = 1; $('#descricao').tabIndex = 2; const a = $('.nc-lado a'); if (a) a.tabIndex = 3; }
+  if (M8 && REGR.has('acessibilidade')) $('.nc-lado').classList.add('nc-baixo');
   let arquivo = null;
   if (VERSAO >= 17) {
     const rs = LS.get(rascKey(), null);
@@ -2077,9 +2111,65 @@ PAGINAS.incidente = () => {
   if (location.hash) { const el = $(location.hash); if (el) setTimeout(() => el.scrollIntoView({ block: 'start' }), 50); }
 };
 
+// ---------- acessibilidade e tempo (módulo 8): o FlowDesk lê os testes do fork ----------
+const A11Y_DICAS = {
+  teclado: 'Um cenário que aperta Tab a partir do título e confere o foco em cada campo (regressao=ordem deixa ele vermelho).',
+  nome: 'Os passos do criar chamado achando cada campo e o botão pelo nome acessível (cy.findByRole).',
+  robo: 'O cypress-axe instalado, com um passo que manda o robô conferir a tela (cy.checkA11y).',
+  tempo: 'Um cenário que abre a lista com ?massa=2000 e confere o tempo em milissegundos (regressao=lista-lenta deixa ele vermelho).',
+  orcamento: 'Um arquivo em cypress/fixtures com o limite de cada tela (ex.: orcamento.json).',
+};
+async function confereA11y(fork) {
+  const api = async (p) => { const r = await fetch(`https://api.github.com/repos/${fork}${p}`, { headers: { Accept: 'application/vnd.github+json' } }); if (r.status === 403 || r.status === 429) throw new Error('limite'); if (!r.ok) return null; return r.json(); };
+  const texto = (c) => { try { return new TextDecoder().decode(Uint8Array.from(atob((c.content || '').replace(/\n/g, '')), (x) => x.charCodeAt(0))); } catch (e) { return ''; } };
+  const repo = await api(''); if (!repo) return { erro: 'Não achei esse repositório no GitHub. Confere o nome: usuario/vida-de-qa-regressivo' };
+  if (!repo.fork || !repo.parent || !/\/vida-de-qa-regressivo$/i.test(repo.parent.full_name)) return { erro: 'Esse repositório não é um fork do vida-de-qa-regressivo.' };
+  const ok = {}, runs = ((await api('/actions/runs?per_page=100')) || {}).workflow_runs || [];
+  const refs = [repo.default_branch, ...new Set(runs.filter((r) => r.event === 'pull_request' && r.conclusion === 'success').map((r) => r.head_branch))].slice(0, 4);
+  for (const ref of refs) {
+    const arvore = await api(`/git/trees/${encodeURIComponent(ref)}?recursive=1`); if (!arvore || !arvore.tree) continue;
+    const caminhos = arvore.tree.map((x) => x.path);
+    let feat = '', code = '';
+    for (const f of caminhos.filter((p) => /^cypress\/e2e\/.+\.feature$/.test(p)).slice(0, 30)) { const c = await api(`/contents/${f}?ref=${encodeURIComponent(ref)}`); if (c) feat += '\n' + texto(c); }
+    for (const f of caminhos.filter((p) => /^cypress\/support\/.+\.js$/.test(p)).slice(0, 25)) { const c = await api(`/contents/${f}?ref=${encodeURIComponent(ref)}`); if (c) code += '\n' + texto(c); }
+    if (/\bTab\b/i.test(feat) && /foco/i.test(feat)) ok.teclado = true;
+    if (/findByRole/.test(code)) ok.nome = true;
+    if (/checkA11y/.test(code) && /injectAxe/.test(code)) ok.robo = true;
+    if (/2000|2 mil/.test(feat) && /milissegundos/i.test(feat)) ok.tempo = true;
+    if (caminhos.some((p) => /^cypress\/fixtures\/.*or[cç]amento.*\.json$/i.test(p))) ok.orcamento = true;
+  }
+  return { ok };
+}
+PAGINAS.acessibilidade = () => {
+  const d = dados(); d.m8 = d.m8 || {};
+  const liberado = (d.conquistas || []).includes('ep51');
+  const ks = { ep54: ['teclado'], ep55: ['nome'], ep56: ['robo'], ep58: ['tempo'], ep59: ['orcamento'] };
+  const blocos = MISSOES.filter((m) => ks[m.id]).map((m) => {
+    const feita = (d.conquistas || []).includes(m.id), pr = progresso(m, d);
+    return `<section class="painel rg-bl ${feita ? 'feito' : ''}" id="${m.id}" data-test="ac-${m.id}"><div class="rg-h"><span>${m.aula}</span><h3>${m.titulo}</h3>${feita ? `<i>${ico('trofeu')} ${m.conquista}</i>` : ''}</div>
+      ${m.itens.map(([t], i) => `<div class="rg-cx ${feita || pr[i] ? 'ok' : ''}" data-test="ac-item-${ks[m.id][i]}"><div class="rg-r"><b>${feita || pr[i] ? '✓' : '•'}</b>${t}</div>${feita || pr[i] ? '' : `<p class="dica">${A11Y_DICAS[ks[m.id][i]]}</p>`}</div>`).join('')}</section>`;
+  }).join('');
+  casca('acessibilidade', topo('Acessibilidade', 'Pra todo mundo, e rápido. Os bugs deste módulo ligam com ?regressao=foco, ordem, rotulo, acessibilidade, cor e lista-lenta. A lista grande vem com ?massa=2000.')
+    + (liberado ? `<section class="painel rg-bl"><div class="campo"><label for="acFork">Seu fork no GitHub</label><div class="pp-l"><input class="in" id="acFork" data-test="ac-fork" placeholder="seu-usuario/vida-de-qa-regressivo" value="${esc(d.m8.fork || (d.m7 || {}).fork || (d.m6 || {}).fork || '')}"><button class="btn" id="acOk" data-test="ac-conferir">Conferir no GitHub</button></div>
+        <p class="dica">${d.m8.quando ? `Última conferência: ${dataHora(d.m8.quando)}.` : 'A conferência usa a API pública do GitHub, sem login.'}</p></div></section>${blocos}`
+      : '<div class="aviso-caca" data-test="ac-fechado">Libera no módulo 8, depois de fechar o módulo 7.</div>'));
+  if (!liberado) return;
+  $('#acOk').onclick = async () => {
+    const fork = $('#acFork').value.trim().replace(/^https?:\/\/github\.com\//i, '').replace(/\.git$|\/$/g, '');
+    if (!/^[\w.-]+\/[\w.-]+$/.test(fork)) return toast('Escreve assim: seu-usuario/vida-de-qa-regressivo', true);
+    const b = $('#acOk'); b.disabled = true; b.textContent = 'Consultando o GitHub…';
+    try {
+      const r = await confereA11y(fork); if (r.erro) { b.disabled = false; b.textContent = 'Conferir no GitHub'; return toast(r.erro, true); }
+      const dd = dados(); dd.m8 = dd.m8 || {}; dd.m8.fork = fork; dd.m8.quando = agora(); dd.m8.ok = { ...(dd.m8.ok || {}) };
+      Object.entries(r.ok).forEach(([k, v]) => { if (v) dd.m8.ok[k] = dd.m8.ok[k] || agora(); }); salvar(); recado('Conferido no GitHub.'); location.reload();
+    } catch (e) { b.disabled = false; b.textContent = 'Conferir no GitHub'; toast(e.message === 'limite' ? 'O GitHub limitou as consultas por agora. Tenta de novo em alguns minutos.' : 'Não consegui falar com o GitHub. Confere sua conexão.', true); }
+  };
+  if (location.hash) { const el = $(location.hash); if (el) setTimeout(() => el.scrollIntoView({ block: 'start' }), 50); }
+};
+
 // ---------- link da aula (aula.html?ep=16) ----------
 // Um link por aula prática: já leva pra tela certa. Se o aluno ainda não chegou nessa aula, oferece pular pra ela (com backup do progresso).
-const AULA_SAVE = { 0: 'inicio', 1: 'inicio', 2: 'inicio', 3: 'inicio', 4: 'inicio', 5: 'ep04', 6: 'ep06', 7: 'ep07', 8: 'ep08', 9: 'ep10', 10: 'ep10', 11: 'ep12', 12: 'ep12', 13: 'ep14', 14: 'ep14', 14.5: 'd1', 15: 'ep16', 16: 'ep16', 17: 'ep18', 18: 'ep18', 19: 'ep20', 20: 'ep20', 21: 'm4', 22: 'm4', 23: 'm4ep23', 24: 'm4ep24', 25: 'm4ep25', 26: 'm4ep26', 27: 'm4ep27', 28: 'm4ep28', 29: 'm4ep29', 30: 'm5ep31', 31: 'm5ep31', 32: 'm5ep32', 33: 'm5ep33', 34: 'm5ep34', 35: 'm5ep35', 36: 'm5ep36', 37: 'm5ep37', 38: 'm6ep39', 39: 'm6ep39', 40: 'm6ep40', 41: 'm6ep41', 42: 'm6ep42', 43: 'm6ep43', 44: 'm6ep44', 45: 'm6ep45', 46: 'm7ep46', 47: 'm7ep47', 48: 'm7ep48', 49: 'm7ep49', 50: 'm7ep50', 51: 'm7ep51', 52: 'm7ep52' };
+const AULA_SAVE = { 0: 'inicio', 1: 'inicio', 2: 'inicio', 3: 'inicio', 4: 'inicio', 5: 'ep04', 6: 'ep06', 7: 'ep07', 8: 'ep08', 9: 'ep10', 10: 'ep10', 11: 'ep12', 12: 'ep12', 13: 'ep14', 14: 'ep14', 14.5: 'd1', 15: 'ep16', 16: 'ep16', 17: 'ep18', 18: 'ep18', 19: 'ep20', 20: 'ep20', 21: 'm4', 22: 'm4', 23: 'm4ep23', 24: 'm4ep24', 25: 'm4ep25', 26: 'm4ep26', 27: 'm4ep27', 28: 'm4ep28', 29: 'm4ep29', 30: 'm5ep31', 31: 'm5ep31', 32: 'm5ep32', 33: 'm5ep33', 34: 'm5ep34', 35: 'm5ep35', 36: 'm5ep36', 37: 'm5ep37', 38: 'm6ep39', 39: 'm6ep39', 40: 'm6ep40', 41: 'm6ep41', 42: 'm6ep42', 43: 'm6ep43', 44: 'm6ep44', 45: 'm6ep45', 46: 'm7ep46', 47: 'm7ep47', 48: 'm7ep48', 49: 'm7ep49', 50: 'm7ep50', 51: 'm7ep51', 52: 'm7ep52', 53: 'm8ep53', 54: 'm8ep54', 55: 'm8ep55', 56: 'm8ep56', 57: 'm8ep57', 58: 'm8ep58', 59: 'm8ep59', 60: 'm8ep60' };
 PAGINAS.aula = () => {
   const n = numAula(qs.get('ep') || ''); if (Number.isNaN(n)) return location.replace('dashboard.html');
   if (!sessao() || !contas()[sessao()]) return location.replace('index.html?volta=' + encodeURIComponent('aula.html?ep=' + qs.get('ep')));

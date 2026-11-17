@@ -1106,3 +1106,15 @@ tr.fora-rod{opacity:.55}
 .in-fil{display:grid;grid-template-columns:160px 1fr 180px 170px;gap:10px;margin-bottom:8px}
 .in-log{background:#0b0a14;border:1px solid #221c3d;border-radius:12px;padding:14px;max-height:420px;overflow:auto;font:12.5px/1.6 'JetBrains Mono',monospace;color:#cbd5e1;white-space:pre}.in-log .e{color:#f87171}
 .in-resp{display:grid;grid-template-columns:140px 1fr 190px auto;gap:10px;margin-top:12px}.in-acoes{display:flex;flex-direction:column;gap:10px;margin-top:12px}.in-ac{display:flex;gap:10px;align-items:center;background:#141225;border:1px solid #2e2550;border-radius:10px;padding:10px 12px;font-size:14px;cursor:pointer}.in-acoes .btn{align-self:flex-start}
+/* módulo 8 · acessibilidade e performance */
+a:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible,textarea:focus-visible,[tabindex]:focus-visible{outline:3px solid #c4b5fd;outline-offset:2px}
+.sem-foco *:focus,.sem-foco *:focus-visible{outline:none!important;box-shadow:none!important}
+.nc-env{display:flex;gap:10px}.nc-env select{flex:1}.nc-aviao{width:52px;padding:0;display:flex;align-items:center;justify-content:center}.nc-aviao svg{width:22px;height:22px}
+.nc-baixo,.nc-baixo ol,.nc-baixo a,.nc-baixo .nc-k{color:#3b3854!important}
+.so-cor .stx{display:none}
+.ch-tab td.mais{text-align:center;padding:14px}
+/* módulo 8: depois do e-mail da Paula o time subiu o contraste (roxo um tom mais escuro com texto branco) */
+body.m8{--acc:#7c3aed}body.m8 .side .tranca{color:#9a9db3}
+.arquivo input.arq-vis{display:block;position:static;opacity:1;width:auto;height:auto;pointer-events:auto;color:#a9acc2;font-size:13px}
+.rot-an{font-size:14px;font-weight:600;margin-bottom:6px}.rot-an small{color:var(--mut);font-weight:500}
+body.m8 [data-test=sair]{color:#b4b7cc}

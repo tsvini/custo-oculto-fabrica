@@ -22,3 +22,4 @@ jobs:
       - run: node tests/flowdesk/pipeline.js http://localhost:8765/
       - run: node tests/flowdesk/servidor.js http://localhost:8765/
       - run: node tests/flowdesk/incidente.js http://localhost:8765/
+      - run: node tests/flowdesk/acessibilidade.js http://localhost:8765/
