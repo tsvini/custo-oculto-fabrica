@@ -186,7 +186,7 @@ const usaApi = () => VERSAO >= 17 && 'serviceWorker' in navigator && /^https?:/.
 let _swPronto = null;
 function swPronto() {
   if (!_swPronto) _swPronto = (async () => {
-    await navigator.serviceWorker.register('sw.js?v=1794885037');
+    await navigator.serviceWorker.register('sw.js?v=1794886709');
     if (navigator.serviceWorker.controller) return true;
     await new Promise((r) => { navigator.serviceWorker.addEventListener('controllerchange', r, { once: true }); setTimeout(r, 4000); });
     return !!navigator.serviceWorker.controller;
@@ -311,6 +311,7 @@ const SAVES = [
   // módulo 4: começo de cada prática, com as missões de antes já feitas
   ...[31, 32, 33, 34, 35, 36, 37].map((n) => ({ id: 'm5ep' + n, nome: `Início do EP${n}`, quando: 'Módulo 5 · o pipeline', monta: () => { const d = depoisDoEp20(); for (let k = 22; k <= 28; k++) d.conquistas.push('ep' + k); for (let k = 31; k < n; k++) d.conquistas.push('ep' + k); return d; } })),
   ...[39, 40, 41, 42, 43, 44, 45].map((n) => ({ id: 'm6ep' + n, nome: `Início do EP${n}`, quando: 'Módulo 6 · direto no servidor', monta: () => { const d = depoisDoEp20(); for (let k = 22; k <= 28; k++) d.conquistas.push('ep' + k); for (let k = 31; k <= 36; k++) d.conquistas.push('ep' + k); for (let k = 39; k < n; k++) d.conquistas.push('ep' + k); return d; } })),
+  ...[46, 47, 48, 49, 50, 51, 52].map((n) => ({ id: 'm7ep' + n, nome: `Início do EP${n}`, quando: 'Módulo 7 · o incidente', monta: () => { const d = depoisDoEp20(); for (let k = 22; k <= 28; k++) d.conquistas.push('ep' + k); for (let k = 31; k <= 36; k++) d.conquistas.push('ep' + k); for (let k = 39; k <= 44; k++) d.conquistas.push('ep' + k); for (const k of [47, 48, 50, 51]) if (k < n) d.conquistas.push('ep' + k); return d; } })),
   ...[23, 24, 25, 26, 27, 28, 29].map((n) => ({ id: 'm4ep' + n, nome: `Início do EP${n}`, quando: 'Módulo 4 · o regressivo', monta: () => { const d = depoisDoEp20(); for (let k = 22; k < n; k++) d.conquistas.push('ep' + k); d.conquistas = d.conquistas.filter((k) => k !== 'ep21'); return d; } })),
 ];
 
@@ -483,6 +484,14 @@ const MISSOES = [
     ['ep44', 'O contrato', 'Combinado é combinado', [['Contrato do chamado no projeto', 'contrato'], ['Smoke com o servidor, verde no GitHub', 'apiPipeline']]],
   ].map(([id, titulo, conq, itens]) => ({ id, titulo, aula: 'EP' + id.slice(2), conquista: conq, nivel: 'QA júnior', link: 'servidor.html#' + id,
     itens: itens.map(([t, k]) => [t, (d) => !!((((d.m6 || {}).ok) || {})[k])]) })),
+  // Módulo 7: o incidente. A investigação e o relatório acontecem no próprio FlowDesk; os testes vêm do fork (incidente.html)
+  ...[
+    ['ep47', 'O que os registros contam', 'Detetive de log', [['A hora do primeiro 401 fora do comum', 'hora'], ['O deploy que causou', 'deploy'], ['Quanto a sessão durava de verdade', 'duracao']]],
+    ['ep48', 'Vermelho antes do conserto', 'Bug com prova', [['O teste da sessão no projeto', 'sessao']]],
+    ['ep50', 'Conferindo o conserto', 'Olho nos vizinhos', [['O teste do lembrar de mim no projeto', 'lembrar']]],
+    ['ep51', 'Segunda de manhã, sem culpado', 'Sem culpado', [['As ações que funcionam sozinhas', 'acoes']]],
+  ].map(([id, titulo, conq, itens]) => ({ id, titulo, aula: 'EP' + id.slice(2), conquista: conq, nivel: 'QA júnior', link: 'incidente.html#' + id,
+    itens: itens.map(([t, k]) => [t, (d) => !!((((d.m7 || {}).ok) || {})[k])]) })),
 ];
 const bugsDe = (d) => d.cards.filter((c) => c.tipo === 'bug');
 const textoBug = (b) => [b.titulo, b.passos, b.esperado, b.obtido, b.cenario].join(' ');
@@ -587,7 +596,7 @@ const FILA_CONQ = [];
 function conquista(m) {
   if ($('.conq-fundo')) { if (!FILA_CONQ.some((x) => x.id === m.id)) FILA_CONQ.push(m); return; }  // várias de uma vez: uma por vez
   const o = document.createElement('div'); o.className = 'conq-fundo'; o.setAttribute('data-test', 'conquista');
-  const extra = m.id === 'd1' ? '<div class="s2">Agora você é <b>QA júnior</b>. O seu crachá novo está pronto: <a href="efetivacao.html" data-test="ir-cartao">pegar meu cartão de efetivação</a>.</div>' : m.id === 'ep12' ? '<div class="s2">A Gabriela já está corrigindo. Quando você voltar pro FlowDesk, a <b>Sprint 16</b> estará no ar.</div>' : m.id === 'ep14' ? '<div class="s2">Fim do módulo 2. A Sprint 16 foi aprovada e sobe sexta.</div>' : m.id === 'ep20' ? '<div class="s2">Fim do módulo 3. Três bugs que a tela sozinha não mostrava, e você achou onde cada um mora.</div>' : m.id === 'ep44' ? '<div class="s2">Fim do módulo 6. Você testa o servidor sem tela, e a tela só confere o que só ela mostra.</div>' : m.id === 'ep36' ? '<div class="s2">Fim do módulo 5. O regressivo roda sozinho, explica o próprio vermelho e todo vermelho tem dono.</div>' : m.id === 'ep28' ? '<div class="s2">Fim do módulo 4. Um regressivo pensado por risco, e cada teste provou que pega o bug: vermelho com ele, verde sem ele.</div>' : m.id === 'ep08' ? '<div class="s2">A Gabriela já está corrigindo. Quando você voltar pro FlowDesk, a <b>Sprint 15</b> estará no ar.</div>' : m.id === 'ep03' ? '<div class="s2">O <b>FlowChat</b> foi liberado: agora dá pra tirar dúvida com o time.</div>' : '';
+  const extra = m.id === 'd1' ? '<div class="s2">Agora você é <b>QA júnior</b>. O seu crachá novo está pronto: <a href="efetivacao.html" data-test="ir-cartao">pegar meu cartão de efetivação</a>.</div>' : m.id === 'ep12' ? '<div class="s2">A Gabriela já está corrigindo. Quando você voltar pro FlowDesk, a <b>Sprint 16</b> estará no ar.</div>' : m.id === 'ep14' ? '<div class="s2">Fim do módulo 2. A Sprint 16 foi aprovada e sobe sexta.</div>' : m.id === 'ep20' ? '<div class="s2">Fim do módulo 3. Três bugs que a tela sozinha não mostrava, e você achou onde cada um mora.</div>' : m.id === 'ep51' ? '<div class="s2">Fim do módulo 7. Do telefonema de sexta às três ações de segunda, o time saiu mais forte do incidente.</div>' : m.id === 'ep44' ? '<div class="s2">Fim do módulo 6. Você testa o servidor sem tela, e a tela só confere o que só ela mostra.</div>' : m.id === 'ep36' ? '<div class="s2">Fim do módulo 5. O regressivo roda sozinho, explica o próprio vermelho e todo vermelho tem dono.</div>' : m.id === 'ep28' ? '<div class="s2">Fim do módulo 4. Um regressivo pensado por risco, e cada teste provou que pega o bug: vermelho com ele, verde sem ele.</div>' : m.id === 'ep08' ? '<div class="s2">A Gabriela já está corrigindo. Quando você voltar pro FlowDesk, a <b>Sprint 15</b> estará no ar.</div>' : m.id === 'ep03' ? '<div class="s2">O <b>FlowChat</b> foi liberado: agora dá pra tirar dúvida com o time.</div>' : '';
   o.innerHTML = `<div class="conq"><div class="ci">${ico('trofeu')}</div><div class="k">CONQUISTA DESBLOQUEADA${m.semXp ? '' : ` · +${m.itens.length * XP_ITEM + XP_CONQ} XP`}</div><div class="v" data-test="conquista-nome">${m.conquista}</div><div class="s">Nível atual: <b>${m.nivel}</b></div>${extra}<button class="btn" data-test="fechar-conquista">Continuar</button></div>`;
   // fica pendente até o aluno fechar: se a página recarregar antes (reteste, troca de tela), o aviso volta
   const d = dados(); d.conqPendente = m.id; salvar();
@@ -604,10 +613,12 @@ function cardMissao() {
 // ---------- carreira (XP vem das missões) ----------
 // júnior vem com a efetivação (Desafio 1, no fim do módulo 2): a conquista 'd1' leva o XP pra 3000; daí em diante conta o XP do módulo 3 em diante
 const XP_ITEM = 40, XP_CONQ = 60, XP_JUNIOR = 3000, XP_PLENO = 6000;
-const M_JUNIOR = ['ep16', 'ep18', 'ep20', 'ep22', 'ep23', 'ep24', 'ep25', 'ep26', 'ep27', 'ep28', 'ep31', 'ep32', 'ep33', 'ep34', 'ep35', 'ep36', 'ep39', 'ep40', 'ep41', 'ep42', 'ep43', 'ep44'];
+const M_JUNIOR = ['ep16', 'ep18', 'ep20', 'ep22', 'ep23', 'ep24', 'ep25', 'ep26', 'ep27', 'ep28', 'ep31', 'ep32', 'ep33', 'ep34', 'ep35', 'ep36', 'ep39', 'ep40', 'ep41', 'ep42', 'ep43', 'ep44', 'ep47', 'ep48', 'ep50', 'ep51'];
 const ehJunior = (d = dados()) => xpDe(d) >= XP_JUNIOR;
+// pleno só vem com o Desafio 2: até lá a barra para um pouco antes
 const xpDe = (d = dados()) => { const f = d.conquistas || [], atual = MISSOES.find((m) => !f.includes(m.id)), efetivado = f.includes('d1');
-  return (efetivado ? XP_JUNIOR : 0) + MISSOES.reduce((s, m) => (efetivado && !M_JUNIOR.includes(m.id)) ? s : s + (m.semXp ? 0 : f.includes(m.id) ? m.itens.length * XP_ITEM + XP_CONQ : m === atual ? progresso(m, d).filter(Boolean).length * XP_ITEM : 0), 0); };
+  const total = (efetivado ? XP_JUNIOR : 0) + MISSOES.reduce((s, m) => (efetivado && !M_JUNIOR.includes(m.id)) ? s : s + (m.semXp ? 0 : f.includes(m.id) ? m.itens.length * XP_ITEM + XP_CONQ : m === atual ? progresso(m, d).filter(Boolean).length * XP_ITEM : 0), 0);
+  return f.includes('d2') ? total : Math.min(total, XP_PLENO - 40); };
 function trilha(d = dados()) {
   const xp = xpDe(d), jr = xp >= XP_JUNIOR;
   const a = jr ? 1 : Math.min(xp / XP_JUNIOR, .98), b = jr ? Math.min((xp - XP_JUNIOR) / (XP_PLENO - XP_JUNIOR), .98) : 0;
@@ -642,6 +653,7 @@ const ICONE = {
 ICONE.missoes = ICONE.trofeu; ICONE.efetivacao = ICONE.card;
 ICONE.pipeline = '<path d="M4 6h6v4H4zM14 14h6v4h-6zM7 10v4a3 3 0 0 0 3 3h4M17 14v-4a3 3 0 0 0-3-3h-4"/>';
 ICONE.servidor = '<rect x="4" y="4" width="16" height="7" rx="2"/><rect x="4" y="13" width="16" height="7" rx="2"/><path d="M8 7.5h.01M8 16.5h.01"/>';
+ICONE.incidente = '<path d="M12 3 2 20h20L12 3z"/><path d="M12 10v4M12 17h.01"/>';
 ICONE.regressivo = '<path d="M20 11a8 8 0 0 0-14.6-4.5M4 13a8 8 0 0 0 14.6 4.5"/><path d="M5 3v4h4M19 21v-4h-4"/>';
 const ico = (k, c = '') => SVG(ICONE[k], c);
 const placarCache = () => LS.get('fd:placar', null);
@@ -657,7 +669,7 @@ function casca(pagina, conteudo) {
   document.body.innerHTML = `<div class="app"><aside class="side">${MARCA}<nav aria-label="Menu">
     ${it('dashboard.html', 'Início', 'dashboard')}${it('missoes.html', 'Missões', 'missoes', mAt ? `<span class="menu-tag">${mAt.id === 'd1' ? 'D1' : mAt.aula}</span>` : '')}${it('quadro.html', 'Quadro', 'quadro')}
     ${subCard}
-    ${(d.conquistas || []).includes('ep20') ? it('regressivo.html', 'Regressivo', 'regressivo') : ''}${(d.conquistas || []).includes('ep28') ? it('pipeline.html', 'Pipeline', 'pipeline') : ''}${(d.conquistas || []).includes('ep36') ? it('servidor.html', 'Servidor', 'servidor') : ''}${it('chamados.html', 'Chamados', 'chamados')}${it('chat.html', 'FlowChat', 'chat', naoLidas)}${it('caca.html', 'Caça aos bugs', 'caca', `<span class="caca-n">${achados}/3</span>`)}${it('efetivacao.html', 'Carreira', 'efetivacao', efet ? '' : `<span class="tranca" title="Libera no Desafio 1">${ico('cadeado')}D1</span>`)}</nav>
+    ${(d.conquistas || []).includes('ep20') ? it('regressivo.html', 'Regressivo', 'regressivo') : ''}${(d.conquistas || []).includes('ep28') ? it('pipeline.html', 'Pipeline', 'pipeline') : ''}${(d.conquistas || []).includes('ep36') ? it('servidor.html', 'Servidor', 'servidor') : ''}${(d.conquistas || []).includes('ep44') ? it('incidente.html', 'Incidente', 'incidente') : ''}${it('chamados.html', 'Chamados', 'chamados')}${it('chat.html', 'FlowChat', 'chat', naoLidas)}${it('caca.html', 'Caça aos bugs', 'caca', `<span class="caca-n">${achados}/3</span>`)}${it('efetivacao.html', 'Carreira', 'efetivacao', efet ? '' : `<span class="tranca" title="Libera no Desafio 1">${ico('cadeado')}D1</span>`)}</nav>
     <div class="side-fim">${cardMissao()}<nav class="sec-nav">${it('configuracoes.html', 'Configurações', 'configuracoes')}</nav>
     <div class="eu"><span class="vc">${esc((c.nome || 'VC').split(' ').map((x) => x[0]).slice(0, 2).join('').toUpperCase())}</span><div><b data-test="usuario-logado">${esc(c.nome)}</b><span data-test="nivel">${nivelAtual()}</span></div><button data-test="sair">Sair</button></div></div></aside>
     <main class="main"><header class="barra"><div class="barra-c"><span class="barra-k">CARREIRA</span>${trilha(d)}<span class="xp" data-test="xp">${xpDe(d)} / ${ehJunior(d) ? XP_PLENO : XP_JUNIOR} XP</span></div>${pillVersao()}</header><div class="conteudo">${conteudo}</div></main></div>`;
@@ -1953,9 +1965,121 @@ PAGINAS.servidor = () => {
   if (location.hash) { const el = $(location.hash); if (el) setTimeout(() => el.scrollIntoView({ block: 'start' }), 50); }
 };
 
+// ---------- incidente (módulo 7): a sexta-feira, o log, o relatório e os testes do fork ----------
+const INC_DEPLOYS = [['14:05', 'v2.29', 'Corrige o texto do botão Salvar', 'texto'], ['17:30', 'v2.30', 'Relatório mensal em PDF', 'pdf'], ['22:40', 'v2.31', 'Ajusta o tempo da sessão', 'sessao']];
+// o log daquela sexta: gerado sempre igual (semente fixa), umas 4 mil linhas
+function logIncidente() {
+  if (logIncidente.cache) return logIncidente.cache;
+  let sem = 20261113; const rnd = () => { sem = (sem * 1103515245 + 12345) % 2147483648; return sem / 2147483648; };
+  const hm = (t) => { const h = Math.floor(t / 3600), m = Math.floor(t / 60) % 60, x = t % 60; return [h, m, x].map((v) => String(v).padStart(2, '0')).join(':'); };
+  // o deploy começa 22:40 e a versão nova responde a partir das 22:41: daí, todo token com mais de 30 segundos vale nada
+  const ini = 22 * 3600 + 15 * 60, fim = 23 * 3600 + 30 * 60, deploy = 22 * 3600 + 41 * 60, volta = 23 * 3600 + 25 * 60;
+  const login = {}, linhas = [];
+  for (let t = ini; t < fim; t++) {
+    // ~33 pedidos por minuto; quando quebra, todo mundo tenta de novo e o tráfego explode (e vai caindo conforme as pessoas desistem)
+    const lam = 0.4 + (t >= deploy && t < volta ? 3.0 * Math.exp(-(t - deploy) / 330) : 0), n = Math.floor(lam) + (rnd() < lam % 1 ? 1 : 0);
+    for (let k = 0; k < n; k++) {
+      const u = 'u' + (100 + Math.floor(rnd() * 260)), r = rnd();
+      let rota = r < 0.45 ? 'GET /api/chamados' : r < 0.62 ? 'GET /api/chamados/' + (1000 + Math.floor(rnd() * 400)) : r < 0.76 ? 'POST /api/chamados' : r < 0.88 ? 'GET /api/rascunhos' : 'POST /api/entrar';
+      let st = 200;
+      const quebrado = t >= deploy && t < volta;
+      if (rota === 'POST /api/entrar') { st = rnd() < 0.04 ? 401 : 200; if (st === 200) login[u] = t; }
+      else if (quebrado) { if (login[u] === undefined || login[u] < deploy || t - login[u] > 30) { linhas.push([t, u, rota, 401]); rota = 'POST /api/entrar'; login[u] = t; } }
+      else if (rota === 'POST /api/chamados') st = 201;
+      linhas.push([t, u, rota, st]);
+    }
+  }
+  const lin = linhas.map(([t, u, rota, st]) => ({ t, hora: hm(t), u, rota, st, ms: st === 401 ? 3 + (t % 5) : 12 + (t % 40) }));
+  const primeiro = lin.find((x) => x.st === 401 && x.t >= deploy && !x.rota.includes('/entrar'));
+  logIncidente.cache = { lin, primeiro: primeiro.hora.slice(0, 5) };
+  return logIncidente.cache;
+}
+const INC_ACOES = [['smoke', 'O teste da sessão roda no smoke, em todo pedido de revisão', true], ['horario', 'Deploy em produção só até as 16h, e nunca na sexta depois do almoço', true],
+  ['alerta', 'Se os 401 passarem do normal, o celular de quem está de plantão toca', true], ['lucas', 'Todo deploy precisa da aprovação do Lucas', false]];
+const INC_DICAS = {
+  hora: 'Filtra o log pelo status 401 e olha a partir do deploy. Ignora os erros de senha no /api/entrar.',
+  deploy: 'Compara a hora do primeiro 401 fora do comum com a lista de deploys.',
+  duracao: 'Pega um usuário: quanto tempo passa entre o entrar e o primeiro 401 dele?',
+  sessao: 'Um cenário que entra pelo servidor e confere que o token vale pelo menos 30 minutos (npm run api -- --regressao=sessao deixa ele vermelho).',
+  lembrar: 'Um cenário com "lembrar de mim" que confere a sessão de 30 dias (--regressao=lembrar deixa ele vermelho).',
+  acoes: 'Marca só as ações que funcionam sem depender de alguém lembrar.',
+};
+async function confereIncidente(fork) {
+  const api = async (p) => { const r = await fetch(`https://api.github.com/repos/${fork}${p}`, { headers: { Accept: 'application/vnd.github+json' } }); if (r.status === 403 || r.status === 429) throw new Error('limite'); if (!r.ok) return null; return r.json(); };
+  const texto = (c) => { try { return new TextDecoder().decode(Uint8Array.from(atob((c.content || '').replace(/\n/g, '')), (x) => x.charCodeAt(0))); } catch (e) { return ''; } };
+  const repo = await api(''); if (!repo) return { erro: 'Não achei esse repositório no GitHub. Confere o nome: usuario/vida-de-qa-regressivo' };
+  if (!repo.fork || !repo.parent || !/\/vida-de-qa-regressivo$/i.test(repo.parent.full_name)) return { erro: 'Esse repositório não é um fork do vida-de-qa-regressivo.' };
+  const ok = {}, runs = ((await api('/actions/runs?per_page=100')) || {}).workflow_runs || [];
+  const refs = [repo.default_branch, ...new Set(runs.filter((r) => r.event === 'pull_request' && r.conclusion === 'success').map((r) => r.head_branch))].slice(0, 4);
+  for (const ref of refs) {
+    const arvore = await api(`/git/trees/${encodeURIComponent(ref)}?recursive=1`); if (!arvore || !arvore.tree) continue;
+    let tudo = '';
+    for (const f of arvore.tree.map((x) => x.path).filter((p) => /^cypress\/e2e\/.+\.feature$/.test(p)).slice(0, 30)) { const c = await api(`/contents/${f}?ref=${encodeURIComponent(ref)}`); if (c) tudo += '\n' + texto(c); }
+    if (/token/i.test(tudo) && /30 minutos/i.test(tudo)) ok.sessao = true;
+    if (/lembrar de mim/i.test(tudo) && /30 dias/i.test(tudo)) ok.lembrar = true;
+  }
+  return { ok };
+}
+PAGINAS.incidente = () => {
+  const d = dados(); d.m7 = d.m7 || {}; const ok = d.m7.ok || {};
+  const liberado = (d.conquistas || []).includes('ep44');
+  if (!liberado) return casca('incidente', topo('Incidente', 'A sexta-feira em que o FlowDesk caiu.') + '<div class="aviso-caca" data-test="in-fechado">Libera no módulo 7, depois de fechar o módulo 6.</div>');
+  const L = logIncidente();
+  const item = (k, t) => `<div class="rg-cx ${ok[k] ? 'ok' : ''}" data-test="in-item-${k}"><div class="rg-r"><b>${ok[k] ? '✓' : '•'}</b>${t}</div>${ok[k] ? '' : `<p class="dica">${INC_DICAS[k]}</p>`}</div>`;
+  const bloco = (id, aula, titulo, corpo) => { const m = MISSOES.find((x) => x.id === id), feita = (d.conquistas || []).includes(id);
+    return `<section class="painel rg-bl ${feita ? 'feito' : ''}" id="${id}" data-test="in-${id}"><div class="rg-h"><span>${aula}</span><h3>${titulo}</h3>${feita ? `<i>${ico('trofeu')} ${m.conquista}</i>` : ''}</div>${corpo}</section>`; };
+  casca('incidente', topo('Incidente', 'Sexta, 22:40 até 23:25. Ninguém conseguia ficar no FlowDesk por mais de alguns segundos.')
+    + `<section class="painel rg-bl"><div class="rg-h"><span>SEXTA</span><h3>Linha do tempo</h3></div><div class="in-tl" data-test="in-linha-tempo">
+        <div><b>22:40</b>Deploy da v2.31</div><div><b>23:10</b>A Beatriz liga pro Lucas</div><div><b>23:20</b>Decisão: voltar a versão anterior</div><div><b>23:25</b>v2.30 no ar de novo</div></div></section>
+      <section class="painel rg-bl"><div class="rg-h"><span>SEXTA</span><h3>Deploys do dia</h3></div>${INC_DEPLOYS.map(([h, v, t]) => `<div class="in-dp" data-test="in-deploy"><b>${h}</b><code>${v}</code>${t}</div>`).join('')}</section>
+      <section class="painel rg-bl"><div class="rg-h"><span>${L.lin.length.toLocaleString('pt-BR')} LINHAS</span><h3>Log do servidor</h3></div>
+        <div class="in-fil"><select class="in" id="inSt" data-test="in-filtro-status"><option value="">Todos os status</option><option>200</option><option>201</option><option>401</option></select>
+          <input class="in" id="inRota" data-test="in-filtro-caminho" placeholder="Caminho (ex.: /api/chamados)"><input class="in" id="inDe" data-test="in-filtro-hora" placeholder="A partir de (ex.: 22:40)"><input class="in" id="inU" data-test="in-filtro-usuario" placeholder="Usuário (ex.: u183)"></div>
+        <p class="dica" id="inN" data-test="in-contagem"></p><pre class="in-log" id="inLog" data-test="in-log"></pre></section>
+      ${bloco('ep47', 'EP47', 'O que os registros contam', `${item('hora', 'A hora do primeiro 401 fora do comum')}${item('deploy', 'O deploy que causou')}${item('duracao', 'Quanto a sessão durava de verdade')}
+        ${ok.hora && ok.deploy && ok.duracao ? '' : `<div class="in-resp"><input class="in" id="inHora" data-test="in-resp-hora" placeholder="Hora (hh:mm)"><select class="in" id="inDeploy" data-test="in-resp-deploy"><option value="">Qual deploy?</option>${INC_DEPLOYS.map(([h, v, t, k]) => `<option value="${k}">${h} · ${t}</option>`).join('')}</select>
+          <select class="in" id="inDur" data-test="in-resp-duracao"><option value="">A sessão durava…</option><option value="30s">30 segundos</option><option value="2min">2 minutos</option><option value="30min">30 minutos</option></select><button class="btn" id="inOk" data-test="in-responder">Responder</button></div>`}`)}
+      <section class="painel rg-bl"><div class="campo"><label for="inFork">Seu fork no GitHub</label><div class="pp-l"><input class="in" id="inFork" data-test="in-fork" placeholder="seu-usuario/vida-de-qa-regressivo" value="${esc(d.m7.fork || (d.m6 || {}).fork || (d.m5 || {}).fork || '')}"><button class="btn" id="inFk" data-test="in-conferir">Conferir no GitHub</button></div>
+        <p class="dica">Os testes da sessão (EP48) e do lembrar de mim (EP50) são conferidos no seu fork.</p></div></section>
+      ${bloco('ep48', 'EP48', 'Vermelho antes do conserto', item('sessao', 'O teste da sessão no projeto'))}
+      ${bloco('ep50', 'EP50', 'Conferindo o conserto', item('lembrar', 'O teste do lembrar de mim no projeto'))}
+      ${bloco('ep51', 'EP51', 'Relatório pós-incidente', `${item('acoes', 'As ações que funcionam sozinhas')}${ok.acoes ? '' : `<div class="in-acoes">${INC_ACOES.map(([k, t]) => `<label class="in-ac"><input type="checkbox" value="${k}" data-test="in-acao-${k}"> ${t}</label>`).join('')}<button class="btn" id="inRel" data-test="in-relatorio">Fechar o relatório</button></div>`}`)}`);
+  const pinta = () => {
+    const st = $('#inSt').value, rota = $('#inRota').value.trim(), de = $('#inDe').value.trim(), u = $('#inU').value.trim();
+    const l = L.lin.filter((x) => (!st || String(x.st) === st) && (!rota || x.rota.includes(rota)) && (!de || x.hora >= de) && (!u || x.u === u));
+    $('#inN').textContent = `${l.length.toLocaleString('pt-BR')} linhas${l.length > 80 ? ' · mostrando as 80 primeiras' : ''}`;
+    $('#inLog').innerHTML = l.slice(0, 80).map((x) => `<span class="${x.st === 401 ? 'e' : ''}">${x.hora}  ${x.rota.padEnd(28)} ${x.st}  usuario=${x.u}  ${x.ms}ms</span>`).join('\n') || 'Nenhuma linha com esse filtro.';
+  };
+  ['#inSt', '#inRota', '#inDe', '#inU'].forEach((q) => { $(q).oninput = pinta; $(q).onchange = pinta; }); pinta();
+  const marca = (ks) => { const dd = dados(); dd.m7 = dd.m7 || {}; dd.m7.ok = { ...(dd.m7.ok || {}) }; ks.forEach((k) => { dd.m7.ok[k] = dd.m7.ok[k] || agora(); }); salvar(); };
+  if ($('#inOk')) $('#inOk').onclick = () => {
+    const h = $('#inHora').value.trim().slice(0, 5), certo = [];
+    if (h === L.primeiro) certo.push('hora'); if ($('#inDeploy').value === 'sessao') certo.push('deploy'); if ($('#inDur').value === '30s') certo.push('duracao');
+    if (certo.length) marca(certo);
+    if (certo.length === 3) { recado('Investigação fechada.'); location.reload(); } else toast(certo.length ? `${certo.length} de 3 certas. Olha de novo o que falta.` : 'Nenhuma bateu ainda. Filtra o log e confere.', true);
+    if (certo.length && certo.length < 3) setTimeout(() => location.reload(), 1200);
+  };
+  if ($('#inRel')) $('#inRel').onclick = () => {
+    const m = $$('.in-ac input:checked').map((x) => x.value);
+    if (m.includes('lucas')) return toast('A aprovação do Lucas depende de uma pessoa lembrar, e cansar, e um dia aprovar sem olhar. Ação boa funciona sozinha.', true);
+    if (m.length < 3) return toast('Ainda falta ação. Cada causa raiz precisa virar uma.', true);
+    marca(['acoes']); recado('Relatório fechado, sem culpado.'); location.reload();
+  };
+  $('#inFk').onclick = async () => {
+    const fork = $('#inFork').value.trim().replace(/^https?:\/\/github\.com\//i, '').replace(/\.git$|\/$/g, '');
+    if (!/^[\w.-]+\/[\w.-]+$/.test(fork)) return toast('Escreve assim: seu-usuario/vida-de-qa-regressivo', true);
+    const b = $('#inFk'); b.disabled = true; b.textContent = 'Consultando o GitHub…';
+    try {
+      const r = await confereIncidente(fork); if (r.erro) { b.disabled = false; b.textContent = 'Conferir no GitHub'; return toast(r.erro, true); }
+      const dd = dados(); dd.m7 = dd.m7 || {}; dd.m7.fork = fork; salvar(); marca(Object.keys(r.ok).filter((k) => r.ok[k])); recado('Conferido no GitHub.'); location.reload();
+    } catch (e) { b.disabled = false; b.textContent = 'Conferir no GitHub'; toast(e.message === 'limite' ? 'O GitHub limitou as consultas por agora. Tenta de novo em alguns minutos.' : 'Não consegui falar com o GitHub. Confere sua conexão.', true); }
+  };
+  if (location.hash) { const el = $(location.hash); if (el) setTimeout(() => el.scrollIntoView({ block: 'start' }), 50); }
+};
+
 // ---------- link da aula (aula.html?ep=16) ----------
 // Um link por aula prática: já leva pra tela certa. Se o aluno ainda não chegou nessa aula, oferece pular pra ela (com backup do progresso).
-const AULA_SAVE = { 0: 'inicio', 1: 'inicio', 2: 'inicio', 3: 'inicio', 4: 'inicio', 5: 'ep04', 6: 'ep06', 7: 'ep07', 8: 'ep08', 9: 'ep10', 10: 'ep10', 11: 'ep12', 12: 'ep12', 13: 'ep14', 14: 'ep14', 14.5: 'd1', 15: 'ep16', 16: 'ep16', 17: 'ep18', 18: 'ep18', 19: 'ep20', 20: 'ep20', 21: 'm4', 22: 'm4', 23: 'm4ep23', 24: 'm4ep24', 25: 'm4ep25', 26: 'm4ep26', 27: 'm4ep27', 28: 'm4ep28', 29: 'm4ep29', 30: 'm5ep31', 31: 'm5ep31', 32: 'm5ep32', 33: 'm5ep33', 34: 'm5ep34', 35: 'm5ep35', 36: 'm5ep36', 37: 'm5ep37', 38: 'm6ep39', 39: 'm6ep39', 40: 'm6ep40', 41: 'm6ep41', 42: 'm6ep42', 43: 'm6ep43', 44: 'm6ep44', 45: 'm6ep45' };
+const AULA_SAVE = { 0: 'inicio', 1: 'inicio', 2: 'inicio', 3: 'inicio', 4: 'inicio', 5: 'ep04', 6: 'ep06', 7: 'ep07', 8: 'ep08', 9: 'ep10', 10: 'ep10', 11: 'ep12', 12: 'ep12', 13: 'ep14', 14: 'ep14', 14.5: 'd1', 15: 'ep16', 16: 'ep16', 17: 'ep18', 18: 'ep18', 19: 'ep20', 20: 'ep20', 21: 'm4', 22: 'm4', 23: 'm4ep23', 24: 'm4ep24', 25: 'm4ep25', 26: 'm4ep26', 27: 'm4ep27', 28: 'm4ep28', 29: 'm4ep29', 30: 'm5ep31', 31: 'm5ep31', 32: 'm5ep32', 33: 'm5ep33', 34: 'm5ep34', 35: 'm5ep35', 36: 'm5ep36', 37: 'm5ep37', 38: 'm6ep39', 39: 'm6ep39', 40: 'm6ep40', 41: 'm6ep41', 42: 'm6ep42', 43: 'm6ep43', 44: 'm6ep44', 45: 'm6ep45', 46: 'm7ep46', 47: 'm7ep47', 48: 'm7ep48', 49: 'm7ep49', 50: 'm7ep50', 51: 'm7ep51', 52: 'm7ep52' };
 PAGINAS.aula = () => {
   const n = numAula(qs.get('ep') || ''); if (Number.isNaN(n)) return location.replace('dashboard.html');
   if (!sessao() || !contas()[sessao()]) return location.replace('index.html?volta=' + encodeURIComponent('aula.html?ep=' + qs.get('ep')));
