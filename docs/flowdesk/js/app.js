@@ -188,7 +188,7 @@ const usaApi = () => VERSAO >= 17 && 'serviceWorker' in navigator && /^https?:/.
 let _swPronto = null;
 function swPronto() {
   if (!_swPronto) _swPronto = (async () => {
-    await navigator.serviceWorker.register('sw.js?v=1794920372');
+    await navigator.serviceWorker.register('sw.js?v=1794921004');
     if (navigator.serviceWorker.controller) return true;
     await new Promise((r) => { navigator.serviceWorker.addEventListener('controllerchange', r, { once: true }); setTimeout(r, 4000); });
     return !!navigator.serviceWorker.controller;
@@ -828,7 +828,7 @@ PAGINAS.dashboard = () => {
 
 const COR_CLIENTE = ['#3b2410|#fdba74', '#0f2e1e|#86efac', '#0f1a2e|#93c5fd', '#2e1430|#f0abfc', '#0f2a2e|#5eead4', '#2a2a10|#fde047', '#2e1018|#fda4af'];
 const corCliente = (n) => { let h = 0; for (const ch of n) h = (h * 31 + ch.charCodeAt(0)) % 997; return COR_CLIENTE[h % COR_CLIENTE.length].split('|'); };
-const COR_ST = { 'Aberto': '#a78bfa', 'Em andamento': '#f59e0b', 'Resolvido': '#22c55e', 'Fechado': '#6b6e86' };
+const COR_ST = { 'Aberto': M8 ? '#ef4444' : '#a78bfa', 'Em andamento': '#f59e0b', 'Resolvido': '#22c55e', 'Fechado': '#6b6e86' };
 function relativo(iso) {
   const min = Math.round((Date.now() - new Date(iso)) / 60000);
   if (min < 1) return 'agora'; if (min < 60) return `há ${min} min`;
