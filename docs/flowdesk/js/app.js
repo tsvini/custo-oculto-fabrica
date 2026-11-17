@@ -188,7 +188,7 @@ const usaApi = () => VERSAO >= 17 && 'serviceWorker' in navigator && /^https?:/.
 let _swPronto = null;
 function swPronto() {
   if (!_swPronto) _swPronto = (async () => {
-    await navigator.serviceWorker.register('sw.js?v=1794923646');
+    await navigator.serviceWorker.register('sw.js?v=1794924881');
     if (navigator.serviceWorker.controller) return true;
     await new Promise((r) => { navigator.serviceWorker.addEventListener('controllerchange', r, { once: true }); setTimeout(r, 4000); });
     return !!navigator.serviceWorker.controller;
@@ -891,7 +891,7 @@ PAGINAS.chamados = () => {
     const l = [...fonte].sort((a, c) => c.id - a.id).filter((x) => (!f || x.status === f) && x.titulo.toLowerCase().includes(bb) && extraOk(x, f));
     // a lista mostra 20 por vez; com regressao=lista-lenta ela desenha tudo de uma vez e formata cada linha do jeito caro
     const lenta = REGR.has('lista-lenta'), vis = lenta ? l : l.slice(0, mostrar);
-    const caro = () => { const t0 = performance.now(); while (performance.now() - t0 < 2.4); };
+    const caro = () => { const t0 = performance.now(); while (performance.now() - t0 < 2.35); };
     $('#linhas').innerHTML = vis.length ? vis.map((x) => { if (lenta) caro(); const [bg, cor] = corCliente(x.cliente);
       const chip = x.criadoPor === 'Você' ? '<span class="por-voce">criado por você</span>' : x.id === 1008 ? '<span class="exemplo">o problema do FD-101</span>' : '';
       return `<tr data-test="linha-chamado" data-href="chamado.html?id=${x.id}"><td class="num">#${x.id}</td><td><div class="tt"><a href="chamado.html?id=${x.id}" data-test="link-chamado">${esc(x.titulo) || '<i style="color:#5b5f78">(sem título)</i>'}</a>${chip}</div></td>
@@ -901,6 +901,8 @@ PAGINAS.chamados = () => {
       : '<tr><td colspan="5" class="vazio" data-test="lista-vazia">Nenhum chamado encontrado</td></tr>';
     $$('#linhas tr[data-href]').forEach((tr) => { tr.onclick = (ev) => { if (!ev.target.closest('a')) location.href = tr.dataset.href; }; });
     if ($('#maisCh')) $('#maisCh').onclick = () => { mostrar += 20; pinta(); };
+    // e depois de desenhar, ainda recalcula o "há 2 dias" de todas as 2 mil linhas de uma vez, travando a tela mais um pouco
+    if (lenta && vis.length > 200) setTimeout(() => { const t0 = performance.now(); while (performance.now() - t0 < 0.33 * vis.length); }, 0);
   };
   if (REGR.has('cor')) document.body.classList.add('so-cor');
   $$('.chips .chip').forEach((c) => { c.onclick = () => { $('#filtro').value = c.dataset.st; pinta(); }; });
