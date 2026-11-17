@@ -186,7 +186,7 @@ const usaApi = () => VERSAO >= 17 && 'serviceWorker' in navigator && /^https?:/.
 let _swPronto = null;
 function swPronto() {
   if (!_swPronto) _swPronto = (async () => {
-    await navigator.serviceWorker.register('sw.js?v=1794859585');
+    await navigator.serviceWorker.register('sw.js?v=1794884648');
     if (navigator.serviceWorker.controller) return true;
     await new Promise((r) => { navigator.serviceWorker.addEventListener('controllerchange', r, { once: true }); setTimeout(r, 4000); });
     return !!navigator.serviceWorker.controller;
@@ -807,6 +807,9 @@ PAGINAS.chamados = () => {
       if (t < ini) return false; if ((BUG_D1() || BUG.periodo) && t >= h0) return false; }  // Sprint 16: o "até hoje" deixa hoje de fora
     return true;
   };
+  // Módulo 6: com ?servidor=http://localhost:3000 a lista vem do servidor do curso (npm run api)
+  const SERV = qs.get('servidor');
+  let fonte = SERV ? [] : dados().chamados;
   const todos = dados().chamados, n = (st) => todos.filter((x) => !st || x.status === st).length;
   const meus = todos.filter((x) => x.criadoPor === 'Você');
   const dica = meus.length
@@ -829,7 +832,7 @@ PAGINAS.chamados = () => {
     $$('.chips .chip').forEach((c) => c.classList.toggle('on', c.dataset.st === f));
     if (b) fantasma = '';
     const bb = b || fantasma;
-    const l = [...dados().chamados].sort((a, c) => c.id - a.id).filter((x) => (!f || x.status === f) && x.titulo.toLowerCase().includes(bb) && extraOk(x, f));
+    const l = [...fonte].sort((a, c) => c.id - a.id).filter((x) => (!f || x.status === f) && x.titulo.toLowerCase().includes(bb) && extraOk(x, f));
     $('#linhas').innerHTML = l.length ? l.map((x) => { const [bg, cor] = corCliente(x.cliente);
       const chip = x.criadoPor === 'Você' ? '<span class="por-voce">criado por você</span>' : x.id === 1008 ? '<span class="exemplo">o problema do FD-101</span>' : '';
       return `<tr data-test="linha-chamado" data-href="chamado.html?id=${x.id}"><td class="num">#${x.id}</td><td><div class="tt"><a href="chamado.html?id=${x.id}" data-test="link-chamado">${esc(x.titulo) || '<i style="color:#5b5f78">(sem título)</i>'}</a>${chip}</div></td>
@@ -839,6 +842,10 @@ PAGINAS.chamados = () => {
     $$('#linhas tr[data-href]').forEach((tr) => { tr.onclick = (ev) => { if (!ev.target.closest('a')) location.href = tr.dataset.href; }; });
   };
   $$('.chips .chip').forEach((c) => { c.onclick = () => { $('#filtro').value = c.dataset.st; pinta(); }; });
+  if (SERV) fetch(SERV.replace(/\/$/, '') + '/api/chamados').then((r) => r.json()).then((l) => {
+    fonte = (Array.isArray(l) ? l : []).map((x) => ({ id: x.id, titulo: x.titulo || '', cliente: x.cliente || x.nomeCliente || '', status: x.status || 'Aberto', criadoEm: x.criadoEm, criadoPor: 'Cliente' }));
+    pinta();
+  }).catch(() => { $('#linhas').innerHTML = '<tr><td colspan="5" class="vazio" data-test="lista-vazia">O servidor não respondeu. Ele está ligado? (npm run api)</td></tr>'; });
   if (temFiltros) {
     $('#fCli').onchange = () => pinta(); $('#fPer').onchange = () => pinta();
     $('#fLimpa').onclick = () => { if (BUG_D1()) fantasma = $('#busca').value.trim().toLowerCase(); $('#busca').value = ''; $('#filtro').value = ''; $('#fCli').value = ''; $('#fPer').value = ''; pinta(); };

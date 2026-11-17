@@ -11,7 +11,8 @@ const json = (o, st) => new Response(JSON.stringify(o), { status: st, headers: {
 const espera = (ms) => new Promise((r) => setTimeout(r, ms));
 self.addEventListener('fetch', (e) => {
   const u = new URL(e.request.url), i = u.pathname.indexOf('/api/');
-  if (i < 0) return;
+  // pedido pra outro endereço (ex.: o servidor do curso, npm run api) passa direto
+  if (i < 0 || u.origin !== self.location.origin) return;
   const rota = u.pathname.slice(i + 5);
   e.respondWith((async () => {
     await fetch(new URL('rede.json?pedido=' + encodeURIComponent(e.request.method + ' ' + rota + u.search) + '&t=' + Date.now() + Math.random(), self.registration.scope), { cache: 'no-store' }).catch(() => {});
