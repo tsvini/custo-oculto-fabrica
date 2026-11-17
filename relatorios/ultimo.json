@@ -1,5 +1,5 @@
 {
- "data": "2026-11-16",
+ "data": "2026-11-17",
  "por_formato_12m": [
   {
    "creatorContentType": "creatorContentTypeUnspecified",
@@ -23,24 +23,18 @@
  "por_formato_7d": [
   {
    "creatorContentType": "shorts",
-   "views": 2056,
-   "estimatedMinutesWatched": 596,
-   "subscribersGained": 7
+   "views": 1836,
+   "estimatedMinutesWatched": 532,
+   "subscribersGained": 6
   },
   {
    "creatorContentType": "videoOnDemand",
-   "views": 9,
+   "views": 3,
    "estimatedMinutesWatched": 0,
    "subscribersGained": 0
   }
  ],
  "dia_a_dia_28d": [
-  {
-   "day": "2026-10-19",
-   "views": 20,
-   "estimatedMinutesWatched": 5,
-   "subscribersGained": 0
-  },
   {
    "day": "2026-10-20",
    "views": 6,
@@ -201,12 +195,12 @@
  "origem_28d": [
   {
    "insightTrafficSourceType": "SHORTS",
-   "views": 7001,
-   "estimatedMinutesWatched": 3486
+   "views": 6993,
+   "estimatedMinutesWatched": 3482
   },
   {
    "insightTrafficSourceType": "YT_SEARCH",
-   "views": 700,
+   "views": 692,
    "estimatedMinutesWatched": 195
   },
   {
@@ -231,8 +225,8 @@
   },
   {
    "insightTrafficSourceType": "NOTIFICATION",
-   "views": 25,
-   "estimatedMinutesWatched": 9
+   "views": 23,
+   "estimatedMinutesWatched": 7
   },
   {
    "insightTrafficSourceType": "NO_LINK_OTHER",
@@ -629,17 +623,6 @@
    "shares": 0
   },
   {
-   "video": "_aYquXLalP0",
-   "views": 26,
-   "estimatedMinutesWatched": 5,
-   "averageViewDuration": 33,
-   "averageViewPercentage": 39.95,
-   "subscribersGained": 0,
-   "likes": 0,
-   "comments": 0,
-   "shares": 0
-  },
-  {
    "video": "SwLsOWxYOCE",
    "views": 26,
    "estimatedMinutesWatched": 9,
@@ -648,6 +631,17 @@
    "subscribersGained": 0,
    "likes": 1,
    "comments": 1,
+   "shares": 0
+  },
+  {
+   "video": "_aYquXLalP0",
+   "views": 22,
+   "estimatedMinutesWatched": 4,
+   "averageViewDuration": 38,
+   "averageViewPercentage": 45.41,
+   "subscribersGained": 0,
+   "likes": 0,
+   "comments": 0,
    "shares": 0
   },
   {
@@ -718,21 +712,10 @@
   },
   {
    "video": "KwwgU40ljtE",
-   "views": 7,
+   "views": 6,
    "estimatedMinutesWatched": 2,
    "averageViewDuration": 59,
    "averageViewPercentage": 146.32,
-   "subscribersGained": 0,
-   "likes": 0,
-   "comments": 0,
-   "shares": 0
-  },
-  {
-   "video": "2dxf1dO_zcU",
-   "views": 6,
-   "estimatedMinutesWatched": 0,
-   "averageViewDuration": 12,
-   "averageViewPercentage": 43.77,
    "subscribersGained": 0,
    "likes": 0,
    "comments": 0,
@@ -783,17 +766,6 @@
    "shares": 0
   },
   {
-   "video": "6hhsJO6vgpo",
-   "views": 4,
-   "estimatedMinutesWatched": 3,
-   "averageViewDuration": 52,
-   "averageViewPercentage": 56.95,
-   "subscribersGained": 0,
-   "likes": 0,
-   "comments": 0,
-   "shares": 0
-  },
-  {
    "video": "1IPH_5Ocy6w",
    "views": 3,
    "estimatedMinutesWatched": 1,
@@ -816,6 +788,50 @@
    "shares": 0
   },
   {
+   "video": "6hhsJO6vgpo",
+   "views": 3,
+   "estimatedMinutesWatched": 1,
+   "averageViewDuration": 39,
+   "averageViewPercentage": 42.99,
+   "subscribersGained": 0,
+   "likes": 0,
+   "comments": 0,
+   "shares": 0
+  },
+  {
+   "video": "A5cWOeTZqe0",
+   "views": 2,
+   "estimatedMinutesWatched": 0,
+   "averageViewDuration": 58,
+   "averageViewPercentage": 104.82000000000001,
+   "subscribersGained": 0,
+   "likes": 0,
+   "comments": 0,
+   "shares": 0
+  },
+  {
+   "video": "3hLySDzqykg",
+   "views": 2,
+   "estimatedMinutesWatched": 0,
+   "averageViewDuration": 51,
+   "averageViewPercentage": 100.2,
+   "subscribersGained": 0,
+   "likes": 0,
+   "comments": 0,
+   "shares": 0
+  },
+  {
+   "video": "TZLpKjOWKH4",
+   "views": 2,
+   "estimatedMinutesWatched": 0,
+   "averageViewDuration": 31,
+   "averageViewPercentage": 96.09,
+   "subscribersGained": 0,
+   "likes": 1,
+   "comments": 0,
+   "shares": 0
+  },
+  {
    "video": "z6dXgM3pY_c",
    "views": 2,
    "estimatedMinutesWatched": 0,
@@ -832,17 +848,6 @@
    "estimatedMinutesWatched": 0,
    "averageViewDuration": 24,
    "averageViewPercentage": 41.4,
-   "subscribersGained": 0,
-   "likes": 0,
-   "comments": 0,
-   "shares": 0
-  },
-  {
-   "video": "RaLw0BDDX1U",
-   "views": 2,
-   "estimatedMinutesWatched": 0,
-   "averageViewDuration": 35,
-   "averageViewPercentage": 96.22,
    "subscribersGained": 0,
    "likes": 0,
    "comments": 0,
@@ -876,6 +881,17 @@
    "estimatedMinutesWatched": 0,
    "averageViewDuration": 54,
    "averageViewPercentage": 92.37,
+   "subscribersGained": 0,
+   "likes": 0,
+   "comments": 0,
+   "shares": 0
+  },
+  {
+   "video": "RaLw0BDDX1U",
+   "views": 2,
+   "estimatedMinutesWatched": 0,
+   "averageViewDuration": 35,
+   "averageViewPercentage": 96.22,
    "subscribersGained": 0,
    "likes": 0,
    "comments": 0,
@@ -1979,61 +1995,61 @@
    "status": "public"
   },
   "banco_master_short1": {
-   "views": 167,
+   "views": 169,
    "likes": 8,
    "comentarios": 2,
    "status": "public"
   },
   "banco_master_short2": {
-   "views": 53,
+   "views": 54,
    "likes": 1,
    "comentarios": 1,
    "status": "public"
   },
   "banco_master_short4": {
-   "views": 15,
+   "views": 16,
    "likes": 2,
    "comentarios": 1,
    "status": "public"
   },
   "banco_master_short3": {
-   "views": 157,
+   "views": 158,
    "likes": 2,
    "comentarios": 1,
    "status": "public"
   },
   "banco_master_serie1": {
-   "views": 713,
+   "views": 715,
    "likes": 41,
    "comentarios": 2,
    "status": "public"
   },
   "banco_master_serie2": {
-   "views": 55,
+   "views": 56,
    "likes": 6,
    "comentarios": 1,
    "status": "public"
   },
   "banco_master_serie3": {
-   "views": 51,
+   "views": 52,
    "likes": 5,
    "comentarios": 1,
    "status": "public"
   },
   "banco_master_serie4": {
-   "views": 42,
+   "views": 43,
    "likes": 1,
    "comentarios": 2,
    "status": "public"
   },
   "kolynos_serie1": {
-   "views": 74,
+   "views": 75,
    "likes": 1,
    "comentarios": 1,
    "status": "public"
   },
   "netflix_en_longo": {
-   "views": 3,
+   "views": 6,
    "likes": 0,
    "comentarios": 0,
    "status": "public"
@@ -2129,41 +2145,41 @@
    "status": "public"
   },
   "sadia_short1": {
-   "views": 42,
+   "views": 43,
    "likes": 2,
    "comentarios": 0,
    "status": "public"
   },
   "ambev_short1": {
-   "views": 133,
+   "views": 136,
    "likes": 4,
    "comentarios": 0,
    "status": "public"
   },
   "blockbuster_short1": {
-   "views": 32,
+   "views": 36,
    "likes": 1,
    "comentarios": 0,
    "status": "public"
   },
   "kodak_digital_short1": {
-   "views": 40,
+   "views": 41,
    "likes": 0,
    "comentarios": 0,
    "status": "public"
   },
   "varig_short1": {
-   "views": 217,
+   "views": 219,
    "likes": 8,
    "comentarios": 0,
    "status": "public"
   }
  },
  "canal": {
-  "viewCount": "12772",
+  "viewCount": "13575",
   "subscriberCount": "38",
   "hiddenSubscriberCount": false,
-  "videoCount": "59"
+  "videoCount": "60"
  },
  "todos_os_videos": [
   {
@@ -2173,7 +2189,7 @@
    "duracao": "PT2M33S",
    "status": "public",
    "agendado": null,
-   "views": 1398,
+   "views": 1403,
    "likes": 67,
    "comentarios": 2
   },
@@ -2184,7 +2200,7 @@
    "duracao": "PT1M39S",
    "status": "public",
    "agendado": null,
-   "views": 1336,
+   "views": 1340,
    "likes": 65,
    "comentarios": 7
   },
@@ -2195,7 +2211,7 @@
    "duracao": "PT1M17S",
    "status": "public",
    "agendado": null,
-   "views": 1255,
+   "views": 1257,
    "likes": 33,
    "comentarios": 1
   },
@@ -2217,7 +2233,7 @@
    "duracao": "PT1M13S",
    "status": "public",
    "agendado": null,
-   "views": 1047,
+   "views": 1048,
    "likes": 34,
    "comentarios": 0
   },
@@ -2228,9 +2244,20 @@
    "duracao": "PT1M41S",
    "status": "public",
    "agendado": null,
-   "views": 713,
+   "views": 715,
    "likes": 41,
    "comentarios": 2
+  },
+  {
+   "id": "ciVFjVI4oPs",
+   "titulo": "93 mil pessoas reservaram voo para a Lua com a Pan Am | O Custo de Ser Gigante EP. 16",
+   "publicado": "2026-11-16T16:14:44Z",
+   "duracao": "PT1M22S",
+   "status": "public",
+   "agendado": null,
+   "views": 591,
+   "likes": 24,
+   "comentarios": 0
   },
   {
    "id": "UrTUaUWMFDU",
@@ -2239,7 +2266,7 @@
    "duracao": "PT1M22S",
    "status": "public",
    "agendado": null,
-   "views": 467,
+   "views": 468,
    "likes": 24,
    "comentarios": 0
   },
@@ -2250,19 +2277,8 @@
    "duracao": "PT41S",
    "status": "public",
    "agendado": null,
-   "views": 403,
+   "views": 404,
    "likes": 7,
-   "comentarios": 0
-  },
-  {
-   "id": "ciVFjVI4oPs",
-   "titulo": "93 mil pessoas reservaram voo para a Lua com a Pan Am | O Custo de Ser Gigante EP. 16",
-   "publicado": "2026-11-16T16:14:44Z",
-   "duracao": "PT1M22S",
-   "status": "public",
-   "agendado": null,
-   "views": 401,
-   "likes": 25,
    "comentarios": 0
   },
   {
@@ -2272,7 +2288,7 @@
    "duracao": "PT40S",
    "status": "public",
    "agendado": null,
-   "views": 365,
+   "views": 366,
    "likes": 1,
    "comentarios": 0
   },
@@ -2283,7 +2299,7 @@
    "duracao": "PT43S",
    "status": "public",
    "agendado": null,
-   "views": 311,
+   "views": 312,
    "likes": 6,
    "comentarios": 0
   },
@@ -2294,7 +2310,7 @@
    "duracao": "PT46S",
    "status": "public",
    "agendado": null,
-   "views": 306,
+   "views": 307,
    "likes": 11,
    "comentarios": 1
   },
@@ -2305,7 +2321,7 @@
    "duracao": "PT40S",
    "status": "public",
    "agendado": null,
-   "views": 281,
+   "views": 282,
    "likes": 6,
    "comentarios": 0
   },
@@ -2316,7 +2332,7 @@
    "duracao": "PT1M14S",
    "status": "public",
    "agendado": null,
-   "views": 274,
+   "views": 277,
    "likes": 28,
    "comentarios": 3
   },
@@ -2327,7 +2343,7 @@
    "duracao": "PT1M47S",
    "status": "public",
    "agendado": null,
-   "views": 258,
+   "views": 260,
    "likes": 17,
    "comentarios": 1
   },
@@ -2338,7 +2354,7 @@
    "duracao": "PT37S",
    "status": "public",
    "agendado": null,
-   "views": 244,
+   "views": 245,
    "likes": 6,
    "comentarios": 1
   },
@@ -2349,7 +2365,7 @@
    "duracao": "PT1M11S",
    "status": "public",
    "agendado": null,
-   "views": 238,
+   "views": 241,
    "likes": 9,
    "comentarios": 0
   },
@@ -2360,7 +2376,7 @@
    "duracao": "PT1M31S",
    "status": "public",
    "agendado": null,
-   "views": 226,
+   "views": 229,
    "likes": 21,
    "comentarios": 0
   },
@@ -2371,7 +2387,7 @@
    "duracao": "PT1M14S",
    "status": "public",
    "agendado": null,
-   "views": 217,
+   "views": 219,
    "likes": 8,
    "comentarios": 0
   },
@@ -2382,9 +2398,20 @@
    "duracao": "PT40S",
    "status": "public",
    "agendado": null,
-   "views": 215,
+   "views": 217,
    "likes": 6,
    "comentarios": 0
+  },
+  {
+   "id": "SAxmPtxl-mE",
+   "titulo": "A Bauducco começou com um italiano que veio cobrar uma dívida | A Jogada que Mudou Tudo EP. 09",
+   "publicado": "2026-11-15T15:39:48Z",
+   "duracao": "PT1M18S",
+   "status": "public",
+   "agendado": null,
+   "views": 199,
+   "likes": 4,
+   "comentarios": 1
   },
   {
    "id": "lVQGKtY21Aw",
@@ -2393,7 +2420,7 @@
    "duracao": "PT1M22S",
    "status": "public",
    "agendado": null,
-   "views": 185,
+   "views": 187,
    "likes": 8,
    "comentarios": 2
   },
@@ -2404,20 +2431,9 @@
    "duracao": "PT28S",
    "status": "public",
    "agendado": null,
-   "views": 167,
+   "views": 169,
    "likes": 8,
    "comentarios": 2
-  },
-  {
-   "id": "SAxmPtxl-mE",
-   "titulo": "A Bauducco começou com um italiano que veio cobrar uma dívida | A Jogada que Mudou Tudo EP. 09",
-   "publicado": "2026-11-15T15:39:48Z",
-   "duracao": "PT1M18S",
-   "status": "public",
-   "agendado": null,
-   "views": 161,
-   "likes": 4,
-   "comentarios": 1
   },
   {
    "id": "2dxf1dO_zcU",
@@ -2426,7 +2442,7 @@
    "duracao": "PT29S",
    "status": "public",
    "agendado": null,
-   "views": 157,
+   "views": 158,
    "likes": 2,
    "comentarios": 1
   },
@@ -2437,7 +2453,7 @@
    "duracao": "PT1M19S",
    "status": "public",
    "agendado": null,
-   "views": 149,
+   "views": 152,
    "likes": 6,
    "comentarios": 1
   },
@@ -2448,7 +2464,7 @@
    "duracao": "PT46S",
    "status": "public",
    "agendado": null,
-   "views": 141,
+   "views": 142,
    "likes": 6,
    "comentarios": 0
   },
@@ -2459,7 +2475,7 @@
    "duracao": "PT1M9S",
    "status": "public",
    "agendado": null,
-   "views": 133,
+   "views": 136,
    "likes": 4,
    "comentarios": 0
   },
@@ -2470,7 +2486,7 @@
    "duracao": "PT1M47S",
    "status": "public",
    "agendado": null,
-   "views": 120,
+   "views": 122,
    "likes": 11,
    "comentarios": 1
   },
@@ -2481,7 +2497,7 @@
    "duracao": "PT1M",
    "status": "public",
    "agendado": null,
-   "views": 91,
+   "views": 93,
    "likes": 1,
    "comentarios": 0
   },
@@ -2492,7 +2508,7 @@
    "duracao": "PT40S",
    "status": "public",
    "agendado": null,
-   "views": 90,
+   "views": 91,
    "likes": 2,
    "comentarios": 0
   },
@@ -2503,7 +2519,7 @@
    "duracao": "PT1M25S",
    "status": "public",
    "agendado": null,
-   "views": 74,
+   "views": 75,
    "likes": 1,
    "comentarios": 1
   },
@@ -2514,7 +2530,7 @@
    "duracao": "PT1M19S",
    "status": "public",
    "agendado": null,
-   "views": 61,
+   "views": 62,
    "likes": 1,
    "comentarios": 0
   },
@@ -2525,7 +2541,7 @@
    "duracao": "PT2M18S",
    "status": "public",
    "agendado": null,
-   "views": 55,
+   "views": 56,
    "likes": 6,
    "comentarios": 1
   },
@@ -2547,7 +2563,7 @@
    "duracao": "PT29S",
    "status": "public",
    "agendado": null,
-   "views": 53,
+   "views": 54,
    "likes": 1,
    "comentarios": 1
   },
@@ -2558,7 +2574,7 @@
    "duracao": "PT2M33S",
    "status": "public",
    "agendado": null,
-   "views": 51,
+   "views": 52,
    "likes": 5,
    "comentarios": 1
   },
@@ -2574,13 +2590,24 @@
    "comentarios": 3
   },
   {
+   "id": "cl7saCSReIk",
+   "titulo": "A Microsoft pagou US$ 8,5 bilhões pelo Skype. 14 anos depois, acabou.",
+   "publicado": "2026-10-27T15:45:42Z",
+   "duracao": "PT49S",
+   "status": "public",
+   "agendado": null,
+   "views": 44,
+   "likes": 2,
+   "comentarios": 2
+  },
+  {
    "id": "xhA47M-Ueq8",
    "titulo": "A Sadia perdeu R$ 2,5 bilhões apostando no dólar. Meses depois, se juntou à Perdigão #shorts",
    "publicado": "2026-10-20T21:00:04Z",
    "duracao": "PT49S",
    "status": "public",
    "agendado": null,
-   "views": 42,
+   "views": 43,
    "likes": 2,
    "comentarios": 0
   },
@@ -2591,7 +2618,7 @@
    "duracao": "PT1M33S",
    "status": "public",
    "agendado": null,
-   "views": 42,
+   "views": 43,
    "likes": 1,
    "comentarios": 2
   },
@@ -2602,20 +2629,9 @@
    "duracao": "PT1M13S",
    "status": "public",
    "agendado": null,
-   "views": 40,
+   "views": 41,
    "likes": 0,
    "comentarios": 0
-  },
-  {
-   "id": "cl7saCSReIk",
-   "titulo": "A Microsoft pagou US$ 8,5 bilhões pelo Skype. 14 anos depois, acabou.",
-   "publicado": "2026-10-27T15:45:42Z",
-   "duracao": "PT49S",
-   "status": "public",
-   "agendado": null,
-   "views": 39,
-   "likes": 2,
-   "comentarios": 2
   },
   {
    "id": "r9t1a5rQW8U",
@@ -2624,20 +2640,9 @@
    "duracao": "PT1M12S",
    "status": "public",
    "agendado": null,
-   "views": 32,
+   "views": 36,
    "likes": 1,
    "comentarios": 0
-  },
-  {
-   "id": "YL2JUCrwns8",
-   "titulo": "O Orkut ainda crescia. Então como o Facebook acabou com ele?",
-   "publicado": "2026-10-26T20:27:33Z",
-   "duracao": "PT45S",
-   "status": "public",
-   "agendado": null,
-   "views": 30,
-   "likes": 1,
-   "comentarios": 1
   },
   {
    "id": "SwLsOWxYOCE",
@@ -2646,7 +2651,7 @@
    "duracao": "PT1M19S",
    "status": "public",
    "agendado": null,
-   "views": 28,
+   "views": 31,
    "likes": 1,
    "comentarios": 1
   },
@@ -2657,9 +2662,42 @@
    "duracao": "PT1M14S",
    "status": "public",
    "agendado": null,
-   "views": 27,
+   "views": 31,
    "likes": 1,
    "comentarios": 1
+  },
+  {
+   "id": "YL2JUCrwns8",
+   "titulo": "O Orkut ainda crescia. Então como o Facebook acabou com ele?",
+   "publicado": "2026-10-26T20:27:33Z",
+   "duracao": "PT45S",
+   "status": "public",
+   "agendado": null,
+   "views": 31,
+   "likes": 1,
+   "comentarios": 1
+  },
+  {
+   "id": "ulAgMGaatoE",
+   "titulo": "A Coca-Cola vendia 9 copos por dia no primeiro ano | A Jogada que Mudou Tudo EP. 10",
+   "publicado": "2026-11-17T17:38:20Z",
+   "duracao": "PT1M18S",
+   "status": "public",
+   "agendado": null,
+   "views": 29,
+   "likes": 3,
+   "comentarios": 0
+  },
+  {
+   "id": "f_-IeWHhPig",
+   "titulo": "Eu embalei seu bombom por 30 anos 🍫 #shorts",
+   "publicado": "2026-11-16T12:51:36Z",
+   "duracao": "PT1M5S",
+   "status": "public",
+   "agendado": null,
+   "views": 27,
+   "likes": 1,
+   "comentarios": 0
   },
   {
    "id": "A5cWOeTZqe0",
@@ -2668,7 +2706,7 @@
    "duracao": "PT56S",
    "status": "public",
    "agendado": null,
-   "views": 26,
+   "views": 27,
    "likes": 3,
    "comentarios": 0
   },
@@ -2684,24 +2722,13 @@
    "comentarios": 0
   },
   {
-   "id": "f_-IeWHhPig",
-   "titulo": "Eu embalei seu bombom por 30 anos 🍫 #shorts",
-   "publicado": "2026-11-16T12:51:36Z",
-   "duracao": "PT1M5S",
-   "status": "public",
-   "agendado": null,
-   "views": 18,
-   "likes": 0,
-   "comentarios": 0
-  },
-  {
    "id": "RuM228vuE9s",
    "titulo": "O MySpace foi comprado por US$ 580 milhões e vendido por 35 | O Custo de Ser Gigante EP. 15",
    "publicado": "2026-11-14T14:00:26Z",
    "duracao": "PT1M13S",
    "status": "public",
    "agendado": null,
-   "views": 16,
+   "views": 17,
    "likes": 1,
    "comentarios": 0
   },
@@ -2712,7 +2739,7 @@
    "duracao": "PT1M7S",
    "status": "public",
    "agendado": null,
-   "views": 15,
+   "views": 17,
    "likes": 1,
    "comentarios": 1
   },
@@ -2723,7 +2750,7 @@
    "duracao": "PT33S",
    "status": "public",
    "agendado": null,
-   "views": 15,
+   "views": 16,
    "likes": 2,
    "comentarios": 1
   },
@@ -2745,7 +2772,7 @@
    "duracao": "PT51S",
    "status": "public",
    "agendado": null,
-   "views": 13,
+   "views": 14,
    "likes": 2,
    "comentarios": 0
   },
@@ -2756,7 +2783,7 @@
    "duracao": "PT47S",
    "status": "public",
    "agendado": null,
-   "views": 11,
+   "views": 12,
    "likes": 2,
    "comentarios": 0
   },
@@ -2767,7 +2794,7 @@
    "duracao": "PT54S",
    "status": "public",
    "agendado": null,
-   "views": 9,
+   "views": 10,
    "likes": 2,
    "comentarios": 0
   },
@@ -2778,7 +2805,7 @@
    "duracao": "PT59S",
    "status": "public",
    "agendado": null,
-   "views": 8,
+   "views": 9,
    "likes": 2,
    "comentarios": 0
   },
@@ -2789,7 +2816,7 @@
    "duracao": "PT59S",
    "status": "public",
    "agendado": null,
-   "views": 8,
+   "views": 9,
    "likes": 2,
    "comentarios": 0
   },
@@ -2800,7 +2827,7 @@
    "duracao": "PT39S",
    "status": "public",
    "agendado": null,
-   "views": 8,
+   "views": 9,
    "likes": 2,
    "comentarios": 0
   },
@@ -2811,7 +2838,7 @@
    "duracao": "PT40S",
    "status": "public",
    "agendado": null,
-   "views": 7,
+   "views": 8,
    "likes": 1,
    "comentarios": 0
   }
