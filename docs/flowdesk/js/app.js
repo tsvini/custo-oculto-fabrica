@@ -119,7 +119,7 @@ function semente() {
       ch(1008, 'ajuda', '.', 'Padaria Pão Quente', 'Aberto', 0, 8),
     ],
     cards: [
-      { id: 'FD-097', titulo: 'Tela de login', coluna: 'concluido', resp: 'gabriela', tipo: 'story', prioridade: 'Alta', descricao: 'Tela de login com e-mail e senha.', criterios: [], ok: [], comentarios: [] },
+      { id: 'FD-097', titulo: 'Tela de login', coluna: 'concluido', resp: 'gabriela', tipo: 'story', prioridade: 'Alta', ...FD097 },
       { id: 'FD-101', titulo: 'Criar chamado', coluna: 'qa', resp: 'voce', tipo: 'story', prioridade: 'Normal', descricao: 'Clientes criam chamados sem informação, e depois ninguém sabe o que fazer com eles. Melhorar a tela de criar chamado.',
         criterios: ['Título é obrigatório', 'Descrição é obrigatória', 'Título aceita até 100 caracteres', 'Anexo é opcional: PDF, PNG ou JPG, até 5 MB', 'Depois de criar: mensagem de sucesso e ida pra tela do chamado', 'Chamado novo começa com status Aberto'], ok: [], comentarios: [] },
       { id: 'FD-102', titulo: 'Anexar arquivo ao chamado', coluna: 'dev', resp: 'gabriela', tipo: 'story', prioridade: 'Normal', descricao: 'Permitir anexar mais de um arquivo depois que o chamado já foi criado.', criterios: [], ok: [], comentarios: [] },
@@ -188,7 +188,7 @@ const usaApi = () => VERSAO >= 17 && 'serviceWorker' in navigator && /^https?:/.
 let _swPronto = null;
 function swPronto() {
   if (!_swPronto) _swPronto = (async () => {
-    await navigator.serviceWorker.register('sw.js?v=1794936164');
+    await navigator.serviceWorker.register('sw.js?v=1794937725');
     if (navigator.serviceWorker.controller) return true;
     await new Promise((r) => { navigator.serviceWorker.addEventListener('controllerchange', r, { once: true }); setTimeout(r, 4000); });
     return !!navigator.serviceWorker.controller;
@@ -296,6 +296,11 @@ function depoisDoEp20() {
   bugM3(d, 'BUG-07', 'Rascunho do novo chamado aparece pra outra conta', '1. Escrever um rascunho e sair da conta\n2. Entrar com outra conta\n3. Abrir Novo chamado', 'Formulário vazio', 'Aparece o rascunho da outra pessoa', 'rascunho-outra-conta.png', { tecnico: 'localStorage fd:rascunho não é apagado no logout' });
   d.proximoBug = 8; d.conquistas.push('ep20'); return andaSprint(d, 18, false);
 }
+// FD-097: o card modelo do EP00 (já entregue, bem escrito). O aluno vê como um card bom fica antes de pegar o FD-101.
+const FD097 = { descricao: 'Pra quem: os atendentes das empresas clientes. O quê: entrar no FlowDesk com e-mail e senha e cair direto no Início. Por quê: sem login, qualquer pessoa com o link via os chamados de todo mundo.',
+  regrasTx: 'Só entra quem tem conta. Quando o e-mail ou a senha estão errados, a mensagem não diz qual dos dois foi, pra ninguém descobrir quais e-mails têm conta.',
+  criterios: ['E-mail e senha certos levam pro Início', 'E-mail vazio: aparece "Preencha o e-mail"', 'Senha vazia: aparece "Preencha a senha"', 'E-mail ou senha errados: aparece "E-mail ou senha incorretos"', 'O botão Sair fecha a sessão e volta pro login'],
+  ok: [0, 1, 2, 3, 4], comentarios: [] };
 const SAVES = [
   { id: 'inicio', nome: 'Começo do curso', quando: 'do EP00 ao EP04', monta: () => semente() },
   { id: 'ep04', nome: 'Início do EP05', quando: 'Cenários em Gherkin', monta: () => { const d = semente(); d.planos['FD-101'] = CENARIOS_EP03.map((c) => ({ ...c })); d.conquistas = ['ep03']; return d; } },
@@ -1189,6 +1194,7 @@ function ligaReteste(c) {
 PAGINAS.card = () => {
   const d = dados(), c = d.cards.find((x) => x.id === (qs.get('id') || '').toUpperCase());
   if (!c) return casca('quadro', topo('Card não encontrado') + '<a class="btn sec" href="quadro.html">Voltar pro quadro</a>');
+  if (c.id === 'FD-097' && !(c.criterios || []).length) { Object.assign(c, JSON.parse(JSON.stringify(FD097))); salvar(); }
   const temPlano = !!d.planos[c.id];
   const abas = [['detalhes', 'Detalhes'], ...(temPlano ? [['plano', 'Plano de testes'], ['gherkin', 'Gherkin']] : []), ['comentarios', 'Comentários']];
   let aba = abas.some(([k]) => k === qs.get('aba')) ? qs.get('aba') : 'detalhes';
@@ -1210,7 +1216,7 @@ PAGINAS.card = () => {
   const dia1Html = () => `<div class="dia1" data-test="card-dia1"><div class="d1k">O CARD COMO CHEGOU NO DIA 1 · 09:32</div>
     <div class="d1c"><div><span>Título</span><b>Criar chamado</b></div><div><span>Prioridade</span><b>Normal</b></div><div><span>Responsável</span><b>Você</b></div>
     <div><span>Descrição</span><i>—</i></div><div><span>Regras de negócio</span><i>—</i></div><div><span>Critérios de aceite</span><i>—</i></div></div>
-    <div class="d1q"><b>O que está faltando neste card?</b><span>Marque tudo que um QA precisaria pra saber o que testar.</span>
+    <div class="d1q"><b>O que está faltando neste card?</b><span>Marque tudo que um QA precisaria pra saber o que testar. Na dúvida, compara com o <a href="card.html?id=FD-097" data-test="ver-fd097" style="white-space:nowrap">FD-097</a>, um card que já foi entregue.</span>
     <div class="d1o">${FALTA.map(([k, n]) => `<label><input type="checkbox" value="${k}" data-test="falta-${k}">${n}</label>`).join('')}</div>
     <button class="btn peq" id="d1Conf" data-test="conferir-falta">Conferir</button><div class="d1r" id="d1R"></div></div>
     <div class="d1n">Abaixo, a versão atual do card, depois da conversa com o Rafael.</div></div>`;
@@ -1246,13 +1252,13 @@ PAGINAS.card = () => {
     if (k === 'detalhes') {
       A.innerHTML = c.tipo === 'bug'
         ? retesteHtml(c) + `<div class="sec"><div class="k">Card relacionado</div><div class="v">${c.relacionado ? `<a href="card.html?id=${c.relacionado}">${c.relacionado}</a>` : '—'}</div></div>` + campo('Passos para reproduzir', c.passos) + campo('Resultado esperado', c.esperado) + campo('Resultado obtido', c.obtido) + campo('Evidência', c.evidencia || '') + (c.regressao ? campo('Funcionava em', c.funcionava ? 'Sprint ' + c.funcionava : '') + campo('Quebrou em', c.quebrou ? 'Sprint ' + c.quebrou : '') : '')
-        : (c.id === 'FD-118' && (d1Aberto(d) || (d.desafio || {}).entregue) ? desafioHtml() : '') + (c.id === 'FD-130' && (d2Aberto(d) || (d.d2 || {}).entregue) ? desafio2Html(dados()) : '') + (DIA1 ? dia1Html() + `<div class="d1-esconde ${d.faltaOk ? 'aberto' : ''}" id="d1Resto"><div class="d1-aviso">Responda acima pra ver a versão atual do card</div>` : '') + campo('Descrição', c.descricao) + (c.tipo === 'melhoria' ? '' : critHtml()) + (DIA1 ? '</div>' : '');
+        : (c.id === 'FD-118' && (d1Aberto(d) || (d.desafio || {}).entregue) ? desafioHtml() : '') + (c.id === 'FD-130' && (d2Aberto(d) || (d.d2 || {}).entregue) ? desafio2Html(dados()) : '') + (DIA1 ? dia1Html() + `<div class="d1-esconde ${d.faltaOk ? 'aberto' : ''}" id="d1Resto"><div class="d1-aviso">Responda acima pra ver a versão atual do card</div>` : '') + campo('Descrição', c.descricao) + (c.regrasTx ? campo('Regras de negócio', c.regrasTx) : '') + (c.tipo === 'melhoria' ? '' : critHtml()) + (DIA1 ? '</div>' : '');
       if (c.tipo !== 'bug') {
         const pl = d.planos[c.id] || [], ex = pl.filter((x) => x.exec === 'passou' || x.exec === 'falhou').length, fal = pl.filter((x) => x.exec === 'falhou' || (_c('falha') && x.jaFalhou)).length, _f = pl.some((x) => x.exec !== 'falhou' && x.jaFalhou) && _c('falha') && _pv('falha'), bugs = pl.filter((x) => x.bug).length;
         const linha = (n, l, cor) => `<div class="rs-l"><span>${l}</span><b${cor ? ` style="color:${cor}"` : ''}>${n}</b></div>`;
         const pessoa = (p, papel) => `<div class="rs-p">${avatar(p)}<div><b>${PESSOAS[p].nome}</b><span>${papel}</span></div></div>`;
         A.innerHTML = `<div class="det"><div class="det-e">${A.innerHTML}</div><aside class="rs" data-test="resumo-card">
-          <div class="rs-k">Pessoas do card</div>${pessoa('rafael', 'PO · escreveu a história')}${pessoa(c.resp === 'voce' ? 'gabriela' : c.resp, 'Dev · fez a entrega')}${pessoa('voce', 'QA · está testando')}
+          <div class="rs-k">Pessoas do card</div>${pessoa('rafael', 'PO · escreveu a história')}${pessoa(c.resp === 'voce' ? 'gabriela' : c.resp, 'Dev · fez a entrega')}${c.coluna === 'concluido' && c.resp !== 'voce' ? '' : pessoa('voce', 'QA · está testando')}
           ${temPlano ? `<div class="rs-k" style="margin-top:18px">Andamento do teste</div>${linha(pl.length, 'Cenários no plano')}${linha(`${ex}/${pl.length}`, 'Executados')}${linha(fal, 'Falharam', fal ? '#fca5a5' : '')}${linha(bugs, 'Bugs ligados', bugs ? '#c4b5fd' : '')}<div class="rs-bar"><i style="width:${pl.length ? ex / pl.length * 100 : 0}%"></i></div>
           <button class="btn cheio" data-test="abrir-plano" id="abrePlano" style="margin-top:16px">Abrir plano de testes</button>` : ''}</aside></div>`;
       }
