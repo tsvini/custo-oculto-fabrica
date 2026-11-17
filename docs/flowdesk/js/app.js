@@ -188,7 +188,7 @@ const usaApi = () => VERSAO >= 17 && 'serviceWorker' in navigator && /^https?:/.
 let _swPronto = null;
 function swPronto() {
   if (!_swPronto) _swPronto = (async () => {
-    await navigator.serviceWorker.register('sw.js?v=1794935687');
+    await navigator.serviceWorker.register('sw.js?v=1794936164');
     if (navigator.serviceWorker.controller) return true;
     await new Promise((r) => { navigator.serviceWorker.addEventListener('controllerchange', r, { once: true }); setTimeout(r, 4000); });
     return !!navigator.serviceWorker.controller;
@@ -1725,8 +1725,8 @@ PAGINAS.configuracoes = () => {
       <div class="campo" style="margin-bottom:0"><label>Sua carreira</label>${trilha()}<div class="dica">${xpDe()} XP · ${nivelAtual()}. O XP vem das missões de cada prática.</div></div></div>
     <div class="fcard sprint-auto" style="margin-top:18px" data-test="sprint-atual"><div class="sa-n">${VERSAO}</div><div><h3>Sprint ${VERSAO} · homologação</h3><p class="dica">${VERSAO === 14 ? 'A sprint muda sozinha: quando você terminar a missão do EP08, a Gabriela sobe a <b>Sprint 15</b> com as correções.' : VERSAO === 15 ? 'Você está na Sprint 15, com as correções da Gabriela. Quando terminar a missão do EP12, sobe a <b>Sprint 16</b>.' : 'Você está na Sprint 16, com a correção da regressão.'}</p></div></div>
     <div class="fcard" style="margin-top:18px"><h3 style="font-size:17px;margin-bottom:6px">Carregar save do curso</h3><p class="dica" style="margin-bottom:12px">Perdeu o progresso, trocou de computador ou pulou uma aula? Carregue o ponto do curso em que você está. O FlowDesk fica do jeito que o vídeo espera. <b>Isso substitui o que você tem agora.</b></p>
-      <div class="saves" id="saves">${SAVES.map((x, i) => `<button type="button" class="sv ${i === 0 ? 'on' : ''}" data-sv="${x.id}" data-test="save-${x.id}"><span class="sv-ep">${(x.nome.match(/EP\d+/) || ['EP00'])[0]}</span><b>${i === 0 ? x.nome : x.quando}</b><span>${i === 0 ? x.quando : x.nome}</span></button>`).join('')}</div>
-      <select class="exec-sel" id="cfSave" data-test="save-episodio" aria-label="Save do curso">${SAVES.map((x) => `<option value="${x.id}">${x.nome} · ${x.quando}</option>`).join('')}</select>
+      <div class="saves" id="saves">${SAVES_ORDEM().map((x, i) => `<button type="button" class="sv ${i === 0 ? 'on' : ''}" data-sv="${x.id}" data-test="save-${x.id}"><span class="sv-ep">${seloSave(x)}</span><b>${i === 0 ? x.nome : x.quando}</b><span>${i === 0 ? x.quando : x.nome}</span></button>`).join('')}</div>
+      <select class="exec-sel" id="cfSave" data-test="save-episodio" aria-label="Save do curso">${SAVES_ORDEM().map((x) => `<option value="${x.id}">${x.nome} · ${x.quando}</option>`).join('')}</select>
       <button class="btn sec" id="carregaSave" data-test="carregar-save" style="margin-top:14px">Carregar este save</button>
       <div id="confSave" hidden style="margin-top:12px"><b>Tem certeza?</b> O que você fez até agora vai ser trocado pelo save. <button class="btn peq" id="saveSim" data-test="confirmar-save">Sim, carregar</button> <button class="btn sec peq" id="saveNao">Cancelar</button></div></div>
     <div class="fcard" style="margin-top:18px"><h3 style="font-size:17px;margin-bottom:6px">Levar o progresso pra outro computador</h3><p class="dica" style="margin-bottom:12px">Baixe um arquivo com tudo o que você fez. No outro computador, crie a conta e importe o arquivo.</p>
@@ -2398,6 +2398,10 @@ function fotosPesadas(x) {
 
 // ---------- link da aula (aula.html?ep=16) ----------
 // Um link por aula prática: já leva pra tela certa. Se o aluno ainda não chegou nessa aula, oferece pular pra ela (com backup do progresso).
+// saves na ordem do curso (Desafio 1 entre EP14 e EP15, Desafio 2 entre EP66 e EP67), com o selo certo
+const aulaDoSave = (x) => (/Desafio 2/.test(x.nome) ? 66.5 : /Desafio 1/.test(x.nome) ? 14.5 : x.id === 'inicio' ? 0 : +((/EP(\d+)/.exec(x.nome) || [0, 0])[1]));
+const SAVES_ORDEM = () => SAVES.map((x, i) => [x, i]).sort((a, b) => aulaDoSave(a[0]) - aulaDoSave(b[0]) || a[1] - b[1]).map(([x]) => x);
+const seloSave = (x) => (/Desafio 2/.test(x.nome) ? 'D2' : /Desafio 1/.test(x.nome) ? 'D1' : (x.nome.match(/EP\d+/) || ['EP00'])[0]);
 const AULA_SAVE = { 0: 'inicio', 1: 'inicio', 2: 'inicio', 3: 'inicio', 4: 'inicio', 5: 'ep04', 6: 'ep06', 7: 'ep07', 8: 'ep08', 9: 'ep10', 10: 'ep10', 11: 'ep12', 12: 'ep12', 13: 'ep14', 14: 'ep14', 14.5: 'd1', 15: 'ep16', 16: 'ep16', 17: 'ep18', 18: 'ep18', 19: 'ep20', 20: 'ep20', 21: 'm4', 22: 'm4', 23: 'm4ep23', 24: 'm4ep24', 25: 'm4ep25', 26: 'm4ep26', 27: 'm4ep27', 28: 'm4ep28', 29: 'm4ep29', 30: 'm5ep31', 31: 'm5ep31', 32: 'm5ep32', 33: 'm5ep33', 34: 'm5ep34', 35: 'm5ep35', 36: 'm5ep36', 37: 'm5ep37', 38: 'm6ep39', 39: 'm6ep39', 40: 'm6ep40', 41: 'm6ep41', 42: 'm6ep42', 43: 'm6ep43', 44: 'm6ep44', 45: 'm6ep45', 46: 'm7ep46', 47: 'm7ep47', 48: 'm7ep48', 49: 'm7ep49', 50: 'm7ep50', 51: 'm7ep51', 52: 'm7ep52', 53: 'm8ep53', 54: 'm8ep54', 55: 'm8ep55', 56: 'm8ep56', 57: 'm8ep57', 58: 'm8ep58', 59: 'm8ep59', 60: 'm8ep60', 61: 'm9ep61', 62: 'm9ep62', 63: 'm9ep63', 64: 'm9ep64', 65: 'm9ep65', 66: 'm9ep66', 66.5: 'd2', 67: 'm9ep67' };
 PAGINAS.aula = () => {
   const n = numAula(qs.get('ep') || ''); if (Number.isNaN(n)) return location.replace('dashboard.html');

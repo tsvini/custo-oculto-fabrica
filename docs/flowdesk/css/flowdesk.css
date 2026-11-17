@@ -1128,3 +1128,7 @@ body.m8 [data-test=sair]{color:#b4b7cc}
 .desafio.d2 .d2-p{background:rgba(20,18,37,.7);border:1px solid #2e2550;border-radius:14px;padding:14px 16px;margin:12px 0;text-align:left}.d2-p h4{margin:0 0 6px;font-size:15px}
 .d2-l{display:flex;gap:12px;align-items:center;justify-content:space-between;padding:7px 0;border-bottom:1px solid #221c3d;font-size:14px}.d2-l i{color:var(--mut);font-style:normal}.d2-l select{width:230px;flex:0 0 230px}
 @media (max-width:640px){.fcard{padding:18px}.fcard .in,.fcard input[type=file]{min-width:0;max-width:100%}}
+/* nome comprido (ou e-mail como nome) não empurra o Sair pra fora; a lateral rola em tela baixa */
+.side .eu>div{min-width:0;flex:1}.side .eu b,.side .eu span{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.side .eu .vc{flex:none}.side .eu button{flex:none;padding:6px 8px;border-radius:8px;border:1px solid var(--line);color:inherit}.side .eu button:hover{border-color:#7C3AED}
+@media (min-width:901px){.side{overflow-y:auto;overflow-x:hidden}}
