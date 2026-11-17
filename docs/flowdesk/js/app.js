@@ -188,7 +188,7 @@ const usaApi = () => VERSAO >= 17 && 'serviceWorker' in navigator && /^https?:/.
 let _swPronto = null;
 function swPronto() {
   if (!_swPronto) _swPronto = (async () => {
-    await navigator.serviceWorker.register('sw.js?v=1794924881');
+    await navigator.serviceWorker.register('sw.js?v=1794935687');
     if (navigator.serviceWorker.controller) return true;
     await new Promise((r) => { navigator.serviceWorker.addEventListener('controllerchange', r, { once: true }); setTimeout(r, 4000); });
     return !!navigator.serviceWorker.controller;
@@ -569,7 +569,8 @@ const cardDaVez = (d) => { const cq = d.conquistas || []; if (cq.includes('ep14'
 function proximaAula(d) {
   const cq = d.conquistas || []; if (cq.includes('d1') && !cq.some((k) => /^ep(1[5-9]|[2-9]\d)$/.test(k))) return 'EP15';
   const nums = cq.map((k) => (/^ep(\d+)$/.exec(k) || [])[1]).filter(Boolean).map(Number);
-  const n = nums.length ? Math.max(...nums) + 1 : 0; return n === 15 && !cq.includes('d1') ? 'Desafio 1' : 'EP' + String(n).padStart(2, '0');
+  let n = nums.length ? Math.max(...nums) + 1 : 0; if (cq.includes('d2') && n < 67) n = 67;
+  return n === 15 && !cq.includes('d1') ? 'Desafio 1' : 'EP' + String(n).padStart(2, '0');
 }
 // onde o aluno está no curso: a última aula que ele abriu pelo link (aula.html) ou, sem isso, a próxima depois das missões feitas
 const ondeEsta = (d) => { const u = d.ultimaAula && d.ultimaAula.n, p = numAula(proximaAula(d)); return u != null && u >= p ? { n: u, aberta: true } : { n: p, aberta: false }; };
@@ -692,7 +693,7 @@ function casca(pagina, conteudo) {
   const sub = (h, n, k) => `<a href="${h}" class="${pg === 'card' && (aba || 'detalhes') === k ? 'on' : ''}" data-sub="${k}" data-test="sub-${k}">${n}</a>`;
   const pc = placarCache(), achados = pc ? pc.bugs.filter((b) => b.ganhador).length : 0;
   const naoLidas = chatLiberado(d) ? '' : `<span class="tranca" title="Libera depois da missão do EP04">${ico('cadeado')}EP04</span>`;
-  const mAt = missaoAtual(), cv = cardDaVez(d), efet = !!DIPLOMAS().junior;
+  const mAt = missaoAtual(), cv = cardDaVez(d), efet = !!(DIPLOMAS().junior || DIPLOMAS().pleno);
   const subCard = cv ? `<div class="sub-nav"><div class="sub-k">Seu card · ${cv}</div>${sub('card.html?id=' + cv, cv === 'FD-118' || cv === 'FD-130' ? 'Desafio' : 'Visão geral', 'detalhes')}${sub(`card.html?id=${cv}&aba=plano`, 'Plano de testes', 'plano')}${cv === 'FD-101' ? sub('card.html?id=FD-101&aba=gherkin', 'Gherkin', 'gherkin') : ''}</div>` : '';
   document.body.innerHTML = `<div class="app"><aside class="side">${MARCA}<nav aria-label="Menu">
     ${it('dashboard.html', 'Início', 'dashboard')}${it('missoes.html', 'Missões', 'missoes', mAt ? `<span class="menu-tag">${mAt.id === 'd1' ? 'D1' : mAt.id === 'd2' ? 'D2' : mAt.aula}</span>` : '')}${it('quadro.html', 'Quadro', 'quadro')}

@@ -891,7 +891,7 @@ h1,h2,h3,.topo h2{font-family:var(--tit)}
 .nc-lado ol{margin:12px 0 14px;padding-left:20px;display:flex;flex-direction:column;gap:8px;font-size:14px;line-height:1.4;color:#d9dbe6}
 .nc-lado a{font-weight:700;font-size:14px;display:inline-flex;align-items:center}
 .nc-lado a .ic{margin:0 0 0 6px}
-@media (max-width:1000px){.nc-grade{grid-template-columns:1fr}.nc-lado{position:static}}
+@media (max-width:1000px){.nc-grade{grid-template-columns:minmax(0,1fr)}.nc-grade>*{min-width:0}.nc-lado{position:static}}
 @media (min-width:901px){.side{overflow:visible}}
 .rafa{flex-direction:row;align-items:flex-end;gap:6px;padding:14px 10px 0 14px}
 .rafa-b{align-self:center;flex:1;margin-bottom:12px}
@@ -1126,4 +1126,5 @@ body.m8 [data-test=sair]{color:#b4b7cc}
 .foto-i img{width:48px;height:48px;object-fit:cover;border-radius:8px;background:#1f1b36}.foto-i span{flex:1}.foto-i i{color:var(--mut);font-style:normal}
 @media (max-width:640px){.foto-tx{display:none}}
 .desafio.d2 .d2-p{background:rgba(20,18,37,.7);border:1px solid #2e2550;border-radius:14px;padding:14px 16px;margin:12px 0;text-align:left}.d2-p h4{margin:0 0 6px;font-size:15px}
-.d2-l{display:flex;gap:12px;align-items:center;justify-content:space-between;padding:7px 0;border-bottom:1px solid #221c3d;font-size:14px}.d2-l i{color:var(--mut);font-style:normal}.d2-l select{max-width:210px}
+.d2-l{display:flex;gap:12px;align-items:center;justify-content:space-between;padding:7px 0;border-bottom:1px solid #221c3d;font-size:14px}.d2-l i{color:var(--mut);font-style:normal}.d2-l select{width:230px;flex:0 0 230px}
+@media (max-width:640px){.fcard{padding:18px}.fcard .in,.fcard input[type=file]{min-width:0;max-width:100%}}
