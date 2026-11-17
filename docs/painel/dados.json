@@ -1,10 +1,10 @@
 {
- "atualizado": "17/11/2026 01:46",
+ "atualizado": "17/11/2026 16:24",
  "fontes": {
   "custo_oculto": {
    "seguidores": 38,
-   "views_total": 13512,
-   "videos": 59,
+   "views_total": 13575,
+   "videos": 60,
    "views_28d": 7997,
    "views_7d": 2978,
    "seguidores_28d": 27,
@@ -155,7 +155,7 @@
   },
   "hidden_cost": {
    "seguidores": 0,
-   "views_total": 30,
+   "views_total": 33,
    "videos": 18,
    "views_28d": 0,
    "views_7d": 0,
@@ -166,7 +166,7 @@
   },
   "vini_qa": {
    "seguidores": 1,
-   "views_total": 535,
+   "views_total": 545,
    "videos": 13,
    "views_28d": 530,
    "views_7d": 72,
@@ -320,19 +320,25 @@
    "usuario": "Custo Oculto",
    "seguidores": 97,
    "curtidas": 718,
-   "videos": 40,
-   "views_total": 7420,
+   "videos": 41,
+   "views_total": 7209,
    "top": [
+    {
+     "titulo": "Começou numa farmácia, vendendo 9 copos por dia. Virou uma das marcas mais conhecidas do m",
+     "url": "https://www.tiktok.com/@custooculto/video/7709196203912695047?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
+     "views": 15,
+     "likes": 0
+    },
     {
      "titulo": "93 mil pessoas reservaram um voo para a Lua. A companhia faliu antes de decolar.  🚀 O Cust",
      "url": "https://www.tiktok.com/@custooculto/video/7708803093533592850?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 338,
+     "views": 383,
      "likes": 17
     },
     {
      "titulo": "Eu embalei seu bombom por 30 anos. A Garoto era capixaba, até 2002  🍫 Você sabia dessa his",
      "url": "https://www.tiktok.com/@custooculto/video/7708750393018207496?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 142,
+     "views": 162,
      "likes": 6
     },
     {
@@ -352,12 +358,6 @@
      "url": "https://www.tiktok.com/@custooculto/video/7707656361940716818?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
      "views": 118,
      "likes": 0
-    },
-    {
-     "titulo": "Recusou o Google por 1 milhão. Recusou a Microsoft por 44 bilhões. Foi vendido por menos d",
-     "url": "https://www.tiktok.com/@custooculto/video/7707286754293746952?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 493,
-     "likes": 24
     }
    ],
    "nome": "TikTok @custooculto"
