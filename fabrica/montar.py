@@ -301,7 +301,7 @@ def main(pasta, serie, empresa, roteiro, palavras, narr, encerr, saida, musica=N
     corpo = os.path.join(tmp, "corpo.mp4")
     if musica:
         run("-i", os.path.join(tmp, "fx.mp4"), "-i", narr, "-stream_loop", "-1", "-i", musica, "-filter_complex",
-            f"[1:a]aresample=48000,pan=stereo|c0=c0|c1=c0,apad=whole_dur={dur:.3f},asplit=2[n][sc];[2:a]aresample=48000,aformat=channel_layouts=stereo,volume=0.20,atrim=0:{dur:.3f},afade=t=in:d=1,afade=t=out:st={dur-1.8:.3f}:d=1.7[m];[m][sc]sidechaincompress=threshold=0.03:ratio=8:attack=20:release=400[d];[n][d]amix=inputs=2:normalize=0[a]",
+            f"[1:a]aresample=48000,pan=stereo|c0=c0|c1=c0,apad=whole_dur={dur:.3f},asplit=2[n][sc];[2:a]aresample=48000,aformat=channel_layouts=stereo,atrim=0:{dur:.3f},loudnorm=I=-14:TP=-2,aresample=48000,volume=0.12,afade=t=in:d=1,afade=t=out:st={dur-1.8:.3f}:d=1.7[m];[m][sc]sidechaincompress=threshold=0.03:ratio=8:attack=20:release=400[d];[n][d]amix=inputs=2:normalize=0[a]",
             "-map", "0:v", "-map", "[a]", "-c:v", "copy", "-c:a", "aac", "-b:a", "192k", "-t", f"{dur:.3f}", corpo)
     else:
         run("-i", os.path.join(tmp, "fx.mp4"), "-i", narr, "-filter_complex", f"[1:a]aresample=48000,pan=stereo|c0=c0|c1=c0,apad=whole_dur={dur:.3f}[a]",
