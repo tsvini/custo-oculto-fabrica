@@ -188,7 +188,7 @@ const usaApi = () => VERSAO >= 17 && 'serviceWorker' in navigator && /^https?:/.
 let _swPronto = null;
 function swPronto() {
   if (!_swPronto) _swPronto = (async () => {
-    await navigator.serviceWorker.register('sw.js?v=1794937725');
+    await navigator.serviceWorker.register('sw.js?v=1794938781');
     if (navigator.serviceWorker.controller) return true;
     await new Promise((r) => { navigator.serviceWorker.addEventListener('controllerchange', r, { once: true }); setTimeout(r, 4000); });
     return !!navigator.serviceWorker.controller;
@@ -299,7 +299,7 @@ function depoisDoEp20() {
 // FD-097: o card modelo do EP00 (já entregue, bem escrito). O aluno vê como um card bom fica antes de pegar o FD-101.
 const FD097 = { descricao: 'Pra quem: os atendentes das empresas clientes. O quê: entrar no FlowDesk com e-mail e senha e cair direto no Início. Por quê: sem login, qualquer pessoa com o link via os chamados de todo mundo.',
   regrasTx: 'Só entra quem tem conta. Quando o e-mail ou a senha estão errados, a mensagem não diz qual dos dois foi, pra ninguém descobrir quais e-mails têm conta.',
-  criterios: ['E-mail e senha certos levam pro Início', 'E-mail vazio: aparece "Preencha o e-mail"', 'Senha vazia: aparece "Preencha a senha"', 'E-mail ou senha errados: aparece "E-mail ou senha incorretos"', 'O botão Sair fecha a sessão e volta pro login'],
+  criterios: ['E-mail e senha certos levam pro Início', 'E-mail vazio: "Preencha o e-mail"', 'Senha vazia: "Preencha a senha"', 'Errou e-mail ou senha: "E-mail ou senha incorretos"', 'O botão Sair fecha a sessão e volta pro login'],
   ok: [0, 1, 2, 3, 4], comentarios: [] };
 const SAVES = [
   { id: 'inicio', nome: 'Começo do curso', quando: 'do EP00 ao EP04', monta: () => semente() },
