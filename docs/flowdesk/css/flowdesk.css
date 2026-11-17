@@ -1118,3 +1118,5 @@ body.m8{--acc:#7c3aed}body.m8 .side .tranca{color:#9a9db3}
 .arquivo input.arq-vis{display:block;position:static;opacity:1;width:auto;height:auto;pointer-events:auto;color:#a9acc2;font-size:13px}
 .rot-an{font-size:14px;font-weight:600;margin-bottom:6px}.rot-an small{color:var(--mut);font-weight:500}
 body.m8 [data-test=sair]{color:#b4b7cc}
+/* módulo 9 · IA */
+.ia-regras{margin:6px 0 14px 18px;font-size:14px;line-height:1.7;color:#d6d8e6}.ia-regras li{padding-left:4px}

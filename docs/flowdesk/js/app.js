@@ -188,7 +188,7 @@ const usaApi = () => VERSAO >= 17 && 'serviceWorker' in navigator && /^https?:/.
 let _swPronto = null;
 function swPronto() {
   if (!_swPronto) _swPronto = (async () => {
-    await navigator.serviceWorker.register('sw.js?v=1794921004');
+    await navigator.serviceWorker.register('sw.js?v=1794923240');
     if (navigator.serviceWorker.controller) return true;
     await new Promise((r) => { navigator.serviceWorker.addEventListener('controllerchange', r, { once: true }); setTimeout(r, 4000); });
     return !!navigator.serviceWorker.controller;
@@ -315,9 +315,13 @@ const SAVES = [
   ...[39, 40, 41, 42, 43, 44, 45].map((n) => ({ id: 'm6ep' + n, nome: `Início do EP${n}`, quando: 'Módulo 6 · direto no servidor', monta: () => { const d = depoisDoEp20(); for (let k = 22; k <= 28; k++) d.conquistas.push('ep' + k); for (let k = 31; k <= 36; k++) d.conquistas.push('ep' + k); for (let k = 39; k < n; k++) d.conquistas.push('ep' + k); return d; } })),
   ...[46, 47, 48, 49, 50, 51, 52].map((n) => ({ id: 'm7ep' + n, nome: `Início do EP${n}`, quando: 'Módulo 7 · o incidente', monta: () => { const d = depoisDoEp20(); for (let k = 22; k <= 28; k++) d.conquistas.push('ep' + k); for (let k = 31; k <= 36; k++) d.conquistas.push('ep' + k); for (let k = 39; k <= 44; k++) d.conquistas.push('ep' + k); for (const k of [47, 48, 50, 51]) if (k < n) d.conquistas.push('ep' + k); return d; } })),
   ...[53, 54, 55, 56, 57, 58, 59, 60].map((n) => ({ id: 'm8ep' + n, nome: `Início do EP${n}`, quando: 'Módulo 8 · pra todo mundo, e rápido', monta: () => { const d = depoisDoEp20(); for (let k = 22; k <= 28; k++) d.conquistas.push('ep' + k); for (let k = 31; k <= 36; k++) d.conquistas.push('ep' + k); for (let k = 39; k <= 44; k++) d.conquistas.push('ep' + k); for (const k of [47, 48, 50, 51]) d.conquistas.push('ep' + k); for (const k of [54, 55, 56, 58, 59]) if (k < n) d.conquistas.push('ep' + k); return d; } })),
+  ...[61, 62, 63, 64, 65, 66, 67].map((n) => ({ id: 'm9ep' + n, nome: `Início do EP${n}`, quando: 'Módulo 9 · o colega novo', monta: () => { const d = fimDoM8(); for (const k of [62, 63, 65]) if (k < n) d.conquistas.push('ep' + k); if (n === 67) d.conquistas.push('d2'); return d; } })),
   ...[23, 24, 25, 26, 27, 28, 29].map((n) => ({ id: 'm4ep' + n, nome: `Início do EP${n}`, quando: 'Módulo 4 · o regressivo', monta: () => { const d = depoisDoEp20(); for (let k = 22; k < n; k++) d.conquistas.push('ep' + k); d.conquistas = d.conquistas.filter((k) => k !== 'ep21'); return d; } })),
 ];
 
+
+// fim do módulo 8: todas as missões até o EP59 feitas
+function fimDoM8() { const d = depoisDoEp20(); for (let k = 22; k <= 28; k++) d.conquistas.push('ep' + k); for (let k = 31; k <= 36; k++) d.conquistas.push('ep' + k); for (let k = 39; k <= 44; k++) d.conquistas.push('ep' + k); for (const k of [47, 48, 50, 51, 54, 55, 56, 58, 59]) d.conquistas.push('ep' + k); return d; }
 
 // ---------- missões (conferidas pelo próprio site) ----------
 // Uma missão por prática guiada. O site confere sozinho e libera a conquista. Novas práticas: acrescentar aqui.
@@ -504,6 +508,13 @@ const MISSOES = [
     ['ep59', 'Um limite pra cada tela', 'Orçamento de tempo', [['Um arquivo com o limite de cada tela', 'orcamento']]],
   ].map(([id, titulo, conq, itens]) => ({ id, titulo, aula: 'EP' + id.slice(2), conquista: conq, nivel: 'QA júnior', link: 'acessibilidade.html#' + id,
     itens: itens.map(([t, k]) => [t, (d) => !!((((d.m8 || {}).ok) || {})[k])]) })),
+  // Módulo 9: IA no trabalho de QA. A revisão acontece no próprio FlowDesk (ia.html); o teste consertado do EP63 vem do fork
+  ...[
+    ['ep62', 'Doze casos em dois minutos', 'Revisor de IA', [['As regras inventadas pela IA marcadas', 'inventadas'], ['A regra do card que ficou de fora', 'faltou']]],
+    ['ep63', 'Verde, e não testa nada', 'Desconfia do verde', [['Os três problemas do teste da IA', 'problemas'], ['O teste consertado no seu fork', 'teste']]],
+    ['ep65', 'A hipótese e a prova', 'Hipótese não é prova', [['A frase com a hipótese errada', 'hipotese'], ['O que no log prova a causa', 'prova']]],
+  ].map(([id, titulo, conq, itens]) => ({ id, titulo, aula: 'EP' + id.slice(2), conquista: conq, nivel: 'QA júnior', link: 'ia.html#' + id,
+    itens: itens.map(([t, k]) => [t, (d) => !!((((d.m9 || {}).ok) || {})[k])]) })),
 ];
 const bugsDe = (d) => d.cards.filter((c) => c.tipo === 'bug');
 const textoBug = (b) => [b.titulo, b.passos, b.esperado, b.obtido, b.cenario].join(' ');
@@ -608,7 +619,7 @@ const FILA_CONQ = [];
 function conquista(m) {
   if ($('.conq-fundo')) { if (!FILA_CONQ.some((x) => x.id === m.id)) FILA_CONQ.push(m); return; }  // várias de uma vez: uma por vez
   const o = document.createElement('div'); o.className = 'conq-fundo'; o.setAttribute('data-test', 'conquista');
-  const extra = m.id === 'd1' ? '<div class="s2">Agora você é <b>QA júnior</b>. O seu crachá novo está pronto: <a href="efetivacao.html" data-test="ir-cartao">pegar meu cartão de efetivação</a>.</div>' : m.id === 'ep12' ? '<div class="s2">A Gabriela já está corrigindo. Quando você voltar pro FlowDesk, a <b>Sprint 16</b> estará no ar.</div>' : m.id === 'ep14' ? '<div class="s2">Fim do módulo 2. A Sprint 16 foi aprovada e sobe sexta.</div>' : m.id === 'ep20' ? '<div class="s2">Fim do módulo 3. Três bugs que a tela sozinha não mostrava, e você achou onde cada um mora.</div>' : m.id === 'ep59' ? '<div class="s2">Fim do módulo 8. O FlowDesk funciona pra todo mundo, e rápido, e o pipeline segura a piora.</div>' : m.id === 'ep51' ? '<div class="s2">Fim do módulo 7. Do telefonema de sexta às três ações de segunda, o time saiu mais forte do incidente.</div>' : m.id === 'ep44' ? '<div class="s2">Fim do módulo 6. Você testa o servidor sem tela, e a tela só confere o que só ela mostra.</div>' : m.id === 'ep36' ? '<div class="s2">Fim do módulo 5. O regressivo roda sozinho, explica o próprio vermelho e todo vermelho tem dono.</div>' : m.id === 'ep28' ? '<div class="s2">Fim do módulo 4. Um regressivo pensado por risco, e cada teste provou que pega o bug: vermelho com ele, verde sem ele.</div>' : m.id === 'ep08' ? '<div class="s2">A Gabriela já está corrigindo. Quando você voltar pro FlowDesk, a <b>Sprint 15</b> estará no ar.</div>' : m.id === 'ep03' ? '<div class="s2">O <b>FlowChat</b> foi liberado: agora dá pra tirar dúvida com o time.</div>' : '';
+  const extra = m.id === 'd1' ? '<div class="s2">Agora você é <b>QA júnior</b>. O seu crachá novo está pronto: <a href="efetivacao.html" data-test="ir-cartao">pegar meu cartão de efetivação</a>.</div>' : m.id === 'ep12' ? '<div class="s2">A Gabriela já está corrigindo. Quando você voltar pro FlowDesk, a <b>Sprint 16</b> estará no ar.</div>' : m.id === 'ep14' ? '<div class="s2">Fim do módulo 2. A Sprint 16 foi aprovada e sobe sexta.</div>' : m.id === 'ep20' ? '<div class="s2">Fim do módulo 3. Três bugs que a tela sozinha não mostrava, e você achou onde cada um mora.</div>' : m.id === 'ep65' ? '<div class="s2">Fim das práticas do módulo 9. A IA começa, você confere. Falta o Desafio 2.</div>': m.id === 'ep59' ? '<div class="s2">Fim do módulo 8. O FlowDesk funciona pra todo mundo, e rápido, e o pipeline segura a piora.</div>' : m.id === 'ep51' ? '<div class="s2">Fim do módulo 7. Do telefonema de sexta às três ações de segunda, o time saiu mais forte do incidente.</div>' : m.id === 'ep44' ? '<div class="s2">Fim do módulo 6. Você testa o servidor sem tela, e a tela só confere o que só ela mostra.</div>' : m.id === 'ep36' ? '<div class="s2">Fim do módulo 5. O regressivo roda sozinho, explica o próprio vermelho e todo vermelho tem dono.</div>' : m.id === 'ep28' ? '<div class="s2">Fim do módulo 4. Um regressivo pensado por risco, e cada teste provou que pega o bug: vermelho com ele, verde sem ele.</div>' : m.id === 'ep08' ? '<div class="s2">A Gabriela já está corrigindo. Quando você voltar pro FlowDesk, a <b>Sprint 15</b> estará no ar.</div>' : m.id === 'ep03' ? '<div class="s2">O <b>FlowChat</b> foi liberado: agora dá pra tirar dúvida com o time.</div>' : '';
   o.innerHTML = `<div class="conq"><div class="ci">${ico('trofeu')}</div><div class="k">CONQUISTA DESBLOQUEADA${m.semXp ? '' : ` · +${m.itens.length * XP_ITEM + XP_CONQ} XP`}</div><div class="v" data-test="conquista-nome">${m.conquista}</div><div class="s">Nível atual: <b>${m.nivel}</b></div>${extra}<button class="btn" data-test="fechar-conquista">Continuar</button></div>`;
   // fica pendente até o aluno fechar: se a página recarregar antes (reteste, troca de tela), o aviso volta
   const d = dados(); d.conqPendente = m.id; salvar();
@@ -625,7 +636,7 @@ function cardMissao() {
 // ---------- carreira (XP vem das missões) ----------
 // júnior vem com a efetivação (Desafio 1, no fim do módulo 2): a conquista 'd1' leva o XP pra 3000; daí em diante conta o XP do módulo 3 em diante
 const XP_ITEM = 40, XP_CONQ = 60, XP_JUNIOR = 3000, XP_PLENO = 6000;
-const M_JUNIOR = ['ep16', 'ep18', 'ep20', 'ep22', 'ep23', 'ep24', 'ep25', 'ep26', 'ep27', 'ep28', 'ep31', 'ep32', 'ep33', 'ep34', 'ep35', 'ep36', 'ep39', 'ep40', 'ep41', 'ep42', 'ep43', 'ep44', 'ep47', 'ep48', 'ep50', 'ep51', 'ep54', 'ep55', 'ep56', 'ep58', 'ep59'];
+const M_JUNIOR = ['ep16', 'ep18', 'ep20', 'ep22', 'ep23', 'ep24', 'ep25', 'ep26', 'ep27', 'ep28', 'ep31', 'ep32', 'ep33', 'ep34', 'ep35', 'ep36', 'ep39', 'ep40', 'ep41', 'ep42', 'ep43', 'ep44', 'ep47', 'ep48', 'ep50', 'ep51', 'ep54', 'ep55', 'ep56', 'ep58', 'ep59', 'ep62', 'ep63', 'ep65'];
 const ehJunior = (d = dados()) => xpDe(d) >= XP_JUNIOR;
 // pleno só vem com o Desafio 2: até lá a barra para um pouco antes
 const xpDe = (d = dados()) => { const f = d.conquistas || [], atual = MISSOES.find((m) => !f.includes(m.id)), efetivado = f.includes('d1');
@@ -667,6 +678,7 @@ ICONE.pipeline = '<path d="M4 6h6v4H4zM14 14h6v4h-6zM7 10v4a3 3 0 0 0 3 3h4M17 1
 ICONE.servidor = '<rect x="4" y="4" width="16" height="7" rx="2"/><rect x="4" y="13" width="16" height="7" rx="2"/><path d="M8 7.5h.01M8 16.5h.01"/>';
 ICONE.incidente = '<path d="M12 3 2 20h20L12 3z"/><path d="M12 10v4M12 17h.01"/>';
 ICONE.acessibilidade = '<circle cx="12" cy="4.5" r="2"/><path d="M4 8.5l8 1.5 8-1.5M12 10v5M12 15l-3.5 6M12 15l3.5 6"/>';
+ICONE.ia = '<path d="M12 3l1.8 4.7L18.5 9.5l-4.7 1.8L12 16l-1.8-4.7L5.5 9.5l4.7-1.8z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z"/>';
 ICONE.regressivo = '<path d="M20 11a8 8 0 0 0-14.6-4.5M4 13a8 8 0 0 0 14.6 4.5"/><path d="M5 3v4h4M19 21v-4h-4"/>';
 const ico = (k, c = '') => SVG(ICONE[k], c);
 const placarCache = () => LS.get('fd:placar', null);
@@ -684,7 +696,7 @@ function casca(pagina, conteudo) {
   document.body.innerHTML = `<div class="app"><aside class="side">${MARCA}<nav aria-label="Menu">
     ${it('dashboard.html', 'Início', 'dashboard')}${it('missoes.html', 'Missões', 'missoes', mAt ? `<span class="menu-tag">${mAt.id === 'd1' ? 'D1' : mAt.aula}</span>` : '')}${it('quadro.html', 'Quadro', 'quadro')}
     ${subCard}
-    ${(d.conquistas || []).includes('ep20') ? it('regressivo.html', 'Regressivo', 'regressivo') : ''}${(d.conquistas || []).includes('ep28') ? it('pipeline.html', 'Pipeline', 'pipeline') : ''}${(d.conquistas || []).includes('ep36') ? it('servidor.html', 'Servidor', 'servidor') : ''}${(d.conquistas || []).includes('ep44') ? it('incidente.html', 'Incidente', 'incidente') : ''}${(d.conquistas || []).includes('ep51') ? it('acessibilidade.html', 'Acessibilidade', 'acessibilidade') : ''}${it('chamados.html', 'Chamados', 'chamados')}${it('chat.html', 'FlowChat', 'chat', naoLidas)}${it('caca.html', 'Caça aos bugs', 'caca', `<span class="caca-n">${achados}/3</span>`)}${it('efetivacao.html', 'Carreira', 'efetivacao', efet ? '' : `<span class="tranca" title="Libera no Desafio 1">${ico('cadeado')}D1</span>`)}</nav>
+    ${(d.conquistas || []).includes('ep20') ? it('regressivo.html', 'Regressivo', 'regressivo') : ''}${(d.conquistas || []).includes('ep28') ? it('pipeline.html', 'Pipeline', 'pipeline') : ''}${(d.conquistas || []).includes('ep36') ? it('servidor.html', 'Servidor', 'servidor') : ''}${(d.conquistas || []).includes('ep44') ? it('incidente.html', 'Incidente', 'incidente') : ''}${(d.conquistas || []).includes('ep51') ? it('acessibilidade.html', 'Acessibilidade', 'acessibilidade') : ''}${(d.conquistas || []).includes('ep59') ? it('ia.html', 'IA', 'ia') : ''}${it('chamados.html', 'Chamados', 'chamados')}${it('chat.html', 'FlowChat', 'chat', naoLidas)}${it('caca.html', 'Caça aos bugs', 'caca', `<span class="caca-n">${achados}/3</span>`)}${it('efetivacao.html', 'Carreira', 'efetivacao', efet ? '' : `<span class="tranca" title="Libera no Desafio 1">${ico('cadeado')}D1</span>`)}</nav>
     <div class="side-fim">${cardMissao()}<nav class="sec-nav">${it('configuracoes.html', 'Configurações', 'configuracoes')}</nav>
     <div class="eu"><span class="vc">${esc((c.nome || 'VC').split(' ').map((x) => x[0]).slice(0, 2).join('').toUpperCase())}</span><div><b data-test="usuario-logado">${esc(c.nome)}</b><span data-test="nivel">${nivelAtual()}</span></div><button data-test="sair">Sair</button></div></div></aside>
     <main class="main"><header class="barra"><div class="barra-c"><span class="barra-k">CARREIRA</span>${trilha(d)}<span class="xp" data-test="xp">${xpDe(d)} / ${ehJunior(d) ? XP_PLENO : XP_JUNIOR} XP</span></div>${pillVersao()}</header><div class="conteudo">${conteudo}</div></main></div>`;
@@ -2115,7 +2127,7 @@ PAGINAS.incidente = () => {
 const A11Y_DICAS = {
   teclado: 'Um cenário que aperta Tab a partir do título e confere o foco em cada campo (regressao=ordem deixa ele vermelho).',
   nome: 'Os passos do criar chamado achando cada campo e o botão pelo nome acessível (cy.findByRole).',
-  robo: 'O cypress-axe instalado, com um passo que manda o robô conferir a tela (cy.checkA11y).',
+  robo: 'O axe-core instalado, com os comandos injectAxe e checkA11y no arquivo de suporte e um passo que manda o robô conferir a tela.',
   tempo: 'Um cenário que abre a lista com ?massa=2000 e confere o tempo em milissegundos (regressao=lista-lenta deixa ele vermelho).',
   orcamento: 'Um arquivo em cypress/fixtures com o limite de cada tela (ex.: orcamento.json).',
 };
@@ -2167,9 +2179,119 @@ PAGINAS.acessibilidade = () => {
   if (location.hash) { const el = $(location.hash); if (el) setTimeout(() => el.scrollIntoView({ block: 'start' }), 50); }
 };
 
+// ---------- IA no trabalho de QA (módulo 9): revisar o que a IA entrega ----------
+const IA_REGRAS = ['Só foto: JPG ou PNG', 'Cada foto até 5 MB', 'No máximo 3 fotos por chamado', 'A foto é opcional: dá pra abrir chamado sem foto'];
+const IA_CASOS = ['Anexar uma foto JPG de 2 MB: a foto aparece no chamado', 'Anexar uma foto PNG de 4 MB: a foto aparece no chamado', 'Anexar uma foto de 6 MB: recusada com a mensagem “A foto passa de 5 MB”',
+  'Anexar um PDF: recusado com a mensagem “Só fotos: JPG ou PNG”', 'Anexar duas fotos no mesmo chamado: as duas aparecem', 'Remover uma foto antes de enviar: ela some da lista',
+  'Anexar um vídeo MP4 de até 10 MB: aceito e aparece no chamado', 'Anexar uma foto de exatamente 5 MB: aceita', 'Abrir o chamado depois de criado: as fotos aparecem em miniatura',
+  'Anexar uma foto retangular: ela é cortada pra ficar quadrada', 'Enviar o chamado sem foto: o chamado é criado normalmente', 'Anexar uma foto com acento no nome: aparece com o nome certo'];
+const IA_INVENTADOS = [7, 10];
+const IA_TESTE = `When('eu crio o chamado com clique duplo', () => {
+  cy.abrir('novo-chamado.html');
+  cy.get('#titulo').type('Impressora não liga');
+  cy.get('#descricao').type('Desde cedo, nenhuma impressão sai.');
+  cy.get('.btn.nc-aviao').dblclick();
+  cy.wait(3000);
+});
+
+Then('o chamado é criado', () => {
+  cy.get('.toast').should('exist');
+});`;
+const IA_PROBLEMAS = [['espera', 'Uma espera fixa de 3 segundos', 1], ['gherkin', 'O cenário foi escrito em Gherkin', 0], ['classe', 'Acha o botão pela classe do estilo', 1],
+  ['titulo', 'O título do chamado é curto demais', 0], ['mensagem', 'Só confere que a mensagem apareceu, e não quantos chamados foram criados', 1], ['ordem', 'Digita o título antes da descrição', 0]];
+const IA_RESUMO = [['comeco', 'O problema começou às 22:41, um minuto depois do deploy da v2.31.'], ['trafego', 'Às 22:41 o tráfego subiu muito: o servidor provavelmente ficou sobrecarregado e começou a recusar acesso.'],
+  ['codigo', 'Os erros são 401: o servidor deixou de reconhecer quem fazia o pedido.'], ['volta', 'Às 23:25 a versão anterior voltou e os erros pararam.']];
+const IA_PROVAS = [['volume', 'Às 22:41 o log tem muito mais pedidos por minuto do que às 22:30'], ['usuario', 'Um mesmo usuário entra (200) e, uns 30 segundos depois, recebe 401 em tudo que pede'], ['senha', 'Antes das 22:40 aparecem alguns 401 no /api/entrar']];
+const IA_DICAS = {
+  inventadas: 'Lê cada caso com as regras do card do lado. O que não está no card foi a IA que trouxe de outro lugar.',
+  faltou: 'Uma regra do card não tem nenhum caso. Escreve qual é.',
+  problemas: 'Três coisas fazem esse teste passar verde até com o bug. Uma delas é a mais grave.',
+  teste: 'No seu fork: um cenário do chamado em dobro que acha o botão pelo nome e confere que só um chamado novo apareceu (a branch ep63-teste-da-ia tem o teste da IA, pra você consertar).',
+  hipotese: 'Uma frase do resumo junta duas coisas que aconteceram ao mesmo tempo e chama de causa.',
+  prova: 'Sobrecarga não tem relógio. O que no log tem?',
+};
+async function confereIA(fork) {
+  const api = async (p) => { const r = await fetch(`https://api.github.com/repos/${fork}${p}`, { headers: { Accept: 'application/vnd.github+json' } }); if (r.status === 403 || r.status === 429) throw new Error('limite'); if (!r.ok) return null; return r.json(); };
+  const texto = (c) => { try { return new TextDecoder().decode(Uint8Array.from(atob((c.content || '').replace(/\n/g, '')), (x) => x.charCodeAt(0))); } catch (e) { return ''; } };
+  const repo = await api(''); if (!repo) return { erro: 'Não achei esse repositório no GitHub. Confere o nome: usuario/vida-de-qa-regressivo' };
+  if (!repo.fork || !repo.parent || !/\/vida-de-qa-regressivo$/i.test(repo.parent.full_name)) return { erro: 'Esse repositório não é um fork do vida-de-qa-regressivo.' };
+  const ok = {}, runs = ((await api('/actions/runs?per_page=100')) || {}).workflow_runs || [];
+  const refs = [repo.default_branch, ...new Set(runs.filter((r) => r.event === 'pull_request' && r.conclusion === 'success').map((r) => r.head_branch))].slice(0, 4);
+  for (const ref of refs) {
+    const arvore = await api(`/git/trees/${encodeURIComponent(ref)}?recursive=1`); if (!arvore || !arvore.tree) continue;
+    const caminhos = arvore.tree.map((x) => x.path); let feat = '', code = '';
+    for (const p of caminhos.filter((x) => /^cypress\/e2e\/.+\.feature$/.test(x)).slice(0, 30)) { const c = await api(`/contents/${p}?ref=${encodeURIComponent(ref)}`); if (c && /duplicad|dobro/i.test(texto(c))) feat += '\n' + texto(c); }
+    for (const p of caminhos.filter((x) => /^cypress\/support\/.+\.js$/.test(x)).slice(0, 25)) { const c = await api(`/contents/${p}?ref=${encodeURIComponent(ref)}`); if (c) code += '\n' + texto(c); }
+    if (/s[óo] um|um s[óo]|apenas um/i.test(feat) && /findByRole\(\s*['"]button/.test(code)) ok.teste = true;
+  }
+  return { ok };
+}
+PAGINAS.ia = () => {
+  const d = dados(); d.m9 = d.m9 || {}; const ok = d.m9.ok || {};
+  const liberado = (d.conquistas || []).includes('ep59');
+  if (!liberado) return casca('ia', topo('IA', 'O colega novo do time.') + '<div class="aviso-caca" data-test="ia-fechado">Libera no módulo 9, depois de fechar o módulo 8.</div>');
+  const item = (k, t) => `<div class="rg-cx ${ok[k] ? 'ok' : ''}" data-test="ia-item-${k}"><div class="rg-r"><b>${ok[k] ? '✓' : '•'}</b>${t}</div>${ok[k] ? '' : `<p class="dica">${IA_DICAS[k]}</p>`}</div>`;
+  const bloco = (id, corpo) => { const m = MISSOES.find((x) => x.id === id), feita = (d.conquistas || []).includes(id);
+    return `<section class="painel rg-bl ${feita ? 'feito' : ''}" id="${id}" data-test="ia-${id}"><div class="rg-h"><span>${m.aula}</span><h3>${m.titulo}</h3>${feita ? `<i>${ico('trofeu')} ${m.conquista}</i>` : ''}</div>${corpo}</section>`; };
+  casca('ia', topo('IA', 'A IA começa, você confere. Rascunho é dela, entrega é sua.')
+    + bloco('ep62', `<p class="dica">Card <b>FD-130</b> · Foto pelo celular no chamado. As regras do card:</p><ol class="ia-regras" data-test="ia-regras">${IA_REGRAS.map((r) => `<li>${r}</li>`).join('')}</ol>
+      <p class="dica">Os 12 casos que a IA escreveu. Marca os que <b>não estão no card</b>:</p>
+      <div class="in-acoes">${IA_CASOS.map((c, i) => `<label class="in-ac"><input type="checkbox" value="${i + 1}" data-test="ia-caso-${i + 1}" ${ok.inventadas && IA_INVENTADOS.includes(i + 1) ? 'checked' : ''}> <b>${i + 1}.</b> ${c}</label>`).join('')}</div>
+      <div class="campo" style="margin-top:12px"><label for="iaFaltou">A regra do card que nenhum caso testa</label><input class="in" id="iaFaltou" data-test="ia-faltou" placeholder="Escreve a regra" value="${esc(d.m9.faltou || '')}"></div>
+      ${item('inventadas', 'As regras inventadas pela IA marcadas')}${item('faltou', 'A regra do card que ficou de fora')}
+      ${ok.inventadas && ok.faltou ? '' : '<button class="btn" id="ia62" data-test="ia-conferir-62">Conferir a revisão</button>'}`)
+    + bloco('ep63', `<p class="dica">O teste que a IA escreveu pro chamado em dobro. Passa verde, até com <code>?regressao=duplicado</code>.</p><pre class="in-log" data-test="ia-teste">${esc(IA_TESTE)}</pre>
+      <p class="dica">Marca os <b>três</b> problemas que deixam ele verde com o bug:</p>
+      <div class="in-acoes">${IA_PROBLEMAS.map(([k, t]) => `<label class="in-ac"><input type="checkbox" value="${k}" data-test="ia-problema-${k}" ${ok.problemas && IA_PROBLEMAS.find((x) => x[0] === k)[2] ? 'checked' : ''}> ${t}</label>`).join('')}</div>
+      ${item('problemas', 'Os três problemas do teste da IA')}${ok.problemas ? '' : '<button class="btn" id="ia63" data-test="ia-conferir-63">Conferir</button>'}
+      <div class="campo" style="margin-top:14px"><label for="iaFork">Seu fork no GitHub</label><div class="pp-l"><input class="in" id="iaFork" data-test="ia-fork" placeholder="seu-usuario/vida-de-qa-regressivo" value="${esc(d.m9.fork || (d.m8 || {}).fork || (d.m7 || {}).fork || '')}"><button class="btn" id="iaFk" data-test="ia-conferir-fork">Conferir no GitHub</button></div></div>
+      ${item('teste', 'O teste consertado no seu fork')}`)
+    + bloco('ep65', `<p class="dica">O resumo que a IA fez do log da sexta (página Incidente), com os dados pessoais tirados antes. Qual frase é a <b>hipótese errada</b>?</p>
+      <div class="in-acoes">${IA_RESUMO.map(([k, t]) => `<label class="in-ac"><input type="radio" name="iaHip" value="${k}" data-test="ia-hipotese-${k}" ${ok.hipotese && k === 'trafego' ? 'checked' : ''}> ${t}</label>`).join('')}</div>
+      <p class="dica" style="margin-top:12px">E o que no log prova a causa de verdade?</p>
+      <div class="in-acoes">${IA_PROVAS.map(([k, t]) => `<label class="in-ac"><input type="radio" name="iaProva" value="${k}" data-test="ia-prova-${k}" ${ok.prova && k === 'usuario' ? 'checked' : ''}> ${t}</label>`).join('')}</div>
+      ${item('hipotese', 'A frase com a hipótese errada')}${item('prova', 'O que no log prova a causa')}
+      ${ok.hipotese && ok.prova ? '' : '<button class="btn" id="ia65" data-test="ia-conferir-65">Conferir</button>'}`));
+  const marca = (ks) => { const dd = dados(); dd.m9 = dd.m9 || {}; dd.m9.ok = { ...(dd.m9.ok || {}) }; ks.forEach((k) => { dd.m9.ok[k] = dd.m9.ok[k] || agora(); }); salvar(); };
+  if ($('#ia62')) $('#ia62').onclick = () => {
+    const m = $$('#ep62 .in-ac input:checked').map((x) => +x.value).sort((a, b) => a - b), f = $('#iaFaltou').value.trim(), certo = [];
+    const dd = dados(); dd.m9 = dd.m9 || {}; dd.m9.faltou = f; salvar();
+    if (m.join() === IA_INVENTADOS.join()) certo.push('inventadas');
+    if (/(3|tr[eê]s|quarta|4).{0,40}foto|foto.{0,40}(3|tr[eê]s|quarta|4)|m[áa]ximo|limite de/i.test(f)) certo.push('faltou');
+    if (certo.length) marca(certo);
+    if (certo.length === 2) { recado('Revisão conferida: duas invenções e um buraco.'); location.reload(); return; }
+    toast(!certo.includes('inventadas') ? (m.length > 2 ? 'Tem caso marcado que está no card. Confere com as regras.' : 'Ainda tem invenção sem marcar.') : 'Faltou dizer qual regra do card nenhum caso testa.', true);
+    if (certo.length) setTimeout(() => location.reload(), 1300);
+  };
+  if ($('#ia63')) $('#ia63').onclick = () => {
+    const m = $$('#ep63 .in-ac input:checked').map((x) => x.value).sort(), certos = IA_PROBLEMAS.filter((x) => x[2]).map((x) => x[0]).sort();
+    if (m.join() === certos.join()) { marca(['problemas']); recado('Os três problemas, achados.'); location.reload(); }
+    else toast(m.length === 3 ? 'Quase. Um dos três não deixaria o teste verde com o bug.' : 'São três problemas. Marca os três.', true);
+  };
+  if ($('#ia65')) $('#ia65').onclick = () => {
+    const h = ($('input[name=iaHip]:checked') || {}).value, p = ($('input[name=iaProva]:checked') || {}).value, certo = [];
+    if (h === 'trafego') certo.push('hipotese'); if (p === 'usuario') certo.push('prova');
+    if (certo.length) marca(certo);
+    if (certo.length === 2) { recado('Hipótese separada da prova.'); location.reload(); return; }
+    toast(h !== 'trafego' ? 'Essa frase o log confirma. Procura a que junta duas coisas e chama de causa.' : 'A prova tem que ter relógio: o que se repete sempre do mesmo jeito?', true);
+    if (certo.length) setTimeout(() => location.reload(), 1300);
+  };
+  $('#iaFk').onclick = async () => {
+    const fork = $('#iaFork').value.trim().replace(/^https?:\/\/github\.com\//i, '').replace(/\.git$|\/$/g, '');
+    if (!/^[\w.-]+\/[\w.-]+$/.test(fork)) return toast('Escreve assim: seu-usuario/vida-de-qa-regressivo', true);
+    const b = $('#iaFk'); b.disabled = true; b.textContent = 'Consultando o GitHub…';
+    try {
+      const r = await confereIA(fork); if (r.erro) { b.disabled = false; b.textContent = 'Conferir no GitHub'; return toast(r.erro, true); }
+      const dd = dados(); dd.m9 = dd.m9 || {}; dd.m9.fork = fork; salvar(); marca(Object.keys(r.ok).filter((k) => r.ok[k]));
+      recado(r.ok.teste ? 'Conferido no GitHub: o teste consertado está lá.' : 'Conferido no GitHub, mas o teste consertado ainda não apareceu.'); location.reload();
+    } catch (e) { b.disabled = false; b.textContent = 'Conferir no GitHub'; toast(e.message === 'limite' ? 'O GitHub limitou as consultas por agora. Tenta de novo em alguns minutos.' : 'Não consegui falar com o GitHub. Confere sua conexão.', true); }
+  };
+  if (location.hash) { const el = $(location.hash); if (el) setTimeout(() => el.scrollIntoView({ block: 'start' }), 50); }
+};
+
 // ---------- link da aula (aula.html?ep=16) ----------
 // Um link por aula prática: já leva pra tela certa. Se o aluno ainda não chegou nessa aula, oferece pular pra ela (com backup do progresso).
-const AULA_SAVE = { 0: 'inicio', 1: 'inicio', 2: 'inicio', 3: 'inicio', 4: 'inicio', 5: 'ep04', 6: 'ep06', 7: 'ep07', 8: 'ep08', 9: 'ep10', 10: 'ep10', 11: 'ep12', 12: 'ep12', 13: 'ep14', 14: 'ep14', 14.5: 'd1', 15: 'ep16', 16: 'ep16', 17: 'ep18', 18: 'ep18', 19: 'ep20', 20: 'ep20', 21: 'm4', 22: 'm4', 23: 'm4ep23', 24: 'm4ep24', 25: 'm4ep25', 26: 'm4ep26', 27: 'm4ep27', 28: 'm4ep28', 29: 'm4ep29', 30: 'm5ep31', 31: 'm5ep31', 32: 'm5ep32', 33: 'm5ep33', 34: 'm5ep34', 35: 'm5ep35', 36: 'm5ep36', 37: 'm5ep37', 38: 'm6ep39', 39: 'm6ep39', 40: 'm6ep40', 41: 'm6ep41', 42: 'm6ep42', 43: 'm6ep43', 44: 'm6ep44', 45: 'm6ep45', 46: 'm7ep46', 47: 'm7ep47', 48: 'm7ep48', 49: 'm7ep49', 50: 'm7ep50', 51: 'm7ep51', 52: 'm7ep52', 53: 'm8ep53', 54: 'm8ep54', 55: 'm8ep55', 56: 'm8ep56', 57: 'm8ep57', 58: 'm8ep58', 59: 'm8ep59', 60: 'm8ep60' };
+const AULA_SAVE = { 0: 'inicio', 1: 'inicio', 2: 'inicio', 3: 'inicio', 4: 'inicio', 5: 'ep04', 6: 'ep06', 7: 'ep07', 8: 'ep08', 9: 'ep10', 10: 'ep10', 11: 'ep12', 12: 'ep12', 13: 'ep14', 14: 'ep14', 14.5: 'd1', 15: 'ep16', 16: 'ep16', 17: 'ep18', 18: 'ep18', 19: 'ep20', 20: 'ep20', 21: 'm4', 22: 'm4', 23: 'm4ep23', 24: 'm4ep24', 25: 'm4ep25', 26: 'm4ep26', 27: 'm4ep27', 28: 'm4ep28', 29: 'm4ep29', 30: 'm5ep31', 31: 'm5ep31', 32: 'm5ep32', 33: 'm5ep33', 34: 'm5ep34', 35: 'm5ep35', 36: 'm5ep36', 37: 'm5ep37', 38: 'm6ep39', 39: 'm6ep39', 40: 'm6ep40', 41: 'm6ep41', 42: 'm6ep42', 43: 'm6ep43', 44: 'm6ep44', 45: 'm6ep45', 46: 'm7ep46', 47: 'm7ep47', 48: 'm7ep48', 49: 'm7ep49', 50: 'm7ep50', 51: 'm7ep51', 52: 'm7ep52', 53: 'm8ep53', 54: 'm8ep54', 55: 'm8ep55', 56: 'm8ep56', 57: 'm8ep57', 58: 'm8ep58', 59: 'm8ep59', 60: 'm8ep60', 61: 'm9ep61', 62: 'm9ep62', 63: 'm9ep63', 64: 'm9ep64', 65: 'm9ep65', 66: 'm9ep66', 67: 'm9ep67' };
 PAGINAS.aula = () => {
   const n = numAula(qs.get('ep') || ''); if (Number.isNaN(n)) return location.replace('dashboard.html');
   if (!sessao() || !contas()[sessao()]) return location.replace('index.html?volta=' + encodeURIComponent('aula.html?ep=' + qs.get('ep')));
