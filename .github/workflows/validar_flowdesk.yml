@@ -24,3 +24,4 @@ jobs:
       - run: node tests/flowdesk/incidente.js http://localhost:8765/
       - run: node tests/flowdesk/acessibilidade.js http://localhost:8765/
       - run: node tests/flowdesk/ia.js http://localhost:8765/
+      - run: node tests/flowdesk/desafio2.js http://localhost:8765/

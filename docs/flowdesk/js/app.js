@@ -20,7 +20,7 @@ const chaveDados = () => 'fd:dados:' + sessao();
 let D = null;
 // versões novas do site completam o que faltar nos dados antigos, sem apagar nada do aluno
 const migra = (d) => { if (!d) return d; const base = semente(); for (const k of Object.keys(base)) if (d[k] === undefined) d[k] = base[k]; for (const k of Object.keys(base.chat || {})) if (d.chat && !d.chat[k]) d.chat[k] = base.chat[k]; return d; };
-const dados = () => { if (!D) { D = migra(LS.get(chaveDados(), null)); if (D) { andaSprint(D); garanteDesafio(D); } } return D; };
+const dados = () => { if (!D) { D = migra(LS.get(chaveDados(), null)); if (D) { andaSprint(D); garanteDesafio(D); garanteD2(D); } } return D; };
 const salvar = () => LS.set(chaveDados(), D);
 // sem ninguém logado (tela de login), a versão é a mais nova que este navegador já viu
 const _conq = (LS.get(chaveDados(), null) || {}).conquistas || Object.keys(localStorage).filter((k) => k.startsWith('fd:dados:')).flatMap((k) => (LS.get(k, null) || {}).conquistas || []);
@@ -188,7 +188,7 @@ const usaApi = () => VERSAO >= 17 && 'serviceWorker' in navigator && /^https?:/.
 let _swPronto = null;
 function swPronto() {
   if (!_swPronto) _swPronto = (async () => {
-    await navigator.serviceWorker.register('sw.js?v=1794923240');
+    await navigator.serviceWorker.register('sw.js?v=1794923646');
     if (navigator.serviceWorker.controller) return true;
     await new Promise((r) => { navigator.serviceWorker.addEventListener('controllerchange', r, { once: true }); setTimeout(r, 4000); });
     return !!navigator.serviceWorker.controller;
@@ -202,7 +202,7 @@ if ('serviceWorker' in navigator) navigator.serviceWorker.addEventListener('mess
 });
 function criaChamado(c) {
   const d = dados(), id = d.proximoChamado++;
-  const x = { id, titulo: String(c.titulo).trim(), descricao: String(c.descricao).trim(), cliente: c.cliente, status: 'Aberto', criadoEm: agora(), criadoPor: 'Você', anexo: c.anexo || null, v: VERSAO, historico: [{ quando: agora(), tx: 'Chamado criado com status Aberto' }] };
+  const x = { id, titulo: String(c.titulo).trim(), descricao: String(c.descricao).trim(), cliente: c.cliente, status: 'Aberto', criadoEm: agora(), criadoPor: 'Você', anexo: c.anexo || null, ...(Array.isArray(c.fotos) && c.fotos.length ? { fotos: c.fotos.slice(0, 3).map((f) => ({ nome: String(f.nome), tamanho: +f.tamanho || 0, mini: String(f.mini || '').slice(0, 20000) })) } : {}), v: VERSAO, historico: [{ quando: agora(), tx: 'Chamado criado com status Aberto' }] };
   d.chamados.push(x); salvar(); return { id, titulo: x.titulo, cliente: x.cliente, status: x.status, criadoEm: x.criadoEm };
 }
 // ?api=rede (pros testes automatizados): o novo chamado vai pela rede de verdade, em servidor/chamados, sem o service worker no meio.
@@ -315,6 +315,7 @@ const SAVES = [
   ...[39, 40, 41, 42, 43, 44, 45].map((n) => ({ id: 'm6ep' + n, nome: `Início do EP${n}`, quando: 'Módulo 6 · direto no servidor', monta: () => { const d = depoisDoEp20(); for (let k = 22; k <= 28; k++) d.conquistas.push('ep' + k); for (let k = 31; k <= 36; k++) d.conquistas.push('ep' + k); for (let k = 39; k < n; k++) d.conquistas.push('ep' + k); return d; } })),
   ...[46, 47, 48, 49, 50, 51, 52].map((n) => ({ id: 'm7ep' + n, nome: `Início do EP${n}`, quando: 'Módulo 7 · o incidente', monta: () => { const d = depoisDoEp20(); for (let k = 22; k <= 28; k++) d.conquistas.push('ep' + k); for (let k = 31; k <= 36; k++) d.conquistas.push('ep' + k); for (let k = 39; k <= 44; k++) d.conquistas.push('ep' + k); for (const k of [47, 48, 50, 51]) if (k < n) d.conquistas.push('ep' + k); return d; } })),
   ...[53, 54, 55, 56, 57, 58, 59, 60].map((n) => ({ id: 'm8ep' + n, nome: `Início do EP${n}`, quando: 'Módulo 8 · pra todo mundo, e rápido', monta: () => { const d = depoisDoEp20(); for (let k = 22; k <= 28; k++) d.conquistas.push('ep' + k); for (let k = 31; k <= 36; k++) d.conquistas.push('ep' + k); for (let k = 39; k <= 44; k++) d.conquistas.push('ep' + k); for (const k of [47, 48, 50, 51]) d.conquistas.push('ep' + k); for (const k of [54, 55, 56, 58, 59]) if (k < n) d.conquistas.push('ep' + k); return d; } })),
+  { id: 'd2', nome: 'Início do Desafio 2', quando: 'Promoção · FD-130', monta: () => { const d = fimDoM8(); for (const k of [62, 63, 65]) d.conquistas.push('ep' + k); return d; } },
   ...[61, 62, 63, 64, 65, 66, 67].map((n) => ({ id: 'm9ep' + n, nome: `Início do EP${n}`, quando: 'Módulo 9 · o colega novo', monta: () => { const d = fimDoM8(); for (const k of [62, 63, 65]) if (k < n) d.conquistas.push('ep' + k); if (n === 67) d.conquistas.push('d2'); return d; } })),
   ...[23, 24, 25, 26, 27, 28, 29].map((n) => ({ id: 'm4ep' + n, nome: `Início do EP${n}`, quando: 'Módulo 4 · o regressivo', monta: () => { const d = depoisDoEp20(); for (let k = 22; k < n; k++) d.conquistas.push('ep' + k); d.conquistas = d.conquistas.filter((k) => k !== 'ep21'); return d; } })),
 ];
@@ -560,10 +561,10 @@ function pintaGherkin(txt) {
 const progresso = (m, d = dados()) => m.itens.map(([, f]) => !!f(d));
 // quem já passou do começo (save carregado, plano escrito) não é mandado de volta pra missão do EP00
 const pulaEp00 = (d) => !(d.conquistas || []).includes('ep00') && ((d.conquistas || []).length > 0 || (d.planos['FD-101'] || []).length > 0);
-const numAula = (t) => (/desafio|^d1$/i.test(t) ? 14.5 : +(/\d+/.exec(t) || [NaN])[0]);
-const nomeAula = (n) => (n === 14.5 ? 'Desafio 1' : 'EP' + String(n).padStart(2, '0'));
+const numAula = (t) => (/desafio 2|^d2$/i.test(t) ? 66.5 : /desafio|^d1$/i.test(t) ? 14.5 : +(/\d+/.exec(t) || [NaN])[0]);
+const nomeAula = (n) => (n === 14.5 ? 'Desafio 1' : n === 66.5 ? 'Desafio 2' : 'EP' + String(n).padStart(2, '0'));
 // card em que o aluno está trabalhando agora (o menu acompanha): FD-101 no estágio, FD-118 no Desafio 1, nenhum depois
-const cardDaVez = (d) => { const cq = d.conquistas || []; if (cq.includes('ep14') && !cq.includes('d1')) return 'FD-118'; return cq.includes('d1') || cq.includes('ep14') ? null : 'FD-101'; };
+const cardDaVez = (d) => { const cq = d.conquistas || []; if (cq.includes('ep14') && !cq.includes('d1')) return 'FD-118'; if (d2Aberto(d)) return 'FD-130'; return cq.includes('d1') || cq.includes('ep14') ? null : 'FD-101'; };
 // próxima aula do curso, pela última missão feita (EP08 feita → EP09)
 function proximaAula(d) {
   const cq = d.conquistas || []; if (cq.includes('d1') && !cq.some((k) => /^ep(1[5-9]|[2-9]\d)$/.test(k))) return 'EP15';
@@ -579,13 +580,13 @@ const DIPLOMAS = () => LS.get('fd:diplomas:' + sessao(), {});
 const daDiploma = (k, info) => { const x = DIPLOMAS(); if (!x[k]) { x[k] = { quando: agora(), ...info }; LS.set('fd:diplomas:' + sessao(), x); } };
 // quem passou no desafio antes dessa mudança: efetivadoEm só é gravado quando o aluno passa de verdade
 (() => { try { const d = sessao() && LS.get(chaveDados(), null); if (d && d.efetivadoEm && !DIPLOMAS().junior) daDiploma('junior', { quando: d.efetivadoEm, nota: ((d.desafio || {}).resultado || {}).total, bugs: (d.desafio || {}).bugsAchados }); } catch (e) { /* sem armazenamento */ } })();
-const missaoAtual = () => { const d = dados(); if ((d.conquistas || []).includes('ep14') && !(d.conquistas || []).includes('d1')) return D1_MISSAO; return MISSOES.find((m) => !(d.conquistas || []).includes(m.id) && !(m.id === 'ep00' && pulaEp00(d))) || null; };
-function nivelAtual() { const d = dados() || {}; if ((d.conquistas || []).includes('d1')) return 'QA júnior'; const fe = MISSOES.filter((m) => (d.conquistas || []).includes(m.id)); return fe.length ? fe[fe.length - 1].nivel : 'QA estagiário'; }
+const missaoAtual = () => { const d = dados(); if ((d.conquistas || []).includes('ep14') && !(d.conquistas || []).includes('d1')) return D1_MISSAO; if (d2Aberto(d)) return D2_MISSAO; return MISSOES.find((m) => !(d.conquistas || []).includes(m.id) && !(m.id === 'ep00' && pulaEp00(d))) || null; };
+function nivelAtual() { const d = dados() || {}; if ((d.conquistas || []).includes('d2')) return 'QA pleno'; if ((d.conquistas || []).includes('d1')) return 'QA júnior'; const fe = MISSOES.filter((m) => (d.conquistas || []).includes(m.id)); return fe.length ? fe[fe.length - 1].nivel : 'QA estagiário'; }
 function confereMissoes() {
   const d = dados(); d.conquistas = d.conquistas || []; let nova = false;
   MISSOES.forEach((m) => {
     if (d.conquistas.includes(m.id) || !progresso(m, d).every(Boolean) || (m.id === 'ep00' && pulaEp00(d))) return;
-    d.conquistas.push(m.id); if (m.id === 'ep14') garanteDesafio(d); if (m.id === 'ep14' && d.chat.releases) d.chat.releases.push({ de: 'beatriz', tx: 'Sprint 16 aprovada. Sobe sexta 🚀', quando: agora() }); if (m.id === 'ep18' && d.chat.bugs) d.chat.bugs.push({ de: 'gabriela', tx: 'O seis eu corrijo hoje. O cinco é na API, vou chamar o Lucas.', quando: agora() }); salvar(); conquista(m); nova = true;
+    d.conquistas.push(m.id); if (m.id === 'ep14') garanteDesafio(d); if (m.id === 'ep65') garanteD2(d); if (m.id === 'ep14' && d.chat.releases) d.chat.releases.push({ de: 'beatriz', tx: 'Sprint 16 aprovada. Sobe sexta 🚀', quando: agora() }); if (m.id === 'ep18' && d.chat.bugs) d.chat.bugs.push({ de: 'gabriela', tx: 'O seis eu corrijo hoje. O cinco é na API, vou chamar o Lucas.', quando: agora() }); salvar(); conquista(m); nova = true;
   });
   const el = $('#missaoSide'); if (el) el.outerHTML = cardMissao();
   if (!nova && !$('.conq-fundo')) refrescaCarreira();  // com conquista nova, a barra sobe quando o aluno fecha o aviso
@@ -643,10 +644,10 @@ const xpDe = (d = dados()) => { const f = d.conquistas || [], atual = MISSOES.fi
   const total = (efetivado ? XP_JUNIOR : 0) + MISSOES.reduce((s, m) => (efetivado && !M_JUNIOR.includes(m.id)) ? s : s + (m.semXp ? 0 : f.includes(m.id) ? m.itens.length * XP_ITEM + XP_CONQ : m === atual ? progresso(m, d).filter(Boolean).length * XP_ITEM : 0), 0);
   return f.includes('d2') ? total : Math.min(total, XP_PLENO - 40); };
 function trilha(d = dados()) {
-  const xp = xpDe(d), jr = xp >= XP_JUNIOR;
-  const a = jr ? 1 : Math.min(xp / XP_JUNIOR, .98), b = jr ? Math.min((xp - XP_JUNIOR) / (XP_PLENO - XP_JUNIOR), .98) : 0;
+  const xp = xpDe(d), jr = xp >= XP_JUNIOR, pl = (d.conquistas || []).includes('d2');
+  const a = jr ? 1 : Math.min(xp / XP_JUNIOR, .98), b = pl ? 1 : jr ? Math.min((xp - XP_JUNIOR) / (XP_PLENO - XP_JUNIOR), .98) : 0;
   const ok = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg>';
-  return `<div class="trilha" data-test="carreira"><span class="nv on">${ok}Estagiário</span><span class="tb"><i style="width:${a * 100}%"></i></span><span class="nv ${jr ? 'on' : ''}">${jr ? ok : ''}Júnior</span><span class="tb"><i style="width:${Math.max(b, 0) * 100}%"></i></span><span class="nv fut">Pleno</span></div>`;
+  return `<div class="trilha" data-test="carreira"><span class="nv on">${ok}Estagiário</span><span class="tb"><i style="width:${a * 100}%"></i></span><span class="nv ${jr ? 'on' : ''}">${jr ? ok : ''}Júnior</span><span class="tb"><i style="width:${Math.max(b, 0) * 100}%"></i></span><span class="nv ${pl ? 'on' : 'fut'}">${pl ? ok : ''}Pleno</span></div>`;
 }
 const chatLiberado = (d = dados()) => (d.conquistas || []).includes('ep03');
 
@@ -692,16 +693,16 @@ function casca(pagina, conteudo) {
   const pc = placarCache(), achados = pc ? pc.bugs.filter((b) => b.ganhador).length : 0;
   const naoLidas = chatLiberado(d) ? '' : `<span class="tranca" title="Libera depois da missão do EP04">${ico('cadeado')}EP04</span>`;
   const mAt = missaoAtual(), cv = cardDaVez(d), efet = !!DIPLOMAS().junior;
-  const subCard = cv ? `<div class="sub-nav"><div class="sub-k">Seu card · ${cv}</div>${sub('card.html?id=' + cv, cv === 'FD-118' ? 'Desafio' : 'Visão geral', 'detalhes')}${sub(`card.html?id=${cv}&aba=plano`, 'Plano de testes', 'plano')}${cv === 'FD-101' ? sub('card.html?id=FD-101&aba=gherkin', 'Gherkin', 'gherkin') : ''}</div>` : '';
+  const subCard = cv ? `<div class="sub-nav"><div class="sub-k">Seu card · ${cv}</div>${sub('card.html?id=' + cv, cv === 'FD-118' || cv === 'FD-130' ? 'Desafio' : 'Visão geral', 'detalhes')}${sub(`card.html?id=${cv}&aba=plano`, 'Plano de testes', 'plano')}${cv === 'FD-101' ? sub('card.html?id=FD-101&aba=gherkin', 'Gherkin', 'gherkin') : ''}</div>` : '';
   document.body.innerHTML = `<div class="app"><aside class="side">${MARCA}<nav aria-label="Menu">
-    ${it('dashboard.html', 'Início', 'dashboard')}${it('missoes.html', 'Missões', 'missoes', mAt ? `<span class="menu-tag">${mAt.id === 'd1' ? 'D1' : mAt.aula}</span>` : '')}${it('quadro.html', 'Quadro', 'quadro')}
+    ${it('dashboard.html', 'Início', 'dashboard')}${it('missoes.html', 'Missões', 'missoes', mAt ? `<span class="menu-tag">${mAt.id === 'd1' ? 'D1' : mAt.id === 'd2' ? 'D2' : mAt.aula}</span>` : '')}${it('quadro.html', 'Quadro', 'quadro')}
     ${subCard}
     ${(d.conquistas || []).includes('ep20') ? it('regressivo.html', 'Regressivo', 'regressivo') : ''}${(d.conquistas || []).includes('ep28') ? it('pipeline.html', 'Pipeline', 'pipeline') : ''}${(d.conquistas || []).includes('ep36') ? it('servidor.html', 'Servidor', 'servidor') : ''}${(d.conquistas || []).includes('ep44') ? it('incidente.html', 'Incidente', 'incidente') : ''}${(d.conquistas || []).includes('ep51') ? it('acessibilidade.html', 'Acessibilidade', 'acessibilidade') : ''}${(d.conquistas || []).includes('ep59') ? it('ia.html', 'IA', 'ia') : ''}${it('chamados.html', 'Chamados', 'chamados')}${it('chat.html', 'FlowChat', 'chat', naoLidas)}${it('caca.html', 'Caça aos bugs', 'caca', `<span class="caca-n">${achados}/3</span>`)}${it('efetivacao.html', 'Carreira', 'efetivacao', efet ? '' : `<span class="tranca" title="Libera no Desafio 1">${ico('cadeado')}D1</span>`)}</nav>
     <div class="side-fim">${cardMissao()}<nav class="sec-nav">${it('configuracoes.html', 'Configurações', 'configuracoes')}</nav>
     <div class="eu"><span class="vc">${esc((c.nome || 'VC').split(' ').map((x) => x[0]).slice(0, 2).join('').toUpperCase())}</span><div><b data-test="usuario-logado">${esc(c.nome)}</b><span data-test="nivel">${nivelAtual()}</span></div><button data-test="sair">Sair</button></div></div></aside>
-    <main class="main"><header class="barra"><div class="barra-c"><span class="barra-k">CARREIRA</span>${trilha(d)}<span class="xp" data-test="xp">${xpDe(d)} / ${ehJunior(d) ? XP_PLENO : XP_JUNIOR} XP</span></div>${pillVersao()}</header><div class="conteudo">${conteudo}</div></main></div>`;
+    <main class="main"><header class="barra"><div class="barra-c"><span class="barra-k">CARREIRA</span>${trilha(d)}<span class="xp" data-test="xp">${(d.conquistas || []).includes('d2') ? `${xpDe(d)} XP · pleno` : `${xpDe(d)} / ${ehJunior(d) ? XP_PLENO : XP_JUNIOR} XP`}</span></div>${pillVersao()}</header><div class="conteudo">${conteudo}</div></main></div>`;
   $('[data-test=sair]').onclick = sair;
-  mostraRecado(); setTimeout(() => { confereMissoes(); const pend = (dados() || {}).conqPendente, m = pend && (MISSOES.find((x) => x.id === pend) || (pend === 'd1' ? D1_MISSAO : null)); if (m && !$('.conq-fundo')) conquista(m); }, 300);
+  mostraRecado(); setTimeout(() => { confereMissoes(); const pend = (dados() || {}).conqPendente, m = pend && (MISSOES.find((x) => x.id === pend) || (pend === 'd1' ? D1_MISSAO : pend === 'd2' ? D2_MISSAO : null)); if (m && !$('.conq-fundo')) conquista(m); }, 300);
   relogioD1();
   if (CACA_API && pg !== 'caca') fetch(`${CACA_API}/placar`).then((r) => r.json()).then((p) => LS.set('fd:placar', { bugs: p.bugs, temporada: p.temporada, encerrada: p.encerrada })).catch(() => {});
 }
@@ -946,6 +947,8 @@ PAGINAS['novo-chamado'] = () => {
         <div class="campo"><div class="rot-an">Anexo <small>(opcional · PDF, PNG ou JPG até 5 MB)</small></div>
         ${REGR.has('acessibilidade') ? `<div class="arquivo"><input type="file" id="anexo" data-test="anexo" class="arq-vis" accept=".pdf,.png,.jpg,.jpeg"><span class="nome" id="nomeArq" data-test="nome-anexo"></span><button type="button" class="icone" id="tiraArq" data-test="remover-anexo" hidden>Remover</button></div>`
           : `<label class="arquivo" for="anexo"><input type="file" id="anexo" data-test="anexo" accept=".pdf,.png,.jpg,.jpeg"><span class="btn sec peq">Escolher arquivo</span><span class="nome" id="nomeArq" data-test="nome-anexo">Nenhum arquivo escolhido</span><button type="button" class="icone" id="tiraArq" data-test="remover-anexo" hidden>Remover</button></label>`}</div>
+        ${fotosLiberadas() ? `<div class="campo" data-test="campo-fotos"><div class="rot-an">Fotos <small>(opcional · JPG ou PNG, até 5 MB cada, no máximo 3)</small></div>
+          <div class="fotos-l"><button type="button" class="btn sec peq foto-add" id="fotoAdd" data-test="adicionar-foto">${SVG('<path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/>')}<span class="foto-tx">Adicionar foto</span></button><input type="file" id="fotos" data-test="fotos" accept="image/png,image/jpeg" multiple hidden><div class="fotos-mini" id="fotosL" data-test="lista-fotos"></div></div></div>` : ''}
         <div class="fbtns"><a class="btn sec" href="chamados.html" data-test="cancelar">Cancelar</a></div>`
       : `<div class="campo"><label for="cliente">Cliente</label><select class="in" id="cliente" data-test="cliente">${CLIENTES.map((c) => `<option>${c.nome}</option>`).join('')}</select></div>
       <div class="campo"><label>Anexo <small>(opcional · PDF, PNG ou JPG até 5 MB)</small></label>
@@ -955,7 +958,23 @@ PAGINAS['novo-chamado'] = () => {
   // módulo 8: regressao=ordem põe tabindex positivo (o foco pula do título pro link do lado); acessibilidade deixa a dica do lado com contraste baixo
   if (M8 && REGR.has('ordem')) { $('#titulo').tabIndex = 1; $('#descricao').tabIndex = 2; const a = $('.nc-lado a'); if (a) a.tabIndex = 3; }
   if (M8 && REGR.has('acessibilidade')) $('.nc-lado').classList.add('nc-baixo');
-  let arquivo = null;
+  let arquivo = null, fotos = [];
+  if ($('#fotoAdd')) {
+    const pinta = () => { $('#fotosL').innerHTML = fotos.map((f, i) => `<div class="foto-i" data-test="foto"><img src="${f.mini}" alt=""><span>${esc(f.nome)} <i>(${tamanho(f.tamanho)})</i></span><button type="button" class="icone" data-tira="${i}" aria-label="Remover a foto ${esc(f.nome)}">Remover</button></div>`).join('');
+      $$('[data-tira]').forEach((b) => { b.onclick = () => { fotos.splice(+b.dataset.tira, 1); pinta(); }; }); };
+    const mini = (file) => createImageBitmap(file).then((bm) => { const k = 96 / Math.max(bm.width, bm.height), c = document.createElement('canvas'); c.width = Math.max(1, Math.round(bm.width * k)); c.height = Math.max(1, Math.round(bm.height * k)); c.getContext('2d').drawImage(bm, 0, 0, c.width, c.height); return c.toDataURL('image/jpeg', 0.6); }).catch(() => '');
+    $('#fotoAdd').onclick = () => $('#fotos').click();
+    $('#fotos').onchange = async () => {
+      limpaErros();
+      for (const f of [...$('#fotos').files]) {
+        if (!/\.(jpe?g|png)$/i.test(f.name)) { erroCampo('fotos', 'Só fotos: JPG ou PNG'); continue; }
+        if (f.size > LIMITE_ANEXO) { erroCampo('fotos', 'A foto passa de 5 MB'); continue; }
+        if (fotos.length >= 3) { erroCampo('fotos', 'No máximo 3 fotos por chamado'); break; }
+        fotos.push({ nome: f.name, tamanho: f.size, mini: await mini(f) });
+      }
+      $('#fotos').value = ''; pinta();
+    };
+  }
   if (VERSAO >= 17) {
     const rs = LS.get(rascKey(), null);
     if (rs && (rs.titulo || rs.descricao)) {
@@ -991,7 +1010,7 @@ PAGINAS['novo-chamado'] = () => {
     if (usaApi()) {
       const btn = $('[data-test=criar-chamado]');
       if (!BUG.duplicado) btn.disabled = true;
-      const corpo = { titulo: t, descricao: ds, cliente: $('#cliente').value, anexo: arquivo };
+      const corpo = { titulo: t, descricao: ds, cliente: $('#cliente').value, anexo: arquivo, ...(fotos.length ? { fotos } : {}) };
       (API_REDE
         ? fetch('servidor/chamados', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(corpo) })
           .then((r) => r.json().catch(() => ({})).then((j) => (r.ok ? { ok: true, j: { ...criaChamado(corpo), ...(j && j.id ? { idServidor: j.id } : {}) } } : { ok: false, j: { erro: (j && j.erro) || `O servidor respondeu ${r.status}` } })))
@@ -1001,7 +1020,7 @@ PAGINAS['novo-chamado'] = () => {
           if (!certo) { btn.disabled = false; return toast(j.erro || 'Não deu pra criar o chamado', true); }
           LS.del(rascKey());
           // a partir da Sprint 17 a tela fica no formulário (assim a aba Rede não perde o pedido) e já deixa criar o próximo
-          toast(`Chamado #${j.id} criado com sucesso`); $('#titulo').value = ''; $('#descricao').value = ''; $('#cont').textContent = '0/100'; arquivo = null; $('#nomeArq').textContent = 'Nenhum arquivo escolhido'; $('#tiraArq').hidden = true; btn.disabled = false;
+          toast(`Chamado #${j.id} criado com sucesso`); $('#titulo').value = ''; $('#descricao').value = ''; $('#cont').textContent = '0/100'; arquivo = null; $('#nomeArq').textContent = 'Nenhum arquivo escolhido'; $('#tiraArq').hidden = true; btn.disabled = false; fotos = []; if ($('#fotosL')) $('#fotosL').innerHTML = '';
         })
         .catch(() => { btn.disabled = false; toast('Sem conexão. Tente de novo', true); });
       return;
@@ -1016,6 +1035,7 @@ PAGINAS['novo-chamado'] = () => {
 PAGINAS.chamado = () => {
   const id = Number(qs.get('id')); let x = dados().chamados.find((c) => c.id === id);
   if (!x && qs.get('id') && _c('busca') && dados().chamados.length) { x = [...dados().chamados].sort((a, c) => c.id - a.id)[0]; _pv('busca'); }  // caça: número que não existe abre o último chamado
+  if (x && x.fotos && x.fotos.length) fotosPesadas(x);
   if (!x) return casca('chamados', topo('Chamado não encontrado', `Não existe chamado com o número ${esc(qs.get('id'))}.`) + '<a class="btn sec" href="chamados.html">Voltar pra lista</a>');
   casca('chamados', topo(`<span>#${x.id}</span> · <span style="color:var(--txt)" data-test="chamado-titulo">${esc(x.titulo) || '<i style="color:#5b5f78">(sem título)</i>'}</span>`, '', '<a href="chamados.html">Chamados</a> / #' + x.id) + `
     <div class="meta"><div class="mi"><div class="k">STATUS</div><div class="v"><span class="${stClasse(x.status)}" data-test="chamado-status">${x.status}</span></div></div>
@@ -1024,6 +1044,7 @@ PAGINAS.chamado = () => {
       <div class="mi"><div class="k">CRIADO EM</div><div class="v">${dataBR(x.criadoEm)}</div></div></div>
     <div class="sec"><div class="k">Descrição</div><div class="v" data-test="chamado-descricao">${esc(x.descricao)}</div></div>
     <div class="sec"><div class="k">Anexo</div>${x.anexo ? `<div class="v" data-test="chamado-anexo">${ico('clipe', 'ic')}${esc(x.anexo.nome)} <span style="color:var(--mut)">(${tamanho(x.anexo.tamanho)})</span></div>` : '<div class="v nada" data-test="chamado-anexo">Nenhum anexo</div>'}</div>
+    ${x.fotos && x.fotos.length ? `<div class="sec"><div class="k">Fotos</div><div class="fotos-mini" data-test="chamado-fotos">${x.fotos.map((f) => `<div class="foto-i"><img src="${f.mini}" alt="Foto ${esc(f.nome)}"><span>${esc(f.nome)} <i>(${tamanho(f.tamanho)})</i></span></div>`).join('')}</div></div>` : ''}
     <div class="sec"><div class="k">Mudar status</div><div style="display:flex;gap:10px;flex-wrap:wrap"><select class="in" id="novoSt" data-test="mudar-status" style="max-width:240px">${STATUS.map((s) => `<option ${s === x.status ? 'selected' : ''}>${s}</option>`).join('')}</select><button class="btn" id="salvaSt" data-test="salvar-status">Salvar status</button></div></div>
     <div class="sec"><div class="k">Histórico</div><div class="hist" data-test="historico">${x.historico.map((h) => `<div>${dataBR(h.quando)} · ${esc(h.tx)}</div>`).join('')}</div></div>`);
   $('#salvaSt').onclick = () => {
@@ -1084,7 +1105,7 @@ function novaTarefa(depois, ctx) {
     <div class="seg" role="radiogroup"><label data-test="tipo-bug"><input type="radio" name="tipo" value="bug" checked><span>Bug</span></label><label data-test="tipo-melhoria"><input type="radio" name="tipo" value="melhoria"><span>Melhoria</span></label></div>
     <div class="campo"><label for="tTitulo">Título <i>*</i></label><input class="in" id="tTitulo" data-test="tarefa-titulo" placeholder="O que acontece, e onde"></div>
     <div class="linha2"><div class="campo"><label for="tPrio">Prioridade</label><select class="in" id="tPrio" data-test="tarefa-prioridade">${PRIOS.map((p) => `<option ${p === 'Normal' ? 'selected' : ''}>${p}</option>`).join('')}</select></div>
-      <div class="campo"><label for="tCard">Card relacionado</label><select class="in" id="tCard" data-test="tarefa-card"><option value="">Nenhum</option>${d.cards.filter((c) => c.tipo !== 'bug').map((c) => `<option value="${c.id}" ${c.id === 'FD-101' ? 'selected' : ''}>${c.id} · ${esc(c.titulo)}</option>`).join('')}</select></div></div>
+      <div class="campo"><label for="tCard">Card relacionado</label><select class="in" id="tCard" data-test="tarefa-card"><option value="">Nenhum</option>${d.cards.filter((c) => c.tipo !== 'bug').map((c) => `<option value="${c.id}" ${c.id === (cardDaVez(d) || 'FD-101') ? 'selected' : ''}>${c.id} · ${esc(c.titulo)}</option>`).join('')}</select></div></div>
     ${ctx ? `<p class="liga" data-test="bug-cenario">Ligado ao cenário ${ctx.n} do plano: <b>${esc(ctx.nome)}</b></p>` : ''}
     <div class="so-bug"><div class="campo"><label for="tPassos">Passos para reproduzir <i>*</i></label><textarea class="in" id="tPassos" data-test="bug-passos" placeholder="1. …&#10;2. …&#10;3. …"></textarea></div>
       <div class="linha2"><div class="campo"><label for="tEsp">Resultado esperado <i>*</i></label><input class="in" id="tEsp" data-test="bug-esperado"></div><div class="campo"><label for="tObt">Resultado obtido <i>*</i></label><input class="in" id="tObt" data-test="bug-obtido"></div></div>
@@ -1222,7 +1243,7 @@ PAGINAS.card = () => {
     if (k === 'detalhes') {
       A.innerHTML = c.tipo === 'bug'
         ? retesteHtml(c) + `<div class="sec"><div class="k">Card relacionado</div><div class="v">${c.relacionado ? `<a href="card.html?id=${c.relacionado}">${c.relacionado}</a>` : '—'}</div></div>` + campo('Passos para reproduzir', c.passos) + campo('Resultado esperado', c.esperado) + campo('Resultado obtido', c.obtido) + campo('Evidência', c.evidencia || '') + (c.regressao ? campo('Funcionava em', c.funcionava ? 'Sprint ' + c.funcionava : '') + campo('Quebrou em', c.quebrou ? 'Sprint ' + c.quebrou : '') : '')
-        : (c.id === 'FD-118' && (d1Aberto(d) || (d.desafio || {}).entregue) ? desafioHtml() : '') + (DIA1 ? dia1Html() + `<div class="d1-esconde ${d.faltaOk ? 'aberto' : ''}" id="d1Resto"><div class="d1-aviso">Responda acima pra ver a versão atual do card</div>` : '') + campo('Descrição', c.descricao) + (c.tipo === 'melhoria' ? '' : critHtml()) + (DIA1 ? '</div>' : '');
+        : (c.id === 'FD-118' && (d1Aberto(d) || (d.desafio || {}).entregue) ? desafioHtml() : '') + (c.id === 'FD-130' && (d2Aberto(d) || (d.d2 || {}).entregue) ? desafio2Html(dados()) : '') + (DIA1 ? dia1Html() + `<div class="d1-esconde ${d.faltaOk ? 'aberto' : ''}" id="d1Resto"><div class="d1-aviso">Responda acima pra ver a versão atual do card</div>` : '') + campo('Descrição', c.descricao) + (c.tipo === 'melhoria' ? '' : critHtml()) + (DIA1 ? '</div>' : '');
       if (c.tipo !== 'bug') {
         const pl = d.planos[c.id] || [], ex = pl.filter((x) => x.exec === 'passou' || x.exec === 'falhou').length, fal = pl.filter((x) => x.exec === 'falhou' || (_c('falha') && x.jaFalhou)).length, _f = pl.some((x) => x.exec !== 'falhou' && x.jaFalhou) && _c('falha') && _pv('falha'), bugs = pl.filter((x) => x.bug).length;
         const linha = (n, l, cor) => `<div class="rs-l"><span>${l}</span><b${cor ? ` style="color:${cor}"` : ''}>${n}</b></div>`;
@@ -1232,6 +1253,7 @@ PAGINAS.card = () => {
           ${temPlano ? `<div class="rs-k" style="margin-top:18px">Andamento do teste</div>${linha(pl.length, 'Cenários no plano')}${linha(`${ex}/${pl.length}`, 'Executados')}${linha(fal, 'Falharam', fal ? '#fca5a5' : '')}${linha(bugs, 'Bugs ligados', bugs ? '#c4b5fd' : '')}<div class="rs-bar"><i style="width:${pl.length ? ex / pl.length * 100 : 0}%"></i></div>
           <button class="btn cheio" data-test="abrir-plano" id="abrePlano" style="margin-top:16px">Abrir plano de testes</button>` : ''}</aside></div>`;
       }
+      if (c.id === 'FD-130') ligaDesafio2(d, () => mostra('detalhes'));
       if ($('#d1Go')) $('#d1Go').onclick = () => { d1Comeca(d); salvar(); location.reload(); };
       if ($('#d1De')) $('#d1De').onclick = () => { d1Comeca(d); salvar(); location.reload(); };
       if ($('#d1Plano')) $('#d1Plano').onclick = () => mostra('plano');
@@ -1485,7 +1507,7 @@ PAGINAS['reportar-bug'] = () => location.replace('quadro.html?novo=bug');
 
 PAGINAS.missoes = () => {
   const d = dados(), feitas = d.conquistas || [];
-  const atual = missaoAtual(), lista = [...MISSOES]; { const i = lista.findIndex((m) => m.id === 'ep16'); lista.splice(i < 0 ? lista.length : i, 0, D1_MISSAO); }
+  const atual = missaoAtual(), lista = [...MISSOES]; { const i = lista.findIndex((m) => m.id === 'ep16'); lista.splice(i < 0 ? lista.length : i, 0, D1_MISSAO); lista.push(D2_MISSAO); }
   let passouAtual = !atual;
   casca('missoes', topo('Missões', 'Cada prática do curso tem uma missão. Assista a aula, faça aqui, e o FlowDesk confere sozinho.') + lista.map((m) => {
     const pr = progresso(m, d), ok = feitas.includes(m.id) || (m.id === 'ep00' && pulaEp00(d)), eAtual = atual && m.id === atual.id;
@@ -2289,14 +2311,96 @@ PAGINAS.ia = () => {
   if (location.hash) { const el = $(location.hash); if (el) setTimeout(() => el.scrollIntoView({ block: 'start' }), 50); }
 };
 
+// ---------- Desafio 2 · promoção pra pleno (FD-130, fotos pelo celular) ----------
+// Três partes: revisar o plano que a IA escreveu, explorar o card (3 bugs escondidos) e decidir onde cada teste mora.
+const D2_MISSAO = { id: 'd2', titulo: 'Desafio de promoção: FD-130', aula: 'Desafio 2', conquista: 'Promovido', nivel: 'QA pleno', link: 'card.html?id=FD-130', semXp: true, itens: [
+  ['Comece o desafio no card FD-130', (d) => !!(d.d2 || {}).inicio],
+  ['Revise o plano, teste o card e reporte o que achar', (d) => !!(d.d2 || {}).entregue],
+  ['Passe com 70 pontos e pelo menos 2 bugs', (d) => (d.conquistas || []).includes('d2')]] };
+const d2Aberto = (d = dados()) => !!d && (d.conquistas || []).includes('ep65') && !(d.conquistas || []).includes('d2');
+const fotosLiberadas = (d = dados()) => !!d && (d.cards.some((c) => c.id === 'FD-130') || (d.conquistas || []).includes('d2'));
+function garanteD2(d) {
+  if (!d2Aberto(d) || d.cards.some((c) => c.id === 'FD-130')) return;
+  d.cards.push({ id: 'FD-130', titulo: 'Foto pelo celular no chamado', coluna: 'qa', resp: 'gabriela', tipo: 'story', prioridade: 'Alta', descricao: 'O cliente quer mandar a foto do problema (o forno, a impressora, a tela de erro) junto com o chamado, direto do celular. A tela e o servidor do curso (POST /api/chamados/:id/fotos) conferem as regras.', criterios: [...IA_REGRAS], ok: [], comentarios: [] });
+  (d.chat['time-produto'] = d.chat['time-produto'] || []).push({ de: 'lucas', tx: 'O FD-130 sobe sexta e é o seu desafio de pleno. Deixei no card um plano que a IA escreveu. Parece pronto. Não está. 😉', quando: agora() });
+  LS.set(chaveDados(), d);
+}
+const D2_PLANO = [['Enviar uma foto JPG pequena', 'smoke'], ['Foto de até 10 MB é aceita', 'regressivo'], ['PDF é recusado com mensagem', 'regressivo'], ['Enviar uma foto de 20 MB pela tela e ver a mensagem de erro', 'smoke'],
+  ['Remover uma foto antes de enviar', 'regressivo'], ['Chamado sem foto continua sendo criado', 'smoke'], ['A miniatura aparece na tela do chamado', 'regressivo'], ['Foto com acento no nome', 'manual']];
+const D2_PLANO_CERTO = { 1: 'inventado', 3: 'lugar' };  // o 10 MB não está no card; os 20 MB no smoke travam todo pedido de revisão
+const D2_ONDE = [['Enviar uma foto pequena', ['smoke']], ['A quarta foto é recusada', ['smoke']], ['A tela do chamado com 3 fotos abre em menos de 2 segundos', ['regressivo']],
+  ['O robô de acessibilidade no novo chamado, na tela do celular', ['regressivo']], ['Tirar foto de verdade num celular de verdade', ['manual']], ['Enviar uma foto de 20 MB e ver a recusa', ['regressivo', 'manual']]];
+const D2_BUGS = [['api', /api|servidor|request|post\b|backend|porta de tr/i, /mb|tamanho|grande|limite|qualquer/i, 'O servidor aceita foto de qualquer tamanho'],
+  ['nome', /leitor|sem nome|nome acess|aria|r[óo]tulo|label|acessibil|axe/i, /c[aâ]mera|foto|bot[ãa]o|celular/i, 'No celular, o botão de foto não tem nome'],
+  ['tempo', /lent|demor|segundos|tempo|trav|performance|desempenho|lighthouse/i, /foto|chamado|imagem|miniatura/i, 'Com fotos grandes, a tela do chamado demora mais de 5 segundos']];
+function d2Nota(d) {
+  const x = d.d2 || {}, marcas = x.plano || {}, falta = x.falta || '', onde = x.onde || {};
+  let pPlano = 0;
+  if (marcas[1] === 'inventado') pPlano += 10; if (marcas[3] === 'lugar') pPlano += 10;
+  if (/(4|quarta|quatro|mais de (3|tr[eê]s)|m[áa]ximo|limite de (3|tr[eê]s)).{0,40}foto|foto.{0,40}(4|quarta|quatro|m[áa]ximo|limite)/i.test(falta)) pPlano += 10;
+  pPlano = Math.max(0, pPlano - 5 * Object.entries(marcas).filter(([i, v]) => v && v !== 'ok' && D2_PLANO_CERTO[i] !== v).length);
+  const bugs = d.cards.filter((b) => b.tipo === 'bug' && b.relacionado === 'FD-130');
+  const achados = D2_BUGS.filter(([, a, b]) => bugs.some((bg) => { const t = textoBug(bg); return a.test(t) && b.test(t); }));
+  const certosOnde = D2_ONDE.filter(([, ok], i) => ok.includes(onde[i])).length;
+  const pBug = Math.round(40 * achados.length / 3), pOnde = 5 * certosOnde, total = pPlano + pBug + pOnde;
+  return { pPlano, achados: achados.map((a) => a[0]), pBug, certosOnde, pOnde, total, passou: total >= 70 && achados.length >= 2 };
+}
+function desafio2Html(d) {
+  const x = d.d2 || {};
+  if (!x.inicio) return `<div class="desafio" data-test="desafio2"><div class="dk">DESAFIO 2 · PROMOÇÃO</div><h3>O FD-130 é a sua prova de pleno</h3>
+    <p>Pleno é quem decide. Três partes, aqui no card: <b>revisa o plano que a IA escreveu</b>, <b>explora o card</b> (na tela e no servidor) e reporta cada bug ligado ao FD-130, e <b>decide onde cada teste mora</b>. Sem relógio, mas sem ninguém guiando.</p>
+    <p class="dica">O servidor do curso ganhou a rota das fotos (POST /api/chamados/:id/fotos). Atualiza o seu fork no GitHub (Sync fork) antes de começar.</p>
+    <div class="dn"><span>Pra ser promovido</span><b>70 pontos</b> e pelo menos <b>2 bugs</b> achados</div>
+    <button class="btn" id="d2Go" data-test="comecar-desafio2">Começar o desafio</button></div>`;
+  if (!x.entregue) {
+    const marcas = x.plano || {}, onde = x.onde || {}, nb = d.cards.filter((b) => b.tipo === 'bug' && b.relacionado === 'FD-130').length;
+    const op = (v, t, cur) => `<option value="${v}" ${cur === v ? 'selected' : ''}>${t}</option>`;
+    return `<div class="desafio rodando d2" data-test="desafio2"><div class="dk">DESAFIO 2 · EM ANDAMENTO</div>
+      <div class="d2-p"><h4>1 · O plano que a IA escreveu</h4><p class="dica">Pra cada linha: está certa, foi inventada (não está no card), ou está no lugar errado?</p>
+        ${D2_PLANO.map(([t, o], i) => `<div class="d2-l"><span><b>${i + 1}.</b> ${t} <i>· ${o}</i></span><select class="in" data-d2p="${i}" data-test="d2-plano-${i + 1}">${op('ok', 'Certo', marcas[i] || 'ok')}${op('inventado', 'Inventado', marcas[i])}${op('lugar', 'No lugar errado', marcas[i])}</select></div>`).join('')}
+        <div class="campo" style="margin-top:10px"><label for="d2Falta">O que falta no plano</label><input class="in" id="d2Falta" data-test="d2-falta" value="${esc(x.falta || '')}" placeholder="O caso que nenhuma linha testa"></div></div>
+      <div class="d2-p"><h4>2 · Explora o card</h4><p class="dica">Testa no <a href="novo-chamado.html">novo chamado</a> (no computador e na tela do celular), na tela do chamado e no servidor do curso. Cada bug vira um card de bug no <a href="quadro.html">quadro</a>, ligado ao FD-130.</p>
+        <div class="dn" data-test="d2-bugs"><span>Bugs ligados ao FD-130</span><b>${nb}</b></div></div>
+      <div class="d2-p"><h4>3 · Onde cada teste mora</h4>
+        ${D2_ONDE.map(([t], i) => `<div class="d2-l"><span>${t}</span><select class="in" data-d2o="${i}" data-test="d2-onde-${i + 1}"><option value="">Escolhe…</option>${op('smoke', 'Smoke', onde[i])}${op('regressivo', 'Regressivo da noite', onde[i])}${op('manual', 'Manual antes de subir', onde[i])}</select></div>`).join('')}</div>
+      <div class="dbt"><button class="btn" id="d2Fim" data-test="entregar-desafio2">Entregar desafio</button></div></div>`;
+  }
+  const r = x.resultado || d2Nota(d), L = (n, t, v) => `<div class="dl"><span>${t}</span><b>${n}</b><i>${v}</i></div>`;
+  return `<div class="desafio ${r.passou ? 'passou' : 'nao'}" data-test="desafio2-resultado"><div class="dk">DESAFIO 2 · RESULTADO</div><h3>${r.passou ? 'Promovido!' : 'Ainda não foi dessa vez'}</h3>
+    <div class="dtot"><b data-test="nota-desafio2">${r.total}</b><span>de 100</span></div>
+    ${L(`${r.pPlano}/30`, 'Revisão do plano da IA', `${r.pPlano} de 30`)}${L(`${r.achados.length}/3`, 'Bugs escondidos que você achou', `${r.pBug} de 40`)}${L(`${r.certosOnde}/6`, 'Testes no lugar certo', `${r.pOnde} de 30`)}
+    ${r.passou ? '<a class="btn" href="efetivacao.html?nivel=pleno" data-test="ir-cartao-pleno">Pegar meu cartão de promoção</a>' : `<p>Pra passar: 70 pontos e pelo menos 2 bugs. Revisa o plano, testa de novo e reporta o que achar.</p><button class="btn" id="d2De" data-test="tentar-de-novo2">Tentar de novo</button>`}</div>`;
+}
+function ligaDesafio2(d, refaz) {
+  const guarda = (fn) => { const dd = dados(); dd.d2 = dd.d2 || {}; fn(dd.d2); salvar(); };
+  if ($('#d2Go')) $('#d2Go').onclick = () => { guarda((x) => { x.inicio = agora(); x.tentativa = (x.tentativa || 0) + 1; }); location.reload(); };
+  if ($('#d2De')) $('#d2De').onclick = () => { guarda((x) => { x.entregue = null; x.resultado = null; x.tentativa = (x.tentativa || 0) + 1; }); location.reload(); };
+  $$('[data-d2p]').forEach((el) => { el.onchange = () => guarda((x) => { x.plano = { ...(x.plano || {}), [el.dataset.d2p]: el.value }; }); });
+  $$('[data-d2o]').forEach((el) => { el.onchange = () => guarda((x) => { x.onde = { ...(x.onde || {}), [el.dataset.d2o]: el.value }; }); });
+  if ($('#d2Falta')) $('#d2Falta').oninput = () => guarda((x) => { x.falta = $('#d2Falta').value; });
+  if ($('#d2Fim')) $('#d2Fim').onclick = () => {
+    const bt = $('#d2Fim'); if (!bt.dataset.ok) { bt.dataset.ok = 1; bt.textContent = 'Confirmar entrega'; bt.setAttribute('data-test', 'confirmar-entrega2'); return; }
+    const dd = dados(); dd.d2 = dd.d2 || {}; dd.d2.entregue = agora(); const r = d2Nota(dd); dd.d2.resultado = r;
+    const ch = (dd.chat['time-produto'] = dd.chat['time-produto'] || []);
+    if (r.passou) { dd.conquistas.push('d2'); dd.promovidoEm = agora(); daDiploma('pleno', { nota: r.total, bugs: r.achados.length }); ch.push({ de: 'lucas', tx: `Desafio entregue: ${r.total} pontos e ${r.achados.length} de 3 bugs. Parabéns: você é QA pleno! 🎉`, quando: agora() }); }
+    else ch.push({ de: 'lucas', tx: `Recebi o desafio: ${r.total} pontos e ${r.achados.length} de 3 bugs. Ainda não deu. Olha de novo o plano da IA e testa do jeito que o cliente vai usar: no celular.`, quando: agora() });
+    salvar(); refaz(); if (r.passou) setTimeout(() => conquista(D2_MISSAO), 400);
+  };
+}
+// tela do chamado com fotos: desenha as fotos no tamanho original (bug do FD-130). Fotos grandes travam a tela antes de aparecer.
+function fotosPesadas(x) {
+  const mb = (x.fotos || []).reduce((s, f) => s + (f.tamanho || 0), 0) / 1048576;
+  if (mb > 6) { const fim = performance.now() + mb * 420; while (performance.now() < fim) { /* desenhando a foto inteira */ } }
+}
+
 // ---------- link da aula (aula.html?ep=16) ----------
 // Um link por aula prática: já leva pra tela certa. Se o aluno ainda não chegou nessa aula, oferece pular pra ela (com backup do progresso).
-const AULA_SAVE = { 0: 'inicio', 1: 'inicio', 2: 'inicio', 3: 'inicio', 4: 'inicio', 5: 'ep04', 6: 'ep06', 7: 'ep07', 8: 'ep08', 9: 'ep10', 10: 'ep10', 11: 'ep12', 12: 'ep12', 13: 'ep14', 14: 'ep14', 14.5: 'd1', 15: 'ep16', 16: 'ep16', 17: 'ep18', 18: 'ep18', 19: 'ep20', 20: 'ep20', 21: 'm4', 22: 'm4', 23: 'm4ep23', 24: 'm4ep24', 25: 'm4ep25', 26: 'm4ep26', 27: 'm4ep27', 28: 'm4ep28', 29: 'm4ep29', 30: 'm5ep31', 31: 'm5ep31', 32: 'm5ep32', 33: 'm5ep33', 34: 'm5ep34', 35: 'm5ep35', 36: 'm5ep36', 37: 'm5ep37', 38: 'm6ep39', 39: 'm6ep39', 40: 'm6ep40', 41: 'm6ep41', 42: 'm6ep42', 43: 'm6ep43', 44: 'm6ep44', 45: 'm6ep45', 46: 'm7ep46', 47: 'm7ep47', 48: 'm7ep48', 49: 'm7ep49', 50: 'm7ep50', 51: 'm7ep51', 52: 'm7ep52', 53: 'm8ep53', 54: 'm8ep54', 55: 'm8ep55', 56: 'm8ep56', 57: 'm8ep57', 58: 'm8ep58', 59: 'm8ep59', 60: 'm8ep60', 61: 'm9ep61', 62: 'm9ep62', 63: 'm9ep63', 64: 'm9ep64', 65: 'm9ep65', 66: 'm9ep66', 67: 'm9ep67' };
+const AULA_SAVE = { 0: 'inicio', 1: 'inicio', 2: 'inicio', 3: 'inicio', 4: 'inicio', 5: 'ep04', 6: 'ep06', 7: 'ep07', 8: 'ep08', 9: 'ep10', 10: 'ep10', 11: 'ep12', 12: 'ep12', 13: 'ep14', 14: 'ep14', 14.5: 'd1', 15: 'ep16', 16: 'ep16', 17: 'ep18', 18: 'ep18', 19: 'ep20', 20: 'ep20', 21: 'm4', 22: 'm4', 23: 'm4ep23', 24: 'm4ep24', 25: 'm4ep25', 26: 'm4ep26', 27: 'm4ep27', 28: 'm4ep28', 29: 'm4ep29', 30: 'm5ep31', 31: 'm5ep31', 32: 'm5ep32', 33: 'm5ep33', 34: 'm5ep34', 35: 'm5ep35', 36: 'm5ep36', 37: 'm5ep37', 38: 'm6ep39', 39: 'm6ep39', 40: 'm6ep40', 41: 'm6ep41', 42: 'm6ep42', 43: 'm6ep43', 44: 'm6ep44', 45: 'm6ep45', 46: 'm7ep46', 47: 'm7ep47', 48: 'm7ep48', 49: 'm7ep49', 50: 'm7ep50', 51: 'm7ep51', 52: 'm7ep52', 53: 'm8ep53', 54: 'm8ep54', 55: 'm8ep55', 56: 'm8ep56', 57: 'm8ep57', 58: 'm8ep58', 59: 'm8ep59', 60: 'm8ep60', 61: 'm9ep61', 62: 'm9ep62', 63: 'm9ep63', 64: 'm9ep64', 65: 'm9ep65', 66: 'm9ep66', 66.5: 'd2', 67: 'm9ep67' };
 PAGINAS.aula = () => {
   const n = numAula(qs.get('ep') || ''); if (Number.isNaN(n)) return location.replace('dashboard.html');
   if (!sessao() || !contas()[sessao()]) return location.replace('index.html?volta=' + encodeURIComponent('aula.html?ep=' + qs.get('ep')));
   if (!dados()) { D = semente(); salvar(); }
-  const d = dados(), m = n === 14.5 ? D1_MISSAO : MISSOES.find((x) => numAula(x.aula) === n), destino = m ? m.link : 'dashboard.html';
+  const d = dados(), m = n === 14.5 ? D1_MISSAO : n === 66.5 ? D2_MISSAO : MISSOES.find((x) => numAula(x.aula) === n), destino = m ? m.link : 'dashboard.html';
   const onde = numAula(proximaAula(d)), feita = m && (d.conquistas || []).includes(m.id);
   const marca = () => { const dd = dados(); dd.ultimaAula = { n, quando: agora() }; salvar(); };
   if (!m) { marca(); return location.replace('dashboard.html'); }  // aula teórica: só registra onde o aluno está
