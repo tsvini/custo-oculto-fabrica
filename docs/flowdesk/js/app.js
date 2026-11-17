@@ -188,7 +188,7 @@ const usaApi = () => VERSAO >= 17 && 'serviceWorker' in navigator && /^https?:/.
 let _swPronto = null;
 function swPronto() {
   if (!_swPronto) _swPronto = (async () => {
-    await navigator.serviceWorker.register('sw.js?v=1794887162');
+    await navigator.serviceWorker.register('sw.js?v=1794920372');
     if (navigator.serviceWorker.controller) return true;
     await new Promise((r) => { navigator.serviceWorker.addEventListener('controllerchange', r, { once: true }); setTimeout(r, 4000); });
     return !!navigator.serviceWorker.controller;
@@ -927,8 +927,8 @@ PAGINAS.chamados = () => {
 PAGINAS['novo-chamado'] = () => {
   casca('chamados', topo('Novo chamado', 'Registre uma nova solicitação de atendimento', '<a href="chamados.html">Chamados</a> / Novo') + `<div class="nc-grade">
     <form class="fcard" id="f" novalidate>
-      <div class="campo"><label for="titulo">Título <i>*</i><span class="contador" data-test="contador-titulo" id="cont">0/100</span></label><input class="in" id="titulo" maxlength="100" data-test="titulo" placeholder="Resuma o problema em uma frase"></div>
-      <div class="campo"><label for="descricao">Descrição <i>*</i></label><textarea class="in" id="descricao" data-test="descricao" placeholder="Descreva o problema…"></textarea></div>
+      <div class="campo"><label for="titulo">Título <i aria-hidden="true">*</i><span class="contador" data-test="contador-titulo" id="cont" aria-hidden="true">0/100</span></label><input class="in" id="titulo" maxlength="100" aria-required="true" data-test="titulo" placeholder="Resuma o problema em uma frase"></div>
+      <div class="campo"><label for="descricao">Descrição <i aria-hidden="true">*</i></label><textarea class="in" id="descricao" aria-required="true" data-test="descricao" placeholder="Descreva o problema…"></textarea></div>
       ${M8 ? `<div class="campo"><label for="cliente">Cliente</label><div class="nc-env"><select class="in" id="cliente" data-test="cliente">${CLIENTES.map((c) => `<option>${c.nome}</option>`).join('')}</select>
           <button class="btn nc-aviao" data-test="criar-chamado"${REGR.has('rotulo') || REGR.has('acessibilidade') ? '' : ' aria-label="Enviar chamado" title="Enviar chamado"'}>${SVG('<path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4 20-7z"/>')}</button></div></div>
         <div class="campo"><div class="rot-an">Anexo <small>(opcional · PDF, PNG ou JPG até 5 MB)</small></div>
