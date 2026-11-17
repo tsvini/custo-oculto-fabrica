@@ -49,7 +49,7 @@ const fork = (completo) => ({
   for (const k of ['prVerde', 'smoke', 'completo', 'evidencia', 'painel', 'fuso', 'protegida', 'card', 'comentario']) ok(!!m5[k], 'etapa ' + k);
   const cq = await p.evaluate(() => dados().conquistas); ok(['ep31', 'ep32', 'ep33', 'ep34', 'ep35', 'ep36'].every((k) => cq.includes(k)), 'as 6 conquistas do módulo 5');
   const xp = await p.evaluate(() => xpDe()); ok(xp < 6000, 'XP ainda abaixo de pleno (' + xp + ')');
-  ok(/EP37/.test(await p.textContent('[data-test=missao-atual]')), 'próximo passo vira o EP37');
+  ok(/EP3[79]/.test(await p.textContent('[data-test=missao-atual]')), 'próximo passo vira o módulo 6');
   await p.goto(U + 'aula.html?ep=33'); ok(/pipeline|aula/.test(p.url()), 'link da aula do módulo 5 responde');
   ok(!erros.length, 'sem erro de JavaScript' + (erros.length ? ': ' + erros[0] : ''));
   await b.close(); console.log(falhas ? `\n${falhas} falha(s)` : '\nTudo certo'); process.exit(falhas ? 1 : 0);

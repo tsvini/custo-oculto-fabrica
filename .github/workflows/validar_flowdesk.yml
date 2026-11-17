@@ -20,3 +20,4 @@ jobs:
       - run: node tests/flowdesk/diploma.js http://localhost:8765/
       - run: node tests/flowdesk/regressivo.js http://localhost:8765/
       - run: node tests/flowdesk/pipeline.js http://localhost:8765/
+      - run: node tests/flowdesk/servidor.js http://localhost:8765/
