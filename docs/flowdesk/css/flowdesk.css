@@ -300,7 +300,7 @@ h2 .etq{font-size:13px;vertical-align:5px;margin-right:4px}
 .digitando{padding:0 26px 4px;font-size:13px;color:var(--mut);font-style:italic}
 /* missões (moldura igual à do vídeo) */
 .missao-side{display:block;margin:12px 0 10px;background:linear-gradient(180deg,rgba(28,20,52,.96),rgba(18,14,34,.96));border:1.5px solid var(--acc);border-radius:12px;padding:12px;color:var(--txt);box-shadow:0 0 24px rgba(124,58,237,.25)}
-.missao-side:hover{text-decoration:none;filter:brightness(1.1)}
+.missao-side:hover{text-decoration:none;border-color:#A78BFA;box-shadow:0 0 30px rgba(124,58,237,.45)}
 .missao-side .k{font-size:10px;font-weight:800;letter-spacing:2px;color:var(--acc2)}
 .missao-side .t{font-size:14px;font-weight:800;margin-top:3px;line-height:1.25}
 .missao-side .bar{height:6px;border-radius:4px;background:#241d42;margin-top:9px;overflow:hidden}

@@ -188,7 +188,7 @@ const usaApi = () => VERSAO >= 17 && 'serviceWorker' in navigator && /^https?:/.
 let _swPronto = null;
 function swPronto() {
   if (!_swPronto) _swPronto = (async () => {
-    await navigator.serviceWorker.register('sw.js?v=1794961005');
+    await navigator.serviceWorker.register('sw.js?v=1794968906');
     if (navigator.serviceWorker.controller) return true;
     await new Promise((r) => { navigator.serviceWorker.addEventListener('controllerchange', r, { once: true }); setTimeout(r, 4000); });
     return !!navigator.serviceWorker.controller;
@@ -302,7 +302,8 @@ const FD097 = { descricao: 'Pra quem: os atendentes das empresas clientes. O qu�
   criterios: ['E-mail e senha certos levam pro Início', 'E-mail vazio: "Preencha o e-mail"', 'Senha vazia: "Preencha a senha"', 'Errou e-mail ou senha: "E-mail ou senha incorretos"', 'O botão Sair fecha a sessão e volta pro login'],
   ok: [0, 1, 2, 3, 4], comentarios: [] };
 const SAVES = [
-  { id: 'inicio', nome: 'Começo do curso', quando: 'do EP00 ao EP04', monta: () => semente() },
+  { id: 'inicio', nome: 'Começo do curso', quando: 'do EP00 ao EP03', monta: () => semente() },
+  { id: 'ep04p', nome: 'Início do EP04', quando: 'Montar o plano de testes', monta: () => { const d = semente(); d.viuFD101 = true; d.faltaOk = true; d.conquistas = [...new Set([...(d.conquistas || []), 'ep00'])]; return d; } },
   { id: 'ep04', nome: 'Início do EP05', quando: 'Cenários em Gherkin', monta: () => { const d = semente(); d.planos['FD-101'] = CENARIOS_EP03.map((c) => ({ ...c })); d.conquistas = ['ep03']; return d; } },
   { id: 'ep06', nome: 'Início do EP06', quando: 'Prática do Gherkin', monta: () => { const d = semente(); d.planos['FD-101'] = CENARIOS_EP03.map((c) => ({ ...c })); d.conquistas = ['ep03']; return d; } },
   { id: 'ep07', nome: 'Início do EP07', quando: 'Primeiro bug', monta: () => { const d = semente(); d.planos['FD-101'] = CENARIOS_EP03.map((c) => ({ ...c })); d.gherkin = { 'FD-101': GK_EP06 }; d.conquistas = ['ep03', 'ep06']; return d; } },
@@ -2408,7 +2409,7 @@ function fotosPesadas(x) {
 const aulaDoSave = (x) => (/Desafio 2/.test(x.nome) ? 66.5 : /Desafio 1/.test(x.nome) ? 14.5 : x.id === 'inicio' ? 0 : +((/EP(\d+)/.exec(x.nome) || [0, 0])[1]));
 const SAVES_ORDEM = () => SAVES.map((x, i) => [x, i]).sort((a, b) => aulaDoSave(a[0]) - aulaDoSave(b[0]) || a[1] - b[1]).map(([x]) => x);
 const seloSave = (x) => (/Desafio 2/.test(x.nome) ? 'D2' : /Desafio 1/.test(x.nome) ? 'D1' : (x.nome.match(/EP\d+/) || ['EP00'])[0]);
-const AULA_SAVE = { 0: 'inicio', 1: 'inicio', 2: 'inicio', 3: 'inicio', 4: 'inicio', 5: 'ep04', 6: 'ep06', 7: 'ep07', 8: 'ep08', 9: 'ep10', 10: 'ep10', 11: 'ep12', 12: 'ep12', 13: 'ep14', 14: 'ep14', 14.5: 'd1', 15: 'ep16', 16: 'ep16', 17: 'ep18', 18: 'ep18', 19: 'ep20', 20: 'ep20', 21: 'm4', 22: 'm4', 23: 'm4ep23', 24: 'm4ep24', 25: 'm4ep25', 26: 'm4ep26', 27: 'm4ep27', 28: 'm4ep28', 29: 'm4ep29', 30: 'm5ep31', 31: 'm5ep31', 32: 'm5ep32', 33: 'm5ep33', 34: 'm5ep34', 35: 'm5ep35', 36: 'm5ep36', 37: 'm5ep37', 38: 'm6ep39', 39: 'm6ep39', 40: 'm6ep40', 41: 'm6ep41', 42: 'm6ep42', 43: 'm6ep43', 44: 'm6ep44', 45: 'm6ep45', 46: 'm7ep46', 47: 'm7ep47', 48: 'm7ep48', 49: 'm7ep49', 50: 'm7ep50', 51: 'm7ep51', 52: 'm7ep52', 53: 'm8ep53', 54: 'm8ep54', 55: 'm8ep55', 56: 'm8ep56', 57: 'm8ep57', 58: 'm8ep58', 59: 'm8ep59', 60: 'm8ep60', 61: 'm9ep61', 62: 'm9ep62', 63: 'm9ep63', 64: 'm9ep64', 65: 'm9ep65', 66: 'm9ep66', 66.5: 'd2', 67: 'm9ep67' };
+const AULA_SAVE = { 0: 'inicio', 1: 'inicio', 2: 'inicio', 3: 'inicio', 4: 'ep04p', 5: 'ep04', 6: 'ep06', 7: 'ep07', 8: 'ep08', 9: 'ep10', 10: 'ep10', 11: 'ep12', 12: 'ep12', 13: 'ep14', 14: 'ep14', 14.5: 'd1', 15: 'ep16', 16: 'ep16', 17: 'ep18', 18: 'ep18', 19: 'ep20', 20: 'ep20', 21: 'm4', 22: 'm4', 23: 'm4ep23', 24: 'm4ep24', 25: 'm4ep25', 26: 'm4ep26', 27: 'm4ep27', 28: 'm4ep28', 29: 'm4ep29', 30: 'm5ep31', 31: 'm5ep31', 32: 'm5ep32', 33: 'm5ep33', 34: 'm5ep34', 35: 'm5ep35', 36: 'm5ep36', 37: 'm5ep37', 38: 'm6ep39', 39: 'm6ep39', 40: 'm6ep40', 41: 'm6ep41', 42: 'm6ep42', 43: 'm6ep43', 44: 'm6ep44', 45: 'm6ep45', 46: 'm7ep46', 47: 'm7ep47', 48: 'm7ep48', 49: 'm7ep49', 50: 'm7ep50', 51: 'm7ep51', 52: 'm7ep52', 53: 'm8ep53', 54: 'm8ep54', 55: 'm8ep55', 56: 'm8ep56', 57: 'm8ep57', 58: 'm8ep58', 59: 'm8ep59', 60: 'm8ep60', 61: 'm9ep61', 62: 'm9ep62', 63: 'm9ep63', 64: 'm9ep64', 65: 'm9ep65', 66: 'm9ep66', 66.5: 'd2', 67: 'm9ep67' };
 PAGINAS.aula = () => {
   const n = numAula(qs.get('ep') || ''); if (Number.isNaN(n)) return location.replace('dashboard.html');
   if (!sessao() || !contas()[sessao()]) return location.replace('index.html?volta=' + encodeURIComponent('aula.html?ep=' + qs.get('ep')));
@@ -2448,4 +2449,13 @@ function saveDaUrl() {
   }
   PAGINAS[p]();
   if (REGR.size || API_REDE || LENTO) { const b = document.createElement('div'); b.className = 'regr-selo'; b.dataset.test = 'modo-regressao'; b.textContent = [REGR.size ? 'Modo regressão: ' + [...REGR].join(', ') : '', API_REDE ? 'API pela rede' : '', LENTO ? 'Rede lenta' : ''].filter(Boolean).join(' · '); document.body.appendChild(b); }
+})();
+
+// o balão da missão na barra lateral: a barra rola (overflow), então o balão usa position:fixed pra não ser cortado
+(() => {
+  const poe = (m) => { const p = m.querySelector('.pop'); if (!p) return;
+    if (innerWidth <= 900) { p.style.position = p.style.left = p.style.bottom = p.style.top = ''; return; }
+    const r = m.getBoundingClientRect(); p.style.position = 'fixed'; p.style.left = (r.right + 16) + 'px'; p.style.top = 'auto'; p.style.bottom = Math.max(8, innerHeight - r.bottom) + 'px'; };
+  const alvo = (e) => { const m = e.target && e.target.closest && e.target.closest('.missao-side'); if (m) poe(m); };
+  document.addEventListener('mouseover', alvo); document.addEventListener('focusin', alvo);
 })();
