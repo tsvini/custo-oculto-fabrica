@@ -1,10 +1,10 @@
 {
- "atualizado": "18/11/2026 00:51",
+ "atualizado": "18/11/2026 16:02",
  "fontes": {
   "custo_oculto": {
    "seguidores": 38,
-   "views_total": 13575,
-   "videos": 60,
+   "views_total": 13617,
+   "videos": 61,
    "views_28d": 8205,
    "views_7d": 2279,
    "seguidores_28d": 27,
@@ -167,7 +167,7 @@
   "vini_qa": {
    "seguidores": 1,
    "views_total": 547,
-   "videos": 13,
+   "videos": 14,
    "views_28d": 525,
    "views_7d": 73,
    "seguidores_28d": 0,
@@ -318,28 +318,34 @@
   },
   "tiktok": {
    "usuario": "Custo Oculto",
-   "seguidores": 98,
-   "curtidas": 725,
-   "videos": 41,
-   "views_total": 7450,
+   "seguidores": 100,
+   "curtidas": 748,
+   "videos": 42,
+   "views_total": 7493,
    "top": [
+    {
+     "titulo": "A Motorola inventou o celular, fez o mais vendido do mundo… e perdeu a próxima virada. 📉 D",
+     "url": "https://www.tiktok.com/@custooculto/video/7709516171044900114?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
+     "views": 61,
+     "likes": 8
+    },
     {
      "titulo": "Começou numa farmácia, vendendo 9 copos por dia. Virou uma das marcas mais conhecidas do m",
      "url": "https://www.tiktok.com/@custooculto/video/7709196203912695047?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 167,
-     "likes": 5
+     "views": 256,
+     "likes": 11
     },
     {
      "titulo": "93 mil pessoas reservaram um voo para a Lua. A companhia faliu antes de decolar.  🚀 O Cust",
      "url": "https://www.tiktok.com/@custooculto/video/7708803093533592850?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 450,
-     "likes": 19
+     "views": 461,
+     "likes": 20
     },
     {
      "titulo": "Eu embalei seu bombom por 30 anos. A Garoto era capixaba, até 2002  🍫 Você sabia dessa his",
      "url": "https://www.tiktok.com/@custooculto/video/7708750393018207496?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 182,
-     "likes": 6
+     "views": 201,
+     "likes": 8
     },
     {
      "titulo": "Ele veio da Itália cobrar uma dívida. E acabou criando o maior fabricante de panetones do ",
@@ -352,12 +358,6 @@
      "url": "https://www.tiktok.com/@custooculto/video/7708026334567468295?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
      "views": 552,
      "likes": 33
-    },
-    {
-     "titulo": "17 anos, 2 mil ovos de Páscoa e nenhuma fábrica. Ele aceitou mesmo assim.  🍫 A Jogada que ",
-     "url": "https://www.tiktok.com/@custooculto/video/7707656361940716818?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 118,
-     "likes": 0
     }
    ],
    "nome": "TikTok @custooculto"
@@ -395,15 +395,6 @@
   }
  },
  "agenda": [
-  {
-   "quando": "2026-11-18T12:00:00-03:00",
-   "plataforma": "Vini QA (YouTube)",
-   "chave": "vini_qa",
-   "titulo": "Teste também o que dá errado",
-   "tipo": "short",
-   "id": "1EH24PfLwOU",
-   "url": "https://studio.youtube.com/video/1EH24PfLwOU/edit"
-  },
   {
    "quando": "2026-11-20T12:00:00-03:00",
    "plataforma": "Vini QA (YouTube)",
