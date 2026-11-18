@@ -1,18 +1,14 @@
 {
- "atualizado": "17/11/2026 16:24",
+ "atualizado": "18/11/2026 00:51",
  "fontes": {
   "custo_oculto": {
    "seguidores": 38,
    "views_total": 13575,
    "videos": 60,
-   "views_28d": 7997,
-   "views_7d": 2978,
+   "views_28d": 8205,
+   "views_7d": 2279,
    "seguidores_28d": 27,
    "dia": [
-    [
-     "2026-10-20",
-     6
-    ],
     [
      "2026-10-21",
      96
@@ -112,27 +108,31 @@
     [
      "2026-11-14",
      144
+    ],
+    [
+     "2026-11-15",
+     214
     ]
    ],
    "top": [
     {
      "titulo": "Bombril: a marca que virou sinônimo de lã de aço — O Custo de Ser Gigante EP. 09",
      "url": "https://youtu.be/2bKwMEzu16U",
-     "views": 1394,
+     "views": 1397,
      "retencao": 50,
      "likes": 67
     },
     {
      "titulo": "A gambiarra que transformou a Havaianas em ícone mundial 🩴",
      "url": "https://youtu.be/PSEeDLDb7PA",
-     "views": 1335,
+     "views": 1337,
      "retencao": 59,
      "likes": 65
     },
     {
      "titulo": "A Lego quase faliu com o brinquedo mais famoso do mundo | A Jogada que Mudou Tudo EP. 07",
      "url": "https://youtu.be/t8W991jJeOo",
-     "views": 1251,
+     "views": 1259,
      "retencao": 38,
      "likes": 33
     },
@@ -146,7 +146,7 @@
     {
      "titulo": "A Nintendo começou vendendo baralho em 1889 | A Jogada que Mudou Tudo EP. 05",
      "url": "https://youtu.be/UrTUaUWMFDU",
-     "views": 463,
+     "views": 467,
      "retencao": 42,
      "likes": 24
     }
@@ -166,16 +166,12 @@
   },
   "vini_qa": {
    "seguidores": 1,
-   "views_total": 545,
+   "views_total": 547,
    "videos": 13,
-   "views_28d": 530,
-   "views_7d": 72,
+   "views_28d": 525,
+   "views_7d": 73,
    "seguidores_28d": 0,
    "dia": [
-    [
-     "2026-10-20",
-     6
-    ],
     [
      "2026-10-21",
      6
@@ -275,6 +271,10 @@
     [
      "2026-11-14",
      5
+    ],
+    [
+     "2026-11-15",
+     1
     ]
    ],
    "top": [
@@ -318,27 +318,27 @@
   },
   "tiktok": {
    "usuario": "Custo Oculto",
-   "seguidores": 97,
-   "curtidas": 718,
+   "seguidores": 98,
+   "curtidas": 725,
    "videos": 41,
-   "views_total": 7209,
+   "views_total": 7450,
    "top": [
     {
      "titulo": "Começou numa farmácia, vendendo 9 copos por dia. Virou uma das marcas mais conhecidas do m",
      "url": "https://www.tiktok.com/@custooculto/video/7709196203912695047?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 15,
-     "likes": 0
+     "views": 167,
+     "likes": 5
     },
     {
      "titulo": "93 mil pessoas reservaram um voo para a Lua. A companhia faliu antes de decolar.  🚀 O Cust",
      "url": "https://www.tiktok.com/@custooculto/video/7708803093533592850?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 383,
-     "likes": 17
+     "views": 450,
+     "likes": 19
     },
     {
      "titulo": "Eu embalei seu bombom por 30 anos. A Garoto era capixaba, até 2002  🍫 Você sabia dessa his",
      "url": "https://www.tiktok.com/@custooculto/video/7708750393018207496?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 162,
+     "views": 182,
      "likes": 6
     },
     {
