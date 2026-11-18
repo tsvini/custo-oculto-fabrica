@@ -188,7 +188,7 @@ const usaApi = () => VERSAO >= 17 && 'serviceWorker' in navigator && /^https?:/.
 let _swPronto = null;
 function swPronto() {
   if (!_swPronto) _swPronto = (async () => {
-    await navigator.serviceWorker.register('sw.js?v=1794972375');
+    await navigator.serviceWorker.register('sw.js?v=1794974245');
     if (navigator.serviceWorker.controller) return true;
     await new Promise((r) => { navigator.serviceWorker.addEventListener('controllerchange', r, { once: true }); setTimeout(r, 4000); });
     return !!navigator.serviceWorker.controller;
@@ -1498,7 +1498,7 @@ function montaPlano(A, card) {
     if (editando !== null) { c.exec = lista[editando].exec; if (lista[editando].bug && !_c('edita')) c.bug = lista[editando].bug; else if (lista[editando].bug) _pv('edita'); if (lista[editando].jaFalhou) c.jaFalhou = true; c.hist = lista[editando].hist; c.evid = lista[editando].evid; lista[editando] = c; toast('Cenário salvo'); } else { lista.push(c); if (rod()) rod().sel.push(lista.length - 1); toast('Cenário adicionado'); }
     gabi(...revisaCenario(c, card));
     { const cn = $('#covNovo'); cn.hidden = false; cn.textContent = fraco(c) ? 'Esse cenário não conta na cobertura' : c.regras.length ? '✓ ' + c.regras.map((i) => RG[i]).join(' · ') : 'Esse cenário não cobre nenhuma regra do card'; cn.className = 'cov-novo' + (fraco(c) || !c.regras.length ? ' fraco' : ''); }
-    salvar(); limpa(); pinta();
+    salvar(); limpa(); pinta(); mostraForm(false);  // fecha o formulário: aparece a tabela e a cobertura completa
   };
   $('#cancela').hidden = !lista.length;
   $$('[data-arq]').forEach((a) => {

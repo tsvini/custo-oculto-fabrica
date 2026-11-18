@@ -1138,3 +1138,21 @@ body.m8 [data-test=sair]{color:#b4b7cc}
 .cov .cov-novo{margin-top:10px;font-size:13px;line-height:1.45;color:#86efac;font-weight:600}.cov .cov-novo.fraco{color:#fbbf24}
 #cEsp{min-height:104px;resize:vertical}
 .plano .tabela td .res .rx{white-space:pre-line;display:block}.plano .tabela td .res:has(.rx) small{display:block;margin:0 0 4px}
+/* execução do cenário: coluna mais estreita, botões empilhados e com cor desde o começo */
+.plano .xcel:before{content:'EXECUÇÃO';font-size:10px;font-weight:800;letter-spacing:1.4px;color:#6a6e8c}
+.plano .xseg{flex-direction:column;gap:6px}
+.plano .sg{flex:none;height:32px;font-size:12.5px}
+.plano .sg.ok:not(.on){color:#4ade80;border-color:#1f5134;background:rgba(22,163,74,.08)}
+.plano .sg.nok:not(.on){color:#fca5a5;border-color:#5b2128;background:rgba(220,38,38,.08)}
+.plano .tabela tr.st-passou .sg.nok:not(.on),.plano .tabela tr.st-falhou .sg.ok:not(.on){opacity:.45}
+.plano .tabela{width:100%}
+.plano .tabela td:nth-child(3){width:150px}.plano .tabela td:nth-child(2){width:auto}
+/* links da execução (anexar evidência / reportar bug) como botões, alinhados com Passou/Falhou */
+.plano .xlinks{flex-direction:column;gap:6px;align-items:stretch}
+.plano .xl{display:flex;align-items:center;justify-content:center;gap:2px;height:30px;border-radius:999px;font-size:12px;font-weight:700;cursor:pointer;text-decoration:none;border:1px dashed #3b3f5c;background:#161827;color:#b9bdd6;padding:0 10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.plano .xl:hover{border-color:#7C3AED;color:#fff}
+.plano .xl.ev.tem{border-style:solid;border-color:#1f5134;background:rgba(22,163,74,.1);color:#86efac}
+.plano .xl.bug{border-style:solid;border-color:#7f1d1d;background:rgba(220,38,38,.12);color:#fca5a5}
+.plano .xl.bug:hover{background:rgba(220,38,38,.22);color:#fff}
+.plano .xlinks .bugchip{display:flex;justify-content:center;align-items:center;height:30px;border-radius:999px;padding:0 10px}
+.plano .xcel:before{text-align:center}
