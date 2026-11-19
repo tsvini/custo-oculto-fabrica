@@ -1,10 +1,10 @@
 {
- "atualizado": "19/11/2026 00:50",
+ "atualizado": "19/11/2026 16:09",
  "fontes": {
   "custo_oculto": {
    "seguidores": 38,
-   "views_total": 13617,
-   "videos": 61,
+   "views_total": 13708,
+   "videos": 62,
    "views_28d": 8852,
    "views_7d": 2797,
    "seguidores_28d": 28,
@@ -118,28 +118,28 @@
     {
      "titulo": "Bombril: a marca que virou sinônimo de lã de aço — O Custo de Ser Gigante EP. 09",
      "url": "https://youtu.be/2bKwMEzu16U",
-     "views": 1400,
+     "views": 1399,
      "retencao": 50,
      "likes": 67
     },
     {
      "titulo": "A gambiarra que transformou a Havaianas em ícone mundial 🩴",
      "url": "https://youtu.be/PSEeDLDb7PA",
-     "views": 1339,
+     "views": 1338,
      "retencao": 59,
      "likes": 65
     },
     {
      "titulo": "A Lego quase faliu com o brinquedo mais famoso do mundo | A Jogada que Mudou Tudo EP. 07",
      "url": "https://youtu.be/t8W991jJeOo",
-     "views": 1263,
+     "views": 1256,
      "retencao": 38,
      "likes": 33
     },
     {
      "titulo": "A Gradiente registrou o nome iPhone antes da Apple | O Custo de Ser Gigante EP. 12",
      "url": "https://youtu.be/kead0wOtMM4",
-     "views": 1050,
+     "views": 1048,
      "retencao": 64,
      "likes": 34
     },
@@ -302,7 +302,7 @@
     {
      "titulo": "Seu projeto de teste vira portfólio",
      "url": "https://youtu.be/Q5iuF5DYLYw",
-     "views": 39,
+     "views": 38,
      "retencao": 41,
      "likes": 1
     },
@@ -319,15 +319,21 @@
   "tiktok": {
    "usuario": "Custo Oculto",
    "seguidores": 100,
-   "curtidas": 755,
-   "videos": 42,
-   "views_total": 7671,
+   "curtidas": 758,
+   "videos": 43,
+   "views_total": 7146,
    "top": [
+    {
+     "titulo": "Em 2011, a Netflix perdeu 800 mil assinantes por uma decisão dela mesma. E foi a melhor co",
+     "url": "https://www.tiktok.com/@custooculto/video/7709913561153195282?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
+     "views": 22,
+     "likes": 1
+    },
     {
      "titulo": "A Motorola inventou o celular, fez o mais vendido do mundo… e perdeu a próxima virada. 📉 D",
      "url": "https://www.tiktok.com/@custooculto/video/7709516171044900114?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 168,
-     "likes": 14
+     "views": 175,
+     "likes": 16
     },
     {
      "titulo": "Começou numa farmácia, vendendo 9 copos por dia. Virou uma das marcas mais conhecidas do m",
@@ -344,7 +350,7 @@
     {
      "titulo": "Eu embalei seu bombom por 30 anos. A Garoto era capixaba, até 2002  🍫 Você sabia dessa his",
      "url": "https://www.tiktok.com/@custooculto/video/7708750393018207496?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 215,
+     "views": 217,
      "likes": 8
     },
     {
@@ -352,12 +358,6 @@
      "url": "https://www.tiktok.com/@custooculto/video/7708423030178942215?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
      "views": 176,
      "likes": 3
-    },
-    {
-     "titulo": "Antes do Facebook, a internet acontecia aqui. Seis anos depois de ser comprado, valia 16 v",
-     "url": "https://www.tiktok.com/@custooculto/video/7708026334567468295?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 552,
-     "likes": 33
     }
    ],
    "nome": "TikTok @custooculto"
