@@ -1,18 +1,14 @@
 {
- "atualizado": "19/11/2026 16:09",
+ "atualizado": "20/11/2026 00:43",
  "fontes": {
   "custo_oculto": {
-   "seguidores": 38,
-   "views_total": 13708,
-   "videos": 62,
-   "views_28d": 8852,
-   "views_7d": 2797,
-   "seguidores_28d": 28,
+   "seguidores": 43,
+   "views_total": 13792,
+   "videos": 63,
+   "views_28d": 8885,
+   "views_7d": 2720,
+   "seguidores_28d": 27,
    "dia": [
-    [
-     "2026-10-22",
-     78
-    ],
     [
      "2026-10-23",
      72
@@ -75,11 +71,11 @@
     ],
     [
      "2026-11-07",
-     515
+     514
     ],
     [
      "2026-11-08",
-     913
+     912
     ],
     [
      "2026-11-09",
@@ -107,32 +103,36 @@
     ],
     [
      "2026-11-15",
-     214
+     209
     ],
     [
      "2026-11-16",
      756
+    ],
+    [
+     "2026-11-17",
+     118
     ]
    ],
    "top": [
     {
      "titulo": "Bombril: a marca que virou sinônimo de lã de aço — O Custo de Ser Gigante EP. 09",
      "url": "https://youtu.be/2bKwMEzu16U",
-     "views": 1399,
+     "views": 1402,
      "retencao": 50,
      "likes": 67
     },
     {
      "titulo": "A gambiarra que transformou a Havaianas em ícone mundial 🩴",
      "url": "https://youtu.be/PSEeDLDb7PA",
-     "views": 1338,
+     "views": 1340,
      "retencao": 59,
      "likes": 65
     },
     {
      "titulo": "A Lego quase faliu com o brinquedo mais famoso do mundo | A Jogada que Mudou Tudo EP. 07",
      "url": "https://youtu.be/t8W991jJeOo",
-     "views": 1256,
+     "views": 1258,
      "retencao": 38,
      "likes": 33
     },
@@ -146,9 +146,9 @@
     {
      "titulo": "93 mil pessoas reservaram voo para a Lua com a Pan Am | O Custo de Ser Gigante EP. 16",
      "url": "https://youtu.be/ciVFjVI4oPs",
-     "views": 589,
+     "views": 600,
      "retencao": 57,
-     "likes": 25
+     "likes": 24
     }
    ],
    "nome": "Custo Oculto (YouTube)"
@@ -166,16 +166,12 @@
   },
   "vini_qa": {
    "seguidores": 1,
-   "views_total": 547,
+   "views_total": 548,
    "videos": 14,
-   "views_28d": 528,
-   "views_7d": 52,
+   "views_28d": 517,
+   "views_7d": 47,
    "seguidores_28d": 1,
    "dia": [
-    [
-     "2026-10-22",
-     13
-    ],
     [
      "2026-10-23",
      12
@@ -275,6 +271,10 @@
     [
      "2026-11-16",
      11
+    ],
+    [
+     "2026-11-17",
+     2
     ]
    ],
    "top": [
@@ -317,47 +317,47 @@
    "nome": "Vini QA (YouTube)"
   },
   "tiktok": {
-   "usuario": "Custo Oculto",
-   "seguidores": 100,
-   "curtidas": 758,
-   "videos": 43,
-   "views_total": 7146,
+   "usuario": "MICROVERSO 🔬",
+   "seguidores": 101,
+   "curtidas": 776,
+   "videos": 44,
+   "views_total": 6915,
    "top": [
     {
+     "titulo": "Você usou uma caneta BIC a vida inteira… mas provavelmente nunca imaginou o que acontece d",
+     "url": "https://www.tiktok.com/@microverso.oficial/video/7710036847413562631?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
+     "views": 55,
+     "likes": 8
+    },
+    {
      "titulo": "Em 2011, a Netflix perdeu 800 mil assinantes por uma decisão dela mesma. E foi a melhor co",
-     "url": "https://www.tiktok.com/@custooculto/video/7709913561153195282?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 22,
-     "likes": 1
+     "url": "https://www.tiktok.com/@microverso.oficial/video/7709913561153195282?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
+     "views": 125,
+     "likes": 5
     },
     {
      "titulo": "A Motorola inventou o celular, fez o mais vendido do mundo… e perdeu a próxima virada. 📉 D",
-     "url": "https://www.tiktok.com/@custooculto/video/7709516171044900114?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 175,
+     "url": "https://www.tiktok.com/@microverso.oficial/video/7709516171044900114?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
+     "views": 176,
      "likes": 16
     },
     {
      "titulo": "Começou numa farmácia, vendendo 9 copos por dia. Virou uma das marcas mais conhecidas do m",
-     "url": "https://www.tiktok.com/@custooculto/video/7709196203912695047?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 256,
-     "likes": 11
+     "url": "https://www.tiktok.com/@microverso.oficial/video/7709196203912695047?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
+     "views": 371,
+     "likes": 17
     },
     {
      "titulo": "93 mil pessoas reservaram um voo para a Lua. A companhia faliu antes de decolar.  🚀 O Cust",
-     "url": "https://www.tiktok.com/@custooculto/video/7708803093533592850?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
+     "url": "https://www.tiktok.com/@microverso.oficial/video/7708803093533592850?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
      "views": 515,
      "likes": 21
     },
     {
      "titulo": "Eu embalei seu bombom por 30 anos. A Garoto era capixaba, até 2002  🍫 Você sabia dessa his",
-     "url": "https://www.tiktok.com/@custooculto/video/7708750393018207496?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
+     "url": "https://www.tiktok.com/@microverso.oficial/video/7708750393018207496?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
      "views": 217,
      "likes": 8
-    },
-    {
-     "titulo": "Ele veio da Itália cobrar uma dívida. E acabou criando o maior fabricante de panetones do ",
-     "url": "https://www.tiktok.com/@custooculto/video/7708423030178942215?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 176,
-     "likes": 3
     }
    ],
    "nome": "TikTok @custooculto"
