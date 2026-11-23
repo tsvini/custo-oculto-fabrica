@@ -450,7 +450,7 @@ const MISSOES = [
     ['Execute todos os cenários do plano', (d) => { const l = d.planos['FD-101'] || []; return l.length >= 8 && l.every((c) => c.exec && c.exec !== 'nao'); }],
     ['Reporte o bug do título só com espaços', (d) => bugsDe(d).some((b) => /espa[çc]o/i.test(textoBug(b)))],
     ['Ache e reporte o bug do anexo', (d) => bugsDe(d).some((b) => /anexo|5\s?mb|arquivo/i.test(textoBug(b)))],
-    ['Todo cenário que falhou tem um bug ligado', (d) => { const f = (d.planos['FD-101'] || []).filter((c) => c.exec === 'falhou'); return f.length > 0 && f.every((c) => c.bug); }],
+    ['Cada cenário que falhou virou um bug no quadro', (d) => { const f = (d.planos['FD-101'] || []).filter((c) => c.exec === 'falhou'); return f.length > 0 && f.every((c) => c.bug); }],
   ] },
   { id: 'ep10', titulo: 'Retestar os bugs da Sprint 15', aula: 'EP10', conquista: 'Bugs fechados com reteste', nivel: 'QA estagiário', link: 'quadro.html', itens: [
     ['Reteste na versão certa: Sprint 15', (d) => { const r = bugsDe(d).filter((b) => b.corrigidoEm === 15).flatMap((b) => b.retestes || []); return r.length >= 2 && r.every((x) => x.versao >= 15); }],
