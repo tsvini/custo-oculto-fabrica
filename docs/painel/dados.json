@@ -1,13 +1,13 @@
 {
- "atualizado": "23/11/2026 00:06",
+ "atualizado": "23/11/2026 19:13",
  "fontes": {
   "custo_oculto": {
-   "seguidores": 75,
-   "views_total": 17183,
-   "videos": 66,
-   "views_28d": 10705,
-   "views_7d": 3370,
-   "seguidores_28d": 41,
+   "seguidores": 91,
+   "views_total": 17982,
+   "videos": 67,
+   "views_28d": 12055,
+   "views_7d": 4578,
+   "seguidores_28d": 53,
    "dia": [
     [
      "2026-10-26",
@@ -107,48 +107,52 @@
     ],
     [
      "2026-11-19",
-     1362
+     1359
     ],
     [
      "2026-11-20",
      710
+    ],
+    [
+     "2026-11-21",
+     1353
     ]
    ],
    "top": [
     {
      "titulo": "O segredo de 1 mm que faz uma BIC escrever 3 KM 😱 #Shorts",
      "url": "https://youtu.be/NiQ_aBHYmAo",
-     "views": 1460,
-     "retencao": 72,
-     "likes": 39
+     "views": 1489,
+     "retencao": 73,
+     "likes": 40
     },
     {
      "titulo": "Bombril: a marca que virou sinônimo de lã de aço — O Custo de Ser Gigante EP. 09",
      "url": "https://youtu.be/2bKwMEzu16U",
-     "views": 1411,
+     "views": 1413,
      "retencao": 50,
      "likes": 67
     },
     {
      "titulo": "A gambiarra que transformou a Havaianas em ícone mundial 🩴",
      "url": "https://youtu.be/PSEeDLDb7PA",
-     "views": 1341,
+     "views": 1344,
      "retencao": 59,
      "likes": 65
     },
     {
      "titulo": "A Lego quase faliu com o brinquedo mais famoso do mundo | A Jogada que Mudou Tudo EP. 07",
      "url": "https://youtu.be/t8W991jJeOo",
-     "views": 1260,
+     "views": 1261,
      "retencao": 38,
      "likes": 33
     },
     {
-     "titulo": "A Gradiente registrou o nome iPhone antes da Apple | O Custo de Ser Gigante EP. 12",
-     "url": "https://youtu.be/kead0wOtMM4",
-     "views": 1051,
+     "titulo": "🍿 A EXPLOSÃO escondida dentro da PIPOCA! 🤯 #Shorts",
+     "url": "https://youtu.be/_eMUNaCDaF8",
+     "views": 1173,
      "retencao": 64,
-     "likes": 34
+     "likes": 85
     }
    ],
    "nome": "Custo Oculto (YouTube)"
@@ -167,9 +171,9 @@
   "vini_qa": {
    "seguidores": 1,
    "views_total": 557,
-   "videos": 15,
-   "views_28d": 513,
-   "views_7d": 28,
+   "videos": 16,
+   "views_28d": 514,
+   "views_7d": 24,
    "seguidores_28d": 1,
    "dia": [
     [
@@ -275,6 +279,10 @@
     [
      "2026-11-20",
      8
+    ],
+    [
+     "2026-11-21",
+     1
     ]
    ],
    "top": [
@@ -318,11 +326,17 @@
   },
   "tiktok": {
    "usuario": "MICROVERSO 🔬",
-   "seguidores": 110,
-   "curtidas": 861,
-   "videos": 47,
-   "views_total": 7192,
+   "seguidores": 114,
+   "curtidas": 884,
+   "videos": 48,
+   "views_total": 7252,
    "top": [
+    {
+     "titulo": "✏️ A BORRACHA NÃO FAZ O GRAFITE DESAPARECER! 🤯 Você usa uma borracha desde criança, mas pr",
+     "url": "https://www.tiktok.com/@microverso.oficial/video/7711347176558955796?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
+     "views": 169,
+     "likes": 11
+    },
     {
      "titulo": "🧅 A CEBOLA TEM UMA ARMA QUÍMICA INVISÍVEL! 😱 Você corta uma cebola e, segundos depois, com",
      "url": "https://www.tiktok.com/@microverso.oficial/video/7710993995479960839?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
@@ -332,8 +346,8 @@
     {
      "titulo": "🤯 EXISTE UM EXÉRCITO INVISÍVEL DENTRO DO VELCRO! Milhares de pequenos ganchos trabalham ju",
      "url": "https://www.tiktok.com/@microverso.oficial/video/7710629301372177671?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 359,
-     "likes": 14
+     "views": 554,
+     "likes": 22
     },
     {
      "titulo": "🍿 UMA EXPLOSÃO ACONTECE DENTRO DE CADA PIPOCA! 🤯💥 Mas o que realmente acontece lá dentro a",
@@ -350,14 +364,8 @@
     {
      "titulo": "Em 2011, a Netflix perdeu 800 mil assinantes por uma decisão dela mesma. E foi a melhor co",
      "url": "https://www.tiktok.com/@microverso.oficial/video/7709913561153195282?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 370,
+     "views": 372,
      "likes": 19
-    },
-    {
-     "titulo": "A Motorola inventou o celular, fez o mais vendido do mundo… e perdeu a próxima virada. 📉 D",
-     "url": "https://www.tiktok.com/@microverso.oficial/video/7709516171044900114?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 177,
-     "likes": 16
     }
    ],
    "nome": "TikTok @custooculto"
@@ -395,15 +403,6 @@
   }
  },
  "agenda": [
-  {
-   "quando": "2026-11-23T12:00:00-03:00",
-   "plataforma": "Vini QA (YouTube)",
-   "chave": "vini_qa",
-   "titulo": "Rode só o teste que você está mexendo",
-   "tipo": "short",
-   "id": "4etHmE1ZR7s",
-   "url": "https://studio.youtube.com/video/4etHmE1ZR7s/edit"
-  },
   {
    "quando": "2026-11-25T12:00:00-03:00",
    "plataforma": "Vini QA (YouTube)",
