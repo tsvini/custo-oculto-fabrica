@@ -1046,7 +1046,7 @@ tr.fora-rod{opacity:.55}
 .relogio-d1.pausado{border-color:#f59e0b}.relogio-d1.acabou{border-color:#ef4444}.relogio-d1.acabou span{color:#fca5a5}
 .ch-f2{display:flex;gap:10px;flex-wrap:wrap;align-items:center;width:100%;margin-top:10px}.ch-f2 .in{height:40px;max-width:240px;font-size:14px}.ch-f2 .btn{height:40px;margin:0}
 .desafio.com-bea{position:relative;padding-right:230px;min-height:300px;overflow:hidden}
-.desafio .d-bea{position:absolute;right:6px;bottom:0;height:300px;pointer-events:none}
+.desafio .d-bea{position:absolute;right:10px;bottom:0;height:272px;pointer-events:none}
 @media (max-width:900px){.desafio.com-bea{padding-right:22px}.desafio .d-bea{display:none}}
 
 /* modo regressão (módulo 4): selo discreto e o bug de layout no celular */
@@ -1227,3 +1227,7 @@ textarea.in.curto{min-height:84px;resize:vertical;line-height:1.45}
 .mini.ok{border-color:#3d3413}.mini.ok .ep{color:#fde68a;background:#2a230b;border-color:#5b4a14}
 .mini[open]{grid-column:1/-1}.mini-c{padding:0 16px 14px}
 .mini.fechada{cursor:default;opacity:.6}.mini.fechada .ep svg{width:11px;height:11px}
+/* Beatriz no desafio: imagem em alta, com respiração leve */
+.desafio .d-bea{transform-origin:50% 100%;animation:bea-resp 4.5s ease-in-out infinite}
+@keyframes bea-resp{0%,100%{transform:scale(1)}50%{transform:scale(1.012) translateY(-1px)}}
+@media (prefers-reduced-motion:reduce){.desafio .d-bea{animation:none}}
