@@ -192,7 +192,7 @@ const usaApi = () => VERSAO >= 17 && 'serviceWorker' in navigator && /^https?:/.
 let _swPronto = null;
 function swPronto() {
   if (!_swPronto) _swPronto = (async () => {
-    await navigator.serviceWorker.register('sw.js?v=1795428638');
+    await navigator.serviceWorker.register('sw.js?v=1795436788');
     if (navigator.serviceWorker.controller) return true;
     await new Promise((r) => { navigator.serviceWorker.addEventListener('controllerchange', r, { once: true }); setTimeout(r, 4000); });
     return !!navigator.serviceWorker.controller;
@@ -1125,6 +1125,18 @@ PAGINAS.quadro = () => {
       <div class="cards"></div>${k === 'afazer' ? '<button class="add-tarefa" data-test="adicionar-tarefa">+ Adicionar tarefa</button>' : ''}</section>`).join('')}</div>
     <p class="dica" style="margin-top:12px">Você move os seus cards arrastando, ou pelo próprio card. Os cards dos outros ficam com eles.</p>
     <div class="desfile" aria-hidden="true"><div class="chao"></div>${anda.map(([v, atraso, cls]) => `<div class="anda ${cls}" style="animation-delay:${atraso}s"><video src="img/anim/${v}.webm?v=1794859585" poster="img/anim/${v}.png?v=1794859585" autoplay muted loop playsinline></video></div>`).join('')}</div>`);
+  // card aberto pelo pipeline: quadro.html?pipeline=<base64 de {titulo, execucao, artefato}> (EP36)
+  const pq = new URLSearchParams(location.search).get('pipeline');
+  if (pq) { try {
+    const j = JSON.parse(decodeURIComponent(escape(atob(pq.replace(/-/g, '+').replace(/_/g, '/'))))); const d = dados();
+    const chave = String(j.execucao || j.titulo || '').slice(0, 300);
+    if (!d.cards.some((c) => c.pipeline === chave)) {
+      const n = d.cards.filter((c) => /^REG-/.test(c.id)).length + 1; const id = 'REG-' + String(n).padStart(2, '0');
+      d.cards.push({ id, titulo: String(j.titulo || 'Regressivo da noite falhou').slice(0, 140), coluna: 'afazer', resp: 'voce', tipo: 'bug', prioridade: 'Alta', etiqueta: 'regressivo', pipeline: chave, relacionado: '', cenario: '', passos: '', esperado: 'Regressivo da noite verde', obtido: String(j.falhou || 'Um ou mais cenários falharam na execução da noite').slice(0, 400), evidencia: String(j.artefato || '').slice(0, 200), execucao: /^https:\/\//.test(j.execucao || '') ? j.execucao : '', criterios: [], ok: [], comentarios: [], criadoEm: agora() });
+      salvar(); setTimeout(() => toast(`O pipeline abriu o ${id} no backlog`), 300);
+    }
+  } catch (e) { toast('Link do pipeline inválido', true); }
+    history.replaceState(null, '', 'quadro.html'); }
   const pinta = () => {
     COLUNAS.forEach(([k]) => {
       let l = dados().cards.filter((c) => c.coluna === k); const col = $(`[data-col=${k}]`);
@@ -1293,7 +1305,7 @@ PAGINAS.card = () => {
     const DIA1 = c.id === 'FD-101' && !pulaEp00(d) && !(d.conquistas || []).includes('ep00');
     if (k === 'detalhes') {
       A.innerHTML = c.tipo === 'bug'
-        ? retesteHtml(c) + `<div class="sec"><div class="k">Card relacionado</div><div class="v">${c.relacionado ? `<a href="card.html?id=${c.relacionado}">${c.relacionado}</a>` : '—'}</div></div>` + campo('Passos para reproduzir', c.passos) + campo('Resultado esperado', c.esperado) + campo('Resultado obtido', c.obtido) + campo('Evidência', c.evidencia || '') + (c.regressao ? campo('Funcionava em', c.funcionava ? 'Sprint ' + c.funcionava : '') + campo('Quebrou em', c.quebrou ? 'Sprint ' + c.quebrou : '') : '')
+        ? retesteHtml(c) + `<div class="sec"><div class="k">Card relacionado</div><div class="v">${c.relacionado ? `<a href="card.html?id=${c.relacionado}">${c.relacionado}</a>` : '—'}</div></div>` + campo('Passos para reproduzir', c.passos) + campo('Resultado esperado', c.esperado) + campo('Resultado obtido', c.obtido) + campo('Evidência', c.evidencia || '') + (c.execucao ? `<div class="sec"><div class="k">Execução no pipeline</div><div class="v"><a href="${esc(c.execucao)}" target="_blank" rel="noopener" data-test="link-execucao">Abrir a execução que falhou</a></div></div>` : '') + (c.etiqueta ? campo('Etiqueta', c.etiqueta) : '') + (c.regressao ? campo('Funcionava em', c.funcionava ? 'Sprint ' + c.funcionava : '') + campo('Quebrou em', c.quebrou ? 'Sprint ' + c.quebrou : '') : '')
         : (c.id === 'FD-118' && (d1Aberto(d) || (d.desafio || {}).entregue) ? desafioHtml() : '') + (c.id === 'FD-130' && (d2Aberto(d) || (d.d2 || {}).entregue) ? desafio2Html(dados()) : '') + (DIA1 ? dia1Html() + `<div class="d1-esconde ${d.faltaOk ? 'aberto' : ''}" id="d1Resto"><div class="d1-aviso">Responda acima pra ver a versão atual do card</div>` : '') + campo('Descrição', c.descricao) + (c.regrasTx ? campo('Regras de negócio', c.regrasTx) : '') + (c.tipo === 'melhoria' ? '' : critHtml()) + (DIA1 ? '</div>' : '');
       if (c.tipo !== 'bug') {
         const pl = d.planos[c.id] || [], ex = pl.filter((x) => x.exec === 'passou' || x.exec === 'falhou').length, fal = pl.filter((x) => x.exec === 'falhou' || (_c('falha') && x.jaFalhou)).length, _f = pl.some((x) => x.exec !== 'falhou' && x.jaFalhou) && _c('falha') && _pv('falha'), bugs = pl.filter((x) => x.bug).length;
@@ -1764,29 +1776,29 @@ PAGINAS.efetivacao = () => {
 PAGINAS.configuracoes = () => {
   const cs = contas(), c = cs[sessao()];
   casca('configuracoes', topo('Configurações') + `
+    <div class="fcard" id="cardSave" style="margin-bottom:18px"><h3 style="font-size:17px;margin-bottom:6px">Carregar save do curso</h3><p class="dica" style="margin-bottom:12px">Perdeu o progresso, trocou de computador ou pulou uma aula? Carregue o ponto do curso em que você está. O FlowDesk fica do jeito que o vídeo espera. <b>Isso substitui o que você tem agora.</b></p>
+      <div class="saves" id="saves">${SAVES_ORDEM().map((x, i) => `<button type="button" class="sv ${i === 0 ? 'on' : ''}" data-sv="${x.id}" data-test="save-${x.id}"><span class="sv-ep">${seloSave(x)}</span><b>${i === 0 ? x.nome : x.quando}</b><span>${i === 0 ? x.quando : x.nome}</span></button>`).join('')}</div>
+      <select class="exec-sel" id="cfSave" data-test="save-episodio" aria-label="Save do curso">${SAVES_ORDEM().map((x) => `<option value="${x.id}">${x.nome} · ${x.quando}</option>`).join('')}</select>
+      <div class="sv-barra" data-test="barra-save"><div class="sv-esc"><span>Escolhido</span><b id="svEsc"></b></div><button class="btn" id="carregaSave" data-test="carregar-save">Carregar este save</button>
+      <div id="confSave" hidden><b>Tem certeza?</b> O que você fez até agora vai ser trocado pelo save. <button class="btn peq" id="saveSim" data-test="confirmar-save">Sim, carregar</button> <button class="btn sec peq" id="saveNao">Cancelar</button></div></div></div>
     <div class="fcard"><div class="campo"><label for="cfNome">Seu nome</label><div style="display:flex;gap:10px"><input class="in" id="cfNome" value="${esc(c.nome)}" data-test="config-nome"><button class="btn" id="salvaNome" data-test="salvar-nome">Salvar</button></div></div>
       <div class="campo"><label>E-mail</label><input class="in" value="${esc(sessao())}" disabled></div>
       <div class="campo" style="margin-bottom:0"><label>Sua carreira</label>${trilha()}<div class="dica">${xpDe()} XP · ${nivelAtual()}. O XP vem das missões de cada prática.</div></div></div>
     <div class="fcard sprint-auto" style="margin-top:18px" data-test="sprint-atual"><div class="sa-n">${VERSAO}</div><div><h3>Sprint ${VERSAO} · homologação</h3><p class="dica">${VERSAO === 14 ? 'A sprint muda sozinha: quando você terminar a missão do EP08, a Gabriela sobe a <b>Sprint 15</b> com as correções.' : VERSAO === 15 ? 'Você está na Sprint 15, com as correções da Gabriela. Quando terminar a missão do EP12, sobe a <b>Sprint 16</b>.' : 'Você está na Sprint 16, com a correção da regressão.'}</p></div></div>
-    <div class="fcard" style="margin-top:18px"><h3 style="font-size:17px;margin-bottom:6px">Carregar save do curso</h3><p class="dica" style="margin-bottom:12px">Perdeu o progresso, trocou de computador ou pulou uma aula? Carregue o ponto do curso em que você está. O FlowDesk fica do jeito que o vídeo espera. <b>Isso substitui o que você tem agora.</b></p>
-      <div class="saves" id="saves">${SAVES_ORDEM().map((x, i) => `<button type="button" class="sv ${i === 0 ? 'on' : ''}" data-sv="${x.id}" data-test="save-${x.id}"><span class="sv-ep">${seloSave(x)}</span><b>${i === 0 ? x.nome : x.quando}</b><span>${i === 0 ? x.quando : x.nome}</span></button>`).join('')}</div>
-      <select class="exec-sel" id="cfSave" data-test="save-episodio" aria-label="Save do curso">${SAVES_ORDEM().map((x) => `<option value="${x.id}">${x.nome} · ${x.quando}</option>`).join('')}</select>
-      <button class="btn sec" id="carregaSave" data-test="carregar-save" style="margin-top:14px">Carregar este save</button>
-      <div id="confSave" hidden style="margin-top:12px"><b>Tem certeza?</b> O que você fez até agora vai ser trocado pelo save. <button class="btn peq" id="saveSim" data-test="confirmar-save">Sim, carregar</button> <button class="btn sec peq" id="saveNao">Cancelar</button></div></div>
     <div class="fcard" style="margin-top:18px"><h3 style="font-size:17px;margin-bottom:6px">Levar o progresso pra outro computador</h3><p class="dica" style="margin-bottom:12px">Baixe um arquivo com tudo o que você fez. No outro computador, crie a conta e importe o arquivo.</p>
       <div style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn sec" id="exporta" data-test="exportar-progresso">Exportar progresso</button><label class="btn sec" for="importa" style="cursor:pointer">Importar progresso<input type="file" id="importa" accept=".json,application/json" data-test="importar-progresso" hidden></label></div></div>
     <div class="fcard" style="margin-top:18px;border-color:#5b1d24"><h3 style="font-size:17px;margin-bottom:6px">Recomeçar do zero</h3><p class="dica" style="margin-bottom:12px">Apaga os chamados, cards, cenários e mensagens que você criou e volta tudo pro começo do curso. A sua conta continua.</p>
       <button class="btn perigo" id="zera" data-test="recomecar">Recomeçar do zero</button>
       <div id="conf" hidden style="margin-top:12px"><b>Tem certeza?</b> Isso não tem volta. <button class="btn perigo peq" id="zeraSim" data-test="confirmar-recomecar">Sim, apagar tudo</button> <button class="btn sec peq" id="zeraNao">Cancelar</button></div></div>`);
   $('#salvaNome').onclick = () => { const n = $('#cfNome').value.trim(); if (!n) return toast('O nome não pode ficar vazio', true); c.nome = n; LS.set('fd:contas', cs); recado('Nome salvo'); location.reload(); };
-  const marcaSave = () => $$('[data-sv]').forEach((b) => b.classList.toggle('on', b.dataset.sv === $('#cfSave').value));
+  const marcaSave = () => { $$('[data-sv]').forEach((b) => b.classList.toggle('on', b.dataset.sv === $('#cfSave').value)); const sv = SAVES.find((x) => x.id === $('#cfSave').value); $('#svEsc').textContent = `${seloSave(sv).replace(/<[^>]+>/g, '')} · ${sv.quando}`; $('#confSave').hidden = true; $('#carregaSave').hidden = false; };
   $$('[data-sv]').forEach((b) => { b.onclick = () => { $('#cfSave').value = b.dataset.sv; marcaSave(); }; });
-  $('#cfSave').addEventListener('change', marcaSave);
-  $('#carregaSave').onclick = () => { $('#confSave').hidden = false; };
+  $('#cfSave').addEventListener('change', marcaSave); marcaSave();
+  $('#carregaSave').onclick = () => { $('#confSave').hidden = false; $('#carregaSave').hidden = true; };
   const bk = LS.get('fd:backup:' + sessao(), null);
-  if (bk && bk.dados) { const el = document.createElement('div'); el.className = 'aula-volta'; el.innerHTML = `<b>Você pulou de aula.</b> Quer voltar pro progresso que você tinha no ${esc(bk.aula)}? <button class="btn peq sec" data-test="desfazer-pulo">Voltar pro meu progresso</button>`; $('#carregaSave').after(el);
+  if (bk && bk.dados) { const el = document.createElement('div'); el.className = 'aula-volta'; el.innerHTML = `<b>Você pulou de aula.</b> Quer voltar pro progresso que você tinha no ${esc(bk.aula)}? <button class="btn peq sec" data-test="desfazer-pulo">Voltar pro meu progresso</button>`; $('.sv-barra').after(el);
     el.querySelector('button').onclick = () => { LS.set(chaveDados(), bk.dados); LS.del('fd:backup:' + sessao()); recado('Progresso de antes do pulo de volta'); location.href = 'dashboard.html'; }; }
-  $('#saveNao').onclick = () => { $('#confSave').hidden = true; };
+  $('#saveNao').onclick = () => { $('#confSave').hidden = true; $('#carregaSave').hidden = false; };
   $('#saveSim').onclick = () => { const sv = SAVES.find((x) => x.id === $('#cfSave').value); LS.set(chaveDados(), sv.monta()); recado(`Save carregado: ${sv.nome}`); location.href = 'dashboard.html'; };
   $('#exporta').onclick = () => {
     const arq = { app: 'flowdesk', formato: 1, nome: c.nome, exportadoEm: agora(), dados: dados() };
