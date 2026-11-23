@@ -1,18 +1,14 @@
 {
- "atualizado": "22/11/2026 15:02",
+ "atualizado": "23/11/2026 00:06",
  "fontes": {
   "custo_oculto": {
-   "seguidores": 74,
-   "views_total": 16737,
+   "seguidores": 75,
+   "views_total": 17183,
    "videos": 66,
-   "views_28d": 10170,
-   "views_7d": 2886,
-   "seguidores_28d": 32,
+   "views_28d": 10705,
+   "views_7d": 3370,
+   "seguidores_28d": 41,
    "dia": [
-    [
-     "2026-10-25",
-     175
-    ],
     [
      "2026-10-26",
      148
@@ -112,13 +108,24 @@
     [
      "2026-11-19",
      1362
+    ],
+    [
+     "2026-11-20",
+     710
     ]
    ],
    "top": [
     {
+     "titulo": "O segredo de 1 mm que faz uma BIC escrever 3 KM 😱 #Shorts",
+     "url": "https://youtu.be/NiQ_aBHYmAo",
+     "views": 1460,
+     "retencao": 72,
+     "likes": 39
+    },
+    {
      "titulo": "Bombril: a marca que virou sinônimo de lã de aço — O Custo de Ser Gigante EP. 09",
      "url": "https://youtu.be/2bKwMEzu16U",
-     "views": 1409,
+     "views": 1411,
      "retencao": 50,
      "likes": 67
     },
@@ -130,13 +137,6 @@
      "likes": 65
     },
     {
-     "titulo": "O segredo de 1 mm que faz uma BIC escrever 3 KM 😱 #Shorts",
-     "url": "https://youtu.be/NiQ_aBHYmAo",
-     "views": 1277,
-     "retencao": 67,
-     "likes": 36
-    },
-    {
      "titulo": "A Lego quase faliu com o brinquedo mais famoso do mundo | A Jogada que Mudou Tudo EP. 07",
      "url": "https://youtu.be/t8W991jJeOo",
      "views": 1260,
@@ -146,7 +146,7 @@
     {
      "titulo": "A Gradiente registrou o nome iPhone antes da Apple | O Custo de Ser Gigante EP. 12",
      "url": "https://youtu.be/kead0wOtMM4",
-     "views": 1050,
+     "views": 1051,
      "retencao": 64,
      "likes": 34
     }
@@ -168,14 +168,10 @@
    "seguidores": 1,
    "views_total": 557,
    "videos": 15,
-   "views_28d": 505,
-   "views_7d": 36,
+   "views_28d": 513,
+   "views_7d": 28,
    "seguidores_28d": 1,
    "dia": [
-    [
-     "2026-10-25",
-     0
-    ],
     [
      "2026-10-26",
      6
@@ -275,6 +271,10 @@
     [
      "2026-11-19",
      0
+    ],
+    [
+     "2026-11-20",
+     8
     ]
    ],
    "top": [
@@ -318,16 +318,16 @@
   },
   "tiktok": {
    "usuario": "MICROVERSO 🔬",
-   "seguidores": 109,
-   "curtidas": 856,
+   "seguidores": 110,
+   "curtidas": 861,
    "videos": 47,
-   "views_total": 7070,
+   "views_total": 7192,
    "top": [
     {
      "titulo": "🧅 A CEBOLA TEM UMA ARMA QUÍMICA INVISÍVEL! 😱 Você corta uma cebola e, segundos depois, com",
      "url": "https://www.tiktok.com/@microverso.oficial/video/7710993995479960839?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 40,
-     "likes": 0
+     "views": 128,
+     "likes": 3
     },
     {
      "titulo": "🤯 EXISTE UM EXÉRCITO INVISÍVEL DENTRO DO VELCRO! Milhares de pequenos ganchos trabalham ju",
@@ -344,7 +344,7 @@
     {
      "titulo": "Você usou uma caneta BIC a vida inteira… mas provavelmente nunca imaginou o que acontece d",
      "url": "https://www.tiktok.com/@microverso.oficial/video/7710036847413562631?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 388,
+     "views": 389,
      "likes": 24
     },
     {
