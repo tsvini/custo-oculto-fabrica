@@ -626,10 +626,13 @@ function refrescaCarreira() {
   const tmp = document.createElement('div'); tmp.innerHTML = trilha(d); const novo = tmp.firstElementChild;
   const alvo = $$('.tb i', novo).map((i) => i.style.width);
   if (velho.outerHTML === novo.outerHTML) return;
+  // no meio da comemoração de subir de nível, não troca a barra (senão o efeito e o confete somem)
+  if (velho.classList.contains('festa')) { const x0 = $('.barra [data-test=xp]'); if (x0) x0.textContent = `${xpDe(d)} / ${ehJunior(d) ? XP_PLENO : XP_JUNIOR} XP`; return; }
   $$('.tb i', novo).forEach((i, k) => { i.style.width = antes[k] || '0%'; });
   velho.replaceWith(novo); void novo.offsetWidth;
   $$('.tb i', novo).forEach((i, k) => { i.style.width = alvo[k]; });
   const x = $('.barra [data-test=xp]'); if (x) x.textContent = `${xpDe(d)} / ${ehJunior(d) ? XP_PLENO : XP_JUNIOR} XP`;
+  if (d.festaPendente) festaCarreira();  // subiu de nível agora: comemora aqui mesmo, sem esperar trocar de tela
 }
 // pedido de avaliação na Udemy: só depois de um momento alto (primeiros bugs, efetivação), uma vez por conta, sem nada em troca.
 // fica desligado até o curso ter link (UDEMY_AVALIAR vazio = não aparece, inclusive nas gravações)
@@ -743,6 +746,15 @@ function festaCarreira() {
   const nivel = d.festaPendente; if (!nivel) return;  // só quando acabou de subir no desafio (save carregado não comemora)
   delete d.festaPendente; salvar();
   tr.classList.add('festa', 'festa-' + nivel);
+  // a linha enche até o novo nível e solta confete em cima dele
+  const k = nivel === 'pleno' ? 1 : 0, bar = tr.querySelectorAll('.tb i')[k], alvo = tr.querySelectorAll('.nv')[k + 1];
+  if (bar) { bar.style.transition = 'none'; bar.style.width = '0%'; void bar.offsetWidth; bar.style.transition = 'width 1.4s cubic-bezier(.2,.8,.2,1)'; bar.style.width = '100%'; }
+  if (alvo) {  // o novo nível só acende (com o ✓) quando a linha chega nele
+    const cheio = alvo.innerHTML; alvo.classList.remove('on'); alvo.textContent = alvo.textContent.trim();
+    setTimeout(() => { alvo.innerHTML = cheio; alvo.classList.add('on', 'acende'); const cores = ['#fde68a', '#c084fc', '#a78bfa', '#f0abfc', '#86efac'];
+      for (let i = 0; i < 22; i++) { const c = document.createElement('i'); c.className = 'confete'; const ang = (i / 22) * Math.PI * 2, r = 34 + (i % 4) * 14; c.style.cssText = `--dx:${Math.round(Math.cos(ang) * r * 1.6)}px;--dy:${Math.round(Math.sin(ang) * r)}px;--r:${(i * 47) % 360}deg;background:${cores[i % cores.length]}`; alvo.appendChild(c); }
+      setTimeout(() => alvo.querySelectorAll('.confete').forEach((c) => c.remove()), 2000); }, 1350);
+  }
   const m = document.createElement('div'); m.className = 'festa-msg'; m.setAttribute('data-test', 'festa-carreira'); m.setAttribute('role', 'status');
   m.innerHTML = `<b>${nivel === 'pleno' ? 'Promovido a QA pleno!' : 'Efetivado como QA júnior!'}</b><span>Seu cartão ${nivel === 'pleno' ? 'de promoção' : 'de efetivação'} está pronto. Dá pra baixar e postar no LinkedIn.</span><a class="btn peq" href="efetivacao.html" data-test="festa-cartao">Ver meu cartão</a><button type="button" class="festa-x" aria-label="Fechar">×</button>`;
   document.body.appendChild(m); m.querySelector('.festa-x').onclick = () => m.remove(); setTimeout(() => m.classList.add('sai'), 14000); setTimeout(() => m.remove(), 14600);
@@ -806,6 +818,7 @@ PAGINAS.login = () => {
       <div class="campo"><label for="email">E-mail</label><input class="in" id="email" type="email" data-test="login-email" autocomplete="username" placeholder="voce@empresa.com"></div>
       <div class="campo"><label for="senha">Senha</label><input class="in" id="senha" type="password" data-test="login-senha" autocomplete="current-password" placeholder="Sua senha"></div>
       ${contas()['lucas@flowdesk.com'] ? '<p class="conta-teste" data-test="conta-teste">Conta de teste do time: <b>lucas@flowdesk.com</b> · senha <b>123456</b></p>' : ''}
+      <label class="cr lembrar" data-test="lembrar-de-mim"><input type="checkbox" id="lembrar"> Lembrar de mim por 30 dias</label>
       <button class="btn cheio" data-test="login-entrar">Entrar</button>
       <div class="ou"><span></span>primeira vez?<span></span></div>
       <button type="button" class="btn sec cheio" data-test="ir-criar-conta">Criar minha conta</button></form>

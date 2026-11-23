@@ -1173,7 +1173,12 @@ body.m8 [data-test=sair]{color:#b4b7cc}
 .trilha .tb{height:6px;border-radius:0;margin:0 -1px}
 .trilha .tb i{border-radius:0}
 .trilha.festa .tb i{background:linear-gradient(90deg,#8b5cf6,#c084fc,#fde68a,#c084fc,#8b5cf6);background-size:300% 100%;animation:festaBar 1.6s linear 4}
-.trilha.festa-junior .nv:nth-of-type(2),.trilha.festa-pleno .nv:nth-of-type(3){animation:festaNv 1s ease-in-out 5}
+.trilha.festa-junior .nv:nth-of-type(2),.trilha.festa-pleno .nv:nth-of-type(3){animation:festaNv 1s ease-in-out 1.8s 3}
+.trilha .nv{position:relative}
+.trilha.festa .nv.acende{animation:acende .45s cubic-bezier(.2,.9,.3,1.4),festaNv 1s ease-in-out .5s 3}
+@keyframes acende{0%{transform:scale(.8);filter:brightness(1.8)}100%{transform:scale(1)}}
+.trilha .confete{position:absolute;left:50%;top:50%;width:6px;height:10px;border-radius:2px;pointer-events:none;opacity:0;animation:confete 1.3s cubic-bezier(.2,.7,.3,1) forwards}
+@keyframes confete{0%{opacity:1;transform:translate(-50%,-50%) rotate(0)}80%{opacity:1}100%{opacity:0;transform:translate(calc(-50% + var(--dx)),calc(-50% + var(--dy))) rotate(var(--r))}}
 @keyframes festaBar{to{background-position:-300% 0}}
 @keyframes festaNv{0%,100%{box-shadow:0 0 0 0 rgba(192,132,252,0)}50%{box-shadow:0 0 0 6px rgba(192,132,252,.35),0 0 28px rgba(250,204,21,.45);transform:scale(1.06)}}
 .festa-msg{position:fixed;top:70px;left:50%;transform:translateX(-50%);z-index:95;display:flex;align-items:center;gap:14px;background:linear-gradient(135deg,#2a1a52,#1a1233);border:1.5px solid #a78bfa;border-radius:16px;padding:14px 18px 14px 20px;box-shadow:0 18px 50px -10px rgba(124,58,237,.6);animation:festaIn .5s cubic-bezier(.2,.9,.3,1.2);max-width:min(760px,92vw)}
@@ -1231,3 +1236,6 @@ textarea.in.curto{min-height:84px;resize:vertical;line-height:1.45}
 .desafio .d-bea{transform-origin:50% 100%;animation:bea-resp 4.5s ease-in-out infinite}
 @keyframes bea-resp{0%,100%{transform:scale(1)}50%{transform:scale(1.012) translateY(-1px)}}
 @media (prefers-reduced-motion:reduce){.desafio .d-bea{animation:none}}
+
+/* login: caixinha de lembrar de mim (a sessão de 30 dias do módulo 7) */
+#fEntrar .lembrar{display:flex;align-items:center;gap:8px;font-size:13.5px;color:#c9cbe0;margin:2px 0 14px;cursor:pointer}
