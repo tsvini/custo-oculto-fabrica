@@ -30,7 +30,7 @@ let falhas = 0; const ok = (c, m) => { console.log((c ? 'OK   ' : 'FALHA ') + m)
   await p.goto(U + 'novo-chamado.html?api='); await p.fill('[data-test=titulo]', 'Pelo service worker'); await p.fill('[data-test=descricao]', 'x'); await p.click('[data-test=criar-chamado]'); await p.waitForTimeout(2500);
   ok(/criado com sucesso/.test(await p.textContent('body')), 'service worker ainda cria chamado');
   // 5) período: 7 dias inclui hoje; com regressão, não
-  const hoje = async (url) => { await p.goto(url); await p.selectOption('[data-test=filtro-periodo]', '7'); await p.waitForTimeout(300); return p.evaluate(() => [...document.querySelectorAll('[data-test=linha-chamado]')].filter((e) => /min|agora|há [0-9]+ h$/.test(e.querySelector('.quando').textContent.trim())).length); };
+  const hoje = async (url) => { await p.goto(url); await p.selectOption('[data-test=filtro-periodo]', '7'); await p.waitForTimeout(300); return p.evaluate(() => [...document.querySelectorAll('[data-test=linha-chamado]')].filter((e) => { const q = e.querySelector('.quando').textContent.trim(), m = /há ([0-9]+) h$/.exec(q); return /min|agora/.test(q) || (m && +m[1] <= new Date().getHours()); }).length); };  // "há N h" só é hoje se N <= hora atual
   const h1 = await hoje(U + 'chamados.html?regressao='); ok(h1 > 0, 'últimos 7 dias mostra os de hoje (' + h1 + ')');
   const h2 = await hoje(U + 'chamados.html?regressao=periodo'); ok(h2 === 0, 'regressao=periodo some com os de hoje (' + h2 + ')');
   // 6) rascunho: corrigido não vaza pra outra conta; com regressão vaza

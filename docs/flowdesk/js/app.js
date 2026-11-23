@@ -70,8 +70,12 @@ function toast(msg, mal = false) {
   $$('.toast').forEach((t) => t.remove());
   const t = document.createElement('div');
   t.className = 'toast' + (mal ? ' mal' : ''); t.setAttribute('data-test', mal ? 'toast-erro' : 'toast-sucesso'); t.setAttribute('role', 'status');
-  t.textContent = (mal ? '✕ ' : '✓ ') + msg; document.body.appendChild(t);
-  setTimeout(() => t.remove(), 4000);
+  t.innerHTML = `<span>${(mal ? '✕ ' : '✓ ') + esc(msg)}</span><button type="button" class="toast-x" aria-label="Fechar mensagem" data-test="fechar-toast">×</button>`; document.body.appendChild(t);
+  // fica tempo suficiente pra ler (mais se for erro), pausa com o mouse em cima, e tem botão de fechar
+  let resta = mal ? 9000 : 6500, ini = Date.now(), tm = setTimeout(() => t.remove(), resta);
+  t.onmouseenter = () => { clearTimeout(tm); resta -= Date.now() - ini; };
+  t.onmouseleave = () => { ini = Date.now(); tm = setTimeout(() => t.remove(), Math.max(1500, resta)); };
+  t.querySelector('.toast-x').onclick = () => t.remove();
 }
 const recado = (msg) => sessionStorage.setItem('fd:toast', msg);
 function mostraRecado() { const m = sessionStorage.getItem('fd:toast'); if (m) { sessionStorage.removeItem('fd:toast'); toast(m); } }
@@ -188,7 +192,7 @@ const usaApi = () => VERSAO >= 17 && 'serviceWorker' in navigator && /^https?:/.
 let _swPronto = null;
 function swPronto() {
   if (!_swPronto) _swPronto = (async () => {
-    await navigator.serviceWorker.register('sw.js?v=1794974245');
+    await navigator.serviceWorker.register('sw.js?v=1795428638');
     if (navigator.serviceWorker.controller) return true;
     await new Promise((r) => { navigator.serviceWorker.addEventListener('controllerchange', r, { once: true }); setTimeout(r, 4000); });
     return !!navigator.serviceWorker.controller;
@@ -390,7 +394,24 @@ function d1Comeca(d) {
 }
 const d1Gasto = (d) => { const x = d.desafio || {}; if (!x.inicio) return 0; const fim = x.entregue ? new Date(x.entregue) : x.pausadoDesde ? new Date(x.pausadoDesde) : new Date(); return Math.max(0, fim - new Date(x.inicio) - (x.pausas || 0)); };
 const d1Resta = (d) => D1_MIN * 60000 - d1Gasto(d);
-const fmtMin = (ms) => { const neg = ms < 0, t = Math.round(Math.abs(ms) / 1000); return `${neg ? '-' : ''}${String(Math.floor(t / 60)).padStart(2, '0')}:${String(t % 60).padStart(2, '0')}`; };
+const fmtMin = (ms) => { const t = Math.max(0, Math.round(ms / 1000)); return `${String(Math.floor(t / 60)).padStart(2, '0')}:${String(t % 60).padStart(2, '0')}`; };  // para em 00:00
+// entrega o desafio 1: pelo botão ou quando o tempo chega em 00:00 (aí entrega sozinho, no limite exato)
+function d1Encerra(d, porTempo = false) {
+  const x = d.desafio; if (x.pausadoDesde) { x.pausas += Date.now() - new Date(x.pausadoDesde); x.pausadoDesde = null; }
+  x.entregue = porTempo ? new Date(new Date(x.inicio).getTime() + (x.pausas || 0) + D1_MIN * 60000).toISOString() : agora(); x.porTempo = !!porTempo; const r = d1Nota(d); x.resultado = r; x.bugsAchados = r.achados.length;
+  const ch = (d.chat['time-produto'] = d.chat['time-produto'] || []);
+  if (r.passou) { d.conquistas.push('d1'); d.efetivadoEm = agora(); d.festaPendente = 'junior'; daDiploma('junior', { nota: r.total, bugs: r.achados.length }); ch.push({ de: 'beatriz', tx: `Desafio entregue: ${r.total} pontos e ${r.achados.length} de 3 bugs. Pode atualizar o crachá: você é QA júnior! 🎉`, quando: agora() }); }
+  else ch.push({ de: 'beatriz', tx: `Recebi o desafio: ${r.total} pontos e ${r.achados.length} de 3 bugs. Ainda não deu, mas dá pra tentar de novo. Olha a cobertura do plano e testa os filtros combinados.`, quando: agora() });
+  salvar(); return r;
+}
+// confere se o tempo do desafio acabou; se acabou, encerra e leva o aluno pro resultado
+function d1Vigia() {
+  const d = dados(); const x = d && d.desafio; if (!x || !x.inicio || x.entregue || x.pausadoDesde || !d1Aberto(d)) return false;
+  if (d1Resta(d) > 0) return false;
+  const r = d1Encerra(d, true); if (r.passou) { d.conqPendente = 'd1'; salvar(); }
+  sessionStorage.setItem('fd:toast', 'O tempo do desafio acabou: ele foi entregue com o que você fez até aqui');
+  location.href = 'card.html?id=FD-118'; return true;
+}
 const D1_BUGS = [['combina', /cliente.{0,40}status|status.{0,40}cliente|combin|junt|dois filtros|ignora.{0,20}cliente/i, 'Cliente e status juntos ignoram o cliente'],
   ['hoje', /hoje|7 dias|sete dias|per[ií]odo|data/i, 'Período de 7 dias deixa os chamados de hoje de fora'],
   ['limpar', /limpar|limpa|busca|pesquis/i, '“Limpar filtros” esquece a busca']];
@@ -711,14 +732,34 @@ function casca(pagina, conteudo) {
   $('[data-test=sair]').onclick = sair;
   mostraRecado(); setTimeout(() => { confereMissoes(); const pend = (dados() || {}).conqPendente, m = pend && (MISSOES.find((x) => x.id === pend) || (pend === 'd1' ? D1_MISSAO : pend === 'd2' ? D2_MISSAO : null)); if (m && !$('.conq-fundo')) conquista(m); }, 300);
   relogioD1();
+  poeVoltar();
+  festaCarreira();
   if (CACA_API && pg !== 'caca') fetch(`${CACA_API}/placar`).then((r) => r.json()).then((p) => LS.set('fd:placar', { bugs: p.bugs, temporada: p.temporada, encerrada: p.encerrada })).catch(() => {});
 }
 function sair() { if (!BUG.rascunho) LS.del(RASCUNHO); LS.del('fd:sessao'); location.href = 'index.html'; }
+// subiu de nível (júnior ou pleno): a trilha comemora uma vez e lembra do cartão pro LinkedIn (fictício, do curso)
+function festaCarreira() {
+  const d = dados(); if (!d) return; const tr = $('.trilha'); if (!tr) return;
+  const nivel = d.festaPendente; if (!nivel) return;  // só quando acabou de subir no desafio (save carregado não comemora)
+  delete d.festaPendente; salvar();
+  tr.classList.add('festa', 'festa-' + nivel);
+  const m = document.createElement('div'); m.className = 'festa-msg'; m.setAttribute('data-test', 'festa-carreira'); m.setAttribute('role', 'status');
+  m.innerHTML = `<b>${nivel === 'pleno' ? 'Promovido a QA pleno!' : 'Efetivado como QA júnior!'}</b><span>Seu cartão ${nivel === 'pleno' ? 'de promoção' : 'de efetivação'} está pronto. Dá pra baixar e postar no LinkedIn.</span><a class="btn peq" href="efetivacao.html" data-test="festa-cartao">Ver meu cartão</a><button type="button" class="festa-x" aria-label="Fechar">×</button>`;
+  document.body.appendChild(m); m.querySelector('.festa-x').onclick = () => m.remove(); setTimeout(() => m.classList.add('sai'), 14000); setTimeout(() => m.remove(), 14600);
+}
+// telas de detalhe (chamado, card, novo chamado...): botão de seta pra voltar pra lista, a partir do primeiro link do caminho
+function poeVoltar() {
+  const a = $('.topo .crumb a'); const box = a && a.closest('.topo > div'); if (!box || box.querySelector('.voltar')) return;
+  const v = document.createElement('a'); v.className = 'voltar'; v.href = a.getAttribute('href'); v.setAttribute('data-test', 'voltar');
+  v.setAttribute('aria-label', 'Voltar para ' + a.textContent.trim()); v.title = 'Voltar para ' + a.textContent.trim();
+  v.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>';
+  box.classList.add('tem-voltar'); box.prepend(v);
+}
 // relógio do desafio: aparece em todas as telas enquanto o desafio está rodando
 function relogioD1() {
   const d = dados(); if (!d || !d1Aberto(d) || !(d.desafio || {}).inicio || d.desafio.entregue) return;
   const r = document.createElement('a'); r.className = 'relogio-d1'; r.href = 'card.html?id=FD-118'; r.setAttribute('data-test', 'relogio-desafio'); document.body.appendChild(r);
-  const tic = () => { const ms = d1Resta(dados()); r.innerHTML = `<b>DESAFIO 1</b><span>${d.desafio.pausadoDesde ? 'pausado · ' : ''}${fmtMin(ms)}</span>`; r.classList.toggle('acabou', ms < 0); r.classList.toggle('pausado', !!d.desafio.pausadoDesde); };
+  const tic = () => { if (d1Vigia()) return; const ms = d1Resta(dados()); r.innerHTML = `<b>DESAFIO 1</b><span>${d.desafio.pausadoDesde ? 'pausado · ' : ''}${fmtMin(ms)}</span>`; r.classList.toggle('acabou', ms < 0); r.classList.toggle('pausado', !!d.desafio.pausadoDesde); };
   tic(); setInterval(tic, 1000);
 }
 const topo = (titulo, sub = '', crumb = '', acoes = '') => `<div class="topo"><div>${crumb ? `<div class="crumb">${crumb}</div>` : ''}<h2 data-test="titulo-pagina">${titulo}</h2>${sub ? `<div class="sub">${sub}</div>` : ''}</div>${acoes ? `<div class="topo-acoes">${acoes}</div>` : ''}</div>`;
@@ -1232,7 +1273,7 @@ PAGINAS.card = () => {
       <div class="dbt"><button class="btn sec" id="d1Pausa" data-test="pausar-desafio">${x.pausadoDesde ? 'Continuar' : 'Pausar'}</button><button class="btn sec" id="d1Plano">Abrir plano de testes</button><a class="btn sec" href="chamados.html">Ir pra lista de chamados</a>
       <button class="btn" id="d1Fim" data-test="entregar-desafio">Entregar desafio</button></div></div>`;
     const r = x.resultado || d1Nota(d), L = (n, t, v) => `<div class="dl"><span>${t}</span><b>${n}</b><i>${v}</i></div>`;
-    return `<div class="desafio ${r.passou ? 'passou' : 'nao'}" data-test="desafio-resultado"><div class="dk">DESAFIO 1 · RESULTADO</div><h3>${r.passou ? 'Efetivado!' : 'Ainda não foi dessa vez'}</h3>
+    return `<div class="desafio ${r.passou ? 'passou' : 'nao'}" data-test="desafio-resultado"><div class="dk">DESAFIO 1 · RESULTADO</div><h3>${r.passou ? 'Efetivado!' : 'Ainda não foi dessa vez'}</h3>${x.porTempo ? '<div class="d-tempo" data-test="desafio-tempo-esgotado">⏱ O tempo acabou em 00:00 e o desafio foi entregue sozinho, com o que você tinha feito.</div>' : ''}
       <div class="dtot"><b data-test="nota-desafio">${r.total}</b><span>de 100</span></div>
       ${L(`${r.cob}/5`, 'Regras cobertas pelo plano', `${r.pCob} de 30`)}${L(`${r.execEv}/${r.nCen}`, 'Cenários executados com evidência', `${r.pExec} de 20`)}${L(`${r.achados.length}/3`, 'Bugs escondidos que você achou', `${r.pBug} de 45`)}${L(r.prazo ? 'no prazo' : 'fora do prazo', 'Tempo', `${r.prazo} de 5`)}
       ${r.passou ? `<a class="btn" href="efetivacao.html" data-test="ir-cartao-resultado">Pegar meu cartão de efetivação</a>` : `<p>Pra passar: 70 pontos e pelo menos 2 bugs. Revisa o plano, testa de novo e reporta o que achar.</p><button class="btn" id="d1De" data-test="tentar-de-novo">Tentar de novo</button>`}</div>`;
@@ -1268,16 +1309,11 @@ PAGINAS.card = () => {
       if ($('#d1De')) $('#d1De').onclick = () => { d1Comeca(d); salvar(); location.reload(); };
       if ($('#d1Plano')) $('#d1Plano').onclick = () => mostra('plano');
       if ($('#d1Pausa')) $('#d1Pausa').onclick = () => { const x = d.desafio; if (x.pausadoDesde) { x.pausas += Date.now() - new Date(x.pausadoDesde); x.pausadoDesde = null; } else x.pausadoDesde = agora(); salvar(); location.reload(); };
-      if ($('#d1T')) setInterval(() => { const t = $('#d1T'); if (t) t.textContent = fmtMin(d1Resta(dados())); }, 1000);
+      if ($('#d1T')) setInterval(() => { if (d1Vigia()) return; const t = $('#d1T'); if (t) t.textContent = fmtMin(d1Resta(dados())); }, 1000);
       if ($('#d1Fim')) $('#d1Fim').onclick = () => {
         const bt = $('#d1Fim'); if (!bt.dataset.ok) { bt.dataset.ok = 1; bt.textContent = 'Confirmar entrega'; bt.setAttribute('data-test', 'confirmar-entrega'); return; }
-        const x = d.desafio; if (x.pausadoDesde) { x.pausas += Date.now() - new Date(x.pausadoDesde); x.pausadoDesde = null; }
-        x.entregue = agora(); const r = d1Nota(d); x.resultado = r; x.bugsAchados = r.achados.length;
-        const ch = (d.chat['time-produto'] = d.chat['time-produto'] || []);
-        if (r.passou) { d.conquistas.push('d1'); d.efetivadoEm = agora(); daDiploma('junior', { nota: r.total, bugs: r.achados.length }); ch.push({ de: 'beatriz', tx: `Desafio entregue: ${r.total} pontos e ${r.achados.length} de 3 bugs. Pode atualizar o crachá: você é QA júnior! 🎉`, quando: agora() }); }
-        else ch.push({ de: 'beatriz', tx: `Recebi o desafio: ${r.total} pontos e ${r.achados.length} de 3 bugs. Ainda não deu, mas dá pra tentar de novo. Olha a cobertura do plano e testa os filtros combinados.`, quando: agora() });
-        salvar(); mostra('detalhes'); $('.relogio-d1') && $('.relogio-d1').remove();
-        if (r.passou) setTimeout(() => conquista(D1_MISSAO), 400);
+        d1Encerra(d); mostra('detalhes'); $('.relogio-d1') && $('.relogio-d1').remove();
+        if (d.desafio.resultado.passou) setTimeout(() => conquista(D1_MISSAO), 400);
       };
       if (c.id === 'FD-101' && !d.viuFD101) { d.viuFD101 = true; salvar(); setTimeout(confereMissoes, 50); }
       if ($('#d1Conf')) $('#d1Conf').onclick = () => {
@@ -1402,7 +1438,7 @@ function montaPlano(A, card) {
       <button type="button" class="${missaoAtual() && missaoAtual().id === 'ep03' ? 'btn' : 'link-add'}" id="abreForm" data-test="novo-cenario">+ ${missaoAtual() && missaoAtual().id === 'ep03' ? 'Novo cenário' : 'Adicionar cenário'}</button>
       <form class="fcard" id="f" novalidate style="margin-top:14px;max-width:none"><h3 style="font-size:18px;margin-bottom:14px" id="fTit">Novo cenário</h3>
         <div style="display:flex;gap:14px;flex-wrap:wrap"><div class="campo" style="flex:2;min-width:240px"><label for="cNome">Cenário <i>*</i></label><input class="in" id="cNome" data-test="cenario-nome" placeholder="Ex.: Criar sem título"></div>
-          <div class="campo" style="flex:1;min-width:170px"><label for="cTipo">Tipo</label><select class="in" id="cTipo" data-test="cenario-tipo"><option value="P">Positivo</option><option value="N">Negativo</option><option value="L">Valor limite</option></select></div></div>
+          <div class="campo" style="flex:1;min-width:170px"><label for="cTipo">Tipo <span class="dica-tipo" tabindex="0" role="button" aria-label="O que é cada tipo" data-test="dica-tipo">?<span class="dica-box" role="tooltip"><b class="p">Positivo</b><span>Verifica se o sistema funciona quando o usuário faz uma ação válida. Ex.: criar um chamado com todos os campos obrigatórios preenchidos.</span><b class="n">Negativo</b><span>Verifica como o sistema reage a uma ação inválida. Ex.: tentar criar um chamado sem preencher o título.</span><b class="l">Valor limite</b><span>Verifica o comportamento nas bordas do que é permitido. Ex.: título com 99, 100 e 101 caracteres, quando o máximo é 100.</span></span></span></label><select class="in" id="cTipo" data-test="cenario-tipo"><option value="P">Positivo</option><option value="N">Negativo</option><option value="L">Valor limite</option></select></div></div>
         <div class="campo"><label for="cPassos">Passos</label><textarea class="in" id="cPassos" data-test="cenario-passos" placeholder="1. Abrir a tela Novo chamado&#10;2. …"></textarea></div>
         <div class="campo"><label for="cEsp">Resultado esperado <i>*</i></label><textarea class="in" id="cEsp" data-test="cenario-esperado" rows="3" placeholder="1. Aparece a mensagem de sucesso&#10;2. Abre a tela do chamado&#10;3. O chamado fica com status Aberto"></textarea></div>
         <div class="campo"><label>Quais regras esse cenário cobre?</label><div class="regras-check">${RG.map((r, i) => `<label class="cr"><input type="checkbox" value="${i}" data-test="cenario-regra">${r}</label>`).join('')}</div></div>
@@ -1434,7 +1470,7 @@ function montaPlano(A, card) {
       const fora = !c.regras.length, t = TIPOS[c.tipo];
       const dentro = naRodada(i), hist = (c.hist || []).length ? `<div class="hist-r" data-test="historico-rodadas">${c.hist.map((h) => `<span class="hr ${h.exec}" title="Rodada ${h.r} · Sprint ${h.v}">R${h.r} · S${h.v} ${h.exec === 'passou' ? '✓' : h.exec === 'falhou' ? '✕' : '–'}</span>`).join('')}${rod() && dentro ? `<span class="hr atual ${c.exec}">R${rod().n} · S${rod().versao} ${c.exec === 'passou' ? '✓' : c.exec === 'falhou' ? '✕' : '…'}</span>` : ''}</div>` : '';
       return `<tr class="${fora ? 'fora' : ''} ${dentro ? '' : 'fora-rod'} st-${dentro ? c.exec || 'nao' : 'nao'}" data-test="linha-cenario"><td class="num"><span>${i + 1}</span></td><td><div class="cn">${esc(c.nome)}</div><div class="tgs"><span class="tg ${t[1]}">${t[0]}</span>${fora ? `<span class="tg tX">FORA DAS RG</span>` : ''}${fraco(c) ? `<span class="tg tF" data-test="cenario-fraco">NÃO CONTA NA COBERTURA</span>` : ''}${c.exec && c.exec !== 'nao' && !c.evid ? `<span class="tg tF" data-test="sem-evidencia">SEM EVIDÊNCIA</span>` : ''}</div>${c.passos ? `<button type="button" class="link" data-ps="${i}" data-test="ver-passos">${abertos.has(i) ? 'Esconder passos' : 'Ver passos'}</button><div class="passos" ${abertos.has(i) ? '' : 'hidden'}>${esc(c.passos)}</div>` : ''}<div class="res"><small>Resultado esperado</small><span class="rx">${esc(c.esperado)}</span></div>${hist}${c.regras.includes(3) ? `<button type="button" class="link arq-btn" data-arqbtn data-test="abrir-arquivos">${ico('clipe')}Arquivos de teste</button>` : ''}</td>
-        <td>${dentro ? '' : `<div class="xfora" data-test="fora-da-rodada">Fora da rodada ${rod().n}</div>`}<div class="xcel" ${dentro ? '' : 'hidden'}><div class="xseg"><button type="button" class="sg ok ${c.exec === 'passou' ? 'on' : ''}" data-x="${i}" data-v="passou" data-test="marcar-passou">✓ Passou</button><button type="button" class="sg nok ${c.exec === 'falhou' ? 'on' : ''}" data-x="${i}" data-v="falhou" data-test="marcar-falhou">✕ Falhou</button></div><select class="exec-sel" data-i="${i}" data-test="execucao" aria-label="Execução do cenário ${i + 1}"><option value="nao" ${c.exec === 'passou' || c.exec === 'falhou' ? '' : 'selected'}>Não executado</option><option value="passou" ${c.exec === 'passou' ? 'selected' : ''}>Passou</option><option value="falhou" ${c.exec === 'falhou' ? 'selected' : ''}>Falhou</option></select><div class="xlinks">${c.exec === 'falhou' ? (c.bug ? `<a class="bugchip" href="card.html?id=${c.bug}" data-test="bug-ligado">${ico('bug')}${c.bug}</a>` : `<button type="button" class="xl bug" data-bug="${i}" data-test="reportar-bug">${ico('bug')}Reportar bug</button>`) : ''}${c.exec && c.exec !== 'nao' ? `<label class="xl ev ${c.evid ? 'tem' : ''}" title="Print ou vídeo da execução"><input type="file" data-ev="${i}" data-test="evidencia-cenario" accept="image/*,video/*,.pdf" hidden>${ico('clipe')}${c.evid ? esc(c.evid) : 'Anexar evidência'}</label>` : ''}</div></div></td>
+        <td>${dentro ? '' : `<div class="xfora" data-test="fora-da-rodada">Fora da rodada ${rod().n}</div>`}<div class="xcel" ${dentro ? '' : 'hidden'}><div class="xseg"><button type="button" class="sg ok ${c.exec === 'passou' ? 'on' : ''}" data-x="${i}" data-v="passou" data-test="marcar-passou">✓ Passou</button><button type="button" class="sg nok ${c.exec === 'falhou' ? 'on' : ''}" data-x="${i}" data-v="falhou" data-test="marcar-falhou">✕ Falhou</button></div><select class="exec-sel" data-i="${i}" data-test="execucao" aria-label="Execução do cenário ${i + 1}"><option value="nao" ${c.exec === 'passou' || c.exec === 'falhou' ? '' : 'selected'}>Não executado</option><option value="passou" ${c.exec === 'passou' ? 'selected' : ''}>Passou</option><option value="falhou" ${c.exec === 'falhou' ? 'selected' : ''}>Falhou</option></select><div class="xlinks">${c.exec === 'falhou' ? (c.bug ? `<a class="bugchip" href="card.html?id=${c.bug}" data-test="bug-ligado">${ico('bug')}${c.bug}</a>` : `<button type="button" class="xl bug" data-bug="${i}" data-test="reportar-bug">${ico('bug')}Reportar bug</button>`) : ''}${`<label class="xl ev ${c.evid ? 'tem' : ''}" title="Print ou vídeo da execução"><input type="file" data-ev="${i}" data-test="evidencia-cenario" accept="image/*,video/*,.pdf" hidden>${ico('clipe')}${c.evid ? esc(c.evid) : 'Anexar evidência'}</label>`}</div></div></td>
         <td><div class="acoes"><button class="icone" data-ed="${i}" data-test="editar-cenario" title="Editar cenário"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg></button><button class="icone rm" data-rm="${i}" data-test="excluir-cenario" title="Excluir cenário"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M8 6V4h8v2"/><path d="M19 6l-1 14H6L5 6"/></svg></button></div></td></tr>`;
     }).join('') : '<tr><td colspan="4" class="vazio" data-test="plano-vazio">Nenhum cenário ainda</td></tr>';
     let n = 0;
@@ -2393,7 +2429,7 @@ function ligaDesafio2(d, refaz) {
     const bt = $('#d2Fim'); if (!bt.dataset.ok) { bt.dataset.ok = 1; bt.textContent = 'Confirmar entrega'; bt.setAttribute('data-test', 'confirmar-entrega2'); return; }
     const dd = dados(); dd.d2 = dd.d2 || {}; dd.d2.entregue = agora(); const r = d2Nota(dd); dd.d2.resultado = r;
     const ch = (dd.chat['time-produto'] = dd.chat['time-produto'] || []);
-    if (r.passou) { dd.conquistas.push('d2'); dd.promovidoEm = agora(); daDiploma('pleno', { nota: r.total, bugs: r.achados.length }); ch.push({ de: 'lucas', tx: `Desafio entregue: ${r.total} pontos e ${r.achados.length} de 3 bugs. Parabéns: você é QA pleno! 🎉`, quando: agora() }); }
+    if (r.passou) { dd.conquistas.push('d2'); dd.promovidoEm = agora(); dd.festaPendente = 'pleno'; daDiploma('pleno', { nota: r.total, bugs: r.achados.length }); ch.push({ de: 'lucas', tx: `Desafio entregue: ${r.total} pontos e ${r.achados.length} de 3 bugs. Parabéns: você é QA pleno! 🎉`, quando: agora() }); }
     else ch.push({ de: 'lucas', tx: `Recebi o desafio: ${r.total} pontos e ${r.achados.length} de 3 bugs. Ainda não deu. Olha de novo o plano da IA e testa do jeito que o cliente vai usar: no celular.`, quando: agora() });
     salvar(); refaz(); if (r.passou) setTimeout(() => conquista(D2_MISSAO), 400);
   };

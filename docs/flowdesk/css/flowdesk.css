@@ -1138,21 +1138,59 @@ body.m8 [data-test=sair]{color:#b4b7cc}
 .cov .cov-novo{margin-top:10px;font-size:13px;line-height:1.45;color:#86efac;font-weight:600}.cov .cov-novo.fraco{color:#fbbf24}
 #cEsp{min-height:104px;resize:vertical}
 .plano .tabela td .res .rx{white-space:pre-line;display:block}.plano .tabela td .res:has(.rx) small{display:block;margin:0 0 4px}
-/* execução do cenário: coluna mais estreita, botões empilhados e com cor desde o começo */
-.plano .xcel:before{content:'EXECUÇÃO';font-size:10px;font-weight:800;letter-spacing:1.4px;color:#6a6e8c}
-.plano .xseg{flex-direction:column;gap:6px}
-.plano .sg{flex:none;height:32px;font-size:12.5px}
-.plano .sg.ok:not(.on){color:#4ade80;border-color:#1f5134;background:rgba(22,163,74,.08)}
-.plano .sg.nok:not(.on){color:#fca5a5;border-color:#5b2128;background:rgba(220,38,38,.08)}
-.plano .tabela tr.st-passou .sg.nok:not(.on),.plano .tabela tr.st-falhou .sg.ok:not(.on){opacity:.45}
 .plano .tabela{width:100%}
 .plano .tabela td:nth-child(3){width:150px}.plano .tabela td:nth-child(2){width:auto}
-/* links da execução (anexar evidência / reportar bug) como botões, alinhados com Passou/Falhou */
-.plano .xlinks{flex-direction:column;gap:6px;align-items:stretch}
-.plano .xl{display:flex;align-items:center;justify-content:center;gap:2px;height:30px;border-radius:999px;font-size:12px;font-weight:700;cursor:pointer;text-decoration:none;border:1px dashed #3b3f5c;background:#161827;color:#b9bdd6;padding:0 10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.plano .xl:hover{border-color:#7C3AED;color:#fff}
-.plano .xl.ev.tem{border-style:solid;border-color:#1f5134;background:rgba(22,163,74,.1);color:#86efac}
-.plano .xl.bug{border-style:solid;border-color:#7f1d1d;background:rgba(220,38,38,.12);color:#fca5a5}
-.plano .xl.bug:hover{background:rgba(220,38,38,.22);color:#fff}
-.plano .xlinks .bugchip{display:flex;justify-content:center;align-items:center;height:30px;border-radius:999px;padding:0 10px}
-.plano .xcel:before{text-align:center}
+.desafio .d-tempo{margin:6px 0 10px;font-size:13px;font-weight:700;color:#fbbf24}
+.toast{display:flex;align-items:center;gap:12px}
+.toast .toast-x{background:none;border:0;color:inherit;opacity:.6;font-size:20px;line-height:1;cursor:pointer;padding:0 2px}.toast .toast-x:hover{opacity:1}
+/* dica do campo Tipo no plano de testes */
+.dica-tipo{position:relative;display:inline-flex;align-items:center;justify-content:center;width:17px;height:17px;margin-left:6px;border-radius:50%;background:#2a2050;color:#c4b5fd;font-size:11px;font-weight:800;cursor:help;vertical-align:1px;outline:none}
+.dica-tipo:hover,.dica-tipo:focus{background:#7C3AED;color:#fff}
+.dica-box{display:none;position:absolute;right:-8px;top:26px;z-index:60;width:330px;background:#151327;border:1px solid #4c3a8a;border-radius:12px;padding:14px 16px;box-shadow:0 18px 40px -8px rgba(0,0,0,.75);text-align:left;font-weight:500;letter-spacing:0;text-transform:none;cursor:default}
+.dica-tipo:hover .dica-box,.dica-tipo:focus .dica-box,.dica-tipo:focus-within .dica-box{display:block}
+.dica-box b{display:block;font-size:13px;font-weight:800;margin:10px 0 2px}.dica-box b:first-child{margin-top:0}
+.dica-box b.p{color:#4ade80}.dica-box b.n{color:#f87171}.dica-box b.l{color:#fbbf24}
+.dica-box span{display:block;font-size:12.5px;line-height:1.45;color:#c9cbe0}
+/* botão de voltar nas telas de detalhe */
+.topo>div.tem-voltar{display:grid;grid-template-columns:auto 1fr;column-gap:14px;align-items:center}
+.topo>div.tem-voltar>*{grid-column:2}
+.topo .voltar{grid-column:1!important;grid-row:1 / span 3;align-self:center;display:flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:12px;border:1px solid #2c2f45;background:#141523;color:#c4b5fd;text-decoration:none;transition:background .15s,border-color .15s}
+.topo .voltar:hover{background:#221d3d;border-color:#7C3AED;color:#fff}
+.topo .voltar svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+/* execução: um controle só, neutro até marcar; evidência sempre disponível, discreta */
+.plano .tabela td:nth-child(3){width:168px}
+.plano .xseg{display:flex;gap:0;padding:3px;border-radius:999px;background:#0f1019;border:1px solid #23253a}
+.plano .sg{flex:1;height:30px;border:0;border-radius:999px;background:none;color:#8a8ea8;font-size:12.5px;font-weight:700}
+.plano .sg.ok:not(.on):hover{color:#d7d9e6;background:#1a1c2b;border:0}.plano .sg.nok:not(.on):hover{color:#d7d9e6;background:#1a1c2b;border:0}
+.plano .sg.ok.on{background:#16a34a;color:#fff;box-shadow:none}.plano .sg.nok.on{background:#dc2626;color:#fff;box-shadow:none}
+.plano .xlinks{flex-direction:column;align-items:center;gap:4px;margin-top:8px}
+.plano .xl{display:inline-flex;align-items:center;gap:2px;font-size:12px;font-weight:600;color:#8a8ea8;padding:3px 8px;border-radius:8px;max-width:160px}
+.plano .xl:hover{color:#fff;background:#1a1c2b;text-decoration:none}
+.plano .xl.ev.tem{color:#86efac}.plano .xl.bug{color:#fca5a5}
+.plano .xlinks .bugchip{margin:0}
+/* trilha da carreira: níveis colados na linha, e comemoração ao subir */
+.trilha{gap:0}
+.trilha .tb{height:6px;border-radius:0;margin:0 -1px}
+.trilha .tb i{border-radius:0}
+.trilha.festa .tb i{background:linear-gradient(90deg,#8b5cf6,#c084fc,#fde68a,#c084fc,#8b5cf6);background-size:300% 100%;animation:festaBar 1.6s linear 4}
+.trilha.festa-junior .nv:nth-of-type(2),.trilha.festa-pleno .nv:nth-of-type(3){animation:festaNv 1s ease-in-out 5}
+@keyframes festaBar{to{background-position:-300% 0}}
+@keyframes festaNv{0%,100%{box-shadow:0 0 0 0 rgba(192,132,252,0)}50%{box-shadow:0 0 0 6px rgba(192,132,252,.35),0 0 28px rgba(250,204,21,.45);transform:scale(1.06)}}
+.festa-msg{position:fixed;top:70px;left:50%;transform:translateX(-50%);z-index:95;display:flex;align-items:center;gap:14px;background:linear-gradient(135deg,#2a1a52,#1a1233);border:1.5px solid #a78bfa;border-radius:16px;padding:14px 18px 14px 20px;box-shadow:0 18px 50px -10px rgba(124,58,237,.6);animation:festaIn .5s cubic-bezier(.2,.9,.3,1.2);max-width:min(760px,92vw)}
+.festa-msg b{font-size:15px;font-weight:800;color:#fde68a;white-space:nowrap}.festa-msg span{font-size:13.5px;color:#e4e4f0}
+.festa-msg .festa-x{background:none;border:0;color:#c4b5fd;font-size:20px;cursor:pointer}
+.festa-msg.sai{opacity:0;transition:opacity .5s}
+@keyframes festaIn{from{opacity:0;transform:translate(-50%,-14px)}}
+@media(max-width:700px){.festa-msg{flex-wrap:wrap;top:60px}.festa-msg b{white-space:normal}}
+/* celular: cada cenário vira um cartão (número, conteúdo e ações em cima, execução embaixo) */
+@media(max-width:700px){
+  .plano .tabela,.plano .tabela tbody{display:block;overflow:visible;margin-top:0}
+  .plano .tabela tr{display:grid;grid-template-columns:40px minmax(0,1fr) auto;background:#12131e;border:1px solid #1f2133;border-radius:14px;margin-bottom:10px;box-shadow:inset 4px 0 #2a2c42}
+  .plano .tabela tr.st-passou{box-shadow:inset 4px 0 #22c55e}.plano .tabela tr.st-falhou{box-shadow:inset 4px 0 #ef4444}
+  .plano .tabela td{display:block;min-width:0!important;width:auto!important;background:none!important;border:0!important;box-shadow:none!important;border-radius:0!important;padding:12px 10px}
+  .plano .tabela td:nth-child(1){grid-column:1;grid-row:1;padding-left:14px}
+  .plano .tabela td:nth-child(2){grid-column:2;grid-row:1}
+  .plano .tabela td:nth-child(4){grid-column:3;grid-row:1}
+  .plano .tabela td:nth-child(3){grid-column:1 / -1;grid-row:2;padding-top:0}
+  .plano .xseg{width:100%;max-width:280px;margin:0 auto}.plano .sg{padding:0 14px}
+}
