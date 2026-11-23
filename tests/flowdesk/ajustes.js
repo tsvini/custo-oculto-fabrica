@@ -14,7 +14,7 @@ const muda = (p, fn) => p.evaluate(fn);
   const nLin = await p.locator('#linhas tr').count(), nEv = await p.locator('#linhas [data-test=evidencia-cenario]').count();
   ok(nLin > 0 && nEv === nLin, `todo cenário tem anexar evidência (${nEv}/${nLin}), executado ou não`);
   const corNeutra = await p.locator('#linhas tr:first-child [data-test=marcar-passou]').evaluate((e) => getComputedStyle(e).backgroundColor);
-  ok(/rgba\(0, 0, 0, 0\)|transparent/.test(corNeutra), 'Passou sem marcar não fica colorido: ' + corNeutra);
+  ok(!/rgb\(22, 163, 74\)|rgb\(220, 38, 38\)/.test(corNeutra), 'Passou sem marcar não fica colorido: ' + corNeutra);
   await p.locator('#linhas tr:first-child [data-test=marcar-passou]').click();
   const corOn = await p.locator('#linhas tr:first-child [data-test=marcar-passou]').evaluate((e) => getComputedStyle(e).backgroundColor);
   ok(/rgb\(22, 163, 74\)/.test(corOn), 'Passou marcado fica verde');

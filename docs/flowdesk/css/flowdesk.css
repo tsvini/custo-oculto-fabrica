@@ -1198,3 +1198,17 @@ body.m8 [data-test=sair]{color:#b4b7cc}
 .sv-barra{position:sticky;bottom:14px;z-index:5;margin-top:14px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;background:rgba(18,15,36,.96);border:1px solid #3b2a6e;border-radius:14px;padding:12px 14px;box-shadow:0 10px 30px rgba(0,0,0,.45);backdrop-filter:blur(6px)}
 .sv-esc{display:flex;flex-direction:column;gap:2px;flex:1;min-width:160px}.sv-esc span{font-size:11px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#8b8fa6}.sv-esc b{font-size:15px}
 #confSave{flex-basis:100%}
+/* plano: execução com dois botões separados, tamanho fixo, sem pular quando marca */
+.plano .tabela td{vertical-align:top}
+.plano .tabela td:nth-child(3){width:268px}
+.plano .xk{font-size:10.5px;font-weight:800;letter-spacing:1.5px;color:#6f7390;text-transform:uppercase;margin:2px 0 8px}
+.plano .xseg{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:0;background:none;border:0;border-radius:0;width:100%;max-width:none;margin:0}
+.plano .sg{height:38px;padding:0 10px;border:1px solid #2a2c42;border-radius:10px;background:#131421;color:#9a9eb8;font-size:13px;font-weight:700;box-shadow:none;transition:background .15s,border-color .15s,color .15s}
+.plano .sg.ok:not(.on):hover{color:#86efac;border-color:#1d6b3a;background:#131421}
+.plano .sg.nok:not(.on):hover{color:#fca5a5;border-color:#7f1d1d;background:#131421}
+.plano .sg.ok.on{background:#16a34a;border-color:#16a34a;color:#fff}
+.plano .sg.nok.on{background:#dc2626;border-color:#dc2626;color:#fff}
+.plano .xlinks{display:flex;flex-direction:column;align-items:flex-start;gap:2px;margin-top:10px;min-height:54px}
+.plano .xl{max-width:250px;padding:4px 6px;margin-left:-6px}
+.plano .xl.slot{visibility:hidden}
+.plano .xlinks .bugchip{margin:2px 0 0}
