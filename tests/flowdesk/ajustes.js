@@ -18,6 +18,9 @@ const muda = (p, fn) => p.evaluate(fn);
   await p.locator('#linhas tr:first-child [data-test=marcar-passou]').click();
   const corOn = await p.locator('#linhas tr:first-child [data-test=marcar-passou]').evaluate((e) => getComputedStyle(e).backgroundColor);
   ok(/rgb\(22, 163, 74\)/.test(corOn), 'Passou marcado fica verde');
+  await p.locator('#linhas tr:nth-child(2) [data-test=marcar-falhou]').click(); await p.click('#linhas tr:nth-child(2) [data-test=reportar-bug]');
+  ok((await p.inputValue('[data-test=bug-passos]')).includes('Novo chamado') && (await p.inputValue('[data-test=bug-esperado]')).length > 5, 'reportar bug pelo plano já traz os passos e o esperado do cenário');
+  await p.click('[data-test=fechar-modal]');
   // ---- mensagens ficam tempo pra ler e dá pra fechar
   await muda(p, () => toast('Teste de mensagem'));
   await p.waitForTimeout(5000); ok(await p.isVisible('[data-test=toast-sucesso]'), 'mensagem de sucesso continua na tela depois de 5 s');

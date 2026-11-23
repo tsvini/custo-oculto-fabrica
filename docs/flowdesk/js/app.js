@@ -1169,8 +1169,8 @@ function novaTarefa(depois, ctx) {
     <div class="linha2"><div class="campo"><label for="tPrio">Prioridade</label><select class="in" id="tPrio" data-test="tarefa-prioridade">${PRIOS.map((p) => `<option ${p === 'Normal' ? 'selected' : ''}>${p}</option>`).join('')}</select></div>
       <div class="campo"><label for="tCard">Card relacionado</label><select class="in" id="tCard" data-test="tarefa-card"><option value="">Nenhum</option>${d.cards.filter((c) => c.tipo !== 'bug').map((c) => `<option value="${c.id}" ${c.id === (cardDaVez(d) || 'FD-101') ? 'selected' : ''}>${c.id} · ${esc(c.titulo)}</option>`).join('')}</select></div></div>
     ${ctx ? `<p class="liga" data-test="bug-cenario">Ligado ao cenário ${ctx.n} do plano: <b>${esc(ctx.nome)}</b></p>` : ''}
-    <div class="so-bug"><div class="campo"><label for="tPassos">Passos para reproduzir <i>*</i></label><textarea class="in" id="tPassos" data-test="bug-passos" placeholder="1. …&#10;2. …&#10;3. …"></textarea></div>
-      <div class="linha2"><div class="campo"><label for="tEsp">Resultado esperado <i>*</i></label><input class="in" id="tEsp" data-test="bug-esperado"></div><div class="campo"><label for="tObt">Resultado obtido <i>*</i></label><input class="in" id="tObt" data-test="bug-obtido"></div></div>
+    <div class="so-bug"><div class="campo"><label for="tPassos">Passos para reproduzir <i>*</i></label><textarea class="in" id="tPassos" data-test="bug-passos" placeholder="1. …&#10;2. …&#10;3. …">${ctx && ctx.passos ? esc(ctx.passos) : ''}</textarea></div>
+      <div class="linha2"><div class="campo"><label for="tEsp">Resultado esperado <i>*</i></label><textarea class="in curto" id="tEsp" data-test="bug-esperado" rows="3">${ctx && ctx.esperado ? esc(ctx.esperado) : ''}</textarea></div><div class="campo"><label for="tObt">Resultado obtido <i>*</i></label><textarea class="in curto" id="tObt" data-test="bug-obtido" rows="3"></textarea></div></div>
       ${VERSAO >= 17 ? `<div class="campo"><label for="tTec">Console e Rede <small>(opcional · erro do Console, pedido e resposta da Rede, chave do armazenamento)</small></label><textarea class="in" id="tTec" data-test="bug-tecnico" placeholder="Ex.: GET api/chamados?busca=... respondeu [] · URIError: URI malformed"></textarea></div>` : ''}
       <div class="campo"><label for="tEvid">Evidência <i>*</i> <small>(print ou vídeo do que aconteceu)</small></label><label class="arquivo ${ctx && ctx.evid ? 'tem' : ''}" for="tEvid" id="tEvidBox"><input type="file" id="tEvid" data-test="bug-evidencia"><span class="btn sec peq">${ctx && ctx.evid ? 'Trocar arquivo' : 'Escolher arquivo'}</span><span class="nome" id="nomeEv" data-test="bug-evidencia-nome">${ctx && ctx.evid ? `${esc(ctx.evid)} <em>· veio do cenário ${ctx.n}</em>` : 'Nenhum arquivo escolhido'}</span></label></div>
       ${VERSAO >= 15 ? `<label class="cr reg-ck" data-test="bug-regressao"><input type="checkbox" id="tReg"> É regressão: funcionava antes e parou</label>
@@ -1500,7 +1500,7 @@ function montaPlano(A, card) {
     $$('[data-x]').forEach((b) => { b.onclick = () => { const i = +b.dataset.x, c = lista[i]; c.exec = c.exec === b.dataset.v ? 'nao' : b.dataset.v; if (c.exec === 'falhou') c.jaFalhou = true; salvar(); pinta();
       if (c.exec !== 'nao' && !c.evid) gabi('ruim', `Cenário ${i + 1}: marcou “${c.exec}”, mas sem evidência. Se alguém perguntar “tem certeza?”, o que você mostra? Anexa o print.`); }; });
     $$('[data-ev]').forEach((f) => { f.onchange = () => { const x = f.files[0]; if (!x) return; const i = +f.dataset.ev; lista[i].evid = x.name; salvar(); pinta(); toast('Evidência anexada ao cenário ' + (i + 1)); gabi('ok', `Cenário ${i + 1} com evidência. Agora ninguém precisa acreditar na sua palavra.`); }; });
-    $$('[data-bug]').forEach((b) => { b.onclick = () => { const i = +b.dataset.bug; novaTarefa(() => pinta(), { card: card.id, i, n: i + 1, nome: lista[i].nome, evid: lista[i].evid || '' }); }; });
+    $$('[data-bug]').forEach((b) => { b.onclick = () => { const i = +b.dataset.bug; novaTarefa(() => pinta(), { card: card.id, i, n: i + 1, nome: lista[i].nome, evid: lista[i].evid || '', passos: lista[i].passos || '', esperado: lista[i].esperado || '' }); }; });
     $$('[data-ed]').forEach((b) => { b.onclick = () => edita(+b.dataset.ed); });
     $$('[data-ps]').forEach((b) => { b.onclick = () => { const i = +b.dataset.ps; abertos.has(i) ? abertos.delete(i) : abertos.add(i); pinta(); }; });
     $$('[data-rm]').forEach((b) => { b.onclick = () => { const k = +b.dataset.rm; lista.splice(k, 1); if (rod()) rod().sel = rod().sel.filter((x) => x !== k).map((x) => x > k ? x - 1 : x); salvar(); pinta(); toast('Cenário excluído'); }; });
@@ -1567,15 +1567,19 @@ PAGINAS['reportar-bug'] = () => location.replace('quadro.html?novo=bug');
 PAGINAS.missoes = () => {
   const d = dados(), feitas = d.conquistas || [];
   const atual = missaoAtual(), lista = [...MISSOES]; { const i = lista.findIndex((m) => m.id === 'ep16'); lista.splice(i < 0 ? lista.length : i, 0, D1_MISSAO); lista.push(D2_MISSAO); }
-  let passouAtual = !atual;
-  casca('missoes', topo('Missões', 'Cada prática do curso tem uma missão. Assista a aula, faça aqui, e o FlowDesk confere sozinho.') + lista.map((m) => {
-    const pr = progresso(m, d), ok = feitas.includes(m.id) || (m.id === 'ep00' && pulaEp00(d)), eAtual = atual && m.id === atual.id;
-    const fechada = !ok && !eAtual && passouAtual; if (eAtual) passouAtual = true;
-    if (fechada) return `<div class="missao fechada" data-test="missao-${m.id}"><div class="k">${ico('cadeado')} ${m.aula.toUpperCase()}</div><div class="v">${m.titulo}</div><div class="s">Libera quando você chegar no ${m.aula} do curso.</div></div>`;
-    return `<div class="missao ${ok ? 'ok' : ''} ${eAtual ? 'atual' : ''}" data-test="missao-${m.id}"><div class="k">${ok ? 'CONQUISTA DESBLOQUEADA' : eAtual ? 'SUA MISSÃO AGORA' : 'MISSÃO'} · ${m.aula.toUpperCase()}</div><div class="v">${m.titulo}</div>
-      ${m.itens.map(([t], i) => `<div class="mit ${ok || pr[i] ? 'on' : ''}" data-test="missao-item"><b>✓</b>${t}</div>`).join('')}
-      ${ok ? `<div class="s">Conquista: <b>${m.conquista}</b></div>` : `<a class="btn peq" href="${m.link}" style="margin-top:8px">Ir pra missão</a>`}</div>`;
-  }).join('') + `<p class="dica" style="margin-top:14px">${atual ? 'As missões fechadas abrem conforme o curso avança.' : `Tudo feito até aqui. Próxima aula: ${proximaAula(d)}.`}</p>`);
+  // separa em: a missão de agora (em cima, inteira), as conquistas (compactas, abrem no clique) e as próximas (fechadas, uma linha)
+  let passou = !atual; const ok = [], prox = []; let cur = null;
+  for (const m of lista) {
+    const feita = feitas.includes(m.id) || (m.id === 'ep00' && pulaEp00(d)), eAtual = atual && m.id === atual.id;
+    if (eAtual) { cur = m; passou = true; } else if (feita) ok.push(m); else if (passou) prox.push(m); else ok.push(m);
+  }
+  const itens = (m, todos) => { const pr = progresso(m, d); return m.itens.map(([t], i) => `<div class="mit ${todos || pr[i] ? 'on' : ''}" data-test="missao-item"><b>✓</b>${t}</div>`).join(''); };
+  const hero = cur ? `<div class="missao atual" data-test="missao-${cur.id}"><div class="k">SUA MISSÃO AGORA · ${cur.aula.toUpperCase()}</div><div class="v">${cur.titulo}</div>${itens(cur, false)}<a class="btn peq" href="${cur.link}" style="margin-top:8px">Ir pra missão</a></div>`
+    : `<div class="missao ok"><div class="k">TUDO EM DIA</div><div class="v">Nenhuma missão aberta agora</div><div class="s">Próxima aula: ${proximaAula(d)}.</div></div>`;
+  const conq = ok.length ? `<h3 class="mh">Conquistas <span>${ok.length}</span></h3><div class="mgrid">${ok.slice().reverse().map((m) => { const f = feitas.includes(m.id) || (m.id === 'ep00' && pulaEp00(d));
+    return `<details class="mini ${f ? 'ok' : 'pend'}" data-test="missao-${m.id}"><summary><span class="ep">${m.aula.toUpperCase()}</span><b>${m.titulo}</b><i>${f ? '✓' : '…'}</i></summary><div class="mini-c">${itens(m, f)}${f ? `<div class="s">Conquista: <b>${m.conquista}</b></div>` : `<a class="btn peq" href="${m.link}" style="margin-top:8px">Ir pra missão</a>`}</div></details>`; }).join('')}</div>` : '';
+  const fut = prox.length ? `<h3 class="mh">Próximas <span>${prox.length}</span></h3><div class="mgrid">${prox.map((m) => `<div class="mini fechada" data-test="missao-${m.id}" title="Libera quando você chegar no ${m.aula} do curso"><span class="ep">${ico('cadeado')} ${m.aula.toUpperCase()}</span><b>${m.titulo}</b></div>`).join('')}</div>` : '';
+  casca('missoes', topo('Missões', 'Cada prática do curso tem uma missão. Assista a aula, faça aqui, e o FlowDesk confere sozinho.') + hero + conq + fut);
 };
 
 PAGINAS.clientes = () => {
@@ -1837,7 +1841,7 @@ PAGINAS.caca = () => {
         <div class="campo"><label for="cNomeU">Seu nome na Udemy <i>*</i></label><input class="in" id="cNomeU" data-test="caca-nome" value="${esc(c.nome)}"></div>
         <div class="campo"><label>Bug que você reproduziu <i>*</i></label><div id="qual" data-test="caca-qual"></div></div>
         <div class="campo"><label for="cPas">Passos para reproduzir <i>*</i></label><textarea class="in" id="cPas" data-test="caca-passos" placeholder="1. Abrir…&#10;2. …"></textarea></div>
-        <div class="linha2"><div class="campo"><label for="cEspC">Resultado esperado <i>*</i></label><input class="in" id="cEspC" data-test="caca-esperado"></div><div class="campo"><label for="cObtC">Resultado obtido <i>*</i></label><input class="in" id="cObtC" data-test="caca-obtido"></div></div>
+        <div class="linha2"><div class="campo"><label for="cEspC">Resultado esperado <i>*</i></label><textarea class="in curto" id="cEspC" data-test="caca-esperado" rows="3" placeholder="O que deveria acontecer"></textarea></div><div class="campo"><label for="cObtC">Resultado obtido <i>*</i></label><textarea class="in curto" id="cObtC" data-test="caca-obtido" rows="3" placeholder="O que aconteceu de verdade"></textarea></div></div>
         <div class="campo"><label for="cEvi">Evidência <small>(link do print ou do vídeo: Drive, Imgur, YouTube…)</small></label><input class="in" id="cEvi" data-test="caca-evidencia" placeholder="https://"></div>
         <div class="campo"><label for="cAmb">Ambiente <small>(navegador, celular ou computador)</small></label><input class="in" id="cAmb" data-test="caca-ambiente" placeholder="Ex.: Chrome no Android"></div>
         <button class="btn" data-test="caca-enviar" ${aberta ? '' : 'disabled'}>Enviar report</button></form>
