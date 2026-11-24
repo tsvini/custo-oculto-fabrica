@@ -1262,3 +1262,10 @@ textarea.in.curto{min-height:84px;resize:vertical;line-height:1.45}
 @keyframes chq{0%,100%{transform:translateY(0) rotate(-8deg)}50%{transform:translateY(-10px) rotate(8deg)}}
 @media (max-width:1500px){.ch-q{display:none}}
 @media (prefers-reduced-motion:reduce){.ch-q i{animation:none}}
+/* status Bloqueado: não dá pra testar agora porque depende de algo quebrado */
+.sg.blq.on,.plano .sg.blq.on{background:#b45309;border-color:#b45309;color:#fff;box-shadow:none}
+.sg.blq:not(.on):hover,.plano .sg.blq:not(.on):hover{color:#fcd34d;border-color:#78350f;background:#131421}
+.xres .xb i.b{background:#f59e0b}
+.xleg .xbq i{background:#f59e0b}
+.hr.bloqueado{border-color:#78350f;color:#fcd34d}
+.plano .sg.blq{grid-column:1/-1;height:32px}
