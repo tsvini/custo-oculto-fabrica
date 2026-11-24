@@ -76,7 +76,7 @@ const ok = (nome, cond, extra = '') => { res.push([cond ? 'OK ' : 'FALHOU', nome
   }
   ok('EP10 · reteste (conquista ep10)', await conq('ep10'));
   await p.goto(U + 'novo-chamado.html'); await p.fill('[data-test=titulo]', T100); await p.fill('[data-test=descricao]', 'd'); await p.click('[data-test=criar-chamado]'); await p.waitForTimeout(200);
-  ok('EP10 · regressão do 100 existe na Sprint 15', (await p.locator('.msg-erro').allTextContents()).join(' ').includes('100'));
+  ok('EP10 · regressão do 100 existe na Sprint 15', (await p.locator('.msg-erro').allTextContents()).join(' ').includes('até 99 caracteres'));
 
   // EP12: rodada de regressão + aviso pra Beatriz
   await save('ep12'); await p.goto(U + 'card.html?id=FD-101&aba=plano'); await p.waitForTimeout(400);
