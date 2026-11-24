@@ -1,13 +1,13 @@
 {
- "atualizado": "24/11/2026 03:23",
+ "atualizado": "24/11/2026 17:52",
  "fontes": {
   "custo_oculto": {
-   "seguidores": 93,
-   "views_total": 20730,
-   "videos": 67,
-   "views_28d": 11907,
-   "views_7d": 4578,
-   "seguidores_28d": 52,
+   "seguidores": 94,
+   "views_total": 21208,
+   "videos": 68,
+   "views_28d": 13953,
+   "views_7d": 6415,
+   "seguidores_28d": 70,
    "dia": [
     [
      "2026-10-27",
@@ -107,25 +107,29 @@
     ],
     [
      "2026-11-20",
-     710
+     709
     ],
     [
      "2026-11-21",
      1353
+    ],
+    [
+     "2026-11-22",
+     2047
     ]
    ],
    "top": [
     {
      "titulo": "O segredo de 1 mm que faz uma BIC escrever 3 KM 😱 #Shorts",
      "url": "https://youtu.be/NiQ_aBHYmAo",
-     "views": 1489,
-     "retencao": 73,
-     "likes": 40
+     "views": 1924,
+     "retencao": 69,
+     "likes": 49
     },
     {
      "titulo": "Bombril: a marca que virou sinônimo de lã de aço — O Custo de Ser Gigante EP. 09",
      "url": "https://youtu.be/2bKwMEzu16U",
-     "views": 1413,
+     "views": 1415,
      "retencao": 50,
      "likes": 67
     },
@@ -146,9 +150,9 @@
     {
      "titulo": "🍿 A EXPLOSÃO escondida dentro da PIPOCA! 🤯 #Shorts",
      "url": "https://youtu.be/_eMUNaCDaF8",
-     "views": 1173,
-     "retencao": 64,
-     "likes": 85
+     "views": 1260,
+     "retencao": 65,
+     "likes": 93
     }
    ],
    "nome": "Custo Oculto (YouTube)"
@@ -166,10 +170,10 @@
   },
   "vini_qa": {
    "seguidores": 1,
-   "views_total": 557,
+   "views_total": 580,
    "videos": 16,
    "views_28d": 508,
-   "views_7d": 24,
+   "views_7d": 23,
    "seguidores_28d": 1,
    "dia": [
     [
@@ -275,6 +279,10 @@
     [
      "2026-11-21",
      1
+    ],
+    [
+     "2026-11-22",
+     0
     ]
    ],
    "top": [
@@ -319,14 +327,20 @@
   "tiktok": {
    "usuario": "MICROVERSO 🔬",
    "seguidores": 115,
-   "curtidas": 903,
-   "videos": 48,
-   "views_total": 7626,
+   "curtidas": 905,
+   "videos": 49,
+   "views_total": 7130,
    "top": [
+    {
+     "titulo": "📱 SEU CELULAR SABE EXATAMENTE ONDE VOCÊ TOCA! 🤯⚡ Mas como um simples pedaço de vidro conse",
+     "url": "https://www.tiktok.com/@microverso.oficial/video/7711695128271801606?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
+     "views": 53,
+     "likes": 2
+    },
     {
      "titulo": "✏️ A BORRACHA NÃO FAZ O GRAFITE DESAPARECER! 🤯 Você usa uma borracha desde criança, mas pr",
      "url": "https://www.tiktok.com/@microverso.oficial/video/7711347176558955796?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 392,
+     "views": 393,
      "likes": 21
     },
     {
@@ -351,13 +365,7 @@
      "titulo": "Você usou uma caneta BIC a vida inteira… mas provavelmente nunca imaginou o que acontece d",
      "url": "https://www.tiktok.com/@microverso.oficial/video/7710036847413562631?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
      "views": 389,
-     "likes": 24
-    },
-    {
-     "titulo": "Em 2011, a Netflix perdeu 800 mil assinantes por uma decisão dela mesma. E foi a melhor co",
-     "url": "https://www.tiktok.com/@microverso.oficial/video/7709913561153195282?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 522,
-     "likes": 28
+     "likes": 25
     }
    ],
    "nome": "TikTok @custooculto"
