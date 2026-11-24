@@ -263,7 +263,7 @@ function depoisDoEp12() {
   const d = depoisDoEp10(), l = d.planos['FD-101'], sel = [0, 1, 3, 4, 5, 6, 7];
   l.forEach((c, i) => { if (!sel.includes(i)) return; c.hist = [{ r: 1, v: 14, exec: c.exec, evid: c.evid, ...(c.bug ? { bug: c.bug } : {}) }]; delete c.bug; c.exec = i === 3 ? 'falhou' : 'passou'; c.evid = `rodada2-${evNome(i)}`; if (i === 3) { c.jaFalhou = true; c.bug = 'BUG-03'; } });
   d.rodadas = { 'FD-101': { n: 2, versao: 15, data: agora(), sel } };
-  d.cards.push({ id: 'BUG-03', titulo: 'Título com exatamente 100 caracteres é recusado', coluna: 'afazer', resp: 'gabriela', tipo: 'bug', prioridade: 'Alta', relacionado: 'FD-101', cenario: 'Título com 100 caracteres', passos: '1. Abrir Novo chamado\n2. Colar um título com 100 caracteres\n3. Preencher a descrição\n4. Clicar em Criar chamado', esperado: 'Aceita e cria o chamado', obtido: 'Aparece "Título deve ter até 100 caracteres". Com 99 caracteres, cria normal', evidencia: 'rodada2-cenario-04.png', regressao: true, funcionava: 14, quebrou: 15, criterios: [], ok: [], comentarios: [], criadoEm: agora() });
+  d.cards.push({ id: 'BUG-03', titulo: 'Título com exatamente 100 caracteres é recusado', coluna: 'afazer', resp: 'gabriela', tipo: 'bug', prioridade: 'Alta', relacionado: 'FD-101', cenario: 'Título com 100 caracteres', passos: '1. Abrir Novo chamado\n2. Colar um título com 100 caracteres\n3. Preencher a descrição\n4. Clicar em Criar chamado', esperado: 'Aceita e cria o chamado', obtido: 'Aparece "Título deve ter até 99 caracteres". Com 99 caracteres, cria normal', evidencia: 'rodada2-cenario-04.png', regressao: true, funcionava: 14, quebrou: 15, criterios: [], ok: [], comentarios: [], criadoEm: agora() });
   d.proximoBug = 4;
   d.chat['time-produto'].push({ de: 'voce', tx: 'Beatriz, a Sprint 15 corrigiu os dois bugs, mas quebrou o título de 100 caracteres. Abri o BUG-03. Não recomendo subir sem essa correção.', quando: agora() }, { de: 'beatriz', tx: 'Segura a release então. Gabi, prioridade no BUG-03.', quando: agora() });
   d.conquistas.push('ep12');
@@ -676,7 +676,8 @@ const xpDe = (d = dados()) => { const f = d.conquistas || [], atual = MISSOES.fi
   return f.includes('d2') ? total : Math.min(total, XP_PLENO - 40); };
 function trilha(d = dados()) {
   const xp = xpDe(d), jr = xp >= XP_JUNIOR, pl = (d.conquistas || []).includes('d2');
-  const a = jr ? 1 : Math.min(xp / XP_JUNIOR, .98), b = pl ? 1 : jr ? Math.min((xp - XP_JUNIOR) / (XP_PLENO - XP_JUNIOR), .98) : 0;
+  const estagOk = MISSOES.every((m) => M_JUNIOR.includes(m.id) || m.semXp || (d.conquistas || []).includes(m.id));  // fez tudo do estagiário: a linha encosta no Júnior, falta só o Desafio 1
+  const a = jr || estagOk ? 1 : Math.min(xp / XP_JUNIOR, .98), b = pl ? 1 : jr ? Math.min((xp - XP_JUNIOR) / (XP_PLENO - XP_JUNIOR), .98) : 0;
   const ok = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg>';
   return `<div class="trilha" data-test="carreira"><span class="nv on">${ok}Estagiário</span><span class="tb"><i style="width:${a * 100}%"></i></span><span class="nv ${jr ? 'on' : ''}">${jr ? ok : ''}Júnior</span><span class="tb"><i style="width:${Math.max(b, 0) * 100}%"></i></span><span class="nv ${pl ? 'on' : 'fut'}">${pl ? ok : ''}Pleno</span></div>`;
 }
@@ -1067,7 +1068,7 @@ PAGINAS['novo-chamado'] = () => {
     const t = $('#titulo').value, ds = $('#descricao').value;
     let ok = true;
     if (BUG.tituloSoEspacos ? t.length === 0 : t.trim().length === 0) { erroCampo('titulo', 'Título é obrigatório'); ok = false; }
-    else if (BUG.titulo100 && t.trim().length >= 100) { erroCampo('titulo', 'Título deve ter até 100 caracteres'); ok = false; }
+    else if (BUG.titulo100 && t.trim().length >= 100) { erroCampo('titulo', 'Título deve ter até 99 caracteres'); ok = false; }
     if (ds.trim().length === 0) { erroCampo('descricao', 'Descrição é obrigatória'); ok = false; }
     if (!ok) return;
     if (usaApi()) {
@@ -1859,7 +1860,7 @@ PAGINAS.caca = () => {
         <div class="campo"><label for="cAmb">Ambiente <small>(navegador, celular ou computador)</small></label><input class="in" id="cAmb" data-test="caca-ambiente" placeholder="Ex.: Chrome no Android"></div>
         <button class="btn" data-test="caca-enviar" ${aberta ? '' : 'disabled'}>Enviar report</button></form>
       ${meus.length ? `<div class="meus"><h3>Seus envios</h3>${meus.map((e) => `<div class="me" data-recibo="${e.id}"><span>Bug #${e.bug}</span><span>${dataHora(e.quando)}</span><span>recibo <b>${e.id.slice(-8)}</b></span><span class="est">conferindo…</span></div>`).join('')}</div>` : ''}</section>
-      <aside class="caca-lado"><section class="painel"><h2>Como funciona</h2><ol class="passos-c"><li>Teste o FlowDesk como no curso. Os bugs estão em telas que você já conhece.</li><li>Reproduziu um? O FlowDesk reconhece e mostra o número dele no formulário. Você não precisa adivinhar qual é.</li><li>Reporte com passos, esperado, obtido e evidência.</li><li>Seu envio entra na linha do tempo na hora, com um recibo. Todo mundo vê quem mandou primeiro.</li><li>Só vale bug que você reproduziu aqui no FlowDesk, neste navegador, e explicou nos passos. Confirmado, seu nome entra no placar na hora.</li><li>Ganhou? Aparece um código de vitória aqui. Mande ele por mensagem pro professor na Udemy e receba o cupom do Vida de QA 2.</li></ol></section>
+      <aside class="caca-lado"><section class="painel"><h2>Como funciona</h2><ol class="passos-c"><li>Teste o FlowDesk como no curso. Os bugs estão em telas que você já conhece.</li><li>Reproduziu um? O FlowDesk reconhece e mostra o número dele no formulário. Você não precisa adivinhar qual é.</li><li>Reporte com passos, esperado, obtido e evidência.</li><li>Seu envio entra na linha do tempo na hora, com um recibo. Todo mundo vê quem mandou primeiro.</li><li>Só vale bug que você reproduziu aqui no FlowDesk, neste navegador, e explicou nos passos. Confirmado, seu nome entra no placar na hora.</li><li>Ganhou? Aparece um código de vitória aqui. Guarda ele e manda por mensagem pro professor na Udemy. Quando o Vida de QA 2 lançar, você recebe o curso de graça.</li></ol></section>
         ${fala('vinicius', 'VINÍCIUS', 'Bug que ninguém consegue reproduzir não conta. No trabalho é igual.')}
         <section class="painel" id="hallBox" hidden><h2>Hall dos caçadores</h2><div id="hall"></div></section>
         <section class="painel"><h2>Linha do tempo</h2><p class="dica">Todo envio aparece aqui na hora em que chega, em ordem.</p><div id="linha" class="linha-t" data-test="caca-linha"><p class="dica">${aberta ? 'Carregando…' : 'Nenhum envio ainda.'}</p></div></section></aside></div>`);

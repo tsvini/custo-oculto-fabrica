@@ -1243,3 +1243,8 @@ textarea.in.curto{min-height:84px;resize:vertical;line-height:1.45}
 
 /* login: caixinha de lembrar de mim (a sessão de 30 dias do módulo 7) */
 #fEntrar .lembrar{display:flex;align-items:center;gap:8px;font-size:13.5px;color:#c9cbe0;margin:2px 0 14px;cursor:pointer}
+/* revisão: sem a animação da Gabriela tomando café no canto do plano (o recado dela continua) */
+.cov .gabi{display:none!important}
+/* revisão: a classe .mini de outro componente zerava o espaçamento do painel de cobertura (título colado e barra cortada nas pontas) */
+.cov.mini{padding:18px 20px}
+.cov .bar{border-radius:999px}.cov .bar i{border-radius:999px}
