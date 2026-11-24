@@ -1248,3 +1248,17 @@ textarea.in.curto{min-height:84px;resize:vertical;line-height:1.45}
 /* revisão: a classe .mini de outro componente zerava o espaçamento do painel de cobertura (título colado e barra cortada nas pontas) */
 .cov.mini{padding:18px 20px}
 .cov .bar{border-radius:999px}.cov .bar i{border-radius:999px}
+
+/* caça aberta: aviso dourado e os "?" verdes das charadas das aulas */
+.aviso-caca.ouro{background:linear-gradient(135deg,#3a2c0a,#21180a);border-color:#b8902e;color:#fde9a8;box-shadow:0 0 0 1px rgba(245,197,66,.08),0 8px 24px rgba(245,197,66,.08)}
+.aviso-caca.ouro b{color:var(--ouro)}
+.ch-q{position:absolute;right:330px;top:22px;bottom:22px;width:190px;pointer-events:none}
+.ch-q i{position:absolute;font:900 34px/1 Inter,sans-serif;font-style:normal;color:#4ade80;text-shadow:0 0 14px rgba(74,222,128,.55);opacity:.32;animation:chq 7s ease-in-out infinite}
+.ch-q i:nth-child(1){left:8%;top:10%;font-size:46px}
+.ch-q i:nth-child(2){left:62%;top:4%;font-size:26px;animation-delay:-2s}
+.ch-q i:nth-child(3){left:38%;top:44%;font-size:58px;opacity:.22;animation-delay:-4s}
+.ch-q i:nth-child(4){left:80%;top:62%;font-size:30px;animation-delay:-1s}
+.ch-q i:nth-child(5){left:12%;top:72%;font-size:24px;animation-delay:-5s}
+@keyframes chq{0%,100%{transform:translateY(0) rotate(-8deg)}50%{transform:translateY(-10px) rotate(8deg)}}
+@media (max-width:1500px){.ch-q{display:none}}
+@media (prefers-reduced-motion:reduce){.ch-q i{animation:none}}

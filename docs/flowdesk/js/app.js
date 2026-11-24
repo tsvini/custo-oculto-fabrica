@@ -43,7 +43,7 @@ const BUG = {
   layout: REGR.has('layout'),    // no celular, o botão "+ Novo chamado" some da lista de chamados
 };
 // caça aos bugs: endereço do Worker (vazio = temporada ainda não aberta)
-const CACA_API = '';
+const CACA_API = 'https://flowdesk-caca-bugs.tsvini111.workers.dev';
 // ajuste fino por contexto (compatibilidade entre telas)
 const _K = [[2521, 2396, 2958], [3223, 3349, 3525], [2641, 3778, 1525]];
 const _hk = (k) => { let h = 7; for (const ch of k) h = (h * 33 + ch.charCodeAt(0)) >>> 0; return h % 4093; };
@@ -1848,10 +1848,10 @@ PAGINAS.caca = () => {
   const meus = LS.get('fd:caca-envios', []);
   casca('caca', `<section class="caca-hero"><div class="ch-t"><div class="ch-k"><span id="tNum">TEMPORADA 1 DE 3</span><b class="${aberta ? 'ab' : ''}">${aberta ? 'ABERTA' : 'EM BREVE'}</b>${aberta ? '<i id="tFim">quando os 3 forem achados, a próxima temporada abre sozinha</i>' : ''}</div>
       <h1 data-test="titulo-pagina">3 bugs escondidos no FlowDesk.</h1><p>Quem achar e reportar primeiro ganha o <b>Vida de QA 2</b> de graça quando lançar. Preste atenção nas aulas.</p></div>
-      <video src="img/anim/vinicius_lupa_v2.webm?v=1794859585" poster="img/anim/vinicius_lupa_v2.png?v=1794859585" autoplay muted loop playsinline aria-label="Vinícius com uma lupa procurando bugs"></video></section>
+      ${aberta ? '<div class="ch-q" aria-hidden="true"><i>?</i><i>?</i><i>?</i><i>?</i><i>?</i></div>' : ''}<video src="img/anim/vinicius_lupa_v2.webm?v=1794859585" poster="img/anim/vinicius_lupa_v2.png?v=1794859585" autoplay muted loop playsinline aria-label="Vinícius com uma lupa procurando bugs"></video></section>
     <div class="caca-bugs" id="placar">${[1, 2, 3].map((n) => `<article class="cb"><div class="cb-h"><span>#${n}</span><b>LIVRE</b></div><div class="cb-v">Ninguém achou ainda.</div></article>`).join('')}</div>
     <div class="caca-grade"><section class="painel caca-form"><h2>Reportar um bug da caça</h2><p class="dica">A confirmação é automática. Vale o primeiro report confirmado de cada bug.</p>
-      <form id="fc" novalidate>${aberta ? '' : '<div class="aviso-caca" data-test="caca-fechada">A primeira temporada ainda não abriu. Quando abrir, este formulário passa a funcionar e o aviso sai daqui.</div>'}
+      <form id="fc" novalidate>${aberta ? '<div class="aviso-caca ouro" data-test="caca-liberada"><b>Bugs liberados.</b> São 3 espalhados pelo FlowDesk. As pistas estão nas aulas, pra quem presta atenção.</div>' : '<div class="aviso-caca" data-test="caca-fechada">A primeira temporada ainda não abriu. Quando abrir, este formulário passa a funcionar e o aviso sai daqui.</div>'}
         <div class="campo"><label for="cNomeU">Seu nome na Udemy <i>*</i></label><input class="in" id="cNomeU" data-test="caca-nome" value="${esc(c.nome)}"></div>
         <div class="campo"><label>Bug que você reproduziu <i>*</i></label><div id="qual" data-test="caca-qual"></div></div>
         <div class="campo"><label for="cPas">Passos para reproduzir <i>*</i></label><textarea class="in" id="cPas" data-test="caca-passos" placeholder="1. Abrir…&#10;2. …"></textarea></div>
