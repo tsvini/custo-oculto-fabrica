@@ -12,6 +12,7 @@ jobs:
     defaults: { run: { working-directory: workers/caca-bugs } }
     env:
       CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: 186070f2baf246ec5fa9128243a9ddf0
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4

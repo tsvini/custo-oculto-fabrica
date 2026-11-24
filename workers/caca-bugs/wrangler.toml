@@ -1,5 +1,6 @@
 name = "flowdesk-caca-bugs"
 main = "worker.js"
+account_id = "186070f2baf246ec5fa9128243a9ddf0"
 compatibility_date = "2026-10-01"
 
 # criar com: npx wrangler kv namespace create CACA  (e colar o id aqui)
