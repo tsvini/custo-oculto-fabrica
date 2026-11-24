@@ -797,7 +797,8 @@ function critEstado(d, c) {
 const critOk = (d, c) => critEstado(d, c).map((x, i) => x.st === 'ok' ? i : -1).filter((i) => i >= 0);
 function podeMover(c, destino) {
   if (c.coluna === destino) return { ok: false, msg: '' };
-  if (c.resp !== 'voce') return { ok: false, msg: `Esse card é ${c.resp === 'gabriela' || c.resp === 'beatriz' ? 'da' : 'do'} ${PESSOAS[c.resp].nome}. Só quem é responsável move.` };
+  const comQA = c.coluna === 'qa' || c.coluna === 'teste';  // em Pronto pra QA e Em teste o card está com o QA, mesmo sendo de outra pessoa
+  if (c.resp !== 'voce' && !comQA) return { ok: false, msg: `Esse card é ${c.resp === 'gabriela' || c.resp === 'beatriz' ? 'da' : 'do'} ${PESSOAS[c.resp].nome}. Só quem é responsável move.` };
   if (!(MOVES_QA[c.coluna] || []).includes(destino)) return { ok: false, msg: 'O QA não faz esse movimento. Daqui o card só vai pra ' + (MOVES_QA[c.coluna] || []).map((k) => COLUNAS.find((x) => x[0] === k)[1].toLowerCase()).join(' ou ') + '.' };
   if (destino === 'concluido' && c.criterios.length && critOk(dados(), c).length < c.criterios.length) return { ok: false, msg: 'Antes de concluir, todo critério de aceite precisa estar validado pelo plano de testes.' };
   return { ok: true };
@@ -1127,7 +1128,8 @@ const etiqueta = (c) => c.tipo === 'bug' ? '<span class="etq etq-bug">bug</span>
 const nomeColuna = (k) => COLUNAS.find((x) => x[0] === k)[1];
 function cardFace(c) {
   const d = dados(), plano = d.planos[c.id], tot = c.criterios.length, ok = critOk(d, c).length;
-  return `<a class="tk ${c.resp === 'voce' ? 'meu' : 'travado'} ${c.tipo === 'bug' ? 'e-bug' : ''}" href="card.html?id=${c.id}" draggable="${c.resp === 'voce'}" ${c.resp === 'voce' ? '' : `title="Card de ${PESSOAS[c.resp].nome}: só quem é responsável move"`} data-id="${c.id}" data-test="card-${c.id}">
+  const mv = c.resp === 'voce' || c.coluna === 'qa' || c.coluna === 'teste';
+  return `<a class="tk ${mv ? 'meu' : 'travado'} ${c.tipo === 'bug' ? 'e-bug' : ''}" href="card.html?id=${c.id}" draggable="${mv}" ${mv ? '' : `title="Card de ${PESSOAS[c.resp].nome}: só quem é responsável move"`} data-id="${c.id}" data-test="card-${c.id}">
     <div class="tk-etq">${etiqueta(c)}<span class="id">${c.id}</span></div><div class="t">${esc(c.titulo)}</div>
     <div class="tk-meta">${flag(prioDe(c))}${plano && plano.length ? `<span class="mini" title="Cenários no plano de testes">${ico('plano')}${plano.length}</span>` : ''}${c.comentarios.length ? `<span class="mini" title="Comentários">${ico('chat')}${c.comentarios.length}</span>` : ''}<span class="tk-av">${avatar(c.resp)}</span></div>
     ${tot ? `<div class="tk-prog" title="Critérios de aceite validados"><i style="width:${ok / tot * 100}%"></i></div><div class="tk-prog-n">${ok}/${tot} critérios</div>` : ''}</a>`;
@@ -1227,7 +1229,7 @@ function retesteHtml(c) {
   const ult = [...c.comentarios].reverse().find((m) => m.de === 'gabriela');
   const hist = (c.retestes || []).length ? `<div class="rt-h" data-test="reteste-historico">${c.retestes.map((r) => `<div class="rt-l ${r.res}"><b>${r.res === 'passou' ? '✓ Passou' : '✕ Falhou'}</b><span>Sprint ${r.versao} · ${dataBR(r.quando)}</span><span class="rt-ev">${ico('clipe')}${esc(r.evid)}</span>${r.com ? `<span class="rt-c">${esc(r.com)}</span>` : ''}</div>`).join('')}</div>` : '';
   let corpo;
-  if (c.coluna === 'qa') corpo = `${ult ? fala('gabriela', 'Gabriela · Dev', esc(ult.tx)) : ''}<p class="dica">Refaça os passos abaixo, do mesmo jeito do report, e registre o resultado com o print.</p><button class="btn" id="abreRt" data-test="retestar">Retestar</button>
+  if (c.coluna === 'qa' || c.coluna === 'teste') corpo = `${ult ? fala('gabriela', 'Gabriela · Dev', esc(ult.tx)) : ''}<p class="dica">Refaça os passos abaixo, do mesmo jeito do report, e registre o resultado com o print.</p><button class="btn" id="abreRt" data-test="retestar">Retestar</button>
     <form id="fRt" class="rt-f" hidden novalidate><div class="linha2"><div class="campo"><label for="rtV">Versão em que você testou</label><select class="in" id="rtV" data-test="reteste-versao">${[14, 15, 16].filter((v) => v <= VERSAO).map((v) => `<option value="${v}" ${v === VERSAO ? 'selected' : ''}>Sprint ${v}</option>`).join('')}</select></div>
       <div class="campo"><label>Resultado</label><div class="seg" id="rtSeg"><label data-test="reteste-passou"><input type="radio" name="rtR" value="passou"><span>Passou</span></label><label data-test="reteste-falhou"><input type="radio" name="rtR" value="falhou"><span>Falhou</span></label></div></div></div>
       <div class="campo"><label for="rtE">Evidência <i>*</i> <small>(o print do reteste)</small></label><label class="arquivo" for="rtE" id="rtBox"><input type="file" id="rtE" data-test="reteste-evidencia"><span class="btn sec peq">Escolher arquivo</span><span class="nome" id="rtN">Nenhum arquivo escolhido</span></label></div>
