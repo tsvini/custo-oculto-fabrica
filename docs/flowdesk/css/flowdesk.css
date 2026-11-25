@@ -1269,3 +1269,19 @@ textarea.in.curto{min-height:84px;resize:vertical;line-height:1.45}
 .xleg .xbq i{background:#f59e0b}
 .hr.bloqueado{border-color:#78350f;color:#fcd34d}
 .plano .sg.blq{grid-column:1/-1;height:32px}
+/* cenários fechados (rodada 2 em diante): uma linha só; clicar em "abrir" mostra tudo */
+#linhas tr.fech td{padding-top:9px;padding-bottom:9px;vertical-align:middle}
+#linhas tr.fech .tgs,#linhas tr.fech [data-test=ver-passos],#linhas tr.fech .passos,#linhas tr.fech .res,#linhas tr.fech .xcel,#linhas tr.fech .xfora,#linhas tr.fech .acoes{display:none!important}
+#linhas tr.fech .cn{display:inline-block;margin:0 14px 0 0}#linhas tr.fech .hist-r{display:inline-flex;margin:0;vertical-align:middle}
+#linhas .abre-cen{display:inline-flex;white-space:nowrap;margin-bottom:6px;align-items:center;gap:6px;background:#1a1530;border:1.5px solid #4c3a8a;border-radius:999px;color:#c4b5fd;font:800 13px Inter;cursor:pointer;padding:5px 14px}#linhas .abre-cen b{font-size:15px;line-height:1}#linhas .abre-cen:hover{background:#2a1f55;border-color:#8b5cf6;color:#fff}
+#linhas tr.fech{cursor:pointer}#linhas tr.fech:hover td{background:rgba(139,92,246,.06)}
+.stc{display:inline-block;padding:4px 12px;border-radius:999px;font:800 12px Inter;border:1px solid #2e2550;color:#8E92A4}.stc.passou{color:#86efac;border-color:#166534;background:#0b2416}.stc.falhou{color:#fca5a5;border-color:#7f1d1d;background:#2a0f0f}.stc.bloqueado{color:#fcd34d;border-color:#78350f;background:#2a1a05}
+
+#linhas tr.fech [data-arqbtn]{display:none!important}
+#linhas td.col-ac{text-align:right;vertical-align:middle}
+#linhas tr:not(.fech) td.col-ac{vertical-align:top}
+/* toda linha fechada tem a mesma altura, com nome longo ou curto */
+#linhas tr.fech td{height:58px;box-sizing:border-box;padding-top:0!important;padding-bottom:0!important}
+#linhas tr.fech .cn{max-width:340px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;vertical-align:middle}
+#linhas tr.fech .hist-r{flex-wrap:nowrap;white-space:nowrap}
+#linhas tr.fech td>*{margin-top:0;margin-bottom:0}

@@ -13,6 +13,8 @@ const ok = (nome, cond, extra = '') => { res.push([cond ? 'OK ' : 'FALHOU', nome
   p.on('pageerror', (e) => erros.push(`${p.url().split('/').pop()}: ${e.message}`));
   const dados = () => p.evaluate(() => JSON.parse(localStorage.getItem('fd:dados:' + JSON.parse(localStorage.getItem('fd:sessao')))));
     const png = (name) => ({ name, mimeType: 'image/png', buffer: Buffer.from('x') });
+    // a partir da rodada 2 os cenários vêm fechados: abre antes de mexer
+    const abre = async (n) => { const r = p.locator(`#linhas tr:nth-child(${n})`); if (await r.evaluate((e) => e.classList.contains('fech')).catch(() => false)) { await r.locator('[data-test=abrir-cenario]').click(); await p.waitForTimeout(60); } };
   const fechaConq = async () => { const c = p.locator('[data-test=fechar-conquista]'); if (await c.count()) await c.first().click().catch(() => {}); };
   const conq = async (id) => { await p.waitForTimeout(400); const r = (await dados()).conquistas.includes(id); await fechaConq(); return r; };
   const save = async (id) => { await p.goto(U + 'configuracoes.html'); await p.waitForTimeout(400); await fechaConq(); await p.selectOption('[data-test=save-episodio]', id); await p.click('[data-test=carregar-save]'); await p.click('[data-test=confirmar-save]'); await p.waitForTimeout(400); };
@@ -84,10 +86,10 @@ const ok = (nome, cond, extra = '') => { res.push([cond ? 'OK ' : 'FALHOU', nome
   const ks = p.locator('[data-test=rodada-cenario] input'); await ks.nth(2).uncheck(); await ks.nth(8).uncheck();
   await p.click('[data-test=comecar-rodada]'); await p.waitForTimeout(300);
   for (const i of [0, 1, 3, 4, 5, 6, 7]) {
-    await p.locator(`#linhas tr:nth-child(${i + 1}) [data-test=marcar-${i === 3 ? 'falhou' : 'passou'}]`).click(); await p.waitForTimeout(60);
+    await abre(i + 1); await p.locator(`#linhas tr:nth-child(${i + 1}) [data-test=marcar-${i === 3 ? 'falhou' : 'passou'}]`).click(); await p.waitForTimeout(60);
     await p.locator(`#linhas tr:nth-child(${i + 1}) [data-test=evidencia-cenario]`).setInputFiles(png(`r2-${i}.png`)); await p.waitForTimeout(60);
   }
-  await p.locator('#linhas tr:nth-child(4) [data-test=reportar-bug]').click();
+  await abre(4); await p.locator('#linhas tr:nth-child(4) [data-test=reportar-bug]').click();
   await p.fill('[data-test=tarefa-titulo]', 'Título com exatamente 100 caracteres é recusado'); await p.fill('[data-test=bug-passos]', '1. a\n2. b');
   await p.fill('[data-test=bug-esperado]', 'Cria'); await p.fill('[data-test=bug-obtido]', 'Erro'); await p.check('#tReg');
   ok('EP12 · regressão sobe a prioridade', (await p.inputValue('[data-test=tarefa-prioridade]')) === 'Alta');
@@ -106,10 +108,10 @@ const ok = (nome, cond, extra = '') => { res.push([cond ? 'OK ' : 'FALHOU', nome
   const k3 = p.locator('[data-test=rodada-cenario] input'); for (const i of [2, 5, 6, 7]) await k3.nth(i).uncheck();
   await p.click('[data-test=comecar-rodada]'); await p.waitForTimeout(300);
   for (const i of [0, 1, 3, 4, 8]) {
-    await p.locator(`#linhas tr:nth-child(${i + 1}) [data-test=marcar-passou]`).click(); await p.waitForTimeout(60);
+    await abre(i + 1); await p.locator(`#linhas tr:nth-child(${i + 1}) [data-test=marcar-passou]`).click(); await p.waitForTimeout(60);
     await p.locator(`#linhas tr:nth-child(${i + 1}) [data-test=evidencia-cenario]`).setInputFiles(png(`r3-${i}.png`)); await p.waitForTimeout(60);
   }
-  await p.locator('[data-test=editar-cenario]').nth(8).click(); await p.locator('[data-test=cenario-regra]').nth(6).check();
+  await abre(9); await p.locator('[data-test=editar-cenario]').nth(8).click(); await p.locator('[data-test=cenario-regra]').nth(6).check();
   await p.fill('[data-test=cenario-esperado]', 'Aparece "Título é obrigatório" e o chamado não é criado'); await p.click('[data-test=salvar-cenario]'); await p.waitForTimeout(300);
   ok('EP14 · cobertura 7/7', (await p.textContent('[data-test=cobertura-contagem]')).trim() === '7/7');
   await p.goto(U + 'card.html?id=FD-101&aba=gherkin'); await p.waitForTimeout(300);
