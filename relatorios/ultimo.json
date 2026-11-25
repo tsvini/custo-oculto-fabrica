@@ -1,5 +1,5 @@
 {
- "data": "2026-11-24",
+ "data": "2026-11-25",
  "por_formato_12m": [
   {
    "creatorContentType": "creatorContentTypeUnspecified",
@@ -9,7 +9,7 @@
   },
   {
    "creatorContentType": "shorts",
-   "views": 19105,
+   "views": 19104,
    "estimatedMinutesWatched": 7451,
    "subscribersGained": 82
   },
@@ -29,24 +29,18 @@
   },
   {
    "creatorContentType": "shorts",
-   "views": 5652,
-   "estimatedMinutesWatched": 2132,
+   "views": 5536,
+   "estimatedMinutesWatched": 2109,
    "subscribersGained": 43
   },
   {
    "creatorContentType": "videoOnDemand",
-   "views": 8,
+   "views": 7,
    "estimatedMinutesWatched": 1,
    "subscribersGained": 0
   }
  ],
  "dia_a_dia_28d": [
-  {
-   "day": "2026-10-27",
-   "views": 33,
-   "estimatedMinutesWatched": 14,
-   "subscribersGained": 0
-  },
   {
    "day": "2026-10-28",
    "views": 57,
@@ -207,22 +201,22 @@
  "origem_28d": [
   {
    "insightTrafficSourceType": "SHORTS",
-   "views": 12370,
-   "estimatedMinutesWatched": 5603
+   "views": 12335,
+   "estimatedMinutesWatched": 5593
   },
   {
    "insightTrafficSourceType": "YT_SEARCH",
-   "views": 1119,
-   "estimatedMinutesWatched": 282
+   "views": 1113,
+   "estimatedMinutesWatched": 276
   },
   {
    "insightTrafficSourceType": "YT_CHANNEL",
-   "views": 248,
-   "estimatedMinutesWatched": 144
+   "views": 259,
+   "estimatedMinutesWatched": 148
   },
   {
    "insightTrafficSourceType": "SUBSCRIBER",
-   "views": 105,
+   "views": 104,
    "estimatedMinutesWatched": 56
   },
   {
@@ -232,8 +226,8 @@
   },
   {
    "insightTrafficSourceType": "NOTIFICATION",
-   "views": 21,
-   "estimatedMinutesWatched": 7
+   "views": 17,
+   "estimatedMinutesWatched": 5
   },
   {
    "insightTrafficSourceType": "RELATED_VIDEO",
@@ -247,7 +241,7 @@
   },
   {
    "insightTrafficSourceType": "NO_LINK_OTHER",
-   "views": 4,
+   "views": 3,
    "estimatedMinutesWatched": 1
   },
   {
@@ -308,23 +302,11 @@
    "views": 4
   },
   {
-   "insightTrafficSourceDetail": "skype",
-   "views": 4
-  },
-  {
    "insightTrafficSourceDetail": "alexandre costa",
    "views": 3
   },
   {
    "insightTrafficSourceDetail": "bic",
-   "views": 3
-  },
-  {
-   "insightTrafficSourceDetail": "marcenaria cacau show",
-   "views": 3
-  },
-  {
-   "insightTrafficSourceDetail": "orkut",
    "views": 3
   },
   {
@@ -364,14 +346,26 @@
    "views": 2
   },
   {
+   "insightTrafficSourceDetail": "coisas de carro",
+   "views": 2
+  },
+  {
    "insightTrafficSourceDetail": "denver 400",
+   "views": 2
+  },
+  {
+   "insightTrafficSourceDetail": "desenho assustador",
+   "views": 2
+  },
+  {
+   "insightTrafficSourceDetail": "dobrado batista de melo",
    "views": 2
   }
  ],
  "videos_28d": [
   {
    "video": "NiQ_aBHYmAo",
-   "views": 1924,
+   "views": 1923,
    "estimatedMinutesWatched": 641,
    "averageViewDuration": 42,
    "averageViewPercentage": 69.09,
@@ -480,17 +474,6 @@
    "shares": 0
   },
   {
-   "video": "pZeBFwy__aI",
-   "views": 279,
-   "estimatedMinutesWatched": 135,
-   "averageViewDuration": 47,
-   "averageViewPercentage": 64.24,
-   "subscribersGained": 0,
-   "likes": 28,
-   "comments": 3,
-   "shares": 2
-  },
-  {
    "video": "YkIz5RnrYAU",
    "views": 279,
    "estimatedMinutesWatched": 49,
@@ -500,6 +483,17 @@
    "likes": 9,
    "comments": 0,
    "shares": 0
+  },
+  {
+   "video": "pZeBFwy__aI",
+   "views": 279,
+   "estimatedMinutesWatched": 135,
+   "averageViewDuration": 47,
+   "averageViewPercentage": 64.24,
+   "subscribersGained": 0,
+   "likes": 28,
+   "comments": 3,
+   "shares": 2
   },
   {
    "video": "ClsF6r4QR2g",
@@ -623,22 +617,22 @@
    "shares": 0
   },
   {
-   "video": "cl7saCSReIk",
-   "views": 48,
-   "estimatedMinutesWatched": 40,
-   "averageViewDuration": 108,
-   "averageViewPercentage": 221.45999999999998,
-   "subscribersGained": 0,
-   "likes": 2,
-   "comments": 1,
-   "shares": 0
-  },
-  {
    "video": "SwLsOWxYOCE",
    "views": 42,
    "estimatedMinutesWatched": 13,
    "averageViewDuration": 53,
    "averageViewPercentage": 67.09,
+   "subscribersGained": 0,
+   "likes": 1,
+   "comments": 1,
+   "shares": 0
+  },
+  {
+   "video": "7enHVaVNTOI",
+   "views": 36,
+   "estimatedMinutesWatched": 15,
+   "averageViewDuration": 53,
+   "averageViewPercentage": 72.47,
    "subscribersGained": 0,
    "likes": 1,
    "comments": 1,
@@ -656,22 +650,11 @@
    "shares": 0
   },
   {
-   "video": "7enHVaVNTOI",
-   "views": 36,
-   "estimatedMinutesWatched": 15,
-   "averageViewDuration": 53,
-   "averageViewPercentage": 72.47,
-   "subscribersGained": 0,
-   "likes": 1,
-   "comments": 1,
-   "shares": 0
-  },
-  {
-   "video": "uHUtM940Ue0",
-   "views": 27,
-   "estimatedMinutesWatched": 5,
-   "averageViewDuration": 31,
-   "averageViewPercentage": 68.12,
+   "video": "cl7saCSReIk",
+   "views": 33,
+   "estimatedMinutesWatched": 34,
+   "averageViewDuration": 201,
+   "averageViewPercentage": 412.08,
    "subscribersGained": 0,
    "likes": 0,
    "comments": 0,
@@ -712,10 +695,10 @@
   },
   {
    "video": "_aYquXLalP0",
-   "views": 20,
+   "views": 19,
    "estimatedMinutesWatched": 5,
-   "averageViewDuration": 36,
-   "averageViewPercentage": 43.23,
+   "averageViewDuration": 38,
+   "averageViewPercentage": 45.03,
    "subscribersGained": 0,
    "likes": 0,
    "comments": 0,
@@ -733,11 +716,11 @@
    "shares": 0
   },
   {
-   "video": "YL2JUCrwns8",
-   "views": 16,
-   "estimatedMinutesWatched": 3,
-   "averageViewDuration": 35,
-   "averageViewPercentage": 79.43,
+   "video": "uHUtM940Ue0",
+   "views": 17,
+   "estimatedMinutesWatched": 4,
+   "averageViewDuration": 34,
+   "averageViewPercentage": 74.64,
    "subscribersGained": 0,
    "likes": 0,
    "comments": 0,
@@ -766,6 +749,17 @@
    "shares": 0
   },
   {
+   "video": "YL2JUCrwns8",
+   "views": 12,
+   "estimatedMinutesWatched": 2,
+   "averageViewDuration": 33,
+   "averageViewPercentage": 75.5,
+   "subscribersGained": 0,
+   "likes": 0,
+   "comments": 0,
+   "shares": 0
+  },
+  {
    "video": "_EvPaiyk3nU",
    "views": 12,
    "estimatedMinutesWatched": 6,
@@ -788,17 +782,6 @@
    "shares": 0
   },
   {
-   "video": "3e-eXXCL27s",
-   "views": 9,
-   "estimatedMinutesWatched": 1,
-   "averageViewDuration": 20,
-   "averageViewPercentage": 4.02,
-   "subscribersGained": 0,
-   "likes": 0,
-   "comments": 0,
-   "shares": 0
-  },
-  {
    "video": "V0QI5BH5mmo",
    "views": 9,
    "estimatedMinutesWatched": 3,
@@ -810,11 +793,11 @@
    "shares": 0
   },
   {
-   "video": "xhA47M-Ueq8",
+   "video": "3e-eXXCL27s",
    "views": 8,
    "estimatedMinutesWatched": 1,
-   "averageViewDuration": 19,
-   "averageViewPercentage": 40.36,
+   "averageViewDuration": 20,
+   "averageViewPercentage": 4.02,
    "subscribersGained": 0,
    "likes": 0,
    "comments": 0,
@@ -826,6 +809,17 @@
    "estimatedMinutesWatched": 6,
    "averageViewDuration": 129,
    "averageViewPercentage": 179.61,
+   "subscribersGained": 0,
+   "likes": 0,
+   "comments": 0,
+   "shares": 0
+  },
+  {
+   "video": "xhA47M-Ueq8",
+   "views": 7,
+   "estimatedMinutesWatched": 1,
+   "averageViewDuration": 25,
+   "averageViewPercentage": 52.96999999999999,
    "subscribersGained": 0,
    "likes": 0,
    "comments": 0,
@@ -854,17 +848,6 @@
    "shares": 0
   },
   {
-   "video": "TIv6Sg8n_rI",
-   "views": 5,
-   "estimatedMinutesWatched": 5,
-   "averageViewDuration": 329,
-   "averageViewPercentage": 97.56,
-   "subscribersGained": 0,
-   "likes": 0,
-   "comments": 0,
-   "shares": 0
-  },
-  {
    "video": "IZFqVgJkuZg",
    "views": 5,
    "estimatedMinutesWatched": 2,
@@ -876,11 +859,11 @@
    "shares": 0
   },
   {
-   "video": "z6dXgM3pY_c",
+   "video": "6hhsJO6vgpo",
    "views": 4,
    "estimatedMinutesWatched": 0,
-   "averageViewDuration": 26,
-   "averageViewPercentage": 92.86,
+   "averageViewDuration": 14,
+   "averageViewPercentage": 15.299999999999999,
    "subscribersGained": 0,
    "likes": 0,
    "comments": 0,
@@ -898,6 +881,17 @@
    "shares": 0
   },
   {
+   "video": "TIv6Sg8n_rI",
+   "views": 4,
+   "estimatedMinutesWatched": 0,
+   "averageViewDuration": 0,
+   "averageViewPercentage": 0,
+   "subscribersGained": 0,
+   "likes": 0,
+   "comments": 0,
+   "shares": 0
+  },
+  {
    "video": "xQAsC7S2KO8",
    "views": 4,
    "estimatedMinutesWatched": 2,
@@ -909,11 +903,11 @@
    "shares": 0
   },
   {
-   "video": "6hhsJO6vgpo",
+   "video": "z6dXgM3pY_c",
    "views": 4,
    "estimatedMinutesWatched": 0,
-   "averageViewDuration": 14,
-   "averageViewPercentage": 15.299999999999999,
+   "averageViewDuration": 26,
+   "averageViewPercentage": 92.86,
    "subscribersGained": 0,
    "likes": 0,
    "comments": 0,
@@ -2198,23 +2192,12 @@
   }
  },
  "canal": {
-  "viewCount": "21208",
-  "subscriberCount": "93",
+  "viewCount": "21478",
+  "subscriberCount": "103",
   "hiddenSubscriberCount": false,
-  "videoCount": "68"
+  "videoCount": "69"
  },
  "todos_os_videos": [
-  {
-   "id": "NiQ_aBHYmAo",
-   "titulo": "O segredo de 1 mm que faz uma BIC escrever 3 KM 😱 #Shorts",
-   "publicado": "2026-11-19T23:53:34Z",
-   "duracao": "PT1M1S",
-   "status": "public",
-   "agendado": null,
-   "views": 1966,
-   "likes": 48,
-   "comentarios": 0
-  },
   {
    "id": "ISnXOgL8j5k",
    "titulo": "🤯 Como a BORRACHA faz o lápis DESAPARECER? ✏️ #Shorts",
@@ -2222,9 +2205,20 @@
    "duracao": "PT1M6S",
    "status": "public",
    "agendado": null,
-   "views": 1925,
-   "likes": 106,
-   "comentarios": 2
+   "views": 2002,
+   "likes": 107,
+   "comentarios": 3
+  },
+  {
+   "id": "NiQ_aBHYmAo",
+   "titulo": "O segredo de 1 mm que faz uma BIC escrever 3 KM 😱 #Shorts",
+   "publicado": "2026-11-19T23:53:34Z",
+   "duracao": "PT1M1S",
+   "status": "public",
+   "agendado": null,
+   "views": 1990,
+   "likes": 48,
+   "comentarios": 0
   },
   {
    "id": "2bKwMEzu16U",
@@ -2233,8 +2227,8 @@
    "duracao": "PT2M33S",
    "status": "public",
    "agendado": null,
-   "views": 1420,
-   "likes": 67,
+   "views": 1422,
+   "likes": 68,
    "comentarios": 2
   },
   {
@@ -2255,7 +2249,7 @@
    "duracao": "PT1M5S",
    "status": "public",
    "agendado": null,
-   "views": 1269,
+   "views": 1270,
    "likes": 86,
    "comentarios": 0
   },
@@ -2337,6 +2331,17 @@
    "comentarios": 0
   },
   {
+   "id": "XUB1NyKHRt0",
+   "titulo": "Como o detergente consegue remover a gordura? #Shorts",
+   "publicado": "2026-11-25T09:33:28Z",
+   "duracao": "PT1M9S",
+   "status": "public",
+   "agendado": null,
+   "views": 531,
+   "likes": 36,
+   "comentarios": 0
+  },
+  {
    "id": "UrTUaUWMFDU",
    "titulo": "A Nintendo começou vendendo baralho em 1889 | A Jogada que Mudou Tudo EP. 05",
    "publicado": "2026-11-07T13:56:43Z",
@@ -2398,7 +2403,7 @@
    "duracao": "PT1M11S",
    "status": "public",
    "agendado": null,
-   "views": 283,
+   "views": 284,
    "likes": 9,
    "comentarios": 0
   },
@@ -2486,7 +2491,7 @@
    "duracao": "PT40S",
    "status": "public",
    "agendado": null,
-   "views": 219,
+   "views": 220,
    "likes": 6,
    "comentarios": 0
   },
@@ -2554,6 +2559,17 @@
    "agendado": null,
    "views": 142,
    "likes": 4,
+   "comentarios": 0
+  },
+  {
+   "id": "hordL_nqCMc",
+   "titulo": "📱 Como a TELA do celular sabe ONDE você tocou? 🤯 #Shorts",
+   "publicado": "2026-11-24T10:53:46Z",
+   "duracao": "PT1M8S",
+   "status": "public",
+   "agendado": null,
+   "views": 137,
+   "likes": 7,
    "comentarios": 0
   },
   {
@@ -2629,7 +2645,7 @@
    "duracao": "PT1M14S",
    "status": "public",
    "agendado": null,
-   "views": 59,
+   "views": 61,
    "likes": 2,
    "comentarios": 0
   },
@@ -2755,10 +2771,10 @@
    "comentarios": 0
   },
   {
-   "id": "r9t1a5rQW8U",
-   "titulo": "A Blockbuster podia ter comprado a Netflix por 50 milhões de dólares. E recusou #shorts",
-   "publicado": "2026-10-22T21:00:13Z",
-   "duracao": "PT1M12S",
+   "id": "j0suqUVjg3Y",
+   "titulo": "A Netflix perdeu 800 mil clientes de propósito | A Jogada que Mudou Tudo EP. 11",
+   "publicado": "2026-11-19T13:43:35Z",
+   "duracao": "PT1M19S",
    "status": "public",
    "agendado": null,
    "views": 37,
@@ -2766,13 +2782,13 @@
    "comentarios": 0
   },
   {
-   "id": "j0suqUVjg3Y",
-   "titulo": "A Netflix perdeu 800 mil clientes de propósito | A Jogada que Mudou Tudo EP. 11",
-   "publicado": "2026-11-19T13:43:35Z",
-   "duracao": "PT1M19S",
+   "id": "r9t1a5rQW8U",
+   "titulo": "A Blockbuster podia ter comprado a Netflix por 50 milhões de dólares. E recusou #shorts",
+   "publicado": "2026-10-22T21:00:13Z",
+   "duracao": "PT1M12S",
    "status": "public",
    "agendado": null,
-   "views": 36,
+   "views": 37,
    "likes": 1,
    "comentarios": 0
   },
@@ -2928,17 +2944,6 @@
    "agendado": null,
    "views": 9,
    "likes": 2,
-   "comentarios": 0
-  },
-  {
-   "id": "hordL_nqCMc",
-   "titulo": "📱 Como a TELA do celular sabe ONDE você tocou? 🤯 #Shorts",
-   "publicado": "2026-11-24T10:53:46Z",
-   "duracao": "PT1M8S",
-   "status": "public",
-   "agendado": null,
-   "views": 8,
-   "likes": 1,
    "comentarios": 0
   },
   {
