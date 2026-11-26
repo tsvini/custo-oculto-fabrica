@@ -1,12 +1,12 @@
 {
- "atualizado": "26/11/2026 01:22",
+ "atualizado": "26/11/2026 16:49",
  "fontes": {
   "custo_oculto": {
-   "seguidores": 104,
-   "views_total": 21478,
-   "videos": 69,
-   "views_28d": 15835,
-   "views_7d": 7631,
+   "seguidores": 105,
+   "views_total": 22714,
+   "videos": 70,
+   "views_28d": 15820,
+   "views_7d": 7616,
    "seguidores_28d": 91,
    "dia": [
     [
@@ -107,7 +107,7 @@
     ],
     [
      "2026-11-22",
-     2047
+     2032
     ],
     [
      "2026-11-23",
@@ -166,7 +166,7 @@
   },
   "vini_qa": {
    "seguidores": 1,
-   "views_total": 585,
+   "views_total": 594,
    "videos": 17,
    "views_28d": 436,
    "views_7d": 35,
@@ -319,14 +319,20 @@
   "tiktok": {
    "usuario": "MICROVERSO 🔬",
    "seguidores": 124,
-   "curtidas": 941,
-   "videos": 50,
-   "views_total": 7263,
+   "curtidas": 943,
+   "videos": 51,
+   "views_total": 6665,
    "top": [
+    {
+     "titulo": "Você usa chaves todos os dias, mas já imaginou o que realmente acontece dentro de uma fech",
+     "url": "https://www.tiktok.com/@microverso.oficial/video/7712457898051259669?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
+     "views": 56,
+     "likes": 2
+    },
     {
      "titulo": "Você usa detergente todos os dias, mas sabe como ele realmente remove a gordura? Dentro de",
      "url": "https://www.tiktok.com/@microverso.oficial/video/7712041874717969685?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 317,
+     "views": 319,
      "likes": 34
     },
     {
@@ -350,14 +356,8 @@
     {
      "titulo": "🤯 EXISTE UM EXÉRCITO INVISÍVEL DENTRO DO VELCRO! Milhares de pequenos ganchos trabalham ju",
      "url": "https://www.tiktok.com/@microverso.oficial/video/7710629301372177671?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 557,
+     "views": 558,
      "likes": 22
-    },
-    {
-     "titulo": "🍿 UMA EXPLOSÃO ACONTECE DENTRO DE CADA PIPOCA! 🤯💥 Mas o que realmente acontece lá dentro a",
-     "url": "https://www.tiktok.com/@microverso.oficial/video/7710262969464048914?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 415,
-     "likes": 31
     }
    ],
    "nome": "TikTok @custooculto"
