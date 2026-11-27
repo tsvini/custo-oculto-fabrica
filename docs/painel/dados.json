@@ -1,12 +1,12 @@
 {
- "atualizado": "27/11/2026 01:31",
+ "atualizado": "27/11/2026 16:39",
  "fontes": {
   "custo_oculto": {
-   "seguidores": 111,
-   "views_total": 23180,
-   "videos": 70,
-   "views_28d": 16065,
-   "views_7d": 7790,
+   "seguidores": 117,
+   "views_total": 23798,
+   "videos": 71,
+   "views_28d": 16062,
+   "views_7d": 7787,
    "seguidores_28d": 92,
    "dia": [
     [
@@ -107,7 +107,7 @@
     ],
     [
      "2026-11-23",
-     1975
+     1972
     ],
     [
      "2026-11-24",
@@ -155,7 +155,7 @@
   },
   "hidden_cost": {
    "seguidores": 0,
-   "views_total": 33,
+   "views_total": 34,
    "videos": 18,
    "views_28d": 0,
    "views_7d": 0,
@@ -166,8 +166,8 @@
   },
   "vini_qa": {
    "seguidores": 1,
-   "views_total": 599,
-   "videos": 17,
+   "views_total": 600,
+   "videos": 18,
    "views_28d": 436,
    "views_7d": 36,
    "seguidores_28d": 1,
@@ -319,32 +319,38 @@
   "tiktok": {
    "usuario": "MICROVERSO 🔬",
    "seguidores": 124,
-   "curtidas": 945,
-   "videos": 51,
-   "views_total": 6715,
+   "curtidas": 958,
+   "videos": 52,
+   "views_total": 6497,
    "top": [
+    {
+     "titulo": "Como um bastão brilha sem bateria nem fogo? 🟢  O segredo está numa reação química escondid",
+     "url": "https://www.tiktok.com/@microverso.oficial/video/7712867061273251078?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
+     "views": 35,
+     "likes": 5
+    },
     {
      "titulo": "Você usa chaves todos os dias, mas já imaginou o que realmente acontece dentro de uma fech",
      "url": "https://www.tiktok.com/@microverso.oficial/video/7712457898051259669?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 105,
-     "likes": 4
+     "views": 169,
+     "likes": 12
     },
     {
      "titulo": "Você usa detergente todos os dias, mas sabe como ele realmente remove a gordura? Dentro de",
      "url": "https://www.tiktok.com/@microverso.oficial/video/7712041874717969685?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 320,
+     "views": 324,
      "likes": 34
     },
     {
      "titulo": "📱 SEU CELULAR SABE EXATAMENTE ONDE VOCÊ TOCA! 🤯⚡ Mas como um simples pedaço de vidro conse",
      "url": "https://www.tiktok.com/@microverso.oficial/video/7711695128271801606?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 91,
+     "views": 92,
      "likes": 4
     },
     {
      "titulo": "✏️ A BORRACHA NÃO FAZ O GRAFITE DESAPARECER! 🤯 Você usa uma borracha desde criança, mas pr",
      "url": "https://www.tiktok.com/@microverso.oficial/video/7711347176558955796?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 396,
+     "views": 397,
      "likes": 21
     },
     {
@@ -352,12 +358,6 @@
      "url": "https://www.tiktok.com/@microverso.oficial/video/7710993995479960839?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
      "views": 129,
      "likes": 3
-    },
-    {
-     "titulo": "🤯 EXISTE UM EXÉRCITO INVISÍVEL DENTRO DO VELCRO! Milhares de pequenos ganchos trabalham ju",
-     "url": "https://www.tiktok.com/@microverso.oficial/video/7710629301372177671?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 558,
-     "likes": 22
     }
    ],
    "nome": "TikTok @custooculto"
@@ -394,16 +394,6 @@
    ]
   }
  },
- "agenda": [
-  {
-   "quando": "2026-11-27T12:00:00-03:00",
-   "plataforma": "Vini QA (YouTube)",
-   "chave": "vini_qa",
-   "titulo": "Cypress ou Playwright: qual aprender primeiro?",
-   "tipo": "short",
-   "id": "Mi-ZkLYbZ_E",
-   "url": "https://studio.youtube.com/video/Mi-ZkLYbZ_E/edit"
-  }
- ],
+ "agenda": [],
  "esperando": []
 }
