@@ -1,18 +1,14 @@
 {
- "atualizado": "26/11/2026 16:49",
+ "atualizado": "27/11/2026 01:31",
  "fontes": {
   "custo_oculto": {
-   "seguidores": 105,
-   "views_total": 22714,
+   "seguidores": 111,
+   "views_total": 23180,
    "videos": 70,
-   "views_28d": 15820,
-   "views_7d": 7616,
-   "seguidores_28d": 91,
+   "views_28d": 16065,
+   "views_7d": 7790,
+   "seguidores_28d": 92,
    "dia": [
-    [
-     "2026-10-29",
-     45
-    ],
     [
      "2026-10-30",
      39
@@ -112,29 +108,33 @@
     [
      "2026-11-23",
      1975
+    ],
+    [
+     "2026-11-24",
+     290
     ]
    ],
    "top": [
     {
+     "titulo": "🤯 Como a BORRACHA faz o lápis DESAPARECER? ✏️ #Shorts",
+     "url": "https://youtu.be/ISnXOgL8j5k",
+     "views": 1999,
+     "retencao": 77,
+     "likes": 107
+    },
+    {
      "titulo": "O segredo de 1 mm que faz uma BIC escrever 3 KM 😱 #Shorts",
      "url": "https://youtu.be/NiQ_aBHYmAo",
-     "views": 1974,
+     "views": 1981,
      "retencao": 69,
      "likes": 48
     },
     {
-     "titulo": "🤯 Como a BORRACHA faz o lápis DESAPARECER? ✏️ #Shorts",
-     "url": "https://youtu.be/ISnXOgL8j5k",
-     "views": 1835,
-     "retencao": 77,
-     "likes": 105
-    },
-    {
      "titulo": "Bombril: a marca que virou sinônimo de lã de aço — O Custo de Ser Gigante EP. 09",
      "url": "https://youtu.be/2bKwMEzu16U",
-     "views": 1418,
+     "views": 1422,
      "retencao": 50,
-     "likes": 67
+     "likes": 68
     },
     {
      "titulo": "A gambiarra que transformou a Havaianas em ícone mundial 🩴",
@@ -146,7 +146,7 @@
     {
      "titulo": "🧅 A ARMA INVISÍVEL que faz você CHORAR! 😱 #Shorts",
      "url": "https://youtu.be/YhyXwYqZm8s",
-     "views": 1276,
+     "views": 1270,
      "retencao": 49,
      "likes": 86
     }
@@ -166,16 +166,12 @@
   },
   "vini_qa": {
    "seguidores": 1,
-   "views_total": 594,
+   "views_total": 599,
    "videos": 17,
    "views_28d": 436,
-   "views_7d": 35,
+   "views_7d": 36,
    "seguidores_28d": 1,
    "dia": [
-    [
-     "2026-10-29",
-     3
-    ],
     [
      "2026-10-30",
      168
@@ -275,6 +271,10 @@
     [
      "2026-11-23",
      23
+    ],
+    [
+     "2026-11-24",
+     3
     ]
    ],
    "top": [
@@ -309,7 +309,7 @@
     {
      "titulo": "Rode só o teste que você está mexendo",
      "url": "https://youtu.be/4etHmE1ZR7s",
-     "views": 22,
+     "views": 23,
      "retencao": 87,
      "likes": 0
     }
@@ -319,20 +319,20 @@
   "tiktok": {
    "usuario": "MICROVERSO 🔬",
    "seguidores": 124,
-   "curtidas": 943,
+   "curtidas": 945,
    "videos": 51,
-   "views_total": 6665,
+   "views_total": 6715,
    "top": [
     {
      "titulo": "Você usa chaves todos os dias, mas já imaginou o que realmente acontece dentro de uma fech",
      "url": "https://www.tiktok.com/@microverso.oficial/video/7712457898051259669?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 56,
-     "likes": 2
+     "views": 105,
+     "likes": 4
     },
     {
      "titulo": "Você usa detergente todos os dias, mas sabe como ele realmente remove a gordura? Dentro de",
      "url": "https://www.tiktok.com/@microverso.oficial/video/7712041874717969685?utm_campaign=tt4d_open_api&utm_source=sbawp5t69pv26symdj",
-     "views": 319,
+     "views": 320,
      "likes": 34
     },
     {
